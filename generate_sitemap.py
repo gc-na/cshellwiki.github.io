@@ -84,5 +84,5 @@ def generate_sitemap(wiki_directory, posts_directory, base_url, output_file="sit
 if __name__ == "__main__":
     wiki_directory = "./wiki"    # 현재 디렉토리의 wiki 폴더
     posts_directory = "./_posts"  # 현재 디렉토리의 _posts 폴더
-    base_url = "https://bashwiki.github.io"
+    base_url = "https://cshellwiki.github.io"
     generate_sitemap(wiki_directory, posts_directory, base_url)
