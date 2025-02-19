@@ -1,61 +1,52 @@
-# [Linux] Bash sftp użycie: Przesyłanie plików przez SSH
+# [Linux] C Shell (csh) sftp użycie: przesyłanie plików przez SSH
 
 ## Overview
-Polecenie `sftp` (Secure File Transfer Protocol) służy do bezpiecznego przesyłania plików pomiędzy komputerami za pomocą protokołu SSH. Umożliwia zarówno przesyłanie, jak i pobieranie plików w sposób zaszyfrowany, co zapewnia bezpieczeństwo danych.
+Polecenie `sftp` (Secure File Transfer Protocol) służy do bezpiecznego przesyłania plików między komputerami za pomocą protokołu SSH. Umożliwia zarówno przesyłanie plików w jedną stronę, jak i synchronizację katalogów.
 
 ## Usage
-Podstawowa składnia polecenia `sftp` wygląda następująco:
+Podstawowa składnia polecenia `sftp` jest następująca:
 
-```bash
-sftp [opcje] [użytkownik@host]
+```csh
+sftp [opcje] [argumenty]
 ```
 
 ## Common Options
 Oto kilka powszechnie używanych opcji dla polecenia `sftp`:
 
-- `-P <port>`: Określa port, na którym nasłuchuje serwer SFTP.
-- `-o <opcje>`: Umożliwia przekazanie dodatkowych opcji do klienta SSH.
-- `-r`: Umożliwia rekurencyjne przesyłanie katalogów.
+- `-b <plik>`: Użyj pliku wsadowego do wykonania poleceń.
+- `-C`: Włącz kompresję danych.
+- `-o <opcja>`: Ustaw dodatkowe opcje SSH, np. `-oPort=2222`.
+- `-P <port>`: Określ port, na którym działa serwer SFTP.
 
 ## Common Examples
-Poniżej znajdują się przykłady użycia polecenia `sftp`:
+Oto kilka praktycznych przykładów użycia polecenia `sftp`:
 
-### Połączenie z serwerem SFTP
-Aby połączyć się z serwerem SFTP:
+1. Połączenie z serwerem SFTP:
+   ```csh
+   sftp user@hostname
+   ```
 
-```bash
-sftp użytkownik@host
-```
+2. Przesyłanie pliku z lokalnego systemu na serwer:
+   ```csh
+   put lokalny_plik.txt
+   ```
 
-### Przesyłanie pliku na serwer
-Aby przesłać plik na serwer SFTP:
+3. Pobieranie pliku z serwera na lokalny system:
+   ```csh
+   get zdalny_plik.txt
+   ```
 
-```bash
-put lokalny_plik.txt
-```
+4. Przesyłanie katalogu na serwer:
+   ```csh
+   put -r lokalny_katalog
+   ```
 
-### Pobieranie pliku z serwera
-Aby pobrać plik z serwera SFTP:
-
-```bash
-get zdalny_plik.txt
-```
-
-### Przesyłanie katalogu
-Aby przesłać cały katalog na serwer SFTP:
-
-```bash
-put -r lokalny_katalog
-```
-
-### Zmiana katalogu na serwerze
-Aby przejść do innego katalogu na serwerze SFTP:
-
-```bash
-cd zdalny_katalog
-```
+5. Użycie pliku wsadowego do wykonania wielu poleceń:
+   ```csh
+   sftp -b polecenia.txt user@hostname
+   ```
 
 ## Tips
-- Używaj opcji `-P`, jeśli serwer SFTP działa na niestandardowym porcie.
-- Zawsze sprawdzaj, czy połączenie jest bezpieczne, zwracając uwagę na komunikaty o kluczu hosta.
-- Regularnie aktualizuj swoje oprogramowanie SSH, aby zapewnić sobie najnowsze poprawki bezpieczeństwa.
+- Zawsze używaj opcji `-C`, aby przyspieszyć transfer plików, zwłaszcza przy dużych plikach.
+- Regularnie sprawdzaj dostępność serwera SFTP przed rozpoczęciem transferu.
+- Używaj kluczy SSH do uwierzytelniania, aby zwiększyć bezpieczeństwo połączenia.

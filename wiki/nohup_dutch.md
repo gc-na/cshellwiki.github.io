@@ -1,43 +1,44 @@
-# [Linux] Bash nohup gebruik: Voorkom dat een proces stopt bij uitloggen
+# [Linux] C Shell (csh) nohup gebruik: Voorkom dat een proces wordt beëindigd bij uitloggen
 
 ## Overzicht
-De `nohup` (no hang up) opdracht in Bash wordt gebruikt om een proces uit te voeren dat niet wordt beëindigd wanneer de gebruiker zich afmeldt of de terminal sluit. Dit is bijzonder nuttig voor lange processen die je wilt laten draaien, zelfs als je niet meer ingelogd bent.
+De `nohup` (no hang up) opdracht in C Shell wordt gebruikt om een commando uit te voeren dat blijft draaien, zelfs nadat de gebruiker is uitgelogd. Dit is handig voor lange processen die niet moeten worden onderbroken.
 
 ## Gebruik
 De basis syntaxis van de `nohup` opdracht is als volgt:
 
-```bash
+```
 nohup [opties] [argumenten]
 ```
 
 ## Veelvoorkomende opties
 - `&` : Voegt het proces toe aan de achtergrond, zodat je de terminal kunt blijven gebruiken.
-- `-o [bestand]` : Standaard uitvoer wordt naar het opgegeven bestand geschreven.
-- `-h` : Toont de helpinformatie voor het gebruik van `nohup`.
+- `-o [bestand]` : Specificeert een bestand waaruit de uitvoer van het proces wordt geschreven.
+- `-h` : Geeft een helpbericht weer met informatie over het gebruik van de opdracht.
 
 ## Veelvoorkomende voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van `nohup`:
 
-1. **Een script uitvoeren zonder dat het stopt bij uitloggen:**
-   ```bash
+1. Een script uitvoeren dat op de achtergrond draait:
+   ```csh
    nohup ./mijn_script.sh &
    ```
 
-2. **Een lange opdracht uitvoeren en de uitvoer naar een bestand schrijven:**
-   ```bash
-   nohup lange_opdracht > uitvoer.txt &
+2. Een lange opdracht uitvoeren en de uitvoer naar een bestand schrijven:
+   ```csh
+   nohup lange_opdracht > uitvoer.log &
    ```
 
-3. **Een Python-script uitvoeren in de achtergrond:**
-   ```bash
+3. Een Python-script uitvoeren zonder dat het wordt beëindigd bij uitloggen:
+   ```csh
    nohup python3 mijn_script.py &
    ```
 
-4. **Een opdracht uitvoeren met foutmeldingen naar een apart bestand:**
-   ```bash
-   nohup mijn_opdracht > uitvoer.txt 2> fouten.txt &
+4. Een commando met een specifieke uitvoerbestand:
+   ```csh
+   nohup ls -l > lijst.txt &
    ```
 
 ## Tips
-- Gebruik `&` om het proces in de achtergrond te laten draaien, zodat je de terminal kunt blijven gebruiken.
-- Controleer regelmatig de uitvoerbestanden om te zien hoe je processen vorderen.
-- Overweeg om `disown` te gebruiken na het starten van een `nohup` proces om het volledig los te koppelen van de terminal.
+- Gebruik altijd `&` om het proces op de achtergrond te laten draaien, zodat je de terminal kunt blijven gebruiken.
+- Controleer regelmatig het uitvoerbestand om de voortgang van je proces te volgen.
+- Combineer `nohup` met `screen` of `tmux` voor extra controle over je processen.

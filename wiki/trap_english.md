@@ -1,65 +1,55 @@
-# [Linux] Bash trap Usage: Handle signals and cleanup
+# [Linux] C Shell (csh) trap用法: 处理信号和清理
 
 ## Overview
-The `trap` command in Bash is used to specify commands that will be executed when the shell receives certain signals or when certain events occur. This is particularly useful for cleaning up resources or performing specific actions when a script is interrupted or terminated.
+The `trap` command in C Shell (csh) is used to specify commands that will be executed when the shell receives certain signals. This is particularly useful for cleaning up temporary files or performing specific actions before a script exits or is interrupted.
 
 ## Usage
 The basic syntax of the `trap` command is as follows:
 
-```bash
+```csh
 trap [commands] [signals]
 ```
 
-- `[commands]`: The commands to execute when the specified signals are received.
-- `[signals]`: The signals that will trigger the execution of the commands.
-
 ## Common Options
-- `SIGINT`: Interrupt signal (usually sent when you press Ctrl+C).
-- `SIGTERM`: Termination signal (default signal sent by the `kill` command).
-- `EXIT`: Executes the specified commands when the script exits, regardless of the exit status.
+- `commands`: The commands to execute when the specified signals are received.
+- `signals`: The signals that will trigger the execution of the commands. Common signals include:
+  - `INT`: Interrupt signal (usually from Ctrl+C).
+  - `TERM`: Termination signal.
+  - `QUIT`: Quit signal (usually from Ctrl+\).
 
 ## Common Examples
 
-### Example 1: Cleanup on exit
-This example demonstrates how to use `trap` to remove a temporary file when the script exits.
+### Example 1: Cleanup on Interrupt
+This example shows how to clean up temporary files when the script is interrupted.
 
-```bash
-#!/bin/bash
-temp_file="/tmp/my_temp_file.txt"
-trap "rm -f $temp_file" EXIT
-
-echo "Creating temporary file..."
-touch $temp_file
-echo "Temporary file created."
+```csh
+#!/bin/csh
+trap 'rm -f /tmp/mytempfile' INT
+echo "Running script. Press Ctrl+C to interrupt."
+sleep 60
 ```
 
-### Example 2: Handling SIGINT
-In this example, the script will print a message and exit gracefully when interrupted.
+### Example 2: Custom Exit Message
+In this example, a custom message is displayed when the script is terminated.
 
-```bash
-#!/bin/bash
-trap "echo 'Script interrupted!'; exit" SIGINT
-
-while true; do
-    echo "Running... (Press Ctrl+C to stop)"
-    sleep 1
-done
+```csh
+#!/bin/csh
+trap 'echo "Script terminated. Goodbye!"' TERM
+echo "Running script. Send a TERM signal to see the message."
+sleep 60
 ```
 
-### Example 3: Multiple signals
-You can specify multiple signals for the same command. Here’s how to handle both `SIGINT` and `SIGTERM`.
+### Example 3: Multiple Signals
+You can specify multiple signals to trigger the same command.
 
-```bash
-#!/bin/bash
-trap "echo 'Terminating script...'; exit" SIGINT SIGTERM
-
-while true; do
-    echo "Working... (Press Ctrl+C or send SIGTERM to stop)"
-    sleep 1
-done
+```csh
+#!/bin/csh
+trap 'echo "Received signal, exiting!"' INT TERM
+echo "Running script. Press Ctrl+C or send TERM signal."
+sleep 60
 ```
 
 ## Tips
 - Always ensure that the commands specified in `trap` are simple and quick to execute to avoid delays in signal handling.
-- Use `trap` for cleanup tasks such as removing temporary files or stopping background processes to maintain a clean environment.
-- Remember to test your scripts to ensure that the `trap` commands behave as expected under various scenarios (e.g., normal exit, forced termination).
+- Use `trap` at the beginning of your scripts to set up signal handling before any long-running processes.
+- Remember to test your scripts to ensure that the `trap` commands behave as expected under different signal conditions.

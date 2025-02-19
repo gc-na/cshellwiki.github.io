@@ -1,7 +1,7 @@
-# [Linux] Bash hostnamectl Uso: Manage system hostname and related settings
+# [Linux] C Shell (csh) hostnamectl用法: Manage system hostname and related settings
 
 ## Overview
-The `hostnamectl` command is used in Linux systems to manage the system's hostname and related settings. It allows users to view and change the hostname, as well as configure other related parameters like the operating system name and version.
+The `hostnamectl` command is used to manage the system hostname and related settings in Linux. It allows users to view and change the hostname, as well as configure other related parameters such as the static hostname, transient hostname, and pretty hostname.
 
 ## Usage
 The basic syntax of the `hostnamectl` command is as follows:
@@ -11,50 +11,34 @@ hostnamectl [options] [arguments]
 ```
 
 ## Common Options
-- `set-hostname`: Change the system's hostname.
-- `status`: Display the current hostname and related information.
-- `set-icon-name`: Set an icon name for the system.
-- `set-chassis`: Specify the type of hardware chassis (e.g., desktop, laptop).
-- `set-deployment`: Define the deployment type (e.g., production, development).
+- `set-hostname`: Set the system's hostname.
+- `set-icon-name`: Set the icon name for the system.
+- `set-chassis`: Set the chassis type of the system.
+- `status`: Show the current hostname and related settings.
+- `help`: Display help information about the command.
 
 ## Common Examples
+- **View current hostname and settings:**
+  ```bash
+  hostnamectl status
+  ```
 
-### 1. Display Current Hostname
-To view the current hostname and related information, use:
+- **Set a new static hostname:**
+  ```bash
+  hostnamectl set-hostname my-new-hostname
+  ```
 
-```bash
-hostnamectl status
-```
+- **Set a pretty hostname:**
+  ```bash
+  hostnamectl set-hostname "My New Hostname" --pretty
+  ```
 
-### 2. Change the Hostname
-To change the hostname to "new-hostname", run:
-
-```bash
-sudo hostnamectl set-hostname new-hostname
-```
-
-### 3. Set Chassis Type
-To specify the chassis type as "laptop", use:
-
-```bash
-sudo hostnamectl set-chassis laptop
-```
-
-### 4. Set Icon Name
-To set an icon name for the system, you can use:
-
-```bash
-sudo hostnamectl set-icon-name computer-laptop
-```
-
-### 5. View All Hostname Information
-To get a comprehensive view of the hostname and system information, execute:
-
-```bash
-hostnamectl
-```
+- **Set the chassis type to 'desktop':**
+  ```bash
+  hostnamectl set-chassis desktop
+  ```
 
 ## Tips
-- Always use `sudo` when changing the hostname to ensure you have the necessary permissions.
-- After changing the hostname, consider rebooting the system for all services to recognize the new name.
-- Use descriptive hostnames that reflect the purpose or location of the machine for easier management in larger networks.
+- Always check the current hostname with `hostnamectl status` before making changes.
+- Use quotes around hostnames that contain spaces or special characters.
+- Remember that changing the hostname may require a restart or re-login to take full effect.

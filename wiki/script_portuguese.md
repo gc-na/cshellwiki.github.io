@@ -1,55 +1,56 @@
-# [Linux] Bash script uso: Gravar sessões de terminal
+# [Linux] C Shell (csh) script uso: Grava a sessão do terminal
 
 ## Overview
-O comando `script` é utilizado para gravar uma sessão de terminal em um arquivo. Isso permite que você capture tudo o que foi exibido na tela, incluindo entradas de comando e saídas, facilitando a documentação e a análise posterior.
+O comando `script` é utilizado para gravar uma sessão do terminal em um arquivo. Isso é útil para registrar a saída de comandos e interações em um ambiente de linha de comando, permitindo que você revise ou compartilhe a sessão posteriormente.
 
 ## Usage
 A sintaxe básica do comando `script` é a seguinte:
 
-```bash
+```csh
 script [opções] [arquivo]
 ```
 
 ## Common Options
 - `-a`: Anexa a saída ao arquivo existente, em vez de sobrescrevê-lo.
-- `-c <comando>`: Executa um comando específico e grava a saída no arquivo.
-- `-f`: Força a gravação em tempo real, exibindo a saída imediatamente.
 - `-q`: Executa o comando em modo silencioso, sem exibir mensagens de início e término.
+- `-t`: Grava o tempo de execução da sessão em um arquivo separado.
 
 ## Common Examples
 Aqui estão alguns exemplos práticos do uso do comando `script`:
 
-### Exemplo 1: Gravar uma sessão padrão
-```bash
-script sessao.txt
-```
-Este comando inicia uma nova sessão de terminal e grava tudo em `sessao.txt`. Para encerrar a gravação, basta digitar `exit`.
+1. **Gravar uma sessão padrão:**
 
-### Exemplo 2: Anexar a um arquivo existente
-```bash
-script -a sessao_anexa.txt
-```
-Com este comando, você pode anexar novas entradas e saídas a `sessao_anexa.txt` sem perder o conteúdo anterior.
+   ```csh
+   script sessao.txt
+   ```
 
-### Exemplo 3: Gravar a saída de um comando específico
-```bash
-script -c "ls -l" lista.txt
-```
-Este comando executa `ls -l` e grava a saída diretamente em `lista.txt`.
+   Este comando inicia a gravação da sessão atual e salva a saída em `sessao.txt`.
 
-### Exemplo 4: Gravação em tempo real
-```bash
-script -f sessao_tempo_real.txt
-```
-Usando a opção `-f`, você grava a sessão em `sessao_tempo_real.txt` e vê as saídas imediatamente.
+2. **Gravar uma sessão e anexar a um arquivo existente:**
 
-### Exemplo 5: Modo silencioso
-```bash
-script -q sessao_silenciosa.txt
-```
-Este comando grava a sessão em `sessao_silenciosa.txt` sem exibir mensagens de início e término.
+   ```csh
+   script -a sessao_existente.txt
+   ```
+
+   Com este comando, a nova sessão será adicionada ao final de `sessao_existente.txt`.
+
+3. **Executar em modo silencioso:**
+
+   ```csh
+   script -q sessao_silenciosa.txt
+   ```
+
+   Este comando grava a sessão em `sessao_silenciosa.txt` sem exibir mensagens de início e término.
+
+4. **Gravar o tempo da sessão:**
+
+   ```csh
+   script -t tempo.txt sessao_tempo.txt
+   ```
+
+   Aqui, o tempo de execução da sessão será gravado em `tempo.txt`, enquanto a saída da sessão será salva em `sessao_tempo.txt`.
 
 ## Tips
 - Sempre verifique o conteúdo do arquivo gravado após a sessão para garantir que tudo foi registrado corretamente.
-- Utilize a opção `-a` se você precisar gravar várias sessões em um único arquivo, evitando a perda de dados.
-- Considere usar `script` em conjunto com outros comandos para documentar processos complexos ou tutoriais.
+- Use o modo silencioso (`-q`) se você não quiser distrações visuais enquanto grava a sessão.
+- Considere usar a opção de anexar (`-a`) se você estiver realizando várias sessões e quiser manter um registro contínuo.

@@ -1,7 +1,7 @@
-# [Linux] Bash xz : Compresser et décompresser des fichiers
+# [Linux] C Shell (csh) xz : Compression de fichiers
 
 ## Overview
-La commande `xz` est utilisée pour compresser et décompresser des fichiers en utilisant l'algorithme de compression LZMA. Elle est particulièrement efficace pour réduire la taille des fichiers tout en maintenant une bonne qualité de compression.
+La commande `xz` est utilisée pour compresser et décompresser des fichiers en utilisant l'algorithme de compression LZMA. Elle est particulièrement efficace pour réduire la taille des fichiers, ce qui facilite le stockage et le transfert.
 
 ## Usage
 La syntaxe de base de la commande `xz` est la suivante :
@@ -13,11 +13,10 @@ xz [options] [arguments]
 ## Common Options
 Voici quelques options courantes pour la commande `xz` :
 
-- `-d`, `--decompress` : Décompresse un fichier.
-- `-k`, `--keep` : Garde le fichier original après compression.
-- `-f`, `--force` : Force la compression ou la décompression, même si le fichier de destination existe déjà.
-- `-z`, `--compress` : Compresse un fichier (c'est l'option par défaut).
-- `-9` : Utilise le niveau de compression le plus élevé.
+- `-d` ou `--decompress` : Décompresse un fichier.
+- `-k` ou `--keep` : Garde le fichier d'origine après compression.
+- `-f` ou `--force` : Force la compression ou la décompression, même si cela écrase des fichiers existants.
+- `-9` : Utilise le niveau de compression maximum (1 à 9, où 9 est le plus élevé).
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `xz` :
@@ -32,22 +31,22 @@ Voici quelques exemples pratiques de l'utilisation de la commande `xz` :
    xz -d fichier.txt.xz
    ```
 
-3. **Compresser un fichier tout en gardant l'original :**
+3. **Compresser en gardant le fichier d'origine :**
    ```bash
    xz -k fichier.txt
    ```
 
-4. **Décompresser un fichier avec force :**
-   ```bash
-   xz -df fichier.txt.xz
-   ```
-
-5. **Compresser un fichier avec le niveau de compression maximum :**
+4. **Compresser avec le niveau de compression maximum :**
    ```bash
    xz -9 fichier.txt
    ```
 
+5. **Forcer la compression :**
+   ```bash
+   xz -f fichier.txt
+   ```
+
 ## Tips
-- Pour compresser plusieurs fichiers à la fois, vous pouvez utiliser un joker, par exemple : `xz *.txt`.
-- Vérifiez la taille des fichiers avant et après compression pour évaluer l'efficacité.
-- Utilisez `man xz` pour accéder à la documentation complète et découvrir d'autres options disponibles.
+- Utilisez l'option `-k` si vous souhaitez conserver le fichier original après compression.
+- Pour des fichiers très volumineux, envisagez d'utiliser le niveau de compression `-9` pour obtenir une taille de fichier plus réduite, mais cela peut prendre plus de temps.
+- Vérifiez toujours l'espace disque disponible avant de compresser de gros fichiers, car la compression peut temporairement nécessiter plus d'espace.

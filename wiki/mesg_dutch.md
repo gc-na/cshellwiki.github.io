@@ -1,39 +1,45 @@
-# [Linux] Bash mesg gebruik: Beheer van meldingen voor terminals
+# [Linux] C Shell (csh) mesg Gebruik: Beheer van berichteninstellingen
 
 ## Overzicht
-De `mesg`-opdracht in Bash wordt gebruikt om te bepalen of andere gebruikers berichten naar jouw terminal kunnen sturen. Dit is vooral nuttig in een multi-user omgeving, waar je wilt controleren wie je kan bereiken met berichten.
+De `mesg` opdracht in C Shell (csh) wordt gebruikt om de instellingen voor het ontvangen van berichten van andere gebruikers te beheren. Hiermee kun je bepalen of andere gebruikers je berichten kunnen sturen via de terminal.
 
 ## Gebruik
-De basis syntaxis van de `mesg`-opdracht is als volgt:
+De basis syntaxis van de `mesg` opdracht is als volgt:
 
-```bash
+```csh
 mesg [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `y` : Sta berichten toe van andere gebruikers.
+- `y` : Sta berichten van andere gebruikers toe.
 - `n` : Weiger berichten van andere gebruikers.
-- `--help` : Toon hulpinformatie over het gebruik van de opdracht.
+- `-n` : Dit is een alternatieve manier om berichten te weigeren.
 
 ## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van de `mesg`-opdracht:
+Hier zijn enkele praktische voorbeelden van het gebruik van de `mesg` opdracht:
 
-1. Sta berichten toe:
-   ```bash
-   mesg y
-   ```
+### Sta berichten toe
+Om berichten van andere gebruikers toe te staan, gebruik je:
 
-2. Weiger berichten:
-   ```bash
-   mesg n
-   ```
+```csh
+mesg y
+```
 
-3. Controleer de huidige status van berichten:
-   ```bash
-   mesg
-   ```
+### Weiger berichten
+Om berichten van andere gebruikers te weigeren, gebruik je:
+
+```csh
+mesg n
+```
+
+### Controleer de huidige instelling
+Om te controleren of je berichten toestaat of weigert, kun je simpelweg de `mesg` opdracht zonder argumenten uitvoeren:
+
+```csh
+mesg
+```
 
 ## Tips
-- Gebruik `mesg n` als je niet gestoord wilt worden door berichten van andere gebruikers, vooral tijdens belangrijke werkzaamheden.
-- Vergeet niet om `mesg y` te gebruiken als je weer berichten wilt ontvangen.
-- Controleer regelmatig je instellingen, vooral als je in een gedeelde omgeving werkt, om ervoor te zorgen dat je de juiste meldingen ontvangt.
+- Gebruik `mesg y` als je openstaat voor communicatie met andere gebruikers, bijvoorbeeld in een gedeelde omgeving.
+- Gebruik `mesg n` als je je wilt concentreren en niet gestoord wilt worden door berichten.
+- Controleer regelmatig je instellingen, vooral als je in een omgeving werkt waar veel gebruikers actief zijn.

@@ -1,54 +1,43 @@
-# [Linux] Bash unset Utilisation : Supprimer des variables ou fonctions
+# [Linux] C Shell (csh) unset : Supprimer des variables d'environnement
 
 ## Overview
-La commande `unset` est utilisée dans Bash pour supprimer des variables d'environnement ou des fonctions définies. Cela permet de libérer de la mémoire ou de nettoyer l'environnement de travail en supprimant des éléments qui ne sont plus nécessaires.
+La commande `unset` dans C Shell (csh) est utilisée pour supprimer des variables d'environnement ou des fonctions définies. Cela permet de libérer de la mémoire ou de nettoyer l'environnement de travail en supprimant des éléments qui ne sont plus nécessaires.
 
 ## Usage
 La syntaxe de base de la commande `unset` est la suivante :
 
-```bash
+```csh
 unset [options] [arguments]
 ```
 
 ## Common Options
 - `-f` : Supprime une fonction définie.
-- `-v` : Supprime une variable.
+- `-v` : Supprime une variable d'environnement.
 
 ## Common Examples
 
-### Supprimer une variable
-Pour supprimer une variable nommée `VAR`, utilisez la commande suivante :
+### Supprimer une variable d'environnement
+Pour supprimer une variable d'environnement nommée `MY_VAR`, vous pouvez utiliser la commande suivante :
 
-```bash
-VAR="Hello"
-unset VAR
-```
-
-### Vérifier la suppression d'une variable
-Après avoir supprimé la variable, vous pouvez vérifier qu'elle n'existe plus :
-
-```bash
-echo $VAR  # Aucune sortie, car VAR a été supprimée
+```csh
+unset MY_VAR
 ```
 
 ### Supprimer une fonction
-Pour supprimer une fonction nommée `maFonction`, utilisez :
+Si vous avez défini une fonction appelée `maFonction`, vous pouvez la supprimer avec :
 
-```bash
-maFonction() {
-    echo "Ceci est une fonction."
-}
+```csh
 unset -f maFonction
 ```
 
-### Vérifier la suppression d'une fonction
-Vous pouvez vérifier si la fonction a été supprimée :
+### Supprimer plusieurs variables
+Vous pouvez également supprimer plusieurs variables en une seule commande :
 
-```bash
-type maFonction  # Affiche "maFonction: not found"
+```csh
+unset VAR1 VAR2 VAR3
 ```
 
 ## Tips
-- Utilisez `unset` avec précaution, car une fois qu'une variable ou une fonction est supprimée, elle ne peut pas être récupérée à moins d'être redéfinie.
-- Pour éviter des erreurs, vérifiez toujours l'existence d'une variable ou d'une fonction avant de la supprimer.
-- `unset` peut être utilisé dans des scripts pour nettoyer l'environnement avant de quitter ou de terminer le script.
+- Assurez-vous de ne pas supprimer des variables essentielles pour le fonctionnement de votre script ou de votre session.
+- Utilisez `set` pour vérifier les variables d'environnement avant de les supprimer, afin de vous assurer qu'elles ne sont pas nécessaires.
+- Pour éviter des erreurs, vérifiez l'existence de la variable ou de la fonction avant de tenter de la supprimer.

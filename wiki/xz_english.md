@@ -1,61 +1,56 @@
-# [Linux] Bash xz Uso equivalente: Comprimir y descomprimir archivos
+# [Linux] C Shell (csh) xz Uso: Comprimir y descomprimir archivos
 
 ## Overview
-The `xz` command is a powerful tool used for compressing and decompressing files in the XZ format. It is known for its high compression ratio and is often used in scenarios where reducing file size is crucial, such as software distribution and archiving.
+The `xz` command is used for compressing and decompressing files in the XZ format. It is known for providing a high compression ratio, making it a popular choice for reducing file sizes.
 
 ## Usage
 The basic syntax of the `xz` command is as follows:
 
-```bash
+```csh
 xz [options] [arguments]
 ```
 
 ## Common Options
-- `-d`, `--decompress`: Decompress the specified files.
-- `-k`, `--keep`: Keep the original files after compression or decompression.
+- `-d`, `--decompress`: Decompress the specified file.
+- `-k`, `--keep`: Keep the original file after compression.
+- `-v`, `--verbose`: Provide detailed output during the compression or decompression process.
 - `-f`, `--force`: Force compression or decompression, even if the output file already exists.
-- `-z`, `--compress`: Compress the specified files (this is the default action).
-- `-9`: Use the maximum compression level (1-9, where 9 is the highest).
+- `-9`: Use the maximum compression level.
 
 ## Common Examples
-Here are some practical examples of how to use the `xz` command:
+Here are some practical examples of using the `xz` command:
 
-### Compress a File
-To compress a file named `example.txt`:
+1. **Compress a file:**
+   ```csh
+   xz myfile.txt
+   ```
+   This command compresses `myfile.txt` and creates `myfile.txt.xz`.
 
-```bash
-xz example.txt
-```
+2. **Decompress a file:**
+   ```csh
+   xz -d myfile.txt.xz
+   ```
+   This command decompresses `myfile.txt.xz` back to `myfile.txt`.
 
-### Decompress a File
-To decompress a file named `example.txt.xz`:
+3. **Compress a file while keeping the original:**
+   ```csh
+   xz -k myfile.txt
+   ```
+   This command compresses `myfile.txt` and retains the original file.
 
-```bash
-xz -d example.txt.xz
-```
+4. **Verbose output during compression:**
+   ```csh
+   xz -v myfile.txt
+   ```
+   This command compresses `myfile.txt` and shows progress details.
 
-### Keep Original File
-To compress a file while keeping the original:
-
-```bash
-xz -k example.txt
-```
-
-### Force Compression
-To forcefully compress a file, overwriting any existing output file:
-
-```bash
-xz -f example.txt
-```
-
-### Maximum Compression
-To compress a file using the highest compression level:
-
-```bash
-xz -9 example.txt
-```
+5. **Force compression:**
+   ```csh
+   xz -f myfile.txt
+   ```
+   This command compresses `myfile.txt`, overwriting any existing compressed file.
 
 ## Tips
-- Use the `-k` option if you want to retain the original file after compression, especially when testing compression results.
-- For batch processing, you can use wildcards. For example, `xz *.txt` will compress all `.txt` files in the current directory.
-- Be mindful of disk space when compressing large files, as the process may require temporary space for both the original and compressed files.
+- Always use the `-k` option if you want to keep the original file after compression.
+- For maximum compression, consider using `-9`, but be aware that it may take longer to process.
+- Use the `-v` option to monitor the progress, especially for large files.

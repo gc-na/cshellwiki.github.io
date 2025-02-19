@@ -1,53 +1,49 @@
-# [Linux] Bash fc Utilisation : Gérer l'historique des commandes
+# [Linux] C Shell (csh) fc <Utilisation équivalente en français>: [modifier l'historique des commandes]
 
 ## Overview
-La commande `fc` est utilisée pour manipuler l'historique des commandes dans un shell Bash. Elle permet d'afficher, de modifier et de réexécuter des commandes précédemment exécutées.
+La commande `fc` dans le C Shell (csh) est utilisée pour modifier et réexécuter des commandes précédemment exécutées. Elle permet aux utilisateurs de rechercher dans l'historique des commandes, d'éditer des commandes spécifiques et de les exécuter à nouveau.
 
 ## Usage
 La syntaxe de base de la commande `fc` est la suivante :
 
-```bash
+```csh
 fc [options] [arguments]
 ```
 
 ## Common Options
 - `-l` : Liste les commandes de l'historique.
-- `-r` : Inverse l'ordre des commandes lors de l'affichage.
-- `-s` : Exécute une commande sans l'afficher.
-- `-n` : N'affiche pas les numéros de ligne lors de la liste des commandes.
+- `-s` : Exécute la commande sans l'afficher dans le terminal.
+- `-n` : Ne pas afficher les numéros de ligne lors de la liste des commandes.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `fc` :
 
-### Afficher les dernières commandes
-Pour afficher les 10 dernières commandes de l'historique, utilisez :
+1. **Lister les commandes de l'historique :**
+   ```csh
+   fc -l
+   ```
 
-```bash
-fc -l -10
-```
+2. **Modifier la dernière commande exécutée :**
+   ```csh
+   fc
+   ```
 
-### Modifier une commande spécifique
-Pour modifier la commande numéro 42 dans l'historique, utilisez :
+3. **Exécuter la dernière commande sans l'afficher :**
+   ```csh
+   fc -s
+   ```
 
-```bash
-fc 42
-```
+4. **Modifier une commande spécifique dans l'historique (par exemple, la commande 5) :**
+   ```csh
+   fc 5
+   ```
 
-### Exécuter la dernière commande
-Pour exécuter la dernière commande sans l'afficher, utilisez :
-
-```bash
-fc -s
-```
-
-### Inverser l'affichage des commandes
-Pour afficher les 5 dernières commandes dans l'ordre inverse, utilisez :
-
-```bash
-fc -lr -5
-```
+5. **Lister les 10 dernières commandes :**
+   ```csh
+   fc -l -10
+   ```
 
 ## Tips
-- Utilisez `fc` pour corriger rapidement des erreurs dans vos commandes précédentes.
-- Combinez `fc` avec des éditeurs de texte comme `nano` ou `vim` pour une modification plus avancée.
-- Familiarisez-vous avec les numéros de commande dans l'historique pour une utilisation efficace de `fc`.
+- Utilisez `fc` régulièrement pour corriger rapidement des erreurs dans les commandes précédentes sans avoir à les retaper.
+- Familiarisez-vous avec les numéros de commande de votre historique pour un accès rapide.
+- Combinez `fc` avec un éditeur de texte comme `vi` pour des modifications plus complexes.

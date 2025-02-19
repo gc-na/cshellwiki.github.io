@@ -1,54 +1,45 @@
-# [Linux] Bash resize2fs Uso: Redimensionar sistemas de arquivos ext2/ext3/ext4
+# [Linux] C Shell (csh) resize2fs Uso: Redimensionar sistemas de arquivos ext2/ext3/ext4
 
 ## Overview
 O comando `resize2fs` é utilizado para redimensionar sistemas de arquivos ext2, ext3 e ext4. Ele permite aumentar ou diminuir o tamanho de um sistema de arquivos, ajustando-o ao tamanho da partição subjacente.
 
 ## Usage
-A sintaxe básica do comando `resize2fs` é a seguinte:
+A sintaxe básica do comando é a seguinte:
 
-```bash
+```
 resize2fs [opções] [argumentos]
 ```
 
 ## Common Options
-Aqui estão algumas opções comuns que podem ser usadas com o `resize2fs`:
-
-- `-f`: Força o redimensionamento, mesmo que o sistema de arquivos não esteja em um estado ideal.
-- `-p`: Exibe o progresso do redimensionamento.
-- `-M`: Reduz o sistema de arquivos ao seu tamanho mínimo.
-- `-s`: Redimensiona o sistema de arquivos para o tamanho especificado, mas não altera a partição subjacente.
+- `-f`: Força o redimensionamento, mesmo que o sistema de arquivos não esteja montado.
+- `-p`: Mostra o progresso do redimensionamento.
+- `-M`: Reduz o sistema de arquivos ao tamanho mínimo possível.
+- `-s`: Redimensiona o sistema de arquivos para o tamanho especificado.
 
 ## Common Examples
+Aqui estão alguns exemplos práticos do uso do `resize2fs`:
 
-### Aumentar o tamanho do sistema de arquivos
-Para aumentar o tamanho de um sistema de arquivos que está em uma partição maior, você pode usar:
+1. **Aumentar o tamanho do sistema de arquivos**:
+   ```bash
+   resize2fs /dev/sda1
+   ```
 
-```bash
-resize2fs /dev/sda1
-```
+2. **Reduzir o sistema de arquivos ao tamanho mínimo**:
+   ```bash
+   resize2fs -M /dev/sda1
+   ```
 
-### Reduzir o tamanho do sistema de arquivos
-Para reduzir o tamanho de um sistema de arquivos, primeiro você deve garantir que a partição foi reduzida. Depois, use:
+3. **Redimensionar para um tamanho específico**:
+   ```bash
+   resize2fs /dev/sda1 20G
+   ```
 
-```bash
-resize2fs -M /dev/sda1
-```
-
-### Redimensionar para um tamanho específico
-Para redimensionar um sistema de arquivos para um tamanho específico, você pode usar:
-
-```bash
-resize2fs 20G /dev/sda1
-```
-
-### Exibir progresso durante o redimensionamento
-Para ver o progresso do redimensionamento, utilize a opção `-p`:
-
-```bash
-resize2fs -p /dev/sda1
-```
+4. **Ver o progresso do redimensionamento**:
+   ```bash
+   resize2fs -p /dev/sda1
+   ```
 
 ## Tips
-- Sempre faça backup dos dados importantes antes de redimensionar sistemas de arquivos, pois há risco de perda de dados.
-- Verifique o estado do sistema de arquivos com `fsck` antes de redimensionar para evitar problemas.
-- Utilize `resize2fs` apenas quando o sistema de arquivos estiver desmontado ou em modo somente leitura, para garantir a integridade dos dados.
+- Sempre faça backup dos dados antes de redimensionar um sistema de arquivos, pois há risco de perda de dados.
+- Certifique-se de que o sistema de arquivos esteja desmontado antes de tentar reduzir seu tamanho.
+- Utilize o comando `df -h` para verificar o espaço disponível e o uso do sistema de arquivos antes de redimensionar.

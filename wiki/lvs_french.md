@@ -1,51 +1,47 @@
-# [Linux] Bash lvs : Afficher les informations sur les volumes logiques
+# [Linux] C Shell (csh) lvs : lister les volumes logiques
 
 ## Overview
-La commande `lvs` est utilisée pour afficher des informations sur les volumes logiques dans un système utilisant LVM (Logical Volume Manager). Elle permet aux utilisateurs de visualiser les détails des volumes logiques, tels que leur taille, leur état et d'autres attributs pertinents.
+La commande `lvs` dans le C Shell (csh) est utilisée pour afficher des informations sur les volumes logiques dans un système de gestion de volumes logiques (LVM). Elle permet aux utilisateurs de visualiser les volumes logiques existants, leurs tailles et d'autres attributs pertinents.
 
 ## Usage
 La syntaxe de base de la commande `lvs` est la suivante :
 
-```bash
+```
 lvs [options] [arguments]
 ```
 
 ## Common Options
-- `-o, --units`: Spécifie les unités à utiliser pour l'affichage des tailles.
-- `-a, --all`: Affiche tous les volumes, y compris ceux qui sont inactifs.
-- `-f, --full`: Affiche des informations détaillées sur les volumes logiques.
-- `--noheadings`: Supprime les en-têtes de colonnes dans la sortie.
-- `-S, --select`: Permet de filtrer les volumes logiques selon des critères spécifiques.
+Voici quelques options courantes pour la commande `lvs` :
+
+- `-a` : Affiche tous les volumes logiques, y compris ceux qui sont inactifs.
+- `-o` : Permet de spécifier les colonnes à afficher.
+- `--units` : Définit les unités d'affichage (par exemple, k, M, G).
+- `-h` : Affiche l'aide sur l'utilisation de la commande.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `lvs` :
 
-1. **Afficher tous les volumes logiques** :
+1. **Afficher tous les volumes logiques :**
    ```bash
    lvs
    ```
 
-2. **Afficher les volumes logiques avec des unités spécifiques** :
-   ```bash
-   lvs -o +devices
-   ```
-
-3. **Afficher tous les volumes, y compris ceux inactifs** :
+2. **Afficher tous les volumes logiques, y compris ceux inactifs :**
    ```bash
    lvs -a
    ```
 
-4. **Afficher les volumes logiques sans en-têtes** :
+3. **Afficher les volumes logiques avec des unités spécifiques :**
    ```bash
-   lvs --noheadings
+   lvs --units g
    ```
 
-5. **Filtrer les volumes logiques selon un critère** :
+4. **Afficher des colonnes spécifiques (par exemple, nom et taille) :**
    ```bash
-   lvs -S 'lv_size > 10G'
+   lvs -o lv_name,lv_size
    ```
 
 ## Tips
-- Utilisez l'option `--units` pour rendre les tailles plus lisibles, surtout si vous travaillez avec de grands volumes.
-- Combinez `lvs` avec d'autres commandes LVM pour une gestion efficace des volumes logiques.
-- Pensez à utiliser des scripts pour automatiser la surveillance des volumes logiques, surtout dans des environnements de production.
+- Utilisez l'option `-h` pour obtenir de l'aide sur les différentes options disponibles avec la commande `lvs`.
+- Combinez `lvs` avec d'autres commandes LVM pour une gestion plus efficace de vos volumes logiques.
+- Pensez à vérifier régulièrement l'état de vos volumes logiques pour éviter des problèmes de stockage.

@@ -1,44 +1,44 @@
-# [Linux] Bash fold Penggunaan: Memformat teks menjadi kolom
+# [Sistem Operasi] C Shell (csh) fold penggunaan: Membatasi lebar teks
 
 ## Overview
-Perintah `fold` digunakan untuk memformat teks dengan membagi baris yang panjang menjadi beberapa baris yang lebih pendek. Ini sangat berguna untuk membuat teks lebih mudah dibaca di terminal atau untuk mempersiapkan teks sebelum mengirimnya ke printer.
+Perintah `fold` digunakan untuk membatasi lebar teks pada output, sehingga setiap baris tidak melebihi jumlah karakter tertentu. Ini sangat berguna untuk memformat teks agar lebih mudah dibaca, terutama saat menampilkan konten di terminal.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `fold`:
 
-```bash
+```
 fold [options] [arguments]
 ```
 
 ## Common Options
-- `-w, --width=N`: Menentukan lebar maksimum setiap baris yang dihasilkan. Nilai N adalah jumlah karakter.
-- `-s, --break=after`: Memecah baris setelah kata, bukan di tengah kata.
-- `-b, --bytes`: Menghitung lebar dalam byte, bukan karakter.
+- `-w <width>`: Menentukan lebar maksimum karakter per baris. Jika tidak ditentukan, lebar default adalah 80 karakter.
+- `-s`: Memotong baris pada batas kata terdekat, bukan di tengah kata.
+- `-b`: Menghitung lebar dalam byte, bukan karakter.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `fold`:
 
-1. Memformat file teks dengan lebar 50 karakter:
-   ```bash
+1. Membatasi lebar teks menjadi 50 karakter:
+   ```csh
    fold -w 50 file.txt
    ```
 
-2. Menggunakan `fold` untuk menampilkan teks dari input standar dengan lebar 30 karakter:
-   ```bash
-   echo "Ini adalah contoh teks yang sangat panjang dan perlu dipotong." | fold -w 30
+2. Menggunakan opsi `-s` untuk memotong pada batas kata:
+   ```csh
+   fold -s -w 30 file.txt
    ```
 
-3. Memecah baris setelah kata, dengan lebar maksimum 40 karakter:
-   ```bash
-   fold -s -w 40 file.txt
+3. Menghitung lebar dalam byte:
+   ```csh
+   fold -b -w 40 file.txt
    ```
 
-4. Menghitung lebar dalam byte dan memformat file:
-   ```bash
-   fold -b -w 50 file.txt
+4. Menggunakan `fold` pada output dari perintah lain:
+   ```csh
+   echo "Ini adalah contoh teks yang sangat panjang dan perlu dibatasi lebar barisnya." | fold -w 20
    ```
 
 ## Tips
-- Selalu tentukan lebar yang sesuai dengan tampilan terminal Anda agar teks tidak terpotong secara tidak sengaja.
-- Gunakan opsi `-s` untuk menjaga agar kata-kata tidak terputus, sehingga teks tetap terbaca dengan baik.
-- Cobalah menggabungkan `fold` dengan perintah lain seperti `cat` atau `less` untuk meningkatkan pengalaman membaca teks di terminal.
+- Selalu gunakan opsi `-s` jika Anda ingin memastikan bahwa kata tidak terputus di tengah saat membatasi lebar.
+- Periksa lebar terminal Anda untuk menentukan lebar maksimum yang sesuai saat menggunakan `fold`.
+- Cobalah menggabungkan `fold` dengan perintah lain menggunakan pipe untuk memformat output secara langsung.

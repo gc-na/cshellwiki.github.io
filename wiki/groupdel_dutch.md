@@ -1,44 +1,41 @@
-# [Linux] Bash groupdel gebruik: Verwijder een gebruikersgroep
+# [Linux] C Shell (csh) groupdel gebruik: Verwijder een groep
 
 ## Overzicht
-De `groupdel` opdracht in Bash wordt gebruikt om een bestaande gebruikersgroep uit het systeem te verwijderen. Dit kan nuttig zijn wanneer een groep niet langer nodig is of wanneer je de systeemstructuur wilt vereenvoudigen.
+De `groupdel` opdracht wordt gebruikt om een bestaande groep in het systeem te verwijderen. Dit kan nuttig zijn wanneer een groep niet langer nodig is of wanneer je de systeemstructuur wilt vereenvoudigen.
 
 ## Gebruik
 De basis syntaxis van de `groupdel` opdracht is als volgt:
 
-```bash
+```csh
 groupdel [opties] [groepnaam]
 ```
 
 ## Veelvoorkomende Opties
-- `-f`, `--force`: Dwingt de verwijdering van de groep, zelfs als deze momenteel in gebruik is.
-- `-h`, `--help`: Toont een helpbericht met informatie over het gebruik van de opdracht.
-- `-V`, `--version`: Toont de versie-informatie van de `groupdel` opdracht.
+- `-f`: Forceert het verwijderen van de groep, zelfs als er nog gebruikers aan zijn gekoppeld.
+- `-h`: Toont een helpbericht met informatie over het gebruik van de opdracht.
 
 ## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van `groupdel`:
+Hier zijn enkele praktische voorbeelden van het gebruik van de `groupdel` opdracht:
 
-1. **Verwijder een groep zonder opties**:
-   ```bash
-   groupdel mijnGroep
+1. Verwijder een groep genaamd `developers`:
+
+   ```csh
+   groupdel developers
    ```
 
-2. **Verwijder een groep met de force optie**:
-   ```bash
-   groupdel -f mijnGroep
+2. Forceer het verwijderen van een groep genaamd `testers`, ongeacht de gekoppelde gebruikers:
+
+   ```csh
+   groupdel -f testers
    ```
 
-3. **Toon helpinformatie**:
-   ```bash
-   groupdel --help
-   ```
+3. Toon de helpinformatie voor `groupdel`:
 
-4. **Toon versie-informatie**:
-   ```bash
-   groupdel --version
+   ```csh
+   groupdel -h
    ```
 
 ## Tips
-- Zorg ervoor dat je de juiste groep verwijdert, aangezien deze actie niet ongedaan kan worden gemaakt.
-- Controleer of er geen gebruikers zijn toegewezen aan de groep voordat je deze verwijdert om problemen te voorkomen.
-- Gebruik de `-f` optie met voorzichtigheid, omdat dit kan leiden tot onbedoelde gevolgen als de groep nog in gebruik is.
+- Zorg ervoor dat je geen actieve gebruikers in de groep hebt voordat je deze verwijdert, om problemen te voorkomen.
+- Controleer altijd de groep die je wilt verwijderen met de `getent group` opdracht om te bevestigen dat deze bestaat.
+- Gebruik de `-f` optie met voorzichtigheid, aangezien dit kan leiden tot onbedoeld verlies van gebruikersinstellingen.

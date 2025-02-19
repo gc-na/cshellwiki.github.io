@@ -1,12 +1,12 @@
-# [Linux] Bash 7z gebruik: Bestanden en mappen comprimeren en decomprimeren
+# [Nederlandse] C Shell (csh) 7z Gebruik: Bestandcompressie en -decompressie
 
 ## Overzicht
-De `7z`-opdracht is een krachtige tool voor het comprimeren en decomprimeren van bestanden en mappen. Het maakt gebruik van het 7z-bestandsformaat, dat bekend staat om zijn hoge compressieverhouding en ondersteuning voor verschillende compressiemethoden.
+De 7z-opdracht is een krachtige tool voor het comprimeren en decomprimeren van bestanden en mappen. Het ondersteunt verschillende archiefformaten en biedt hoge compressieverhoudingen, waardoor het een populaire keuze is voor het beheren van bestanden.
 
 ## Gebruik
-De basis syntaxis van de `7z`-opdracht is als volgt:
+De basis syntaxis van de 7z-opdracht is als volgt:
 
-```bash
+```
 7z [opties] [argumenten]
 ```
 
@@ -18,43 +18,44 @@ De basis syntaxis van de `7z`-opdracht is als volgt:
 - `t`: Test de integriteit van een archief.
 
 ## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van de 7z-opdracht:
 
-1. **Een archief maken:**
-   Om een archief te maken met de naam `mijnarchief.7z` en de bestanden `bestand1.txt` en `bestand2.txt` toe te voegen, gebruik je:
+### Archiveren van bestanden
+Om bestanden te comprimeren in een archief genaamd `mijnarchief.7z`, gebruik je:
 
-   ```bash
-   7z a mijnarchief.7z bestand1.txt bestand2.txt
-   ```
+```
+7z a mijnarchief.7z bestand1.txt bestand2.txt
+```
 
-2. **Bestanden extraheren:**
-   Om bestanden uit een archief genaamd `mijnarchief.7z` te extraheren, gebruik je:
+### Decompressie van een archief
+Om bestanden uit `mijnarchief.7z` te extraheren, gebruik je:
 
-   ```bash
-   7z x mijnarchief.7z
-   ```
+```
+7z x mijnarchief.7z
+```
 
-3. **Inhoud van een archief weergeven:**
-   Om de inhoud van `mijnarchief.7z` te bekijken, gebruik je:
+### Lijst van bestanden in een archief
+Om de inhoud van `mijnarchief.7z` te bekijken, gebruik je:
 
-   ```bash
-   7z l mijnarchief.7z
-   ```
+```
+7z l mijnarchief.7z
+```
 
-4. **Bestanden verwijderen uit een archief:**
-   Om `bestand1.txt` te verwijderen uit `mijnarchief.7z`, gebruik je:
+### Verwijderen van bestanden uit een archief
+Om `bestand1.txt` uit `mijnarchief.7z` te verwijderen, gebruik je:
 
-   ```bash
-   7z d mijnarchief.7z bestand1.txt
-   ```
+```
+7z d mijnarchief.7z bestand1.txt
+```
 
-5. **Integriteit van een archief testen:**
-   Om de integriteit van `mijnarchief.7z` te testen, gebruik je:
+### Testen van een archief
+Om de integriteit van `mijnarchief.7z` te testen, gebruik je:
 
-   ```bash
-   7z t mijnarchief.7z
-   ```
+```
+7z t mijnarchief.7z
+```
 
 ## Tips
-- Zorg ervoor dat je de juiste opties gebruikt om onbedoeld gegevensverlies te voorkomen, vooral bij het verwijderen van bestanden uit een archief.
-- Gebruik de `-p` optie om een wachtwoord in te stellen voor extra beveiliging van je archieven.
+- Zorg ervoor dat je de juiste opties gebruikt om ongewenste gegevensverlies te voorkomen.
+- Gebruik de `-p` optie om een wachtwoord toe te voegen aan je archief voor extra beveiliging.
 - Maak regelmatig back-ups van belangrijke archieven om gegevensverlies te voorkomen.

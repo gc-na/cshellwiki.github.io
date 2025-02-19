@@ -1,45 +1,40 @@
-# [Linux] Bash localedef gebruik: Maak locale-definities aan
+# [Linux] C Shell (csh) localedef gebruik: Locale-definitie genereren
 
 ## Overzicht
-De `localedef`-opdracht wordt gebruikt om locale-definities te creëren en te compileren. Dit stelt gebruikers in staat om de taal- en regio-instellingen van hun systeem aan te passen, wat van invloed is op de weergave van tekst, datums, getallen en andere lokale instellingen.
+De `localedef` opdracht wordt gebruikt om locale-definities te genereren, die informatie bevatten over de taal- en landinstellingen van een systeem. Dit is nuttig voor het instellen van regionale instellingen zoals datumnotaties, getalnotaties en sorteerregels.
 
 ## Gebruik
-De basis syntaxis van de `localedef`-opdracht is als volgt:
+De basis syntaxis van de `localedef` opdracht is als volgt:
 
-```bash
+```csh
 localedef [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-i, --inputfile`: Specificeert het invoerbestand dat de locale-definitie bevat.
-- `-c, --no-compile`: Voorkomt dat de locale wordt gecompileerd.
-- `-f, --charmap`: Geeft de naam van de karakterset op die moet worden gebruikt.
-- `-A, --alias`: Specificeert een aliasbestand voor locale-definities.
+- `-i, --inputfile`: Specificeert het invoerbestand voor de locale-definitie.
+- `-c, --no-archive`: Voorkomt dat de gegenereerde locale in de archiefbestanden wordt opgeslagen.
+- `-f, --charmap`: Geeft het karaktermapbestand aan dat gebruikt moet worden.
+- `-A, --alias`: Specificeert een alias voor de locale.
 
 ## Veelvoorkomende Voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van `localedef`:
 
-1. **Creëer een nieuwe locale voor Nederlands (Nederland)**:
-    ```bash
-    localedef -i nl_NL -f UTF-8 nl_NL.UTF-8
-    ```
+1. **Een nieuwe locale genereren**:
+   ```csh
+   localedef -i nl_NL -f UTF-8 nl_NL.UTF-8
+   ```
 
-2. **Gebruik een bestaand locale-bestand zonder compilatie**:
-    ```bash
-    localedef -i en_US -c
-    ```
+2. **Een locale genereren zonder deze op te slaan in het archief**:
+   ```csh
+   localedef -c -i fr_FR -f ISO-8859-1 fr_FR.ISO-8859-1
+   ```
 
-3. **Specificeer een karakterset voor een locale**:
-    ```bash
-    localedef -i fr_FR -f ISO-8859-1 fr_FR.ISO8859-1
-    ```
-
-4. **Maak een locale met een alias**:
-    ```bash
-    localedef -A /usr/share/i18n/locales/en_US -i en_US -f UTF-8 en_US.UTF-8
-    ```
+3. **Een locale genereren met een specifieke karaktermap**:
+   ```csh
+   localedef -i de_DE -f UTF-8 -A /usr/share/i18n/locales/de_DE de_DE.UTF-8
+   ```
 
 ## Tips
-- Zorg ervoor dat je de juiste invoerbestanden en karaktersets gebruikt om compatibiliteitsproblemen te voorkomen.
-- Controleer altijd of de locale correct is aangemaakt door de `locale`-opdracht uit te voeren na het gebruik van `localedef`.
-- Gebruik de `-c` optie om te testen zonder de locale daadwerkelijk te compileren, wat nuttig kan zijn voor foutopsporing.
+- Zorg ervoor dat je de juiste invoer- en karaktermapbestanden gebruikt om fouten te voorkomen.
+- Controleer altijd of de locale correct is gegenereerd door de `locale` opdracht uit te voeren na het gebruik van `localedef`.
+- Gebruik de `-c` optie als je niet wilt dat de locale in de archieven wordt opgeslagen, vooral als je deze alleen tijdelijk nodig hebt.

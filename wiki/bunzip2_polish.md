@@ -1,46 +1,46 @@
-# [Linux] Bash bunzip2 użycie: Rozpakowywanie plików skompresowanych w formacie bzip2
+# [Linux] C Shell (csh) bunzip2 użycie: Rozpakowywanie plików skompresowanych
 
 ## Overview
-Polecenie `bunzip2` służy do dekompresji plików skompresowanych w formacie bzip2. Jest to narzędzie, które pozwala na szybkie i efektywne rozpakowywanie plików, co jest szczególnie przydatne w pracy z dużymi zbiorami danych.
+Polecenie `bunzip2` służy do dekompresji plików skompresowanych przy użyciu algorytmu bzip2. Umożliwia ono przywrócenie oryginalnych danych z plików z rozszerzeniem `.bz2`.
 
 ## Usage
 Podstawowa składnia polecenia `bunzip2` jest następująca:
 
-```bash
+```csh
 bunzip2 [opcje] [argumenty]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji dla `bunzip2`:
-
-- `-k` : Zachowuje oryginalny plik skompresowany po dekompresji.
-- `-f` : Wymusza nadpisanie istniejących plików bez pytania.
-- `-v` : Wyświetla szczegółowe informacje o procesie dekompresji.
+- `-k`: Zachowuje oryginalny plik skompresowany po dekompresji.
+- `-f`: Wymusza nadpisanie istniejących plików bez pytania.
+- `-v`: Wyświetla szczegółowe informacje o procesie dekompresji.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia `bunzip2`:
+- Aby rozpakować plik `plik.bz2`:
 
-1. Rozpakowanie pliku `example.bz2`:
-   ```bash
-   bunzip2 example.bz2
-   ```
+```csh
+bunzip2 plik.bz2
+```
 
-2. Rozpakowanie pliku `example.bz2`, zachowując oryginalny plik:
-   ```bash
-   bunzip2 -k example.bz2
-   ```
+- Aby rozpakować plik `plik.bz2` i zachować oryginalny plik:
 
-3. Rozpakowanie pliku `example.bz2` i wymuszenie nadpisania istniejącego pliku:
-   ```bash
-   bunzip2 -f example.bz2
-   ```
+```csh
+bunzip2 -k plik.bz2
+```
 
-4. Rozpakowanie wszystkich plików `.bz2` w bieżącym katalogu:
-   ```bash
-   bunzip2 *.bz2
-   ```
+- Aby wymusić nadpisanie istniejącego pliku podczas dekompresji:
+
+```csh
+bunzip2 -f plik.bz2
+```
+
+- Aby uzyskać szczegółowe informacje podczas dekompresji:
+
+```csh
+bunzip2 -v plik.bz2
+```
 
 ## Tips
-- Zawsze sprawdzaj, czy masz kopię zapasową oryginalnych plików, zwłaszcza gdy używasz opcji `-f`, aby uniknąć przypadkowego utracenia danych.
-- Używaj opcji `-k`, jeśli chcesz zachować skompresowane pliki na wypadek, gdybyś potrzebował ich ponownie.
-- Regularnie aktualizuj swoje narzędzia do dekompresji, aby korzystać z najnowszych funkcji i poprawek bezpieczeństwa.
+- Zawsze sprawdzaj, czy masz kopię zapasową ważnych plików przed użyciem opcji `-f`, aby uniknąć przypadkowego nadpisania.
+- Używaj opcji `-k`, jeśli chcesz zachować oryginalny plik skompresowany na wypadek, gdyby dekompresja nie powiodła się.
+- Jeśli często pracujesz z plikami `.bz2`, rozważ dodanie aliasu do swojego pliku konfiguracyjnego, aby przyspieszyć proces dekompresji.

@@ -1,69 +1,51 @@
-# [Linux] Bash getent Uso: Retrieve entries from administrative databases
+# [Linux] C Shell (csh) getent用法: Retrieve entries from administrative databases
 
 ## Overview
-The `getent` command in Bash is used to retrieve entries from various administrative databases, such as the passwd, group, and hosts databases. It acts as a convenient way to access system information that is usually stored in files like `/etc/passwd` or `/etc/hosts`, and it can also query network services.
+The `getent` command is used to retrieve entries from various administrative databases, such as user accounts, group information, and hostnames. It acts as a bridge to access the entries defined in the system's Name Service Switch configuration.
 
 ## Usage
 The basic syntax of the `getent` command is as follows:
 
-```bash
-getent [options] [database] [key]
+```csh
+getent [options] [arguments]
 ```
 
 ## Common Options
-- `database`: Specifies which database to query (e.g., `passwd`, `group`, `hosts`).
-- `key`: The specific entry to look up in the chosen database.
-- `-h`: Suppresses the output of the hostname in the response.
+- `passwd`: Retrieve user account information.
+- `group`: Retrieve group information.
+- `hosts`: Retrieve hostname and IP address mappings.
+- `services`: Retrieve service names and port numbers.
+- `networks`: Retrieve network names and addresses.
 
 ## Common Examples
+Here are some practical examples of how to use the `getent` command:
 
-### Retrieve User Information
-To get information about a specific user, you can use the `passwd` database:
+1. **Retrieve user account information:**
+   ```csh
+   getent passwd username
+   ```
 
-```bash
-getent passwd username
-```
+2. **Retrieve group information:**
+   ```csh
+   getent group groupname
+   ```
 
-### List All Users
-To list all users in the system, simply query the `passwd` database without a key:
+3. **Retrieve hostname and IP address mappings:**
+   ```csh
+   getent hosts hostname
+   ```
 
-```bash
-getent passwd
-```
+4. **Retrieve service names and port numbers:**
+   ```csh
+   getent services servicename
+   ```
 
-### Retrieve Group Information
-To get information about a specific group, use the `group` database:
-
-```bash
-getent group groupname
-```
-
-### List All Groups
-To list all groups on the system, query the `group` database:
-
-```bash
-getent group
-```
-
-### Retrieve Host Information
-To get information about a specific host, you can query the `hosts` database:
-
-```bash
-getent hosts hostname
-```
-
-### List All Hosts
-To list all entries in the hosts database, simply run:
-
-```bash
-getent hosts
-```
+5. **Retrieve network names and addresses:**
+   ```csh
+   getent networks networkname
+   ```
 
 ## Tips
-- Use `getent` instead of directly reading files like `/etc/passwd` or `/etc/hosts` for a more consistent and reliable output, especially in environments using networked services.
-- Combine `getent` with other commands like `grep` to filter results. For example, to find all users whose names start with 'a':
-
-```bash
-getent passwd | grep '^a'
-```
-- Remember that `getent` can access both local and remote databases, making it useful in networked environments.
+- Use `getent passwd` without specifying a username to list all user accounts.
+- Combine `getent` with other commands like `grep` for more targeted searches, e.g., `getent passwd | grep username`.
+- Familiarize yourself with the `/etc/nsswitch.conf` file to understand how `getent` retrieves data from different sources.

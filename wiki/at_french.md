@@ -1,51 +1,49 @@
-# [Linux] Bash à at : Planifier des tâches à exécuter
+# [Linux] C Shell (csh) à at : [planifier des tâches]
 
 ## Overview
-La commande `at` permet de planifier l'exécution de commandes ou de scripts à un moment précis dans le futur. C'est un outil pratique pour automatiser des tâches sans avoir à rester connecté à la session.
+La commande `at` permet de planifier l'exécution de commandes ou de scripts à un moment précis dans le futur. Elle est utile pour automatiser des tâches sans avoir besoin de rester connecté à la session.
 
 ## Usage
 La syntaxe de base de la commande `at` est la suivante :
 
-```bash
+```
 at [options] [arguments]
 ```
 
 ## Common Options
-- `-f` : Spécifie un fichier contenant les commandes à exécuter.
+- `-f <file>` : Spécifie un fichier contenant les commandes à exécuter.
 - `-m` : Envoie un e-mail à l'utilisateur lorsque la tâche est terminée.
-- `-q` : Définit la file d'attente pour la tâche.
-- `-l` : Liste les tâches planifiées.
-- `-d` : Supprime une tâche planifiée.
+- `-q <queue>` : Définit la file d'attente à utiliser pour la tâche.
+- `-l` : Liste les tâches planifiées pour l'utilisateur courant.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `at` :
 
-1. **Planifier une commande pour exécution dans 5 minutes :**
+1. **Planifier une commande simple :**
+   Pour exécuter la commande `echo "Hello World"` à 15h00 aujourd'hui :
    ```bash
-   echo "echo 'Hello, World!'" | at now + 5 minutes
+   echo "echo 'Hello World'" | at 15:00
    ```
 
-2. **Exécuter un script à une heure précise :**
+2. **Utiliser un fichier de commandes :**
+   Si vous avez un fichier `script.sh` que vous souhaitez exécuter demain à 9h00 :
    ```bash
-   at 14:00 < /path/to/script.sh
+   at -f script.sh 09:00 tomorrow
    ```
 
-3. **Planifier une tâche pour demain à 10h :**
+3. **Envoyer un e-mail après l'exécution :**
+   Pour exécuter une commande et recevoir un e-mail une fois terminée :
    ```bash
-   echo "backup.sh" | at 10:00 tomorrow
+   echo "backup.sh" | at -m 02:00
    ```
 
 4. **Lister les tâches planifiées :**
+   Pour voir toutes les tâches que vous avez planifiées :
    ```bash
    at -l
    ```
 
-5. **Supprimer une tâche planifiée :**
-   ```bash
-   at -d 1
-   ```
-
 ## Tips
-- Assurez-vous que le service `atd` est en cours d'exécution pour que les tâches planifiées s'exécutent correctement.
-- Utilisez l'option `-m` pour recevoir une notification par e-mail une fois la tâche terminée.
-- Pour des tâches récurrentes, envisagez d'utiliser `cron`, qui est plus adapté pour les répétitions régulières.
+- Assurez-vous que le service `atd` est en cours d'exécution sur votre système pour que les tâches planifiées s'exécutent.
+- Utilisez des horaires clairs et précis pour éviter toute confusion sur le moment où les tâches doivent s'exécuter.
+- Pensez à vérifier régulièrement vos tâches planifiées avec `at -l` pour éviter d'avoir des tâches obsolètes.

@@ -1,53 +1,51 @@
-# [Linux] Bash xargs użycie: przetwarzanie argumentów z wejścia
+# [Linux] C Shell (csh) xargs użycie: Przekazywanie argumentów do poleceń
 
-## Przegląd
-Polecenie `xargs` w systemie Linux służy do przetwarzania argumentów z wejścia standardowego i przekazywania ich jako argumenty do innego polecenia. Jest to przydatne, gdy chcemy wykonać polecenie na dużej liczbie plików lub danych, które są generowane przez inne polecenia.
+## Overview
+Polecenie `xargs` w powłoce C Shell (csh) służy do przekształcania standardowego wejścia (stdin) w argumenty dla innych poleceń. Umożliwia to efektywne przekazywanie dużych zestawów danych do poleceń, które normalnie nie mogą przyjąć ich w takiej formie.
 
-## Użycie
-Podstawowa składnia polecenia `xargs` wygląda następująco:
+## Usage
+Podstawowa składnia polecenia `xargs` jest następująca:
 
-```bash
+```csh
 xargs [opcje] [argumenty]
 ```
 
-## Częste opcje
-- `-n N`: Przekazuje maksymalnie N argumentów do polecenia.
-- `-d DELIM`: Używa określonego delimitera do oddzielania argumentów.
-- `-I {}`: Umożliwia zastąpienie `{}` w poleceniu argumentami z wejścia.
-- `-p`: Pyta użytkownika o potwierdzenie przed wykonaniem każdego polecenia.
-- `-0`: Odczytuje argumenty zakończone znakiem null, co jest przydatne w przypadku plików z białymi znakami.
+## Common Options
+Oto kilka powszechnie używanych opcji dla `xargs`:
 
-## Częste przykłady
+- `-n N`: Przekazuje maksymalnie N argumentów do każdego wywołania polecenia.
+- `-d DELIM`: Używa określonego znaku jako separatora argumentów (domyślnie jest to biały znak).
+- `-p`: Wyświetla polecenie przed jego wykonaniem, pytając o potwierdzenie.
+- `-0`: Oczekuje, że wejście będzie zakończone znakiem null (NULL), co jest przydatne przy pracy z plikami zawierającymi spacje.
 
-### Przykład 1: Usuwanie plików
-Aby usunąć wszystkie pliki o rozszerzeniu `.tmp` w bieżącym katalogu:
+## Common Examples
+Oto kilka praktycznych przykładów użycia `xargs`:
 
-```bash
-find . -name "*.tmp" | xargs rm
-```
+1. **Usuwanie plików**:
+   Aby usunąć pliki, które są wynikiem polecenia `find`, można użyć:
+   ```csh
+   find . -name "*.tmp" | xargs rm
+   ```
 
-### Przykład 2: Zliczanie linii w plikach
-Zliczanie linii we wszystkich plikach tekstowych w bieżącym katalogu:
+2. **Zliczanie linii w plikach**:
+   Aby policzyć linie w plikach tekstowych, można użyć:
+   ```csh
+   ls *.txt | xargs wc -l
+   ```
 
-```bash
-ls *.txt | xargs wc -l
-```
+3. **Kopiowanie plików**:
+   Można skopiować pliki do innego katalogu:
+   ```csh
+   find . -name "*.jpg" | xargs -I {} cp {} /path/to/destination/
+   ```
 
-### Przykład 3: Zmiana uprawnień
-Zmiana uprawnień do wszystkich plików w katalogu na 644:
+4. **Przekazywanie argumentów z separatorami**:
+   Jeśli pliki mają spacje w nazwach, użyj opcji `-0`:
+   ```csh
+   find . -name "*.jpg" -print0 | xargs -0 rm
+   ```
 
-```bash
-find . -type f | xargs chmod 644
-```
-
-### Przykład 4: Użycie z delimiterm
-Jeśli mamy pliki oddzielone przecinkami, możemy użyć:
-
-```bash
-echo "file1.txt,file2.txt,file3.txt" | xargs -d ',' rm
-```
-
-## Wskazówki
-- Używaj opcji `-n` do ograniczenia liczby argumentów przekazywanych do polecenia, co może poprawić wydajność.
-- Zawsze testuj polecenia `xargs` z opcją `-p`, aby upewnić się, że wykonują one zamierzony efekt, zwłaszcza przy operacjach destrukcyjnych.
-- W przypadku plików z białymi znakami lub specjalnymi znakami używaj opcji `-0` w połączeniu z `find` z opcją `-print0`, aby uniknąć problemów z interpretacją nazw plików.
+## Tips
+- Używaj opcji `-n` dla lepszej kontroli nad liczbą argumentów przekazywanych do polecenia.
+- Zawsze testuj polecenia z `-p`, aby upewnić się, że wykonasz właściwe operacje.
+- Kiedy pracujesz z plikami zawierającymi spacje, pamiętaj o używaniu opcji `-0` oraz `-print0` w poleceniu `find`, aby uniknąć problemów z interpretacją nazw plików.

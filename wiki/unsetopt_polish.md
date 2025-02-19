@@ -1,47 +1,45 @@
-# [Linux] Bash unsetopt użycie: Wyłącza opcje powłoki
+# [Unix] C Shell (csh) unsetopt: [dezaktywacja opcji powłoki]
 
 ## Overview
-Polecenie `unsetopt` w Bash służy do wyłączania różnych opcji powłoki, które mogą wpływać na sposób działania powłoki i jej zachowanie. Dzięki temu użytkownicy mogą dostosować środowisko powłoki do swoich potrzeb.
+Polecenie `unsetopt` w powłoce C Shell (csh) służy do dezaktywacji określonych opcji powłoki, które mogą wpływać na zachowanie powłoki i jej funkcji. Umożliwia to użytkownikom dostosowanie środowiska powłoki do ich potrzeb.
 
 ## Usage
 Podstawowa składnia polecenia `unsetopt` jest następująca:
 
-```bash
+```csh
 unsetopt [opcje] [argumenty]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji dla `unsetopt`:
-
-- `allexport` - wyłącza automatyczne eksportowanie zmiennych do środowiska.
-- `braceexpand` - wyłącza rozwijanie nawiasów klamrowych.
-- `emacs` - wyłącza tryb edytora Emacs w powłoce.
-- `noclobber` - pozwala na nadpisywanie plików, gdy jest wyłączony.
+- `all`: Dezaktywuje wszystkie opcje powłoki.
+- `noclobber`: Zapobiega nadpisywaniu istniejących plików podczas redirekcji.
+- `noexec`: Zapobiega wykonywaniu skryptów, co może być przydatne w celu debugowania.
+- `verbose`: Wyłącza tryb szczegółowego wyjścia, który może być używany do debugowania.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia `unsetopt`:
+Przykłady użycia polecenia `unsetopt`:
 
-1. Wyłączenie automatycznego eksportowania zmiennych:
-   ```bash
-   unsetopt allexport
-   ```
-
-2. Wyłączenie rozwijania nawiasów klamrowych:
-   ```bash
-   unsetopt braceexpand
-   ```
-
-3. Wyłączenie trybu edytora Emacs:
-   ```bash
-   unsetopt emacs
-   ```
-
-4. Wyłączenie opcji `noclobber`, aby móc nadpisywać pliki:
-   ```bash
+1. Dezaktywacja opcji `noclobber`:
+   ```csh
    unsetopt noclobber
    ```
 
+2. Dezaktywacja opcji `noexec`:
+   ```csh
+   unsetopt noexec
+   ```
+
+3. Dezaktywacja wszystkich opcji:
+   ```csh
+   unsetopt all
+   ```
+
+4. Dezaktywacja opcji `verbose`:
+   ```csh
+   unsetopt verbose
+   ```
+
 ## Tips
-- Używaj `setopt` przed `unsetopt`, aby sprawdzić, które opcje są aktualnie włączone.
-- Zawsze sprawdzaj dokumentację dla konkretnej opcji, aby zrozumieć jej wpływ na zachowanie powłoki.
-- Rozważ tworzenie skryptów, które automatycznie ustawią preferowane opcje powłoki przy uruchamianiu.
+- Używaj `unsetopt` z rozwagą, aby nie dezaktywować opcji, które mogą być istotne dla działania Twoich skryptów.
+- Sprawdź aktualnie aktywne opcje za pomocą polecenia `set` przed użyciem `unsetopt`.
+- Rozważ tworzenie skryptów powłoki, które automatycznie ustawią preferowane opcje przy każdym uruchomieniu powłoki.

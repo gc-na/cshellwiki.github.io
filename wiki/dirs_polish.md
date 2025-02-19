@@ -1,48 +1,44 @@
-# [Linux] Bash dirs użycie: Zarządzanie katalogami w historii
+# [Linux] C Shell (csh) dirs użycie: Wyświetlanie katalogów w stosie
 
 ## Overview
-Polecenie `dirs` w Bashu służy do wyświetlania listy katalogów w historii bieżącej powłoki. Umożliwia użytkownikom przeglądanie ścieżek katalogów, które były wcześniej używane w sesji terminalowej.
+Polecenie `dirs` w C Shell (csh) służy do wyświetlania katalogów znajdujących się w stosie. Umożliwia użytkownikowi przeglądanie aktualnych lokalizacji katalogów, które zostały zapisane w pamięci.
 
 ## Usage
 Podstawowa składnia polecenia `dirs` jest następująca:
 
-```bash
-dirs [options] [arguments]
+```csh
+dirs [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-c`: Czyści listę katalogów.
-- `-l`: Wyświetla pełne ścieżki katalogów zamiast ich skróconych wersji.
-- `-p`: Wyświetla katalogi w formacie, który jest bardziej przyjazny dla skryptów.
+- `-l`: Wyświetla katalogi w formacie długim, pokazując pełne ścieżki.
+- `-p`: Wyświetla katalogi w formacie prostym, bez dodatkowych informacji.
 
 ## Common Examples
-1. **Wyświetlenie bieżącej listy katalogów:**
-   ```bash
+Oto kilka praktycznych przykładów użycia polecenia `dirs`:
+
+1. Wyświetlenie aktualnego stosu katalogów:
+   ```csh
    dirs
    ```
 
-2. **Wyświetlenie pełnych ścieżek katalogów:**
-   ```bash
+2. Wyświetlenie katalogów w formacie długim:
+   ```csh
    dirs -l
    ```
 
-3. **Dodanie nowego katalogu do listy:**
-   ```bash
-   cd /path/to/new/directory
-   dirs
-   ```
-
-4. **Czyszczenie listy katalogów:**
-   ```bash
-   dirs -c
-   ```
-
-5. **Wyświetlenie katalogów w formacie przyjaznym dla skryptów:**
-   ```bash
+3. Wyświetlenie katalogów w formacie prostym:
+   ```csh
    dirs -p
    ```
 
+4. Użycie `dirs` po zmianie katalogu:
+   ```csh
+   cd /usr/local
+   dirs
+   ```
+
 ## Tips
-- Używaj `cd` w połączeniu z `dirs`, aby szybko nawigować między katalogami, które były wcześniej używane.
-- Regularnie sprawdzaj listę katalogów, aby mieć lepszą orientację w swojej historii nawigacji.
-- Pamiętaj, że `dirs` działa tylko w powłoce Bash i nie jest dostępne w innych powłokach, takich jak sh czy zsh.
+- Używaj `dirs` po każdej zmianie katalogu, aby szybko sprawdzić, gdzie się znajdujesz w hierarchii katalogów.
+- Zapisuj często używane katalogi w stosie, aby łatwo do nich wracać.
+- Pamiętaj, że `dirs` działa najlepiej w połączeniu z innymi poleceniami, takimi jak `pushd` i `popd`, które manipulują stosem katalogów.

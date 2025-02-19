@@ -1,45 +1,50 @@
-# [Linux] Bash builtin comando `builtin`: Ejecutar comandos internos
+# [Linux] C Shell (csh) builtin `echo`: Muestra texto en la salida estándar
 
 ## Overview
-El comando `builtin` en Bash se utiliza para ejecutar comandos internos de la shell, permitiendo que se omitan los comandos externos que podrían tener el mismo nombre. Esto es útil para asegurarse de que se está utilizando la versión interna de un comando, especialmente en situaciones donde hay conflictos de nombres.
+El comando `echo` en C Shell (csh) se utiliza para mostrar texto o variables en la salida estándar, que generalmente es la pantalla del terminal. Es una herramienta fundamental para la visualización de mensajes y la depuración de scripts.
 
 ## Usage
-La sintaxis básica del comando `builtin` es la siguiente:
+La sintaxis básica del comando `echo` es la siguiente:
 
-```bash
-builtin [opciones] [argumentos]
+```csh
+echo [opciones] [texto]
 ```
 
 ## Common Options
-A continuación se presentan algunas opciones comunes que se pueden utilizar con el comando `builtin`:
-
-- `-p`: Muestra la versión interna del comando sin ejecutar.
-- `-f`: Evita que se busquen funciones con el mismo nombre que el comando.
+- `-n`: No imprime una nueva línea al final del texto.
+- `-e`: Activa la interpretación de secuencias de escape (como `\n` para nueva línea).
+- `-E`: Desactiva la interpretación de secuencias de escape.
 
 ## Common Examples
+Aquí hay algunos ejemplos prácticos del uso del comando `echo`:
 
-### Ejecutar un comando interno
-Para asegurarte de que estás ejecutando la versión interna de `echo`, puedes usar:
+1. **Mostrar un mensaje simple:**
+   ```csh
+   echo "Hola, mundo!"
+   ```
 
-```bash
-builtin echo "Este es un mensaje desde el comando interno."
-```
+2. **Mostrar el valor de una variable:**
+   ```csh
+   set nombre = "Juan"
+   echo "Hola, $nombre!"
+   ```
 
-### Verificar la versión interna de un comando
-Si deseas verificar qué versión interna de un comando se utilizará, puedes usar la opción `-p`:
+3. **Mostrar texto sin nueva línea:**
+   ```csh
+   echo -n "Este texto no tiene nueva línea al final."
+   ```
 
-```bash
-builtin -p echo
-```
+4. **Usar secuencias de escape:**
+   ```csh
+   echo -e "Línea 1\nLínea 2"
+   ```
 
-### Evitar funciones con el mismo nombre
-Si tienes una función llamada `cd` y quieres asegurarte de que se ejecute el comando interno `cd`, puedes usar:
-
-```bash
-builtin cd /ruta/deseada
-```
+5. **Desactivar la interpretación de secuencias de escape:**
+   ```csh
+   echo -E "Texto con \n sin interpretación."
+   ```
 
 ## Tips
-- Utiliza `builtin` cuando necesites asegurarte de que estás utilizando la versión interna de un comando, especialmente si has definido funciones con el mismo nombre.
-- Es útil para depurar problemas en scripts donde el comportamiento de un comando puede verse afectado por funciones personalizadas.
-- Recuerda que no todos los comandos tienen una versión interna; verifica la documentación si no estás seguro.
+- Utiliza `echo -n` cuando necesites que el texto se imprima en la misma línea que el siguiente comando.
+- Para depuración, imprimir el valor de variables puede ayudarte a entender el flujo de tu script.
+- Recuerda que el uso de comillas es importante; las comillas dobles permiten la expansión de variables, mientras que las comillas simples no.

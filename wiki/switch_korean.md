@@ -1,72 +1,79 @@
-# [리눅스] Bash switch 사용법: 명령어의 조건을 전환합니다.
+# [운영 체제] C Shell (csh) switch 사용법: 조건에 따라 명령 실행
 
 ## Overview
-`switch` 명령어는 주어진 조건에 따라 여러 가지 경로 중 하나를 선택하는 데 사용됩니다. 주로 스크립트 내에서 조건 분기를 처리할 때 유용합니다.
+`switch` 명령은 C Shell에서 조건에 따라 여러 경우를 처리할 수 있는 제어 구조입니다. 주어진 표현식의 값을 평가하여 해당하는 경우에 따라 명령을 실행할 수 있게 해줍니다.
 
 ## Usage
 기본 구문은 다음과 같습니다:
+
 ```
-switch [options] [arguments]
+switch (expression)
+    case pattern1:
+        commands1
+        breaksw
+    case pattern2:
+        commands2
+        breaksw
+    default:
+        default_commands
+end
 ```
 
 ## Common Options
-- `-c` : 특정 조건에 대한 경우를 지정합니다.
-- `-d` : 기본값을 설정합니다.
-- `-h` : 도움말을 표시합니다.
+- `case pattern:`: 주어진 패턴과 일치하는 경우에 실행할 명령을 정의합니다.
+- `breaksw`: 현재 `case` 블록을 종료하고 `switch` 블록을 빠져나갑니다.
+- `default:`: 모든 `case` 패턴과 일치하지 않을 때 실행할 기본 명령을 정의합니다.
 
 ## Common Examples
-다음은 `switch` 명령어의 몇 가지 실용적인 예입니다.
 
-### 예제 1: 기본적인 switch 사용
-```bash
-case $variable in
-    "value1")
-        echo "Value is 1"
-        ;;
-    "value2")
-        echo "Value is 2"
-        ;;
-    *)
-        echo "Default value"
-        ;;
-esac
+### 예제 1: 숫자에 따른 출력
+```csh
+set num = 2
+switch ($num)
+    case 1:
+        echo "숫자는 1입니다."
+        breaksw
+    case 2:
+        echo "숫자는 2입니다."
+        breaksw
+    case 3:
+        echo "숫자는 3입니다."
+        breaksw
+    default:
+        echo "숫자는 1, 2, 3이 아닙니다."
+end
 ```
 
-### 예제 2: 여러 조건 처리
-```bash
-case $day in
-    "Monday")
-        echo "Start of the week"
-        ;;
-    "Friday")
-        echo "End of the week"
-        ;;
-    *)
-        echo "Midweek"
-        ;;
-esac
+### 예제 2: 문자열 패턴 매칭
+```csh
+set fruit = "사과"
+switch ($fruit)
+    case "사과":
+        echo "과일은 사과입니다."
+        breaksw
+    case "바나나":
+        echo "과일은 바나나입니다."
+        breaksw
+    default:
+        echo "알 수 없는 과일입니다."
+end
 ```
 
-### 예제 3: 사용자 입력에 따른 분기
-```bash
-read -p "Enter a number (1-3): " number
-case $number in
-    1)
-        echo "You chose one."
-        ;;
-    2)
-        echo "You chose two."
-        ;;
-    3)
-        echo "You chose three."
-        ;;
-    *)
-        echo "Invalid choice."
-        ;;
-esac
+### 예제 3: 여러 패턴 처리
+```csh
+set color = "파랑"
+switch ($color)
+    case "빨강":
+    case "초록":
+    case "파랑":
+        echo "색상은 빨강, 초록 또는 파랑입니다."
+        breaksw
+    default:
+        echo "다른 색상입니다."
+end
 ```
 
 ## Tips
-- `switch` 명령어를 사용할 때는 항상 기본값을 설정하여 예기치 않은 입력에 대한 처리를 준비하세요.
-- 조건을 명확하게 작성하여 가독성을 높이고 유지보수를 쉽게 하세요.
-- 여러 조건을 처리할 때는 가능한 한 간결하게 작성하여 코드의 복잡성을 줄이세요.
+- `switch`는 표현식의 결과에 따라 여러 경우를 쉽게 처리할 수 있어 코드의 가독성을 높입니다.
+- 각 `case` 블록에서 `breaksw`를 사용하여 불필요한 추가 실행을 방지하세요.
+- `default` 블록을 사용하여 모든 경우에 대한 예외 처리를 추가하는 것이 좋습니다.

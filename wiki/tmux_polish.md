@@ -1,49 +1,47 @@
-# [Linux] Bash tmux użycie: zarządzanie sesjami terminalowymi
+# [Linux] C Shell (csh) tmux użycie: Zarządzanie sesjami terminala
 
-## Przegląd
-`tmux` to terminalowy multiplexer, który pozwala na tworzenie, zarządzanie i przełączanie się między wieloma sesjami terminalowymi w jednym oknie. Dzięki niemu można łatwo organizować pracę w terminalu, dzielić okna na panele oraz utrzymywać sesje aktywne nawet po rozłączeniu.
+## Overview
+tmux to terminal multiplexer, który pozwala na tworzenie, zarządzanie i przełączanie się między wieloma sesjami terminalowymi w jednym oknie. Umożliwia użytkownikom pracę w wielu powłokach jednocześnie, co zwiększa efektywność i organizację pracy.
 
-## Użycie
-Podstawowa składnia polecenia `tmux` jest następująca:
+## Usage
+Podstawowa składnia polecenia tmux jest następująca:
 
-```bash
+```
 tmux [opcje] [argumenty]
 ```
 
-## Częste opcje
-- `new`: Tworzy nową sesję.
+## Common Options
+- `new`: Tworzy nową sesję tmux.
 - `attach`: Dołącza do istniejącej sesji.
+- `detach`: Odłącza aktualną sesję.
 - `list-sessions`: Wyświetla listę aktywnych sesji.
-- `kill-session`: Zamyka określoną sesję.
-- `split-window`: Dzieli okno na dwa panele.
+- `kill-session`: Zamyka wskazaną sesję.
 
-## Przykłady
-1. **Tworzenie nowej sesji:**
-   ```bash
-   tmux new -s moja_sesja
-   ```
+## Common Examples
+- **Tworzenie nowej sesji:**
+  ```bash
+  tmux new -s moja_sesja
+  ```
+  
+- **Dołączanie do istniejącej sesji:**
+  ```bash
+  tmux attach -t moja_sesja
+  ```
 
-2. **Dołączanie do istniejącej sesji:**
-   ```bash
-   tmux attach -t moja_sesja
-   ```
+- **Odłączanie od sesji:**
+  Wciśnij `Ctrl + b`, a następnie `d`.
 
-3. **Wyświetlanie listy sesji:**
-   ```bash
-   tmux list-sessions
-   ```
+- **Wyświetlanie listy sesji:**
+  ```bash
+  tmux list-sessions
+  ```
 
-4. **Zamykanie sesji:**
-   ```bash
-   tmux kill-session -t moja_sesja
-   ```
+- **Zamykanie sesji:**
+  ```bash
+  tmux kill-session -t moja_sesja
+  ```
 
-5. **Dzielnie okna na panele:**
-   ```bash
-   tmux split-window -h
-   ```
-
-## Wskazówki
-- Używaj skrótów klawiszowych `Ctrl+b` jako prefiksu do wydawania poleceń `tmux`, co znacznie przyspiesza pracę.
-- Regularnie zapisuj sesje, aby uniknąć utraty danych w przypadku nagłego zamknięcia terminala.
-- Eksperymentuj z różnymi układami paneli, aby dostosować środowisko pracy do swoich potrzeb.
+## Tips
+- Używaj skrótów klawiszowych tmux, aby szybko przełączać się między oknami i panelami.
+- Zapisuj sesje, aby móc do nich wrócić później, co jest szczególnie przydatne w długoterminowych projektach.
+- Eksperymentuj z podziałem okien, aby efektywnie wykorzystać przestrzeń roboczą.

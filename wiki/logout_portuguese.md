@@ -1,48 +1,45 @@
-# [Linux] Bash logout uso: Sair da sessão do shell
+# [Linux] C Shell (csh) logout Uso: Finaliza a sessão do usuário
 
 ## Overview
-O comando `logout` é utilizado para encerrar uma sessão de shell em sistemas Unix e Linux. Ele é especialmente útil quando você está trabalhando em um terminal e deseja sair da sessão atual, seja ela uma sessão de login ou um subshell.
+O comando `logout` no C Shell (csh) é utilizado para encerrar a sessão atual do usuário. Quando executado, ele fecha o shell e retorna ao sistema operacional ou ao gerenciador de login.
 
 ## Usage
-A sintaxe básica do comando é a seguinte:
+A sintaxe básica do comando `logout` é a seguinte:
 
-```bash
-logout [options]
+```csh
+logout [opções] [argumentos]
 ```
 
 ## Common Options
 O comando `logout` não possui muitas opções, mas aqui estão algumas que podem ser relevantes:
 
-- `--help`: Exibe uma mensagem de ajuda com informações sobre o comando.
-- `--version`: Mostra a versão do comando `logout`.
+- **-f**: Força o logout sem solicitar confirmação.
+- **-n**: Não salva o histórico da sessão antes de sair.
 
 ## Common Examples
 
-### Exemplo 1: Sair da sessão atual
-Para encerrar a sessão do shell atual, você pode simplesmente digitar:
+### Exemplo 1: Logout simples
+Para sair da sessão atual do shell, você pode simplesmente digitar:
 
-```bash
+```csh
 logout
 ```
 
-### Exemplo 2: Sair de um subshell
-Se você estiver em um subshell (por exemplo, após usar o comando `bash`), você pode sair digitando:
+### Exemplo 2: Logout forçado
+Se você deseja forçar o logout sem qualquer confirmação, utilize a opção `-f`:
 
-```bash
-logout
+```csh
+logout -f
 ```
 
-### Exemplo 3: Usando logout em um script
-Você pode usar o comando `logout` em um script para encerrar a sessão após a execução de certas tarefas:
+### Exemplo 3: Logout sem salvar histórico
+Para sair da sessão sem salvar o histórico, use a opção `-n`:
 
-```bash
-#!/bin/bash
-echo "Executando tarefas..."
-# Comandos adicionais aqui
-logout
+```csh
+logout -n
 ```
 
 ## Tips
-- Sempre salve seu trabalho antes de usar o comando `logout`, pois ele encerrará a sessão imediatamente.
-- Se você estiver em um ambiente gráfico, considere usar a opção de sair do sistema através da interface, pois isso pode preservar seu trabalho em andamento.
-- O comando `logout` é mais comum em shells de login; em shells não-login, você pode usar `exit` para sair.
+- Sempre salve seu trabalho antes de usar o comando `logout`, pois ele encerrará sua sessão imediatamente.
+- Se você estiver em um ambiente compartilhado, verifique se não há processos em execução que possam ser afetados pelo logout.
+- Utilize o comando `exit` como uma alternativa ao `logout`, pois ambos podem ter um efeito semelhante em muitos casos.

@@ -1,96 +1,56 @@
-# [Linux] Bash case Verwendung: Mustervergleich in Shell-Skripten
+# [Linux] C Shell (csh) case Verwendung: Mustervergleich und bedingte Ausführung
 
 ## Übersicht
-Der `case` Befehl in Bash wird verwendet, um Mustervergleiche durchzuführen. Er ermöglicht es, verschiedene Bedingungen zu überprüfen und basierend auf dem Ergebnis unterschiedliche Aktionen auszuführen. Dies ist besonders nützlich in Shell-Skripten, um die Lesbarkeit und Struktur zu verbessern.
+Der Befehl `case` in der C Shell (csh) wird verwendet, um Mustervergleiche durchzuführen und verschiedene Befehle basierend auf dem Ergebnis des Vergleichs auszuführen. Dies ist besonders nützlich, um Entscheidungen in Skripten zu treffen.
 
 ## Verwendung
-Die grundlegende Syntax des `case` Befehls sieht folgendermaßen aus:
+Die grundlegende Syntax des `case`-Befehls sieht wie folgt aus:
 
-```bash
+```csh
 case [variable] in
-    [muster1])
-        [Befehle]
-        ;;
-    [muster2])
-        [Befehle]
-        ;;
-    *)
-        [Befehle für keinen Treffer]
-        ;;
+    [muster1]) [befehl1];;
+    [muster2]) [befehl2];;
+    ...
+    *) [standardbefehl];;
 esac
 ```
 
 ## Häufige Optionen
-- `*)`: Dies ist ein Platzhalter, der verwendet wird, wenn kein Muster übereinstimmt.
-- `;;`: Beendet den aktuellen Fall und signalisiert das Ende der Befehle für diesen Fall.
+- `*)`: Dies ist das Standardmuster, das ausgeführt wird, wenn keines der vorherigen Muster übereinstimmt.
 
 ## Häufige Beispiele
 
-### Beispiel 1: Einfache Fallunterscheidung
-```bash
-#!/bin/bash
-echo "Geben Sie eine Zahl zwischen 1 und 3 ein:"
-read zahl
-
-case $zahl in
-    1)
-        echo "Sie haben 1 eingegeben."
-        ;;
-    2)
-        echo "Sie haben 2 eingegeben."
-        ;;
-    3)
-        echo "Sie haben 3 eingegeben."
-        ;;
-    *)
-        echo "Ungültige Eingabe."
-        ;;
+### Beispiel 1: Einfache Musterübereinstimmung
+```csh
+set var = "apple"
+case $var in
+    apple) echo "Das ist ein Apfel";;
+    banana) echo "Das ist eine Banane";;
+    *) echo "Unbekannte Frucht";;
 esac
 ```
 
-### Beispiel 2: Überprüfung von Dateitypen
-```bash
-#!/bin/bash
-datei="beispiel.txt"
-
+### Beispiel 2: Verwendung von Platzhaltern
+```csh
+set datei = "bericht.txt"
 case $datei in
-    *.txt)
-        echo "Es handelt sich um eine Textdatei."
-        ;;
-    *.jpg|*.png)
-        echo "Es handelt sich um ein Bild."
-        ;;
-    *)
-        echo "Unbekannter Dateityp."
-        ;;
+    *.txt) echo "Dies ist eine Textdatei";;
+    *.jpg) echo "Dies ist ein Bild";;
+    *) echo "Unbekannte Dateityp";;
 esac
 ```
 
-### Beispiel 3: Benutzerinteraktion
-```bash
-#!/bin/bash
-echo "Wählen Sie eine Option: (a/b/c)"
-read option
-
-case $option in
-    a)
-        echo "Option A gewählt."
-        ;;
-    b)
-        echo "Option B gewählt."
-        ;;
-    c)
-        echo "Option C gewählt."
-        ;;
-    *)
-        echo "Ungültige Option."
-        ;;
+### Beispiel 3: Mehrere Muster
+```csh
+set tier = "Hund"
+case $tier in
+    Hund|Katze) echo "Das ist ein Haustier";;
+    Vogel) echo "Das ist ein Vogel";;
+    *) echo "Unbekanntes Tier";;
 esac
 ```
 
 ## Tipps
-- Verwenden Sie `*)` am Ende Ihrer `case`-Anweisung, um unerwartete Eingaben zu behandeln.
-- Achten Sie darauf, dass die Muster in der Reihenfolge angeordnet sind, in der sie geprüft werden sollen.
-- Nutzen Sie die Möglichkeit, mehrere Muster in einer Zeile zu kombinieren, um den Code kompakt zu halten (z.B. `*.jpg|*.png`).
-
-Mit diesen Informationen sind Sie gut gerüstet, um den `case` Befehl effektiv in Ihren Bash-Skripten zu verwenden!
+- Verwenden Sie Platzhalter wie `*` und `?`, um flexiblere Mustervergleiche zu ermöglichen.
+- Achten Sie darauf, dass die Muster in der Reihenfolge von spezifisch zu allgemein angeordnet sind, um die gewünschte Übereinstimmung zu gewährleisten.
+- Nutzen Sie das Standardmuster `*)`, um sicherzustellen, dass immer ein Befehl ausgeführt wird, auch wenn keine der vorherigen Bedingungen erfüllt ist.

@@ -1,48 +1,44 @@
-# [Linux] Bash strings Cách sử dụng: Trích xuất chuỗi từ tệp nhị phân
+# [Hệ điều hành] C Shell (csh) strings Cách sử dụng: Trích xuất chuỗi từ tệp nhị phân
 
-## Overview
-Lệnh `strings` trong Bash được sử dụng để trích xuất và hiển thị các chuỗi ký tự có thể đọc được từ các tệp nhị phân. Điều này rất hữu ích khi bạn muốn tìm hiểu nội dung của một tệp mà không cần phải mở nó bằng các công cụ phức tạp hơn.
+## Tổng quan
+Lệnh `strings` trong C Shell (csh) được sử dụng để trích xuất và hiển thị các chuỗi có thể đọc được từ các tệp nhị phân. Điều này rất hữu ích khi bạn muốn xem các thông tin có thể đọc được từ các tệp không phải văn bản, chẳng hạn như tệp thực thi hoặc tệp dữ liệu.
 
-## Usage
+## Cách sử dụng
 Cú pháp cơ bản của lệnh `strings` như sau:
 
-```bash
-strings [options] [arguments]
+```
+strings [tùy chọn] [đối số]
 ```
 
-## Common Options
+## Tùy chọn phổ biến
 - `-a`: Tìm kiếm chuỗi trong toàn bộ tệp, không chỉ trong các phần cụ thể.
-- `-n <number>`: Chỉ hiển thị các chuỗi có độ dài lớn hơn hoặc bằng số đã chỉ định.
-- `-t <type>`: Hiển thị vị trí của chuỗi trong tệp theo kiểu chỉ định (ví dụ: `d` cho decimal, `x` cho hexadecimal).
-- `-o`: Hiển thị vị trí của chuỗi trong tệp tính từ byte đầu tiên.
+- `-n <số>`: Chỉ định độ dài tối thiểu của chuỗi cần trích xuất.
+- `-o`: Hiển thị vị trí của chuỗi trong tệp.
 
-## Common Examples
+## Ví dụ phổ biến
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `strings`:
 
 1. Trích xuất tất cả các chuỗi từ một tệp nhị phân:
-   ```bash
+   ```csh
    strings myfile.bin
    ```
 
-2. Chỉ hiển thị các chuỗi có độ dài lớn hơn hoặc bằng 5 ký tự:
-   ```bash
+2. Trích xuất các chuỗi có độ dài tối thiểu là 5 ký tự:
+   ```csh
    strings -n 5 myfile.bin
    ```
 
-3. Hiển thị vị trí của các chuỗi trong tệp:
-   ```bash
-   strings -o myfile.bin
-   ```
-
-4. Tìm kiếm chuỗi trong toàn bộ tệp mà không giới hạn:
-   ```bash
+3. Tìm kiếm chuỗi trong toàn bộ tệp:
+   ```csh
    strings -a myfile.bin
    ```
 
-## Tips
-- Sử dụng tùy chọn `-n` để lọc các chuỗi ngắn không cần thiết, giúp bạn dễ dàng tìm thấy thông tin quan trọng hơn.
-- Kết hợp lệnh `strings` với `grep` để tìm kiếm các chuỗi cụ thể:
-  ```bash
-  strings myfile.bin | grep "keyword"
-  ```
-- Hãy cẩn thận khi làm việc với các tệp nhị phân lớn, vì việc trích xuất chuỗi có thể mất thời gian và tạo ra nhiều đầu ra.
+4. Hiển thị vị trí của các chuỗi trong tệp:
+   ```csh
+   strings -o myfile.bin
+   ```
+
+## Mẹo
+- Sử dụng tùy chọn `-n` để lọc các chuỗi ngắn không cần thiết, giúp bạn chỉ nhận được thông tin quan trọng.
+- Kết hợp lệnh `strings` với các lệnh khác như `grep` để tìm kiếm các chuỗi cụ thể trong đầu ra.
+- Kiểm tra các tệp nhị phân không quen thuộc để tìm hiểu thêm về chúng, điều này có thể hữu ích trong việc phân tích tệp hoặc gỡ lỗi.

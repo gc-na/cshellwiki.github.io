@@ -1,44 +1,44 @@
-# [Linux] Bash jobs uso: Gestionar trabajos en segundo plano
+# [Sistema Operativo] C Shell (csh) jobs Uso: Gestionar trabajos en segundo plano
 
 ## Overview
-El comando `jobs` en Bash se utiliza para mostrar la lista de trabajos que se están ejecutando en segundo plano en la sesión actual del terminal. Esto incluye trabajos que se han suspendido o que están en ejecución. Es una herramienta útil para gestionar y supervisar procesos que no están en primer plano.
+El comando `jobs` en C Shell (csh) se utiliza para mostrar una lista de los trabajos que se están ejecutando en segundo plano en la sesión actual del shell. Esto es útil para monitorear y gestionar tareas que no están en primer plano.
 
 ## Usage
-La sintaxis básica del comando `jobs` es la siguiente:
+La sintaxis básica del comando es la siguiente:
 
-```bash
-jobs [opciones]
+```
+jobs [options] [arguments]
 ```
 
 ## Common Options
-- `-l`: Muestra el número de proceso (PID) junto con la información del trabajo.
+- `-l`: Muestra el número de proceso (PID) junto con el estado del trabajo.
 - `-n`: Muestra solo los trabajos que han cambiado de estado desde la última vez que se ejecutó el comando.
-- `-p`: Muestra solo los identificadores de proceso de los trabajos.
+- `-p`: Muestra solo los números de proceso de los trabajos.
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso del comando `jobs`:
 
-1. **Mostrar trabajos en segundo plano:**
-   ```bash
+1. **Listar trabajos en segundo plano:**
+   ```csh
    jobs
    ```
 
-2. **Mostrar trabajos con PID:**
-   ```bash
+2. **Listar trabajos con PID:**
+   ```csh
    jobs -l
    ```
 
 3. **Mostrar trabajos que han cambiado de estado:**
-   ```bash
+   ```csh
    jobs -n
    ```
 
-4. **Mostrar solo los identificadores de proceso:**
-   ```bash
+4. **Mostrar solo los números de proceso:**
+   ```csh
    jobs -p
    ```
 
 ## Tips
-- Utiliza `bg` para reanudar un trabajo suspendido en segundo plano después de haberlo detenido con `Ctrl + Z`.
-- Usa `fg` para llevar un trabajo en segundo plano de vuelta al primer plano.
-- Recuerda que los trabajos en segundo plano seguirán ejecutándose incluso si cierras la terminal, a menos que se detengan explícitamente.
+- Utiliza `bg` para reanudar un trabajo detenido en segundo plano.
+- Usa `fg` para llevar un trabajo en segundo plano al primer plano.
+- Recuerda que puedes usar `kill` seguido del PID para terminar un trabajo si es necesario.

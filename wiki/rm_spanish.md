@@ -1,48 +1,48 @@
-# [Linux] Bash rm Uso: Eliminar archivos y directorios
+# [Linux] C Shell (csh) rm Uso: Eliminar archivos y directorios
 
 ## Overview
-El comando `rm` se utiliza en sistemas Unix y Linux para eliminar archivos y directorios. Es una herramienta poderosa que permite borrar datos de manera permanente, así que se debe usar con precaución.
+El comando `rm` se utiliza en C Shell (csh) para eliminar archivos y directorios. Es una herramienta poderosa que permite a los usuarios gestionar su sistema de archivos eliminando elementos que ya no son necesarios.
 
 ## Usage
 La sintaxis básica del comando `rm` es la siguiente:
 
-```
+```csh
 rm [opciones] [argumentos]
 ```
 
 ## Common Options
-- `-f`: Fuerza la eliminación sin pedir confirmación.
-- `-i`: Pide confirmación antes de eliminar cada archivo.
-- `-r`: Elimina directorios y su contenido de manera recursiva.
-- `-v`: Muestra información detallada sobre lo que se está eliminando.
+- `-f`: Fuerza la eliminación sin preguntar confirmación.
+- `-i`: Pregunta antes de eliminar cada archivo.
+- `-r`: Elimina directorios y su contenido de forma recursiva.
+- `-v`: Muestra los archivos que se están eliminando.
 
 ## Common Examples
 - Eliminar un solo archivo:
-  ```bash
-  rm archivo.txt
-  ```
+    ```csh
+    rm archivo.txt
+    ```
 
 - Eliminar varios archivos:
-  ```bash
-  rm archivo1.txt archivo2.txt archivo3.txt
-  ```
+    ```csh
+    rm archivo1.txt archivo2.txt archivo3.txt
+    ```
 
 - Eliminar un directorio y su contenido de forma recursiva:
-  ```bash
-  rm -r directorio/
-  ```
+    ```csh
+    rm -r directorio/
+    ```
 
-- Forzar la eliminación sin confirmación:
-  ```bash
-  rm -f archivo.txt
-  ```
+- Forzar la eliminación de un archivo sin confirmación:
+    ```csh
+    rm -f archivo.txt
+    ```
 
-- Pedir confirmación antes de eliminar:
-  ```bash
-  rm -i archivo.txt
-  ```
+- Preguntar antes de eliminar cada archivo:
+    ```csh
+    rm -i archivo.txt
+    ```
 
 ## Tips
-- Siempre verifica el nombre del archivo o directorio antes de usar `rm`, especialmente con la opción `-f`.
-- Considera usar `rm -i` si no estás seguro de lo que estás eliminando.
-- Para evitar eliminar archivos accidentalmente, puedes usar `mv` para mover los archivos a una ubicación temporal antes de eliminarlos.
+- Siempre verifica el nombre del archivo o directorio que deseas eliminar para evitar borrar algo importante.
+- Considera usar la opción `-i` si no estás seguro de lo que estás eliminando.
+- Realiza copias de seguridad de archivos importantes antes de usar `rm`, especialmente con la opción `-r`.

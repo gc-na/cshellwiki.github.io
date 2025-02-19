@@ -1,39 +1,55 @@
-# [Linux] Bash endsw の使い方: コマンドの終了を管理する
+# [日本語] C Shell (csh) endsw 使用法: 条件分岐の終了
 
 ## Overview
-`endsw` コマンドは、Bash スクリプトやコマンドラインでのプロセスの終了を管理するために使用されます。このコマンドを使用することで、特定の条件に基づいてスクリプトの実行を終了させることができます。
+`endsw` コマンドは、C Shell (csh) における条件分岐の終了を示すために使用されます。このコマンドは、`switch` 文のブロックを終了するために必要です。
 
 ## Usage
 基本的な構文は以下の通りです。
 
-```bash
-endsw [options] [arguments]
+```csh
+endsw
 ```
 
 ## Common Options
-- `-h`, `--help`: ヘルプメッセージを表示します。
-- `-v`, `--version`: バージョン情報を表示します。
+`endsw` コマンドには特にオプションはありません。単に `endsw` と記述することで、`switch` 文の終了を示します。
 
 ## Common Examples
-以下にいくつかの実用的な例を示します。
+以下に、`endsw` コマンドを使用したいくつかの実用的な例を示します。
 
-### 例1: 条件付きでスクリプトを終了する
-```bash
-if [ "$condition" ]; then
-    endsw
-fi
+### 例1: 基本的な switch 文
+```csh
+set var = "apple"
+switch ($var)
+    case "apple":
+        echo "This is an apple."
+        breaksw
+    case "banana":
+        echo "This is a banana."
+        breaksw
+    default:
+        echo "Unknown fruit."
+endsw
 ```
 
-### 例2: ヘルプメッセージの表示
-```bash
-endsw --help
-```
-
-### 例3: バージョン情報の表示
-```bash
-endsw --version
+### 例2: 数値の条件分岐
+```csh
+set num = 2
+switch ($num)
+    case 1:
+        echo "Number is one."
+        breaksw
+    case 2:
+        echo "Number is two."
+        breaksw
+    case 3:
+        echo "Number is three."
+        breaksw
+    default:
+        echo "Number is not recognized."
+endsw
 ```
 
 ## Tips
-- スクリプトの中で `endsw` を使用する際は、条件を明確に設定しておくと、意図しない終了を防ぐことができます。
-- `endsw` コマンドを使用することで、スクリプトのデバッグが容易になります。条件に応じて終了させることで、問題の特定がしやすくなります。
+- `endsw` は必ず `switch` 文の後に記述してください。これにより、条件分岐が正しく終了します。
+- `breaksw` コマンドを使用して、特定のケースから抜け出すことができます。これにより、次のケースが実行されるのを防ぎます。
+- 複雑な条件分岐を使用する場合は、可読性を保つためにインデントを適切に行いましょう。

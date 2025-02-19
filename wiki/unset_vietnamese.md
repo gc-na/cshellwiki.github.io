@@ -1,51 +1,42 @@
-# [Linux] Bash unset cách sử dụng: Xóa biến hoặc thuộc tính
+# [Hệ điều hành] C Shell (csh) unset: Xóa biến môi trường
 
-## Tổng quan
-Lệnh `unset` trong Bash được sử dụng để xóa một biến hoặc thuộc tính khỏi môi trường shell. Khi một biến bị xóa, nó sẽ không còn tồn tại và không thể được truy cập trong phiên làm việc hiện tại.
+## Overview
+Lệnh `unset` trong C Shell (csh) được sử dụng để xóa một biến môi trường hoặc một hàm đã được định nghĩa. Khi bạn sử dụng lệnh này, biến hoặc hàm sẽ không còn tồn tại trong phiên làm việc hiện tại.
 
-## Cách sử dụng
+## Usage
 Cú pháp cơ bản của lệnh `unset` như sau:
-
-```bash
+```csh
 unset [options] [arguments]
 ```
 
-## Các tùy chọn phổ biến
-- `-f`: Xóa một hàm khỏi môi trường shell.
-- `-v`: Xóa một biến (mặc định là biến).
-- `--`: Kết thúc các tùy chọn, cho phép sử dụng tên biến bắt đầu bằng dấu gạch ngang.
+## Common Options
+- `-f`: Xóa một hàm đã được định nghĩa.
+- `-v`: Xóa một biến môi trường.
 
-## Ví dụ phổ biến
+## Common Examples
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `unset`:
 
-1. **Xóa một biến:**
-   ```bash
-   my_var="Hello, World!"
-   echo $my_var  # Kết quả: Hello, World!
-   unset my_var
-   echo $my_var  # Kết quả: (không có gì được hiển thị)
+1. **Xóa một biến môi trường:**
+   ```csh
+   set MYVAR="Hello, World!"
+   unset MYVAR
    ```
 
 2. **Xóa một hàm:**
-   ```bash
-   my_function() {
-       echo "This is a function."
-   }
-   my_function  # Kết quả: This is a function.
-   unset -f my_function
-   my_function  # Kết quả: bash: my_function: command not found
+   ```csh
+   alias greet 'echo Hello!'
+   unset -f greet
    ```
 
-3. **Xóa nhiều biến cùng lúc:**
-   ```bash
-   var1="First"
-   var2="Second"
-   echo $var1 $var2  # Kết quả: First Second
-   unset var1 var2
-   echo $var1 $var2  # Kết quả: (không có gì được hiển thị)
+3. **Kiểm tra biến sau khi xóa:**
+   ```csh
+   set MYVAR="Test"
+   echo $MYVAR  # Kết quả: Test
+   unset MYVAR
+   echo $MYVAR  # Kết quả: (không có gì)
    ```
 
-## Mẹo
-- Hãy cẩn thận khi sử dụng `unset`, vì một khi biến hoặc hàm đã bị xóa, bạn sẽ không thể khôi phục lại chúng trong phiên làm việc hiện tại.
-- Sử dụng `unset` để dọn dẹp các biến không còn cần thiết, giúp tiết kiệm bộ nhớ và giữ cho môi trường shell của bạn gọn gàng.
-- Kiểm tra xem biến có tồn tại trước khi gọi `unset` để tránh thông báo lỗi không cần thiết.
+## Tips
+- Hãy cẩn thận khi sử dụng lệnh `unset`, vì một khi biến hoặc hàm đã bị xóa, bạn sẽ không thể khôi phục chúng trong phiên làm việc hiện tại.
+- Sử dụng tùy chọn `-v` để xóa biến và `-f` để xóa hàm một cách rõ ràng, giúp bạn quản lý môi trường làm việc tốt hơn.
+- Kiểm tra các biến và hàm trước khi xóa để tránh mất dữ liệu quan trọng.

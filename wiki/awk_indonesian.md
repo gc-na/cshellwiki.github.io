@@ -1,56 +1,50 @@
-# [Linux] Bash awk Penggunaan: Memproses dan Menganalisis Teks
+# [Sistem Operasi] C Shell (csh) awk Penggunaan: Memproses dan Menganalisis Teks
 
 ## Overview
-Perintah `awk` adalah alat pemrograman yang kuat untuk memproses dan menganalisis teks, terutama file teks yang terstruktur. Dengan `awk`, Anda dapat melakukan pencarian, pengolahan, dan manipulasi data dengan cara yang efisien.
+Perintah `awk` adalah alat yang kuat untuk memproses dan menganalisis teks. Ini sering digunakan untuk memanipulasi data dalam format terstruktur, seperti file teks atau output dari perintah lain. Dengan `awk`, Anda dapat melakukan pencarian, penggantian, dan pengolahan data dengan cara yang efisien.
 
 ## Usage
-Berikut adalah sintaks dasar dari perintah `awk`:
+Sintaks dasar dari perintah `awk` adalah sebagai berikut:
 
-```bash
+```csh
 awk [options] [arguments]
 ```
 
 ## Common Options
-- `-F`: Menentukan pemisah field (field separator) yang digunakan dalam input.
-- `-v`: Mengatur variabel sebelum eksekusi.
-- `-f`: Menggunakan file skrip `awk` sebagai input.
-- `BEGIN`: Blok yang dieksekusi sebelum pemrosesan data dimulai.
-- `END`: Blok yang dieksekusi setelah semua data diproses.
+Berikut adalah beberapa opsi umum yang dapat digunakan dengan `awk`:
+
+- `-F`: Menentukan pemisah field (default adalah spasi).
+- `-v`: Mengatur variabel sebelum eksekusi program `awk`.
+- `-f`: Menggunakan file yang berisi program `awk` alih-alih menulisnya di command line.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan `awk`:
+Berikut adalah beberapa contoh praktis penggunaan `awk`:
 
-1. **Menampilkan kolom tertentu dari file:**
-   ```bash
-   awk '{print $1, $3}' file.txt
+1. **Menampilkan kolom tertentu dari file**:
+   Menampilkan kolom pertama dari file `data.txt`.
+   ```csh
+   awk '{print $1}' data.txt
    ```
-   Perintah ini akan menampilkan kolom pertama dan ketiga dari `file.txt`.
 
-2. **Menggunakan pemisah yang berbeda:**
-   ```bash
-   awk -F, '{print $2}' data.csv
+2. **Menggunakan pemisah yang berbeda**:
+   Menampilkan kolom kedua dari file CSV dengan koma sebagai pemisah.
+   ```csh
+   awk -F',' '{print $2}' data.csv
    ```
-   Di sini, `awk` menggunakan koma sebagai pemisah untuk menampilkan kolom kedua dari `data.csv`.
 
-3. **Menghitung jumlah baris dalam file:**
-   ```bash
-   awk 'END {print NR}' file.txt
+3. **Menghitung jumlah baris dalam file**:
+   Menghitung jumlah baris dalam file `data.txt`.
+   ```csh
+   awk 'END {print NR}' data.txt
    ```
-   Perintah ini akan menghitung dan menampilkan jumlah total baris dalam `file.txt`.
 
-4. **Menampilkan baris yang memenuhi kondisi tertentu:**
-   ```bash
-   awk '$3 > 50' file.txt
+4. **Menampilkan baris yang memenuhi kondisi tertentu**:
+   Menampilkan baris yang memiliki nilai lebih dari 50 di kolom ketiga.
+   ```csh
+   awk '$3 > 50' data.txt
    ```
-   Ini akan menampilkan semua baris di mana nilai kolom ketiga lebih besar dari 50.
-
-5. **Menggunakan variabel:**
-   ```bash
-   awk -v threshold=100 '$2 > threshold {print $1}' file.txt
-   ```
-   Dalam contoh ini, `awk` menggunakan variabel `threshold` untuk memfilter dan menampilkan kolom pertama dari baris yang memenuhi syarat.
 
 ## Tips
-- Gunakan opsi `-F` untuk mengatur pemisah field sesuai dengan format file Anda.
-- Manfaatkan blok `BEGIN` dan `END` untuk melakukan inisialisasi dan pembersihan data.
-- Cobalah untuk menulis skrip `awk` yang lebih kompleks dalam file terpisah untuk meningkatkan keterbacaan dan pemeliharaan.
+- Selalu gunakan opsi `-F` jika data Anda dipisahkan oleh karakter selain spasi untuk memastikan `awk` dapat memproses data dengan benar.
+- Gunakan variabel dengan opsi `-v` untuk membuat skrip `awk` lebih dinamis dan mudah dibaca.
+- Cobalah untuk menulis skrip `awk` yang lebih kompleks dalam file terpisah untuk menjaga kebersihan dan keterbacaan perintah di command line.

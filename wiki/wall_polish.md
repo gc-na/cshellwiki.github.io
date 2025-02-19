@@ -1,47 +1,40 @@
-# [Linux] Bash wall użycie: wysyłanie wiadomości do wszystkich użytkowników
+# [Linux] C Shell (csh) wall użycie: Wysyłanie wiadomości do wszystkich użytkowników
 
 ## Overview
-Polecenie `wall` (skrót od "write all") służy do wysyłania wiadomości do wszystkich zalogowanych użytkowników w systemie. Umożliwia administratorom i innym użytkownikom komunikację z innymi osobami korzystającymi z tego samego systemu.
+Polecenie `wall` (write all) w systemie Unix i Linux służy do wysyłania wiadomości do wszystkich zalogowanych użytkowników. Umożliwia administratorom systemu lub innym użytkownikom przesyłanie komunikatów, które są wyświetlane na terminalach wszystkich aktywnych sesji.
 
 ## Usage
 Podstawowa składnia polecenia `wall` jest następująca:
 
-```bash
+```csh
 wall [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-n`: Nie wyświetlać nagłówka z informacjami o użytkowniku.
-- `-s`: Wysyłać wiadomość w trybie cichym, bez wyświetlania znaku nowej linii na końcu.
-- `-f`: Wczytać wiadomość z pliku.
+Oto kilka powszechnie używanych opcji dla polecenia `wall`:
+
+- `-n` - Nie wyświetlaj nagłówka z informacją o użytkowniku.
+- `-f` - Odczytaj wiadomość z pliku zamiast z standardowego wejścia.
 
 ## Common Examples
+Oto kilka praktycznych przykładów użycia polecenia `wall`:
 
-1. **Wysłanie prostego komunikatu:**
+1. Wysłanie prostego komunikatu do wszystkich użytkowników:
+   ```csh
+   wall "Uwaga! System będzie wyłączony za 10 minut."
+   ```
 
-```bash
-wall "Uwaga! System będzie wyłączony za 10 minut."
-```
+2. Wysłanie komunikatu bez nagłówka:
+   ```csh
+   wall -n "Przerwa na lunch trwa 30 minut."
+   ```
 
-2. **Wysłanie komunikatu bez nagłówka:**
-
-```bash
-wall -n "Przerwa na lunch za 30 minut."
-```
-
-3. **Wysłanie wiadomości z pliku:**
-
-```bash
-wall -f /path/to/message.txt
-```
-
-4. **Wysłanie cichej wiadomości:**
-
-```bash
-wall -s "Zaraz rozpocznie się spotkanie."
-```
+3. Wysłanie wiadomości z pliku:
+   ```csh
+   wall -f /ścieżka/do/pliku.txt
+   ```
 
 ## Tips
-- Używaj `wall` w czasie, gdy wiesz, że użytkownicy są aktywni, aby zapewnić, że wiadomość dotrze do wszystkich.
-- Staraj się być zwięzły i jasny w komunikatach, aby uniknąć nieporozumień.
-- Możesz użyć `wall` w skryptach, aby automatycznie informować użytkowników o ważnych zdarzeniach w systemie.
+- Upewnij się, że masz odpowiednie uprawnienia do wysyłania wiadomości do wszystkich użytkowników.
+- Używaj `wall` w czasie, gdy wiesz, że użytkownicy są aktywni, aby uniknąć przegapienia ważnych komunikatów.
+- Możesz połączyć `wall` z innymi poleceniami, aby automatycznie wysyłać komunikaty, na przykład w skryptach powłoki.

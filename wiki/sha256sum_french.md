@@ -1,12 +1,12 @@
-# [Linux] Bash sha256sum : Calculer des sommes de contrôle SHA-256
+# [Linux] C Shell (csh) sha256sum : Calculer des sommes de contrôle SHA-256
 
 ## Overview
-La commande `sha256sum` est utilisée pour calculer et vérifier les sommes de contrôle SHA-256 d'un fichier. Cela permet de garantir l'intégrité des données en s'assurant que le contenu d'un fichier n'a pas été altéré.
+La commande `sha256sum` est utilisée pour calculer et vérifier les sommes de contrôle SHA-256 d'un fichier. Cela permet de garantir l'intégrité des données en s'assurant que le contenu d'un fichier n'a pas été modifié.
 
 ## Usage
-La syntaxe de base de la commande est la suivante :
+La syntaxe de base de la commande `sha256sum` est la suivante :
 
-```bash
+```csh
 sha256sum [options] [arguments]
 ```
 
@@ -15,40 +15,33 @@ Voici quelques options courantes pour `sha256sum` :
 
 - `-b` : Traite les fichiers en mode binaire.
 - `-c` : Vérifie les sommes de contrôle à partir d'un fichier.
-- `-o` : Spécifie un fichier de sortie pour les résultats.
+- `-o` : Écrit la sortie dans un fichier spécifié.
 - `--quiet` : Ne produit aucune sortie sauf en cas d'erreur.
 
 ## Common Examples
+Voici quelques exemples pratiques de l'utilisation de `sha256sum` :
 
-### Calculer la somme de contrôle d'un fichier
-Pour calculer la somme de contrôle SHA-256 d'un fichier nommé `fichier.txt`, utilisez la commande suivante :
+1. Calculer la somme de contrôle d'un fichier :
+   ```csh
+   sha256sum monfichier.txt
+   ```
 
-```bash
-sha256sum fichier.txt
-```
+2. Vérifier la somme de contrôle à partir d'un fichier de sommes :
+   ```csh
+   sha256sum -c sommes.txt
+   ```
 
-### Vérifier une somme de contrôle à partir d'un fichier
-Si vous avez un fichier `somme.txt` contenant des sommes de contrôle, vous pouvez les vérifier avec :
+3. Calculer la somme de contrôle d'un fichier et écrire la sortie dans un fichier :
+   ```csh
+   sha256sum monfichier.txt -o sortie.txt
+   ```
 
-```bash
-sha256sum -c somme.txt
-```
-
-### Calculer la somme de contrôle de plusieurs fichiers
-Pour calculer les sommes de contrôle de plusieurs fichiers à la fois, vous pouvez les lister :
-
-```bash
-sha256sum fichier1.txt fichier2.txt fichier3.txt
-```
-
-### Rediriger la sortie vers un fichier
-Pour enregistrer la somme de contrôle dans un fichier, utilisez la redirection :
-
-```bash
-sha256sum fichier.txt > somme.txt
-```
+4. Traiter un fichier en mode binaire :
+   ```csh
+   sha256sum -b monfichier.bin
+   ```
 
 ## Tips
-- Assurez-vous de vérifier les sommes de contrôle après le téléchargement de fichiers importants pour garantir leur intégrité.
-- Utilisez l'option `-c` pour vérifier plusieurs fichiers à la fois en utilisant un fichier de sommes de contrôle.
-- Pensez à utiliser l'option `--quiet` si vous souhaitez réduire le bruit dans les sorties, surtout lors de vérifications de masse.
+- Toujours vérifier les sommes de contrôle après le téléchargement de fichiers importants pour s'assurer qu'ils n'ont pas été corrompus.
+- Utilisez l'option `-c` pour automatiser la vérification des fichiers en utilisant un fichier de sommes de contrôle.
+- Gardez une copie des fichiers de sommes de contrôle pour une vérification future.

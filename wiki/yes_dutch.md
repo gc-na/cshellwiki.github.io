@@ -1,12 +1,12 @@
-# [Linux] Bash yes gebruik: Herhaal een string eindeloos
+# [Linux] C Shell (csh) yes gebruik: Herhaaldelijk een string afdrukken
 
 ## Overzicht
-De `yes`-opdracht in Bash is een eenvoudige maar krachtige tool die een opgegeven string of de standaardtekst "y" eindeloos herhaalt. Dit kan handig zijn voor het automatiseren van bevestigingen in scripts of voor het genereren van grote hoeveelheden tekst.
+De `yes`-opdracht in C Shell (csh) is een eenvoudige maar krachtige tool die herhaaldelijk een opgegeven string afdrukt naar de standaarduitvoer. Standaard drukt het de string "y" af, wat vaak wordt gebruikt om bevestigingen te automatiseren in scripts en commando's die om input vragen.
 
 ## Gebruik
 De basis syntaxis van de `yes`-opdracht is als volgt:
 
-```bash
+```
 yes [opties] [argumenten]
 ```
 
@@ -16,31 +16,27 @@ yes [opties] [argumenten]
 
 ## Veelvoorkomende Voorbeelden
 
-1. **Eindeloos "y" herhalen**:
-   ```bash
+1. **Standaard gebruik**: Druk herhaaldelijk "y" af.
+   ```csh
    yes
    ```
-   Dit commando herhaalt de letter "y" eindeloos totdat het proces wordt gestopt.
 
-2. **Een specifieke string herhalen**:
-   ```bash
-   yes "Bevestigen"
+2. **Een specifieke string afdrukken**: Druk de string "Ja" af.
+   ```csh
+   yes "Ja"
    ```
-   Dit commando herhaalt de string "Bevestigen" eindeloos.
 
-3. **Bevestigingen doorgeven aan een ander commando**:
-   ```bash
-   yes | rm -i *.tmp
+3. **Gebruik met een andere opdracht**: Automatisch bevestigen van een installatie.
+   ```csh
+   yes | sudo apt-get install pakketnaam
    ```
-   Dit commando gebruikt `yes` om automatisch "y" te sturen naar de `rm` opdracht, waardoor alle tijdelijke bestanden zonder verdere bevestiging worden verwijderd.
 
-4. **Herhalen met een andere string**:
-   ```bash
-   yes "Ja" | head -n 5
+4. **Bevestigen van een verwijdering**: Automatisch bevestigen van het verwijderen van bestanden.
+   ```csh
+   yes | rm -i bestand.txt
    ```
-   Dit commando herhaalt "Ja" en toont alleen de eerste vijf regels.
 
 ## Tips
-- Gebruik `yes` met voorzichtigheid, vooral in combinatie met destructieve commando's zoals `rm`, om onbedoeld gegevensverlies te voorkomen.
-- Combineer `yes` met andere commando's in een pipeline voor efficiënte automatisering.
-- Stop de `yes`-opdracht met `Ctrl+C` wanneer je klaar bent met de uitvoer.
+- Gebruik `yes` in combinatie met andere commando's die om bevestiging vragen om handmatige invoer te vermijden.
+- Wees voorzichtig bij het gebruik van `yes` met destructieve commando's zoals `rm`, omdat dit kan leiden tot onbedoeld verwijderen van bestanden.
+- Test de `yes`-opdracht eerst in een veilige omgeving om te begrijpen hoe het werkt voordat je het in belangrijke scripts gebruikt.

@@ -1,46 +1,43 @@
-# [Linux] Bash export użycie: Ustawianie zmiennych środowiskowych
+# [Linux] C Shell (csh) export użycie: Umożliwia ustawienie zmiennych środowiskowych
 
 ## Overview
-Polecenie `export` w Bash służy do ustawiania zmiennych środowiskowych, które są dostępne dla wszystkich procesów uruchamianych w danej sesji powłoki. Dzięki temu możesz przekazywać informacje do programów i skryptów, które uruchamiasz.
+Polecenie `export` w C Shell (csh) służy do ustawiania zmiennych środowiskowych, które są dostępne dla wszystkich procesów uruchomionych w danej sesji powłoki. Dzięki temu można przekazywać wartości zmiennych do programów i skryptów, które są uruchamiane w tej samej sesji.
 
 ## Usage
-Podstawowa składnia polecenia `export` jest następująca:
+Podstawowa składnia polecenia `export` wygląda następująco:
 
-```bash
+```csh
 export [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-n`: Usuwa zmienną z listy eksportowanych zmiennych.
-- `-p`: Wyświetla wszystkie zmienne środowiskowe, które są aktualnie eksportowane.
+- `-n`: Usuwa zmienną z listy zmiennych eksportowanych.
+- `-p`: Wyświetla wszystkie zmienne, które są aktualnie eksportowane.
 
 ## Common Examples
-1. **Ustawienie zmiennej środowiskowej:**
-   ```bash
-   export MY_VAR="Hello, World!"
+1. Ustawienie zmiennej środowiskowej:
+   ```csh
+   setenv MY_VAR "Hello, World!"
+   export MY_VAR
    ```
 
-2. **Sprawdzenie wartości zmiennej:**
-   ```bash
-   echo $MY_VAR
+2. Ustawienie zmiennej z wartością i jej eksport:
+   ```csh
+   setenv PATH "/usr/local/bin:$PATH"
+   export PATH
    ```
 
-3. **Eksportowanie zmiennej i uruchamianie programu:**
-   ```bash
-   export PATH=$PATH:/usr/local/bin
-   ```
-
-4. **Usunięcie zmiennej z eksportu:**
-   ```bash
+3. Usunięcie zmiennej z eksportu:
+   ```csh
    export -n MY_VAR
    ```
 
-5. **Wyświetlenie wszystkich eksportowanych zmiennych:**
-   ```bash
+4. Wyświetlenie wszystkich eksportowanych zmiennych:
+   ```csh
    export -p
    ```
 
 ## Tips
-- Zmienne eksportowane w jednej sesji powłoki nie są dostępne w innych sesjach. Aby były dostępne po ponownym uruchomieniu powłoki, dodaj je do pliku konfiguracyjnego, takiego jak `.bashrc`.
-- Używaj nazw zmiennych, które są łatwe do zrozumienia, aby ułatwić sobie późniejsze zarządzanie nimi.
-- Pamiętaj, że zmienne środowiskowe są czułe na wielkość liter, więc `MY_VAR` i `my_var` będą traktowane jako różne zmienne.
+- Zawsze używaj `setenv` do tworzenia zmiennych przed ich eksportowaniem.
+- Sprawdzaj, które zmienne są eksportowane, aby uniknąć konfliktów nazw.
+- Pamiętaj, że zmienne eksportowane będą dostępne tylko w bieżącej sesji powłoki i jej podprocesach.

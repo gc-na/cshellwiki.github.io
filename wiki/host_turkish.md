@@ -1,44 +1,47 @@
-# [Linux] Bash host kullanımı: DNS sorguları yapmak
+# [Linux] C Shell (csh) host kullanımı: DNS sorguları yapmak
 
-## Genel Bakış
-`host` komutu, DNS (Domain Name System) sorguları gerçekleştirmek için kullanılan bir araçtır. Alan adlarını IP adreslerine ve tam tersine çevirmek için kullanılır. Bu komut, DNS kayıtlarını sorgulamak ve ağ sorunlarını teşhis etmek için oldukça faydalıdır.
+## Overview
+`host` komutu, bir alan adının IP adresini veya bir IP adresinin alan adını çözümlemek için kullanılan bir araçtır. DNS (Domain Name System) sorguları yaparak, internet üzerindeki kaynakların adres bilgilerini elde etmenizi sağlar.
 
-## Kullanım
+## Usage
 Temel sözdizimi aşağıdaki gibidir:
-```
+
+```csh
 host [seçenekler] [argümanlar]
 ```
 
-## Yaygın Seçenekler
-- `-a`: Tüm kayıt türlerini sorgular.
-- `-t TYPE`: Belirtilen kayıt türünü sorgular (örneğin, A, MX, TXT).
-- `-v`: Ayrıntılı çıktı sağlar.
-- `-l`: Alan adının tüm kayıtlarını listelemek için kullanılır (yetkilendirilmiş sunucularda).
+## Common Options
+- `-a`: Alan adı hakkında daha fazla bilgi gösterir.
+- `-t`: Belirli bir DNS kayıt türünü sorgulamak için kullanılır (örneğin, A, MX, CNAME).
+- `-v`: Ayrıntılı bilgi verir; sorgu sürecini ve yanıtları gösterir.
 
-## Yaygın Örnekler
-Aşağıda `host` komutunun bazı pratik örnekleri bulunmaktadır:
+## Common Examples
+Aşağıda `host` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
 ### 1. Bir alan adının IP adresini bulma
-```bash
+```csh
 host example.com
 ```
 
-### 2. Belirli bir kayıt türünü sorgulama (örneğin, MX kayıtları)
-```bash
+### 2. Belirli bir DNS kayıt türünü sorgulama
+```csh
 host -t MX example.com
 ```
 
-### 3. Ayrıntılı çıktı almak
-```bash
+### 3. Bir IP adresinin alan adını bulma
+```csh
+host 93.184.216.34
+```
+
+### 4. Ayrıntılı bilgi ile sorgulama
+```csh
 host -v example.com
 ```
 
-### 4. Tüm kayıtları listeleme
-```bash
-host -l example.com
-```
-
-## İpuçları
-- DNS sorgularını yaparken, doğru kayıt türünü belirlemek önemlidir; bu, doğru bilgiyi almanızı sağlar.
-- `host` komutunu, ağ sorunlarını teşhis etmek için diğer ağ araçlarıyla birlikte kullanabilirsiniz.
-- Sık kullanılan alan adları için sonuçları kaydedebilir ve daha sonra hızlıca erişebilirsiniz.
+## Tips
+- `host` komutunu sık kullanılan alan adları için bir alias olarak tanımlamak, sorguları hızlandırabilir.
+- DNS kayıt türlerini doğru bir şekilde belirtmek, daha hedefli sonuçlar almanızı sağlar.
+- Sık sık DNS sorguları yapıyorsanız, sonuçları bir dosyaya yönlendirmek için `>` operatörünü kullanabilirsiniz. Örneğin:
+  ```csh
+  host example.com > sonuc.txt
+  ```

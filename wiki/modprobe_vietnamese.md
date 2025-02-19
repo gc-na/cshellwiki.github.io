@@ -1,7 +1,7 @@
-# [Linux] Bash modprobe cách sử dụng: Quản lý mô-đun kernel
+# [Hệ điều hành Linux] C Shell (csh) modprobe: [quản lý module kernel]
 
 ## Tổng quan
-Lệnh `modprobe` được sử dụng để tải hoặc gỡ bỏ các mô-đun kernel trong hệ điều hành Linux. Nó giúp quản lý các mô-đun cần thiết cho phần cứng hoặc các chức năng hệ thống khác.
+Lệnh `modprobe` được sử dụng để thêm hoặc xóa các module kernel trong hệ điều hành Linux. Nó giúp quản lý các driver và các thành phần khác của kernel một cách dễ dàng, tự động xử lý các phụ thuộc giữa các module.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `modprobe` như sau:
@@ -10,33 +10,35 @@ modprobe [options] [arguments]
 ```
 
 ## Các tùy chọn phổ biến
-- `-r`, `--remove`: Gỡ bỏ mô-đun.
-- `-n`, `--dry-run`: Thực hiện một thử nghiệm mà không thay đổi gì.
-- `-v`, `--verbose`: Hiển thị thông tin chi tiết về quá trình tải hoặc gỡ bỏ mô-đun.
-- `--show`: Hiển thị các mô-đun mà lệnh sẽ tải mà không thực hiện.
+- `-r`: Xóa module khỏi kernel.
+- `-n`: Chỉ hiển thị các lệnh mà không thực thi chúng.
+- `-v`: Hiển thị thông tin chi tiết về các hành động đang được thực hiện.
+- `--show`: Hiển thị các module sẽ được tải mà không thực thi.
 
 ## Ví dụ phổ biến
-1. Tải một mô-đun:
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `modprobe`:
+
+1. Tải một module kernel:
    ```bash
-   modprobe nvidia
+   modprobe <tên_module>
    ```
 
-2. Gỡ bỏ một mô-đun:
+2. Xóa một module kernel:
    ```bash
-   modprobe -r nvidia
+   modprobe -r <tên_module>
    ```
 
-3. Thực hiện thử nghiệm tải mô-đun mà không thay đổi gì:
+3. Hiển thị thông tin chi tiết khi tải module:
    ```bash
-   modprobe -n nvidia
+   modprobe -v <tên_module>
    ```
 
-4. Hiển thị thông tin chi tiết khi tải mô-đun:
+4. Kiểm tra các module sẽ được tải mà không thực thi:
    ```bash
-   modprobe -v nvidia
+   modprobe --show <tên_module>
    ```
 
 ## Mẹo
-- Luôn kiểm tra xem mô-đun đã được tải hay chưa bằng lệnh `lsmod` trước khi sử dụng `modprobe`.
-- Sử dụng tùy chọn `-v` để theo dõi quá trình tải mô-đun, giúp bạn dễ dàng phát hiện lỗi.
-- Đảm bảo rằng bạn có quyền root hoặc sử dụng `sudo` khi thực hiện các thao tác với `modprobe`.
+- Luôn kiểm tra các phụ thuộc của module trước khi tải để tránh lỗi.
+- Sử dụng tùy chọn `-v` để theo dõi quá trình tải module, điều này hữu ích khi bạn gặp sự cố.
+- Đảm bảo rằng bạn có quyền truy cập root khi thực hiện các thao tác với `modprobe`, vì nó yêu cầu quyền cao hơn để thay đổi kernel.

@@ -1,48 +1,38 @@
-# [Linux] Bash exit Kullanımı: Komut dosyasını sonlandırma
+# [Linux] C Shell (csh) exit Kullanımı: Çıkış yapma komutu
 
-## Genel Bakış
-`exit` komutu, bir Bash betiğini veya terminal oturumunu sonlandırmak için kullanılır. Bu komut, çıkış kodu belirterek, programın başarıyla mı yoksa hata ile mi sona erdiğini belirtmeye olanak tanır.
+## Overview
+`exit` komutu, C Shell (csh) ortamında oturumu kapatmak veya bir betiğin çalışmasını sonlandırmak için kullanılır. Bu komut, shell'den çıkış yaparken veya bir programın sonlanması gerektiğinde kullanılır.
 
-## Kullanım
-Temel sözdizimi şu şekildedir:
+## Usage
+Temel sözdizimi aşağıdaki gibidir:
 
-```bash
-exit [seçenekler] [argümanlar]
+```
+exit [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `n`: Çıkış kodunu belirtir. Varsayılan olarak 0 (başarı) olarak kabul edilir. Örneğin, `exit 1` komutu hata durumunu belirtir.
-- `-n`: Çıkış kodunu belirtmeden çıkış yapar.
+## Common Options
+- `n`: Çıkış kodunu belirtir. `n` bir tam sayı olmalıdır ve genellikle bir hata kodunu temsil eder.
 
-## Yaygın Örnekler
-1. Basit bir çıkış:
-   ```bash
+## Common Examples
+Aşağıda `exit` komutunun bazı pratik örnekleri bulunmaktadır:
+
+1. Shell'den çıkış yapmak için:
+   ```csh
    exit
    ```
 
-2. Belirli bir çıkış kodu ile çıkış:
-   ```bash
+2. Belirli bir çıkış kodu ile çıkış yapmak için:
+   ```csh
    exit 0
    ```
 
-3. Hata durumu ile çıkış:
-   ```bash
+3. Bir betik içinde çıkış kodu ile çıkmak için:
+   ```csh
+   #!/bin/csh
+   echo "Betik çalışıyor..."
    exit 1
    ```
 
-4. Bir betik içinde çıkış kodu kullanımı:
-   ```bash
-   #!/bin/bash
-   if [ -f "dosya.txt" ]; then
-       echo "Dosya mevcut."
-       exit 0
-   else
-       echo "Dosya bulunamadı."
-       exit 1
-   fi
-   ```
-
-## İpuçları
-- Çıkış kodlarını kullanarak, betiklerinizin hata ayıklamasını kolaylaştırabilirsiniz.
-- `exit` komutunu, betiklerinizin belirli koşullara göre sonlanmasını sağlamak için kullanın.
-- Terminal oturumlarınızı kapatırken `exit` komutunu kullanarak, açık olan tüm işlemleri düzgün bir şekilde sonlandırabilirsiniz.
+## Tips
+- Çıkış kodunu belirtmek, betiklerinizin hata ayıklamasında faydalı olabilir. Hata durumunda farklı kodlar kullanarak, hangi hatanın meydana geldiğini anlayabilirsiniz.
+- `exit` komutunu kullanmadan önce, önemli verilerinizi kaydetmeyi unutmayın, çünkü bu komut shell oturumunu kapatır.

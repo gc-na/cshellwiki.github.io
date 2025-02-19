@@ -1,49 +1,47 @@
-# [Linux] Bash host gebruik: DNS-naam resolutie
+# [Linux] C Shell (csh) host gebruik: DNS-naam resolutie
 
 ## Overzicht
-De `host` opdracht is een hulpmiddel dat wordt gebruikt voor het opzoeken van DNS-informatie. Het kan worden gebruikt om de IP-adressen van een domeinnaam te vinden of om omgekeerde opzoekingen uit te voeren, waarbij een IP-adres wordt omgezet naar een domeinnaam.
+De `host`-opdracht is een hulpmiddel voor het uitvoeren van DNS-naam resolutie. Het wordt gebruikt om informatie over een domein of IP-adres op te vragen, zoals het ophalen van het bijbehorende IP-adres of het verkrijgen van andere DNS-records.
 
 ## Gebruik
-De basis syntaxis van de `host` opdracht is als volgt:
+De basis syntaxis van de `host`-opdracht is als volgt:
 
-```bash
+```csh
 host [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
-- `-a`: Geeft alle beschikbare informatie over de opgegeven naam.
-- `-t type`: Specificeert het type DNS-record dat moet worden opgezocht (bijv. A, MX, TXT).
-- `-v`: Verhoogt de uitvoer om meer gedetailleerde informatie te tonen.
-- `-W tijd`: Stelt de tijdslimiet in voor het wachten op een antwoord.
+## Veelvoorkomende opties
+- `-a`: Toon alle beschikbare informatie over het opgegeven domein.
+- `-t type`: Vraag een specifiek type DNS-record op (bijvoorbeeld A, MX, TXT).
+- `-v`: Geef gedetailleerde uitvoer weer voor foutopsporing.
 
-## Veelvoorkomende Voorbeelden
+## Veelvoorkomende voorbeelden
 
-1. **Zoeken naar het IP-adres van een domein:**
-   ```bash
+1. **Basis DNS-naam resolutie**
+   Om het IP-adres van een domein op te vragen:
+   ```csh
    host example.com
    ```
 
-2. **Omgekeerde DNS-opzoeking van een IP-adres:**
-   ```bash
-   host 93.184.216.34
-   ```
-
-3. **Zoeken naar MX-records voor een domein:**
-   ```bash
+2. **Opvragen van een specifiek type record**
+   Om het MX-record (mail exchange) voor een domein op te vragen:
+   ```csh
    host -t MX example.com
    ```
 
-4. **Alle beschikbare informatie over een domein opvragen:**
-   ```bash
+3. **Alle beschikbare informatie opvragen**
+   Om alle DNS-informatie voor een domein te tonen:
+   ```csh
    host -a example.com
    ```
 
-5. **Verhoogde uitvoer voor gedetailleerde informatie:**
-   ```bash
-   host -v example.com
+4. **Opvragen van een IP-adres van een domein**
+   Om het IP-adres van een domein te vinden:
+   ```csh
+   host www.example.com
    ```
 
 ## Tips
-- Gebruik de `-t` optie om specifiek te zoeken naar verschillende soorten DNS-records, zoals A, AAAA, of TXT.
-- Combineer de `-v` optie met andere commando's voor meer inzicht in de DNS-resolutie.
-- Als je regelmatig DNS-informatie opzoekt, overweeg dan om een alias in je `.bashrc` bestand te maken voor veelgebruikte `host` opdrachten.
+- Gebruik de `-v` optie voor meer gedetailleerde uitvoer als je problemen ondervindt met DNS-resolutie.
+- Combineer de `host`-opdracht met andere netwerktools zoals `ping` of `traceroute` voor een vollediger beeld van netwerkproblemen.
+- Vergeet niet dat de `host`-opdracht afhankelijk is van de configuratie van je DNS-server, dus resultaten kunnen variëren.

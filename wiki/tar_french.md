@@ -1,57 +1,54 @@
-# [Linux] Bash tar Utilisation : Archive et compresse des fichiers
+# [Linux] C Shell (csh) tar Utilisation : Archive et compresse des fichiers
 
 ## Overview
-La commande `tar` est utilisée pour créer, extraire et manipuler des archives de fichiers. Elle est particulièrement utile pour regrouper plusieurs fichiers en un seul fichier d'archive, ce qui facilite le stockage et le transfert.
+La commande `tar` est utilisée pour archiver et compresser des fichiers dans un seul fichier, souvent appelé "archive". Cela facilite le stockage et le transfert de plusieurs fichiers ou répertoires.
 
 ## Usage
 La syntaxe de base de la commande `tar` est la suivante :
 
-```bash
+```csh
 tar [options] [arguments]
 ```
 
 ## Common Options
 Voici quelques options courantes pour la commande `tar` :
 
-- `-c` : Créer une nouvelle archive.
-- `-x` : Extraire des fichiers d'une archive.
-- `-f` : Spécifier le nom de l'archive.
-- `-v` : Afficher les fichiers traités (mode verbeux).
-- `-z` : Compresser ou décompresser avec gzip.
-- `-j` : Compresser ou décompresser avec bzip2.
+- `-c` : Crée une nouvelle archive.
+- `-x` : Extrait les fichiers d'une archive existante.
+- `-f` : Spécifie le nom du fichier d'archive.
+- `-v` : Affiche les fichiers traités (mode verbeux).
+- `-z` : Compresse l'archive avec gzip.
+- `-j` : Compresse l'archive avec bzip2.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `tar` :
 
-### Créer une archive
-Pour créer une archive nommée `archive.tar` à partir du dossier `mon_dossier` :
+1. **Créer une archive :**
+   ```csh
+   tar -cvf archive.tar dossier/
+   ```
 
-```bash
-tar -cvf archive.tar mon_dossier
-```
+2. **Extraire une archive :**
+   ```csh
+   tar -xvf archive.tar
+   ```
 
-### Extraire une archive
-Pour extraire le contenu de `archive.tar` :
+3. **Créer une archive compressée avec gzip :**
+   ```csh
+   tar -czvf archive.tar.gz dossier/
+   ```
 
-```bash
-tar -xvf archive.tar
-```
+4. **Extraire une archive compressée :**
+   ```csh
+   tar -xzvf archive.tar.gz
+   ```
 
-### Créer une archive compressée avec gzip
-Pour créer une archive compressée nommée `archive.tar.gz` :
-
-```bash
-tar -czvf archive.tar.gz mon_dossier
-```
-
-### Extraire une archive compressée
-Pour extraire le contenu d'une archive compressée `archive.tar.gz` :
-
-```bash
-tar -xzvf archive.tar.gz
-```
+5. **Créer une archive compressée avec bzip2 :**
+   ```csh
+   tar -cjvf archive.tar.bz2 dossier/
+   ```
 
 ## Tips
-- Utilisez l'option `-v` pour voir les fichiers en cours de traitement, ce qui peut être utile pour le débogage.
-- Pensez à vérifier l'espace disque disponible avant de créer des archives volumineuses.
-- Pour une compression plus efficace, utilisez `-j` pour bzip2 au lieu de `-z` pour gzip, bien que cela prenne plus de temps.
+- Utilisez l'option `-v` pour voir les fichiers en cours de traitement, ce qui peut être utile pour vérifier le contenu de l'archive.
+- Pensez à utiliser des extensions appropriées pour vos fichiers d'archive, comme `.tar`, `.tar.gz` ou `.tar.bz2`, pour indiquer le type de compression.
+- Avant d'extraire une archive, vérifiez son contenu avec `tar -tvf archive.tar` pour éviter d'écraser des fichiers existants.

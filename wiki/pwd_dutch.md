@@ -1,38 +1,36 @@
-# [Linux] Bash pwd gebruik: Toon de huidige werkdirectory
+# [Linux] C Shell (csh) pwd gebruik: Toon de huidige werkdirectory
 
 ## Overzicht
-De `pwd` (print working directory) opdracht in Bash toont het pad van de huidige werkdirectory waarin je je bevindt. Dit is handig om te weten waar je bent in de bestandsstructuur van het systeem.
+De `pwd` (print working directory) opdracht in C Shell toont het pad van de huidige werkdirectory waarin je je bevindt. Dit is nuttig om te weten waar je bent in de bestandsstructuur van het systeem.
 
 ## Gebruik
 De basis syntaxis van de `pwd` opdracht is als volgt:
 
-```bash
-pwd [opties]
+```csh
+pwd [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-L`: Toont het logische pad van de huidige werkdirectory, wat betekent dat het symlinks negeert.
-- `-P`: Toont het fysieke pad van de huidige werkdirectory, waarbij alle symlinks worden gevolgd.
+- `-L`: Toont het logische pad van de huidige werkdirectory.
+- `-P`: Toont het fysieke pad, waarbij symbolische links worden genegeerd.
 
 ## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van de `pwd` opdracht:
 
 1. Gewoon de huidige werkdirectory tonen:
-   ```bash
+   ```csh
    pwd
    ```
 
-2. Het logische pad tonen (standaard gedrag):
-   ```bash
+2. Het logische pad tonen:
+   ```csh
    pwd -L
    ```
 
-3. Het fysieke pad tonen (volg symlinks):
-   ```bash
+3. Het fysieke pad tonen:
+   ```csh
    pwd -P
    ```
 
 ## Tips
-- Gebruik `pwd` vaak in combinatie met andere opdrachten om te bevestigen dat je in de juiste directory werkt.
-- Als je werkt met symlinks, overweeg dan om de `-P` optie te gebruiken om het echte pad te zien.
-- Vergeet niet dat de uitvoer van `pwd` altijd een absoluut pad is, wat betekent dat het begint vanaf de root directory.
+- Gebruik `pwd` regelmatig om je locatie in de bestandsstructuur te bevestigen, vooral als je met meerdere terminalvensters werkt.
+- Combineer `pwd` met andere commando's zoals `cd` om efficiënt door directories te navigeren.

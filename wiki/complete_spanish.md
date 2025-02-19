@@ -1,48 +1,45 @@
-# [Linux] Bash completo uso: Completado de comandos en la terminal
+# [Unix] C Shell (csh) complete uso completo: Completar comandos y argumentos
 
 ## Overview
-El comando `complete` en Bash se utiliza para definir o modificar la forma en que se completan los comandos en la línea de comandos. Permite personalizar la autocompletación de los comandos y sus argumentos, mejorando así la eficiencia al trabajar en la terminal.
+El comando `complete` en C Shell (csh) se utiliza para habilitar la finalización automática de comandos y argumentos en la línea de comandos. Esto facilita la escritura de comandos al permitir que el usuario complete automáticamente nombres de archivos, comandos y opciones.
 
 ## Usage
 La sintaxis básica del comando `complete` es la siguiente:
 
-```bash
+```csh
 complete [options] [arguments]
 ```
 
 ## Common Options
-- `-o`: Especifica una opción de completado.
-- `-A`: Define el tipo de argumento que se completará (por ejemplo, `command`, `file`, etc.).
-- `-F`: Indica una función que se usará para la completación.
-- `-r`: Elimina las reglas de completado existentes para el comando especificado.
+- `-c`: Completa comandos.
+- `-f`: Completa nombres de archivos.
+- `-o`: Especifica opciones adicionales para la finalización.
+- `-d`: Completa directorios.
 
 ## Common Examples
+Aquí hay algunos ejemplos prácticos del uso del comando `complete`:
 
-1. **Completado básico para un comando**:
-   Para agregar completado para un comando personalizado llamado `mi_comando`, puedes usar:
-   ```bash
-   complete -o nospace mi_comando
+1. **Completar comandos**:
+   ```csh
+   complete -c
    ```
 
-2. **Completado de archivos**:
-   Para que `mi_comando` complete nombres de archivos:
-   ```bash
-   complete -A file mi_comando
+2. **Completar nombres de archivos**:
+   ```csh
+   complete -f
    ```
 
-3. **Usar una función para completado**:
-   Si tienes una función llamada `mi_funcion_completado` que genera opciones, puedes hacer:
-   ```bash
-   complete -F mi_funcion_completado mi_comando
+3. **Completar directorios**:
+   ```csh
+   complete -d
    ```
 
-4. **Eliminar completado para un comando**:
-   Para eliminar cualquier completado existente para `mi_comando`:
-   ```bash
-   complete -r mi_comando
+4. **Usar opciones adicionales para completar**:
+   ```csh
+   complete -o "option1 option2"
    ```
 
 ## Tips
-- Asegúrate de definir tus funciones de completado antes de llamar a `complete`.
-- Puedes combinar múltiples opciones en un solo comando para personalizar aún más el comportamiento de la autocompletación.
-- Prueba tus configuraciones en un entorno de prueba para evitar conflictos en tu terminal principal.
+- Asegúrate de que la opción de finalización esté habilitada en tu terminal para aprovechar al máximo el comando `complete`.
+- Utiliza `complete -c` para ver qué comandos están disponibles para la finalización.
+- Personaliza las opciones de finalización según tus necesidades para mejorar tu flujo de trabajo en la línea de comandos.

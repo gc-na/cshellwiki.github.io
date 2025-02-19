@@ -1,58 +1,49 @@
-# [Linux] Bash awk Kullanımı: Metin işleme aracı
+# [Linux] C Shell (csh) awk Kullanımı: Metin işleme ve analiz aracı
 
 ## Genel Bakış
-`awk`, metin dosyalarını işlemek ve analiz etmek için kullanılan güçlü bir komut satırı aracıdır. Verileri satır ve sütunlar halinde işleyebilir, belirli kalıplara göre filtreleme yapabilir ve hesaplamalar gerçekleştirebilir.
+`awk`, metin dosyalarını işlemek ve analiz etmek için kullanılan güçlü bir programlama dilidir. Genellikle veri biçimlendirme, filtreleme ve raporlama işlemleri için tercih edilir. `awk`, belirli bir desenle eşleşen satırları bulmak ve bu satırlardaki verileri işlemek için kullanılır.
 
 ## Kullanım
-Temel sözdizimi şu şekildedir:
+Temel sözdizimi aşağıdaki gibidir:
 
 ```bash
 awk [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-F`: Alan ayırıcıyı belirtir. Varsayılan ayırıcı boşluktur.
-- `-v`: Değişken tanımlamak için kullanılır.
-- `-f`: Bir dosyadan awk komutlarını yüklemek için kullanılır.
+- `-F`: Girdi dosyasındaki alan ayırıcıyı belirler. Örneğin, `-F,` virgülü alan ayırıcı olarak kullanır.
+- `-v`: Değişken tanımlamak için kullanılır. Örneğin, `-v var=değer` ile `var` değişkenine `değer` atanır.
+- `-f`: Belirtilen bir dosyadan `awk` programı okur.
 
 ## Yaygın Örnekler
+Aşağıda `awk` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-### 1. Basit bir metin dosyasını okuma
-Aşağıdaki komut, `data.txt` dosyasındaki her satırı ekrana yazdırır.
+1. **Bir dosyadaki tüm satırları yazdırma:**
+   ```bash
+   awk '{print}' dosya.txt
+   ```
 
-```bash
-awk '{print}' data.txt
-```
+2. **Belirli bir alanı yazdırma (örneğin, ikinci alan):**
+   ```bash
+   awk '{print $2}' dosya.txt
+   ```
 
-### 2. Belirli bir alanı yazdırma
-Aşağıdaki komut, `data.txt` dosyasının ikinci sütununu yazdırır.
+3. **Virgülle ayrılmış bir dosyadan belirli bir alanı yazdırma:**
+   ```bash
+   awk -F, '{print $1}' dosya.csv
+   ```
 
-```bash
-awk '{print $2}' data.txt
-```
+4. **Bir koşula göre satırları filtreleme (örneğin, 50'den büyük sayılar):**
+   ```bash
+   awk '$1 > 50' dosya.txt
+   ```
 
-### 3. Alan ayırıcı kullanma
-Aşağıdaki komut, `;` ile ayrılmış bir dosyadaki üçüncü alanı yazdırır.
-
-```bash
-awk -F';' '{print $3}' data.csv
-```
-
-### 4. Koşullu filtreleme
-Aşağıdaki komut, `data.txt` dosyasındaki yalnızca 50'den büyük olan değerleri yazdırır.
-
-```bash
-awk '$1 > 50 {print}' data.txt
-```
-
-### 5. Hesaplama yapma
-Aşağıdaki komut, `data.txt` dosyasındaki ilk sütundaki sayıların toplamını hesaplar.
-
-```bash
-awk '{sum += $1} END {print sum}' data.txt
-```
+5. **Bir dosyadaki satır sayısını bulma:**
+   ```bash
+   awk 'END {print NR}' dosya.txt
+   ```
 
 ## İpuçları
-- `awk` komutlarını daha okunabilir hale getirmek için, karmaşık işlemleri bir dosyaya yazmayı düşünün.
-- `awk` ile birlikte `sort` ve `uniq` gibi diğer komutları kullanarak daha karmaşık veri analizleri yapabilirsiniz.
-- Alanları ve koşulları dikkatlice tanımlamak, doğru sonuçlar almanızı sağlar.
+- `awk` komutunu kullanırken, alanları doğru bir şekilde ayırmak için uygun ayırıcıyı belirlemeyi unutmayın.
+- Karmaşık işlemler için `awk` içinde döngüler ve koşul ifadeleri kullanarak daha gelişmiş programlar yazabilirsiniz.
+- `awk`'ın çıktısını başka komutlarla birleştirerek daha etkili veri işleme yapabilirsiniz. Örneğin, `awk` çıktısını `sort` veya `uniq` ile birleştirmek faydalı olabilir.

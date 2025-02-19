@@ -1,70 +1,57 @@
-# [Linux] Bash continue Kullanımı: Döngüdeki bir adımı atlama
+# [Linux] C Shell (csh) continue Kullanımı: Döngüleri devam ettirir
 
 ## Overview
-`continue` komutu, bir döngü içinde kullanıldığında, döngünün mevcut yinelemesini atlayarak bir sonraki yinelemeye geçilmesini sağlar. Bu, belirli bir koşulun sağlandığı durumlarda döngüdeki işlemleri atlamak için oldukça faydalıdır.
+`continue` komutu, C Shell (csh) içinde döngülerin kontrolünü sağlamak için kullanılır. Bu komut, döngü içerisinde bir koşul sağlandığında, döngünün geri kalan kısmını atlayarak bir sonraki yinelemeye geçilmesini sağlar.
 
 ## Usage
 Temel sözdizimi aşağıdaki gibidir:
-```bash
+
+```
 continue [options]
 ```
 
 ## Common Options
-`continue` komutunun kendisi için özel bir seçenek yoktur, ancak döngü yapısında kullanıldığında belirli koşullara bağlı olarak çalışır. Örneğin, `for`, `while` veya `until` döngüleri içinde kullanılabilir.
+`continue` komutunun kendine özgü seçenekleri yoktur; doğrudan döngü içinde kullanılır. Ancak, döngü türüne bağlı olarak belirli koşullar ile birlikte kullanılabilir.
 
 ## Common Examples
 
-### Örnek 1: Basit bir for döngüsü
-```bash
-for i in {1..5}; do
-    if [ $i -eq 3 ]; then
+### Örnek 1: Basit bir döngüde continue kullanımı
+```csh
+foreach i (1 2 3 4 5)
+    if ($i == 3) then
         continue
-    fi
-    echo "Sayı: $i"
-done
+    endif
+    echo $i
+end
 ```
-Bu örnekte, `i` değişkeni 3 olduğunda `continue` komutu çalışır ve 3 sayısı atlanır. Çıktı:
-```
-Sayı: 1
-Sayı: 2
-Sayı: 4
-Sayı: 5
-```
+Bu örnekte, 3 sayısı atlanarak 1, 2, 4 ve 5 sayıları ekrana yazdırılır.
 
-### Örnek 2: While döngüsü ile kullanım
-```bash
-count=1
-while [ $count -le 5 ]; do
-    if [ $count -eq 2 ]; then
-        count=$((count + 1))
+### Örnek 2: while döngüsünde continue kullanımı
+```csh
+set i = 0
+while ($i < 5)
+    @ i++
+    if ($i == 2) then
         continue
-    fi
-    echo "Sayım: $count"
-    count=$((count + 1))
-done
+    endif
+    echo $i
+end
 ```
-Bu örnekte, 2 sayısı atlanır ve çıktı şu şekilde olur:
-```
-Sayım: 1
-Sayım: 3
-Sayım: 4
-Sayım: 5
-```
+Bu örnekte, 2 sayısı atlanarak 1, 3 ve 4 sayıları ekrana yazdırılır.
 
-### Örnek 3: Kullanıcıdan girdi alma
-```bash
-for i in {1..5}; do
-    read -p "Bir sayı girin: " num
-    if [ $num -lt 0 ]; then
-        echo "Negatif sayılar atlanıyor."
+### Örnek 3: Bir dosyadaki belirli satırları atlamak
+```csh
+set lines = (line1 line2 line3 line4 line5)
+foreach line ($lines)
+    if ($line == line3) then
         continue
-    fi
-    echo "Girilen sayı: $num"
-done
+    endif
+    echo $line
+end
 ```
-Bu örnekte, kullanıcı negatif bir sayı girdiğinde, `continue` komutu devreye girer ve döngü bir sonraki yinelemeye geçer.
+Bu örnekte, "line3" atlanarak diğer satırlar ekrana yazdırılır.
 
 ## Tips
-- `continue` komutunu kullanırken, döngüde hangi koşullarda atlama yapacağınızı iyi belirleyin.
-- Kodun okunabilirliğini artırmak için `continue` komutunu kullanmadan önce koşulları net bir şekilde tanımlayın.
-- Karmaşık döngülerde `continue` kullanımı, kodun akışını daha anlaşılır hale getirebilir.
+- `continue` komutunu kullanırken, döngü koşullarınızı dikkatlice belirleyin; aksi halde beklenmeyen sonuçlar elde edebilirsiniz.
+- `continue` komutunu, döngü içinde belirli bir durumu atlamak için kullanmak, kodun okunabilirliğini artırabilir.
+- Gelişmiş döngü yapıları kullanıyorsanız, `continue` komutunu etkili bir şekilde entegre edin; bu, kodunuzu daha verimli hale getirebilir.

@@ -1,44 +1,44 @@
-# [Linux] Bash insmod Kullanımı: Modül yükleme komutu
+# [Linux] C Shell (csh) insmod Kullanımı: Modül yükleme komutu
 
 ## Genel Bakış
-`insmod` komutu, Linux işletim sistemlerinde çekirdek modüllerini yüklemek için kullanılır. Bu komut, belirtilen modül dosyasını çekirdek alanına ekler ve modülün işlevselliğini etkinleştirir.
+`insmod` komutu, Linux çekirdeğine bir modül yüklemek için kullanılır. Bu, sistemin işlevselliğini artırmak veya yeni donanım desteklemek için gerekli olan modüllerin eklenmesini sağlar.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
 
-```bash
+```csh
 insmod [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-f`: Zorla yükleme. Modül uyumsuz olsa bile yüklenmesini sağlar.
-- `-n`: Modül adını belirtmek için kullanılır.
-- `-v`: Ayrıntılı çıktı sağlar. Yükleme sürecinde daha fazla bilgi gösterir.
+- `-f`: Zorla yükleme yapar, modül uyumsuz olsa bile yüklenir.
+- `-v`: Ayrıntılı çıktı verir, yükleme sürecini gösterir.
+- `--help`: Komutun kullanımına dair yardım bilgilerini gösterir.
 
 ## Yaygın Örnekler
-Aşağıda `insmod` komutunun bazı pratik örnekleri verilmiştir:
+Aşağıda `insmod` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
 1. Basit bir modül yükleme:
-   ```bash
+   ```csh
    insmod my_module.ko
    ```
 
-2. Zorla bir modül yükleme:
-   ```bash
-   insmod -f my_module.ko
-   ```
-
-3. Ayrıntılı çıktı ile modül yükleme:
-   ```bash
+2. Ayrıntılı çıktı ile modül yükleme:
+   ```csh
    insmod -v my_module.ko
    ```
 
-4. Belirli bir modül adı ile yükleme:
-   ```bash
-   insmod -n my_custom_module my_module.ko
+3. Zorla bir modül yükleme:
+   ```csh
+   insmod -f my_module.ko
+   ```
+
+4. Yardım bilgilerini görüntüleme:
+   ```csh
+   insmod --help
    ```
 
 ## İpuçları
-- Modül dosyasının doğru dizinde olduğundan emin olun; aksi takdirde, `insmod` komutu dosyayı bulamayabilir.
-- Yüklediğiniz modülün bağımlılıklarını kontrol edin; bazı modüller diğer modüllere ihtiyaç duyabilir.
-- Modül yüklemeden önce, `lsmod` komutunu kullanarak mevcut yüklenmiş modülleri kontrol edin. Bu, gereksiz yüklemeleri önlemeye yardımcı olur.
+- Modül yüklemeden önce, modülün bağımlılıklarını kontrol etmek önemlidir.
+- Yüklenen modülleri görmek için `lsmod` komutunu kullanabilirsiniz.
+- Modülün düzgün çalışıp çalışmadığını kontrol etmek için `dmesg` komutunu kullanarak çekirdek günlüklerini inceleyin.

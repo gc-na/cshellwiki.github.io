@@ -1,52 +1,48 @@
-# [Linux] Bash history użycie: przeglądanie historii poleceń
+# [Linux] C Shell (csh) historia użycia: przeglądanie historii poleceń
 
 ## Overview
-Polecenie `history` w Bashu służy do wyświetlania listy wcześniej wykonanych poleceń. Umożliwia użytkownikom przeglądanie i ponowne używanie wcześniejszych komend, co znacznie przyspiesza pracę w terminalu.
+Polecenie `history` w C Shell (csh) służy do wyświetlania listy wcześniej wprowadzonych poleceń. Umożliwia użytkownikom przeglądanie, powtarzanie i zarządzanie historią poleceń, co może znacznie przyspieszyć pracę w terminalu.
 
 ## Usage
-Podstawowa składnia polecenia `history` wygląda następująco:
+Podstawowa składnia polecenia `history` jest następująca:
 
-```bash
+```csh
 history [options] [arguments]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji dla polecenia `history`:
-
 - `-c` - Czyści historię poleceń.
-- `-d <n>` - Usuwa polecenie o numerze `n` z historii.
-- `-a` - Zapisuje bieżącą historię do pliku historii.
-- `-r` - Odczytuje historię z pliku historii.
+- `-n` - Ładuje historię poleceń z pliku, ale nie zapisuje aktualnej historii.
+- `-r` - Odczytuje historię poleceń z pliku.
+- `-w` - Zapisuje aktualną historię poleceń do pliku.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `history`:
-
-1. **Wyświetlenie całej historii poleceń:**
-   ```bash
+1. **Wyświetlenie historii poleceń:**
+   ```csh
    history
    ```
 
-2. **Wyświetlenie ostatnich 10 poleceń:**
-   ```bash
-   history 10
-   ```
-
-3. **Usunięcie konkretnego polecenia z historii (np. polecenie o numerze 5):**
-   ```bash
-   history -d 5
-   ```
-
-4. **Czyszczenie całej historii poleceń:**
-   ```bash
+2. **Czyszczenie historii poleceń:**
+   ```csh
    history -c
    ```
 
-5. **Zapisanie bieżącej historii do pliku:**
-   ```bash
-   history -a
+3. **Zapisanie historii do pliku:**
+   ```csh
+   history -w
+   ```
+
+4. **Wczytanie historii z pliku:**
+   ```csh
+   history -r
+   ```
+
+5. **Wyświetlenie ostatnich 10 poleceń:**
+   ```csh
+   history 10
    ```
 
 ## Tips
-- Użyj `!n`, aby szybko wykonać polecenie o numerze `n` z historii.
-- Możesz przeszukiwać historię, używając kombinacji klawiszy `Ctrl + r`, aby znaleźć wcześniejsze polecenia.
-- Regularnie czyść historię, aby uniknąć przechowywania niepotrzebnych lub wrażliwych informacji.
+- Regularnie przeglądaj historię, aby szybko odnaleźć wcześniej używane polecenia.
+- Użyj opcji `-w`, aby zapisać historię przed zamknięciem sesji, co pozwoli na jej późniejsze wykorzystanie.
+- Pamiętaj, że czyszczenie historii za pomocą `-c` jest nieodwracalne, więc używaj tej opcji ostrożnie.

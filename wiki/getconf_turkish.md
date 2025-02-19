@@ -1,44 +1,42 @@
-# [Linux] Bash getconf Kullanımı: Sistem yapılandırma bilgilerini görüntüleme
+# [Linux] C Shell (csh) getconf Kullanımı: Sistem yapılandırma bilgilerini görüntüleme
 
-## Overview
-`getconf` komutu, sistem yapılandırma bilgilerini görüntülemek için kullanılır. Bu komut, işletim sisteminin çeşitli parametreleri hakkında bilgi almanıza olanak tanır.
+## Genel Bakış
+`getconf` komutu, sistem yapılandırma bilgilerini görüntülemek için kullanılır. Bu komut, belirli bir sistem özelliği hakkında bilgi edinmek isteyen kullanıcılar için oldukça faydalıdır.
 
-## Usage
+## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-
-```bash
-getconf [options] [arguments]
+```csh
+getconf [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `-a`: Tüm yapılandırma bilgilerini listeler.
-- `NAME`: Belirli bir yapılandırma parametresinin değerini döndürür. `NAME` yerine sorgulamak istediğiniz parametre adını yazmalısınız.
+## Yaygın Seçenekler
+- `-a`: Tüm yapılandırma değişkenlerini listeler.
+- `VAR`: Belirli bir yapılandırma değişkeninin değerini döndürür. Örneğin, `PAGE_SIZE` gibi.
 
-## Common Examples
-Aşağıda `getconf` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+## Yaygın Örnekler
+Aşağıda `getconf` komutunun bazı pratik örnekleri bulunmaktadır:
 
-### Tüm Yapılandırma Bilgilerini Görüntüleme
-```bash
+### Örnek 1: Tüm yapılandırma değişkenlerini listeleme
+```csh
 getconf -a
 ```
 
-### Belirli Bir Parametreyi Sorgulama
-Örneğin, `PAGE_SIZE` parametresini sorgulamak için:
-```bash
+### Örnek 2: Sayfa boyutunu öğrenme
+```csh
 getconf PAGE_SIZE
 ```
 
-### Sistem Bellek Sayfalarının Boyutunu Öğrenme
-```bash
-getconf PAGESIZE
+### Örnek 3: Maksimum dosya adı uzunluğunu öğrenme
+```csh
+getconf NAME_MAX /
 ```
 
-### Maksimum Dosya Boyutunu Öğrenme
-```bash
-getconf _SC_PAGESIZE
+### Örnek 4: Sistem belleği hakkında bilgi alma
+```csh
+getconf _PHYS_PAGES
 ```
 
-## Tips
-- `getconf -a` komutunu kullanarak sistemdeki tüm yapılandırma parametrelerini hızlıca görüntüleyebilirsiniz.
-- Belirli bir parametre hakkında bilgi almak için doğru ismi kullanmaya dikkat edin; yanlış isimler hata mesajı verebilir.
-- `man getconf` komutunu kullanarak daha fazla bilgi ve seçenekler için yardım alabilirsiniz.
+## İpuçları
+- `getconf -a` komutunu kullanarak sistemde mevcut olan tüm yapılandırma değişkenlerini hızlıca görebilirsiniz.
+- Belirli bir değişken hakkında bilgi almak için, değişken adını doğru yazdığınızdan emin olun.
+- `man getconf` komutunu kullanarak daha fazla bilgi ve seçenekler hakkında detaylı bilgi edinebilirsiniz.

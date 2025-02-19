@@ -1,13 +1,13 @@
-# [Linux] Bash free użycie: wyświetlanie informacji o pamięci
+# [Linux] C Shell (csh) free użycie: wyświetlanie informacji o pamięci
 
 ## Overview
-Polecenie `free` w systemie Linux służy do wyświetlania informacji o użyciu pamięci w systemie. Pokazuje ilość pamięci fizycznej, pamięci wymiany oraz buforów i pamięci podręcznej, co pozwala na monitorowanie stanu pamięci w czasie rzeczywistym.
+Polecenie `free` w systemie Linux służy do wyświetlania informacji o pamięci systemowej, w tym pamięci RAM oraz pamięci wymiany (swap). Umożliwia to użytkownikom monitorowanie wykorzystania pamięci w systemie.
 
 ## Usage
-Podstawowa składnia polecenia `free` wygląda następująco:
+Podstawowa składnia polecenia `free` jest następująca:
 
-```bash
-free [opcje]
+```csh
+free [options] [arguments]
 ```
 
 ## Common Options
@@ -15,38 +15,32 @@ free [opcje]
 - `-m` – wyświetla wartości w megabajtach.
 - `-g` – wyświetla wartości w gigabajtach.
 - `-s [sekundy]` – aktualizuje wyjście co określoną liczbę sekund.
-- `-t` – pokazuje całkowitą ilość pamięci.
 
 ## Common Examples
 1. Wyświetlenie podstawowych informacji o pamięci:
-   ```bash
+   ```csh
    free
    ```
 
-2. Wyświetlenie informacji w formacie czytelnym dla człowieka:
-   ```bash
+2. Wyświetlenie informacji o pamięci w formacie czytelnym dla człowieka:
+   ```csh
    free -h
    ```
 
-3. Wyświetlenie informacji w megabajtach:
-   ```bash
+3. Wyświetlenie informacji o pamięci w megabajtach:
+   ```csh
    free -m
    ```
 
-4. Monitorowanie pamięci co 5 sekund:
-   ```bash
+4. Wyświetlenie informacji o pamięci co 5 sekund:
+   ```csh
    free -s 5
    ```
 
-5. Wyświetlenie całkowitej ilości pamięci:
-   ```bash
-   free -t
-   ```
-
 ## Tips
-- Używaj opcji `-h`, aby łatwiej interpretować wyniki, zwłaszcza na systemach z dużą ilością pamięci.
+- Używaj opcji `-h`, aby łatwiej zrozumieć, ile pamięci jest dostępne i używane.
 - Regularne monitorowanie pamięci może pomóc w identyfikacji problemów z wydajnością systemu.
-- Możesz użyć polecenia `watch`, aby automatycznie aktualizować wyjście `free`, co może być przydatne w czasie analizy pamięci:
-  ```bash
-  watch free -h
-  ```
+- Możesz połączyć `free` z innymi poleceniami, takimi jak `watch`, aby na bieżąco obserwować zmiany w pamięci:
+   ```csh
+   watch free -h
+   ```

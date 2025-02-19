@@ -1,22 +1,21 @@
-# [Linux] Bash mkdir Kullanımı: Klasör oluşturma komutu
+# [Linux] C Shell (csh) mkdir Kullanımı: Klasör oluşturma komutu
 
-## Genel Bakış
-`mkdir` komutu, Linux ve diğer Unix benzeri işletim sistemlerinde yeni dizinler (klasörler) oluşturmak için kullanılır. Kullanıcıların dosya sisteminde düzenli bir yapı kurmalarına yardımcı olur.
+## Overview
+`mkdir` komutu, belirtilen isimle yeni bir dizin (klasör) oluşturmak için kullanılır. Bu komut, dosya sisteminde düzen sağlamak ve dosyaları kategorize etmek için oldukça yararlıdır.
 
-## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
-
-```bash
-mkdir [seçenekler] [argümanlar]
+## Usage
+Temel sözdizimi şu şekildedir:
+```
+mkdir [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-p`: Ara dizinleri de oluşturur. Eğer belirtilen dizin yolundaki üst dizinler yoksa, bunları da oluşturur.
-- `-v`: Oluşturulan dizinlerin adlarını ekrana yazdırır.
-- `-m`: Oluşturulan dizin için belirli bir izin ayarı yapar.
+## Common Options
+- `-p`: Ana dizin yoksa, ara dizinleri de oluşturarak yeni dizin oluşturur.
+- `-m`: Oluşturulan dizinin izinlerini belirlemek için kullanılır. Örneğin, `-m 755` ile dizin oluşturulabilir.
+- `-v`: Oluşturulan dizin hakkında bilgi verir. Her oluşturulan dizin için bir çıktı gösterir.
 
-## Yaygın Örnekler
-Aşağıda `mkdir` komutunun bazı pratik örnekleri verilmiştir:
+## Common Examples
+Aşağıda `mkdir` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
 1. Basit bir dizin oluşturma:
    ```bash
@@ -33,17 +32,17 @@ Aşağıda `mkdir` komutunun bazı pratik örnekleri verilmiştir:
    mkdir -p ana_klasor/alt_klasor
    ```
 
-4. Oluşturulan dizinlerin adlarını görüntüleme:
+4. Belirli izinlerle dizin oluşturma:
+   ```bash
+   mkdir -m 755 ozel_klasor
+   ```
+
+5. Oluşturulan dizinler hakkında bilgi alma:
    ```bash
    mkdir -v yeni_klasor
    ```
 
-5. Belirli izinlerle dizin oluşturma:
-   ```bash
-   mkdir -m 755 yeni_klasor
-   ```
-
-## İpuçları
-- Dizin oluştururken `-p` seçeneğini kullanarak, birden fazla katmanlı dizin yapısını tek seferde oluşturabilirsiniz.
-- Dizin adlarını verirken boşluk kullanıyorsanız, dizin adını tırnak içine almayı unutmayın.
-- Dizin oluşturma işlemi sırasında hata almamak için, önceden var olup olmadığını kontrol etmek iyi bir uygulamadır.
+## Tips
+- Dizin oluştururken, dizin adlarının geçerli karakterler içerdiğinden emin olun.
+- `-p` seçeneğini kullanarak, birden fazla katmanlı dizin yapısını kolayca oluşturabilirsiniz.
+- Dizin oluşturma işlemlerini otomatikleştirmek için bir betik dosyası yazmayı düşünebilirsiniz.

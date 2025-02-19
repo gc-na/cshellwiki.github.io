@@ -1,45 +1,44 @@
-# [Linux] Bash depmod: Quản lý các mô-đun kernel
+# [Linux] C Shell (csh) depmod: [quản lý mô-đun nhân]
 
-## Overview
-Lệnh `depmod` được sử dụng để tạo ra và cập nhật các tệp tin phụ thuộc cho các mô-đun kernel trong hệ thống Linux. Nó giúp xác định các mô-đun nào cần thiết cho các mô-đun khác và tạo ra một tệp tin danh sách các phụ thuộc này, giúp kernel có thể tải các mô-đun một cách chính xác.
+## Tổng quan
+Lệnh `depmod` được sử dụng để tạo ra một tệp tin phụ thuộc cho các mô-đun nhân Linux. Nó phân tích các mô-đun và xác định các phụ thuộc giữa chúng, giúp hệ thống biết được mô-đun nào cần được tải trước khi một mô-đun khác có thể được sử dụng.
 
-## Usage
+## Cú pháp
 Cú pháp cơ bản của lệnh `depmod` như sau:
-
-```bash
+```
 depmod [options] [arguments]
 ```
 
-## Common Options
-- `-a`: Tạo tệp tin phụ thuộc cho tất cả các mô-đun hiện có.
-- `-n`: Chỉ hiển thị các thông tin mà không thực hiện cập nhật.
-- `-F <file>`: Sử dụng tệp tin kernel khác thay vì tệp tin mặc định.
-- `-e`: Chỉ định để bỏ qua các mô-đun không tồn tại.
+## Các tùy chọn phổ biến
+- `-a`: Tạo tệp tin phụ thuộc cho tất cả các mô-đun.
+- `-n`: Chỉ hiển thị thông tin mà không thực hiện thay đổi nào.
+- `-F <file>`: Sử dụng tệp tin phiên bản cụ thể.
+- `-r`: Xóa các tệp tin phụ thuộc đã tồn tại.
 
-## Common Examples
-Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `depmod`:
+## Ví dụ phổ biến
+Dưới đây là một số ví dụ thực tế khi sử dụng lệnh `depmod`:
 
-1. **Cập nhật các tệp tin phụ thuộc cho tất cả các mô-đun:**
-   ```bash
+1. Tạo tệp tin phụ thuộc cho tất cả các mô-đun:
+   ```csh
    depmod -a
    ```
 
-2. **Hiển thị thông tin mà không cập nhật:**
-   ```bash
+2. Hiển thị thông tin mà không thay đổi gì:
+   ```csh
    depmod -n
    ```
 
-3. **Sử dụng tệp tin kernel cụ thể:**
-   ```bash
-   depmod -F /path/to/kernel
+3. Sử dụng tệp tin phiên bản cụ thể:
+   ```csh
+   depmod -F /path/to/version_file
    ```
 
-4. **Bỏ qua các mô-đun không tồn tại:**
-   ```bash
-   depmod -e
+4. Xóa các tệp tin phụ thuộc đã tồn tại:
+   ```csh
+   depmod -r
    ```
 
-## Tips
-- Hãy chắc chắn rằng bạn có quyền truy cập root khi sử dụng `depmod`, vì lệnh này thường yêu cầu quyền quản trị.
-- Sử dụng tùy chọn `-n` để kiểm tra các thay đổi trước khi thực hiện cập nhật thực tế.
-- Thường xuyên chạy `depmod -a` sau khi cài đặt hoặc gỡ bỏ mô-đun để đảm bảo rằng các tệp tin phụ thuộc luôn được cập nhật.
+## Mẹo
+- Hãy chắc chắn rằng bạn có quyền truy cập root khi chạy lệnh `depmod` để đảm bảo rằng các mô-đun có thể được cập nhật đúng cách.
+- Sử dụng tùy chọn `-n` để kiểm tra các thay đổi trước khi thực hiện, giúp bạn tránh được các lỗi không mong muốn.
+- Thường xuyên chạy `depmod` sau khi cài đặt hoặc xóa mô-đun để giữ cho hệ thống của bạn luôn được cập nhật.

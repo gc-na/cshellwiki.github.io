@@ -1,43 +1,44 @@
-# [Linux] Bash time Kullanımı: Komutların çalışma süresini ölçme
+# [Linux] C Shell (csh) time Kullanımı: Komutların çalışma süresini ölçme
 
-## Genel Bakış
-`time` komutu, bir komutun veya bir programın ne kadar süre çalıştığını ölçmek için kullanılır. Bu komut, çalıştırdığınız işlemin toplam süresini, kullanıcı süresini ve sistem süresini gösterir.
+## Overview
+`time` komutu, bir komutun veya bir programın çalıştırılması sırasında geçen süreyi ölçmek için kullanılır. Bu komut, belirli bir işlemin ne kadar sürdüğünü görmek isteyen kullanıcılar için oldukça faydalıdır.
 
-## Kullanım
-`time` komutunun temel sözdizimi aşağıdaki gibidir:
+## Usage
+Temel sözdizimi aşağıdaki gibidir:
 
-```bash
-time [seçenekler] [argümanlar]
+```csh
+time [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-p`: Daha basit bir çıktı formatı sağlar.
-- `-o [dosya]`: Çıktıyı belirtilen dosyaya yönlendirir.
-- `-v`: Daha ayrıntılı bir çıktı verir.
+## Common Options
+- `-p`: Standart POSIX çıktısını kullanarak süreyi gösterir.
+- `-o <file>`: Çıktıyı belirtilen dosyaya yönlendirir.
+- `-v`: Daha ayrıntılı bir zamanlama raporu verir.
 
-## Yaygın Örnekler
+## Common Examples
+Aşağıda `time` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
 1. Basit bir komutun süresini ölçme:
-   ```bash
+   ```csh
    time ls -l
    ```
 
-2. Bir dosyayı kopyalama işleminin süresini ölçme:
-   ```bash
-   time cp büyük_dosya.txt yedek_dosya.txt
+2. Bir betiğin çalıştırılma süresini ölçme:
+   ```csh
+   time ./my_script.sh
    ```
 
 3. Çıktıyı bir dosyaya yönlendirme:
-   ```bash
-   time -o zaman.txt sleep 5
+   ```csh
+   time -o output.txt ./my_program
    ```
 
-4. Ayrıntılı süre bilgisi alma:
-   ```bash
-   time -v find / -name "*.txt"
+4. Daha ayrıntılı bir zamanlama raporu alma:
+   ```csh
+   time -v ./my_command
    ```
 
-## İpuçları
-- `time` komutunu, uzun süren işlemleri optimize etmek için kullanabilirsiniz.
-- Çıktıyı bir dosyaya yönlendirmek, zaman verilerini daha sonra analiz etmenizi sağlar.
-- `-p` seçeneği ile daha okunabilir bir çıktı almak, hızlı bir değerlendirme yapmanıza yardımcı olur.
+## Tips
+- `time` komutunu, uzun süren işlemleri analiz etmek için kullanarak performans iyileştirmeleri yapabilirsiniz.
+- Çıktıyı bir dosyaya yönlendirmek, zamanlamaları karşılaştırmak için faydalı olabilir.
+- `time` komutunu sık kullanılan komutlarınızla birleştirerek, hangi işlemlerin daha fazla zaman aldığını kolayca görebilirsiniz.

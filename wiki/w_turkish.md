@@ -1,20 +1,18 @@
-# [Linux] Bash w Kullanımı: Kullanıcı oturum bilgilerini görüntüleme
+# [Linux] C Shell (csh) w Kullanımı: Kullanıcıların oturum bilgilerini gösterir
 
 ## Overview
-`w` komutu, sistemdeki kullanıcıların oturum bilgilerini ve sistemin genel durumunu gösterir. Bu komut, hangi kullanıcıların oturum açtığını, ne kadar süredir oturumda olduklarını ve hangi işlemleri gerçekleştirdiklerini hızlı bir şekilde görüntülemenizi sağlar.
+`w` komutu, sistemdeki kullanıcıların oturum bilgilerini gösterir. Bu komut, hangi kullanıcıların oturum açtığını, ne kadar süredir oturumda olduklarını ve hangi işlemleri yürüttüklerini görüntülemenizi sağlar.
 
 ## Usage
 Temel sözdizimi şu şekildedir:
-
-```bash
+```
 w [options] [arguments]
 ```
 
 ## Common Options
 - `-h`: Başlık satırını gizler.
-- `-s`: Daha kısa bir çıktı sağlar.
-- `-f`: Kullanıcıların hangi terminal üzerinden oturum açtığını gösterir.
-- `-u`: Kullanıcıların hangi işlemleri gerçekleştirdiğini gösterir.
+- `-s`: Daha kısa bir çıktı formatı sağlar.
+- `-f`: Kullanıcıların tam adlarını gösterir.
 
 ## Common Examples
 Aşağıda `w` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
@@ -29,22 +27,17 @@ Aşağıda `w` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
    w -h
    ```
 
-3. Daha kısa bir çıktı ile kullanıcı bilgilerini görüntüleme:
+3. Daha kısa bir çıktı almak için:
    ```bash
    w -s
    ```
 
-4. Kullanıcıların hangi terminal üzerinden oturum açtığını gösterme:
+4. Kullanıcıların tam adlarını gösterme:
    ```bash
    w -f
    ```
 
-5. Kullanıcıların hangi işlemleri gerçekleştirdiğini gösterme:
-   ```bash
-   w -u
-   ```
-
 ## Tips
-- `w` komutunu sık sık kullanarak sistemdeki aktif kullanıcıları ve onların aktivitelerini takip edebilirsiniz.
-- Çıktıyı daha okunabilir hale getirmek için `-s` seçeneğini kullanmayı düşünebilirsiniz.
-- Eğer sistemdeki kullanıcıların oturum sürelerini izlemek istiyorsanız, `w` komutunu düzenli aralıklarla çalıştırabilirsiniz.
+- `w` komutunu sık sık kullanarak sistemdeki aktif kullanıcıları takip edebilirsiniz.
+- Çıktıyı daha okunabilir hale getirmek için `-s` seçeneğini kullanmayı deneyin.
+- Eğer yalnızca belirli bir kullanıcı hakkında bilgi almak istiyorsanız, `who` komutunu da göz önünde bulundurabilirsiniz.

@@ -1,44 +1,44 @@
-# [Linux] Bash mesg Uso: Controla mensagens de terminal
+# [Linux] C Shell (csh) mesg Uso: Controlar mensagens de terminal
 
 ## Overview
-O comando `mesg` é utilizado para controlar se um terminal pode receber mensagens de outros usuários. Ele permite que você habilite ou desabilite a recepção de mensagens, o que é útil em ambientes multiusuário.
+O comando `mesg` é utilizado para controlar se o terminal pode receber mensagens de outros usuários. Ele permite que você habilite ou desabilite a capacidade de receber mensagens de outros usuários que tentam se comunicar com você através do comando `write`.
 
 ## Usage
-A sintaxe básica do comando é a seguinte:
+A sintaxe básica do comando `mesg` é a seguinte:
 
-```bash
+```csh
 mesg [opções] [argumentos]
 ```
 
 ## Common Options
 - `y`: Permite que outros usuários enviem mensagens para o seu terminal.
 - `n`: Impede que outros usuários enviem mensagens para o seu terminal.
-- `--help`: Mostra uma mensagem de ajuda com informações sobre o uso do comando.
+- `--help`: Exibe uma mensagem de ajuda com informações sobre o uso do comando.
 
 ## Common Examples
 Aqui estão alguns exemplos práticos do uso do comando `mesg`:
 
 1. **Permitir mensagens de outros usuários:**
-   ```bash
+   ```csh
    mesg y
    ```
 
 2. **Impedir mensagens de outros usuários:**
-   ```bash
+   ```csh
    mesg n
    ```
 
 3. **Verificar o estado atual das mensagens:**
-   ```bash
+   ```csh
    mesg
    ```
 
-4. **Mostrar ajuda sobre o comando:**
-   ```bash
+4. **Exibir ajuda sobre o comando:**
+   ```csh
    mesg --help
    ```
 
 ## Tips
-- Use `mesg n` quando você estiver em um ambiente de trabalho e não quiser ser interrompido por mensagens de outros usuários.
-- Lembre-se de que, ao permitir mensagens, você pode receber comunicações importantes de colegas.
-- Verifique o estado atual das mensagens com o comando `mesg` sem argumentos para saber se você está disponível para receber mensagens.
+- Use `mesg y` quando você estiver disponível e quiser receber mensagens de outros usuários.
+- Utilize `mesg n` em ambientes de trabalho onde você precisa de concentração e não deseja ser interrompido.
+- Verifique o estado atual das mensagens antes de iniciar uma sessão de trabalho para garantir que suas preferências estejam definidas corretamente.

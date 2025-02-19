@@ -1,12 +1,12 @@
-# [Linux] Bash nslookup Utilisation : Résoudre des noms de domaine en adresses IP
+# [Linux] C Shell (csh) nslookup Utilisation : Résoudre des noms de domaine en adresses IP
 
 ## Overview
-La commande `nslookup` est un outil de ligne de commande utilisé pour interroger les serveurs DNS afin de résoudre les noms de domaine en adresses IP. Elle permet également d'obtenir des informations sur les enregistrements DNS associés à un domaine.
+La commande `nslookup` est utilisée pour interroger les serveurs DNS afin de résoudre des noms de domaine en adresses IP. Elle permet également d'obtenir des informations sur les enregistrements DNS associés à un domaine.
 
 ## Usage
 La syntaxe de base de la commande `nslookup` est la suivante :
 
-```bash
+```csh
 nslookup [options] [arguments]
 ```
 
@@ -14,34 +14,37 @@ nslookup [options] [arguments]
 Voici quelques options courantes pour `nslookup` :
 
 - `-type=TYPE` : Spécifie le type d'enregistrement DNS à interroger (par exemple, A, AAAA, MX).
-- `-timeout=SEC` : Définit le délai d'attente en secondes pour une réponse du serveur DNS.
+- `-timeout=SEC` : Définit le temps d'attente pour une réponse en secondes.
 - `-retry=NUM` : Définit le nombre de tentatives de requête en cas d'échec.
-- `server` : Permet de spécifier un serveur DNS différent pour la requête.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `nslookup` :
 
-1. **Résoudre un nom de domaine en adresse IP :**
-   ```bash
+1. Résoudre un nom de domaine en adresse IP :
+
+   ```csh
    nslookup example.com
    ```
 
-2. **Obtenir des enregistrements MX d'un domaine :**
-   ```bash
+2. Obtenir des enregistrements MX pour un domaine :
+
+   ```csh
    nslookup -type=MX example.com
    ```
 
-3. **Interroger un serveur DNS spécifique :**
-   ```bash
+3. Spécifier un serveur DNS particulier pour la requête :
+
+   ```csh
    nslookup example.com 8.8.8.8
    ```
 
-4. **Changer le type d'enregistrement à AAAA pour obtenir l'adresse IPv6 :**
-   ```bash
+4. Changer le type d'enregistrement à interroger (par exemple, pour obtenir les enregistrements AAAA) :
+
+   ```csh
    nslookup -type=AAAA example.com
    ```
 
 ## Tips
-- Utilisez `nslookup` en mode interactif en tapant simplement `nslookup` sans arguments pour entrer dans le mode de requête, où vous pouvez effectuer plusieurs recherches sans redémarrer la commande.
-- Vérifiez toujours les enregistrements DNS avec plusieurs serveurs pour confirmer la validité des résultats.
-- Pensez à utiliser l'option `-timeout` pour ajuster le délai d'attente si vous interrogez des serveurs DNS lents.
+- Utilisez `nslookup` avec un serveur DNS fiable pour obtenir des résultats précis.
+- Vérifiez les enregistrements DNS de votre propre domaine pour diagnostiquer des problèmes de connectivité.
+- Combinez `nslookup` avec d'autres outils comme `dig` pour des analyses plus approfondies.

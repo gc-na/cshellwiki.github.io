@@ -1,49 +1,47 @@
-# [Linux] Bash sqlite3 Cách sử dụng: Truy cập và quản lý cơ sở dữ liệu SQLite
+# [Hệ điều hành] C Shell (csh) sqlite3 Cách sử dụng: Truy cập và quản lý cơ sở dữ liệu SQLite
 
-## Overview
-Lệnh `sqlite3` cho phép người dùng tương tác với cơ sở dữ liệu SQLite từ dòng lệnh. Nó cung cấp một giao diện để thực hiện các truy vấn SQL, quản lý cơ sở dữ liệu và thực hiện các thao tác khác liên quan đến dữ liệu.
+## Tổng quan
+Lệnh `sqlite3` được sử dụng để truy cập và quản lý cơ sở dữ liệu SQLite. Đây là một công cụ dòng lệnh mạnh mẽ cho phép người dùng thực hiện các truy vấn SQL, tạo và quản lý cơ sở dữ liệu một cách dễ dàng.
 
-## Usage
+## Cách sử dụng
 Cú pháp cơ bản của lệnh `sqlite3` như sau:
-```bash
-sqlite3 [options] [arguments]
+```
+sqlite3 [tùy chọn] [đối số]
 ```
 
-## Common Options
+## Các tùy chọn phổ biến
 - `-help`: Hiển thị thông tin trợ giúp về lệnh.
 - `-version`: Hiển thị phiên bản của SQLite.
-- `-init <file>`: Chạy một tệp SQL khi khởi động.
-- `-batch`: Chạy trong chế độ không tương tác, không hiển thị thông báo.
+- `-init <file>`: Chạy các lệnh SQL từ tệp tin đã chỉ định khi khởi động.
+- `-batch`: Chạy trong chế độ không tương tác, không hiển thị thông tin đầu ra.
 
-## Common Examples
-Dưới đây là một số ví dụ thực tế khi sử dụng lệnh `sqlite3`:
-
-1. **Tạo một cơ sở dữ liệu mới**:
+## Ví dụ thường gặp
+1. **Tạo một cơ sở dữ liệu mới:**
    ```bash
    sqlite3 mydatabase.db
    ```
 
-2. **Chạy một tệp SQL**:
-   ```bash
-   sqlite3 mydatabase.db < script.sql
-   ```
-
-3. **Tạo một bảng mới**:
+2. **Thực hiện một truy vấn SQL để tạo bảng:**
    ```bash
    sqlite3 mydatabase.db "CREATE TABLE users (id INTEGER PRIMARY KEY, name TEXT);"
    ```
 
-4. **Chèn dữ liệu vào bảng**:
+3. **Chèn dữ liệu vào bảng:**
    ```bash
-   sqlite3 mydatabase.db "INSERT INTO users (name) VALUES ('Nguyen Van A');"
+   sqlite3 mydatabase.db "INSERT INTO users (name) VALUES ('Alice');"
    ```
 
-5. **Truy vấn dữ liệu từ bảng**:
+4. **Lấy dữ liệu từ bảng:**
    ```bash
    sqlite3 mydatabase.db "SELECT * FROM users;"
    ```
 
-## Tips
-- Sử dụng tùy chọn `-batch` khi bạn muốn chạy nhiều lệnh mà không cần tương tác.
-- Luôn sao lưu cơ sở dữ liệu trước khi thực hiện các thao tác thay đổi lớn.
-- Tìm hiểu cú pháp SQL để tận dụng tối đa khả năng của `sqlite3`.
+5. **Xuất dữ liệu ra tệp tin:**
+   ```bash
+   sqlite3 mydatabase.db ".output output.txt" ".dump" ".output stdout"
+   ```
+
+## Mẹo
+- Sử dụng chế độ `-batch` khi bạn muốn chạy nhiều lệnh mà không cần tương tác.
+- Luôn sao lưu cơ sở dữ liệu trước khi thực hiện các thay đổi lớn.
+- Sử dụng lệnh `.tables` để xem danh sách các bảng trong cơ sở dữ liệu hiện tại.

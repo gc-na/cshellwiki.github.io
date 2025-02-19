@@ -1,12 +1,12 @@
-# [Linux] Bash service sử dụng: Quản lý dịch vụ hệ thống
+# [Hệ điều hành] C Shell (csh) service: Quản lý dịch vụ hệ thống
 
 ## Overview
-Lệnh `service` trong Bash được sử dụng để quản lý các dịch vụ hệ thống trên các hệ điều hành dựa trên Linux. Nó cho phép người dùng khởi động, dừng, và kiểm tra trạng thái của các dịch vụ đang chạy trên máy chủ.
+Lệnh `service` trong C Shell (csh) được sử dụng để quản lý các dịch vụ hệ thống. Nó cho phép người dùng khởi động, dừng, hoặc kiểm tra trạng thái của các dịch vụ đang chạy trên hệ thống.
 
 ## Usage
 Cú pháp cơ bản của lệnh `service` như sau:
-```bash
-service [tên_dịch_vụ] [hành_động]
+```
+service [options] [arguments]
 ```
 
 ## Common Options
@@ -17,32 +17,32 @@ service [tên_dịch_vụ] [hành_động]
 - `reload`: Tải lại cấu hình của dịch vụ mà không cần khởi động lại.
 
 ## Common Examples
-- Khởi động dịch vụ Apache:
-```bash
-service apache2 start
-```
+- Khởi động một dịch vụ:
+  ```csh
+  service httpd start
+  ```
 
-- Dừng dịch vụ MySQL:
-```bash
-service mysql stop
-```
+- Dừng một dịch vụ:
+  ```csh
+  service httpd stop
+  ```
 
-- Khởi động lại dịch vụ Nginx:
-```bash
-service nginx restart
-```
+- Kiểm tra trạng thái của một dịch vụ:
+  ```csh
+  service httpd status
+  ```
 
-- Kiểm tra trạng thái của dịch vụ SSH:
-```bash
-service ssh status
-```
+- Khởi động lại một dịch vụ:
+  ```csh
+  service httpd restart
+  ```
 
-- Tải lại cấu hình của dịch vụ Cron:
-```bash
-service cron reload
-```
+- Tải lại cấu hình của một dịch vụ:
+  ```csh
+  service httpd reload
+  ```
 
 ## Tips
-- Luôn kiểm tra trạng thái của dịch vụ sau khi thực hiện các hành động khởi động hoặc dừng để đảm bảo rằng dịch vụ hoạt động như mong muốn.
-- Sử dụng quyền `sudo` nếu bạn không có quyền truy cập để quản lý dịch vụ.
+- Luôn kiểm tra trạng thái của dịch vụ sau khi thực hiện các thao tác khởi động hoặc dừng để đảm bảo rằng dịch vụ hoạt động như mong muốn.
+- Sử dụng quyền quản trị (root) khi thực hiện các lệnh liên quan đến dịch vụ để tránh gặp phải lỗi quyền truy cập.
 - Tham khảo tài liệu của từng dịch vụ để biết thêm thông tin về các tùy chọn và cấu hình cụ thể.

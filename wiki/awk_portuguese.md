@@ -1,10 +1,10 @@
-# [Linux] Bash awk uso: Processamento e análise de texto
+# [Linux] C Shell (csh) awk Uso: Processamento de texto e análise de dados
 
 ## Overview
-O comando `awk` é uma poderosa ferramenta de processamento de texto e análise de dados em arquivos e streams. Ele permite que você manipule e extraia informações de linhas de texto de forma eficiente, utilizando uma linguagem de programação embutida.
+O comando `awk` é uma poderosa ferramenta de processamento de texto e análise de dados, amplamente utilizada em scripts e na linha de comando. Ele permite a manipulação de arquivos de texto, extraindo e formatando informações de maneira eficiente.
 
 ## Usage
-A sintaxe básica do comando `awk` é:
+A sintaxe básica do comando `awk` é a seguinte:
 
 ```bash
 awk [opções] [argumentos]
@@ -13,44 +13,45 @@ awk [opções] [argumentos]
 ## Common Options
 Aqui estão algumas opções comuns do `awk`:
 
-- `-F`: Define o delimitador de campo. Por exemplo, `-F,` para arquivos CSV.
-- `-v`: Define variáveis antes da execução do script.
-- `-f`: Especifica um arquivo que contém um script `awk`.
+- `-F`: Define o delimitador de campo. Por exemplo, `-F,` usa a vírgula como delimitador.
+- `-v`: Define uma variável antes da execução do script `awk`.
+- `-f`: Especifica um arquivo que contém o script `awk`.
 - `-W`: Ativa opções específicas do `awk`, como compatibilidade com versões anteriores.
 
 ## Common Examples
+Aqui estão alguns exemplos práticos do uso do `awk`:
 
-### Exemplo 1: Imprimir a primeira coluna de um arquivo
+1. **Imprimir a primeira coluna de um arquivo:**
+
 ```bash
 awk '{print $1}' arquivo.txt
 ```
-Este comando imprime a primeira coluna de cada linha do arquivo `arquivo.txt`.
 
-### Exemplo 2: Usar um delimitador de vírgula
+2. **Usar um delimitador diferente (por exemplo, vírgula):**
+
 ```bash
-awk -F, '{print $2}' dados.csv
+awk -F, '{print $2}' arquivo.csv
 ```
-Aqui, o comando imprime a segunda coluna de um arquivo CSV, onde as colunas são separadas por vírgulas.
 
-### Exemplo 3: Filtrar linhas com uma condição
-```bash
-awk '$3 > 50 {print $1, $2}' arquivo.txt
-```
-Este exemplo imprime a primeira e a segunda coluna apenas das linhas onde o valor da terceira coluna é maior que 50.
+3. **Contar o número de linhas em um arquivo:**
 
-### Exemplo 4: Contar o número de linhas
 ```bash
 awk 'END {print NR}' arquivo.txt
 ```
-Este comando conta e imprime o número total de linhas no arquivo `arquivo.txt`.
 
-### Exemplo 5: Somar valores de uma coluna
+4. **Filtrar linhas que contêm uma palavra específica:**
+
 ```bash
-awk '{soma += $2} END {print soma}' arquivo.txt
+awk '/palavra/' arquivo.txt
 ```
-Aqui, o comando soma todos os valores da segunda coluna e imprime o total ao final.
+
+5. **Somar valores de uma coluna específica:**
+
+```bash
+awk '{soma += $3} END {print soma}' arquivo.txt
+```
 
 ## Tips
-- Sempre verifique o delimitador correto ao trabalhar com arquivos de texto; use a opção `-F` para definir isso claramente.
-- Teste seus scripts `awk` em pequenos arquivos antes de aplicá-los em grandes conjuntos de dados para evitar erros.
-- Utilize variáveis para armazenar resultados intermediários e tornar seus scripts mais legíveis e organizados.
+- Sempre verifique o delimitador de campo ao trabalhar com arquivos CSV ou outros formatos delimitados.
+- Utilize a opção `-v` para passar variáveis ao seu script `awk`, facilitando a personalização.
+- Teste seus comandos `awk` em pequenos arquivos antes de aplicá-los em conjuntos de dados maiores para evitar erros.

@@ -1,50 +1,45 @@
-# [Linux] Bash exec usage : Exécute une commande dans le contexte du shell actuel
+# [Linux] C Shell (csh) exec : Exécute une commande en remplaçant le shell actuel
 
 ## Overview
-La commande `exec` dans Bash est utilisée pour exécuter une commande en remplaçant le shell actuel par le processus de la commande spécifiée. Cela signifie que, après l'exécution de la commande, le shell ne revient pas à l'état précédent. C'est utile pour lancer des programmes sans créer de nouveaux processus.
+La commande `exec` dans C Shell (csh) est utilisée pour exécuter une commande en remplaçant le shell actuel. Cela signifie que le processus du shell en cours est remplacé par le processus de la commande exécutée, et aucune nouvelle instance de shell n'est créée.
 
 ## Usage
 La syntaxe de base de la commande `exec` est la suivante :
 
-```bash
+```
 exec [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes pour `exec` :
+Voici quelques options courantes pour la commande `exec` :
 
-- `-a` : Permet de spécifier un nom de programme différent pour le processus exécuté.
-- `-l` : Lance le programme comme un shell de connexion.
-- `-p` : Préserve l'environnement du shell actuel.
+- `-l` : Lance la commande en tant que shell de connexion.
+- `-c` : Exécute la commande dans un environnement vide.
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de `exec` :
+Voici quelques exemples pratiques de l'utilisation de la commande `exec` :
 
-1. **Remplacer le shell actuel par un autre programme :**
-   ```bash
+1. Remplacer le shell actuel par un autre programme :
+   ```csh
    exec /bin/ls
    ```
-   Cela exécutera `ls` et remplacera le shell actuel par ce processus.
 
-2. **Utiliser `exec` pour rediriger la sortie :**
-   ```bash
-   exec > output.txt
-   ```
-   Cela redirige toute la sortie standard vers le fichier `output.txt`.
-
-3. **Lancer un script avec `exec` :**
-   ```bash
+2. Exécuter un script en remplaçant le shell :
+   ```csh
    exec ./mon_script.sh
    ```
-   Cela exécutera `mon_script.sh` et remplacera le shell courant.
 
-4. **Exécuter un programme avec un nom différent :**
-   ```bash
-   exec -a nouveau_nom /bin/bash
+3. Lancer un shell de connexion :
+   ```csh
+   exec -l /bin/csh
    ```
-   Cela lancera un nouveau shell Bash sous le nom `nouveau_nom`.
+
+4. Exécuter une commande avec un environnement vide :
+   ```csh
+   exec -c /bin/env
+   ```
 
 ## Tips
-- Utilisez `exec` lorsque vous souhaitez remplacer le shell actuel par un programme, surtout dans des scripts où vous ne voulez pas revenir au shell après l'exécution.
-- Soyez prudent avec `exec` car une fois exécuté, vous ne pourrez pas revenir au shell précédent.
-- Pensez à rediriger les sorties si vous exécutez des commandes qui produisent beaucoup de texte, pour éviter de saturer votre terminal.
+- Utilisez `exec` lorsque vous souhaitez remplacer le shell actuel sans revenir à celui-ci après l'exécution de la commande.
+- Soyez prudent avec `exec`, car une fois que vous l'avez utilisé pour remplacer le shell, vous ne pourrez pas revenir en arrière.
+- Testez vos commandes dans un shell séparé avant d'utiliser `exec` pour éviter de perdre l'accès à votre session actuelle.

@@ -1,50 +1,51 @@
-# [Linux] Bash printf 用法: 格式化输出文本
+# [操作系统] C Shell (csh) printf 用法: 格式化输出文本
 
 ## 概述
-`printf` 命令用于格式化输出文本。它允许用户按照指定的格式打印字符串、数字和其他数据类型，提供比 `echo` 更加灵活的输出选项。
+`printf` 命令用于格式化输出文本到标准输出。它允许用户以特定的格式打印字符串、数字和其他数据类型，提供比 `echo` 更强大的格式化功能。
 
 ## 用法
 基本语法如下：
-```bash
-printf [options] [arguments]
+```
+printf [选项] [参数]
 ```
 
 ## 常用选项
-- `-v var`: 将输出存储到变量 `var` 中，而不是打印到标准输出。
-- `-f format`: 指定输出的格式。
-- `--help`: 显示帮助信息。
-- `--version`: 显示版本信息。
+- `-v`：将输出存储到变量中，而不是直接打印。
+- `-f`：指定格式字符串。
+- `-n`：不输出换行符。
 
 ## 常见示例
 1. **基本字符串输出**
-   ```bash
+   ```csh
    printf "Hello, World!\n"
    ```
 
 2. **格式化数字输出**
-   ```bash
-   printf "Number: %d\n" 42
+   ```csh
+   printf "The value of pi is approximately %.2f\n" 3.14159
    ```
 
-3. **输出浮点数**
-   ```bash
-   printf "Float: %.2f\n" 3.14159
+3. **输出多个变量**
+   ```csh
+   set name = "Alice"
+   set age = 30
+   printf "%s is %d years old.\n" $name $age
    ```
 
-4. **输出多个变量**
-   ```bash
-   name="Alice"
-   age=30
-   printf "%s is %d years old.\n" "$name" "$age"
+4. **将输出存储到变量**
+   ```csh
+   set output = `printf "Formatted output: %.1f\n" 3.14159`
+   echo $output
    ```
 
-5. **使用变量存储输出**
-   ```bash
-   output=$(printf "Hello, %s!\n" "Bob")
-   echo "$output"
+5. **使用格式化输出表格**
+   ```csh
+   printf "%-10s %-10s\n" "Name" "Age"
+   printf "%-10s %-10d\n" "Bob" 25
+   printf "%-10s %-10d\n" "Alice" 30
    ```
 
 ## 提示
-- 使用格式说明符（如 `%s`, `%d`, `%f`）可以确保输出的格式符合预期。
-- 注意换行符 `\n` 的使用，以确保输出的整洁。
-- 可以使用 `-v` 选项将格式化的输出存储到变量中，便于后续使用。
+- 使用 `%.nf` 来控制浮点数的小数位数，`n` 为小数位数。
+- 在格式字符串中，使用 `%s` 来输出字符串，使用 `%d` 来输出整数。
+- 确保在格式字符串中包含正确数量的格式说明符，以避免输出错误。

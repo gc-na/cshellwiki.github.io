@@ -1,50 +1,48 @@
-# [Linux] Bash hostname gebruik: Toont of stelt de naam van de host in
+# [Linux] C Shell (csh) hostname gebruik: Toon de naam van de host
 
 ## Overzicht
-De `hostname` opdracht in Bash wordt gebruikt om de naam van de computer (host) weer te geven of in te stellen. Dit kan nuttig zijn voor netwerkconfiguraties en identificatie van systemen binnen een netwerk.
+De `hostname` opdracht in C Shell (csh) wordt gebruikt om de naam van de computer of het netwerk waarop je werkt weer te geven. Dit kan nuttig zijn voor identificatie en netwerkbeheer.
 
 ## Gebruik
 De basis syntaxis van de `hostname` opdracht is als volgt:
 
-```bash
-hostname [opties] [argumenten]
+```csh
+hostname [options] [arguments]
 ```
 
 ## Veelvoorkomende Opties
-- `-a`, `--alias`: Toont de alias van de host.
-- `-d`, `--domain`: Toont de domeinnaam van de host.
-- `-f`, `--fqdn`: Toont de volledig gekwalificeerde domeinnaam (FQDN).
-- `-i`, `--ip-address`: Toont het IP-adres van de host.
-- `-s`, `--short`: Toont alleen de korte naam van de host.
+- `-s`: Toon alleen de korte naam van de host.
+- `-f`: Toon de volledig gekwalificeerde domeinnaam (FQDN).
+- `-i`: Toon het IP-adres van de host.
 
 ## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van de `hostname` opdracht:
 
-1. **Toon de huidige hostnaam:**
-   ```bash
+1. **Toon de naam van de host:**
+
+   ```csh
    hostname
    ```
 
-2. **Toon de volledig gekwalificeerde domeinnaam:**
-   ```bash
+2. **Toon de korte naam van de host:**
+
+   ```csh
+   hostname -s
+   ```
+
+3. **Toon de volledig gekwalificeerde domeinnaam:**
+
+   ```csh
    hostname -f
    ```
 
-3. **Toon het IP-adres van de host:**
-   ```bash
+4. **Toon het IP-adres van de host:**
+
+   ```csh
    hostname -i
    ```
 
-4. **Stel een nieuwe hostnaam in:**
-   ```bash
-   sudo hostname nieuwe-naam
-   ```
-
-5. **Toon de domeinnaam van de host:**
-   ```bash
-   hostname -d
-   ```
-
 ## Tips
-- Gebruik `sudo` om de hostnaam te wijzigen, aangezien dit meestal beheerdersrechten vereist.
-- Vergeet niet om de netwerkservices opnieuw te starten na het wijzigen van de hostnaam voor een correcte werking.
-- Controleer altijd de huidige hostnaam met `hostname` voordat je wijzigingen aanbrengt om verwarring te voorkomen.
+- Gebruik `hostname -f` als je de volledige domeinnaam nodig hebt voor netwerkconfiguraties.
+- Controleer regelmatig de hostnaam om te zorgen dat deze correct is ingesteld, vooral na netwerkwijzigingen.
+- Combineer de `hostname` opdracht met andere netwerkopdrachten voor een beter overzicht van je systeemconfiguratie.

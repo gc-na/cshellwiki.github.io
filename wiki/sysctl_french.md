@@ -1,45 +1,47 @@
-# [Linux] Bash sysctl utilisation : Gérer les paramètres du noyau
+# [Linux] C Shell (csh) sysctl : Commande pour gérer les paramètres du noyau
 
 ## Overview
-La commande `sysctl` permet de modifier et d'afficher les paramètres du noyau Linux à la volée. Elle est souvent utilisée pour ajuster des paramètres de performance ou de sécurité sans avoir à redémarrer le système.
+La commande `sysctl` est utilisée pour examiner et modifier les paramètres du noyau en temps réel sur les systèmes Unix et Linux. Elle permet aux utilisateurs de configurer divers aspects du système d'exploitation sans avoir besoin de redémarrer.
 
 ## Usage
 La syntaxe de base de la commande `sysctl` est la suivante :
 
-```bash
+```csh
 sysctl [options] [arguments]
 ```
 
 ## Common Options
-- `-a` : Affiche tous les paramètres du noyau et leurs valeurs.
-- `-w` : Permet de modifier un paramètre du noyau.
-- `-p` : Charge les paramètres à partir d'un fichier de configuration.
+Voici quelques options courantes pour la commande `sysctl` :
+
+- `-a` : Affiche tous les paramètres du noyau.
 - `-n` : Affiche uniquement la valeur d'un paramètre sans son nom.
+- `-w` : Modifie la valeur d'un paramètre.
+- `-p` : Charge les paramètres à partir d'un fichier de configuration.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `sysctl` :
 
 1. **Afficher tous les paramètres du noyau :**
-   ```bash
+   ```csh
    sysctl -a
    ```
 
-2. **Modifier un paramètre du noyau :**
-   ```bash
-   sysctl -w net.ipv4.ip_forward=1
-   ```
-
-3. **Charger les paramètres à partir d'un fichier :**
-   ```bash
-   sysctl -p /etc/sysctl.conf
-   ```
-
-4. **Afficher la valeur d'un paramètre spécifique :**
-   ```bash
+2. **Afficher la valeur d'un paramètre spécifique :**
+   ```csh
    sysctl -n vm.swappiness
    ```
 
+3. **Modifier la valeur d'un paramètre :**
+   ```csh
+   sysctl -w vm.swappiness=10
+   ```
+
+4. **Charger les paramètres à partir d'un fichier :**
+   ```csh
+   sysctl -p /etc/sysctl.conf
+   ```
+
 ## Tips
-- Toujours vérifier les valeurs des paramètres avant de les modifier pour éviter des comportements indésirables.
-- Utilisez `sysctl -p` après avoir modifié le fichier de configuration `/etc/sysctl.conf` pour appliquer les changements sans redémarrer.
-- Faites attention aux paramètres critiques qui peuvent affecter la sécurité ou la stabilité du système.
+- Avant de modifier un paramètre, il est conseillé de vérifier sa valeur actuelle pour éviter des changements indésirables.
+- Utilisez `sysctl -a` pour explorer les paramètres disponibles et comprendre leur impact potentiel sur le système.
+- Les modifications effectuées avec `sysctl -w` ne sont pas persistantes après un redémarrage, sauf si elles sont ajoutées au fichier de configuration `/etc/sysctl.conf`.

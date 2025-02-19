@@ -1,48 +1,45 @@
-# [Linux] Bash fdisk Penggunaan: Mengelola Partisi Disk
+# [Sistem Operasi] C Shell (csh) fdisk Penggunaan: Mengelola partisi disk
 
 ## Overview
-Perintah `fdisk` adalah alat yang digunakan untuk mengelola tabel partisi disk pada sistem operasi berbasis Linux. Dengan `fdisk`, pengguna dapat membuat, menghapus, dan mengubah ukuran partisi pada hard disk atau media penyimpanan lainnya.
+Perintah `fdisk` digunakan untuk mengelola partisi pada disk. Dengan `fdisk`, pengguna dapat membuat, menghapus, dan mengubah ukuran partisi, serta melihat informasi tentang partisi yang ada.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `fdisk`:
 
-```
+```csh
 fdisk [options] [arguments]
 ```
 
 ## Common Options
-- `-l`: Menampilkan semua partisi yang ada pada disk.
-- `-u`: Menggunakan ukuran sektor dalam satuan sektor.
+- `-l`: Menampilkan daftar semua partisi yang ada pada disk.
 - `-n`: Membuat partisi baru.
 - `-d`: Menghapus partisi yang ada.
-- `-s`: Menampilkan ukuran partisi.
+- `-s`: Menampilkan ukuran partisi dalam blok.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `fdisk`:
 
-1. **Menampilkan daftar partisi pada disk:**
-   ```bash
+1. **Menampilkan daftar partisi:**
+   ```csh
    fdisk -l
    ```
 
 2. **Membuat partisi baru:**
-   ```bash
-   fdisk /dev/sda
+   ```csh
+   fdisk -n /dev/sda
    ```
-   Setelah menjalankan perintah ini, Anda akan masuk ke mode interaktif `fdisk`, di mana Anda dapat menggunakan perintah seperti `n` untuk membuat partisi baru.
 
 3. **Menghapus partisi:**
-   ```bash
-   fdisk /dev/sda
+   ```csh
+   fdisk -d /dev/sda1
    ```
-   Masuk ke mode interaktif dan gunakan perintah `d` untuk menghapus partisi yang diinginkan.
 
 4. **Menampilkan ukuran partisi:**
-   ```bash
+   ```csh
    fdisk -s /dev/sda1
    ```
 
 ## Tips
-- Selalu cadangkan data penting sebelum melakukan perubahan pada partisi untuk menghindari kehilangan data.
-- Gunakan perintah `man fdisk` untuk mendapatkan informasi lebih lanjut tentang opsi dan penggunaannya.
-- Pastikan Anda memiliki hak akses yang diperlukan (biasanya sebagai root) untuk melakukan perubahan pada partisi.
+- Selalu cadangkan data penting sebelum melakukan perubahan pada partisi.
+- Gunakan `fdisk` dengan hati-hati, karena kesalahan dapat mengakibatkan kehilangan data.
+- Setelah mengubah partisi, pastikan untuk memformat partisi baru sebelum menggunakannya.

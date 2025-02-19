@@ -1,50 +1,43 @@
-# [Linux] Bash dirs Uso: Muestra el contenido de la pila de directorios
+# [Linux] C Shell (csh) dirs Uso: Muestra el contenido de la pila de directorios
 
 ## Overview
-El comando `dirs` en Bash se utiliza para mostrar el contenido de la pila de directorios. Esta pila permite a los usuarios navegar fácilmente entre diferentes directorios sin tener que escribir la ruta completa cada vez. Es especialmente útil para usuarios que cambian frecuentemente de directorio.
+El comando `dirs` en C Shell (csh) se utiliza para mostrar el contenido de la pila de directorios. Esta pila permite a los usuarios navegar fácilmente entre diferentes directorios sin tener que escribir la ruta completa cada vez.
 
 ## Usage
-La sintaxis básica del comando `dirs` es la siguiente:
+La sintaxis básica del comando es la siguiente:
 
-```bash
-dirs [opciones] [argumentos]
+```csh
+dirs [options] [arguments]
 ```
 
 ## Common Options
-- `-l`: Muestra la lista de directorios en formato largo, incluyendo la ruta completa.
-- `-p`: Muestra la lista de directorios en formato de una sola línea, separando cada directorio con un espacio.
-- `+n`: Muestra el directorio en la posición `n` de la pila.
-- `-n`: Muestra el directorio en la posición `n` de la pila, contando desde el final.
+- `-l`: Muestra la lista de directorios en formato largo, mostrando las rutas completas.
+- `-p`: Muestra la lista de directorios en formato de una sola línea, sin espacios adicionales.
 
 ## Common Examples
-Aquí hay algunos ejemplos prácticos del uso del comando `dirs`:
 
 1. **Mostrar la pila de directorios actual:**
-   ```bash
+   ```csh
    dirs
    ```
 
 2. **Mostrar la pila de directorios en formato largo:**
-   ```bash
+   ```csh
    dirs -l
    ```
 
-3. **Mostrar el directorio en la segunda posición de la pila:**
-   ```bash
-   dirs +1
-   ```
-
-4. **Mostrar el directorio en la última posición de la pila:**
-   ```bash
-   dirs -1
-   ```
-
-5. **Mostrar la pila de directorios en una sola línea:**
-   ```bash
+3. **Mostrar la pila de directorios en una sola línea:**
+   ```csh
    dirs -p
+   ```
+
+4. **Ejemplo de uso después de cambiar de directorio:**
+   ```csh
+   cd /usr/local
+   dirs
    ```
 
 ## Tips
 - Utiliza `pushd` y `popd` junto con `dirs` para gestionar la pila de directorios de manera más eficiente.
-- Recuerda que la pila de directorios se mantiene durante la sesión de terminal, así que puedes cambiar entre directorios sin perder la referencia de los anteriores.
-- Puedes combinar `dirs` con otros comandos para crear scripts que automatizan la navegación entre directorios.
+- Recuerda que `dirs` solo muestra la pila de directorios si has utilizado `pushd` para añadir directorios a la misma.
+- Si trabajas frecuentemente con varios directorios, considera crear alias para comandos que incluyan `dirs` para un acceso más rápido.

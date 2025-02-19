@@ -1,58 +1,47 @@
-# [Linux] Bash paste Usage: Combine lines of files
+# [Linux] C Shell (csh) paste用法: Combine lines of files
 
 ## Overview
-The `paste` command in Bash is used to merge lines of files side by side. It takes input from one or more files and concatenates corresponding lines, allowing for easy comparison or combination of data.
+The `paste` command in C Shell (csh) is used to merge lines of files horizontally. It takes multiple input files and combines their corresponding lines into a single line, separating them with a specified delimiter (default is a tab).
 
 ## Usage
 The basic syntax of the `paste` command is as follows:
 
-```bash
+```csh
 paste [options] [arguments]
 ```
 
 ## Common Options
-- `-d`: Specify a delimiter to use between the pasted lines instead of the default tab.
-- `-s`: Paste the lines of each file sequentially rather than in parallel.
-- `-z`: Treat input lines as null-terminated instead of newline-terminated.
+- `-d`: Specify a custom delimiter instead of the default tab.
+- `-s`: Paste the lines of each file sequentially instead of in parallel.
+- `-z`: Treats the input as null-terminated strings instead of newline-terminated.
 
 ## Common Examples
 
-### Example 1: Basic Usage
-To paste two files side by side using the default tab delimiter:
+1. **Basic usage with two files**:
+   Combine lines from `file1.txt` and `file2.txt`:
+   ```csh
+   paste file1.txt file2.txt
+   ```
 
-```bash
-paste file1.txt file2.txt
-```
+2. **Using a custom delimiter**:
+   Combine lines from `file1.txt` and `file2.txt` with a comma as the delimiter:
+   ```csh
+   paste -d ',' file1.txt file2.txt
+   ```
 
-### Example 2: Using a Custom Delimiter
-To use a comma as a delimiter instead of the default tab:
+3. **Sequential pasting**:
+   Combine lines from `file1.txt` into a single line, pasting them one after the other:
+   ```csh
+   paste -s file1.txt
+   ```
 
-```bash
-paste -d, file1.txt file2.txt
-```
-
-### Example 3: Sequential Pasting
-To paste the contents of a single file sequentially:
-
-```bash
-paste -s file1.txt
-```
-
-### Example 4: Pasting Multiple Files
-To paste multiple files together:
-
-```bash
-paste file1.txt file2.txt file3.txt
-```
-
-### Example 5: Null-terminated Input
-To paste files that use null characters as line terminators:
-
-```bash
-paste -z file1.txt file2.txt
-```
+4. **Pasting with null-terminated strings**:
+   Combine files treating input as null-terminated:
+   ```csh
+   paste -z file1.txt file2.txt
+   ```
 
 ## Tips
-- When using custom delimiters, ensure that the chosen character does not appear in the data to avoid confusion.
-- The `-s` option can be particularly useful when you want to create a single line from multiple lines in a file.
-- Remember that `paste` will only combine lines up to the length of the shortest file; any extra lines in longer files will be ignored.
+- When using custom delimiters, ensure that the delimiter does not appear in the original files to avoid confusion.
+- Use the `-s` option when you want to create a single line output from a file, which can be useful for summarizing data.
+- If you are combining many files, consider using wildcards (e.g., `*.txt`) to simplify your command.

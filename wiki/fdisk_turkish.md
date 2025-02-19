@@ -1,56 +1,48 @@
-# [Linux] Bash fdisk Kullanımı: Disk bölümlerini yönetme aracı
+# [Linux] C Shell (csh) fdisk Kullanımı: Disk bölümlerini yönetme aracı
 
 ## Genel Bakış
-`fdisk`, Linux sistemlerinde disk bölümlerini yönetmek için kullanılan bir komut satırı aracıdır. Bu komut, disklerin bölümlendirilmesi, mevcut bölümlerin görüntülenmesi ve yeni bölümlerin oluşturulması gibi işlemleri gerçekleştirmek için kullanılır.
+`fdisk`, disk bölümlerini yönetmek için kullanılan bir komuttur. Bu komut, disk üzerinde yeni bölümler oluşturma, mevcut bölümleri silme veya düzenleme gibi işlemleri gerçekleştirmeye olanak tanır. Genellikle disk yapılandırmalarını değiştirmek veya yeni bir işletim sistemi yüklemek için kullanılır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-
-```bash
+```
 fdisk [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-l`: Tüm diskleri ve bölümlerini listelemek için kullanılır.
-- `-u`: Bölüm boyutlarını sektör cinsinden görüntülemek için kullanılır.
-- `-n`: Yeni bir bölüm oluşturmak için kullanılır.
-- `-d`: Mevcut bir bölümü silmek için kullanılır.
-- `-p`: Mevcut bölümlerin bilgilerini görüntülemek için kullanılır.
+- `-l`: Tüm diskleri ve bölümleri listele.
+- `-u`: Bölüm boyutlarını sektör cinsinden göster.
+- `-n`: Yeni bir bölüm oluştur.
+- `-d`: Mevcut bir bölümü sil.
+- `-p`: Mevcut bölümleri görüntüle.
 
 ## Yaygın Örnekler
 Aşağıda `fdisk` komutunun bazı pratik örnekleri bulunmaktadır:
 
 ### Tüm Diskleri Listeleme
-Tüm diskleri ve bölümlerini listelemek için:
-
-```bash
+```
 fdisk -l
 ```
 
-### Yeni Bölüm Oluşturma
-Belirli bir diskte yeni bir bölüm oluşturmak için `fdisk` komutunu çalıştırın:
-
-```bash
+### Yeni Bir Bölüm Oluşturma
+```
 fdisk /dev/sda
 ```
-Ardından, `n` tuşuna basarak yeni bir bölüm oluşturma adımlarını takip edin.
+Bu komut, `/dev/sda` diskinde yeni bir bölüm oluşturmak için `fdisk` aracını başlatır. Ardından, komut isteminde gerekli adımları takip edebilirsiniz.
 
-### Mevcut Bölümü Silme
-Bir bölümü silmek için:
-
-```bash
-fdisk /dev/sda
+### Mevcut Bölümleri Görüntüleme
 ```
-Ardından, `d` tuşuna basarak silmek istediğiniz bölümü seçin.
-
-### Bölüm Bilgilerini Görüntüleme
-Mevcut bölümlerin bilgilerini görüntülemek için:
-
-```bash
 fdisk -p /dev/sda
 ```
+Bu komut, `/dev/sda` diskindeki mevcut bölümleri gösterir.
+
+### Bir Bölümü Silme
+```
+fdisk /dev/sda
+```
+Yine, bu komut ile `fdisk` aracını başlatıp silmek istediğiniz bölümü seçebilirsiniz.
 
 ## İpuçları
 - `fdisk` kullanmadan önce önemli verilerinizi yedeklemeyi unutmayın; yanlış işlemler veri kaybına neden olabilir.
-- `fdisk` ile çalışırken dikkatli olun; yanlış bir bölüm silme veya oluşturma işlemi sisteminizi etkileyebilir.
-- Disk bölümleme işlemlerinden sonra, değişikliklerin etkili olabilmesi için sistemi yeniden başlatmanız gerekebilir.
+- Disk bölümlerini düzenlerken dikkatli olun; yanlış bir işlem sistemin çalışmamasına yol açabilir.
+- `fdisk` komutunu kullanmadan önce, hangi disk üzerinde işlem yapacağınızı kesin olarak belirleyin.

@@ -1,46 +1,44 @@
-# [Linux] Bash tty utilisation : afficher le nom du terminal
+# [Linux] C Shell (csh) tty : afficher le terminal actuel
 
 ## Overview
-La commande `tty` (teletypewriter) est utilisée pour afficher le nom du terminal connecté à l'utilisateur. Elle permet de savoir sur quel terminal vous travaillez, ce qui peut être utile dans divers scénarios de gestion de sessions.
+La commande `tty` est utilisée pour afficher le fichier de périphérique du terminal actuel. Cela permet aux utilisateurs de savoir quel terminal ils utilisent dans leur session de shell.
 
 ## Usage
-La syntaxe de base de la commande `tty` est la suivante :
+La syntaxe de base de la commande est la suivante :
 
 ```
 tty [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes pour la commande `tty` :
-
-- `-s` : Exécute la commande en mode silencieux, sans afficher le nom du terminal.
-- `--help` : Affiche l'aide et les options disponibles pour la commande.
+- `-s` : Exécute la commande silencieusement. Aucun message n'est affiché, mais le code de retour indique si le terminal est un terminal de type tty.
+- `--help` : Affiche un message d'aide avec les options disponibles.
 - `--version` : Affiche la version de la commande `tty`.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `tty` :
 
-1. **Afficher le nom du terminal actuel :**
-   ```bash
+1. **Afficher le terminal actuel :**
+   ```csh
    tty
    ```
 
 2. **Utiliser l'option silencieuse :**
-   ```bash
+   ```csh
    tty -s
    ```
 
-3. **Afficher l'aide de la commande :**
-   ```bash
+3. **Afficher l'aide :**
+   ```csh
    tty --help
    ```
 
-4. **Afficher la version de la commande :**
-   ```bash
+4. **Vérifier la version de la commande :**
+   ```csh
    tty --version
    ```
 
 ## Tips
-- Utilisez `tty` pour vérifier rapidement sur quel terminal vous êtes connecté, surtout si vous travaillez avec plusieurs sessions.
-- La commande est particulièrement utile dans les scripts pour conditionner des actions en fonction du terminal actif.
-- N'oubliez pas que l'option `-s` peut être utilisée dans des scripts pour éviter d'afficher des informations inutiles à l'utilisateur.
+- Utilisez `tty` pour vérifier rapidement quel terminal vous utilisez, surtout si vous travaillez avec plusieurs sessions.
+- L'option `-s` est utile dans les scripts pour éviter d'afficher des messages inutiles tout en vérifiant si le terminal est valide.
+- Pensez à utiliser `tty` en combinaison avec d'autres commandes pour des scripts plus complexes qui nécessitent des informations sur le terminal.

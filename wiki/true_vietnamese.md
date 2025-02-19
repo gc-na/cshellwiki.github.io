@@ -1,42 +1,42 @@
-# [Linux] Bash true cách sử dụng: Trả về giá trị đúng
+# [Hệ điều hành] C Shell (csh) true: [trả về giá trị đúng]
 
-## Overview
-Lệnh `true` trong Bash là một lệnh đơn giản, nó chỉ trả về giá trị đúng (0) mà không thực hiện bất kỳ hành động nào khác. Lệnh này thường được sử dụng trong các kịch bản để biểu thị thành công hoặc để tạo ra một lệnh không làm gì.
+## Tổng quan
+Lệnh `true` trong C Shell (csh) được sử dụng để trả về giá trị đúng (0). Nó thường được sử dụng trong các kịch bản và lệnh để xác nhận rằng một lệnh đã thành công hoặc để tạo ra một lệnh không làm gì cả.
 
-## Usage
+## Cú pháp
 Cú pháp cơ bản của lệnh `true` như sau:
-
-```bash
+```
 true [options] [arguments]
 ```
 
-## Common Options
-Lệnh `true` không có tùy chọn nào đặc biệt. Nó chỉ đơn giản là lệnh `true` mà không cần tham số.
+## Tùy chọn phổ biến
+- `-h`, `--help`: Hiển thị thông tin trợ giúp về lệnh `true`.
+- `--version`: Hiển thị phiên bản của lệnh `true`.
 
-## Common Examples
+## Ví dụ phổ biến
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `true`:
 
-1. **Kiểm tra lệnh thành công**:
-   ```bash
-   if true; then
-       echo "Lệnh thành công!"
-   fi
+1. **Sử dụng `true` trong một kịch bản**:
+   ```csh
+   if (condition) then
+       true
+   else
+       echo "Condition is false"
+   endif
    ```
 
-2. **Sử dụng trong vòng lặp**:
-   ```bash
-   while true; do
-       echo "Đang chạy..."
-       sleep 1
-   done
+2. **Kết hợp với lệnh `&&`**:
+   ```csh
+   command1 && true
    ```
 
-3. **Kết hợp với lệnh khác**:
-   ```bash
-   command && true
+3. **Sử dụng trong vòng lặp**:
+   ```csh
+   while (true) 
+       echo "This will run indefinitely"
+   end
    ```
 
-## Tips
-- Lệnh `true` rất hữu ích khi bạn cần một lệnh không làm gì nhưng vẫn cần một giá trị trả về thành công.
-- Bạn có thể sử dụng `true` trong các kịch bản để tạo ra các điều kiện hoặc vòng lặp vô hạn khi cần thiết.
-- Kết hợp `true` với các lệnh khác có thể giúp bạn kiểm soát luồng thực thi trong các kịch bản phức tạp hơn.
+## Mẹo
+- Sử dụng `true` để tạo ra các lệnh không làm gì cả, giúp bạn kiểm tra các điều kiện mà không làm gián đoạn quá trình.
+- Kết hợp `true` với các lệnh khác trong kịch bản để đảm bảo rằng các lệnh trước đó đã thành công trước khi tiếp tục thực hiện lệnh tiếp theo.

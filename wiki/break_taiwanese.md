@@ -1,51 +1,48 @@
-# [Linux] Bash break 用法: 結束迴圈
+# [台灣] C Shell (csh) break 用法: 終止迴圈執行
 
 ## Overview
-`break` 命令用於結束一個迴圈的執行，無論是 `for`、`while` 還是 `until` 迴圈。當 `break` 被執行時，控制權會跳出當前的迴圈，繼續執行迴圈後的程式碼。
+`break` 命令用於終止在 C Shell 中的迴圈執行。當執行到 `break` 時，當前的迴圈會立即停止，並且控制權會轉移到迴圈之後的程式碼。
 
 ## Usage
 基本語法如下：
-```bash
-break [n]
 ```
-其中 `n` 是可選的，表示要跳出幾層迴圈，預設為 1。
+break [options] [arguments]
+```
 
 ## Common Options
-- `n`: 指定要跳出幾層迴圈。若不指定，則只跳出最近的一層迴圈。
+- `-n` : 指定要終止的迴圈層級，預設為 1，表示終止最近的迴圈。
 
 ## Common Examples
 
-### 結束最近的迴圈
-```bash
-for i in {1..5}; do
-    if [ $i -eq 3 ]; then
+### 終止最近的迴圈
+```csh
+foreach i (1 2 3 4 5)
+    if ($i == 3) then
         break
-    fi
+    endif
     echo $i
-done
+end
 ```
-這段程式碼會輸出 1 和 2，當 `i` 等於 3 時，迴圈會被 `break` 結束。
+這個範例會輸出 `1` 和 `2`，當 `i` 等於 `3` 時，迴圈會被終止。
 
-### 跳出多層迴圈
-```bash
-outer_loop: for i in {1..3}; do
-    for j in {1..3}; do
-        if [ $i -eq 2 ] && [ $j -eq 2 ]; then
-            break outer_loop
-        fi
-        echo "$i $j"
-    done
-done
+### 終止多層迴圈
+```csh
+set outer = 1
+while ($outer <= 2)
+    set inner = 1
+    while ($inner <= 5)
+        if ($inner == 3) then
+            break 2
+        endif
+        echo "Outer: $outer, Inner: $inner"
+        @ inner++
+    end
+    @ outer++
+end
 ```
-這段程式碼會在 `i` 和 `j` 都等於 2 時，跳出外層迴圈，輸出結果為：
-```
-1 1
-1 2
-1 3
-2 1
-2 2
-```
+這個範例會輸出 `Outer: 1, Inner: 1` 和 `Outer: 1, Inner: 2`，當 `inner` 等於 `3` 時，兩層迴圈都會被終止。
 
 ## Tips
-- 使用標籤（label）來跳出多層迴圈時，確保標籤名稱是唯一的，這樣可以避免混淆。
-- 在使用 `break` 時，注意迴圈的邏輯，確保在適當的條件下才會結束迴圈，避免無限迴圈的情況發生。
+- 使用 `break` 時，確保你了解當前的迴圈層級，特別是在多層迴圈的情況下。
+- 可以搭配 `continue` 命令使用，以控制迴圈的執行流程。
+- 測試你的程式碼，確保 `break` 的使用不會導致意外的行為。

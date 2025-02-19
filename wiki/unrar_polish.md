@@ -1,58 +1,49 @@
-# [Linux] Bash unrar użycie: Rozpakowywanie archiwów RAR
+# [Linux] C Shell (csh) unrar użycie: Rozpakowywanie archiwów RAR
 
-## Overview
-Polecenie `unrar` służy do rozpakowywania plików archiwum w formacie RAR. Umożliwia użytkownikom wydobywanie zawartości archiwów RAR, co jest przydatne w przypadku pobierania plików z Internetu lub pracy z danymi skompresowanymi.
+## Przegląd
+Polecenie `unrar` służy do rozpakowywania plików archiwów w formacie RAR. Umożliwia użytkownikom łatwe wydobywanie zawartości z archiwów, co jest szczególnie przydatne w przypadku pobierania plików z internetu lub zarządzania dużymi zbiorami danych.
 
-## Usage
+## Użycie
 Podstawowa składnia polecenia `unrar` jest następująca:
 
-```bash
+```
 unrar [opcje] [argumenty]
 ```
 
-## Common Options
-Oto kilka powszechnie używanych opcji polecenia `unrar`:
+## Częste opcje
+- `x` – Wydobywa pliki z archiwum do bieżącego katalogu.
+- `e` – Wydobywa pliki z archiwum, ale nie zachowuje struktury katalogów.
+- `l` – Wyświetla listę plików w archiwum.
+- `t` – Sprawdza integralność archiwum.
+- `v` – Wyświetla szczegółowe informacje o plikach w archiwum.
 
-- `x` - Wydobywa pliki z archiwum do bieżącego katalogu, zachowując strukturę folderów.
-- `e` - Wydobywa pliki z archiwum do bieżącego katalogu, nie zachowując struktury folderów.
-- `l` - Wyświetla listę plików w archiwum.
-- `t` - Sprawdza integralność archiwum.
-- `v` - Wyświetla szczegółowe informacje o plikach w archiwum.
-
-## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `unrar`:
-
-1. Aby wydobyć wszystkie pliki z archiwum RAR do bieżącego katalogu, użyj:
-
-   ```bash
+## Przykłady
+1. Aby rozpakować archiwum RAR do bieżącego katalogu:
+   ```csh
    unrar x archiwum.rar
    ```
 
-2. Aby wydobyć pliki z archiwum RAR bez zachowywania struktury folderów, użyj:
-
-   ```bash
+2. Aby wydobyć pliki z archiwum, nie zachowując struktury katalogów:
+   ```csh
    unrar e archiwum.rar
    ```
 
-3. Aby wyświetlić listę plików w archiwum RAR, użyj:
-
-   ```bash
+3. Aby wyświetlić listę plików w archiwum:
+   ```csh
    unrar l archiwum.rar
    ```
 
-4. Aby sprawdzić integralność archiwum RAR, użyj:
-
-   ```bash
+4. Aby sprawdzić integralność archiwum:
+   ```csh
    unrar t archiwum.rar
    ```
 
-5. Aby uzyskać szczegółowe informacje o plikach w archiwum, użyj:
-
-   ```bash
+5. Aby uzyskać szczegółowe informacje o plikach w archiwum:
+   ```csh
    unrar v archiwum.rar
    ```
 
-## Tips
-- Upewnij się, że masz zainstalowane odpowiednie pakiety, aby korzystać z polecenia `unrar`, ponieważ nie zawsze jest domyślnie dostępne w systemie.
-- Zawsze sprawdzaj integralność archiwum przed jego rozpakowaniem, aby uniknąć problemów z uszkodzonymi plikami.
-- Możesz używać opcji `-o+` z poleceniem `unrar`, aby automatycznie nadpisywać istniejące pliki bez pytania.
+## Porady
+- Zawsze sprawdzaj integralność archiwum przed jego rozpakowaniem, aby upewnić się, że pliki nie są uszkodzone.
+- Używaj opcji `e`, gdy nie potrzebujesz zachować struktury katalogów, co może uprościć proces wydobywania.
+- Regularnie aktualizuj program `unrar`, aby mieć dostęp do najnowszych funkcji i poprawek bezpieczeństwa.

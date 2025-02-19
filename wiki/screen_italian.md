@@ -1,62 +1,50 @@
-# [Linux] Bash screen utilizzo: Gestire sessioni di terminale multiple
+# [Linux] C Shell (csh) screen uso equivalente: Gestire sessioni terminale
 
 ## Overview
-Il comando `screen` è uno strumento potente per gestire sessioni di terminale multiple in modo da poter eseguire processi in background e riprendere il controllo delle sessioni in qualsiasi momento. È particolarmente utile per gli utenti che lavorano su server remoti o che desiderano mantenere attive le loro sessioni anche dopo la disconnessione.
+Il comando `screen` è uno strumento potente per gestire sessioni terminali multiple in un'unica finestra. Permette di avviare sessioni di terminale che possono essere staccate e riattaccate, consentendo di continuare a lavorare su processi anche dopo la disconnessione.
 
 ## Usage
-La sintassi di base del comando è la seguente:
+La sintassi di base del comando `screen` è la seguente:
 
-```
+```csh
 screen [options] [arguments]
 ```
 
 ## Common Options
 Ecco alcune opzioni comuni per il comando `screen`:
 
-- `-S <nome>`: Assegna un nome alla sessione, facilitando la gestione delle sessioni multiple.
-- `-d -r`: Disconnette una sessione attiva e la riattacca.
-- `-list`: Mostra un elenco delle sessioni di screen attive.
-- `-L`: Abilita il logging dell'output della sessione in un file.
+- `-S <nome>`: Assegna un nome alla sessione di screen.
+- `-d -r`: Stacca una sessione e la riattacca.
+- `-list`: Mostra tutte le sessioni di screen attive.
+- `-h <numero>`: Imposta il numero di righe di scrollback.
 
 ## Common Examples
+Ecco alcuni esempi pratici dell'uso del comando `screen`:
 
-### Creare una nuova sessione
-Per avviare una nuova sessione di screen, basta digitare:
-```
-screen
-```
+1. **Avviare una nuova sessione di screen:**
+   ```csh
+   screen
+   ```
 
-### Assegnare un nome alla sessione
-Per avviare una sessione con un nome specifico:
-```
-screen -S mia_sessione
-```
+2. **Avviare una sessione di screen con un nome specifico:**
+   ```csh
+   screen -S mia_sessione
+   ```
 
-### Elencare le sessioni attive
-Per vedere tutte le sessioni di screen attive:
-```
-screen -list
-```
+3. **Staccare una sessione di screen:**
+   Premere `Ctrl-a` seguito da `d`.
 
-### Riattaccare una sessione
-Per riattaccare una sessione esistente:
-```
-screen -r mia_sessione
-```
+4. **Elencare tutte le sessioni di screen attive:**
+   ```csh
+   screen -list
+   ```
 
-### Disconnettere e riattaccare
-Per disconnettere una sessione attiva e riattaccarla successivamente:
-```
-screen -d -r mia_sessione
-```
-
-### Abilitare il logging
-Per avviare una sessione con logging attivo:
-```
-screen -L
-```
+5. **Riattaccare una sessione staccata:**
+   ```csh
+   screen -r mia_sessione
+   ```
 
 ## Tips
-- Usa nomi significativi per le sessioni per facilitare la gestione.
-- Ricorda di disconnettere le sessioni quando non sono più necessarie per liberare risorse.
-- Puoi utilizzare le combinazioni di tasti `Ctrl+A` seguito da `D` per disconnettere rapidamente una sessione senza chiuderla.
+- Usa nomi significativi per le tue sessioni per facilitarne la gestione.
+- Ricorda di staccare le sessioni quando hai finito, per liberare risorse.
+- Puoi utilizzare `screen` in combinazione con altri comandi per eseguire script o processi a lungo termine senza dover mantenere il terminale aperto.

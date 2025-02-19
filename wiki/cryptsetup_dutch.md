@@ -1,60 +1,45 @@
-# [Linux] Bash cryptsetup gebruik: Beheer van versleutelde schijven
+# [Linux] C Shell (csh) cryptsetup gebruik: Beheer van versleutelde schijven
 
 ## Overzicht
-De `cryptsetup`-opdracht wordt gebruikt om schijven en partities te beheren die zijn versleuteld met LUKS (Linux Unified Key Setup). Het stelt gebruikers in staat om versleuteling in te schakelen, te configureren en te beheren, waardoor gegevens veilig kunnen worden opgeslagen.
+De `cryptsetup`-opdracht wordt gebruikt voor het beheren van versleutelde schijven en partities op Linux-systemen. Het stelt gebruikers in staat om schijfversleuteling in te schakelen, te configureren en te beheren, wat helpt bij het beschermen van gevoelige gegevens.
 
 ## Gebruik
 De basis syntaxis van de `cryptsetup`-opdracht is als volgt:
 
-```bash
+```shell
 cryptsetup [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- `luksFormat`: Initialiseer een schijf of partitie met LUKS-versleuteling.
-- `luksOpen`: Open een LUKS-versleutelde schijf of partitie.
-- `luksClose`: Sluit een geopende LUKS-versleutelde schijf of partitie.
-- `luksAddKey`: Voeg een extra sleutel toe aan een LUKS-volume.
-- `luksRemoveKey`: Verwijder een sleutel van een LUKS-volume.
+## Veelvoorkomende Opties
+- `luks`: Geeft aan dat de schijfversleuteling met LUKS (Linux Unified Key Setup) moet worden gebruikt.
+- `open`: Opent een versleutelde schijf of partitie.
+- `close`: Sluit een geopende versleutelde schijf of partitie.
+- `create`: Maakt een nieuwe versleutelde schijf of partitie aan.
+- `status`: Toont de status van een versleutelde schijf of partitie.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
 
-### Een LUKS-volume initialiseren
-Om een nieuwe LUKS-versleutelde schijf te maken, gebruik je de volgende opdracht:
-
-```bash
+### Een nieuwe versleutelde schijf maken
+```shell
 cryptsetup luksFormat /dev/sdX
 ```
 
-### Een LUKS-volume openen
-Om een geopende LUKS-schijf toegankelijk te maken, gebruik je:
-
-```bash
-cryptsetup luksOpen /dev/sdX my_encrypted_volume
+### Een versleutelde schijf openen
+```shell
+cryptsetup luksOpen /dev/sdX my_encrypted_disk
 ```
 
-### Een LUKS-volume sluiten
-Om een geopende LUKS-schijf weer te sluiten, gebruik je:
-
-```bash
-cryptsetup luksClose my_encrypted_volume
+### Een versleutelde schijf sluiten
+```shell
+cryptsetup luksClose my_encrypted_disk
 ```
 
-### Een extra sleutel toevoegen
-Om een extra sleutel toe te voegen aan een LUKS-volume, gebruik je:
-
-```bash
-cryptsetup luksAddKey /dev/sdX
-```
-
-### Een sleutel verwijderen
-Om een sleutel van een LUKS-volume te verwijderen, gebruik je:
-
-```bash
-cryptsetup luksRemoveKey /dev/sdX
+### De status van een versleutelde schijf controleren
+```shell
+cryptsetup status my_encrypted_disk
 ```
 
 ## Tips
-- Zorg ervoor dat je een back-up hebt van je sleutels en wachtwoorden, omdat het verlies ervan kan leiden tot onherstelbaar gegevensverlies.
-- Gebruik sterke wachtwoorden voor de versleuteling om de veiligheid van je gegevens te waarborgen.
-- Controleer regelmatig de status van je versleutelde volumes om ervoor te zorgen dat ze correct functioneren.
+- Zorg ervoor dat je een sterke wachtwoordzin gebruikt bij het instellen van LUKS-versleuteling om de beveiliging te maximaliseren.
+- Maak regelmatig back-ups van je gegevens, vooral voordat je wijzigingen aanbrengt in de schijfversleuteling.
+- Gebruik de `--help` optie om meer informatie te krijgen over de beschikbare opties en hun gebruik.

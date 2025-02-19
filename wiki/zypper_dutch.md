@@ -1,7 +1,7 @@
-# [openSUSE] Bash zypper gebruik: Beheer pakketten in openSUSE
+# [OpenSUSE] C Shell (csh) zypper gebruik: Beheer van softwarepakketten
 
 ## Overzicht
-De `zypper` opdracht is een krachtige pakketbeheerder voor openSUSE en andere SUSE-gebaseerde distributies. Het stelt gebruikers in staat om softwarepakketten te installeren, bij te werken en te verwijderen, evenals om systeembronnen te beheren.
+De `zypper` opdracht is een krachtige pakketbeheerder voor OpenSUSE en andere SUSE-gebaseerde distributies. Het stelt gebruikers in staat om softwarepakketten te installeren, bij te werken en te verwijderen, evenals om de systeemrepository's te beheren.
 
 ## Gebruik
 De basis syntaxis van de `zypper` opdracht is als volgt:
@@ -11,48 +11,47 @@ zypper [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `install`: Installeer een of meerdere pakketten.
-- `remove`: Verwijder een of meerdere pakketten.
-- `update`: Werk geïnstalleerde pakketten bij naar de nieuwste versie.
-- `search`: Zoek naar pakketten in de repositories.
-- `info`: Toon informatie over een specifiek pakket.
-- `refresh`: Vernieuw de lijst van beschikbare pakketten en repositories.
+- `install`: Installeert een of meer pakketten.
+- `remove`: Verwijdert een of meer pakketten.
+- `update`: Werkt geïnstalleerde pakketten bij naar de nieuwste versies.
+- `search`: Zoekt naar pakketten in de repository's.
+- `info`: Toont informatie over een specifiek pakket.
+- `repos`: Beheert de softwarebronnen.
 
 ## Veelvoorkomende Voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van `zypper`:
 
-### 1. Een pakket installeren
+### Een pakket installeren
 ```bash
 zypper install pakketnaam
 ```
 
-### 2. Een pakket verwijderen
+### Een pakket verwijderen
 ```bash
 zypper remove pakketnaam
 ```
 
-### 3. Alle geïnstalleerde pakketten bijwerken
+### Geïnstalleerde pakketten bijwerken
 ```bash
 zypper update
 ```
 
-### 4. Zoeken naar een pakket
+### Zoeken naar een pakket
 ```bash
 zypper search zoekterm
 ```
 
-### 5. Informatie over een specifiek pakket opvragen
+### Informatie over een specifiek pakket opvragen
 ```bash
 zypper info pakketnaam
 ```
 
-### 6. De lijst van repositories vernieuwen
+### Lijst van beschikbare repositories bekijken
 ```bash
-zypper refresh
+zypper repos
 ```
 
 ## Tips
-- Gebruik `zypper search` om te controleren of een pakket beschikbaar is voordat je het probeert te installeren.
-- Voer regelmatig `zypper update` uit om je systeem veilig en up-to-date te houden.
-- Maak gebruik van de `--dry-run` optie om te zien wat er zou gebeuren zonder daadwerkelijk wijzigingen aan te brengen.
-- Controleer de documentatie van `zypper` voor meer geavanceerde opties en functies.
+- Controleer regelmatig op updates met `zypper update` om je systeem veilig en up-to-date te houden.
+- Gebruik `zypper search` om snel pakketten te vinden zonder de exacte naam te kennen.
+- Maak gebruik van de optie `--dry-run` om te zien welke acties `zypper` zou ondernemen zonder deze daadwerkelijk uit te voeren.

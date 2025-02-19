@@ -1,7 +1,7 @@
-# [Linux] Bash vigr Penggunaan: Mengedit file konfigurasi sistem
+# [Sistem Operasi] C Shell (csh) vigr Penggunaan: Mengedit file konfigurasi sistem
 
 ## Overview
-Perintah `vigr` digunakan untuk mengedit file konfigurasi sistem, khususnya file `/etc/passwd` dan `/etc/group`, dengan cara yang aman. Perintah ini membuka editor teks yang ditentukan dalam variabel lingkungan `EDITOR`, dan melakukan pemeriksaan sintaksis sebelum menyimpan perubahan, sehingga membantu mencegah kesalahan yang dapat merusak sistem.
+Perintah `vigr` digunakan untuk mengedit file konfigurasi sistem, khususnya file `/etc/group` dan `/etc/passwd`, dengan cara yang aman. Perintah ini membuka file tersebut dalam editor teks yang ditentukan, dan melakukan pemeriksaan untuk memastikan tidak ada kesalahan sintaksis sebelum menyimpan perubahan.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `vigr`:
@@ -11,34 +11,29 @@ vigr [options] [arguments]
 ```
 
 ## Common Options
-- `-h`, `--help`: Menampilkan bantuan dan informasi tentang penggunaan perintah.
-- `-s`, `--safe`: Mengaktifkan mode aman yang memeriksa kesalahan sintaksis sebelum menyimpan file.
-- `-f`, `--file`: Menentukan file yang akan diedit (default adalah `/etc/passwd`).
+- `-s`: Menjalankan `vigr` dalam mode aman, yang akan memeriksa kesalahan sebelum menyimpan.
+- `-f <file>`: Menentukan file yang ingin diedit, jika tidak ingin menggunakan file default.
+- `-m <editor>`: Menentukan editor teks yang akan digunakan untuk mengedit file.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `vigr`:
 
-1. **Mengedit file passwd**:
+1. **Mengedit file `/etc/passwd`:**
    ```bash
-   vigr
+   vigr /etc/passwd
    ```
 
-2. **Mengedit file group**:
+2. **Mengedit file `/etc/group` dengan mode aman:**
    ```bash
-   vigr /etc/group
+   vigr -s /etc/group
    ```
 
-3. **Menggunakan mode aman**:
+3. **Mengedit file khusus dengan editor yang ditentukan:**
    ```bash
-   vigr -s
-   ```
-
-4. **Menentukan editor yang berbeda**:
-   ```bash
-   EDITOR=nano vigr
+   vigr -f /path/to/customfile -m nano
    ```
 
 ## Tips
-- Selalu gunakan `vigr` untuk mengedit file konfigurasi sistem daripada editor teks biasa, karena `vigr` melakukan pemeriksaan kesalahan.
-- Pastikan untuk memahami struktur file yang sedang diedit untuk menghindari kesalahan yang dapat menyebabkan masalah pada sistem.
-- Jika Anda tidak yakin, gunakan opsi `-s` untuk memastikan tidak ada kesalahan sintaksis sebelum menyimpan perubahan.
+- Selalu gunakan opsi `-s` untuk memastikan tidak ada kesalahan yang tersimpan dalam file konfigurasi.
+- Pastikan untuk melakukan backup file konfigurasi sebelum melakukan perubahan.
+- Jika Anda tidak familiar dengan editor yang digunakan, pertimbangkan untuk menggunakan editor yang lebih sederhana seperti `nano`.

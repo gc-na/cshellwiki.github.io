@@ -1,60 +1,54 @@
-# [Linux] Bash while uso: Executa um comando repetidamente enquanto uma condição for verdadeira
+# [Linux] C Shell (csh) while: Executa comandos repetidamente enquanto uma condição for verdadeira
 
 ## Overview
-O comando `while` no Bash é utilizado para executar um bloco de comandos repetidamente enquanto uma condição especificada for verdadeira. É uma estrutura de controle de fluxo que permite a automação de tarefas que precisam ser repetidas até que uma determinada condição não seja mais atendida.
+O comando `while` no C Shell (csh) é utilizado para executar um bloco de comandos repetidamente enquanto uma condição especificada for verdadeira. É uma ferramenta poderosa para automatizar tarefas que precisam ser realizadas várias vezes até que uma determinada condição seja atendida.
 
 ## Usage
 A sintaxe básica do comando `while` é a seguinte:
 
-```bash
-while [ condição ]; do
-    # comandos a serem executados
-done
+```
+while ( condição ) 
+    comando1
+    comando2
+    ...
+end
 ```
 
 ## Common Options
-O comando `while` não possui opções específicas, mas a condição pode ser uma expressão que utilize operadores de comparação e lógicos. Aqui estão algumas formas comuns de condições:
+O comando `while` não possui opções específicas, mas a condição pode incluir expressões lógicas e variáveis que você deseja avaliar. Aqui estão algumas considerações:
 
-- `true`: sempre retorna verdadeiro, resultando em um loop infinito.
-- `false`: sempre retorna falso, não executando o bloco de comandos.
-- `test -e arquivo`: verifica se um arquivo existe.
-- `test -n string`: verifica se uma string não está vazia.
+- **Condições**: Pode ser qualquer expressão que retorne verdadeiro ou falso.
+- **Comandos**: Qualquer comando válido pode ser executado dentro do bloco `while`.
 
 ## Common Examples
 
-### Exemplo 1: Loop infinito
-```bash
-while true; do
-    echo "Este loop nunca termina."
-done
+### Exemplo 1: Contar até 5
+```csh
+set i = 1
+while ( $i <= 5 )
+    echo "Número: $i"
+    @ i++
+end
 ```
 
-### Exemplo 2: Contar até 5
-```bash
-contador=1
-while [ $contador -le 5 ]; do
-    echo "Contador: $contador"
-    contador=$((contador + 1))
-done
+### Exemplo 2: Ler entradas até uma condição
+```csh
+set input = ""
+while ( "$input" != "sair" )
+    echo "Digite algo (ou 'sair' para terminar):"
+    set input = $<
+end
 ```
 
-### Exemplo 3: Ler linhas de um arquivo
-```bash
-while IFS= read -r linha; do
-    echo "Linha: $linha"
-done < arquivo.txt
-```
-
-### Exemplo 4: Esperar até que um arquivo exista
-```bash
-while [ ! -e "arquivo.txt" ]; do
-    echo "Aguardando a criação de arquivo.txt..."
+### Exemplo 3: Executar um comando até um arquivo existir
+```csh
+while ( ! -e "arquivo.txt" )
+    echo "Aguardando o arquivo 'arquivo.txt'..."
     sleep 2
-done
-echo "arquivo.txt foi criado!"
+end
 ```
 
 ## Tips
-- Sempre tenha cuidado com loops infinitos. Certifique-se de que a condição eventualmente se tornará falsa.
-- Utilize o comando `sleep` dentro de loops para evitar sobrecarga no sistema, especialmente em loops que verificam condições repetidamente.
-- Teste suas condições antes de implementá-las em scripts para evitar comportamentos inesperados.
+- **Cuidado com loops infinitos**: Sempre assegure-se de que a condição eventualmente se tornará falsa para evitar loops infinitos.
+- **Utilize `break`**: Você pode usar o comando `break` dentro do bloco `while` para sair do loop antes que a condição se torne falsa, se necessário.
+- **Teste suas condições**: Antes de implementar um loop `while`, teste suas condições em um ambiente controlado para garantir que funcionem como esperado.

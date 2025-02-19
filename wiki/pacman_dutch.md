@@ -1,52 +1,55 @@
-# [Linux] Bash pacman gebruik: Beheer van pakketten op Arch Linux
+# [Linux] C Shell (csh) pacman gebruik: Beheer van softwarepakketten
 
 ## Overzicht
-De `pacman`-opdracht is de pakketbeheerder voor Arch Linux en zijn afgeleiden. Het stelt gebruikers in staat om softwarepakketten te installeren, bij te werken en te verwijderen, evenals om afhankelijkheden te beheren.
+De `pacman`-opdracht is een pakketbeheerder die wordt gebruikt op Arch Linux en afgeleiden systemen. Het stelt gebruikers in staat om softwarepakketten te installeren, bij te werken en te verwijderen vanuit de commandoregel.
 
 ## Gebruik
 De basis syntaxis van de `pacman`-opdracht is als volgt:
 
-```bash
+```csh
 pacman [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
-- `-S`: Installeer een pakket of een groep van pakketten.
+## Veelvoorkomende opties
+- `-S`: Installeer een pakket.
 - `-R`: Verwijder een pakket.
-- `-U`: Installeer een pakket van een specifieke locatie (bijvoorbeeld een .pkg.tar.zst bestand).
-- `-Sy`: Synchroniseer de pakketdatabase en installeer een pakket.
-- `-Su`: Werk alle geïnstalleerde pakketten bij naar de nieuwste versie.
+- `-U`: Installeer een pakket van een specifieke locatie.
+- `-Q`: Vraag informatie op over geïnstalleerde pakketten.
+- `-Sy`: Synchroniseer de pakketdatabase en installeer pakketten.
+- `-Su`: Werk geïnstalleerde pakketten bij.
 
-## Veelvoorkomende Voorbeelden
+## Veelvoorkomende voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van `pacman`:
 
-1. **Een pakket installeren**:
-   ```bash
-   pacman -S vim
-   ```
+### Een pakket installeren
+Om een pakket, bijvoorbeeld `vim`, te installeren, gebruik je:
 
-2. **Een pakket verwijderen**:
-   ```bash
-   pacman -R vim
-   ```
+```csh
+pacman -S vim
+```
 
-3. **Een pakket bijwerken**:
-   ```bash
-   pacman -Syu
-   ```
+### Een pakket verwijderen
+Om een geïnstalleerd pakket, bijvoorbeeld `vim`, te verwijderen, gebruik je:
 
-4. **Een pakket installeren vanaf een lokaal bestand**:
-   ```bash
-   pacman -U /pad/naar/pakket.pkg.tar.zst
-   ```
+```csh
+pacman -R vim
+```
 
-5. **Een lijst van geïnstalleerde pakketten weergeven**:
-   ```bash
-   pacman -Q
-   ```
+### Een pakket bijwerken
+Om alle geïnstalleerde pakketten bij te werken, gebruik je:
+
+```csh
+pacman -Su
+```
+
+### Informatie opvragen over een pakket
+Om informatie over een specifiek pakket, bijvoorbeeld `vim`, op te vragen, gebruik je:
+
+```csh
+pacman -Q vim
+```
 
 ## Tips
-- Gebruik `pacman -Syu` regelmatig om je systeem up-to-date te houden.
-- Controleer altijd de afhankelijkheden van een pakket voordat je het verwijdert met `pacman -R`.
-- Maak gebruik van `pacman -Ss <zoekterm>` om naar pakketten te zoeken in de repository.
-- Overweeg om `paccache` te gebruiken om ongebruikte pakketten en cachebestanden op te ruimen en zo schijfruimte vrij te maken.
+- Zorg ervoor dat je regelmatig je pakketdatabase bijwerkt met `pacman -Sy` voordat je pakketten installeert of bijwerkt.
+- Gebruik de optie `-Syu` om zowel de database bij te werken als alle pakketten in één stap bij te werken.
+- Controleer altijd de documentatie van een pakket voordat je het installeert om te begrijpen welke afhankelijkheden het heeft.

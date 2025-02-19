@@ -1,48 +1,51 @@
-# [Linux] Bash rpm Kullanımı: Paket yönetimi aracı
+# [Linux] C Shell (csh) rpm Kullanımı: Paket yönetimi aracı
 
 ## Genel Bakış
-`rpm` (Red Hat Package Manager), Red Hat tabanlı Linux dağıtımlarında kullanılan bir paket yönetim aracıdır. Yazılım paketlerini kurmak, güncellemek, kaldırmak ve sorgulamak için kullanılır.
+`rpm` (Red Hat Package Manager), Red Hat tabanlı Linux dağıtımlarında kullanılan bir paket yönetim aracıdır. Yazılım paketlerini kurmak, kaldırmak, güncellemek ve sorgulamak için kullanılır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-```bash
+
+```
 rpm [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-i`: Yeni bir RPM paketi kurar.
-- `-e`: Yüklenmiş bir RPM paketini kaldırır.
-- `-U`: Yüklenmiş bir RPM paketini günceller.
-- `-q`: Yüklenmiş bir RPM paketini sorgular.
-- `--help`: Komut hakkında yardım bilgisi gösterir.
+- `-i`: Yeni bir paket kurar.
+- `-e`: Mevcut bir paketi kaldırır.
+- `-U`: Mevcut bir paketi günceller veya yeni bir paket kurar.
+- `-q`: Paket hakkında bilgi sorgular.
+- `-l`: Kurulu bir paketin dosyalarını listeler.
 
 ## Yaygın Örnekler
-Paket kurma:
-```bash
+Aşağıda `rpm` komutunun bazı yaygın kullanım örnekleri verilmiştir:
+
+### Yeni bir paket kurma
+```
 rpm -i paket_adı.rpm
 ```
 
-Paket kaldırma:
-```bash
+### Mevcut bir paketi kaldırma
+```
 rpm -e paket_adı
 ```
 
-Paket güncelleme:
-```bash
+### Mevcut bir paketi güncelleme
+```
 rpm -U paket_adı.rpm
 ```
 
-Yüklenmiş paketleri sorgulama:
-```bash
+### Kurulu bir paketin bilgilerini sorgulama
+```
 rpm -q paket_adı
 ```
 
-Tüm yüklenmiş paketleri listeleme:
-```bash
-rpm -qa
+### Kurulu bir paketin dosyalarını listeleme
+```
+rpm -l paket_adı
 ```
 
 ## İpuçları
-- `rpm` komutunu kullanmadan önce, paketlerin bağımlılıklarını kontrol etmek için `yum` veya `dnf` gibi araçları kullanmak iyi bir uygulamadır.
-- Paketlerin doğruluğunu kontrol etmek için `--checksig` seçeneğini kullanarak imzalarını doğrulayabilirsiniz.
-- Hatalarla karşılaşırsanız, `--force` seçeneği ile zorla kurulum yapmayı deneyebilirsiniz, ancak bu dikkatli kullanılmalıdır.
+- Paketlerinizi güncel tutmak için düzenli olarak `rpm -U` komutunu kullanın.
+- Hatalı kurulumlar için `--force` seçeneğini kullanarak zorla kurulum yapabilirsiniz, ancak dikkatli olun.
+- Paketlerin bağımlılıklarını kontrol etmek için `yum` veya `dnf` gibi araçları kullanmayı düşünün, çünkü `rpm` bağımlılıkları otomatik olarak yönetmez.

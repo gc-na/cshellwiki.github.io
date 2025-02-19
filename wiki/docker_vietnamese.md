@@ -1,48 +1,48 @@
-# [Linux] Bash docker cách sử dụng: Quản lý container và hình ảnh
+# [Hệ điều hành] C Shell (csh) docker sử dụng: Quản lý container
 
-## Overview
-Lệnh `docker` được sử dụng để quản lý các container và hình ảnh trong môi trường Docker. Nó cho phép người dùng tạo, khởi động, dừng và xóa các container, cũng như quản lý các hình ảnh Docker.
+## Tổng quan
+Lệnh `docker` được sử dụng để quản lý và điều phối các container trong môi trường ảo hóa. Nó cho phép người dùng tạo, chạy, dừng và xóa các container, cũng như quản lý hình ảnh và mạng.
 
-## Usage
+## Cú pháp
 Cú pháp cơ bản của lệnh docker như sau:
-```bash
-docker [options] [arguments]
+```
+docker [tùy chọn] [tham số]
 ```
 
-## Common Options
-- `run`: Tạo và khởi động một container mới.
-- `ps`: Liệt kê tất cả các container đang chạy.
-- `images`: Hiển thị danh sách các hình ảnh Docker có sẵn.
+## Tùy chọn phổ biến
+- `run`: Tạo và chạy một container mới.
+- `ps`: Liệt kê các container đang chạy.
+- `stop`: Dừng một hoặc nhiều container.
 - `rm`: Xóa một hoặc nhiều container.
-- `rmi`: Xóa một hoặc nhiều hình ảnh Docker.
+- `images`: Liệt kê các hình ảnh có sẵn trên hệ thống.
 
-## Common Examples
-- **Khởi động một container mới từ một hình ảnh:**
-```bash
-docker run hello-world
-```
+## Ví dụ phổ biến
+- Tạo và chạy một container mới từ hình ảnh:
+  ```bash
+  docker run hello-world
+  ```
 
-- **Liệt kê các container đang chạy:**
-```bash
-docker ps
-```
+- Liệt kê các container đang chạy:
+  ```bash
+  docker ps
+  ```
 
-- **Liệt kê tất cả các container, bao gồm cả những container đã dừng:**
-```bash
-docker ps -a
-```
+- Dừng một container cụ thể:
+  ```bash
+  docker stop <container_id>
+  ```
 
-- **Xóa một container cụ thể:**
-```bash
-docker rm <container_id>
-```
+- Xóa một container:
+  ```bash
+  docker rm <container_id>
+  ```
 
-- **Xóa một hình ảnh cụ thể:**
-```bash
-docker rmi <image_id>
-```
+- Liệt kê các hình ảnh có sẵn:
+  ```bash
+  docker images
+  ```
 
-## Tips
-- Luôn kiểm tra các container đang chạy bằng lệnh `docker ps` để quản lý tốt hơn.
-- Sử dụng `docker run -d` để chạy container ở chế độ nền.
-- Thường xuyên dọn dẹp các container và hình ảnh không còn sử dụng để tiết kiệm dung lượng ổ đĩa.
+## Mẹo
+- Luôn kiểm tra trạng thái của container bằng lệnh `docker ps` trước khi thực hiện các thao tác dừng hoặc xóa.
+- Sử dụng `docker logs <container_id>` để xem nhật ký của container, giúp bạn theo dõi hoạt động và xử lý sự cố.
+- Đặt tên cho container khi tạo bằng cách sử dụng tùy chọn `--name` để dễ dàng quản lý hơn.

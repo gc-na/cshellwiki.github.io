@@ -1,40 +1,41 @@
-# [Linux] Bash whoami : Identifier l'utilisateur actuel
+# [Linux] C Shell (csh) whoami : [affiche le nom de l'utilisateur courant]
 
 ## Overview
-La commande `whoami` est utilisée pour afficher le nom de l'utilisateur actuellement connecté au terminal. C'est un moyen rapide de vérifier sous quel compte utilisateur vous travaillez, ce qui peut être particulièrement utile dans des environnements multi-utilisateurs ou lors de l'exécution de scripts.
+La commande `whoami` dans C Shell (csh) est utilisée pour afficher le nom de l'utilisateur actuellement connecté au système. Cela peut être utile pour vérifier sous quel compte vous travaillez, surtout si vous avez plusieurs sessions ouvertes ou si vous utilisez des comptes différents.
 
 ## Usage
-La syntaxe de base de la commande `whoami` est la suivante :
+La syntaxe de base de la commande est la suivante :
 
-```bash
+```
 whoami [options] [arguments]
 ```
 
 ## Common Options
-La commande `whoami` est assez simple et n'a pas beaucoup d'options. Voici les options les plus courantes :
-
-- `--help` : Affiche l'aide et les options disponibles pour la commande.
-- `--version` : Affiche la version de la commande `whoami`.
+La commande `whoami` n'a généralement pas d'options spécifiques, mais il est important de noter qu'elle peut être utilisée dans des scripts ou avec d'autres commandes pour obtenir le nom de l'utilisateur.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `whoami` :
 
-1. **Afficher le nom de l'utilisateur actuel :**
-   ```bash
+1. **Afficher le nom de l'utilisateur courant :**
+   ```csh
    whoami
    ```
 
-2. **Afficher l'aide pour la commande :**
-   ```bash
-   whoami --help
+2. **Utiliser `whoami` dans un script :**
+   ```csh
+   echo "Vous êtes connecté en tant que : $(whoami)"
    ```
 
-3. **Afficher la version de la commande :**
-   ```bash
-   whoami --version
+3. **Vérifier l'utilisateur avant d'exécuter une commande :**
+   ```csh
+   if ( `whoami` == "admin" ) then
+       echo "Vous avez les droits d'administrateur."
+   else
+       echo "Vous n'êtes pas administrateur."
+   endif
    ```
 
 ## Tips
-- Utilisez `whoami` dans des scripts pour vérifier l'utilisateur avant d'exécuter des commandes sensibles.
-- Combinez `whoami` avec d'autres commandes comme `sudo` pour confirmer que vous avez les droits nécessaires.
-- Pensez à utiliser `id -un` comme alternative pour obtenir le même résultat, tout en ayant plus d'options disponibles.
+- Utilisez `whoami` pour confirmer votre identité avant d'exécuter des commandes sensibles.
+- Intégrez `whoami` dans vos scripts pour personnaliser les messages ou les actions en fonction de l'utilisateur.
+- Si vous travaillez avec des sessions SSH, `whoami` peut vous aider à vérifier que vous êtes connecté avec le bon compte.

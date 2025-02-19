@@ -1,45 +1,38 @@
-# [Linux] Bash watch cách sử dụng: Theo dõi lệnh trong thời gian thực
+# [Hệ điều hành] C Shell (csh) watch cách sử dụng: Theo dõi lệnh
 
-## Overview
-Lệnh `watch` trong Bash cho phép người dùng theo dõi sự thay đổi của kết quả lệnh trong một khoảng thời gian nhất định. Nó tự động thực hiện lại lệnh mà bạn chỉ định và hiển thị kết quả mới nhất trên màn hình, giúp bạn dễ dàng quan sát các thay đổi.
+## Tổng quan
+Lệnh `watch` trong C Shell cho phép người dùng theo dõi sự thay đổi của một lệnh hoặc một tệp tin theo thời gian. Nó sẽ tự động thực hiện lại lệnh đã chỉ định sau một khoảng thời gian nhất định, giúp người dùng dễ dàng theo dõi các thay đổi mà không cần phải nhập lại lệnh.
 
-## Usage
+## Cách sử dụng
 Cú pháp cơ bản của lệnh `watch` như sau:
-
-```bash
+```
 watch [options] [arguments]
 ```
 
-## Common Options
-- `-n <seconds>`: Chỉ định khoảng thời gian (tính bằng giây) giữa các lần thực hiện lệnh.
-- `-d`: Làm nổi bật sự khác biệt giữa các lần thực hiện lệnh.
+## Tùy chọn phổ biến
+- `-n <seconds>`: Đặt khoảng thời gian (tính bằng giây) giữa các lần thực hiện lệnh.
+- `-d`: Làm nổi bật sự khác biệt giữa các lần thực hiện.
 - `-t`: Tắt tiêu đề hiển thị trên màn hình.
-- `-x`: Chạy lệnh với các tham số được truyền vào.
 
-## Common Examples
+## Ví dụ phổ biến
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `watch`:
 
-1. Theo dõi sự thay đổi của thư mục hiện tại:
-   ```bash
-   watch -n 2 ls -l
+1. Theo dõi sự thay đổi của một tệp tin:
+   ```csh
+   watch -n 5 ls -l /path/to/directory
    ```
 
-2. Theo dõi trạng thái của một dịch vụ (ví dụ: nginx):
-   ```bash
-   watch -n 5 systemctl status nginx
+2. Theo dõi một lệnh và làm nổi bật sự khác biệt:
+   ```csh
+   watch -d -n 2 df -h
    ```
 
-3. Theo dõi sự thay đổi trong file log:
-   ```bash
-   watch -d tail -n 10 /var/log/syslog
+3. Theo dõi một lệnh mà không hiển thị tiêu đề:
+   ```csh
+   watch -t -n 10 free -m
    ```
 
-4. Theo dõi dung lượng ổ đĩa:
-   ```bash
-   watch -n 10 df -h
-   ```
-
-## Tips
+## Mẹo
 - Sử dụng tùy chọn `-d` để dễ dàng nhận biết sự thay đổi giữa các lần thực hiện lệnh.
-- Nếu bạn chỉ cần theo dõi một lệnh trong một khoảng thời gian ngắn, hãy sử dụng tùy chọn `-n` với giá trị nhỏ.
-- Để tạm dừng lệnh `watch`, bạn có thể nhấn `Ctrl + C` để dừng theo dõi.
+- Chọn khoảng thời gian hợp lý với tùy chọn `-n` để không làm tốn tài nguyên hệ thống.
+- Thử nghiệm với các lệnh khác nhau để tìm ra lệnh nào phù hợp nhất với nhu cầu theo dõi của bạn.

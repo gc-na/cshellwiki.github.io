@@ -1,12 +1,12 @@
-# [Linux] Bash history Utilisation : Afficher l'historique des commandes
+# [Linux] C Shell (csh) history : Affiche les commandes précédemment exécutées
 
 ## Overview
-La commande `history` dans Bash permet d'afficher la liste des commandes précédemment exécutées dans le terminal. Cela peut être très utile pour retrouver des commandes que vous avez utilisées, sans avoir à les retaper manuellement.
+La commande `history` dans C Shell (csh) permet d'afficher la liste des commandes précédemment exécutées dans la session actuelle. Cela peut être très utile pour retrouver des commandes que vous avez déjà saisies sans avoir à les retaper.
 
 ## Usage
 La syntaxe de base de la commande `history` est la suivante :
 
-```bash
+```csh
 history [options] [arguments]
 ```
 
@@ -14,37 +14,33 @@ history [options] [arguments]
 Voici quelques options courantes pour la commande `history` :
 
 - `-c` : Efface l'historique des commandes.
-- `-d offset` : Supprime la commande à l'offset spécifié de l'historique.
-- `n` : Affiche les n dernières commandes de l'historique.
+- `n` : Affiche les `n` dernières commandes de l'historique.
+- `!n` : Exécute la commande numéro `n` de l'historique.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `history` :
 
-- Afficher l'historique complet des commandes :
+1. Afficher toutes les commandes précédemment exécutées :
+   ```csh
+   history
+   ```
 
-```bash
-history
-```
+2. Afficher les 10 dernières commandes :
+   ```csh
+   history 10
+   ```
 
-- Afficher les 10 dernières commandes :
+3. Exécuter la commande numéro 5 de l'historique :
+   ```csh
+   !5
+   ```
 
-```bash
-history 10
-```
-
-- Effacer l'historique des commandes :
-
-```bash
-history -c
-```
-
-- Supprimer une commande spécifique de l'historique (par exemple, la commande à l'offset 5) :
-
-```bash
-history -d 5
-```
+4. Effacer l'historique des commandes :
+   ```csh
+   history -c
+   ```
 
 ## Tips
-- Utilisez `!n` pour exécuter la commande à l'offset n de l'historique. Par exemple, `!42` exécutera la 42ème commande.
-- Pour rechercher une commande précédente, utilisez `Ctrl + r` et commencez à taper une partie de la commande.
-- Pensez à nettoyer régulièrement votre historique pour éviter d'encombrer votre liste avec des commandes obsolètes.
+- Utilisez `history` régulièrement pour retrouver des commandes que vous avez utilisées, ce qui peut vous faire gagner du temps.
+- Faites attention lorsque vous utilisez `!n`, car cela exécutera immédiatement la commande correspondante, ce qui peut entraîner des erreurs si vous ne vérifiez pas d'abord l'historique.
+- Pensez à effacer l'historique si vous travaillez avec des informations sensibles pour éviter que d'autres utilisateurs ne puissent les voir.

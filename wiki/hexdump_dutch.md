@@ -1,49 +1,44 @@
-# [Linux] Bash hexdump gebruik: Toon de hexadecimale weergave van bestanden
+# [Linux] C Shell (csh) hexdump gebruik: Hexadecimale weergave van bestanden
 
 ## Overzicht
-De `hexdump`-opdracht in Bash wordt gebruikt om de hexadecimale weergave van bestanden te genereren. Dit is handig voor het analyseren van binaire bestanden of het debuggen van gegevens.
+De `hexdump`-opdracht wordt gebruikt om de inhoud van bestanden in hexadecimale vorm weer te geven. Dit is nuttig voor het analyseren van binaire bestanden of het debuggen van gegevens.
 
 ## Gebruik
 De basis syntaxis van de `hexdump`-opdracht is als volgt:
 
-```bash
+```csh
 hexdump [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- `-C`: Toon de uitvoer in een 'canonical' formaat, wat betekent dat het zowel de hexadecimale waarden als de ASCII-waarden weergeeft.
+## Veelvoorkomende Opties
+- `-C`: Toon de uitvoer in een leesbaar formaat met hexadecimale en ASCII-weergave.
 - `-n <aantal>`: Beperk de uitvoer tot het opgegeven aantal bytes.
-- `-v`: Toon alle bytes, zelfs als ze herhaald worden.
 - `-e <format>`: Specificeer een aangepaste uitvoerindeling.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van de `hexdump`-opdracht:
 
-1. **Basis hexdump van een bestand**:
-   ```bash
-   hexdump bestand.bin
-   ```
+### Voorbeeld 1: Basis hexadecimale weergave
+```csh
+hexdump bestand.bin
+```
 
-2. **Hexdump met ASCII-weergave**:
-   ```bash
-   hexdump -C bestand.bin
-   ```
+### Voorbeeld 2: Hexadecimale en ASCII-weergave
+```csh
+hexdump -C bestand.bin
+```
 
-3. **Beperk de uitvoer tot de eerste 16 bytes**:
-   ```bash
-   hexdump -n 16 bestand.bin
-   ```
+### Voorbeeld 3: Beperk de uitvoer tot de eerste 16 bytes
+```csh
+hexdump -n 16 bestand.bin
+```
 
-4. **Toon alle bytes, inclusief herhalingen**:
-   ```bash
-   hexdump -v bestand.bin
-   ```
-
-5. **Gebruik een aangepaste uitvoerindeling**:
-   ```bash
-   hexdump -e '16/1 "%02x " "\n"' bestand.bin
-   ```
+### Voorbeeld 4: Aangepaste uitvoerindeling
+```csh
+hexdump -e '16/1 "%02x " "\n"' bestand.bin
+```
 
 ## Tips
-- Gebruik de `-C` optie voor een gemakkelijk leesbare uitvoer, vooral als je ook de ASCII-waarden wilt zien.
-- Experimenteer met de `-e` optie om specifieke formaten te genereren die passen bij je behoeften.
-- Houd rekening met de bestandsgrootte; voor grote bestanden kan het handig zijn om de uitvoer te beperken met de `-n` optie om de leesbaarheid te verbeteren.
+- Gebruik de `-C` optie voor een gemakkelijk leesbare uitvoer, vooral bij het analyseren van tekst in binaire bestanden.
+- Beperk de uitvoer met de `-n` optie om alleen de relevante gegevens te bekijken en de leesbaarheid te verbeteren.
+- Experimenteer met de `-e` optie om aangepaste uitvoerformaten te creëren die aan uw behoeften voldoen.

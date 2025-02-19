@@ -1,53 +1,48 @@
-# [Linux] Bash uname użycie: Wyświetlanie informacji o systemie
+# [Linux] C Shell (csh) uname użycie: uzyskiwanie informacji o systemie
 
 ## Overview
-Polecenie `uname` służy do wyświetlania informacji o systemie operacyjnym, na którym jest uruchomione. Może dostarczyć szczegółowe dane, takie jak nazwa jądra, wersja systemu oraz architektura sprzętowa.
+Polecenie `uname` w C Shell (csh) służy do wyświetlania informacji o systemie operacyjnym, na którym jest uruchomione. Umożliwia uzyskanie danych takich jak nazwa systemu, wersja jądra oraz architektura sprzętowa.
 
 ## Usage
 Podstawowa składnia polecenia `uname` jest następująca:
 
-```bash
-uname [opcje]
+```
+uname [opcje] [argumenty]
 ```
 
 ## Common Options
 Oto kilka powszechnie używanych opcji dla polecenia `uname`:
 
 - `-a`: Wyświetla wszystkie dostępne informacje o systemie.
-- `-s`: Wyświetla nazwę jądra.
+- `-s`: Wyświetla nazwę systemu operacyjnego.
 - `-n`: Wyświetla nazwę hosta.
-- `-r`: Wyświetla wersję jądra.
-- `-v`: Wyświetla dodatkowe informacje o wersji jądra.
-- `-m`: Wyświetla architekturę sprzętową.
+- `-r`: Wyświetla wersję jądra systemu.
+- `-v`: Wyświetla dodatkowe informacje o wersji.
 
 ## Common Examples
-Poniżej znajdują się przykłady użycia polecenia `uname`:
+Oto kilka praktycznych przykładów użycia polecenia `uname`:
 
-1. Wyświetlenie wszystkich informacji o systemie:
+1. Aby wyświetlić wszystkie informacje o systemie:
+   ```csh
+   uname -a
+   ```
 
-    ```bash
-    uname -a
-    ```
+2. Aby uzyskać tylko nazwę systemu operacyjnego:
+   ```csh
+   uname -s
+   ```
 
-2. Wyświetlenie tylko nazwy jądra:
+3. Aby sprawdzić wersję jądra systemu:
+   ```csh
+   uname -r
+   ```
 
-    ```bash
-    uname -s
-    ```
-
-3. Wyświetlenie wersji jądra:
-
-    ```bash
-    uname -r
-    ```
-
-4. Wyświetlenie architektury sprzętowej:
-
-    ```bash
-    uname -m
-    ```
+4. Aby zobaczyć nazwę hosta:
+   ```csh
+   uname -n
+   ```
 
 ## Tips
-- Używaj opcji `-a`, aby uzyskać pełny przegląd systemu w jednym poleceniu.
-- Możesz łączyć różne opcje, aby uzyskać bardziej szczegółowe informacje.
-- Pamiętaj, że `uname` działa w większości systemów Unix i Linux, więc możesz go używać w różnych środowiskach.
+- Używaj opcji `-a`, aby uzyskać pełny obraz systemu w jednym poleceniu.
+- Możesz łączyć różne opcje, aby dostosować wyjście do swoich potrzeb.
+- Regularne sprawdzanie informacji o systemie może pomóc w diagnostyce problemów i zarządzaniu systemem.

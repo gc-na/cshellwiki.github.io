@@ -1,46 +1,40 @@
-# [Linux] Bash pushd : [naviguer dans les répertoires]
+# [Linux] C Shell (csh) pushd : [changer de répertoire avec une pile]
 
 ## Overview
-La commande `pushd` est utilisée pour changer de répertoire tout en sauvegardant l'emplacement actuel dans une pile. Cela permet de naviguer facilement entre plusieurs répertoires sans perdre la trace de votre position précédente.
+La commande `pushd` dans C Shell (csh) permet de changer de répertoire tout en sauvegardant le répertoire actuel dans une pile. Cela facilite la navigation entre plusieurs répertoires, car vous pouvez revenir rapidement au répertoire précédent.
 
 ## Usage
 La syntaxe de base de la commande `pushd` est la suivante :
 
-```bash
+```csh
 pushd [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes pour `pushd` :
-
 - `+n` : Accède au n-ième répertoire de la pile.
-- `-n` : Accède au n-ième répertoire de la pile en partant de la fin.
-- `-` : Retourne au dernier répertoire visité.
+- `-` : Retourne au répertoire précédent dans la pile.
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de `pushd` :
 
-1. **Changer de répertoire et sauvegarder l'emplacement actuel :**
-   ```bash
-   pushd /chemin/vers/nouveau/repertoire
-   ```
+### Exemple 1 : Changer de répertoire
+Pour changer de répertoire et sauvegarder le répertoire actuel :
+```csh
+pushd /chemin/vers/nouveau/repertoire
+```
 
-2. **Accéder à un répertoire spécifique dans la pile :**
-   ```bash
-   pushd +1
-   ```
+### Exemple 2 : Accéder à un répertoire dans la pile
+Pour accéder au deuxième répertoire de la pile :
+```csh
+pushd +2
+```
 
-3. **Revenir au dernier répertoire visité :**
-   ```bash
-   pushd -
-   ```
-
-4. **Afficher la pile des répertoires :**
-   ```bash
-   dirs
-   ```
+### Exemple 3 : Retourner au répertoire précédent
+Pour revenir au répertoire précédent :
+```csh
+pushd -
+```
 
 ## Tips
-- Utilisez `popd` pour revenir au répertoire précédent et retirer le répertoire actuel de la pile.
-- Combinez `pushd` avec des scripts pour automatiser la navigation dans des répertoires complexes.
-- Pensez à utiliser `dirs -v` pour afficher la pile avec des numéros, ce qui facilite la navigation avec `pushd +n`.
+- Utilisez `dirs` pour afficher la liste des répertoires dans la pile.
+- Combinez `pushd` avec `popd` pour naviguer facilement entre plusieurs répertoires.
+- Pensez à utiliser `pushd` lorsque vous travaillez sur plusieurs projets pour garder une trace de vos répertoires de travail.

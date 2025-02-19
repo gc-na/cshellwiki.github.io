@@ -1,88 +1,81 @@
-# [Linux] Bash case penggunaan: Menangani pola string
+# [Sistem Operasi] C Shell (csh) case: Mengelompokkan pernyataan
 
 ## Overview
-Perintah `case` dalam Bash digunakan untuk membandingkan nilai variabel dengan pola yang ditentukan. Ini sangat berguna untuk pengambilan keputusan dalam skrip, memungkinkan pengguna untuk mengeksekusi blok kode tertentu berdasarkan nilai variabel.
+Perintah `case` dalam C Shell (csh) digunakan untuk mengelompokkan pernyataan berdasarkan pola yang cocok dengan nilai variabel. Ini berguna untuk menghindari penggunaan banyak pernyataan `if` dan membuat skrip lebih mudah dibaca.
 
 ## Usage
 Sintaks dasar dari perintah `case` adalah sebagai berikut:
 
-```bash
+```
 case [variabel] in
-    [pola1])
-        # perintah jika pola1 cocok
+    [pola1]) 
+        [pernyataan1]
         ;;
-    [pola2])
-        # perintah jika pola2 cocok
+    [pola2]) 
+        [pernyataan2]
         ;;
-    *)
-        # perintah jika tidak ada pola yang cocok
-        ;;
+    ...
 esac
 ```
 
 ## Common Options
-- Tidak ada opsi khusus untuk `case`, tetapi pola dapat menggunakan wildcard seperti `*` dan `?` untuk mencocokkan karakter.
+Perintah `case` tidak memiliki banyak opsi, tetapi berikut adalah beberapa elemen penting yang perlu diperhatikan:
+- `in`: Menandai awal dari pola yang akan dicocokkan.
+- `)` : Menandai akhir dari pola.
+- `;;`: Menandai akhir dari pernyataan untuk pola tertentu.
+- `esac`: Menandai akhir dari blok `case`.
 
 ## Common Examples
 
-### Contoh 1: Menentukan hari dalam seminggu
-```bash
-hari="Senin"
-
-case $hari in
-    "Senin")
+### Contoh 1: Menggunakan case untuk menentukan hari
+```csh
+set hari = "Senin"
+switch ($hari)
+    case "Senin":
         echo "Hari ini adalah Senin."
-        ;;
-    "Selasa")
+        breaksw
+    case "Selasa":
         echo "Hari ini adalah Selasa."
-        ;;
-    "Rabu")
-        echo "Hari ini adalah Rabu."
-        ;;
-    *)
+        breaksw
+    default:
         echo "Hari tidak dikenal."
-        ;;
-esac
+end
 ```
 
-### Contoh 2: Menangani input pengguna
-```bash
-read -p "Masukkan pilihan (a/b/c): " pilihan
-
-case $pilihan in
-    "a")
-        echo "Anda memilih A."
-        ;;
-    "b")
-        echo "Anda memilih B."
-        ;;
-    "c")
-        echo "Anda memilih C."
-        ;;
-    *)
-        echo "Pilihan tidak valid."
-        ;;
-esac
+### Contoh 2: Mengelompokkan input pengguna
+```csh
+set warna = $1
+switch ($warna)
+    case "merah":
+        echo "Anda memilih warna merah."
+        breaksw
+    case "biru":
+        echo "Anda memilih warna biru."
+        breaksw
+    case "hijau":
+        echo "Anda memilih warna hijau."
+        breaksw
+    default:
+        echo "Warna tidak dikenali."
+end
 ```
 
 ### Contoh 3: Menggunakan wildcard
-```bash
-file="laporan_2023.txt"
-
-case $file in
-    laporan_*)
-        echo "Ini adalah file laporan."
-        ;;
-    *.txt)
+```csh
+set file = "data.txt"
+switch ($file)
+    case "*.txt":
         echo "Ini adalah file teks."
-        ;;
-    *)
-        echo "Tipe file tidak dikenal."
-        ;;
-esac
+        breaksw
+    case "*.jpg":
+        echo "Ini adalah file gambar."
+        breaksw
+    default:
+        echo "Tipe file tidak dikenali."
+end
 ```
 
 ## Tips
-- Gunakan `*` untuk mencocokkan banyak karakter dan `?` untuk mencocokkan satu karakter dalam pola.
-- Pastikan untuk menutup setiap blok dengan `;;` untuk menghindari kesalahan sintaks.
-- Gunakan `*` di akhir pola untuk menangkap semua kemungkinan yang tidak ditangani sebelumnya.
+- Gunakan `case` untuk menyederhanakan logika pemilihan yang kompleks dalam skrip Anda.
+- Pastikan untuk menggunakan `breaksw` setelah setiap pernyataan untuk mencegah eksekusi pernyataan berikutnya.
+- Manfaatkan wildcard untuk mencocokkan pola yang lebih umum, seperti file dengan ekstensi tertentu.

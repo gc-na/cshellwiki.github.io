@@ -1,7 +1,7 @@
-# [Linux] Bash ss użycie: Narzędzie do monitorowania gniazd sieciowych
+# [Linux] C Shell (csh) ss użycie: wyświetlanie informacji o gniazdach
 
 ## Overview
-Polecenie `ss` (socket statistics) jest używane do wyświetlania informacji o gniazdach sieciowych w systemie Linux. Umożliwia ono monitorowanie połączeń TCP, UDP oraz innych typów gniazd, co czyni je przydatnym narzędziem do diagnostyki sieci.
+Polecenie `ss` służy do wyświetlania informacji o gniazdach sieciowych w systemie. Umożliwia monitorowanie połączeń, portów oraz stanu gniazd, co jest przydatne w diagnostyce i zarządzaniu siecią.
 
 ## Usage
 Podstawowa składnia polecenia `ss` jest następująca:
@@ -11,30 +11,30 @@ ss [opcje] [argumenty]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji dla polecenia `ss`:
+Oto kilka powszechnie używanych opcji polecenia `ss`:
 
-- `-t`: Wyświetla tylko połączenia TCP.
-- `-u`: Wyświetla tylko połączenia UDP.
-- `-l`: Pokazuje tylko gniazda nasłuchujące.
-- `-p`: Wyświetla procesy powiązane z gniazdami.
-- `-n`: Wyświetla numery portów i adresy IP w formie numerycznej, zamiast rozwiązywać je na nazwy.
+- `-t` – wyświetla tylko gniazda TCP.
+- `-u` – wyświetla tylko gniazda UDP.
+- `-l` – pokazuje tylko gniazda nasłuchujące.
+- `-p` – wyświetla procesy powiązane z gniazdami.
+- `-n` – pokazuje numery portów zamiast nazw usług.
 
 ## Common Examples
 Oto kilka praktycznych przykładów użycia polecenia `ss`:
 
-1. Wyświetlenie wszystkich aktywnych połączeń TCP:
+1. Wyświetlenie wszystkich gniazd TCP:
    ```bash
    ss -t
    ```
 
-2. Wyświetlenie wszystkich gniazd nasłuchujących:
-   ```bash
-   ss -l
-   ```
-
-3. Wyświetlenie połączeń UDP:
+2. Wyświetlenie wszystkich gniazd UDP:
    ```bash
    ss -u
+   ```
+
+3. Wyświetlenie gniazd nasłuchujących:
+   ```bash
+   ss -l
    ```
 
 4. Wyświetlenie gniazd z informacjami o procesach:
@@ -42,18 +42,12 @@ Oto kilka praktycznych przykładów użycia polecenia `ss`:
    ss -p
    ```
 
-5. Wyświetlenie wszystkich połączeń z adresami IP w formie numerycznej:
+5. Wyświetlenie gniazd z numerami portów:
    ```bash
    ss -n
    ```
 
 ## Tips
-- Używaj opcji `-t` i `-u` razem, aby uzyskać pełny obraz połączeń TCP i UDP:
-  ```bash
-  ss -tu
-  ```
-- Regularne monitorowanie gniazd sieciowych może pomóc w identyfikacji problemów z połączeniami.
-- Zapisuj wyniki polecenia do pliku, aby móc je później analizować:
-  ```bash
-  ss -t > gniazda.txt
-  ```
+- Używaj opcji `-p`, aby zidentyfikować procesy korzystające z gniazd, co może pomóc w diagnostyce problemów z siecią.
+- Kombinuj różne opcje, aby uzyskać bardziej szczegółowe informacje, na przykład `ss -tunlp`, aby zobaczyć zarówno TCP, jak i UDP z informacjami o procesach.
+- Regularnie monitoruj gniazda, aby szybko reagować na nieautoryzowane połączenia lub problemy z siecią.

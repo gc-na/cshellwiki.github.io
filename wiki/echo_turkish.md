@@ -1,54 +1,44 @@
-# [Linux] Bash echo Kullanımı: Metin yazdırma komutu
+# [Linux] C Shell (csh) echo Kullanımı: Metin yazdırma
 
 ## Genel Bakış
-`echo` komutu, terminalde metin veya değişken değerlerini yazdırmak için kullanılır. Bu komut, kullanıcıya bilgi vermek veya betiklerde çıktı oluşturmak için oldukça yararlıdır.
+`echo` komutu, terminalde metin veya değişken değerlerini yazdırmak için kullanılır. Bu komut, kullanıcıya bilgi vermek ya da betiklerde çıktı oluşturmak için oldukça faydalıdır.
 
 ## Kullanım
 Temel sözdizimi şu şekildedir:
-
-```bash
+```csh
 echo [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-n`: Yeni bir satıra geçmeden çıktı verir.
+- `-n`: Yeni bir satıra geçmeden metni yazdırır.
 - `-e`: Özel karakterlerin (örneğin, `\n` yeni satır, `\t` sekme) işlenmesini sağlar.
-- `-E`: Özel karakterlerin işlenmesini devre dışı bırakır (varsayılan davranış).
+- `-E`: Özel karakterlerin işlenmesini devre dışı bırakır (bu genellikle varsayılandır).
 
 ## Yaygın Örnekler
-Aşağıda `echo` komutunun bazı pratik kullanım örnekleri verilmiştir:
+Aşağıda `echo` komutunun bazı pratik örnekleri bulunmaktadır:
 
 1. Basit bir metin yazdırma:
-   ```bash
-   echo "Merhaba, Dünya!"
+   ```csh
+   echo "Merhaba, dünya!"
    ```
 
 2. Değişken değerini yazdırma:
-   ```bash
-   isim="Ahmet"
-   echo "Merhaba, $isim!"
+   ```csh
+   set isim = "Ali"
+   echo "Benim adım $isim."
    ```
 
 3. Yeni satıra geçmeden yazdırma:
-   ```bash
-   echo -n "Bu bir satır."
-   echo " Bu da devamı."
+   ```csh
+   echo -n "Bu metin yeni satıra geçmeyecek."
    ```
 
 4. Özel karakterlerle yazdırma:
-   ```bash
+   ```csh
    echo -e "Birinci satır\nİkinci satır"
    ```
 
-5. Özel karakterlerin işlenmesini devre dışı bırakma:
-   ```bash
-   echo -E "Bu bir satır\nBu bir başka satır"
-   ```
-
 ## İpuçları
-- `echo` komutunu kullanırken, metin içinde boşluk varsa tırnak işareti kullanmayı unutmayın.
-- Değişkenlerin değerlerini yazdırırken `$` işaretini kullanmayı ihmal etmeyin.
-- Çıktıyı dosyaya yönlendirmek için `>` operatörünü kullanabilirsiniz:
-  ```bash
-  echo "Bu bir dosyaya yazılacak." > dosya.txt
-  ```
+- `echo` komutunu kullanırken, metin içinde özel karakterler kullanıyorsanız `-e` seçeneğini eklemeyi unutmayın.
+- Değişkenleri yazdırmak için `$` işaretini kullanmayı ihmal etmeyin.
+- Metinlerinizi daha okunabilir hale getirmek için uygun boşluklar ve yeni satırlar ekleyin.

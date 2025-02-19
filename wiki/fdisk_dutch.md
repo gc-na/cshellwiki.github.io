@@ -1,58 +1,46 @@
-# [Linux] Bash fdisk gebruik: Partities beheren op schijven
+# [Linux] C Shell (csh) fdisk gebruik: Schijfpartities beheren
 
-## Overview
-De `fdisk`-opdracht is een krachtige tool voor het beheren van schijfpartities op Linux-systemen. Met `fdisk` kun je partities aanmaken, verwijderen en wijzigen op harde schijven en andere opslagapparaten.
+## Overzicht
+Het `fdisk` commando wordt gebruikt om schijfpartities te beheren op Unix-achtige besturingssystemen. Het stelt gebruikers in staat om partities te maken, verwijderen en te wijzigen, wat essentieel is voor schijfbeheer.
 
-## Usage
-De basis syntaxis van de `fdisk`-opdracht is als volgt:
+## Gebruik
+De basis syntaxis van het `fdisk` commando is als volgt:
 
-```bash
-fdisk [opties] [apparaat]
+```
+fdisk [opties] [argumenten]
 ```
 
-Hierbij is `[apparaat]` meestal de schijf die je wilt beheren, zoals `/dev/sda`.
-
-## Common Options
-Hier zijn enkele veelvoorkomende opties voor `fdisk`:
-
+## Veelvoorkomende Opties
 - `-l`: Lijst alle beschikbare schijven en hun partities.
-- `-u`: Gebruik sectoren in plaats van cylinders als eenheid.
+- `-u`: Gebruik sectoren als eenheid in plaats van cilinders.
 - `-n`: Maak een nieuwe partitie aan.
 - `-d`: Verwijder een bestaande partitie.
-- `-p`: Toon de partitie-informatie van de opgegeven schijf.
+- `-p`: Toon de partitie-informatie van de geselecteerde schijf.
 
-## Common Examples
-Hier zijn enkele praktische voorbeelden van het gebruik van `fdisk`:
-
-1. **Lijst alle schijven en hun partities:**
-
+## Veelvoorkomende Voorbeelden
+1. **Lijst beschikbare schijven en partities:**
    ```bash
    fdisk -l
    ```
 
 2. **Een nieuwe partitie aanmaken:**
-
    ```bash
    fdisk /dev/sda
    ```
-
-   Volg de prompts om een nieuwe partitie aan te maken.
+   Volg de instructies in de interactieve prompt om een nieuwe partitie te maken.
 
 3. **Een bestaande partitie verwijderen:**
-
    ```bash
    fdisk /dev/sda
    ```
+   Kies de optie om een partitie te verwijderen en volg de instructies.
 
-   Selecteer de optie om een partitie te verwijderen en volg de instructies.
-
-4. **De partitie-informatie van een specifieke schijf tonen:**
-
+4. **Partitie-informatie weergeven:**
    ```bash
    fdisk -p /dev/sda
    ```
 
 ## Tips
 - Zorg ervoor dat je een back-up maakt van belangrijke gegevens voordat je wijzigingen aanbrengt aan partities.
-- Gebruik `fdisk` met voorzichtigheid, omdat onjuiste commando's kunnen leiden tot gegevensverlies.
-- Raadpleeg de man-pagina (`man fdisk`) voor meer gedetailleerde informatie en opties.
+- Gebruik `fdisk` met voorzichtigheid, vooral bij het verwijderen van partities, om gegevensverlies te voorkomen.
+- Controleer altijd de huidige partitie-indeling met `fdisk -l` voordat je wijzigingen aanbrengt.

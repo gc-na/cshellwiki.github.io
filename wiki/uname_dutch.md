@@ -1,55 +1,54 @@
-# [Linux] Bash uname gebruik: Toon systeeminformatie
+# [Linux] C Shell (csh) uname gebruik: Toegang tot systeeminformatie
 
 ## Overzicht
-De `uname`-opdracht in Bash wordt gebruikt om informatie over het systeem weer te geven, zoals de naam van de kernel, de naam van de host en de architectuur van het systeem. Dit kan nuttig zijn voor systeembeheer en bij het oplossen van problemen.
+De `uname` opdracht in C Shell (csh) wordt gebruikt om informatie over het systeem en de kernel weer te geven. Dit kan nuttig zijn voor systeembeheerders en gebruikers die meer willen weten over hun omgeving.
 
 ## Gebruik
-De basis syntaxis van de `uname`-opdracht is als volgt:
+De basis syntaxis van de `uname` opdracht is als volgt:
 
-```bash
+```
 uname [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-Hier zijn enkele veelvoorkomende opties voor de `uname`-opdracht:
+Hier zijn enkele veelvoorkomende opties die je kunt gebruiken met de `uname` opdracht:
 
 - `-a`: Toont alle beschikbare systeeminformatie.
-- `-s`: Toont de naam van de kernel.
-- `-n`: Toont de netwerknaam van de host.
-- `-r`: Toont de kernelversie.
-- `-v`: Toont de versie van de kernel.
-- `-m`: Toont de machine-architectuur.
+- `-s`: Geeft de naam van de kernel terug.
+- `-n`: Toont de netwerknaam van de machine.
+- `-r`: Geeft de versie van de kernel weer.
+- `-v`: Toont de versie-informatie van de kernel.
 
 ## Veelvoorkomende Voorbeelden
 
-Hier zijn enkele praktische voorbeelden van het gebruik van de `uname`-opdracht:
+Hier zijn enkele praktische voorbeelden van het gebruik van de `uname` opdracht:
 
 1. **Toon alle systeeminformatie:**
-   ```bash
+   ```csh
    uname -a
    ```
 
-2. **Toon alleen de naam van de kernel:**
-   ```bash
+2. **Toon alleen de kernelnaam:**
+   ```csh
    uname -s
    ```
 
-3. **Toon de kernelversie:**
-   ```bash
-   uname -r
-   ```
-
-4. **Toon de machine-architectuur:**
-   ```bash
-   uname -m
-   ```
-
-5. **Toon de netwerknaam van de host:**
-   ```bash
+3. **Toon de netwerknaam van de machine:**
+   ```csh
    uname -n
    ```
 
+4. **Toon de kernelversie:**
+   ```csh
+   uname -r
+   ```
+
+5. **Toon de versie-informatie van de kernel:**
+   ```csh
+   uname -v
+   ```
+
 ## Tips
-- Gebruik `uname -a` voor een snel overzicht van alle systeeminformatie in één opdracht.
-- Combineer `uname` met andere commando's, zoals `grep`, om specifieke informatie te filteren.
-- Vergeet niet dat de uitvoer van `uname` kan variëren afhankelijk van het besturingssysteem en de configuratie van de machine.
+- Gebruik `uname -a` voor een uitgebreide weergave van alle systeeminformatie in één keer.
+- Combineer `uname` met andere commando's om scripts te maken die systeeminformatie verzamelen en loggen.
+- Controleer regelmatig de kernelversie met `uname -r` om te zorgen dat je systeem up-to-date is.

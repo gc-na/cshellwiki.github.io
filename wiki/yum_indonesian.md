@@ -1,63 +1,51 @@
-# [Linux] Bash yum Penggunaan: Mengelola paket perangkat lunak
+# [Sistem Operasi] C Shell (csh) yum: Mengelola paket perangkat lunak
 
 ## Overview
-Perintah `yum` (Yellowdog Updater Modified) adalah manajer paket yang digunakan pada distribusi Linux berbasis RPM, seperti CentOS dan Fedora. Dengan `yum`, pengguna dapat menginstal, memperbarui, dan menghapus paket perangkat lunak dengan mudah.
+Perintah `yum` (Yellowdog Updater Modified) adalah alat manajemen paket yang digunakan pada sistem berbasis RPM (Red Hat Package Manager). Dengan `yum`, pengguna dapat menginstal, memperbarui, dan menghapus paket perangkat lunak dengan mudah.
 
 ## Usage
-Sintaks dasar dari perintah `yum` adalah sebagai berikut:
+Berikut adalah sintaks dasar untuk menggunakan perintah `yum`:
 
-```bash
+```
 yum [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah `yum`:
-
 - `install`: Menginstal paket baru.
 - `remove`: Menghapus paket yang sudah terinstal.
 - `update`: Memperbarui paket yang sudah terinstal ke versi terbaru.
+- `list`: Menampilkan daftar paket yang tersedia atau yang sudah terinstal.
 - `search`: Mencari paket berdasarkan nama atau deskripsi.
-- `list`: Menampilkan daftar paket yang tersedia atau terinstal.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan perintah `yum`:
+Berikut adalah beberapa contoh penggunaan `yum`:
 
-### Menginstal paket
-Untuk menginstal paket, gunakan perintah berikut:
+1. **Menginstal paket baru**:
+   ```bash
+   yum install nama_paket
+   ```
 
-```bash
-yum install nama_paket
-```
+2. **Menghapus paket**:
+   ```bash
+   yum remove nama_paket
+   ```
 
-### Menghapus paket
-Untuk menghapus paket yang sudah terinstal, gunakan:
+3. **Memperbarui semua paket**:
+   ```bash
+   yum update
+   ```
 
-```bash
-yum remove nama_paket
-```
+4. **Menampilkan daftar paket yang terinstal**:
+   ```bash
+   yum list installed
+   ```
 
-### Memperbarui semua paket
-Untuk memperbarui semua paket yang terinstal ke versi terbaru, gunakan:
-
-```bash
-yum update
-```
-
-### Mencari paket
-Untuk mencari paket tertentu, gunakan:
-
-```bash
-yum search kata_kunci
-```
-
-### Menampilkan daftar paket
-Untuk menampilkan daftar semua paket yang terinstal, gunakan:
-
-```bash
-yum list installed
-```
+5. **Mencari paket tertentu**:
+   ```bash
+   yum search nama_paket
+   ```
 
 ## Tips
-- Selalu periksa pembaruan sistem secara berkala dengan `yum update` untuk menjaga keamanan dan stabilitas.
+- Selalu perbarui repositori sebelum menginstal atau memperbarui paket dengan menggunakan `yum update`.
 - Gunakan `yum clean all` untuk membersihkan cache dan menghemat ruang disk.
-- Sebelum menginstal atau menghapus paket, gunakan opsi `--assumeno` untuk melihat apa yang akan dilakukan tanpa benar-benar menjalankannya.
+- Periksa dependensi paket sebelum menginstal untuk menghindari masalah di kemudian hari.

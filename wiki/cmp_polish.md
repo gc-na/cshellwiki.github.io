@@ -1,46 +1,43 @@
-# [Linux] Bash cmp użycie: Porównywanie plików
+# [Linux] C Shell (csh) cmp Użycie: Porównywanie plików
 
 ## Overview
-Polecenie `cmp` służy do porównywania dwóch plików w celu określenia, czy są one identyczne. Jeśli pliki różnią się, `cmp` wskazuje pierwszą różnicę, co czyni je przydatnym narzędziem do wykrywania zmian w plikach.
+Polecenie `cmp` służy do porównywania dwóch plików binarnych lub tekstowych w celu wykrycia różnic. Jeśli pliki są identyczne, `cmp` nie zwraca żadnego komunikatu, a jeśli różnią się, wskazuje pierwszą różnicę.
 
 ## Usage
 Podstawowa składnia polecenia `cmp` jest następująca:
 
-```bash
+```
 cmp [opcje] [argumenty]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji dla polecenia `cmp`:
-
-- `-l`: Wyświetla numery bajtów, w których występują różnice, oraz różnice w postaci wartości szesnastkowych.
-- `-s`: Porównuje pliki, ale nie wyświetla żadnych informacji. Zwraca tylko kod wyjścia.
-- `-i OFFSET`: Pomija pierwsze `OFFSET` bajtów w każdym z plików przed porównaniem.
+- `-l`: Wyświetla numery bajtów, w których występują różnice, oraz różniące się wartości bajtów.
+- `-s`: Porównuje pliki w trybie cichym, nie wyświetlając żadnych komunikatów, tylko zwraca kod wyjścia.
+- `-i OFFSET`: Pomija pierwsze OFFSET bajtów w każdym z plików przed porównaniem.
+- `-n LIMIT`: Porównuje tylko LIMIT bajtów z każdego pliku.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `cmp`:
-
 1. Porównanie dwóch plików:
    ```bash
    cmp plik1.txt plik2.txt
    ```
 
-2. Porównanie dwóch plików z wyświetleniem różnic w formacie szesnastkowym:
+2. Porównanie plików z wyświetleniem różnic:
    ```bash
-   cmp -l plik1.txt plik2.txt
+   cmp -l plik1.bin plik2.bin
    ```
 
-3. Porównanie dwóch plików bez wyświetlania informacji:
+3. Ciche porównanie plików:
    ```bash
    cmp -s plik1.txt plik2.txt
    ```
 
-4. Porównanie plików, pomijając pierwsze 10 bajtów:
+4. Porównanie tylko pierwszych 100 bajtów:
    ```bash
-   cmp -i 10 plik1.txt plik2.txt
+   cmp -n 100 plik1.txt plik2.txt
    ```
 
 ## Tips
-- Użyj opcji `-s`, gdy chcesz szybko sprawdzić, czy pliki są identyczne, bez zbędnych informacji.
-- Jeśli porównujesz duże pliki, rozważ użycie opcji `-l`, aby uzyskać szczegółowe informacje o różnicach.
-- Pamiętaj, że `cmp` porównuje pliki bajt po bajcie, więc nawet najmniejsza różnica zostanie wykryta.
+- Używaj opcji `-s`, gdy chcesz szybko sprawdzić, czy pliki są identyczne, bez zbędnych komunikatów.
+- Opcja `-l` jest przydatna, gdy potrzebujesz szczegółowych informacji o różnicach między plikami.
+- Pamiętaj, że `cmp` porównuje pliki bajt po bajcie, więc nawet najmniejsza różnica zostanie zauważona.

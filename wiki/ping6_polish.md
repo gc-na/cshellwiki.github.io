@@ -1,47 +1,44 @@
-# [Linux] Bash ping6 użycie: Sprawdzanie dostępności hostów w sieci IPv6
+# [Linux] C Shell (csh) ping6 użycie: Sprawdzanie dostępności adresów IPv6
 
-## Overview
-Polecenie `ping6` służy do sprawdzania dostępności hostów w sieci IPv6. Umożliwia wysyłanie pakietów ICMP Echo Request do określonego adresu IPv6 i oczekiwanie na odpowiedzi, co pozwala na diagnozowanie problemów z połączeniem sieciowym.
+## Przegląd
+Polecenie `ping6` jest używane do sprawdzania dostępności hostów w sieci IPv6. Wysyła pakiety ICMP Echo Request do określonego adresu IPv6 i oczekuje na odpowiedzi, co pozwala na ocenę stanu połączenia.
 
-## Usage
-Podstawowa składnia polecenia `ping6` wygląda następująco:
+## Użycie
+Podstawowa składnia polecenia `ping6` jest następująca:
 
-```bash
-ping6 [opcje] [adres IPv6]
+```
+ping6 [opcje] [argumenty]
 ```
 
-## Common Options
-Oto kilka powszechnie używanych opcji dla polecenia `ping6`:
+## Często używane opcje
+- `-c <liczba>`: Określa liczbę wysyłanych pakietów.
+- `-i <czas>`: Ustala czas w sekundach między wysyłanymi pakietami.
+- `-w <czas>`: Ustala maksymalny czas oczekiwania na odpowiedzi.
 
-- `-c [liczba]` - Określa liczbę pakietów do wysłania.
-- `-i [czas]` - Ustala czas w sekundach pomiędzy wysyłanymi pakietami.
-- `-t [TTL]` - Ustala wartość TTL (Time To Live) dla wysyłanych pakietów.
-- `-s [rozmiar]` - Ustala rozmiar wysyłanych pakietów w bajtach.
-
-## Common Examples
+## Przykłady
 Oto kilka praktycznych przykładów użycia polecenia `ping6`:
 
-1. Sprawdzenie dostępności hosta o adresie IPv6:
+1. Sprawdzenie dostępności hosta:
    ```bash
-   ping6 2001:db8::1
+   ping6 example.com
    ```
 
-2. Wysłanie 5 pakietów do hosta:
+2. Wysłanie 5 pakietów do adresu IPv6:
    ```bash
    ping6 -c 5 2001:db8::1
    ```
 
-3. Ustalenie interwału wysyłania pakietów na 2 sekundy:
+3. Ustalenie interwału 2 sekund między pakietami:
    ```bash
-   ping6 -i 2 2001:db8::1
+   ping6 -i 2 example.com
    ```
 
-4. Wysłanie pakietów o rozmiarze 128 bajtów:
+4. Ustalenie maksymalnego czasu oczekiwania na odpowiedzi do 10 sekund:
    ```bash
-   ping6 -s 128 2001:db8::1
+   ping6 -w 10 2001:db8::1
    ```
 
-## Tips
-- Używaj opcji `-c`, aby ograniczyć liczbę wysyłanych pakietów, co jest przydatne w testach.
-- Sprawdzaj różne adresy IPv6, aby upewnić się, że Twoja sieć działa poprawnie.
-- Monitoruj czas odpowiedzi, aby ocenić jakość połączenia z danym hostem.
+## Wskazówki
+- Używaj opcji `-c` do ograniczenia liczby wysyłanych pakietów, aby uniknąć przeciążenia sieci.
+- Monitoruj czas odpowiedzi, aby ocenić jakość połączenia.
+- Sprawdzaj różne adresy IPv6, aby upewnić się, że twoje połączenie działa poprawnie w różnych lokalizacjach.

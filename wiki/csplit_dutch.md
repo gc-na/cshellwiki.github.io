@@ -1,52 +1,52 @@
-# [Linux] Bash csplit gebruik: Splits bestanden in segmenten
+# [Linux] C Shell (csh) csplit gebruik: Splits een bestand in meerdere delen
 
 ## Overzicht
-De `csplit` opdracht in Bash wordt gebruikt om een bestand op te splitsen in verschillende segmenten op basis van bepaalde patronen of regels. Dit kan handig zijn voor het analyseren van grote tekstbestanden of het extraheren van specifieke gegevens.
+De `csplit` opdracht in C Shell (csh) wordt gebruikt om een bestand in meerdere delen te splitsen op basis van bepaalde patronen of regels. Dit kan handig zijn voor het verwerken van grote bestanden of het extraheren van specifieke secties.
 
 ## Gebruik
 De basis syntaxis van de `csplit` opdracht is als volgt:
 
-```bash
+```csh
 csplit [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-f, --prefix=PREFIX`: Stelt de prefix in voor de gegenereerde bestanden.
-- `-n, --digits=DIGITS`: Bepaalt het aantal cijfers in de bestandsnamen.
-- `-b, --suffix-format=FORMAT`: Bepaalt het formaat van de bestandsnaamsuffix.
-- `-k, --keep-files`: Houdt de tijdelijke bestanden na de uitvoering.
+- `-f PREFIX`: Hiermee kunt u een voorvoegsel opgeven voor de naam van de gesplitste bestanden.
+- `-n NUM`: Hiermee kunt u het aantal cijfers opgeven dat moet worden gebruikt in de bestandsnamen.
+- `-b SUFFIX`: Hiermee kunt u een achtervoegsel opgeven voor de gesplitste bestanden.
+- `-s`: Stilte modus; onderdrukt de uitvoer van de gesplitste bestanden.
 
 ## Veelvoorkomende Voorbeelden
 
-### Voorbeeld 1: Splitsen op basis van een patroon
-Splits een bestand in segmenten elke keer dat het patroon "START" voorkomt.
+### Voorbeeld 1: Splitsen op basis van een regelnummer
+Splits een bestand in twee delen bij regel 10.
 
-```bash
-csplit input.txt /START/ {*}
+```csh
+csplit bestand.txt 10
 ```
 
-### Voorbeeld 2: Splitsen na een bepaald aantal regels
-Splits een bestand na elke 10 regels.
+### Voorbeeld 2: Splitsen met een voorvoegsel
+Splits een bestand in delen met een specifiek voorvoegsel.
 
-```bash
-csplit -f segment_ input.txt 10 {99}
+```csh
+csplit -f deel_ bestand.txt 10
 ```
 
-### Voorbeeld 3: Specifieke segmenten splitsen
-Splits een bestand in segmenten van regel 5 tot 15.
+### Voorbeeld 3: Splitsen met een patroon
+Splits een bestand bij elke regel die het woord "START" bevat.
 
-```bash
-csplit input.txt 5 15
+```csh
+csplit bestand.txt /START/
 ```
 
-### Voorbeeld 4: Gebruik van een prefix en suffix
-Splits een bestand met een specifieke prefix en suffix voor de segmenten.
+### Voorbeeld 4: Gebruik van een achtervoegsel
+Splits een bestand met een specifiek achtervoegsel voor de gesplitste bestanden.
 
-```bash
-csplit -f myfile_ -b "%d.txt" input.txt /PATTERN/ {*}
+```csh
+csplit -b "%d.txt" bestand.txt 10
 ```
 
 ## Tips
-- Gebruik de `-k` optie als je de tijdelijke bestanden wilt behouden voor later gebruik.
-- Test je commando met een klein bestand om te zorgen dat het werkt zoals verwacht voordat je het op grotere bestanden toepast.
-- Combineer `csplit` met andere commando's zoals `grep` of `awk` voor geavanceerdere dataverwerking.
+- Zorg ervoor dat u een goed begrip heeft van de structuur van uw bestand voordat u het splitst, zodat u de juiste patronen of regels kunt kiezen.
+- Gebruik de stiltemodus (`-s`) als u geen uitvoer wilt zien, vooral bij grote bestanden.
+- Controleer altijd de gesplitste bestanden om te bevestigen dat ze correct zijn gemaakt en de gewenste inhoud bevatten.

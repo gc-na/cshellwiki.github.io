@@ -1,53 +1,44 @@
-# [Linux] Bash tr gebruik: Tekst transformatie en filtering
+# [Linux] C Shell (csh) tr <Gebruik: teksttransformatie>
 
 ## Overzicht
-De `tr` (translate) opdracht in Bash wordt gebruikt om tekens in tekstbestanden te vertalen of te verwijderen. Het is een krachtige tool voor het manipuleren van tekststromen, vaak gebruikt in combinatie met andere commando's in de commandoregel.
+De `tr` (translate) opdracht in C Shell wordt gebruikt om tekens in tekst te vertalen of te verwijderen. Het is een krachtig hulpmiddel voor het manipuleren van tekstbestanden en het aanpassen van de inhoud van de uitvoer.
 
 ## Gebruik
 De basis syntaxis van de `tr` opdracht is als volgt:
 
-```bash
+```csh
 tr [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
 - `-d`: Verwijdert de opgegeven tekens uit de invoer.
 - `-s`: Vervangt opeenvolgende herhalingen van een teken door één exemplaar.
-- `-c`: Specificeert complementaire tekens, d.w.z. alle tekens behalve de opgegeven.
+- `-c`: Specificeert complementaire tekens, wat betekent dat het de tekens die niet zijn opgegeven, verwerkt.
 
 ## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van `tr`:
 
-### Voorbeeld 1: Verander kleine letters naar hoofdletters
-```bash
-echo "hallo wereld" | tr 'a-z' 'A-Z'
-```
-Dit commando verandert alle kleine letters in hoofdletters, resulterend in "HALLO WERELD".
+1. **Verander kleine letters naar hoofdletters**:
+   ```csh
+   echo "hallo wereld" | tr 'a-z' 'A-Z'
+   ```
 
-### Voorbeeld 2: Verwijder cijfers uit een tekst
-```bash
-echo "123abc456" | tr -d '0-9'
-```
-Hiermee worden alle cijfers uit de invoer verwijderd, wat resulteert in "abc".
+2. **Verwijder spaties uit een tekst**:
+   ```csh
+   echo "hallo wereld" | tr -d ' '
+   ```
 
-### Voorbeeld 3: Vervang spaties door nieuwe regels
-```bash
-echo "regel één regel twee" | tr ' ' '\n'
-```
-Dit commando vervangt elke spatie door een nieuwe regel, waardoor de uitvoer als volgt is:
-```
-regel
-één
-regel
-twee
-```
+3. **Vervang meerdere spaties door een enkele spatie**:
+   ```csh
+   echo "hallo    wereld" | tr -s ' '
+   ```
 
-### Voorbeeld 4: Samengestelde spaties reduceren
-```bash
-echo "Dit    is    een    test" | tr -s ' '
-```
-Hiermee worden opeenvolgende spaties samengevoegd tot één enkele spatie, wat resulteert in "Dit is een test".
+4. **Verander cijfers naar een ander teken**:
+   ```csh
+   echo "12345" | tr '0-9' '#'
+   ```
 
 ## Tips
-- Combineer `tr` met andere commando's zoals `grep` of `awk` voor geavanceerdere tekstverwerking.
-- Gebruik `echo` of `cat` om tekst naar `tr` te sturen voor eenvoudige transformaties.
-- Test je commando's met kleine tekstfragmenten voordat je ze op grotere bestanden toepast om onbedoelde wijzigingen te voorkomen.
+- Gebruik `tr` in combinatie met andere commando's zoals `cat` of `grep` voor meer geavanceerde tekstverwerking.
+- Wees voorzichtig met het gebruik van de `-d` optie, omdat het tekens permanent uit de uitvoer verwijdert.
+- Test je `tr` commando's met eenvoudige invoer voordat je ze toepast op grotere bestanden om onbedoelde gegevensverlies te voorkomen.

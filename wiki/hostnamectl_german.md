@@ -1,48 +1,47 @@
-# [Linux] Bash hostnamectl Verwendung: Systeminformationen verwalten
+# [Linux] C Shell (csh) hostnamectl Verwendung: Systemhostname verwalten
 
 ## Übersicht
-Der Befehl `hostnamectl` wird verwendet, um den Hostnamen und andere systembezogene Informationen in Linux-basierten Betriebssystemen zu verwalten. Mit diesem Befehl können Sie den aktuellen Hostnamen anzeigen, ändern und verschiedene Eigenschaften des Systems abfragen.
+Der Befehl `hostnamectl` wird verwendet, um den Hostnamen eines Systems zu verwalten und anzuzeigen. Er ermöglicht es Benutzern, den aktuellen Hostnamen zu ändern, Informationen über das System abzurufen und die Netzwerkkonfiguration zu überprüfen.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```csh
 hostnamectl [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `set-hostname`: Ändert den Hostnamen des Systems.
-- `status`: Zeigt den aktuellen Status des Systems an, einschließlich Hostname, Betriebssystem und Kernel-Version.
-- `set-icon-name`: Setzt den Symbolnamen des Systems.
+- `set-hostname`: Ändert den aktuellen Hostnamen des Systems.
+- `status`: Zeigt den aktuellen Hostnamen und andere relevante Systeminformationen an.
+- `set-icon-name`: Setzt den Symbolnamen für den Host.
 - `set-chassis`: Legt den Chassis-Typ des Systems fest (z. B. "desktop", "laptop").
-- `help`: Zeigt eine Hilfeseite mit verfügbaren Optionen und deren Beschreibungen an.
 
 ## Häufige Beispiele
-Um den aktuellen Hostnamen anzuzeigen, verwenden Sie:
+- Um den aktuellen Hostnamen anzuzeigen:
 
-```bash
+```csh
 hostnamectl status
 ```
 
-Um den Hostnamen auf "neuer-hostname" zu ändern, führen Sie den folgenden Befehl aus:
+- Um den Hostnamen auf "mein-server" zu ändern:
 
-```bash
-sudo hostnamectl set-hostname neuer-hostname
+```csh
+hostnamectl set-hostname mein-server
 ```
 
-Um den Chassis-Typ auf "laptop" zu setzen, verwenden Sie:
+- Um den Chassis-Typ auf "laptop" zu setzen:
 
-```bash
-sudo hostnamectl set-chassis laptop
+```csh
+hostnamectl set-chassis laptop
 ```
 
-Um den Symbolnamen auf "computer-laptop" zu setzen, führen Sie aus:
+- Um den Symbolnamen auf "computer" zu setzen:
 
-```bash
-sudo hostnamectl set-icon-name computer-laptop
+```csh
+hostnamectl set-icon-name computer
 ```
 
 ## Tipps
-- Stellen Sie sicher, dass Sie über die erforderlichen Berechtigungen verfügen (z. B. als Root-Benutzer oder mit `sudo`), um den Hostnamen zu ändern.
-- Überprüfen Sie nach der Änderung des Hostnamens, ob die Änderung erfolgreich war, indem Sie `hostnamectl status` erneut ausführen.
-- Beachten Sie, dass einige Anwendungen möglicherweise neu gestartet werden müssen, um den neuen Hostnamen zu erkennen.
+- Stellen Sie sicher, dass Sie über die erforderlichen Berechtigungen verfügen, um den Hostnamen zu ändern; in der Regel sind Administratorrechte erforderlich.
+- Überprüfen Sie nach der Änderung des Hostnamens, ob alle Dienste korrekt funktionieren, da einige Dienste möglicherweise den Hostnamen benötigen.
+- Verwenden Sie `hostnamectl status`, um eine Übersicht über die aktuellen Systemeinstellungen zu erhalten, bevor Sie Änderungen vornehmen.

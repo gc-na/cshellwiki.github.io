@@ -1,40 +1,38 @@
-# [Linux] Bash uptime użycie: Sprawdza czas działania systemu
+# [Linux] C Shell (csh) uptime użycie: Sprawdza czas działania systemu
 
 ## Overview
-Polecenie `uptime` w systemie Linux służy do wyświetlania czasu działania systemu oraz informacji o obciążeniu procesora. Dzięki temu użytkownicy mogą szybko ocenić, jak długo system działa bez przerwy oraz jakie jest aktualne obciążenie.
+Polecenie `uptime` w C Shell (csh) służy do wyświetlania, jak długo system działa od ostatniego uruchomienia. Informuje również o liczbie użytkowników zalogowanych do systemu oraz o średnim obciążeniu systemu w różnych przedziałach czasowych.
 
 ## Usage
 Podstawowa składnia polecenia `uptime` jest następująca:
 
-```bash
-uptime [opcje]
+```
+uptime [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-p` – wyświetla czas działania w bardziej czytelnej formie.
-- `-s` – pokazuje dokładny czas, kiedy system został uruchomiony.
-- `-h` – wyświetla pomoc dotycząca polecenia.
+- `-p` - Wyświetla czas działania systemu w bardziej czytelny sposób.
+- `-s` - Pokazuje dokładny czas, kiedy system został uruchomiony.
 
 ## Common Examples
-1. **Podstawowe użycie:**
-   ```bash
+Oto kilka praktycznych przykładów użycia polecenia `uptime`:
+
+1. **Podstawowe użycie**:
+   ```csh
    uptime
    ```
-   Wyświetla czas działania systemu oraz obciążenie procesora.
 
-2. **Czytelna forma czasu działania:**
-   ```bash
+2. **Wyświetlenie czasu działania w czytelnej formie**:
+   ```csh
    uptime -p
    ```
-   Przykład wyjścia: `System has been up for 5 hours, 23 minutes`.
 
-3. **Czas uruchomienia systemu:**
-   ```bash
+3. **Pokazanie dokładnego czasu uruchomienia systemu**:
+   ```csh
    uptime -s
    ```
-   Przykład wyjścia: `2023-10-01 14:30:00`.
 
 ## Tips
-- Używaj opcji `-p`, aby uzyskać bardziej zrozumiałe informacje o czasie działania systemu.
-- Regularne monitorowanie czasu działania może pomóc w identyfikacji problemów z wydajnością.
-- Możesz zintegrować `uptime` z innymi skryptami, aby automatycznie zbierać dane o obciążeniu systemu.
+- Regularne sprawdzanie czasu działania systemu może pomóc w monitorowaniu stabilności i dostępności serwera.
+- Używaj opcji `-p`, aby uzyskać bardziej zrozumiałe informacje o czasie działania, szczególnie dla mniej doświadczonych użytkowników.
+- Możesz zautomatyzować sprawdzanie uptime, dodając polecenie do skryptów monitorujących.

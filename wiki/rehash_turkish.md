@@ -1,40 +1,40 @@
-# [Linux] Bash rehash Kullanımı: Komutları güncelleme
+# [Linux] C Shell (csh) rehash Kullanımı: Komutları yeniden yükler
 
-## Genel Bakış
-`rehash` komutu, Bash kabuğunda kullanılan bir komut olup, mevcut komutların ve yürütülebilir dosyaların güncellenmesini sağlar. Bu komut, özellikle yeni yüklenen veya değiştirilen komutların tanınmasını sağlamak için kullanılır.
+## Overview
+`rehash` komutu, C Shell (csh) ortamında, mevcut dizindeki komut dosyalarını ve yürütülebilir dosyaları yeniden yüklemek için kullanılır. Bu, yeni eklenen veya değiştirilen komutların shell tarafından tanınmasını sağlar.
 
-## Kullanım
+## Usage
 Temel sözdizimi aşağıdaki gibidir:
-```bash
-rehash [seçenekler] [argümanlar]
+```csh
+rehash [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-p`: Yalnızca PATH değişkeninde bulunan dizinlerdeki komutları günceller.
-- `-a`: Tüm dizinlerdeki komutları günceller.
+## Common Options
+`rehash` komutunun genellikle kullanılan bir seçeneği yoktur. Komut, varsayılan olarak mevcut dizindeki tüm yürütülebilir dosyaları yeniden yükler.
 
-## Yaygın Örnekler
+## Common Examples
 Aşağıda `rehash` komutunun bazı pratik örnekleri bulunmaktadır:
 
-### Örnek 1: Basit rehash kullanımı
-```bash
-rehash
-```
-Bu komut, mevcut komutları güncelleyerek yeni eklenen veya değiştirilen komutların tanınmasını sağlar.
+1. **Temel Kullanım:**
+   Yeni bir komut dosyası ekledikten sonra shell'in bunu tanıması için:
+   ```csh
+   rehash
+   ```
 
-### Örnek 2: PATH dizinlerinde rehash
-```bash
-rehash -p
-```
-Bu komut, yalnızca PATH değişkeninde bulunan dizinlerdeki komutları günceller.
+2. **Komut Dosyası Değişikliği Sonrası:**
+   Bir komut dosyasını güncelledikten sonra:
+   ```csh
+   rehash
+   ```
 
-### Örnek 3: Tüm dizinlerde rehash
-```bash
-rehash -a
-```
-Bu komut, tüm dizinlerdeki komutları güncelleyerek daha geniş bir güncelleme sağlar.
+3. **Dizin Değişikliği Sonrası:**
+   Farklı bir dizine geçtikten sonra yeni komutları tanımak için:
+   ```csh
+   cd /yeni/dizin
+   rehash
+   ```
 
-## İpuçları
-- `rehash` komutunu sık sık kullanarak, yeni yüklenen programların hemen tanınmasını sağlayabilirsiniz.
-- Eğer bir komut eklediyseniz ve hala çalışmıyorsa, `rehash` komutunu çalıştırmayı deneyin.
-- `rehash` komutunu, özellikle sık sık yeni yazılımlar yükleyen kullanıcılar için önerilir.
+## Tips
+- `rehash` komutunu sık sık kullanmak, shell'in en güncel komutları tanımasını sağlar.
+- Eğer bir komut çalışmıyorsa, öncelikle `rehash` komutunu deneyin.
+- Shell oturumunu kapatıp açmak yerine `rehash` kullanarak daha hızlı bir çözüm elde edebilirsiniz.

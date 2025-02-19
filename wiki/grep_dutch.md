@@ -1,52 +1,51 @@
-# [Linux] Bash grep gebruik: Zoek tekst in bestanden
+# [Linux] C Shell (csh) grep gebruik: Zoek naar tekst in bestanden
 
 ## Overzicht
-De `grep`-opdracht is een krachtige tool in Bash die wordt gebruikt om tekstpatronen te zoeken in bestanden of standaardinvoer. Het is een essentieel hulpmiddel voor systeembeheerders en ontwikkelaars om snel informatie te vinden.
+De `grep`-opdracht is een krachtige tool die wordt gebruikt om tekstpatronen te zoeken in bestanden. Het kan worden gebruikt om specifieke regels te vinden die overeenkomen met een opgegeven patroon, wat het een onmisbaar hulpmiddel maakt voor programmeurs en systeembeheerders.
 
 ## Gebruik
 De basis syntaxis van de `grep`-opdracht is als volgt:
 
-```bash
+```csh
 grep [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-i`: Negeert hoofdletters en kleine letters bij het zoeken.
-- `-v`: Toont alleen de regels die **niet** overeenkomen met het patroon.
-- `-r`: Doorzoekt bestanden in submappen (recursief).
-- `-n`: Geeft het regelnummer weer van de overeenkomende regels.
-- `-l`: Toont alleen de namen van bestanden met overeenkomende regels.
+- `-i`: Negeer hoofdlettergebruik bij het zoeken.
+- `-v`: Toon alleen de regels die **niet** overeenkomen met het patroon.
+- `-r`: Zoek recursief in alle bestanden in een directory.
+- `-n`: Toon het regelnummer van elke overeenkomst.
+- `-l`: Toon alleen de namen van bestanden met overeenkomsten.
 
 ## Veelvoorkomende Voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van `grep`:
 
 1. Zoek naar een specifiek woord in een bestand:
-   ```bash
+   ```csh
    grep "woord" bestand.txt
    ```
 
 2. Zoek naar een woord zonder rekening te houden met hoofdletters:
-   ```bash
+   ```csh
    grep -i "woord" bestand.txt
    ```
 
-3. Zoek naar een patroon in alle tekstbestanden in een map:
-   ```bash
-   grep "patroon" *.txt
+3. Zoek naar een woord in alle tekstbestanden in een directory:
+   ```csh
+   grep "woord" *.txt
    ```
 
-4. Zoek recursief naar een patroon in een map:
-   ```bash
-   grep -r "patroon" /pad/naar/map
+4. Zoek recursief naar een patroon in een directory:
+   ```csh
+   grep -r "woord" /pad/naar/directory
    ```
 
-5. Toon de regelnummer van overeenkomende regels:
-   ```bash
+5. Toon de regelnummer van overeenkomsten:
+   ```csh
    grep -n "woord" bestand.txt
    ```
 
 ## Tips
-- Gebruik de `-v` optie om snel ongewenste resultaten te filteren.
-- Combineer `grep` met andere commando's zoals `ls` of `cat` voor meer geavanceerde zoekopdrachten.
-- Maak gebruik van reguliere expressies voor complexere zoekopdrachten.
-- Gebruik `grep` in combinatie met `|` (pipe) om de uitvoer van andere commando's te doorzoeken.
+- Gebruik de `-v` optie om snel te filteren op ongewenste resultaten.
+- Combineer `grep` met andere commando's zoals `ls` of `cat` door gebruik te maken van pijpen (`|`) om de uitvoer van het ene commando door te geven aan `grep`.
+- Maak gebruik van reguliere expressies voor complexere zoekopdrachten, zoals het zoeken naar patronen in plaats van specifieke woorden.

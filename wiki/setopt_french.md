@@ -1,55 +1,41 @@
-# [Linux] Bash setopt : Configurer les options de shell
+# [Linux] C Shell (csh) setopt : [configurer les options de l'environnement]
 
 ## Overview
-La commande `setopt` dans Bash est utilisée pour activer ou désactiver des options spécifiques du shell. Ces options influencent le comportement du shell et peuvent améliorer l'expérience utilisateur en personnalisant la manière dont les commandes sont exécutées.
+La commande `setopt` dans C Shell (csh) est utilisée pour configurer les options de l'environnement de shell. Elle permet d'activer ou de désactiver des fonctionnalités spécifiques qui influencent le comportement du shell.
 
 ## Usage
 La syntaxe de base de la commande `setopt` est la suivante :
 
-```bash
+```csh
 setopt [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes que vous pouvez utiliser avec `setopt` :
+Voici quelques options courantes pour `setopt` :
 
 - `noclobber` : Empêche l'écrasement des fichiers existants lors de la redirection de la sortie.
-- `nullglob` : Permet aux motifs globaux qui ne correspondent à aucun fichier de se transformer en chaîne vide.
-- `allexport` : Exporte automatiquement toutes les variables définies dans le shell.
-- `ignoreeof` : Empêche la fermeture du shell lorsque l'utilisateur appuie sur `Ctrl+D`.
+- `ignoreeof` : Ignore le signal EOF (fin de fichier) pour éviter la fermeture accidentelle du shell.
+- `allexport` : Exporte toutes les variables définies dans le shell vers les sous-shells.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `setopt` :
 
-### Exemple 1 : Activer `noclobber`
-Pour éviter d'écraser un fichier existant lors de la redirection de la sortie, vous pouvez activer `noclobber` :
+1. **Activer l'option noclobber** :
+   ```csh
+   setopt noclobber
+   ```
 
-```bash
-setopt noclobber
-```
+2. **Ignorer le signal EOF** :
+   ```csh
+   setopt ignoreeof
+   ```
 
-### Exemple 2 : Utiliser `nullglob`
-Pour que les motifs globaux qui ne correspondent à rien ne renvoient rien, activez `nullglob` :
-
-```bash
-setopt nullglob
-```
-
-### Exemple 3 : Exporter toutes les variables
-Pour exporter automatiquement toutes les variables définies, utilisez `allexport` :
-
-```bash
-setopt allexport
-```
-
-### Exemple 4 : Prévenir la fermeture du shell
-Pour empêcher la fermeture du shell avec `Ctrl+D`, activez `ignoreeof` :
-
-```bash
-setopt ignoreeof
-```
+3. **Exporter toutes les variables** :
+   ```csh
+   setopt allexport
+   ```
 
 ## Tips
-- Pensez à vérifier les options actuellement activées avec la commande `set` pour éviter les conflits.
-- Utilisez `unsetopt` pour désactiver une option que vous avez précédemment activée.
-- Consultez la documentation de votre shell pour découvrir d'autres options disponibles et leurs effets.
+- Utilisez `setopt noclobber` pour éviter de perdre des données importantes en écrasant des fichiers existants.
+- Pensez à vérifier les options actuellement définies avec `set` pour éviter les conflits.
+- Pour désactiver une option, utilisez `unsetopt` suivi du nom de l'option, par exemple : `unsetopt noclobber`.

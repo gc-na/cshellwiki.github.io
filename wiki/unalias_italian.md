@@ -1,46 +1,43 @@
-# [Linux] Bash unalias utilizzo: Rimuove alias definiti
+# [Linux] C Shell (csh) unalias: Rimuove alias definiti
 
 ## Overview
-Il comando `unalias` in Bash viene utilizzato per rimuovere alias precedentemente definiti. Gli alias sono scorciatoie per comandi più lunghi o complessi, e `unalias` consente di eliminare questi collegamenti quando non sono più necessari.
+Il comando `unalias` in C Shell (csh) viene utilizzato per rimuovere alias precedentemente definiti. Gli alias sono scorciatoie per comandi più lunghi o complessi, e `unalias` consente di ripristinare il comportamento originale dei comandi.
 
 ## Usage
 La sintassi di base del comando `unalias` è la seguente:
 
-```bash
+```csh
 unalias [options] [arguments]
 ```
 
 ## Common Options
 - `-a`: Rimuove tutti gli alias definiti.
-- `-p`: Mostra gli alias attualmente definiti senza rimuoverli.
+- `-m`: Rimuove gli alias che corrispondono a un modello specificato.
 
 ## Common Examples
 
-### Rimuovere un singolo alias
-Per rimuovere un alias specifico, ad esempio `ll`, puoi utilizzare il seguente comando:
+### Rimuovere un alias specifico
+Se hai definito un alias chiamato `ll` e desideri rimuoverlo, puoi usare:
 
-```bash
+```csh
 unalias ll
 ```
 
 ### Rimuovere tutti gli alias
-Se desideri rimuovere tutti gli alias definiti nella sessione corrente, puoi usare l'opzione `-a`:
+Per rimuovere tutti gli alias definiti nella sessione corrente, utilizza l'opzione `-a`:
 
-```bash
+```csh
 unalias -a
 ```
 
-### Visualizzare gli alias attivi
-Per vedere quali alias sono attualmente definiti, puoi utilizzare il comando `alias`:
+### Rimuovere alias che corrispondono a un modello
+Se hai diversi alias che iniziano con `g`, puoi rimuoverli usando:
 
-```bash
-alias
+```csh
+unalias g*
 ```
 
-### Rimuovere un alias temporaneamente
-Se desideri rimuovere un alias solo per la sessione corrente, puoi semplicemente utilizzare `unalias` senza doverlo definire di nuovo in futuro.
-
 ## Tips
-- Ricorda che gli alias vengono definiti nel file di configurazione della tua shell, come `.bashrc` o `.bash_profile`. Se desideri che un alias non venga mai più creato, assicurati di rimuoverlo da questi file.
-- Usa `unalias -p` per controllare gli alias attivi prima di rimuoverli, per evitare di eliminare quelli che potresti voler mantenere.
-- Se hai bisogno di rimuovere un alias frequentemente, considera di commentarlo nel file di configurazione della shell invece di eliminarlo completamente.
+- È buona pratica controllare gli alias definiti con il comando `alias` prima di rimuoverli, per evitare di eliminare alias importanti.
+- Ricorda che gli alias rimossi non possono essere recuperati a meno che non siano stati ridefiniti.
+- Utilizza `unalias -a` con cautela, poiché rimuove tutti gli alias senza possibilità di recupero.

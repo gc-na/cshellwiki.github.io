@@ -1,55 +1,47 @@
-# [Linux] Bash ln użycie: Tworzenie linków do plików
+# [Linux] C Shell (csh) ln użycie: Tworzenie linków do plików
 
 ## Overview
-Polecenie `ln` w systemie Linux służy do tworzenia linków do plików. Można tworzyć dwa rodzaje linków: twarde i miękkie (symboliczne). Linki umożliwiają odniesienie się do pliku w różnych lokalizacjach bez duplikowania danych.
+Polecenie `ln` w C Shell (csh) służy do tworzenia linków do plików. Linki te mogą być twarde lub symboliczne, co pozwala na łatwe odniesienie się do plików w różnych lokalizacjach bez konieczności ich duplikowania.
 
 ## Usage
-Podstawowa składnia polecenia `ln` wygląda następująco:
+Podstawowa składnia polecenia `ln` jest następująca:
 
-```bash
+```csh
 ln [opcje] [argumenty]
 ```
 
 ## Common Options
 - `-s`: Tworzy link symboliczny zamiast twardego.
-- `-f`: Wymusza utworzenie linku, usuwając istniejący plik o tej samej nazwie.
-- `-n`: Nie nadpisuje istniejącego linku symbolicznego.
-- `-v`: Wyświetla szczegóły operacji podczas tworzenia linku.
+- `-f`: Wymusza nadpisanie istniejącego pliku.
+- `-i`: Pyta o potwierdzenie przed nadpisaniem istniejącego pliku.
+- `-n`: Nie podąża za linkami symbolicznymi.
 
 ## Common Examples
 1. **Tworzenie twardego linku:**
-
-   ```bash
+   ```csh
    ln plik.txt link_do_pliku.txt
    ```
+   To polecenie tworzy twardy link o nazwie `link_do_pliku.txt`, który wskazuje na `plik.txt`.
 
-   Tworzy twardy link o nazwie `link_do_pliku.txt` do pliku `plik.txt`.
-
-2. **Tworzenie linku symbolicznego:**
-
-   ```bash
+2. **Tworzenie symbolicznego linku:**
+   ```csh
    ln -s plik.txt link_symboliczny.txt
    ```
+   Tutaj `link_symboliczny.txt` jest linkiem symbolicznym do `plik.txt`.
 
-   Tworzy link symboliczny o nazwie `link_symboliczny.txt`, wskazujący na `plik.txt`.
-
-3. **Wymuszanie utworzenia linku:**
-
-   ```bash
-   ln -f plik.txt link_do_pliku.txt
+3. **Nadpisywanie istniejącego pliku:**
+   ```csh
+   ln -f plik.txt nowy_link.txt
    ```
+   To polecenie tworzy nowy link `nowy_link.txt`, nadpisując go, jeśli już istnieje.
 
-   Jeśli `link_do_pliku.txt` już istnieje, zostanie usunięty i zastąpiony nowym linkiem.
-
-4. **Wyświetlanie szczegółów operacji:**
-
-   ```bash
-   ln -sv plik.txt link_do_pliku.txt
+4. **Tworzenie linku z potwierdzeniem:**
+   ```csh
+   ln -i plik.txt link_z_potwierdzeniem.txt
    ```
-
-   Tworzy twardy link i wyświetla komunikat o wykonanej operacji.
+   W tym przypadku system zapyta o potwierdzenie przed nadpisaniem `link_z_potwierdzeniem.txt`, jeśli już istnieje.
 
 ## Tips
-- Używaj linków symbolicznych, gdy chcesz, aby link wskazywał na plik w innej lokalizacji, a twardych linków, gdy potrzebujesz, aby oba pliki miały tę samą zawartość.
-- Zawsze sprawdzaj, czy plik docelowy istnieje przed utworzeniem linku, aby uniknąć niezamierzonych nadpisań.
-- Linki symboliczne mogą być używane do tworzenia skrótów do często używanych plików lub katalogów, co ułatwia nawigację w systemie.
+- Używaj linków symbolicznych, gdy chcesz, aby linki mogły wskazywać na pliki w różnych lokalizacjach.
+- Zawsze sprawdzaj, czy plik, do którego tworzysz link, istnieje, aby uniknąć błędów.
+- Regularnie przeglądaj swoje linki, aby upewnić się, że nie prowadzą do usuniętych lub przeniesionych plików.

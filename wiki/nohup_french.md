@@ -1,44 +1,41 @@
-# [Linux] Bash nohup Utilisation : Exécuter des commandes sans interruption
+# [Linux] C Shell (csh) nohup : Exécuter des commandes sans interruption
 
 ## Overview
-La commande `nohup` (no hang up) permet d'exécuter des processus en arrière-plan, même si la session terminal est fermée. Cela est particulièrement utile pour les tâches longues qui ne doivent pas être interrompues par la déconnexion de l'utilisateur.
+La commande `nohup` (no hang up) permet d'exécuter des processus en arrière-plan, même si la session de terminal est fermée. Cela signifie que les commandes lancées avec `nohup` continueront à s'exécuter indépendamment de la connexion de l'utilisateur.
 
 ## Usage
 La syntaxe de base de la commande `nohup` est la suivante :
 
-```bash
+```csh
 nohup [options] [arguments]
 ```
 
 ## Common Options
+Voici quelques options courantes pour la commande `nohup` :
+
 - `&` : Exécute la commande en arrière-plan.
-- `-o` : Spécifie un fichier de sortie pour les messages de la commande.
+- `-o` : Permet de spécifier un fichier de sortie pour les messages.
 - `-h` : Affiche l'aide et les options disponibles.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `nohup` :
 
 1. Exécuter un script en arrière-plan :
-   ```bash
+   ```csh
    nohup ./mon_script.sh &
    ```
 
-2. Exécuter une commande avec sortie redirigée vers un fichier :
-   ```bash
+2. Exécuter une commande avec redirection de la sortie :
+   ```csh
    nohup ls -l > sortie.txt &
    ```
 
-3. Exécuter un serveur web en arrière-plan :
-   ```bash
-   nohup python -m http.server 8000 &
-   ```
-
-4. Exécuter une tâche cron personnalisée sans interruption :
-   ```bash
-   nohup bash -c 'while true; do echo "Tâche en cours"; sleep 60; done' &
+3. Exécuter un programme long sans interruption :
+   ```csh
+   nohup python mon_programme.py &
    ```
 
 ## Tips
-- Utilisez `jobs` pour vérifier les processus en arrière-plan.
-- Redirigez la sortie d'erreur en utilisant `2>` pour capturer les erreurs dans un fichier.
-- Pensez à utiliser `disown` après avoir mis une tâche en arrière-plan pour éviter qu'elle ne soit tuée lors de la fermeture du terminal.
+- Utilisez `&` pour vous assurer que la commande s'exécute en arrière-plan.
+- Vérifiez le fichier `nohup.out` pour les messages de sortie si vous n'avez pas redirigé la sortie.
+- Pensez à utiliser des gestionnaires de processus comme `screen` ou `tmux` pour une gestion plus avancée des sessions.

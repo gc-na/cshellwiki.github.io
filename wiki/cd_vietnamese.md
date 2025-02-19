@@ -1,49 +1,41 @@
-# [Linux] Bash cd cách sử dụng: Chuyển đổi thư mục làm việc
+# [Hệ điều hành] C Shell (csh) cd: Di chuyển giữa các thư mục
 
-## Tổng quan
-Lệnh `cd` (change directory) trong Bash được sử dụng để thay đổi thư mục làm việc hiện tại của người dùng. Khi bạn muốn di chuyển giữa các thư mục trong hệ thống tệp, lệnh này là công cụ chính để thực hiện điều đó.
+## Overview
+Lệnh `cd` (change directory) trong C Shell được sử dụng để thay đổi thư mục làm việc hiện tại. Khi bạn sử dụng lệnh này, bạn có thể di chuyển đến bất kỳ thư mục nào trên hệ thống tệp của bạn.
 
-## Cách sử dụng
+## Usage
 Cú pháp cơ bản của lệnh `cd` như sau:
-
-```bash
+```
 cd [tùy chọn] [đối số]
 ```
 
-## Tùy chọn phổ biến
-- `..` : Di chuyển lên một cấp thư mục.
-- `-` : Quay lại thư mục trước đó.
-- `~` : Di chuyển đến thư mục chính của người dùng.
+## Common Options
+- `-`: Quay lại thư mục trước đó.
+- `~`: Chuyển đến thư mục chính của người dùng hiện tại.
+- `..`: Di chuyển lên một cấp thư mục.
 
-## Ví dụ phổ biến
-Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `cd`:
+## Common Examples
+- Di chuyển đến thư mục chính của người dùng:
+  ```csh
+  cd ~
+  ```
 
-1. Di chuyển đến thư mục cha:
-   ```bash
-   cd ..
-   ```
+- Di chuyển đến thư mục cha:
+  ```csh
+  cd ..
+  ```
 
-2. Quay lại thư mục trước đó:
-   ```bash
-   cd -
-   ```
+- Di chuyển đến một thư mục cụ thể:
+  ```csh
+  cd /path/to/directory
+  ```
 
-3. Di chuyển đến thư mục chính của người dùng:
-   ```bash
-   cd ~
-   ```
+- Quay lại thư mục trước đó:
+  ```csh
+  cd -
+  ```
 
-4. Di chuyển đến một thư mục cụ thể:
-   ```bash
-   cd /path/to/directory
-   ```
-
-5. Di chuyển đến thư mục con:
-   ```bash
-   cd subdirectory
-   ```
-
-## Mẹo
-- Sử dụng phím Tab để tự động hoàn thành tên thư mục, giúp tiết kiệm thời gian và giảm lỗi.
-- Kiểm tra thư mục hiện tại bằng lệnh `pwd` trước khi sử dụng `cd` để đảm bảo bạn đang ở đúng vị trí.
-- Nếu bạn thường xuyên làm việc với một thư mục cụ thể, hãy cân nhắc tạo một alias trong file cấu hình shell của bạn để truy cập nhanh hơn.
+## Tips
+- Sử dụng `cd ~` để nhanh chóng trở về thư mục chính của bạn.
+- Bạn có thể sử dụng `cd ..` nhiều lần để di chuyển lên nhiều cấp thư mục.
+- Để kiểm tra thư mục hiện tại, bạn có thể sử dụng lệnh `pwd` sau khi thay đổi thư mục.

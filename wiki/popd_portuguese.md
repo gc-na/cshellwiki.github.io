@@ -1,45 +1,42 @@
-# [Linux] Bash popd Uso: Remove diretórios da pilha
+# [Linux] C Shell (csh) popd Uso: Remove diretórios da pilha
 
 ## Overview
-O comando `popd` é utilizado para remover diretórios da pilha de diretórios em um ambiente de shell Bash. Ele permite que você retorne rapidamente ao diretório anterior que foi armazenado na pilha, facilitando a navegação entre diferentes diretórios.
+O comando `popd` é utilizado no C Shell para remover o diretório mais recente da pilha de diretórios. Ele permite que você retorne rapidamente ao diretório anterior que foi salvo, facilitando a navegação entre diretórios.
 
 ## Usage
 A sintaxe básica do comando `popd` é a seguinte:
 
-```bash
-popd [options] [arguments]
+```csh
+popd [opções]
 ```
 
 ## Common Options
-- `-n`: Não altera o diretório atual, apenas remove o diretório do topo da pilha.
-- `+n`: Remove o diretório na posição `n` da pilha, onde `n` é um número que representa a posição do diretório.
+O comando `popd` possui algumas opções comuns que podem ser utilizadas:
+
+- `+n`: Remove o diretório na posição `n` da pilha.
+- `-n`: Remove o diretório na posição `n` da pilha, contando de trás para frente.
 
 ## Common Examples
-Aqui estão alguns exemplos práticos do uso do `popd`:
 
-1. **Remover o diretório do topo da pilha:**
-   ```bash
-   popd
-   ```
+### Exemplo 1: Remover o diretório mais recente
+```csh
+popd
+```
+Este comando remove o diretório mais recente da pilha e muda para o diretório anterior.
 
-2. **Remover o diretório na segunda posição da pilha:**
-   ```bash
-   popd +1
-   ```
+### Exemplo 2: Remover um diretório específico da pilha
+```csh
+popd +1
+```
+Este comando remove o diretório na segunda posição da pilha (contando a partir de zero) e muda para o diretório que estava antes dele.
 
-3. **Remover o diretório do topo da pilha sem mudar o diretório atual:**
-   ```bash
-   popd -n
-   ```
-
-4. **Adicionar diretórios à pilha e depois usar popd:**
-   ```bash
-   pushd /home/user/Documents
-   pushd /home/user/Downloads
-   popd  # Retorna para /home/user/Documents
-   ```
+### Exemplo 3: Remover o último diretório da pilha
+```csh
+popd -1
+```
+Este comando remove o último diretório da pilha e retorna ao diretório que estava antes dele.
 
 ## Tips
-- Utilize `pushd` antes de `popd` para gerenciar sua pilha de diretórios de forma eficiente.
-- Verifique o estado atual da pilha de diretórios usando o comando `dirs` antes de usar `popd`.
-- Lembre-se de que o `popd` sempre remove o diretório do topo da pilha, então tenha cuidado ao usá-lo se você precisar de um diretório específico.
+- Utilize `dirs` para visualizar a pilha de diretórios antes de usar `popd`, assim você pode ter certeza de qual diretório será removido.
+- Combine `pushd` e `popd` para alternar rapidamente entre diretórios sem perder o histórico de navegação.
+- Lembre-se de que o `popd` só funcionará se houver diretórios na pilha; caso contrário, você receberá uma mensagem de erro.

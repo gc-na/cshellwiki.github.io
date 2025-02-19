@@ -1,45 +1,37 @@
-# [리눅스] Bash unsetopt 사용법: 옵션 해제
+# [리눅스] C Shell (csh) unsetopt 사용법: 옵션 해제
 
 ## Overview
-`unsetopt` 명령어는 Bash 셸에서 특정 옵션을 해제하는 데 사용됩니다. 이 명령어를 통해 사용자가 설정한 옵션을 비활성화하여 셸의 동작 방식을 조정할 수 있습니다.
+`unsetopt` 명령은 C Shell에서 설정된 옵션을 해제하는 데 사용됩니다. 이를 통해 사용자는 특정 기능이나 동작을 비활성화할 수 있습니다.
 
 ## Usage
 기본 구문은 다음과 같습니다:
 
-```bash
-unsetopt [options]
+```csh
+unsetopt [options] [arguments]
 ```
 
 ## Common Options
-- `allexport`: 모든 변수를 자동으로 export합니다.
-- `braceexpand`: 중괄호 확장을 비활성화합니다.
-- `emacs`: Emacs 스타일의 명령 모드를 사용하지 않도록 설정합니다.
-- `histappend`: 명령 기록을 파일에 추가하지 않도록 설정합니다.
+- `all`: 모든 옵션을 해제합니다.
+- `noclobber`: 파일 덮어쓰기를 방지하는 옵션을 해제합니다.
+- `noglob`: 와일드카드 확장을 비활성화하는 옵션을 해제합니다.
 
 ## Common Examples
-옵션 해제를 위한 몇 가지 예시는 다음과 같습니다:
+- 모든 옵션 해제:
+  ```csh
+  unsetopt all
+  ```
 
-1. `allexport` 옵션 해제:
-   ```bash
-   unsetopt allexport
-   ```
+- 파일 덮어쓰기를 방지하는 옵션 해제:
+  ```csh
+  unsetopt noclobber
+  ```
 
-2. `braceexpand` 옵션 해제:
-   ```bash
-   unsetopt braceexpand
-   ```
-
-3. `emacs` 모드 비활성화:
-   ```bash
-   unsetopt emacs
-   ```
-
-4. `histappend` 옵션 해제:
-   ```bash
-   unsetopt histappend
-   ```
+- 와일드카드 확장 비활성화 해제:
+  ```csh
+  unsetopt noglob
+  ```
 
 ## Tips
-- 옵션을 해제하기 전에 현재 설정된 옵션을 확인하려면 `set` 명령어를 사용하세요.
-- 여러 옵션을 한 번에 해제하려면 공백으로 구분하여 나열할 수 있습니다.
-- 스크립트에서 특정 동작을 보장하려면 필요한 옵션만을 설정하고 불필요한 옵션은 해제하는 것이 좋습니다.
+- `unsetopt`를 사용할 때는 어떤 옵션을 해제하는지 잘 확인하세요. 잘못된 옵션 해제는 원치 않는 동작을 초래할 수 있습니다.
+- 현재 설정된 옵션을 확인하려면 `set` 명령을 사용하여 확인할 수 있습니다.
+- 스크립트에서 `unsetopt`를 사용하여 특정 환경을 설정할 때 주의 깊게 사용하세요.

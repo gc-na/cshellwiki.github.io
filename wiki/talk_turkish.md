@@ -1,37 +1,38 @@
-# [Linux] Bash talk Kullanımı: İki kullanıcı arasında iletişim kurma
+# [Linux] C Shell (csh) talk Kullanımı: İki kullanıcı arasında iletişim kurma
 
-## Overview
-`talk` komutu, iki kullanıcı arasında terminal tabanlı bir iletişim kurmak için kullanılır. Bu komut, kullanıcıların birbirleriyle gerçek zamanlı olarak metin mesajları göndermesine olanak tanır.
+## Genel Bakış
+`talk` komutu, iki kullanıcı arasında gerçek zamanlı metin tabanlı iletişim sağlamak için kullanılır. Bu komut, kullanıcıların birbirleriyle doğrudan etkileşimde bulunmalarını ve mesajlaşmalarını kolaylaştırır.
 
-## Usage
-Temel sözdizimi şu şekildedir:
-```bash
-talk [options] [user]
+## Kullanım
+Temel sözdizimi aşağıdaki gibidir:
+```
+talk [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `-a`: Kullanıcının oturum açtığı terminali belirtir.
-- `-m`: Mesajları yalnızca bir kez gösterir.
-- `-s`: Sesli bildirimleri kapatır.
+## Yaygın Seçenekler
+- `-a`: Kullanıcı adını belirtmeden iletişim kurar.
+- `-n`: Kullanıcı adını belirtmek için kullanılabilir.
+- `-t`: Belirli bir süre içinde cevap alınmazsa iletişimi sonlandırır.
 
-## Common Examples
-1. Başka bir kullanıcıyla konuşmak için:
-   ```bash
-   talk kullanıcı_adı
-   ```
-   Bu komut, belirtilen kullanıcıyla bir konuşma penceresi açar.
+## Yaygın Örnekler
+İki kullanıcı arasında `talk` komutunu kullanarak iletişim kurmak için aşağıdaki örnekleri inceleyebilirsiniz:
 
-2. Belirli bir terminaldeki kullanıcıyla konuşmak için:
+1. Kullanıcı "ali" ile iletişim kurmak için:
    ```bash
-   talk -a kullanıcı_adı
+   talk ali
    ```
 
-3. Mesajları yalnızca bir kez göstermek için:
+2. Belirli bir kullanıcı adı ile iletişim başlatmak için:
    ```bash
-   talk -m kullanıcı_adı
+   talk -n ahmet
    ```
 
-## Tips
-- `talk` komutunu kullanmadan önce, diğer kullanıcının sistemde oturum açmış olduğundan emin olun.
-- Konuşma sırasında, yazdığınız metin anında karşı tarafa iletilir, bu nedenle dikkatli olun.
-- Eğer `talk` komutunu kullanamıyorsanız, kullanıcıların `write` iznine sahip olduğundan emin olun.
+3. İletişimi belirli bir süre sonra sonlandırmak için:
+   ```bash
+   talk -t 5 ali
+   ```
+
+## İpuçları
+- `talk` komutunu kullanmadan önce, karşı tarafın oturum açtığından emin olun.
+- İletişim sırasında, yazdığınız mesajların anında karşı tarafa iletileceğini unutmayın; bu nedenle dikkatli olun.
+- Eğer bir kullanıcıya ulaşamıyorsanız, `write` komutunu kullanarak ona mesaj göndermeyi deneyebilirsiniz.

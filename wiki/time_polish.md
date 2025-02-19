@@ -1,42 +1,41 @@
-# [Linux] Bash time użycie: Mierzenie czasu wykonywania poleceń
+# [Linux] C Shell (csh) time użycie: Mierzenie czasu wykonywania poleceń
 
 ## Overview
-Polecenie `time` w Bashu służy do mierzenia czasu wykonywania innych poleceń. Umożliwia użytkownikom analizę wydajności skryptów i programów, dostarczając informacji o czasie rzeczywistym, czasie CPU oraz pamięci używanej podczas wykonywania polecenia.
+Polecenie `time` w C Shell (csh) służy do mierzenia czasu wykonania innych poleceń. Umożliwia użytkownikowi ocenę wydajności skryptów i programów, dostarczając informacji o czasie rzeczywistym, czasie CPU oraz czasie systemowym.
 
 ## Usage
 Podstawowa składnia polecenia `time` jest następująca:
 
-```bash
-time [options] [arguments]
+```csh
+time [opcje] [argumenty]
 ```
 
 ## Common Options
+Oto kilka powszechnie używanych opcji dla polecenia `time`:
+
 - `-p`: Wyświetla czas w formacie POSIX.
-- `-o FILE`: Zapisuje wyniki do pliku zamiast wyświetlać je na standardowym wyjściu.
+- `-o plik`: Zapisuje wyniki do określonego pliku.
 - `-v`: Wyświetla szczegółowe informacje o użyciu zasobów.
 
 ## Common Examples
-1. Mierzenie czasu wykonywania prostego polecenia:
-   ```bash
+Oto kilka praktycznych przykładów użycia polecenia `time`:
+
+1. Mierzenie czasu wykonania prostego polecenia:
+   ```csh
    time ls -l
    ```
 
 2. Zapisanie wyników do pliku:
-   ```bash
+   ```csh
    time -o wynik.txt sleep 2
    ```
 
 3. Użycie opcji szczegółowych:
-   ```bash
+   ```csh
    time -v find / -name "*.txt"
    ```
 
-4. Mierzenie czasu skryptu:
-   ```bash
-   time bash my_script.sh
-   ```
-
 ## Tips
-- Używaj opcji `-v`, aby uzyskać bardziej szczegółowe informacje o użyciu pamięci i CPU.
-- Zapisuj wyniki do pliku, aby móc je później analizować.
-- Testuj różne polecenia, aby zrozumieć, które z nich są najbardziej czasochłonne i wymagają optymalizacji.
+- Używaj opcji `-o`, aby zapisać wyniki do pliku, co ułatwia późniejsze przeglądanie.
+- Sprawdzaj różnice w czasie wykonania różnych algorytmów, aby zoptymalizować swoje skrypty.
+- Pamiętaj, że czas wykonania może się różnić w zależności od obciążenia systemu, więc wykonuj testy w różnych warunkach.

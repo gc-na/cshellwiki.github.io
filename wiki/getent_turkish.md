@@ -1,54 +1,58 @@
-# [Linux] Bash getent Kullanımı: Sistem veritabanlarından bilgi alma
+# [Linux] C Shell (csh) getent Kullanımı: Sistem veri tabanlarından bilgi almak
 
-## Overview
-`getent` komutu, sistem veritabanlarından bilgi almak için kullanılır. Bu komut, kullanıcılar, gruplar, servisler ve daha fazlası gibi çeşitli sistem bilgilerini sorgulamak için yararlıdır.
+## Genel Bakış
+`getent` komutu, sistem veri tabanlarından (örneğin, kullanıcılar, gruplar, hostlar) bilgi almak için kullanılır. Bu komut, çeşitli sistem kaynaklarından veri çekerek, kullanıcı ve grup bilgilerini görüntülemenizi sağlar.
 
-## Usage
-Temel sözdizimi şu şekildedir:
-```bash
-getent [options] [arguments]
+## Kullanım
+Temel sözdizimi aşağıdaki gibidir:
+
+```
+getent [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `passwd`: Kullanıcı bilgilerini listelemek için kullanılır.
-- `group`: Grup bilgilerini listelemek için kullanılır.
-- `hosts`: Ağ üzerindeki host bilgilerini almak için kullanılır.
-- `services`: Servis bilgilerini listelemek için kullanılır.
+## Yaygın Seçenekler
+- `passwd`: Kullanıcı bilgilerini görüntüler.
+- `group`: Grup bilgilerini görüntüler.
+- `hosts`: Host bilgilerini görüntüler.
+- `services`: Servis bilgilerini görüntüler.
 
-## Common Examples
-Aşağıda `getent` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+## Yaygın Örnekler
+Aşağıda `getent` komutunun bazı pratik kullanımları verilmiştir:
 
-### Kullanıcı Bilgilerini Listeleme
-```bash
-getent passwd
-```
-
-### Belirli Bir Kullanıcıyı Sorgulama
+### Kullanıcı Bilgilerini Görüntüleme
+Belirli bir kullanıcının bilgilerini görüntülemek için:
 ```bash
 getent passwd kullanıcı_adı
 ```
 
-### Grup Bilgilerini Listeleme
+### Tüm Kullanıcıları Listeleme
+Sistemdeki tüm kullanıcıları listelemek için:
 ```bash
-getent group
+getent passwd
 ```
 
-### Belirli Bir Grubu Sorgulama
+### Grup Bilgilerini Görüntüleme
+Belirli bir grubun bilgilerini görüntülemek için:
 ```bash
 getent group grup_adı
 ```
 
-### Ağ Üzerindeki Host Bilgilerini Alma
+### Tüm Grupları Listeleme
+Sistemdeki tüm grupları listelemek için:
 ```bash
-getent hosts
+getent group
 ```
 
-### Servis Bilgilerini Listeleme
+### Host Bilgilerini Görüntüleme
+Belirli bir hostun bilgilerini görüntülemek için:
 ```bash
-getent services
+getent hosts host_adı
 ```
 
-## Tips
-- `getent` komutunu kullanarak sistemdeki kullanıcı ve grup bilgilerini hızlıca kontrol edebilirsiniz.
-- Özellikle büyük sistemlerde, belirli bir kullanıcı veya grup hakkında bilgi almak için `getent` kullanmak, `/etc/passwd` veya `/etc/group` dosyalarını doğrudan incelemekten daha etkilidir.
-- `getent` ile birlikte `grep` komutunu kullanarak belirli bilgileri filtreleyebilirsiniz. Örneğin, belirli bir kullanıcıyı bulmak için `getent passwd | grep kullanıcı_adı` komutunu kullanabilirsiniz.
+## İpuçları
+- `getent` komutunu kullanarak, sistemdeki kullanıcı ve grup bilgilerini kolayca kontrol edebilirsiniz.
+- Özellikle büyük sistemlerde, belirli bir kullanıcı veya grup ararken `getent` komutunu kullanmak, `/etc/passwd` veya `/etc/group` dosyalarını doğrudan incelemekten daha pratiktir.
+- Komut çıktısını daha okunabilir hale getirmek için `less` veya `more` gibi sayfalama araçlarıyla birleştirebilirsiniz: 
+```bash
+getent passwd | less
+```

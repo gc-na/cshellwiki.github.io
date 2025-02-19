@@ -1,45 +1,42 @@
-# [Linux] Bash hostnamectl Kullanımı: Sistem adını yönetme aracı
+# [Linux] C Shell (csh) hostnamectl Kullanımı: Sistem adını ve diğer bilgileri yönetme
 
-## Overview
-`hostnamectl` komutu, Linux sistemlerinde sistem adını, ağ alan adını ve diğer ilgili bilgileri yönetmek için kullanılan bir araçtır. Bu komut, sistemin adını değiştirmek ve mevcut bilgileri görüntülemek için kullanılır.
+## Genel Bakış
+`hostnamectl` komutu, sistemin adını ve diğer önemli bilgilerini yönetmek için kullanılan bir araçtır. Bu komut, sistemin ağda nasıl tanındığını ve bazı sistem özelliklerini görüntülemenizi sağlar.
 
-## Usage
-Temel sözdizimi aşağıdaki gibidir:
-```bash
-hostnamectl [options] [arguments]
+## Kullanım
+Temel sözdizimi şu şekildedir:
+```
+hostnamectl [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `set-hostname`: Sistemin adını değiştirmek için kullanılır.
-- `set-icon-name`: Sistem simgesi adını ayarlamak için kullanılır.
-- `set-chassis`: Sistem kasasını tanımlamak için kullanılır.
-- `status`: Mevcut sistem bilgilerini görüntülemek için kullanılır.
-- `help`: Komut hakkında yardım almak için kullanılır.
+## Yaygın Seçenekler
+- `set-hostname`: Sistemin adını ayarlamak için kullanılır.
+- `status`: Mevcut sistem bilgilerini görüntüler.
+- `set-icon-name`: Sistem simgesinin adını ayarlamak için kullanılır.
+- `set-chassis`: Sistem kasasının türünü ayarlamak için kullanılır.
 
-## Common Examples
-Aşağıda `hostnamectl` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
-
-### 1. Sistemin adını değiştirme
-```bash
-sudo hostnamectl set-hostname yeni-sistem-adi
-```
-
-### 2. Mevcut sistem bilgilerini görüntüleme
+## Yaygın Örnekler
+Sistem adını görüntülemek için:
 ```bash
 hostnamectl status
 ```
 
-### 3. Sistem simgesi adını ayarlama
+Sistem adını değiştirmek için:
 ```bash
-sudo hostnamectl set-icon-name bilgisayar
+hostnamectl set-hostname yeni-sistem-adi
 ```
 
-### 4. Sistem kasasını tanımlama
+Sistem simgesini ayarlamak için:
 ```bash
-sudo hostnamectl set-chassis sunucu
+hostnamectl set-icon-name simge-adi
 ```
 
-## Tips
-- Değişikliklerin etkili olabilmesi için bazı durumlarda sistemi yeniden başlatmanız gerekebilir.
-- `hostnamectl` komutunu kullanmadan önce, mevcut sistem adınızı kontrol etmek için `hostname` komutunu kullanabilirsiniz.
-- Komutları çalıştırırken `sudo` kullanmayı unutmayın; aksi takdirde gerekli izinler olmayabilir.
+Sistem kasasını ayarlamak için:
+```bash
+hostnamectl set-chassis sunucu
+```
+
+## İpuçları
+- `hostnamectl` komutunu kullanmadan önce, gerekli izinlere sahip olduğunuzdan emin olun.
+- Sistem adını değiştirirken, ağ ayarlarını ve diğer sistem bileşenlerini etkileyebileceğini unutmayın.
+- Değişikliklerin etkili olması için bazı durumlarda sistemi yeniden başlatmanız gerekebilir.

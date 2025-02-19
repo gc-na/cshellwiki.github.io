@@ -1,49 +1,42 @@
-# [Linux] Bash end usage: Terminate processes
+# [Unix] C Shell (csh) end <Usage equivalent in English>: Exit the shell
 
 ## Overview
-The `end` command in Bash is used to terminate running processes. It allows users to stop processes gracefully or forcefully, depending on the options used. This command is essential for managing system resources and ensuring that unwanted processes do not consume CPU or memory.
+The `end` command in C Shell (csh) is used to terminate the current shell session. It effectively closes the shell and returns control to the parent process or terminal from which it was invoked.
 
 ## Usage
-The basic syntax of the `end` command is as follows:
+The basic syntax of the `end` command is straightforward. You can invoke it without any options or arguments.
 
-```bash
-end [options] [arguments]
+```csh
+end
 ```
 
 ## Common Options
-- `-h`, `--help`: Displays help information about the command and its options.
-- `-v`, `--version`: Shows the version of the `end` command.
-- `-f`, `--force`: Forces the termination of a process, even if it does not respond to a standard termination request.
-- `-p`, `--pid`: Specifies the process ID of the process to terminate.
+The `end` command does not have any options. It is a simple command designed solely to exit the shell.
 
 ## Common Examples
-Here are some practical examples of how to use the `end` command:
+Here are some practical examples of using the `end` command:
 
-1. **Terminate a process by PID**:
-   To terminate a process with a specific process ID (PID), use:
-   ```bash
-   end -p 1234
+1. **Exiting the shell:**
+   To exit the current shell session, simply type:
+   ```csh
+   end
    ```
 
-2. **Forcefully terminate a process**:
-   If a process is not responding, you can forcefully terminate it:
-   ```bash
-   end -f -p 5678
+2. **Exiting from a subshell:**
+   If you are in a subshell and want to return to the parent shell, use:
+   ```csh
+   end
    ```
 
-3. **Display help information**:
-   To see the help information for the `end` command, run:
-   ```bash
-   end --help
-   ```
-
-4. **Check the version of the command**:
-   To find out which version of the `end` command you are using:
-   ```bash
-   end --version
+3. **Using `end` in scripts:**
+   You can also use the `end` command in a C Shell script to terminate the script execution:
+   ```csh
+   #!/bin/csh
+   echo "This script will now exit."
+   end
    ```
 
 ## Tips
-- Always try to terminate a process gracefully before using the force option to avoid data loss.
-- Use the `ps` command to find the PID of the process you want to terminate.
-- Consider using `pkill` or `killall` for terminating processes by name instead of PID for convenience.
+- Always ensure you save your work before using the `end` command, as it will close the shell and any unsaved changes will be lost.
+- If you have multiple terminal sessions open, using `end` will only close the current session, not others.
+- Consider using `exit` as an alternative to `end`, as it serves the same purpose and is often more commonly used in scripts.

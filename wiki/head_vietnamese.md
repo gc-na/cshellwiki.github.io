@@ -1,50 +1,50 @@
-# [Linux] Bash head cách sử dụng: Lấy dòng đầu tiên của tệp
+# [Hệ điều hành] C Shell (csh) head <Sử dụng tương đương>: Lấy một số dòng đầu tiên của tệp
 
 ## Tổng quan
-Lệnh `head` trong Bash được sử dụng để hiển thị một số dòng đầu tiên của một tệp. Mặc định, lệnh này sẽ hiển thị 10 dòng đầu tiên, nhưng bạn có thể thay đổi số lượng dòng hiển thị theo nhu cầu.
+Lệnh `head` trong C Shell (csh) được sử dụng để hiển thị một số dòng đầu tiên của một tệp. Đây là một công cụ hữu ích khi bạn chỉ muốn xem nội dung ban đầu của tệp mà không cần mở toàn bộ.
 
-## Cách sử dụng
+## Cú pháp
 Cú pháp cơ bản của lệnh `head` như sau:
 
 ```
-head [tùy chọn] [tệp]
+head [options] [arguments]
 ```
 
 ## Tùy chọn phổ biến
-- `-n [số]`: Chỉ định số dòng cần hiển thị. Ví dụ: `-n 5` sẽ hiển thị 5 dòng đầu tiên.
+- `-n [số]`: Chỉ định số dòng đầu tiên cần hiển thị. Mặc định là 10 dòng.
 - `-c [số]`: Hiển thị số byte đầu tiên thay vì số dòng.
 - `-q`: Không hiển thị tiêu đề tệp khi có nhiều tệp được chỉ định.
-- `-v`: Luôn hiển thị tiêu đề tệp ngay cả khi chỉ có một tệp.
+- `-v`: Luôn hiển thị tiêu đề tệp.
 
 ## Ví dụ phổ biến
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `head`:
 
 1. Hiển thị 10 dòng đầu tiên của tệp `example.txt`:
-   ```bash
+   ```csh
    head example.txt
    ```
 
-2. Hiển thị 5 dòng đầu tiên của tệp `example.txt`:
-   ```bash
-   head -n 5 example.txt
+2. Hiển thị 5 dòng đầu tiên của tệp `data.txt`:
+   ```csh
+   head -n 5 data.txt
    ```
 
-3. Hiển thị 20 byte đầu tiên của tệp `example.txt`:
-   ```bash
-   head -c 20 example.txt
+3. Hiển thị 20 byte đầu tiên của tệp `log.txt`:
+   ```csh
+   head -c 20 log.txt
    ```
 
-4. Hiển thị 10 dòng đầu tiên của nhiều tệp:
-   ```bash
-   head file1.txt file2.txt
+4. Hiển thị 10 dòng đầu tiên của nhiều tệp và không hiển thị tiêu đề:
+   ```csh
+   head -q file1.txt file2.txt
    ```
 
-5. Hiển thị tiêu đề tệp ngay cả khi chỉ có một tệp:
-   ```bash
-   head -v example.txt
+5. Hiển thị tiêu đề tệp và 10 dòng đầu tiên của tệp `report.txt`:
+   ```csh
+   head -v report.txt
    ```
 
 ## Mẹo
-- Sử dụng `head` kết hợp với các lệnh khác như `grep` hoặc `sort` để lọc và hiển thị thông tin cần thiết.
-- Khi làm việc với các tệp lớn, `head` là một công cụ hữu ích để xem nhanh nội dung mà không cần mở toàn bộ tệp.
-- Hãy nhớ rằng bạn có thể thay đổi số dòng hiển thị bằng cách sử dụng tùy chọn `-n`, điều này rất hữu ích khi bạn chỉ cần một cái nhìn tổng quan về dữ liệu.
+- Sử dụng tùy chọn `-n` để điều chỉnh số lượng dòng bạn muốn xem, điều này rất hữu ích khi làm việc với các tệp lớn.
+- Kết hợp lệnh `head` với các lệnh khác như `grep` để lọc nội dung trước khi hiển thị.
+- Bạn có thể sử dụng `head` trong các kịch bản tự động hóa để kiểm tra nhanh nội dung của tệp mà không cần mở toàn bộ.

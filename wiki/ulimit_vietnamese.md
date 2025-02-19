@@ -1,53 +1,49 @@
-# [Linux] Bash ulimit: Quản lý giới hạn tài nguyên hệ thống
+# [Hệ điều hành] C Shell (csh) ulimit: Quản lý giới hạn tài nguyên hệ thống
 
-## Overview
-Lệnh `ulimit` trong Bash được sử dụng để quản lý các giới hạn tài nguyên mà một phiên làm việc hoặc một tiến trình có thể sử dụng. Điều này bao gồm bộ nhớ, số lượng tệp mở, thời gian CPU, và nhiều tài nguyên khác. Việc thiết lập các giới hạn này giúp bảo vệ hệ thống khỏi việc sử dụng quá mức tài nguyên, có thể dẫn đến hiệu suất kém hoặc treo hệ thống.
+## Tổng quan
+Lệnh `ulimit` trong C Shell (csh) được sử dụng để thiết lập hoặc hiển thị các giới hạn tài nguyên cho các tiến trình đang chạy trong phiên làm việc hiện tại. Điều này giúp quản lý tài nguyên hệ thống và ngăn chặn các tiến trình tiêu tốn quá nhiều tài nguyên.
 
-## Usage
+## Cú pháp
 Cú pháp cơ bản của lệnh `ulimit` như sau:
 ```
-ulimit [options] [arguments]
+ulimit [tùy chọn] [tham số]
 ```
 
-## Common Options
+## Các tùy chọn phổ biến
 - `-a`: Hiển thị tất cả các giới hạn hiện tại.
-- `-c`: Đặt hoặc hiển thị kích thước tệp core dump.
-- `-d`: Đặt hoặc hiển thị kích thước bộ nhớ dữ liệu.
-- `-f`: Đặt hoặc hiển thị kích thước tệp tối đa có thể tạo.
-- `-l`: Đặt hoặc hiển thị kích thước bộ nhớ có thể khóa.
-- `-n`: Đặt hoặc hiển thị số lượng tệp mở tối đa.
-- `-s`: Đặt hoặc hiển thị kích thước ngăn xếp.
-- `-t`: Đặt hoặc hiển thị thời gian CPU tối đa cho một tiến trình.
+- `-c`: Thiết lập kích thước tối đa của file core dump.
+- `-d`: Thiết lập kích thước tối đa của vùng nhớ dữ liệu.
+- `-f`: Thiết lập kích thước tối đa của file có thể tạo.
+- `-l`: Thiết lập kích thước tối đa của vùng nhớ có thể khóa.
+- `-m`: Thiết lập kích thước tối đa của vùng nhớ vật lý.
+- `-n`: Thiết lập số lượng file tối đa có thể mở.
+- `-s`: Thiết lập kích thước tối đa của stack.
+- `-t`: Thiết lập thời gian tối đa cho một tiến trình.
 
-## Common Examples
+## Ví dụ thường gặp
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `ulimit`:
 
 1. Hiển thị tất cả các giới hạn tài nguyên hiện tại:
-   ```bash
+   ```csh
    ulimit -a
    ```
 
-2. Đặt giới hạn số lượng tệp mở tối đa là 1024:
-   ```bash
+2. Thiết lập kích thước tối đa của file core dump là 100MB:
+   ```csh
+   ulimit -c 100000
+   ```
+
+3. Thiết lập số lượng file tối đa có thể mở là 1024:
+   ```csh
    ulimit -n 1024
    ```
 
-3. Đặt giới hạn kích thước tệp core dump là 0 (không cho phép tạo tệp core dump):
-   ```bash
-   ulimit -c 0
+4. Thiết lập kích thước tối đa của stack là 8MB:
+   ```csh
+   ulimit -s 8192
    ```
 
-4. Kiểm tra giới hạn kích thước ngăn xếp hiện tại:
-   ```bash
-   ulimit -s
-   ```
-
-5. Đặt giới hạn thời gian CPU tối đa là 60 giây:
-   ```bash
-   ulimit -t 60
-   ```
-
-## Tips
-- Nên kiểm tra các giới hạn hiện tại trước khi thay đổi để tránh gây ra sự cố cho các tiến trình đang chạy.
-- Sử dụng lệnh `ulimit` trong các script để đảm bảo rằng các giới hạn tài nguyên được thiết lập đúng cách cho các tiến trình mà bạn khởi chạy.
-- Lưu ý rằng các thay đổi giới hạn tài nguyên chỉ có hiệu lực cho phiên làm việc hiện tại và sẽ không ảnh hưởng đến các phiên khác hoặc sau khi đăng xuất.
+## Mẹo
+- Nên kiểm tra các giới hạn tài nguyên hiện tại trước khi chạy các ứng dụng nặng để đảm bảo rằng chúng có đủ tài nguyên.
+- Sử dụng lệnh `ulimit -a` để có cái nhìn tổng quan về các giới hạn hiện tại và điều chỉnh chúng nếu cần thiết.
+- Hãy cẩn thận khi tăng giới hạn, vì điều này có thể ảnh hưởng đến hiệu suất của hệ thống và các tiến trình khác.

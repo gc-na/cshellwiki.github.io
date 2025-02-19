@@ -1,49 +1,51 @@
-# [Linux] Bash printf Kullanımı: Formatlı çıktı üretme aracı
+# [Linux] C Shell (csh) printf Kullanımı: Formatlı çıktı üretme
 
-## Overview
-`printf` komutu, formatlı metin çıktısı üretmek için kullanılan bir Bash komutudur. C dilindeki `printf` fonksiyonuna benzer şekilde çalışarak, belirli bir formatta verileri ekrana yazdırmanıza olanak tanır.
+## Genel Bakış
+`printf` komutu, formatlı metin çıktısı üretmek için kullanılır. C dilindeki `printf` fonksiyonuna benzer şekilde çalışır ve kullanıcıların belirli bir formatta veri yazdırmasına olanak tanır.
 
-## Usage
-Temel sözdizimi şu şekildedir:
-```bash
+## Kullanım
+Temel sözdizimi aşağıdaki gibidir:
+
+```csh
 printf [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `-v`: Değişkeni formatlı çıktı olarak ayarlamak için kullanılır.
-- `-f`: Format belirtmek için kullanılır.
-- `-n`: Yeni satıra geçmeden çıktı üretir.
+## Yaygın Seçenekler
+- `%s`: Dize (string) formatı.
+- `%d`: Tam sayı (integer) formatı.
+- `%f`: Ondalık sayı (float) formatı.
+- `\n`: Yeni satır karakteri.
+- `\t`: Sekme karakteri.
 
-## Common Examples
-Aşağıda `printf` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+## Yaygın Örnekler
+Aşağıda `printf` komutunun bazı pratik örnekleri bulunmaktadır:
 
-### Örnek 1: Basit metin yazdırma
-```bash
-printf "Merhaba, Dünya!\n"
+### Örnek 1: Basit Dize Yazdırma
+```csh
+printf "Merhaba, dünya!\n"
 ```
 
-### Örnek 2: Değişken ile yazdırma
-```bash
-isim="Ali"
-printf "Merhaba, %s!\n" "$isim"
+### Örnek 2: Tam Sayı Yazdırma
+```csh
+printf "Yaşınız: %d\n" 25
 ```
 
-### Örnek 3: Sayı formatlama
-```bash
-printf "Sayı: %d\n" 42
+### Örnek 3: Ondalık Sayı Yazdırma
+```csh
+printf "Pi sayısı: %.2f\n" 3.14159
 ```
 
-### Örnek 4: Ondalık sayılar
-```bash
-printf "Ondalık: %.2f\n" 3.14159
+### Örnek 4: Birden Fazla Değişken Yazdırma
+```csh
+printf "Ad: %s, Yaş: %d\n" "Ali" 30
 ```
 
-### Örnek 5: Birden fazla argüman
-```bash
-printf "Ad: %s, Yaş: %d\n" "Ayşe" 30
+### Örnek 5: Sekme ve Yeni Satır Kullanımı
+```csh
+printf "İsim\tYaş\nAli\t30\nAyşe\t25\n"
 ```
 
-## Tips
-- Format belirlerken `%` işaretini kullanmayı unutmayın; bu, hangi tür verinin yazdırılacağını belirtir.
-- `printf` komutu, `echo` komutuna göre daha fazla kontrol ve formatlama seçeneği sunar, bu nedenle karmaşık çıktılar için tercih edilebilir.
-- Çıktıyı dosyaya yönlendirmek için `>` operatörünü kullanabilirsiniz. Örneğin: `printf "Veri" > dosya.txt`
+## İpuçları
+- Format belirteçlerini doğru kullanarak çıktınızı daha okunabilir hale getirin.
+- Uzun metinleri daha iyi yönetmek için `\n` ve `\t` karakterlerini kullanın.
+- Hataları önlemek için her zaman format belirteçleri ile argüman sayısının eşleştiğinden emin olun.

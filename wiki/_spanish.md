@@ -1,44 +1,50 @@
-# [Linux] Bash @ uso: [ejecutar comandos en segundo plano]
+# [Unix] C Shell (csh) @ Uso: Asignar valores a variables
 
 ## Overview
-El comando `@` en Bash se utiliza para ejecutar comandos en segundo plano, permitiendo que el usuario continúe utilizando la terminal mientras se ejecutan otras tareas. Esto es especialmente útil para procesos que pueden tardar un tiempo considerable en completarse.
+El comando `@` en C Shell (csh) se utiliza para realizar operaciones aritméticas y asignar valores a variables. Es una forma sencilla de manejar cálculos dentro de scripts o en la línea de comandos.
 
 ## Usage
-La sintaxis básica del comando es la siguiente:
+La sintaxis básica del comando `@` es la siguiente:
 
-```bash
+```
 @ [opciones] [argumentos]
 ```
 
 ## Common Options
-- `&`: Coloca el comando en segundo plano.
-- `disown`: Elimina el trabajo de la lista de trabajos, permitiendo que continúe ejecutándose incluso si se cierra la terminal.
+El comando `@` no tiene muchas opciones, pero aquí hay algunas que son útiles:
+
+- `=`: Se utiliza para asignar el resultado de una operación a una variable.
+- `+`, `-`, `*`, `/`: Operadores aritméticos para sumar, restar, multiplicar y dividir, respectivamente.
 
 ## Common Examples
-Aquí hay algunos ejemplos prácticos de cómo usar el comando `@`:
 
-1. Ejecutar un script en segundo plano:
-   ```bash
-   ./mi_script.sh &
-   ```
+### Ejemplo 1: Asignar un valor a una variable
+```csh
+@ x = 5
+```
 
-2. Ejecutar un comando largo y continuar usando la terminal:
-   ```bash
-   tar -czf archivo.tar.gz /ruta/al/directorio &
-   ```
+### Ejemplo 2: Realizar una suma
+```csh
+@ suma = x + 10
+```
 
-3. Desasociar un trabajo en segundo plano:
-   ```bash
-   sleep 60 &
-   disown
-   ```
+### Ejemplo 3: Multiplicar dos variables
+```csh
+@ y = 3
+@ producto = x * y
+```
 
-4. Ejecutar múltiples comandos en segundo plano:
-   ```bash
-   comando1 & comando2 & comando3 &
-   ```
+### Ejemplo 4: Incrementar una variable
+```csh
+@ x++
+```
+
+### Ejemplo 5: Dividir y asignar el resultado
+```csh
+@ cociente = x / 2
+```
 
 ## Tips
-- Siempre verifica el estado de los trabajos en segundo plano usando el comando `jobs`.
-- Utiliza `fg` para traer un trabajo en segundo plano de vuelta al primer plano si es necesario.
-- Recuerda que los trabajos en segundo plano pueden generar salida en la terminal, así que redirige la salida si es necesario usando `> salida.txt` para evitar confusiones.
+- Asegúrate de que las variables estén inicializadas antes de realizar operaciones con ellas.
+- Utiliza paréntesis para agrupar operaciones si es necesario, por ejemplo: `@ resultado = (x + y) * z`.
+- Recuerda que el comando `@` solo funciona con números enteros; si necesitas trabajar con números de punto flotante, considera usar otras herramientas o lenguajes.

@@ -1,36 +1,34 @@
-# [Linux] Bash fg Kullanımı: Arka planda çalışan bir işlemi ön plana çıkarma
+# [Linux] C Shell (csh) fg Kullanımı: Arka planda çalışan bir süreci ön plana getirir
 
-## Genel Bakış
-`fg` komutu, arka planda çalışan bir işlemi ön plana çıkarmak için kullanılır. Bu komut, kullanıcıların terminaldeki işlemler arasında geçiş yapmasına olanak tanır ve genellikle bir işlemi duraklatıp yeniden başlatmak için kullanılır.
+## Overview
+`fg` komutu, C Shell (csh) ortamında arka planda çalışan bir süreci ön plana getirmek için kullanılır. Bu komut, kullanıcıların arka planda devam eden işlemleri kolayca yönetmelerine olanak tanır.
 
-## Kullanım
-Temel sözdizimi şu şekildedir:
-
-```bash
-fg [seçenekler] [argümanlar]
+## Usage
+Temel sözdizimi aşağıdaki gibidir:
+```csh
+fg [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `job_spec`: Ön plana çıkarmak istediğiniz işlemin numarasını belirtir. Eğer birden fazla işlem varsa, hangi işlemi ön plana almak istediğinizi seçebilirsiniz.
-- `%n`: İşlem numarasını belirtmek için kullanılır. Örneğin, `%1` ilk işlemi ifade eder.
+## Common Options
+- `job_spec`: Ön plana getirmek istediğiniz işin tanımı. Bu genellikle iş numarası veya iş adı ile belirtilir.
 
-## Yaygın Örnekler
-1. **Arka planda çalışan ilk işlemi ön plana çıkarma:**
-   ```bash
-   fg %1
-   ```
+## Common Examples
+- Arka planda çalışan en son işlemi ön plana getirmek için:
+```csh
+fg
+```
 
-2. **Arka planda çalışan ikinci işlemi ön plana çıkarma:**
-   ```bash
-   fg %2
-   ```
+- Belirli bir iş numarasına sahip işlemi ön plana getirmek için:
+```csh
+fg %1
+```
 
-3. **Son duraklatılan işlemi ön plana çıkarma:**
-   ```bash
-   fg
-   ```
+- İş adını kullanarak bir işlemi ön plana getirmek için:
+```csh
+fg %myprocess
+```
 
-## İpuçları
-- `jobs` komutunu kullanarak arka planda çalışan işlemlerinizi görüntüleyebilirsiniz. Bu, hangi işlemi ön plana çıkarmak istediğinizi belirlemenize yardımcı olur.
-- `fg` komutunu kullanmadan önce işlemin duraklatıldığından emin olun. Aksi takdirde, işlem çalışmaya devam edecektir.
-- Bir işlemi duraklatmak için `Ctrl + Z` tuş kombinasyonunu kullanabilirsiniz. Bu, işlemi arka plana alır ve `fg` ile geri çağırmanızı sağlar.
+## Tips
+- `jobs` komutunu kullanarak arka planda çalışan işlemlerinizi görüntüleyebilirsiniz. Bu, hangi işlerin mevcut olduğunu ve iş numaralarını görmenize yardımcı olur.
+- Bir işlemi arka plana göndermek için `bg` komutunu kullanabilirsiniz. Bu, işlemi devam ettirirken terminali serbest bırakır.
+- İşlerinizi yönetirken iş numaralarını doğru bir şekilde kullanmaya özen gösterin; bu, işlemleri karıştırmamanıza yardımcı olur.

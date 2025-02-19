@@ -1,44 +1,44 @@
-# [Linux] Bash killall cách sử dụng: Kết thúc tất cả tiến trình theo tên
+# [Hệ điều hành] C Shell (csh) killall Cách sử dụng: Kết thúc tất cả các tiến trình theo tên
 
 ## Tổng quan
-Lệnh `killall` trong Bash được sử dụng để kết thúc tất cả các tiến trình đang chạy có cùng tên. Điều này rất hữu ích khi bạn muốn dừng một ứng dụng hoặc dịch vụ mà không cần phải tìm kiếm ID tiến trình (PID) của nó.
+Lệnh `killall` trong C Shell (csh) được sử dụng để kết thúc tất cả các tiến trình đang chạy với tên cụ thể. Điều này rất hữu ích khi bạn muốn dừng nhiều tiến trình cùng một lúc mà không cần phải tìm kiếm từng ID tiến trình.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `killall` như sau:
-```bash
-killall [tùy chọn] [tên_tiến_trình]
+
+```csh
+killall [options] [arguments]
 ```
 
 ## Tùy chọn phổ biến
-- `-u <tên_người_dùng>`: Chỉ kết thúc các tiến trình của người dùng cụ thể.
-- `-9`: Gửi tín hiệu SIGKILL để buộc dừng tiến trình ngay lập tức.
+- `-u <user>`: Chỉ kết thúc các tiến trình của người dùng cụ thể.
+- `-s <signal>`: Gửi tín hiệu cụ thể đến các tiến trình (mặc định là SIGTERM).
 - `-q`: Không hiển thị thông báo lỗi nếu không tìm thấy tiến trình.
-- `-r`: Sử dụng biểu thức chính quy để tìm kiếm tên tiến trình.
 
 ## Ví dụ phổ biến
-Dưới đây là một số ví dụ về cách sử dụng lệnh `killall`:
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `killall`:
 
-1. Kết thúc tất cả các tiến trình có tên `firefox`:
-   ```bash
+1. Kết thúc tất cả các tiến trình có tên "firefox":
+   ```csh
    killall firefox
    ```
 
-2. Kết thúc tất cả các tiến trình `gedit` với tín hiệu SIGKILL:
-   ```bash
-   killall -9 gedit
+2. Kết thúc tất cả các tiến trình "python" với tín hiệu SIGKILL:
+   ```csh
+   killall -s SIGKILL python
    ```
 
-3. Kết thúc tất cả các tiến trình của người dùng `john`:
-   ```bash
+3. Kết thúc tất cả các tiến trình của người dùng "john":
+   ```csh
    killall -u john
    ```
 
-4. Kết thúc tất cả các tiến trình có tên bắt đầu bằng `python` sử dụng biểu thức chính quy:
-   ```bash
-   killall -r '^python'
+4. Kết thúc tất cả các tiến trình "myapp" mà không hiển thị thông báo lỗi nếu không tìm thấy:
+   ```csh
+   killall -q myapp
    ```
 
 ## Mẹo
-- Luôn kiểm tra tên tiến trình trước khi sử dụng `killall` để tránh kết thúc nhầm tiến trình quan trọng.
-- Sử dụng tùy chọn `-q` để giảm thiểu thông báo lỗi khi không tìm thấy tiến trình.
-- Khi cần dừng một tiến trình một cách an toàn, hãy thử sử dụng tín hiệu SIGTERM (mặc định) trước khi sử dụng SIGKILL.
+- Hãy cẩn thận khi sử dụng `killall`, vì nó sẽ kết thúc tất cả các tiến trình trùng tên mà không hỏi lại.
+- Sử dụng tùy chọn `-u` để chỉ định người dùng, giúp bạn kiểm soát tốt hơn các tiến trình đang chạy.
+- Trước khi sử dụng lệnh, bạn có thể kiểm tra các tiến trình đang chạy bằng lệnh `ps` để đảm bảo rằng bạn không vô tình kết thúc một tiến trình quan trọng.

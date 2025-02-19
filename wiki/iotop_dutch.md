@@ -1,20 +1,20 @@
-# [Linux] Bash iotop gebruik: Monitoren van schijfactiviteit in realtime
+# [Linux] C Shell (csh) iotop gebruik: Monitoren van schijfactiviteit
 
 ## Overzicht
-Het `iotop` commando is een nuttig hulpmiddel voor het monitoren van schijfactiviteit in realtime. Het toont welke processen de meeste I/O-bronnen gebruiken, waardoor je beter inzicht krijgt in de prestaties van je systeem.
+De `iotop` opdracht is een nuttig hulpmiddel voor het monitoren van schijfactiviteit in een Linux-omgeving. Het toont welke processen de meeste I/O-bronnen gebruiken, waardoor je inzicht krijgt in de prestaties van je systeem.
 
 ## Gebruik
-De basis syntaxis van het `iotop` commando is als volgt:
+De basis syntaxis van de `iotop` opdracht is als volgt:
 
 ```bash
 iotop [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-o`, `--only`: Toont alleen processen die momenteel I/O-activiteit genereren.
-- `-b`, `--batch`: Voert `iotop` uit in batchmodus, wat handig is voor logging.
-- `-n NUM`, `--iter=NUM`: Aantal iteraties dat `iotop` moet uitvoeren voordat het stopt.
-- `-d SEC`, `--delay=SEC`: Stel de vertraging in tussen updates in seconden.
+- `-o` : Toon alleen processen die momenteel I/O-activiteit genereren.
+- `-b` : Voer `iotop` uit in batchmodus, wat handig is voor logging.
+- `-n NUM` : Geef het aantal iteraties op voordat `iotop` stopt (alleen in batchmodus).
+- `-d SECONDS` : Stel de vertraging in tussen updates in batchmodus.
 
 ## Veelvoorkomende Voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van `iotop`:
@@ -24,22 +24,22 @@ Hier zijn enkele praktische voorbeelden van het gebruik van `iotop`:
    iotop
    ```
 
-2. **Alleen processen met I/O-activiteit tonen**:
+2. **Alleen processen met I/O-activiteit weergeven**:
    ```bash
    iotop -o
    ```
 
-3. **Uitvoeren in batchmodus voor logging**:
+3. **Uitvoeren in batchmodus met 5 seconden vertraging**:
    ```bash
-   iotop -b -n 5
+   iotop -b -d 5
    ```
 
-4. **Vertraging instellen tussen updates**:
+4. **Batchmodus met 10 iteraties**:
    ```bash
-   iotop -d 2
+   iotop -b -n 10
    ```
 
 ## Tips
 - Gebruik `iotop` met rootrechten voor volledige toegang tot alle processen.
-- Combineer `iotop` met andere monitoringtools zoals `htop` voor een completer overzicht van systeembronnen.
-- Let op processen die constant hoge I/O-activiteit vertonen; dit kan wijzen op inefficiënte toepassingen of problemen met de schijf.
+- Combineer `iotop` met andere monitoringtools zoals `htop` voor een uitgebreider overzicht van systeembronnen.
+- Regelmatig gebruik van `iotop` kan helpen bij het identificeren van processen die de systeemprestaties negatief beïnvloeden.

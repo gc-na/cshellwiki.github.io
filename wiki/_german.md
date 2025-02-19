@@ -1,56 +1,48 @@
-# [Linux] Bash @ Verwendung: [Dateien und Verzeichnisse auflisten]
+# [Unix] C Shell (csh) @ Verwendung: Variablenzuweisung
 
 ## Übersicht
-Der `ls`-Befehl wird verwendet, um Dateien und Verzeichnisse in einem Verzeichnis aufzulisten. Er ist ein grundlegendes Werkzeug in der Bash, das es Benutzern ermöglicht, den Inhalt eines Verzeichnisses schnell zu sehen.
+Der `@` Befehl in der C Shell (csh) wird verwendet, um arithmetische Berechnungen durchzuführen und Variablen zuzuweisen. Er ermöglicht es Benutzern, mathematische Ausdrücke zu evaluieren und das Ergebnis einer Variablen zuzuweisen.
 
 ## Verwendung
-Die grundlegende Syntax des `ls`-Befehls lautet:
+Die grundlegende Syntax des `@` Befehls lautet:
 
-```
-ls [Optionen] [Argumente]
+```csh
+@ [options] [arguments]
 ```
 
 ## Häufige Optionen
-- `-l`: Listet die Dateien in einem langen Format auf, das zusätzliche Informationen wie Berechtigungen, Anzahl der Links, Besitzer, Gruppenzugehörigkeit, Größe und Änderungsdatum enthält.
-- `-a`: Zeigt alle Dateien an, einschließlich versteckter Dateien, die mit einem Punkt (.) beginnen.
-- `-h`: Gibt die Dateigrößen in einem menschenlesbaren Format aus (z. B. KB, MB).
-- `-R`: Listet die Inhalte von Verzeichnissen rekursiv auf.
-- `-t`: Sortiert die Dateien nach Änderungsdatum, wobei die neuesten zuerst angezeigt werden.
+- `-v`: Gibt den Wert der Variablen aus.
+- `-n`: Führt den Befehl aus, ohne ihn tatsächlich auszuführen (nur zur Überprüfung).
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung des `ls`-Befehls:
 
-1. **Einfaches Auflisten von Dateien:**
-   ```bash
-   ls
+1. **Einfaches Zuweisen und Berechnen:**
+   ```csh
+   @ a = 5 + 3
    ```
+   In diesem Beispiel wird der Wert 8 der Variablen `a` zugewiesen.
 
-2. **Auflisten mit detaillierten Informationen:**
-   ```bash
-   ls -l
+2. **Inkrementieren einer Variablen:**
+   ```csh
+   @ count++
    ```
+   Hier wird die Variable `count` um 1 erhöht.
 
-3. **Alle Dateien, einschließlich versteckter:**
-   ```bash
-   ls -a
+3. **Komplexe Berechnung:**
+   ```csh
+   @ result = (2 * 3) + (4 / 2)
    ```
+   In diesem Fall wird `result` der Wert 10 zugewiesen.
 
-4. **Auflisten mit menschenlesbaren Dateigrößen:**
-   ```bash
-   ls -lh
+4. **Verwendung von Variablen in Berechnungen:**
+   ```csh
+   @ x = 10
+   @ y = 5
+   @ sum = $x + $y
    ```
-
-5. **Rekursives Auflisten von Verzeichnissen:**
-   ```bash
-   ls -R
-   ```
-
-6. **Auflisten und Sortieren nach Änderungsdatum:**
-   ```bash
-   ls -lt
-   ```
+   Hier wird die Summe der Variablen `x` und `y` berechnet und `sum` zugewiesen.
 
 ## Tipps
-- Verwenden Sie `ls -lh`, um eine klare Übersicht über die Dateigrößen zu erhalten, insbesondere bei großen Verzeichnissen.
-- Kombinieren Sie Optionen, um die Ausgabe anzupassen, z. B. `ls -la` für eine detaillierte Ansicht aller Dateien.
-- Nutzen Sie die Tabulator-Taste zur automatischen Vervollständigung von Dateinamen, um Tippfehler zu vermeiden und die Eingabe zu beschleunigen.
+- Achten Sie darauf, dass Sie Leerzeichen um die Operatoren verwenden, da dies für die korrekte Auswertung erforderlich ist.
+- Verwenden Sie die `-v` Option, um den Wert von Variablen zu überprüfen, bevor Sie sie in Berechnungen verwenden.
+- Nutzen Sie Klammern, um die Reihenfolge der Berechnungen klarzustellen und Missverständnisse zu vermeiden.

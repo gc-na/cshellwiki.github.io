@@ -1,36 +1,37 @@
-# [Linux] Bash unsetenv Kullanımı: Ortam değişkenlerini kaldırma
+# [Unix] C Shell (csh) unsetenv Kullanımı: Ortam değişkenlerini kaldırma
 
 ## Overview
-`unsetenv` komutu, ortam değişkenlerini kaldırmak için kullanılır. Bu komut, belirli bir ortam değişkenini tanımlı olmaktan çıkararak, sistemdeki çevresel ayarları yönetmeye yardımcı olur.
+`unsetenv` komutu, C Shell (csh) ortamında tanımlı olan ortam değişkenlerini kaldırmak için kullanılır. Bu komut, belirli bir ortam değişkenini silerek, o değişkenin sistemdeki etkisini ortadan kaldırır.
 
 ## Usage
-Temel sözdizimi aşağıdaki gibidir:
-```bash
+Temel sözdizimi şu şekildedir:
+
+```csh
 unsetenv [değişken_adı]
 ```
 
 ## Common Options
-`unsetenv` komutunun genellikle kullanılan bir seçeneği yoktur. Komut, yalnızca belirtilen ortam değişkenini kaldırmak için kullanılır.
+`unsetenv` komutunun özel bir seçeneği yoktur; yalnızca silinecek ortam değişkeninin adını belirtmek yeterlidir.
 
 ## Common Examples
 Aşağıda `unsetenv` komutunun bazı pratik örnekleri verilmiştir:
 
-1. Bir ortam değişkenini kaldırma:
-   ```bash
-   unsetenv MY_VARIABLE
+1. `PATH` ortam değişkenini kaldırma:
+   ```csh
+   unsetenv PATH
    ```
 
-2. Birden fazla ortam değişkenini kaldırma:
-   ```bash
-   unsetenv VAR1 VAR2 VAR3
+2. `MY_VAR` adındaki bir değişkeni kaldırma:
+   ```csh
+   unsetenv MY_VAR
    ```
 
-3. Kaldırılan bir değişkenin varlığını kontrol etme:
-   ```bash
-   echo $MY_VARIABLE  # Çıktı boş olmalıdır
+3. `EDITOR` ortam değişkenini kaldırma:
+   ```csh
+   unsetenv EDITOR
    ```
 
 ## Tips
-- `unsetenv` komutunu kullanmadan önce, kaldırmak istediğiniz değişkenin gerçekten gerekli olup olmadığını kontrol edin.
-- Değişkenleri kaldırmadan önce, mevcut değerlerini kaydetmek iyi bir uygulamadır, böylece gerektiğinde geri yükleyebilirsiniz.
-- `unsetenv` komutunu kullanırken dikkatli olun, çünkü kaldırılan değişkenler geri alınamaz.
+- Ortam değişkenlerini kaldırmadan önce, bu değişkenlerin hangi işlemleri etkilediğini kontrol etmek iyi bir uygulamadır.
+- `printenv` komutunu kullanarak mevcut ortam değişkenlerini görüntüleyebilirsiniz.
+- Değişkeni kaldırmadan önce, değişkenin değerini yedeklemek isteyebilirsiniz; bu, daha sonra gerekirse geri yüklemenizi sağlar.

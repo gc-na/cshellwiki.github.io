@@ -1,54 +1,44 @@
-# [Linux] Bash export : Gérer les variables d'environnement
+# [Linux] C Shell (csh) export : Définir des variables d'environnement
 
 ## Overview
-La commande `export` en Bash est utilisée pour définir des variables d'environnement qui peuvent être accessibles par les processus enfants. Cela permet de partager des informations entre différents programmes exécutés dans le même environnement.
+La commande `export` dans C Shell (csh) est utilisée pour définir des variables d'environnement qui peuvent être accessibles par les processus enfants. Cela permet de partager des informations entre différents programmes et scripts.
 
 ## Usage
 La syntaxe de base de la commande `export` est la suivante :
 
-```bash
+```csh
 export [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes pour la commande `export` :
-
+- `-n` : Supprime l'exportation d'une variable, la rendant locale à la session actuelle.
 - `-p` : Affiche toutes les variables d'environnement exportées.
-- `-n` : Supprime l'exportation d'une variable, la rendant non disponible pour les processus enfants.
 
 ## Common Examples
+Voici quelques exemples pratiques de l'utilisation de la commande `export` :
 
-### Exporter une variable
-Pour créer une variable d'environnement et l'exporter, vous pouvez utiliser la commande suivante :
+1. **Définir une variable d'environnement :**
+   ```csh
+   set MY_VAR="Hello, World!"
+   export MY_VAR
+   ```
 
-```bash
-export NOM_VARIABLE="valeur"
-```
+2. **Vérifier si la variable est exportée :**
+   ```csh
+   echo $MY_VAR
+   ```
 
-### Vérifier les variables exportées
-Pour afficher toutes les variables d'environnement exportées, utilisez :
+3. **Supprimer l'exportation d'une variable :**
+   ```csh
+   export -n MY_VAR
+   ```
 
-```bash
-export -p
-```
-
-### Supprimer l'exportation d'une variable
-Pour supprimer l'exportation d'une variable, utilisez l'option `-n` :
-
-```bash
-export -n NOM_VARIABLE
-```
-
-### Utiliser une variable exportée dans un script
-Si vous avez exporté une variable, vous pouvez l'utiliser dans un script Bash comme ceci :
-
-```bash
-#!/bin/bash
-export MON_VARIABLE="Bonjour"
-bash -c 'echo $MON_VARIABLE'
-```
+4. **Afficher toutes les variables d'environnement exportées :**
+   ```csh
+   export -p
+   ```
 
 ## Tips
-- Assurez-vous d'exporter les variables dont vous avez besoin dans les sous-processus pour éviter les erreurs.
-- Pour rendre une variable persistante à travers les sessions, ajoutez l'exportation dans votre fichier `~/.bashrc` ou `~/.bash_profile`.
-- Évitez d'utiliser des noms de variables qui pourraient entrer en conflit avec les variables d'environnement système.
+- Utilisez `set` pour créer une variable avant de l'exporter.
+- Vérifiez toujours les variables d'environnement exportées avec `export -p` pour éviter les conflits.
+- N'oubliez pas que les modifications apportées aux variables d'environnement ne persistent pas après la fermeture de la session.

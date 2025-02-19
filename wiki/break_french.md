@@ -1,72 +1,52 @@
-# [Linux] Bash break utilisation : Interrompre une boucle
+# [Linux] C Shell (csh) break : Interrompre l'exécution d'une boucle
 
 ## Overview
-La commande `break` en Bash est utilisée pour sortir d'une boucle. Que ce soit une boucle `for`, `while` ou `until`, `break` permet de quitter la boucle en cours d'exécution lorsque certaines conditions sont remplies.
+La commande `break` dans C Shell (csh) est utilisée pour interrompre l'exécution d'une boucle. Elle permet de sortir prématurément d'une boucle `while`, `foreach` ou `for`, ce qui peut être utile lorsque certaines conditions sont remplies.
 
 ## Usage
 La syntaxe de base de la commande `break` est la suivante :
 
-```bash
-break [n]
+```csh
+break [options]
 ```
 
-Ici, `n` est un nombre optionnel qui indique le nombre de niveaux de boucle à quitter. Si `n` n'est pas spécifié, `break` sort de la boucle la plus interne.
-
 ## Common Options
-- `n` : Un nombre qui spécifie le nombre de niveaux de boucle à quitter. Par défaut, il quitte la boucle la plus interne.
+La commande `break` ne possède pas d'options spécifiques. Elle est généralement utilisée seule pour sortir d'une boucle.
 
 ## Common Examples
 
-### Exemple 1 : Sortir d'une boucle `for`
-```bash
-for i in {1..5}; do
-  if [ $i -eq 3 ]; then
-    break
-  fi
-  echo "Nombre : $i"
-done
+### Exemple 1 : Sortir d'une boucle `while`
+```csh
+set i = 0
+while ($i < 10)
+    echo "i vaut $i"
+    @ i++
+    if ($i == 5) break
+end
 ```
-*Sortie :*
-```
-Nombre : 1
-Nombre : 2
-```
+Dans cet exemple, la boucle s'arrête lorsque `i` atteint 5.
 
-### Exemple 2 : Sortir d'une boucle `while`
-```bash
-count=1
-while [ $count -le 5 ]; do
-  if [ $count -eq 4 ]; then
-    break
-  fi
-  echo "Compteur : $count"
-  ((count++))
-done
+### Exemple 2 : Sortir d'une boucle `foreach`
+```csh
+foreach item (1 2 3 4 5)
+    echo "Élément : $item"
+    if ($item == 3) break
+end
 ```
-*Sortie :*
-```
-Compteur : 1
-Compteur : 2
-Compteur : 3
-```
+Ici, la boucle s'arrête lorsque l'élément est égal à 3.
 
-### Exemple 3 : Utilisation de `break` avec un nombre
-```bash
-for i in {1..5}; do
-  for j in {1..3}; do
-    if [ $j -eq 2 ]; then
-      break 2
-    fi
-    echo "i : $i, j : $j"
-  done
-done
+### Exemple 3 : Utilisation avec une condition
+```csh
+set count = 0
+while (1)
+    set count = `expr $count + 1`
+    echo "Compteur : $count"
+    if ($count >= 7) break
+end
 ```
-*Sortie :*
-```
-i : 1, j : 1
-```
+Dans cet exemple, la boucle se termine lorsque le compteur atteint 7.
 
 ## Tips
-- Utilisez `break` judicieusement pour éviter de sortir prématurément de boucles, ce qui pourrait entraîner des comportements inattendus.
-- Si vous avez plusieurs niveaux de boucles imbriquées, spécifiez le nombre de niveaux à quitter pour un contrôle plus précis.
-- Testez toujours vos conditions de sortie pour vous assurer que la boucle se termine comme prévu.
+- Utilisez `break` pour améliorer la lisibilité de votre code en évitant des conditions complexes.
+- Assurez-vous que l'utilisation de `break` ne crée pas de boucles infinies en vérifiant toujours vos conditions de sortie.
+- `break` ne fonctionne que dans les boucles ; son utilisation en dehors d'une boucle entraînera une erreur.

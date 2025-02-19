@@ -1,38 +1,36 @@
-# [Linux] Pengguna Bash: Mengelola pengguna sistem
+# [Sistem Operasi] C Shell (csh) pengguna: Mengelola pengguna sistem
 
 ## Overview
-Perintah `users` digunakan untuk menampilkan nama pengguna yang sedang aktif di sistem. Ini memberikan informasi tentang siapa yang sedang masuk ke sistem pada waktu tertentu.
+Perintah `users` dalam C Shell (csh) digunakan untuk menampilkan nama-nama pengguna yang sedang aktif di sistem. Ini berguna untuk mengetahui siapa saja yang sedang login pada saat tertentu.
 
 ## Usage
-Sintaks dasar dari perintah `users` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `users`:
 
-```bash
-users [options]
+```csh
+users [options] [arguments]
 ```
 
 ## Common Options
-- `-a`: Menampilkan semua nama pengguna, termasuk yang tidak sedang aktif.
-- `-d`: Menampilkan daftar pengguna yang sedang aktif dalam format yang lebih terperinci.
+- `-n`: Menampilkan nama pengguna tanpa duplikasi.
+- `-r`: Menampilkan pengguna yang sedang aktif secara real-time.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan perintah `users`:
 
-1. Menampilkan nama pengguna yang sedang aktif:
-   ```bash
+1. **Menampilkan pengguna aktif:**
+   ```csh
    users
    ```
 
-2. Menampilkan semua pengguna, termasuk yang tidak aktif:
-   ```bash
-   users -a
+2. **Menampilkan pengguna aktif tanpa duplikasi:**
+   ```csh
+   users -n
    ```
 
-3. Menampilkan daftar pengguna dalam format terperinci:
-   ```bash
-   users -d
+3. **Menampilkan pengguna aktif secara real-time:**
+   ```csh
+   users -r
    ```
 
 ## Tips
-- Gunakan perintah `who` untuk mendapatkan informasi lebih lengkap tentang sesi pengguna, termasuk waktu masuk dan terminal yang digunakan.
-- Perintah `w` juga dapat memberikan informasi tambahan seperti aktivitas pengguna saat ini.
-- Jika Anda hanya ingin melihat jumlah pengguna yang aktif, Anda bisa menggunakan kombinasi `users | wc -w` untuk menghitung jumlahnya.
+- Gunakan opsi `-n` jika Anda ingin mendapatkan daftar pengguna yang unik, terutama jika beberapa pengguna login lebih dari sekali.
+- Perintah ini dapat digunakan dalam skrip untuk memantau aktivitas pengguna di sistem secara otomatis.

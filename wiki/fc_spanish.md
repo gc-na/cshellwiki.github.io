@@ -1,52 +1,47 @@
-# [Linux] Bash fc Uso equivalente: Editar y ejecutar comandos anteriores
+# [Linux] C Shell (csh) fc <Uso equivalente en español>: [editar y reejecutar comandos]
 
 ## Overview
-El comando `fc` en Bash se utiliza para listar, editar y ejecutar comandos anteriores en el historial de la terminal. Es una herramienta útil para corregir errores o repetir comandos sin tener que volver a escribirlos.
+El comando `fc` en C Shell (csh) se utiliza para editar y reejecutar comandos previamente ingresados en la sesión de la terminal. Permite al usuario modificar comandos anteriores antes de ejecutarlos nuevamente, lo que facilita la corrección de errores o la modificación de argumentos.
 
 ## Usage
 La sintaxis básica del comando `fc` es la siguiente:
 
-```bash
+```csh
 fc [opciones] [argumentos]
 ```
 
 ## Common Options
 - `-l`: Lista los comandos en el historial.
-- `-s`: Ejecuta el comando especificado sin abrir un editor.
 - `-n`: No muestra los números de línea al listar los comandos.
-- `-e`: Especifica un editor diferente para editar el comando.
+- `-s`: Ejecuta el comando después de editarlo sin abrir un editor.
 
 ## Common Examples
+1. **Listar los últimos 10 comandos:**
+   ```csh
+   fc -l -10
+   ```
 
-### Listar comandos en el historial
-Para listar los últimos 10 comandos ejecutados:
+2. **Editar el último comando:**
+   ```csh
+   fc
+   ```
 
-```bash
-fc -l -n -10
-```
+3. **Ejecutar el último comando sin editar:**
+   ```csh
+   fc -s
+   ```
 
-### Editar un comando específico
-Si deseas editar el comando número 25 en el historial:
+4. **Listar los comandos sin números de línea:**
+   ```csh
+   fc -n -l
+   ```
 
-```bash
-fc 25
-```
-
-### Ejecutar el último comando
-Para ejecutar el último comando sin editarlo:
-
-```bash
-fc -s
-```
-
-### Usar un editor específico
-Para editar el último comando usando `nano` como editor:
-
-```bash
-fc -e nano
-```
+5. **Editar un comando específico (por número):**
+   ```csh
+   fc 5
+   ```
 
 ## Tips
-- Utiliza `fc -l` para revisar rápidamente los comandos que has ejecutado recientemente.
-- Puedes combinar `fc` con otros comandos para mejorar tu flujo de trabajo, como redirigir la salida de un comando a un archivo.
-- Recuerda que `fc` solo funciona con el historial de la sesión actual, así que asegúrate de que los comandos que deseas editar estén disponibles en el historial.
+- Utiliza `fc` para corregir rápidamente errores en comandos sin tener que volver a escribirlos.
+- Familiarízate con el uso de editores de texto como `vi` o `nano`, ya que `fc` abrirá el editor predeterminado para la edición.
+- Recuerda que puedes especificar un rango de comandos para editar varios a la vez, lo que puede ser útil para realizar cambios en múltiples entradas.

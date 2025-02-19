@@ -1,49 +1,48 @@
-# [Linux] Bash mysql użycie: Interakcja z bazą danych MySQL
+# [Linux] C Shell (csh) mysql użycie: Interakcja z bazą danych MySQL
 
 ## Overview
-Polecenie `mysql` jest klientem wiersza poleceń dla systemu zarządzania bazą danych MySQL. Umożliwia użytkownikom wykonywanie zapytań SQL, zarządzanie bazami danych oraz administrację użytkownikami i uprawnieniami.
+Polecenie `mysql` jest klientem wiersza poleceń dla systemu zarządzania bazą danych MySQL. Umożliwia użytkownikom wykonywanie zapytań SQL, zarządzanie bazami danych oraz interakcję z serwerem MySQL.
 
 ## Usage
-Podstawowa składnia polecenia `mysql` jest następująca:
+Podstawowa składnia polecenia `mysql` wygląda następująco:
 
 ```bash
-mysql [opcje] [argumenty]
+mysql [options] [arguments]
 ```
 
 ## Common Options
-- `-u, --user=NAZWA_UŻYTKOWNIKA`: Określa nazwę użytkownika do logowania.
-- `-p, --password`: Prosi o hasło użytkownika (można je również podać bezpośrednio po `-p`).
-- `-h, --host=HOST`: Określa adres hosta serwera MySQL (domyślnie localhost).
-- `-D, --database=NAZWA_BAZY`: Określa bazę danych, z którą chcesz pracować.
-- `--execute=ZAPYTANIE`: Wykonuje podane zapytanie SQL bezpośrednio z wiersza poleceń.
+- `-u [username]`: Określa nazwę użytkownika do logowania się do bazy danych.
+- `-p`: Wymusza podanie hasła użytkownika.
+- `-h [hostname]`: Określa adres hosta serwera MySQL.
+- `-D [database]`: Wskazuje, z jaką bazą danych chcesz pracować.
+- `--execute=[query]`: Wykonuje podane zapytanie SQL bez interakcji z użytkownikiem.
 
 ## Common Examples
+- Aby połączyć się z lokalnym serwerem MySQL jako użytkownik `root`:
 
-### Połączenie z lokalnym serwerem MySQL
 ```bash
 mysql -u root -p
 ```
-To polecenie łączy się z lokalnym serwerem MySQL jako użytkownik `root` i prosi o hasło.
 
-### Wykonanie zapytania SQL
+- Aby połączyć się z serwerem MySQL na hoście `example.com`:
+
 ```bash
-mysql -u root -p --execute="SHOW DATABASES;"
+mysql -h example.com -u user -p
 ```
-To polecenie łączy się z serwerem MySQL i wykonuje zapytanie, które wyświetla dostępne bazy danych.
 
-### Połączenie z zdalnym serwerem MySQL
+- Aby wykonać zapytanie SQL bezpośrednio z wiersza poleceń:
+
 ```bash
-mysql -h 192.168.1.100 -u user -p
+mysql -u user -p -e "SHOW DATABASES;"
 ```
-To polecenie łączy się z zdalnym serwerem MySQL znajdującym się pod adresem IP `192.168.1.100`.
 
-### Wybór bazy danych
+- Aby połączyć się z określoną bazą danych:
+
 ```bash
 mysql -u user -p -D my_database
 ```
-To polecenie łączy się z serwerem MySQL i bezpośrednio wybiera bazę danych `my_database`.
 
 ## Tips
-- Zawsze używaj opcji `-p`, aby zabezpieczyć swoje hasło, zamiast podawać je w linii poleceń.
-- Używaj opcji `--execute` do szybkiego wykonywania pojedynczych zapytań bez otwierania interaktywnej sesji.
+- Zawsze używaj opcji `-p`, aby zabezpieczyć swoje hasło, zamiast podawać je bezpośrednio w wierszu poleceń.
+- Możesz używać plików konfiguracyjnych, aby przechowywać dane logowania, co ułatwia dostęp do bazy danych.
 - Regularnie twórz kopie zapasowe swoich baz danych, aby uniknąć utraty danych.

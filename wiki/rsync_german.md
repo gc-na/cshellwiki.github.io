@@ -1,7 +1,7 @@
-# [Linux] Bash rsync Verwendung: Dateien synchronisieren und übertragen
+# [Linux] C Shell (csh) rsync Verwendung: Dateien synchronisieren und übertragen
 
 ## Übersicht
-Der `rsync`-Befehl ist ein leistungsstarkes Tool zur Synchronisierung und Übertragung von Dateien und Verzeichnissen zwischen verschiedenen Standorten. Es ist besonders nützlich, um Daten effizient zu sichern oder zu kopieren, da es nur die Änderungen überträgt und so Bandbreite spart.
+Der `rsync`-Befehl wird verwendet, um Dateien und Verzeichnisse zwischen verschiedenen Standorten zu synchronisieren und zu übertragen. Er ist besonders nützlich, um nur die Änderungen zu übertragen, was die Übertragungszeit und den Bandbreitenverbrauch reduziert.
 
 ## Verwendung
 Die grundlegende Syntax des `rsync`-Befehls lautet:
@@ -11,48 +11,34 @@ rsync [Optionen] [Quell] [Ziel]
 ```
 
 ## Häufige Optionen
-Hier sind einige gängige Optionen, die mit `rsync` verwendet werden können:
-
-- `-a`: Archivmodus; kopiert Dateien rekursiv und bewahrt die Dateiberechtigungen.
-- `-v`: Ausführliche Ausgabe; zeigt den Fortschritt der Übertragung an.
-- `-z`: Komprimiert die Daten während der Übertragung, um Bandbreite zu sparen.
-- `-r`: Rekursive Übertragung von Verzeichnissen.
-- `--delete`: Löscht Dateien im Ziel, die nicht mehr im Quellverzeichnis vorhanden sind.
+- `-a`: Aktiviert den Archivmodus, der rekursive Übertragungen und die Erhaltung von Berechtigungen, Zeitstempeln und Symbolischen Links ermöglicht.
+- `-v`: Aktiviert die ausführliche Ausgabe, um den Fortschritt der Übertragung anzuzeigen.
+- `-z`: Komprimiert die Daten während der Übertragung, um die Bandbreite zu sparen.
+- `-r`: Überträgt Verzeichnisse rekursiv.
+- `--delete`: Löscht Dateien im Zielverzeichnis, die nicht mehr im Quellverzeichnis vorhanden sind.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung von `rsync`:
-
-1. **Ein einfaches Backup eines Verzeichnisses:**
+1. **Ein einfaches Synchronisieren von Dateien:**
    ```bash
    rsync -av /pfad/zum/quellverzeichnis/ /pfad/zum/zielverzeichnis/
    ```
 
-2. **Datenübertragung mit Kompression:**
+2. **Synchronisieren mit Kompression:**
    ```bash
-   rsync -avz /pfad/zum/quellverzeichnis/ benutzer@remote:/pfad/zum/zielverzeichnis/
+   rsync -avz /pfad/zum/quellverzeichnis/ user@remote:/pfad/zum/zielverzeichnis/
    ```
 
-3. **Synchronisieren mit Löschen von nicht mehr vorhandenen Dateien:**
+3. **Synchronisieren und Löschen nicht mehr vorhandener Dateien:**
    ```bash
    rsync -av --delete /pfad/zum/quellverzeichnis/ /pfad/zum/zielverzeichnis/
    ```
 
-4. **Übertragung über SSH:**
+4. **Nur bestimmte Dateitypen synchronisieren:**
    ```bash
-   rsync -avz -e ssh /pfad/zum/quellverzeichnis/ benutzer@remote:/pfad/zum/zielverzeichnis/
+   rsync -av --include='*.jpg' --exclude='*' /pfad/zum/quellverzeichnis/ /pfad/zum/zielverzeichnis/
    ```
 
 ## Tipps
-- Verwenden Sie die Option `-n` (Trockenlauf), um zu sehen, welche Dateien übertragen werden, ohne tatsächlich Änderungen vorzunehmen:
-  ```bash
-  rsync -avn /pfad/zum/quellverzeichnis/ /pfad/zum/zielverzeichnis/
-  ```
-
-- Achten Sie darauf, einen abschließenden Schrägstrich (`/`) im Quellverzeichnis zu verwenden, um nur den Inhalt und nicht das Verzeichnis selbst zu kopieren.
-
-- Nutzen Sie `--progress`, um den Fortschritt der Übertragung in Echtzeit zu verfolgen:
-  ```bash
-  rsync -av --progress /pfad/zum/quellverzeichnis/ /pfad/zum/zielverzeichnis/
-  ``` 
-
-Mit diesen Informationen sind Sie gut gerüstet, um `rsync` effektiv für Ihre Dateiübertragungen und -synchronisierungen zu nutzen.
+- Verwenden Sie `--dry-run`, um zu sehen, welche Änderungen vorgenommen werden, ohne tatsächlich Dateien zu übertragen.
+- Stellen Sie sicher, dass Sie die Trailing Slash (`/`) im Quellverzeichnis korrekt verwenden, um die gewünschten Ergebnisse zu erzielen.
+- Nutzen Sie `rsync` über SSH für sichere Übertragungen, indem Sie `user@remote:/pfad/zum/zielverzeichnis/` angeben.

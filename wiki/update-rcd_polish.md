@@ -1,51 +1,43 @@
-# [Linux] Bash update-rc.d użycie: Zarządzanie skryptami startowymi
+# [Linux] C Shell (csh) update-rc.d użycie: Zarządzanie skryptami uruchamiania
 
-## Overview
-Polecenie `update-rc.d` służy do zarządzania skryptami startowymi w systemach opartych na Debianie. Umożliwia dodawanie, usuwanie lub aktualizowanie skryptów, które są uruchamiane podczas startu systemu.
+## Przegląd
+Polecenie `update-rc.d` służy do zarządzania skryptami uruchamiania w systemach opartych na Debianie. Umożliwia dodawanie, usuwanie lub aktualizowanie skryptów, które są wykonywane podczas uruchamiania i zatrzymywania usług.
 
-## Usage
-Podstawowa składnia polecenia `update-rc.d` wygląda następująco:
+## Użycie
+Podstawowa składnia polecenia `update-rc.d` jest następująca:
 
-```bash
+```csh
 update-rc.d [opcje] [argumenty]
 ```
 
-## Common Options
-Oto kilka powszechnie używanych opcji dla `update-rc.d`:
-
-- `defaults` - Ustawia domyślne poziomy uruchamiania dla skryptu.
+## Częste opcje
+- `defaults` - Dodaje domyślne poziomy uruchamiania dla skryptu.
 - `remove` - Usuwa skrypt z poziomów uruchamiania.
-- `enable` - Włącza skrypt w określonych poziomach uruchamiania.
-- `disable` - Wyłącza skrypt w określonych poziomach uruchamiania.
+- `enable` - Włącza skrypt w poziomach uruchamiania.
+- `disable` - Wyłącza skrypt w poziomach uruchamiania.
 
-## Common Examples
-Oto kilka praktycznych przykładów użycia `update-rc.d`:
-
+## Częste przykłady
 1. **Dodanie skryptu do uruchamiania:**
-
-```bash
-sudo update-rc.d myscript defaults
-```
+   ```csh
+   update-rc.d myscript defaults
+   ```
 
 2. **Usunięcie skryptu z uruchamiania:**
+   ```csh
+   update-rc.d myscript remove
+   ```
 
-```bash
-sudo update-rc.d myscript remove
-```
+3. **Włączenie skryptu:**
+   ```csh
+   update-rc.d myscript enable
+   ```
 
-3. **Włączenie skryptu w określonych poziomach uruchamiania:**
+4. **Wyłączenie skryptu:**
+   ```csh
+   update-rc.d myscript disable
+   ```
 
-```bash
-sudo update-rc.d myscript enable
-```
-
-4. **Wyłączenie skryptu w określonych poziomach uruchamiania:**
-
-```bash
-sudo update-rc.d myscript disable
-```
-
-## Tips
-- Zawsze sprawdzaj, czy skrypt startowy jest poprawnie napisany, aby uniknąć problemów podczas uruchamiania systemu.
-- Używaj opcji `remove` z rozwagą, ponieważ usunięcie skryptu może uniemożliwić uruchomienie niektórych usług.
-- Regularnie przeglądaj skrypty startowe, aby upewnić się, że są aktualne i niepotrzebne skrypty są usuwane.
+## Wskazówki
+- Zawsze sprawdzaj, czy skrypt uruchamiania jest poprawnie skonfigurowany przed jego dodaniem do systemu.
+- Używaj opcji `remove` ostrożnie, aby nie usunąć ważnych skryptów.
+- Regularnie przeglądaj skrypty uruchamiania, aby upewnić się, że nie ma nieużywanych lub przestarzałych skryptów w systemie.

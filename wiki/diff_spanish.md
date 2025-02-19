@@ -1,51 +1,48 @@
-# [Linux] Bash diff uso equivalente: Comparar archivos y mostrar diferencias
+# [Linux] C Shell (csh) diff uso: Comparar archivos línea por línea
 
 ## Overview
-El comando `diff` se utiliza en Bash para comparar el contenido de dos archivos de texto y mostrar las diferencias entre ellos. Es una herramienta muy útil para desarrolladores y administradores de sistemas que necesitan identificar cambios en archivos de configuración, código fuente, o cualquier otro tipo de documento.
+El comando `diff` se utiliza para comparar el contenido de dos archivos línea por línea. Su principal función es mostrar las diferencias entre ellos, lo que resulta útil para identificar cambios en archivos de texto, como código fuente o documentos.
 
 ## Usage
 La sintaxis básica del comando `diff` es la siguiente:
 
-```bash
+```csh
 diff [opciones] [archivo1] [archivo2]
 ```
 
 ## Common Options
-- `-u`: Muestra las diferencias en formato unificado, que es más fácil de leer.
-- `-c`: Muestra las diferencias en formato de contexto, proporcionando más información sobre el contexto de las líneas cambiadas.
+- `-u`: Muestra las diferencias en un formato unificado, que es más fácil de leer.
+- `-c`: Muestra las diferencias en un formato de contexto, que incluye líneas de contexto alrededor de las diferencias.
 - `-i`: Ignora las diferencias entre mayúsculas y minúsculas.
 - `-w`: Ignora los espacios en blanco al comparar las líneas.
-- `-r`: Compara directorios de manera recursiva.
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso del comando `diff`:
 
-1. Comparar dos archivos de texto:
-   ```bash
+1. Comparar dos archivos de texto y mostrar las diferencias:
+   ```csh
    diff archivo1.txt archivo2.txt
    ```
 
-2. Mostrar diferencias en formato unificado:
-   ```bash
+2. Usar el formato unificado para ver las diferencias:
+   ```csh
    diff -u archivo1.txt archivo2.txt
    ```
 
-3. Comparar dos directorios recursivamente:
-   ```bash
-   diff -r directorio1/ directorio2/
+3. Ignorar diferencias de mayúsculas y minúsculas:
+   ```csh
+   diff -i archivo1.txt archivo2.txt
    ```
 
-4. Ignorar espacios en blanco al comparar:
-   ```bash
-   diff -w archivo1.txt archivo2.txt
-   ```
-
-5. Mostrar diferencias en formato de contexto:
-   ```bash
+4. Comparar dos archivos y mostrar el contexto de las diferencias:
+   ```csh
    diff -c archivo1.txt archivo2.txt
    ```
 
 ## Tips
-- Utiliza la opción `-u` para obtener un formato de salida más legible, especialmente útil al revisar cambios en código.
-- Cuando compares directorios, la opción `-r` es muy efectiva para ver todas las diferencias en archivos anidados.
-- Si trabajas en un entorno colaborativo, considera usar `diff` junto con herramientas de control de versiones como Git para gestionar cambios de manera más eficiente.
+- Siempre es útil hacer una copia de seguridad de los archivos antes de realizar cambios basados en las diferencias.
+- Utiliza la opción `-u` para obtener un formato más legible, especialmente cuando trabajas con cambios en código.
+- Si estás trabajando con archivos grandes, considera usar `diff` junto con `less` para facilitar la navegación por las diferencias:
+  ```csh
+  diff archivo1.txt archivo2.txt | less
+  ```

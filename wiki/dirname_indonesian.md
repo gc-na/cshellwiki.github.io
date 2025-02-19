@@ -1,27 +1,25 @@
-# [Linux] Bash dirname Penggunaan: Mengambil nama direktori dari jalur file
+# [Sistem Operasi] C Shell (csh) dirname: [mengambil nama direktori dari jalur file]
 
 ## Overview
-Perintah `dirname` digunakan untuk mengambil nama direktori dari jalur file yang diberikan. Ini berguna ketika Anda ingin memisahkan nama file dari jalur direktori lengkapnya.
+Perintah `dirname` digunakan untuk mengambil nama direktori dari jalur file yang diberikan. Ini berguna ketika Anda ingin memisahkan nama file dari jalurnya dan hanya mendapatkan bagian direktori.
 
 ## Usage
-Sintaks dasar dari perintah `dirname` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `dirname`:
 
-```bash
+```csh
 dirname [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum untuk `dirname` beserta penjelasannya:
-
-- `-z` : Menggunakan pemisah null untuk input dan output.
-- `--help` : Menampilkan bantuan penggunaan perintah.
-- `--version` : Menampilkan versi dari perintah `dirname`.
+- `-z`: Menghasilkan output kosong jika argumen kosong.
+- `--help`: Menampilkan bantuan penggunaan perintah.
+- `--version`: Menampilkan versi dari perintah `dirname`.
 
 ## Common Examples
-Berikut adalah beberapa contoh praktis penggunaan `dirname`:
+Berikut adalah beberapa contoh penggunaan perintah `dirname`:
 
 1. Mengambil nama direktori dari jalur file:
-   ```bash
+   ```csh
    dirname /home/user/documents/file.txt
    ```
    Output:
@@ -29,27 +27,26 @@ Berikut adalah beberapa contoh praktis penggunaan `dirname`:
    /home/user/documents
    ```
 
-2. Mengambil nama direktori dari jalur file relatif:
-   ```bash
-   dirname ./folder/file.txt
+2. Mengambil nama direktori dari jalur file yang tidak memiliki nama file:
+   ```csh
+   dirname /home/user/documents/
    ```
    Output:
    ```
-   ./folder
+   /home/user/documents
    ```
 
-3. Menggunakan `dirname` dalam skrip untuk mendapatkan direktori dari variabel:
-   ```bash
-   FILE_PATH="/usr/local/bin/script.sh"
-   DIR_NAME=$(dirname "$FILE_PATH")
-   echo $DIR_NAME
+3. Menggunakan `dirname` dengan beberapa argumen:
+   ```csh
+   dirname /var/log/syslog /etc/hosts
    ```
    Output:
    ```
-   /usr/local/bin
+   /var/log
+   /etc
    ```
 
 ## Tips
-- Gunakan `dirname` dalam kombinasi dengan perintah lain seperti `basename` untuk memanipulasi jalur file secara lebih efisien.
-- Pastikan untuk menggunakan tanda kutip pada jalur file yang mengandung spasi untuk menghindari kesalahan.
-- Anda dapat menggunakan `dirname` dalam skrip shell untuk secara otomatis mendapatkan jalur direktori dari file yang sedang diproses.
+- Gunakan `dirname` dalam skrip untuk memproses jalur file secara otomatis.
+- Kombinasikan `dirname` dengan perintah lain seperti `basename` untuk manipulasi jalur file yang lebih kompleks.
+- Pastikan untuk memeriksa apakah jalur file yang diberikan valid untuk menghindari kesalahan.

@@ -1,42 +1,42 @@
-# [Linux] Bash script użycie: rejestracja sesji terminalowej
+# [Linux] C Shell (csh) script Użycie: rejestrowanie sesji terminala
 
 ## Overview
-Polecenie `script` służy do rejestrowania sesji terminalowej do pliku. Dzięki temu można zapisywać wszystkie polecenia oraz ich wyniki, co jest przydatne do dokumentacji lub analizy później.
+Polecenie `script` w C Shell (csh) służy do rejestrowania sesji terminala. Umożliwia ono zapisanie wszystkich poleceń oraz ich wyników do pliku, co jest przydatne do późniejszego przeglądania lub dokumentacji.
 
 ## Usage
 Podstawowa składnia polecenia `script` jest następująca:
 
-```bash
-script [opcje] [plik]
+```csh
+script [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-a` – dodaje dane do istniejącego pliku zamiast go nadpisywać.
-- `-f` – natychmiast zapisuje dane do pliku, co pozwala na bieżące śledzenie.
-- `-q` – wycisza komunikaty o rozpoczęciu i zakończeniu rejestrowania.
+- `-a`: Dodaje dane do istniejącego pliku zamiast go nadpisywać.
+- `-f`: Natychmiastowo zapisuje dane do pliku, co może być przydatne w przypadku długich sesji.
+- `-q`: Wyłącza komunikaty informacyjne, co sprawia, że rejestracja jest bardziej dyskretna.
 
 ## Common Examples
-1. Rozpoczęcie rejestrowania sesji do pliku `output.txt`:
-   ```bash
-   script output.txt
+1. Rozpoczęcie rejestrowania sesji do pliku `sesja.txt`:
+   ```csh
+   script sesja.txt
    ```
 
-2. Rozpoczęcie rejestrowania sesji i dodawanie do istniejącego pliku:
-   ```bash
-   script -a output.txt
+2. Dodanie nowej sesji do istniejącego pliku `sesja.txt`:
+   ```csh
+   script -a sesja.txt
    ```
 
-3. Rejestrowanie sesji z natychmiastowym zapisywaniem:
-   ```bash
-   script -f output.txt
+3. Rejestrowanie sesji z natychmiastowym zapisem:
+   ```csh
+   script -f sesja.txt
    ```
 
-4. Użycie polecenia w trybie wyciszonym:
-   ```bash
-   script -q output.txt
+4. Rozpoczęcie rejestrowania sesji bez komunikatów:
+   ```csh
+   script -q sesja.txt
    ```
 
 ## Tips
 - Upewnij się, że masz odpowiednie uprawnienia do zapisu w katalogu, w którym chcesz utworzyć plik rejestru.
-- Po zakończeniu sesji, aby zakończyć rejestrowanie, po prostu wpisz `exit` lub naciśnij `Ctrl+D`.
-- Możesz przeglądać zapisane sesje, używając polecenia `cat` lub `less`, aby zobaczyć, co zostało zarejestrowane.
+- Możesz zakończyć rejestrowanie sesji, wpisując polecenie `exit` lub naciskając `Ctrl+D`.
+- Regularnie przeglądaj pliki rejestru, aby upewnić się, że zawierają wszystkie potrzebne informacje.

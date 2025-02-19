@@ -1,7 +1,7 @@
-# [Linux] Bash chage Usage equivalent: Manage user password expiration settings
+# [Linux] C Shell (csh) chage用法: Manage user password expiration settings
 
 ## Overview
-The `chage` command in Linux is used to change user password expiry information. It allows administrators to set and modify the parameters related to password aging, ensuring that users update their passwords regularly for security purposes.
+The `chage` command is used to change user password expiry information in Linux systems. It allows administrators to set and manage password aging policies for user accounts, ensuring that users update their passwords regularly for security purposes.
 
 ## Usage
 The basic syntax of the `chage` command is as follows:
@@ -11,16 +11,16 @@ chage [options] [username]
 ```
 
 ## Common Options
-- `-l` : List the current password aging settings for the specified user.
-- `-m` : Set the minimum number of days between password changes.
-- `-M` : Set the maximum number of days a password is valid.
-- `-I` : Set the number of days of inactivity allowed after a password expires.
-- `-E` : Set the expiration date of the user account.
-- `-d` : Set the last password change date.
+- `-l`: List the current password expiration information for the specified user.
+- `-m`: Set the minimum number of days between password changes.
+- `-M`: Set the maximum number of days a password is valid.
+- `-I`: Set the number of days of inactivity before the account is disabled.
+- `-E`: Set the date on which the user account will be disabled.
 
 ## Common Examples
+Here are some practical examples of how to use the `chage` command:
 
-1. **List current password aging settings:**
+1. **List password expiration information for a user:**
    ```bash
    chage -l username
    ```
@@ -35,18 +35,17 @@ chage [options] [username]
    chage -M 90 username
    ```
 
-4. **Set the account to expire on a specific date (e.g., January 1, 2024):**
+4. **Set the account to expire after 30 days of inactivity:**
    ```bash
-   chage -E 2024-01-01 username
+   chage -I 30 username
    ```
 
-5. **Set the last password change date to today:**
+5. **Set the account to expire on a specific date (e.g., 2023-12-31):**
    ```bash
-   chage -d 0 username
+   chage -E 2023-12-31 username
    ```
 
 ## Tips
-- Always review the current settings with `chage -l username` before making changes.
-- Consider setting a reminder for users when their password is nearing expiration.
-- Use the `-I` option to enforce a grace period for users to change their passwords after expiration.
-- Regularly audit user accounts to ensure compliance with your organization's password policies.
+- Always check the current settings with the `-l` option before making changes to avoid unintended consequences.
+- Consider setting a reminder for users to change their passwords as they approach the expiration date.
+- Use the `-E` option carefully, as it can lock users out of their accounts if not managed properly.

@@ -1,44 +1,44 @@
-# [Linux] Bash time uso equivalente: mide el tiempo de ejecución de comandos
+# [Linux] C Shell (csh) time uso: Mide el tiempo de ejecución de comandos
 
 ## Overview
-El comando `time` en Bash se utiliza para medir el tiempo que tarda en ejecutarse un comando o un script. Proporciona información sobre el tiempo real, el tiempo de CPU utilizado y otros detalles que pueden ser útiles para optimizar el rendimiento de los scripts.
+El comando `time` en C Shell (csh) se utiliza para medir el tiempo que tarda en ejecutarse un comando específico. Proporciona información sobre el tiempo real, el tiempo de usuario y el tiempo de sistema, lo que permite a los usuarios evaluar el rendimiento de sus scripts o comandos.
 
 ## Usage
 La sintaxis básica del comando `time` es la siguiente:
 
-```bash
+```csh
 time [opciones] [argumentos]
 ```
 
 ## Common Options
-- `-p`: Muestra el tiempo en un formato más legible y estándar.
+- `-p`: Muestra el tiempo en un formato más legible.
 - `-o archivo`: Redirige la salida del tiempo a un archivo especificado.
-- `-v`: Muestra información detallada sobre el uso de recursos.
+- `-v`: Muestra información detallada sobre el tiempo de ejecución.
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso del comando `time`:
 
 1. Medir el tiempo de ejecución de un comando simple:
-   ```bash
+   ```csh
    time ls -l
    ```
 
 2. Guardar la salida del tiempo en un archivo:
-   ```bash
-   time -o tiempo.txt sleep 2
+   ```csh
+   time -o tiempo.txt sleep 5
    ```
 
-3. Usar el formato de salida estándar:
-   ```bash
-   time -p sleep 3
+3. Usar la opción detallada para obtener más información:
+   ```csh
+   time -v find / -name "*.txt"
    ```
 
-4. Obtener información detallada sobre el uso de recursos:
-   ```bash
-   /usr/bin/time -v find / -name "*.txt"
+4. Medir el tiempo de un script:
+   ```csh
+   time ./mi_script.csh
    ```
 
 ## Tips
-- Utiliza `time` para identificar cuellos de botella en tus scripts y optimizar su rendimiento.
-- Recuerda que `time` mide solo el tiempo de ejecución del comando especificado, no incluye el tiempo de preparación o de otros procesos.
-- Puedes combinar `time` con otros comandos en una tubería para medir el tiempo de ejecución de procesos más complejos.
+- Utiliza la opción `-p` si prefieres un formato de salida más limpio y fácil de leer.
+- Redirigir la salida a un archivo puede ser útil para realizar un seguimiento de múltiples ejecuciones.
+- Experimenta con diferentes comandos para entender mejor su rendimiento y optimizar tus scripts.

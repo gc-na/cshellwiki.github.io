@@ -1,51 +1,45 @@
-# [Linux] Bash pkg uso: Gestión de paquetes en sistemas Linux
+# [Linux] C Shell (csh) pkg uso equivalente: gestionar paquetes de software
 
 ## Overview
-El comando `pkg` se utiliza para gestionar paquetes en sistemas operativos basados en Unix, especialmente en FreeBSD. Permite a los usuarios instalar, actualizar y eliminar software de manera eficiente.
+El comando `pkg` en C Shell (csh) se utiliza para gestionar paquetes de software en sistemas operativos basados en Unix. Permite instalar, actualizar y eliminar paquetes de manera eficiente.
 
 ## Usage
-La sintaxis básica del comando es la siguiente:
+La sintaxis básica del comando `pkg` es la siguiente:
 
-```bash
+```
 pkg [opciones] [argumentos]
 ```
 
 ## Common Options
-- `install`: Instala uno o más paquetes.
-- `remove`: Elimina uno o más paquetes.
-- `update`: Actualiza la lista de paquetes disponibles.
-- `upgrade`: Actualiza todos los paquetes instalados a sus versiones más recientes.
-- `search`: Busca un paquete específico en los repositorios.
+- `install`: Instala un paquete específico.
+- `remove`: Elimina un paquete instalado.
+- `update`: Actualiza todos los paquetes instalados a sus versiones más recientes.
+- `list`: Muestra una lista de todos los paquetes instalados.
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso del comando `pkg`:
 
-1. **Instalar un paquete**:
-   ```bash
+1. **Instalar un paquete:**
+   ```csh
    pkg install nombre_del_paquete
    ```
 
-2. **Eliminar un paquete**:
-   ```bash
+2. **Eliminar un paquete:**
+   ```csh
    pkg remove nombre_del_paquete
    ```
 
-3. **Actualizar la lista de paquetes**:
-   ```bash
+3. **Actualizar todos los paquetes:**
+   ```csh
    pkg update
    ```
 
-4. **Actualizar todos los paquetes instalados**:
-   ```bash
-   pkg upgrade
-   ```
-
-5. **Buscar un paquete**:
-   ```bash
-   pkg search nombre_del_paquete
+4. **Listar todos los paquetes instalados:**
+   ```csh
+   pkg list
    ```
 
 ## Tips
-- Siempre ejecuta `pkg update` antes de instalar o actualizar paquetes para asegurarte de que tienes la lista más reciente.
-- Utiliza `pkg info nombre_del_paquete` para obtener información detallada sobre un paquete específico.
-- Considera usar `pkg autoremove` para eliminar paquetes que ya no son necesarios y liberar espacio en disco.
+- Siempre verifica la lista de paquetes instalados antes de realizar una eliminación para evitar borrar algo importante.
+- Utiliza `pkg update` regularmente para mantener tu sistema al día con las últimas versiones de los paquetes.
+- Consulta la documentación específica de cada paquete para conocer las dependencias y requisitos antes de la instalación.

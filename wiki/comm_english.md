@@ -1,12 +1,12 @@
-# [Linux] Bash comm comando: compare sorted files line by line
+# [Linux] C Shell (csh) comm 命令: Compare two sorted files line by line
 
 ## Overview
-The `comm` command in Bash is used to compare two sorted files line by line. It outputs the lines that are unique to each file and the lines that are common to both. This command is particularly useful for identifying differences and similarities between two datasets.
+The `comm` command in C Shell is used to compare two sorted files line by line. It outputs the lines that are unique to each file and the lines that are common to both files, making it a useful tool for identifying differences and similarities between two datasets.
 
 ## Usage
 The basic syntax of the `comm` command is as follows:
 
-```bash
+```csh
 comm [options] [file1] [file2]
 ```
 
@@ -14,40 +14,38 @@ comm [options] [file1] [file2]
 - `-1`: Suppress the output of lines unique to the first file.
 - `-2`: Suppress the output of lines unique to the second file.
 - `-3`: Suppress the output of lines that are common to both files.
-- `--nocheck-order`: Do not check if the input files are sorted.
 - `-i`: Ignore case differences when comparing lines.
 
 ## Common Examples
 
-### Example 1: Basic Comparison
-To compare two sorted files, `file1.txt` and `file2.txt`, and display all unique and common lines:
+1. **Basic Comparison**:
+   To compare two sorted files and display all differences:
+   ```csh
+   comm file1.txt file2.txt
+   ```
 
-```bash
-comm file1.txt file2.txt
-```
+2. **Suppress Unique Lines from First File**:
+   To show only the lines unique to the second file and the common lines:
+   ```csh
+   comm -13 file1.txt file2.txt
+   ```
 
-### Example 2: Suppress Unique Lines from First File
-To display only the lines that are common to both files and the unique lines from the second file:
+3. **Suppress Common Lines**:
+   To display only the unique lines from both files:
+   ```csh
+   comm -12 file1.txt file2.txt
+   ```
 
-```bash
-comm -2 file1.txt file2.txt
-```
-
-### Example 3: Suppress Common Lines
-To show only the lines unique to the first file:
-
-```bash
-comm -13 file1.txt file2.txt
-```
-
-### Example 4: Ignore Case Differences
-To compare two files while ignoring case sensitivity:
-
-```bash
-comm -i file1.txt file2.txt
-```
+4. **Case-Insensitive Comparison**:
+   To compare two files while ignoring case:
+   ```csh
+   comm -i file1.txt file2.txt
+   ```
 
 ## Tips
-- Ensure that both files are sorted before using `comm`, as it requires sorted input for accurate comparisons.
-- Use the `sort` command to sort files if they are not already sorted, e.g., `sort file1.txt > sorted_file1.txt`.
-- Combine `comm` with other commands using pipes for more complex data processing tasks.
+- Ensure that both files are sorted before using `comm`, as the command requires sorted input for accurate comparison.
+- Use the `-1`, `-2`, and `-3` options in combination to customize the output based on your needs.
+- Redirect the output to a file if you want to save the comparison results for later analysis:
+   ```csh
+   comm file1.txt file2.txt > comparison_results.txt
+   ```

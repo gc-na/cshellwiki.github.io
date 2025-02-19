@@ -1,55 +1,53 @@
-# [Linux] Bash export utilizzo: Imposta variabili d'ambiente
+# [Linux] C Shell (csh) export utilizzo: Impostare variabili d'ambiente
 
 ## Overview
-Il comando `export` in Bash è utilizzato per impostare variabili d'ambiente, rendendole disponibili per i processi figli. Quando una variabile è esportata, i programmi eseguiti da quella shell possono accedervi.
+Il comando `export` in C Shell (csh) viene utilizzato per impostare variabili d'ambiente, rendendole disponibili per i processi figli. Questo è utile per configurare l'ambiente di esecuzione di un programma o script.
 
 ## Usage
 La sintassi di base del comando `export` è la seguente:
 
-```bash
-export [options] [arguments]
+```
+export [opzioni] [variabili]
 ```
 
 ## Common Options
-- `-p`: Mostra tutte le variabili d'ambiente attualmente esportate.
-- `-n`: Rimuove l'esportazione di una variabile, rendendola non più disponibile per i processi figli.
-- `-f`: Esporta una funzione definita nella shell.
+- **-n**: Rimuove l'esportazione della variabile, rendendola disponibile solo per la shell corrente.
+- **-p**: Mostra tutte le variabili d'ambiente attualmente esportate.
 
 ## Common Examples
 
 ### Esportare una variabile
-Per esportare una variabile chiamata `MY_VAR`:
+Per esportare una variabile chiamata `MY_VAR` con il valore `Hello`:
 
-```bash
-MY_VAR="Hello, World!"
+```csh
+set MY_VAR = "Hello"
 export MY_VAR
 ```
 
 ### Verificare le variabili esportate
-Per visualizzare tutte le variabili d'ambiente esportate:
+Per visualizzare tutte le variabili d'ambiente attualmente esportate:
 
-```bash
+```csh
 export -p
 ```
 
 ### Rimuovere l'esportazione di una variabile
-Per rimuovere l'esportazione di `MY_VAR`:
+Per rimuovere l'esportazione della variabile `MY_VAR`:
 
-```bash
+```csh
 export -n MY_VAR
 ```
 
-### Esportare una funzione
-Per esportare una funzione chiamata `my_function`:
+### Esportare più variabili
+Puoi esportare più variabili in un'unica riga:
 
-```bash
-my_function() {
-    echo "This is my function"
-}
-export -f my_function
+```csh
+set VAR1 = "Value1"
+set VAR2 = "Value2"
+export VAR1 VAR2
 ```
 
 ## Tips
-- Ricorda che le variabili d'ambiente esportate sono visibili solo ai processi figli avviati dopo l'esportazione.
+- Ricorda che le variabili d'ambiente esportate sono disponibili solo per i processi figli avviati dopo l'esportazione.
+- Utilizza `export -p` per controllare le variabili d'ambiente prima di eseguire uno script, per assicurarti che le impostazioni siano corrette.
 - È buona pratica utilizzare nomi di variabili in maiuscolo per le variabili d'ambiente, per distinguerle dalle variabili locali.
-- Puoi combinare l'assegnazione e l'esportazione in un'unica riga: `export MY_VAR="value"`.

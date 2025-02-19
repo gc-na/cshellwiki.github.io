@@ -1,50 +1,44 @@
-# [Linux] Bash bindkey Kullanımı: Klavye kısayollarını ayarlama
+# [Linux] C Shell (csh) bindkey Kullanımı: Klavye kısayollarını ayarlama
 
-## Overview
-`bindkey` komutu, kullanıcıların terminaldeki klavye kısayollarını yapılandırmalarına olanak tanır. Bu komut, özellikle Zsh kabuğunda yaygın olarak kullanılır ve kullanıcıların belirli tuş kombinasyonlarına özel komutlar atamasını sağlar.
+## Genel Bakış
+`bindkey` komutu, C Shell (csh) ortamında klavye kısayollarını tanımlamak ve yönetmek için kullanılır. Bu komut, kullanıcıların belirli tuş kombinasyonlarına özel komutlar atayarak etkileşimlerini özelleştirmelerine olanak tanır.
 
-## Usage
+## Kullanım
 Temel sözdizimi şu şekildedir:
 
-```bash
-bindkey [options] [arguments]
+```csh
+bindkey [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `-e`: Emacs tarzı kısayolları etkinleştirir.
-- `-v`: Vi tarzı kısayolları etkinleştirir.
-- `-L`: Mevcut tuş bağlamalarını listeler.
-- `-s`: Belirli bir tuş kombinasyonuna bir dizi komut atar.
+## Yaygın Seçenekler
+- `-e`: Emacs tarzı tuş bağlamasını etkinleştirir.
+- `-v`: Vi tarzı tuş bağlamasını etkinleştirir.
+- `-s`: Belirtilen tuş kombinasyonunu bir komut dizisi olarak bağlar.
 
-## Common Examples
+## Yaygın Örnekler
 Aşağıda `bindkey` komutunun bazı pratik örnekleri verilmiştir:
 
-1. **Emacs tarzı kısayolları etkinleştirme:**
-   ```bash
+1. Emacs tarzı tuş bağlamasını etkinleştirme:
+   ```csh
    bindkey -e
    ```
 
-2. **Vi tarzı kısayolları etkinleştirme:**
-   ```bash
+2. Belirli bir tuş kombinasyonunu bir komutla bağlama:
+   ```csh
+   bindkey "^X^F" "find . -name '*.txt'"
+   ```
+
+3. Vi tarzı tuş bağlamasını etkinleştirme:
+   ```csh
    bindkey -v
    ```
 
-3. **Mevcut tuş bağlamalarını listeleme:**
-   ```bash
-   bindkey -L
+4. Birden fazla tuş kombinasyonunu bağlama:
+   ```csh
+   bindkey "^G" "echo 'Hello, World!'"
    ```
 
-4. **Belirli bir tuş kombinasyonuna komut atama:**
-   ```bash
-   bindkey '^x' 'exit'
-   ```
-
-5. **Bir dizi komut atama:**
-   ```bash
-   bindkey -s '^g' 'git status\n'
-   ```
-
-## Tips
-- Kısayollarınızı düzenli tutmak için sık kullandığınız komutları belirleyin ve bunlara kısayollar atayın.
-- `bindkey -L` komutunu kullanarak mevcut kısayollarınızı gözden geçirin ve gereksiz olanları kaldırın.
-- Kısayollarınızı bir dosyada saklayarak, terminal ayarlarınızı her açtığınızda otomatik olarak yükleyebilirsiniz.
+## İpuçları
+- `bindkey` komutunu kullanmadan önce mevcut tuş bağlamalarını kontrol etmek için `bindkey -L` komutunu çalıştırabilirsiniz.
+- Kısayollarınızı özelleştirirken, sık kullandığınız komutları düşünün; bu, verimliliğinizi artırabilir.
+- Değişikliklerinizi kalıcı hale getirmek için `bindkey` komutlarını `.cshrc` dosyanıza ekleyin.

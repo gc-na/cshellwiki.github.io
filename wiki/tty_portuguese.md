@@ -1,48 +1,46 @@
-# [Linux] Bash tty uso: Exibe o nome do terminal conectado
+# [Linux] C Shell (csh) tty uso: exibe o nome do terminal atual
 
 ## Overview
-O comando `tty` é utilizado para exibir o nome do terminal conectado ao processo atual. Ele é útil para identificar qual terminal está em uso, especialmente em ambientes onde múltiplos terminais podem estar abertos.
+O comando `tty` é utilizado para exibir o nome do terminal conectado à sessão atual. Ele é útil para identificar qual terminal está sendo usado, especialmente em ambientes onde múltiplos terminais podem estar abertos.
 
 ## Usage
 A sintaxe básica do comando `tty` é a seguinte:
 
-```bash
-tty [opções]
+```csh
+tty [opções] [argumentos]
 ```
 
 ## Common Options
-- `-s`: Executa o comando em modo silencioso, sem exibir a saída.
-- `--help`: Mostra a ajuda do comando, listando suas opções.
-- `--version`: Exibe a versão do comando `tty`.
+- `-s`: Executa o comando em modo silencioso, não exibindo a saída, mas retornando um código de saída que indica se o terminal é um terminal de controle.
 
 ## Common Examples
 Aqui estão alguns exemplos práticos do uso do comando `tty`:
 
 1. **Exibir o nome do terminal atual:**
-   ```bash
+   ```csh
    tty
    ```
    Saída típica:
    ```
-   /dev/pts/0
+   /dev/ttys000
    ```
 
-2. **Executar o comando em modo silencioso:**
-   ```bash
+2. **Verificar se a saída é um terminal:**
+   ```csh
    tty -s
    ```
-   (Não haverá saída se o terminal estiver conectado.)
+   Este comando não retorna nada se a saída for um terminal, mas pode ser usado em scripts para verificar a condição.
 
-3. **Verificar a versão do comando:**
-   ```bash
-   tty --version
-   ```
-   Saída típica:
-   ```
-   tty (coreutils) 8.32
+3. **Usar em um script para verificar o terminal:**
+   ```csh
+   if ( `tty -s` ) then
+       echo "Você está em um terminal."
+   else
+       echo "Você não está em um terminal."
+   endif
    ```
 
 ## Tips
-- Utilize `tty` em scripts para verificar se um terminal está disponível antes de executar comandos que dependem de interação do usuário.
-- Combine `tty` com outros comandos, como `echo`, para criar mensagens personalizadas baseadas no terminal em uso.
-- Lembre-se de que `tty` pode não funcionar como esperado em alguns ambientes gráficos ou em sessões remotas, como SSH, dependendo da configuração do terminal.
+- Utilize `tty` em scripts para garantir que o comando está sendo executado em um terminal interativo.
+- Combine `tty` com outros comandos para redirecionar a saída para um arquivo ou outro terminal, se necessário.
+- Lembre-se de que o comando `tty` pode ser útil em sessões remotas, como SSH, para identificar o terminal remoto em uso.

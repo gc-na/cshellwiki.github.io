@@ -1,36 +1,38 @@
-# [Linux] Bash vgextend 用法: 擴展邏輯卷組
+# [台灣] C Shell (csh) vgextend 使用方法: 擴展邏輯卷組
 
 ## Overview
-`vgextend` 是一個用於擴展邏輯卷組的命令。當你需要將新的物理卷添加到現有的邏輯卷組時，可以使用此命令來增加可用的存儲空間。
+`vgextend` 命令用於擴展邏輯卷組，這意味著可以將新的物理卷添加到現有的邏輯卷組中，以增加其可用空間。
 
 ## Usage
 基本語法如下：
-```bash
+```csh
 vgextend [options] [arguments]
 ```
 
 ## Common Options
-- `-f`：強制執行擴展，即使有錯誤也不會停止。
-- `--test`：執行測試，不會實際改變任何內容。
-- `-n`：指定要添加的物理卷的名稱。
+- `-l, --maxlogicalextents`: 設定邏輯擴展的最大數量。
+- `-n, --name`: 指定邏輯卷組的名稱。
+- `-f, --force`: 強制執行操作，即使有潛在風險。
 
 ## Common Examples
-1. 將物理卷 `/dev/sdb1` 添加到邏輯卷組 `vg01`：
-   ```bash
-   vgextend vg01 /dev/sdb1
+以下是一些常見的使用範例：
+
+1. 將新的物理卷添加到邏輯卷組：
+   ```csh
+   vgextend myvg /dev/sdb1
    ```
 
-2. 強制將物理卷 `/dev/sdc1` 添加到邏輯卷組 `vg02`：
-   ```bash
-   vgextend -f vg02 /dev/sdc1
+2. 使用 `-f` 選項強制擴展：
+   ```csh
+   vgextend -f myvg /dev/sdc1
    ```
 
-3. 測試將物理卷 `/dev/sdd1` 添加到邏輯卷組 `vg03`：
-   ```bash
-   vgextend --test vg03 /dev/sdd1
+3. 限制邏輯擴展的最大數量：
+   ```csh
+   vgextend -l 50 myvg /dev/sdd1
    ```
 
 ## Tips
-- 在執行 `vgextend` 之前，建議先使用 `pvcreate` 命令初始化物理卷。
-- 確保在擴展邏輯卷組之前，檢查物理卷的狀態，避免因為錯誤的物理卷導致擴展失敗。
-- 使用 `vgs` 命令檢查邏輯卷組的狀態和可用空間，以便做出更好的決策。
+- 在執行 `vgextend` 前，確保新的物理卷已經正確格式化並可用。
+- 使用 `vgdisplay` 命令檢查邏輯卷組的狀態，以確保擴展成功。
+- 定期備份重要數據，以防在擴展過程中出現意外情況。

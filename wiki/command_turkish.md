@@ -1,47 +1,43 @@
-# [Linux] Bash komutu cp: [dosya kopyalama]
+# [Linux] C Shell (csh) komutu: `echo`: Metin yazdırma
 
 ## Genel Bakış
-`cp` komutu, bir veya daha fazla dosyayı veya dizini başka bir konuma kopyalamak için kullanılır. Bu komut, dosyaların yedeğini almak veya dosyaları farklı dizinlere taşımak için oldukça faydalıdır.
+`echo` komutu, terminalde metin veya değişken değerlerini yazdırmak için kullanılır. Bu komut, kullanıcıların çıktıyı görüntülemesine veya dosyalara yazmasına olanak tanır.
 
 ## Kullanım
 Temel sözdizimi şu şekildedir:
 ```
-cp [seçenekler] [kaynak] [hedef]
+echo [seçenekler] [metin]
 ```
 
 ## Yaygın Seçenekler
-- `-r`: Dizinleri ve içindeki dosyaları kopyalamak için kullanılır (rekürsif).
-- `-i`: Hedefteki dosya zaten varsa, üzerine yazmadan önce onay ister.
-- `-u`: Sadece kaynak dosya hedef dosyadan daha yeni ise kopyalar.
-- `-v`: Kopyalama işlemi sırasında hangi dosyaların kopyalandığını gösterir.
+- `-n`: Yeni satır eklemeden metni yazdırır.
+- `-e`: Özel karakterleri (örneğin, `\n` yeni satır, `\t` sekme) işler.
+- `-E`: Özel karakterleri işleme (varsayılan olarak etkin değildir).
 
 ## Yaygın Örnekler
-1. Basit bir dosya kopyalama:
-   ```bash
-   cp dosya.txt yedek_dosya.txt
+1. Basit metin yazdırma:
+   ```csh
+   echo "Merhaba, Dünya!"
    ```
 
-2. Bir dizini ve içindeki tüm dosyaları kopyalama:
-   ```bash
-   cp -r kaynak_dizin/ hedef_dizin/
+2. Değişken değerini yazdırma:
+   ```csh
+   set isim = "Ali"
+   echo "Merhaba, $isim!"
    ```
 
-3. Kopyalama işlemi sırasında onay istemek:
-   ```bash
-   cp -i dosya.txt yedek_dosya.txt
+3. Yeni satır olmadan yazdırma:
+   ```csh
+   echo -n "Bu bir satır."
+   echo " Bu da devamı."
    ```
 
-4. Sadece daha yeni dosyaların kopyalanması:
-   ```bash
-   cp -u dosya.txt yedek_dosya.txt
-   ```
-
-5. Kopyalama işlemi sırasında bilgi gösterimi:
-   ```bash
-   cp -v dosya.txt yedek_dosya.txt
+4. Özel karakterlerle yazdırma:
+   ```csh
+   echo -e "Birinci satır\nİkinci satır"
    ```
 
 ## İpuçları
-- Kopyalama işlemi yapmadan önce hedef dizinin var olduğundan emin olun; aksi takdirde hata alırsınız.
-- `-i` seçeneğini kullanarak yanlışlıkla üzerine yazma riskini azaltabilirsiniz.
-- Büyük dosyalarla çalışırken, kopyalama işleminin ne kadar sürdüğünü görmek için `-v` seçeneğini kullanmak faydalı olabilir.
+- `echo` komutunu kullanırken, metin içinde özel karakterler kullanıyorsanız `-e` seçeneğini eklemeyi unutmayın.
+- Değişkenlerinizi yazdırırken, `$` işaretini kullanarak değişkenin değerini çağırmayı unutmayın.
+- Uzun metinleri veya çoklu satırları yazdırmak için, her satırı ayrı bir `echo` komutuyla yazdırabilirsiniz.

@@ -1,47 +1,50 @@
-# [Linux] Bash fc <Sử dụng lệnh fc>: Quản lý lịch sử lệnh
+# [Hệ điều hành Unix] C Shell (csh) fc <Sử dụng lệnh: Chỉnh sửa và thực thi lệnh trước đó>
 
-## Overview
-Lệnh `fc` trong Bash cho phép người dùng xem và chỉnh sửa các lệnh đã được thực hiện trước đó trong phiên làm việc của họ. Nó giúp người dùng dễ dàng truy cập và sửa đổi các lệnh mà họ đã nhập, giúp tiết kiệm thời gian và công sức.
+## Tổng quan
+Lệnh `fc` trong C Shell (csh) được sử dụng để chỉnh sửa và thực thi các lệnh đã được nhập trước đó trong phiên làm việc của bạn. Nó cho phép bạn dễ dàng sửa đổi các lệnh mà bạn đã sử dụng mà không cần phải gõ lại hoàn toàn.
 
-## Usage
+## Cách sử dụng
 Cú pháp cơ bản của lệnh `fc` như sau:
-```bash
-fc [options] [arguments]
+
+```
+fc [tùy chọn] [đối số]
 ```
 
-## Common Options
-- `-l`: Liệt kê các lệnh trong lịch sử.
-- `-r`: Đảo ngược thứ tự các lệnh khi liệt kê.
-- `-s`: Chạy lệnh mà không hiển thị nó trong trình soạn thảo.
+## Các tùy chọn thông dụng
+- `-l`: Liệt kê các lệnh đã nhập trước đó.
 - `-n`: Không hiển thị số thứ tự của lệnh khi liệt kê.
+- `-s`: Thực thi lệnh mà không mở trình chỉnh sửa.
+- `[n]`: Chỉ định số thứ tự của lệnh mà bạn muốn chỉnh sửa hoặc thực thi.
 
-## Common Examples
-1. **Liệt kê các lệnh trong lịch sử**:
-   ```bash
+## Ví dụ thông dụng
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `fc`:
+
+1. **Liệt kê các lệnh đã nhập**:
+   ```csh
    fc -l
    ```
 
-2. **Liệt kê các lệnh trong lịch sử với số thứ tự**:
-   ```bash
-   fc -l -n
+2. **Liệt kê các lệnh mà không có số thứ tự**:
+   ```csh
+   fc -ln
    ```
 
-3. **Chạy lệnh cuối cùng mà không chỉnh sửa**:
-   ```bash
-   fc -s
+3. **Chỉnh sửa lệnh gần nhất**:
+   ```csh
+   fc
    ```
 
-4. **Chỉnh sửa lệnh thứ 5 trong lịch sử**:
-   ```bash
+4. **Chỉnh sửa lệnh thứ 5 trong danh sách lệnh**:
+   ```csh
    fc 5
    ```
 
-5. **Liệt kê các lệnh theo thứ tự đảo ngược**:
-   ```bash
-   fc -r -l
+5. **Thực thi lệnh gần nhất mà không chỉnh sửa**:
+   ```csh
+   fc -s
    ```
 
-## Tips
-- Sử dụng `fc` để nhanh chóng sửa đổi các lệnh phức tạp mà bạn đã nhập trước đó.
-- Kết hợp `fc` với các trình soạn thảo như `nano` hoặc `vim` để có trải nghiệm chỉnh sửa tốt hơn.
-- Hãy nhớ rằng `fc` chỉ hoạt động trong phiên Bash hiện tại, vì vậy nếu bạn khởi động lại terminal, lịch sử sẽ không còn.
+## Mẹo
+- Sử dụng `fc -l` để xem lại lịch sử lệnh của bạn và tìm lệnh mà bạn muốn chỉnh sửa.
+- Khi sử dụng `fc` mà không có số thứ tự, lệnh gần nhất sẽ được mở trong trình chỉnh sửa mặc định của bạn.
+- Hãy nhớ rằng bạn có thể sử dụng `fc` để sửa đổi lệnh phức tạp mà bạn đã nhập trước đó, giúp tiết kiệm thời gian và công sức.

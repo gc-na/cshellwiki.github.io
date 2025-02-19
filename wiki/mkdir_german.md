@@ -1,49 +1,49 @@
-# [Linux] Bash mkdir Verwendung: Verzeichnisse erstellen
+# [Linux] C Shell (csh) mkdir Verwendung: Verzeichnisse erstellen
 
 ## Übersicht
-Der Befehl `mkdir` (make directory) wird verwendet, um neue Verzeichnisse im Dateisystem zu erstellen. Er ist ein grundlegendes Werkzeug in der Bash, das es Benutzern ermöglicht, die Struktur ihrer Dateien und Ordner zu organisieren.
+Der Befehl `mkdir` wird verwendet, um neue Verzeichnisse im Dateisystem zu erstellen. Mit diesem Befehl können Benutzer die Struktur ihrer Verzeichnisse organisieren und neue Ordner für ihre Dateien anlegen.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
 ```
-mkdir [Optionen] [Argumente]
+mkdir [optionen] [argumente]
 ```
 
 ## Häufige Optionen
 - `-p`: Erstellt das Verzeichnis und alle übergeordneten Verzeichnisse, falls diese nicht existieren.
-- `-v`: Gibt eine detaillierte Ausgabe aus, die anzeigt, welche Verzeichnisse erstellt wurden.
-- `-m`: Setzt die Berechtigungen für das neu erstellte Verzeichnis.
+- `-m`: Setzt die Berechtigungen für das neu erstellte Verzeichnis, angegeben im octalen Format.
+- `-v`: Gibt eine ausführliche Ausgabe aus, die anzeigt, welche Verzeichnisse erstellt wurden.
 
 ## Häufige Beispiele
 Hier sind einige praktische Beispiele für die Verwendung von `mkdir`:
 
 1. **Ein einfaches Verzeichnis erstellen:**
-   ```bash
+   ```csh
    mkdir meinVerzeichnis
    ```
 
 2. **Mehrere Verzeichnisse gleichzeitig erstellen:**
-   ```bash
+   ```csh
    mkdir verzeichnis1 verzeichnis2 verzeichnis3
    ```
 
-3. **Ein Verzeichnis und alle übergeordneten Verzeichnisse erstellen:**
-   ```bash
+3. **Ein Verzeichnis mit übergeordneten Verzeichnissen erstellen:**
+   ```csh
    mkdir -p /home/benutzer/neuerOrdner/unterordner
    ```
 
-4. **Ein Verzeichnis mit spezifischen Berechtigungen erstellen:**
-   ```bash
+4. **Ein Verzeichnis mit bestimmten Berechtigungen erstellen:**
+   ```csh
    mkdir -m 755 meinSicheresVerzeichnis
    ```
 
-5. **Detaillierte Ausgabe beim Erstellen eines Verzeichnisses:**
-   ```bash
+5. **Ausführliche Ausgabe beim Erstellen eines Verzeichnisses anzeigen:**
+   ```csh
    mkdir -v meinNeuesVerzeichnis
    ```
 
 ## Tipps
 - Verwenden Sie die `-p` Option, um sicherzustellen, dass alle erforderlichen übergeordneten Verzeichnisse erstellt werden, ohne dass Fehler auftreten.
-- Überprüfen Sie die Berechtigungen des Verzeichnisses mit `ls -l`, um sicherzustellen, dass sie Ihren Anforderungen entsprechen.
-- Nutzen Sie die `-v` Option, um eine Bestätigung zu erhalten, dass das Verzeichnis erfolgreich erstellt wurde, besonders wenn Sie mehrere Verzeichnisse gleichzeitig erstellen.
+- Überprüfen Sie die Berechtigungen des neuen Verzeichnisses mit dem Befehl `ls -l`, um sicherzustellen, dass sie Ihren Anforderungen entsprechen.
+- Nutzen Sie die `-v` Option, um eine Bestätigung zu erhalten, dass das Verzeichnis erfolgreich erstellt wurde, besonders wenn Sie mehrere Verzeichnisse auf einmal erstellen.

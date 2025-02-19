@@ -1,59 +1,49 @@
-# [Linux] Bash break Kullanımı: Döngüden çıkmak için kullanılır
+# [Linux] C Shell (csh) break Kullanımı: Döngüden çıkma
 
 ## Overview
-`break` komutu, bir döngüden çıkmak için kullanılan bir Bash komutudur. Genellikle `for`, `while` veya `until` döngüleri içinde kullanılır ve döngünün çalışmasını sonlandırır.
+`break` komutu, C Shell (csh) ortamında döngülerden çıkmak için kullanılır. Bir döngü içinde çağrıldığında, `break` komutu döngüyü sonlandırır ve kontrolü döngünün dışındaki koda aktarır.
 
 ## Usage
 Temel sözdizimi aşağıdaki gibidir:
 
-```bash
-break [n]
+```csh
+break [options] [arguments]
 ```
 
-Burada `n`, döngü katmanını belirtir. Eğer `n` verilmezse, en içteki döngüden çıkılır.
-
 ## Common Options
-- `n`: Çıkılacak döngü katmanını belirtir. Eğer birden fazla iç içe döngü varsa, hangi döngüden çıkılacağını kontrol etmek için kullanılır.
+`break` komutunun genellikle kullanılan bir seçeneği yoktur; komut, döngüden çıkmak için doğrudan çağrılır.
 
 ## Common Examples
 
 ### Örnek 1: Basit bir döngüden çıkma
-```bash
-for i in {1..5}; do
-  if [ $i -eq 3 ]; then
-    break
-  fi
-  echo $i
-done
+Aşağıdaki örnekte, `break` komutu bir döngüden çıkmak için kullanılır:
+
+```csh
+foreach i (1 2 3 4 5)
+    if ($i == 3) then
+        break
+    endif
+    echo $i
+end
 ```
-Bu örnekte, `i` değişkeni 3 olduğunda döngüden çıkılır ve çıktıda sadece 1 ve 2 görünür.
+Bu örnekte, `i` değeri 3 olduğunda döngü sonlanır ve çıktı olarak `1` ve `2` yazdırılır.
 
 ### Örnek 2: İç içe döngülerde çıkma
-```bash
-for i in {1..3}; do
-  for j in {1..3}; do
-    if [ $j -eq 2 ]; then
-      break 2
-    fi
-    echo "i: $i, j: $j"
-  done
-done
-```
-Burada, `j` 2 olduğunda, her iki döngüden de çıkılır.
+`break` komutu iç içe döngülerde de kullanılabilir:
 
-### Örnek 3: Kullanıcıdan giriş alarak döngüyü sonlandırma
-```bash
-while true; do
-  read -p "Çıkmak için 'q' tuşuna basın: " input
-  if [ "$input" = "q" ]; then
-    break
-  fi
-  echo "Girdiğiniz: $input"
-done
+```csh
+foreach i (1 2)
+    foreach j (1 2 3)
+        if ($j == 2) then
+            break
+        endif
+        echo "$i, $j"
+    end
+end
 ```
-Bu örnekte, kullanıcı 'q' tuşuna bastığında döngü sonlanır.
+Bu örnekte, iç döngüde `j` değeri 2 olduğunda çıkılır ve çıktı olarak `1, 1` ve `2, 1` yazdırılır.
 
 ## Tips
-- `break` komutunu kullanırken, döngü katmanlarını dikkatlice planlayın, böylece hangi döngüden çıkmak istediğinizi net bir şekilde belirleyebilirsiniz.
-- Karmaşık döngülerde `break` kullanırken, kodun okunabilirliğini artırmak için açıklayıcı yorumlar eklemeyi unutmayın.
-- `break` komutunu, döngü içinde belirli bir koşul sağlandığında çıkmak için etkili bir şekilde kullanabilirsiniz.
+- `break` komutunu kullanırken, hangi döngüden çıkmak istediğinizi netleştirin, özellikle iç içe döngülerde.
+- `break` komutunun etkili bir şekilde çalışabilmesi için, döngü koşullarını dikkatlice ayarlayın.
+- Gerekirse, `break` komutunu bir koşul ifadesi içinde kullanarak daha kontrollü çıkışlar sağlayabilirsiniz.

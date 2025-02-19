@@ -1,46 +1,37 @@
-# [Linux] Bash bg Uso equivalente: Mover trabajos a segundo plano
-
-El comando `bg` se utiliza en Bash para reanudar un trabajo suspendido y moverlo a segundo plano, permitiendo que continúe su ejecución mientras se pueden realizar otras tareas en la terminal.
+# [Linux] C Shell (csh) bg Uso: Ejecutar trabajos en segundo plano
 
 ## Overview
-El comando `bg` es útil cuando se ha suspendido un proceso (por ejemplo, presionando `Ctrl+Z`) y se desea que continúe ejecutándose en segundo plano. Esto permite liberar la terminal para otros comandos mientras el proceso sigue activo.
+El comando `bg` en C Shell (csh) se utiliza para reanudar un trabajo que se ha detenido y ejecutarlo en segundo plano. Esto permite que el usuario continúe utilizando la terminal mientras el trabajo se ejecuta.
 
 ## Usage
 La sintaxis básica del comando `bg` es la siguiente:
 
-```bash
-bg [opciones] [número del trabajo]
+```csh
+bg [options] [job_spec]
 ```
 
 ## Common Options
-- `-n`: No muestra mensajes de estado.
-- `-p`: Muestra el PID del trabajo en segundo plano.
+- `job_spec`: Especifica el trabajo que se desea reanudar. Puede ser el número de trabajo (precedido por un `%`) o el identificador del proceso.
 
 ## Common Examples
+Aquí hay algunos ejemplos prácticos del uso del comando `bg`:
 
-1. **Reanudar el último trabajo suspendido en segundo plano:**
-   ```bash
+1. **Reanudar el último trabajo detenido en segundo plano:**
+   ```csh
    bg
    ```
 
-2. **Reanudar un trabajo específico en segundo plano:**
-   Supongamos que tienes un trabajo suspendido con el número de trabajo 1:
-   ```bash
+2. **Reanudar un trabajo específico en segundo plano usando su número de trabajo:**
+   ```csh
    bg %1
    ```
 
-3. **Reanudar un trabajo en segundo plano sin mostrar mensajes:**
-   ```bash
-   bg -n %1
-   ```
-
-4. **Verificar el estado de los trabajos:**
-   Antes de usar `bg`, puedes listar los trabajos suspendidos con:
-   ```bash
-   jobs
+3. **Reanudar un trabajo específico en segundo plano usando su identificador de proceso:**
+   ```csh
+   bg %1234
    ```
 
 ## Tips
-- Siempre verifica los trabajos suspendidos con `jobs` antes de usar `bg` para asegurarte de que estás reanudando el correcto.
-- Recuerda que los trabajos en segundo plano pueden generar salida en la terminal, lo que puede interferir con otros comandos. Considera redirigir la salida si es necesario.
-- Utiliza `fg` si necesitas llevar un trabajo de nuevo al primer plano en cualquier momento.
+- Asegúrate de que el trabajo que deseas reanudar esté detenido antes de usar `bg`. Puedes detener un trabajo usando `Ctrl+Z`.
+- Puedes ver la lista de trabajos detenidos y en ejecución usando el comando `jobs`.
+- Recuerda que los trabajos en segundo plano no pueden interactuar con la terminal, así que si necesitas entrada del usuario, considera usar `fg` para llevar el trabajo al primer plano.

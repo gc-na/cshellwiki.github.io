@@ -1,49 +1,43 @@
-# [Linux] Bash psql 使用方法: 连接和管理PostgreSQL数据库
+# [操作系统] C Shell (csh) psql 用法等价: 连接和管理PostgreSQL数据库
 
 ## 概述
-`psql` 是 PostgreSQL 数据库的交互式终端，用于执行 SQL 查询、管理数据库和进行数据操作。它允许用户直接与数据库进行交互，执行命令并查看结果。
+`psql` 是 PostgreSQL 数据库的交互式终端，用于执行 SQL 查询和管理数据库。它提供了一个命令行界面，允许用户与数据库进行交互。
 
-## 使用方法
+## 用法
 基本语法如下：
-```
+```csh
 psql [options] [arguments]
 ```
 
 ## 常用选项
 - `-h`：指定数据库服务器的主机名。
-- `-p`：指定数据库服务器的端口号，默认是 5432。
+- `-p`：指定数据库服务器的端口号。
 - `-U`：指定连接数据库的用户名。
 - `-d`：指定要连接的数据库名称。
-- `-c`：直接执行指定的 SQL 命令并退出。
+- `-f`：从文件中执行 SQL 命令。
 
 ## 常见示例
-1. 连接到本地 PostgreSQL 数据库：
-   ```bash
+1. 连接到本地数据库：
+   ```csh
    psql -U username -d dbname
    ```
 
 2. 连接到远程数据库：
-   ```bash
-   psql -h remote_host -U username -d dbname
+   ```csh
+   psql -h remote_host -p 5432 -U username -d dbname
    ```
 
-3. 执行 SQL 命令并退出：
-   ```bash
-   psql -U username -d dbname -c "SELECT * FROM table_name;"
+3. 从文件执行 SQL 命令：
+   ```csh
+   psql -U username -d dbname -f script.sql
    ```
 
-4. 导入 SQL 文件：
-   ```bash
-   psql -U username -d dbname -f file.sql
-   ```
-
-5. 导出数据库到文件：
-   ```bash
-   pg_dump -U username -d dbname > backup.sql
+4. 执行单个 SQL 查询：
+   ```csh
+   psql -U username -d dbname -c "SELECT * FROM tablename;"
    ```
 
 ## 提示
-- 使用 `\?` 在 `psql` 提示符下查看所有可用命令和选项。
-- 使用 `\q` 退出 `psql`。
-- 定期备份数据库，以防数据丢失。
-- 使用 `\l` 列出所有数据库，使用 `\d` 列出当前数据库中的所有表。
+- 确保在使用 `psql` 之前，PostgreSQL 数据库服务已启动。
+- 使用 `\q` 命令退出 `psql` 会话。
+- 可以使用 `\h` 查看 SQL 命令的帮助信息，使用 `\?` 查看 `psql` 的命令帮助。

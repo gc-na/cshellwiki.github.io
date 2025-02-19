@@ -1,43 +1,42 @@
-# [Linux] Bash setenv gebruik: Omgevingsvariabelen instellen
+# [Linux] C Shell (csh) setenv gebruik: Omgevingsvariabelen instellen
 
 ## Overzicht
-De `setenv` opdracht wordt gebruikt om omgevingsvariabelen in te stellen in een shell-omgeving. Het is een handige manier om variabelen te definiëren die door verschillende programma's en scripts kunnen worden gebruikt.
+De `setenv`-opdracht in C Shell (csh) wordt gebruikt om omgevingsvariabelen in te stellen of te wijzigen. Omgevingsvariabelen zijn variabelen die informatie bevatten die door de shell en andere programma's kan worden gebruikt.
 
 ## Gebruik
-De basis syntaxis van de `setenv` opdracht is als volgt:
+De basis syntaxis van de `setenv`-opdracht is als volgt:
 
-```bash
-setenv [variabele] [waarde]
+```
+setenv NAAM WAARDE
 ```
 
 ## Veelvoorkomende Opties
-- **variabele**: De naam van de omgevingsvariabele die je wilt instellen.
-- **waarde**: De waarde die je aan de omgevingsvariabele wilt toekennen.
+De `setenv`-opdracht heeft geen specifieke opties, maar het is belangrijk om de juiste naam en waarde op te geven.
 
 ## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van `setenv`:
 
-1. Een eenvoudige omgevingsvariabele instellen:
-   ```bash
-   setenv MY_VAR "Hallo Wereld"
-   ```
+### Voorbeeld 1: Een eenvoudige omgevingsvariabele instellen
+Stel een omgevingsvariabele `MY_VAR` in met de waarde `HelloWorld`.
 
-2. Een pad toevoegen aan de `PATH` variabele:
-   ```bash
-   setenv PATH "$PATH:/usr/local/bin"
-   ```
+```csh
+setenv MY_VAR HelloWorld
+```
 
-3. Een variabele instellen voor een specifieke applicatie:
-   ```bash
-   setenv EDITOR "vim"
-   ```
+### Voorbeeld 2: Een padvariabele instellen
+Stel de `PATH`-variabele in om een extra directory toe te voegen.
 
-4. Een variabele instellen voor een script:
-   ```bash
-   setenv SCRIPT_ENV "productie"
-   ```
+```csh
+setenv PATH /usr/local/bin:$PATH
+```
+
+### Voorbeeld 3: Een variabele voor een programma instellen
+Stel een variabele in die door een programma kan worden gebruikt, bijvoorbeeld `JAVA_HOME`.
+
+```csh
+setenv JAVA_HOME /usr/lib/jvm/java-11-openjdk
+```
 
 ## Tips
-- Zorg ervoor dat je de juiste syntaxis gebruikt, aangezien een fout in de naam of waarde kan leiden tot onverwachte resultaten.
-- Het is een goede gewoonte om omgevingsvariabelen met hoofdletters te schrijven, zodat ze gemakkelijk te herkennen zijn.
-- Vergeet niet dat de `setenv` opdracht meestal beschikbaar is in C-shell (csh) en niet in Bourne-again shell (bash). Gebruik in bash de `export` opdracht in plaats van `setenv`.
+- Zorg ervoor dat je de juiste naam en waarde gebruikt bij het instellen van omgevingsvariabelen.
+- Controleer de waarde van een omgevingsvariabele met de `echo`-opdracht, bijvoorbeeld: `echo $MY_VAR`.
+- Omgevingsvariabelen ingesteld met `setenv` zijn alleen geldig in de huidige shell-sessie. Om ze permanent te maken, voeg ze toe aan je `.cshrc`-bestand.

@@ -1,43 +1,38 @@
-# [Linux] Bash iconv użycie: Konwersja kodowania znaków
+# [Linux] C Shell (csh) iconv użycie: Konwersja kodowania znaków
 
-## Overview
-Polecenie `iconv` służy do konwersji tekstu między różnymi kodowaniami znaków. Umożliwia użytkownikom przekształcanie plików tekstowych w celu zapewnienia ich zgodności z różnymi systemami i aplikacjami, które mogą wymagać określonego kodowania.
+## Przegląd
+Polecenie `iconv` służy do konwersji tekstu pomiędzy różnymi kodowaniami znaków. Jest to przydatne narzędzie, gdy potrzebujemy zmienić format pliku tekstowego, aby był zgodny z wymaganiami systemu lub aplikacji.
 
-## Usage
+## Użycie
 Podstawowa składnia polecenia `iconv` jest następująca:
 
-```bash
+```csh
 iconv [opcje] [argumenty]
 ```
 
-## Common Options
-- `-f`, `--from-code=KOD`: Określa kodowanie źródłowe.
-- `-t`, `--to-code=KOD`: Określa kodowanie docelowe.
-- `-o`, `--output=PLIK`: Zapisuje wynik do określonego pliku.
-- `-c`: Pomija niewłaściwe znaki.
+## Częste opcje
+- `-f, --from-code=KOD`: Określa kodowanie źródłowe.
+- `-t, --to-code=KOD`: Określa kodowanie docelowe.
+- `-o, --output=PLIK`: Zapisuje wynik do określonego pliku.
+- `-c`: Pomija nieprawidłowe znaki.
 
-## Common Examples
-1. Konwersja pliku z kodowania UTF-8 na ISO-8859-1:
-   ```bash
-   iconv -f UTF-8 -t ISO-8859-1 input.txt -o output.txt
+## Częste przykłady
+1. Konwersja pliku z kodowania UTF-8 do ISO-8859-1:
+   ```csh
+   iconv -f UTF-8 -t ISO-8859-1 plik.txt -o plik_iso.txt
    ```
 
-2. Konwersja pliku z kodowania Windows-1250 na UTF-8:
-   ```bash
-   iconv -f WINDOWS-1250 -t UTF-8 input.txt -o output.txt
+2. Wyświetlenie wyników konwersji na standardowe wyjście:
+   ```csh
+   iconv -f UTF-8 -t UTF-16 plik.txt
    ```
 
-3. Wyświetlenie przekształconego tekstu w terminalu bez zapisywania do pliku:
-   ```bash
-   iconv -f UTF-8 -t ASCII//TRANSLIT input.txt
+3. Pomijanie nieprawidłowych znaków podczas konwersji:
+   ```csh
+   iconv -f UTF-8 -t ASCII//TRANSLIT plik.txt -o plik_ascii.txt
    ```
 
-4. Pomijanie niewłaściwych znaków podczas konwersji:
-   ```bash
-   iconv -f UTF-8 -t ISO-8859-1//IGNORE input.txt -o output.txt
-   ```
-
-## Tips
+## Wskazówki
 - Zawsze sprawdzaj, jakie kodowanie jest używane w pliku źródłowym, aby uniknąć błędów konwersji.
-- Używaj opcji `-o`, aby zapisać wynik do nowego pliku, co pozwoli na zachowanie oryginału.
-- Testuj konwersję na małych plikach, zanim zastosujesz ją na większych zbiorach danych, aby upewnić się, że wszystko działa zgodnie z oczekiwaniami.
+- Używaj opcji `-o`, aby zapisać wynik do nowego pliku, co pozwoli uniknąć nadpisania oryginalnego pliku.
+- Testuj konwersję na małych plikach, zanim zastosujesz ją do większych zbiorów danych.

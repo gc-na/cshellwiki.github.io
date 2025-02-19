@@ -1,63 +1,52 @@
-# [Linux] Bash dig Uso: Consulta de DNS
-
-O comando `dig` é utilizado para realizar consultas de DNS (Domain Name System), permitindo que os usuários obtenham informações sobre nomes de domínio e endereços IP.
+# [Linux] C Shell (csh) dig Uso: consulta de DNS
 
 ## Overview
-O `dig` é uma ferramenta de linha de comando que facilita a consulta a servidores DNS. Ele é amplamente utilizado para diagnosticar problemas de DNS, verificar registros de domínio e obter informações detalhadas sobre a resolução de nomes.
+O comando `dig` (Domain Information Groper) é uma ferramenta de linha de comando utilizada para consultar informações sobre domínios DNS. Ele permite que os usuários obtenham detalhes sobre registros DNS, como endereços IP, registros MX, e muito mais.
 
 ## Usage
 A sintaxe básica do comando `dig` é a seguinte:
 
-```bash
+```csh
 dig [opções] [argumentos]
 ```
 
 ## Common Options
-Aqui estão algumas opções comuns que podem ser usadas com o `dig`:
+Aqui estão algumas opções comuns que podem ser usadas com o comando `dig`:
 
-- `@servidor`: Especifica o servidor DNS a ser consultado.
-- `-t tipo`: Define o tipo de registro DNS a ser consultado (por exemplo, A, AAAA, MX, etc.).
-- `+short`: Exibe uma saída simplificada, mostrando apenas o resultado da consulta.
-- `+trace`: Realiza uma consulta completa, mostrando o caminho de resolução do DNS.
+- `@servidor`: Especifica um servidor DNS para realizar a consulta.
+- `-t tipo`: Define o tipo de registro DNS a ser consultado (por exemplo, A, MX, TXT).
+- `+short`: Exibe a resposta de forma mais concisa.
+- `+trace`: Segue a cadeia de servidores DNS para resolver o domínio.
 
 ## Common Examples
+Aqui estão alguns exemplos práticos do uso do comando `dig`:
 
-### Consultar um registro A
-Para obter o endereço IP de um domínio:
+1. **Consultar o registro A de um domínio:**
+   ```csh
+   dig example.com
+   ```
 
-```bash
-dig example.com
-```
+2. **Consultar um registro MX (Mail Exchange):**
+   ```csh
+   dig -t MX example.com
+   ```
 
-### Consultar um registro MX
-Para verificar os registros de troca de correio (Mail Exchange) de um domínio:
+3. **Consultar um servidor DNS específico:**
+   ```csh
+   dig @8.8.8.8 example.com
+   ```
 
-```bash
-dig example.com -t MX
-```
+4. **Obter uma resposta curta:**
+   ```csh
+   dig +short example.com
+   ```
 
-### Consultar um servidor DNS específico
-Para consultar um servidor DNS específico, como o Google:
-
-```bash
-dig @8.8.8.8 example.com
-```
-
-### Saída simplificada
-Para obter uma saída mais curta do resultado:
-
-```bash
-dig example.com +short
-```
-
-### Rastrear a resolução de DNS
-Para ver o caminho completo da resolução de um nome de domínio:
-
-```bash
-dig example.com +trace
-```
+5. **Rastrear a resolução de um domínio:**
+   ```csh
+   dig +trace example.com
+   ```
 
 ## Tips
-- Use `+short` para obter resultados mais limpos e fáceis de ler, especialmente quando você só precisa do endereço IP.
-- Sempre especifique um servidor DNS se estiver enfrentando problemas de resolução, pois isso pode ajudar a identificar onde está o problema.
-- Combine `dig` com outras ferramentas como `grep` para filtrar resultados específicos ou `more` para paginar saídas longas.
+- Utilize a opção `+short` para obter respostas mais diretas, especialmente quando você está apenas interessado nos endereços IP.
+- Para resolver problemas de DNS, o uso da opção `+trace` pode ajudar a identificar onde a resolução está falhando.
+- Sempre verifique se você está consultando o servidor DNS correto, especialmente em ambientes corporativos onde servidores internos podem estar em uso.

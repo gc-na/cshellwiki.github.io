@@ -1,43 +1,38 @@
-# [Linux] Bash builtin : Menjalankan perintah shell internal
+# [Sistem Operasi] C Shell (csh) builtin: mengeksekusi perintah dalam shell
 
 ## Overview
-Perintah `builtin` dalam Bash digunakan untuk menjalankan perintah internal yang sudah ada di shell, alih-alih menjalankan perintah eksternal yang mungkin memiliki nama yang sama. Ini berguna untuk memastikan bahwa Anda menggunakan versi perintah yang disediakan oleh shell.
+Perintah `builtin` dalam C Shell (csh) digunakan untuk mengeksekusi perintah yang merupakan bagian dari shell itu sendiri, bukan perintah eksternal. Ini berguna untuk menjalankan fungsi-fungsi yang sudah ada dalam shell tanpa memanggil program terpisah.
 
 ## Usage
-Berikut adalah sintaks dasar untuk perintah `builtin`:
+Berikut adalah sintaks dasar untuk menggunakan perintah `builtin`:
 
 ```
 builtin [options] [arguments]
 ```
 
 ## Common Options
-- `-p`: Menggunakan versi perintah yang terdaftar dalam PATH.
-- `-f`: Mengabaikan fungsi yang ada dan memanggil perintah built-in.
+- `-h`: Menampilkan bantuan untuk perintah builtin yang tersedia.
+- `-v`: Menampilkan versi dari perintah builtin yang sedang digunakan.
 
 ## Common Examples
+Berikut adalah beberapa contoh penggunaan perintah `builtin`:
 
-1. **Menjalankan perintah `echo` sebagai built-in:**
-   ```bash
-   builtin echo "Ini adalah perintah echo built-in"
+1. Menjalankan perintah `echo` yang merupakan builtin:
+   ```csh
+   builtin echo "Hello, World!"
    ```
 
-2. **Menjalankan perintah `cd` untuk memastikan menggunakan built-in:**
-   ```bash
-   builtin cd /path/to/directory
+2. Menggunakan `builtin` untuk memanggil `set`:
+   ```csh
+   builtin set var=value
    ```
 
-3. **Menggunakan opsi `-p` untuk menjalankan perintah `type`:**
-   ```bash
-   builtin -p type echo
-   ```
-
-4. **Mengabaikan fungsi dan menjalankan perintah `exit`:**
-   ```bash
-   function exit { echo "Ini adalah fungsi exit"; }
-   builtin exit
+3. Menampilkan bantuan untuk perintah builtin:
+   ```csh
+   builtin -h
    ```
 
 ## Tips
-- Gunakan `builtin` saat Anda ingin memastikan bahwa Anda menjalankan perintah internal Bash, terutama jika ada konflik dengan perintah eksternal.
-- Perhatikan bahwa tidak semua perintah memiliki versi built-in, jadi pastikan untuk memeriksa dokumentasi jika Anda tidak yakin.
-- Gunakan opsi `-f` dengan hati-hati, karena dapat mengabaikan fungsi yang mungkin Anda butuhkan.
+- Gunakan `builtin` ketika Anda ingin memastikan bahwa Anda menjalankan versi internal dari perintah, bukan versi eksternal.
+- Periksa opsi yang tersedia untuk setiap perintah builtin dengan menggunakan opsi `-h` untuk mendapatkan informasi lebih lanjut.
+- Menggunakan `builtin` dapat meningkatkan kecepatan eksekusi, karena tidak perlu memanggil proses terpisah.

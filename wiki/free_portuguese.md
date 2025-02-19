@@ -1,23 +1,22 @@
-# [Linux] Bash free uso: Exibir informações sobre a memória do sistema
+# [Linux] C Shell (csh) free uso: exibir informações sobre a memória
 
 ## Overview
-O comando `free` é utilizado para exibir informações sobre a memória do sistema, incluindo a memória total, usada, livre e buffers/cache. É uma ferramenta útil para monitorar o uso da memória em sistemas Linux.
+O comando `free` é utilizado para exibir informações sobre a memória do sistema, incluindo a memória total, usada, livre e a memória swap. É uma ferramenta útil para monitorar o uso da memória em sistemas operacionais baseados em Unix.
 
 ## Usage
 A sintaxe básica do comando `free` é a seguinte:
 
-```bash
+```
 free [opções] [argumentos]
 ```
 
 ## Common Options
 Aqui estão algumas opções comuns do comando `free`:
 
-- `-h`: Exibe os valores em um formato legível por humanos (ex: KB, MB, GB).
+- `-h`: Exibe os valores em um formato legível por humanos (por exemplo, em MB ou GB).
 - `-m`: Exibe a memória em megabytes.
 - `-g`: Exibe a memória em gigabytes.
-- `-s <segundos>`: Atualiza a saída a cada número especificado de segundos.
-- `-t`: Exibe a memória total, incluindo a memória usada e livre.
+- `-s [segundos]`: Atualiza a saída a cada número especificado de segundos.
 
 ## Common Examples
 
@@ -46,12 +45,10 @@ free -g
 free -s 5
 ```
 
-### Exibir a memória total
-```bash
-free -t
-```
-
 ## Tips
-- Utilize a opção `-h` para facilitar a leitura dos dados, especialmente em sistemas com grandes quantidades de memória.
-- Combine o comando `free` com outros comandos, como `watch`, para monitorar a memória em tempo real.
-- Verifique a memória livre regularmente para garantir que o sistema esteja funcionando de forma otimizada.
+- Utilize a opção `-h` para facilitar a leitura dos dados, especialmente em sistemas com grande quantidade de memória.
+- Combine o comando `free` com outros comandos, como `watch`, para monitorar a memória em tempo real:
+  ```bash
+  watch free -h
+  ```
+- Lembre-se de que o comando `free` fornece uma visão instantânea do uso da memória, então é útil usá-lo em conjunto com outras ferramentas de monitoramento para uma análise mais abrangente.

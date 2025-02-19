@@ -1,44 +1,44 @@
-# [Linux] Bash cksum Penggunaan: Menghitung checksum file
+# [Sistem Operasi] C Shell (csh) cksum: Menghitung checksum file
 
 ## Overview
-Perintah `cksum` digunakan untuk menghitung checksum dari file. Checksum adalah nilai numerik yang dihasilkan dari konten file, yang dapat digunakan untuk memverifikasi integritas data. Dengan menggunakan `cksum`, Anda dapat memastikan bahwa file tidak telah diubah atau rusak.
+Perintah `cksum` dalam C Shell (csh) digunakan untuk menghitung checksum dari file. Checksum adalah nilai yang dihasilkan dari data file yang dapat digunakan untuk memverifikasi integritas file tersebut. Dengan menggunakan `cksum`, pengguna dapat memastikan bahwa file tidak telah diubah atau rusak.
 
 ## Usage
-Sintaks dasar dari perintah `cksum` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `cksum`:
+
 ```
 cksum [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang tersedia untuk `cksum`:
-- `-a, --algorithm=ALGORITHM` : Menentukan algoritma checksum yang akan digunakan.
-- `-h, --help` : Menampilkan bantuan tentang penggunaan perintah.
-- `-V, --version` : Menampilkan versi dari perintah `cksum`.
+- `-a` : Menentukan algoritma checksum yang digunakan.
+- `-b` : Menghitung checksum untuk file biner.
+- `-h` : Menampilkan bantuan dan informasi tentang penggunaan perintah.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan `cksum`:
+Berikut adalah beberapa contoh penggunaan perintah `cksum`:
 
-1. Menghitung checksum dari sebuah file:
-   ```bash
-   cksum file.txt
+1. Menghitung checksum untuk sebuah file:
+   ```csh
+   cksum namafile.txt
    ```
 
-2. Menghitung checksum dari beberapa file sekaligus:
-   ```bash
-   cksum file1.txt file2.txt
+2. Menghitung checksum untuk beberapa file sekaligus:
+   ```csh
+   cksum file1.txt file2.txt file3.txt
    ```
 
-3. Menggunakan opsi untuk menampilkan versi:
-   ```bash
-   cksum --version
+3. Menghitung checksum untuk file biner:
+   ```csh
+   cksum -b filebiner.bin
    ```
 
-4. Menggunakan opsi bantuan untuk melihat informasi lebih lanjut:
-   ```bash
-   cksum --help
+4. Menampilkan bantuan untuk perintah cksum:
+   ```csh
+   cksum -h
    ```
 
 ## Tips
-- Selalu periksa checksum file setelah mengunduh untuk memastikan file tidak rusak.
-- Simpan nilai checksum yang dihasilkan untuk referensi di masa mendatang.
-- Gunakan `cksum` bersama dengan perintah lain seperti `find` untuk memeriksa banyak file dalam satu perintah.
+- Selalu simpan nilai checksum yang dihasilkan untuk referensi di masa mendatang, sehingga Anda dapat memverifikasi integritas file.
+- Gunakan opsi `-b` saat bekerja dengan file biner untuk mendapatkan hasil yang akurat.
+- Periksa checksum file setelah transfer atau pengunduhan untuk memastikan tidak ada kerusakan data.

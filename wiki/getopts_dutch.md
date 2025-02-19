@@ -1,92 +1,75 @@
-# [Linux] Bash getopts gebruik: Verwerken van commandoregelopties
+# [Linux] C Shell (csh) getopts gebruik: [verwerken van commandoregelopties]
 
 ## Overzicht
-De `getopts`-opdracht in Bash wordt gebruikt om commandoregelopties te parseren. Het stelt scripts in staat om invoerparameters te verwerken op een gestructureerde manier, waardoor gebruikers hun scripts flexibeler kunnen maken.
+De `getopts`-opdracht in C Shell (csh) wordt gebruikt om commandoregelopties te parseren. Het stelt scripts in staat om opties en argumenten van de gebruiker te verwerken, waardoor ze flexibeler en gebruiksvriendelijker worden.
 
 ## Gebruik
 De basis syntaxis van de `getopts`-opdracht is als volgt:
 
-```bash
-getopts "opties" variabele
+```csh
+getopts optstring variable
 ```
 
-Hierbij worden de "opties" gedefinieerd als een string van toegestane opties, en de "variabele" is de naam van de variabele waarin de huidige optie wordt opgeslagen.
+Hierbij is `optstring` een string die de beschikbare opties definieert, en `variable` is de naam van de variabele waarin de huidige optie wordt opgeslagen.
 
-## Veelvoorkomende Opties
-- `-a`: Een voorbeeldoptie die kan worden gebruikt om een bepaalde actie uit te voeren.
-- `-b`: Een andere voorbeeldoptie die een alternatieve functie kan activeren.
-- `-c`: Vaak gebruikt voor het inschakelen van een configuratie-instelling.
+## Veelvoorkomende opties
+- `optstring`: Een string die de opties definieert. Elke optie wordt weergegeven door een enkele letter. Opties die een argument vereisen, worden gevolgd door een dubbele punt (bijvoorbeeld `a:`).
+- `variable`: De naam van de variabele waarin de huidige optie wordt opgeslagen.
 
-## Veelvoorkomende Voorbeelden
+## Veelvoorkomende voorbeelden
 
-### Voorbeeld 1: Basisgebruik van getopts
-In dit voorbeeld wordt `getopts` gebruikt om een enkele optie te verwerken:
+### Voorbeeld 1: Eenvoudige opties
+Dit voorbeeld toont hoe je eenvoudige opties kunt verwerken.
 
-```bash
-#!/bin/bash
-
-while getopts "a:" opt; do
-  case $opt in
-    a)
-      echo "Optie -a met waarde: $OPTARG"
-      ;;
-    \?)
-      echo "Ongeldige optie: -$OPTARG" >&2
-      ;;
-  esac
-done
+```csh
+#!/bin/csh
+set optstring = "ab"
+while (getopts $optstring opt)
+    switch ($opt)
+        case "a":
+            echo "Optie A geselecteerd"
+            breaksw
+        case "b":
+            echo "Optie B geselecteerd"
+            breaksw
+        default:
+            echo "Ongeldige optie"
+    endsw
+end
 ```
 
-### Voorbeeld 2: Meerdere opties
-Hier is een voorbeeld dat meerdere opties verwerkt:
+### Voorbeeld 2: Opties met argumenten
+Hier is een voorbeeld dat laat zien hoe je opties met argumenten kunt verwerken.
 
-```bash
-#!/bin/bash
-
-while getopts "ab:c:" opt; do
-  case $opt in
-    a)
-      echo "Optie -a geactiveerd"
-      ;;
-    b)
-      echo "Optie -b met waarde: $OPTARG"
-      ;;
-    c)
-      echo "Optie -c met waarde: $OPTARG"
-      ;;
-    \?)
-      echo "Ongeldige optie: -$OPTARG" >&2
-      ;;
-  esac
-done
+```csh
+#!/bin/csh
+set optstring = "a:b:"
+while (getopts $optstring opt)
+    switch ($opt)
+        case "a":
+            echo "Optie A met argument: $OPTARG"
+            breaksw
+        case "b":
+            echo "Optie B met argument: $OPTARG"
+            breaksw
+        default:
+            echo "Ongeldige optie"
+    endsw
+end
 ```
 
-### Voorbeeld 3: Standaardwaarde instellen
-In dit voorbeeld wordt een standaardwaarde ingesteld als er geen optie wordt opgegeven:
+### Voorbeeld 3: Meerdere opties
+Dit voorbeeld laat zien hoe je meerdere opties tegelijk kunt verwerken.
 
-```bash
-#!/bin/bash
-
-value="standaard"
-
-while getopts "a:b:" opt; do
-  case $opt in
-    a)
-      value=$OPTARG
-      ;;
-    b)
-      value=$OPTARG
-      ;;
-    \?)
-      echo "Ongeldige optie: -$OPTARG" >&2
-      ;;
-  esac
-done
-
-echo "Waarde is: $value"
+```csh
+#!/bin/csh
+set optstring = "abc"
+while (getopts $optstring opt)
+    echo "Geselecteerde optie: $opt"
+end
 ```
 
 ## Tips
-- Gebruik altijd een `case`-structuur om de opties te verwerken, dit maakt je script overzichtelijker.
-- Vergeet niet om een standaardactie te definiëren voor ongeldige opties om gebruikersfeedback te geven.
-- Test je scripts met verschillende combinaties van opties om ervoor te zorgen dat ze correct functioneren.
+- Zorg ervoor dat je de opties goed definieert in de `optstring`, zodat gebruikers weten welke opties beschikbaar zijn.
+- Gebruik de `switch`-structuur om de verschillende opties te verwerken, wat de leesbaarheid van je script verbetert.
+- Vergeet niet om de variabele `$OPTARG` te gebruiken om toegang te krijgen tot argumenten die bij opties zijn opgegeven.

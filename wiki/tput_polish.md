@@ -1,53 +1,49 @@
-# [Linux] Bash tput użycie: Zmiana atrybutów terminala
+# [Linux] C Shell (csh) tput: Ustawienia terminala
 
 ## Overview
-Polecenie `tput` służy do interakcji z terminalem, umożliwiając użytkownikom kontrolowanie atrybutów wyświetlania, takich jak kolory tekstu, pozycjonowanie kursora czy czyszczenie ekranu. Dzięki `tput` można dostosować wygląd i zachowanie terminala w skryptach Bash.
+Polecenie `tput` służy do ustawiania właściwości terminala, takich jak kolory, formatowanie tekstu oraz inne atrybuty wyjścia. Umożliwia to dostosowanie wyglądu i zachowania terminala w skryptach i interaktywnych sesjach.
 
 ## Usage
 Podstawowa składnia polecenia `tput` jest następująca:
 
-```bash
+```csh
 tput [opcje] [argumenty]
 ```
 
 ## Common Options
-- `setaf [n]` - Ustawia kolor tekstu na kolor o numerze `n`.
-- `setab [n]` - Ustawia kolor tła na kolor o numerze `n`.
+- `setaf [num]` - Ustawia kolor tekstu (foreground) na kolor o numerze `num`.
+- `setab [num]` - Ustawia kolor tła (background) na kolor o numerze `num`.
+- `bold` - Ustawia tekst na pogrubiony.
 - `clear` - Czyści ekran terminala.
 - `cup [x] [y]` - Ustawia kursor w pozycji (x, y).
-- `bold` - Ustawia tekst na pogrubiony.
 
 ## Common Examples
-1. Ustawienie koloru tekstu na czerwony:
-   ```bash
-   tput setaf 1
-   echo "To jest czerwony tekst"
-   ```
+- Ustawienie koloru tekstu na czerwony:
+  ```csh
+  tput setaf 1
+  ```
+  
+- Ustawienie koloru tła na zielony:
+  ```csh
+  tput setab 2
+  ```
 
-2. Ustawienie koloru tła na niebieski:
-   ```bash
-   tput setab 4
-   echo "To jest tekst na niebieskim tle"
-   ```
+- Pogrubienie tekstu:
+  ```csh
+  tput bold
+  ```
 
-3. Czyszczenie ekranu:
-   ```bash
-   tput clear
-   ```
+- Czyszczenie ekranu terminala:
+  ```csh
+  tput clear
+  ```
 
-4. Ustawienie kursora w pozycji (10, 5):
-   ```bash
-   tput cup 10 5
-   echo "Kursor jest tutaj"
-   ```
-
-5. Ustawienie tekstu na pogrubiony:
-   ```bash
-   tput bold
-   echo "To jest pogrubiony tekst"
-   ```
+- Ustawienie kursora na pozycję (10, 5):
+  ```csh
+  tput cup 10 5
+  ```
 
 ## Tips
-- Używaj `tput reset`, aby przywrócić domyślne ustawienia terminala po zakończeniu skryptu.
-- Możesz łączyć różne atrybuty, np. ustawić kolor i pogrubienie w jednym poleceniu.
-- Sprawdź dostępne kolory i ich numery, aby lepiej dostosować wyświetlanie tekstu w terminalu.
+- Używaj `tput` w skryptach, aby poprawić czytelność i estetykę wyjścia.
+- Możesz łączyć różne polecenia `tput`, aby uzyskać bardziej złożone efekty, np. zmieniając kolor i pogrubiając tekst jednocześnie.
+- Sprawdź dostępne kolory w swoim terminalu, ponieważ różne terminale mogą obsługiwać różne zestawy kolorów.

@@ -1,50 +1,44 @@
-# [Linux] Bash top Kullanımı: Sistem kaynaklarını izleme aracı
+# [Linux] C Shell (csh) top Kullanımı: Sistem kaynaklarını görüntüleme
 
 ## Genel Bakış
-`top` komutu, sistemdeki işlemci ve bellek kullanımını gerçek zamanlı olarak izlemek için kullanılan bir araçtır. Bu komut, sistemdeki aktif işlemleri ve bu işlemlerin kaynak tüketimini gösterir, böylece kullanıcılar sistem performansını değerlendirebilir.
+`top` komutu, sistemdeki işlemleri ve kaynak kullanımını gerçek zamanlı olarak görüntülemek için kullanılır. Bu komut, CPU ve bellek kullanımı gibi bilgileri takip etmek isteyen kullanıcılar için oldukça yararlıdır.
 
 ## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
-```bash
-top [seçenekler] [argümanlar]
+Temel sözdizimi şu şekildedir:
+
+```csh
+top [options] [arguments]
 ```
 
 ## Yaygın Seçenekler
-- `-d [saniye]`: Güncellemelerin ne sıklıkta yapılacağını belirler. Varsayılan değer 3 saniyedir.
-- `-p [PID]`: Belirtilen işlem kimliğini (PID) izler.
-- `-u [kullanıcı]`: Belirtilen kullanıcıya ait işlemleri gösterir.
-- `-n [sayı]`: Belirtilen sayıda güncelleme yaparak çıkış yapar.
+- `-d <saniye>`: Güncellemelerin ne sıklıkla yapılacağını belirler.
+- `-n <sayı>`: Belirtilen sayıda güncelleme yapıldıktan sonra çıkış yapar.
+- `-u <kullanıcı>`: Sadece belirtilen kullanıcıya ait işlemleri gösterir.
 
 ## Yaygın Örnekler
-1. **Temel top komutu**: Sistemdeki tüm işlemleri ve kaynak kullanımını görüntülemek için:
-   ```bash
+Aşağıda `top` komutunun bazı pratik örnekleri bulunmaktadır:
+
+1. **Varsayılan Kullanım**: `top` komutunu basitçe çalıştırmak için:
+   ```csh
    top
    ```
 
-2. **Güncelleme süresini ayarlamak**: Her 5 saniyede bir güncelleme yapmak için:
-   ```bash
+2. **Güncellemeleri 5 Saniyede Bir Yapmak**:
+   ```csh
    top -d 5
    ```
 
-3. **Belirli bir PID'yi izlemek**: PID'si 1234 olan işlemi izlemek için:
-   ```bash
-   top -p 1234
+3. **Sadece Belirli Bir Kullanıcının İşlemlerini Görüntülemek**:
+   ```csh
+   top -u kullanıcı_adı
    ```
 
-4. **Belirli bir kullanıcıya ait işlemleri görüntülemek**: "kullanici1" adlı kullanıcıya ait işlemleri görmek için:
-   ```bash
-   top -u kullanici1
-   ```
-
-5. **Sadece 10 güncelleme yaparak çıkmak**: 10 güncelleme yaptıktan sonra çıkmak için:
-   ```bash
+4. **10 Güncellemeden Sonra Çıkmak**:
+   ```csh
    top -n 10
    ```
 
 ## İpuçları
+- `top` komutunu kullanırken, işlemleri sıralamak için `Shift + M` (bellek kullanımı) veya `Shift + P` (CPU kullanımı) tuşlarına basabilirsiniz.
 - `top` arayüzünde, `h` tuşuna basarak yardım alabilirsiniz.
-- `k` tuşuna basarak bir işlemi sonlandırmak için PID'yi girebilirsiniz.
-- `M` tuşuna basarak işlemleri bellek kullanımına göre sıralayabilirsiniz.
-- `P` tuşuna basarak işlemleri CPU kullanımına göre sıralayabilirsiniz.
-
-Bu bilgilerle `top` komutunu etkili bir şekilde kullanarak sisteminizin performansını izleyebilirsiniz.
+- Çıkmak için `q` tuşuna basmayı unutmayın.

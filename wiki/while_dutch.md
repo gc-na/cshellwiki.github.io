@@ -1,58 +1,58 @@
-# [Linux] Bash while gebruik: Herhaal een commando zolang een voorwaarde waar is
+# [Linux] C Shell (csh) while gebruiken: Voer herhalende taken uit
 
-## Overview
-De `while`-lus in Bash is een controle structuur die een bepaalde set commando's herhaaldelijk uitvoert zolang een opgegeven voorwaarde waar is. Dit maakt het een krachtig hulpmiddel voor het automatiseren van taken die herhaald moeten worden totdat aan een bepaalde voorwaarde is voldaan.
+## Overzicht
+De `while`-opdracht in C Shell (csh) wordt gebruikt om een blok code herhaaldelijk uit te voeren zolang een bepaalde voorwaarde waar is. Dit is handig voor het automatiseren van taken die meerdere keren moeten worden uitgevoerd totdat aan een bepaalde voorwaarde wordt voldaan.
 
-## Usage
-De basis syntaxis van de `while`-lus is als volgt:
+## Gebruik
+De basis syntaxis van de `while`-opdracht is als volgt:
 
-```bash
-while [voorwaarde]; do
-    # commando's
-done
+```csh
+while (voorwaarde)
+    commando's
+end
 ```
 
-## Common Options
-De `while`-lus zelf heeft geen specifieke opties, maar de voorwaarde die je gebruikt kan verschillende testcommando's bevatten, zoals:
-- `-e`: controleer of een bestand bestaat.
-- `-f`: controleer of een bestand een regulier bestand is.
-- `-d`: controleer of een bestand een directory is.
-- `-z`: controleer of een string leeg is.
+## Veelvoorkomende Opties
+- **voorwaarde**: Een expressie die waar of onwaar kan zijn. De loop blijft draaien zolang deze waar is.
+- **commando's**: De opdrachten die herhaaldelijk worden uitgevoerd.
 
-## Common Examples
+## Veelvoorkomende Voorbeelden
 
-### Voorbeeld 1: Eenvoudige tel lus
-Dit voorbeeld telt van 1 tot 5 en print elk nummer.
+### Voorbeeld 1: Eenvoudige tel-loop
+Dit voorbeeld telt van 1 tot 5.
 
-```bash
-count=1
-while [ $count -le 5 ]; do
-    echo $count
-    ((count++))
-done
+```csh
+set i = 1
+while ($i <= 5)
+    echo $i
+    @ i++
+end
 ```
 
-### Voorbeeld 2: Wacht tot een bestand beschikbaar is
-Dit voorbeeld wacht tot een bestand genaamd `bestand.txt` beschikbaar is.
+### Voorbeeld 2: Wacht op een bestand
+Dit voorbeeld wacht tot een bestand beschikbaar is.
 
-```bash
-while [ ! -e bestand.txt ]; do
-    echo "Wachten op bestand..."
+```csh
+set bestand = "mijnbestand.txt"
+while (! -e $bestand)
+    echo "Wachten op $bestand..."
     sleep 2
-done
-echo "Bestand gevonden!"
+end
+echo "$bestand is nu beschikbaar."
 ```
 
-### Voorbeeld 3: Lees lijnen uit een bestand
-Dit voorbeeld leest elke lijn uit een bestand en print deze.
+### Voorbeeld 3: Herhaal een commando
+Dit voorbeeld herhaalt een commando totdat een bepaalde voorwaarde waar is.
 
-```bash
-while IFS= read -r line; do
-    echo "Lijn: $line"
-done < bestand.txt
+```csh
+set getal = 0
+while ($getal < 10)
+    @ getal += 1
+    echo "Huidig getal: $getal"
+end
 ```
 
 ## Tips
 - Zorg ervoor dat je de voorwaarde correct instelt om oneindige lussen te voorkomen.
-- Gebruik `sleep` in je `while`-lus om de belasting op de CPU te verminderen bij het wachten op een voorwaarde.
-- Test je scripts met een kleine dataset voordat je ze op grotere bestanden of in productieomgevingen uitvoert.
+- Gebruik `sleep` in je loop om de belasting van de CPU te verminderen als je wacht op een bepaalde gebeurtenis.
+- Test je `while`-lussen met een kleine dataset om er zeker van te zijn dat ze correct werken voordat je ze op grotere datasets toepast.

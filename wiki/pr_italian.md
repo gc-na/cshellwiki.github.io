@@ -1,50 +1,56 @@
-# [Linux] Bash pr: Stampa file in formato leggibile
+# [Linux] C Shell (csh) pr: Stampa file in formato leggibile
 
 ## Overview
-Il comando `pr` in Bash è utilizzato per formattare e stampare file di testo in un modo leggibile, suddividendo il contenuto in colonne e aggiungendo intestazioni e numeri di pagina. È particolarmente utile per preparare documenti da stampare.
+Il comando `pr` viene utilizzato per formattare file di testo in modo che siano più leggibili quando stampati. Questo comando suddivide il contenuto in colonne e aggiunge intestazioni e numeri di pagina, rendendo più facile la lettura e la stampa dei documenti.
 
 ## Usage
-La sintassi di base del comando è la seguente:
+La sintassi di base del comando `pr` è la seguente:
 
-```bash
-pr [opzioni] [argomenti]
+```csh
+pr [options] [arguments]
 ```
 
 ## Common Options
-- `-h, --header=STRING`: Specifica un'intestazione personalizzata per il documento.
-- `-n, --number`: Aggiunge numeri di pagina al documento.
-- `-t, --omit-header`: Ommette l'intestazione predefinita.
-- `-s, --separator=CHAR`: Specifica un carattere di separazione tra le colonne.
-- `-w, --width=N`: Imposta la larghezza totale delle colonne.
+Ecco alcune opzioni comuni per il comando `pr`:
+
+- `-l [numero]`: Imposta il numero di righe per pagina.
+- `-w [numero]`: Imposta la larghezza della pagina in caratteri.
+- `-h [stringa]`: Aggiunge un'intestazione personalizzata.
+- `-n`: Non numerare le pagine.
+- `-s`: Usa uno spazio in bianco tra le colonne.
 
 ## Common Examples
 Ecco alcuni esempi pratici dell'uso del comando `pr`:
 
-### Esempio 1: Formattare un file di testo
-```bash
-pr file.txt
-```
-Questo comando formatterà e stamperà il contenuto di `file.txt` in un formato leggibile.
+1. **Stampare un file con intestazione e numerazione delle pagine:**
+   ```csh
+   pr file.txt
+   ```
 
-### Esempio 2: Aggiungere un'intestazione personalizzata
-```bash
-pr -h "Il mio documento" file.txt
-```
-In questo caso, il comando stamperà `file.txt` con l'intestazione "Il mio documento".
+2. **Impostare il numero di righe per pagina a 50:**
+   ```csh
+   pr -l 50 file.txt
+   ```
 
-### Esempio 3: Numerare le pagine
-```bash
-pr -n file.txt
-```
-Questo comando stamperà `file.txt` con numeri di pagina aggiunti.
+3. **Impostare la larghezza della pagina a 80 caratteri:**
+   ```csh
+   pr -w 80 file.txt
+   ```
 
-### Esempio 4: Formattare in colonne
-```bash
-pr -s, -w 80 file.txt
-```
-Qui, il file verrà stampato in colonne separate da una virgola e con una larghezza totale di 80 caratteri.
+4. **Aggiungere un'intestazione personalizzata:**
+   ```csh
+   pr -h "Il mio documento" file.txt
+   ```
+
+5. **Stampare due file in colonne:**
+   ```csh
+   pr file1.txt file2.txt
+   ```
 
 ## Tips
-- Utilizza l'opzione `-t` se desideri un output senza intestazioni, utile per documenti più puliti.
-- Sperimenta con l'opzione `-w` per trovare la larghezza ottimale per la tua stampante.
-- Considera di combinare `pr` con altri comandi come `less` o `more` per visualizzare il contenuto formattato direttamente nel terminale.
+- Utilizza l'opzione `-s` per migliorare la leggibilità quando stampi più file in colonne.
+- Prova diverse combinazioni di opzioni per ottenere il formato di stampa desiderato.
+- Ricorda di visualizzare l'output su schermo prima di stampare, per assicurarti che sia formattato correttamente. Puoi farlo reindirizzando l'output a `less`:
+  ```csh
+  pr file.txt | less
+  ```

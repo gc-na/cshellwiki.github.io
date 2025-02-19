@@ -1,51 +1,54 @@
-# [Linux] Bash pidstat Gebruik: Monitoren van processtatistieken
+# [Linux] C Shell (csh) pidstat gebruik: Monitoren van processtatistieken
 
 ## Overzicht
-Het `pidstat` commando is een handig hulpmiddel in Linux dat gedetailleerde statistieken over actieve processen biedt. Het maakt deel uit van de `sysstat`-pakket en helpt gebruikers om de CPU- en geheugenbelasting per proces te analyseren.
+Het `pidstat` commando is een handig hulpmiddel voor het monitoren van de prestaties van processen op een systeem. Het biedt gedetailleerde informatie over CPU-gebruik, geheugenverbruik en andere statistieken per proces, wat nuttig is voor systeembeheerders en ontwikkelaars om de prestaties van hun applicaties te analyseren.
 
 ## Gebruik
 De basis syntaxis van het `pidstat` commando is als volgt:
 
-```bash
+```csh
 pidstat [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-h`: Toont een help-bericht met informatie over de beschikbare opties.
-- `-p <pid>`: Specificeert de proces-ID (PID) waarvan je de statistieken wilt bekijken.
-- `-r`: Toont geheugenstatistieken voor processen.
-- `-u`: Toont CPU-gebruikstatistieken voor processen.
-- `-d`: Toont I/O-statistieken voor processen.
+Hier zijn enkele veelvoorkomende opties voor `pidstat`:
+
+- `-h`: Toon de resultaten in een leesbaar formaat met eenheden.
+- `-r`: Toon informatie over het geheugenverbruik van processen.
+- `-u`: Toon CPU-gebruik per proces.
+- `-p <PID>`: Specificeer de PID van het proces dat je wilt monitoren.
+- `-t`: Toon informatie over threads van processen.
 
 ## Veelvoorkomende Voorbeelden
+
 Hier zijn enkele praktische voorbeelden van het gebruik van `pidstat`:
 
-1. **Basis CPU-gebruik per proces bekijken:**
-   ```bash
-   pidstat
+1. **Basis CPU-gebruik per proces tonen**:
+   ```csh
+   pidstat -u
    ```
 
-2. **Statistieken voor een specifieke PID (bijvoorbeeld PID 1234) bekijken:**
-   ```bash
+2. **Geheugenverbruik van processen weergeven**:
+   ```csh
+   pidstat -r
+   ```
+
+3. **Specifieke PID monitoren**:
+   ```csh
    pidstat -p 1234
    ```
 
-3. **CPU-gebruik met geheugenstatistieken tonen:**
-   ```bash
-   pidstat -r -u
+4. **CPU- en geheugenstatistieken in een leesbaar formaat tonen**:
+   ```csh
+   pidstat -h -u -r
    ```
 
-4. **Statistieken om de 5 seconden verzamelen:**
-   ```bash
-   pidstat 5
-   ```
-
-5. **I/O-statistieken voor een specifieke PID bekijken:**
-   ```bash
-   pidstat -d -p 1234
+5. **Statistieken voor alle threads van een proces weergeven**:
+   ```csh
+   pidstat -t -p 1234
    ```
 
 ## Tips
-- Gebruik `pidstat` in combinatie met andere monitoringtools zoals `top` of `htop` voor een completer beeld van systeembronnen.
-- Probeer verschillende opties uit om specifieke informatie te krijgen die je nodig hebt voor probleemoplossing.
-- Houd rekening met de frequentie van het verzamelen van gegevens, vooral bij systemen met veel processen, om overbelasting van de uitvoer te voorkomen.
+- Gebruik de `-h` optie voor een betere leesbaarheid van de output.
+- Combineer opties om meer gedetailleerde informatie te krijgen, zoals CPU- en geheugenstatistieken tegelijk.
+- Monitor processen regelmatig om trends in prestaties te identificeren en problemen vroegtijdig op te sporen.

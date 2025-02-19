@@ -1,54 +1,50 @@
-# [Linux] Bash ps Kullanımı: Çalışan süreçleri görüntüleme
+# [Linux] C Shell (csh) ps Kullanımı: Çalışan süreçleri listeleme
 
 ## Genel Bakış
-`ps` komutu, Linux ve Unix benzeri işletim sistemlerinde çalışan süreçlerin (programların) durumunu görüntülemek için kullanılır. Bu komut, sistemdeki aktif işlemleri ve bu işlemlerle ilgili bilgileri sağlar.
+`ps` komutu, sistemde çalışan süreçlerin listesini görüntülemek için kullanılır. Bu komut, kullanıcıya hangi süreçlerin aktif olduğunu, bu süreçlerin kim tarafından çalıştırıldığını ve diğer önemli bilgileri sunar.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-
-```bash
+```
 ps [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-e` veya `-A`: Tüm süreçleri gösterir.
-- `-f`: Tam bir formatta süreç bilgilerini gösterir.
+- `-e`: Tüm süreçleri gösterir.
+- `-f`: Tam formatta süreç bilgilerini görüntüler.
 - `-u [kullanıcı]`: Belirtilen kullanıcıya ait süreçleri listeler.
-- `-aux`: Tüm kullanıcıların süreçlerini detaylı bir şekilde gösterir.
-- `--sort`: Süreçleri belirli bir kritere göre sıralar.
+- `-p [pid]`: Belirtilen süreç kimliğine (PID) sahip süreci gösterir.
 
 ## Yaygın Örnekler
-Aşağıda `ps` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+Aşağıda `ps` komutunun bazı pratik örnekleri bulunmaktadır:
 
 1. Tüm süreçleri listeleme:
    ```bash
    ps -e
    ```
 
-2. Belirli bir kullanıcıya ait süreçleri görüntüleme:
-   ```bash
-   ps -u username
-   ```
-
-3. Tüm süreçleri detaylı bir formatta gösterme:
+2. Tam formatta süreç bilgilerini görüntüleme:
    ```bash
    ps -ef
    ```
 
-4. Süreçleri bellek kullanımına göre sıralama:
+3. Belirli bir kullanıcıya ait süreçleri gösterme:
    ```bash
-   ps aux --sort=-%mem
+   ps -u kullanıcı_adı
    ```
 
-5. Belirli bir süreç ID'sine (PID) sahip süreci görüntüleme:
+4. Belirli bir PID'ye sahip süreci görüntüleme:
    ```bash
    ps -p 1234
    ```
 
 ## İpuçları
-- `ps` komutunu `grep` ile birleştirerek belirli bir süreci kolayca bulabilirsiniz:
+- `ps` komutunu `grep` ile birleştirerek belirli bir süreci arayabilirsiniz:
   ```bash
-  ps aux | grep process_name
+  ps -ef | grep süreç_adı
   ```
-- `top` komutunu kullanarak süreçlerin dinamik bir görünümünü elde edebilirsiniz; bu, sürekli güncellenen bir süreç listesi sağlar.
-- `man ps` komutunu kullanarak `ps` komutunun tüm seçenekleri ve kullanımları hakkında daha fazla bilgi alabilirsiniz.
+- `ps` çıktısını daha okunabilir hale getirmek için `less` komutuyla birleştirebilirsiniz:
+  ```bash
+  ps -ef | less
+  ```
+- Süreçlerin sürekli güncellenen bir listesini görmek için `top` veya `htop` komutlarını kullanmayı düşünebilirsiniz.

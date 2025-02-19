@@ -1,13 +1,13 @@
-# [Linux] Bash pwd utilisation : Afficher le répertoire de travail actuel
+# [Linux] C Shell (csh) pwd : Afficher le répertoire de travail actuel
 
 ## Overview
-La commande `pwd` (print working directory) est utilisée dans Bash pour afficher le chemin absolu du répertoire de travail actuel. Cela permet aux utilisateurs de savoir où ils se trouvent dans la hiérarchie des fichiers.
+La commande `pwd` (print working directory) est utilisée dans le C Shell pour afficher le chemin complet du répertoire de travail actuel. C'est un outil essentiel pour naviguer dans le système de fichiers et comprendre votre position actuelle dans l'arborescence des répertoires.
 
 ## Usage
 La syntaxe de base de la commande `pwd` est la suivante :
 
-```bash
-pwd [options]
+```
+pwd [options] [arguments]
 ```
 
 ## Common Options
@@ -20,21 +20,21 @@ Voici quelques options courantes pour la commande `pwd` :
 Voici quelques exemples pratiques de l'utilisation de la commande `pwd` :
 
 1. Afficher le répertoire de travail actuel :
-   ```bash
+   ```csh
    pwd
    ```
 
 2. Afficher le chemin logique du répertoire de travail :
-   ```bash
+   ```csh
    pwd -L
    ```
 
 3. Afficher le chemin physique du répertoire de travail :
-   ```bash
+   ```csh
    pwd -P
    ```
 
 ## Tips
-- Utilisez `pwd` régulièrement pour vérifier votre position dans le système de fichiers, surtout lorsque vous naviguez dans des répertoires complexes.
-- Combinez `pwd` avec d'autres commandes comme `cd` pour une navigation efficace dans le terminal.
-- Si vous utilisez des liens symboliques, n'oubliez pas de vérifier le chemin physique avec l'option `-P` pour éviter toute confusion.
+- Utilisez `pwd` régulièrement pour vérifier votre position dans le système de fichiers, surtout avant d'exécuter des commandes qui dépendent du répertoire courant.
+- Combinez `pwd` avec d'autres commandes pour créer des scripts utiles qui nécessitent la connaissance du chemin actuel.
+- Si vous travaillez avec des liens symboliques, utilisez l'option `-P` pour obtenir le chemin réel du répertoire.

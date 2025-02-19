@@ -1,57 +1,52 @@
-# [Linux] Bash date użycie: Wyświetlanie i formatowanie daty
+# [Linux] C Shell (csh) date użycie: Wyświetlanie i formatowanie daty i czasu
 
 ## Overview
-Polecenie `date` w systemie Linux służy do wyświetlania oraz formatowania daty i godziny. Umożliwia użytkownikom uzyskanie aktualnych informacji o czasie oraz dostosowanie ich do różnych formatów.
+Polecenie `date` w powłoce C Shell (csh) służy do wyświetlania bieżącej daty i czasu. Umożliwia również formatowanie daty i czasu według określonych wzorców, co może być przydatne w skryptach i automatyzacji.
 
 ## Usage
 Podstawowa składnia polecenia `date` jest następująca:
 
-```bash
-date [opcje] [argumenty]
+```csh
+date [options] [arguments]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji dla polecenia `date`:
-
-- `+FORMAT` - pozwala na określenie formatu wyjścia daty.
-- `-u` - wyświetla czas w formacie UTC (czas uniwersalny).
-- `-d STRING` - interpretuje podany ciąg jako datę i wyświetla ją.
-- `-R` - wyświetla datę w formacie RFC 2822.
+- `+FORMAT` - Umożliwia formatowanie wyjścia daty i czasu. FORMAT może zawierać różne specyfikatory, takie jak `%Y` dla roku, `%m` dla miesiąca itp.
+- `-u` - Wyświetla czas w formacie UTC (czas uniwersalny).
+- `-d STRING` - Wyświetla datę określoną przez STRING, co pozwala na wyświetlenie daty w przyszłości lub przeszłości.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `date`:
-
-1. Wyświetlenie aktualnej daty i godziny:
-   ```bash
+1. Wyświetlenie bieżącej daty i czasu:
+   ```csh
    date
    ```
 
 2. Wyświetlenie daty w formacie YYYY-MM-DD:
-   ```bash
+   ```csh
    date +%Y-%m-%d
    ```
 
-3. Wyświetlenie daty w formacie pełnym (np. "poniedziałek, 1 stycznia 2023"):
-   ```bash
+3. Wyświetlenie czasu w formacie 24-godzinnym:
+   ```csh
+   date +%H:%M:%S
+   ```
+
+4. Wyświetlenie daty w formacie z nazwami dni tygodnia:
+   ```csh
    date +"%A, %d %B %Y"
    ```
 
-4. Wyświetlenie daty w strefie czasowej UTC:
-   ```bash
+5. Wyświetlenie daty w UTC:
+   ```csh
    date -u
    ```
 
-5. Interpretacja podanego ciągu jako daty (np. "2 dni temu"):
-   ```bash
-   date -d "2 days ago"
-   ```
-
-6. Wyświetlenie daty w formacie RFC 2822:
-   ```bash
-   date -R
+6. Wyświetlenie daty za 7 dni:
+   ```csh
+   date -d "7 days"
    ```
 
 ## Tips
-- Używaj opcji `+FORMAT`, aby dostosować wyjście do swoich potrzeb, co może być przydatne w skryptach.
-- Pamiętaj, że formaty daty są wrażliwe na wielkość liter, więc upewnij się, że używasz odpowiednich symboli.
-- Możesz używać polecenia `date` w połączeniu z innymi poleceniami, aby automatycznie dodawać datę do plików lub logów.
+- Używaj opcji `+FORMAT`, aby dostosować wyjście do swoich potrzeb, co jest szczególnie przydatne w skryptach.
+- Zawsze sprawdzaj strefę czasową, aby upewnić się, że wyświetlane daty i czasy są zgodne z oczekiwaniami.
+- Eksperymentuj z różnymi specyfikatorami formatu, aby uzyskać pożądany wygląd daty i czasu.

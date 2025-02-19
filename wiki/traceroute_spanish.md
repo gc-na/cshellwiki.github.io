@@ -1,51 +1,45 @@
-# [Linux] Bash traceroute uso: Muestra la ruta que toman los paquetes en una red
+# [Linux] C Shell (csh) traceroute uso: Muestra la ruta que toman los paquetes a un destino
 
 ## Overview
-El comando `traceroute` se utiliza para rastrear la ruta que siguen los paquetes de datos desde un host hasta un destino específico en una red. Esto permite identificar los diferentes nodos o "saltos" que los paquetes atraviesan y puede ser útil para diagnosticar problemas de conectividad.
+El comando `traceroute` se utiliza para rastrear la ruta que siguen los paquetes de datos desde el origen hasta un destino específico en una red. Proporciona información sobre cada salto en la ruta, lo que puede ser útil para diagnosticar problemas de conectividad y latencia.
 
 ## Usage
-La sintaxis básica del comando es la siguiente:
+La sintaxis básica del comando `traceroute` es la siguiente:
 
-```bash
-traceroute [opciones] [destino]
+```csh
+traceroute [opciones] [argumentos]
 ```
 
 ## Common Options
-- `-m <número>`: Establece el número máximo de saltos que se intentarán.
-- `-p <puerto>`: Especifica el puerto que se utilizará para el envío de paquetes.
-- `-w <segundos>`: Define el tiempo de espera para cada respuesta.
-- `-I`: Utiliza paquetes ICMP en lugar de UDP.
-- `-n`: Muestra las direcciones IP en lugar de intentar resolver los nombres de host.
+- `-m <n>`: Establece el número máximo de saltos.
+- `-w <n>`: Define el tiempo de espera en segundos para cada respuesta.
+- `-q <n>`: Especifica el número de consultas por salto.
+- `-n`: Muestra las direcciones IP en lugar de resolver los nombres de host.
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso de `traceroute`:
 
-1. **Rastrear la ruta a un dominio específico:**
-   ```bash
+1. Rastrear la ruta a un sitio web:
+   ```csh
    traceroute www.ejemplo.com
    ```
 
-2. **Rastrear la ruta a una dirección IP:**
-   ```bash
-   traceroute 192.168.1.1
+2. Establecer un número máximo de saltos a 15:
+   ```csh
+   traceroute -m 15 www.ejemplo.com
    ```
 
-3. **Establecer un número máximo de saltos:**
-   ```bash
-   traceroute -m 10 www.ejemplo.com
+3. Usar el modo numérico para evitar la resolución de nombres:
+   ```csh
+   traceroute -n 8.8.8.8
    ```
 
-4. **Utilizar paquetes ICMP:**
-   ```bash
-   traceroute -I www.ejemplo.com
-   ```
-
-5. **Mostrar direcciones IP sin resolver nombres:**
-   ```bash
-   traceroute -n www.ejemplo.com
+4. Cambiar el tiempo de espera a 2 segundos:
+   ```csh
+   traceroute -w 2 www.ejemplo.com
    ```
 
 ## Tips
-- Utiliza la opción `-n` si deseas obtener resultados más rápidos al evitar la resolución de nombres de host.
-- Si estás experimentando problemas de red, observa los saltos donde se producen los retrasos o pérdidas de paquetes.
-- Combina `traceroute` con otros comandos como `ping` para obtener un diagnóstico más completo de la conectividad de red.
+- Utiliza la opción `-n` si deseas obtener resultados más rápidos al evitar la resolución de nombres.
+- Si experimentas problemas de conectividad, observa los saltos donde el tiempo de respuesta aumenta significativamente.
+- Prueba con diferentes opciones para ajustar el comportamiento de `traceroute` según tus necesidades específicas.

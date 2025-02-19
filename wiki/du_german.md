@@ -1,57 +1,62 @@
-# [Linux] Bash du Verwendung: Speicherplatznutzung anzeigen
+# [Linux] C Shell (csh) du: Speicherplatznutzung anzeigen
 
-## Übersicht
-Der `du` (Disk Usage) Befehl wird verwendet, um den Speicherplatzverbrauch von Dateien und Verzeichnissen im Dateisystem anzuzeigen. Er hilft Benutzern, den Platzbedarf zu analysieren und zu verstehen, welche Dateien oder Ordner den meisten Speicherplatz beanspruchen.
+## Overview
+Der `du`-Befehl (Disk Usage) wird verwendet, um die Speicherplatznutzung von Dateien und Verzeichnissen anzuzeigen. Er gibt an, wie viel Speicherplatz von Dateien und Unterverzeichnissen belegt wird.
 
-## Verwendung
-Die grundlegende Syntax des `du` Befehls lautet:
+## Usage
+Die grundlegende Syntax des `du`-Befehls lautet:
 
-```bash
+```csh
 du [Optionen] [Argumente]
 ```
 
-## Häufige Optionen
-- `-h`: Gibt die Größe in menschenlesbarem Format aus (z.B. KB, MB, GB).
-- `-s`: Zeigt nur die Gesamtgröße für jedes angegebene Argument an.
-- `-a`: Zeigt die Größe aller Dateien und Verzeichnisse an, nicht nur der Verzeichnisse.
-- `-c`: Gibt eine Gesamtsumme für alle angegebenen Argumente aus.
-- `--max-depth=N`: Beschränkt die Ausgabe auf N Ebenen von Unterverzeichnissen.
+## Common Options
+Hier sind einige gängige Optionen für den `du`-Befehl:
 
-## Häufige Beispiele
-Hier sind einige praktische Beispiele zur Verwendung des `du` Befehls:
+- `-h`: Gibt die Größe in einem menschenlesbaren Format aus (z.B. KB, MB).
+- `-s`: Zeigt nur die Gesamtsumme für jedes angegebene Argument an.
+- `-a`: Listet die Größe aller Dateien und Verzeichnisse auf, nicht nur der Verzeichnisse.
+- `-c`: Gibt eine Gesamtsumme am Ende der Ausgabe aus.
 
-1. **Gesamten Speicherplatz eines Verzeichnisses anzeigen:**
-   ```bash
+## Common Examples
+Hier sind einige praktische Beispiele für die Verwendung des `du`-Befehls:
+
+1. **Speicherplatznutzung eines Verzeichnisses anzeigen:**
+
+   ```csh
    du /pfad/zum/verzeichnis
    ```
 
-2. **Größen in menschenlesbarem Format anzeigen:**
-   ```bash
+2. **Größen in einem menschenlesbaren Format anzeigen:**
+
+   ```csh
    du -h /pfad/zum/verzeichnis
    ```
 
-3. **Nur die Gesamtgröße eines Verzeichnisses anzeigen:**
-   ```bash
-   du -sh /pfad/zum/verzeichnis
+3. **Nur die Gesamtsumme eines Verzeichnisses anzeigen:**
+
+   ```csh
+   du -s /pfad/zum/verzeichnis
    ```
 
-4. **Größen aller Dateien und Verzeichnisse im aktuellen Verzeichnis anzeigen:**
-   ```bash
-   du -ah .
+4. **Speicherplatznutzung aller Dateien und Verzeichnisse auflisten:**
+
+   ```csh
+   du -a /pfad/zum/verzeichnis
    ```
 
-5. **Größen mit einer maximalen Tiefe von 1 anzeigen:**
-   ```bash
-   du --max-depth=1 -h /pfad/zum/verzeichnis
+5. **Gesamtsumme aller Verzeichnisse und Dateien anzeigen:**
+
+   ```csh
+   du -c /pfad/zum/verzeichnis/*
    ```
 
-## Tipps
-- Verwenden Sie die `-h` Option, um die Ausgabe leichter lesbar zu machen.
-- Kombinieren Sie `du` mit `sort`, um die größten Verzeichnisse oder Dateien anzuzeigen:
-  ```bash
-  du -ah /pfad/zum/verzeichnis | sort -rh | head -n 10
+## Tips
+- Verwenden Sie die `-h`-Option, um die Ausgabe leichter lesbar zu machen, insbesondere bei großen Verzeichnissen.
+- Kombinieren Sie `du` mit dem `sort`-Befehl, um die größten Verzeichnisse anzuzeigen:
+  
+  ```csh
+  du -h /pfad/zum/verzeichnis | sort -hr
   ```
-- Nutzen Sie `-c`, um eine Gesamtsumme für mehrere Verzeichnisse zu erhalten:
-  ```bash
-  du -ch /pfad/zum/verzeichnis1 /pfad/zum/verzeichnis2
-  ```
+
+- Achten Sie darauf, dass `du` rekursiv durch Unterverzeichnisse geht, was bei großen Verzeichnissen zu längeren Wartezeiten führen kann.

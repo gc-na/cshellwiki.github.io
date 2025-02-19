@@ -1,61 +1,59 @@
-# [Linux] Bash tput Verwendung: Terminalsteuerung und -formatierung
+# [Linux] C Shell (csh) tput Verwendung: Terminalsteuerung und -formatierung
 
 ## Übersicht
-Der Befehl `tput` wird verwendet, um Terminalsteuerungs- und Formatierungsbefehle auszuführen. Er ermöglicht es Benutzern, die Anzeige im Terminal zu steuern, indem er Funktionen wie das Ändern von Farben, das Bewegen des Cursors und das Löschen von Bildschirminhalten bereitstellt.
+Der Befehl `tput` wird verwendet, um terminalbezogene Informationen abzurufen und Terminalsteuerungen durchzuführen. Er ermöglicht es Benutzern, die Anzeige von Text im Terminal zu formatieren, Farben zu setzen und verschiedene Terminalfunktionen zu steuern.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```
 tput [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `setaf [FARBE]`: Setzt die Vordergrundfarbe auf die angegebene Farbe.
-- `setab [FARBE]`: Setzt die Hintergrundfarbe auf die angegebene Farbe.
-- `clear`: Löscht den Bildschirm.
-- `cup [ZEILE] [SPALTE]`: Bewegt den Cursor zur angegebenen Zeile und Spalte.
-- `bold`: Setzt den Text auf fett.
+- `clear`: Löscht den Bildschirm des Terminals.
+- `setaf [FARBE]`: Setzt die Vordergrundfarbe auf die angegebene Farbe (z.B. `setaf 1` für rot).
+- `setab [FARBE]`: Setzt die Hintergrundfarbe auf die angegebene Farbe (z.B. `setab 2` für grün).
+- `bold`: Aktiviert den fetten Text.
+- `smso`: Aktiviert den unterstrichenen Text.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung von `tput`:
+Hier sind einige praktische Beispiele zur Verwendung von `tput`:
 
-### Beispiel 1: Textfarbe ändern
-Ändern Sie die Vordergrundfarbe auf Rot:
-```bash
-tput setaf 1
-echo "Dieser Text ist rot."
-```
+1. **Bildschirm löschen**:
+   ```csh
+   tput clear
+   ```
 
-### Beispiel 2: Hintergrundfarbe ändern
-Ändern Sie die Hintergrundfarbe auf Blau:
-```bash
-tput setab 4
-echo "Der Hintergrund ist blau."
-```
+2. **Text in roter Farbe ausgeben**:
+   ```csh
+   tput setaf 1
+   echo "Dies ist roter Text"
+   tput sgr0  # Setzt die Farben zurück
+   ```
 
-### Beispiel 3: Bildschirm löschen
-Löschen Sie den gesamten Bildschirm:
-```bash
-tput clear
-```
+3. **Text fett formatieren**:
+   ```csh
+   tput bold
+   echo "Dies ist fetter Text"
+   tput sgr0  # Setzt die Formatierung zurück
+   ```
 
-### Beispiel 4: Cursorposition ändern
-Bewegen Sie den Cursor zur Zeile 5 und Spalte 10:
-```bash
-tput cup 5 10
-echo "Hier ist der Cursor."
-```
+4. **Text unterstreichen**:
+   ```csh
+   tput smso
+   echo "Dies ist unterstrichener Text"
+   tput rmso  # Entfernt die Unterstreichung
+   ```
 
-### Beispiel 5: Fettgedruckten Text
-Geben Sie fettgedruckten Text aus:
-```bash
-tput bold
-echo "Dieser Text ist fett."
-tput sgr0  # Setzt die Formatierung zurück
-```
+5. **Hintergrundfarbe ändern**:
+   ```csh
+   tput setab 4  # Setzt die Hintergrundfarbe auf blau
+   echo "Text mit blauem Hintergrund"
+   tput sgr0  # Setzt die Farben zurück
+   ```
 
 ## Tipps
-- Verwenden Sie `tput sgr0`, um alle Formatierungen zurückzusetzen und den Standardzustand wiederherzustellen.
-- Experimentieren Sie mit verschiedenen Farbnummern, um die gewünschten Farben zu finden. Die Farbnummern variieren je nach Terminal.
-- Kombinieren Sie mehrere `tput`-Befehle in einem Skript, um komplexe Terminalausgaben zu erstellen.
+- Verwenden Sie `tput sgr0`, um alle Formatierungen und Farben zurückzusetzen, bevor Sie neuen Text ausgeben.
+- Experimentieren Sie mit verschiedenen Farbnummern, um die gewünschten Farben für Vorder- und Hintergrund zu finden.
+- Kombinieren Sie mehrere `tput` Befehle, um komplexe Formatierungen zu erstellen, z.B. fetter und roter Text gleichzeitig.

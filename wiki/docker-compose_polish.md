@@ -1,23 +1,27 @@
-# [Linux] Bash docker-compose użycie: Zarządzanie aplikacjami kontenerowymi
+# [Linux] C Shell (csh) docker-compose użycie: Zarządzanie aplikacjami w kontenerach
 
-## Przegląd
-`docker-compose` to narzędzie, które umożliwia definiowanie i uruchamianie aplikacji wielokontenerowych w Dockerze. Umożliwia łatwe zarządzanie konfiguracjami kontenerów w pliku YAML, co upraszcza proces uruchamiania i skalowania aplikacji.
+## Overview
+`docker-compose` to narzędzie, które pozwala na definiowanie i uruchamianie aplikacji składających się z wielu kontenerów Docker. Dzięki plikowi konfiguracyjnemu `docker-compose.yml`, użytkownicy mogą łatwo zarządzać usługami, sieciami i wolumenami, które są częścią ich aplikacji.
 
-## Użycie
+## Usage
 Podstawowa składnia polecenia `docker-compose` jest następująca:
 
 ```bash
 docker-compose [opcje] [argumenty]
 ```
 
-## Częste opcje
-- `up` - Uruchamia kontenery zdefiniowane w pliku `docker-compose.yml`.
-- `down` - Zatrzymuje i usuwa kontenery, sieci i wolumeny utworzone przez `up`.
-- `build` - Buduje obrazy kontenerów zgodnie z definicjami w pliku.
-- `logs` - Wyświetla logi kontenerów.
-- `exec` - Wykonuje polecenie w działającym kontenerze.
+## Common Options
+Oto kilka powszechnie używanych opcji dla `docker-compose`:
 
-## Częste przykłady
+- `up`: Uruchamia kontenery zdefiniowane w pliku `docker-compose.yml`.
+- `down`: Zatrzymuje i usuwa kontenery, sieci i wolumeny utworzone przez `up`.
+- `build`: Buduje obrazy kontenerów zgodnie z definicjami w pliku `docker-compose.yml`.
+- `logs`: Wyświetla logi kontenerów.
+- `ps`: Wyświetla status uruchomionych kontenerów.
+
+## Common Examples
+Oto kilka praktycznych przykładów użycia `docker-compose`:
+
 1. **Uruchomienie aplikacji**:
    ```bash
    docker-compose up
@@ -33,7 +37,7 @@ docker-compose [opcje] [argumenty]
    docker-compose down
    ```
 
-4. **Budowanie obrazów**:
+4. **Budowanie obrazów kontenerów**:
    ```bash
    docker-compose build
    ```
@@ -43,12 +47,7 @@ docker-compose [opcje] [argumenty]
    docker-compose logs
    ```
 
-6. **Wykonanie polecenia w kontenerze**:
-   ```bash
-   docker-compose exec <nazwa_kontenera> <polecenie>
-   ```
-
-## Wskazówki
-- Używaj pliku `docker-compose.yml` do zarządzania konfiguracjami kontenerów, aby uprościć proces uruchamiania.
-- Regularnie korzystaj z opcji `logs`, aby monitorować działanie aplikacji i diagnozować problemy.
-- Zawsze testuj zmiany w lokalnym środowisku przed wdrożeniem na produkcję, aby uniknąć nieprzewidzianych problemów.
+## Tips
+- Używaj opcji `-d` (detached mode), aby uruchomić kontenery w tle, co pozwala na dalszą pracę w terminalu.
+- Regularnie przeglądaj logi kontenerów, aby monitorować ich działanie i szybko wykrywać problemy.
+- Zawsze sprawdzaj plik `docker-compose.yml` pod kątem błędów przed uruchomieniem polecenia `up`, aby uniknąć problemów z konfiguracją.

@@ -1,39 +1,39 @@
-# [Linux] Bash vgextend Penggunaan: Menambahkan Volume ke Grup Volume
+# [Sistem Operasi] C Shell (csh) vgextend: Menambah Volume Group
 
 ## Overview
-Perintah `vgextend` digunakan dalam manajemen Logical Volume Management (LVM) di Linux untuk menambahkan satu atau lebih Physical Volumes (PV) ke dalam sebuah Volume Group (VG). Dengan menggunakan `vgextend`, Anda dapat memperluas kapasitas penyimpanan dari grup volume yang ada.
+Perintah `vgextend` digunakan untuk menambah satu atau lebih Physical Volumes (PV) ke dalam Volume Group (VG) yang sudah ada. Dengan menggunakan perintah ini, Anda dapat memperluas kapasitas penyimpanan dari Volume Group yang ada.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `vgextend`:
 
-```bash
-vgextend [options] [volume_group] [physical_volume...]
+```csh
+vgextend [options] [arguments]
 ```
 
 ## Common Options
-- `-f`, `--force`: Memaksa penambahan PV meskipun ada kesalahan.
-- `-n`, `--nosync`: Menonaktifkan sinkronisasi metadata setelah penambahan PV.
-- `-d`, `--debug`: Menampilkan informasi debug tambahan saat menjalankan perintah.
+- `-l, --maxlogicalextents`: Menentukan jumlah maksimum logical extents yang akan ditambahkan.
+- `-n, --name`: Menentukan nama dari Volume Group yang akan diperluas.
+- `-f, --force`: Memaksa penambahan PV meskipun ada kesalahan yang terdeteksi.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `vgextend`:
 
-1. **Menambahkan satu Physical Volume ke Volume Group:**
-   ```bash
-   vgextend my_volume_group /dev/sdb1
+1. Menambah satu Physical Volume ke dalam Volume Group:
+   ```csh
+   vgextend vg01 /dev/sdb1
    ```
 
-2. **Menambahkan beberapa Physical Volumes sekaligus:**
-   ```bash
-   vgextend my_volume_group /dev/sdb1 /dev/sdc1
+2. Menambah beberapa Physical Volumes sekaligus:
+   ```csh
+   vgextend vg01 /dev/sdb1 /dev/sdc1
    ```
 
-3. **Menambahkan Physical Volume dengan opsi force:**
-   ```bash
-   vgextend -f my_volume_group /dev/sdb1
+3. Memaksa penambahan PV meskipun ada kesalahan:
+   ```csh
+   vgextend -f vg01 /dev/sdb1
    ```
 
 ## Tips
-- Pastikan bahwa Physical Volume yang ingin Anda tambahkan sudah diinisialisasi dengan perintah `pvcreate`.
-- Selalu periksa status Volume Group setelah penambahan menggunakan `vgdisplay` untuk memastikan bahwa penambahan berhasil.
-- Gunakan opsi `--debug` jika Anda mengalami masalah untuk mendapatkan informasi lebih lanjut tentang kesalahan yang terjadi.
+- Pastikan bahwa Physical Volume yang akan ditambahkan sudah diinisialisasi dengan benar menggunakan `pvcreate`.
+- Selalu periksa status Volume Group setelah melakukan penambahan dengan perintah `vgdisplay` untuk memastikan bahwa penambahan berhasil.
+- Gunakan opsi `-n` untuk memberikan nama yang jelas pada Volume Group agar lebih mudah dikenali di kemudian hari.

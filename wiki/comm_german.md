@@ -1,45 +1,45 @@
-# [Linux] Bash comm-Befehl: Vergleiche zwei sortierte Dateien
+# [Linux] C Shell (csh) comm-Befehl: Vergleicht zwei sortierte Dateien
 
 ## Übersicht
-Der `comm`-Befehl wird verwendet, um zwei sortierte Dateien zeilenweise zu vergleichen. Er zeigt die Unterschiede und Übereinstimmungen zwischen den beiden Dateien an, was ihn nützlich für die Analyse von Textdateien macht.
+Der `comm`-Befehl wird verwendet, um zwei sortierte Dateien zu vergleichen und die Unterschiede sowie die gemeinsamen Zeilen anzuzeigen. Dieser Befehl ist nützlich, um schnell die Unterschiede zwischen zwei Textdateien zu erkennen.
 
 ## Verwendung
-Die grundlegende Syntax des `comm`-Befehls lautet:
+Die grundlegende Syntax des Befehls lautet:
 
-```bash
-comm [Optionen] [Datei1] [Datei2]
+```csh
+comm [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-1`: Unterdrückt die Ausgabe der Zeilen, die nur in Datei1 vorhanden sind.
-- `-2`: Unterdrückt die Ausgabe der Zeilen, die nur in Datei2 vorhanden sind.
+- `-1`: Unterdrückt die Ausgabe der Zeilen, die nur in der ersten Datei vorhanden sind.
+- `-2`: Unterdrückt die Ausgabe der Zeilen, die nur in der zweiten Datei vorhanden sind.
 - `-3`: Unterdrückt die Ausgabe der Zeilen, die in beiden Dateien vorhanden sind.
-- `-i`: Ignoriert die Groß- und Kleinschreibung bei der Vergleichung.
-- `-d`: Zeigt nur die Zeilen an, die in beiden Dateien vorhanden sind.
+- `-i`: Ignoriert Groß- und Kleinschreibung beim Vergleich.
 
 ## Häufige Beispiele
+Hier sind einige praktische Beispiele zur Verwendung des `comm`-Befehls:
 
-1. **Einfacher Vergleich von zwei Dateien:**
-   ```bash
+1. **Vergleich von zwei Dateien:**
+   ```csh
    comm datei1.txt datei2.txt
    ```
 
-2. **Nur die Zeilen anzeigen, die in Datei1, aber nicht in Datei2 sind:**
-   ```bash
+2. **Nur die Zeilen anzeigen, die in der zweiten Datei vorhanden sind:**
+   ```csh
    comm -13 datei1.txt datei2.txt
    ```
 
-3. **Nur die Zeilen anzeigen, die in beiden Dateien vorhanden sind:**
-   ```bash
+3. **Gemeinsame Zeilen zwischen zwei Dateien anzeigen:**
+   ```csh
    comm -12 datei1.txt datei2.txt
    ```
 
-4. **Vergleich unter Berücksichtigung der Groß- und Kleinschreibung ignorieren:**
-   ```bash
+4. **Vergleich unter Ignorierung der Groß- und Kleinschreibung:**
+   ```csh
    comm -i datei1.txt datei2.txt
    ```
 
 ## Tipps
-- Stellen Sie sicher, dass die Dateien, die Sie vergleichen möchten, vor der Verwendung des `comm`-Befehls sortiert sind. Sie können dies mit dem `sort`-Befehl erreichen.
-- Verwenden Sie die Optionen `-1`, `-2` und `-3` zusammen, um gezielt nur die gewünschten Informationen anzuzeigen.
-- Nutzen Sie die Ausgabe von `comm` in Kombination mit anderen Befehlen, wie `grep` oder `awk`, um komplexere Datenanalysen durchzuführen.
+- Stellen Sie sicher, dass die Dateien, die Sie vergleichen möchten, vor der Verwendung des `comm`-Befehls sortiert sind, da dieser Befehl nur mit sortierten Dateien korrekt funktioniert.
+- Verwenden Sie die Optionen `-1`, `-2` und `-3`, um die Ausgabe nach Ihren Bedürfnissen anzupassen und nur die relevanten Informationen anzuzeigen.
+- Nutzen Sie den `sort`-Befehl, um Ihre Dateien vor dem Vergleich zu sortieren, falls sie noch nicht sortiert sind.

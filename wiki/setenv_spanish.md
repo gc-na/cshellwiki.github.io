@@ -1,50 +1,44 @@
-# [Linux] Bash setenv Uso equivalente: Establecer variables de entorno
-
-El comando `setenv` se utiliza para establecer variables de entorno en el sistema operativo Unix y sus derivados.
+# [Linux] C Shell (csh) setenv uso: Establecer variables de entorno
 
 ## Overview
-El comando `setenv` permite a los usuarios definir variables de entorno que pueden ser utilizadas por los procesos en el sistema. Estas variables son útiles para configurar el entorno de trabajo y afectar el comportamiento de las aplicaciones.
+El comando `setenv` en C Shell (csh) se utiliza para establecer variables de entorno en la sesión actual. Estas variables son útiles para configurar el entorno de trabajo y pueden ser utilizadas por otros programas y scripts.
 
 ## Usage
 La sintaxis básica del comando `setenv` es la siguiente:
 
-```bash
-setenv [nombre_variable] [valor]
+```csh
+setenv NOMBRE_VALOR
 ```
 
-## Common Options
-El comando `setenv` no tiene muchas opciones, ya que su función principal es establecer variables. Sin embargo, es importante recordar que:
+Donde `NOMBRE` es el nombre de la variable que deseas establecer y `VALOR` es el valor que quieres asignarle.
 
-- **nombre_variable**: El nombre de la variable que deseas establecer.
-- **valor**: El valor que deseas asignar a la variable.
+## Common Options
+El comando `setenv` no tiene opciones adicionales; su uso se limita a la asignación de variables de entorno.
 
 ## Common Examples
+Aquí hay algunos ejemplos prácticos del uso de `setenv`:
 
-1. **Establecer una variable de entorno simple**:
-   ```bash
+1. Establecer la variable de entorno `PATH`:
+   ```csh
    setenv PATH /usr/local/bin:$PATH
    ```
-   Este comando añade `/usr/local/bin` al principio de la variable `PATH`.
 
-2. **Definir una variable personalizada**:
-   ```bash
-   setenv MY_VAR "Hola Mundo"
-   ```
-   Aquí se establece una variable llamada `MY_VAR` con el valor "Hola Mundo".
-
-3. **Modificar una variable existente**:
-   ```bash
+2. Establecer la variable `EDITOR` para definir el editor de texto predeterminado:
+   ```csh
    setenv EDITOR nano
    ```
-   Este comando establece el editor de texto predeterminado a `nano`.
 
-4. **Verificar el valor de una variable**:
-   ```bash
+3. Establecer una variable personalizada, por ejemplo, `MY_VAR`:
+   ```csh
+   setenv MY_VAR "Hola Mundo"
+   ```
+
+4. Verificar el valor de una variable de entorno:
+   ```csh
    echo $MY_VAR
    ```
-   Aunque no es un comando `setenv`, este comando se utiliza para mostrar el valor de `MY_VAR`.
 
 ## Tips
-- Recuerda que las variables de entorno establecidas con `setenv` solo estarán disponibles en la sesión actual del terminal.
-- Para hacer que las variables sean permanentes, considera añadir el comando `setenv` a tu archivo de configuración de shell, como `.cshrc` o `.bashrc`, dependiendo del shell que estés utilizando.
-- Utiliza nombres de variables en mayúsculas para seguir las convenciones de nomenclatura de variables de entorno.
+- Recuerda que las variables de entorno establecidas con `setenv` solo son válidas para la sesión actual del shell. Si cierras la terminal, se perderán.
+- Para hacer que las variables de entorno sean permanentes, considera agregar el comando `setenv` a tu archivo de inicio del shell, como `.cshrc`.
+- Utiliza `printenv` para listar todas las variables de entorno actuales y sus valores.

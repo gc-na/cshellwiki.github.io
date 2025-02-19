@@ -1,44 +1,43 @@
-# [Linux] Bash rev: Invertire il contenuto delle righe
+# [Linux] C Shell (csh) rev: Inverte i caratteri di ogni riga
 
 ## Overview
-Il comando `rev` in Bash è utilizzato per invertire il contenuto di ogni riga di un file o di un input standard. Questo significa che ogni carattere di una riga viene riordinato in ordine inverso.
+Il comando `rev` è utilizzato per invertire i caratteri di ogni riga di un file o di un input standard. Questo comando è utile per manipolare il testo in modo da visualizzare i caratteri in ordine inverso.
 
 ## Usage
-La sintassi di base del comando `rev` è la seguente:
+La sintassi di base del comando è la seguente:
 
-```bash
+```csh
 rev [opzioni] [argomenti]
 ```
 
 ## Common Options
-- `-o, --output FILE`: Specifica un file di output in cui scrivere il risultato.
-- `-h, --help`: Mostra un messaggio di aiuto con le opzioni disponibili.
-- `-V, --version`: Mostra la versione del comando.
+- `-f`: Forza l'operazione su file binari.
+- `-o <file>`: Scrive l'output in un file specificato invece di visualizzarlo sullo schermo.
 
 ## Common Examples
+Ecco alcuni esempi pratici dell'uso del comando `rev`:
 
-### Esempio 1: Invertire il contenuto di un file
-Per invertire il contenuto di un file chiamato `testo.txt`, puoi utilizzare il seguente comando:
+1. Invertire il contenuto di un file:
+   ```csh
+   rev file.txt
+   ```
 
-```bash
-rev testo.txt
-```
+2. Invertire una stringa fornita tramite input standard:
+   ```csh
+   echo "Ciao Mondo" | rev
+   ```
 
-### Esempio 2: Invertire l'input standard
-Puoi anche utilizzare `rev` per invertire l'input direttamente dalla riga di comando. Ad esempio:
+3. Salvare l'output invertito in un nuovo file:
+   ```csh
+   rev file.txt -o file_invertito.txt
+   ```
 
-```bash
-echo "Ciao Mondo" | rev
-```
-
-### Esempio 3: Scrivere l'output in un file
-Se desideri salvare l'output invertito in un nuovo file, puoi utilizzare l'opzione `-o`:
-
-```bash
-rev -o output.txt testo.txt
-```
+4. Invertire il contenuto di un file binario:
+   ```csh
+   rev -f file_binario.dat
+   ```
 
 ## Tips
-- Utilizza `rev` in combinazione con altri comandi tramite pipe per manipolare il testo in modo più complesso.
-- Fai attenzione ai file di grandi dimensioni, poiché `rev` carica l'intero file in memoria.
-- Ricorda che `rev` inverte solo il contenuto delle righe, non l'ordine delle righe stesse.
+- Utilizza `rev` in combinazione con altri comandi tramite pipe per creare flussi di lavoro più complessi.
+- Fai attenzione quando utilizzi `rev` su file binari, poiché potrebbe non produrre output leggibile.
+- Prova a utilizzare `rev` insieme a `sort` per invertire l'ordine delle righe e poi i caratteri all'interno di ciascuna riga.

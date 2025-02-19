@@ -1,43 +1,43 @@
-# [Linux] Bash blkid użycie: Wyświetlanie informacji o systemie plików
+# [Linux] C Shell (csh) blkid użycie: identyfikacja systemów plików
 
-## Overview
-Polecenie `blkid` służy do wyświetlania informacji o urządzeniach blokowych w systemie Linux. Umożliwia uzyskanie szczegółowych danych, takich jak identyfikatory UUID, typy systemów plików oraz etykiety partycji.
+## Przegląd
+Polecenie `blkid` służy do wyświetlania informacji o urządzeniach blokowych w systemie. Umożliwia identyfikację systemów plików oraz ich atrybutów, takich jak UUID (unikalny identyfikator) i typ systemu plików.
 
-## Usage
-Podstawowa składnia polecenia `blkid` jest następująca:
+## Użycie
+Podstawowa składnia polecenia `blkid` wygląda następująco:
 
-```bash
+```csh
 blkid [opcje] [argumenty]
 ```
 
-## Common Options
-- `-o, --output`: Określa format wyjścia (np. `value`, `full`, `udev`).
-- `-s, --match-tag`: Filtruje wyjście na podstawie określonego tagu.
-- `-p, --probe`: Wymusza odczytanie informacji o systemie plików.
-- `-c, --cache`: Używa lub aktualizuje pamięć podręczną.
+## Częste opcje
+- `-o` - Określa format wyjścia (np. `value`, `full`).
+- `-s` - Wybiera konkretne atrybuty do wyświetlenia (np. `UUID`, `TYPE`).
+- `-p` - Ignoruje urządzenia, które nie są dostępne.
+- `-c` - Używa pliku cache do przyspieszenia działania.
 
-## Common Examples
+## Przykłady
 1. Wyświetlenie wszystkich urządzeń blokowych:
-   ```bash
+   ```csh
    blkid
    ```
 
-2. Wyświetlenie szczegółowych informacji o konkretnym urządzeniu:
-   ```bash
-   blkid /dev/sda1
+2. Wyświetlenie UUID i typu systemu plików dla konkretnego urządzenia:
+   ```csh
+   blkid /dev/sda1 -o value -s UUID -s TYPE
    ```
 
-3. Uzyskanie tylko UUID wszystkich urządzeń:
-   ```bash
-   blkid -o value -s UUID
+3. Użycie opcji cache dla szybszego działania:
+   ```csh
+   blkid -c /etc/blkid.tab
    ```
 
-4. Filtracja wyników na podstawie tagu:
-   ```bash
-   blkid -s TYPE
+4. Wyświetlenie tylko typów systemów plików:
+   ```csh
+   blkid -o value -s TYPE
    ```
 
-## Tips
-- Używaj opcji `-o value`, aby uzyskać bardziej czytelne wyjście.
-- Regularnie aktualizuj pamięć podręczną za pomocą opcji `-c`, aby mieć pewność, że informacje są aktualne.
-- Możesz używać `blkid` w skryptach do automatyzacji zadań związanych z zarządzaniem partycjami.
+## Wskazówki
+- Używaj opcji `-o` do dostosowania formatu wyjścia, aby uzyskać tylko potrzebne informacje.
+- Regularnie aktualizuj plik cache, aby polecenie `blkid` działało szybciej.
+- Sprawdzaj UUID urządzeń, aby uniknąć pomyłek przy montowaniu systemów plików.

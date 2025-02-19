@@ -1,42 +1,38 @@
-# [Linux] Bash groupdel użycie: Usuwanie grup użytkowników
+# [Linux] C Shell (csh) groupdel użycie: Usuwanie grup użytkowników
 
 ## Overview
-Polecenie `groupdel` służy do usuwania grup użytkowników w systemie Linux. Umożliwia administratorom zarządzanie grupami, co jest istotne dla kontroli dostępu i organizacji użytkowników w systemie.
+Polecenie `groupdel` w C Shell (csh) służy do usuwania grup użytkowników z systemu. Umożliwia administratorom zarządzanie grupami, co jest istotne dla organizacji uprawnień i dostępu do zasobów.
 
 ## Usage
 Podstawowa składnia polecenia `groupdel` jest następująca:
 
-```bash
+```csh
 groupdel [opcje] [nazwa_grupy]
 ```
 
 ## Common Options
-- `-f`, `--force`: Wymusza usunięcie grupy, nawet jeśli są przypisani do niej użytkownicy.
-- `-h`, `--help`: Wyświetla pomoc dotyczącą użycia polecenia.
-- `-v`, `--verbose`: Wyświetla szczegółowe informacje o procesie usuwania grupy.
+- `-f` : Wymusza usunięcie grupy, nawet jeśli są przypisani do niej użytkownicy.
+- `-h` : Wyświetla pomoc dotycząca użycia polecenia.
 
 ## Common Examples
-1. **Usunięcie grupy bez wymuszania**:
-   ```bash
-   groupdel nazwa_grupy
-   ```
+Oto kilka praktycznych przykładów użycia polecenia `groupdel`:
 
-2. **Wymuszenie usunięcia grupy**:
-   ```bash
-   groupdel -f nazwa_grupy
-   ```
+1. Usunięcie grupy o nazwie `developers`:
+    ```csh
+    groupdel developers
+    ```
 
-3. **Wyświetlenie pomocy**:
-   ```bash
-   groupdel --help
-   ```
+2. Wymuszenie usunięcia grupy `testers`, nawet jeśli są przypisani do niej użytkownicy:
+    ```csh
+    groupdel -f testers
+    ```
 
-4. **Usunięcie grupy z informacjami o procesie**:
-   ```bash
-   groupdel -v nazwa_grupy
-   ```
+3. Wyświetlenie pomocy dotyczącej polecenia `groupdel`:
+    ```csh
+    groupdel -h
+    ```
 
 ## Tips
 - Zawsze upewnij się, że grupa, którą chcesz usunąć, nie jest już używana przez żadnych użytkowników, aby uniknąć problemów z dostępem.
-- Przed usunięciem grupy warto sprawdzić, czy nie ma przypisanych do niej użytkowników, używając polecenia `getent group nazwa_grupy`.
-- Regularnie przeglądaj i aktualizuj grupy w systemie, aby utrzymać porządek i bezpieczeństwo.
+- Przed usunięciem grupy warto sprawdzić, jakie użytkownicy są do niej przypisani, aby zrozumieć potencjalne konsekwencje.
+- Używaj opcji `-f` ostrożnie, ponieważ może to prowadzić do utraty dostępu dla użytkowników przypisanych do usuwanej grupy.

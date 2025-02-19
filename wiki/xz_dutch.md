@@ -1,7 +1,7 @@
-# [Linux] Bash xz gebruik: Gegevenscompressie en decompressie
+# [Linux] C Shell (csh) xz gebruik: Gegevenscompressie en decompressie
 
 ## Overzicht
-De `xz` opdracht is een krachtige tool voor gegevenscompressie die gebruikmaakt van het LZMA-algoritme. Het wordt vaak gebruikt om bestanden te verkleinen, waardoor opslagruimte wordt bespaard en de overdrachtstijd van bestanden wordt versneld.
+De `xz` opdracht is een krachtige tool voor het comprimeren en decomprimeren van bestanden. Het maakt gebruik van het LZMA-algoritme, dat zorgt voor hoge compressieverhoudingen en efficiëntie.
 
 ## Gebruik
 De basis syntaxis van de `xz` opdracht is als volgt:
@@ -11,40 +11,43 @@ xz [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-d`, `--decompress`: Decomprimeert een bestand.
-- `-k`, `--keep`: Houdt het originele bestand na compressie of decompressie.
-- `-f`, `--force`: Dwingt de opdracht om bestaande bestanden te overschrijven.
-- `-9`: Stelt het compressieniveau in op maximaal (9), wat resulteert in de kleinste bestandsgrootte, maar meer tijd kost.
-- `-t`, `--test`: Test een gecomprimeerd bestand zonder het daadwerkelijk te decomprimeren.
+- `-d`, `--decompress`: Decomprimeer een bestand.
+- `-k`, `--keep`: Houd het originele bestand na compressie of decompressie.
+- `-v`, `--verbose`: Toon gedetailleerde informatie tijdens de compressie of decompressie.
+- `-9`: Gebruik de hoogste compressie (langzamer, maar kleinere bestanden).
 
 ## Veelvoorkomende Voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van de `xz` opdracht:
 
-1. **Bestand comprimeren:**
-   ```bash
-   xz bestand.txt
-   ```
-   Dit comprimeert `bestand.txt` en maakt `bestand.txt.xz`.
+### Bestanden comprimeren
+Om een bestand genaamd `voorbeeld.txt` te comprimeren, gebruik je:
 
-2. **Bestand decomprimeren:**
-   ```bash
-   xz -d bestand.txt.xz
-   ```
-   Dit decomprimeert `bestand.txt.xz` terug naar `bestand.txt`.
+```bash
+xz voorbeeld.txt
+```
 
-3. **Bestand comprimeren en origineel behouden:**
-   ```bash
-   xz -k bestand.txt
-   ```
-   Dit maakt een gecomprimeerd bestand `bestand.txt.xz` en behoudt het originele `bestand.txt`.
+### Bestanden decomprimeren
+Om een gecomprimeerd bestand genaamd `voorbeeld.txt.xz` te decomprimeren, gebruik je:
 
-4. **Bestand testen zonder decompressie:**
-   ```bash
-   xz -t bestand.txt.xz
-   ```
-   Dit test of `bestand.txt.xz` correct is gecomprimeerd.
+```bash
+xz -d voorbeeld.txt.xz
+```
+
+### Origineel bestand behouden
+Als je het originele bestand wilt behouden tijdens het comprimeren, gebruik je:
+
+```bash
+xz -k voorbeeld.txt
+```
+
+### Gedetailleerde uitvoer
+Om gedetailleerde informatie te krijgen tijdens het compressieproces, gebruik je:
+
+```bash
+xz -v voorbeeld.txt
+```
 
 ## Tips
-- Gebruik de optie `-9` voor maximale compressie als opslagruimte een prioriteit is, maar wees bewust dat dit meer tijd kost.
+- Gebruik de `-9` optie voor de beste compressie als de bestandsgrootte cruciaal is, maar wees je bewust van de langere verwerkingstijd.
+- Controleer altijd de beschikbare schijfruimte voordat je grote bestanden comprimeert, vooral als je de originele bestanden wilt behouden.
 - Combineer `xz` met andere commando's zoals `tar` voor het archiveren en comprimeren van meerdere bestanden in één stap.
-- Controleer regelmatig de integriteit van gecomprimeerde bestanden met de `-t` optie om ervoor te zorgen dat ze niet beschadigd zijn.

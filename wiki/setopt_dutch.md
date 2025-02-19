@@ -1,53 +1,42 @@
-# [Linux] Bash setopt gebruik: Beheer van shell-opties
+# [Linux] C Shell (csh) setopt gebruik: Instellen van shell-opties
 
 ## Overzicht
-De `setopt` opdracht in Bash wordt gebruikt om verschillende shell-opties in te schakelen of uit te schakelen. Deze opties kunnen de manier waarop de shell zich gedraagt, beïnvloeden en kunnen helpen bij het aanpassen van de gebruikerservaring.
+Het `setopt` commando in C Shell (csh) wordt gebruikt om verschillende shell-opties in te stellen die de werking van de shell beïnvloeden. Met dit commando kun je de omgeving en het gedrag van de shell aanpassen aan je voorkeuren.
 
 ## Gebruik
-De basis syntaxis van de `setopt` opdracht is als volgt:
+De basis syntaxis van het `setopt` commando is als volgt:
 
-```bash
+```csh
 setopt [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
 Hier zijn enkele veelvoorkomende opties die je kunt gebruiken met `setopt`:
 
-- `allexport`: Exporteert automatisch alle variabelen.
 - `noclobber`: Voorkomt dat bestaande bestanden worden overschreven bij het omleiden van uitvoer.
-- `noexec`: Voorkomt dat de shell commando's uitvoert, handig voor het testen van scripts.
-- `promptsubst`: Sta toe dat de prompt variabelen bevat die worden geëvalueerd.
+- `noglob`: Schakelt globbing uit, waardoor de shell geen wildcard-tekens interpreteert.
+- `verbose`: Zet de shell in een modus waarin deze meer gedetailleerde uitvoer geeft over wat er gebeurt.
 
 ## Veelvoorkomende Voorbeelden
 
 Hier zijn enkele praktische voorbeelden van het gebruik van `setopt`:
 
-1. **Automatisch exporteren van variabelen:**
-   ```bash
-   setopt allexport
-   VAR1="waarde1"
-   VAR2="waarde2"
-   ```
-
-2. **Voorkomen dat bestanden worden overschreven:**
-   ```bash
+1. **Voorkomen van het overschrijven van bestanden**:
+   ```csh
    setopt noclobber
-   echo "Dit is een test" > bestand.txt
    ```
 
-3. **Voorkomen dat commando's worden uitgevoerd:**
-   ```bash
-   setopt noexec
-   echo "Dit zal niet worden uitgevoerd"
+2. **Globing uitschakelen**:
+   ```csh
+   setopt noglob
    ```
 
-4. **Gebruik van prompt substitutie:**
-   ```bash
-   setopt promptsubst
-   PS1='%n@%m %1~ %# '
+3. **Verbose modus inschakelen**:
+   ```csh
+   setopt verbose
    ```
 
 ## Tips
-- Gebruik `set +o` om een optie uit te schakelen die je eerder met `setopt` hebt ingeschakeld.
-- Controleer de huidige status van opties met `set -o`.
-- Wees voorzichtig met `noclobber`, omdat het kan leiden tot fouten als je probeert om uitvoer naar een bestaand bestand te schrijven.
+- Vergeet niet dat sommige opties alleen van toepassing zijn op de huidige shell-sessie. Als je ze permanent wilt maken, moet je ze toevoegen aan je `.cshrc` bestand.
+- Controleer altijd de huidige instellingen met het `set` commando om te zien welke opties zijn ingeschakeld.
+- Wees voorzichtig met het gebruik van `noclobber`, omdat het kan leiden tot verwarring als je niet verwacht dat bestanden niet worden overschreven.

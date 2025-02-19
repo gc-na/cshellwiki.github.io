@@ -1,20 +1,20 @@
-# [Linux] Bash rsync Penggunaan: Menyalin dan menyinkronkan file
+# [Sistem Operasi] C Shell (csh) rsync: Menyalin dan menyinkronkan file
 
 ## Overview
-Perintah `rsync` adalah alat yang sangat berguna untuk menyalin dan menyinkronkan file dan direktori antara lokasi yang berbeda, baik secara lokal maupun melalui jaringan. Dengan `rsync`, Anda dapat menghemat bandwidth dengan hanya mentransfer bagian file yang telah berubah.
+Perintah `rsync` digunakan untuk menyalin dan menyinkronkan file atau direktori antara dua lokasi, baik di dalam sistem yang sama maupun antara sistem yang berbeda. `rsync` sangat efisien karena hanya mentransfer bagian file yang telah berubah, sehingga menghemat bandwidth dan waktu.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `rsync`:
 
-```
-rsync [options] [source] [destination]
+```csh
+rsync [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang digunakan dengan `rsync`:
+Beberapa opsi umum yang dapat digunakan dengan `rsync` meliputi:
 
-- `-a`: Mode arsip; menyalin file dan direktori secara rekursif dan mempertahankan atribut file.
-- `-v`: Menampilkan informasi proses secara rinci (verbose).
+- `-a`: Menyalin file dalam mode arsip, yang mencakup semua atribut file.
+- `-v`: Menampilkan informasi lebih detail selama proses transfer.
 - `-z`: Mengompresi data saat mentransfer untuk menghemat bandwidth.
 - `-r`: Menyalin direktori secara rekursif.
 - `--delete`: Menghapus file di tujuan yang tidak ada di sumber.
@@ -22,27 +22,27 @@ Berikut adalah beberapa opsi umum yang digunakan dengan `rsync`:
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `rsync`:
 
-1. Menyalin file dari direktori lokal ke direktori lokal lain:
-   ```bash
+1. Menyalin file dari direktori lokal ke direktori tujuan:
+   ```csh
    rsync -av /path/to/source/ /path/to/destination/
    ```
 
-2. Menyalin file dari direktori lokal ke server jarak jauh:
-   ```bash
-   rsync -av /path/to/local/file user@remote_host:/path/to/remote/destination/
+2. Menyalin file dari server jarak jauh ke lokal:
+   ```csh
+   rsync -av user@remote_host:/path/to/remote/source/ /path/to/local/destination/
    ```
 
-3. Menyalin direktori secara rekursif dan mengompresi data:
-   ```bash
-   rsync -az /path/to/local/directory/ user@remote_host:/path/to/remote/directory/
+3. Menyalin file sambil mengompresi data:
+   ```csh
+   rsync -avz /path/to/source/ /path/to/destination/
    ```
 
-4. Menyalin file sambil menghapus file yang tidak ada di sumber:
-   ```bash
+4. Menyinkronkan direktori dan menghapus file yang tidak ada di sumber:
+   ```csh
    rsync -av --delete /path/to/source/ /path/to/destination/
    ```
 
 ## Tips
-- Selalu gunakan opsi `-n` (dry run) untuk melihat apa yang akan dilakukan `rsync` sebelum menjalankan perintah sesungguhnya.
-- Pastikan untuk menambahkan garis miring (`/`) di akhir direktori sumber jika Anda ingin menyalin isi direktori tersebut, bukan direktori itu sendiri.
-- Gunakan `--progress` untuk melihat kemajuan transfer file saat proses berlangsung.
+- Selalu gunakan opsi `-n` (dry run) untuk melihat apa yang akan dilakukan `rsync` sebelum benar-benar menjalankannya.
+- Pastikan untuk menambahkan trailing slash (`/`) pada direktori sumber jika ingin menyalin isi direktori, bukan direktori itu sendiri.
+- Gunakan opsi `-h` untuk menampilkan ukuran file dalam format yang lebih mudah dibaca.

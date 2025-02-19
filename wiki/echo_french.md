@@ -1,12 +1,12 @@
-# [Linux] Bash echo utilisation : Afficher des messages à l'écran
+# [Linux] C Shell (csh) echo : Afficher des messages à l'écran
 
 ## Overview
-La commande `echo` est utilisée dans Bash pour afficher des lignes de texte ou des variables à l'écran. C'est un outil simple mais puissant pour la sortie de données dans le terminal.
+La commande `echo` dans C Shell (csh) est utilisée pour afficher des lignes de texte ou des variables à l'écran. C'est un outil simple mais puissant pour le débogage et la communication d'informations dans les scripts.
 
 ## Usage
 La syntaxe de base de la commande `echo` est la suivante :
 
-```bash
+```csh
 echo [options] [arguments]
 ```
 
@@ -14,40 +14,39 @@ echo [options] [arguments]
 Voici quelques options courantes pour la commande `echo` :
 
 - `-n` : Ne pas ajouter de nouvelle ligne à la fin de la sortie.
-- `-e` : Activer l'interprétation des séquences d'échappement (comme `\n` pour une nouvelle ligne).
-- `-E` : Désactiver l'interprétation des séquences d'échappement (c'est le comportement par défaut).
+- `-e` : Interpréter les séquences d'échappement (comme `\n` pour une nouvelle ligne).
+- `-E` : Désactiver l'interprétation des séquences d'échappement (par défaut).
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `echo` :
 
 1. Afficher un simple message :
-   ```bash
+   ```csh
    echo "Bonjour, monde !"
    ```
 
-2. Afficher une variable :
-   ```bash
-   nom="Alice"
+2. Afficher le contenu d'une variable :
+   ```csh
+   set nom = "Alice"
    echo "Bonjour, $nom !"
    ```
 
-3. Utiliser l'option `-n` pour éviter une nouvelle ligne :
-   ```bash
-   echo -n "Ceci est sur la même ligne."
-   echo " Et ceci est la suite."
+3. Afficher un message sans nouvelle ligne :
+   ```csh
+   echo -n "Chargement en cours..."
    ```
 
-4. Utiliser l'option `-e` pour interpréter les séquences d'échappement :
-   ```bash
+4. Utiliser des séquences d'échappement :
+   ```csh
    echo -e "Ligne 1\nLigne 2"
    ```
 
-5. Afficher des caractères spéciaux :
-   ```bash
-   echo "Ceci est un symbole de dollar : \$"
+5. Désactiver l'interprétation des séquences d'échappement :
+   ```csh
+   echo -E "Ceci est une séquence d'échappement : \n"
    ```
 
 ## Tips
-- Utilisez l'option `-n` si vous souhaitez que plusieurs `echo` s'affichent sur la même ligne.
-- Pour afficher des caractères spéciaux, n'oubliez pas d'échapper les symboles comme `$` ou `\`.
-- Combinez `echo` avec d'autres commandes dans des scripts pour améliorer la lisibilité et la sortie de vos scripts.
+- Utilisez `echo -n` lorsque vous souhaitez afficher un message sans passer à la ligne suivante, ce qui peut être utile pour des invites interactives.
+- Pour afficher des caractères spéciaux, comme `$` ou `\`, vous pouvez les échapper avec un `\` (par exemple, `echo "Prix : \$10"`).
+- Lorsque vous travaillez avec des scripts, assurez-vous d'utiliser des guillemets autour des variables pour éviter des erreurs dues à des espaces ou des caractères spéciaux.

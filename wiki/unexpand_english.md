@@ -1,54 +1,48 @@
-# [Linux] Bash unexpand Usage: Convert tabs to spaces in text files
+# [Unix] C Shell (csh) unexpand用法: Convert tabs to spaces in text files
 
 ## Overview
-The `unexpand` command in Bash is used to convert tabs in a text file into spaces. This is particularly useful when you want to ensure consistent spacing in files, especially for programming or configuration files where tabs may cause formatting issues.
+The `unexpand` command in C Shell (csh) is used to convert tabs in a text file into spaces. This is particularly useful for ensuring consistent formatting in documents where tabs may not be rendered uniformly across different editors or viewers.
 
 ## Usage
 The basic syntax of the `unexpand` command is as follows:
 
-```
+```csh
 unexpand [options] [arguments]
 ```
 
 ## Common Options
-- `-t, --tabs=N`: Specify the number of spaces per tab. By default, this is set to 8.
-- `-a, --all`: Convert all tabs to spaces, regardless of their position.
-- `-i, --initial`: Ignore leading tabs when converting.
-- `-h, --help`: Display help information about the command.
+- `-a`: Convert all tabs to spaces, not just those at the beginning of lines.
+- `-t N`: Specify the number of spaces to replace each tab. By default, this is set to 8 spaces.
+- `-o`: Only output lines that contain tabs.
 
 ## Common Examples
 
-1. **Convert tabs to spaces in a file**:
-   To convert tabs to spaces in a file named `example.txt` using the default tab size of 8 spaces:
-   ```bash
-   unexpand example.txt
+1. **Basic usage to convert tabs to spaces:**
+   ```csh
+   unexpand myfile.txt
    ```
 
-2. **Specify a custom tab size**:
-   To convert tabs to spaces with a custom tab size of 4 spaces:
-   ```bash
-   unexpand -t 4 example.txt
+2. **Convert all tabs in a file to spaces:**
+   ```csh
+   unexpand -a myfile.txt
    ```
 
-3. **Convert all tabs to spaces**:
-   To convert all tabs in a file, regardless of their position:
-   ```bash
-   unexpand -a example.txt
+3. **Specify a custom number of spaces for each tab:**
+   ```csh
+   unexpand -t 4 myfile.txt
    ```
 
-4. **Ignore leading tabs**:
-   To convert tabs to spaces while ignoring leading tabs:
-   ```bash
-   unexpand -i example.txt
+4. **Output only lines that contain tabs:**
+   ```csh
+   unexpand -o myfile.txt
    ```
 
-5. **Output to a new file**:
-   To save the output to a new file instead of displaying it on the terminal:
-   ```bash
-   unexpand example.txt > output.txt
+5. **Redirect output to a new file:**
+   ```csh
+   unexpand myfile.txt > newfile.txt
    ```
 
 ## Tips
-- Always check the output of `unexpand` with a command like `cat` or `less` to ensure the formatting is as expected.
-- Use the `-h` option to quickly access help and see all available options if you're unsure.
-- Consider using `unexpand` in combination with other commands like `grep` or `sed` for more complex text processing tasks.
+- Always check the output of `unexpand` with a command like `cat` or `less` to ensure the formatting meets your expectations.
+- Use the `-t` option to match the spacing conventions of your project or team for consistency.
+- Consider using `unexpand` in combination with other text processing commands like `grep` or `awk` for more complex text manipulation tasks.

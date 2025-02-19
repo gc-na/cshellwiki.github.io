@@ -1,50 +1,54 @@
-# [Linux] Bash export Verwendung: Umgebungsvariablen festlegen
+# [Linux] C Shell (csh) export Verwendung: Umgebungsvariablen festlegen
 
 ## Übersicht
-Der Befehl `export` wird in Bash verwendet, um Umgebungsvariablen zu erstellen oder zu ändern, sodass sie für alle nachfolgenden Prozesse verfügbar sind. Dies ist besonders nützlich, wenn Sie Variablen in Skripten oder in der Shell-Umgebung setzen möchten.
+Der Befehl `export` in der C Shell (csh) wird verwendet, um Umgebungsvariablen zu setzen und sie für nachfolgende Prozesse verfügbar zu machen. Dies ist nützlich, um Konfigurationen und Einstellungen für Programme zu definieren, die in der aktuellen Shell-Umgebung ausgeführt werden.
 
 ## Verwendung
-Die grundlegende Syntax des `export`-Befehls lautet:
+Die grundlegende Syntax des Befehls `export` lautet:
 
-```bash
-export [Optionen] [Argumente]
+```
+export [optionen] [argumente]
 ```
 
 ## Häufige Optionen
+- `-n`: Deaktiviert die Exportierung der angegebenen Variablen.
 - `-p`: Zeigt alle exportierten Variablen an.
-- `-n`: Entfernt die Exportmarkierung von Variablen, sodass sie nicht mehr in untergeordnete Prozesse exportiert werden.
 
 ## Häufige Beispiele
 
-### Beispiel 1: Eine einfache Umgebungsvariable setzen
-Um eine Umgebungsvariable zu setzen und sie für nachfolgende Prozesse verfügbar zu machen, verwenden Sie:
+### Beispiel 1: Eine Umgebungsvariable setzen
+Um eine Umgebungsvariable namens `MEINE_VAR` mit dem Wert `Hallo Welt` zu setzen, verwenden Sie:
 
-```bash
-export MEINE_VARIABLE="Hallo Welt"
+```csh
+set MEINE_VAR = "Hallo Welt"
+export MEINE_VAR
 ```
 
-### Beispiel 2: Überprüfen der exportierten Variablen
-Um alle exportierten Variablen anzuzeigen, können Sie den Befehl mit der `-p` Option verwenden:
+### Beispiel 2: Mehrere Umgebungsvariablen setzen
+Sie können mehrere Variablen in einer Zeile setzen:
 
-```bash
+```csh
+set VAR1 = "Wert1"
+set VAR2 = "Wert2"
+export VAR1 VAR2
+```
+
+### Beispiel 3: Exportierte Variablen anzeigen
+Um alle exportierten Variablen anzuzeigen, verwenden Sie:
+
+```csh
 export -p
 ```
 
-### Beispiel 3: Exportieren einer Variablen und gleichzeitiges Ausführen eines Befehls
-Sie können eine exportierte Variable auch in einem Befehl verwenden:
+### Beispiel 4: Export einer Variablen ohne Wert
+Um eine Variable zu exportieren, ohne ihr einen Wert zuzuweisen, verwenden Sie:
 
-```bash
-export MEINE_VARIABLE="Hallo Welt" && echo $MEINE_VARIABLE
-```
-
-### Beispiel 4: Entfernen der Exportmarkierung
-Um die Exportmarkierung von einer Variablen zu entfernen, verwenden Sie:
-
-```bash
-export -n MEINE_VARIABLE
+```csh
+set MEINE_VAR
+export MEINE_VAR
 ```
 
 ## Tipps
-- Stellen Sie sicher, dass Sie Variablen mit `export` setzen, wenn Sie möchten, dass sie in untergeordneten Prozessen verfügbar sind.
+- Stellen Sie sicher, dass Sie die Variablen vor dem Exportieren setzen, um unerwartete Ergebnisse zu vermeiden.
 - Verwenden Sie `export -p`, um eine Übersicht über alle aktuell exportierten Variablen zu erhalten.
-- Seien Sie vorsichtig beim Überschreiben von bestehenden Variablen, da dies zu unerwartetem Verhalten führen kann.
+- Denken Sie daran, dass exportierte Variablen in untergeordneten Prozessen verfügbar sind, nicht jedoch in übergeordneten Prozessen.

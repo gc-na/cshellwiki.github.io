@@ -1,48 +1,44 @@
-# [Linux] Bash env Uso: [executar comandos com variáveis de ambiente]
+# [Linux] C Shell (csh) env <Uso equivalente em português>: [executar comandos com variáveis de ambiente]
 
 ## Overview
-O comando `env` é utilizado para executar um comando em um ambiente modificado. Ele permite que você defina variáveis de ambiente temporárias e execute um programa com essas variáveis, sem alterar o ambiente global do sistema.
+O comando `env` é utilizado para executar um comando em um ambiente modificado, permitindo que você defina ou altere variáveis de ambiente temporariamente.
 
 ## Usage
 A sintaxe básica do comando `env` é a seguinte:
 
-```bash
+```
 env [opções] [argumentos]
 ```
 
 ## Common Options
-- `-i`: Ignora o ambiente atual e inicia um novo ambiente vazio.
+- `-i`: Ignora o ambiente atual e inicia com um ambiente vazio.
 - `-u VAR`: Remove a variável de ambiente especificada antes de executar o comando.
-- `VAR=value`: Define uma variável de ambiente temporária para o comando que será executado.
+- `VAR=valor`: Define uma variável de ambiente para o comando que será executado.
 
 ## Common Examples
 Aqui estão alguns exemplos práticos do uso do comando `env`:
 
 1. **Executar um comando com uma variável de ambiente temporária:**
+   ```csh
+   env VAR1=valor1 comando
+   ```
 
-```bash
-env VAR1=valor1 comando
-```
+2. **Remover uma variável de ambiente antes de executar um comando:**
+   ```csh
+   env -u VAR1 comando
+   ```
 
-2. **Ignorar o ambiente atual e executar um comando:**
+3. **Iniciar um ambiente vazio e executar um comando:**
+   ```csh
+   env -i comando
+   ```
 
-```bash
-env -i comando
-```
-
-3. **Remover uma variável de ambiente antes de executar um comando:**
-
-```bash
-env -u VAR1 comando
-```
-
-4. **Definir várias variáveis de ambiente:**
-
-```bash
-env VAR1=valor1 VAR2=valor2 comando
-```
+4. **Executar um script com variáveis de ambiente definidas:**
+   ```csh
+   env VAR1=valor1 VAR2=valor2 ./meu_script.sh
+   ```
 
 ## Tips
-- Use `env` para testar como um comando se comporta em um ambiente limpo, sem interferência de variáveis de ambiente existentes.
-- Quando precisar executar um script com variáveis de ambiente específicas, `env` pode ser uma maneira eficaz de evitar conflitos.
-- Para verificar as variáveis de ambiente atuais, você pode usar `env` sem argumentos.
+- Use `env` para testar como um comando se comporta em um ambiente diferente, sem alterar seu ambiente atual.
+- Combine `env` com scripts para garantir que as variáveis de ambiente necessárias estejam definidas corretamente.
+- Lembre-se de que as alterações feitas com `env` são temporárias e não afetam o ambiente global.

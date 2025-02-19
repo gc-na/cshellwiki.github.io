@@ -1,39 +1,36 @@
-# [Linux] Bash nohup cách sử dụng: Chạy lệnh mà không bị ngắt kết nối
+# [Hệ điều hành] C Shell (csh) nohup: Chạy lệnh không bị ngắt kết nối
 
-## Tổng quan
-Lệnh `nohup` (viết tắt của "no hang up") cho phép bạn chạy một lệnh trong nền mà không bị ngắt kết nối khi bạn đăng xuất khỏi phiên làm việc. Điều này rất hữu ích khi bạn muốn thực hiện các tác vụ dài mà không cần phải giữ phiên terminal mở.
+## Overview
+Lệnh `nohup` trong C Shell (csh) cho phép bạn chạy một lệnh mà không bị ngắt kết nối khi bạn đăng xuất khỏi phiên làm việc. Điều này rất hữu ích khi bạn muốn thực hiện các tác vụ dài mà không cần phải giữ phiên mở.
 
-## Cách sử dụng
+## Usage
 Cú pháp cơ bản của lệnh `nohup` như sau:
-
-```bash
+```
 nohup [options] [arguments]
 ```
 
-## Các tùy chọn phổ biến
-- `&`: Chạy lệnh trong nền.
+## Common Options
+- `&`: Chạy lệnh ở chế độ nền.
 - `-h`: Hiển thị thông tin trợ giúp về lệnh.
-- `-v`: Hiển thị thông tin chi tiết về quá trình thực hiện.
+- `-v`: Hiển thị thông tin chi tiết về các lệnh đang chạy.
 
-## Ví dụ thường gặp
-Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `nohup`:
-
-1. Chạy một script Python trong nền:
-   ```bash
-   nohup python my_script.py &
+## Common Examples
+1. Chạy một script shell trong nền mà không bị ngắt kết nối:
+   ```csh
+   nohup ./my_script.sh &
    ```
 
-2. Chạy một lệnh `ping` liên tục và lưu kết quả vào file:
-   ```bash
-   nohup ping google.com > ping_output.txt &
+2. Chạy một lệnh dài và ghi lại đầu ra vào file `nohup.out`:
+   ```csh
+   nohup long_running_command > output.log &
    ```
 
-3. Chạy một lệnh `sleep` kéo dài 1 giờ:
-   ```bash
-   nohup sleep 3600 &
+3. Chạy lệnh `ping` liên tục mà không bị ngắt kết nối:
+   ```csh
+   nohup ping google.com &
    ```
 
-## Mẹo
-- Sử dụng `&` để đảm bảo lệnh chạy trong nền, giúp bạn có thể tiếp tục sử dụng terminal.
-- Kiểm tra file `nohup.out` để xem kết quả đầu ra của lệnh nếu không chỉ định file đầu ra khác.
-- Đảm bảo rằng bạn đã kiểm tra các quyền truy cập cần thiết cho các file hoặc thư mục mà lệnh sẽ thao tác.
+## Tips
+- Luôn kiểm tra file `nohup.out` để xem đầu ra của lệnh đã chạy.
+- Sử dụng `&` để chạy lệnh trong nền, giúp bạn có thể tiếp tục sử dụng terminal cho các lệnh khác.
+- Nếu bạn muốn dừng lệnh đang chạy, hãy sử dụng `kill` với PID của lệnh đó.

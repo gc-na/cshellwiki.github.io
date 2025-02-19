@@ -1,64 +1,55 @@
-# [Linux] Bash dirname gebruik: Bepaal de directory van een pad
+# [Linux] C Shell (csh) dirname gebruik: [geef de naam van de bovenliggende map]
 
 ## Overzicht
-De `dirname` opdracht in Bash wordt gebruikt om het pad van de directory te extraheren uit een volledig pad naar een bestand of een map. Het retourneert de directory-naam zonder de bestandsnaam.
+De `dirname` opdracht in C Shell (csh) wordt gebruikt om het pad van de bovenliggende map van een gegeven pad te extraheren. Dit is handig wanneer je alleen de directory wilt weten waarin een bestand of een andere directory zich bevindt.
 
 ## Gebruik
 De basis syntaxis van de `dirname` opdracht is als volgt:
 
-```bash
+```csh
 dirname [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-z`: Behandel lege invoer als een lege string.
-- `--help`: Toon een helpbericht met informatie over het gebruik van de opdracht.
-- `--version`: Toon de versie-informatie van de `dirname` opdracht.
+- `-z`: Negeert lege argumenten.
+- `--help`: Toont een helpbericht met informatie over het gebruik van de opdracht.
+- `--version`: Toont de versie-informatie van de `dirname` opdracht.
 
 ## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van `dirname`:
 
 1. **Basisgebruik**:
-   Om de directory van een bestandspad te verkrijgen:
-   ```bash
-   dirname /home/gebruiker/documenten/bestand.txt
+   Om de bovenliggende map van een bestand te krijgen:
+   ```csh
+   dirname /home/user/document.txt
    ```
-   **Output**:
+   Dit geeft als output:
    ```
-   /home/gebruiker/documenten
+   /home/user
    ```
 
-2. **Gebruik met een relatieve pad**:
-   Voor een relatieve pad kan de opdracht ook worden gebruikt:
-   ```bash
-   dirname documenten/bestand.txt
+2. **Met een relatieve pad**:
+   Voor een relatief pad kan het ook worden gebruikt:
+   ```csh
+   dirname ./folder/file.txt
    ```
-   **Output**:
+   Dit geeft als output:
    ```
-   documenten
+   ./folder
    ```
 
 3. **Meerdere paden**:
-   Je kunt meerdere paden tegelijk opgeven:
-   ```bash
-   dirname /home/gebruiker/documenten/bestand.txt /var/log/syslog
+   Je kunt ook meerdere paden tegelijk opgeven:
+   ```csh
+   dirname /var/log/syslog /usr/bin/python
    ```
-   **Output**:
+   Dit geeft als output:
    ```
-   /home/gebruiker/documenten
    /var/log
-   ```
-
-4. **Met een lege invoer**:
-   Bij een lege invoer retourneert `dirname` een lege regel:
-   ```bash
-   dirname ""
-   ```
-   **Output**:
-   ```
-   (lege regel)
+   /usr/bin
    ```
 
 ## Tips
-- Gebruik `dirname` in scripts om dynamisch de directory van bestanden te verkrijgen, wat handig is voor bestandsbeheer.
-- Combineer `dirname` met andere opdrachten zoals `find` of `xargs` voor geavanceerdere bestandsoperaties.
-- Vergeet niet dat `dirname` alleen de directory retourneert en geen bestandsinformatie, dus gebruik het in combinatie met andere opdrachten voor volledige functionaliteit.
+- Gebruik `dirname` in combinatie met andere commando's zoals `find` of `xargs` om efficiënt met bestands- en padnamen te werken.
+- Vergeet niet dat `dirname` alleen het pad van de bovenliggende map retourneert en geen bestandsnamen of andere informatie.
+- Test je paden altijd in een veilige omgeving om onverwachte resultaten te voorkomen.

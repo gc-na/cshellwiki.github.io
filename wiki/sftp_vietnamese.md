@@ -1,54 +1,51 @@
-# [Linux] Bash sftp cách sử dụng: Truy cập và truyền tệp an toàn qua SSH
+# [Hệ điều hành] C Shell (csh) sftp: Chuyển tập tin an toàn
 
 ## Tổng quan
-Lệnh `sftp` (SSH File Transfer Protocol) cho phép người dùng truyền tệp giữa máy cục bộ và máy chủ từ xa một cách an toàn thông qua giao thức SSH. Đây là một công cụ hữu ích cho việc quản lý và chuyển đổi tệp trên các hệ thống khác nhau.
+Lệnh `sftp` (SSH File Transfer Protocol) được sử dụng để truyền tải tập tin an toàn giữa máy khách và máy chủ qua giao thức SSH. Nó cho phép người dùng thực hiện các thao tác như tải lên, tải xuống và quản lý tập tin trên máy chủ từ xa.
 
-## Cách sử dụng
+## Cú pháp
 Cú pháp cơ bản của lệnh `sftp` như sau:
-
-```bash
+```
 sftp [options] [user@]host
 ```
 
-## Các tùy chọn phổ biến
-- `-P port`: Chỉ định cổng để kết nối (mặc định là 22).
-- `-i identity_file`: Sử dụng tệp khóa riêng để xác thực.
-- `-o option`: Chỉ định tùy chọn cho SSH.
-- `-v`: Bật chế độ chi tiết để hiển thị thông tin kết nối.
+## Các tùy chọn thông dụng
+- `-b <file>`: Chạy lệnh từ một tệp lệnh.
+- `-C`: Bật nén dữ liệu.
+- `-i <file>`: Chỉ định tệp khóa riêng để xác thực.
+- `-o <option>`: Chỉ định tùy chọn cho phiên kết nối SSH.
+- `-P <port>`: Chỉ định cổng kết nối.
 
-## Ví dụ phổ biến
-Dưới đây là một số ví dụ thực tế khi sử dụng lệnh `sftp`:
+## Ví dụ thông dụng
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `sftp`:
 
-1. Kết nối đến máy chủ từ xa:
+1. Kết nối đến máy chủ SFTP:
    ```bash
    sftp user@hostname
    ```
 
-2. Chuyển tệp từ máy cục bộ lên máy chủ:
+2. Tải xuống một tệp từ máy chủ:
    ```bash
-   sftp user@hostname
-   put localfile.txt
+   get remote_file.txt
    ```
 
-3. Tải tệp từ máy chủ về máy cục bộ:
+3. Tải lên một tệp đến máy chủ:
    ```bash
-   sftp user@hostname
-   get remotefile.txt
+   put local_file.txt
    ```
 
-4. Chuyển đổi thư mục từ máy cục bộ lên máy chủ:
+4. Liệt kê các tệp trong thư mục hiện tại trên máy chủ:
    ```bash
-   sftp user@hostname
-   put -r localdirectory/
-   ```
-
-5. Liệt kê các tệp trong thư mục từ xa:
-   ```bash
-   sftp user@hostname
    ls
    ```
 
+5. Tạo một thư mục mới trên máy chủ:
+   ```bash
+   mkdir new_directory
+   ```
+
 ## Mẹo
-- Hãy chắc chắn rằng bạn đã thiết lập đúng quyền truy cập và xác thực trên máy chủ từ xa để tránh gặp phải các lỗi khi kết nối.
-- Sử dụng chế độ chi tiết (`-v`) để gỡ lỗi nếu bạn gặp vấn đề khi kết nối hoặc truyền tệp.
-- Thường xuyên kiểm tra và dọn dẹp các tệp không cần thiết trên máy chủ để tiết kiệm không gian lưu trữ.
+- Luôn kiểm tra kết nối mạng trước khi sử dụng `sftp` để đảm bảo truyền tải thành công.
+- Sử dụng tùy chọn `-C` để tăng tốc độ truyền tải bằng cách nén dữ liệu.
+- Để tự động hóa các tác vụ, bạn có thể sử dụng tệp lệnh với tùy chọn `-b`.
+- Đảm bảo rằng bạn có quyền truy cập cần thiết trên máy chủ để thực hiện các thao tác như tải lên hoặc xóa tệp.

@@ -1,42 +1,42 @@
-# [Linux] Bash logout gebruik: Sluit de huidige shell-sessie af
+# [Linux] C Shell (csh) logout gebruik: Sluit de huidige shell sessie af
 
 ## Overzicht
-De `logout` opdracht wordt gebruikt om de huidige shell-sessie af te sluiten. Dit is vooral nuttig wanneer je werkt in een interactieve shell, zoals een terminalvenster of een SSH-sessie. Het beëindigen van de sessie zorgt ervoor dat alle processen die aan die sessie zijn gekoppeld, worden afgesloten.
+Het `logout` commando in C Shell (csh) wordt gebruikt om de huidige shell sessie af te sluiten. Dit is vooral nuttig wanneer je klaar bent met je werk en de terminal wilt sluiten.
 
 ## Gebruik
-De basis syntaxis van de `logout` opdracht is als volgt:
+De basis syntaxis van het `logout` commando is als volgt:
 
-```bash
-logout [options]
+```
+logout [options] [arguments]
 ```
 
-## Veelvoorkomende Opties
-De `logout` opdracht heeft geen specifieke opties, maar het is belangrijk om te weten dat het alleen werkt in een login shell. Als je het probeert uit te voeren in een niet-login shell, krijg je een foutmelding.
+## Veelvoorkomende opties
+- **-f**: Forceert het afmelden zonder bevestiging.
+- **-n**: Voorkomt het uitvoeren van de logout scripts.
 
 ## Veelvoorkomende Voorbeelden
 
-### Voorbeeld 1: Eenvoudig afmelden
-Om je huidige shell-sessie af te sluiten, typ je eenvoudig:
+### Voorbeeld 1: Gewoon afmelden
+Om je huidige shell sessie af te sluiten, gebruik je simpelweg:
 
-```bash
+```csh
 logout
 ```
 
-### Voorbeeld 2: Afmelden vanuit een SSH-sessie
-Als je bent ingelogd op een externe server via SSH en je wilt de sessie beëindigen, gebruik je:
+### Voorbeeld 2: Forceer afmelden
+Als je zeker wilt zijn dat je afgemeld wordt zonder enige bevestiging, gebruik dan de -f optie:
 
-```bash
-logout
+```csh
+logout -f
 ```
 
-### Voorbeeld 3: Afmelden in een subshell
-Als je een subshell hebt geopend (bijvoorbeeld met `bash`), kun je deze afsluiten met:
+### Voorbeeld 3: Afmelden zonder scripts uit te voeren
+Als je wilt afmelden maar de logout scripts niet wilt uitvoeren, gebruik dan de -n optie:
 
-```bash
-logout
+```csh
+logout -n
 ```
 
 ## Tips
-- Zorg ervoor dat je al je werk hebt opgeslagen voordat je `logout` gebruikt, omdat alle niet-opgeslagen gegevens verloren gaan.
-- Gebruik `exit` als je een subshell wilt afsluiten zonder een foutmelding te krijgen in een niet-login shell.
-- Controleer of je geen actieve processen hebt die je wilt behouden voordat je de sessie beëindigt.
+- Zorg ervoor dat je al je werk hebt opgeslagen voordat je het `logout` commando gebruikt, omdat het je sessie onmiddellijk afsluit.
+- Gebruik de `-f` optie met voorzichtigheid, vooral als je niet zeker weet of er nog lopende processen zijn die je wilt beëindigen.

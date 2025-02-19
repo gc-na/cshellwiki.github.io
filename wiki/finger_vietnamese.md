@@ -1,43 +1,41 @@
-# [Linux] Bash finger cách sử dụng: Xem thông tin người dùng
+# [Hệ điều hành] C Shell (csh) finger cách sử dụng: Xem thông tin người dùng
 
 ## Tổng quan
-Lệnh `finger` được sử dụng để hiển thị thông tin chi tiết về người dùng trên hệ thống, bao gồm tên, địa chỉ email, thời gian đăng nhập và trạng thái hiện tại. Đây là một công cụ hữu ích để quản lý người dùng trong môi trường đa người dùng.
+Lệnh `finger` trong C Shell (csh) được sử dụng để hiển thị thông tin về người dùng trên hệ thống, bao gồm tên, địa chỉ email, thời gian đăng nhập và trạng thái hiện tại.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `finger` như sau:
 ```
-finger [options] [arguments]
+finger [tùy chọn] [đối số]
 ```
 
 ## Các tùy chọn phổ biến
 - `-l`: Hiển thị thông tin chi tiết hơn về người dùng.
-- `-m`: Chỉ định rằng tên người dùng được nhập theo định dạng họ trước tên.
-- `-s`: Hiển thị thông tin ngắn gọn hơn, chỉ bao gồm tên và trạng thái.
+- `-m`: Tìm kiếm người dùng theo tên mà không phân biệt chữ hoa chữ thường.
+- `-s`: Hiển thị thông tin ngắn gọn hơn về người dùng.
 
-## Ví dụ phổ biến
-Dưới đây là một số ví dụ thực tế khi sử dụng lệnh `finger`:
-
-1. Hiển thị thông tin của tất cả người dùng trên hệ thống:
+## Ví dụ thường gặp
+1. Hiển thị thông tin về tất cả người dùng:
    ```bash
    finger
    ```
 
-2. Hiển thị thông tin chi tiết của một người dùng cụ thể:
+2. Hiển thị thông tin chi tiết về một người dùng cụ thể:
    ```bash
-   finger username
+   finger -l username
    ```
 
-3. Hiển thị thông tin ngắn gọn của tất cả người dùng:
+3. Tìm kiếm người dùng mà không phân biệt chữ hoa chữ thường:
+   ```bash
+   finger -m UserName
+   ```
+
+4. Hiển thị thông tin ngắn gọn về tất cả người dùng:
    ```bash
    finger -s
    ```
 
-4. Hiển thị thông tin chi tiết của người dùng với định dạng họ trước tên:
-   ```bash
-   finger -m "Nguyen Van A"
-   ```
-
 ## Mẹo
-- Sử dụng lệnh `finger` kết hợp với các lệnh khác như `grep` để tìm kiếm thông tin người dùng cụ thể.
-- Kiểm tra thường xuyên thông tin người dùng để quản lý tốt hơn trong môi trường đa người dùng.
-- Lưu ý rằng lệnh `finger` có thể không được cài đặt sẵn trên tất cả các hệ thống, bạn có thể cần cài đặt nó trước khi sử dụng.
+- Sử dụng tùy chọn `-l` để có cái nhìn tổng quan và chi tiết hơn về người dùng khi cần thiết.
+- Kiểm tra thông tin người dùng trước khi gửi email hoặc liên hệ để đảm bảo rằng bạn đang liên lạc với đúng người.
+- Kết hợp `finger` với các lệnh khác như `grep` để lọc thông tin theo nhu cầu cụ thể.

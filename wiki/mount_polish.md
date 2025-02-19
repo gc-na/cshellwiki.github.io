@@ -1,47 +1,43 @@
-# [Linux] Bash mount użycie: Montowanie systemów plików
+# [Linux] C Shell (csh) mount użycie: Montowanie systemów plików
 
 ## Overview
-Polecenie `mount` w systemach Unix i Linux służy do montowania systemów plików. Umożliwia dostęp do danych przechowywanych na różnych urządzeniach, takich jak dyski twarde, pamięci USB czy sieciowe systemy plików.
+Polecenie `mount` służy do montowania systemów plików w systemie operacyjnym. Umożliwia dostęp do danych przechowywanych na różnych nośnikach, takich jak dyski twarde, pamięci USB czy inne urządzenia.
 
 ## Usage
 Podstawowa składnia polecenia `mount` jest następująca:
 
-```bash
+```
 mount [opcje] [argumenty]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji dla polecenia `mount`:
-
-- `-t` : Określa typ systemu plików (np. ext4, ntfs).
-- `-o` : Umożliwia podanie dodatkowych opcji montowania, takich jak `ro` (tylko do odczytu) lub `rw` (do odczytu i zapisu).
-- `-a` : Montuje wszystkie systemy plików wymienione w pliku `/etc/fstab`.
-- `-r` : Montuje system plików w trybie tylko do odczytu.
+- `-t <typ>`: Określa typ systemu plików (np. ext4, ntfs).
+- `-o <opcje>`: Umożliwia podanie dodatkowych opcji montowania (np. ro dla tylko do odczytu).
+- `-a`: Montuje wszystkie systemy plików wymienione w pliku fstab.
+- `-r`: Montuje system plików w trybie tylko do odczytu.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `mount`:
-
-1. Montowanie dysku USB:
-   ```bash
-   mount /dev/sdb1 /mnt/usb
+1. Montowanie dysku twardego:
+   ```csh
+   mount /dev/sda1 /mnt
    ```
 
-2. Montowanie systemu plików NTFS w trybie tylko do odczytu:
-   ```bash
-   mount -t ntfs -o ro /dev/sdc1 /mnt/ntfs
+2. Montowanie pamięci USB z określeniem typu systemu plików:
+   ```csh
+   mount -t vfat /dev/sdb1 /media/usb
    ```
 
-3. Montowanie wszystkich systemów plików z pliku fstab:
-   ```bash
+3. Montowanie systemu plików w trybie tylko do odczytu:
+   ```csh
+   mount -o ro /dev/sda1 /mnt
+   ```
+
+4. Montowanie wszystkich systemów plików z pliku fstab:
+   ```csh
    mount -a
    ```
 
-4. Montowanie systemu plików ext4 z dodatkowymi opcjami:
-   ```bash
-   mount -t ext4 -o rw,noatime /dev/sda1 /mnt/data
-   ```
-
 ## Tips
-- Zawsze upewnij się, że punkt montowania (np. `/mnt/usb`) istnieje przed próbą montowania.
-- Używaj opcji `-o ro`, jeśli chcesz zabezpieczyć dane przed przypadkowym zapisem.
-- Sprawdź, czy system plików jest poprawnie odmontowany przed odłączeniem urządzenia, używając polecenia `umount`.
+- Zawsze sprawdzaj, czy urządzenie, które chcesz zamontować, jest dostępne, używając polecenia `lsblk`.
+- Upewnij się, że masz odpowiednie uprawnienia do montowania urządzeń, zazwyczaj wymagane są uprawnienia administratora.
+- Po zakończeniu pracy z zamontowanym systemem plików, pamiętaj o jego odmontowaniu za pomocą polecenia `umount`.

@@ -1,41 +1,40 @@
-# [Linux] Bash pushd Kullanımı: Dizin yığınını yönetme
+# [Linux] C Shell (csh) pushd Kullanımı: Dizin yığınını yönetme
 
 ## Overview
-`pushd` komutu, dizin yığınını yönetmek için kullanılır. Bu komut, mevcut dizini yığın içine ekler ve belirtilen dizine geçiş yapar. Böylece, kullanıcılar dizinler arasında kolayca geçiş yapabilirler.
+`pushd` komutu, C Shell (csh) ortamında dizin yığınını yönetmek için kullanılır. Bu komut, mevcut dizini yığının üstüne ekleyerek belirtilen dizine geçiş yapar.
 
 ## Usage
 Temel sözdizimi şu şekildedir:
-```bash
-pushd [seçenekler] [argümanlar]
+```
+pushd [options] [arguments]
 ```
 
 ## Common Options
 - `+n`: Yığındaki n'inci dizine geçiş yapar.
-- `-n`: Yığındaki dizinleri tersine çevirir.
-- `-h`: Yardım bilgilerini gösterir.
+- `-n`: Yığındaki n'inci dizine geçiş yapar ve dizin yığınını tersine çevirir.
 
 ## Common Examples
-1. Mevcut dizini yığın içine ekleyip başka bir dizine geçiş yapmak:
-   ```bash
+1. Belirli bir dizine geçiş yapmak:
+   ```csh
    pushd /home/kullanici/dizin
    ```
 
-2. Yığındaki dizinlerin listesini görüntülemek:
-   ```bash
+2. Yığındaki dizinleri görüntülemek:
+   ```csh
    pushd
    ```
 
 3. Yığındaki ikinci dizine geçiş yapmak:
-   ```bash
+   ```csh
    pushd +1
    ```
 
-4. Yığındaki dizinleri tersine çevirmek:
-   ```bash
-   pushd -n
+4. Yığındaki dizinleri tersine çevirerek geçiş yapmak:
+   ```csh
+   pushd -1
    ```
 
 ## Tips
-- `pushd` komutunu `popd` ile birlikte kullanarak dizinler arasında kolayca geçiş yapabilirsiniz.
-- Dizin yığınını görüntülemek için sık sık `pushd` komutunu kullanın, böylece hangi dizinlerde olduğunuzu takip edebilirsiniz.
-- `pushd` ve `popd` komutlarını bir betik içinde kullanarak dizin yönetimini otomatikleştirebilirsiniz.
+- `pushd` komutunu sık kullandığınız dizinler arasında hızlı geçiş yapmak için kullanın.
+- Dizin yığınını kontrol etmek için `dirs` komutunu kullanarak mevcut yığın durumunu görüntüleyin.
+- `popd` komutunu kullanarak en üstteki dizini yığından çıkarmayı unutmayın.

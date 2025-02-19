@@ -1,7 +1,7 @@
-# [Linux] Bash sqlite3 użycie: Interakcja z bazą danych SQLite
+# [Linux] C Shell (csh) sqlite3 Użycie: Interakcja z bazą danych SQLite
 
 ## Overview
-Polecenie `sqlite3` jest narzędziem wiersza poleceń do interakcji z bazą danych SQLite. Umożliwia tworzenie, modyfikowanie oraz zapytywanie baz danych w formacie SQLite, co czyni je przydatnym dla programistów i administratorów baz danych.
+Polecenie `sqlite3` jest interfejsem wiersza poleceń do systemu zarządzania bazą danych SQLite. Umożliwia użytkownikom wykonywanie zapytań SQL, zarządzanie bazami danych oraz manipulowanie danymi w prosty sposób.
 
 ## Usage
 Podstawowa składnia polecenia `sqlite3` jest następująca:
@@ -11,11 +11,10 @@ sqlite3 [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-help` - Wyświetla pomoc i dostępne opcje.
-- `-version` - Pokazuje wersję SQLite.
-- `-init <plik>` - Wykonuje polecenia z zadanego pliku po uruchomieniu.
-- `-batch` - Włącza tryb wsadowy, co oznacza, że nie będzie interaktywnego promptu.
-- `-cmd <polecenie>` - Wykonuje polecenie SQL przed uruchomieniem interaktywnej sesji.
+- `-init <plik>`: Wykonuje polecenia SQL z podanego pliku po uruchomieniu.
+- `-batch`: Uruchamia w trybie wsadowym, co oznacza, że nie wyświetla interaktywnego promptu.
+- `-header`: Wyświetla nagłówki kolumn w wynikach zapytań.
+- `-version`: Wyświetla wersję SQLite.
 
 ## Common Examples
 1. **Utworzenie nowej bazy danych:**
@@ -23,27 +22,27 @@ sqlite3 [opcje] [argumenty]
    sqlite3 nowa_baza.db
    ```
 
-2. **Wykonanie zapytania SQL:**
+2. **Wykonanie zapytania SQL z pliku:**
+   ```bash
+   sqlite3 nowa_baza.db -init skrypt.sql
+   ```
+
+3. **Wyświetlenie wersji SQLite:**
+   ```bash
+   sqlite3 -version
+   ```
+
+4. **Wykonanie prostego zapytania:**
    ```bash
    sqlite3 nowa_baza.db "SELECT * FROM tabela;"
    ```
 
-3. **Importowanie danych z pliku CSV:**
+5. **Eksportowanie wyników zapytania do pliku CSV:**
    ```bash
-   sqlite3 nowa_baza.db ".mode csv" ".import dane.csv tabela"
-   ```
-
-4. **Eksportowanie danych do pliku CSV:**
-   ```bash
-   sqlite3 nowa_baza.db "SELECT * FROM tabela;" ".mode csv" ".output dane.csv" ".dump" ".exit"
-   ```
-
-5. **Wykonanie skryptu SQL z pliku:**
-   ```bash
-   sqlite3 nowa_baza.db < skrypt.sql
+   sqlite3 -header -csv nowa_baza.db "SELECT * FROM tabela;" > wyniki.csv
    ```
 
 ## Tips
-- Zawsze wykonuj kopię zapasową bazy danych przed wprowadzeniem większych zmian.
-- Używaj trybu wsadowego dla automatyzacji zadań, aby uniknąć interaktywnego promptu.
-- Regularnie sprawdzaj wersję SQLite, aby korzystać z najnowszych funkcji i poprawek.
+- Zawsze twórz kopie zapasowe swoich baz danych przed wprowadzeniem dużych zmian.
+- Używaj opcji `-header`, aby ułatwić czytanie wyników zapytań.
+- W trybie wsadowym (opcja `-batch`) możesz automatyzować procesy i skrypty SQL, co jest przydatne w codziennej pracy.

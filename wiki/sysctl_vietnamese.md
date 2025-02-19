@@ -1,43 +1,39 @@
-# [Linux] Bash sysctl cách sử dụng: Quản lý tham số hạt nhân
+# [Hệ điều hành] C Shell (csh) sysctl <Sử dụng hệ thống điều khiển>: Quản lý thông số hệ thống
 
 ## Tổng quan
-Lệnh `sysctl` được sử dụng để xem và thay đổi các tham số của hạt nhân Linux trong thời gian chạy. Nó cho phép người dùng điều chỉnh các thiết lập hệ thống mà không cần khởi động lại máy.
+Lệnh `sysctl` trong C Shell (csh) được sử dụng để điều chỉnh và hiển thị các thông số của hệ thống trong thời gian thực. Nó cho phép người dùng thay đổi các tham số kernel mà không cần khởi động lại hệ thống.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `sysctl` như sau:
 
-```bash
+```csh
 sysctl [options] [arguments]
 ```
 
 ## Các tùy chọn phổ biến
-- `-a`: Hiển thị tất cả các tham số hạt nhân hiện tại.
-- `-n`: Chỉ hiển thị giá trị của tham số mà không có tên.
-- `-w`: Thay đổi giá trị của một tham số hạt nhân.
-- `-p`: Tải các tham số từ một tệp cấu hình.
+- `-a`: Hiển thị tất cả các tham số kernel hiện có.
+- `-w`: Thay đổi giá trị của một tham số kernel.
+- `-n`: Chỉ hiển thị giá trị của một tham số mà không có tên tham số.
 
 ## Ví dụ thường gặp
-1. **Hiển thị tất cả các tham số hạt nhân:**
-   ```bash
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `sysctl`:
+
+1. Hiển thị tất cả các tham số kernel:
+   ```csh
    sysctl -a
    ```
 
-2. **Xem giá trị của một tham số cụ thể:**
-   ```bash
-   sysctl net.ipv4.ip_forward
+2. Thay đổi giá trị của một tham số kernel (ví dụ: tăng kích thước tối đa của các gói tin):
+   ```csh
+   sysctl -w net.core.rmem_max=16777216
    ```
 
-3. **Thay đổi giá trị của một tham số:**
-   ```bash
-   sysctl -w net.ipv4.ip_forward=1
-   ```
-
-4. **Tải các tham số từ tệp cấu hình:**
-   ```bash
-   sysctl -p
+3. Hiển thị giá trị của một tham số cụ thể (ví dụ: kiểm tra kích thước bộ nhớ tối đa cho các gói tin):
+   ```csh
+   sysctl -n net.core.rmem_max
    ```
 
 ## Mẹo
-- Trước khi thay đổi bất kỳ tham số nào, hãy chắc chắn bạn hiểu rõ tác động của nó đến hệ thống.
-- Sử dụng `sysctl -n` để kiểm tra giá trị hiện tại của tham số mà không làm rối mắt với tên tham số.
-- Để giữ các thay đổi sau khi khởi động lại, hãy thêm các tham số vào tệp `/etc/sysctl.conf`.
+- Trước khi thay đổi bất kỳ tham số nào, hãy chắc chắn rằng bạn đã hiểu rõ về tác động của nó đối với hệ thống.
+- Sử dụng `sysctl -a` để kiểm tra các tham số hiện tại và tìm hiểu các giá trị mặc định.
+- Nếu bạn muốn giữ các thay đổi sau khi khởi động lại, hãy thêm các tham số vào tệp cấu hình `/etc/sysctl.conf`.

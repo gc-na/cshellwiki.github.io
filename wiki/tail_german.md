@@ -1,50 +1,44 @@
-# [Linux] Bash tail Verwendung: Zeigt die letzten Zeilen einer Datei an
+# [Linux] C Shell (csh) tail Verwendung: Zeigt die letzten Zeilen einer Datei an
 
 ## Übersicht
-Der `tail`-Befehl in Bash wird verwendet, um die letzten Zeilen einer Datei anzuzeigen. Dies ist besonders nützlich, um Protokolldateien zu überwachen oder um die neuesten Einträge in einer Datei schnell zu überprüfen.
+Der `tail` Befehl wird verwendet, um die letzten Zeilen einer Datei anzuzeigen. Er ist besonders nützlich, um Protokolldateien zu überwachen oder um die neuesten Einträge in großen Dateien schnell zu sehen.
 
 ## Verwendung
-Die grundlegende Syntax des Befehls lautet:
+Die grundlegende Syntax des `tail` Befehls lautet:
 
-```bash
+```
 tail [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
 - `-n [Anzahl]`: Gibt die letzten n Zeilen der Datei aus. Standardmäßig werden die letzten 10 Zeilen angezeigt.
-- `-f`: Verfolgt die Datei in Echtzeit und zeigt neue Zeilen an, die hinzugefügt werden.
+- `-f`: Folgt der Datei und zeigt neue Zeilen an, die hinzugefügt werden, während die Datei aktualisiert wird.
 - `-c [Anzahl]`: Gibt die letzten n Bytes der Datei aus.
-- `-q`: Unterdrückt die Ausgabe von Dateinamen, wenn mehrere Dateien angegeben werden.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung von `tail`:
+Hier sind einige praktische Beispiele für die Verwendung des `tail` Befehls:
 
 1. **Letzte 10 Zeilen einer Datei anzeigen:**
-   ```bash
-   tail datei.txt
+   ```csh
+   tail dateiname.txt
    ```
 
 2. **Letzte 20 Zeilen einer Datei anzeigen:**
-   ```bash
-   tail -n 20 datei.txt
+   ```csh
+   tail -n 20 dateiname.txt
    ```
 
-3. **Echtzeitüberwachung einer Protokolldatei:**
-   ```bash
-   tail -f /var/log/syslog
+3. **Eine Datei in Echtzeit überwachen:**
+   ```csh
+   tail -f dateiname.log
    ```
 
 4. **Letzte 50 Bytes einer Datei anzeigen:**
-   ```bash
-   tail -c 50 datei.txt
-   ```
-
-5. **Letzte 5 Zeilen mehrerer Dateien anzeigen:**
-   ```bash
-   tail -n 5 datei1.txt datei2.txt
+   ```csh
+   tail -c 50 dateiname.txt
    ```
 
 ## Tipps
-- Verwenden Sie die `-f`-Option, um Protokolle in Echtzeit zu überwachen, was besonders nützlich für Debugging-Zwecke ist.
-- Kombinieren Sie `tail` mit anderen Befehlen wie `grep`, um bestimmte Muster in den letzten Zeilen zu suchen.
-- Nutzen Sie die `-q`-Option, wenn Sie mehrere Dateien analysieren, um die Ausgabe zu vereinfachen.
+- Verwenden Sie die `-f` Option, um Protokolldateien in Echtzeit zu überwachen, was besonders nützlich bei der Fehlersuche ist.
+- Kombinieren Sie `tail` mit anderen Befehlen wie `grep`, um spezifische Informationen aus den letzten Zeilen einer Datei zu filtern.
+- Nutzen Sie die `-n` Option, um die Anzahl der angezeigten Zeilen anzupassen, je nach Bedarf.

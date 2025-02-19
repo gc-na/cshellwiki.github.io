@@ -1,7 +1,7 @@
-# [Linux] Bash yum cách sử dụng: Quản lý gói phần mềm
+# [Hệ điều hành Linux] C Shell (csh) yum <Sử dụng yum>: Quản lý gói phần mềm
 
 ## Tổng quan
-Lệnh `yum` (Yellowdog Updater Modified) là một công cụ quản lý gói trên các hệ điều hành dựa trên RPM, như CentOS và Fedora. Nó cho phép người dùng cài đặt, cập nhật, và gỡ bỏ các gói phần mềm một cách dễ dàng.
+Lệnh `yum` (Yellowdog Updater Modified) là một công cụ quản lý gói phần mềm trên các hệ điều hành dựa trên RPM (Red Hat Package Manager). Nó cho phép người dùng cài đặt, cập nhật và gỡ bỏ các gói phần mềm một cách dễ dàng.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `yum` như sau:
@@ -13,15 +13,15 @@ yum [options] [arguments]
 - `install`: Cài đặt gói phần mềm.
 - `remove`: Gỡ bỏ gói phần mềm.
 - `update`: Cập nhật gói phần mềm đã cài đặt.
-- `search`: Tìm kiếm gói phần mềm trong kho lưu trữ.
-- `info`: Hiển thị thông tin chi tiết về gói phần mềm.
+- `list`: Liệt kê các gói phần mềm có sẵn hoặc đã cài đặt.
+- `search`: Tìm kiếm gói phần mềm theo tên hoặc mô tả.
 
 ## Ví dụ thường gặp
 - Cài đặt một gói phần mềm:
   ```bash
   yum install httpd
   ```
-
+  
 - Gỡ bỏ một gói phần mềm:
   ```bash
   yum remove httpd
@@ -32,20 +32,17 @@ yum [options] [arguments]
   yum update
   ```
 
+- Liệt kê các gói phần mềm đã cài đặt:
+  ```bash
+  yum list installed
+  ```
+
 - Tìm kiếm một gói phần mềm:
   ```bash
   yum search nginx
   ```
 
-- Hiển thị thông tin về một gói phần mềm:
-  ```bash
-  yum info httpd
-  ```
-
 ## Mẹo
-- Luôn kiểm tra các gói có thể cập nhật bằng cách sử dụng `yum check-update` trước khi thực hiện cập nhật.
-- Sử dụng `yum clean all` để dọn dẹp bộ nhớ cache và giải phóng không gian đĩa.
-- Để cài đặt nhiều gói cùng lúc, bạn có thể liệt kê chúng cách nhau bằng dấu cách:
-  ```bash
-  yum install git vim curl
-  ```
+- Luôn kiểm tra các gói phần mềm có sẵn trước khi cài đặt để tránh xung đột.
+- Sử dụng `yum clean all` để dọn dẹp bộ nhớ cache của yum, giúp tiết kiệm không gian lưu trữ.
+- Đọc tài liệu hoặc sử dụng `yum --help` để tìm hiểu thêm về các tùy chọn và chức năng của lệnh.

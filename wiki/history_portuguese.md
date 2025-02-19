@@ -1,56 +1,50 @@
-# [Linux] Bash history uso: Visualizar e gerenciar comandos executados
+# [Linux] C Shell (csh) history: Exibir comandos anteriores
 
 ## Overview
-O comando `history` no Bash é utilizado para exibir uma lista dos comandos que foram executados na sessão atual do terminal. Essa funcionalidade é útil para relembrar comandos anteriores e reutilizá-los sem precisar digitá-los novamente.
+O comando `history` no C Shell (csh) é utilizado para exibir uma lista dos comandos que foram executados anteriormente na sessão do terminal. Isso permite que os usuários revisitem e reutilizem comandos sem precisar digitá-los novamente.
 
 ## Usage
 A sintaxe básica do comando `history` é a seguinte:
 
-```bash
-history [opções] [argumentos]
+```csh
+history [options] [arguments]
 ```
 
 ## Common Options
-Aqui estão algumas opções comuns do comando `history`:
-
-- `-c`: Limpa o histórico de comandos.
-- `-d N`: Remove o comando na posição N do histórico.
-- `N`: Exibe os últimos N comandos do histórico.
+- `-c`: Limpa a lista de comandos armazenados na memória.
+- `-n`: Lê a lista de comandos do arquivo de histórico e adiciona ao histórico atual.
+- `-r`: Lê o histórico do arquivo e o adiciona à lista atual, sem sobrescrever.
+- `-w`: Grava o histórico atual no arquivo de histórico.
 
 ## Common Examples
 Aqui estão alguns exemplos práticos do uso do comando `history`:
 
-1. **Exibir todo o histórico de comandos:**
-
-   ```bash
+1. **Exibir todos os comandos anteriores:**
+   ```csh
    history
    ```
 
-2. **Exibir os últimos 10 comandos:**
-
-   ```bash
-   history 10
-   ```
-
-3. **Limpar o histórico de comandos:**
-
-   ```bash
+2. **Limpar o histórico de comandos:**
+   ```csh
    history -c
    ```
 
-4. **Remover um comando específico do histórico (por exemplo, o comando na posição 5):**
-
-   ```bash
-   history -d 5
+3. **Adicionar novos comandos do arquivo de histórico:**
+   ```csh
+   history -n
    ```
 
-5. **Reexecutar um comando do histórico usando o número do comando (por exemplo, 42):**
+4. **Gravar o histórico atual em um arquivo:**
+   ```csh
+   history -w
+   ```
 
-   ```bash
-   !42
+5. **Exibir os últimos 10 comandos:**
+   ```csh
+   history 10
    ```
 
 ## Tips
-- Utilize o comando `!!` para repetir o último comando executado rapidamente.
-- Para buscar um comando anterior, você pode usar `Ctrl + R` e começar a digitar parte do comando.
-- Considere limpar o histórico periodicamente para manter a privacidade e evitar confusões com comandos antigos.
+- Utilize o comando `!n` para executar rapidamente o comando na linha `n` do histórico.
+- Combine o uso do `history` com o comando `grep` para filtrar comandos específicos, por exemplo: `history | grep "git"`.
+- Regularmente limpe seu histórico se você estiver preocupado com a privacidade ou segurança dos comandos executados.

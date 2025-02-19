@@ -1,7 +1,7 @@
-# [Linux] Bash chage Uso: Gerenciar a expiração de senhas de usuários
+# [Linux] C Shell (csh) chage Uso: Gerenciar as configurações de expiração de senhas de usuários
 
 ## Overview
-O comando `chage` é utilizado para modificar as informações de expiração de senhas de usuários no sistema Linux. Com ele, é possível definir quando uma senha deve ser alterada, além de configurar períodos de aviso e inatividade.
+O comando `chage` é utilizado para modificar as configurações de expiração de senhas de usuários em sistemas Linux. Ele permite que administradores definam quando uma senha deve expirar, quando um usuário deve ser avisado sobre a expiração e outras políticas relacionadas à senha.
 
 ## Usage
 A sintaxe básica do comando `chage` é a seguinte:
@@ -11,48 +11,41 @@ chage [opções] [argumentos]
 ```
 
 ## Common Options
-Aqui estão algumas opções comuns do comando `chage`:
-
-- `-l, --list`: Lista as informações de expiração da senha do usuário.
-- `-m, --mindays MIN`: Define o número mínimo de dias entre as mudanças de senha.
-- `-M, --maxdays MAX`: Define o número máximo de dias que a senha é válida.
-- `-I, --inactive INACTIVE`: Define o número de dias após a expiração da senha até que a conta seja desativada.
-- `-E, --expiredate EXPIRE`: Define a data de expiração da conta.
+- `-l`: Lista as informações de expiração da senha para um usuário específico.
+- `-m <dias>`: Define o número mínimo de dias entre as mudanças de senha.
+- `-M <dias>`: Define o número máximo de dias que uma senha pode ser usada.
+- `-I <dias>`: Define o número de dias após a expiração da senha antes que a conta seja desativada.
+- `-E <data>`: Define a data de expiração da conta do usuário.
 
 ## Common Examples
 Aqui estão alguns exemplos práticos do uso do comando `chage`:
 
-1. **Listar informações de expiração da senha de um usuário:**
+1. **Listar informações de expiração da senha para um usuário:**
+   ```bash
+   chage -l usuario
+   ```
 
-```bash
-chage -l nome_do_usuario
-```
+2. **Definir o número mínimo de dias entre mudanças de senha:**
+   ```bash
+   chage -m 7 usuario
+   ```
 
-2. **Definir um mínimo de 7 dias entre mudanças de senha:**
+3. **Definir o número máximo de dias que uma senha pode ser usada:**
+   ```bash
+   chage -M 90 usuario
+   ```
 
-```bash
-chage -m 7 nome_do_usuario
-```
+4. **Definir o número de dias após a expiração da senha antes que a conta seja desativada:**
+   ```bash
+   chage -I 30 usuario
+   ```
 
-3. **Definir um máximo de 90 dias para a validade da senha:**
-
-```bash
-chage -M 90 nome_do_usuario
-```
-
-4. **Definir 30 dias de inatividade após a expiração da senha:**
-
-```bash
-chage -I 30 nome_do_usuario
-```
-
-5. **Definir uma data de expiração específica para a conta:**
-
-```bash
-chage -E 2024-12-31 nome_do_usuario
-```
+5. **Definir a data de expiração da conta do usuário:**
+   ```bash
+   chage -E 2024-12-31 usuario
+   ```
 
 ## Tips
-- Sempre verifique as configurações atuais de expiração da senha usando `chage -l` antes de fazer alterações.
-- Utilize opções de aviso para notificar os usuários antes que suas senhas expirem, garantindo que eles tenham tempo suficiente para realizar a troca.
-- Considere a política de segurança da sua organização ao definir os períodos de expiração e inatividade das senhas.
+- Sempre verifique as configurações atuais de expiração de senha antes de fazer alterações, usando `chage -l`.
+- Considere a política de segurança da sua organização ao definir os limites de expiração de senha.
+- Use o comando com cuidado, especialmente ao definir datas de expiração, para evitar bloquear usuários acidentalmente.

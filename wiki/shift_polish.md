@@ -1,64 +1,56 @@
-# [Linux] Bash shift użycie: Przesuwanie argumentów w skryptach
+# [Linux] C Shell (csh) shift użycie: Przesuwa argumenty w skrypcie
 
 ## Overview
-Polecenie `shift` w Bash służy do przesuwania argumentów pozycyjnych w skryptach. Umożliwia to usunięcie pierwszego argumentu i przesunięcie pozostałych w lewo, co jest przydatne przy przetwarzaniu argumentów w pętli.
+Polecenie `shift` w C Shell (csh) służy do przesuwania argumentów pozycyjnych w skryptach. Umożliwia to usunięcie pierwszego argumentu i przesunięcie pozostałych argumentów w lewo, co jest przydatne w przypadku przetwarzania listy argumentów.
 
 ## Usage
 Podstawowa składnia polecenia `shift` jest następująca:
 
-```bash
+```
 shift [n]
 ```
 
-Gdzie `n` to liczba argumentów, o które chcesz przesunąć.
+Gdzie `n` to liczba argumentów, które mają zostać przesunięte. Jeśli `n` nie jest podane, domyślnie przesuwany jest jeden argument.
 
 ## Common Options
-- `n`: Liczba argumentów do przesunięcia. Domyślnie `n` wynosi 1, co oznacza, że pierwszy argument zostanie usunięty.
+- `n` - Liczba argumentów do przesunięcia. Jeśli nie podano, przesunięcie dotyczy jednego argumentu.
 
 ## Common Examples
 
 ### Przykład 1: Proste przesunięcie
-```bash
-#!/bin/bash
-echo "Pierwszy argument: $1"
+```csh
+#!/bin/csh
+set arg1 = "pierwszy"
+set arg2 = "drugi"
+set arg3 = "trzeci"
+echo "Argumenty przed shift: $arg1 $arg2 $arg3"
 shift
-echo "Po przesunięciu, pierwszy argument: $1"
-```
-Wynik:
-```
-Pierwszy argument: arg1
-Po przesunięciu, pierwszy argument: arg2
+echo "Argumenty po shift: $arg1 $arg2 $arg3"
 ```
 
-### Przykład 2: Przesunięcie o więcej niż jeden argument
-```bash
-#!/bin/bash
-echo "Argumenty: $1, $2, $3"
+### Przykład 2: Przesunięcie o dwa argumenty
+```csh
+#!/bin/csh
+set arg1 = "pierwszy"
+set arg2 = "drugi"
+set arg3 = "trzeci"
+echo "Argumenty przed shift: $arg1 $arg2 $arg3"
 shift 2
-echo "Po przesunięciu, argumenty: $1, $2"
-```
-Wynik:
-```
-Argumenty: arg1, arg2, arg3
-Po przesunięciu, argumenty: arg3, 
+echo "Argumenty po shift 2: $arg1 $arg2 $arg3"
 ```
 
 ### Przykład 3: Użycie w pętli
-```bash
-#!/bin/bash
-while [[ $# -gt 0 ]]; do
-    echo "Aktualny argument: $1"
+```csh
+#!/bin/csh
+echo "Podaj argumenty:"
+set args = ($argv)
+while ($#args > 0)
+    echo "Aktualny argument: $args[1]"
     shift
-done
-```
-Wynik:
-```
-Aktualny argument: arg1
-Aktualny argument: arg2
-Aktualny argument: arg3
+end
 ```
 
 ## Tips
-- Używaj `shift` w pętli, aby łatwo przetwarzać wszystkie argumenty skryptu.
-- Pamiętaj, że po przesunięciu argumentów, `$#` (liczba argumentów) zmniejsza się, co może być przydatne w warunkach pętli.
-- Zawsze sprawdzaj, czy masz wystarczającą liczbę argumentów przed przesunięciem, aby uniknąć nieoczekiwanych błędów.
+- Używaj `shift` w skryptach, gdy chcesz przetwarzać argumenty w pętli.
+- Pamiętaj, że po przesunięciu argumentów, oryginalne wartości argumentów są tracone, więc jeśli ich potrzebujesz, rozważ ich zapisanie przed użyciem `shift`.
+- Możesz używać `shift` w połączeniu z innymi poleceniami, aby zbudować bardziej złożone skrypty przetwarzające argumenty.

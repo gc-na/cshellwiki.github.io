@@ -1,54 +1,53 @@
-# [Linux] Bash pr Kullanımı: Dosya içeriğini sayfalara ayırma
+# [Linux] C Shell (csh) pr kullanım: Dosya içeriğini biçimlendirme
 
-## Genel Bakış
-`pr` komutu, metin dosyalarını sayfalara ayırarak çıktı almayı sağlar. Genellikle yazdırma işlemleri için dosyaların daha okunabilir bir formatta sunulmasına yardımcı olur.
+## Overview
+`pr` komutu, metin dosyalarını biçimlendirmek ve çıktılarını sayfalara ayırmak için kullanılır. Bu komut, özellikle yazdırma işlemleri için dosyaların daha okunabilir hale getirilmesine yardımcı olur.
 
-## Kullanım
-Temel sözdizimi şu şekildedir:
-```bash
-pr [seçenekler] [argümanlar]
+## Usage
+Temel sözdizimi aşağıdaki gibidir:
+
+```csh
+pr [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-h`: Başlık ekler.
-- `-l [satır sayısı]`: Her sayfada gösterilecek satır sayısını belirler.
-- `-w [genişlik]`: Sayfanın genişliğini ayarlar.
-- `-t`: Başlık ve sayfa numarası olmadan çıktı verir.
+## Common Options
+- `-l <satır sayısı>`: Her sayfada gösterilecek satır sayısını belirler.
+- `-w <genişlik>`: Çıktının genişliğini ayarlar.
+- `-t`: Başlık ve sayfa numarası eklemeden çıktı verir.
+- `-s <karakter>`: Sayfalar arasındaki boşluğu belirler.
 
-## Yaygın Örnekler
-Aşağıda `pr` komutunun bazı pratik örnekleri bulunmaktadır:
+## Common Examples
+Aşağıda `pr` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
-### 1. Basit Kullanım
-Bir metin dosyasını varsayılan ayarlarla sayfalara ayırmak için:
-```bash
-pr dosya.txt
-```
+1. **Temel kullanım**: Bir dosyayı biçimlendirmek için.
+   ```csh
+   pr dosya.txt
+   ```
 
-### 2. Başlık Ekleme
-Başlık ekleyerek dosyayı sayfalara ayırmak için:
-```bash
-pr -h "Başlık" dosya.txt
-```
+2. **Satır sayısını ayarlamak**: Her sayfada 30 satır göstermek için.
+   ```csh
+   pr -l 30 dosya.txt
+   ```
 
-### 3. Sayfa Uzunluğunu Ayarlama
-Her sayfada 20 satır göstermek için:
-```bash
-pr -l 20 dosya.txt
-```
+3. **Genişliği ayarlamak**: Çıktının genişliğini 80 karakter yapmak için.
+   ```csh
+   pr -w 80 dosya.txt
+   ```
 
-### 4. Sayfa Genişliğini Ayarlama
-Sayfa genişliğini 100 karakter olarak ayarlamak için:
-```bash
-pr -w 100 dosya.txt
-```
+4. **Başlık olmadan çıktı almak**: Başlık ve sayfa numarası olmadan çıktı almak için.
+   ```csh
+   pr -t dosya.txt
+   ```
 
-### 5. Başlık ve Sayfa Numarası Olmadan Çıktı
-Başlık ve sayfa numarası olmadan çıktı almak için:
-```bash
-pr -t dosya.txt
-```
+5. **Sayfalar arasındaki boşluğu ayarlamak**: Sayfalar arasındaki boşluğu bir boşluk karakteri ile ayarlamak için.
+   ```csh
+   pr -s " " dosya.txt
+   ```
 
-## İpuçları
-- `pr` komutunu yazdırma işlemlerinden önce kullanarak çıktıyı daha okunabilir hale getirebilirsiniz.
-- Uzun dosyalar için sayfa uzunluğunu ayarlamak, çıktıyı daha düzenli hale getirebilir.
-- Farklı seçenekleri bir arada kullanarak çıktıyı özelleştirebilirsiniz; örneğin, hem başlık ekleyip hem de sayfa uzunluğunu ayarlayabilirsiniz.
+## Tips
+- `pr` komutunu kullanmadan önce dosyanızın içeriğini kontrol edin, böylece biçimlendirme işlemi sırasında beklenmedik sonuçlarla karşılaşmazsınız.
+- Çıktıyı bir dosyaya yönlendirmek için `>` operatörünü kullanabilirsiniz. Örneğin:
+  ```csh
+  pr dosya.txt > cikti.txt
+  ```
+- `man pr` komutunu kullanarak `pr` hakkında daha fazla bilgi edinebilirsiniz.

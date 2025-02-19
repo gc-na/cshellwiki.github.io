@@ -1,53 +1,50 @@
-# [Linux] Bash shutdown uso: Shut down or restart the system
+# [Linux] C Shell (csh) shutdown用法: 关闭系统
 
 ## Overview
-The `shutdown` command in Bash is used to turn off or restart a computer safely. It allows users to schedule a shutdown or reboot, ensuring that all processes are terminated properly and that data is saved.
+The `shutdown` command in C Shell (csh) is used to safely bring the system down. It allows users to halt, power off, or reboot the machine, ensuring that all processes are terminated properly and that data is not lost.
 
 ## Usage
 The basic syntax of the `shutdown` command is as follows:
 
-```bash
-shutdown [options] [time] [message]
+```
+shutdown [options] [arguments]
 ```
 
 ## Common Options
-- `-h` or `--halt`: Halts the system after shutdown.
-- `-r` or `--reboot`: Reboots the system after shutdown.
-- `-P` or `--poweroff`: Powers off the system after shutdown.
-- `now`: Specifies that the shutdown should occur immediately.
-- `+m`: Schedules a shutdown in `m` minutes.
-- `hh:mm`: Schedules a shutdown at a specific time.
+- `-h`: Halt the system.
+- `-r`: Reboot the system after shutdown.
+- `-k`: Send a warning message without actually shutting down.
+- `time`: Specify when to shut down (e.g., `now`, `+5` for 5 minutes later).
+- `message`: Send a custom message to users before shutdown.
 
 ## Common Examples
-Here are some practical examples of how to use the `shutdown` command:
-
-1. **Immediate Shutdown:**
-   ```bash
-   shutdown now
+1. **Halt the system immediately:**
+   ```csh
+   shutdown -h now
    ```
 
-2. **Scheduled Shutdown in 10 Minutes:**
-   ```bash
-   shutdown +10
+2. **Reboot the system after 5 minutes:**
+   ```csh
+   shutdown -r +5
    ```
 
-3. **Reboot the System Immediately:**
-   ```bash
-   shutdown -r now
+3. **Send a warning message and halt the system:**
+   ```csh
+   shutdown -h now "System will be shutting down for maintenance."
    ```
 
-4. **Shutdown at a Specific Time (e.g., 10:30 PM):**
-   ```bash
-   shutdown 22:30
+4. **Schedule a shutdown for 10 minutes later:**
+   ```csh
+   shutdown -h +10
    ```
 
-5. **Shutdown with a Custom Message:**
-   ```bash
-   shutdown +5 "System will shut down in 5 minutes. Please save your work."
+5. **Send a warning without shutting down:**
+   ```csh
+   shutdown -k now "Warning: System will shut down soon."
    ```
 
 ## Tips
-- Always inform users about an impending shutdown by including a message.
-- Use the `-h` option if you want to halt the system without rebooting.
-- To cancel a scheduled shutdown, use the command `shutdown -c`.
-- Consider using `shutdown -r` for maintenance tasks that require a reboot after updates.
+- Always notify users before shutting down the system to prevent data loss.
+- Use the `-k` option to warn users without actually shutting down, allowing you to gauge their response.
+- Schedule shutdowns during off-peak hours to minimize disruption to users.
+- Regularly check for unsaved work from users before proceeding with a shutdown.

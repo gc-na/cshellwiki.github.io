@@ -1,53 +1,52 @@
-# [Linux] Bash sleep Uso: Pausar a execução de scripts
+# [Linux] C Shell (csh) sleep Uso: Pausar a execução de um script
 
 ## Overview
-O comando `sleep` é utilizado para pausar a execução de um script ou comando por um período de tempo especificado. É útil em situações onde você deseja atrasar a execução de um comando subsequente ou criar intervalos entre as operações.
+O comando `sleep` é utilizado para pausar a execução de um script ou de um comando por um determinado período de tempo. Isso é útil em várias situações, como quando você deseja criar intervalos entre comandos ou aguardar a conclusão de processos.
 
 ## Usage
 A sintaxe básica do comando `sleep` é a seguinte:
 
-```bash
+```
 sleep [opções] [tempo]
 ```
 
-Onde `tempo` pode ser especificado em segundos, minutos, horas ou dias.
-
 ## Common Options
-- `-s`: Faz com que o comando `sleep` funcione em modo silencioso, sem produzir saída.
-- `-h`: Exibe a ajuda do comando.
+O comando `sleep` possui algumas opções, embora a maioria das vezes seja utilizado com apenas o tempo. Aqui estão algumas opções comuns:
+
+- `tempo`: O número de segundos que o comando deve pausar. Você pode especificar o tempo em segundos, minutos (sufixo `m`), horas (sufixo `h`) ou dias (sufixo `d`).
 
 ## Common Examples
+
 Aqui estão alguns exemplos práticos do uso do comando `sleep`:
 
 1. **Pausar por 5 segundos:**
-   ```bash
+   ```csh
    sleep 5
    ```
 
 2. **Pausar por 2 minutos:**
-   ```bash
+   ```csh
    sleep 2m
    ```
 
 3. **Pausar por 1 hora:**
-   ```bash
+   ```csh
    sleep 1h
    ```
 
 4. **Pausar por 3 dias:**
-   ```bash
+   ```csh
    sleep 3d
    ```
 
-5. **Usando sleep em um script:**
-   ```bash
-   #!/bin/bash
+5. **Usar sleep em um script:**
+   ```csh
    echo "Iniciando o processo..."
    sleep 10
-   echo "Processo concluído após 10 segundos."
+   echo "Processo concluído."
    ```
 
 ## Tips
-- Utilize `sleep` em scripts para evitar sobrecarga em loops, permitindo que o sistema tenha tempo para processar outras tarefas.
-- Combine `sleep` com outros comandos em scripts para criar delays entre operações, como em backups ou atualizações.
-- Lembre-se de que o tempo pode ser especificado em frações, como `0.5` para meio segundo, o que pode ser útil em situações que exigem precisão.
+- Utilize `sleep` para evitar sobrecarga em sistemas que executam tarefas em sequência.
+- Combine `sleep` com loops para criar intervalos regulares entre as execuções de comandos.
+- Lembre-se de que o tempo é especificado em segundos por padrão, então use os sufixos adequados para tempos maiores.

@@ -1,41 +1,41 @@
-# [Linux] Bash write uso equivalente: Enviar mensajes a otros usuarios
+# [Unix] C Shell (csh) write uso: Enviar mensajes a otros usuarios
 
 ## Overview
-El comando `write` en Bash se utiliza para enviar mensajes de texto a otros usuarios que están conectados al mismo sistema. Es una herramienta útil para la comunicación rápida entre usuarios en entornos multiusuario.
+El comando `write` en C Shell (csh) permite enviar mensajes de texto a otros usuarios que están conectados al mismo sistema. Es una herramienta útil para la comunicación rápida entre usuarios en entornos multiusuario.
 
 ## Usage
-La sintaxis básica del comando es la siguiente:
+La sintaxis básica del comando `write` es la siguiente:
 
-```bash
-write [usuario] [tty]
+```
+write [opciones] [usuario] [terminal]
 ```
 
-Donde `[usuario]` es el nombre del usuario al que deseas enviar el mensaje y `[tty]` es el terminal específico (opcional).
-
 ## Common Options
-- `-n`: No espera a que el usuario esté listo para recibir el mensaje.
-- `-h`: No muestra el mensaje de "escribiendo" al destinatario.
+- `-n`: No envía un mensaje de notificación al usuario que recibe el mensaje.
+- `-h`: Muestra un mensaje de ayuda con información sobre el uso del comando.
 
 ## Common Examples
-1. Enviar un mensaje a un usuario específico:
-   ```bash
-   write juan
-   ```
-   Luego de ejecutar este comando, puedes escribir tu mensaje y presionar `Ctrl+D` para enviarlo.
+Aquí hay algunos ejemplos prácticos del uso del comando `write`:
 
-2. Enviar un mensaje a un usuario en un terminal específico:
-   ```bash
+1. **Enviar un mensaje a un usuario específico:**
+   ```csh
    write juan pts/1
    ```
-   Esto enviará el mensaje a Juan que está conectado en el terminal `pts/1`.
+   Este comando enviará un mensaje al usuario "juan" que está conectado en la terminal "pts/1".
 
-3. Usar la opción `-n` para enviar un mensaje sin esperar:
-   ```bash
-   write -n juan
+2. **Enviar un mensaje sin notificación:**
+   ```csh
+   write -n juan pts/1
    ```
-   Esto permite enviar el mensaje inmediatamente sin esperar a que Juan esté listo.
+   Este comando envía un mensaje a "juan" sin mostrar una notificación.
+
+3. **Enviar un mensaje a un usuario en su terminal predeterminada:**
+   ```csh
+   write juan
+   ```
+   Si "juan" está conectado, el mensaje se enviará a su terminal activa.
 
 ## Tips
-- Asegúrate de que el usuario al que deseas enviar el mensaje esté conectado y tenga permisos para recibir mensajes.
-- Puedes usar `who` para ver qué usuarios están conectados y en qué terminales.
-- Recuerda que el destinatario puede silenciar los mensajes usando el comando `mesg n`, así que verifica si está disponible para recibir tus mensajes.
+- Asegúrate de que el usuario al que deseas enviar el mensaje esté conectado y tenga su terminal abierta.
+- Utiliza el comando `who` para verificar qué usuarios están actualmente conectados y en qué terminales.
+- Recuerda que el mensaje se enviará en tiempo real, así que asegúrate de que el contenido sea apropiado y claro.

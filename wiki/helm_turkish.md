@@ -1,51 +1,50 @@
-# [Linux] Bash helm kullanımı: Helm, Kubernetes uygulamalarını yönetmek için bir paket yöneticisidir.
+# [Linux] C Shell (csh) helm kullanımı: Helm, Kubernetes uygulamalarını yönetmek için kullanılan bir paket yöneticisidir.
 
-## Overview
-Helm, Kubernetes üzerinde uygulamaları yönetmek için kullanılan bir paket yöneticisidir. Helm, uygulamaların dağıtımını, güncellenmesini ve yönetimini kolaylaştırır. Helm ile uygulama paketleri "chart" adı verilen yapılandırma dosyaları olarak tanımlanır.
+## Genel Bakış
+Helm, Kubernetes üzerinde uygulama yönetimini kolaylaştıran bir paket yöneticisidir. Helm, uygulamaları paketler (chart olarak adlandırılır) ve bu paketlerin dağıtımını, güncellenmesini ve yönetimini basit hale getirir.
 
-## Usage
-Helm komutunun temel sözdizimi aşağıdaki gibidir:
-
-```bash
+## Kullanım
+Temel sözdizimi aşağıdaki gibidir:
+```csh
 helm [options] [arguments]
 ```
 
-## Common Options
-- `install`: Bir chart'ı yüklemek için kullanılır.
-- `upgrade`: Mevcut bir release'i güncellemek için kullanılır.
-- `uninstall`: Bir release'i kaldırmak için kullanılır.
-- `list`: Yüklenmiş olan release'lerin listesini gösterir.
-- `repo`: Helm repository'lerini yönetmek için kullanılır.
+## Yaygın Seçenekler
+- `install`: Yeni bir uygulama yüklemek için kullanılır.
+- `upgrade`: Mevcut bir uygulamayı güncellemek için kullanılır.
+- `rollback`: Uygulamanın önceki bir sürümüne geri dönmek için kullanılır.
+- `list`: Yüklenmiş uygulamaların listesini gösterir.
+- `uninstall`: Yüklenmiş bir uygulamayı kaldırır.
 
-## Common Examples
-Aşağıda helm komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+## Yaygın Örnekler
+Aşağıda helm komutunun bazı pratik örnekleri verilmiştir:
 
-1. **Chart Yüklemek:**
-   ```bash
-   helm install my-release my-chart
-   ```
+### Uygulama Yükleme
+```csh
+helm install my-app ./my-app-chart
+```
 
-2. **Release Güncellemek:**
-   ```bash
-   helm upgrade my-release my-chart
-   ```
+### Uygulama Güncelleme
+```csh
+helm upgrade my-app ./my-app-chart
+```
 
-3. **Release Kaldırmak:**
-   ```bash
-   helm uninstall my-release
-   ```
+### Uygulama Geri Alma
+```csh
+helm rollback my-app 1
+```
 
-4. **Yüklenmiş Release'leri Listelemek:**
-   ```bash
-   helm list
-   ```
+### Yüklenmiş Uygulamaların Listesi
+```csh
+helm list
+```
 
-5. **Repository Ekleme:**
-   ```bash
-   helm repo add my-repo https://example.com/charts
-   ```
+### Uygulama Kaldırma
+```csh
+helm uninstall my-app
+```
 
-## Tips
-- Helm chart'larınızı versiyon kontrolü altında tutmak, güncellemeleri yönetmeyi kolaylaştırır.
-- Helm komutlarını çalıştırmadan önce `helm repo update` komutunu kullanarak repository'lerinizi güncel tutun.
-- Uygulama dağıtımında rollback (geri alma) işlemleri için `helm rollback` komutunu kullanmayı unutmayın.
+## İpuçları
+- Helm chart'larınızı düzenli olarak güncelleyin ve sürüm kontrolü yapın.
+- Helm komutlarını çalıştırmadan önce Kubernetes kümenizin durumunu kontrol edin.
+- Helm'in resmi belgelerini inceleyerek daha fazla bilgi edinin ve yeni özelliklerden haberdar olun.

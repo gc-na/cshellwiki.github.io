@@ -1,47 +1,45 @@
-# [Linux] Bash türü kullanımı: Komutun türünü belirleme
+# [Unix] C Shell (csh) türü komutu: [komut türünü belirleme]
 
 ## Genel Bakış
-`type` komutu, bir komutun veya bir programın türünü belirlemek için kullanılır. Bu komut, belirtilen bir komutun yerel bir shell komutu, bir alias, bir fonksiyon veya bir dış program olup olmadığını gösterir.
+`type` komutu, bir komutun veya bir değişkenin hangi türde olduğunu belirlemek için kullanılır. Bu, komutun yerleşik mi yoksa kullanıcı tanımlı mı olduğunu anlamaya yardımcı olur.
 
 ## Kullanım
-Temel sözdizimi şu şekildedir:
-```
-type [seçenekler] [argümanlar]
+Temel sözdizimi aşağıdaki gibidir:
+
+```csh
+type [options] [arguments]
 ```
 
 ## Yaygın Seçenekler
-- `-t`: Komutun türünü yalnızca gösterir. 
-- `-a`: Belirtilen komutun tüm konumlarını listeler.
+- `-t`: Komutun türünü sadece isim olarak döndürür.
+- `-a`: Komutun tüm tanımlarını gösterir, yani hem yerleşik hem de kullanıcı tanımlı olanları.
 - `-p`: Komutun tam yolunu gösterir.
 
 ## Yaygın Örnekler
-Aşağıda `type` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+Aşağıda `type` komutunun bazı pratik örnekleri bulunmaktadır:
 
-### 1. Basit Kullanım
-Bir komutun türünü öğrenmek için:
-```bash
-type ls
-```
+1. Bir komutun türünü öğrenmek:
+   ```csh
+   type ls
+   ```
 
-### 2. Komutun Tam Yolunu Gösterme
-Bir komutun tam yolunu görmek için:
-```bash
-type -p bash
-```
+2. Bir değişkenin türünü kontrol etmek:
+   ```csh
+   set myVar = "Hello"
+   type myVar
+   ```
 
-### 3. Tüm Konumları Listeleme
-Bir komutun tüm konumlarını listelemek için:
-```bash
-type -a python
-```
+3. Tüm tanımları görmek:
+   ```csh
+   type -a echo
+   ```
 
-### 4. Alias Kontrolü
-Bir alias olup olmadığını kontrol etmek için:
-```bash
-type ll
-```
+4. Bir komutun tam yolunu bulmak:
+   ```csh
+   type -p grep
+   ```
 
 ## İpuçları
-- `type` komutunu, bir komutun hangi türde olduğunu hızlıca öğrenmek için sıkça kullanabilirsiniz.
-- Özellikle karmaşık shell ortamlarında, hangi komutların alias veya fonksiyon olduğunu anlamak için `type -a` seçeneği faydalıdır.
-- Eğer bir komutun hangi dosya yolundan çalıştığını merak ediyorsanız, `type -p` seçeneğini kullanmak en iyi yoldur.
+- `type` komutunu kullanarak, hangi komutların yerleşik olduğunu ve hangilerinin kullanıcı tanımlı olduğunu kolayca ayırt edebilirsiniz.
+- Komutların tam yollarını bulmak, özellikle birden fazla versiyonun bulunduğu sistemlerde faydalıdır.
+- `type` komutunu sıkça kullanarak, terminaldeki komutlarınızın nasıl çalıştığını daha iyi anlayabilirsiniz.

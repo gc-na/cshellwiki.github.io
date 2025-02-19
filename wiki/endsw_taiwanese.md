@@ -1,45 +1,54 @@
-# [台灣] Bash endsw 用法: 結束程序
+# [台灣] C Shell (csh) endsw 用法: 結束條件語句
 
 ## Overview
-`endsw` 命令用來結束正在運行的程序或進程。這個命令通常用於需要強制終止某個進程的情況。
+`endsw` 命令用於結束一個條件語句，通常與 `switch` 命令一起使用，來控制程式的流程。
 
 ## Usage
 基本語法如下：
 ```
-endsw [options] [arguments]
+endsw
 ```
 
 ## Common Options
-- `-h`, `--help`: 顯示幫助信息。
-- `-v`, `--version`: 顯示版本信息。
-- `-f`, `--force`: 強制終止進程，即使它不響應。
+`endsw` 命令本身沒有特定的選項，主要用於結束 `switch` 語句。
 
 ## Common Examples
 以下是一些常見的使用範例：
 
-1. 結束一個特定的進程：
-   ```bash
-   endsw 1234
-   ```
-   這裡的 `1234` 是進程的 ID。
+### 範例 1: 基本的 switch 語句
+```csh
+set var = "apple"
+switch ($var)
+    case "apple":
+        echo "這是蘋果"
+        breaksw
+    case "banana":
+        echo "這是香蕉"
+        breaksw
+    default:
+        echo "未知的水果"
+endsw
+```
 
-2. 強制結束一個進程：
-   ```bash
-   endsw -f 5678
-   ```
-   這裡的 `5678` 是另一個進程的 ID，使用 `-f` 選項強制終止。
-
-3. 查看幫助信息：
-   ```bash
-   endsw --help
-   ```
-
-4. 查看版本信息：
-   ```bash
-   endsw --version
-   ```
+### 範例 2: 使用 switch 來判斷數字
+```csh
+set num = 2
+switch ($num)
+    case 1:
+        echo "數字是一"
+        breaksw
+    case 2:
+        echo "數字是二"
+        breaksw
+    case 3:
+        echo "數字是三"
+        breaksw
+    default:
+        echo "數字不在範圍內"
+endsw
+```
 
 ## Tips
-- 在使用 `endsw` 結束進程之前，建議先確認該進程的 ID，以避免意外終止重要的系統進程。
-- 使用 `-f` 選項時要小心，因為這會強制終止進程，可能導致數據丟失或其他問題。
-- 定期檢查系統進程，確保不必要的進程不會佔用系統資源。
+- 確保 `endsw` 在 `switch` 語句的結尾，這樣才能正確結束條件判斷。
+- 使用 `breaksw` 來提前結束某個 case 的執行，然後再使用 `endsw` 來結束整個 `switch` 語句。
+- 在複雜的條件判斷中，可以使用註解來提高可讀性，幫助未來的維護。

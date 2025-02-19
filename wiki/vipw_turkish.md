@@ -1,36 +1,37 @@
-# [Linux] Bash vipw Kullanımı: Kullanıcı parolalarını düzenleme
+# [Linux] C Shell (csh) vipw Kullanımı: Kullanıcı hesaplarını düzenleme
 
-## Overview
-`vipw` komutu, sistemdeki kullanıcı parolalarını ve kullanıcı bilgilerini güvenli bir şekilde düzenlemek için kullanılır. Bu komut, `/etc/passwd` ve `/etc/shadow` dosyalarını düzenlemek için bir metin düzenleyici açar ve bu dosyaların kilitlenmesini sağlar, böylece başka bir işlem tarafından değiştirilmez.
+## Genel Bakış
+`vipw` komutu, sistemdeki kullanıcı hesaplarının şifreli bilgilerini düzenlemek için kullanılır. Bu komut, `/etc/passwd` ve `/etc/shadow` dosyalarını güvenli bir şekilde düzenlemenizi sağlar. `vipw`, bu dosyaları düzenlerken dosyaların kilitlenmesini sağlayarak, aynı anda birden fazla kullanıcının bu dosyaları değiştirmesini önler.
 
-## Usage
-Temel kullanım şekli aşağıdaki gibidir:
-
-```bash
-vipw [options]
+## Kullanım
+Temel sözdizimi aşağıdaki gibidir:
+```csh
+vipw [seçenekler] [argümanlar]
 ```
 
-## Common Options
+## Yaygın Seçenekler
 - `-s`: `/etc/shadow` dosyasını düzenlemek için kullanılır.
-- `-h`: Yardım mesajını gösterir.
+- `-u`: Kullanıcı bilgilerini güncellemek için kullanılır.
 
-## Common Examples
-1. Kullanıcı bilgilerini düzenlemek için `vipw` komutunu çalıştırmak:
-   ```bash
+## Yaygın Örnekler
+Aşağıda `vipw` komutunun bazı pratik kullanımları verilmiştir:
+
+1. Kullanıcı bilgilerini düzenlemek için:
+   ```csh
    vipw
    ```
 
-2. Parola dosyasını düzenlemek için `vipw` komutunu `-s` seçeneği ile kullanmak:
-   ```bash
+2. Şifre dosyasını düzenlemek için:
+   ```csh
    vipw -s
    ```
 
-3. Yardım mesajını görüntülemek için:
-   ```bash
-   vipw -h
+3. Belirli bir kullanıcıyı güncellemek için:
+   ```csh
+   vipw -u kullanıcı_adı
    ```
 
-## Tips
-- `vipw` komutunu kullanmadan önce, sistemdeki kullanıcı bilgilerini yedeklemek iyi bir uygulamadır.
-- Düzenleme işlemi sırasında dikkatli olun; yanlış bir değişiklik, kullanıcıların sisteme giriş yapmasını engelleyebilir.
-- `vipw` komutunu yalnızca root kullanıcısı veya gerekli yetkilere sahip kullanıcılar kullanmalıdır.
+## İpuçları
+- `vipw` komutunu kullanmadan önce, dosyaların yedeğini almak iyi bir uygulamadır.
+- Komutu çalıştırmadan önce, başka bir terminalde bu dosyaları açmamaya dikkat edin.
+- Değişikliklerinizi kaydettikten sonra, sistemin kullanıcı bilgilerini güncelleyebilmesi için gerekli izinlere sahip olduğunuzdan emin olun.

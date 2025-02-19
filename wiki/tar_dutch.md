@@ -1,61 +1,53 @@
-# [Linux] Bash tar gebruik: Bestanden archiveren en comprimeren
+# [Linux] C Shell (csh) tar Gebruik: Archiveren en comprimeren van bestanden
 
 ## Overzicht
-De `tar`-opdracht, wat staat voor "tape archive", is een veelgebruikte tool in Linux en andere Unix-achtige systemen voor het archiveren van bestanden. Het stelt gebruikers in staat om meerdere bestanden en mappen samen te voegen in één enkel archiefbestand, wat het beheer en de distributie vergemakkelijkt. Daarnaast kan `tar` ook worden gebruikt om bestanden te comprimeren.
+De `tar`-opdracht, wat staat voor "tape archive", wordt gebruikt om meerdere bestanden en mappen samen te voegen in één enkel archiefbestand. Dit is handig voor back-ups en het delen van bestanden.
 
 ## Gebruik
 De basis syntaxis van de `tar`-opdracht is als volgt:
 
-```bash
+```csh
 tar [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-Hier zijn enkele veelgebruikte opties voor de `tar`-opdracht:
-
 - `-c`: Maak een nieuw archief.
 - `-x`: Extraheer bestanden uit een archief.
-- `-f`: Specificeer de naam van het archiefbestand.
-- `-v`: Toon de voortgang (verbose mode).
+- `-f`: Geef de naam van het archiefbestand op.
+- `-v`: Toon gedetailleerde uitvoer (verbose).
 - `-z`: Comprimeer of decomprimeer met gzip.
-- `-j`: Comprimeer of decomprimeer met bzip2.
 
 ## Veelvoorkomende Voorbeelden
 
-### Een archief maken
-Om een archief te maken van een map genaamd `mijnmap` en het op te slaan als `mijnarchief.tar`, gebruik je:
+### 1. Een nieuw archief maken
+Om een archief genaamd `mijnbestanden.tar` te maken van de map `mijnmap`:
 
-```bash
-tar -cvf mijnarchief.tar mijnmap
+```csh
+tar -cvf mijnbestanden.tar mijnmap
 ```
 
-### Een archief extraheren
-Om een archief genaamd `mijnarchief.tar` te extraheren, gebruik je:
+### 2. Een archief extraheren
+Om de inhoud van `mijnbestanden.tar` te extraheren:
 
-```bash
-tar -xvf mijnarchief.tar
+```csh
+tar -xvf mijnbestanden.tar
 ```
 
-### Een gecomprimeerd archief maken met gzip
-Om een gecomprimeerd archief te maken met gzip, gebruik je:
+### 3. Een gecomprimeerd archief maken
+Om een gecomprimeerd archief met gzip te maken:
 
-```bash
-tar -czvf mijnarchief.tar.gz mijnmap
+```csh
+tar -czvf mijnbestanden.tar.gz mijnmap
 ```
 
-### Een gecomprimeerd archief extraheren met gzip
-Om een gecomprimeerd archief te extraheren, gebruik je:
+### 4. Een gecomprimeerd archief extraheren
+Om een gecomprimeerd archief te extraheren:
 
-```bash
-tar -xzvf mijnarchief.tar.gz
+```csh
+tar -xzvf mijnbestanden.tar.gz
 ```
 
 ## Tips
-- Gebruik de `-v` optie voor een duidelijke weergave van welke bestanden worden toegevoegd of geëxtraheerd.
-- Controleer altijd de inhoud van een archief met de `-t` optie voordat je het extraheert:
-
-  ```bash
-  tar -tvf mijnarchief.tar
-  ```
-
-- Overweeg om `gzip` of `bzip2` te gebruiken voor compressie om schijfruimte te besparen, vooral voor grote archieven.
+- Gebruik de `-v` optie voor gedetailleerde uitvoer, zodat je kunt zien welke bestanden worden verwerkt.
+- Controleer altijd de inhoud van een archief met `tar -tvf archief.tar` voordat je bestanden extraheert.
+- Overweeg om gecomprimeerde archieven te gebruiken om schijfruimte te besparen, vooral bij grote datasets.

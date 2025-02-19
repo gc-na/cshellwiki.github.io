@@ -1,48 +1,42 @@
-# [Linux] Bash yes Uso equivalente: Generate repeated output
+# [Linux] C Shell (csh) yes 用法: Repeatedly output a string
 
 ## Overview
-The `yes` command in Bash is a simple utility that outputs a string repeatedly until it is terminated. By default, it will print "y" continuously, which is often used to automate responses to prompts in scripts or command-line operations.
+The `yes` command in C Shell (csh) is used to output a string repeatedly until it is terminated. By default, it outputs the string "y" continuously. This command is often used in scripts or command pipelines to automatically respond to prompts.
 
 ## Usage
 The basic syntax of the `yes` command is as follows:
 
-```bash
+```csh
 yes [options] [arguments]
 ```
 
 ## Common Options
 - `-h`, `--help`: Display help information about the command.
 - `-V`, `--version`: Show the version of the `yes` command.
-- `--help`: Display a help message and exit.
 
 ## Common Examples
 
-1. **Default Usage**: Output "y" repeatedly.
-   ```bash
+1. **Default Usage**: Output "y" continuously.
+   ```csh
    yes
    ```
 
-2. **Output a Custom String**: Repeat a custom string, such as "Hello".
-   ```bash
-   yes "Hello"
+2. **Output a Custom String**: Output a custom string repeatedly.
+   ```csh
+   yes "I agree"
    ```
 
-3. **Limit the Number of Outputs**: Use `head` to limit the output to a specific number of lines.
-   ```bash
-   yes "Confirmed" | head -n 5
+3. **Pipe to Another Command**: Use `yes` to provide input to another command.
+   ```csh
+   yes | some_command
    ```
 
-4. **Automate Responses**: Use `yes` to automatically respond "y" to a command that requires confirmation.
-   ```bash
-   yes | rm -r my_directory
-   ```
-
-5. **Pipe Output to Another Command**: Use `yes` in combination with another command that requires repeated input.
-   ```bash
-   yes "yes" | some_command
+4. **Limit Output with `head`**: Limit the output to a certain number of lines.
+   ```csh
+   yes "Continue?" | head -n 5
    ```
 
 ## Tips
-- Be cautious when using `yes` with commands that can delete files or make significant changes, as it will automatically confirm any prompts.
-- Combine `yes` with `head` or `tail` to control the number of repetitions and avoid overwhelming your terminal.
-- Use `yes` in scripts where you need to provide consistent input without manual intervention.
+- Use `yes` to automate responses in scripts where user interaction is required.
+- Be cautious when using `yes` in a terminal, as it can produce a large amount of output quickly. Consider redirecting the output to a file if needed.
+- Combine `yes` with other commands using pipes to create efficient workflows.

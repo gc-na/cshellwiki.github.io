@@ -1,54 +1,53 @@
-# [Linux] Bash stty utilisation : Configurer les paramètres du terminal
+# [Linux] C Shell (csh) stty : Configurer les paramètres du terminal
 
 ## Overview
-La commande `stty` est utilisée pour modifier et afficher les paramètres du terminal. Elle permet de configurer des options telles que le contrôle de flux, les caractères spéciaux, et d'autres comportements du terminal.
+La commande `stty` est utilisée pour modifier et afficher les paramètres du terminal dans le shell C. Elle permet de configurer des options telles que le contrôle de flux, les caractères spéciaux, et d'autres réglages liés à l'entrée et à la sortie du terminal.
 
 ## Usage
 La syntaxe de base de la commande `stty` est la suivante :
 
-```bash
+```csh
 stty [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes pour `stty` :
+Voici quelques options courantes pour la commande `stty` :
 
-- `-a` : Affiche tous les paramètres du terminal.
-- `-g` : Affiche les paramètres sous forme de chaîne que vous pouvez utiliser pour restaurer la configuration.
-- `erase` : Définit le caractère utilisé pour supprimer un caractère (généralement `^H` ou `Backspace`).
-- `kill` : Définit le caractère utilisé pour supprimer la ligne entière (généralement `^U`).
-- `intr` : Définit le caractère utilisé pour interrompre un processus (généralement `^C`).
+- `-a` : Affiche tous les paramètres actuels du terminal.
+- `-g` : Affiche les paramètres sous forme de chaîne, pouvant être réutilisés.
+- `erase` : Définit le caractère utilisé pour effacer le dernier caractère.
+- `kill` : Définit le caractère utilisé pour supprimer la ligne en cours.
+- `intr` : Définit le caractère d'interruption (habituellement Ctrl+C).
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de `stty` :
+Voici quelques exemples pratiques de l'utilisation de la commande `stty` :
 
-1. **Afficher les paramètres actuels du terminal :**
-
-   ```bash
+1. **Afficher tous les paramètres du terminal :**
+   ```csh
    stty -a
    ```
 
-2. **Changer le caractère d'effacement à `^H` :**
-
-   ```bash
+2. **Changer le caractère d'effacement à `^H` (backspace) :**
+   ```csh
    stty erase ^H
    ```
 
-3. **Modifier le caractère d'interruption à `^X` :**
-
-   ```bash
-   stty intr ^X
+3. **Définir le caractère d'interruption à `^C` :**
+   ```csh
+   stty intr ^C
    ```
 
-4. **Restaurer les paramètres du terminal à partir d'une chaîne :**
+4. **Sauvegarder les paramètres actuels dans une variable :**
+   ```csh
+   set params = `stty -g`
+   ```
 
-   ```bash
-   stty -g
-   # Copiez la chaîne affichée, puis utilisez-la comme suit :
-   stty $(<votre_chaine)
+5. **Restaurer les paramètres à partir d'une variable :**
+   ```csh
+   stty $params
    ```
 
 ## Tips
-- Utilisez `stty -a` pour vérifier les paramètres avant d'apporter des modifications, afin de savoir ce qui a été modifié.
-- Faites attention lorsque vous changez des caractères spéciaux, car cela peut affecter votre capacité à contrôler le terminal.
-- Si vous travaillez sur un script, envisagez d'utiliser `stty -g` pour sauvegarder les paramètres avant de les modifier, afin de pouvoir les restaurer facilement.
+- Utilisez `stty -g` pour sauvegarder les paramètres avant de faire des modifications, afin de pouvoir les restaurer facilement.
+- Vérifiez les paramètres du terminal après des modifications pour vous assurer qu'ils sont configurés comme prévu.
+- Soyez prudent lors de la modification des caractères spéciaux, car cela peut affecter le comportement de votre terminal.

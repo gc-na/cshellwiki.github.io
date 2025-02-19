@@ -1,43 +1,47 @@
-# [Linux] Bash watch Kullanımı: Komutların sürekli izlenmesi
+# [Linux] C Shell (csh) watch Kullanımı: Komutların sürekli izlenmesi
 
 ## Overview
-`watch` komutu, belirli bir komutu belirli aralıklarla çalıştırarak çıktısını sürekli olarak görüntülemenizi sağlar. Bu, sistem durumunu izlemek veya belirli bir komutun çıktısındaki değişiklikleri takip etmek için oldukça yararlıdır.
+`watch` komutu, belirli bir komutu belirli aralıklarla çalıştırarak çıktısını sürekli olarak izlemeye yarar. Bu, sistem durumunu veya belirli bir işlemi takip etmek için oldukça faydalıdır.
 
 ## Usage
-Temel kullanım şekli aşağıdaki gibidir:
-
-```
+Temel sözdizimi aşağıdaki gibidir:
+```csh
 watch [options] [arguments]
 ```
 
 ## Common Options
-- `-n, --interval`: Komutun ne sıklıkta çalıştırılacağını belirler (saniye cinsinden).
-- `-d, --differences`: Çıktıdaki değişiklikleri vurgular.
-- `-t, --no-title`: Başlık satırını gizler.
-- `-h, --help`: Yardım bilgilerini gösterir.
+- `-n <saniye>`: Komutun her ne kadar sürede bir çalıştırılacağını belirtir. Varsayılan olarak 2 saniyedir.
+- `-d`: Çıktıdaki değişiklikleri vurgular. Bu, hangi bilgilerin değiştiğini hızlıca görmenizi sağlar.
+- `-t`: Başlık satırını gizler. Çıktıyı daha temiz hale getirir.
 
 ## Common Examples
-1. Belirli bir dosyanın içeriğini her 2 saniyede bir kontrol etme:
-   ```bash
-   watch -n 2 cat /var/log/syslog
-   ```
+Aşağıda `watch` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
-2. Bir dizindeki dosya sayısını her 5 saniyede bir görüntüleme:
-   ```bash
-   watch -n 5 ls -1 | wc -l
+1. **Sistemin durumunu izlemek:**
+   ```csh
+   watch -n 5 uptime
    ```
+   Bu komut, her 5 saniyede bir sistemin çalışma süresini gösterir.
 
-3. Sistem kaynak kullanımını izleme:
-   ```bash
-   watch -d free -h
+2. **Disk kullanımını kontrol etmek:**
+   ```csh
+   watch -d df -h
    ```
+   Bu komut, disk kullanımını her 2 saniyede bir güncelleyerek değişiklikleri vurgular.
 
-4. Belirli bir servisin durumunu kontrol etme:
-   ```bash
-   watch -n 10 systemctl status apache2
+3. **Belirli bir dizindeki dosyaları izlemek:**
+   ```csh
+   watch ls -l /path/to/directory
    ```
+   Bu komut, belirtilen dizindeki dosyaların listesini sürekli olarak günceller.
+
+4. **Ağ bağlantı durumunu kontrol etmek:**
+   ```csh
+   watch -n 10 ping -c 1 google.com
+   ```
+   Bu komut, her 10 saniyede bir Google'a ping atarak bağlantı durumunu kontrol eder.
 
 ## Tips
-- `-d` seçeneğini kullanarak çıktınızdaki değişiklikleri kolayca fark edebilirsiniz.
-- İzlemek istediğiniz komutun çıktısının çok büyük olmamasına dikkat edin; aksi takdirde ekran karmaşıklaşabilir.
-- `-t` seçeneği ile başlık satırını gizleyerek daha fazla alan kazanabilirsiniz.
+- `watch` komutunu kullanırken, çok sık güncellemeler yapmaktan kaçının; bu, sistem kaynaklarını gereksiz yere tüketebilir.
+- Çıktıyı daha okunabilir hale getirmek için `-d` seçeneğini kullanarak değişiklikleri vurgulayabilirsiniz.
+- Komutun çıktısını kaydetmek isterseniz, `tee` komutunu kullanarak çıktıyı bir dosyaya yönlendirebilirsiniz.

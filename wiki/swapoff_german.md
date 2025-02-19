@@ -1,45 +1,39 @@
-# [Linux] Bash swapoff Verwendung: Deaktivieren von Swap-Speicher
+# [Linux] C Shell (csh) swapoff Verwendung: Deaktivieren von Swap-Speicher
 
 ## Übersicht
-Der Befehl `swapoff` wird verwendet, um den Swap-Speicher auf einem Linux-System zu deaktivieren. Swap-Speicher ist ein Bereich auf der Festplatte, der als Erweiterung des physischen RAMs dient. Durch das Deaktivieren von Swap kann das System gezwungen werden, mehr physische Ressourcen zu verwenden, was in bestimmten Situationen nützlich sein kann.
+Der Befehl `swapoff` wird verwendet, um den Swap-Speicher auf einem Linux-System zu deaktivieren. Swap-Speicher ist ein Bereich auf der Festplatte, der als virtueller Speicher dient, wenn der physische RAM voll ist. Das Deaktivieren von Swap kann nützlich sein, um die Leistung zu verbessern oder um sicherzustellen, dass bestimmte Prozesse nicht in den Swap-Speicher ausgelagert werden.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```csh
 swapoff [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-a`: Deaktiviert alle Swap-Geräte, die in der Datei `/etc/fstab` aufgeführt sind.
-- `-e`: Ignoriert Fehler, die beim Deaktivieren von Swap-Geräten auftreten können.
-- `-h`: Zeigt eine Hilfe-Seite mit Informationen zur Verwendung des Befehls an.
+- `-a`: Deaktiviert alle Swap-Geräte und -Dateien, die in der Datei `/etc/fstab` aufgeführt sind.
+- `-e`: Ignoriert Fehler und fährt mit der Deaktivierung fort.
+- `-h`: Zeigt eine Hilfe-Seite mit weiteren Informationen zu den Optionen an.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung des `swapoff`-Befehls:
+Hier sind einige praktische Beispiele für die Verwendung von `swapoff`:
 
 1. **Deaktivieren eines bestimmten Swap-Geräts:**
-   ```bash
-   swapoff /dev/sdX
+   ```csh
+   swapoff /dev/sda2
    ```
-   Ersetzen Sie `/dev/sdX` durch den tatsächlichen Swap-Gerätenamen.
 
 2. **Deaktivieren aller Swap-Geräte:**
-   ```bash
+   ```csh
    swapoff -a
    ```
 
-3. **Deaktivieren eines Swap-Dateis:**
-   ```bash
-   swapoff /swapfile
-   ```
-
-4. **Deaktivieren von Swap und Ignorieren von Fehlern:**
-   ```bash
-   swapoff -e /dev/sdX
+3. **Deaktivieren eines Swap-Datei mit Fehlerignorierung:**
+   ```csh
+   swapoff -e /swapfile
    ```
 
 ## Tipps
-- Stellen Sie sicher, dass genügend physischer RAM verfügbar ist, bevor Sie Swap deaktivieren, um Systeminstabilität zu vermeiden.
-- Verwenden Sie `free -h`, um den aktuellen Status von RAM und Swap zu überprüfen, bevor Sie Änderungen vornehmen.
-- Es ist ratsam, Swap nur während der Wartung oder bei speziellen Anforderungen zu deaktivieren, um die Systemleistung nicht zu beeinträchtigen.
+- Stellen Sie sicher, dass genügend physischer RAM verfügbar ist, bevor Sie Swap deaktivieren, um Leistungseinbußen zu vermeiden.
+- Überprüfen Sie den aktuellen Status des Swap-Speichers mit dem Befehl `swapon -s`, bevor Sie Änderungen vornehmen.
+- Verwenden Sie `swapoff` mit Bedacht, insbesondere auf Servern oder Systemen mit begrenztem RAM, um unerwartete Systemprobleme zu vermeiden.

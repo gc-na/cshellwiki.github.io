@@ -1,50 +1,50 @@
-# [Linux] Bash fmt Utilisation : Reformater le texte
+# [Linux] C Shell (csh) fmt <Utilisation équivalente>: Formater le texte
 
 ## Overview
-La commande `fmt` est utilisée pour reformater le texte en ajustant la largeur des lignes. Elle est particulièrement utile pour rendre le texte plus lisible en s'assurant que les lignes ne dépassent pas une certaine longueur.
+La commande `fmt` est utilisée pour reformater le texte en ajustant la largeur des lignes. Elle est particulièrement utile pour rendre le texte plus lisible en évitant les lignes trop longues.
 
 ## Usage
 La syntaxe de base de la commande `fmt` est la suivante :
 
-```bash
+```csh
 fmt [options] [arguments]
 ```
 
 ## Common Options
 Voici quelques options courantes pour la commande `fmt` :
 
-- `-w [largeur]` : Définit la largeur maximale des lignes (par défaut, 75 caractères).
+- `-w <largeur>` : Définit la largeur maximale des lignes (par défaut, 72 caractères).
 - `-s` : Supprime les lignes vides supplémentaires.
-- `-u` : Supprime les espaces supplémentaires entre les mots.
+- `-u` : Utilise un formatage unifié, ce qui signifie que les lignes sont justifiées à gauche.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `fmt` :
 
 1. Reformater un fichier texte avec la largeur par défaut :
 
-   ```bash
+   ```csh
    fmt mon_fichier.txt
    ```
 
-2. Reformater un fichier texte avec une largeur de 50 caractères :
+2. Spécifier une largeur de 50 caractères :
 
-   ```bash
+   ```csh
    fmt -w 50 mon_fichier.txt
    ```
 
-3. Supprimer les lignes vides supplémentaires d'un fichier :
+3. Supprimer les lignes vides supplémentaires :
 
-   ```bash
+   ```csh
    fmt -s mon_fichier.txt
    ```
 
-4. Reformater un texte en ligne de commande :
+4. Justifier le texte à gauche :
 
-   ```bash
-   echo "Ceci est un exemple de texte qui sera reformatté." | fmt
+   ```csh
+   fmt -u mon_fichier.txt
    ```
 
 ## Tips
-- Utilisez l'option `-w` pour ajuster la largeur selon vos besoins spécifiques.
-- Combinez `fmt` avec d'autres commandes comme `cat` ou `echo` pour traiter le texte en temps réel.
-- Vérifiez le contenu de votre fichier avant et après le formatage pour vous assurer que le résultat est conforme à vos attentes.
+- Utilisez `fmt` en combinaison avec d'autres commandes comme `cat` ou `more` pour visualiser le texte formaté directement dans le terminal.
+- Pour appliquer `fmt` à plusieurs fichiers, vous pouvez les lister tous dans la commande, par exemple : `fmt fichier1.txt fichier2.txt`.
+- Si vous souhaitez sauvegarder le texte formaté dans un nouveau fichier, vous pouvez rediriger la sortie : `fmt mon_fichier.txt > fichier_formaté.txt`.

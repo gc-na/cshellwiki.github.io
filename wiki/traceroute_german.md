@@ -1,50 +1,41 @@
-# [Linux] Bash traceroute Verwendung: Netzwerkpfade verfolgen
+# [Linux] C Shell (csh) traceroute Verwendung: Netzwerkpfade verfolgen
 
 ## Übersicht
-Der Befehl `traceroute` wird verwendet, um den Pfad zu verfolgen, den Datenpakete von einem Computer zu einem Zielhost im Netzwerk nehmen. Er zeigt die verschiedenen Router (Hops), die die Pakete durchlaufen, sowie die Zeit, die für jeden Hop benötigt wird.
+Der `traceroute`-Befehl wird verwendet, um den Netzwerkpfad zu einem bestimmten Ziel zu verfolgen. Er zeigt die Route an, die Pakete über verschiedene Router nehmen, und gibt Informationen über die Zeit, die für jeden Hop benötigt wird.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```csh
 traceroute [Optionen] [Ziel]
 ```
 
 ## Häufige Optionen
 - `-m <Hops>`: Legt die maximale Anzahl der Hops fest, die verfolgt werden sollen.
-- `-w <Sekunden>`: Setzt die Zeitüberschreitung für jeden Hop in Sekunden.
-- `-q <Anfragen>`: Bestimmt die Anzahl der Anfragen pro Hop.
-- `-n`: Verwendet IP-Adressen anstelle von Hostnamen zur Anzeige.
+- `-w <Sekunden>`: Bestimmt die Wartezeit für jede Antwort.
+- `-q <Anfragen>`: Gibt die Anzahl der Anfragen pro Hop an.
+- `-n`: Verwendet IP-Adressen anstelle von Hostnamen.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung von `traceroute`:
+Um die Route zu einer Website zu verfolgen, verwenden Sie:
 
-1. **Einfaches Traceroute zu einer Website**:
-   ```bash
-   traceroute www.example.com
-   ```
+```csh
+traceroute example.com
+```
 
-2. **Traceroute mit einer maximalen Hop-Anzahl von 15**:
-   ```bash
-   traceroute -m 15 www.example.com
-   ```
+Um die maximale Anzahl der Hops auf 15 zu beschränken, verwenden Sie:
 
-3. **Traceroute mit IP-Adressen anstelle von Hostnamen**:
-   ```bash
-   traceroute -n www.example.com
-   ```
+```csh
+traceroute -m 15 example.com
+```
 
-4. **Traceroute mit einer Zeitüberschreitung von 2 Sekunden**:
-   ```bash
-   traceroute -w 2 www.example.com
-   ```
+Um die IP-Adressen ohne Auflösung anzuzeigen, verwenden Sie:
 
-5. **Traceroute mit 3 Anfragen pro Hop**:
-   ```bash
-   traceroute -q 3 www.example.com
-   ```
+```csh
+traceroute -n example.com
+```
 
 ## Tipps
-- Verwenden Sie die Option `-n`, um die Ausführung zu beschleunigen, wenn Sie nur an den IP-Adressen interessiert sind.
-- Nutzen Sie die Option `-m`, um die Anzahl der Hops zu begrenzen und die Ausgabe zu steuern.
-- Achten Sie darauf, dass einige Firewalls oder Router ICMP-Pakete blockieren können, was zu unvollständigen Ergebnissen führen kann.
+- Verwenden Sie die `-w`-Option, um die Wartezeit anzupassen, wenn Sie langsame Verbindungen haben.
+- Testen Sie verschiedene Ziele, um ein besseres Verständnis für Ihre Netzwerkverbindungen zu erhalten.
+- Achten Sie darauf, dass einige Firewalls den `traceroute`-Verkehr blockieren können, was zu ungenauen Ergebnissen führen kann.

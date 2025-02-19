@@ -1,43 +1,47 @@
-# [Linux] Bash htop użycie: Monitorowanie procesów w czasie rzeczywistym
+# [Linux] C Shell (csh) htop użycie: Monitorowanie procesów systemowych
 
 ## Overview
-Polecenie `htop` to interaktywne narzędzie do monitorowania procesów w systemie Linux. Umożliwia użytkownikom przeglądanie aktywnych procesów, zużycia pamięci, obciążenia CPU oraz innych istotnych informacji w czasie rzeczywistym. W przeciwieństwie do tradycyjnego polecenia `top`, `htop` oferuje bardziej przyjazny interfejs graficzny oraz możliwość łatwej nawigacji.
+Polecenie `htop` jest interaktywnym narzędziem do monitorowania procesów w systemie Linux. Umożliwia użytkownikom przeglądanie aktywnych procesów w czasie rzeczywistym oraz zarządzanie nimi w bardziej przyjazny sposób niż tradycyjne narzędzie `top`.
 
 ## Usage
-Podstawowa składnia polecenia `htop` wygląda następująco:
+Podstawowa składnia polecenia `htop` jest następująca:
 
-```bash
+```csh
 htop [opcje] [argumenty]
 ```
 
 ## Common Options
+Oto kilka powszechnie używanych opcji dla polecenia `htop`:
+
 - `-h`, `--help`: Wyświetla pomoc i dostępne opcje.
-- `-s`, `--sort`: Umożliwia sortowanie procesów według wybranego kryterium (np. CPU, pamięć).
-- `-p`, `--pid`: Monitoruje tylko procesy o podanych identyfikatorach PID.
-- `-C`, `--no-color`: Uruchamia `htop` w trybie bez kolorów.
+- `-s`, `--sort`: Umożliwia sortowanie procesów według określonego kryterium, np. CPU lub pamięci.
+- `-p`, `--pid`: Monitoruje tylko procesy o podanym identyfikatorze PID.
+- `-u`, `--user`: Wyświetla procesy tylko dla określonego użytkownika.
 
 ## Common Examples
-1. **Uruchomienie htop**:
-   ```bash
+Oto kilka praktycznych przykładów użycia polecenia `htop`:
+
+1. Uruchomienie `htop` bez żadnych opcji:
+   ```csh
    htop
    ```
 
-2. **Sortowanie procesów według użycia CPU**:
-   ```bash
+2. Uruchomienie `htop` z sortowaniem według użycia CPU:
+   ```csh
    htop -s PERCENT_CPU
    ```
 
-3. **Monitorowanie konkretnego procesu za pomocą PID**:
-   ```bash
+3. Monitorowanie procesów dla konkretnego użytkownika:
+   ```csh
+   htop -u username
+   ```
+
+4. Monitorowanie konkretnego procesu za pomocą PID:
+   ```csh
    htop -p 1234
    ```
 
-4. **Wyświetlenie pomocy**:
-   ```bash
-   htop -h
-   ```
-
 ## Tips
-- Użyj klawiszy strzałek do nawigacji po liście procesów i `F9`, aby zakończyć wybrany proces.
-- Możesz zmieniać sortowanie procesów w czasie rzeczywistym, klikając na nagłówki kolumn.
-- Regularnie monitoruj obciążenie CPU i pamięci, aby zidentyfikować potencjalne problemy z wydajnością systemu.
+- Aby zakończyć działanie `htop`, naciśnij klawisz `q`.
+- Możesz używać klawiszy strzałek do nawigacji po procesach oraz klawisza `F9`, aby zakończyć wybrany proces.
+- Regularnie aktualizuj widok, naciskając klawisz `F5`, aby uzyskać najnowsze informacje o procesach.

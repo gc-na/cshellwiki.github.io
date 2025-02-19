@@ -1,55 +1,49 @@
-# [macOS] Bash brew kullanımı: Paket yönetimi aracı
+# [MacOS] C Shell (csh) brew kullanımı: Paket yönetimi aracı
 
 ## Genel Bakış
-`brew` komutu, macOS üzerinde yazılım paketlerini yönetmek için kullanılan bir araçtır. Homebrew adıyla bilinen bu paket yöneticisi, kullanıcıların kolayca yazılım yüklemesine, güncellemesine ve kaldırmasına olanak tanır.
+`brew` komutu, macOS üzerinde yazılım paketlerini yönetmek için kullanılan bir araçtır. Homebrew adıyla bilinen bu sistem, kullanıcıların kolayca yazılım yüklemesine, güncellemesine ve kaldırmasına olanak tanır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-```bash
+
+```csh
 brew [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
 - `install`: Belirtilen paketi yükler.
 - `uninstall`: Belirtilen paketi kaldırır.
-- `update`: Homebrew ve yüklü paketlerin güncellemelerini kontrol eder.
-- `upgrade`: Yüklü paketleri en son sürüme günceller.
+- `update`: Homebrew ve tüm paketlerin güncellemelerini kontrol eder.
+- `upgrade`: Yüklenmiş olan tüm paketleri günceller.
 - `list`: Yüklenmiş paketlerin listesini gösterir.
 
 ## Yaygın Örnekler
-Aşağıda `brew` komutunun bazı pratik kullanımları verilmiştir:
+1. Bir paketi yüklemek için:
+   ```csh
+   brew install git
+   ```
 
-### 1. Bir paket yüklemek
-```bash
-brew install wget
-```
-Bu komut, `wget` adlı paketi yükler.
+2. Bir paketi kaldırmak için:
+   ```csh
+   brew uninstall git
+   ```
 
-### 2. Bir paketi kaldırmak
-```bash
-brew uninstall wget
-```
-Bu komut, daha önce yüklenmiş olan `wget` paketini kaldırır.
+3. Homebrew'u güncellemek için:
+   ```csh
+   brew update
+   ```
 
-### 3. Paket güncellemelerini kontrol etmek
-```bash
-brew update
-```
-Bu komut, Homebrew ve yüklü paketlerin güncellemelerini kontrol eder.
+4. Tüm paketleri güncellemek için:
+   ```csh
+   brew upgrade
+   ```
 
-### 4. Yüklü paketleri güncellemek
-```bash
-brew upgrade
-```
-Bu komut, sistemde yüklü olan tüm paketleri en son sürümlerine günceller.
-
-### 5. Yüklenmiş paketlerin listesini görüntülemek
-```bash
-brew list
-```
-Bu komut, sistemde yüklü olan tüm Homebrew paketlerini listeler.
+5. Yüklenmiş paketlerin listesini görüntülemek için:
+   ```csh
+   brew list
+   ```
 
 ## İpuçları
-- Homebrew'ü güncel tutmak için düzenli olarak `brew update` komutunu çalıştırın.
-- Yüklemek istediğiniz paketlerin bağımlılıklarını kontrol etmek için `brew info [paket_adı]` komutunu kullanın.
-- Paketleri kaldırmadan önce, hangi dosyaların yüklendiğini görmek için `brew list [paket_adı]` komutunu kullanabilirsiniz.
+- `brew doctor` komutunu kullanarak Homebrew kurulumunuzda olası sorunları kontrol edebilirsiniz.
+- Paketlerin güncel kalmasını sağlamak için düzenli olarak `brew update` ve `brew upgrade` komutlarını çalıştırın.
+- Yüklemek istediğiniz paketlerin bağımlılıklarını otomatik olarak yöneteceğinden, `brew` kullanmak, yazılım yükleme süreçlerini kolaylaştırır.

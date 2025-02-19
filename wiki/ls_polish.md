@@ -1,58 +1,50 @@
-# [Linux] Bash ls użycie: wyświetlanie zawartości katalogu
+# [Linux] C Shell (csh) ls użycie: wyświetlanie zawartości katalogu
 
-## Overview
-Polecenie `ls` służy do wyświetlania zawartości katalogu. Umożliwia użytkownikom przeglądanie plików i podkatalogów w danym folderze, co jest przydatne do zarządzania plikami w systemie.
+## Przegląd
+Polecenie `ls` w C Shell (csh) służy do wyświetlania zawartości katalogu. Umożliwia użytkownikom przeglądanie plików i folderów znajdujących się w danym katalogu, a także dostarcza informacji o ich atrybutach.
 
-## Usage
-Podstawowa składnia polecenia `ls` wygląda następująco:
+## Użycie
+Podstawowa składnia polecenia `ls` jest następująca:
 
-```bash
+```csh
 ls [opcje] [argumenty]
 ```
 
-## Common Options
-Oto kilka powszechnie używanych opcji dla polecenia `ls`:
+## Często używane opcje
+- `-l`: Wyświetla szczegółowy format listy, pokazując dodatkowe informacje o plikach, takie jak uprawnienia, właściciel, rozmiar i data modyfikacji.
+- `-a`: Wyświetla wszystkie pliki, w tym ukryte pliki (zaczynające się od kropki).
+- `-h`: Wyświetla rozmiary plików w formacie czytelnym dla człowieka (np. KB, MB).
+- `-R`: Rekurencyjnie wyświetla zawartość wszystkich podkatalogów.
 
-- `-l`: Wyświetla szczegółowe informacje o plikach, w tym uprawnienia, właściciela, rozmiar i datę modyfikacji.
-- `-a`: Pokazuje wszystkie pliki, w tym ukryte (zaczynające się od kropki).
-- `-h`: Wyświetla rozmiary plików w formacie czytelnym dla ludzi (np. KB, MB).
-- `-R`: Rekursywnie wyświetla zawartość podkatalogów.
-- `-t`: Sortuje pliki według daty modyfikacji, najnowsze na górze.
-
-## Common Examples
+## Przykłady
 Oto kilka praktycznych przykładów użycia polecenia `ls`:
 
 1. Wyświetlenie zawartości bieżącego katalogu:
-   ```bash
+   ```csh
    ls
    ```
 
-2. Wyświetlenie szczegółowych informacji o plikach:
-   ```bash
+2. Wyświetlenie szczegółowej listy plików:
+   ```csh
    ls -l
    ```
 
 3. Wyświetlenie wszystkich plików, w tym ukrytych:
-   ```bash
+   ```csh
    ls -a
    ```
 
-4. Wyświetlenie zawartości katalogu z rozmiarami w formacie czytelnym:
-   ```bash
+4. Wyświetlenie rozmiarów plików w formacie czytelnym dla człowieka:
+   ```csh
    ls -lh
    ```
 
-5. Rekursywne wyświetlenie zawartości katalogu:
-   ```bash
+5. Rekurencyjne wyświetlenie zawartości katalogu i podkatalogów:
+   ```csh
    ls -R
    ```
 
-6. Sortowanie plików według daty modyfikacji:
-   ```bash
-   ls -lt
-   ```
-
-## Tips
-- Używaj opcji `-lh`, aby łatwiej odczytać rozmiary plików.
+## Wskazówki
+- Używaj opcji `-l`, aby uzyskać więcej informacji o plikach, co może być przydatne przy zarządzaniu uprawnieniami.
 - Kombinuj opcje, np. `ls -la` wyświetli wszystkie pliki w szczegółowym formacie.
-- Pamiętaj, że `ls` domyślnie sortuje pliki alfabetycznie, co może być przydatne w organizacji plików.
+- Pamiętaj, że kolejność opcji nie ma znaczenia; `ls -la` i `ls -al` działają identycznie.

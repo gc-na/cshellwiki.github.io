@@ -1,42 +1,39 @@
-# [Linux] Bash lsmod Uso: Display loaded kernel modules
+# [Linux] C Shell (csh) lsmod用法: Display loaded kernel modules
 
 ## Overview
-The `lsmod` command is used in Linux to display the status of modules that are currently loaded into the kernel. It provides a list of all active modules, along with their sizes and dependencies, which can be useful for troubleshooting and system management.
+The `lsmod` command in C Shell is used to display the currently loaded kernel modules in the Linux operating system. It provides a list of all modules that are currently active, along with their dependencies.
 
 ## Usage
 The basic syntax of the `lsmod` command is as follows:
 
-```bash
+```csh
 lsmod [options] [arguments]
 ```
 
 ## Common Options
-While `lsmod` does not have many options, here are a few that can be useful:
+While `lsmod` does not have many options, here are a couple of commonly used ones:
 
-- **-h, --help**: Display help information about the command.
-- **-v, --version**: Show the version of the `lsmod` command.
+- `-h`, `--help`: Displays help information about the command.
+- `-v`, `--version`: Shows the version of the `lsmod` command.
 
 ## Common Examples
 
-1. **Display all loaded modules**:
-   To simply list all currently loaded kernel modules, use:
-   ```bash
+1. **Display all loaded modules:**
+   ```csh
    lsmod
    ```
 
-2. **Display help information**:
-   If you need help with the command, you can run:
-   ```bash
+2. **Display help information:**
+   ```csh
    lsmod --help
    ```
 
-3. **Check the version**:
-   To find out the version of the `lsmod` command, use:
-   ```bash
+3. **Show version of lsmod:**
+   ```csh
    lsmod --version
    ```
 
 ## Tips
 - Use `lsmod` in combination with other commands like `modinfo` to get detailed information about specific modules.
-- Regularly check loaded modules if you are troubleshooting hardware issues, as it can help identify missing or problematic drivers.
-- Keep in mind that `lsmod` only shows modules that are currently loaded; it does not list available modules that are not loaded. For that, consider using `modprobe -l`.
+- Regularly check loaded modules to troubleshoot hardware issues or conflicts.
+- Remember that `lsmod` only shows modules that are currently loaded; it does not list available modules that are not loaded.

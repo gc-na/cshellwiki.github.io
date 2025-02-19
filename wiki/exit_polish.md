@@ -1,52 +1,36 @@
-# [Linux] Bash exit użycie: Zakończenie skryptu lub sesji
+# [Linux] C Shell (csh) exit użycie: Zakończenie sesji powłoki
 
 ## Overview
-Polecenie `exit` w Bash służy do zakończenia bieżącego skryptu lub sesji powłoki. Można je wykorzystać do zwrócenia kodu zakończenia, który może być użyty przez inne skrypty lub programy do określenia, czy wykonanie zakończyło się powodzeniem, czy wystąpił błąd.
+Polecenie `exit` w C Shell (csh) służy do zakończenia bieżącej sesji powłoki. Umożliwia użytkownikowi wyjście z powłoki, a także może zwrócić kod zakończenia, który może być użyty do wskazania, czy sesja zakończyła się pomyślnie, czy z błędem.
 
 ## Usage
 Podstawowa składnia polecenia `exit` jest następująca:
 
-```bash
-exit [options] [status]
+```csh
+exit [kod_zakończenia]
 ```
 
 ## Common Options
-- `status`: Opcjonalny argument, który określa kod zakończenia. Domyślnie jest to 0, co oznacza, że skrypt zakończył się pomyślnie. Wartości różne od 0 wskazują na błędy.
+- `kod_zakończenia`: Opcjonalny argument, który określa kod zakończenia. Domyślnie, jeśli nie zostanie podany, kod zakończenia wynosi 0, co oznacza pomyślne zakończenie.
 
 ## Common Examples
+- Zakończenie sesji powłoki z domyślnym kodem zakończenia:
+  ```csh
+  exit
+  ```
 
-1. Zakończenie skryptu z domyślnym kodem zakończenia (0):
-   ```bash
-   #!/bin/bash
-   echo "Zakończenie skryptu."
-   exit
-   ```
+- Zakończenie sesji powłoki z określonym kodem zakończenia (np. 1):
+  ```csh
+  exit 1
+  ```
 
-2. Zakończenie skryptu z określonym kodem zakończenia (np. 1):
-   ```bash
-   #!/bin/bash
-   echo "Wystąpił błąd."
-   exit 1
-   ```
-
-3. Użycie `exit` w interaktywnej sesji powłoki:
-   ```bash
-   exit
-   ```
-
-4. Zakończenie skryptu w zależności od warunku:
-   ```bash
-   #!/bin/bash
-   if [ -f "plik.txt" ]; then
-       echo "Plik istnieje."
-       exit 0
-   else
-       echo "Plik nie istnieje."
-       exit 1
-   fi
-   ```
+- Zakończenie sesji powłoki po wykonaniu skryptu:
+  ```csh
+  ./moj_skrypt.csh
+  exit
+  ```
 
 ## Tips
-- Zawsze używaj odpowiednich kodów zakończenia, aby ułatwić debugowanie i zarządzanie błędami w skryptach.
-- Możesz używać zmiennych do dynamicznego określania kodów zakończenia w skryptach.
-- Pamiętaj, że `exit` kończy nie tylko skrypt, ale także sesję powłoki, jeśli jest używane w interaktywnej sesji.
+- Używaj `exit 0`, aby wskazać, że skrypt lub sesja zakończyły się pomyślnie.
+- Używaj różnych kodów zakończenia, aby sygnalizować różne rodzaje błędów, co może być przydatne w skryptach.
+- Pamiętaj, że po użyciu polecenia `exit`, wszystkie procesy uruchomione w bieżącej powłoce zostaną zakończone.

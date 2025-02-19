@@ -1,19 +1,19 @@
-# [Linux] Bash vigr użycie: Edytor plików konfiguracyjnych
+# [Linux] C Shell (csh) vigr użycie: Edytowanie plików konfiguracyjnych
 
 ## Overview
-Polecenie `vigr` jest używane do edytowania plików konfiguracyjnych systemu, takich jak `/etc/group` czy `/etc/passwd`. Główną zaletą `vigr` jest to, że sprawdza składnię pliku przed zapisaniem zmian, co pomaga uniknąć błędów, które mogą prowadzić do problemów z systemem.
+Polecenie `vigr` służy do edytowania plików konfiguracyjnych, takich jak `/etc/passwd` i `/etc/group`, w bezpieczny sposób. Umożliwia to użytkownikom modyfikację tych plików, zapewniając jednocześnie, że nie zostaną one uszkodzone w przypadku, gdy edytor zakończy działanie w nieoczekiwany sposób.
 
 ## Usage
 Podstawowa składnia polecenia `vigr` jest następująca:
 
-```
+```bash
 vigr [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-h`, `--help`: Wyświetla pomoc i informacje o użyciu.
-- `-s`, `--syntax`: Sprawdza składnię pliku przed jego edytowaniem.
-- `-f`, `--file`: Określa inny plik do edytowania zamiast domyślnego.
+- `-s`: Sprawdza plik przed edytowaniem, aby upewnić się, że nie ma błędów.
+- `-f <plik>`: Określa inny plik do edytowania zamiast domyślnego `/etc/passwd`.
+- `-c`: Sprawdza składnię pliku po zakończeniu edycji.
 
 ## Common Examples
 1. Edytowanie domyślnego pliku `/etc/passwd`:
@@ -23,20 +23,20 @@ vigr [opcje] [argumenty]
 
 2. Edytowanie pliku `/etc/group`:
    ```bash
-   vigr /etc/group
+   vigr -f /etc/group
    ```
 
-3. Sprawdzenie składni pliku przed edytowaniem:
+3. Sprawdzenie pliku przed edytowaniem:
    ```bash
-   vigr -s /etc/passwd
+   vigr -s
    ```
 
-4. Edytowanie innego pliku konfiguracyjnego:
+4. Edytowanie pliku z weryfikacją składni po zakończeniu:
    ```bash
-   vigr -f /path/to/your/file
+   vigr -c
    ```
 
 ## Tips
-- Zawsze sprawdzaj składnię pliku przed zapisaniem zmian, aby uniknąć problemów z systemem.
-- Używaj `vigr` zamiast standardowego edytora, gdy pracujesz z plikami konfiguracyjnymi, aby zapewnić bezpieczeństwo i integralność danych.
-- Zapisuj kopie zapasowe ważnych plików konfiguracyjnych przed ich edytowaniem.
+- Zawsze używaj opcji `-s`, aby upewnić się, że plik jest poprawny przed rozpoczęciem edycji.
+- Regularnie twórz kopie zapasowe plików konfiguracyjnych przed ich edytowaniem.
+- Korzystaj z opcji `-f`, aby edytować inne pliki konfiguracyjne, jeśli zajdzie taka potrzeba.

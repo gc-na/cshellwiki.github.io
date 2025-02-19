@@ -1,53 +1,50 @@
-# [Linux] Bash diff utilisation : Comparer des fichiers ligne par ligne
+# [Linux] C Shell (csh) diff : Comparer des fichiers ligne par ligne
 
 ## Overview
-La commande `diff` est utilisée pour comparer le contenu de deux fichiers ligne par ligne. Elle affiche les différences entre les fichiers, ce qui est particulièrement utile pour le développement de logiciels, la gestion de versions et la révision de documents.
+La commande `diff` est utilisée pour comparer le contenu de deux fichiers ligne par ligne. Elle affiche les différences entre les fichiers, ce qui est particulièrement utile pour les développeurs et les administrateurs système qui souhaitent voir les modifications apportées à un fichier.
 
 ## Usage
 La syntaxe de base de la commande `diff` est la suivante :
 
-```bash
+```csh
 diff [options] [arguments]
 ```
 
 ## Common Options
 Voici quelques options courantes pour la commande `diff` :
 
-- `-u` : Affiche les différences en format unifié, ce qui est plus lisible.
-- `-c` : Affiche les différences en format contextuel, fournissant plus de contexte autour des changements.
+- `-u` : Affiche les différences en mode unifié, ce qui rend la sortie plus lisible.
+- `-c` : Affiche les différences en mode contextuel, montrant un contexte autour des lignes modifiées.
 - `-i` : Ignore la casse lors de la comparaison.
 - `-w` : Ignore les espaces blancs lors de la comparaison.
-- `-r` : Compare les répertoires de manière récursive.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `diff` :
 
-### Comparer deux fichiers texte
-```bash
-diff fichier1.txt fichier2.txt
-```
+1. Comparer deux fichiers texte :
+   ```csh
+   diff fichier1.txt fichier2.txt
+   ```
 
-### Comparer deux fichiers avec un format unifié
-```bash
-diff -u fichier1.txt fichier2.txt
-```
+2. Afficher les différences en mode unifié :
+   ```csh
+   diff -u fichier1.txt fichier2.txt
+   ```
 
-### Comparer deux répertoires
-```bash
-diff -r dossier1/ dossier2/
-```
+3. Comparer deux répertoires :
+   ```csh
+   diff -r repertoire1/ repertoire2/
+   ```
 
-### Ignorer les espaces blancs
-```bash
-diff -w fichier1.txt fichier2.txt
-```
-
-### Afficher les différences en format contextuel
-```bash
-diff -c fichier1.txt fichier2.txt
-```
+4. Ignorer les espaces blancs :
+   ```csh
+   diff -w fichier1.txt fichier2.txt
+   ```
 
 ## Tips
-- Utilisez l'option `-u` pour obtenir un affichage plus clair des différences, surtout lors de la révision de code.
-- Lorsque vous travaillez avec des fichiers de code, envisagez d'utiliser `diff` avec des outils de contrôle de version comme Git pour une gestion plus efficace des modifications.
-- Pour une comparaison visuelle, vous pouvez rediriger la sortie de `diff` vers un fichier et l'ouvrir avec un éditeur de texte.
+- Utilisez l'option `-u` pour obtenir une sortie plus lisible, surtout si vous partagez les résultats avec d'autres.
+- Pour une comparaison de répertoires, l'option `-r` est très utile pour voir toutes les différences dans les fichiers contenus.
+- Pensez à rediriger la sortie de `diff` vers un fichier si vous avez besoin de conserver un enregistrement des différences :
+  ```csh
+  diff fichier1.txt fichier2.txt > differences.txt
+  ```

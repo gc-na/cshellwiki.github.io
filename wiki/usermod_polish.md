@@ -1,57 +1,46 @@
-# [Linux] Bash usermod użycie: Zmiana właściwości użytkownika
+# [Linux] C Shell (csh) usermod <Użycie: modyfikacja użytkowników>
 
-## Overview
-Polecenie `usermod` w systemie Linux służy do modyfikacji istniejących kont użytkowników. Umożliwia administratorom systemu wprowadzanie zmian w różnych atrybutach konta, takich jak grupa, hasło, czy katalog domowy.
+## Przegląd
+Polecenie `usermod` w C Shell (csh) służy do modyfikacji istniejących kont użytkowników w systemie. Umożliwia administratorom systemu wprowadzanie zmian w atrybutach kont, takich jak grupa, hasło, czy katalog domowy.
 
-## Usage
+## Użycie
 Podstawowa składnia polecenia `usermod` wygląda następująco:
 
-```bash
+```csh
 usermod [opcje] [argumenty]
 ```
 
-## Common Options
-Oto kilka powszechnie używanych opcji polecenia `usermod`:
+## Częste opcje
+- `-a`: Dodaje użytkownika do dodatkowej grupy.
+- `-G`: Określa grupy, do których użytkownik ma być przypisany.
+- `-d`: Zmienia katalog domowy użytkownika.
+- `-l`: Zmienia nazwę użytkownika.
+- `-p`: Ustawia nowe hasło użytkownika.
 
-- `-aG` – Dodaje użytkownika do dodatkowej grupy bez usuwania go z innych grup.
-- `-d` – Zmienia katalog domowy użytkownika.
-- `-l` – Zmienia nazwę użytkownika.
-- `-p` – Ustawia hasło użytkownika w postaci zaszyfrowanej.
-- `-s` – Zmienia powłokę logowania użytkownika.
-
-## Common Examples
+## Przykłady
+Oto kilka praktycznych przykładów użycia polecenia `usermod`:
 
 1. **Dodanie użytkownika do grupy:**
-   Aby dodać użytkownika `janek` do grupy `developers`, użyj polecenia:
-   ```bash
-   usermod -aG developers janek
+   ```csh
+   usermod -a -G developers janek
    ```
 
-2. **Zmiana katalogu domowego:**
-   Aby zmienić katalog domowy użytkownika `ania` na `/home/ania_new`, wykonaj:
-   ```bash
-   usermod -d /home/ania_new ania
+2. **Zmiana katalogu domowego użytkownika:**
+   ```csh
+   usermod -d /home/janek janek
    ```
 
 3. **Zmiana nazwy użytkownika:**
-   Aby zmienić nazwę użytkownika z `stary_nick` na `nowy_nick`, użyj:
-   ```bash
-   usermod -l nowy_nick stary_nick
+   ```csh
+   usermod -l nowa_nazwa janek
    ```
 
-4. **Ustawienie hasła:**
-   Aby ustawić hasło dla użytkownika `mariusz`, użyj:
-   ```bash
-   usermod -p $(openssl passwd -1 nowe_haslo) mariusz
+4. **Ustawienie nowego hasła dla użytkownika:**
+   ```csh
+   usermod -p nowe_haslo janek
    ```
 
-5. **Zmiana powłoki logowania:**
-   Aby zmienić powłokę logowania użytkownika `kasia` na `/bin/zsh`, wykonaj:
-   ```bash
-   usermod -s /bin/zsh kasia
-   ```
-
-## Tips
-- Zawsze wykonuj polecenie `usermod` z uprawnieniami administratora (np. użyj `sudo`), aby uniknąć problemów z uprawnieniami.
-- Przed wprowadzeniem zmian w koncie użytkownika, warto wykonać kopię zapasową plików konfiguracyjnych.
-- Używaj opcji `-aG` z rozwagą, aby nie usunąć użytkownika z innych grup, do których już należy.
+## Wskazówki
+- Upewnij się, że masz odpowiednie uprawnienia administracyjne przed użyciem `usermod`.
+- Zawsze wykonuj kopię zapasową danych użytkownika przed wprowadzeniem istotnych zmian.
+- Sprawdzaj aktualny stan użytkowników i grup, aby uniknąć niezamierzonych błędów.

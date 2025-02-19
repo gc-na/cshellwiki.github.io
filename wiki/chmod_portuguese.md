@@ -1,51 +1,53 @@
-# [Linux] Bash chmod Uso: Modificar permissões de arquivos e diretórios
+# [Linux] C Shell (csh) chmod Uso: Modificar permissões de arquivos e diretórios
 
 ## Overview
-O comando `chmod` é utilizado para alterar as permissões de acesso a arquivos e diretórios no sistema operacional Linux. Com ele, é possível definir quem pode ler, escrever ou executar um arquivo, garantindo assim a segurança e a privacidade dos dados.
+O comando `chmod` é utilizado para alterar as permissões de acesso a arquivos e diretórios no sistema operacional. Ele permite que o usuário defina quem pode ler, escrever ou executar um arquivo.
 
 ## Usage
 A sintaxe básica do comando `chmod` é a seguinte:
 
-```bash
+```csh
 chmod [opções] [argumentos]
 ```
 
 ## Common Options
-Aqui estão algumas opções comuns que podem ser usadas com o comando `chmod`:
-
-- `-R`: Aplica as mudanças de permissão recursivamente em diretórios e seus conteúdos.
-- `-v`: Exibe uma mensagem detalhada sobre as alterações feitas.
-- `-c`: Mostra apenas as alterações que foram feitas, em vez de todas as permissões.
+- `-R`: Aplica as alterações de forma recursiva em diretórios e seus conteúdos.
+- `u`: Refere-se ao proprietário do arquivo (user).
+- `g`: Refere-se ao grupo do arquivo (group).
+- `o`: Refere-se a outros usuários (others).
+- `r`: Permissão de leitura (read).
+- `w`: Permissão de escrita (write).
+- `x`: Permissão de execução (execute).
 
 ## Common Examples
 Aqui estão alguns exemplos práticos do uso do comando `chmod`:
 
-1. **Dar permissão de execução a um arquivo**:
-   ```bash
-   chmod +x script.sh
+1. **Adicionar permissão de execução para o proprietário:**
+   ```csh
+   chmod u+x arquivo.sh
    ```
 
-2. **Remover permissão de escrita de um arquivo**:
-   ```bash
-   chmod -w documento.txt
+2. **Remover permissão de escrita para o grupo:**
+   ```csh
+   chmod g-w documento.txt
    ```
 
-3. **Alterar permissões de um diretório e seus conteúdos recursivamente**:
-   ```bash
+3. **Definir permissões específicas para todos (leitura e execução):**
+   ```csh
+   chmod a+rx script.py
+   ```
+
+4. **Aplicar permissões recursivamente em um diretório:**
+   ```csh
    chmod -R 755 /caminho/para/diretorio
    ```
 
-4. **Definir permissões específicas usando notação octal**:
-   ```bash
+5. **Definir permissões exatas usando notação octal:**
+   ```csh
    chmod 644 arquivo.txt
    ```
 
-5. **Adicionar permissão de leitura para o grupo**:
-   ```bash
-   chmod g+r arquivo.txt
-   ```
-
 ## Tips
-- Sempre verifique as permissões atuais de um arquivo ou diretório usando `ls -l` antes de aplicar mudanças com `chmod`.
-- Utilize a notação octal para definir permissões de forma mais precisa e rápida, especialmente em scripts.
-- Lembre-se de que permissões excessivas podem comprometer a segurança do sistema; aplique apenas as permissões necessárias.
+- Sempre verifique as permissões atuais de um arquivo com o comando `ls -l` antes de fazer alterações.
+- Use a notação octal para definir permissões de forma mais rápida e precisa.
+- Tenha cuidado ao aplicar permissões recursivamente, pois isso pode afetar muitos arquivos e diretórios de uma só vez.

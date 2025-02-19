@@ -1,72 +1,54 @@
-# [Linux] Bash break Uso: Interrompe loops
+# [Linux] C Shell (csh) break Uso: Interrompe a execução de loops
 
 ## Overview
-O comando `break` é utilizado em scripts Bash para interromper a execução de loops. Quando o `break` é chamado dentro de um loop, ele encerra imediatamente o loop atual e continua a execução do código que vem após o loop.
+O comando `break` no C Shell (csh) é utilizado para interromper a execução de loops, como `foreach`, `while` ou `for`. Quando o `break` é chamado, ele encerra o loop mais interno em que se encontra, permitindo que o controle do programa continue após o loop.
 
 ## Usage
 A sintaxe básica do comando `break` é a seguinte:
 
-```bash
+```csh
 break [n]
 ```
 
-Aqui, `n` é um número opcional que indica quantos níveis de loops devem ser interrompidos. Se `n` não for especificado, o `break` interrompe apenas o loop mais interno.
+Onde `n` é um número opcional que indica quantos níveis de loops devem ser interrompidos. Se não for especificado, o `break` interrompe apenas o loop mais interno.
 
 ## Common Options
-- `n`: Especifica o número de níveis de loops a serem interrompidos. Se não for fornecido, o padrão é 1.
+- `n`: Um número que especifica quantos níveis de loops devem ser interrompidos. Por exemplo, `break 2` interrompe dois níveis de loops.
 
 ## Common Examples
 
-### Exemplo 1: Interrompendo um loop simples
-```bash
-for i in {1..5}; do
-  if [ $i -eq 3 ]; then
-    break
-  fi
-  echo $i
-done
+### Exemplo 1: Interrompendo um loop `foreach`
+```csh
+foreach i (1 2 3 4 5)
+    if ($i == 3) break
+    echo $i
+end
 ```
-Neste exemplo, o loop imprime os números de 1 a 5, mas interrompe quando `i` é igual a 3. A saída será:
-```
-1
-2
-```
+Neste exemplo, o loop imprime os números 1 e 2, e interrompe a execução quando `i` é igual a 3.
 
-### Exemplo 2: Interrompendo um loop aninhado
-```bash
-for i in {1..3}; do
-  for j in {1..3}; do
-    if [ $j -eq 2 ]; then
-      break 2
-    fi
-    echo "i: $i, j: $j"
-  done
-done
+### Exemplo 2: Interrompendo um loop `while`
+```csh
+set count = 1
+while ($count <= 5)
+    if ($count == 4) break
+    echo $count
+    @ count++
+end
 ```
-Aqui, o `break 2` interrompe ambos os loops. A saída será:
-```
-i: 1, j: 1
-```
+Aqui, o loop imprime os números 1, 2 e 3, e interrompe quando `count` atinge 4.
 
-### Exemplo 3: Usando break em um while loop
-```bash
-count=1
-while [ $count -le 5 ]; do
-  if [ $count -eq 4 ]; then
-    break
-  fi
-  echo $count
-  ((count++))
-done
+### Exemplo 3: Interrompendo múltiplos níveis de loops
+```csh
+foreach i (1 2)
+    foreach j (1 2 3)
+        if ($j == 2) break 2
+        echo "$i $j"
+    end
+end
 ```
-Neste exemplo, o loop `while` imprime os números de 1 a 5, mas para quando `count` é igual a 4. A saída será:
-```
-1
-2
-3
-```
+Neste caso, o comando `break 2` interrompe ambos os loops, resultando na saída apenas do primeiro par.
 
 ## Tips
 - Use `break` com cuidado para evitar sair de loops inesperadamente, especialmente em loops aninhados.
-- Sempre considere a lógica do seu script ao usar `break`, para garantir que a interrupção do loop não cause comportamentos indesejados.
-- Para depuração, você pode adicionar mensagens de log antes do `break` para entender melhor o fluxo do seu script.
+- Sempre teste seu script para garantir que a lógica de interrupção funcione conforme o esperado.
+- Considere usar `continue` em vez de `break` se você deseja pular apenas a iteração atual do loop, em vez de encerrá-lo completamente.

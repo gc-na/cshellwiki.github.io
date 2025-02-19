@@ -1,50 +1,49 @@
-# [Linux] Bash chage gebruik: Beheer gebruikerswachtwoordverval
+# [Linux] C Shell (csh) chage gebruik: Beheer gebruikerswachtwoordverval
 
 ## Overzicht
-Het `chage`-commando in Bash wordt gebruikt om de wachtwoordvervalinstellingen van gebruikersaccounts op een Linux-systeem te beheren. Hiermee kan een systeembeheerder de periode instellen waarin een wachtwoord moet worden gewijzigd en andere gerelateerde instellingen.
+De `chage`-opdracht wordt gebruikt om de wachtwoordvervalinstellingen voor gebruikersaccounts in een Linux-systeem te beheren. Hiermee kunt u de tijdsduur instellen voordat een gebruiker zijn wachtwoord moet wijzigen, evenals andere gerelateerde parameters.
 
 ## Gebruik
-De basis syntaxis van het `chage`-commando is als volgt:
+De basisstructuur van de `chage`-opdracht is als volgt:
 
 ```bash
 chage [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- `-l, --list`: Toon de huidige wachtwoordinstellingen voor een gebruiker.
+## Veelvoorkomende Opties
+- `-l, --list`: Toon de huidige instellingen voor de gebruiker.
 - `-m, --mindays`: Stel het minimum aantal dagen in tussen wachtwoordwijzigingen.
-- `-M, --maxdays`: Stel het maximum aantal dagen in voordat een wachtwoord moet worden gewijzigd.
+- `-M, --maxdays`: Stel het maximum aantal dagen in dat een wachtwoord geldig is.
 - `-I, --inactive`: Stel het aantal dagen in dat een account inactief blijft na het verlopen van het wachtwoord.
-- `-E, --expire`: Stel de datum in waarop het account verloopt.
+- `-E, --expire`: Stel de datum in waarop het account vervalt.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
+- **Toon de huidige wachtwoordinstellingen voor een gebruiker:**
+  ```bash
+  chage -l gebruikersnaam
+  ```
 
-1. **Toon de wachtwoordinstellingen voor een gebruiker:**
-   ```bash
-   chage -l username
-   ```
+- **Stel het minimum aantal dagen in tussen wachtwoordwijzigingen op 7 dagen:**
+  ```bash
+  chage -m 7 gebruikersnaam
+  ```
 
-2. **Stel het minimum aantal dagen in tussen wachtwoordwijzigingen op 5 dagen:**
-   ```bash
-   chage -m 5 username
-   ```
+- **Stel het maximum aantal dagen in dat een wachtwoord geldig is op 90 dagen:**
+  ```bash
+  chage -M 90 gebruikersnaam
+  ```
 
-3. **Stel het maximum aantal dagen in voordat een wachtwoord moet worden gewijzigd op 90 dagen:**
-   ```bash
-   chage -M 90 username
-   ```
+- **Stel de inactiviteitsperiode in op 30 dagen:**
+  ```bash
+  chage -I 30 gebruikersnaam
+  ```
 
-4. **Stel het aantal inactieve dagen in op 30 dagen na het verlopen van het wachtwoord:**
-   ```bash
-   chage -I 30 username
-   ```
-
-5. **Stel de vervaldatum van het account in op 2024-12-31:**
-   ```bash
-   chage -E 2024-12-31 username
-   ```
+- **Stel de vervaldatum van het account in op 2023-12-31:**
+  ```bash
+  chage -E 2023-12-31 gebruikersnaam
+  ```
 
 ## Tips
-- Zorg ervoor dat je het `chage`-commando uitvoert met root- of sudo-rechten om wijzigingen aan gebruikersaccounts aan te brengen.
-- Controleer regelmatig de wachtwoordinstellingen van gebruikers om de beveiliging van je systeem te waarborgen.
-- Gebruik de `-l` optie om een overzicht te krijgen van de huidige instellingen voordat je wijzigingen aanbrengt.
+- Controleer regelmatig de wachtwoordinstellingen van gebruikers om de beveiliging van uw systeem te waarborgen.
+- Gebruik de `-l` optie om een overzicht te krijgen van de instellingen voordat u wijzigingen aanbrengt.
+- Wees voorzichtig met het instellen van een vervaldatum, omdat dit kan leiden tot onbereikbare accounts als gebruikers niet op tijd hun wachtwoord wijzigen.

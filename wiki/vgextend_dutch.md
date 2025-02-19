@@ -1,41 +1,43 @@
-# [Linux] Bash vgextend gebruik: Vergroot een volume groep
+# [Linux] C Shell (csh) vgextend gebruik: Voeg fysieke volumes toe aan een volume group
 
 ## Overzicht
-De `vgextend` opdracht in Bash wordt gebruikt om een bestaande volume groep (VG) uit te breiden met extra fysieke volumes (PV's). Dit is handig wanneer je meer opslagruimte nodig hebt voor je logische volumes (LV's) binnen een volume groep.
+De `vgextend` opdracht wordt gebruikt om fysieke volumes toe te voegen aan een bestaande volume group in een Logical Volume Manager (LVM) configuratie. Dit stelt gebruikers in staat om de opslagcapaciteit van een volume group uit te breiden door extra schijven of partities toe te voegen.
 
 ## Gebruik
 De basis syntaxis van de `vgextend` opdracht is als volgt:
 
-```bash
-vgextend [opties] [volume_groep] [fysieke_volumes]
+```
+vgextend [opties] [volume_group] [fysieke_volumes]
 ```
 
 ## Veelvoorkomende Opties
-- `-f`, `--force`: Dwingt de uitbreiding af, zelfs als er waarschuwingen zijn.
-- `-n`, `--nosync`: Voorkomt dat de metadata van de volume groep wordt gesynchroniseerd na de uitbreiding.
+- `-f`: Forceert de uitbreiding, zelfs als sommige fysieke volumes niet beschikbaar zijn.
+- `-n`: Negeert de foutmeldingen en gaat door met de uitbreiding.
 - `--test`: Voert een test uit zonder daadwerkelijk wijzigingen aan te brengen.
 
 ## Veelvoorkomende Voorbeelden
 
-### Voorbeeld 1: Een volume groep uitbreiden met één fysiek volume
-```bash
-vgextend mijn_vg /dev/sdb1
-```
-Dit commando voegt het fysieke volume `/dev/sdb1` toe aan de volume groep `mijn_vg`.
+1. **Voeg een fysiek volume toe aan een volume group:**
+   ```csh
+   vgextend my_volume_group /dev/sdb1
+   ```
 
-### Voorbeeld 2: Meerdere fysieke volumes toevoegen
-```bash
-vgextend mijn_vg /dev/sdb1 /dev/sdc1
-```
-Hiermee worden zowel `/dev/sdb1` als `/dev/sdc1` toegevoegd aan de volume groep `mijn_vg`.
+2. **Voeg meerdere fysieke volumes toe:**
+   ```csh
+   vgextend my_volume_group /dev/sdb1 /dev/sdc1
+   ```
 
-### Voorbeeld 3: Uitbreiding met de force optie
-```bash
-vgextend -f mijn_vg /dev/sdd1
-```
-Dit dwingt de uitbreiding van de volume groep `mijn_vg` met het fysieke volume `/dev/sdd1`, ongeacht eventuele waarschuwingen.
+3. **Forceer de uitbreiding van een volume group:**
+   ```csh
+   vgextend -f my_volume_group /dev/sdb1
+   ```
+
+4. **Voer een test uit zonder wijzigingen aan te brengen:**
+   ```csh
+   vgextend --test my_volume_group /dev/sdb1
+   ```
 
 ## Tips
-- Zorg ervoor dat de fysieke volumes die je wilt toevoegen, geconfigureerd zijn en niet in gebruik zijn door andere processen.
-- Controleer altijd de status van je volume groep na de uitbreiding met het commando `vgdisplay` om te bevestigen dat de uitbreiding succesvol was.
-- Maak regelmatig een back-up van je gegevens voordat je wijzigingen aanbrengt in je opslagconfiguratie.
+- Zorg ervoor dat de fysieke volumes die je wilt toevoegen geconfigureerd zijn als LVM voordat je `vgextend` gebruikt.
+- Controleer altijd de status van je volume group na het uitvoeren van de `vgextend` opdracht met `vgdisplay`.
+- Gebruik de `--test` optie om te verifiëren dat de uitbreiding succesvol zal zijn zonder daadwerkelijk wijzigingen aan te brengen.

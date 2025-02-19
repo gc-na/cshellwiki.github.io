@@ -1,7 +1,7 @@
-# [Linux] Bash strace utilizzo: Strumento per il tracciamento delle chiamate di sistema
+# [Linux] C Shell (csh) strace Uso: Strumenti di tracciamento delle chiamate di sistema
 
 ## Overview
-Il comando `strace` è uno strumento potente utilizzato per monitorare e diagnosticare le chiamate di sistema effettuate da un programma in esecuzione. Permette di vedere quali file vengono aperti, quali segnali vengono ricevuti e quali errori si verificano, rendendolo utile per il debug delle applicazioni.
+Il comando `strace` è uno strumento potente utilizzato per monitorare e diagnosticare le chiamate di sistema effettuate da un programma in esecuzione. Permette di vedere quali file vengono aperti, quali segnali vengono ricevuti e altre interazioni con il sistema operativo.
 
 ## Usage
 La sintassi di base del comando `strace` è la seguente:
@@ -11,13 +11,12 @@ strace [options] [arguments]
 ```
 
 ## Common Options
-Ecco alcune opzioni comuni per `strace` con brevi spiegazioni:
+Ecco alcune opzioni comuni per `strace`:
 
-- `-o <file>`: Scrive l'output in un file specificato invece di stampare sul terminale.
-- `-e <expression>`: Filtra le chiamate di sistema da tracciare in base a un'espressione specificata.
-- `-p <pid>`: Attacca un processo esistente identificato dal suo PID (Process ID).
-- `-c`: Riporta un riepilogo delle statistiche delle chiamate di sistema al termine dell'esecuzione.
-- `-f`: Segue i processi figli creati durante l'esecuzione del programma.
+- `-c`: Riporta un riepilogo delle statistiche delle chiamate di sistema.
+- `-e trace=<syscall>`: Traccia solo le chiamate di sistema specificate.
+- `-o <file>`: Scrive l'output in un file invece di stamparlo sullo schermo.
+- `-p <pid>`: Attacca un processo in esecuzione specificato dal suo PID.
 
 ## Common Examples
 Ecco alcuni esempi pratici di utilizzo di `strace`:
@@ -32,9 +31,9 @@ Ecco alcuni esempi pratici di utilizzo di `strace`:
    strace -o output.txt ls
    ```
 
-3. Tracciare solo le chiamate di sistema relative ai file:
+3. Tracciare solo le chiamate di sistema di apertura file:
    ```bash
-   strace -e trace=file ls
+   strace -e trace=open ls
    ```
 
 4. Attaccare un processo esistente:
@@ -48,7 +47,6 @@ Ecco alcuni esempi pratici di utilizzo di `strace`:
    ```
 
 ## Tips
-- Utilizza l'opzione `-o` per salvare l'output in un file se stai analizzando molte informazioni.
-- Filtra le chiamate di sistema con `-e` per concentrarti su ciò che è rilevante per il tuo debug.
-- Ricorda che `strace` può rallentare l'esecuzione del programma, quindi usalo principalmente in ambienti di sviluppo o test.
-- Se stai tracciando un processo che crea altri processi, usa l'opzione `-f` per seguire anche i processi figli.
+- Utilizza l'opzione `-o` per salvare l'output in un file quando tracci un programma lungo, per facilitare l'analisi successiva.
+- Fai attenzione all'uso di `strace` su processi di produzione, poiché può influenzare le prestazioni.
+- Combina `strace` con altre utilità come `grep` per filtrare l'output e trovare rapidamente le informazioni necessarie.

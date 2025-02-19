@@ -1,7 +1,7 @@
-# [Linux] Bash mpstat Uso equivalente: Monitor CPU usage statistics
+# [Linux] C Shell (csh) mpstat用法: Monitor CPU usage statistics
 
 ## Overview
-The `mpstat` command in Bash is used to report processor-related statistics, providing insights into CPU usage across multiple processors. It helps in monitoring system performance and identifying bottlenecks.
+The `mpstat` command is used to report processors-related statistics, including CPU usage, which helps in monitoring the performance of the system. It provides a breakdown of CPU activity, allowing users to identify bottlenecks and optimize system performance.
 
 ## Usage
 The basic syntax of the `mpstat` command is as follows:
@@ -11,10 +11,11 @@ mpstat [options] [interval] [count]
 ```
 
 ## Common Options
-- `-P ALL`: Display statistics for all processors.
-- `-u`: Show CPU usage (default).
-- `-h`: Display output in human-readable format.
+- `-P ALL`: Display statistics for all CPUs.
+- `-u`: Show CPU utilization.
+- `-I SUM`: Display interrupt statistics.
 - `-V`: Show version information.
+- `-h`: Display help information.
 
 ## Common Examples
 
@@ -28,14 +29,14 @@ mpstat [options] [interval] [count]
    mpstat 2 5
    ```
 
-3. **Show CPU usage with human-readable output:**
-   ```bash
-   mpstat -h
-   ```
-
-4. **Display only the user and system CPU usage:**
+3. **Show CPU utilization only:**
    ```bash
    mpstat -u
+   ```
+
+4. **Display interrupt statistics:**
+   ```bash
+   mpstat -I SUM
    ```
 
 5. **Check the version of mpstat:**
@@ -44,6 +45,6 @@ mpstat [options] [interval] [count]
    ```
 
 ## Tips
-- Use `mpstat` in combination with other monitoring tools like `top` or `htop` for a comprehensive view of system performance.
-- Regularly monitor CPU usage to identify trends and potential performance issues.
-- Consider using the `-P` option to focus on specific processors if your system has multiple CPUs.
+- Use `mpstat` in combination with other monitoring tools like `top` or `vmstat` for a comprehensive view of system performance.
+- Regularly monitor CPU statistics to identify trends and potential issues before they impact system performance.
+- Consider using the `-h` option to familiarize yourself with additional options and features of `mpstat`.

@@ -1,45 +1,45 @@
-# [Linux] Bash uniq Kullanımı: Tekrar eden satırları kaldırma
+# [Linux] C Shell (csh) uniq Kullanımı: Tekil satırları listeleme
 
 ## Overview
-`uniq` komutu, bir dosyadaki veya bir akıştaki tekrar eden satırları kaldırmak için kullanılır. Genellikle, sıralı verilerle birlikte kullanıldığında etkili olur, çünkü yalnızca ardışık tekrarları kaldırır.
+`uniq` komutu, bir dosyada veya standart girişteki ardışık tekrar eden satırları kaldırarak yalnızca benzersiz satırları gösterir. Genellikle sıralı verilerle birlikte kullanılır, çünkü `uniq` yalnızca ardışık tekrarları tespit edebilir.
 
 ## Usage
 Temel sözdizimi aşağıdaki gibidir:
 
-```bash
+```
 uniq [options] [arguments]
 ```
 
 ## Common Options
-- `-c`: Her satırın önüne tekrar sayısını ekler.
+- `-c`: Her benzersiz satırın önüne tekrar sayısını ekler.
 - `-d`: Sadece tekrar eden satırları gösterir.
-- `-u`: Tekrar etmeyen satırları gösterir.
-- `-i`: Büyük/küçük harf duyarsız karşılaştırma yapar.
+- `-u`: Sadece benzersiz (tekrar etmeyen) satırları gösterir.
+- `-i`: Büyük/küçük harf duyarsız olarak karşılaştırma yapar.
 
 ## Common Examples
-Aşağıda `uniq` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+Aşağıda `uniq` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. **Bir dosyadaki tekrar eden satırları kaldırma:**
+1. **Benzersiz satırları gösterme**:
    ```bash
-   uniq dosya.txt
+   sort dosya.txt | uniq
    ```
 
-2. **Tekrar sayısını gösterme:**
+2. **Tekrar sayısını gösterme**:
    ```bash
-   uniq -c dosya.txt
+   sort dosya.txt | uniq -c
    ```
 
-3. **Sadece tekrar eden satırları gösterme:**
+3. **Sadece tekrar eden satırları gösterme**:
    ```bash
-   uniq -d dosya.txt
+   sort dosya.txt | uniq -d
    ```
 
-4. **Büyük/küçük harf duyarsız karşılaştırma ile tekrarları kaldırma:**
+4. **Benzersiz satırları büyük/küçük harf duyarsız olarak gösterme**:
    ```bash
-   uniq -i dosya.txt
+   sort dosya.txt | uniq -i
    ```
 
 ## Tips
-- `uniq` komutunu kullanmadan önce verilerinizi sıralamak için `sort` komutunu kullanmayı unutmayın; aksi takdirde, yalnızca ardışık tekrarlar kaldırılacaktır.
-- Uzun dosyalarla çalışırken, `uniq` komutunu bir dosyaya yönlendirmek için `>` operatörünü kullanabilirsiniz.
-- Tekrar eden satırları kaldırdıktan sonra sonuçları incelemek için `less` veya `more` gibi komutları kullanabilirsiniz.
+- `uniq` komutunu kullanmadan önce verilerinizi sıralamak için `sort` komutunu kullanmayı unutmayın; aksi takdirde, `uniq` yalnızca ardışık tekrarları kaldırır.
+- Büyük/küçük harf duyarsız karşılaştırma yapmak istiyorsanız, `-i` seçeneğini kullanarak sonuçlarınızı daha esnek hale getirebilirsiniz.
+- Tekrar eden satırların sayısını görmek istiyorsanız, `-c` seçeneği oldukça kullanışlıdır ve verilerinizi analiz etmenize yardımcı olabilir.

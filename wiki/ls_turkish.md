@@ -1,61 +1,59 @@
-# [Linux] Bash ls Kullanımı: Dosya ve dizinleri listeleme
+# [Linux] C Shell (csh) ls Kullanımı: Dosya ve dizinleri listeleme
 
-## Genel Bakış
-`ls` komutu, Linux ve Unix benzeri işletim sistemlerinde dosya ve dizinleri listelemek için kullanılan temel bir komuttur. Kullanıcıların mevcut dizindeki dosyaları ve dizinleri görselleştirmesine olanak tanır.
+## Overview
+`ls` komutu, mevcut dizindeki dosya ve dizinleri listelemek için kullanılır. Bu komut, dosyaların adlarını, boyutlarını ve diğer özelliklerini görüntülemenizi sağlar.
 
-## Kullanım
+## Usage
 Temel sözdizimi aşağıdaki gibidir:
-```bash
-ls [seçenekler] [argümanlar]
+
+```csh
+ls [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-l`: Uzun liste formatında gösterir; dosya izinleri, sahip, boyut ve tarih gibi bilgileri içerir.
-- `-a`: Gizli dosyaları da dahil ederek tüm dosyaları listeler (nokta ile başlayan dosyalar).
-- `-h`: Dosya boyutlarını insan tarafından okunabilir formatta gösterir (örneğin, KB, MB).
-- `-R`: Alt dizinleri de dahil ederek tüm dizinleri ve alt dizinleri listeler.
+## Common Options
+- `-l`: Uzun formatta listeleme yapar, dosya izinleri, sahiplik, boyut ve tarih gibi bilgileri gösterir.
+- `-a`: Gizli dosyaları da dahil ederek tüm dosyaları listeler.
+- `-h`: Boyutları insan tarafından okunabilir formatta gösterir (örneğin, KB, MB).
+- `-R`: Alt dizinleri de dahil ederek rekürsif olarak listeleme yapar.
 - `-t`: Dosyaları son değiştirilme tarihine göre sıralar.
 
-## Yaygın Örnekler
-Aşağıda `ls` komutunun bazı pratik kullanımları bulunmaktadır:
+## Common Examples
+Aşağıda `ls` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
-1. Mevcut dizindeki dosyaları listelemek:
-   ```bash
+1. Temel dosya ve dizin listesini görüntüleme:
+   ```csh
    ls
    ```
 
-2. Gizli dosyaları da listelemek:
-   ```bash
+2. Gizli dosyaları da gösterme:
+   ```csh
    ls -a
    ```
 
-3. Uzun liste formatında dosyaları görüntülemek:
-   ```bash
+3. Uzun formatta listeleme:
+   ```csh
    ls -l
    ```
 
-4. Dosya boyutlarını okunabilir formatta göstermek:
-   ```bash
+4. Boyutları okunabilir formatta gösterme:
+   ```csh
    ls -lh
    ```
 
-5. Alt dizinleri de dahil ederek listelemek:
-   ```bash
+5. Alt dizinlerle birlikte listeleme:
+   ```csh
    ls -R
    ```
 
-6. Dosyaları son değiştirilme tarihine göre sıralamak:
-   ```bash
+6. Dosyaları son değiştirilme tarihine göre sıralama:
+   ```csh
    ls -lt
    ```
 
-## İpuçları
-- `ls` komutunu daha etkili kullanmak için sıkça kullandığınız seçenekleri bir alias ile kısayol haline getirebilirsiniz. Örneğin:
-  ```bash
-  alias ll='ls -l'
+## Tips
+- `ls` komutunu sık sık kullanıyorsanız, en çok kullandığınız seçenekleri bir alias ile kısayol haline getirebilirsiniz.
+- Dizin içeriğini daha iyi anlamak için `-l` ve `-h` seçeneklerini bir arada kullanmak faydalı olabilir.
+- Listeleme sonuçlarını bir dosyaya yönlendirmek için `>` operatörünü kullanabilirsiniz:
+  ```csh
+  ls -l > dosyalar.txt
   ```
-- Çıktıyı daha okunabilir hale getirmek için `less` komutuyla birleştirebilirsiniz:
-  ```bash
-  ls -l | less
-  ```
-- `ls` komutunu kullanırken, dizinlerin ve dosyaların renkli olarak gösterilmesini sağlamak için terminal ayarlarınızı kontrol edin; bu, dosya türlerini ayırt etmeyi kolaylaştırır.

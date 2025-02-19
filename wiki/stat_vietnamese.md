@@ -1,49 +1,41 @@
-# [Linux] Bash stat Cách sử dụng: Lấy thông tin về tệp tin
+# [Hệ điều hành] C Shell (csh) stat: Lấy thông tin về tệp
 
-## Tổng quan
-Lệnh `stat` được sử dụng để hiển thị thông tin chi tiết về một tệp tin hoặc thư mục trong hệ thống. Thông tin này bao gồm kích thước, thời gian sửa đổi, quyền truy cập và nhiều thông tin khác.
+## Overview
+Lệnh `stat` trong C Shell (csh) được sử dụng để hiển thị thông tin chi tiết về một tệp hoặc thư mục, bao gồm kích thước, thời gian tạo, quyền truy cập và nhiều thông tin khác.
 
-## Cách sử dụng
+## Usage
 Cú pháp cơ bản của lệnh `stat` như sau:
-
-```bash
-stat [tùy chọn] [đối số]
+```
+stat [options] [arguments]
 ```
 
-## Tùy chọn phổ biến
-- `-c`: Tùy chỉnh định dạng đầu ra.
-- `--format`: Cung cấp định dạng cho thông tin đầu ra.
-- `-f`: Hiển thị thông tin về hệ thống tệp.
-- `--help`: Hiển thị trợ giúp sử dụng lệnh.
+## Common Options
+- `-c FORMAT`: Tùy chỉnh định dạng đầu ra theo yêu cầu.
+- `-f FORMAT`: Tương tự như `-c`, nhưng sử dụng định dạng riêng cho hệ thống tệp.
+- `-L`: Theo dõi liên kết mềm và hiển thị thông tin của tệp mà nó trỏ tới.
 
-## Ví dụ phổ biến
-Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `stat`:
+## Common Examples
+- Hiển thị thông tin chi tiết về một tệp cụ thể:
+  ```csh
+  stat filename.txt
+  ```
 
-1. Hiển thị thông tin chi tiết về một tệp tin:
+- Sử dụng tùy chọn `-c` để chỉ định định dạng đầu ra:
+  ```csh
+  stat -c '%s bytes' filename.txt
+  ```
 
-```bash
-stat ten_tap_tin.txt
-```
+- Hiển thị thông tin của một thư mục:
+  ```csh
+  stat /path/to/directory
+  ```
 
-2. Hiển thị thông tin về một thư mục:
+- Theo dõi liên kết mềm:
+  ```csh
+  stat -L symlink
+  ```
 
-```bash
-stat /duong_dan/thu_muc
-```
-
-3. Sử dụng tùy chọn `-c` để định dạng đầu ra:
-
-```bash
-stat -c '%n: %s bytes' ten_tap_tin.txt
-```
-
-4. Hiển thị thông tin về hệ thống tệp:
-
-```bash
-stat -f /
-```
-
-## Mẹo
-- Sử dụng tùy chọn `--format` để tùy chỉnh thông tin bạn muốn xem, giúp bạn dễ dàng lấy thông tin cần thiết.
-- Kết hợp lệnh `stat` với các lệnh khác như `grep` để lọc thông tin theo nhu cầu.
-- Thường xuyên kiểm tra quyền truy cập của tệp tin để đảm bảo an toàn cho dữ liệu của bạn.
+## Tips
+- Sử dụng tùy chọn `-c` để tùy chỉnh thông tin đầu ra theo nhu cầu cụ thể của bạn.
+- Kiểm tra quyền truy cập của tệp để đảm bảo bạn có quyền thực hiện các thao tác cần thiết.
+- Kết hợp với các lệnh khác như `grep` để lọc thông tin đầu ra nếu cần thiết.

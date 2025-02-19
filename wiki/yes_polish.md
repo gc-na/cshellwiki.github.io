@@ -1,51 +1,45 @@
-# [Linux] Bash yes użycie: generowanie powtarzających się komunikatów
+# [Linux] C Shell (csh) yes użycie: generowanie niekończących się powtórzeń tekstu
 
 ## Overview
-Polecenie `yes` w systemie Linux służy do generowania nieskończonej serii powtarzających się komunikatów. Domyślnie wypisuje słowo "yes", ale można je skonfigurować do wyświetlania dowolnego tekstu. Jest to przydatne w sytuacjach, gdy potrzebujemy automatycznie potwierdzić pytania w skryptach lub programach.
+Polecenie `yes` w C Shell (csh) służy do generowania niekończącego się strumienia powtarzających się tekstów. Domyślnie wypisuje słowo "yes", ale można dostarczyć własny tekst jako argument.
 
 ## Usage
 Podstawowa składnia polecenia `yes` jest następująca:
 
-```bash
+```csh
 yes [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-n`, `--no`: Wypisuje "no" zamiast "yes".
-- `-h`, `--help`: Wyświetla pomoc dotyczącą użycia polecenia.
-- `--version`: Wyświetla wersję programu.
+- `-h`, `--help`: Wyświetla pomoc dotyczącą polecenia `yes`.
+- `-V`, `--version`: Wyświetla wersję polecenia `yes`.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `yes`:
-
 1. **Domyślne użycie**:
    Wypisuje "yes" w nieskończoność.
-   ```bash
+   ```csh
    yes
    ```
 
-2. **Wypisywanie innego tekstu**:
-   Wypisuje "Hello World" w nieskończoność.
-   ```bash
-   yes "Hello World"
+2. **Wypisywanie własnego tekstu**:
+   Wypisuje "hello" w nieskończoność.
+   ```csh
+   yes hello
    ```
 
-3. **Użycie z innym poleceniem**:
-   Automatyczne potwierdzanie dla polecenia `rm` (usuwanie plików).
-   ```bash
-   yes | rm -i *.tmp
+3. **Ograniczenie liczby powtórzeń**:
+   Można użyć `head`, aby ograniczyć liczbę linii do 5.
+   ```csh
+   yes | head -n 5
    ```
 
-4. **Wypisywanie "no"**:
-   Wypisuje "no" w nieskończoność.
-   ```bash
-   yes no
+4. **Zapis do pliku**:
+   Wypisuje "yes" do pliku `output.txt`.
+   ```csh
+   yes > output.txt
    ```
 
 ## Tips
-- Używaj `yes` w połączeniu z innymi poleceniami, aby automatyzować potwierdzenia.
-- Uważaj na użycie `yes` w skryptach, ponieważ może prowadzić do niezamierzonych skutków, jeśli nie jest odpowiednio kontrolowane.
-- Możesz ograniczyć liczbę wypisanych linii, używając potoku z poleceniem `head`. Na przykład, aby uzyskać tylko 5 linii "yes":
-  ```bash
-  yes | head -n 5
-  ```
+- Używaj `yes` w połączeniu z innymi poleceniami, aby automatycznie odpowiadać na pytania w skryptach.
+- Uważaj na użycie `yes` bez ograniczeń, ponieważ może zająć dużo zasobów systemowych.
+- Możesz użyć `Ctrl+C`, aby przerwać działanie polecenia `yes`, gdy nie jest już potrzebne.

@@ -1,51 +1,51 @@
-# [Linux] Bash pr: Textdateien formatieren und drucken
+# [Unix] C Shell (csh) pr: Textdateien formatieren und drucken
 
 ## Übersicht
-Der `pr` Befehl wird verwendet, um Textdateien für den Druck zu formatieren. Er teilt den Inhalt einer Datei in mehrere Spalten und fügt Kopfzeilen sowie Seitenumbrüche hinzu, was die Lesbarkeit beim Drucken verbessert.
+Der Befehl `pr` wird verwendet, um Textdateien für den Druck zu formatieren. Er kann Text in Spalten aufteilen, Seitenumbrüche hinzufügen und die Ausgabe anpassen, um die Lesbarkeit zu verbessern.
 
 ## Verwendung
-Die grundlegende Syntax des `pr` Befehls lautet:
+Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```
 pr [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-h, --header=TEXT`: Fügt eine benutzerdefinierte Kopfzeile hinzu.
-- `-l, --length=NUM`: Legt die Seitenlänge in Zeilen fest.
-- `-n, --number`: Nummeriert die Ausgaben.
-- `-t, --omit-header`: Unterdrückt die Kopfzeile.
-- `-s, --separator=STRING`: Legt den Trennzeichen für Spalten fest.
+- `-2`: Teilt die Ausgabe in zwei Spalten.
+- `-f`: Fügt einen Seitenumbruch nach jeder Datei hinzu.
+- `-h <Überschrift>`: Fügt eine benutzerdefinierte Überschrift hinzu.
+- `-l <Zeilen>`: Legt die Anzahl der Zeilen pro Seite fest.
+- `-s`: Verwendet Leerzeichen anstelle von Tabulatoren zur Ausrichtung.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele zur Verwendung des `pr` Befehls:
+Hier sind einige praktische Beispiele für die Verwendung des `pr`-Befehls:
 
 1. **Einfaches Formatieren einer Datei:**
-   ```bash
+   ```csh
    pr datei.txt
    ```
 
-2. **Formatieren mit benutzerdefinierter Kopfzeile:**
-   ```bash
-   pr -h "Mein Dokument" datei.txt
-   ```
-
-3. **Ausgabe in zwei Spalten:**
-   ```bash
+2. **Zwei Spalten ausgeben:**
+   ```csh
    pr -2 datei.txt
    ```
 
-4. **Nummerierte Ausgabe:**
-   ```bash
-   pr -n datei.txt
+3. **Seitenumbrüche nach jeder Datei hinzufügen:**
+   ```csh
+   pr -f datei1.txt datei2.txt
    ```
 
-5. **Seitenlänge auf 40 Zeilen festlegen:**
-   ```bash
-   pr -l 40 datei.txt
+4. **Benutzerdefinierte Überschrift hinzufügen:**
+   ```csh
+   pr -h "Meine Überschrift" datei.txt
+   ```
+
+5. **Anzahl der Zeilen pro Seite festlegen:**
+   ```csh
+   pr -l 50 datei.txt
    ```
 
 ## Tipps
-- Verwenden Sie die Option `-t`, wenn Sie die Kopfzeile nicht benötigen, um Platz zu sparen.
-- Experimentieren Sie mit der Spaltenanzahl, um die Lesbarkeit je nach Inhalt zu optimieren.
-- Nutzen Sie die Nummerierungsoption, um die Referenzierung in langen Dokumenten zu erleichtern.
+- Verwenden Sie die Option `-s`, um sicherzustellen, dass Ihre Ausgabe ordentlich ausgerichtet ist, insbesondere wenn Sie mit Tabulatoren arbeiten.
+- Kombinieren Sie mehrere Optionen, um die Ausgabe nach Ihren Wünschen anzupassen, z. B. `pr -2 -h "Bericht" datei.txt`.
+- Testen Sie die Ausgabe zuerst im Terminal, bevor Sie sie drucken, um sicherzustellen, dass alles korrekt formatiert ist.

@@ -1,31 +1,30 @@
-# [Linux] Bash awk utilizzo: Elaborazione di testo e reportistica
+# [Linux] C Shell (csh) awk Utilizzo: Elaborazione di testo e reportistica
 
 ## Overview
-Il comando `awk` è un potente strumento di elaborazione del testo utilizzato per analizzare e manipolare dati strutturati, come file di testo e output di comandi. È particolarmente utile per l'estrazione di informazioni e la generazione di report.
+Il comando `awk` è uno strumento potente per l'elaborazione di testo e la generazione di report. Viene utilizzato per analizzare e manipolare dati strutturati, come file di testo e output di comandi, consentendo di estrarre informazioni specifiche e formattare i risultati in modo utile.
 
 ## Usage
 La sintassi di base del comando `awk` è la seguente:
 
 ```bash
-awk [opzioni] [argomenti]
+awk [options] [arguments]
 ```
 
 ## Common Options
-Ecco alcune opzioni comuni per il comando `awk`:
-
-- `-F` : Specifica il delimitatore di campo (ad esempio, `-F,` per i file CSV).
-- `-v` : Permette di definire variabili da utilizzare all'interno del programma `awk`.
-- `-f` : Indica un file contenente script `awk` da eseguire.
+- `-F`: Specifica il delimitatore di campo. Ad esempio, `-F,` per i file CSV.
+- `-v`: Permette di definire variabili da utilizzare all'interno del programma `awk`.
+- `-f`: Indica un file contenente uno script `awk` da eseguire.
 
 ## Common Examples
+Ecco alcuni esempi pratici di utilizzo del comando `awk`:
 
-### Esempio 1: Stampa la prima colonna di un file
+### Esempio 1: Stampare la prima colonna di un file
 ```bash
 awk '{print $1}' file.txt
 ```
 Questo comando stampa il contenuto della prima colonna di `file.txt`.
 
-### Esempio 2: Utilizzare un delimitatore personalizzato
+### Esempio 2: Usare un delimitatore personalizzato
 ```bash
 awk -F, '{print $2}' file.csv
 ```
@@ -33,23 +32,17 @@ In questo caso, il comando stampa la seconda colonna di un file CSV, utilizzando
 
 ### Esempio 3: Filtrare righe in base a una condizione
 ```bash
-awk '$3 > 50' file.txt
+awk '$3 > 100' file.txt
 ```
-Questo comando restituisce solo le righe di `file.txt` in cui il valore della terza colonna è maggiore di 50.
+Questo comando restituisce solo le righe in cui il valore della terza colonna è maggiore di 100.
 
-### Esempio 4: Somma i valori di una colonna
+### Esempio 4: Sommare i valori di una colonna
 ```bash
 awk '{sum += $2} END {print sum}' file.txt
 ```
-Qui, il comando calcola e stampa la somma di tutti i valori nella seconda colonna di `file.txt`.
-
-### Esempio 5: Definire una variabile
-```bash
-awk -v threshold=100 '$1 > threshold' file.txt
-```
-Questo comando utilizza una variabile `threshold` per filtrare le righe in cui il valore della prima colonna è maggiore di 100.
+Qui, il comando somma tutti i valori della seconda colonna e stampa il risultato alla fine.
 
 ## Tips
-- Utilizza i delimitatori corretti per i tuoi file per garantire che `awk` interpreti correttamente i dati.
-- Sfrutta le variabili per rendere i tuoi script più flessibili e facili da mantenere.
-- Prova a combinare `awk` con altri comandi Unix per pipeline più potenti e versatili.
+- Utilizza `-F` per gestire file con delimitatori diversi, come tabulazioni o punti e virgola.
+- Sfrutta le variabili definite con `-v` per rendere i tuoi script più flessibili e riutilizzabili.
+- Ricorda che `awk` tratta le righe come record e le colonne come campi, il che rende facile l'accesso ai dati strutturati.

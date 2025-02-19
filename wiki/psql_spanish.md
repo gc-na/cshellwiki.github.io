@@ -1,4 +1,4 @@
-# [Linux] Bash psql Uso: Interactuar con bases de datos PostgreSQL
+# [Linux] C Shell (csh) psql Uso: Interactuar con bases de datos PostgreSQL
 
 ## Overview
 El comando `psql` es una herramienta de línea de comandos para interactuar con bases de datos PostgreSQL. Permite a los usuarios ejecutar consultas SQL, administrar bases de datos y realizar tareas de mantenimiento.
@@ -6,44 +6,41 @@ El comando `psql` es una herramienta de línea de comandos para interactuar con 
 ## Usage
 La sintaxis básica del comando `psql` es la siguiente:
 
-```bash
-psql [opciones] [argumentos]
+```csh
+psql [options] [arguments]
 ```
 
 ## Common Options
-- `-h`: Especifica el host del servidor de la base de datos.
-- `-p`: Define el puerto del servidor de la base de datos.
+- `-h`: Especifica el host donde se encuentra la base de datos.
+- `-p`: Define el puerto de conexión a la base de datos.
 - `-U`: Indica el nombre de usuario para conectarse a la base de datos.
 - `-d`: Especifica el nombre de la base de datos a la que se desea conectar.
-- `-c`: Permite ejecutar un comando SQL directamente desde la línea de comandos.
+- `-f`: Permite ejecutar un archivo SQL.
 
 ## Common Examples
-1. **Conectar a una base de datos:**
-   ```bash
+Aquí hay algunos ejemplos prácticos del uso de `psql`:
+
+1. Conectar a una base de datos local:
+   ```csh
    psql -U usuario -d basededatos
    ```
 
-2. **Ejecutar un comando SQL directamente:**
-   ```bash
-   psql -U usuario -d basededatos -c "SELECT * FROM tabla;"
+2. Conectar a una base de datos en un host remoto:
+   ```csh
+   psql -h host_remoto -U usuario -d basededatos
    ```
 
-3. **Conectar a un servidor remoto:**
-   ```bash
-   psql -h servidor.com -p 5432 -U usuario -d basededatos
+3. Ejecutar un archivo SQL:
+   ```csh
+   psql -U usuario -d basededatos -f archivo.sql
    ```
 
-4. **Listar todas las bases de datos:**
-   ```bash
-   psql -U usuario -c "\l"
-   ```
-
-5. **Salir de psql:**
-   ```bash
-   \q
+4. Listar todas las tablas en la base de datos:
+   ```csh
+   psql -U usuario -d basededatos -c "\dt"
    ```
 
 ## Tips
-- Utiliza el comando `\?` dentro de `psql` para obtener ayuda sobre los comandos disponibles.
-- Guarda tus consultas SQL en archivos y ejecútalas usando `psql -f archivo.sql` para facilitar la gestión de scripts.
-- Asegúrate de tener los permisos adecuados en la base de datos para evitar errores de acceso.
+- Asegúrate de tener los permisos adecuados para acceder a la base de datos.
+- Utiliza la opción `-W` para que te pida la contraseña de forma segura.
+- Familiarízate con los comandos internos de `psql` para mejorar tu eficiencia al interactuar con la base de datos.

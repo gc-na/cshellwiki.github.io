@@ -1,34 +1,38 @@
-# [Linux] Bash rehash uso: Atualiza o cache de comandos
+# [Linux] C Shell (csh) rehash Uso: Atualiza o cache de comandos
 
 ## Overview
-O comando `rehash` é utilizado em ambientes de shell, como o Bash, para atualizar o cache de comandos disponíveis. Isso é especialmente útil quando novos executáveis são adicionados a diretórios que já estão no PATH, permitindo que o shell reconheça esses novos comandos sem a necessidade de reiniciar a sessão.
+O comando `rehash` no C Shell (csh) é utilizado para atualizar o cache de comandos disponíveis. Quando um novo programa é instalado ou um script é criado, o shell pode não reconhecer imediatamente esses novos comandos. O `rehash` força o shell a reexaminar os diretórios especificados na variável de ambiente `path`, garantindo que todos os comandos disponíveis sejam reconhecidos.
 
 ## Usage
 A sintaxe básica do comando `rehash` é a seguinte:
 
-```bash
-rehash [options] [arguments]
+```csh
+rehash [opções] [argumentos]
 ```
 
 ## Common Options
-O comando `rehash` não possui muitas opções, mas aqui estão algumas que podem ser relevantes:
-
-- **-p**: Atualiza apenas o cache de comandos para o diretório atual.
+O comando `rehash` não possui opções específicas. Ele é geralmente utilizado sem argumentos.
 
 ## Common Examples
 Aqui estão alguns exemplos práticos do uso do comando `rehash`:
 
-1. **Atualizar o cache de comandos após instalar um novo programa**:
-   ```bash
+1. **Atualizar o cache de comandos após instalar um novo programa:**
+   ```csh
    rehash
    ```
 
-2. **Atualizar o cache apenas para o diretório atual**:
-   ```bash
-   rehash -p
+2. **Após criar um novo script executável, use:**
+   ```csh
+   rehash
+   ```
+
+3. **Usar `rehash` antes de executar um comando recém-instalado:**
+   ```csh
+   rehash
+   novo_comando
    ```
 
 ## Tips
-- Sempre que você instalar um novo software ou adicionar um novo executável a um diretório que já está no seu PATH, é uma boa prática executar `rehash` para garantir que o shell reconheça o novo comando.
-- Se você estiver usando um shell que não suporta `rehash`, considere reiniciar a sessão do terminal ou usar o comando `hash -r` para limpar o cache de comandos.
-- O comando `rehash` é mais comum em shells como o `tcsh` e `csh`, enquanto no Bash, a necessidade de usá-lo é menos frequente, pois o Bash atualiza automaticamente o cache de comandos.
+- Utilize o `rehash` sempre que instalar novos programas ou scripts para garantir que o shell reconheça os novos comandos.
+- Se você frequentemente instala ou altera scripts, considere adicionar `rehash` ao seu arquivo de inicialização do C Shell, como `.cshrc`, para que ele seja executado automaticamente.
+- Lembre-se de que o `rehash` não altera o comportamento de comandos já reconhecidos; ele apenas atualiza o cache.

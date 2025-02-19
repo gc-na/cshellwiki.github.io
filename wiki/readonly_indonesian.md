@@ -1,41 +1,45 @@
-# [Linux] Bash readonly Penggunaan: Mengatur variabel sebagai tidak dapat diubah
+# [Sistem Operasi] C Shell (csh) readonly Penggunaan: Menetapkan variabel sebagai hanya-baca
 
 ## Overview
-Perintah `readonly` dalam Bash digunakan untuk menetapkan variabel sebagai tidak dapat diubah. Setelah sebuah variabel ditetapkan sebagai readonly, nilainya tidak dapat diubah atau dihapus selama sesi shell tersebut. Ini berguna untuk melindungi variabel penting dari modifikasi yang tidak disengaja.
+Perintah `readonly` dalam C Shell (csh) digunakan untuk menetapkan variabel sebagai hanya-baca. Setelah variabel ditetapkan sebagai readonly, nilainya tidak dapat diubah atau dihapus selama sesi shell tersebut. Ini berguna untuk melindungi variabel penting dari modifikasi yang tidak disengaja.
 
 ## Usage
-Sintaks dasar dari perintah `readonly` adalah sebagai berikut:
+Berikut adalah sintaks dasar untuk menggunakan perintah `readonly`:
 
-```bash
+```csh
 readonly [options] [arguments]
 ```
 
 ## Common Options
-- `-p`: Menampilkan semua variabel yang ditetapkan sebagai readonly beserta nilainya.
+- `-p`: Menampilkan semua variabel readonly saat ini beserta nilainya.
 
 ## Common Examples
+Berikut adalah beberapa contoh penggunaan perintah `readonly`:
 
-### Menetapkan variabel sebagai readonly
-```bash
-readonly VAR="Ini tidak bisa diubah"
-```
+1. **Menetapkan variabel sebagai readonly:**
+   ```csh
+   set myVar = "Hello World"
+   readonly myVar
+   ```
 
-### Mencoba mengubah nilai variabel readonly
-```bash
-VAR="Coba ubah"  # Ini akan menghasilkan error
-```
+2. **Mencoba mengubah nilai variabel readonly (akan gagal):**
+   ```csh
+   set myVar = "New Value"  # Ini akan menghasilkan error
+   ```
 
-### Menampilkan variabel readonly
-```bash
-readonly -p
-```
+3. **Menampilkan semua variabel readonly:**
+   ```csh
+   readonly -p
+   ```
 
-### Menghapus variabel readonly (dengan menggunakan unset)
-```bash
-unset VAR  # Ini akan menghasilkan error karena VAR adalah readonly
-```
+4. **Membuat beberapa variabel readonly sekaligus:**
+   ```csh
+   set var1 = "Value1"
+   set var2 = "Value2"
+   readonly var1 var2
+   ```
 
 ## Tips
-- Gunakan `readonly` untuk melindungi variabel yang penting dalam skrip Anda agar tidak diubah secara tidak sengaja.
-- Selalu periksa variabel readonly dengan `readonly -p` sebelum mencoba mengubahnya.
-- Pertimbangkan untuk menggunakan `readonly` pada variabel yang berisi konfigurasi atau pengaturan yang tidak boleh diubah selama eksekusi skrip.
+- Gunakan `readonly` untuk variabel yang penting agar tidak diubah secara tidak sengaja.
+- Selalu periksa variabel readonly dengan opsi `-p` untuk memastikan variabel yang tepat telah ditetapkan.
+- Ingat bahwa setelah variabel ditetapkan sebagai readonly, Anda tidak dapat mengubah atau menghapusnya dalam sesi yang sama.

@@ -1,56 +1,54 @@
-# [Linux] Bash diff uso equivalente: Compare files line by line
+# [Linux] C Shell (csh) diff用法: Compare files line by line
 
 ## Overview
-The `diff` command is a powerful utility in Unix-like operating systems that allows users to compare two files line by line. It identifies the differences between the files and displays them in a format that makes it easy to see what has changed.
+The `diff` command is used to compare two files line by line. It identifies differences between the files and displays them in a format that highlights what has been added, removed, or changed.
 
 ## Usage
 The basic syntax of the `diff` command is as follows:
 
-```bash
+```csh
 diff [options] [file1] [file2]
 ```
 
 ## Common Options
-- `-u`: Outputs the differences in a unified format, which is easier to read.
+- `-u`: Outputs differences in a unified format, which is easier to read.
 - `-c`: Produces a context diff, showing a few lines of context around the changes.
-- `-i`: Ignores case differences in the file contents.
-- `-w`: Ignores all whitespace when comparing lines.
+- `-i`: Ignores case differences in the files.
+- `-w`: Ignores all white space when comparing lines.
 - `-r`: Recursively compares any subdirectories found.
 
 ## Common Examples
 Here are some practical examples of using the `diff` command:
 
-### Example 1: Basic Comparison
-To compare two text files and see the differences:
-```bash
-diff file1.txt file2.txt
-```
+1. **Basic comparison of two files:**
+   ```csh
+   diff file1.txt file2.txt
+   ```
 
-### Example 2: Unified Format
-To view the differences in a unified format:
-```bash
-diff -u file1.txt file2.txt
-```
+2. **Unified format comparison:**
+   ```csh
+   diff -u file1.txt file2.txt
+   ```
 
-### Example 3: Context Diff
-To see the differences with context:
-```bash
-diff -c file1.txt file2.txt
-```
+3. **Context diff with surrounding lines:**
+   ```csh
+   diff -c file1.txt file2.txt
+   ```
 
-### Example 4: Ignoring Case
-To compare two files while ignoring case differences:
-```bash
-diff -i file1.txt file2.txt
-```
+4. **Ignoring case differences:**
+   ```csh
+   diff -i file1.txt file2.txt
+   ```
 
-### Example 5: Comparing Directories
-To compare two directories recursively:
-```bash
-diff -r dir1/ dir2/
-```
+5. **Recursive comparison of two directories:**
+   ```csh
+   diff -r dir1/ dir2/
+   ```
 
 ## Tips
-- Use the `-u` option for a more readable output, especially when reviewing changes in code.
-- When working with large files, consider using `less` to paginate the output: `diff file1.txt file2.txt | less`.
-- Combine `diff` with `patch` to apply changes from one file to another based on the differences identified.
+- Always use the `-u` option for a more readable output, especially when sharing differences with others.
+- When working with large files, consider using `less` to paginate the output: 
+  ```csh
+  diff file1.txt file2.txt | less
+  ```
+- If you frequently compare the same files, consider creating a shell script to automate the process.

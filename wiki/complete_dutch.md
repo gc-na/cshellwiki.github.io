@@ -1,47 +1,45 @@
-# [Linux] Bash complete gebruik: Voltooiing van commando's
+# [Linux] C Shell (csh) complete gebruik: Voltooiing van commando's
 
 ## Overzicht
-De `complete` opdracht in Bash wordt gebruikt om de autocompletie van commando's aan te passen. Hiermee kun je specifieke opties of argumenten definiëren die automatisch worden aangevuld wanneer je een commando typt.
+Het `complete` commando in C Shell (csh) wordt gebruikt om automatisch commando's of bestandsnamen te voltooien terwijl je typt. Dit kan de efficiëntie verhogen en typfouten verminderen.
 
 ## Gebruik
-De basis syntaxis van de `complete` opdracht is als volgt:
+De basis syntaxis van het `complete` commando is als volgt:
 
-```bash
+```csh
 complete [options] [arguments]
 ```
 
 ## Veelvoorkomende opties
-- `-A`: Specificeert het type argument dat moet worden voltooid, zoals `file`, `command`, of `user`.
-- `-o`: Voegt extra opties toe voor de voltooiing, zoals `default` of `nospace`.
-- `-F`: Verwijst naar een functie die de voltooiing moet uitvoeren.
+- `-c`: Specificeert het commando waarvoor de voltooiing moet worden ingesteld.
+- `-d`: Voegt directory's toe aan de voltooiing.
+- `-f`: Voegt bestanden toe aan de voltooiing.
+- `-n`: Bepaalt het aantal argumenten dat moet worden genegeerd bij de voltooiing.
 
 ## Veelvoorkomende voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van het `complete` commando:
 
-1. **Voltooiing voor een specifiek commando**:
-   Stel dat je een commando `mycmd` hebt en je wilt dat het automatisch bestanden in de huidige map aanvult:
-
-   ```bash
-   complete -A file mycmd
+1. **Voltooiing voor een specifiek commando:**
+   ```csh
+   complete -c ls
    ```
 
-2. **Voltooiing met een functie**:
-   Je kunt ook een functie definiëren die aangepaste voltooiing biedt. Hier is een voorbeeld:
-
-   ```bash
-   _my_custom_completion() {
-       COMPREPLY=( $(compgen -W "option1 option2 option3" -- "${COMP_WORDS[COMP_CWORD]}") )
-   }
-   complete -F _my_custom_completion mycmd
+2. **Voltooiing met bestanden:**
+   ```csh
+   complete -f -c cp
    ```
 
-3. **Voltooiing met extra opties**:
-   Als je wilt dat de voltooiing geen spatie toevoegt na het voltooien van een argument:
+3. **Voltooiing met directory's:**
+   ```csh
+   complete -d -c cd
+   ```
 
-   ```bash
-   complete -o nospace -A command mycmd
+4. **Voltooiing met meerdere opties:**
+   ```csh
+   complete -f -d -c mv
    ```
 
 ## Tips
-- Zorg ervoor dat je de `complete` opdracht toevoegt aan je `.bashrc` of `.bash_profile` om de aanpassingen permanent te maken.
-- Test je voltooiingsinstellingen door het commando in een nieuwe terminalsessie te gebruiken.
-- Gebruik de `compgen` functie om dynamisch argumenten te genereren op basis van de huidige context.
+- Gebruik `complete` om je workflow te versnellen, vooral bij het werken met lange bestandsnamen of complexe commando's.
+- Experimenteer met verschillende opties om te zien welke het beste werkt voor jouw gebruiksscenario's.
+- Vergeet niet dat je de instellingen voor voltooiing kunt resetten of aanpassen als je wijzigingen aanbrengt in je shell-configuratie.

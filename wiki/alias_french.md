@@ -1,46 +1,43 @@
-# [Linux] Bash alias utilisation : Créer des raccourcis pour les commandes
+# [Linux] C Shell (csh) alias utilisation : Créer des raccourcis pour des commandes
 
 ## Overview
-La commande `alias` permet de créer des raccourcis pour des commandes Bash. Cela facilite l'exécution de commandes longues ou complexes en les remplaçant par des mots-clés plus simples.
+La commande `alias` dans C Shell (csh) permet de créer des raccourcis pour des commandes longues ou fréquemment utilisées. Cela facilite l'exécution de ces commandes sans avoir à les taper intégralement à chaque fois.
 
 ## Usage
 La syntaxe de base de la commande `alias` est la suivante :
 
-```bash
+```csh
 alias [options] [arguments]
 ```
 
 ## Common Options
-- `-p` : Affiche tous les alias définis.
-- `-d` : Supprime un alias existant.
+- `-p` : Affiche tous les alias actuellement définis.
+- `-d` : Supprime un alias défini précédemment.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `alias` :
 
-1. Créer un alias simple :
-   ```bash
-   alias ll='ls -la'
+1. Créer un alias pour la commande `ls -la` :
+   ```csh
+   alias ll 'ls -la'
    ```
-   Cet alias permet d'utiliser `ll` pour exécuter `ls -la`, affichant ainsi une liste détaillée des fichiers.
 
-2. Créer un alias avec une commande complexe :
-   ```bash
-   alias gs='git status'
+2. Créer un alias pour naviguer rapidement dans un répertoire :
+   ```csh
+   alias docs 'cd ~/Documents'
    ```
-   Ici, `gs` devient un raccourci pour `git status`, facilitant l'utilisation de Git.
 
 3. Afficher tous les alias définis :
-   ```bash
+   ```csh
    alias -p
    ```
 
 4. Supprimer un alias :
-   ```bash
-   unalias ll
+   ```csh
+   alias -d ll
    ```
-   Cette commande supprime l'alias `ll` que nous avons créé précédemment.
 
 ## Tips
-- Utilisez des noms d'alias clairs et significatifs pour faciliter leur mémorisation.
-- Ajoutez vos alias dans le fichier `~/.bashrc` pour qu'ils soient disponibles à chaque session.
+- Utilisez des noms d'alias courts et significatifs pour faciliter leur mémorisation.
+- Pensez à ajouter vos alias dans votre fichier de configuration `.cshrc` pour qu'ils soient disponibles à chaque session.
 - Évitez de créer des alias qui pourraient entrer en conflit avec des commandes existantes.

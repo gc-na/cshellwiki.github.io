@@ -1,7 +1,7 @@
-# [Linux] Bash cut utilizzo: Estrazione di porzioni di testo
+# [Linux] C Shell (csh) cut utilizzo: Estrae sezioni da file di testo
 
 ## Overview
-Il comando `cut` in Bash è utilizzato per estrarre sezioni specifiche da ogni riga di un file o di un input standard. È particolarmente utile per lavorare con file di testo delimitati, come CSV o TSV, dove è necessario isolare colonne specifiche.
+Il comando `cut` è utilizzato per estrarre sezioni specifiche da file di testo o dall'input standard. È particolarmente utile per lavorare con file delimitati, come file CSV, dove è necessario isolare colonne specifiche.
 
 ## Usage
 La sintassi di base del comando `cut` è la seguente:
@@ -12,41 +12,34 @@ cut [options] [arguments]
 
 ## Common Options
 - `-f`: Specifica i campi da estrarre, separati da virgole.
-- `-d`: Definisce il delimitatore da utilizzare per separare i campi (il delimitatore predefinito è il tab).
+- `-d`: Definisce il delimitatore dei campi (il carattere che separa i campi).
 - `-c`: Estrae caratteri specifici da ogni riga.
-- `--complement`: Restituisce tutto tranne i campi o i caratteri specificati.
+- `--complement`: Restituisce tutto tranne i campi specificati.
 
 ## Common Examples
+Ecco alcuni esempi pratici dell'uso del comando `cut`:
 
-### Estrazione di colonne da un file CSV
-Per estrarre la seconda colonna da un file CSV utilizzando la virgola come delimitatore:
+1. Estrazione della prima colonna da un file CSV:
+   ```bash
+   cut -d ',' -f 1 file.csv
+   ```
 
-```bash
-cut -d ',' -f 2 file.csv
-```
+2. Estrazione di più colonne (prima e terza) da un file delimitato da tabulazioni:
+   ```bash
+   cut -d $'\t' -f 1,3 file.txt
+   ```
 
-### Estrazione di caratteri specifici
-Per estrarre i primi 5 caratteri di ogni riga in un file di testo:
+3. Estrazione di caratteri specifici (primi 5 caratteri) da un file di testo:
+   ```bash
+   cut -c 1-5 file.txt
+   ```
 
-```bash
-cut -c 1-5 file.txt
-```
-
-### Estrazione di più colonne
-Per estrarre la prima e la terza colonna da un file TSV (tab-separated values):
-
-```bash
-cut -d $'\t' -f 1,3 file.tsv
-```
-
-### Utilizzo con input standard
-Puoi anche utilizzare `cut` con input standard. Ad esempio, per estrarre il primo campo da una lista di nomi separati da spazi:
-
-```bash
-echo "Mario Rossi Giovanni Bianchi" | cut -d ' ' -f 1
-```
+4. Utilizzo di `cut` con `echo` per estrarre una parte di una stringa:
+   ```bash
+   echo "Nome,Cognome,Età" | cut -d ',' -f 2
+   ```
 
 ## Tips
-- Quando lavori con file delimitati, assicurati di specificare correttamente il delimitatore con l'opzione `-d`.
-- Usa l'opzione `--complement` se desideri escludere determinati campi invece di includerli.
-- Per visualizzare l'output in modo più leggibile, puoi combinare `cut` con altri comandi come `sort` o `uniq`.
+- Quando si lavora con file delimitati, assicurati di specificare correttamente il delimitatore con l'opzione `-d`.
+- Puoi combinare `cut` con altri comandi come `grep` o `sort` per elaborare ulteriormente i dati.
+- Ricorda che `cut` lavora solo su righe di testo e non su file binari.

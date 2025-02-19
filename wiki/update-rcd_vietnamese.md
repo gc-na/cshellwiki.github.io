@@ -1,42 +1,44 @@
-# [Linux] Bash update-rc.d: Quản lý các dịch vụ khởi động
+# [Hệ điều hành] C Shell (csh) update-rc.d: [quản lý dịch vụ khởi động]
 
-## Overview
-Lệnh `update-rc.d` được sử dụng để thêm, xóa hoặc cập nhật các dịch vụ trong hệ thống khởi động của Linux. Nó cho phép người dùng quản lý cách mà các dịch vụ được khởi động hoặc dừng trong quá trình khởi động của hệ thống.
+## Tổng quan
+Lệnh `update-rc.d` được sử dụng để thêm hoặc xóa các dịch vụ từ hệ thống khởi động của Linux. Nó cho phép người dùng quản lý cách mà các dịch vụ được khởi động hoặc dừng trong quá trình khởi động của hệ điều hành.
 
-## Usage
+## Cú pháp
 Cú pháp cơ bản của lệnh `update-rc.d` như sau:
 ```
-update-rc.d [options] [arguments]
+update-rc.d [tùy chọn] [tham số]
 ```
 
-## Common Options
-- `defaults`: Thêm các liên kết khởi động mặc định cho dịch vụ.
-- `remove`: Xóa dịch vụ khỏi các liên kết khởi động.
-- `enable`: Kích hoạt dịch vụ để nó khởi động cùng với hệ thống.
-- `disable`: Vô hiệu hóa dịch vụ để nó không khởi động cùng với hệ thống.
+## Các tùy chọn phổ biến
+- `defaults`: Thêm dịch vụ với các mức độ khởi động mặc định.
+- `remove`: Xóa dịch vụ khỏi các mức độ khởi động.
+- `enable`: Kích hoạt dịch vụ để nó khởi động tự động.
+- `disable`: Vô hiệu hóa dịch vụ để nó không khởi động tự động.
 
-## Common Examples
-- **Thêm dịch vụ với các liên kết khởi động mặc định:**
-  ```bash
-  sudo update-rc.d myservice defaults
-  ```
+## Ví dụ thường gặp
+Dưới đây là một số ví dụ về cách sử dụng lệnh `update-rc.d`:
 
-- **Xóa dịch vụ khỏi các liên kết khởi động:**
-  ```bash
-  sudo update-rc.d myservice remove
-  ```
+1. Thêm dịch vụ với các mức độ khởi động mặc định:
+   ```bash
+   update-rc.d myservice defaults
+   ```
 
-- **Kích hoạt dịch vụ:**
-  ```bash
-  sudo update-rc.d myservice enable
-  ```
+2. Xóa dịch vụ khỏi các mức độ khởi động:
+   ```bash
+   update-rc.d myservice remove
+   ```
 
-- **Vô hiệu hóa dịch vụ:**
-  ```bash
-  sudo update-rc.d myservice disable
-  ```
+3. Kích hoạt dịch vụ để nó khởi động tự động:
+   ```bash
+   update-rc.d myservice enable
+   ```
 
-## Tips
-- Luôn kiểm tra trạng thái của dịch vụ sau khi thực hiện các thay đổi để đảm bảo rằng nó hoạt động như mong muốn.
-- Sử dụng `update-rc.d` với quyền `sudo` để đảm bảo bạn có quyền thực hiện các thay đổi cần thiết.
-- Đọc tài liệu của dịch vụ cụ thể để biết thêm thông tin về cách cấu hình và quản lý dịch vụ đó.
+4. Vô hiệu hóa dịch vụ để nó không khởi động tự động:
+   ```bash
+   update-rc.d myservice disable
+   ```
+
+## Mẹo
+- Hãy chắc chắn rằng bạn có quyền quản trị (root) khi sử dụng lệnh `update-rc.d`, vì nó yêu cầu quyền cao để thay đổi cấu hình khởi động.
+- Kiểm tra trạng thái của dịch vụ sau khi thực hiện thay đổi để đảm bảo rằng nó hoạt động như mong đợi.
+- Sử dụng lệnh `man update-rc.d` để xem thêm thông tin chi tiết và các tùy chọn khác có sẵn.

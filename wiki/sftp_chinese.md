@@ -1,49 +1,51 @@
-# [Linux] Bash sftp 使用方法: 进行安全文件传输
+# [操作系统] C Shell (csh) sftp 用法: 安全文件传输
 
 ## 概述
-`sftp`（SSH 文件传输协议）是一种安全的网络协议，用于在计算机之间传输文件。它通过 SSH（安全外壳协议）提供加密的文件传输功能，确保数据在传输过程中的安全性。
+sftp（安全文件传输协议）是一个用于在网络上安全地传输文件的命令行工具。它基于SSH协议，提供了加密的文件传输功能，确保数据在传输过程中的安全性。
 
 ## 用法
-基本语法如下：
-```
-sftp [选项] [用户@主机]
+sftp命令的基本语法如下：
+
+```bash
+sftp [options] [user@]host
 ```
 
 ## 常用选项
-- `-P`：指定端口号。
-- `-o`：传递选项，例如 `-oPort=2222`。
-- `-b`：使用批处理模式，从文件中读取命令。
-- `-v`：启用详细模式，显示调试信息。
+- `-P port`：指定连接的端口号，默认为22。
+- `-o option`：设置特定的SSH选项。
+- `-b batchfile`：从批处理文件中读取命令。
 
 ## 常见示例
-1. 连接到远程服务器：
+1. 连接到远程主机：
    ```bash
    sftp user@hostname
    ```
 
-2. 指定端口连接：
-   ```bash
-   sftp -P 2222 user@hostname
-   ```
-
-3. 从远程服务器下载文件：
-   ```bash
-   sftp user@hostname:/remote/path/file.txt /local/path/
-   ```
-
-4. 上传文件到远程服务器：
+2. 上传文件到远程主机：
    ```bash
    sftp user@hostname
-   put /local/path/file.txt /remote/path/
+   put localfile.txt
    ```
 
-5. 列出远程目录中的文件：
+3. 从远程主机下载文件：
    ```bash
    sftp user@hostname
-   ls /remote/path/
+   get remotefile.txt
    ```
 
-## 提示
-- 使用 `-v` 选项可以帮助你调试连接问题。
-- 在使用 `put` 或 `get` 命令时，可以使用通配符来选择多个文件。
-- 定期检查和更新 SSH 密钥，以确保连接的安全性。
+4. 列出远程目录中的文件：
+   ```bash
+   sftp user@hostname
+   ls
+   ```
+
+5. 删除远程主机上的文件：
+   ```bash
+   sftp user@hostname
+   rm remotefile.txt
+   ```
+
+## 小贴士
+- 在使用sftp时，确保SSH服务在远程主机上运行。
+- 使用`-P`选项可以连接到非默认端口的主机。
+- 定期检查和更新SSH密钥，以增强安全性。

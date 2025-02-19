@@ -1,69 +1,51 @@
-# [Linux] Bash pkg uso: Package management command
+# [Linux] C Shell (csh) pkg uso equivalente: Manage software packages
 
 ## Overview
-The `pkg` command is a package management tool used primarily in FreeBSD and some other Unix-like operating systems. It simplifies the process of installing, upgrading, and managing software packages from repositories.
+The `pkg` command in C Shell (csh) is used for managing software packages on Unix-like operating systems. It allows users to install, remove, and manage software packages easily.
 
 ## Usage
 The basic syntax of the `pkg` command is as follows:
 
-```bash
+```csh
 pkg [options] [arguments]
 ```
 
 ## Common Options
-- `install`: Installs a package.
-- `remove`: Uninstalls a package.
-- `upgrade`: Upgrades installed packages to their latest versions.
-- `search`: Searches for a package in the repositories.
-- `info`: Displays information about a specific package.
-- `list`: Lists all installed packages.
+- `install`: Installs a specified package.
+- `remove`: Uninstalls a specified package.
+- `update`: Updates installed packages to their latest versions.
+- `list`: Displays a list of installed packages.
+- `info`: Provides detailed information about a specified package.
 
 ## Common Examples
 Here are some practical examples of using the `pkg` command:
 
-### Installing a Package
-To install a package, use the `install` option followed by the package name:
+1. **Installing a package:**
+   ```csh
+   pkg install package_name
+   ```
 
-```bash
-pkg install vim
-```
+2. **Removing a package:**
+   ```csh
+   pkg remove package_name
+   ```
 
-### Removing a Package
-To uninstall a package, use the `remove` option:
+3. **Updating all installed packages:**
+   ```csh
+   pkg update
+   ```
 
-```bash
-pkg remove vim
-```
+4. **Listing all installed packages:**
+   ```csh
+   pkg list
+   ```
 
-### Upgrading Packages
-To upgrade all installed packages to their latest versions, use the `upgrade` option:
-
-```bash
-pkg upgrade
-```
-
-### Searching for a Package
-To search for a package by name, use the `search` option:
-
-```bash
-pkg search nginx
-```
-
-### Getting Package Information
-To display detailed information about a specific package, use the `info` option:
-
-```bash
-pkg info vim
-```
-
-### Listing Installed Packages
-To list all currently installed packages, use the `list` option:
-
-```bash
-pkg list
-```
+5. **Getting information about a specific package:**
+   ```csh
+   pkg info package_name
+   ```
 
 ## Tips
-- Always update your package repository database before installing or upgrading packages by running `pkg update`.
-- Use the `-y` flag with install or remove commands to automatically confirm prompts (e.g., `pkg install -y vim`).
-- Check for outdated packages regularly with `pkg version -l '<'` to ensure your system is up to date.
+- Always check for available updates regularly to keep your software secure and up-to-date.
+- Use the `info` option to understand the dependencies of a package before installation.
+- When removing packages, ensure that they are not dependencies for other installed software to avoid breaking your system.

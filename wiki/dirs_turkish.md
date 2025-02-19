@@ -1,46 +1,44 @@
-# [Linux] Bash dirs Kullanımı: Dizin yığınını görüntüleme
+# [Linux] C Shell (csh) dirs Kullanımı: Dizin yığınını görüntüleme
 
-## Genel Bakış
-`dirs` komutu, Bash kabuğunda dizin yığınını görüntülemek için kullanılır. Kullanıcı, `cd` komutunu kullanarak dizinler arasında geçiş yaptığında, bu dizinler bir yığın (stack) içinde saklanır. `dirs` komutu, bu yığındaki dizinlerin listesini gösterir.
+## Overview
+`dirs` komutu, C Shell (csh) ortamında mevcut dizin yığınını görüntülemek için kullanılır. Bu komut, kullanıcıların dizinler arasında geçiş yaparken hangi dizinlerin yığınında olduğunu hızlıca görmelerine olanak tanır.
 
-## Kullanım
+## Usage
 Temel sözdizimi aşağıdaki gibidir:
 
-```bash
+```csh
 dirs [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-l`: Dizin yığınını uzun formatta gösterir.
-- `-p`: Dizinleri yalnızca yol olarak gösterir, daha az bilgi ile.
-- `-c`: Dizin yığınını temizler ve tüm dizinleri kaldırır.
+## Common Options
+- `-c`: Dizin yığınını temizler.
+- `-l`: Dizinlerin tam yolunu gösterir.
+- `-p`: Dizinleri tek satırda, boşlukla ayrılmış olarak gösterir.
 
-## Yaygın Örnekler
+## Common Examples
 Aşağıda `dirs` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. Dizin yığınını görüntüleme:
-   ```bash
+1. Mevcut dizin yığınını görüntüleme:
+   ```csh
    dirs
    ```
 
-2. Uzun formatta dizin yığınını görüntüleme:
-   ```bash
+2. Dizin yığınını tam yollarla görüntüleme:
+   ```csh
    dirs -l
    ```
 
 3. Dizin yığınını temizleme:
-   ```bash
+   ```csh
    dirs -c
    ```
 
-4. Dizin yığınında belirli bir dizini görüntüleme:
-   ```bash
-   cd /home/user
-   cd /var/log
-   dirs
+4. Dizinleri tek satırda görüntüleme:
+   ```csh
+   dirs -p
    ```
 
-## İpuçları
-- `dirs` komutunu sık sık kullanarak dizin yığınızı takip edebilir ve hızlıca geri dönebilirsiniz.
-- Dizin yığınını temizlemek için `dirs -c` komutunu kullanarak gereksiz dizinleri kaldırabilirsiniz.
-- `pushd` ve `popd` komutları ile birlikte `dirs` komutunu kullanarak dizinler arasında daha etkili bir şekilde geçiş yapabilirsiniz.
+## Tips
+- Dizin yığınını yönetmek için `pushd` ve `popd` komutları ile birlikte kullanabilirsiniz.
+- Dizin yığınını düzenli tutmak için gereksiz dizinleri temizlemek iyi bir uygulamadır.
+- `dirs` komutunu sık sık kullanarak, dizinler arasında geçiş yaparken hangi dizinde olduğunuzu kolayca takip edebilirsiniz.

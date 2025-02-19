@@ -1,41 +1,37 @@
-# [Linux] Utilisateurs Bash : Gérer les utilisateurs du système
+# [Linux] C Shell (csh) utilisateurs : Afficher les utilisateurs connectés
 
 ## Overview
-La commande `users` affiche les noms des utilisateurs actuellement connectés au système. C'est un outil simple mais utile pour obtenir rapidement des informations sur les sessions utilisateur actives.
+La commande `users` dans C Shell (csh) permet d'afficher les noms des utilisateurs actuellement connectés au système. C'est un outil simple mais utile pour obtenir rapidement une vue d'ensemble des sessions utilisateur actives.
 
 ## Usage
-La syntaxe de base de la commande est la suivante :
+La syntaxe de base de la commande `users` est la suivante :
 
-```bash
+```
 users [options] [arguments]
 ```
 
 ## Common Options
-- `-a` : Affiche tous les utilisateurs connectés, y compris ceux qui sont connectés via des sessions non interactives.
-- `-H` : Affiche les noms d'utilisateur sous forme de liste avec des en-têtes.
+- `-n` : Affiche le nombre d'utilisateurs connectés au lieu de leurs noms.
+- `-r` : Affiche uniquement les utilisateurs qui ont une session active.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `users` :
 
 1. **Afficher les utilisateurs connectés :**
-   ```bash
+   ```csh
    users
    ```
 
-2. **Afficher tous les utilisateurs connectés, y compris ceux en session non interactive :**
-   ```bash
-   users -a
+2. **Afficher le nombre d'utilisateurs connectés :**
+   ```csh
+   users -n
    ```
 
-3. **Afficher les utilisateurs avec des en-têtes :**
-   ```bash
-   users -H
+3. **Afficher uniquement les utilisateurs avec une session active :**
+   ```csh
+   users -r
    ```
 
 ## Tips
-- Utilisez la commande `who` pour obtenir des informations plus détaillées sur les utilisateurs connectés, y compris leur terminal et l'heure de connexion.
-- Pour surveiller l'activité des utilisateurs en temps réel, combinez `users` avec d'autres commandes comme `watch` :
-  ```bash
-  watch users
-  ```
-- Pensez à exécuter `users` dans un script pour automatiser la surveillance des connexions utilisateur.
+- Utilisez `who` ou `w` pour obtenir des informations plus détaillées sur les utilisateurs connectés, comme leur adresse IP ou le temps de connexion.
+- Combinez `users` avec d'autres commandes pour créer des scripts qui surveillent l'activité des utilisateurs sur le système.

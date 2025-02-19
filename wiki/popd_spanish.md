@@ -1,45 +1,42 @@
-# [Linux] Bash popd Uso equivalente: Regresar al directorio anterior
-
-El comando `popd` se utiliza para cambiar al directorio que se encuentra en la parte superior de la pila de directorios, eliminando ese directorio de la pila.
+# [Linux] C Shell (csh) popd uso: Cambiar de directorio de manera eficiente
 
 ## Overview
-El comando `popd` es parte de la gestión de directorios en Bash, que permite a los usuarios navegar entre directorios de manera eficiente. Funciona en conjunto con el comando `pushd`, que agrega directorios a la pila. Al usar `popd`, puedes volver rápidamente al último directorio visitado sin tener que escribir la ruta completa.
+El comando `popd` en C Shell (csh) se utiliza para cambiar al directorio que se encuentra en la parte superior de la pila de directorios. Este comando es útil para navegar de manera eficiente entre directorios previamente visitados.
 
 ## Usage
-La sintaxis básica del comando `popd` es la siguiente:
+La sintaxis básica del comando es la siguiente:
 
-```bash
+```csh
 popd [options] [arguments]
 ```
 
 ## Common Options
-- `+n`: Regresa al directorio en la posición `n` de la pila.
-- `-n`: Regresa al directorio en la posición `n` desde el final de la pila.
+- `-n`: No cambia el directorio actual, solo muestra el directorio que se va a eliminar de la pila.
+- `+n`: Cambia al directorio que está en la posición `n` de la pila, donde `n` es un número que indica la posición.
 
 ## Common Examples
-1. **Regresar al último directorio**:
-   ```bash
+
+1. **Volver al último directorio**:
+   ```csh
    popd
    ```
 
-2. **Regresar al segundo directorio en la pila**:
-   ```bash
+2. **Ver el directorio que se va a eliminar sin cambiar**:
+   ```csh
+   popd -n
+   ```
+
+3. **Ir al segundo directorio en la pila**:
+   ```csh
    popd +1
    ```
 
-3. **Regresar al directorio en la segunda posición desde el final**:
-   ```bash
-   popd -2
-   ```
-
-4. **Usar popd después de pushd**:
-   ```bash
-   pushd /ruta/al/directorio1
-   pushd /ruta/al/directorio2
-   popd  # Regresa a /ruta/al/directorio1
+4. **Eliminar el directorio superior de la pila y cambiar a él**:
+   ```csh
+   popd
    ```
 
 ## Tips
-- Asegúrate de usar `pushd` antes de `popd` para que la pila de directorios tenga elementos.
-- Puedes verificar el contenido de la pila de directorios usando el comando `dirs`.
-- Utiliza `popd +n` para navegar a directorios específicos en la pila sin tener que recordar las rutas.
+- Asegúrate de usar `pushd` antes de `popd` para que haya directorios en la pila.
+- Puedes usar `dirs` para ver el contenido actual de la pila de directorios.
+- Recuerda que la pila de directorios es útil para mantener un historial de navegación, lo que facilita el cambio entre directorios sin tener que escribir rutas largas.

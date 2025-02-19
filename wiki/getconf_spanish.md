@@ -1,12 +1,12 @@
-# [Linux] Bash getconf Uso: Obtiene información de configuración del sistema
+# [Linux] C Shell (csh) getconf Uso: Obtener configuraciones del sistema
 
 ## Overview
-El comando `getconf` se utiliza en sistemas Unix y Linux para obtener información de configuración del sistema, como límites de recursos y variables de entorno. Es una herramienta útil para desarrolladores y administradores de sistemas que necesitan conocer las configuraciones del entorno en el que están trabajando.
+El comando `getconf` se utiliza para obtener información sobre las configuraciones del sistema y los límites de los parámetros del entorno en sistemas Unix y Linux. Permite a los usuarios consultar valores específicos que pueden ser útiles para la programación y la administración del sistema.
 
 ## Usage
-La sintaxis básica del comando `getconf` es la siguiente:
+La sintaxis básica del comando es la siguiente:
 
-```bash
+```csh
 getconf [opciones] [argumentos]
 ```
 
@@ -17,36 +17,27 @@ getconf [opciones] [argumentos]
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso de `getconf`:
 
-1. **Obtener todos los valores de configuración:**
-
-   ```bash
+1. **Obtener todos los valores de configuración**:
+   ```csh
    getconf -a
    ```
 
-2. **Consultar el tamaño máximo de un archivo:**
-
-   ```bash
+2. **Consultar el tamaño máximo de un archivo**:
+   ```csh
    getconf _POSIX_VERSION
    ```
 
-3. **Obtener el tamaño de la página de memoria:**
-
-   ```bash
-   getconf PAGE_SIZE
-   ```
-
-4. **Verificar el número máximo de archivos abiertos:**
-
-   ```bash
+3. **Ver el número máximo de archivos abiertos**:
+   ```csh
    getconf OPEN_MAX
    ```
 
-## Tips
-- Utiliza `getconf -a` para explorar todas las variables de configuración disponibles y familiarizarte con el entorno.
-- Es útil combinar `getconf` con otros comandos como `grep` para filtrar resultados específicos. Por ejemplo:
-
-   ```bash
-   getconf -a | grep PAGE
+4. **Consultar la longitud máxima de la ruta**:
+   ```csh
+   getconf PATH_MAX /
    ```
 
-- Recuerda que algunos valores pueden variar entre diferentes sistemas, así que verifica siempre en el entorno específico donde trabajas.
+## Tips
+- Utiliza `getconf -a` para explorar todas las configuraciones disponibles y familiarizarte con las variables que puedes consultar.
+- Siempre verifica si la variable que deseas consultar está disponible en tu sistema, ya que algunas pueden no estar definidas en todas las plataformas.
+- Considera redirigir la salida a un archivo si necesitas revisar la información más tarde, usando `getconf -a > configuraciones.txt`.

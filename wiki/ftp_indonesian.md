@@ -1,59 +1,53 @@
-# [Linux] Bash ftp Penggunaan: Mengelola Transfer File
+# [Sistem Operasi] C Shell (csh) ftp Penggunaan: Mengelola transfer file
 
 ## Overview
-Perintah `ftp` (File Transfer Protocol) digunakan untuk mentransfer file antara komputer melalui jaringan. Dengan `ftp`, pengguna dapat meng-upload, mengunduh, dan mengelola file di server jarak jauh.
+Perintah `ftp` dalam C Shell (csh) digunakan untuk mentransfer file antara komputer melalui protokol File Transfer Protocol (FTP). Dengan menggunakan perintah ini, pengguna dapat meng-upload atau meng-download file dari server FTP.
 
 ## Usage
-Berikut adalah sintaks dasar untuk menggunakan perintah `ftp`:
+Berikut adalah sintaks dasar dari perintah `ftp`:
 
-```bash
+```
 ftp [options] [arguments]
 ```
 
 ## Common Options
-- `-i`: Menonaktifkan mode interaktif, sehingga tidak meminta konfirmasi untuk setiap file yang ditransfer.
-- `-n`: Mencegah ftp dari otomatis login ke server.
+Beberapa opsi umum yang dapat digunakan dengan perintah `ftp` adalah sebagai berikut:
+
+- `-i`: Menonaktifkan mode interaktif, memungkinkan transfer file tanpa konfirmasi.
 - `-v`: Menampilkan informasi lebih detail tentang proses transfer.
-- `-p`: Menggunakan mode pasif untuk koneksi, berguna saat berada di belakang firewall.
+- `-n`: Mencegah login otomatis ke server FTP.
+- `-p`: Menggunakan mode pasif untuk koneksi, berguna jika ada firewall yang menghalangi koneksi aktif.
 
 ## Common Examples
+Berikut adalah beberapa contoh penggunaan perintah `ftp`:
 
-### Menghubungkan ke Server FTP
-Untuk menghubungkan ke server FTP, gunakan perintah berikut:
+1. **Menghubungkan ke server FTP:**
+   ```csh
+   ftp ftp.example.com
+   ```
 
-```bash
-ftp ftp.example.com
-```
+2. **Meng-upload file ke server:**
+   ```csh
+   ftp> put file.txt
+   ```
 
-### Meng-upload File
-Untuk meng-upload file ke server, setelah terhubung, gunakan perintah:
+3. **Meng-download file dari server:**
+   ```csh
+   ftp> get file.txt
+   ```
 
-```bash
-put nama_file.txt
-```
+4. **Menggunakan mode pasif saat menghubungkan:**
+   ```csh
+   ftp -p ftp.example.com
+   ```
 
-### Mengunduh File
-Untuk mengunduh file dari server, gunakan perintah:
-
-```bash
-get nama_file.txt
-```
-
-### Menggunakan Mode Interaktif
-Jika Anda ingin meng-upload beberapa file tanpa konfirmasi, aktifkan mode non-interaktif:
-
-```bash
-ftp -i ftp.example.com
-```
-
-### Menampilkan Daftar File
-Setelah terhubung, untuk melihat daftar file di direktori saat ini, gunakan:
-
-```bash
-ls
-```
+5. **Menonaktifkan mode interaktif saat mentransfer beberapa file:**
+   ```csh
+   ftp -i ftp.example.com
+   ftp> mput *.txt
+   ```
 
 ## Tips
-- Selalu pastikan untuk menggunakan koneksi yang aman, seperti SFTP, jika data yang ditransfer bersifat sensitif.
-- Gunakan opsi `-v` untuk mendapatkan informasi lebih lanjut jika terjadi kesalahan saat transfer.
-- Jika Anda sering terhubung ke server yang sama, pertimbangkan untuk menyimpan kredensial dalam file konfigurasi untuk kemudahan akses.
+- Pastikan untuk memeriksa izin file sebelum meng-upload atau meng-download untuk menghindari masalah akses.
+- Gunakan opsi `-v` untuk mendapatkan informasi lebih lanjut jika terjadi kesalahan selama transfer.
+- Jika sering berinteraksi dengan server FTP yang sama, pertimbangkan untuk menggunakan file `.netrc` untuk menyimpan kredensial login agar tidak perlu memasukkan informasi setiap kali.

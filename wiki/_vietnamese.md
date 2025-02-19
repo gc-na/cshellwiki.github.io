@@ -1,44 +1,53 @@
-# [Linux] Bash @ echo: In ra thông điệp đến người dùng
+# [Hệ điều hành] C Shell (csh) @ <Sử dụng tương đương>: Thực hiện phép toán trên số
 
-## Overview
-Lệnh `echo` trong Bash được sử dụng để in ra thông điệp hoặc giá trị của biến ra màn hình. Đây là một công cụ hữu ích để hiển thị thông tin cho người dùng hoặc để kiểm tra giá trị của các biến trong script.
+## Tổng quan
+Lệnh `@` trong C Shell (csh) được sử dụng để thực hiện các phép toán số học và gán giá trị cho biến. Đây là một công cụ hữu ích để xử lý các phép toán đơn giản trong shell script.
 
-## Usage
-Cú pháp cơ bản của lệnh `echo` như sau:
+## Cú pháp
+Cú pháp cơ bản của lệnh `@` như sau:
 ```
-echo [tùy chọn] [thông điệp]
+@ [tùy chọn] [tham số]
 ```
 
-## Common Options
-- `-n`: Không in ra ký tự xuống dòng ở cuối thông điệp.
-- `-e`: Kích hoạt các ký tự đặc biệt như `\n` (xuống dòng), `\t` (tab).
-- `-E`: Vô hiệu hóa các ký tự đặc biệt (mặc định).
+## Các tùy chọn phổ biến
+- `=`: Gán giá trị cho biến.
+- `+`: Cộng hai số.
+- `-`: Trừ hai số.
+- `*`: Nhân hai số.
+- `/`: Chia hai số.
 
-## Common Examples
-Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `echo`:
+## Ví dụ phổ biến
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `@`:
 
-1. In ra một thông điệp đơn giản:
-   ```bash
-   echo "Chào mừng đến với Bash!"
+1. **Gán giá trị cho biến:**
+   ```csh
+   @ a = 5
    ```
 
-2. In ra giá trị của một biến:
-   ```bash
-   tên="Nguyễn Văn A"
-   echo "Tên của tôi là $tên"
+2. **Cộng hai số:**
+   ```csh
+   @ b = $a + 10
    ```
 
-3. In ra thông điệp mà không xuống dòng:
-   ```bash
-   echo -n "Đang tải..."
+3. **Trừ hai số:**
+   ```csh
+   @ c = $b - 3
    ```
 
-4. Sử dụng các ký tự đặc biệt:
-   ```bash
-   echo -e "Dòng đầu tiên\nDòng thứ hai"
+4. **Nhân hai số:**
+   ```csh
+   @ d = $c * 2
    ```
 
-## Tips
-- Sử dụng `-n` khi bạn không muốn in ra ký tự xuống dòng, điều này có thể hữu ích khi bạn muốn in nhiều thông điệp trên cùng một dòng.
-- Khi sử dụng `-e`, hãy cẩn thận với các ký tự đặc biệt để tránh nhầm lẫn trong thông điệp.
-- Bạn có thể sử dụng `echo` để kiểm tra nhanh giá trị của biến trong quá trình phát triển script.
+5. **Chia hai số:**
+   ```csh
+   @ e = $d / 4
+   ```
+
+## Mẹo
+- Luôn sử dụng dấu `$` trước tên biến khi thực hiện phép toán để lấy giá trị của biến.
+- Kiểm tra kết quả của các phép toán bằng cách in giá trị của biến sau khi thực hiện lệnh `@`.
+- Sử dụng lệnh `echo` để hiển thị kết quả cho người dùng dễ dàng theo dõi. Ví dụ:
+  ```csh
+  echo "Giá trị của e là: $e"
+  ```

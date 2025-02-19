@@ -1,43 +1,36 @@
-# [Linux] Bash lsmod Kullanımı: Modülleri Listeleme
+# [Linux] C Shell (csh) lsmod Kullanımı: Modülleri listeleme
 
 ## Genel Bakış
-`lsmod` komutu, Linux işletim sistemlerinde yüklü olan çekirdek modüllerini listelemek için kullanılır. Bu komut, sistemde hangi modüllerin aktif olduğunu ve bunların bellek üzerindeki durumunu gösterir.
+`lsmod` komutu, Linux işletim sisteminde yüklü olan çekirdek modüllerini listelemek için kullanılır. Bu komut, sistemde hangi modüllerin aktif olduğunu ve bunların bellek kullanımını gösterir.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-```bash
+```csh
 lsmod [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-h`, `--help`: Yardım bilgilerini gösterir.
-- `-n`, `--no-heading`: Başlık satırını göstermez.
-- `-o`, `--output`: Çıktı formatını belirler.
+- `-h`, `--help`: Komut hakkında yardım bilgisi gösterir.
+- `-v`, `--verbose`: Daha ayrıntılı çıktı sağlar.
 
 ## Yaygın Örnekler
-Aşağıda `lsmod` komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda `lsmod` komutunun bazı pratik örnekleri verilmiştir:
 
 1. Tüm yüklü modülleri listeleme:
-   ```bash
+   ```csh
    lsmod
    ```
 
-2. Başlık satırını gizleyerek modülleri listeleme:
-   ```bash
-   lsmod -n
+2. Yardım bilgisi gösterme:
+   ```csh
+   lsmod --help
    ```
 
-3. Belirli bir modülün durumunu kontrol etme:
-   ```bash
-   lsmod | grep <modül_adı>
-   ```
-
-4. Çıktıyı belirli bir formatta gösterme:
-   ```bash
-   lsmod --output=modname
+3. Ayrıntılı bilgi ile modül listesini görüntüleme:
+   ```csh
+   lsmod --verbose
    ```
 
 ## İpuçları
-- `lsmod` çıktısını daha iyi analiz etmek için `grep` komutunu kullanarak belirli modülleri arayabilirsiniz.
-- Modül yükleme ve kaldırma işlemleri yapmadan önce `lsmod` ile mevcut durumu kontrol etmek iyi bir uygulamadır.
-- Yüklü modüllerin sistem performansına etkisini anlamak için `lsmod` çıktısını düzenli olarak gözden geçirin.
+- `lsmod` çıktısını daha iyi anlamak için, modül adları ve bağlı oldukları diğer modüller hakkında bilgi sahibi olmak faydalıdır.
+- Modüllerin yüklenmesi veya kaldırılmasıyla ilgili işlemler yapmadan önce `lsmod` çıktısını kontrol etmek, sistem kararlılığı için önemlidir.

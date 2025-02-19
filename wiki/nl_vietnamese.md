@@ -1,42 +1,44 @@
-# [Linux] Bash nl Cách sử dụng: Đánh số dòng trong tệp tin
+# [Hệ điều hành] C Shell (csh) nl <Sử dụng tương đương>: Đánh số dòng trong tệp
 
-## Overview
-Lệnh `nl` trong Bash được sử dụng để đánh số các dòng trong một tệp tin. Nó cho phép người dùng dễ dàng theo dõi vị trí của các dòng trong tệp, điều này rất hữu ích khi làm việc với các tệp văn bản lớn.
+## Tổng quan
+Lệnh `nl` trong C Shell (csh) được sử dụng để đánh số các dòng trong một tệp văn bản. Nó giúp người dùng dễ dàng theo dõi và tham chiếu đến các dòng cụ thể trong tài liệu.
 
-## Usage
+## Cú pháp
 Cú pháp cơ bản của lệnh `nl` như sau:
 ```
-nl [options] [arguments]
+nl [tùy chọn] [đối số]
 ```
 
-## Common Options
-- `-b` : Chỉ định cách đánh số dòng (ví dụ: `-b a` để đánh số tất cả các dòng).
-- `-f` : Chỉ định số dòng đầu tiên để bắt đầu đánh số.
-- `-n` : Chỉ định cách hiển thị số dòng (ví dụ: `-n ln` để hiển thị số dòng bên trái).
-- `-w` : Chỉ định chiều rộng của số dòng.
+## Tùy chọn phổ biến
+- `-b`: Xác định cách đánh số dòng (ví dụ: `-b a` để đánh số tất cả các dòng).
+- `-f`: Bỏ qua số dòng đầu tiên của mỗi tệp.
+- `-h`: Chỉ định tiêu đề cho tệp.
+- `-n`: Chỉ định cách định dạng số dòng (ví dụ: `-n ln` để định dạng số dòng trái).
 
-## Common Examples
-1. Đánh số tất cả các dòng trong một tệp tin:
+## Ví dụ phổ biến
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `nl`:
+
+1. Đánh số dòng cho một tệp văn bản:
    ```bash
-   nl filename.txt
+   nl ten_tap.txt
    ```
 
-2. Đánh số chỉ các dòng không trống:
+2. Đánh số tất cả các dòng trong tệp và bỏ qua dòng đầu tiên:
    ```bash
-   nl -b t filename.txt
+   nl -f ten_tap.txt
    ```
 
-3. Đánh số dòng bắt đầu từ dòng thứ 5:
+3. Đánh số dòng và định dạng số dòng bên trái:
    ```bash
-   nl -f 5 filename.txt
+   nl -n ln ten_tap.txt
    ```
 
-4. Thay đổi cách hiển thị số dòng:
+4. Đánh số dòng cho nhiều tệp cùng một lúc:
    ```bash
-   nl -n ln filename.txt
+   nl tap1.txt tap2.txt
    ```
 
-## Tips
-- Sử dụng `nl` kết hợp với các lệnh khác như `grep` hoặc `less` để dễ dàng tìm kiếm và xem các dòng đã được đánh số.
-- Kiểm tra các tùy chọn khác nhau để tùy chỉnh cách hiển thị số dòng theo nhu cầu của bạn.
-- Đọc tài liệu hướng dẫn bằng cách sử dụng `man nl` để tìm hiểu thêm về các tùy chọn và cách sử dụng.
+## Mẹo
+- Sử dụng tùy chọn `-b` để điều chỉnh cách đánh số dòng theo nhu cầu của bạn.
+- Kiểm tra kết quả đầu ra của lệnh `nl` bằng cách sử dụng lệnh `less` hoặc `more` để dễ dàng xem nội dung.
+- Kết hợp lệnh `nl` với các lệnh khác như `grep` hoặc `sort` để xử lý dữ liệu hiệu quả hơn.

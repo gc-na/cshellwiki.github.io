@@ -1,61 +1,51 @@
-# [Linux] Bash apt gebruik: Beheer van pakketten op een eenvoudige manier
+# [Linux] C Shell (csh) apt gebruik: Beheer van pakketten
 
 ## Overzicht
-De `apt`-opdracht is een krachtige tool voor het beheren van softwarepakketten op Debian-gebaseerde systemen, zoals Ubuntu. Het stelt gebruikers in staat om pakketten te installeren, bij te werken en te verwijderen, evenals om systeemafhankelijkheden te beheren.
+De `apt`-opdracht is een hulpmiddel voor het beheren van softwarepakketten op Debian-gebaseerde systemen. Het stelt gebruikers in staat om pakketten te installeren, bij te werken en te verwijderen, evenals om afhankelijkheden te beheren.
 
 ## Gebruik
-De basisstructuur van de `apt`-opdracht is als volgt:
+De basis syntaxis van de `apt`-opdracht is als volgt:
 
-```bash
+```csh
 apt [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `install`: Installeert een of meerdere pakketten.
-- `remove`: Verwijdert een of meerdere pakketten.
-- `update`: Ververst de lijst met beschikbare pakketten en hun versies.
-- `upgrade`: Werkt geïnstalleerde pakketten bij naar de nieuwste versies.
-- `search`: Zoekt naar pakketten in de beschikbare repositories.
+- `install`: Installeert een of meer pakketten.
+- `remove`: Verwijdert een of meer pakketten.
+- `update`: Werkt de lijst van beschikbare pakketten bij.
+- `upgrade`: Upgrade alle geïnstalleerde pakketten naar de nieuwste versie.
+- `search`: Zoekt naar pakketten met een bepaalde naam of beschrijving.
 
 ## Veelvoorkomende Voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van de `apt`-opdracht:
 
-### 1. Pakketten bijwerken
-Om de lijst met beschikbare pakketten en hun versies bij te werken, gebruik je:
-
-```bash
-sudo apt update
+### Een pakket installeren
+```csh
+apt install pakketnaam
 ```
 
-### 2. Een pakket installeren
-Om een specifiek pakket, zoals `curl`, te installeren, gebruik je:
-
-```bash
-sudo apt install curl
+### Een pakket verwijderen
+```csh
+apt remove pakketnaam
 ```
 
-### 3. Een pakket verwijderen
-Om een geïnstalleerd pakket, zoals `curl`, te verwijderen, gebruik je:
-
-```bash
-sudo apt remove curl
+### De lijst van beschikbare pakketten bijwerken
+```csh
+apt update
 ```
 
-### 4. Alle pakketten upgraden
-Om alle geïnstalleerde pakketten bij te werken naar de nieuwste versies, gebruik je:
-
-```bash
-sudo apt upgrade
+### Alle geïnstalleerde pakketten upgraden
+```csh
+apt upgrade
 ```
 
-### 5. Zoeken naar een pakket
-Om te zoeken naar een pakket met de naam `git`, gebruik je:
-
-```bash
-apt search git
+### Zoeken naar een pakket
+```csh
+apt search zoekterm
 ```
 
 ## Tips
-- Gebruik altijd `sudo` voor opdrachten die systeemwijzigingen aanbrengen, zoals `install`, `remove`, en `upgrade`.
-- Voer regelmatig `apt update` en `apt upgrade` uit om je systeem veilig en up-to-date te houden.
-- Controleer de documentatie van specifieke pakketten voor extra opties en configuratie-instellingen.
+- Gebruik `apt update` regelmatig om ervoor te zorgen dat je de nieuwste informatie over beschikbare pakketten hebt.
+- Controleer altijd de afhankelijkheden van een pakket voordat je het installeert of verwijdert.
+- Maak gebruik van `apt list --upgradable` om te zien welke pakketten kunnen worden geüpgraded.

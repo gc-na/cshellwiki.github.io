@@ -1,49 +1,53 @@
-# [Linux] Bash minikube użycie: Uruchamianie lokalnych klastrów Kubernetes
+# [Linux] C Shell (csh) minikube użycie: Uruchamianie lokalnych klastrów Kubernetes
 
 ## Overview
-Minikube to narzędzie, które umożliwia uruchamianie lokalnych klastrów Kubernetes. Jest szczególnie przydatne dla deweloperów, którzy chcą testować aplikacje w środowisku Kubernetes bez potrzeby korzystania z zewnętrznych zasobów.
+Minikube to narzędzie, które umożliwia uruchamianie lokalnych klastrów Kubernetes. Jest idealne do testowania i rozwoju aplikacji w środowisku Kubernetes bez potrzeby korzystania z zewnętrznych zasobów chmurowych.
 
 ## Usage
-Podstawowa składnia polecenia minikube jest następująca:
+Podstawowa składnia polecenia minikube wygląda następująco:
 
-```bash
+```csh
 minikube [opcje] [argumenty]
 ```
 
 ## Common Options
-- `start` - Rozpoczyna nowy klaster Minikube.
-- `stop` - Zatrzymuje działający klaster Minikube.
-- `delete` - Usuwa klaster Minikube.
-- `status` - Wyświetla status klastra Minikube.
-- `kubectl` - Umożliwia korzystanie z narzędzia kubectl w kontekście klastra Minikube.
+Oto kilka powszechnie używanych opcji dla minikube:
+
+- `start` - Uruchamia nowy klaster minikube.
+- `stop` - Zatrzymuje działający klaster minikube.
+- `delete` - Usuwa klaster minikube.
+- `status` - Wyświetla status aktualnego klastra.
+- `dashboard` - Otwiera interfejs użytkownika Kubernetes w przeglądarce.
 
 ## Common Examples
-1. **Uruchomienie nowego klastra Minikube:**
-   ```bash
+Oto kilka praktycznych przykładów użycia minikube:
+
+1. Uruchomienie nowego klastra:
+   ```csh
    minikube start
    ```
 
-2. **Sprawdzenie statusu klastra:**
-   ```bash
+2. Sprawdzenie statusu klastra:
+   ```csh
    minikube status
    ```
 
-3. **Zatrzymanie klastra:**
-   ```bash
+3. Zatrzymanie klastra:
+   ```csh
    minikube stop
    ```
 
-4. **Usunięcie klastra:**
-   ```bash
+4. Usunięcie klastra:
+   ```csh
    minikube delete
    ```
 
-5. **Uruchomienie polecenia kubectl w kontekście Minikube:**
-   ```bash
-   minikube kubectl -- get pods -A
+5. Otworzenie dashboardu Kubernetes:
+   ```csh
+   minikube dashboard
    ```
 
 ## Tips
-- Upewnij się, że masz zainstalowane wszystkie wymagane zależności, takie jak VirtualBox lub Docker, przed uruchomieniem Minikube.
+- Upewnij się, że masz zainstalowane wszystkie wymagane zależności przed uruchomieniem minikube.
 - Regularnie sprawdzaj status klastra, aby upewnić się, że działa poprawnie.
-- Używaj opcji `--driver` podczas uruchamiania klastra, aby określić preferowany silnik wirtualizacji, np. `minikube start --driver=docker`.
+- Korzystaj z opcji `--driver` podczas uruchamiania, aby wybrać preferowany silnik wirtualizacji, np. `--driver=virtualbox`.

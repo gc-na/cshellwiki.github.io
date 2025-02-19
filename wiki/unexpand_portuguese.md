@@ -1,45 +1,47 @@
-# [Linux] Bash unexpand Uso: Converte espaços em tabulações
+# [Linux] C Shell (csh) unexpand <Uso equivalente em português>: converter espaços em tabulações
 
 ## Overview
-O comando `unexpand` é utilizado para converter espaços em tabulações em arquivos de texto. Isso é útil quando você deseja reduzir o tamanho do arquivo ou quando precisa formatar o texto de uma maneira que utilize tabulações em vez de espaços.
+O comando `unexpand` é utilizado para converter espaços em tabulações em arquivos de texto. Isso é útil quando você deseja otimizar a formatação de arquivos, especialmente para visualização em editores de texto que suportam tabulações.
 
 ## Usage
 A sintaxe básica do comando `unexpand` é a seguinte:
 
-```bash
-unexpand [opções] [arquivos]
+```
+unexpand [opções] [argumentos]
 ```
 
 ## Common Options
 - `-t, --tabs=N`: Define o número de espaços que devem ser convertidos em uma única tabulação. O valor padrão é 8.
-- `-a, --all`: Converte todos os espaços em tabulações, não apenas os que estão em colunas múltiplas do valor especificado.
-- `-h, --help`: Mostra uma mensagem de ajuda com as opções disponíveis.
-- `-V, --version`: Exibe a versão do comando.
+- `-a, --all`: Converte todos os espaços em tabulações, não apenas os que estão em múltiplos do número definido por `-t`.
+- `-i, --ignore`: Ignora espaços em linhas que começam com um caractere específico.
 
 ## Common Examples
-Aqui estão alguns exemplos práticos do uso do comando `unexpand`:
 
-1. **Converter espaços em tabulações em um arquivo:**
-   ```bash
-   unexpand arquivo.txt
-   ```
+### Exemplo 1: Converter espaços em tabulações padrão
+```bash
+unexpand arquivo.txt
+```
+Esse comando converte os espaços em tabulações no arquivo `arquivo.txt` usando o valor padrão de 8 espaços.
 
-2. **Salvar a saída em um novo arquivo:**
-   ```bash
-   unexpand arquivo.txt > arquivo_convertido.txt
-   ```
+### Exemplo 2: Definir um número específico de espaços para conversão
+```bash
+unexpand -t 4 arquivo.txt
+```
+Aqui, o comando converte espaços em tabulações, considerando 4 espaços como equivalente a uma tabulação.
 
-3. **Converter espaços em tabulações com um número específico de espaços:**
-   ```bash
-   unexpand -t 4 arquivo.txt
-   ```
+### Exemplo 3: Converter todos os espaços em tabulações
+```bash
+unexpand -a arquivo.txt
+```
+Esse comando converte todos os espaços em tabulações, independentemente do número de espaços.
 
-4. **Converter todos os espaços em tabulações:**
-   ```bash
-   unexpand -a arquivo.txt
-   ```
+### Exemplo 4: Ignorar espaços em linhas específicas
+```bash
+unexpand -i '#' arquivo.txt
+```
+Neste exemplo, o comando ignora espaços em linhas que começam com o caractere `#`, convertendo apenas os demais.
 
 ## Tips
-- Sempre faça uma cópia de segurança do arquivo original antes de usar o `unexpand`, especialmente se você estiver substituindo o arquivo.
-- Use a opção `-t` para personalizar a conversão de espaços em tabulações de acordo com suas necessidades específicas.
-- Combine o `unexpand` com outros comandos, como `grep` ou `sed`, para processar arquivos de texto de forma mais eficiente.
+- Sempre faça uma cópia de segurança do arquivo original antes de usar o `unexpand`, para evitar perda de dados.
+- Use a opção `-t` para ajustar a conversão de acordo com o seu editor de texto preferido.
+- Combine o `unexpand` com outros comandos, como `grep` ou `sort`, para manipular arquivos de texto de maneira mais eficiente.

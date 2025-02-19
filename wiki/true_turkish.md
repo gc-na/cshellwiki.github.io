@@ -1,47 +1,46 @@
-# [Linux] Bash true Kullanımı: Her zaman doğru döndürme
+# [Linux] C Shell (csh) true kullanımı: Her zaman doğru döner
 
 ## Overview
-`true` komutu, her zaman başarıyla (0) dönen bir komuttur. Genellikle bir komutun başarılı bir şekilde tamamlandığını belirtmek veya bir koşulun her zaman doğru olduğu durumlarda kullanılır.
+`true` komutu, C Shell (csh) ortamında her zaman başarılı bir çıkış durumu döndüren bir komuttur. Genellikle, bir komutun başarılı bir şekilde çalıştığını belirtmek veya bir koşulun her zaman doğru olduğunu ifade etmek için kullanılır.
 
 ## Usage
 Temel sözdizimi aşağıdaki gibidir:
 
-```bash
+```
 true [options] [arguments]
 ```
 
 ## Common Options
-`true` komutunun herhangi bir seçenek veya argüman almadığını belirtmek önemlidir. Bu komut, sadece çağrıldığında 0 döner.
+`true` komutunun genellikle kullanılan seçenekleri şunlardır:
+- `-h`, `--help`: Komut hakkında yardım bilgisi gösterir.
+- `-V`, `--version`: Komutun sürüm bilgilerini gösterir.
 
 ## Common Examples
+Aşağıda `true` komutunun bazı pratik örnekleri bulunmaktadır:
 
-### Basit Kullanım
-`true` komutunu basit bir şekilde çağırmak:
+1. Basit kullanım:
+   ```csh
+   true
+   ```
 
-```bash
-true
-```
+2. Bir koşul ifadesinde kullanımı:
+   ```csh
+   if (true) echo "Bu her zaman doğru."
+   ```
 
-### Koşullu İfadelerde Kullanım
-Bir koşulun her zaman doğru olduğunu belirtmek için kullanılabilir:
+3. Bir döngüde kullanımı:
+   ```csh
+   while (true)
+       echo "Bu döngü sonsuz döner."
+   end
+   ```
 
-```bash
-if true; then
-    echo "Bu her zaman doğru."
-fi
-```
-
-### Döngülerde Kullanım
-Sonsuz bir döngü oluşturmak için `true` kullanılabilir:
-
-```bash
-while true; do
-    echo "Bu mesaj sürekli basılacak."
-    sleep 1
-done
-```
+4. Komut dizisinde kullanımı:
+   ```csh
+   true && echo "İlk komut başarılı oldu."
+   ```
 
 ## Tips
-- `true` komutunu, bir betikte belirli bir koşulun her zaman doğru olduğunu belirtmek için kullanabilirsiniz.
-- Sonsuz döngülerde dikkatli olun; programın durdurulması gerektiğinde `Ctrl + C` kullanarak döngüyü sonlandırabilirsiniz.
-- `true` komutu, test komutları veya koşullu ifadelerde yer tutucu olarak kullanılabilir.
+- `true` komutunu, koşul ifadeleri veya döngülerde kullanarak kodunuzun akışını kontrol edebilirsiniz.
+- `true` komutunu, bir betik dosyasında veya otomasyon süreçlerinde, her zaman başarılı bir durum döndürmek için kullanmak faydalı olabilir.
+- `true` komutunu, hata ayıklama sırasında geçici olarak bir komutun yerini almak için de kullanabilirsiniz.

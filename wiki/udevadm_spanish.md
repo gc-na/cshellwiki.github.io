@@ -1,60 +1,45 @@
-# [Linux] Bash udevadm uso: Gestión de dispositivos en el sistema
+# [Linux] C Shell (csh) udevadm Uso: Gestión de dispositivos en el sistema
 
 ## Overview
-El comando `udevadm` se utiliza para interactuar con el sistema de gestión de dispositivos `udev` en Linux. Permite a los administradores de sistemas observar y controlar la creación y eliminación de dispositivos en el sistema, así como gestionar las reglas de `udev`.
+El comando `udevadm` se utiliza para interactuar con el sistema de gestión de dispositivos `udev` en Linux. Permite a los usuarios y administradores gestionar eventos de dispositivos, así como consultar y modificar la configuración de los dispositivos conectados al sistema.
 
 ## Usage
 La sintaxis básica del comando `udevadm` es la siguiente:
 
-```bash
+```
 udevadm [opciones] [argumentos]
 ```
 
 ## Common Options
 - `info`: Muestra información sobre un dispositivo específico.
-- `trigger`: Dispara eventos `udev` para dispositivos.
-- `settle`: Espera a que se completen todos los eventos `udev`.
+- `trigger`: Genera eventos para los dispositivos.
+- `settle`: Espera a que se completen todos los eventos de `udev`.
 - `control`: Permite habilitar o deshabilitar el servicio `udev`.
-- `monitor`: Muestra eventos en tiempo real que ocurren en el sistema.
 
 ## Common Examples
+Aquí hay algunos ejemplos prácticos del uso de `udevadm`:
 
-### Mostrar información de un dispositivo
-Para obtener información sobre un dispositivo específico, como `/dev/sda`, se puede usar:
+1. **Mostrar información de un dispositivo específico:**
+   ```bash
+   udevadm info --query=all --name=/dev/sda
+   ```
 
-```bash
-udevadm info --query=all --name=/dev/sda
-```
+2. **Generar eventos para todos los dispositivos:**
+   ```bash
+   udevadm trigger
+   ```
 
-### Disparar eventos `udev`
-Para forzar a `udev` a procesar eventos de dispositivos, se puede ejecutar:
+3. **Esperar a que se completen los eventos de `udev`:**
+   ```bash
+   udevadm settle
+   ```
 
-```bash
-udevadm trigger
-```
-
-### Esperar a que se completen los eventos
-Para esperar a que todos los eventos de `udev` se completen, se utiliza:
-
-```bash
-udevadm settle
-```
-
-### Monitorear eventos en tiempo real
-Para ver eventos de dispositivos en tiempo real, se puede usar:
-
-```bash
-udevadm monitor
-```
-
-### Controlar el servicio `udev`
-Para deshabilitar temporalmente el servicio `udev`, se puede ejecutar:
-
-```bash
-udevadm control --stop
-```
+4. **Controlar el servicio `udev`:**
+   ```bash
+   udevadm control --reload-rules
+   ```
 
 ## Tips
-- Asegúrate de tener privilegios de superusuario para ejecutar algunos comandos de `udevadm`.
-- Utiliza `udevadm monitor` en una terminal separada para observar los cambios en tiempo real mientras realizas otras operaciones.
-- Consulta la documentación oficial de `udev` para entender mejor cómo funcionan las reglas y eventos.
+- Asegúrate de tener privilegios de administrador al usar `udevadm` para evitar problemas de permisos.
+- Utiliza `udevadm info` para obtener detalles sobre un dispositivo antes de realizar cambios.
+- Recuerda que los cambios en las reglas de `udev` pueden requerir un reinicio del servicio o el uso de `udevadm control --reload-rules` para que surtan efecto.

@@ -1,46 +1,43 @@
-# [Linux] Bash wall uso: Enviar mensajes a todos los usuarios conectados
+# [Linux] C Shell (csh) wall Uso: Enviar mensajes a todos los usuarios conectados
 
 ## Overview
-El comando `wall` (write all) se utiliza en sistemas Unix y Linux para enviar un mensaje a todos los usuarios conectados al sistema. Este comando es útil para notificar a los usuarios sobre eventos importantes, como el mantenimiento del sistema o la finalización de tareas.
+El comando `wall` en C Shell (csh) se utiliza para enviar mensajes a todos los usuarios que están actualmente conectados al sistema. Es una herramienta útil para los administradores del sistema que desean comunicar información importante a todos los usuarios simultáneamente.
 
 ## Usage
-La sintaxis básica del comando es la siguiente:
+La sintaxis básica del comando `wall` es la siguiente:
 
-```bash
-wall [opciones] [argumentos]
+```csh
+wall [options] [arguments]
 ```
 
 ## Common Options
-- `-n`: No enviar el mensaje a los usuarios que no están en la terminal.
-- `-s`: Silenciar el mensaje, es decir, no mostrar el nombre del usuario que envía el mensaje.
+- `-n`: No muestra el nombre del usuario que envía el mensaje.
+- `-f`: Lee el mensaje desde un archivo en lugar de la entrada estándar.
 
 ## Common Examples
+Aquí hay algunos ejemplos prácticos del uso del comando `wall`:
 
-1. **Enviar un mensaje simple a todos los usuarios:**
-
-   ```bash
+1. **Enviar un mensaje simple:**
+   ```csh
    wall "El sistema se reiniciará en 10 minutos."
    ```
 
-2. **Enviar un mensaje desde un archivo:**
-
-   ```bash
-   wall < mensaje.txt
+2. **Enviar un mensaje sin el nombre del usuario:**
+   ```csh
+   wall -n "Mantenimiento programado a las 3 AM."
    ```
 
-3. **Enviar un mensaje con opción de silencio:**
-
-   ```bash
-   wall -s "Mantenimiento programado en 30 minutos."
+3. **Enviar un mensaje desde un archivo:**
+   ```csh
+   wall -f /ruta/al/archivo/mensaje.txt
    ```
 
-4. **Enviar un mensaje sin notificar a usuarios desconectados:**
-
-   ```bash
-   wall -n "Por favor, guarden su trabajo."
+4. **Enviar un mensaje con formato:**
+   ```csh
+   echo "Atención: El servidor estará fuera de línea." | wall
    ```
 
 ## Tips
-- Asegúrate de que el mensaje sea claro y conciso para que todos los usuarios lo entiendan rápidamente.
-- Utiliza `wall` con moderación, ya que los mensajes pueden ser intrusivos si se envían con frecuencia.
-- Considera el horario al enviar mensajes, para no interrumpir a los usuarios en momentos críticos.
+- Asegúrate de tener los permisos necesarios para usar `wall`, ya que algunos sistemas pueden restringir su uso a usuarios específicos.
+- Utiliza `wall` con moderación, ya que los mensajes pueden ser intrusivos para los usuarios.
+- Considera informar a los usuarios sobre el uso de `wall` para evitar sorpresas al recibir mensajes inesperados.

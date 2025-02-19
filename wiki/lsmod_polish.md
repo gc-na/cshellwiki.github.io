@@ -1,49 +1,39 @@
-# [Linux] Bash lsmod użycie: wyświetlanie załadowanych modułów jądra
+# [Linux] C Shell (csh) lsmod użycie: wyświetlanie załadowanych modułów jądra
 
-## Przegląd
-Polecenie `lsmod` jest używane w systemach Linux do wyświetlania listy aktualnie załadowanych modułów jądra. Moduły jądra to fragmenty kodu, które mogą być dynamicznie ładowane i odładowywane w trakcie działania systemu, co pozwala na rozszerzenie jego funkcjonalności.
+## Overview
+Polecenie `lsmod` w systemie Linux służy do wyświetlania listy aktualnie załadowanych modułów jądra. Umożliwia użytkownikom monitorowanie i zarządzanie modułami, co jest istotne dla diagnostyki i konfiguracji systemu.
 
-## Użycie
+## Usage
 Podstawowa składnia polecenia `lsmod` jest następująca:
 
-```bash
-lsmod [opcje]
+```csh
+lsmod [opcje] [argumenty]
 ```
 
-## Częste opcje
-`lsmod` nie posiada wielu opcji, ale oto kilka, które mogą być przydatne:
+## Common Options
+- **-h, --help**: Wyświetla pomoc dotycząca użycia polecenia.
+- **-n, --no-pager**: Wyświetla wynik bez użycia paginacji, co jest przydatne w skryptach.
 
-- **-h, --help**: Wyświetla pomoc dotyczącą użycia polecenia.
-- **-q, --quiet**: Wyłącza wyjście informacji o błędach.
-
-## Przykłady
-Oto kilka praktycznych przykładów użycia polecenia `lsmod`:
-
-1. **Wyświetlenie listy załadowanych modułów:**
-
-   ```bash
+## Common Examples
+1. Aby wyświetlić wszystkie załadowane moduły jądra:
+   ```csh
    lsmod
    ```
 
-2. **Wyświetlenie pomocy:**
-
-   ```bash
+2. Aby uzyskać pomoc na temat użycia polecenia:
+   ```csh
    lsmod --help
    ```
 
-3. **Cisza w wyjściu (jeśli występują błędy):**
-
-   ```bash
-   lsmod --quiet
+3. Aby wyświetlić moduły bez paginacji:
+   ```csh
+   lsmod --no-pager
    ```
 
-## Wskazówki
-- Użyj `lsmod` w połączeniu z innymi poleceniami, takimi jak `grep`, aby filtrować wyniki. Na przykład, aby znaleźć moduł o nazwie "nvidia", użyj:
-  
-  ```bash
-  lsmod | grep nvidia
-  ```
-
-- Regularne sprawdzanie załadowanych modułów może pomóc w diagnozowaniu problemów z urządzeniami i sterownikami.
-
-- Pamiętaj, że `lsmod` wyświetla tylko moduły, które są aktualnie załadowane. Aby załadować lub odładować moduł, użyj poleceń `modprobe` lub `rmmod`.
+## Tips
+- Regularnie sprawdzaj listę załadowanych modułów, aby upewnić się, że potrzebne moduły są aktywne.
+- Użyj `modprobe` do ładowania lub usuwania modułów, jeśli zauważysz, że brakuje jakiegoś modułu.
+- Możesz przekierować wynik `lsmod` do pliku, aby zachować kopię listy modułów:
+   ```csh
+   lsmod > lista_modulow.txt
+   ```

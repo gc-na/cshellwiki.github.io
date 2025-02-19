@@ -1,53 +1,52 @@
-# [Linux] Bash sleep Verwendung: Verzögerung von Befehlen
+# [Linux] C Shell (csh) sleep Verwendung: Verzögerung der Ausführung von Befehlen
 
 ## Übersicht
-Der `sleep` Befehl in Bash wird verwendet, um die Ausführung eines Skripts oder eines Befehls für eine bestimmte Zeitspanne zu pausieren. Dies kann nützlich sein, um Wartezeiten zwischen Befehlen einzuführen oder um die Ausführung von Skripten zu steuern.
+Der `sleep`-Befehl wird verwendet, um die Ausführung eines Skripts oder Befehls für eine bestimmte Anzahl von Sekunden zu pausieren. Dies kann nützlich sein, um Wartezeiten zwischen Befehlen zu schaffen oder um die Auslastung von Systemressourcen zu steuern.
 
 ## Verwendung
-Die grundlegende Syntax des `sleep` Befehls lautet:
+Die grundlegende Syntax des Befehls lautet:
 
-```bash
-sleep [Optionen] [Argumente]
+```csh
+sleep [optionen] [argumente]
 ```
 
 ## Häufige Optionen
-- `-h`, `--help`: Zeigt eine Hilfemeldung an.
-- `-V`, `--version`: Gibt die Versionsinformation des Befehls aus.
+- `-s`: Diese Option wird in der Regel nicht benötigt, da `sleep` standardmäßig Sekunden verwendet.
+- `-m`: Gibt die Zeit in Minuten an.
+- `-h`: Gibt die Zeit in Stunden an.
+- `-d`: Gibt die Zeit in Tagen an.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung des `sleep` Befehls:
+Hier sind einige praktische Beispiele für die Verwendung des `sleep`-Befehls:
 
 1. **Einfaches Schlafen für 5 Sekunden:**
-   ```bash
+   ```csh
    sleep 5
    ```
 
 2. **Schlafen für 2 Minuten:**
-   ```bash
+   ```csh
    sleep 2m
    ```
 
-3. **Schlafen für 30 Sekunden:**
-   ```bash
-   sleep 30
+3. **Schlafen für 1 Stunde:**
+   ```csh
+   sleep 1h
    ```
 
-4. **Schlafen in einem Skript zwischen zwei Befehlen:**
-   ```bash
-   echo "Warte 10 Sekunden..."
-   sleep 10
-   echo "Fortfahren..."
+4. **Schlafen für 1 Tag:**
+   ```csh
+   sleep 1d
    ```
 
-5. **Schlafen in einer Schleife:**
-   ```bash
-   for i in {1..5}; do
-       echo "Durchlauf $i"
-       sleep 1
-   done
+5. **Verzögerung zwischen zwei Befehlen:**
+   ```csh
+   echo "Starte in 3 Sekunden..."
+   sleep 3
+   echo "Jetzt!"
    ```
 
 ## Tipps
-- Verwenden Sie `sleep` in Skripten, um sicherzustellen, dass bestimmte Prozesse genügend Zeit haben, um abzuschließen, bevor der nächste Befehl ausgeführt wird.
-- Kombinieren Sie `sleep` mit anderen Befehlen in einer Schleife, um wiederholte Aufgaben mit Pausen zwischen den Ausführungen zu steuern.
-- Achten Sie darauf, die Zeitangaben in Sekunden, Minuten oder Stunden korrekt anzugeben, um unerwartete Wartezeiten zu vermeiden.
+- Verwenden Sie `sleep`, um Skripte zu steuern und sicherzustellen, dass bestimmte Prozesse in der richtigen Reihenfolge ablaufen.
+- Kombinieren Sie `sleep` mit anderen Befehlen in einer Schleife, um wiederholte Aufgaben mit Pausen durchzuführen.
+- Achten Sie darauf, dass zu lange Pausen die Ausführung von Skripten unnötig verzögern können. Planen Sie die Zeit entsprechend.

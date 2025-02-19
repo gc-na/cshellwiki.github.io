@@ -1,55 +1,51 @@
-# [Linux] Bash wc gebruik: Tel het aantal regels, woorden en tekens
+# [Linux] C Shell (csh) wc gebruik: Tel woorden, regels en tekens in bestanden
 
 ## Overzicht
-De `wc` (word count) opdracht in Bash wordt gebruikt om het aantal regels, woorden en tekens in een bestand of invoer te tellen. Dit is handig voor het analyseren van tekstbestanden en het verkrijgen van statistieken over de inhoud.
+De `wc` (word count) opdracht in C Shell wordt gebruikt om het aantal woorden, regels en tekens in een bestand of invoer te tellen. Het is een handige tool voor het analyseren van tekstbestanden en het verkrijgen van statistieken over de inhoud.
 
 ## Gebruik
 De basis syntaxis van de `wc` opdracht is als volgt:
 
-```bash
+```csh
 wc [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- `-l`: Tel het aantal regels.
-- `-w`: Tel het aantal woorden.
-- `-c`: Tel het aantal tekens.
+## Veelvoorkomende Opties
+- `-l`: Tel het aantal regels in het bestand.
+- `-w`: Tel het aantal woorden in het bestand.
+- `-c`: Tel het aantal tekens in het bestand.
 - `-m`: Tel het aantal karakters (inclusief multibyte-tekens).
 - `-L`: Toon de lengte van de langste regel.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van de `wc` opdracht:
 
-1. **Aantal regels in een bestand tellen:**
-
-   ```bash
+1. Tel het aantal regels in een bestand:
+   ```csh
    wc -l bestand.txt
    ```
 
-2. **Aantal woorden in een bestand tellen:**
-
-   ```bash
+2. Tel het aantal woorden in een bestand:
+   ```csh
    wc -w bestand.txt
    ```
 
-3. **Aantal tekens in een bestand tellen:**
-
-   ```bash
+3. Tel het aantal tekens in een bestand:
+   ```csh
    wc -c bestand.txt
    ```
 
-4. **Aantal regels, woorden en tekens in één keer tellen:**
-
-   ```bash
+4. Tel het aantal woorden, regels en tekens in een bestand:
+   ```csh
    wc bestand.txt
    ```
 
-5. **Aantal regels in de standaardinvoer tellen (bijvoorbeeld via echo):**
-
-   ```bash
-   echo "Hallo wereld" | wc -l
+5. Gebruik `wc` met een pijp om het aantal regels van een commando te tellen:
+   ```csh
+   ls -l | wc -l
    ```
 
 ## Tips
-- Gebruik `wc` in combinatie met andere opdrachten via een pijp (`|`) om snel statistieken van de uitvoer van die opdrachten te verkrijgen.
-- Combineer meerdere opties om een uitgebreid overzicht te krijgen, bijvoorbeeld `wc -l -w bestand.txt`.
-- Houd rekening met de bestandsindeling; als je werkt met bestanden die verschillende tekencoderingen hebben, kan dit de telling beïnvloeden.
+- Combineer opties om meerdere statistieken tegelijk te krijgen, bijvoorbeeld `wc -l -w bestand.txt`.
+- Gebruik `wc` in combinatie met andere commando's via pijpen voor krachtige analyses.
+- Houd rekening met de bestandsindeling; sommige bestanden kunnen speciale tekens bevatten die de telling kunnen beïnvloeden.

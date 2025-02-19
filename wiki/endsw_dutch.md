@@ -1,39 +1,60 @@
-# [Linux] Bash endsw gebruik: Beëindig processen
+# [Linux] C Shell (csh) endsw gebruik: Beëindig een case-structuur
 
 ## Overzicht
-De `endsw`-opdracht in Bash wordt gebruikt om processen te beëindigen die op de achtergrond draaien. Het is een handige manier om ongewenste of vastgelopen processen te stoppen zonder de terminal te sluiten.
+De `endsw` opdracht in C Shell (csh) wordt gebruikt om het einde van een `switch`-structuur aan te geven. Het is een essentieel onderdeel van het beheer van controleflow in scripts, waardoor je verschillende uitvoeracties kunt definiëren op basis van de waarde van een variabele.
 
 ## Gebruik
-De basis syntaxis van de `endsw`-opdracht is als volgt:
+De basis syntaxis van de `endsw` opdracht is als volgt:
 
-```bash
-endsw [opties] [argumenten]
+```csh
+endsw
 ```
 
-## Veelvoorkomende Opties
-- `-p`, `--pid`: Specificeer het proces-ID dat beëindigd moet worden.
-- `-f`, `--force`: Dwingt het beëindigen van het proces, zelfs als het niet reageert.
-- `-h`, `--help`: Toont de helpinformatie voor de opdracht.
+## Veelvoorkomende opties
+De `endsw` opdracht heeft geen specifieke opties. Het wordt altijd gebruikt als een afsluiter voor een `switch`-structuur.
 
-## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van de `endsw`-opdracht:
+## Veelvoorkomende voorbeelden
 
-1. Beëindig een proces met een specifiek PID:
-   ```bash
-   endsw -p 1234
-   ```
+### Voorbeeld 1: Basis switch-structuur
+Hier is een eenvoudig voorbeeld van een `switch`-structuur met `endsw`:
 
-2. Dwing een proces te beëindigen dat niet reageert:
-   ```bash
-   endsw -f -p 5678
-   ```
+```csh
+set kleur = "rood"
 
-3. Toon hulpinformatie over de `endsw`-opdracht:
-   ```bash
-   endsw --help
-   ```
+switch ($kleur)
+    case "rood":
+        echo "De kleur is rood."
+        breaksw
+    case "blauw":
+        echo "De kleur is blauw."
+        breaksw
+    default:
+        echo "Onbekende kleur."
+endsw
+```
+
+### Voorbeeld 2: Meerdere cases
+In dit voorbeeld worden meerdere cases behandeld:
+
+```csh
+set fruit = "appel"
+
+switch ($fruit)
+    case "appel":
+        echo "Dit is een appel."
+        breaksw
+    case "banaan":
+        echo "Dit is een banaan."
+        breaksw
+    case "sinaasappel":
+        echo "Dit is een sinaasappel."
+        breaksw
+    default:
+        echo "Dit fruit is niet bekend."
+endsw
+```
 
 ## Tips
-- Controleer altijd het PID van het proces dat je wilt beëindigen met de `ps`-opdracht voordat je `endsw` gebruikt.
-- Gebruik de `-f` optie met voorzichtigheid, omdat dit kan leiden tot dataverlies als een proces gedwongen wordt afgesloten.
-- Overweeg om processen eerst op een vriendelijke manier te beëindigen voordat je de geforceerde optie gebruikt.
+- Zorg ervoor dat je `endsw` altijd gebruikt na een `switch`-structuur om syntaxfouten te voorkomen.
+- Gebruik `breaksw` om de uitvoering van de `switch`-structuur te beëindigen na het uitvoeren van een case.
+- Houd je code georganiseerd door duidelijke en beschrijvende case-waarden te gebruiken, zodat het gemakkelijker te begrijpen is.

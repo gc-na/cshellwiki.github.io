@@ -1,53 +1,51 @@
-# [Linux] Bash apt Penggunaan: Mengelola paket perangkat lunak
+# [Sistem Operasi] C Shell (csh) apt penggunaan: Mengelola paket perangkat lunak
 
 ## Overview
-Perintah `apt` adalah alat manajemen paket yang digunakan di sistem berbasis Debian, seperti Ubuntu. Perintah ini memungkinkan pengguna untuk menginstal, menghapus, dan mengelola perangkat lunak dengan mudah dari repositori perangkat lunak.
+Perintah `apt` digunakan untuk mengelola paket perangkat lunak di sistem berbasis Debian. Dengan `apt`, pengguna dapat menginstal, menghapus, dan memperbarui paket dengan mudah.
 
 ## Usage
-Sintaks dasar untuk perintah `apt` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `apt`:
 
-```bash
+```csh
 apt [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah `apt`:
-
-- `update`: Memperbarui daftar paket dari repositori.
-- `upgrade`: Mengupgrade semua paket yang terinstal ke versi terbaru.
 - `install`: Menginstal paket baru.
-- `remove`: Menghapus paket yang terinstal.
+- `remove`: Menghapus paket yang sudah terinstal.
+- `update`: Memperbarui daftar paket yang tersedia.
+- `upgrade`: Meningkatkan semua paket yang terinstal ke versi terbaru.
 - `search`: Mencari paket berdasarkan nama atau deskripsi.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `apt`:
 
-1. **Memperbarui daftar paket:**
-   ```bash
-   sudo apt update
+1. **Menginstal paket baru**:
+   ```csh
+   apt install nama-paket
    ```
 
-2. **Mengupgrade semua paket yang terinstal:**
-   ```bash
-   sudo apt upgrade
+2. **Menghapus paket**:
+   ```csh
+   apt remove nama-paket
    ```
 
-3. **Menginstal paket baru, misalnya `curl`:**
-   ```bash
-   sudo apt install curl
+3. **Memperbarui daftar paket**:
+   ```csh
+   apt update
    ```
 
-4. **Menghapus paket yang terinstal, misalnya `curl`:**
-   ```bash
-   sudo apt remove curl
+4. **Meningkatkan semua paket**:
+   ```csh
+   apt upgrade
    ```
 
-5. **Mencari paket berdasarkan nama, misalnya `git`:**
-   ```bash
-   apt search git
+5. **Mencari paket**:
+   ```csh
+   apt search kata-kunci
    ```
 
 ## Tips
-- Selalu jalankan `sudo apt update` sebelum menginstal atau mengupgrade paket untuk memastikan Anda memiliki daftar paket terbaru.
-- Gunakan `apt upgrade` dengan hati-hati, terutama di server produksi, karena dapat mengubah banyak paket sekaligus.
-- Untuk menghapus paket beserta konfigurasi yang terkait, gunakan `sudo apt purge [nama_paket]` alih-alih `remove`.
+- Selalu jalankan `apt update` sebelum menginstal atau memperbarui paket untuk memastikan Anda memiliki daftar paket terbaru.
+- Gunakan `apt upgrade` secara berkala untuk menjaga sistem Anda tetap aman dan up-to-date.
+- Periksa dependensi paket dengan menggunakan opsi `apt show nama-paket` sebelum menginstal untuk memahami apa yang akan diinstal.

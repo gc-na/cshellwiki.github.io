@@ -1,50 +1,38 @@
-# [Linux] Bash dirs uso: Visualizza la lista delle directory
+# [Linux] C Shell (csh) dirs Uso: Visualizza le directory nella stack
 
 ## Overview
-Il comando `dirs` in Bash è utilizzato per visualizzare la lista delle directory attualmente memorizzate nello stack delle directory. Questo stack è utile per navigare rapidamente tra le directory utilizzate di recente.
+Il comando `dirs` in C Shell (csh) è utilizzato per visualizzare le directory attualmente memorizzate nella stack delle directory. Questa funzionalità è utile per tenere traccia delle directory in cui si è navigato durante una sessione di shell.
 
 ## Usage
-La sintassi di base del comando è la seguente:
+La sintassi di base del comando `dirs` è la seguente:
 
-```bash
+```csh
 dirs [options] [arguments]
 ```
 
 ## Common Options
-- `-l`: Mostra la lista delle directory in formato lungo, includendo il percorso completo.
-- `-p`: Mostra le directory in un formato compatto, separando i percorsi con spazi.
-- `+N`: Mostra la directory alla posizione N nello stack.
-- `-N`: Mostra la directory alla posizione N contando dalla fine dello stack.
+- `-l`: Mostra le directory in formato lungo, espandendo i percorsi.
+- `-p`: Mostra solo il percorso corrente senza ulteriori informazioni.
 
 ## Common Examples
+Ecco alcuni esempi pratici dell'uso del comando `dirs`:
 
-1. **Visualizzare le directory correnti**:
-   ```bash
+1. **Visualizzare la stack delle directory**:
+   ```csh
    dirs
    ```
 
-2. **Visualizzare le directory in formato lungo**:
-   ```bash
+2. **Visualizzare la stack delle directory in formato lungo**:
+   ```csh
    dirs -l
    ```
 
-3. **Visualizzare la terza directory nello stack**:
-   ```bash
-   dirs +2
-   ```
-
-4. **Visualizzare la seconda directory contando dalla fine**:
-   ```bash
-   dirs -2
-   ```
-
-5. **Aggiungere una directory allo stack e visualizzarla**:
-   ```bash
-   cd /path/to/directory
-   dirs
+3. **Visualizzare solo il percorso corrente**:
+   ```csh
+   dirs -p
    ```
 
 ## Tips
-- Utilizza `pushd` e `popd` insieme a `dirs` per gestire facilmente lo stack delle directory.
-- Ricorda che `dirs` mostra solo le directory nello stack, quindi assicurati di utilizzare `pushd` per aggiungere directory.
-- Puoi utilizzare `dirs -p` per una visualizzazione più compatta quando hai molte directory nello stack.
+- Utilizza `pushd` e `popd` per gestire la stack delle directory, in modo da aggiungere o rimuovere directory dalla stack e utilizzare `dirs` per visualizzare lo stato attuale.
+- Ricorda che `dirs` mostra solo le directory nella stack, quindi assicurati di utilizzare `pushd` per aggiungere directory prima di eseguire `dirs`.
+- Se stai lavorando con più directory, considera di utilizzare `dirs -l` per avere una visione più chiara dei percorsi completi.

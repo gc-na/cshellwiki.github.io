@@ -1,46 +1,43 @@
-# [Linux] Bash popd Verwendung: Wechselt in das vorherige Verzeichnis
+# [Linux] C Shell (csh) popd Verwendung: Wechselt das Verzeichnis zurück
 
 ## Übersicht
-Der Befehl `popd` wird in der Bash verwendet, um in das zuletzt besuchte Verzeichnis zurückzukehren. Er funktioniert in Verbindung mit dem Befehl `pushd`, der ein Verzeichnis auf den Stapel legt. Mit `popd` können Sie schnell zwischen Verzeichnissen navigieren, ohne den vollständigen Pfad eingeben zu müssen.
+Der Befehl `popd` wird in der C Shell verwendet, um das zuletzt gespeicherte Verzeichnis von der Verzeichnisstapel zu entfernen und in dieses Verzeichnis zu wechseln. Dies ist besonders nützlich, wenn Sie zwischen mehreren Verzeichnissen navigieren und den Überblick über Ihren Standort behalten möchten.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
-popd [optionen]
+```csh
+popd [options] [arguments]
 ```
 
 ## Häufige Optionen
-- `-n`: Führt den Befehl aus, ohne das aktuelle Verzeichnis zu ändern.
-- `+n`: Wechselt zu dem n-ten Verzeichnis im Stapel, wobei 0 das oberste Verzeichnis ist.
+- **`-n`**: Zeigt das neue Verzeichnis an, wechselt jedoch nicht dorthin.
+- **`+n`**: Wechselt zum n-ten Verzeichnis im Stapel, wobei `n` die Position im Stapel angibt.
+- **`-n`**: Wechselt zum n-ten Verzeichnis von hinten im Stapel.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung von `popd`:
 
-1. **Zurückkehren zum vorherigen Verzeichnis:**
-   ```bash
-   pushd /home/user/dokumente
-   pushd /var/log
+1. **Zurückwechseln zum vorherigen Verzeichnis:**
+   ```csh
    popd
    ```
-   In diesem Beispiel wird zuerst in das Verzeichnis `/home/user/dokumente` gewechselt, dann in `/var/log`, und schließlich kehrt der Befehl `popd` zum Verzeichnis `/home/user/dokumente` zurück.
 
-2. **Wechseln zu einem bestimmten Verzeichnis im Stapel:**
-   ```bash
-   pushd /home/user/projekte
-   pushd /home/user/bilder
-   popd +0
+2. **Wechseln zum zweiten Verzeichnis im Stapel:**
+   ```csh
+   popd +1
    ```
-   Hier wird mit `popd +0` zum obersten Verzeichnis im Stapel, also `/home/user/bilder`, zurückgekehrt.
 
-3. **Verwendung der `-n` Option:**
-   ```bash
-   pushd /home/user
+3. **Wechseln zum ersten Verzeichnis von hinten:**
+   ```csh
+   popd -1
+   ```
+
+4. **Verzeichnis anzeigen, ohne zu wechseln:**
+   ```csh
    popd -n
    ```
-   In diesem Beispiel wird das aktuelle Verzeichnis nicht geändert, wenn `popd -n` ausgeführt wird.
 
 ## Tipps
-- Nutzen Sie `pushd` und `popd` zusammen, um Ihre Verzeichnisse effizient zu verwalten.
-- Überprüfen Sie den aktuellen Verzeichnisstapel mit dem Befehl `dirs`, um zu sehen, welche Verzeichnisse Sie gespeichert haben.
-- Verwenden Sie die `+n` Option, um gezielt zu einem bestimmten Verzeichnis im Stapel zu wechseln, was besonders nützlich ist, wenn Sie mehrere Verzeichnisse besucht haben.
+- Stellen Sie sicher, dass Sie zuvor mit `pushd` ein Verzeichnis auf den Stapel gelegt haben, bevor Sie `popd` verwenden.
+- Nutzen Sie `dirs`, um den aktuellen Verzeichnisstapel anzuzeigen, bevor Sie `popd` ausführen.
+- Verwenden Sie `popd` in Kombination mit `pushd`, um effizient zwischen mehreren Verzeichnissen zu navigieren.

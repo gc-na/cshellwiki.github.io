@@ -1,54 +1,49 @@
-# [Linux] Bash set gebruik: Beheer shell-instellingen en variabelen
+# [Unix] C Shell (csh) set gebruik: Instellen van shell-variabelen
 
-## Overzicht
-De `set`-opdracht in Bash wordt gebruikt om shell-instellingen en variabelen te beheren. Het stelt gebruikers in staat om bepaalde opties in te schakelen of uit te schakelen, evenals om variabelen in de huidige shell-omgeving te definiëren of te wijzigen.
+## Overview
+De `set` opdracht in C Shell (csh) wordt gebruikt om shell-variabelen en array-variabelen in te stellen. Het stelt gebruikers in staat om de omgeving van de shell aan te passen en variabelen te definiëren die in scripts of interactieve sessies kunnen worden gebruikt.
 
-## Gebruik
-De basis syntaxis van de `set`-opdracht is als volgt:
+## Usage
+De basis syntaxis van de `set` opdracht is als volgt:
 
-```bash
-set [opties] [argumenten]
+```csh
+set [options] [arguments]
 ```
 
-## Veelvoorkomende Opties
-Hier zijn enkele veelvoorkomende opties voor de `set`-opdracht:
+## Common Options
+- `-x`: Zet de variabele in de exportmodus, zodat deze beschikbaar is voor subprocessen.
+- `-e`: Schakelt de foutafhandelingsmodus in, wat betekent dat de shell stopt bij de eerste fout.
+- `-u`: Geeft een foutmelding als er naar een niet-gedefinieerde variabele wordt verwezen.
 
-- `-e`: Stop met uitvoeren als een commando een fout retourneert.
-- `-u`: Behandel niet-gedefinieerde variabelen als een fout.
-- `-x`: Toon de commando's die worden uitgevoerd, handig voor debugging.
-- `-o`: Schakel specifieke shell-opties in, zoals `noclobber` of `pipefail`.
+## Common Examples
+Hier zijn enkele praktische voorbeelden van het gebruik van de `set` opdracht:
 
-## Veelvoorkomende Voorbeelden
+1. Een eenvoudige variabele instellen:
+    ```csh
+    set myVar = "Hallo, wereld!"
+    ```
 
-### Voorbeeld 1: Stoppen bij een fout
-Gebruik de `-e` optie om de uitvoering te stoppen bij een fout.
+2. Een array-variabele instellen:
+    ```csh
+    set myArray = (element1 element2 element3)
+    ```
 
-```bash
-set -e
-echo "Dit wordt uitgevoerd"
-false
-echo "Dit wordt NIET uitgevoerd"
-```
+3. De waarde van een variabele weergeven:
+    ```csh
+    echo $myVar
+    ```
 
-### Voorbeeld 2: Debugging met -x
-Met de `-x` optie kun je zien welke commando's worden uitgevoerd.
+4. Een variabele exporteren naar subprocessen:
+    ```csh
+    set -x myExportedVar = "Dit is een geëxporteerde variabele"
+    ```
 
-```bash
-set -x
-echo "Dit is een test"
-ls /niet/bestaande/map
-set +x
-```
-
-### Voorbeeld 3: Niet-gedefinieerde variabelen
-Gebruik de `-u` optie om een fout te genereren bij niet-gedefinieerde variabelen.
-
-```bash
-set -u
-echo $ONBEKENDE_VARIABELE
-```
+5. Een niet-gedefinieerde variabele gebruiken met foutafhandeling:
+    ```csh
+    set -u myUndefinedVar
+    ```
 
 ## Tips
-- Gebruik `set -e` in scripts om ervoor te zorgen dat je script stopt bij fouten, wat helpt bij het voorkomen van onverwachte resultaten.
-- Combineer opties zoals `set -eux` voor een krachtige combinatie van foutafhandeling en debugging.
-- Vergeet niet om `set +e` of `set +u` te gebruiken als je de opties wilt uitschakelen voor specifieke delen van je script.
+- Gebruik duidelijke en beschrijvende namen voor variabelen om de leesbaarheid van je scripts te verbeteren.
+- Wees voorzichtig met het gebruik van spaties rond het gelijkteken (`=`) bij het instellen van variabelen, omdat dit kan leiden tot fouten.
+- Controleer altijd of een variabele is ingesteld voordat je deze gebruikt, vooral als je de `-u` optie hebt ingeschakeld.

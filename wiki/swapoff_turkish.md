@@ -1,39 +1,38 @@
-# [Linux] Bash swapoff Kullanımı: Takas alanını devre dışı bırakma
+# [Linux] C Shell (csh) swapoff Kullanımı: Takas alanını devre dışı bırakma
 
-## Overview
-`swapoff` komutu, sistemdeki takas alanını devre dışı bırakmak için kullanılır. Takas alanı, RAM yetersiz olduğunda verilerin geçici olarak depolandığı bir alan olup, sistem performansını etkileyebilir. Bu komut, belirli bir takas dosyasını veya takas alanını kapatmanıza olanak tanır.
+## Genel Bakış
+`swapoff` komutu, sistemdeki takas alanını devre dışı bırakmak için kullanılır. Bu, belleğin daha verimli kullanılmasına yardımcı olabilir ve sistemin performansını artırabilir.
 
-## Usage
-Temel sözdizimi aşağıdaki gibidir:
-
-```bash
-swapoff [options] [arguments]
+## Kullanım
+Temel sözdizimi şu şekildedir:
+```csh
+swapoff [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `-a`, `--all`: Tüm takas alanlarını devre dışı bırakır.
-- `-e`, `--exclude`: Belirtilen takas dosyasını hariç tutarak diğerlerini devre dışı bırakır.
-- `-h`, `--help`: Komut hakkında yardım bilgisi gösterir.
+## Yaygın Seçenekler
+- `-a`: Tüm takas alanlarını devre dışı bırakır.
+- `-e`: Belirtilen takas dosyasını veya bölümünü devre dışı bırakır.
+- `-h`: Yardım bilgilerini gösterir.
 
-## Common Examples
+## Yaygın Örnekler
 Aşağıda `swapoff` komutunun bazı pratik örnekleri bulunmaktadır:
 
 1. Tüm takas alanlarını devre dışı bırakmak için:
-   ```bash
-   sudo swapoff -a
+   ```csh
+   swapoff -a
    ```
 
 2. Belirli bir takas dosyasını devre dışı bırakmak için:
-   ```bash
-   sudo swapoff /swapfile
+   ```csh
+   swapoff /swapfile
    ```
 
 3. Yardım bilgilerini görüntülemek için:
-   ```bash
-   swapoff --help
+   ```csh
+   swapoff -h
    ```
 
-## Tips
-- `swapoff` komutunu kullanmadan önce, sistemde yeterli RAM olduğundan emin olun; aksi takdirde sistem yavaşlayabilir veya çökebilir.
-- Takas alanını devre dışı bırakmadan önce, takas alanının ne kadar kullanıldığını kontrol etmek için `free -h` komutunu kullanabilirsiniz.
-- Takas alanını devre dışı bırakmak, bellek yönetimini optimize etmek için faydalı olabilir, ancak dikkatli kullanılmalıdır.
+## İpuçları
+- `swapoff` komutunu kullanmadan önce sistemde yeterli fiziksel bellek olduğundan emin olun.
+- Takas alanını devre dışı bırakmadan önce, sistemin performansını etkileyebilecek diğer işlemleri göz önünde bulundurun.
+- Takas alanını devre dışı bırakmak, bazı uygulamaların düzgün çalışmamasına neden olabilir; bu nedenle dikkatli olun.

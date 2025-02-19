@@ -1,40 +1,30 @@
-# [台灣] Bash rehash 用法: 重新整理命令快取
+# [台灣] C Shell (csh) rehash 使用法: 重新整理命令路徑
 
 ## Overview
-`rehash` 命令用於更新 Bash 的命令快取，這樣當你新增或刪除可執行文件時，Bash 可以正確識別這些變更。
+`rehash` 命令用於更新 C Shell 的命令路徑快取。當你新增或刪除可執行文件時，這個命令可以幫助你確保 shell 知道最新的命令。
 
 ## Usage
 基本語法如下：
-```bash
+```
 rehash [options] [arguments]
 ```
 
 ## Common Options
-- `-p`：僅更新 PATH 中的命令快取，不會更新其他路徑的快取。
+- `-h`：顯示幫助信息，列出可用的選項和用法。
 
 ## Common Examples
 以下是一些常見的使用範例：
 
-1. **基本使用**：
-   ```bash
+1. **基本使用**
+   ```csh
    rehash
    ```
-   這會更新所有的命令快取。
 
-2. **使用 -p 選項**：
-   ```bash
-   rehash -p
+2. **顯示幫助信息**
+   ```csh
+   rehash -h
    ```
-   僅更新 PATH 中的命令快取。
-
-3. **在安裝新軟體後使用**：
-   ```bash
-   sudo apt install new-software
-   rehash
-   ```
-   安裝新軟體後，使用 `rehash` 來確保 Bash 知道新命令。
 
 ## Tips
-- 在安裝或刪除可執行文件後，記得執行 `rehash` 以避免命令找不到的問題。
-- 使用 `rehash -p` 可以更快地更新命令快取，特別是在 PATH 中有大量命令時。
-- 如果你使用的是 Zsh，`rehash` 也可以用來更新命令快取，功能類似。
+- 每當你安裝新軟體或修改可執行文件時，記得執行 `rehash` 以更新命令路徑。
+- 在使用 `rehash` 前，確保你已經在正確的目錄中，這樣可以避免不必要的錯誤。

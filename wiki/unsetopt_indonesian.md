@@ -1,47 +1,50 @@
-# [Linux] Bash unsetopt Penggunaan: Menghapus opsi shell
+# [Sistem Operasi] C Shell (csh) unsetopt: [menghapus opsi yang diatur]
 
 ## Overview
-Perintah `unsetopt` dalam Bash digunakan untuk menghapus opsi tertentu yang telah diatur sebelumnya dalam lingkungan shell. Dengan menggunakan perintah ini, pengguna dapat mengubah perilaku shell dengan menonaktifkan opsi yang tidak diinginkan.
+Perintah `unsetopt` dalam C Shell (csh) digunakan untuk menghapus opsi yang sebelumnya telah diatur. Dengan menggunakan perintah ini, Anda dapat mengubah perilaku shell dengan menonaktifkan fitur tertentu yang mungkin tidak diperlukan dalam sesi saat ini.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `unsetopt`:
 
-```bash
+```csh
 unsetopt [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang dapat digunakan dengan `unsetopt`:
+Beberapa opsi umum yang dapat digunakan dengan `unsetopt` meliputi:
 
-- `allexport`: Menonaktifkan ekspor otomatis variabel.
-- `braceexpand`: Menonaktifkan ekspansi kurung kurawal.
-- `emacs`: Menonaktifkan mode pengeditan Emacs.
-- `noclobber`: Menonaktifkan penimpaan file saat mengalihkan output.
+- `all`: Menghapus semua opsi yang diatur.
+- `noclobber`: Mengizinkan penimpaan file saat melakukan pengalihan output.
+- `noglob`: Mengizinkan penggunaan karakter wildcard dalam nama file.
+- `interactive`: Menonaktifkan mode interaktif untuk perintah tertentu.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan `unsetopt`:
+Berikut adalah beberapa contoh praktis penggunaan `unsetopt`:
 
-1. Menonaktifkan ekspor otomatis variabel:
-   ```bash
-   unsetopt allexport
-   ```
-
-2. Menonaktifkan ekspansi kurung kurawal:
-   ```bash
-   unsetopt braceexpand
-   ```
-
-3. Menonaktifkan mode pengeditan Emacs:
-   ```bash
-   unsetopt emacs
-   ```
-
-4. Menonaktifkan penimpaan file:
-   ```bash
+1. Menghapus opsi `noclobber` agar dapat menimpa file saat pengalihan output:
+   ```csh
    unsetopt noclobber
+   ```
+
+2. Menghapus opsi `noglob` untuk memungkinkan penggunaan wildcard:
+   ```csh
+   unsetopt noglob
+   ```
+
+3. Menghapus semua opsi yang diatur dalam sesi saat ini:
+   ```csh
+   unsetopt all
+   ```
+
+4. Menonaktifkan mode interaktif:
+   ```csh
+   unsetopt interactive
    ```
 
 ## Tips
 - Pastikan untuk memeriksa opsi yang saat ini diatur dengan menggunakan perintah `set` sebelum menggunakan `unsetopt`.
-- Gunakan `set -o` untuk melihat daftar opsi yang dapat diatur dan dihapus.
-- Hati-hati saat menonaktifkan opsi yang mungkin mempengaruhi skrip atau perintah lain yang Anda jalankan.
+- Gunakan `unsetopt` dengan hati-hati, terutama saat menghapus opsi yang dapat mempengaruhi perilaku shell secara keseluruhan.
+- Anda dapat menggabungkan beberapa opsi dalam satu perintah `unsetopt` untuk efisiensi, misalnya:
+  ```csh
+  unsetopt noclobber noglob
+  ```

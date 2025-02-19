@@ -1,43 +1,44 @@
-# [Linux] Bash mount Kullanımı: Dosya sistemlerini bağlama
+# [Linux] C Shell (csh) mount Kullanımı: Dosya sistemlerini bağlama
 
-## Genel Bakış
-`mount` komutu, bir dosya sistemini belirli bir dizine bağlamak için kullanılır. Bu işlem, dosya sisteminin içeriğine erişim sağlamanızı ve dosyaları yönetmenizi mümkün kılar.
+## Overview
+`mount` komutu, bir dosya sistemini belirli bir dizine bağlamak için kullanılır. Bu işlem, dosya sisteminin içeriğine erişimi sağlar ve sistemin dosya yapısında görünür hale getirir.
 
-## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
-
-```bash
-mount [seçenekler] [argümanlar]
+## Usage
+Temel sözdizimi şu şekildedir:
+```
+mount [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-t <tip>`: Bağlanacak dosya sisteminin türünü belirtir (örneğin, ext4, ntfs).
-- `-o <seçenekler>`: Bağlama işlemi için özel seçenekler tanımlar (örneğin, `ro` sadece okuma için, `rw` okuma/yazma için).
-- `-a`: `/etc/fstab` dosyasındaki tüm dosya sistemlerini bağlar.
-- `-r`: Dosya sistemini yalnızca okuma modunda bağlar.
+## Common Options
+- `-t type`: Bağlanacak dosya sisteminin türünü belirtir.
+- `-o options`: Bağlama işlemi için özel seçenekler tanımlar.
+- `-r`: Dosya sistemini sadece okunur modda bağlar.
+- `-w`: Dosya sistemini yazılabilir modda bağlar.
 
-## Yaygın Örnekler
-1. **Bir dosya sistemini bağlamak:**
+## Common Examples
+Aşağıda `mount` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+
+1. Bir dosya sistemini bağlamak:
    ```bash
    mount /dev/sdb1 /mnt/mydrive
    ```
 
-2. **NTFS dosya sistemini bağlamak:**
+2. Belirli bir dosya sistemi türü ile bağlamak:
    ```bash
-   mount -t ntfs-3g /dev/sdc1 /mnt/ntfsdrive
+   mount -t ext4 /dev/sdb1 /mnt/mydrive
    ```
 
-3. **Sadece okuma modunda bağlamak:**
+3. Sadece okunur modda bağlamak:
    ```bash
-   mount -o ro /dev/sda1 /mnt/readonly
+   mount -o ro /dev/sdb1 /mnt/mydrive
    ```
 
-4. **Tüm dosya sistemlerini bağlamak:**
+4. Bir ağ dosya sistemini bağlamak (NFS örneği):
    ```bash
-   mount -a
+   mount -t nfs server:/export /mnt/nfs
    ```
 
-## İpuçları
-- Bağlama işlemi yapmadan önce, bağlanacak dizinin var olduğundan emin olun.
-- Dosya sistemini çıkarmadan önce, tüm dosyaların kapatıldığından ve dosya sisteminin kullanılmadığından emin olun.
-- `df -h` komutunu kullanarak bağlı dosya sistemlerinin durumunu kontrol edebilirsiniz.
+## Tips
+- Bağlama işlemi yapmadan önce, hedef dizinin var olduğundan emin olun.
+- Dosya sistemini bağladıktan sonra, içeriğini kontrol etmek için `ls` komutunu kullanabilirsiniz.
+- Bağlı dosya sistemlerini görmek için `mount` komutunu tek başına çalıştırabilirsiniz.

@@ -1,12 +1,12 @@
-# [Linux] Bash udevadm Utilisation : Gestion des périphériques sous Linux
+# [Linux] C Shell (csh) udevadm Utilisation : Gérer les périphériques du système
 
 ## Overview
-La commande `udevadm` est un outil utilisé pour interagir avec le système de gestion des périphériques `udev` sous Linux. Elle permet de gérer les événements liés aux périphériques, de surveiller les changements d'état des périphériques et de configurer les règles associées.
+La commande `udevadm` est un outil utilisé pour interagir avec le gestionnaire de périphériques `udev` dans les systèmes Linux. Elle permet de gérer les événements liés aux périphériques, de surveiller les changements de matériel et de manipuler les règles de `udev`.
 
 ## Usage
 La syntaxe de base de la commande `udevadm` est la suivante :
 
-```bash
+```shell
 udevadm [options] [arguments]
 ```
 
@@ -14,42 +14,43 @@ udevadm [options] [arguments]
 Voici quelques options courantes pour `udevadm` :
 
 - `info` : Affiche des informations sur un périphérique spécifique.
+- `trigger` : Déclenche des événements pour les périphériques.
+- `settle` : Attend que tous les événements de périphériques soient traités.
+- `control` : Gère le fonctionnement du démon `udevd`.
 - `monitor` : Surveille les événements `udev` en temps réel.
-- `trigger` : Déclenche les événements `udev` pour les périphériques existants.
-- `settle` : Attend que tous les événements `udev` en attente soient traités.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `udevadm` :
 
 ### Afficher des informations sur un périphérique
-Pour obtenir des informations détaillées sur un périphérique, utilisez la commande suivante :
+Pour obtenir des informations sur un périphérique spécifique, utilisez :
 
-```bash
+```shell
 udevadm info --query=all --name=/dev/sda
 ```
 
-### Surveiller les événements udev
-Pour surveiller les événements en temps réel, exécutez :
+### Déclencher des événements pour tous les périphériques
+Pour déclencher des événements pour tous les périphériques, exécutez :
 
-```bash
-udevadm monitor
-```
-
-### Déclencher des événements pour les périphériques existants
-Pour déclencher les événements `udev` pour tous les périphériques, utilisez :
-
-```bash
+```shell
 udevadm trigger
 ```
 
 ### Attendre que tous les événements soient traités
-Pour s'assurer que tous les événements en attente sont traités, exécutez :
+Pour attendre que tous les événements de périphériques soient réglés, utilisez :
 
-```bash
+```shell
 udevadm settle
 ```
 
+### Surveiller les événements en temps réel
+Pour surveiller les événements `udev` en temps réel, vous pouvez utiliser :
+
+```shell
+udevadm monitor
+```
+
 ## Tips
-- Utilisez `udevadm monitor` pour diagnostiquer les problèmes de détection de périphériques en temps réel.
-- Combinez `udevadm info` avec des scripts pour automatiser la gestion des périphériques.
-- Soyez prudent lors de l'utilisation de `udevadm trigger`, car cela peut affecter le fonctionnement des périphériques en cours d'utilisation.
+- Utilisez `udevadm info` pour diagnostiquer les problèmes de périphériques en affichant des informations détaillées.
+- Lors de la création ou de la modification de règles `udev`, n'oubliez pas de déclencher les événements avec `udevadm trigger` pour appliquer les changements.
+- Pour une surveillance continue des événements, exécutez `udevadm monitor` dans un terminal séparé pendant que vous effectuez des modifications matérielles.

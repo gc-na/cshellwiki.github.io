@@ -1,49 +1,53 @@
-# [Linux] Bash helm użycie: zarządzanie aplikacjami Kubernetes
+# [Linux] C Shell (csh) helm użycie: zarządzanie aplikacjami Kubernetes
 
 ## Overview
-Polecenie `helm` jest menedżerem pakietów dla Kubernetes, który umożliwia łatwe zarządzanie aplikacjami w klastrze Kubernetes. Dzięki Helm można instalować, aktualizować i usuwać aplikacje w formie tzw. "chartów", co znacznie ułatwia zarządzanie złożonymi aplikacjami.
+Polecenie `helm` jest narzędziem do zarządzania aplikacjami w Kubernetes, które pozwala na łatwe instalowanie, aktualizowanie i usuwanie aplikacji w formie pakietów zwanych "chartami". Dzięki `helm` można zarządzać złożonymi aplikacjami w prosty sposób, co znacząco ułatwia pracę z Kubernetes.
 
 ## Usage
 Podstawowa składnia polecenia `helm` jest następująca:
 
-```bash
-helm [opcje] [argumenty]
+```csh
+helm [options] [arguments]
 ```
 
 ## Common Options
-- `install`: Instaluje nowy chart.
-- `upgrade`: Aktualizuje istniejący chart do nowszej wersji.
-- `uninstall`: Usuwa zainstalowany chart.
-- `list`: Wyświetla listę zainstalowanych chartów.
+Oto niektóre z najczęściej używanych opcji polecenia `helm`:
+
+- `install`: Instaluje nową aplikację z wykresu.
+- `upgrade`: Aktualizuje istniejącą aplikację do nowszej wersji.
+- `uninstall`: Usuwa zainstalowaną aplikację.
+- `list`: Wyświetla listę zainstalowanych aplikacji.
 - `repo`: Zarządza repozytoriami chartów.
 
 ## Common Examples
-1. Instalacja nowego chartu:
-   ```bash
-   helm install my-release my-chart
+Oto kilka praktycznych przykładów użycia polecenia `helm`:
+
+1. Instalacja nowej aplikacji:
+   ```csh
+   helm install my-app ./my-chart
    ```
 
-2. Aktualizacja istniejącego chartu:
-   ```bash
-   helm upgrade my-release my-chart
+2. Aktualizacja istniejącej aplikacji:
+   ```csh
+   helm upgrade my-app ./my-chart
    ```
 
-3. Usunięcie zainstalowanego chartu:
-   ```bash
-   helm uninstall my-release
+3. Usunięcie zainstalowanej aplikacji:
+   ```csh
+   helm uninstall my-app
    ```
 
-4. Wyświetlenie listy zainstalowanych chartów:
-   ```bash
+4. Wyświetlenie listy zainstalowanych aplikacji:
+   ```csh
    helm list
    ```
 
 5. Dodanie repozytorium chartów:
-   ```bash
-   helm repo add my-repo https://my-repo-url
+   ```csh
+   helm repo add my-repo https://example.com/charts
    ```
 
 ## Tips
-- Zawsze sprawdzaj dostępne wersje chartów przed ich instalacją, aby upewnić się, że używasz najnowszej wersji.
-- Używaj opcji `--dry-run`, aby przetestować instalację lub aktualizację chartu bez wprowadzania zmian w klastrze.
-- Regularnie aktualizuj swoje repozytoria chartów, aby mieć dostęp do najnowszych aplikacji i poprawek.
+- Zawsze sprawdzaj dostępne wersje wykresów przed aktualizacją, aby uniknąć problemów z niekompatybilnością.
+- Używaj opcji `--dry-run` podczas instalacji lub aktualizacji, aby zobaczyć, co zostanie zrobione, bez wprowadzania zmian.
+- Regularnie aktualizuj swoje repozytoria chartów, aby mieć dostęp do najnowszych wersji aplikacji.

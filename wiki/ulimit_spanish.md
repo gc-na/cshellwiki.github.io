@@ -1,59 +1,55 @@
-# [Linux] Bash ulimit uso: Establecer límites de recursos del sistema
+# [Unix] C Shell (csh) ulimit: Establecer límites de recursos del sistema
 
 ## Overview
-El comando `ulimit` se utiliza en sistemas Unix y Linux para establecer límites en los recursos que pueden ser utilizados por los procesos en ejecución. Esto ayuda a prevenir que un solo proceso consuma todos los recursos del sistema, lo que podría afectar el rendimiento general.
+El comando `ulimit` en C Shell (csh) se utiliza para establecer o mostrar límites en los recursos que pueden ser utilizados por los procesos en un sistema. Esto es útil para prevenir que un solo proceso consuma todos los recursos del sistema, lo que podría afectar a otros procesos.
 
 ## Usage
 La sintaxis básica del comando `ulimit` es la siguiente:
 
-```bash
+```
 ulimit [opciones] [argumentos]
 ```
 
 ## Common Options
 - `-a`: Muestra todos los límites actuales.
-- `-c`: Establece el tamaño máximo de los archivos de volcado de núcleo.
+- `-c`: Establece el tamaño máximo de archivos de volcado de núcleo.
 - `-d`: Establece el tamaño máximo de la memoria de datos.
-- `-f`: Establece el tamaño máximo de los archivos que se pueden crear.
+- `-f`: Establece el tamaño máximo de los archivos creados.
 - `-l`: Establece el tamaño máximo de la memoria bloqueada.
+- `-m`: Establece el tamaño máximo de la memoria residente.
 - `-s`: Establece el tamaño máximo de la pila.
 - `-t`: Establece el tiempo máximo de CPU en segundos.
 - `-v`: Establece el tamaño máximo de la memoria virtual.
 
 ## Common Examples
+Aquí hay algunos ejemplos prácticos del uso de `ulimit`:
 
 1. **Mostrar todos los límites actuales:**
-
-   ```bash
+   ```csh
    ulimit -a
    ```
 
-2. **Establecer el tamaño máximo de archivos a 100 MB:**
-
-   ```bash
+2. **Establecer el tamaño máximo de archivos creados a 100 MB:**
+   ```csh
    ulimit -f 102400
    ```
 
-3. **Limitar el tamaño de la pila a 8 MB:**
-
-   ```bash
-   ulimit -s 8192
+3. **Establecer el tamaño máximo de la memoria de datos a 512 MB:**
+   ```csh
+   ulimit -d 524288
    ```
 
-4. **Establecer un límite de tiempo de CPU de 60 segundos:**
-
-   ```bash
+4. **Establecer el tiempo máximo de CPU a 60 segundos:**
+   ```csh
    ulimit -t 60
    ```
 
-5. **Deshabilitar el volcado de núcleo:**
-
-   ```bash
-   ulimit -c 0
+5. **Mostrar el tamaño máximo de archivos de volcado de núcleo:**
+   ```csh
+   ulimit -c
    ```
 
 ## Tips
 - Siempre verifica los límites actuales con `ulimit -a` antes de realizar cambios.
-- Los cambios realizados con `ulimit` son temporales y solo afectan a la sesión actual del shell.
-- Para establecer límites permanentes, considera agregar configuraciones en archivos como `/etc/security/limits.conf`.
-- Ten cuidado al aumentar los límites, ya que esto puede afectar la estabilidad del sistema si un proceso consume demasiados recursos.
+- Considera establecer límites de recursos en scripts para evitar que procesos no controlados afecten el rendimiento del sistema.
+- Recuerda que los límites establecidos con `ulimit` son específicos para la sesión actual y no persisten después de cerrar la terminal.

@@ -1,66 +1,64 @@
-# [Linux] Bash expr Uso equivalente: Avaliação de expressões
+# [Linux] C Shell (csh) expr Uso: Avaliação de expressões
 
 ## Overview
-O comando `expr` é utilizado no Bash para avaliar expressões aritméticas, lógicas e de string. Ele permite realizar operações matemáticas simples, manipular strings e fazer comparações.
+O comando `expr` é utilizado no C Shell para avaliar expressões aritméticas, lógicas e de string. Ele permite realizar operações matemáticas simples e manipulações de texto diretamente no terminal.
 
 ## Usage
 A sintaxe básica do comando `expr` é a seguinte:
 
-```bash
+```csh
 expr [opções] [argumentos]
 ```
 
 ## Common Options
-- `-e`: Permite que você use expressões mais complexas.
-- `length`: Retorna o comprimento de uma string.
-- `index`: Retorna a posição da primeira ocorrência de uma substring em uma string.
-- `match`: Verifica se uma string corresponde a uma expressão regular.
+- `+` : Adição.
+- `-` : Subtração.
+- `*` : Multiplicação (deve ser escapado com uma barra invertida `\*`).
+- `/` : Divisão.
+- `%` : Módulo.
+- `=` : Atribuição de valor.
+- `:` : Comparação de strings.
 
 ## Common Examples
+Aqui estão alguns exemplos práticos do uso do comando `expr`:
 
-### 1. Soma de dois números
-```bash
+### Exemplo 1: Adição
+```csh
 expr 5 + 3
 ```
 Saída: `8`
 
-### 2. Subtração de dois números
-```bash
+### Exemplo 2: Subtração
+```csh
 expr 10 - 4
 ```
 Saída: `6`
 
-### 3. Multiplicação de dois números
-```bash
+### Exemplo 3: Multiplicação
+```csh
 expr 7 \* 6
 ```
 Saída: `42`
 
-### 4. Divisão de dois números
-```bash
+### Exemplo 4: Divisão
+```csh
 expr 20 / 4
 ```
 Saída: `5`
 
-### 5. Comprimento de uma string
-```bash
-expr length "Olá, Mundo!"
+### Exemplo 5: Módulo
+```csh
+expr 10 % 3
 ```
-Saída: `12`
+Saída: `1`
 
-### 6. Encontrar a posição de uma substring
-```bash
-expr index "Bash Scripting" S
+### Exemplo 6: Comparação de Strings
+```csh
+expr "hello" : "h.*"
 ```
-Saída: `6`
-
-### 7. Comparação de dois números
-```bash
-expr 5 \> 3
-```
-Saída: `1` (verdadeiro)
+Saída: `5` (número de caracteres que correspondem ao padrão)
 
 ## Tips
-- Sempre escape o operador de multiplicação (`*`) com uma barra invertida (`\`) para evitar confusão com a expansão de globbing do shell.
-- Use parênteses para agrupar expressões e controlar a ordem das operações.
-- O `expr` retorna `0` para falso e `1` para verdadeiro em expressões de comparação.
+- Sempre escape o asterisco (`*`) com uma barra invertida (`\`) para evitar que o shell o interprete como um caractere curinga.
+- Use parênteses para agrupar expressões e garantir a ordem correta das operações.
+- O `expr` é útil em scripts para realizar cálculos simples sem a necessidade de uma linguagem de programação mais complexa.

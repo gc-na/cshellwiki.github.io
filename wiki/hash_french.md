@@ -1,51 +1,44 @@
-# [Linux] Bash hash utilisation : Gérer le cache des commandes
+# [Linux] C Shell (csh) hash : Gérer le cache des chemins des commandes
 
 ## Overview
-La commande `hash` en Bash est utilisée pour gérer le cache des commandes. Elle permet de mémoriser les chemins des commandes exécutées, ce qui peut améliorer l'efficacité de l'exécution des commandes en évitant de rechercher à chaque fois leur emplacement.
+La commande `hash` dans C Shell (csh) est utilisée pour gérer le cache des chemins des commandes exécutées. Elle permet de mémoriser les chemins des commandes pour accélérer leur recherche lors des exécutions futures.
 
 ## Usage
 La syntaxe de base de la commande `hash` est la suivante :
 
-```bash
+```csh
 hash [options] [arguments]
 ```
 
 ## Common Options
-- `-r` : Réinitialise le cache des commandes, supprimant toutes les entrées mémorisées.
-- `-p` : Définit un chemin spécifique pour une commande donnée, remplaçant l'entrée existante dans le cache.
-- `-l` : Affiche le contenu actuel du cache des commandes.
+- `-r` : Réinitialise le cache des chemins des commandes.
+- `-p` : Affiche le chemin complet des commandes mémorisées.
+- `-l` : Liste les commandes mémorisées avec leurs chemins.
 
 ## Common Examples
+Voici quelques exemples pratiques de l'utilisation de la commande `hash` :
 
-### Afficher le cache des commandes
-Pour afficher les chemins des commandes mémorisées dans le cache, vous pouvez utiliser :
+1. **Afficher le cache des commandes mémorisées :**
+   ```csh
+   hash
+   ```
 
-```bash
-hash
-```
+2. **Réinitialiser le cache :**
+   ```csh
+   hash -r
+   ```
 
-### Réinitialiser le cache
-Pour réinitialiser le cache des commandes, utilisez l'option `-r` :
+3. **Afficher le chemin d'une commande spécifique :**
+   ```csh
+   hash -p ls
+   ```
 
-```bash
-hash -r
-```
-
-### Définir un chemin spécifique pour une commande
-Si vous souhaitez définir un chemin spécifique pour une commande, utilisez l'option `-p` :
-
-```bash
-hash -p /usr/local/bin/ma_commande ma_commande
-```
-
-### Afficher le contenu du cache
-Pour voir le contenu actuel du cache, utilisez l'option `-l` :
-
-```bash
-hash -l
-```
+4. **Lister toutes les commandes mémorisées avec leurs chemins :**
+   ```csh
+   hash -l
+   ```
 
 ## Tips
 - Utilisez `hash -r` après avoir installé de nouvelles commandes pour vous assurer que le cache est à jour.
-- Vérifiez régulièrement le cache avec `hash -l` pour éviter d'utiliser des chemins obsolètes.
-- Si vous rencontrez des problèmes avec des commandes non trouvées, il peut être utile de réinitialiser le cache avec `hash -r`.
+- Vérifiez régulièrement le cache avec `hash` pour éviter d'utiliser des chemins obsolètes.
+- Si vous avez des commandes personnalisées, assurez-vous qu'elles sont ajoutées au cache pour un accès rapide.

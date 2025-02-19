@@ -1,70 +1,66 @@
-# [Linux] Bash if uso: Conditional execution in scripts
+# [Unix] C Shell (csh) if: Conditional execution of commands
 
 ## Overview
-The `if` command in Bash is used to evaluate conditional expressions and execute commands based on the result. It allows scripts to make decisions, enabling different paths of execution depending on whether a condition is true or false.
+The `if` command in C Shell (csh) is used to execute commands based on the evaluation of a condition. It allows scripts to make decisions and perform different actions depending on whether certain conditions are true or false.
 
 ## Usage
 The basic syntax of the `if` command is as follows:
 
-```bash
-if [ condition ]; then
-    # commands to execute if condition is true
+```csh
+if (condition) then
+    command1
 else
-    # commands to execute if condition is false
-fi
+    command2
+endif
 ```
 
 ## Common Options
-- `-e`: Checks if a file exists.
-- `-d`: Checks if a directory exists.
-- `-f`: Checks if a file is a regular file.
-- `-z`: Checks if the length of a string is zero.
-- `-n`: Checks if the length of a string is non-zero.
-- `==`: Compares two strings for equality.
-- `!=`: Compares two strings for inequality.
+- `then`: Indicates the start of the commands to be executed if the condition is true.
+- `else`: Specifies the commands to be executed if the condition is false.
+- `endif`: Marks the end of the `if` statement.
 
 ## Common Examples
 
-### Example 1: Check if a file exists
-```bash
-if [ -e "myfile.txt" ]; then
+### Example 1: Simple Condition Check
+Check if a file exists and print a message accordingly.
+
+```csh
+if (-e myfile.txt) then
     echo "File exists."
 else
     echo "File does not exist."
-fi
+endif
 ```
 
-### Example 2: Check if a directory exists
-```bash
-if [ -d "/mydirectory" ]; then
-    echo "Directory exists."
+### Example 2: Numeric Comparison
+Compare two numbers and print which one is greater.
+
+```csh
+set num1 = 10
+set num2 = 20
+
+if ($num1 > $num2) then
+    echo "$num1 is greater than $num2."
 else
-    echo "Directory does not exist."
-fi
+    echo "$num2 is greater than or equal to $num1."
+endif
 ```
 
-### Example 3: String comparison
-```bash
-name="Alice"
-if [ "$name" == "Alice" ]; then
-    echo "Hello, Alice!"
-else
-    echo "Who are you?"
-fi
-```
+### Example 3: String Comparison
+Check if two strings are equal.
 
-### Example 4: Check if a variable is empty
-```bash
-var=""
-if [ -z "$var" ]; then
-    echo "Variable is empty."
+```csh
+set str1 = "hello"
+set str2 = "world"
+
+if ("$str1" == "$str2") then
+    echo "Strings are equal."
 else
-    echo "Variable is not empty."
-fi
+    echo "Strings are not equal."
+endif
 ```
 
 ## Tips
-- Always use quotes around variables to prevent errors with spaces or special characters.
-- Use `elif` for multiple conditions to avoid deeply nested `if` statements.
-- Indent your commands within `if` blocks for better readability.
-- Remember to close your `if` statements with `fi` to avoid syntax errors.
+- Always ensure that conditions are enclosed in parentheses.
+- Use proper indentation for better readability of nested `if` statements.
+- Remember to use `endif` to close the `if` block; otherwise, you may encounter syntax errors.

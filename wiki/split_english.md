@@ -1,52 +1,45 @@
-# [Linux] Bash split uso: Divide files into smaller pieces
+# [Linux] C Shell (csh) split用法: Split a file into smaller pieces
 
 ## Overview
-The `split` command in Bash is used to divide a large file into smaller, more manageable pieces. This can be particularly useful for processing large datasets or for transferring files that exceed size limits.
+The `split` command in C Shell (csh) is used to divide a large file into smaller, more manageable pieces. This can be particularly useful for processing large datasets or when transferring files that exceed size limits.
 
 ## Usage
 The basic syntax of the `split` command is as follows:
 
-```bash
+```csh
 split [options] [arguments]
 ```
 
 ## Common Options
-- `-l NUM`: Split the file into pieces with a specified number of lines (NUM).
-- `-b SIZE`: Split the file into pieces of a specified size (SIZE), which can include suffixes like `k` for kilobytes or `m` for megabytes.
+- `-b SIZE`: Split the file into pieces of the specified size (e.g., `-b 100k` for 100 kilobytes).
+- `-l LINES`: Split the file into pieces with a specified number of lines.
 - `-d`: Use numeric suffixes instead of alphabetic for the output files.
 - `--additional-suffix=SUFFIX`: Append a specified suffix to the output files.
 
 ## Common Examples
+Here are some practical examples of using the `split` command:
 
-### Split by Number of Lines
-To split a file into pieces of 100 lines each:
+1. **Split a file into 100-line pieces:**
+   ```csh
+   split -l 100 largefile.txt
+   ```
 
-```bash
-split -l 100 myfile.txt
-```
+2. **Split a file into 1MB pieces:**
+   ```csh
+   split -b 1m largefile.txt
+   ```
 
-### Split by File Size
-To split a file into pieces of 1 megabyte each:
+3. **Split a file and use numeric suffixes:**
+   ```csh
+   split -d -l 50 largefile.txt part_
+   ```
 
-```bash
-split -b 1m mylargefile.dat
-```
-
-### Use Numeric Suffixes
-To split a file and use numeric suffixes for the output files:
-
-```bash
-split -d -l 50 myfile.txt
-```
-
-### Custom Suffix
-To split a file and add a custom suffix to the output files:
-
-```bash
-split --additional-suffix=.part -l 20 myfile.txt output_prefix_
-```
+4. **Split a file and add a custom suffix:**
+   ```csh
+   split --additional-suffix=.txt -l 10 largefile.txt part_
+   ```
 
 ## Tips
-- Always check the output files to ensure they have been split as expected.
-- Use the `-n` option to specify the number of output files you want, which can be helpful for evenly distributing data.
-- When working with binary files, be cautious as splitting may corrupt the file if not handled properly.
+- Always check the size of the output files after splitting to ensure they meet your needs.
+- Use the `-d` option if you prefer numeric suffixes, which can be easier to sort and manage.
+- Consider using a combination of options to tailor the split operation to your specific requirements.

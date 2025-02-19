@@ -1,42 +1,42 @@
-# [Linux] Bash source 使用法: 讀取和執行檔案中的命令
+# [台灣] C Shell (csh) source 使用法: 執行腳本檔案
 
 ## Overview
-`source` 命令用於在當前的 shell 環境中讀取和執行指定檔案中的命令。這意味著它可以用來載入環境變數或函數，而不需要啟動新的 shell 實例。
+`source` 命令用於在當前的 shell 環境中執行一個腳本檔案。這意味著腳本中的變數和函數會被加載到當前的 shell 環境中，而不是在一個新的子 shell 中執行。
 
 ## Usage
 基本語法如下：
-```bash
+```csh
 source [options] [arguments]
 ```
 
 ## Common Options
-- `-h`, `--help`: 顯示幫助信息。
-- `-V`, `--version`: 顯示版本信息。
+- `-q`：靜默模式，不顯示任何錯誤訊息。
+- `-v`：顯示執行的命令，方便除錯。
 
 ## Common Examples
 以下是一些常見的使用範例：
 
-1. 讀取並執行一個名為 `script.sh` 的檔案：
-   ```bash
-   source script.sh
+1. 執行一個名為 `myscript.csh` 的腳本：
+   ```csh
+   source myscript.csh
    ```
 
-2. 使用 `.` 符號來達到相同效果：
-   ```bash
-   . script.sh
+2. 使用靜默模式執行腳本：
+   ```csh
+   source -q myscript.csh
    ```
 
-3. 讀取一個包含環境變數的檔案，例如 `env.sh`：
-   ```bash
-   source env.sh
+3. 在執行腳本時顯示命令：
+   ```csh
+   source -v myscript.csh
    ```
 
-4. 在 `.bashrc` 中載入修改後的環境變數：
-   ```bash
-   source ~/.bashrc
+4. 加載環境變數設定檔：
+   ```csh
+   source ~/.cshrc
    ```
 
 ## Tips
-- 確保檔案具有執行權限，否則可能會遇到權限錯誤。
-- 使用 `source` 可以避免創建新的 shell 實例，這對於環境變數的即時更新特別有用。
-- 在編輯 `.bashrc` 或 `.bash_profile` 後，記得使用 `source` 來立即應用變更。
+- 確保腳本檔案具有執行權限，這樣可以避免執行時出現權限錯誤。
+- 使用 `-v` 選項來除錯，這樣可以看到腳本中每個命令的執行過程。
+- 在腳本中使用 `set` 命令來定義變數，這樣在當前 shell 環境中可以直接使用這些變數。

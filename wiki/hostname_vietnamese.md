@@ -1,48 +1,49 @@
-# [Linux] Bash hostname cách sử dụng: [hiển thị tên máy tính]
+# [Hệ điều hành] C Shell (csh) hostname: Lấy tên máy chủ
 
-## Tổng quan
-Lệnh `hostname` trong Bash được sử dụng để hiển thị hoặc thay đổi tên máy tính của hệ thống. Tên máy tính là một phần quan trọng trong việc xác định và quản lý các thiết bị trong mạng.
+## Overview
+Lệnh `hostname` trong C Shell (csh) được sử dụng để hiển thị hoặc thiết lập tên máy chủ của hệ thống. Tên máy chủ là một phần quan trọng trong việc xác định và quản lý các máy tính trong một mạng.
 
-## Cách sử dụng
+## Usage
 Cú pháp cơ bản của lệnh `hostname` như sau:
 
-```bash
-hostname [tùy chọn] [tham số]
+```csh
+hostname [options] [arguments]
 ```
 
-## Tùy chọn phổ biến
-- `-s`: Hiển thị tên máy tính ngắn.
-- `-f`: Hiển thị tên máy tính đầy đủ (FQDN).
-- `-i`: Hiển thị địa chỉ IP của máy tính.
-- `-d`: Hiển thị tên miền của máy tính.
+## Common Options
+- `-s`: Hiển thị tên máy chủ ngắn (hostname).
+- `-f`: Hiển thị tên máy chủ đầy đủ (fully qualified domain name - FQDN).
+- `-i`: Hiển thị địa chỉ IP của máy chủ.
 
-## Ví dụ phổ biến
-1. Hiển thị tên máy tính hiện tại:
-   ```bash
+## Common Examples
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `hostname`:
+
+1. Hiển thị tên máy chủ hiện tại:
+   ```csh
    hostname
    ```
 
-2. Hiển thị tên máy tính ngắn:
-   ```bash
+2. Hiển thị tên máy chủ ngắn:
+   ```csh
    hostname -s
    ```
 
-3. Hiển thị tên máy tính đầy đủ:
-   ```bash
+3. Hiển thị tên máy chủ đầy đủ:
+   ```csh
    hostname -f
    ```
 
-4. Hiển thị địa chỉ IP của máy tính:
-   ```bash
+4. Hiển thị địa chỉ IP của máy chủ:
+   ```csh
    hostname -i
    ```
 
-5. Đặt tên máy tính mới:
-   ```bash
-   sudo hostname new-name
+5. Thiết lập tên máy chủ mới:
+   ```csh
+   hostname new-hostname
    ```
 
-## Mẹo
-- Khi thay đổi tên máy tính, hãy đảm bảo rằng tên mới không trùng với tên của bất kỳ thiết bị nào khác trong mạng.
-- Sau khi thay đổi tên máy tính, bạn có thể cần khởi động lại hệ thống hoặc dịch vụ mạng để thay đổi có hiệu lực.
-- Sử dụng lệnh `hostnamectl` trên các hệ thống sử dụng systemd để quản lý tên máy tính một cách dễ dàng hơn.
+## Tips
+- Để thay đổi tên máy chủ, bạn cần quyền quản trị (root).
+- Sau khi thay đổi tên máy chủ, bạn có thể cần khởi động lại hệ thống để thay đổi có hiệu lực.
+- Kiểm tra tên máy chủ thường xuyên có thể giúp bạn xác định vị trí của máy trong mạng một cách dễ dàng hơn.

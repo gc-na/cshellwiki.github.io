@@ -1,46 +1,42 @@
-# [Linux] Bash localedef Kullanımı: Yerel dil tanımları oluşturma
+# [Linux] C Shell (csh) localedef Kullanımı: Yerelleştirme verisi oluşturma
 
 ## Genel Bakış
-`localedef` komutu, yerel dil tanımları oluşturmak ve güncellemek için kullanılır. Bu komut, sistemdeki yerel ayarları yapılandırmak için gerekli olan dil ve bölge bilgilerini tanımlar.
+`localedef` komutu, yerelleştirme verilerini oluşturmak için kullanılır. Bu komut, belirli bir dil ve yerel ayar için gerekli olan dil dosyalarını ve karakter setlerini tanımlar.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-
 ```bash
 localedef [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-i, --input` : Girdi dosyasının adını belirtir.
-- `-c, --no-archive` : Yerel tanımı arşivlemeyi devre dışı bırakır.
-- `-v, --verbose` : Ayrıntılı çıktı sağlar.
+- `-i, --input` : Girdi dosyasını belirtir.
+- `-c, --no-archive` : Arşiv dosyası oluşturmaz.
 - `-f, --charmap` : Kullanılacak karakter haritasını belirtir.
+- `-v, --verbose` : Ayrıntılı çıktı verir.
 
 ## Yaygın Örnekler
-Aşağıda `localedef` komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda `localedef` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-### Örnek 1: Yeni bir yerel tanım oluşturma
-Aşağıdaki komut, Türkçe yerel ayarları için bir tanım oluşturur.
-
+### Örnek 1: Yerelleştirme verisi oluşturma
 ```bash
 localedef -i tr_TR -f UTF-8 tr_TR.UTF-8
 ```
+Bu komut, Türkçe (Türkiye) için UTF-8 karakter seti ile yerelleştirme verisi oluşturur.
 
-### Örnek 2: Mevcut bir yerel tanımı güncelleme
-Mevcut bir yerel tanımını güncellemek için:
-
+### Örnek 2: Karakter haritası ile yerelleştirme
 ```bash
-localedef -i en_US -f UTF-8 en_US.UTF-8
+localedef -i en_US -f ISO-8859-1 en_US.ISO-8859-1
 ```
+Bu komut, Amerikan İngilizcesi için ISO-8859-1 karakter seti ile yerelleştirme verisi oluşturur.
 
-### Örnek 3: Ayrıntılı çıktı ile yerel tanım oluşturma
-Ayrıntılı bilgi almak için `-v` seçeneği ile kullanabilirsiniz:
-
+### Örnek 3: Ayrıntılı çıktı ile yerelleştirme
 ```bash
-localedef -i fr_FR -f UTF-8 -v fr_FR.UTF-8
+localedef -i fr_FR -f UTF-8 fr_FR.UTF-8 -v
 ```
+Bu komut, Fransızca (Fransa) için UTF-8 karakter seti ile yerelleştirme verisi oluşturur ve ayrıntılı bilgi verir.
 
 ## İpuçları
-- `localedef` komutunu kullanmadan önce, gerekli dil ve karakter haritasının sistemde mevcut olduğundan emin olun.
-- Yerel ayarları oluşturduktan sonra, değişikliklerin etkili olması için terminali yeniden başlatmayı unutmayın.
+- `localedef` kullanmadan önce, gerekli dil ve karakter seti dosyalarının sistemde mevcut olduğundan emin olun.
+- Yerelleştirme verilerini oluşturduktan sonra, sistemdeki yerelleştirme ayarlarını güncellemek için `locale-gen` komutunu kullanabilirsiniz.
 - Hatalarla karşılaşırsanız, `-v` seçeneği ile daha fazla bilgi alarak sorunu çözmeye çalışın.

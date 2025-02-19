@@ -1,50 +1,40 @@
-# [Linux] Bash last Befehl: Zeigt die letzten Anmeldungen an
+# [Linux] C Shell (csh) last Befehl: Zeigt die letzten Anmeldungen an
 
 ## Übersicht
-Der Befehl `last` zeigt eine Liste der letzten Benutzeranmeldungen auf einem System an. Er liest die Datei `/var/log/wtmp`, um Informationen über Anmeldungen, Abmeldungen und Systemstarts bereitzustellen.
+Der `last` Befehl zeigt eine Liste der letzten Anmeldungen von Benutzern auf dem System an. Er nutzt die Datei `/var/log/wtmp`, um Informationen über Anmeldungen, Abmeldungen und Systemstarts bereitzustellen.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```
 last [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-a`: Zeigt die Hostnamen der Benutzer an.
-- `-n [anzahl]`: Gibt die Anzahl der letzten Anmeldungen an, die angezeigt werden sollen.
-- `-x`: Zeigt auch Systemstarts und -abschaltungen an.
+- `-n [anzahl]`: Gibt die letzten `anzahl` Anmeldungen aus.
 - `-R`: Unterdrückt die Anzeige von Hostnamen.
+- `-f [datei]`: Gibt eine alternative wtmp-Datei an, um die Anmeldungen zu lesen.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung des `last` Befehls:
+Um die letzten 10 Anmeldungen anzuzeigen, verwenden Sie:
 
-1. **Alle letzten Anmeldungen anzeigen:**
-   ```bash
-   last
-   ```
+```bash
+last -n 10
+```
 
-2. **Die letzten 5 Anmeldungen anzeigen:**
-   ```bash
-   last -n 5
-   ```
+Um die letzten Anmeldungen ohne Hostnamen anzuzeigen, verwenden Sie:
 
-3. **Anmeldungen mit Hostnamen anzeigen:**
-   ```bash
-   last -a
-   ```
+```bash
+last -R
+```
 
-4. **Systemstarts und -abschaltungen anzeigen:**
-   ```bash
-   last -x
-   ```
+Um Anmeldungen aus einer bestimmten wtmp-Datei anzuzeigen, verwenden Sie:
 
-5. **Anmeldungen ohne Hostnamen anzeigen:**
-   ```bash
-   last -R
-   ```
+```bash
+last -f /pfad/zur/wtmp
+```
 
 ## Tipps
-- Verwenden Sie `last -n 10`, um schnell die letzten 10 Anmeldungen zu überprüfen.
-- Kombinieren Sie `last` mit `grep`, um nach einem bestimmten Benutzer zu suchen, z.B. `last | grep username`.
-- Beachten Sie, dass `last` nur Informationen anzeigt, die in der `wtmp`-Datei gespeichert sind. Wenn die Datei gelöscht oder nicht vorhanden ist, zeigt der Befehl keine Ergebnisse an.
+- Nutzen Sie die Option `-n`, um die Ausgabe zu begrenzen und nur die relevantesten Informationen anzuzeigen.
+- Überprüfen Sie regelmäßig die Anmeldungen, um unbefugte Zugriffe zu erkennen.
+- Kombinieren Sie `last` mit anderen Befehlen wie `grep`, um spezifische Benutzeranmeldungen zu filtern.

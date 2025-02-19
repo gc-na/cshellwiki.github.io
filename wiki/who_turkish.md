@@ -1,47 +1,52 @@
-# [Linux] Bash who Kullanımı: Kullanıcı oturumlarını görüntüleme
+# [Linux] C Shell (csh) who Kullanımı: Kullanıcı bilgilerini görüntüler
 
-## Genel Bakış
-`who` komutu, sistemde oturum açmış olan kullanıcıların listesini görüntülemek için kullanılır. Bu komut, kullanıcı adı, oturum açma zamanı ve terminal bilgileri gibi detayları sağlar.
+## Overview
+`who` komutu, sistemde oturum açmış olan kullanıcıların listesini gösterir. Bu komut, kullanıcı adı, oturum açma zamanı ve terminal bilgileri gibi detayları sağlar.
 
-## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
-```bash
-who [seçenekler] [argümanlar]
+## Usage
+Temel sözdizimi şu şekildedir:
+```
+who [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-a`: Tüm bilgileri gösterir, kullanıcıların yanı sıra sistem bilgilerini de içerir.
-- `-b`: Sistemin en son ne zaman yeniden başlatıldığını gösterir.
+## Common Options
+- `-a`: Tüm bilgileri gösterir, yani kullanıcılar hakkında daha fazla detay sunar.
+- `-b`: Sistemin en son yeniden başlatıldığı zamanı gösterir.
 - `-q`: Sadece kullanıcı adlarını ve toplam kullanıcı sayısını gösterir.
-- `--help`: Komut hakkında yardım bilgisi gösterir.
+- `-H`: Başlık satırını gösterir.
 
-## Yaygın Örnekler
-Aşağıda `who` komutunun bazı pratik kullanımları bulunmaktadır:
+## Common Examples
+Aşağıda `who` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. Sistemdeki tüm oturum açmış kullanıcıları görüntüleme:
-   ```bash
+1. Sistemdeki tüm kullanıcıları listeleme:
+   ```csh
    who
    ```
 
-2. Sistemin en son ne zaman yeniden başlatıldığını öğrenme:
-   ```bash
-   who -b
-   ```
-
-3. Sadece kullanıcı adlarını ve toplam sayısını gösterme:
-   ```bash
-   who -q
-   ```
-
-4. Tüm kullanıcı bilgilerini detaylı bir şekilde görüntüleme:
-   ```bash
+2. Tüm bilgileri gösterme:
+   ```csh
    who -a
    ```
 
-## İpuçları
+3. Sistemin en son ne zaman yeniden başlatıldığını öğrenme:
+   ```csh
+   who -b
+   ```
+
+4. Sadece kullanıcı adlarını ve toplam sayısını gösterme:
+   ```csh
+   who -q
+   ```
+
+5. Başlık satırını göstererek kullanıcıları listeleme:
+   ```csh
+   who -H
+   ```
+
+## Tips
 - `who` komutunu sık sık kullanarak sistemdeki aktif kullanıcıları takip edebilirsiniz.
-- Eğer belirli bir kullanıcı hakkında bilgi almak istiyorsanız, `grep` ile birleştirerek filtreleme yapabilirsiniz:
-  ```bash
+- Komutu belirli bir dosya ile kullanarak, kullanıcıların oturum açma bilgilerini daha detaylı inceleyebilirsiniz.
+- `who` komutunu `grep` ile birleştirerek belirli bir kullanıcıyı aramak için kullanabilirsiniz. Örneğin:
+  ```csh
   who | grep kullanıcı_adı
   ```
-- `who` komutunu, sistem yönetimi ve güvenlik denetimleri için düzenli olarak kullanmak iyi bir uygulamadır.

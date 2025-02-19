@@ -1,43 +1,43 @@
-# [Linux] Bash scp użycie: Kopiowanie plików między hostami
+# [Linux] C Shell (csh) scp użycie: Kopiowanie plików między hostami
 
 ## Overview
-Polecenie `scp` (Secure Copy Protocol) służy do bezpiecznego kopiowania plików i katalogów między lokalnym a zdalnym systemem lub między dwoma zdalnymi systemami. Używa protokołu SSH do zapewnienia bezpieczeństwa transferu danych.
+Polecenie `scp` (secure copy) służy do bezpiecznego kopiowania plików między różnymi hostami w sieci. Wykorzystuje protokół SSH do zapewnienia szyfrowania danych podczas transferu.
 
 ## Usage
 Podstawowa składnia polecenia `scp` jest następująca:
 
-```bash
+```csh
 scp [opcje] [źródło] [cel]
 ```
 
 ## Common Options
-- `-r`: Kopiowanie katalogów rekurencyjnie.
-- `-P`: Określenie portu SSH (domyślnie 22).
-- `-i`: Użycie określonego klucza prywatnego do autoryzacji.
-- `-v`: Włączenie trybu szczegółowego, co pozwala na wyświetlenie dodatkowych informacji o transferze.
+- `-r`: Kopiuje katalogi rekurencyjnie.
+- `-P`: Określa port, jeśli nie jest to domyślny port SSH (22).
+- `-i`: Używa określonego klucza prywatnego do uwierzytelnienia.
+- `-v`: Włącza tryb szczegółowy, co pozwala na śledzenie postępu transferu.
 
 ## Common Examples
-1. **Kopiowanie pliku z lokalnego systemu na zdalny:**
-   ```bash
-   scp lokalny_plik.txt użytkownik@zdalny_host:/ścieżka/do/docelowego/
+1. **Kopiowanie pliku z lokalnego systemu na zdalny serwer:**
+   ```csh
+   scp lokalny_plik.txt użytkownik@zdalny_serwer:/ścieżka/do/docelowego/
    ```
 
-2. **Kopiowanie pliku zdalnego do lokalnego systemu:**
-   ```bash
-   scp użytkownik@zdalny_host:/ścieżka/do/zdalnego_pliku.txt /ścieżka/do/lokalnego/
+2. **Kopiowanie pliku ze zdalnego serwera na lokalny system:**
+   ```csh
+   scp użytkownik@zdalny_serwer:/ścieżka/do/zdalnego_pliku.txt /ścieżka/do/lokalnego/
    ```
 
 3. **Kopiowanie katalogu rekurencyjnie:**
-   ```bash
-   scp -r lokalny_katalog/ użytkownik@zdalny_host:/ścieżka/do/docelowego/
+   ```csh
+   scp -r lokalny_katalog użytkownik@zdalny_serwer:/ścieżka/do/docelowego/
    ```
 
-4. **Kopiowanie pliku na zdalny host z określonym portem:**
-   ```bash
-   scp -P 2222 lokalny_plik.txt użytkownik@zdalny_host:/ścieżka/do/docelowego/
+4. **Kopiowanie pliku na zdalny serwer z określonym portem:**
+   ```csh
+   scp -P 2222 lokalny_plik.txt użytkownik@zdalny_serwer:/ścieżka/do/docelowego/
    ```
 
 ## Tips
-- Używaj opcji `-v`, aby uzyskać więcej informacji o transferze, co może pomóc w diagnozowaniu problemów.
-- Zawsze upewnij się, że masz odpowiednie uprawnienia do zapisu w docelowej lokalizacji na zdalnym hoście.
-- Rozważ użycie kluczy SSH zamiast haseł dla większego bezpieczeństwa i wygody.
+- Używaj opcji `-v`, aby uzyskać więcej informacji o procesie transferu, co może pomóc w diagnozowaniu problemów.
+- Zawsze upewnij się, że masz odpowiednie uprawnienia do plików, które chcesz skopiować.
+- Rozważ użycie kluczy SSH do uwierzytelnienia, aby uprościć proces logowania i zwiększyć bezpieczeństwo.

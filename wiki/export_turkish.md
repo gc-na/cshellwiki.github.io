@@ -1,43 +1,43 @@
-# [Linux] Bash export Kullanımı: Ortam Değişkenlerini Ayarlama
+# [Linux] C Shell (csh) export Kullanımı: Ortam Değişkenlerini Ayarlama
 
-## Genel Bakış
-`export` komutu, bir ortam değişkenini tanımlamak ve bu değişkeni alt süreçlere iletmek için kullanılır. Bu, shell oturumu boyunca değişkenlerin erişilebilir olmasını sağlar.
+## Overview
+`export` komutu, C Shell (csh) ortamında değişkenleri tanımlamak ve bu değişkenleri alt süreçlere iletmek için kullanılır. Bu sayede, tanımlanan değişkenler, shell oturumunun dışında da erişilebilir hale gelir.
 
-## Kullanım
+## Usage
 Temel sözdizimi aşağıdaki gibidir:
 
-```bash
-export [seçenekler] [argümanlar]
+```csh
+export [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-p`: Mevcut ortam değişkenlerini listelemek için kullanılır.
-- `VAR=value`: Yeni bir ortam değişkeni tanımlamak için kullanılır.
+## Common Options
+- `-n`: Değişkenin dışa aktarımını iptal eder.
+- `-p`: Dışa aktarılan tüm değişkenleri listeler.
 
-## Yaygın Örnekler
-Aşağıda `export` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+## Common Examples
 
-### 1. Basit bir ortam değişkeni tanımlama
-```bash
-export MY_VAR="Merhaba Dünya"
+### Örnek 1: Basit Değişken Tanımlama
+```csh
+set MY_VAR="Merhaba Dünya"
+export MY_VAR
 ```
+Bu örnekte, `MY_VAR` adlı bir değişken tanımlanır ve dışa aktarılır.
 
-### 2. Ortam değişkenini kontrol etme
-```bash
-echo $MY_VAR
+### Örnek 2: Dışa Aktarılan Değişkeni Kullanma
+```csh
+set MY_VAR="Merhaba"
+export MY_VAR
+csh -c 'echo $MY_VAR'
 ```
+Bu komut, yeni bir C Shell oturumu başlatır ve dışa aktarılan `MY_VAR` değişkenini kullanarak "Merhaba" yazdırır.
 
-### 3. Birden fazla ortam değişkeni tanımlama
-```bash
-export VAR1="Değer1" VAR2="Değer2"
-```
-
-### 4. Ortam değişkenlerini listeleme
-```bash
+### Örnek 3: Dışa Aktarılan Değişkenleri Listeleme
+```csh
 export -p
 ```
+Bu komut, dışa aktarılan tüm değişkenleri listeler.
 
-## İpuçları
-- `export` komutunu kullanarak tanımladığınız değişkenler, yalnızca o shell oturumu ve onun alt süreçleri için geçerlidir.
-- Değişkenlerinizi tanımladıktan sonra, bunları kontrol etmek için `echo` komutunu kullanmayı unutmayın.
-- Ortam değişkenlerini kalıcı hale getirmek istiyorsanız, bunları `~/.bashrc` veya `~/.bash_profile` dosyalarınıza ekleyin.
+## Tips
+- Değişkenlerinizi dışa aktarırken, isimlendirme kurallarına dikkat edin; özel karakterler kullanmaktan kaçının.
+- Dışa aktarılan değişkenlerinizi kontrol etmek için `export -p` komutunu kullanarak mevcut değişkenlerinizi gözden geçirin.
+- Ortam değişkenlerinizi düzenli olarak güncelleyin ve gereksiz değişkenleri temizleyin.

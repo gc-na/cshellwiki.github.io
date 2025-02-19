@@ -1,47 +1,38 @@
-# [Linux] Bash vigr gebruik: Bewerken van systeemconfiguratiebestanden
+# [Linux] C Shell (csh) vigr gebruik: Bewerken van het /etc/hosts-bestand
 
 ## Overzicht
-De `vigr` opdracht is een veilige manier om de `/etc/passwd` en `/etc/group` bestanden te bewerken. Het zorgt ervoor dat de bestanden niet tegelijkertijd door meerdere gebruikers worden gewijzigd, wat kan leiden tot corruptie. `vigr` opent deze bestanden in de standaard teksteditor van de gebruiker, meestal `vi` of `vim`.
+De `vigr`-opdracht wordt gebruikt om het `/etc/passwd`-bestand en het `/etc/group`-bestand veilig te bewerken. Het opent deze bestanden in een teksteditor, waarbij het ervoor zorgt dat de bestandsintegriteit behouden blijft tijdens het bewerken.
 
 ## Gebruik
-De basis syntaxis van de `vigr` opdracht is als volgt:
+De basis syntaxis van de `vigr`-opdracht is als volgt:
 
-```bash
+```csh
 vigr [opties] [bestanden]
 ```
 
 ## Veelvoorkomende Opties
-- `-h`, `--help`: Toont een hulpbericht met informatie over het gebruik van de opdracht.
-- `-s`, `--safe`: Voorkomt dat de editor wordt geopend als er een probleem is met de bestandsstructuur.
-- `-f`, `--file`: Hiermee kunt u een specifiek bestand opgeven om te bewerken in plaats van de standaardbestanden.
+- `-s`: Voer de opdracht uit in een stille modus, zonder extra uitvoer.
+- `-f`: Specificeer een ander bestand dan de standaard `/etc/passwd` of `/etc/group`.
 
 ## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van de `vigr`-opdracht:
 
-1. **Basisgebruik van vigr**:
-   Om het `/etc/passwd` bestand te bewerken, gebruik je gewoon:
-   ```bash
+1. **Bewerken van het passwd-bestand**:
+   ```csh
    vigr
    ```
 
-2. **Bewerken van het `/etc/group` bestand**:
-   Om het `/etc/group` bestand te bewerken, kun je het volgende commando gebruiken:
-   ```bash
-   vigr /etc/group
+2. **Bewerken van het group-bestand**:
+   ```csh
+   vigr -f /etc/group
    ```
 
-3. **Gebruik van de veilige modus**:
-   Als je wilt zorgen dat er geen problemen zijn met de bestandsstructuur, gebruik dan de veilige modus:
-   ```bash
-   vigr -s
-   ```
-
-4. **Specifiek bestand bewerken**:
-   Om een ander bestand te bewerken, bijvoorbeeld een aangepaste configuratie, gebruik je:
-   ```bash
-   vigr -f /pad/naar/jouw/bestand
+3. **Bewerken van een specifiek passwd-bestand**:
+   ```csh
+   vigr -f /path/to/custom_passwd
    ```
 
 ## Tips
-- Zorg ervoor dat je een back-up maakt van belangrijke configuratiebestanden voordat je deze bewerkt.
-- Leer de basiscommando's van `vi` of `vim`, aangezien `vigr` deze editors gebruikt.
-- Gebruik de veilige modus als je niet zeker bent van de integriteit van het bestand dat je wilt bewerken.
+- Zorg ervoor dat je voldoende rechten hebt om de bestanden te bewerken, meestal zijn root-rechten vereist.
+- Gebruik de `-s` optie als je geen extra uitvoer wilt zien tijdens het bewerken.
+- Maak altijd een back-up van belangrijke configuratiebestanden voordat je wijzigingen aanbrengt.

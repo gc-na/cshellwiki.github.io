@@ -1,59 +1,61 @@
-# [Linux] Bash @ echo: Print text to the terminal
+# [Unix] C Shell (csh) @ Usage: Execute arithmetic expressions
 
 ## Overview
-The `echo` command is used in Bash to display a line of text or a variable value in the terminal. It is a simple yet powerful command that helps in providing feedback or outputting information to the user.
+The `@` command in C Shell (csh) is used to perform arithmetic operations and assign the result to a variable. It allows users to execute simple mathematical calculations directly in the shell environment.
 
 ## Usage
-The basic syntax of the `echo` command is as follows:
+The basic syntax of the `@` command is as follows:
 
-```bash
-echo [options] [string...]
+```csh
+@ variable = expression
 ```
 
 ## Common Options
-- `-n`: Do not output the trailing newline.
-- `-e`: Enable interpretation of backslash escapes (e.g., `\n` for newline, `\t` for tab).
-- `-E`: Disable interpretation of backslash escapes (this is the default behavior).
+The `@` command does not have specific options, but it supports various arithmetic operators such as:
+- `+` : Addition
+- `-` : Subtraction
+- `*` : Multiplication
+- `/` : Division
+- `%` : Modulus
 
 ## Common Examples
-Here are some practical examples of using the `echo` command:
 
-1. **Basic usage:**
-   ```bash
-   echo "Hello, World!"
-   ```
-   This command will output: `Hello, World!`
+### Example 1: Basic Addition
+```csh
+@ sum = 5 + 3
+echo $sum
+```
+This will output `8`, as it adds 5 and 3.
 
-2. **Using variables:**
-   ```bash
-   name="Alice"
-   echo "Hello, $name!"
-   ```
-   This will output: `Hello, Alice!`
+### Example 2: Subtraction
+```csh
+@ difference = 10 - 4
+echo $difference
+```
+This will output `6`, subtracting 4 from 10.
 
-3. **Suppressing the newline:**
-   ```bash
-   echo -n "This will not end with a newline"
-   ```
-   The output will be: `This will not end with a newline` (the cursor remains on the same line).
+### Example 3: Multiplication
+```csh
+@ product = 7 * 6
+echo $product
+```
+This will output `42`, multiplying 7 by 6.
 
-4. **Using escape sequences:**
-   ```bash
-   echo -e "Line 1\nLine 2"
-   ```
-   This will output:
-   ```
-   Line 1
-   Line 2
-   ```
+### Example 4: Division
+```csh
+@ quotient = 20 / 4
+echo $quotient
+```
+This will output `5`, dividing 20 by 4.
 
-5. **Displaying special characters:**
-   ```bash
-   echo "A tab character: \t and a newline character: \n"
-   ```
-   The output will show the tab and newline characters as intended.
+### Example 5: Modulus
+```csh
+@ remainder = 10 % 3
+echo $remainder
+```
+This will output `1`, showing the remainder of 10 divided by 3.
 
 ## Tips
-- Use `echo -e` when you need to format your output with special characters.
-- Always quote your strings to avoid unexpected behavior, especially when they contain spaces or special characters.
-- For debugging, `echo` can be a quick way to check variable values or the flow of a script.
+- Always ensure that the variable you are assigning the result to is initialized before using it in calculations.
+- Use parentheses to control the order of operations, just like in standard arithmetic.
+- Remember that the `@` command only works with integer arithmetic; for floating-point operations, consider using other tools or languages.

@@ -1,44 +1,44 @@
-# [Linux] Bash bunzip2 Kullanımı: Bzip2 ile sıkıştırılmış dosyaları açma
+# [Linux] C Shell (csh) bunzip2 Kullanımı: Bzip2 ile sıkıştırılmış dosyaları açar
 
-## Genel Bakış
-`bunzip2` komutu, Bzip2 formatında sıkıştırılmış dosyaları açmak için kullanılır. Bu komut, sıkıştırılmış dosyaları orijinal hallerine geri döndürerek kullanıcıların dosyaları kullanabilmesine olanak tanır.
+## Overview
+`bunzip2` komutu, Bzip2 formatında sıkıştırılmış dosyaları açmak için kullanılır. Bu komut, sıkıştırılmış dosyaların içeriğini orijinal haline geri döndürerek kullanıcıların dosyaları erişilebilir hale getirmesine olanak tanır.
 
-## Kullanım
-Temel komut yapısı aşağıdaki gibidir:
+## Usage
+Temel sözdizimi şu şekildedir:
 
+```bash
+bunzip2 [options] [arguments]
 ```
-bunzip2 [seçenekler] [argümanlar]
-```
 
-## Yaygın Seçenekler
-- `-k`: Sıkıştırılmış dosyayı açarken orijinal dosyayı korur.
-- `-f`: Mevcut dosyayı zorla üzerine yazar.
-- `-v`: Ayrıntılı çıktı verir.
+## Common Options
+- `-k`: Sıkıştırılmış dosyayı açarken orijinal dosyayı silmez.
+- `-f`: Zorla açma işlemi yapar, mevcut dosyaları üzerine yazar.
+- `-v`: Ayrıntılı bilgi verir, işlem sırasında hangi dosyaların açıldığını gösterir.
 
-## Yaygın Örnekler
-Aşağıda `bunzip2` komutunun bazı pratik örnekleri verilmiştir:
+## Common Examples
+Aşağıda `bunzip2` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
-1. Basit bir Bzip2 dosyasını açma:
+1. Basit bir Bzip2 dosyasını açmak:
    ```bash
    bunzip2 dosya.bz2
    ```
 
-2. Orijinal dosyayı koruyarak açma:
+2. Orijinal dosyayı koruyarak açmak:
    ```bash
    bunzip2 -k dosya.bz2
    ```
 
-3. Mevcut dosyayı zorla üzerine yazma:
+3. Mevcut dosyaları üzerine yazarak açmak:
    ```bash
    bunzip2 -f dosya.bz2
    ```
 
-4. Ayrıntılı çıktı ile dosyayı açma:
+4. Ayrıntılı bilgi ile açmak:
    ```bash
    bunzip2 -v dosya.bz2
    ```
 
-## İpuçları
-- Sıkıştırılmış dosyalarınızı açmadan önce yedek almak iyi bir uygulamadır.
-- `-k` seçeneğini kullanarak orijinal dosyayı kaybetmemek için dikkatli olun.
-- `bunzip2` komutunu sıkıştırılmış dosyalarla çalışırken, dosya uzantısına dikkat edin; genellikle `.bz2` uzantısına sahip olmalıdır.
+## Tips
+- Sıkıştırılmış dosyaların yedeğini almak için `-k` seçeneğini kullanarak orijinal dosyayı koruyabilirsiniz.
+- Eğer dosya açma işlemi sırasında hata alıyorsanız, `-f` seçeneği ile mevcut dosyaların üzerine yazmayı deneyebilirsiniz.
+- İşlem sırasında hangi dosyaların açıldığını görmek için `-v` seçeneğini kullanmak faydalı olabilir.

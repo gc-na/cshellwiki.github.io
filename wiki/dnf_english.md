@@ -1,70 +1,57 @@
-# [Linux] Bash dnf Uso: Package management tool for RPM-based distributions
+# [Linux] C Shell (csh) dnf用法: Package management command
 
 ## Overview
-The `dnf` command is a package manager for RPM-based Linux distributions, such as Fedora and CentOS. It is used to install, update, remove, and manage software packages on your system. `dnf` stands for Dandified YUM and is the next-generation version of the older `yum` package manager.
+The `dnf` command is a package manager for RPM-based distributions, primarily used to install, update, and remove software packages. It is a successor to the `yum` command and provides improved performance and dependency resolution.
 
 ## Usage
-The basic syntax for the `dnf` command is as follows:
+The basic syntax of the `dnf` command is as follows:
 
 ```bash
 dnf [options] [arguments]
 ```
 
 ## Common Options
-- `install`: Installs a package.
-- `remove`: Uninstalls a package.
+- `install`: Installs a specified package.
+- `remove`: Removes a specified package.
 - `update`: Updates all installed packages to their latest versions.
 - `search`: Searches for a package by name or description.
-- `info`: Displays detailed information about a package.
-- `list`: Lists all available or installed packages.
-- `clean`: Cleans up cached files to free up space.
+- `info`: Displays detailed information about a specified package.
+- `list`: Lists all available packages or installed packages.
 
 ## Common Examples
 Here are some practical examples of using the `dnf` command:
 
-### Installing a Package
-To install a package, use the `install` option:
+- **Install a package:**
+  ```bash
+  dnf install vim
+  ```
 
-```bash
-dnf install package_name
-```
+- **Remove a package:**
+  ```bash
+  dnf remove vim
+  ```
 
-### Removing a Package
-To remove an installed package, use the `remove` option:
+- **Update all installed packages:**
+  ```bash
+  dnf update
+  ```
 
-```bash
-dnf remove package_name
-```
+- **Search for a package:**
+  ```bash
+  dnf search httpd
+  ```
 
-### Updating Packages
-To update all installed packages to their latest versions, run:
+- **Get information about a package:**
+  ```bash
+  dnf info httpd
+  ```
 
-```bash
-dnf update
-```
-
-### Searching for a Package
-To search for a specific package, use the `search` option:
-
-```bash
-dnf search package_name
-```
-
-### Displaying Package Information
-To get detailed information about a package, use the `info` option:
-
-```bash
-dnf info package_name
-```
-
-### Listing Installed Packages
-To list all installed packages, use:
-
-```bash
-dnf list installed
-```
+- **List all installed packages:**
+  ```bash
+  dnf list installed
+  ```
 
 ## Tips
-- Always run `dnf update` regularly to keep your system secure and up to date.
-- Use `dnf clean all` to remove cached files and free up space if you encounter issues with package installations.
-- Check for specific package versions by appending the version number to the package name in the install command, e.g., `dnf install package_name-1.0.0`.
+- Always run `dnf update` regularly to keep your system up to date with the latest security patches and features.
+- Use `dnf search` to find packages if you are unsure of the exact name.
+- Consider using `dnf history` to view and manage your package transaction history.

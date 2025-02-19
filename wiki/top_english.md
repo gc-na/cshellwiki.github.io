@@ -1,53 +1,52 @@
-# [Linux] Bash top Usage: Monitor system processes in real-time
+# [Linux] C Shell (csh) top Usage: Monitor system processes in real-time
 
 ## Overview
-The `top` command is a powerful utility in Linux that provides a real-time view of the system's resource usage, including CPU and memory consumption. It displays a dynamic list of processes currently running on the system, allowing users to monitor system performance and manage processes effectively.
+The `top` command is a powerful utility that provides a real-time view of the system's processes. It displays information about CPU usage, memory usage, and the processes currently running on the system, allowing users to monitor system performance and resource utilization.
 
 ## Usage
 The basic syntax of the `top` command is as follows:
 
-```bash
-top [options]
+```csh
+top [options] [arguments]
 ```
 
 ## Common Options
 Here are some common options you can use with the `top` command:
 
-- `-d <seconds>`: Set the delay between updates (default is 3 seconds).
-- `-n <number>`: Specify the number of iterations to display before exiting.
-- `-u <username>`: Show processes for a specific user.
+- `-d <seconds>`: Set the delay between updates (in seconds).
 - `-p <pid>`: Monitor a specific process by its process ID (PID).
-- `-b`: Run in batch mode, useful for logging output.
+- `-u <user>`: Show processes for a specific user.
+- `-n <number>`: Specify the number of updates to display before exiting.
 
 ## Common Examples
 
-1. **Basic Usage**: Launch `top` to see the current processes.
-   ```bash
+1. **Run top with default settings**:
+   ```csh
    top
    ```
 
-2. **Change Update Interval**: Set the update interval to 5 seconds.
-   ```bash
+2. **Update every 5 seconds**:
+   ```csh
    top -d 5
    ```
 
-3. **Limit Output to a User**: Show processes for a specific user, e.g., `john`.
-   ```bash
-   top -u john
-   ```
-
-4. **Monitor a Specific Process**: Track a process with PID 1234.
-   ```bash
+3. **Monitor a specific process (e.g., PID 1234)**:
+   ```csh
    top -p 1234
    ```
 
-5. **Batch Mode for Logging**: Output the process list to a file every 10 seconds for 5 iterations.
-   ```bash
-   top -b -d 10 -n 5 > top_output.txt
+4. **Display processes for a specific user (e.g., user 'john')**:
+   ```csh
+   top -u john
+   ```
+
+5. **Limit the output to 10 updates**:
+   ```csh
+   top -n 10
    ```
 
 ## Tips
-- Use the `h` key while in `top` to access help and see a list of interactive commands.
-- Press `q` to exit `top` quickly.
-- You can sort processes by CPU or memory usage by pressing the `P` or `M` keys, respectively, while `top` is running.
-- Consider using `htop`, an enhanced version of `top`, for a more user-friendly interface with additional features.
+- Press `h` while in the `top` interface to view help and learn about interactive commands.
+- Use `k` followed by a PID to kill a process directly from the `top` interface.
+- To sort processes by CPU usage, press `Shift + P`, and for memory usage, press `Shift + M`.
+- Customize the display by pressing `f` to add or remove fields according to your needs.

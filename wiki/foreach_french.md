@@ -1,56 +1,50 @@
-# [Linux] Bash foreach : Exécuter des commandes pour chaque élément d'une liste
+# [Linux] C Shell (csh) foreach : Exécute une commande pour chaque élément d'une liste
 
 ## Overview
-La commande `foreach` est utilisée dans certains shells, comme `csh` et `tcsh`, pour exécuter une série de commandes pour chaque élément d'une liste. Bien que `foreach` ne soit pas une commande Bash native, son équivalent en Bash est souvent réalisé avec une boucle `for`.
+La commande `foreach` dans C Shell (csh) permet d'exécuter une série de commandes pour chaque élément d'une liste. C'est un outil puissant pour automatiser des tâches répétitives en itérant sur des éléments.
 
 ## Usage
 La syntaxe de base de la commande `foreach` est la suivante :
 
-```bash
-foreach variable ( liste )
+```csh
+foreach variable (liste)
     commande
 end
 ```
 
-Cependant, en Bash, vous utiliseriez une syntaxe similaire avec une boucle `for` :
-
-```bash
-for variable in liste; do
-    commande
-done
-```
-
 ## Common Options
-La commande `foreach` en tant que telle n'a pas d'options spécifiques, mais voici quelques éléments à considérer lors de l'utilisation de la boucle `for` en Bash :
+La commande `foreach` n'a pas de nombreuses options, mais voici quelques éléments à considérer :
 
-- `-n` : Exécute la commande sans afficher la sortie.
-- `-v` : Affiche les commandes avant leur exécution.
+- `variable` : Nom de la variable qui prendra la valeur de chaque élément de la liste à chaque itération.
+- `liste` : Une série d'éléments séparés par des espaces ou des parenthèses.
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de `foreach` en Bash avec une boucle `for` :
 
 ### Exemple 1 : Afficher des noms de fichiers
-```bash
-for fichier in *.txt; do
-    echo "Fichier trouvé : $fichier"
-done
+```csh
+foreach file (*.txt)
+    echo $file
+end
 ```
+Cet exemple affiche tous les fichiers avec l'extension `.txt` dans le répertoire courant.
 
-### Exemple 2 : Exécuter une commande sur plusieurs serveurs
-```bash
-for serveur in serveur1 serveur2 serveur3; do
-    ssh $serveur 'uptime'
-done
+### Exemple 2 : Compresser des fichiers
+```csh
+foreach file (*.log)
+    gzip $file
+end
 ```
+Ici, tous les fichiers avec l'extension `.log` sont compressés en utilisant `gzip`.
 
-### Exemple 3 : Calculer le carré des nombres
-```bash
-for i in {1..5}; do
-    echo "Le carré de $i est $((i * i))"
-done
+### Exemple 3 : Exécuter une commande sur plusieurs serveurs
+```csh
+foreach server (server1 server2 server3)
+    ssh $server 'uptime'
+end
 ```
+Cet exemple se connecte à plusieurs serveurs et exécute la commande `uptime` sur chacun d'eux.
 
 ## Tips
-- Utilisez des guillemets autour des variables pour éviter des erreurs avec des noms de fichiers contenant des espaces.
-- Préférez utiliser des boucles `for` en Bash pour plus de flexibilité et de compatibilité.
-- Testez vos commandes dans un environnement sécurisé avant de les exécuter sur des systèmes de production.
+- Utilisez des parenthèses pour définir clairement la liste des éléments.
+- Faites attention aux espaces dans les noms de fichiers ; utilisez des guillemets si nécessaire.
+- Testez vos commandes avec un petit sous-ensemble de données avant de les exécuter sur de grandes listes pour éviter des erreurs coûteuses.

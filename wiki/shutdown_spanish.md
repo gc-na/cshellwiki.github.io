@@ -1,52 +1,46 @@
-# [Linux] Bash shutdown uso: Apagar o reiniciar el sistema
-
-El comando `shutdown` se utiliza para apagar o reiniciar un sistema Linux de manera segura.
+# [Linux] C Shell (csh) shutdown uso: Apagar el sistema
 
 ## Overview
-El comando `shutdown` permite a los usuarios y administradores de sistemas apagar o reiniciar el sistema de forma controlada. Esto es útil para realizar tareas de mantenimiento, actualizaciones o simplemente para apagar el sistema de manera segura.
+El comando `shutdown` en C Shell (csh) se utiliza para apagar o reiniciar el sistema de manera controlada. Permite a los administradores del sistema programar el apagado y notificar a los usuarios sobre la inminente interrupción del servicio.
 
 ## Usage
 La sintaxis básica del comando es la siguiente:
 
 ```
-shutdown [opciones] [tiempo] [mensaje]
+shutdown [opciones] [argumentos]
 ```
 
 ## Common Options
-- `-h` o `--halt`: Apaga el sistema.
-- `-r` o `--reboot`: Reinicia el sistema.
-- `-P` o `--poweroff`: Apaga el sistema y lo apaga completamente.
-- `now`: Indica que la acción debe realizarse de inmediato.
-- `+m`: Indica que la acción se debe realizar después de `m` minutos.
-- `hh:mm`: Especifica una hora exacta para realizar la acción.
+- `-h`: Apagar el sistema.
+- `-r`: Reiniciar el sistema.
+- `-k`: Notificar a los usuarios sin apagar el sistema.
+- `time`: Especifica el tiempo para el apagado (puede ser un número de minutos o un formato como "now" para inmediato).
+- `message`: Mensaje opcional que se enviará a los usuarios antes del apagado.
 
 ## Common Examples
-1. **Apagar el sistema inmediatamente:**
-   ```bash
-   shutdown now
+Aquí hay algunos ejemplos prácticos del uso del comando `shutdown`:
+
+1. Apagar el sistema inmediatamente:
+   ```csh
+   shutdown -h now
    ```
 
-2. **Reiniciar el sistema en 5 minutos:**
-   ```bash
+2. Reiniciar el sistema en 5 minutos:
+   ```csh
    shutdown -r +5
    ```
 
-3. **Apagar el sistema a las 10:30 PM:**
-   ```bash
-   shutdown 22:30
+3. Notificar a los usuarios que el sistema se apagará en 10 minutos:
+   ```csh
+   shutdown -h +10 "El sistema se apagará en 10 minutos. Guarde su trabajo."
    ```
 
-4. **Enviar un mensaje a los usuarios antes de apagar:**
-   ```bash
-   shutdown -h now "El sistema se apagará en 1 minuto. Guarde su trabajo."
-   ```
-
-5. **Reiniciar el sistema de forma inmediata:**
-   ```bash
-   shutdown -r now
+4. Enviar un aviso sin apagar el sistema:
+   ```csh
+   shutdown -k now "Mantenimiento programado, el sistema no se apagará."
    ```
 
 ## Tips
-- Siempre notifique a los usuarios antes de apagar o reiniciar el sistema para evitar la pérdida de datos.
-- Utiliza la opción `-h` si deseas asegurarte de que el sistema se apague completamente.
-- Puedes cancelar un apagado programado usando el comando `shutdown -c`.
+- Siempre notifica a los usuarios antes de un apagado programado para evitar la pérdida de datos.
+- Utiliza el mensaje para proporcionar información clara sobre el motivo del apagado o reinicio.
+- Prueba el comando en un entorno de prueba antes de usarlo en un sistema de producción para familiarizarte con su comportamiento.

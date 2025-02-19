@@ -1,43 +1,42 @@
-# [Linux] Bash batch kullanımı: Arka planda komut çalıştırma
+# [Linux] C Shell (csh) batch Kullanımı: Arka planda komut çalıştırma
 
 ## Genel Bakış
-`batch` komutu, kullanıcıların belirli komutları veya betikleri, sistemin yükü düşük olduğunda arka planda çalıştırmalarını sağlar. Bu, özellikle yoğun zamanlarda sistem kaynaklarını daha verimli kullanmak için yararlıdır.
+`batch` komutu, belirli bir zaman diliminde veya sistemin yükü düşük olduğunda arka planda komutları çalıştırmak için kullanılır. Bu komut, kullanıcıların uzun süren işlemleri sistemin yoğun olmadığı zamanlarda gerçekleştirmelerine olanak tanır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-```bash
+
+```
 batch [options] [arguments]
 ```
 
 ## Yaygın Seçenekler
-- `-f`: Belirtilen dosyayı çalıştırır.
-- `-q`: Çıktıyı bastırır, yalnızca hata mesajlarını gösterir.
-- `-l`: Komutun çalıştırılacağı zaman dilimini belirler.
+- `-l`: Komut dosyasını çalıştırmadan önce kullanıcıdan onay alır.
+- `-f`: Komut dosyasını çalıştırmak için tam yolu belirtir.
+- `-q`: Çalıştırma sırasında herhangi bir çıktı üretmez.
 
 ## Yaygın Örnekler
-Aşağıda `batch` komutunun bazı pratik kullanımları verilmiştir:
+Aşağıda `batch` komutunun bazı pratik örnekleri verilmiştir:
 
-1. Basit bir komut çalıştırma:
-   ```bash
-   echo "Hello, World!" | batch
+1. **Basit bir komut çalıştırma:**
+   ```csh
+   echo "date" | batch
    ```
+   Bu komut, sistemin düşük yükte olduğu bir zamanda tarih bilgisini yazdırır.
 
-2. Bir betik dosyasını arka planda çalıştırma:
-   ```bash
-   batch < my_script.sh
+2. **Komut dosyasını çalıştırma:**
+   ```csh
+   batch < myscript.sh
    ```
+   `myscript.sh` dosyasındaki komutları arka planda çalıştırır.
 
-3. Belirli bir zaman diliminde çalıştırma:
-   ```bash
-   echo "python my_script.py" | batch -l "10:00"
+3. **Belirli bir komutu zamanlamak:**
+   ```csh
+   echo "backup.sh" | batch
    ```
-
-4. Çıktıyı bastırma:
-   ```bash
-   echo "Backup started" | batch -q
-   ```
+   `backup.sh` dosyasını, sistemin uygun olduğu bir zamanda çalıştırır.
 
 ## İpuçları
-- `batch` komutunu kullanmadan önce, çalıştırmak istediğiniz komutların doğru olduğundan emin olun.
-- Komutlarınızın çıktısını kontrol etmek için, `mail` veya `cron` gibi araçları kullanarak hata mesajlarını takip edebilirsiniz.
-- Sistem yükünü izlemek için `top` veya `htop` gibi araçları kullanarak, `batch` komutunu en uygun zamanda çalıştırabilirsiniz.
+- Uzun süren işlemleri planlarken, sistemin yoğun olduğu saatleri göz önünde bulundurun.
+- Komut dosyalarınızı test edin ve hata ayıklayın; böylece `batch` ile çalıştırmadan önce sorun yaşamazsınız.
+- Çalıştırılan komutların çıktısını kontrol etmek için, çıktı dosyalarını gözden geçirin.

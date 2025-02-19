@@ -1,44 +1,42 @@
-# [Linux] Bash batch uso: Ejecutar trabajos en segundo plano
+# [Linux] C Shell (csh) batch uso: Ejecutar trabajos en segundo plano
 
 ## Overview
-El comando `batch` en Bash permite a los usuarios programar trabajos para que se ejecuten en segundo plano cuando la carga del sistema es baja. Esto es útil para tareas que requieren mucho tiempo y que no necesitan ser ejecutadas inmediatamente.
+El comando `batch` en C Shell (csh) permite a los usuarios programar la ejecución de comandos o scripts para que se realicen en un momento posterior, específicamente cuando el sistema tiene recursos disponibles. Esto es útil para tareas que requieren mucho tiempo y que no necesitan ser ejecutadas de inmediato.
 
 ## Usage
 La sintaxis básica del comando `batch` es la siguiente:
 
-```bash
+```csh
 batch [opciones] [argumentos]
 ```
 
 ## Common Options
-- `-f`: Especifica un archivo de script que contiene los comandos a ejecutar.
-- `-l`: Permite listar los trabajos programados.
-- `-q`: Permite ejecutar el comando en modo silencioso, sin mostrar salida.
+- `-l`: Utiliza el entorno de inicio de sesión.
+- `-m`: Envía un correo electrónico al usuario cuando se completa el trabajo.
+- `-q`: Especifica una cola de trabajo.
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso del comando `batch`:
 
-1. **Ejecutar un comando simple:**
-   ```bash
-   echo "echo 'Hola, mundo!'" | batch
+1. **Ejecutar un script en segundo plano:**
+   ```csh
+   echo "sh /ruta/al/script.sh" | batch
    ```
 
-2. **Ejecutar un script desde un archivo:**
-   ```bash
-   batch -f mi_script.sh
+2. **Programar un comando para que se ejecute más tarde:**
+   ```csh
+   echo "tar -czf backup.tar.gz /ruta/al/directorio" | batch
    ```
 
-3. **Listar trabajos programados:**
-   ```bash
-   batch -l
-   ```
-
-4. **Ejecutar un comando en modo silencioso:**
-   ```bash
-   echo "tarea_larga" | batch -q
+3. **Ejecutar múltiples comandos:**
+   ```csh
+   {
+       echo "echo 'Tarea 1 completada'" 
+       echo "echo 'Tarea 2 completada'"
+   } | batch
    ```
 
 ## Tips
-- Asegúrate de que los comandos que deseas ejecutar no requieran interacción del usuario, ya que `batch` no permite la entrada durante la ejecución.
-- Verifica la carga del sistema antes de programar trabajos para asegurarte de que se ejecuten en el momento adecuado.
-- Puedes combinar `batch` con otros comandos de Bash para crear flujos de trabajo más complejos.
+- Asegúrate de que los comandos o scripts que deseas ejecutar estén correctamente escritos y sean accesibles desde el entorno donde se ejecutará `batch`.
+- Utiliza la opción `-m` si deseas recibir notificaciones por correo electrónico sobre la finalización de tus trabajos.
+- Revisa la cola de trabajos si tienes múltiples tareas programadas para evitar conflictos o sobrecarga del sistema.

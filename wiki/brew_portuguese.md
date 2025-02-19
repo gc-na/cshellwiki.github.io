@@ -1,53 +1,53 @@
-# [Linux] Bash brew uso: Gerenciar pacotes de software
+# [Linux] C Shell (csh) brew uso: Gerenciar pacotes de software
 
 ## Overview
-O comando `brew` é uma ferramenta de gerenciamento de pacotes que permite instalar, atualizar e gerenciar software no sistema operacional. É especialmente popular entre desenvolvedores que utilizam macOS, mas também pode ser usado em Linux. O Homebrew facilita a instalação de aplicativos e bibliotecas, simplificando o processo de configuração do ambiente de desenvolvimento.
+O comando `brew` é uma ferramenta de gerenciamento de pacotes que permite instalar, atualizar e gerenciar software no sistema. Ele é amplamente utilizado em sistemas baseados em Unix, facilitando a instalação de aplicativos e bibliotecas.
 
 ## Usage
 A sintaxe básica do comando `brew` é a seguinte:
 
-```bash
+```csh
 brew [opções] [argumentos]
 ```
 
 ## Common Options
 Aqui estão algumas opções comuns do comando `brew`:
 
-- `install`: Instala um pacote de software.
-- `uninstall`: Remove um pacote de software.
+- `install`: Instala um pacote.
 - `update`: Atualiza a lista de pacotes disponíveis.
 - `upgrade`: Atualiza todos os pacotes instalados para suas versões mais recentes.
+- `remove`: Remove um pacote instalado.
 - `list`: Lista todos os pacotes instalados.
 
 ## Common Examples
 Aqui estão alguns exemplos práticos do uso do comando `brew`:
 
-1. **Instalar um pacote**:
-   ```bash
-   brew install git
-   ```
+- Para instalar um pacote, como o `wget`:
+  ```csh
+  brew install wget
+  ```
 
-2. **Remover um pacote**:
-   ```bash
-   brew uninstall git
-   ```
+- Para atualizar a lista de pacotes disponíveis:
+  ```csh
+  brew update
+  ```
 
-3. **Atualizar a lista de pacotes**:
-   ```bash
-   brew update
-   ```
+- Para atualizar todos os pacotes instalados:
+  ```csh
+  brew upgrade
+  ```
 
-4. **Atualizar todos os pacotes instalados**:
-   ```bash
-   brew upgrade
-   ```
+- Para remover um pacote, como o `wget`:
+  ```csh
+  brew remove wget
+  ```
 
-5. **Listar pacotes instalados**:
-   ```bash
-   brew list
-   ```
+- Para listar todos os pacotes instalados:
+  ```csh
+  brew list
+  ```
 
 ## Tips
-- Sempre execute `brew update` antes de instalar novos pacotes para garantir que você tenha as versões mais recentes disponíveis.
-- Utilize `brew search [nome do pacote]` para encontrar pacotes disponíveis antes de instalá-los.
-- Para verificar informações detalhadas sobre um pacote, use `brew info [nome do pacote]`.
+- Sempre execute `brew update` antes de instalar novos pacotes para garantir que você tenha a lista mais recente.
+- Use `brew search [pacote]` para encontrar pacotes disponíveis antes de instalá-los.
+- Considere usar `brew cleanup` periodicamente para remover versões antigas de pacotes e liberar espaço em disco.

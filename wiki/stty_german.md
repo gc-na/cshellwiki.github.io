@@ -1,51 +1,56 @@
-# [Linux] Bash stty Verwendung: Terminaleinstellungen ändern
+# [Linux] C Shell (csh) stty Verwendung: Terminal-Einstellungen ändern
 
 ## Übersicht
-Der `stty`-Befehl wird verwendet, um die Terminaleinstellungen zu ändern und zu konfigurieren. Er ermöglicht es Benutzern, verschiedene Aspekte der Terminalkommunikation zu steuern, wie z.B. Eingabemodi, Ausgabemodi und Steuerzeichen.
+Der Befehl `stty` wird verwendet, um die Terminal-Einstellungen zu ändern und zu konfigurieren. Mit `stty` können Benutzer verschiedene Aspekte der Terminalkommunikation anpassen, wie z. B. Eingabemethoden, Ausgabeformate und Steuerzeichen.
 
 ## Verwendung
-Die grundlegende Syntax des `stty`-Befehls lautet:
+Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```csh
 stty [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-a`: Zeigt alle aktuellen Einstellungen des Terminals an.
-- `-g`: Gibt die aktuellen Einstellungen in einem Format aus, das später wieder verwendet werden kann.
+- `-a`: Zeigt alle aktuellen Terminal-Einstellungen an.
+- `-g`: Gibt die aktuellen Einstellungen in einem kompakten Format aus, das später wieder verwendet werden kann.
 - `erase`: Setzt das Zeichen, das zum Löschen des letzten Zeichens verwendet wird.
-- `kill`: Setzt das Zeichen, das zum Löschen der gesamten Eingabezeile verwendet wird.
 - `intr`: Setzt das Zeichen, das zum Unterbrechen eines laufenden Prozesses verwendet wird.
+- `kill`: Setzt das Zeichen, das zum Löschen der gesamten Zeile verwendet wird.
 
 ## Häufige Beispiele
 Hier sind einige praktische Beispiele für die Verwendung von `stty`:
 
-### Alle Terminaleinstellungen anzeigen
-```bash
-stty -a
-```
+1. **Aktuelle Einstellungen anzeigen:**
+   ```csh
+   stty -a
+   ```
 
-### Eingabemodus ändern (z.B. das Löschen-Zeichen auf Backspace setzen)
-```bash
-stty erase ^H
-```
+2. **Eingabezeichen für das Löschen setzen:**
+   ```csh
+   stty erase ^H
+   ```
 
-### Zeichen für das Unterbrechen eines Prozesses setzen
-```bash
-stty intr ^C
-```
+3. **Eingabezeichen für das Unterbrechen setzen:**
+   ```csh
+   stty intr ^C
+   ```
 
-### Aktuelle Einstellungen in einem wiederverwendbaren Format speichern
-```bash
-stty -g > settings.txt
-```
+4. **Eingabezeichen für das Löschen der Zeile setzen:**
+   ```csh
+   stty kill ^U
+   ```
 
-### Einstellungen aus einer Datei wiederherstellen
-```bash
-stty $(cat settings.txt)
-```
+5. **Einstellungen speichern:**
+   ```csh
+   stty -g > settings.txt
+   ```
+
+6. **Einstellungen wiederherstellen:**
+   ```csh
+   stty `cat settings.txt`
+   ```
 
 ## Tipps
-- Verwenden Sie `stty -a`, um einen Überblick über alle aktuellen Einstellungen zu erhalten, bevor Sie Änderungen vornehmen.
-- Seien Sie vorsichtig beim Ändern von Steuerzeichen, da dies die Eingabe und Interaktion mit dem Terminal beeinflussen kann.
-- Testen Sie Änderungen in einer sicheren Umgebung, um unerwartete Probleme zu vermeiden.
+- Überprüfen Sie regelmäßig Ihre Terminal-Einstellungen mit `stty -a`, um sicherzustellen, dass alles korrekt konfiguriert ist.
+- Seien Sie vorsichtig beim Ändern von Steuerzeichen, da dies Ihre Eingabe- und Ausgabeverhalten erheblich beeinflussen kann.
+- Nutzen Sie die Möglichkeit, Einstellungen in einer Datei zu speichern und später wiederherzustellen, um Ihre bevorzugte Konfiguration schnell wiederherzustellen.

@@ -1,47 +1,46 @@
-# [Linux] Bash sysctl Uso: Configuración de parámetros del kernel
-
-El comando `sysctl` se utiliza para modificar y mostrar parámetros del núcleo de Linux en tiempo de ejecución.
+# [Linux] C Shell (csh) sysctl uso: Modificar parámetros del núcleo
 
 ## Overview
-El comando `sysctl` permite a los administradores del sistema ajustar los parámetros del núcleo de Linux sin necesidad de reiniciar el sistema. Esto es útil para optimizar el rendimiento, la seguridad y el comportamiento del sistema.
+El comando `sysctl` se utiliza para modificar y consultar parámetros del núcleo en sistemas operativos basados en Unix. Permite a los administradores ajustar configuraciones del sistema en tiempo real sin necesidad de reiniciar.
 
 ## Usage
-La sintaxis básica del comando `sysctl` es la siguiente:
+La sintaxis básica del comando es la siguiente:
 
-```bash
+```csh
 sysctl [opciones] [argumentos]
 ```
 
 ## Common Options
 - `-a`: Muestra todos los parámetros del núcleo y sus valores.
-- `-w`: Permite escribir o modificar un parámetro específico.
+- `-w`: Permite escribir o modificar un parámetro del núcleo.
 - `-n`: Muestra solo el valor de un parámetro sin el nombre.
-- `-p`: Carga los parámetros desde un archivo de configuración.
 
 ## Common Examples
-Aquí hay algunos ejemplos prácticos del uso de `sysctl`:
+- Para listar todos los parámetros del núcleo:
 
-1. **Mostrar todos los parámetros del núcleo:**
-   ```bash
-   sysctl -a
-   ```
+```csh
+sysctl -a
+```
 
-2. **Modificar un parámetro específico (por ejemplo, aumentar el número máximo de archivos abiertos):**
-   ```bash
-   sysctl -w fs.file-max=100000
-   ```
+- Para obtener el valor de un parámetro específico, como el tamaño máximo de la cola de conexiones:
 
-3. **Ver el valor de un parámetro específico (por ejemplo, el tamaño máximo de un buffer de red):**
-   ```bash
-   sysctl -n net.core.rmem_max
-   ```
+```csh
+sysctl net.core.somaxconn
+```
 
-4. **Cargar parámetros desde un archivo de configuración:**
-   ```bash
-   sysctl -p /etc/sysctl.conf
-   ```
+- Para modificar el valor de un parámetro, como aumentar el tamaño máximo de la cola de conexiones:
+
+```csh
+sysctl -w net.core.somaxconn=1024
+```
+
+- Para guardar los cambios realizados en los parámetros del núcleo para que persistan después de un reinicio, puedes agregar la configuración en el archivo `/etc/sysctl.conf` y luego aplicar los cambios con:
+
+```csh
+sysctl -p
+```
 
 ## Tips
-- Siempre verifica los cambios realizados con `sysctl -a` para asegurarte de que se aplicaron correctamente.
-- Ten cuidado al modificar parámetros del núcleo, ya que algunos cambios pueden afectar la estabilidad del sistema.
-- Considera hacer una copia de seguridad de la configuración actual antes de realizar cambios significativos.
+- Siempre verifica los valores actuales de los parámetros antes de realizar cambios para evitar configuraciones erróneas.
+- Utiliza `sysctl -n` para obtener solo el valor de un parámetro sin información adicional, lo que facilita la lectura.
+- Recuerda que algunos cambios pueden requerir privilegios de superusuario, así que asegúrate de tener los permisos necesarios.

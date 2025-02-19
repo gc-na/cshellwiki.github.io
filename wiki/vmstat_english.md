@@ -1,59 +1,52 @@
-# [Linux] Bash vmstat Uso equivalente: Monitor system performance
+# [Linux] C Shell (csh) vmstat 用法: Monitor system performance
 
 ## Overview
-The `vmstat` command is a tool used in Unix-like operating systems to report virtual memory statistics. It provides insights into system performance, including memory usage, processes, paging, block I/O, traps, and CPU activity. This information can help system administrators diagnose performance issues and optimize resource usage.
+The `vmstat` command is used to report virtual memory statistics, system processes, and CPU activity. It provides a snapshot of system performance, helping users identify potential bottlenecks and monitor resource usage over time.
 
 ## Usage
 The basic syntax of the `vmstat` command is as follows:
 
-```bash
+```csh
 vmstat [options] [interval] [count]
 ```
 
-- `options`: Various flags to modify the command's behavior.
-- `interval`: The time in seconds between updates.
-- `count`: The number of updates to display.
-
 ## Common Options
 - `-a`: Show active and inactive memory.
-- `-m`: Display memory statistics.
-- `-s`: Provide a summary of memory statistics.
+- `-m`: Display memory statistics for slabs.
+- `-s`: Display memory statistics as a summary.
 - `-d`: Show disk statistics.
-- `-t`: Display the time in the output.
+- `interval`: The time interval (in seconds) between updates.
+- `count`: The number of updates to display.
 
 ## Common Examples
+Here are some practical examples of using the `vmstat` command:
 
-1. **Basic Memory and CPU Statistics**
-   ```bash
-   vmstat
-   ```
-   This command displays a snapshot of memory and CPU usage.
-
-2. **Continuous Monitoring Every 2 Seconds**
-   ```bash
+1. **Basic Usage**: Display system performance statistics every 2 seconds.
+   ```csh
    vmstat 2
    ```
-   This command updates the statistics every 2 seconds until interrupted.
 
-3. **Display Statistics for 5 Intervals of 3 Seconds**
-   ```bash
-   vmstat 3 5
+2. **Show Active and Inactive Memory**: Include active and inactive memory statistics.
+   ```csh
+   vmstat -a 2
    ```
-   This command shows the statistics every 3 seconds for a total of 5 updates.
 
-4. **Show Active and Inactive Memory**
-   ```bash
-   vmstat -a
+3. **Display Memory Statistics Summary**: Get a summary of memory statistics.
+   ```csh
+   vmstat -s
    ```
-   This command provides details on active and inactive memory usage.
 
-5. **Display Disk Statistics**
-   ```bash
-   vmstat -d
+4. **Monitor Disk Statistics**: Show disk I/O statistics.
+   ```csh
+   vmstat -d 2
    ```
-   This command shows statistics related to disk I/O.
+
+5. **Limit Output to Specific Count**: Display performance statistics every 1 second for 5 iterations.
+   ```csh
+   vmstat 1 5
+   ```
 
 ## Tips
-- Use `vmstat` in combination with other monitoring tools like `top` or `iostat` for a comprehensive view of system performance.
-- Regularly monitor your system with `vmstat` to identify trends in resource usage over time.
-- Pay attention to the `si` (swap in) and `so` (swap out) columns; high values may indicate memory pressure and potential performance issues.
+- Use `vmstat` in conjunction with other monitoring tools like `top` or `iostat` for a more comprehensive view of system performance.
+- Monitor `vmstat` output over time to identify trends in resource usage, which can help with capacity planning.
+- Pay attention to the `si` (swap in) and `so` (swap out) columns; high values may indicate memory pressure.

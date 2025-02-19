@@ -1,47 +1,43 @@
-# [Linux] Bash unxz Kullanımı: Sıkıştırılmış dosyaları açar
+# [Linux] C Shell (csh) unxz Kullanımı: Sıkıştırılmış dosyaları açar
 
 ## Genel Bakış
-`unxz` komutu, XZ formatında sıkıştırılmış dosyaları açmak için kullanılan bir araçtır. Bu komut, dosyaların boyutunu küçültmek için XZ algoritmasıyla sıkıştırılmış dosyaları geri yükler ve orijinal dosyayı geri kazanmanızı sağlar.
+`unxz` komutu, `.xz` uzantılı sıkıştırılmış dosyaları açmak için kullanılır. Bu komut, XZ formatında sıkıştırılmış dosyaları orijinal hallerine geri döndürür.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-
-```
+```csh
 unxz [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-k`, `--keep`: Sıkıştırılmış dosyayı silmeden açar.
-- `-f`, `--force`: Var olan dosyaların üzerine yazmayı zorlar.
-- `-v`, `--verbose`: İşlem sırasında ayrıntılı bilgi verir.
+- `-k`: Sıkıştırılmış dosyayı silmeden açar.
+- `-v`: Ayrıntılı çıktı sağlar, işlemin ilerlemesini gösterir.
+- `-f`: Zorla açma işlemi yapar; dosya zaten varsa üzerine yazar.
 
 ## Yaygın Örnekler
 Aşağıda `unxz` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-1. Bir XZ dosyasını açmak için:
-   ```bash
+1. Basit bir sıkıştırılmış dosyayı açma:
+   ```csh
    unxz dosya.xz
    ```
 
-2. Sıkıştırılmış dosyayı silmeden açmak için:
-   ```bash
+2. Sıkıştırılmış dosyayı silmeden açma:
+   ```csh
    unxz -k dosya.xz
    ```
 
-3, Var olan bir dosyanın üzerine yazmak için:
-   ```bash
-   unxz -f dosya.xz
-   ```
-
-4. İşlem sırasında ayrıntılı bilgi almak için:
-   ```bash
+3. Ayrıntılı çıktı ile dosyayı açma:
+   ```csh
    unxz -v dosya.xz
    ```
 
+4. Zorla dosyayı açma:
+   ```csh
+   unxz -f dosya.xz
+   ```
+
 ## İpuçları
-- `unxz` komutunu kullanmadan önce dosyanızın yedeğini almak iyi bir uygulamadır.
-- Sıkıştırılmış dosyaların boyutunu kontrol etmek için `ls -lh` komutunu kullanabilirsiniz.
-- Eğer birden fazla dosyayı aynı anda açmak istiyorsanız, dosya isimlerini boşlukla ayırarak yazabilirsiniz:
-  ```bash
-  unxz dosya1.xz dosya2.xz
-  ```
+- Sıkıştırılmış dosyalarınızı açmadan önce, dosyanın yedeğini almak iyi bir uygulamadır.
+- `-k` seçeneğini kullanarak orijinal dosyayı koruyabilirsiniz, böylece gerektiğinde tekrar kullanabilirsiniz.
+- `-v` seçeneği ile işleminiz hakkında daha fazla bilgi edinebilirsiniz, bu özellikle büyük dosyalarla çalışırken faydalıdır.

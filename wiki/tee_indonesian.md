@@ -1,49 +1,43 @@
-# [Linux] Bash tee Penggunaan: Menyalin dan Mengalirkan Output
+# [Sistem Operasi] C Shell (csh) tee Penggunaan: Menyalin dan Menampilkan Output
 
 ## Overview
-Perintah `tee` dalam Bash digunakan untuk membaca dari input standar dan menulis ke output standar serta satu atau lebih file. Ini memungkinkan pengguna untuk melihat output dari suatu perintah sambil juga menyimpannya ke dalam file.
+Perintah `tee` dalam C Shell (csh) digunakan untuk membaca dari input standar dan menulis ke output standar serta satu atau lebih file. Ini berguna untuk melihat output dari perintah sambil juga menyimpannya ke dalam file.
 
 ## Usage
 Sintaks dasar dari perintah `tee` adalah sebagai berikut:
 
-```bash
+```csh
 tee [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang dapat digunakan dengan `tee`:
-
-- `-a`, `--append`: Menambahkan output ke file yang sudah ada, bukan menimpanya.
-- `-i`, `--ignore-interrupts`: Mengabaikan sinyal interupsi.
-- `-p`, `--output-error`: Menentukan bagaimana kesalahan output ditangani.
+- `-a` : Menambahkan output ke akhir file yang sudah ada, bukan menimpanya.
+- `-i` : Mengabaikan sinyal interrupt (SIGINT) saat menulis ke file.
 
 ## Common Examples
-Berikut adalah beberapa contoh praktis penggunaan `tee`:
+Berikut adalah beberapa contoh penggunaan perintah `tee`:
 
-1. Menyimpan output dari perintah ke dalam file:
-   ```bash
-   ls -l | tee daftar_file.txt
+1. Menyimpan output dari perintah `ls` ke dalam file `daftar.txt`:
+   ```csh
+   ls | tee daftar.txt
    ```
 
-2. Menyimpan output dan juga menampilkannya di layar:
-   ```bash
-   echo "Halo, Dunia!" | tee output.txt
+2. Menyimpan output sambil menampilkan hasil di terminal:
+   ```csh
+   echo "Ini adalah contoh" | tee output.txt
    ```
 
 3. Menambahkan output ke file yang sudah ada:
-   ```bash
-   echo "Baris baru" | tee -a output.txt
+   ```csh
+   echo "Baris tambahan" | tee -a output.txt
    ```
 
-4. Menggunakan `tee` dengan perintah lain dalam pipeline:
-   ```bash
-   ps aux | grep bash | tee bash_processes.txt
+4. Mengabaikan interrupt saat menulis ke file:
+   ```csh
+   cat file.txt | tee -i output.txt
    ```
 
 ## Tips
-- Gunakan opsi `-a` jika Anda ingin menambahkan output ke file yang sudah ada tanpa menghapus isinya.
-- Pertimbangkan untuk menggunakan `tee` dalam skrip untuk mencatat log output sambil tetap menampilkan hasil di terminal.
-- Jika Anda tidak ingin output ditampilkan di layar, Anda bisa mengarahkan output ke `/dev/null`:
-  ```bash
-  command | tee output.txt > /dev/null
-  ```
+- Gunakan opsi `-a` jika Anda ingin menambahkan data ke file yang sudah ada tanpa menghapus isinya.
+- Perhatikan bahwa `tee` akan menampilkan output ke terminal secara default, jadi jika Anda hanya ingin menyimpan tanpa menampilkan, Anda bisa mengarahkan output ke `/dev/null`.
+- Kombinasikan `tee` dengan perintah lain menggunakan pipe (`|`) untuk memproses data secara efisien.

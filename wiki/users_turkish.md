@@ -1,38 +1,37 @@
-# [Linux] Bash kullanıcıları kullanıcıları: Kullanıcı bilgilerini görüntüleme
+# [Linux] C Shell (csh) kullanıcıları <Kullanıcıları listele>: Kullanıcıları görüntüleme komutu
 
 ## Genel Bakış
-`users` komutu, sistemde oturum açmış olan kullanıcıların adlarını listelemek için kullanılır. Bu komut, birden fazla kullanıcı oturumu olduğunda, hangi kullanıcıların aktif olduğunu hızlı bir şekilde görmenizi sağlar.
+`users` komutu, sistemde oturum açmış olan kullanıcıların adlarını listelemek için kullanılır. Bu komut, aktif kullanıcıların kimler olduğunu hızlı bir şekilde görmek isteyen sistem yöneticileri ve kullanıcılar için oldukça faydalıdır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-
-```bash
-users [seçenekler]
+```csh
+users [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-n`: Kullanıcı adlarını yalnızca bir kez gösterir, tekrar eden kullanıcı adlarını filtreler.
-- `-r`: Sistem kullanıcılarını listelemek için kullanılır.
+- `-n`: Kullanıcı adlarını yalnızca bir kez gösterir, yani tekrar eden kullanıcı adlarını filtreler.
+- `-l`: Kullanıcıların tam adlarını ve diğer bilgilerini gösterir.
 
 ## Yaygın Örnekler
-Aşağıda `users` komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda `users` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-1. **Tüm aktif kullanıcıları listeleme:**
-   ```bash
+1. Sistemdeki aktif kullanıcıları listeleme:
+   ```csh
    users
    ```
 
-2. **Tekil kullanıcıları listeleme:**
-   ```bash
+2. Tekil kullanıcı adlarını listeleme:
+   ```csh
    users -n
    ```
 
-3. **Sistem kullanıcılarını listeleme:**
-   ```bash
-   users -r
+3. Kullanıcıların detaylı bilgilerini görüntüleme:
+   ```csh
+   users -l
    ```
 
 ## İpuçları
-- `users` komutunu, sistemdeki kullanıcı etkinliğini izlemek için sık sık kullanabilirsiniz.
-- Eğer kullanıcıların hangi terminalde oturum açtığını görmek isterseniz, `who` komutunu kullanmayı düşünebilirsiniz.
-- `users` komutunu bir betik içinde kullanarak, belirli bir kullanıcı oturumunun aktif olup olmadığını kontrol edebilirsiniz.
+- `users` komutunu sık sık kullanarak sistemdeki aktif kullanıcıları takip edebilirsiniz.
+- Eğer birden fazla terminal açtıysanız, `users` komutunu kullanarak hangi kullanıcıların hangi terminalde oturum açtığını görebilirsiniz.
+- `users` komutunu diğer sistem izleme komutlarıyla birleştirerek daha kapsamlı bilgi alabilirsiniz.

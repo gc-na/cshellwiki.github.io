@@ -1,39 +1,72 @@
-# [Linux] Bash endsw uso: Finaliza um processo em execução
+# [Linux] C Shell (csh) endsw Uso: Finaliza um bloco condicional
 
 ## Overview
-O comando `endsw` é utilizado para finalizar um processo em execução no sistema. Ele permite que os usuários encerrem tarefas que não estão mais respondendo ou que precisam ser interrompidas.
+O comando `endsw` no C Shell (csh) é utilizado para finalizar um bloco de instruções que foi iniciado com o comando `switch`. Ele permite que você organize o fluxo de controle em seus scripts, facilitando a execução de diferentes comandos com base em condições específicas.
 
 ## Usage
-A sintaxe básica do comando é a seguinte:
+A sintaxe básica do comando `endsw` é a seguinte:
 
-```bash
-endsw [opções] [argumentos]
+```
+endsw
 ```
 
 ## Common Options
-- `-p`: Finaliza o processo com base no ID do processo (PID) fornecido.
-- `-n`: Especifica o nome do processo a ser finalizado.
-- `-f`: Força a finalização do processo, mesmo que ele não responda.
+O comando `endsw` não possui opções específicas, pois sua função é simplesmente encerrar um bloco de `switch`.
 
 ## Common Examples
-Aqui estão alguns exemplos práticos do uso do comando `endsw`:
 
-1. Finalizar um processo pelo PID:
-   ```bash
-   endsw -p 1234
-   ```
+### Exemplo 1: Uso básico do switch
+```csh
+set var = "b"
+switch ($var)
+    case "a":
+        echo "A é a letra."
+        breaksw
+    case "b":
+        echo "B é a letra."
+        breaksw
+    case "c":
+        echo "C é a letra."
+        breaksw
+    default:
+        echo "Letra desconhecida."
+endsw
+```
 
-2. Finalizar um processo pelo nome:
-   ```bash
-   endsw -n nome_do_processo
-   ```
+### Exemplo 2: Verificando um número
+```csh
+set num = 3
+switch ($num)
+    case 1:
+        echo "Número é um."
+        breaksw
+    case 2:
+        echo "Número é dois."
+        breaksw
+    case 3:
+        echo "Número é três."
+        breaksw
+    default:
+        echo "Número não reconhecido."
+endsw
+```
 
-3. Forçar a finalização de um processo:
-   ```bash
-   endsw -f -p 5678
-   ```
+### Exemplo 3: Usando variáveis de ambiente
+```csh
+set user = "$USER"
+switch ($user)
+    case "admin":
+        echo "Bem-vindo, administrador."
+        breaksw
+    case "guest":
+        echo "Bem-vindo, convidado."
+        breaksw
+    default:
+        echo "Bem-vindo, usuário."
+endsw
+```
 
 ## Tips
-- Sempre verifique o PID do processo antes de usar o comando para evitar finalizar processos importantes acidentalmente.
-- Utilize o comando `ps` para listar os processos em execução e encontrar o PID desejado.
-- Use a opção `-f` com cautela, pois ela pode causar perda de dados se o processo estiver em meio a uma operação crítica.
+- Sempre use `endsw` para garantir que o bloco de `switch` seja finalizado corretamente, evitando erros de sintaxe.
+- Utilize `breaksw` dentro de cada caso para sair do bloco `switch` após a execução do comando desejado.
+- Mantenha a indentação consistente para melhorar a legibilidade do seu código, especialmente em scripts mais longos.

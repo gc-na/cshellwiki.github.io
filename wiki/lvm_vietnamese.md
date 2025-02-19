@@ -1,7 +1,7 @@
-# [Linux] Bash lvm Sử dụng: Quản lý các khối lượng logic
+# [Hệ điều hành] C Shell (csh) lvm Sử dụng: Quản lý khối lượng logic
 
 ## Tổng quan
-Lệnh `lvm` (Logical Volume Manager) được sử dụng để quản lý các khối lượng logic trong hệ thống lưu trữ. Nó cho phép người dùng tạo, xóa, và điều chỉnh các khối lượng logic, giúp tối ưu hóa việc sử dụng không gian lưu trữ và dễ dàng quản lý các phân vùng.
+Lệnh `lvm` (Logical Volume Manager) được sử dụng để quản lý các khối lượng logic trong hệ thống lưu trữ. Nó cho phép người dùng tạo, xóa, và điều chỉnh kích thước các khối lượng logic, giúp tối ưu hóa việc sử dụng không gian lưu trữ.
 
 ## Cú pháp
 Cú pháp cơ bản của lệnh `lvm` như sau:
@@ -11,38 +11,38 @@ lvm [options] [arguments]
 
 ## Các tùy chọn phổ biến
 - `create`: Tạo một khối lượng logic mới.
-- `remove`: Xóa một khối lượng logic.
+- `remove`: Xóa một khối lượng logic hiện có.
 - `extend`: Mở rộng kích thước của một khối lượng logic.
 - `reduce`: Giảm kích thước của một khối lượng logic.
-- `lvdisplay`: Hiển thị thông tin chi tiết về các khối lượng logic hiện có.
+- `lvdisplay`: Hiển thị thông tin chi tiết về các khối lượng logic.
 
 ## Ví dụ phổ biến
-1. **Tạo một khối lượng logic mới**
-   ```bash
-   lvm lvcreate -n my_volume -L 10G my_volume_group
-   ```
+- Tạo một khối lượng logic mới:
+  ```bash
+  lvm create -n my_volume -L 10G my_volume_group
+  ```
 
-2. **Xóa một khối lượng logic**
-   ```bash
-   lvm lvremove my_volume_group/my_volume
-   ```
+- Xóa một khối lượng logic:
+  ```bash
+  lvm remove my_volume
+  ```
 
-3. **Mở rộng kích thước của một khối lượng logic**
-   ```bash
-   lvm lvextend -L +5G /dev/my_volume_group/my_volume
-   ```
+- Mở rộng kích thước của một khối lượng logic:
+  ```bash
+  lvm extend -L +5G my_volume
+  ```
 
-4. **Giảm kích thước của một khối lượng logic**
-   ```bash
-   lvm lvreduce -L -5G /dev/my_volume_group/my_volume
-   ```
+- Giảm kích thước của một khối lượng logic:
+  ```bash
+  lvm reduce -L -5G my_volume
+  ```
 
-5. **Hiển thị thông tin về các khối lượng logic**
-   ```bash
-   lvm lvdisplay
-   ```
+- Hiển thị thông tin về các khối lượng logic:
+  ```bash
+  lvm lvdisplay
+  ```
 
 ## Mẹo
-- Trước khi thực hiện các thao tác giảm kích thước, hãy luôn sao lưu dữ liệu để tránh mất mát.
-- Sử dụng `lvdisplay` để kiểm tra thông tin về khối lượng logic trước khi thực hiện bất kỳ thay đổi nào.
-- Thực hiện các thao tác trên khối lượng logic trong thời gian không có hoạt động sử dụng để đảm bảo an toàn cho dữ liệu.
+- Trước khi giảm kích thước khối lượng logic, hãy đảm bảo rằng không có dữ liệu quan trọng nào trong đó để tránh mất mát dữ liệu.
+- Sử dụng lệnh `lvdisplay` thường xuyên để theo dõi tình trạng và thông tin của các khối lượng logic.
+- Thực hiện sao lưu dữ liệu trước khi thực hiện các thay đổi lớn với khối lượng logic.

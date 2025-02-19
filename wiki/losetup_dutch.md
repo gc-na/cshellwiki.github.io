@@ -1,50 +1,53 @@
-# [Linux] Bash losetup gebruik: Beheer van loop-apparaten
+# [Linux] C Shell (csh) losetup gebruik: Beheer van loopback-apparaten
 
 ## Overzicht
-De `losetup` opdracht wordt gebruikt om loop-apparaten in te stellen en te beheren. Loop-apparaten zijn virtuele apparaten die een bestand als een blokapparaat kunnen gebruiken, waardoor je bestanden kunt behandelen alsof het schijven zijn.
+De `losetup`-opdracht wordt gebruikt om loopback-apparaten in te stellen en te beheren. Een loopback-apparaat is een virtueel apparaat dat een bestand als een blokapparaat kan gebruiken, waardoor je toegang krijgt tot de gegevens in dat bestand alsof het een fysieke schijf is.
 
 ## Gebruik
-De basis syntaxis van de `losetup` opdracht is als volgt:
+De basis syntaxis van de `losetup`-opdracht is als volgt:
 
-```bash
+```csh
 losetup [opties] [argumenten]
 ```
 
 ## Veelvoorkomende opties
-- `-f` : Zoek het eerste beschikbare loop-apparaat.
-- `-a` : Toon alle actieve loop-apparaten.
-- `-d` : Ontkoppel een loop-apparaat.
+- `-f` : Zoek een vrije loopback-apparaat.
+- `-a` : Toon alle actieve loopback-apparaten.
+- `-d` : Ontkoppel een loopback-apparaat.
 - `-o` : Specificeer een offset in het bestand.
-- `-s` : Stel een loop-apparaat in met een specifieke grootte.
+- `-s` : Stel de grootte van het loopback-apparaat in.
 
 ## Veelvoorkomende voorbeelden
 
-1. **Een loop-apparaat koppelen aan een bestand:**
-   ```bash
-   losetup /dev/loop0 /path/to/image.img
-   ```
+### Een loopback-apparaat koppelen
+Om een loopback-apparaat te koppelen aan een bestand, gebruik je de volgende opdracht:
 
-2. **Een loop-apparaat zoeken:**
-   ```bash
-   losetup -f
-   ```
+```csh
+losetup /dev/loop0 /path/to/image.img
+```
 
-3. **Alle actieve loop-apparaten weergeven:**
-   ```bash
-   losetup -a
-   ```
+### Een loopback-apparaat ontkoppelen
+Om een eerder gekoppeld loopback-apparaat te ontkoppelen, gebruik je:
 
-4. **Een loop-apparaat ontkoppelen:**
-   ```bash
-   losetup -d /dev/loop0
-   ```
+```csh
+losetup -d /dev/loop0
+```
 
-5. **Een loop-apparaat met een offset instellen:**
-   ```bash
-   losetup -o 2048 /dev/loop0 /path/to/image.img
-   ```
+### Alle actieve loopback-apparaten weergeven
+Om een lijst van alle actieve loopback-apparaten te zien, gebruik je:
+
+```csh
+losetup -a
+```
+
+### Een loopback-apparaat met een offset koppelen
+Als je een specifiek gedeelte van een bestand wilt koppelen, kun je een offset opgeven:
+
+```csh
+losetup -o 2048 /dev/loop0 /path/to/image.img
+```
 
 ## Tips
-- Zorg ervoor dat je loop-apparaten ontkoppelt met `losetup -d` wanneer je ze niet meer nodig hebt om systeembronnen vrij te maken.
-- Gebruik `losetup -a` regelmatig om een overzicht te krijgen van actieve loop-apparaten en hun bijbehorende bestanden.
-- Wees voorzichtig met de offset-optie, aangezien het instellen van een onjuiste offset kan leiden tot gegevensverlies of corruptie.
+- Zorg ervoor dat je de juiste rechten hebt om loopback-apparaten te beheren; vaak zijn root-rechten vereist.
+- Controleer altijd of een loopback-apparaat al in gebruik is voordat je probeert het opnieuw te koppelen.
+- Gebruik de `-f` optie om automatisch een vrij loopback-apparaat te vinden, wat handig is als je niet zeker weet welke apparaten beschikbaar zijn.

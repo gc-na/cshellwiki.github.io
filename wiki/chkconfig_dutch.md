@@ -1,22 +1,20 @@
-# [Linux] Bash chkconfig gebruik: Beheer van systeemdiensten
+# [Linux] C Shell (csh) chkconfig gebruik: Beheer van systeemdiensten
 
 ## Overzicht
-Het `chkconfig` commando wordt gebruikt om de opstartinstellingen van systeemdiensten in Linux te beheren. Het stelt gebruikers in staat om te configureren welke diensten automatisch moeten starten bij het opstarten van het systeem en in welke runlevels deze diensten actief moeten zijn.
+De `chkconfig` opdracht wordt gebruikt om de opstartinstellingen van systeemdiensten in Linux te beheren. Hiermee kun je diensten in- of uitschakelen bij het opstarten van het systeem.
 
 ## Gebruik
-De basis syntaxis van het `chkconfig` commando is als volgt:
+De basis syntaxis van de `chkconfig` opdracht is als volgt:
 
 ```bash
 chkconfig [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `--list`: Toont de huidige status van alle diensten.
-- `--add`: Voegt een nieuwe dienst toe aan de opstartconfiguratie.
-- `--remove`: Verwijdert een dienst uit de opstartconfiguratie.
-- `--level`: Specificeert de runlevels voor de opgegeven dienst.
-- `on`: Zet de dienst aan voor de opgegeven runlevels.
-- `off`: Zet de dienst uit voor de opgegeven runlevels.
+- `--list`: Toon de huidige status van alle diensten.
+- `--add`: Voeg een nieuwe dienst toe aan de opstartinstellingen.
+- `--del`: Verwijder een dienst uit de opstartinstellingen.
+- `--level`: Specificeer de runlevels voor de dienst.
 
 ## Veelvoorkomende Voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van `chkconfig`:
@@ -28,25 +26,25 @@ Hier zijn enkele praktische voorbeelden van het gebruik van `chkconfig`:
 
 2. **Voeg een nieuwe dienst toe:**
    ```bash
-   chkconfig --add myservice
+   chkconfig --add naam_van_dienst
    ```
 
-3. **Verwijder een dienst:**
+3. **Verwijder een dienst uit de opstartinstellingen:**
    ```bash
-   chkconfig --remove myservice
+   chkconfig --del naam_van_dienst
    ```
 
-4. **Zet een dienst aan voor specifieke runlevels (bijv. 2, 3, 4):**
+4. **Schakel een dienst in voor specifieke runlevels:**
    ```bash
-   chkconfig myservice on --level 234
+   chkconfig naam_van_dienst on --level 2345
    ```
 
-5. **Zet een dienst uit voor specifieke runlevels (bijv. 5):**
+5. **Schakel een dienst uit voor specifieke runlevels:**
    ```bash
-   chkconfig myservice off --level 5
+   chkconfig naam_van_dienst off --level 2345
    ```
 
 ## Tips
-- Controleer altijd de status van een dienst met `chkconfig --list` voordat je wijzigingen aanbrengt.
-- Gebruik `chkconfig` met voorzichtigheid, vooral bij het verwijderen van diensten, om te voorkomen dat je belangrijke systeemfunctionaliteit uitschakelt.
-- Vergeet niet om na het toevoegen of verwijderen van diensten het systeem opnieuw op te starten om de wijzigingen van kracht te laten worden.
+- Controleer altijd de status van een dienst na het aanbrengen van wijzigingen met `chkconfig --list`.
+- Gebruik de `--level` optie om specifiek te zijn over welke runlevels je wilt aanpassen, zodat je geen onbedoelde wijzigingen aanbrengt.
+- Wees voorzichtig bij het verwijderen van diensten; zorg ervoor dat je weet wat de dienst doet voordat je deze verwijdert.

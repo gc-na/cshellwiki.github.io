@@ -1,51 +1,54 @@
-# [Linux] Bash grep uso equivalente: Buscar texto en archivos
+# [Linux] C Shell (csh) grep uso: Buscar texto en archivos
 
 ## Overview
-El comando `grep` se utiliza para buscar texto dentro de archivos. Permite encontrar líneas que coinciden con un patrón específico, lo que lo convierte en una herramienta muy útil para la manipulación y análisis de texto en la línea de comandos.
+El comando `grep` se utiliza para buscar patrones de texto dentro de archivos. Es una herramienta poderosa que permite filtrar líneas que coinciden con una expresión regular, facilitando la búsqueda de información específica en grandes volúmenes de datos.
 
 ## Usage
 La sintaxis básica del comando `grep` es la siguiente:
 
-```bash
-grep [opciones] [patrón] [archivo]
+```csh
+grep [opciones] [argumentos]
 ```
 
 ## Common Options
-- `-i`: Ignorar mayúsculas y minúsculas al buscar.
-- `-r`: Buscar recursivamente en directorios.
+- `-i`: Ignorar mayúsculas y minúsculas durante la búsqueda.
 - `-v`: Invertir la búsqueda, mostrando líneas que no coinciden con el patrón.
-- `-n`: Mostrar el número de línea junto con las coincidencias.
+- `-r`: Buscar recursivamente en directorios.
+- `-n`: Mostrar el número de línea junto con las líneas coincidentes.
 - `-l`: Listar solo los nombres de los archivos que contienen el patrón.
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso de `grep`:
 
-### Buscar una palabra en un archivo
-```bash
-grep "palabra" archivo.txt
-```
+1. Buscar una palabra específica en un archivo:
+   ```csh
+   grep "palabra" archivo.txt
+   ```
 
-### Buscar sin distinguir entre mayúsculas y minúsculas
-```bash
-grep -i "palabra" archivo.txt
-```
+2. Buscar sin distinguir entre mayúsculas y minúsculas:
+   ```csh
+   grep -i "palabra" archivo.txt
+   ```
 
-### Buscar recursivamente en un directorio
-```bash
-grep -r "palabra" /ruta/al/directorio
-```
+3. Buscar en todos los archivos de un directorio:
+   ```csh
+   grep "palabra" *
+   ```
 
-### Mostrar el número de línea de las coincidencias
-```bash
-grep -n "palabra" archivo.txt
-```
+4. Buscar recursivamente en un directorio:
+   ```csh
+   grep -r "palabra" /ruta/del/directorio
+   ```
 
-### Listar archivos que contienen un patrón
-```bash
-grep -l "palabra" *.txt
-```
+5. Mostrar el número de línea de las coincidencias:
+   ```csh
+   grep -n "palabra" archivo.txt
+   ```
 
 ## Tips
-- Utiliza `grep` junto con otros comandos mediante tuberías (`|`) para filtrar resultados de manera efectiva.
-- Combina `grep` con expresiones regulares para realizar búsquedas más complejas.
-- Si buscas múltiples patrones, considera usar `grep -E` para habilitar expresiones regulares extendidas.
+- Usa `grep -v` para excluir líneas que contienen un patrón específico, lo que puede ser útil para filtrar resultados.
+- Combina `grep` con otros comandos utilizando tuberías (`|`) para realizar búsquedas más complejas.
+- Si buscas múltiples patrones, puedes usar `-e` para especificar cada patrón:
+  ```csh
+  grep -e "patrón1" -e "patrón2" archivo.txt
+  ```

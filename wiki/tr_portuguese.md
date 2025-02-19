@@ -1,53 +1,51 @@
-# [Linux] Bash tr Uso equivalente: Transforma ou substitui caracteres
+# [Linux] C Shell (csh) tr <Uso equivalente em português>: "transformar caracteres"
 
 ## Overview
-O comando `tr` (translate) é utilizado para traduzir ou substituir caracteres em um fluxo de texto. Ele lê a entrada padrão, realiza as transformações especificadas e envia a saída para a saída padrão. É uma ferramenta útil para manipulação de texto em scripts e na linha de comando.
+O comando `tr` é utilizado para traduzir ou excluir caracteres de uma entrada padrão. Ele é frequentemente usado para manipular texto, como substituir caracteres ou remover espaços em branco.
 
 ## Usage
 A sintaxe básica do comando `tr` é a seguinte:
 
-```bash
+```csh
 tr [opções] [argumentos]
 ```
 
 ## Common Options
 - `-d`: Remove caracteres especificados.
-- `-s`: Substitui sequências de caracteres repetidos por um único caractere.
-- `-c`: Complementa o conjunto de caracteres especificados.
-- `-t`: Especifica um conjunto de caracteres de tradução.
+- `-s`: Compacta sequências de caracteres repetidos em uma única ocorrência.
+- `-c`: Complementa o conjunto de caracteres especificado.
 
 ## Common Examples
-Aqui estão alguns exemplos práticos do uso do comando `tr`:
 
-### Substituir caracteres
-Substituindo todas as letras minúsculas por maiúsculas:
+### Exemplo 1: Substituir caracteres
+Substituir todas as letras minúsculas 'a' por letras maiúsculas 'A'.
 
-```bash
-echo "olá mundo" | tr 'a-z' 'A-Z'
+```csh
+echo "banana" | tr 'a' 'A'
 ```
 
-### Remover caracteres
-Removendo todos os números de uma string:
+### Exemplo 2: Remover caracteres
+Remover todos os espaços em branco de uma string.
 
-```bash
-echo "Texto 123 com números 456" | tr -d '0-9'
+```csh
+echo "texto com espaços" | tr -d ' '
 ```
 
-### Substituir múltiplos espaços por um único espaço
-Substituindo sequências de espaços por um único espaço:
+### Exemplo 3: Compactar caracteres
+Compactar múltiplos espaços em uma única ocorrência.
 
-```bash
-echo "Texto    com   múltiplos   espaços" | tr -s ' '
+```csh
+echo "texto    com    espaços" | tr -s ' '
 ```
 
-### Complementar caracteres
-Substituindo todos os caracteres que não são letras:
+### Exemplo 4: Usar complementos
+Remover todos os caracteres que não são letras.
 
-```bash
-echo "Texto!@# com caracteres especiais" | tr -c 'a-zA-Z' ' '
+```csh
+echo "Texto 123!@#" | tr -cd '[:alpha:]'
 ```
 
 ## Tips
-- Utilize `tr` em combinação com outros comandos, como `grep` ou `awk`, para manipulações de texto mais complexas.
-- Sempre teste seus comandos em um ambiente seguro antes de aplicá-los em arquivos importantes.
-- Lembre-se de que `tr` não trabalha com arquivos diretamente; você deve usar redirecionamento ou pipes para fornecer a entrada.
+- Sempre teste seus comandos com uma entrada de exemplo antes de aplicá-los em arquivos importantes.
+- Combine `tr` com outros comandos, como `grep` e `sort`, para manipulações de texto mais complexas.
+- Use redirecionamento para salvar a saída do comando em um arquivo, se necessário.

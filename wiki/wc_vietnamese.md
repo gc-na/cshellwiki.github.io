@@ -1,7 +1,7 @@
-# [Linux] Bash wc Cách sử dụng: Đếm số dòng, từ và ký tự trong tệp
+# [Hệ điều hành Unix] C Shell (csh) wc Cách sử dụng: Đếm số dòng, từ và ký tự trong tệp
 
 ## Overview
-Lệnh `wc` (word count) trong Bash được sử dụng để đếm số dòng, số từ và số ký tự trong một hoặc nhiều tệp. Đây là một công cụ hữu ích cho việc phân tích nội dung tệp và thu thập thông tin cơ bản về chúng.
+Lệnh `wc` (word count) trong C Shell được sử dụng để đếm số dòng, số từ và số ký tự trong một hoặc nhiều tệp. Đây là một công cụ hữu ích để phân tích nội dung của tệp văn bản.
 
 ## Usage
 Cú pháp cơ bản của lệnh `wc` như sau:
@@ -10,47 +10,47 @@ wc [options] [arguments]
 ```
 
 ## Common Options
-- `-l`: Đếm số dòng trong tệp.
-- `-w`: Đếm số từ trong tệp.
-- `-c`: Đếm số ký tự trong tệp.
+- `-l`: Đếm số dòng.
+- `-w`: Đếm số từ.
+- `-c`: Đếm số ký tự.
 - `-m`: Đếm số ký tự (bao gồm cả ký tự Unicode).
-- `-L`: Hiển thị độ dài của dòng dài nhất trong tệp.
+- `-L`: Hiển thị độ dài của dòng dài nhất.
 
 ## Common Examples
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `wc`:
 
-1. Đếm số dòng trong một tệp:
-   ```bash
-   wc -l ten_tap.txt
+1. Đếm số dòng, từ và ký tự trong một tệp:
+   ```csh
+   wc filename.txt
    ```
 
-2. Đếm số từ trong một tệp:
-   ```bash
-   wc -w ten_tap.txt
+2. Chỉ đếm số dòng trong một tệp:
+   ```csh
+   wc -l filename.txt
    ```
 
-3. Đếm số ký tự trong một tệp:
-   ```bash
-   wc -c ten_tap.txt
+3. Chỉ đếm số từ trong một tệp:
+   ```csh
+   wc -w filename.txt
    ```
 
-4. Đếm số dòng, số từ và số ký tự trong một tệp cùng một lúc:
-   ```bash
-   wc ten_tap.txt
+4. Đếm số ký tự trong một tệp:
+   ```csh
+   wc -c filename.txt
    ```
 
-5. Đếm số ký tự trong nhiều tệp:
-   ```bash
-   wc -c tap1.txt tap2.txt
+5. Đếm số dòng trong nhiều tệp:
+   ```csh
+   wc -l file1.txt file2.txt
    ```
 
 ## Tips
-- Bạn có thể kết hợp nhiều tùy chọn trong một lệnh. Ví dụ, để đếm số dòng và số từ, bạn có thể sử dụng:
-  ```bash
-  wc -l -w ten_tap.txt
+- Khi sử dụng `wc`, bạn có thể kết hợp nhiều tùy chọn cùng một lúc. Ví dụ, để đếm số dòng và số từ, bạn có thể sử dụng:
+  ```csh
+  wc -l -w filename.txt
   ```
-- Sử dụng `wc` cùng với các lệnh khác bằng cách sử dụng ống (pipe). Ví dụ, để đếm số dòng trong kết quả của lệnh `grep`:
-  ```bash
-  grep "chuỗi_cần_tìm" ten_tap.txt | wc -l
+- Để dễ dàng hơn trong việc phân tích nhiều tệp, bạn có thể sử dụng ký tự đại diện. Ví dụ:
+  ```csh
+  wc *.txt
   ```
-- Để dễ dàng đọc kết quả, bạn có thể sử dụng `-h` để hiển thị kết quả với định dạng dễ hiểu hơn.
+- Lưu ý rằng kết quả của `wc` sẽ hiển thị số liệu cho từng tệp và tổng số liệu cho tất cả các tệp nếu bạn cung cấp nhiều tệp.

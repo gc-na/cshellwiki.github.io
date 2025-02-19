@@ -1,52 +1,50 @@
-# [Linux] Bash ftp gebruik: Bestanden overdragen via het FTP-protocol
+# [Linux] C Shell (csh) ftp gebruik: Bestanden overdragen via het netwerk
 
-## Overview
-De `ftp` (File Transfer Protocol) opdracht wordt gebruikt om bestanden over te dragen tussen een client en een server via het FTP-protocol. Het stelt gebruikers in staat om verbinding te maken met een FTP-server, bestanden te uploaden, te downloaden en te beheren.
+## Overzicht
+De `ftp`-opdracht in C Shell (csh) wordt gebruikt om bestanden over te dragen tussen computers via het File Transfer Protocol (FTP). Het stelt gebruikers in staat om verbinding te maken met een FTP-server, bestanden te uploaden en te downloaden.
 
-## Usage
-De basis syntaxis van de `ftp` opdracht is als volgt:
+## Gebruik
+De basis syntaxis van de `ftp`-opdracht is als volgt:
 
-```bash
+```csh
 ftp [opties] [argumenten]
 ```
 
-## Common Options
-Hier zijn enkele veelvoorkomende opties voor de `ftp` opdracht:
+## Veelvoorkomende Opties
+- `-v`: Verbose modus; toont gedetailleerde informatie over de overdracht.
+- `-n`: Voorkomt automatische login bij de FTP-server.
+- `-g`: Schakelt globbing uit, wat betekent dat speciale tekens zoals `*` niet worden uitgebreid.
+- `-i`: Schakelt interactieve modus uit, waardoor bestanden zonder bevestiging worden overgedragen.
 
-- `-i`: Zet de interactieve modus uit, zodat bestanden zonder bevestiging worden overgedragen.
-- `-v`: Zet de verbose modus aan, zodat gedetailleerde informatie over de overdracht wordt weergegeven.
-- `-n`: Voorkomt dat ftp automatisch verbinding maakt met de standaardserver.
-- `-p`: Gebruik passieve modus voor de verbinding, wat nuttig kan zijn achter firewalls.
-
-## Common Examples
-Hier zijn enkele praktische voorbeelden van het gebruik van de `ftp` opdracht:
+## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van de `ftp`-opdracht:
 
 1. Verbinden met een FTP-server:
-   ```bash
+   ```csh
    ftp ftp.example.com
    ```
 
-2. Uploaden van een bestand naar de server:
-   ```bash
+2. Bestanden downloaden van de server:
+   ```csh
+   get bestand.txt
+   ```
+
+3. Bestanden uploaden naar de server:
+   ```csh
    put lokaal_bestand.txt
    ```
 
-3. Downloaden van een bestand van de server:
-   ```bash
-   get server_bestand.txt
-   ```
-
 4. Lijst van bestanden op de server weergeven:
-   ```bash
+   ```csh
    ls
    ```
 
 5. Afsluiten van de FTP-sessie:
-   ```bash
+   ```csh
    bye
    ```
 
 ## Tips
 - Zorg ervoor dat je de juiste inloggegevens hebt voordat je verbinding maakt met de FTP-server.
-- Gebruik de `-i` optie als je meerdere bestanden wilt uploaden zonder bevestiging.
-- Controleer altijd de bestandspermissies na het uploaden of downloaden van bestanden om ervoor te zorgen dat ze correct zijn ingesteld.
+- Gebruik de `-v` optie voor meer inzicht in de overdracht, vooral als je problemen ondervindt.
+- Overweeg om een veilige variant van FTP, zoals SFTP, te gebruiken voor gevoelige gegevensoverdracht.

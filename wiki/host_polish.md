@@ -1,48 +1,44 @@
-# [Linux] Bash host użycie: narzędzie do zapytań DNS
+# [Linux] C Shell (csh) host użycie: uzyskiwanie informacji o DNS
 
-## Overview
-Polecenie `host` jest używane do wykonywania zapytań DNS (Domain Name System). Umożliwia użytkownikom przekształcanie nazw domen na adresy IP oraz odwrotnie, co jest przydatne w diagnostyce i zarządzaniu sieciami.
+## Przegląd
+Polecenie `host` jest używane do uzyskiwania informacji o systemie nazw domen (DNS). Umożliwia użytkownikom przekształcanie nazw domen na adresy IP oraz odwrotnie, co jest przydatne w diagnostyce sieci i rozwiązywaniu problemów z połączeniami.
 
-## Usage
+## Użycie
 Podstawowa składnia polecenia `host` jest następująca:
 
-```bash
+```
 host [opcje] [argumenty]
 ```
 
-## Common Options
+## Typowe opcje
 - `-a`: Wyświetla wszystkie dostępne informacje o danej nazwie.
-- `-t TYPE`: Określa typ rekordu DNS do zapytania (np. A, MX, CNAME).
-- `-v`: Włącza tryb szczegółowy, co pozwala na uzyskanie dodatkowych informacji o zapytaniu.
-- `-W TIMEOUT`: Ustala limit czasu na odpowiedź w sekundach.
+- `-t typ`: Określa typ rekordu DNS do zapytania (np. A, MX, TXT).
+- `-v`: Włącza tryb szczegółowy, wyświetlając dodatkowe informacje o zapytaniach.
 
-## Common Examples
-1. **Znalezienie adresu IP dla nazwy domeny:**
+## Przykłady
+Oto kilka praktycznych przykładów użycia polecenia `host`:
+
+1. Uzyskiwanie adresu IP dla danej nazwy domeny:
    ```bash
    host example.com
    ```
 
-2. **Znalezienie rekordu MX dla domeny:**
+2. Wykonywanie zapytania o rekord MX dla domeny:
    ```bash
    host -t MX example.com
    ```
 
-3. **Znalezienie wszystkich informacji o domenie:**
+3. Uzyskiwanie szczegółowych informacji o nazwie domeny:
    ```bash
    host -a example.com
    ```
 
-4. **Znalezienie adresu IP dla subdomeny:**
+4. Włączenie trybu szczegółowego dla zapytania:
    ```bash
-   host sub.example.com
+   host -v example.com
    ```
 
-5. **Użycie z określonym serwerem DNS:**
-   ```bash
-   host example.com 8.8.8.8
-   ```
-
-## Tips
-- Używaj opcji `-v`, aby uzyskać więcej informacji o zapytaniach, co może być pomocne w rozwiązywaniu problemów.
-- Sprawdzaj różne typy rekordów DNS, aby uzyskać pełniejszy obraz konfiguracji domeny.
-- Pamiętaj, że niektóre rekordy mogą być cache'owane, więc wyniki mogą się różnić w zależności od używanego serwera DNS.
+## Wskazówki
+- Używaj opcji `-t` do precyzyjnego określenia typu rekordu, który chcesz sprawdzić, aby uzyskać bardziej trafne wyniki.
+- W trybie szczegółowym (`-v`) możesz uzyskać więcej informacji, co może być pomocne w diagnozowaniu problemów z DNS.
+- Pamiętaj, że polecenie `host` jest szczególnie przydatne w skryptach do automatyzacji zadań związanych z siecią.

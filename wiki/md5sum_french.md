@@ -1,51 +1,50 @@
-# [Linux] Bash md5sum : Calculer des sommes de contrôle MD5
+# [Linux] C Shell (csh) md5sum : Calculer le hachage MD5 d'un fichier
 
 ## Overview
-La commande `md5sum` est utilisée pour calculer et vérifier les sommes de contrôle MD5 d'un fichier. Cela permet de garantir l'intégrité des données en vérifiant si le contenu d'un fichier a été modifié.
+La commande `md5sum` est utilisée pour calculer et vérifier le hachage MD5 d'un fichier. Cela permet de s'assurer que le contenu d'un fichier n'a pas été modifié, en comparant le hachage calculé avec un hachage connu.
 
 ## Usage
 La syntaxe de base de la commande `md5sum` est la suivante :
 
-```bash
+```csh
 md5sum [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes pour la commande `md5sum` :
+Voici quelques options courantes pour `md5sum` :
 
 - `-b` : Traite les fichiers en mode binaire.
-- `-c` : Vérifie les sommes de contrôle à partir d'un fichier.
-- `-t` : Calcule la somme de contrôle pour les fichiers texte.
-- `--help` : Affiche l'aide et les options disponibles.
+- `-c` : Vérifie les sommes de contrôle MD5 à partir d'un fichier.
+- `-t` : Traite les fichiers en mode texte.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `md5sum` :
 
-1. **Calculer la somme de contrôle d'un fichier :**
+1. Calculer le hachage MD5 d'un fichier :
 
-   ```bash
-   md5sum mon_fichier.txt
+   ```csh
+   md5sum fichier.txt
    ```
 
-2. **Enregistrer la somme de contrôle dans un fichier :**
+2. Vérifier un fichier à l'aide d'un fichier de sommes de contrôle :
 
-   ```bash
-   md5sum mon_fichier.txt > somme.md5
+   ```csh
+   md5sum -c checksums.md5
    ```
 
-3. **Vérifier les sommes de contrôle à partir d'un fichier :**
+3. Calculer le hachage MD5 d'un fichier binaire :
 
-   ```bash
-   md5sum -c somme.md5
+   ```csh
+   md5sum -b image.png
    ```
 
-4. **Calculer la somme de contrôle d'un fichier binaire :**
+4. Enregistrer le hachage MD5 d'un fichier dans un fichier texte :
 
-   ```bash
-   md5sum -b mon_fichier_binaire.bin
+   ```csh
+   md5sum fichier.txt > hash.txt
    ```
 
 ## Tips
-- Utilisez `md5sum` pour vérifier les fichiers téléchargés afin de vous assurer qu'ils n'ont pas été corrompus.
-- Gardez une copie des sommes de contrôle dans un fichier pour une vérification future.
-- Évitez d'utiliser MD5 pour des applications de sécurité critiques, car il est considéré comme vulnérable aux collisions.
+- Toujours vérifier les fichiers téléchargés en utilisant `md5sum` pour s'assurer qu'ils n'ont pas été corrompus.
+- Utilisez l'option `-c` pour vérifier plusieurs fichiers à la fois en utilisant un fichier de sommes de contrôle.
+- Gardez à l'esprit que le hachage MD5 n'est pas sécurisé contre les collisions, donc pour des applications critiques, envisagez d'utiliser un algorithme de hachage plus fort comme SHA-256.

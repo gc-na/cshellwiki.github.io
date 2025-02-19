@@ -1,45 +1,44 @@
-# [Linux] Bash fold użycie: Zawijanie tekstu do określonej szerokości
+# [Linux] C Shell (csh) fold użycie: dzieli tekst na linie o określonej długości
 
 ## Overview
-Polecenie `fold` w systemie Linux służy do zawijania tekstu w plikach lub na standardowym wejściu do określonej szerokości. Umożliwia to lepsze formatowanie tekstu, szczególnie w przypadku długich linii, które mogą nie mieścić się w oknie terminala.
+Polecenie `fold` w C Shell (csh) służy do dzielenia tekstu na linie o określonej długości. Jest to przydatne, gdy chcemy dostosować długość linii w plikach tekstowych lub wyjściu z poleceń, aby były bardziej czytelne.
 
 ## Usage
 Podstawowa składnia polecenia `fold` jest następująca:
 
-```bash
+```csh
 fold [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-w, --width=WIDTH` - Ustala maksymalną szerokość wiersza (domyślnie 80 znaków).
-- `-s, --break=BREAK` - Zawija tekst w najbliższym spacji, aby uniknąć łamania wyrazów.
-- `-b, --bytes` - Liczy szerokość wiersza w bajtach zamiast w znakach.
-- `-h, --help` - Wyświetla pomoc dotyczącą użycia polecenia.
+- `-w, --width=WIDTH` - Ustala maksymalną długość linii na `WIDTH` znaków.
+- `-s, --break` - Złamać linie w najbliższym spacji, jeśli to możliwe.
+- `-b, --bytes` - Liczy długość w bajtach zamiast znaków.
 
 ## Common Examples
 Przykłady użycia polecenia `fold`:
 
-1. Zawijanie tekstu w pliku do domyślnej szerokości 80 znaków:
-   ```bash
-   fold tekst.txt
+1. **Podstawowe użycie z domyślną długością linii**:
+   ```csh
+   fold plik.txt
    ```
 
-2. Zawijanie tekstu w pliku do szerokości 50 znaków:
-   ```bash
-   fold -w 50 tekst.txt
+2. **Ustalenie maksymalnej długości linii na 50 znaków**:
+   ```csh
+   fold -w 50 plik.txt
    ```
 
-3. Zawijanie tekstu z łamaniem w najbliższej spacji:
-   ```bash
-   fold -s -w 30 tekst.txt
+3. **Złamanie linii w najbliższej spacji**:
+   ```csh
+   fold -s -w 30 plik.txt
    ```
 
-4. Zawijanie tekstu z użyciem standardowego wejścia:
-   ```bash
-   echo "To jest bardzo długi tekst, który chcemy zawinąć." | fold -w 20
+4. **Zliczanie długości w bajtach**:
+   ```csh
+   fold -b -w 40 plik.txt
    ```
 
 ## Tips
-- Używaj opcji `-s`, aby uniknąć łamania wyrazów, co może poprawić czytelność tekstu.
-- Eksperymentuj z różnymi wartościami szerokości, aby znaleźć najlepsze ustawienie dla swojego terminala lub aplikacji.
-- Możesz łączyć `fold` z innymi poleceniami, takimi jak `cat` czy `echo`, aby przetwarzać tekst w bardziej złożony sposób.
+- Używaj opcji `-s`, aby poprawić czytelność tekstu, zwłaszcza w przypadku długich linii.
+- Eksperymentuj z różnymi wartościami `WIDTH`, aby znaleźć najlepszą długość linii dla swojego wyjścia.
+- Możesz łączyć `fold` z innymi poleceniami, takimi jak `cat`, aby przetwarzać tekst w potokach.

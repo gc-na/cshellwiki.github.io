@@ -1,7 +1,7 @@
-# [Linux] Bash wget Uso: Download files from the web
+# [Linux] C Shell (csh) wget用法: Download files from the web
 
 ## Overview
-The `wget` command is a powerful utility for downloading files from the web. It supports HTTP, HTTPS, and FTP protocols, making it versatile for retrieving content from various sources. `wget` is non-interactive, meaning it can work in the background without requiring user input, which is particularly useful for automated scripts.
+The `wget` command is a powerful utility used for downloading files from the web. It supports various protocols, including HTTP, HTTPS, and FTP, making it versatile for retrieving content from different sources.
 
 ## Usage
 The basic syntax of the `wget` command is as follows:
@@ -11,49 +11,41 @@ wget [options] [arguments]
 ```
 
 ## Common Options
-Here are some commonly used options with `wget`:
-
-- `-O [filename]`: Save the downloaded file with a specified name.
-- `-q`: Run in quiet mode, suppressing output.
-- `-c`: Continue an incomplete download.
-- `-r`: Enable recursive downloading, useful for downloading entire websites.
-- `--limit-rate=[amount]`: Limit the download speed to a specified rate.
-- `-P [directory]`: Specify a directory to save the downloaded files.
+- `-O <file>`: Save the downloaded file with a specified name.
+- `-q`: Operate in quiet mode, suppressing output.
+- `-c`: Continue an incomplete download from where it left off.
+- `-r`: Download files recursively, useful for downloading entire websites.
+- `--limit-rate=<rate>`: Limit the download speed to a specified rate.
 
 ## Common Examples
+Here are some practical examples of using `wget`:
 
 1. **Download a single file:**
    ```bash
-   wget https://example.com/file.zip
+   wget http://example.com/file.zip
    ```
 
-2. **Download a file and save it with a specific name:**
+2. **Download a file and save it with a different name:**
    ```bash
-   wget -O myfile.zip https://example.com/file.zip
+   wget -O myfile.zip http://example.com/file.zip
    ```
 
 3. **Continue an interrupted download:**
    ```bash
-   wget -c https://example.com/largefile.zip
+   wget -c http://example.com/largefile.zip
    ```
 
 4. **Download an entire website recursively:**
    ```bash
-   wget -r https://example.com
+   wget -r http://example.com
    ```
 
 5. **Limit the download speed:**
    ```bash
-   wget --limit-rate=200k https://example.com/largefile.zip
-   ```
-
-6. **Download files to a specific directory:**
-   ```bash
-   wget -P /path/to/directory https://example.com/file.zip
+   wget --limit-rate=200k http://example.com/largefile.zip
    ```
 
 ## Tips
-- Use the `-q` option for scripts to reduce output clutter.
-- Combine `-c` with `-P` to manage downloads in specific directories without losing progress.
-- When downloading large files, consider using `--limit-rate` to avoid saturating your internet connection.
-- For recursive downloads, be cautious with the depth of recursion to avoid downloading unnecessary files. Use `--level=[number]` to control this.
+- Use the `-q` option for scripts to minimize output and make logs cleaner.
+- When downloading large files, consider using the `-c` option to avoid starting over if the download fails.
+- For recursive downloads, be cautious as it can consume significant bandwidth and storage space.

@@ -1,55 +1,44 @@
-# [Linux] Bash command gebruik: [bestanden en mappen beheren]
+# [Linux] C Shell (csh) commando echo: Toon tekst op de terminal
 
 ## Overzicht
-De `ls`-opdracht wordt gebruikt om de inhoud van een directory weer te geven. Het toont bestanden en mappen in de huidige of opgegeven directory, waardoor gebruikers snel kunnen zien wat er beschikbaar is.
+Het `echo` commando in C Shell (csh) wordt gebruikt om tekst of variabelen naar de standaarduitvoer (meestal de terminal) te sturen. Dit is handig voor het weergeven van berichten of het controleren van de waarden van variabelen.
 
 ## Gebruik
-De basis syntaxis van de `ls`-opdracht is als volgt:
+De basis syntaxis van het `echo` commando is als volgt:
 
 ```
-ls [opties] [bestanden]
+echo [opties] [tekst of variabele]
 ```
 
 ## Veelvoorkomende opties
-- `-l`: Toon de inhoud in een lange lijstvorm, inclusief details zoals permissies, eigenaar, grootte en datum.
-- `-a`: Toon ook verborgen bestanden (bestanden die beginnen met een punt).
-- `-h`: Toon bestandsgroottes in een leesbaar formaat (bijv. KB, MB).
-- `-R`: Toon de inhoud van directories recursief.
+- `-n`: Voorkomt dat er een nieuwe regel wordt toegevoegd na de uitvoer.
+- `-e`: Activeert de interpretatie van escape-sequenties (zoals `\n` voor nieuwe regel).
 
 ## Veelvoorkomende voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van de `ls`-opdracht:
+Hier zijn enkele praktische voorbeelden van het gebruik van het `echo` commando:
 
-1. Toon de inhoud van de huidige directory:
-   ```bash
-   ls
+1. Eenvoudige tekst weergeven:
+   ```csh
+   echo "Hallo, wereld!"
    ```
 
-2. Toon de inhoud met details:
-   ```bash
-   ls -l
+2. De waarde van een variabele weergeven:
+   ```csh
+   set naam = "Jan"
+   echo "Mijn naam is $naam"
    ```
 
-3. Toon ook verborgen bestanden:
-   ```bash
-   ls -a
+3. Tekst zonder nieuwe regel weergeven:
+   ```csh
+   echo -n "Dit is een tekst zonder nieuwe regel."
    ```
 
-4. Toon de inhoud met leesbare bestandsgroottes:
-   ```bash
-   ls -lh
-   ```
-
-5. Toon de inhoud van een specifieke directory:
-   ```bash
-   ls /pad/naar/directory
-   ```
-
-6. Toon de inhoud van directories recursief:
-   ```bash
-   ls -R
+4. Gebruik van escape-sequenties:
+   ```csh
+   echo -e "Eerste regel\nTweede regel"
    ```
 
 ## Tips
-- Combineer opties voor meer gedetailleerde weergave, bijvoorbeeld `ls -la` om zowel verborgen bestanden als details te tonen.
-- Gebruik de tab-toets om automatisch bestandsnamen in te vullen, wat tijd bespaart en typfouten voorkomt.
-- Overweeg om de alias `ll` in te stellen om `ls -l` snel te kunnen uitvoeren.
+- Gebruik `echo` om snel de waarde van variabelen te controleren tijdens het debuggen van scripts.
+- Wees voorzichtig met spaties in teksten; gebruik aanhalingstekens om te voorkomen dat de shell ze verkeerd interpreteert.
+- Combineer `echo` met andere commando's door gebruik te maken van pipes om de uitvoer verder te verwerken.

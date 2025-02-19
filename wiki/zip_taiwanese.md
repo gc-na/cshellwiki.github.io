@@ -1,47 +1,47 @@
-# [台灣] Bash zip 使用法: 壓縮檔案
+# [台灣] C Shell (csh) zip 用法: 壓縮檔案
 
 ## Overview
-`zip` 命令用於將一個或多個檔案或資料夾壓縮成一個 ZIP 檔案。這個命令不僅可以節省儲存空間，還能方便檔案的傳輸和分享。
+zip 命令用於將一個或多個檔案或目錄壓縮成一個 zip 檔案，這樣可以節省磁碟空間並方便傳輸。
 
 ## Usage
 基本語法如下：
-```bash
+```
 zip [options] [arguments]
 ```
 
 ## Common Options
-- `-r`: 遞迴壓縮資料夾及其內容。
-- `-e`: 加密壓縮檔案，要求輸入密碼。
-- `-u`: 更新已存在的 ZIP 檔案，僅壓縮較新或變更過的檔案。
-- `-d`: 從 ZIP 檔案中刪除檔案。
+- `-r`：遞迴壓縮目錄及其內容。
+- `-e`：加密壓縮檔案，要求輸入密碼。
+- `-d`：從壓縮檔案中刪除指定的檔案。
+- `-u`：更新已存在的壓縮檔案中的檔案。
 
 ## Common Examples
 1. 壓縮單個檔案：
-   ```bash
-   zip myfile.zip file.txt
+   ```csh
+   zip myfile.zip myfile.txt
    ```
 
 2. 壓縮多個檔案：
-   ```bash
+   ```csh
    zip myfiles.zip file1.txt file2.txt file3.txt
    ```
 
-3. 壓縮整個資料夾：
-   ```bash
+3. 遞迴壓縮目錄：
+   ```csh
    zip -r myfolder.zip myfolder/
    ```
 
-4. 更新已存在的 ZIP 檔案：
-   ```bash
-   zip -u myfiles.zip file4.txt
+4. 加密壓縮檔案：
+   ```csh
+   zip -e secret.zip confidential.txt
    ```
 
-5. 加密 ZIP 檔案：
-   ```bash
-   zip -e mysecure.zip file.txt
+5. 更新壓縮檔案中的檔案：
+   ```csh
+   zip -u myfiles.zip updatedfile.txt
    ```
 
 ## Tips
-- 在壓縮大型資料夾時，使用 `-r` 選項可以確保所有子資料夾和檔案都被包含。
+- 在壓縮大量檔案時，使用 `-r` 選項可以簡化操作。
 - 使用 `-e` 選項時，請選擇一個強密碼以保護您的檔案。
-- 定期更新 ZIP 檔案可以幫助您保持檔案的最新狀態，避免重複壓縮相同的檔案。
+- 定期更新壓縮檔案中的內容，以確保檔案的最新性。

@@ -1,38 +1,38 @@
-# [Linux] Bash builtin: [gömülü komutları görüntüleme]
+# [Linux] C Shell (csh) builtin: built-in komutları yönetir
 
 ## Genel Bakış
-`builtin` komutu, Bash kabuğunda yerleşik olarak bulunan komutları görüntülemek için kullanılır. Bu komut, kullanıcıların hangi komutların yerleşik olduğunu ve hangi komutların dışsal olduğunu anlamalarına yardımcı olur.
+`builtin` komutu, C Shell (csh) içerisinde yerleşik olan ve shell tarafından tanınan komutları yönetmek için kullanılır. Bu komut, shell'de tanımlı olan yerleşik komutların çalıştırılmasını sağlar ve dışarıdan yüklenen komutlarla çakışmalarını önler.
 
 ## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
+Temel sözdizimi şu şekildedir:
 
-```bash
+```
 builtin [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-p`: Yerleşik komutların tam yolunu gösterir.
-- `-f`: Belirtilen bir komutun yerleşik olup olmadığını kontrol eder.
+- `-c`: Belirtilen komutu çalıştırır.
+- `-h`: Yardım bilgilerini gösterir.
 
 ## Yaygın Örnekler
-Aşağıda `builtin` komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda `builtin` komutunun bazı pratik örnekleri verilmiştir:
 
-### Örnek 1: Tüm yerleşik komutları listeleme
-```bash
-compgen -b
+### Örnek 1: Yerleşik bir komutu çalıştırma
+```csh
+builtin echo "Merhaba, dünya!"
 ```
 
-### Örnek 2: Belirli bir komutun yerleşik olup olmadığını kontrol etme
-```bash
-builtin -f echo
+### Örnek 2: Belirli bir komutun yerleşik versiyonunu kullanma
+```csh
+builtin set
 ```
 
-### Örnek 3: Yerleşik komutların tam yolunu görüntüleme
-```bash
-builtin -p
+### Örnek 3: Yardım bilgilerini görüntüleme
+```csh
+builtin -h
 ```
 
 ## İpuçları
-- `builtin` komutunu kullanarak, hangi komutların yerleşik olduğunu öğrenmek, komutların performansını artırabilir.
-- Yerleşik komutları kullanmak, sistem kaynaklarını daha verimli kullanmanıza yardımcı olabilir.
-- Eğer bir komutun yerleşik versiyonunu kullanmak istiyorsanız, `builtin` ön ekini eklemeyi unutmayın.
+- `builtin` komutunu kullanarak, shell'de tanımlı komutların hangi versiyonunun çalıştığını kontrol edebilirsiniz.
+- Dışarıdan yüklenen komutlarla çakışma yaşamamak için `builtin` ile yerleşik komutları tercih edin.
+- Komutlarınızı yazarken, `builtin` ile birlikte kullanarak daha tutarlı ve beklenen sonuçlar elde edebilirsiniz.

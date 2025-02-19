@@ -1,49 +1,50 @@
-# [Linux] Bash parted Kullanımı: Disk bölümlerini yönetme aracı
+# [Linux] C Shell (csh) parted Kullanımı: Disk bölümlerini yönetme aracı
 
 ## Genel Bakış
-`parted`, disk bölümlerini yönetmek için kullanılan bir komut satırı aracıdır. Bu araç, disk bölümlerini oluşturma, silme, boyutlandırma ve düzenleme gibi işlemleri gerçekleştirmeye olanak tanır. `parted`, özellikle büyük disklerde ve farklı dosya sistemlerinde çalışırken oldukça kullanışlıdır.
+`parted` komutu, disk bölümlerini yönetmek için kullanılan bir araçtır. Bu komut, disk alanını düzenlemek, bölümleri oluşturmak, silmek veya değiştirmek için kullanılır. Kullanıcıların disk yapılandırmalarını kolayca yönetmelerine olanak tanır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-
-```bash
+```csh
 parted [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-l`, `--list`: Tüm diskleri ve bölümleri listele.
+- `-l` veya `--list`: Tüm diskleri ve bölümleri listele.
 - `mkpart`: Yeni bir bölüm oluştur.
 - `rm`: Belirtilen bölümü sil.
-- `resizepart`: Mevcut bir bölümün boyutunu değiştir.
+- `resizepart`: Bir bölümün boyutunu değiştir.
 - `print`: Mevcut bölümleri ve bilgilerini göster.
 
 ## Yaygın Örnekler
-1. **Tüm diskleri listeleme:**
-   ```bash
-   parted -l
-   ```
+Aşağıda `parted` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-2. **Yeni bir bölüm oluşturma:**
-   ```bash
-   parted /dev/sda mkpart primary ext4 1MiB 100MiB
-   ```
+### Tüm Diskleri Listeleme
+```csh
+parted -l
+```
 
-3. **Bir bölümü silme:**
-   ```bash
-   parted /dev/sda rm 1
-   ```
+### Yeni Bir Bölüm Oluşturma
+```csh
+parted /dev/sda mkpart primary ext4 1MiB 100MiB
+```
 
-4. **Bir bölümü boyutlandırma:**
-   ```bash
-   parted /dev/sda resizepart 1 200MiB
-   ```
+### Bölüm Silme
+```csh
+parted /dev/sda rm 1
+```
 
-5. **Mevcut bölümleri görüntüleme:**
-   ```bash
-   parted /dev/sda print
-   ```
+### Bölüm Boyutunu Değiştirme
+```csh
+parted /dev/sda resizepart 1 200MiB
+```
+
+### Mevcut Bölümleri Görüntüleme
+```csh
+parted /dev/sda print
+```
 
 ## İpuçları
-- `parted` komutunu kullanmadan önce, önemli verilerinizi yedeklemeyi unutmayın.
-- Disk bölümleri üzerinde işlem yaparken dikkatli olun; yanlış bir işlem veri kaybına yol açabilir.
-- `parted` komutunu çalıştırmadan önce, hangi disk üzerinde işlem yapacağınızı net bir şekilde belirleyin.
+- `parted` komutunu kullanmadan önce, disk ve bölüm bilgilerinizi yedeklemeyi unutmayın.
+- Komutları çalıştırmadan önce, hangi disk üzerinde işlem yapacağınızı dikkatlice kontrol edin.
+- `parted` komutunu kullanırken, root yetkilerine sahip olmanız gerektiğini unutmayın.

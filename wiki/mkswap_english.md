@@ -1,53 +1,50 @@
-# [Linux] Bash mkswap Uso: Create swap space on Linux systems
+# [Linux] C Shell (csh) mkswap用法: Create swap space
 
 ## Overview
-The `mkswap` command is used to set up a Linux swap area on a device or file. Swap space is a portion of the hard drive that is used as virtual memory when the physical RAM is full. By creating swap space, you can improve system performance and stability, especially under heavy load.
+The `mkswap` command is used to set up a Linux swap area on a device or file. This swap space can be utilized by the operating system to manage memory more efficiently, particularly when physical RAM is limited.
 
 ## Usage
 The basic syntax of the `mkswap` command is as follows:
 
-```bash
+```csh
 mkswap [options] [arguments]
 ```
 
 ## Common Options
-- `-L, --label LABEL`: Set a label for the swap area.
-- `-f, --force`: Force the creation of the swap area, even if the device is not empty.
-- `-p, --pagesize SIZE`: Specify the page size for the swap area.
+- `-f`: Force the creation of the swap area, even if the device appears to be in use.
+- `-L label`: Assign a label to the swap area for easier identification.
+- `-p priority`: Set the priority of the swap area, which affects the order in which swap spaces are used.
 
 ## Common Examples
+Here are some practical examples of using the `mkswap` command:
 
-### Example 1: Create a swap file
-To create a swap file named `swapfile` of size 1GB:
+1. **Creating a swap file:**
+   ```csh
+   dd if=/dev/zero of=/swapfile bs=1M count=1024
+   mkswap /swapfile
+   ```
 
-```bash
-fallocate -l 1G /swapfile
-mkswap /swapfile
-```
+2. **Creating a swap area on a partition:**
+   ```csh
+   mkswap /dev/sda5
+   ```
 
-### Example 2: Create a swap partition
-To create a swap area on a partition (e.g., `/dev/sda2`):
+3. **Creating a swap file with a label:**
+   ```csh
+   mkswap -L my_swap /swapfile
+   ```
 
-```bash
-mkswap /dev/sda2
-```
+4. **Forcing the creation of a swap area:**
+   ```csh
+   mkswap -f /dev/sda5
+   ```
 
-### Example 3: Create a swap file with a label
-To create a swap file with a specific label:
-
-```bash
-fallocate -l 2G /swapfile2
-mkswap -L my_swap /swapfile2
-```
-
-### Example 4: Force creation of swap area
-To force the creation of a swap area on a device that may not be empty:
-
-```bash
-mkswap -f /dev/sda3
-```
+5. **Setting a priority for the swap area:**
+   ```csh
+   mkswap -p 10 /swapfile
+   ```
 
 ## Tips
 - Always ensure that the swap file or partition is not in use before running `mkswap`.
-- Use `swapon` to enable the swap space after creating it.
-- Regularly check your swap usage with the `free -h` command to monitor system performance.
+- Use the `swapon` command after `mkswap` to activate the swap space.
+- Regularly monitor your system's memory usage to determine if additional swap space is needed.

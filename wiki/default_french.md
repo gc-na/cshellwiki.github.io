@@ -1,45 +1,41 @@
-# [Linux] Bash default commande : Exécuter une commande par défaut
+# [Linux] C Shell (csh) default commande : exécuter des commandes par défaut
 
 ## Overview
-La commande `default` dans Bash permet d'exécuter une commande par défaut lorsque plusieurs options ou commandes sont disponibles. Elle est souvent utilisée pour simplifier l'exécution de tâches courantes en spécifiant une option par défaut.
+La commande `default` dans C Shell (csh) est utilisée pour définir une commande par défaut qui sera exécutée lorsque le shell ne reconnaît pas une commande entrée par l'utilisateur. Cela permet de personnaliser le comportement du shell en redirigeant les commandes non reconnues vers une commande spécifique.
 
 ## Usage
-La syntaxe de base de la commande est la suivante :
+La syntaxe de base de la commande `default` est la suivante :
 
-```bash
+```csh
 default [options] [arguments]
 ```
 
 ## Common Options
-- `-h`, `--help` : Affiche l'aide et la liste des options disponibles.
-- `-v`, `--version` : Affiche la version de la commande.
-- `-f`, `--force` : Force l'exécution de la commande, même si cela peut entraîner des conséquences indésirables.
+- `-s` : Définit la commande par défaut sans l'exécuter immédiatement.
+- `-r` : Réinitialise la commande par défaut à son état d'origine.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `default` :
 
-### Exemple 1 : Afficher l'aide
-Pour afficher l'aide de la commande, vous pouvez utiliser :
+1. **Définir une commande par défaut :**
+   ```csh
+   default mycommand
+   ```
+   Cela définit `mycommand` comme la commande par défaut.
 
-```bash
-default --help
-```
+2. **Définir une commande par défaut sans exécution :**
+   ```csh
+   default -s mycommand
+   ```
+   Cela définit `mycommand` comme la commande par défaut sans l'exécuter.
 
-### Exemple 2 : Exécuter une commande par défaut
-Si vous avez plusieurs versions d'un programme, vous pouvez définir une version par défaut :
-
-```bash
-default my_program --version
-```
-
-### Exemple 3 : Forcer l'exécution
-Pour forcer l'exécution d'une commande, utilisez l'option `--force` :
-
-```bash
-default --force my_program
-```
+3. **Réinitialiser la commande par défaut :**
+   ```csh
+   default -r
+   ```
+   Cela réinitialise la commande par défaut à son état d'origine.
 
 ## Tips
-- Assurez-vous de toujours vérifier la version de la commande avec `--version` pour éviter les incompatibilités.
-- Utilisez l'option `--help` pour explorer toutes les fonctionnalités disponibles de la commande.
-- Soyez prudent avec l'option `--force`, car elle peut entraîner des modifications non désirées.
+- Utilisez la commande `default` pour éviter les erreurs de commande en redirigeant les entrées non reconnues vers une commande utile.
+- Pensez à vérifier régulièrement la commande par défaut définie pour vous assurer qu'elle est toujours pertinente pour votre flux de travail.
+- N'hésitez pas à utiliser l'option `-s` si vous souhaitez tester une nouvelle commande par défaut sans l'exécuter immédiatement.

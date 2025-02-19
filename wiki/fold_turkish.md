@@ -1,43 +1,44 @@
-# [Linux] Bash fold Kullanımı: Metinleri belirli bir genişlikte katlama
+# [Linux] C Shell (csh) fold Kullanımı: Metin satırlarını belirli bir genişliğe katlama
 
 ## Overview
 `fold` komutu, metin dosyalarındaki satırları belirli bir genişlikte katlayarak daha okunabilir hale getirir. Bu, özellikle uzun satırların daha kısa satırlara bölünmesi gerektiğinde faydalıdır.
 
 ## Usage
-Temel sözdizimi şu şekildedir:
+Temel sözdizimi aşağıdaki gibidir:
 
-```bash
+```csh
 fold [options] [arguments]
 ```
 
 ## Common Options
-- `-w, --width=N`: Satırların maksimum genişliğini N karakter olarak ayarlar.
-- `-s, --spaces`: Katlama işlemini, kelimeleri kesmeden boşluklardan yapar.
-- `-b, --bytes`: Genişliği bayt cinsinden ayarlar (varsayılan olarak karakter cinsindendir).
+- `-w, --width`: Satırların katlanacağı maksimum genişliği belirtir. Varsayılan genişlik 80 karakterdir.
+- `-s, --spaces`: Katlama işlemini, kelime sınırlarında yapar. Yani, kelimeleri kesmeden katlar.
+- `-b, --bytes`: Genişliği bayt cinsinden belirtir. Bu seçenek kullanıldığında, genişlik bayt olarak hesaplanır.
 
 ## Common Examples
+Aşağıda `fold` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. **Temel kullanım**: Bir dosyayı varsayılan genişlikte katlamak.
-   ```bash
-   fold dosya.txt
+1. Varsayılan genişlik ile bir dosyayı katlama:
+   ```csh
+   fold myfile.txt
    ```
 
-2. **Genişliği ayarlamak**: Satırların genişliğini 50 karakter olarak ayarlamak.
-   ```bash
-   fold -w 50 dosya.txt
+2. Genişliği 50 karakter olarak ayarlayarak katlama:
+   ```csh
+   fold -w 50 myfile.txt
    ```
 
-3. **Boşluklardan katlama**: Kelimeleri kesmeden boşluklardan katlamak.
-   ```bash
-   fold -s -w 30 dosya.txt
+3. Kelime sınırlarında katlama:
+   ```csh
+   fold -s -w 50 myfile.txt
    ```
 
-4. **Çıktıyı bir dosyaya yönlendirmek**: Katlanmış metni yeni bir dosyaya yazmak.
-   ```bash
-   fold -w 60 dosya.txt > katlanmis_dosya.txt
+4. Çıktıyı bir dosyaya yönlendirme:
+   ```csh
+   fold -w 40 myfile.txt > output.txt
    ```
 
 ## Tips
-- Uzun metin dosyalarını okurken `fold` komutunu kullanarak daha iyi bir görünüm elde edebilirsiniz.
-- `-s` seçeneği, metinlerin daha anlamlı bir şekilde bölünmesini sağlar; bu nedenle, kelime kesimlerinden kaçınmak için bu seçeneği kullanmayı düşünün.
-- `fold` komutunu, diğer komutlarla birleştirerek (örneğin, `cat` ile) daha karmaşık işlemler gerçekleştirebilirsiniz.
+- Uzun metin dosyalarını okurken, `fold` komutunu kullanarak metni daha okunabilir hale getirebilirsiniz.
+- Genişliği ayarlarken, metnin içeriğini göz önünde bulundurarak uygun bir değer seçin.
+- `fold` komutunu diğer komutlarla birleştirerek daha karmaşık işlemler gerçekleştirebilirsiniz; örneğin, `cat` ile birlikte kullanarak birden fazla dosyayı katlayabilirsiniz.

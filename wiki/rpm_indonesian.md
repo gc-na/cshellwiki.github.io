@@ -1,53 +1,61 @@
-# [Linux] Bash rpm Penggunaan: Mengelola paket perangkat lunak
+# [Linux] C Shell (csh) rpm Penggunaan: Mengelola paket perangkat lunak
 
 ## Overview
-Perintah `rpm` (Red Hat Package Manager) digunakan untuk mengelola paket perangkat lunak di sistem berbasis RPM, seperti Red Hat, CentOS, dan Fedora. Dengan `rpm`, pengguna dapat menginstal, menghapus, dan mengelola paket perangkat lunak dengan mudah.
+Perintah `rpm` (Red Hat Package Manager) digunakan untuk mengelola paket perangkat lunak di sistem berbasis RPM, seperti Red Hat, Fedora, dan CentOS. Dengan `rpm`, pengguna dapat menginstal, menghapus, dan memverifikasi paket perangkat lunak.
 
 ## Usage
-Sintaks dasar dari perintah `rpm` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `rpm`:
 
-```
+```bash
 rpm [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang sering digunakan dengan perintah `rpm`:
-
-- `-i` : Menginstal paket baru.
-- `-e` : Menghapus paket yang sudah terinstal.
-- `-U` : Memperbarui paket yang sudah ada ke versi terbaru.
-- `-q` : Menanyakan informasi tentang paket yang terinstal.
-- `-l` : Menampilkan daftar file yang termasuk dalam paket.
+- `-i`: Menginstal paket baru.
+- `-e`: Menghapus paket yang sudah terinstal.
+- `-U`: Memperbarui paket yang sudah ada ke versi yang lebih baru.
+- `-q`: Menanyakan informasi tentang paket yang terinstal.
+- `-V`: Memverifikasi integritas paket yang terinstal.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `rpm`:
 
-1. **Menginstal paket:**
-   ```bash
-   rpm -i nama_paket.rpm
-   ```
+### Menginstal Paket
+Untuk menginstal paket baru, gunakan opsi `-i`:
 
-2. **Menghapus paket:**
-   ```bash
-   rpm -e nama_paket
-   ```
+```bash
+rpm -i nama-paket.rpm
+```
 
-3. **Memperbarui paket:**
-   ```bash
-   rpm -U nama_paket.rpm
-   ```
+### Menghapus Paket
+Untuk menghapus paket yang sudah terinstal, gunakan opsi `-e`:
 
-4. **Menanyakan informasi tentang paket:**
-   ```bash
-   rpm -q nama_paket
-   ```
+```bash
+rpm -e nama-paket
+```
 
-5. **Menampilkan daftar file dalam paket:**
-   ```bash
-   rpm -ql nama_paket
-   ```
+### Memperbarui Paket
+Untuk memperbarui paket ke versi terbaru, gunakan opsi `-U`:
+
+```bash
+rpm -U nama-paket.rpm
+```
+
+### Menanyakan Informasi Paket
+Untuk menanyakan informasi tentang paket yang terinstal, gunakan opsi `-q`:
+
+```bash
+rpm -q nama-paket
+```
+
+### Memverifikasi Paket
+Untuk memverifikasi integritas paket yang terinstal, gunakan opsi `-V`:
+
+```bash
+rpm -V nama-paket
+```
 
 ## Tips
-- Selalu pastikan untuk menggunakan opsi `-v` (verbose) untuk mendapatkan output yang lebih rinci saat menjalankan perintah `rpm`.
-- Gunakan opsi `--checksig` untuk memverifikasi tanda tangan digital dari paket sebelum menginstalnya.
-- Sebaiknya jalankan perintah `rpm` dengan hak akses root untuk menghindari masalah izin saat menginstal atau menghapus paket.
+- Selalu periksa dependensi paket sebelum menginstal untuk menghindari masalah.
+- Gunakan `rpm -qa` untuk menampilkan daftar semua paket yang terinstal di sistem.
+- Simpan file `.rpm` di lokasi yang mudah diakses untuk instalasi yang lebih cepat di masa mendatang.

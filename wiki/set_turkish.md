@@ -1,49 +1,50 @@
-# [Linux] Bash set Kullanımı: Değişkenleri ve ortamı ayarlama
+# [Linux] C Shell (csh) set Kullanımı: Değişkenleri ayarlama
 
-## Genel Bakış
-`set` komutu, Bash kabuğunda değişkenleri ve ortamı ayarlamak için kullanılır. Bu komut, kabuk davranışını değiştirmek, değişkenleri tanımlamak veya mevcut ayarları görüntülemek için faydalıdır.
+## Overview
+`set` komutu, C Shell (csh) ortamında değişkenleri ayarlamak ve yönetmek için kullanılır. Bu komut, kullanıcıların shell ortamında değişkenler tanımlamasına ve bu değişkenlere değer atamasına olanak tanır.
 
-## Kullanım
+## Usage
 Temel sözdizimi aşağıdaki gibidir:
 
-```bash
-set [seçenekler] [argümanlar]
+```csh
+set [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-e`: Komutlardan biri hata verirse, kabuğu durdurur.
-- `-u`: Tanımsız değişkenlerin kullanılmasını engeller.
-- `-x`: Her komut çalıştırılmadan önce ekrana yazdırılır.
-- `-o`: Belirli bir seçenek ayarını değiştirmek için kullanılır (örneğin, `-o noclobber`).
+## Common Options
+- `-x`: Değişkenleri izlemek için kullanılır. Bu seçenek ile değişkenlerin değerleri her atandığında görüntülenir.
+- `-e`: Hata durumunda shell'in çıkmasını sağlar.
+- `-u`: Tanımlanmamış değişkenlere erişim sağlandığında hata verir.
 
-## Yaygın Örnekler
-1. **Hata durumunda kabuğu durdurma:**
-   ```bash
-   set -e
+## Common Examples
+Aşağıda `set` komutunun bazı pratik örnekleri bulunmaktadır:
+
+1. Basit bir değişken tanımlama:
+   ```csh
+   set myVar = "Merhaba Dünya"
    ```
-   Bu komut, bir hata oluşursa kabuğun çalışmasını durdurur.
 
-2. **Tanımsız değişken hatası:**
-   ```bash
-   set -u
-   echo $MY_VAR
+2. Değişkenin değerini görüntüleme:
+   ```csh
+   echo $myVar
    ```
-   `MY_VAR` tanımlı değilse, bu komut hata verecektir.
 
-3. **Komutları görüntüleme:**
-   ```bash
-   set -x
-   ls
+3. Birden fazla değişken tanımlama:
+   ```csh
+   set var1 = "Değer 1"
+   set var2 = "Değer 2"
    ```
-   `ls` komutu çalıştırılmadan önce, komutun kendisi ekrana yazdırılacaktır.
 
-4. **Seçenek ayarlama:**
-   ```bash
-   set -o noclobber
+4. Değişkenleri listeleme:
+   ```csh
+   set
    ```
-   Bu seçenek, mevcut dosyaların üzerine yazılmasını engeller.
 
-## İpuçları
-- `set` komutunu, betiklerinizde hata ayıklama amacıyla kullanarak hangi komutların çalıştığını görebilirsiniz.
-- Hata ayıklama sırasında `set -x` kullanmak, sorunları daha hızlı bulmanıza yardımcı olabilir.
-- Betiklerinizi daha güvenilir hale getirmek için `set -e` ve `set -u` seçeneklerini birlikte kullanmayı düşünün.
+5. Değişkenin değerini güncelleme:
+   ```csh
+   set myVar = "Yeni Değer"
+   ```
+
+## Tips
+- Değişken isimlerinde boşluk veya özel karakter kullanmaktan kaçının; bu, hata almanıza neden olabilir.
+- Değişkenlerinizi tanımlarken anlamlı isimler seçmek, kodunuzu daha okunabilir hale getirir.
+- `set` komutunu kullanırken dikkatli olun; yanlışlıkla önemli sistem değişkenlerini değiştirmek, shell oturumunuzu etkileyebilir.

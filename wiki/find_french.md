@@ -1,54 +1,53 @@
-# [Linux] Bash find utilisation : trouver des fichiers
+# [Linux] C Shell (csh) find Utilisation : rechercher des noms de fichiers
 
 ## Overview
-La commande `find` est utilisée pour rechercher des fichiers et des répertoires dans un système de fichiers. Elle permet de localiser des fichiers en fonction de divers critères tels que le nom, la taille, la date de modification, et bien plus encore.
+La commande `find` permet de rechercher des fichiers et des répertoires dans une hiérarchie de fichiers. Elle est très puissante et flexible, permettant de localiser des fichiers en fonction de divers critères comme le nom, la taille, la date de modification, et plus encore.
 
 ## Usage
 La syntaxe de base de la commande `find` est la suivante :
 
-```bash
+```csh
 find [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes de la commande `find` :
+Voici quelques options courantes que vous pouvez utiliser avec la commande `find` :
 
-- `-name [nom]` : recherche des fichiers par leur nom.
-- `-type [type]` : recherche des fichiers d'un type spécifique (par exemple, `f` pour les fichiers, `d` pour les répertoires).
+- `-name [nom]` : recherche des fichiers correspondant au nom spécifié.
+- `-type [type]` : filtre les résultats par type de fichier (par exemple, `f` pour fichier régulier, `d` pour répertoire).
 - `-size [taille]` : recherche des fichiers d'une taille spécifique.
-- `-mtime [n]` : recherche des fichiers modifiés il y a `n` jours.
+- `-mtime [jours]` : trouve des fichiers modifiés dans les derniers jours spécifiés.
 - `-exec [commande] {} \;` : exécute une commande sur chaque fichier trouvé.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `find` :
 
-1. **Trouver un fichier par nom :**
-   ```bash
-   find /chemin/vers/repertoire -name "fichier.txt"
+1. **Rechercher un fichier par nom :**
+   ```csh
+   find . -name "monfichier.txt"
    ```
 
-2. **Trouver tous les fichiers de type répertoire :**
-   ```bash
-   find /chemin/vers/repertoire -type d
+2. **Rechercher des fichiers de type répertoire :**
+   ```csh
+   find /chemin/vers/dossier -type d
    ```
 
-3. **Trouver des fichiers de plus de 1 Mo :**
-   ```bash
-   find /chemin/vers/repertoire -size +1M
+3. **Rechercher des fichiers de plus de 1 Mo :**
+   ```csh
+   find /chemin/vers/dossier -size +1M
    ```
 
-4. **Trouver des fichiers modifiés dans les 7 derniers jours :**
-   ```bash
-   find /chemin/vers/repertoire -mtime -7
+4. **Trouver des fichiers modifiés au cours des 7 derniers jours :**
+   ```csh
+   find . -mtime -7
    ```
 
 5. **Exécuter une commande sur chaque fichier trouvé :**
-   ```bash
-   find /chemin/vers/repertoire -name "*.log" -exec rm {} \;
+   ```csh
+   find . -name "*.log" -exec rm {} \;
    ```
 
 ## Tips
-- Utilisez des chemins absolus pour éviter toute confusion sur le répertoire de recherche.
-- Combinez plusieurs options pour affiner vos recherches.
-- Testez d'abord votre commande `find` sans l'option `-exec` pour voir quels fichiers seront affectés.
-- Pensez à utiliser `-print` pour afficher les résultats si vous ne spécifiez pas d'autres actions.
+- Utilisez `-print` pour afficher les résultats si vous utilisez des options qui ne le font pas par défaut.
+- Faites attention aux espaces dans les noms de fichiers ; utilisez des guillemets pour éviter les erreurs.
+- Testez vos commandes `find` sans l'option `-exec` d'abord pour vous assurer que vous ciblez les bons fichiers avant d'exécuter des actions destructrices.

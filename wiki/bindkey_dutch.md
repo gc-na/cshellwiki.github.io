@@ -1,44 +1,44 @@
-# [Linux] Bash bindkey gebruik: Toewijzen van toetsen aan functies
+# [Linux] C Shell (csh) bindkey gebruik: Toewijzen van sneltoetsen
 
 ## Overzicht
-De `bindkey` opdracht in Bash wordt gebruikt om toetsenbordtoetsen te koppelen aan specifieke functies of commando's in de shell. Dit kan handig zijn voor het aanpassen van je omgeving en het versnellen van je workflow.
+De `bindkey`-opdracht in C Shell (csh) wordt gebruikt om toetsenbordcommando's of sneltoetsen toe te wijzen aan specifieke acties of functies. Dit maakt het mogelijk om de efficiëntie van de shell-ervaring te verbeteren door vaak gebruikte commando's snel toegankelijk te maken.
 
 ## Gebruik
-De basis syntaxis van de `bindkey` opdracht is als volgt:
+De basis syntaxis van de `bindkey`-opdracht is als volgt:
 
-```bash
+```csh
 bindkey [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
-- `-e`: Schakelt over naar de Emacs-toetsenbindingen.
-- `-v`: Schakelt over naar de Vi-toetsenbindingen.
-- `-s`: Koppelt een toets aan een reeks commando's.
+## Veelvoorkomende opties
+- `-e`: Schakelt de Emacs-modus in voor toetsenbindingen.
+- `-v`: Schakelt de vi-modus in voor toetsenbindingen.
+- `-s`: Bind een toets aan een reeks karakters.
 
-## Veelvoorkomende Voorbeelden
+## Veelvoorkomende voorbeelden
 
-### Voorbeeld 1: Toetsenbinding voor het wissen van de regel
-Om de toets `Ctrl + W` te koppelen aan het wissen van de huidige regel, gebruik je:
+### Voorbeeld 1: Sneltoets toewijzen
+Toewijzen van de toets `Ctrl + x` om het commando `ls -l` uit te voeren:
 
-```bash
-bindkey '^W' backward-kill-line
+```csh
+bindkey "^X" "ls -l\n"
 ```
 
-### Voorbeeld 2: Toetsenbinding voor het uitvoeren van een specifiek commando
-Als je de toets `F5` wilt gebruiken om een script uit te voeren, kun je dit doen:
+### Voorbeeld 2: Schakelen tussen modi
+Schakel over naar de Emacs-modus voor toetsenbindingen:
 
-```bash
-bindkey -s '^[15~' 'bash /pad/naar/script.sh\n'
-```
-
-### Voorbeeld 3: Schakelen tussen Emacs en Vi modus
-Om over te schakelen naar de Emacs modus, gebruik je:
-
-```bash
+```csh
 bindkey -e
+```
+
+### Voorbeeld 3: Een reeks karakters binden
+Bind de toets `F2` aan de reeks `echo "Hello, World!"`:
+
+```csh
+bindkey "F2" "echo \"Hello, World!\"\n"
 ```
 
 ## Tips
 - Experimenteer met verschillende toetsenbindingen om je workflow te optimaliseren.
-- Documenteer je toetsenbindingen, zodat je ze later gemakkelijk kunt terugvinden of delen.
-- Gebruik de `bindkey -L` opdracht om een lijst van huidige toetsenbindingen te bekijken.
+- Documenteer je bindings in een configuratiebestand zodat je ze gemakkelijk kunt terugvinden of opnieuw instellen.
+- Gebruik de `bindkey -L` opdracht om een lijst van huidige toetsenbindingen te bekijken en te beheren.

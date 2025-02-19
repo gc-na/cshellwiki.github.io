@@ -1,36 +1,36 @@
-# [Linux] Bash vipw użycie: Edytowanie pliku haseł
+# [Linux] C Shell (csh) vipw użycie: Edytowanie pliku haseł
 
 ## Overview
-Polecenie `vipw` służy do bezpiecznego edytowania pliku haseł systemu. Umożliwia ono modyfikację pliku `/etc/passwd` oraz `/etc/shadow` w sposób, który zapobiega uszkodzeniu tych plików przez jednoczesne edytowanie ich przez wielu użytkowników.
+Polecenie `vipw` służy do bezpiecznego edytowania pliku haseł systemowych. Umożliwia użytkownikom modyfikację pliku `/etc/passwd` oraz `/etc/shadow` w sposób, który minimalizuje ryzyko uszkodzenia tych plików.
 
 ## Usage
-Podstawowa składnia polecenia `vipw` jest następująca:
+Podstawowa składnia polecenia `vipw` wygląda następująco:
 
-```bash
+```csh
 vipw [opcje]
 ```
 
 ## Common Options
-- `-s`: Edytuje plik `/etc/shadow` zamiast `/etc/passwd`.
-- `-h`: Wyświetla pomoc dotycząca użycia polecenia.
+- `-s` : Edytuje plik `/etc/shadow` zamiast `/etc/passwd`.
+- `-l` : Używa edytora w trybie blokady, co zapobiega równoczesnemu edytowaniu przez wielu użytkowników.
 
 ## Common Examples
-1. Edytowanie pliku haseł:
-   ```bash
+1. Aby edytować plik haseł:
+   ```csh
    vipw
    ```
 
-2. Edytowanie pliku haseł z użyciem opcji `-s`:
-   ```bash
+2. Aby edytować plik haseł z użyciem opcji blokady:
+   ```csh
+   vipw -l
+   ```
+
+3. Aby edytować plik haseł systemowych:
+   ```csh
    vipw -s
    ```
 
-3. Wyświetlenie pomocy:
-   ```bash
-   vipw -h
-   ```
-
 ## Tips
-- Zawsze używaj `vipw` do edytowania plików haseł, aby uniknąć problemów z równoczesnym dostępem.
-- Upewnij się, że masz odpowiednie uprawnienia do edytowania plików haseł.
-- Po zakończeniu edytowania, sprawdź poprawność wprowadzonych zmian, aby uniknąć problemów z logowaniem.
+- Zawsze wykonuj kopię zapasową plików haseł przed ich edytowaniem, aby uniknąć utraty danych.
+- Używaj opcji blokady, aby zapewnić, że tylko jeden użytkownik edytuje plik w danym momencie.
+- Sprawdzaj poprawność wprowadzonych zmian przed zapisaniem pliku, aby uniknąć problemów z logowaniem użytkowników.

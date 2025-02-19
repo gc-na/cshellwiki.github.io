@@ -1,49 +1,44 @@
-# [Linux] Bash fold uso: Ajustar el ancho de las líneas de texto
+# [Linux] C Shell (csh) fold uso: Ajustar líneas de texto
 
 ## Overview
-El comando `fold` se utiliza en Bash para ajustar el ancho de las líneas de texto. Permite dividir líneas largas en varias más cortas, lo que facilita la lectura y la visualización en terminales con un ancho limitado.
+El comando `fold` se utiliza para ajustar líneas de texto a un ancho específico. Esto es útil para formatear la salida de texto, asegurando que no exceda un número determinado de caracteres por línea.
 
 ## Usage
 La sintaxis básica del comando `fold` es la siguiente:
 
-```bash
-fold [opciones] [archivo]
+```csh
+fold [opciones] [argumentos]
 ```
-
-Si no se especifica un archivo, `fold` leerá desde la entrada estándar.
 
 ## Common Options
 - `-w, --width=N`: Establece el ancho máximo de las líneas a N caracteres.
-- `-s, --spaces`: Divide las líneas en espacios en lugar de cortar en medio de una palabra.
+- `-s, --spaces`: Ajusta las líneas en los espacios más cercanos al ancho especificado, en lugar de cortar en medio de una palabra.
 - `-b, --bytes`: Cuenta el ancho en bytes en lugar de caracteres.
 
 ## Common Examples
+A continuación, se presentan algunos ejemplos prácticos del uso del comando `fold`:
 
-1. **Ajustar el ancho de una línea a 50 caracteres:**
+1. Ajustar un archivo de texto a 50 caracteres por línea:
+   ```csh
+   fold -w 50 archivo.txt
+   ```
 
-```bash
-fold -w 50 archivo.txt
-```
+2. Ajustar la salida de un comando y redirigirla a un archivo:
+   ```csh
+   ls -l | fold -w 80 > salida.txt
+   ```
 
-2. **Dividir líneas en espacios:**
+3. Ajustar texto y mantener las palabras completas:
+   ```csh
+   fold -s -w 30 archivo.txt
+   ```
 
-```bash
-fold -s -w 30 archivo.txt
-```
-
-3. **Contar el ancho en bytes y ajustar a 40 bytes:**
-
-```bash
-fold -b -w 40 archivo.txt
-```
-
-4. **Usar fold con entrada estándar:**
-
-```bash
-echo "Este es un ejemplo de una línea muy larga que necesita ser ajustada." | fold -w 20
-```
+4. Contar el ancho en bytes al ajustar:
+   ```csh
+   fold -b -w 40 archivo.txt
+   ```
 
 ## Tips
-- Utiliza la opción `-s` si deseas evitar cortar palabras, lo que mejora la legibilidad del texto.
-- Experimenta con diferentes anchos para encontrar el que mejor se adapte a tu terminal o dispositivo.
-- Puedes combinar `fold` con otros comandos como `cat` o `grep` para procesar texto de manera más efectiva.
+- Utiliza la opción `-s` si deseas evitar cortar palabras, lo que puede hacer que el texto sea más legible.
+- Experimenta con diferentes anchos para encontrar el que mejor se adapte a tus necesidades de visualización.
+- Recuerda que `fold` es útil en combinación con otros comandos mediante tuberías para formatear la salida de manera efectiva.

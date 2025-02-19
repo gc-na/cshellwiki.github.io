@@ -1,49 +1,54 @@
-# [Linux] Bash snap użycie: Zarządzanie aplikacjami w systemie Linux
+# [Linux] C Shell (csh) snap użycie: zarządzanie pakietami
 
 ## Overview
-Polecenie `snap` jest narzędziem do zarządzania aplikacjami w formacie Snap w systemie Linux. Umożliwia instalację, aktualizację, usuwanie oraz zarządzanie aplikacjami, które są pakowane w kontenerach, co zapewnia ich niezależność od systemu operacyjnego.
+Polecenie `snap` służy do zarządzania aplikacjami w systemie Linux, które są zainstalowane jako pakiety Snap. Umożliwia instalację, aktualizację, usuwanie oraz zarządzanie aplikacjami w prosty sposób.
 
 ## Usage
-Podstawowa składnia polecenia `snap` jest następująca:
+Podstawowa składnia polecenia `snap` wygląda następująco:
 
-```bash
+```csh
 snap [opcje] [argumenty]
 ```
 
 ## Common Options
-- `install`: Instaluje aplikację ze sklepu Snap.
+- `install`: Instaluje aplikację z repozytorium Snap.
 - `remove`: Usuwa zainstalowaną aplikację.
 - `list`: Wyświetla listę zainstalowanych aplikacji.
 - `refresh`: Aktualizuje zainstalowane aplikacje do najnowszej wersji.
-- `info`: Wyświetla szczegóły dotyczące danej aplikacji.
+- `info`: Wyświetla szczegółowe informacje o danej aplikacji.
 
 ## Common Examples
-1. **Instalacja aplikacji**
-   ```bash
-   snap install nazwa-aplikacji
-   ```
+- Aby zainstalować aplikację, użyj:
 
-2. **Usunięcie aplikacji**
-   ```bash
-   snap remove nazwa-aplikacji
-   ```
+```csh
+snap install nazwa_aplikacji
+```
 
-3. **Wyświetlenie listy zainstalowanych aplikacji**
-   ```bash
-   snap list
-   ```
+- Aby usunąć aplikację, wykonaj:
 
-4. **Aktualizacja aplikacji**
-   ```bash
-   snap refresh
-   ```
+```csh
+snap remove nazwa_aplikacji
+```
 
-5. **Uzyskanie informacji o aplikacji**
-   ```bash
-   snap info nazwa-aplikacji
-   ```
+- Aby wyświetlić listę zainstalowanych aplikacji, użyj:
+
+```csh
+snap list
+```
+
+- Aby zaktualizować wszystkie zainstalowane aplikacje, wpisz:
+
+```csh
+snap refresh
+```
+
+- Aby uzyskać informacje o konkretnej aplikacji, użyj:
+
+```csh
+snap info nazwa_aplikacji
+```
 
 ## Tips
-- Używaj opcji `--classic`, gdy aplikacja wymaga dostępu do pełnych uprawnień systemowych.
-- Regularnie aktualizuj aplikacje za pomocą `snap refresh`, aby korzystać z najnowszych funkcji i poprawek bezpieczeństwa.
-- Sprawdzaj dostępność aplikacji w sklepie Snap, aby znaleźć alternatywy dla tradycyjnych pakietów.
+- Regularnie aktualizuj swoje aplikacje za pomocą `snap refresh`, aby korzystać z najnowszych funkcji i poprawek.
+- Sprawdzaj informacje o aplikacjach przed ich instalacją, aby upewnić się, że spełniają Twoje wymagania.
+- Używaj opcji `--help` z poleceniem `snap`, aby uzyskać więcej informacji na temat dostępnych opcji i argumentów.

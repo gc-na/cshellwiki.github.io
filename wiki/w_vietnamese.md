@@ -1,7 +1,7 @@
-# [Linux] Bash w: Xem thông tin người dùng đang đăng nhập
+# [Hệ điều hành Unix] C Shell (csh) w: Xem thông tin người dùng đang đăng nhập
 
 ## Overview
-Lệnh `w` trong Bash được sử dụng để hiển thị thông tin về người dùng đang đăng nhập vào hệ thống, bao gồm tên người dùng, thời gian đăng nhập, thời gian hoạt động, và các hoạt động hiện tại của họ. Đây là một công cụ hữu ích để theo dõi hoạt động của người dùng trên máy chủ.
+Lệnh `w` trong C Shell (csh) được sử dụng để hiển thị thông tin về người dùng đang đăng nhập vào hệ thống, bao gồm thời gian hoạt động, địa chỉ IP và các tiến trình mà họ đang chạy.
 
 ## Usage
 Cú pháp cơ bản của lệnh `w` như sau:
@@ -10,34 +10,32 @@ w [options] [arguments]
 ```
 
 ## Common Options
-- `-h`: Không hiển thị tiêu đề.
-- `-s`: Hiển thị thông tin ngắn gọn.
-- `-u`: Hiển thị thời gian hoạt động của người dùng.
+- `-h`: Ẩn tiêu đề của thông tin.
+- `-s`: Hiển thị thông tin ngắn gọn hơn.
+- `-f`: Hiển thị thông tin về tên máy chủ.
 
 ## Common Examples
-Dưới đây là một số ví dụ thực tế khi sử dụng lệnh `w`:
+- Xem thông tin người dùng đang đăng nhập:
+  ```bash
+  w
+  ```
 
-1. **Hiển thị thông tin người dùng đang đăng nhập:**
-   ```bash
-   w
-   ```
+- Xem thông tin người dùng mà không có tiêu đề:
+  ```bash
+  w -h
+  ```
 
-2. **Hiển thị thông tin mà không có tiêu đề:**
-   ```bash
-   w -h
-   ```
+- Xem thông tin ngắn gọn:
+  ```bash
+  w -s
+  ```
 
-3. **Hiển thị thông tin ngắn gọn:**
-   ```bash
-   w -s
-   ```
-
-4. **Hiển thị thông tin với thời gian hoạt động của người dùng:**
-   ```bash
-   w -u
-   ```
+- Xem thông tin với tên máy chủ:
+  ```bash
+  w -f
+  ```
 
 ## Tips
-- Sử dụng lệnh `w` để theo dõi hoạt động của người dùng trên máy chủ, đặc biệt là trong môi trường đa người dùng.
-- Kết hợp lệnh `w` với các lệnh khác như `grep` để lọc thông tin theo tên người dùng cụ thể.
-- Thường xuyên kiểm tra thông tin từ lệnh `w` để phát hiện các hoạt động bất thường trên hệ thống.
+- Sử dụng `w` để theo dõi hoạt động của người dùng trên hệ thống, giúp quản trị viên nắm bắt tình hình sử dụng tài nguyên.
+- Kết hợp lệnh `w` với các công cụ khác như `grep` để lọc thông tin theo nhu cầu cụ thể.
+- Thường xuyên kiểm tra thông tin người dùng để phát hiện các hoạt động bất thường hoặc không mong muốn.

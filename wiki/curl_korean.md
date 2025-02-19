@@ -1,49 +1,49 @@
-# [리눅스] Bash curl 사용법: 웹에서 데이터 전송 및 수신
+# [리눅스] C Shell (csh) curl 사용법: 웹에서 데이터 전송 및 다운로드
 
 ## Overview
-curl 명령어는 URL을 통해 데이터를 전송하거나 수신하는 데 사용되는 강력한 도구입니다. HTTP, HTTPS, FTP 등 다양한 프로토콜을 지원하며, API와의 상호작용에도 자주 사용됩니다.
+curl 명령어는 URL을 통해 데이터를 전송하거나 다운로드하는 데 사용됩니다. 다양한 프로토콜을 지원하며, 웹 API와의 상호작용이나 파일 다운로드에 유용합니다.
 
 ## Usage
 curl의 기본 구문은 다음과 같습니다:
 
-```bash
+```csh
 curl [options] [arguments]
 ```
 
 ## Common Options
-- `-X, --request <command>`: 사용할 HTTP 메서드 지정 (예: GET, POST).
-- `-d, --data <data>`: POST 요청 시 전송할 데이터 지정.
-- `-H, --header <header>`: 사용자 정의 헤더 추가.
-- `-o, --output <file>`: 응답 내용을 파일로 저장.
-- `-I, --head`: HTTP 헤더만 요청.
+- `-O`: 원본 파일 이름으로 파일을 다운로드합니다.
+- `-L`: 리다이렉션을 따라갑니다.
+- `-I`: HTTP 헤더만 가져옵니다.
+- `-d`: POST 요청을 보낼 때 데이터를 전송합니다.
+- `-u`: 사용자 인증 정보를 제공합니다.
 
 ## Common Examples
-1. **웹 페이지 가져오기**
-   ```bash
-   curl https://www.example.com
-   ```
+- 웹 페이지 다운로드:
+```csh
+curl -O http://example.com/file.txt
+```
 
-2. **POST 요청 보내기**
-   ```bash
-   curl -X POST -d "name=John&age=30" https://www.example.com/api
-   ```
+- 리다이렉션을 따라가며 다운로드:
+```csh
+curl -L -O http://example.com/redirect
+```
 
-3. **헤더 추가하기**
-   ```bash
-   curl -H "Authorization: Bearer your_token" https://www.example.com/api
-   ```
+- HTTP 헤더 가져오기:
+```csh
+curl -I http://example.com
+```
 
-4. **응답을 파일로 저장하기**
-   ```bash
-   curl -o response.html https://www.example.com
-   ```
+- POST 요청으로 데이터 전송:
+```csh
+curl -d "param1=value1&param2=value2" http://example.com/api
+```
 
-5. **HTTP 헤더만 요청하기**
-   ```bash
-   curl -I https://www.example.com
-   ```
+- 사용자 인증을 통한 요청:
+```csh
+curl -u username:password http://example.com/protected
+```
 
 ## Tips
-- API와 상호작용할 때는 `-H` 옵션을 사용하여 필요한 인증 헤더를 추가하세요.
-- `-o` 옵션을 사용하여 응답을 파일로 저장하면, 나중에 쉽게 참조할 수 있습니다.
-- `-v` 옵션을 추가하면 요청과 응답의 상세 정보를 볼 수 있어 디버깅에 유용합니다.
+- curl 명령어는 다양한 프로토콜을 지원하므로, 필요에 따라 적절한 옵션을 선택하세요.
+- API와 상호작용할 때는 `-H` 옵션을 사용하여 헤더를 추가할 수 있습니다.
+- 다운로드 중 진행 상황을 확인하려면 `-#` 옵션을 사용해 보세요.

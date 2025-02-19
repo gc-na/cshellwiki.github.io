@@ -1,43 +1,43 @@
-# [Linux] Bash unalias użycie: Usuwa aliasy z powłoki
+# [Linux] C Shell (csh) unalias: Usuwanie aliasów
 
 ## Overview
-Polecenie `unalias` w Bash służy do usuwania aliasów, które zostały wcześniej zdefiniowane w bieżącej sesji powłoki. Dzięki temu można przywrócić domyślne zachowanie poleceń, które zostały zmodyfikowane przez aliasy.
+Polecenie `unalias` w C Shell (csh) służy do usuwania wcześniej zdefiniowanych aliasów. Alias to skrót, który pozwala na zastąpienie długiego polecenia krótszym i łatwiejszym do zapamiętania. Używając `unalias`, możesz przywrócić oryginalne zachowanie poleceń, eliminując aliasy.
 
 ## Usage
-Podstawowa składnia polecenia `unalias` wygląda następująco:
+Podstawowa składnia polecenia `unalias` jest następująca:
 
-```bash
+```
 unalias [opcje] [argumenty]
 ```
 
 ## Common Options
 - `-a`: Usuwa wszystkie zdefiniowane aliasy.
-- `-p`: Wyświetla wszystkie aktualnie zdefiniowane aliasy.
+- `-h`: Wyświetla pomoc dotycząca użycia polecenia.
 
 ## Common Examples
 
-### Usunięcie pojedynczego aliasu
-Aby usunąć konkretny alias, użyj polecenia:
+### Usuwanie pojedynczego aliasu
+Aby usunąć pojedynczy alias, użyj polecenia:
 
-```bash
-unalias nazwa_aliasu
+```csh
+unalias myalias
 ```
 
-### Usunięcie wszystkich aliasów
+### Usuwanie wszystkich aliasów
 Aby usunąć wszystkie aliasy w bieżącej sesji, użyj opcji `-a`:
 
-```bash
+```csh
 unalias -a
 ```
 
-### Wyświetlenie wszystkich aliasów
-Aby zobaczyć wszystkie aktualnie zdefiniowane aliasy, użyj opcji `-p`:
+### Wyświetlanie pomocy
+Aby uzyskać pomoc dotyczącą polecenia `unalias`, użyj opcji `-h`:
 
-```bash
-unalias -p
+```csh
+unalias -h
 ```
 
 ## Tips
-- Zawsze sprawdzaj, jakie aliasy są zdefiniowane w twojej sesji, zanim zdecydujesz się je usunąć.
-- Jeśli często korzystasz z aliasów, rozważ dodanie ich do pliku konfiguracyjnego, aby były dostępne w każdej sesji.
-- Używaj `unalias` ostrożnie, aby nie usunąć aliasów, które mogą być przydatne w twojej pracy.
+- Zawsze sprawdzaj, jakie aliasy są zdefiniowane w twoim środowisku, używając polecenia `alias`, zanim zdecydujesz się na ich usunięcie.
+- Używaj `unalias` z ostrożnością, aby nie usunąć aliasów, które mogą być przydatne w twojej pracy.
+- Rozważ zapisanie aliasów w pliku konfiguracyjnym, aby móc je łatwo przywrócić w przyszłości, jeśli zajdzie taka potrzeba.

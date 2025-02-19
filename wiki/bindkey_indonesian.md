@@ -1,45 +1,49 @@
-# [Linux] Bash bindkey Penggunaan: Mengatur pintasan keyboard di shell
+# [Sistem Operasi] C Shell (csh) bindkey: [mengatur pintasan keyboard]
 
 ## Overview
-Perintah `bindkey` digunakan untuk mengatur dan mengelola pintasan keyboard di shell, terutama dalam lingkungan yang menggunakan Zsh. Dengan `bindkey`, pengguna dapat mengonfigurasi bagaimana kombinasi tombol tertentu berfungsi, meningkatkan efisiensi saat bekerja di terminal.
+Perintah `bindkey` dalam C Shell (csh) digunakan untuk mengatur dan mengelola pintasan keyboard. Dengan menggunakan `bindkey`, pengguna dapat mengaitkan kombinasi tombol tertentu dengan perintah atau fungsi yang diinginkan, sehingga mempercepat alur kerja dan meningkatkan efisiensi saat menggunakan shell.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `bindkey`:
 
-```bash
+```csh
 bindkey [options] [arguments]
 ```
 
 ## Common Options
-- `-L`: Menampilkan daftar semua pintasan yang terikat saat ini.
-- `-d`: Mengatur mode default untuk pintasan.
-- `-e`: Mengatur mode Emacs untuk pintasan.
-- `-v`: Mengatur mode Vi untuk pintasan.
+Beberapa opsi umum yang dapat digunakan dengan `bindkey` adalah sebagai berikut:
+
+- `-l`: Menampilkan semua pengikatan kunci saat ini.
+- `-e`: Mengatur mode pengikatan kunci ke Emacs.
+- `-v`: Mengatur mode pengikatan kunci ke Vi.
+- `-s`: Mengikat kunci untuk menghasilkan urutan karakter tertentu.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan `bindkey`:
+Berikut adalah beberapa contoh praktis penggunaan `bindkey`:
 
-1. **Menampilkan semua pintasan yang terikat**:
-   ```bash
-   bindkey -L
+1. **Menampilkan pengikatan kunci saat ini:**
+   ```csh
+   bindkey -l
    ```
 
-2. **Mengatur pintasan untuk menghapus karakter sebelum kursor**:
-   ```bash
-   bindkey '^H' backward-delete-char
+2. **Mengatur pintasan keyboard untuk mengeksekusi perintah tertentu:**
+   ```csh
+   bindkey "^X" "ls -l"
+   ```
+   Dalam contoh ini, menekan `Ctrl + X` akan menjalankan perintah `ls -l`.
+
+3. **Mengubah mode pengikatan kunci ke Emacs:**
+   ```csh
+   bindkey -e
    ```
 
-3. **Mengatur pintasan untuk menjalankan perintah tertentu**:
-   ```bash
-   bindkey '^X^R' run-command
+4. **Mengikat kombinasi tombol untuk menghasilkan teks:**
+   ```csh
+   bindkey -s "^G" "Goodbye!\n"
    ```
-
-4. **Mengatur mode Vi untuk pintasan**:
-   ```bash
-   bindkey -v
-   ```
+   Dengan ini, menekan `Ctrl + G` akan menghasilkan teks "Goodbye!" diikuti dengan baris baru.
 
 ## Tips
-- Selalu periksa pintasan yang sudah ada dengan `bindkey -L` sebelum menambahkan yang baru untuk menghindari konflik.
-- Gunakan mode yang sesuai (Emacs atau Vi) sesuai dengan preferensi Anda untuk pengalaman yang lebih nyaman.
-- Simpan konfigurasi `bindkey` Anda di file `.zshrc` agar tetap berlaku setiap kali Anda membuka terminal baru.
+- Selalu periksa pengikatan kunci yang ada sebelum menambahkan yang baru untuk menghindari konflik.
+- Gunakan opsi `-l` secara berkala untuk melihat semua pengikatan kunci yang aktif.
+- Simpan pengaturan `bindkey` dalam file konfigurasi shell Anda agar tetap tersedia di sesi berikutnya.

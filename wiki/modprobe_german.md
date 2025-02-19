@@ -1,43 +1,43 @@
-# [Linux] Bash modprobe Verwendung: Modulverwaltung im Kernel
+# [Linux] C Shell (csh) modprobe Verwendung: Modulverwaltung im Linux-Kernel
 
 ## Übersicht
-Der Befehl `modprobe` wird verwendet, um Kernel-Module zu laden und zu entladen. Er verwaltet die Abhängigkeiten zwischen den Modulen und sorgt dafür, dass alle erforderlichen Module automatisch geladen werden.
+Der Befehl `modprobe` wird verwendet, um Kernel-Module in das Linux-Betriebssystem zu laden oder zu entfernen. Er kümmert sich um die Abhängigkeiten zwischen den Modulen und stellt sicher, dass alle erforderlichen Module geladen werden.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```
+```csh
 modprobe [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-r` oder `--remove`: Entfernt ein Modul aus dem Kernel.
-- `-n` oder `--dry-run`: Zeigt an, was passieren würde, ohne tatsächlich Änderungen vorzunehmen.
-- `-v` oder `--verbose`: Gibt detaillierte Informationen über die ausgeführten Aktionen aus.
+- `-r`: Entfernt ein Modul.
+- `--list`: Listet alle verfügbaren Module auf.
+- `--show`: Zeigt die Abhängigkeiten eines Moduls an.
+- `-v`: Aktiviert den ausführlichen Modus, um mehr Informationen während der Ausführung anzuzeigen.
 
 ## Häufige Beispiele
+- **Ein Modul laden:**
+  ```csh
+  modprobe <modulname>
+  ```
 
-1. **Ein Modul laden**
-   ```bash
-   sudo modprobe <modulname>
-   ```
+- **Ein Modul entfernen:**
+  ```csh
+  modprobe -r <modulname>
+  ```
 
-2. **Ein Modul entfernen**
-   ```bash
-   sudo modprobe -r <modulname>
-   ```
+- **Liste aller verfügbaren Module anzeigen:**
+  ```csh
+  modprobe --list
+  ```
 
-3. **Überprüfen, ob ein Modul geladen ist**
-   ```bash
-   lsmod | grep <modulname>
-   ```
-
-4. **Ein Modul im "Dry-Run"-Modus laden**
-   ```bash
-   sudo modprobe -n <modulname>
-   ```
+- **Abhängigkeiten eines Moduls anzeigen:**
+  ```csh
+  modprobe --show <modulname>
+  ```
 
 ## Tipps
-- Verwenden Sie `lsmod`, um eine Liste aller aktuell geladenen Module zu erhalten.
-- Stellen Sie sicher, dass Sie die richtigen Berechtigungen haben (z.B. durch Verwendung von `sudo`), um Module zu laden oder zu entfernen.
-- Überprüfen Sie die Modulabhängigkeiten mit `modinfo <modulname>`, um sicherzustellen, dass alle erforderlichen Module vorhanden sind.
+- Verwenden Sie den `-v` Schalter, um detaillierte Informationen zu erhalten, wenn Sie Probleme beim Laden oder Entfernen von Modulen haben.
+- Überprüfen Sie die Abhängigkeiten eines Moduls, bevor Sie es entfernen, um sicherzustellen, dass keine anderen Module betroffen sind.
+- Es ist ratsam, die Module nur mit root-Rechten zu verwalten, um Berechtigungsprobleme zu vermeiden.

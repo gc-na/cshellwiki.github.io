@@ -1,50 +1,45 @@
-# [Linux] Bash mtr Kullanımı: Ağ bağlantı durumu ve yol izleme
+# [Linux] C Shell (csh) mtr Kullanımı: Ağ bağlantılarını izleme aracı
 
-## Overview
-mtr (My Traceroute), ağ bağlantı durumu ve yol izleme aracı olarak kullanılan bir komut satırı aracıdır. mtr, bir hedefe olan bağlantının kalitesini ve yolunu analiz ederek, ağdaki olası sorunları tespit etmeye yardımcı olur.
+## Genel Bakış
+mtr (My Traceroute), ağ bağlantılarını izlemek ve analiz etmek için kullanılan bir araçtır. Hem ping hem de traceroute işlevlerini bir araya getirerek, bir hedefe olan bağlantının kalitesini ve yolunu görsel olarak sunar.
 
-## Usage
+## Kullanım
 Temel komut yapısı aşağıdaki gibidir:
 
-```
-mtr [options] [arguments]
-```
-
-## Common Options
-- `-r`: Rapor modunu etkinleştirir, sonuçları bir rapor şeklinde gösterir.
-- `-c <count>`: Belirtilen sayıda ping gönderir ve ardından çıkış yapar.
-- `-i <interval>`: Ping gönderme aralığını saniye cinsinden ayarlar.
-- `-p`: Port numarasını belirtir, varsayılan olarak 33434 kullanılır.
-- `-n`: IP adreslerini çözümlemeden gösterir, bu sayede daha hızlı sonuç alırsınız.
-
-## Common Examples
-Aşağıda mtr komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
-
-### Temel Kullanım
-Belirli bir hedefe (örneğin, google.com) mtr ile bağlantı durumu kontrolü:
-```bash
-mtr google.com
+```csh
+mtr [seçenekler] [argümanlar]
 ```
 
-### Rapor Modu
-Sonuçları rapor formatında almak için:
-```bash
-mtr -r google.com
-```
+## Yaygın Seçenekler
+- `-r`: Rapor modunda çalışır ve sonuçları daha düzenli bir formatta gösterir.
+- `-c [sayı]`: Belirtilen sayıda paket gönderir ve ardından durur.
+- `-i [saniye]`: Paketler arasında bekleme süresini ayarlar.
+- `-p`: Port numarasını belirtir; varsayılan olarak 33434 kullanılır.
 
-### Belirli Sayıda Ping Gönderme
-5 ping gönderip sonuçları gösterme:
-```bash
-mtr -c 5 google.com
-```
+## Yaygın Örnekler
+Aşağıda mtr komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-### IP Çözümlemesi Yapmadan Kullanma
-IP adreslerini çözümlemeden doğrudan kullanmak için:
-```bash
-mtr -n google.com
-```
+1. Basit bir mtr komutu ile bir hedefe bağlanmak:
+   ```csh
+   mtr example.com
+   ```
 
-## Tips
-- mtr komutunu kullanırken, ağ bağlantı sorunlarını tespit etmek için farklı hedefler üzerinde denemeler yapın.
-- Sonuçları daha iyi analiz edebilmek için `-r` seçeneği ile rapor modunu kullanın.
-- Ping aralığını ayarlamak için `-i` seçeneğini kullanarak belirli bir süre aralığında test yapabilirsiniz.
+2. Rapor modunda çalıştırmak:
+   ```csh
+   mtr -r example.com
+   ```
+
+3. Belirli bir sayıda paket göndererek test yapmak:
+   ```csh
+   mtr -c 10 example.com
+   ```
+
+4. Paketler arasında 1 saniye bekleyerek izleme yapmak:
+   ```csh
+   mtr -i 1 example.com
+   ```
+
+## İpuçları
+- mtr komutunu çalıştırmadan önce ağ bağlantınızın aktif olduğundan emin olun.
+- Sonuçları daha iyi analiz edebilmek için `-r` seçeneğini kullanarak rapor modunda çalıştırmayı deneyin.
+- Ağ sorunlarını tespit ederken, farklı hedeflerle test yaparak karşılaştırmalar yapabilirsiniz.

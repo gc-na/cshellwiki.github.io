@@ -1,51 +1,47 @@
-# [Linux] Bash hexdump Kullanımı: Dosyaların ikili gösterimini görüntüleme
+# [Linux] C Shell (csh) hexdump Kullanımı: İkili dosyaların hex formatında görüntülenmesi
 
-## Overview
-`hexdump` komutu, dosyaların ikili (binary) verilerini onaltılık (hexadecimal) formatta görüntülemek için kullanılır. Bu, dosyaların içeriğini analiz etmek veya hata ayıklamak için faydalı olabilir.
+## Genel Bakış
+`hexdump` komutu, ikili dosyaların içeriğini hexadecimal (hex) formatında görüntülemek için kullanılır. Bu komut, dosyaların iç yapısını analiz etmek veya hata ayıklamak için oldukça faydalıdır.
 
-## Usage
+## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-```bash
-hexdump [options] [arguments]
+```
+hexdump [opsiyonlar] [argümanlar]
 ```
 
-## Common Options
-- `-C`: Onaltılık ve ASCII gösterimini birlikte görüntüler.
-- `-n N`: Sadece ilk N baytı görüntüler.
-- `-v`: Tüm veriyi görüntüler, tekrar eden baytları da dahil eder.
-- `-e FORMAT`: Özel bir format belirleyerek çıktıyı özelleştirir.
+## Yaygın Opsiyonlar
+- `-C`: Hexadecimal çıktıyı ASCII karşılıklarıyla birlikte gösterir.
+- `-n <byte sayısı>`: Sadece belirtilen byte sayısını görüntüler.
+- `-v`: Tüm verileri gösterir; varsayılan olarak tekrarlayan byte'lar gizlenir.
+- `-e <format>`: Çıktının formatını özelleştirir.
 
-## Common Examples
-Aşağıda `hexdump` komutunun bazı yaygın kullanımları verilmiştir:
+## Yaygın Örnekler
+Aşağıda `hexdump` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-### 1. Basit Hexdump
-Bir dosyanın içeriğini onaltılık formatta görüntülemek için:
-```bash
-hexdump dosya.txt
-```
+1. Bir dosyanın içeriğini hexadecimal formatında görüntülemek:
+   ```csh
+   hexdump dosya.txt
+   ```
 
-### 2. Onaltılık ve ASCII Gösterimi
-Onaltılık ve ASCII gösterimini birlikte görüntülemek için:
-```bash
-hexdump -C dosya.txt
-```
+2. Sadece ilk 16 byte'ı görüntülemek:
+   ```csh
+   hexdump -n 16 dosya.bin
+   ```
 
-### 3. İlk N Baytı Görüntüleme
-Sadece ilk 16 baytı görüntülemek için:
-```bash
-hexdump -n 16 dosya.txt
-```
+3. Hexadecimal çıktıyı ASCII karşılıklarıyla birlikte göstermek:
+   ```csh
+   hexdump -C dosya.txt
+   ```
 
-### 4. Özel Format ile Çıktı
-Özel bir format belirleyerek çıktıyı özelleştirmek için:
-```bash
-hexdump -e '16/1 "%02x " "\n"' dosya.txt
-```
+4. Özel bir format ile çıktı almak:
+   ```csh
+   hexdump -e '16/1 "%02x " "\n"' dosya.bin
+   ```
 
-## Tips
-- `hexdump` çıktısını daha iyi anlamak için `-C` seçeneğini kullanarak hem onaltılık hem de ASCII çıktısını görüntüleyin.
-- Büyük dosyalarla çalışıyorsanız, `-n` seçeneği ile sadece belirli bir bayt aralığını görüntülemek, analiz sürecini hızlandırabilir.
-- Çıktıyı bir dosyaya yönlendirmek için `>` operatörünü kullanarak sonuçları kaydedebilirsiniz:
-```bash
-hexdump dosya.txt > cikti.txt
-```
+## İpuçları
+- `hexdump` komutunu kullanmadan önce dosyanın boyutunu kontrol etmek, gereksiz büyük dosyaların çıktısını almak istemediğinizde faydalı olabilir.
+- Çıktıyı bir dosyaya yönlendirmek için `>` operatörünü kullanabilirsiniz:
+  ```csh
+  hexdump dosya.txt > cikti.txt
+  ```
+- Farklı format seçeneklerini denemek, çıktıyı daha okunabilir hale getirebilir. Özellikle `-e` opsiyonu ile özelleştirilmiş formatlar oluşturmak oldukça yararlıdır.

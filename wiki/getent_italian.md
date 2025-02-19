@@ -1,59 +1,52 @@
-# [Linux] Bash getent utilizzo: Recupera informazioni da database di sistema
+# [Linux] C Shell (csh) getent utilizzo: recupera informazioni da database di sistema
 
 ## Overview
-Il comando `getent` è utilizzato per recuperare informazioni da vari database di sistema, come gli utenti, i gruppi e le informazioni di rete. Questo comando è particolarmente utile per ottenere dati da fonti come `/etc/passwd`, `/etc/group`, e servizi di rete come NIS o LDAP.
+Il comando `getent` viene utilizzato per recuperare informazioni da vari database di sistema, come gli utenti, i gruppi e le informazioni di rete. È particolarmente utile per ottenere dati da fonti di informazioni come `/etc/passwd`, `/etc/group`, e servizi di rete come NIS o LDAP.
 
 ## Usage
 La sintassi di base del comando `getent` è la seguente:
 
-```bash
+```csh
 getent [opzioni] [argomenti]
 ```
 
 ## Common Options
-Ecco alcune opzioni comuni per il comando `getent`:
-
-- `passwd`: Recupera le informazioni sugli utenti.
-- `group`: Recupera le informazioni sui gruppi.
-- `hosts`: Recupera le informazioni sugli host di rete.
-- `services`: Recupera le informazioni sui servizi di rete.
+- `-h`: Non mostrare l'intestazione.
+- `-s`: Specifica il servizio da cui recuperare le informazioni (ad esempio, passwd o group).
+- `-a`: Mostra tutte le voci del database specificato.
 
 ## Common Examples
 Ecco alcuni esempi pratici dell'uso di `getent`:
 
-### Recuperare informazioni sugli utenti
-Per ottenere informazioni su un utente specifico, ad esempio "mario":
+1. **Recuperare informazioni sugli utenti:**
+   ```csh
+   getent passwd
+   ```
 
-```bash
-getent passwd mario
-```
+2. **Recuperare informazioni su un utente specifico:**
+   ```csh
+   getent passwd nome_utente
+   ```
 
-### Recuperare informazioni sui gruppi
-Per ottenere informazioni su un gruppo specifico, ad esempio "admin":
+3. **Recuperare informazioni sui gruppi:**
+   ```csh
+   getent group
+   ```
 
-```bash
-getent group admin
-```
+4. **Recuperare informazioni su un gruppo specifico:**
+   ```csh
+   getent group nome_gruppo
+   ```
 
-### Recuperare informazioni sugli host
-Per ottenere informazioni su un host specifico, ad esempio "localhost":
-
-```bash
-getent hosts localhost
-```
-
-### Recuperare informazioni sui servizi
-Per ottenere informazioni su un servizio specifico, ad esempio "ssh":
-
-```bash
-getent services ssh
-```
+5. **Recuperare informazioni da un database specifico:**
+   ```csh
+   getent hosts
+   ```
 
 ## Tips
-- Utilizza `getent` per verificare la configurazione degli utenti e dei gruppi senza dover accedere direttamente ai file di sistema.
-- Puoi combinare `getent` con altri comandi come `grep` per filtrare i risultati. Ad esempio, per trovare tutti gli utenti che iniziano con "a":
-
-```bash
-getent passwd | grep '^a'
-```
-- Ricorda che `getent` può accedere anche a database remoti se configurato correttamente, il che lo rende uno strumento potente per gestire informazioni distribuite.
+- Utilizza `getent` per verificare rapidamente le informazioni sugli utenti e i gruppi senza dover accedere direttamente ai file di sistema.
+- Puoi combinare `getent` con altri comandi, come `grep`, per filtrare i risultati. Ad esempio:
+  ```csh
+  getent passwd | grep nome_utente
+  ```
+- Ricorda che i risultati di `getent` possono variare a seconda della configurazione del sistema e dei servizi attivi.

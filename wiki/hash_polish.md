@@ -1,42 +1,44 @@
-# [Linux] Bash hash użycie: Zarządzanie pamięcią podręczną poleceń
+# [Linux] C Shell (csh) hash użycie: zarządzanie pamięcią podręczną poleceń
 
 ## Overview
-Polecenie `hash` w Bash służy do zarządzania pamięcią podręczną poleceń. Umożliwia ono przechowywanie lokalizacji poleceń w pamięci podręcznej, co przyspiesza ich późniejsze wywoływanie.
+Polecenie `hash` w C Shell (csh) służy do zarządzania pamięcią podręczną poleceń. Umożliwia ono przechowywanie lokalizacji plików wykonywalnych, co przyspiesza ich uruchamianie, ponieważ shell nie musi za każdym razem przeszukiwać ścieżek w systemie.
 
 ## Usage
 Podstawowa składnia polecenia `hash` jest następująca:
 
-```bash
+```csh
 hash [options] [arguments]
 ```
 
 ## Common Options
-- `-r`: Opróżnia pamięć podręczną poleceń.
-- `-p`: Umożliwia ustawienie konkretnej ścieżki dla danego polecenia.
-- `-l`: Wyświetla wszystkie polecenia w pamięci podręcznej.
+- `-r`: Oczyści pamięć podręczną poleceń.
+- `-p`: Umożliwia dodanie konkretnego polecenia do pamięci podręcznej z określoną ścieżką.
+- `-l`: Wyświetla aktualną zawartość pamięci podręcznej.
 
 ## Common Examples
-1. **Wyświetlenie pamięci podręcznej poleceń**:
-   ```bash
-   hash
-   ```
 
-2. **Opróżnienie pamięci podręcznej**:
-   ```bash
-   hash -r
-   ```
+### Wyświetlenie zawartości pamięci podręcznej
+Aby zobaczyć, jakie polecenia są aktualnie przechowywane w pamięci podręcznej, użyj:
 
-3. **Dodanie polecenia do pamięci podręcznej z określoną ścieżką**:
-   ```bash
-   hash -p /usr/local/bin/mycommand mycommand
-   ```
+```csh
+hash -l
+```
 
-4. **Wyświetlenie lokalizacji konkretnego polecenia**:
-   ```bash
-   hash mycommand
-   ```
+### Oczyszczenie pamięci podręcznej
+Aby usunąć wszystkie polecenia z pamięci podręcznej, wykonaj:
+
+```csh
+hash -r
+```
+
+### Dodanie polecenia do pamięci podręcznej
+Aby dodać konkretne polecenie do pamięci podręcznej z określoną ścieżką, użyj:
+
+```csh
+hash -p /usr/local/bin/mycommand mycommand
+```
 
 ## Tips
-- Używaj `hash -r`, gdy zmieniasz lokalizację poleceń, aby upewnić się, że Bash korzysta z najnowszych ścieżek.
-- Regularne sprawdzanie pamięci podręcznej może pomóc w identyfikacji nieaktualnych lub niepoprawnych ścieżek.
-- Pamiętaj, że `hash` działa tylko w bieżącej sesji powłoki, więc zmiany nie są trwałe po zamknięciu terminala.
+- Regularnie oczyszczaj pamięć podręczną, aby uniknąć problemów z nieaktualnymi ścieżkami.
+- Używaj opcji `-p` dla poleceń, które często używasz, aby przyspieszyć ich uruchamianie.
+- Sprawdzaj zawartość pamięci podręcznej po dodaniu nowych programów, aby upewnić się, że są one dostępne.

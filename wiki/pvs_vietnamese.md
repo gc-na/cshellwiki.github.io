@@ -1,42 +1,44 @@
-# [Linux] Bash pvs Cách sử dụng: Hiển thị thông tin về các volume trong LVM
+# [Hệ điều hành] C Shell (csh) pvs Cách sử dụng: [hiển thị thông tin về các phiên bản của file]
 
-## Overview
-Lệnh `pvs` được sử dụng để hiển thị thông tin về các volume vật lý trong Logical Volume Manager (LVM). Nó cho phép người dùng xem các thuộc tính của các volume vật lý, giúp quản lý và theo dõi các tài nguyên lưu trữ hiệu quả hơn.
+## Tổng quan
+Lệnh `pvs` trong C Shell được sử dụng để hiển thị thông tin về các phiên bản (version) của các file trong một volume logical. Nó giúp người dùng dễ dàng theo dõi và quản lý các phiên bản của file trong hệ thống.
 
-## Usage
+## Cách sử dụng
 Cú pháp cơ bản của lệnh `pvs` như sau:
+
 ```
 pvs [options] [arguments]
 ```
 
-## Common Options
-- `-o, --options`: Chỉ định các cột thông tin nào sẽ được hiển thị.
-- `-f, --full`: Hiển thị thông tin đầy đủ về các volume.
-- `--units`: Chỉ định đơn vị hiển thị cho kích thước.
-- `-d, --debug`: Bật chế độ gỡ lỗi để hiển thị thông tin chi tiết hơn.
+## Các tùy chọn phổ biến
+- `-o`: Hiển thị thông tin chi tiết về các phiên bản.
+- `-n`: Chỉ hiển thị tên của các phiên bản.
+- `-u`: Hiển thị các phiên bản không sử dụng.
 
-## Common Examples
-- Hiển thị danh sách tất cả các volume vật lý:
-  ```bash
-  pvs
-  ```
+## Ví dụ thường gặp
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `pvs`:
 
-- Hiển thị thông tin đầy đủ về các volume vật lý:
-  ```bash
-  pvs -f
-  ```
+1. Hiển thị tất cả các phiên bản của file:
+   ```csh
+   pvs
+   ```
 
-- Hiển thị thông tin với các cột tùy chỉnh:
-  ```bash
-  pvs -o +pv_size,pv_free
-  ```
+2. Hiển thị thông tin chi tiết về các phiên bản:
+   ```csh
+   pvs -o
+   ```
 
-- Hiển thị thông tin với đơn vị cụ thể:
-  ```bash
-  pvs --units g
-  ```
+3. Chỉ hiển thị tên của các phiên bản:
+   ```csh
+   pvs -n
+   ```
 
-## Tips
-- Sử dụng tùy chọn `-o` để tùy chỉnh thông tin hiển thị, giúp bạn chỉ xem những gì cần thiết.
-- Kết hợp `pvs` với các lệnh khác trong LVM như `lvdisplay` hoặc `vgdisplay` để có cái nhìn tổng thể về hệ thống lưu trữ của bạn.
-- Thường xuyên kiểm tra các volume vật lý để đảm bảo rằng không có vấn đề nào xảy ra với lưu trữ của bạn.
+4. Hiển thị các phiên bản không sử dụng:
+   ```csh
+   pvs -u
+   ```
+
+## Mẹo
+- Hãy sử dụng tùy chọn `-o` để có cái nhìn tổng quan hơn về các thông tin liên quan đến phiên bản.
+- Kết hợp `pvs` với các lệnh khác để quản lý file hiệu quả hơn.
+- Thường xuyên kiểm tra các phiên bản để đảm bảo rằng bạn đang làm việc với phiên bản mới nhất.

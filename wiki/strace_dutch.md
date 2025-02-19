@@ -1,55 +1,55 @@
-# [Linux] Bash strace gebruik: systeemaanroep-tracering
+# [Linux] C Shell (csh) strace gebruik: Volg systeemaanroepen en signalen
 
 ## Overzicht
-De `strace`-opdracht is een krachtige tool in Linux die wordt gebruikt om systeemaanroepen en signalen die door een proces worden gemaakt, te traceren. Dit is bijzonder nuttig voor het debuggen van applicaties en het begrijpen van hun interactie met het besturingssysteem.
+De `strace`-opdracht is een krachtig hulpmiddel dat wordt gebruikt om systeemaanroepen en signalen van een proces te volgen. Het biedt inzicht in de interactie van een programma met de kernel, wat nuttig kan zijn voor foutopsporing en prestatie-analyse.
 
 ## Gebruik
-De basisstructuur van de `strace`-opdracht is als volgt:
+De basis syntaxis van de `strace`-opdracht is als volgt:
 
-```bash
+```csh
 strace [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- `-e trace=<type>`: Beperk de uitvoer tot specifieke systeemaanroepen, zoals `file` of `network`.
-- `-p <pid>`: Volg een bestaand proces met het opgegeven proces-ID.
-- `-o <bestand>`: Schrijf de uitvoer naar een bestand in plaats van naar de standaarduitvoer.
-- `-c`: Geef een samenvatting van systeemaanroepen en hun statistieken weer.
-- `-f`: Volg ook kindprocessen die door het hoofdproces worden gemaakt.
+## Veelvoorkomende Opties
+- `-c`: Geef een samenvatting van systeemaanroepen en hun statistieken.
+- `-e`: Beperk de output tot specifieke systeemaanroepen.
+- `-p`: Volg een bestaand proces met de opgegeven PID.
+- `-o`: Schrijf de output naar een bestand in plaats van naar de standaarduitvoer.
+- `-f`: Volg ook kindprocessen die door het doelproces worden gemaakt.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
 
 1. **Basis gebruik van strace**:
-   ```bash
+   Volg de systeemaanroepen van een programma, bijvoorbeeld `ls`:
+   ```csh
    strace ls
    ```
-   Dit toont alle systeemaanroepen die worden uitgevoerd door het `ls`-commando.
 
-2. **Systeemaanroepen filteren**:
-   ```bash
-   strace -e trace=open,read ls
-   ```
-   Dit toont alleen de `open` en `read` systeemaanroepen die door `ls` worden uitgevoerd.
-
-3. **Een bestaand proces volgen**:
-   ```bash
-   strace -p 1234
-   ```
-   Dit volgt het proces met het proces-ID 1234 en toont de systeemaanroepen die het maakt.
-
-4. **Uitvoer naar een bestand schrijven**:
-   ```bash
+2. **Output naar een bestand schrijven**:
+   Schrijf de output van `strace` naar een bestand genaamd `output.txt`:
+   ```csh
    strace -o output.txt ls
    ```
-   Dit schrijft de uitvoer van `strace` naar het bestand `output.txt`.
 
-5. **Statistieken van systeemaanroepen**:
-   ```bash
-   strace -c ls
+3. **Volgen van een bestaand proces**:
+   Volg een proces met PID 1234:
+   ```csh
+   strace -p 1234
    ```
-   Dit geeft een samenvatting van de systeemaanroepen die door `ls` zijn uitgevoerd, inclusief het aantal en de tijd die aan elke aanroep is besteed.
+
+4. **Samenvatting van systeemaanroepen**:
+   Verkrijg een samenvatting van de systeemaanroepen die door `cat` worden gemaakt:
+   ```csh
+   strace -c cat bestand.txt
+   ```
+
+5. **Beperk de output tot specifieke aanroepen**:
+   Volg alleen de `open` en `close` systeemaanroepen van een proces:
+   ```csh
+   strace -e trace=open,close ls
+   ```
 
 ## Tips
-- Gebruik `strace` in combinatie met andere commando's om de uitvoer te filteren en gerichter te analyseren.
-- Wees voorzichtig met het volgen van processen in productieomgevingen, omdat `strace` de prestaties kan beïnvloeden.
-- Combineer `strace` met de `-f` optie om ook kindprocessen te traceren, wat nuttig kan zijn bij complexe applicaties.
+- Gebruik `-f` om ook kindprocessen te volgen, wat nuttig is bij programma's die meerdere processen aanmaken.
+- Combineer `-c` met andere opties voor een snelle samenvatting van de prestaties van een programma.
+- Wees voorzichtig met het volgen van processen die veel systeemaanroepen genereren, omdat de output snel overweldigend kan worden.

@@ -1,44 +1,40 @@
-# [Linux] Bash uptime : Affiche le temps de fonctionnement du système
+# [Linux] C Shell (csh) uptime : Afficher le temps de fonctionnement du système
 
 ## Overview
-La commande `uptime` permet d'afficher depuis combien de temps le système est en fonctionnement, ainsi que le nombre d'utilisateurs connectés et la charge moyenne du système sur les 1, 5 et 15 dernières minutes. C'est un outil utile pour surveiller la performance et la disponibilité du système.
+La commande `uptime` dans C Shell (csh) est utilisée pour afficher depuis combien de temps le système fonctionne, ainsi que le nombre d'utilisateurs connectés et la charge moyenne du système sur les 1, 5 et 15 dernières minutes.
 
 ## Usage
-La syntaxe de base de la commande est la suivante :
+La syntaxe de base de la commande `uptime` est la suivante :
 
-```bash
-uptime [options]
+```csh
+uptime [options] [arguments]
 ```
 
 ## Common Options
+Voici quelques options courantes pour la commande `uptime` :
+
 - `-p` : Affiche le temps de fonctionnement sous une forme lisible.
-- `-s` : Affiche l'heure à laquelle le système a démarré.
-- `-h` : Affiche l'aide sur la commande.
+- `-h` : Affiche l'aide et les options disponibles.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `uptime` :
 
 1. Afficher le temps de fonctionnement du système :
-   ```bash
+   ```csh
    uptime
    ```
 
 2. Afficher le temps de fonctionnement dans un format lisible :
-   ```bash
+   ```csh
    uptime -p
    ```
 
-3. Afficher l'heure de démarrage du système :
-   ```bash
-   uptime -s
-   ```
-
-4. Afficher l'aide pour la commande uptime :
-   ```bash
+3. Afficher l'aide pour la commande uptime :
+   ```csh
    uptime -h
    ```
 
 ## Tips
-- Utilisez `uptime` régulièrement pour surveiller la santé de votre serveur.
-- Combinez `uptime` avec d'autres commandes comme `top` ou `htop` pour une analyse plus approfondie de la performance du système.
-- Pensez à automatiser l'exécution de `uptime` dans des scripts de surveillance pour recevoir des alertes en cas de problèmes de performance.
+- Utilisez `uptime` régulièrement pour surveiller la santé de votre système, surtout avant d'effectuer des mises à jour ou des modifications importantes.
+- Combinez `uptime` avec d'autres commandes comme `who` pour obtenir des informations supplémentaires sur les utilisateurs connectés.
+- Pensez à automatiser l'exécution de `uptime` dans vos scripts de maintenance pour garder un œil sur les performances du système.

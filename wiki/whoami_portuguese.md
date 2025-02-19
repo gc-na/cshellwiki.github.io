@@ -1,50 +1,48 @@
-# [Linux] Bash whoami Uso: Exibir o nome do usuário atual
+# [Linux] C Shell (csh) whoami Uso: [exibir o nome do usuário atual]
 
 ## Overview
-O comando `whoami` é utilizado para exibir o nome do usuário que está atualmente logado no sistema. É uma ferramenta simples, mas muito útil para verificar a identidade do usuário em um ambiente de linha de comando.
+O comando `whoami` é utilizado para exibir o nome do usuário que está atualmente logado no sistema. É uma maneira simples de verificar qual conta de usuário está ativa no terminal.
 
 ## Usage
 A sintaxe básica do comando `whoami` é a seguinte:
 
-```bash
+```csh
 whoami [opções] [argumentos]
 ```
 
 ## Common Options
-O comando `whoami` possui opções limitadas, mas aqui estão algumas que podem ser úteis:
+O comando `whoami` possui algumas opções, embora a maioria das implementações não exija opções adicionais. As opções comuns incluem:
 
 - `--help`: Exibe uma mensagem de ajuda com informações sobre o comando.
 - `--version`: Mostra a versão do comando `whoami`.
 
 ## Common Examples
 
-### Exibir o nome do usuário atual
-Para simplesmente exibir o nome do usuário que está logado, você pode usar:
+Aqui estão alguns exemplos práticos do uso do comando `whoami`:
 
-```bash
+1. **Exibir o nome do usuário atual:**
+
+```csh
 whoami
 ```
 
-### Exibir ajuda do comando
-Se você precisar de ajuda sobre como usar o comando, pode executar:
+2. **Exibir a versão do comando:**
 
-```bash
-whoami --help
-```
-
-### Verificar a versão do comando
-Para saber qual versão do `whoami` você está utilizando, execute:
-
-```bash
+```csh
 whoami --version
 ```
 
-## Tips
-- O comando `whoami` é especialmente útil em scripts para verificar a identidade do usuário que está executando o script.
-- Combine `whoami` com outros comandos, como `echo`, para personalizar mensagens. Por exemplo:
+3. **Exibir a ajuda do comando:**
 
-```bash
-echo "Você está logado como: $(whoami)"
+```csh
+whoami --help
 ```
 
-- Lembre-se de que `whoami` sempre retornará o nome do usuário atual, independentemente de qual diretório você esteja navegando no sistema.
+## Tips
+- Utilize o comando `whoami` para confirmar rapidamente qual usuário está logado, especialmente quando estiver trabalhando em ambientes multiusuário.
+- Combine `whoami` com outros comandos, como `echo`, para personalizar mensagens de boas-vindas ou scripts. Por exemplo:
+
+```csh
+echo "Bem-vindo, $(whoami)!"
+```
+- Lembre-se de que o `whoami` é sensível ao contexto do terminal em que está sendo executado, portanto, sempre verifique se você está no terminal correto.

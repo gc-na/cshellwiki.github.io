@@ -1,55 +1,51 @@
-# [Linux] Bash chage Kullanımı: Kullanıcı parolası değiştirme sürelerini yönetme
+# [Linux] C Shell (csh) chage Kullanımı: Kullanıcı parolası değişikliklerini yönetme
 
-## Overview
-`chage` komutu, bir kullanıcının parolasının ne zaman değiştirilmesi gerektiğini ve parolanın geçerlilik süresini yönetmek için kullanılır. Bu komut, sistem yöneticilerine kullanıcıların parola güvenliğini artırma imkanı sunar.
+## Genel Bakış
+`chage` komutu, bir kullanıcının parolasının ne zaman değiştirileceğini ve parolanın geçerlilik süresini yönetmek için kullanılır. Bu komut, sistem yöneticilerinin kullanıcıların parola politikalarını belirlemesine olanak tanır.
 
-## Usage
+## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-```bash
-chage [options] [arguments]
+
+```shell
+chage [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `-l, --list`: Kullanıcının parola değiştirme bilgilerini listele.
-- `-m, --mindays MIN_DAYS`: Parolanın değiştirilmesi için minimum gün sayısını ayarla.
-- `-M, --maxdays MAX_DAYS`: Parolanın maksimum geçerlilik süresini ayarla.
-- `-I, --inactive INACTIVE`: Parola süresi dolduktan sonra hesabın ne kadar süreyle devre dışı kalacağını ayarla.
-- `-E, --expiredate EXPIRE_DATE`: Kullanıcının hesabının sona ereceği tarihi ayarla.
+## Yaygın Seçenekler
+- `-l`: Kullanıcının mevcut parola bilgilerini listelemek için kullanılır.
+- `-m`: Parola değişikliği için minimum gün sayısını ayarlar.
+- `-M`: Parolanın maksimum geçerlilik süresini gün cinsinden ayarlar.
+- `-I`: Parola geçerliliği sona ermeden önceki gün sayısını ayarlar.
+- `-E`: Kullanıcının hesabının sona ereceği tarihi ayarlar.
 
-## Common Examples
+## Yaygın Örnekler
 Aşağıda `chage` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-### 1. Kullanıcı Bilgilerini Listeleme
-Bir kullanıcının parola değiştirme bilgilerini listelemek için:
-```bash
+### 1. Kullanıcının parola bilgilerini listeleme
+```shell
 chage -l kullanıcı_adı
 ```
 
-### 2. Minimum Gün Sayısını Ayarlama
-Bir kullanıcının parolasını değiştirmeden önce beklemesi gereken minimum gün sayısını ayarlamak için:
-```bash
+### 2. Parola değişikliği için minimum gün sayısını ayarlama
+```shell
 chage -m 7 kullanıcı_adı
 ```
 
-### 3. Maksimum Gün Sayısını Ayarlama
-Bir kullanıcının parolasının geçerlilik süresini 90 gün olarak ayarlamak için:
-```bash
-chage -M 90 kullanıcı_adı
+### 3. Parolanın maksimum geçerlilik süresini ayarlama
+```shell
+chage -M 30 kullanıcı_adı
 ```
 
-### 4. Hesap Süresini Devre Dışı Bırakma
-Parola süresi dolduktan sonra hesabın 30 gün boyunca devre dışı kalmasını sağlamak için:
-```bash
-chage -I 30 kullanıcı_adı
+### 4. Parola geçerliliği sona ermeden önceki gün sayısını ayarlama
+```shell
+chage -I 14 kullanıcı_adı
 ```
 
-### 5. Hesap Sona Erme Tarihini Ayarlama
-Bir kullanıcının hesabının 2024-12-31 tarihinde sona ermesini sağlamak için:
-```bash
+### 5. Kullanıcının hesabının sona ereceği tarihi ayarlama
+```shell
 chage -E 2024-12-31 kullanıcı_adı
 ```
 
-## Tips
-- Kullanıcıların parola sürelerini düzenli olarak kontrol edin ve güncelleyin.
-- Parola güvenliğini artırmak için minimum ve maksimum gün sayıları ayarlarını dikkatli bir şekilde belirleyin.
-- Kullanıcılarla iletişim kurarak, parola değişiklikleri hakkında bilgilendirme yapmayı unutmayın.
+## İpuçları
+- Kullanıcıların parola değişikliklerini düzenli olarak yapmalarını sağlamak için maksimum geçerlilik süresi ayarlayın.
+- Parola bilgilerini kontrol etmek için `-l` seçeneğini kullanarak kullanıcıların mevcut durumunu gözden geçirin.
+- Güvenlik politikalarınıza uygun olarak minimum ve maksimum gün sayısını belirleyin.

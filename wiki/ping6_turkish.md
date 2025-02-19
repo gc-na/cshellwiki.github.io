@@ -1,50 +1,50 @@
-# [Linux] Bash ping6 Kullanımı: IPv6 adreslerini test etme
+# [Linux] C Shell (csh) ping6 Kullanımı: IPv6 adreslerini test etme
 
 ## Overview
-`ping6` komutu, bir IPv6 adresine veya hostname'e ICMPv6 Echo Request paketleri göndererek bağlantı durumunu kontrol etmek için kullanılır. Bu komut, ağ bağlantılarının doğruluğunu ve gecikme sürelerini test etmek için oldukça yararlıdır.
+ping6 komutu, bir IPv6 adresine veya alan adına veri paketleri göndererek bağlantının durumunu kontrol etmek için kullanılır. Bu, ağ bağlantılarının doğruluğunu ve yanıt süresini test etmek için yaygın bir yöntemdir.
 
 ## Usage
 Temel sözdizimi aşağıdaki gibidir:
 
-```bash
+```csh
 ping6 [options] [arguments]
 ```
 
 ## Common Options
-- `-c <count>`: Gönderilecek ping sayısını belirtir.
-- `-i <interval>`: Ping paketleri arasındaki süreyi (saniye cinsinden) ayarlar.
+- `-c <count>`: Belirtilen sayıda paket gönderir.
+- `-i <interval>`: Paketler arasında bekleme süresini ayarlar (saniye cinsinden).
 - `-s <size>`: Gönderilecek paketlerin boyutunu ayarlar.
-- `-W <timeout>`: Yanıt beklemek için maksimum süreyi (saniye cinsinden) belirler.
+- `-W <timeout>`: Yanıt bekleme süresini ayarlar (saniye cinsinden).
 
 ## Common Examples
-Aşağıda `ping6` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+Aşağıda ping6 komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
-1. Belirli bir IPv6 adresine ping atmak:
-   ```bash
+1. Belirli bir IPv6 adresine ping atma:
+   ```csh
    ping6 2001:db8::1
    ```
 
-2. Belirli bir hostname'e ping atmak:
-   ```bash
-   ping6 example.com
-   ```
-
-3. 5 ping paketi göndermek:
-   ```bash
+2. 5 paket gönderme:
+   ```csh
    ping6 -c 5 2001:db8::1
    ```
 
-4. Ping paketleri arasında 2 saniye beklemek:
-   ```bash
-   ping6 -i 2 example.com
+3. Paketler arasında 2 saniye bekleme süresi ayarlama:
+   ```csh
+   ping6 -i 2 2001:db8::1
    ```
 
-5. 1000 baytlık ping paketleri göndermek:
-   ```bash
-   ping6 -s 1000 2001:db8::1
+4. 64 baytlık paket boyutu ile ping atma:
+   ```csh
+   ping6 -s 64 2001:db8::1
+   ```
+
+5. Yanıt bekleme süresini 3 saniye olarak ayarlama:
+   ```csh
+   ping6 -W 3 2001:db8::1
    ```
 
 ## Tips
-- Ping işlemi sırasında ağ bağlantınızın durumunu gözlemlemek için sonuçları dikkatlice inceleyin.
-- Ping süreleri yüksekse, ağda bir sorun olabileceğini gösterir; bu durumda bağlantınızı kontrol edin.
-- Sürekli ping atmak yerine belirli bir sayıda ping atarak ağ performansını daha verimli bir şekilde test edebilirsiniz.
+- Ping6 komutunu kullanırken, hedef IPv6 adresinin doğru olduğundan emin olun.
+- Ağ bağlantı sorunlarını teşhis etmek için ping6 sonuçlarını dikkatlice analiz edin.
+- Çok sayıda ping atarken, ağ trafiğini etkilememek için `-c` seçeneği ile sınırlı sayıda paket gönderin.

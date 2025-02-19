@@ -1,46 +1,42 @@
-# [Linux] Bash cksum Kullanımı: Dosya kontrol toplamını hesaplama
+# [Linux] C Shell (csh) cksum Kullanımı: Dosya kontrol toplamını hesaplama
 
-## Overview
-`cksum` komutu, bir dosyanın kontrol toplamını (checksum) ve byte sayısını hesaplamak için kullanılır. Bu, dosyanın bütünlüğünü doğrulamak veya dosya karşılaştırmaları yapmak için yararlıdır.
+## Genel Bakış
+`cksum` komutu, dosyaların kontrol toplamını (checksum) hesaplamak için kullanılır. Bu, dosyanın içeriğinin bütünlüğünü doğrulamak için faydalıdır. Kontrol toplamı, dosyanın içeriği değiştiğinde değişen bir sayıdır ve bu sayede dosyanın bozulup bozulmadığını anlayabilirsiniz.
 
-## Usage
+## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
+
 ```
-cksum [options] [arguments]
+cksum [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `-a, --algorithm`: Kullanılacak algoritmayı belirtir (örneğin, `md5`, `sha256`).
-- `--help`: Komut hakkında yardım bilgisi gösterir.
-- `--version`: Komutun sürüm bilgilerini gösterir.
+## Yaygın Seçenekler
+- `-a, --algorithm=ALGORITHM`: Kullanılacak algoritmayı belirtir.
+- `-h, --help`: Yardım mesajını gösterir.
+- `-v, --version`: Versiyon bilgisini gösterir.
 
-## Common Examples
-Aşağıda `cksum` komutunun bazı pratik örnekleri bulunmaktadır:
+## Yaygın Örnekler
+Aşağıda `cksum` komutunun bazı pratik örnekleri verilmiştir:
 
-1. Bir dosyanın kontrol toplamını hesaplamak:
-   ```bash
-   cksum dosya.txt
-   ```
+### Örnek 1: Basit kontrol toplamı hesaplama
+Bir dosyanın kontrol toplamını hesaplamak için:
+```bash
+cksum dosya.txt
+```
 
-2. Birden fazla dosyanın kontrol toplamlarını hesaplamak:
-   ```bash
-   cksum dosya1.txt dosya2.txt
-   ```
+### Örnek 2: Birden fazla dosya için kontrol toplamı hesaplama
+Birden fazla dosyanın kontrol toplamını hesaplamak için:
+```bash
+cksum dosya1.txt dosya2.txt
+```
 
-3. Kontrol toplamı algoritmasını belirtmek:
-   ```bash
-   cksum -a md5 dosya.txt
-   ```
+### Örnek 3: Çıktıyı bir dosyaya yönlendirme
+Kontrol toplamı çıktısını bir dosyaya kaydetmek için:
+```bash
+cksum dosya.txt > kontrol_toplami.txt
+```
 
-4. Yardım bilgisi almak:
-   ```bash
-   cksum --help
-   ```
-
-## Tips
-- Dosya bütünlüğünü kontrol etmek için `cksum` çıktısını kaydedip daha sonra karşılaştırabilirsiniz.
-- Büyük dosyalarla çalışırken, kontrol toplamını hesaplamak zaman alabilir; bu nedenle dosya boyutunu göz önünde bulundurun.
-- `cksum` çıktısını bir dosyaya yönlendirmek için `>` operatörünü kullanabilirsiniz:
-  ```bash
-  cksum dosya.txt > kontrol_toplami.txt
-  ```
+## İpuçları
+- Kontrol toplamlarını düzenli olarak kontrol ederek dosyalarınızın bütünlüğünü sağlamak iyi bir uygulamadır.
+- Dosya yedekleme işlemlerinde kontrol toplamlarını kullanarak yedeklerin doğruluğunu kontrol edebilirsiniz.
+- `cksum` komutunu, dosya transferleri sırasında dosya bütünlüğünü doğrulamak için de kullanabilirsiniz.

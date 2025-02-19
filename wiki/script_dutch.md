@@ -1,47 +1,47 @@
-# [Linux] Bash script gebruik: Voer een shell-sessie op en sla deze op
+# [Linux] C Shell (csh) script gebruik: Maak een opname van de terminalsessie
 
 ## Overzicht
-De `script`-opdracht in Bash wordt gebruikt om een shell-sessie op te nemen en deze op te slaan in een bestand. Dit is handig voor het documenteren van een sessie of het delen van de uitvoer met anderen.
+De `script` opdracht in C Shell (csh) wordt gebruikt om een opname van een terminalsessie te maken. Dit is handig voor het vastleggen van de uitvoer van commando's en interacties in de terminal, zodat je deze later kunt bekijken of delen.
 
 ## Gebruik
-De basis syntaxis van de `script`-opdracht is als volgt:
+De basis syntaxis van de `script` opdracht is als volgt:
 
-```bash
+```
 script [opties] [bestandsnaam]
 ```
 
-## Veelvoorkomende opties
+## Veelvoorkomende Opties
 - `-a`: Voeg de uitvoer toe aan een bestaand bestand in plaats van het te overschrijven.
-- `-q`: Voer de opdracht uit in stille modus, zonder meldingen te tonen.
-- `-t`: Maak een timing-bestand aan dat de tijdstippen van de uitvoer vastlegt.
+- `-q`: Voer de opdracht uit in stille modus, zonder melding van het starten of stoppen van de opname.
+- `-t`: Registreer de tijdstempels van de sessie in een aparte timing-bestand.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
 
-1. **Een nieuwe sessie opnemen in een bestand**:
-   ```bash
+1. **Basis opname starten**
+   ```csh
    script sessie.txt
    ```
-   Dit start een nieuwe shell-sessie en slaat alle uitvoer op in `sessie.txt`.
+   Dit commando start een nieuwe sessie en slaat de uitvoer op in `sessie.txt`.
 
-2. **Een sessie opnemen en toevoegen aan een bestaand bestand**:
-   ```bash
-   script -a sessie.txt
+2. **Opname in stille modus**
+   ```csh
+   script -q sessie_stil.txt
    ```
-   Dit voegt de uitvoer van de nieuwe sessie toe aan `sessie.txt` zonder de bestaande inhoud te overschrijven.
+   Dit start een opname zonder meldingen, en slaat de uitvoer op in `sessie_stil.txt`.
 
-3. **Een sessie opnemen in stille modus**:
-   ```bash
-   script -q sessie.txt
+3. **Bestaande opname aanvullen**
+   ```csh
+   script -a sessie_bestaand.txt
    ```
-   Dit start een sessie en slaat de uitvoer op in `sessie.txt`, zonder meldingen weer te geven.
+   Dit voegt nieuwe uitvoer toe aan `sessie_bestaand.txt` in plaats van het te overschrijven.
 
-4. **Een sessie opnemen met timing-informatie**:
-   ```bash
-   script -t 2> timing.txt sessie.txt
+4. **Tijdstempels registreren**
+   ```csh
+   script -t sessie_tijd.txt
    ```
-   Dit maakt een opname van de sessie en slaat de timing-informatie op in `timing.txt`.
+   Dit registreert de uitvoer in `sessie_tijd.txt` en houdt ook de tijdstempels bij in een apart bestand.
 
 ## Tips
-- Gebruik de `-a` optie als je meerdere sessies wilt combineren in één bestand.
-- Controleer de inhoud van het opgenomen bestand met `cat` of `less` om ervoor te zorgen dat alles correct is vastgelegd.
-- Vergeet niet om de sessie te beëindigen door `exit` of `Ctrl+D` in te voeren, zodat het bestand correct wordt opgeslagen.
+- Zorg ervoor dat je de opname beëindigt met het commando `exit` of door de terminal te sluiten om de sessie correct op te slaan.
+- Controleer de inhoud van het opnamebestand na afloop om te bevestigen dat alles correct is vastgelegd.
+- Gebruik de `-a` optie als je meerdere sessies wilt combineren in één bestand voor een beter overzicht.

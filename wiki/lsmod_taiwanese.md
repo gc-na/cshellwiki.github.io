@@ -1,38 +1,36 @@
-# [Linux] Bash lsmod 使用法: 列出已載入的模組
+# [台灣] C Shell (csh) lsmod 使用方式: 列出已載入的模組
 
 ## Overview
-`lsmod` 是一個用於顯示當前已載入的內核模組的命令。這個命令可以幫助用戶了解系統中哪些模組正在運行，以及它們的依賴關係。
+`lsmod` 是一個用於顯示當前已載入的內核模組的命令。這個命令可以幫助使用者了解系統中哪些模組正在運行，並提供模組的相關資訊。
 
 ## Usage
 基本語法如下：
-```bash
-lsmod [options]
+
+```shell
+lsmod [options] [arguments]
 ```
 
 ## Common Options
-- `-h`, `--help`: 顯示幫助信息。
-- `-v`, `--version`: 顯示版本信息。
+- `-h`, `--help`: 顯示幫助資訊。
+- `-v`, `--verbose`: 顯示詳細的輸出資訊。
 
 ## Common Examples
-1. **列出所有已載入的模組**
-   ```bash
+1. **列出所有已載入的模組**：
+   ```shell
    lsmod
    ```
 
-2. **顯示幫助信息**
-   ```bash
+2. **顯示幫助資訊**：
+   ```shell
    lsmod --help
    ```
 
-3. **顯示版本信息**
-   ```bash
-   lsmod --version
+3. **顯示詳細資訊**：
+   ```shell
+   lsmod --verbose
    ```
 
 ## Tips
-- 使用 `lsmod` 可以快速檢查系統的模組狀態，特別是在進行故障排除時。
-- 結合 `grep` 使用，可以快速查找特定的模組，例如：
-  ```bash
-  lsmod | grep <module_name>
-  ```
-- 定期檢查已載入的模組，有助於保持系統的穩定性和安全性。
+- 定期檢查已載入的模組，可以幫助你了解系統的運行狀態。
+- 若發現不必要的模組，可以考慮卸載以釋放系統資源。
+- 使用 `modinfo <module_name>` 可以獲取特定模組的更多資訊。

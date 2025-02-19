@@ -1,43 +1,46 @@
-# [Unix] Bash compctl Penggunaan: Mengatur penyelesaian perintah
+# [Sistem Operasi] C Shell (csh) compctl Penggunaan: Mengatur Penyelesaian Perintah
 
 ## Overview
-Perintah `compctl` digunakan dalam lingkungan shell Bash untuk mengatur cara penyelesaian otomatis (auto-completion) untuk perintah dan argumen. Dengan `compctl`, pengguna dapat mendefinisikan bagaimana shell akan menyelesaikan nama file, direktori, dan argumen lainnya saat mengetik perintah.
+Perintah `compctl` dalam C Shell (csh) digunakan untuk mengatur cara penyelesaian otomatis (auto-completion) untuk perintah yang dimasukkan di terminal. Dengan `compctl`, pengguna dapat mendefinisikan bagaimana shell akan menyelesaikan nama file, perintah, atau argumen lainnya.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `compctl`:
 
-```bash
+```csh
 compctl [options] [arguments]
 ```
 
 ## Common Options
-- `-d`: Menentukan deskripsi untuk penyelesaian.
-- `-k`: Menyediakan daftar kata kunci untuk penyelesaian.
-- `-s`: Mengatur penyelesaian untuk argumen tertentu.
-- `-x`: Menentukan ekspresi reguler untuk mencocokkan argumen.
+- `-d`: Menentukan direktori untuk penyelesaian.
+- `-f`: Mengabaikan file yang tidak ada saat menyelesaikan.
+- `-k`: Menyediakan daftar opsi untuk penyelesaian.
+- `-s`: Menyelesaikan dengan string yang diberikan.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `compctl`:
 
-### Contoh 1: Menambahkan penyelesaian untuk perintah kustom
-```bash
-compctl -k "option1 option2 option3" mycommand
-```
-Perintah di atas menambahkan penyelesaian otomatis untuk `mycommand` dengan opsi yang ditentukan.
+### Contoh 1: Penyelesaian Nama File
+Untuk mengatur penyelesaian otomatis untuk nama file dalam direktori saat mengetik perintah `ls`:
 
-### Contoh 2: Menyelesaikan nama file dengan ekstensi tertentu
-```bash
-compctl -d "File dengan ekstensi .txt" myfile
+```csh
+compctl -d '*' ls
 ```
-Ini akan memberikan deskripsi saat menyelesaikan file dengan ekstensi `.txt` untuk `myfile`.
 
-### Contoh 3: Menggunakan ekspresi reguler untuk penyelesaian
-```bash
-compctl -x '.*\.jpg' myimage
+### Contoh 2: Penyelesaian untuk Perintah Khusus
+Jika Anda ingin menambahkan penyelesaian untuk perintah `git`:
+
+```csh
+compctl -k 'add commit push pull' git
 ```
-Perintah ini akan menyelesaikan argumen `myimage` hanya untuk file yang berakhiran `.jpg`.
+
+### Contoh 3: Mengabaikan File yang Tidak Ada
+Untuk mengatur penyelesaian yang mengabaikan file yang tidak ada saat menggunakan perintah `cp`:
+
+```csh
+compctl -f cp
+```
 
 ## Tips
-- Selalu gunakan deskripsi yang jelas untuk membantu pengguna memahami opsi penyelesaian.
-- Uji penyelesaian yang Anda buat untuk memastikan bahwa mereka berfungsi seperti yang diharapkan.
-- Gunakan opsi `-k` untuk memberikan daftar kata kunci yang relevan agar penyelesaian lebih intuitif.
+- Pastikan untuk mendefinisikan penyelesaian yang relevan untuk perintah yang sering Anda gunakan agar lebih efisien.
+- Cobalah untuk menguji pengaturan `compctl` Anda dengan beberapa perintah untuk memastikan bahwa penyelesaian berfungsi seperti yang diharapkan.
+- Gunakan opsi `-k` untuk memberikan daftar opsi yang lebih kaya saat menyelesaikan perintah yang kompleks.

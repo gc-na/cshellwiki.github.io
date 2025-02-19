@@ -1,43 +1,44 @@
-# [Linux] Bash watch użycie: Monitorowanie poleceń w czasie rzeczywistym
+# [Linux] C Shell (csh) watch użycie: monitorowanie poleceń w czasie rzeczywistym
 
 ## Overview
-Polecenie `watch` w systemie Linux służy do wykonywania innego polecenia w regularnych odstępach czasu, co pozwala na monitorowanie jego wyników w czasie rzeczywistym. Jest to przydatne narzędzie do obserwacji zmian w danych lub statusie systemu.
+Polecenie `watch` w C Shell (csh) służy do wykonywania innego polecenia w regularnych odstępach czasu, co pozwala na monitorowanie jego wyników w czasie rzeczywistym. Jest to przydatne narzędzie do obserwacji zmian w danych lub statusie systemu.
 
 ## Usage
-Podstawowa składnia polecenia `watch` jest następująca:
+Podstawowa składnia polecenia `watch` wygląda następująco:
 
-```
+```csh
 watch [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-n, --interval`: Ustala interwał czasowy w sekundach, co ile polecenie ma być wykonywane (domyślnie co 2 sekundy).
-- `-d, --differences`: Podświetla różnice między kolejnymi wynikami.
-- `-t, --no-title`: Ukrywa nagłówek wyświetlany na górze okna.
-- `-x, --exec`: Wykonuje polecenie z podanymi argumentami.
+- `-n <sekundy>`: Ustawia interwał czasowy w sekundach między kolejnymi wykonaniami polecenia.
+- `-d`: Podświetla różnice między kolejnymi wynikami, co ułatwia zauważenie zmian.
+- `-t`: Wyłącza wyświetlanie nagłówka z informacjami o czasie.
 
 ## Common Examples
-1. Monitorowanie użycia pamięci:
-   ```bash
-   watch -n 5 free -h
+Oto kilka praktycznych przykładów użycia polecenia `watch`:
+
+1. Monitorowanie użycia pamięci co 2 sekundy:
+   ```csh
+   watch -n 2 free -h
    ```
 
 2. Obserwacja katalogu w poszukiwaniu nowych plików:
-   ```bash
-   watch -n 10 ls -l /path/to/directory
+   ```csh
+   watch -d ls -l /ścieżka/do/katalogu
    ```
 
-3. Sprawdzanie statusu procesów:
-   ```bash
-   watch -d ps aux | grep my_process
+3. Sprawdzanie statusu usługi co 5 sekund:
+   ```csh
+   watch -n 5 systemctl status nazwa_usługi
    ```
 
-4. Monitorowanie logów systemowych:
-   ```bash
-   watch -n 1 tail -n 20 /var/log/syslog
+4. Wyświetlanie bieżącego czasu co 1 sekundę:
+   ```csh
+   watch -n 1 date
    ```
 
 ## Tips
-- Używaj opcji `-d`, aby szybko zauważyć zmiany w wynikach.
-- Dostosuj interwał czasowy do swoich potrzeb, aby uniknąć nadmiernego obciążenia systemu.
-- Możesz łączyć `watch` z innymi poleceniami, aby uzyskać bardziej złożone wyniki.
+- Używaj opcji `-d`, aby łatwiej zauważyć zmiany w wynikach.
+- Dostosuj interwał czasowy do swoich potrzeb, aby nie przeciążać systemu zbyt częstymi zapytaniami.
+- Możesz łączyć `watch` z innymi poleceniami, aby uzyskać bardziej złożone wyniki, na przykład używając potoków.

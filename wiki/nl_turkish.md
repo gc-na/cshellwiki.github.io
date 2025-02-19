@@ -1,49 +1,52 @@
-# [Linux] Bash nl Kullanımı: Satır numaraları ekler
+# [Linux] C Shell (csh) nl Kullanımı: Satır numaraları ekleme
 
 ## Overview
-`nl` komutu, bir dosyadaki her satıra satır numarası ekleyerek çıktısını düzenler. Bu, metin dosyalarını daha okunabilir hale getirmek ve belirli satırları kolayca referans almak için yararlıdır.
+`nl` komutu, bir dosyanın içeriğine satır numaraları ekleyerek çıktısını oluşturur. Bu, metin dosyalarını daha okunabilir hale getirmek için kullanışlıdır.
 
 ## Usage
-Temel sözdizimi şu şekildedir:
+Temel sözdizimi aşağıdaki gibidir:
+
 ```
 nl [options] [arguments]
 ```
 
 ## Common Options
-- `-b`: Satır numaralarının hangi satırlara ekleneceğini belirler. Örneğin, `-b a` tüm satırlara, `-b t` yalnızca boş olmayan satırlara numara ekler.
-- `-f`: Her dosyanın başlangıcında satır numaralarını sıfırlamak için kullanılır.
-- `-n`: Satır numaralarının biçimini belirler. `-n ln` (sola hizalı), `-n rn` (sağa hizalı) veya `-n rz` (sıfırlı) seçenekleri mevcuttur.
-- `-w`: Satır numaralarının genişliğini ayarlar. Örneğin, `-w 5` satır numaralarının 5 karakter genişliğinde olmasını sağlar.
+- `-b`: Satır numarası ekleme biçimini belirler. Örneğin, `-b a` tüm satırlara numara ekler.
+- `-f`: Boş satırların numaralandırılmasını kontrol eder. `-f n` ile boş satırlar numaralandırılmaz.
+- `-n`: Satır numaralarının biçimini belirler. `-n ln` ile numaralar sola yaslanır.
+- `-w`: Satır numaralarının genişliğini ayarlar. Örneğin, `-w 3` ile numaralar 3 karakter genişliğinde olur.
 
 ## Common Examples
-- Temel kullanım:
-  ```bash
-  nl dosya.txt
-  ```
-  Bu komut, `dosya.txt` dosyasındaki her satıra numara ekler.
+Aşağıda `nl` komutunun bazı pratik örnekleri bulunmaktadır:
 
-- Sadece boş olmayan satırlara numara eklemek:
-  ```bash
-  nl -b t dosya.txt
-  ```
-  Bu komut, yalnızca boş olmayan satırlara numara ekler.
+1. **Temel Kullanım:**
+   Bir dosyadaki satırları numaralandırmak için:
+   ```bash
+   nl dosya.txt
+   ```
 
-- Satır numaralarını sıfırlamak:
-  ```bash
-  nl -f dosya1.txt dosya2.txt
-  ```
-  Bu komut, `dosya1.txt` ve `dosya2.txt` dosyalarının her birinde satır numaralarını sıfırlayarak başlar.
+2. **Boş Satırları Atlamak:**
+   Boş satırları numaralandırmadan atlamak için:
+   ```bash
+   nl -b n dosya.txt
+   ```
 
-- Satır numaralarının sağa hizalı olmasını sağlamak:
-  ```bash
-  nl -n rn dosya.txt
-  ```
-  Bu komut, satır numaralarını sağa hizalı olarak gösterir.
+3. **Satır Numarası Biçimini Belirlemek:**
+   Satır numaralarını sağa yaslamak için:
+   ```bash
+   nl -n rn dosya.txt
+   ```
+
+4. **Satır Numarası Genişliğini Ayarlamak:**
+   Satır numaralarının genişliğini 4 karakter yapmak için:
+   ```bash
+   nl -w 4 dosya.txt
+   ```
 
 ## Tips
-- `nl` komutunu, dosya içeriklerini daha iyi analiz etmek için diğer komutlarla birleştirin. Örneğin, `cat` komutuyla birlikte kullanarak dosyayı görüntüleyebilir ve numaralandırabilirsiniz.
-- Büyük dosyalarla çalışırken, çıktıyı bir dosyaya yönlendirmek için `>` operatörünü kullanabilirsiniz:
+- `nl` komutunu kullanırken, dosyanızın içeriğini daha iyi anlamak için farklı seçenekleri deneyin.
+- Uzun dosyalar için, çıktıyı bir dosyaya yönlendirmek için `>` operatörünü kullanabilirsiniz:
   ```bash
   nl dosya.txt > numaralandirilmis_dosya.txt
   ```
-- Satır numaralarının genişliğini ayarlamak, daha düzenli bir görünüm sağlar. Özellikle uzun dosyalarda bu özelliği kullanmayı düşünün.
+- `man nl` komutunu kullanarak daha fazla bilgi ve seçeneklere ulaşabilirsiniz.

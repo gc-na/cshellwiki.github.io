@@ -1,43 +1,39 @@
-# [Linux] Bash whoami Penggunaan: Menampilkan nama pengguna saat ini
+# [Sistem Operasi] C Shell (csh) whoami Penggunaan: Menampilkan nama pengguna saat ini
 
 ## Overview
-Perintah `whoami` digunakan dalam Bash untuk menampilkan nama pengguna yang sedang aktif di terminal. Ini berguna untuk mengetahui identitas pengguna saat ini, terutama ketika bekerja dengan beberapa akun atau saat menggunakan skrip.
+Perintah `whoami` digunakan untuk menampilkan nama pengguna yang sedang aktif di terminal. Ini berguna untuk mengetahui identitas pengguna saat ini, terutama ketika bekerja di lingkungan multi-pengguna.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `whoami`:
 
-```bash
+```csh
 whoami [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah `whoami`:
+Perintah `whoami` tidak memiliki banyak opsi, tetapi berikut adalah beberapa yang umum digunakan:
 
-- `--help`: Menampilkan informasi bantuan tentang penggunaan perintah.
-- `--version`: Menampilkan versi dari perintah `whoami`.
+- `-h` : Menampilkan informasi singkat tentang penggunaan perintah.
+- `-V` : Menampilkan versi dari perintah `whoami`.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `whoami`:
 
-1. **Menampilkan nama pengguna saat ini:**
-   ```bash
+1. Menampilkan nama pengguna saat ini:
+   ```csh
    whoami
    ```
 
-2. **Menampilkan informasi bantuan:**
-   ```bash
-   whoami --help
+2. Menampilkan versi dari perintah `whoami`:
+   ```csh
+   whoami -V
    ```
 
-3. **Menampilkan versi perintah:**
-   ```bash
-   whoami --version
+3. Menampilkan informasi penggunaan (jika didukung):
+   ```csh
+   whoami -h
    ```
 
 ## Tips
-- Gunakan `whoami` untuk memverifikasi identitas pengguna sebelum menjalankan perintah yang memerlukan hak akses tertentu.
-- Perintah ini sangat berguna dalam skrip untuk memastikan bahwa skrip dijalankan oleh pengguna yang tepat.
-- Kombinasikan `whoami` dengan perintah lain menggunakan subshell untuk mendapatkan informasi lebih lanjut, seperti:
-  ```bash
-  echo "Pengguna saat ini adalah: $(whoami)"
-  ```
+- Gunakan `whoami` untuk memastikan Anda sedang menggunakan akun yang benar sebelum menjalankan perintah yang memerlukan hak akses tertentu.
+- Perintah ini sangat berguna dalam skrip untuk memeriksa identitas pengguna yang menjalankan skrip tersebut.

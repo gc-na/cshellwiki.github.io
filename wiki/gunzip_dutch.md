@@ -1,4 +1,4 @@
-# [Linux] Bash gunzip gebruik: Bestanden decomprimeren
+# [Linux] C Shell (csh) gunzip gebruik: Bestanden decomprimeren
 
 ## Overzicht
 De `gunzip` opdracht wordt gebruikt om bestanden die zijn gecomprimeerd met gzip (GNU zip) te decomprimeren. Het herstelt de originele bestanden uit hun gecomprimeerde versie, waardoor ze weer toegankelijk zijn voor gebruik.
@@ -6,45 +6,43 @@ De `gunzip` opdracht wordt gebruikt om bestanden die zijn gecomprimeerd met gzip
 ## Gebruik
 De basis syntaxis van de `gunzip` opdracht is als volgt:
 
-```bash
+```csh
 gunzip [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-c`: Schrijft de uitgepakte gegevens naar standaarduitvoer in plaats van naar een bestand.
-- `-f`: Dwingt het overschrijven van bestaande bestanden zonder bevestiging.
-- `-k`: Houdt het originele gecomprimeerde bestand na decompressie.
-- `-r`: Decomprimeert bestanden in een directory en zijn subdirectories.
+- `-c`: Schrijf de uitgepakte inhoud naar de standaarduitvoer in plaats van naar een bestand.
+- `-f`: Forceer decomprimeren, zelfs als het doelbestand al bestaat.
+- `-k`: Bewaar het originele gecomprimeerde bestand na decomprimeren.
+- `-r`: Recursief decompressie uitvoeren in een directory.
 
 ## Veelvoorkomende Voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van `gunzip`:
 
-1. **Een enkel bestand decomprimeren:**
-   ```bash
+1. Een enkel bestand decomprimeren:
+   ```csh
    gunzip bestand.gz
    ```
 
-2. **Een bestand decomprimeren en het originele bestand behouden:**
-   ```bash
+2. De inhoud van een gecomprimeerd bestand naar de standaarduitvoer schrijven:
+   ```csh
+   gunzip -c bestand.gz
+   ```
+
+3. Een gecomprimeerd bestand behouden na decomprimeren:
+   ```csh
    gunzip -k bestand.gz
    ```
 
-3. **Decomprimeren van meerdere bestanden:**
-   ```bash
-   gunzip bestand1.gz bestand2.gz
-   ```
-
-4. **Decomprimeren en de uitvoer naar een bestand schrijven:**
-   ```bash
-   gunzip -c bestand.gz > uitvoer.txt
-   ```
-
-5. **Decomprimeren van alle .gz bestanden in een directory:**
-   ```bash
-   gunzip *.gz
+4. Recursief decompressie uitvoeren in een directory:
+   ```csh
+   gunzip -r mapnaam/
    ```
 
 ## Tips
-- Controleer altijd of je voldoende schijfruimte hebt voordat je bestanden decomprimeert, omdat de originele bestanden mogelijk veel ruimte in beslag nemen.
-- Gebruik de `-v` optie voor een gedetailleerde uitvoer van het decompressieproces, wat handig kan zijn voor foutopsporing.
-- Wees voorzichtig met de `-f` optie, omdat deze bestaande bestanden zonder waarschuwing kan overschrijven.
+- Controleer altijd of er voldoende schijfruimte beschikbaar is voordat je grote bestanden decomprimeert.
+- Gebruik de `-k` optie als je het originele bestand wilt behouden voor toekomstige referentie.
+- Voor het decompressie van meerdere bestanden, kun je ze allemaal in één opdracht opgeven:
+  ```csh
+  gunzip bestand1.gz bestand2.gz
+  ```

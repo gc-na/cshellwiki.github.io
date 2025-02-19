@@ -1,7 +1,7 @@
-# [Linux] Bash tune2fs uso: Modifica parametri del filesystem ext2/ext3/ext4
+# [Linux] C Shell (csh) tune2fs utilizzo: Modifica parametri del filesystem ext2/ext3/ext4
 
 ## Overview
-Il comando `tune2fs` è utilizzato per modificare i parametri di un filesystem di tipo ext2, ext3 o ext4. Permette di ottimizzare e configurare vari aspetti del filesystem, come le opzioni di montaggio e le caratteristiche di journaling.
+Il comando `tune2fs` è utilizzato per modificare i parametri di un filesystem di tipo ext2, ext3 o ext4. Permette agli utenti di ottimizzare e configurare vari aspetti del filesystem, come le opzioni di montaggio e le caratteristiche di gestione.
 
 ## Usage
 La sintassi di base del comando è la seguente:
@@ -11,46 +11,36 @@ tune2fs [opzioni] [argomenti]
 ```
 
 ## Common Options
-Ecco alcune opzioni comuni per `tune2fs`:
-
-- `-c <numero>`: Imposta il numero massimo di montaggi prima che il filesystem venga controllato.
-- `-i <intervallo>`: Imposta l'intervallo di tempo tra i controlli automatici del filesystem.
-- `-m <percentuale>`: Imposta la percentuale di spazio riservato per l'utente root.
-- `-O <opzione>`: Abilita una specifica opzione del filesystem.
-- `-L <etichetta>`: Cambia l'etichetta del filesystem.
+- `-c <max_mount_count>`: Imposta il numero massimo di montaggi prima che il filesystem venga controllato.
+- `-i <interval>`: Imposta l'intervallo di tempo tra i controlli del filesystem.
+- `-O <opzioni>`: Abilita le opzioni specificate per il filesystem.
+- `-L <label>`: Imposta l'etichetta del filesystem.
+- `-j`: Aggiunge il supporto per journaling a un filesystem ext2.
 
 ## Common Examples
-Ecco alcuni esempi pratici di utilizzo di `tune2fs`:
+Ecco alcuni esempi pratici di utilizzo del comando `tune2fs`:
 
 1. **Impostare il numero massimo di montaggi**:
    ```bash
    tune2fs -c 20 /dev/sda1
    ```
 
-2. **Impostare un intervallo di controllo di 30 giorni**:
+2. **Impostare l'intervallo di tempo per i controlli**:
    ```bash
    tune2fs -i 30d /dev/sda1
    ```
 
-3. **Riservare il 5% dello spazio per l'utente root**:
+3. **Abilitare l'opzione di journaling**:
    ```bash
-   tune2fs -m 5 /dev/sda1
+   tune2fs -j /dev/sda1
    ```
 
-4. **Abilitare l'opzione di journaling**:
-   ```bash
-   tune2fs -O journal_data /dev/sda1
-   ```
-
-5. **Cambiare l'etichetta del filesystem**:
+4. **Modificare l'etichetta del filesystem**:
    ```bash
    tune2fs -L "NuovaEtichetta" /dev/sda1
    ```
 
 ## Tips
-- Assicurati di eseguire `tune2fs` su filesystem smontati o in modalità di sola lettura per evitare danni.
-- Controlla sempre lo stato del filesystem con `fsck` prima di apportare modifiche significative.
-- Utilizza l'opzione `-l` per visualizzare le informazioni correnti del filesystem prima di modificarlo:
-  ```bash
-  tune2fs -l /dev/sda1
-  ```
+- Assicurati di eseguire il comando come superutente (root) per avere i permessi necessari.
+- Esegui un backup dei dati importanti prima di modificare le impostazioni del filesystem.
+- Controlla sempre lo stato del filesystem con `fsck` dopo aver apportato modifiche significative.

@@ -1,55 +1,43 @@
-# [Linux] Bash rev : inverser les lignes de texte
+# [Linux] C Shell (csh) rev : Inverser les caractères des lignes
 
 ## Overview
-La commande `rev` est utilisée pour inverser les caractères de chaque ligne d'un fichier ou d'une entrée standard. Cela signifie que chaque ligne est retournée, avec les caractères dans l'ordre inverse.
+La commande `rev` est utilisée pour inverser les caractères de chaque ligne d'un fichier ou d'une entrée standard. Cela peut être utile pour diverses tâches de traitement de texte ou pour des manipulations de données simples.
 
 ## Usage
 La syntaxe de base de la commande `rev` est la suivante :
 
-```bash
+```csh
 rev [options] [arguments]
 ```
 
 ## Common Options
-- `-o, --output=FILE` : Spécifie un fichier de sortie pour écrire les résultats inversés.
-- `-h, --help` : Affiche un message d'aide et quitte.
-- `-V, --version` : Affiche la version de la commande et quitte.
+- `-h` : Affiche l'aide et sort.
+- `-o fichier` : Écrit la sortie dans le fichier spécifié au lieu de l'afficher à l'écran.
 
 ## Common Examples
+Voici quelques exemples pratiques de l'utilisation de la commande `rev` :
 
-### Exemple 1 : Inverser une chaîne de caractères
-Pour inverser une chaîne de caractères entrée directement dans le terminal :
+1. **Inverser le contenu d'un fichier :**
+   ```csh
+   rev mon_fichier.txt
+   ```
 
-```bash
-echo "Bonjour" | rev
-```
-**Sortie :**
-```
-ruojnoB
-```
+2. **Inverser une chaîne de caractères entrée par l'utilisateur :**
+   ```csh
+   echo "Bonjour" | rev
+   ```
 
-### Exemple 2 : Inverser le contenu d'un fichier
-Pour inverser chaque ligne d'un fichier nommé `texte.txt` :
+3. **Inverser le contenu d'un fichier et écrire dans un nouveau fichier :**
+   ```csh
+   rev -o fichier_inverse.txt mon_fichier.txt
+   ```
 
-```bash
-rev texte.txt
-```
-
-### Exemple 3 : Enregistrer le résultat dans un fichier
-Pour inverser les lignes d'un fichier et enregistrer le résultat dans un nouveau fichier `inverse.txt` :
-
-```bash
-rev texte.txt > inverse.txt
-```
-
-### Exemple 4 : Utiliser rev avec d'autres commandes
-Vous pouvez combiner `rev` avec d'autres commandes, par exemple, pour inverser les lignes d'une liste de fichiers :
-
-```bash
-ls | rev
-```
+4. **Inverser plusieurs lignes à partir d'un fichier :**
+   ```csh
+   rev fichier_multilignes.txt
+   ```
 
 ## Tips
-- Utilisez `rev` avec des fichiers de texte pour des résultats rapides et efficaces.
-- Combinez `rev` avec d'autres commandes comme `sort` ou `grep` pour des manipulations de texte plus avancées.
-- Pensez à rediriger la sortie vers un fichier si vous travaillez avec de grandes quantités de données pour éviter de perdre des informations.
+- Utilisez `rev` en combinaison avec d'autres commandes pour des traitements de texte plus complexes, par exemple avec `grep` ou `sort`.
+- Pensez à rediriger la sortie vers un fichier si vous travaillez avec de grandes quantités de données pour éviter de surcharger votre terminal.
+- Testez la commande avec des chaînes simples avant de l'appliquer à des fichiers plus complexes pour vous familiariser avec son fonctionnement.

@@ -1,12 +1,12 @@
-# [Linux] Bash systemctl Uso: Manage system services
+# [Linux] C Shell (csh) systemctl用法: 管理系统服务
 
 ## Overview
-The `systemctl` command is a powerful tool used in Linux systems to manage system services and the system's overall state. It is part of the systemd system and service manager, allowing users to start, stop, enable, disable, and check the status of services.
+The `systemctl` command is a powerful utility used to examine and control the systemd system and service manager. It allows users to manage system services, check their status, start or stop them, and enable or disable them at boot time.
 
 ## Usage
 The basic syntax of the `systemctl` command is as follows:
 
-```bash
+```
 systemctl [options] [arguments]
 ```
 
@@ -14,43 +14,42 @@ systemctl [options] [arguments]
 - `start`: Starts a specified service.
 - `stop`: Stops a specified service.
 - `restart`: Restarts a specified service.
-- `status`: Displays the current status of a specified service.
+- `status`: Displays the status of a specified service.
 - `enable`: Enables a service to start automatically at boot.
 - `disable`: Prevents a service from starting automatically at boot.
-- `list-units`: Lists all loaded units (services, sockets, etc.).
-- `is-active`: Checks if a specified service is currently active.
+- `list-units`: Lists all active units (services, sockets, etc.).
 
 ## Common Examples
 Here are some practical examples of using the `systemctl` command:
 
 1. **Start a service**:
    ```bash
-   systemctl start apache2
+   systemctl start nginx
    ```
 
 2. **Stop a service**:
    ```bash
-   systemctl stop apache2
+   systemctl stop nginx
    ```
 
 3. **Restart a service**:
    ```bash
-   systemctl restart apache2
+   systemctl restart nginx
    ```
 
 4. **Check the status of a service**:
    ```bash
-   systemctl status apache2
+   systemctl status nginx
    ```
 
 5. **Enable a service to start at boot**:
    ```bash
-   systemctl enable apache2
+   systemctl enable nginx
    ```
 
 6. **Disable a service from starting at boot**:
    ```bash
-   systemctl disable apache2
+   systemctl disable nginx
    ```
 
 7. **List all active services**:
@@ -58,13 +57,7 @@ Here are some practical examples of using the `systemctl` command:
    systemctl list-units --type=service
    ```
 
-8. **Check if a service is active**:
-   ```bash
-   systemctl is-active apache2
-   ```
-
 ## Tips
-- Always check the status of a service after starting or stopping it to ensure it behaves as expected.
-- Use `systemctl list-units --type=service` to get an overview of all services and their states.
-- When enabling services, be mindful of dependencies that might affect the boot process.
-- For troubleshooting, check the logs using `journalctl -u [service_name]` to get detailed information about service activity.
+- Always check the status of a service after starting or stopping it to ensure it is functioning as expected.
+- Use `systemctl list-units` to get an overview of all active services and their states.
+- Be cautious when enabling services to start at boot, as this can affect system performance and boot time.

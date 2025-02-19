@@ -1,61 +1,51 @@
-# [Linux] Bash helm uso: Manage Kubernetes applications
+# [Linux] C Shell (csh) helm用法: Manage Kubernetes applications
 
 ## Overview
-The `helm` command is a package manager for Kubernetes that simplifies the deployment and management of applications on Kubernetes clusters. It allows users to define, install, and upgrade even the most complex Kubernetes applications using Helm charts, which are collections of files that describe a related set of Kubernetes resources.
+The `helm` command is a package manager for Kubernetes that simplifies the deployment and management of applications on Kubernetes clusters. It allows users to define, install, and upgrade even the most complex Kubernetes applications using Helm charts.
 
 ## Usage
-The basic syntax of the helm command is as follows:
+The basic syntax of the `helm` command is as follows:
 
 ```bash
-helm [options] [command] [arguments]
+helm [options] [arguments]
 ```
 
 ## Common Options
-- `install`: Install a new chart.
-- `upgrade`: Upgrade an existing release with a new chart version.
-- `uninstall`: Remove a release from the cluster.
-- `list`: List all releases in the current namespace.
-- `repo`: Manage chart repositories.
+- `install`: Installs a new chart.
+- `upgrade`: Upgrades a release to a new version.
+- `uninstall`: Removes a release from the cluster.
+- `list`: Lists all the releases in the cluster.
+- `repo`: Manages Helm chart repositories.
 
 ## Common Examples
-Here are some practical examples of using the helm command:
+Here are some practical examples of using the `helm` command:
 
-### Install a Chart
-To install a chart (e.g., `nginx`):
+1. **Installing a chart**:
+   ```bash
+   helm install my-release stable/mysql
+   ```
 
-```bash
-helm install my-nginx stable/nginx
-```
+2. **Upgrading a release**:
+   ```bash
+   helm upgrade my-release stable/mysql --set mysqlRootPassword=secret
+   ```
 
-### Upgrade a Release
-To upgrade an existing release (e.g., `my-nginx`):
+3. **Uninstalling a release**:
+   ```bash
+   helm uninstall my-release
+   ```
 
-```bash
-helm upgrade my-nginx stable/nginx
-```
+4. **Listing all releases**:
+   ```bash
+   helm list
+   ```
 
-### Uninstall a Release
-To uninstall a release (e.g., `my-nginx`):
-
-```bash
-helm uninstall my-nginx
-```
-
-### List Installed Releases
-To list all installed releases:
-
-```bash
-helm list
-```
-
-### Add a Chart Repository
-To add a new chart repository (e.g., `bitnami`):
-
-```bash
-helm repo add bitnami https://charts.bitnami.com/bitnami
-```
+5. **Adding a chart repository**:
+   ```bash
+   helm repo add stable https://charts.helm.sh/stable
+   ```
 
 ## Tips
-- Always check the available charts in a repository with `helm search repo [keyword]` to find the right application.
-- Use `helm get all [release-name]` to view all information about a specific release.
-- Keep your Helm repositories up to date with `helm repo update` to ensure you have the latest charts available.
+- Always check the official documentation for the latest options and commands.
+- Use `helm search` to find available charts in your repositories.
+- Keep your Helm repositories updated with `helm repo update` to ensure you have the latest charts.

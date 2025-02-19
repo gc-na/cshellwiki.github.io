@@ -1,50 +1,48 @@
-# [Linux] Bash unset Uso: Remove variáveis e funções do ambiente
+# [Linux] C Shell (csh) unset Uso: Remove variáveis de ambiente
 
 ## Overview
-O comando `unset` é utilizado no Bash para remover variáveis e funções do ambiente atual. Isso é útil quando você deseja limpar variáveis que não são mais necessárias ou evitar conflitos entre nomes de variáveis.
+O comando `unset` no C Shell (csh) é utilizado para remover variáveis de ambiente ou funções definidas no shell. Isso é útil quando você deseja liberar memória ou evitar conflitos entre variáveis.
 
 ## Usage
 A sintaxe básica do comando `unset` é a seguinte:
 
-```bash
+```
 unset [opções] [argumentos]
 ```
 
 ## Common Options
-- `-f`: Remove uma função do ambiente.
-- `-v`: Remove uma variável do ambiente.
+- `-f`: Remove uma função definida no shell.
+- `-v`: Remove uma variável de ambiente.
 
 ## Common Examples
-Aqui estão alguns exemplos práticos do uso do comando `unset`:
 
-1. **Remover uma variável:**
-   ```bash
-   MY_VAR="Hello, World!"
-   echo $MY_VAR  # Saída: Hello, World!
-   unset MY_VAR
-   echo $MY_VAR  # Saída: (nada)
+1. **Remover uma variável de ambiente**
+   ```csh
+   set VARIAVEL_EXEMPLO="valor"
+   unset VARIAVEL_EXEMPLO
    ```
 
-2. **Remover uma função:**
-   ```bash
-   my_function() {
-       echo "Esta é uma função."
-   }
-   my_function  # Saída: Esta é uma função.
-   unset -f my_function
-   my_function  # Saída: bash: my_function: command not found
+2. **Remover uma função**
+   ```csh
+   alias minha_funcao 'echo "Olá, Mundo!"'
+   unset -f minha_funcao
    ```
 
-3. **Remover múltiplas variáveis:**
-   ```bash
-   VAR1="Valor 1"
-   VAR2="Valor 2"
-   echo $VAR1 $VAR2  # Saída: Valor 1 Valor 2
+3. **Remover várias variáveis de uma só vez**
+   ```csh
+   set VAR1="valor1"
+   set VAR2="valor2"
    unset VAR1 VAR2
-   echo $VAR1 $VAR2  # Saída: (nada) (nada)
+   ```
+
+4. **Verificar se a variável foi removida**
+   ```csh
+   set VARIAVEL_TESTE="teste"
+   unset VARIAVEL_TESTE
+   echo $VARIAVEL_TESTE  # Não deve retornar nada
    ```
 
 ## Tips
-- Sempre verifique se a variável ou função que você está removendo não é necessária em outras partes do seu script.
-- Use `unset -v` para garantir que você está removendo uma variável e não uma função, caso ambos tenham o mesmo nome.
-- Após usar `unset`, você pode verificar se a variável foi realmente removida usando `echo` ou `declare -p`.
+- Sempre verifique se a variável que você está removendo não é necessária em outros scripts ou comandos.
+- Use `unset -f` com cuidado, pois remover funções pode afetar o comportamento do seu shell.
+- Considere usar `set` para listar as variáveis atuais antes de usar `unset`, para ter certeza do que está sendo removido.

@@ -1,48 +1,51 @@
-# [Linux] Bash mtr Utilisation : Outil de diagnostic de réseau
+# [Système d'exploitation] C Shell (csh) mtr utilisation : outil de diagnostic réseau
 
 ## Overview
-La commande `mtr` (My Traceroute) est un outil de diagnostic de réseau qui combine les fonctionnalités de `ping` et `traceroute`. Elle permet d'analyser la connectivité réseau entre votre machine et une destination, en affichant les routes empruntées par les paquets ainsi que les temps de réponse à chaque saut.
+La commande `mtr` (My Traceroute) est un outil de diagnostic réseau qui combine les fonctionnalités de `traceroute` et `ping`. Elle permet d'analyser le chemin emprunté par les paquets de données vers une destination spécifique et de mesurer la latence à chaque étape.
 
 ## Usage
-La syntaxe de base de la commande `mtr` est la suivante :
+La syntaxe de base de la commande est la suivante :
 
-```bash
+```csh
 mtr [options] [arguments]
 ```
 
 ## Common Options
 Voici quelques options courantes pour la commande `mtr` :
 
-- `-r` : Exécute un rapport et quitte.
-- `-c <count>` : Spécifie le nombre de paquets à envoyer.
-- `-i <interval>` : Définit l'intervalle entre les envois de paquets.
-- `-p` : Affiche les adresses IP au lieu des noms d'hôtes.
-- `-w` : Affiche la sortie dans un format large.
+- `-r` : Exécute un rapport et sort les résultats dans un format lisible.
+- `-c <count>` : Spécifie le nombre de paquets à envoyer à chaque saut.
+- `-i <interval>` : Définit l'intervalle entre les paquets envoyés.
+- `-p` : Affiche les numéros de port dans les résultats.
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de `mtr` :
+Voici quelques exemples pratiques de l'utilisation de la commande `mtr` :
 
-1. **Traceroute vers un hôte :**
-   ```bash
+1. Pour effectuer un test de connectivité vers un hôte :
+
+   ```csh
    mtr example.com
    ```
 
-2. **Exécuter un rapport avec un nombre limité de paquets :**
-   ```bash
+2. Pour exécuter un rapport avec un nombre spécifique de paquets :
+
+   ```csh
    mtr -r -c 10 example.com
    ```
 
-3. **Afficher les adresses IP au lieu des noms d'hôtes :**
-   ```bash
+3. Pour définir un intervalle de 1 seconde entre les paquets :
+
+   ```csh
+   mtr -i 1 example.com
+   ```
+
+4. Pour afficher les numéros de port dans les résultats :
+
+   ```csh
    mtr -p example.com
    ```
 
-4. **Définir un intervalle de 2 secondes entre les paquets :**
-   ```bash
-   mtr -i 2 example.com
-   ```
-
 ## Tips
-- Utilisez l'option `-r` pour obtenir un rapport rapide et quitter automatiquement après l'envoi des paquets.
-- Pour une analyse continue, exécutez `mtr` sans options, ce qui affichera les résultats en temps réel.
-- Vérifiez les résultats pour identifier les sauts où le temps de réponse est élevé, ce qui peut indiquer des problèmes de réseau.
+- Utilisez l'option `-r` pour obtenir un rapport clair et concis lorsque vous partagez des résultats avec d'autres.
+- Augmentez le nombre de paquets avec `-c` pour obtenir des résultats plus fiables, surtout si vous rencontrez des pertes de paquets.
+- Pensez à exécuter `mtr` avec des privilèges d'administrateur si vous avez besoin d'informations plus détaillées sur les routes réseau.

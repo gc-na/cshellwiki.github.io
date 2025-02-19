@@ -1,53 +1,45 @@
-# [Linux] Bash basename użycie: Wyodrębnia nazwę pliku z pełnej ścieżki
+# [Linux] C Shell (csh) basename użycie: Usuwa ścieżki z nazw plików
 
 ## Overview
-Polecenie `basename` służy do wyodrębniania nazwy pliku z pełnej ścieżki. Jest to przydatne, gdy chcemy uzyskać tylko nazwę pliku bez jego lokalizacji.
+Polecenie `basename` w C Shell (csh) służy do usuwania ścieżek z nazw plików, zwracając jedynie nazwę pliku. Jest to przydatne, gdy chcemy uzyskać samą nazwę pliku bez jego lokalizacji w systemie plików.
 
 ## Usage
 Podstawowa składnia polecenia `basename` jest następująca:
 
-```bash
+```csh
 basename [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-a`: Obsługuje wiele argumentów i zwraca nazwy plików dla każdego z nich.
-- `-s SUFFIX`: Usuwa określony sufiks z nazwy pliku, jeśli jest obecny.
+- `-a`: Obsługuje wiele argumentów i zwraca nazwę dla każdego z nich.
+- `-s`: Umożliwia usunięcie określonego sufiksu z nazwy pliku.
 
 ## Common Examples
-1. Wyodrębnienie nazwy pliku z pełnej ścieżki:
-   ```bash
-   basename /home/użytkownik/dokumenty/plik.txt
+Oto kilka praktycznych przykładów użycia polecenia `basename`:
+
+1. Uzyskanie nazwy pliku z pełnej ścieżki:
+   ```csh
+   basename /usr/local/bin/skrypt.sh
    ```
-   Wynik: `plik.txt`
+   Wynik: `skrypt.sh`
 
 2. Usunięcie sufiksu z nazwy pliku:
-   ```bash
-   basename /home/użytkownik/dokumenty/plik.txt .txt
+   ```csh
+   basename plik.txt .txt
    ```
    Wynik: `plik`
 
-3. Obsługa wielu plików:
-   ```bash
-   basename -a /home/użytkownik/dokumenty/plik1.txt /home/użytkownik/dokumenty/plik2.txt
+3. Obsługa wielu argumentów:
+   ```csh
+   basename -a /usr/bin/komenda1 /usr/bin/komenda2
    ```
    Wynik:
    ```
-   plik1.txt
-   plik2.txt
-   ```
-
-4. Usunięcie sufiksu z wielu plików:
-   ```bash
-   basename -a /home/użytkownik/dokumenty/plik1.txt /home/użytkownik/dokumenty/plik2.txt .txt
-   ```
-   Wynik:
-   ```
-   plik1
-   plik2
+   komenda1
+   komenda2
    ```
 
 ## Tips
-- Używaj opcji `-s`, aby łatwo usunąć niepotrzebne sufiksy z nazw plików.
-- Możesz łączyć `basename` z innymi poleceniami, takimi jak `find`, aby przetwarzać wiele plików w jednym kroku.
-- Pamiętaj, że `basename` zwraca tylko nazwy plików, a nie ich lokalizacje, co może być przydatne w skryptach automatyzujących.
+- Używaj opcji `-s`, aby łatwo usunąć niechciane sufiksy z nazw plików.
+- Możesz używać `basename` w skryptach, aby dynamicznie przetwarzać nazwy plików.
+- Pamiętaj, że `basename` zwraca tylko ostatni element ścieżki, więc jeśli potrzebujesz pełnej ścieżki, użyj polecenia `dirname`.

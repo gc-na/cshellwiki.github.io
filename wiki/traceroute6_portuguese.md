@@ -1,52 +1,53 @@
-# [Linux] Bash traceroute6 Uso: Rastrear o caminho de pacotes IPv6
+# [Linux] C Shell (csh) traceroute6 Uso: Rastrear rotas de pacotes IPv6
 
 ## Overview
-O comando `traceroute6` é utilizado para rastrear o caminho que os pacotes IPv6 percorrem até um destino específico. Ele fornece informações sobre cada salto (hop) que o pacote faz, permitindo que os usuários identifiquem possíveis problemas de conectividade na rede.
+O comando `traceroute6` é utilizado para rastrear a rota que os pacotes IPv6 seguem até um destino específico. Ele fornece informações sobre cada salto que os pacotes fazem, permitindo que os usuários identifiquem onde podem ocorrer problemas de rede.
 
 ## Usage
 A sintaxe básica do comando `traceroute6` é a seguinte:
 
 ```bash
-traceroute6 [opções] [destino]
+traceroute6 [opções] [argumentos]
 ```
 
 ## Common Options
-Aqui estão algumas opções comuns do `traceroute6`:
+Aqui estão algumas opções comuns que podem ser usadas com o `traceroute6`:
 
-- `-m <n>`: Define o número máximo de saltos (hops) que o comando deve seguir.
+- `-m <n>`: Define o número máximo de saltos (hops) a serem percorridos.
 - `-p <n>`: Especifica a porta de destino a ser usada.
-- `-w <n>`: Define o tempo de espera em segundos para cada resposta.
-- `-q <n>`: Define o número de consultas por salto.
+- `-w <n>`: Define o tempo de espera (em segundos) para cada resposta.
+- `-q <n>`: Especifica o número de consultas a serem enviadas por salto.
 
 ## Common Examples
-Aqui estão alguns exemplos práticos do uso do `traceroute6`:
+Aqui estão alguns exemplos práticos de como usar o `traceroute6`:
 
-1. Rastrear o caminho para um endereço IPv6 específico:
+1. Rastrear a rota para um endereço IPv6 específico:
    ```bash
    traceroute6 2001:db8::1
    ```
 
-2. Definir o número máximo de saltos para 15:
+2. Definir um número máximo de saltos para 15:
    ```bash
    traceroute6 -m 15 2001:db8::1
    ```
 
-3. Especificar uma porta de destino, por exemplo, a porta 80:
+3. Especificar uma porta de destino:
    ```bash
    traceroute6 -p 80 2001:db8::1
    ```
 
-4. Aumentar o tempo de espera para 3 segundos:
+4. Aumentar o tempo de espera para 5 segundos:
    ```bash
-   traceroute6 -w 3 2001:db8::1
+   traceroute6 -w 5 2001:db8::1
    ```
 
-5. Realizar múltiplas consultas por salto, por exemplo, 5 consultas:
+5. Enviar 3 consultas por salto:
    ```bash
-   traceroute6 -q 5 2001:db8::1
+   traceroute6 -q 3 2001:db8::1
    ```
 
 ## Tips
-- Sempre verifique se o endereço IPv6 de destino está correto para evitar resultados inesperados.
-- Use a opção `-m` para limitar o número de saltos, especialmente em redes grandes, para evitar longas esperas.
-- Combine várias opções para obter resultados mais precisos e relevantes para suas necessidades de diagnóstico de rede.
+- Sempre verifique se o endereço IPv6 que você está tentando rastrear está acessível.
+- Utilize a opção `-m` para evitar que o comando fique preso em uma rota que não responde.
+- Combine opções para personalizar sua consulta de acordo com suas necessidades específicas.
+- Lembre-se de que o `traceroute6` pode não funcionar em redes que bloqueiam pacotes ICMP.

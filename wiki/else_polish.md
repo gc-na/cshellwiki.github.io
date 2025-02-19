@@ -1,54 +1,58 @@
-# [Linux] Bash else użycie: Wykonywanie alternatywnych poleceń
+# [Linux] C Shell (csh) else: [warunek alternatywny]
 
 ## Overview
-Polecenie `else` w Bashu jest częścią struktury warunkowej, która pozwala na wykonanie alternatywnego bloku kodu, gdy warunek w instrukcji `if` nie zostanie spełniony. Umożliwia to tworzenie bardziej złożonych skryptów, które mogą reagować na różne sytuacje.
+Polecenie `else` w C Shell (csh) jest używane w strukturach warunkowych, aby określić blok kodu, który ma być wykonany, gdy warunek w instrukcji `if` nie jest spełniony. Umożliwia to tworzenie bardziej złożonych skryptów, które mogą reagować na różne sytuacje.
 
 ## Usage
 Podstawowa składnia polecenia `else` jest następująca:
 
-```bash
-if [ warunek ]; then
+```csh
+if (warunek) then
     # kod do wykonania, gdy warunek jest prawdziwy
 else
     # kod do wykonania, gdy warunek jest fałszywy
-fi
+endif
 ```
 
 ## Common Options
-Polecenie `else` nie ma opcji, ponieważ jest to część struktury kontrolnej. Wszystkie opcje i argumenty dotyczące `if` są stosowane w kontekście całej instrukcji warunkowej.
+Polecenie `else` nie ma specyficznych opcji, ponieważ jest to część struktury kontrolnej `if`. Kluczowe elementy to:
+- `if`: rozpoczyna blok warunkowy.
+- `then`: wskazuje, co ma być wykonane, gdy warunek jest spełniony.
+- `endif`: kończy blok warunkowy.
 
 ## Common Examples
 
-### Przykład 1: Prosta instrukcja warunkowa
-```bash
-if [ -f "plik.txt" ]; then
-    echo "Plik istnieje."
+### Przykład 1: Prosty warunek
+```csh
+set var = 10
+if ($var > 5) then
+    echo "Zmienna jest większa niż 5"
 else
-    echo "Plik nie istnieje."
-fi
+    echo "Zmienna jest mniejsza lub równa 5"
+endif
 ```
 
-### Przykład 2: Sprawdzenie zmiennej
-```bash
-liczba=10
-
-if [ $liczba -gt 5 ]; then
-    echo "Liczba jest większa niż 5."
+### Przykład 2: Sprawdzanie pliku
+```csh
+set filename = "plik.txt"
+if (-e $filename) then
+    echo "Plik istnieje"
 else
-    echo "Liczba jest mniejsza lub równa 5."
-fi
+    echo "Plik nie istnieje"
+endif
 ```
 
-### Przykład 3: Użycie z wieloma warunkami
-```bash
-if [ $1 -eq 1 ]; then
-    echo "Argument to 1."
+### Przykład 3: Użycie z innymi warunkami
+```csh
+set age = 20
+if ($age >= 18) then
+    echo "Jesteś dorosły"
 else
-    echo "Argument to nie 1."
-fi
+    echo "Jesteś niepełnoletni"
+endif
 ```
 
 ## Tips
-- Używaj `else` w połączeniu z `if`, aby tworzyć bardziej złożone logiki w swoich skryptach.
-- Pamiętaj o zakończeniu bloku `if` słowem kluczowym `fi`, aby uniknąć błędów składniowych.
-- Możesz zagnieżdżać instrukcje `if` i `else`, aby obsługiwać bardziej skomplikowane warunki.
+- Używaj `else` w połączeniu z `if`, aby tworzyć bardziej złożone logiki w skryptach.
+- Zawsze pamiętaj o kończeniu bloku `if` poleceniem `endif`, aby uniknąć błędów składniowych.
+- Testuj różne warunki, aby upewnić się, że skrypt działa zgodnie z oczekiwaniami w różnych sytuacjach.

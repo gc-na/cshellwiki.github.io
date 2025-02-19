@@ -1,51 +1,38 @@
-# [Linux] Bash builtin : Affiche les commandes intégrées
+# [Unix] C Shell (csh) builtin : Exécute une commande interne
 
 ## Overview
-Le builtin `type` permet de déterminer comment une commande est interprétée par le shell. Il peut indiquer si une commande est intégrée, un alias, une fonction ou un fichier exécutable.
+La commande `builtin` dans C Shell (csh) permet d'exécuter une commande interne du shell, même si une commande externe avec le même nom existe. Cela est particulièrement utile pour s'assurer que vous utilisez la version intégrée d'une commande.
 
 ## Usage
-La syntaxe de base de la commande `type` est la suivante :
+La syntaxe de base de la commande `builtin` est la suivante :
 
-```bash
-type [options] [arguments]
+```csh
+builtin [options] [arguments]
 ```
 
 ## Common Options
-- `-t` : Affiche uniquement le type de la commande (builtin, alias, file, etc.).
-- `-a` : Affiche toutes les occurrences de la commande, y compris les alias et les fonctions.
-- `-p` : Affiche le chemin complet de la commande si elle est un fichier exécutable.
+- `-c` : Exécute la commande spécifiée dans un sous-shell.
+- `-h` : Affiche l'aide pour la commande intégrée.
 
 ## Common Examples
+Voici quelques exemples pratiques de l'utilisation de `builtin` :
 
-### Exemple 1 : Vérifier le type d'une commande
-Pour vérifier si `ls` est une commande intégrée ou un fichier exécutable :
+1. Exécuter la commande `echo` intégrée :
+   ```csh
+   builtin echo "Ceci est un message de la commande intégrée."
+   ```
 
-```bash
-type ls
-```
+2. Utiliser `builtin` pour forcer l'exécution de la version intégrée de `set` :
+   ```csh
+   builtin set var=value
+   ```
 
-### Exemple 2 : Afficher le type d'une commande intégrée
-Pour vérifier le type de la commande `cd` :
-
-```bash
-type cd
-```
-
-### Exemple 3 : Afficher toutes les occurrences d'une commande
-Pour afficher toutes les occurrences de `echo`, y compris les alias :
-
-```bash
-type -a echo
-```
-
-### Exemple 4 : Obtenir le chemin d'une commande
-Pour obtenir le chemin d'accès à la commande `grep` :
-
-```bash
-type -p grep
-```
+3. Afficher l'aide pour la commande intégrée `alias` :
+   ```csh
+   builtin -h alias
+   ```
 
 ## Tips
-- Utilisez `type` pour éviter les conflits entre les commandes intégrées et les fichiers exécutables.
-- Combinez `type` avec d'autres commandes pour diagnostiquer des problèmes de commande dans vos scripts.
-- N'hésitez pas à utiliser l'option `-a` pour avoir une vue d'ensemble complète des définitions de commande.
+- Utilisez `builtin` lorsque vous souhaitez éviter les conflits avec des commandes externes ayant le même nom.
+- Vérifiez toujours la version intégrée d'une commande si vous rencontrez des comportements inattendus.
+- Familiarisez-vous avec les commandes intégrées de csh pour tirer le meilleur parti de votre environnement shell.

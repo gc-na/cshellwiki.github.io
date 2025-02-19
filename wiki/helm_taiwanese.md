@@ -1,50 +1,50 @@
-# [Linux] Bash helm 使用法: 管理 Kubernetes 應用程式
+# [台灣] C Shell (csh) helm 使用法: 管理 Kubernetes 應用程式
 
 ## Overview
-`helm` 是一個 Kubernetes 的套件管理工具，主要用來簡化應用程式的部署和管理。它使用「圖表」(charts) 的概念，讓使用者可以輕鬆地安裝、升級和管理 Kubernetes 應用程式。
+`helm` 是一個用於管理 Kubernetes 應用程式的工具，它可以幫助用戶簡化應用程式的部署和管理過程。透過使用 Helm，您可以輕鬆地安裝、升級和刪除 Kubernetes 應用程式，並管理其配置。
 
 ## Usage
 基本語法如下：
-```bash
+```csh
 helm [options] [arguments]
 ```
 
 ## Common Options
-- `install`: 安裝一個新的圖表。
-- `upgrade`: 升級已安裝的圖表。
-- `uninstall`: 卸載已安裝的圖表。
-- `list`: 列出已安裝的圖表。
-- `repo`: 管理 Helm 圖表的來源庫。
+- `install`: 安裝一個新的 Helm chart。
+- `upgrade`: 升級已安裝的 Helm chart。
+- `uninstall`: 卸載已安裝的 Helm chart。
+- `list`: 列出所有已安裝的 Helm releases。
+- `repo`: 管理 Helm chart 的倉庫。
 
 ## Common Examples
-以下是一些常見的 `helm` 使用範例：
+以下是一些常見的使用範例：
 
-1. 安裝一個新的圖表：
-   ```bash
-   helm install my-release stable/mysql
-   ```
+### 安裝一個 Helm chart
+```csh
+helm install my-release stable/mysql
+```
 
-2. 升級已安裝的圖表：
-   ```bash
-   helm upgrade my-release stable/mysql
-   ```
+### 升級已安裝的 Helm chart
+```csh
+helm upgrade my-release stable/mysql
+```
 
-3. 卸載已安裝的圖表：
-   ```bash
-   helm uninstall my-release
-   ```
+### 卸載已安裝的 Helm chart
+```csh
+helm uninstall my-release
+```
 
-4. 列出所有已安裝的圖表：
-   ```bash
-   helm list
-   ```
+### 列出所有已安裝的 Helm releases
+```csh
+helm list
+```
 
-5. 添加一個新的圖表來源庫：
-   ```bash
-   helm repo add stable https://charts.helm.sh/stable
-   ```
+### 添加一個新的 Helm chart 倉庫
+```csh
+helm repo add my-repo https://example.com/charts
+```
 
 ## Tips
-- 在安裝圖表之前，建議先使用 `helm repo update` 更新圖表來源庫，以確保獲得最新的圖表版本。
-- 使用 `--dry-run` 選項可以在實際執行之前模擬安裝過程，幫助檢查配置是否正確。
-- 定期使用 `helm list` 檢查已安裝的圖表，保持環境的整潔。
+- 在使用 Helm 之前，確保您的 Kubernetes 環境已正確設置。
+- 定期更新您的 Helm chart 倉庫，以獲取最新的應用程式版本。
+- 使用 `helm history <release-name>` 查看特定 release 的歷史紀錄，方便追蹤變更。

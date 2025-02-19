@@ -1,44 +1,45 @@
-# [Linux] Bash vgs Kullanımı: Fiziksel ve mantıksal hacim gruplarını listeleme
+# [Linux] C Shell (csh) vgs Kullanımı: Volume Group Bilgilerini Gösterir
 
 ## Genel Bakış
-`vgs` komutu, LVM (Logical Volume Manager) kullanarak fiziksel ve mantıksal hacim gruplarının durumunu gösterir. Bu komut, sistem yöneticilerinin mevcut hacim gruplarını hızlı bir şekilde gözden geçirmesine olanak tanır.
+`vgs` komutu, LVM (Logical Volume Manager) kullanarak mevcut volume group'ların (hacim grupları) bilgilerini görüntülemek için kullanılır. Bu komut, sistem yöneticilerine hacim gruplarının durumunu ve özelliklerini hızlı bir şekilde inceleme imkanı sunar.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-```bash
+
+```
 vgs [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-o`: Gösterilecek alanları belirtir.
-- `--units`: Çıktı birimlerini ayarlamak için kullanılır.
-- `-h`: Çıktıyı insan tarafından okunabilir biçimde gösterir.
-- `--noheadings`: Başlık satırlarını gizler.
+- `-o, --options`: Görüntülemek istediğiniz alanları belirtir.
+- `-h, --noheadings`: Başlık satırlarını gizler.
+- `-s, --units`: Çıktı birimlerini ayarlamak için kullanılır.
+- `-d, --debug`: Hata ayıklama bilgilerini görüntüler.
 
 ## Yaygın Örnekler
-Aşağıda `vgs` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+Aşağıda `vgs` komutunun bazı pratik örnekleri verilmiştir:
 
-### Örnek 1: Tüm hacim gruplarını listeleme
-```bash
-vgs
-```
+1. Tüm hacim gruplarını listeleme:
+   ```bash
+   vgs
+   ```
 
-### Örnek 2: Belirli alanları gösterme
-```bash
-vgs -o vg_name,lv_count,vg_size
-```
+2. Belirli alanları görüntüleme:
+   ```bash
+   vgs -o vg_name,lv_count,vg_size
+   ```
 
-### Örnek 3: İnsan tarafından okunabilir formatta listeleme
-```bash
-vgs -h
-```
+3. Başlık satırlarını gizleyerek görüntüleme:
+   ```bash
+   vgs -h
+   ```
 
-### Örnek 4: Başlık satırlarını gizleyerek listeleme
-```bash
-vgs --noheadings
-```
+4. Hacim gruplarının boyutlarını belirli bir birimde gösterme:
+   ```bash
+   vgs -s m
+   ```
 
 ## İpuçları
-- `vgs` komutunu sık sık kullanıyorsanız, belirli alanları göstermek için `-o` seçeneğini kullanarak çıktıyı özelleştirebilirsiniz.
-- Çıktıyı daha iyi anlamak için `-h` seçeneğini ekleyerek insan tarafından okunabilir formatta görüntüleyin.
-- Hacim gruplarının durumunu düzenli olarak kontrol etmek, sistem yönetimi için önemlidir; bu nedenle `vgs` komutunu bir izleme aracı olarak kullanabilirsiniz.
+- `vgs` komutunu sık sık kullanıyorsanız, belirli alanları görüntülemek için `-o` seçeneğini özelleştirerek çıktınızı daha anlamlı hale getirebilirsiniz.
+- Hacim gruplarının durumunu düzenli olarak kontrol etmek, sistem yönetimi açısından önemlidir; bu nedenle, `vgs` komutunu bir izleme script'ine eklemeyi düşünebilirsiniz.
+- Hata ayıklama yapmak gerektiğinde `-d` seçeneğini kullanarak daha fazla bilgi edinebilirsiniz.

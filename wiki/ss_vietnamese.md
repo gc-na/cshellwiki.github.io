@@ -1,22 +1,22 @@
-# [Linux] Bash ss cách sử dụng: Xem thông tin kết nối mạng
+# [Hệ điều hành] C Shell (csh) ss: [hiển thị thông tin kết nối mạng]
 
-## Overview
-Lệnh `ss` được sử dụng để hiển thị thông tin về các kết nối mạng trên hệ thống. Nó là một công cụ mạnh mẽ giúp người dùng theo dõi và phân tích các kết nối TCP, UDP và các giao thức khác.
+## Tổng quan
+Lệnh `ss` trong C Shell (csh) được sử dụng để hiển thị thông tin về các kết nối mạng, bao gồm cả các kết nối TCP, UDP và các socket khác. Đây là một công cụ hữu ích để theo dõi trạng thái mạng và chẩn đoán các vấn đề liên quan đến kết nối.
 
-## Usage
+## Cú pháp
 Cú pháp cơ bản của lệnh `ss` như sau:
-```bash
-ss [options] [arguments]
+```
+ss [tùy chọn] [đối số]
 ```
 
-## Common Options
-- `-t`: Hiển thị các kết nối TCP.
-- `-u`: Hiển thị các kết nối UDP.
-- `-l`: Hiển thị các kết nối đang lắng nghe.
-- `-p`: Hiển thị thông tin về tiến trình đang sử dụng kết nối.
-- `-n`: Hiển thị địa chỉ và cổng mà không cần phân giải tên.
+## Các tùy chọn phổ biến
+- `-t`: Hiển thị thông tin về kết nối TCP.
+- `-u`: Hiển thị thông tin về kết nối UDP.
+- `-l`: Hiển thị các socket đang lắng nghe.
+- `-p`: Hiển thị thông tin về tiến trình đang sử dụng socket.
+- `-n`: Hiển thị địa chỉ IP thay vì tên miền.
 
-## Common Examples
+## Ví dụ thường gặp
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `ss`:
 
 1. Hiển thị tất cả các kết nối TCP:
@@ -29,22 +29,22 @@ Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh 
    ss -u
    ```
 
-3. Hiển thị các kết nối đang lắng nghe:
+3. Hiển thị các socket đang lắng nghe:
    ```bash
    ss -l
    ```
 
-4. Hiển thị thông tin về tiến trình sử dụng kết nối:
+4. Hiển thị thông tin kết nối cùng với tiến trình:
    ```bash
-   ss -p
+   ss -t -p
    ```
 
-5. Hiển thị tất cả các kết nối với địa chỉ và cổng không phân giải tên:
+5. Hiển thị địa chỉ IP thay vì tên miền:
    ```bash
    ss -n
    ```
 
-## Tips
-- Sử dụng kết hợp các tùy chọn để có được thông tin chi tiết hơn, chẳng hạn như `ss -tunlp` để xem tất cả các kết nối TCP và UDP đang lắng nghe cùng với thông tin tiến trình.
-- Kiểm tra các kết nối mạng thường xuyên để phát hiện các vấn đề hoặc kết nối không mong muốn.
-- Lệnh `ss` nhanh hơn và hiệu quả hơn so với lệnh `netstat`, vì vậy hãy cân nhắc sử dụng nó cho các tác vụ phân tích mạng.
+## Mẹo
+- Sử dụng kết hợp các tùy chọn để có được thông tin chi tiết hơn về các kết nối mạng.
+- Kiểm tra thường xuyên các kết nối mạng để phát hiện sớm các vấn đề tiềm ẩn.
+- Nếu bạn cần thông tin về tiến trình, hãy sử dụng tùy chọn `-p` để biết tiến trình nào đang sử dụng socket cụ thể.

@@ -1,56 +1,56 @@
-# [Linux] Bash journalctl Penggunaan: Mengelola log sistem
+# [Sistem Operasi] C Shell (csh) journalctl Penggunaan: Melihat log sistem
 
 ## Overview
-Perintah `journalctl` digunakan untuk mengakses dan mengelola log yang dikumpulkan oleh sistem logging `systemd`. Dengan `journalctl`, pengguna dapat melihat, menyaring, dan menganalisis log dari berbagai unit sistem dan aplikasi.
+Perintah `journalctl` digunakan untuk mengakses dan menampilkan log sistem yang dikelola oleh systemd. Dengan `journalctl`, pengguna dapat melihat pesan log dari berbagai unit sistem, termasuk kernel, layanan, dan aplikasi.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `journalctl`:
 
-```bash
+```csh
 journalctl [options] [arguments]
 ```
 
 ## Common Options
-- `-b`: Menampilkan log dari boot terakhir.
-- `-f`: Mengikuti log secara real-time (mirip dengan `tail -f`).
-- `--since "waktu"`: Menampilkan log sejak waktu tertentu.
-- `--until "waktu"`: Menampilkan log hingga waktu tertentu.
-- `-u <unit>`: Menampilkan log untuk unit tertentu, seperti layanan.
+Berikut adalah beberapa opsi umum yang dapat digunakan dengan `journalctl`:
+
+- `-b` : Menampilkan log dari boot terakhir.
+- `-f` : Mengikuti log secara real-time (mirip dengan `tail -f`).
+- `-u <unit>` : Menampilkan log untuk unit tertentu, seperti layanan.
+- `--since <time>` : Menampilkan log sejak waktu tertentu.
+- `--until <time>` : Menampilkan log hingga waktu tertentu.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `journalctl`:
 
 1. Menampilkan semua log:
-   ```bash
+   ```csh
    journalctl
    ```
 
 2. Menampilkan log dari boot terakhir:
-   ```bash
+   ```csh
    journalctl -b
    ```
 
 3. Mengikuti log secara real-time:
-   ```bash
+   ```csh
    journalctl -f
    ```
 
-4. Menampilkan log untuk unit tertentu, misalnya `ssh.service`:
-   ```bash
-   journalctl -u ssh.service
+4. Menampilkan log untuk unit tertentu, misalnya `nginx.service`:
+   ```csh
+   journalctl -u nginx.service
    ```
 
 5. Menampilkan log sejak waktu tertentu:
-   ```bash
-   journalctl --since "2023-10-01 12:00:00"
-   ```
-
-6. Menampilkan log hingga waktu tertentu:
-   ```bash
-   journalctl --until "2023-10-02 12:00:00"
+   ```csh
+   journalctl --since "2023-10-01 10:00:00"
    ```
 
 ## Tips
-- Gunakan opsi `-p` untuk menyaring log berdasarkan prioritas, misalnya `-p err` untuk menampilkan hanya log kesalahan.
-- Simpan hasil log ke dalam file dengan menggunakan redirection, seperti `journalctl > log.txt`.
-- Manfaatkan kombinasi opsi untuk mendapatkan hasil yang lebih spesifik dan relevan dengan kebutuhan analisis log Anda.
+- Gunakan opsi `-p` untuk memfilter log berdasarkan prioritas, misalnya `-p err` untuk menampilkan hanya log kesalahan.
+- Simpan log ke dalam file dengan menggunakan output redirection, contohnya:
+  ```csh
+  journalctl > log.txt
+  ```
+- Manfaatkan opsi `--no-pager` jika Anda ingin melihat semua log tanpa menggunakan pager.

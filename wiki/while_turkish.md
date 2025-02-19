@@ -1,67 +1,54 @@
-# [Linux] Bash while Kullanımı: Döngüsel işlemler gerçekleştirme
+# [Linux] C Shell (csh) while kullanımı: Döngü içinde komut çalıştırma
 
 ## Overview
-`while` komutu, belirli bir koşul doğru olduğu sürece bir komut veya komutlar dizisini tekrar eden bir döngü oluşturur. Bu, belirli bir koşul sağlandığı sürece işlemlerin devam etmesini sağlar.
+`while` komutu, belirli bir koşul doğru olduğu sürece bir veya daha fazla komutun sürekli olarak çalıştırılmasını sağlar. Bu, döngüsel işlemler gerçekleştirmek için oldukça kullanışlıdır.
 
 ## Usage
-Temel sözdizimi aşağıdaki gibidir:
+Temel sözdizimi şu şekildedir:
 
-```bash
-while [koşul]
-do
-    [komutlar]
-done
+```csh
+while (koşul)
+    komutlar
+end
 ```
 
 ## Common Options
-`while` komutunun kendisi için özel bir seçenek yoktur, ancak koşul ifadelerinde kullanılabilecek bazı yaygın operatörler şunlardır:
-- `-eq`: Eşitlik kontrolü.
-- `-ne`: Eşit olmama kontrolü.
-- `-lt`: Küçüklük kontrolü.
-- `-le`: Küçük veya eşitlik kontrolü.
-- `-gt`: Büyüklük kontrolü.
-- `-ge`: Büyük veya eşitlik kontrolü.
+`while` komutunun kendisi için özel bir seçenek yoktur, ancak döngü içinde kullanılan komutlar için çeşitli seçenekler olabilir. Örneğin, `echo`, `set`, `if` gibi komutlar kullanılabilir.
 
 ## Common Examples
 
-### Örnek 1: Basit bir sayma döngüsü
-Aşağıdaki örnekte, 1'den 5'e kadar olan sayılar yazdırılmaktadır.
-
-```bash
-count=1
-while [ $count -le 5 ]
-do
-    echo $count
-    count=$((count + 1))
-done
+### Örnek 1: Basit bir sayaç
+```csh
+set i = 1
+while ($i <= 5)
+    echo "Sayaç: $i"
+    @ i++
+end
 ```
+Bu örnekte, sayaç 1'den 5'e kadar olan sayıları ekrana yazdırır.
 
 ### Örnek 2: Kullanıcıdan giriş alma
-Bu örnekte, kullanıcıdan "exit" yazana kadar sürekli olarak giriş alınmaktadır.
-
-```bash
-input=""
-while [ "$input" != "exit" ]
-do
-    read -p "Bir şey yazın (çıkmak için 'exit' yazın): " input
-    echo "Girdiğiniz: $input"
-done
+```csh
+set input = ""
+while ("$input" != "çıkış")
+    echo "Bir şey yazın (çıkış için 'çıkış' yazın):"
+    set input = $< 
+end
 ```
+Bu örnekte, kullanıcı "çıkış" yazana kadar sürekli olarak giriş alır.
 
 ### Örnek 3: Dosya kontrolü
-Aşağıdaki örnekte, belirli bir dosya mevcut olduğu sürece döngü devam eder.
-
-```bash
-filename="test.txt"
-while [ ! -f "$filename" ]
-do
-    echo "$filename dosyası henüz mevcut değil."
+```csh
+set filename = "test.txt"
+while (! -e $filename)
+    echo "$filename bulunamadı, tekrar deniyor..."
     sleep 2
-done
-echo "$filename dosyası mevcut!"
+end
+echo "$filename bulundu!"
 ```
+Bu örnekte, `test.txt` dosyası bulunana kadar döngü devam eder.
 
 ## Tips
-- Koşul ifadelerinizi dikkatlice oluşturun; sonsuz döngülerden kaçının.
-- `sleep` komutu kullanarak döngülerinizi yavaşlatabilir ve sistem kaynaklarını koruyabilirsiniz.
-- Giriş almak için `read` komutunu kullanarak kullanıcı etkileşimini artırabilirsiniz.
+- Döngü koşullarını dikkatli belirleyin; sonsuz döngülerden kaçının.
+- Döngü içinde kullanılan komutların performansını göz önünde bulundurun.
+- Kullanıcıdan giriş alırken, döngünün çıkış koşulunu net bir şekilde belirtin.

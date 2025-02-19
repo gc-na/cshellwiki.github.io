@@ -1,52 +1,51 @@
-# [Linux] Bash sftp utilizzo: trasferire file in modo sicuro
+# [Linux] C Shell (csh) sftp utilizzo: trasferimento sicuro di file
 
 ## Overview
-Il comando `sftp` (SSH File Transfer Protocol) è uno strumento utilizzato per trasferire file in modo sicuro tra un client e un server. Utilizza il protocollo SSH per garantire che i dati siano criptati durante il trasferimento.
+Il comando `sftp` (SSH File Transfer Protocol) è utilizzato per trasferire file in modo sicuro tra un client e un server tramite una connessione SSH. È una versione più sicura del protocollo FTP e consente di caricare e scaricare file in modo semplice e protetto.
 
 ## Usage
 La sintassi di base del comando `sftp` è la seguente:
 
-```bash
+```csh
 sftp [opzioni] [utente@host]
 ```
 
 ## Common Options
 Ecco alcune opzioni comuni per il comando `sftp`:
 
-- `-i <file>`: Specifica un file di chiave privata per l'autenticazione.
-- `-P <port>`: Specifica una porta diversa dalla porta predefinita (22) per la connessione.
-- `-v`: Abilita la modalità verbosa, utile per il debug.
-- `-b <file>`: Esegue comandi SFTP da un file batch.
+- `-P <port>`: Specifica una porta diversa da quella predefinita (22) per la connessione.
+- `-o <option>`: Permette di specificare opzioni di configurazione SSH, come `UserKnownHostsFile` o `StrictHostKeyChecking`.
+- `-b <file>`: Utilizza un file di batch per eseguire comandi `sftp` in modo non interattivo.
 
 ## Common Examples
-Ecco alcuni esempi pratici dell'uso del comando `sftp`:
+Ecco alcuni esempi pratici di utilizzo del comando `sftp`:
 
-1. **Connessione a un server SFTP:**
-   ```bash
+1. **Connessione a un server SFTP**:
+   ```csh
    sftp user@hostname
    ```
 
-2. **Trasferire un file dal client al server:**
-   ```bash
-   put /percorso/del/file locale.txt
+2. **Trasferire un file dal client al server**:
+   ```csh
+   put localfile.txt
    ```
 
-3. **Scaricare un file dal server al client:**
-   ```bash
-   get remote.txt /percorso/dove/salvare/
+3. **Scaricare un file dal server al client**:
+   ```csh
+   get remotefile.txt
    ```
 
-4. **Visualizzare i file nella directory remota:**
-   ```bash
+4. **Visualizzare i file nella directory remota**:
+   ```csh
    ls
    ```
 
-5. **Creare una directory remota:**
-   ```bash
-   mkdir nuova_directory
+5. **Creare una directory remota**:
+   ```csh
+   mkdir newdirectory
    ```
 
 ## Tips
-- Assicurati di avere i permessi necessari per accedere e modificare i file sul server.
-- Utilizza la modalità verbosa (`-v`) per ottenere informazioni dettagliate durante la connessione e il trasferimento.
-- Considera l'uso di chiavi SSH per una connessione più sicura e senza password.
+- Assicurati di avere le credenziali corrette per connetterti al server SFTP.
+- Utilizza l'opzione `-P` se il server SFTP utilizza una porta diversa dalla predefinita.
+- Per trasferimenti di file di grandi dimensioni, considera l'uso di `-b` per automatizzare il processo con uno script di batch.

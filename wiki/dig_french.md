@@ -1,7 +1,7 @@
-# [Linux] Bash dig : Interroger les serveurs DNS
+# [Linux] C Shell (csh) dig : interroger des serveurs DNS
 
 ## Overview
-La commande `dig` (Domain Information Groper) est un outil de ligne de commande utilisé pour interroger les serveurs DNS. Elle permet d'obtenir des informations détaillées sur les enregistrements DNS d'un domaine, ce qui est essentiel pour le dépannage et la gestion des réseaux.
+La commande `dig` (Domain Information Groper) est un outil puissant utilisé pour interroger les serveurs DNS. Elle permet aux utilisateurs de récupérer des informations sur les enregistrements DNS d'un domaine, tels que les adresses IP, les enregistrements MX, et bien plus encore.
 
 ## Usage
 La syntaxe de base de la commande `dig` est la suivante :
@@ -13,25 +13,25 @@ dig [options] [arguments]
 ## Common Options
 Voici quelques options courantes que vous pouvez utiliser avec `dig` :
 
-- `@server` : Spécifie un serveur DNS à interroger.
-- `-t type` : Définit le type d'enregistrement DNS à rechercher (par exemple, A, AAAA, MX).
-- `+short` : Affiche une sortie simplifiée, ne montrant que les réponses.
-- `+trace` : Suit la chaîne de résolution DNS jusqu'à la racine.
+- `@server` : Spécifie le serveur DNS à interroger.
+- `-t type` : Définit le type d'enregistrement à rechercher (par exemple, A, MX, TXT).
+- `+short` : Affiche une sortie simplifiée, ne montrant que les résultats pertinents.
+- `+trace` : Suit la chaîne de résolution DNS pour un nom de domaine donné.
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de `dig` :
+Voici quelques exemples pratiques de l'utilisation de la commande `dig` :
 
-1. **Interroger un enregistrement A d'un domaine :**
+1. **Interroger l'enregistrement A d'un domaine :**
    ```bash
    dig example.com A
    ```
 
-2. **Obtenir un enregistrement MX d'un domaine :**
+2. **Obtenir l'enregistrement MX d'un domaine :**
    ```bash
    dig example.com MX
    ```
 
-3. **Interroger un serveur DNS spécifique :**
+3. **Utiliser un serveur DNS spécifique :**
    ```bash
    dig @8.8.8.8 example.com
    ```
@@ -47,6 +47,6 @@ Voici quelques exemples pratiques de l'utilisation de `dig` :
    ```
 
 ## Tips
-- Utilisez l'option `+short` pour obtenir des réponses plus lisibles, surtout si vous ne souhaitez que les adresses IP.
-- Pour le dépannage, l'option `+trace` peut vous aider à comprendre où une requête échoue dans le processus de résolution.
-- N'hésitez pas à interroger différents serveurs DNS pour comparer les résultats, surtout si vous suspectez un problème de propagation DNS.
+- Utilisez l'option `+short` pour obtenir des résultats plus lisibles, surtout si vous ne souhaitez que l'adresse IP.
+- Pour des diagnostics approfondis, l'option `+trace` peut être très utile pour comprendre comment un nom de domaine est résolu.
+- Pensez à vérifier plusieurs types d'enregistrements (A, AAAA, MX, TXT) pour obtenir une vue complète des informations DNS d'un domaine.

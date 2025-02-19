@@ -1,40 +1,40 @@
-# [Linux] Bash setenv Kullanımı: Ortam değişkenlerini ayarlama
+# [Linux] C Shell (csh) setenv Kullanımı: Ortam değişkenlerini ayarlama
 
 ## Genel Bakış
-`setenv` komutu, Unix tabanlı işletim sistemlerinde ortam değişkenlerini ayarlamak için kullanılır. Bu komut, genellikle C shell (csh) ve tcsh gibi kabuklarda kullanılır ve kullanıcıların çalışma ortamlarını özelleştirmelerine olanak tanır.
+`setenv` komutu, C Shell (csh) ortamında ortam değişkenlerini ayarlamak için kullanılır. Bu komut, belirli bir değişkenin değerini tanımlamak ve bu değeri oturum boyunca kullanılabilir hale getirmek için idealdir.
 
 ## Kullanım
-`setenv` komutunun temel sözdizimi aşağıdaki gibidir:
+Temel sözdizimi aşağıdaki gibidir:
 
-```bash
+```csh
 setenv [değişken_adı] [değer]
 ```
 
 ## Yaygın Seçenekler
-`setenv` komutunda genellikle kullanılan seçenekler şunlardır:
-- `değişken_adı`: Ayarlamak istediğiniz ortam değişkeninin adı.
-- `değer`: Belirtilen değişken için atamak istediğiniz değer.
+`setenv` komutunun kendine özgü seçenekleri yoktur, ancak ortam değişkenlerini ayarlamak için kullanılan değişken adları ve değerleri önemlidir.
 
 ## Yaygın Örnekler
 Aşağıda `setenv` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. **PATH Değişkenini Ayarlamak:**
-   ```bash
+1. **PATH Değişkenini Ayarlama**
+   ```csh
    setenv PATH /usr/local/bin:$PATH
    ```
+   Bu komut, `/usr/local/bin` dizinini mevcut PATH değişkenine ekler.
 
-2. **JAVA_HOME Değişkenini Ayarlamak:**
-   ```bash
-   setenv JAVA_HOME /usr/lib/jvm/java-11-openjdk
+2. **JAVA_HOME Değişkenini Ayarlama**
+   ```csh
+   setenv JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
    ```
+   Bu komut, Java'nın kurulu olduğu dizini JAVA_HOME değişkenine atar.
 
-3. **Bir Değişkeni Kontrol Etmek:**
-   ```bash
-   setenv MY_VAR "Hello, World!"
-   echo $MY_VAR
+3. **EDITOR Değişkenini Ayarlama**
+   ```csh
+   setenv EDITOR vim
    ```
+   Bu komut, varsayılan metin düzenleyicisini `vim` olarak ayarlar.
 
 ## İpuçları
-- `setenv` komutunu kullanmadan önce, hangi ortam değişkenlerini ayarlamak istediğinizi belirleyin.
-- Değişken adlarının genellikle büyük harfle yazılması yaygındır, bu nedenle değişken adlarını bu şekilde ayarlamak iyi bir uygulamadır.
+- Değişken adları genellikle büyük harfle yazılır, bu, okunabilirliği artırır.
 - Ortam değişkenlerini ayarladıktan sonra, değişikliklerin etkili olması için yeni bir terminal oturumu açmayı unutmayın.
+- `printenv` komutunu kullanarak mevcut ortam değişkenlerini görüntüleyebilirsiniz.

@@ -1,4 +1,4 @@
-# [Linux] Bash psql uso: Interact with PostgreSQL databases
+# [Linux] C Shell (csh) psql用法: PostgreSQL命令行客户端
 
 ## Overview
 The `psql` command is a terminal-based front-end for interacting with PostgreSQL databases. It allows users to execute SQL commands, manage database objects, and perform administrative tasks directly from the command line.
@@ -11,41 +11,43 @@ psql [options] [arguments]
 ```
 
 ## Common Options
-- `-h, --host=HOST`: Specifies the database server's hostname or IP address.
-- `-p, --port=PORT`: Specifies the port number to connect to the database server.
-- `-U, --username=USERNAME`: Specifies the username to connect to the database.
-- `-d, --dbname=DBNAME`: Specifies the name of the database to connect to.
-- `-W`: Prompts for the password before connecting to the database.
-- `-c, --command=COMMAND`: Executes a single command and exits.
+- `-h` : Specifies the host of the database server.
+- `-p` : Specifies the port number to connect to the database server.
+- `-U` : Specifies the username to connect to the database.
+- `-d` : Specifies the database name to connect to.
+- `-W` : Prompts for the password of the user.
+- `-c` : Allows you to execute a single command and then exit.
 
 ## Common Examples
-1. **Connect to a database**:
+Here are some practical examples of using the `psql` command:
+
+1. **Connect to a Database**
    ```bash
-   psql -U myuser -d mydatabase
+   psql -U username -d database_name
    ```
 
-2. **Execute a SQL command directly**:
+2. **Connect to a Database on a Specific Host and Port**
    ```bash
-   psql -U myuser -d mydatabase -c "SELECT * FROM mytable;"
+   psql -h localhost -p 5432 -U username -d database_name
    ```
 
-3. **Connect to a remote database**:
+3. **Execute a SQL Command Directly**
    ```bash
-   psql -h 192.168.1.100 -U myuser -d mydatabase
+   psql -U username -d database_name -c "SELECT * FROM table_name;"
    ```
 
-4. **List all databases**:
+4. **List All Databases**
    ```bash
-   psql -U myuser -c "\l"
+   psql -U username -c "\l"
    ```
 
-5. **Export query results to a file**:
+5. **Export Query Results to a File**
    ```bash
-   psql -U myuser -d mydatabase -c "COPY (SELECT * FROM mytable) TO '/path/to/file.csv' WITH CSV HEADER;"
+   psql -U username -d database_name -c "COPY (SELECT * FROM table_name) TO '/path/to/file.csv' WITH CSV;"
    ```
 
 ## Tips
-- Always use the `-W` option if you want to ensure that your password is not stored in the command history.
-- Utilize the `\?` command within `psql` to get a list of available commands and options while in the interactive shell.
-- Consider using environment variables like `PGUSER`, `PGPASSWORD`, and `PGDATABASE` to simplify your command-line usage.
-- For complex queries, it may be easier to write them in a `.sql` file and execute them using `psql -f filename.sql`.
+- Always use the `-W` option to ensure you are prompted for a password, enhancing security.
+- Use the `\?` command inside `psql` to get help on available commands and options.
+- To exit `psql`, simply type `\q` and hit Enter.
+- For complex queries, consider writing them in a `.sql` file and executing them with `psql -f filename.sql`.

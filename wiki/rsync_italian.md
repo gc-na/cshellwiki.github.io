@@ -1,58 +1,48 @@
-# [Linux] Bash rsync utilizzo: Sincronizzazione di file e directory
+# [Linux] C Shell (csh) rsync Utilizzo: Sincronizzazione di file e directory
 
 ## Overview
-Il comando `rsync` è uno strumento potente per la sincronizzazione di file e directory tra diverse posizioni, sia locali che remote. È particolarmente utile per il backup e il trasferimento di dati, poiché solo i file modificati vengono copiati, riducendo il tempo e la larghezza di banda necessari.
+Il comando `rsync` è uno strumento potente per la sincronizzazione di file e directory tra diverse posizioni, sia locali che remote. È particolarmente utile per il backup e il trasferimento di dati, poiché solo i file modificati vengono copiati, riducendo così il tempo e l'uso della larghezza di banda.
 
 ## Usage
 La sintassi di base del comando `rsync` è la seguente:
 
-```bash
-rsync [opzioni] [origine] [destinazione]
+```csh
+rsync [options] [arguments]
 ```
 
 ## Common Options
-Ecco alcune opzioni comuni per `rsync`:
+Ecco alcune opzioni comuni utilizzate con `rsync`:
 
-- `-a`: Modalità archivio; copia in modo ricorsivo e preserva i permessi, le date e i link simbolici.
-- `-v`: Verboso; mostra i dettagli del processo di copia.
-- `-z`: Comprimi i dati durante il trasferimento.
-- `-r`: Copia in modo ricorsivo le directory.
-- `--delete`: Elimina i file nella destinazione che non esistono più nell'origine.
+- `-a`: Modalità archivio; copia file e directory in modo ricorsivo e preserva i permessi, le date e i link simbolici.
+- `-v`: Modalità verbosa; mostra i dettagli del processo di sincronizzazione.
+- `-z`: Comprimi i dati durante il trasferimento per risparmiare larghezza di banda.
+- `-r`: Copia ricorsivamente le directory.
+- `--delete`: Elimina i file nella destinazione che non sono presenti nella sorgente.
 
 ## Common Examples
-Ecco alcuni esempi pratici di utilizzo di `rsync`:
+Ecco alcuni esempi pratici di utilizzo del comando `rsync`:
 
-1. **Sincronizzare una directory locale con un'altra directory locale:**
-
-   ```bash
-   rsync -av /percorso/origine/ /percorso/destinazione/
+1. **Sincronizzare una directory locale:**
+   ```csh
+   rsync -av /percorso/sorgente/ /percorso/destinazione/
    ```
 
-2. **Sincronizzare una directory locale con un server remoto:**
-
-   ```bash
-   rsync -av /percorso/origine/ utente@server:/percorso/destinazione/
+2. **Sincronizzare una directory remota:**
+   ```csh
+   rsync -av user@remote_host:/percorso/sorgente/ /percorso/destinazione/
    ```
 
-3. **Sincronizzare una directory remota con una directory locale:**
-
-   ```bash
-   rsync -av utente@server:/percorso/origine/ /percorso/destinazione/
+3. **Sincronizzare e comprimere i dati:**
+   ```csh
+   rsync -avz /percorso/sorgente/ /percorso/destinazione/
    ```
 
-4. **Sincronizzare e comprimere i dati durante il trasferimento:**
-
-   ```bash
-   rsync -avz /percorso/origine/ utente@server:/percorso/destinazione/
-   ```
-
-5. **Sincronizzare e eliminare i file non più presenti nell'origine:**
-
-   ```bash
-   rsync -av --delete /percorso/origine/ /percorso/destinazione/
+4. **Sincronizzare e eliminare file non presenti nella sorgente:**
+   ```csh
+   rsync -av --delete /percorso/sorgente/ /percorso/destinazione/
    ```
 
 ## Tips
-- Utilizza l'opzione `-n` (dry run) per simulare il comando senza eseguire effettivamente la copia. Questo è utile per verificare quali file verrebbero copiati o eliminati.
-- Assicurati di avere i permessi necessari per accedere alle directory di origine e destinazione.
+- Assicurati di terminare i percorsi delle directory con una barra (/) per copiare il contenuto della directory piuttosto che la directory stessa.
+- Usa l'opzione `-n` (dry run) per simulare l'operazione senza apportare modifiche, utile per verificare quali file verranno trasferiti.
 - Considera di utilizzare `rsync` su una rete sicura o tramite SSH per garantire la sicurezza dei dati durante il trasferimento.

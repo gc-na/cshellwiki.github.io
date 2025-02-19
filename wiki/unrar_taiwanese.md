@@ -1,45 +1,50 @@
-# [台灣] Bash unrar 使用方式: 解壓縮 RAR 檔案
+# [台灣] C Shell (csh) unrar 使用方法: 解壓縮RAR檔案
 
 ## Overview
-`unrar` 命令用於解壓縮 RAR 格式的檔案。這是一個非常實用的工具，可以讓使用者輕鬆地提取 RAR 檔案中的內容。
+`unrar` 命令用於解壓縮 RAR 格式的檔案。這是一個非常實用的工具，特別是在處理壓縮檔案時。
 
 ## Usage
 基本語法如下：
-```bash
+```
 unrar [options] [arguments]
 ```
 
 ## Common Options
-- `e`: 解壓縮檔案到當前目錄，不保留目錄結構。
-- `x`: 解壓縮檔案並保留目錄結構。
-- `l`: 列出 RAR 檔案中的內容，但不解壓縮。
-- `v`: 顯示詳細的解壓縮過程。
-- `-o+`: 覆蓋已存在的檔案。
+- `x`：解壓縮檔案到當前目錄。
+- `e`：解壓縮檔案到當前目錄，但不保留目錄結構。
+- `l`：列出壓縮檔案中的內容。
+- `t`：測試壓縮檔案的完整性。
+- `v`：顯示詳細的解壓縮過程。
 
 ## Common Examples
 以下是一些常見的使用範例：
 
-1. 解壓縮到當前目錄：
+1. 解壓縮檔案到當前目錄：
    ```bash
-   unrar e archive.rar
+   unrar x example.rar
    ```
 
-2. 解壓縮並保留目錄結構：
+2. 解壓縮檔案到指定目錄：
    ```bash
-   unrar x archive.rar
+   unrar x example.rar /path/to/destination/
    ```
 
-3. 列出 RAR 檔案中的內容：
+3. 列出壓縮檔案中的內容：
    ```bash
-   unrar l archive.rar
+   unrar l example.rar
    ```
 
-4. 解壓縮並覆蓋已存在的檔案：
+4. 測試壓縮檔案的完整性：
    ```bash
-   unrar x -o+ archive.rar
+   unrar t example.rar
+   ```
+
+5. 解壓縮檔案但不保留目錄結構：
+   ```bash
+   unrar e example.rar
    ```
 
 ## Tips
-- 確保在使用 `unrar` 前已安裝該工具，通常可以透過包管理器安裝。
-- 使用 `-o-` 選項可以防止覆蓋已存在的檔案，這樣可以避免意外損失資料。
-- 在處理大型 RAR 檔案時，使用 `v` 選項可以幫助你了解解壓縮的進度。
+- 確保你有安裝 `unrar` 工具，否則命令將無法執行。
+- 使用 `l` 選項可以快速查看壓縮檔案中的內容，這樣可以避免不必要的解壓縮。
+- 定期檢查壓縮檔案的完整性，特別是在傳輸過程中，以確保資料不會損壞。

@@ -1,50 +1,45 @@
-# [Linux] Bash export 使用法: 環境變數的設定與導出
+# [台灣] C Shell (csh) export 使用方式: 設定環境變數
 
 ## Overview
-`export` 命令用於設定或導出環境變數，使得這些變數可以被當前 shell 及其子進程所使用。這對於在 shell 腳本或命令行中傳遞參數非常有用。
+`export` 命令用於設定環境變數，使得變數可以在子進程中可用。這對於在不同的程序中共享設定或配置非常有用。
 
 ## Usage
 基本語法如下：
-```bash
+```
 export [options] [arguments]
 ```
 
 ## Common Options
-- `-p`：顯示所有已導出的環境變數。
-- `-n`：取消導出指定的變數，使其不再是環境變數。
-- `-f`：導出函數，而不僅僅是變數。
+- `-n`：取消導出變數，使其不再在子進程中可用。
+- `-p`：顯示所有已導出的變數及其值。
 
 ## Common Examples
+以下是一些常見的使用範例：
+
 1. 導出一個變數：
-   ```bash
-   MY_VAR="Hello, World!"
-   export MY_VAR
+   ```csh
+   set myVar = "Hello, World!"
+   export myVar
    ```
 
-2. 同時導出多個變數：
-   ```bash
-   export VAR1="Value1" VAR2="Value2"
+2. 導出多個變數：
+   ```csh
+   set var1 = "Value1"
+   set var2 = "Value2"
+   export var1 var2
    ```
 
 3. 顯示所有導出的變數：
-   ```bash
+   ```csh
    export -p
    ```
 
-4. 取消導出一個變數：
-   ```bash
-   export -n MY_VAR
-   ```
-
-5. 導出一個函數：
-   ```bash
-   my_function() {
-       echo "This is a function."
-   }
-   export -f my_function
+4. 取消導出變數：
+   ```csh
+   export -n myVar
    ```
 
 ## Tips
-- 確保在導出變數之前已經為其賦值，否則導出的變數將是空的。
-- 使用 `export -p` 可以檢查當前所有導出的環境變數，這對於調試非常有幫助。
-- 導出變數後，這些變數將在子進程中可用，因此可以在執行其他腳本或命令時使用。
+- 確保在導出變數之前，先使用 `set` 命令來定義變數。
+- 使用 `export -p` 可以快速檢查當前所有導出的變數，這對於調試環境變數非常有幫助。
+- 導出的變數在子進程中可用，但在父進程中不會影響其他變數的值。

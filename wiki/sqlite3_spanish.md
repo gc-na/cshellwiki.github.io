@@ -1,7 +1,7 @@
-# [Linux] Bash sqlite3 Uso: Interactuar con bases de datos SQLite
+# [Linux] C Shell (csh) sqlite3 Uso: Interactuar con bases de datos SQLite
 
 ## Overview
-El comando `sqlite3` se utiliza para interactuar con bases de datos SQLite desde la línea de comandos. Permite crear, modificar y consultar bases de datos de manera sencilla y eficiente.
+El comando `sqlite3` se utiliza para interactuar con bases de datos SQLite. Permite a los usuarios ejecutar consultas SQL, crear y modificar bases de datos, y gestionar datos de manera eficiente.
 
 ## Usage
 La sintaxis básica del comando `sqlite3` es la siguiente:
@@ -11,41 +11,46 @@ sqlite3 [opciones] [argumentos]
 ```
 
 ## Common Options
-- `-help`: Muestra la ayuda y las opciones disponibles.
-- `-version`: Muestra la versión de SQLite.
-- `-init <archivo>`: Ejecuta comandos SQL desde un archivo al iniciar la sesión.
-- `-batch`: Ejecuta en modo por lotes, ideal para scripts.
-- `-echo`: Muestra las consultas SQL antes de ejecutarlas.
+- `-init <archivo>`: Ejecuta comandos desde el archivo especificado al iniciar.
+- `-batch`: Modo por lotes, ideal para scripts, no muestra el prompt.
+- `-header`: Muestra los nombres de las columnas en la salida.
+- `-version`: Muestra la versión de SQLite instalada.
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso de `sqlite3`:
 
-### Crear una nueva base de datos
-```bash
-sqlite3 mi_base_de_datos.db
-```
+1. **Crear una nueva base de datos:**
 
-### Crear una tabla
-```bash
-sqlite3 mi_base_de_datos.db "CREATE TABLE usuarios (id INTEGER PRIMARY KEY, nombre TEXT, edad INTEGER);"
-```
+   ```bash
+   sqlite3 mi_base_de_datos.db
+   ```
 
-### Insertar datos en la tabla
-```bash
-sqlite3 mi_base_de_datos.db "INSERT INTO usuarios (nombre, edad) VALUES ('Juan', 30);"
-```
+2. **Ejecutar un archivo de comandos SQL:**
 
-### Consultar datos de la tabla
-```bash
-sqlite3 mi_base_de_datos.db "SELECT * FROM usuarios;"
-```
+   ```bash
+   sqlite3 mi_base_de_datos.db -init mis_comandos.sql
+   ```
 
-### Exportar datos a un archivo CSV
-```bash
-sqlite3 -header -csv mi_base_de_datos.db "SELECT * FROM usuarios;" > usuarios.csv
-```
+3. **Mostrar la versión de SQLite:**
+
+   ```bash
+   sqlite3 -version
+   ```
+
+4. **Crear una tabla y agregar datos:**
+
+   ```bash
+   sqlite3 mi_base_de_datos.db "CREATE TABLE usuarios (id INTEGER PRIMARY KEY, nombre TEXT);"
+   sqlite3 mi_base_de_datos.db "INSERT INTO usuarios (nombre) VALUES ('Juan');"
+   ```
+
+5. **Consultar datos de una tabla:**
+
+   ```bash
+   sqlite3 mi_base_de_datos.db "SELECT * FROM usuarios;"
+   ```
 
 ## Tips
-- Utiliza el modo `-batch` para ejecutar scripts sin interacción manual.
 - Siempre realiza copias de seguridad de tus bases de datos antes de realizar cambios importantes.
-- Aprovecha el uso de archivos de inicialización para cargar configuraciones y datos al iniciar `sqlite3`.
+- Utiliza el modo `-batch` cuando ejecutes scripts para evitar la interacción manual.
+- Familiarízate con las consultas SQL básicas para aprovechar al máximo `sqlite3`.

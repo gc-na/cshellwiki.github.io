@@ -1,53 +1,50 @@
-# [台灣] Bash docker 使用法: 管理容器和映像檔
+# [台灣] C Shell (csh) docker 使用方式: 管理容器和映像檔
 
 ## Overview
-Docker 是一個開源平台，讓開發者能夠自動化應用程式的部署、擴展和管理。它使用容器技術來打包應用程式及其依賴，確保在不同環境中都能一致地運行。
+docker 命令用於管理容器和映像檔，讓使用者能夠輕鬆地創建、運行和管理應用程式的容器化環境。這個命令是現代軟體開發和部署中不可或缺的工具。
 
 ## Usage
 基本語法如下：
-```bash
+```
 docker [options] [arguments]
 ```
 
 ## Common Options
-- `run`: 創建並啟動一個新的容器。
+- `run`: 創建並運行一個新的容器。
 - `ps`: 列出當前正在運行的容器。
 - `images`: 列出本地的所有映像檔。
-- `rm`: 刪除一個或多個容器。
-- `rmi`: 刪除一個或多個映像檔。
+- `rmi`: 刪除指定的映像檔。
+- `exec`: 在運行中的容器內執行命令。
 
 ## Common Examples
-1. **啟動一個新的容器**
-   ```bash
-   docker run -d --name my_container nginx
-   ```
-   這條命令會在背景中啟動一個名為 `my_container` 的 Nginx 容器。
+以下是一些常見的使用範例：
 
-2. **列出正在運行的容器**
+1. **運行一個新的容器**
+   ```bash
+   docker run hello-world
+   ```
+
+2. **列出所有運行中的容器**
    ```bash
    docker ps
    ```
-   這條命令會顯示所有當前運行的容器。
 
-3. **查看本地映像檔**
+3. **列出所有本地映像檔**
    ```bash
    docker images
    ```
-   這條命令會列出所有本地可用的映像檔。
 
-4. **刪除容器**
+4. **刪除一個映像檔**
    ```bash
-   docker rm my_container
+   docker rmi <image_id>
    ```
-   這條命令會刪除名為 `my_container` 的容器。
 
-5. **刪除映像檔**
+5. **在運行中的容器內執行命令**
    ```bash
-   docker rmi nginx
+   docker exec -it <container_id> /bin/bash
    ```
-   這條命令會刪除名為 `nginx` 的映像檔。
 
 ## Tips
-- 在使用 `docker run` 時，加入 `-it` 參數可以讓你進入容器的交互式終端。
-- 定期清理不再使用的容器和映像檔，以節省磁碟空間。
-- 使用 Docker Compose 來管理多個容器的應用程式，可以簡化配置和啟動過程。
+- 確保定期清理不再使用的容器和映像檔，以節省磁碟空間。
+- 使用 `docker-compose` 來管理多個容器的應用程式，這樣可以簡化配置和啟動過程。
+- 在開發環境中使用 `--rm` 選項來自動刪除容器，這樣可以避免堆積不必要的容器。

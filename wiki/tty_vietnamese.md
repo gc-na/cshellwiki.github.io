@@ -1,46 +1,41 @@
-# [Linux] Bash tty cách sử dụng: Xác định thiết bị đầu ra của terminal
+# [Hệ điều hành] C Shell (csh) tty: Xác định tên thiết bị đầu ra
 
 ## Overview
-Lệnh `tty` trong Bash được sử dụng để xác định tên thiết bị của terminal hiện tại. Nó cho phép người dùng biết terminal nào đang được sử dụng để thực thi các lệnh.
+Lệnh `tty` trong C Shell (csh) được sử dụng để xác định tên của thiết bị đầu ra hiện tại. Nó cho phép người dùng biết thiết bị nào đang được sử dụng để hiển thị đầu ra của các lệnh.
 
 ## Usage
 Cú pháp cơ bản của lệnh `tty` như sau:
-
-```bash
+```
 tty [options] [arguments]
 ```
 
 ## Common Options
-- `-s`: Chạy lệnh mà không in ra thông tin, chỉ trả về mã trạng thái.
+- `-s`: Chạy lệnh mà không in ra tên thiết bị. Chỉ trả về mã thoát.
 - `--help`: Hiển thị thông tin trợ giúp về lệnh `tty`.
 - `--version`: Hiển thị phiên bản của lệnh `tty`.
 
 ## Common Examples
-Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `tty`:
+Dưới đây là một số ví dụ thực tế khi sử dụng lệnh `tty`:
 
-1. **Xác định thiết bị terminal hiện tại:**
-   ```bash
+1. **Xác định tên thiết bị đầu ra:**
+   ```csh
    tty
    ```
-   Kết quả có thể là `/dev/pts/0`, cho biết bạn đang sử dụng terminal ảo.
+   Kết quả có thể là `/dev/ttys000`, cho biết thiết bị đầu ra đang được sử dụng.
 
-2. **Chạy lệnh mà không in ra thông tin:**
-   ```bash
+2. **Sử dụng tùy chọn -s để kiểm tra thiết bị mà không in ra:**
+   ```csh
    tty -s
    ```
-   Lệnh này sẽ không in ra gì, nhưng bạn có thể kiểm tra mã trạng thái thông qua `echo $?`.
+   Lệnh này sẽ không in ra gì, nhưng bạn có thể kiểm tra mã thoát để biết thiết bị có tồn tại hay không.
 
 3. **Hiển thị thông tin trợ giúp:**
-   ```bash
+   ```csh
    tty --help
    ```
-
-4. **Kiểm tra phiên bản của lệnh:**
-   ```bash
-   tty --version
-   ```
+   Lệnh này sẽ hiển thị thông tin trợ giúp về cách sử dụng lệnh `tty`.
 
 ## Tips
-- Sử dụng `tty` để xác định terminal khi làm việc với nhiều terminal khác nhau.
-- Kết hợp `tty` với các lệnh khác để kiểm soát đầu ra, chẳng hạn như trong các script tự động.
-- Khi sử dụng `tty -s`, hãy nhớ kiểm tra mã trạng thái để biết lệnh có thành công hay không.
+- Sử dụng tùy chọn `-s` khi bạn chỉ muốn kiểm tra sự tồn tại của thiết bị mà không cần thông tin chi tiết.
+- Kết hợp lệnh `tty` với các lệnh khác trong script để tự động hóa các tác vụ liên quan đến đầu ra.
+- Thường xuyên kiểm tra thiết bị đầu ra nếu bạn đang làm việc với nhiều terminal để đảm bảo bạn đang làm việc trên đúng thiết bị.

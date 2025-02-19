@@ -1,23 +1,23 @@
-# [Linux] Bash basename 用法: 取得檔案名稱
+# [台灣] C Shell (csh) basename 用法: 獲取檔案名稱
 
 ## Overview
-`basename` 是一個用於從完整路徑中提取檔案名稱的命令。它可以幫助用戶獲取不包含路徑的檔案名稱，這在處理檔案時非常有用。
+`basename` 命令用於從完整的檔案路徑中提取檔案名稱，去除路徑和檔案擴展名。這在處理檔案時非常有用，特別是當你只想要檔案的名稱而不需要其他資訊時。
 
 ## Usage
 基本語法如下：
-```bash
+```
 basename [options] [arguments]
 ```
 
 ## Common Options
-- `-a`：處理多個檔案名稱，並返回每個檔案的名稱。
-- `-s`：指定要去除的後綴，這樣可以只返回檔案名稱的主要部分。
+- `-a`：處理多個檔案名稱，返回每個檔案的名稱。
+- `-s`：指定要去除的檔案擴展名。
 
 ## Common Examples
 以下是一些常見的使用範例：
 
-1. 獲取單一檔案名稱：
-   ```bash
+1. 提取檔案名稱：
+   ```csh
    basename /usr/local/bin/script.sh
    ```
    輸出：
@@ -25,8 +25,8 @@ basename [options] [arguments]
    script.sh
    ```
 
-2. 獲取檔案名稱並去除特定後綴：
-   ```bash
+2. 去除檔案擴展名：
+   ```csh
    basename /usr/local/bin/script.sh .sh
    ```
    輸出：
@@ -34,8 +34,8 @@ basename [options] [arguments]
    script
    ```
 
-3. 處理多個檔案名稱：
-   ```bash
+3. 處理多個檔案：
+   ```csh
    basename -a /usr/local/bin/script1.sh /usr/local/bin/script2.sh
    ```
    輸出：
@@ -44,7 +44,16 @@ basename [options] [arguments]
    script2.sh
    ```
 
+4. 去除特定擴展名：
+   ```csh
+   basename /home/user/document.txt .txt
+   ```
+   輸出：
+   ```
+   document
+   ```
+
 ## Tips
-- 使用 `basename` 時，確保提供的路徑是正確的，否則可能會得到意外的結果。
-- 當需要處理多個檔案時，可以使用 `-a` 選項來一次性獲取所有檔案的名稱。
-- 結合其他命令（如 `find`）使用 `basename` 可以更有效地處理檔案名稱。
+- 當需要處理多個檔案時，使用 `-a` 選項可以一次性獲取所有檔案名稱。
+- 使用 `-s` 選項可以方便地去除檔案的特定擴展名，這對於批量處理檔案非常有用。
+- 結合其他命令，如 `find`，可以更有效地管理檔案名稱的提取和處理。

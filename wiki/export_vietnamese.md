@@ -1,52 +1,45 @@
-# [Linux] Bash export: Thiết lập biến môi trường
+# [Hệ điều hành] C Shell (csh) export <Sử dụng tương đương>: Thiết lập biến môi trường
 
-## Overview
-Lệnh `export` trong Bash được sử dụng để thiết lập và xuất các biến môi trường, cho phép các biến này có thể được truy cập bởi các tiến trình con của shell. Khi một biến được xuất, nó trở thành một phần của môi trường của shell và có thể được sử dụng bởi các chương trình khác.
+## Tổng quan
+Lệnh `export` trong C Shell (csh) được sử dụng để thiết lập và xuất biến môi trường, cho phép các biến này có thể được truy cập bởi các tiến trình con. Điều này rất hữu ích khi bạn muốn chia sẻ thông tin giữa các phiên làm việc hoặc giữa các chương trình khác nhau.
 
-## Usage
+## Cách sử dụng
 Cú pháp cơ bản của lệnh `export` như sau:
 
-```bash
-export [options] [arguments]
+```
+export [tùy chọn] [biến]
 ```
 
-## Common Options
+## Tùy chọn phổ biến
+- `-n`: Ngăn không cho biến được xuất ra môi trường.
 - `-p`: Hiển thị danh sách tất cả các biến môi trường hiện có.
-- `-n`: Hủy xuất một biến môi trường, làm cho nó không còn khả dụng cho các tiến trình con.
-- `-f`: Xuất một hàm shell để có thể được sử dụng trong các shell con.
 
-## Common Examples
+## Ví dụ phổ biến
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `export`:
 
-1. **Xuất một biến môi trường:**
-   ```bash
-   export MY_VAR="Hello World"
+1. Xuất một biến môi trường:
+   ```csh
+   set MY_VAR="Hello World"
+   export MY_VAR
    ```
 
-2. **Kiểm tra biến môi trường đã xuất:**
-   ```bash
+2. Kiểm tra biến môi trường đã được xuất:
+   ```csh
    echo $MY_VAR
    ```
 
-3. **Xuất nhiều biến cùng một lúc:**
-   ```bash
-   export VAR1="Value1" VAR2="Value2"
+3. Ngăn không cho một biến được xuất:
+   ```csh
+   set ANOTHER_VAR="Goodbye"
+   export -n ANOTHER_VAR
    ```
 
-4. **Hủy xuất một biến môi trường:**
-   ```bash
-   export -n MY_VAR
+4. Hiển thị tất cả các biến môi trường:
+   ```csh
+   export -p
    ```
 
-5. **Xuất một hàm shell:**
-   ```bash
-   my_function() {
-       echo "This is a function"
-   }
-   export -f my_function
-   ```
-
-## Tips
-- Hãy nhớ rằng các biến môi trường chỉ có thể được truy cập bởi các tiến trình con sau khi chúng được xuất.
-- Sử dụng `export -p` để xem tất cả các biến môi trường hiện tại, điều này có thể hữu ích để kiểm tra các biến đã được thiết lập.
-- Đặt các biến môi trường trong tệp cấu hình như `.bashrc` hoặc `.bash_profile` để chúng có hiệu lực mỗi khi bạn mở một phiên làm việc mới.
+## Mẹo
+- Hãy chắc chắn rằng bạn đã sử dụng lệnh `set` để gán giá trị cho biến trước khi xuất nó.
+- Sử dụng lệnh `export -p` để kiểm tra các biến môi trường hiện tại và đảm bảo rằng các biến bạn cần đã được xuất thành công.
+- Đặt tên biến rõ ràng và có ý nghĩa để dễ dàng quản lý và sử dụng trong các tiến trình khác nhau.

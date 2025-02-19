@@ -1,7 +1,7 @@
-# [Linux] Bash vgs Uso: Display volume group information
+# [Linux] C Shell (csh) vgs Uso: Display volume group information
 
 ## Overview
-The `vgs` command in Bash is used to display information about volume groups in a Logical Volume Manager (LVM) setup. It provides a summary of the volume groups, including their attributes and status, which is essential for managing storage in Linux systems.
+The `vgs` command is used to display information about volume groups in a Logical Volume Manager (LVM) setup. It provides a summary of the volume groups available on the system, including details such as the number of logical volumes, physical volumes, and their sizes.
 
 ## Usage
 The basic syntax of the `vgs` command is as follows:
@@ -11,40 +11,39 @@ vgs [options] [arguments]
 ```
 
 ## Common Options
-- `-o, --units`: Specify the output format and units for the displayed data.
-- `-a, --all`: Show all volume groups, including those that are not active.
-- `-d, --debug`: Enable debug output for troubleshooting.
-- `-h, --help`: Display help information about the command and its options.
-- `--noheadings`: Suppress the header line in the output.
+- `-o`: Specify which columns to display in the output.
+- `--units`: Set the units for size output (e.g., k, m, g).
+- `-h`: Display output in a human-readable format.
+- `-a`: Show all volume groups, including inactive ones.
 
 ## Common Examples
 
-1. **Display all volume groups:**
+1. **Display basic volume group information:**
    ```bash
    vgs
    ```
 
-2. **Show detailed information about all volume groups:**
+2. **Show detailed information with specific columns:**
+   ```bash
+   vgs -o vg_name,lv_count,pv_count,vg_size
+   ```
+
+3. **Display information in human-readable format:**
+   ```bash
+   vgs -h
+   ```
+
+4. **Show all volume groups, including inactive ones:**
    ```bash
    vgs -a
    ```
 
-3. **Display volume groups with specific output columns:**
+5. **Display volume group information with size in gigabytes:**
    ```bash
-   vgs -o vg_name,lv_count,vg_size
-   ```
-
-4. **Show volume groups without headings:**
-   ```bash
-   vgs --noheadings
-   ```
-
-5. **Display volume groups with debug information:**
-   ```bash
-   vgs -d
+   vgs --units g
    ```
 
 ## Tips
-- Use the `-o` option to customize the output to display only the information you need, making it easier to read.
-- Combine `vgs` with other LVM commands like `lvdisplay` and `pvdisplay` for comprehensive storage management.
-- Regularly check the status of your volume groups, especially after making changes to logical volumes or physical volumes, to ensure everything is functioning correctly.
+- Use the `-o` option to customize the output and focus on the information that matters most to you.
+- Combine `vgs` with other LVM commands like `lvdisplay` and `pvdisplay` for comprehensive management of your storage.
+- Regularly check your volume groups to ensure they have enough space and are functioning correctly.

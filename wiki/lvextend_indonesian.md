@@ -1,45 +1,39 @@
-# [Linux] Bash lvextend Penggunaan: Memperbesar ukuran Logical Volume
+# [Linux] C Shell (csh) lvextend Penggunaan: Memperluas ukuran logical volume
 
 ## Overview
-Perintah `lvextend` digunakan untuk memperbesar ukuran Logical Volume (LV) dalam sistem manajemen volume logis (LVM). Dengan menggunakan perintah ini, Anda dapat menambah ruang penyimpanan pada volume yang sudah ada, memungkinkan Anda untuk mengelola ruang disk dengan lebih efisien.
+Perintah `lvextend` digunakan untuk memperbesar ukuran logical volume dalam sistem manajemen volume logis (LVM). Dengan menggunakan `lvextend`, Anda dapat menambah ruang penyimpanan pada volume yang sudah ada tanpa kehilangan data.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `lvextend`:
 
-```
+```shell
 lvextend [options] [arguments]
 ```
 
 ## Common Options
-- `-L +size`: Menambah ukuran LV dengan ukuran yang ditentukan. Misalnya, `-L +10G` untuk menambah 10 GB.
-- `-l +size`: Menambah ukuran LV dengan jumlah logical extents yang ditentukan.
-- `-r`: Secara otomatis memperluas filesystem setelah LV diperbesar.
-- `-n`: Mengubah nama Logical Volume.
+- `-L +size`: Menambah ukuran logical volume dengan ukuran yang ditentukan.
+- `-l +number`: Menambah ukuran logical volume dengan jumlah logical extents yang ditentukan.
+- `-r`: Secara otomatis memperluas filesystem yang terkait dengan logical volume setelah perpanjangan.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `lvextend`:
 
-1. **Menambah 10 GB pada Logical Volume**:
-   ```bash
+1. Menambah ukuran logical volume sebesar 10GB:
+   ```shell
    lvextend -L +10G /dev/vg01/lv01
    ```
 
-2. **Menambah ukuran LV dengan logical extents**:
-   ```bash
+2. Menambah ukuran logical volume dengan jumlah extents:
+   ```shell
    lvextend -l +100 /dev/vg01/lv01
    ```
 
-3. **Menambah ukuran LV dan memperluas filesystem secara otomatis**:
-   ```bash
+3. Menambah ukuran logical volume dan secara otomatis memperluas filesystem:
+   ```shell
    lvextend -r -L +5G /dev/vg01/lv01
    ```
 
-4. **Mengubah nama Logical Volume**:
-   ```bash
-   lvextend -n new_lv_name /dev/vg01/old_lv_name
-   ```
-
 ## Tips
-- Selalu pastikan untuk memeriksa ruang yang tersedia pada Volume Group (VG) sebelum memperbesar LV.
-- Gunakan opsi `-r` jika Anda ingin memperluas filesystem secara otomatis setelah memperbesar LV, untuk menghindari langkah tambahan.
-- Lakukan backup data penting sebelum melakukan perubahan pada Logical Volume untuk menghindari kehilangan data.
+- Pastikan untuk memeriksa ruang fisik yang tersedia sebelum memperluas logical volume dengan menggunakan perintah `vgs`.
+- Selalu lakukan backup data penting sebelum melakukan perubahan pada volume untuk menghindari kehilangan data.
+- Gunakan opsi `-r` jika Anda ingin memperluas filesystem secara otomatis setelah memperbesar logical volume, untuk menghemat waktu dan usaha.

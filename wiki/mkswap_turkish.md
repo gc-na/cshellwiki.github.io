@@ -1,39 +1,40 @@
-# [Linux] Bash mkswap Kullanımı: Swap alanı oluşturma
+# [Linux] C Shell (csh) mkswap Kullanımı: Swap alanı oluşturma
 
 ## Genel Bakış
-`mkswap` komutu, bir dosyayı veya bir bölümü swap alanı olarak kullanabilmek için hazırlamak amacıyla kullanılır. Swap alanı, sistemin bellek yönetimini iyileştirmek için fiziksel RAM'in yetersiz olduğu durumlarda kullanılır.
+`mkswap` komutu, Linux sistemlerinde swap alanı oluşturmak için kullanılır. Swap alanı, sistemin bellek kullanımını optimize etmek ve bellek yetersizliği durumunda geçici veri depolamak için kullanılır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
+
 ```bash
 mkswap [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-f`, `--force`: Zaten bir swap alanı olarak işaretlenmiş bir dosyayı veya bölümü yeniden oluşturmak için kullanılır.
-- `-L`, `--label LABEL`: Swap alanına bir etiket atar.
-- `-p`, `--pagesize SIZE`: Swap alanının sayfa boyutunu ayarlamak için kullanılır.
+- `-L, --label LABEL`: Swap alanına bir etiket atar.
+- `-f, --force`: Mevcut bir swap alanını zorla oluşturur.
+- `-p, --pagesize SIZE`: Swap alanı için sayfa boyutunu belirtir.
 
 ## Yaygın Örnekler
-Aşağıda `mkswap` komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda `mkswap` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-### Örnek 1: Yeni bir swap dosyası oluşturma
-```bash
-sudo fallocate -l 1G /swapfile
-sudo mkswap /swapfile
-```
+1. Yeni bir swap dosyası oluşturma:
+   ```bash
+   dd if=/dev/zero of=/swapfile bs=1M count=1024
+   mkswap /swapfile
+   ```
 
-### Örnek 2: Swap dosyasını etkinleştirme
-```bash
-sudo swapon /swapfile
-```
+2. Swap alanına etiket ekleme:
+   ```bash
+   mkswap -L my_swap /swapfile
+   ```
 
-### Örnek 3: Swap alanına etiket verme
-```bash
-sudo mkswap -L my_swap /swapfile
-```
+3. Mevcut bir swap alanını zorla oluşturma:
+   ```bash
+   mkswap -f /dev/sdX
+   ```
 
 ## İpuçları
-- Swap dosyası oluştururken, dosyanın yeterli boyutta olduğundan emin olun; genellikle RAM'in iki katı kadar swap alanı önerilir.
-- Swap alanını etkinleştirdikten sonra, `swapon -s` komutunu kullanarak mevcut swap alanlarını kontrol edebilirsiniz.
-- Swap dosyasını güvenli hale getirmek için, dosyanın izinlerini kısıtlamak iyi bir uygulamadır: `sudo chmod 600 /swapfile`.
+- Swap alanını oluşturduktan sonra, kullanmak için `swapon` komutunu çalıştırmayı unutmayın.
+- Swap dosyası oluştururken, yeterli disk alanı olduğundan emin olun.
+- Swap alanını düzenli olarak kontrol edin ve gereksiz dosyaları temizleyin.

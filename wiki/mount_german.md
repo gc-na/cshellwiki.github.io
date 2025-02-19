@@ -1,46 +1,44 @@
-# [Linux] Bash mount Verwendung: Einbinden von Dateisystemen
+# [Linux] C Shell (csh) mount Verwendung: Einbinden von Dateisystemen
 
 ## Übersicht
-Der Befehl `mount` wird in Linux verwendet, um Dateisysteme in das Verzeichnisbaum-System des Betriebssystems einzubinden. Dies ermöglicht den Zugriff auf die Daten auf verschiedenen Speichermedien, wie Festplatten, USB-Sticks oder Netzwerkfreigaben.
+Der Befehl `mount` wird verwendet, um Dateisysteme in das Verzeichnisbaum eines Unix-ähnlichen Betriebssystems einzubinden. Dies ermöglicht den Zugriff auf Daten, die sich auf verschiedenen Speichermedien befinden, wie z.B. Festplatten, USB-Sticks oder Netzwerkfreigaben.
 
 ## Verwendung
-Die grundlegende Syntax des `mount`-Befehls lautet:
+Die grundlegende Syntax des Befehls lautet:
 
-```bash
-mount [Optionen] [Gerät] [Zielverzeichnis]
+```
+mount [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-t`: Gibt den Typ des Dateisystems an (z. B. ext4, ntfs).
-- `-o`: Ermöglicht das Angeben von Optionen wie `ro` (read-only) oder `rw` (read-write).
-- `-a`: Mountet alle Dateisysteme, die in der Datei `/etc/fstab` aufgeführt sind.
-- `-r`: Mountet das Dateisystem im Nur-Lese-Modus.
+- `-t <typ>`: Gibt den Typ des Dateisystems an (z.B. ext4, vfat).
+- `-o <Optionen>`: Ermöglicht das Festlegen spezifischer Optionen für das Einbinden, wie `ro` (read-only) oder `rw` (read-write).
+- `-a`: Bindet alle in der Datei `/etc/fstab` angegebenen Dateisysteme ein.
+- `-r`: Bindet das Dateisystem im Nur-Lese-Modus ein.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung des `mount`-Befehls:
 
-1. **Einbinden eines USB-Sticks:**
-   ```bash
-   mount /dev/sdb1 /mnt/usb
+1. **Einbinden eines USB-Sticks**
+   ```csh
+   mount -t vfat /dev/sdb1 /mnt/usb
    ```
 
-2. **Einbinden eines ext4-Dateisystems mit spezifischen Optionen:**
-   ```bash
-   mount -t ext4 -o rw /dev/sda1 /mnt/data
+2. **Einbinden eines ext4-Dateisystems**
+   ```csh
+   mount -t ext4 /dev/sda1 /mnt/daten
    ```
 
-3. **Einbinden aller in fstab definierten Dateisysteme:**
-   ```bash
+3. **Einbinden im Nur-Lese-Modus**
+   ```csh
+   mount -o ro /dev/sr0 /mnt/cdrom
+   ```
+
+4. **Einbinden aller Dateisysteme aus fstab**
+   ```csh
    mount -a
    ```
 
-4. **Einbinden eines Netzwerkfreigabe (NFS):**
-   ```bash
-   mount -t nfs 192.168.1.100:/freigabe /mnt/nfs
-   ```
-
 ## Tipps
-- Stellen Sie sicher, dass das Zielverzeichnis existiert, bevor Sie den Befehl ausführen.
+- Überprüfen Sie immer, ob das Zielverzeichnis existiert, bevor Sie ein Dateisystem einbinden.
 - Verwenden Sie `umount`, um ein eingebundenes Dateisystem sicher zu trennen.
-- Überprüfen Sie die Berechtigungen des Zielverzeichnisses, um sicherzustellen, dass Sie die erforderlichen Zugriffsrechte haben.
-- Nutzen Sie `df -h`, um eine Übersicht über alle aktuell eingebundenen Dateisysteme zu erhalten.
+- Achten Sie darauf, die richtigen Berechtigungen für das Zielverzeichnis zu setzen, um Zugriffsprobleme zu vermeiden.

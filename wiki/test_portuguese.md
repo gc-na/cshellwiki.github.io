@@ -1,60 +1,69 @@
-# [Linux] Bash test uso: Avaliação de expressões
+# [Linux] C Shell (csh) test uso: Verifica condições
 
 ## Overview
-O comando `test` é utilizado em Bash para avaliar expressões e condições. Ele permite verificar se um determinado arquivo existe, se uma string é vazia, se dois números são iguais, entre outras condições. O resultado da avaliação é retornado como um código de saída, onde um resultado verdadeiro retorna 0 e um falso retorna 1.
+O comando `test` no C Shell (csh) é utilizado para avaliar expressões condicionais. Ele retorna um status de saída que indica se a condição testada é verdadeira ou falsa. Este comando é frequentemente usado em scripts para controlar o fluxo de execução com base em condições específicas.
 
 ## Usage
 A sintaxe básica do comando `test` é a seguinte:
 
-```bash
+```csh
 test [opções] [argumentos]
 ```
 
 ## Common Options
 Aqui estão algumas opções comuns que podem ser usadas com o comando `test`:
 
-- `-e [arquivo]`: Verifica se o arquivo existe.
-- `-f [arquivo]`: Verifica se o arquivo é um arquivo regular.
-- `-d [diretório]`: Verifica se o argumento é um diretório.
-- `-z [string]`: Verifica se a string é vazia.
-- `-n [string]`: Verifica se a string não é vazia.
-- `[string1] = [string2]`: Verifica se duas strings são iguais.
-- `[número1] -eq [número2]`: Verifica se dois números são iguais.
+- `-e arquivo`: Verifica se o arquivo existe.
+- `-f arquivo`: Verifica se o arquivo é um arquivo regular.
+- `-d diretório`: Verifica se o diretório existe e é um diretório.
+- `-z string`: Verifica se a string é vazia.
+- `-n string`: Verifica se a string não é vazia.
+- `==`: Compara duas strings para igualdade.
+- `!=`: Compara duas strings para desigualdade.
 
 ## Common Examples
 Aqui estão alguns exemplos práticos do uso do comando `test`:
 
 ### Verificar se um arquivo existe
-```bash
-test -e arquivo.txt && echo "O arquivo existe."
+```csh
+if ( `test -e meu_arquivo.txt` ) then
+    echo "O arquivo existe."
+else
+    echo "O arquivo não existe."
+endif
 ```
 
-### Verificar se um diretório existe
-```bash
-test -d /caminho/para/diretorio && echo "O diretório existe."
-```
-
-### Verificar se uma string é vazia
-```bash
-string=""
-test -z "$string" && echo "A string está vazia."
+### Verificar se uma string está vazia
+```csh
+set minha_string = ""
+if ( `test -z "$minha_string"` ) then
+    echo "A string está vazia."
+else
+    echo "A string não está vazia."
+endif
 ```
 
 ### Comparar duas strings
-```bash
-string1="teste"
-string2="teste"
-test "$string1" = "$string2" && echo "As strings são iguais."
+```csh
+set string1 = "teste"
+set string2 = "teste"
+if ( `test "$string1" == "$string2"` ) then
+    echo "As strings são iguais."
+else
+    echo "As strings são diferentes."
+endif
 ```
 
-### Comparar dois números
-```bash
-num1=5
-num2=5
-test $num1 -eq $num2 && echo "Os números são iguais."
+### Verificar se um diretório existe
+```csh
+if ( `test -d /caminho/para/diretorio` ) then
+    echo "O diretório existe."
+else
+    echo "O diretório não existe."
+endif
 ```
 
 ## Tips
-- Utilize `[` como uma alternativa ao comando `test`, pois ambos funcionam da mesma forma. Por exemplo, `[` é uma forma mais comum de escrever `test` em scripts.
-- Sempre coloque aspas em torno de variáveis ao usar `test` para evitar erros com strings vazias.
-- Combine múltiplas condições usando `-a` (E) e `-o` (OU) para avaliações mais complexas.
+- Sempre use aspas ao redor de variáveis que podem conter espaços ou caracteres especiais para evitar erros de sintaxe.
+- Combine múltiplas condições usando operadores lógicos como `-a` (E) e `-o` (OU) para criar testes mais complexos.
+- Utilize o comando `echo $?` após um teste para verificar o status de saída do último comando executado. Um status de saída de `0` indica que a condição foi verdadeira.

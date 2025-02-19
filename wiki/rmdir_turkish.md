@@ -1,40 +1,44 @@
-# [Linux] Bash rmdir Kullanımı: Boş dizinleri silme
+# [Linux] C Shell (csh) rmdir Kullanımı: Boş dizinleri silme
 
 ## Genel Bakış
-`rmdir` komutu, boş dizinleri silmek için kullanılan bir Bash komutudur. Bu komut, yalnızca içi boş olan dizinleri kaldırır; eğer dizin içinde dosya veya başka dizinler varsa, silme işlemi başarısız olur.
+`rmdir` komutu, belirtilen dizinleri silmek için kullanılır. Ancak, yalnızca boş dizinleri silebilir; eğer dizin içinde dosya veya başka dizinler varsa, bu komut çalışmaz.
 
 ## Kullanım
-Temel sözdizimi şu şekildedir:
-```
+Temel sözdizimi aşağıdaki gibidir:
+
+```csh
 rmdir [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-p`: Üst dizinleri de silmek için kullanılır. Eğer alt dizinler boşsa, üst dizinler de silinir.
-- `--ignore-fail-on-non-empty`: Boş olmayan dizinler için hata mesajı vermeden devam eder.
+- `-p`: Üst dizinleri de siler, yalnızca boş oldukları takdirde.
+- `--help`: Komutun kullanımına dair yardım bilgilerini gösterir.
+- `--version`: Komutun sürüm bilgilerini gösterir.
 
 ## Yaygın Örnekler
+Aşağıda `rmdir` komutunun bazı pratik örnekleri bulunmaktadır:
+
 1. Boş bir dizini silmek:
-   ```bash
-   rmdir /path/to/empty-directory
+   ```csh
+   rmdir /path/to/empty_directory
    ```
 
 2. Birden fazla boş dizini silmek:
-   ```bash
-   rmdir /path/to/empty-directory1 /path/to/empty-directory2
+   ```csh
+   rmdir /path/to/empty_directory1 /path/to/empty_directory2
    ```
 
-3. Üst dizinleri de silmek:
-   ```bash
-   rmdir -p /path/to/empty-directory/sub-directory
+3. Üst dizinleri de silmek (boş oldukları takdirde):
+   ```csh
+   rmdir -p /path/to/parent_directory/empty_directory
    ```
 
-4. Hata mesajı vermeden devam etmek:
-   ```bash
-   rmdir --ignore-fail-on-non-empty /path/to/non-empty-directory
+4. Yardım almak için:
+   ```csh
+   rmdir --help
    ```
 
 ## İpuçları
-- `rmdir` komutunu kullanmadan önce dizinin gerçekten boş olduğundan emin olun. Boş olmayan dizinler için `rmdir` komutu hata verecektir.
-- Dizinleri silmeden önce yedek almak iyi bir uygulamadır, özellikle önemli veriler içeren dizinlerde.
-- `rmdir` komutunu kullanırken dikkatli olun; yanlışlıkla önemli dizinleri silmekten kaçının.
+- `rmdir` komutunu kullanmadan önce dizinin gerçekten boş olduğundan emin olun; aksi takdirde komut başarısız olacaktır.
+- Dizinleri silmeden önce içindeki dosyaları kontrol etmek için `ls` komutunu kullanabilirsiniz.
+- Eğer dizin içinde dosyalar varsa ve bunları silmek istiyorsanız, `rm -r` komutunu kullanmalısınız.

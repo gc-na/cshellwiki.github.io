@@ -1,51 +1,39 @@
-# [Linux] Bash trap użycie: obsługuje sygnały i zdarzenia
+# [Linux] C Shell (csh) trap użycie: Ustawianie pułapek na sygnały
 
 ## Overview
-Polecenie `trap` w Bashu służy do przechwytywania sygnałów i zdarzeń, umożliwiając wykonanie określonych działań, gdy skrypt napotka określony sygnał. Dzięki temu można kontrolować, co się dzieje w momencie, gdy skrypt jest przerywany lub kończony.
+Polecenie `trap` w C Shell (csh) służy do przechwytywania sygnałów i wykonywania określonych akcji, gdy te sygnały są odbierane przez skrypt lub sesję powłoki. Dzięki temu można zarządzać zachowaniem skryptów w odpowiedzi na różne zdarzenia, takie jak przerwania użytkownika.
 
 ## Usage
-Podstawowa składnia polecenia `trap` wygląda następująco:
+Podstawowa składnia polecenia `trap` jest następująca:
 
-```bash
+```csh
 trap [akcja] [sygnał]
 ```
 
-Gdzie `akcja` to polecenie do wykonania, a `sygnał` to sygnał, który ma być przechwycony.
-
 ## Common Options
-- `SIGINT`: Sygnał przerwania (np. Ctrl+C).
-- `SIGTERM`: Sygnał zakończenia procesu.
-- `EXIT`: Sygnał, który jest wywoływany, gdy skrypt kończy działanie.
-- `ERR`: Sygnał, który jest wywoływany, gdy wystąpi błąd w skrypcie.
+- `action`: Określa, co ma się wydarzyć, gdy sygnał zostanie odebrany (np. wykonanie innego polecenia lub funkcji).
+- `signal`: Określa, który sygnał ma być przechwycony (np. `INT`, `TERM`, `QUIT`).
 
 ## Common Examples
+1. **Przechwytywanie sygnału przerwania (CTRL+C)**:
+   ```csh
+   trap 'echo "Przerwanie skryptu"; exit' INT
+   ```
+   W tym przykładzie, gdy użytkownik naciśnie CTRL+C, skrypt wyświetli komunikat i zakończy działanie.
 
-### Przykład 1: Obsługa sygnału przerwania
-```bash
-trap 'echo "Skrypt został przerwany"; exit' SIGINT
-while true; do
-    echo "Działam..."
-    sleep 1
-done
-```
-W tym przykładzie, gdy użytkownik naciśnie Ctrl+C, skrypt wyświetli komunikat i zakończy działanie.
+2. **Czyszczenie plików tymczasowych przed zakończeniem**:
+   ```csh
+   trap 'rm -f /tmp/tempfile; exit' EXIT
+   ```
+   Tutaj, przed zakończeniem skryptu, plik tymczasowy zostanie usunięty.
 
-### Przykład 2: Zapis do pliku przy zakończeniu
-```bash
-trap 'echo "Skrypt zakończony" >> log.txt' EXIT
-echo "Rozpoczynam skrypt..."
-sleep 5
-```
-Tutaj, po zakończeniu skryptu, do pliku `log.txt` zostanie dodany komunikat.
-
-### Przykład 3: Obsługa błędów
-```bash
-trap 'echo "Wystąpił błąd!"' ERR
-false  # To polecenie zawsze zwraca błąd
-```
-W tym przypadku, gdy wystąpi błąd, skrypt wyświetli komunikat o błędzie.
+3. **Reagowanie na sygnał zakończenia**:
+   ```csh
+   trap 'echo "Otrzymano sygnał TERM"; exit' TERM
+   ```
+   W tym przypadku, gdy skrypt otrzyma sygnał TERM, wyświetli komunikat i zakończy działanie.
 
 ## Tips
-- Używaj `trap` do czyszczenia zasobów, takich jak pliki tymczasowe, przed zakończeniem skryptu.
-- Zawsze testuj skrypty z `trap`, aby upewnić się, że odpowiednie akcje są wykonywane w przypadku przechwycenia sygnałów.
-- Możesz używać wielu sygnałów w jednym poleceniu `trap`, oddzielając je spacjami.
+- Zawsze testuj swoje pułapki w środowisku deweloperskim, aby upewnić się, że działają zgodnie z oczekiwaniami.
+- Używaj pułapek do zarządzania zasobami, takimi jak pliki tymczasowe, aby uniknąć ich pozostawiania po zakończeniu skryptu.
+- Pamiętaj, że niektóre sygnały mogą być ignorowane przez system, więc sprawdź dokumentację, aby zrozumieć, które sygnały są dostępne do przechwytywania.

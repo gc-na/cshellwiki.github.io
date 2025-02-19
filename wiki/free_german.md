@@ -1,59 +1,54 @@
-# [Linux] Bash free Befehl: Zeigt den Speicherstatus an
+# [Linux] C Shell (csh) free Befehl: Zeigt den Speicherstatus an
 
 ## Übersicht
-Der `free` Befehl in Bash wird verwendet, um Informationen über den verfügbaren und verwendeten Speicher im System anzuzeigen. Er liefert eine Übersicht über den RAM und den Swap-Speicher, was nützlich ist, um den aktuellen Zustand des Systems zu überwachen.
+Der `free` Befehl wird verwendet, um Informationen über den aktuellen Speicherstatus des Systems anzuzeigen. Er zeigt die Menge an verwendetem, freiem und zwischengespeichertem Speicher an, was hilfreich ist, um die Leistung des Systems zu überwachen.
 
 ## Verwendung
 Die grundlegende Syntax des `free` Befehls lautet:
 
-```bash
+```
 free [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
 - `-h`: Zeigt die Speicherwerte in einem menschenlesbaren Format an (z.B. in MB oder GB).
-- `-m`: Gibt die Werte in Megabyte aus.
-- `-g`: Gibt die Werte in Gigabyte aus.
-- `-s <Sekunden>`: Aktualisiert die Ausgabe alle angegebenen Sekunden.
-- `-t`: Zeigt die Gesamtsumme von verwendetem und verfügbarem Speicher an.
+- `-m`: Zeigt die Werte in Megabyte an.
+- `-g`: Zeigt die Werte in Gigabyte an.
+- `-s [Sekunden]`: Aktualisiert die Ausgabe alle angegebenen Sekunden.
+- `-t`: Zeigt die Gesamtsumme von verwendetem und freiem Speicher an.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele zur Verwendung des `free` Befehls:
+Hier sind einige praktische Beispiele für die Verwendung des `free` Befehls:
 
-1. **Einfacher Speicherstatus**
-   ```bash
+1. **Einfacher Speicherstatus anzeigen:**
+   ```csh
    free
    ```
 
-2. **Speicherstatus in menschenlesbarem Format**
-   ```bash
+2. **Speicherstatus in menschenlesbarem Format anzeigen:**
+   ```csh
    free -h
    ```
 
-3. **Speicherstatus in Megabyte**
-   ```bash
+3. **Speicherstatus in Megabyte anzeigen:**
+   ```csh
    free -m
    ```
 
-4. **Speicherstatus in Gigabyte**
-   ```bash
-   free -g
-   ```
-
-5. **Aktualisierung der Speicheranzeige alle 5 Sekunden**
-   ```bash
+4. **Speicherstatus alle 5 Sekunden aktualisieren:**
+   ```csh
    free -s 5
    ```
 
-6. **Speicherstatus mit Gesamtsumme**
-   ```bash
+5. **Speicherstatus mit Gesamtsumme anzeigen:**
+   ```csh
    free -t
    ```
 
 ## Tipps
-- Verwenden Sie die `-h` Option, um die Ausgabe leichter verständlich zu machen, insbesondere wenn Sie mit großen Speichermengen arbeiten.
-- Kombinieren Sie `free` mit anderen Befehlen wie `watch`, um die Speicherwerte in Echtzeit zu überwachen:
-  ```bash
+- Verwenden Sie die `-h` Option, um die Ausgabe leichter lesbar zu machen, insbesondere wenn Sie große Speicherwerte haben.
+- Kombinieren Sie den `free` Befehl mit anderen Befehlen wie `watch`, um den Speicherstatus in Echtzeit zu überwachen:
+  ```csh
   watch free -h
   ```
-- Nutzen Sie die `-s` Option, um regelmäßig den Speicherstatus zu überprüfen, was hilfreich sein kann, um Speicherlecks zu identifizieren.
+- Überprüfen Sie regelmäßig den Speicherstatus, um Engpässe frühzeitig zu erkennen und die Systemleistung zu optimieren.

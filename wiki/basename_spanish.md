@@ -1,45 +1,50 @@
-# [Linux] Bash basename Uso equivalente: Extraer el nombre de un archivo de una ruta
+# [Linux] C Shell (csh) basename Uso: Extraer el nombre de un archivo sin su ruta
 
 ## Overview
-El comando `basename` se utiliza en Bash para extraer el nombre de un archivo de una ruta completa. Esto es útil cuando deseas obtener solo el nombre del archivo sin la información del directorio.
+El comando `basename` se utiliza para extraer el nombre de un archivo de su ruta completa, eliminando cualquier prefijo de directorio. Esto es útil cuando se necesita trabajar solo con el nombre del archivo.
 
 ## Usage
-La sintaxis básica del comando es la siguiente:
+La sintaxis básica del comando `basename` es la siguiente:
 
-```bash
+```csh
 basename [opciones] [argumentos]
 ```
 
 ## Common Options
-- `-a`: Permite procesar múltiples nombres de archivo.
-- `-s`: Especifica un sufijo que se eliminará del nombre del archivo.
-- `--help`: Muestra la ayuda del comando.
+- `-a`: Procesa múltiples nombres de archivo y devuelve solo los nombres base.
+- `-s`: Elimina un sufijo específico del nombre del archivo.
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso de `basename`:
 
 1. **Extraer el nombre de un archivo de una ruta completa:**
-   ```bash
+
+   ```csh
    basename /ruta/al/archivo.txt
    ```
+
    Salida:
    ```
    archivo.txt
    ```
 
 2. **Eliminar un sufijo específico:**
-   ```bash
+
+   ```csh
    basename /ruta/al/archivo.txt .txt
    ```
+
    Salida:
    ```
    archivo
    ```
 
 3. **Procesar múltiples nombres de archivo:**
-   ```bash
+
+   ```csh
    basename -a /ruta/al/archivo1.txt /ruta/al/archivo2.txt
    ```
+
    Salida:
    ```
    archivo1.txt
@@ -47,6 +52,6 @@ Aquí hay algunos ejemplos prácticos del uso de `basename`:
    ```
 
 ## Tips
-- Utiliza `basename` en scripts para simplificar la manipulación de nombres de archivos.
-- Combina `basename` con otros comandos como `find` para obtener resultados más específicos.
-- Recuerda que `basename` solo devuelve el nombre del archivo; si necesitas la ruta, considera usar `dirname`.
+- Utiliza `basename` en scripts para simplificar el manejo de nombres de archivos.
+- Combina `basename` con otros comandos como `find` para obtener nombres de archivos de manera eficiente.
+- Recuerda que `basename` solo elimina la ruta y el sufijo especificado, así que asegúrate de que los argumentos sean correctos para evitar resultados inesperados.

@@ -1,56 +1,51 @@
-# [Linux] Bash usermod gebruik: Beheer gebruikersaccounts
+# [Linux] C Shell (csh) usermod gebruik: Beheer gebruikersinstellingen
 
 ## Overzicht
-De `usermod`-opdracht in Bash wordt gebruikt om bestaande gebruikersaccounts op een Linux-systeem te wijzigen. Hiermee kunnen systeembeheerders verschillende eigenschappen van een gebruiker aanpassen, zoals hun groepslidmaatschappen, home directory en shell.
+Het `usermod` commando in C Shell (csh) wordt gebruikt om de instellingen van bestaande gebruikersaccounts op een systeem te wijzigen. Dit omvat het aanpassen van gebruikersnamen, groepen, en andere accountgerelateerde informatie.
 
 ## Gebruik
-De basis syntaxis van de `usermod`-opdracht is als volgt:
+De basis syntaxis van het `usermod` commando is als volgt:
 
-```bash
+```csh
 usermod [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-aG`: Voeg de gebruiker toe aan de gespecificeerde groepen zonder de huidige groepslidmaatschappen te verwijderen.
-- `-d`: Wijzig de home directory van de gebruiker.
-- `-s`: Wijzig de standaard shell van de gebruiker.
-- `-L`: Vergrendel het account van de gebruiker.
-- `-U`: Ontgrendel het account van de gebruiker.
+- `-l <nieuwe_naam>`: Wijzig de gebruikersnaam naar een nieuwe naam.
+- `-d <nieuwe_huismap>`: Wijzig de huismap van de gebruiker.
+- `-g <groep>`: Wijzig de primaire groep van de gebruiker.
+- `-aG <groep>`: Voeg de gebruiker toe aan een aanvullende groep.
+- `-e <datum>`: Stel een vervaldatum in voor het account.
 
 ## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van de `usermod`-opdracht:
+Hier zijn enkele praktische voorbeelden van het gebruik van het `usermod` commando:
 
-### Voorbeeld 1: Voeg een gebruiker toe aan een groep
-```bash
-usermod -aG sudo gebruiker
-```
-Dit voegt de gebruiker "gebruiker" toe aan de "sudo" groep, waardoor ze beheerdersrechten krijgen.
+1. **Wijzig de gebruikersnaam**:
+   ```csh
+   usermod -l nieuwe_gebruikersnaam oude_gebruikersnaam
+   ```
 
-### Voorbeeld 2: Wijzig de home directory van een gebruiker
-```bash
-usermod -d /nieuwe/home/directory gebruiker
-```
-Dit wijzigt de home directory van de gebruiker "gebruiker" naar "/nieuwe/home/directory".
+2. **Wijzig de huismap**:
+   ```csh
+   usermod -d /nieuwe/huismap oude_gebruikersnaam
+   ```
 
-### Voorbeeld 3: Wijzig de standaard shell van een gebruiker
-```bash
-usermod -s /bin/zsh gebruiker
-```
-Dit stelt de standaard shell van de gebruiker "gebruiker" in op Zsh.
+3. **Wijzig de primaire groep**:
+   ```csh
+   usermod -g nieuwe_groep oude_gebruikersnaam
+   ```
 
-### Voorbeeld 4: Vergrendel een gebruikersaccount
-```bash
-usermod -L gebruiker
-```
-Dit vergrendelt het account van de gebruiker "gebruiker", waardoor ze zich niet meer kunnen aanmelden.
+4. **Voeg de gebruiker toe aan een aanvullende groep**:
+   ```csh
+   usermod -aG aanvullende_groep gebruikersnaam
+   ```
 
-### Voorbeeld 5: Ontgrendel een gebruikersaccount
-```bash
-usermod -U gebruiker
-```
-Dit ontgrendelt het account van de gebruiker "gebruiker", waardoor ze zich weer kunnen aanmelden.
+5. **Stel een vervaldatum in voor het account**:
+   ```csh
+   usermod -e 2024-12-31 gebruikersnaam
+   ```
 
 ## Tips
-- Zorg ervoor dat je de juiste opties gebruikt om onbedoelde wijzigingen aan gebruikersaccounts te voorkomen.
-- Gebruik de `-aG` optie altijd wanneer je een gebruiker aan een groep toevoegt, om te voorkomen dat ze uit andere groepen worden verwijderd.
-- Controleer altijd de huidige instellingen van een gebruiker voordat je wijzigingen aanbrengt, bijvoorbeeld met de `id` of `getent passwd` opdrachten.
+- Zorg ervoor dat je de juiste rechten hebt om het `usermod` commando uit te voeren, meestal zijn root-rechten vereist.
+- Controleer altijd de huidige instellingen van de gebruiker voordat je wijzigingen aanbrengt.
+- Gebruik het `-l` commando met voorzichtigheid, omdat het de gebruikersnaam kan wijzigen die door andere processen wordt gebruikt.

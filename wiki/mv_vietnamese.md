@@ -1,42 +1,46 @@
-# [Linux] Bash mv Cách sử dụng: Di chuyển hoặc đổi tên tệp
+# [Hệ điều hành] C Shell (csh) mv: Di chuyển hoặc đổi tên tệp
 
 ## Overview
-Lệnh `mv` trong Bash được sử dụng để di chuyển hoặc đổi tên các tệp và thư mục. Khi bạn sử dụng lệnh này, bạn có thể chuyển tệp từ vị trí này sang vị trí khác hoặc thay đổi tên của tệp mà không cần tạo bản sao.
+Lệnh `mv` trong C Shell (csh) được sử dụng để di chuyển hoặc đổi tên các tệp và thư mục. Khi bạn muốn thay đổi vị trí của một tệp hoặc đơn giản là đổi tên nó, lệnh này sẽ giúp bạn thực hiện điều đó một cách dễ dàng.
 
 ## Usage
 Cú pháp cơ bản của lệnh `mv` như sau:
-
-```bash
+```
 mv [options] [arguments]
 ```
 
 ## Common Options
-- `-i`: Yêu cầu xác nhận trước khi ghi đè lên tệp đích nếu nó đã tồn tại.
+- `-i`: Yêu cầu xác nhận trước khi ghi đè lên tệp đã tồn tại.
 - `-u`: Chỉ di chuyển tệp nếu tệp nguồn mới hơn tệp đích hoặc nếu tệp đích không tồn tại.
 - `-v`: Hiển thị thông tin chi tiết về các tệp đang được di chuyển.
 
 ## Common Examples
-1. **Di chuyển tệp từ một thư mục này sang thư mục khác:**
-   ```bash
-   mv /path/to/source/file.txt /path/to/destination/
-   ```
+- Di chuyển một tệp từ thư mục hiện tại đến một thư mục khác:
+  ```bash
+  mv file.txt /path/to/destination/
+  ```
 
-2. **Đổi tên tệp:**
-   ```bash
-   mv oldname.txt newname.txt
-   ```
+- Đổi tên một tệp:
+  ```bash
+  mv oldname.txt newname.txt
+  ```
 
-3. **Di chuyển và ghi đè tệp mà không cần xác nhận:**
-   ```bash
-   mv -f /path/to/source/file.txt /path/to/destination/
-   ```
+- Di chuyển và đổi tên một tệp cùng lúc:
+  ```bash
+  mv file.txt /path/to/destination/newname.txt
+  ```
 
-4. **Di chuyển tệp và hiển thị thông tin chi tiết:**
-   ```bash
-   mv -v /path/to/source/file.txt /path/to/destination/
-   ```
+- Di chuyển nhiều tệp vào một thư mục:
+  ```bash
+  mv file1.txt file2.txt /path/to/destination/
+  ```
+
+- Sử dụng tùy chọn xác nhận trước khi ghi đè:
+  ```bash
+  mv -i file.txt /path/to/destination/
+  ```
 
 ## Tips
-- Sử dụng tùy chọn `-i` để tránh ghi đè lên các tệp quan trọng một cách không mong muốn.
-- Kiểm tra kỹ đường dẫn tệp trước khi thực hiện lệnh để đảm bảo không di chuyển nhầm tệp.
-- Nếu bạn thường xuyên làm việc với nhiều tệp, hãy cân nhắc sử dụng `mv` trong các tập lệnh tự động để tiết kiệm thời gian.
+- Luôn kiểm tra tên tệp và đường dẫn trước khi thực hiện lệnh `mv` để tránh mất dữ liệu.
+- Sử dụng tùy chọn `-v` để theo dõi quá trình di chuyển tệp, đặc biệt khi làm việc với nhiều tệp.
+- Nếu bạn không chắc chắn về hành động của lệnh, hãy sử dụng tùy chọn `-i` để được nhắc xác nhận trước khi ghi đè lên tệp.

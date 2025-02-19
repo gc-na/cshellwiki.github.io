@@ -1,51 +1,50 @@
-# [Linux] Bash at Utilizzo: Pianificazione di comandi da eseguire in un momento specifico
+# [Linux] C Shell (csh) at: Pianificazione di comandi
 
 ## Overview
-Il comando `at` consente di pianificare l'esecuzione di comandi o script in un momento specifico. È utile per automatizzare attività che devono essere eseguite una sola volta in futuro.
+Il comando `at` consente di pianificare l'esecuzione di comandi o script a un orario specifico nel futuro. È utile per automatizzare attività che devono essere eseguite in un momento preciso.
 
 ## Usage
 La sintassi di base del comando `at` è la seguente:
 
-```bash
-at [opzioni] [tempo]
+```
+at [options] [arguments]
 ```
 
 ## Common Options
-- `-f FILE`: Specifica un file contenente i comandi da eseguire.
-- `-m`: Invia una mail all'utente anche se non ci sono output dal comando.
-- `-q QUEUE`: Specifica una coda di lavoro per l'esecuzione.
-- `-l`: Elenca i lavori programmati.
-- `-d JOB_ID`: Cancella un lavoro programmato specificato dall'ID.
+- `-f`: Specifica un file di input da cui leggere i comandi da eseguire.
+- `-l`: Elenca i lavori pianificati per l'utente corrente.
+- `-d`: Elimina un lavoro pianificato.
+- `-m`: Invia un'email all'utente anche se non ci sono output.
 
 ## Common Examples
-Ecco alcuni esempi pratici di utilizzo del comando `at`:
 
-1. **Pianificare un comando per eseguire in un'ora:**
-   ```bash
-   echo "echo 'Ciao, mondo!'" | at now + 1 hour
-   ```
+### Pianificare un comando per eseguirlo tra 5 minuti
+```bash
+echo "echo 'Ciao, mondo!'" | at now + 5 minutes
+```
 
-2. **Eseguire uno script in un giorno specifico:**
-   ```bash
-   at 14:00 2023-10-25 -f /path/to/script.sh
-   ```
+### Pianificare un comando per un'ora specifica
+```bash
+echo "backup.sh" | at 14:00
+```
 
-3. **Pianificare un comando per domani mattina:**
-   ```bash
-   echo "backup.sh" | at 9:00 tomorrow
-   ```
+### Pianificare un comando per domani
+```bash
+echo "cleanup.sh" | at tomorrow
+```
 
-4. **Elencare i lavori programmati:**
-   ```bash
-   at -l
-   ```
+### Elencare i lavori pianificati
+```bash
+at -l
+```
 
-5. **Cancellare un lavoro programmato:**
-   ```bash
-   at -d 2
-   ```
+### Eliminare un lavoro pianificato
+```bash
+at -d 1
+```
+*(dove "1" è l'ID del lavoro che si desidera eliminare)*
 
 ## Tips
-- Assicurati che il demone `atd` sia in esecuzione sul tuo sistema per utilizzare il comando `at`.
-- Puoi utilizzare formati di data e ora flessibili, come "now + 5 minutes" o "next Monday".
-- Controlla regolarmente i tuoi lavori programmati per evitare conflitti o sovrapposizioni.
+- Assicurati di avere i permessi necessari per utilizzare il comando `at`.
+- Controlla frequentemente i lavori pianificati con `at -l` per gestire le tue attività.
+- Utilizza l'opzione `-m` se desideri ricevere notifiche via email sui risultati dei comandi eseguiti.

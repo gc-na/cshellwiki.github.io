@@ -1,50 +1,41 @@
-# [Linux] Bash dirname użycie: Zwraca katalog z pełnej ścieżki
+# [Linux] C Shell (csh) dirname Użycie: Zwraca nazwę katalogu z pełnej ścieżki
 
 ## Overview
-Polecenie `dirname` służy do zwracania katalogu z pełnej ścieżki pliku. Umożliwia to łatwe wydobycie części ścieżki, która wskazuje na folder, w którym znajduje się dany plik.
+Polecenie `dirname` w C Shell (csh) służy do zwracania nazwy katalogu z pełnej ścieżki pliku. Jest to przydatne, gdy chcemy wydobyć część ścieżki, która wskazuje na katalog, w którym znajduje się dany plik.
 
 ## Usage
 Podstawowa składnia polecenia `dirname` jest następująca:
 
-```bash
-dirname [opcje] [argumenty]
+```csh
+dirname [ścieżka]
 ```
 
 ## Common Options
-- `-z` – Zwraca wyniki w formacie null-terminated, co jest przydatne w skryptach, które przetwarzają wiele ścieżek.
-- `--help` – Wyświetla pomoc dotyczącą użycia polecenia.
-- `--version` – Wyświetla wersję polecenia `dirname`.
+- `-z`: Zwraca pusty wynik, jeśli ścieżka jest pusta.
+- `--help`: Wyświetla pomoc dotyczącą użycia polecenia.
 
 ## Common Examples
-1. **Zwracanie katalogu z pełnej ścieżki:**
-   ```bash
-   dirname /usr/local/bin/script.sh
-   ```
-   Wynik: `/usr/local/bin`
+Oto kilka praktycznych przykładów użycia polecenia `dirname`:
 
-2. **Zwracanie katalogu z pliku w bieżącym katalogu:**
-   ```bash
-   dirname ./myfile.txt
+1. Zwracanie katalogu z pełnej ścieżki:
+   ```csh
+   dirname /home/użytkownik/dokumenty/plik.txt
    ```
-   Wynik: `.`
+   Wynik: `/home/użytkownik/dokumenty`
 
-3. **Użycie z wieloma argumentami:**
-   ```bash
-   dirname /home/user/docs/report.pdf /home/user/images/photo.jpg
+2. Użycie z katalogiem roboczym:
+   ```csh
+   dirname `pwd`/plik.txt
    ```
-   Wynik:
-   ```
-   /home/user/docs
-   /home/user/images
-   ```
+   Wynik: `/home/użytkownik` (zakładając, że jesteś w katalogu `/home/użytkownik`)
 
-4. **Z użyciem opcji -z:**
-   ```bash
-   dirname -z /var/log/syslog
+3. Zwracanie katalogu z pliku w głównym katalogu:
+   ```csh
+   dirname /plik.txt
    ```
-   Wynik: `/var/log` (zakończony znakiem null)
+   Wynik: `/`
 
 ## Tips
-- Używaj `dirname` w skryptach, aby dynamicznie uzyskiwać katalogi dla plików, co ułatwia zarządzanie ścieżkami.
-- Łącz `dirname` z innymi poleceniami, takimi jak `basename`, aby uzyskać pełną kontrolę nad ścieżkami plików.
-- Pamiętaj, że `dirname` zwraca tylko katalog, więc jeśli potrzebujesz pełnej ścieżki, musisz użyć innych poleceń w połączeniu z `dirname`.
+- Używaj `dirname` w skryptach, aby dynamicznie uzyskiwać ścieżki do katalogów, co ułatwia zarządzanie plikami.
+- Możesz łączyć `dirname` z innymi poleceniami, takimi jak `basename`, aby uzyskać zarówno katalog, jak i nazwę pliku w jednym skrypcie.
+- Pamiętaj, że `dirname` nie dodaje ukośników na końcu zwracanej ścieżki, co może być istotne w niektórych przypadkach.

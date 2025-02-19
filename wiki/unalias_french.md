@@ -1,41 +1,43 @@
-# [Linux] Bash unalias : Supprimer des alias de commande
+# [Linux] C Shell (csh) unalias : Supprimer des alias
 
 ## Overview
-La commande `unalias` est utilisée pour supprimer des alias de commande définis dans l'environnement Bash. Un alias est une manière de créer un raccourci pour une commande plus longue ou complexe. En utilisant `unalias`, vous pouvez restaurer le comportement par défaut d'une commande.
+La commande `unalias` dans C Shell (csh) est utilisée pour supprimer un ou plusieurs alias définis dans l'environnement de shell. Les alias sont des raccourcis pour des commandes plus longues, et parfois, il est nécessaire de les supprimer pour éviter des conflits ou pour revenir à des commandes par défaut.
 
 ## Usage
 La syntaxe de base de la commande `unalias` est la suivante :
 
-```bash
+```csh
 unalias [options] [arguments]
 ```
 
 ## Common Options
-- `-a` : Supprime tous les alias définis dans l'environnement.
-- `-r` : Supprime les alias de manière récursive (non applicable dans Bash, mais mentionné pour d'autres shells).
+- `-a` : Supprime tous les alias définis.
+- `-m` : Supprime les alias qui correspondent à un motif spécifique.
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de la commande `unalias` :
 
-1. **Supprimer un alias spécifique :**
-   Si vous avez un alias nommé `ll` qui pointe vers `ls -l`, vous pouvez le supprimer avec la commande suivante :
-   ```bash
-   unalias ll
-   ```
+### Supprimer un alias spécifique
+Pour supprimer un alias nommé `ll`, utilisez la commande suivante :
 
-2. **Supprimer tous les alias :**
-   Pour supprimer tous les alias définis, utilisez l'option `-a` :
-   ```bash
-   unalias -a
-   ```
+```csh
+unalias ll
+```
 
-3. **Vérifier les alias avant de supprimer :**
-   Avant de supprimer un alias, vous pouvez lister tous les alias définis avec la commande :
-   ```bash
-   alias
-   ```
+### Supprimer tous les alias
+Pour supprimer tous les alias définis dans votre session, utilisez l'option `-a` :
+
+```csh
+unalias -a
+```
+
+### Supprimer des alias correspondant à un motif
+Pour supprimer tous les alias qui commencent par `g`, vous pouvez utiliser l'option `-m` :
+
+```csh
+unalias -m g*
+```
 
 ## Tips
-- **Vérifiez vos alias régulièrement** : Avant de créer un nouvel alias, il est bon de vérifier ceux qui existent déjà pour éviter les conflits.
-- **Utilisez des alias descriptifs** : Lorsque vous créez des alias, choisissez des noms qui décrivent clairement leur fonction pour éviter toute confusion.
-- **Ajoutez des alias dans votre fichier .bashrc** : Pour rendre vos alias permanents, ajoutez-les dans votre fichier `.bashrc`, mais n'oubliez pas de les supprimer avec `unalias` si vous n'en avez plus besoin.
+- Vérifiez vos alias actuels avec la commande `alias` avant de les supprimer pour éviter de supprimer quelque chose d'important.
+- Utilisez `unalias -a` avec précaution, car cela supprimera tous les alias sans possibilité de récupération.
+- Pensez à sauvegarder vos alias dans un fichier de configuration si vous souhaitez les restaurer plus tard.

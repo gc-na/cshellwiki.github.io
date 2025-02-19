@@ -1,38 +1,43 @@
-# [Linux] Bash unalias Kullanımı: Alias'ları kaldırma
+# [Linux] C Shell (csh) unalias Kullanımı: Alias'ları kaldırma
 
-## Genel Bakış
-`unalias` komutu, daha önce tanımlanmış olan alias'ları (takma adları) kaldırmak için kullanılır. Alias'lar, komutların daha kısa veya daha anlamlı bir şekilde yazılmasını sağlamak için oluşturulan kısayollardır. `unalias` komutu, bu kısayolları iptal ederek, orijinal komutları kullanmanıza olanak tanır.
+## Overview
+`unalias` komutu, C Shell (csh) ortamında tanımlanmış olan alias'ları kaldırmak için kullanılır. Alias'lar, sık kullanılan komutların daha kısa ve kolay hatırlanabilir şekillerde tanımlanmasını sağlar. Ancak bazen bu alias'ları kaldırmak gerekebilir; işte bu noktada `unalias` devreye girer.
 
-## Kullanım
+## Usage
 Temel sözdizimi aşağıdaki gibidir:
 
-```bash
-unalias [seçenekler] [argümanlar]
+```
+unalias [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-a` : Tüm alias'ları kaldırır.
-- `-m` : Belirtilen alias'ları kaldırır. 
+## Common Options
+- `-a`: Tüm alias'ları kaldırır.
+- `-m`: Belirtilen alias'ların yalnızca eşleşenlerini kaldırır.
 
-## Yaygın Örnekler
+## Common Examples
 Aşağıda `unalias` komutunun bazı pratik örnekleri bulunmaktadır:
 
 1. Belirli bir alias'ı kaldırma:
-   ```bash
+   ```csh
    unalias ll
    ```
 
-2. Tüm alias'ları kaldırma:
-   ```bash
+2. Birden fazla alias'ı aynı anda kaldırma:
+   ```csh
+   unalias ll grep
+   ```
+
+3. Tüm alias'ları kaldırma:
+   ```csh
    unalias -a
    ```
 
-3. Birden fazla alias'ı kaldırma:
-   ```bash
-   unalias ll rm
+4. Belirli bir alias'ı kaldırırken eşleşenleri kullanma:
+   ```csh
+   unalias -m l*
    ```
 
-## İpuçları
+## Tips
 - Alias'ları kaldırmadan önce, hangi alias'ların tanımlı olduğunu görmek için `alias` komutunu kullanabilirsiniz.
-- Sık kullandığınız alias'ları kaldırmadan önce, onları geçici olarak devre dışı bırakmak için `unalias` yerine `alias` komutunu kullanmayı düşünebilirsiniz.
-- `unalias` komutunu bir betik dosyasında kullanıyorsanız, betiğin çalıştığı ortamda alias'ların kaldırıldığından emin olun.
+- Sık kullandığınız alias'ları kaldırmadan önce, bunların kullanımını gözden geçirmeniz faydalı olabilir.
+- `unalias` komutunu kullanırken dikkatli olun; yanlışlıkla önemli alias'ları kaldırmak istemezsiniz.

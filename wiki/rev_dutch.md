@@ -1,49 +1,41 @@
-# [Linux] Bash rev: omgekeerde tekst
+# [Linux] C Shell (csh) rev: tekst omkeren
 
 ## Overzicht
-De `rev`-opdracht in Bash wordt gebruikt om de tekens in elke regel van een bestand of invoer om te keren. Dit kan nuttig zijn voor verschillende tekstverwerkingsdoeleinden, zoals het analyseren van gegevens of het creëren van specifieke tekstformaten.
+De `rev`-opdracht in C Shell (csh) wordt gebruikt om de volgorde van de karakters in elke regel van een bestand of invoer om te keren. Dit kan nuttig zijn voor verschillende tekstverwerkingstaken.
 
 ## Gebruik
 De basis syntaxis van de `rev`-opdracht is als volgt:
 
-```bash
+```
 rev [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-h`, `--help`: Toont een helpbericht met informatie over het gebruik van de opdracht.
-- `-V`, `--version`: Toont de versie-informatie van de `rev`-opdracht.
+- `-` : Lees invoer van de standaardinvoer in plaats van een bestand.
+- `-o [bestand]` : Schrijf de omgekeerde uitvoer naar het opgegeven bestand.
 
 ## Veelvoorkomende Voorbeelden
 
-1. **Omgekeerde tekst van een bestand**
-   Om de tekst in een bestand om te keren, gebruik je de volgende opdracht:
-   ```bash
+1. **Omgekeerde tekst van een bestand weergeven:**
+   ```csh
    rev bestand.txt
    ```
 
-2. **Omgekeerde tekst van standaardinvoer**
-   Je kunt ook tekst invoeren via de terminal en deze omkeren:
-   ```bash
+2. **Omgekeerde tekst van standaardinvoer:**
+   ```csh
    echo "Hallo Wereld" | rev
    ```
 
-3. **Omgekeerde tekst van meerdere regels**
-   Als je meerdere regels wilt omkeren, kun je dit doen:
-   ```bash
-   cat meerdere_regels.txt | rev
+3. **Omgekeerde tekst naar een nieuw bestand schrijven:**
+   ```csh
+   rev bestand.txt -o omgekeerd.txt
    ```
 
-4. **Omgekeerde tekst met behulp van een here-document**
-   Je kunt ook een here-document gebruiken om tekst om te keren:
-   ```bash
-   rev <<EOF
-   Eerste regel
-   Tweede regel
-   EOF
+4. **Meerdere bestanden omkeren:**
+   ```csh
+   rev bestand1.txt bestand2.txt
    ```
 
 ## Tips
-- Gebruik `rev` in combinatie met andere tekstverwerkingsopdrachten zoals `grep` of `awk` voor geavanceerdere tekstmanipulaties.
-- Wees voorzichtig met het omkeren van lange teksten, aangezien de uitvoer moeilijk te lezen kan zijn.
-- Test de `rev`-opdracht met kleine tekstfragmenten om vertrouwd te raken met de functionaliteit voordat je deze op grotere bestanden toepast.
+- Gebruik `rev` in combinatie met andere commando's via pijpen om complexe tekstverwerkingsopdrachten uit te voeren.
+- Controleer altijd de uitvoer van `rev` met een klein voorbeeld voordat je het op grote bestanden toepast om onverwachte resultaten te voorkomen.

@@ -1,51 +1,45 @@
-# [Linux] Bash cryptsetup の使い方: ディスク暗号化を管理する
+# [Linux] C Shell (csh) cryptsetup 使用法: ディスク暗号化の管理
 
-## Overview
-`cryptsetup` コマンドは、Linux システムにおいてディスク暗号化を管理するためのツールです。LUKS（Linux Unified Key Setup）を使用して、ブロックデバイスの暗号化や復号化を行うことができます。
+## 概要
+`cryptsetup` コマンドは、Linux システムにおけるディスク暗号化を管理するためのツールです。このコマンドを使用することで、暗号化されたボリュームの作成、管理、解除が可能になります。
 
-## Usage
+## 使用法
 基本的な構文は以下の通りです。
 
-```bash
+```
 cryptsetup [options] [arguments]
 ```
 
-## Common Options
-- `luksFormat`: 指定したデバイスに LUKS フォーマットを適用します。
-- `luksOpen`: LUKS 暗号化ボリュームを開き、マッピングを作成します。
+## 一般的なオプション
+- `luksFormat`: LUKS（Linux Unified Key Setup）形式で新しい暗号化ボリュームを作成します。
+- `luksOpen`: LUKS ボリュームを開き、デバイスマッパーにマウントします。
 - `luksClose`: 開いている LUKS ボリュームを閉じます。
-- `status`: 指定したデバイスの暗号化状態を表示します。
-- `luksAddKey`: 既存の LUKS ボリュームに新しい鍵を追加します。
+- `status`: 指定した暗号化ボリュームの状態を表示します。
 
-## Common Examples
-以下に、`cryptsetup` コマンドのいくつかの実用的な例を示します。
+## 一般的な例
+以下は `cryptsetup` コマンドのいくつかの実用的な例です。
 
-### LUKS フォーマットの作成
+### LUKS ボリュームの作成
 ```bash
-sudo cryptsetup luksFormat /dev/sdX
+cryptsetup luksFormat /dev/sdX
 ```
 
-### LUKS ボリュームのオープン
+### LUKS ボリュームを開く
 ```bash
-sudo cryptsetup luksOpen /dev/sdX my_encrypted_volume
+cryptsetup luksOpen /dev/sdX my_encrypted_volume
 ```
 
-### LUKS ボリュームのクローズ
+### LUKS ボリュームを閉じる
 ```bash
-sudo cryptsetup luksClose my_encrypted_volume
+cryptsetup luksClose my_encrypted_volume
 ```
 
-### 暗号化状態の確認
+### ボリュームの状態を確認
 ```bash
-sudo cryptsetup status my_encrypted_volume
+cryptsetup status my_encrypted_volume
 ```
 
-### 新しい鍵の追加
-```bash
-sudo cryptsetup luksAddKey /dev/sdX
-```
-
-## Tips
-- ディスクの暗号化を行う前に、必ず重要なデータのバックアップを取ってください。
-- 複数の鍵を管理する場合は、鍵の管理方法をしっかりと計画しておくことが重要です。
-- `cryptsetup` コマンドを使用する際は、必ず管理者権限（sudo）で実行してください。
+## ヒント
+- 暗号化ボリュームを作成する前に、必ずデータのバックアップを取ってください。
+- 強力なパスフレーズを使用し、セキュリティを強化しましょう。
+- 定期的にボリュームの状態を確認し、問題がないかチェックすることをお勧めします。

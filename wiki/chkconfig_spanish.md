@@ -1,48 +1,48 @@
-# [Linux] Bash chkconfig uso: Gestionar servicios de inicio
+# [Linux] C Shell (csh) chkconfig uso: Gestionar servicios del sistema
 
 ## Overview
-El comando `chkconfig` se utiliza en sistemas Linux para gestionar los servicios que se inician automáticamente durante el arranque del sistema. Permite habilitar o deshabilitar servicios en diferentes niveles de ejecución, facilitando la administración de los procesos que se ejecutan al inicio.
+El comando `chkconfig` se utiliza para gestionar los servicios de inicio en sistemas basados en Linux. Permite habilitar o deshabilitar servicios para que se inicien automáticamente en diferentes niveles de ejecución.
 
 ## Usage
 La sintaxis básica del comando es la siguiente:
 
-```bash
-chkconfig [opciones] [servicio] [acción]
+```csh
+chkconfig [opciones] [argumentos]
 ```
 
 ## Common Options
-- `--list`: Muestra el estado de todos los servicios y en qué niveles de ejecución están habilitados o deshabilitados.
-- `--add`: Agrega un nuevo servicio al sistema de inicio.
-- `--del`: Elimina un servicio del sistema de inicio.
-- `--level`: Especifica los niveles de ejecución en los que se debe habilitar o deshabilitar el servicio.
+- `--list`: Muestra todos los servicios y su estado en cada nivel de ejecución.
+- `--add`: Agrega un nuevo servicio al sistema.
+- `--del`: Elimina un servicio del sistema.
+- `--level`: Especifica los niveles de ejecución para habilitar o deshabilitar un servicio.
 
 ## Common Examples
-1. **Listar todos los servicios:**
-   ```bash
+1. **Listar todos los servicios y su estado:**
+   ```csh
    chkconfig --list
    ```
 
 2. **Habilitar un servicio en todos los niveles de ejecución:**
-   ```bash
+   ```csh
    chkconfig nombre_del_servicio on
    ```
 
 3. **Deshabilitar un servicio en todos los niveles de ejecución:**
-   ```bash
+   ```csh
    chkconfig nombre_del_servicio off
    ```
 
 4. **Agregar un nuevo servicio:**
-   ```bash
+   ```csh
    chkconfig --add nombre_del_servicio
    ```
 
-5. **Eliminar un servicio:**
-   ```bash
+5. **Eliminar un servicio existente:**
+   ```csh
    chkconfig --del nombre_del_servicio
    ```
 
 ## Tips
-- Asegúrate de tener privilegios de superusuario (root) al utilizar `chkconfig`, ya que se requieren permisos elevados para modificar los servicios del sistema.
-- Utiliza `chkconfig --list` regularmente para revisar el estado de los servicios y asegurarte de que solo los necesarios estén habilitados.
-- Familiarízate con los niveles de ejecución de tu sistema, ya que esto te ayudará a gestionar mejor los servicios que deseas iniciar o detener.
+- Asegúrate de tener privilegios de superusuario para realizar cambios en los servicios del sistema.
+- Verifica el estado de los servicios después de realizar cambios para asegurarte de que se hayan aplicado correctamente.
+- Utiliza `chkconfig --level 2345 nombre_del_servicio on` para habilitar un servicio solo en niveles de ejecución específicos.

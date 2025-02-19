@@ -1,43 +1,49 @@
-# [Linux] Bash @ echo: wyświetlanie tekstu w terminalu
+# [Unix] C Shell (csh) @ Użycie: Wykonywanie arytmetyki
 
 ## Overview
-Polecenie `echo` w Bashu służy do wyświetlania tekstu lub zmiennych w terminalu. Jest to jedno z najprostszych i najczęściej używanych poleceń w skryptach oraz interakcji z użytkownikiem.
+Polecenie `@` w C Shell (csh) służy do wykonywania prostych operacji arytmetycznych i przypisywania wyników do zmiennych. Umożliwia to użytkownikom wykonywanie obliczeń w skryptach powłoki.
 
 ## Usage
-Podstawowa składnia polecenia `echo` jest następująca:
+Podstawowa składnia polecenia `@` jest następująca:
 
-```bash
-echo [opcje] [argumenty]
+```
+@ [zmienna] = [wyrażenie]
 ```
 
 ## Common Options
-- `-n`: Nie dodaje znaku nowej linii na końcu.
-- `-e`: Włącza interpretację sekwencji ucieczki (np. `\n` dla nowej linii).
-- `-E`: Wyłącza interpretację sekwencji ucieczki (domyślne zachowanie).
+Polecenie `@` nie ma wielu opcji, ale oto kilka istotnych informacji:
+
+- `=`: Używane do przypisania wartości do zmiennej.
+- `+`, `-`, `*`, `/`: Operatory arytmetyczne do wykonywania obliczeń.
 
 ## Common Examples
-1. Wyświetlenie prostego tekstu:
-   ```bash
-   echo "Witaj, świecie!"
-   ```
+Oto kilka praktycznych przykładów użycia polecenia `@`:
 
-2. Wyświetlenie tekstu bez znaku nowej linii:
-   ```bash
-   echo -n "To jest bez nowej linii."
-   ```
+### Przykład 1: Proste przypisanie
+```csh
+@ a = 5
+```
+W tym przykładzie zmienna `a` jest przypisywana wartość 5.
 
-3. Użycie sekwencji ucieczki do wyświetlenia nowej linii:
-   ```bash
-   echo -e "Pierwsza linia\nDruga linia"
-   ```
+### Przykład 2: Dodawanie
+```csh
+@ b = $a + 10
+```
+Tutaj zmienna `b` otrzymuje wartość równą 15, ponieważ dodajemy 10 do wartości zmiennej `a`.
 
-4. Wyświetlenie wartości zmiennej:
-   ```bash
-   imie="Jan"
-   echo "Cześć, $imie!"
-   ```
+### Przykład 3: Mnożenie
+```csh
+@ c = $a * 2
+```
+W tym przypadku zmienna `c` będzie miała wartość 10, ponieważ 5 pomnożone przez 2 daje 10.
+
+### Przykład 4: Złożone wyrażenie
+```csh
+@ d = $a + $b - 3
+```
+W tym przykładzie zmienna `d` zostanie obliczona na podstawie wartości `a` i `b`, odejmując 3.
 
 ## Tips
-- Używaj opcji `-n`, gdy chcesz kontynuować wyświetlanie tekstu w tej samej linii.
-- Zawsze sprawdzaj, czy używasz odpowiednich sekwencji ucieczki z opcją `-e`, aby uzyskać oczekiwany format wyjściowy.
-- `echo` jest przydatne w skryptach do debugowania, umożliwiając wyświetlanie wartości zmiennych w czasie wykonywania.
+- Upewnij się, że zmienne są wcześniej zdefiniowane, aby uniknąć błędów.
+- Używaj spacji wokół operatorów arytmetycznych dla lepszej czytelności.
+- Możesz używać nawiasów, aby kontrolować kolejność wykonywania operacji, np. `@ e = ($a + $b) * 2`.

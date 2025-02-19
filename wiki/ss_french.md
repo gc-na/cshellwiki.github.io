@@ -1,12 +1,12 @@
-# [Linux] Bash ss Utilisation : Afficher les connexions réseau
+# [Linux] C Shell (csh) ss Utilisation : Afficher les connexions réseau
 
 ## Overview
-La commande `ss` est utilisée pour afficher des informations sur les connexions réseau, les sockets et les statistiques de réseau sur un système Linux. Elle est souvent considérée comme une alternative plus rapide et plus efficace à la commande `netstat`.
+La commande `ss` est utilisée pour afficher les connexions réseau, les sockets et les statistiques de réseau sur un système. Elle est souvent considérée comme un outil plus rapide et plus efficace que la commande `netstat`.
 
 ## Usage
 La syntaxe de base de la commande `ss` est la suivante :
 
-```bash
+```csh
 ss [options] [arguments]
 ```
 
@@ -15,55 +15,39 @@ Voici quelques options courantes pour la commande `ss` :
 
 - `-t` : Affiche uniquement les connexions TCP.
 - `-u` : Affiche uniquement les connexions UDP.
-- `-l` : Affiche uniquement les sockets à l'écoute.
-- `-p` : Affiche les processus associés aux sockets.
-- `-n` : Affiche les adresses et numéros de port sous forme numérique, sans résolution DNS.
+- `-l` : Montre les sockets en écoute.
+- `-p` : Affiche les processus utilisant les sockets.
+- `-n` : Affiche les adresses et numéros de port sous forme numérique, sans tenter de résoudre les noms.
 
 ## Common Examples
+Voici quelques exemples pratiques de l'utilisation de la commande `ss` :
 
-### Afficher toutes les connexions
-Pour afficher toutes les connexions réseau actives, utilisez :
+1. Afficher toutes les connexions TCP :
+   ```csh
+   ss -t
+   ```
 
-```bash
-ss
-```
+2. Afficher toutes les connexions UDP :
+   ```csh
+   ss -u
+   ```
 
-### Afficher les connexions TCP
-Pour afficher uniquement les connexions TCP, utilisez :
+3. Afficher les sockets en écoute :
+   ```csh
+   ss -l
+   ```
 
-```bash
-ss -t
-```
+4. Afficher les connexions avec les processus associés :
+   ```csh
+   ss -p
+   ```
 
-### Afficher les sockets à l'écoute
-Pour afficher les sockets qui sont à l'écoute, utilisez :
-
-```bash
-ss -l
-```
-
-### Afficher les connexions UDP
-Pour afficher uniquement les connexions UDP, utilisez :
-
-```bash
-ss -u
-```
-
-### Afficher les processus associés
-Pour voir les processus associés aux connexions, utilisez :
-
-```bash
-ss -p
-```
-
-### Afficher les connexions avec des adresses numériques
-Pour afficher les connexions sans résolution DNS, utilisez :
-
-```bash
-ss -n
-```
+5. Afficher les connexions avec des adresses numériques :
+   ```csh
+   ss -n
+   ```
 
 ## Tips
-- Utilisez `ss -t -l` pour voir les ports TCP à l'écoute, ce qui est utile pour le dépannage des services réseau.
-- Combinez plusieurs options pour affiner vos résultats, par exemple `ss -tunlp` pour afficher les connexions TCP et UDP avec les processus associés.
-- Pensez à exécuter `ss` avec des privilèges élevés (par exemple, en utilisant `sudo`) pour voir toutes les connexions, y compris celles des autres utilisateurs.
+- Utilisez `ss -t -l` pour voir les ports TCP en écoute, ce qui est utile pour le dépannage des serveurs.
+- Combinez plusieurs options pour affiner vos résultats, par exemple `ss -tunlp` pour afficher les connexions TCP et UDP avec les processus.
+- Pensez à exécuter `ss` avec des privilèges élevés (par exemple, en tant que super utilisateur) pour voir toutes les connexions, y compris celles des autres utilisateurs.

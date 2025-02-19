@@ -1,7 +1,7 @@
-# [Linux] Bash dnf Uso: Gestor de paquetes para sistemas basados en RPM
+# [Linux] C Shell (csh) dnf uso: Gestión de paquetes en sistemas basados en RPM
 
 ## Overview
-El comando `dnf` es un gestor de paquetes utilizado en distribuciones de Linux que utilizan el formato de paquetes RPM. Permite instalar, actualizar y eliminar software de manera eficiente, gestionando automáticamente las dependencias necesarias.
+El comando `dnf` es una herramienta de gestión de paquetes para sistemas operativos basados en RPM, como Fedora y CentOS. Permite instalar, actualizar y eliminar paquetes de software de manera eficiente.
 
 ## Usage
 La sintaxis básica del comando `dnf` es la siguiente:
@@ -13,45 +13,39 @@ dnf [opciones] [argumentos]
 ## Common Options
 - `install`: Instala uno o más paquetes.
 - `remove`: Elimina uno o más paquetes.
-- `update`: Actualiza todos los paquetes instalados a la última versión disponible.
-- `search`: Busca paquetes en los repositorios.
-- `info`: Muestra información sobre un paquete específico.
-- `list`: Lista todos los paquetes disponibles o instalados.
+- `update`: Actualiza todos los paquetes instalados a la última versión.
+- `search`: Busca paquetes que coincidan con un término específico.
+- `info`: Muestra información detallada sobre un paquete.
 
 ## Common Examples
-Aquí hay algunos ejemplos prácticos del uso de `dnf`:
+Aquí hay algunos ejemplos prácticos del uso del comando `dnf`:
 
-- **Instalar un paquete**:
+- Para instalar un paquete, como `vim`:
   ```bash
-  dnf install nombre-del-paquete
+  dnf install vim
   ```
 
-- **Eliminar un paquete**:
+- Para eliminar un paquete, como `nano`:
   ```bash
-  dnf remove nombre-del-paquete
+  dnf remove nano
   ```
 
-- **Actualizar todos los paquetes**:
+- Para actualizar todos los paquetes instalados:
   ```bash
   dnf update
   ```
 
-- **Buscar un paquete**:
+- Para buscar un paquete, por ejemplo, `httpd`:
   ```bash
-  dnf search nombre-del-paquete
+  dnf search httpd
   ```
 
-- **Mostrar información sobre un paquete**:
+- Para obtener información sobre un paquete específico, como `git`:
   ```bash
-  dnf info nombre-del-paquete
-  ```
-
-- **Listar todos los paquetes instalados**:
-  ```bash
-  dnf list installed
+  dnf info git
   ```
 
 ## Tips
-- Siempre es recomendable ejecutar `dnf update` regularmente para mantener tu sistema y paquetes actualizados.
-- Utiliza `dnf history` para ver un registro de las transacciones realizadas con `dnf`, lo que puede ser útil para deshacer cambios si es necesario.
-- Si necesitas más información sobre un comando específico, puedes usar `dnf --help` para ver todas las opciones disponibles.
+- Siempre es recomendable ejecutar `dnf update` regularmente para mantener el sistema actualizado.
+- Usa `dnf clean all` para liberar espacio en disco eliminando archivos temporales de la caché.
+- Puedes usar `dnf history` para ver un registro de las transacciones realizadas con `dnf`, lo que puede ser útil para deshacer cambios si es necesario.

@@ -1,49 +1,48 @@
-# [Linux] Bash rsync Kullanımı: Dosya senkronizasyonu
+# [Linux] C Shell (csh) rsync Kullanımı: Dosya senkronizasyonu ve aktarımı
 
 ## Genel Bakış
-`rsync`, dosyaları ve dizinleri yerel veya uzak sistemler arasında senkronize etmek için kullanılan güçlü bir komut satırı aracıdır. Özellikle büyük dosyaların veya dizinlerin kopyalanması gerektiğinde, sadece değişen kısımları aktararak zaman ve bant genişliği tasarrufu sağlar.
+`rsync`, dosyaları ve dizinleri yerel veya uzak sistemler arasında senkronize etmek ve aktarmak için kullanılan güçlü bir komuttur. Verimliliği artırmak için yalnızca değişen verileri aktarır, bu da ağ trafiğini azaltır ve aktarım süresini kısaltır.
 
 ## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
-
+Temel sözdizimi şu şekildedir:
 ```bash
 rsync [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-a`: Arşiv modunu etkinleştirir, dosya izinleri, zaman damgaları ve sembolik bağlantılar gibi bilgileri korur.
-- `-v`: Ayrıntılı çıktı sağlar, hangi dosyaların kopyalandığını gösterir.
-- `-z`: Aktarım sırasında dosyaları sıkıştırır, bu da bant genişliğinden tasarruf sağlar.
-- `-r`: Alt dizinler dahil olmak üzere dizinleri kopyalar.
-- `--delete`: Hedef dizinde, kaynakta olmayan dosyaları siler.
+- `-a`: Arşiv modu; dosyaların tüm özelliklerini (izinler, zaman damgaları vb.) korur.
+- `-v`: Ayrıntılı çıktı; işlemin ne yaptığını gösterir.
+- `-z`: Aktarım sırasında verileri sıkıştırır.
+- `-r`: Dizini ve içindeki tüm dosyaları rekürsif olarak kopyalar.
+- `--delete`: Hedef dizinde, kaynakta bulunmayan dosyaları siler.
 
 ## Yaygın Örnekler
-1. **Yerel dosyaları kopyalama:**
+1. Yerel bir dizinden başka bir dizine dosya kopyalamak:
    ```bash
    rsync -av /kaynak/dizin/ /hedef/dizin/
    ```
 
-2. **Uzak bir sunucuya dosya gönderme:**
+2. Uzak bir sunucuya dosya göndermek:
    ```bash
    rsync -av /yerel/dosya.txt kullanıcı@sunucu:/uzak/dizin/
    ```
 
-3. **Uzak bir sunucudan dosya alma:**
+3. Uzak bir sunucudan yerel bir dizine dosya almak:
    ```bash
    rsync -av kullanıcı@sunucu:/uzak/dosya.txt /yerel/dizin/
    ```
 
-4. **Sıkıştırma ile dosya kopyalama:**
+4. Sıkıştırma ile dosya aktarımı yapmak:
    ```bash
-   rsync -avz /kaynak/dizin/ /hedef/dizin/
+   rsync -avz /kaynak/dizin/ kullanıcı@sunucu:/hedef/dizin/
    ```
 
-5. **Hedefteki fazladan dosyaları silme:**
+5. Hedef dizinde kaynakta bulunmayan dosyaları silmek:
    ```bash
    rsync -av --delete /kaynak/dizin/ /hedef/dizin/
    ```
 
 ## İpuçları
-- `rsync` kullanırken, hedef dizinin sonuna `/` eklemek, kaynak dizinin içeriğini kopyalamak için önemlidir.
-- Büyük dosyalarla çalışıyorsanız, `-z` seçeneğini kullanarak aktarım sırasında sıkıştırma yapmayı düşünebilirsiniz.
-- `--dry-run` seçeneği ile işlemi gerçekleştirmeden önce ne olacağını görmek için bir deneme yapabilirsiniz. Bu, yanlışlıkla dosyaları silmekten kaçınmanıza yardımcı olur.
+- Büyük dosyalarla çalışırken `-z` seçeneğini kullanarak aktarım süresini kısaltabilirsiniz.
+- `--dry-run` seçeneği ile işlemi gerçekleştirmeden önce nelerin yapılacağını görebilirsiniz.
+- Aktarım sırasında bağlantı kesilirse, `rsync` kaldığı yerden devam edebilir; bu nedenle büyük dosyalar için idealdir.

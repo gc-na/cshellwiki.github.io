@@ -1,39 +1,36 @@
-# [Linux] Bash gebruikersgebruik: Toon gebruikersinformatie
+# [Linux] C Shell (csh) gebruikerscommando: Toont actieve gebruikers
 
 ## Overzicht
-De `users` opdracht in Bash toont een lijst van gebruikers die momenteel zijn ingelogd op het systeem. Het geeft een eenvoudige manier om te zien wie er actief is zonder gedetailleerde informatie over elke gebruiker te tonen.
+Het `users` commando in C Shell (csh) toont een lijst van de gebruikers die momenteel zijn ingelogd op het systeem. Dit is handig voor systeembeheerders en gebruikers die willen weten wie er actief is op een bepaald moment.
 
 ## Gebruik
-De basis syntaxis van de `users` opdracht is als volgt:
+De basis syntaxis van het `users` commando is als volgt:
 
-```bash
+```
 users [opties]
 ```
 
-## Veelvoorkomende opties
-De `users` opdracht heeft geen specifieke opties, maar het kan in combinatie met andere opdrachten worden gebruikt voor meer geavanceerde functionaliteit.
+## Veelvoorkomende Opties
+- `-n`: Toon het aantal unieke gebruikers in plaats van hun namen.
+- `-r`: Toon alleen de gebruikers die een actieve sessie hebben.
 
 ## Veelvoorkomende Voorbeelden
 
-1. **Toon ingelogde gebruikers:**
-   Dit is de meest basale manier om de ingelogde gebruikers te bekijken.
-   ```bash
+1. **Toon alle ingelogde gebruikers:**
+   ```csh
    users
    ```
 
-2. **Gebruik met andere opdrachten:**
-   Je kunt de uitvoer van `users` doorsturen naar andere opdrachten, zoals `sort` om een gesorteerde lijst van gebruikers te krijgen.
-   ```bash
-   users | sort
+2. **Toon het aantal unieke ingelogde gebruikers:**
+   ```csh
+   users -n
    ```
 
-3. **Opslaan van gebruikers in een bestand:**
-   Je kunt de lijst van ingelogde gebruikers opslaan in een tekstbestand voor later gebruik.
-   ```bash
-   users > ingelogde_gebruikers.txt
+3. **Toon alleen actieve gebruikers:**
+   ```csh
+   users -r
    ```
 
 ## Tips
-- Gebruik `who` of `w` als je meer gedetailleerde informatie over ingelogde gebruikers wilt, zoals hun inlogtijd en actieve sessies.
-- Combineer `users` met andere commando's in een script om automatisch rapporten te genereren over actieve gebruikers.
-- Houd er rekening mee dat de uitvoer van `users` een lijst met gebruikersnamen geeft, gescheiden door spaties, wat handig kan zijn voor verdere verwerking.
+- Gebruik het `users` commando in combinatie met andere commando's zoals `who` of `w` voor meer gedetailleerde informatie over ingelogde gebruikers.
+- Dit commando is handig voor het monitoren van systeemactiviteit, vooral op gedeelde systemen.

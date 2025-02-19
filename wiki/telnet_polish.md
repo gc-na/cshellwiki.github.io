@@ -1,43 +1,44 @@
-# [Linux] Bash telnet użycie: Protokół komunikacyjny
+# [Linux] C Shell (csh) telnet użycie: nawiązywanie połączeń sieciowych
 
-## Overview
-Polecenie `telnet` jest używane do nawiązywania połączeń zdalnych z serwerami za pomocą protokołu Telnet. Umożliwia użytkownikom interakcję z systemami zdalnymi, co jest przydatne w diagnostyce sieci oraz w zarządzaniu serwerami.
+## Przegląd
+Polecenie `telnet` służy do nawiązywania połączeń zdalnych z innymi komputerami w sieci. Umożliwia użytkownikom logowanie się do zdalnych systemów oraz wykonywanie poleceń na tych systemach.
 
-## Usage
+## Użycie
 Podstawowa składnia polecenia `telnet` jest następująca:
 
-```bash
-telnet [opcje] [adres] [port]
+```csh
+telnet [opcje] [argumenty]
 ```
 
-## Common Options
-- `-l [nazwa_użytkownika]`: Umożliwia logowanie się jako określony użytkownik.
-- `-d`: Włącza tryb debugowania, co może pomóc w diagnozowaniu problemów z połączeniem.
-- `-n [plik]`: Umożliwia zapisanie sesji do określonego pliku.
-- `-h`: Wyświetla pomoc i dostępne opcje.
+## Często używane opcje
+- `-l użytkownik` - logowanie jako określony użytkownik.
+- `-d` - włączenie trybu debugowania.
+- `-n plik` - zapisanie danych do określonego pliku.
 
-## Common Examples
-- Nawiązanie połączenia z serwerem na porcie 23 (domyślny port Telnet):
-    ```bash
-    telnet example.com 23
-    ```
+## Przykłady
+Oto kilka praktycznych przykładów użycia polecenia `telnet`:
 
-- Nawiązanie połączenia z serwerem na porcie 80 (HTTP):
-    ```bash
-    telnet example.com 80
-    ```
+1. Nawiązanie połączenia z serwerem na porcie 23:
+   ```csh
+   telnet example.com 23
+   ```
 
-- Logowanie się jako określony użytkownik:
-    ```bash
-    telnet -l user example.com
-    ```
+2. Logowanie się jako określony użytkownik:
+   ```csh
+   telnet -l user example.com
+   ```
 
-- Włączenie trybu debugowania:
-    ```bash
-    telnet -d example.com
-    ```
+3. Włączenie trybu debugowania podczas połączenia:
+   ```csh
+   telnet -d example.com
+   ```
 
-## Tips
+4. Zapisanie sesji do pliku:
+   ```csh
+   telnet -n session.log example.com
+   ```
+
+## Wskazówki
 - Używaj `telnet` tylko w zaufanych sieciach, ponieważ przesyła dane w postaci niezaszyfrowanej.
 - Zamiast `telnet`, rozważ użycie `ssh` dla bezpieczniejszych połączeń.
-- Sprawdzaj dostępność portów na serwerze, aby upewnić się, że usługa jest uruchomiona przed próbą połączenia.
+- Sprawdzaj dostępność portów na zdalnym serwerze przed nawiązaniem połączenia, aby upewnić się, że usługa jest uruchomiona.

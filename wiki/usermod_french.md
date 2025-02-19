@@ -1,52 +1,53 @@
-# [Linux] Bash usermod : Gérer les utilisateurs
+# [Linux] C Shell (csh) usermod : Modifier les utilisateurs
 
 ## Overview
-La commande `usermod` est utilisée pour modifier les comptes d'utilisateurs sur un système Linux. Elle permet d'ajuster divers paramètres d'un utilisateur, tels que le groupe, le nom, le répertoire personnel, et bien plus encore.
+La commande `usermod` dans C Shell (csh) est utilisée pour modifier les informations d'un compte utilisateur existant. Cela peut inclure des changements de nom, d'appartenance à des groupes, de répertoire personnel, et plus encore.
 
 ## Usage
 La syntaxe de base de la commande `usermod` est la suivante :
 
-```bash
+```
 usermod [options] [arguments]
 ```
 
 ## Common Options
 Voici quelques options courantes pour la commande `usermod` :
 
+- `-l` : Change le nom d'utilisateur.
+- `-d` : Modifie le répertoire personnel de l'utilisateur.
+- `-g` : Change le groupe principal de l'utilisateur.
 - `-aG` : Ajoute l'utilisateur à un ou plusieurs groupes supplémentaires sans le retirer des groupes existants.
-- `-d` : Change le répertoire personnel de l'utilisateur.
-- `-l` : Modifie le nom de l'utilisateur.
-- `-s` : Change le shell par défaut de l'utilisateur.
-- `-u` : Change l'UID de l'utilisateur.
+- `-s` : Change le shell de connexion de l'utilisateur.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `usermod` :
 
-1. **Ajouter un utilisateur à un groupe** :
-   ```bash
-   usermod -aG sudo nom_utilisateur
-   ```
-   Cet exemple ajoute `nom_utilisateur` au groupe `sudo`, lui permettant d'exécuter des commandes avec des privilèges élevés.
-
-2. **Changer le répertoire personnel d'un utilisateur** :
-   ```bash
-   usermod -d /nouveau/chemin nom_utilisateur
-   ```
-   Cela modifie le répertoire personnel de `nom_utilisateur` vers `/nouveau/chemin`.
-
-3. **Modifier le nom d'un utilisateur** :
-   ```bash
+1. **Changer le nom d'utilisateur :**
+   ```csh
    usermod -l nouveau_nom ancien_nom
    ```
-   Cet exemple change le nom d'utilisateur de `ancien_nom` à `nouveau_nom`.
 
-4. **Changer le shell par défaut d'un utilisateur** :
-   ```bash
-   usermod -s /bin/zsh nom_utilisateur
+2. **Modifier le répertoire personnel :**
+   ```csh
+   usermod -d /nouveau/chemin/ancien_nom
    ```
-   Cela définit le shell par défaut de `nom_utilisateur` à Zsh.
+
+3. **Changer le groupe principal :**
+   ```csh
+   usermod -g nouveau_groupe nom_utilisateur
+   ```
+
+4. **Ajouter un utilisateur à un groupe supplémentaire :**
+   ```csh
+   usermod -aG groupe_existant nom_utilisateur
+   ```
+
+5. **Changer le shell de connexion :**
+   ```csh
+   usermod -s /bin/nouveau_shell nom_utilisateur
+   ```
 
 ## Tips
-- Toujours faire une sauvegarde des fichiers de configuration avant de modifier les comptes d'utilisateurs.
-- Utiliser `usermod` avec précaution, surtout lors du changement de l'UID ou du nom d'utilisateur, car cela peut affecter les permissions des fichiers.
-- Vérifiez les groupes d'un utilisateur après modification avec la commande `groups nom_utilisateur` pour vous assurer que les changements ont été appliqués correctement.
+- Assurez-vous d'avoir les droits d'administrateur pour utiliser `usermod`.
+- Vérifiez toujours les modifications apportées en consultant le fichier `/etc/passwd` après avoir exécuté la commande.
+- Utilisez l'option `-aG` pour éviter de retirer l'utilisateur des groupes existants lors de l'ajout à de nouveaux groupes.

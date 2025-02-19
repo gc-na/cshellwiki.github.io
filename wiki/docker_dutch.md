@@ -1,7 +1,7 @@
-# [Linux] Bash docker gebruik: Beheer van containerapplicaties
+# [Linux] C Shell (csh) docker gebruik: Beheer van containerapplicaties
 
 ## Overzicht
-De `docker` opdracht is een krachtige tool voor het beheren van containerapplicaties. Met Docker kunnen ontwikkelaars en systeembeheerders applicaties in containers verpakken, verspreiden en uitvoeren. Dit maakt het eenvoudig om software te isoleren en te schalen.
+De `docker` opdracht is een krachtig hulpmiddel voor het beheren van containerapplicaties. Met Docker kunnen gebruikers applicaties in containers verpakken, verspreiden en uitvoeren, wat zorgt voor een consistente omgeving, ongeacht waar de applicatie draait.
 
 ## Gebruik
 De basis syntaxis van de `docker` opdracht is als volgt:
@@ -12,11 +12,10 @@ docker [opties] [argumenten]
 
 ## Veelvoorkomende Opties
 - `run`: Start een nieuwe container.
-- `ps`: Toont actieve containers.
-- `stop`: Stopt een draaiende container.
-- `rm`: Verwijdert een container.
-- `images`: Lijst beschikbare afbeeldingen.
-- `pull`: Haalt een afbeelding op van een register.
+- `ps`: Lijst actieve containers.
+- `images`: Toon beschikbare afbeeldingen.
+- `pull`: Haal een afbeelding op van een externe repository.
+- `build`: Bouw een afbeelding vanuit een Dockerfile.
 
 ## Veelvoorkomende Voorbeelden
 
@@ -25,27 +24,27 @@ docker [opties] [argumenten]
    docker run hello-world
    ```
 
-2. **Lijst van actieve containers weergeven:**
+2. **Actieve containers weergeven:**
    ```bash
    docker ps
    ```
 
-3. **Een specifieke container stoppen:**
-   ```bash
-   docker stop <container_id>
-   ```
-
-4. **Een container verwijderen:**
-   ```bash
-   docker rm <container_id>
-   ```
-
-5. **Afbeeldingen ophalen van Docker Hub:**
+3. **Afbeeldingen ophalen:**
    ```bash
    docker pull ubuntu
    ```
 
+4. **Een afbeelding bouwen vanuit een Dockerfile:**
+   ```bash
+   docker build -t mijn-app .
+   ```
+
+5. **Alle beschikbare afbeeldingen weergeven:**
+   ```bash
+   docker images
+   ```
+
 ## Tips
-- Zorg ervoor dat je regelmatig je afbeeldingen en containers opruimt om schijfruimte te besparen.
 - Gebruik `docker-compose` voor het beheren van multi-container applicaties.
-- Controleer altijd de documentatie van specifieke afbeeldingen voor extra configuratie-instellingen en opties.
+- Houd je Docker-images schoon door ongebruikte afbeeldingen en containers regelmatig te verwijderen met `docker system prune`.
+- Documenteer je Dockerfiles goed om de onderhoudbaarheid te verbeteren.

@@ -1,45 +1,45 @@
-# [Linux] Bash sysctl gebruik: Beheer van kernelparameters
+# [Linux] C Shell (csh) sysctl gebruik: Beheer van kernelparameters
 
 ## Overzicht
-De `sysctl` opdracht wordt gebruikt om kernelparameters in een Linux-systeem te beheren en te configureren. Hiermee kunnen gebruikers de runtime-instellingen van de Linux-kernel aanpassen zonder dat een herstart nodig is.
+Het `sysctl` commando wordt gebruikt om kernelparameters in te stellen en te bekijken op een Unix-achtig besturingssysteem. Het stelt gebruikers in staat om de configuratie van de kernel aan te passen zonder de noodzaak om het systeem opnieuw op te starten.
 
 ## Gebruik
-De basis syntaxis van de `sysctl` opdracht is als volgt:
+De basis syntaxis van het `sysctl` commando is als volgt:
 
-```bash
+```csh
 sysctl [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-a`: Toont alle kernelparameters en hun huidige waarden.
-- `-w`: Wijzigt de waarde van een kernelparameter.
-- `-p`: Laadt instellingen van een configuratiebestand, meestal `/etc/sysctl.conf`.
+- `-a`: Toont alle beschikbare kernelparameters en hun waarden.
+- `-w`: Wijzigt de waarde van een specifieke kernelparameter.
+- `-n`: Toont alleen de waarde van de opgegeven parameter zonder extra informatie.
+- `-p`: Laadt instellingen van een bestand, meestal `/etc/sysctl.conf`.
 
 ## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van `sysctl`:
 
-1. **Toon alle kernelparameters**:
-   ```bash
+1. **Bekijk alle kernelparameters**:
+   ```csh
    sysctl -a
    ```
 
-2. **Wijzig een kernelparameter**:
-   Stel de waarde van `vm.swappiness` in op 10:
-   ```bash
-   sysctl -w vm.swappiness=10
+2. **Wijzig een kernelparameter** (bijvoorbeeld het verhogen van het aantal open bestanden):
+   ```csh
+   sysctl -w fs.file-max=100000
    ```
 
-3. **Laad instellingen uit het configuratiebestand**:
-   ```bash
+3. **Bekijk de waarde van een specifieke parameter** (bijvoorbeeld de maximale grootte van een socketbuffer):
+   ```csh
+   sysctl -n net.core.rmem_max
+   ```
+
+4. **Laad instellingen van het configuratiebestand**:
+   ```csh
    sysctl -p
    ```
 
-4. **Controleer de waarde van een specifieke parameter**:
-   Om de huidige waarde van `net.ipv4.ip_forward` te bekijken:
-   ```bash
-   sysctl net.ipv4.ip_forward
-   ```
-
 ## Tips
-- Zorg ervoor dat je de juiste permissies hebt (meestal root) om kernelparameters te wijzigen.
-- Maak een back-up van je configuratiebestand voordat je wijzigingen aanbrengt.
-- Gebruik `sysctl -a | grep <parameter>` om snel een specifieke parameter te vinden in de lijst van alle parameters.
+- Zorg ervoor dat je de juiste rechten hebt om kernelparameters te wijzigen; vaak zijn root-rechten vereist.
+- Wees voorzichtig bij het wijzigen van kernelparameters, aangezien onjuiste instellingen de stabiliteit van het systeem kunnen beïnvloeden.
+- Documenteer wijzigingen die je aanbrengt, zodat je ze later kunt terugdraaien of begrijpen waarom bepaalde instellingen zijn aangepast.

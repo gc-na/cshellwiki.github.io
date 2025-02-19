@@ -1,7 +1,7 @@
-# [Linux] Bash snap usage: Manage software packages
+# [Linux] C Shell (csh) snap <Usage equivalent in English>: Manage software packages
 
 ## Overview
-The `snap` command is a package management tool used in Linux to install, remove, and manage snap packages. Snap packages are self-contained applications that include all their dependencies, making them easy to install and maintain across different Linux distributions.
+The `snap` command is used to manage software packages in the Snap format, which allows for easy installation, updating, and removal of applications in a secure and isolated environment. Snap packages are designed to work across various Linux distributions, making software management more consistent and straightforward.
 
 ## Usage
 The basic syntax of the `snap` command is as follows:
@@ -11,59 +11,46 @@ snap [options] [arguments]
 ```
 
 ## Common Options
-- `install`: Installs a snap package.
-- `remove`: Uninstalls a snap package.
+- `install`: Installs a specified snap package.
+- `remove`: Removes a specified snap package.
 - `list`: Lists all installed snap packages.
-- `info`: Displays detailed information about a specific snap package.
 - `refresh`: Updates installed snap packages to their latest versions.
-- `revert`: Reverts a snap package to its previous version.
+- `info`: Displays detailed information about a specified snap package.
 
 ## Common Examples
 Here are some practical examples of using the `snap` command:
 
-### Install a Snap Package
-To install a snap package, use the `install` option followed by the package name. For example, to install the VLC media player:
+1. **Install a Snap Package**
+   ```bash
+   snap install vlc
+   ```
+   This command installs the VLC media player.
 
-```bash
-snap install vlc
-```
+2. **Remove a Snap Package**
+   ```bash
+   snap remove vlc
+   ```
+   This command removes the VLC media player from your system.
 
-### Remove a Snap Package
-To remove an installed snap package, use the `remove` option followed by the package name. For example, to remove VLC:
+3. **List Installed Snap Packages**
+   ```bash
+   snap list
+   ```
+   This command displays all currently installed snap packages.
 
-```bash
-snap remove vlc
-```
+4. **Update Installed Snap Packages**
+   ```bash
+   snap refresh
+   ```
+   This command updates all installed snap packages to their latest versions.
 
-### List Installed Snap Packages
-To see all installed snap packages on your system, use the `list` option:
-
-```bash
-snap list
-```
-
-### Get Information About a Snap Package
-To get detailed information about a specific snap package, use the `info` option followed by the package name. For example, to get information about VLC:
-
-```bash
-snap info vlc
-```
-
-### Update Snap Packages
-To update all installed snap packages to their latest versions, use the `refresh` option:
-
-```bash
-snap refresh
-```
-
-### Revert a Snap Package
-If you need to revert a snap package to its previous version, use the `revert` option followed by the package name. For example, to revert VLC:
-
-```bash
-snap revert vlc
-```
+5. **Get Information About a Snap Package**
+   ```bash
+   snap info vlc
+   ```
+   This command provides detailed information about the VLC snap package, including its version and description.
 
 ## Tips
-- Always check for updates regularly using `snap refresh` to ensure your applications are up to date.
-- Use `snap info <package-name>` to check the available versions and details before installation.
-- If you encounter issues with a snap package, consider reverting to a previous version using the `revert` command.
+- Always check for updates regularly using `snap refresh` to ensure your applications are up-to-date.
+- Use `snap list` to keep track of your installed applications and their versions.
+- If you encounter issues with a snap package, consider removing and reinstalling it to resolve potential conflicts.

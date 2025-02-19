@@ -1,53 +1,55 @@
-# [Linux] Bash tput Utilisation : Contrôle des terminaux
+# [Linux] C Shell (csh) tput : Contrôler les capacités du terminal
 
 ## Overview
-La commande `tput` est utilisée pour initialiser ou interroger les capacités d'un terminal. Elle permet de manipuler l'affichage dans le terminal en utilisant des séquences d'échappement, ce qui est particulièrement utile pour créer des interfaces utilisateur textuelles.
+La commande `tput` est utilisée pour initialiser et contrôler les capacités d'affichage d'un terminal. Elle permet d'envoyer des séquences d'échappement au terminal pour modifier son comportement, comme changer la couleur du texte ou déplacer le curseur.
 
 ## Usage
 La syntaxe de base de la commande `tput` est la suivante :
 
-```bash
+```csh
 tput [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes pour `tput` :
-
 - `clear` : Efface l'écran du terminal.
-- `setaf [n]` : Définit la couleur de premier plan (texte) à la couleur indexée `n`.
-- `setab [n]` : Définit la couleur de fond à la couleur indexée `n`.
-- `cup [x] [y]` : Déplace le curseur à la position (x, y) dans le terminal.
-- `bold` : Définit le texte en gras.
+- `setaf [n]` : Définit la couleur du texte (où `n` est le numéro de la couleur).
+- `setab [n]` : Définit la couleur de fond (où `n` est le numéro de la couleur).
+- `cup [x] [y]` : Déplace le curseur à la position spécifiée (ligne `x`, colonne `y`).
+- `bold` : Active le texte en gras.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `tput` :
 
 1. **Effacer l'écran :**
-   ```bash
+   ```csh
    tput clear
    ```
 
-2. **Changer la couleur du texte :**
-   ```bash
-   tput setaf 1  # Définit le texte en rouge
-   echo "Ceci est un texte rouge."
-   tput sgr0     # Réinitialise les attributs du texte
+2. **Changer la couleur du texte en rouge :**
+   ```csh
+   tput setaf 1
+   echo "Ce texte est rouge"
    ```
 
-3. **Déplacer le curseur :**
-   ```bash
-   tput cup 10 20  # Déplace le curseur à la ligne 10, colonne 20
-   echo "Texte à une position spécifique."
+3. **Changer la couleur de fond en bleu :**
+   ```csh
+   tput setab 4
+   echo "Le fond est bleu"
    ```
 
-4. **Texte en gras :**
-   ```bash
+4. **Déplacer le curseur :**
+   ```csh
+   tput cup 10 20
+   echo "Je suis à la ligne 10, colonne 20"
+   ```
+
+5. **Activer le texte en gras :**
+   ```csh
    tput bold
-   echo "Ceci est un texte en gras."
-   tput sgr0
+   echo "Ce texte est en gras"
    ```
 
 ## Tips
-- Utilisez `tput sgr0` après avoir appliqué des attributs pour réinitialiser les styles, afin d'éviter que les changements ne s'appliquent à d'autres textes.
-- Vous pouvez combiner plusieurs commandes `tput` pour créer des affichages plus complexes et interactifs.
-- Testez les différentes couleurs disponibles en utilisant `tput setaf` et `tput setab` avec des indices de couleur allant généralement de 0 à 7 pour les couleurs de base.
+- Utilisez `tput reset` pour réinitialiser le terminal à ses paramètres par défaut.
+- Combinez plusieurs commandes `tput` pour créer des affichages plus complexes.
+- Testez les numéros de couleur disponibles sur votre terminal, car ils peuvent varier selon les configurations.

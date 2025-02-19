@@ -1,52 +1,51 @@
-# [Linux] Bash dmesg Penggunaan: Menampilkan pesan kernel
+# [Sistem Operasi] C Shell (csh) dmesg: Menampilkan pesan kernel
 
 ## Overview
-Perintah `dmesg` digunakan untuk menampilkan pesan dari buffer ring kernel. Pesan ini biasanya berisi informasi tentang perangkat keras, driver, dan berbagai peristiwa yang terjadi selama booting sistem atau saat perangkat keras terhubung atau terputus.
+Perintah `dmesg` digunakan untuk menampilkan pesan yang dihasilkan oleh kernel Linux. Pesan ini biasanya terkait dengan proses booting dan perangkat keras yang terdeteksi oleh sistem. Dengan menggunakan `dmesg`, pengguna dapat memantau dan mendiagnosis masalah yang berkaitan dengan perangkat keras dan driver.
 
 ## Usage
-Sintaks dasar dari perintah `dmesg` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `dmesg`:
 
-```bash
+```csh
 dmesg [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah `dmesg`:
-
-- `-c`: Menghapus pesan yang ditampilkan setelah ditampilkan.
+- `-C`: Menghapus buffer pesan kernel sebelum menampilkan pesan baru.
+- `-c`: Menghapus buffer setelah menampilkan pesan.
 - `-n level`: Mengatur tingkat pesan yang akan ditampilkan.
-- `-T`: Menampilkan waktu dalam format yang lebih mudah dibaca (human-readable).
-- `--follow`: Mengikuti pesan baru yang ditambahkan ke buffer.
+- `-s size`: Mengatur ukuran buffer yang akan ditampilkan.
+- `-T`: Menampilkan waktu dalam format yang dapat dibaca manusia.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan perintah `dmesg`:
+Berikut adalah beberapa contoh penggunaan `dmesg`:
 
 1. Menampilkan semua pesan kernel:
-   ```bash
+   ```csh
    dmesg
    ```
 
-2. Menampilkan pesan dengan waktu yang lebih mudah dibaca:
-   ```bash
-   dmesg -T
-   ```
-
-3. Menghapus pesan setelah ditampilkan:
-   ```bash
+2. Menghapus buffer dan kemudian menampilkan pesan kernel:
+   ```csh
    dmesg -c
    ```
 
-4. Mengikuti pesan baru secara real-time:
-   ```bash
-   dmesg --follow
+3. Menampilkan pesan kernel dengan waktu yang dapat dibaca manusia:
+   ```csh
+   dmesg -T
    ```
 
-5. Menampilkan pesan dengan tingkat tertentu (misalnya, hanya error):
-   ```bash
-   dmesg -n 1
+4. Menampilkan pesan kernel dengan tingkat tertentu (misalnya, tingkat 3):
+   ```csh
+   dmesg -n 3
+   ```
+
+5. Mengatur ukuran buffer yang ditampilkan:
+   ```csh
+   dmesg -s 8192
    ```
 
 ## Tips
-- Gunakan opsi `-T` untuk memudahkan membaca waktu pesan, terutama saat menganalisis masalah.
-- Jika Anda ingin memantau pesan kernel secara real-time, gunakan opsi `--follow`.
-- Untuk analisis lebih lanjut, Anda bisa mengarahkan output `dmesg` ke file menggunakan redirection, misalnya `dmesg > dmesg_output.txt`.
+- Gunakan `dmesg | less` untuk menelusuri pesan yang panjang dengan lebih mudah.
+- Periksa pesan `dmesg` setelah menghubungkan perangkat baru untuk memastikan bahwa perangkat tersebut terdeteksi dengan benar.
+- Jika Anda mengalami masalah dengan perangkat keras, periksa pesan `dmesg` untuk mendapatkan informasi lebih lanjut tentang kesalahan atau peringatan.

@@ -1,48 +1,45 @@
-# [Linux] Bash hexdump użycie: Wyświetlanie zawartości pliku w formacie szesnastkowym
+# [Linux] C Shell (csh) hexdump użycie: konwersja plików binarnych na format szesnastkowy
 
-## Overview
-Polecenie `hexdump` służy do wyświetlania zawartości plików w formacie szesnastkowym. Umożliwia analizę danych binarnych, co jest przydatne w programowaniu i debugowaniu.
+## Przegląd
+Polecenie `hexdump` służy do wyświetlania zawartości plików binarnych w formacie szesnastkowym. Umożliwia to analizę danych w plikach, co jest przydatne w programowaniu, debugowaniu oraz w analizie danych.
 
-## Usage
+## Użycie
 Podstawowa składnia polecenia `hexdump` jest następująca:
 
-```bash
-hexdump [options] [arguments]
+```csh
+hexdump [opcje] [argumenty]
 ```
 
-## Common Options
-- `-C`: Wyświetla dane w formacie szesnastkowym oraz ASCII.
-- `-n <bytes>`: Odczytuje tylko określoną liczbę bajtów z pliku.
-- `-s <offset>`: Pomija określoną liczbę bajtów przed rozpoczęciem wyświetlania.
-- `-e <format>`: Umożliwia zdefiniowanie własnego formatu wyjścia.
+## Częste opcje
+- `-C` - wyświetla dane w formacie szesnastkowym oraz ASCII.
+- `-n <liczba>` - ogranicza liczbę bajtów do wyświetlenia.
+- `-v` - wyświetla wszystkie dane, w tym powtarzające się bajty.
+- `-e <format>` - pozwala na określenie własnego formatu wyjścia.
 
-## Common Examples
+## Przykłady
+Oto kilka praktycznych przykładów użycia polecenia `hexdump`:
+
 1. Wyświetlenie zawartości pliku w formacie szesnastkowym:
-   ```bash
-   hexdump myfile.bin
+   ```csh
+   hexdump plik.bin
    ```
 
-2. Wyświetlenie zawartości pliku z formatowaniem szesnastkowym i ASCII:
-   ```bash
-   hexdump -C myfile.bin
+2. Wyświetlenie pierwszych 16 bajtów pliku:
+   ```csh
+   hexdump -n 16 plik.bin
    ```
 
-3. Odczytanie tylko pierwszych 16 bajtów pliku:
-   ```bash
-   hexdump -n 16 myfile.bin
+3. Wyświetlenie danych w formacie szesnastkowym i ASCII:
+   ```csh
+   hexdump -C plik.bin
    ```
 
-4. Pominięcie pierwszych 10 bajtów i wyświetlenie reszty:
-   ```bash
-   hexdump -s 10 myfile.bin
+4. Użycie własnego formatu wyjścia:
+   ```csh
+   hexdump -e '16/1 "%02x " "\n"' plik.bin
    ```
 
-5. Użycie własnego formatu wyjścia:
-   ```bash
-   hexdump -e '16/1 "%02x " "\n"' myfile.bin
-   ```
-
-## Tips
-- Używaj opcji `-C`, aby łatwiej analizować dane, widząc zarówno wartości szesnastkowe, jak i odpowiadające im znaki ASCII.
-- Zawsze sprawdzaj dokumentację polecenia (`man hexdump`), aby poznać wszystkie dostępne opcje i ich zastosowanie.
-- Przy dużych plikach używaj opcji `-n` i `-s`, aby ograniczyć ilość wyświetlanych danych, co ułatwi ich analizę.
+## Wskazówki
+- Używaj opcji `-C`, aby uzyskać czytelniejszy format wyjścia, który pokazuje zarówno wartości szesnastkowe, jak i odpowiadające im znaki ASCII.
+- Ogranicz liczbę bajtów do wyświetlenia za pomocą opcji `-n`, aby skupić się na interesujących fragmentach pliku.
+- Eksperymentuj z własnymi formatami wyjścia, aby dostosować prezentację danych do swoich potrzeb.

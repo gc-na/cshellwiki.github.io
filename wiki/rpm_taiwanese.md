@@ -1,51 +1,43 @@
-# [Linux] Bash rpm 使用說明: 管理 RPM 套件
+# [台灣] C Shell (csh) rpm 使用法: 管理 RPM 套件
 
 ## Overview
-`rpm` 是一個用於管理 RPM 套件的命令行工具，主要用於安裝、卸載、升級和查詢 RPM 格式的軟體包。這個工具在基於 RPM 的 Linux 發行版中非常常見，如 Red Hat、CentOS 和 Fedora。
+`rpm` 命令是用來管理 RPM 套件的工具，主要用於安裝、卸載、查詢和驗證 RPM 格式的軟體包。
 
 ## Usage
 基本語法如下：
-```
+```csh
 rpm [options] [arguments]
 ```
 
 ## Common Options
 - `-i`：安裝一個新的 RPM 套件。
 - `-e`：卸載已安裝的 RPM 套件。
-- `-U`：升級已安裝的 RPM 套件。
 - `-q`：查詢已安裝的 RPM 套件。
-- `-l`：列出已安裝套件的檔案。
-- `--help`：顯示幫助信息。
+- `-v`：顯示詳細的輸出資訊。
+- `-h`：在安裝過程中顯示進度條。
 
 ## Common Examples
-以下是一些常見的 `rpm` 使用範例：
-
-### 安裝一個 RPM 套件
-```bash
+安裝一個 RPM 套件：
+```csh
 rpm -i package.rpm
 ```
 
-### 卸載一個已安裝的套件
-```bash
+卸載一個已安裝的 RPM 套件：
+```csh
 rpm -e package_name
 ```
 
-### 升級一個已安裝的套件
-```bash
-rpm -U package.rpm
-```
-
-### 查詢已安裝的套件
-```bash
+查詢已安裝的 RPM 套件：
+```csh
 rpm -q package_name
 ```
 
-### 列出已安裝套件的檔案
-```bash
-rpm -ql package_name
+顯示已安裝套件的詳細資訊：
+```csh
+rpm -qi package_name
 ```
 
 ## Tips
-- 在安裝或升級套件之前，建議先使用 `-q` 選項確認套件是否已安裝。
-- 使用 `--nodeps` 選項可以在安裝時忽略依賴性檢查，但這可能會導致系統不穩定，請謹慎使用。
-- 定期查詢和清理不再需要的套件，以保持系統的整潔和性能。
+- 在安裝或卸載套件之前，建議使用 `-q` 來確認套件是否已經存在。
+- 使用 `-v` 和 `-h` 選項可以讓你在安裝過程中獲得更好的可視化反饋。
+- 定期檢查系統中已安裝的 RPM 套件，以確保系統的整潔與安全。

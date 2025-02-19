@@ -1,46 +1,44 @@
-# [Linux] Bash nice uso: Ajusta a prioridade de execução de processos
+# [Linux] C Shell (csh) nice Uso: Ajusta a prioridade de execução de processos
 
 ## Overview
-O comando `nice` é utilizado no sistema operacional Linux para alterar a prioridade de execução de processos. Ele permite que o usuário inicie um comando com uma prioridade diferente, o que pode ser útil para gerenciar a carga do sistema e garantir que processos importantes recebam mais recursos.
+O comando `nice` é utilizado para executar um programa com uma prioridade de CPU ajustada. Isso permite que você controle a quantidade de recursos do sistema que um processo pode usar, ajudando a evitar que processos intensivos em CPU afetem o desempenho de outros processos.
 
 ## Usage
 A sintaxe básica do comando `nice` é a seguinte:
 
-```
+```csh
 nice [opções] [comando]
 ```
 
 ## Common Options
-Aqui estão algumas opções comuns do `nice`:
+Aqui estão algumas opções comuns do comando `nice`:
 
-- `-n, --adjustment=N`: Define o valor de ajuste da prioridade. O valor padrão é 10. Valores negativos aumentam a prioridade, enquanto valores positivos a diminuem.
-- `-h, --help`: Exibe uma mensagem de ajuda com informações sobre o comando.
-- `--version`: Mostra a versão do comando `nice`.
+- `-n [nível]`: Especifica o nível de "nice" a ser aplicado. O nível pode variar de -20 (máxima prioridade) a 19 (mínima prioridade). O padrão é 10.
+- `-h`: Exibe uma mensagem de ajuda sobre o uso do comando.
 
 ## Common Examples
-Aqui estão alguns exemplos práticos do uso do comando `nice`:
 
-1. Iniciar um processo com prioridade padrão:
-   ```bash
+1. Executar um comando com prioridade padrão:
+   ```csh
    nice comando
    ```
 
-2. Iniciar um processo com prioridade reduzida (aumentando o valor de nice):
-   ```bash
-   nice -n 10 comando
+2. Executar um comando com prioridade aumentada (menos "nice"):
+   ```csh
+   nice -n 5 comando
    ```
 
-3. Iniciar um processo com prioridade aumentada (diminuindo o valor de nice):
-   ```bash
-   nice -n -5 comando
+3. Executar um comando com prioridade reduzida (mais "nice"):
+   ```csh
+   nice -n 15 comando
    ```
 
 4. Verificar a prioridade de um processo em execução:
-   ```bash
-   ps -o pid,ni,cmd
+   ```csh
+   ps -o pid,nice,cmd
    ```
 
 ## Tips
-- Use `nice` para processos que não são críticos, permitindo que outros processos mais importantes tenham prioridade.
-- Combine `nice` com o comando `renice` para alterar a prioridade de processos já em execução.
-- Lembre-se de que apenas usuários com permissões adequadas podem aumentar a prioridade de um processo (valores negativos).
+- Use `nice` para processos que não são críticos, permitindo que outros processos mais importantes tenham mais recursos.
+- Lembre-se de que apenas usuários com permissões adequadas podem diminuir a prioridade de um processo (usar valores negativos).
+- Combine `nice` com outros comandos, como `nohup`, para executar processos em segundo plano sem interrupções.

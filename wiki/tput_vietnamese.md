@@ -1,53 +1,54 @@
-# [Linux] Bash tput cách sử dụng: Điều chỉnh định dạng đầu ra trong terminal
+# [Hệ điều hành] C Shell (csh) tput: [quản lý thuộc tính đầu ra]
 
-## Tổng quan
-Lệnh `tput` được sử dụng để điều chỉnh định dạng đầu ra trong terminal, cho phép người dùng thay đổi màu sắc, định dạng văn bản và các thuộc tính khác của giao diện dòng lệnh.
+## Overview
+Lệnh `tput` được sử dụng để điều khiển các thuộc tính đầu ra của terminal. Nó cho phép người dùng thay đổi màu sắc, định dạng văn bản và các thuộc tính khác của giao diện người dùng trong môi trường dòng lệnh.
 
-## Cách sử dụng
+## Usage
 Cú pháp cơ bản của lệnh `tput` như sau:
-```
+```csh
 tput [options] [arguments]
 ```
 
-## Các tùy chọn phổ biến
-- `setaf [n]`: Thiết lập màu chữ (foreground) với `n` là số màu.
-- `setab [n]`: Thiết lập màu nền (background) với `n` là số màu.
+## Common Options
+- `setaf`: Thiết lập màu chữ (foreground color).
+- `setab`: Thiết lập màu nền (background color).
 - `bold`: Bật chế độ chữ đậm.
-- `smso`: Bật chế độ in nghiêng (standout mode).
-- `rmso`: Tắt chế độ in nghiêng.
+- `clear`: Xóa màn hình terminal.
+- `cup`: Di chuyển con trỏ đến vị trí cụ thể trên màn hình.
 
-## Ví dụ phổ biến
+## Common Examples
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `tput`:
 
-1. **Thay đổi màu chữ thành đỏ**:
-   ```bash
-   tput setaf 1
-   echo "Đây là văn bản màu đỏ"
-   tput sgr0  # Đặt lại định dạng
+1. **Thiết lập màu chữ xanh lá cây**:
+   ```csh
+   tput setaf 2
+   echo "Đây là văn bản màu xanh lá cây"
    ```
 
-2. **Thay đổi màu nền thành xanh lá cây**:
-   ```bash
-   tput setab 2
-   echo "Đây là văn bản với nền màu xanh lá cây"
-   tput sgr0  # Đặt lại định dạng
+2. **Thiết lập màu nền đỏ**:
+   ```csh
+   tput setab 1
+   echo "Văn bản này có nền màu đỏ"
    ```
 
 3. **Bật chế độ chữ đậm**:
-   ```bash
+   ```csh
    tput bold
-   echo "Đây là văn bản đậm"
-   tput sgr0  # Đặt lại định dạng
+   echo "Văn bản này sẽ được in đậm"
    ```
 
-4. **Sử dụng chế độ in nghiêng**:
-   ```bash
-   tput smso
-   echo "Đây là văn bản in nghiêng"
-   tput rmso  # Tắt chế độ in nghiêng
+4. **Xóa màn hình terminal**:
+   ```csh
+   tput clear
    ```
 
-## Mẹo
-- Luôn sử dụng `tput sgr0` sau khi thay đổi định dạng để đặt lại các thuộc tính về mặc định.
-- Kiểm tra danh sách màu sắc và mã số của chúng trên hệ thống của bạn để sử dụng chính xác với lệnh `tput`.
-- Kết hợp `tput` với các lệnh khác trong shell script để tạo ra các giao diện người dùng trực quan hơn.
+5. **Di chuyển con trỏ đến dòng 5, cột 10**:
+   ```csh
+   tput cup 5 10
+   echo "Con trỏ đã được di chuyển"
+   ```
+
+## Tips
+- Hãy thử kết hợp nhiều tùy chọn để tạo ra các hiệu ứng thú vị cho đầu ra của bạn.
+- Kiểm tra khả năng tương thích của các màu sắc và định dạng trên terminal của bạn, vì không phải tất cả các terminal đều hỗ trợ cùng một bộ màu.
+- Sử dụng lệnh `tput` trong các script để tạo ra giao diện người dùng tương tác và hấp dẫn hơn.

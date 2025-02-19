@@ -1,54 +1,48 @@
-# [Linux] Bash at Kullanımı: Zamanlanmış komutlar çalıştırma
+# [Linux] C Shell (csh) at: Zamanlanmış görevler oluşturma
 
-## Genel Bakış
-`at` komutu, belirli bir zamanda bir veya daha fazla komutun çalıştırılmasını sağlamak için kullanılır. Bu, zamanlanmış görevlerin kolayca yönetilmesine olanak tanır.
+## Overview
+`at` komutu, belirli bir zamanda bir komut veya komut dizisini çalıştırmak için kullanılır. Bu, kullanıcıların belirli bir zaman diliminde otomatik olarak görevler planlamasına olanak tanır.
 
-## Kullanım
-Temel sözdizimi şu şekildedir:
-
-```bash
-at [seçenekler] [argümanlar]
+## Usage
+Temel sözdizimi aşağıdaki gibidir:
+```
+at [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-f`: Belirtilen dosyadan komutları alır.
-- `-m`: Komut çalıştırıldığında e-posta bildirimi gönderir.
-- `-q`: Kuyruk belirler (örneğin, a, b, c).
-- `-l`: Zamanlanmış görevlerin listesini gösterir.
-- `-d`: Belirtilen görevleri iptal eder.
+## Common Options
+- `-f` : Belirtilen dosyadan komutları okur.
+- `-l` : Planlanmış görevlerin listesini gösterir.
+- `-d` : Belirtilen görevleri iptal eder.
+- `-m` : Görev tamamlandığında e-posta bildirimi gönderir.
 
-## Yaygın Örnekler
-Aşağıda `at` komutunun bazı pratik örnekleri verilmiştir:
+## Common Examples
+Aşağıda `at` komutunun bazı pratik örnekleri bulunmaktadır:
 
-### Örnek 1: Belirli bir zamanda komut çalıştırma
-Aşağıdaki komut, 15 dakika sonra `echo "Merhaba Dünya"` komutunu çalıştırır:
+1. **Basit bir komut zamanlama**:
+   Belirli bir zamanda `echo` komutunu çalıştırmak için:
+   ```bash
+   echo "Merhaba, dünya!" | at 14:00
+   ```
 
-```bash
-echo "echo 'Merhaba Dünya'" | at now + 15 minutes
-```
+2. **Bir dosyadan komut okuma**:
+   `komutlar.txt` dosyasındaki komutları belirli bir zamanda çalıştırmak için:
+   ```bash
+   at -f komutlar.txt 15:00
+   ```
 
-### Örnek 2: Belirli bir tarihte komut çalıştırma
-Aşağıdaki komut, 1 Ocak 2024'te `backup.sh` dosyasını çalıştırır:
+3. **Planlanmış görevlerin listesini görüntüleme**:
+   Daha önce planlanmış görevleri görmek için:
+   ```bash
+   at -l
+   ```
 
-```bash
-at 01:00 01/01/2024 -f backup.sh
-```
+4. **Bir görevi iptal etme**:
+   Görev numarası 2 olan bir görevi iptal etmek için:
+   ```bash
+   atrm 2
+   ```
 
-### Örnek 3: Zamanlanmış görevlerin listesini görüntüleme
-Zamanlanmış görevlerinizi görmek için:
-
-```bash
-at -l
-```
-
-### Örnek 4: Zamanlanmış bir görevi iptal etme
-Belirli bir görevi iptal etmek için:
-
-```bash
-at -d [görev numarası]
-```
-
-## İpuçları
+## Tips
 - `at` komutunu kullanmadan önce, sisteminizde `atd` hizmetinin çalıştığından emin olun.
-- Komutlarınızı yazarken dikkatli olun; yanlış bir komut, beklenmedik sonuçlara yol açabilir.
-- Zamanlama yaparken, tarih ve saat formatına dikkat edin; yanlış bir format, komutun çalışmamasına neden olabilir.
+- Görevlerinizi zamanlamadan önce, doğru zaman formatını kullandığınızdan emin olun.
+- Uzun süreli görevler için, e-posta bildirimini kullanarak görevlerin durumunu takip edebilirsiniz.

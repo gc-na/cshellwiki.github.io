@@ -1,46 +1,50 @@
-# [Linux] Bash chmod cách sử dụng: Thay đổi quyền truy cập tệp
+# [Hệ điều hành] C Shell (csh) chmod Cách sử dụng: Thay đổi quyền truy cập tệp
 
 ## Tổng quan
-Lệnh `chmod` trong Bash được sử dụng để thay đổi quyền truy cập cho các tệp và thư mục trong hệ thống tệp. Quyền truy cập có thể được thiết lập cho người sở hữu tệp, nhóm và người dùng khác.
+Lệnh `chmod` trong C Shell (csh) được sử dụng để thay đổi quyền truy cập của các tệp và thư mục trong hệ thống Unix/Linux. Quyền truy cập có thể được thiết lập cho người sở hữu tệp, nhóm và người dùng khác.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `chmod` như sau:
-```bash
+```csh
 chmod [options] [arguments]
 ```
 
 ## Các tùy chọn phổ biến
-- `-R`: Thay đổi quyền truy cập cho tất cả các tệp và thư mục con bên trong thư mục.
-- `u`: Đại diện cho người sở hữu tệp (user).
-- `g`: Đại diện cho nhóm (group).
-- `o`: Đại diện cho người dùng khác (others).
-- `a`: Đại diện cho tất cả (all).
-- `+`: Thêm quyền.
-- `-`: Xóa quyền.
-- `=`: Thiết lập quyền cụ thể.
+- `u`: đại diện cho người sở hữu tệp (user).
+- `g`: đại diện cho nhóm (group).
+- `o`: đại diện cho người dùng khác (others).
+- `a`: đại diện cho tất cả (all).
+- `+`: thêm quyền.
+- `-`: xóa quyền.
+- `=`: thiết lập quyền cụ thể.
 
-## Ví dụ phổ biến
-- Thay đổi quyền cho người sở hữu tệp thành đọc, ghi và thực thi:
-```bash
-chmod u+rwx filename
-```
+## Ví dụ thường gặp
+1. **Thêm quyền thực thi cho người sở hữu tệp:**
+   ```csh
+   chmod u+x filename
+   ```
 
-- Thay đổi quyền cho nhóm thành chỉ đọc:
-```bash
-chmod g+r filename
-```
+2. **Xóa quyền đọc cho nhóm:**
+   ```csh
+   chmod g-r filename
+   ```
 
-- Xóa quyền thực thi cho tất cả người dùng:
-```bash
-chmod a-x filename
-```
+3. **Thiết lập quyền đọc và ghi cho tất cả:**
+   ```csh
+   chmod a+rw filename
+   ```
 
-- Thay đổi quyền cho tất cả tệp trong thư mục hiện tại và thư mục con:
-```bash
-chmod -R 755 directory_name
-```
+4. **Thay đổi quyền thành chỉ đọc cho người khác:**
+   ```csh
+   chmod o=r filename
+   ```
+
+5. **Thêm quyền thực thi cho tất cả:**
+   ```csh
+   chmod a+x filename
+   ```
 
 ## Mẹo
-- Sử dụng `ls -l` để kiểm tra quyền truy cập hiện tại của tệp trước khi thay đổi.
-- Cẩn thận khi sử dụng tùy chọn `-R`, vì nó có thể thay đổi quyền cho nhiều tệp và thư mục không mong muốn.
-- Nên sử dụng quyền tối thiểu cần thiết để bảo mật tốt hơn cho hệ thống của bạn.
+- Luôn kiểm tra quyền truy cập của tệp sau khi sử dụng lệnh `chmod` bằng lệnh `ls -l` để đảm bảo rằng các quyền đã được thiết lập đúng cách.
+- Sử dụng các quyền cụ thể thay vì quyền chung để tăng cường bảo mật cho tệp của bạn.
+- Hãy cẩn thận khi thay đổi quyền cho các tệp hệ thống, vì điều này có thể ảnh hưởng đến hoạt động của hệ thống.

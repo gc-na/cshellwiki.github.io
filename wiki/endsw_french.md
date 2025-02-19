@@ -1,41 +1,51 @@
-# [Linux] Bash endsw : [terminer un processus]
+# [Linux] C Shell (csh) endsw : Fin de la structure conditionnelle
 
 ## Overview
-La commande `endsw` est utilisée pour terminer un processus en cours d'exécution dans un environnement Bash. Elle permet de gérer les tâches en cours et de libérer des ressources système en arrêtant les processus qui ne sont plus nécessaires.
+La commande `endsw` dans C Shell (csh) est utilisée pour marquer la fin d'une structure conditionnelle `switch`. Elle permet de structurer le code de manière claire et organisée, facilitant ainsi la gestion des différentes branches d'exécution.
 
 ## Usage
 La syntaxe de base de la commande `endsw` est la suivante :
 
-```bash
-endsw [options] [arguments]
+```csh
+endsw
 ```
 
 ## Common Options
-Voici quelques options courantes pour la commande `endsw` :
-
-- `-h`, `--help` : Affiche l'aide et les options disponibles pour la commande.
-- `-p`, `--pid` : Spécifie l'identifiant du processus (PID) à terminer.
-- `-f`, `--force` : Force la terminaison du processus, même s'il ne répond pas.
+La commande `endsw` n'a pas d'options spécifiques. Elle est simplement utilisée pour indiquer la fin d'une structure `switch`.
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de la commande `endsw` :
 
-1. Terminer un processus en utilisant son PID :
-   ```bash
-   endsw -p 1234
-   ```
+### Exemple 1 : Utilisation de `endsw` dans une structure `switch`
+```csh
+set var = "apple"
+switch ($var)
+    case "apple":
+        echo "C'est une pomme."
+        breaksw
+    case "banana":
+        echo "C'est une banane."
+        breaksw
+    default:
+        echo "Fruit inconnu."
+endsw
+```
 
-2. Forcer la terminaison d'un processus :
-   ```bash
-   endsw -f -p 5678
-   ```
-
-3. Afficher l'aide de la commande :
-   ```bash
-   endsw --help
-   ```
+### Exemple 2 : Structure `switch` avec plusieurs cas
+```csh
+set day = "Monday"
+switch ($day)
+    case "Monday":
+        echo "C'est le début de la semaine."
+        breaksw
+    case "Friday":
+        echo "C'est presque le week-end."
+        breaksw
+    default:
+        echo "C'est un autre jour."
+endsw
+```
 
 ## Tips
-- Toujours vérifier le PID du processus avant de le terminer pour éviter d'arrêter des processus critiques.
-- Utiliser l'option `--force` avec précaution, car cela peut entraîner la perte de données non enregistrées.
-- Consulter la documentation ou utiliser l'option `--help` pour se familiariser avec les autres options disponibles.
+- Assurez-vous d'utiliser `endsw` après chaque structure `switch` pour éviter des erreurs de syntaxe.
+- Utilisez `breaksw` pour sortir d'un cas spécifique avant d'atteindre `endsw`.
+- Gardez votre code bien indenté pour améliorer la lisibilité, surtout lorsque vous avez plusieurs cas dans votre structure `switch`.

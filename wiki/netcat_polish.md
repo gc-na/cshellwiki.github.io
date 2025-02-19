@@ -1,60 +1,54 @@
-# [Linux] Bash netcat użycie: Narzędzie do komunikacji sieciowej
+# [Linux] C Shell (csh) netcat użycie: Narzędzie do komunikacji sieciowej
 
-## Overview
-Netcat, znany również jako "nc", to wszechstronne narzędzie do komunikacji sieciowej, które umożliwia przesyłanie danych przez protokoły TCP i UDP. Jest często używane do testowania połączeń sieciowych, przesyłania plików oraz jako prosty serwer lub klient.
+## Przegląd
+Netcat, znany również jako "nc", to wszechstronne narzędzie do komunikacji sieciowej, które umożliwia przesyłanie danych między komputerami przez protokoły TCP i UDP. Jest często używane do debugowania i testowania połączeń sieciowych oraz do przesyłania plików.
 
-## Usage
+## Użycie
 Podstawowa składnia polecenia netcat wygląda następująco:
 
-```bash
+```
 netcat [opcje] [argumenty]
 ```
 
-## Common Options
-- `-l` - Uruchamia netcat w trybie nasłuchu (serwer).
-- `-p [port]` - Określa port, na którym netcat będzie nasłuchiwać lub łączyć się.
-- `-u` - Używa protokołu UDP zamiast TCP.
-- `-v` - Włącza tryb szczegółowy, wyświetlając dodatkowe informacje o połączeniu.
-- `-w [czas]` - Ustala czas oczekiwania na połączenie.
+## Częste opcje
+- `-l` - nasłuchuj na porcie (tryb serwera).
+- `-p [port]` - określ port do użycia.
+- `-u` - użyj protokołu UDP zamiast TCP.
+- `-v` - włącz tryb szczegółowy (verbose).
+- `-w [czas]` - ustaw czas oczekiwania na połączenie.
 
-## Common Examples
-### Prosty serwer TCP
-Aby uruchomić prosty serwer TCP nasłuchujący na porcie 1234:
+## Częste przykłady
+1. **Nasłuchiwanie na porcie 1234:**
+   ```bash
+   netcat -l -p 1234
+   ```
 
-```bash
-netcat -l -p 1234
-```
+2. **Wysyłanie wiadomości do serwera na porcie 1234:**
+   ```bash
+   echo "Witaj, świecie!" | netcat localhost 1234
+   ```
 
-### Klient TCP łączący się z serwerem
-Aby połączyć się z serwerem TCP działającym na adresie IP 192.168.1.1 i porcie 1234:
+3. **Przesyłanie pliku:**
+   Na serwerze:
+   ```bash
+   netcat -l -p 1234 > plik.txt
+   ```
+   Na kliencie:
+   ```bash
+   netcat localhost 1234 < plik.txt
+   ```
 
-```bash
-netcat 192.168.1.1 1234
-```
+4. **Testowanie połączenia TCP:**
+   ```bash
+   netcat -v example.com 80
+   ```
 
-### Przesyłanie pliku
-Aby przesłać plik `example.txt` z jednego komputera do drugiego:
+5. **Nasłuchiwanie na porcie UDP:**
+   ```bash
+   netcat -u -l -p 1234
+   ```
 
-Na komputerze odbierającym:
-
-```bash
-netcat -l -p 1234 > example.txt
-```
-
-Na komputerze wysyłającym:
-
-```bash
-netcat 192.168.1.2 1234 < example.txt
-```
-
-### Użycie protokołu UDP
-Aby wysłać wiadomość za pomocą protokołu UDP:
-
-```bash
-echo "Wiadomość UDP" | netcat -u 192.168.1.2 1234
-```
-
-## Tips
-- Używaj opcji `-v`, aby uzyskać więcej informacji o połączeniach, co może pomóc w debugowaniu.
-- Pamiętaj, aby sprawdzić, czy porty są otwarte w zaporze sieciowej, aby umożliwić połączenia.
-- Netcat może być używany do testowania zabezpieczeń, ale należy zachować ostrożność i używać go tylko w dozwolonych środowiskach.
+## Wskazówki
+- Używaj opcji `-v`, aby uzyskać więcej informacji o połączeniach i błędach.
+- Zawsze upewnij się, że porty, których używasz, są otwarte i dostępne w zaporze sieciowej.
+- Netcat może być używany do testowania bezpieczeństwa, ale pamiętaj o etyce i przepisach prawnych dotyczących testowania systemów.

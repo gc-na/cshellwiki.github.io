@@ -1,51 +1,49 @@
-# [Linux] Bash hostname Penggunaan: Menampilkan atau mengatur nama host
+# [Sistem Operasi] C Shell (csh) hostname: Menampilkan atau mengatur nama host
 
 ## Overview
-Perintah `hostname` digunakan untuk menampilkan atau mengatur nama host dari sistem. Nama host adalah label yang digunakan untuk mengidentifikasi perangkat dalam jaringan. Dengan menggunakan perintah ini, pengguna dapat dengan mudah mengetahui nama host saat ini atau mengubahnya sesuai kebutuhan.
+Perintah `hostname` digunakan untuk menampilkan atau mengatur nama host dari sistem yang sedang digunakan. Nama host adalah identifikasi unik untuk perangkat dalam jaringan, yang memungkinkan perangkat lain untuk mengenalinya.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `hostname`:
 
-```bash
+```
 hostname [options] [arguments]
 ```
 
 ## Common Options
-- `-f` : Menampilkan nama host penuh (fully qualified domain name).
-- `-i` : Menampilkan alamat IP dari nama host.
-- `-s` : Menampilkan nama host singkat.
-- `-A` : Menampilkan semua nama alias dari host.
-- `--help` : Menampilkan informasi bantuan tentang penggunaan perintah.
+- `-f`: Menampilkan nama host lengkap (fully qualified domain name).
+- `-s`: Menampilkan hanya nama host singkat.
+- `-i`: Menampilkan alamat IP dari nama host.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `hostname`:
 
 1. Menampilkan nama host saat ini:
-   ```bash
+   ```csh
    hostname
    ```
 
-2. Menampilkan nama host penuh:
-   ```bash
+2. Menampilkan nama host lengkap:
+   ```csh
    hostname -f
    ```
 
-3. Menampilkan alamat IP dari nama host:
-   ```bash
+3. Menampilkan nama host singkat:
+   ```csh
+   hostname -s
+   ```
+
+4. Mengatur nama host baru:
+   ```csh
+   hostname new-hostname
+   ```
+
+5. Menampilkan alamat IP dari nama host:
+   ```csh
    hostname -i
    ```
 
-4. Mengubah nama host:
-   ```bash
-   sudo hostname new-hostname
-   ```
-
-5. Menampilkan semua nama alias dari host:
-   ```bash
-   hostname -A
-   ```
-
 ## Tips
-- Pastikan untuk menggunakan `sudo` saat mengubah nama host agar memiliki izin yang cukup.
-- Setelah mengubah nama host, pertimbangkan untuk me-reboot sistem agar perubahan diterapkan dengan benar.
-- Gunakan `hostname -s` untuk mendapatkan nama host singkat yang berguna dalam skrip atau konfigurasi jaringan.
+- Pastikan Anda memiliki hak akses yang diperlukan untuk mengubah nama host.
+- Setelah mengubah nama host, Anda mungkin perlu me-reboot sistem agar perubahan dapat diterapkan sepenuhnya.
+- Gunakan opsi `-f` untuk mendapatkan informasi lengkap tentang nama host, terutama jika Anda bekerja dalam lingkungan jaringan yang kompleks.

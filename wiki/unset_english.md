@@ -1,63 +1,47 @@
-# [Linux] Bash unset用法: Remove variable values
+# [Linux] C Shell (csh) unset用法: Remove shell variables or functions
 
 ## Overview
-The `unset` command in Bash is used to remove variables or functions from the shell environment. When a variable is unset, it no longer exists in the current shell session, effectively freeing up memory and preventing any further access to that variable.
+The `unset` command in C Shell (csh) is used to remove shell variables or functions from the current environment. This is useful for managing the shell's variable space and ensuring that unwanted variables do not persist.
 
 ## Usage
 The basic syntax of the `unset` command is as follows:
 
-```bash
+```csh
 unset [options] [arguments]
 ```
 
 ## Common Options
-- `-f`: This option is used to unset functions.
-- `-v`: This option is used to unset variables (this is the default behavior).
+- `-f`: This option is used to unset a function.
+- `-v`: This option is used to unset a variable.
 
 ## Common Examples
 
 ### Unsetting a Variable
-To remove a variable named `myVar`, you can use:
+To remove a variable named `myVar`, you would use:
 
-```bash
-myVar="Hello, World!"
+```csh
+set myVar = "Hello, World!"
 unset myVar
 ```
 
-### Checking if a Variable is Unset
-After unsetting, you can check if the variable is still set:
-
-```bash
-echo $myVar  # This will return an empty line since myVar is unset.
-```
-
-### Unsetting Multiple Variables
-You can unset multiple variables at once by listing them:
-
-```bash
-var1="Value1"
-var2="Value2"
-unset var1 var2
-```
-
 ### Unsetting a Function
-If you have defined a function and want to remove it, use the `-f` option:
+If you have a function named `myFunction`, you can unset it with:
 
-```bash
-myFunction() {
-    echo "This is a function."
-}
+```csh
+alias myFunction 'echo "This is a function"'
 unset -f myFunction
 ```
 
-### Verifying Function Removal
-To check if the function has been removed:
+### Unsetting Multiple Variables
+You can also unset multiple variables at once. For example, to unset `var1` and `var2`:
 
-```bash
-type myFunction  # This will return "myFunction not found."
+```csh
+set var1 = "Value1"
+set var2 = "Value2"
+unset var1 var2
 ```
 
 ## Tips
-- Always double-check before unsetting important variables, as this action cannot be undone within the session.
-- Use `declare -p` to list all currently set variables and their values before unsetting them, to avoid accidental loss of important data.
-- Remember that unsetting a variable only affects the current shell session; it does not affect global or parent shell variables.
+- Always double-check the variables or functions you are unsetting to avoid accidentally removing something important.
+- Use `set` to list current variables before unsetting to confirm what is available in your environment.
+- Remember that unsetting a variable or function is permanent for the current session; you will need to redefine it if you need it again.

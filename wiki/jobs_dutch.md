@@ -1,43 +1,43 @@
-# [Linux] Bash jobs gebruik: Beheer achtergrondprocessen
+# [Linux] C Shell (csh) jobs gebruik: Beheer achtergrondprocessen
 
 ## Overzicht
-De `jobs`-opdracht in Bash wordt gebruikt om een lijst van de actieve achtergrondprocessen van de huidige shell weer te geven. Dit is handig om te zien welke taken op de achtergrond draaien en om hun status te controleren.
+De `jobs`-opdracht in C Shell (csh) wordt gebruikt om een lijst van de actieve taken of processen die in de achtergrond draaien te tonen. Dit is handig voor het beheren van meerdere processen zonder dat je ze hoeft te beëindigen of opnieuw te starten.
 
 ## Gebruik
 De basis syntaxis van de `jobs`-opdracht is als volgt:
 
-```bash
+```csh
 jobs [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- `-l`: Toont de PID (Process ID) van elk proces.
-- `-n`: Toont alleen de jobs die recentelijk zijn gewijzigd.
+## Veelvoorkomende Opties
+- `-l`: Toont de proces-ID's (PID) van de jobs.
+- `-n`: Toont alleen jobs die recentelijk zijn gewijzigd.
 - `-p`: Toont alleen de PID's van de jobs.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
 
-1. **Basis gebruik**: Lijst alle achtergrondprocessen.
-   ```bash
+1. **Basisgebruik**: Toon alle actieve jobs.
+   ```csh
    jobs
    ```
 
-2. **Lijst met PID's**: Toon de achtergrondprocessen met hun PID's.
-   ```bash
+2. **Jobs met PID's tonen**: Toon jobs met hun proces-ID's.
+   ```csh
    jobs -l
    ```
 
-3. **Recent gewijzigde jobs**: Toon alleen de jobs die recent zijn gewijzigd.
-   ```bash
+3. **Recente wijzigingen weergeven**: Toon alleen jobs die recent zijn gewijzigd.
+   ```csh
    jobs -n
    ```
 
-4. **PID's van jobs**: Verkrijg alleen de PID's van de achtergrondprocessen.
-   ```bash
+4. **PID's van jobs weergeven**: Toon alleen de PID's van de actieve jobs.
+   ```csh
    jobs -p
    ```
 
 ## Tips
-- Gebruik `bg` om een job die op de achtergrond draait opnieuw te starten als deze is gepauzeerd.
-- Met `fg` kun je een achtergrondjob naar de voorgrond brengen.
-- Controleer regelmatig je achtergrondprocessen om te voorkomen dat je belangrijke taken uit het oog verliest.
+- Gebruik de `fg`-opdracht om een achtergrondjob naar de voorgrond te brengen.
+- Combineer `jobs` met andere opdrachten zoals `kill` om ongewenste processen effectief te beheren.
+- Houd je jobs georganiseerd door regelmatig de status te controleren, vooral als je met meerdere processen werkt.

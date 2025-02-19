@@ -1,45 +1,46 @@
-# [Linux] Bash mkfifo Utilisation : Créer des tubes nommés
+# [Linux] C Shell (csh) mkfifo : Créer des fichiers FIFO
 
 ## Overview
-La commande `mkfifo` est utilisée pour créer des tubes nommés, également appelés FIFO (First In, First Out). Ces tubes permettent la communication entre différents processus en permettant à un processus d'écrire des données dans le tube, tandis qu'un autre processus peut lire ces données.
+La commande `mkfifo` est utilisée pour créer des fichiers FIFO (First In, First Out) dans le système de fichiers. Ces fichiers permettent la communication entre différents processus en utilisant un mécanisme de file d'attente.
 
 ## Usage
 La syntaxe de base de la commande `mkfifo` est la suivante :
 
-```bash
+```csh
 mkfifo [options] [arguments]
 ```
 
 ## Common Options
-- `-m, --mode=MODE` : Définit les permissions du tube créé, en utilisant la notation octale.
-- `-Z, --context=CONTEXT` : Définit le contexte de sécurité SELinux pour le tube créé.
+Voici quelques options courantes pour `mkfifo` :
+
+- `-m` : Définit les permissions du fichier FIFO créé. Par exemple, `-m 644` donnera des permissions de lecture et d'écriture au propriétaire, et de lecture aux autres.
+- `--help` : Affiche l'aide et les options disponibles pour la commande.
+- `--version` : Affiche la version de la commande `mkfifo`.
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de la commande `mkfifo` :
+Voici quelques exemples pratiques de l'utilisation de `mkfifo` :
 
-1. **Créer un tube nommé simple :**
-   ```bash
-   mkfifo mon_tube
+1. **Créer un fichier FIFO simple :**
+   ```csh
+   mkfifo mon_fifo
    ```
 
-2. **Créer un tube nommé avec des permissions spécifiques :**
-   ```bash
-   mkfifo -m 644 mon_tube
+2. **Créer un fichier FIFO avec des permissions spécifiques :**
+   ```csh
+   mkfifo -m 666 mon_fifo
    ```
 
-3. **Utiliser un tube nommé dans un script :**
-   ```bash
-   mkfifo mon_tube
-   echo "Bonjour, monde!" > mon_tube &
-   cat < mon_tube
+3. **Créer plusieurs fichiers FIFO à la fois :**
+   ```csh
+   mkfifo fifo1 fifo2 fifo3
    ```
 
-4. **Créer plusieurs tubes nommés à la fois :**
-   ```bash
-   mkfifo tube1 tube2 tube3
+4. **Vérifier la création du fichier FIFO :**
+   ```csh
+   ls -l mon_fifo
    ```
 
 ## Tips
-- Assurez-vous de supprimer le tube nommé après utilisation avec `rm mon_tube` pour éviter d'encombrer votre système de fichiers.
-- Utilisez des tubes nommés pour synchroniser des processus lorsque vous avez besoin de passer des données entre eux de manière ordonnée.
-- Vérifiez les permissions du tube avec `ls -l mon_tube` pour vous assurer qu'elles sont correctes pour vos besoins.
+- Assurez-vous de supprimer le fichier FIFO après utilisation avec `rm mon_fifo` pour éviter de laisser des fichiers inutiles dans le système.
+- Utilisez des noms de fichiers descriptifs pour vos FIFOs afin de faciliter leur identification dans des scripts ou des programmes.
+- Testez toujours les permissions de votre fichier FIFO pour vous assurer que les processus peuvent y accéder comme prévu.

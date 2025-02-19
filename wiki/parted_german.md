@@ -1,34 +1,33 @@
-# [Linux] Bash parted Verwendung: Partitionen verwalten
+# [Linux] C Shell (csh) parted Verwendung: Partitionen verwalten
 
 ## Übersicht
-Der `parted` Befehl ist ein leistungsstarkes Werkzeug zur Verwaltung von Festplattenpartitionen in Linux. Mit `parted` können Benutzer Partitionen erstellen, löschen, ändern und Informationen über die Partitionen auf einem Speichermedium anzeigen.
+Der Befehl `parted` wird verwendet, um Partitionen auf Festplatten zu erstellen, zu löschen, zu ändern und zu verwalten. Er bietet eine benutzerfreundliche Schnittstelle zur Verwaltung von Partitionen und unterstützt verschiedene Dateisysteme.
 
 ## Verwendung
-Die grundlegende Syntax des `parted` Befehls lautet:
+Die grundlegende Syntax des Befehls lautet:
 
 ```bash
 parted [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-l` oder `--list`: Zeigt eine Liste aller erkannten Festplatten und deren Partitionen an.
-- `mklabel`: Erstellt ein neues Partitionierungsschema (z. B. msdos oder gpt).
+- `-l`: Listet alle erkannten Partitionen auf.
 - `mkpart`: Erstellt eine neue Partition.
 - `rm`: Löscht eine bestehende Partition.
-- `resizepart`: Ändert die Größe einer bestehenden Partition.
-- `print`: Zeigt die Partitionstabelle der aktuellen Festplatte an.
+- `resizepart`: Ändert die Größe einer Partition.
+- `print`: Zeigt die Partitionstabelle an.
 
 ## Häufige Beispiele
 
 ### 1. Partitionstabelle anzeigen
-Um die Partitionstabelle einer Festplatte anzuzeigen, verwenden Sie:
+Um die Partitionstabelle der Festplatte anzuzeigen, verwenden Sie:
 
 ```bash
 parted /dev/sda print
 ```
 
 ### 2. Neue Partition erstellen
-Um eine neue Partition zu erstellen, verwenden Sie den folgenden Befehl:
+Um eine neue Partition zu erstellen, können Sie den folgenden Befehl verwenden:
 
 ```bash
 parted /dev/sda mkpart primary ext4 1MiB 100MiB
@@ -42,20 +41,13 @@ parted /dev/sda rm 1
 ```
 
 ### 4. Partition vergrößern
-Um die Größe einer Partition zu ändern, verwenden Sie:
+Um eine bestehende Partition zu vergrößern, verwenden Sie:
 
 ```bash
 parted /dev/sda resizepart 1 200MiB
 ```
 
-### 5. Partitionstabelle erstellen
-Um eine neue Partitionstabelle zu erstellen, verwenden Sie:
-
-```bash
-parted /dev/sda mklabel gpt
-```
-
 ## Tipps
-- Stellen Sie sicher, dass Sie ein Backup Ihrer Daten haben, bevor Sie Partitionen ändern oder löschen.
-- Verwenden Sie `parted` im interaktiven Modus, indem Sie einfach `parted /dev/sda` eingeben, um mehrere Befehle nacheinander auszuführen.
-- Überprüfen Sie nach Änderungen die Partitionstabelle erneut mit `print`, um sicherzustellen, dass alles korrekt ist.
+- Stellen Sie sicher, dass Sie eine Sicherung Ihrer Daten haben, bevor Sie Partitionen ändern.
+- Verwenden Sie `parted` mit Bedacht, da falsche Befehle zu Datenverlust führen können.
+- Überprüfen Sie die Partitionen regelmäßig mit `parted -l`, um sicherzustellen, dass alles korrekt ist.

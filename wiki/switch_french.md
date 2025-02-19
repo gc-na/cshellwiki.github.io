@@ -1,69 +1,79 @@
-# [Linux] Bash switch usage : Changer de contexte d'exécution
+# [Unix] C Shell (csh) switch : Changer de valeur d'une variable
 
 ## Overview
-La commande `switch` en Bash permet de changer le contexte d'exécution d'un script ou d'une commande. Elle est souvent utilisée pour gérer des conditions et exécuter différentes sections de code en fonction des valeurs fournies.
+La commande `switch` dans C Shell (csh) est utilisée pour effectuer des comparaisons conditionnelles. Elle permet de tester une variable contre plusieurs valeurs possibles et d'exécuter des commandes en fonction de la correspondance trouvée.
 
 ## Usage
 La syntaxe de base de la commande `switch` est la suivante :
 
-```bash
-switch [options] [arguments]
+```csh
+switch (expression)
+    case valeur1:
+        commandes1
+        breaksw
+    case valeur2:
+        commandes2
+        breaksw
+    default:
+        commandes_par_defaut
+end
 ```
 
 ## Common Options
-- `-c` : Permet de spécifier une condition.
-- `-d` : Définit une valeur par défaut si aucune condition n'est remplie.
-- `-h` : Affiche l'aide et les options disponibles.
+- `case`: Définit une valeur à comparer avec l'expression.
+- `breaksw`: Met fin à l'exécution des cas dans le switch.
+- `default`: Spécifie les commandes à exécuter si aucune des valeurs ne correspond.
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de la commande `switch` :
 
-### Exemple 1 : Utilisation simple
-```bash
-switch -c "valeur" {
-    case "option1":
-        echo "Vous avez choisi l'option 1"
-        break
-    case "option2":
-        echo "Vous avez choisi l'option 2"
-        break
+### Exemple 1 : Utilisation basique
+```csh
+set fruit = "pomme"
+switch ($fruit)
+    case "pomme":
+        echo "C'est une pomme."
+        breaksw
+    case "banane":
+        echo "C'est une banane."
+        breaksw
     default:
-        echo "Option non reconnue"
-}
+        echo "Fruit inconnu."
+end
 ```
 
-### Exemple 2 : Valeur par défaut
-```bash
-switch -d {
-    case "rouge":
-        echo "Couleur rouge sélectionnée"
-        break
-    case "bleu":
-        echo "Couleur bleue sélectionnée"
-        break
+### Exemple 2 : Comparaison de plusieurs valeurs
+```csh
+set jour = "lundi"
+switch ($jour)
+    case "lundi":
+    case "mardi":
+        echo "C'est le début de la semaine."
+        breaksw
+    case "samedi":
+    case "dimanche":
+        echo "C'est le week-end."
+        breaksw
     default:
-        echo "Couleur non reconnue"
-}
+        echo "C'est un jour de semaine."
+end
 ```
 
-### Exemple 3 : Plusieurs conditions
-```bash
-switch -c "choix" {
-    case "a":
-        echo "Vous avez choisi A"
-        break
-    case "b":
-        echo "Vous avez choisi B"
-        break
-    case "c":
-        echo "Vous avez choisi C"
-        break
+### Exemple 3 : Utilisation avec des variables d'environnement
+```csh
+set status = $1
+switch ($status)
+    case "success":
+        echo "L'opération a réussi."
+        breaksw
+    case "failure":
+        echo "L'opération a échoué."
+        breaksw
     default:
-        echo "Choix invalide"
-}
+        echo "Statut inconnu."
+end
 ```
 
 ## Tips
-- Utilisez des commentaires dans votre code pour clarifier les différentes sections de votre `switch`.
-- Assurez-vous de toujours inclure une option par défaut pour gérer les cas non prévus.
-- Testez vos conditions avec des valeurs variées pour garantir que votre script fonctionne comme prévu.
+- Utilisez `breaksw` pour éviter d'exécuter des cas supplémentaires après une correspondance.
+- Assurez-vous que les valeurs dans les cases sont bien définies pour éviter des résultats inattendus.
+- N'oubliez pas de terminer votre structure `switch` avec `end` pour indiquer la fin des conditions.

@@ -1,50 +1,51 @@
-# [Linux] Bash stat Usage: Display file or file system status
+# [Linux] C Shell (csh) stat用法: Retrieve file or filesystem status
 
 ## Overview
-The `stat` command in Bash is used to display detailed information about a file or file system. This includes metadata such as file size, permissions, ownership, and timestamps for when the file was last accessed, modified, or changed.
+The `stat` command in C Shell (csh) is used to display detailed information about files or file systems. It provides insights into file attributes such as size, permissions, modification times, and more.
 
 ## Usage
 The basic syntax of the `stat` command is as follows:
 
-```bash
+```csh
 stat [options] [arguments]
 ```
 
 ## Common Options
-- `-c` or `--format`: Specify a custom output format.
-- `-f` or `--file-system`: Display information about the file system instead of the file.
-- `--help`: Show help information about the command and its options.
-- `--version`: Display the version of the `stat` command.
+- `-c, --format=FORMAT`: Specify the output format using a format string.
+- `-f, --file-system`: Display information about the file system instead of the file.
+- `-L, --dereference`: Follow symbolic links to display information about the target file.
+- `--help`: Display help information about the command.
+- `--version`: Show the version information of the `stat` command.
 
 ## Common Examples
 Here are some practical examples of using the `stat` command:
 
-1. **Basic file information:**
-   ```bash
+1. **Display file status:**
+   ```csh
    stat filename.txt
    ```
 
-2. **Custom format output:**
-   ```bash
-   stat -c '%n: %s bytes' filename.txt
-   ```
-
-3. **File system information:**
-   ```bash
+2. **Display file system status:**
+   ```csh
    stat -f /
    ```
 
-4. **Display version information:**
-   ```bash
+3. **Format output to show only file size and modification time:**
+   ```csh
+   stat -c '%s %y' filename.txt
+   ```
+
+4. **Follow symbolic links:**
+   ```csh
+   stat -L symlink
+   ```
+
+5. **Show version information:**
+   ```csh
    stat --version
    ```
 
-5. **Detailed information about multiple files:**
-   ```bash
-   stat file1.txt file2.txt
-   ```
-
 ## Tips
-- Use the `-c` option to customize the output to show only the information you need, which can be useful for scripting.
-- When checking file systems, the `-f` option can provide insights into disk usage and available space.
-- Always check the man page (`man stat`) for the most up-to-date options and usage examples specific to your system.
+- Use the `-c` option to customize the output format for better readability.
+- When working with symbolic links, remember to use the `-L` option to get information about the target file.
+- Combine `stat` with other commands like `grep` to filter specific information from the output.

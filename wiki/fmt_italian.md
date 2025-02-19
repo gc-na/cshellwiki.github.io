@@ -1,44 +1,57 @@
-# [Linux] Bash fmt Utilizzo: Riformattare il testo
+# [Linux] C Shell (csh) fmt Utilizzo: Formattare il testo
 
 ## Overview
-Il comando `fmt` è utilizzato per riformattare il testo in modo che le righe abbiano una lunghezza uniforme. È particolarmente utile per preparare documenti di testo per la stampa o per migliorare la leggibilità.
+Il comando `fmt` in C Shell (csh) serve a formattare il testo in modo che le righe abbiano una lunghezza uniforme. È particolarmente utile per preparare documenti di testo per la stampa o per la visualizzazione su terminali con larghezza fissa.
 
 ## Usage
-La sintassi di base del comando è la seguente:
+La sintassi di base del comando `fmt` è la seguente:
 
-```bash
+```csh
 fmt [options] [arguments]
 ```
 
 ## Common Options
-- `-w NUM`: Imposta la larghezza massima delle righe a NUM caratteri.
-- `-s`: Riduce gli spazi bianchi tra le righe.
-- `-u`: Rimuove le righe vuote e le righe che contengono solo spazi bianchi.
+- `-w <width>`: Specifica la larghezza massima delle righe formattate. Il valore predefinito è 72 caratteri.
+- `-s`: Riduce gli spazi bianchi tra le righe, mantenendo solo una riga vuota tra i paragrafi.
+- `-u`: Disabilita la giustificazione del testo, mantenendo il testo allineato a sinistra.
 
 ## Common Examples
+Ecco alcuni esempi pratici dell'uso del comando `fmt`:
 
-### Esempio 1: Riformattare un file di testo
-Per riformattare un file di testo chiamato `documento.txt` con una larghezza massima di 50 caratteri, puoi usare:
+1. **Formattare un file di testo con larghezza predefinita:**
 
-```bash
-fmt -w 50 documento.txt
-```
+   ```csh
+   fmt documento.txt
+   ```
 
-### Esempio 2: Riformattare l'output di un comando
-Puoi riformattare l'output di un comando, ad esempio `cat`, e inviarlo a `fmt`:
+2. **Formattare un file di testo specificando una larghezza di 50 caratteri:**
 
-```bash
-cat documento.txt | fmt -w 60
-```
+   ```csh
+   fmt -w 50 documento.txt
+   ```
 
-### Esempio 3: Rimuovere righe vuote
-Per riformattare un file e rimuovere le righe vuote, utilizza l'opzione `-u`:
+3. **Formattare un file di testo e rimuovere gli spazi bianchi extra:**
 
-```bash
-fmt -u documento.txt
-```
+   ```csh
+   fmt -s documento.txt
+   ```
+
+4. **Formattare un file di testo senza giustificazione:**
+
+   ```csh
+   fmt -u documento.txt
+   ```
 
 ## Tips
-- Quando utilizzi `fmt`, considera di specificare una larghezza che si adatti al tuo formato di output desiderato.
-- Puoi combinare più opzioni per ottenere il risultato desiderato, ad esempio `fmt -w 80 -s documento.txt`.
-- Se stai lavorando con file di testo molto lunghi, prova a utilizzare `less` insieme a `fmt` per visualizzare il testo riformattato in modo più gestibile.
+- Quando si utilizza `fmt`, è utile visualizzare il risultato su un terminale per assicurarsi che la formattazione sia corretta.
+- Se si desidera salvare l'output formattato in un nuovo file, è possibile reindirizzare l'output con `>`:
+
+   ```csh
+   fmt documento.txt > documento_formattato.txt
+   ```
+
+- Per formattare più file contemporaneamente, è possibile elencarli tutti come argomenti:
+
+   ```csh
+   fmt file1.txt file2.txt
+   ```

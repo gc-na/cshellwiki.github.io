@@ -1,52 +1,49 @@
-# [Linux] Bash losetup użycie: Zarządzanie urządzeniami loopback
+# [Linux] C Shell (csh) losetup: Ustawianie urządzeń loopback
 
 ## Overview
-Polecenie `losetup` służy do konfigurowania i zarządzania urządzeniami loopback w systemie Linux. Urządzenia te pozwalają na traktowanie plików jako urządzeń blokowych, co umożliwia ich montowanie i używanie jak tradycyjnych dysków.
+Polecenie `losetup` w systemie Linux służy do przypisywania urządzeń loopback do plików. Umożliwia to traktowanie plików jako urządzeń blokowych, co jest przydatne w różnych zastosowaniach, takich jak montowanie obrazów dysków.
 
 ## Usage
-Podstawowa składnia polecenia `losetup` jest następująca:
+Podstawowa składnia polecenia `losetup` wygląda następująco:
 
-```bash
+```csh
 losetup [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-f` – Znajduje pierwszy dostępny numer urządzenia loopback.
-- `-a` – Wyświetla wszystkie aktualnie skonfigurowane urządzenia loopback.
-- `-d` – Odłącza urządzenie loopback.
-- `-o OFFSET` – Ustala przesunięcie w pliku, które ma być używane.
-- `-s SIZE` – Ustala rozmiar urządzenia loopback.
+- `-f` - Znajduje pierwsze dostępne urządzenie loopback.
+- `-a` - Wyświetla wszystkie aktualnie przypisane urządzenia loopback.
+- `-d` - Odłącza urządzenie loopback.
+- `-o OFFSET` - Ustala offset, od którego ma być montowany plik.
+- `-s SIZE` - Ustala rozmiar urządzenia loopback.
 
 ## Common Examples
-### 1. Tworzenie urządzenia loopback
-Aby utworzyć urządzenie loopback dla pliku obrazu dysku:
+1. **Przypisanie pliku do urządzenia loopback:**
+   ```csh
+   losetup /dev/loop0 /path/to/image.img
+   ```
 
-```bash
-losetup /dev/loop0 /path/to/image.img
-```
+2. **Wyświetlenie wszystkich przypisanych urządzeń loopback:**
+   ```csh
+   losetup -a
+   ```
 
-### 2. Wyświetlanie wszystkich urządzeń loopback
-Aby zobaczyć wszystkie aktualnie skonfigurowane urządzenia loopback:
+3. **Odłączenie urządzenia loopback:**
+   ```csh
+   losetup -d /dev/loop0
+   ```
 
-```bash
-losetup -a
-```
+4. **Przypisanie pliku z offsetem:**
+   ```csh
+   losetup -o 2048 /dev/loop1 /path/to/image.img
+   ```
 
-### 3. Odłączanie urządzenia loopback
-Aby odłączyć urządzenie loopback:
-
-```bash
-losetup -d /dev/loop0
-```
-
-### 4. Ustalenie przesunięcia w pliku
-Aby ustawić przesunięcie w pliku obrazu:
-
-```bash
-losetup -o 2048 /dev/loop1 /path/to/image.img
-```
+5. **Znalezienie pierwszego dostępnego urządzenia loopback:**
+   ```csh
+   losetup -f /path/to/image.img
+   ```
 
 ## Tips
-- Zawsze sprawdzaj dostępność urządzeń loopback przed ich użyciem, aby uniknąć konfliktów.
-- Używaj opcji `-f`, aby automatycznie znaleźć dostępne urządzenie loopback, co ułatwia proces.
-- Pamiętaj o odłączaniu urządzeń loopback po zakończeniu ich użycia, aby zwolnić zasoby systemowe.
+- Zawsze sprawdzaj, które urządzenia loopback są aktualnie używane, zanim przypiszesz nowe, aby uniknąć konfliktów.
+- Używaj opcji `-f` do automatycznego znajdowania dostępnych urządzeń, co może uprościć proces.
+- Pamiętaj, aby odłączyć urządzenia loopback po zakończeniu ich używania, aby zwolnić zasoby systemowe.

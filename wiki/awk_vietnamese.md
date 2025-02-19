@@ -1,51 +1,45 @@
-# [Linux] Bash awk cách sử dụng: Trình xử lý văn bản mạnh mẽ
+# [Hệ điều hành] C Shell (csh) awk Cách sử dụng: Truy vấn và xử lý văn bản
 
 ## Tổng quan
-`awk` là một công cụ mạnh mẽ trong Bash dùng để xử lý và phân tích văn bản. Nó cho phép người dùng thực hiện các thao tác như lọc, định dạng và tính toán trên dữ liệu văn bản, đặc biệt là trên các tệp tin có cấu trúc như CSV hoặc TSV.
+Lệnh `awk` là một công cụ mạnh mẽ trong C Shell (csh) dùng để xử lý và phân tích văn bản. Nó cho phép người dùng thực hiện các thao tác trên dữ liệu văn bản, như lọc, định dạng và tính toán.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `awk` như sau:
 
 ```bash
-awk [options] 'pattern { action }' [file]
+awk [options] [arguments]
 ```
 
-## Tùy chọn phổ biến
-- `-F`: Chỉ định ký tự phân cách (delimiter) giữa các trường.
-- `-v`: Đặt giá trị cho biến trước khi thực thi.
-- `-f`: Chỉ định tệp tin chứa mã lệnh `awk`.
-- `NR`: Biến hệ thống đại diện cho số dòng hiện tại.
-- `NF`: Biến hệ thống đại diện cho số trường trong dòng hiện tại.
+## Các tùy chọn phổ biến
+- `-F`: Đặt ký tự phân cách trường (field separator).
+- `-v`: Gán giá trị cho biến trước khi thực thi.
+- `-f`: Chỉ định tệp chứa mã lệnh `awk`.
+- `-W`: Sử dụng các tùy chọn đặc biệt.
 
 ## Ví dụ phổ biến
-Dưới đây là một số ví dụ thực tế về cách sử dụng `awk`:
+Dưới đây là một số ví dụ thực tế sử dụng lệnh `awk`:
 
-1. **In ra cột thứ hai của tệp tin:**
+1. **In ra cột thứ hai của một tệp:**
    ```bash
-   awk '{print $2}' filename.txt
+   awk '{print $2}' ten_tap.txt
    ```
 
-2. **Lọc các dòng có giá trị lớn hơn 50 trong cột thứ nhất:**
+2. **Tính tổng của cột số:**
    ```bash
-   awk '$1 > 50' filename.txt
+   awk '{sum += $1} END {print sum}' ten_tap.txt
    ```
 
-3. **Tính tổng giá trị trong cột thứ ba:**
+3. **Lọc các dòng có giá trị lớn hơn 100 trong cột thứ nhất:**
    ```bash
-   awk '{sum += $3} END {print sum}' filename.txt
+   awk '$1 > 100' ten_tap.txt
    ```
 
-4. **Đặt ký tự phân cách là dấu phẩy và in ra cột đầu tiên:**
+4. **Đặt ký tự phân cách là dấu phẩy và in ra cột thứ nhất:**
    ```bash
-   awk -F, '{print $1}' filename.csv
-   ```
-
-5. **Sử dụng biến để lọc:**
-   ```bash
-   awk -v threshold=100 '$1 > threshold' filename.txt
+   awk -F, '{print $1}' ten_tap.csv
    ```
 
 ## Mẹo
-- Sử dụng `-F` để dễ dàng làm việc với các tệp tin có định dạng khác nhau.
+- Sử dụng tùy chọn `-F` để thay đổi ký tự phân cách nếu dữ liệu của bạn không phải là khoảng trắng.
+- Thực hành với các tệp nhỏ trước khi áp dụng cho các tệp lớn để hiểu rõ cách hoạt động của `awk`.
 - Kết hợp `awk` với các lệnh khác như `grep` hoặc `sort` để xử lý dữ liệu hiệu quả hơn.
-- Thử nghiệm với các mẫu và hành động khác nhau để khám phá sức mạnh của `awk`.

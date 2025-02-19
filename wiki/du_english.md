@@ -1,57 +1,49 @@
-# [Linux] Bash du Usage: Disk Usage Analysis
+# [Linux] C Shell (csh) du 使用等价: Disk usage analysis
 
 ## Overview
-The `du` command in Bash is used to estimate and report the disk space used by files and directories. It helps users understand how much space is being consumed on their file system, making it easier to manage storage effectively.
+The `du` command in C Shell (csh) is used to estimate and report the disk space used by files and directories. It helps users understand how much disk space is being consumed, allowing for better management of storage resources.
 
 ## Usage
 The basic syntax of the `du` command is as follows:
 
-```bash
+```
 du [options] [arguments]
 ```
 
 ## Common Options
-- `-h`: Display sizes in human-readable format (e.g., KB, MB).
-- `-s`: Show only the total size of each argument.
+- `-h`: Display sizes in a human-readable format (e.g., KB, MB).
+- `-s`: Summarize the total size of each argument.
 - `-a`: Include files as well as directories.
 - `-c`: Produce a grand total at the end of the output.
-- `--max-depth=N`: Limit the depth of directory traversal to N levels.
+- `-d N`: Limit the depth of directory traversal to N levels.
 
 ## Common Examples
-1. **Check Disk Usage of Current Directory:**
-   ```bash
-   du
-   ```
+- To display the disk usage of the current directory in a human-readable format:
+  ```csh
+  du -h
+  ```
 
-2. **Check Disk Usage in Human-Readable Format:**
-   ```bash
-   du -h
-   ```
+- To summarize the total disk usage of a specific directory:
+  ```csh
+  du -sh /path/to/directory
+  ```
 
-3. **Get Total Size of a Specific Directory:**
-   ```bash
-   du -sh /path/to/directory
-   ```
+- To include all files and directories in the output:
+  ```csh
+  du -ah /path/to/directory
+  ```
 
-4. **List Sizes of All Files and Directories:**
-   ```bash
-   du -ah /path/to/directory
-   ```
+- To display the disk usage of a directory and its subdirectories up to a depth of 2:
+  ```csh
+  du -d 2 /path/to/directory
+  ```
 
-5. **Limit Output to a Specific Depth:**
-   ```bash
-   du --max-depth=1 -h /path/to/directory
-   ```
-
-6. **Get a Grand Total of Disk Usage:**
-   ```bash
-   du -ch /path/to/directory
-   ```
+- To get a grand total of the disk usage for multiple directories:
+  ```csh
+  du -ch /path/to/dir1 /path/to/dir2
+  ```
 
 ## Tips
-- Use the `-h` option for easier reading of sizes, especially when dealing with large directories.
-- Combine `du` with other commands, like `sort`, to find the largest directories:
-  ```bash
-  du -h /path/to/directory | sort -hr
-  ```
-- Regularly check disk usage to avoid running out of space, especially on servers or systems with limited storage.
+- Use the `-h` option for easier interpretation of sizes, especially when dealing with large directories.
+- Combine the `-s` and `-c` options to quickly get a summary of multiple directories.
+- Regularly check disk usage to prevent running out of space, especially on servers or systems with limited storage.

@@ -1,65 +1,57 @@
-# [Linux] Bash if : Évaluer des conditions
+# [Linux] C Shell (csh) if : Évaluer des conditions
 
 ## Overview
-La commande `if` en Bash est utilisée pour évaluer des conditions et exécuter des commandes en fonction du résultat de cette évaluation. Elle permet de contrôler le flux d'exécution des scripts en prenant des décisions basées sur des conditions booléennes.
+La commande `if` dans C Shell (csh) est utilisée pour évaluer des conditions et exécuter des commandes en fonction du résultat de cette évaluation. Elle permet d'exécuter des blocs de code conditionnellement, ce qui est essentiel pour le contrôle de flux dans les scripts.
 
 ## Usage
 La syntaxe de base de la commande `if` est la suivante :
 
-```bash
-if [ condition ]; then
-    # commandes à exécuter si la condition est vraie
-fi
+```csh
+if (condition) then
+    commandes
+endif
 ```
 
 ## Common Options
-- `-e`: Vérifie si un fichier existe.
-- `-d`: Vérifie si un répertoire existe.
-- `-f`: Vérifie si un fichier est un fichier régulier.
-- `-z`: Vérifie si une chaîne est vide.
-- `-n`: Vérifie si une chaîne n'est pas vide.
+- `then` : Indique le début du bloc de commandes à exécuter si la condition est vraie.
+- `endif` : Marque la fin de la structure conditionnelle `if`.
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de la commande `if` :
 
-### Exemple 1 : Vérifier l'existence d'un fichier
-```bash
-if [ -e "mon_fichier.txt" ]; then
+### Exemple 1 : Vérifier si un fichier existe
+```csh
+if (-e monfichier.txt) then
     echo "Le fichier existe."
-else
-    echo "Le fichier n'existe pas."
-fi
+endif
 ```
 
 ### Exemple 2 : Vérifier si une variable est vide
-```bash
-ma_variable=""
-if [ -z "$ma_variable" ]; then
+```csh
+set maVariable = ""
+if ("$maVariable" == "") then
     echo "La variable est vide."
-else
-    echo "La variable n'est pas vide."
-fi
+endif
 ```
 
-### Exemple 3 : Vérifier si un répertoire existe
-```bash
-if [ -d "/mon/répertoire" ]; then
-    echo "Le répertoire existe."
-else
-    echo "Le répertoire n'existe pas."
-fi
+### Exemple 3 : Comparer des nombres
+```csh
+set a = 10
+set b = 20
+if ($a < $b) then
+    echo "$a est inférieur à $b."
+endif
 ```
 
-### Exemple 4 : Comparaison de nombres
-```bash
-nombre1=10
-nombre2=20
-if [ $nombre1 -lt $nombre2 ]; then
-    echo "$nombre1 est inférieur à $nombre2."
-fi
+### Exemple 4 : Utiliser `else`
+```csh
+if (-e monfichier.txt) then
+    echo "Le fichier existe."
+else
+    echo "Le fichier n'existe pas."
+endif
 ```
 
 ## Tips
-- Toujours utiliser des espaces autour des crochets `[` et `]` pour éviter des erreurs de syntaxe.
-- Utilisez des parenthèses doubles `[[ ]]` pour des comparaisons plus avancées, comme les expressions régulières.
-- Pensez à utiliser `elif` pour tester plusieurs conditions dans une seule structure `if`.
+- Assurez-vous d'utiliser des parenthèses autour de la condition.
+- Utilisez des espaces autour des opérateurs pour éviter les erreurs de syntaxe.
+- N'oubliez pas de fermer chaque bloc `if` avec `endif` pour éviter des erreurs d'exécution.

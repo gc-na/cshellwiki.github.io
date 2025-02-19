@@ -1,41 +1,37 @@
-# [Linux] Bash vgextend użycie: Rozszerzanie grup woluminów
+# [Linux] C Shell (csh) vgextend użycie: Rozszerzanie grupy woluminów
 
 ## Overview
-Polecenie `vgextend` służy do rozszerzania istniejącej grupy woluminów (VG) o dodatkowe fizyczne woluminy (PV). Umożliwia to zwiększenie dostępnej przestrzeni w grupie woluminów, co jest przydatne w zarządzaniu pamięcią masową w systemach Linux.
+Polecenie `vgextend` służy do rozszerzania grupy woluminów (VG) w systemie Linux. Umożliwia dodanie nowych fizycznych woluminów (PV) do istniejącej grupy woluminów, co pozwala na zwiększenie dostępnej przestrzeni dyskowej.
 
 ## Usage
 Podstawowa składnia polecenia `vgextend` jest następująca:
 
 ```bash
-vgextend [opcje] [nazwa_grupy_woluminów] [fizyczne_woluminy]
+vgextend [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-l, --extents`: Określa liczbę rozszerzeń, które mają zostać dodane do grupy woluminów.
+- `-l, --extents`: Określa liczbę rozszerzeń do dodania.
 - `-n, --noheadings`: Wyłącza nagłówki w wyjściu.
-- `--test`: Sprawdza, co by się stało, gdyby polecenie zostało wykonane, bez faktycznego wprowadzania zmian.
+- `-v, --verbose`: Włącza tryb szczegółowy, wyświetlając więcej informacji o postępie operacji.
 
 ## Common Examples
+1. Rozszerzenie grupy woluminów o nowy fizyczny wolumin:
+   ```bash
+   vgextend myvg /dev/sdb1
+   ```
 
-1. **Rozszerzenie grupy woluminów o jeden fizyczny wolumin:**
+2. Rozszerzenie grupy woluminów o dwa fizyczne woluminy:
+   ```bash
+   vgextend myvg /dev/sdb1 /dev/sdc1
+   ```
 
-```bash
-vgextend moja_grupa /dev/sdb1
-```
-
-2. **Rozszerzenie grupy woluminów o kilka fizycznych woluminów:**
-
-```bash
-vgextend moja_grupa /dev/sdb1 /dev/sdc1
-```
-
-3. **Sprawdzenie, co by się stało, gdyby polecenie zostało wykonane:**
-
-```bash
-vgextend --test moja_grupa /dev/sdb1
-```
+3. Użycie opcji szczegółowych, aby zobaczyć więcej informacji podczas rozszerzania:
+   ```bash
+   vgextend -v myvg /dev/sdb1
+   ```
 
 ## Tips
-- Zawsze upewnij się, że fizyczne woluminy, które chcesz dodać, są odpowiednio sformatowane i dostępne.
-- Przed rozszerzeniem grupy woluminów warto wykonać kopię zapasową ważnych danych.
-- Użyj opcji `--test`, aby zweryfikować skutki polecenia przed jego wykonaniem.
+- Zawsze upewnij się, że nowe fizyczne woluminy są poprawnie sformatowane i dostępne przed ich dodaniem do grupy woluminów.
+- Regularnie sprawdzaj stan grupy woluminów za pomocą polecenia `vgdisplay`, aby monitorować dostępne zasoby.
+- Przed wykonaniem operacji na grupach woluminów, wykonaj kopię zapasową ważnych danych, aby uniknąć ich utraty w przypadku błędów.

@@ -1,60 +1,50 @@
-# [Linux] Bash iostat Verwendung: Überwachung der Systemleistung
+# [Linux] C Shell (csh) iostat Verwendung: Überwachung von CPU- und I/O-Leistung
 
 ## Übersicht
-Der Befehl `iostat` wird verwendet, um die Eingabe-/Ausgabe-Statistiken von Systemgeräten und Partitionen zu überwachen. Er hilft dabei, die Leistung von Festplatten und anderen Speichermedien zu analysieren und Engpässe zu identifizieren.
+Der Befehl `iostat` wird verwendet, um Informationen über die CPU- und I/O-Leistung des Systems anzuzeigen. Er hilft dabei, Engpässe in der Leistung zu identifizieren, indem er Statistiken über die Nutzung von Festplatten und anderen Speichermedien bereitstellt.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```
 iostat [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-x`: Zeigt erweiterte Statistiken für Geräte an.
-- `-m`: Gibt die Ausgabe in Megabyte pro Sekunde an.
-- `-p`: Zeigt Statistiken für Partitionen an.
-- `-t`: Fügt Zeitstempel zur Ausgabe hinzu.
-- `-h`: Gibt die Ausgabe in einem menschenlesbaren Format aus.
+- `-c`: Zeigt nur die CPU-Statistiken an.
+- `-d`: Zeigt nur die I/O-Geräte-Statistiken an.
+- `-x`: Zeigt erweiterte Statistiken für die I/O-Geräte an.
+- `-t`: Fügt einen Zeitstempel zu den Ausgaben hinzu.
+- `-h`: Gibt die Ausgabe in einem menschenlesbaren Format (z. B. MB/s) aus.
 
 ## Häufige Beispiele
 
-### Beispiel 1: Grundlegende Nutzung
-Um die grundlegenden I/O-Statistiken anzuzeigen, verwenden Sie einfach:
+1. **CPU-Statistiken anzeigen:**
+   ```bash
+   iostat -c
+   ```
 
-```bash
-iostat
-```
+2. **I/O-Geräte-Statistiken anzeigen:**
+   ```bash
+   iostat -d
+   ```
 
-### Beispiel 2: Erweiterte Statistiken
-Um erweiterte Statistiken für alle Geräte anzuzeigen, verwenden Sie:
+3. **Erweiterte Statistiken für I/O-Geräte anzeigen:**
+   ```bash
+   iostat -x
+   ```
 
-```bash
-iostat -x
-```
+4. **Statistiken alle 5 Sekunden aktualisieren:**
+   ```bash
+   iostat 5
+   ```
 
-### Beispiel 3: Ausgabe in Megabyte
-Um die Statistiken in Megabyte pro Sekunde anzuzeigen, verwenden Sie:
-
-```bash
-iostat -m
-```
-
-### Beispiel 4: Statistiken für Partitionen
-Um die Statistiken für alle Partitionen anzuzeigen, können Sie den folgenden Befehl verwenden:
-
-```bash
-iostat -p ALL
-```
-
-### Beispiel 5: Mit Zeitstempel
-Um die Statistiken mit Zeitstempel anzuzeigen, verwenden Sie:
-
-```bash
-iostat -t
-```
+5. **Statistiken mit Zeitstempel anzeigen:**
+   ```bash
+   iostat -t
+   ```
 
 ## Tipps
-- Führen Sie `iostat` regelmäßig aus, um Trends in der Systemleistung zu erkennen.
-- Kombinieren Sie `iostat` mit anderen Monitoring-Tools, um eine umfassendere Analyse zu erhalten.
-- Nutzen Sie die `-h` Option, um die Ausgabe leichter lesbar zu machen, insbesondere bei großen Zahlen.
+- Verwenden Sie die Option `-h`, um die Ausgabe leichter lesbar zu machen, insbesondere bei großen Datenmengen.
+- Kombinieren Sie Optionen, um spezifische Informationen zu erhalten, z. B. `iostat -c -d` für CPU- und I/O-Statistiken gleichzeitig.
+- Überwachen Sie die Statistiken über einen längeren Zeitraum, um Trends in der Systemleistung zu erkennen.

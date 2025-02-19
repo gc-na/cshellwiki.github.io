@@ -1,7 +1,7 @@
-# [Linux] Bash sftp Verwendung: Sicherer Dateiübertragungsprotokoll
+# [Linux] C Shell (csh) sftp Verwendung: Dateien sicher übertragen
 
 ## Übersicht
-Der `sftp`-Befehl (Secure File Transfer Protocol) wird verwendet, um Dateien sicher zwischen Computern über ein Netzwerk zu übertragen. Er bietet eine sichere Alternative zu FTP, indem er die Datenübertragung verschlüsselt.
+Der `sftp`-Befehl (SSH File Transfer Protocol) wird verwendet, um Dateien sicher zwischen einem lokalen und einem entfernten Computer zu übertragen. Er bietet eine sichere Möglichkeit, Dateien über das Netzwerk zu übertragen, indem er die SSH-Verschlüsselung nutzt.
 
 ## Verwendung
 Die grundlegende Syntax des `sftp`-Befehls lautet:
@@ -11,39 +11,43 @@ sftp [Optionen] [Benutzername@Host]
 ```
 
 ## Häufige Optionen
-- `-P`: Gibt den Port an, der für die Verbindung verwendet werden soll.
-- `-o`: Ermöglicht das Setzen von spezifischen SSH-Optionen.
-- `-v`: Aktiviert den ausführlichen Modus, um mehr Informationen über den Verbindungsprozess zu erhalten.
+- `-P <Port>`: Gibt den Port an, der für die Verbindung verwendet werden soll.
+- `-o <Option>`: Ermöglicht das Setzen von SSH-Optionen.
+- `-v`: Aktiviert den ausführlichen Modus, um mehr Informationen über die Verbindung zu erhalten.
 
 ## Häufige Beispiele
-- **Verbindung zu einem Remote-Server herstellen:**
+Hier sind einige praktische Beispiele für die Verwendung von `sftp`:
 
-```bash
-sftp benutzername@hostname
-```
+1. **Verbindung zu einem entfernten Server herstellen:**
+   ```bash
+   sftp benutzername@hostname
+   ```
 
-- **Datei von einem Remote-Server herunterladen:**
+2. **Datei vom lokalen Computer auf den entfernten Server hochladen:**
+   ```bash
+   sftp benutzername@hostname
+   put lokale_datei.txt
+   ```
 
-```bash
-sftp benutzername@hostname
-get remote_datei.txt
-```
+3. **Datei vom entfernten Server auf den lokalen Computer herunterladen:**
+   ```bash
+   sftp benutzername@hostname
+   get entfernte_datei.txt
+   ```
 
-- **Datei auf einen Remote-Server hochladen:**
+4. **Verzeichnisinhalt auf dem entfernten Server auflisten:**
+   ```bash
+   sftp benutzername@hostname
+   ls
+   ```
 
-```bash
-sftp benutzername@hostname
-put lokale_datei.txt
-```
-
-- **Verzeichnis auf dem Remote-Server auflisten:**
-
-```bash
-sftp benutzername@hostname
-ls
-```
+5. **Mehrere Dateien hochladen:**
+   ```bash
+   sftp benutzername@hostname
+   mput datei1.txt datei2.txt
+   ```
 
 ## Tipps
-- Verwenden Sie den `-v`-Schalter, um Verbindungsprobleme besser zu diagnostizieren.
-- Speichern Sie häufig verwendete Verbindungsinformationen in einer SSH-Konfigurationsdatei, um die Eingabe zu erleichtern.
-- Achten Sie darauf, sensible Daten sicher zu übertragen und verwenden Sie starke Passwörter für Ihre Benutzerkonten.
+- Verwenden Sie den `-v`-Schalter, um Verbindungsprobleme leichter zu diagnostizieren.
+- Stellen Sie sicher, dass der SSH-Dienst auf dem entfernten Server läuft, bevor Sie eine Verbindung herstellen.
+- Nutzen Sie `exit` oder `bye`, um die sftp-Sitzung sicher zu beenden.

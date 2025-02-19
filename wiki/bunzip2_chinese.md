@@ -1,12 +1,12 @@
-# [Linux] Bash bunzip2 用法: 解压缩 bzip2 格式文件
+# [Linux] C Shell (csh) bunzip2 用法: 解压缩 bzip2 格式文件
 
 ## 概述
-`bunzip2` 命令用于解压缩以 bzip2 格式压缩的文件。它是一个常用的工具，能够将 `.bz2` 文件恢复到原始状态。
+`bunzip2` 命令用于解压缩以 bzip2 格式压缩的文件。它将 `.bz2` 文件解压缩为原始文件，通常用于减少文件的存储空间和传输时间。
 
 ## 用法
 基本语法如下：
-```bash
-bunzip2 [选项] [参数]
+```csh
+bunzip2 [options] [arguments]
 ```
 
 ## 常用选项
@@ -15,30 +15,27 @@ bunzip2 [选项] [参数]
 - `-v`：显示详细的解压缩过程信息。
 
 ## 常见示例
-1. 解压缩一个 `.bz2` 文件：
-   ```bash
-   bunzip2 example.bz2
+1. 解压缩单个文件：
+   ```csh
+   bunzip2 example.txt.bz2
    ```
 
 2. 解压缩并保留原始文件：
-   ```bash
-   bunzip2 -k example.bz2
+   ```csh
+   bunzip2 -k example.txt.bz2
    ```
 
 3. 强制解压缩已存在的文件：
-   ```bash
-   bunzip2 -f example.bz2
+   ```csh
+   bunzip2 -f example.txt.bz2
    ```
 
-4. 查看解压缩过程的详细信息：
-   ```bash
-   bunzip2 -v example.bz2
+4. 解压缩多个文件：
+   ```csh
+   bunzip2 file1.bz2 file2.bz2 file3.bz2
    ```
 
 ## 提示
-- 在解压缩之前，确保有足够的磁盘空间来存放解压后的文件。
-- 使用 `-k` 选项可以避免意外删除原始压缩文件，特别是在处理重要数据时。
-- 如果需要批量解压缩多个文件，可以使用通配符，例如：
-  ```bash
-  bunzip2 *.bz2
-  ```
+- 在解压缩重要文件之前，建议使用 `-k` 选项以保留原始文件，以防解压缩过程中出现问题。
+- 使用 `-v` 选项可以帮助你了解解压缩的进度，特别是在处理大型文件时。
+- 确保在解压缩时有足够的磁盘空间，以避免因空间不足而导致解压缩失败。

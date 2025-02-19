@@ -1,49 +1,48 @@
-# [Linux] Bash script utilisation : Enregistrer des sessions de terminal
+# [Linux] C Shell (csh) script : Enregistrer une session de terminal
 
 ## Overview
-La commande `script` permet d'enregistrer une session de terminal dans un fichier. Cela peut être utile pour créer des journaux de commandes ou pour documenter des étapes spécifiques lors de l'utilisation de la ligne de commande.
+La commande `script` permet d'enregistrer une session de terminal dans un fichier. Cela peut être utile pour garder une trace des commandes exécutées et de leurs sorties, facilitant ainsi la documentation ou le partage d'une session de travail.
 
 ## Usage
 La syntaxe de base de la commande est la suivante :
 
-```bash
+```csh
 script [options] [arguments]
 ```
 
 ## Common Options
-- `-a` : Ajoute la sortie à un fichier existant au lieu de le remplacer.
-- `-c` : Exécute une commande spécifique et enregistre sa sortie.
-- `-f` : Affiche la sortie en temps réel dans le terminal pendant l'enregistrement.
-- `-q` : Exécute la commande en mode silencieux, sans afficher de messages d'état.
+- `-a` : Ajoute la sortie au fichier existant au lieu de l'écraser.
+- `-f` : Écrit la sortie immédiatement dans le fichier, ce qui peut être utile pour suivre l'activité en temps réel.
+- `-q` : Exécute la commande en mode silencieux, sans afficher les messages d'information.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `script` :
 
-1. **Enregistrer une session dans un fichier :**
-   ```bash
-   script session.txt
+1. **Enregistrer une session par défaut :**
+   ```csh
+   script
    ```
-   Cela démarre l'enregistrement de la session dans le fichier `session.txt`.
+   Cela crée un fichier nommé `typescript` dans le répertoire courant et enregistre la session.
 
-2. **Ajouter à un fichier existant :**
-   ```bash
-   script -a session.txt
+2. **Enregistrer une session avec un nom de fichier spécifique :**
+   ```csh
+   script mon_fichier.txt
    ```
-   Cela ajoute la nouvelle session à `session.txt` sans écraser le contenu précédent.
+   Cela enregistre la session dans `mon_fichier.txt`.
 
-3. **Exécuter une commande et enregistrer sa sortie :**
-   ```bash
-   script -c "ls -l" output.txt
+3. **Ajouter à un fichier existant :**
+   ```csh
+   script -a mon_fichier.txt
    ```
-   Cela exécute la commande `ls -l` et enregistre la sortie dans `output.txt`.
+   Cela ajoute la sortie de la session actuelle à `mon_fichier.txt`.
 
-4. **Enregistrer une session en temps réel :**
-   ```bash
-   script -f session.txt
+4. **Mode silencieux :**
+   ```csh
+   script -q
    ```
-   Cela enregistre la session dans `session.txt` tout en affichant la sortie en temps réel.
+   Cela enregistre la session sans afficher de messages d'information.
 
 ## Tips
-- Utilisez l'option `-q` si vous souhaitez éviter les messages de statut pendant l'enregistrement.
-- Pensez à utiliser `-a` si vous voulez conserver un historique de plusieurs sessions dans un même fichier.
-- N'oubliez pas de terminer la session d'enregistrement en tapant `exit` ou en utilisant `Ctrl+D`.
+- Pensez à vérifier le contenu du fichier généré après avoir terminé votre session pour vous assurer que tout a été enregistré correctement.
+- Utilisez l'option `-f` si vous souhaitez voir les résultats en temps réel, ce qui peut être utile lors de l'exécution de longues commandes.
+- N'oubliez pas de quitter la session enregistrée en tapant `exit` ou `Ctrl+D` pour finaliser l'enregistrement.

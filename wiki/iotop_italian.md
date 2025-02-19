@@ -1,47 +1,45 @@
-# [Linux] Bash iotop utilizzo: Monitorare l'uso del disco in tempo reale
+# [Linux] C Shell (csh) iotop Utilizzo: Monitorare l'uso del disco in tempo reale
 
 ## Overview
-Il comando `iotop` è uno strumento utile per monitorare l'uso del disco da parte dei processi in esecuzione su un sistema Linux. Mostra in tempo reale quali processi stanno generando la maggior parte delle operazioni di input/output (I/O) sul disco, permettendo agli utenti di identificare eventuali colli di bottiglia o problemi di prestazioni.
+Il comando `iotop` è uno strumento utile per monitorare l'input/output del disco in tempo reale. Mostra quali processi stanno utilizzando il disco e quanto, permettendo agli utenti di identificare eventuali colli di bottiglia nelle prestazioni del sistema.
 
 ## Usage
-La sintassi di base del comando `iotop` è la seguente:
+La sintassi di base del comando è la seguente:
 
-```bash
-iotop [opzioni] [argomenti]
+```csh
+iotop [options] [arguments]
 ```
 
 ## Common Options
-Ecco alcune opzioni comuni per `iotop`:
-
-- `-o`, `--only`: Mostra solo i processi che stanno attualmente effettuando operazioni di I/O.
-- `-b`, `--batch`: Esegue `iotop` in modalità batch, utile per l'output su file o per l'analisi automatizzata.
-- `-n NUM`, `--iter NUM`: Esegue `iotop` per un numero specifico di iterazioni prima di terminare.
-- `-p PID`, `--pid=PID`: Monitora solo il processo con l'ID specificato.
+- `-o` : Mostra solo i processi che stanno attualmente utilizzando il disco.
+- `-b` : Esegue `iotop` in modalità batch, utile per l'output su file.
+- `-n NUM` : Specifica il numero di aggiornamenti da eseguire in modalità batch.
+- `-d SECONDS` : Imposta il tempo di attesa tra gli aggiornamenti in modalità interattiva.
 
 ## Common Examples
 Ecco alcuni esempi pratici di utilizzo di `iotop`:
 
-1. **Monitorare l'uso del disco in tempo reale**:
-   ```bash
+1. **Visualizzare l'uso del disco in tempo reale**:
+   ```csh
    iotop
    ```
 
-2. **Visualizzare solo i processi attivi**:
-   ```bash
+2. **Mostrare solo i processi attivi**:
+   ```csh
    iotop -o
    ```
 
-3. **Eseguire `iotop` in modalità batch per 10 iterazioni**:
-   ```bash
+3. **Eseguire `iotop` in modalità batch per 10 aggiornamenti**:
+   ```csh
    iotop -b -n 10
    ```
 
-4. **Monitorare un processo specifico con PID 1234**:
-   ```bash
-   iotop -p 1234
+4. **Impostare un intervallo di aggiornamento di 2 secondi**:
+   ```csh
+   iotop -d 2
    ```
 
 ## Tips
-- Esegui `iotop` con i privilegi di root per ottenere informazioni complete sui processi.
-- Usa la modalità batch se desideri registrare l'output in un file per analisi successive.
-- Combina `iotop` con altri strumenti di monitoraggio per avere una visione più completa delle prestazioni del sistema.
+- Utilizza l'opzione `-o` per concentrarti solo sui processi che stanno attivamente utilizzando il disco, rendendo più facile l'identificazione dei problemi.
+- In modalità batch, considera di reindirizzare l'output a un file per analisi successive.
+- Ricorda che `iotop` richiede privilegi di root per visualizzare tutte le informazioni sui processi. Assicurati di eseguirlo con `sudo` se necessario.

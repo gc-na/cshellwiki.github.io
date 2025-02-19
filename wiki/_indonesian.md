@@ -1,52 +1,60 @@
-# [Linux] Bash @ penggunaan: [menampilkan isi direktori]
+# [Sistem Operasi] C Shell (csh) @ Penggunaan: Menjalankan perintah dengan argumen
 
 ## Overview
-Perintah `ls` digunakan untuk menampilkan daftar file dan direktori dalam sistem file. Ini adalah salah satu perintah yang paling sering digunakan dalam lingkungan Bash untuk melihat isi dari direktori saat ini atau direktori lain.
+Perintah `@` dalam C Shell (csh) digunakan untuk melakukan operasi aritmatika dan mengatur variabel. Ini memungkinkan pengguna untuk menghitung nilai dan menyimpan hasilnya dalam variabel untuk digunakan di perintah selanjutnya.
 
 ## Usage
-Berikut adalah sintaks dasar dari perintah `ls`:
+Berikut adalah sintaks dasar dari perintah `@`:
 
-```bash
-ls [options] [arguments]
+```
+@ [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang dapat digunakan dengan `ls`:
-
-- `-l`: Menampilkan daftar file dalam format panjang, termasuk informasi seperti izin, pemilik, ukuran, dan tanggal terakhir diubah.
-- `-a`: Menampilkan semua file, termasuk file tersembunyi yang diawali dengan titik (`.`).
-- `-h`: Menampilkan ukuran file dalam format yang lebih mudah dibaca (misalnya, KB, MB).
-- `-R`: Menampilkan isi direktori secara rekursif, termasuk subdirektori.
+- `-v`: Menampilkan hasil dari operasi yang dilakukan.
+- `-p`: Menjalankan perintah dalam mode interaktif.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan `ls`:
+Berikut adalah beberapa contoh penggunaan perintah `@`:
 
-1. Menampilkan daftar file dan direktori di direktori saat ini:
-   ```bash
-   ls
+1. **Menambahkan dua angka:**
+   ```csh
+   @ hasil = 5 + 3
+   echo $hasil
    ```
+   Output: `8`
 
-2. Menampilkan daftar file dalam format panjang:
-   ```bash
-   ls -l
+2. **Mengurangi angka:**
+   ```csh
+   @ hasil = 10 - 4
+   echo $hasil
    ```
+   Output: `6`
 
-3. Menampilkan semua file, termasuk yang tersembunyi:
-   ```bash
-   ls -a
+3. **Mengalikan angka:**
+   ```csh
+   @ hasil = 7 * 2
+   echo $hasil
    ```
+   Output: `14`
 
-4. Menampilkan daftar file dengan ukuran yang lebih mudah dibaca:
-   ```bash
-   ls -lh
+4. **Membagi angka:**
+   ```csh
+   @ hasil = 20 / 4
+   echo $hasil
    ```
+   Output: `5`
 
-5. Menampilkan isi direktori secara rekursif:
-   ```bash
-   ls -R
+5. **Menggunakan hasil dalam perintah lain:**
+   ```csh
+   @ a = 10
+   @ b = 5
+   @ total = $a + $b
+   echo "Total: $total"
    ```
+   Output: `Total: 15`
 
 ## Tips
-- Gunakan kombinasi opsi untuk mendapatkan informasi yang lebih lengkap, misalnya `ls -la` untuk melihat semua file dengan detail.
-- Untuk memudahkan pencarian, Anda dapat mengurutkan hasil dengan opsi `-t` untuk mengurutkan berdasarkan waktu terakhir diubah.
-- Jika Anda ingin melihat hasil dalam urutan terbalik, tambahkan opsi `-r` ke perintah Anda.
+- Selalu gunakan spasi di sekitar operator aritmatika untuk menghindari kesalahan sintaks.
+- Gunakan `echo` untuk menampilkan nilai variabel setelah operasi agar lebih mudah memverifikasi hasilnya.
+- Anda dapat menggunakan hasil dari perhitungan `@` dalam perintah lain, sehingga memungkinkan untuk membuat skrip yang lebih dinamis.

@@ -1,39 +1,39 @@
-# [Linux] Bash nohup 用法: 使进程在退出终端后继续运行
+# [Linux] C Shell (csh) nohup 使用方法: 使进程在退出终端后继续运行
 
 ## 概述
-`nohup` 命令用于在用户退出终端后继续运行指定的命令。它可以防止进程因终端关闭而被终止，适用于需要长时间运行的任务。
+`nohup` 命令用于在用户退出终端后继续运行指定的命令。它可以防止进程因终端关闭而被终止，常用于长时间运行的任务。
 
 ## 用法
 基本语法如下：
-```bash
-nohup [选项] [命令] [参数] &
+```csh
+nohup [选项] [参数]
 ```
 
 ## 常用选项
-- `&`：将命令放入后台运行。
 - `-h`：显示帮助信息。
-- `-p`：指定进程 ID，通常不常用。
+- `-p`：将输出重定向到指定的文件。
+- `-n`：不将输出重定向到 `nohup.out` 文件。
 
 ## 常见示例
-1. **在后台运行脚本**
-   ```bash
-   nohup ./my_script.sh &
+1. **运行一个长时间的脚本**
+   ```csh
+   nohup ./long_running_script.sh &
    ```
-   这个命令会在后台运行 `my_script.sh` 脚本，即使你退出终端，脚本仍会继续执行。
+   这条命令会在后台运行 `long_running_script.sh`，即使用户退出终端，脚本仍会继续执行。
 
-2. **将输出重定向到文件**
-   ```bash
-   nohup python my_program.py > output.log &
+2. **将输出重定向到指定文件**
+   ```csh
+   nohup ./my_process > output.log &
    ```
-   该命令会将 `my_program.py` 的输出重定向到 `output.log` 文件中。
+   这条命令会将 `my_process` 的输出保存到 `output.log` 文件中。
 
-3. **运行长时间的命令**
-   ```bash
-   nohup tar -czf backup.tar.gz /path/to/directory &
+3. **使用 nohup 运行 Python 脚本**
+   ```csh
+   nohup python my_script.py &
    ```
-   这个命令会在后台创建一个目录的压缩备份，允许你在压缩过程中关闭终端。
+   这条命令会在后台运行 Python 脚本 `my_script.py`。
 
-## 提示
-- 使用 `jobs` 命令可以查看当前后台运行的任务。
-- 结合 `disown` 命令，可以在不使用 `nohup` 的情况下将进程与终端分离。
-- 定期检查输出文件，以确保任务正常运行。
+## 小贴士
+- 使用 `&` 将命令放入后台运行，以便可以继续使用终端。
+- 定期检查输出文件，以确保进程正常运行。
+- 在使用 `nohup` 时，确保命令的路径正确，以避免找不到命令的错误。

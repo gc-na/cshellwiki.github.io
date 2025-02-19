@@ -1,46 +1,37 @@
-# [Linux] Bash nohup uso equivalente: Ejecutar procesos que persisten después de cerrar la sesión
+# [Linux] C Shell (csh) nohup uso: Ejecutar comandos sin interrupciones
 
 ## Overview
-El comando `nohup` (no hang up) se utiliza en sistemas Unix y Linux para ejecutar procesos que deben continuar funcionando incluso después de que el usuario haya cerrado la sesión o la terminal. Es especialmente útil para ejecutar tareas de larga duración sin preocuparse por la desconexión.
+El comando `nohup` se utiliza en el C Shell para ejecutar procesos que deben continuar funcionando incluso después de que el usuario haya cerrado la sesión. Esto es especialmente útil para tareas de larga duración que no deben ser interrumpidas.
 
 ## Usage
 La sintaxis básica del comando `nohup` es la siguiente:
 
-```bash
-nohup [opciones] [comando] [argumentos] &
+```csh
+nohup [opciones] [argumentos]
 ```
 
-El símbolo `&` al final se utiliza para ejecutar el comando en segundo plano.
-
 ## Common Options
-- `-h`, `--help`: Muestra la ayuda sobre el uso del comando.
-- `-v`, `--version`: Muestra la versión del comando `nohup`.
-- `-o archivo`: Redirige la salida estándar a un archivo específico.
+- `&`: Ejecuta el comando en segundo plano.
+- `-h`: Muestra la ayuda sobre el uso del comando.
+- `-v`: Muestra información detallada sobre el comando.
 
 ## Common Examples
-Aquí hay algunos ejemplos prácticos del uso de `nohup`:
-
-1. **Ejecutar un script en segundo plano:**
-   ```bash
+1. Ejecutar un script en segundo plano y asegurarse de que no se interrumpa al cerrar la sesión:
+   ```csh
    nohup ./mi_script.sh &
    ```
 
-2. **Ejecutar un comando y redirigir la salida a un archivo:**
-   ```bash
-   nohup ping google.com > salida_ping.txt &
+2. Redirigir la salida a un archivo específico:
+   ```csh
+   nohup ./mi_programa > salida.txt &
    ```
 
-3. **Ejecutar un proceso de larga duración:**
-   ```bash
-   nohup python mi_programa.py &
-   ```
-
-4. **Ejecutar un comando con salida de error redirigida:**
-   ```bash
-   nohup ./mi_programa.sh > salida.txt 2> errores.txt &
+3. Ejecutar un comando de larga duración:
+   ```csh
+   nohup tar -czf respaldo.tar.gz /ruta/del/directorio &
    ```
 
 ## Tips
-- Siempre redirige la salida de tus comandos a un archivo para poder revisar los resultados más tarde.
-- Usa `jobs` para ver los procesos en segundo plano y `fg` para llevar uno de ellos de vuelta al primer plano si es necesario.
-- Recuerda que los procesos ejecutados con `nohup` seguirán funcionando incluso si cierras la terminal, así que asegúrate de que no consuman recursos innecesarios.
+- Siempre redirige la salida de tu comando a un archivo para evitar que se pierda información.
+- Usa el símbolo `&` para ejecutar el comando en segundo plano y liberar la terminal.
+- Revisa el archivo `nohup.out` si no especificaste un archivo de salida, ya que ahí se guardará la salida por defecto.

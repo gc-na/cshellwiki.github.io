@@ -1,92 +1,80 @@
-# [Linux] Bash getopts Kullanımı: Komut satırı seçeneklerini işlemek için
+# [Linux] C Shell (csh) getopts Kullanımı: Komut satırı seçeneklerini işleme
 
-## Overview
-`getopts`, Bash betiklerinde komut satırı argümanlarını işlemek için kullanılan bir yerleşik komuttur. Kullanıcıdan gelen seçenekleri ve argümanları düzenli bir şekilde almak için idealdir. Bu sayede, betiklerinizin daha esnek ve kullanıcı dostu olmasını sağlar.
+## Genel Bakış
+getopts komutu, C Shell (csh) içinde komut satırı seçeneklerini işlemek için kullanılır. Bu komut, bir betik içinde kullanıcıdan alınan seçenekleri ve argümanları düzenli bir şekilde yönetmeyi sağlar.
 
-## Usage
-Temel sözdizimi aşağıdaki gibidir:
+## Kullanım
+getopts komutunun temel sözdizimi aşağıdaki gibidir:
 
-```bash
+```csh
 getopts [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `-a`: Seçenekleri bir dizi olarak almak için kullanılır.
-- `-b`: Seçeneklerin belirli bir biçimde işlenmesini sağlar.
-- `-c`: Komutun nasıl çalışacağını belirlemek için kullanılır.
+## Yaygın Seçenekler
+- `-a`: Seçenekleri tanımlamak için kullanılır.
+- `-b`: Seçeneklerin birden fazla kez kullanılmasına izin verir.
+- `-c`: Varsayılan bir değer belirlemek için kullanılır.
 
-## Common Examples
+## Yaygın Örnekler
+Aşağıda getopts komutunun bazı pratik örnekleri bulunmaktadır:
 
 ### Örnek 1: Basit Seçenek İşleme
-Aşağıdaki örnekte, `-f` ve `-v` seçenekleri ile bir dosya adı alınıyor.
-
-```bash
-#!/bin/bash
-
-while getopts "fv:" opt; do
-  case $opt in
-    f)
-      echo "Dosya modu seçildi."
-      ;;
-    v)
-      echo "Versiyon: $OPTARG"
-      ;;
-    \?)
-      echo "Geçersiz seçenek: -$OPTARG" >&2
-      ;;
-  esac
-done
+```csh
+#!/bin/csh
+set optstring = "ab:c"
+while (getopts $optstring opt)
+    switch ($opt)
+        case "a":
+            echo "Seçenek A seçildi."
+            breaksw
+        case "b":
+            echo "Seçenek B seçildi, argüman: $OPTARG"
+            breaksw
+        case "c":
+            echo "Seçenek C seçildi."
+            breaksw
+        default:
+            echo "Geçersiz seçenek."
+    endsw
+end
 ```
 
-### Örnek 2: Birden Fazla Seçenek
-Bu örnekte, birden fazla seçenek işleniyor.
-
-```bash
-#!/bin/bash
-
-while getopts "abc:" opt; do
-  case $opt in
-    a)
-      echo "A seçeneği aktif."
-      ;;
-    b)
-      echo "B seçeneği aktif."
-      ;;
-    c)
-      echo "C seçeneği ile argüman: $OPTARG"
-      ;;
-    \?)
-      echo "Geçersiz seçenek: -$OPTARG" >&2
-      ;;
-  esac
-done
+### Örnek 2: Birden Fazla Seçenek Kullanma
+```csh
+#!/bin/csh
+set optstring = "abc"
+while (getopts $optstring opt)
+    echo "Seçenek: $opt"
+end
 ```
 
-### Örnek 3: Varsayılan Değerler
-Varsayılan değerler ile seçeneklerin nasıl işleneceğine dair bir örnek.
-
-```bash
-#!/bin/bash
-
-verbose=0
-
-while getopts "v" opt; do
-  case $opt in
-    v)
-      verbose=1
-      ;;
-    \?)
-      echo "Geçersiz seçenek: -$OPTARG" >&2
-      ;;
-  esac
-done
-
-if [ $verbose -eq 1 ]; then
-  echo "Ayrıntılı mod aktif."
-fi
+### Örnek 3: Varsayılan Değer Belirleme
+```csh
+#!/bin/csh
+set optstring = "a:b:c:"
+set default_value = "varsayılan"
+while (getopts $optstring opt)
+    switch ($opt)
+        case "a":
+            echo "Seçenek A seçildi."
+            breaksw
+        case "b":
+            echo "Seçenek B seçildi, argüman: $OPTARG"
+            breaksw
+        case "c":
+            if ("$OPTARG" == "") then
+                echo "Seçenek C seçildi, varsayılan değer: $default_value"
+            else
+                echo "Seçenek C seçildi, argüman: $OPTARG"
+            endif
+            breaksw
+        default:
+            echo "Geçersiz seçenek."
+    endsw
+end
 ```
 
-## Tips
-- Seçeneklerinizi ve argümanlarınızı açık bir şekilde tanımlayın; bu, kullanıcıların betiği daha iyi anlamasına yardımcı olur.
-- `getopts` kullanırken, her seçeneğin ne işe yaradığını açıklayan bir yardım mesajı eklemeyi unutmayın.
-- Seçeneklerinizi işlemek için `case` yapısını kullanmak, kodunuzu daha düzenli hale getirir ve okunabilirliği artırır.
+## İpuçları
+- Seçeneklerinizi ve argümanlarınızı açık ve anlaşılır bir şekilde tanımlayın.
+- Kullanıcıdan alınan argümanların doğruluğunu kontrol etmek için hata kontrolü eklemeyi unutmayın.
+- getopts komutunu kullanırken, seçeneklerinizi belirli bir sıraya göre düzenlemek, kullanıcı deneyimini artırabilir.

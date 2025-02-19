@@ -1,41 +1,42 @@
-# [Linux] Bash nice cách sử dụng: Thay đổi ưu tiên của tiến trình
+# [Hệ điều hành] C Shell (csh) nice: Điều chỉnh ưu tiên của tiến trình
 
 ## Overview
-Lệnh `nice` trong Bash được sử dụng để thay đổi mức độ ưu tiên của một tiến trình khi nó chạy. Mức độ ưu tiên này ảnh hưởng đến cách mà hệ điều hành phân bổ tài nguyên cho tiến trình, giúp cho người dùng có thể kiểm soát hiệu suất của các ứng dụng đang chạy.
+Lệnh `nice` trong C Shell (csh) được sử dụng để điều chỉnh mức độ ưu tiên của một tiến trình khi nó được thực thi. Bằng cách thay đổi mức độ ưu tiên, bạn có thể kiểm soát cách mà hệ thống phân bổ tài nguyên cho các tiến trình đang chạy.
 
 ## Usage
 Cú pháp cơ bản của lệnh `nice` như sau:
-```bash
+```
 nice [options] [arguments]
 ```
 
 ## Common Options
-- `-n, --adjustment=N`: Điều chỉnh mức độ ưu tiên. Giá trị N có thể là số dương (giảm ưu tiên) hoặc số âm (tăng ưu tiên).
-- `-h, --help`: Hiển thị thông tin trợ giúp về lệnh nice.
-- `-v, --version`: Hiển thị phiên bản của lệnh nice.
+- `-n <value>`: Chỉ định giá trị ưu tiên mới cho tiến trình. Giá trị này có thể từ -20 (ưu tiên cao nhất) đến 19 (ưu tiên thấp nhất).
+- `-h`: Hiển thị thông tin trợ giúp về lệnh `nice`.
 
 ## Common Examples
-Dưới đây là một số ví dụ thực tế khi sử dụng lệnh `nice`:
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `nice`:
 
-1. **Chạy một tiến trình với mức độ ưu tiên thấp hơn**:
-   ```bash
+1. **Chạy một tiến trình với ưu tiên thấp hơn**:
+   ```csh
    nice -n 10 ./my_script.sh
    ```
-   Lệnh này sẽ chạy `my_script.sh` với mức độ ưu tiên giảm đi 10.
 
-2. **Chạy một tiến trình với mức độ ưu tiên cao hơn**:
-   ```bash
+2. **Chạy một tiến trình với ưu tiên cao hơn**:
+   ```csh
    nice -n -5 ./my_heavy_process
    ```
-   Lệnh này sẽ chạy `my_heavy_process` với mức độ ưu tiên tăng lên 5.
 
-3. **Kiểm tra mức độ ưu tiên của một tiến trình**:
-   ```bash
+3. **Kiểm tra ưu tiên của một tiến trình đang chạy**:
+   ```csh
    ps -o pid,ni,cmd
    ```
-   Lệnh này sẽ hiển thị PID, mức độ ưu tiên (nice value) và tên của các tiến trình đang chạy.
+
+4. **Chạy một lệnh `make` với ưu tiên thấp**:
+   ```csh
+   nice -n 15 make
+   ```
 
 ## Tips
-- Sử dụng `nice` khi bạn muốn chạy các tiến trình không quan trọng mà không làm ảnh hưởng đến các tiến trình khác đang chạy trên hệ thống.
-- Kiểm tra mức độ ưu tiên của các tiến trình hiện tại bằng lệnh `ps` để có quyết định tốt hơn về việc điều chỉnh ưu tiên.
-- Hãy cẩn thận khi tăng mức độ ưu tiên cho các tiến trình quan trọng, vì điều này có thể làm chậm các tiến trình khác.
+- Sử dụng `nice` để giảm tải cho hệ thống khi chạy các tiến trình nặng, giúp hệ thống hoạt động mượt mà hơn.
+- Kiểm tra ưu tiên của các tiến trình đang chạy bằng lệnh `ps` để có cái nhìn tổng quan về tài nguyên hệ thống.
+- Hãy cẩn thận khi tăng ưu tiên của một tiến trình, vì điều này có thể làm giảm hiệu suất của các tiến trình khác.

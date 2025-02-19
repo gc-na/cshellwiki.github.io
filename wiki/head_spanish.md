@@ -1,50 +1,49 @@
-# [Linux] Bash head Uso: Muestra las primeras líneas de un archivo
+# [Linux] C Shell (csh) head uso: Muestra las primeras líneas de un archivo
 
 ## Overview
-El comando `head` en Bash se utiliza para mostrar las primeras líneas de uno o más archivos de texto. Es especialmente útil para obtener una vista rápida del contenido de un archivo sin necesidad de abrirlo completamente.
+El comando `head` en C Shell (csh) se utiliza para mostrar las primeras líneas de uno o más archivos. Es útil para obtener una vista rápida del contenido de un archivo sin necesidad de abrirlo completamente.
 
 ## Usage
-La sintaxis básica del comando `head` es la siguiente:
+La sintaxis básica del comando es la siguiente:
 
-```bash
-head [opciones] [archivo]
+```csh
+head [opciones] [argumentos]
 ```
 
 ## Common Options
-- `-n [número]`: Especifica el número de líneas que se mostrarán. Por defecto, muestra las primeras 10 líneas.
-- `-c [número]`: Muestra el número especificado de bytes del archivo.
-- `-q`: Suprime la impresión de los nombres de los archivos cuando se muestran múltiples archivos.
-- `-v`: Muestra el nombre del archivo antes de las líneas que se están mostrando.
+- `-n [número]`: Especifica el número de líneas que se mostrarán. Por defecto, se muestran 10 líneas.
+- `-q`: Suprime la impresión del encabezado de los archivos cuando se muestran múltiples archivos.
+- `-v`: Muestra el encabezado de cada archivo incluso si solo hay un archivo.
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso del comando `head`:
 
-1. Mostrar las primeras 10 líneas de un archivo:
-   ```bash
+1. Mostrar las primeras 10 líneas de un archivo llamado `archivo.txt`:
+   ```csh
    head archivo.txt
    ```
 
 2. Mostrar las primeras 5 líneas de un archivo:
-   ```bash
+   ```csh
    head -n 5 archivo.txt
    ```
 
-3. Mostrar los primeros 20 bytes de un archivo:
-   ```bash
-   head -c 20 archivo.txt
-   ```
-
-4. Mostrar las primeras 10 líneas de múltiples archivos:
-   ```bash
+3. Mostrar las primeras 10 líneas de varios archivos:
+   ```csh
    head archivo1.txt archivo2.txt
    ```
 
-5. Mostrar las primeras 10 líneas de un archivo sin mostrar el nombre del archivo:
-   ```bash
-   head -q archivo1.txt archivo2.txt
+4. Mostrar las primeras 3 líneas de un archivo y su encabezado:
+   ```csh
+   head -v -n 3 archivo.txt
+   ```
+
+5. Mostrar las primeras 15 líneas de un archivo sin encabezado:
+   ```csh
+   head -q -n 15 archivo.txt
    ```
 
 ## Tips
-- Utiliza `head` junto con otros comandos mediante tuberías para filtrar la salida. Por ejemplo, `ls -l | head` mostrará las primeras 10 entradas de un listado detallado.
-- Si necesitas ver las últimas líneas de un archivo, considera usar el comando `tail`, que está diseñado para esa función.
-- Recuerda que `head` puede ser muy útil en scripts para verificar rápidamente el contenido de archivos generados o logs.
+- Utiliza `head` en combinación con otros comandos, como `grep`, para filtrar y visualizar rápidamente los resultados.
+- Si necesitas ver las últimas líneas de un archivo, considera usar el comando `tail`, que complementa a `head`.
+- Recuerda que puedes redirigir la salida de `head` a otro archivo usando el operador `>` si deseas guardar las líneas mostradas.

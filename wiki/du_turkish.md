@@ -1,54 +1,53 @@
-# [Linux] Bash du Kullanımı: Disk kullanımını analiz etme aracı
+# [Linux] C Shell (csh) du Kullanımı: Disk kullanımını gösterir
 
 ## Overview
-`du` (disk usage) komutu, bir dosya veya dizinin disk üzerindeki kullanım alanını gösterir. Bu komut, sistem yöneticileri ve kullanıcılar için depolama alanını yönetmek ve analiz etmek amacıyla oldukça faydalıdır.
+`du` (disk usage) komutu, dosya ve dizinlerin disk üzerindeki kullanım alanını gösterir. Bu komut, sistem yöneticileri ve kullanıcılar için disk alanını yönetmek ve hangi dosyaların veya dizinlerin ne kadar yer kapladığını anlamak açısından oldukça faydalıdır.
 
 ## Usage
 Temel sözdizimi aşağıdaki gibidir:
 
-```bash
+```csh
 du [options] [arguments]
 ```
 
 ## Common Options
 - `-h`: İnsan tarafından okunabilir formatta çıktı verir (örneğin, KB, MB).
-- `-s`: Sadece toplam boyutu gösterir, alt dizinleri göstermez.
-- `-a`: Tüm dosyaların boyutlarını da gösterir, sadece dizinleri değil.
-- `-c`: Toplam boyutu da içeren bir özet gösterir.
-- `--max-depth=N`: Belirtilen derinlikteki dizinleri gösterir.
+- `-s`: Toplam boyutu gösterir, alt dizinleri listelemez.
+- `-a`: Tüm dosyaların boyutlarını gösterir, yalnızca dizinleri değil.
+- `-c`: Toplam boyutu da dahil olmak üzere bir özet verir.
 
 ## Common Examples
-Aşağıda `du` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+Aşağıda `du` komutunun bazı pratik örnekleri bulunmaktadır:
 
 1. Belirli bir dizinin disk kullanımını gösterme:
-   ```bash
+   ```csh
    du /path/to/directory
    ```
 
-2. İnsan tarafından okunabilir formatta çıktı almak:
-   ```bash
+2. İnsan tarafından okunabilir formatta disk kullanımını gösterme:
+   ```csh
    du -h /path/to/directory
    ```
 
 3. Sadece toplam boyutu gösterme:
-   ```bash
+   ```csh
    du -sh /path/to/directory
    ```
 
 4. Tüm dosyaların boyutlarını gösterme:
-   ```bash
-   du -ah /path/to/directory
+   ```csh
+   du -a /path/to/directory
    ```
 
-5. Belirli bir derinlikteki dizinleri gösterme:
-   ```bash
-   du --max-depth=1 /path/to/directory
+5. Toplam boyut ile birlikte özet bilgisi alma:
+   ```csh
+   du -ch /path/to/directory
    ```
 
 ## Tips
-- Büyük dizinlerde `du` komutunu kullanırken, `-h` seçeneği ile çıktıyı daha okunabilir hale getirin.
-- Disk alanını yönetmek için `du` çıktısını `sort` komutuyla birleştirerek en çok yer kaplayan dosya ve dizinleri kolayca bulabilirsiniz:
-  ```bash
-  du -ah /path/to/directory | sort -hr | head -n 10
+- Disk kullanımını analiz etmek için `du` komutunu düzenli olarak kullanmak, gereksiz dosyaları temizlemenize yardımcı olabilir.
+- `du` komutunu `sort` ile birleştirerek en fazla yer kaplayan dosyaları veya dizinleri sıralayabilirsiniz:
+  ```csh
+  du -h /path/to/directory | sort -hr
   ```
-- Düzenli olarak disk kullanımını kontrol etmek, gereksiz dosyaların temizlenmesine yardımcı olabilir.
+- Büyük dizinlerde `du` komutunun çalışması zaman alabilir, bu nedenle belirli alt dizinlerle çalışmak daha hızlı sonuçlar verebilir.

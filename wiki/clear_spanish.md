@@ -1,42 +1,38 @@
-# [Linux] Bash clear Uso: Limpia la pantalla del terminal
+# [Linux] C Shell (csh) clear uso equivalente: Limpia la pantalla del terminal
 
 ## Overview
-El comando `clear` se utiliza para limpiar la pantalla del terminal, eliminando todo el texto visible y proporcionando un espacio de trabajo limpio. Es especialmente útil cuando se trabaja con largas salidas de comandos y se desea mejorar la legibilidad.
+El comando `clear` se utiliza en C Shell (csh) para limpiar la pantalla del terminal, eliminando todo el texto visible y proporcionando un espacio de trabajo más ordenado.
 
 ## Usage
 La sintaxis básica del comando es la siguiente:
 
-```bash
+```
 clear [opciones] [argumentos]
 ```
 
 ## Common Options
-A continuación se presentan algunas opciones comunes para el comando `clear`:
-
-- `-V`, `--version`: Muestra la versión del comando `clear`.
-- `-h`, `--help`: Muestra la ayuda sobre el uso del comando.
+- `-x`: Elimina la información de la línea de estado de la terminal.
+- `-V`: Muestra la versión del comando `clear`.
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso del comando `clear`:
 
 1. **Limpiar la pantalla del terminal:**
-   ```bash
+   ```csh
    clear
    ```
 
-2. **Mostrar la versión del comando:**
-   ```bash
-   clear --version
+2. **Limpiar la pantalla y eliminar la información de la línea de estado:**
+   ```csh
+   clear -x
    ```
 
-3. **Mostrar la ayuda del comando:**
-   ```bash
-   clear --help
+3. **Ver la versión del comando `clear`:**
+   ```csh
+   clear -V
    ```
 
 ## Tips
-- Puedes combinar el comando `clear` con otros comandos utilizando el operador `&&` para limpiar la pantalla después de ejecutar un comando. Por ejemplo:
-  ```bash
-  ls && clear
-  ```
-- Si deseas limpiar la pantalla de forma rápida, puedes usar el atajo de teclado `Ctrl + L`, que tiene el mismo efecto que el comando `clear`.
+- Utiliza el comando `clear` regularmente para mantener tu terminal ordenado, especialmente después de ejecutar comandos que generan mucha salida.
+- Puedes asignar un atajo de teclado para el comando `clear` en tu terminal para acceder a él más rápidamente.
+- Recuerda que `clear` no elimina el historial de comandos; solo limpia la vista actual de la pantalla.

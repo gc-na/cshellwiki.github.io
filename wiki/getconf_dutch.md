@@ -1,45 +1,42 @@
-# [Linux] Bash getconf gebruik: Toegang tot systeemconfiguratie-instellingen
+# [Linux] C Shell (csh) getconf gebruik: Verkrijg systeemconfiguratie-instellingen
 
 ## Overzicht
-De `getconf` opdracht in Bash wordt gebruikt om systeemconfiguratie-instellingen en -parameters op te vragen. Dit kan nuttig zijn voor het verkrijgen van informatie over de systeemspecificaties en om te controleren of bepaalde configuraties aanwezig zijn.
+Het `getconf` commando wordt gebruikt om systeemconfiguratie-instellingen op te vragen. Dit kan nuttig zijn voor het verkrijgen van informatie over de systeemomgeving, zoals limieten en parameters die door de kernel zijn ingesteld.
 
 ## Gebruik
-De basis syntaxis van de `getconf` opdracht is als volgt:
+De basis syntaxis van het `getconf` commando is als volgt:
 
-```bash
+```csh
 getconf [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-a`: Toont alle beschikbare configuratie-instellingen.
-- `NAME`: De naam van de configuratie-instelling die je wilt opvragen. Dit kan bijvoorbeeld `PAGE_SIZE` zijn voor de paginagrootte van het systeem.
+- `-a`: Toon alle beschikbare configuratie-instellingen.
+- `VARIABLENAMEN`: Vraag de waarde op van een specifieke systeemvariabele, zoals `PAGE_SIZE` of `ARG_MAX`.
 
 ## Veelvoorkomende Voorbeelden
 
-1. **Toon alle configuratie-instellingen:**
-   ```bash
-   getconf -a
-   ```
-
-2. **Vraag de paginagrootte op:**
-   ```bash
+1. **Vraag de pagina-grootte op**:
+   ```csh
    getconf PAGE_SIZE
    ```
 
-3. **Vraag de maximale lengte van bestandsnamen op:**
-   ```bash
-   getconf NAME_MAX /
+2. **Vraag de maximale lengte van de argumenten op**:
+   ```csh
+   getconf ARG_MAX
    ```
 
-4. **Vraag de systeemspecificaties voor de maximale aantal open bestanden op:**
-   ```bash
-   getconf OPEN_MAX
+3. **Toon alle configuratie-instellingen**:
+   ```csh
+   getconf -a
+   ```
+
+4. **Vraag de maximale lengte van de padnaam op**:
+   ```csh
+   getconf PATH_MAX /
    ```
 
 ## Tips
-- Gebruik `getconf -a` om een overzicht te krijgen van alle beschikbare instellingen, wat handig kan zijn voor het verkennen van systeemparameters.
-- Controleer altijd de documentatie of gebruik `man getconf` voor meer gedetailleerde informatie over specifieke instellingen en hun betekenis.
-- Combineer `getconf` met andere opdrachten zoals `grep` om specifieke informatie sneller te vinden. Bijvoorbeeld:
-  ```bash
-  getconf -a | grep PAGE
-  ```
+- Gebruik `getconf -a` om een overzicht te krijgen van alle beschikbare configuratie-instellingen, wat handig kan zijn voor systeembeheer.
+- Combineer `getconf` met andere commando's zoals `grep` om specifieke informatie te filteren.
+- Controleer altijd de documentatie voor je specifieke systeem, aangezien de beschikbare instellingen kunnen variëren tussen verschillende Unix-achtige systemen.

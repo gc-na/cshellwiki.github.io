@@ -1,12 +1,12 @@
-# [Linux] Bash yum Kullanımı: Paket yönetimi aracı
+# [Linux] C Shell (csh) yum Kullanımı: Paket yönetimi aracı
 
 ## Genel Bakış
-`yum`, Red Hat tabanlı Linux dağıtımlarında kullanılan bir paket yönetim aracıdır. Kullanıcıların yazılım paketlerini yüklemesine, güncellemesine ve kaldırmasına olanak tanır. Ayrıca, bağımlılıkları otomatik olarak yönetir ve sistemin güncel kalmasını sağlar.
+`yum`, Red Hat tabanlı Linux dağıtımlarında kullanılan bir paket yönetim aracıdır. Kullanıcıların yazılım paketlerini yüklemesine, güncellemesine ve kaldırmasına olanak tanır. `yum`, bağımlılıkları otomatik olarak yönetir ve sistemin güncel kalmasını sağlar.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
 
-```bash
+```
 yum [seçenekler] [argümanlar]
 ```
 
@@ -14,43 +14,44 @@ yum [seçenekler] [argümanlar]
 - `install`: Belirtilen paketi yükler.
 - `remove`: Belirtilen paketi kaldırır.
 - `update`: Yüklü paketleri günceller.
-- `search`: Belirtilen terime göre paket arar.
-- `info`: Belirtilen paket hakkında bilgi verir.
+- `list`: Mevcut paketleri listeler.
+- `search`: Belirtilen terimi içeren paketleri arar.
 
 ## Yaygın Örnekler
-Aşağıda `yum` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+Aşağıda `yum` komutunun bazı pratik örnekleri bulunmaktadır:
 
-### 1. Bir Paketi Yüklemek
+### 1. Paket Yükleme
+Belirli bir paketi yüklemek için:
 ```bash
-yum install httpd
+yum install paket_adi
 ```
-Bu komut, Apache web sunucusunu yükler.
 
-### 2. Bir Paketi Kaldırmak
+### 2. Paket Kaldırma
+Belirli bir paketi kaldırmak için:
 ```bash
-yum remove httpd
+yum remove paket_adi
 ```
-Bu komut, Apache web sunucusunu sistemden kaldırır.
 
-### 3. Tüm Paketleri Güncellemek
+### 3. Paket Güncelleme
+Tüm yüklü paketleri güncellemek için:
 ```bash
 yum update
 ```
-Bu komut, sistemdeki tüm yüklü paketleri günceller.
 
-### 4. Bir Paketi Aramak
+### 4. Paket Arama
+Belirli bir terimi içeren paketleri aramak için:
 ```bash
-yum search vim
+yum search arama_terimi
 ```
-Bu komut, `vim` metin düzenleyicisini içeren paketleri arar.
 
-### 5. Bir Paketin Bilgilerini Görüntülemek
+### 5. Mevcut Paketleri Listeleme
+Tüm mevcut paketleri listelemek için:
 ```bash
-yum info httpd
+yum list
 ```
-Bu komut, Apache web sunucusu hakkında detaylı bilgi verir.
 
 ## İpuçları
-- `yum` komutunu kullanmadan önce sisteminizin güncel olduğundan emin olun.
-- Paket yükleme veya kaldırma işlemlerinden önce, işlem yapacağınız paketin bağımlılıklarını kontrol edin.
-- `yum clean all` komutunu kullanarak önbelleği temizlemek, sistemin daha verimli çalışmasına yardımcı olabilir.
+- `yum` komutunu çalıştırmadan önce, sisteminizin güncel olduğundan emin olun.
+- Paket yüklemeden önce, hangi bağımlılıkların yükleneceğini kontrol edin.
+- `yum clean all` komutunu kullanarak önbelleği temizleyebilirsiniz; bu, disk alanı tasarrufu sağlar.
+- `yum info paket_adi` komutuyla bir paketin detaylarını görüntüleyebilirsiniz.

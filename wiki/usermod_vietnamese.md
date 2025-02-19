@@ -1,23 +1,22 @@
-# [Linux] Bash usermod <Sử dụng người dùng>: Thay đổi thông tin người dùng
+# [Hệ điều hành] C Shell (csh) usermod <Sử dụng tương đương>: Thay đổi thông tin người dùng
 
 ## Tổng quan
-Lệnh `usermod` trong Bash được sử dụng để thay đổi thông tin của một người dùng đã tồn tại trên hệ thống. Bạn có thể thay đổi tên người dùng, nhóm, thư mục chính, và nhiều thuộc tính khác của tài khoản người dùng.
+Lệnh `usermod` trong C Shell (csh) được sử dụng để thay đổi thông tin của một người dùng đã tồn tại trên hệ thống. Điều này có thể bao gồm việc thay đổi tên đăng nhập, nhóm người dùng, hoặc các thuộc tính khác liên quan đến tài khoản người dùng.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `usermod` như sau:
-
-```bash
+```
 usermod [tùy chọn] [tham số]
 ```
 
-## Các tùy chọn phổ biến
-- `-l, --login TÊN_MỚI`: Đổi tên đăng nhập của người dùng.
-- `-d, --home THƯ_MỤC_MỚI`: Thay đổi thư mục chính của người dùng.
-- `-m, --move-home`: Di chuyển thư mục chính đến vị trí mới.
-- `-G, --groups NHÓM`: Thêm người dùng vào một hoặc nhiều nhóm.
-- `-a, --append`: Thêm người dùng vào nhóm mà không xóa khỏi nhóm hiện tại.
+## Tùy chọn phổ biến
+- `-l <tên_mới>`: Đổi tên đăng nhập của người dùng.
+- `-g <nhóm>`: Thay đổi nhóm chính của người dùng.
+- `-aG <nhóm>`: Thêm người dùng vào một nhóm bổ sung.
+- `-d <thư_mục>`: Thay đổi thư mục chính của người dùng.
+- `-s <shell>`: Thay đổi shell mặc định cho người dùng.
 
-## Ví dụ thường gặp
+## Ví dụ phổ biến
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `usermod`:
 
 1. Đổi tên đăng nhập của người dùng từ `olduser` thành `newuser`:
@@ -25,22 +24,27 @@ Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh 
    usermod -l newuser olduser
    ```
 
-2. Thay đổi thư mục chính của người dùng `username` thành `/home/newhome`:
+2. Thay đổi nhóm chính của người dùng `username` thành `newgroup`:
    ```bash
-   usermod -d /home/newhome username
+   usermod -g newgroup username
    ```
 
-3. Di chuyển thư mục chính của người dùng `username` đến vị trí mới:
+3. Thêm người dùng `username` vào nhóm bổ sung `extra_group`:
    ```bash
-   usermod -m -d /home/newhome username
+   usermod -aG extra_group username
    ```
 
-4. Thêm người dùng `username` vào nhóm `developers`:
+4. Thay đổi thư mục chính của người dùng `username` thành `/home/newdir`:
    ```bash
-   usermod -a -G developers username
+   usermod -d /home/newdir username
+   ```
+
+5. Thay đổi shell mặc định của người dùng `username` thành `/bin/bash`:
+   ```bash
+   usermod -s /bin/bash username
    ```
 
 ## Mẹo
-- Luôn sao lưu dữ liệu quan trọng trước khi thực hiện thay đổi với lệnh `usermod`.
-- Kiểm tra các nhóm hiện tại của người dùng bằng lệnh `groups username` trước khi thêm vào nhóm mới.
-- Sử dụng lệnh `passwd username` để thay đổi mật khẩu của người dùng sau khi thực hiện thay đổi thông tin.
+- Luôn sao lưu thông tin người dùng trước khi thực hiện thay đổi để tránh mất mát dữ liệu.
+- Kiểm tra quyền truy cập của bạn trước khi sử dụng lệnh `usermod`, vì bạn cần quyền quản trị để thực hiện các thay đổi này.
+- Sử dụng lệnh `id <tên_người_dùng>` để kiểm tra thông tin người dùng sau khi thực hiện thay đổi.

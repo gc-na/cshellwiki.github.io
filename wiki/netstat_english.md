@@ -1,58 +1,51 @@
-# [Linux] Bash netstat Uso: Monitor network connections and statistics
+# [Linux] C Shell (csh) netstat Uso: Display network connections and statistics
 
 ## Overview
-The `netstat` command is a powerful networking tool used to display network connections, routing tables, interface statistics, and more. It provides insights into the current network status and can help diagnose network issues.
+The `netstat` command is a powerful tool used to display network connections, routing tables, interface statistics, and more. It helps users monitor network activity and diagnose network issues.
 
 ## Usage
 The basic syntax of the `netstat` command is as follows:
 
-```bash
+```
 netstat [options] [arguments]
 ```
 
 ## Common Options
-- `-a`: Displays all active connections and listening ports.
-- `-t`: Shows TCP connections only.
-- `-u`: Displays UDP connections only.
-- `-n`: Shows numerical addresses instead of resolving hostnames.
-- `-l`: Lists only listening sockets.
-- `-p`: Displays the process ID and name associated with each connection.
-- `-r`: Displays the routing table.
+- `-a`: Show all active connections and listening ports.
+- `-n`: Display addresses and port numbers in numerical form rather than resolving them to hostnames.
+- `-r`: Display the routing table.
+- `-i`: Show network interface statistics.
+- `-p`: Show the process ID and name associated with each connection.
 
 ## Common Examples
 Here are some practical examples of using the `netstat` command:
 
 1. **Display all active connections:**
-   ```bash
+   ```csh
    netstat -a
    ```
 
-2. **Show only TCP connections:**
-   ```bash
-   netstat -t
+2. **Show active connections with numerical addresses:**
+   ```csh
+   netstat -an
    ```
 
-3. **List all listening ports:**
-   ```bash
-   netstat -l
-   ```
-
-4. **Show connections with numerical addresses:**
-   ```bash
-   netstat -n
-   ```
-
-5. **Display the routing table:**
-   ```bash
+3. **View the routing table:**
+   ```csh
    netstat -r
    ```
 
-6. **Show all connections with associated process IDs:**
-   ```bash
+4. **List network interface statistics:**
+   ```csh
+   netstat -i
+   ```
+
+5. **Show connections along with the associated process IDs:**
+   ```csh
    netstat -p
    ```
 
 ## Tips
-- Use `netstat -an` to quickly view all connections and their states without resolving hostnames, which can speed up the output.
-- Combine options for more detailed information, such as `netstat -tuln` to see all TCP and UDP listening ports with numerical addresses.
-- Regularly check your network connections with `netstat` to monitor for any unauthorized access or unusual activity.
+- Use the `-n` option to speed up the output by avoiding DNS lookups, especially useful on busy networks.
+- Combine options for more detailed output, such as `netstat -anp` to see all connections with process information.
+- Regularly check your network connections to identify any unauthorized access or unusual activity.

@@ -1,46 +1,45 @@
-# [Linux] Bash sha512sum Cách sử dụng: Tính toán và xác thực mã băm SHA-512
+# [Hệ điều hành] C Shell (csh) sha512sum: Tính toán và xác minh mã băm SHA-512
 
-## Tổng quan
-Lệnh `sha512sum` được sử dụng để tính toán và xác thực mã băm SHA-512 cho các tệp. Mã băm SHA-512 là một chuỗi ký tự đại diện cho nội dung của tệp, giúp kiểm tra tính toàn vẹn của dữ liệu.
+## Overview
+Lệnh `sha512sum` được sử dụng để tính toán và xác minh mã băm SHA-512 cho các tệp. Mã băm SHA-512 là một chuỗi ký tự đại diện cho nội dung của tệp, giúp người dùng kiểm tra tính toàn vẹn của tệp đó.
 
-## Cách sử dụng
+## Usage
 Cú pháp cơ bản của lệnh `sha512sum` như sau:
-```bash
+
+```csh
 sha512sum [options] [arguments]
 ```
 
-## Các tùy chọn phổ biến
-- `-b`: Đọc dữ liệu từ tệp nhị phân.
-- `-c`: Kiểm tra mã băm từ một tệp danh sách.
-- `-h`: Hiển thị thông tin trợ giúp.
-- `--quiet`: Không hiển thị thông tin không cần thiết.
+## Common Options
+- `-b`: Chỉ định rằng tệp đầu vào là nhị phân.
+- `-c`: Kiểm tra mã băm SHA-512 từ một tệp danh sách.
+- `-h`: Hiển thị thông tin trợ giúp về lệnh.
+- `--tag`: Thêm tag vào đầu ra.
 
-## Ví dụ thường gặp
-1. **Tính toán mã băm SHA-512 cho một tệp:**
-   ```bash
-   sha512sum filename.txt
+## Common Examples
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `sha512sum`:
+
+1. Tính toán mã băm SHA-512 cho một tệp:
+   ```csh
+   sha512sum myfile.txt
    ```
-   Lệnh này sẽ trả về mã băm SHA-512 của tệp `filename.txt`.
 
-2. **Lưu mã băm vào một tệp:**
-   ```bash
-   sha512sum filename.txt > checksum.txt
+2. Lưu mã băm vào một tệp:
+   ```csh
+   sha512sum myfile.txt > myfile.sha512
    ```
-   Mã băm của `filename.txt` sẽ được lưu vào tệp `checksum.txt`.
 
-3. **Kiểm tra mã băm từ một tệp danh sách:**
-   ```bash
-   sha512sum -c checksum.txt
+3. Kiểm tra mã băm từ một tệp danh sách:
+   ```csh
+   sha512sum -c myfile.sha512
    ```
-   Lệnh này sẽ kiểm tra tính toàn vẹn của các tệp được liệt kê trong `checksum.txt` dựa trên mã băm đã lưu.
 
-4. **Tính toán mã băm cho nhiều tệp:**
-   ```bash
-   sha512sum file1.txt file2.txt
+4. Tính toán mã băm cho nhiều tệp cùng một lúc:
+   ```csh
+   sha512sum file1.txt file2.txt file3.txt
    ```
-   Lệnh này sẽ tính toán mã băm cho cả `file1.txt` và `file2.txt`.
 
-## Mẹo
-- Luôn lưu mã băm vào một tệp riêng biệt để dễ dàng kiểm tra sau này.
-- Sử dụng tùy chọn `-c` để kiểm tra mã băm thường xuyên, đặc biệt là khi làm việc với dữ liệu quan trọng.
-- Đảm bảo rằng bạn sử dụng `sha512sum` trên tệp nhị phân nếu cần thiết để tránh lỗi trong quá trình tính toán.
+## Tips
+- Luôn kiểm tra mã băm của tệp sau khi tải xuống để đảm bảo tính toàn vẹn.
+- Sử dụng tùy chọn `-c` để tự động kiểm tra nhiều tệp băm từ một tệp danh sách.
+- Lưu trữ mã băm ở nơi an toàn để có thể tham chiếu lại khi cần thiết.

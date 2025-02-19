@@ -1,51 +1,45 @@
-# [Linux] Bash fsck gebruik: Controleer en repareer bestandssystemen
+# [Linux] C Shell (csh) fsck gebruik: Controleer en repareer bestandssystemen
 
 ## Overzicht
-De `fsck` (file system check) opdracht wordt gebruikt om de integriteit van bestandssystemen te controleren en eventuele fouten te repareren. Het is een essentieel hulpmiddel voor systeembeheerders om ervoor te zorgen dat schijven en partities correct functioneren.
+De `fsck` (file system check) opdracht wordt gebruikt om bestandssystemen te controleren en te repareren. Het helpt bij het identificeren en oplossen van fouten die zich kunnen voordoen in de structuur van een bestandssysteem.
 
 ## Gebruik
 De basis syntaxis van de `fsck` opdracht is als volgt:
 
-```bash
+```csh
 fsck [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-a` : Probeert automatisch fouten te repareren zonder gebruikersinteractie.
-- `-n` : Voert een controle uit zonder wijzigingen aan te brengen (alleen lezen).
-- `-y` : Bevestigt automatisch alle reparaties.
-- `-t` : Geeft het type bestandssysteem op dat gecontroleerd moet worden.
-- `-f` : Dwingt een controle af, zelfs als het bestandssysteem als schoon wordt gemarkeerd.
+- `-a`: Automatisch repareren van fouten zonder gebruikersinteractie.
+- `-n`: Voer een controle uit zonder wijzigingen aan te brengen.
+- `-y`: Bevestig automatisch alle reparaties.
+- `-t`: Geef de tijd weer die nodig is voor de controle.
 
 ## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van `fsck`:
+Hier zijn enkele praktische voorbeelden van het gebruik van de `fsck` opdracht:
 
-1. Controleer een specifiek bestandssysteem:
-   ```bash
+1. **Controleer een specifiek bestandssysteem:**
+   ```csh
    fsck /dev/sda1
    ```
 
-2. Voer een automatische reparatie uit:
-   ```bash
+2. **Automatisch repareren van fouten:**
+   ```csh
    fsck -a /dev/sda1
    ```
 
-3. Controleer zonder wijzigingen aan te brengen:
-   ```bash
+3. **Controle zonder wijzigingen:**
+   ```csh
    fsck -n /dev/sda1
    ```
 
-4. Bevestig automatisch alle reparaties:
-   ```bash
+4. **Automatisch bevestigen van reparaties:**
+   ```csh
    fsck -y /dev/sda1
    ```
 
-5. Controleer een ext4 bestandssysteem:
-   ```bash
-   fsck.ext4 /dev/sda1
-   ```
-
 ## Tips
-- Voer `fsck` altijd uit wanneer het bestandssysteem niet gemount is om gegevensverlies te voorkomen.
-- Maak regelmatig back-ups van belangrijke gegevens voordat je `fsck` gebruikt, vooral bij het repareren van fouten.
-- Gebruik de `-n` optie om een controle uit te voeren zonder wijzigingen aan te brengen, zodat je kunt zien welke fouten er zijn voordat je actie onderneemt.
+- Voer `fsck` uit wanneer het bestandssysteem niet in gebruik is, bij voorkeur vanuit een live-systeem of in de herstelmodus.
+- Maak altijd een back-up van belangrijke gegevens voordat je `fsck` gebruikt, vooral met de opties die wijzigingen aanbrengen.
+- Controleer regelmatig je bestandssystemen om problemen vroegtijdig te identificeren en te verhelpen.

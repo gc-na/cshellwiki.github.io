@@ -1,35 +1,43 @@
-# [Linux] Bash popd Kullanımı: Dizin yığınından dizin çıkarma
+# [Linux] C Shell (csh) popd Kullanımı: Dizin yığınından dizin çıkartma
 
 ## Genel Bakış
-`popd` komutu, dizin yığınından (directory stack) en üstteki dizini çıkararak kullanıcıyı bir önceki dizine geri döndürür. Bu, `pushd` komutuyla eklenmiş dizinler arasında kolayca geçiş yapmayı sağlar.
+`popd` komutu, C Shell (csh) ortamında dizin yığınından en üstteki dizini çıkartmak için kullanılır. Bu komut, kullanıcıların daha önce kaydedilmiş dizinlere hızlı bir şekilde geri dönmelerini sağlar.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-```bash
-popd [options]
+```csh
+popd [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-n`: Dizin yığınını değiştirmeden dizinleri gösterir.
-- `+n`: Yığın içindeki belirli bir dizine geri döner (n, dizin yığındaki dizinlerin sırasını belirtir).
+- `-n`: Dizin yığınını değiştirmeden dizin listesini gösterir.
+- `+n`: Yığın içindeki belirli bir dizine geri döner (n, dizin sırasını belirtir).
+- `-n`: Yığın içindeki n. dizine geri döner (sondan itibaren).
 
 ## Yaygın Örnekler
-1. En üstteki dizini çıkar ve bir önceki dizine geri dön:
-   ```bash
+Aşağıda `popd` komutunun bazı pratik örnekleri bulunmaktadır:
+
+1. En üstteki dizini yığından çıkartmak:
+   ```csh
    popd
    ```
 
-2. Dizin yığınındaki ikinci dizine geri dön:
-   ```bash
+2. Yığın içindeki belirli bir dizine geri dönmek (örneğin, ikinci dizin):
+   ```csh
    popd +1
    ```
 
-3. Dizin yığınını değiştirmeden mevcut dizinleri görüntüle:
-   ```bash
+3. Yığın içindeki son dizine geri dönmek:
+   ```csh
+   popd -1
+   ```
+
+4. Dizin yığınını değiştirmeden mevcut durumu görmek:
+   ```csh
    popd -n
    ```
 
 ## İpuçları
-- `pushd` ve `popd` komutlarını birlikte kullanarak dizinler arasında hızlıca geçiş yapabilirsiniz.
-- Dizin yığınını kontrol etmek için `dirs` komutunu kullanabilirsiniz; bu, mevcut dizin yığınını gösterir.
-- Dizin yığınındaki dizinlerin sırasını takip etmek, `popd` komutunu daha etkili kullanmanıza yardımcı olur.
+- `popd` komutunu kullanmadan önce `pushd` komutuyla dizinleri yığına eklediğinizden emin olun.
+- Dizin yığınını kontrol etmek için `dirs` komutunu kullanabilirsiniz; bu, yığındaki dizinlerin listesini gösterir.
+- Dizin yığınındaki dizinleri yönetmek için `pushd` ve `popd` komutlarını birlikte kullanmak, dizinler arasında hızlı geçiş yapmanızı sağlar.

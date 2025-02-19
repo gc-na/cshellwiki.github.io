@@ -1,55 +1,47 @@
-# [Linux] Bash sleep użycie: Wstrzymaj wykonywanie skryptu na określony czas
+# [Linux] C Shell (csh) sleep użycie: Wstrzymaj wykonanie skryptu na określony czas
 
 ## Overview
-Polecenie `sleep` w Bash służy do wstrzymywania wykonywania skryptu na określony czas. Jest to przydatne, gdy chcemy wprowadzić opóźnienia pomiędzy różnymi poleceniami lub operacjami w skryptach.
+Polecenie `sleep` w C Shell (csh) służy do wstrzymywania wykonania skryptu na określony czas. Jest to przydatne, gdy chcemy wprowadzić opóźnienia pomiędzy różnymi operacjami w skrypcie.
 
 ## Usage
 Podstawowa składnia polecenia `sleep` jest następująca:
 
-```bash
-sleep [opcje] [czas]
+```csh
+sleep [czas]
 ```
 
+Gdzie `[czas]` to liczba sekund, na które chcemy wstrzymać wykonanie.
+
 ## Common Options
-- `-h`, `--help`: Wyświetla pomoc dotyczącą polecenia.
-- `-V`, `--version`: Wyświetla wersję polecenia.
+Polecenie `sleep` w csh nie ma wielu opcji, ale oto kilka, które mogą być użyteczne:
+
+- **[czas]**: Określa czas w sekundach, przez który skrypt ma być wstrzymany. Można również używać jednostek czasu, takich jak `m` (minuty), `h` (godziny), `d` (dni).
 
 ## Common Examples
+Oto kilka praktycznych przykładów użycia polecenia `sleep`:
 
-1. **Wstrzymaj na 5 sekund:**
-   ```bash
+1. Wstrzymaj wykonanie na 5 sekund:
+   ```csh
    sleep 5
    ```
-   To polecenie wstrzyma wykonywanie skryptu na 5 sekund.
 
-2. **Wstrzymaj na 2 minuty:**
-   ```bash
+2. Wstrzymaj wykonanie na 2 minuty:
+   ```csh
    sleep 2m
    ```
-   Użycie `m` oznacza minuty, więc to polecenie wstrzyma skrypt na 2 minuty.
 
-3. **Wstrzymaj na 30 sekund:**
-   ```bash
-   sleep 30
-   ```
-   Wstrzymuje wykonywanie na 30 sekund.
-
-4. **Wstrzymaj na 1 godzinę:**
-   ```bash
+3. Wstrzymaj wykonanie na 1 godzinę:
+   ```csh
    sleep 1h
    ```
-   Użycie `h` oznacza godziny, co wstrzyma skrypt na 1 godzinę.
 
-5. **Wstrzymaj w pętli:**
-   ```bash
-   for i in {1..5}; do
-       echo "Wstrzymanie na 1 sekundę..."
-       sleep 1
-   done
+4. Wstrzymaj wykonanie na 10 sekund, a następnie wykonaj inne polecenie:
+   ```csh
+   sleep 10
+   echo "Wykonano po 10 sekundach"
    ```
-   Ten skrypt wstrzyma wykonywanie na 1 sekundę pięć razy, wyświetlając komunikat za każdym razem.
 
 ## Tips
-- Używaj `sleep` w skryptach, aby uniknąć przeciążenia zasobów, zwłaszcza w pętlach.
-- Możesz łączyć różne jednostki czasu, np. `sleep 1m30s`, aby wstrzymać na 1 minutę i 30 sekund.
-- W przypadku długich operacji, rozważ dodanie komunikatów informacyjnych przed i po `sleep`, aby użytkownicy wiedzieli, co się dzieje.
+- Używaj `sleep` w skryptach, aby wprowadzić opóźnienia między operacjami, co może być przydatne w przypadku interakcji z systemami zewnętrznymi.
+- Zawsze upewnij się, że czas wstrzymania jest odpowiedni do kontekstu skryptu, aby uniknąć niepotrzebnych opóźnień.
+- Możesz łączyć `sleep` z innymi poleceniami w skryptach, aby kontrolować przepływ wykonania.

@@ -1,50 +1,45 @@
-# [Linux] Bash fsck uso: Comprobar y reparar sistemas de archivos
+# [Linux] C Shell (csh) fsck Uso: Comprobar y reparar sistemas de archivos
 
 ## Overview
-El comando `fsck` (File System Consistency Check) se utiliza para verificar y reparar la integridad de los sistemas de archivos en Linux. Es una herramienta esencial para mantener la salud de los discos y prevenir la pérdida de datos.
+El comando `fsck` (file system check) se utiliza para verificar y reparar sistemas de archivos en Unix y sistemas similares. Su función principal es detectar y corregir errores en el sistema de archivos, asegurando que los datos sean accesibles y estén en buen estado.
 
 ## Usage
-La sintaxis básica del comando es la siguiente:
+La sintaxis básica del comando `fsck` es la siguiente:
 
-```bash
+```csh
 fsck [opciones] [argumentos]
 ```
 
 ## Common Options
-- `-a`: Intenta arreglar automáticamente los problemas encontrados.
-- `-n`: Realiza una verificación sin hacer cambios, útil para revisar el estado del sistema de archivos.
+- `-a`: Intenta corregir automáticamente los errores encontrados.
+- `-n`: Realiza una verificación sin realizar correcciones.
 - `-y`: Responde "sí" a todas las preguntas, permitiendo que `fsck` realice correcciones automáticamente.
-- `-t`: Especifica el tipo de sistema de archivos a verificar (por ejemplo, ext4, xfs).
+- `-t`: Muestra el tiempo que toma cada verificación.
 
 ## Common Examples
-Aquí hay algunos ejemplos prácticos del uso de `fsck`:
+Aquí hay algunos ejemplos prácticos del uso del comando `fsck`:
 
 1. **Verificar un sistema de archivos específico:**
-   ```bash
+   ```csh
    fsck /dev/sda1
    ```
 
-2. **Verificar y reparar automáticamente:**
-   ```bash
+2. **Verificar y corregir automáticamente errores:**
+   ```csh
    fsck -a /dev/sda1
    ```
 
-3. **Realizar una verificación sin cambios:**
-   ```bash
+3. **Realizar una verificación sin correcciones:**
+   ```csh
    fsck -n /dev/sda1
    ```
 
 4. **Forzar la verificación de un sistema de archivos:**
-   ```bash
+   ```csh
    fsck -f /dev/sda1
    ```
 
-5. **Verificar todos los sistemas de archivos en /etc/fstab:**
-   ```bash
-   fsck -A
-   ```
-
 ## Tips
-- Siempre es recomendable hacer una copia de seguridad de los datos importantes antes de ejecutar `fsck`, especialmente si se va a utilizar con opciones que modifican el sistema de archivos.
-- Ejecuta `fsck` en modo de usuario único o desde un entorno de recuperación para evitar conflictos con procesos que utilizan el sistema de archivos.
-- Utiliza la opción `-n` para realizar una verificación inicial sin realizar cambios, lo que te permitirá evaluar el estado del sistema de archivos antes de aplicar correcciones.
+- Siempre es recomendable hacer una copia de seguridad de los datos importantes antes de ejecutar `fsck`, especialmente si se planea realizar correcciones.
+- Ejecuta `fsck` en modo de usuario único o desde un entorno de recuperación para evitar conflictos con procesos que puedan estar utilizando el sistema de archivos.
+- Utiliza la opción `-y` con precaución, ya que puede llevar a la pérdida de datos si se corrigen errores sin revisión.

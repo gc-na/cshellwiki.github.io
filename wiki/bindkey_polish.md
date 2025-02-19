@@ -1,41 +1,42 @@
-# [Linux] Bash bindkey użycie: Przypisywanie skrótów klawiszowych
+# [Linux] C Shell (csh) bindkey: Ustawianie skrótów klawiszowych
 
-## Przegląd
-Polecenie `bindkey` w Bash służy do przypisywania skrótów klawiszowych do różnych poleceń lub funkcji w interaktywnym środowisku powłoki. Dzięki temu użytkownicy mogą zwiększyć swoją wydajność, korzystając z własnych, dostosowanych skrótów.
+## Overview
+Polecenie `bindkey` w powłoce C Shell (csh) służy do przypisywania skrótów klawiszowych do różnych poleceń lub funkcji. Umożliwia to użytkownikom szybsze i bardziej efektywne korzystanie z powłoki, umożliwiając im wykonywanie złożonych poleceń za pomocą prostych kombinacji klawiszy.
 
-## Użycie
-Podstawowa składnia polecenia `bindkey` wygląda następująco:
+## Usage
+Podstawowa składnia polecenia `bindkey` jest następująca:
 
-```bash
+```csh
 bindkey [opcje] [argumenty]
 ```
 
-## Częste opcje
-- `-e`: Ustawia tryb emacs.
-- `-v`: Ustawia tryb vi.
-- `-s`: Przypisuje skrót klawiszowy do ciągu znaków.
-- `-d`: Umożliwia wyświetlenie dostępnych skrótów klawiszowych.
+## Common Options
+- `-e` - Ustawia tryb emacs dla skrótów klawiszowych.
+- `-v` - Ustawia tryb vi dla skrótów klawiszowych.
+- `-s` - Przypisuje skrót klawiszowy do sekwencji poleceń.
 
-## Częste przykłady
-Przykład 1: Przypisanie skrótu klawiszowego do polecenia `ls`.
+## Common Examples
+Przykłady użycia polecenia `bindkey`:
 
-```bash
-bindkey -s '^l' 'ls\n'
+1. Przypisanie skrótu klawiszowego do polecenia `ls`:
+
+```csh
+bindkey -s "^l" "ls\n"
 ```
 
-Przykład 2: Ustawienie trybu vi.
+2. Ustawienie trybu emacs dla skrótów klawiszowych:
 
-```bash
-bindkey -v
+```csh
+bindkey -e
 ```
 
-Przykład 3: Wyświetlenie dostępnych skrótów klawiszowych.
+3. Przypisanie skrótu klawiszowego do sekwencji poleceń:
 
-```bash
-bindkey -d
+```csh
+bindkey -s "^g" "git status\n"
 ```
 
-## Wskazówki
-- Zawsze testuj nowe skróty klawiszowe, aby upewnić się, że nie kolidują z istniejącymi.
-- Używaj `bindkey -e` lub `bindkey -v`, aby przełączać się między trybami edycji, w zależności od preferencji.
-- Dokumentuj swoje przypisane skróty, aby łatwiej było je zapamiętać i ponownie użyć w przyszłości.
+## Tips
+- Używaj `bindkey -e` lub `bindkey -v`, aby dostosować preferencje dotyczące edytora, co może ułatwić korzystanie z powłoki.
+- Regularnie przeglądaj swoje przypisania skrótów klawiszowych, aby upewnić się, że są one aktualne i użyteczne.
+- Eksperymentuj z różnymi kombinacjami klawiszy, aby znaleźć te, które najlepiej pasują do twojego stylu pracy.

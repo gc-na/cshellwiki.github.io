@@ -1,61 +1,51 @@
-# [Linux] Bash helm penggunaan: Mengelola paket aplikasi Kubernetes
+# [Sistem Operasi] C Shell (csh) helm penggunaan: Mengelola paket aplikasi
 
 ## Overview
-Perintah `helm` adalah alat manajemen paket untuk Kubernetes yang memungkinkan pengguna untuk menginstal, mengelola, dan menghapus aplikasi dalam bentuk chart. Helm memudahkan proses penyebaran aplikasi dengan menyediakan cara untuk mengelola konfigurasi dan dependensi.
+Perintah `helm` digunakan dalam konteks Kubernetes untuk mengelola aplikasi yang dikemas dalam bentuk paket. Helm memudahkan pengguna untuk menginstal, mengupdate, dan menghapus aplikasi di dalam kluster Kubernetes dengan cara yang lebih terstruktur dan efisien.
 
 ## Usage
-Berikut adalah sintaks dasar untuk perintah helm:
+Berikut adalah sintaks dasar dari perintah helm:
 
-```bash
+```
 helm [options] [arguments]
 ```
 
 ## Common Options
-- `install`: Menginstal chart ke dalam cluster Kubernetes.
-- `upgrade`: Memperbarui rilis chart yang sudah ada.
-- `uninstall`: Menghapus rilis chart dari cluster.
-- `list`: Menampilkan daftar rilis chart yang terinstal.
+- `install`: Menginstal paket aplikasi baru.
+- `upgrade`: Memperbarui aplikasi yang sudah terinstal.
+- `uninstall`: Menghapus aplikasi yang terinstal.
+- `list`: Menampilkan daftar aplikasi yang terinstal.
 - `repo`: Mengelola repositori chart.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah helm:
 
-### Menginstal Chart
-Untuk menginstal chart, gunakan perintah berikut:
+1. **Menginstal aplikasi baru**:
+   ```bash
+   helm install my-release my-chart
+   ```
 
-```bash
-helm install my-release stable/nginx
-```
+2. **Memperbarui aplikasi yang sudah terinstal**:
+   ```bash
+   helm upgrade my-release my-chart
+   ```
 
-### Memperbarui Rilis
-Untuk memperbarui rilis yang sudah ada, gunakan:
+3. **Menghapus aplikasi**:
+   ```bash
+   helm uninstall my-release
+   ```
 
-```bash
-helm upgrade my-release stable/nginx
-```
+4. **Menampilkan daftar aplikasi yang terinstal**:
+   ```bash
+   helm list
+   ```
 
-### Menghapus Rilis
-Untuk menghapus rilis dari cluster, gunakan:
-
-```bash
-helm uninstall my-release
-```
-
-### Menampilkan Daftar Rilis
-Untuk melihat daftar rilis yang terinstal, gunakan:
-
-```bash
-helm list
-```
-
-### Mengelola Repositori Chart
-Untuk menambahkan repositori chart, gunakan:
-
-```bash
-helm repo add my-repo https://example.com/charts
-```
+5. **Menambahkan repositori chart**:
+   ```bash
+   helm repo add my-repo https://example.com/charts
+   ```
 
 ## Tips
-- Selalu periksa versi chart sebelum menginstal atau memperbarui untuk memastikan kompatibilitas.
+- Selalu periksa versi helm yang Anda gunakan dengan `helm version` untuk memastikan kompatibilitas.
 - Gunakan `helm search` untuk menemukan chart yang tersedia di repositori.
-- Simpan konfigurasi chart dalam file YAML untuk memudahkan pengelolaan dan pemeliharaan.
+- Simpan file konfigurasi Anda untuk memudahkan pengelolaan aplikasi di masa mendatang.

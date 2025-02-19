@@ -1,42 +1,42 @@
-# [Linux] Bash jobs użycie: zarządzanie procesami w tle
+# [Linux] C Shell (csh) jobs użycie: zarządzanie procesami w tle
 
 ## Overview
-Polecenie `jobs` w Bash służy do wyświetlania listy zadań uruchomionych w bieżącej powłoce, które są w tle lub wstrzymane. Umożliwia użytkownikowi monitorowanie i zarządzanie procesami, które nie są aktualnie aktywne w terminalu.
+Polecenie `jobs` w C Shell (csh) służy do wyświetlania listy procesów uruchomionych w tle w bieżącej sesji. Dzięki temu użytkownicy mogą łatwo monitorować i zarządzać swoimi zadaniami.
 
 ## Usage
 Podstawowa składnia polecenia `jobs` jest następująca:
 
-```bash
-jobs [options] [arguments]
+```
+jobs [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-l`: Wyświetla identyfikatory procesów (PID) dla zadań.
-- `-n`: Wyświetla tylko te zadania, które zmieniły swój stan od ostatniego wywołania `jobs`.
-- `-p`: Wyświetla tylko identyfikatory procesów (PID) zadań.
+- `-l` - Wyświetla identyfikatory procesów (PID) dla zadań.
+- `-n` - Pokazuje tylko te zadania, które zmieniły swój stan od ostatniego wywołania `jobs`.
+- `-p` - Wyświetla tylko identyfikatory procesów dla zadań.
 
 ## Common Examples
-1. **Wyświetlenie wszystkich zadań**:
-   ```bash
+1. Aby wyświetlić wszystkie zadania uruchomione w tle:
+   ```csh
    jobs
    ```
 
-2. **Wyświetlenie zadań z identyfikatorami procesów**:
-   ```bash
+2. Aby wyświetlić zadania z identyfikatorami procesów:
+   ```csh
    jobs -l
    ```
 
-3. **Wyświetlenie tylko zadań, które zmieniły stan**:
-   ```bash
+3. Aby zobaczyć tylko te zadania, które zmieniły stan:
+   ```csh
    jobs -n
    ```
 
-4. **Wyświetlenie identyfikatorów procesów zadań**:
-   ```bash
+4. Aby wyświetlić tylko identyfikatory procesów:
+   ```csh
    jobs -p
    ```
 
 ## Tips
-- Użyj `bg` i `fg` w połączeniu z `jobs`, aby wznowić wstrzymane zadania w tle lub na pierwszym planie.
-- Regularnie sprawdzaj status zadań, aby upewnić się, że nie są one w stanie wstrzymania przez dłuższy czas.
-- Pamiętaj, że `jobs` działa tylko w kontekście bieżącej powłoki, więc nie zobaczysz zadań uruchomionych w innych terminalach.
+- Używaj `jobs` regularnie, aby monitorować swoje zadania w tle i upewnić się, że nie ma ich zbyt wiele.
+- Jeśli chcesz wznowić zadanie w tle, użyj komendy `bg` po sprawdzeniu jego statusu za pomocą `jobs`.
+- Pamiętaj, że zadania w tle mogą być zakończone, więc warto regularnie sprawdzać ich status, aby uniknąć niepotrzebnych problemów.

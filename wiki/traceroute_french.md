@@ -1,12 +1,12 @@
-# [Linux] Bash traceroute : Suivre le chemin des paquets réseau
+# [Linux] C Shell (csh) traceroute : Suivre le chemin des paquets réseau
 
 ## Overview
-La commande `traceroute` est utilisée pour afficher le chemin que prennent les paquets de données pour atteindre une destination spécifique sur un réseau. Elle permet d'identifier les routeurs intermédiaires et de mesurer le temps de réponse à chaque saut.
+La commande `traceroute` permet de suivre le chemin emprunté par les paquets de données à travers un réseau jusqu'à une destination spécifique. Elle fournit des informations sur chaque saut effectué par les paquets, ce qui peut aider à diagnostiquer des problèmes de connectivité.
 
 ## Usage
 La syntaxe de base de la commande `traceroute` est la suivante :
 
-```bash
+```csh
 traceroute [options] [arguments]
 ```
 
@@ -14,34 +14,44 @@ traceroute [options] [arguments]
 Voici quelques options courantes pour la commande `traceroute` :
 
 - `-m <max_ttl>` : Définit le nombre maximum de sauts (TTL) à suivre.
-- `-p <port>` : Spécifie le port à utiliser pour les requêtes.
-- `-n` : N'affiche pas les noms d'hôtes, seulement les adresses IP.
-- `-I` : Utilise des paquets ICMP Echo au lieu de paquets UDP.
+- `-n` : Affiche les adresses IP au lieu des noms d'hôtes.
+- `-p <port>` : Spécifie le port à utiliser pour le traceroute (par défaut, c'est le port 33434).
+- `-w <timeout>` : Définit le délai d'attente pour chaque réponse.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `traceroute` :
 
-1. **Traceroute vers un site web :**
-   ```bash
-   traceroute www.example.com
-   ```
+1. Suivre le chemin vers un site web :
 
-2. **Traceroute avec un nombre maximum de sauts :**
-   ```bash
-   traceroute -m 10 www.example.com
-   ```
+    ```csh
+    traceroute www.example.com
+    ```
 
-3. **Traceroute en utilisant des paquets ICMP :**
-   ```bash
-   traceroute -I www.example.com
-   ```
+2. Suivre le chemin vers une adresse IP spécifique sans résoudre les noms d'hôtes :
 
-4. **Traceroute sans résolution de noms :**
-   ```bash
-   traceroute -n www.example.com
-   ```
+    ```csh
+    traceroute -n 192.168.1.1
+    ```
+
+3. Définir un nombre maximum de sauts à 15 :
+
+    ```csh
+    traceroute -m 15 www.example.com
+    ```
+
+4. Utiliser un port spécifique pour le traceroute :
+
+    ```csh
+    traceroute -p 80 www.example.com
+    ```
+
+5. Définir un délai d'attente de 2 secondes pour chaque réponse :
+
+    ```csh
+    traceroute -w 2 www.example.com
+    ```
 
 ## Tips
-- Utilisez l'option `-n` si vous souhaitez une sortie plus rapide sans résolution de noms d'hôtes.
-- Vérifiez les permissions de votre réseau, car certaines configurations peuvent bloquer les paquets ICMP ou UDP.
-- Combinez `traceroute` avec d'autres outils comme `ping` pour obtenir une vue d'ensemble de la connectivité réseau.
+- Utilisez l'option `-n` pour accélérer le processus si vous n'avez pas besoin des noms d'hôtes.
+- Vérifiez les permissions réseau si vous rencontrez des difficultés, car certaines configurations de pare-feu peuvent bloquer les requêtes de traceroute.
+- Comparez les résultats de `traceroute` à différents moments pour identifier des problèmes intermittents de connectivité.

@@ -1,12 +1,12 @@
-# [Linux] Bash uniq Utilisation : Supprimer les doublons dans un fichier
+# [Linux] C Shell (csh) uniq Utilisation : Éliminer les doublons dans un fichier
 
 ## Overview
-La commande `uniq` est utilisée pour filtrer les lignes répétées dans un fichier ou une entrée standard. Elle ne supprime que les doublons consécutifs, ce qui signifie que les lignes identiques doivent être adjacentes pour être considérées comme des doublons.
+La commande `uniq` est utilisée pour filtrer les lignes répétées dans un fichier ou dans une entrée standard. Elle affiche uniquement les lignes uniques, ce qui est particulièrement utile pour traiter des listes ou des fichiers contenant des doublons.
 
 ## Usage
 La syntaxe de base de la commande `uniq` est la suivante :
 
-```bash
+```csh
 uniq [options] [arguments]
 ```
 
@@ -15,48 +15,39 @@ Voici quelques options courantes pour la commande `uniq` :
 
 - `-c` : Compte le nombre d'occurrences de chaque ligne.
 - `-d` : Affiche uniquement les lignes qui apparaissent plus d'une fois.
-- `-u` : Affiche uniquement les lignes qui sont uniques (n'apparaissent qu'une fois).
+- `-u` : Affiche uniquement les lignes qui apparaissent une seule fois.
 - `-i` : Ignore la casse lors de la comparaison des lignes.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `uniq` :
 
-1. **Supprimer les doublons d'un fichier :**
-
-   ```bash
+1. **Éliminer les doublons d'un fichier :**
+   ```csh
    uniq fichier.txt
    ```
 
 2. **Compter les occurrences de chaque ligne :**
-
-   ```bash
+   ```csh
    uniq -c fichier.txt
    ```
 
 3. **Afficher uniquement les lignes répétées :**
-
-   ```bash
+   ```csh
    uniq -d fichier.txt
    ```
 
 4. **Afficher uniquement les lignes uniques :**
-
-   ```bash
+   ```csh
    uniq -u fichier.txt
    ```
 
-5. **Ignorer la casse lors de la suppression des doublons :**
-
-   ```bash
-   uniq -i fichier.txt
+5. **Utiliser uniq avec tri :**
+   Pour s'assurer que les doublons sont adjacents, il est souvent utile de trier le fichier d'abord :
+   ```csh
+   sort fichier.txt | uniq
    ```
 
 ## Tips
-- Assurez-vous que le fichier est trié avant d'utiliser `uniq`, car cela ne supprime que les doublons consécutifs. Vous pouvez utiliser la commande `sort` pour trier le fichier.
-- Combinez `sort` et `uniq` pour obtenir une liste de lignes uniques dans un fichier non trié :
-
-  ```bash
-  sort fichier.txt | uniq
-  ```
-  
-- Utilisez `uniq -c` pour obtenir un aperçu rapide des lignes les plus fréquentes dans votre fichier.
+- Assurez-vous que le fichier est trié si vous souhaitez utiliser `uniq` pour éliminer les doublons, car `uniq` ne supprime que les doublons adjacents.
+- Utilisez l'option `-c` pour avoir une meilleure idée de la fréquence des lignes dans votre fichier.
+- Combinez `uniq` avec d'autres commandes comme `sort` pour des résultats plus efficaces lors du traitement de grandes listes.

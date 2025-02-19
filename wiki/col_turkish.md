@@ -1,39 +1,43 @@
-# [Linux] Bash col Kullanımı: Metin dosyalarını biçimlendirme
+# [Linux] C Shell (csh) col Kullanımı: Metin biçimlendirme aracı
 
-## Overview
-`col` komutu, metin dosyalarındaki biçimlendirme hatalarını düzeltmek için kullanılan bir araçtır. Özellikle, metin dosyalarındaki ters eğik çizgi (`\`) karakterlerini ve diğer biçimlendirme işaretlerini temizleyerek, daha okunabilir bir çıktı sağlar.
+## Genel Bakış
+`col` komutu, metin dosyalarındaki biçimlendirme kontrol karakterlerini kaldırarak, düz metin çıktısı elde etmek için kullanılır. Özellikle, sayfa düzeni veya sütunlu veriler içeren dosyaları düz metin formatına dönüştürmek için faydalıdır.
 
-## Usage
-Temel sözdizimi şu şekildedir:
-
-```bash
-col [options] [arguments]
+## Kullanım
+Temel sözdizimi aşağıdaki gibidir:
+```
+col [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `-b`: Ters eğik çizgi karakterlerini temizler.
-- `-x`: Ters eğik çizgi karakterlerini temizler ve metni sola hizalar.
-- `-f`: Metin dosyasındaki biçimlendirme işaretlerini düzeltir.
+## Yaygın Seçenekler
+- `-b`: Tüm geri dönüş karakterlerini yok sayar.
+- `-x`: Genişlik ayarını kullanarak metni hizalar.
+- `-f`: Biçimlendirilmiş metni düz metne dönüştürür.
 
-## Common Examples
-Aşağıda `col` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+## Yaygın Örnekler
+Aşağıda `col` komutunun bazı pratik kullanım örnekleri verilmiştir:
 
-1. Basit bir metin dosyasını temizlemek için:
-   ```bash
-   col < dosya.txt > temizlenmis_dosya.txt
+1. Basit bir metin dosyasını düz metin formatına dönüştürmek:
+   ```csh
+   col < dosya.txt > düz_metin.txt
    ```
 
-2. Ters eğik çizgi karakterlerini temizleyerek dosyayı sola hizalamak için:
-   ```bash
-   col -x < dosya.txt > hizalanmis_dosya.txt
+2. Geri dönüş karakterlerini yok sayarak metni işlemek:
+   ```csh
+   col -b < dosya.txt > temiz_metin.txt
    ```
 
-3. Biçimlendirme işaretlerini düzeltmek için:
-   ```bash
-   col -f < dosya.txt > duzeltilmis_dosya.txt
+3. Metni genişlik ayarları ile hizalamak:
+   ```csh
+   col -x < dosya.txt > hizalanmış_metin.txt
    ```
 
-## Tips
-- `col` komutunu, çıktı almak istediğiniz dosyayı doğrudan bir dosyaya yönlendirerek kullanmak, sonuçları daha iyi yönetmenizi sağlar.
-- Biçimlendirme hatalarını önlemek için, metin dosyalarınızı oluştururken dikkatli olun.
-- `col` komutunu, diğer metin işleme araçlarıyla birleştirerek daha karmaşık işlemler gerçekleştirebilirsiniz. Örneğin, `cat` ile birlikte kullanarak birden fazla dosyayı birleştirebilirsiniz.
+4. Biçimlendirilmiş bir dosyayı düz metne dönüştürmek:
+   ```csh
+   col -f < biçimlendirilmiş_dosya.txt > düz_biçim.txt
+   ```
+
+## İpuçları
+- `col` komutunu kullanmadan önce dosyanızın biçimlendirilmiş olup olmadığını kontrol edin.
+- Çıktıyı bir dosyaya yönlendirmek, orijinal dosyanızı korumanıza yardımcı olur.
+- Farklı seçenekleri bir arada kullanarak en iyi sonucu elde edebilirsiniz; örneğin, `col -b -x` komutunu deneyebilirsiniz.

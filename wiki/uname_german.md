@@ -1,55 +1,52 @@
-# [Linux] Bash uname Verwendung: Systeminformationen anzeigen
+# [Linux] C Shell (csh) uname Verwendung: Systeminformationen anzeigen
 
 ## Übersicht
-Der Befehl `uname` wird verwendet, um Informationen über das Betriebssystem und die Hardware des Systems anzuzeigen. Er liefert grundlegende Details wie den Namen des Kernels, die Version und die Architektur des Systems.
+Der Befehl `uname` wird verwendet, um Informationen über das aktuelle System anzuzeigen. Er liefert Details wie den Namen des Betriebssystems, den Hostnamen, die Kernel-Version und weitere relevante Systeminformationen.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
-uname [Optionen]
+```csh
+uname [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-a`: Zeigt alle verfügbaren Informationen an.
-- `-s`: Gibt den Namen des Kernels aus.
+- `-a`: Zeigt alle verfügbaren Systeminformationen an.
+- `-s`: Gibt den Namen des Betriebssystems aus.
 - `-n`: Gibt den Netzwerk-Hostnamen des Systems aus.
 - `-r`: Zeigt die Kernel-Version an.
-- `-v`: Gibt die Versionsnummer des Kernels aus.
-- `-m`: Zeigt die Maschinenarchitektur an.
-- `-p`: Gibt den Prozessor-Typ aus (wenn verfügbar).
-- `-i`: Zeigt die Hardware-Plattform an.
-- `-o`: Gibt den Namen des Betriebssystems aus.
+- `-v`: Gibt die Version des Kernels aus.
+- `-m`: Zeigt den Maschinen-Typ an.
 
 ## Häufige Beispiele
 Hier sind einige praktische Beispiele für die Verwendung des `uname`-Befehls:
 
-1. **Alle Informationen anzeigen:**
-   ```bash
+1. **Alle Systeminformationen anzeigen:**
+   ```csh
    uname -a
    ```
 
-2. **Nur den Kernel-Namen anzeigen:**
-   ```bash
+2. **Nur den Namen des Betriebssystems anzeigen:**
+   ```csh
    uname -s
    ```
 
-3. **Kernel-Version anzeigen:**
-   ```bash
-   uname -r
-   ```
-
-4. **Maschinenarchitektur anzeigen:**
-   ```bash
-   uname -m
-   ```
-
-5. **Netzwerk-Hostnamen anzeigen:**
-   ```bash
+3. **Den Netzwerk-Hostnamen anzeigen:**
+   ```csh
    uname -n
    ```
 
+4. **Die Kernel-Version anzeigen:**
+   ```csh
+   uname -r
+   ```
+
+5. **Den Maschinen-Typ anzeigen:**
+   ```csh
+   uname -m
+   ```
+
 ## Tipps
-- Verwenden Sie `uname -a`, um einen umfassenden Überblick über Ihr System zu erhalten.
-- Kombinieren Sie `uname` mit anderen Befehlen, um Skripte zu erstellen, die auf spezifische Systeminformationen reagieren.
-- Beachten Sie, dass einige Optionen je nach System und Kernel-Version unterschiedliche Informationen zurückgeben können.
+- Verwenden Sie die Option `-a`, um schnell einen umfassenden Überblick über Ihr System zu erhalten.
+- Kombinieren Sie `uname` mit anderen Befehlen, um Skripte zu erstellen, die spezifische Systeminformationen benötigen.
+- Überprüfen Sie regelmäßig die Kernel-Version, um sicherzustellen, dass Ihr System auf dem neuesten Stand ist.

@@ -1,48 +1,44 @@
-# [Linux] Bash script Sử dụng: Ghi lại phiên làm việc
+# [Hệ điều hành] C Shell (csh) script: Ghi lại phiên làm việc
 
 ## Overview
-Lệnh `script` trong Bash được sử dụng để ghi lại một phiên làm việc trong terminal. Khi bạn chạy lệnh này, tất cả các đầu ra và đầu vào của terminal sẽ được lưu vào một tệp tin, cho phép bạn xem lại hoặc chia sẻ phiên làm việc sau này.
+Lệnh `script` trong C Shell (csh) được sử dụng để ghi lại tất cả các hoạt động của người dùng trong một phiên làm việc. Nó tạo ra một tệp tin chứa tất cả các lệnh đã nhập và đầu ra của chúng, giúp người dùng có thể xem lại hoặc chia sẻ phiên làm việc của mình sau này.
 
 ## Usage
 Cú pháp cơ bản của lệnh `script` như sau:
-```
+
+```csh
 script [options] [arguments]
 ```
 
 ## Common Options
-- `-a`: Thêm nội dung vào tệp đã tồn tại thay vì ghi đè.
+- `-a`: Thêm đầu ra vào tệp đã tồn tại thay vì ghi đè.
 - `-f`: Hiển thị đầu ra ngay lập tức, không chờ đến khi phiên làm việc kết thúc.
-- `-q`: Chạy lệnh mà không hiển thị thông báo khởi động.
-- `-t`: Ghi lại thời gian thực hiện các lệnh trong phiên làm việc.
+- `-q`: Chạy lệnh mà không hiển thị thông báo bắt đầu và kết thúc.
 
 ## Common Examples
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `script`:
 
-1. **Ghi lại phiên làm việc mặc định**:
-   ```bash
-   script
+1. Ghi lại phiên làm việc vào tệp `session.log`:
+   ```csh
+   script session.log
    ```
-   Lệnh này sẽ bắt đầu ghi lại phiên làm việc và lưu vào tệp `typescript`.
 
-2. **Ghi lại phiên làm việc vào tệp cụ thể**:
-   ```bash
-   script mysession.log
+2. Ghi thêm vào tệp đã tồn tại:
+   ```csh
+   script -a session.log
    ```
-   Phiên làm việc sẽ được ghi vào tệp `mysession.log`.
 
-3. **Ghi lại phiên làm việc và thêm vào tệp đã tồn tại**:
-   ```bash
-   script -a mysession.log
+3. Ghi lại phiên làm việc và hiển thị đầu ra ngay lập tức:
+   ```csh
+   script -f session.log
    ```
-   Lệnh này sẽ thêm nội dung mới vào tệp `mysession.log` thay vì ghi đè.
 
-4. **Ghi lại phiên làm việc với hiển thị đầu ra ngay lập tức**:
-   ```bash
-   script -f mysession.log
+4. Chạy lệnh mà không hiển thị thông báo:
+   ```csh
+   script -q session.log
    ```
-   Phiên làm việc sẽ được ghi lại và hiển thị ngay lập tức.
 
 ## Tips
-- Luôn kiểm tra tệp ghi lại sau khi kết thúc phiên làm việc để đảm bảo rằng mọi thứ đã được ghi lại chính xác.
-- Sử dụng tùy chọn `-q` nếu bạn không muốn thấy thông báo khởi động, giúp phiên làm việc của bạn gọn gàng hơn.
-- Nếu bạn cần ghi lại thời gian thực hiện các lệnh, hãy sử dụng tùy chọn `-t` để có thông tin chi tiết hơn.
+- Hãy nhớ kiểm tra kích thước của tệp tin ghi lại, vì nó có thể trở nên lớn nếu phiên làm việc kéo dài.
+- Sử dụng tùy chọn `-a` nếu bạn muốn ghi lại nhiều phiên vào cùng một tệp mà không mất dữ liệu cũ.
+- Để dừng ghi lại, chỉ cần gõ lệnh `exit` hoặc nhấn `Ctrl+D`.

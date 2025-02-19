@@ -1,56 +1,46 @@
-# [Linux] Bash unset Kullanımı: Değişkenleri Silme
+# [Linux] C Shell (csh) unset Kullanımı: Değişkenleri kaldırma
 
-## Genel Bakış
-`unset` komutu, Bash kabuğunda tanımlı olan değişkenleri veya fonksiyonları silmek için kullanılır. Bu komut, bir değişkenin veya fonksiyonun bellekteki yerini temizleyerek, daha fazla kullanılmasını engeller.
+## Overview
+`unset` komutu, C Shell (csh) ortamında tanımlı değişkenleri kaldırmak için kullanılır. Bu komut, bir değişkenin bellekteki varlığını sona erdirir ve böylece daha fazla kullanılmasını engeller.
 
-## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
-
-```bash
-unset [seçenekler] [argümanlar]
+## Usage
+Temel sözdizimi şu şekildedir:
+```
+unset [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-f`: Belirtilen bir fonksiyonu silmek için kullanılır.
-- `-v`: Belirtilen bir değişkeni silmek için kullanılır. Bu seçenek varsayılan olarak kullanılır.
+## Common Options
+- `-f`: Fonksiyonları kaldırmak için kullanılır.
+- `-v`: Değişkenleri kaldırmak için kullanılır (varsayılan olarak kullanılır).
 
-## Yaygın Örnekler
-Aşağıda `unset` komutunun bazı pratik örnekleri bulunmaktadır:
+## Common Examples
+Aşağıda `unset` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
-### Değişken Silme
-Bir değişkeni silmek için:
-
-```bash
-my_var="Merhaba"
-echo $my_var  # Çıktı: Merhaba
-unset my_var
-echo $my_var  # Çıktı: (boş)
+### Değişkeni Kaldırma
+Bir değişkeni kaldırmak için:
+```csh
+set myVar = "Hello"
+unset myVar
 ```
 
-### Fonksiyon Silme
-Bir fonksiyonu silmek için:
-
-```bash
-my_function() {
-    echo "Bu bir fonksiyon."
+### Fonksiyonu Kaldırma
+Bir fonksiyonu kaldırmak için:
+```csh
+function myFunc {
+    echo "This is a function"
 }
-my_function  # Çıktı: Bu bir fonksiyon.
-unset -f my_function
-my_function  # Çıktı: bash: my_function: command not found
+unset -f myFunc
 ```
 
-### Birden Fazla Değişken Silme
-Birden fazla değişkeni aynı anda silmek için:
-
-```bash
-var1="Değer 1"
-var2="Değer 2"
+### Birden Fazla Değişkeni Kaldırma
+Birden fazla değişkeni aynı anda kaldırmak için:
+```csh
+set var1 = "Value1"
+set var2 = "Value2"
 unset var1 var2
-echo $var1  # Çıktı: (boş)
-echo $var2  # Çıktı: (boş)
 ```
 
-## İpuçları
-- `unset` komutunu dikkatli kullanın; bir değişkeni sildiğinizde geri alınamaz.
-- Değişkenlerinizi silmeden önce, onları kullanıp kullanmadığınızı kontrol edin.
-- `unset` komutunu bir script içinde kullanıyorsanız, değişkenlerin kapsamını göz önünde bulundurun; global ve yerel değişkenler arasında farklılıklar olabilir.
+## Tips
+- `unset` komutunu kullanmadan önce, kaldırmak istediğiniz değişkenin gerçekten kullanılmadığından emin olun.
+- Kaldırılan bir değişkeni geri almak mümkün değildir; bu nedenle dikkatli kullanın.
+- Değişkenlerinizi yönetmek için `set` ve `unset` komutlarını birlikte kullanarak daha temiz bir ortam oluşturabilirsiniz.

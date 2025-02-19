@@ -1,38 +1,45 @@
-# [Linux] Bash builtin `builtin`: Wykonywanie poleceń w powłoce
+# [Linux] C Shell (csh) builtin `alias`: Tworzenie skrótów do poleceń
 
 ## Overview
-Polecenie `builtin` w Bashu pozwala na wykonywanie wbudowanych poleceń powłoki, które są dostępne bezpośrednio w powłoce, zamiast uruchamiania zewnętrznych programów. Umożliwia to korzystanie z funkcji, które są szybkie i efektywne, ponieważ nie wymagają dodatkowego procesu.
+Polecenie `alias` w C Shell (csh) służy do tworzenia skrótów dla dłuższych poleceń. Umożliwia to użytkownikom łatwiejsze i szybsze wprowadzanie często używanych komend.
 
 ## Usage
-Podstawowa składnia polecenia `builtin` jest następująca:
+Podstawowa składnia polecenia `alias` jest następująca:
 
-```bash
-builtin [opcje] [argumenty]
+```csh
+alias [nazwa_aliasu] '[polecenie]'
 ```
 
 ## Common Options
-- `-n`: Wykonuje polecenie, ale nie zmienia stanu powłoki.
-- `-f`: Wykonuje polecenie w trybie "no function", co oznacza, że nie będzie używać funkcji o tej samej nazwie, jeśli taka istnieje.
+- `-p`: Wyświetla wszystkie zdefiniowane aliasy.
+- `-d`: Usuwa zdefiniowany alias.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `builtin`:
+1. Tworzenie prostego aliasu:
+   ```csh
+   alias ll 'ls -l'
+   ```
+   Teraz można używać `ll`, aby wyświetlić szczegółową listę plików.
 
-### Przykład 1: Użycie `builtin` do wywołania `echo`
-```bash
-builtin echo "To jest wbudowane polecenie."
-```
+2. Tworzenie aliasu z wieloma poleceniami:
+   ```csh
+   alias update 'sudo apt update && sudo apt upgrade'
+   ```
+   Umożliwia to szybkie aktualizowanie systemu za pomocą jednego polecenia.
 
-### Przykład 2: Użycie `builtin` do wywołania `cd`
-```bash
-builtin cd /home/user
-```
+3. Wyświetlanie wszystkich aliasów:
+   ```csh
+   alias -p
+   ```
+   To polecenie pokaże wszystkie zdefiniowane aliasy w bieżącej sesji.
 
-### Przykład 3: Użycie `builtin` do wywołania `exit`
-```bash
-builtin exit 0
-```
+4. Usuwanie aliasu:
+   ```csh
+   alias -d ll
+   ```
+   Usuwa alias `ll`, przywracając oryginalne polecenie `ls`.
 
 ## Tips
-- Używaj `builtin`, gdy chcesz mieć pewność, że wywołujesz wbudowane polecenie, a nie zewnętrzny program o tej samej nazwie.
-- Sprawdzaj, czy polecenie, które chcesz wykonać, jest wbudowane, aby uniknąć niepotrzebnych opóźnień związanych z uruchamianiem zewnętrznych procesów.
-- `builtin` jest szczególnie przydatne w skryptach, gdzie chcesz mieć pełną kontrolę nad tym, jakie polecenia są wykonywane.
+- Używaj aliasów do skracania długich poleceń, co zwiększa wydajność pracy w terminalu.
+- Aby zachować aliasy po zamknięciu sesji, dodaj je do pliku `.cshrc`.
+- Unikaj nadawania aliasów, które mogą kolidować z istniejącymi poleceniami systemowymi.

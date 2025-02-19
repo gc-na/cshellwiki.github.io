@@ -1,27 +1,27 @@
-# [Linux] Bash switch uso equivalente: Cambiar entre diferentes opciones
+# [Linux] C Shell (csh) switch uso: Cambiar entre opciones de un comando
 
 ## Overview
-El comando `switch` en Bash permite alternar entre diferentes opciones o condiciones en un script. Aunque no es un comando nativo de Bash, se puede simular su funcionalidad utilizando estructuras de control como `case` o `if`.
+El comando `switch` en C Shell (csh) se utiliza para realizar selecciones condicionales en scripts. Permite evaluar una expresión y ejecutar diferentes bloques de código según el valor de esa expresión.
 
 ## Usage
-La sintaxis básica para usar `switch` (simulado) es la siguiente:
+La sintaxis básica del comando `switch` es la siguiente:
 
-```bash
-case variable in
-    patrón1)
-        # comandos para patrón1
-        ;;
-    patrón2)
-        # comandos para patrón2
-        ;;
-    *)
-        # comandos por defecto
-        ;;
-esac
+```csh
+switch (expresión)
+    case patrón1:
+        # comandos a ejecutar si la expresión coincide con patrón1
+        breaksw
+    case patrón2:
+        # comandos a ejecutar si la expresión coincide con patrón2
+        breaksw
+    default:
+        # comandos a ejecutar si no hay coincidencias
+        breaksw
+endsw
 ```
 
 ## Common Options
-Aunque `switch` no tiene opciones como tal, los patrones en el comando `case` pueden incluir:
+El comando `switch` no tiene opciones específicas, pero se utilizan patrones en las cláusulas `case` para determinar las coincidencias. Aquí hay algunas consideraciones sobre los patrones:
 
 - `*`: Coincide con cualquier cadena.
 - `?`: Coincide con un solo carácter.
@@ -29,62 +29,57 @@ Aunque `switch` no tiene opciones como tal, los patrones en el comando `case` pu
 
 ## Common Examples
 
-### Ejemplo 1: Uso básico de `case`
-```bash
-read -p "Introduce un número del 1 al 3: " numero
-case $numero in
-    1)
-        echo "Elegiste uno."
-        ;;
-    2)
-        echo "Elegiste dos."
-        ;;
-    3)
-        echo "Elegiste tres."
-        ;;
-    *)
-        echo "Número no válido."
-        ;;
-esac
+### Ejemplo 1: Selección simple
+```csh
+set variable = "manzana"
+switch ($variable)
+    case "manzana":
+        echo "Es una manzana."
+        breaksw
+    case "naranja":
+        echo "Es una naranja."
+        breaksw
+    default:
+        echo "No es ni una manzana ni una naranja."
+        breaksw
+endsw
 ```
 
-### Ejemplo 2: Comprobación de extensiones de archivo
-```bash
-archivo="documento.txt"
-case $archivo in
-    *.txt)
+### Ejemplo 2: Uso de patrones
+```csh
+set archivo = "documento.txt"
+switch ($archivo)
+    case "*.txt":
         echo "Es un archivo de texto."
-        ;;
-    *.jpg|*.png)
-        echo "Es una imagen."
-        ;;
-    *)
+        breaksw
+    case "*.jpg":
+        echo "Es una imagen JPG."
+        breaksw
+    default:
         echo "Tipo de archivo desconocido."
-        ;;
-esac
+        breaksw
+endsw
 ```
 
-### Ejemplo 3: Selección de opciones de menú
-```bash
-echo "Selecciona una opción: 1) Inicio 2) Configuración 3) Salir"
-read opcion
-case $opcion in
-    1)
-        echo "Has seleccionado Inicio."
-        ;;
-    2)
-        echo "Has seleccionado Configuración."
-        ;;
-    3)
-        echo "Saliendo..."
-        ;;
-    *)
-        echo "Opción no válida."
-        ;;
-esac
+### Ejemplo 3: Múltiples coincidencias
+```csh
+set dia = "lunes"
+switch ($dia)
+    case "lunes":
+    case "martes":
+        echo "Es un día de la semana laboral."
+        breaksw
+    case "sábado":
+    case "domingo":
+        echo "Es un día del fin de semana."
+        breaksw
+    default:
+        echo "Día no reconocido."
+        breaksw
+endsw
 ```
 
 ## Tips
-- Utiliza `case` cuando tengas múltiples condiciones que evaluar, ya que es más legible que múltiples `if`.
-- Asegúrate de incluir un caso por defecto (`*`) para manejar entradas no válidas.
-- Los patrones pueden ser combinados para simplificar el código, como en el ejemplo de extensiones de archivo.
+- Asegúrate de usar `breaksw` al final de cada caso para evitar que se ejecuten las instrucciones de los siguientes casos.
+- Utiliza patrones adecuados para hacer coincidir múltiples valores de manera efectiva.
+- Mantén el código dentro de cada caso claro y conciso para mejorar la legibilidad.

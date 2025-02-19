@@ -1,40 +1,73 @@
-# [Linux] Bash endsw Verwendung: Beendet laufende Prozesse
+# [Linux] C Shell (csh) endsw Verwendung: Beendet die Ausführung von Bedingungen
 
 ## Übersicht
-Der `endsw` Befehl wird verwendet, um laufende Prozesse in einem Linux-System zu beenden. Er ermöglicht es Benutzern, gezielt Prozesse zu identifizieren und zu stoppen, um Systemressourcen freizugeben oder um unerwünschte Programme zu schließen.
+Der `endsw` Befehl in der C Shell (csh) wird verwendet, um das Ende einer `switch`-Anweisung zu kennzeichnen. Er ist ein wichtiger Bestandteil der Steuerflusskontrolle in Skripten, da er es ermöglicht, verschiedene Ausführungswege basierend auf Bedingungen zu definieren.
 
 ## Verwendung
-Die grundlegende Syntax des `endsw` Befehls lautet:
+Die grundlegende Syntax des `endsw` Befehls ist wie folgt:
 
-```bash
-endsw [Optionen] [Argumente]
+```csh
+endsw
 ```
 
 ## Häufige Optionen
-- `-p`: Beendet einen Prozess anhand seiner Prozess-ID (PID).
-- `-n`: Beendet einen Prozess anhand seines Namens.
-- `-f`: Erzwingt das Beenden eines Prozesses, auch wenn dieser nicht reagiert.
+Der `endsw` Befehl hat keine spezifischen Optionen. Er wird einfach verwendet, um das Ende einer `switch`-Anweisung zu signalisieren.
 
 ## Häufige Beispiele
-Um einen Prozess mit einer bestimmten PID zu beenden, verwenden Sie:
 
-```bash
-endsw -p 1234
+### Beispiel 1: Einfache Verwendung in einer switch-Anweisung
+```csh
+set var = "B"
+switch ($var)
+    case "A":
+        echo "Die Variable ist A"
+        breaksw
+    case "B":
+        echo "Die Variable ist B"
+        breaksw
+    case "C":
+        echo "Die Variable ist C"
+        breaksw
+    default:
+        echo "Die Variable ist unbekannt"
+endsw
 ```
 
-Um einen Prozess anhand seines Namens zu beenden, verwenden Sie:
-
-```bash
-endsw -n firefox
+### Beispiel 2: Verwendung mit einer numerischen Variable
+```csh
+set zahl = 2
+switch ($zahl)
+    case 1:
+        echo "Eins"
+        breaksw
+    case 2:
+        echo "Zwei"
+        breaksw
+    case 3:
+        echo "Drei"
+        breaksw
+    default:
+        echo "Unbekannte Zahl"
+endsw
 ```
 
-Um einen nicht reagierenden Prozess zu erzwingen, verwenden Sie:
-
-```bash
-endsw -f 5678
+### Beispiel 3: Verwendung in einem Skript
+```csh
+#!/bin/csh
+set farbe = "rot"
+switch ($farbe)
+    case "rot":
+        echo "Die Farbe ist Rot"
+        breaksw
+    case "blau":
+        echo "Die Farbe ist Blau"
+        breaksw
+    default:
+        echo "Unbekannte Farbe"
+endsw
 ```
 
 ## Tipps
-- Überprüfen Sie die laufenden Prozesse mit dem `ps` Befehl, bevor Sie `endsw` verwenden, um sicherzustellen, dass Sie den richtigen Prozess beenden.
-- Seien Sie vorsichtig beim Erzwingen des Beendens von Prozessen, da dies zu Datenverlust führen kann.
-- Nutzen Sie die Tab-Vervollständigung in der Kommandozeile, um Prozessnamen schneller einzugeben.
+- Stellen Sie sicher, dass jede `switch`-Anweisung mit einem `endsw` Befehl endet, um Syntaxfehler zu vermeiden.
+- Verwenden Sie `breaksw`, um die Ausführung der `switch`-Anweisung nach einem Treffer zu beenden.
+- Achten Sie darauf, die Variablen in Klammern zu setzen, wenn Sie sie in einer `switch`-Anweisung verwenden.

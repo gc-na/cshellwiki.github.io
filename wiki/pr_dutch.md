@@ -1,50 +1,49 @@
-# [Linux] Bash pr gebruik: Pagina-opmaak voor tekstbestanden
+# [Linux] C Shell (csh) pr gebruik: Pagina-opmaak voor tekstbestanden
 
 ## Overzicht
-De `pr` opdracht in Bash wordt gebruikt om tekstbestanden op te maken voor afdrukken. Het verdeelt de inhoud van een bestand in pagina's en kolommen, waardoor het gemakkelijker wordt om te lezen en te printen.
+De `pr`-opdracht in C Shell (csh) wordt gebruikt om tekstbestanden op te maken voor afdrukken. Het voegt pagina- en kolomindelingen toe, waardoor het gemakkelijker wordt om lange tekstbestanden te lezen en af te drukken.
 
 ## Gebruik
-De basis syntaxis van de `pr` opdracht is als volgt:
+De basis syntaxis van de `pr`-opdracht is als volgt:
 
-```bash
+```csh
 pr [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-l [aantal]`: Stel het aantal regels per pagina in.
-- `-w [breedte]`: Stel de breedte van de pagina in.
-- `-2`: Verdeel de uitvoer in twee kolommen.
-- `-t`: Onderdruk de titel en de paginanummers in de uitvoer.
+- `-l [aantal]`: Bepaalt het aantal regels per pagina.
+- `-w [aantal]`: Bepaalt de breedte van de pagina in karakters.
+- `-h [koptekst]`: Voegt een koptekst toe aan elke pagina.
+- `-t`: Verbergt de paginanummers en datum.
 
 ## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van de `pr` opdracht:
 
 1. **Basis gebruik**: Om een tekstbestand op te maken voor afdrukken.
-   ```bash
+   ```csh
    pr bestand.txt
    ```
 
-2. **Instellen van het aantal regels per pagina**: Om 50 regels per pagina in te stellen.
-   ```bash
+2. **Aangepaste regelhoogte**: Om het aantal regels per pagina in te stellen op 50.
+   ```csh
    pr -l 50 bestand.txt
    ```
 
-3. **Twee kolommen gebruiken**: Om de uitvoer in twee kolommen te verdelen.
-   ```bash
-   pr -2 bestand.txt
+3. **Koptekst toevoegen**: Om een koptekst "Mijn Document" toe te voegen.
+   ```csh
+   pr -h "Mijn Document" bestand.txt
    ```
 
-4. **Breedte van de pagina instellen**: Om de breedte van de pagina in te stellen op 80 tekens.
-   ```bash
-   pr -w 80 bestand.txt
-   ```
-
-5. **Titel en paginanummers onderdrukken**: Om de titel en paginanummers niet weer te geven.
-   ```bash
+4. **Verbergen van paginanummers**: Om een bestand af te drukken zonder paginanummers.
+   ```csh
    pr -t bestand.txt
    ```
 
+5. **Meerdere bestanden samenvoegen**: Om meerdere bestanden samen te voegen en op te maken.
+   ```csh
+   pr bestand1.txt bestand2.txt
+   ```
+
 ## Tips
-- Gebruik de optie `-l` om de leesbaarheid te verbeteren, vooral bij lange bestanden.
-- Experimenteer met de kolominstellingen om de uitvoer aan te passen aan uw behoeften.
-- Combineer opties voor meer geavanceerde opmaak, zoals het instellen van zowel kolommen als pagina breedte.
+- Gebruik de `-w` optie om de pagina-instellingen aan te passen aan de afdrukvereisten van uw printer.
+- Experimenteer met verschillende opties om de opmaak te optimaliseren voor uw specifieke behoeften.
+- Vergeet niet om een voorbeeldafdruk te maken voordat u grote documenten afdrukt, om te controleren of de opmaak naar wens is.

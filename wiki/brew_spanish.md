@@ -1,57 +1,51 @@
-# [Linux] Bash brew uso: Gestión de paquetes en sistemas Unix
+# [Linux] C Shell (csh) brew uso: Gestor de paquetes para instalar y gestionar software
 
 ## Overview
-El comando `brew` es una herramienta de gestión de paquetes que permite a los usuarios instalar, actualizar y gestionar software en sistemas operativos basados en Unix, como macOS y Linux. Facilita la instalación de aplicaciones y bibliotecas de manera sencilla y eficiente.
+El comando `brew` es un gestor de paquetes que permite a los usuarios instalar, actualizar y gestionar software en sistemas operativos basados en Unix, como macOS y Linux. Facilita la instalación de aplicaciones y herramientas de línea de comandos de manera sencilla y eficiente.
 
 ## Usage
 La sintaxis básica del comando `brew` es la siguiente:
 
-```bash
-brew [opciones] [argumentos]
+```csh
+brew [options] [arguments]
 ```
 
 ## Common Options
-- `install`: Instala un paquete.
-- `uninstall`: Desinstala un paquete.
+- `install`: Instala un paquete específico.
+- `uninstall`: Elimina un paquete instalado.
 - `update`: Actualiza la lista de paquetes disponibles.
-- `upgrade`: Actualiza los paquetes instalados a sus últimas versiones.
+- `upgrade`: Actualiza todos los paquetes instalados a la última versión.
 - `list`: Muestra todos los paquetes instalados.
-- `search`: Busca un paquete en el repositorio.
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso del comando `brew`:
 
-### Instalar un paquete
-```bash
-brew install nombre_del_paquete
-```
+1. **Instalar un paquete**:
+   ```csh
+   brew install wget
+   ```
 
-### Desinstalar un paquete
-```bash
-brew uninstall nombre_del_paquete
-```
+2. **Desinstalar un paquete**:
+   ```csh
+   brew uninstall wget
+   ```
 
-### Actualizar la lista de paquetes
-```bash
-brew update
-```
+3. **Actualizar la lista de paquetes**:
+   ```csh
+   brew update
+   ```
 
-### Actualizar todos los paquetes instalados
-```bash
-brew upgrade
-```
+4. **Actualizar todos los paquetes instalados**:
+   ```csh
+   brew upgrade
+   ```
 
-### Listar todos los paquetes instalados
-```bash
-brew list
-```
-
-### Buscar un paquete
-```bash
-brew search nombre_del_paquete
-```
+5. **Listar todos los paquetes instalados**:
+   ```csh
+   brew list
+   ```
 
 ## Tips
-- Siempre ejecuta `brew update` antes de instalar o actualizar paquetes para asegurarte de que tienes la lista más reciente.
-- Utiliza `brew doctor` para diagnosticar problemas en tu instalación de Homebrew.
-- Considera usar `brew cleanup` para eliminar versiones antiguas de paquetes y liberar espacio en disco.
+- Asegúrate de ejecutar `brew update` regularmente para mantener tu lista de paquetes actualizada.
+- Utiliza `brew search <nombre_del_paquete>` para encontrar paquetes disponibles antes de instalarlos.
+- Consulta la documentación de cada paquete con `brew info <nombre_del_paquete>` para obtener más detalles sobre su uso y opciones.

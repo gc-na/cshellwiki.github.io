@@ -1,39 +1,39 @@
-# [Linux] Bash groupmod Kullanımı: Grupları değiştirme
+# [Linux] C Shell (csh) groupmod Kullanımı: Grup bilgilerini değiştirme
 
-## Overview
-`groupmod` komutu, mevcut bir kullanıcı grubunun özelliklerini değiştirmek için kullanılır. Bu komut, grup adını veya grup kimliğini (GID) güncelleyerek sistem yöneticilerine esneklik sağlar.
+## Genel Bakış
+`groupmod` komutu, mevcut bir grubun özelliklerini değiştirmek için kullanılır. Bu komut, grup adını veya grup kimliğini (GID) güncelleyerek sistemdeki grup yapılandırmasını yönetmenizi sağlar.
 
-## Usage
+## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
 
-```bash
-groupmod [options] [arguments]
+```csh
+groupmod [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `-n, --new-name NEW_NAME`: Grubun yeni adını belirtir.
-- `-g, --gid GID`: Grubun yeni grup kimliğini (GID) ayarlar.
-- `-o, --non-unique`: GID'nin benzersiz olmamasını sağlar; başka bir grup ile aynı GID kullanılabilir.
+## Yaygın Seçenekler
+- `-n, --new-name`: Grubun yeni adını belirtir.
+- `-g, --gid`: Grubun yeni grup kimliğini (GID) belirtir.
+- `-o, --non-unique`: GID'nin benzersiz olmamasına izin verir.
 
-## Common Examples
-Aşağıda `groupmod` komutunun bazı pratik örnekleri bulunmaktadır:
+## Yaygın Örnekler
+Aşağıda `groupmod` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
 1. **Grup adını değiştirme**:
-   ```bash
+   ```csh
    groupmod -n yeni_grup_adi eski_grup_adi
    ```
 
 2. **Grup kimliğini değiştirme**:
-   ```bash
+   ```csh
    groupmod -g 1001 grup_adi
    ```
 
-3. **Grup adını ve GID'yi aynı anda değiştirme**:
-   ```bash
-   groupmod -n yeni_grup_adi -g 1002 eski_grup_adi
+3. **Benzersiz olmayan GID ile grup oluşturma**:
+   ```csh
+   groupmod -o -g 1000 grup_adi
    ```
 
-## Tips
-- Grup adını değiştirirken, yeni adın sistemdeki diğer gruplarla çakışmadığından emin olun.
-- GID değişikliği yapmadan önce, bu GID'yi kullanan kullanıcıların etkilenip etkilenmeyeceğini kontrol edin.
-- Değişikliklerin etkili olması için, ilgili kullanıcıların oturumlarını kapatıp açmaları gerekebilir.
+## İpuçları
+- Grup adını veya GID'yi değiştirmeden önce mevcut grup bilgilerini kontrol edin.
+- Değişikliklerin etkili olabilmesi için ilgili kullanıcıların oturumlarını kapatıp açmaları gerekebilir.
+- `groupmod` komutunu kullanmadan önce, sistem yöneticisi olarak gerekli izinlere sahip olduğunuzdan emin olun.

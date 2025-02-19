@@ -1,49 +1,43 @@
-# [Linux] Bash expand cách sử dụng: Chuyển đổi tab thành khoảng trắng
+# [Hệ điều hành] C Shell (csh) expand <Sử dụng tương đương>: Chuyển đổi tab thành khoảng trắng
 
 ## Tổng quan
-Lệnh `expand` trong Bash được sử dụng để chuyển đổi các ký tự tab trong tệp thành khoảng trắng. Điều này hữu ích khi bạn muốn định dạng văn bản để dễ đọc hơn, đặc biệt là trong các tệp văn bản mà các tab có thể gây khó khăn trong việc căn chỉnh.
+Lệnh `expand` trong C Shell (csh) được sử dụng để chuyển đổi các ký tự tab trong một tệp thành các khoảng trắng. Điều này hữu ích khi bạn muốn định dạng văn bản cho dễ đọc hơn hoặc khi bạn cần chuẩn hóa định dạng trước khi xử lý thêm.
 
-## Cách sử dụng
+## Cú pháp
 Cú pháp cơ bản của lệnh `expand` như sau:
-
 ```
 expand [tùy chọn] [đối số]
 ```
 
 ## Các tùy chọn phổ biến
-- `-t, --tabs=N`: Đặt số khoảng trắng cho mỗi tab (mặc định là 8).
-- `-i, --initial`: Chỉ chuyển đổi các tab ở đầu dòng.
-- `-n, --no-tabs`: Không chuyển đổi bất kỳ tab nào.
+- `-t, --tabs=N`: Đặt số lượng khoảng trắng mà mỗi tab sẽ được chuyển đổi thành (mặc định là 8).
+- `-i, --initial`: Chỉ chuyển đổi các tab không nằm ở đầu dòng.
+- `-n, --no-tabs`: Không chuyển đổi bất kỳ tab nào thành khoảng trắng.
 
-## Ví dụ phổ biến
-Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `expand`:
+## Ví dụ thường gặp
+Dưới đây là một số ví dụ về cách sử dụng lệnh `expand`:
 
-1. Chuyển đổi tệp `example.txt` với tab thành khoảng trắng:
-   ```bash
-   expand example.txt
+1. Chuyển đổi tab thành khoảng trắng trong một tệp:
+   ```csh
+   expand file.txt
    ```
 
-2. Chỉ định số khoảng trắng cho mỗi tab là 4:
-   ```bash
-   expand -t 4 example.txt
+2. Chỉ định số lượng khoảng trắng cho mỗi tab:
+   ```csh
+   expand -t 4 file.txt
    ```
 
-3. Chuyển đổi chỉ các tab ở đầu dòng trong tệp `header.txt`:
-   ```bash
-   expand -i header.txt
+3. Chuyển đổi tab nhưng không thay đổi tab ở đầu dòng:
+   ```csh
+   expand -i file.txt
    ```
 
-4. Lưu kết quả vào một tệp mới `output.txt`:
-   ```bash
-   expand example.txt > output.txt
-   ```
-
-5. Không chuyển đổi bất kỳ tab nào trong tệp `no_tabs.txt`:
-   ```bash
-   expand -n no_tabs.txt
+4. Không chuyển đổi bất kỳ tab nào:
+   ```csh
+   expand -n file.txt
    ```
 
 ## Mẹo
-- Sử dụng tùy chọn `-t` để điều chỉnh số lượng khoảng trắng cho phù hợp với định dạng bạn mong muốn.
-- Kiểm tra kết quả bằng cách sử dụng lệnh `cat -A` để xem các ký tự đặc biệt như tab và khoảng trắng.
-- Kết hợp `expand` với các lệnh khác như `grep` hoặc `sort` để xử lý văn bản hiệu quả hơn.
+- Hãy kiểm tra định dạng của tệp văn bản trước khi sử dụng `expand` để đảm bảo rằng bạn đang chuyển đổi đúng các ký tự tab.
+- Sử dụng tùy chọn `-t` để điều chỉnh số lượng khoảng trắng cho phù hợp với nhu cầu của bạn, đặc biệt khi làm việc với mã nguồn hoặc tài liệu kỹ thuật.
+- Kết hợp `expand` với các lệnh khác như `cat` hoặc `less` để xem kết quả ngay lập tức.

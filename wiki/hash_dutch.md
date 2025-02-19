@@ -1,51 +1,44 @@
-# [Linux] Bash hash gebruik: Beheer van de opdrachtcache
+# [Linux] C Shell (csh) hash gebruik: Beheer van de opdrachtcache
 
 ## Overzicht
-De `hash` opdracht in Bash wordt gebruikt om de cache van de opdrachten die zijn uitgevoerd in de huidige shell-sessie te beheren. Het helpt bij het versnellen van de uitvoering van commando's door de paden van eerder uitgevoerde opdrachten op te slaan.
+De `hash` opdracht in C Shell (csh) wordt gebruikt om de cache van eerder uitgevoerde opdrachten te beheren. Het helpt bij het versnellen van de uitvoering van commando's door hun locaties in het bestandssysteem op te slaan.
 
 ## Gebruik
 De basis syntaxis van de `hash` opdracht is als volgt:
 
-```bash
-hash [opties] [argumenten]
+```csh
+hash [options] [arguments]
 ```
 
-## Veelvoorkomende Opties
-- `-r`: Reset de hash-tabel, waardoor alle opgeslagen paden worden gewist.
-- `-p`: Specificeer een pad voor het commando dat je wilt hashen.
-- `-l`: Lijst de huidige inhoud van de hash-tabel.
+## Veelvoorkomende opties
+- `-r`: Reset de hash-tabel, waardoor alle opgeslagen locaties worden gewist.
+- `-p`: Voeg een specifieke opdracht toe aan de hash-tabel met de opgegeven pad.
+- `-l`: Toon de huidige inhoud van de hash-tabel.
 
-## Veelvoorkomende Voorbeelden
+## Veelvoorkomende voorbeelden
 
-### 1. Lijst de huidige hash-tabel
+### Voorbeeld 1: Toon de huidige hash-tabel
 Om de huidige inhoud van de hash-tabel weer te geven, gebruik je:
 
-```bash
-hash
-```
-
-### 2. Reset de hash-tabel
-Als je de hash-tabel wilt resetten, gebruik dan:
-
-```bash
-hash -r
-```
-
-### 3. Voeg een specifiek pad toe aan de hash-tabel
-Als je een specifiek pad voor een commando wilt hashen, gebruik je:
-
-```bash
-hash -p /pad/naar/commando commando
-```
-
-### 4. Lijst de hash-tabel met details
-Om de hash-tabel met details te bekijken, gebruik je:
-
-```bash
+```csh
 hash -l
 ```
 
+### Voorbeeld 2: Reset de hash-tabel
+Als je de hash-tabel wilt resetten en alle opgeslagen locaties wilt wissen, voer je het volgende commando in:
+
+```csh
+hash -r
+```
+
+### Voorbeeld 3: Voeg een specifieke opdracht toe aan de hash-tabel
+Om een specifieke opdracht toe te voegen aan de hash-tabel, gebruik je:
+
+```csh
+hash -p /usr/local/bin/mijnopdracht
+```
+
 ## Tips
-- Gebruik `hash` regelmatig om ervoor te zorgen dat je de meest actuele versies van je commando's gebruikt, vooral na het installeren van nieuwe software.
-- Als je vaak verschillende versies van een commando gebruikt, kan het nuttig zijn om de hash-tabel te resetten om verwarring te voorkomen.
-- Houd er rekening mee dat de hash-tabel alleen geldt voor de huidige shell-sessie; bij het openen van een nieuwe sessie wordt deze opnieuw opgebouwd.
+- Gebruik `hash -l` regelmatig om te controleren welke opdrachten zijn opgeslagen en om te zien of er verouderde paden zijn.
+- Reset de hash-tabel als je wijzigingen hebt aangebracht in de locaties van je uitvoerbare bestanden om verwarring te voorkomen.
+- Voeg vaak gebruikte opdrachten toe aan de hash-tabel om de prestaties van je shell-sessies te verbeteren.

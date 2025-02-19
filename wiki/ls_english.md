@@ -1,65 +1,58 @@
-# [Linux] Bash ls Uso equivalente: Listar archivos y directorios
+# [Linux] C Shell (csh) ls Uso equivalente: Listar archivos y directorios
 
 ## Overview
-The `ls` command is a fundamental utility in Unix-like operating systems that is used to list the contents of a directory. By default, it displays the names of files and directories within the current working directory.
+The `ls` command in C Shell (csh) is used to list the contents of a directory. It provides a way to view files and subdirectories, making it easier to navigate and manage your file system.
 
 ## Usage
 The basic syntax of the `ls` command is as follows:
 
-```bash
+```
 ls [options] [arguments]
 ```
 
 ## Common Options
-Here are some commonly used options with the `ls` command:
+Here are some common options you can use with the `ls` command:
 
 - `-l`: Displays detailed information about each file, including permissions, owner, size, and modification date.
-- `-a`: Shows all files, including hidden files (those starting with a dot).
+- `-a`: Shows all files, including hidden files that start with a dot (`.`).
 - `-h`: When used with `-l`, it makes file sizes human-readable (e.g., KB, MB).
 - `-R`: Lists directories and their contents recursively.
 - `-t`: Sorts files by modification time, showing the most recently modified files first.
-- `-S`: Sorts files by size, with the largest files first.
 
 ## Common Examples
-
 Here are some practical examples of using the `ls` command:
 
-1. **Basic Listing**
+1. **List files in the current directory:**
    ```bash
    ls
    ```
 
-2. **Detailed Listing**
-   ```bash
-   ls -l
-   ```
-
-3. **Including Hidden Files**
+2. **List all files, including hidden ones:**
    ```bash
    ls -a
    ```
 
-4. **Human-Readable Sizes**
+3. **List files with detailed information:**
+   ```bash
+   ls -l
+   ```
+
+4. **List files with human-readable sizes:**
    ```bash
    ls -lh
    ```
 
-5. **Recursive Listing**
-   ```bash
-   ls -R
-   ```
-
-6. **Sorting by Modification Time**
+5. **List files sorted by modification time:**
    ```bash
    ls -lt
    ```
 
-7. **Sorting by Size**
+6. **Recursively list all files in the current directory and subdirectories:**
    ```bash
-   ls -lS
+   ls -R
    ```
 
 ## Tips
-- Combine options for more powerful listings. For example, `ls -la` will show all files with detailed information.
-- Use `ls` in scripts to check for the presence of files or directories.
-- Remember that the output of `ls` can be piped to other commands for further processing, such as `grep` for filtering specific files.
+- Combine options to customize your output. For example, `ls -la` will show all files with detailed information.
+- Use `ls | less` to paginate the output if you have many files, making it easier to read.
+- Remember that the order of options does not matter; `ls -la` is the same as `ls -al`.

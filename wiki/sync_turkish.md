@@ -1,39 +1,38 @@
-# [Linux] Bash sync Kullanımı: Verileri senkronize etme
+# [Linux] C Shell (csh) sync Kullanımı: Verileri diske yazma işlemi
 
-## Genel Bakış
-`sync` komutu, dosya sistemindeki verilerin diske yazılmasını sağlar. Bu, bellek tamponlarında bulunan verilerin kalıcı depolama birimine aktarılmasını garanti eder. Özellikle, sistem kapanmadan önce veya bir dosya sistemi hatası riski olduğunda kullanışlıdır.
+## Overview
+`sync` komutu, bellek (RAM) üzerinde bulunan verilerin diske yazılmasını sağlar. Bu komut, sistemin veri kaybını önlemek için kullanılır ve özellikle sistem kapatılmadan önce veya önemli dosyalar üzerinde değişiklik yapmadan önce yararlıdır.
 
-## Kullanım
-Temel sözdizimi şu şekildedir:
-```bash
-sync [seçenekler] [argümanlar]
+## Usage
+Temel sözdizimi aşağıdaki gibidir:
+```csh
+sync [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-f`: Belirtilen dosya veya dizin için senkronizasyon yapar.
-- `-d`: Disk üzerinde bulunan tüm dosyaların senkronizasyonunu sağlar.
-- `--help`: Komut hakkında yardım bilgilerini gösterir.
+## Common Options
+- `-f`: Dosya sistemlerini zorla senkronize eder.
+- `-d`: Yalnızca veri bloklarını senkronize eder, inode'ları atlar.
+- `-a`: Tüm dosya sistemlerini senkronize eder.
 
-## Yaygın Örnekler
-1. Tüm dosya sistemini senkronize etmek için:
-   ```bash
+## Common Examples
+Aşağıda `sync` komutunun bazı pratik örnekleri verilmiştir:
+
+1. Tüm dosya sistemlerini senkronize etmek için:
+   ```csh
    sync
    ```
 
-2. Belirli bir dosyayı senkronize etmek için:
-   ```bash
-   sync /path/to/file
+2. Zorla dosya sistemlerini senkronize etmek için:
+   ```csh
+   sync -f
    ```
 
-3. Disk üzerinde bulunan tüm dosyaları senkronize etmek için:
-   ```bash
+3. Yalnızca veri bloklarını senkronize etmek için:
+   ```csh
    sync -d
    ```
 
-## İpuçları
-- `sync` komutunu, sisteminizi kapatmadan önce kullanarak veri kaybını önleyebilirsiniz.
-- Büyük dosyalar üzerinde çalışırken, işlemin tamamlanmasını beklemek için `sync` komutunu kullanmak iyi bir uygulamadır.
-- `sync` komutunu sıkça kullanıyorsanız, bir alias oluşturarak daha hızlı erişim sağlayabilirsiniz. Örneğin:
-  ```bash
-  alias s='sync'
-  ```
+## Tips
+- `sync` komutunu, sisteminizi kapatmadan önce çalıştırmak, veri kaybını önlemek için iyi bir uygulamadır.
+- Eğer büyük dosyalar üzerinde çalışıyorsanız, işlemlerinizin tamamlanmasını bekledikten sonra `sync` komutunu kullanmayı unutmayın.
+- `sync` komutunu sıklıkla kullanmak, sistemin veri bütünlüğünü artırır.

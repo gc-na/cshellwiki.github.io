@@ -1,47 +1,49 @@
-# [리눅스] Bash foreach 사용법: 반복적으로 명령 실행하기
+# [리눅스] C Shell (csh) foreach 사용법: 반복문 실행
 
 ## Overview
-`foreach` 명령은 주어진 리스트의 각 항목에 대해 특정 명령을 반복 실행하는 기능을 제공합니다. 주로 스크립트에서 반복 작업을 수행할 때 유용하게 사용됩니다.
+`foreach` 명령어는 C Shell에서 반복문을 실행하는 데 사용됩니다. 주어진 리스트의 각 항목에 대해 특정 명령을 반복적으로 실행할 수 있게 해줍니다.
 
 ## Usage
-기본 구문은 다음과 같습니다:
-```bash
-foreach [options] [arguments]
+기본 문법은 다음과 같습니다:
+```
+foreach variable (list)
+    command
+end
 ```
 
 ## Common Options
-- `-n`: 각 반복에서 명령을 실행하기 전에 항목을 출력하지 않습니다.
-- `-p`: 각 항목에 대해 명령을 실행하기 전에 사용자에게 입력을 요청합니다.
+- `-n`: 명령을 실행하기 전에 각 명령을 출력합니다.
+- `-e`: 명령을 실행하기 전에 구문 오류를 검사합니다.
 
 ## Common Examples
-다음은 `foreach` 명령을 사용하는 몇 가지 예시입니다.
+다음은 `foreach` 명령어의 몇 가지 실용적인 예입니다.
 
-### 예시 1: 파일 목록 출력
-```bash
-foreach file (file1.txt file2.txt file3.txt)
+### 예제 1: 숫자 반복
+```csh
+foreach i (1 2 3 4 5)
+    echo $i
+end
+```
+이 코드는 1부터 5까지의 숫자를 출력합니다.
+
+### 예제 2: 파일 목록 처리
+```csh
+foreach file (*.txt)
     echo "Processing $file"
 end
 ```
-이 예시는 `file1.txt`, `file2.txt`, `file3.txt` 파일을 반복적으로 처리하는 방법을 보여줍니다.
+현재 디렉토리의 모든 `.txt` 파일을 처리하는 예입니다.
 
-### 예시 2: 디렉토리 내 모든 파일 삭제
-```bash
-foreach file (`ls`)
-    rm $file
+### 예제 3: 문자열 배열 반복
+```csh
+set colors = (red green blue)
+foreach color ($colors)
+    echo "Color: $color"
 end
 ```
-현재 디렉토리의 모든 파일을 삭제하는 예시입니다.
-
-### 예시 3: 여러 명령 실행
-```bash
-foreach i (1 2 3)
-    echo "Iteration $i"
-    sleep 1
-end
-```
-1초 간격으로 1, 2, 3을 출력하는 예시입니다.
+색상 배열을 반복하여 각 색상을 출력합니다.
 
 ## Tips
-- `foreach` 명령을 사용할 때는 리스트의 항목이 올바른지 확인하세요.
-- 복잡한 작업을 수행할 경우, 스크립트를 작성하여 관리하는 것이 좋습니다.
-- 명령 실행 전에 항상 테스트 환경에서 확인하여 실수를 방지하세요.
+- `foreach` 문을 사용할 때는 항상 `end`로 블록을 종료해야 합니다.
+- 복잡한 명령어를 사용할 때는 명령어를 세미콜론으로 구분하여 한 줄에 작성할 수 있습니다.
+- `foreach`는 C Shell 전용이므로 다른 셸에서는 사용할 수 없습니다.

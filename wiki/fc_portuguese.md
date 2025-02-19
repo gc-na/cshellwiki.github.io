@@ -1,51 +1,60 @@
-# [Linux] Bash fc Uso: Editar e reexecutar comandos anteriores
+# [Linux] C Shell (csh) fc <Uso equivalente em português>: Editar e reexecutar comandos anteriores
 
 ## Overview
-O comando `fc` no Bash é utilizado para listar, editar e reexecutar comandos que foram executados anteriormente no shell. Ele permite que os usuários revisitem e modifiquem comandos passados, facilitando a correção de erros ou a repetição de tarefas.
+O comando `fc` no C Shell (csh) é utilizado para listar, editar e reexecutar comandos que foram previamente executados na sessão atual do shell. Ele é uma ferramenta útil para corrigir erros ou modificar comandos sem precisar digitá-los novamente.
 
 ## Usage
 A sintaxe básica do comando `fc` é a seguinte:
 
-```bash
+```csh
 fc [opções] [argumentos]
 ```
 
 ## Common Options
-- `-l`: Lista os comandos anteriores.
-- `-r`: Reexecuta os comandos na ordem inversa.
-- `-s`: Executa o comando sem abrir um editor.
-- `-n`: Não exibe números de linha ao listar os comandos.
+Aqui estão algumas opções comuns do `fc`:
+
+- `-l`: Lista os comandos anteriores sem editá-los.
+- `-e editor`: Especifica um editor para editar os comandos (por exemplo, `-e vi`).
+- `-n`: Não exibe números de linha na lista de comandos.
 
 ## Common Examples
-Aqui estão alguns exemplos práticos do uso do comando `fc`:
 
-1. **Listar os últimos 10 comandos executados:**
-   ```bash
-   fc -l -n -10
-   ```
+### Listar os últimos 10 comandos
+Para listar os últimos 10 comandos executados, você pode usar:
 
-2. **Editar o último comando executado:**
-   ```bash
-   fc
-   ```
+```csh
+fc -l -10
+```
 
-3. **Reexecutar o último comando sem edição:**
-   ```bash
-   fc -s
-   ```
+### Editar o último comando
+Para editar o último comando executado com o editor padrão, utilize:
 
-4. **Listar os últimos 5 comandos e reexecutar o terceiro:**
-   ```bash
-   fc -l -n -5
-   fc -s 3
-   ```
+```csh
+fc
+```
 
-5. **Reexecutar todos os comandos em ordem inversa:**
-   ```bash
-   fc -r
-   ```
+### Editar um comando específico
+Se você quiser editar um comando específico, por exemplo, o comando número 5, você pode fazer:
+
+```csh
+fc 5
+```
+
+### Reexecutar o último comando
+Para reexecutar o último comando sem editá-lo, basta usar:
+
+```csh
+fc -s
+```
+
+### Usar um editor específico
+Para editar o último comando usando o editor `nano`, você pode fazer:
+
+```csh
+fc -e nano
+```
 
 ## Tips
-- Utilize `fc` para corrigir rapidamente erros em comandos anteriores sem precisar digitá-los novamente.
-- Combine `fc` com outros comandos, como `grep`, para filtrar comandos específicos.
-- Lembre-se de que o `fc` abre o editor de texto padrão do seu sistema, então familiarize-se com ele para uma edição eficiente.
+- Utilize `fc -l` para revisar rapidamente os comandos anteriores antes de decidir editar ou reexecutar.
+- Sempre verifique o comando que você está prestes a reexecutar, especialmente se ele envolve operações destrutivas.
+- Configure seu editor preferido para o `fc` para facilitar a edição dos comandos.

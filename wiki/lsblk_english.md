@@ -1,7 +1,7 @@
-# [Linux] Bash lsblk Uso equivalente: Listar dispositivos de bloque
+# [Linux] C Shell (csh) lsblk Uso equivalente: Listar dispositivos de bloques
 
 ## Overview
-The `lsblk` command is used in Linux to list information about all available or specified block devices. It provides a tree-like structure that shows the relationships between devices, making it easier to understand how storage devices are organized.
+The `lsblk` command is used to list information about block devices in a Linux system. It provides a tree-like view of all available storage devices, including their partitions and mount points, which is essential for managing disks and filesystems.
 
 ## Usage
 The basic syntax of the `lsblk` command is as follows:
@@ -12,46 +12,40 @@ lsblk [options] [arguments]
 
 ## Common Options
 - `-a`, `--all`: Show all devices, including empty ones.
-- `-f`, `--fs`: Display filesystem information along with the device details.
+- `-f`, `--fs`: Display filesystem information such as type and label.
 - `-l`, `--list`: Use a list format instead of the tree format.
-- `-n`, `--noheadings`: Suppress the header output.
-- `-o`, `--output`: Specify which columns to display in the output.
-- `-p`, `--paths`: Print the device paths instead of the device names.
+- `-o`, `--output`: Specify which columns to display (e.g., NAME, SIZE, TYPE).
+- `-p`, `--paths`: Show device paths instead of device names.
 
 ## Common Examples
 Here are some practical examples of using the `lsblk` command:
 
-### Example 1: Basic usage
-To list all block devices in a tree format:
-```bash
-lsblk
-```
+1. **Basic usage**: List all block devices.
+   ```bash
+   lsblk
+   ```
 
-### Example 2: List all devices with filesystem information
-To show detailed information about each device, including filesystem type:
-```bash
-lsblk -f
-```
+2. **Show all devices, including empty ones**:
+   ```bash
+   lsblk -a
+   ```
 
-### Example 3: List devices in a simple list format
-To display devices in a list format:
-```bash
-lsblk -l
-```
+3. **Display filesystem information**:
+   ```bash
+   lsblk -f
+   ```
 
-### Example 4: Suppress headers
-To list devices without headers:
-```bash
-lsblk -n
-```
+4. **List devices in a flat format**:
+   ```bash
+   lsblk -l
+   ```
 
-### Example 5: Specify output columns
-To customize the output to show only the NAME and SIZE columns:
-```bash
-lsblk -o NAME,SIZE
-```
+5. **Specify output columns**:
+   ```bash
+   lsblk -o NAME,SIZE,TYPE,MOUNTPOINT
+   ```
 
 ## Tips
-- Use `lsblk` in combination with other commands like `grep` to filter specific devices.
-- Regularly check your block devices to monitor disk usage and available space.
-- Use the `-p` option if you need to work with device paths in scripts or commands.
+- Use the `-f` option to quickly check the filesystem type and label, which can help in identifying devices.
+- Combine `lsblk` with other commands like `grep` to filter specific devices or mount points.
+- Regularly check your block devices to monitor disk usage and ensure that partitions are mounted correctly.

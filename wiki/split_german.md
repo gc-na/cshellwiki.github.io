@@ -1,49 +1,49 @@
-# [Linux] Bash split Verwendung: Teile eine Datei in kleinere Teile
+# [Linux] C Shell (csh) split Verwendung: Dateien in kleinere Teile aufteilen
 
 ## Übersicht
-Der `split` Befehl wird verwendet, um eine große Datei in kleinere Teile zu zerlegen. Dies kann nützlich sein, um große Datenmengen zu handhaben oder um Dateien für den Upload oder die Übertragung zu optimieren.
+Der Befehl `split` wird verwendet, um große Dateien in kleinere Teile zu zerlegen. Dies kann nützlich sein, um die Verarbeitung oder den Transfer von großen Datenmengen zu erleichtern.
 
 ## Verwendung
-Die grundlegende Syntax des `split` Befehls lautet:
+Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```csh
 split [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-l [Zeilen]`: Teilt die Datei nach einer bestimmten Anzahl von Zeilen.
-- `-b [Größe]`: Teilt die Datei nach einer bestimmten Größe (z.B. 1M für 1 Megabyte).
-- `-d`: Verwendet numerische Suffixe anstelle von alphabetischen.
-- `--additional-suffix=[Suffix]`: Fügt jedem Teil einen zusätzlichen Suffix hinzu.
+- `-l [anzahl]`: Teilt die Datei nach einer bestimmten Anzahl von Zeilen.
+- `-b [größe]`: Teilt die Datei nach einer bestimmten Byte-Größe.
+- `-d`: Verwendet numerische Suffixe anstelle von alphabetischen Suffixen für die Ausgabedateien.
+- `--additional-suffix=[suffix]`: Fügt den angegebenen Suffix zu den Ausgabedateien hinzu.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung des `split` Befehls:
+Hier sind einige praktische Beispiele für die Verwendung des `split`-Befehls:
 
-1. **Teilen einer Datei nach Zeilen**:
-   ```bash
+1. **Teilen einer Datei nach Zeilen:**
+   ```csh
    split -l 1000 große_datei.txt teil_
    ```
-   Dies teilt `große_datei.txt` in Teile von jeweils 1000 Zeilen und benennt die Teile mit dem Präfix `teil_`.
+   Dies teilt `große_datei.txt` in Dateien mit jeweils 1000 Zeilen und benennt sie mit dem Präfix `teil_`.
 
-2. **Teilen einer Datei nach Größe**:
-   ```bash
+2. **Teilen einer Datei nach Byte-Größe:**
+   ```csh
    split -b 1M große_datei.txt teil_
    ```
-   Dies teilt `große_datei.txt` in Teile von jeweils 1 Megabyte.
+   Hier wird `große_datei.txt` in Teile von jeweils 1 Megabyte aufgeteilt.
 
-3. **Teilen mit numerischen Suffixen**:
-   ```bash
+3. **Teilen mit numerischen Suffixen:**
+   ```csh
    split -d -l 500 große_datei.txt teil_
    ```
-   Dies teilt `große_datei.txt` in Teile von 500 Zeilen und verwendet numerische Suffixe für die Dateinamen.
+   In diesem Beispiel wird die Datei in Teile mit 500 Zeilen aufgeteilt, wobei die Ausgabedateien numerische Suffixe erhalten.
 
-4. **Teilen mit zusätzlichem Suffix**:
-   ```bash
-   split -b 500K --additional-suffix=.txt große_datei.txt teil_
+4. **Teilen mit einem zusätzlichen Suffix:**
+   ```csh
+   split --additional-suffix=.txt -l 200 große_datei.txt teil_
    ```
-   Dies teilt `große_datei.txt` in Teile von 500 Kilobyte und fügt jedem Teil die Endung `.txt` hinzu.
+   Dies teilt die Datei in Teile von 200 Zeilen auf und fügt `.txt` als Suffix hinzu.
 
 ## Tipps
-- Überprüfen Sie die Größe der Teile, um sicherzustellen, dass sie für Ihre Anforderungen geeignet sind.
-- Verwenden Sie die Option `-d`, wenn Sie eine große Anzahl von Teilen erwarten, um die Dateinamen übersichtlicher zu gestalten.
-- Denken Sie daran, dass die Teile in der Reihenfolge erstellt werden, in der sie in der Originaldatei erscheinen.
+- Überprüfen Sie die Größe der Ausgabedateien, um sicherzustellen, dass sie Ihren Anforderungen entsprechen.
+- Verwenden Sie die `-d` Option, wenn Sie eine klare numerische Reihenfolge der Teile benötigen.
+- Denken Sie daran, die Ausgabedateien nach dem Splitten zu überprüfen, um sicherzustellen, dass keine Daten verloren gegangen sind.

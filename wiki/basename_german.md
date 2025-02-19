@@ -1,62 +1,45 @@
-# [Linux] Bash basename Verwendung: Extrahiert den Dateinamen aus einem Pfad
+# [Linux] C Shell (csh) basename Verwendung: Entfernen von Verzeichnispfaden aus Dateinamen
 
 ## Übersicht
-Der `basename`-Befehl in Bash wird verwendet, um den Dateinamen aus einem vollständigen Pfad zu extrahieren. Dies ist besonders nützlich, wenn Sie nur den Namen der Datei ohne den Pfad benötigen.
+Der `basename` Befehl wird verwendet, um den Dateinamen aus einem vollständigen Verzeichnispfad zu extrahieren. Er entfernt alle führenden Verzeichnisse und gibt nur den letzten Teil des Pfades zurück, der den Dateinamen darstellt.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```csh
 basename [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-a`: Verarbeitet mehrere Argumente und gibt die Basen für jedes Argument zurück.
+- `-a`: Gibt alle Basen von mehreren Pfaden zurück.
 - `-s`: Entfernt eine angegebene Suffix-Zeichenfolge vom Dateinamen.
 
 ## Häufige Beispiele
+Hier sind einige praktische Beispiele für die Verwendung des `basename` Befehls:
 
-### Beispiel 1: Einfacher Dateiname
-Um den Dateinamen aus einem Pfad zu extrahieren:
+1. **Einfacher Gebrauch**:
+   ```csh
+   basename /usr/local/bin/script.sh
+   ```
+   Ausgabe: `script.sh`
 
-```bash
-basename /home/user/dokumente/datei.txt
-```
-**Ausgabe:** `datei.txt`
+2. **Entfernen eines Suffixes**:
+   ```csh
+   basename /usr/local/bin/script.sh .sh
+   ```
+   Ausgabe: `script`
 
-### Beispiel 2: Mit Suffix entfernen
-Um ein Suffix von einem Dateinamen zu entfernen:
-
-```bash
-basename /home/user/dokumente/datei.txt .txt
-```
-**Ausgabe:** `datei`
-
-### Beispiel 3: Mehrere Argumente
-Um mehrere Dateinamen auf einmal zu verarbeiten:
-
-```bash
-basename -a /home/user/dokumente/datei1.txt /home/user/dokumente/datei2.txt
-```
-**Ausgabe:**
-```
-datei1.txt
-datei2.txt
-```
-
-### Beispiel 4: Suffix für mehrere Dateien entfernen
-Um das Suffix `.txt` von mehreren Dateien zu entfernen:
-
-```bash
-basename -a /home/user/dokumente/datei1.txt /home/user/dokumente/datei2.txt .txt
-```
-**Ausgabe:**
-```
-datei1
-datei2
-```
+3. **Mehrere Pfade**:
+   ```csh
+   basename -a /usr/local/bin/script.sh /home/user/file.txt
+   ```
+   Ausgabe:
+   ```
+   script.sh
+   file.txt
+   ```
 
 ## Tipps
-- Nutzen Sie `basename` in Skripten, um Dateinamen dynamisch zu verarbeiten.
-- Kombinieren Sie `basename` mit anderen Befehlen wie `find`, um gezielt mit Dateinamen zu arbeiten.
-- Achten Sie darauf, die Suffix-Option nur zu verwenden, wenn Sie sicher sind, dass die Dateien das angegebene Suffix haben.
+- Verwenden Sie `basename` in Skripten, um Dateinamen zu extrahieren, bevor Sie sie weiterverarbeiten.
+- Achten Sie darauf, das richtige Suffix anzugeben, wenn Sie es entfernen möchten, um unerwartete Ergebnisse zu vermeiden.
+- Kombinieren Sie `basename` mit anderen Befehlen wie `find`, um effizient mit Dateinamen zu arbeiten.

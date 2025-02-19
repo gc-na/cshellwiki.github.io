@@ -1,7 +1,7 @@
-# [台灣] Bash nslookup 使用方法: 查詢域名的IP地址
+# [台灣] C Shell (csh) nslookup 用法: 查詢域名系統資訊
 
 ## Overview
-`nslookup` 是一個用於查詢域名系統（DNS）的命令行工具。它可以幫助用戶查找域名對應的IP地址，或是反向查詢IP地址以獲取相應的域名。
+`nslookup` 是一個用於查詢域名系統（DNS）資訊的命令。它可以幫助用戶獲取有關域名的詳細資料，例如 IP 地址、域名伺服器等。
 
 ## Usage
 基本語法如下：
@@ -10,35 +10,32 @@ nslookup [options] [arguments]
 ```
 
 ## Common Options
-- `-type=TYPE`：指定查詢的記錄類型，例如 A、AAAA、CNAME 等。
-- `-timeout=SECONDS`：設置查詢超時的時間，默認為 5 秒。
-- `-retry=COUNT`：設置查詢重試的次數，默認為 4 次。
-- `-debug`：顯示詳細的調試信息。
+- `-type=TYPE`：指定查詢的記錄類型，例如 A、MX、CNAME 等。
+- `-timeout=seconds`：設置查詢的超時時間（以秒為單位）。
+- `-debug`：啟用調試模式，顯示更詳細的查詢過程。
 
 ## Common Examples
-以下是一些常見的使用範例：
-
-1. 查詢域名的IP地址：
-   ```bash
+1. 查詢域名的 IP 地址：
+   ```csh
    nslookup example.com
    ```
 
-2. 查詢特定類型的DNS記錄（例如，CNAME）：
-   ```bash
-   nslookup -type=CNAME example.com
+2. 查詢特定類型的 DNS 記錄（例如 MX 記錄）：
+   ```csh
+   nslookup -type=MX example.com
    ```
 
-3. 反向查詢IP地址以獲取域名：
-   ```bash
-   nslookup 93.184.216.34
-   ```
-
-4. 使用特定的DNS伺服器進行查詢：
-   ```bash
+3. 使用特定的 DNS 伺服器進行查詢：
+   ```csh
    nslookup example.com 8.8.8.8
    ```
 
+4. 啟用調試模式以獲取詳細資訊：
+   ```csh
+   nslookup -debug example.com
+   ```
+
 ## Tips
-- 在進行DNS查詢時，使用 `-debug` 選項可以幫助你了解查詢過程中的詳細信息，對於故障排除非常有用。
-- 如果你經常查詢某個域名，可以考慮將其結果緩存，以提高查詢效率。
-- 確保你使用的DNS伺服器是可靠的，以獲得準確的查詢結果。
+- 確保網路連接正常，否則查詢可能會失敗。
+- 使用 `-type` 選項可以更精確地獲取所需的 DNS 記錄。
+- 如果查詢結果不如預期，嘗試更換 DNS 伺服器，例如 Google 的 8.8.8.8。

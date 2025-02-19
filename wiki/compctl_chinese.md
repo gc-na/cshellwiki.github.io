@@ -1,42 +1,44 @@
-# [Linux] Bash compctl 用法: 自动补全命令
+# [Unix] C Shell (csh) compctl 用法: 自动补全命令
 
 ## 概述
-`compctl` 是一个用于设置和管理命令行自动补全的 Bash 命令。它允许用户为特定命令定义补全规则，从而提高命令行操作的效率。
+`compctl` 命令用于在 C Shell 中设置命令行的自动补全功能。通过定义补全规则，用户可以更高效地输入命令和文件名。
 
 ## 用法
 基本语法如下：
-```bash
-compctl [options] [arguments]
+```
+compctl [选项] [参数]
 ```
 
 ## 常用选项
-- `-d`：定义补全的描述。
-- `-k`：指定补全的关键字。
-- `-n`：设置补全的条件。
-- `-s`：指定补全的字符串。
+- `-c`：清除当前的补全设置。
+- `-d`：为指定的命令定义补全。
+- `-l`：列出当前的补全设置。
+- `-s`：为补全指定的选项。
 
 ## 常见示例
-以下是一些使用 `compctl` 的实际示例：
+以下是一些常见的 `compctl` 使用示例：
 
-### 示例 1: 为 `git` 命令设置补全
-```bash
-compctl -k "add commit push" git
-```
-这个命令为 `git` 命令设置了 `add`、`commit` 和 `push` 的补全。
+1. **为 `ls` 命令设置文件名补全**
+   ```csh
+   compctl -d ls
+   ```
 
-### 示例 2: 为自定义脚本设置补全
-```bash
-compctl -k "start stop restart" myscript
-```
-为名为 `myscript` 的自定义脚本定义了补全选项。
+2. **为 `git` 命令设置补全**
+   ```csh
+   compctl -d git
+   ```
 
-### 示例 3: 使用描述为补全添加提示
-```bash
-compctl -d "This command starts the server" start-server
-```
-为 `start-server` 命令提供了描述，帮助用户理解该命令的功能。
+3. **清除 `cp` 命令的补全设置**
+   ```csh
+   compctl -c cp
+   ```
 
-## 小贴士
-- 确保在使用 `compctl` 之前，已正确安装并配置 Bash。
-- 定期检查和更新补全规则，以确保它们与当前的命令和选项一致。
-- 使用 `compctl -l` 查看当前的补全设置，方便管理和调整。
+4. **列出当前的补全设置**
+   ```csh
+   compctl -l
+   ```
+
+## 提示
+- 确保在使用 `compctl` 之前，了解你想要补全的命令及其参数。
+- 定期检查和更新补全设置，以适应新的命令或工具。
+- 使用 `-l` 选项查看当前的补全设置，避免重复定义。

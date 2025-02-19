@@ -1,52 +1,57 @@
-# [Linux] Bash wc Penggunaan: Menghitung baris, kata, dan karakter dalam file
+# [Sistem Operasi] C Shell (csh) wc Penggunaan: Menghitung Baris, Kata, dan Karakter
 
 ## Overview
-Perintah `wc` (word count) digunakan untuk menghitung jumlah baris, kata, dan karakter dalam file atau input standar. Ini adalah alat yang berguna untuk analisis teks dan pemrosesan data.
+Perintah `wc` (word count) digunakan untuk menghitung jumlah baris, kata, dan karakter dalam file atau input standar. Ini adalah alat yang berguna untuk analisis teks dan pengolahan data.
 
 ## Usage
-Sintaks dasar dari perintah `wc` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `wc`:
 
-```bash
+```
 wc [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang dapat digunakan dengan `wc`:
-
-- `-l`: Menghitung jumlah baris dalam file.
-- `-w`: Menghitung jumlah kata dalam file.
-- `-c`: Menghitung jumlah karakter dalam file.
+- `-l`: Menghitung jumlah baris.
+- `-w`: Menghitung jumlah kata.
+- `-c`: Menghitung jumlah karakter.
 - `-m`: Menghitung jumlah karakter (termasuk karakter multibyte).
 - `-L`: Menampilkan panjang baris terpanjang.
 
 ## Common Examples
+Berikut adalah beberapa contoh penggunaan perintah `wc`:
 
-1. Menghitung jumlah baris dalam file:
-   ```bash
+1. Menghitung jumlah baris dalam sebuah file:
+   ```csh
    wc -l namafile.txt
    ```
 
-2. Menghitung jumlah kata dalam file:
-   ```bash
+2. Menghitung jumlah kata dalam sebuah file:
+   ```csh
    wc -w namafile.txt
    ```
 
-3. Menghitung jumlah karakter dalam file:
-   ```bash
+3. Menghitung jumlah karakter dalam sebuah file:
+   ```csh
    wc -c namafile.txt
    ```
 
 4. Menghitung jumlah baris, kata, dan karakter sekaligus:
-   ```bash
+   ```csh
    wc namafile.txt
    ```
 
-5. Menggunakan `wc` dengan input dari perintah lain (misalnya, menghitung kata dalam output `ls`):
-   ```bash
-   ls | wc -w
+5. Menggunakan input standar (misalnya, dari perintah lain):
+   ```csh
+   cat namafile.txt | wc -l
    ```
 
 ## Tips
-- Anda dapat menggabungkan beberapa opsi dalam satu perintah. Misalnya, `wc -lw namafile.txt` untuk menghitung jumlah baris dan kata sekaligus.
-- Untuk menghitung beberapa file sekaligus, cukup tambahkan nama file setelah perintah. `wc namafile1.txt namafile2.txt`.
-- Jika Anda ingin menyimpan hasil ke dalam file, gunakan redirection: `wc namafile.txt > hasil.txt`.
+- Gunakan opsi `-l`, `-w`, atau `-c` sesuai dengan kebutuhan spesifik Anda untuk mendapatkan hasil yang lebih relevan.
+- Anda dapat menggabungkan beberapa opsi dalam satu perintah, misalnya:
+  ```csh
+  wc -lw namafile.txt
+  ```
+- Untuk menghitung statistik dari beberapa file sekaligus, cukup sebutkan nama file yang berbeda:
+  ```csh
+  wc file1.txt file2.txt
+  ```

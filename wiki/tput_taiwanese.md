@@ -1,54 +1,51 @@
-# [台灣] Bash tput 用法: 控制終端顯示屬性
+# [台灣] C Shell (csh) tput 用法: 控制終端顯示屬性
 
 ## Overview
-`tput` 是一個用於控制終端顯示屬性的命令。它可以用來設定顏色、字型樣式和其他顯示屬性，讓使用者能夠改善終端的可讀性和美觀性。
+`tput` 命令用於控制終端的顯示屬性，能夠設置顏色、光標位置等，從而增強終端的可視化效果。
 
 ## Usage
 基本語法如下：
-```
+```csh
 tput [options] [arguments]
 ```
 
 ## Common Options
-- `setaf [n]`：設定前景顏色，`n` 是顏色的編號。
-- `setab [n]`：設定背景顏色，`n` 是顏色的編號。
-- `bold`：設定文字為粗體。
-- `smso`：啟用反白顯示。
-- `rmso`：關閉反白顯示。
-- `clear`：清除終端畫面。
+- `setaf [n]`：設置前景顏色，`n` 是顏色編號。
+- `setab [n]`：設置背景顏色，`n` 是顏色編號。
+- `clear`：清除終端屏幕。
+- `cup [y] [x]`：將光標移動到指定的行 (`y`) 和列 (`x`)。
+- `bold`：設置文本為粗體。
 
 ## Common Examples
-- 設定前景顏色為紅色：
-  ```bash
-  tput setaf 1
-  echo "這是紅色的文字"
-  ```
+- 設置前景顏色為紅色：
+```csh
+tput setaf 1
+```
 
-- 設定背景顏色為藍色：
-  ```bash
-  tput setab 4
-  echo "這是藍色背景的文字"
-  ```
+- 設置背景顏色為藍色：
+```csh
+tput setab 4
+```
 
-- 設定文字為粗體：
-  ```bash
-  tput bold
-  echo "這是粗體文字"
-  ```
+- 清除終端屏幕：
+```csh
+tput clear
+```
 
-- 清除終端畫面：
-  ```bash
-  tput clear
-  ```
+- 將光標移動到第 5 行第 10 列：
+```csh
+tput cup 5 10
+```
 
-- 啟用和關閉反白顯示：
-  ```bash
-  tput smso
-  echo "這是反白顯示的文字"
-  tput rmso
-  ```
+- 設置文本為粗體：
+```csh
+tput bold
+```
 
 ## Tips
-- 在使用 `tput` 設定顏色時，可以參考顏色編號，通常 0-7 代表基本顏色。
-- 將 `tput` 命令放入腳本中，可以自動化終端的顯示效果。
-- 使用 `tput reset` 可以恢復終端的預設顯示屬性，這對於清理顯示非常有用。
+- 使用 `tput reset` 可以重置終端到初始狀態。
+- 結合 `echo` 命令使用 `tput` 可以在輸出中添加顏色和格式，例如：
+```csh
+echo "$(tput setaf 2)這是綠色文字$(tput sgr0)"
+```
+- 在腳本中使用 `tput` 可以使輸出更具可讀性和吸引力。

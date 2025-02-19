@@ -1,12 +1,12 @@
-# [Linux] Bash ps gebruik: Toon actieve processen
+# [Linux] C Shell (csh) ps Gebruik: Toon actieve processen
 
 ## Overzicht
-De `ps` (process status) opdracht in Bash wordt gebruikt om informatie weer te geven over actieve processen op een Linux-systeem. Het biedt een momentopname van de huidige processen, inclusief details zoals proces-ID, status en gebruik van systeembronnen.
+De `ps` (process status) opdracht in C Shell toont een lijst van actieve processen die op het systeem draaien. Het biedt informatie zoals proces-ID's, de status van de processen en het gebruik van systeembronnen.
 
 ## Gebruik
 De basis syntaxis van de `ps` opdracht is als volgt:
 
-```bash
+```csh
 ps [opties] [argumenten]
 ```
 
@@ -14,43 +14,38 @@ ps [opties] [argumenten]
 Hier zijn enkele veelvoorkomende opties die je kunt gebruiken met de `ps` opdracht:
 
 - `-e` of `-A`: Toon alle processen.
-- `-f`: Toon uitgebreide informatie over processen.
+- `-f`: Toon een volledige lijst met informatie over de processen.
 - `-u [gebruikersnaam]`: Toon processen die door een specifieke gebruiker worden uitgevoerd.
-- `-p [PID]`: Toon informatie over een specifiek proces met een gegeven proces-ID.
-- `--sort`: Sorteer de uitvoer op basis van een opgegeven veld.
+- `-p [PID]`: Toon informatie over een specifiek proces met de opgegeven proces-ID.
 
 ## Veelvoorkomende Voorbeelden
+
 Hier zijn enkele praktische voorbeelden van het gebruik van de `ps` opdracht:
 
 1. Toon alle actieve processen:
-   ```bash
+   ```csh
    ps -e
    ```
 
-2. Toon processen met uitgebreide informatie:
-   ```bash
-   ps -ef
+2. Toon processen met volledige informatie:
+   ```csh
+   ps -f
    ```
 
 3. Toon processen van een specifieke gebruiker:
-   ```bash
+   ```csh
    ps -u username
    ```
 
 4. Toon informatie over een specifiek proces:
-   ```bash
+   ```csh
    ps -p 1234
    ```
 
-5. Sorteer processen op gebruik van CPU:
-   ```bash
-   ps -eo pid,comm,%cpu --sort=-%cpu
-   ```
-
 ## Tips
-- Gebruik `ps aux` voor een gedetailleerd overzicht van alle processen, inclusief die van andere gebruikers.
-- Combineer `ps` met `grep` om specifieke processen te filteren. Bijvoorbeeld:
-  ```bash
-  ps -ef | grep firefox
+- Gebruik de `-aux` optie om een uitgebreide lijst van processen te krijgen met meer details.
+- Combineer `ps` met andere commando's zoals `grep` om specifieke processen te filteren. Bijvoorbeeld:
+  ```csh
+  ps -e | grep firefox
   ```
-- Vergeet niet dat de uitvoer van `ps` een momentopname is; processen kunnen snel starten of stoppen, dus voer de opdracht opnieuw uit voor actuele informatie.
+- Houd rekening met de systeembronnen die door processen worden gebruikt, vooral bij het oplossen van prestatieproblemen.

@@ -1,44 +1,46 @@
-# [Linux] Bash userdel : Supprimer un utilisateur du système
+# [Linux] C Shell (csh) userdel : Supprimer un utilisateur du système
 
 ## Overview
-La commande `userdel` est utilisée pour supprimer un compte utilisateur du système Linux. Elle permet de retirer les informations de l'utilisateur et, selon les options choisies, de supprimer également son répertoire personnel et ses fichiers.
+La commande `userdel` est utilisée pour supprimer un compte utilisateur du système. Elle permet de retirer les informations de l'utilisateur et, selon les options choisies, de supprimer également son répertoire personnel et ses fichiers.
 
 ## Usage
 La syntaxe de base de la commande `userdel` est la suivante :
 
-```bash
+```csh
 userdel [options] [arguments]
 ```
 
 ## Common Options
 Voici quelques options courantes pour la commande `userdel` :
 
-- `-r` : Supprime le répertoire personnel de l'utilisateur ainsi que son mail spool.
+- `-r` : Supprime le répertoire personnel de l'utilisateur ainsi que son contenu.
 - `-f` : Force la suppression de l'utilisateur même s'il est connecté.
-- `-h` : Affiche l'aide et les options disponibles.
+- `-Z` : Supprime les informations de sécurité associées à l'utilisateur.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `userdel` :
 
 1. Supprimer un utilisateur sans supprimer son répertoire personnel :
-
-   ```bash
+   ```csh
    userdel nom_utilisateur
    ```
 
 2. Supprimer un utilisateur et son répertoire personnel :
-
-   ```bash
+   ```csh
    userdel -r nom_utilisateur
    ```
 
 3. Forcer la suppression d'un utilisateur qui est actuellement connecté :
-
-   ```bash
+   ```csh
    userdel -f nom_utilisateur
+   ```
+
+4. Supprimer un utilisateur tout en supprimant les informations de sécurité :
+   ```csh
+   userdel -Z nom_utilisateur
    ```
 
 ## Tips
 - Assurez-vous de sauvegarder les données importantes de l'utilisateur avant de le supprimer, surtout si vous utilisez l'option `-r`.
-- Vérifiez les connexions actives des utilisateurs avec la commande `who` avant de forcer la suppression.
-- Utilisez la commande `id nom_utilisateur` pour vérifier si l'utilisateur existe avant d'essayer de le supprimer.
+- Vérifiez si l'utilisateur est connecté avant de le supprimer pour éviter des interruptions de service.
+- Utilisez la commande `who` pour voir les utilisateurs actuellement connectés au système.

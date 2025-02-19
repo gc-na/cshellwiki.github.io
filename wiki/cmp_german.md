@@ -1,48 +1,43 @@
-# [Linux] Bash cmp Verwendung: Dateien vergleichen
+# [Linux] C Shell (csh) cmp Verwendung: Vergleicht zwei Dateien byteweise
 
 ## Übersicht
-Der Befehl `cmp` wird verwendet, um zwei Dateien byteweise zu vergleichen. Er zeigt an, ob die Dateien identisch sind und gibt die Position der ersten Abweichung aus, falls Unterschiede vorhanden sind.
+Der `cmp` Befehl wird verwendet, um zwei Dateien byteweise zu vergleichen. Er zeigt an, ob die Dateien identisch sind oder an welcher Stelle sie sich unterscheiden.
 
 ## Verwendung
-Die grundlegende Syntax des Befehls lautet:
+Die grundlegende Syntax des `cmp` Befehls lautet:
 
-```bash
+```csh
 cmp [Optionen] [Datei1] [Datei2]
 ```
 
 ## Häufige Optionen
-- `-l`: Gibt die Unterschiede in Form von byteweisen Positionen und Werten aus.
-- `-s`: Stille Ausgabe; gibt nur den Exit-Status zurück, ohne Ausgaben zu erzeugen.
-- `-i OFFSET`: Beginnt den Vergleich bei der angegebenen Byte-Offset.
-- `-n NUM`: Vergleicht nur die ersten NUM Bytes der Dateien.
+- `-l`: Gibt die Unterschiede in Form von byte-Offset und den unterschiedlichen Bytes aus.
+- `-s`: Stille Ausgabe; gibt nur den Rückgabewert zurück, ohne Unterschiede anzuzeigen.
+- `-i`: Ignoriert die ersten N Bytes der Dateien.
 
 ## Häufige Beispiele
+
 1. **Einfacher Vergleich zweier Dateien:**
-   ```bash
+   ```csh
    cmp datei1.txt datei2.txt
    ```
 
 2. **Vergleich mit detaillierter Ausgabe der Unterschiede:**
-   ```bash
+   ```csh
    cmp -l datei1.txt datei2.txt
    ```
 
-3. **Stille Überprüfung, ob zwei Dateien identisch sind:**
-   ```bash
+3. **Stille Ausgabe, nur Rückgabewert:**
+   ```csh
    cmp -s datei1.txt datei2.txt
    ```
 
-4. **Vergleich ab einem bestimmten Offset:**
-   ```bash
+4. **Ignorieren der ersten 10 Bytes:**
+   ```csh
    cmp -i 10 datei1.txt datei2.txt
    ```
 
-5. **Vergleich der ersten 100 Bytes zweier Dateien:**
-   ```bash
-   cmp -n 100 datei1.txt datei2.txt
-   ```
-
 ## Tipps
-- Verwenden Sie die Option `-s`, wenn Sie nur wissen möchten, ob die Dateien identisch sind, ohne die Unterschiede anzuzeigen.
-- Nutzen Sie `-l`, um eine detaillierte Analyse der Unterschiede zu erhalten, was besonders hilfreich sein kann, wenn Sie an großen Dateien arbeiten.
-- Achten Sie darauf, die Dateien in der richtigen Reihenfolge anzugeben, da `cmp` die Unterschiede nur in der ersten Datei im Vergleich zur zweiten anzeigt.
+- Verwenden Sie die `-s` Option, wenn Sie nur wissen möchten, ob die Dateien unterschiedlich sind, ohne die Unterschiede anzuzeigen.
+- Nutzen Sie die `-l` Option, um eine detaillierte Analyse der Unterschiede zu erhalten, besonders nützlich bei großen Dateien.
+- Überprüfen Sie die Rückgabewerte von `cmp`, um festzustellen, ob die Dateien identisch sind (Rückgabewert 0), unterschiedlich (Rückgabewert 1) oder wenn eine der Dateien nicht existiert (Rückgabewert 2).

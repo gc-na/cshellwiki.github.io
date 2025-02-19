@@ -1,51 +1,40 @@
-# [Linux] Bash batch utilisation : Exécuter des commandes en arrière-plan
+# [Linux] C Shell (csh) batch : Exécuter des commandes en arrière-plan
 
 ## Overview
-La commande `batch` permet d'exécuter des commandes en arrière-plan lorsque le système est moins chargé. Elle est utile pour planifier des tâches qui ne nécessitent pas d'interaction immédiate avec l'utilisateur.
+La commande `batch` dans C Shell (csh) permet d'exécuter des commandes en arrière-plan lorsque le système est moins occupé. Cela est particulièrement utile pour les tâches qui nécessitent beaucoup de ressources et qui peuvent être exécutées sans intervention de l'utilisateur.
 
 ## Usage
 La syntaxe de base de la commande `batch` est la suivante :
 
-```bash
+```csh
 batch [options] [arguments]
 ```
 
 ## Common Options
-- `-f` : Spécifie un fichier contenant des commandes à exécuter.
-- `-q` : Exécute les commandes en mode silencieux, sans afficher de messages.
-- `-l` : Affiche la liste des commandes en attente.
+- `-l` : Exécute les commandes dans un environnement de connexion.
+- `-n` : Ne pas envoyer de message de confirmation à l'utilisateur.
+- `-q` : Mettre la commande dans la file d'attente pour une exécution ultérieure.
 
 ## Common Examples
+Voici quelques exemples pratiques de l'utilisation de la commande `batch` :
 
-### Exécuter une commande simple
-Pour exécuter une commande simple comme `echo`, vous pouvez utiliser :
+1. Exécuter une commande simple en arrière-plan :
+   ```csh
+   echo "ls -l" | batch
+   ```
 
-```bash
-echo "Hello, World!" | batch
-```
+2. Exécuter un script shell en arrière-plan :
+   ```csh
+   batch < mon_script.sh
+   ```
 
-### Exécuter un script
-Pour exécuter un script shell nommé `script.sh`, utilisez :
-
-```bash
-batch < script.sh
-```
-
-### Utiliser un fichier de commandes
-Si vous avez un fichier `commands.txt` contenant plusieurs commandes, vous pouvez l'exécuter comme suit :
-
-```bash
-batch < commands.txt
-```
-
-### Exécuter en mode silencieux
-Pour exécuter une commande sans afficher de messages, utilisez l'option `-q` :
-
-```bash
-echo "Backup started" | batch -q
-```
+3. Exécuter plusieurs commandes :
+   ```csh
+   echo "echo 'Hello, World!'" | batch
+   echo "date" | batch
+   ```
 
 ## Tips
-- Assurez-vous que les commandes que vous planifiez n'ont pas besoin d'interaction utilisateur, car elles s'exécuteront en arrière-plan.
-- Vérifiez régulièrement la file d'attente des commandes en attente avec `atq` pour gérer vos tâches.
-- Utilisez des scripts pour regrouper plusieurs commandes et faciliter leur exécution en une seule fois.
+- Assurez-vous que les commandes que vous souhaitez exécuter en arrière-plan ne nécessitent pas d'interaction de l'utilisateur.
+- Vérifiez régulièrement la file d'attente des tâches pour vous assurer que vos commandes s'exécutent comme prévu.
+- Utilisez des redirections pour enregistrer la sortie de vos commandes dans un fichier pour une consultation ultérieure.

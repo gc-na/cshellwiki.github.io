@@ -1,61 +1,51 @@
-# [Linux] Bash pkg Verwendung: Paketverwaltung in der Kommandozeile
+# [Linux] C Shell (csh) pkg Verwendung: Paketverwaltung im C Shell
 
 ## Übersicht
-Der `pkg` Befehl ist ein Paketverwaltungstool, das hauptsächlich in BSD-basierten Systemen verwendet wird. Es ermöglicht Benutzern, Softwarepakete zu installieren, zu aktualisieren und zu verwalten. Mit `pkg` können Sie schnell und einfach Software auf Ihrem System hinzufügen oder entfernen.
+Der `pkg` Befehl wird in der C Shell (csh) verwendet, um Softwarepakete zu verwalten. Er ermöglicht das Installieren, Aktualisieren und Entfernen von Paketen auf einem System, das das Paketmanagement unterstützt.
 
 ## Verwendung
 Die grundlegende Syntax des `pkg` Befehls lautet:
 
-```bash
+```csh
 pkg [optionen] [argumente]
 ```
 
 ## Häufige Optionen
-- `install`: Installiert ein oder mehrere Pakete.
-- `remove`: Entfernt ein oder mehrere Pakete.
-- `update`: Aktualisiert die Paketdatenbank.
-- `upgrade`: Aktualisiert alle installierten Pakete auf die neuesten Versionen.
-- `search`: Sucht nach Paketen in der Datenbank.
+- `install`: Installiert ein neues Paket.
+- `remove`: Entfernt ein installiertes Paket.
+- `update`: Aktualisiert alle installierten Pakete auf die neueste Version.
+- `list`: Listet alle installierten Pakete auf.
+- `info`: Zeigt Informationen über ein bestimmtes Paket an.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung des `pkg` Befehls:
+Hier sind einige praktische Beispiele zur Verwendung des `pkg` Befehls:
 
-### Ein Paket installieren
-Um ein Paket, z.B. `vim`, zu installieren, verwenden Sie den folgenden Befehl:
+1. **Ein neues Paket installieren**:
+   ```csh
+   pkg install paketname
+   ```
 
-```bash
-pkg install vim
-```
+2. **Ein installiertes Paket entfernen**:
+   ```csh
+   pkg remove paketname
+   ```
 
-### Ein Paket entfernen
-Um ein installiertes Paket, z.B. `vim`, zu entfernen, verwenden Sie:
+3. **Alle installierten Pakete auflisten**:
+   ```csh
+   pkg list
+   ```
 
-```bash
-pkg remove vim
-```
+4. **Informationen über ein bestimmtes Paket anzeigen**:
+   ```csh
+   pkg info paketname
+   ```
 
-### Paketdatenbank aktualisieren
-Um die Paketdatenbank zu aktualisieren, führen Sie diesen Befehl aus:
-
-```bash
-pkg update
-```
-
-### Alle Pakete aktualisieren
-Um alle installierten Pakete auf die neuesten Versionen zu aktualisieren, verwenden Sie:
-
-```bash
-pkg upgrade
-```
-
-### Nach einem Paket suchen
-Um nach einem Paket zu suchen, das einen bestimmten Begriff enthält, verwenden Sie:
-
-```bash
-pkg search editor
-```
+5. **Alle Pakete aktualisieren**:
+   ```csh
+   pkg update
+   ```
 
 ## Tipps
-- Verwenden Sie `pkg info`, um Informationen über installierte Pakete zu erhalten.
-- Führen Sie regelmäßig `pkg update` aus, um sicherzustellen, dass Ihre Paketdatenbank aktuell ist.
-- Nutzen Sie die `-y` Option, um die Bestätigung bei Installationen oder Entfernungen zu überspringen, z.B. `pkg install -y vim`.
+- Überprüfen Sie regelmäßig, welche Pakete aktualisiert werden können, um Sicherheitsupdates nicht zu verpassen.
+- Verwenden Sie `pkg info` vor der Installation, um sicherzustellen, dass das Paket die benötigten Abhängigkeiten hat.
+- Führen Sie `pkg list` aus, um eine Übersicht über alle installierten Pakete zu erhalten und Platz auf Ihrem System zu verwalten.

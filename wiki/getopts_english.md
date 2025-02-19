@@ -1,85 +1,97 @@
-# [Linux] Bash getopts用法: 解析命令行选项
+# [Unix] C Shell (csh) getopts用法: Command-line option parsing
 
 ## Overview
-The `getopts` command in Bash is used for parsing command-line options and arguments. It simplifies the process of handling user input in shell scripts, allowing you to define short options (like `-h`) and long options (like `--help`) easily.
+The `getopts` command in C Shell (csh) is used for parsing command-line options and arguments. It allows scripts to handle options in a standardized way, making it easier to manage user inputs.
 
 ## Usage
 The basic syntax of the `getopts` command is as follows:
 
-```bash
+```csh
 getopts optstring variable
 ```
 
-- `optstring`: A string containing the valid options.
-- `variable`: The name of the variable that will hold the option.
+- `optstring`: A string that defines the valid options.
+- `variable`: The name of the variable that will store the option found.
 
 ## Common Options
-- `-a`: This option is used to specify an action.
-- `-b`: This option can be used to set a boolean flag.
-- `-c`: This option is often used to specify a count or a number.
-- `-h`: Typically used to display help information.
+- `optstring`: A string of characters where each character represents a valid option. If an option requires an argument, it is followed by a colon (`:`).
+- `variable`: The name of the variable that will hold the current option being processed.
 
 ## Common Examples
 
 ### Example 1: Basic Option Parsing
-```bash
-#!/bin/bash
-while getopts "ab:" opt; do
-  case $opt in
-    a)
-      echo "Option A selected"
-      ;;
-    b)
-      echo "Option B selected with value: $OPTARG"
-      ;;
-    *)
-      echo "Invalid option"
-      ;;
-  esac
-done
-```
-In this example, the script handles options `-a` and `-b`, where `-b` requires an argument.
+This example demonstrates how to parse single-letter options.
 
-### Example 2: Using Multiple Options
-```bash
-#!/bin/bash
-while getopts "abc" opt; do
-  case $opt in
-    a)
-      echo "Option A selected"
-      ;;
-    b)
-      echo "Option B selected"
-      ;;
-    c)
-      echo "Option C selected"
-      ;;
-    *)
-      echo "Invalid option"
-      ;;
-  esac
-done
-```
-This script processes options `-a`, `-b`, and `-c`, allowing the user to select multiple options.
+```csh
+#!/bin/csh
 
-### Example 3: Help Option
-```bash
-#!/bin/bash
-while getopts "h" opt; do
-  case $opt in
-    h)
-      echo "Usage: script.sh [-a] [-b value] [-c]"
-      exit 0
-      ;;
-    *)
-      echo "Invalid option"
-      ;;
-  esac
-done
+set optstring = "ab"
+while (1)
+    getopts $optstring option
+    if ($? != 0) break
+    switch ($option)
+        case "a":
+            echo "Option A selected"
+            breaksw
+        case "b":
+            echo "Option B selected"
+            breaksw
+        default:
+            echo "Invalid option"
+    endsw
+end
 ```
-Here, the `-h` option provides usage information for the script.
+
+### Example 2: Options with Arguments
+In this example, we show how to handle options that require arguments.
+
+```csh
+#!/bin/csh
+
+set optstring = "a:b:"
+while (1)
+    getopts $optstring option
+    if ($? != 0) break
+    switch ($option)
+        case "a":
+            echo "Option A selected with argument: $OPTARG"
+            breaksw
+        case "b":
+            echo "Option B selected with argument: $OPTARG"
+            breaksw
+        default:
+            echo "Invalid option"
+    endsw
+end
+```
+
+### Example 3: Handling Invalid Options
+This example illustrates how to handle invalid options gracefully.
+
+```csh
+#!/bin/csh
+
+set optstring = "abc"
+while (1)
+    getopts $optstring option
+    if ($? != 0) break
+    switch ($option)
+        case "a":
+            echo "Option A selected"
+            breaksw
+        case "b":
+            echo "Option B selected"
+            breaksw
+        case "c":
+            echo "Option C selected"
+            breaksw
+        default:
+            echo "Invalid option: $option"
+    endsw
+end
+```
 
 ## Tips
-- Always include a help option (`-h`) to guide users on how to use your script.
-- Use `OPTARG` to access the argument provided with options that require one.
-- Remember to handle invalid options gracefully to improve user experience.
+- Always check the return status of `getopts` to determine if parsing was successful.
+- Use `OPTARG` to access the argument associated with an option that requires one.
+- Keep your `optstring` organized and clearly define which options require arguments for better readability and maintenance.

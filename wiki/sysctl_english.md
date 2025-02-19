@@ -1,7 +1,7 @@
-# [Linux] Bash sysctl Uso: Manage kernel parameters at runtime
+# [Linux] C Shell (csh) sysctl 用法等价: Manage kernel parameters at runtime
 
 ## Overview
-The `sysctl` command is used to examine and modify kernel parameters at runtime in Unix-like operating systems. It allows users to read and change kernel settings without needing to reboot the system, making it a powerful tool for system administrators.
+The `sysctl` command is used to examine and modify kernel parameters at runtime in Unix-like operating systems. It allows users to view and change system settings that affect the kernel's behavior without needing to reboot the system.
 
 ## Usage
 The basic syntax of the `sysctl` command is as follows:
@@ -11,10 +11,10 @@ sysctl [options] [arguments]
 ```
 
 ## Common Options
-- `-a`, `--all`: Display all current kernel parameters.
-- `-n`, `--quiet`: Show only the value of the specified parameter, without the parameter name.
-- `-w`, `--write`: Write a new value to a specified kernel parameter.
-- `-p`, `--load`: Load parameters from a specified configuration file.
+- `-a`: Display all current kernel parameters.
+- `-w`: Write a new value to a kernel parameter.
+- `-n`: Show the value of a kernel parameter without the parameter name.
+- `-p`: Load parameters from a specified file.
 
 ## Common Examples
 Here are some practical examples of using the `sysctl` command:
@@ -24,27 +24,27 @@ Here are some practical examples of using the `sysctl` command:
    sysctl -a
    ```
 
-2. **Get the value of a specific parameter (e.g., `vm.swappiness`):**
+2. **Get the value of a specific parameter:**
    ```bash
-   sysctl vm.swappiness
+   sysctl net.ipv4.ip_forward
    ```
 
-3. **Set a new value for a parameter (e.g., change `vm.swappiness` to 10):**
+3. **Set a new value for a kernel parameter:**
    ```bash
-   sysctl -w vm.swappiness=10
+   sysctl -w net.ipv4.ip_forward=1
    ```
 
-4. **Load parameters from a configuration file (e.g., `/etc/sysctl.conf`):**
+4. **Load parameters from a configuration file:**
    ```bash
-   sysctl -p
+   sysctl -p /etc/sysctl.conf
    ```
 
-5. **Display the value of a parameter without the name:**
+5. **Show the value of a parameter without the name:**
    ```bash
    sysctl -n vm.swappiness
    ```
 
 ## Tips
-- Always back up your current configuration before making changes to kernel parameters.
-- Use `sysctl -p` after editing `/etc/sysctl.conf` to apply changes without rebooting.
+- Always check the current value of a parameter before modifying it to understand its impact.
+- Use the `-p` option to apply multiple settings from a configuration file, making it easier to manage system parameters.
 - Be cautious when changing kernel parameters, as incorrect settings can affect system stability and performance.

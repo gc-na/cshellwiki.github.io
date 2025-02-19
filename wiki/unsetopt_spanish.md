@@ -1,51 +1,46 @@
-# [Linux] Bash unsetopt Uso equivalente: Desactivar opciones de shell
+# [Linux] C Shell (csh) unsetopt: [desactivar opciones de shell]
 
 ## Overview
-El comando `unsetopt` se utiliza en Bash para desactivar opciones de shell que han sido previamente activadas con el comando `setopt`. Esto permite personalizar el comportamiento del shell según las necesidades del usuario.
+El comando `unsetopt` en C Shell (csh) se utiliza para desactivar opciones específicas del shell. Estas opciones pueden alterar el comportamiento del shell, y al desactivarlas, puedes personalizar tu entorno de trabajo según tus necesidades.
 
 ## Usage
-La sintaxis básica del comando es la siguiente:
+La sintaxis básica del comando `unsetopt` es la siguiente:
 
-```bash
-unsetopt [opciones]
+```csh
+unsetopt [opciones] [argumentos]
 ```
 
 ## Common Options
-Algunas de las opciones más comunes que se pueden desactivar con `unsetopt` incluyen:
+Algunas de las opciones comunes que puedes desactivar con `unsetopt` incluyen:
 
-- `allexport`: Desactiva la exportación automática de variables.
-- `braceexpand`: Desactiva la expansión de llaves.
-- `emacs`: Desactiva el modo de edición de Emacs.
-- `noclobber`: Permite sobrescribir archivos existentes al redirigir la salida.
+- `noclobber`: Previene que los archivos existentes sean sobrescritos al redirigir la salida.
+- `noglob`: Desactiva la expansión de comodines en los nombres de archivos.
+- `ignoreeof`: Evita que el shell se cierre al recibir una señal EOF (End Of File).
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso de `unsetopt`:
 
-1. **Desactivar la exportación automática de variables:**
-
-   ```bash
-   unsetopt allexport
-   ```
-
-2. **Desactivar la expansión de llaves:**
-
-   ```bash
-   unsetopt braceexpand
-   ```
-
-3. **Desactivar el modo de edición de Emacs:**
-
-   ```bash
-   unsetopt emacs
-   ```
-
-4. **Permitir sobrescribir archivos existentes:**
-
-   ```bash
+1. Desactivar la opción `noclobber`:
+   ```csh
    unsetopt noclobber
    ```
 
+2. Desactivar la opción `noglob`:
+   ```csh
+   unsetopt noglob
+   ```
+
+3. Desactivar la opción `ignoreeof`:
+   ```csh
+   unsetopt ignoreeof
+   ```
+
+4. Desactivar múltiples opciones a la vez:
+   ```csh
+   unsetopt noclobber noglob
+   ```
+
 ## Tips
-- Siempre verifica las opciones activas con `set` antes de usar `unsetopt` para asegurarte de que estás desactivando lo correcto.
-- Puedes combinar múltiples opciones en un solo comando, por ejemplo: `unsetopt allexport noclobber`.
-- Recuerda que los cambios realizados con `unsetopt` solo afectan la sesión actual del shell. Para hacer cambios permanentes, considera agregar el comando a tu archivo de configuración `.bashrc`.
+- Asegúrate de entender el efecto de cada opción antes de desactivarla, ya que puede cambiar significativamente el comportamiento del shell.
+- Puedes verificar las opciones actualmente activas con el comando `set` para decidir cuáles desactivar.
+- Considera crear un archivo de configuración (como `.cshrc`) para establecer tus preferencias de opciones al iniciar el shell.

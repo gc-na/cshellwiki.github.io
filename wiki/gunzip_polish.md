@@ -1,52 +1,48 @@
-# [Linux] Bash gunzip użycie: Rozpakowywanie plików gzip
+# [Linux] C Shell (csh) gunzip użycie: Rozpakowywanie plików gzip
 
-## Overview
-Polecenie `gunzip` jest używane do dekompresji plików skompresowanych za pomocą algorytmu gzip. Umożliwia ono przywrócenie oryginalnych plików z formatu .gz.
+## Przegląd
+Polecenie `gunzip` służy do dekompresji plików skompresowanych za pomocą algorytmu gzip. Umożliwia użytkownikom łatwe przywracanie oryginalnych plików z formatu skompresowanego.
 
-## Usage
-Podstawowa składnia polecenia `gunzip` wygląda następująco:
+## Użycie
+Podstawowa składnia polecenia `gunzip` jest następująca:
 
-```bash
+```
 gunzip [opcje] [argumenty]
 ```
 
-## Common Options
-Oto kilka powszechnie używanych opcji dla `gunzip`:
-
-- `-c`: Wyjście na standardowe wyjście (stdout) zamiast nadpisywania pliku.
+## Częste opcje
+- `-c`: Wyświetla dekompresowane dane na standardowym wyjściu, zamiast zapisywać je w pliku.
 - `-f`: Wymusza dekompresję, nawet jeśli plik docelowy już istnieje.
 - `-k`: Zachowuje oryginalny plik skompresowany po dekompresji.
 - `-r`: Rekursywnie dekompresuje wszystkie pliki w podkatalogach.
 
-## Common Examples
-Oto kilka praktycznych przykładów użycia `gunzip`:
-
-1. **Dekomprensja pojedynczego pliku:**
+## Częste przykłady
+1. Aby dekompresować pojedynczy plik:
    ```bash
    gunzip plik.gz
    ```
 
-2. **Dekomprensja z zachowaniem oryginalnego pliku:**
+2. Aby dekompresować plik i zachować oryginał:
    ```bash
    gunzip -k plik.gz
    ```
 
-3. **Dekomprensja i wyświetlenie na standardowym wyjściu:**
-   ```bash
-   gunzip -c plik.gz > nowy_plik
-   ```
-
-4. **Dekomprensja wszystkich plików .gz w katalogu:**
+3. Aby dekompresować wszystkie pliki `.gz` w bieżącym katalogu:
    ```bash
    gunzip *.gz
    ```
 
-5. **Rekurencyjna dekompresja plików w katalogu i podkatalogach:**
+4. Aby dekompresować plik i wyświetlić wynik na standardowym wyjściu:
+   ```bash
+   gunzip -c plik.gz
+   ```
+
+5. Aby dekompresować plik w podkatalogach:
    ```bash
    gunzip -r katalog/
    ```
 
-## Tips
-- Zawsze upewnij się, że masz kopię zapasową ważnych plików przed dekompresją, zwłaszcza gdy używasz opcji `-f`.
-- Użyj opcji `-k`, jeśli chcesz zachować skompresowany plik po dekompresji.
-- Możesz użyć `zcat` jako alternatywy dla `gunzip -c`, aby wyświetlić zawartość skompresowanego pliku bez dekompresji do pliku.
+## Wskazówki
+- Upewnij się, że masz odpowiednie uprawnienia do zapisu w katalogu, w którym chcesz dekompresować pliki.
+- Zawsze sprawdzaj, czy plik `.gz` jest poprawny przed próbą dekompresji, aby uniknąć błędów.
+- Używaj opcji `-k`, jeśli chcesz zachować oryginalny plik skompresowany na wypadek, gdybyś potrzebował go ponownie.

@@ -1,46 +1,47 @@
-# [Linux] Bash psql Cách sử dụng: Giao diện dòng lệnh cho PostgreSQL
+# [Hệ điều hành] C Shell (csh) psql Cách sử dụng: Truy cập và quản lý cơ sở dữ liệu PostgreSQL
 
 ## Tổng quan
-Lệnh `psql` là một công cụ giao diện dòng lệnh cho PostgreSQL, cho phép người dùng tương tác với cơ sở dữ liệu PostgreSQL. Với `psql`, bạn có thể thực hiện các truy vấn SQL, quản lý cơ sở dữ liệu và thực hiện nhiều tác vụ khác liên quan đến dữ liệu.
+Lệnh `psql` là một công cụ dòng lệnh được sử dụng để tương tác với cơ sở dữ liệu PostgreSQL. Nó cho phép người dùng thực hiện các truy vấn SQL, quản lý cơ sở dữ liệu và thực hiện các tác vụ quản trị khác.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `psql` như sau:
 
 ```bash
-psql [tùy chọn] [đối số]
+psql [tùy chọn] [tham số]
 ```
 
-## Các tùy chọn phổ biến
-- `-h, --host=HOST`: Chỉ định địa chỉ máy chủ nơi cơ sở dữ liệu đang chạy.
-- `-p, --port=PORT`: Chỉ định cổng mà máy chủ PostgreSQL đang lắng nghe.
-- `-U, --username=USERNAME`: Chỉ định tên người dùng để kết nối đến cơ sở dữ liệu.
-- `-d, --dbname=DBNAME`: Chỉ định tên cơ sở dữ liệu mà bạn muốn kết nối.
-- `-f, --file=FILE`: Thực thi các lệnh SQL từ tệp.
+## Tùy chọn phổ biến
+- `-h`: Địa chỉ máy chủ nơi cơ sở dữ liệu đang chạy.
+- `-U`: Tên người dùng để kết nối với cơ sở dữ liệu.
+- `-d`: Tên cơ sở dữ liệu mà bạn muốn kết nối.
+- `-p`: Cổng mà cơ sở dữ liệu đang lắng nghe.
 
 ## Ví dụ phổ biến
-Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `psql`.
+- Kết nối đến cơ sở dữ liệu mặc định:
 
-### Kết nối đến cơ sở dữ liệu
 ```bash
-psql -U username -d dbname
+psql
 ```
 
-### Thực thi một tệp SQL
+- Kết nối đến một cơ sở dữ liệu cụ thể với tên người dùng:
+
 ```bash
-psql -U username -d dbname -f script.sql
+psql -U ten_nguoi_dung -d ten_co_so_du_lieu
 ```
 
-### Xuất dữ liệu từ bảng
+- Kết nối đến một máy chủ từ xa:
+
 ```bash
-psql -U username -d dbname -c "SELECT * FROM tablename;"
+psql -h dia_chi_may_chu -U ten_nguoi_dung -d ten_co_so_du_lieu
 ```
 
-### Kết nối đến máy chủ từ xa
+- Thực hiện một truy vấn SQL từ dòng lệnh:
+
 ```bash
-psql -h remote_host -U username -d dbname
+psql -c "SELECT * FROM ten_bang;"
 ```
 
 ## Mẹo
-- Sử dụng tùy chọn `-W` để yêu cầu nhập mật khẩu khi kết nối.
-- Bạn có thể sử dụng `\?` trong `psql` để xem danh sách các lệnh và tùy chọn có sẵn.
-- Để thoát khỏi `psql`, bạn có thể gõ `\q`.
+- Luôn kiểm tra kết nối của bạn trước khi thực hiện các truy vấn quan trọng.
+- Sử dụng tùy chọn `-f` để thực hiện các tập tin SQL từ một tệp tin bên ngoài.
+- Thực hành các truy vấn trong môi trường phát triển trước khi áp dụng vào môi trường sản xuất để tránh mất dữ liệu.

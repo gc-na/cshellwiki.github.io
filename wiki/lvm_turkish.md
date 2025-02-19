@@ -1,50 +1,51 @@
-# [Linux] Bash lvm Kullanımı: Disk alanını yönetme aracı
+# [Linux] C Shell (csh) lvm Kullanımı: LVM ile depolama yönetimi
 
 ## Genel Bakış
-`lvm` (Logical Volume Manager), Linux sistemlerinde disk alanını daha esnek bir şekilde yönetmek için kullanılan bir araçtır. LVM, fiziksel diskleri mantıksal hacimlere dönüştürerek, disk alanını dinamik olarak ayırma, genişletme veya küçültme imkanı sunar.
+lvm komutu, Linux'ta mantıksal hacim yöneticisi (Logical Volume Manager) olarak bilinen bir aracı temsil eder. Bu araç, disk alanını daha esnek bir şekilde yönetmenizi sağlar. LVM ile disk bölümlerini birleştirebilir, ayırabilir ve dinamik olarak genişletebilir veya daraltabilirsiniz.
 
 ## Kullanım
-Temel sözdizimi şu şekildedir:
-```bash
+lvm komutunun temel sözdizimi aşağıdaki gibidir:
+
+```csh
 lvm [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `lvcreate`: Yeni bir mantıksal hacim oluşturur.
-- `lvremove`: Mevcut bir mantıksal hacmi siler.
-- `lvextend`: Mevcut bir mantıksal hacmin boyutunu artırır.
-- `lvreduce`: Mevcut bir mantıksal hacmin boyutunu azaltır.
-- `vgcreate`: Yeni bir hacim grubu oluşturur.
-- `vgremove`: Mevcut bir hacim grubunu siler.
+- `create`: Yeni bir mantıksal hacim oluşturur.
+- `remove`: Mevcut bir mantıksal hacmi siler.
+- `extend`: Bir mantıksal hacmin boyutunu artırır.
+- `reduce`: Bir mantıksal hacmin boyutunu azaltır.
+- `list`: Mevcut mantıksal hacimleri ve durumlarını listeler.
 
 ## Yaygın Örnekler
-Aşağıda `lvm` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+Aşağıda lvm komutunun bazı pratik örnekleri bulunmaktadır:
 
-### Yeni Mantıksal Hacim Oluşturma
-```bash
-lvcreate -n my_volume -L 10G my_volume_group
-```
-Bu komut, `my_volume_group` adlı hacim grubunda `my_volume` adında 10 GB boyutunda yeni bir mantıksal hacim oluşturur.
+1. Yeni bir mantıksal hacim oluşturma:
+   ```csh
+   lvm create -n my_volume -L 10G my_volume_group
+   ```
 
-### Mantıksal Hacmi Silme
-```bash
-lvremove /dev/my_volume_group/my_volume
-```
-Bu komut, belirtilen mantıksal hacmi siler.
+2. Mevcut bir mantıksal hacmi silme:
+   ```csh
+   lvm remove my_volume
+   ```
 
-### Mantıksal Hacmi Genişletme
-```bash
-lvextend -L +5G /dev/my_volume_group/my_volume
-```
-Bu komut, `my_volume` adlı mantıksal hacmin boyutunu 5 GB artırır.
+3. Bir mantıksal hacmin boyutunu artırma:
+   ```csh
+   lvm extend -L +5G my_volume
+   ```
 
-### Mantıksal Hacmi Küçültme
-```bash
-lvreduce -L -3G /dev/my_volume_group/my_volume
-```
-Bu komut, `my_volume` adlı mantıksal hacmin boyutunu 3 GB azaltır.
+4. Bir mantıksal hacmin boyutunu azaltma:
+   ```csh
+   lvm reduce -L -2G my_volume
+   ```
+
+5. Tüm mantıksal hacimleri listeleme:
+   ```csh
+   lvm list
+   ```
 
 ## İpuçları
-- LVM kullanmadan önce mevcut verilerinizi yedeklemek her zaman iyi bir uygulamadır.
-- Mantıksal hacimlerinizi yönetirken dikkatli olun; yanlış bir işlem veri kaybına yol açabilir.
-- LVM ile disk alanını dinamik olarak yönetmek, sistem kaynaklarınızı daha verimli kullanmanıza yardımcı olabilir.
+- LVM kullanmadan önce mevcut verilerinizi yedeklemeyi unutmayın.
+- Mantıksal hacimlerinizi yönetirken dikkatli olun; yanlış bir işlem veri kaybına neden olabilir.
+- LVM ile disk alanınızı dinamik olarak yönetmek için düzenli olarak hacimlerinizi gözden geçirin ve ihtiyaçlarınıza göre ayarlayın.

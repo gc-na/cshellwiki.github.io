@@ -1,46 +1,41 @@
-# [Linux] Bash talk uso: Comunicação em tempo real entre usuários
+# [Linux] C Shell (csh) talk uso equivalente: Comunicação entre usuários
 
 ## Overview
-O comando `talk` é utilizado para permitir que dois usuários se comuniquem em tempo real através de uma sessão de terminal. Ele estabelece uma conexão entre as máquinas dos usuários, permitindo que mensagens sejam trocadas instantaneamente.
+O comando `talk` no C Shell (csh) é utilizado para iniciar uma conversa interativa entre dois usuários em um sistema Unix. Ele permite que os usuários se comuniquem em tempo real, exibindo as mensagens em janelas separadas.
 
 ## Usage
 A sintaxe básica do comando `talk` é a seguinte:
 
-```bash
+```
 talk [opções] [usuário]@[máquina]
 ```
 
 ## Common Options
 Aqui estão algumas opções comuns do comando `talk`:
 
-- `-a`: Permite que o usuário se conecte a um usuário que não está na lista de permissões.
-- `-m`: Envia uma mensagem em vez de iniciar uma sessão de conversa.
-- `-s`: Inicia uma conversa em modo silencioso, sem som.
+- `-s` : Silencia a notificação de recebimento de mensagens.
+- `-t` : Define um tempo limite para a conexão.
+- `-h` : Exibe uma mensagem de ajuda sobre o uso do comando.
 
 ## Common Examples
 Aqui estão alguns exemplos práticos do uso do comando `talk`:
 
-1. Iniciar uma conversa com um usuário chamado "joão" na mesma máquina:
+1. Iniciar uma conversa com um usuário chamado "joao":
    ```bash
-   talk joão
+   talk joao
    ```
 
-2. Iniciar uma conversa com um usuário chamado "maria" em uma máquina remota chamada "servidor":
+2. Iniciar uma conversa com um usuário em uma máquina específica:
    ```bash
-   talk maria@servidor
+   talk joao@servidor1
    ```
 
-3. Enviar uma mensagem para um usuário sem iniciar uma sessão de conversa:
+3. Iniciar uma conversa com opções específicas, como silenciar notificações:
    ```bash
-   talk -m "Oi, você está disponível?" joão
-   ```
-
-4. Conectar-se a um usuário em modo silencioso:
-   ```bash
-   talk -s joão@servidor
+   talk -s joao
    ```
 
 ## Tips
-- Certifique-se de que o serviço `talk` esteja habilitado no servidor e que ambos os usuários estejam logados.
-- Use o comando `who` para verificar quais usuários estão disponíveis para conversar.
-- Lembre-se de que o `talk` pode não funcionar em todas as configurações de rede, especialmente se houver firewalls em uso.
+- Verifique se o usuário que você deseja contatar está disponível e aceitando conversas.
+- Use `Ctrl+C` para sair da conversa a qualquer momento.
+- Lembre-se de que o `talk` requer que ambos os usuários estejam em um terminal compatível e que o serviço esteja habilitado no sistema.

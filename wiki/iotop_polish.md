@@ -1,47 +1,51 @@
-# [Linux] Bash iotop użycie: Monitorowanie użycia dysku przez procesy
+# [Linux] C Shell (csh) iotop użycie: monitorowanie użycia dysku w czasie rzeczywistym
 
 ## Overview
-Polecenie `iotop` jest narzędziem do monitorowania aktywności dyskowej w systemie Linux. Umożliwia użytkownikom śledzenie, które procesy korzystają z dysku oraz ile danych odczytują i zapisują w czasie rzeczywistym.
+Polecenie `iotop` służy do monitorowania użycia dysku przez procesy w czasie rzeczywistym. Umożliwia użytkownikom śledzenie, które procesy generują największe obciążenie dysku, co może być przydatne w diagnozowaniu problemów z wydajnością systemu.
 
 ## Usage
-Podstawowa składnia polecenia `iotop` jest następująca:
+Podstawowa składnia polecenia `iotop` wygląda następująco:
 
-```bash
+```csh
 iotop [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-o`, `--only`: Wyświetla tylko procesy, które aktualnie wykonują operacje I/O.
-- `-b`, `--batch`: Uruchamia `iotop` w trybie wsadowym, co jest przydatne do zapisywania wyników do pliku.
-- `-n NUM`, `--iterations NUM`: Określa liczbę iteracji, po których `iotop` zakończy działanie.
-- `-p PID`, `--pid=PID`: Monitoruje tylko proces o podanym identyfikatorze PID.
+Oto kilka powszechnie używanych opcji dla `iotop`:
+
+- `-o` – wyświetla tylko procesy, które aktualnie wykonują operacje I/O.
+- `-b` – uruchamia `iotop` w trybie wsadowym, co jest przydatne do zapisywania wyników do pliku.
+- `-n NUM` – określa liczbę iteracji, po których `iotop` zakończy działanie.
+- `-d SEC` – ustawia czas odświeżania w sekundach.
 
 ## Common Examples
-1. **Podstawowe użycie `iotop`:**
-   ```bash
-   iotop
-   ```
-   To polecenie uruchomi interfejs użytkownika `iotop`, który wyświetli procesy korzystające z dysku w czasie rzeczywistym.
+Oto kilka praktycznych przykładów użycia `iotop`:
 
-2. **Wyświetlanie tylko aktywnych procesów I/O:**
-   ```bash
-   iotop -o
-   ```
-   Użycie opcji `-o` pozwala na filtrowanie wyników, pokazując tylko te procesy, które w danym momencie wykonują operacje I/O.
+1. Aby uruchomić `iotop` w trybie interaktywnym, wystarczy wpisać:
 
-3. **Uruchomienie `iotop` w trybie wsadowym:**
-   ```bash
-   iotop -b -n 5
-   ```
-   To polecenie uruchomi `iotop` w trybie wsadowym, wykonując 5 iteracji i następnie kończąc działanie.
+    ```csh
+    iotop
+    ```
 
-4. **Monitorowanie konkretnego procesu:**
-   ```bash
-   iotop -p 1234
-   ```
-   W tym przykładzie `iotop` będzie monitorować tylko proces o identyfikatorze PID 1234.
+2. Aby zobaczyć tylko procesy wykonujące operacje I/O:
+
+    ```csh
+    iotop -o
+    ```
+
+3. Aby uruchomić `iotop` w trybie wsadowym i zapisać wyniki do pliku:
+
+    ```csh
+    iotop -b -n 5 > wyniki_iotop.txt
+    ```
+
+4. Aby ustawić czas odświeżania na 2 sekundy i wyświetlić tylko procesy I/O:
+
+    ```csh
+    iotop -o -d 2
+    ```
 
 ## Tips
-- Używaj opcji `-o`, aby szybko zidentyfikować procesy, które intensywnie korzystają z dysku.
-- W trybie wsadowym (opcja `-b`) możesz przekierować wyjście do pliku, co ułatwia analizę danych później.
-- Regularnie monitoruj system, aby zidentyfikować potencjalne problemy z wydajnością związane z operacjami I/O.
+- Używaj opcji `-o`, aby szybko zidentyfikować procesy, które obciążają dysk.
+- W trybie wsadowym (`-b`) możesz łatwo zbierać dane do analizy później.
+- Pamiętaj, że `iotop` wymaga uprawnień administratora, aby uzyskać pełne informacje o wszystkich procesach. Uruchom go z `sudo`, jeśli to konieczne.

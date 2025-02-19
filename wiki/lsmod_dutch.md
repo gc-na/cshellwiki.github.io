@@ -1,42 +1,42 @@
-# [Linux] Bash lsmod gebruik: Toont geladen kernelmodules
+# [Linux] C Shell (csh) lsmod gebruik: Toont geladen kernelmodules
 
 ## Overzicht
-De `lsmod`-opdracht in Linux toont een lijst van momenteel geladen kernelmodules. Dit is nuttig voor systeembeheerders en gebruikers die willen controleren welke modules actief zijn en hun afhankelijkheden.
+Het `lsmod` commando in C Shell (csh) wordt gebruikt om een lijst weer te geven van de momenteel geladen kernelmodules in het Linux-besturingssysteem. Dit is nuttig voor systeembeheerders en ontwikkelaars die willen controleren welke modules actief zijn en hun afhankelijkheden.
 
 ## Gebruik
-De basis syntaxis van de `lsmod`-opdracht is als volgt:
+De basis syntaxis van het `lsmod` commando is als volgt:
 
-```bash
+```csh
 lsmod [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- **-h, --help**: Toont een helpbericht met informatie over het gebruik van de opdracht.
-- **-v, --verbose**: Geeft meer gedetailleerde informatie over de geladen modules.
+## Veelvoorkomende Opties
+Hier zijn enkele veelvoorkomende opties voor `lsmod`:
 
-## Veelvoorkomende voorbeelden
+- **-h, --help**: Toont een helpbericht met informatie over het gebruik van het commando.
+- **-v, --verbose**: Geeft gedetailleerdere informatie over de geladen modules.
 
-1. **Toon alle geladen modules**:
-   ```bash
+## Veelvoorkomende Voorbeelden
+
+1. **Basis gebruik van lsmod**:
+   Dit toont een lijst van alle geladen kernelmodules.
+   ```csh
    lsmod
    ```
 
-2. **Toon geladen modules met gedetailleerde informatie**:
-   ```bash
-   lsmod -v
+2. **Hulpinformatie weergeven**:
+   Dit toont de helpinformatie voor het `lsmod` commando.
+   ```csh
+   lsmod --help
    ```
 
-3. **Gebruik met grep om een specifieke module te vinden**:
-   ```bash
-   lsmod | grep <module_naam>
-   ```
-
-4. **Toon alleen de modules met hun afhankelijkheden**:
-   ```bash
-   lsmod | awk '{print $1, $3}'
+3. **Gedetailleerde informatie**:
+   Dit toont meer gedetailleerde informatie over de geladen modules.
+   ```csh
+   lsmod --verbose
    ```
 
 ## Tips
-- Gebruik `lsmod` in combinatie met andere opdrachten zoals `modinfo` om meer informatie over specifieke modules te krijgen.
-- Controleer regelmatig de geladen modules om te zorgen dat er geen ongewenste of verouderde modules actief zijn.
-- Vergeet niet dat wijzigingen aan modules invloed kunnen hebben op de stabiliteit van je systeem, dus wees voorzichtig bij het laden of verwijderen van modules.
+- Controleer regelmatig de geladen modules om te zien of er ongewenste of verouderde modules actief zijn.
+- Gebruik `lsmod` in combinatie met andere commando's zoals `modinfo` om meer te leren over specifieke modules.
+- Wees voorzichtig met het handmatig laden of verwijderen van modules, aangezien dit invloed kan hebben op de stabiliteit van het systeem.

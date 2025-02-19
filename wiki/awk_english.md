@@ -1,64 +1,54 @@
-# [Linux] Bash awk Uso equivalente: Process text files and data
+# [Linux] C Shell (csh) awk用法: Text processing and data extraction
 
 ## Overview
-The `awk` command is a powerful text processing tool in Bash that allows users to manipulate and analyze data in files or input streams. It is particularly useful for extracting and reporting information from structured text files, such as CSV or tab-delimited files.
+The `awk` command is a powerful text processing tool used for pattern scanning and processing. It allows users to manipulate data and generate reports based on the content of text files or input streams. With its own programming language, `awk` excels at handling structured data, making it ideal for tasks such as data extraction, reporting, and transformation.
 
 ## Usage
 The basic syntax of the `awk` command is as follows:
 
 ```bash
-awk [options] 'pattern { action }' file
+awk [options] 'pattern { action }' [file...]
 ```
 
-- `pattern`: A condition to match lines in the input.
-- `action`: The operation to perform on the matched lines.
-- `file`: The input file to process.
-
 ## Common Options
-- `-F`: Specify the field separator (default is whitespace).
+- `-F`: Specify the input field separator (default is whitespace).
 - `-v`: Assign a value to a variable before execution.
 - `-f`: Read the `awk` program from a file instead of the command line.
 - `-W`: Enable specific features or warnings.
 
 ## Common Examples
 
-### Example 1: Print specific columns
-To print the first and third columns of a file:
+1. **Print specific columns from a file:**
+   To print the first and third columns of a file named `data.txt`, use:
+   ```bash
+   awk '{print $1, $3}' data.txt
+   ```
 
-```bash
-awk '{print $1, $3}' filename.txt
-```
+2. **Using a custom field separator:**
+   If your data is comma-separated, you can specify the field separator:
+   ```bash
+   awk -F',' '{print $1, $2}' data.csv
+   ```
 
-### Example 2: Using a custom field separator
-If your file is comma-separated, you can specify the separator with the `-F` option:
+3. **Filtering lines based on a pattern:**
+   To print only lines that contain the word "error":
+   ```bash
+   awk '/error/' logfile.txt
+   ```
 
-```bash
-awk -F, '{print $1, $2}' filename.csv
-```
+4. **Calculating the sum of a column:**
+   To sum the values in the second column:
+   ```bash
+   awk '{sum += $2} END {print sum}' data.txt
+   ```
 
-### Example 3: Filtering lines
-To print only the lines where the second column is greater than 100:
-
-```bash
-awk '$2 > 100' filename.txt
-```
-
-### Example 4: Counting lines
-To count the number of lines in a file:
-
-```bash
-awk 'END {print NR}' filename.txt
-```
-
-### Example 5: Using variables
-You can use the `-v` option to set a variable and use it in your `awk` command:
-
-```bash
-awk -v threshold=50 '$1 > threshold' filename.txt
-```
+5. **Assigning variables:**
+   You can assign a variable and use it in your `awk` command:
+   ```bash
+   awk -v threshold=50 '$1 > threshold {print $0}' scores.txt
+   ```
 
 ## Tips
-- Always quote your `awk` commands to prevent shell interpretation of special characters.
-- Use the `-F` option to handle different delimiters effectively.
-- Combine `awk` with other commands using pipes for more complex data processing tasks.
-- Familiarize yourself with regular expressions to enhance your pattern matching capabilities in `awk`.
+- Always use single quotes around the `awk` program to prevent shell interpretation.
+- When dealing with large files, consider using `awk` in combination with other commands like `grep` or `sort` for more complex data processing.
+- Familiarize yourself with `awk`'s built-in variables like `NR` (number of records) and `NF` (number of fields) to enhance your scripts.

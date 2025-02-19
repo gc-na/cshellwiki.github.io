@@ -1,7 +1,7 @@
-# [Linux] Bash gzip użycie: Kompresja plików
+# [Linux] C Shell (csh) gzip użycie: Kompresja plików
 
 ## Overview
-Polecenie `gzip` służy do kompresji plików, zmniejszając ich rozmiar, co ułatwia przechowywanie i przesyłanie danych. Gzip jest powszechnie używane w systemach Unix i Linux.
+Polecenie `gzip` służy do kompresji plików, zmniejszając ich rozmiar, co ułatwia przechowywanie i przesyłanie danych. Gzip jest popularnym narzędziem w systemach Unix i Linux, które wykorzystuje algorytm DEFLATE do efektywnej kompresji.
 
 ## Usage
 Podstawowa składnia polecenia `gzip` jest następująca:
@@ -31,12 +31,12 @@ Oto kilka praktycznych przykładów użycia polecenia `gzip`:
    gzip -d plik.txt.gz
    ```
 
-3. Kompresja pliku z zachowaniem oryginału:
+3. Kompresja z zachowaniem oryginalnego pliku:
    ```bash
    gzip -k plik.txt
    ```
 
-4. Kompresja wszystkich plików w katalogu:
+4. Kompresja wszystkich plików `.txt` w katalogu:
    ```bash
    gzip *.txt
    ```
@@ -47,6 +47,6 @@ Oto kilka praktycznych przykładów użycia polecenia `gzip`:
    ```
 
 ## Tips
-- Używaj opcji `-v`, aby śledzić postęp kompresji i uzyskać informacje o rozmiarze plików.
-- Pamiętaj, że po kompresji plików z rozszerzeniem `.gz`, oryginalne pliki zostaną usunięte, chyba że użyjesz opcji `-k`.
-- Gzip jest bardziej efektywny w kompresji tekstu niż plików binarnych, dlatego warto go używać głównie do plików tekstowych.
+- Zawsze sprawdzaj rozmiar plików po kompresji, aby upewnić się, że proces był skuteczny.
+- Używaj opcji `-v`, aby monitorować postęp kompresji i uzyskać informacje o rozmiarze plików przed i po.
+- Pamiętaj, że pliki skompresowane za pomocą `gzip` mają rozszerzenie `.gz`, co ułatwia ich identyfikację.

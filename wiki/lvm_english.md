@@ -1,7 +1,7 @@
-# [Linux] Bash lvm usage: Manage Logical Volumes
+# [Linux] C Shell (csh) lvm uso equivalente: Manage logical volumes
 
 ## Overview
-The `lvm` command is used to manage Logical Volume Management (LVM) in Linux. It allows users to create, resize, and manage disk partitions in a flexible manner, making it easier to allocate storage space as needed.
+The `lvm` command in C Shell is used to manage Logical Volume Management (LVM) on Linux systems. It allows users to create, modify, and delete logical volumes, which are virtual partitions that can be resized and managed more flexibly than traditional disk partitions.
 
 ## Usage
 The basic syntax of the `lvm` command is as follows:
@@ -11,59 +11,47 @@ lvm [options] [arguments]
 ```
 
 ## Common Options
-- `create`: Create a new logical volume.
-- `remove`: Delete a logical volume.
-- `resize`: Change the size of a logical volume.
-- `activate`: Activate a logical volume.
-- `deactivate`: Deactivate a logical volume.
-- `display`: Show information about logical volumes.
+- `create`: Creates a new logical volume.
+- `remove`: Deletes an existing logical volume.
+- `extend`: Increases the size of a logical volume.
+- `reduce`: Decreases the size of a logical volume.
+- `lvdisplay`: Displays information about logical volumes.
+- `lvscan`: Scans for all logical volumes.
 
 ## Common Examples
+Here are some practical examples of using the `lvm` command:
 
-### Creating a Logical Volume
-To create a new logical volume named `my_volume` of size 10GB in the volume group `my_volume_group`, use:
+1. **Creating a new logical volume:**
+   ```bash
+   lvm lvcreate -n my_volume -L 10G my_volume_group
+   ```
 
-```bash
-lvm create -L 10G -n my_volume my_volume_group
-```
+2. **Removing a logical volume:**
+   ```bash
+   lvm lvremove my_volume_group/my_volume
+   ```
 
-### Removing a Logical Volume
-To remove the logical volume `my_volume`, use:
+3. **Extending a logical volume:**
+   ```bash
+   lvm lvextend -L +5G my_volume_group/my_volume
+   ```
 
-```bash
-lvm remove my_volume
-```
+4. **Reducing a logical volume:**
+   ```bash
+   lvm lvreduce -L -5G my_volume_group/my_volume
+   ```
 
-### Resizing a Logical Volume
-To resize `my_volume` to 20GB, use:
+5. **Displaying information about logical volumes:**
+   ```bash
+   lvm lvdisplay
+   ```
 
-```bash
-lvm resize -L 20G my_volume
-```
-
-### Activating a Logical Volume
-To activate the logical volume `my_volume`, use:
-
-```bash
-lvm activate my_volume
-```
-
-### Deactivating a Logical Volume
-To deactivate the logical volume `my_volume`, use:
-
-```bash
-lvm deactivate my_volume
-```
-
-### Displaying Logical Volumes
-To display information about all logical volumes, use:
-
-```bash
-lvm display
-```
+6. **Scanning for all logical volumes:**
+   ```bash
+   lvm lvscan
+   ```
 
 ## Tips
-- Always ensure you have backups of important data before modifying logical volumes.
-- Use the `--dry-run` option with commands to preview changes without applying them.
-- Regularly check the status of your logical volumes to avoid unexpected issues.
-- Familiarize yourself with the LVM documentation for advanced features and options.
+- Always back up important data before modifying logical volumes to prevent data loss.
+- Use the `lvdisplay` command to check the current size and status of your logical volumes before making changes.
+- When reducing the size of a logical volume, ensure that the filesystem is resized first to avoid data corruption.

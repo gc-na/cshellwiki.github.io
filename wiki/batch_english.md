@@ -1,47 +1,50 @@
-# [Linux] Bash batch usage: Schedule commands for later execution
+# [Linux] C Shell (csh) batch uso equivalente: Execute commands in the background
 
 ## Overview
-The `batch` command in Bash is used to schedule commands to be executed at a later time when system load levels permit. This is particularly useful for running resource-intensive tasks without affecting the immediate performance of the system.
+The `batch` command in C Shell (csh) is used to schedule commands to be executed at a later time when system load levels permit. This is particularly useful for running scripts or commands that require significant resources without impacting the performance of other processes.
 
 ## Usage
 The basic syntax of the `batch` command is as follows:
 
-```bash
+```csh
 batch [options] [arguments]
 ```
 
 ## Common Options
-- `-f`, `--file`: Specify a file containing commands to execute.
-- `-h`, `--help`: Display help information about the command.
-- `-V`, `--version`: Show the version of the `batch` command.
+- `-f`: This option allows you to specify a file containing commands to be executed.
+- `-n`: This option can be used to specify the number of jobs to run concurrently.
 
 ## Common Examples
 
-1. **Schedule a single command:**
-   To schedule a simple command, you can use the following syntax:
-   ```bash
-   echo "echo 'Hello, World!'" | batch
-   ```
+### Example 1: Schedule a command
+To schedule a simple command to run in the background:
 
-2. **Execute a script:**
-   If you have a script file (e.g., `script.sh`) that you want to run later, you can do so with:
-   ```bash
-   batch < script.sh
-   ```
+```csh
+echo "echo 'Hello, World!'" | batch
+```
 
-3. **Using a command file:**
-   If you have multiple commands in a file (e.g., `commands.txt`), you can execute them all at once:
-   ```bash
-   batch < commands.txt
-   ```
+### Example 2: Execute a script
+To run a script named `myscript.sh` at a later time:
 
-4. **Check scheduled jobs:**
-   To view the jobs that are scheduled to run, you can use:
-   ```bash
-   atq
-   ```
+```csh
+batch < myscript.sh
+```
+
+### Example 3: Using a command file
+To execute commands from a file named `commands.txt`:
+
+```csh
+batch -f commands.txt
+```
+
+### Example 4: Schedule multiple commands
+You can schedule multiple commands by echoing them into `batch`:
+
+```csh
+echo "command1; command2; command3" | batch
+```
 
 ## Tips
-- Always check the system load before scheduling tasks to ensure they run smoothly.
-- Use the `atq` command to monitor your scheduled jobs and `atrm` to remove any jobs if necessary.
-- Consider using `batch` for commands that require significant resources, as they will run when the system is less busy.
+- Ensure that your commands do not require user interaction, as they will run without a terminal.
+- Check the system load before scheduling tasks to avoid overwhelming the system.
+- Use `atq` to view scheduled jobs and `atrm` to remove them if necessary.

@@ -1,43 +1,41 @@
-# [Linux] Bash df użycie: Sprawdzenie dostępnej przestrzeni dyskowej
+# [Linux] C Shell (csh) df Użycie: Sprawdza dostępne miejsce na dysku
 
 ## Overview
-Polecenie `df` (disk free) służy do wyświetlania informacji o dostępnej i używanej przestrzeni dyskowej na zamontowanych systemach plików. Dzięki temu użytkownicy mogą łatwo monitorować, ile miejsca pozostało na dyskach.
+Polecenie `df` w C Shell (csh) służy do wyświetlania informacji o dostępnej przestrzeni dyskowej na zamontowanych systemach plików. Umożliwia użytkownikom monitorowanie wykorzystania miejsca na dysku, co jest przydatne w zarządzaniu zasobami systemowymi.
 
 ## Usage
 Podstawowa składnia polecenia `df` jest następująca:
 
-```bash
+```csh
 df [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-h` – wyświetla rozmiary w formacie czytelnym dla ludzi (np. KB, MB, GB).
-- `-T` – pokazuje typ systemu plików.
-- `-a` – wyświetla wszystkie systemy plików, w tym te, które są pełne.
-- `-i` – pokazuje informacje o inode'ach zamiast przestrzeni dyskowej.
+Oto kilka powszechnie używanych opcji dla polecenia `df`:
+
+- `-h` - Wyświetla rozmiary w formacie "czytelnym dla ludzi" (np. 1K, 234M, 2G).
+- `-T` - Wyświetla typ systemu plików dla każdego zamontowanego systemu plików.
+- `-a` - Wyświetla wszystkie systemy plików, w tym te, które są zainstalowane, ale nie są aktualnie zamontowane.
 
 ## Common Examples
-1. Wyświetlenie dostępnej przestrzeni na wszystkich zamontowanych systemach plików w formacie czytelnym:
-   ```bash
+Oto kilka praktycznych przykładów użycia polecenia `df`:
+
+1. Wyświetlenie dostępnej przestrzeni na wszystkich zamontowanych systemach plików w formacie czytelnym dla ludzi:
+   ```csh
    df -h
    ```
 
-2. Sprawdzenie dostępnej przestrzeni na określonym systemie plików:
-   ```bash
-   df -h /dev/sda1
-   ```
-
-3. Wyświetlenie informacji o typach systemów plików:
-   ```bash
+2. Wyświetlenie typów systemów plików dla zamontowanych systemów:
+   ```csh
    df -T
    ```
 
-4. Sprawdzenie informacji o inode'ach:
-   ```bash
-   df -i
+3. Wyświetlenie informacji o wszystkich systemach plików, w tym tych, które nie są zamontowane:
+   ```csh
+   df -a
    ```
 
 ## Tips
-- Używaj opcji `-h`, aby łatwiej interpretować wyniki, zwłaszcza na dużych dyskach.
-- Regularnie monitoruj przestrzeń dyskową, aby unikać problemów z brakiem miejsca.
-- Możesz użyć polecenia `df` w skryptach, aby automatycznie sprawdzać dostępność przestrzeni dyskowej przed rozpoczęciem dużych operacji zapisu.
+- Regularnie sprawdzaj dostępne miejsce na dysku, aby uniknąć problemów z przechowywaniem danych.
+- Używaj opcji `-h`, aby uzyskać bardziej zrozumiałe wyniki, szczególnie gdy pracujesz z dużymi rozmiarami.
+- Zawsze sprawdzaj, które systemy plików są zamontowane, aby zrozumieć, gdzie możesz potrzebować więcej przestrzeni.

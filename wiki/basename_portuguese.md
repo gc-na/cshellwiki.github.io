@@ -1,66 +1,51 @@
-# [Linux] Bash basename uso equivalente: Extrair o nome de um arquivo
-
-O comando `basename` é utilizado para extrair o nome de um arquivo ou diretório a partir de um caminho completo, removendo a parte do diretório e, opcionalmente, a extensão do arquivo.
+# [Linux] C Shell (csh) basename Uso: Extrair o nome do arquivo sem o caminho
 
 ## Overview
-O `basename` é uma ferramenta útil para simplificar caminhos de arquivos, permitindo que você obtenha apenas o nome do arquivo ou diretório sem a parte do caminho. Isso é especialmente útil em scripts e automações.
+O comando `basename` é utilizado para extrair o nome de um arquivo a partir de um caminho completo, removendo qualquer diretório que o preceda. Isso é útil quando você precisa trabalhar apenas com o nome do arquivo em scripts ou comandos.
 
 ## Usage
 A sintaxe básica do comando `basename` é a seguinte:
 
-```bash
+```csh
 basename [opções] [argumentos]
 ```
 
 ## Common Options
-- `-a`: Aceita múltiplos argumentos e retorna o nome base para cada um deles.
-- `-s SUFIX`: Remove a sufixo especificado do nome do arquivo, se presente.
+- `-a`: Aceita múltiplos argumentos e retorna o nome base de cada um.
+- `-s`: Remove uma extensão específica do nome do arquivo.
 
 ## Common Examples
 Aqui estão alguns exemplos práticos do uso do comando `basename`:
 
-1. **Extrair o nome de um arquivo a partir de um caminho completo:**
+1. **Extrair o nome de um arquivo:**
+   ```csh
+   basename /caminho/para/o/arquivo.txt
+   ```
+   Saída:
+   ```
+   arquivo.txt
+   ```
 
-```bash
-basename /home/usuario/documentos/relatorio.txt
-```
-Saída:
-```
-relatorio.txt
-```
-
-2. **Extrair apenas o nome do arquivo sem a extensão:**
-
-```bash
-basename /home/usuario/documentos/relatorio.txt .txt
-```
-Saída:
-```
-relatorio
-```
+2. **Remover a extensão de um arquivo:**
+   ```csh
+   basename /caminho/para/o/arquivo.txt .txt
+   ```
+   Saída:
+   ```
+   arquivo
+   ```
 
 3. **Usar com múltiplos arquivos:**
-
-```bash
-basename -a /home/usuario/documentos/relatorio.txt /home/usuario/imagens/foto.jpg
-```
-Saída:
-```
-relatorio.txt
-foto.jpg
-```
-
-4. **Remover um sufixo específico:**
-
-```bash
-basename /home/usuario/documentos/relatorio.txt .txt
-```
-Saída:
-```
-relatorio
-```
+   ```csh
+   basename -a /caminho/para/arquivo1.txt /caminho/para/arquivo2.txt
+   ```
+   Saída:
+   ```
+   arquivo1.txt
+   arquivo2.txt
+   ```
 
 ## Tips
-- Utilize `basename` em scripts para facilitar a manipulação de arquivos e diretórios.
-- Combine `basename` com outros comandos, como `find`, para processar múltiplos arquivos de forma eficiente.
-- Lembre-se de que o `basename` não altera os arquivos, apenas retorna o nome base, tornando-o seguro para uso em scripts.
+- Utilize o `basename` em scripts para facilitar a manipulação de nomes de arquivos.
+- Combine `basename` com outros comandos, como `find`, para processar arquivos de forma mais eficiente.
+- Lembre-se de que o `basename` não altera os arquivos, apenas fornece a saída do nome base.

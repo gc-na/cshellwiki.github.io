@@ -1,52 +1,44 @@
-# [Linux] Bash blkid Utilisation : Identifier les systèmes de fichiers
+# [Linux] C Shell (csh) blkid : Identifier les systèmes de fichiers
 
 ## Overview
-La commande `blkid` est utilisée pour afficher les informations sur les périphériques de bloc, notamment les systèmes de fichiers et les UUID (identifiants uniques universels) associés. C'est un outil essentiel pour gérer les disques et les partitions sur un système Linux.
+La commande `blkid` est utilisée pour identifier les systèmes de fichiers sur les périphériques de stockage. Elle affiche des informations sur les partitions, y compris leur type et leur UUID (Identifiant Universel Unique).
 
 ## Usage
 La syntaxe de base de la commande `blkid` est la suivante :
 
-```bash
+```csh
 blkid [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes que vous pouvez utiliser avec `blkid` :
-
 - `-o` : Spécifie le format de sortie (par exemple, `value`, `full`, `list`).
-- `-s` : Sélectionne un attribut spécifique à afficher (par exemple, `UUID`, `TYPE`).
+- `-s` : Sélectionne les attributs à afficher (par exemple, `UUID`, `TYPE`).
 - `-p` : Ignore les périphériques qui ne sont pas montés.
-- `-c` : Spécifie un fichier de cache à utiliser.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `blkid` :
 
-1. **Afficher toutes les informations sur les périphériques de bloc :**
-   ```bash
+1. **Afficher toutes les partitions et leurs informations :**
+   ```csh
    blkid
    ```
 
-2. **Afficher uniquement les UUID des systèmes de fichiers :**
-   ```bash
-   blkid -s UUID
+2. **Afficher uniquement le type de système de fichiers et l'UUID :**
+   ```csh
+   blkid -s TYPE -s UUID
    ```
 
-3. **Afficher les informations au format de valeur :**
-   ```bash
-   blkid -o value
-   ```
-
-4. **Afficher les informations d'un périphérique spécifique :**
-   ```bash
+3. **Afficher les informations d'un périphérique spécifique :**
+   ```csh
    blkid /dev/sda1
    ```
 
-5. **Utiliser un fichier de cache pour accélérer la recherche :**
-   ```bash
-   blkid -c /tmp/blkid.cache
+4. **Afficher les informations au format "value" :**
+   ```csh
+   blkid -o value -s UUID /dev/sda1
    ```
 
 ## Tips
-- Utilisez `blkid` avec des privilèges d'administrateur (par exemple, avec `sudo`) pour obtenir des informations complètes sur tous les périphériques.
-- Pensez à utiliser l'option `-o` pour formater la sortie selon vos besoins, ce qui peut être utile pour les scripts.
-- Vérifiez régulièrement les UUID de vos partitions, surtout si vous modifiez la configuration de votre système ou si vous ajoutez de nouveaux disques.
+- Utilisez `sudo` si vous rencontrez des problèmes d'autorisation lors de l'exécution de `blkid`.
+- Combinez `blkid` avec d'autres commandes comme `grep` pour filtrer les résultats.
+- Vérifiez régulièrement les UUID de vos partitions, surtout après des changements de configuration ou de matériel.

@@ -1,50 +1,49 @@
-# [Linux] Bash sftp uso: Transferir archivos de manera segura
+# [Linux] C Shell (csh) sftp uso: Transferencia segura de archivos
 
 ## Overview
-El comando `sftp` (Secure File Transfer Protocol) se utiliza para transferir archivos de manera segura entre un cliente y un servidor a través de una conexión SSH. Proporciona una interfaz interactiva similar a FTP, pero con la seguridad adicional que ofrece SSH.
+El comando `sftp` (SSH File Transfer Protocol) se utiliza para transferir archivos de manera segura entre un cliente y un servidor a través de una conexión SSH. Proporciona un método seguro para acceder, transferir y gestionar archivos en sistemas remotos.
 
 ## Usage
 La sintaxis básica del comando `sftp` es la siguiente:
 
-```bash
+```csh
 sftp [opciones] [usuario@host]
 ```
 
 ## Common Options
-- `-P [puerto]`: Especifica el puerto a utilizar para la conexión.
-- `-i [archivo]`: Utiliza la clave privada especificada para la autenticación.
-- `-b [archivo]`: Ejecuta comandos de SFTP desde un archivo en lugar de la entrada estándar.
-- `-v`: Muestra información detallada sobre la conexión y las operaciones.
+- `-P`: Especifica el puerto a utilizar para la conexión.
+- `-b`: Permite ejecutar comandos desde un archivo en lugar de interactuar en la línea de comandos.
+- `-o`: Permite especificar opciones de configuración adicionales, como el tiempo de espera de conexión.
 
 ## Common Examples
-Aquí hay algunos ejemplos prácticos del uso del comando `sftp`:
+Aquí hay algunos ejemplos prácticos del uso de `sftp`:
 
 1. Conectar a un servidor SFTP:
-   ```bash
+   ```csh
    sftp usuario@servidor.com
    ```
 
 2. Transferir un archivo desde el cliente al servidor:
-   ```bash
+   ```csh
    put archivo.txt
    ```
 
 3. Descargar un archivo del servidor al cliente:
-   ```bash
-   get archivo.txt
+   ```csh
+   get archivo_remoto.txt
    ```
 
-4. Cambiar el directorio en el servidor:
-   ```bash
-   cd /ruta/del/directorio
-   ```
-
-5. Listar archivos en el directorio actual del servidor:
-   ```bash
+4. Listar archivos en el directorio remoto:
+   ```csh
    ls
    ```
 
+5. Ejecutar comandos desde un archivo:
+   ```csh
+   sftp -b comandos.txt usuario@servidor.com
+   ```
+
 ## Tips
-- Siempre verifica la conexión utilizando el comando `ls` para asegurarte de que estás en el directorio correcto antes de transferir archivos.
-- Usa la opción `-v` para depurar problemas de conexión si encuentras errores.
-- Considera usar claves SSH para una autenticación más segura en lugar de contraseñas.
+- Asegúrate de tener configuradas las claves SSH para una conexión más segura y sin necesidad de contraseña.
+- Utiliza el comando `lcd` para cambiar el directorio local antes de transferir archivos.
+- Familiarízate con los comandos de `sftp` como `mkdir`, `rmdir`, y `rename` para gestionar archivos y directorios en el servidor remoto.

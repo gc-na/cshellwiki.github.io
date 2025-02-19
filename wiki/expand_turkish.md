@@ -1,48 +1,47 @@
-# [Linux] Bash expand Kullanımı: Boşlukları Dönüştürme
+# [Linux] C Shell (csh) expand Kullanımı: Boşlukları Genişletme
 
 ## Genel Bakış
-`expand` komutu, metin dosyalarındaki sekme karakterlerini boşluklarla değiştirmek için kullanılır. Bu, metin dosyalarının daha tutarlı bir biçimde görüntülenmesini sağlar ve farklı sistemlerde uyumluluğu artırır.
+`expand` komutu, metin dosyalarındaki sekme karakterlerini (tab) boşluk karakterlerine dönüştürmek için kullanılır. Bu, metin dosyalarının daha okunabilir hale gelmesine yardımcı olur ve özellikle metin dosyalarını farklı ortamlarda görüntülemek için faydalıdır.
 
 ## Kullanım
-Temel sözdizimi şu şekildedir:
-```bash
+Temel sözdizimi aşağıdaki gibidir:
+
+```csh
 expand [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-t, --tabs=NUM`: Sekmelerin her biri için boşluk sayısını belirler. Varsayılan olarak 8 boşluktur.
-- `-i, --initial`: İlk sekmeleri boşluklarla değiştirmez, yalnızca sonraki sekmeleri etkiler.
-- `-h, --help`: Komut hakkında yardım bilgisi gösterir.
-- `-V, --version`: `expand` komutunun sürüm bilgisini gösterir.
+- `-t, --tabs=G`: Sekme genişliğini belirler. Varsayılan olarak 8 boşluk kullanılır.
+- `-i, --initial`: Sadece dosyanın başındaki sekmeleri genişletir.
+- `-n, --no-tabs`: Sekmeleri genişletmez, yalnızca boşlukları bırakır.
 
 ## Yaygın Örnekler
-Aşağıda `expand` komutunun bazı pratik örnekleri verilmiştir:
+Aşağıda `expand` komutunun bazı pratik kullanımları verilmiştir:
 
-### Örnek 1: Temel Kullanım
-Bir dosyadaki sekmeleri varsayılan boşluklarla değiştirmek için:
-```bash
-expand dosya.txt
-```
+1. **Temel Kullanım**: Bir dosyadaki sekmeleri boşluklara dönüştürmek için:
+   ```csh
+   expand dosya.txt
+   ```
 
-### Örnek 2: Belirli Bir Boşluk Sayısı Belirleme
-Sekmeleri 4 boşlukla değiştirmek için:
-```bash
-expand -t 4 dosya.txt
-```
+2. **Sekme Genişliğini Belirleme**: Sekme genişliğini 4 boşluk olarak ayarlamak için:
+   ```csh
+   expand -t 4 dosya.txt
+   ```
 
-### Örnek 3: İlk Sekmeleri Değiştirmeme
-Sadece sonraki sekmeleri boşluklarla değiştirmek için:
-```bash
-expand -i dosya.txt
-```
+3. **Başlangıçtaki Sekmeleri Genişletme**: Sadece dosyanın başındaki sekmeleri genişletmek için:
+   ```csh
+   expand -i dosya.txt
+   ```
 
-### Örnek 4: Çıktıyı Farklı Bir Dosyaya Yazma
-Değiştirilmiş çıktıyı yeni bir dosyaya kaydetmek için:
-```bash
-expand dosya.txt > yeni_dosya.txt
-```
+4. **Sekmeleri Genişletmeden Görüntüleme**: Sekmeleri genişletmeden dosyayı görüntülemek için:
+   ```csh
+   expand -n dosya.txt
+   ```
 
 ## İpuçları
-- `expand` komutunu kullanmadan önce dosyanızın yedeğini almak iyi bir uygulamadır.
-- Farklı boşluk ayarlarını denemek, dosyanızın görünümünü iyileştirebilir.
-- `cat -A` komutunu kullanarak dosyanızdaki sekme ve boşluk karakterlerini görsel olarak inceleyebilirsiniz.
+- `expand` komutunu, metin dosyalarını düzenlemeden önce dosyaların görünümünü iyileştirmek için kullanın.
+- Farklı sekme genişlikleri deneyerek, dosyalarınızı farklı ortamlarda daha iyi görüntüleyebilirsiniz.
+- `expand` komutunu bir dosyayı başka bir dosyaya yazdırmak için yönlendirme ile birleştirin:
+  ```csh
+  expand dosya.txt > yeni_dosya.txt
+  ```

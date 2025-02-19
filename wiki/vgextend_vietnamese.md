@@ -1,20 +1,21 @@
-# [Linux] Bash vgextend Cách sử dụng: Mở rộng nhóm khối lượng
+# [Hệ điều hành Linux] C Shell (csh) vgextend: Mở rộng nhóm khối lượng
 
-## Overview
-Lệnh `vgextend` được sử dụng trong quản lý khối lượng logic (LVM) để mở rộng một nhóm khối lượng (volume group) bằng cách thêm một hoặc nhiều khối lượng vật lý (physical volume) vào nhóm đó. Điều này cho phép bạn tăng dung lượng lưu trữ của nhóm khối lượng hiện tại.
+## Tổng quan
+Lệnh `vgextend` được sử dụng để mở rộng một nhóm khối lượng (volume group) trong hệ thống quản lý khối lượng logic (LVM). Khi bạn cần thêm không gian lưu trữ cho một nhóm khối lượng hiện có, lệnh này cho phép bạn thêm các khối lượng vật lý mới vào nhóm đó.
 
-## Usage
+## Cách sử dụng
 Cú pháp cơ bản của lệnh `vgextend` như sau:
+
 ```
-vgextend [options] [arguments]
+vgextend [tùy chọn] [đối số]
 ```
 
-## Common Options
-- `-l, --extents <extents>`: Chỉ định số lượng extents mà bạn muốn thêm vào nhóm khối lượng.
-- `-n, --noheadings`: Không hiển thị tiêu đề trong đầu ra.
-- `-v, --verbose`: Hiển thị thông tin chi tiết trong quá trình thực hiện lệnh.
+## Tùy chọn phổ biến
+- `-n`: Chỉ định tên nhóm khối lượng.
+- `-f`: Bỏ qua kiểm tra an toàn và thực hiện ngay lập tức.
+- `-v`: Hiển thị thông tin chi tiết về quá trình mở rộng.
 
-## Common Examples
+## Ví dụ phổ biến
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `vgextend`:
 
 1. Mở rộng nhóm khối lượng bằng cách thêm một khối lượng vật lý:
@@ -22,17 +23,17 @@ Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh 
    vgextend my_volume_group /dev/sdb1
    ```
 
-2. Mở rộng nhóm khối lượng với nhiều khối lượng vật lý:
+2. Mở rộng nhóm khối lượng với tùy chọn hiển thị thông tin chi tiết:
    ```bash
-   vgextend my_volume_group /dev/sdb1 /dev/sdc1
+   vgextend -v my_volume_group /dev/sdc1
    ```
 
-3. Mở rộng nhóm khối lượng và hiển thị thông tin chi tiết:
+3. Mở rộng nhóm khối lượng và bỏ qua kiểm tra an toàn:
    ```bash
-   vgextend -v my_volume_group /dev/sdb1
+   vgextend -f my_volume_group /dev/sdd1
    ```
 
-## Tips
-- Trước khi mở rộng nhóm khối lượng, hãy đảm bảo rằng các khối lượng vật lý bạn muốn thêm đã được định dạng và sẵn sàng sử dụng.
-- Sử dụng tùy chọn `-v` để theo dõi quá trình thực hiện lệnh, điều này có thể hữu ích trong việc phát hiện lỗi.
-- Kiểm tra dung lượng còn lại của nhóm khối lượng sau khi mở rộng để đảm bảo rằng bạn đã thêm đủ không gian cần thiết.
+## Mẹo
+- Trước khi sử dụng `vgextend`, hãy chắc chắn rằng các khối lượng vật lý bạn muốn thêm đã được định dạng và sẵn sàng để sử dụng.
+- Kiểm tra tình trạng của nhóm khối lượng hiện tại bằng lệnh `vgs` trước khi thực hiện mở rộng.
+- Sử dụng tùy chọn `-v` để theo dõi quá trình mở rộng và nhận thông tin chi tiết về các bước thực hiện.

@@ -1,57 +1,54 @@
-# [Linux] Bash dnf Kullanımı: Paket yönetimi aracı
+# [Linux] C Shell (csh) dnf Kullanımı: Paket yönetimi aracı
 
 ## Genel Bakış
-`dnf`, Linux dağıtımlarında kullanılan bir paket yönetim aracıdır. RPM tabanlı sistemlerde yazılımların kurulumu, güncellenmesi ve kaldırılması işlemlerini kolaylaştırır. `dnf`, daha önceki `yum` aracının yerini almış ve daha gelişmiş özellikler sunmaktadır.
+dnf, Linux sistemlerinde yazılım paketlerini yönetmek için kullanılan bir komut satırı aracıdır. Yazılım yükleme, güncelleme ve kaldırma işlemlerini kolaylaştırır.
 
 ## Kullanım
-`dnf` komutunun temel sözdizimi aşağıdaki gibidir:
+dnf komutunun temel sözdizimi aşağıdaki gibidir:
 
 ```bash
 dnf [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `install`: Belirtilen paketi kurar.
+- `install`: Belirtilen paketi yükler.
 - `remove`: Belirtilen paketi kaldırır.
 - `update`: Yüklü paketleri günceller.
-- `search`: Belirtilen anahtar kelimeye göre paket arar.
-- `info`: Belirtilen paket hakkında bilgi gösterir.
+- `search`: Belirtilen terimi içeren paketleri arar.
+- `info`: Belirtilen paket hakkında bilgi verir.
 
 ## Yaygın Örnekler
-Aşağıda `dnf` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+Aşağıda dnf komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-### 1. Paket Kurma
-Bir paketi kurmak için şu komutu kullanabilirsiniz:
-```bash
-dnf install paket_adi
-```
+- Bir paketi yüklemek için:
+  ```bash
+  dnf install paket_adi
+  ```
 
-### 2. Paket Kaldırma
-Bir paketi kaldırmak için:
-```bash
-dnf remove paket_adi
-```
+- Bir paketi kaldırmak için:
+  ```bash
+  dnf remove paket_adi
+  ```
 
-### 3. Paket Güncelleme
-Tüm yüklü paketleri güncellemek için:
-```bash
-dnf update
-```
+- Yüklü paketleri güncellemek için:
+  ```bash
+  dnf update
+  ```
 
-### 4. Paket Arama
-Belirli bir paketi aramak için:
-```bash
-dnf search anahtar_kelime
-```
+- Belirli bir terimi içeren paketleri aramak için:
+  ```bash
+  dnf search arama_terimi
+  ```
 
-### 5. Paket Bilgisi Alma
-Bir paket hakkında bilgi almak için:
-```bash
-dnf info paket_adi
-```
+- Bir paketin detaylı bilgilerini görmek için:
+  ```bash
+  dnf info paket_adi
+  ```
 
 ## İpuçları
-- `dnf` komutunu kullanmadan önce `sudo` ile yetki almayı unutmayın; aksi takdirde bazı işlemler başarısız olabilir.
-- Güncellemeleri düzenli olarak kontrol etmek, sisteminizin güvenliğini artırır.
-- `dnf` ile birlikte `-y` seçeneğini kullanarak onay istemeden işlemleri otomatikleştirebilirsiniz. Örneğin: `dnf install -y paket_adi`.
-- `dnf history` komutunu kullanarak geçmişteki işlemlerinizi görüntüleyebilirsiniz.
+- Paketleri güncellemeden önce sisteminizi yedeklemeyi unutmayın.
+- Yüklemek istediğiniz paketlerin bağımlılıklarını kontrol edin.
+- `dnf` komutunu kullanırken `--assumeyes` seçeneği ile onay gerektiren işlemleri otomatikleştirebilirsiniz. Örneğin:
+  ```bash
+  dnf install --assumeyes paket_adi
+  ```

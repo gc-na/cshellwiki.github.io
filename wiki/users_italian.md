@@ -1,37 +1,37 @@
-# [Linux] Bash users utilizzo: Visualizza gli utenti attivi
+# [Linux] C Shell (csh) users utilizzo: visualizzare gli utenti connessi
 
 ## Overview
-Il comando `users` in Bash è utilizzato per visualizzare gli utenti attualmente connessi al sistema. Mostra semplicemente i nomi degli utenti che hanno una sessione attiva.
+Il comando `users` in C Shell (csh) viene utilizzato per visualizzare gli utenti attualmente connessi al sistema. Mostra semplicemente i nomi degli utenti in sessione, separati da spazi.
 
 ## Usage
-La sintassi di base del comando è la seguente:
+La sintassi di base del comando `users` è la seguente:
 
-```bash
-users [options]
+```csh
+users [options] [arguments]
 ```
 
 ## Common Options
-- `-n`: Mostra solo il numero di utenti connessi.
-- `-r`: Mostra solo gli utenti che sono stati connessi come root.
+- Non ci sono opzioni comuni per il comando `users`. Esso è generalmente utilizzato senza argomenti o opzioni.
 
 ## Common Examples
 Ecco alcuni esempi pratici dell'uso del comando `users`:
 
-1. **Visualizzare gli utenti attivi:**
-   ```bash
+1. **Visualizzare gli utenti connessi:**
+   ```csh
    users
    ```
 
-2. **Contare il numero di utenti connessi:**
-   ```bash
-   users -n
+2. **Visualizzare gli utenti connessi in un ambiente di script:**
+   ```csh
+   echo "Utenti connessi: `users`"
    ```
 
-3. **Visualizzare solo gli utenti root:**
-   ```bash
-   users -r
+3. **Contare il numero di utenti connessi:**
+   ```csh
+   set user_count = `users | wc -w`
+   echo "Numero di utenti connessi: $user_count"
    ```
 
 ## Tips
-- Utilizza `who` o `w` per ottenere informazioni più dettagliate sugli utenti connessi, come l'orario di accesso e l'attività attuale.
-- Se desideri monitorare gli accessi in tempo reale, considera di utilizzare `watch users` per aggiornare automaticamente l'output.
+- Utilizza `who` o `w` se desideri informazioni più dettagliate sugli utenti connessi, come l'orario di accesso e l'attività corrente.
+- Ricorda che il comando `users` mostra solo i nomi degli utenti, quindi potrebbe non fornire informazioni sufficienti per alcune esigenze di monitoraggio.

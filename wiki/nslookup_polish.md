@@ -1,43 +1,45 @@
-# [Linux] Bash nslookup użycie: Sprawdzanie adresów IP i nazw domen
+# [Linux] C Shell (csh) nslookup użycie: Sprawdzanie informacji o DNS
 
 ## Overview
-Polecenie `nslookup` służy do zapytania serwerów DNS w celu uzyskania informacji o adresach IP oraz nazwach domen. Umożliwia to użytkownikom diagnozowanie problemów z DNS oraz weryfikację, czy konkretne nazwy domen są poprawnie rozwiązywane.
+Polecenie `nslookup` służy do uzyskiwania informacji o systemie nazw domen (DNS). Umożliwia użytkownikom wyszukiwanie adresów IP dla nazw domen oraz odwrotnie, co jest przydatne w diagnostyce problemów z siecią.
 
 ## Usage
-Podstawowa składnia polecenia `nslookup` jest następująca:
+Podstawowa składnia polecenia `nslookup` wygląda następująco:
 
-```bash
+```csh
 nslookup [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-type=TYPE`: Określa typ zapytania, na przykład A (adres IPv4), AAAA (adres IPv6), MX (rekordy poczty).
-- `-timeout=SEC`: Ustawia czas oczekiwania na odpowiedź w sekundach.
-- `-retry=N`: Określa liczbę prób ponownego zapytania, jeśli nie otrzymano odpowiedzi.
-- `-debug`: Włącza tryb debugowania, co pozwala na uzyskanie szczegółowych informacji o zapytaniach.
+- `-type=typ`: Określa typ rekordu DNS do wyszukania (np. A, MX, CNAME).
+- `-timeout=n`: Ustala czas oczekiwania na odpowiedź w sekundach.
+- `-retry=n`: Ustala liczbę prób ponownego wysłania zapytania.
+- `-debug`: Włącza tryb debugowania, co pozwala na uzyskanie bardziej szczegółowych informacji o zapytaniach.
 
 ## Common Examples
-1. **Sprawdzanie adresu IP dla nazwy domeny:**
-   ```bash
+Przykłady użycia polecenia `nslookup`:
+
+1. Wyszukiwanie adresu IP dla domeny:
+   ```csh
    nslookup example.com
    ```
 
-2. **Sprawdzanie rekordów MX dla domeny:**
-   ```bash
+2. Wyszukiwanie rekordu MX dla domeny:
+   ```csh
    nslookup -type=MX example.com
    ```
 
-3. **Użycie konkretnego serwera DNS:**
-   ```bash
+3. Ustalanie serwera DNS do użycia:
+   ```csh
    nslookup example.com 8.8.8.8
    ```
 
-4. **Sprawdzanie rekordu AAAA (adres IPv6):**
-   ```bash
-   nslookup -type=AAAA example.com
+4. Włączenie trybu debugowania:
+   ```csh
+   nslookup -debug example.com
    ```
 
 ## Tips
-- Używaj opcji `-debug`, aby uzyskać więcej informacji podczas rozwiązywania problemów z DNS.
-- Zawsze sprawdzaj różne serwery DNS, aby upewnić się, że problem nie leży po stronie lokalnego serwera.
-- Pamiętaj, że wyniki mogą się różnić w zależności od serwera DNS, którego używasz.
+- Używaj opcji `-type` do precyzyjnego określenia rodzaju rekordu, którego szukasz, aby uzyskać bardziej trafne wyniki.
+- Sprawdzaj różne serwery DNS, aby zweryfikować, czy problem nie leży po stronie konkretnego serwera.
+- Regularnie korzystaj z opcji `-debug`, aby zrozumieć, jak działają zapytania DNS i diagnozować problemy.

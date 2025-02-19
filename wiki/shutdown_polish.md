@@ -1,7 +1,7 @@
-# [Linux] Bash shutdown użycie: Zamykanie systemu
+# [Linux] C Shell (csh) shutdown użycie: Zamykanie systemu
 
 ## Overview
-Polecenie `shutdown` służy do bezpiecznego zamykania systemu operacyjnego. Umożliwia administratorom planowanie zamknięcia systemu w określonym czasie lub natychmiastowe wyłączenie komputera.
+Polecenie `shutdown` w C Shell (csh) służy do bezpiecznego zamykania systemu operacyjnego. Umożliwia administratorom planowanie zamknięcia systemu oraz informowanie użytkowników o nadchodzącym wyłączeniu.
 
 ## Usage
 Podstawowa składnia polecenia `shutdown` jest następująca:
@@ -11,39 +11,34 @@ shutdown [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-h` lub `--halt`: Zatrzymuje system po zamknięciu.
-- `-r` lub `--reboot`: Uruchamia system ponownie po zamknięciu.
-- `-P` lub `--poweroff`: Wyłącza system po zamknięciu.
-- `now`: Natychmiastowe zamknięcie systemu.
-- `+m`: Zamknięcie systemu po upływie m minut (np. `+5` zamknie system za 5 minut).
+- `-h` : Zatrzymuje system.
+- `-r` : Uruchamia ponownie system po zamknięciu.
+- `-k` : Wysyła powiadomienie o zamknięciu, ale nie wyłącza systemu.
+- `time` : Czas do zamknięcia, np. `now`, `+5` (5 minut).
+- `message` : Opcjonalna wiadomość, która zostanie wyświetlona użytkownikom.
 
 ## Common Examples
-- Aby natychmiast zamknąć system:
-  ```bash
-  shutdown now
-  ```
+1. Aby natychmiast zamknąć system:
+   ```csh
+   shutdown -h now
+   ```
 
-- Aby zaplanować zamknięcie systemu za 10 minut:
-  ```bash
-  shutdown +10
-  ```
+2. Aby zaplanować zamknięcie systemu za 10 minut:
+   ```csh
+   shutdown -h +10
+   ```
 
-- Aby zrestartować system:
-  ```bash
-  shutdown -r now
-  ```
+3. Aby ponownie uruchomić system natychmiast:
+   ```csh
+   shutdown -r now
+   ```
 
-- Aby wyłączyć system:
-  ```bash
-  shutdown -h now
-  ```
-
-- Aby zamknąć system o określonej godzinie (np. 22:00):
-  ```bash
-  shutdown 22:00
-  ```
+4. Aby wysłać powiadomienie o zamknięciu za 5 minut:
+   ```csh
+   shutdown -k +5 "System zostanie zamknięty za 5 minut."
+   ```
 
 ## Tips
-- Zawsze upewnij się, że wszyscy użytkownicy są poinformowani o planowanym zamknięciu systemu, aby uniknąć utraty danych.
-- Możesz użyć opcji `-c`, aby anulować zaplanowane zamknięcie, jeśli zajdzie taka potrzeba.
-- Rozważ użycie `shutdown` w skryptach automatyzujących, aby zarządzać zamykaniem systemu w regularnych odstępach czasu.
+- Zawsze informuj użytkowników o planowanym zamknięciu systemu, aby mogli zapisać swoją pracę.
+- Używaj opcji `-k`, aby przetestować powiadomienia przed rzeczywistym zamknięciem.
+- Regularnie planuj zamknięcia systemu w celu konserwacji, aby uniknąć niespodziewanych problemów.

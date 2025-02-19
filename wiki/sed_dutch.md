@@ -1,7 +1,7 @@
-# [Linux] Bash sed gebruik: tekstverwerking en -manipulatie
+# [Linux] C Shell (csh) sed Gebruik: tekstverwerking en -transformatie
 
 ## Overzicht
-De `sed` (stream editor) opdracht is een krachtige tool voor tekstverwerking in de Bash-omgeving. Het stelt gebruikers in staat om tekstbestanden te bewerken, te transformeren en te manipuleren via een reeks opdrachten en scripts.
+De `sed` (stream editor) opdracht is een krachtige tool voor tekstverwerking in de C Shell. Het stelt gebruikers in staat om tekstbestanden te bewerken, te transformeren en te manipuleren op basis van specifieke patronen en instructies.
 
 ## Gebruik
 De basis syntaxis van de `sed` opdracht is als volgt:
@@ -11,49 +11,41 @@ sed [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-e`: Voegt een script toe aan de opdrachten die uitgevoerd moeten worden.
-- `-i`: Wijzigt het bestand in plaats van de uitvoer naar de standaarduitvoer te sturen.
-- `-n`: Schakelt de standaard uitvoer uit; alleen expliciet aangegeven uitvoer wordt getoond.
-- `s/patroon/vervanging/`: Vervangt het patroon met de vervanging in de tekst.
+- `-e`: Hiermee kan je meerdere bewerkingen in één opdracht uitvoeren.
+- `-i`: Wijzig het bestand in plaats van de uitvoer naar de standaarduitvoer te sturen.
+- `-n`: Schakel de standaard uitvoer uit, zodat alleen expliciet opgegeven regels worden weergegeven.
 
 ## Veelvoorkomende Voorbeelden
 
-### 1. Basis vervanging
-Vervang het woord "oud" door "nieuw" in een tekstbestand.
+### Voorbeeld 1: Vervangen van tekst
+Vervang alle voorkomens van "oud" met "nieuw" in een bestand genaamd `bestand.txt`.
 
 ```bash
-sed 's/oud/nieuw/' bestand.txt
+sed 's/oud/nieuw/g' bestand.txt
 ```
 
-### 2. Vervangen in het bestand zelf
-Gebruik de `-i` optie om de wijziging direct in het bestand door te voeren.
-
-```bash
-sed -i 's/oud/nieuw/' bestand.txt
-```
-
-### 3. Meerdere vervangingen
-Voer meerdere vervangingen uit in één opdracht.
-
-```bash
-sed -e 's/oud/nieuw/' -e 's/voorbeeld/test/' bestand.txt
-```
-
-### 4. Verwijderen van lege regels
-Verwijder lege regels uit een bestand.
+### Voorbeeld 2: Regels verwijderen
+Verwijder alle lege regels uit een bestand.
 
 ```bash
 sed '/^$/d' bestand.txt
 ```
 
-### 5. Specifieke regel vervangen
-Vervang alleen de tekst op regel 3.
+### Voorbeeld 3: In-place bewerking
+Vervang "fout" met "correct" en sla de wijzigingen direct op in `bestand.txt`.
 
 ```bash
-sed '3s/oud/nieuw/' bestand.txt
+sed -i 's/fout/correct/g' bestand.txt
+```
+
+### Voorbeeld 4: Meerdere bewerkingen
+Voer meerdere vervangingen uit in één opdracht.
+
+```bash
+sed -e 's/oud/nieuw/g' -e 's/fout/correct/g' bestand.txt
 ```
 
 ## Tips
-- Gebruik de `-n` optie samen met `p` om alleen specifieke regels te tonen die aan een patroon voldoen.
-- Maak gebruik van backslashes (`\`) om speciale tekens in patronen te ontsnappen.
-- Test je `sed` opdrachten met een kopie van je bestand om onbedoelde wijzigingen te voorkomen.
+- Test je `sed` opdrachten eerst zonder de `-i` optie om te voorkomen dat je per ongeluk bestanden wijzigt.
+- Gebruik aanhalingstekens om je `sed` commando's te omringen, vooral als je variabelen of speciale tekens gebruikt.
+- Maak gebruik van reguliere expressies voor meer geavanceerde patroonherkenning en -vervanging.

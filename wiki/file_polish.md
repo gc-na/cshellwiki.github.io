@@ -1,50 +1,47 @@
-# [Linux] Bash file użycie: identyfikacja typów plików
+# [Linux] C Shell (csh) file użycie: identyfikacja typów plików
 
 ## Overview
-Polecenie `file` służy do określania typu pliku w systemie Linux. Analizuje zawartość pliku i zwraca informację o jego formacie, co jest przydatne w przypadku plików o nieznanych rozszerzeniach.
+Polecenie `file` służy do określenia typu pliku w systemie operacyjnym. Analizuje zawartość pliku i zwraca informację o jego typie, co jest szczególnie przydatne, gdy rozszerzenie pliku nie odzwierciedla jego rzeczywistej zawartości.
 
 ## Usage
 Podstawowa składnia polecenia `file` jest następująca:
 
-```bash
+```csh
 file [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-b`: Wyświetla wynik bez nazwy pliku.
+- `-b`: Wyświetla tylko typ pliku bez dodatkowych informacji.
 - `-i`: Zwraca typ MIME pliku.
-- `-f`: Przetwarza pliki z listy w pliku.
-- `-z`: Analizuje pliki skompresowane.
+- `-f`: Przyjmuje plik z listą plików do analizy.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `file`:
-
 1. Sprawdzenie typu pojedynczego pliku:
-   ```bash
+   ```csh
    file dokument.txt
    ```
 
-2. Wyświetlenie typu pliku bez nazwy:
-   ```bash
+2. Sprawdzenie typu pliku z ukryciem dodatkowych informacji:
+   ```csh
    file -b dokument.txt
    ```
 
-3. Sprawdzenie typu pliku z informacją o typie MIME:
-   ```bash
-   file -i obraz.png
+3. Uzyskanie typu MIME pliku:
+   ```csh
+   file -i obraz.jpg
    ```
 
-4. Analiza wielu plików z listy:
-   ```bash
+4. Analiza wielu plików jednocześnie:
+   ```csh
+   file plik1.txt plik2.jpg plik3.pdf
+   ```
+
+5. Użycie pliku z listą plików:
+   ```csh
    file -f lista_plikow.txt
    ```
 
-5. Sprawdzenie typu pliku skompresowanego:
-   ```bash
-   file -z archiwum.zip
-   ```
-
 ## Tips
-- Używaj opcji `-i`, aby uzyskać bardziej szczegółowe informacje o typie pliku, szczególnie przy pracy z plikami internetowymi.
-- Przy analizowaniu wielu plików, umieść je w pliku tekstowym i użyj opcji `-f`, aby zaoszczędzić czas.
-- Regularnie sprawdzaj typy plików, zwłaszcza gdy pracujesz z plikami o nietypowych rozszerzeniach, aby uniknąć problemów z kompatybilnością.
+- Używaj opcji `-b`, gdy chcesz uzyskać czysty wynik bez dodatkowych informacji.
+- Opcja `-i` jest przydatna, gdy potrzebujesz informacji o typie MIME, co może być ważne w kontekście przesyłania plików przez sieć.
+- Zawsze sprawdzaj typ pliku przed jego otwarciem, zwłaszcza jeśli nie jesteś pewien, co on zawiera.

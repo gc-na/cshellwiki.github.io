@@ -1,61 +1,50 @@
-# [Linux] Bash snap utilisation : Gérer les paquets Snap
+# [Linux] C Shell (csh) snap : [prendre des instantanés de l'état du système]
 
 ## Overview
-La commande `snap` est utilisée pour gérer les paquets Snap, qui sont des applications empaquetées avec toutes leurs dépendances. Cela permet une installation et une mise à jour simplifiées sur les systèmes Linux.
+La commande `snap` dans C Shell (csh) est utilisée pour prendre des instantanés de l'état du système ou d'un processus à un moment donné. Cela permet aux utilisateurs de capturer et de sauvegarder des informations précieuses sur l'environnement d'exécution.
 
 ## Usage
 La syntaxe de base de la commande `snap` est la suivante :
 
-```bash
+```csh
 snap [options] [arguments]
 ```
 
 ## Common Options
-- `install` : Installe un paquet Snap.
-- `remove` : Supprime un paquet Snap.
-- `list` : Affiche la liste des paquets Snap installés.
-- `refresh` : Met à jour les paquets Snap installés.
-- `info` : Affiche des informations détaillées sur un paquet Snap.
+Voici quelques options courantes pour la commande `snap` :
+
+- `-a` : Prendre un instantané de tous les processus.
+- `-p <pid>` : Prendre un instantané d'un processus spécifique en utilisant son identifiant de processus (PID).
+- `-f <filename>` : Enregistrer l'instantané dans un fichier spécifié.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `snap` :
 
-### Installer un paquet Snap
-Pour installer un paquet Snap, utilisez la commande suivante :
+1. Prendre un instantané de tous les processus en cours :
 
-```bash
-snap install nom_du_paquet
-```
+   ```csh
+   snap -a
+   ```
 
-### Supprimer un paquet Snap
-Pour supprimer un paquet Snap, utilisez :
+2. Prendre un instantané d'un processus spécifique avec un PID de 1234 :
 
-```bash
-snap remove nom_du_paquet
-```
+   ```csh
+   snap -p 1234
+   ```
 
-### Lister les paquets Snap installés
-Pour afficher tous les paquets Snap installés sur votre système :
+3. Enregistrer un instantané dans un fichier nommé `snapshot.txt` :
 
-```bash
-snap list
-```
+   ```csh
+   snap -f snapshot.txt
+   ```
 
-### Mettre à jour un paquet Snap
-Pour mettre à jour un paquet Snap spécifique :
+4. Prendre un instantané d'un processus et l'enregistrer dans un fichier :
 
-```bash
-snap refresh nom_du_paquet
-```
-
-### Obtenir des informations sur un paquet Snap
-Pour obtenir des informations détaillées sur un paquet Snap :
-
-```bash
-snap info nom_du_paquet
-```
+   ```csh
+   snap -p 5678 -f process_snapshot.txt
+   ```
 
 ## Tips
-- Assurez-vous d'avoir les droits d'administrateur pour installer ou supprimer des paquets Snap.
-- Utilisez `snap refresh` régulièrement pour garder vos applications à jour.
-- Vérifiez la compatibilité des paquets Snap avec votre version de Linux avant l'installation.
+- Assurez-vous d'avoir les permissions nécessaires pour prendre des instantanés de certains processus, surtout ceux qui appartiennent à d'autres utilisateurs.
+- Utilisez l'option `-f` pour garder une trace des instantanés pour une analyse ultérieure.
+- Consultez la documentation de votre système pour des options supplémentaires spécifiques à votre environnement.

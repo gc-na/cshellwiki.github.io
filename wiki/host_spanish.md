@@ -1,45 +1,44 @@
-# [Linux] Bash host uso equivalente: [consulta de DNS]
+# [Linux] C Shell (csh) host uso: [resolver nombres de dominio]
 
 ## Overview
-El comando `host` se utiliza para realizar consultas de DNS (Sistema de Nombres de Dominio). Permite resolver nombres de dominio a direcciones IP y viceversa, facilitando la administración de redes y la resolución de problemas relacionados con la conectividad.
+El comando `host` se utiliza para realizar consultas DNS (Sistema de Nombres de Dominio). Permite a los usuarios obtener información sobre direcciones IP y nombres de dominio, facilitando la resolución de nombres en la red.
 
 ## Usage
 La sintaxis básica del comando `host` es la siguiente:
 
-```bash
-host [opciones] [nombre_de_dominio]
+```csh
+host [opciones] [argumentos]
 ```
 
 ## Common Options
-- `-a`: Muestra todos los registros de recursos disponibles para el dominio.
-- `-t tipo`: Especifica el tipo de registro DNS a consultar (por ejemplo, A, MX, TXT).
+- `-a`: Muestra todos los registros de recursos disponibles.
+- `-t tipo`: Especifica el tipo de registro DNS que se desea consultar (por ejemplo, A, MX, CNAME).
 - `-v`: Muestra información detallada sobre la consulta.
-- `-l`: Realiza una consulta de zona (requiere permisos adecuados).
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso del comando `host`:
 
-1. **Resolver un nombre de dominio a una dirección IP:**
-   ```bash
-   host example.com
+1. **Consultar la dirección IP de un dominio:**
+   ```csh
+   host www.ejemplo.com
    ```
 
-2. **Consultar un registro específico (por ejemplo, un registro MX):**
-   ```bash
-   host -t MX example.com
+2. **Consultar el registro MX de un dominio:**
+   ```csh
+   host -t MX ejemplo.com
    ```
 
-3. **Mostrar todos los registros de recursos para un dominio:**
-   ```bash
-   host -a example.com
+3. **Obtener todos los registros de un dominio:**
+   ```csh
+   host -a ejemplo.com
    ```
 
-4. **Realizar una consulta de zona (requiere permisos):**
-   ```bash
-   host -l example.com
+4. **Consultar un tipo específico de registro (CNAME):**
+   ```csh
+   host -t CNAME www.ejemplo.com
    ```
 
 ## Tips
-- Utiliza la opción `-v` para obtener más información sobre el proceso de consulta y solucionar problemas si es necesario.
-- Recuerda que algunas consultas de zona pueden requerir permisos administrativos, así que asegúrate de tener los privilegios adecuados.
-- Puedes combinar el comando `host` con otros comandos de red, como `grep`, para filtrar resultados específicos.
+- Utiliza el comando `host` junto con `grep` para filtrar resultados específicos.
+- Recuerda que el comando `host` puede ser útil para diagnosticar problemas de conectividad de red.
+- Familiarízate con los diferentes tipos de registros DNS para aprovechar al máximo el comando.

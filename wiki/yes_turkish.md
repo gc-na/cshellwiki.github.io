@@ -1,48 +1,46 @@
-# [Linux] Bash yes Kullanımı: Sürekli "evet" yanıtı verme
+# [Linux] C Shell (csh) yes kullanımı: Sonsuz bir metin akışı üretir
 
 ## Overview
-`yes` komutu, belirli bir metni sürekli olarak çıktı olarak vermek için kullanılır. Genellikle, diğer komutlarla birlikte otomatik yanıtlar sağlamak amacıyla kullanılır.
+`yes` komutu, belirli bir metni sürekli olarak ekrana yazdıran bir komuttur. Genellikle, bir komutun otomatik olarak "evet" yanıtını vermesi gerektiğinde kullanılır.
 
 ## Usage
 Temel sözdizimi aşağıdaki gibidir:
-
-```bash
+```
 yes [options] [arguments]
 ```
 
 ## Common Options
-- `-n`, `--no`: "hayır" yanıtı vermek için kullanılır.
-- `-h`, `--help`: Komut hakkında yardım bilgisi gösterir.
-- `-V`, `--version`: Komutun sürüm bilgisini gösterir.
+- `-n`: Herhangi bir yeni satır eklemeden metni yazdırır.
+- `--help`: Komutun kullanımına dair yardım bilgilerini gösterir.
+- `--version`: Komutun sürüm bilgilerini gösterir.
 
 ## Common Examples
 Aşağıda `yes` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. **Sürekli "evet" yanıtı verme:**
-   ```bash
+1. Basit bir "yes" yanıtı üretmek:
+   ```csh
    yes
    ```
-   Bu komut, sürekli olarak "y" (evet) yanıtını verir.
 
-2. **Belirli bir metni sürekli olarak yazdırma:**
-   ```bash
-   yes "Devam etmek istiyor musunuz?"
+2. Belirli bir metni sürekli yazdırmak:
+   ```csh
+   yes "Merhaba Dünya"
    ```
-   Bu komut, "Devam etmek istiyor musunuz?" metnini sürekli olarak çıktılar.
 
-3. **Diğer komutlarla birlikte kullanma:**
-   ```bash
-   yes | rm -i *.tmp
+3. Yeni satır eklemeden metni yazdırmak:
+   ```csh
+   yes -n "Evet"
    ```
-   Bu komut, `rm` komutuna sürekli "evet" yanıtı vererek tüm `.tmp` dosyalarını siler.
 
-4. **Hayır yanıtı verme:**
-   ```bash
-   yes no | rm -i *.tmp
+4. `yes` komutunu başka bir komutla birleştirmek:
+   ```csh
+   yes | some_command
    ```
-   Bu komut, `rm` komutuna sürekli "hayır" yanıtı vererek dosyaların silinmesini engeller.
 
 ## Tips
-- `yes` komutunu kullanırken, dikkatli olun. Yanlışlıkla önemli dosyaları silmekten kaçınmak için komutları dikkatlice kontrol edin.
-- `yes` komutunu, etkileşimli komutlarla birlikte kullanmak, otomasyon süreçlerinde oldukça faydalıdır.
-- Çıktıyı bir dosyaya yönlendirmek isterseniz, `>` operatörünü kullanabilirsiniz. Örneğin: `yes "Merhaba" > merhaba.txt`.
+- `yes` komutunu kullanırken dikkatli olun, çünkü sonsuz bir döngü oluşturabilir ve terminali doldurabilir.
+- `yes` komutunu bir dosyaya yönlendirmek için `>` operatörünü kullanabilirsiniz:
+  ```csh
+  yes "Evet" > output.txt
+  ```
+- Otomatik yanıt gerektiren komutlarda `yes` kullanarak etkileşimi azaltabilirsiniz.

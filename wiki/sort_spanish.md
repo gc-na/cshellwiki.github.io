@@ -1,58 +1,56 @@
-# [Linux] Bash sort uso equivalente en español: Ordenar líneas de texto
+# [Linux] C Shell (csh) sort Uso: Ordenar líneas de texto
 
 ## Overview
-El comando `sort` se utiliza en Bash para ordenar líneas de texto en archivos o en la entrada estándar. Permite organizar datos de manera ascendente o descendente, facilitando la visualización y el análisis de información.
+El comando `sort` se utiliza en C Shell (csh) para ordenar líneas de texto en un archivo o desde la entrada estándar. Es una herramienta útil para organizar datos, ya sea en orden alfabético, numérico o según otros criterios.
 
 ## Usage
 La sintaxis básica del comando `sort` es la siguiente:
 
-```bash
+```csh
 sort [opciones] [argumentos]
 ```
 
 ## Common Options
-Aquí hay algunas opciones comunes que se pueden utilizar con el comando `sort`:
-
-- `-r`: Ordenar en orden descendente.
-- `-n`: Ordenar numéricamente.
-- `-k`: Especificar la clave de ordenación (por ejemplo, la columna).
-- `-u`: Eliminar líneas duplicadas.
+- `-r`: Ordenar en orden inverso.
+- `-n`: Ordenar numéricamente en lugar de alfabéticamente.
+- `-k`: Especificar la clave de ordenación (por ejemplo, la columna a ordenar).
+- `-u`: Eliminar líneas duplicadas en el resultado.
 - `-o`: Especificar un archivo de salida para guardar el resultado.
 
 ## Common Examples
-A continuación se presentan algunos ejemplos prácticos del uso del comando `sort`:
+Aquí hay algunos ejemplos prácticos del uso del comando `sort`:
 
-1. **Ordenar un archivo de texto en orden ascendente:**
-   ```bash
+1. **Ordenar un archivo alfabéticamente**:
+   ```csh
    sort archivo.txt
    ```
 
-2. **Ordenar un archivo en orden descendente:**
-   ```bash
-   sort -r archivo.txt
-   ```
-
-3. **Ordenar numéricamente:**
-   ```bash
+2. **Ordenar un archivo numéricamente**:
+   ```csh
    sort -n numeros.txt
    ```
 
-4. **Ordenar por la segunda columna:**
-   ```bash
-   sort -k2 archivo.txt
+3. **Ordenar en orden inverso**:
+   ```csh
+   sort -r lista.txt
    ```
 
-5. **Eliminar líneas duplicadas y ordenar:**
-   ```bash
-   sort -u archivo.txt
+4. **Ordenar por una columna específica**:
+   ```csh
+   sort -k 2 datos.txt
    ```
 
-6. **Guardar el resultado en un nuevo archivo:**
-   ```bash
-   sort archivo.txt -o archivo_ordenado.txt
+5. **Eliminar líneas duplicadas y ordenar**:
+   ```csh
+   sort -u lista.txt
+   ```
+
+6. **Guardar el resultado en un nuevo archivo**:
+   ```csh
+   sort -o ordenado.txt archivo.txt
    ```
 
 ## Tips
-- Siempre verifica el contenido del archivo original antes de aplicar `sort`, especialmente si usas la opción `-o`, ya que sobrescribirá el archivo de salida.
-- Combina `sort` con otros comandos como `uniq` para obtener resultados más específicos, por ejemplo, `sort archivo.txt | uniq`.
-- Usa `man sort` para acceder a la página de manual y explorar más opciones y detalles sobre el comando.
+- Siempre verifica el contenido del archivo original antes de realizar una ordenación, especialmente si usas la opción `-o`, ya que sobrescribirá el archivo de salida.
+- Combina `sort` con otros comandos como `uniq` para obtener resultados más refinados.
+- Utiliza `man sort` en la terminal para obtener más información sobre las opciones disponibles y ejemplos adicionales.

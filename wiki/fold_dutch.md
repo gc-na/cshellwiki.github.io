@@ -1,47 +1,43 @@
-# [Linux] Bash fold gebruik: Tekstregels afbreken
+# [Linux] C Shell (csh) fold gebruik: Tekstregels afbreken
 
 ## Overzicht
-De `fold`-opdracht in Bash wordt gebruikt om lange tekstregels af te breken in kortere regels. Dit is vooral handig voor het weergeven van tekst op terminals met beperkte breedte of voor het voorbereiden van tekstbestanden voor afdrukken.
+De `fold` opdracht in C Shell (csh) wordt gebruikt om lange tekstregels af te breken in kortere regels. Dit is vooral nuttig voor het formatteren van tekstbestanden zodat ze beter leesbaar zijn op apparaten met beperkte schermgrootte.
 
 ## Gebruik
-De basis syntaxis van de `fold`-opdracht is als volgt:
+De basis syntaxis van de `fold` opdracht is als volgt:
 
-```bash
+```csh
 fold [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-w, --width`: Bepaalt de maximale breedte van de regels. Standaard is dit 80 tekens.
-- `-s, --spaces`: Breekt de regels af op spaties in plaats van midden in een woord.
-- `-b, --bytes`: Behandelt de invoer als bytes in plaats van als tekens.
+- `-w <breedte>`: Hiermee stel je de maximale breedte in voor de afgebroken regels. Standaard is dit 80 tekens.
+- `-s`: Dit zorgt ervoor dat de afbreking op spaties plaatsvindt, in plaats van halverwege een woord.
 
 ## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van de `fold` opdracht:
 
-1. **Basis gebruik van fold**:
-   Om een tekstbestand af te breken naar standaard 80 tekens:
-   ```bash
+1. **Basis gebruik zonder opties**:
+   ```csh
    fold tekstbestand.txt
    ```
 
-2. **Afbreken met specifieke breedte**:
-   Om een tekstbestand af te breken naar 50 tekens:
-   ```bash
+2. **Afbreken met een specifieke breedte**:
+   ```csh
    fold -w 50 tekstbestand.txt
    ```
 
 3. **Afbreken op spaties**:
-   Om een tekstbestand af te breken op spaties:
-   ```bash
-   fold -s -w 50 tekstbestand.txt
+   ```csh
+   fold -s -w 30 tekstbestand.txt
    ```
 
-4. **Afbreken van invoer vanuit een pipe**:
-   Je kunt `fold` ook gebruiken met een pipe om de uitvoer van een andere opdracht af te breken:
-   ```bash
-   echo "Dit is een lange zin die we willen afbreken." | fold -w 20
+4. **Afbreken van de uitvoer van een andere opdracht**:
+   ```csh
+   echo "Dit is een voorbeeld van een lange regel die we willen afbreken." | fold -w 40
    ```
 
 ## Tips
-- Gebruik de `-s` optie als je wilt dat woorden niet worden afgebroken, wat de leesbaarheid kan verbeteren.
+- Gebruik de `-s` optie als je wilt dat de tekst op natuurlijke spaties wordt afgebroken, wat de leesbaarheid kan verbeteren.
 - Experimenteer met verschillende breedtes om te zien wat het beste werkt voor jouw specifieke situatie.
-- Combineer `fold` met andere tekstverwerkingsopdrachten zoals `cat` of `grep` voor meer complexe bewerkingen.
+- Combineer `fold` met andere opdrachten zoals `cat` of `echo` voor flexibele tekstverwerking in scripts.

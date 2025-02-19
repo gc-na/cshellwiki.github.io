@@ -1,46 +1,37 @@
-# [Linux] Bash builtin `type`: Xác định loại lệnh
+# [Hệ điều hành] C Shell (csh) builtin: [thực thi lệnh]
 
 ## Overview
-Lệnh `type` trong Bash được sử dụng để xác định loại của một lệnh, có thể là một lệnh nội bộ (builtin), lệnh bên ngoài, alias, hoặc function. Điều này hữu ích để hiểu rõ hơn về cách mà Bash xử lý các lệnh mà bạn nhập vào.
+Lệnh builtin trong C Shell (csh) cho phép người dùng thực thi các lệnh nội bộ mà không cần phải gọi đến các chương trình bên ngoài. Điều này giúp tăng tốc độ thực thi và tiết kiệm tài nguyên hệ thống.
 
 ## Usage
-Cú pháp cơ bản của lệnh `type` như sau:
-
-```bash
-type [options] [command]
+Cú pháp cơ bản của lệnh builtin như sau:
+```
+builtin [options] [arguments]
 ```
 
 ## Common Options
-- `-t`: Chỉ hiển thị loại của lệnh mà không có thông tin bổ sung.
-- `-a`: Hiển thị tất cả các vị trí mà lệnh được tìm thấy, bao gồm cả alias và functions.
-- `-p`: Hiển thị đường dẫn đầy đủ đến lệnh nếu nó là một lệnh bên ngoài.
+- `-h`: Hiển thị thông tin trợ giúp về lệnh builtin.
+- `-v`: Hiển thị thông tin chi tiết về các lệnh đã thực thi.
 
 ## Common Examples
-Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `type`:
+Dưới đây là một số ví dụ thực tiễn về cách sử dụng lệnh builtin:
 
-1. Kiểm tra loại của một lệnh:
-   ```bash
-   type ls
-   ```
+### Ví dụ 1: Thực thi một lệnh nội bộ
+```csh
+builtin echo "Hello, World!"
+```
 
-2. Kiểm tra loại của một alias:
-   ```bash
-   alias ll='ls -l'
-   type ll
-   ```
+### Ví dụ 2: Hiển thị thông tin trợ giúp
+```csh
+builtin -h
+```
 
-3. Hiển thị tất cả các vị trí của một lệnh:
-   ```bash
-   type -a echo
-   ```
-
-4. Kiểm tra loại của một function:
-   ```bash
-   my_function() { echo "Hello, World!"; }
-   type my_function
-   ```
+### Ví dụ 3: Kiểm tra lệnh đã thực thi
+```csh
+builtin -v
+```
 
 ## Tips
-- Sử dụng `type -t` để nhanh chóng xác định loại lệnh mà không cần thông tin bổ sung.
-- Kết hợp với `alias` để quản lý các lệnh tùy chỉnh của bạn một cách hiệu quả.
-- Kiểm tra loại lệnh trước khi sử dụng để tránh nhầm lẫn giữa các lệnh nội bộ và bên ngoài.
+- Sử dụng lệnh builtin khi bạn muốn tăng tốc độ thực thi lệnh mà không cần phải gọi đến các chương trình bên ngoài.
+- Thường xuyên kiểm tra thông tin trợ giúp để hiểu rõ hơn về các tùy chọn có sẵn cho lệnh builtin.
+- Kết hợp lệnh builtin với các lệnh khác để tối ưu hóa quy trình làm việc của bạn.

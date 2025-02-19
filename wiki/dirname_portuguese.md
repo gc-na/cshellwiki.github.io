@@ -1,26 +1,25 @@
-# [Linux] Bash dirname Uso: Extrair o diretório de um caminho
+# [Linux] C Shell (csh) dirname Uso: Extrai o diretório de um caminho
 
 ## Overview
-O comando `dirname` é utilizado para extrair o diretório de um caminho de arquivo fornecido. Ele remove o nome do arquivo e retorna apenas a parte do diretório, facilitando a manipulação de caminhos em scripts e comandos.
+O comando `dirname` é utilizado para extrair o diretório de um caminho de arquivo. Ele remove o nome do arquivo e retorna apenas o caminho do diretório onde o arquivo está localizado.
 
 ## Usage
 A sintaxe básica do comando `dirname` é a seguinte:
 
-```bash
-dirname [opções] [argumentos]
+```
+dirname [caminho]
 ```
 
 ## Common Options
-- `-z`: Trata os argumentos como uma lista de caminhos separados por nulo.
-- `--help`: Exibe uma mensagem de ajuda com informações sobre o uso do comando.
+- `-z`: Trata os caminhos como strings vazias.
+- `--help`: Exibe uma mensagem de ajuda sobre o uso do comando.
 - `--version`: Mostra a versão do comando `dirname`.
 
 ## Common Examples
-
 Aqui estão alguns exemplos práticos do uso do comando `dirname`:
 
 1. **Extrair o diretório de um caminho absoluto:**
-   ```bash
+   ```csh
    dirname /home/usuario/documentos/arquivo.txt
    ```
    Saída:
@@ -29,33 +28,34 @@ Aqui estão alguns exemplos práticos do uso do comando `dirname`:
    ```
 
 2. **Extrair o diretório de um caminho relativo:**
-   ```bash
-   dirname ./imagens/foto.jpg
+   ```csh
+   dirname documentos/arquivo.txt
    ```
    Saída:
    ```
-   ./imagens
+   documentos
    ```
 
-3. **Usar dirname em um caminho com múltiplos níveis:**
-   ```bash
-   dirname /var/log/syslog
+3. **Usar com variáveis:**
+   ```csh
+   set caminho = /var/log/syslog
+   dirname $caminho
    ```
    Saída:
    ```
    /var/log
    ```
 
-4. **Combinar dirname com outros comandos:**
-   ```bash
-   echo $(dirname /usr/local/bin/script.sh)
+4. **Tratar um caminho sem nome de arquivo:**
+   ```csh
+   dirname /home/usuario/
    ```
    Saída:
    ```
-   /usr/local/bin
+   /home/usuario
    ```
 
 ## Tips
 - Utilize `dirname` em scripts para manipular caminhos de arquivos de forma eficiente.
-- Combine `dirname` com outros comandos, como `basename`, para obter tanto o diretório quanto o nome do arquivo em um único fluxo de trabalho.
-- Lembre-se de que `dirname` não altera o sistema de arquivos; ele apenas fornece a parte do diretório do caminho especificado.
+- Combine `dirname` com outros comandos, como `basename`, para obter tanto o diretório quanto o nome do arquivo.
+- Sempre verifique se o caminho fornecido é válido para evitar erros inesperados.

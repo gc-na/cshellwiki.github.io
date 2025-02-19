@@ -1,49 +1,44 @@
-# [Linux] Bash exit usage : Terminer un script ou une session
+# [Linux] C Shell (csh) exit : Terminer un script ou une session
 
 ## Overview
-La commande `exit` dans Bash est utilisée pour terminer un script ou une session de terminal. Elle permet de quitter le shell en renvoyant un code de sortie, qui peut être utilisé pour indiquer si le script s'est exécuté correctement ou s'il y a eu une erreur.
+La commande `exit` dans le C Shell (csh) est utilisée pour terminer un script ou une session shell. Elle permet de quitter le shell en cours et de retourner à l'environnement parent, ou de terminer l'exécution d'un script avec un code de sortie spécifique.
 
 ## Usage
-La syntaxe de base de la commande est la suivante :
+La syntaxe de base de la commande `exit` est la suivante :
 
-```bash
-exit [options] [n]
 ```
-
-Ici, `n` est un entier qui représente le code de sortie. Si aucun code n'est spécifié, le code de sortie par défaut est celui de la dernière commande exécutée.
+exit [options] [arguments]
+```
 
 ## Common Options
-- `n` : Un entier qui indique le code de sortie. Par convention, un code de sortie de `0` indique un succès, tandis qu'un code différent de `0` indique une erreur.
+- `status` : Un entier qui représente le code de sortie. Par défaut, il est de 0, ce qui indique un succès. Un code différent indique une erreur ou une condition particulière.
 
 ## Common Examples
+Voici quelques exemples pratiques de l'utilisation de la commande `exit` :
 
-### Exemple 1 : Quitter un script avec succès
-```bash
-#!/bin/bash
-echo "Le script s'exécute correctement."
-exit 0
-```
+1. **Quitter le shell avec succès :**
+   ```csh
+   exit
+   ```
 
-### Exemple 2 : Quitter un script avec une erreur
-```bash
-#!/bin/bash
-echo "Une erreur s'est produite."
-exit 1
-```
+2. **Quitter un script avec un code de succès :**
+   ```csh
+   exit 0
+   ```
 
-### Exemple 3 : Quitter une session de terminal
-```bash
-exit
-```
+3. **Quitter un script avec un code d'erreur :**
+   ```csh
+   exit 1
+   ```
 
-### Exemple 4 : Utiliser le code de sortie d'une commande précédente
-```bash
-#!/bin/bash
-ls /inexistant
-exit $?  # Quitte avec le code de sortie de la commande ls
-```
+4. **Quitter un script après une condition :**
+   ```csh
+   if ( $status != 0 ) then
+       exit 1
+   endif
+   ```
 
 ## Tips
-- Utilisez `exit 0` pour indiquer que votre script s'est terminé avec succès.
-- Utilisez des codes de sortie différents pour signaler différents types d'erreurs, ce qui peut aider au débogage.
-- Dans les scripts, il est souvent utile d'utiliser `exit` à la fin pour s'assurer que le script se termine correctement.
+- Utilisez `exit 0` pour indiquer que le script s'est terminé avec succès.
+- Utilisez des codes d'erreur différents pour représenter différentes conditions d'erreur, ce qui peut aider au débogage.
+- Évitez d'utiliser `exit` dans des scripts qui sont appelés par d'autres scripts, car cela peut interrompre l'exécution de l'ensemble du processus parent.

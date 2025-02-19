@@ -1,44 +1,40 @@
-# [Linux] Bash vgs Verwendung: Zeigt Informationen über Volume Groups an
+# [Linux] C Shell (csh) vgs Verwendung: Zeigt Informationen über Volume Groups an
 
 ## Übersicht
-Der Befehl `vgs` wird verwendet, um Informationen über Volume Groups (VGs) im Logical Volume Management (LVM) unter Linux anzuzeigen. Mit diesem Befehl können Benutzer Details zu den vorhandenen Volume Groups, wie deren Größe und Status, abrufen.
+Der Befehl `vgs` wird verwendet, um Informationen über Volume Groups (VGs) im Logical Volume Manager (LVM) anzuzeigen. Er bietet eine schnelle Möglichkeit, den Status und die Eigenschaften von VGs zu überprüfen.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```csh
 vgs [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-o, --units`: Gibt die Einheiten für die Ausgabe an.
-- `--noheadings`: Unterdrückt die Kopfzeilen in der Ausgabe.
-- `-a, --all`: Zeigt alle Volume Groups an, einschließlich der inaktiven.
-- `-h, --help`: Zeigt eine Hilfemeldung mit den verfügbaren Optionen an.
+- `-o`: Gibt an, welche Felder angezeigt werden sollen.
+- `--units`: Legt die Einheit für die Ausgabe fest, z.B. `m` für Megabyte oder `g` für Gigabyte.
+- `-h`: Zeigt die Hilfe für den Befehl an.
 
 ## Häufige Beispiele
+- Um eine einfache Übersicht über alle Volume Groups anzuzeigen, verwenden Sie:
 
-1. **Einfaches Anzeigen von Volume Groups**
-   ```bash
-   vgs
-   ```
+```csh
+vgs
+```
 
-2. **Anzeigen von Volume Groups mit spezifischen Informationen**
-   ```bash
-   vgs -o +pv_count,lv_count
-   ```
+- Um spezifische Informationen über die Volume Groups anzuzeigen, wie z.B. Name, Größe und verfügbare Größe, verwenden Sie:
 
-3. **Anzeigen aller Volume Groups, einschließlich inaktiver**
-   ```bash
-   vgs -a
-   ```
+```csh
+vgs -o vg_name,size,free
+```
 
-4. **Ausgabe ohne Kopfzeilen**
-   ```bash
-   vgs --noheadings
-   ```
+- Um die Ausgabe in Gigabyte anzuzeigen, können Sie die `--units` Option verwenden:
+
+```csh
+vgs --units g
+```
 
 ## Tipps
-- Verwenden Sie die Option `-o`, um spezifische Informationen anzuzeigen, die für Ihre Bedürfnisse relevant sind.
-- Kombinieren Sie `vgs` mit anderen LVM-Befehlen wie `lvdisplay` oder `pvdisplay`, um umfassende Informationen über Ihre Speicherverwaltung zu erhalten.
-- Überprüfen Sie regelmäßig Ihre Volume Groups, um sicherzustellen, dass genügend Speicherplatz vorhanden ist und um eine optimale Leistung zu gewährleisten.
+- Verwenden Sie die `-o` Option, um nur die benötigten Informationen anzuzeigen und die Ausgabe übersichtlicher zu gestalten.
+- Kombinieren Sie `vgs` mit anderen LVM-Befehlen, um umfassendere Informationen über Ihre Speicherverwaltung zu erhalten.
+- Überprüfen Sie regelmäßig den Status Ihrer Volume Groups, um sicherzustellen, dass genügend Speicherplatz verfügbar ist.

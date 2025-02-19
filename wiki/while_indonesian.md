@@ -1,55 +1,54 @@
-# [Linux] Bash while penggunaan: Menjalankan perintah berulang kali
+# [Sistem Operasi] C Shell (csh) while: Mengulangi perintah
 
 ## Overview
-Perintah `while` dalam Bash digunakan untuk menjalankan blok perintah berulang kali selama kondisi tertentu terpenuhi. Ini sangat berguna untuk situasi di mana Anda ingin terus melakukan sesuatu sampai kondisi tertentu tidak lagi benar.
+Perintah `while` dalam C Shell (csh) digunakan untuk menjalankan serangkaian perintah berulang kali selama suatu kondisi tertentu terpenuhi. Ini sangat berguna untuk pengulangan yang bergantung pada hasil evaluasi kondisi.
 
 ## Usage
-Sintaks dasar dari perintah `while` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `while`:
 
-```bash
-while [kondisi]
-do
-    # perintah yang akan dijalankan
-done
+```
+while (kondisi)
+    perintah
+end
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah `while`:
+Perintah `while` dalam C Shell tidak memiliki opsi tambahan yang umum digunakan. Namun, kondisi yang digunakan dapat bervariasi sesuai dengan kebutuhan pengguna.
 
-- **kondisi**: Ekspresi yang dievaluasi sebelum setiap iterasi. Jika kondisi benar (true), blok perintah di dalam `do` akan dieksekusi.
-  
 ## Common Examples
-Berikut adalah beberapa contoh praktis penggunaan perintah `while`:
 
 ### Contoh 1: Menghitung dari 1 hingga 5
-```bash
-count=1
-while [ $count -le 5 ]
-do
+```csh
+set i = 1
+while ($i <= 5)
+    echo $i
+    @ i++
+end
+```
+Contoh ini akan mencetak angka 1 hingga 5 ke layar.
+
+### Contoh 2: Mengulangi perintah hingga kondisi terpenuhi
+```csh
+set count = 0
+while ($count < 3)
     echo "Hitung: $count"
-    ((count++))
-done
+    @ count++
+end
 ```
+Dalam contoh ini, perintah akan diulang hingga `count` mencapai 3.
 
-### Contoh 2: Membaca file baris demi baris
-```bash
-while IFS= read -r line
-do
-    echo "Baris: $line"
-done < file.txt
+### Contoh 3: Menggunakan kondisi berbasis file
+```csh
+set file = "data.txt"
+while (! -e $file)
+    echo "Menunggu file $file untuk dibuat..."
+    sleep 1
+end
+echo "File $file telah dibuat."
 ```
-
-### Contoh 3: Menunggu input pengguna
-```bash
-input=""
-while [ "$input" != "exit" ]
-do
-    read -p "Masukkan perintah (ketik 'exit' untuk keluar): " input
-    echo "Anda memasukkan: $input"
-done
-```
+Contoh ini akan terus memeriksa keberadaan file `data.txt` dan menunggu hingga file tersebut ada.
 
 ## Tips
-- Pastikan kondisi dalam perintah `while` dapat menjadi false pada suatu saat untuk menghindari loop tak berujung.
-- Gunakan `break` untuk keluar dari loop secara paksa jika diperlukan.
-- Pertimbangkan untuk menggunakan `sleep` di dalam loop jika Anda melakukan polling atau menunggu kondisi tertentu untuk menghindari penggunaan CPU yang berlebihan.
+- Pastikan untuk mengupdate variabel yang digunakan dalam kondisi agar tidak terjadi loop tak terbatas.
+- Gunakan perintah `sleep` di dalam loop jika perlu menunggu untuk menghindari penggunaan CPU yang tinggi.
+- Selalu periksa kondisi dengan hati-hati untuk memastikan bahwa loop akan berhenti pada waktu yang tepat.

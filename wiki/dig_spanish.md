@@ -1,50 +1,55 @@
-# [Linux] Bash dig Uso equivalente: consulta de DNS
+# [Linux] C Shell (csh) dig <Uso equivalente en español>: consulta de DNS
 
 ## Overview
-El comando `dig` (Domain Information Groper) se utiliza para realizar consultas DNS (Domain Name System). Permite a los usuarios obtener información sobre registros DNS, lo que es útil para la resolución de nombres de dominio y la depuración de problemas de red.
+El comando `dig` (Domain Information Groper) se utiliza para realizar consultas DNS (Sistema de Nombres de Dominio) y obtener información sobre registros de dominio. Es una herramienta útil para administradores de sistemas y desarrolladores que necesitan verificar la configuración de DNS.
 
 ## Usage
-La sintaxis básica del comando es la siguiente:
+La sintaxis básica del comando `dig` es la siguiente:
 
-```bash
+```csh
 dig [opciones] [argumentos]
 ```
 
 ## Common Options
-- `@server`: Especifica un servidor DNS diferente para realizar la consulta.
-- `-t tipo`: Define el tipo de registro DNS a consultar (por ejemplo, A, AAAA, MX).
-- `+short`: Muestra una salida más corta, mostrando solo la información relevante.
+- `@servidor`: Especifica el servidor DNS al que se enviará la consulta.
+- `-t tipo`: Define el tipo de registro DNS que se desea consultar (por ejemplo, A, MX, TXT).
+- `+short`: Muestra una salida más concisa, mostrando solo la información relevante.
 - `-x dirección`: Realiza una búsqueda inversa para obtener el nombre de dominio asociado a una dirección IP.
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso de `dig`:
 
-1. **Consulta de un registro A:**
-   ```bash
+1. Consultar el registro A de un dominio:
+   ```csh
    dig example.com
    ```
 
-2. **Consulta de un registro MX:**
-   ```bash
+2. Consultar un registro MX (Mail Exchange) de un dominio:
+   ```csh
    dig -t MX example.com
    ```
 
-3. **Consulta a un servidor DNS específico:**
-   ```bash
-   dig @8.8.8.8 example.com
+3. Consultar un registro TXT de un dominio:
+   ```csh
+   dig -t TXT example.com
    ```
 
-4. **Búsqueda inversa de una dirección IP:**
-   ```bash
+4. Realizar una búsqueda inversa de una dirección IP:
+   ```csh
    dig -x 8.8.8.8
    ```
 
-5. **Salida corta de un registro A:**
-   ```bash
+5. Consultar un dominio utilizando un servidor DNS específico:
+   ```csh
+   dig @8.8.8.8 example.com
+   ```
+
+6. Obtener una salida concisa del registro A:
+   ```csh
    dig +short example.com
    ```
 
 ## Tips
-- Utiliza la opción `+trace` para seguir la cadena de servidores DNS hasta llegar a la respuesta final.
-- Para obtener información detallada sobre la consulta, puedes usar la opción `+stats`.
-- Recuerda que algunas consultas pueden ser almacenadas en caché, por lo que es útil usar `+nocache` para evitar resultados en caché.
+- Utiliza la opción `+trace` para seguir la ruta de la consulta DNS y ver cómo se resuelve el dominio.
+- Al realizar consultas frecuentes, considera crear un alias en tu archivo de configuración de csh para simplificar el uso del comando.
+- Verifica la configuración de DNS de tu sistema utilizando `dig` para asegurarte de que está apuntando a los servidores correctos.

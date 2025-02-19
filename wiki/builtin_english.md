@@ -1,51 +1,47 @@
-# [Linux] Bash builtin `builtin`: Access shell builtins directly
+# [Unix] C Shell (csh) builtin alias: Create shortcuts for commands
 
 ## Overview
-The `builtin` command in Bash allows users to execute shell built-in commands directly, bypassing any external commands that may have the same name. This is particularly useful when you want to ensure that you are using the shell's built-in version of a command rather than an external one.
+The `alias` builtin command in C Shell (csh) is used to create shortcuts for longer command strings. This allows users to define custom command names that can execute a series of commands or options, making command-line usage more efficient and user-friendly.
 
 ## Usage
-The basic syntax of the `builtin` command is as follows:
+The basic syntax of the `alias` command is as follows:
 
-```bash
-builtin [options] [command [arguments]]
+```csh
+alias [name] [command]
 ```
 
 ## Common Options
-- `-p`: This option allows you to use the `builtin` command to execute the specified command in a way that prevents any shell functions or aliases from being used.
+- `-p`: Display all currently defined aliases.
+- `-d`: Remove an alias definition.
 
 ## Common Examples
+Here are some practical examples of using the `alias` command:
 
-### Example 1: Using `builtin` with `echo`
-To ensure you are using the built-in `echo` command, you can run:
+1. **Creating a simple alias**:
+   ```csh
+   alias ll 'ls -l'
+   ```
+   This creates an alias `ll` that executes `ls -l` when called.
 
-```bash
-builtin echo "This is a built-in echo command."
-```
+2. **Creating an alias with multiple commands**:
+   ```csh
+   alias update 'sudo apt update && sudo apt upgrade'
+   ```
+   This alias `update` runs both the update and upgrade commands in one go.
 
-### Example 2: Using `builtin` with `type`
-If you want to check the type of a command, you can use:
+3. **Listing all aliases**:
+   ```csh
+   alias -p
+   ```
+   This command will display all currently defined aliases.
 
-```bash
-builtin type echo
-```
-
-This will show you whether `echo` is a built-in command or an external command.
-
-### Example 3: Using `builtin` with `cd`
-To change directories using the built-in `cd` command, you can execute:
-
-```bash
-builtin cd /path/to/directory
-```
-
-### Example 4: Using `builtin` with `exit`
-To exit the shell using the built-in `exit` command, you can run:
-
-```bash
-builtin exit 0
-```
+4. **Removing an alias**:
+   ```csh
+   alias -d ll
+   ```
+   This command deletes the alias `ll`.
 
 ## Tips
-- Always use `builtin` when you want to avoid any potential conflicts with functions or aliases that may have the same name as the built-in command.
-- Use the `-p` option if you want to ensure that the command executed is the built-in version, regardless of any user-defined functions or aliases.
-- Familiarize yourself with the built-in commands available in your shell to make the most of the `builtin` command.
+- Use meaningful names for your aliases to make them easier to remember.
+- Keep your aliases organized by grouping related commands together.
+- Regularly review and clean up your aliases to avoid clutter and confusion.

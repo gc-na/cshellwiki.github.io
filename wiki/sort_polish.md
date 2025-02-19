@@ -1,53 +1,53 @@
-# [Linux] Bash sort użycie: sortowanie danych
+# [Linux] C Shell (csh) sort użycie: sortowanie danych
 
 ## Overview
-Polecenie `sort` w systemie Linux służy do sortowania linii tekstu w plikach lub standardowym wejściu. Umożliwia uporządkowanie danych w porządku rosnącym lub malejącym, co jest przydatne w wielu scenariuszach, takich jak analiza danych czy przygotowywanie raportów.
+Polecenie `sort` służy do sortowania linii tekstu w plikach lub z wejścia standardowego. Umożliwia uporządkowanie danych w różnych porządkach, co jest przydatne w analizie i przetwarzaniu informacji.
 
 ## Usage
 Podstawowa składnia polecenia `sort` wygląda następująco:
 
-```bash
+```csh
 sort [opcje] [argumenty]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji dla polecenia `sort`:
+Oto kilka powszechnie używanych opcji polecenia `sort`:
 
-- `-r`: Sortowanie w porządku malejącym.
-- `-n`: Sortowanie numeryczne.
-- `-k`: Określenie kolumny do sortowania.
-- `-u`: Usunięcie duplikatów z wyników sortowania.
-- `-o`: Zapisanie wyników sortowania do pliku.
+- `-n`: Sortuje numerycznie.
+- `-r`: Sortuje w odwrotnej kolejności.
+- `-k`: Określa klucz sortowania (np. kolumnę).
+- `-u`: Usuwa duplikaty po sortowaniu.
+- `-o`: Zapisuje wynik sortowania do określonego pliku.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `sort`:
+Poniżej znajdują się przykłady użycia polecenia `sort`:
 
-1. Sortowanie pliku tekstowego w porządku rosnącym:
-   ```bash
+1. Sortowanie pliku tekstowego alfabetycznie:
+   ```csh
    sort plik.txt
    ```
 
-2. Sortowanie pliku tekstowego w porządku malejącym:
-   ```bash
-   sort -r plik.txt
-   ```
-
-3. Sortowanie numeryczne:
-   ```bash
+2. Sortowanie numeryczne:
+   ```csh
    sort -n liczby.txt
    ```
 
-4. Sortowanie według określonej kolumny (np. kolumna 2):
-   ```bash
+3. Sortowanie w odwrotnej kolejności:
+   ```csh
+   sort -r plik.txt
+   ```
+
+4. Sortowanie według drugiej kolumny:
+   ```csh
    sort -k 2 plik.txt
    ```
 
-5. Usunięcie duplikatów i zapisanie wyników do nowego pliku:
-   ```bash
-   sort -u plik.txt -o posortowane.txt
+5. Zapisanie posortowanego wyniku do nowego pliku:
+   ```csh
+   sort plik.txt -o posortowany.txt
    ```
 
 ## Tips
-- Używaj opcji `-o`, aby bezpośrednio zapisać posortowane dane do pliku, co oszczędza czas i zasoby.
-- Zawsze sprawdzaj, czy dane są odpowiednio sformatowane przed sortowaniem, aby uniknąć nieoczekiwanych wyników.
-- Możesz łączyć różne opcje, na przykład `sort -n -r`, aby sortować numerycznie w porządku malejącym.
+- Używaj opcji `-u`, aby szybko usunąć duplikaty z wyników sortowania.
+- Możesz łączyć różne opcje, na przykład `sort -n -r`, aby sortować numerycznie w odwrotnej kolejności.
+- Zawsze sprawdzaj zawartość pliku wynikowego, aby upewnić się, że sortowanie przebiegło zgodnie z oczekiwaniami.

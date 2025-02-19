@@ -1,42 +1,41 @@
-# [Linux] Bash killall 用法: 終止所有指定的進程
+# [台灣] C Shell (csh) killall 用法: 終止所有指定的程序
 
 ## Overview
-`killall` 命令用於終止所有符合指定名稱的進程。這是一個非常有用的工具，特別是在需要快速關閉多個相同進程的情況下。
+`killall` 命令用於終止所有指定名稱的進程。這對於管理系統資源或停止不需要的程序非常有用。
 
 ## Usage
 基本語法如下：
 ```
-killall [選項] [進程名稱]
+killall [options] [arguments]
 ```
 
 ## Common Options
-- `-u`：只終止指定用戶的進程。
-- `-i`：在終止進程之前顯示確認提示。
-- `-q`：靜默模式，不顯示錯誤信息。
-- `-s`：指定要發送的信號（預設為 `TERM`）。
+- `-u <user>`: 僅終止指定用戶的進程。
+- `-q`: 安靜模式，不顯示錯誤信息。
+- `-I`: 忽略大小寫，匹配進程名稱時不區分大小寫。
 
 ## Common Examples
-1. 終止所有名為 `firefox` 的進程：
-   ```bash
-   killall firefox
-   ```
+- 終止所有名為 `myprocess` 的進程：
+  ```csh
+  killall myprocess
+  ```
 
-2. 終止所有名為 `python` 的進程，並顯示確認提示：
-   ```bash
-   killall -i python
-   ```
+- 終止所有名為 `myapp` 的進程，並使用安靜模式：
+  ```csh
+  killall -q myapp
+  ```
 
-3. 終止所有名為 `myapp` 的進程，並使用 `SIGKILL` 信號：
-   ```bash
-   killall -s SIGKILL myapp
-   ```
+- 終止指定用戶的所有進程：
+  ```csh
+  killall -u username
+  ```
 
-4. 終止指定用戶的所有 `ssh` 進程：
-   ```bash
-   killall -u username ssh
-   ```
+- 忽略大小寫終止名為 `example` 或 `Example` 的進程：
+  ```csh
+  killall -I example
+  ```
 
 ## Tips
-- 使用 `-i` 選項可以避免意外終止重要進程。
-- 在使用 `killall` 前，建議先用 `pgrep` 檢查進程是否存在。
-- 確保你有足夠的權限來終止指定的進程，特別是當進程屬於其他用戶時。
+- 在使用 `killall` 前，建議先使用 `ps` 命令確認要終止的進程名稱。
+- 使用 `-q` 選項可以避免顯示不必要的錯誤信息，讓命令執行更為乾淨。
+- 小心使用 `killall`，因為它會終止所有匹配的進程，可能會影響系統的正常運行。

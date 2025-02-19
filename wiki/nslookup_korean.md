@@ -1,41 +1,41 @@
-# [리눅스] Bash nslookup 사용법: 도메인 이름을 IP 주소로 변환
+# [운영 체제] C Shell (csh) nslookup 사용법: 도메인 이름을 IP 주소로 변환
 
-## Overview
-`nslookup` 명령어는 도메인 이름 시스템(DNS)에서 도메인 이름을 IP 주소로 변환하거나 그 반대의 작업을 수행하는 도구입니다. 이 명령어는 네트워크 문제를 진단하고 DNS 레코드를 조회하는 데 유용합니다.
+## 개요
+`nslookup` 명령은 도메인 이름 시스템(DNS)에서 도메인 이름을 IP 주소로 변환하거나 그 반대로 변환하는 데 사용됩니다. 이 명령은 네트워크 문제를 진단하고 DNS 정보를 조회하는 데 유용합니다.
 
-## Usage
+## 사용법
 기본 구문은 다음과 같습니다:
 ```
 nslookup [옵션] [인수]
 ```
 
-## Common Options
-- `-type=TYPE`: 조회할 DNS 레코드의 유형을 지정합니다. 예: A, AAAA, MX 등.
-- `-timeout=SECONDS`: 응답 대기 시간을 설정합니다.
-- `-retry=COUNT`: 요청 실패 시 재시도 횟수를 설정합니다.
+## 일반 옵션
+- `-type=TYPE`: 조회할 레코드의 유형을 지정합니다. 예: A, MX, CNAME 등.
+- `-debug`: 디버그 모드를 활성화하여 추가 정보를 제공합니다.
+- `-timeout=초`: 응답 대기 시간을 설정합니다.
 
-## Common Examples
+## 일반 예제
 1. 기본 도메인 이름 조회:
-   ```bash
+   ```csh
    nslookup example.com
    ```
 
-2. 특정 DNS 서버를 사용하여 조회:
-   ```bash
-   nslookup example.com 8.8.8.8
-   ```
-
-3. MX 레코드 조회:
-   ```bash
+2. 특정 레코드 유형 조회 (예: MX 레코드):
+   ```csh
    nslookup -type=MX example.com
    ```
 
-4. AAAA 레코드 조회 (IPv6 주소):
-   ```bash
-   nslookup -type=AAAA example.com
+3. DNS 서버를 지정하여 조회:
+   ```csh
+   nslookup example.com 8.8.8.8
    ```
 
-## Tips
-- DNS 문제를 해결할 때 `nslookup`을 사용하여 다양한 DNS 서버에서 결과를 비교해 보세요.
-- `-debug` 옵션을 사용하면 더 자세한 정보를 얻을 수 있어 문제를 진단하는 데 도움이 됩니다.
-- 도메인 이름과 IP 주소 간의 변환을 자주 수행해야 한다면 스크립트를 작성하여 자동화할 수 있습니다.
+4. 디버그 모드 활성화:
+   ```csh
+   nslookup -debug example.com
+   ```
+
+## 팁
+- DNS 문제를 해결할 때, 여러 DNS 서버를 사용하여 결과를 비교하는 것이 좋습니다.
+- `nslookup` 명령을 사용할 때, 필요한 레코드 유형을 명확히 지정하면 더 정확한 정보를 얻을 수 있습니다.
+- 자주 사용하는 도메인에 대해 스크립트를 작성하여 자동으로 정보를 조회할 수 있습니다.

@@ -1,53 +1,49 @@
-# [Linux] Bash mkfifo Uso: Crear tuberías con nombre
-
-El comando `mkfifo` se utiliza para crear tuberías con nombre en sistemas Unix y Linux, permitiendo la comunicación entre procesos.
+# [Linux] C Shell (csh) mkfifo: Crear un archivo FIFO
 
 ## Overview
-El comando `mkfifo` crea un archivo especial que actúa como una tubería con nombre. Esto permite que un proceso escriba datos en la tubería y otro proceso los lea, facilitando la comunicación interprocesos.
+El comando `mkfifo` se utiliza para crear un archivo FIFO (First In, First Out), que es un tipo especial de archivo que permite la comunicación entre procesos. Los archivos FIFO actúan como canales de comunicación donde los datos escritos en el archivo por un proceso pueden ser leídos por otro proceso en el orden en que fueron escritos.
 
 ## Usage
-La sintaxis básica del comando es la siguiente:
+La sintaxis básica del comando `mkfifo` es la siguiente:
 
-```bash
-mkfifo [opciones] [nombre_del_fifo]
+```
+mkfifo [opciones] [argumentos]
 ```
 
 ## Common Options
-- `-m, --mode=MODE`: Establece los permisos del archivo FIFO. Por defecto, se utilizan los permisos del umask.
-- `--help`: Muestra la ayuda sobre el comando.
+- `-m, --mode`: Establece los permisos del archivo FIFO que se va a crear. Por defecto, los permisos son 0666.
+- `--help`: Muestra la ayuda sobre el uso del comando.
 - `--version`: Muestra la versión del comando.
 
 ## Common Examples
+Aquí hay algunos ejemplos prácticos del uso de `mkfifo`:
 
-1. **Crear un FIFO simple:**
-   ```bash
+1. **Crear un archivo FIFO simple:**
+   ```csh
    mkfifo mi_fifo
    ```
 
-2. **Crear un FIFO con permisos específicos:**
-   ```bash
-   mkfifo -m 666 mi_fifo
+2. **Crear un archivo FIFO con permisos específicos:**
+   ```csh
+   mkfifo -m 0644 mi_fifo_con_permisos
    ```
 
-3. **Usar un FIFO en un comando de escritura:**
-   ```bash
-   echo "Hola, mundo" > mi_fifo
+3. **Verificar que el archivo FIFO se ha creado:**
+   ```csh
+   ls -l mi_fifo
    ```
 
-4. **Leer desde un FIFO en otro terminal:**
-   ```bash
-   cat mi_fifo
-   ```
-
-5. **Usar un FIFO en un script:**
-   ```bash
-   #!/bin/bash
-   mkfifo mi_fifo
-   echo "Mensaje desde el proceso 1" > mi_fifo &
-   cat mi_fifo
-   ```
+4. **Usar el archivo FIFO en un comando de lectura y escritura:**
+   - En una terminal, escribe:
+     ```csh
+     cat < mi_fifo
+     ```
+   - En otra terminal, escribe:
+     ```csh
+     echo "Hola, FIFO!" > mi_fifo
+     ```
 
 ## Tips
-- Asegúrate de que el proceso que lee del FIFO esté en ejecución antes de escribir en él, ya que de lo contrario, el proceso de escritura se bloqueará.
-- Utiliza permisos adecuados al crear el FIFO para evitar problemas de acceso.
-- Recuerda que los FIFOs se eliminan automáticamente al cerrarse, pero puedes eliminarlos manualmente con `rm nombre_del_fifo`.
+- Asegúrate de que el archivo FIFO esté siendo leído antes de escribir en él, de lo contrario, el proceso de escritura se bloqueará hasta que haya un lector disponible.
+- Utiliza permisos adecuados al crear un archivo FIFO para garantizar que solo los procesos autorizados puedan acceder a él.
+- Recuerda que los archivos FIFO son temporales y se eliminan automáticamente cuando no hay más procesos que los utilizan.

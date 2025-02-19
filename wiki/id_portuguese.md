@@ -1,55 +1,50 @@
-# [Linux] Bash id uso: exibir informações de identificação do usuário
+# [Linux] C Shell (csh) id uso: exibir informações do usuário
 
 ## Overview
-O comando `id` no Bash é utilizado para exibir informações sobre a identidade do usuário atual ou de um usuário específico. Ele fornece detalhes como o UID (User ID), GID (Group ID) e os grupos aos quais o usuário pertence.
+O comando `id` no C Shell (csh) é utilizado para exibir informações sobre o usuário atual ou sobre um usuário específico. Ele fornece detalhes como o UID (User ID), GID (Group ID) e os grupos aos quais o usuário pertence.
 
 ## Usage
 A sintaxe básica do comando `id` é a seguinte:
 
-```bash
+```
 id [opções] [argumentos]
 ```
 
 ## Common Options
 - `-u`: Exibe apenas o UID do usuário.
-- `-g`: Exibe apenas o GID do grupo primário do usuário.
+- `-g`: Exibe apenas o GID do grupo principal do usuário.
 - `-G`: Exibe todos os GIDs dos grupos aos quais o usuário pertence.
-- `-n`: Exibe o nome do usuário ou grupo em vez do número correspondente.
+- `-n`: Exibe o nome do usuário ou do grupo em vez do ID numérico.
 
 ## Common Examples
 Aqui estão alguns exemplos práticos do uso do comando `id`:
 
-1. **Exibir informações do usuário atual:**
-   ```bash
+1. Exibir informações do usuário atual:
+   ```csh
    id
    ```
 
-2. **Exibir o UID do usuário atual:**
-   ```bash
+2. Exibir apenas o UID do usuário atual:
+   ```csh
    id -u
    ```
 
-3. **Exibir o GID do grupo primário do usuário atual:**
-   ```bash
+3. Exibir apenas o GID do grupo principal do usuário atual:
+   ```csh
    id -g
    ```
 
-4. **Exibir todos os GIDs dos grupos do usuário atual:**
-   ```bash
+4. Exibir todos os GIDs dos grupos do usuário atual:
+   ```csh
    id -G
    ```
 
-5. **Exibir informações de um usuário específico:**
-   ```bash
-   id nome_do_usuario
-   ```
-
-6. **Exibir o nome do usuário em vez do UID:**
-   ```bash
-   id -n -u
+5. Exibir informações de um usuário específico (por exemplo, "usuario1"):
+   ```csh
+   id usuario1
    ```
 
 ## Tips
-- Utilize `id` sem opções para obter uma visão geral rápida das informações do usuário.
-- Combine as opções para obter informações específicas de forma mais eficiente.
-- O comando `id` é útil para scripts que precisam verificar permissões ou grupos de usuários.
+- Utilize `id` sem opções para obter uma visão geral completa das informações do usuário.
+- Combine opções para personalizar a saída conforme necessário, como `id -u -n` para obter o nome do usuário atual.
+- Lembre-se de que você pode verificar as informações de outros usuários, desde que tenha permissões adequadas.

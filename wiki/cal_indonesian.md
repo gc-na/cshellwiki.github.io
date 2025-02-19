@@ -1,53 +1,51 @@
-# [Linux] Bash cal Penggunaan: Menampilkan Kalender
+# [Sistem Operasi] C Shell (csh) cal Penggunaan: Menampilkan kalender
 
 ## Overview
-Perintah `cal` digunakan untuk menampilkan kalender di terminal. Dengan `cal`, pengguna dapat melihat kalender bulanan atau tahunan, serta informasi tambahan seperti hari libur.
+Perintah `cal` digunakan untuk menampilkan kalender di terminal. Dengan `cal`, pengguna dapat melihat kalender bulan tertentu atau seluruh tahun, yang memudahkan dalam merencanakan kegiatan atau melihat tanggal penting.
 
 ## Usage
-Sintaks dasar dari perintah `cal` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `cal`:
 
-```bash
+```csh
 cal [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah `cal`:
-
-- `-m`: Menampilkan kalender dengan nama bulan di atas.
+- `-m`: Menampilkan bulan saat ini.
 - `-y`: Menampilkan kalender untuk tahun saat ini.
-- `-3`: Menampilkan kalender untuk bulan ini, bulan sebelumnya, dan bulan berikutnya.
-- `-j`: Menampilkan hari dalam tahun (Julian).
-- `-w`: Menampilkan minggu yang dimulai pada hari Minggu.
+- `-3`: Menampilkan kalender untuk bulan sebelumnya, bulan ini, dan bulan berikutnya.
+- `-j`: Menampilkan hari dalam tahun (day of the year).
+- `-G`: Menampilkan kalender dalam format Gregorian.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `cal`:
 
-1. Menampilkan kalender bulan ini:
-   ```bash
+1. Menampilkan kalender bulan saat ini:
+   ```csh
    cal
    ```
 
 2. Menampilkan kalender untuk bulan tertentu (misalnya, Maret 2023):
-   ```bash
+   ```csh
    cal 03 2023
    ```
 
-3. Menampilkan kalender untuk tahun tertentu (misalnya, 2023):
-   ```bash
-   cal -y 2023
+3. Menampilkan kalender untuk seluruh tahun (misalnya, 2023):
+   ```csh
+   cal 2023
    ```
 
-4. Menampilkan kalender untuk bulan ini, bulan sebelumnya, dan bulan berikutnya:
-   ```bash
+4. Menampilkan kalender untuk bulan sebelumnya, bulan ini, dan bulan berikutnya:
+   ```csh
    cal -3
    ```
 
-5. Menampilkan kalender dengan hari dalam tahun (Julian):
-   ```bash
+5. Menampilkan kalender dengan hari dalam tahun:
+   ```csh
    cal -j
    ```
 
 ## Tips
-- Gunakan opsi `-m` untuk menampilkan nama bulan yang lebih jelas.
-- Cobalah opsi `-3` untuk mendapatkan gambaran yang lebih luas tentang bulan yang sedang berlangsung.
-- Untuk melihat kalender dengan format yang lebih ringkas, pertimbangkan untuk menggunakan opsi `-w` jika Anda lebih suka minggu dimulai pada hari Minggu.
+- Gunakan opsi `-y` untuk dengan cepat melihat semua bulan dalam tahun saat ini.
+- Kombinasikan opsi untuk menyesuaikan tampilan kalender sesuai kebutuhan Anda.
+- Ingat bahwa `cal` menggunakan format Gregorian secara default, jadi pastikan untuk memeriksa pengaturan waktu dan tanggal sistem Anda jika hasilnya tidak sesuai.

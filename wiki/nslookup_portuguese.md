@@ -1,51 +1,46 @@
-# [Linux] Bash nslookup Uso: Consulta de DNS
+# [Linux] C Shell (csh) nslookup Uso: Consulta de endereços IP e nomes de domínio
 
 ## Overview
-O comando `nslookup` é uma ferramenta de linha de comando utilizada para consultar informações sobre servidores de nomes de domínio (DNS). Ele permite que os usuários obtenham detalhes sobre endereços IP, registros de domínio e outros dados relacionados a DNS.
+O comando `nslookup` é utilizado para consultar informações sobre servidores de nomes de domínio (DNS). Ele permite que os usuários obtenham o endereço IP associado a um nome de domínio ou vice-versa.
 
 ## Usage
-A sintaxe básica do comando `nslookup` é a seguinte:
+A sintaxe básica do comando é a seguinte:
 
-```bash
+```csh
 nslookup [opções] [argumentos]
 ```
 
 ## Common Options
 Aqui estão algumas opções comuns do `nslookup`:
 
-- `-type=tipo`: Especifica o tipo de registro DNS a ser consultado (por exemplo, A, AAAA, MX, etc.).
-- `-timeout=segundos`: Define o tempo limite para a consulta DNS.
+- `-type=tipo`: Especifica o tipo de consulta DNS (por exemplo, A, MX, CNAME).
+- `-timeout=segundos`: Define o tempo limite para a consulta.
 - `-retry=número`: Define o número de tentativas de consulta em caso de falha.
-- `-debug`: Ativa o modo de depuração para exibir informações detalhadas sobre a consulta.
 
 ## Common Examples
 Aqui estão alguns exemplos práticos do uso do `nslookup`:
 
 1. **Consultar o endereço IP de um domínio:**
+   ```csh
+   nslookup www.exemplo.com
+   ```
 
-```bash
-nslookup exemplo.com
-```
+2. **Consultar o nome de domínio associado a um endereço IP:**
+   ```csh
+   nslookup 192.0.2.1
+   ```
 
-2. **Consultar um registro específico (por exemplo, MX):**
+3. **Consultar registros MX (Mail Exchange) de um domínio:**
+   ```csh
+   nslookup -type=MX exemplo.com
+   ```
 
-```bash
-nslookup -type=MX exemplo.com
-```
-
-3. **Alterar o servidor DNS para a consulta:**
-
-```bash
-nslookup exemplo.com 8.8.8.8
-```
-
-4. **Ativar o modo de depuração:**
-
-```bash
-nslookup -debug exemplo.com
-```
+4. **Definir um servidor DNS específico para a consulta:**
+   ```csh
+   nslookup www.exemplo.com 8.8.8.8
+   ```
 
 ## Tips
-- Sempre verifique se você está usando o servidor DNS correto, especialmente ao solucionar problemas de conectividade.
-- Utilize a opção `-type` para obter informações específicas que você precisa, evitando resultados desnecessários.
-- O modo de depuração é útil para entender o que está acontecendo durante a consulta, especialmente em casos de falhas.
+- Sempre verifique se você está utilizando o servidor DNS correto, especialmente em ambientes corporativos.
+- Utilize a opção `-type` para obter informações específicas, como registros A ou MX.
+- Se você estiver enfrentando problemas de resolução de nomes, tente usar um servidor DNS público, como o Google (8.8.8.8).

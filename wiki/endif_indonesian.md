@@ -1,49 +1,48 @@
-# [Linux] Bash endif <Penggunaan setara>: Menyelesaikan blok kondisional
+# [Sistem Operasi] C Shell (csh) endif: Menyelesaikan Struktur Kontrol
 
 ## Overview
-Perintah `endif` dalam Bash digunakan untuk menandai akhir dari blok kondisional yang dimulai dengan perintah `if`. Ini membantu dalam mengorganisir dan mengelola alur logika dalam skrip Bash.
+Perintah `endif` dalam C Shell (csh) digunakan untuk menandai akhir dari blok pernyataan yang dimulai dengan `if`. Ini adalah bagian penting dari struktur kontrol yang memungkinkan pengguna untuk mengatur alur eksekusi skrip berdasarkan kondisi tertentu.
 
 ## Usage
-Sintaks dasar dari perintah `endif` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `endif`:
 
-```bash
+```
 endif
 ```
 
 ## Common Options
-Perintah `endif` tidak memiliki opsi tambahan. Ini hanya digunakan sebagai penutup untuk blok `if`.
+Perintah `endif` tidak memiliki opsi tambahan. Ini hanya digunakan untuk menandai akhir dari blok `if`.
 
 ## Common Examples
 
-### Contoh 1: Menggunakan `if` dan `endif`
-Berikut adalah contoh sederhana menggunakan `if` dan `endif` dalam skrip Bash:
-
-```bash
-#!/bin/bash
-
-angka=10
-
-if [ $angka -gt 5 ]; then
-    echo "Angka lebih besar dari 5"
+### Contoh 1: Struktur Dasar `if`
+```csh
+if ( $var == "value" ) then
+    echo "Nilai cocok!"
 endif
 ```
 
-### Contoh 2: Menggunakan `if` dengan `else` dan `endif`
-Contoh berikut menunjukkan penggunaan `else` bersama dengan `endif`:
-
-```bash
-#!/bin/bash
-
-angka=3
-
-if [ $angka -gt 5 ]; then
-    echo "Angka lebih besar dari 5"
+### Contoh 2: Menggunakan `if` dengan `else`
+```csh
+if ( $var == "value" ) then
+    echo "Nilai cocok!"
 else
-    echo "Angka tidak lebih besar dari 5"
+    echo "Nilai tidak cocok!"
+endif
+```
+
+### Contoh 3: Menggunakan `if` dengan `elseif`
+```csh
+if ( $var == "value1" ) then
+    echo "Nilai adalah value1"
+elseif ( $var == "value2" ) then
+    echo "Nilai adalah value2"
+else
+    echo "Nilai tidak cocok!"
 endif
 ```
 
 ## Tips
-- Pastikan setiap blok `if` diakhiri dengan `endif` untuk menghindari kesalahan sintaks.
-- Gunakan indentasi yang konsisten untuk meningkatkan keterbacaan skrip Anda.
-- Selalu periksa kondisi logika Anda untuk memastikan bahwa skrip berjalan sesuai dengan yang diharapkan.
+- Pastikan setiap pernyataan `if` diakhiri dengan `endif` untuk menghindari kesalahan sintaks.
+- Gunakan indentasi yang konsisten untuk meningkatkan keterbacaan skrip Anda, terutama ketika menggunakan beberapa blok `if`.
+- Selalu periksa kondisi yang Anda gunakan dalam pernyataan `if` untuk memastikan logika yang benar.

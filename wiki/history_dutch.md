@@ -1,49 +1,50 @@
-# [Linux] Bash history gebruik: Geschiedenis van commando's bekijken
+# [Linux] C Shell (csh) geschiedenis gebruik: Beheer en bekijk de opdrachtgeschiedenis
 
 ## Overzicht
-De `history`-opdracht in Bash toont een lijst van eerder ingevoerde commando's. Dit is handig om snel toegang te krijgen tot vaak gebruikte commando's of om te zien wat je eerder hebt gedaan in de terminal.
+De `history`-opdracht in C Shell (csh) wordt gebruikt om een lijst van eerder uitgevoerde opdrachten weer te geven. Dit stelt gebruikers in staat om snel terug te keren naar eerdere commando's zonder ze opnieuw te hoeven typen.
 
 ## Gebruik
 De basis syntaxis van de `history`-opdracht is als volgt:
 
-```bash
+```csh
 history [opties] [argumenten]
 ```
 
 ## Veelvoorkomende opties
 - `-c`: Wis de geschiedenis.
-- `-d <n>`: Verwijder het commando met het nummer `<n>` uit de geschiedenis.
-- `-a`: Voeg de huidige geschiedenis toe aan het geschiedenisbestand.
-- `-r`: Lees de geschiedenis van het geschiedenisbestand.
+- `n`: Geef de laatste `n` opdrachten weer.
+- `-r`: Lees de geschiedenis van een bestand.
+- `-w`: Schrijf de huidige geschiedenis naar een bestand.
 
 ## Veelvoorkomende voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van de `history`-opdracht:
 
-1. **Bekijk de geschiedenis van commando's:**
-   ```bash
+1. **Bekijk de volledige opdrachtgeschiedenis**:
+   ```csh
    history
    ```
 
-2. **Bekijk de laatste 10 commando's:**
-   ```bash
+2. **Bekijk de laatste 10 opdrachten**:
+   ```csh
    history 10
    ```
 
-3. **Verwijder een specifiek commando uit de geschiedenis:**
-   ```bash
-   history -d 5
-   ```
-
-4. **Wis de gehele geschiedenis:**
-   ```bash
+3. **Wis de opdrachtgeschiedenis**:
+   ```csh
    history -c
    ```
 
-5. **Voeg de huidige geschiedenis toe aan het bestand:**
-   ```bash
-   history -a
+4. **Schrijf de huidige geschiedenis naar een bestand**:
+   ```csh
+   history -w
+   ```
+
+5. **Lees de geschiedenis van een bestand**:
+   ```csh
+   history -r
    ```
 
 ## Tips
-- Gebruik de pijltjestoetsen omhoog en omlaag om door je geschiedenis te bladeren.
-- Typ `!n` om het commando met nummer `n` opnieuw uit te voeren.
-- Maak gebruik van `Ctrl + R` voor een reverse search in je geschiedenis, wat het vinden van eerder gebruikte commando's vergemakkelijkt.
+- Gebruik de `!n`-notatie om een specifieke opdracht uit de geschiedenis opnieuw uit te voeren, waarbij `n` het nummer van de opdracht is.
+- Maak regelmatig gebruik van `history` om je workflow te versnellen door eerder gebruikte opdrachten snel te herhalen.
+- Overweeg om je geschiedenis op te slaan in een bestand voor toekomstig gebruik, vooral als je veel complexe opdrachten uitvoert.

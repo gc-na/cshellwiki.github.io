@@ -1,40 +1,44 @@
-# [Linux] Bash nohup Kullanımı: Arka planda süreçleri çalıştırma
+# [Linux] C Shell (csh) nohup Kullanımı: Arka planda komut çalıştırma
 
-## Overview
-`nohup` komutu, bir işlemi terminalden bağımsız olarak çalıştırmak için kullanılır. Bu komut, terminal kapatılsa bile işlemin devam etmesini sağlar. Genellikle uzun süren işlemler için tercih edilir.
+## Genel Bakış
+`nohup` komutu, bir komutun terminal oturumu kapatıldığında bile çalışmaya devam etmesini sağlar. Bu, uzun süren işlemleri başlatmak ve terminalden çıkıldığında bile bu işlemlerin devam etmesini sağlamak için oldukça kullanışlıdır.
 
-## Usage
-Temel sözdizimi şu şekildedir:
+## Kullanım
+Temel sözdizimi aşağıdaki gibidir:
 
-```bash
-nohup [options] [arguments]
+```csh
+nohup [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `&`: İşlemi arka planda çalıştırmak için kullanılır.
-- `-h`: Kullanım bilgilerini gösterir.
-- `-v`: Detaylı bilgi verir.
+## Yaygın Seçenekler
+- `&`: Komutu arka planda çalıştırır.
+- `-h`: Çıktıyı `nohup.out` dosyasına yönlendirir (varsayılan).
+- `-v`: `nohup` sürüm bilgilerini gösterir.
 
-## Common Examples
+## Yaygın Örnekler
+Aşağıda `nohup` komutunun bazı pratik örnekleri bulunmaktadır:
+
 1. Basit bir komut çalıştırma:
-   ```bash
-   nohup sleep 60 &
+   ```csh
+   nohup myscript.sh &
    ```
-   Bu komut, 60 saniye boyunca uykuya dalan bir işlemi arka planda çalıştırır.
 
-2. Bir Python betiğini çalıştırma:
-   ```bash
-   nohup python my_script.py &
+2. Çıktıyı belirli bir dosyaya yönlendirme:
+   ```csh
+   nohup myscript.sh > output.log &
    ```
-   `my_script.py` adlı Python betiği, terminal kapatılsa bile çalışmaya devam eder.
 
-3. Çıktıyı bir dosyaya yönlendirme:
-   ```bash
-   nohup my_command > output.log &
+3. Bir Python betiğini arka planda çalıştırma:
+   ```csh
+   nohup python myscript.py &
    ```
-   Bu komut, `my_command` işleminin çıktısını `output.log` dosyasına kaydeder.
 
-## Tips
-- `nohup` ile çalıştırılan işlemlerin çıktısını takip etmek için yönlendirme kullanmayı unutmayın.
-- İşlemi arka planda çalıştırmak için `&` kullanmayı ihmal etmeyin.
-- `jobs` komutunu kullanarak arka planda çalışan işlemlerinizi kontrol edebilirsiniz.
+4. Bir Java uygulamasını çalıştırma:
+   ```csh
+   nohup java -jar myapp.jar &
+   ```
+
+## İpuçları
+- `nohup` kullanırken, çıktıyı yönlendirmek için `>` operatörünü kullanmayı unutmayın; aksi takdirde, çıktı `nohup.out` dosyasına kaydedilir.
+- Uzun süreli işlemler için, işlemin durumunu kontrol etmek amacıyla `jobs` komutunu kullanabilirsiniz.
+- Terminalden çıkmadan önce işleminizin arka planda çalıştığından emin olun; bu, işleminizin kesintiye uğramasını önler.

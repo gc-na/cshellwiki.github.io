@@ -1,48 +1,51 @@
-# [Linux] Bash tune2fs cách sử dụng: Thay đổi các tham số của hệ thống tệp ext2/ext3/ext4
+# [Hệ điều hành Linux] C Shell (csh) tune2fs Cách sử dụng: Quản lý hệ thống tệp ext2/ext3/ext4
 
-## Overview
-Lệnh `tune2fs` được sử dụng để điều chỉnh các tham số của hệ thống tệp ext2, ext3 và ext4. Nó cho phép người dùng thay đổi các thuộc tính như kích thước khối, số lượng inode, và các thông số khác để tối ưu hóa hiệu suất hoặc khả năng lưu trữ của hệ thống tệp.
+## Tổng quan
+Lệnh `tune2fs` được sử dụng để điều chỉnh các tham số của hệ thống tệp ext2, ext3 và ext4. Nó cho phép người dùng thay đổi các thuộc tính của hệ thống tệp mà không cần phải định dạng lại ổ đĩa.
 
-## Usage
+## Cách sử dụng
 Cú pháp cơ bản của lệnh `tune2fs` như sau:
+
 ```bash
-tune2fs [options] [arguments]
+tune2fs [tùy chọn] [tham số]
 ```
 
-## Common Options
-- `-c <num>`: Đặt số lần kiểm tra hệ thống tệp trước khi tự động kiểm tra.
-- `-i <interval>`: Đặt khoảng thời gian giữa các lần kiểm tra tự động.
-- `-m <reserved-blocks>`: Đặt tỷ lệ phần trăm không gian đĩa được giữ lại cho người dùng root.
-- `-O <feature>`: Kích hoạt một tính năng mới cho hệ thống tệp.
-- `-L <label>`: Đặt nhãn cho hệ thống tệp.
+## Các tùy chọn phổ biến
+- `-c <số>`: Đặt số lần kiểm tra tối đa trước khi hệ thống tệp được kiểm tra tự động.
+- `-i <thời gian>`: Đặt khoảng thời gian giữa các lần kiểm tra tự động.
+- `-m <số>`: Đặt tỷ lệ phần trăm dung lượng ổ đĩa dành cho người dùng root.
+- `-O <tính năng>`: Bật một tính năng mới cho hệ thống tệp.
+- `-L <nhãn>`: Đặt nhãn cho hệ thống tệp.
 
-## Common Examples
-- Để thiết lập số lần kiểm tra hệ thống tệp trước khi kiểm tra tự động:
-```bash
-tune2fs -c 20 /dev/sda1
-```
+## Ví dụ phổ biến
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `tune2fs`:
 
-- Để đặt khoảng thời gian kiểm tra tự động là 6 tháng:
-```bash
-tune2fs -i 6m /dev/sda1
-```
+1. Đặt số lần kiểm tra tối đa là 30:
+   ```bash
+   tune2fs -c 30 /dev/sda1
+   ```
 
-- Để giữ lại 5% không gian đĩa cho người dùng root:
-```bash
-tune2fs -m 5 /dev/sda1
-```
+2. Đặt khoảng thời gian kiểm tra là 6 tháng:
+   ```bash
+   tune2fs -i 6m /dev/sda1
+   ```
 
-- Để kích hoạt tính năng `dir_index` cho hệ thống tệp:
-```bash
-tune2fs -O dir_index /dev/sda1
-```
+3. Dành 5% dung lượng ổ đĩa cho người dùng root:
+   ```bash
+   tune2fs -m 5 /dev/sda1
+   ```
 
-- Để đặt nhãn cho hệ thống tệp:
-```bash
-tune2fs -L "MyLabel" /dev/sda1
-```
+4. Bật tính năng `dir_index` cho hệ thống tệp:
+   ```bash
+   tune2fs -O dir_index /dev/sda1
+   ```
 
-## Tips
-- Trước khi sử dụng `tune2fs`, hãy chắc chắn rằng hệ thống tệp không đang được sử dụng hoặc đã được gỡ bỏ để tránh mất dữ liệu.
-- Sử dụng lệnh `tune2fs -l /dev/sda1` để xem các thông tin hiện tại của hệ thống tệp trước khi thực hiện bất kỳ thay đổi nào.
-- Hãy cẩn thận khi thay đổi các tham số, vì một số thay đổi có thể ảnh hưởng đến hiệu suất và tính ổn định của hệ thống tệp.
+5. Đặt nhãn cho hệ thống tệp là "Data":
+   ```bash
+   tune2fs -L Data /dev/sda1
+   ```
+
+## Mẹo
+- Trước khi sử dụng `tune2fs`, hãy chắc chắn rằng bạn đã sao lưu dữ liệu quan trọng để tránh mất mát dữ liệu.
+- Sử dụng lệnh `tune2fs -l /dev/sda1` để xem thông tin chi tiết về hệ thống tệp hiện tại.
+- Chỉ thay đổi các tham số khi bạn hiểu rõ tác động của chúng đến hệ thống tệp của bạn.

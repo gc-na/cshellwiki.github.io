@@ -1,44 +1,37 @@
-# [Linux] Bash unalias gebruik: Verwijder aliasen
+# [Nederlands] C Shell (csh) unalias gebruik: Verwijder aliasen
 
 ## Overzicht
-De `unalias` opdracht in Bash wordt gebruikt om eerder gedefinieerde aliasen te verwijderen. Een alias is een alternatieve naam of een verkorte versie van een opdracht, en soms wil je deze weer ongedaan maken.
+De `unalias` opdracht in C Shell (csh) wordt gebruikt om een eerder gedefinieerde alias te verwijderen. Dit is handig wanneer je een alias niet langer nodig hebt of als je de naam wilt vrijmaken voor een andere alias.
 
 ## Gebruik
 De basis syntaxis van de `unalias` opdracht is als volgt:
 
-```bash
+```
 unalias [opties] [argumenten]
 ```
 
 ## Veelvoorkomende opties
-- `-a`: Verwijdert alle aliasen die zijn gedefinieerd in de huidige shell-sessie.
-- `-m`: Verwijdert alleen de aliasen die overeenkomen met de opgegeven patronen.
+- `-a`: Verwijdert alle gedefinieerde aliasen.
+- `-m`: Verwijdert alleen de aliasen die overeenkomen met een bepaald patroon.
 
 ## Veelvoorkomende voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van `unalias`:
 
-1. **Verwijder een specifieke alias**:
-   Stel dat je een alias hebt genaamd `ll` die `ls -l` uitvoert. Om deze alias te verwijderen, gebruik je:
-
-   ```bash
+1. **Verwijder een specifieke alias:**
+   ```csh
    unalias ll
    ```
 
-2. **Verwijder alle aliasen**:
-   Als je alle aliasen wilt verwijderen die in je huidige sessie zijn gedefinieerd, gebruik je:
-
-   ```bash
+2. **Verwijder alle aliasen:**
+   ```csh
    unalias -a
    ```
 
-3. **Verwijder aliasen die overeenkomen met een patroon**:
-   Stel dat je meerdere aliasen hebt die beginnen met `g`, zoals `gs` en `git`. Je kunt ze verwijderen met:
-
-   ```bash
-   unalias g*
+3. **Verwijder aliasen die overeenkomen met een patroon:**
+   ```csh
+   unalias -m 'l*'
    ```
 
 ## Tips
-- Controleer altijd je huidige aliasen met de `alias` opdracht voordat je `unalias` gebruikt, zodat je zeker weet welke je wilt verwijderen.
-- Overweeg om aliasen in je `.bashrc` of `.bash_profile` bestand te definiëren, zodat je ze gemakkelijk kunt beheren en verwijderen wanneer dat nodig is.
-- Wees voorzichtig met het verwijderen van aliasen, vooral als ze veelgebruikte opdrachten zijn, om verwarring te voorkomen.
+- Controleer je huidige aliasen met de `alias` opdracht voordat je `unalias` gebruikt, zodat je weet welke je wilt verwijderen.
+- Wees voorzichtig bij het gebruik van `unalias -a`, omdat dit alle aliasen verwijdert en je ze opnieuw moet instellen als je ze later weer nodig hebt.
+- Overweeg om aliasen in je configuratiebestand (zoals `.cshrc`) te definiëren, zodat je ze eenvoudig kunt beheren en opnieuw kunt instellen indien nodig.

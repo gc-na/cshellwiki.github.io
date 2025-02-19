@@ -1,56 +1,38 @@
-# [Linux] Bash source użycie: Wykonywanie skryptów w bieżącym powłoce
+# [Linux] C Shell (csh) source użycie: Wczytywanie skryptów i plików konfiguracyjnych
 
 ## Overview
-Polecenie `source` w Bashu służy do wykonywania skryptów lub plików konfiguracyjnych w bieżącej powłoce. Dzięki temu zmiany wprowadzone w zmiennych środowiskowych lub funkcjach są dostępne w aktualnej sesji terminala.
+Polecenie `source` w C Shell (csh) służy do wykonywania skryptów lub wczytywania plików konfiguracyjnych w bieżącym kontekście powłoki. Dzięki temu zmiany wprowadzone w zmiennych środowiskowych lub funkcjach są natychmiast dostępne w bieżącej sesji.
 
 ## Usage
 Podstawowa składnia polecenia `source` jest następująca:
 
-```bash
+```csh
 source [opcje] [argumenty]
 ```
 
-Można również użyć skrótu `.` (kropka) zamiast `source`:
-
-```bash
-. [opcje] [argumenty]
-```
-
 ## Common Options
-- `-h`, `--help`: Wyświetla pomoc dotyczącą użycia polecenia.
-- `-V`, `--version`: Wyświetla wersję polecenia.
+- **-e**: Włącza tryb rozszerzonego raportowania błędów.
+- **-h**: Wyświetla pomoc i informacje o użyciu.
 
 ## Common Examples
+Oto kilka praktycznych przykładów użycia polecenia `source`:
 
-### Wykonanie skryptu
-Aby wykonać skrypt o nazwie `myscript.sh` w bieżącej powłoce, użyj polecenia:
+1. Wczytywanie pliku konfiguracyjnego `.cshrc`:
+   ```csh
+   source ~/.cshrc
+   ```
 
-```bash
-source myscript.sh
-```
+2. Wykonywanie skryptu `setup.csh`:
+   ```csh
+   source setup.csh
+   ```
 
-### Użycie kropki jako skrótu
-Możesz również użyć kropki zamiast `source`:
-
-```bash
-. myscript.sh
-```
-
-### Ładowanie zmiennych środowiskowych
-Jeśli masz plik konfiguracyjny, na przykład `.env`, który zawiera zmienne środowiskowe, możesz je załadować w ten sposób:
-
-```bash
-source .env
-```
-
-### Wykonanie skryptu z argumentami
-Możesz przekazać argumenty do skryptu, który jest wykonywany za pomocą `source`:
-
-```bash
-source myscript.sh arg1 arg2
-```
+3. Wczytywanie pliku z funkcjami:
+   ```csh
+   source ~/scripts/my_functions.csh
+   ```
 
 ## Tips
-- Upewnij się, że skrypt, który chcesz wykonać, ma odpowiednie uprawnienia do odczytu.
-- Używaj `source` do ładowania plików konfiguracyjnych, aby uniknąć konieczności ponownego uruchamiania powłoki.
-- Pamiętaj, że zmiany wprowadzone przez `source` są dostępne tylko w bieżącej sesji powłoki.
+- Upewnij się, że plik, który chcesz wczytać, ma odpowiednie uprawnienia do odczytu.
+- Używaj `source` zamiast `.` w C Shell, aby uniknąć nieporozumień z innymi powłokami, które mogą używać innej składni.
+- Regularnie aktualizuj swoje pliki konfiguracyjne, aby odzwierciedlały zmiany w środowisku lub preferencjach użytkownika.

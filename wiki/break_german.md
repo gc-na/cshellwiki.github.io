@@ -1,60 +1,55 @@
-# [Linux] Bash break Verwendung: Beendet Schleifen
+# [Linux] C Shell (csh) break Verwendung: Beenden von Schleifen
 
 ## Übersicht
-Der Befehl `break` wird in Bash-Skripten verwendet, um eine Schleife vorzeitig zu beenden. Dies ist besonders nützlich, wenn eine bestimmte Bedingung erfüllt ist und die Ausführung der Schleife nicht mehr erforderlich ist.
+Der `break`-Befehl in der C Shell (csh) wird verwendet, um eine Schleife vorzeitig zu beenden. Dies ist nützlich, wenn eine bestimmte Bedingung erfüllt ist und man nicht mehr durch die Schleife iterieren möchte.
 
 ## Verwendung
-Die grundlegende Syntax des Befehls lautet:
+Die grundlegende Syntax des `break`-Befehls lautet:
 
-```bash
-break [n]
+```csh
+break [options]
 ```
 
-Hierbei steht `n` für die Anzahl der Schleifen, die beendet werden sollen. Wenn `n` nicht angegeben ist, wird standardmäßig die innere Schleife beendet.
-
 ## Häufige Optionen
-- `n`: Gibt an, wie viele Schleifen beendet werden sollen. Wenn `n` nicht angegeben wird, wird nur die innerste Schleife beendet.
+Der `break`-Befehl hat keine speziellen Optionen, die häufig verwendet werden. Es wird einfach in einer Schleife verwendet, um diese zu beenden.
 
 ## Häufige Beispiele
 
-### Beispiel 1: Beenden einer `for`-Schleife
-```bash
-for i in {1..5}; do
-    if [ $i -eq 3 ]; then
-        break
-    fi
-    echo "Zahl: $i"
-done
-```
-In diesem Beispiel wird die Schleife beendet, wenn `i` gleich 3 ist. Die Ausgabe wird nur die Zahlen 1 und 2 zeigen.
+### Beispiel 1: Beenden einer einfachen Schleife
+In diesem Beispiel wird eine Schleife erstellt, die von 1 bis 10 zählt, aber bei 5 abbricht.
 
-### Beispiel 2: Beenden einer `while`-Schleife
-```bash
-count=1
-while [ $count -le 5 ]; do
-    if [ $count -eq 4 ]; then
-        break
-    fi
-    echo "Zähler: $count"
-    ((count++))
-done
+```csh
+foreach i (1 2 3 4 5 6 7 8 9 10)
+    if ($i == 5) break
+    echo $i
+end
 ```
-Hier wird die `while`-Schleife beendet, wenn der Zähler den Wert 4 erreicht. Die Ausgabe zeigt die Werte 1, 2 und 3.
 
-### Beispiel 3: Beenden verschachtelter Schleifen
-```bash
-for i in {1..3}; do
-    for j in {1..3}; do
-        if [ $j -eq 2 ]; then
-            break 2
-        fi
-        echo "i: $i, j: $j"
-    done
-done
+### Beispiel 2: Beenden einer while-Schleife
+Hier wird eine `while`-Schleife verwendet, die abbricht, wenn eine bestimmte Bedingung erfüllt ist.
+
+```csh
+set count = 1
+while ($count <= 10)
+    if ($count == 6) break
+    echo $count
+    @ count++
+end
 ```
-In diesem Beispiel wird die äußere Schleife beendet, wenn `j` gleich 2 ist. Die Ausgabe zeigt nur `i: 1, j: 1`.
+
+### Beispiel 3: Verwendung in einer verschachtelten Schleife
+In diesem Beispiel wird `break` verwendet, um eine äußere Schleife zu beenden.
+
+```csh
+foreach i (1 2)
+    foreach j (1 2 3)
+        if ($j == 2) break 2
+        echo "$i $j"
+    end
+end
+```
 
 ## Tipps
-- Verwenden Sie `break` in Kombination mit Bedingungen, um die Kontrolle über Schleifen zu behalten.
-- Achten Sie darauf, wie viele Schleifen Sie beenden möchten, indem Sie `n` angeben, um unerwartete Ergebnisse zu vermeiden.
-- Testen Sie Ihre Skripte gründlich, um sicherzustellen, dass `break` wie gewünscht funktioniert und keine wichtigen Schleifen vorzeitig beendet werden.
+- Verwenden Sie `break`, um die Lesbarkeit Ihres Codes zu verbessern, indem Sie unnötige Iterationen vermeiden.
+- Stellen Sie sicher, dass Sie `break` nur in Schleifen verwenden, um unerwartete Fehler zu vermeiden.
+- Nutzen Sie `break` in Kombination mit Bedingungen, um die Kontrolle über den Fluss Ihrer Skripte zu optimieren.

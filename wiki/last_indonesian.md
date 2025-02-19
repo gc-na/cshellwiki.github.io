@@ -1,50 +1,44 @@
-# [Linux] Bash last penggunaan: Menampilkan riwayat login pengguna
+# [Sistem Operasi] C Shell (csh) last: Menampilkan riwayat login pengguna
 
 ## Overview
-Perintah `last` digunakan untuk menampilkan daftar login pengguna yang terakhir pada sistem. Ini memberikan informasi tentang siapa yang telah masuk ke sistem, kapan mereka masuk, dan dari mana mereka mengaksesnya. Data yang ditampilkan diambil dari file log sistem.
+Perintah `last` digunakan untuk menampilkan daftar login pengguna yang terakhir pada sistem. Ini memberikan informasi tentang pengguna yang telah masuk ke sistem, termasuk waktu dan durasi sesi mereka.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `last`:
 
-```bash
+```
 last [options] [arguments]
 ```
 
 ## Common Options
-- `-a`: Menampilkan alamat host dari mana pengguna masuk.
-- `-n [number]`: Menentukan jumlah entri yang ingin ditampilkan.
-- `-x`: Menampilkan informasi tentang sesi yang tidak aktif, seperti reboot dan shutdown.
-- `-R`: Menghilangkan informasi tentang alamat host.
+- `-n [number]`: Menampilkan jumlah entri terakhir yang ditentukan.
+- `-R`: Menghilangkan nama host dari output.
+- `-f [file]`: Menggunakan file tertentu sebagai sumber data, bukan file log default.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `last`:
 
 1. Menampilkan semua login terakhir:
-   ```bash
+   ```csh
    last
    ```
 
 2. Menampilkan 5 login terakhir:
-   ```bash
+   ```csh
    last -n 5
    ```
 
-3. Menampilkan login terakhir dengan alamat host:
-   ```bash
-   last -a
+3. Menampilkan login terakhir tanpa nama host:
+   ```csh
+   last -R
    ```
 
-4. Menampilkan informasi tentang sesi reboot dan shutdown:
-   ```bash
-   last -x
-   ```
-
-5. Menampilkan login terakhir untuk pengguna tertentu:
-   ```bash
-   last username
+4. Menggunakan file log tertentu:
+   ```csh
+   last -f /var/log/wtmp.1
    ```
 
 ## Tips
-- Gunakan opsi `-n` untuk membatasi jumlah entri yang ditampilkan, sehingga lebih mudah untuk membaca.
-- Periksa file `/var/log/wtmp` untuk melihat data login yang lebih mendetail jika diperlukan.
-- Ingat bahwa informasi yang ditampilkan oleh `last` hanya mencakup sesi yang telah berakhir, jadi tidak akan menunjukkan sesi pengguna yang sedang aktif.
+- Gunakan opsi `-n` untuk membatasi jumlah entri yang ditampilkan agar output lebih ringkas.
+- Periksa file log yang berbeda jika Anda ingin melihat riwayat login dari waktu yang lebih lama.
+- Kombinasikan `last` dengan perintah lain seperti `grep` untuk mencari pengguna tertentu dalam riwayat login.

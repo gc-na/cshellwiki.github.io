@@ -1,53 +1,54 @@
-# [Linux] Bash apt użycie: zarządzanie pakietami w systemie
+# [Linux] C Shell (csh) apt użycie: Zarządzanie pakietami
 
 ## Overview
-Polecenie `apt` (Advanced Package Tool) jest narzędziem do zarządzania pakietami w systemach opartych na Debianie, takich jak Ubuntu. Umożliwia instalację, aktualizację i usuwanie oprogramowania z systemu.
+Polecenie `apt` jest narzędziem do zarządzania pakietami w systemach opartych na Debianie. Umożliwia instalację, aktualizację i usuwanie oprogramowania, a także zarządzanie zależnościami pakietów.
 
 ## Usage
 Podstawowa składnia polecenia `apt` wygląda następująco:
 
-```bash
+```csh
 apt [opcje] [argumenty]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji dla polecenia `apt`:
-
-- `install`: Instaluje pakiet.
-- `remove`: Usuwa pakiet.
+- `install`: Instaluje nowy pakiet.
+- `remove`: Usuwa zainstalowany pakiet.
 - `update`: Aktualizuje listę dostępnych pakietów.
-- `upgrade`: Aktualizuje zainstalowane pakiety do najnowszych wersji.
-- `search`: Wyszukuje pakiety w repozytoriach.
+- `upgrade`: Aktualizuje wszystkie zainstalowane pakiety do najnowszych wersji.
+- `search`: Wyszukuje pakiety według nazwy lub opisu.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `apt`:
+- Aby zainstalować pakiet, użyj:
 
-1. **Aktualizacja listy pakietów:**
-   ```bash
-   sudo apt update
-   ```
+```csh
+apt install nazwa_pakietu
+```
 
-2. **Instalacja pakietu (np. `curl`):**
-   ```bash
-   sudo apt install curl
-   ```
+- Aby usunąć pakiet, użyj:
 
-3. **Usuwanie pakietu (np. `curl`):**
-   ```bash
-   sudo apt remove curl
-   ```
+```csh
+apt remove nazwa_pakietu
+```
 
-4. **Aktualizacja wszystkich zainstalowanych pakietów:**
-   ```bash
-   sudo apt upgrade
-   ```
+- Aby zaktualizować listę pakietów, użyj:
 
-5. **Wyszukiwanie pakietu (np. `git`):**
-   ```bash
-   apt search git
-   ```
+```csh
+apt update
+```
+
+- Aby zaktualizować wszystkie zainstalowane pakiety, użyj:
+
+```csh
+apt upgrade
+```
+
+- Aby wyszukać pakiet, użyj:
+
+```csh
+apt search fraza
+```
 
 ## Tips
-- Zawsze używaj `sudo` przed poleceniem `apt`, aby uzyskać uprawnienia administratora.
-- Regularnie wykonuj `apt update` przed instalacją lub aktualizacją pakietów, aby mieć pewność, że pracujesz z najnowszymi informacjami o dostępnych pakietach.
-- Możesz użyć `apt list --upgradable`, aby zobaczyć, które pakiety mogą być zaktualizowane.
+- Zawsze wykonuj `apt update` przed instalacją lub aktualizacją pakietów, aby mieć najnowsze informacje o dostępnych wersjach.
+- Używaj `apt upgrade` regularnie, aby utrzymać system w aktualnym stanie.
+- Rozważ użycie `apt autoremove`, aby usunąć nieużywane pakiety, które mogą zajmować miejsce na dysku.

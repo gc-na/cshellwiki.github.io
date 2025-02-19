@@ -1,50 +1,50 @@
-# [Linux] Bash who Usage: Display logged-in users
+# [Linux] C Shell (csh) who uso: Display logged-in users
 
 ## Overview
-The `who` command in Bash is used to display a list of users who are currently logged into the system. It provides information such as the username, terminal line, login time, and originating IP address or hostname.
+The `who` command in C Shell (csh) is used to display a list of users who are currently logged into the system. It provides information such as the username, terminal, login time, and more, which can be useful for system monitoring and management.
 
 ## Usage
 The basic syntax of the `who` command is as follows:
 
-```bash
+```
 who [options] [arguments]
 ```
 
 ## Common Options
-- `-a`: Display all available information, including users logged in and their idle times.
-- `-b`: Show the last system boot time.
-- `-q`: Display only the usernames and the number of users logged in.
-- `-H`: Print the column headers for the output.
-- `--help`: Display help information about the command.
+- `-a`: Displays all available information, including users' idle times and the current run level.
+- `-b`: Shows the last system boot time.
+- `-q`: Displays only the usernames and the number of users logged in.
+- `-H`: Includes a header in the output, showing the column names.
 
 ## Common Examples
+Here are some practical examples of using the `who` command:
 
-1. **Basic Usage**: Display all logged-in users.
-   ```bash
+1. **Basic usage**: Display all logged-in users.
+   ```csh
    who
    ```
 
-2. **Show Detailed Information**: Display all available information about logged-in users.
-   ```bash
+2. **Show detailed information**: Display all available information about logged-in users.
+   ```csh
    who -a
    ```
 
-3. **Last Boot Time**: Show when the system was last booted.
-   ```bash
+3. **Last boot time**: Show the last time the system was booted.
+   ```csh
    who -b
    ```
 
-4. **Count of Logged-in Users**: Display only the usernames and the count of users logged in.
-   ```bash
+4. **Count of logged-in users**: Display only the usernames and the count of users logged in.
+   ```csh
    who -q
    ```
 
-5. **Including Headers**: Display logged-in users with column headers.
-   ```bash
+5. **Include headers**: Display logged-in users with column headers.
+   ```csh
    who -H
    ```
 
 ## Tips
-- Use `who -q` for a quick overview of how many users are logged in without additional details.
-- Combine `who` with other commands like `grep` to filter results based on specific usernames or terminals.
-- Regularly check who is logged in to monitor system usage, especially on multi-user systems.
+- Use `who -a` for a comprehensive view of user sessions, especially when troubleshooting user-related issues.
+- Combine `who` with other commands like `grep` to filter results for specific users.
+- Regularly check logged-in users to monitor system activity and ensure security.

@@ -1,27 +1,27 @@
-# [Linux] Bash top : Afficher les processus en temps réel
+# [Linux] C Shell (csh) top : Afficher les processus en temps réel
 
 ## Overview
-La commande `top` est un outil puissant qui permet de surveiller en temps réel les processus en cours d'exécution sur un système Linux. Elle fournit des informations détaillées sur l'utilisation du processeur, de la mémoire et d'autres ressources système, ce qui en fait un outil essentiel pour le diagnostic et l'optimisation des performances.
+La commande `top` est utilisée pour afficher en temps réel les processus en cours d'exécution sur un système. Elle fournit des informations sur l'utilisation du CPU, de la mémoire et d'autres ressources système, permettant aux utilisateurs de surveiller l'activité de leur système.
 
 ## Usage
 La syntaxe de base de la commande `top` est la suivante :
 
-```bash
+```
 top [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes que vous pouvez utiliser avec la commande `top` :
+Voici quelques options courantes pour la commande `top` :
 
-- `-d <seconds>` : Définit l'intervalle de mise à jour en secondes.
-- `-p <pid>` : Affiche uniquement le processus avec l'identifiant de processus spécifié.
+- `-d <seconds>` : Définit le délai entre les mises à jour de l'affichage.
+- `-n <number>` : Spécifie le nombre de mises à jour à afficher avant de quitter.
 - `-u <user>` : Affiche uniquement les processus appartenant à l'utilisateur spécifié.
-- `-n <number>` : Exécute `top` pour un nombre spécifique de mises à jour avant de quitter.
+- `-p <pid>` : Affiche uniquement les processus avec l'identifiant de processus spécifié.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `top` :
 
-1. Lancer `top` avec les valeurs par défaut :
+1. Lancer `top` avec les mises à jour par défaut :
    ```bash
    top
    ```
@@ -31,23 +31,22 @@ Voici quelques exemples pratiques de l'utilisation de la commande `top` :
    top -d 5
    ```
 
-3. Filtrer pour afficher uniquement les processus d'un utilisateur spécifique :
+3. Afficher les processus d'un utilisateur spécifique :
    ```bash
-   top -u nom_utilisateur
+   top -u username
    ```
 
-4. Afficher un processus spécifique par son PID :
+4. Afficher les informations de processus pour un PID spécifique :
    ```bash
    top -p 1234
    ```
 
-5. Exécuter `top` pour 10 mises à jour avant de quitter :
+5. Limiter le nombre de mises à jour à 10 avant de quitter :
    ```bash
    top -n 10
    ```
 
 ## Tips
-- Utilisez la touche `h` pendant que `top` est en cours d'exécution pour afficher l'aide intégrée et découvrir d'autres fonctionnalités.
-- Vous pouvez trier les processus par différentes colonnes en appuyant sur les touches correspondantes (par exemple, `P` pour le tri par utilisation du processeur).
-- Pour quitter `top`, appuyez simplement sur `q`.
-- Pensez à utiliser `htop`, une alternative plus conviviale à `top`, qui offre une interface colorée et des fonctionnalités supplémentaires.
+- Utilisez `q` pour quitter l'interface de `top`.
+- Appuyez sur `h` pour afficher l'aide et les commandes interactives disponibles pendant l'exécution de `top`.
+- Pour une vue plus concise, envisagez d'utiliser `htop`, qui est une version améliorée de `top` avec une interface utilisateur plus conviviale.

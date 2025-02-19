@@ -1,12 +1,12 @@
-# [Linux] Bash getent gebruik: Haal gegevens op uit databases
+# [Linux] C Shell (csh) getent gebruik: Toegang tot systeeminformatie
 
 ## Overzicht
-Het `getent` commando in Bash wordt gebruikt om gegevens op te halen uit verschillende systeemdatabases, zoals gebruikers, groepen en netwerkinformatie. Het biedt een uniforme manier om toegang te krijgen tot deze gegevens, ongeacht de onderliggende database.
+Het `getent` commando wordt gebruikt om informatie op te halen uit de verschillende databases die door de systeemconfiguratie zijn gedefinieerd, zoals gebruikers, groepen en netwerkinformatie. Het biedt een uniforme manier om toegang te krijgen tot deze gegevens, ongeacht de onderliggende opslagmethode.
 
 ## Gebruik
 De basis syntaxis van het `getent` commando is als volgt:
 
-```bash
+```csh
 getent [opties] [argumenten]
 ```
 
@@ -17,28 +17,32 @@ getent [opties] [argumenten]
 - `services`: Haal informatie op over netwerkservices.
 
 ## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van `getent`:
 
-1. **Haal gebruikersinformatie op:**
-   ```bash
-   getent passwd gebruikersnaam
+1. **Gebruikersinformatie ophalen**:
+   ```csh
+   getent passwd gebruiker
    ```
 
-2. **Haal groepsinformatie op:**
-   ```bash
-   getent group groepsnaam
+2. **Groepsinformatie ophalen**:
+   ```csh
+   getent group groepnaam
    ```
 
-3. **Haal informatie over een host op:**
-   ```bash
+3. **Netwerkadressen ophalen**:
+   ```csh
    getent hosts voorbeeld.com
    ```
 
-4. **Haal informatie over een service op:**
-   ```bash
+4. **Netwerkservices ophalen**:
+   ```csh
    getent services http
    ```
 
 ## Tips
-- Gebruik `getent` in scripts om systeeminformatie op te halen zonder afhankelijk te zijn van specifieke bestanden zoals `/etc/passwd`.
-- Combineer `getent` met andere commando's zoals `grep` om gerichte informatie te filteren.
-- Controleer altijd de juiste spelling van de argumenten om fouten te voorkomen.
+- Gebruik `getent` in plaats van directe bestanden zoals `/etc/passwd` voor een meer consistente en veilige manier om systeeminformatie te verkrijgen.
+- Combineer `getent` met andere commando's zoals `grep` voor gerichter zoeken, bijvoorbeeld:
+  ```csh
+  getent passwd | grep gebruiker
+  ```
+- Controleer de configuratiebestanden zoals `/etc/nsswitch.conf` om te begrijpen welke databases beschikbaar zijn en hoe ze worden geraadpleegd.

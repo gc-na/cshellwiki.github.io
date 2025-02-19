@@ -1,57 +1,56 @@
-# [Linux] Bash tput Uso: Controlar la salida de terminal
+# [Linux] C Shell (csh) tput Uso: Control de la salida de terminal
 
 ## Overview
-El comando `tput` se utiliza para controlar la salida en la terminal, permitiendo manipular la apariencia del texto y el comportamiento del terminal. Esto incluye cambiar colores, mover el cursor y limpiar la pantalla, entre otras funcionalidades.
+El comando `tput` se utiliza para inicializar y controlar las capacidades de la terminal. Permite manipular el formato y el color de la salida en la terminal, lo que resulta útil para mejorar la legibilidad y la presentación de la información.
 
 ## Usage
 La sintaxis básica del comando `tput` es la siguiente:
 
-```bash
+```csh
 tput [opciones] [argumentos]
 ```
 
 ## Common Options
 - `clear`: Limpia la pantalla de la terminal.
-- `setaf [n]`: Establece el color del texto, donde `[n]` es el número del color (0-7).
-- `setab [n]`: Establece el color de fondo, donde `[n]` es el número del color (0-7).
-- `cup [y] [x]`: Mueve el cursor a la posición especificada por las coordenadas `[y]` (fila) y `[x]` (columna).
-- `bold`: Establece el texto en negrita.
+- `setaf [n]`: Establece el color del texto (donde `n` es el número del color).
+- `setab [n]`: Establece el color de fondo (donde `n` es el número del color).
+- `bold`: Activa el texto en negrita.
+- `rev`: Invierte los colores del texto y el fondo.
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso de `tput`:
 
 1. **Limpiar la pantalla:**
-   ```bash
+   ```csh
    tput clear
    ```
 
-2. **Cambiar el color del texto a rojo:**
-   ```bash
+2. **Establecer el color del texto a rojo:**
+   ```csh
    tput setaf 1
    echo "Este texto es rojo"
    ```
 
-3. **Cambiar el color de fondo a azul y el texto a blanco:**
-   ```bash
+3. **Establecer el color de fondo a azul:**
+   ```csh
    tput setab 4
-   tput setaf 7
-   echo "Texto con fondo azul y texto blanco"
+   echo "Este texto tiene un fondo azul"
    ```
 
-4. **Mover el cursor a la posición (5, 10):**
-   ```bash
-   tput cup 5 10
-   echo "Texto en la fila 5, columna 10"
-   ```
-
-5. **Establecer texto en negrita:**
-   ```bash
+4. **Activar el texto en negrita:**
+   ```csh
    tput bold
-   echo "Este texto está en negrita"
-   tput sgr0  # Restablece los atributos del texto
+   echo "Este texto es negrita"
+   ```
+
+5. **Invertir colores:**
+   ```csh
+   tput rev
+   echo "Colores invertidos"
+   tput sgr0  # Restablecer a los colores originales
    ```
 
 ## Tips
-- Utiliza `tput sgr0` al final de tus comandos para restablecer los atributos del texto a su estado original.
-- Experimenta con diferentes números para `setaf` y `setab` para ver los colores disponibles en tu terminal.
-- Combina varios comandos `tput` en un solo script para crear salidas más complejas y visualmente atractivas.
+- Siempre restablece los atributos de la terminal al final de tus scripts utilizando `tput sgr0` para evitar que los cambios persistan.
+- Experimenta con diferentes números para los colores, ya que pueden variar según la configuración de tu terminal.
+- Usa `tput` en scripts para hacer que la salida sea más interactiva y visualmente atractiva.

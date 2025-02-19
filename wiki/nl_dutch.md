@@ -1,52 +1,47 @@
-# [Linux] Bash nl gebruik: nummeren van regels in tekstbestanden
+# [Linux] C Shell (csh) nl: nummeren van regels in een bestand
 
-## Overzicht
-De `nl` opdracht in Bash wordt gebruikt om de regels van een tekstbestand te nummeren. Dit is handig voor het maken van genummerde lijsten of voor het analyseren van bestanden waar regelnummering nuttig kan zijn.
+## Overview
+De `nl` opdracht in C Shell (csh) wordt gebruikt om de regels van een tekstbestand te nummeren. Dit is handig voor het maken van overzichtelijke documenten of het analyseren van codebestanden.
 
-## Gebruik
+## Usage
 De basis syntaxis van de `nl` opdracht is als volgt:
 
-```bash
+```csh
 nl [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- `-b`: Bepaalt welke regels genummerd moeten worden. Bijvoorbeeld, `-b a` nummer alle regels, terwijl `-b t` alleen de niet-lege regels nummer.
-- `-f`: Hiermee kun je het nummeren van regels in een nieuw bestand starten na een bepaalde regel.
-- `-n`: Bepaalt het nummeringsformaat. Bijvoorbeeld, `-n ln` voor links uitgelijnde nummers, `-n rn` voor rechts uitgelijnde nummers, en `-n rz` voor cijfers met voorloopnullen.
-- `-w`: Hiermee kun je de breedte van de nummering instellen.
+## Common Options
+Hier zijn enkele veelvoorkomende opties voor de `nl` opdracht:
 
-## Veelvoorkomende voorbeelden
+- `-b` : Bepaalt hoe regels worden genummerd (bijvoorbeeld alleen niet-lege regels).
+- `-f` : Geeft aan dat een bepaalde regel als een nieuwe pagina moet worden behandeld.
+- `-n` : Bepaalt het nummerformaat (bijvoorbeeld links of rechts uitgelijnd).
+- `-w` : Stelt de breedte in van het nummer.
 
-### Voorbeeld 1: Basis nummering
-Nummer de regels van een bestand genaamd `voorbeeld.txt`:
+## Common Examples
+Hier zijn enkele praktische voorbeelden van het gebruik van de `nl` opdracht:
 
-```bash
-nl voorbeeld.txt
-```
+1. Nummeren van alle regels in een bestand:
+   ```csh
+   nl bestand.txt
+   ```
 
-### Voorbeeld 2: Alleen niet-lege regels nummeren
-Nummer alleen de niet-lege regels in `voorbeeld.txt`:
+2. Nummeren van alleen niet-lege regels:
+   ```csh
+   nl -b a bestand.txt
+   ```
 
-```bash
-nl -b t voorbeeld.txt
-```
+3. Nummeren met een specifieke breedte:
+   ```csh
+   nl -w 4 bestand.txt
+   ```
 
-### Voorbeeld 3: Specifiek nummeringsformaat
-Nummer de regels met rechts uitgelijnde nummers:
-
-```bash
-nl -n rn voorbeeld.txt
-```
-
-### Voorbeeld 4: Breedte van nummering instellen
-Stel de breedte van de nummering in op 5 karakters:
-
-```bash
-nl -w 5 voorbeeld.txt
-```
+4. Nummeren en de uitvoer naar een nieuw bestand schrijven:
+   ```csh
+   nl bestand.txt > genummerd_bestand.txt
+   ```
 
 ## Tips
-- Gebruik de `-b` optie om te bepalen welke regels je wilt nummeren, afhankelijk van je behoeften.
-- Experimenteer met de `-n` optie om te zien welk nummeringsformaat het beste bij je document past.
-- Combineer opties voor meer geavanceerde nummering, zoals het nummeren van alleen bepaalde secties van een bestand.
+- Gebruik de optie `-b` om te bepalen welke regels genummerd moeten worden, zodat je alleen relevante informatie krijgt.
+- Experimenteer met de `-n` optie om te zien welk nummerformaat het beste werkt voor jouw document.
+- Combineer `nl` met andere opdrachten, zoals `grep`, om specifieke regels te nummeren in een gefilterde uitvoer.

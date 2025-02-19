@@ -1,52 +1,40 @@
-# [Linux] Bash whoami Verwendung: Zeigt den aktuellen Benutzernamen an
+# [Linux] C Shell (csh) whoami Verwendung: Gibt den aktuellen Benutzernamen zurück
 
 ## Übersicht
-Der Befehl `whoami` wird verwendet, um den aktuellen Benutzernamen des Benutzers anzuzeigen, der gerade in der Shell angemeldet ist. Dies ist besonders nützlich, um schnell zu überprüfen, unter welchem Benutzerkonto Sie arbeiten.
+Der Befehl `whoami` wird verwendet, um den Benutzernamen des aktuell angemeldeten Benutzers im System anzuzeigen. Dies ist besonders nützlich, wenn Sie in einer Umgebung mit mehreren Benutzern arbeiten oder wenn Sie sich nicht sicher sind, unter welchem Benutzerkonto Sie gerade angemeldet sind.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
-whoami [Optionen]
+```
+whoami [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-Der Befehl `whoami` hat keine speziellen Optionen, die häufig verwendet werden. Er wird normalerweise ohne zusätzliche Parameter ausgeführt.
+Der `whoami` Befehl hat in der Regel keine speziellen Optionen, da seine Funktion sehr einfach ist. In einigen Shells können jedoch allgemeine Optionen wie `--help` verwendet werden, um Hilfeinformationen anzuzeigen.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung des `whoami`-Befehls:
+Hier sind einige praktische Beispiele für die Verwendung des `whoami` Befehls:
 
-1. **Einfacher Befehl zur Anzeige des Benutzernamens:**
-
-   ```bash
+1. **Einfacher Befehl**: Um den aktuellen Benutzernamen anzuzeigen:
+   ```csh
    whoami
    ```
 
-   Dieser Befehl gibt einfach den Namen des aktuell angemeldeten Benutzers zurück.
-
-2. **Verwendung in einem Skript:**
-
-   Sie können `whoami` in einem Bash-Skript verwenden, um den Benutzernamen zu erfassen:
-
-   ```bash
-   #!/bin/bash
-   echo "Der aktuelle Benutzer ist: $(whoami)"
+2. **Verwendung in einem Skript**: Um den Benutzernamen in einer Variablen zu speichern:
+   ```csh
+   set username = `whoami`
+   echo "Der aktuelle Benutzer ist: $username"
    ```
 
-3. **Überprüfung des Benutzers vor dem Ausführen eines Befehls:**
-
-   Manchmal möchten Sie sicherstellen, dass Sie als bestimmter Benutzer arbeiten, bevor Sie einen kritischen Befehl ausführen:
-
-   ```bash
-   if [ "$(whoami)" = "admin" ]; then
-       echo "Zugriff gewährt."
-       # Führen Sie hier den kritischen Befehl aus
-   else
-       echo "Zugriff verweigert."
-   fi
+3. **Überprüfung des Benutzernamens in einer Bedingung**:
+   ```csh
+   if ("`whoami`" == "admin") then
+       echo "Willkommen, Administrator!"
+   endif
    ```
 
 ## Tipps
-- Verwenden Sie `whoami`, um sicherzustellen, dass Sie die richtigen Berechtigungen haben, bevor Sie kritische Operationen durchführen.
-- In Kombination mit anderen Befehlen kann `whoami` nützlich sein, um Skripte zu erstellen, die unterschiedliche Aktionen basierend auf dem aktuellen Benutzer ausführen.
-- Denken Sie daran, dass `whoami` nur den Namen des aktuellen Benutzers zurückgibt und keine weiteren Informationen über die Benutzerumgebung bereitstellt.
+- Verwenden Sie `whoami`, um schnell zu überprüfen, ob Sie die richtigen Berechtigungen für bestimmte Aktionen haben.
+- In Skripten kann `whoami` nützlich sein, um sicherzustellen, dass das Skript mit den erwarteten Benutzerrechten ausgeführt wird.
+- Kombinieren Sie `whoami` mit anderen Befehlen, um benutzerspezifische Anpassungen vorzunehmen.

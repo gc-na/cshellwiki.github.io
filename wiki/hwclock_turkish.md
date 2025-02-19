@@ -1,48 +1,42 @@
-# [Linux] Bash hwclock Kullanımı: Sistem saatini yönetme
+# [Linux] C Shell (csh) hwclock Kullanımı: Donanım saatini yönetme
 
-## Overview
-`hwclock` komutu, bilgisayarın donanım saatini (RTC - Real Time Clock) yönetmek için kullanılır. Bu komut, sistem saatini ayarlamak, senkronize etmek veya görüntülemek için kullanılabilir.
+## Genel Bakış
+`hwclock` komutu, sistemin donanım saatini (RTC - Real Time Clock) yönetmek için kullanılır. Bu komut, sistem açıldığında veya kapandığında zamanın doğru bir şekilde ayarlanmasını sağlar.
 
-## Usage
+## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
 ```
-hwclock [options] [arguments]
+hwclock [seçenekler] [argümanlar]
 ```
 
-## Common Options
+## Yaygın Seçenekler
+- `--hctosys`: Donanım saatini sistem saatine ayarlar.
+- `--systohc`: Sistem saatini donanım saatine ayarlar.
 - `--show`: Donanım saatinin mevcut zamanını gösterir.
-- `--set`: Donanım saatini belirtilen bir zamanla ayarlar.
-- `--hctosys`: Donanım saatinden sistem saatine zaman aktarır.
-- `--systohc`: Sistem saatinden donanım saatine zaman aktarır.
-- `--utc`: Zamanın UTC (Koordinatlı Evrensel Zaman) olarak ayarlandığını belirtir.
+- `--set`: Donanım saatini belirli bir tarih ve saat ile ayarlar.
 
-## Common Examples
-1. Donanım saatini görüntülemek için:
-   ```bash
-   hwclock --show
-   ```
-
-2. Donanım saatini sistem saatine senkronize etmek için:
-   ```bash
-   hwclock --hctosys
-   ```
-
-3. Sistem saatini donanım saatine senkronize etmek için:
+## Yaygın Örnekler
+1. Donanım saatini sistem saatine ayarlamak için:
    ```bash
    hwclock --systohc
    ```
 
-4. Donanım saatini belirli bir tarih ve saatle ayarlamak için:
+2. Donanım saatini gösterme:
    ```bash
-   hwclock --set --date="2023-10-01 12:00:00"
+   hwclock --show
    ```
 
-5. UTC zaman diliminde donanım saatini ayarlamak için:
+3. Donanım saatini belirli bir tarih ve saat ile ayarlama (örneğin, 2023 yılının 1 Ocak'ı saat 12:00):
    ```bash
-   hwclock --set --date="2023-10-01 12:00:00" --utc
+   hwclock --set --date="2023-01-01 12:00:00"
    ```
 
-## Tips
-- Donanım saatini düzenli olarak senkronize etmek, sistemin doğru zaman göstermesini sağlar.
-- Zaman dilimi ayarlarını kontrol etmek, özellikle çoklu işletim sistemleri kullanan sistemlerde önemlidir.
-- Donanım saatini ayarlarken dikkatli olun; yanlış ayarlar, sistem zamanında hatalara yol açabilir.
+4. Sistem saatini donanım saatine ayarlama:
+   ```bash
+   hwclock --hctosys
+   ```
+
+## İpuçları
+- Donanım saatini ayarlamadan önce sistem saatinin doğru olduğundan emin olun.
+- `hwclock` komutunu kullanmadan önce root yetkilerine sahip olduğunuzdan emin olun.
+- Donanım saatini düzenli olarak kontrol etmek, sistem zamanının doğru kalmasına yardımcı olur.

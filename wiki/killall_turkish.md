@@ -1,48 +1,45 @@
-# [Linux] Bash killall Kullanımı: Birden Fazla Süreci Sonlandırma
+# [Linux] C Shell (csh) killall Kullanımı: Belirli bir işlemi sonlandırma
 
 ## Genel Bakış
-`killall` komutu, belirtilen isimle çalışan tüm süreçleri sonlandırmak için kullanılır. Bu komut, belirli bir uygulamanın veya işlemin tüm örneklerini hızlı bir şekilde kapatmak için oldukça etkilidir.
+`killall` komutu, belirtilen isimle çalışan tüm işlemleri sonlandırmak için kullanılır. Bu komut, özellikle birden fazla örneği çalışan bir uygulamayı kapatmak istediğinizde oldukça faydalıdır.
 
 ## Kullanım
-Temel sözdizimi şu şekildedir:
-```bash
+Temel sözdizimi aşağıdaki gibidir:
+
+```
 killall [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-u, --user`: Belirtilen kullanıcıya ait süreçleri sonlandırır.
-- `-9, --signal SIGKILL`: Süreçleri zorla sonlandırmak için kullanılır.
-- `-q, --quiet`: Çıktıyı sessiz hale getirir, yani hata mesajlarını göstermez.
-- `-r, --regexp`: Süreç adını bir düzenli ifade olarak yorumlar.
+- `-u [kullanıcı]`: Belirtilen kullanıcıya ait işlemleri sonlandırır.
+- `-9`: Zorla sonlandırma işlemi yapar (SIGKILL sinyali gönderir).
+- `-l`: Tüm sinyal isimlerini listeler.
+- `-v`: Daha ayrıntılı çıktı sağlar.
 
 ## Yaygın Örnekler
 Aşağıda `killall` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. **Belirli bir uygulamayı sonlandırma**:
+1. Belirli bir uygulamanın tüm örneklerini sonlandırmak:
    ```bash
    killall firefox
    ```
-   Bu komut, çalışan tüm Firefox süreçlerini kapatır.
 
-2. **Bir kullanıcıya ait süreçleri sonlandırma**:
-   ```bash
-   killall -u kullanıcı_adı
-   ```
-   Bu, belirtilen kullanıcıya ait tüm süreçleri sonlandırır.
-
-3. **Zorla bir süreci sonlandırma**:
+2. Zorla bir işlemi sonlandırmak:
    ```bash
    killall -9 chrome
    ```
-   Bu komut, çalışan tüm Chrome süreçlerini zorla kapatır.
 
-4. **Düzenli ifade kullanarak süreçleri sonlandırma**:
+3, Belirli bir kullanıcıya ait işlemleri sonlandırmak:
    ```bash
-   killall -r '^myapp.*'
+   killall -u kullanıcı_adı
    ```
-   Bu, adı "myapp" ile başlayan tüm süreçleri sonlandırır.
+
+4. Tüm çalışan işlemlerin sinyal isimlerini listelemek:
+   ```bash
+   killall -l
+   ```
 
 ## İpuçları
-- `killall` komutunu kullanmadan önce hangi süreçlerin çalıştığını görmek için `ps` veya `pgrep` komutlarını kullanabilirsiniz.
-- Süreçleri sonlandırmadan önce, önemli verilerin kaybolmaması için açık olan dosyaları kaydettiğinizden emin olun.
-- `killall` komutunu kullanırken dikkatli olun; yanlış bir süreç adı girdiğinizde istemeden önemli bir uygulamayı kapatabilirsiniz.
+- `killall` komutunu kullanmadan önce, hangi işlemleri sonlandırmak istediğinizi dikkatlice kontrol edin.
+- Zorla sonlandırma (`-9` seçeneği) kullanmadan önce, işlemin düzgün bir şekilde kapanmasını sağlamak için normal sonlandırma sinyallerini tercih edin.
+- Kullanıcıya ait işlemleri sonlandırırken dikkatli olun; yanlışlıkla önemli bir işlemi kapatmak istemezsiniz.

@@ -1,81 +1,80 @@
-# [Linux] Bash case Kullanımı: Değişkenlerin Değerine Göre Koşullu İşlem Yapma
+# [Linux] C Shell (csh) case Kullanımı: Durum kontrolü için bir komut
 
-## Genel Bakış
-`case` komutu, bir değişkenin değerine göre farklı komutlar çalıştırmak için kullanılan bir kontrol yapısıdır. Bu komut, özellikle birden fazla koşulun kontrol edilmesi gereken durumlarda oldukça kullanışlıdır.
+## Overview
+`case` komutu, bir değişkenin içeriğine göre farklı komutlar çalıştırmak için kullanılan bir kontrol yapısıdır. Bu komut, belirli bir değere göre farklı durumları kontrol ederek, program akışını yönlendirmeye olanak tanır.
 
-## Kullanım
+## Usage
 Temel sözdizimi aşağıdaki gibidir:
 
-```bash
+```csh
 case [değişken] in
-    [değer1])
-        # Komutlar
+    [durum1])
+        [komutlar]
         ;;
-    [değer2])
-        # Komutlar
+    [durum2])
+        [komutlar]
         ;;
     *)
-        # Varsayılan komutlar
+        [varsayılan komutlar]
         ;;
 esac
 ```
 
-## Yaygın Seçenekler
-`case` komutunun kendine özgü seçenekleri yoktur, ancak kullanıldığı yerlerde değişkenlerin ve değerlerin doğru bir şekilde tanımlanması önemlidir.
+## Common Options
+`case` komutunun kendine özgü seçenekleri yoktur, ancak kullanılan durumlar için bazı yaygın desenler şunlardır:
+- `*` : Herhangi bir değeri temsil eder.
+- `?` : Tek bir karakteri temsil eder.
+- `[a-z]` : Belirli bir karakter aralığını temsil eder.
 
-## Yaygın Örnekler
-Aşağıda `case` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+## Common Examples
 
-### Örnek 1: Basit Değişken Kontrolü
-```bash
-deger="merhaba"
+### Örnek 1: Basit durum kontrolü
+Aşağıdaki örnekte, bir değişkenin değerine göre farklı mesajlar yazdırılmaktadır.
 
-case $deger in
-    "merhaba")
-        echo "Selam!"
-        ;;
-    "güle güle")
-        echo "Hoşça kal!"
-        ;;
-    *)
-        echo "Tanımlı bir değer değil."
-        ;;
-esac
-```
-
-### Örnek 2: Kullanıcı Girişi Kontrolü
-```bash
-read -p "Bir renk girin: " renk
-
+```csh
+set renk = "kırmızı"
 case $renk in
     "kırmızı")
-        echo "Kırmızı seçtiniz."
+        echo "Seçilen renk kırmızı."
         ;;
     "mavi")
-        echo "Mavi seçtiniz."
-        ;;
-    "yeşil")
-        echo "Yeşil seçtiniz."
+        echo "Seçilen renk mavi."
         ;;
     *)
-        echo "Bilinmeyen bir renk."
+        echo "Bilinmeyen renk."
         ;;
 esac
 ```
 
-### Örnek 3: Dosya Uzantısına Göre İşlem
-```bash
-dosya="belge.pdf"
+### Örnek 2: Kullanıcı girişi kontrolü
+Kullanıcıdan alınan bir girdi ile işlem yapmak için `case` komutu kullanılabilir.
 
-case $dosya in
-    *.pdf)
-        echo "PDF dosyası."
+```csh
+set girdi = $1
+case $girdi in
+    "başla")
+        echo "Program başlatılıyor..."
         ;;
+    "dur")
+        echo "Program durduruluyor..."
+        ;;
+    *)
+        echo "Geçersiz komut."
+        ;;
+esac
+```
+
+### Örnek 3: Dosya uzantısına göre işlem
+Dosya uzantısına göre farklı işlemler yapmak için `case` komutu kullanılabilir.
+
+```csh
+set dosya = "belge.txt"
+case $dosya in
     *.txt)
-        echo "Metin dosyası."
+        echo "Bu bir metin dosyası."
         ;;
     *.jpg)
-        echo "Resim dosyası."
+        echo "Bu bir resim dosyası."
         ;;
     *)
         echo "Bilinmeyen dosya türü."
@@ -83,7 +82,7 @@ case $dosya in
 esac
 ```
 
-## İpuçları
-- `case` komutunu kullanırken, her bir durum için `;;` ile sonlandırmayı unutmayın.
-- Değişkenlerinizi doğru bir şekilde tanımlamak, `case` komutunun doğru çalışması için kritik öneme sahiptir.
-- `*` ifadesini kullanarak varsayılan bir durum belirlemek, beklenmeyen değerler için iyi bir uygulamadır.
+## Tips
+- `case` komutunu kullanırken, her durumdan sonra `;;` eklemeyi unutmayın; bu, durumu kapatır.
+- Değişkenlerinizi doğru bir şekilde tanımladığınızdan emin olun; aksi takdirde beklenmeyen sonuçlar alabilirsiniz.
+- `case` komutunu karmaşık koşullar için kullanmak yerine basit durumlar için tercih edin; karmaşık mantıklar için `if` yapısını kullanmak daha uygun olabilir.

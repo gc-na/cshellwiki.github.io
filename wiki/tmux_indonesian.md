@@ -1,7 +1,7 @@
-# [Linux] Bash tmux Penggunaan: Manajemen terminal multiplexer
+# [Sistem Operasi] C Shell (csh) tmux Penggunaan: Mengelola sesi terminal
 
 ## Overview
-`tmux` adalah sebuah terminal multiplexer yang memungkinkan pengguna untuk mengelola beberapa sesi terminal dalam satu jendela. Dengan `tmux`, Anda dapat membagi jendela terminal menjadi beberapa panel, menjalankan beberapa sesi secara bersamaan, dan bahkan terhubung kembali ke sesi yang telah ditinggalkan.
+Perintah `tmux` adalah terminal multiplexer yang memungkinkan pengguna untuk menjalankan beberapa sesi terminal dalam satu jendela. Dengan `tmux`, Anda dapat membagi jendela terminal menjadi beberapa panel, beralih antara sesi, dan menjaga sesi tetap berjalan bahkan setelah Anda keluar dari terminal.
 
 ## Usage
 Berikut adalah sintaks dasar untuk menggunakan `tmux`:
@@ -15,37 +15,37 @@ tmux [options] [arguments]
 - `attach`: Menghubungkan kembali ke sesi yang sudah ada.
 - `list-sessions`: Menampilkan daftar sesi yang sedang berjalan.
 - `kill-session`: Menghentikan sesi yang sedang berjalan.
-- `split-window`: Membagi jendela menjadi panel baru.
+- `detach`: Memutuskan sesi saat ini dan kembali ke terminal.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan `tmux` yang umum:
+Berikut adalah beberapa contoh penggunaan `tmux`:
 
-1. **Membuat sesi baru:**
+1. **Membuat sesi baru**:
    ```bash
-   tmux new -s nama_sesi
+   tmux new -s mysession
    ```
 
-2. **Menghubungkan ke sesi yang sudah ada:**
+2. **Menghubungkan ke sesi yang sudah ada**:
    ```bash
-   tmux attach -t nama_sesi
+   tmux attach -t mysession
    ```
 
-3. **Menampilkan daftar sesi yang sedang berjalan:**
+3. **Menampilkan daftar sesi yang sedang berjalan**:
    ```bash
    tmux list-sessions
    ```
 
-4. **Membagi jendela menjadi dua panel:**
+4. **Menghentikan sesi**:
    ```bash
-   tmux split-window
+   tmux kill-session -t mysession
    ```
 
-5. **Menghentikan sesi:**
+5. **Memutuskan sesi**:
    ```bash
-   tmux kill-session -t nama_sesi
+   Ctrl + b, d
    ```
 
 ## Tips
-- Gunakan kombinasi tombol `Ctrl + b` diikuti dengan `c` untuk membuat jendela baru dalam sesi `tmux`.
-- Untuk berpindah antar jendela, gunakan `Ctrl + b` diikuti dengan nomor jendela.
-- Simpan konfigurasi `tmux` Anda di file `.tmux.conf` untuk mengatur preferensi secara otomatis saat memulai `tmux`.
+- Gunakan nama sesi yang deskriptif agar mudah diingat.
+- Manfaatkan pembagian jendela untuk multitasking; Anda bisa membuka beberapa panel dalam satu sesi.
+- Simpan konfigurasi `tmux` di file `.tmux.conf` untuk mengatur preferensi Anda secara permanen.

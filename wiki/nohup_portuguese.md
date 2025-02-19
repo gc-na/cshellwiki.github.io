@@ -1,46 +1,44 @@
-# [Linux] Bash nohup Uso: Executar comandos que continuam rodando após o logout
+# [Linux] C Shell (csh) nohup uso: Executar comandos sem interrupção ao sair da sessão
 
 ## Overview
-O comando `nohup` (no hang up) é utilizado para executar processos que devem continuar em execução mesmo após o usuário se desconectar do terminal. Isso é especialmente útil para longas tarefas que não precisam de interação contínua.
+O comando `nohup` (no hang up) é utilizado para executar processos que continuam em execução mesmo após o usuário sair da sessão. Isso é especialmente útil para tarefas longas que você deseja que continuem rodando em segundo plano.
 
 ## Usage
 A sintaxe básica do comando `nohup` é a seguinte:
 
-```bash
+```csh
 nohup [opções] [argumentos]
 ```
 
 ## Common Options
-Aqui estão algumas opções comuns do `nohup`:
-
-- `&`: Coloca o comando em segundo plano, permitindo que você continue usando o terminal.
-- `-h`: Exibe a ajuda sobre o uso do comando.
-- `-v`: Ativa o modo verbose, mostrando mais informações sobre a execução.
+- `&`: Coloca o comando em segundo plano.
+- `-h`: Exibe a ajuda sobre o comando.
+- `-v`: Exibe informações detalhadas sobre a execução do comando.
 
 ## Common Examples
 Aqui estão alguns exemplos práticos do uso do `nohup`:
 
 1. Executar um script em segundo plano:
-   ```bash
+   ```csh
    nohup ./meu_script.sh &
    ```
 
-2. Rodar um comando que gera saída para um arquivo:
-   ```bash
-   nohup ping google.com > output.txt &
+2. Rodar um comando que gera saída em um arquivo:
+   ```csh
+   nohup ls -l > lista.txt &
    ```
 
-3. Executar um comando com um tempo limite:
-   ```bash
-   nohup sleep 1000 &
+3. Executar um comando que não deve ser interrompido ao sair da sessão:
+   ```csh
+   nohup python meu_programa.py &
    ```
 
-4. Iniciar um servidor web que deve continuar rodando:
-   ```bash
-   nohup python -m http.server 8000 &
+4. Executar um comando com saída padrão e de erro redirecionadas para um arquivo:
+   ```csh
+   nohup comando_qualquer > saida.txt 2>&1 &
    ```
 
 ## Tips
-- Sempre redirecione a saída para um arquivo usando `>`, para evitar que a saída padrão seja enviada para o terminal.
-- Use `jobs` para verificar os processos em segundo plano.
-- Combine `nohup` com `disown` para desvincular o processo do terminal, permitindo que ele continue rodando após o logout.
+- Sempre redirecione a saída de comandos longos para um arquivo para evitar a perda de informações.
+- Utilize `jobs` para verificar os processos em segundo plano.
+- Combine `nohup` com `&` para garantir que o comando seja executado sem bloquear o terminal.

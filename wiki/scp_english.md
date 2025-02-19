@@ -1,7 +1,7 @@
-# [Linux] Bash scp Uso: Securely copy files between hosts
+# [Unix] C Shell (csh) scp Uso: Securely copy files between hosts
 
 ## Overview
-The `scp` (Secure Copy Protocol) command is used to securely transfer files and directories between two hosts over a network. It leverages SSH (Secure Shell) for data transfer, ensuring that the files are encrypted during the transfer process.
+The `scp` (secure copy) command is used to securely transfer files and directories between two hosts over a network. It utilizes SSH (Secure Shell) for data transfer, ensuring that the data is encrypted during the process.
 
 ## Usage
 The basic syntax of the `scp` command is as follows:
@@ -12,39 +12,37 @@ scp [options] [source] [destination]
 
 ## Common Options
 - `-r`: Recursively copy entire directories.
-- `-P port`: Specify the port to connect to on the remote host (note the uppercase 'P').
+- `-P port`: Specify the port to connect to on the remote host.
 - `-i identity_file`: Select the file from which the identity (private key) for public key authentication is read.
-- `-v`: Enable verbose mode, which provides detailed information about the connection process.
-- `-q`: Quiet mode, which suppresses the progress meter and non-error messages.
+- `-v`: Enable verbose mode, which provides detailed information about the transfer process.
 
 ## Common Examples
 1. **Copy a file from local to remote:**
    ```bash
-   scp /path/to/local/file.txt user@remote_host:/path/to/remote/directory/
+   scp localfile.txt user@remotehost:/path/to/destination/
    ```
 
 2. **Copy a file from remote to local:**
    ```bash
-   scp user@remote_host:/path/to/remote/file.txt /path/to/local/directory/
+   scp user@remotehost:/path/to/remotefile.txt /local/destination/
    ```
 
-3. **Copy an entire directory from local to remote:**
+3. **Copy a directory recursively from local to remote:**
    ```bash
-   scp -r /path/to/local/directory user@remote_host:/path/to/remote/
+   scp -r localdirectory/ user@remotehost:/path/to/destination/
    ```
 
 4. **Copy a file using a specific port:**
    ```bash
-   scp -P 2222 /path/to/local/file.txt user@remote_host:/path/to/remote/
+   scp -P 2222 localfile.txt user@remotehost:/path/to/destination/
    ```
 
 5. **Copy a file using a specific identity file:**
    ```bash
-   scp -i /path/to/private_key user@remote_host:/path/to/remote/file.txt /path/to/local/
+   scp -i ~/.ssh/id_rsa localfile.txt user@remotehost:/path/to/destination/
    ```
 
 ## Tips
-- Always ensure that you have the correct permissions to access the files and directories you are transferring.
-- Use the `-v` option for troubleshooting connection issues; it can provide helpful insights.
-- When transferring large files, consider using the `-C` option to enable compression, which can speed up the transfer.
-- Be cautious with the `-r` option to avoid unintentionally copying large directories.
+- Always ensure that the SSH service is running on the remote host before attempting to use `scp`.
+- Use the `-v` option for troubleshooting if you encounter issues during file transfer.
+- When transferring large files or directories, consider using `rsync` for better performance and resuming capabilities.

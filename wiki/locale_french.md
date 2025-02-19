@@ -1,47 +1,47 @@
-# [Linux] Bash locale utilisation : afficher les paramètres régionaux
+# [Linux] C Shell (csh) locale : Affiche les informations de localisation
 
 ## Overview
-La commande `locale` en Bash permet d'afficher les paramètres régionaux du système, qui définissent la langue, le format des dates, des heures, des nombres et d'autres aspects culturels. Cela est particulièrement utile pour vérifier ou configurer l'environnement linguistique de votre terminal.
+La commande `locale` dans le C Shell (csh) est utilisée pour afficher les paramètres de localisation de l'environnement. Ces paramètres déterminent la langue, le format des dates, des heures, et d'autres aspects culturels du système.
 
 ## Usage
 La syntaxe de base de la commande `locale` est la suivante :
 
-```bash
+```csh
 locale [options] [arguments]
 ```
 
 ## Common Options
 Voici quelques options courantes pour la commande `locale` :
 
-- `-a` : Affiche tous les paramètres régionaux disponibles sur le système.
-- `-m` : Affiche les noms des caractères disponibles.
-- `-k` : Affiche les informations sur les paramètres régionaux spécifiés.
-- `-c` : Affiche les paramètres régionaux pour les catégories spécifiques.
+- `-a` : Affiche toutes les locales disponibles sur le système.
+- `-m` : Affiche les noms de toutes les charsets disponibles.
+- `-k` : Affiche les informations de localisation pour les clés spécifiées.
+- `-c` : Affiche les informations de localisation pour les catégories spécifiées.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `locale` :
 
-1. **Afficher les paramètres régionaux actuels :**
-   ```bash
+1. Afficher la locale actuelle :
+   ```csh
    locale
    ```
 
-2. **Lister tous les paramètres régionaux disponibles :**
-   ```bash
+2. Afficher toutes les locales disponibles :
+   ```csh
    locale -a
    ```
 
-3. **Afficher les informations sur une catégorie spécifique, par exemple, les noms de pays :**
-   ```bash
-   locale -k LC_COUNTRY
-   ```
-
-4. **Afficher les noms des caractères disponibles :**
-   ```bash
+3. Afficher les charsets disponibles :
+   ```csh
    locale -m
    ```
 
+4. Afficher les informations de localisation pour une clé spécifique :
+   ```csh
+   locale -k LC_TIME
+   ```
+
 ## Tips
-- Vérifiez régulièrement vos paramètres régionaux pour vous assurer qu'ils correspondent à vos préférences linguistiques.
-- Utilisez `locale -a` pour explorer les options de langue disponibles avant de configurer votre environnement.
-- En cas de problème avec les formats de date ou de nombre, vérifiez les paramètres régionaux associés à votre session.
+- Assurez-vous que votre système est configuré avec les locales nécessaires pour éviter des problèmes d'affichage.
+- Utilisez `locale -a` pour explorer les locales disponibles et choisir celle qui convient le mieux à vos besoins.
+- Pensez à définir votre locale dans votre fichier de configuration de shell pour garantir une expérience utilisateur cohérente.

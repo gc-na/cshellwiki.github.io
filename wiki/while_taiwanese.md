@@ -1,57 +1,56 @@
-# [Linux] Bash while 使用法: 用於重複執行命令
+# [台灣] C Shell (csh) while 使用法: [執行迴圈]
 
 ## Overview
-`while` 命令是一個控制結構，用於在條件為真時重複執行一段命令。這使得在滿足特定條件時，可以持續執行某些操作，直到條件不再成立。
+`while` 命令用於在 C Shell 中執行迴圈，當條件為真時，會重複執行指定的命令。這個命令非常適合需要重複執行某些操作直到特定條件滿足的情況。
 
 ## Usage
 基本語法如下：
-```bash
-while [條件]
-do
-    # 執行的命令
-done
+```
+while (condition)
+    command
+end
 ```
 
 ## Common Options
-`while` 命令本身沒有特定的選項，但可以與其他命令和條件結構結合使用，例如：
-- `test` 或 `[ ]`：用於評估條件。
-- `break`：用於提前退出循環。
-- `continue`：用於跳過當前迭代，進入下一次循環。
+`while` 命令本身並沒有特定的選項，但可以在條件中使用邏輯運算符和其他命令來控制迴圈的執行。
 
 ## Common Examples
 
-### 基本範例
-持續輸出數字，直到達到 5：
-```bash
-count=1
-while [ $count -le 5 ]
-do
-    echo "Count is: $count"
-    count=$((count + 1))
-done
+### 範例 1: 簡單的計數迴圈
+```csh
+set count = 1
+while ($count <= 5)
+    echo "Count is $count"
+    @ count++
+end
 ```
+這個範例將顯示從 1 到 5 的計數。
 
-### 讀取文件行
-逐行讀取文件並輸出：
-```bash
-while IFS= read -r line
-do
-    echo "$line"
-done < filename.txt
+### 範例 2: 讀取文件直到結束
+```csh
+set filename = "sample.txt"
+set line = ""
+while (1)
+    set line = `head -n 1 $filename`
+    if ("$line" == "") break
+    echo $line
+    set filename = `tail -n +2 $filename`
+end
 ```
+這個範例會逐行讀取並顯示 `sample.txt` 文件的內容。
 
-### 等待用戶輸入
-持續要求用戶輸入，直到輸入 "exit"：
-```bash
-input=""
-while [ "$input" != "exit" ]
-do
-    read -p "Enter something (type 'exit' to quit): " input
-    echo "You entered: $input"
-done
+### 範例 3: 等待用戶輸入
+```csh
+set input = ""
+while ("$input" != "exit")
+    echo "請輸入指令 (輸入 'exit' 以結束):"
+    set input = $<
+    echo "你輸入了: $input"
+end
 ```
+這個範例會持續要求用戶輸入，直到用戶輸入 "exit" 為止。
 
 ## Tips
-- 確保在循環內部有條件改變的邏輯，避免無限循環。
-- 使用 `break` 和 `continue` 可以更靈活地控制循環的執行。
-- 在處理文件時，使用 `IFS` 來正確讀取行，避免空格問題。
+- 確保條件能夠在某個時刻變為假，以避免無限迴圈。
+- 使用 `break` 來提前退出迴圈，這在處理複雜條件時特別有用。
+- 在迴圈內部使用 `@` 命令來進行數值運算，這樣可以更方便地控制迴圈變數。

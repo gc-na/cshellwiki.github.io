@@ -1,45 +1,53 @@
-# [Linux] Bash resize2fs gebruik: Schaal een bestandssysteem
+# [Linux] C Shell (csh) resize2fs gebruik: Schaal een bestandssysteem
 
 ## Overzicht
-Het `resize2fs` commando wordt gebruikt om de grootte van een ext2, ext3 of ext4 bestandssysteem te wijzigen. Dit kan zowel het vergroten als het verkleinen van het bestandssysteem omvatten, afhankelijk van de beschikbare ruimte op de schijf.
+Het `resize2fs` commando wordt gebruikt om de grootte van een ext2, ext3 of ext4 bestandssysteem aan te passen. Dit kan nuttig zijn wanneer je de schijfruimte wilt optimaliseren of wanneer je een partitie wilt uitbreiden of verkleinen.
 
 ## Gebruik
 De basis syntaxis van het `resize2fs` commando is als volgt:
 
-```bash
+```csh
 resize2fs [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-f`: Forceert de wijziging van de grootte, zelfs als het bestandssysteem niet gemonteerd is.
-- `-p`: Toont voortgangsinformatie tijdens het schalen.
-- `-s`: Schaal het bestandssysteem naar de opgegeven grootte.
-- `-M`: Verklein het bestandssysteem tot de minimale grootte.
+- `-f`: Forceert de resize, zelfs als het bestandssysteem niet in een consistente staat lijkt te zijn.
+- `-p`: Toont voortgangsinformatie tijdens de uitvoering.
+- `-s`: Schaal het bestandssysteem naar de grootte van de partitie.
+- `-M`: Verkleint het bestandssysteem tot de minimale grootte.
 
 ## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van `resize2fs`:
 
 ### Voorbeeld 1: Vergroot een bestandssysteem
-Om een ext4 bestandssysteem op `/dev/sda1` te vergroten, gebruik je:
+Om een bestandssysteem op `/dev/sda1` te vergroten naar 20 GB:
 
-```bash
-resize2fs /dev/sda1
+```csh
+resize2fs /dev/sda1 20G
 ```
 
 ### Voorbeeld 2: Verklein een bestandssysteem
-Om een ext4 bestandssysteem op `/dev/sda1` te verkleinen tot 10G, gebruik je:
+Om een bestandssysteem op `/dev/sda1` te verkleinen tot 10 GB:
 
-```bash
+```csh
 resize2fs /dev/sda1 10G
 ```
 
-### Voorbeeld 3: Voortgang tonen tijdens het schalen
-Om de voortgang te tonen terwijl je een bestandssysteem vergroot, gebruik je:
+### Voorbeeld 3: Forceer een resize
+Om een resize te forceren, gebruik je de `-f` optie:
 
-```bash
-resize2fs -p /dev/sda1
+```csh
+resize2fs -f /dev/sda1 15G
+```
+
+### Voorbeeld 4: Toon voortgang
+Om voortgangsinformatie weer te geven tijdens de resize:
+
+```csh
+resize2fs -p /dev/sda1 25G
 ```
 
 ## Tips
-- Zorg ervoor dat je een back-up maakt van belangrijke gegevens voordat je het bestandssysteem wijzigt.
-- Het is aanbevolen om het bestandssysteem te ontkoppelen voordat je het verkleint om gegevensverlies te voorkomen.
-- Controleer altijd de beschikbare ruimte met `df -h` voordat je een wijziging aanbrengt in de grootte van het bestandssysteem.
+- Zorg ervoor dat je een back-up maakt van belangrijke gegevens voordat je het bestandssysteem aanpast.
+- Controleer altijd de status van het bestandssysteem met `fsck` voordat je `resize2fs` gebruikt.
+- Voer `resize2fs` alleen uit wanneer het bestandssysteem niet in gebruik is om gegevensverlies te voorkomen.

@@ -1,46 +1,51 @@
-# [Linux] Bash psql 使用法: PostgreSQLデータベースに接続する
+# [日本] C Shell (csh) psql 使用法: PostgreSQLデータベースに接続するコマンド
 
-## Overview
-`psql`コマンドは、PostgreSQLデータベースに対してインタラクティブにクエリを実行したり、データベースの管理を行ったりするためのコマンドラインツールです。このツールを使用することで、SQLコマンドを直接入力し、データベースと対話できます。
+## 概要
+`psql` コマンドは、PostgreSQLデータベースに接続し、SQLクエリを実行するためのインタラクティブな端末です。データベースの管理やデータの操作を行うための強力なツールです。
 
-## Usage
+## 使用法
 基本的な構文は以下の通りです。
 
-```bash
+```csh
 psql [options] [arguments]
 ```
 
-## Common Options
-- `-h` : データベースサーバーのホスト名を指定します。
-- `-p` : データベースサーバーのポート番号を指定します。
-- `-U` : データベースユーザー名を指定します。
+## 一般的なオプション
+- `-h` : データベースサーバのホスト名を指定します。
+- `-U` : データベースに接続するユーザー名を指定します。
 - `-d` : 接続するデータベース名を指定します。
-- `-W` : パスワードの入力を促します。
+- `-p` : データベースサーバのポート番号を指定します。
+- `-c` : 指定したSQLコマンドを実行して終了します。
 
-## Common Examples
-以下は、`psql`コマンドの一般的な使用例です。
+## 一般的な例
+以下は、`psql` コマンドのいくつかの実用的な例です。
 
-### データベースに接続する
-```bash
-psql -h localhost -U username -d database_name
+### デフォルトのデータベースに接続する
+```csh
+psql
 ```
 
-### SQLファイルを実行する
-```bash
-psql -U username -d database_name -f script.sql
+### 特定のデータベースに接続する
+```csh
+psql -d mydatabase
 ```
 
-### データベースの一覧を表示する
-```bash
-psql -U username -d database_name -c "\l"
+### 特定のユーザーで接続する
+```csh
+psql -U myuser -d mydatabase
 ```
 
-### テーブルの内容を表示する
-```bash
-psql -U username -d database_name -c "SELECT * FROM table_name;"
+### リモートサーバに接続する
+```csh
+psql -h myhost -U myuser -d mydatabase
 ```
 
-## Tips
-- `\?` コマンドを入力すると、`psql`のヘルプが表示され、使用可能なコマンドを確認できます。
-- `\q` コマンドで`psql`セッションを終了できます。
-- SQLクエリを実行する際は、セミコロン（`;`）を忘れずに付けてください。
+### SQLコマンドを実行する
+```csh
+psql -d mydatabase -c "SELECT * FROM mytable;"
+```
+
+## ヒント
+- デフォルトのデータベース名は、ユーザー名と同じです。接続時に指定しなくても接続できます。
+- `\q` コマンドを使用して、`psql` セッションを終了できます。
+- SQLクエリをファイルから実行するには、`-f` オプションを使用します。

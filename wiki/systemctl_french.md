@@ -1,7 +1,7 @@
-# [Linux] Bash systemctl utilisation : Gérer les services système
+# [Linux] C Shell (csh) systemctl : Gérer les services système
 
 ## Overview
-La commande `systemctl` est un outil essentiel pour interagir avec le système d'initialisation `systemd`. Elle permet de démarrer, arrêter, redémarrer et gérer les services et les unités système sur les distributions Linux qui utilisent `systemd`.
+La commande `systemctl` est utilisée pour examiner et contrôler le système d'initialisation systemd et les services qui y sont associés. Elle permet de démarrer, arrêter, redémarrer et vérifier l'état des services sur un système Linux.
 
 ## Usage
 La syntaxe de base de la commande `systemctl` est la suivante :
@@ -19,7 +19,6 @@ Voici quelques options courantes pour `systemctl` :
 - `status` : Affiche l'état d'un service.
 - `enable` : Active un service pour qu'il démarre au démarrage du système.
 - `disable` : Désactive un service pour qu'il ne démarre pas au démarrage du système.
-- `list-units` : Liste toutes les unités actives.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `systemctl` :
@@ -27,46 +26,40 @@ Voici quelques exemples pratiques de l'utilisation de `systemctl` :
 - Pour démarrer un service, par exemple `nginx` :
 
 ```bash
-sudo systemctl start nginx
+systemctl start nginx
 ```
 
 - Pour arrêter un service, par exemple `nginx` :
 
 ```bash
-sudo systemctl stop nginx
+systemctl stop nginx
 ```
 
 - Pour redémarrer un service, par exemple `nginx` :
 
 ```bash
-sudo systemctl restart nginx
+systemctl restart nginx
 ```
 
 - Pour vérifier l'état d'un service, par exemple `nginx` :
 
 ```bash
-sudo systemctl status nginx
+systemctl status nginx
 ```
 
 - Pour activer un service au démarrage :
 
 ```bash
-sudo systemctl enable nginx
+systemctl enable nginx
 ```
 
 - Pour désactiver un service au démarrage :
 
 ```bash
-sudo systemctl disable nginx
-```
-
-- Pour lister toutes les unités actives :
-
-```bash
-systemctl list-units
+systemctl disable nginx
 ```
 
 ## Tips
-- Utilisez `sudo` pour exécuter des commandes `systemctl` qui nécessitent des privilèges administratifs.
-- Vérifiez régulièrement l'état de vos services pour vous assurer qu'ils fonctionnent comme prévu.
-- N'oubliez pas de désactiver les services inutilisés pour améliorer la sécurité et les performances de votre système.
+- Toujours vérifier l'état d'un service après l'avoir démarré ou arrêté pour s'assurer qu'il fonctionne comme prévu.
+- Utilisez `systemctl list-units --type=service` pour voir tous les services actifs et leur état.
+- Soyez prudent lors de l'activation ou de la désactivation des services, car cela peut affecter le fonctionnement de votre système.

@@ -1,42 +1,47 @@
-# [Linux] Bash chgrp użycie: Zmiana grupy plików
+# [Linux] C Shell (csh) chgrp: Zmiana grupy plików
 
 ## Overview
-Polecenie `chgrp` służy do zmiany grupy przypisanej do plików i katalogów w systemie Linux. Umożliwia to administratorom i użytkownikom zarządzanie dostępem do zasobów w systemie plików.
+Polecenie `chgrp` służy do zmiany grupy przypisanej do plików lub katalogów w systemie Unix/Linux. Umożliwia to administratorom i użytkownikom zarządzanie dostępem do zasobów systemowych poprzez przypisywanie odpowiednich grup.
 
 ## Usage
 Podstawowa składnia polecenia `chgrp` jest następująca:
 
-```bash
+```
 chgrp [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-R` : Zmiana grupy rekurencyjnie dla wszystkich plików i katalogów w podanym katalogu.
-- `-v` : Wyświetlenie informacji o tym, które pliki zostały zmienione.
-- `-c` : Wyświetlenie informacji tylko o plikach, dla których zmiana grupy się powiodła.
+- `-R`: Rekurencyjnie zmienia grupę dla katalogów i ich zawartości.
+- `-v`: Wyświetla szczegóły dotyczące zmiany grupy dla każdego pliku.
+- `-c`: Wyświetla tylko pliki, dla których zmiana grupy się powiodła.
 
 ## Common Examples
-1. Zmiana grupy pliku:
+1. Zmiana grupy dla pojedynczego pliku:
    ```bash
-   chgrp developers plik.txt
+   chgrp developers dokument.txt
    ```
 
-2. Zmiana grupy dla katalogu i wszystkich jego zawartości:
+2. Zmiana grupy dla katalogu:
    ```bash
-   chgrp -R developers katalog/
+   chgrp admin katalog/
    ```
 
-3. Wyświetlenie informacji o zmianach:
+3. Rekurencyjna zmiana grupy dla wszystkich plików w katalogu:
    ```bash
-   chgrp -v developers plik.txt
+   chgrp -R users katalog/
    ```
 
-4. Zmiana grupy dla wielu plików jednocześnie:
+4. Wyświetlenie szczegółów zmiany grupy:
    ```bash
-   chgrp developers plik1.txt plik2.txt plik3.txt
+   chgrp -v developers dokument.txt
+   ```
+
+5. Zmiana grupy tylko dla plików, które zostały zmienione:
+   ```bash
+   chgrp -c developers dokument.txt
    ```
 
 ## Tips
 - Upewnij się, że masz odpowiednie uprawnienia do zmiany grupy plików.
-- Zawsze używaj opcji `-v` lub `-c`, aby mieć pewność, że zmiany zostały zastosowane.
-- Zmiana grupy rekurencyjnie (`-R`) może być przydatna, ale używaj jej ostrożnie, aby nie zmienić grupy plików, których nie chcesz modyfikować.
+- Zawsze sprawdzaj aktualną grupę pliku przed dokonaniem zmian, używając polecenia `ls -l`.
+- Używaj opcji `-R` ostrożnie, aby nie zmienić grupy dla niezamierzonych plików.

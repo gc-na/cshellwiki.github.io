@@ -1,44 +1,37 @@
-# [Linux] Bash logout użycie: Zakończenie sesji użytkownika
+# [Linux] C Shell (csh) logout użycie: Zakończenie sesji użytkownika
 
 ## Overview
-Polecenie `logout` służy do zakończenia bieżącej sesji użytkownika w powłoce Bash. Jest to przydatne, gdy chcesz wylogować się z terminala lub zakończyć sesję SSH.
+Polecenie `logout` w C Shell (csh) służy do zakończenia bieżącej sesji użytkownika. Użycie tego polecenia powoduje wylogowanie się z powłoki, co kończy wszystkie procesy uruchomione w tej sesji.
 
 ## Usage
 Podstawowa składnia polecenia `logout` jest następująca:
 
-```bash
-logout [options]
+```csh
+logout [options] [arguments]
 ```
 
 ## Common Options
-Polecenie `logout` nie ma wielu opcji, ale oto kilka, które mogą być przydatne:
-
-- **--help**: Wyświetla pomoc dotyczącą polecenia `logout`.
-- **--version**: Wyświetla wersję powłoki, w której działa polecenie `logout`.
+- **-f**: Wymusza natychmiastowe wylogowanie się, bez czekania na zakończenie uruchomionych procesów.
+- **-n**: Nie zapisuje stanu powłoki przed wylogowaniem.
 
 ## Common Examples
+Przykłady użycia polecenia `logout`:
 
-1. **Zakończenie sesji w terminalu**:
-   Aby wylogować się z bieżącej sesji terminala, wystarczy wpisać:
-   ```bash
+1. Zwykłe wylogowanie się z sesji:
+   ```csh
    logout
    ```
 
-2. **Zakończenie sesji SSH**:
-   Jeśli jesteś zalogowany na zdalnym serwerze przez SSH, użyj polecenia `logout`, aby zakończyć sesję:
-   ```bash
-   ssh user@remote-server
-   # Po zakończeniu pracy na serwerze
-   logout
+2. Wymuszenie wylogowania się bez czekania na procesy:
+   ```csh
+   logout -f
    ```
 
-3. **Wyświetlenie pomocy**:
-   Aby uzyskać więcej informacji na temat polecenia `logout`, możesz użyć opcji `--help`:
-   ```bash
-   logout --help
+3. Wylogowanie się z zachowaniem stanu powłoki:
+   ```csh
+   logout -n
    ```
 
 ## Tips
-- Upewnij się, że zapisujesz wszelkie niezapisane zmiany przed użyciem polecenia `logout`, aby uniknąć utraty danych.
-- Jeśli korzystasz z wielu terminali, pamiętaj, że `logout` zamknie tylko bieżącą sesję, a inne pozostaną otwarte.
-- W przypadku sesji SSH, `logout` jest równoważne z poleceniem `exit`.
+- Upewnij się, że zapisałeś wszystkie ważne dane przed użyciem polecenia `logout`, ponieważ zakończy ono wszystkie uruchomione procesy.
+- Jeśli pracujesz w sesji zdalnej, pamiętaj, że wylogowanie się spowoduje zakończenie połączenia.

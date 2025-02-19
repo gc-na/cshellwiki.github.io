@@ -1,40 +1,41 @@
-# [Linux] Bash mesg Verwendung: Steuert die Berechtigung zur Anzeige von Nachrichten
+# [Linux] C Shell (csh) mesg Verwendung: Steuert die Empfangbarkeit von Nachrichten
 
 ## Übersicht
-Der Befehl `mesg` wird verwendet, um die Berechtigung für andere Benutzer zu steuern, Nachrichten an den aktuellen Terminalbenutzer zu senden. Dies ist besonders nützlich in Mehrbenutzersystemen, wo Benutzer möglicherweise nicht möchten, dass andere ihnen Nachrichten senden.
+Der Befehl `mesg` wird verwendet, um zu steuern, ob andere Benutzer Nachrichten an das Terminal senden können. Dies ist besonders nützlich in Mehrbenutzersystemen, um die Privatsphäre zu wahren oder unerwünschte Unterbrechungen zu vermeiden.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```csh
 mesg [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `y`: Erlaubt anderen Benutzern, Nachrichten zu senden.
-- `n`: Verweigert anderen Benutzern das Senden von Nachrichten.
-- `--help`: Zeigt eine Hilfeseite mit Informationen zu den Optionen an.
+- `y`: Erlaubt das Empfangen von Nachrichten.
+- `n`: Verhindert das Empfangen von Nachrichten.
+- `-n`: Eine alternative Schreibweise für die Option `n`.
+- `-y`: Eine alternative Schreibweise für die Option `y`.
 
 ## Häufige Beispiele
-Um anderen Benutzern das Senden von Nachrichten zu erlauben:
+Um Nachrichten zu erlauben:
 
-```bash
+```csh
 mesg y
 ```
 
-Um anderen Benutzern das Senden von Nachrichten zu verweigern:
+Um Nachrichten zu verweigern:
 
-```bash
+```csh
 mesg n
 ```
 
-Um die aktuelle Einstellung zu überprüfen, können Sie einfach `mesg` ohne Argumente eingeben:
+Überprüfen des aktuellen Status:
 
-```bash
+```csh
 mesg
 ```
 
 ## Tipps
-- Überprüfen Sie regelmäßig Ihre `mesg`-Einstellungen, insbesondere in öffentlichen oder gemeinsam genutzten Umgebungen.
-- Nutzen Sie `mesg n`, wenn Sie sich auf Ihre Arbeit konzentrieren möchten und keine Ablenkungen durch Nachrichten wünschen.
-- Denken Sie daran, dass die Einstellungen nur für die aktuelle Sitzung gelten; beim nächsten Anmelden müssen Sie möglicherweise die Einstellungen erneut festlegen.
+- Verwenden Sie `mesg n`, wenn Sie in einer Sitzung arbeiten, in der Sie nicht gestört werden möchten.
+- Setzen Sie `mesg y`, wenn Sie möchten, dass andere Benutzer Sie kontaktieren können, z. B. in einer kollaborativen Umgebung.
+- Überprüfen Sie regelmäßig Ihren Status mit `mesg`, um sicherzustellen, dass er Ihren aktuellen Bedürfnissen entspricht.

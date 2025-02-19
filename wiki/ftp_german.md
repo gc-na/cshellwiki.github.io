@@ -1,61 +1,50 @@
-# [Linux] Bash ftp Verwendung: Dateien über das FTP-Protokoll übertragen
+# [Linux] C Shell (csh) ftp Verwendung: Dateiübertragung über das Netzwerk
 
 ## Übersicht
-Der `ftp`-Befehl (File Transfer Protocol) wird verwendet, um Dateien zwischen einem lokalen Computer und einem Remote-Server über das FTP-Protokoll zu übertragen. Er ermöglicht das Hochladen, Herunterladen und Verwalten von Dateien auf einem FTP-Server.
+Der `ftp`-Befehl (File Transfer Protocol) wird verwendet, um Dateien über ein Netzwerk zu übertragen. Er ermöglicht es Benutzern, sich mit einem FTP-Server zu verbinden, Dateien herunterzuladen und hochzuladen sowie verschiedene Dateiverwaltungsoperationen durchzuführen.
 
 ## Verwendung
 Die grundlegende Syntax des `ftp`-Befehls lautet:
 
-```bash
-ftp [Optionen] [Argumente]
+```csh
+ftp [optionen] [argumente]
 ```
 
 ## Häufige Optionen
-- `-i`: Schaltet den interaktiven Modus aus, um die Übertragung mehrerer Dateien zu ermöglichen.
+- `-i`: Schaltet den interaktiven Modus aus, um die Übertragung von Dateien ohne Bestätigung durchzuführen.
+- `-v`: Aktiviert den ausführlichen Modus, der zusätzliche Informationen über den Übertragungsprozess anzeigt.
 - `-n`: Verhindert die automatische Anmeldung beim FTP-Server.
-- `-v`: Aktiviert den ausführlichen Modus, um mehr Informationen über den Verbindungsstatus anzuzeigen.
-- `-p`: Verwendet passive Modusverbindungen, was bei Firewalls hilfreich sein kann.
+- `-p`: Verwendet den passiven Modus für die Verbindung, was bei Firewalls hilfreich sein kann.
 
 ## Häufige Beispiele
+Hier sind einige praktische Beispiele für die Verwendung des `ftp`-Befehls:
 
-### Verbindung zu einem FTP-Server herstellen
-Um eine Verbindung zu einem FTP-Server herzustellen, verwenden Sie den folgenden Befehl:
+1. **Verbindung zu einem FTP-Server herstellen:**
+   ```csh
+   ftp ftp.example.com
+   ```
 
-```bash
-ftp ftp.example.com
-```
+2. **Datei von einem FTP-Server herunterladen:**
+   ```csh
+   ftp> get datei.txt
+   ```
 
-### Anmelden mit Benutzername und Passwort
-Um sich mit einem bestimmten Benutzernamen und Passwort anzumelden, verwenden Sie:
+3. **Datei auf einen FTP-Server hochladen:**
+   ```csh
+   ftp> put datei.txt
+   ```
 
-```bash
-ftp -n ftp.example.com
-user username password
-```
+4. **Auflisten der Dateien im aktuellen Verzeichnis des FTP-Servers:**
+   ```csh
+   ftp> ls
+   ```
 
-### Dateien herunterladen
-Um eine Datei von einem FTP-Server herunterzuladen, verwenden Sie den `get`-Befehl:
-
-```bash
-get datei.txt
-```
-
-### Dateien hochladen
-Um eine Datei auf einen FTP-Server hochzuladen, verwenden Sie den `put`-Befehl:
-
-```bash
-put lokale_datei.txt
-```
-
-### Mehrere Dateien herunterladen
-Um mehrere Dateien herunterzuladen, aktivieren Sie den interaktiven Modus und verwenden Sie den `mget`-Befehl:
-
-```bash
-ftp -i ftp.example.com
-mget *.txt
-```
+5. **Verwenden des passiven Modus:**
+   ```csh
+   ftp> passive
+   ```
 
 ## Tipps
-- Verwenden Sie den `-v`-Schalter, um bei Verbindungsproblemen detaillierte Informationen zu erhalten.
-- Nutzen Sie den passiven Modus (`-p`), wenn Sie hinter einer Firewall arbeiten.
-- Achten Sie darauf, sensible Daten wie Passwörter sicher zu übertragen, indem Sie eine sichere Verbindung (z.B. SFTP) in Betracht ziehen.
+- Verwenden Sie den `-n`-Schalter, wenn Sie sich nicht automatisch anmelden möchten, um die Sicherheit zu erhöhen.
+- Nutzen Sie den `-v`-Schalter, um während der Übertragung mehr Informationen zu erhalten, was bei der Fehlersuche hilfreich sein kann.
+- Denken Sie daran, sich nach Abschluss Ihrer FTP-Sitzung mit dem Befehl `bye` oder `quit` abzumelden.

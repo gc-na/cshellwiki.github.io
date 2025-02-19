@@ -1,49 +1,44 @@
-# [Linux] Bash umask Verwendung: Festlegung der Standardberechtigungen für neue Dateien und Verzeichnisse
+# [Linux] C Shell (csh) umask Verwendung: Legt die Standardberechtigungen für neu erstellte Dateien und Verzeichnisse fest
 
 ## Übersicht
-Der Befehl `umask` wird verwendet, um die Standardberechtigungen für neu erstellte Dateien und Verzeichnisse in einem Unix-ähnlichen Betriebssystem festzulegen. Er bestimmt, welche Berechtigungen beim Erstellen neuer Dateien und Verzeichnisse standardmäßig entzogen werden.
+Der Befehl `umask` in der C Shell (csh) wird verwendet, um die Standardberechtigungen für neu erstellte Dateien und Verzeichnisse festzulegen. Er bestimmt, welche Berechtigungen beim Erstellen neuer Dateien und Verzeichnisse standardmäßig entzogen werden.
 
 ## Verwendung
-Die grundlegende Syntax des `umask`-Befehls lautet:
+Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```csh
 umask [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
 - `-S`: Zeigt die aktuelle umask in symbolischer Form an.
-- `-p`: Zeigt die aktuelle umask für die aktuelle Shell an.
+- `-p`: Gibt die aktuelle umask für den aktuellen Benutzer aus.
 
 ## Häufige Beispiele
-1. **Aktuelle umask anzeigen**:
-   ```bash
+
+1. **Aktuelle umask anzeigen:**
+   ```csh
    umask
    ```
 
-2. **Umask in symbolischer Form anzeigen**:
-   ```bash
+2. **Umask auf 022 setzen:**
+   ```csh
+   umask 022
+   ```
+   Dies bedeutet, dass neue Dateien mit Berechtigungen von 644 (rw-r--r--) und neue Verzeichnisse mit 755 (rwxr-xr-x) erstellt werden.
+
+3. **Umask auf 007 setzen:**
+   ```csh
+   umask 007
+   ```
+   Hierbei erhalten neue Dateien die Berechtigungen 660 (rw-rw----) und neue Verzeichnisse 770 (rwxrwx---).
+
+4. **Umask in symbolischer Form anzeigen:**
+   ```csh
    umask -S
    ```
 
-3. **Umask auf 022 setzen** (entzieht Schreibberechtigungen für Gruppen und andere):
-   ```bash
-   umask 022
-   ```
-
-4. **Umask auf 077 setzen** (entzieht alle Berechtigungen für Gruppen und andere):
-   ```bash
-   umask 077
-   ```
-
-5. **Umask für die aktuelle Shell temporär ändern**:
-   ```bash
-   umask 002
-   # Erstellen Sie eine Datei, um die neuen Berechtigungen zu testen
-   touch testfile
-   ls -l testfile
-   ```
-
 ## Tipps
-- Überprüfen Sie regelmäßig Ihre umask-Einstellungen, um sicherzustellen, dass sie den Sicherheitsanforderungen Ihrer Umgebung entsprechen.
-- Setzen Sie eine restriktive umask (z.B. 077) für sensible Projekte, um unbefugten Zugriff zu verhindern.
-- Denken Sie daran, dass die umask nur für neue Dateien und Verzeichnisse gilt; bestehende Dateien bleiben unverändert.
+- Überprüfen Sie regelmäßig Ihre umask-Einstellungen, um sicherzustellen, dass sie den gewünschten Sicherheitsanforderungen entsprechen.
+- Setzen Sie die umask in Ihren Shell-Startdateien (z.B. `.cshrc`), um sicherzustellen, dass die Einstellungen bei jedem Start der Shell angewendet werden.
+- Seien Sie vorsichtig beim Setzen einer umask, die zu lockere Berechtigungen gewährt, da dies Sicherheitsrisiken mit sich bringen kann.

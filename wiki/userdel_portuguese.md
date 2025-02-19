@@ -1,50 +1,48 @@
-# [Linux] Bash userdel Uso: Remove usuários do sistema
+# [Linux] C Shell (csh) userdel <Uso equivalente em português>: Remover usuários do sistema
 
 ## Overview
-O comando `userdel` é utilizado para remover contas de usuário do sistema Linux. Ele exclui o usuário especificado e, opcionalmente, pode remover o diretório home e os arquivos associados a esse usuário.
+O comando `userdel` é utilizado para remover contas de usuário do sistema. Ele exclui a entrada do usuário no sistema, mas não necessariamente remove todos os arquivos associados a essa conta.
 
 ## Usage
 A sintaxe básica do comando `userdel` é a seguinte:
 
-```bash
+```csh
 userdel [opções] [nome_do_usuário]
 ```
 
 ## Common Options
-Aqui estão algumas opções comuns que podem ser usadas com o comando `userdel`:
-
-- `-r`: Remove o diretório home do usuário e seus arquivos.
+- `-r`: Remove o diretório home do usuário e os arquivos associados.
 - `-f`: Força a remoção do usuário, mesmo que ele esteja logado ou tenha processos em execução.
 - `-Z`: Remove a associação de SELinux do usuário.
 
 ## Common Examples
 Aqui estão alguns exemplos práticos do uso do comando `userdel`:
 
-1. Para remover um usuário sem deletar seu diretório home:
+1. **Remover um usuário sem deletar o diretório home:**
 
-   ```bash
+   ```csh
    userdel usuario_exemplo
    ```
 
-2. Para remover um usuário e também deletar seu diretório home e arquivos:
+2. **Remover um usuário e seu diretório home:**
 
-   ```bash
+   ```csh
    userdel -r usuario_exemplo
    ```
 
-3. Para forçar a remoção de um usuário que está logado:
+3. **Forçar a remoção de um usuário que está logado:**
 
-   ```bash
+   ```csh
    userdel -f usuario_exemplo
    ```
 
-4. Para remover um usuário e garantir que sua associação SELinux seja removida:
+4. **Remover um usuário e sua associação de SELinux:**
 
-   ```bash
+   ```csh
    userdel -Z usuario_exemplo
    ```
 
 ## Tips
-- Sempre verifique se o usuário está logado ou se possui processos em execução antes de usar a opção `-f`, para evitar perda de dados.
-- Considere fazer um backup dos arquivos do usuário antes de removê-lo, especialmente se você estiver usando a opção `-r`.
-- Utilize o comando `id nome_do_usuário` para verificar se o usuário existe antes de tentar removê-lo.
+- Sempre verifique se o usuário não está logado antes de removê-lo, para evitar problemas com processos em execução.
+- Considere fazer um backup dos dados do usuário antes de usar a opção `-r`, caso você precise dos arquivos posteriormente.
+- Use o comando `cat /etc/passwd` para verificar se o usuário foi removido corretamente após a execução do comando.

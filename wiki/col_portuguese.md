@@ -1,44 +1,46 @@
-# [Linux] Bash col: [remove control characters from text]
+# [Linux] C Shell (csh) col <Uso equivalente em português>: formata a saída de texto
 
 ## Overview
-O comando `col` é utilizado para processar texto, removendo caracteres de controle e formatando a saída de forma que ela possa ser exibida corretamente em um terminal. É especialmente útil para limpar a saída de comandos que geram formatação complexa, como tabelas ou textos com formatação de página.
+O comando `col` é utilizado para filtrar e formatar a saída de texto, removendo caracteres de controle e formatando a saída para que ela fique mais legível. É especialmente útil para processar textos que contêm formatação de controle, como aqueles gerados por impressoras.
 
 ## Usage
 A sintaxe básica do comando `col` é a seguinte:
 
-```bash
+```csh
 col [opções] [argumentos]
 ```
 
 ## Common Options
-- `-b`: Ignora caracteres de retrocesso (backspaces).
-- `-x`: Trata os caracteres de tabulação como espaços.
-- `-f`: Converte caracteres de formatação de texto para uma saída mais simples.
+Aqui estão algumas opções comuns do comando `col`:
+
+- `-b`: Remove os caracteres de controle, mas não formata a saída.
+- `-x`: Usa a formatação de tabulação expandida.
+- `-f`: Ignora os caracteres de formatação de controle.
 
 ## Common Examples
+Aqui estão alguns exemplos práticos do uso do comando `col`:
 
-### Exemplo 1: Limpar a saída de um comando
-Você pode usar o `col` para limpar a saída de um comando que gera formatação complexa, como `man`:
+1. **Filtrar a saída de um arquivo**:
+   ```csh
+   col arquivo.txt
+   ```
 
-```bash
-man ls | col -b
-```
+2. **Remover caracteres de controle e formatar a saída**:
+   ```csh
+   col -b arquivo.txt
+   ```
 
-### Exemplo 2: Remover caracteres de controle de um arquivo
-Se você tiver um arquivo com caracteres de controle e quiser limpá-lo, use:
+3. **Usar formatação de tabulação expandida**:
+   ```csh
+   col -x arquivo.txt
+   ```
 
-```bash
-cat arquivo.txt | col -b > arquivo_limpo.txt
-```
-
-### Exemplo 3: Usar com tabulações
-Para tratar tabulações como espaços, você pode usar a opção `-x`:
-
-```bash
-cat arquivo_com_tab.txt | col -x
-```
+4. **Combinar opções para um arquivo específico**:
+   ```csh
+   col -b -x arquivo.txt
+   ```
 
 ## Tips
-- Sempre combine o `col` com outros comandos que geram saídas complexas para garantir que a formatação seja mantida e legível.
-- Use a opção `-f` se você estiver lidando com arquivos que contêm formatação de texto, como arquivos de impressão.
-- Experimente `col -b` em saídas de comandos como `grep` ou `awk` para uma visualização mais limpa.
+- Sempre verifique a saída do comando `col` em um terminal para garantir que a formatação está correta.
+- Use `col` em conjunto com outros comandos, como `cat`, para processar arquivos de texto de forma mais eficiente.
+- Experimente diferentes opções para ver como elas afetam a saída, especialmente em arquivos com muitos caracteres de controle.

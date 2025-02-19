@@ -1,44 +1,38 @@
-# [Linux] Bash fg Uso equivalente: Riporta un processo in primo piano
+# [Linux] C Shell (csh) fg Uso: Riporta un processo in primo piano
 
 ## Overview
-Il comando `fg` in Bash è utilizzato per riportare un processo in esecuzione in background al primo piano, consentendo all'utente di interagire direttamente con esso. Questo è particolarmente utile quando si desidera riprendere un processo che è stato sospeso o eseguito in background.
+Il comando `fg` in C Shell (csh) è utilizzato per riportare un processo che è stato eseguito in background al primo piano. Questo è utile quando si desidera interagire nuovamente con un processo che è stato avviato precedentemente ma non è attualmente visibile nel terminale.
 
 ## Usage
 La sintassi di base del comando `fg` è la seguente:
 
-```bash
+```csh
 fg [opzioni] [argomenti]
 ```
 
 ## Common Options
-- **%n**: Specifica il numero del job che si desidera riportare in primo piano. Ad esempio, `%1` riporterà il primo job in background.
-- **%stringa**: Riporta il job che corrisponde alla stringa fornita. Ad esempio, `%myjob` riporterà il job che contiene "myjob" nel suo nome.
+- **%job_id**: Specifica l'ID del lavoro che si desidera riportare in primo piano. Può essere un numero o un nome di lavoro.
+- **-n**: Riporta il lavoro più recente in primo piano senza specificare un ID.
 
 ## Common Examples
 Ecco alcuni esempi pratici dell'uso del comando `fg`:
 
-### Esempio 1: Riportare il primo job in background
-Se hai avviato un processo in background e vuoi riportarlo in primo piano, puoi usare:
+1. Riportare il lavoro più recente in primo piano:
+   ```csh
+   fg
+   ```
 
-```bash
-fg %1
-```
+2. Riportare un lavoro specifico in primo piano utilizzando l'ID del lavoro:
+   ```csh
+   fg %1
+   ```
 
-### Esempio 2: Riportare un job specifico usando il nome
-Se hai un job chiamato "editor" e vuoi riportarlo in primo piano, puoi usare:
-
-```bash
-fg %editor
-```
-
-### Esempio 3: Riportare l'ultimo job in background
-Per riportare l'ultimo job in background, puoi semplicemente usare:
-
-```bash
-fg
-```
+3. Se hai più lavori in background e vuoi riportare il secondo lavoro in primo piano:
+   ```csh
+   fg %2
+   ```
 
 ## Tips
-- Assicurati di controllare i job in background usando il comando `jobs` prima di utilizzare `fg`, per sapere quali processi sono disponibili.
-- Se un processo non risponde come previsto, potrebbe essere necessario utilizzare `Ctrl + Z` per sospenderlo prima di riportarlo in primo piano con `fg`.
-- Ricorda che `fg` funziona solo con i processi avviati dalla stessa shell. Se un processo è stato avviato in un'altra shell, non sarà possibile riportarlo in primo piano.
+- Assicurati di controllare i lavori in background utilizzando il comando `jobs` prima di usare `fg`, per sapere quali processi sono disponibili.
+- Puoi utilizzare `Ctrl + Z` per mettere un processo in background, e poi usare `fg` per riportarlo in primo piano quando necessario.
+- Ricorda che solo i processi in background possono essere riportati in primo piano; se un processo è già in primo piano, non sarà possibile utilizzare `fg` su di esso.

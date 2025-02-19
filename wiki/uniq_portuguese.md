@@ -1,68 +1,59 @@
-# [Linux] Bash uniq Uso: Remove duplicatas de linhas em um arquivo
+# [Linux] C Shell (csh) uniq Uso: Remove linhas duplicadas de um arquivo
 
 ## Overview
-O comando `uniq` é utilizado para filtrar linhas duplicadas em um arquivo ou na entrada padrão. Ele é frequentemente usado em conjunto com o comando `sort`, pois `uniq` apenas remove duplicatas que estão adjacentes.
+O comando `uniq` é utilizado para filtrar linhas duplicadas em um arquivo ou na entrada padrão. Ele é especialmente útil quando você deseja obter uma lista de entradas únicas a partir de um conjunto de dados.
 
 ## Usage
 A sintaxe básica do comando `uniq` é a seguinte:
 
-```bash
-uniq [opções] [arquivo]
+```
+uniq [opções] [argumentos]
 ```
 
 ## Common Options
 Aqui estão algumas opções comuns do comando `uniq`:
 
 - `-c`: Conta o número de ocorrências de cada linha.
-- `-d`: Exibe apenas as linhas que aparecem mais de uma vez.
-- `-u`: Exibe apenas as linhas que aparecem uma única vez.
+- `-d`: Exibe apenas as linhas duplicadas.
+- `-u`: Exibe apenas as linhas únicas.
 - `-i`: Ignora diferenças entre maiúsculas e minúsculas ao comparar linhas.
 
 ## Common Examples
 
-### Exemplo 1: Remover duplicatas de um arquivo
-Para remover linhas duplicadas de um arquivo chamado `exemplo.txt`:
+### Exemplo 1: Remover linhas duplicadas
+Para remover linhas duplicadas de um arquivo chamado `arquivo.txt`, você pode usar:
 
-```bash
-uniq exemplo.txt
+```csh
+uniq arquivo.txt
 ```
 
-### Exemplo 2: Contar ocorrências de cada linha
-Para contar quantas vezes cada linha aparece em `exemplo.txt`:
+### Exemplo 2: Contar ocorrências de linhas
+Para contar quantas vezes cada linha aparece em `arquivo.txt`, use:
 
-```bash
-uniq -c exemplo.txt
+```csh
+uniq -c arquivo.txt
 ```
 
 ### Exemplo 3: Exibir apenas linhas duplicadas
-Para mostrar apenas as linhas que aparecem mais de uma vez:
+Para mostrar apenas as linhas que aparecem mais de uma vez em `arquivo.txt`, execute:
 
-```bash
-uniq -d exemplo.txt
+```csh
+uniq -d arquivo.txt
 ```
 
-### Exemplo 4: Ignorar maiúsculas e minúsculas
-Para remover duplicatas ignorando diferenças de caixa:
+### Exemplo 4: Ignorar diferenças de maiúsculas e minúsculas
+Para remover duplicatas ignorando a capitalização, utilize:
 
-```bash
-uniq -i exemplo.txt
+```csh
+uniq -i arquivo.txt
 ```
 
 ## Tips
-- Sempre use `sort` antes de `uniq` se você não tiver certeza de que as linhas duplicadas estão adjacentes. Por exemplo:
-  
-  ```bash
-  sort exemplo.txt | uniq
-  ```
+- Sempre ordene o arquivo antes de usar `uniq`, pois ele só remove duplicatas que estão adjacentes. Você pode usar o comando `sort` para isso.
+- Combine `uniq` com outros comandos, como `sort`, para obter resultados mais eficazes. Por exemplo: 
 
-- Combine `-c` com `sort -n` para listar linhas duplicadas em ordem numérica de frequência:
+```csh
+sort arquivo.txt | uniq
+```
 
-  ```bash
-  sort exemplo.txt | uniq -c | sort -n
-  ```
-
-- Lembre-se de que `uniq` não altera o arquivo original; ele apenas exibe a saída no terminal. Para salvar a saída em um novo arquivo, redirecione a saída:
-
-  ```bash
-  uniq exemplo.txt > resultado.txt
-  ```
+- Use a opção `-c` para ter uma visão clara de quantas vezes cada entrada aparece, o que pode ser útil para análises de dados.

@@ -1,7 +1,7 @@
-# [Linux] Bash parted Penggunaan: Mengelola Partisi Disk
+# [Linux] C Shell (csh) parted Penggunaan: Mengelola partisi disk
 
 ## Overview
-Perintah `parted` adalah alat yang digunakan untuk mengelola partisi pada disk. Dengan `parted`, pengguna dapat membuat, menghapus, dan mengubah ukuran partisi, serta melakukan berbagai operasi lain yang berkaitan dengan manajemen partisi.
+Perintah `parted` digunakan untuk mengelola partisi disk pada sistem operasi berbasis Unix. Dengan `parted`, pengguna dapat membuat, menghapus, dan mengubah ukuran partisi dengan mudah.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `parted`:
@@ -12,7 +12,7 @@ parted [options] [arguments]
 
 ## Common Options
 - `-l`, `--list`: Menampilkan daftar semua disk dan partisi yang ada.
-- `-s`, `--script`: Menjalankan perintah dalam mode skrip tanpa meminta konfirmasi.
+- `-s`, `--script`: Menjalankan perintah tanpa interaksi pengguna.
 - `mkpart`: Membuat partisi baru.
 - `rm`: Menghapus partisi yang ada.
 - `resizepart`: Mengubah ukuran partisi yang ada.
@@ -42,5 +42,5 @@ Berikut adalah beberapa contoh penggunaan `parted`:
 
 ## Tips
 - Selalu cadangkan data penting sebelum melakukan perubahan pada partisi.
-- Gunakan opsi `--script` jika Anda menjalankan `parted` dalam skrip untuk menghindari prompt konfirmasi.
-- Pastikan untuk memeriksa jenis sistem file yang digunakan pada partisi sebelum melakukan operasi yang dapat mempengaruhi data.
+- Gunakan opsi `-s` untuk menjalankan perintah tanpa konfirmasi jika Anda yakin dengan tindakan yang akan diambil.
+- Periksa sistem file pada partisi sebelum mengubah ukuran dengan menggunakan perintah `fsck`.

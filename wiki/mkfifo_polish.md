@@ -1,44 +1,44 @@
-# [Linux] Bash mkfifo użycie: Tworzenie nazwanych potoków
+# [Linux] C Shell (csh) mkfifo: Tworzenie potoków nazwanych
 
 ## Overview
-Polecenie `mkfifo` służy do tworzenia nazwanych potoków (FIFO) w systemie plików. Nazwane potoki umożliwiają komunikację między procesami w systemie operacyjnym, pozwalając na przesyłanie danych w sposób sekwencyjny.
+Polecenie `mkfifo` w C Shell (csh) służy do tworzenia potoków nazwanych, które są specjalnymi plikami używanymi do komunikacji między procesami. Potoki nazwane umożliwiają przesyłanie danych między różnymi programami w systemie operacyjnym.
 
 ## Usage
 Podstawowa składnia polecenia `mkfifo` jest następująca:
 
-```bash
+```csh
 mkfifo [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-m, --mode=MODE` - Ustala uprawnienia dla nowo utworzonego potoku. Można podać tryb w formacie oktalnym (np. `0666`).
-- `--help` - Wyświetla pomoc dotyczącą użycia polecenia.
-- `--version` - Wyświetla wersję polecenia `mkfifo`.
+- `-m` : Umożliwia ustawienie uprawnień dla nowego potoku. Można podać uprawnienia w formacie oktalnym.
+- `--help` : Wyświetla pomoc dotyczącą użycia polecenia.
+- `--version` : Wyświetla wersję polecenia.
 
 ## Common Examples
-1. **Tworzenie prostego potoku:**
-   ```bash
+Oto kilka praktycznych przykładów użycia polecenia `mkfifo`:
+
+1. Tworzenie prostego potoku nazwanego:
+   ```csh
    mkfifo mypipe
    ```
-   To polecenie tworzy nazwany potok o nazwie `mypipe`.
 
-2. **Tworzenie potoku z określonymi uprawnieniami:**
-   ```bash
-   mkfifo -m 0644 mypipe
+2. Tworzenie potoku z określonymi uprawnieniami:
+   ```csh
+   mkfifo -m 644 mypipe
    ```
-   Tworzy potok `mypipe` z uprawnieniami do odczytu i zapisu dla właściciela oraz odczytu dla grupy i innych użytkowników.
 
-3. **Użycie potoku w komunikacji między procesami:**
-   ```bash
-   # W jednym terminalu
-   cat < mypipe
-
-   # W drugim terminalu
-   echo "Hello, World!" > mypipe
+3. Tworzenie potoku w określonym katalogu:
+   ```csh
+   mkfifo /tmp/mypipe
    ```
-   W tym przykładzie, tekst "Hello, World!" jest przesyłany przez potok `mypipe` i wyświetlany w pierwszym terminalu.
+
+4. Sprawdzanie, czy potok został utworzony:
+   ```csh
+   ls -l mypipe
+   ```
 
 ## Tips
-- Upewnij się, że potok jest używany w odpowiednich kontekstach, aby uniknąć zablokowania procesów.
-- Sprawdzaj uprawnienia potoku, aby zapewnić odpowiedni dostęp dla procesów, które będą go używać.
-- Pamiętaj, że potoki są usuwane automatycznie po zamknięciu wszystkich procesów, które z nich korzystają.
+- Upewnij się, że potok jest używany przez dwa różne procesy, aby mogły one komunikować się ze sobą.
+- Po utworzeniu potoku, można go używać jak zwykłego pliku, ale pamiętaj, że odczyt i zapis muszą być zsynchronizowane.
+- Zawsze sprawdzaj uprawnienia potoku, aby upewnić się, że są odpowiednie dla użytkowników, którzy będą go używać.

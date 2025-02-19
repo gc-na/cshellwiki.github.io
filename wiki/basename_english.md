@@ -1,7 +1,7 @@
-# [Linux] Bash basename用法: Extract the filename from a path
+# [Unix] C Shell (csh) basename Uso: Extract the filename from a path
 
 ## Overview
-The `basename` command in Bash is used to extract the filename from a given path. It removes any leading directory components, leaving only the final component, which is typically the file name itself. This is particularly useful when you need to work with just the file name in scripts or command-line operations.
+The `basename` command is used to strip the directory and suffix from file names, leaving only the base file name. This is particularly useful when you need to manipulate or display just the file name without its path or extension.
 
 ## Usage
 The basic syntax of the `basename` command is as follows:
@@ -11,52 +11,58 @@ basename [options] [arguments]
 ```
 
 ## Common Options
-- `-a`: Process all the path components and return all the base names.
-- `-s`: Strip a specified suffix from the filename.
-- `--help`: Display help information about the command.
-- `--version`: Show the version information of the command.
+- `-s, --suffix`: Remove a specified suffix from the file name.
+- `-a, --multiple`: Process multiple files and return their base names.
 
 ## Common Examples
+Here are some practical examples of using the `basename` command:
 
-1. **Extracting a filename from a path:**
+1. **Extracting the base name from a file path:**
+
    ```bash
-   basename /home/user/documents/report.txt
+   basename /usr/local/bin/script.sh
    ```
+
    Output:
    ```
-   report.txt
+   script.sh
    ```
 
-2. **Removing a suffix from a filename:**
+2. **Removing a suffix from a file name:**
+
    ```bash
-   basename /home/user/documents/report.txt .txt
+   basename report.txt .txt
    ```
+
    Output:
    ```
    report
    ```
 
-3. **Processing multiple paths:**
+3. **Processing multiple files:**
+
    ```bash
-   basename -a /home/user/documents/report.txt /home/user/images/photo.jpg
-   ```
-   Output:
-   ```
-   report.txt
-   photo.jpg
+   basename -a /home/user/file1.txt /home/user/file2.txt
    ```
 
-4. **Using with a variable:**
-   ```bash
-   FILE_PATH="/home/user/documents/report.txt"
-   basename "$FILE_PATH"
-   ```
    Output:
    ```
-   report.txt
+   file1.txt
+   file2.txt
+   ```
+
+4. **Using basename with a custom suffix:**
+
+   ```bash
+   basename /var/log/syslog.log .log
+   ```
+
+   Output:
+   ```
+   syslog
    ```
 
 ## Tips
-- Use `basename` in scripts to simplify file handling, especially when you need to manipulate or log file names.
-- Combine `basename` with other commands like `find` or `grep` to streamline file processing tasks.
-- When using the `-s` option, ensure that the suffix you provide matches the end of the filename to avoid unexpected results.
+- Always specify the suffix if you want to remove it; otherwise, `basename` will return the full file name.
+- Use the `-a` option to handle multiple files in a single command, which can save time and effort.
+- Consider using `basename` in scripts where you need to extract file names for logging or processing purposes.

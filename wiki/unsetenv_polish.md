@@ -1,45 +1,40 @@
-# [Linux] Bash unsetenv użycie: Usuwanie zmiennych środowiskowych
+# [Linux] C Shell (csh) unsetenv: Usuwanie zmiennych środowiskowych
 
 ## Overview
-Polecenie `unsetenv` służy do usuwania zmiennych środowiskowych w powłoce. Umożliwia to zwolnienie pamięci zajmowanej przez zmienne, które nie są już potrzebne w danym kontekście.
+Polecenie `unsetenv` w C Shell (csh) służy do usuwania zmiennych środowiskowych. Dzięki temu można zwolnić pamięć lub zresetować ustawienia środowiska w sesji powłoki.
 
 ## Usage
 Podstawowa składnia polecenia `unsetenv` jest następująca:
 
-```bash
+```csh
 unsetenv [nazwa_zmiennej]
 ```
 
 ## Common Options
-Polecenie `unsetenv` nie ma wielu opcji, ale oto kilka, które mogą być przydatne:
-- `-h` lub `--help`: Wyświetla pomoc dotyczącą użycia polecenia.
+Polecenie `unsetenv` nie ma dodatkowych opcji. Jego główną funkcją jest usuwanie zmiennych środowiskowych poprzez podanie ich nazw.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia `unsetenv`:
+Oto kilka praktycznych przykładów użycia polecenia `unsetenv`:
 
 1. Usunięcie pojedynczej zmiennej środowiskowej:
-   ```bash
-   unsetenv MY_VARIABLE
-   ```
 
-2. Usunięcie zmiennej w skrypcie:
-   ```bash
-   #!/bin/bash
-   export MY_VAR="Hello"
-   echo $MY_VAR
-   unsetenv MY_VAR
-   echo $MY_VAR  # To nie wyświetli nic
-   ```
+```csh
+unsetenv MY_VARIABLE
+```
 
-3. Usunięcie zmiennej w sesji terminala:
-   ```bash
-   export PATH="/usr/local/bin:$PATH"
-   echo $PATH
-   unsetenv PATH
-   echo $PATH  # To wyświetli oryginalną wartość PATH
-   ```
+2. Usunięcie zmiennej, która została wcześniej ustawiona:
+
+```csh
+setenv MY_VAR "Hello World"
+unsetenv MY_VAR
+```
+
+3. Sprawdzenie, czy zmienna została usunięta:
+
+```csh
+echo $MY_VAR  # Nie powinno wyświetlać nic
+```
 
 ## Tips
-- Upewnij się, że zmienne, które chcesz usunąć, nie są już potrzebne w dalszej części skryptu lub sesji.
-- Używaj `unsetenv` z rozwagą, aby uniknąć usunięcia kluczowych zmiennych, które mogą wpłynąć na działanie systemu lub aplikacji.
-- Możesz sprawdzić, które zmienne są aktualnie ustawione, używając polecenia `printenv` przed ich usunięciem.
+- Upewnij się, że zmienna, którą chcesz usunąć, nie jest potrzebna w dalszej części sesji, ponieważ `unsetenv` nie przywraca usuniętych zmiennych.
+- Możesz używać `printenv` do wyświetlenia wszystkich zmiennych środowiskowych przed ich usunięciem, aby upewnić się, które z nich chcesz usunąć.

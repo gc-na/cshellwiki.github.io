@@ -1,50 +1,46 @@
-# [Linux] Bash getconf Uso: Retrieve system configuration values
+# [Linux] C Shell (csh) getconf用法: Retrieve system configuration values
 
 ## Overview
-The `getconf` command in Bash is used to retrieve system configuration values and limits. It allows users to query various system parameters, such as the maximum number of open files, the page size, and other system-specific settings.
+The `getconf` command in C Shell (csh) is used to retrieve system configuration values, such as limits and options that are defined in the system's configuration files. This command can be particularly useful for obtaining system-specific information that can affect the behavior of applications.
 
 ## Usage
 The basic syntax of the `getconf` command is as follows:
 
-```bash
+```
 getconf [options] [arguments]
 ```
 
 ## Common Options
-- `-a`: Display all system configuration variables.
-- `variable`: Specify a particular configuration variable to retrieve its value.
+- `-a`: Display all configuration variables.
+- `variable`: Specify the name of the configuration variable you want to retrieve.
 
 ## Common Examples
 
-1. **Get the maximum number of open files:**
-   ```bash
-   getconf OPEN_MAX
-   ```
+### Example 1: Retrieve a specific configuration variable
+To get the maximum length of a filename, you can use:
+```csh
+getconf NAME_MAX /
+```
 
-2. **Retrieve the page size of the system:**
-   ```bash
-   getconf PAGESIZE
-   ```
+### Example 2: List all configuration variables
+To display all available configuration variables, use:
+```csh
+getconf -a
+```
 
-3. **List all available configuration variables:**
-   ```bash
-   getconf -a
-   ```
+### Example 3: Get the page size
+To find out the size of a page in bytes, you can run:
+```csh
+getconf PAGESIZE
+```
 
-4. **Find the maximum length of a hostname:**
-   ```bash
-   getconf HOST_NAME_MAX
-   ```
-
-5. **Check the maximum number of processes available for a user:**
-   ```bash
-   getconf CHILD_MAX
-   ```
+### Example 4: Check the maximum number of open files
+To check the maximum number of files that can be opened by a process, use:
+```csh
+getconf OPEN_MAX
+```
 
 ## Tips
-- Use `getconf -a` to quickly view all configuration variables and their values, which can be helpful for troubleshooting or system optimization.
-- Combine `getconf` with other commands like `grep` to filter specific configuration values. For example:
-  ```bash
-  getconf -a | grep MAX
-  ```
-- Remember that the values returned by `getconf` can vary between different systems, so always verify the output in the context of your specific environment.
+- Use `getconf -a` to quickly get an overview of all configuration variables available on your system.
+- When scripting, consider capturing the output of `getconf` into a variable for further processing.
+- Always check the specific variable names available on your system, as they may vary between different Unix-like operating systems.

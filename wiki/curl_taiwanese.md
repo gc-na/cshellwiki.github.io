@@ -1,48 +1,51 @@
-# [Linux] Bash curl 使用法: 用於傳輸數據的工具
+# [台灣] C Shell (csh) curl 使用方式: 用於傳輸數據的命令
 
 ## Overview
-`curl` 是一個用於從網絡上傳輸數據的命令行工具。它支持多種協議，包括 HTTP、HTTPS、FTP 等，並且可以用於發送請求和接收響應，廣泛應用於 API 測試和文件下載。
+curl 是一個用於從或向伺服器傳輸數據的命令行工具。它支持多種協議，包括 HTTP、HTTPS、FTP 等，並且可以用來下載或上傳文件。
 
 ## Usage
 基本語法如下：
-```
+```csh
 curl [options] [arguments]
 ```
 
 ## Common Options
-- `-X, --request <command>`: 指定要使用的 HTTP 方法，例如 GET、POST。
-- `-d, --data <data>`: 發送數據，通常用於 POST 請求。
-- `-H, --header <header>`: 添加自定義的 HTTP 標頭。
-- `-o, --output <file>`: 將響應內容寫入指定的文件。
-- `-I, --head`: 只獲取 HTTP 標頭，不下載內容。
+- `-O`：將下載的文件保存為原始文件名。
+- `-L`：自動跟隨重定向。
+- `-u`：用於提供用戶名和密碼，格式為 `username:password`。
+- `-d`：用於發送 POST 請求的數據。
+- `-I`：僅獲取 HTTP 標頭。
 
 ## Common Examples
-1. **發送 GET 請求**
-   ```bash
-   curl https://api.example.com/data
+以下是一些常見的使用範例：
+
+1. 下載一個文件並保存為原始文件名：
+   ```csh
+   curl -O https://example.com/file.zip
    ```
 
-2. **發送 POST 請求**
-   ```bash
-   curl -X POST -d "name=John&age=30" https://api.example.com/users
+2. 自動跟隨重定向並下載文件：
+   ```csh
+   curl -L -O https://example.com/redirected-file.zip
    ```
 
-3. **添加自定義標頭**
-   ```bash
-   curl -H "Authorization: Bearer token" https://api.example.com/protected
+3. 使用用戶名和密碼進行身份驗證：
+   ```csh
+   curl -u username:password https://example.com/protected
    ```
 
-4. **下載文件**
-   ```bash
-   curl -o myfile.zip https://example.com/file.zip
+4. 發送 POST 請求並附加數據：
+   ```csh
+   curl -d "param1=value1&param2=value2" https://example.com/submit
    ```
 
-5. **獲取 HTTP 標頭**
-   ```bash
-   curl -I https://api.example.com
+5. 獲取 HTTP 標頭而不下載內容：
+   ```csh
+   curl -I https://example.com
    ```
 
 ## Tips
-- 使用 `-L` 選項來自動跟隨重定向。
-- 結合 `-o` 和 `-L` 可以方便地下載重定向的文件。
-- 使用 `-v` 選項可以查看詳細的請求和響應過程，對於調試非常有幫助。
+- 使用 `-O` 選項時，確保你有適當的權限來保存文件。
+- 當需要處理重定向時，記得使用 `-L` 選項。
+- 對於需要身份驗證的請求，使用 `-u` 提供用戶名和密碼。
+- 測試 API 時，可以使用 `-d` 選項來發送 JSON 數據，並搭配 `-H "Content-Type: application/json"` 指定內容類型。

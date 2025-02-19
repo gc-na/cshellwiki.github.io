@@ -1,48 +1,49 @@
-# [Linux] Bash colrm Usage: Remove Columns from Input
+# [Unix] C Shell (csh) colrm用法: Remove columns from text
 
 ## Overview
-The `colrm` command is a utility in Unix-like operating systems that allows users to remove specific columns from input text. This can be particularly useful for formatting output or cleaning up data for further processing.
+The `colrm` command in C Shell (csh) is used to remove specific columns from text input. This can be particularly useful when you want to format or clean up text data by eliminating unnecessary information.
 
 ## Usage
 The basic syntax of the `colrm` command is as follows:
 
-```bash
+```
 colrm [start_column] [end_column]
 ```
 
-Where `start_column` is the first column to remove and `end_column` is the last column to remove. If only `start_column` is specified, all columns from that point onward will be removed.
-
 ## Common Options
-- `-` : When used, it indicates that the columns should be removed from the start of the line to the specified column.
-- `--help` : Displays help information about the command and its options.
+- `start_column`: The first column number to remove (inclusive).
+- `end_column`: The last column number to remove (inclusive). If this is omitted, `colrm` will remove all columns from the start column to the end of the line.
 
 ## Common Examples
 
-1. **Remove Columns from a File**
-   To remove columns 5 to 10 from a file named `data.txt`, you can use:
-   ```bash
+1. **Removing columns from a file:**
+   To remove columns 5 to 10 from a file named `data.txt`, you would use:
+   ```csh
    colrm 5 10 < data.txt
    ```
 
-2. **Remove Columns from Standard Input**
-   If you want to remove the first 3 columns from a command's output, you can pipe it into `colrm`:
-   ```bash
-   ls -l | colrm 1 3
+2. **Removing a single column:**
+   If you want to remove only column 3 from the input, you can do:
+   ```csh
+   colrm 3 < data.txt
    ```
 
-3. **Remove Columns from a String**
-   You can also echo a string and remove specific columns:
-   ```bash
-   echo "Hello World from Bash" | colrm 7 11
+3. **Removing columns from standard input:**
+   You can also pipe input to `colrm`. For example, to remove columns 1 to 4 from the output of the `ls` command:
+   ```csh
+   ls -l | colrm 1 4
    ```
 
-4. **Remove Columns from a CSV File**
-   To remove the first column from a CSV file:
-   ```bash
-   colrm 1 1 < file.csv
+4. **Removing columns from a command output:**
+   To remove columns 2 to 5 from the output of the `ps` command:
+   ```csh
+   ps aux | colrm 2 5
    ```
 
 ## Tips
-- Always test your command with a small dataset to ensure it behaves as expected before applying it to larger files.
-- Use `cat` or `less` to view the content of files before processing them with `colrm` to determine which columns you want to remove.
-- Combine `colrm` with other commands like `grep` or `awk` for more complex data processing tasks.
+- Always double-check the column numbers you intend to remove, as they are inclusive and can lead to unexpected results if miscalculated.
+- You can use `cat` to view the contents of a file before applying `colrm` to ensure you're removing the correct columns.
+- Consider redirecting the output to a new file if you want to keep the original data intact:
+  ```csh
+  colrm 5 10 < data.txt > cleaned_data.txt
+  ```

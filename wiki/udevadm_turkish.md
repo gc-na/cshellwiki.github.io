@@ -1,54 +1,49 @@
-# [Linux] Bash udevadm Kullanımı: Donanım olaylarını yönetme aracı
+# [Linux] C Shell (csh) udevadm Kullanımı: Aygıt yönetimi ve sorgulama aracı
 
 ## Genel Bakış
-`udevadm`, Linux sistemlerinde donanım olaylarını yönetmek için kullanılan bir komuttur. Bu komut, udev hizmetiyle etkileşimde bulunarak cihazların tanınması, yönetilmesi ve yapılandırılması süreçlerini kolaylaştırır.
+`udevadm`, Linux sistemlerinde aygıt yönetimi ve sorgulama işlemleri için kullanılan bir komuttur. Bu komut, aygıtların durumunu kontrol etmek, aygıt bilgilerini görüntülemek ve udev kurallarını yönetmek için kullanılır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
 
-```bash
+```
 udevadm [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `info`: Belirtilen bir cihaz hakkında bilgi gösterir.
-- `trigger`: Udev kurallarını tetikler ve cihazları yeniden tarar.
-- `settle`: Cihazların tamamının kurulumunun tamamlanmasını bekler.
-- `control`: Udev hizmetinin durumunu kontrol eder.
-- `monitor`: Donanım olaylarını gerçek zamanlı olarak izler.
+- `info`: Belirtilen aygıt hakkında bilgi gösterir.
+- `trigger`: Udev olaylarını tetikler.
+- `settle`: Tüm udev olaylarının tamamlanmasını bekler.
+- `control`: Udev daemon'unu kontrol eder.
 
 ## Yaygın Örnekler
 Aşağıda `udevadm` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-### Cihaz Bilgisi Alma
-Belirli bir cihaz hakkında bilgi almak için:
-
+### Aygıt Bilgisi Alma
+Belirli bir aygıtın bilgilerini görüntülemek için:
 ```bash
 udevadm info --query=all --name=/dev/sda
 ```
 
-### Cihaz Olaylarını İzleme
-Donanım olaylarını gerçek zamanlı olarak izlemek için:
-
-```bash
-udevadm monitor
-```
-
-### Udev Kurallarını Tetikleme
-Tüm cihazların kurallarını yeniden tetiklemek için:
-
+### Aygıt Olaylarını Tetikleme
+Tüm aygıt olaylarını tetiklemek için:
 ```bash
 udevadm trigger
 ```
 
-### Cihazların Kurulumunu Bekleme
-Cihazların kurulumunun tamamlanmasını beklemek için:
-
+### Udev Olaylarının Tamamlanmasını Bekleme
+Tüm udev olaylarının tamamlanmasını beklemek için:
 ```bash
 udevadm settle
 ```
 
+### Udev Daemon'unu Kontrol Etme
+Udev daemon'unun durumunu kontrol etmek için:
+```bash
+udevadm control --reload-rules
+```
+
 ## İpuçları
-- `udevadm monitor` komutunu kullanarak, sistemdeki donanım değişikliklerini anlık olarak izleyebilirsiniz.
-- Cihaz bilgilerini alırken, `--query=all` seçeneği ile daha fazla detay elde edebilirsiniz.
-- Udev kurallarınızı test ederken `trigger` seçeneğini kullanarak, değişikliklerin hemen etkili olup olmadığını kontrol edebilirsiniz.
+- `udevadm info` komutunu kullanarak aygıtların detaylı bilgilerini alabilir ve sorun giderme işlemlerini kolaylaştırabilirsiniz.
+- Udev kurallarını değiştirdikten sonra `udevadm control --reload-rules` komutunu kullanarak değişikliklerin etkili olmasını sağlayın.
+- Aygıtların durumunu düzenli olarak kontrol etmek, sistem yönetimi açısından faydalıdır.

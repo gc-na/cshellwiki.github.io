@@ -1,59 +1,67 @@
-# [Linux] Bash test uso: Evaluar expresiones y condiciones
+# [Linux] C Shell (csh) test uso: Comprobar expresiones condicionales
 
 ## Overview
-El comando `test` en Bash se utiliza para evaluar expresiones y condiciones. Permite comprobar el estado de archivos, comparar cadenas y realizar evaluaciones numéricas. Es una herramienta fundamental en scripts para tomar decisiones basadas en condiciones.
+El comando `test` en C Shell (csh) se utiliza para evaluar expresiones condicionales. Permite verificar condiciones como la existencia de archivos, la comparación de cadenas y la evaluación de números. Es una herramienta fundamental para el control de flujo en scripts.
 
 ## Usage
 La sintaxis básica del comando `test` es la siguiente:
 
-```bash
+```
 test [opciones] [argumentos]
 ```
 
 ## Common Options
 - `-e archivo`: Verifica si el archivo existe.
-- `-f archivo`: Comprueba si el archivo es un archivo regular.
-- `-d directorio`: Verifica si el directorio existe.
+- `-d archivo`: Comprueba si el archivo es un directorio.
+- `-f archivo`: Verifica si el archivo es un archivo regular.
 - `-z cadena`: Comprueba si la longitud de la cadena es cero.
 - `-n cadena`: Verifica si la longitud de la cadena es mayor que cero.
-- `==`: Compara dos cadenas para ver si son iguales.
-- `-lt`: Compara si un número es menor que otro.
-- `-gt`: Compara si un número es mayor que otro.
+- `cadena1 = cadena2`: Compara dos cadenas para ver si son iguales.
+- `num1 -eq num2`: Compara dos números para ver si son iguales.
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso del comando `test`:
 
-1. **Verificar si un archivo existe:**
-   ```bash
-   test -e archivo.txt && echo "El archivo existe."
-   ```
+### Verificar si un archivo existe
+```csh
+if ( `test -e archivo.txt` ) then
+    echo "El archivo existe."
+else
+    echo "El archivo no existe."
+endif
+```
 
-2. **Comprobar si una cadena está vacía:**
-   ```bash
-   cadena=""
-   test -z "$cadena" && echo "La cadena está vacía."
-   ```
+### Comprobar si es un directorio
+```csh
+if ( `test -d /ruta/al/directorio` ) then
+    echo "Es un directorio."
+else
+    echo "No es un directorio."
+endif
+```
 
-3. **Comparar dos números:**
-   ```bash
-   num1=5
-   num2=10
-   test $num1 -lt $num2 && echo "$num1 es menor que $num2."
-   ```
+### Comparar cadenas
+```csh
+set cadena1 = "hola"
+set cadena2 = "hola"
+if ( `test $cadena1 = $cadena2` ) then
+    echo "Las cadenas son iguales."
+else
+    echo "Las cadenas son diferentes."
+endif
+```
 
-4. **Verificar si un directorio existe:**
-   ```bash
-   test -d /ruta/al/directorio && echo "El directorio existe."
-   ```
-
-5. **Comprobar si dos cadenas son iguales:**
-   ```bash
-   cadena1="hola"
-   cadena2="hola"
-   test "$cadena1" == "$cadena2" && echo "Las cadenas son iguales."
-   ```
+### Verificar longitud de una cadena
+```csh
+set cadena = ""
+if ( `test -z $cadena` ) then
+    echo "La cadena está vacía."
+else
+    echo "La cadena no está vacía."
+endif
+```
 
 ## Tips
-- Utiliza `[[ ... ]]` en lugar de `test` para una sintaxis más moderna y flexible en Bash.
-- Agrupa condiciones con `&&` y `||` para crear evaluaciones más complejas.
-- Recuerda siempre usar comillas alrededor de las variables para evitar problemas con espacios en blanco.
+- Utiliza siempre comillas alrededor de las variables para evitar errores en caso de que contengan espacios.
+- Recuerda que el comando `test` puede ser reemplazado por el operador `[` en muchas situaciones, lo que puede hacer que el código sea más legible.
+- Es recomendable usar paréntesis para agrupar condiciones complejas y evitar confusiones en la evaluación.

@@ -1,57 +1,55 @@
-# [Linux] Bash ulimit Nutzung: Begrenzung von Ressourcen für Prozesse
+# [Linux] C Shell (csh) ulimit Nutzung: Begrenzung von Ressourcen
 
 ## Übersicht
-Der Befehl `ulimit` wird in der Bash verwendet, um die Ressourcenlimits für Prozesse festzulegen oder anzuzeigen. Dies hilft, die Systemressourcen zu verwalten und zu verhindern, dass ein einzelner Prozess übermäßig viele Ressourcen verbraucht.
+Der Befehl `ulimit` wird in der C Shell (csh) verwendet, um die Ressourcenlimits für die aktuelle Shell-Sitzung festzulegen oder anzuzeigen. Dies kann nützlich sein, um die Systemressourcen zu steuern und zu verhindern, dass ein einzelner Prozess zu viele Ressourcen verbraucht.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```csh
 ulimit [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
 - `-a`: Zeigt alle aktuellen Limits an.
-- `-c`: Legt die maximale Größe von Core-Dumps fest.
-- `-d`: Legt die maximale Größe des Datenbereichs fest.
-- `-f`: Legt die maximale Größe von Dateien fest, die ein Prozess erstellen kann.
-- `-l`: Legt die maximale Größe von gelocktem Speicher fest.
-- `-m`: Legt die maximale Größe des physischen Speichers fest.
-- `-n`: Legt die maximale Anzahl von offenen Dateien fest.
-- `-s`: Legt die maximale Größe des Stapels fest.
-- `-t`: Legt die maximale CPU-Zeit in Sekunden fest.
-- `-v`: Legt die maximale Größe des virtuellen Speichers fest.
+- `-c`: Setzt das Limit für die Größe von Core-Dumps.
+- `-d`: Setzt das Limit für die Größe des Datensegments.
+- `-f`: Setzt das Limit für die maximale Dateigröße.
+- `-l`: Setzt das Limit für die Größe des gelockten Speichers.
+- `-m`: Setzt das Limit für die Größe des physischen Speichers.
+- `-s`: Setzt das Limit für die Größe des Stack-Speichers.
+- `-t`: Setzt das Limit für die maximale CPU-Zeit in Sekunden.
+- `-v`: Setzt das Limit für die maximale virtuelle Speichergröße.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele zur Verwendung von `ulimit`:
+Hier sind einige praktische Beispiele für die Verwendung von `ulimit`:
 
 1. **Alle aktuellen Limits anzeigen:**
-   ```bash
+   ```csh
    ulimit -a
    ```
 
-2. **Maximale Anzahl von offenen Dateien auf 1024 setzen:**
-   ```bash
-   ulimit -n 1024
+2. **Limit für die maximale Dateigröße auf 100 MB setzen:**
+   ```csh
+   ulimit -f 102400
    ```
 
-3. **Maximale Größe von Core-Dumps auf 0 setzen (keine Dumps):**
-   ```bash
-   ulimit -c 0
-   ```
-
-4. **Maximale CPU-Zeit auf 60 Sekunden setzen:**
-   ```bash
+3. **Limit für die maximale CPU-Zeit auf 60 Sekunden setzen:**
+   ```csh
    ulimit -t 60
    ```
 
-5. **Maximale Größe des Datenbereichs auf 1 GB setzen:**
-   ```bash
-   ulimit -d 1048576  # Größe in KB
+4. **Limit für die Größe des Stack-Speichers auf 8 MB setzen:**
+   ```csh
+   ulimit -s 8192
+   ```
+
+5. **Limit für die Größe von Core-Dumps auf 0 setzen (keine Core-Dumps erlauben):**
+   ```csh
+   ulimit -c 0
    ```
 
 ## Tipps
-- Überprüfen Sie die aktuellen Limits mit `ulimit -a`, bevor Sie Änderungen vornehmen.
-- Setzen Sie Limits in Skripten, um sicherzustellen, dass sie für alle Prozesse gelten, die aus dem Skript gestartet werden.
+- Überprüfen Sie regelmäßig die aktuellen Limits mit `ulimit -a`, um sicherzustellen, dass Ihre Einstellungen optimal sind.
 - Seien Sie vorsichtig beim Erhöhen von Limits, da dies zu einer Überlastung des Systems führen kann.
-- Nutzen Sie `ulimit` in Kombination mit anderen Befehlen, um die Systemstabilität zu verbessern.
+- Nutzen Sie `ulimit` in Skripten, um sicherzustellen, dass die Ressourcenlimits für alle Prozesse, die aus dem Skript gestartet werden, festgelegt sind.

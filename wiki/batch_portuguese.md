@@ -1,48 +1,41 @@
-# [Linux] Bash batch uso equivalente: Executar comandos em segundo plano
+# [Linux] C Shell (csh) batch uso: Executa comandos em segundo plano
 
 ## Overview
-O comando `batch` é utilizado para agendar a execução de comandos em segundo plano, permitindo que tarefas sejam executadas quando o sistema estiver ocioso. Isso é especialmente útil para processos que demandam muitos recursos e que podem ser executados sem a necessidade de interação do usuário.
+O comando `batch` no C Shell (csh) é utilizado para agendar a execução de comandos ou scripts em segundo plano, permitindo que eles sejam executados quando o sistema estiver ocioso. Isso é útil para tarefas que podem levar muito tempo e que não precisam de interação imediata.
 
 ## Usage
 A sintaxe básica do comando `batch` é a seguinte:
 
-```bash
+```
 batch [opções] [argumentos]
 ```
 
 ## Common Options
-- `-f`: Especifica um arquivo que contém os comandos a serem executados.
-- `-q`: Executa o comando em modo silencioso, sem exibir mensagens.
-- `-l`: Exibe a lista de comandos agendados.
+Aqui estão algumas opções comuns que podem ser usadas com o comando `batch`:
+
+- `-f`: Especifica um arquivo de script a ser executado.
+- `-l`: Permite que o comando seja executado em um ambiente de login.
+- `-n`: Não executa o comando se o sistema não estiver ocioso.
 
 ## Common Examples
-Aqui estão alguns exemplos práticos do uso do comando `batch`:
+Aqui estão alguns exemplos práticos de como usar o comando `batch`:
 
 1. **Executar um comando simples**:
-   Para agendar um comando simples, você pode usar:
-   ```bash
-   echo "comando_a_ser_executado" | batch
+   ```csh
+   echo "echo 'Olá, mundo!'" | batch
    ```
 
-2. **Executar um script**:
-   Se você tiver um script que deseja executar, pode fazer assim:
-   ```bash
+2. **Executar um script de shell**:
+   ```csh
    batch < meu_script.sh
    ```
 
-3. **Usar um arquivo de comandos**:
-   Para executar vários comandos a partir de um arquivo:
-   ```bash
-   batch -f comandos.txt
-   ```
-
-4. **Verificar comandos agendados**:
-   Para listar os comandos que estão agendados para execução:
-   ```bash
-   atq
+3. **Agendar um comando com opções**:
+   ```csh
+   batch -f meu_script.sh
    ```
 
 ## Tips
-- Sempre verifique se o comando que você está agendando não requer interação, pois o `batch` não permite interação do usuário.
-- Utilize scripts para agrupar comandos relacionados, facilitando a manutenção e a execução.
-- Consulte o manual do `batch` usando `man batch` para mais opções e detalhes sobre o comando.
+- Sempre verifique se o comando ou script que você está agendando não requer interação do usuário, pois isso pode causar falhas na execução.
+- Utilize o comando `atq` para listar os trabalhos agendados e `atrm` para remover trabalhos se necessário.
+- Teste seus scripts em um ambiente controlado antes de agendá-los para evitar erros inesperados.

@@ -1,50 +1,45 @@
-# [Linux] Bash split uso: Divide arquivos em partes menores
+# [Linux] C Shell (csh) split Uso: Dividir arquivos em partes menores
 
 ## Overview
-O comando `split` é utilizado no Bash para dividir arquivos grandes em partes menores. Essa funcionalidade é útil quando se deseja manipular ou transferir arquivos que são muito grandes para serem tratados de uma só vez.
+O comando `split` é utilizado para dividir arquivos grandes em partes menores, facilitando o manuseio e a transferência. Ele é especialmente útil quando se trabalha com arquivos que excedem limites de tamanho ou quando se deseja dividir dados para processamento em paralelo.
 
 ## Usage
 A sintaxe básica do comando `split` é a seguinte:
 
-```bash
+```csh
 split [opções] [arquivo] [prefixo]
 ```
 
 ## Common Options
-Aqui estão algumas opções comuns do comando `split`:
-
-- `-b, --bytes=N`: Divide o arquivo em partes de N bytes.
-- `-l, --lines=N`: Divide o arquivo em partes com N linhas.
-- `-d, --numeric-suffixes`: Usa sufixos numéricos em vez de letras para nomear os arquivos resultantes.
-- `-a, --suffix-length=N`: Especifica o comprimento do sufixo dos arquivos de saída.
+- `-b [tamanho]`: Divide o arquivo em partes de um tamanho específico (ex: `-b 1M` para partes de 1 megabyte).
+- `-l [número]`: Divide o arquivo em partes com um número específico de linhas.
+- `-d`: Usa números decimais em vez de letras para nomear os arquivos de saída.
+- `--additional-suffix=[sufixo]`: Adiciona um sufixo aos arquivos divididos.
 
 ## Common Examples
+Aqui estão alguns exemplos práticos do uso do comando `split`:
 
-### Dividir um arquivo em partes de 100 linhas
-```bash
-split -l 100 arquivo.txt parte_
-```
-Esse comando divide `arquivo.txt` em arquivos menores com 100 linhas cada, nomeando-os com o prefixo `parte_`.
+1. **Dividir um arquivo em partes de 100 linhas cada:**
+   ```csh
+   split -l 100 arquivo.txt
+   ```
 
-### Dividir um arquivo em partes de 1MB
-```bash
-split -b 1M arquivo_grande.txt parte_
-```
-Aqui, `arquivo_grande.txt` é dividido em partes de 1 megabyte.
+2. **Dividir um arquivo em partes de 1 megabyte:**
+   ```csh
+   split -b 1M arquivo_grande.txt
+   ```
 
-### Usar sufixos numéricos
-```bash
-split -d -l 50 arquivo.txt parte_
-```
-Esse comando divide `arquivo.txt` em partes de 50 linhas, utilizando sufixos numéricos para os arquivos resultantes.
+3. **Dividir um arquivo e usar números para os nomes dos arquivos de saída:**
+   ```csh
+   split -d -l 50 arquivo.txt parte_
+   ```
 
-### Especificar o comprimento do sufixo
-```bash
-split -a 3 -b 500k arquivo.txt parte_
-```
-Neste exemplo, o arquivo é dividido em partes de 500 kilobytes, e os arquivos resultantes terão sufixos de 3 dígitos.
+4. **Dividir um arquivo e adicionar um sufixo aos arquivos resultantes:**
+   ```csh
+   split --additional-suffix=.txt -l 10 arquivo.txt parte_
+   ```
 
 ## Tips
-- Sempre verifique o tamanho das partes resultantes para garantir que elas atendem às suas necessidades.
-- Use o comando `cat` para juntar as partes novamente, se necessário, por exemplo: `cat parte_* > arquivo_reconstruido.txt`.
-- Considere usar o comando `gzip` em conjunto com `split` para compactar arquivos grandes antes de dividi-los, economizando espaço em disco.
+- Sempre verifique o tamanho e o número de linhas desejados antes de dividir um arquivo para evitar partes muito pequenas ou grandes demais.
+- Use o prefixo para nomear os arquivos de saída de forma que faça sentido para o seu contexto, facilitando a identificação posterior.
+- Considere usar a opção `-d` se você estiver dividindo arquivos muito grandes, pois isso pode ajudar a manter a ordem dos arquivos resultantes.

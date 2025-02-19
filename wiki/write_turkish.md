@@ -1,41 +1,43 @@
-# [Linux] Bash yazma komutu: Kullanıcılarla mesajlaşma
+# [Linux] C Shell (csh) write kullanımı: Mesaj göndermek için bir komut
 
-## Genel Bakış
-`write` komutu, bir terminal oturumundaki kullanıcılarla doğrudan mesajlaşmanızı sağlar. Bu komut, belirli bir kullanıcıya veya tüm kullanıcılara metin göndermenize olanak tanır. Mesajlar, alıcı kullanıcının terminalinde anında görüntülenir.
+## Overview
+`write` komutu, bir kullanıcıdan diğer bir kullanıcıya terminal üzerinden mesaj göndermek için kullanılır. Bu komut, özellikle çoklu kullanıcı sistemlerinde iletişim kurmak için oldukça faydalıdır.
 
-## Kullanım
-Temel sözdizimi şu şekildedir:
+## Usage
+Temel sözdizimi aşağıdaki gibidir:
 
-```bash
+```csh
 write [kullanıcı_adı] [terminal]
 ```
 
-Eğer terminal belirtilmezse, varsayılan terminal kullanılır.
+Burada `kullanıcı_adı`, mesaj göndermek istediğiniz kullanıcının adıdır ve `terminal` ise mesajın gönderileceği terminaldir. Terminal belirtilmezse, varsayılan terminal kullanılır.
 
-## Yaygın Seçenekler
-- `-n`: Kullanıcı adını belirtmeden mesaj gönderir.
-- `-h`: Mesajın hangi terminalde gönderileceğini belirtir.
+## Common Options
+- `-n`: Mesajın gönderileceği terminal numarasını belirtir.
+- `-h`: Kullanıcıya mesajın gönderildiğini bildiren bir başlık gösterir.
 
-## Yaygın Örnekler
+## Common Examples
+Aşağıda `write` komutunun bazı pratik örnekleri bulunmaktadır:
+
 1. Belirli bir kullanıcıya mesaj göndermek:
-   ```bash
-   write ahmet
-   Merhaba Ahmet, nasılsın?
+   ```csh
+   write ali
+   Merhaba Ali, nasılsın?
    ```
 
-2. Kullanıcının terminaline mesaj göndermek için:
-   ```bash
-   write ahmet pts/1
+2. Belirli bir terminaldeki kullanıcıya mesaj göndermek:
+   ```csh
+   write ali pts/1
    Toplantı saat 3'te başlayacak.
    ```
 
-3. Tüm kullanıcılara mesaj göndermek için:
-   ```bash
-   wall
-   Dikkat! Sistem bakımı nedeniyle 10 dakika içinde hizmet kesintisi olacaktır.
+3. Kullanıcıya mesaj göndermeden önce başlık göstermek:
+   ```csh
+   write -h ali
+   Önemli bir duyuru var!
    ```
 
-## İpuçları
-- `write` komutunu kullanmadan önce, alıcı kullanıcının terminalinin açık olduğundan emin olun.
-- Mesaj göndermeden önce, alıcı kullanıcının `mesg` komutunu kullanarak mesaj almayı kabul ettiğinden emin olun.
-- Mesajınızı kısa ve öz tutarak, alıcıyı rahatsız etmemeye çalışın.
+## Tips
+- Mesaj göndermeden önce, alıcının terminalinin açık olduğundan emin olun; aksi takdirde mesaj ulaşmayabilir.
+- `write` komutunu kullanırken, alıcının izinlerini kontrol edin; bazı kullanıcılar mesaj almak istemeyebilir.
+- Mesajınızı kısa ve net tutun, böylece alıcı mesajı kolayca anlayabilir.

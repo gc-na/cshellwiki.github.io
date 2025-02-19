@@ -1,42 +1,44 @@
-# [Linux] Bash cmp cách sử dụng: So sánh nội dung của hai tệp
+# [Hệ điều hành] C Shell (csh) cmp Cách sử dụng: So sánh nội dung của hai tệp
 
-## Tổng quan
-Lệnh `cmp` trong Bash được sử dụng để so sánh nội dung của hai tệp. Nếu hai tệp giống nhau, lệnh sẽ không xuất ra gì. Nếu có sự khác biệt, lệnh sẽ chỉ ra vị trí và loại khác biệt giữa chúng.
+## Overview
+Lệnh `cmp` trong C Shell (csh) được sử dụng để so sánh nội dung của hai tệp. Nó kiểm tra từng byte của hai tệp và xác định xem chúng có giống nhau hay không. Nếu có sự khác biệt, `cmp` sẽ chỉ ra vị trí của byte đầu tiên mà hai tệp khác nhau.
 
-## Cách sử dụng
+## Usage
 Cú pháp cơ bản của lệnh `cmp` như sau:
-```bash
-cmp [tùy chọn] [tệp1] [tệp2]
+
+```csh
+cmp [options] [arguments]
 ```
 
-## Tùy chọn phổ biến
-- `-l`: Hiển thị các byte khác nhau và vị trí của chúng.
-- `-s`: Chỉ kiểm tra xem hai tệp có khác nhau hay không, không xuất ra thông tin chi tiết.
-- `-i`: Bỏ qua số byte đầu tiên khi so sánh.
-- `-n`: Chỉ so sánh số byte nhất định từ đầu tệp.
+## Common Options
+- `-l`: Hiển thị vị trí và giá trị của các byte khác nhau.
+- `-s`: Chỉ thông báo nếu hai tệp khác nhau mà không hiển thị thông tin chi tiết.
+- `-i <n>`: Bỏ qua n byte đầu tiên trong cả hai tệp trước khi so sánh.
 
-## Ví dụ phổ biến
-- So sánh hai tệp:
-```bash
-cmp file1.txt file2.txt
-```
+## Common Examples
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `cmp`:
 
-- So sánh và hiển thị các byte khác nhau:
-```bash
-cmp -l file1.txt file2.txt
-```
+1. So sánh hai tệp và hiển thị vị trí byte khác nhau:
+   ```csh
+   cmp file1.txt file2.txt
+   ```
 
-- Kiểm tra sự khác biệt mà không xuất ra thông tin:
-```bash
-cmp -s file1.txt file2.txt
-```
+2. So sánh hai tệp mà không hiển thị thông tin chi tiết:
+   ```csh
+   cmp -s file1.txt file2.txt
+   ```
 
-- So sánh chỉ 10 byte đầu tiên của hai tệp:
-```bash
-cmp -n 10 file1.txt file2.txt
-```
+3. So sánh hai tệp và hiển thị các byte khác nhau:
+   ```csh
+   cmp -l file1.txt file2.txt
+   ```
 
-## Mẹo
-- Sử dụng tùy chọn `-s` để nhanh chóng kiểm tra xem hai tệp có giống nhau hay không mà không cần thông tin chi tiết.
-- Khi làm việc với các tệp nhị phân, `cmp` là một công cụ hữu ích để phát hiện sự khác biệt mà không cần mở tệp.
-- Kết hợp `cmp` với các lệnh khác như `find` để tự động so sánh nhiều tệp trong một thư mục.
+4. Bỏ qua 10 byte đầu tiên khi so sánh:
+   ```csh
+   cmp -i 10 file1.txt file2.txt
+   ```
+
+## Tips
+- Sử dụng tùy chọn `-s` nếu bạn chỉ cần biết liệu hai tệp có khác nhau hay không mà không cần thông tin chi tiết.
+- Khi làm việc với các tệp lớn, hãy cân nhắc sử dụng tùy chọn `-l` để xác định chính xác vị trí của sự khác biệt.
+- Đảm bảo rằng bạn có quyền truy cập vào cả hai tệp trước khi thực hiện lệnh `cmp` để tránh lỗi.

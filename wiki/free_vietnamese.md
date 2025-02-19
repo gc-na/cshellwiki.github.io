@@ -1,56 +1,53 @@
-# [Linux] Bash free: Kiểm tra bộ nhớ hệ thống
+# [Hệ điều hành] C Shell (csh) free: Kiểm tra bộ nhớ hệ thống
 
-## Overview
-Lệnh `free` trong Bash được sử dụng để hiển thị thông tin về bộ nhớ hệ thống, bao gồm bộ nhớ RAM và swap. Nó cung cấp cái nhìn tổng quan về tình trạng sử dụng bộ nhớ, giúp người dùng theo dõi và quản lý tài nguyên hệ thống hiệu quả hơn.
+## Tổng quan
+Lệnh `free` trong C Shell (csh) được sử dụng để hiển thị thông tin về bộ nhớ hệ thống, bao gồm bộ nhớ khả dụng, bộ nhớ đã sử dụng và bộ nhớ swap. Đây là một công cụ hữu ích để theo dõi tình trạng bộ nhớ của hệ thống.
 
-## Usage
+## Cú pháp
 Cú pháp cơ bản của lệnh `free` như sau:
-```bash
+```
 free [options] [arguments]
 ```
 
-## Common Options
-- `-h`: Hiển thị thông tin với định dạng dễ đọc (sử dụng đơn vị như MB, GB).
+## Các tùy chọn phổ biến
+- `-h`: Hiển thị thông tin bộ nhớ theo định dạng dễ đọc (đơn vị như MB hoặc GB).
 - `-m`: Hiển thị thông tin bộ nhớ theo megabyte.
 - `-g`: Hiển thị thông tin bộ nhớ theo gigabyte.
-- `-s <seconds>`: Cập nhật thông tin sau mỗi khoảng thời gian xác định (tính bằng giây).
-- `-t`: Hiển thị tổng bộ nhớ (bao gồm cả bộ nhớ swap).
+- `-s [seconds]`: Cập nhật thông tin bộ nhớ sau mỗi khoảng thời gian xác định (tính bằng giây).
+- `-t`: Hiển thị tổng số bộ nhớ đã sử dụng và khả dụng.
 
-## Common Examples
-- Hiển thị thông tin bộ nhớ cơ bản:
-```bash
-free
-```
+## Ví dụ phổ biến
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `free`:
 
-- Hiển thị thông tin bộ nhớ với định dạng dễ đọc:
-```bash
-free -h
-```
+1. Hiển thị thông tin bộ nhớ mặc định:
+   ```bash
+   free
+   ```
 
-- Hiển thị thông tin bộ nhớ theo megabyte:
-```bash
-free -m
-```
+2. Hiển thị thông tin bộ nhớ theo định dạng dễ đọc:
+   ```bash
+   free -h
+   ```
 
-- Hiển thị thông tin bộ nhớ theo gigabyte:
-```bash
-free -g
-```
+3. Hiển thị thông tin bộ nhớ theo megabyte:
+   ```bash
+   free -m
+   ```
 
-- Cập nhật thông tin bộ nhớ mỗi 5 giây:
-```bash
-free -s 5
-```
+4. Cập nhật thông tin bộ nhớ mỗi 5 giây:
+   ```bash
+   free -s 5
+   ```
 
-- Hiển thị tổng bộ nhớ:
-```bash
-free -t
-```
+5. Hiển thị tổng số bộ nhớ đã sử dụng và khả dụng:
+   ```bash
+   free -t
+   ```
 
-## Tips
+## Mẹo
 - Sử dụng tùy chọn `-h` để dễ dàng đọc thông tin bộ nhớ, đặc biệt khi bạn làm việc với hệ thống có dung lượng lớn.
-- Kết hợp lệnh `free` với lệnh `watch` để theo dõi tình trạng bộ nhớ theo thời gian thực:
-```bash
-watch free -h
-```
-- Kiểm tra thường xuyên tình trạng bộ nhớ để đảm bảo hệ thống hoạt động ổn định và hiệu quả.
+- Kết hợp lệnh `free` với lệnh `watch` để theo dõi liên tục tình trạng bộ nhớ:
+  ```bash
+  watch free -h
+  ```
+- Thường xuyên kiểm tra bộ nhớ để đảm bảo hệ thống hoạt động hiệu quả và tránh tình trạng thiếu bộ nhớ.

@@ -1,50 +1,49 @@
-# [Linux] Bash printf gebruik: Formatteren van uitvoer
+# [Linux] C Shell (csh) printf gebruik: Geformatteerde uitvoer weergeven
 
 ## Overzicht
-De `printf`-opdracht in Bash wordt gebruikt om geformatteerde uitvoer naar de standaarduitvoer te sturen. Het biedt meer controle over de opmaak van de uitvoer dan de standaard `echo`-opdracht, waardoor het ideaal is voor het weergeven van gegevens in een specifieke indeling.
+De `printf`-opdracht in C Shell (csh) wordt gebruikt om geformatteerde uitvoer naar de standaarduitvoer te sturen. Het biedt meer controle over de opmaak van de uitvoer in vergelijking met de `echo`-opdracht.
 
 ## Gebruik
 De basis syntaxis van de `printf`-opdracht is als volgt:
 
-```bash
+```csh
 printf [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
-Hier zijn enkele veelvoorkomende opties voor `printf`:
+## Veelvoorkomende opties
+- `-v`: Hiermee kunt u een variabele toewijzen aan de geformatteerde uitvoer.
+- `-f`: Hiermee kunt u een specifieke opmaak opgeven voor de uitvoer.
+- `-n`: Hiermee wordt de nieuwe regel aan het einde van de uitvoer onderdrukt.
 
-- `-v VAR`: Slaat de uitvoer op in de variabele VAR in plaats van deze naar de standaarduitvoer te sturen.
-- `--help`: Toont een helpbericht met informatie over het gebruik van de opdracht.
-- `--version`: Toont de versie-informatie van de `printf`-opdracht.
+## Veelvoorkomende voorbeelden
 
-## Veelvoorkomende Voorbeelden
+1. **Eenvoudige tekst weergeven:**
+   ```csh
+   printf "Hallo, wereld!\n"
+   ```
 
-### Voorbeeld 1: Eenvoudige tekstuitvoer
-```bash
-printf "Hallo, wereld!\n"
-```
-Dit geeft de tekst "Hallo, wereld!" weer, gevolgd door een nieuwe regel.
+2. **Geformatteerde getallen weergeven:**
+   ```csh
+   printf "De waarde is: %.2f\n" 3.14159
+   ```
 
-### Voorbeeld 2: Geformatteerde getallen
-```bash
-printf "Het getal is: %.2f\n" 3.14159
-```
-Dit toont "Het getal is: 3.14", waarbij het getal op twee decimalen is afgerond.
+3. **Meerdere argumenten:**
+   ```csh
+   printf "Naam: %s, Leeftijd: %d\n" "Jan" 30
+   ```
 
-### Voorbeeld 3: Meerdere argumenten
-```bash
-printf "Naam: %s, Leeftijd: %d\n" "Jan" 30
-```
-Dit geeft "Naam: Jan, Leeftijd: 30" weer, waarbij `%s` staat voor een string en `%d` voor een geheel getal.
+4. **Variabele toewijzen aan uitvoer:**
+   ```csh
+   set resultaat = `printf "Het resultaat is: %d\n" 42`
+   echo $resultaat
+   ```
 
-### Voorbeeld 4: Opslaan in een variabele
-```bash
-printf -v resultaat "De som is: %d" $((5 + 3))
-echo "$resultaat"
-```
-Dit slaat de geformatteerde tekst op in de variabele `resultaat` en toont deze vervolgens.
+5. **Nieuwe regel onderdrukken:**
+   ```csh
+   printf "Dit is een regel zonder nieuwe regel" -n
+   ```
 
 ## Tips
-- Gebruik `\n` om nieuwe regels toe te voegen in je uitvoer.
-- Experimenteer met verschillende formatteringsopties zoals `%s` voor strings, `%d` voor gehele getallen en `%.2f` voor decimale getallen.
-- Houd rekening met de volgorde van argumenten in je formatteerstring; deze moeten overeenkomen met de volgorde van de opgegeven waarden.
+- Gebruik `%.nf` om getallen met een specifieke decimalen weer te geven, waarbij `n` het aantal decimalen is.
+- Vergeet niet om `\n` toe te voegen aan het einde van uw printf-opdrachten om een nieuwe regel te creëren, tenzij u de `-n` optie gebruikt.
+- Test uw printf-opdrachten in een veilige omgeving om de opmaak te controleren voordat u ze in scripts gebruikt.

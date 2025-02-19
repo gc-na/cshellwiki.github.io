@@ -1,48 +1,53 @@
-# [Linux] Bash export uso equivalente: Definindo variáveis de ambiente
+# [Linux] C Shell (csh) export uso: Define variáveis de ambiente
 
 ## Overview
-O comando `export` no Bash é utilizado para definir variáveis de ambiente que podem ser acessadas por processos filhos. Isso é útil para configurar o ambiente de execução de programas e scripts.
+O comando `export` no C Shell (csh) é utilizado para definir variáveis de ambiente que podem ser acessadas por processos filhos. Isso é útil para configurar o ambiente de execução de programas e scripts.
 
 ## Usage
 A sintaxe básica do comando `export` é a seguinte:
 
-```bash
-export [opções] [variável[=valor]]
+```csh
+export [opções] [argumentos]
 ```
 
 ## Common Options
-- `-n`: Remove a variável do ambiente, ou seja, não a exporta mais.
+- `-n`: Remove a variável do ambiente exportado.
 - `-p`: Exibe todas as variáveis de ambiente exportadas.
-- `-f`: Exporta funções em vez de variáveis.
 
 ## Common Examples
 
-1. **Exportar uma variável simples:**
-   ```bash
-   export MY_VAR="Olá, Mundo!"
-   ```
+### Exemplo 1: Exportar uma variável simples
+Para exportar uma variável chamada `MY_VAR` com o valor `hello`, você pode usar:
 
-2. **Verificar a variável exportada:**
-   ```bash
-   echo $MY_VAR
-   ```
+```csh
+set MY_VAR = "hello"
+export MY_VAR
+```
 
-3. **Exportar uma variável e usá-la em um novo shell:**
-   ```bash
-   export PATH="$PATH:/usr/local/bin"
-   ```
+### Exemplo 2: Exportar múltiplas variáveis
+Você pode exportar várias variáveis de uma só vez:
 
-4. **Remover uma variável do ambiente:**
-   ```bash
-   export -n MY_VAR
-   ```
+```csh
+set VAR1 = "value1"
+set VAR2 = "value2"
+export VAR1 VAR2
+```
 
-5. **Listar todas as variáveis exportadas:**
-   ```bash
-   export -p
-   ```
+### Exemplo 3: Verificar variáveis exportadas
+Para listar todas as variáveis de ambiente que foram exportadas, utilize:
+
+```csh
+export -p
+```
+
+### Exemplo 4: Remover uma variável do ambiente
+Para remover uma variável exportada, como `MY_VAR`, você pode fazer:
+
+```csh
+export -n MY_VAR
+```
 
 ## Tips
-- Sempre que você definir uma variável que precisa ser acessada por scripts ou programas filhos, use `export`.
-- Para evitar conflitos de nomes, é uma boa prática prefixar suas variáveis com um identificador único.
-- Lembre-se de que as variáveis exportadas só estarão disponíveis para processos filhos iniciados após a exportação.
+- Sempre verifique se a variável foi exportada corretamente usando `export -p`.
+- Lembre-se de que as variáveis exportadas só estão disponíveis para processos filhos, não para o shell pai.
+- Use nomes de variáveis que sejam descritivos para facilitar a manutenção do seu ambiente.

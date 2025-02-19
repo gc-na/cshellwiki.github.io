@@ -1,51 +1,48 @@
-# [Linux] Bash rev: Invertir líneas de texto
+# [Linux] C Shell (csh) rev: Invertir líneas de texto
 
 ## Overview
-El comando `rev` se utiliza para invertir el orden de los caracteres en cada línea de un archivo o entrada estándar. Es una herramienta sencilla pero útil para manipular texto en la línea de comandos.
+El comando `rev` se utiliza para invertir el orden de los caracteres en cada línea de un archivo o entrada estándar. Es útil para manipular texto y puede ser empleado en diversas tareas de procesamiento de datos.
 
 ## Usage
 La sintaxis básica del comando es la siguiente:
 
-```bash
-rev [opciones] [archivo]
+```csh
+rev [opciones] [argumentos]
 ```
 
 ## Common Options
 - `-o, --output=FILE`: Especifica un archivo de salida donde se guardará el resultado.
-- `-h, --help`: Muestra la ayuda del comando y sale.
+- `-h, --help`: Muestra la ayuda y una lista de opciones disponibles.
 - `-V, --version`: Muestra la versión del comando.
 
 ## Common Examples
+Aquí hay algunos ejemplos prácticos del uso del comando `rev`:
 
-### Invertir texto desde un archivo
-Para invertir el contenido de un archivo llamado `texto.txt`, puedes usar el siguiente comando:
+1. Invertir el contenido de un archivo llamado `texto.txt` y mostrarlo en la terminal:
 
-```bash
-rev texto.txt
-```
+    ```csh
+    rev texto.txt
+    ```
 
-### Invertir texto desde la entrada estándar
-Si deseas invertir texto que introduces manualmente, puedes usar `echo` junto con `rev`:
+2. Invertir el contenido de un archivo y guardarlo en otro archivo llamado `invertido.txt`:
 
-```bash
-echo "Hola Mundo" | rev
-```
+    ```csh
+    rev texto.txt > invertido.txt
+    ```
 
-### Guardar la salida en un archivo
-Para guardar el resultado de la inversión en un nuevo archivo llamado `invertido.txt`, puedes usar la opción `-o`:
+3. Invertir una cadena de texto ingresada directamente desde la línea de comandos:
 
-```bash
-rev -o invertido.txt texto.txt
-```
+    ```csh
+    echo "Hola Mundo" | rev
+    ```
 
-### Invertir varias líneas
-Si tienes varias líneas de texto en un archivo y quieres invertir cada línea, simplemente ejecuta:
+4. Invertir el contenido de un archivo y mostrar solo las primeras 5 líneas:
 
-```bash
-rev archivo_multilineas.txt
-```
+    ```csh
+    rev texto.txt | head -n 5
+    ```
 
 ## Tips
-- Utiliza `rev` en combinación con otros comandos de Unix para crear scripts más complejos.
-- Recuerda que `rev` invierte los caracteres de cada línea, no el orden de las líneas en sí.
-- Puedes usar `cat` para visualizar el contenido de un archivo antes de invertirlo, así puedes verificar el resultado más fácilmente.
+- Recuerda que `rev` procesa línea por línea, por lo que cada línea se invertirá de forma independiente.
+- Puedes combinar `rev` con otros comandos de Unix para realizar tareas más complejas, como filtrado o redirección.
+- Asegúrate de tener permisos de lectura en el archivo que deseas invertir, y de escritura en el archivo de salida si lo estás redirigiendo.

@@ -1,59 +1,49 @@
-# [Linux] Bash if Kullanımı: Koşullu ifadeleri değerlendirme
+# [Linux] C Shell (csh) if Kullanımı: Koşullu ifadeleri değerlendirme
 
-## Genel Bakış
-`if` komutu, Bash betiklerinde koşullu ifadeleri değerlendirmek için kullanılır. Belirli bir koşulun doğru olup olmadığını kontrol eder ve buna göre farklı komutlar çalıştırır. Bu, program akışını kontrol etmek için oldukça faydalıdır.
+## Overview
+`if` komutu, belirli bir koşulun doğru olup olmadığını kontrol etmek için kullanılır. Eğer koşul doğruysa, belirli bir komut veya komut grubu çalıştırılır. Bu, programlama ve betik yazımında karar verme mekanizmaları oluşturmak için oldukça yararlıdır.
 
-## Kullanım
+## Usage
 Temel sözdizimi aşağıdaki gibidir:
-```bash
-if [ koşul ]; then
-    # koşul doğruysa çalıştırılacak komutlar
-else
-    # koşul yanlışsa çalıştırılacak komutlar
-fi
+
+```csh
+if (koşul) then
+    komutlar
+endif
 ```
 
-## Yaygın Seçenekler
+## Common Options
 - `-e`: Dosyanın var olup olmadığını kontrol eder.
-- `-f`: Dosyanın bir dosya olup olmadığını kontrol eder.
-- `-d`: Dosyanın bir dizin olup olmadığını kontrol eder.
+- `-d`: Bir dizinin var olup olmadığını kontrol eder.
+- `-f`: Bir dosyanın normal bir dosya olup olmadığını kontrol eder.
 - `-z`: Bir değişkenin boş olup olmadığını kontrol eder.
-- `-gt`: Bir sayının diğerinden büyük olup olmadığını kontrol eder.
-- `-lt`: Bir sayının diğerinden küçük olup olmadığını kontrol eder.
 
-## Yaygın Örnekler
+## Common Examples
+Aşağıda `if` komutunun bazı pratik örnekleri bulunmaktadır:
 
 ### Örnek 1: Dosyanın varlığını kontrol etme
-```bash
-if [ -e "dosya.txt" ]; then
-    echo "Dosya mevcut."
-else
-    echo "Dosya mevcut değil."
-fi
+```csh
+if (-e dosya.txt) then
+    echo "dosya.txt mevcut."
+endif
 ```
 
-### Örnek 2: Bir değişkenin boş olup olmadığını kontrol etme
-```bash
-değişken=""
-if [ -z "$değişken" ]; then
-    echo "Değişken boştur."
-else
-    echo "Değişken doludur."
-fi
+### Örnek 2: Boş bir değişken kontrolü
+```csh
+set myVar = ""
+if ("$myVar" == "") then
+    echo "Değişken boş."
+endif
 ```
 
-### Örnek 3: Sayı karşılaştırması
-```bash
-sayı1=10
-sayı2=20
-if [ $sayı1 -lt $sayı2 ]; then
-    echo "$sayı1, $sayı2'den küçüktür."
-else
-    echo "$sayı1, $sayı2'den büyük veya eşittir."
-fi
+### Örnek 3: Dizin kontrolü
+```csh
+if (-d /home/kullanici) then
+    echo "Kullanıcı dizini mevcut."
+endif
 ```
 
-## İpuçları
-- Koşul ifadelerini yazarken boşluklara dikkat edin; `[` ve `]` arasında boşluk olmalıdır.
-- Birden fazla koşul kontrolü yapmak için `elif` anahtar kelimesini kullanabilirsiniz.
-- Daha karmaşık koşullar için `&&` (ve) ve `||` (veya) operatörlerini kullanarak birden fazla koşulu birleştirebilirsiniz.
+## Tips
+- `if` komutunu kullanırken koşul ifadelerinizi dikkatlice yazın, çünkü yanlış bir ifade beklenmedik sonuçlara yol açabilir.
+- Birden fazla koşulu kontrol etmek için `else if` yapısını kullanabilirsiniz.
+- Koşul ifadelerinizi parantez içinde yazmayı unutmayın; bu, ifadelerin doğru bir şekilde değerlendirilmesini sağlar.

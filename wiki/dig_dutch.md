@@ -1,60 +1,50 @@
-# [Linux] Bash dig gebruik: DNS-query's uitvoeren
+# [Linux] C Shell (csh) dig gebruik: DNS-gegevens opvragen
 
 ## Overzicht
-De `dig` (Domain Information Groper) opdracht is een krachtige tool die wordt gebruikt om DNS-informatie op te vragen. Het stelt gebruikers in staat om gedetailleerde informatie over domeinnamen en hun bijbehorende IP-adressen te verkrijgen, wat nuttig is voor netwerkbeheer en probleemoplossing.
+De `dig` (Domain Information Groper) command is een krachtige tool die wordt gebruikt om DNS-gegevens op te vragen. Het stelt gebruikers in staat om informatie over domeinnamen, IP-adressen en andere DNS-records te verkrijgen.
 
 ## Gebruik
-De basis syntaxis van de `dig` opdracht is als volgt:
+De basis syntaxis van de `dig` command is als volgt:
 
-```bash
+```csh
 dig [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `@server`: Specificeert de DNS-server die moet worden geraadpleegd.
-- `-t type`: Bepaalt het type DNS-record dat moet worden opgevraagd (bijv. A, MX, TXT).
-- `+short`: Geeft een verkorte uitvoer van het resultaat.
-- `+trace`: Volgt de resolutie van het domein stap voor stap.
+- `@server`: Specificeert een DNS-server om de query naar te sturen.
+- `-t type`: Geeft het type DNS-record aan dat je wilt opvragen (bijvoorbeeld A, MX, TXT).
+- `+short`: Geeft een verkorte output van de resultaten.
+- `+trace`: Volgt de resolutie van de naam van de rootservers tot de uiteindelijke DNS-server.
 
 ## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van de `dig` opdracht:
+Hier zijn enkele praktische voorbeelden van het gebruik van de `dig` command:
 
-### Basis A-record opvragen
-Om het A-record van een domein op te vragen, gebruik je:
-
-```bash
+### Voorbeeld 1: Basis A-record opvragen
+```csh
 dig example.com
 ```
 
-### Specifiek type record opvragen
-Om het MX-record van een domein op te vragen, gebruik je:
-
-```bash
+### Voorbeeld 2: Specifiek type record opvragen (MX-record)
+```csh
 dig -t MX example.com
 ```
 
-### Gebruik maken van een specifieke DNS-server
-Om een DNS-query uit te voeren via een specifieke server, bijvoorbeeld Google DNS:
-
-```bash
+### Voorbeeld 3: Resultaten van een specifieke DNS-server opvragen
+```csh
 dig @8.8.8.8 example.com
 ```
 
-### Verkorte uitvoer
-Voor een beknoptere uitvoer van het A-record:
-
-```bash
+### Voorbeeld 4: Verkorte output van een A-record
+```csh
 dig +short example.com
 ```
 
-### Trace van de resolutie
-Om de volledige resolutie van een domein te volgen:
-
-```bash
+### Voorbeeld 5: Volgen van de DNS-resolutie
+```csh
 dig +trace example.com
 ```
 
 ## Tips
-- Gebruik de `+short` optie voor een snellere en eenvoudigere uitvoer, vooral als je alleen het IP-adres nodig hebt.
-- Combineer `dig` met andere commando's zoals `grep` om specifieke informatie uit de uitvoer te filteren.
-- Vergeet niet dat de resultaten van `dig` kunnen variëren afhankelijk van de DNS-server die je gebruikt.
+- Gebruik `+short` voor een snellere en eenvoudigere output, vooral als je alleen het IP-adres of een enkel record nodig hebt.
+- Experimenteer met verschillende recordtypes om een beter begrip te krijgen van de DNS-structuur.
+- Vergeet niet dat sommige DNS-servers mogelijk niet alle recordtypes ondersteunen; gebruik een bekende server zoals Google (8.8.8.8) voor betrouwbare resultaten.

@@ -1,17 +1,17 @@
-# [Linux] Bash rev 反轉字串: 反轉每一行的字元順序
+# [台灣] C Shell (csh) rev 反轉字串: 反轉每一行的字元順序
 
 ## Overview
-`rev` 命令用於反轉每一行的字元順序。這意味著，當你使用這個命令時，輸入的每一行文字都會被顛倒，從而產生一個新的輸出。
+`rev` 命令用於反轉每一行的字元順序。這對於需要查看或處理字串的反向版本的情況非常有用。
 
 ## Usage
 基本語法如下：
-```bash
+```
 rev [options] [arguments]
 ```
 
 ## Common Options
-- `-s` : 只顯示反轉的字串，不顯示原始字串。
-- `-h` : 顯示幫助資訊。
+- `-o <file>`: 將反轉的輸出寫入指定的檔案，而不是標準輸出。
+- `-h`, `--help`: 顯示幫助信息並退出。
 
 ## Common Examples
 以下是一些常見的使用範例：
@@ -27,17 +27,14 @@ rev [options] [arguments]
 
 2. 反轉檔案中的每一行：
    ```bash
-   rev filename.txt
+   rev myfile.txt
    ```
-   這會將 `filename.txt` 檔案中的每一行字串反轉並顯示在終端機上。
 
-3. 將反轉的結果輸出到新檔案：
+3. 將反轉的內容寫入新檔案：
    ```bash
-   rev filename.txt > reversed.txt
+   rev myfile.txt -o reversed.txt
    ```
-   這會將反轉的內容寫入 `reversed.txt` 檔案中。
 
 ## Tips
-- 使用 `rev` 時，確保你的輸入資料是以行為單位的，這樣每一行都能正確反轉。
-- 可以與其他命令結合使用，例如 `cat` 或 `grep`，以處理更複雜的文本流。
-- 若要快速測試，使用 `echo` 命令來檢查 `rev` 的輸出效果。
+- 使用 `rev` 時，確保輸入的檔案格式正確，以避免意外的輸出。
+- 結合其他命令使用，例如 `cat` 或 `grep`，可以更靈活地處理字串。

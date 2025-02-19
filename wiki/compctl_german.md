@@ -1,42 +1,44 @@
-# [Linux] Bash compctl Verwendung: Automatisches Vervollständigen von Befehlen
+# [Unix] C Shell (csh) compctl Verwendung: Automatisches Vervollständigen von Befehlen
 
 ## Übersicht
-Der Befehl `compctl` wird in der Bash-Shell verwendet, um die automatische Vervollständigung von Befehlen und Argumenten zu steuern. Er ermöglicht es Benutzern, die Art und Weise anzupassen, wie die Shell Eingaben vervollständigt, was die Effizienz bei der Arbeit in der Kommandozeile erhöht.
+Der Befehl `compctl` in der C Shell (csh) wird verwendet, um die automatische Vervollständigung von Befehlen zu konfigurieren. Dies ermöglicht es Benutzern, Eingaben effizienter zu machen, indem sie Vorschläge für Befehle und Argumente erhalten, während sie tippen.
 
 ## Verwendung
-Die grundlegende Syntax des Befehls ist wie folgt:
+Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```csh
 compctl [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-d`: Definiert die Vervollständigung für ein bestimmtes Argument.
-- `-k`: Gibt eine Liste von möglichen Vervollständigungen an.
-- `-n`: Legt die Anzahl der Argumente fest, die für die Vervollständigung benötigt werden.
-- `-s`: Aktiviert die Vervollständigung für ein bestimmtes Muster.
+- `-d`: Aktiviert die Vervollständigung für Verzeichnisse.
+- `-f`: Ignoriert die Vervollständigung für Dateien.
+- `-n`: Gibt die Anzahl der zu vervollständigenden Argumente an.
+- `-s`: Aktiviert die Vervollständigung für Shell-Befehle.
 
 ## Häufige Beispiele
 
-### Beispiel 1: Vervollständigung für Dateinamen
-```bash
-compctl -d '*'
-```
-Dieses Beispiel aktiviert die Vervollständigung für alle Dateinamen im aktuellen Verzeichnis.
+1. **Vervollständigung für Verzeichnisse aktivieren:**
+   ```csh
+   compctl -d cd
+   ```
 
-### Beispiel 2: Vervollständigung für benutzerdefinierte Optionen
-```bash
-compctl -k 'option1 option2 option3' meinbefehl
-```
-Hier wird die Vervollständigung für `meinbefehl` auf die Optionen `option1`, `option2` und `option3` beschränkt.
+2. **Vervollständigung für eine benutzerdefinierte Datei aktivieren:**
+   ```csh
+   compctl -f mycommand
+   ```
 
-### Beispiel 3: Vervollständigung basierend auf einem Muster
-```bash
-compctl -s 'muster*' meinbefehl
-```
-In diesem Beispiel wird die Vervollständigung für `meinbefehl` nur für Argumente aktiviert, die mit `muster` beginnen.
+3. **Vervollständigung für mehrere Argumente:**
+   ```csh
+   compctl -n 2 mycommand
+   ```
+
+4. **Vervollständigung für Shell-Befehle aktivieren:**
+   ```csh
+   compctl -s mycommand
+   ```
 
 ## Tipps
-- Nutzen Sie `compctl` in Kombination mit anderen Shell-Funktionen, um die Benutzererfahrung zu verbessern.
-- Testen Sie verschiedene Optionen, um herauszufinden, welche am besten zu Ihrem Arbeitsablauf passen.
-- Dokumentieren Sie Ihre benutzerdefinierten Vervollständigungen, um sie bei Bedarf leicht wiederverwenden zu können.
+- Nutzen Sie `compctl` in Kombination mit anderen Shell-Funktionen, um Ihre Produktivität zu steigern.
+- Testen Sie verschiedene Optionen, um herauszufinden, welche für Ihre Arbeitsweise am besten geeignet sind.
+- Dokumentieren Sie Ihre `compctl`-Einstellungen in Ihrer Shell-Konfigurationsdatei, um sie bei zukünftigen Sitzungen automatisch zu laden.

@@ -1,49 +1,49 @@
-# [Linux] Bash comm uso: confronta file riga per riga
+# [Linux] C Shell (csh) comm utilizzo: confronta file riga per riga
 
 ## Overview
-Il comando `comm` è utilizzato per confrontare due file ordinati riga per riga. Esso produce un output che mostra le righe uniche a ciascun file e le righe comuni.
+Il comando `comm` è utilizzato per confrontare due file ordinati riga per riga. Esso produce un output che mostra le righe uniche a ciascun file e le righe comuni tra di essi.
 
 ## Usage
 La sintassi di base del comando è la seguente:
 
-```bash
-comm [opzioni] [file1] [file2]
+```csh
+comm [options] [file1] [file2]
 ```
 
 ## Common Options
-- `-1`: Sopprime l'output delle righe uniche nel primo file.
-- `-2`: Sopprime l'output delle righe uniche nel secondo file.
-- `-3`: Sopprime l'output delle righe comuni a entrambi i file.
-- `-i`: Ignora la differenza tra maiuscole e minuscole.
+- `-1`: sopprime le righe uniche del primo file.
+- `-2`: sopprime le righe uniche del secondo file.
+- `-3`: sopprime le righe comuni.
+- `-i`: ignora la distinzione tra maiuscole e minuscole.
 
 ## Common Examples
+Ecco alcuni esempi pratici dell'uso del comando `comm`:
 
-### Esempio 1: Confrontare due file
-Per confrontare due file chiamati `file1.txt` e `file2.txt`, usa il seguente comando:
+1. **Confrontare due file e visualizzare tutte le righe:**
 
-```bash
+```csh
 comm file1.txt file2.txt
 ```
 
-### Esempio 2: Mostrare solo righe uniche nel secondo file
-Se vuoi vedere solo le righe che sono uniche a `file2.txt`, puoi usare:
+2. **Mostrare solo le righe uniche del primo file:**
 
-```bash
+```csh
 comm -13 file1.txt file2.txt
 ```
 
-### Esempio 3: Ignorare le maiuscole
-Per confrontare due file ignorando le differenze di maiuscole e minuscole, utilizza l'opzione `-i`:
+3. **Mostrare solo le righe comuni tra i due file:**
 
-```bash
+```csh
+comm -12 file1.txt file2.txt
+```
+
+4. **Confrontare due file ignorando la distinzione tra maiuscole e minuscole:**
+
+```csh
 comm -i file1.txt file2.txt
 ```
 
 ## Tips
-- Assicurati che i file siano ordinati prima di utilizzare `comm`, altrimenti il risultato potrebbe non essere corretto.
-- Puoi utilizzare `sort` per ordinare i file prima di passarli a `comm`, ad esempio:
-
-```bash
-comm <(sort file1.txt) <(sort file2.txt)
-```
-- Usa le opzioni in combinazione per ottenere l'output desiderato in modo più efficiente.
+- Assicurati che i file siano ordinati prima di utilizzare `comm`, poiché il comando funziona correttamente solo con file ordinati.
+- Puoi utilizzare `sort` per ordinare i file prima di confrontarli, se necessario.
+- Considera di utilizzare le opzioni `-1`, `-2`, e `-3` in combinazione per personalizzare l'output secondo le tue esigenze.

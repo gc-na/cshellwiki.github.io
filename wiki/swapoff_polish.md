@@ -1,37 +1,37 @@
-# [Linux] Bash swapoff użycie: Dezaktywacja obszaru wymiany
+# [Linux] C Shell (csh) swapoff użycie: Dezaktywacja przestrzeni wymiany
 
 ## Overview
-Polecenie `swapoff` służy do dezaktywacji obszaru wymiany (swap) w systemie Linux. Umożliwia to wyłączenie użycia pamięci wirtualnej, co może być przydatne w przypadku problemów z wydajnością lub podczas konserwacji systemu.
+Polecenie `swapoff` służy do dezaktywacji przestrzeni wymiany (swap) w systemie operacyjnym. Umożliwia to wyłączenie określonego pliku lub partycji swap, co może być przydatne w celu zarządzania pamięcią systemową.
 
 ## Usage
 Podstawowa składnia polecenia `swapoff` jest następująca:
 
-```bash
+```
 swapoff [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-a`, `--all`: Dezaktywuje wszystkie obszary wymiany wymienione w pliku `/etc/fstab`.
-- `-e`, `--exclude`: Wyklucza określony plik lub urządzenie z dezaktywacji.
-- `-h`, `--help`: Wyświetla pomoc dotyczącą użycia polecenia.
+- `-a`: Dezaktywuje wszystkie przestrzenie wymiany wymienione w pliku `/etc/fstab`.
+- `-e`: Ignoruje błędy, które mogą wystąpić podczas dezaktywacji.
+- `-h`: Wyświetla pomoc dotycząca użycia polecenia.
 
 ## Common Examples
-1. Dezaktywacja wszystkich obszarów wymiany:
-   ```bash
-   sudo swapoff -a
+1. Dezaktywacja konkretnego pliku swap:
+   ```csh
+   swapoff /swapfile
    ```
 
-2. Dezaktywacja konkretnego pliku wymiany:
-   ```bash
-   sudo swapoff /swapfile
+2. Dezaktywacja wszystkich przestrzeni wymiany:
+   ```csh
+   swapoff -a
    ```
 
-3. Dezaktywacja obszaru wymiany na urządzeniu:
-   ```bash
-   sudo swapoff /dev/sda2
+3. Dezaktywacja przestrzeni wymiany z ignorowaniem błędów:
+   ```csh
+   swapoff -e /dev/sda2
    ```
 
 ## Tips
-- Używaj `sudo`, aby uzyskać odpowiednie uprawnienia do dezaktywacji obszaru wymiany.
-- Zawsze sprawdzaj status obszaru wymiany po użyciu polecenia `swapoff`, aby upewnić się, że został poprawnie dezaktywowany. Możesz to zrobić za pomocą polecenia `swapon --show`.
-- Pamiętaj, że dezaktywacja obszaru wymiany może wpłynąć na wydajność systemu, zwłaszcza jeśli pamięć RAM jest bliska wyczerpania.
+- Zawsze upewnij się, że masz wystarczającą ilość pamięci RAM przed dezaktywacją przestrzeni wymiany, aby uniknąć problemów z wydajnością.
+- Regularnie monitoruj użycie pamięci i przestrzeni wymiany, aby lepiej zarządzać zasobami systemowymi.
+- Używaj opcji `-h`, aby uzyskać pomoc i więcej informacji na temat dostępnych opcji polecenia.

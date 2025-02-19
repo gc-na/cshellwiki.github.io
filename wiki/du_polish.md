@@ -1,64 +1,43 @@
-# [Linux] Bash du użycie: Sprawdza rozmiar plików i katalogów
+# [Linux] C Shell (csh) du użycie: Sprawdza rozmiar katalogów i plików
 
 ## Overview
-Polecenie `du` (disk usage) służy do oceny rozmiaru plików i katalogów w systemie plików. Umożliwia użytkownikom monitorowanie zajętości dysku i identyfikowanie dużych plików lub katalogów, które mogą zajmować cenne miejsce.
+Polecenie `du` (disk usage) służy do wyświetlania rozmiaru plików i katalogów w systemie plików. Umożliwia użytkownikom zrozumienie, ile miejsca zajmują różne elementy na dysku.
 
 ## Usage
-Podstawowa składnia polecenia `du` wygląda następująco:
+Podstawowa składnia polecenia `du` jest następująca:
 
-```bash
+```csh
 du [opcje] [argumenty]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji dla polecenia `du`:
-
-- `-h` : Wyświetla rozmiary w formacie czytelnym dla ludzi (np. KB, MB).
-- `-s` : Wyświetla tylko całkowity rozmiar dla każdego argumentu, bez szczegółów.
-- `-a` : Wyświetla rozmiary wszystkich plików, a nie tylko katalogów.
-- `-c` : Podsumowuje całkowity rozmiar dla wszystkich argumentów.
-- `--max-depth=N` : Ogranicza głębokość wyświetlania katalogów do N.
+- `-h`: Wyświetla rozmiary w formacie czytelnym dla ludzi (np. KB, MB).
+- `-s`: Podsumowuje rozmiar dla każdego argumentu, zamiast wyświetlać rozmiary dla wszystkich podkatalogów.
+- `-a`: Wyświetla rozmiary dla wszystkich plików, nie tylko dla katalogów.
+- `-c`: Dodaje podsumowanie całkowitego rozmiaru na końcu wyników.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `du`:
+- Aby wyświetlić rozmiar katalogu w formacie czytelnym dla ludzi:
+```csh
+du -h /ścieżka/do/katalogu
+```
 
-1. Sprawdzenie rozmiaru bieżącego katalogu:
+- Aby uzyskać podsumowanie rozmiaru katalogu:
+```csh
+du -sh /ścieżka/do/katalogu
+```
 
-   ```bash
-   du -h
-   ```
+- Aby wyświetlić rozmiary wszystkich plików i katalogów w bieżącym katalogu:
+```csh
+du -ah .
+```
 
-2. Wyświetlenie całkowitego rozmiaru katalogu:
-
-   ```bash
-   du -sh /ścieżka/do/katalogu
-   ```
-
-3. Wyświetlenie rozmiaru wszystkich plików i katalogów w bieżącym katalogu:
-
-   ```bash
-   du -ah
-   ```
-
-4. Ograniczenie wyświetlania do głębokości 1:
-
-   ```bash
-   du -h --max-depth=1
-   ```
-
-5. Podsumowanie całkowitego rozmiaru kilku katalogów:
-
-   ```bash
-   du -ch /ścieżka/do/katalogu1 /ścieżka/do/katalogu2
-   ```
+- Aby uzyskać całkowity rozmiar wszystkich plików i katalogów w bieżącym katalogu:
+```csh
+du -ch .
+```
 
 ## Tips
-- Używaj opcji `-h`, aby uzyskać bardziej zrozumiałe wyniki, zwłaszcza gdy pracujesz z dużymi plikami.
-- Regularnie monitoruj rozmiar katalogów, aby uniknąć problemów z brakiem miejsca na dysku.
-- Możesz użyć `du` w połączeniu z innymi poleceniami, takimi jak `sort`, aby znaleźć największe pliki lub katalogi:
-
-   ```bash
-   du -ah | sort -rh | head -n 10
-   ```
-
-Dzięki tym wskazówkom i przykładom, możesz skutecznie korzystać z polecenia `du` do zarządzania przestrzenią dyskową w swoim systemie.
+- Używaj opcji `-h`, aby łatwiej interpretować wyniki, zwłaszcza w przypadku dużych rozmiarów.
+- Opcja `-s` jest przydatna, gdy chcesz szybko uzyskać ogólny obraz zajętości miejsca bez szczegółowego przeglądania.
+- Regularne monitorowanie rozmiaru katalogów może pomóc w zarządzaniu przestrzenią dyskową i unikaniu problemów z brakiem miejsca.

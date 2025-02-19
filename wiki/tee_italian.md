@@ -1,52 +1,42 @@
-# [Linux] Bash tee utilizzo: Scrivere in più file contemporaneamente
+# [Linux] C Shell (csh) tee utilizzo: Duplica l'output in più file
 
 ## Overview
-Il comando `tee` in Bash è utilizzato per leggere dall'input standard e scrivere simultaneamente l'output su uno o più file, oltre a visualizzarlo sullo schermo. Questo è particolarmente utile quando si desidera salvare l'output di un comando mentre lo si visualizza.
+Il comando `tee` in C Shell (csh) è utilizzato per leggere dall'input standard e scrivere contemporaneamente sia sull'output standard che su uno o più file. Questo è utile quando si desidera visualizzare l'output di un comando e, allo stesso tempo, salvarlo per un uso futuro.
 
 ## Usage
 La sintassi di base del comando `tee` è la seguente:
 
-```bash
+```csh
 tee [options] [arguments]
 ```
 
 ## Common Options
-- `-a`, `--append`: Aggiunge l'output al file esistente invece di sovrascriverlo.
-- `-i`, `--ignore-interrupts`: Ignora i segnali di interruzione.
-- `--help`: Mostra un messaggio di aiuto con le opzioni disponibili.
-- `--version`: Mostra la versione del comando `tee`.
+- `-a`: Aggiunge l'output ai file esistenti invece di sovrascriverli.
+- `-i`: Ignora i segnali di interruzione.
+- `-p`: Stampa l'output su stdout e su file.
 
 ## Common Examples
+Ecco alcuni esempi pratici dell'uso del comando `tee`:
 
-### Esempio 1: Scrivere l'output in un file
-Per scrivere l'output di un comando in un file, puoi utilizzare:
+1. **Scrivere l'output di un comando in un file:**
+   ```csh
+   ls -l | tee file.txt
+   ```
+   Questo comando elenca i file nella directory corrente e scrive l'output nel file `file.txt`.
 
-```bash
-echo "Ciao, mondo!" | tee output.txt
-```
+2. **Aggiungere l'output a un file esistente:**
+   ```csh
+   echo "Nuova riga" | tee -a file.txt
+   ```
+   Qui, la stringa "Nuova riga" viene aggiunta alla fine del file `file.txt`.
 
-### Esempio 2: Aggiungere l'output a un file esistente
-Se desideri aggiungere l'output a un file già esistente, usa l'opzione `-a`:
-
-```bash
-echo "Un'altra riga" | tee -a output.txt
-```
-
-### Esempio 3: Scrivere in più file
-Puoi anche scrivere l'output in più file contemporaneamente:
-
-```bash
-echo "Scrittura in più file" | tee file1.txt file2.txt
-```
-
-### Esempio 4: Combinare con altri comandi
-`tee` può essere utilizzato in combinazione con altri comandi. Ad esempio, per visualizzare l'output di `ls` e salvarlo in un file:
-
-```bash
-ls -l | tee directory_list.txt
-```
+3. **Visualizzare l'output e scriverlo in più file:**
+   ```csh
+   echo "Testo di esempio" | tee file1.txt file2.txt
+   ```
+   Questo comando scrive "Testo di esempio" sia in `file1.txt` che in `file2.txt`, mostrando anche l'output sul terminale.
 
 ## Tips
-- Utilizza l'opzione `-a` se desideri mantenere il contenuto esistente di un file e aggiungere nuove informazioni.
-- Ricorda che `tee` scrive l'output in ordine, quindi l'output visualizzato sullo schermo sarà lo stesso di quello scritto nei file.
-- È utile per il debug, poiché puoi monitorare l'output di un comando mentre lo registri in un file per un'analisi successiva.
+- Utilizza l'opzione `-a` quando desideri mantenere il contenuto esistente di un file e aggiungere nuove informazioni.
+- Ricorda che `tee` può essere utilizzato in pipeline, quindi puoi combinarlo con altri comandi per ottenere output più complessi.
+- Se stai lavorando con file di log, `tee` è molto utile per monitorare l'output in tempo reale mentre lo registri.

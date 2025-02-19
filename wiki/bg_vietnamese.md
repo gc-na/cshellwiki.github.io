@@ -1,42 +1,38 @@
-# [Linux] Bash bg Cách sử dụng: Chuyển tiến trình sang chế độ nền
+# [Hệ điều hành] C Shell (csh) bg: [tiếp tục tiến trình ở nền]
 
 ## Overview
-Lệnh `bg` trong Bash được sử dụng để chuyển một tiến trình đang chạy trong chế độ nền. Khi bạn chạy một lệnh trong chế độ nền, nó sẽ tiếp tục hoạt động mà không chiếm dụng terminal của bạn, cho phép bạn thực hiện các tác vụ khác.
+Lệnh `bg` trong C Shell (csh) được sử dụng để tiếp tục một tiến trình đã bị tạm dừng (suspended) và chạy nó ở chế độ nền. Điều này cho phép người dùng tiếp tục sử dụng dòng lệnh mà không cần phải chờ đợi tiến trình hoàn thành.
 
 ## Usage
 Cú pháp cơ bản của lệnh `bg` như sau:
-```bash
-bg [options] [job_spec]
+```
+bg [options] [arguments]
 ```
 
 ## Common Options
-- `job_spec`: Chỉ định tiến trình mà bạn muốn chuyển sang chế độ nền. Bạn có thể sử dụng số thứ tự của tiến trình hoặc ký hiệu `%` để chỉ định.
-- `-n`: Không gửi thông báo khi tiến trình bắt đầu chạy trong chế độ nền.
+- `job_id`: Chỉ định ID của tiến trình mà bạn muốn tiếp tục. Nếu không chỉ định, `bg` sẽ tiếp tục tiến trình tạm dừng gần nhất.
 
 ## Common Examples
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `bg`:
 
-1. **Chuyển tiến trình gần nhất sang chế độ nền**:
-   ```bash
+1. **Tiếp tục tiến trình gần nhất ở nền**:
+   ```csh
    bg
    ```
 
-2. **Chuyển một tiến trình cụ thể sang chế độ nền**:
-   ```bash
+2. **Tiếp tục một tiến trình cụ thể bằng ID**:
+   ```csh
    bg %1
    ```
 
-3. **Chuyển tiến trình thứ hai sang chế độ nền**:
-   ```bash
-   bg %2
-   ```
-
-4. **Chuyển tiến trình với thông báo**:
-   ```bash
-   bg -n %1
+3. **Tiếp tục tiến trình đã tạm dừng và chạy ở nền**:
+   ```csh
+   sleep 100 &
+   # (Sau đó tạm dừng tiến trình bằng Ctrl+Z)
+   bg %1
    ```
 
 ## Tips
-- Để xem danh sách các tiến trình đang chạy, bạn có thể sử dụng lệnh `jobs`.
-- Nếu bạn muốn dừng một tiến trình trước khi chuyển nó sang chế độ nền, bạn có thể sử dụng lệnh `Ctrl + Z` để tạm dừng tiến trình đó.
-- Hãy chắc chắn rằng bạn đã kiểm tra trạng thái của tiến trình bằng lệnh `jobs` sau khi sử dụng `bg` để đảm bảo rằng nó đã được chuyển thành công sang chế độ nền.
+- Sử dụng lệnh `jobs` để xem danh sách các tiến trình đang chạy và tạm dừng, giúp bạn dễ dàng xác định ID của tiến trình mà bạn muốn tiếp tục.
+- Khi chạy tiến trình ở nền, bạn có thể sử dụng lệnh `fg` để đưa tiến trình đó trở lại chế độ nền nếu cần.
+- Đảm bảo rằng bạn theo dõi các tiến trình chạy ở nền để tránh tiêu tốn tài nguyên hệ thống không cần thiết.

@@ -1,50 +1,46 @@
-# [Linux] Bash who usage : Affiche les utilisateurs connectés
+# [Linux] C Shell (csh) who <Utilisation>: Afficher les utilisateurs connectés
 
 ## Overview
-La commande `who` est utilisée pour afficher une liste des utilisateurs actuellement connectés au système. Elle fournit des informations telles que le nom d'utilisateur, le terminal utilisé, la date et l'heure de connexion, ainsi que d'autres détails pertinents.
+La commande `who` dans C Shell (csh) est utilisée pour afficher une liste des utilisateurs actuellement connectés au système. Elle fournit des informations telles que le nom d'utilisateur, le terminal, la date et l'heure de connexion.
 
 ## Usage
 La syntaxe de base de la commande `who` est la suivante :
 
-```bash
+```
 who [options] [arguments]
 ```
 
 ## Common Options
 Voici quelques options courantes pour la commande `who` :
 
-- `-a` : Affiche toutes les informations disponibles, y compris les utilisateurs connectés et les utilisateurs qui ont quitté.
-- `-b` : Montre la dernière fois que le système a été redémarré.
+- `-b` : Affiche la date et l'heure du dernier démarrage du système.
 - `-q` : Affiche uniquement les noms d'utilisateur et le nombre total d'utilisateurs connectés.
-- `--help` : Affiche l'aide et les options disponibles pour la commande.
+- `-H` : Affiche les en-têtes de colonnes pour les informations affichées.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `who` :
 
 1. Afficher tous les utilisateurs connectés :
-   ```bash
+   ```csh
    who
    ```
 
-2. Afficher toutes les informations, y compris les utilisateurs déconnectés :
-   ```bash
-   who -a
-   ```
-
-3. Afficher la dernière fois que le système a été redémarré :
-   ```bash
+2. Afficher le dernier démarrage du système :
+   ```csh
    who -b
    ```
 
-4. Afficher uniquement les noms d'utilisateur et le nombre total d'utilisateurs connectés :
-   ```bash
+3. Afficher uniquement les noms d'utilisateur et le nombre total d'utilisateurs :
+   ```csh
    who -q
    ```
 
+4. Afficher les utilisateurs avec des en-têtes de colonnes :
+   ```csh
+   who -H
+   ```
+
 ## Tips
-- Utilisez `who -b` pour vérifier rapidement l'état de votre système et savoir quand il a été redémarré pour la dernière fois.
-- Combinez `who` avec d'autres commandes comme `grep` pour filtrer les résultats. Par exemple, pour trouver un utilisateur spécifique :
-  ```bash
-  who | grep nom_utilisateur
-  ```
-- Pensez à utiliser `man who` pour consulter la page de manuel et découvrir d'autres options disponibles.
+- Utilisez `who` sans options pour obtenir rapidement une vue d'ensemble des utilisateurs connectés.
+- Combinez `who` avec d'autres commandes comme `grep` pour filtrer les résultats selon des critères spécifiques.
+- Pensez à utiliser `who -H` si vous souhaitez une sortie plus lisible avec des en-têtes.

@@ -1,62 +1,62 @@
-# [Linux] Bash continue użycie: Kontynuowanie pętli
+# [Linux] C Shell (csh) continue użycie: Wznawia wykonywanie pętli
 
 ## Overview
-Polecenie `continue` w Bashu służy do pomijania bieżącej iteracji pętli i przechodzenia do następnej. Jest to przydatne, gdy chcemy zignorować pewne warunki w trakcie wykonywania pętli.
+Polecenie `continue` w C Shell (csh) służy do pomijania bieżącej iteracji pętli i przechodzenia do następnej. Jest to przydatne, gdy chcemy zignorować określone warunki w trakcie wykonywania pętli.
 
 ## Usage
 Podstawowa składnia polecenia `continue` jest następująca:
 
-```bash
-continue [n]
+```csh
+continue [numer]
 ```
 
-Gdzie `n` to opcjonalny argument, który określa, ile iteracji pętli ma zostać pominiętych.
+Gdzie `numer` jest opcjonalnym argumentem, który określa, która pętla ma być kontynuowana, jeśli zagnieżdżone pętle są używane.
 
 ## Common Options
-- `n`: Liczba, która określa, ile iteracji należy pominąć. Domyślnie jest to 1, co oznacza, że pomijana jest tylko bieżąca iteracja.
+- **numer**: Opcjonalny argument, który wskazuje, która pętla ma być kontynuowana. Domyślnie kontynuuje najbliższą pętlę.
 
 ## Common Examples
 
-### Przykład 1: Pomijanie liczb parzystych
-W tym przykładzie pomijamy wszystkie liczby parzyste w pętli `for`.
+### Przykład 1: Prosta pętla z `continue`
+W tym przykładzie pomijamy liczby parzyste w pętli:
 
-```bash
-for i in {1..10}; do
-    if (( i % 2 == 0 )); then
+```csh
+foreach i (1 2 3 4 5)
+    if ($i % 2 == 0) then
         continue
-    fi
+    endif
     echo $i
-done
+end
+```
+Wynik: 
+```
+1
+3
+5
 ```
 
-### Przykład 2: Pomijanie błędnych danych
-W tym przykładzie pomijamy błędne dane w tablicy.
+### Przykład 2: Zagnieżdżone pętle
+W tym przykładzie używamy `continue` w zagnieżdżonej pętli:
 
-```bash
-data=(1 2 "błąd" 4 5)
-for item in "${data[@]}"; do
-    if [[ $item == "błąd" ]]; then
-        continue
-    fi
-    echo $item
-done
+```csh
+foreach i (1 2)
+    foreach j (1 3)
+        if ($j == 2) then
+            continue 2
+        endif
+        echo "$i $j"
+    end
+end
 ```
-
-### Przykład 3: Użycie z while
-Możemy również użyć `continue` w pętli `while`.
-
-```bash
-count=0
-while [ $count -lt 10 ]; do
-    ((count++))
-    if (( count == 5 )); then
-        continue
-    fi
-    echo $count
-done
+Wynik:
+```
+1 1
+1 3
+2 1
+2 3
 ```
 
 ## Tips
-- Używaj `continue` w pętlach, aby uprościć logikę i uniknąć zagnieżdżonych instrukcji warunkowych.
-- Pamiętaj, że `continue` działa tylko w kontekście pętli, więc upewnij się, że jest używane we właściwym miejscu.
-- Możesz używać argumentu `n`, aby pominąć więcej niż jedną iterację, ale używaj tego ostrożnie, aby nie wprowadzić niezamierzonych błędów w logice pętli.
+- Używaj `continue`, gdy chcesz uprościć logikę pętli, unikając zagnieżdżonych instrukcji warunkowych.
+- Pamiętaj, aby zawsze testować warunki, które mogą prowadzić do wywołania `continue`, aby uniknąć nieoczekiwanych wyników.
+- W przypadku zagnieżdżonych pętli, zawsze określ, do której pętli odnosi się `continue`, używając numeru, aby uniknąć nieporozumień.

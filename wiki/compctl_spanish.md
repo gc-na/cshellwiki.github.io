@@ -1,43 +1,49 @@
-# [Linux] Bash compctl Uso: Configuración de la autocompletación de comandos
+# [Unix] C Shell (csh) compctl: Comando para personalizar la completación de comandos
 
 ## Overview
-El comando `compctl` se utiliza en sistemas operativos basados en Unix para configurar el comportamiento de la autocompletación de comandos en la línea de comandos de Bash. Permite personalizar cómo se completan los comandos y sus argumentos, mejorando así la eficiencia del uso del terminal.
+El comando `compctl` en C Shell (csh) se utiliza para definir y personalizar la forma en que se realiza la completación de comandos. Permite a los usuarios especificar cómo se deben completar los argumentos de los comandos, mejorando así la eficiencia y la experiencia de uso en la línea de comandos.
 
 ## Usage
 La sintaxis básica del comando `compctl` es la siguiente:
 
-```bash
-compctl [opciones] [argumentos]
+```csh
+compctl [options] [arguments]
 ```
 
 ## Common Options
-- `-g`: Define un patrón de coincidencia para la autocompletación.
-- `-k`: Especifica una lista de palabras que se utilizarán para la autocompletación.
-- `-x`: Permite la autocompletación basada en el contexto.
-- `-d`: Desactiva la autocompletación para el comando especificado.
+- `-d`: Define que el argumento a completar es un directorio.
+- `-f`: Indica que el argumento a completar es un archivo.
+- `-n`: Especifica el número de argumentos que se deben completar.
+- `-s`: Permite que se utilice una lista de palabras para la completación.
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso de `compctl`:
 
-### Ejemplo 1: Autocompletar archivos
-```bash
-compctl -g '*.txt' mi_comando
-```
-Este comando configura `mi_comando` para que complete solo archivos con la extensión `.txt`.
+1. **Completar nombres de archivos**:
+   ```csh
+   compctl -f mycommand
+   ```
+   Esto permite que `mycommand` complete automáticamente los nombres de archivos.
 
-### Ejemplo 2: Autocompletar opciones de un comando
-```bash
-compctl -k 'opcion1 opcion2 opcion3' mi_comando
-```
-Con este comando, `mi_comando` tendrá como opciones de autocompletación las palabras `opcion1`, `opcion2` y `opcion3`.
+2. **Completar directorios**:
+   ```csh
+   compctl -d mydircommand
+   ```
+   Con esto, `mydircommand` completará automáticamente los nombres de directorios.
 
-### Ejemplo 3: Autocompletar directorios
-```bash
-compctl -d mi_comando
-```
-Este comando desactiva la autocompletación para `mi_comando`, lo que significa que no se ofrecerán sugerencias al escribirlo.
+3. **Completar múltiples argumentos**:
+   ```csh
+   compctl -n 2 mymultiargcommand
+   ```
+   Este comando permite completar hasta dos argumentos para `mymultiargcommand`.
+
+4. **Usar una lista de palabras para la completación**:
+   ```csh
+   compctl -s "option1 option2 option3" myoptioncommand
+   ```
+   Esto permite que `myoptioncommand` complete con las opciones especificadas.
 
 ## Tips
-- Asegúrate de probar las configuraciones de `compctl` en un entorno seguro antes de aplicarlas en tu terminal principal.
-- Utiliza patrones específicos para limitar la autocompletación a los tipos de archivos que realmente necesitas.
-- Revisa la documentación de tu sistema para ver si hay opciones adicionales que puedan ser útiles para tus necesidades específicas.
+- Siempre prueba tus configuraciones de `compctl` en una sesión de terminal antes de agregarlas a tu archivo de configuración para asegurarte de que funcionan como esperas.
+- Utiliza `compctl` en combinación con otros comandos para mejorar la funcionalidad de la línea de comandos.
+- Mantén una lista de tus configuraciones de `compctl` para facilitar su gestión y modificación en el futuro.

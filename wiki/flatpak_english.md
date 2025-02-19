@@ -1,7 +1,7 @@
-# [Linux] Bash flatpak uso: Manage and run applications in a sandboxed environment
+# [Linux] C Shell (csh) flatpak uso: Manage applications in a sandboxed environment
 
 ## Overview
-The `flatpak` command is a tool used to manage and run applications in a sandboxed environment on Linux systems. It allows users to install, update, and remove applications that are packaged in a way that isolates them from the rest of the system, enhancing security and compatibility.
+The `flatpak` command is a package management tool that allows users to install, manage, and run applications in a sandboxed environment on Linux systems. This ensures that applications are isolated from the rest of the system, enhancing security and compatibility across different distributions.
 
 ## Usage
 The basic syntax of the `flatpak` command is as follows:
@@ -11,59 +11,41 @@ flatpak [options] [arguments]
 ```
 
 ## Common Options
-- `install`: Installs a specified application.
-- `uninstall`: Removes a specified application.
-- `update`: Updates installed applications to their latest versions.
-- `list`: Lists installed applications.
-- `run`: Runs a specified application.
-- `info`: Displays information about a specified application.
+- `install`: Installs a flatpak application from a specified repository.
+- `uninstall`: Removes a flatpak application from the system.
+- `run`: Executes a flatpak application.
+- `list`: Displays a list of installed flatpak applications.
+- `update`: Updates installed flatpak applications to their latest versions.
 
 ## Common Examples
 Here are some practical examples of using the `flatpak` command:
 
-### Install an Application
-To install an application, use the `install` option followed by the application name:
+1. **Install an application**:
+   ```bash
+   flatpak install flathub org.videolan.VLC
+   ```
 
-```bash
-flatpak install flathub org.videolan.VLC
-```
+2. **Uninstall an application**:
+   ```bash
+   flatpak uninstall org.videolan.VLC
+   ```
 
-### Uninstall an Application
-To remove an installed application, use the `uninstall` option:
+3. **Run an application**:
+   ```bash
+   flatpak run org.videolan.VLC
+   ```
 
-```bash
-flatpak uninstall org.videolan.VLC
-```
+4. **List installed applications**:
+   ```bash
+   flatpak list
+   ```
 
-### Update Installed Applications
-To update all installed applications to their latest versions, use the `update` option:
-
-```bash
-flatpak update
-```
-
-### List Installed Applications
-To see a list of all installed applications, use the `list` option:
-
-```bash
-flatpak list
-```
-
-### Run an Application
-To run a specific application, use the `run` option followed by the application name:
-
-```bash
-flatpak run org.videolan.VLC
-```
-
-### Get Information About an Application
-To view detailed information about a specific application, use the `info` option:
-
-```bash
-flatpak info org.videolan.VLC
-```
+5. **Update installed applications**:
+   ```bash
+   flatpak update
+   ```
 
 ## Tips
 - Always check for updates regularly to ensure your applications are secure and up-to-date.
-- Use the `flatpak search [application_name]` command to find applications available for installation.
-- Consider using the `--user` option when installing applications to install them only for your user account, avoiding system-wide changes.
+- Use `flatpak search [application-name]` to find available applications in the repositories.
+- Consider using the `--user` option for installing applications only for the current user, avoiding system-wide changes.

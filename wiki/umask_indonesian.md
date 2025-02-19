@@ -1,52 +1,45 @@
-# [Linux] Bash umask Penggunaan: Mengatur izin file default
+# [Sistem Operasi] C Shell (csh) umask: Mengatur izin file default
 
 ## Overview
-Perintah `umask` digunakan untuk mengatur izin file default yang diberikan kepada file dan direktori baru yang dibuat oleh pengguna. Dengan menggunakan `umask`, Anda dapat menentukan izin yang tidak akan diterapkan pada file dan direktori baru.
+Perintah `umask` digunakan untuk mengatur izin default yang diterapkan pada file dan direktori baru yang dibuat oleh pengguna. Dengan menggunakan `umask`, Anda dapat menentukan izin akses yang akan dibatasi untuk file dan direktori yang baru dibuat.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `umask`:
 
-```bash
+```csh
 umask [options] [arguments]
 ```
 
 ## Common Options
-- `-S`: Menampilkan umask dalam format simbolik.
-- `-p`: Menampilkan umask saat ini dalam format simbolik.
-- `N`: Mengatur umask ke nilai numerik yang ditentukan.
+- `-S` : Menampilkan umask dalam format simbolik.
+- `-p` : Menampilkan nilai umask saat ini.
 
 ## Common Examples
-Berikut adalah beberapa contoh praktis penggunaan perintah `umask`:
+Berikut adalah beberapa contoh penggunaan perintah `umask`:
 
-1. **Menampilkan umask saat ini:**
-   ```bash
+1. **Menampilkan nilai umask saat ini:**
+   ```csh
    umask
    ```
 
-2. **Menampilkan umask dalam format simbolik:**
-   ```bash
+2. **Menampilkan nilai umask dalam format simbolik:**
+   ```csh
    umask -S
    ```
 
-3. **Mengatur umask ke nilai numerik 027:**
-   ```bash
+3. **Mengatur umask untuk membatasi izin file baru:**
+   ```csh
    umask 027
    ```
+   Dalam contoh ini, file baru akan memiliki izin 640 (rw-r-----).
 
-4. **Mengatur umask ke nilai simbolik:**
-   ```bash
-   umask u=rwx,g=rx,o=
+4. **Mengatur umask untuk membatasi izin direktori baru:**
+   ```csh
+   umask 007
    ```
-
-5. **Mengatur umask sementara untuk sesi terminal saat ini:**
-   ```bash
-   umask 002
-   # Buat file baru dan periksa izin
-   touch file_baru.txt
-   ls -l file_baru.txt
-   ```
+   Ini akan memberikan izin 770 (rwxrwx---) untuk direktori baru.
 
 ## Tips
-- Selalu periksa umask Anda sebelum membuat file baru untuk memastikan izin yang tepat.
-- Gunakan umask yang lebih ketat di lingkungan produksi untuk meningkatkan keamanan.
-- Anda dapat menambahkan perintah `umask` ke file konfigurasi shell Anda (seperti `.bashrc` atau `.bash_profile`) untuk mengatur umask secara otomatis saat login.
+- Selalu periksa nilai umask Anda sebelum membuat file atau direktori baru untuk memastikan izin yang sesuai.
+- Gunakan umask yang lebih ketat di lingkungan yang sensitif untuk meningkatkan keamanan.
+- Anda dapat menambahkan perintah `umask` ke dalam file konfigurasi shell Anda (seperti `.cshrc`) untuk menetapkan nilai umask default setiap kali Anda membuka sesi shell baru.

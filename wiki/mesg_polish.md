@@ -1,40 +1,37 @@
-# [Linux] Bash mesg użycie: Kontrola dostępu do wiadomości
+# [Linux] C Shell (csh) mesg <Użycie: kontrola wiadomości od innych użytkowników>
 
 ## Overview
-Polecenie `mesg` służy do kontrolowania, czy inne użytkownicy mogą wysyłać wiadomości do terminala użytkownika. Umożliwia to zarządzanie prywatnością i dostępnością w systemach wieloużytkownikowych.
+Polecenie `mesg` w powłoce C Shell (csh) służy do kontrolowania, czy inne użytkownicy mogą wysyłać wiadomości do Twojego terminala. Umożliwia to zarządzanie prywatnością komunikacji w systemie wieloużytkownikowym.
 
 ## Usage
 Podstawowa składnia polecenia `mesg` jest następująca:
 
-```bash
+```
 mesg [opcje] [argumenty]
 ```
 
 ## Common Options
-- `y` - Zezwala innym użytkownikom na wysyłanie wiadomości do terminala.
+- `y` - Zezwala innym użytkownikom na wysyłanie wiadomości do Twojego terminala.
 - `n` - Blokuje możliwość wysyłania wiadomości przez innych użytkowników.
-- `--help` - Wyświetla pomoc dotyczącą użycia polecenia.
+- `-n` - To samo co `n`, używane w kontekście opcji.
 
 ## Common Examples
 1. **Zezwolenie na wiadomości:**
-   Aby zezwolić innym użytkownikom na wysyłanie wiadomości do twojego terminala, użyj polecenia:
-   ```bash
+   ```csh
    mesg y
    ```
 
-2. **Blokowanie wiadomości:**
-   Aby zablokować możliwość wysyłania wiadomości przez innych użytkowników, użyj polecenia:
-   ```bash
+2. **Zablokowanie wiadomości:**
+   ```csh
    mesg n
    ```
 
 3. **Sprawdzenie aktualnego ustawienia:**
-   Aby sprawdzić, czy zezwolenie na wiadomości jest włączone czy wyłączone, wystarczy wpisać:
-   ```bash
+   ```csh
    mesg
    ```
 
 ## Tips
-- Używaj `mesg n`, gdy pracujesz nad poufnymi informacjami, aby uniknąć zakłóceń.
-- Pamiętaj, że zmiana ustawienia `mesg` dotyczy tylko bieżącej sesji terminala. Po wylogowaniu się lub zamknięciu terminala, ustawienia mogą wrócić do domyślnych wartości.
-- Możesz dodać polecenie `mesg y` do swojego pliku konfiguracyjnego powłoki, aby automatycznie zezwalać na wiadomości przy każdym uruchomieniu terminala.
+- Używaj `mesg n`, gdy chcesz uniknąć zakłóceń podczas pracy w terminalu.
+- Pamiętaj, aby ustawić `mesg y`, gdy chcesz być dostępny dla innych użytkowników, na przykład podczas pracy w zespole.
+- Sprawdzaj swoje ustawienia `mesg` regularnie, aby upewnić się, że odpowiadają Twoim potrzebom komunikacyjnym.

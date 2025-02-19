@@ -1,50 +1,48 @@
-# [台灣] Bash brew 使用說明：管理和安裝軟體包
+# [台灣] C Shell (csh) brew 使用法: 安裝和管理軟體包
 
 ## Overview
-`brew` 是一個包管理工具，主要用於在 macOS 和 Linux 系統上安裝、管理和更新軟體包。它簡化了軟體的安裝過程，讓使用者可以輕鬆地獲取和管理各種開源應用程式。
+`brew` 命令是用來安裝和管理 macOS 上的軟體包的工具。它可以輕鬆地從命令行安裝、更新和刪除應用程式及其依賴項。
 
 ## Usage
 基本語法如下：
-```bash
+```
 brew [options] [arguments]
 ```
 
 ## Common Options
-- `install`：安裝指定的軟體包。
-- `uninstall`：卸載指定的軟體包。
-- `update`：更新 Homebrew 自身及其所有已安裝的包。
-- `upgrade`：升級已安裝的軟體包到最新版本。
-- `list`：列出所有已安裝的軟體包。
+- `install`: 安裝指定的軟體包。
+- `uninstall`: 移除指定的軟體包。
+- `update`: 更新 Homebrew 本身及其所有已安裝的軟體包。
+- `upgrade`: 升級已安裝的軟體包到最新版本。
+- `list`: 列出所有已安裝的軟體包。
 
 ## Common Examples
-以下是一些常見的 `brew` 使用範例：
+安裝一個軟體包：
+```csh
+brew install wget
+```
 
-1. 安裝一個軟體包：
-   ```bash
-   brew install wget
-   ```
+移除一個軟體包：
+```csh
+brew uninstall wget
+```
 
-2. 卸載一個軟體包：
-   ```bash
-   brew uninstall wget
-   ```
+更新 Homebrew：
+```csh
+brew update
+```
 
-3. 更新 Homebrew 和所有已安裝的包：
-   ```bash
-   brew update
-   ```
+升級所有已安裝的軟體包：
+```csh
+brew upgrade
+```
 
-4. 升級所有已安裝的軟體包：
-   ```bash
-   brew upgrade
-   ```
-
-5. 列出所有已安裝的軟體包：
-   ```bash
-   brew list
-   ```
+列出所有已安裝的軟體包：
+```csh
+brew list
+```
 
 ## Tips
-- 定期執行 `brew update` 和 `brew upgrade` 以確保你的軟體包保持最新。
+- 定期執行 `brew update` 以確保你的 Homebrew 和所有軟體包都是最新的。
 - 使用 `brew search [package_name]` 可以快速查找可用的軟體包。
-- 如果遇到問題，可以使用 `brew doctor` 來檢查你的 Homebrew 安裝是否正常。
+- 在安裝大型軟體包時，考慮使用 `--quiet` 選項來減少輸出信息。

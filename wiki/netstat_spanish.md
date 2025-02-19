@@ -1,12 +1,12 @@
-# [Linux] Bash netstat Uso: Muestra conexiones de red y estadísticas
+# [Linux] C Shell (csh) netstat uso: Muestra conexiones de red y estadísticas
 
 ## Overview
-El comando `netstat` es una herramienta de red que permite visualizar las conexiones de red activas, las tablas de enrutamiento, las interfaces de red y las estadísticas de protocolo. Es útil para diagnosticar problemas de red y monitorizar el estado de las conexiones.
+El comando `netstat` se utiliza para mostrar las conexiones de red, las tablas de enrutamiento y una serie de estadísticas de red. Es una herramienta útil para diagnosticar problemas de red y para obtener información sobre el estado de las conexiones en un sistema.
 
 ## Usage
-La sintaxis básica del comando `netstat` es la siguiente:
+La sintaxis básica del comando es la siguiente:
 
-```bash
+```
 netstat [opciones] [argumentos]
 ```
 
@@ -14,47 +14,39 @@ netstat [opciones] [argumentos]
 - `-a`: Muestra todas las conexiones y puertos de escucha.
 - `-t`: Muestra solo las conexiones TCP.
 - `-u`: Muestra solo las conexiones UDP.
-- `-n`: Muestra las direcciones y números de puerto en formato numérico.
-- `-l`: Muestra solo los puertos que están en estado de escucha.
-- `-p`: Muestra el identificador del proceso (PID) y el nombre del programa que está utilizando la conexión.
+- `-n`: Muestra direcciones y números de puerto en formato numérico.
+- `-r`: Muestra la tabla de enrutamiento.
+- `-s`: Muestra estadísticas por protocolo.
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso de `netstat`:
 
 1. **Mostrar todas las conexiones y puertos de escucha:**
-   ```bash
+   ```csh
    netstat -a
    ```
 
-2. **Mostrar solo conexiones TCP:**
-   ```bash
+2. **Mostrar solo las conexiones TCP:**
+   ```csh
    netstat -t
    ```
 
-3. **Mostrar conexiones UDP:**
-   ```bash
-   netstat -u
+3. **Mostrar conexiones UDP en formato numérico:**
+   ```csh
+   netstat -u -n
    ```
 
-4. **Mostrar conexiones en formato numérico:**
-   ```bash
-   netstat -n
+4. **Mostrar la tabla de enrutamiento:**
+   ```csh
+   netstat -r
    ```
 
-5. **Mostrar puertos en estado de escucha:**
-   ```bash
-   netstat -l
-   ```
-
-6. **Mostrar conexiones junto con el PID del proceso:**
-   ```bash
-   netstat -p
+5. **Mostrar estadísticas por protocolo:**
+   ```csh
+   netstat -s
    ```
 
 ## Tips
-- Combina opciones para obtener información más específica. Por ejemplo, `netstat -tuln` muestra todas las conexiones TCP y UDP en estado de escucha en formato numérico.
-- Usa `netstat` junto con otros comandos como `grep` para filtrar resultados. Por ejemplo:
-  ```bash
-  netstat -tuln | grep 80
-  ```
-- Recuerda que en algunos sistemas, puede que necesites permisos de superusuario para ver información detallada sobre los procesos.
+- Utiliza la opción `-n` para acelerar la salida, ya que evita la resolución de nombres de host.
+- Combina opciones para obtener información más específica, por ejemplo, `netstat -at` para ver solo las conexiones TCP activas.
+- Revisa regularmente las conexiones de red para detectar actividad inusual que pueda indicar problemas de seguridad.

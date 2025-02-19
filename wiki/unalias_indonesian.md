@@ -1,40 +1,43 @@
-# [Linux] Bash unalias Penggunaan: Menghapus alias yang telah ditentukan
+# [Sistem Operasi] C Shell (csh) unalias: Menghapus alias yang telah ditentukan
 
 ## Overview
-Perintah `unalias` digunakan untuk menghapus alias yang telah ditentukan sebelumnya dalam sesi terminal Bash. Alias adalah nama pendek yang digunakan untuk menggantikan perintah yang lebih panjang atau kompleks. Dengan menggunakan `unalias`, pengguna dapat menghapus alias yang tidak lagi diperlukan.
+Perintah `unalias` dalam C Shell (csh) digunakan untuk menghapus alias yang telah ditentukan sebelumnya. Alias adalah nama pendek yang digunakan untuk menggantikan perintah yang lebih panjang atau kompleks. Dengan menggunakan `unalias`, pengguna dapat menghapus alias yang tidak lagi diperlukan.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `unalias`:
 
-```bash
+```
 unalias [options] [arguments]
 ```
 
 ## Common Options
 - `-a`: Menghapus semua alias yang telah ditentukan.
-- `-p`: Menampilkan semua alias yang saat ini aktif.
+- `-h`: Menampilkan bantuan tentang penggunaan `unalias`.
 
 ## Common Examples
 
-1. **Menghapus alias tertentu**
-   Jika Anda memiliki alias bernama `ll` yang merujuk pada `ls -l`, Anda dapat menghapusnya dengan perintah berikut:
-   ```bash
-   unalias ll
-   ```
+### Menghapus alias tertentu
+Misalkan Anda memiliki alias bernama `ll` yang mengarah ke `ls -l`, Anda dapat menghapusnya dengan perintah berikut:
 
-2. **Menghapus semua alias**
-   Untuk menghapus semua alias yang telah ditentukan dalam sesi terminal, gunakan opsi `-a`:
-   ```bash
-   unalias -a
-   ```
+```csh
+unalias ll
+```
 
-3. **Menampilkan semua alias**
-   Untuk melihat semua alias yang aktif sebelum menghapusnya, gunakan opsi `-p`:
-   ```bash
-   unalias -p
-   ```
+### Menghapus semua alias
+Jika Anda ingin menghapus semua alias yang telah ditentukan dalam sesi saat ini, gunakan opsi `-a`:
+
+```csh
+unalias -a
+```
+
+### Menampilkan bantuan
+Jika Anda memerlukan informasi lebih lanjut tentang penggunaan `unalias`, Anda dapat menggunakan opsi `-h`:
+
+```csh
+unalias -h
+```
 
 ## Tips
-- Selalu periksa alias yang ada sebelum menghapusnya untuk menghindari kehilangan perintah yang mungkin masih Anda butuhkan.
-- Gunakan `unalias -a` dengan hati-hati, karena ini akan menghapus semua alias tanpa konfirmasi.
-- Jika Anda ingin menghapus alias secara permanen, pastikan untuk menghapusnya dari file konfigurasi seperti `.bashrc` atau `.bash_profile`.
+- Pastikan untuk memeriksa alias yang ada sebelum menghapusnya untuk menghindari kehilangan perintah yang berguna.
+- Gunakan `alias` untuk melihat daftar alias yang saat ini aktif dalam sesi Anda.
+- Pertimbangkan untuk menyimpan alias yang sering digunakan dalam file konfigurasi, sehingga Anda dapat mengaturnya kembali jika perlu.

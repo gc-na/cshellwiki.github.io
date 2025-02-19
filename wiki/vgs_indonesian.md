@@ -1,50 +1,44 @@
-# [Linux] Bash vgs Penggunaan: Menampilkan ringkasan volume grup
+# [Sistem Operasi] C Shell (csh) vgs Penggunaan: Menampilkan informasi grup volume
 
 ## Overview
-Perintah `vgs` digunakan untuk menampilkan informasi ringkasan tentang volume grup dalam sistem manajemen volume logis (LVM). Dengan perintah ini, pengguna dapat melihat status dan atribut dari volume grup yang ada di sistem.
+Perintah `vgs` digunakan untuk menampilkan informasi tentang grup volume dalam sistem manajemen volume logis (LVM). Ini memberikan ringkasan tentang status grup volume, termasuk ukuran, jumlah volume logis, dan informasi lainnya yang relevan.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `vgs`:
 
-```bash
+```csh
 vgs [options] [arguments]
 ```
 
 ## Common Options
-- `-o, --options`: Menentukan kolom mana yang akan ditampilkan.
-- `-h, --noheadings`: Menyembunyikan header kolom dalam output.
-- `-s, --units`: Menentukan satuan yang digunakan untuk ukuran (misalnya, k, m, g).
-- `-a, --all`: Menampilkan semua volume grup, termasuk yang tidak aktif.
+- `-o`: Menentukan kolom mana yang akan ditampilkan.
+- `-a`: Menampilkan semua grup volume, termasuk yang tidak aktif.
+- `--units`: Mengatur satuan ukuran yang ditampilkan (misalnya, MB, GB).
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `vgs`:
 
-1. Menampilkan ringkasan volume grup yang ada:
-   ```bash
+1. Menampilkan informasi dasar tentang grup volume:
+   ```csh
    vgs
    ```
 
-2. Menampilkan informasi dengan kolom tertentu (misalnya, nama dan ukuran):
-   ```bash
-   vgs -o vg_name,vg_size
+2. Menampilkan informasi dengan kolom tertentu:
+   ```csh
+   vgs -o vg_name,lv_count,vg_size
    ```
 
-3. Menampilkan output tanpa header kolom:
-   ```bash
-   vgs -h
-   ```
-
-4. Menampilkan semua volume grup, termasuk yang tidak aktif:
-   ```bash
+3. Menampilkan semua grup volume, termasuk yang tidak aktif:
+   ```csh
    vgs -a
    ```
 
-5. Menampilkan ukuran dalam satuan gigabyte:
-   ```bash
-   vgs -s g
+4. Menampilkan informasi dengan satuan ukuran tertentu:
+   ```csh
+   vgs --units g
    ```
 
 ## Tips
-- Gunakan opsi `-o` untuk menyesuaikan output agar hanya menampilkan informasi yang relevan bagi Anda.
-- Jika Anda sering menggunakan `vgs`, pertimbangkan untuk membuat alias di file konfigurasi shell Anda untuk mempercepat akses.
-- Periksa status volume grup secara berkala untuk memastikan tidak ada masalah yang muncul, terutama sebelum melakukan operasi penting pada volume.
+- Gunakan opsi `-o` untuk menyesuaikan output sesuai kebutuhan Anda, sehingga hanya informasi yang relevan yang ditampilkan.
+- Periksa status grup volume secara berkala untuk memastikan tidak ada masalah dengan penyimpanan Anda.
+- Jika Anda bekerja dengan banyak grup volume, pertimbangkan untuk menggunakan skrip untuk mengotomatiskan pemeriksaan status.

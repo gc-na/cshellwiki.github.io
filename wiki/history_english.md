@@ -1,50 +1,49 @@
-# [Linux] Bash history Uso: View command history
+# [Linux] C Shell (csh) history 命令: View command history
 
 ## Overview
-The `history` command in Bash is used to display the list of commands that have been executed in the current shell session. This feature is particularly useful for recalling previous commands without needing to retype them, making it easier to manage and navigate your command-line tasks.
+The `history` command in C Shell (csh) is used to display a list of previously executed commands in the current shell session. This allows users to easily recall and reuse commands without having to retype them.
 
 ## Usage
 The basic syntax of the `history` command is as follows:
 
-```bash
+```csh
 history [options] [arguments]
 ```
 
 ## Common Options
-- `-c`: Clear the entire command history.
-- `-d offset`: Delete the history entry at the specified offset.
-- `n`: Display the last `n` commands from the history list.
-- `!n`: Execute the command at the specified history number `n`.
+- `-c`: Clear the history list.
+- `-n`: Read the history from the history file and append it to the current history list.
+- `-r`: Read the history from the history file and replace the current history list.
+- `-w`: Write the current history list to the history file.
 
 ## Common Examples
-Here are some practical examples of using the `history` command:
 
-1. **Display the entire command history:**
-   ```bash
+1. **Display the command history:**
+   ```csh
    history
    ```
 
-2. **Display the last 10 commands:**
-   ```bash
-   history 10
-   ```
-
-3. **Execute a specific command from history (e.g., command number 5):**
-   ```bash
-   !5
-   ```
-
-4. **Clear the command history:**
-   ```bash
+2. **Clear the command history:**
+   ```csh
    history -c
    ```
 
-5. **Delete a specific entry from history (e.g., entry number 3):**
-   ```bash
-   history -d 3
+3. **Read history from the history file:**
+   ```csh
+   history -r
+   ```
+
+4. **Write the current history to the history file:**
+   ```csh
+   history -w
+   ```
+
+5. **Display the last 10 commands:**
+   ```csh
+   history 10
    ```
 
 ## Tips
-- Use the `Ctrl + R` shortcut to search through your command history interactively.
-- To quickly repeat the last command, you can use `!!`.
-- Consider using `history > filename.txt` to save your command history to a file for future reference.
+- Use `!n` to execute the command at position `n` in the history list.
+- To quickly repeat the last command, simply type `!!`.
+- Consider using `history -w` regularly to save your command history, especially before closing the terminal.

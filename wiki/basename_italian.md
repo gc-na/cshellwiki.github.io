@@ -1,52 +1,51 @@
-# [Linux] Bash basename uso equivalente: Estrae il nome di un file da un percorso
+# [Linux] C Shell (csh) basename utilizzo: Estrae il nome di base di un percorso
 
 ## Overview
-Il comando `basename` in Bash è utilizzato per estrarre il nome di un file da un percorso completo. Questo è particolarmente utile quando si desidera ottenere solo il nome del file senza il percorso che lo precede.
+Il comando `basename` in C Shell (csh) viene utilizzato per estrarre il nome di base di un percorso di file, rimuovendo eventuali prefissi di directory e suffissi di estensione. Questo è utile quando si desidera ottenere solo il nome del file senza il percorso completo.
 
 ## Usage
 La sintassi di base del comando `basename` è la seguente:
 
-```bash
+```
 basename [opzioni] [argomenti]
 ```
 
 ## Common Options
 - `-a`: Tratta ogni argomento come un file separato e restituisce il nome di base per ciascuno.
-- `-s`: Rimuove una specifica estensione dal nome del file.
-- `--help`: Mostra un messaggio di aiuto con le opzioni disponibili.
+- `-s`: Specifica un suffisso da rimuovere dal nome di base.
 
 ## Common Examples
 Ecco alcuni esempi pratici dell'uso del comando `basename`:
 
-1. **Estrazione del nome di un file da un percorso**:
-   ```bash
-   basename /percorso/del/file/nomefile.txt
-   ```
-   Output: `nomefile.txt`
-
-2. **Estrazione del nome di un file senza estensione**:
-   ```bash
-   basename /percorso/del/file/nomefile.txt .txt
-   ```
-   Output: `nomefile`
-
-3. **Uso dell'opzione -a per più file**:
-   ```bash
-   basename -a /percorso/del/file/nomefile1.txt /percorso/del/file/nomefile2.txt
+1. Estrarre il nome di base da un percorso completo:
+   ```csh
+   basename /home/utente/documenti/file.txt
    ```
    Output:
    ```
-   nomefile1.txt
-   nomefile2.txt
+   file.txt
    ```
 
-4. **Rimozione di un'estensione specifica**:
-   ```bash
-   basename /percorso/del/file/nomefile.log .log
+2. Rimuovere un suffisso specifico dal nome di base:
+   ```csh
+   basename /home/utente/documenti/file.txt .txt
    ```
-   Output: `nomefile`
+   Output:
+   ```
+   file
+   ```
+
+3. Utilizzare l'opzione `-a` per estrarre nomi di base da più percorsi:
+   ```csh
+   basename -a /home/utente/file1.txt /home/utente/file2.txt
+   ```
+   Output:
+   ```
+   file1.txt
+   file2.txt
+   ```
 
 ## Tips
-- Utilizza `basename` in script per semplificare la gestione dei file e dei loro nomi.
-- Quando usi l'opzione `-s`, assicurati che l'estensione che stai rimuovendo corrisponda esattamente a quella del file.
-- Puoi combinare `basename` con altri comandi come `find` per ottenere risultati più complessi e utili.
+- Utilizza `basename` in script per semplificare la gestione dei file, specialmente quando si lavora con percorsi complessi.
+- Ricorda di specificare il suffisso corretto se desideri rimuoverlo; altrimenti, il nome del file rimarrà invariato.
+- Puoi combinare `basename` con altri comandi di shell per creare pipeline utili per la manipolazione dei file.

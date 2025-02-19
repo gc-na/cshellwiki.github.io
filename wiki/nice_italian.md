@@ -1,44 +1,43 @@
-# [Linux] Bash nice utilizzo: Modifica la priorità dei processi
+# [Linux] C Shell (csh) nice utilizzo: Modifica la priorità di esecuzione dei processi
 
 ## Overview
-Il comando `nice` in Bash viene utilizzato per avviare un processo con una priorità modificata. Questo è utile per gestire l'uso delle risorse del sistema, consentendo di dare più o meno importanza a determinati processi rispetto ad altri.
+Il comando `nice` in C Shell (csh) viene utilizzato per avviare un processo con una priorità di esecuzione modificata. Questo è utile per gestire l'uso delle risorse di sistema, consentendo di dare più o meno importanza a determinati processi.
 
 ## Usage
-La sintassi di base del comando è la seguente:
+La sintassi di base del comando `nice` è la seguente:
 
-```bash
-nice [opzioni] [comando]
+```csh
+nice [opzioni] [argomenti]
 ```
 
 ## Common Options
-- `-n`, `--adjustment`: Specifica il valore di aggiustamento della priorità. Può essere un numero intero da -20 (priorità massima) a 19 (priorità minima).
-- `-h`, `--help`: Mostra un messaggio di aiuto con le opzioni disponibili.
-- `-v`, `--version`: Mostra la versione del comando `nice`.
+- `-n` : Specifica il valore di "nice" da applicare. Può essere un numero da -20 (priorità massima) a 19 (priorità minima).
+- `-h` : Mostra un messaggio di aiuto con le opzioni disponibili.
 
 ## Common Examples
-Ecco alcuni esempi pratici di utilizzo del comando `nice`:
+Ecco alcuni esempi pratici dell'uso del comando `nice`:
 
-1. **Eseguire un comando con priorità normale:**
-   ```bash
-   nice comando
+1. Avviare un processo con priorità normale:
+   ```csh
+   nice myscript.sh
    ```
 
-2. **Eseguire un comando con priorità più bassa:**
-   ```bash
-   nice -n 10 comando
+2. Avviare un processo con una priorità più bassa:
+   ```csh
+   nice -n 10 myscript.sh
    ```
 
-3. **Eseguire un processo con priorità alta:**
-   ```bash
-   nice -n -5 comando
+3. Avviare un processo con priorità alta (meno "nice"):
+   ```csh
+   nice -n -5 myscript.sh
    ```
 
-4. **Controllare la priorità di un processo in esecuzione:**
-   ```bash
-   ps -o pid,ni,cmd
+4. Controllare la priorità di un processo in esecuzione:
+   ```csh
+   ps -o pid,nice,cmd
    ```
 
 ## Tips
-- Utilizza valori negativi per aumentare la priorità di un processo importante, ma fai attenzione a non sovraccaricare il sistema.
-- Controlla sempre la priorità dei processi in esecuzione con `ps` per evitare conflitti di risorse.
-- Ricorda che solo l'utente root può impostare priorità negative. Gli utenti normali possono solo aumentare il valore di nice (ridurre la priorità).
+- Utilizza valori di "nice" più bassi per processi che richiedono più risorse e che devono essere eseguiti rapidamente.
+- Fai attenzione a non impostare una priorità troppo alta per i processi meno importanti, poiché potrebbero rallentare il sistema.
+- Puoi combinare `nice` con altri comandi per gestire meglio i processi in background.

@@ -1,48 +1,46 @@
-# [Linux] Bash csplit Kullanımı: Dosyayı parçalara ayırma
+# [Linux] C Shell (csh) csplit Kullanımı: Dosyayı parçalara ayırma
 
-## Overview
-csplit komutu, bir dosyayı belirli desenlere veya boyutlara göre parçalara ayırmak için kullanılır. Bu, büyük dosyaları daha yönetilebilir parçalara bölmek için oldukça faydalıdır.
+## Genel Bakış
+`csplit` komutu, bir dosyayı belirli desenlere veya satır sayısına göre parçalara ayırmak için kullanılır. Bu, büyük dosyaları yönetilebilir parçalara bölmek için oldukça faydalıdır.
 
-## Usage
+## Kullanım
 Temel sözdizimi şu şekildedir:
+
 ```bash
-csplit [options] [arguments]
+csplit [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `-f <prefix>`: Oluşturulan dosyaların ön ekini belirler.
-- `-n <number>`: Parça numaralarının kaç haneli olacağını ayarlar.
-- `-b <suffix>`: Oluşturulan dosyaların uzantısını belirler.
-- `-k`: Hatalı dosyaları silmeden devam eder.
+## Yaygın Seçenekler
+- `-f` : Parçaların ön ekini belirtir.
+- `-n` : Parça numaralarının uzunluğunu belirtir.
+- `-b` : Parça dosyalarının adlandırma biçimini belirler.
+- `-k` : Hatalı dosyaları atlayarak işlem yapmaya devam eder.
 
-## Common Examples
-Aşağıda csplit komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+## Yaygın Örnekler
+Aşağıda, `csplit` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. **Bir dosyayı belirli bir satır sayısına göre bölme:**
-   ```bash
-   csplit myfile.txt 10
-   ```
-   Bu komut, `myfile.txt` dosyasını her 10 satırda bir parçalara ayırır.
+### Örnek 1: Belirli bir satıra göre bölme
+Bir dosyayı 10. satıra göre parçalara ayırmak için:
 
-2. **Bir dosyayı belirli bir desenle bölme:**
-   ```bash
-   csplit myfile.txt '/pattern/' '{*}'
-   ```
-   Bu komut, `myfile.txt` dosyasını 'pattern' desenine göre bölerek tüm eşleşmeleri bulur.
+```bash
+csplit myfile.txt 10
+```
 
-3. **Özel bir dosya adı ile bölme:**
-   ```bash
-   csplit -f part_ -n 3 myfile.txt 10
-   ```
-   Bu komut, `myfile.txt` dosyasını her 10 satırda bir 'part_000', 'part_001' gibi dosyalara ayırır.
+### Örnek 2: Belirli bir desenle bölme
+Bir dosyayı "START" kelimesinin geçtiği yerden itibaren parçalara ayırmak için:
 
-4. **Hatalı dosyaları silmeden bölme:**
-   ```bash
-   csplit -k myfile.txt '/pattern/' '{*}'
-   ```
-   Bu komut, 'pattern' desenine göre bölme işlemi yaparken, hatalı dosyaları silmeden devam eder.
+```bash
+csplit myfile.txt /START/
+```
 
-## Tips
-- Büyük dosyalarla çalışırken, csplit komutunu kullanmadan önce dosyanızın yedeğini almayı unutmayın.
-- Desen kullanırken, doğru ifadeleri kullandığınızdan emin olun; aksi takdirde beklenmeyen sonuçlar elde edebilirsiniz.
-- Oluşturulan dosyaların adlandırma şemasını iyi planlayarak, dosyalarınızı daha kolay yönetebilirsiniz.
+### Örnek 3: Ön ek ve numara belirleme
+Parçaların ön ekini "part" olarak ayarlayıp, 3 haneli numaralarla adlandırmak için:
+
+```bash
+csplit -f part -n 3 myfile.txt 10
+```
+
+## İpuçları
+- Dosyalarınızı parçalara ayırmadan önce yedek almak iyi bir uygulamadır.
+- Desenleri dikkatlice belirleyin; yanlış bir desen, beklenmeyen sonuçlar doğurabilir.
+- `-k` seçeneğini kullanarak hatalı dosyaları atlayabilir ve işlemi sürdürebilirsiniz.

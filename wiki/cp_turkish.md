@@ -1,22 +1,24 @@
-# [Linux] Bash cp Kullanımı: Dosya ve dizin kopyalama
+# [Linux] C Shell (csh) cp Kullanımı: Dosya kopyalama komutu
 
-## Overview
-`cp` komutu, Linux ve diğer Unix benzeri işletim sistemlerinde dosya ve dizinleri kopyalamak için kullanılır. Bu komut, kaynak dosyayı belirtilen hedef konuma kopyalar.
+## Genel Bakış
+`cp` komutu, bir veya daha fazla dosyayı veya dizini başka bir konuma kopyalamak için kullanılır. Bu komut, dosyaların yedeğini almak veya dosyaları bir yerden başka bir yere taşımak için oldukça faydalıdır.
 
-## Usage
+## Kullanım
 Temel sözdizimi şu şekildedir:
+
 ```
-cp [options] [arguments]
+cp [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `-r`: Dizinleri ve içindeki dosyaları kopyalamak için kullanılır (recursive).
-- `-i`: Hedef dosya mevcutsa kullanıcıdan onay ister (interactive).
-- `-u`: Sadece kaynak dosya hedef dosyadan daha yeni ise kopyalar (update).
-- `-v`: Kopyalama işlemi sırasında hangi dosyaların kopyalandığını gösterir (verbose).
-- `-a`: Dosyaların tüm özelliklerini koruyarak kopyalar (archive).
+## Yaygın Seçenekler
+- `-i`: Hedef dosya zaten varsa, üzerine yazmadan önce onay ister.
+- `-r`: Dizinleri kopyalamak için kullanılır. Alt dizinleri ve dosyaları da kopyalar.
+- `-u`: Sadece kaynak dosya hedef dosyadan daha yeni ise kopyalar.
+- `-v`: Kopyalama işlemi sırasında hangi dosyaların kopyalandığını gösterir.
 
-## Common Examples
+## Yaygın Örnekler
+Aşağıda `cp` komutunun bazı pratik kullanım örnekleri verilmiştir:
+
 1. Basit bir dosya kopyalama:
    ```bash
    cp dosya.txt yedek_dosya.txt
@@ -24,10 +26,10 @@ cp [options] [arguments]
 
 2. Bir dizini ve içindeki tüm dosyaları kopyalama:
    ```bash
-   cp -r dizin_adi/ yedek_dizin/
+   cp -r kaynak_dizin/ hedef_dizin/
    ```
 
-3. Hedef dosya mevcutsa onay istemek:
+3. Hedef dosya zaten varsa onay istemek:
    ```bash
    cp -i dosya.txt yedek_dosya.txt
    ```
@@ -37,12 +39,12 @@ cp [options] [arguments]
    cp -u dosya.txt yedek_dosya.txt
    ```
 
-5. Kopyalama işlemi sırasında detaylı bilgi almak:
+5. Kopyalama işlemi sırasında hangi dosyaların kopyalandığını görmek:
    ```bash
    cp -v dosya.txt yedek_dosya.txt
    ```
 
-## Tips
-- Kopyalama işlemi sırasında dosya izinlerini korumak için `-a` seçeneğini kullanın.
-- Dizin kopyalarken `-r` seçeneğini kullanmayı unutmayın, aksi takdirde yalnızca boş dizin kopyalanır.
-- Dosyaları kopyalamadan önce hedef dizinin mevcut olduğundan emin olun; aksi takdirde hata alırsınız.
+## İpuçları
+- `-r` seçeneğini kullanarak dizinleri kopyalarken, hedef dizinin var olduğundan emin olun ya da `-p` seçeneği ile dosya izinlerini koruyun.
+- Kopyalama işlemi yapmadan önce `ls` komutunu kullanarak hedef dizinin içeriğini kontrol edin.
+- Önemli dosyaları kopyalarken `-i` seçeneğini kullanarak yanlışlıkla üzerine yazmayı önleyin.

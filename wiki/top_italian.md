@@ -1,53 +1,52 @@
-# [Linux] Bash top utilizzo: visualizzare i processi in tempo reale
+# [Linux] C Shell (csh) top uso: Visualizzare i processi in tempo reale
 
 ## Overview
-Il comando `top` è uno strumento di monitoraggio dei processi in tempo reale su sistemi Unix e Linux. Mostra una lista dinamica dei processi in esecuzione, fornendo informazioni dettagliate sull'utilizzo della CPU, della memoria e di altre risorse di sistema.
+Il comando `top` è uno strumento utile per monitorare i processi in esecuzione sul sistema. Fornisce una visualizzazione in tempo reale dell'utilizzo della CPU, della memoria e di altre risorse di sistema, consentendo agli utenti di identificare i processi che consumano più risorse.
 
 ## Usage
 La sintassi di base del comando `top` è la seguente:
 
-```bash
+```
 top [options] [arguments]
 ```
 
 ## Common Options
 Ecco alcune opzioni comuni per il comando `top`:
 
-- `-d <seconds>`: Imposta il tempo di aggiornamento automatico in secondi.
-- `-p <pid>`: Mostra solo il processo con l'ID specificato.
-- `-u <user>`: Filtra i processi per un utente specifico.
-- `-n <number>`: Esegue il comando per un numero specificato di aggiornamenti e poi termina.
+- `-d <seconds>`: Imposta il tempo di aggiornamento in secondi.
+- `-n <number>`: Specifica il numero di aggiornamenti da eseguire prima di uscire.
+- `-u <username>`: Mostra solo i processi appartenenti a un utente specifico.
+- `-p <pid>`: Monitora solo il processo con l'ID specificato.
 
 ## Common Examples
-Ecco alcuni esempi pratici di utilizzo del comando `top`:
+Ecco alcuni esempi pratici dell'uso del comando `top`:
 
-1. **Avviare top senza opzioni**:
+1. Eseguire `top` per visualizzare i processi in tempo reale:
    ```bash
    top
    ```
 
-2. **Aggiornare ogni 2 secondi**:
+2. Eseguire `top` con un aggiornamento ogni 5 secondi:
    ```bash
-   top -d 2
+   top -d 5
    ```
 
-3. **Mostrare solo un processo specifico**:
+3. Limitare la visualizzazione ai processi di un utente specifico:
+   ```bash
+   top -u nome_utente
+   ```
+
+4. Monitorare un processo specifico con l'ID 1234:
    ```bash
    top -p 1234
    ```
 
-4. **Filtrare per utente specifico**:
+5. Eseguire `top` e limitare a 10 aggiornamenti:
    ```bash
-   top -u username
-   ```
-
-5. **Eseguire top per 5 aggiornamenti e poi uscire**:
-   ```bash
-   top -n 5
+   top -n 10
    ```
 
 ## Tips
-- Puoi premere `h` mentre sei in `top` per visualizzare un aiuto interattivo con tutte le scorciatoie da tastiera disponibili.
-- Per ordinare i processi in base all'utilizzo della CPU, puoi premere `Shift + P`.
-- Per ordinare i processi in base all'utilizzo della memoria, puoi premere `Shift + M`.
-- Ricorda che puoi uscire da `top` premendo `q`.
+- Puoi premere `h` mentre sei in `top` per visualizzare un aiuto interattivo sulle scorciatoie da tastiera.
+- Usa `k` per terminare un processo direttamente dalla schermata di `top`, inserendo l'ID del processo.
+- Per ordinare i processi in base all'utilizzo della CPU, puoi premere `Shift + P` mentre sei in `top`.

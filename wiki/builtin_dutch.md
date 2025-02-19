@@ -1,40 +1,37 @@
-# [Linux] Bash builtin commando: [toegang tot ingebouwde commando's]
+# [Linux] C Shell (csh) builtin: [uitvoeren ingebouwde commando's]
 
 ## Overzicht
-Het `builtin` commando in Bash wordt gebruikt om toegang te krijgen tot ingebouwde commando's van de shell. In plaats van externe programma's aan te roepen, stelt `builtin` je in staat om de interne versies van commando's te gebruiken, wat vaak sneller is en minder systeembronnen vereist.
+Het `builtin` commando in C Shell (csh) wordt gebruikt om ingebouwde commando's van de shell uit te voeren. Dit is handig wanneer je een functie wilt aanroepen die al in de shell zelf is gedefinieerd, in plaats van een extern programma.
 
 ## Gebruik
 De basis syntaxis van het `builtin` commando is als volgt:
 
-```bash
-builtin [opties] [argumenten]
+```csh
+builtin [options] [arguments]
 ```
 
-## Veelvoorkomende opties
-- `-f`: Voorkomt dat de functie wordt overschreven door een extern commando.
-- `-p`: Negeert de alias en zoekt naar het commando in de standaard padlocaties.
+## Veelvoorkomende Opties
+- `-c`: Voert een commando uit dat als argument is opgegeven.
+- `-h`: Geeft een korte helptekst weer over het gebruik van het commando.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
 
-### Voorbeeld 1: Gebruik van `builtin` met `echo`
-```bash
-builtin echo "Dit is een ingebouwd commando."
-```
+1. **Voer een ingebouwd commando uit**
+   ```csh
+   builtin echo "Hallo, wereld!"
+   ```
 
-### Voorbeeld 2: Voorkomen dat een alias wordt gebruikt
-Stel dat je een alias hebt voor het `ls` commando, dan kun je het ingebouwde `ls` commando als volgt aanroepen:
-```bash
-alias ls='ls --color=auto'
-builtin ls
-```
+2. **Gebruik met opties**
+   ```csh
+   builtin -c "ls -l"
+   ```
 
-### Voorbeeld 3: Gebruik van `builtin` met `type`
-Je kunt `builtin` gebruiken om te controleren of een commando ingebouwd is:
-```bash
-builtin type echo
-```
+3. **Toon hulp voor een specifiek commando**
+   ```csh
+   builtin -h
+   ```
 
 ## Tips
-- Gebruik `builtin` wanneer je zeker wilt zijn dat je de interne versie van een commando gebruikt, vooral als er een alias of functie met dezelfde naam bestaat.
-- Het gebruik van `builtin` kan de prestaties verbeteren in scripts waar snelheid cruciaal is.
-- Controleer altijd of een commando ingebouwd is met `type` voordat je `builtin` gebruikt, om verwarring te voorkomen.
+- Gebruik `builtin` wanneer je zeker wilt zijn dat je de ingebouwde versie van een commando gebruikt, vooral als er een extern programma met dezelfde naam bestaat.
+- Controleer altijd de documentatie van de shell voor specifieke ingebouwde commando's en hun opties.
+- Het gebruik van `builtin` kan de prestaties verbeteren, omdat ingebouwde commando's sneller zijn dan externe programma's.

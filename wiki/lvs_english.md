@@ -1,51 +1,50 @@
-# [Linux] Bash lvs uso equivalente: List logical volumes
+# [Unix/Linux] C Shell (csh) lvs uso equivalente: Listar volúmenes lógicos
 
 ## Overview
-The `lvs` command is used in Linux to display information about logical volumes in the Logical Volume Manager (LVM). It provides a concise overview of the logical volumes present on the system, including their size, attributes, and associated volume groups.
+The `lvs` command in C Shell (csh) is used to display information about logical volumes in a Linux environment. It provides a concise overview of the logical volumes managed by the Logical Volume Manager (LVM), including their attributes and status.
 
 ## Usage
 The basic syntax of the `lvs` command is as follows:
 
-```bash
+```csh
 lvs [options] [arguments]
 ```
 
 ## Common Options
-- `-o, --units`: Specify the units for displaying sizes (e.g., k, m, g).
-- `-a, --all`: Show all logical volumes, including those that are not active.
-- `-n, --noheadings`: Suppress the header line in the output.
-- `-f, --full`: Show full information for each logical volume.
+- `-o, --units`: Specify the output format and units for size.
+- `-a, --all`: Show all logical volumes, including those that are inactive.
+- `-f, --full`: Display full information about each logical volume.
 - `-S, --select`: Filter the output based on specific criteria.
 
 ## Common Examples
 Here are some practical examples of using the `lvs` command:
 
-1. **Display all logical volumes:**
-   ```bash
+1. **List all logical volumes:**
+   ```csh
    lvs
    ```
 
-2. **Show logical volumes with sizes in gigabytes:**
-   ```bash
-   lvs -o +size --units g
+2. **Show detailed information about logical volumes:**
+   ```csh
+   lvs -f
    ```
 
-3. **List all logical volumes, including inactive ones:**
-   ```bash
+3. **List logical volumes with specific output columns:**
+   ```csh
+   lvs -o lv_name,lv_size
+   ```
+
+4. **Show all logical volumes, including inactive ones:**
+   ```csh
    lvs -a
    ```
 
-4. **Display logical volumes without headers:**
-   ```bash
-   lvs -n
-   ```
-
-5. **Filter logical volumes by a specific volume group:**
-   ```bash
-   lvs -S 'vg_name=your_volume_group'
+5. **Filter logical volumes based on a specific attribute:**
+   ```csh
+   lvs -S 'lv_size > 10G'
    ```
 
 ## Tips
-- Use the `-o` option to customize the output and include additional fields that may be relevant to your needs.
-- Regularly check your logical volumes to monitor their usage and ensure they are functioning correctly.
-- Combine `lvs` with other LVM commands like `lvcreate` and `lvremove` for effective volume management.
+- Always use the `-o` option to customize the output to show only the information you need.
+- Combine options for more refined output, such as using `-a` with `-o` to see all volumes with specific attributes.
+- Regularly check the status of your logical volumes to ensure they are functioning correctly, especially before performing system maintenance.

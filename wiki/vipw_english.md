@@ -1,45 +1,36 @@
-# [Linux] Bash vipw Usage: Edit the password file safely
+# [Linux] C Shell (csh) vipw 用法: Edit the password file safely
 
 ## Overview
-The `vipw` command is used to safely edit the password file, typically located at `/etc/passwd` or `/etc/shadow`, depending on the system configuration. It ensures that the file is locked during editing to prevent corruption or conflicts from simultaneous modifications.
+The `vipw` command is used to safely edit the system's password file, typically located at `/etc/passwd`. It ensures that the file is locked during editing to prevent simultaneous modifications, which could lead to corruption.
 
 ## Usage
 The basic syntax of the `vipw` command is as follows:
 
-```bash
+```csh
 vipw [options]
 ```
 
 ## Common Options
-- `-s`: Edit the shadow password file (`/etc/shadow`) instead of the standard password file.
-- `-u`: Specify a user to edit their entry directly.
+- `-s`: Edit the shadow password file (`/etc/shadow`) instead of the regular password file.
 - `-h`: Display help information about the command.
 
 ## Common Examples
-Here are some practical examples of using the `vipw` command:
+1. **Edit the password file**:
+   ```csh
+   vipw
+   ```
 
-### Edit the Password File
-To edit the standard password file, simply run:
+2. **Edit the shadow password file**:
+   ```csh
+   vipw -s
+   ```
 
-```bash
-vipw
-```
-
-### Edit the Shadow Password File
-To edit the shadow password file, use the `-s` option:
-
-```bash
-vipw -s
-```
-
-### Edit a Specific User Entry
-To edit the entry for a specific user, you can use the `-u` option:
-
-```bash
-vipw -u username
-```
+3. **Display help information**:
+   ```csh
+   vipw -h
+   ```
 
 ## Tips
-- Always use `vipw` instead of directly editing `/etc/passwd` or `/etc/shadow` to avoid file corruption.
-- Make sure to back up the password file before making any changes, especially if you are unfamiliar with the format.
-- After editing, verify the changes by checking the user entries with `getent passwd` or `getent shadow`.
+- Always use `vipw` instead of directly editing `/etc/passwd` to avoid potential issues with file locking.
+- Make sure to have appropriate permissions (usually root) to edit the password file.
+- After editing, double-check the syntax to avoid locking yourself out of the system.

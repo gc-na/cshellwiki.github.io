@@ -1,52 +1,52 @@
-# [Linux] Bash mtr Penggunaan: Mendiagnosis konektivitas jaringan
+# [Sistem Operasi] C Shell (csh) mtr Penggunaan: Menguji konektivitas jaringan
 
 ## Overview
-Perintah `mtr` (My Traceroute) adalah alat yang menggabungkan fungsi dari `ping` dan `traceroute`. Ini digunakan untuk mendiagnosis konektivitas jaringan dengan memberikan informasi tentang jalur yang dilalui paket data ke tujuan tertentu serta waktu respons dari setiap hop.
+Perintah `mtr` (My Traceroute) adalah alat yang menggabungkan fungsi dari `traceroute` dan `ping`. Perintah ini digunakan untuk menganalisis jalur yang dilalui paket data menuju tujuan tertentu dan mengukur latensi serta kehilangan paket di setiap hop.
 
 ## Usage
-Sintaks dasar dari perintah `mtr` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `mtr`:
 
-```bash
+```
 mtr [options] [arguments]
 ```
 
 ## Common Options
-- `-r`: Menjalankan dalam mode laporan, hanya menampilkan hasil akhir.
-- `-c <count>`: Menentukan jumlah ping yang akan dikirim.
-- `-i <interval>`: Menentukan interval waktu antara pengiriman ping.
-- `-p`: Menampilkan informasi port.
-- `-w`: Menampilkan output dalam format yang lebih lebar.
+- `-r` : Menjalankan dalam mode laporan, menghasilkan output yang lebih ringkas.
+- `-c <count>` : Menentukan jumlah ping yang akan dilakukan.
+- `-i <interval>` : Menentukan interval waktu antara ping.
+- `-p` : Menampilkan informasi port.
+- `-w` : Menggunakan mode lebar untuk output yang lebih mudah dibaca.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan `mtr`:
+Berikut adalah beberapa contoh penggunaan perintah `mtr`:
 
-1. Menjalankan `mtr` ke sebuah alamat IP atau domain:
+1. Menjalankan `mtr` ke alamat IP atau domain tertentu:
    ```bash
    mtr google.com
    ```
 
-2. Menggunakan mode laporan untuk mendapatkan hasil akhir setelah beberapa ping:
+2. Menjalankan `mtr` dengan jumlah ping yang ditentukan:
    ```bash
-   mtr -r -c 10 google.com
+   mtr -c 10 google.com
    ```
 
-3. Menentukan interval waktu antara ping:
+3. Menjalankan `mtr` dalam mode laporan:
    ```bash
-   mtr -i 2 google.com
+   mtr -r google.com
    ```
 
-4. Menampilkan informasi port:
+4. Menentukan interval antara ping:
+   ```bash
+   mtr -i 1 google.com
+   ```
+
+5. Menampilkan informasi port:
    ```bash
    mtr -p google.com
    ```
 
-5. Menjalankan `mtr` dengan output lebar:
-   ```bash
-   mtr -w google.com
-   ```
-
 ## Tips
-- Gunakan opsi `-r` untuk mendapatkan ringkasan cepat dari hasil pengujian.
-- Jika Anda ingin memantau konektivitas secara berkelanjutan, jalankan `mtr` tanpa opsi tambahan.
-- Perhatikan waktu respons dari setiap hop untuk mengidentifikasi titik masalah dalam jaringan.
-- Kombinasikan `mtr` dengan opsi lain untuk mendapatkan informasi yang lebih spesifik sesuai kebutuhan Anda.
+- Gunakan opsi `-r` untuk mendapatkan ringkasan hasil yang lebih mudah dibaca.
+- Jika Anda ingin memantau konektivitas dalam waktu nyata, jalankan `mtr` tanpa opsi tambahan.
+- Perhatikan latensi dan kehilangan paket yang tinggi, karena ini bisa menunjukkan masalah jaringan.
+- Cobalah menggunakan `mtr` dengan berbagai opsi untuk memahami lebih baik tentang jalur koneksi Anda.

@@ -1,51 +1,45 @@
-# [Linux] Bash pkg gebruik: Beheer van softwarepakketten
+# [Linux] C Shell (csh) pkg gebruik: Beheer van pakketten
 
 ## Overzicht
-De `pkg`-opdracht is een hulpmiddel voor het beheren van softwarepakketten op systemen die gebruikmaken van het FreeBSD-pakketbeheersysteem. Het stelt gebruikers in staat om pakketten te installeren, bij te werken en te verwijderen, evenals om informatie over geïnstalleerde pakketten op te vragen.
+De `pkg`-opdracht in C Shell (csh) wordt gebruikt voor het beheren van softwarepakketten. Het stelt gebruikers in staat om pakketten te installeren, te verwijderen en te beheren op een systeem.
 
 ## Gebruik
 De basis syntaxis van de `pkg`-opdracht is als volgt:
 
-```bash
+```
 pkg [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `install`: Installeert een of meerdere pakketten.
-- `remove`: Verwijdert een of meerdere pakketten.
-- `update`: Werkt de lijst met beschikbare pakketten bij.
-- `upgrade`: Werkt geïnstalleerde pakketten bij naar de nieuwste versies.
-- `info`: Toont informatie over een specifiek pakket.
+- `install`: Installeert een nieuw pakket.
+- `remove`: Verwijdert een bestaand pakket.
+- `update`: Werkt geïnstalleerde pakketten bij naar de nieuwste versie.
+- `list`: Toont een lijst van geïnstalleerde pakketten.
 
 ## Veelvoorkomende Voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van de `pkg`-opdracht:
 
 ### Een pakket installeren
-```bash
-pkg install vim
+```csh
+pkg install pakketnaam
 ```
 
 ### Een pakket verwijderen
-```bash
-pkg remove vim
-```
-
-### De lijst met beschikbare pakketten bijwerken
-```bash
-pkg update
+```csh
+pkg remove pakketnaam
 ```
 
 ### Geïnstalleerde pakketten bijwerken
-```bash
-pkg upgrade
+```csh
+pkg update
 ```
 
-### Informatie over een specifiek pakket opvragen
-```bash
-pkg info vim
+### Lijst van geïnstalleerde pakketten weergeven
+```csh
+pkg list
 ```
 
 ## Tips
-- Zorg ervoor dat je regelmatig `pkg update` uitvoert om de lijst met beschikbare pakketten up-to-date te houden.
-- Gebruik `pkg search <pakketnaam>` om naar specifieke pakketten te zoeken.
-- Controleer de afhankelijkheden van een pakket met de optie `-d` bij de `pkg info` opdracht om te zien welke andere pakketten nodig zijn.
+- Controleer altijd de beschikbare opties met `pkg help` om meer te leren over de functionaliteit.
+- Gebruik `pkg list` regelmatig om te zien welke pakketten zijn geïnstalleerd en of ze up-to-date zijn.
+- Wees voorzichtig met het verwijderen van pakketten, omdat dit afhankelijkheden kan beïnvloeden.

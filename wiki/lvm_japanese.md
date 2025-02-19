@@ -1,51 +1,51 @@
-# [Linux] Bash lvm 使用法: 論理ボリューム管理
+# [日本語] C Shell (csh) lvm 使用法: 論理ボリューム管理
 
 ## 概要
-`lvm` コマンドは、Linuxの論理ボリュームマネージャー（LVM）を操作するためのツールです。これにより、ストレージデバイスの管理、論理ボリュームの作成、削除、サイズ変更などが可能になります。
+lvmコマンドは、Linuxの論理ボリュームマネージャー（LVM）を操作するためのツールです。これにより、ストレージデバイスの管理や、ボリュームの作成、削除、サイズ変更などが可能になります。
 
 ## 使用法
 基本的な構文は以下の通りです。
 
-```bash
+```csh
 lvm [options] [arguments]
 ```
 
 ## 一般的なオプション
-- `create`: 新しい論理ボリュームを作成します。
-- `remove`: 論理ボリュームを削除します。
-- `extend`: 論理ボリュームのサイズを増やします。
-- `reduce`: 論理ボリュームのサイズを減らします。
-- `lvdisplay`: 論理ボリュームの詳細情報を表示します。
+- `create`：新しい論理ボリュームを作成します。
+- `remove`：既存の論理ボリュームを削除します。
+- `extend`：論理ボリュームのサイズを拡張します。
+- `reduce`：論理ボリュームのサイズを縮小します。
+- `list`：現在の論理ボリュームの情報を表示します。
 
 ## 一般的な例
-以下に、`lvm` コマンドの実用的な例を示します。
+以下に、lvmコマンドの実用的な例を示します。
 
 ### 論理ボリュームの作成
-```bash
-lvcreate -n my_volume -L 10G my_volume_group
+```csh
+lvm create my_volume_group/my_logical_volume --size 10G
 ```
 
 ### 論理ボリュームの削除
-```bash
-lvremove /dev/my_volume_group/my_volume
+```csh
+lvm remove my_volume_group/my_logical_volume
 ```
 
-### 論理ボリュームのサイズを増やす
-```bash
-lvextend -L +5G /dev/my_volume_group/my_volume
+### 論理ボリュームのサイズを拡張
+```csh
+lvm extend my_volume_group/my_logical_volume --size +5G
 ```
 
-### 論理ボリュームのサイズを減らす
-```bash
-lvreduce -L -5G /dev/my_volume_group/my_volume
+### 論理ボリュームのサイズを縮小
+```csh
+lvm reduce my_volume_group/my_logical_volume --size -5G
 ```
 
-### 論理ボリュームの詳細情報を表示
-```bash
-lvdisplay /dev/my_volume_group/my_volume
+### 論理ボリュームのリスト表示
+```csh
+lvm list
 ```
 
 ## ヒント
-- 論理ボリュームのサイズを変更する前に、必ずバックアップを取ってください。
-- 論理ボリュームを縮小する際は、データが失われないように、必ずファイルシステムを縮小してから行ってください。
-- `lvm` コマンドを使用する際は、スーパーユーザー権限が必要です。`sudo` を使用してコマンドを実行してください。
+- 論理ボリュームを操作する前に、必ずバックアップを取ることをお勧めします。
+- サイズ変更を行う場合は、ボリュームがマウントされていないことを確認してください。
+- `lvm`コマンドを使用する際は、適切な権限を持っていることを確認してください。

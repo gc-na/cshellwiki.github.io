@@ -1,43 +1,45 @@
-# [Linux] Bash mount uso: Montar sistemas de archivos
+# [Linux] C Shell (csh) mount uso: Montar sistemas de archivos
 
 ## Overview
-El comando `mount` en Bash se utiliza para montar sistemas de archivos en el sistema operativo Linux. Esto permite que el sistema acceda a los datos almacenados en dispositivos de almacenamiento, como discos duros, unidades USB o particiones.
+El comando `mount` se utiliza para montar sistemas de archivos en el sistema operativo. Permite que el sistema acceda a dispositivos de almacenamiento, como discos duros, unidades USB y particiones, haciéndolos disponibles para su uso.
 
 ## Usage
 La sintaxis básica del comando `mount` es la siguiente:
 
-```bash
-mount [opciones] [dispositivo] [punto_de_montaje]
+```csh
+mount [options] [arguments]
 ```
 
 ## Common Options
-- `-t tipo`: Especifica el tipo de sistema de archivos (por ejemplo, ext4, ntfs).
-- `-o opciones`: Permite especificar opciones adicionales para el montaje (como `ro` para solo lectura).
-- `-a`: Monta todos los sistemas de archivos mencionados en el archivo `/etc/fstab`.
-- `-r`: Monta el sistema de archivos en modo solo lectura.
+- `-t tipo`: Especifica el tipo de sistema de archivos a montar (por ejemplo, ext4, ntfs).
+- `-o opciones`: Permite definir opciones adicionales, como `ro` (solo lectura) o `rw` (lectura y escritura).
+- `-a`: Monta todos los sistemas de archivos listados en el archivo `/etc/fstab`.
+- `-v`: Muestra información detallada sobre el proceso de montaje.
 
 ## Common Examples
-1. Montar un dispositivo USB en un punto de montaje específico:
-   ```bash
-   mount /dev/sdb1 /mnt/usb
+Aquí hay algunos ejemplos prácticos del uso del comando `mount`:
+
+1. Montar un dispositivo USB:
+   ```csh
+   mount -t vfat /dev/sdb1 /mnt/usb
    ```
 
-2. Montar un sistema de archivos NTFS en modo lectura y escritura:
-   ```bash
-   mount -t ntfs-3g -o rw /dev/sdc1 /mnt/ntfs
+2. Montar una partición NTFS en modo lectura y escritura:
+   ```csh
+   mount -t ntfs -o rw /dev/sdc1 /mnt/windows
    ```
 
 3. Montar todos los sistemas de archivos definidos en `/etc/fstab`:
-   ```bash
+   ```csh
    mount -a
    ```
 
 4. Montar un sistema de archivos en modo solo lectura:
-   ```bash
+   ```csh
    mount -o ro /dev/sda1 /mnt/data
    ```
 
 ## Tips
-- Asegúrate de que el punto de montaje exista antes de intentar montar un dispositivo.
-- Utiliza el comando `umount` para desmontar un sistema de archivos de manera segura.
-- Verifica los sistemas de archivos montados con el comando `df -h` para asegurarte de que se han montado correctamente.
+- Asegúrate de que el directorio de destino (por ejemplo, `/mnt/usb`) exista antes de montar el sistema de archivos.
+- Utiliza el comando `umount` para desmontar un sistema de archivos cuando ya no lo necesites.
+- Verifica los permisos de acceso al dispositivo y al punto de montaje para evitar problemas de acceso.

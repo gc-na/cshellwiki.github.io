@@ -1,69 +1,82 @@
-# [Linux] Bash switch gebruik: Schakel tussen verschillende opties
+# [Linux] C Shell (csh) switch gebruik: Schakel tussen verschillende opties
 
 ## Overzicht
-De `switch`-opdracht in Bash wordt gebruikt om verschillende opties of argumenten te beheren, vaak in de context van conditionele logica. Het stelt gebruikers in staat om verschillende paden in hun scripts te volgen op basis van de waarde van variabelen.
+De `switch`-opdracht in C Shell (csh) wordt gebruikt om verschillende opties of gevallen te evalueren. Het is een manier om conditionele logica in scripts te implementeren, waardoor je verschillende acties kunt uitvoeren op basis van de waarde van een variabele.
 
 ## Gebruik
 De basis syntaxis van de `switch`-opdracht is als volgt:
 
-```bash
-switch [opties] [argumenten]
+```csh
+switch (uitdrukking)
+    case patroon1:
+        commando's
+        breaksw
+    case patroon2:
+        commando's
+        breaksw
+    default:
+        commando's
+        breaksw
+endsw
 ```
 
 ## Veelvoorkomende Opties
-- `-e`: Controleert of de opgegeven expressie waar is.
-- `-n`: Negeert lege waarden in de expressie.
-- `-v`: Geeft de huidige waarde van de variabele weer.
+- `case`: Definieert een patroon dat vergeleken wordt met de uitdrukking.
+- `breaksw`: Beëindigt de huidige `switch`-structuur.
+- `default`: Voert commando's uit als geen van de patronen overeenkomt met de uitdrukking.
 
 ## Veelvoorkomende Voorbeelden
 
-### Voorbeeld 1: Basis switch-structuur
-```bash
-case $kleur in
-    "rood")
+### Voorbeeld 1: Eenvoudige switch
+```csh
+set kleur = "rood"
+switch ($kleur)
+    case "rood":
         echo "De kleur is rood."
-        ;;
-    "blauw")
+        breaksw
+    case "blauw":
         echo "De kleur is blauw."
-        ;;
-    *)
+        breaksw
+    default:
         echo "Onbekende kleur."
-        ;;
-esac
+        breaksw
+endsw
 ```
 
-### Voorbeeld 2: Gebruik van meerdere opties
-```bash
-case $dag in
-    "maandag" | "dinsdag" | "woensdag")
-        echo "Het is een werkdag."
-        ;;
-    "zaterdag" | "zondag")
-        echo "Het is weekend."
-        ;;
-    *)
-        echo "Onbekende dag."
-        ;;
-esac
+### Voorbeeld 2: Meerdere patronen
+```csh
+set fruit = "appel"
+switch ($fruit)
+    case "appel":
+    case "peer":
+        echo "Dit is een vrucht."
+        breaksw
+    default:
+        echo "Dit is geen vrucht."
+        breaksw
+endsw
 ```
 
-### Voorbeeld 3: Switch met variabelen
-```bash
-status="actief"
-case $status in
-    "actief")
-        echo "De status is actief."
-        ;;
-    "inactief")
-        echo "De status is inactief."
-        ;;
-    *)
-        echo "Onbekende status."
-        ;;
-esac
+### Voorbeeld 3: Gebruik van variabelen
+```csh
+set getal = 2
+switch ($getal)
+    case 1:
+        echo "Het getal is één."
+        breaksw
+    case 2:
+        echo "Het getal is twee."
+        breaksw
+    case 3:
+        echo "Het getal is drie."
+        breaksw
+    default:
+        echo "Onbekend getal."
+        breaksw
+endsw
 ```
 
 ## Tips
-- Zorg ervoor dat je de juiste syntaxis gebruikt met `case` en `esac` om de switch-structuur correct te laten werken.
-- Gebruik `*` als een wildcard om alle andere gevallen te vangen.
-- Test je scripts met verschillende invoerwaarden om ervoor te zorgen dat alle paden correct worden afgehandeld.
+- Zorg ervoor dat je altijd een `default`-optie toevoegt om onverwachte waarden af te handelen.
+- Gebruik `breaksw` om ervoor te zorgen dat je niet per ongeluk doorloopt naar andere cases.
+- Test je `switch`-structuren met verschillende invoerwaarden om ervoor te zorgen dat ze correct functioneren.

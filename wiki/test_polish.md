@@ -1,58 +1,52 @@
-# [Linux] Bash test użycie: Sprawdzanie warunków
+# [Linux] C Shell (csh) test użycie: Sprawdzanie warunków
 
 ## Overview
-Polecenie `test` w Bashu służy do oceny warunków i zwraca wartość prawda (0) lub fałsz (1) w zależności od wyniku tej oceny. Jest często używane w skryptach do podejmowania decyzji na podstawie różnych warunków, takich jak istnienie plików, porównania liczb czy sprawdzanie typów danych.
+Polecenie `test` w C Shell (csh) służy do oceny warunków logicznych. Umożliwia sprawdzenie różnych warunków, takich jak istnienie plików, porównania wartości czy sprawdzanie typów danych. Jest to przydatne narzędzie w skryptach powłoki do podejmowania decyzji na podstawie wyników testów.
 
 ## Usage
 Podstawowa składnia polecenia `test` wygląda następująco:
 
-```bash
+```csh
 test [opcje] [argumenty]
 ```
 
-Można również użyć skróconej formy z nawiasami kwadratowymi:
-
-```bash
-[ opcje ]
-```
-
 ## Common Options
-Oto kilka powszechnie używanych opcji polecenia `test`:
+Oto kilka powszechnie używanych opcji dla polecenia `test`:
 
-- `-e [plik]`: Sprawdza, czy plik istnieje.
-- `-f [plik]`: Sprawdza, czy plik jest regularnym plikiem.
-- `-d [katalog]`: Sprawdza, czy katalog istnieje.
-- `-z [string]`: Sprawdza, czy długość łańcucha jest równa zeru.
-- `-n [string]`: Sprawdza, czy długość łańcucha jest większa od zera.
-- `[liczba1] -eq [liczba2]`: Sprawdza, czy liczby są równe.
-- `[liczba1] -lt [liczba2]`: Sprawdza, czy liczba1 jest mniejsza od liczby2.
+- `-e [plik]` - Sprawdza, czy plik istnieje.
+- `-f [plik]` - Sprawdza, czy podany argument jest plikiem regularnym.
+- `-d [katalog]` - Sprawdza, czy podany argument jest katalogiem.
+- `-z [ciąg]` - Sprawdza, czy długość ciągu jest równa zeru.
+- `-n [ciąg]` - Sprawdza, czy długość ciągu jest większa od zera.
+- `[wartość1] -eq [wartość2]` - Sprawdza, czy dwie wartości są równe.
 
 ## Common Examples
+Oto kilka praktycznych przykładów użycia polecenia `test`:
 
-### Sprawdzanie istnienia pliku
-```bash
-test -e plik.txt && echo "Plik istnieje."
-```
+1. Sprawdzenie, czy plik istnieje:
+   ```csh
+   test -e myfile.txt && echo "Plik istnieje"
+   ```
 
-### Sprawdzanie, czy jest to katalog
-```bash
-test -d /ścieżka/do/katalogu && echo "To jest katalog."
-```
+2. Sprawdzenie, czy argument jest katalogiem:
+   ```csh
+   test -d /home/user && echo "To jest katalog"
+   ```
 
-### Porównanie dwóch liczb
-```bash
-a=5
-b=10
-test $a -lt $b && echo "$a jest mniejsze od $b."
-```
+3. Porównanie dwóch liczb:
+   ```csh
+   a=5
+   b=10
+   test $a -eq $b && echo "Liczby są równe" || echo "Liczby są różne"
+   ```
 
-### Sprawdzanie długości łańcucha
-```bash
-string=""
-test -z "$string" && echo "Łańcuch jest pusty."
-```
+4. Sprawdzenie, czy ciąg jest pusty:
+   ```csh
+   str=""
+   test -z "$str" && echo "Ciąg jest pusty"
+   ```
 
 ## Tips
-- Używaj nawiasów kwadratowych `[` i `]` dla lepszej czytelności, ale pamiętaj, aby dodać spacje przed i po nawiasach.
-- Możesz łączyć kilka warunków w jednym poleceniu, używając operatorów `&&` (i) oraz `||` (lub).
-- W skryptach, zamiast używać `test`, możesz użyć `[[ ... ]]`, co oferuje bardziej zaawansowane możliwości, takie jak porównania wzorców.
+- Używaj operatorów logicznych (np. `&&`, `||`) do łączenia wielu warunków w jednym poleceniu.
+- Pamiętaj, aby zawsze używać cudzysłowów wokół zmiennych, aby uniknąć błędów związanych z pustymi wartościami.
+- Możesz używać polecenia `test` w połączeniu z instrukcjami warunkowymi, aby tworzyć bardziej złożone skrypty.

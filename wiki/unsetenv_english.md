@@ -1,38 +1,40 @@
-# [Linux] Bash unsetenv用法: Remove environment variables
+# [English] C Shell (csh) unsetenv Usage: Remove environment variables
 
 ## Overview
-The `unsetenv` command is used to remove environment variables in a shell session. This command helps in managing the environment by deleting variables that are no longer needed.
+The `unsetenv` command in C Shell (csh) is used to remove environment variables from the current shell session. This can be useful for cleaning up the environment or preventing certain variables from affecting the execution of scripts or commands.
 
 ## Usage
 The basic syntax of the `unsetenv` command is as follows:
 
-```bash
+```csh
 unsetenv [variable_name]
 ```
 
 ## Common Options
-The `unsetenv` command does not have many options, as its primary function is straightforward. However, it is important to note that it typically operates in a C shell environment (csh or tcsh). Here are some common usages:
-
-- `unsetenv VARIABLE`: Removes the specified environment variable.
+The `unsetenv` command does not have any specific options. It simply requires the name of the environment variable you wish to remove.
 
 ## Common Examples
 
 1. **Remove a single environment variable:**
-   ```bash
+   To remove an environment variable named `MY_VAR`, you would use:
+   ```csh
    unsetenv MY_VAR
    ```
 
 2. **Remove multiple environment variables:**
-   ```bash
-   unsetenv VAR1 VAR2 VAR3
+   You can also remove multiple variables in separate commands:
+   ```csh
+   unsetenv VAR1
+   unsetenv VAR2
    ```
 
-3. **Check if the variable is removed:**
-   ```bash
+3. **Check if a variable is removed:**
+   After using `unsetenv`, you can check if the variable is still set:
+   ```csh
    echo $MY_VAR  # This should return nothing if MY_VAR was successfully removed.
    ```
 
 ## Tips
-- Always double-check the variable name before using `unsetenv` to avoid accidentally removing important environment variables.
-- Use `setenv` to add or modify environment variables if needed after using `unsetenv`.
-- Remember that changes made with `unsetenv` only affect the current shell session; they do not persist after closing the terminal.
+- Always double-check the variable names before using `unsetenv` to avoid accidentally removing important variables.
+- You can use the `setenv` command to create or modify environment variables if you need to adjust them after using `unsetenv`.
+- Consider using `printenv` to list all current environment variables before making changes, so you know what you are working with.

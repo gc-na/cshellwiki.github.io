@@ -1,7 +1,7 @@
-# [Linux] Bash mkswap Penggunaan: Membuat file swap
+# [Sistem Operasi] C Shell (csh) mkswap: Membuat ruang swap
 
 ## Overview
-Perintah `mkswap` digunakan untuk menyiapkan area swap di Linux. Swap adalah ruang di disk yang digunakan sebagai memori tambahan ketika RAM penuh. Dengan menggunakan `mkswap`, Anda dapat mengonfigurasi file atau partisi untuk digunakan sebagai swap.
+Perintah `mkswap` digunakan untuk menyiapkan area swap di sistem Linux. Swap adalah ruang di disk yang digunakan ketika RAM penuh, memungkinkan sistem untuk mengelola memori lebih efisien.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `mkswap`:
@@ -11,35 +11,30 @@ mkswap [options] [arguments]
 ```
 
 ## Common Options
-- `-f`, `--force`: Memaksa pembuatan swap meskipun ada kesalahan.
 - `-L label`: Menetapkan label untuk area swap.
+- `-f`: Memaksa pembuatan swap meskipun ada kesalahan.
 - `-p priority`: Menetapkan prioritas untuk area swap yang dibuat.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan `mkswap`:
+Berikut adalah beberapa contoh penggunaan perintah `mkswap`:
 
-1. **Membuat file swap baru**:
+1. Membuat file swap baru:
    ```bash
-   sudo fallocate -l 1G /swapfile
-   sudo mkswap /swapfile
+   dd if=/dev/zero of=/swapfile bs=1M count=1024
+   mkswap /swapfile
    ```
 
-2. **Membuat swap dari partisi**:
+2. Menetapkan label untuk area swap:
    ```bash
-   sudo mkswap /dev/sdX1
+   mkswap -L my_swap /dev/sdX
    ```
 
-3. **Menetapkan label untuk swap**:
+3. Mengatur prioritas untuk area swap:
    ```bash
-   sudo mkswap -L my_swap /dev/sdX1
-   ```
-
-4. **Memaksa pembuatan swap**:
-   ```bash
-   sudo mkswap -f /swapfile
+   mkswap -p 10 /dev/sdX
    ```
 
 ## Tips
-- Pastikan untuk mengatur izin yang tepat pada file swap dengan menggunakan `chmod 600 /swapfile` untuk menjaga keamanan.
-- Setelah membuat swap, ingat untuk mengaktifkannya menggunakan perintah `swapon`.
-- Periksa status swap dengan perintah `swapon --show` untuk memastikan swap berfungsi dengan baik.
+- Pastikan untuk memeriksa ukuran file swap yang sesuai dengan kebutuhan sistem Anda.
+- Selalu gunakan opsi `-L` untuk memberi label pada area swap agar lebih mudah dikenali.
+- Setelah membuat swap, jangan lupa untuk mengaktifkannya dengan perintah `swapon`.

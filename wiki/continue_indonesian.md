@@ -1,78 +1,58 @@
-# [Linux] Bash continue penggunaan: Melanjutkan eksekusi loop
+# [Sistem Operasi] C Shell (csh) continue: Melanjutkan eksekusi loop
 
 ## Overview
-Perintah `continue` dalam Bash digunakan untuk melanjutkan eksekusi dari iterasi berikutnya dalam sebuah loop. Ketika `continue` dipanggil, perintah ini akan menghentikan eksekusi pernyataan yang tersisa dalam iterasi saat ini dan langsung melanjutkan ke iterasi berikutnya dari loop.
+Perintah `continue` dalam C Shell (csh) digunakan untuk melanjutkan eksekusi dari loop yang sedang berjalan. Ketika `continue` dipanggil, perintah ini akan menghentikan iterasi saat ini dan melanjutkan ke iterasi berikutnya dari loop.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `continue`:
 
+```csh
+continue [options] [arguments]
 ```
-continue [n]
-```
-
-Di mana `n` adalah jumlah iterasi yang ingin dilewati. Jika `n` tidak ditentukan, maka `continue` akan melanjutkan ke iterasi berikutnya dari loop saat ini.
 
 ## Common Options
-- `n`: Angka opsional yang menunjukkan berapa banyak iterasi yang ingin dilewati. Misalnya, `continue 2` akan melewatkan dua iterasi berikutnya.
+Perintah `continue` tidak memiliki banyak opsi, tetapi berikut adalah beberapa yang umum digunakan:
+- `n`: Menentukan jumlah iterasi yang akan dilewati. Misalnya, `continue 2` akan melanjutkan ke iterasi kedua berikutnya.
 
 ## Common Examples
+Berikut adalah beberapa contoh penggunaan perintah `continue`:
 
-### Contoh 1: Menggunakan `continue` dalam loop for
-```bash
-for i in {1..5}; do
-    if [ $i -eq 3 ]; then
+### Contoh 1: Menggunakan continue dalam loop
+```csh
+foreach i (1 2 3 4 5)
+    if ($i == 3) then
         continue
-    fi
-    echo "Nomor: $i"
-done
+    endif
+    echo $i
+end
 ```
-Output:
+*Output:*
 ```
-Nomor: 1
-Nomor: 2
-Nomor: 4
-Nomor: 5
+1
+2
+4
+5
 ```
-Pada contoh ini, ketika nilai `i` sama dengan 3, perintah `continue` akan melewatkan eksekusi `echo` untuk iterasi tersebut.
+Pada contoh ini, ketika nilai `i` adalah 3, perintah `continue` akan melewatkan eksekusi `echo` untuk iterasi tersebut.
 
-### Contoh 2: Menggunakan `continue` dalam loop while
-```bash
-count=0
-while [ $count -lt 5 ]; do
-    count=$((count + 1))
-    if [ $count -eq 2 ]; then
-        continue
-    fi
-    echo "Hitungan: $count"
-done
+### Contoh 2: Menggunakan continue dengan opsi
+```csh
+foreach i (1 2 3 4 5)
+    if ($i % 2 == 0) then
+        continue 1
+    endif
+    echo $i
+end
 ```
-Output:
+*Output:*
 ```
-Hitungan: 1
-Hitungan: 3
-Hitungan: 4
-Hitungan: 5
+1
+3
+5
 ```
-Di sini, ketika `count` mencapai 2, perintah `continue` akan melewatkan eksekusi `echo`.
-
-### Contoh 3: Menggunakan `continue` dengan opsi
-```bash
-for i in {1..10}; do
-    if [ $((i % 2)) -eq 0 ]; then
-        continue 2
-    fi
-    echo "Bilangan ganjil: $i"
-done
-```
-Output:
-```
-Bilangan ganjil: 1
-Bilangan ganjil: 5
-Bilangan ganjil: 9
-```
-Dalam contoh ini, jika `i` adalah bilangan genap, perintah `continue 2` akan melewatkan dua iterasi berikutnya.
+Di sini, `continue 1` digunakan untuk melewatkan satu iterasi ketika `i` adalah angka genap.
 
 ## Tips
-- Gunakan `continue` dengan bijak untuk meningkatkan keterbacaan kode Anda, terutama dalam loop yang kompleks.
-- Pastikan untuk memahami bagaimana `continue` berinteraksi dengan kondisi dalam loop agar tidak melewatkan iterasi yang tidak diinginkan.
-- Cobalah untuk menggunakan `continue` dalam kombinasi dengan pernyataan kondisi untuk mengontrol alur eksekusi dengan lebih baik.
+- Gunakan `continue` untuk meningkatkan efisiensi dalam loop dengan menghindari eksekusi kode yang tidak perlu.
+- Pastikan untuk menggunakan `continue` dengan hati-hati agar tidak menyebabkan loop tak berujung.
+- Kombinasikan `continue` dengan kondisi yang tepat untuk mengontrol alur eksekusi dalam skrip Anda.

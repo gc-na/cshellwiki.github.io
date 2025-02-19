@@ -1,51 +1,48 @@
-# [Linux] Bash hash uso: Manage command hash table
+# [Linux] C Shell (csh) hash 用法等价: Manage command hash table
 
 ## Overview
-The `hash` command in Bash is used to manage the hash table of commands. When you execute a command, Bash remembers its location in the filesystem, which can speed up future executions of the same command. The `hash` command allows you to view, add, or remove entries from this hash table.
+The `hash` command in C Shell (csh) is used to manage the hash table of commands. This table stores the locations of commands that have been executed, which can speed up command lookup times.
 
 ## Usage
 The basic syntax of the `hash` command is as follows:
 
-```bash
+```
 hash [options] [arguments]
 ```
 
 ## Common Options
-- `-r`: Clears the hash table, removing all entries.
-- `-p`: Specifies a path for the command to hash.
-- `-l`: Lists the current contents of the hash table.
+- `-c` : Clear the hash table.
+- `-r` : Reset the hash table, removing all entries.
+- `-l` : List the current contents of the hash table.
 
 ## Common Examples
 
-### Listing Current Hash Table
-To view the current entries in the hash table, simply run:
-
-```bash
-hash
+### Listing the Hash Table
+To view the current contents of the hash table, you can use:
+```csh
+hash -l
 ```
 
 ### Clearing the Hash Table
-To remove all entries from the hash table, use the `-r` option:
+If you want to clear all entries from the hash table, use:
+```csh
+hash -c
+```
 
-```bash
+### Resetting the Hash Table
+To reset the hash table and remove all entries, execute:
+```csh
 hash -r
 ```
 
 ### Adding a Command to the Hash Table
-You can add a specific command to the hash table with the `-p` option:
-
-```bash
-hash -p /usr/local/bin/mycommand mycommand
+When you run a command, it is automatically added to the hash table. For example:
+```csh
+ls
 ```
-
-### Listing Hash Table with Full Paths
-To see the commands along with their full paths, use the `-l` option:
-
-```bash
-hash -l
-```
+After running this command, you can check the hash table with `hash -l` to see that `ls` has been added.
 
 ## Tips
-- Use `hash` after changing your PATH or installing new software to ensure Bash recognizes the new command locations.
-- Regularly clear the hash table if you frequently change command locations to avoid potential conflicts.
-- Use `hash` to quickly check if a command is already cached, which can save time when executing frequently used commands.
+- Use `hash -l` frequently to monitor which commands are cached in the hash table.
+- Clearing the hash table can be useful if you have updated the location of a command and want to ensure the new path is used.
+- Remember that the hash table is session-specific; it will not retain entries after you close the shell.

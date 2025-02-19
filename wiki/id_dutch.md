@@ -1,55 +1,50 @@
-# [Linux] Bash id gebruik: toon gebruikersinformatie
+# [Linux] C Shell (csh) id gebruik: toon gebruikersinformatie
 
 ## Overzicht
-De `id` opdracht in Bash wordt gebruikt om informatie over de huidige gebruiker of een specifieke gebruiker op te vragen. Het toont de gebruikers-ID (UID), groeps-ID (GID) en de groepen waartoe de gebruiker behoort.
+De `id`-opdracht in C Shell (csh) wordt gebruikt om informatie over de huidige gebruiker of een specifieke gebruiker op te vragen. Het toont details zoals de gebruikers-ID (UID), groeps-ID (GID) en de groepen waartoe de gebruiker behoort.
 
 ## Gebruik
-De basis syntaxis van de `id` opdracht is als volgt:
+De basis syntaxis van de `id`-opdracht is als volgt:
 
-```bash
+```
 id [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-u`: Toon alleen de gebruikers-ID.
-- `-g`: Toon alleen de groeps-ID.
-- `-G`: Toon alle groeps-ID's waar de gebruiker lid van is.
-- `-n`: Toon de naam in plaats van het nummer voor UID of GID.
-- `-r`: Toon de echte UID of GID in plaats van de effectieve.
+- `-u`: Toon alleen de gebruikers-ID (UID).
+- `-g`: Toon alleen de groeps-ID (GID).
+- `-G`: Toon de groeps-ID's van de gebruiker.
+- `-n`: Toon de naam in plaats van het nummer voor UID en GID.
 
 ## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van de `id`-opdracht:
 
 1. Toon informatie over de huidige gebruiker:
-   ```bash
+   ```csh
    id
    ```
 
 2. Toon alleen de gebruikers-ID van de huidige gebruiker:
-   ```bash
+   ```csh
    id -u
    ```
 
 3. Toon alleen de groeps-ID van de huidige gebruiker:
-   ```bash
+   ```csh
    id -g
    ```
 
-4. Toon alle groeps-ID's waar de huidige gebruiker lid van is:
-   ```bash
+4. Toon alle groeps-ID's waartoe de huidige gebruiker behoort:
+   ```csh
    id -G
    ```
 
-5. Toon de gebruikersinformatie van een specifieke gebruiker, bijvoorbeeld 'username':
-   ```bash
-   id username
-   ```
-
-6. Toon de gebruikersnaam in plaats van het nummer voor de UID:
-   ```bash
-   id -un
+5. Toon de gebruikersnaam en UID van een specifieke gebruiker (bijvoorbeeld `username`):
+   ```csh
+   id -n username
    ```
 
 ## Tips
 - Gebruik `id` zonder opties om snel een overzicht van je gebruikersinformatie te krijgen.
-- Combineer opties voor meer gedetailleerde informatie, bijvoorbeeld `id -u -n` om de gebruikersnaam van de UID te krijgen.
-- Controleer altijd of je de juiste gebruiker of groep opvraagt, vooral wanneer je met meerdere gebruikers werkt.
+- Combineer opties om specifieke informatie te verkrijgen, zoals `id -u -n` om de gebruikersnaam van de UID te tonen.
+- Controleer de groepslidmaatschappen van een gebruiker om te begrijpen welke rechten en toegang deze heeft binnen het systeem.

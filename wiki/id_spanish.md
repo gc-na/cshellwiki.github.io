@@ -1,50 +1,50 @@
-# [Linux] Bash id uso: Muestra información sobre el usuario actual
+# [Linux] C Shell (csh) id: Muestra información del usuario actual
 
 ## Overview
-El comando `id` en Bash se utiliza para mostrar información sobre el usuario actual, incluyendo su identificador de usuario (UID), identificador de grupo (GID) y los grupos a los que pertenece. Es una herramienta útil para verificar los permisos y la configuración del usuario en el sistema.
+El comando `id` en C Shell (csh) se utiliza para mostrar información sobre el usuario actual, incluyendo su UID (Identificador de Usuario), GID (Identificador de Grupo) y los grupos a los que pertenece.
 
 ## Usage
-La sintaxis básica del comando `id` es la siguiente:
+La sintaxis básica del comando es la siguiente:
 
-```bash
+```
 id [opciones] [argumentos]
 ```
 
 ## Common Options
-- `-u`: Muestra solo el UID del usuario.
-- `-g`: Muestra solo el GID del grupo principal del usuario.
-- `-G`: Muestra todos los GIDs de los grupos a los que pertenece el usuario.
-- `-n`: Muestra los nombres en lugar de los números de UID y GID.
+- `-u`: Muestra solo el UID del usuario actual.
+- `-g`: Muestra solo el GID del grupo principal del usuario actual.
+- `-G`: Muestra todos los GID de los grupos a los que pertenece el usuario.
+- `-n`: Muestra el nombre en lugar del número para UID y GID.
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso del comando `id`:
 
-1. **Mostrar información del usuario actual**:
-   ```bash
+1. Mostrar la información completa del usuario actual:
+   ```csh
    id
    ```
 
-2. **Mostrar solo el UID del usuario actual**:
-   ```bash
+2. Mostrar solo el UID del usuario actual:
+   ```csh
    id -u
    ```
 
-3. **Mostrar solo el GID del grupo principal del usuario actual**:
-   ```bash
+3. Mostrar solo el GID del grupo principal del usuario actual:
+   ```csh
    id -g
    ```
 
-4. **Mostrar todos los GIDs de los grupos a los que pertenece el usuario actual**:
-   ```bash
+4. Mostrar todos los GID de los grupos a los que pertenece el usuario:
+   ```csh
    id -G
    ```
 
-5. **Mostrar el nombre del usuario y su UID**:
-   ```bash
-   id -un
+5. Mostrar el nombre del usuario y del grupo principal:
+   ```csh
+   id -n
    ```
 
 ## Tips
-- Utiliza `id` sin opciones para obtener un resumen completo de la información del usuario.
-- Recuerda que puedes combinar opciones, por ejemplo, `id -u -n` para obtener el nombre del usuario junto con su UID.
-- Es útil para scripts de Bash donde necesitas verificar los permisos del usuario antes de ejecutar ciertas acciones.
+- Utiliza `id` sin opciones para obtener una visión general rápida de tu identidad en el sistema.
+- Combina `id` con otros comandos para realizar tareas de administración de usuarios y grupos.
+- Recuerda que el comando `id` puede ser útil para verificar permisos y accesos en sistemas multiusuario.

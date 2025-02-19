@@ -1,39 +1,36 @@
-# [Linux] Bash mesg Cách sử dụng: Quản lý quyền nhận tin nhắn
+# [Hệ điều hành] C Shell (csh) mesg <Sử dụng tương đương>: Quản lý quyền nhận tin nhắn
 
-## Overview
-Lệnh `mesg` trong Bash được sử dụng để quản lý quyền nhận tin nhắn từ người dùng khác trong một phiên làm việc. Khi bạn cho phép nhận tin nhắn, người khác có thể gửi tin nhắn cho bạn qua lệnh `write`. Ngược lại, nếu bạn từ chối, bạn sẽ không nhận được tin nhắn từ người khác.
+## Tổng quan
+Lệnh `mesg` trong C Shell (csh) được sử dụng để quản lý quyền nhận tin nhắn từ người dùng khác. Lệnh này cho phép bạn bật hoặc tắt khả năng nhận tin nhắn trên terminal của mình.
 
-## Usage
+## Cú pháp
 Cú pháp cơ bản của lệnh `mesg` như sau:
 ```
-mesg [options] [arguments]
+mesg [tùy chọn] [tham số]
 ```
 
-## Common Options
-- `y`: Cho phép nhận tin nhắn từ người khác.
-- `n`: Từ chối nhận tin nhắn từ người khác.
-- `--help`: Hiển thị thông tin trợ giúp về lệnh `mesg`.
-- `--version`: Hiển thị phiên bản của lệnh `mesg`.
+## Tùy chọn phổ biến
+- `y`: Cho phép nhận tin nhắn từ người dùng khác.
+- `n`: Tắt khả năng nhận tin nhắn từ người dùng khác.
 
-## Common Examples
+## Ví dụ phổ biến
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `mesg`:
 
 1. **Cho phép nhận tin nhắn:**
-   ```bash
+   ```csh
    mesg y
    ```
 
-2. **Từ chối nhận tin nhắn:**
-   ```bash
+2. **Tắt nhận tin nhắn:**
+   ```csh
    mesg n
    ```
 
-3. **Kiểm tra trạng thái hiện tại của quyền nhận tin nhắn:**
-   ```bash
+3. **Kiểm tra trạng thái hiện tại:**
+   ```csh
    mesg
    ```
 
-## Tips
-- Hãy chắc chắn rằng bạn chỉ cho phép nhận tin nhắn từ những người mà bạn tin tưởng để tránh bị làm phiền.
-- Nếu bạn đang làm việc trong một môi trường công cộng, hãy cân nhắc việc từ chối nhận tin nhắn để giữ sự riêng tư.
-- Bạn có thể kiểm tra trạng thái quyền nhận tin nhắn của mình bất cứ lúc nào bằng cách sử dụng lệnh `mesg` mà không có tham số.
+## Mẹo
+- Hãy chắc chắn rằng bạn chỉ bật nhận tin nhắn khi bạn sẵn sàng nhận thông tin từ người khác, vì điều này có thể gây phân tâm.
+- Nếu bạn đang làm việc trong môi trường công cộng hoặc chia sẻ terminal, hãy cân nhắc tắt nhận tin nhắn để tránh bị làm phiền.

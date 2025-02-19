@@ -1,52 +1,52 @@
-# [Linux] Bash hostname utilisation : Afficher ou définir le nom d'hôte
+# [Linux] C Shell (csh) hostname Utilisation : Afficher ou définir le nom d'hôte du système
 
 ## Overview
-La commande `hostname` permet d'afficher ou de définir le nom d'hôte d'un système. Le nom d'hôte est un identifiant unique pour un ordinateur sur un réseau, facilitant ainsi la communication entre les machines.
+La commande `hostname` dans C Shell (csh) est utilisée pour afficher ou définir le nom d'hôte du système. Le nom d'hôte est un identifiant unique qui permet de reconnaître un ordinateur sur un réseau.
 
 ## Usage
 La syntaxe de base de la commande `hostname` est la suivante :
 
-```bash
+```csh
 hostname [options] [arguments]
 ```
 
 ## Common Options
 Voici quelques options courantes pour la commande `hostname` :
 
+- `-s` : Affiche seulement le nom d'hôte court.
 - `-f` : Affiche le nom d'hôte complet (FQDN).
-- `-i` : Affiche l'adresse IP du nom d'hôte.
-- `-s` : Affiche uniquement le nom d'hôte court.
-- `-A` : Affiche tous les noms d'hôte associés à l'adresse IP.
+- `-i` : Affiche l'adresse IP associée au nom d'hôte.
+- `-d` : Affiche le nom de domaine.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `hostname` :
 
 1. Afficher le nom d'hôte actuel :
-   ```bash
+   ```csh
    hostname
    ```
 
-2. Afficher le nom d'hôte complet :
-   ```bash
-   hostname -f
-   ```
-
-3. Afficher l'adresse IP associée au nom d'hôte :
-   ```bash
-   hostname -i
-   ```
-
-4. Définir un nouveau nom d'hôte :
-   ```bash
-   sudo hostname nouveau_nom
-   ```
-
-5. Afficher le nom d'hôte court :
-   ```bash
+2. Afficher le nom d'hôte court :
+   ```csh
    hostname -s
    ```
 
+3. Afficher le nom d'hôte complet :
+   ```csh
+   hostname -f
+   ```
+
+4. Afficher l'adresse IP du nom d'hôte :
+   ```csh
+   hostname -i
+   ```
+
+5. Définir un nouveau nom d'hôte :
+   ```csh
+   hostname nouveau_nom
+   ```
+
 ## Tips
-- Pour que le changement de nom d'hôte soit permanent, modifiez également le fichier `/etc/hostname`.
-- Utilisez `hostnamectl` sur les systèmes modernes pour gérer le nom d'hôte de manière plus avancée.
-- Vérifiez toujours que le nouveau nom d'hôte ne crée pas de conflits sur le réseau avant de le définir.
+- Assurez-vous d'avoir les permissions nécessaires pour changer le nom d'hôte, car cela peut nécessiter des privilèges administratifs.
+- Après avoir changé le nom d'hôte, il peut être nécessaire de redémarrer certains services ou le système pour que les modifications prennent effet.
+- Utilisez `hostname -d` pour vérifier rapidement le nom de domaine associé à votre système, ce qui peut être utile pour la configuration réseau.

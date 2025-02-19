@@ -1,23 +1,22 @@
-# [Linux] Bash md5sum Kullanımı: Dosya bütünlüğünü kontrol etme
+# [Linux] C Shell (csh) md5sum Kullanımı: Dosyaların MD5 Hash Değerini Hesaplama
 
-## Genel Bakış
-`md5sum` komutu, dosyaların MD5 hash değerlerini hesaplamak ve doğrulamak için kullanılır. Bu, dosyaların bütünlüğünü kontrol etmek ve dosya değişikliklerini tespit etmek için yaygın bir yöntemdir.
+## Overview
+md5sum komutu, dosyaların MD5 hash değerlerini hesaplamak için kullanılır. Bu, dosyaların bütünlüğünü kontrol etmek ve dosya karşılaştırmaları yapmak için yaygın olarak kullanılır.
 
-## Kullanım
+## Usage
 Temel sözdizimi aşağıdaki gibidir:
-
 ```bash
-md5sum [seçenekler] [argümanlar]
+md5sum [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-b`, `--binary`: İkili dosyalar için kullanılır.
-- `-c`, `--check`: MD5 hash değerlerini kontrol etmek için kullanılır.
-- `-t`, `--text`: Metin dosyaları için kullanılır (varsayılan).
-- `--quiet`: Sadece hatalı dosyaları gösterir.
+## Common Options
+- `-b`: İkili dosyalar için kullanılır.
+- `-c`: MD5 hash değerlerini kontrol etmek için bir dosya kullanır.
+- `-t`: Dosya yerine standart girdi üzerinden hash hesaplar.
+- `--help`: Komutun kullanımını gösterir.
 
-## Yaygın Örnekler
-Aşağıda `md5sum` komutunun bazı pratik kullanımları yer almaktadır:
+## Common Examples
+Aşağıda md5sum komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
 ### 1. Bir dosyanın MD5 hash değerini hesaplama
 ```bash
@@ -35,12 +34,16 @@ md5sum dosya.txt > hash_degerleri.txt
 ```
 
 ### 4. Hash değerlerini kontrol etme
-Önceden hesaplanmış hash değerlerini kontrol etmek için:
+Önce bir hash dosyası oluşturun:
 ```bash
-md5sum -c hash_degerleri.txt
+md5sum dosya.txt > dosya.md5
+```
+Sonra hash değerini kontrol edin:
+```bash
+md5sum -c dosya.md5
 ```
 
-## İpuçları
-- Hash değerlerini kontrol etmek için her zaman bir dosya ile birlikte hash dosyası kullanın.
-- Dosyaların bütünlüğünü sağlamak için hash değerlerini düzenli olarak kontrol edin.
-- `md5sum` komutunu kullanmadan önce dosyaların yedeğini almak iyi bir uygulamadır.
+## Tips
+- Hash değerlerini kontrol etmek için her zaman hash dosyası ile birlikte kullanın.
+- İkili dosyalar için `-b` seçeneğini kullanmayı unutmayın.
+- Hash değerlerini kaydetmek, dosya bütünlüğünü sağlamak için iyi bir uygulamadır.

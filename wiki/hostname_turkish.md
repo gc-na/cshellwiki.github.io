@@ -1,49 +1,50 @@
-# [Linux] Bash hostname Kullanımı: Bilgisayar adını görüntüleme ve ayarlama
+# [Linux] C Shell (csh) hostname Kullanımı: Sistem adını görüntüleme ve ayarlama
 
 ## Overview
-`hostname` komutu, bir bilgisayarın ağ üzerindeki adını görüntülemek veya değiştirmek için kullanılır. Bu komut, sistem yöneticileri ve kullanıcılar için ağ ayarlarını yönetmede önemli bir araçtır.
+`hostname` komutu, sistemin ağ üzerindeki adını görüntülemek veya değiştirmek için kullanılır. Bu komut, özellikle ağ yapılandırmalarında ve sistem yönetiminde önemli bir rol oynar.
 
 ## Usage
-Temel sözdizimi aşağıdaki gibidir:
-```
+Temel sözdizimi şu şekildedir:
+
+```csh
 hostname [options] [arguments]
 ```
 
 ## Common Options
-- `-f`, `--fqdn`: Tam nitelikli alan adı (FQDN) olarak bilgisayar adını gösterir.
-- `-i`, `--ip-address`: Bilgisayarın IP adresini görüntüler.
-- `-s`, `--short`: Kısa bilgisayar adını gösterir.
-- `-V`, `--version`: Komutun sürümünü gösterir.
+- `-f`: Tam alan adı (FQDN) ile sistem adını gösterir.
+- `-s`: Sadece kısa sistem adını gösterir.
+- `-i`: IP adresini gösterir.
+- `-V`: Versiyon bilgisini gösterir.
 
 ## Common Examples
-Aşağıda `hostname` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+Aşağıda `hostname` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. **Bilgisayar adını görüntüleme:**
-   ```bash
+1. **Sistem adını görüntüleme:**
+   ```csh
    hostname
    ```
 
-2. **Tam nitelikli alan adı görüntüleme:**
-   ```bash
-   hostname -f
-   ```
-
-3. **Bilgisayarın IP adresini görüntüleme:**
-   ```bash
-   hostname -i
-   ```
-
-4. **Kısa bilgisayar adını görüntüleme:**
-   ```bash
+2. **Kısa sistem adını görüntüleme:**
+   ```csh
    hostname -s
    ```
 
-5. **Bilgisayar adını değiştirme:**
-   ```bash
-   sudo hostname yeni_ad
+3. **Tam alan adı ile sistem adını görüntüleme:**
+   ```csh
+   hostname -f
+   ```
+
+4. **Sistemin IP adresini görüntüleme:**
+   ```csh
+   hostname -i
+   ```
+
+5. **Sistem adını değiştirme:**
+   ```csh
+   hostname yeni-sistem-adi
    ```
 
 ## Tips
-- Bilgisayar adını değiştirdikten sonra, değişikliğin etkili olması için sistemi yeniden başlatmanız gerekebilir.
-- Ağ ayarlarınızı yönetirken, bilgisayar adının diğer cihazlarla çakışmadığından emin olun.
-- `hostname` komutunu kullanmadan önce, gerekli izinlere sahip olduğunuzdan emin olun; bazı işlemler için yönetici yetkileri gerekebilir.
+- Sistem adını değiştirdikten sonra, değişikliğin etkili olması için bazı durumlarda sistemi yeniden başlatmanız gerekebilir.
+- Ağ ayarlarını güncellerken, `hostname` komutunu kullanarak sistem adının doğru olduğundan emin olun.
+- `hostname` komutunu kullanırken, gerekli izinlere sahip olduğunuzdan emin olun; bazı sistemlerde yalnızca yönetici kullanıcılar bu komutu kullanabilir.

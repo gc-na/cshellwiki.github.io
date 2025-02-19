@@ -1,48 +1,44 @@
-# [Linux] Bash killall użycie: Zakończ procesy według nazwy
+# [Linux] C Shell (csh) killall użycie: Zakończ procesy według nazwy
 
 ## Overview
-Polecenie `killall` służy do zakończenia wszystkich procesów o podanej nazwie. Jest to przydatne narzędzie do zarządzania procesami w systemie operacyjnym, umożliwiające szybkie i efektywne zamykanie aplikacji.
+Polecenie `killall` w C Shell (csh) służy do zakończenia wszystkich procesów o określonej nazwie. Jest to przydatne narzędzie, gdy chcesz szybko zamknąć wiele instancji programu bez konieczności identyfikowania ich identyfikatorów procesów (PID).
 
 ## Usage
-Podstawowa składnia polecenia `killall` wygląda następująco:
+Podstawowa składnia polecenia `killall` jest następująca:
 
-```bash
+```
 killall [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-u, --user`: Zakończ procesy tylko dla określonego użytkownika.
-- `-i, --interactive`: Potwierdź zakończenie każdego procesu.
-- `-q, --quiet`: Nie wyświetlaj komunikatów o błędach.
-- `-v, --verbose`: Wyświetl szczegółowe informacje o zakończonych procesach.
+- `-u <użytkownik>`: Zakończ procesy tylko dla określonego użytkownika.
+- `-s <sygnał>`: Wyślij określony sygnał do procesów (domyślnie jest to SIGTERM).
+- `-q`: Nie wyświetlaj komunikatów o błędach, jeśli nie ma procesów do zakończenia.
 
 ## Common Examples
 Oto kilka praktycznych przykładów użycia polecenia `killall`:
 
 1. Zakończenie wszystkich procesów o nazwie `firefox`:
-   ```bash
+   ```csh
    killall firefox
    ```
 
-2. Zakończenie wszystkich procesów `gedit` z potwierdzeniem:
-   ```bash
-   killall -i gedit
+2. Zakończenie wszystkich procesów `gedit` z wysłaniem sygnału SIGKILL:
+   ```csh
+   killall -s SIGKILL gedit
    ```
 
-3. Zakończenie procesów tylko dla użytkownika `janek`:
-   ```bash
-   killall -u janek
+3. Zakończenie procesów `python` tylko dla użytkownika `janek`:
+   ```csh
+   killall -u janek python
    ```
 
-4. Zakończenie procesów `vlc` bez wyświetlania komunikatów:
-   ```bash
-   killall -q vlc
+4. Zakończenie procesów `myapp`, nie wyświetlając komunikatów o błędach:
+   ```csh
+   killall -q myapp
    ```
 
 ## Tips
-- Używaj opcji `-i`, aby uniknąć przypadkowego zakończenia ważnych procesów.
-- Sprawdzaj, które procesy są uruchomione przed użyciem `killall`, aby upewnić się, że zamykasz właściwe aplikacje.
-- Możesz użyć `pgrep` przed `killall`, aby zobaczyć listę procesów, które zostaną zakończone:
-  ```bash
-  pgrep firefox
-  ```
+- Używaj `killall` ostrożnie, aby nie zakończyć procesów, które mogą być potrzebne do działania systemu.
+- Zawsze sprawdzaj, które procesy są uruchomione, używając polecenia `ps`, zanim użyjesz `killall`.
+- Możesz użyć opcji `-s` z różnymi sygnałami, aby dostosować sposób zakończenia procesów, na przykład `SIGTERM` lub `SIGKILL`.

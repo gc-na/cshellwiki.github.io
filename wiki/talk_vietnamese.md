@@ -1,43 +1,37 @@
-# [Linux] Bash talk cách sử dụng: Giao tiếp với người dùng khác
+# [Hệ điều hành] C Shell (csh) talk: Giao tiếp với người dùng khác
 
-## Overview
-Lệnh `talk` trong Bash cho phép người dùng giao tiếp trực tiếp với nhau trên cùng một hệ thống hoặc qua mạng. Nó mở một phiên trò chuyện hai chiều giữa hai người dùng, giúp họ có thể trao đổi thông tin một cách nhanh chóng và hiệu quả.
+## Tổng quan
+Lệnh `talk` trong C Shell (csh) cho phép người dùng giao tiếp trực tiếp với nhau qua một phiên trò chuyện. Khi sử dụng lệnh này, bạn có thể gửi và nhận tin nhắn theo thời gian thực với một người dùng khác trên cùng một mạng.
 
-## Usage
+## Cú pháp
 Cú pháp cơ bản của lệnh `talk` như sau:
 ```
-talk [options] [user]@[host]
+talk [tùy chọn] [người dùng]@[máy chủ]
 ```
 
-## Common Options
-- `-a`: Cho phép gửi thông báo đến người dùng ngay cả khi họ đang không đăng nhập.
-- `-m`: Sử dụng chế độ "m" để gửi tin nhắn mà không cần mở một cửa sổ trò chuyện.
-- `-s`: Chỉ định chế độ "silent", không hiển thị thông báo khi người dùng nhận được tin nhắn.
+## Tùy chọn phổ biến
+- `-h`: Hiển thị thông tin về người dùng mà bạn đang trò chuyện.
+- `-d`: Chỉ định rằng bạn muốn trò chuyện với một người dùng trên máy chủ khác.
 
-## Common Examples
-Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `talk`:
+## Ví dụ phổ biến
+Dưới đây là một số ví dụ về cách sử dụng lệnh `talk`:
 
-1. Gửi tin nhắn đến người dùng trên cùng một máy:
+1. Giao tiếp với người dùng trên cùng một máy:
    ```bash
    talk user1
    ```
 
-2. Gửi tin nhắn đến người dùng trên một máy khác:
+2. Giao tiếp với người dùng trên một máy chủ khác:
    ```bash
-   talk user2@192.168.1.10
+   talk user2@remotehost
    ```
 
-3. Sử dụng tùy chọn `-a` để gửi thông báo đến người dùng không đăng nhập:
+3. Giao tiếp với người dùng và hiển thị thông tin:
    ```bash
-   talk -a user3
+   talk -h user3
    ```
 
-4. Gửi tin nhắn mà không mở cửa sổ trò chuyện:
-   ```bash
-   talk -m user4
-   ```
-
-## Tips
-- Đảm bảo rằng người nhận đang sẵn sàng để nhận tin nhắn trước khi gửi, vì lệnh `talk` sẽ mở một phiên trò chuyện mới.
-- Kiểm tra xem người dùng có đang trực tuyến hay không bằng cách sử dụng lệnh `who`.
-- Sử dụng lệnh `mesg n` để ngăn không cho người khác gửi tin nhắn đến bạn nếu bạn không muốn bị làm phiền.
+## Mẹo
+- Đảm bảo rằng người dùng mà bạn muốn trò chuyện đang trực tuyến và có thể nhận tin nhắn.
+- Sử dụng lệnh `write` để gửi tin nhắn nếu `talk` không khả dụng.
+- Kiểm tra cài đặt tường lửa của bạn để đảm bảo rằng các kết nối đến và đi từ lệnh `talk` không bị chặn.

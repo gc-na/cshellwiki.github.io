@@ -1,42 +1,41 @@
-# [Linux] Bash bindkey cách sử dụng: Gán phím tắt cho các lệnh
+# [Hệ điều hành Unix] C Shell (csh) bindkey: [gán phím tắt]
 
 ## Tổng quan
-Lệnh `bindkey` trong Bash được sử dụng để gán các phím tắt cho các lệnh hoặc hành động trong môi trường dòng lệnh. Điều này giúp người dùng thao tác nhanh hơn và hiệu quả hơn khi sử dụng terminal.
+Lệnh `bindkey` trong C Shell (csh) được sử dụng để gán các phím tắt cho các lệnh hoặc chức năng cụ thể trong môi trường dòng lệnh. Điều này giúp tăng tốc độ làm việc và cải thiện hiệu suất khi sử dụng shell.
 
-## Cách sử dụng
+## Cú pháp
 Cú pháp cơ bản của lệnh `bindkey` như sau:
-
-```bash
-bindkey [options] [arguments]
+```
+bindkey [tùy chọn] [tham số]
 ```
 
 ## Các tùy chọn phổ biến
-- `-e`: Sử dụng chế độ vi (Emacs) cho các phím tắt.
-- `-v`: Sử dụng chế độ vim cho các phím tắt.
-- `-p`: Hiển thị danh sách các phím tắt hiện tại.
+- `-e`: Sử dụng chế độ vi (emacs) để gán phím.
+- `-v`: Sử dụng chế độ vim để gán phím.
+- `-s`: Gán một chuỗi lệnh cho một phím tắt cụ thể.
 
-## Ví dụ thường gặp
+## Ví dụ phổ biến
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `bindkey`:
 
-1. **Gán phím tắt cho lệnh clear**:
-   ```bash
-   bindkey -s '^K' 'clear\n'
+1. Gán phím tắt cho lệnh `ls`:
+   ```csh
+   bindkey -s "^l" "ls\n"
    ```
-   Khi bạn nhấn `Ctrl + K`, terminal sẽ xóa màn hình.
+   Khi bạn nhấn `Ctrl+l`, lệnh `ls` sẽ được thực thi.
 
-2. **Chuyển sang chế độ vi**:
-   ```bash
+2. Chuyển sang chế độ vi:
+   ```csh
    bindkey -v
    ```
-   Điều này sẽ chuyển chế độ phím tắt sang chế độ vim.
+   Điều này sẽ cho phép bạn sử dụng các phím tắt của vim trong shell.
 
-3. **Hiển thị các phím tắt hiện tại**:
-   ```bash
-   bindkey -p
+3. Gán phím tắt cho lệnh `clear`:
+   ```csh
+   bindkey -s "^c" "clear\n"
    ```
-   Lệnh này sẽ hiển thị danh sách các phím tắt đã được gán.
+   Khi bạn nhấn `Ctrl+c`, màn hình sẽ được làm sạch.
 
 ## Mẹo
-- Hãy thử gán các phím tắt cho các lệnh mà bạn sử dụng thường xuyên để tiết kiệm thời gian.
-- Để dễ dàng nhớ các phím tắt, hãy ghi chú lại hoặc tạo một tệp cấu hình cho các gán phím của bạn.
-- Kiểm tra các phím tắt hiện tại thường xuyên để tránh xung đột giữa các lệnh.
+- Hãy thử nghiệm với các phím tắt khác nhau để tìm ra những gì phù hợp nhất với bạn.
+- Ghi chú lại các phím tắt mà bạn đã gán để dễ dàng nhớ và sử dụng sau này.
+- Sử dụng chế độ vi hoặc emacs tùy thuộc vào phong cách làm việc của bạn để tối ưu hóa trải nghiệm sử dụng shell.

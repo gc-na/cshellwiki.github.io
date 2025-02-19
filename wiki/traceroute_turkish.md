@@ -1,51 +1,45 @@
-# [Linux] Bash traceroute Kullanımı: Ağ yolunu izleme aracı
+# [Linux] C Shell (csh) traceroute Kullanımı: Ağ yollarını izleme aracı
 
-## Overview
-`traceroute` komutu, bir ağ üzerindeki bir hedefe ulaşmak için geçen yolları ve bu yollar üzerindeki her bir ara noktayı (router) gösterir. Bu, ağ bağlantı sorunlarını teşhis etmek ve ağ performansını analiz etmek için yararlıdır.
+## Genel Bakış
+`traceroute` komutu, bir ağ üzerindeki veri paketlerinin hedefe ulaşırken geçtiği yolları izlemek için kullanılır. Bu komut, ağ bağlantı sorunlarını teşhis etmek ve ağın yapısını anlamak için oldukça faydalıdır.
 
-## Usage
-Temel kullanım sözdizimi aşağıdaki gibidir:
+## Kullanım
+Temel sözdizimi şu şekildedir:
 
-```bash
-traceroute [seçenekler] [hedef]
+```csh
+traceroute [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `-m <sayı>`: Maksimum sıçrama sayısını belirler.
-- `-p <port>`: Hedefe ulaşmak için kullanılacak port numarasını ayarlar.
+## Yaygın Seçenekler
+- `-m <sayı>`: Maksimum atlama sayısını belirler.
+- `-p <port>`: Hedefe gönderilecek UDP paketinin portunu ayarlar.
 - `-n`: IP adreslerini çözümlemeden doğrudan gösterir.
-- `-I`: ICMP ECHO isteği kullanarak izleme yapar (varsayılan UDP yerine).
-- `-w <saniye>`: Her bir sıçrama için zaman aşımını ayarlar.
+- `-w <saniye>`: Her bir atlama için zaman aşımını belirler.
 
-## Common Examples
-Aşağıda `traceroute` komutunun bazı pratik örnekleri verilmiştir:
+## Yaygın Örnekler
+Aşağıda `traceroute` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-1. Temel bir traceroute:
-   ```bash
+1. Basit bir traceroute komutu:
+   ```csh
    traceroute example.com
    ```
 
-2. Maksimum 10 sıçrama ile traceroute:
-   ```bash
-   traceroute -m 10 example.com
+2. Maksimum 15 atlama ile traceroute:
+   ```csh
+   traceroute -m 15 example.com
    ```
 
-3. Belirli bir port üzerinden traceroute:
-   ```bash
+3. Belirli bir port ile traceroute:
+   ```csh
    traceroute -p 80 example.com
    ```
 
-4. IP adreslerini çözümlemeden traceroute:
-   ```bash
+4. IP adreslerini çözümlemeden gösterme:
+   ```csh
    traceroute -n example.com
    ```
 
-5. ICMP ECHO isteği ile traceroute:
-   ```bash
-   traceroute -I example.com
-   ```
-
-## Tips
-- Ağ sorunlarını teşhis ederken, `-n` seçeneğini kullanarak daha hızlı sonuçlar alabilirsiniz.
-- Farklı protokollerle (UDP veya ICMP) denemeler yaparak, ağınızdaki sorunları daha iyi anlayabilirsiniz.
-- `traceroute` çıktısını analiz ederken, her bir sıçramanın yanındaki süreleri dikkate alarak hangi noktada gecikme yaşandığını belirleyebilirsiniz.
+## İpuçları
+- `traceroute` komutunu kullanmadan önce, ağ bağlantınızın aktif olduğundan emin olun.
+- Ağ sorunlarını teşhis etmek için, farklı hedeflere traceroute yaparak karşılaştırmalar yapın.
+- Sonuçları analiz ederken, her bir atlamanın yanıt süresine dikkat edin; yüksek yanıt süreleri ağda bir sorun olabileceğini gösterebilir.

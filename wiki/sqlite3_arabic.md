@@ -1,48 +1,53 @@
-# [لينكس] Bash sqlite3 الاستخدام: إدارة قواعد البيانات SQLite
+# [نظام التشغيل] C Shell (csh) sqlite3 الاستخدام: إدارة قواعد البيانات
 
 ## Overview
-أداة `sqlite3` هي واجهة سطر الأوامر لقاعدة بيانات SQLite. تتيح لك هذه الأداة إنشاء قواعد بيانات جديدة، وإجراء استعلامات، وتعديل البيانات، وإدارة الجداول، وكل ذلك من خلال سطر الأوامر.
+أداة `sqlite3` هي واجهة سطر الأوامر لقاعدة بيانات SQLite، وهي قاعدة بيانات خفيفة الوزن تستخدم لتخزين البيانات بطريقة منظمة. تتيح لك هذه الأداة إنشاء قواعد بيانات جديدة، وإجراء استعلامات، وتعديل البيانات، وإدارة الجداول.
 
 ## Usage
-تكون الصيغة الأساسية لاستخدام الأمر `sqlite3` كما يلي:
+تستخدم أداة `sqlite3` بالصيغة التالية:
 
-```bash
+```csh
 sqlite3 [options] [arguments]
 ```
 
 ## Common Options
 - `-help`: عرض قائمة بجميع الخيارات المتاحة.
-- `-version`: عرض إصدار SQLite المثبت.
-- `-init <file>`: تنفيذ الأوامر الموجودة في ملف محدد عند بدء تشغيل sqlite3.
-- `-batch`: تشغيل sqlite3 في وضع الدفعة، مما يعني عدم انتظار إدخال المستخدم.
+- `-version`: عرض إصدار SQLite.
+- `-init <file>`: تنفيذ الأوامر الموجودة في ملف معين عند بدء التشغيل.
+- `-batch`: تشغيل الأداة في وضع الدفعة، مما يعني عدم انتظار إدخال المستخدم.
 
 ## Common Examples
 - **إنشاء قاعدة بيانات جديدة:**
-```bash
+
+```csh
 sqlite3 mydatabase.db
 ```
 
 - **تنفيذ استعلام SQL:**
-```bash
-sqlite3 mydatabase.db "SELECT * FROM mytable;"
+
+```csh
+sqlite3 mydatabase.db "SELECT * FROM users;"
 ```
 
 - **إنشاء جدول جديد:**
-```bash
-sqlite3 mydatabase.db "CREATE TABLE mytable (id INTEGER PRIMARY KEY, name TEXT);"
+
+```csh
+sqlite3 mydatabase.db "CREATE TABLE users (id INTEGER PRIMARY KEY, name TEXT);"
 ```
 
 - **إدخال بيانات في الجدول:**
-```bash
-sqlite3 mydatabase.db "INSERT INTO mytable (name) VALUES ('Alice');"
+
+```csh
+sqlite3 mydatabase.db "INSERT INTO users (name) VALUES ('Ali');"
 ```
 
 - **عرض جميع البيانات من الجدول:**
-```bash
-sqlite3 mydatabase.db "SELECT * FROM mytable;"
+
+```csh
+sqlite3 mydatabase.db "SELECT * FROM users;"
 ```
 
 ## Tips
-- تأكد من استخدام الأوامر الصحيحة لتجنب الأخطاء، خاصة عند التعامل مع البيانات الحساسة.
-- استخدم خيار `-init` لتحميل إعدادات أو بيانات أولية عند بدء قاعدة البيانات.
-- من الجيد دائمًا إجراء نسخ احتياطية من قواعد البيانات قبل إجراء تغييرات كبيرة.
+- تأكد من استخدام النسخة الأحدث من SQLite للحصول على ميزات جديدة وإصلاحات للأخطاء.
+- استخدم خيار `-init` لتحميل إعدادات أو بيانات أولية عند بدء استخدام قاعدة البيانات.
+- قم بعمل نسخ احتياطية منتظمة لقاعدة البيانات الخاصة بك لتجنب فقدان البيانات.

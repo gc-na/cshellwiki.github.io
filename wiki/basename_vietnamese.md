@@ -1,54 +1,44 @@
-# [Linux] Bash basename Cách sử dụng: Lấy tên tệp từ đường dẫn
+# [Hệ điều hành] C Shell (csh) basename Cách sử dụng: Lấy tên tệp từ đường dẫn
 
-## Tổng quan
-Lệnh `basename` trong Bash được sử dụng để lấy tên tệp từ một đường dẫn đầy đủ. Nó loại bỏ tất cả các phần trước tên tệp, chỉ để lại tên tệp và phần mở rộng (nếu có).
+## Overview
+Lệnh `basename` trong C Shell được sử dụng để trích xuất tên tệp từ một đường dẫn đầy đủ. Nó giúp người dùng dễ dàng lấy tên tệp mà không cần phải biết đến phần đường dẫn.
 
-## Cách sử dụng
+## Usage
 Cú pháp cơ bản của lệnh `basename` như sau:
-```
-basename [tùy chọn] [đối số]
+```csh
+basename [options] [arguments]
 ```
 
-## Tùy chọn phổ biến
-- `-a`: Chấp nhận nhiều đối số và trả về tên tệp cho từng đối số.
-- `-s`: Xóa phần mở rộng chỉ định từ tên tệp.
+## Common Options
+- `-a`: Trả về tất cả các tên tệp từ danh sách đường dẫn.
+- `-s`: Loại bỏ phần mở rộng tệp được chỉ định.
 
-## Ví dụ phổ biến
+## Common Examples
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `basename`:
 
 1. Lấy tên tệp từ đường dẫn:
-   ```bash
-   basename /home/user/documents/file.txt
+   ```csh
+   basename /home/user/document.txt
    ```
-   Kết quả: `file.txt`
+   Kết quả: `document.txt`
 
-2. Lấy tên tệp từ đường dẫn mà không có phần mở rộng:
-   ```bash
-   basename /home/user/documents/file.txt .txt
+2. Lấy tên tệp từ nhiều đường dẫn:
+   ```csh
+   basename -a /home/user/file1.txt /home/user/file2.txt
    ```
-   Kết quả: `file`
-
-3. Sử dụng tùy chọn `-a` để lấy tên tệp từ nhiều đường dẫn:
-   ```bash
-   basename -a /home/user/documents/file1.txt /home/user/documents/file2.txt
-   ```
-   Kết quả:
+   Kết quả: 
    ```
    file1.txt
    file2.txt
    ```
 
-4. Xóa phần mở rộng từ nhiều tệp:
-   ```bash
-   basename -a /home/user/documents/file1.txt /home/user/documents/file2.log .txt .log
+3. Loại bỏ phần mở rộng tệp:
+   ```csh
+   basename -s .txt /home/user/report.txt
    ```
-   Kết quả:
-   ```
-   file1
-   file2
-   ```
+   Kết quả: `report`
 
-## Mẹo
-- Sử dụng `basename` trong các kịch bản để dễ dàng xử lý tên tệp.
-- Kết hợp với các lệnh khác như `find` để lấy tên tệp từ kết quả tìm kiếm.
-- Hãy chắc chắn rằng bạn chỉ định đúng phần mở rộng nếu bạn muốn loại bỏ nó, để tránh mất tên tệp quan trọng.
+## Tips
+- Sử dụng `basename` khi bạn chỉ cần tên tệp mà không cần biết đến đường dẫn.
+- Kết hợp với các lệnh khác như `find` để xử lý nhiều tệp cùng lúc.
+- Hãy chú ý đến phần mở rộng tệp nếu bạn sử dụng tùy chọn `-s` để đảm bảo loại bỏ đúng phần mở rộng.

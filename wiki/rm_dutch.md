@@ -1,50 +1,50 @@
-# [Linux] Bash rm gebruik: Verwijder bestanden en mappen
+# [Linux] C Shell (csh) rm gebruik: Verwijder bestanden en mappen
 
 ## Overzicht
-Het `rm`-commando in Bash wordt gebruikt om bestanden en mappen te verwijderen. Het is een krachtig hulpmiddel dat permanent verwijdert, wat betekent dat de verwijderde items niet naar de prullenbak gaan en niet eenvoudig kunnen worden hersteld.
+De `rm`-opdracht in C Shell (csh) wordt gebruikt om bestanden en mappen te verwijderen. Het is een krachtig hulpmiddel dat met zorg moet worden gebruikt, aangezien verwijderde bestanden meestal niet kunnen worden hersteld.
 
 ## Gebruik
-De basis syntaxis van het `rm`-commando is als volgt:
+De basis syntaxis van de `rm`-opdracht is als volgt:
 
-```bash
+```csh
 rm [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- `-f`: Forceert het verwijderen zonder bevestiging, zelfs als de bestanden schrijfbeveiligd zijn.
+## Veelvoorkomende Opties
+- `-f`: Forceert het verwijderen van bestanden zonder bevestiging.
 - `-i`: Vraagt om bevestiging voordat elk bestand wordt verwijderd.
 - `-r`: Verwijdert mappen en hun inhoud recursief.
-- `-v`: Geeft gedetailleerde uitvoer van wat er wordt verwijderd.
+- `-v`: Geeft een uitvoer weer van de verwijderde bestanden.
 
-## Veelvoorkomende voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van het `rm`-commando:
+## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van de `rm`-opdracht:
 
-1. **Verwijder een enkel bestand:**
-   ```bash
-   rm bestand.txt
-   ```
+1. Verwijder een enkel bestand:
+    ```csh
+    rm bestand.txt
+    ```
 
-2. **Verwijder meerdere bestanden:**
-   ```bash
-   rm bestand1.txt bestand2.txt bestand3.txt
-   ```
+2. Verwijder meerdere bestanden:
+    ```csh
+    rm bestand1.txt bestand2.txt bestand3.txt
+    ```
 
-3. **Verwijder een map en al zijn inhoud:**
-   ```bash
-   rm -r mapnaam
-   ```
+3. Verwijder een map en al zijn inhoud:
+    ```csh
+    rm -r mapnaam
+    ```
 
-4. **Verwijder een bestand zonder bevestiging:**
-   ```bash
-   rm -f bestand.txt
-   ```
+4. Verwijder een bestand zonder bevestiging:
+    ```csh
+    rm -f bestand.txt
+    ```
 
-5. **Verwijder bestanden met bevestiging:**
-   ```bash
-   rm -i bestand.txt
-   ```
+5. Vraag bevestiging voordat je een bestand verwijdert:
+    ```csh
+    rm -i bestand.txt
+    ```
 
 ## Tips
-- Gebruik de `-i` optie als je twijfelt over het verwijderen van bestanden, zodat je bevestiging krijgt voordat ze worden verwijderd.
-- Wees voorzichtig met de `-f` en `-r` opties, vooral in combinatie, omdat dit kan leiden tot onbedoeld verlies van gegevens.
-- Overweeg het gebruik van een back-up of versiebeheersysteem om gegevensverlies te voorkomen voordat je bestanden permanent verwijdert.
+- Gebruik de `-i` optie om per ongeluk verwijderen van belangrijke bestanden te voorkomen.
+- Controleer altijd de bestandsnamen voordat je de `rm`-opdracht uitvoert, vooral bij het gebruik van de `-r` optie.
+- Overweeg om een back-up van belangrijke bestanden te maken voordat je ze verwijdert.

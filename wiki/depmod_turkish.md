@@ -1,53 +1,42 @@
-# [Linux] Bash depmod Kullanımı: Modül bağımlılıklarını güncelleme
+# [Linux] C Shell (csh) depmod Kullanımı: Modül bağımlılıklarını güncelleme
 
-## Overview
-`depmod`, Linux işletim sistemlerinde kullanılan bir komuttur ve çekirdek modüllerinin bağımlılıklarını güncelleyerek, modül yükleme işlemlerini kolaylaştırır. Bu komut, sistemin hangi modüllerin yüklü olduğunu ve bunların birbirleriyle olan ilişkilerini belirlemek için kullanılır.
+## Genel Bakış
+`depmod` komutu, Linux çekirdeği modüllerinin bağımlılıklarını güncellemek için kullanılır. Bu komut, modüllerin hangi diğer modüllere bağımlı olduğunu belirler ve bu bilgileri `/lib/modules/$(uname -r)/modules.dep` dosyasına yazar.
 
-## Usage
-Temel kullanım sözdizimi aşağıdaki gibidir:
-
-```bash
-depmod [options] [arguments]
+## Kullanım
+Temel sözdizimi aşağıdaki gibidir:
+```csh
+depmod [seçenekler] [argümanlar]
 ```
 
-## Common Options
+## Yaygın Seçenekler
 - `-a`: Tüm modülleri günceller.
-- `-n`: Modül bağımlılıklarını güncellemeyi simüle eder, gerçek değişiklik yapmaz.
-- `-F <file>`: Belirtilen dosyayı kullanarak modül bağımlılıklarını günceller.
-- `-b <directory>`: Belirtilen dizindeki modülleri kullanarak güncelleme yapar.
+- `-n`: Modül bağımlılıklarını güncellemeyecek, sadece hangi modüllerin güncellenmesi gerektiğini gösterir.
+- `-F`: Belirtilen bir dosyayı kullanarak modül bağımlılıklarını günceller.
+- `-b`: Modüllerin bulunduğu farklı bir dizin belirtmek için kullanılır.
 
-## Common Examples
-Aşağıda `depmod` komutunun bazı pratik örnekleri verilmiştir:
+## Yaygın Örnekler
+Aşağıda `depmod` komutunun bazı pratik örnekleri bulunmaktadır:
 
 ### Tüm Modülleri Güncelleme
-Tüm modüllerin bağımlılıklarını güncellemek için:
-
-```bash
+```csh
 depmod -a
 ```
+Bu komut, sistemdeki tüm modüllerin bağımlılıklarını günceller.
 
-### Güncellemeyi Simüle Etme
-Gerçek değişiklik yapmadan güncellemeyi simüle etmek için:
-
-```bash
+### Modül Bağımlılıklarını Kontrol Etme
+```csh
 depmod -n
 ```
+Bu komut, güncellemeleri uygulamadan önce hangi modüllerin güncellenmesi gerektiğini gösterir.
 
-### Belirli Bir Dizin Kullanarak Güncelleme
-Belirli bir dizindeki modülleri kullanarak güncellemek için:
-
-```bash
-depmod -b /lib/modules/5.4.0-42-generic
+### Belirli Bir Dizin İçin Modül Güncelleme
+```csh
+depmod -b /path/to/modules
 ```
+Bu komut, belirtilen dizindeki modüllerin bağımlılıklarını günceller.
 
-### Özel Bir Dosya Kullanarak Güncelleme
-Belirli bir dosyayı kullanarak güncelleme yapmak için:
-
-```bash
-depmod -F /path/to/modules.dep
-```
-
-## Tips
-- `depmod` komutunu genellikle çekirdek güncellemelerinden sonra çalıştırmak iyi bir uygulamadır.
-- Modül bağımlılıklarını güncellerken, sistemin kararlılığını sağlamak için root yetkilerine sahip olmanız gerektiğini unutmayın.
-- Hataları önlemek için, `depmod` komutunu çalıştırmadan önce mevcut modül dosyalarınızı yedeklemeniz önerilir.
+## İpuçları
+- `depmod` komutunu çalıştırmadan önce root yetkilerine sahip olduğunuzdan emin olun.
+- Modül güncellemeleri sonrasında sisteminizi yeniden başlatmayı unutmayın, böylece değişikliklerin etkili olmasını sağlarsınız.
+- Modül bağımlılıklarını güncellemeyi düzenli olarak yapmak, sisteminizin kararlılığını artırabilir.

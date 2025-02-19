@@ -1,53 +1,46 @@
-# [Linux] Bash tune2fs Penggunaan: Mengelola parameter sistem file ext2/ext3/ext4
+# [Linux] C Shell (csh) tune2fs Penggunaan: Mengelola parameter sistem file ext2/ext3/ext4
 
 ## Overview
-Perintah `tune2fs` digunakan untuk mengubah parameter sistem file ext2, ext3, dan ext4 pada Linux. Dengan menggunakan perintah ini, pengguna dapat mengatur berbagai opsi untuk meningkatkan kinerja dan keamanan sistem file.
+Perintah `tune2fs` digunakan untuk mengubah parameter dan pengaturan dari sistem file yang menggunakan format ext2, ext3, atau ext4. Dengan menggunakan `tune2fs`, pengguna dapat mengoptimalkan kinerja dan pengaturan sistem file sesuai kebutuhan.
 
 ## Usage
-Sintaks dasar dari perintah `tune2fs` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `tune2fs`:
 
-```bash
+```csh
 tune2fs [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang dapat digunakan dengan `tune2fs`:
-
-- `-c <max-mount-count>`: Mengatur jumlah maksimum penggantian sistem file sebelum melakukan pemeriksaan.
-- `-i <interval>`: Mengatur interval waktu untuk pemeriksaan sistem file.
+- `-c <max-mount-count>`: Mengatur jumlah maksimum penggantian sistem file sebelum pemeriksaan dilakukan.
+- `-i <interval>`: Mengatur interval waktu antara pemeriksaan sistem file.
 - `-O <feature>`: Mengaktifkan fitur tertentu pada sistem file.
-- `-L <label>`: Mengubah label sistem file.
-- `-j`: Mengaktifkan dukungan journaling pada sistem file.
+- `-e <error_behavior>`: Menentukan perilaku ketika terjadi kesalahan pada sistem file.
+- `-L <label>`: Mengubah label dari sistem file.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `tune2fs`:
 
 1. Mengatur jumlah maksimum penggantian sistem file menjadi 20:
-   ```bash
+   ```csh
    tune2fs -c 20 /dev/sda1
    ```
 
 2. Mengatur interval pemeriksaan sistem file menjadi 30 hari:
-   ```bash
+   ```csh
    tune2fs -i 30d /dev/sda1
    ```
 
-3. Mengaktifkan fitur `dir_index` pada sistem file:
-   ```bash
-   tune2fs -O dir_index /dev/sda1
+3. Mengaktifkan fitur journaling pada sistem file:
+   ```csh
+   tune2fs -O has_journal /dev/sda1
    ```
 
 4. Mengubah label sistem file menjadi "DataDisk":
-   ```bash
+   ```csh
    tune2fs -L DataDisk /dev/sda1
    ```
 
-5. Mengaktifkan dukungan journaling pada sistem file:
-   ```bash
-   tune2fs -j /dev/sda1
-   ```
-
 ## Tips
-- Selalu lakukan backup data penting sebelum melakukan perubahan pada sistem file.
-- Periksa status sistem file dengan `tune2fs -l /dev/sda1` untuk melihat parameter yang ada sebelum melakukan perubahan.
-- Gunakan opsi `-c` dan `-i` secara bijak untuk menghindari pemeriksaan yang terlalu sering, yang dapat mempengaruhi kinerja sistem.
+- Selalu lakukan backup data sebelum melakukan perubahan pada sistem file.
+- Gunakan perintah `tune2fs -l /dev/sda1` untuk melihat pengaturan dan parameter saat ini dari sistem file.
+- Pastikan sistem file tidak sedang digunakan saat melakukan perubahan untuk menghindari kerusakan data.

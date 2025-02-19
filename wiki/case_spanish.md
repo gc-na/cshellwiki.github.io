@@ -1,92 +1,71 @@
-# [Linux] Bash case uso: Estructura de selección de patrones
+# [Linux] C Shell (csh) case <Uso equivalente en español>: Evaluar patrones de cadena
 
 ## Overview
-El comando `case` en Bash se utiliza para realizar selecciones de múltiples patrones. Permite ejecutar diferentes bloques de código dependiendo del valor de una variable, facilitando la toma de decisiones en scripts.
+El comando `case` en C Shell (csh) se utiliza para evaluar patrones de cadena y ejecutar diferentes bloques de código según el patrón que coincida. Es similar a una estructura de control de flujo que permite manejar múltiples condiciones de manera más organizada.
 
 ## Usage
 La sintaxis básica del comando `case` es la siguiente:
 
-```bash
-case [variable] in
-    [patrón1])
-        # comandos para patrón1
-        ;;
-    [patrón2])
-        # comandos para patrón2
-        ;;
-    *)
-        # comandos por defecto
-        ;;
+```csh
+case expresión in
+    patrón1) comandos1 ;;
+    patrón2) comandos2 ;;
+    ...
+    *) comandos_por_defecto ;;
 esac
 ```
 
 ## Common Options
-El comando `case` no tiene opciones específicas, pero se basa en patrones que puedes definir. Los patrones pueden incluir:
-
-- `*`: Coincide con cualquier cadena.
-- `?`: Coincide con un solo carácter.
-- `[abc]`: Coincide con cualquier carácter dentro de los corchetes.
+El comando `case` no tiene opciones específicas, pero se basa en patrones que puedes definir. Los patrones pueden incluir caracteres comodín como `*` y `?`.
 
 ## Common Examples
 
-### Ejemplo 1: Selección de días de la semana
-```bash
-dia="Lunes"
-
-case $dia in
-    "Lunes")
-        echo "Hoy es lunes."
-        ;;
-    "Martes")
-        echo "Hoy es martes."
-        ;;
-    "Miércoles")
-        echo "Hoy es miércoles."
-        ;;
-    *)
-        echo "No es un día de la semana válido."
-        ;;
-esac
-```
-
-### Ejemplo 2: Clasificación de números
-```bash
-numero=5
-
-case $numero in
-    1)
+### Ejemplo 1: Evaluar un número
+```csh
+set num = 2
+switch ($num)
+    case 1:
         echo "El número es uno."
-        ;;
-    2)
+        breaksw
+    case 2:
         echo "El número es dos."
-        ;;
-    3|4|5)
-        echo "El número está entre tres y cinco."
-        ;;
-    *)
-        echo "El número es mayor que cinco o menor que uno."
-        ;;
-esac
+        breaksw
+    default:
+        echo "Número no reconocido."
+endsw
 ```
 
-### Ejemplo 3: Comandos según extensión de archivo
-```bash
-archivo="documento.txt"
+### Ejemplo 2: Evaluar una cadena
+```csh
+set color = "rojo"
+switch ($color)
+    case "rojo":
+        echo "El color es rojo."
+        breaksw
+    case "verde":
+        echo "El color es verde."
+        breaksw
+    default:
+        echo "Color no reconocido."
+endsw
+```
 
-case $archivo in
-    *.txt)
+### Ejemplo 3: Usar comodines
+```csh
+set archivo = "documento.txt"
+switch ($archivo)
+    case "*.txt":
         echo "Es un archivo de texto."
-        ;;
-    *.jpg|*.png)
-        echo "Es una imagen."
-        ;;
-    *)
-        echo "Tipo de archivo desconocido."
-        ;;
-esac
+        breaksw
+    case "*.jpg":
+        echo "Es una imagen JPEG."
+        breaksw
+    default:
+        echo "Tipo de archivo no reconocido."
+endsw
 ```
 
 ## Tips
-- Utiliza patrones específicos para mejorar la legibilidad de tu código.
-- Recuerda cerrar cada bloque de comandos con `;;` para evitar errores de sintaxis.
-- Puedes combinar patrones usando `|` para simplificar múltiples coincidencias.
+- Utiliza `breaksw` para salir de la estructura `switch` una vez que se haya ejecutado un bloque de comandos.
+- Recuerda que los patrones son evaluados en orden, por lo que el orden de los casos puede afectar el resultado.
+- Los comodines como `*` y `?` pueden ser muy útiles para hacer coincidir varios patrones con una sola línea de código.

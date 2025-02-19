@@ -1,44 +1,44 @@
-# [Linux] Bash true użycie: Zwraca prawdę
+# [Linux] C Shell (csh) true: [zwraca prawdę]
 
 ## Overview
-Polecenie `true` w systemie Linux jest prostym narzędziem, które zawsze zwraca kod wyjścia 0, co oznacza sukces. Jest często używane w skryptach i automatyzacji, gdzie potrzebne jest potwierdzenie, że operacja zakończyła się pomyślnie.
+Polecenie `true` w powłoce C Shell (csh) jest prostym narzędziem, które zawsze zwraca wartość prawdy (0). Jest często używane w skryptach do wskazywania, że operacja zakończyła się pomyślnie, lub jako placeholder w miejscach, gdzie wymagana jest komenda.
 
 ## Usage
 Podstawowa składnia polecenia `true` jest następująca:
 
-```bash
+```csh
 true [opcje] [argumenty]
 ```
 
 ## Common Options
-Polecenie `true` nie ma żadnych opcji ani argumentów, które by zmieniały jego działanie. Zawsze zwraca ten sam wynik.
+Polecenie `true` nie ma żadnych opcji ani argumentów, które można by zastosować. Jego jedyną funkcją jest zwracanie wartości 0.
 
 ## Common Examples
 Oto kilka praktycznych przykładów użycia polecenia `true`:
 
-1. **Sprawdzenie, czy polecenie zakończyło się sukcesem:**
-   ```bash
-   if true; then
-       echo "To polecenie zakończyło się sukcesem!"
-   fi
+1. **Użycie w skrypcie:**
+   ```csh
+   if ( -e plik.txt ) then
+       true
+   else
+       echo "Plik nie istnieje."
+   endif
    ```
 
-2. **Użycie w skrypcie do testowania:**
-   ```bash
-   #!/bin/bash
+2. **W pętli:**
+   ```csh
+   while (1)
+       true
+   end
+   ```
+
+3. **Jako część większego skryptu:**
+   ```csh
+   echo "Rozpoczynam proces..."
    true
-   echo "Skrypt zakończony pomyślnie."
-   ```
-
-3. **Wykorzystanie w pętli:**
-   ```bash
-   while true; do
-       echo "Ta pętla będzie działać w nieskończoność."
-       break  # Użycie break, aby przerwać pętlę
-   done
+   echo "Proces zakończony pomyślnie."
    ```
 
 ## Tips
-- Używaj `true` w skryptach, aby zapewnić, że pewne sekcje kodu są zawsze wykonywane.
-- Możesz użyć `true` w połączeniu z innymi poleceniami, aby stworzyć bardziej złożone logiki warunkowe.
-- `true` jest bardzo szybkie i nie wymaga żadnych zasobów, co czyni je idealnym do testowania i debugowania.
+- Używaj `true` w skryptach, aby zasygnalizować, że dany blok kodu zakończył się sukcesem, co może być przydatne w bardziej złożonych warunkach.
+- Możesz użyć `true` w połączeniu z innymi poleceniami, aby utworzyć pętle, które nie wykonują żadnych operacji, ale są wymagane do zachowania struktury skryptu.

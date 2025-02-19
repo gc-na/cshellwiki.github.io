@@ -1,7 +1,7 @@
-# [Linux] Bash docker-compose gebruik: Beheer van multi-container Docker-applicaties
+# [Linux] C Shell (csh) docker-compose gebruik: Beheer van multi-container Docker-applicaties
 
 ## Overzicht
-De `docker-compose` opdracht is een krachtige tool die het mogelijk maakt om multi-container Docker-applicaties te definiëren en te beheren. Met `docker-compose` kun je eenvoudig de configuratie van je containers in een YAML-bestand vastleggen en deze containers met één enkele opdracht opstarten, stoppen of beheren.
+De `docker-compose` opdracht is een hulpmiddel dat wordt gebruikt om multi-container Docker-applicaties te definiëren en te beheren. Met `docker-compose` kun je eenvoudig een applicatie opzetten met meerdere services, netwerken en volumes, allemaal gedefinieerd in een enkele YAML-configuratiebestand.
 
 ## Gebruik
 De basis syntaxis van de `docker-compose` opdracht is als volgt:
@@ -11,55 +11,53 @@ docker-compose [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-Hier zijn enkele veelvoorkomende opties die je kunt gebruiken met `docker-compose`:
+Hier zijn enkele veelvoorkomende opties voor `docker-compose`:
 
-- `up`: Start de gedefinieerde containers.
-- `down`: Stop en verwijder de containers, netwerken en volumes die zijn gedefinieerd in het bestand.
+- `up`: Start de gedefinieerde services.
+- `down`: Stop en verwijder de services.
 - `build`: Bouw de services zoals gedefinieerd in het `docker-compose.yml` bestand.
-- `logs`: Toon de logs van de containers.
-- `exec`: Voer een commando uit in een draaiende container.
+- `logs`: Toon de logs van de services.
+- `ps`: Lijst de actieve containers van de gedefinieerde services.
 
 ## Veelvoorkomende Voorbeelden
 
-### Starten van de containers
-Om de containers te starten die zijn gedefinieerd in het `docker-compose.yml` bestand, gebruik je:
+### Starten van de applicatie
+Om een applicatie te starten die is gedefinieerd in een `docker-compose.yml` bestand, gebruik je:
 
 ```bash
 docker-compose up
 ```
 
-### Stoppen en verwijderen van containers
-Om de containers te stoppen en te verwijderen, gebruik je:
+### Stoppen van de applicatie
+Om de applicatie te stoppen en de containers te verwijderen, gebruik je:
 
 ```bash
 docker-compose down
 ```
 
-### Bouw de services
-Als je wijzigingen hebt aangebracht in de Dockerfile of in de configuratie, kun je de services opnieuw bouwen met:
+### Bouwen van de services
+Als je wijzigingen hebt aangebracht in de Dockerfile of de configuratie, kun je de services opnieuw bouwen met:
 
 ```bash
 docker-compose build
 ```
 
-### Toegang tot logs
-Om de logs van de containers te bekijken, gebruik je:
+### Bekijken van logs
+Om de logs van alle services te bekijken, gebruik je:
 
 ```bash
 docker-compose logs
 ```
 
-### Voer een commando uit in een container
-Als je een commando wilt uitvoeren in een specifieke container, bijvoorbeeld een bash-shell, gebruik je:
+### Lijst van actieve containers
+Om een lijst van actieve containers te zien, gebruik je:
 
 ```bash
-docker-compose exec <service_naam> bash
+docker-compose ps
 ```
 
-Vervang `<service_naam>` door de naam van de service zoals gedefinieerd in je `docker-compose.yml`.
-
 ## Tips
-- Zorg ervoor dat je een goed gestructureerd `docker-compose.yml` bestand hebt, zodat je eenvoudig je containers kunt beheren.
+- Zorg ervoor dat je een goed gestructureerd `docker-compose.yml` bestand hebt, zodat je eenvoudig je applicatie kunt beheren.
 - Gebruik de optie `-d` met `docker-compose up` om de containers in de achtergrond te draaien.
 - Maak gebruik van netwerken in je `docker-compose.yml` om de communicatie tussen containers te vergemakkelijken.
-- Houd je Docker- en Docker Compose-versies up-to-date voor de beste prestaties en beveiliging.
+- Houd je `docker-compose.yml` bestand up-to-date met de laatste configuraties en afhankelijkheden voor een soepelere werking.

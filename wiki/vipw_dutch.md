@@ -1,43 +1,38 @@
-# [Linux] Bash vipw gebruik: Bewerken van het wachtwoordbestand
+# [Linux] C Shell (csh) vipw gebruik: Bewerken van het wachtwoordbestand
 
 ## Overzicht
-De `vipw` opdracht wordt gebruikt om het wachtwoordbestand (`/etc/passwd`) en het shadow-bestand (`/etc/shadow`) veilig te bewerken. Het zorgt ervoor dat er geen gelijktijdige wijzigingen plaatsvinden, wat de integriteit van de bestanden waarborgt.
+De `vipw` opdracht wordt gebruikt om het wachtwoordbestand (`/etc/passwd` en `/etc/shadow`) veilig te bewerken. Het zorgt ervoor dat tijdens het bewerken van deze bestanden geen andere processen ze kunnen wijzigen, wat de integriteit van de gegevens waarborgt.
 
 ## Gebruik
 De basis syntaxis van de `vipw` opdracht is als volgt:
 
-```bash
+```csh
 vipw [opties]
 ```
 
-## Veelvoorkomende opties
-- `-s`: Bewerk het shadow-bestand in plaats van het wachtwoordbestand.
-- `-h`: Geef hulpinformatie weer over het gebruik van de opdracht.
+## Veelvoorkomende Opties
+- `-s`: Bewerk het shadow-bestand in plaats van het standaard wachtwoordbestand.
+- `-u`: Specificeert de gebruiker die moet worden bewerkt (alleen relevant voor het shadow-bestand).
 
-## Veelvoorkomende voorbeelden
+## Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van de `vipw` opdracht:
 
-### Voorbeeld 1: Het wachtwoordbestand bewerken
-Om het wachtwoordbestand te bewerken, gebruik je eenvoudig:
+1. **Standaard wachtwoordbestand bewerken**:
+   ```csh
+   vipw
+   ```
 
-```bash
-vipw
-```
+2. **Shadow-bestand bewerken**:
+   ```csh
+   vipw -s
+   ```
 
-### Voorbeeld 2: Het shadow-bestand bewerken
-Als je het shadow-bestand wilt bewerken, gebruik je de `-s` optie:
-
-```bash
-vipw -s
-```
-
-### Voorbeeld 3: Hulpinformatie opvragen
-Als je meer informatie nodig hebt over het gebruik van de `vipw` opdracht, kun je de `-h` optie gebruiken:
-
-```bash
-vipw -h
-```
+3. **Specifieke gebruiker bewerken in het shadow-bestand**:
+   ```csh
+   vipw -s -u username
+   ```
 
 ## Tips
-- Gebruik `vipw` altijd in plaats van een gewone teksteditor om ervoor te zorgen dat er geen conflicten ontstaan bij het bewerken van het wachtwoordbestand.
-- Maak altijd een back-up van je bestanden voordat je ze wijzigt, vooral als je werkt met systeemconfiguraties.
-- Controleer na het bewerken van het bestand of de wijzigingen correct zijn door het bestand opnieuw te bekijken met `vipw`.
+- Zorg ervoor dat je voldoende rechten hebt om het wachtwoordbestand te bewerken; meestal zijn root-rechten vereist.
+- Maak altijd een back-up van het wachtwoordbestand voordat je wijzigingen aanbrengt.
+- Gebruik `vipw` in een veilige omgeving om ongewenste toegang of wijzigingen te voorkomen.

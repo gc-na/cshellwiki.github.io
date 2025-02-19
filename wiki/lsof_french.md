@@ -1,7 +1,7 @@
-# [Linux] Bash lsof Utilisation : Afficher les fichiers ouverts par les processus
+# [Linux] C Shell (csh) lsof Utilisation : Afficher les fichiers ouverts
 
 ## Overview
-La commande `lsof` (List Open Files) est utilisée pour afficher les fichiers ouverts par les processus sur un système Unix/Linux. Elle permet d'obtenir des informations sur les fichiers, les sockets et les périphériques utilisés par les applications en cours d'exécution.
+La commande `lsof` (List Open Files) permet d'afficher les fichiers ouverts par les processus en cours d'exécution sur un système. Cela inclut les fichiers réguliers, les fichiers de périphériques, les sockets, et plus encore. C'est un outil précieux pour le diagnostic des problèmes de système et pour la gestion des ressources.
 
 ## Usage
 La syntaxe de base de la commande `lsof` est la suivante :
@@ -11,16 +11,16 @@ lsof [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes pour la commande `lsof` :
+Voici quelques options courantes pour `lsof` :
 
-- `-u [utilisateur]` : Affiche les fichiers ouverts par un utilisateur spécifique.
-- `-p [PID]` : Affiche les fichiers ouverts par un processus avec un identifiant spécifique (PID).
-- `-i` : Montre les fichiers ouverts qui sont des connexions réseau.
-- `+D [répertoire]` : Affiche les fichiers ouverts dans un répertoire spécifique et ses sous-répertoires.
-- `-t` : Affiche uniquement les identifiants de processus (PID), sans autres informations.
+- `-i` : Affiche les fichiers ouverts associés aux connexions réseau.
+- `-u [user]` : Filtre les résultats pour n'afficher que les fichiers ouverts par un utilisateur spécifique.
+- `-p [pid]` : Affiche les fichiers ouverts par un processus identifié par son PID (Process ID).
+- `+D [directory]` : Affiche les fichiers ouverts dans un répertoire spécifique.
+- `-t` : Affiche uniquement les PID des processus, sans autres informations.
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de `lsof` :
+Voici quelques exemples pratiques de l'utilisation de la commande `lsof` :
 
 1. **Afficher tous les fichiers ouverts :**
    ```bash
@@ -29,7 +29,7 @@ Voici quelques exemples pratiques de l'utilisation de `lsof` :
 
 2. **Afficher les fichiers ouverts par un utilisateur spécifique :**
    ```bash
-   lsof -u nom_utilisateur
+   lsof -u username
    ```
 
 3. **Afficher les fichiers ouverts par un processus spécifique :**
@@ -44,16 +44,10 @@ Voici quelques exemples pratiques de l'utilisation de `lsof` :
 
 5. **Afficher les fichiers ouverts dans un répertoire spécifique :**
    ```bash
-   lsof +D /chemin/vers/répertoire
+   lsof +D /chemin/vers/repertoire
    ```
 
 ## Tips
-- Utilisez `lsof` avec `grep` pour filtrer les résultats selon vos besoins, par exemple : 
-  ```bash
-  lsof | grep nom_fichier
-  ```
-- Pour obtenir des informations en temps réel, combinez `lsof` avec `watch` :
-  ```bash
-  watch lsof
-  ```
-- Soyez prudent lorsque vous utilisez `lsof` avec des options qui affichent beaucoup de données, car cela peut ralentir votre terminal.
+- Utilisez `lsof` avec des privilèges d'administrateur (par exemple, avec `sudo`) pour voir tous les fichiers ouverts par tous les utilisateurs.
+- Combinez `lsof` avec d'autres commandes comme `grep` pour filtrer les résultats et trouver des informations spécifiques.
+- Soyez prudent lorsque vous utilisez `lsof` sur des systèmes très chargés, car cela peut générer une grande quantité de données.

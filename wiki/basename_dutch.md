@@ -1,59 +1,44 @@
-# [Linux] Bash basename gebruik: Haal de bestandsnaam uit een pad
+# [Linux] C Shell (csh) basename gebruik: Verwijder het pad van een bestand
 
 ## Overzicht
-De `basename`-opdracht in Bash wordt gebruikt om de naam van een bestand of directory uit een volledig pad te extraheren. Dit kan handig zijn wanneer je alleen de naam wilt zonder het pad.
+De `basename`-opdracht in C Shell (csh) wordt gebruikt om het pad van een bestand te verwijderen en alleen de bestandsnaam terug te geven. Dit is handig wanneer je alleen de naam van een bestand wilt zonder de directorystructuur.
 
 ## Gebruik
 De basis syntaxis van de `basename`-opdracht is als volgt:
 
-```bash
+```
 basename [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-a`: Verwerkt meerdere argumenten en retourneert de basisnamen voor elk.
+- `-a`: Verwerkt meerdere argumenten en geeft de basisnamen van elk bestand terug.
 - `-s`: Verwijdert een specifieke suffix van de bestandsnaam.
 
 ## Veelvoorkomende Voorbeelden
 
-1. **Basisnaam van een enkel bestand**
-   ```bash
+1. **Basis gebruik**: Verkrijg de bestandsnaam zonder pad.
+   ```csh
    basename /pad/naar/bestand.txt
    ```
-   Dit retourneert:
-   ```
-   bestand.txt
-   ```
+   **Output**: `bestand.txt`
 
-2. **Basisnaam met een suffix verwijderen**
-   ```bash
-   basename /pad/naar/bestand.txt .txt
-   ```
-   Dit retourneert:
-   ```
-   bestand
-   ```
-
-3. **Meerdere bestanden verwerken**
-   ```bash
+2. **Meerdere bestanden**: Verkrijg de basisnamen van meerdere bestanden.
+   ```csh
    basename -a /pad/naar/bestand1.txt /pad/naar/bestand2.txt
    ```
-   Dit retourneert:
+   **Output**:
    ```
    bestand1.txt
    bestand2.txt
    ```
 
-4. **Basisnaam van een directory**
-   ```bash
-   basename /pad/naar/directory/
+3. **Suffix verwijderen**: Verwijder een specifieke suffix van de bestandsnaam.
+   ```csh
+   basename -s .txt /pad/naar/bestand.txt
    ```
-   Dit retourneert:
-   ```
-   directory
-   ```
+   **Output**: `bestand`
 
 ## Tips
-- Gebruik `basename` in scripts om bestandsnamen dynamisch te extraheren.
-- Combineer `basename` met andere commando's zoals `find` voor geavanceerdere bestandsverwerking.
-- Vergeet niet om de juiste suffix op te geven als je deze wilt verwijderen, om onverwachte resultaten te voorkomen.
+- Gebruik `basename` in scripts om bestandsnamen dynamisch te verwerken zonder padinformatie.
+- Combineer `basename` met andere commando's zoals `find` om efficiënt met bestanden te werken.
+- Wees voorzichtig met het gebruik van suffixen; zorg ervoor dat je de juiste suffix opgeeft om onbedoelde resultaten te voorkomen.

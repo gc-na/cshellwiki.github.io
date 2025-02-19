@@ -1,57 +1,52 @@
-# [Linux] Bash cal Usage: Display a calendar
+# [Unix] C Shell (csh) cal Uso: Display a calendar
 
 ## Overview
-The `cal` command in Bash is used to display a calendar in the terminal. It can show the current month, a specific month, or an entire year, making it a handy tool for quick date references.
+The `cal` command in C Shell (csh) is used to display a calendar in the terminal. It can show the current month, a specific month, or an entire year, making it a handy tool for quick date reference.
 
 ## Usage
 The basic syntax of the `cal` command is as follows:
 
-```bash
+```
 cal [options] [arguments]
 ```
 
 ## Common Options
-- `-m`: Display the calendar in a more compact format.
-- `-y`: Show the calendar for the entire current year.
-- `-3`: Display the previous, current, and next month.
-- `-j`: Show the Julian calendar.
-- `-A <num>`: Show <num> months after the specified month.
-- `-B <num>`: Show <num> months before the specified month.
+- `-m`: Start the week on Monday instead of Sunday.
+- `-y`: Display the calendar for the current year.
+- `-3`: Show the previous, current, and next month.
+- `-j`: Display Julian dates (day of the year).
+- `-A [num]`: Show the next [num] months after the current month.
+- `-B [num]`: Show the previous [num] months before the current month.
 
 ## Common Examples
-Here are some practical examples of how to use the `cal` command:
+Here are some practical examples of using the `cal` command:
 
 1. **Display the current month:**
-   ```bash
+   ```csh
    cal
    ```
 
-2. **Display a specific month and year (e.g., March 2023):**
-   ```bash
-   cal 03 2023
+2. **Display a specific month and year (e.g., December 2023):**
+   ```csh
+   cal 12 2023
    ```
 
-3. **Display the entire current year:**
-   ```bash
-   cal -y
+3. **Display the entire year (e.g., 2023):**
+   ```csh
+   cal 2023
    ```
 
-4. **Display the previous, current, and next month:**
-   ```bash
+4. **Show the previous, current, and next month:**
+   ```csh
    cal -3
    ```
 
-5. **Display the calendar with Julian dates:**
-   ```bash
-   cal -j
-   ```
-
-6. **Display the calendar for the next 2 months after January 2023:**
-   ```bash
-   cal -A 2 01 2023
+5. **Display the calendar for the current year with Julian dates:**
+   ```csh
+   cal -y -j
    ```
 
 ## Tips
-- Use `cal -m` for a more compact view if you're short on terminal space.
-- Combine options for more customized views, such as `cal -3 -B 1` to see the previous month and the next two months.
-- Remember that the months are specified numerically (01 for January, 02 for February, etc.), which can help avoid confusion when entering dates.
+- Use the `-A` and `-B` options to quickly navigate through months when planning events.
+- Combine options for more customized views, such as `cal -m -3` to start the week on Monday and show three months.
+- Remember that `cal` displays the calendar in a simple format, making it easy to read at a glance.

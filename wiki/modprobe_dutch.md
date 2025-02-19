@@ -1,52 +1,50 @@
-# [Linux] Bash modprobe gebruik: Laad of verwijder kernelmodules
+# [Linux] C Shell (csh) modprobe gebruik: Laad kernelmodules in
 
 ## Overzicht
-De `modprobe` opdracht wordt gebruikt om kernelmodules te laden of te verwijderen in Linux-systemen. Het beheert automatisch afhankelijkheden tussen modules, waardoor het een handige tool is voor systeembeheerders en gebruikers die met hardware of specifieke functionaliteiten werken.
+Het `modprobe` commando wordt gebruikt om kernelmodules te laden of te verwijderen in Linux-systemen. Dit is essentieel voor het beheren van hardware-ondersteuning en systeemfunctionaliteit.
 
 ## Gebruik
-De basis syntaxis van de `modprobe` opdracht is als volgt:
+De basis syntaxis van het `modprobe` commando is als volgt:
 
-```bash
+```
 modprobe [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
+## Veelvoorkomende Opties
 - `-r` : Verwijder een module.
+- `-v` : Toon gedetailleerde uitvoer tijdens het laden of verwijderen van modules.
 - `--list` : Toon een lijst van beschikbare modules.
-- `--show` : Toon informatie over een module zonder deze te laden.
-- `--quiet` : Voorkom het tonen van waarschuwingen en meldingen.
+- `--show` : Toon informatie over een specifieke module zonder deze te laden.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van `modprobe`:
 
-1. **Een module laden**
-   Om de module `dummy` te laden, gebruik je de volgende opdracht:
-
-   ```bash
-   modprobe dummy
+1. **Laad een module**:
+   ```csh
+   modprobe nfs
    ```
 
-2. **Een module verwijderen**
-   Om de module `dummy` te verwijderen, gebruik je:
-
-   ```bash
-   modprobe -r dummy
+2. **Verwijder een module**:
+   ```csh
+   modprobe -r nfs
    ```
 
-3. **Lijst van beschikbare modules**
-   Om een lijst van beschikbare modules te bekijken, gebruik je:
+3. **Toon gedetailleerde uitvoer bij het laden van een module**:
+   ```csh
+   modprobe -v nfs
+   ```
 
-   ```bash
+4. **Lijst beschikbare modules**:
+   ```csh
    modprobe --list
    ```
 
-4. **Informatie over een module tonen**
-   Om informatie over de module `dummy` te tonen zonder deze te laden, gebruik je:
-
-   ```bash
-   modprobe --show dummy
+5. **Toon informatie over een specifieke module**:
+   ```csh
+   modprobe --show nfs
    ```
 
 ## Tips
+- Zorg ervoor dat je de juiste rechten hebt om modules te laden of te verwijderen; vaak zijn root-rechten vereist.
 - Controleer altijd of de module al geladen is voordat je probeert deze opnieuw te laden om conflicten te voorkomen.
-- Gebruik `modprobe -r` om afhankelijkheden automatisch te beheren bij het verwijderen van modules.
-- Raadpleeg de documentatie van je specifieke distributie voor extra opties en informatie over modules die beschikbaar zijn voor jouw systeem.
+- Gebruik `modinfo [module]` om meer informatie over een specifieke module te krijgen, zoals afhankelijkheden en beschrijvingen.

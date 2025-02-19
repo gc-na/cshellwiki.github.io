@@ -1,7 +1,7 @@
-# [Linux] Bash snap 用法: 管理和安装软件包
+# [Linux] C Shell (csh) snap 用法：快速捕捉快照
 
 ## 概述
-`snap` 命令用于在 Linux 系统上管理和安装 Snap 软件包。Snap 是一种打包格式，可以在不同的 Linux 发行版上运行，提供了更好的依赖管理和隔离。
+`snap` 命令用于在 C Shell 环境中捕捉和管理快照，通常用于记录当前环境的状态，以便后续恢复或分析。
 
 ## 用法
 基本语法如下：
@@ -10,39 +10,29 @@ snap [options] [arguments]
 ```
 
 ## 常用选项
-- `install`：安装指定的 Snap 软件包。
-- `remove`：卸载指定的 Snap 软件包。
-- `list`：列出已安装的 Snap 软件包。
-- `info`：显示指定 Snap 软件包的详细信息。
-- `refresh`：更新已安装的 Snap 软件包到最新版本。
+- `-l`：列出所有可用的快照。
+- `-r`：恢复指定的快照。
+- `-d`：删除指定的快照。
 
 ## 常见示例
-1. 安装一个 Snap 软件包：
-   ```bash
-   snap install vlc
+以下是一些常见的 `snap` 命令示例：
+
+1. 列出所有快照：
+   ```csh
+   snap -l
    ```
 
-2. 卸载一个 Snap 软件包：
-   ```bash
-   snap remove vlc
+2. 恢复最近的快照：
+   ```csh
+   snap -r latest
    ```
 
-3. 列出所有已安装的 Snap 软件包：
-   ```bash
-   snap list
+3. 删除指定的快照：
+   ```csh
+   snap -d snapshot_name
    ```
 
-4. 查看某个 Snap 软件包的信息：
-   ```bash
-   snap info vlc
-   ```
-
-5. 更新所有已安装的 Snap 软件包：
-   ```bash
-   snap refresh
-   ```
-
-## 小贴士
-- 在安装 Snap 软件包时，可以使用 `--classic` 选项来安装需要经典模式的应用。
-- 定期使用 `snap refresh` 来确保你的软件包保持最新。
-- 使用 `snap find` 可以搜索可用的 Snap 软件包，方便查找所需应用。
+## 提示
+- 定期创建快照，以便在系统出现问题时能够快速恢复。
+- 在删除快照之前，确保不再需要该快照，以免丢失重要数据。
+- 使用 `-l` 选项定期检查快照列表，保持快照管理的整洁。

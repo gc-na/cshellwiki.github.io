@@ -1,58 +1,51 @@
-# [Linux] Bash yum gebruik: Beheer van softwarepakketten
+# [Linux] C Shell (csh) yum gebruik: Beheer van softwarepakketten
 
 ## Overzicht
-Het `yum`-commando (Yellowdog Updater, Modified) is een pakketbeheerder voor RPM-gebaseerde Linux-distributies. Het stelt gebruikers in staat om softwarepakketten te installeren, bij te werken en te verwijderen, evenals om afhankelijkheden automatisch te beheren.
+De `yum`-opdracht is een pakketbeheerder voor Linux-distributies die RPM-pakketten gebruikt. Het stelt gebruikers in staat om softwarepakketten te installeren, bij te werken en te verwijderen, evenals om afhankelijkheden te beheren.
 
 ## Gebruik
-De basis syntaxis van het `yum`-commando is als volgt:
+De basis syntaxis van de `yum`-opdracht is als volgt:
 
 ```bash
 yum [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- `install`: Installeert een of meerdere pakketten.
-- `remove`: Verwijdert een of meerdere pakketten.
-- `update`: Werkt geïnstalleerde pakketten bij naar de nieuwste versie.
-- `list`: Toont een lijst van beschikbare of geïnstalleerde pakketten.
-- `search`: Zoekt naar pakketten op basis van een zoekterm.
-- `info`: Toont informatie over een specifiek pakket.
+## Veelvoorkomende Opties
+- `install`: Installeert een nieuw pakket.
+- `remove`: Verwijdert een geïnstalleerd pakket.
+- `update`: Update een geïnstalleerd pakket naar de nieuwste versie.
+- `search`: Zoekt naar pakketten in de repository.
+- `list`: Lijst beschikbare of geïnstalleerde pakketten.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van `yum`:
 
-- **Een pakket installeren:**
-  ```bash
-  yum install pakketnaam
-  ```
+1. **Een pakket installeren**:
+   ```bash
+   yum install pakketnaam
+   ```
 
-- **Een pakket verwijderen:**
-  ```bash
-  yum remove pakketnaam
-  ```
+2. **Een pakket verwijderen**:
+   ```bash
+   yum remove pakketnaam
+   ```
 
-- **Alle geïnstalleerde pakketten bijwerken:**
-  ```bash
-  yum update
-  ```
+3. **Een pakket bijwerken**:
+   ```bash
+   yum update pakketnaam
+   ```
 
-- **Een lijst van beschikbare pakketten tonen:**
-  ```bash
-  yum list available
-  ```
+4. **Zoeken naar een pakket**:
+   ```bash
+   yum search zoekterm
+   ```
 
-- **Zoeken naar een specifiek pakket:**
-  ```bash
-  yum search zoekterm
-  ```
-
-- **Informatie over een pakket opvragen:**
-  ```bash
-  yum info pakketnaam
-  ```
+5. **Lijst van geïnstalleerde pakketten**:
+   ```bash
+   yum list installed
+   ```
 
 ## Tips
-- Zorg ervoor dat je `yum` uitvoert met root-rechten om toegang te krijgen tot alle functies.
-- Gebruik `yum clean all` om de cache van `yum` op te schonen en schijfruimte vrij te maken.
-- Controleer regelmatig op updates om je systeem veilig en up-to-date te houden.
-- Maak gebruik van de `--assumeyes` optie om bevestigingen automatisch te accepteren tijdens installaties of updates.
+- Zorg ervoor dat je altijd de laatste versie van de repository's hebt door `yum update` regelmatig uit te voeren.
+- Gebruik `yum clean all` om ongebruikte gegevens te verwijderen en schijfruimte vrij te maken.
+- Controleer altijd de afhankelijkheden van een pakket voordat je het installeert of verwijdert om problemen te voorkomen.

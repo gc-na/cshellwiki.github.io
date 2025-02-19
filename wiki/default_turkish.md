@@ -1,48 +1,38 @@
-# [Linux] Bash varsayılan komut: Komutları çalıştırma
+# [Linux] C Shell (csh) default kullanım: Varsayılan komutları çalıştırma
 
 ## Genel Bakış
-Bash, Unix benzeri işletim sistemlerinde komutları çalıştırmak için kullanılan bir komut yorumlayıcısıdır. Kullanıcılar, terminal üzerinden çeşitli komutları yazarak sistemle etkileşimde bulunabilirler. Bash, kullanıcıların dosya yönetimi, program çalıştırma ve sistem ayarlarını değiştirme gibi işlemleri gerçekleştirmesine olanak tanır.
+`default` komutu, C Shell (csh) ortamında varsayılan bir komut veya işlem tanımlamak için kullanılır. Bu komut, belirli bir komutun veya işlemin varsayılan olarak çalıştırılmasını sağlamak amacıyla kullanılır.
 
 ## Kullanım
-Bash komutlarının temel sözdizimi aşağıdaki gibidir:
+Temel sözdizimi aşağıdaki gibidir:
 
-```bash
-komut [seçenekler] [argümanlar]
+```csh
+default [options] [arguments]
 ```
 
 ## Yaygın Seçenekler
-- `-h`, `--help`: Komut hakkında yardım bilgisi gösterir.
-- `-v`, `--verbose`: Daha ayrıntılı çıktı verir.
-- `-q`, `--quiet`: Sessiz modda çalışır, minimum çıktı üretir.
+- `-f`: Varsayılan komutu zorla çalıştırır.
+- `-n`: Varsayılan komutun çalıştırılmasını engeller.
 
 ## Yaygın Örnekler
-Aşağıda bazı pratik örnekler verilmiştir:
+Aşağıda `default` komutunun bazı pratik örnekleri bulunmaktadır:
 
-### 1. Basit bir komut çalıştırma
-```bash
-echo "Merhaba, Dünya!"
-```
-Bu komut, "Merhaba, Dünya!" ifadesini terminalde görüntüler.
+1. Varsayılan bir komut ayarlamak:
+   ```csh
+   default mycommand
+   ```
 
-### 2. Dosya içeriğini görüntüleme
-```bash
-cat dosya.txt
-```
-Bu komut, `dosya.txt` dosyasının içeriğini terminalde gösterir.
+2. Varsayılan komutu zorla çalıştırmak:
+   ```csh
+   default -f mycommand
+   ```
 
-### 3. Dizin değiştirme
-```bash
-cd /home/kullanici
-```
-Bu komut, kullanıcıyı belirtilen dizine taşır.
-
-### 4. Dosya kopyalama
-```bash
-cp kaynak.txt hedef.txt
-```
-Bu komut, `kaynak.txt` dosyasını `hedef.txt` olarak kopyalar.
+3. Varsayılan komutun çalıştırılmasını engellemek:
+   ```csh
+   default -n mycommand
+   ```
 
 ## İpuçları
-- Komutları yazarken dikkatli olun; küçük bir hata, komutun çalışmamasına neden olabilir.
-- `tab` tuşunu kullanarak otomatik tamamlama özelliğinden faydalanabilirsiniz.
-- Komutların nasıl çalıştığını anlamak için `--help` seçeneğini kullanarak yardım alabilirsiniz.
+- Varsayılan komutları ayarlarken, hangi komutların sık kullanıldığını düşünün ve bunları varsayılan olarak ayarlayın.
+- `-f` seçeneğini kullanırken dikkatli olun; bu, varsayılan komutun her durumda çalıştırılmasına neden olabilir.
+- Varsayılan komutlarınızı düzenli olarak gözden geçirin ve gereksiz olanları kaldırın.

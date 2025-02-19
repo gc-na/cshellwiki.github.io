@@ -1,46 +1,41 @@
-# [Linux] Bash top Penggunaan: Memantau proses sistem secara real-time
+# [Sistem Operasi] C Shell (csh) top Penggunaan: Menampilkan proses yang berjalan
 
 ## Overview
-Perintah `top` digunakan untuk menampilkan informasi tentang proses yang sedang berjalan di sistem Linux. Ini memberikan tampilan real-time dari penggunaan CPU, memori, dan informasi lainnya yang berkaitan dengan proses. Dengan `top`, pengguna dapat memantau kinerja sistem dan mengidentifikasi proses yang mungkin mempengaruhi kinerja.
+Perintah `top` digunakan untuk menampilkan informasi tentang proses yang sedang berjalan di sistem. Ini memberikan tampilan real-time dari penggunaan CPU, memori, dan informasi penting lainnya tentang proses yang aktif.
 
 ## Usage
-Sintaks dasar dari perintah `top` adalah sebagai berikut:
-```
+Berikut adalah sintaks dasar dari perintah `top`:
+
+```csh
 top [options] [arguments]
 ```
 
 ## Common Options
 Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah `top`:
 
-- `-d <delay>`: Mengatur interval pembaruan tampilan dalam detik.
-- `-n <number>`: Menentukan jumlah iterasi yang akan ditampilkan sebelum keluar.
-- `-u <user>`: Menampilkan hanya proses yang dimiliki oleh pengguna tertentu.
-- `-p <pid>`: Menampilkan hanya proses dengan ID proses tertentu.
+- `-d <seconds>`: Menentukan interval pembaruan dalam detik.
+- `-p <pid>`: Menampilkan hanya proses dengan ID tertentu.
+- `-u <username>`: Menampilkan proses yang dijalankan oleh pengguna tertentu.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `top`:
 
-1. Menjalankan `top` dengan pembaruan setiap 2 detik:
-   ```bash
-   top -d 2
+1. Menjalankan `top` dengan pembaruan setiap 5 detik:
+   ```csh
+   top -d 5
    ```
 
-2. Menampilkan proses yang dimiliki oleh pengguna tertentu:
-   ```bash
+2. Menampilkan proses untuk pengguna tertentu:
+   ```csh
    top -u username
    ```
 
-3. Menjalankan `top` untuk menampilkan hanya proses dengan ID tertentu:
-   ```bash
+3. Menampilkan informasi hanya untuk proses dengan ID 1234:
+   ```csh
    top -p 1234
    ```
 
-4. Menjalankan `top` dan menampilkan hanya 5 iterasi:
-   ```bash
-   top -n 5
-   ```
-
 ## Tips
-- Gunakan `Shift + M` saat berada dalam tampilan `top` untuk mengurutkan proses berdasarkan penggunaan memori.
-- Tekan `q` untuk keluar dari tampilan `top` dengan cepat.
-- Anda dapat menekan `h` untuk melihat bantuan dan daftar pintasan keyboard yang tersedia dalam `top`.
+- Gunakan opsi `-d` untuk menyesuaikan frekuensi pembaruan tampilan agar sesuai dengan kebutuhan Anda.
+- Tekan `h` saat berada di dalam tampilan `top` untuk melihat bantuan dan daftar pintasan keyboard.
+- Untuk menghentikan proses tertentu, Anda dapat menggunakan opsi `k` di dalam antarmuka `top` dan memasukkan ID proses yang ingin dihentikan.

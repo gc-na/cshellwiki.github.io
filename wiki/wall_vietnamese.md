@@ -1,44 +1,37 @@
-# [Linux] Bash wall cách sử dụng: Gửi thông báo đến tất cả người dùng
+# [Hệ điều hành] C Shell (csh) wall <Sử dụng tương đương>: Gửi tin nhắn đến tất cả người dùng
 
-## Overview
-Lệnh `wall` (viết tắt của "write all") được sử dụng để gửi thông báo đến tất cả người dùng đang đăng nhập trên hệ thống. Thông báo này sẽ hiển thị trên màn hình của họ, giúp người quản trị hệ thống truyền đạt thông tin quan trọng một cách nhanh chóng.
+## Tổng quan
+Lệnh `wall` trong C Shell (csh) được sử dụng để gửi tin nhắn đến tất cả người dùng đang đăng nhập trên hệ thống. Tin nhắn này sẽ hiển thị trên màn hình của người dùng, giúp thông báo thông tin quan trọng hoặc khẩn cấp.
 
-## Usage
+## Cú pháp
 Cú pháp cơ bản của lệnh `wall` như sau:
-
-```bash
-wall [options] [arguments]
+```
+wall [tùy chọn] [đối số]
 ```
 
-## Common Options
-- `-n`: Không hiển thị tên người gửi trong thông báo.
-- `-s`: Gửi thông báo mà không có định dạng, chỉ gửi nội dung thuần túy.
-- `-f`: Gửi thông báo từ một tệp tin cụ thể.
+## Tùy chọn phổ biến
+- `-n`: Không hiển thị tên người gửi trong tin nhắn.
+- `-f`: Đọc tin nhắn từ một tệp tin thay vì từ đầu vào chuẩn.
 
-## Common Examples
+## Ví dụ phổ biến
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `wall`:
 
-1. Gửi một thông báo đơn giản đến tất cả người dùng:
+1. Gửi một tin nhắn đơn giản đến tất cả người dùng:
    ```bash
    wall "Hệ thống sẽ bảo trì vào lúc 10 giờ tối hôm nay."
    ```
 
-2. Gửi thông báo từ một tệp tin:
+2. Gửi tin nhắn từ một tệp tin:
    ```bash
    wall -f thongbao.txt
    ```
 
-3. Gửi thông báo mà không hiển thị tên người gửi:
+3. Gửi tin nhắn mà không hiển thị tên người gửi:
    ```bash
-   wall -n "Xin lưu ý: Hệ thống sẽ khởi động lại trong 5 phút."
+   wall -n "Xin vui lòng kiểm tra email của bạn."
    ```
 
-4. Gửi thông báo với định dạng thuần túy:
-   ```bash
-   wall -s "Cảnh báo: Mất điện sắp xảy ra!"
-   ```
-
-## Tips
-- Trước khi gửi thông báo, hãy chắc chắn rằng nội dung thông báo rõ ràng và dễ hiểu để người nhận có thể nắm bắt thông tin nhanh chóng.
-- Sử dụng lệnh `wall` trong các tình huống khẩn cấp hoặc khi cần thông báo cho nhiều người dùng cùng một lúc.
-- Kiểm tra xem có người dùng nào đang hoạt động trên hệ thống trước khi gửi thông báo để đảm bảo rằng thông điệp của bạn sẽ được nhận.
+## Mẹo
+- Hãy chắc chắn rằng bạn có quyền gửi tin nhắn đến tất cả người dùng, thường là quyền của quản trị viên.
+- Sử dụng lệnh `wall` một cách có trách nhiệm để tránh làm phiền người dùng khác.
+- Kiểm tra xem có người dùng nào đang hoạt động trước khi gửi tin nhắn để đảm bảo thông điệp của bạn được nhận.

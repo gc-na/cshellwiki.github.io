@@ -1,55 +1,50 @@
-# [Linux] Bash cksum Usage: Calculate file checksums
+# [Linux] C Shell (csh) cksum用法: Calculate file checksums
 
 ## Overview
-The `cksum` command in Bash is used to compute and display the checksum (a unique identifier) of a file along with its byte size. This is useful for verifying the integrity of files by ensuring that they have not been altered.
+The `cksum` command in C Shell (csh) is used to compute and display the checksum of a file along with its byte size. This is useful for verifying the integrity of files by comparing checksums.
 
 ## Usage
 The basic syntax of the `cksum` command is as follows:
 
-```bash
+```
 cksum [options] [arguments]
 ```
 
 ## Common Options
-- `-a, --algorithm=ALGO`: Specify the checksum algorithm to use (e.g., `md5`, `sha256`).
+- `-a, --algorithm=ALGO`: Specify the checksum algorithm to use (e.g., MD5, SHA1).
+- `-b, --binary`: Treat files as binary.
 - `-h, --help`: Display help information about the command.
-- `-V, --version`: Show version information of the `cksum` command.
+- `-v, --version`: Show version information of the command.
 
 ## Common Examples
+Here are some practical examples of using the `cksum` command:
 
-1. **Calculate the checksum of a single file:**
-
-   ```bash
+1. **Calculate checksum for a single file:**
+   ```csh
    cksum myfile.txt
    ```
 
-   This command will output the checksum, byte size, and file name of `myfile.txt`.
-
-2. **Calculate the checksum of multiple files:**
-
-   ```bash
-   cksum file1.txt file2.txt
+2. **Calculate checksum for multiple files:**
+   ```csh
+   cksum file1.txt file2.txt file3.txt
    ```
 
-   This will display the checksums and sizes for both `file1.txt` and `file2.txt`.
-
-3. **Using an algorithm to calculate checksum:**
-
-   ```bash
-   cksum -a md5 myfile.txt
+3. **Use the binary option:**
+   ```csh
+   cksum -b mybinaryfile
    ```
-
-   This command calculates the MD5 checksum of `myfile.txt`.
 
 4. **Display help information:**
-
-   ```bash
+   ```csh
    cksum --help
    ```
 
-   This will show the usage and options available for the `cksum` command.
+5. **Check checksums of files in a directory:**
+   ```csh
+   cksum *
+   ```
 
 ## Tips
-- Always verify the checksum after transferring files to ensure they remain unaltered.
-- Use the `-a` option to choose a specific algorithm if you need a particular type of checksum.
-- For large files, consider using `cksum` in combination with other commands like `find` to process multiple files efficiently.
+- Always verify the checksum of downloaded files to ensure they are not corrupted.
+- When comparing checksums, ensure that the files being compared are identical in size and content.
+- Use the `-a` option to specify a different algorithm if needed for enhanced security.

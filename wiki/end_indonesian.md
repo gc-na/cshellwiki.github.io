@@ -1,39 +1,37 @@
-# [Linux] Bash end penggunaan: Mengakhiri proses
+# [Sistem Operasi] C Shell (csh) end: Mengakhiri Proses
 
 ## Overview
-Perintah `end` dalam Bash digunakan untuk mengakhiri atau menghentikan proses yang sedang berjalan. Ini sangat berguna ketika Anda ingin menghentikan aplikasi atau skrip yang tidak merespons atau yang sudah tidak diperlukan lagi.
+Perintah `end` dalam C Shell (csh) digunakan untuk mengakhiri sesi atau proses yang sedang berjalan. Ini berguna ketika Anda ingin keluar dari shell atau menghentikan eksekusi skrip.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `end`:
 
-```bash
+```
 end [options] [arguments]
 ```
 
 ## Common Options
-- `-p` : Menunjukkan ID proses yang ingin dihentikan.
-- `-f` : Memaksa penghentian proses meskipun ada peringatan.
-- `-h` : Menampilkan bantuan dan informasi tentang penggunaan perintah.
+- `-h`: Menampilkan bantuan atau informasi tentang penggunaan perintah.
+- `-v`: Menampilkan informasi lebih lanjut tentang proses yang sedang berjalan sebelum mengakhiri.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `end`:
 
-1. Menghentikan proses dengan ID tertentu:
-   ```bash
-   end -p 1234
+1. **Mengakhiri sesi shell saat ini:**
+   ```csh
+   end
    ```
 
-2. Memaksa penghentian proses yang tidak merespons:
-   ```bash
-   end -f -p 5678
-   ```
-
-3. Menampilkan bantuan penggunaan perintah:
-   ```bash
+2. **Menggunakan opsi bantuan untuk melihat informasi lebih lanjut:**
+   ```csh
    end -h
    ```
 
+3. **Menampilkan informasi sebelum mengakhiri:**
+   ```csh
+   end -v
+   ```
+
 ## Tips
-- Selalu pastikan untuk memeriksa ID proses sebelum menggunakan `end` untuk menghindari menghentikan proses yang penting.
-- Gunakan opsi `-f` dengan hati-hati, karena ini dapat menyebabkan kehilangan data jika proses yang dihentikan sedang melakukan penyimpanan.
-- Jika Anda tidak yakin tentang proses yang ingin dihentikan, gunakan perintah `ps` untuk melihat daftar proses yang sedang berjalan.
+- Pastikan untuk menyimpan pekerjaan Anda sebelum menggunakan perintah `end`, karena ini akan mengakhiri sesi dan semua proses yang berjalan.
+- Gunakan opsi `-h` jika Anda tidak yakin tentang cara menggunakan perintah ini, untuk mendapatkan panduan yang jelas.

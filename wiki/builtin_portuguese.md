@@ -1,47 +1,38 @@
-# [Linux] Bash builtin comando: Executa comandos internos do shell
+# [Linux] C Shell (csh) builtin comando: Executa comandos internos do shell
 
 ## Overview
-O comando `builtin` no Bash é utilizado para invocar comandos internos do shell, permitindo que você execute funções que são parte do próprio Bash, em vez de chamar executáveis externos. Isso é útil para garantir que você está utilizando a versão interna de um comando, especialmente quando há um executável externo com o mesmo nome.
+O comando `builtin` no C Shell (csh) é utilizado para executar comandos internos do shell que podem ter o mesmo nome que comandos externos. Isso é útil quando você deseja garantir que está chamando a versão interna do comando, em vez de uma versão externa que pode estar no seu sistema.
 
 ## Usage
 A sintaxe básica do comando `builtin` é a seguinte:
 
-```bash
+```csh
 builtin [opções] [argumentos]
 ```
 
 ## Common Options
-- `-p`: Utiliza a versão padrão do comando, ignorando quaisquer funções definidas pelo usuário.
-- `-f`: Faz com que o comando seja executado sem verificar se ele é uma função.
+- **`-h`**: Exibe uma breve ajuda sobre o comando.
+- **`-v`**: Mostra a versão do comando builtin.
 
 ## Common Examples
 Aqui estão alguns exemplos práticos do uso do comando `builtin`:
 
-### Exemplo 1: Usando `builtin` para chamar `echo`
-```bash
-builtin echo "Este é um comando interno."
+### Exemplo 1: Executar o comando `echo` interno
+```csh
+builtin echo "Olá, mundo!"
 ```
 
-### Exemplo 2: Ignorando uma função com o mesmo nome
-Suponha que você tenha uma função chamada `cd` definida no seu shell. Para garantir que você está chamando o comando interno `cd`, você pode usar:
-```bash
-builtin cd /home
+### Exemplo 2: Verificar a versão do comando `set`
+```csh
+builtin -v set
 ```
 
-### Exemplo 3: Usando `-p` para chamar `type`
-```bash
-builtin -p type ls
-```
-
-### Exemplo 4: Usando `-f` para forçar a execução de um comando
-```bash
-function ls {
-  echo "Esta é uma função personalizada."
-}
-builtin ls
+### Exemplo 3: Usar `builtin` para garantir que o `cd` interno seja chamado
+```csh
+builtin cd /home/usuario
 ```
 
 ## Tips
-- Sempre que houver um conflito entre um comando interno e um executável externo, considere usar `builtin` para garantir que você está chamando a versão interna.
-- Utilize a opção `-p` quando você quiser evitar qualquer sobreposição de funções definidas pelo usuário.
-- Lembre-se de que nem todos os comandos têm uma versão interna; verifique a documentação do Bash para mais detalhes.
+- Utilize `builtin` quando houver ambiguidade entre comandos internos e externos.
+- Sempre que possível, prefira usar a versão interna de comandos para evitar problemas de desempenho ou comportamento inesperado.
+- Verifique a documentação do seu sistema para entender quais comandos são internos e como eles se comportam.

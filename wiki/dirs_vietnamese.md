@@ -1,7 +1,7 @@
-# [Linux] Bash dirs cách sử dụng: Quản lý danh sách thư mục
+# [Hệ điều hành] C Shell (csh) dirs Cách sử dụng: Hiển thị danh sách thư mục
 
 ## Tổng quan
-Lệnh `dirs` trong Bash được sử dụng để hiển thị danh sách các thư mục hiện tại trong ngăn xếp thư mục. Nó cho phép người dùng theo dõi và quản lý các thư mục mà họ đã truy cập trong phiên làm việc của mình.
+Lệnh `dirs` trong C Shell (csh) được sử dụng để hiển thị danh sách các thư mục hiện tại trong ngăn xếp thư mục. Nó cho phép người dùng xem các thư mục mà họ đã truy cập gần đây và dễ dàng điều hướng giữa chúng.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `dirs` như sau:
@@ -10,35 +10,28 @@ dirs [options] [arguments]
 ```
 
 ## Tùy chọn phổ biến
-- `-l`: Hiển thị danh sách thư mục theo định dạng dài.
-- `-p`: Hiển thị danh sách thư mục mà không có bất kỳ thay đổi nào trong ngăn xếp.
-- `+N`: Hiển thị thư mục tại vị trí N trong ngăn xếp.
-- `-N`: Hiển thị thư mục tại vị trí N từ cuối ngăn xếp.
+- `-l`: Hiển thị danh sách các thư mục trong định dạng đầy đủ.
+- `-p`: Hiển thị danh sách các thư mục mà không có bất kỳ dấu phân cách nào.
 
 ## Ví dụ phổ biến
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `dirs`:
 
-1. Hiển thị danh sách thư mục hiện tại:
-   ```bash
+1. Hiển thị danh sách các thư mục hiện tại:
+   ```csh
    dirs
    ```
 
-2. Hiển thị danh sách thư mục theo định dạng dài:
-   ```bash
+2. Hiển thị danh sách các thư mục với định dạng đầy đủ:
+   ```csh
    dirs -l
    ```
 
-3. Hiển thị thư mục ở vị trí thứ hai trong ngăn xếp:
-   ```bash
-   dirs +2
-   ```
-
-4. Hiển thị thư mục ở vị trí thứ nhất từ cuối ngăn xếp:
-   ```bash
-   dirs -1
+3. Hiển thị danh sách các thư mục mà không có dấu phân cách:
+   ```csh
+   dirs -p
    ```
 
 ## Mẹo
-- Sử dụng `pushd` và `popd` để thay đổi thư mục và tự động cập nhật ngăn xếp thư mục, giúp bạn dễ dàng quản lý các thư mục.
-- Thường xuyên kiểm tra danh sách thư mục với `dirs` để tránh nhầm lẫn về vị trí hiện tại trong hệ thống tệp.
-- Kết hợp `dirs` với các lệnh khác như `cd` để tối ưu hóa quy trình làm việc của bạn.
+- Sử dụng lệnh `pushd` và `popd` kết hợp với `dirs` để quản lý ngăn xếp thư mục hiệu quả hơn.
+- Thường xuyên kiểm tra danh sách thư mục để tránh nhầm lẫn khi làm việc với nhiều thư mục khác nhau.
+- Kết hợp `dirs` với các lệnh khác như `cd` để dễ dàng điều hướng đến các thư mục đã sử dụng trước đó.

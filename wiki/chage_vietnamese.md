@@ -1,48 +1,46 @@
-# [Linux] Bash chage Cách sử dụng: Quản lý thời gian hết hạn mật khẩu người dùng
+# [Hệ điều hành] C Shell (csh) chage <Sử dụng tương đương>: Quản lý thời gian hết hạn mật khẩu người dùng
 
-## Overview
-Lệnh `chage` được sử dụng để quản lý thời gian hết hạn mật khẩu cho người dùng trong hệ thống Linux. Nó cho phép bạn thiết lập và điều chỉnh các thông số liên quan đến mật khẩu, như thời gian tối thiểu và tối đa giữa các lần thay đổi mật khẩu.
+## Tổng quan
+Lệnh `chage` được sử dụng để quản lý các thông tin liên quan đến thời gian hết hạn mật khẩu của người dùng trong hệ thống Unix/Linux. Nó cho phép người quản trị thiết lập và thay đổi các chính sách mật khẩu như thời gian tối thiểu và tối đa giữa các lần thay đổi mật khẩu.
 
-## Usage
+## Cách sử dụng
 Cú pháp cơ bản của lệnh `chage` như sau:
+
 ```bash
-chage [options] [arguments]
+chage [tùy chọn] [tham số]
 ```
 
-## Common Options
-- `-l, --list`: Hiển thị thông tin về thời gian hết hạn mật khẩu của người dùng.
+## Các tùy chọn phổ biến
+- `-l, --list`: Hiển thị thông tin thời gian hết hạn mật khẩu cho người dùng.
 - `-m, --mindays`: Thiết lập số ngày tối thiểu giữa các lần thay đổi mật khẩu.
-- `-M, --maxdays`: Thiết lập số ngày tối đa mà mật khẩu có thể sử dụng trước khi hết hạn.
+- `-M, --maxdays`: Thiết lập số ngày tối đa trước khi mật khẩu hết hạn.
 - `-I, --inactive`: Thiết lập số ngày không hoạt động trước khi tài khoản bị khóa.
-- `-E, --expire`: Thiết lập ngày hết hạn cho tài khoản người dùng.
+- `-E, --expire`: Thiết lập ngày hết hạn của tài khoản người dùng.
 
-## Common Examples
-1. **Hiển thị thông tin về thời gian hết hạn mật khẩu của người dùng:**
+## Ví dụ phổ biến
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `chage`:
+
+1. Hiển thị thông tin thời gian hết hạn mật khẩu cho người dùng `username`:
    ```bash
    chage -l username
    ```
 
-2. **Thiết lập số ngày tối thiểu giữa các lần thay đổi mật khẩu là 7 ngày:**
+2. Thiết lập số ngày tối thiểu giữa các lần thay đổi mật khẩu là 7 ngày cho người dùng `username`:
    ```bash
    chage -m 7 username
    ```
 
-3. **Thiết lập số ngày tối đa mà mật khẩu có thể sử dụng là 30 ngày:**
+3. Thiết lập số ngày tối đa trước khi mật khẩu hết hạn là 90 ngày cho người dùng `username`:
    ```bash
-   chage -M 30 username
+   chage -M 90 username
    ```
 
-4. **Thiết lập số ngày không hoạt động trước khi tài khoản bị khóa là 15 ngày:**
+4. Thiết lập ngày hết hạn tài khoản cho người dùng `username` vào ngày 31 tháng 12 năm 2023:
    ```bash
-   chage -I 15 username
+   chage -E 2023-12-31 username
    ```
 
-5. **Thiết lập ngày hết hạn cho tài khoản người dùng:**
-   ```bash
-   chage -E 2024-12-31 username
-   ```
-
-## Tips
-- Luôn kiểm tra thông tin mật khẩu của người dùng sau khi thực hiện thay đổi bằng lệnh `chage -l username`.
-- Đặt các giá trị hợp lý cho thời gian hết hạn mật khẩu để bảo mật tốt hơn mà không làm phiền người dùng quá nhiều.
-- Sử dụng lệnh `chage` với quyền root hoặc sudo để đảm bảo bạn có quyền thay đổi thông tin của người dùng.
+## Mẹo
+- Luôn kiểm tra thông tin thời gian hết hạn mật khẩu sau khi thực hiện thay đổi bằng cách sử dụng tùy chọn `-l`.
+- Đặt thời gian hết hạn mật khẩu hợp lý để đảm bảo an toàn cho tài khoản mà không gây khó khăn cho người dùng.
+- Sử dụng lệnh `chage` cùng với các lệnh khác để tự động hóa quy trình quản lý tài khoản người dùng.

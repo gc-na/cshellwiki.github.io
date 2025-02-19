@@ -1,39 +1,39 @@
-# [Linux] Bash printenv Użycie: Wyświetlanie zmiennych środowiskowych
+# [Linux] C Shell (csh) printenv Użycie: wyświetlanie zmiennych środowiskowych
 
 ## Overview
-Polecenie `printenv` służy do wyświetlania zmiennych środowiskowych w systemie operacyjnym. Umożliwia użytkownikom szybkie sprawdzenie wartości zmiennych, które mogą być używane przez różne aplikacje i skrypty.
+Polecenie `printenv` w C Shell (csh) służy do wyświetlania zmiennych środowiskowych. Umożliwia użytkownikowi przeglądanie aktualnych ustawień środowiska, co jest przydatne do diagnozowania problemów lub konfigurowania aplikacji.
 
 ## Usage
 Podstawowa składnia polecenia `printenv` jest następująca:
 
-```bash
+```
 printenv [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-0` : Zwraca zmienne oddzielone znakiem null (przydatne w skryptach).
-- `VARIABLE` : Można podać nazwę konkretnej zmiennej, aby wyświetlić tylko jej wartość.
+- `-0`: Zmienia sposób wyświetlania wyników, używając znaku null jako separatora.
+- `VARIABLE`: Można podać nazwę konkretnej zmiennej środowiskowej, aby wyświetlić jej wartość.
 
 ## Common Examples
-1. **Wyświetlenie wszystkich zmiennych środowiskowych:**
-   ```bash
+1. Wyświetlenie wszystkich zmiennych środowiskowych:
+   ```csh
    printenv
    ```
 
-2. **Wyświetlenie konkretnej zmiennej, na przykład `HOME`:**
-   ```bash
+2. Wyświetlenie wartości konkretnej zmiennej, na przykład `HOME`:
+   ```csh
    printenv HOME
    ```
 
-3. **Wyświetlenie zmiennych oddzielonych znakiem null:**
-   ```bash
+3. Użycie opcji `-0` do wyświetlenia zmiennych z separatorem null:
+   ```csh
    printenv -0
    ```
 
 ## Tips
-- Używaj `printenv` w skryptach, aby sprawdzić dostępne zmienne środowiskowe przed ich użyciem.
-- Możesz łączyć `printenv` z innymi poleceniami, takimi jak `grep`, aby filtrować wyniki. Na przykład:
-  ```bash
+- Używaj `printenv` w połączeniu z innymi poleceniami, takimi jak `grep`, aby filtrować wyniki, na przykład:
+  ```csh
   printenv | grep PATH
   ```
-- Pamiętaj, że zmienne środowiskowe są często używane do konfigurowania aplikacji, więc znajomość ich wartości może być bardzo pomocna.
+- Zawsze sprawdzaj zmienne środowiskowe przed uruchomieniem aplikacji, aby upewnić się, że są poprawnie skonfigurowane.
+- Używaj `printenv` do debugowania skryptów, aby upewnić się, że wszystkie wymagane zmienne są ustawione.

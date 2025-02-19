@@ -1,57 +1,48 @@
-# [Linux] Bash shift Uso equivalente: Manipula parâmetros de posição
+# [Linux] C Shell (csh) shift Uso: Mover parâmetros de posição
 
 ## Overview
-O comando `shift` é utilizado em scripts Bash para manipular parâmetros de posição. Ele desloca os parâmetros para a esquerda, permitindo que você acesse os argumentos passados para o script de forma mais conveniente.
+O comando `shift` no C Shell (csh) é utilizado para deslocar os parâmetros de posição para a esquerda. Isso significa que o parâmetro `$1` se torna `$0`, o `$2` se torna `$1`, e assim por diante. É útil em scripts para manipular argumentos passados para o script.
 
 ## Usage
 A sintaxe básica do comando `shift` é a seguinte:
 
-```bash
+```csh
 shift [n]
 ```
 
 Onde `n` é o número de posições a serem deslocadas. Se `n` não for especificado, o padrão é 1.
 
 ## Common Options
-- `n`: Especifica quantas posições os parâmetros devem ser deslocados. Se não for fornecido, o padrão é 1.
+- `n`: Especifica o número de posições a serem deslocadas. Se não for fornecido, o valor padrão é 1.
 
 ## Common Examples
 
-### Exemplo 1: Uso básico do shift
-```bash
-#!/bin/bash
-echo "Parâmetro 1: $1"
-echo "Parâmetro 2: $2"
+### Exemplo 1: Deslocar uma posição
+```csh
+set args = (um dois três quatro)
+echo $1  # Saída: um
 shift
-echo "Após shift:"
-echo "Parâmetro 1: $1"
-echo "Parâmetro 2: $2"
+echo $1  # Saída: dois
 ```
-Neste exemplo, o primeiro parâmetro é deslocado, e o segundo parâmetro se torna o primeiro.
 
-### Exemplo 2: Deslocando múltiplos parâmetros
-```bash
-#!/bin/bash
-echo "Parâmetro 1: $1"
-echo "Parâmetro 2: $2"
+### Exemplo 2: Deslocar duas posições
+```csh
+set args = (um dois três quatro)
+echo $1  # Saída: um
 shift 2
-echo "Após shift 2:"
-echo "Parâmetro 1: $1"
-echo "Parâmetro 2: $2"
+echo $1  # Saída: três
 ```
-Aqui, dois parâmetros são deslocados, permitindo que o terceiro parâmetro se torne o primeiro.
 
-### Exemplo 3: Loop com shift
-```bash
-#!/bin/bash
-while [[ $# -gt 0 ]]; do
-    echo "Processando: $1"
+### Exemplo 3: Usando em um loop
+```csh
+set args = (um dois três quatro)
+while ($#args > 0)
+    echo $1
     shift
-done
+end
 ```
-Este exemplo demonstra como usar `shift` em um loop para processar todos os parâmetros passados para o script.
 
 ## Tips
-- Use `shift` quando precisar processar argumentos de forma sequencial em scripts.
-- Sempre verifique o número de parâmetros restantes (`$#`) antes de usar `shift` para evitar erros.
-- Combine `shift` com outros comandos, como `case` ou `while`, para criar scripts mais dinâmicos e interativos.
+- Utilize `shift` em scripts que precisam processar argumentos de forma sequencial.
+- Sempre verifique o número de parâmetros restantes com `$#` antes de usar `shift` para evitar erros.
+- Combine `shift` com outras estruturas de controle, como loops, para uma manipulação mais eficiente dos argumentos.

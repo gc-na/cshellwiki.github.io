@@ -1,52 +1,51 @@
-# [Linux] Bash netstat Verwendung: Netzwerkverbindungen anzeigen
+# [Linux] C Shell (csh) netstat Verwendung: Netzwerkverbindungen anzeigen
 
 ## Übersicht
-Der Befehl `netstat` wird verwendet, um Netzwerkverbindungen, Routing-Tabellen, Schnittstellenstatistiken und andere Netzwerkinformationen auf einem System anzuzeigen. Er ist ein nützliches Werkzeug zur Diagnose von Netzwerkproblemen und zur Überwachung von Netzwerkaktivitäten.
+Der Befehl `netstat` wird verwendet, um Netzwerkverbindungen, Routing-Tabellen, Schnittstellenstatistiken und andere Netzwerkinformationen anzuzeigen. Er ist ein nützliches Werkzeug zur Diagnose von Netzwerkproblemen und zur Überwachung von Netzwerkaktivitäten.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```
 netstat [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
 - `-a`: Zeigt alle Verbindungen und Listening-Ports an.
+- `-n`: Zeigt Adressen und Portnummern in numerischer Form an, anstatt sie in Namen aufzulösen.
 - `-t`: Zeigt nur TCP-Verbindungen an.
 - `-u`: Zeigt nur UDP-Verbindungen an.
-- `-n`: Zeigt Adressen und Portnummern numerisch an, anstatt sie in Namen aufzulösen.
 - `-l`: Zeigt nur Listening-Ports an.
-- `-p`: Zeigt den Prozess an, der die Verbindung verwendet.
 
 ## Häufige Beispiele
 Hier sind einige praktische Beispiele für die Verwendung von `netstat`:
 
-1. **Alle Verbindungen anzeigen:**
-   ```bash
+1. **Alle aktiven Verbindungen anzeigen:**
+   ```csh
    netstat -a
    ```
 
-2. **Nur aktive TCP-Verbindungen anzeigen:**
-   ```bash
-   netstat -t
+2. **TCP-Verbindungen in numerischer Form anzeigen:**
+   ```csh
+   netstat -tn
    ```
 
 3. **Nur Listening-Ports anzeigen:**
-   ```bash
+   ```csh
    netstat -l
    ```
 
-4. **Verbindungen mit numerischen Adressen anzeigen:**
-   ```bash
-   netstat -n
+4. **UDP-Verbindungen anzeigen:**
+   ```csh
+   netstat -u
    ```
 
-5. **Verbindungen mit Prozessinformationen anzeigen:**
-   ```bash
-   netstat -p
+5. **Statistiken für alle Schnittstellen anzeigen:**
+   ```csh
+   netstat -i
    ```
 
 ## Tipps
-- Verwenden Sie die Option `-n`, um die Ausgabe zu beschleunigen, da die Namensauflösung umgangen wird.
-- Kombinieren Sie Optionen, um spezifischere Informationen zu erhalten, z.B. `netstat -tunlp` für alle aktiven TCP- und UDP-Verbindungen mit Prozessinformationen.
-- Nutzen Sie `grep`, um die Ausgabe zu filtern, z.B. `netstat -a | grep LISTEN`, um nur die Listening-Ports anzuzeigen.
+- Verwenden Sie die Option `-n`, um die Ausgabe zu beschleunigen, da die Namensauflösung vermieden wird.
+- Kombinieren Sie Optionen, um spezifischere Informationen zu erhalten, z.B. `netstat -tunl` für alle aktiven TCP- und UDP-Verbindungen, die auf Ports lauschen.
+- Überprüfen Sie regelmäßig die Netzwerkverbindungen, um unautorisierte Zugriffe oder ungewöhnliche Aktivitäten zu erkennen.

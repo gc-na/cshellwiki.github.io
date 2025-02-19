@@ -1,56 +1,56 @@
-# [Linux] Bash ps Penggunaan: Menampilkan proses yang sedang berjalan
+# [Sistem Operasi] C Shell (csh) ps Penggunaan: Menampilkan informasi proses
 
 ## Overview
-Perintah `ps` digunakan untuk menampilkan informasi tentang proses yang sedang berjalan di sistem. Ini memberikan gambaran tentang proses yang aktif, termasuk ID proses, penggunaan CPU, dan status proses.
+Perintah `ps` digunakan untuk menampilkan informasi tentang proses yang sedang berjalan di sistem. Ini sangat berguna untuk memantau aktivitas sistem dan mengelola proses yang berjalan.
 
 ## Usage
-Sintaks dasar dari perintah `ps` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `ps`:
 
-```bash
+```csh
 ps [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang digunakan dengan perintah `ps`:
+Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah `ps`:
 
-- `-e` atau `-A`: Menampilkan semua proses yang sedang berjalan.
-- `-f`: Menampilkan informasi proses dalam format yang lebih lengkap.
+- `-e`: Menampilkan semua proses yang sedang berjalan.
+- `-f`: Menampilkan informasi proses dalam format lengkap.
 - `-u [user]`: Menampilkan proses yang dimiliki oleh pengguna tertentu.
-- `-aux`: Menampilkan semua proses dengan informasi yang lebih detail.
-- `--sort`: Mengurutkan output berdasarkan kolom tertentu, seperti penggunaan CPU atau memori.
+- `-l`: Menampilkan informasi proses dalam format panjang.
+- `-p [pid]`: Menampilkan informasi untuk proses dengan ID tertentu.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `ps`:
 
 1. Menampilkan semua proses yang sedang berjalan:
-   ```bash
+   ```csh
    ps -e
    ```
 
-2. Menampilkan proses dengan format yang lebih lengkap:
-   ```bash
-   ps -f
+2. Menampilkan informasi lengkap tentang semua proses:
+   ```csh
+   ps -ef
    ```
 
 3. Menampilkan proses yang dimiliki oleh pengguna tertentu:
-   ```bash
+   ```csh
    ps -u username
    ```
 
-4. Menampilkan semua proses dengan informasi detail:
-   ```bash
-   ps aux
+4. Menampilkan informasi proses dalam format panjang:
+   ```csh
+   ps -l
    ```
 
-5. Mengurutkan proses berdasarkan penggunaan CPU:
-   ```bash
-   ps aux --sort=-%cpu
+5. Menampilkan informasi untuk proses dengan ID tertentu:
+   ```csh
+   ps -p 1234
    ```
 
 ## Tips
-- Gunakan `ps aux` untuk mendapatkan gambaran lengkap tentang semua proses yang berjalan, termasuk yang tidak dimiliki oleh pengguna saat ini.
-- Kombinasikan `ps` dengan perintah lain seperti `grep` untuk mencari proses tertentu. Contoh:
-  ```bash
-  ps aux | grep firefox
+- Gunakan opsi `-f` untuk mendapatkan informasi lebih detail tentang proses, termasuk parent process ID (PPID).
+- Kombinasikan `ps` dengan perintah `grep` untuk mencari proses tertentu, misalnya:
+  ```csh
+  ps -ef | grep nama_proses
   ```
-- Jika Anda ingin memantau proses secara real-time, pertimbangkan untuk menggunakan perintah `top` atau `htop` sebagai alternatif.
+- Perintah `top` dapat digunakan sebagai alternatif untuk memantau proses secara real-time.

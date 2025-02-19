@@ -1,43 +1,41 @@
-# [Linux] Bash nice Kullanımı: Süreçlerin önceliğini ayarlama
+# [Linux] C Shell (csh) nice Kullanımı: İşlem önceliğini ayarlama
 
 ## Overview
-`nice` komutu, Unix benzeri işletim sistemlerinde süreçlerin önceliğini ayarlamak için kullanılır. Bu komut, bir sürecin CPU zamanını ne kadar öncelikli alacağını belirler ve böylece sistem kaynaklarının daha verimli kullanılmasına yardımcı olur.
+`nice` komutu, bir işlemin CPU zamanını nasıl kullanacağını belirlemek için işlem önceliğini ayarlamak amacıyla kullanılır. Bu komut, sistem kaynaklarının daha verimli bir şekilde kullanılmasına yardımcı olur.
 
 ## Usage
-Temel sözdizimi şu şekildedir:
-```bash
-nice [options] [command]
+Temel sözdizimi aşağıdaki gibidir:
+```
+nice [options] [arguments]
 ```
 
 ## Common Options
-- `-n, --adjustment`: Sürecin öncelik seviyesini ayarlamak için kullanılır. Varsayılan olarak 10'dur. Daha düşük bir değer, daha yüksek öncelik anlamına gelir.
-- `-h, --help`: Kullanım bilgilerini gösterir.
-- `-v, --version`: `nice` komutunun sürüm bilgilerini gösterir.
+- `-n` veya `--adjustment`: İşlem önceliğini ayarlamak için bir değer belirtir. Bu değer -20 ile 19 arasında olabilir. -20 en yüksek önceliği, 19 ise en düşük önceliği temsil eder.
+- `-h` veya `--help`: Komut hakkında yardım bilgilerini gösterir.
+- `-v` veya `--version`: Komutun sürüm bilgilerini gösterir.
 
 ## Common Examples
-Aşağıda `nice` komutunun bazı pratik örnekleri verilmiştir:
-
-1. Varsayılan öncelikle bir komut çalıştırma:
-   ```bash
-   nice sleep 10
+1. **Varsayılan öncelikle bir komut çalıştırma:**
+   ```csh
+   nice mycommand
    ```
 
-2. Önceliği artırarak bir komut çalıştırma (örneğin, önceliği 5 olarak ayarlama):
-   ```bash
-   nice -n 5 my_script.sh
+2. **Önceliği artırarak bir komut çalıştırma:**
+   ```csh
+   nice -n -5 mycommand
    ```
 
-3. Önceliği azaltarak bir komut çalıştırma (örneğin, önceliği -5 olarak ayarlama):
-   ```bash
-   nice -n -5 heavy_process
+3. **Önceliği azaltarak bir komut çalıştırma:**
+   ```csh
+   nice -n 10 mycommand
    ```
 
-4. Bir komutun mevcut önceliğini görüntüleme:
-   ```bash
+4. **Bir komutun önceliğini kontrol etme:**
+   ```csh
    ps -o pid,nice,cmd
    ```
 
 ## Tips
-- `nice` komutunu kullanırken, sürecin önceliğini çok fazla artırmaktan kaçının, çünkü bu diğer süreçlerin çalışmasını olumsuz etkileyebilir.
-- Arka planda çalışan uzun süreli işlemler için `nice` kullanarak sistemin yanıt verme süresini iyileştirebilirsiniz.
-- `renice` komutunu kullanarak, zaten çalışan bir sürecin önceliğini değiştirebilirsiniz.
+- `nice` komutunu kullanarak sistem kaynaklarını daha verimli bir şekilde yönetebilirsiniz. Özellikle yoğun işlem yükü altında çalışan sistemlerde, düşük öncelikli işlemler için `nice` kullanmak faydalı olabilir.
+- İşlemlerin önceliğini ayarlarken, sistemin genel performansını etkilememek için dikkatli olun.
+- `renice` komutunu kullanarak zaten çalışan bir işlemin önceliğini değiştirebilirsiniz.

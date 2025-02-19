@@ -1,25 +1,23 @@
-# [Linux] Bash dirname uso: Estrae il percorso della directory
+# [Linux] C Shell (csh) dirname Uso equivalente: Estrae il nome della directory da un percorso
 
 ## Overview
-Il comando `dirname` in Bash è utilizzato per estrarre il percorso della directory da un percorso di file completo. Questo comando è utile quando si desidera ottenere solo la parte della directory di un percorso, ignorando il nome del file stesso.
+Il comando `dirname` è utilizzato per estrarre il nome della directory da un percorso di file. Restituisce la parte del percorso che precede l'ultimo separatore di directory, permettendo di ottenere facilmente la directory in cui si trova un file specifico.
 
 ## Usage
 La sintassi di base del comando è la seguente:
 
-```bash
+```
 dirname [opzioni] [argomenti]
 ```
 
 ## Common Options
-- `-z`: Tratta gli argomenti come stringhe null terminate.
-- `--help`: Mostra un messaggio di aiuto con le opzioni disponibili.
-- `--version`: Mostra la versione del comando.
+- Non ci sono opzioni comuni per il comando `dirname`, in quanto è progettato per essere semplice e diretto. Accetta solo argomenti che rappresentano i percorsi.
 
 ## Common Examples
-Ecco alcuni esempi pratici di utilizzo del comando `dirname`:
+Ecco alcuni esempi pratici dell'uso del comando `dirname`:
 
-1. Estrarre la directory da un percorso di file:
-   ```bash
+1. Estrazione del nome della directory da un percorso completo:
+   ```csh
    dirname /home/utente/documenti/file.txt
    ```
    Output:
@@ -27,38 +25,25 @@ Ecco alcuni esempi pratici di utilizzo del comando `dirname`:
    /home/utente/documenti
    ```
 
-2. Utilizzare `dirname` con variabili:
-   ```bash
-   FILE="/home/utente/documenti/file.txt"
-   dirname "$FILE"
+2. Estrazione del nome della directory da un percorso relativo:
+   ```csh
+   dirname ./immagini/foto.jpg
    ```
    Output:
    ```
-   /home/utente/documenti
+   ./immagini
    ```
 
-3. Estrarre la directory da un percorso relativo:
-   ```bash
-   dirname ./file.txt
+3. Utilizzo di `dirname` in un comando per ottenere il percorso della directory corrente:
+   ```csh
+   dirname $(pwd)
    ```
    Output:
    ```
-   .
-   ```
-
-4. Utilizzare `dirname` in un ciclo per più file:
-   ```bash
-   for file in /home/utente/*; do
-       echo $(dirname "$file")
-   done
-   ```
-   Output (esempio):
-   ```
-   /home/utente
    /home/utente
    ```
 
 ## Tips
-- Utilizza `dirname` in combinazione con altri comandi come `basename` per ottenere sia il percorso della directory che il nome del file.
-- Ricorda di racchiudere le variabili tra virgolette per evitare problemi con spazi nei nomi dei file.
-- Puoi utilizzare `dirname` in script per automatizzare operazioni sui file e gestire percorsi in modo più efficiente.
+- Utilizza `dirname` in combinazione con altri comandi per automatizzare la gestione dei file e delle directory.
+- Ricorda che `dirname` non modifica il percorso, ma restituisce solo il nome della directory; quindi puoi usarlo in script senza preoccuparti di alterare i dati.
+- Se hai bisogno di ottenere il percorso completo della directory corrente, considera di utilizzare `pwd` insieme a `dirname`.

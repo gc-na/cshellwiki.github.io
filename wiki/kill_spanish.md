@@ -1,53 +1,46 @@
-# [Linux] Bash kill Uso: Terminar procesos en ejecución
+# [Linux] C Shell (csh) kill Uso: Terminar procesos en ejecución
 
 ## Overview
-El comando `kill` en Bash se utiliza para enviar señales a los procesos en ejecución, permitiendo que se terminen o se controlen de diversas maneras. Aunque su nombre sugiere que solo se utiliza para "matar" procesos, en realidad puede enviar diferentes tipos de señales.
+El comando `kill` en C Shell (csh) se utiliza para enviar señales a los procesos en ejecución, lo que permite terminar o controlar su comportamiento. Es una herramienta esencial para la gestión de procesos en sistemas Unix y Linux.
 
 ## Usage
 La sintaxis básica del comando `kill` es la siguiente:
 
-```bash
-kill [opciones] [PID]
+```
+kill [opciones] [argumentos]
 ```
 
-Donde `PID` es el identificador del proceso que deseas afectar.
-
 ## Common Options
-- `-l`: Muestra una lista de todas las señales disponibles.
-- `-s SIGNAL`: Especifica la señal a enviar, en lugar de usar la señal predeterminada (que es `TERM`).
-- `-9`: Envía la señal `SIGKILL`, que fuerza la terminación del proceso.
+- `-l`: Muestra una lista de señales disponibles.
+- `-s SIGNAL`: Especifica la señal que se enviará al proceso.
+- `-n NUMBER`: Envía la señal correspondiente al número especificado.
 
 ## Common Examples
-Aquí hay algunos ejemplos prácticos del uso del comando `kill`:
-
-1. **Terminar un proceso usando su PID**:
-   ```bash
+1. **Terminar un proceso por su ID**:
+   Para terminar un proceso específico, utiliza su ID (PID):
+   ```csh
    kill 1234
    ```
-   Esto enviará la señal `TERM` al proceso con PID 1234.
 
-2. **Forzar la terminación de un proceso**:
-   ```bash
-   kill -9 1234
+2. **Enviar una señal específica**:
+   Para enviar una señal de terminación (SIGTERM) a un proceso:
+   ```csh
+   kill -s TERM 1234
    ```
-   Esto enviará la señal `SIGKILL` al proceso, forzando su terminación inmediata.
 
-3. **Enviar una señal específica**:
-   ```bash
-   kill -s HUP 1234
-   ```
-   Esto enviará la señal `SIGHUP`, que generalmente se utiliza para indicar que un proceso debe recargarse.
-
-4. **Listar señales disponibles**:
-   ```bash
+3. **Listar señales disponibles**:
+   Para ver una lista de señales que puedes enviar:
+   ```csh
    kill -l
    ```
-   Esto mostrará una lista de todas las señales que puedes enviar.
+
+4. **Forzar la terminación de un proceso**:
+   Para forzar la terminación de un proceso que no responde:
+   ```csh
+   kill -9 1234
+   ```
 
 ## Tips
-- Siempre intenta usar la señal `TERM` antes de `SIGKILL`, ya que `TERM` permite que el proceso se cierre de manera ordenada.
-- Puedes usar `pgrep` para encontrar el PID de un proceso por su nombre antes de usar `kill`. Por ejemplo:
-  ```bash
-  kill $(pgrep nombre_del_proceso)
-  ```
-- Ten cuidado al usar `kill -9`, ya que no permite que el proceso limpie los recursos que estaba utilizando.
+- Siempre intenta usar señales menos agresivas (como SIGTERM) antes de recurrir a SIGKILL (señal 9), ya que esta última no permite que el proceso se cierre limpiamente.
+- Verifica el PID del proceso que deseas terminar usando comandos como `ps` o `top` antes de usar `kill`.
+- Utiliza `killall` si deseas terminar todos los procesos que coinciden con un nombre específico.

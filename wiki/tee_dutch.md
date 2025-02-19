@@ -1,47 +1,46 @@
-# [Linux] Bash tee gebruik: Schrijf naar standaarduitvoer en bestanden
+# [Linux] C Shell (csh) tee gebruik: Schrijven naar bestanden en naar de standaarduitvoer
 
 ## Overzicht
-De `tee`-opdracht in Bash wordt gebruikt om de standaarduitvoer van een commando te splitsen. Het schrijft de uitvoer naar zowel de standaarduitvoer (meestal het scherm) als naar een of meerdere bestanden. Dit is handig wanneer je de uitvoer van een commando wilt bekijken en tegelijkertijd wilt opslaan.
+De `tee`-opdracht in C Shell (csh) wordt gebruikt om de uitvoer van een commando naar meerdere bestemmingen te sturen. Het kan de uitvoer zowel naar de standaarduitvoer (meestal het scherm) als naar een of meer bestanden schrijven. Dit is handig wanneer je de uitvoer wilt bekijken en tegelijkertijd wilt opslaan.
 
 ## Gebruik
 De basis syntaxis van de `tee`-opdracht is als volgt:
 
-```bash
+```csh
 tee [opties] [bestanden]
 ```
 
-## Veelvoorkomende Opties
-- `-a`, `--append`: Voeg de uitvoer toe aan het einde van het opgegeven bestand in plaats van het bestand te overschrijven.
-- `-i`, `--ignore-interrupts`: Negeer onderbrekingen (zoals Ctrl+C).
-- `--help`: Toon een helpbericht met informatie over het gebruik van de opdracht.
-- `--version`: Toon de versie-informatie van de `tee`-opdracht.
+## Veelvoorkomende opties
+- `-a`: Voeg de uitvoer toe aan het einde van het opgegeven bestand in plaats van het bestand te overschrijven.
+- `-i`: Negeer signalen, wat handig kan zijn om te voorkomen dat de opdracht voortijdig wordt beëindigd.
 
-## Veelvoorkomende Voorbeelden
+## Veelvoorkomende voorbeelden
 
-1. **Basisgebruik**: Schrijf de uitvoer van een commando naar een bestand.
-   ```bash
-   echo "Hallo, wereld!" | tee bestand.txt
+1. **Basisgebruik van tee**:
+   Dit voorbeeld toont hoe je de uitvoer van een commando naar een bestand schrijft en tegelijkertijd op het scherm weergeeft.
+   ```csh
+   echo "Hallo Wereld" | tee output.txt
    ```
 
-2. **Meerdere bestanden**: Schrijf de uitvoer naar meerdere bestanden.
-   ```bash
-   echo "Dit is een test." | tee bestand1.txt bestand2.txt
+2. **Uitvoer toevoegen aan een bestand**:
+   Hier voegen we uitvoer toe aan een bestaand bestand zonder het te overschrijven.
+   ```csh
+   echo "Nieuwe regel" | tee -a output.txt
    ```
 
-3. **Toevoegen aan een bestand**: Voeg uitvoer toe aan een bestaand bestand zonder het te overschrijven.
-   ```bash
-   echo "Nieuwe regel." | tee -a bestand.txt
+3. **Meerdere bestanden bijwerken**:
+   Dit voorbeeld toont hoe je de uitvoer naar meerdere bestanden kunt sturen.
+   ```csh
+   echo "Dit is een test" | tee bestand1.txt bestand2.txt
    ```
 
-4. **Gebruik met andere commando's**: Combineer `tee` met andere commando's, zoals `grep`.
-   ```bash
-   dmesg | grep "fout" | tee fouten.txt
+4. **Gebruik met andere commando's**:
+   Je kunt `tee` ook gebruiken in combinatie met andere commando's. Bijvoorbeeld, hier gebruiken we `ls` om de inhoud van een directory te tonen en tegelijkertijd naar een bestand te schrijven.
+   ```csh
+   ls -l | tee directory_list.txt
    ```
 
 ## Tips
-- Gebruik `tee` in een pijplijn om de uitvoer van een commando te bekijken terwijl je deze opslaat.
-- Wees voorzichtig met het overschrijven van bestanden; gebruik de `-a` optie als je wilt toevoegen in plaats van overschrijven.
-- Combineer `tee` met `sudo` als je uitvoer naar een bestand wilt schrijven waarvoor root-toegang vereist is, bijvoorbeeld:
-  ```bash
-  echo "Configuratie toegevoegd" | sudo tee /etc/config.txt
-  ```
+- Gebruik de `-a` optie als je niet wilt dat je gegevens verloren gaan door het overschrijven van een bestand.
+- Combineer `tee` met andere commando's in een pijplijn om de uitvoer te manipuleren en op te slaan.
+- Vergeet niet dat `tee` de uitvoer naar de standaarduitvoer doorgeeft, dus je kunt de resultaten altijd in de terminal zien.

@@ -1,42 +1,52 @@
-# [Linux] Bash iconv gebruik: Conversie van tekstbestanden tussen verschillende coderingen
+# [Linux] C Shell (csh) iconv gebruik: Tekstcodering converteren
 
 ## Overzicht
-De `iconv`-opdracht is een nuttig hulpmiddel in de Bash-omgeving dat wordt gebruikt om tekstbestanden te converteren van de ene karaktercodering naar de andere. Dit is vooral handig bij het werken met bestanden die in verschillende coderingen zijn opgeslagen, zoals UTF-8, ISO-8859-1, en meer.
+De `iconv`-opdracht wordt gebruikt om tekstbestanden van de ene tekencodering naar de andere te converteren. Dit is nuttig wanneer je bestanden hebt die in verschillende coderingen zijn opgeslagen en je ze wilt uniformeren of compatibel maken met andere systemen.
 
 ## Gebruik
 De basis syntaxis van de `iconv`-opdracht is als volgt:
 
-```bash
-iconv [opties] -f [bron-codering] -t [doel-codering] [bestandsnaam]
+```csh
+iconv [opties] [argumenten]
 ```
 
 ## Veelvoorkomende opties
-- `-f`: Specificeert de broncodering van het bestand.
-- `-t`: Specificeert de doelcodering voor de conversie.
-- `-o`: Bepaalt de uitvoerbestandsnaam. Als deze optie niet wordt gebruikt, wordt de uitvoer naar de standaarduitvoer gestuurd.
-- `-c`: Negeert ongeldige karakters tijdens de conversie.
+- `-f`, `--from-code`: Specificeert de broncodering van de invoer.
+- `-t`, `--to-code`: Specificeert de doelcodering voor de uitvoer.
+- `-o`, `--output`: Geeft de naam van het uitvoerbestand op.
+- `-l`, `--list`: Lijst alle ondersteunde coderingen.
 
 ## Veelvoorkomende voorbeelden
 
-### Voorbeeld 1: Conversie van UTF-8 naar ISO-8859-1
-```bash
-iconv -f UTF-8 -t ISO-8859-1 input.txt -o output.txt
-```
-In dit voorbeeld wordt het bestand `input.txt`, dat in UTF-8 is gecodeerd, geconverteerd naar ISO-8859-1 en opgeslagen als `output.txt`.
+### Voorbeeld 1: Basis conversie
+Converteer een bestand van ISO-8859-1 naar UTF-8.
 
-### Voorbeeld 2: Conversie van ISO-8859-1 naar UTF-8
-```bash
+```csh
 iconv -f ISO-8859-1 -t UTF-8 input.txt -o output.txt
 ```
-Hier wordt `input.txt`, gecodeerd in ISO-8859-1, geconverteerd naar UTF-8.
 
-### Voorbeeld 3: Conversie met het negeren van ongeldige karakters
-```bash
-iconv -f UTF-8 -t ISO-8859-1 -c input.txt -o output.txt
+### Voorbeeld 2: Lijst van ondersteunde coderingen
+Bekijk de lijst van alle ondersteunde coderingen.
+
+```csh
+iconv -l
 ```
-In dit geval worden ongeldige karakters genegeerd tijdens de conversie van UTF-8 naar ISO-8859-1.
+
+### Voorbeeld 3: Directe uitvoer naar de terminal
+Converteer een bestand en toon de uitvoer direct in de terminal.
+
+```csh
+iconv -f UTF-16 -t UTF-8 input.txt
+```
+
+### Voorbeeld 4: Converteer en overschrijf het originele bestand
+Converteer een bestand en overschrijf het originele bestand met de nieuwe codering.
+
+```csh
+iconv -f ISO-8859-1 -t UTF-8 input.txt > temp.txt && mv temp.txt input.txt
+```
 
 ## Tips
-- Controleer altijd de codering van je bestanden voordat je ze converteert. Dit kan je helpen om conversiefouten te voorkomen.
-- Gebruik de `-o` optie om de uitvoer naar een nieuw bestand te sturen, zodat je het originele bestand niet overschrijft.
-- Test de conversie met een klein bestand om er zeker van te zijn dat de uitvoer naar wens is voordat je grotere bestanden verwerkt.
+- Controleer altijd de bron- en doelcoderingen voordat je een conversie uitvoert om gegevensverlies te voorkomen.
+- Maak een back-up van je bestanden voordat je ze converteert, vooral als je ze gaat overschrijven.
+- Gebruik de `-l` optie om te verifiëren of de gewenste coderingen worden ondersteund door jouw versie van `iconv`.

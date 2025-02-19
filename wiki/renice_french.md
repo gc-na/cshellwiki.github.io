@@ -1,43 +1,49 @@
-# [Linux] Bash renice : Modifier la priorité des processus
+# [Linux] C Shell (csh) renice : Modifier la priorité d'un processus
 
 ## Overview
-La commande `renice` permet de modifier la priorité d'exécution des processus en cours sur un système Linux. En ajustant la priorité, vous pouvez influencer la quantité de ressources CPU allouées à un processus spécifique, ce qui peut être utile pour optimiser les performances du système.
+La commande `renice` permet de modifier la priorité d'un ou plusieurs processus en cours d'exécution. Cela peut être utile pour augmenter ou diminuer la quantité de ressources système qu'un processus utilise, ce qui peut améliorer les performances d'autres processus.
 
 ## Usage
 La syntaxe de base de la commande `renice` est la suivante :
 
-```bash
+```csh
 renice [options] [arguments]
 ```
 
 ## Common Options
-- `-n`, `--priority` : Définit la nouvelle priorité pour le processus. La valeur peut être un entier entre -20 (priorité la plus élevée) et 19 (priorité la plus basse).
-- `-p`, `--pid` : Spécifie le ou les identifiants de processus (PID) dont la priorité doit être modifiée.
-- `-g`, `--pgrp` : Modifie la priorité de tous les processus d'un groupe de processus.
-- `-u`, `--user` : Modifie la priorité de tous les processus appartenant à un utilisateur spécifique.
+- `-n` : Spécifie la nouvelle valeur de priorité à appliquer. La valeur peut être positive (pour diminuer la priorité) ou négative (pour augmenter la priorité).
+- `-p` : Permet de spécifier les identifiants de processus (PID) à modifier.
+- `-g` : Modifie la priorité de tous les processus d'un groupe de processus spécifié.
+- `-u` : Modifie la priorité de tous les processus appartenant à un utilisateur spécifié.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `renice` :
 
-1. **Modifier la priorité d'un processus par son PID :**
-   ```bash
-   renice -n 10 -p 1234
+1. **Modifier la priorité d'un processus spécifique :**
+   Pour augmenter la priorité d'un processus avec le PID 1234 :
+   ```csh
+   renice -n -5 -p 1234
    ```
-   Cela change la priorité du processus avec le PID 1234 à 10.
 
-2. **Modifier la priorité de tous les processus d'un utilisateur :**
-   ```bash
-   renice -n 5 -u username
+2. **Modifier la priorité de plusieurs processus :**
+   Pour diminuer la priorité de plusieurs processus avec les PIDs 1234 et 5678 :
+   ```csh
+   renice -n 10 -p 1234 5678
    ```
-   Cela ajuste la priorité de tous les processus appartenant à l'utilisateur `username` à 5.
 
-3. **Modifier la priorité d'un groupe de processus :**
-   ```bash
-   renice -n -5 -g 5678
+3. **Modifier la priorité de tous les processus d'un utilisateur :**
+   Pour diminuer la priorité de tous les processus de l'utilisateur "alice" :
+   ```csh
+   renice -n 5 -u alice
    ```
-   Cela définit la priorité de tous les processus dans le groupe de processus avec l'identifiant 5678 à -5.
+
+4. **Modifier la priorité de tous les processus d'un groupe :**
+   Pour augmenter la priorité de tous les processus du groupe de processus 1001 :
+   ```csh
+   renice -n -3 -g 1001
+   ```
 
 ## Tips
-- Utilisez `renice` avec précaution, car une priorité trop élevée pour un processus peut nuire aux performances globales du système.
-- Vérifiez la priorité actuelle des processus avec la commande `ps -eo pid,ni,cmd` avant de faire des modifications.
-- Pour des ajustements fréquents, envisagez d'automatiser le processus avec un script Bash.
+- Vérifiez toujours la priorité actuelle d'un processus avec la commande `ps` avant d'utiliser `renice`.
+- Utilisez des valeurs de priorité judicieusement ; une priorité trop élevée pour un processus peut nuire à la réactivité du système.
+- Vous devez avoir les permissions appropriées pour modifier la priorité des processus d'autres utilisateurs.

@@ -1,53 +1,45 @@
-# [Linux] Bash resize2fs Verwendung: Dateisystemgröße anpassen
+# [Linux] C Shell (csh) resize2fs Verwendung: Dateisystemgröße anpassen
 
 ## Übersicht
-Der Befehl `resize2fs` wird verwendet, um die Größe eines ext2-, ext3- oder ext4-Dateisystems anzupassen. Dies kann nützlich sein, wenn Sie den Speicherplatz eines Dateisystems vergrößern oder verkleinern möchten, um ihn an die Größe der zugrunde liegenden Partition anzupassen.
+Das `resize2fs`-Kommando wird verwendet, um die Größe eines ext2, ext3 oder ext4 Dateisystems anzupassen. Es kann sowohl verwendet werden, um ein Dateisystem zu vergrößern als auch um es zu verkleinern, abhängig von den Anforderungen des Benutzers.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```csh
 resize2fs [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-f`: Erzwingt die Größenanpassung, auch wenn das Dateisystem nicht als "sauber" markiert ist.
-- `-p`: Zeigt den Fortschritt der Größenanpassung an.
-- `-s`: Verkleinert das Dateisystem nur, wenn es notwendig ist.
-- `-M`: Verkleinert das Dateisystem auf die minimal mögliche Größe.
+- `-f`: Erzwingt die Größenänderung, auch wenn das Dateisystem nicht sauber ist.
+- `-p`: Zeigt den Fortschritt der Größenänderung an.
+- `-s`: Verkleinert das Dateisystem auf die angegebene Größe.
+- `-M`: Verkleinert das Dateisystem auf die kleinste mögliche Größe.
 
 ## Häufige Beispiele
 Hier sind einige praktische Beispiele für die Verwendung von `resize2fs`:
 
-### Beispiel 1: Vergrößern des Dateisystems
-Um ein ext4-Dateisystem auf `/dev/sda1` zu vergrößern, verwenden Sie:
+1. **Vergrößern eines Dateisystems auf die maximale Größe**:
+   ```csh
+   resize2fs /dev/sda1
+   ```
 
-```bash
-resize2fs /dev/sda1
-```
+2. **Verkleinern eines Dateisystems auf eine spezifische Größe (z.B. 10G)**:
+   ```csh
+   resize2fs /dev/sda1 10G
+   ```
 
-### Beispiel 2: Verkleinern des Dateisystems
-Um das Dateisystem auf `/dev/sda1` auf eine bestimmte Größe von 20 GB zu verkleinern, verwenden Sie:
+3. **Verkleinern eines Dateisystems und Fortschritt anzeigen**:
+   ```csh
+   resize2fs -p /dev/sda1 5G
+   ```
 
-```bash
-resize2fs /dev/sda1 20G
-```
-
-### Beispiel 3: Fortschritt anzeigen
-Um den Fortschritt der Größenanpassung anzuzeigen, können Sie die `-p` Option verwenden:
-
-```bash
-resize2fs -p /dev/sda1
-```
-
-### Beispiel 4: Erzwingen der Größenanpassung
-Wenn das Dateisystem als "nicht sauber" markiert ist, können Sie die Anpassung erzwingen:
-
-```bash
-resize2fs -f /dev/sda1
-```
+4. **Erzwingen der Größenänderung eines nicht sauberen Dateisystems**:
+   ```csh
+   resize2fs -f /dev/sda1
+   ```
 
 ## Tipps
-- Stellen Sie sicher, dass Sie ein Backup Ihrer Daten haben, bevor Sie Änderungen an Dateisystemen vornehmen.
-- Überprüfen Sie das Dateisystem mit `fsck`, bevor Sie `resize2fs` verwenden, um sicherzustellen, dass es keine Fehler gibt.
-- Verwenden Sie `resize2fs` immer mit Bedacht, insbesondere beim Verkleinern von Dateisystemen, da dies zu Datenverlust führen kann, wenn der verfügbare Speicherplatz überschritten wird.
+- Stellen Sie sicher, dass das Dateisystem unmontiert ist, bevor Sie `resize2fs` verwenden, um Datenverlust zu vermeiden.
+- Führen Sie regelmäßig ein Backup Ihrer Daten durch, bevor Sie Änderungen an der Dateisystemgröße vornehmen.
+- Verwenden Sie die Option `-p`, um den Fortschritt zu überwachen, insbesondere bei großen Dateisystemen.

@@ -1,12 +1,12 @@
-# [Linux] Bash yes : Générer des sorties répétées
+# [Linux] C Shell (csh) yes : Générer des sorties répétées
 
 ## Overview
-La commande `yes` est utilisée pour générer une sortie répétée d'une chaîne de caractères, généralement "y" (pour "yes"). Elle est souvent utilisée dans des scripts ou des commandes où une confirmation répétée est nécessaire.
+La commande `yes` dans C Shell (csh) est utilisée pour générer une sortie répétée d'une chaîne de caractères, généralement "y" ou "yes". Elle est souvent utilisée pour automatiser des réponses à des invites dans des scripts ou des commandes qui demandent une confirmation.
 
 ## Usage
 La syntaxe de base de la commande `yes` est la suivante :
 
-```bash
+```
 yes [options] [arguments]
 ```
 
@@ -17,31 +17,27 @@ yes [options] [arguments]
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `yes` :
 
-1. **Générer des "y" en continu :**
-   ```bash
+1. **Générer une sortie de "yes" en continu :**
+   ```csh
    yes
    ```
-   Cela affichera "y" en continu jusqu'à ce que la commande soit interrompue (par exemple, avec Ctrl+C).
 
-2. **Générer une chaîne personnalisée :**
-   ```bash
-   yes "Bonjour"
+2. **Générer une sortie répétée d'une chaîne personnalisée :**
+   ```csh
+   yes "Je suis d'accord"
    ```
-   Cela affichera "Bonjour" en continu.
 
-3. **Utiliser avec une autre commande :**
-   ```bash
-   yes | rm -i fichier.txt
+3. **Utiliser `yes` pour automatiser une réponse dans une commande :**
+   ```csh
+   yes | rm -i *.tmp
    ```
-   Cela répondra "y" à chaque demande de confirmation pour supprimer `fichier.txt`.
 
-4. **Limiter le nombre de répétitions :**
-   ```bash
-   yes "OK" | head -n 5
+4. **Limiter le nombre de répétitions avec `head` :**
+   ```csh
+   yes "Oui" | head -n 5
    ```
-   Cela affichera "OK" cinq fois.
 
 ## Tips
-- Utilisez `yes` avec précaution, surtout lorsqu'il est combiné avec des commandes destructrices comme `rm`, car il peut entraîner une suppression non intentionnelle de fichiers.
-- Pour tester des scripts ou des commandes qui nécessitent des confirmations, `yes` peut être un outil utile pour automatiser le processus.
-- N'oubliez pas que `yes` continuera à s'exécuter jusqu'à ce qu'il soit arrêté, donc assurez-vous d'utiliser des commandes qui peuvent gérer des entrées répétées.
+- Utilisez `yes` pour automatiser des confirmations dans des scripts afin d'éviter des interruptions manuelles.
+- Soyez prudent lorsque vous utilisez `yes` avec des commandes destructrices comme `rm`, car cela peut entraîner la suppression non désirée de fichiers.
+- Combinez `yes` avec d'autres commandes pour créer des flux de travail efficaces et automatisés.

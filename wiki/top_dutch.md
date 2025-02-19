@@ -1,45 +1,46 @@
-# [Linux] Bash top gebruik: Bekijk systeemprocessen in real-time
+# [Linux] C Shell (csh) top gebruik: Toont actieve processen
 
 ## Overzicht
-De `top`-opdracht is een krachtige tool in Linux die een dynamisch overzicht biedt van de actieve processen op het systeem. Het toont informatie zoals CPU- en geheugengebruik, waardoor gebruikers snel inzicht krijgen in de prestaties van hun systeem.
+De `top`-opdracht in C Shell (csh) is een krachtige tool die een dynamisch overzicht biedt van de actieve processen op een systeem. Het toont informatie zoals CPU- en geheugengebruik, waardoor gebruikers eenvoudig kunnen zien welke processen veel middelen verbruiken.
 
 ## Gebruik
 De basis syntaxis van de `top`-opdracht is als volgt:
 
-```bash
-top [opties]
+```
+top [opties] [argumenten]
 ```
 
 ## Veelvoorkomende opties
-Hier zijn enkele veelvoorkomende opties die je kunt gebruiken met de `top`-opdracht:
+Hier zijn enkele veelvoorkomende opties voor de `top`-opdracht:
 
-- `-d <tijd>`: Stel de update-interval in (in seconden).
-- `-p <pid>`: Toon alleen processen met de opgegeven proces-ID.
-- `-u <gebruikersnaam>`: Toon alleen processen die door de opgegeven gebruiker worden uitgevoerd.
+- `-d <tijd>`: Stel de verversingssnelheid in (in seconden).
+- `-p <PID>`: Toon alleen de processen met de opgegeven proces-ID.
+- `-u <gebruikersnaam>`: Toon alleen de processen die aan de opgegeven gebruiker zijn toegewezen.
 
 ## Veelvoorkomende voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van de `top`-opdracht:
 
-1. **Basis gebruik van top**:
+1. Start `top` met de standaardinstellingen:
    ```bash
    top
    ```
 
-2. **Top met een update-interval van 2 seconden**:
+2. Start `top` met een verversingssnelheid van 5 seconden:
    ```bash
-   top -d 2
+   top -d 5
    ```
 
-3. **Top voor een specifieke gebruiker**:
+3. Toon alleen de processen van een specifieke gebruiker:
    ```bash
    top -u gebruiker
    ```
 
-4. **Top voor een specifieke proces-ID**:
+4. Toon alleen een specifiek proces met een bepaalde PID:
    ```bash
    top -p 1234
    ```
 
 ## Tips
-- Druk op `h` binnen de `top`-interface voor een helpmenu met sneltoetsen.
-- Gebruik `Shift + M` om processen te sorteren op geheugengebruik.
-- Druk op `q` om de `top`-interface te verlaten.
+- Gebruik de toetsen `h` of `?` binnen `top` voor hulp en meer informatie over de beschikbare sneltoetsen.
+- Druk op `q` om `top` te verlaten.
+- Experimenteer met de sorteerfuncties door op de kolomkoppen te klikken of de sneltoetsen te gebruiken om processen te sorteren op verschillende criteria, zoals CPU- of geheugengebruik.

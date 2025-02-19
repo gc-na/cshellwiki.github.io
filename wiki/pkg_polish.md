@@ -1,49 +1,51 @@
-# [Linux] Bash pkg użycie: Zarządzanie pakietami oprogramowania
+# [Linux] C Shell (csh) pkg użycie: Zarządzanie pakietami
 
 ## Overview
-Polecenie `pkg` jest narzędziem do zarządzania pakietami, które umożliwia instalację, aktualizację i usuwanie oprogramowania w systemach operacyjnych opartych na Unixie. Ułatwia ono zarządzanie zależnościami oraz utrzymanie systemu w aktualnym stanie.
+Polecenie `pkg` w C Shell (csh) służy do zarządzania pakietami oprogramowania. Umożliwia instalację, aktualizację oraz usuwanie pakietów, co jest kluczowe dla utrzymania systemu w aktualnym stanie.
 
 ## Usage
 Podstawowa składnia polecenia `pkg` wygląda następująco:
 
-```bash
+```
 pkg [opcje] [argumenty]
 ```
 
 ## Common Options
 - `install`: Instaluje nowy pakiet.
 - `remove`: Usuwa zainstalowany pakiet.
-- `update`: Aktualizuje listę dostępnych pakietów.
-- `upgrade`: Aktualizuje zainstalowane pakiety do najnowszych wersji.
-- `search`: Wyszukuje pakiety według nazwy lub opisu.
+- `update`: Aktualizuje zainstalowane pakiety do najnowszej wersji.
+- `list`: Wyświetla listę zainstalowanych pakietów.
+- `info`: Wyświetla szczegółowe informacje o wybranym pakiecie.
 
 ## Common Examples
+Przykłady użycia polecenia `pkg`:
+
 1. **Instalacja pakietu:**
-   ```bash
+   ```csh
    pkg install nazwa_pakietu
    ```
 
-2. **Usuwanie pakietu:**
-   ```bash
+2. **Usunięcie pakietu:**
+   ```csh
    pkg remove nazwa_pakietu
    ```
 
-3. **Aktualizacja listy pakietów:**
-   ```bash
+3. **Aktualizacja wszystkich pakietów:**
+   ```csh
    pkg update
    ```
 
-4. **Aktualizacja wszystkich zainstalowanych pakietów:**
-   ```bash
-   pkg upgrade
+4. **Wyświetlenie listy zainstalowanych pakietów:**
+   ```csh
+   pkg list
    ```
 
-5. **Wyszukiwanie pakietu:**
-   ```bash
-   pkg search fraza
+5. **Wyświetlenie informacji o pakiecie:**
+   ```csh
+   pkg info nazwa_pakietu
    ```
 
 ## Tips
-- Regularnie używaj `pkg update`, aby mieć pewność, że masz dostęp do najnowszych wersji pakietów.
-- Zawsze sprawdzaj zależności przed instalacją nowego pakietu, aby uniknąć problemów z kompatybilnością.
-- Używaj opcji `-y` podczas instalacji lub usuwania pakietów, aby automatycznie potwierdzać operacje, co przyspiesza proces.
+- Zawsze sprawdzaj dostępność aktualizacji przed instalacją nowych pakietów, aby uniknąć konfliktów.
+- Używaj opcji `info`, aby uzyskać szczegółowe informacje o pakietach, co może pomóc w podjęciu decyzji o ich instalacji lub usunięciu.
+- Regularnie przeglądaj listę zainstalowanych pakietów, aby utrzymać porządek w systemie.

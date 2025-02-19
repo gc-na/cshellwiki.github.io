@@ -1,44 +1,43 @@
-# [Linux] Bash umask Cách sử dụng: Thiết lập quyền truy cập mặc định cho tệp tin
+# [Hệ điều hành] C Shell (csh) umask: [quản lý quyền truy cập tệp]
 
 ## Tổng quan
-Lệnh `umask` trong Bash được sử dụng để thiết lập quyền truy cập mặc định cho các tệp tin và thư mục mới được tạo ra. Nó xác định các quyền mà sẽ bị từ chối khi tạo tệp hoặc thư mục, giúp bảo vệ dữ liệu của bạn khỏi việc truy cập không mong muốn.
+Lệnh `umask` trong C Shell (csh) được sử dụng để thiết lập quyền truy cập mặc định cho các tệp và thư mục mới được tạo ra. Nó xác định các quyền mà người dùng không muốn cấp cho các tệp và thư mục mới.
 
-## Cách sử dụng
+## Cú pháp
 Cú pháp cơ bản của lệnh `umask` như sau:
 
-```bash
-umask [options] [arguments]
+```
+umask [tùy chọn] [đối số]
 ```
 
 ## Các tùy chọn phổ biến
-- `-S`: Hiển thị umask dưới dạng ký hiệu quyền (rwx).
-- `-p`: Hiển thị umask hiện tại của shell cha.
-- `-c`: Thiết lập umask cho các tệp tin và thư mục mới.
+- `-S`: Hiển thị giá trị umask hiện tại dưới dạng ký hiệu.
+- `-p`: Hiển thị giá trị umask hiện tại mà không thay đổi nó.
 
-## Ví dụ thường gặp
+## Ví dụ phổ biến
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `umask`:
 
-1. **Kiểm tra umask hiện tại:**
-   ```bash
+1. **Xem giá trị umask hiện tại**:
+   ```csh
    umask
    ```
 
-2. **Thiết lập umask thành 022 (chỉ cho phép quyền ghi cho chủ sở hữu):**
-   ```bash
+2. **Thiết lập umask mới**:
+   ```csh
    umask 022
    ```
 
-3. **Hiển thị umask dưới dạng ký hiệu quyền:**
-   ```bash
+3. **Hiển thị giá trị umask hiện tại dưới dạng ký hiệu**:
+   ```csh
    umask -S
    ```
 
-4. **Thiết lập umask cho phiên làm việc hiện tại:**
-   ```bash
-   umask 077
+4. **Thiết lập umask cho phép quyền đọc và ghi cho chủ sở hữu, nhưng chỉ quyền đọc cho nhóm và người khác**:
+   ```csh
+   umask 133
    ```
 
 ## Mẹo
-- Hãy nhớ rằng umask chỉ ảnh hưởng đến các tệp tin và thư mục mới được tạo ra sau khi thiết lập.
-- Kiểm tra umask thường xuyên để đảm bảo rằng quyền truy cập của bạn luôn được bảo mật.
-- Sử dụng umask trong các script để đảm bảo rằng các tệp tin được tạo ra có quyền truy cập đúng như mong muốn.
+- Hãy nhớ rằng giá trị umask được áp dụng cho các tệp và thư mục mới, vì vậy hãy thiết lập nó trước khi tạo tệp hoặc thư mục mới.
+- Kiểm tra giá trị umask thường xuyên để đảm bảo rằng nó phù hợp với yêu cầu bảo mật của bạn.
+- Sử dụng lệnh `umask -S` để dễ dàng hiểu các quyền hiện tại mà bạn đang thiết lập.

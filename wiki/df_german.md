@@ -1,54 +1,50 @@
-# [Linux] Bash df Verwendung: Zeigt den Speicherplatz auf Dateisystemen an
+# [Linux] C Shell (csh) df Verwendung: Zeigt den verfügbaren Speicherplatz auf Dateisystemen an
 
 ## Übersicht
-Der Befehl `df` (disk free) wird verwendet, um Informationen über den verfügbaren und verwendeten Speicherplatz auf Dateisystemen anzuzeigen. Er gibt eine Übersicht über die Speicherkapazität und die Nutzung der verschiedenen Dateisysteme auf einem Linux- oder Unix-basierten System.
+Der Befehl `df` (disk free) wird verwendet, um Informationen über den verfügbaren und verwendeten Speicherplatz auf Dateisystemen anzuzeigen. Er gibt eine Übersicht über die Speicherkapazität der verschiedenen Laufwerke und Partitionen des Systems.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```csh
 df [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-h`: Gibt die Größen in menschenlesbarem Format aus (z. B. KB, MB, GB).
+- `-h`: Zeigt die Größen in einem menschenlesbaren Format (z.B. KB, MB, GB) an.
 - `-T`: Zeigt den Typ des Dateisystems an.
-- `-a`: Zeigt auch die Dateisysteme mit 0 Speicherplatz an.
-- `-i`: Zeigt Informationen über die Inodes an, anstelle von Speicherplatz.
-- `--total`: Zeigt die Gesamtsummen für alle Dateisysteme an.
+- `-i`: Zeigt die Anzahl der inodes an, die verwendet und verfügbar sind.
+- `-a`: Zeigt alle Dateisysteme an, einschließlich derjenigen, die keinen Speicherplatz verwenden.
 
 ## Häufige Beispiele
-- Um den verfügbaren Speicherplatz in einem menschenlesbaren Format anzuzeigen:
+Hier sind einige praktische Beispiele für die Verwendung des `df`-Befehls:
 
-```bash
-df -h
-```
+1. **Standardnutzung**: Zeigt den verfügbaren Speicherplatz für alle gemounteten Dateisysteme an.
+   ```csh
+   df
+   ```
 
-- Um Informationen über alle Dateisysteme, einschließlich der mit 0 Speicherplatz, anzuzeigen:
+2. **Menschenlesbares Format**: Zeigt die Speicherkapazität in einem leicht verständlichen Format an.
+   ```csh
+   df -h
+   ```
 
-```bash
-df -a
-```
+3. **Dateisystemtyp anzeigen**: Zeigt zusätzlich den Typ des Dateisystems an.
+   ```csh
+   df -T
+   ```
 
-- Um den Typ des Dateisystems zusammen mit den Speicherinformationen anzuzeigen:
+4. **Inodes anzeigen**: Gibt Informationen über die verwendeten und verfügbaren inodes aus.
+   ```csh
+   df -i
+   ```
 
-```bash
-df -T
-```
-
-- Um Informationen über die Inodes anzuzeigen:
-
-```bash
-df -i
-```
-
-- Um die Gesamtsummen für alle Dateisysteme anzuzeigen:
-
-```bash
-df --total
-```
+5. **Alle Dateisysteme anzeigen**: Listet auch die Dateisysteme auf, die keinen Speicherplatz verwenden.
+   ```csh
+   df -a
+   ```
 
 ## Tipps
-- Verwenden Sie die Option `-h`, um die Ausgabe leichter lesbar zu machen, besonders wenn Sie mit großen Speichermengen arbeiten.
-- Kombinieren Sie `df` mit anderen Befehlen wie `grep`, um spezifische Dateisysteme herauszufiltern.
-- Überprüfen Sie regelmäßig den Speicherplatz, um sicherzustellen, dass Ihr System nicht überlastet wird.
+- Verwenden Sie die Option `-h`, um die Ausgabe leichter lesbar zu machen, insbesondere wenn Sie mit großen Speichermengen arbeiten.
+- Kombinieren Sie Optionen, um spezifischere Informationen zu erhalten, z.B. `df -hT`, um sowohl die Größe als auch den Typ des Dateisystems anzuzeigen.
+- Überprüfen Sie regelmäßig den Speicherplatz, um sicherzustellen, dass Ihr System nicht überlastet ist, was zu Leistungsproblemen führen kann.

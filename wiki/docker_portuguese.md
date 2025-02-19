@@ -1,54 +1,58 @@
-# [Linux] Bash docker uso: Gerenciar contêineres e imagens
+# [Linux] C Shell (csh) docker uso equivalente: Gerenciar contêineres de aplicativos
 
 ## Overview
-O comando `docker` é uma ferramenta poderosa que permite gerenciar contêineres e imagens no ambiente Docker. Ele facilita a criação, execução e gerenciamento de aplicativos em contêineres, proporcionando um ambiente isolado e consistente para o desenvolvimento e a produção.
+O comando `docker` é utilizado para gerenciar contêineres de aplicativos. Ele permite que os usuários criem, executem e gerenciem contêineres de software em um ambiente isolado, facilitando o desenvolvimento e a implantação de aplicações.
 
 ## Usage
-A sintaxe básica do comando `docker` é a seguinte:
+A sintaxe básica do comando docker é a seguinte:
 
 ```bash
 docker [opções] [argumentos]
 ```
 
 ## Common Options
-Aqui estão algumas opções comuns do comando `docker`:
+Aqui estão algumas opções comuns do comando docker:
 
-- `run`: Cria e inicia um novo contêiner a partir de uma imagem.
-- `ps`: Lista todos os contêineres em execução.
-- `images`: Lista todas as imagens disponíveis no sistema.
+- `run`: Cria e executa um novo contêiner.
+- `ps`: Lista os contêineres em execução.
+- `stop`: Para um ou mais contêineres em execução.
 - `rm`: Remove um ou mais contêineres.
-- `rmi`: Remove uma ou mais imagens.
+- `images`: Lista as imagens disponíveis no sistema.
 
 ## Common Examples
-Aqui estão alguns exemplos práticos do uso do comando `docker`:
+Aqui estão alguns exemplos práticos do uso do comando docker:
 
-1. **Executar um contêiner simples**:
+1. **Executar um novo contêiner:**
    ```bash
-   docker run hello-world
+   docker run -d nginx
    ```
+   Este comando executa um contêiner em segundo plano usando a imagem do Nginx.
 
-2. **Listar contêineres em execução**:
+2. **Listar contêineres em execução:**
    ```bash
    docker ps
    ```
+   Este comando exibe todos os contêineres que estão atualmente em execução.
 
-3. **Listar todas as imagens disponíveis**:
+3. **Parar um contêiner:**
+   ```bash
+   docker stop <container_id>
+   ```
+   Substitua `<container_id>` pelo ID do contêiner que você deseja parar.
+
+4. **Remover um contêiner:**
+   ```bash
+   docker rm <container_id>
+   ```
+   Este comando remove o contêiner especificado.
+
+5. **Listar imagens disponíveis:**
    ```bash
    docker images
    ```
-
-4. **Remover um contêiner específico**:
-   ```bash
-   docker rm nome_do_container
-   ```
-
-5. **Remover uma imagem específica**:
-   ```bash
-   docker rmi nome_da_imagem
-   ```
+   Este comando mostra todas as imagens que estão disponíveis no seu sistema.
 
 ## Tips
-- Sempre verifique se o Docker está em execução antes de usar os comandos.
-- Utilize `docker ps -a` para listar todos os contêineres, incluindo os que não estão em execução.
-- Mantenha suas imagens e contêineres organizados, removendo aqueles que não são mais necessários para economizar espaço em disco.
-- Explore a documentação oficial do Docker para aprender sobre opções e comandos avançados.
+- Sempre verifique se você tem a versão mais recente do Docker instalada para garantir acesso a novos recursos e correções de segurança.
+- Utilize o comando `docker logs <container_id>` para visualizar os logs de um contêiner, o que pode ajudar na depuração.
+- Considere usar volumes para persistir dados entre reinicializações de contêineres, evitando a perda de dados.

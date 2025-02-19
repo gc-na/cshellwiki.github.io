@@ -1,51 +1,50 @@
-# [Linux] Bash strace Verwendung: Systemaufrufe und Signale verfolgen
+# [Linux] C Shell (csh) strace Verwendung: Systemaufrufe und Signale verfolgen
 
 ## Übersicht
-Der Befehl `strace` ist ein leistungsstarkes Werkzeug in Linux, das verwendet wird, um die Systemaufrufe und Signale eines Programms zu verfolgen. Es ermöglicht Entwicklern und Systemadministratoren, zu verstehen, wie ein Programm mit dem Betriebssystem interagiert, indem es die von einem Prozess durchgeführten Systemaufrufe aufzeichnet.
+Der Befehl `strace` wird verwendet, um die Systemaufrufe und Signale eines Programms zu verfolgen. Dies ist besonders nützlich für das Debugging und das Verständnis, wie ein Programm mit dem Betriebssystem interagiert.
 
 ## Verwendung
-Die grundlegende Syntax des `strace`-Befehls lautet:
+Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```csh
 strace [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-e trace=SYSCALL`: Verfolgt nur bestimmte Systemaufrufe.
-- `-p PID`: Verfolgt einen bereits laufenden Prozess mit der angegebenen Prozess-ID (PID).
-- `-o DATEI`: Leitet die Ausgabe in eine Datei um, anstatt sie auf dem Bildschirm anzuzeigen.
-- `-c`: Zeigt eine Zusammenfassung der Systemaufrufe und deren Zeiten an.
-- `-f`: Verfolgt auch Kindprozesse, die von dem überwachten Prozess erstellt werden.
+- `-e trace=SYSCALL`: Verfolgt nur die angegebenen Systemaufrufe.
+- `-o DATEI`: Leitet die Ausgabe in die angegebene Datei um.
+- `-p PID`: Verfolgt den Prozess mit der angegebenen Prozess-ID.
+- `-c`: Gibt eine Zusammenfassung der Systemaufrufe und deren Häufigkeit aus.
+- `-f`: Verfolgt auch Kindprozesse, die durch den überwachten Prozess erstellt werden.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung von `strace`:
 
 1. **Ein einfaches Programm verfolgen:**
-   ```bash
+   ```csh
    strace ls
    ```
 
-2. **Verfolgen eines laufenden Prozesses:**
-   ```bash
+2. **Die Ausgabe in eine Datei umleiten:**
+   ```csh
+   strace -o ausgabe.txt ls
+   ```
+
+3. **Verfolgen eines laufenden Prozesses:**
+   ```csh
    strace -p 1234
    ```
 
-3. **Ausgabe in eine Datei umleiten:**
-   ```bash
-   strace -o output.txt ls
-   ```
-
 4. **Nur bestimmte Systemaufrufe verfolgen:**
-   ```bash
+   ```csh
    strace -e trace=open,close ls
    ```
 
 5. **Zusammenfassung der Systemaufrufe anzeigen:**
-   ```bash
+   ```csh
    strace -c ls
    ```
 
 ## Tipps
-- Verwenden Sie `strace` mit Bedacht, da es die Leistung des überwachten Programms beeinträchtigen kann.
-- Nutzen Sie die Option `-o`, um die Ausgabe zu speichern und später zu analysieren, besonders bei umfangreichen Ausgaben.
-- Kombinieren Sie `strace` mit anderen Tools wie `grep`, um spezifische Informationen schneller zu finden.
+- Verwenden Sie die Option `-f`, wenn Sie auch die Systemaufrufe von Kindprozessen verfolgen möchten.
+- Nutzen Sie die Umleitung der Ausgabe, um die Ergebnisse später zu analysieren, insbesondere bei umfangreichen Ausgaben.
+- Sehen Sie sich die man-Seite (`man strace`) an, um eine vollständige Liste der Optionen und deren Erklärungen zu erhalten.

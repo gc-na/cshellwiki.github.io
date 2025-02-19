@@ -1,50 +1,44 @@
-# [Linux] Bash talk usage: Communicate with other users
+# [English] C Shell (csh) talk usage: Communicate with other users
 
 ## Overview
-The `talk` command in Bash is used to communicate with other users on the same system or network. It allows two users to have a real-time text-based conversation, displaying each user's input in separate windows.
+The `talk` command in C Shell (csh) is used to initiate a real-time text conversation with another user on the same network. It opens a two-way communication channel, allowing users to send and receive messages interactively.
 
 ## Usage
 The basic syntax of the `talk` command is as follows:
 
-```bash
-talk [user]@[host]
+```csh
+talk [options] [user]
 ```
 
-Where `[user]` is the username of the person you want to talk to, and `[host]` is the optional hostname if the user is on a different machine.
-
 ## Common Options
-- `-a`: Allow the user to talk to anyone, regardless of whether they are logged in.
-- `-s`: Use a simple terminal interface.
-- `-d`: Specify a different display for the conversation.
+- `-a`: Allows you to send a message to a user even if they are not logged in.
+- `-n`: Suppresses the display of the user's terminal name.
+- `-s`: Sends a message silently without notifying the other user.
 
 ## Common Examples
 Here are some practical examples of using the `talk` command:
 
-1. **Start a conversation with a user on the same machine:**
-
-   ```bash
-   talk john
+1. **Starting a conversation with a user named 'alice':**
+   ```csh
+   talk alice
    ```
 
-2. **Start a conversation with a user on a different machine:**
-
-   ```bash
-   talk jane@remotehost
+2. **Sending a message to 'bob' without displaying his terminal name:**
+   ```csh
+   talk -n bob
    ```
 
-3. **Allow talking to any user regardless of login status:**
-
-   ```bash
-   talk -a john
+3. **Initiating a talk session with 'charlie' while allowing messages to be sent even if he is not logged in:**
+   ```csh
+   talk -a charlie
    ```
 
-4. **Use a simple terminal interface for the conversation:**
-
-   ```bash
-   talk -s john
+4. **Starting a silent conversation with 'dave':**
+   ```csh
+   talk -s dave
    ```
 
 ## Tips
-- Make sure the user you want to talk to is logged in and has the `talkd` daemon running.
-- If you receive a message that the user is not available, it may be due to their terminal being busy or their `talk` service being disabled.
-- Always check your terminal settings to ensure that the `talk` command can display messages correctly.
+- Ensure that the user you want to talk to is logged into the same network and has the `talk` service enabled.
+- Use the `who` command to check if the user is available before initiating a talk session.
+- Remember that both users need to have their terminal windows open to see the messages exchanged.

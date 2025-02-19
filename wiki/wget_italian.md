@@ -1,7 +1,7 @@
-# [Linux] Bash wget utilizzo: Scarica file da URL
+# [Linux] C Shell (csh) wget utilizzo: Scaricare file da internet
 
 ## Overview
-Il comando `wget` è uno strumento potente per il download di file da Internet. Supporta vari protocolli come HTTP, HTTPS e FTP, consentendo di scaricare file in modo semplice e veloce.
+Il comando `wget` è uno strumento potente utilizzato per scaricare file da internet. Supporta vari protocolli come HTTP, HTTPS e FTP, ed è in grado di gestire download in background, riprendere download interrotti e scaricare interi siti web.
 
 ## Usage
 La sintassi di base del comando `wget` è la seguente:
@@ -11,53 +11,48 @@ wget [opzioni] [argomenti]
 ```
 
 ## Common Options
-Ecco alcune opzioni comuni di `wget`:
+Ecco alcune opzioni comuni per `wget`:
 
 - `-O [file]`: Specifica il nome del file di output.
-- `-q`: Esegue il download in modalità silenziosa, senza output.
 - `-c`: Riprende un download interrotto.
+- `-r`: Scarica in modo ricorsivo, utile per scaricare interi siti web.
+- `-p`: Scarica tutte le risorse necessarie per visualizzare una pagina web (immagini, fogli di stile, ecc.).
 - `--limit-rate=[rate]`: Limita la velocità di download.
-- `-r`: Abilita il download ricorsivo di directory.
 
 ## Common Examples
 Ecco alcuni esempi pratici di utilizzo di `wget`:
 
-### Scaricare un file
-Per scaricare un file da un URL specifico:
+1. Scaricare un file da un URL specifico:
 
-```bash
-wget http://example.com/file.zip
-```
+    ```bash
+    wget http://esempio.com/file.txt
+    ```
 
-### Scaricare un file con un nome specifico
-Per scaricare un file e salvarlo con un nome diverso:
+2. Scaricare un file e salvarlo con un nome diverso:
 
-```bash
-wget -O nuovo_nome.zip http://example.com/file.zip
-```
+    ```bash
+    wget -O nuovo_nome.txt http://esempio.com/file.txt
+    ```
 
-### Riprendere un download interrotto
-Se un download è stato interrotto, puoi riprenderlo con:
+3. Riprendere un download interrotto:
 
-```bash
-wget -c http://example.com/file.zip
-```
+    ```bash
+    wget -c http://esempio.com/file_grande.zip
+    ```
 
-### Scaricare una pagina web in modalità silenziosa
-Per scaricare una pagina web senza output:
+4. Scaricare un intero sito web:
 
-```bash
-wget -q http://example.com
-```
+    ```bash
+    wget -r http://esempio.com
+    ```
 
-### Scaricare ricorsivamente una directory
-Per scaricare tutti i file da una directory:
+5. Scaricare una pagina web e tutte le sue risorse:
 
-```bash
-wget -r http://example.com/directory/
-```
+    ```bash
+    wget -p http://esempio.com/pagina.html
+    ```
 
 ## Tips
-- Utilizza l'opzione `-q` per evitare output eccessivo durante il download di file di grandi dimensioni.
-- Se hai bisogno di scaricare più file, considera di utilizzare un file di testo con gli URL e il comando `wget -i file.txt`.
+- Utilizza l'opzione `-c` per evitare di scaricare nuovamente file già scaricati, risparmiando tempo e banda.
+- Se stai scaricando un sito web, considera di utilizzare `--limit-rate` per non sovraccaricare il server.
 - Controlla sempre i termini di servizio del sito web prima di scaricare contenuti in modo massivo.

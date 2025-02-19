@@ -1,47 +1,49 @@
-# [台灣] Bash traceroute 使用法: 追蹤網路路徑
+# [台灣] C Shell (csh) traceroute 使用法: 路徑追蹤工具
 
 ## Overview
-`traceroute` 是一個用於顯示資料包在網路中從源頭到目的地的路徑的命令。它能幫助用戶了解資料在網路中傳輸的過程，並識別可能的延遲或問題點。
+`traceroute` 命令用於顯示從本地計算機到目標主機之間的路由路徑。它可以幫助用戶了解數據包在網絡中傳輸的路徑，並識別可能的延遲或連接問題。
 
 ## Usage
 基本語法如下：
-```bash
+```csh
 traceroute [options] [arguments]
 ```
 
 ## Common Options
-- `-m <max_ttl>`: 設定最大生存時間（TTL），預設為30。
-- `-n`: 直接使用IP地址而不解析主機名稱。
-- `-p <port>`: 指定目標主機的端口，預設為33434。
-- `-w <timeout>`: 設定每個回應的超時時間，預設為5秒。
+- `-m <max_ttl>`: 設定最大生存時間（TTL），即最多經過的路由器數量。
+- `-n`: 不解析主機名稱，直接顯示IP地址。
+- `-p <port>`: 指定要使用的端口號。
+- `-q <nqueries>`: 設定每個跳點發送的查詢數量。
 
 ## Common Examples
-1. 基本使用，追蹤到某個網站的路徑：
-   ```bash
+以下是一些常見的使用範例：
+
+1. 基本的 traceroute 命令：
+   ```csh
    traceroute example.com
    ```
 
-2. 使用數字格式顯示IP地址：
-   ```bash
+2. 使用數字顯示IP地址而不解析主機名稱：
+   ```csh
    traceroute -n example.com
    ```
 
 3. 設定最大TTL為15：
-   ```bash
+   ```csh
    traceroute -m 15 example.com
    ```
 
-4. 指定端口號進行追蹤：
-   ```bash
+4. 指定端口號為80（HTTP）：
+   ```csh
    traceroute -p 80 example.com
    ```
 
-5. 設定超時時間為2秒：
-   ```bash
-   traceroute -w 2 example.com
+5. 每個跳點發送3個查詢：
+   ```csh
+   traceroute -q 3 example.com
    ```
 
 ## Tips
-- 在進行網路故障排除時，使用 `-n` 選項可以加快顯示速度，因為不需要進行DNS查詢。
-- 如果你發現某個跳點的延遲特別高，可以進一步檢查該節點的狀態。
-- 在防火牆或路由器上，某些ICMP封包可能會被阻擋，這可能會影響 `traceroute` 的結果。
+- 在使用 `traceroute` 時，確保你的網絡連接正常，這樣可以獲得準確的結果。
+- 使用 `-n` 選項可以加快查詢速度，特別是在網絡延遲較高的情況下。
+- 如果你遇到問題，嘗試從不同的網絡環境進行 `traceroute`，以檢查是否是特定網絡的問題。

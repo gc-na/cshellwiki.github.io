@@ -1,95 +1,60 @@
-# [Linux] Bash case : Gérer les choix conditionnels
+# [Unix] C Shell (csh) case : Gérer les structures conditionnelles
 
 ## Overview
-La commande `case` en Bash est utilisée pour effectuer des comparaisons multiples sur une variable. Elle permet de simplifier le code en remplaçant plusieurs instructions `if` par une structure plus lisible et organisée. Cela est particulièrement utile lorsque vous devez vérifier une variable contre plusieurs valeurs possibles.
+La commande `case` dans C Shell (csh) permet d'effectuer des comparaisons conditionnelles sur des variables. Elle est utilisée pour exécuter différentes sections de code en fonction de la valeur d'une variable, facilitant ainsi la gestion des choix multiples.
 
 ## Usage
 La syntaxe de base de la commande `case` est la suivante :
 
-```bash
+```csh
 case [variable] in
-    [pattern1])
-        [commands1]
-        ;;
-    [pattern2])
-        [commands2]
-        ;;
-    *)
-        [default_commands]
-        ;;
+    [pattern1] ) [command1];;
+    [pattern2] ) [command2];;
+    ...
+    * ) [default_command];;
 esac
 ```
 
 ## Common Options
-La commande `case` ne possède pas d'options spécifiques, mais elle utilise des motifs (patterns) pour faire correspondre des valeurs. Voici quelques éléments à considérer :
-
-- `*` : Correspond à n'importe quelle chaîne de caractères.
-- `?` : Correspond à un seul caractère.
-- `[...]` : Correspond à un ensemble de caractères.
+La commande `case` ne possède pas d'options spécifiques, mais elle utilise des motifs pour faire correspondre les valeurs. Voici quelques motifs courants :
+- `*` : correspond à n'importe quelle chaîne.
+- `?` : correspond à un seul caractère.
+- `[abc]` : correspond à un caractère parmi ceux spécifiés (a, b ou c).
 
 ## Common Examples
 
-### Exemple 1 : Vérification d'un jour de la semaine
-```bash
-jour="lundi"
-
-case $jour in
-    lundi)
-        echo "C'est le début de la semaine."
-        ;;
-    vendredi)
-        echo "C'est presque le week-end."
-        ;;
-    samedi|dimanche)
-        echo "C'est le week-end !"
-        ;;
-    *)
-        echo "C'est un jour de semaine."
-        ;;
+### Exemple 1 : Vérifier un jour de la semaine
+```csh
+set day = "Lundi"
+case $day in
+    "Lundi" ) echo "C'est le début de la semaine";;
+    "Samedi" | "Dimanche" ) echo "C'est le week-end";;
+    * ) echo "C'est un jour de semaine";;
 esac
 ```
 
-### Exemple 2 : Vérification d'une extension de fichier
-```bash
-fichier="document.txt"
-
-case $fichier in
-    *.txt)
-        echo "C'est un fichier texte."
-        ;;
-    *.jpg|*.png)
-        echo "C'est une image."
-        ;;
-    *.sh)
-        echo "C'est un script Bash."
-        ;;
-    *)
-        echo "Type de fichier inconnu."
-        ;;
+### Exemple 2 : Identifier un type de fichier
+```csh
+set file = "document.txt"
+case $file in
+    *.txt ) echo "C'est un fichier texte";;
+    *.jpg | *.png ) echo "C'est une image";;
+    * ) echo "Type de fichier inconnu";;
 esac
 ```
 
-### Exemple 3 : Choix d'une action en fonction d'une option
-```bash
-option="install"
-
-case $option in
-    install)
-        echo "Installation en cours..."
-        ;;
-    remove)
-        echo "Suppression en cours..."
-        ;;
-    update)
-        echo "Mise à jour en cours..."
-        ;;
-    *)
-        echo "Option non reconnue."
-        ;;
+### Exemple 3 : Choisir une action selon une entrée utilisateur
+```csh
+set action = "sauvegarder"
+case $action in
+    "sauvegarder" ) echo "Sauvegarde en cours";;
+    "restaurer" ) echo "Restauration en cours";;
+    "quitter" ) echo "Fermeture du programme";;
+    * ) echo "Action non reconnue";;
 esac
 ```
 
 ## Tips
-- Utilisez des motifs globaux pour simplifier les correspondances, comme `*.txt` pour les fichiers texte.
-- N'oubliez pas de terminer chaque bloc de commande par `;;` pour éviter des erreurs de syntaxe.
-- Le motif `*` peut être utilisé comme un cas par défaut pour gérer les valeurs non spécifiées.
+- Utilisez des motifs spécifiques pour éviter des correspondances inattendues.
+- N'oubliez pas d'inclure une option par défaut (`*`) pour gérer les cas non prévus.
+- Testez toujours vos conditions pour vous assurer qu'elles fonctionnent comme prévu.

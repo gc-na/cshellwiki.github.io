@@ -1,43 +1,58 @@
-# [Linux] Bash @ uso: [eseguire comandi in background]
+# [Linux] C Shell (csh) @ Uso: Esegue operazioni aritmetiche
 
 ## Overview
-Il comando `@` in Bash è utilizzato per eseguire comandi in background, permettendo all'utente di continuare a utilizzare il terminale mentre il comando viene eseguito. Questo è particolarmente utile per processi lunghi o per eseguire più comandi contemporaneamente.
+Il comando `@` nel C Shell (csh) è utilizzato per eseguire operazioni aritmetiche e assegnare i risultati a variabili. È un modo semplice per effettuare calcoli direttamente nella shell.
 
 ## Usage
-La sintassi di base del comando è la seguente:
+La sintassi di base del comando `@` è la seguente:
 
-```bash
-@ [opzioni] [argomenti]
+```csh
+@ [variabile] = [espressione]
 ```
 
 ## Common Options
-- `&` : Esegue il comando in background.
-- `disown` : Rimuove il comando in background dalla lista dei job, permettendo di chiudere il terminale senza terminare il processo.
+Il comando `@` non ha molte opzioni, poiché è principalmente focalizzato sull'esecuzione di calcoli. Tuttavia, è importante notare che può essere utilizzato con diverse operazioni aritmetiche, come:
+
+- `+` : somma
+- `-` : sottrazione
+- `*` : moltiplicazione
+- `/` : divisione
+- `%` : modulo
 
 ## Common Examples
-Ecco alcuni esempi pratici di utilizzo del comando `@`:
+Ecco alcuni esempi pratici dell'uso del comando `@`:
 
-1. Eseguire un comando in background:
-   ```bash
-   sleep 30 &
+1. **Somma di due numeri:**
+   ```csh
+   @ risultato = 5 + 3
+   echo $risultato  # Output: 8
    ```
-   Questo comando esegue `sleep 30` in background, permettendo di continuare a usare il terminale.
 
-2. Eseguire più comandi in background:
-   ```bash
-   wget http://example.com/file.zip &
-   tar -xzf file.zip &
+2. **Sottrazione:**
+   ```csh
+   @ risultato = 10 - 4
+   echo $risultato  # Output: 6
    ```
-   Qui, `wget` scarica un file mentre `tar` lo estrae, entrambi in background.
 
-3. Usare `disown` per mantenere un processo attivo dopo la chiusura del terminale:
-   ```bash
-   long_running_command &
-   disown
+3. **Moltiplicazione:**
+   ```csh
+   @ risultato = 7 * 6
+   echo $risultato  # Output: 42
    ```
-   Questo comando esegue `long_running_command` in background e lo rimuove dalla lista dei job.
+
+4. **Divisione:**
+   ```csh
+   @ risultato = 20 / 4
+   echo $risultato  # Output: 5
+   ```
+
+5. **Uso del modulo:**
+   ```csh
+   @ risultato = 10 % 3
+   echo $risultato  # Output: 1
+   ```
 
 ## Tips
-- Usa `jobs` per visualizzare i processi in background attivi.
-- Se vuoi portare un processo in primo piano, usa il comando `fg`.
-- Ricorda che i processi in background continueranno a funzionare anche se chiudi il terminale, a meno che non li disowni.
+- Assicurati di non lasciare spazi attorno all'operatore di assegnazione `=`; altrimenti, il comando non funzionerà correttamente.
+- Puoi utilizzare variabili precedentemente definite all'interno delle espressioni, il che rende il comando molto flessibile.
+- Ricorda che il comando `@` esegue solo operazioni aritmetiche intere; non supporta i numeri decimali.

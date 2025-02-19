@@ -1,44 +1,44 @@
-# [Linux] Bash watch Verwendung: Aktualisierung von Befehlsausgaben in Echtzeit
+# [Linux] C Shell (csh) watch Verwendung: Überwacht die Ausgabe eines Befehls in regelmäßigen Abständen
 
 ## Übersicht
-Der `watch` Befehl in Bash ermöglicht es, einen bestimmten Befehl in regelmäßigen Abständen auszuführen und die Ausgabe in Echtzeit anzuzeigen. Dies ist besonders nützlich, um Änderungen in der Ausgabe eines Befehls zu überwachen, ohne den Befehl manuell wiederholt eingeben zu müssen.
+Der `watch`-Befehl wird verwendet, um die Ausgabe eines bestimmten Befehls in festgelegten Intervallen zu überwachen. Dies ist besonders nützlich, um Änderungen in Echtzeit zu verfolgen, wie z.B. die Überwachung von Systemressourcen oder Dateiinhalten.
 
 ## Verwendung
-Die grundlegende Syntax des `watch` Befehls lautet:
+Die grundlegende Syntax des `watch`-Befehls lautet:
 
-```bash
+```
 watch [Optionen] [Befehl]
 ```
 
 ## Häufige Optionen
-- `-n, --interval <Sekunden>`: Legt das Intervall in Sekunden fest, in dem der Befehl ausgeführt werden soll. Standardmäßig beträgt das Intervall 2 Sekunden.
-- `-d, --differences`: Hebt die Unterschiede zwischen den aufeinanderfolgenden Ausgaben hervor.
-- `-t, --no-title`: Unterdrückt die Anzeige der Titelzeile, die Informationen über den Befehl und das Intervall enthält.
+- `-n <Sekunden>`: Gibt das Intervall in Sekunden an, in dem der Befehl ausgeführt werden soll. Standardmäßig beträgt das Intervall 2 Sekunden.
+- `-d`: Hebt die Unterschiede zwischen aufeinanderfolgenden Ausgaben hervor.
+- `-t`: Unterdrückt die Anzeige der Kopfzeile, die die Ausführungszeit und den Befehl zeigt.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung des `watch` Befehls:
+Hier sind einige praktische Beispiele für die Verwendung des `watch`-Befehls:
 
-1. Überwachung des aktuellen Verzeichnisses:
-   ```bash
-   watch ls -l
+1. Überwachen der Systemauslastung alle 5 Sekunden:
+   ```csh
+   watch -n 5 uptime
    ```
 
-2. Überwachung der Systemauslastung:
-   ```bash
-   watch -n 1 top -b -n 1
+2. Überwachen des Inhalts einer Datei und Hervorheben von Änderungen:
+   ```csh
+   watch -d cat /var/log/syslog
    ```
 
-3. Überwachung von Änderungen in einer Log-Datei:
-   ```bash
-   watch tail -n 10 /var/log/syslog
+3. Überwachen des freien Speicherplatzes auf dem Dateisystem:
+   ```csh
+   watch df -h
    ```
 
-4. Überwachung von Netzwerkverbindungen:
-   ```bash
-   watch -d netstat -tuln
+4. Überwachen eines Verzeichnisses auf Änderungen:
+   ```csh
+   watch -n 2 ls -l /path/to/directory
    ```
 
 ## Tipps
-- Verwenden Sie die `-d` Option, um schnell zu erkennen, welche Änderungen zwischen den Ausgaben aufgetreten sind.
-- Passen Sie das Intervall mit der `-n` Option an, um die Aktualisierungsfrequenz nach Ihren Bedürfnissen zu gestalten.
-- Nutzen Sie `watch` in Kombination mit anderen Befehlen, um spezifische Systemüberwachungs- oder Debugging-Aufgaben zu automatisieren.
+- Verwenden Sie die Option `-d`, um Änderungen schnell zu erkennen, besonders wenn die Ausgabe umfangreich ist.
+- Passen Sie das Intervall mit der `-n`-Option an, um die Systemressourcen zu schonen, wenn Sie weniger häufige Aktualisierungen benötigen.
+- Kombinieren Sie `watch` mit anderen Befehlen, um spezifische Informationen zu überwachen, z.B. `watch -n 10 ps aux | grep myprocess`.

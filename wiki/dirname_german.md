@@ -1,51 +1,59 @@
-# [Linux] Bash dirname Verwendung: Gibt den Verzeichnispfad einer Datei zurück
+# [Unix] C Shell (csh) dirname Verwendung: Gibt das Verzeichnis eines Pfades zurück
 
 ## Übersicht
-Der `dirname` Befehl in Bash wird verwendet, um den Verzeichnispfad einer angegebenen Datei oder eines Verzeichnisses zu extrahieren. Er entfernt den Dateinamen und gibt nur den Pfad zurück, was nützlich ist, um den Speicherort einer Datei zu identifizieren.
+Der Befehl `dirname` wird verwendet, um den Verzeichnispfad eines gegebenen Dateipfades zu extrahieren. Er entfernt den Dateinamen und gibt nur den übergeordneten Verzeichnisnamen zurück.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```csh
 dirname [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-z`: Gibt die Ausgabe als nullterminierte Zeichenkette zurück.
-- `--help`: Zeigt eine Hilfemeldung mit den verfügbaren Optionen an.
-- `--version`: Gibt die Versionsnummer des Befehls aus.
+- **Keine speziellen Optionen**: Der Befehl `dirname` hat keine speziellen Optionen. Er wird in der Regel mit einem oder mehreren Argumenten verwendet, die die Pfade darstellen.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung von `dirname`:
+Hier sind einige praktische Beispiele für die Verwendung des Befehls `dirname`:
 
-1. **Einfaches Beispiel**
-   ```bash
-   dirname /home/user/dokumente/datei.txt
+1. **Einfacher Verzeichnispfad**
+   ```csh
+   dirname /usr/local/bin/script.sh
    ```
-   Ausgabe: `/home/user/dokumente`
+   Ausgabe:
+   ```
+   /usr/local/bin
+   ```
 
-2. **Verwendung mit relativen Pfaden**
-   ```bash
-   dirname ./bilder/urlaub/foto.jpg
+2. **Verzeichnispfad ohne Dateiendung**
+   ```csh
+   dirname /home/user/documents/report.pdf
    ```
-   Ausgabe: `./bilder/urlaub`
+   Ausgabe:
+   ```
+   /home/user/documents
+   ```
 
-3. **Extrahieren des Verzeichnispfads einer Datei in einer Variablen**
-   ```bash
-   pfad=$(dirname /var/log/syslog)
-   echo $pfad
+3. **Mehrere Argumente**
+   ```csh
+   dirname /var/log/syslog /etc/hosts
    ```
-   Ausgabe: `/var/log`
+   Ausgabe:
+   ```
+   /var/log
+   /etc
+   ```
 
-4. **Verwendung mit mehreren Dateien**
-   ```bash
-   for datei in /home/user/*; do
-       echo $(dirname "$datei")
-   done
+4. **Verzeichnispfad eines relativen Pfades**
+   ```csh
+   dirname ./myfolder/myfile.txt
    ```
-   Dies gibt den Verzeichnispfad für jede Datei im Benutzerverzeichnis aus.
+   Ausgabe:
+   ```
+   ./myfolder
+   ```
 
 ## Tipps
-- Verwenden Sie `dirname` in Skripten, um den Pfad von Dateien zu extrahieren, bevor Sie mit ihnen arbeiten.
+- Verwenden Sie `dirname` in Skripten, um den Verzeichnispfad dynamisch zu extrahieren, wenn Sie mit Dateipfaden arbeiten.
 - Kombinieren Sie `dirname` mit anderen Befehlen wie `basename`, um sowohl den Verzeichnispfad als auch den Dateinamen zu erhalten.
-- Achten Sie darauf, die Eingaben in Anführungszeichen zu setzen, um Probleme mit Leerzeichen im Pfad zu vermeiden.
+- Achten Sie darauf, dass `dirname` nur den Verzeichnispfad zurückgibt; es entfernt keine führenden oder nachfolgenden Leerzeichen.

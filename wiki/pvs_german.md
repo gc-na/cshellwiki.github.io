@@ -1,45 +1,44 @@
-# [Linux] Bash pvs Verwendung: Zeigt Informationen über logische Volumes an
+# [Linux] C Shell (csh) pvs Verwendung: Zeigt die Versionen von Dateien an
 
 ## Übersicht
-Der Befehl `pvs` wird verwendet, um Informationen über physische Volumes in einem Logical Volume Management (LVM) System anzuzeigen. Er bietet eine Übersicht über die verfügbaren physikalischen Speichergeräte, die in logischen Volumes verwendet werden.
+Der Befehl `pvs` wird verwendet, um die Versionen von Dateien in einem bestimmten Verzeichnis anzuzeigen. Er ist besonders nützlich, um Informationen über die verschiedenen Versionen von Dateien zu erhalten, die im Rahmen von Versionskontrollsystemen verwaltet werden.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```csh
 pvs [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-o, --units`: Gibt die Einheiten an, die für die Ausgabe verwendet werden sollen.
-- `--noheadings`: Unterdrückt die Kopfzeilen in der Ausgabe.
-- `--separator`: Legt ein benutzerdefiniertes Trennzeichen für die Ausgabe fest.
-- `-v, --verbose`: Zeigt detailliertere Informationen an.
+- `-a`: Zeigt alle Versionen der Dateien an, einschließlich der nicht aktiven.
+- `-f`: Gibt die vollständigen Dateinamen aus.
+- `-n`: Zeigt nur die Namen der Versionen an, ohne zusätzliche Informationen.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung des `pvs`-Befehls:
+Hier sind einige praktische Beispiele zur Verwendung des `pvs`-Befehls:
 
-1. **Einfaches Anzeigen von physischen Volumes:**
-   ```bash
-   pvs
+1. **Anzeigen aller Versionen einer Datei:**
+   ```csh
+   pvs -a dateiname.txt
    ```
 
-2. **Ausgabe ohne Kopfzeilen:**
-   ```bash
-   pvs --noheadings
+2. **Anzeigen der vollständigen Dateinamen aller Versionen:**
+   ```csh
+   pvs -f dateiname.txt
    ```
 
-3. **Detaillierte Informationen anzeigen:**
-   ```bash
-   pvs -v
+3. **Nur die Namen der Versionen anzeigen:**
+   ```csh
+   pvs -n dateiname.txt
    ```
 
-4. **Ausgabe mit benutzerdefiniertem Trennzeichen:**
-   ```bash
-   pvs --separator "|" -o +pv_size,pv_free
+4. **Anzeigen der Versionen in einem bestimmten Verzeichnis:**
+   ```csh
+   pvs -a /pfad/zum/verzeichnis/dateiname.txt
    ```
 
 ## Tipps
-- Verwenden Sie die Option `--units`, um die Ausgabe in einer für Sie verständlichen Einheit zu formatieren.
-- Nutzen Sie `--noheadings`, wenn Sie die Ausgabe in Skripten weiterverarbeiten möchten, um die Kopfzeilen zu vermeiden.
-- Überprüfen Sie regelmäßig den Status Ihrer physischen Volumes, um sicherzustellen, dass genügend Speicherplatz verfügbar ist.
+- Verwenden Sie die Option `-a`, wenn Sie eine vollständige Übersicht über alle Versionen benötigen, auch die inaktiven.
+- Kombinieren Sie Optionen, um die Ausgabe an Ihre Bedürfnisse anzupassen, z.B. `pvs -fa dateiname.txt`.
+- Überprüfen Sie regelmäßig die Versionen Ihrer Dateien, um sicherzustellen, dass Sie mit der aktuellsten Version arbeiten.

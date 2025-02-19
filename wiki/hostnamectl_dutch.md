@@ -1,52 +1,53 @@
-# [Linux] Bash hostnamectl gebruik: Beheer van systeemhostnamen
+# [Linux] C Shell (csh) hostnamectl gebruik: Beheer van systeemhostnamen
 
 ## Overzicht
-Het `hostnamectl` commando wordt gebruikt om de hostnaam van een systeem te beheren en informatie over het systeem weer te geven. Het is een onderdeel van systemd en biedt een eenvoudige manier om de hostnaam en gerelateerde instellingen te configureren.
+Het `hostnamectl` commando wordt gebruikt om de hostnaam van een systeem te beheren en te configureren. Het biedt ook informatie over het systeem, zoals het besturingssysteem, de kernelversie en de hardware-informatie.
 
 ## Gebruik
 De basis syntaxis van het `hostnamectl` commando is als volgt:
 
-```bash
+```csh
 hostnamectl [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `set-hostname`: Wijzigt de hostnaam van het systeem.
-- `status`: Toont de huidige hostnaam en andere systeeminformatie.
-- `set-icon-name`: Stelt een pictogramnaam in voor de host.
-- `set-chassis`: Stelt het type chassis in (bijv. desktop, laptop).
+- `set-hostname`: Wijzig de hostnaam van het systeem.
+- `status`: Toon de huidige hostnaam en systeeminformatie.
+- `set-icon-name`: Stel een pictogramnaam in voor de host.
+- `set-chassis`: Stel het type chassis in (bijv. desktop, laptop).
+- `set-deployment`: Stel de implementatie-informatie in.
 
 ## Veelvoorkomende Voorbeelden
 
-### 1. Huidige hostnaam weergeven
-Om de huidige hostnaam en systeeminformatie weer te geven, gebruik je:
+### Huidige Hostnaam Bekijken
+Om de huidige hostnaam en systeeminformatie te bekijken, gebruik je:
 
-```bash
+```csh
 hostnamectl status
 ```
 
-### 2. Hostnaam instellen
+### Hostnaam Instellen
 Om de hostnaam van het systeem te wijzigen, gebruik je:
 
-```bash
-sudo hostnamectl set-hostname nieuwe-hostnaam
+```csh
+hostnamectl set-hostname nieuwe-hostnaam
 ```
 
-### 3. Chassis type instellen
-Om het chassis type in te stellen, gebruik je:
+### Chassis Type Instellen
+Om het type chassis in te stellen, gebruik je:
 
-```bash
-sudo hostnamectl set-chassis laptop
+```csh
+hostnamectl set-chassis laptop
 ```
 
-### 4. Pictogramnaam instellen
-Om een pictogramnaam in te stellen, gebruik je:
+### Pictogramnaam Instellen
+Om een pictogramnaam in te stellen voor de host, gebruik je:
 
-```bash
-sudo hostnamectl set-icon-name computer-laptop
+```csh
+hostnamectl set-icon-name computer-laptop
 ```
 
 ## Tips
-- Zorg ervoor dat je het commando met `sudo` uitvoert als je wijzigingen aanbrengt aan de hostnaam of systeeminstellingen.
+- Zorg ervoor dat je de juiste machtigingen hebt (meestal root) om de hostnaam te wijzigen.
 - Controleer altijd de huidige hostnaam met `hostnamectl status` voordat je wijzigingen aanbrengt.
-- Na het wijzigen van de hostnaam kan het nodig zijn om je systeem opnieuw op te starten om de wijzigingen volledig door te voeren.
+- Na het wijzigen van de hostnaam, kan het nodig zijn om je systeem opnieuw op te starten om de wijzigingen volledig door te voeren.

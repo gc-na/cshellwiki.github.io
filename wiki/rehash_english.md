@@ -1,45 +1,41 @@
-# [Linux] Bash rehash Uso equivalente: Refresh command hash table
-
-The `rehash` command is used to refresh the command hash table in the Bash shell, ensuring that any newly installed executables are recognized.
+# [Linux] C Shell (csh) rehash用法: Update command hash table
 
 ## Overview
-The `rehash` command updates the internal hash table of commands in the current shell session. This is particularly useful after installing new software or modifying the PATH, as it allows the shell to recognize new commands without needing to restart the session.
+The `rehash` command in C Shell (csh) is used to refresh the command hash table. This table stores the paths of executable commands to speed up command execution. When a new command is added to the system or an existing command is moved, running `rehash` ensures that the shell recognizes these changes.
 
 ## Usage
-The basic syntax of the `rehash` command is as follows:
+The basic syntax of the `rehash` command is straightforward. You can simply invoke it without any options or arguments.
 
-```bash
-rehash [options] [arguments]
+```csh
+rehash
 ```
 
 ## Common Options
-- There are no specific options for the `rehash` command; it simply refreshes the command hash table.
+The `rehash` command does not have any specific options. It is typically used without any arguments.
 
 ## Common Examples
 Here are some practical examples of using the `rehash` command:
 
-1. **Basic Usage After Installing Software**
-   After installing a new command-line tool, run `rehash` to ensure it's recognized:
-   ```bash
+1. **Basic Rehashing**
+   To refresh the command hash table after installing a new program:
+   ```csh
    rehash
    ```
 
-2. **Using rehash in a Script**
-   If you have a script that installs new commands, you can include `rehash` to refresh the command table:
-   ```bash
-   #!/bin/bash
-   sudo apt install my-new-tool
+2. **After Moving a Command**
+   If you move an executable to a different directory, run:
+   ```csh
+   mv /path/to/old/location/mycommand /path/to/new/location/mycommand
    rehash
    ```
 
-3. **When Modifying the PATH**
-   If you change the PATH variable to include a new directory, use `rehash` to update the hash table:
-   ```bash
-   export PATH=$PATH:/new/directory
+3. **Using with New Shell Sessions**
+   After starting a new shell session, you may want to ensure that all commands are up to date:
+   ```csh
    rehash
    ```
 
 ## Tips
-- **Use After Installation**: Always run `rehash` after installing new command-line tools to avoid "command not found" errors.
-- **Check Hash Table**: You can use the `hash` command to view the current hash table before and after running `rehash` to see the changes.
-- **Avoid Unnecessary Calls**: If you haven't installed new commands or changed the PATH, there's no need to run `rehash` as it won't have any effect.
+- Always run `rehash` after installing new software or moving command files to ensure the shell recognizes them.
+- If you encounter a "command not found" error after installing a new program, it's a good idea to try `rehash`.
+- You can check the current hash table by using the `alias` command, which can help you verify if the rehash was successful.

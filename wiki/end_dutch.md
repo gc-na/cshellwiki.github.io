@@ -1,39 +1,41 @@
-# [Linux] Bash eind: [beëindig processen]
+# [Linux] C Shell (csh) eindcommando: Beëindigen van processen
 
 ## Overzicht
-De `end`-opdracht in Bash wordt gebruikt om processen te beëindigen die op een systeem draaien. Dit kan handig zijn wanneer een programma niet meer reageert of wanneer je een specifieke taak wilt stoppen.
+Het `end` commando in C Shell (csh) wordt gebruikt om een proces of een reeks processen te beëindigen. Dit kan handig zijn wanneer je een programma wilt afsluiten dat niet meer reageert of wanneer je een specifieke taak wilt stoppen.
 
 ## Gebruik
-De basis syntaxis van de `end`-opdracht is als volgt:
+De basis syntaxis van het `end` commando is als volgt:
 
-```bash
-end [opties] [argumenten]
+```csh
+end [options] [arguments]
 ```
 
-## Veelvoorkomende opties
-- `-p`, `--pid`: Specificeert het proces-ID dat beëindigd moet worden.
-- `-f`, `--force`: Dwingt het beëindigen van een proces, zelfs als het niet reageert.
-- `-h`, `--help`: Toont de helpinformatie voor de `end`-opdracht.
+## Veelvoorkomende Opties
+- `-p`: Specificeert het proces dat moet worden beëindigd.
+- `-f`: Forceert het beëindigen van een proces, zelfs als het niet reageert.
 
-## Veelvoorkomende voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van de `end`-opdracht:
+## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van het `end` commando:
 
-1. Een proces beëindigen met een specifiek proces-ID:
-   ```bash
+1. **Beëindigen van een specifiek proces met een PID**:
+   ```csh
    end -p 1234
    ```
+   Dit commando beëindigt het proces met het proces-ID 1234.
 
-2. Een proces geforceerd beëindigen:
-   ```bash
+2. **Forceer het beëindigen van een proces**:
+   ```csh
    end -f -p 5678
    ```
+   Dit dwingt het beëindigen van het proces met het PID 5678, zelfs als het niet reageert.
 
-3. Hulpinformatie opvragen:
-   ```bash
-   end -h
+3. **Beëindigen van meerdere processen**:
+   ```csh
+   end -p 2345 6789
    ```
+   Dit beëindigt de processen met de PID's 2345 en 6789.
 
 ## Tips
-- Controleer altijd het proces-ID voordat je een proces beëindigt om onbedoeld beëindigen van belangrijke processen te voorkomen.
-- Gebruik de `-f` optie met voorzichtigheid, omdat dit kan leiden tot gegevensverlies als een proces niet op de juiste manier wordt afgesloten.
-- Maak gebruik van de `ps`-opdracht om een lijst van actieve processen te bekijken voordat je de `end`-opdracht gebruikt.
+- Gebruik de `-f` optie met voorzichtigheid, omdat het kan leiden tot gegevensverlies als een proces niet correct wordt afgesloten.
+- Controleer altijd de PID van het proces dat je wilt beëindigen met behulp van commando's zoals `ps` of `top` voordat je `end` gebruikt.
+- Probeer eerst een normale beëindiging zonder de `-f` optie, om te zien of het proces op een nette manier kan afsluiten.

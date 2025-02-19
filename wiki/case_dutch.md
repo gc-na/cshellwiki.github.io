@@ -1,54 +1,51 @@
-# [Linux] Bash case gebruik: Verwerk meerdere voorwaarden
+# [Linux] C Shell (csh) case gebruik: Behandelen van meerdere voorwaarden
 
 ## Overzicht
-De `case`-opdracht in Bash is een krachtige manier om meerdere voorwaarden te evalueren. Het stelt gebruikers in staat om verschillende patronen te vergelijken en op basis daarvan acties uit te voeren. Dit is vooral handig voor het verwerken van invoer of het uitvoeren van verschillende commando's afhankelijk van de waarde van een variabele.
+De `case` opdracht in C Shell (csh) wordt gebruikt om een reeks voorwaarden te evalueren en verschillende acties uit te voeren op basis van de waarde van een variabele. Het is een handige manier om complexe beslissingsstructuren te implementeren zonder meerdere `if`-verklaringen te hoeven gebruiken.
 
 ## Gebruik
-De basis syntaxis van de `case`-opdracht is als volgt:
+De basis syntaxis van de `case` opdracht is als volgt:
 
-```bash
+```csh
 case [variabele] in
     patroon1)
-        # acties voor patroon1
+        actie1
         ;;
     patroon2)
-        # acties voor patroon2
+        actie2
         ;;
     *)
-        # acties voor andere gevallen
+        standaardactie
         ;;
 esac
 ```
 
 ## Veelvoorkomende opties
-- `*)`: Dit is een wildcard die overeenkomt met elk patroon dat niet eerder is gedefinieerd. Het wordt vaak gebruikt als een "catch-all" voor onvoorziene waarden.
+- `in`: Geeft aan dat de volgende patronen moeten worden geëvalueerd.
+- `*)`: Dit is een wildcard die overeenkomt met alle waarden die niet aan de eerdere patronen voldoen.
+- `;;`: Dit geeft het einde van een case-blok aan.
 
 ## Veelvoorkomende voorbeelden
 
 ### Voorbeeld 1: Eenvoudige case-structuur
-```bash
-#!/bin/bash
-read -p "Voer een getal in (1-3): " getal
-case $getal in
-    1)
-        echo "Je hebt 1 gekozen."
+```csh
+set kleur = "rood"
+case $kleur in
+    "rood")
+        echo "De kleur is rood."
         ;;
-    2)
-        echo "Je hebt 2 gekozen."
-        ;;
-    3)
-        echo "Je hebt 3 gekozen."
+    "blauw")
+        echo "De kleur is blauw."
         ;;
     *)
-        echo "Ongeldig getal."
+        echo "Onbekende kleur."
         ;;
 esac
 ```
 
 ### Voorbeeld 2: Bestandsuitbreiding controleren
-```bash
-#!/bin/bash
-bestand="document.txt"
+```csh
+set bestand = "document.txt"
 case $bestand in
     *.txt)
         echo "Dit is een tekstbestand."
@@ -62,30 +59,23 @@ case $bestand in
 esac
 ```
 
-### Voorbeeld 3: Maandnamen
-```bash
-#!/bin/bash
-maand=4
-case $maand in
-    1)
-        echo "Januari"
+### Voorbeeld 3: Gebruikersinvoer verwerken
+```csh
+set invoer = $1
+case $invoer in
+    "start")
+        echo "Het programma start."
         ;;
-    2)
-        echo "Februari"
-        ;;
-    3)
-        echo "Maart"
-        ;;
-    4)
-        echo "April"
+    "stop")
+        echo "Het programma stopt."
         ;;
     *)
-        echo "Ongeldige maand."
+        echo "Ongeldige invoer."
         ;;
 esac
 ```
 
 ## Tips
-- Gebruik duidelijke en beschrijvende patronen om de leesbaarheid van je script te verbeteren.
-- Zorg ervoor dat je de wildcard (`*`) aan het einde van je case-structuur plaatst om onvoorziene waarden af te handelen.
-- Test je scripts met verschillende invoerwaarden om ervoor te zorgen dat alle gevallen correct worden afgehandeld.
+- Zorg ervoor dat je de juiste patronen gebruikt om onbedoelde overeenkomsten te voorkomen.
+- Gebruik wildcards zoals `*` en `?` om flexibele patronen te definiëren.
+- Houd je case-structuren overzichtelijk door commentaar toe te voegen bij complexe logica.

@@ -1,49 +1,46 @@
-# [Linux] Bash shutdown Penggunaan: Mematikan atau merestart sistem
+# [Sistem Operasi] C Shell (csh) shutdown Penggunaan: Mematikan sistem
 
 ## Overview
-Perintah `shutdown` digunakan untuk mematikan atau merestart sistem Linux secara aman. Perintah ini memberi tahu semua pengguna bahwa sistem akan dimatikan, memberikan waktu untuk menyimpan pekerjaan mereka sebelum sistem benar-benar dimatikan.
+Perintah `shutdown` digunakan untuk mematikan atau merestart sistem operasi dengan cara yang teratur. Ini memungkinkan pengguna untuk menutup semua proses dengan aman sebelum sistem dimatikan, sehingga mengurangi risiko kehilangan data.
 
 ## Usage
-Berikut adalah sintaks dasar dari perintah `shutdown`:
+Berikut adalah sintaks dasar untuk perintah `shutdown`:
 
-```bash
-shutdown [options] [time] [message]
+```
+shutdown [options] [arguments]
 ```
 
 ## Common Options
-- `-h`: Mematikan sistem.
-- `-r`: Merestart sistem.
-- `-c`: Membatalkan perintah shutdown yang sedang berjalan.
-- `+m`: Menentukan waktu dalam menit sebelum sistem dimatikan (misalnya, `+5` untuk 5 menit).
-- `hh:mm`: Menentukan waktu tertentu untuk mematikan sistem (format 24 jam).
+- `-h` : Mematikan sistem.
+- `-r` : Merestart sistem.
+- `-k` : Mengirim pesan peringatan tanpa mematikan sistem.
+- `+time` : Menentukan waktu penutupan dalam menit.
+- `time` : Menentukan waktu penutupan dalam format jam:menit.
 
 ## Common Examples
-1. **Mematikan sistem segera:**
-   ```bash
+Berikut adalah beberapa contoh penggunaan perintah `shutdown`:
+
+1. Mematikan sistem segera:
+   ```csh
    shutdown -h now
    ```
 
-2. **Merestart sistem segera:**
-   ```bash
-   shutdown -r now
+2. Merestart sistem setelah 5 menit:
+   ```csh
+   shutdown -r +5
    ```
 
-3. **Mematikan sistem setelah 10 menit:**
-   ```bash
-   shutdown -h +10
+3. Mengirim pesan peringatan 1 menit sebelum mematikan sistem:
+   ```csh
+   shutdown -h +1 "Sistem akan dimatikan dalam 1 menit."
    ```
 
-4. **Mematikan sistem pada waktu tertentu (misalnya, 22:30):**
-   ```bash
-   shutdown -h 22:30
-   ```
-
-5. **Membatalkan perintah shutdown yang sedang berjalan:**
-   ```bash
-   shutdown -c
+4. Mengirim pesan peringatan tanpa mematikan sistem:
+   ```csh
+   shutdown -k now "Peringatan: Sistem akan dimatikan."
    ```
 
 ## Tips
-- Selalu beri tahu pengguna lain sebelum mematikan sistem, gunakan opsi `message` untuk menginformasikan mereka.
-- Gunakan opsi `-r` jika Anda ingin merestart sistem setelah pemeliharaan atau pembaruan.
-- Pastikan untuk menyimpan semua pekerjaan sebelum menjalankan perintah shutdown untuk menghindari kehilangan data.
+- Selalu pastikan untuk menyimpan pekerjaan Anda sebelum menjalankan perintah `shutdown`.
+- Gunakan opsi `-k` untuk memberi tahu pengguna lain sebelum mematikan sistem.
+- Periksa proses yang berjalan dengan `ps` sebelum melakukan shutdown untuk memastikan tidak ada proses penting yang terganggu.

@@ -1,35 +1,35 @@
-# [Linux] Użytkownicy Bash: Zarządzanie użytkownikami systemu
+# [Linux] Użytkownicy C Shell (csh): Wyświetlanie aktywnych użytkowników
 
 ## Overview
-Polecenie `users` w systemie Linux służy do wyświetlania nazw użytkowników, którzy są aktualnie zalogowani na systemie. Jest to przydatne narzędzie do szybkiego sprawdzenia, którzy użytkownicy są aktywni w danym momencie.
+Polecenie `users` w powłoce C Shell (csh) służy do wyświetlania nazw użytkowników, którzy są aktualnie zalogowani na systemie. Jest to przydatne narzędzie do szybkiego sprawdzenia, kto jest aktywny w danym momencie.
 
 ## Usage
 Podstawowa składnia polecenia `users` jest następująca:
 
-```bash
-users [opcje]
+```
+users [options] [arguments]
 ```
 
 ## Common Options
-- `-H`, `--help`: Wyświetla pomoc dotyczącą polecenia.
-- `-V`, `--version`: Wyświetla wersję polecenia.
+- `-n`: Wyświetla liczbę unikalnych użytkowników.
+- `-l`: Wyświetla pełne imiona użytkowników (jeśli dostępne).
 
 ## Common Examples
-1. **Wyświetlenie zalogowanych użytkowników:**
-   ```bash
+1. Wyświetlenie wszystkich zalogowanych użytkowników:
+   ```csh
    users
    ```
 
-2. **Wyświetlenie pomocy:**
-   ```bash
-   users --help
+2. Wyświetlenie liczby unikalnych użytkowników:
+   ```csh
+   users -n
    ```
 
-3. **Wyświetlenie wersji:**
-   ```bash
-   users --version
+3. Wyświetlenie pełnych imion użytkowników:
+   ```csh
+   users -l
    ```
 
 ## Tips
-- Użyj polecenia `who` lub `w`, aby uzyskać bardziej szczegółowe informacje o zalogowanych użytkownikach, takie jak czas logowania i aktywność.
-- Polecenie `users` jest szczególnie przydatne w skryptach, gdzie potrzebujesz szybko sprawdzić, którzy użytkownicy są aktualnie zalogowani.
+- Użyj polecenia `who` lub `w`, jeśli potrzebujesz bardziej szczegółowych informacji o zalogowanych użytkownikach, takich jak czas logowania czy aktywność.
+- Polecenie `users` jest szybkie i efektywne, ale nie pokazuje szczegółowych informacji, więc warto łączyć je z innymi poleceniami dla lepszego obrazu sytuacji w systemie.

@@ -1,51 +1,53 @@
-# [Linux] Bash stty cách sử dụng: Thiết lập và kiểm soát chế độ đầu vào/đầu ra
+# [Hệ điều hành] C Shell (csh) stty: Thiết lập và kiểm soát các thuộc tính của terminal
 
-## Tổng quan
-Lệnh `stty` trong Bash được sử dụng để thay đổi và kiểm soát các thuộc tính của terminal, bao gồm các thiết lập đầu vào và đầu ra. Nó cho phép người dùng tùy chỉnh cách mà terminal xử lý các ký tự và tín hiệu.
+## Overview
+Lệnh `stty` trong C Shell (csh) được sử dụng để thay đổi và kiểm soát các thuộc tính của terminal. Nó cho phép người dùng cấu hình các thiết lập như chế độ nhập liệu, chế độ xuất, và các thông số khác liên quan đến cách mà terminal hoạt động.
 
-## Cách sử dụng
+## Usage
 Cú pháp cơ bản của lệnh `stty` như sau:
-```bash
+```csh
 stty [options] [arguments]
 ```
 
-## Các tùy chọn phổ biến
+## Common Options
+Dưới đây là một số tùy chọn phổ biến của lệnh `stty` cùng với giải thích ngắn gọn:
+
 - `-a`: Hiển thị tất cả các thiết lập hiện tại của terminal.
 - `-g`: Xuất các thiết lập hiện tại dưới dạng một chuỗi có thể sử dụng lại.
-- `erase <char>`: Đặt ký tự xóa (thường là phím Backspace).
-- `kill <char>`: Đặt ký tự xóa dòng (thường là phím Ctrl + U).
-- `-echo`: Tắt hiển thị ký tự khi gõ trên terminal.
-- `echo`: Bật hiển thị ký tự khi gõ trên terminal.
+- `erase <char>`: Thiết lập ký tự xóa (thường là Backspace).
+- `kill <char>`: Thiết lập ký tự để xóa dòng (thường là Ctrl + U).
+- `intr <char>`: Thiết lập ký tự để ngắt (thường là Ctrl + C).
+- `sane`: Đặt lại terminal về trạng thái mặc định.
 
-## Ví dụ phổ biến
+## Common Examples
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `stty`:
 
-1. **Hiển thị tất cả các thiết lập hiện tại:**
-   ```bash
+1. Hiển thị tất cả các thiết lập hiện tại của terminal:
+   ```csh
    stty -a
    ```
 
-2. **Đặt ký tự xóa là phím Backspace:**
-   ```bash
+2. Thiết lập ký tự xóa là Backspace:
+   ```csh
    stty erase ^H
    ```
 
-3. **Tắt hiển thị ký tự khi gõ:**
-   ```bash
-   stty -echo
+3. Thiết lập ký tự ngắt là Ctrl + C:
+   ```csh
+   stty intr ^C
    ```
 
-4. **Bật lại hiển thị ký tự khi gõ:**
-   ```bash
-   stty echo
+4. Đặt lại terminal về trạng thái mặc định:
+   ```csh
+   stty sane
    ```
 
-5. **Xuất các thiết lập hiện tại dưới dạng chuỗi:**
-   ```bash
+5. Xuất các thiết lập hiện tại để sử dụng lại:
+   ```csh
    stty -g
    ```
 
-## Mẹo
-- Hãy cẩn thận khi sử dụng tùy chọn `-echo`, vì nó sẽ không cho phép bạn thấy các ký tự bạn đang gõ, có thể gây khó khăn trong việc nhập lệnh.
-- Nếu bạn muốn khôi phục các thiết lập mặc định của terminal, bạn có thể sử dụng lệnh `stty sane`.
-- Sử dụng `stty -a` để kiểm tra các thiết lập hiện tại trước khi thực hiện bất kỳ thay đổi nào, giúp bạn hiểu rõ hơn về trạng thái của terminal.
+## Tips
+- Hãy cẩn thận khi thay đổi các thiết lập của terminal, vì một số thay đổi có thể ảnh hưởng đến cách bạn tương tác với hệ thống.
+- Sử dụng `stty -a` để kiểm tra các thiết lập hiện tại trước khi thực hiện bất kỳ thay đổi nào.
+- Nếu bạn không chắc chắn về một tùy chọn, hãy tham khảo tài liệu hoặc sử dụng `man stty` để biết thêm thông tin.

@@ -1,50 +1,48 @@
-# [Linux] Bash head gebruik: Toont de eerste regels van een bestand
+# [Linux] C Shell (csh) head gebruik: weergave van het begin van bestanden
 
 ## Overzicht
-De `head`-opdracht in Bash wordt gebruikt om de eerste regels van een bestand weer te geven. Standaard toont het de eerste 10 regels, maar dit kan worden aangepast met opties.
+De `head`-opdracht in C Shell (csh) wordt gebruikt om de eerste regels van een of meerdere bestanden weer te geven. Dit is handig om snel een overzicht te krijgen van de inhoud van een bestand zonder het volledig te openen.
 
 ## Gebruik
 De basis syntaxis van de `head`-opdracht is als volgt:
 
-```bash
+```csh
 head [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
-- `-n [aantal]`: Specificeert het aantal regels dat moet worden weergegeven. Bijvoorbeeld `-n 5` toont de eerste 5 regels.
-- `-c [aantal]`: Toont het opgegeven aantal bytes in plaats van regels.
-- `-q`: Vermijdt het weergeven van de bestandsnaam bij meerdere bestanden.
-- `-v`: Toont altijd de bestandsnaam, zelfs als er maar één bestand is.
+## Veelvoorkomende opties
+- `-n [aantal]`: Geef het opgegeven aantal regels weer in plaats van de standaard 10 regels.
+- `-q`: Weergave van de bestandsnamen onderdrukken wanneer meerdere bestanden worden opgegeven.
+- `-v`: Weergave van de bestandsnamen altijd weergeven, zelfs als er maar één bestand is.
 
-## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van de `head`-opdracht:
+## Veelvoorkomende voorbeelden
 
 1. Toon de eerste 10 regels van een bestand:
-   ```bash
+   ```csh
    head bestand.txt
    ```
 
 2. Toon de eerste 5 regels van een bestand:
-   ```bash
+   ```csh
    head -n 5 bestand.txt
    ```
 
-3. Toon de eerste 20 bytes van een bestand:
-   ```bash
-   head -c 20 bestand.txt
-   ```
-
-4. Toon de eerste 10 regels van meerdere bestanden:
-   ```bash
+3. Toon de eerste 10 regels van meerdere bestanden:
+   ```csh
    head bestand1.txt bestand2.txt
    ```
 
-5. Toon de eerste 10 regels van een bestand zonder de bestandsnaam:
-   ```bash
-   head -q bestand1.txt bestand2.txt
+4. Toon de eerste 3 regels van een bestand zonder de bestandsnaam weer te geven:
+   ```csh
+   head -q -n 3 bestand.txt
+   ```
+
+5. Toon de eerste 15 regels van een bestand en geef altijd de bestandsnaam weer:
+   ```csh
+   head -v -n 15 bestand.txt
    ```
 
 ## Tips
 - Gebruik `head` in combinatie met andere commando's, zoals `grep`, om snel de eerste regels van gefilterde resultaten te bekijken.
-- Combineer `head` met `tail` om specifieke secties van een bestand te bekijken.
-- Vergeet niet dat je met de `-n` optie ook negatieve waarden kunt gebruiken om regels van onderaf te tonen, bijvoorbeeld `head -n -5 bestand.txt` toont alle regels behalve de laatste 5.
+- Combineer `head` met `less` voor een paginagrote weergave van de eerste regels.
+- Vergeet niet dat `head` standaard de eerste 10 regels weergeeft; pas dit aan met de `-n` optie indien nodig.

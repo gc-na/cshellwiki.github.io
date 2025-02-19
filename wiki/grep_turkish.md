@@ -1,7 +1,7 @@
-# [Linux] Bash grep Kullanımı: Metin içinde desen arama
+# [Linux] C Shell (csh) grep Kullanımı: Metin içinde desen arama
 
 ## Genel Bakış
-`grep` komutu, metin dosyaları içinde belirli bir desen veya kelime grubu aramak için kullanılır. Kullanıcıların dosyaların içeriğini hızlı bir şekilde taramasına ve aradıkları bilgiyi bulmasına olanak tanır.
+`grep` komutu, bir dosya veya standart girdi içinde belirli bir deseni aramak için kullanılır. Genellikle metin dosyalarında belirli kelimeleri veya ifadeleri bulmak için kullanılır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
@@ -13,42 +13,39 @@ grep [seçenekler] [argümanlar]
 ## Yaygın Seçenekler
 - `-i`: Büyük/küçük harf duyarsız arama yapar.
 - `-v`: Belirtilen deseni içermeyen satırları gösterir.
-- `-r`: Alt dizinler dahil olmak üzere, dizin içinde arama yapar.
+- `-r`: Alt dizinlerdeki dosyalar dahil olmak üzere, dizin içinde arama yapar.
 - `-n`: Eşleşen satırların numaralarını gösterir.
-- `-l`: Eşleşen dosya adlarını listeler.
+- `-l`: Eşleşen dosyaların adlarını listeler.
 
 ## Yaygın Örnekler
-Aşağıda `grep` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+Aşağıda `grep` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. Belirli bir kelimeyi bir dosyada aramak:
+1. Belirli bir kelimeyi bir dosyada arama:
    ```bash
-   grep "örnek" dosya.txt
+   grep "kelime" dosya.txt
    ```
 
-2. Büyük/küçük harf duyarsız arama yapmak:
+2. Büyük/küçük harf duyarsız arama:
    ```bash
-   grep -i "örnek" dosya.txt
+   grep -i "kelime" dosya.txt
    ```
 
-3. Bir dizin içinde alt dizinlerle birlikte arama yapmak:
+3. Eşleşmeyen satırları gösterme:
    ```bash
-   grep -r "örnek" /path/to/dizin
+   grep -v "kelime" dosya.txt
    ```
 
-4. Eşleşen satırların numaralarını görmek:
+4. Bir dizin içindeki tüm dosyalarda arama:
    ```bash
-   grep -n "örnek" dosya.txt
+   grep -r "kelime" /path/to/dizin
    ```
 
-5. Eşleşmeyen satırları listelemek:
+5. Eşleşen satırların numaralarını gösterme:
    ```bash
-   grep -v "örnek" dosya.txt
+   grep -n "kelime" dosya.txt
    ```
 
 ## İpuçları
-- `grep` komutunu daha etkili kullanmak için, arama yapmadan önce dosyanın içeriğini `cat` komutuyla görüntüleyebilirsiniz.
-- Birden fazla deseni aramak için `-e` seçeneğini kullanabilirsiniz:
-  ```bash
-  grep -e "örnek1" -e "örnek2" dosya.txt
-  ```
-- Daha karmaşık aramalar için düzenli ifadeleri kullanabilirsiniz. Bu, arama yeteneklerinizi büyük ölçüde artırır.
+- `grep` komutunu daha etkili kullanmak için, aramak istediğiniz deseni tırnak içinde belirtin.
+- Karmaşık desenler için düzenli ifadeleri kullanabilirsiniz.
+- `grep` komutunu diğer komutlarla birleştirerek daha güçlü aramalar yapabilirsiniz. Örneğin, `cat dosya.txt | grep "kelime"` ile dosyayı okuduktan sonra arama yapabilirsiniz.

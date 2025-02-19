@@ -1,48 +1,50 @@
-# [Linux] Bash strace 使用法: 追蹤系統呼叫和信號
+# [台灣] C Shell (csh) strace 使用方式: 追蹤系統呼叫和信號
 
 ## Overview
-`strace` 是一個強大的工具，用於追蹤程序的系統呼叫和接收到的信號。它可以幫助開發者和系統管理員診斷問題，了解程序的行為，並進行性能分析。
+`strace` 是一個用於追蹤程序執行過程中的系統呼叫和信號的工具。它可以幫助開發者和系統管理員了解程序的行為，調試問題，或分析性能。
 
 ## Usage
 基本語法如下：
-```bash
+```
 strace [options] [arguments]
 ```
 
 ## Common Options
-- `-c`：統計系統呼叫的次數和時間。
-- `-e trace=<set>`：指定要追蹤的系統呼叫類型。
-- `-p <pid>`：附加到已存在的進程，根據進程ID進行追蹤。
-- `-o <file>`：將輸出寫入指定的文件，而不是標準輸出。
-- `-f`：追蹤由 fork() 產生的子進程。
+- `-e trace=<set>`: 指定要追蹤的系統呼叫類型。
+- `-p <pid>`: 附加到一個已經在運行的進程，並追蹤它的系統呼叫。
+- `-o <file>`: 將輸出寫入指定的文件，而不是標準輸出。
+- `-c`: 總結系統呼叫的統計信息。
 
 ## Common Examples
-1. **追蹤一個命令的系統呼叫**
+1. 追蹤一個程序的所有系統呼叫：
    ```bash
-   strace ls
+   strace ./my_program
    ```
 
-2. **將輸出寫入文件**
+2. 追蹤特定的系統呼叫，例如 `open` 和 `read`：
    ```bash
-   strace -o output.txt ls
+   strace -e trace=open,read ./my_program
    ```
 
-3. **追蹤特定的系統呼叫**
-   ```bash
-   strace -e trace=open,close ls
-   ```
-
-4. **附加到一個正在運行的進程**
+3. 附加到已經在運行的進程，假設進程ID為1234：
    ```bash
    strace -p 1234
    ```
 
-5. **統計系統呼叫的使用情況**
+4. 將輸出寫入文件 `output.txt`：
    ```bash
-   strace -c ls
+   strace -o output.txt ./my_program
+   ```
+
+5. 獲取系統呼叫的統計信息：
+   ```bash
+   strace -c ./my_program
    ```
 
 ## Tips
-- 在使用 `strace` 時，對於大量輸出的命令，考慮將輸出重定向到文件，以便後續分析。
-- 使用 `-e trace` 選項來限制追蹤的系統呼叫，這樣可以減少輸出並專注於特定的行為。
-- 當追蹤長時間運行的進程時，使用 `-p` 選項可以避免重新啟動進程，節省時間。
+- 在使用 `strace` 時，盡量只追蹤必要的系統呼叫，以減少輸出量，這樣更容易分析。
+- 使用 `-o` 選項將輸出保存到文件中，可以方便後續的查看和分析。
+- 結合 `grep` 使用，可以快速找到感興趣的系統呼叫：
+  ```bash
+  strace ./my_program | grep open
+  ```

@@ -1,39 +1,40 @@
-# [Linux] Bash vigr Uso: Editar archivos de configuración de forma segura
+# [Linux] C Shell (csh) vigr Uso: Editar archivos de configuración de vi
 
 ## Overview
-El comando `vigr` se utiliza para editar de manera segura los archivos de configuración de los grupos en sistemas Linux. Este comando asegura que no se produzcan errores de sintaxis en el archivo, lo que podría causar problemas en la gestión de grupos del sistema.
+El comando `vigr` se utiliza para editar archivos de configuración de manera segura. Este comando abre el editor de texto `vi` para modificar archivos como `/etc/passwd` o `/etc/group`, asegurando que el archivo no se corrompa durante la edición.
 
 ## Usage
-La sintaxis básica del comando `vigr` es la siguiente:
+La sintaxis básica del comando es la siguiente:
 
 ```bash
 vigr [opciones] [archivo]
 ```
 
 ## Common Options
-- `-c`: Verifica la sintaxis del archivo antes de guardar los cambios.
-- `-h`: Muestra la ayuda y la información sobre el uso del comando.
-- `-s`: Solo muestra el archivo sin permitir la edición.
+- `-s`: Ejecuta `vigr` en modo seguro, evitando la edición si el archivo está bloqueado.
+- `-f`: Especifica un archivo diferente para editar.
+- `-c`: Verifica la sintaxis del archivo antes de permitir la edición.
 
 ## Common Examples
-Aquí hay algunos ejemplos prácticos del uso de `vigr`:
+- Para editar el archivo `/etc/passwd`:
 
-1. **Editar el archivo de grupos por defecto:**
-   ```bash
-   vigr
-   ```
+```bash
+vigr /etc/passwd
+```
 
-2. **Editar un archivo de grupos específico:**
-   ```bash
-   vigr /etc/group
-   ```
+- Para editar el archivo `/etc/group` en modo seguro:
 
-3. **Verificar la sintaxis del archivo antes de guardar:**
-   ```bash
-   vigr -c /etc/group
-   ```
+```bash
+vigr -s /etc/group
+```
+
+- Para editar un archivo específico con una verificación de sintaxis:
+
+```bash
+vigr -c /etc/somefile
+```
 
 ## Tips
-- Siempre utiliza `vigr` en lugar de un editor de texto estándar para editar archivos de configuración de grupos, ya que proporciona una verificación de sintaxis.
-- Familiarízate con los atajos de teclado de `vi` o `vim`, ya que `vigr` utiliza estos editores por defecto.
-- Haz una copia de seguridad del archivo de configuración antes de realizar cambios significativos, por si necesitas restaurarlo.
+- Siempre utiliza `vigr` en lugar de `vi` para editar archivos de configuración críticos, ya que proporciona una capa adicional de seguridad.
+- Familiarízate con los comandos básicos de `vi`, ya que `vigr` utiliza este editor.
+- Asegúrate de tener permisos adecuados para editar los archivos de configuración que deseas modificar.

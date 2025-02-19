@@ -1,7 +1,7 @@
-# [Linux] Bash blkid Uso equivalente: Retrieve block device attributes
+# [Linux] C Shell (csh) blkid用法: Retrieve block device attributes
 
 ## Overview
-The `blkid` command in Bash is used to locate and display block device attributes, such as the filesystem type, label, and UUID (Universally Unique Identifier) of storage devices. This command is particularly useful for system administrators and users who need to manage disk partitions and filesystems.
+The `blkid` command is used to locate and print block device attributes, such as the filesystem type and UUID (Universally Unique Identifier). This command is particularly useful for identifying and managing storage devices on a Linux system.
 
 ## Usage
 The basic syntax of the `blkid` command is as follows:
@@ -11,45 +11,39 @@ blkid [options] [arguments]
 ```
 
 ## Common Options
-- `-o, --output <format>`: Specify the output format (e.g., `value`, `full`, `list`).
-- `-s, --match-tag <tag>`: Show only the specified tag (e.g., `UUID`, `TYPE`).
-- `-p, --probe`: Probe devices for their attributes.
-- `-c, --cache <file>`: Use a specified cache file instead of the default.
-- `-h, --help`: Display help information about the command.
+- `-o`: Specify the output format (e.g., `value`, `full`, `list`).
+- `-s`: Specify which attributes to display (e.g., `UUID`, `TYPE`).
+- `-p`: Print the output in a parsable format.
+- `-c`: Use a specified cache file instead of the default.
 
 ## Common Examples
 
-### Display all block devices
-To list all block devices along with their attributes, simply run:
-```bash
-blkid
-```
+1. **List all block devices with attributes:**
+   ```bash
+   blkid
+   ```
 
-### Show UUID of a specific device
-To retrieve the UUID of a specific device, use:
-```bash
-blkid /dev/sda1
-```
+2. **Display only the UUIDs of the block devices:**
+   ```bash
+   blkid -o value -s UUID
+   ```
 
-### Output only the UUID
-If you want to display only the UUID of a device, you can use the `-s` option:
-```bash
-blkid -s UUID /dev/sda1
-```
+3. **Get the filesystem type of a specific device:**
+   ```bash
+   blkid /dev/sda1 -o value -s TYPE
+   ```
 
-### List devices with a specific filesystem type
-To filter the output to show only devices with a specific filesystem type, you can combine options:
-```bash
-blkid -t TYPE=ext4
-```
+4. **Use a specific cache file:**
+   ```bash
+   blkid -c /path/to/cachefile
+   ```
 
-### Custom output format
-To customize the output format to show only the labels of the devices, you can use:
-```bash
-blkid -o value -s LABEL
-```
+5. **List all block devices in a full format:**
+   ```bash
+   blkid -o full
+   ```
 
 ## Tips
-- Use `blkid` without any arguments to quickly see all available block devices and their attributes.
+- Use `blkid` without any options to quickly get an overview of all block devices and their attributes.
 - When scripting, consider using the `-o value` option to make parsing the output easier.
-- If you frequently use `blkid`, check if your system supports caching to speed up subsequent queries.
+- Regularly check the UUIDs of your devices, especially before making changes to your filesystem, to avoid data loss.

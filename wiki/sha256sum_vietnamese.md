@@ -1,44 +1,45 @@
-# [Linux] Bash sha256sum Cách sử dụng: Tính toán và xác minh giá trị băm SHA-256
+# [Hệ điều hành] C Shell (csh) sha256sum Cách sử dụng: Tính toán giá trị băm SHA-256
 
-## Overview
-Lệnh `sha256sum` được sử dụng để tính toán và xác minh giá trị băm SHA-256 của một tệp tin. Giá trị băm này có thể được sử dụng để kiểm tra tính toàn vẹn của dữ liệu, đảm bảo rằng tệp không bị thay đổi hoặc hỏng hóc.
+## Tổng quan
+Lệnh `sha256sum` được sử dụng để tính toán và kiểm tra giá trị băm SHA-256 của một tệp. Giá trị băm này thường được sử dụng để xác minh tính toàn vẹn của dữ liệu.
 
-## Usage
+## Cách sử dụng
 Cú pháp cơ bản của lệnh `sha256sum` như sau:
-```bash
+
+```csh
 sha256sum [options] [arguments]
 ```
 
-## Common Options
-- `-b`, `--binary`: Xử lý tệp tin nhị phân.
-- `-c`, `--check`: Kiểm tra các tệp tin băm đã được lưu trữ.
-- `-t`, `--text`: Xử lý tệp tin văn bản (mặc định).
-- `--quiet`: Không in ra thông tin bổ sung khi kiểm tra.
+## Các tùy chọn phổ biến
+- `-b`: Đọc tệp nhị phân.
+- `-c`: Kiểm tra các tệp băm đã được lưu trữ trong một tệp.
+- `-h`: Hiển thị thông tin trợ giúp về lệnh.
+- `--quiet`: Không in ra giá trị băm cho các tệp không hợp lệ.
 
-## Common Examples
-Dưới đây là một số ví dụ thực tế khi sử dụng lệnh `sha256sum`:
+## Ví dụ phổ biến
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `sha256sum`:
 
-1. **Tính toán giá trị băm của một tệp tin**:
-   ```bash
-   sha256sum example.txt
+1. Tính toán giá trị băm cho một tệp:
+   ```csh
+   sha256sum myfile.txt
    ```
 
-2. **Lưu giá trị băm vào một tệp tin**:
-   ```bash
-   sha256sum example.txt > example.sha256
+2. Lưu giá trị băm vào một tệp:
+   ```csh
+   sha256sum myfile.txt > myfile.sha256
    ```
 
-3. **Kiểm tra giá trị băm từ một tệp tin đã lưu**:
-   ```bash
-   sha256sum -c example.sha256
+3. Kiểm tra giá trị băm từ một tệp đã lưu:
+   ```csh
+   sha256sum -c myfile.sha256
    ```
 
-4. **Tính toán giá trị băm cho nhiều tệp tin**:
-   ```bash
-   sha256sum file1.txt file2.txt
+4. Tính toán giá trị băm cho nhiều tệp cùng lúc:
+   ```csh
+   sha256sum file1.txt file2.txt file3.txt
    ```
 
-## Tips
-- Luôn lưu giá trị băm của tệp tin quan trọng để có thể kiểm tra lại sau này.
-- Sử dụng tùy chọn `-c` để kiểm tra tính toàn vẹn của tệp tin sau khi truyền tải hoặc sao chép.
-- Đảm bảo rằng bạn đang sử dụng phiên bản mới nhất của `sha256sum` để có được các tính năng và sửa lỗi mới nhất.
+## Mẹo
+- Luôn kiểm tra giá trị băm của tệp tải về để đảm bảo tính toàn vẹn.
+- Sử dụng tùy chọn `-c` để dễ dàng kiểm tra nhiều tệp băm cùng một lúc.
+- Lưu trữ giá trị băm trong một tệp riêng biệt để dễ dàng quản lý và kiểm tra sau này.

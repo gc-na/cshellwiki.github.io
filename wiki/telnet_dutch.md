@@ -1,42 +1,48 @@
-# [Linux] Bash telnet gebruik: Verbinden met een netwerkservice
+# [Linux] C Shell (csh) telnet gebruik: Verbinden met een externe host
 
 ## Overzicht
-Het `telnet`-commando is een netwerkprotocol dat wordt gebruikt om verbinding te maken met een andere computer via het Internet of een lokaal netwerk. Het stelt gebruikers in staat om op afstand in te loggen op systemen en netwerkservices te testen.
+Het `telnet` commando wordt gebruikt om verbinding te maken met een externe host via het Telnet-protocol. Dit protocol stelt gebruikers in staat om op afstand in te loggen op servers en netwerken.
 
 ## Gebruik
-De basis syntaxis van het `telnet`-commando is als volgt:
+De basis syntaxis van het `telnet` commando is als volgt:
 
-```bash
+```csh
 telnet [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- `-l [gebruikersnaam]`: Specificeert de gebruikersnaam voor de verbinding.
-- `-d`: Zet telnet in debug-modus, wat nuttig kan zijn voor het oplossen van problemen.
-- `-n [bestand]`: Schrijft de uitvoer naar een bestand in plaats van naar de terminal.
+## Veelvoorkomende Opties
+- `-l <gebruikersnaam>`: Specificeert de gebruikersnaam voor de inlog.
+- `-8`: Schakelt 8-bits gegevensmodus in.
+- `-d`: Zet debug-informatie aan voor probleemoplossing.
 
-## Veelvoorkomende voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van het `telnet`-commando:
+## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van het `telnet` commando:
 
-### Verbinden met een webserver
-```bash
-telnet example.com 80
-```
-Dit commando maakt verbinding met de webserver van `example.com` op poort 80.
+1. Verbinden met een server op poort 23 (standaard Telnet-poort):
 
-### Verbinden met een SMTP-server
-```bash
-telnet smtp.example.com 25
-```
-Hiermee maak je verbinding met de SMTP-server op poort 25, wat nuttig is voor het verzenden van e-mails.
+   ```csh
+   telnet voorbeeld.com
+   ```
 
-### Debuggen van een verbinding
-```bash
-telnet -d example.com 23
-```
-Met deze optie wordt telnet in debug-modus uitgevoerd, wat helpt bij het oplossen van verbindingsproblemen.
+2. Verbinden met een specifieke poort (bijvoorbeeld poort 80 voor HTTP):
+
+   ```csh
+   telnet voorbeeld.com 80
+   ```
+
+3. Inloggen met een specifieke gebruikersnaam:
+
+   ```csh
+   telnet -l gebruiker voorbeeld.com
+   ```
+
+4. Debugging informatie inschakelen tijdens de verbinding:
+
+   ```csh
+   telnet -d voorbeeld.com
+   ```
 
 ## Tips
-- Gebruik telnet alleen voor testdoeleinden, aangezien het geen versleuteling biedt en gevoelige informatie kan blootstellen.
-- Overweeg het gebruik van `ssh` voor veilige verbindingen, vooral bij het inloggen op servers.
-- Controleer altijd of de poort die je probeert te bereiken open is en toegankelijk is vanuit jouw netwerk.
+- Gebruik `telnet` alleen op vertrouwde netwerken, aangezien het geen versleuteling biedt, wat betekent dat gegevens zoals wachtwoorden in platte tekst worden verzonden.
+- Overweeg om alternatieven zoals SSH te gebruiken voor een veiligere verbinding.
+- Controleer altijd of de poort die je probeert te bereiken open is en dat de server bereikbaar is.

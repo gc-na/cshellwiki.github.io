@@ -1,50 +1,45 @@
-# [Linux] Bash update-rc.d: [mengelola skrip inisialisasi]
+# [Sistem Operasi] C Shell (csh) update-rc.d: [mengelola skrip inisialisasi]
 
 ## Overview
-Perintah `update-rc.d` digunakan untuk mengelola skrip inisialisasi di sistem Linux. Perintah ini memungkinkan pengguna untuk menambahkan, menghapus, atau mengubah prioritas skrip yang dijalankan saat booting.
+Perintah `update-rc.d` digunakan untuk mengelola skrip inisialisasi di sistem berbasis Debian. Ini memungkinkan pengguna untuk menambahkan, menghapus, atau mengubah prioritas skrip yang dijalankan saat booting.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `update-rc.d`:
 
-```bash
+```
 update-rc.d [options] [arguments]
 ```
 
 ## Common Options
-- `defaults`: Menambahkan skrip dengan prioritas default.
-- `remove`: Menghapus skrip dari direktori inisialisasi.
-- `enable`: Mengaktifkan skrip untuk dijalankan saat boot.
-- `disable`: Menonaktifkan skrip agar tidak dijalankan saat boot.
-- `start <N>`: Menentukan urutan saat skrip dijalankan pada saat boot.
-- `stop <N>`: Menentukan urutan saat skrip dihentikan pada saat shutdown.
+- `defaults` : Menambahkan skrip ke runlevel default.
+- `remove` : Menghapus skrip dari runlevel.
+- `enable` : Mengaktifkan skrip untuk runlevel tertentu.
+- `disable` : Menonaktifkan skrip untuk runlevel tertentu.
 
 ## Common Examples
-1. **Menambahkan skrip dengan prioritas default:**
+Berikut adalah beberapa contoh penggunaan `update-rc.d`:
+
+1. **Menambahkan skrip ke runlevel default:**
    ```bash
-   sudo update-rc.d myscript defaults
+   update-rc.d myscript defaults
    ```
 
-2. **Menghapus skrip dari direktori inisialisasi:**
+2. **Menghapus skrip dari runlevel:**
    ```bash
-   sudo update-rc.d myscript remove
+   update-rc.d myscript remove
    ```
 
-3. **Mengaktifkan skrip untuk dijalankan saat boot:**
+3. **Mengaktifkan skrip untuk runlevel tertentu:**
    ```bash
-   sudo update-rc.d myscript enable
+   update-rc.d myscript enable
    ```
 
-4. **Menonaktifkan skrip agar tidak dijalankan saat boot:**
+4. **Menonaktifkan skrip untuk runlevel tertentu:**
    ```bash
-   sudo update-rc.d myscript disable
-   ```
-
-5. **Menentukan urutan saat skrip dijalankan:**
-   ```bash
-   sudo update-rc.d myscript start 20 2 3 4 5 .
+   update-rc.d myscript disable
    ```
 
 ## Tips
-- Pastikan untuk menjalankan perintah ini dengan hak akses superuser (`sudo`) agar dapat mengubah skrip inisialisasi.
-- Selalu periksa apakah skrip yang akan ditambahkan sudah sesuai dengan standar dan dapat dijalankan tanpa error.
-- Gunakan opsi `remove` dengan hati-hati, karena ini akan menghapus skrip dari semua runlevel.
+- Selalu pastikan untuk memeriksa skrip inisialisasi Anda sebelum menambahkannya ke runlevel untuk menghindari masalah saat booting.
+- Gunakan opsi `-n` untuk menjalankan perintah dalam mode simulasi, sehingga Anda dapat melihat apa yang akan dilakukan tanpa benar-benar mengubah konfigurasi.
+- Pastikan skrip Anda memiliki izin eksekusi yang tepat agar dapat dijalankan saat booting.

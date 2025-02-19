@@ -1,52 +1,54 @@
-# [Linux] Bash strace Uso: Herramienta para rastrear llamadas al sistema
+# [Linux] C Shell (csh) strace Uso: Herramienta para rastrear llamadas al sistema
 
 ## Overview
-El comando `strace` es una herramienta poderosa en Linux que permite rastrear las llamadas al sistema y las señales que recibe un proceso. Es útil para depurar programas y entender cómo interactúan con el sistema operativo.
+El comando `strace` se utiliza para rastrear las llamadas al sistema y las señales que reciben los procesos en un sistema operativo. Es una herramienta útil para depurar y diagnosticar problemas en aplicaciones, ya que permite observar cómo interactúan los programas con el núcleo del sistema.
 
 ## Usage
-La sintaxis básica del comando es la siguiente:
+La sintaxis básica del comando `strace` es la siguiente:
 
 ```bash
-strace [options] [arguments]
+strace [opciones] [argumentos]
 ```
 
 ## Common Options
-- `-c`: Resumen de estadísticas de las llamadas al sistema.
-- `-e trace=<set>`: Especifica qué llamadas al sistema rastrear.
-- `-p <pid>`: Adjunta `strace` a un proceso existente utilizando su ID de proceso.
-- `-o <file>`: Redirige la salida a un archivo en lugar de la consola.
+- `-c`: Muestra un resumen de las estadísticas de las llamadas al sistema.
+- `-e`: Permite filtrar las llamadas al sistema que se desean rastrear.
+- `-p`: Adjunta `strace` a un proceso existente utilizando su ID de proceso (PID).
+- `-o archivo`: Redirige la salida a un archivo en lugar de la salida estándar.
 - `-f`: Sigue los procesos hijos creados por el proceso rastreado.
 
 ## Common Examples
-Aquí hay algunos ejemplos prácticos del uso de `strace`:
-
 1. **Rastrear un comando simple:**
    ```bash
    strace ls
    ```
+   Este comando rastrea las llamadas al sistema realizadas por el comando `ls`.
 
 2. **Rastrear un proceso en ejecución:**
    ```bash
    strace -p 1234
    ```
-   (Reemplace `1234` con el ID del proceso que desea rastrear).
+   Aquí, `1234` es el ID del proceso que se desea rastrear.
 
-3. **Guardar la salida en un archivo:**
+3. **Filtrar las llamadas al sistema:**
+   ```bash
+   strace -e trace=open,close ls
+   ```
+   Este comando rastrea solo las llamadas `open` y `close` realizadas por `ls`.
+
+4. **Guardar la salida en un archivo:**
    ```bash
    strace -o salida.txt ls
    ```
+   Esto guarda el resultado del rastreo en el archivo `salida.txt`.
 
-4. **Rastrear solo las llamadas de apertura de archivos:**
-   ```bash
-   strace -e trace=open ls
-   ```
-
-5. **Obtener un resumen de estadísticas:**
+5. **Obtener estadísticas de llamadas al sistema:**
    ```bash
    strace -c ls
    ```
+   Este comando proporciona un resumen de las estadísticas de las llamadas al sistema realizadas por `ls`.
 
 ## Tips
-- Utiliza `strace` con `-f` para rastrear procesos hijos, especialmente útil en aplicaciones que crean múltiples subprocesos.
-- Redirigir la salida a un archivo puede facilitar el análisis posterior, especialmente para procesos que generan mucha información.
-- Familiarízate con las diferentes categorías de llamadas al sistema para filtrar la información relevante durante el rastreo.
+- Utiliza `strace` con `-o` para guardar la salida en un archivo, lo que facilita el análisis posterior.
+- Filtra las llamadas al sistema con `-e` para enfocarte en las que son relevantes para tu diagnóstico.
+- Ten en cuenta que `strace` puede afectar el rendimiento del programa que estás rastreando, así que úsalo con precaución en entornos de producción.

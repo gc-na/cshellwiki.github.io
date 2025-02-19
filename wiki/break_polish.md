@@ -1,72 +1,56 @@
-# [Linux] Bash break użycie: Przerywanie pętli
+# [Linux] C Shell (csh) break użycie: Przerywanie pętli
 
 ## Overview
-Polecenie `break` w Bashu jest używane do przerywania pętli, takich jak `for`, `while` czy `until`. Gdy `break` zostanie wywołane, wykonanie pętli zostaje natychmiast zatrzymane, a kontrola przechodzi do następnej instrukcji po pętli.
+Polecenie `break` w C Shell (csh) służy do przerywania wykonywania pętli. Gdy `break` zostanie wywołane wewnątrz pętli, natychmiast kończy jej działanie i przechodzi do następnej instrukcji po pętli.
 
 ## Usage
 Podstawowa składnia polecenia `break` jest następująca:
 
-```bash
-break [n]
+```
+break [options]
 ```
 
-Gdzie `n` jest opcjonalnym argumentem, który określa, ile poziomów pętli ma zostać przerwanych. Domyślnie `n` wynosi 1, co oznacza przerwanie najbliższej pętli.
-
 ## Common Options
-- `n`: Liczba określająca, ile poziomów pętli ma zostać przerwanych. Na przykład, `break 2` przerwie dwie zagnieżdżone pętle.
+Polecenie `break` w C Shell nie ma wielu opcji. Jego główną funkcją jest przerywanie pętli. Można jednak używać go w kontekście różnych typów pętli, takich jak `foreach`, `while` czy `for`.
 
 ## Common Examples
 
-### Przykład 1: Prosta pętla for
-```bash
-for i in {1..5}; do
-    if [ $i -eq 3 ]; then
+### Przykład 1: Przerwanie pętli `foreach`
+```csh
+foreach i (1 2 3 4 5)
+    if ($i == 3) then
         break
-    fi
-    echo "Liczba: $i"
-done
+    endif
+    echo $i
+end
 ```
-Wynik:
-```
-Liczba: 1
-Liczba: 2
-```
+W tym przykładzie pętla `foreach` wypisze liczby 1 i 2, a następnie przerwie działanie, gdy `i` osiągnie wartość 3.
 
-### Przykład 2: Pętla while
-```bash
-count=1
-while [ $count -le 5 ]; do
-    if [ $count -eq 4 ]; then
+### Przykład 2: Przerwanie pętli `while`
+```csh
+set count = 1
+while ($count <= 5)
+    if ($count == 4) then
         break
-    fi
-    echo "Liczba: $count"
-    ((count++))
-done
+    endif
+    echo $count
+    @ count++
+end
 ```
-Wynik:
-```
-Liczba: 1
-Liczba: 2
-Liczba: 3
-```
+Tutaj pętla `while` wypisze liczby 1, 2 i 3, a następnie przerwie działanie, gdy `count` osiągnie wartość 4.
 
-### Przykład 3: Zagnieżdżone pętle
-```bash
-for i in {1..3}; do
-    for j in {1..3}; do
-        if [ $j -eq 2 ]; then
-            break 2
-        fi
-        echo "i: $i, j: $j"
-    done
-done
+### Przykład 3: Użycie w pętli `for`
+```csh
+foreach num (10 20 30 40 50)
+    if ($num == 30) then
+        break
+    endif
+    echo $num
+end
 ```
-Wynik:
-```
-i: 1, j: 1
-```
+W tym przypadku pętla `foreach` wypisze 10 i 20, a następnie przerwie działanie, gdy `num` osiągnie wartość 30.
 
 ## Tips
-- Używaj `break` w połączeniu z warunkami, aby kontrolować, kiedy pętla powinna się zakończyć.
-- Pamiętaj, że `break` przerywa tylko najbliższą pętlę, chyba że podasz argument `n`.
-- Staraj się unikać zbyt wielu zagnieżdżonych pętli, aby kod był bardziej czytelny i łatwiejszy do utrzymania.
+- Używaj `break` w pętlach, gdy chcesz zakończyć ich działanie na podstawie określonego warunku.
+- Pamiętaj, że `break` przerywa tylko najbliższą pętlę, w której jest wywoływane.
+- Możesz zagnieżdżać pętle, ale `break` będzie działać tylko na najbliższą z nich.

@@ -1,46 +1,40 @@
-# [Linux] Bash clear Penggunaan: Menghapus layar terminal
+# [Sistem Operasi] C Shell (csh) clear Penggunaan: Menghapus tampilan terminal
 
 ## Overview
-Perintah `clear` digunakan untuk menghapus konten yang ditampilkan di layar terminal. Dengan menjalankan perintah ini, Anda dapat membersihkan tampilan terminal sehingga hanya menampilkan prompt yang bersih, membuatnya lebih mudah untuk melihat output baru.
+Perintah `clear` digunakan untuk menghapus tampilan terminal, sehingga memberikan ruang kosong yang lebih bersih untuk bekerja. Ini sangat berguna ketika layar terminal penuh dengan output sebelumnya dan Anda ingin memulai dengan tampilan yang bersih.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `clear`:
 
-```bash
+```
 clear [options] [arguments]
 ```
 
 ## Common Options
 Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah `clear`:
 
-- `-x` : Menghapus layar dan juga menghapus scrollback buffer, sehingga tidak ada output sebelumnya yang dapat diakses dengan scroll.
-- `--help` : Menampilkan informasi bantuan tentang penggunaan perintah `clear`.
-- `--version` : Menampilkan versi dari perintah `clear`.
+- `-V` : Menampilkan versi dari perintah `clear`.
+- `-x` : Menghapus layar dan juga menghapus semua karakter yang ditampilkan di layar.
 
 ## Common Examples
-Berikut adalah beberapa contoh praktis penggunaan perintah `clear`:
+Berikut adalah beberapa contoh penggunaan perintah `clear`:
 
-1. **Menghapus layar terminal:**
-   ```bash
+1. Menghapus tampilan terminal:
+   ```csh
    clear
    ```
 
-2. **Menghapus layar dan scrollback buffer:**
-   ```bash
+2. Menampilkan versi dari perintah `clear`:
+   ```csh
+   clear -V
+   ```
+
+3. Menghapus layar dan karakter yang ditampilkan:
+   ```csh
    clear -x
    ```
 
-3. **Menampilkan bantuan untuk perintah clear:**
-   ```bash
-   clear --help
-   ```
-
-4. **Menampilkan versi dari perintah clear:**
-   ```bash
-   clear --version
-   ```
-
 ## Tips
-- Gunakan `clear` secara teratur saat bekerja di terminal untuk menjaga tampilan tetap rapi dan terorganisir.
-- Anda dapat menggabungkan `clear` dengan perintah lain dalam skrip untuk membersihkan layar sebelum menampilkan output baru.
-- Jika Anda menggunakan terminal yang mendukung pintasan keyboard, Anda juga dapat menggunakan `Ctrl + L` untuk mencapai efek yang sama dengan perintah `clear`.
+- Gunakan perintah `clear` secara teratur saat bekerja di terminal untuk menjaga tampilan tetap bersih.
+- Anda dapat menggabungkan perintah `clear` dengan perintah lain menggunakan `&&` untuk menghapus layar sebelum menjalankan perintah baru.
+- Jika Anda menggunakan terminal yang mendukung pintasan keyboard, Anda dapat menggunakan `Ctrl + L` untuk mencapai efek yang sama dengan perintah `clear`.

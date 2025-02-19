@@ -1,52 +1,47 @@
-# [Linux] Bash lvs Kullanımı: LVM mantıksal hacimlerini listeleme
+# [Linux] C Shell (csh) lvs Kullanımı: LVM mantıksal hacim bilgilerini gösterir
 
 ## Genel Bakış
-`lvs` komutu, Linux'ta LVM (Logical Volume Manager) kullanarak oluşturulmuş mantıksal hacimlerin listesini görüntülemek için kullanılır. Bu komut, sistem yöneticilerine ve kullanıcılarına mevcut mantıksal hacimlerin durumunu ve özelliklerini hızlı bir şekilde kontrol etme imkanı sunar.
+`lvs` komutu, Linux'un LVM (Logical Volume Manager) sisteminde mantıksal hacimlerin bilgilerini görüntülemek için kullanılır. Bu komut, sistem yöneticilerine mantıksal hacimlerin durumunu ve özelliklerini hızlı bir şekilde kontrol etme imkanı sunar.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-```bash
+```csh
 lvs [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-o`: Görüntülenecek sütunları belirtir.
-- `--units`: Çıktı birimlerini ayarlamak için kullanılır.
-- `-a`: Tüm mantıksal hacimleri, gizli olanlar dahil, listeler.
-- `-n`: Belirli bir mantıksal hacmin adını belirtmek için kullanılır.
+- `-o`: Görüntülenecek alanları belirtir.
+- `-n`: Belirli bir hacmin adını görüntüler.
+- `-a`: Tüm hacimleri, aktif olanlar dahil, gösterir.
+- `--units`: Çıktı birimlerini belirtir (örneğin, MB, GB).
 
 ## Yaygın Örnekler
 Aşağıda `lvs` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-1. Tüm mantıksal hacimleri listeleme:
-   ```bash
-   lvs
-   ```
+### Tüm Mantıksal Hacimleri Listeleme
+```csh
+lvs
+```
 
-2. Belirli bir mantıksal hacmi listeleme:
-   ```bash
-   lvs -n hacim_adı
-   ```
+### Belirli Bir Hacmin Bilgilerini Görüntüleme
+```csh
+lvs -n my_volume
+```
 
-3. Çıktıda belirli sütunları görüntüleme:
-   ```bash
-   lvs -o +size,devices
-   ```
+### Tüm Hacimlerin Detaylı Bilgilerini Gösterme
+```csh
+lvs -a -o +devices
+```
 
-4. Tüm mantıksal hacimleri gizli olanlar dahil listeleme:
-   ```bash
-   lvs -a
-   ```
-
-5. Çıktı birimlerini ayarlama:
-   ```bash
-   lvs --units g
-   ```
+### Çıktı Birimlerini Belirleme
+```csh
+lvs --units g
+```
 
 ## İpuçları
-- `lvs` komutunu sık sık kullanıyorsanız, çıktıyı daha okunabilir hale getirmek için `--units` seçeneğini kullanarak birimleri ayarlayabilirsiniz.
-- Çıktıyı bir dosyaya yönlendirmek için `>` operatörünü kullanabilirsiniz:
-  ```bash
+- `lvs` komutunu sık sık kullanarak sisteminizdeki mantıksal hacimlerin durumunu düzenli olarak kontrol edin.
+- Çıktıyı daha okunabilir hale getirmek için `-o` seçeneği ile belirli alanları seçin.
+- Hacim adlarını hatırlamakta zorlanıyorsanız, `lvs` çıktısını bir dosyaya yönlendirebilir ve daha sonra inceleyebilirsiniz. Örneğin:
+  ```csh
   lvs > lvs_output.txt
   ```
-- `man lvs` komutunu kullanarak daha fazla bilgi ve seçenekler hakkında detaylı bilgi alabilirsiniz.

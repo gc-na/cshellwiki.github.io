@@ -1,38 +1,45 @@
-# [Linux] Bash compctl Cách sử dụng: Cấu hình hoàn thành lệnh
+# [Hệ điều hành Unix] C Shell (csh) compctl: [cấu hình hoàn tất lệnh]
 
 ## Tổng quan
-Lệnh `compctl` trong Bash được sử dụng để cấu hình cách hoàn thành lệnh cho các lệnh trong shell. Nó cho phép người dùng định nghĩa cách mà các tham số và tùy chọn sẽ được hoàn thành khi người dùng gõ lệnh.
+Lệnh `compctl` trong C Shell (csh) được sử dụng để cấu hình và điều chỉnh cách hoàn tất lệnh trong dòng lệnh. Nó cho phép người dùng xác định cách mà các lệnh và tham số của chúng được hoàn tất tự động, giúp tăng tốc độ và hiệu quả khi làm việc trong môi trường dòng lệnh.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `compctl` như sau:
-```bash
+
+```csh
 compctl [options] [arguments]
 ```
 
 ## Tùy chọn phổ biến
-- `-g`: Chỉ định một mẫu để tìm kiếm các tệp.
-- `-k`: Định nghĩa các từ khóa cho việc hoàn thành.
-- `-s`: Cho phép hoàn thành các lệnh theo cách không phân biệt chữ hoa chữ thường.
+- `-d`: Chỉ định rằng các tham số hoàn tất sẽ được tìm kiếm trong thư mục hiện tại.
+- `-f`: Bỏ qua các ký tự đặc biệt trong tên tệp khi hoàn tất.
+- `-k`: Chỉ định các từ khóa cụ thể để hoàn tất.
+- `-s`: Cho phép hoàn tất cho các lệnh đã được xác định trước.
 
 ## Ví dụ phổ biến
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `compctl`:
 
-1. Hoàn thành tên tệp trong thư mục hiện tại:
-   ```bash
-   compctl -g '*.(txt|md)' mycommand
+1. Hoàn tất tên tệp trong thư mục hiện tại:
+   ```csh
+   compctl -d
    ```
 
-2. Hoàn thành các từ khóa cho một lệnh cụ thể:
-   ```bash
-   compctl -k 'start stop restart' service
+2. Hoàn tất các lệnh với từ khóa cụ thể:
+   ```csh
+   compctl -k "start stop restart"
    ```
 
-3. Hoàn thành lệnh mà không phân biệt chữ hoa chữ thường:
-   ```bash
+3. Bỏ qua ký tự đặc biệt khi hoàn tất:
+   ```csh
+   compctl -f
+   ```
+
+4. Thiết lập hoàn tất cho một lệnh cụ thể:
+   ```csh
    compctl -s mycommand
    ```
 
 ## Mẹo
-- Hãy chắc chắn rằng bạn đã kiểm tra các tùy chọn hoàn thành trước khi cấu hình, để đảm bảo rằng chúng phù hợp với nhu cầu của bạn.
-- Sử dụng `compctl` cùng với các lệnh khác để tạo ra các kịch bản hoàn thành mạnh mẽ hơn.
-- Thực hành với các mẫu khác nhau để tìm ra cách hoàn thành tốt nhất cho các lệnh mà bạn thường sử dụng.
+- Hãy thử nghiệm với các tùy chọn khác nhau để tìm ra cấu hình hoàn tất phù hợp nhất với nhu cầu của bạn.
+- Đừng quên kiểm tra lại các lệnh đã cấu hình để đảm bảo chúng hoạt động như mong muốn.
+- Sử dụng `compctl` trong các script để tự động hóa quá trình hoàn tất lệnh cho các tác vụ thường xuyên.

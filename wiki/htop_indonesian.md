@@ -1,47 +1,54 @@
-# [Linux] Bash htop Penggunaan: Memantau penggunaan sumber daya sistem
+# [Sistem Operasi] C Shell (csh) htop Penggunaan: Memantau penggunaan sumber daya sistem
 
 ## Overview
-Perintah `htop` adalah alat interaktif yang digunakan untuk memantau penggunaan sumber daya sistem secara real-time. Ini memberikan tampilan yang lebih informatif dan mudah dibaca dibandingkan dengan perintah `top`, memungkinkan pengguna untuk melihat proses yang sedang berjalan, penggunaan CPU, memori, dan swap dengan cara yang lebih intuitif.
+Perintah `htop` adalah alat interaktif untuk memantau penggunaan sumber daya sistem secara real-time. Ini memberikan tampilan yang lebih informatif dan mudah digunakan dibandingkan dengan perintah `top`, memungkinkan pengguna untuk melihat proses yang berjalan, penggunaan CPU, memori, dan swap dengan cara yang lebih visual.
 
 ## Usage
-Sintaks dasar untuk menjalankan perintah htop adalah sebagai berikut:
+Berikut adalah sintaks dasar untuk menggunakan perintah `htop`:
 
-```bash
+```csh
 htop [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang dapat digunakan dengan htop:
+Berikut adalah beberapa opsi umum yang dapat digunakan dengan `htop`:
 
-- `-d <delay>`: Mengatur interval pembaruan dalam detik.
-- `-u <user>`: Menampilkan hanya proses yang dimiliki oleh pengguna tertentu.
-- `-p <pid>`: Menampilkan hanya proses dengan ID proses tertentu.
-- `--help`: Menampilkan informasi bantuan tentang penggunaan htop.
+- `-h`, `--help`: Menampilkan bantuan tentang penggunaan `htop`.
+- `-s`, `--sort`: Mengurutkan tampilan berdasarkan kolom tertentu (misalnya, CPU atau memori).
+- `-p`, `--pid`: Menampilkan hanya proses dengan ID tertentu.
+- `-u`, `--user`: Menampilkan hanya proses yang dimiliki oleh pengguna tertentu.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan htop:
+Berikut adalah beberapa contoh penggunaan `htop`:
 
-1. Menjalankan htop tanpa opsi:
-   ```bash
+1. Menjalankan `htop` tanpa opsi:
+   ```csh
    htop
    ```
 
-2. Menjalankan htop dengan interval pembaruan 2 detik:
-   ```bash
-   htop -d 2
+2. Menampilkan bantuan:
+   ```csh
+   htop -h
    ```
 
-3. Menampilkan proses hanya untuk pengguna tertentu:
-   ```bash
+3. Mengurutkan proses berdasarkan penggunaan CPU:
+   ```csh
+   htop -s PERCENT_CPU
+   ```
+
+4. Menampilkan proses untuk pengguna tertentu:
+   ```csh
    htop -u username
    ```
 
-4. Menampilkan proses dengan ID tertentu:
-   ```bash
+5. Menampilkan proses dengan ID tertentu:
+   ```csh
    htop -p 1234
    ```
 
 ## Tips
-- Gunakan tombol `F2` untuk mengakses menu pengaturan dan menyesuaikan tampilan htop sesuai kebutuhan Anda.
-- Anda dapat menggunakan tombol panah untuk menavigasi antar proses dan `F9` untuk menghentikan proses yang dipilih.
-- Htop juga memungkinkan Anda untuk memfilter proses dengan menekan `F3` dan memasukkan nama proses yang ingin dicari.
+- Gunakan tombol panah untuk menavigasi antar proses dan tekan `F9` untuk membunuh proses yang dipilih.
+- Anda dapat menyesuaikan tampilan dengan menekan `F2` untuk membuka menu setup.
+- Untuk memperbarui tampilan secara manual, tekan `F5` untuk mengubah tampilan menjadi pohon proses. 
+
+Dengan menggunakan `htop`, Anda dapat dengan mudah memantau dan mengelola proses yang berjalan di sistem Anda.

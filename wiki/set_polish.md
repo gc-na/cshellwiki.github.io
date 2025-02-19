@@ -1,63 +1,47 @@
-# [Linux] Bash set użycie: Ustawianie opcji powłoki
+# [Linux] C Shell (csh) set użycie: Ustawianie zmiennych powłoki
 
 ## Overview
-Polecenie `set` w Bash służy do ustawiania opcji powłoki oraz zmiennych środowiskowych. Umożliwia użytkownikowi dostosowanie zachowania powłoki, co może być przydatne w różnych sytuacjach, takich jak debugowanie skryptów czy zmiana sposobu interpretacji poleceń.
+Polecenie `set` w C Shell (csh) służy do ustawiania zmiennych powłoki oraz konfigurowania opcji powłoki. Dzięki temu użytkownicy mogą dostosować środowisko pracy, definiując zmienne, które mogą być używane w skryptach i sesjach terminalowych.
 
 ## Usage
-Podstawowa składnia polecenia `set` jest następująca:
+Podstawowa składnia polecenia `set` wygląda następująco:
 
-```bash
-set [options] [arguments]
+```
+set [opcje] [argumenty]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji dla polecenia `set`:
-
-- `-e`: Zatrzymuje skrypt, gdy wystąpi błąd (niezerowy kod wyjścia).
-- `-u`: Zgłasza błąd, gdy używana jest niezdefiniowana zmienna.
-- `-x`: Włącza tryb debugowania, wyświetlając każdą komendę przed jej wykonaniem.
-- `-o`: Umożliwia włączenie lub wyłączenie opcji powłoki, np. `-o noclobber` zapobiega nadpisywaniu plików.
+- `-x`: Włącza śledzenie zmiennych, co pozwala na wyświetlanie ich wartości podczas wykonywania skryptu.
+- `-e`: Umożliwia ustawienie opcji, która przerywa wykonywanie skryptu, gdy wystąpi błąd.
+- `-u`: Ustawia opcję, która generuje błąd, gdy używana jest niezdefiniowana zmienna.
 
 ## Common Examples
+1. Ustawienie zmiennej:
+   ```csh
+   set myVar = "Hello, World!"
+   ```
 
-### Przykład 1: Użycie opcji -e
-Zatrzymanie skryptu w przypadku błędu:
+2. Wyświetlenie wartości zmiennej:
+   ```csh
+   echo $myVar
+   ```
 
-```bash
-set -e
-echo "Ten skrypt zatrzyma się, jeśli wystąpi błąd."
-false  # To polecenie zwróci błąd, więc skrypt się zatrzyma.
-echo "Ten tekst nie zostanie wyświetlony."
-```
+3. Ustawienie opcji śledzenia:
+   ```csh
+   set -x
+   ```
 
-### Przykład 2: Użycie opcji -u
-Zgłaszanie błędu przy użyciu niezdefiniowanej zmiennej:
+4. Ustawienie zmiennej z listą wartości:
+   ```csh
+   set myList = (apple banana cherry)
+   ```
 
-```bash
-set -u
-echo "Wartość zmiennej: $NIEZDEFINIOWANA_ZMIENNA"  # To spowoduje błąd.
-```
-
-### Przykład 3: Użycie opcji -x
-Włączenie trybu debugowania:
-
-```bash
-set -x
-echo "To jest przykład trybu debugowania."
-set +x  # Wyłączenie trybu debugowania.
-```
-
-### Przykład 4: Użycie opcji -o
-Zapobieganie nadpisywaniu plików:
-
-```bash
-set -o noclobber
-echo "Zapisz to do pliku." > plik.txt  # To zadziała.
-echo "Nadpisz ten plik." > plik.txt  # To spowoduje błąd.
-```
+5. Użycie opcji przerywania skryptu w przypadku błędu:
+   ```csh
+   set -e
+   ```
 
 ## Tips
-- Używaj opcji `-e` w skryptach, aby szybko wykrywać błędy.
-- Opcja `-u` jest przydatna w dużych skryptach, aby upewnić się, że wszystkie zmienne są zdefiniowane.
-- Tryb debugowania (`-x`) może pomóc w analizie problemów w skryptach, ale pamiętaj, aby go wyłączyć po zakończeniu debugowania, aby nie zaśmiecać wyjścia.
-- Możesz używać `set +[option]`, aby wyłączyć wcześniej włączone opcje.
+- Używaj `set` do organizowania i zarządzania zmiennymi w skryptach, co ułatwia ich późniejsze użycie.
+- Pamiętaj o używaniu cudzysłowów przy ustawianiu zmiennych, aby uniknąć problemów z białymi znakami.
+- Regularnie sprawdzaj wartości zmiennych za pomocą `echo`, aby upewnić się, że są one poprawnie ustawione.

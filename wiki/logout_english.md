@@ -1,50 +1,39 @@
-# [Linux] Bash logout Usage: Exit the current shell session
+# [Linux] C Shell (csh) logout用法: Exit the current shell session
 
 ## Overview
-The `logout` command is used in Bash to terminate a login shell session. When executed, it logs the user out of the current session, effectively closing the terminal window or returning to the previous shell if nested.
+The `logout` command in C Shell (csh) is used to terminate the current shell session. This command is particularly useful when you want to exit from a login shell or when you are finished with your terminal session.
 
 ## Usage
 The basic syntax of the `logout` command is as follows:
 
-```bash
+```csh
 logout [options]
 ```
 
 ## Common Options
-The `logout` command does not have many options, but here are a few relevant points:
-
-- **No options**: Simply typing `logout` will log you out of the current session.
-  
-Note: The `logout` command is typically only effective in login shells. If used in a non-login shell, it may result in an error.
+- There are generally no options for the `logout` command in csh. It simply exits the current shell session.
 
 ## Common Examples
 
-### Example 1: Basic Logout
-To log out of your current shell session, simply type:
+1. **Basic Logout**
+   To exit the current shell session, simply type:
+   ```csh
+   logout
+   ```
 
-```bash
-logout
-```
+2. **Logout from a Remote Session**
+   If you are logged into a remote server via SSH and want to log out, you can use:
+   ```csh
+   logout
+   ```
 
-### Example 2: Using in a Script
-If you have a script running in a login shell and want to log out at the end, you can include:
-
-```bash
-# Your script commands
-echo "Logging out..."
-logout
-```
-
-### Example 3: Handling Errors
-If you attempt to use `logout` in a non-login shell, you might see an error message. For example:
-
-```bash
-bash
-logout
-# Output: logout: not login shell
-```
+3. **Logout from a Nested Shell**
+   If you have started a new shell session within csh, you can exit it by using:
+   ```csh
+   logout
+   ```
 
 ## Tips
-- Always ensure you save your work before executing `logout`, as it will close your session and any unsaved changes will be lost.
-- If you are using multiple terminal tabs or windows, be aware that `logout` will only affect the current session.
-- For non-login shells, consider using `exit` instead, which will also terminate the shell session.
+- Always ensure that you have saved any work or data before using the `logout` command, as it will close your session immediately.
+- If you are using multiple terminal tabs or windows, remember that `logout` will only affect the current shell session, not others.
+- If you need to log out of a graphical session, consider using the appropriate logout option in your desktop environment instead of `logout`.

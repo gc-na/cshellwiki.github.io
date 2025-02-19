@@ -1,46 +1,44 @@
-# [Linux] Bash fc gebruik: Geschiedenis van commando's bewerken
+# [Linux] C Shell (csh) fc gebruik: Geschiedenis van commando's bewerken
 
 ## Overzicht
-De `fc` (fix command) opdracht in Bash wordt gebruikt om eerder ingevoerde commando's te bekijken en te bewerken. Het stelt gebruikers in staat om hun commandoregelgeschiedenis te doorlopen en specifieke commando's te corrigeren of opnieuw uit te voeren.
+De `fc`-opdracht in C Shell (csh) wordt gebruikt om eerder ingevoerde commando's te bewerken en opnieuw uit te voeren. Het biedt een handige manier om fouten te corrigeren of om variaties van eerdere commando's te proberen zonder ze opnieuw volledig in te voeren.
 
 ## Gebruik
-De basis syntaxis van de `fc` opdracht is als volgt:
+De basis syntaxis van de `fc`-opdracht is als volgt:
 
-```bash
+```csh
 fc [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
+## Veelvoorkomende opties
 - `-l`: Lijst de geschiedenis van commando's.
-- `-r`: Lijst de geschiedenis in omgekeerde volgorde.
-- `-s`: Voer het laatste commando uit zonder het te bewerken.
-- `-n`: Toon geen nummering bij het weergeven van de geschiedenis.
+- `-e`: Specificeer een editor om de commando's te bewerken.
+- `-n`: Voorkom dat de regels met commando's worden genummerd bij het weergeven.
 
-## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van de `fc` opdracht:
+## Veelvoorkomende voorbeelden
 
-### Voorbeeld 1: Lijst de laatste 10 commando's
-```bash
-fc -l -n -10
+### Voorbeeld 1: Laat de laatste 5 commando's zien
+```csh
+fc -l -5
 ```
 
-### Voorbeeld 2: Bewerk het laatste commando
-```bash
+### Voorbeeld 2: Bewerk het laatste commando met de standaard editor
+```csh
 fc
 ```
-Dit opent het laatste commando in de standaard teksteditor.
 
-### Voorbeeld 3: Voer het laatste commando uit zonder bewerken
-```bash
+### Voorbeeld 3: Bewerk een specifiek commando met een opgegeven editor
+```csh
+fc -e vi 10
+```
+Hierbij wordt het 10e commando in de geschiedenis geopend in de `vi` editor.
+
+### Voorbeeld 4: Voer het laatste commando opnieuw uit
+```csh
 fc -s
 ```
 
-### Voorbeeld 4: Lijst de geschiedenis in omgekeerde volgorde
-```bash
-fc -r -l 10
-```
-
 ## Tips
-- Gebruik `fc` regelmatig om snel fouten in eerder ingevoerde commando's te corrigeren.
-- Combineer `fc` met andere shell-functies zoals pijpen om de efficiëntie te verhogen.
-- Vergeet niet dat de geschiedenis van commando's kan worden doorzocht met `history`, wat een nuttige aanvulling kan zijn op `fc`.
+- Gebruik `fc -l` om snel een overzicht van je commando geschiedenis te krijgen.
+- Als je vaak dezelfde commando's bewerkt, overweeg dan om een specifieke editor in te stellen voor `fc` om je workflow te versnellen.
+- Vergeet niet dat je met `fc` ook commando's kunt combineren en aanpassen voordat je ze opnieuw uitvoert, wat tijd kan besparen.

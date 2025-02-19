@@ -1,40 +1,38 @@
-# [Linux] Bash bg Kullanımı: Arka planda çalışan işlemleri devam ettirir
+# [Linux] C Shell (csh) bg Kullanımı: Arka planda bir işlemi çalıştırır
 
 ## Overview
-`bg` komutu, terminalde duraklatılmış bir işlemi arka planda çalıştırmak için kullanılır. Bu, kullanıcıların terminali kullanmaya devam ederken işlemlerin arka planda çalışmasını sağlar.
+`bg` komutu, C Shell (csh) ortamında, duraklatılmış bir işlemi arka planda çalıştırmak için kullanılır. Bu, kullanıcıların terminalde başka işlemler yaparken, belirli bir işlemin devam etmesini sağlar.
 
 ## Usage
 Temel sözdizimi aşağıdaki gibidir:
-```bash
+```csh
 bg [options] [arguments]
 ```
 
 ## Common Options
-- `job_id`: Belirli bir iş kimliğini belirtir. İş kimliği, `jobs` komutuyla görüntülenebilir.
-- `-n`: İşin arka planda çalışmaya başlamadan önce duraklatılmasını sağlar.
+- `job_spec`: Arka planda çalıştırılacak işlemin tanımı. Bu, iş numarası veya iş adı olabilir.
+- `&`: Komutun arka planda çalıştırılmasını sağlar. Bu, `bg` komutunu kullanmadan önce bir işlemi duraklatmak için kullanılabilir.
 
 ## Common Examples
-Aşağıda `bg` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+1. **Bir işlemi arka planda çalıştırmak:**
+   ```csh
+   sleep 60 &
+   ```
+   Bu komut, 60 saniye boyunca bekleyen bir işlemi arka planda başlatır.
 
-1. **Duraklatılmış bir işlemi arka planda çalıştırma:**
-   ```bash
+2. **Duraklatılmış bir işlemi arka planda devam ettirmek:**
+   ```csh
    bg %1
    ```
-   Bu komut, birinci işin arka planda devam etmesini sağlar.
+   Bu komut, iş numarası 1 olan duraklatılmış işlemi arka planda çalıştırır.
 
-2. **Son duraklatılan işlemi arka planda çalıştırma:**
-   ```bash
+3. **Tüm duraklatılmış işlemleri arka planda çalıştırmak:**
+   ```csh
    bg
    ```
-   Bu komut, en son duraklatılan işlemi arka planda başlatır.
-
-3. **Belirli bir iş kimliği ile arka planda çalıştırma:**
-   ```bash
-   bg %2
-   ```
-   Bu komut, ikinci işin arka planda devam etmesini sağlar.
+   Bu komut, duraklatılmış olan tüm işlemleri arka planda devam ettirir.
 
 ## Tips
-- `jobs` komutunu kullanarak mevcut duraklatılmış işlemleri görüntüleyebilirsiniz.
-- `fg` komutunu kullanarak arka planda çalışan bir işlemi ön plana alabilirsiniz.
-- İşlerinizi yönetirken, arka planda çalıştırdığınız işlemlerin durumunu takip etmek için `jobs` komutunu düzenli olarak kontrol edin.
+- `jobs` komutunu kullanarak mevcut işlemlerinizi kontrol edebilirsiniz. Bu, hangi işlemlerin duraklatıldığını ve hangi işlemlerin arka planda çalıştığını gösterir.
+- `fg` komutunu kullanarak bir işlemi ön plana alabilirsiniz. Bu, arka planda çalışan bir işlemi terminale geri getirir.
+- İşlerinizi yönetirken iş numaralarını kullanmak, işlemleri daha kolay takip etmenizi sağlar.

@@ -1,43 +1,38 @@
-# [Linux] Bash popd użycie: Przywracanie katalogu z listy
+# [Systemy Unixowe] C Shell (csh) popd użycie: Przechodzi do poprzedniego katalogu
 
 ## Overview
-Polecenie `popd` w Bash służy do przywracania katalogu z listy katalogów, które zostały wcześniej zapisane za pomocą polecenia `pushd`. Umożliwia to łatwe przełączanie się między katalogami bez konieczności wpisywania pełnych ścieżek.
+Polecenie `popd` w C Shell (csh) służy do usuwania katalogu z góry stosu katalogów oraz przechodzenia do katalogu, który znajduje się na szczycie tego stosu. Umożliwia to szybkie przełączanie się między katalogami, co jest szczególnie przydatne w przypadku pracy z wieloma lokalizacjami w systemie plików.
 
 ## Usage
 Podstawowa składnia polecenia `popd` jest następująca:
 
-```bash
-popd [options] [arguments]
+```
+popd [opcje]
 ```
 
 ## Common Options
 - `-n`: Nie zmienia katalogu roboczego, tylko aktualizuje stos katalogów.
-- `+N`: Przechodzi do katalogu na pozycji N w stosie, licząc od zera.
-- `-N`: Przechodzi do katalogu na pozycji N w stosie, licząc od końca.
+- `+n`: Przechodzi do katalogu znajdującego się na n-tej pozycji od góry stosu.
 
 ## Common Examples
+Przykłady użycia polecenia `popd`:
 
-1. **Przywracanie ostatniego katalogu:**
-   ```bash
+1. Przechodzenie do katalogu z góry stosu:
+   ```csh
    popd
    ```
 
-2. **Przywracanie katalogu z określonej pozycji:**
-   ```bash
+2. Przechodzenie do katalogu na drugiej pozycji od góry stosu:
+   ```csh
    popd +1
    ```
 
-3. **Przywracanie katalogu z końca stosu:**
-   ```bash
-   popd -1
-   ```
-
-4. **Użycie opcji -n do aktualizacji stosu bez zmiany katalogu:**
-   ```bash
+3. Użycie opcji `-n`, aby zaktualizować stos bez zmiany katalogu:
+   ```csh
    popd -n
    ```
 
 ## Tips
-- Używaj `pushd` przed `popd`, aby efektywnie zarządzać katalogami.
-- Regularnie sprawdzaj zawartość stosu katalogów za pomocą polecenia `dirs`, aby wiedzieć, które katalogi są dostępne do przywrócenia.
-- Pamiętaj, że indeksy w `popd` zaczynają się od zera, co może być pomocne przy nawigacji w stosie.
+- Używaj `pushd` przed `popd`, aby łatwo zarządzać katalogami i szybko się między nimi przełączać.
+- Regularnie sprawdzaj zawartość stosu katalogów za pomocą polecenia `dirs`, aby mieć kontrolę nad aktualnymi lokalizacjami.
+- Pamiętaj, że `popd` działa tylko w kontekście sesji C Shell, więc upewnij się, że jesteś w odpowiednim środowisku.

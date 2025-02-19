@@ -1,64 +1,39 @@
-# [Linux] Bash cut: Trích xuất phần của dòng
+# [Hệ điều hành] C Shell (csh) cut Cách sử dụng: Cắt các phần của dòng văn bản
 
 ## Overview
-Lệnh `cut` trong Bash được sử dụng để trích xuất các phần cụ thể từ mỗi dòng của tệp hoặc đầu vào. Nó rất hữu ích khi bạn cần lấy một cột dữ liệu hoặc một phần cụ thể của văn bản.
+Lệnh `cut` trong C Shell (csh) được sử dụng để trích xuất các phần cụ thể từ mỗi dòng của một tệp hoặc đầu vào. Nó rất hữu ích khi bạn cần lấy một số cột hoặc ký tự nhất định từ dữ liệu văn bản.
 
 ## Usage
 Cú pháp cơ bản của lệnh `cut` như sau:
-
-```bash
+```
 cut [options] [arguments]
 ```
 
 ## Common Options
-- `-f`: Chỉ định các trường (fields) cần trích xuất, sử dụng dấu phẩy để phân tách.
-- `-d`: Đặt ký tự phân tách (delimiter) cho các trường, mặc định là tab.
-- `-c`: Chỉ định các ký tự (characters) cần trích xuất.
-- `--complement`: Trích xuất tất cả các trường ngoại trừ những trường đã chỉ định.
+- `-f`: Chỉ định các trường (fields) cần cắt, sử dụng dấu phân cách mặc định là tab.
+- `-d`: Chỉ định dấu phân cách tùy chỉnh cho các trường.
+- `-c`: Cắt theo ký tự, cho phép bạn chỉ định các vị trí ký tự cụ thể.
+- `--complement`: Trả về các phần không được chỉ định bởi các tùy chọn cắt.
 
 ## Common Examples
-
-### Trích xuất trường từ tệp
-Giả sử bạn có một tệp `data.txt` với nội dung sau:
-```
-name,age,city
-Alice,30,NewYork
-Bob,25,LosAngeles
-```
-Để trích xuất trường thứ hai (tuổi), bạn có thể sử dụng:
-```bash
-cut -d ',' -f 2 data.txt
-```
-Kết quả sẽ là:
-```
-age
-30
-25
-```
-
-### Trích xuất ký tự cụ thể
-Nếu bạn muốn trích xuất ký tự từ một chuỗi, bạn có thể làm như sau:
-```bash
-echo "Hello World" | cut -c 1-5
-```
-Kết quả sẽ là:
-```
-Hello
-```
-
-### Trích xuất nhiều trường
-Để trích xuất nhiều trường, bạn có thể chỉ định nhiều trường bằng dấu phẩy:
-```bash
-cut -d ',' -f 1,3 data.txt
-```
-Kết quả sẽ là:
-```
-name,city
-Alice,NewYork
-Bob,LosAngeles
-```
+- Cắt các trường từ một tệp sử dụng dấu phân cách tab:
+  ```csh
+  cut -f 1,3 filename.txt
+  ```
+- Cắt các trường từ một tệp với dấu phân cách là dấu phẩy:
+  ```csh
+  cut -d ',' -f 2 filename.csv
+  ```
+- Cắt theo ký tự từ một tệp:
+  ```csh
+  cut -c 1-5 filename.txt
+  ```
+- Cắt và trả về các phần không được chỉ định:
+  ```csh
+  cut --complement -f 2 filename.txt
+  ```
 
 ## Tips
-- Sử dụng `-s` để bỏ qua các dòng không có ký tự phân tách, giúp kết quả sạch hơn.
-- Kết hợp `cut` với các lệnh khác như `grep` hoặc `sort` để xử lý dữ liệu hiệu quả hơn.
-- Hãy chắc chắn rằng bạn đã chỉ định đúng ký tự phân tách để tránh lỗi trong việc trích xuất dữ liệu.
+- Khi sử dụng `cut`, hãy chắc chắn rằng bạn biết rõ dấu phân cách trong tệp của mình để có thể chỉ định chính xác.
+- Kết hợp lệnh `cut` với các lệnh khác như `grep` hoặc `sort` để xử lý dữ liệu hiệu quả hơn.
+- Thử nghiệm với các tùy chọn khác nhau để tìm ra cách cắt phù hợp nhất cho nhu cầu của bạn.

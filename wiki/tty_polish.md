@@ -1,47 +1,34 @@
-# [Linux] Bash tty użycie: wyświetlanie nazwy terminala
+# [Linux] C Shell (csh) tty użycie: wyświetlanie nazwy terminala
 
 ## Overview
-Polecenie `tty` w systemie Linux służy do wyświetlania nazwy terminala, z którego aktualnie korzysta użytkownik. Jest to przydatne narzędzie do identyfikacji, w jakim terminalu działają skrypty lub polecenia.
+Polecenie `tty` w C Shell (csh) służy do wyświetlania nazwy terminala, z którego aktualnie korzysta użytkownik. Jest to przydatne narzędzie, które pozwala zidentyfikować, na którym terminalu wykonuje się dany proces.
 
 ## Usage
 Podstawowa składnia polecenia `tty` jest następująca:
 
-```bash
+```
 tty [opcje]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji dla polecenia `tty`:
-
-- `-s`: W trybie cichym, nie wyświetla żadnego wyjścia, tylko zwraca kod wyjścia.
-- `--help`: Wyświetla pomoc dotyczącą polecenia `tty`.
-- `--version`: Wyświetla wersję polecenia `tty`.
+- `-s`: W trybie cichym, nie wyświetla żadnego komunikatu, tylko zwraca kod wyjścia (0, jeśli terminal jest poprawny, 1 w przeciwnym razie).
 
 ## Common Examples
 Oto kilka praktycznych przykładów użycia polecenia `tty`:
 
-1. Wyświetlenie nazwy aktualnego terminala:
-   ```bash
+1. **Wyświetlenie nazwy terminala:**
+   ```csh
    tty
    ```
+   To polecenie zwróci nazwę aktualnego terminala, na przykład `/dev/pts/0`.
 
-2. Użycie opcji cichej, aby sprawdzić, czy terminal jest interaktywny (zwraca kod wyjścia):
-   ```bash
+2. **Użycie opcji cichej:**
+   ```csh
    tty -s
-   echo $?
    ```
-
-3. Wyświetlenie pomocy dotyczącej polecenia `tty`:
-   ```bash
-   tty --help
-   ```
-
-4. Sprawdzenie wersji polecenia `tty`:
-   ```bash
-   tty --version
-   ```
+   To polecenie nie wyświetli żadnego komunikatu, ale można sprawdzić kod wyjścia, aby ustalić, czy terminal jest prawidłowy.
 
 ## Tips
-- Używaj `tty` w skryptach, aby upewnić się, że skrypt działa w odpowiednim terminalu.
-- Opcja `-s` jest przydatna w skryptach do sprawdzania, czy skrypt jest uruchamiany w interaktywnym terminalu.
-- Pamiętaj, że `tty` zwraca różne wyniki w zależności od tego, jak uruchamiasz terminal (np. wirtualny terminal vs. terminal graficzny).
+- Używaj `tty` w skryptach, aby dynamicznie sprawdzać, na którym terminalu działa skrypt.
+- Pamiętaj, że `tty` działa tylko w kontekście terminali interaktywnych; w przypadku uruchamiania skryptów w tle może nie zwrócić oczekiwanych wyników.
+- Możesz użyć `tty` w połączeniu z innymi poleceniami, aby dostosować działanie skryptów w zależności od terminala, na którym są uruchamiane.

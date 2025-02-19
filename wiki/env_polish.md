@@ -1,42 +1,41 @@
-# [Linux] Bash env użycie: zarządzanie zmiennymi środowiskowymi
+# [Linux] C Shell (csh) env <Użycie: zarządzanie zmiennymi środowiskowymi>
 
-## Overview
-Polecenie `env` służy do wyświetlania lub modyfikowania zmiennych środowiskowych w systemie operacyjnym. Umożliwia uruchamianie programów w zmodyfikowanym środowisku, co jest przydatne w różnych scenariuszach, takich jak testowanie lub uruchamianie aplikacji z określonymi ustawieniami.
+## Przegląd
+Polecenie `env` w powłoce C Shell (csh) służy do wyświetlania lub modyfikowania zmiennych środowiskowych. Umożliwia uruchamianie programów w zmodyfikowanym środowisku, co jest przydatne w wielu scenariuszach, takich jak testowanie lub uruchamianie aplikacji z określonymi ustawieniami.
 
-## Usage
+## Użycie
 Podstawowa składnia polecenia `env` jest następująca:
 
-```bash
-env [options] [arguments]
+```csh
+env [opcje] [argumenty]
 ```
 
-## Common Options
-- `-i`: Uruchamia polecenie w pustym środowisku, bez żadnych zmiennych środowiskowych.
+## Częste opcje
+- `-i`: Uruchamia polecenie w nowym, pustym środowisku, bez żadnych zmiennych środowiskowych.
 - `-u VAR`: Usuwa zmienną środowiskową o nazwie VAR przed uruchomieniem polecenia.
-- `VAR=value`: Ustawia zmienną środowiskową VAR na wartość value przed uruchomieniem polecenia.
 
-## Common Examples
-1. **Wyświetlenie wszystkich zmiennych środowiskowych:**
-   ```bash
+## Częste przykłady
+1. **Wyświetlenie wszystkich zmiennych środowiskowych**:
+   ```csh
    env
    ```
 
-2. **Uruchomienie programu z określoną zmienną środowiskową:**
-   ```bash
-   env MY_VAR=hello ./my_script.sh
+2. **Uruchomienie programu z nowym, pustym środowiskiem**:
+   ```csh
+   env -i /path/to/program
    ```
 
-3. **Usunięcie zmiennej środowiskowej przed uruchomieniem polecenia:**
-   ```bash
-   env -u MY_VAR ./my_script.sh
+3. **Usunięcie zmiennej środowiskowej przed uruchomieniem polecenia**:
+   ```csh
+   env -u PATH /path/to/program
    ```
 
-4. **Uruchomienie polecenia w pustym środowisku:**
-   ```bash
-   env -i bash
+4. **Ustawienie zmiennej środowiskowej przed uruchomieniem polecenia**:
+   ```csh
+   env VAR=value /path/to/program
    ```
 
-## Tips
-- Używaj `env` do testowania aplikacji w różnych konfiguracjach środowiskowych bez zmiany globalnych ustawień.
-- Przy uruchamianiu skryptów, które wymagają specyficznych zmiennych, zawsze możesz je ustawić za pomocą `env`, co zwiększa przenośność skryptów.
-- Pamiętaj, że zmienne ustawione za pomocą `env` są dostępne tylko dla uruchamianego polecenia i nie wpływają na bieżące środowisko użytkownika.
+## Wskazówki
+- Używaj `env -i`, aby uniknąć wpływu istniejących zmiennych środowiskowych na uruchamiane programy.
+- Sprawdzaj zmienne środowiskowe przed ich modyfikacją, aby upewnić się, że nie wpłyniesz na inne procesy.
+- Możesz łączyć wiele zmiennych środowiskowych w jednym poleceniu, co jest przydatne w skryptach.

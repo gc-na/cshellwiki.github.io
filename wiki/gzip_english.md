@@ -1,56 +1,55 @@
-# [Linux] Bash gzip Uso: Compress files efficiently
+# [Linux] C Shell (csh) gzip用法: Compress files
 
 ## Overview
-The `gzip` command is a widely used utility in Unix-like operating systems that compresses files to save disk space. It uses the DEFLATE compression algorithm, which is effective for reducing the size of files, making it ideal for archiving and transferring data.
+The `gzip` command is used to compress files in Unix-like operating systems. It reduces the size of files, making them easier to store and transfer. The compressed files typically have a `.gz` extension.
 
 ## Usage
 The basic syntax of the `gzip` command is as follows:
 
-```bash
+```csh
 gzip [options] [arguments]
 ```
 
 ## Common Options
-- `-d`, `--decompress`: Decompress the specified files.
-- `-k`, `--keep`: Keep the original files after compression.
-- `-v`, `--verbose`: Display the compression ratio and other information.
-- `-r`, `--recursive`: Compress files in the specified directory and its subdirectories.
-- `-f`, `--force`: Force compression or decompression, even if the files are not regular files.
+- `-d` or `--decompress`: Decompress the specified file.
+- `-k` or `--keep`: Keep the original file when compressing.
+- `-v` or `--verbose`: Display the compression ratio and other details.
+- `-r` or `--recursive`: Compress files in the specified directory and its subdirectories.
 
 ## Common Examples
 Here are some practical examples of using the `gzip` command:
 
 1. **Compress a single file:**
-   ```bash
-   gzip filename.txt
+   ```csh
+   gzip myfile.txt
    ```
-   This command compresses `filename.txt` and creates `filename.txt.gz`.
+   This command compresses `myfile.txt` and creates `myfile.txt.gz`.
 
 2. **Decompress a file:**
-   ```bash
-   gzip -d filename.txt.gz
+   ```csh
+   gzip -d myfile.txt.gz
    ```
-   This command decompresses `filename.txt.gz` back to `filename.txt`.
+   This command decompresses `myfile.txt.gz` back to `myfile.txt`.
 
-3. **Compress multiple files:**
-   ```bash
-   gzip file1.txt file2.txt file3.txt
+3. **Compress a file while keeping the original:**
+   ```csh
+   gzip -k myfile.txt
    ```
-   This command compresses `file1.txt`, `file2.txt`, and `file3.txt` into their respective `.gz` files.
+   This command creates `myfile.txt.gz` but retains `myfile.txt`.
 
-4. **Keep original files while compressing:**
-   ```bash
-   gzip -k filename.txt
+4. **Compress all `.txt` files in a directory:**
+   ```csh
+   gzip *.txt
    ```
-   This command compresses `filename.txt` but keeps the original file intact.
+   This command compresses all text files in the current directory.
 
-5. **Compress files in a directory recursively:**
-   ```bash
-   gzip -r /path/to/directory
+5. **Compress files recursively in a directory:**
+   ```csh
+   gzip -r myfolder/
    ```
-   This command compresses all files in the specified directory and its subdirectories.
+   This command compresses all files in `myfolder` and its subdirectories.
 
 ## Tips
-- Always check the size of your files before and after compression to ensure you are saving space.
-- Use the `-v` option to monitor the compression process and see how much space you are saving.
-- For large files, consider using `gzip -k` to keep the original file until you confirm the compressed version is satisfactory.
+- Always check the size of your files before and after compression to ensure the desired reduction.
+- Use the `-v` option to see how much space you save after compression.
+- Be cautious when using `gzip` on large files, as it may take some time to complete the compression process.

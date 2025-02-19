@@ -1,53 +1,51 @@
-# [Linux] Bash stty Penggunaan: Mengatur dan menampilkan atribut terminal
+# [Sistem Operasi] C Shell (csh) stty: Mengatur terminal dan pengaturan input/output
 
 ## Overview
-Perintah `stty` digunakan untuk mengatur dan menampilkan atribut terminal di sistem Unix dan Linux. Dengan `stty`, pengguna dapat mengubah pengaturan input dan output terminal, seperti karakter kontrol, pengaturan echo, dan banyak lagi.
+Perintah `stty` digunakan untuk mengubah dan mengatur pengaturan terminal di sistem Unix dan Linux. Ini memungkinkan pengguna untuk mengkonfigurasi bagaimana terminal berinteraksi dengan input dan output, termasuk pengaturan karakter khusus dan pengaturan mode.
 
 ## Usage
-Sintaks dasar dari perintah `stty` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `stty`:
 
 ```
 stty [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang dapat digunakan dengan `stty`:
-
-- `-a`: Menampilkan semua pengaturan terminal saat ini.
-- `-g`: Menghasilkan pengaturan terminal dalam format yang dapat digunakan kembali.
-- `erase <char>`: Mengatur karakter penghapus (default biasanya adalah backspace).
-- `kill <char>`: Mengatur karakter untuk menghapus seluruh baris (default biasanya adalah Ctrl+U).
-- `echo`: Mengaktifkan echo input di terminal.
-- `-echo`: Menonaktifkan echo input di terminal.
+- `-a` : Menampilkan semua pengaturan terminal saat ini.
+- `-g` : Menampilkan pengaturan terminal dalam format yang dapat digunakan kembali.
+- `erase` : Mengatur karakter yang digunakan untuk menghapus karakter sebelumnya.
+- `kill` : Mengatur karakter yang digunakan untuk menghapus seluruh baris.
+- `intr` : Mengatur karakter yang digunakan untuk menghentikan proses yang sedang berjalan.
 
 ## Common Examples
+Berikut adalah beberapa contoh penggunaan `stty`:
 
-1. **Menampilkan semua pengaturan terminal saat ini:**
-   ```bash
+1. **Menampilkan pengaturan terminal saat ini:**
+   ```csh
    stty -a
    ```
 
 2. **Mengatur karakter penghapus menjadi Ctrl+H:**
-   ```bash
+   ```csh
    stty erase ^H
    ```
 
-3. **Menonaktifkan echo input:**
-   ```bash
-   stty -echo
+3. **Mengatur karakter kill menjadi Ctrl+U:**
+   ```csh
+   stty kill ^U
    ```
 
-4. **Mengaktifkan echo input kembali:**
-   ```bash
-   stty echo
+4. **Mengatur karakter interupsi menjadi Ctrl+C:**
+   ```csh
+   stty intr ^C
    ```
 
 5. **Menyimpan pengaturan terminal saat ini ke dalam variabel:**
-   ```bash
-   settings=$(stty -g)
+   ```csh
+   set terminal_settings = `stty -g`
    ```
 
 ## Tips
-- Selalu periksa pengaturan terminal saat ini dengan `stty -a` sebelum melakukan perubahan untuk menghindari kebingungan.
-- Jika Anda ingin mengembalikan pengaturan terminal ke keadaan semula setelah melakukan perubahan, simpan pengaturan awal menggunakan `stty -g`.
-- Gunakan `stty` dengan hati-hati, terutama saat menonaktifkan echo, karena Anda mungkin tidak dapat melihat input yang Anda ketik.
+- Selalu periksa pengaturan terminal saat ini dengan `stty -a` sebelum melakukan perubahan.
+- Gunakan `stty -g` untuk menyimpan pengaturan terminal yang dapat digunakan kembali, sehingga Anda dapat mengembalikannya jika diperlukan.
+- Hati-hati saat mengubah pengaturan terminal, karena beberapa perubahan dapat mempengaruhi cara Anda berinteraksi dengan shell.

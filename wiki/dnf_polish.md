@@ -1,7 +1,7 @@
-# [Linux] Bash dnf użycie: Zarządzanie pakietami w systemie
+# [Linux] C Shell (csh) dnf użycie: Zarządzanie pakietami w systemie
 
 ## Overview
-Polecenie `dnf` (Dandified YUM) jest menedżerem pakietów dla systemów opartych na Red Hat, takich jak Fedora i CentOS. Umożliwia instalację, aktualizację i usuwanie pakietów oprogramowania, a także zarządzanie repozytoriami.
+Polecenie `dnf` (Dandified YUM) jest menedżerem pakietów dla systemów opartych na Red Hat, takich jak Fedora i CentOS. Umożliwia instalację, aktualizację i usuwanie pakietów oprogramowania, a także zarządzanie ich zależnościami.
 
 ## Usage
 Podstawowa składnia polecenia `dnf` jest następująca:
@@ -12,11 +12,10 @@ dnf [opcje] [argumenty]
 
 ## Common Options
 - `install`: Instaluje pakiet.
-- `remove`: Usuwa pakiet.
+- `remove`: Usuwa zainstalowany pakiet.
 - `update`: Aktualizuje zainstalowane pakiety do najnowszych wersji.
-- `search`: Wyszukuje pakiety w repozytoriach.
+- `search`: Wyszukuje pakiety według nazwy lub opisu.
 - `list`: Wyświetla listę dostępnych lub zainstalowanych pakietów.
-- `info`: Wyświetla szczegółowe informacje o pakiecie.
 
 ## Common Examples
 - Instalacja pakietu:
@@ -24,7 +23,7 @@ dnf [opcje] [argumenty]
   dnf install nazwa_pakietu
   ```
 
-- Usuwanie pakietu:
+- Usunięcie pakietu:
   ```bash
   dnf remove nazwa_pakietu
   ```
@@ -39,23 +38,12 @@ dnf [opcje] [argumenty]
   dnf search nazwa_pakietu
   ```
 
-- Wyświetlanie informacji o pakiecie:
-  ```bash
-  dnf info nazwa_pakietu
-  ```
-
-## Tips
-- Zawsze warto używać opcji `-y`, aby automatycznie potwierdzić instalację lub usunięcie pakietów, co przyspiesza proces:
-  ```bash
-  dnf install -y nazwa_pakietu
-  ```
-
-- Regularnie aktualizuj system, aby zapewnić bezpieczeństwo i stabilność:
-  ```bash
-  dnf update
-  ```
-
-- Używaj opcji `list installed`, aby sprawdzić, które pakiety są aktualnie zainstalowane:
+- Wyświetlanie listy zainstalowanych pakietów:
   ```bash
   dnf list installed
   ```
+
+## Tips
+- Zawsze sprawdzaj dostępność aktualizacji przed instalacją nowych pakietów, aby uniknąć problemów z zależnościami.
+- Używaj opcji `-y`, aby automatycznie potwierdzać instalację lub usunięcie pakietów, co przyspiesza proces.
+- Regularnie przeglądaj zainstalowane pakiety i usuwaj te, które nie są już potrzebne, aby zaoszczędzić miejsce na dysku.

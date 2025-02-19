@@ -1,83 +1,82 @@
-# [Linux] Bash case: Xử lý các lựa chọn điều kiện
+# [Hệ điều hành] C Shell (csh) case: Phân loại các lựa chọn
 
 ## Overview
-Lệnh `case` trong Bash được sử dụng để thực hiện các lựa chọn điều kiện dựa trên giá trị của một biến. Nó cho phép bạn kiểm tra một giá trị và thực hiện các hành động khác nhau tùy thuộc vào giá trị đó, tương tự như cấu trúc `switch` trong các ngôn ngữ lập trình khác.
+Lệnh `case` trong C Shell (csh) được sử dụng để kiểm tra một biến và thực hiện các hành động khác nhau dựa trên giá trị của biến đó. Nó rất hữu ích trong việc xử lý các lựa chọn và điều kiện trong các script.
 
 ## Usage
 Cú pháp cơ bản của lệnh `case` như sau:
-
-```bash
+```
 case [biến] in
-    [mẫu1])
+    [giá trị1])
         [lệnh1]
         ;;
-    [mẫu2])
+    [giá trị2])
         [lệnh2]
         ;;
     *)
-        [lệnh_mặc_dịnh]
+        [lệnh_mặc_định]
         ;;
 esac
 ```
 
 ## Common Options
-- `*)`: Mẫu mặc định, sẽ được thực hiện nếu không có mẫu nào khớp.
-- `;;`: Kết thúc một khối lệnh cho một mẫu.
+- `*)`: Đây là lựa chọn mặc định, được thực hiện nếu không có giá trị nào khớp với các trường hợp đã chỉ định.
+- `;;`: Dùng để kết thúc một trường hợp và chuyển sang trường hợp tiếp theo.
 
 ## Common Examples
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `case`:
 
-### Ví dụ 1: Kiểm tra ngày trong tuần
-```bash
-day="Thứ Hai"
-case $day in
-    "Thứ Hai")
-        echo "Hôm nay là đầu tuần."
-        ;;
-    "Thứ Sáu")
-        echo "Hôm nay là cuối tuần."
-        ;;
-    *)
-        echo "Hôm nay là một ngày khác."
-        ;;
-esac
+### Ví dụ 1: Phân loại số
+```csh
+set num = 2
+switch ($num)
+    case 1:
+        echo "Số là 1"
+        breaksw
+    case 2:
+        echo "Số là 2"
+        breaksw
+    case 3:
+        echo "Số là 3"
+        breaksw
+    default:
+        echo "Số không nằm trong danh sách"
+endsw
 ```
 
-### Ví dụ 2: Kiểm tra số
-```bash
-number=3
-case $number in
-    1)
-        echo "Số một."
+### Ví dụ 2: Phân loại tháng
+```csh
+set month = "Tháng 5"
+case ($month) in
+    "Tháng 1" | "Tháng 2" | "Tháng 3")
+        echo "Quý 1"
         ;;
-    2)
-        echo "Số hai."
-        ;;
-    3)
-        echo "Số ba."
+    "Tháng 4" | "Tháng 5" | "Tháng 6")
+        echo "Quý 2"
         ;;
     *)
-        echo "Số không xác định."
+        echo "Không thuộc quý nào"
         ;;
 esac
 ```
 
 ### Ví dụ 3: Kiểm tra loại tệp
-```bash
-file="document.txt"
-case $file in
+```csh
+set file = "document.txt"
+case ($file) in
     *.txt)
-        echo "Đây là một tệp văn bản."
+        echo "Đây là tệp văn bản"
         ;;
     *.jpg | *.png)
-        echo "Đây là một tệp hình ảnh."
+        echo "Đây là tệp hình ảnh"
         ;;
     *)
-        echo "Loại tệp không xác định."
+        echo "Loại tệp không xác định"
         ;;
 esac
 ```
 
 ## Tips
-- Sử dụng `case` khi bạn cần kiểm tra nhiều giá trị khác nhau cho một biến, điều này giúp mã của bạn gọn gàng và dễ đọc hơn.
-- Đảm bảo rằng mỗi mẫu kết thúc bằng `;;` để tránh lỗi trong quá trình thực thi.
-- Bạn có thể sử dụng nhiều mẫu cho một lệnh bằng cách sử dụng dấu `|` để phân tách chúng, như trong ví dụ kiểm tra loại tệp.
+- Sử dụng `case` để làm cho mã của bạn dễ đọc hơn khi xử lý nhiều điều kiện.
+- Đảm bảo rằng mỗi trường hợp kết thúc bằng `;;` để tránh lỗi trong script.
+- Sử dụng lựa chọn mặc định `*` để xử lý các trường hợp không lường trước được.

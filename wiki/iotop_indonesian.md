@@ -1,7 +1,7 @@
-# [Linux] Bash iotop Penggunaan: Memantau penggunaan I/O disk oleh proses
+# [Sistem Operasi] C Shell (csh) iotop: Memantau penggunaan I/O oleh proses
 
 ## Overview
-Perintah `iotop` digunakan untuk memantau penggunaan I/O disk secara real-time oleh proses yang berjalan di sistem Linux. Ini sangat berguna untuk mengidentifikasi proses mana yang menggunakan sumber daya disk secara berlebihan, sehingga Anda dapat melakukan tindakan yang diperlukan untuk mengoptimalkan kinerja sistem.
+Perintah `iotop` digunakan untuk memantau penggunaan input/output (I/O) oleh proses yang sedang berjalan di sistem. Dengan `iotop`, pengguna dapat melihat proses mana yang menggunakan I/O paling banyak, yang sangat berguna untuk mendiagnosis masalah kinerja.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `iotop`:
@@ -11,10 +11,10 @@ iotop [options] [arguments]
 ```
 
 ## Common Options
-- `-o` atau `--only`: Menampilkan hanya proses yang sedang melakukan I/O.
-- `-b` atau `--batch`: Menjalankan `iotop` dalam mode batch, berguna untuk output ke file.
-- `-n NUM`: Menentukan jumlah iterasi yang akan dilakukan sebelum keluar.
-- `-d SEC`: Menentukan interval waktu (dalam detik) antara pembaruan tampilan.
+- `-o`, `--only`: Menampilkan hanya proses yang sedang melakukan I/O.
+- `-b`, `--batch`: Menjalankan `iotop` dalam mode batch, berguna untuk pengalihan output.
+- `-d`, `--delay`: Mengatur interval pembaruan dalam detik (default adalah 1 detik).
+- `-p`, `--pid`: Menampilkan hanya proses dengan ID tertentu.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `iotop`:
@@ -24,22 +24,22 @@ Berikut adalah beberapa contoh penggunaan `iotop`:
    iotop
    ```
 
-2. Menjalankan `iotop` hanya untuk menampilkan proses yang sedang melakukan I/O:
+2. Menampilkan hanya proses yang sedang melakukan I/O:
    ```bash
    iotop -o
    ```
 
-3. Menjalankan `iotop` dalam mode batch dan menyimpan output ke file:
+3. Menjalankan `iotop` dalam mode batch dengan pembaruan setiap 2 detik:
    ```bash
-   iotop -b -n 10 > iotop_output.txt
+   iotop -b -d 2
    ```
 
-4. Menjalankan `iotop` dengan interval pembaruan 2 detik:
+4. Menampilkan informasi I/O untuk proses dengan ID tertentu, misalnya ID 1234:
    ```bash
-   iotop -d 2
+   iotop -p 1234
    ```
 
 ## Tips
-- Gunakan opsi `-o` untuk fokus pada proses yang aktif melakukan I/O, sehingga lebih mudah untuk mengidentifikasi masalah.
-- Pertimbangkan untuk menjalankan `iotop` dengan hak akses root untuk mendapatkan informasi yang lebih lengkap tentang semua proses.
-- Jika Anda ingin memantau I/O dalam jangka waktu tertentu, gunakan opsi `-n` untuk mengatur jumlah iterasi yang diinginkan.
+- Gunakan opsi `-o` untuk fokus pada proses yang aktif menggunakan I/O, sehingga lebih mudah untuk mendiagnosis masalah.
+- Jalankan `iotop` dengan hak akses root untuk mendapatkan informasi yang lebih lengkap tentang semua proses.
+- Pertimbangkan untuk menggunakan mode batch saat ingin menyimpan output ke file untuk analisis lebih lanjut.

@@ -1,12 +1,12 @@
-# [Linux] Bash mkswap uso: Crear un área de intercambio
+# [Linux] C Shell (csh) mkswap: crear un área de intercambio
 
 ## Overview
-El comando `mkswap` se utiliza para configurar un archivo o una partición como área de intercambio en sistemas Linux. Esto es esencial para gestionar la memoria, permitiendo que el sistema operativo utilice espacio en disco como si fuera memoria RAM adicional.
+El comando `mkswap` se utiliza para configurar un archivo o una partición como espacio de intercambio en sistemas Unix y Linux. Este espacio de intercambio es esencial para la gestión de la memoria, permitiendo al sistema utilizar el disco duro como una extensión de la memoria RAM.
 
 ## Usage
 La sintaxis básica del comando `mkswap` es la siguiente:
 
-```bash
+```csh
 mkswap [opciones] [argumentos]
 ```
 
@@ -16,28 +16,30 @@ mkswap [opciones] [argumentos]
 - `-p, --pagesize tamaño`: Especifica el tamaño de las páginas de intercambio.
 
 ## Common Examples
-1. **Crear un área de intercambio en un archivo:**
-   ```bash
-   sudo fallocate -l 1G /swapfile
-   sudo mkswap /swapfile
+Aquí hay algunos ejemplos prácticos del uso de `mkswap`:
+
+1. **Crear un archivo de intercambio**:
+   ```csh
+   dd if=/dev/zero of=/swapfile bs=1M count=1024
+   mkswap /swapfile
    ```
 
-2. **Crear un área de intercambio en una partición:**
-   ```bash
-   sudo mkswap /dev/sdX1
+2. **Crear un área de intercambio en una partición**:
+   ```csh
+   mkswap /dev/sdX1
    ```
 
-3. **Asignar una etiqueta al área de intercambio:**
-   ```bash
-   sudo mkswap -L mi_swap /dev/sdX1
+3. **Crear un archivo de intercambio con una etiqueta**:
+   ```csh
+   mkswap -L mi_swap /swapfile
    ```
 
-4. **Forzar la creación del área de intercambio:**
-   ```bash
-   sudo mkswap -f /dev/sdX1
+4. **Forzar la creación del área de intercambio**:
+   ```csh
+   mkswap -f /dev/sdX1
    ```
 
 ## Tips
-- Asegúrate de que el archivo o la partición que deseas usar como área de intercambio no esté en uso antes de ejecutar `mkswap`.
-- Después de crear el área de intercambio, recuerda activarla con el comando `swapon`.
-- Es recomendable verificar el estado del área de intercambio usando `swapon --show` para confirmar que está activa y funcionando correctamente.
+- Asegúrate de que el archivo o la partición que deseas usar como intercambio tenga el tamaño adecuado para tus necesidades.
+- Después de crear el área de intercambio, no olvides activarla con el comando `swapon`.
+- Revisa el estado del espacio de intercambio con el comando `swapon -s` para asegurarte de que está funcionando correctamente.

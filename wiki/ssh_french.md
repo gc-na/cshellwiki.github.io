@@ -1,54 +1,52 @@
-# [Linux] Bash ssh Utilisation : Connexion sécurisée à un serveur distant
+# [Linux] C Shell (csh) ssh utilisation : Établir une connexion sécurisée à distance
 
 ## Overview
-La commande `ssh` (Secure Shell) est utilisée pour établir une connexion sécurisée à un serveur distant. Elle permet aux utilisateurs d'exécuter des commandes sur un autre ordinateur via un réseau, tout en assurant la confidentialité et l'intégrité des données échangées.
+La commande `ssh` (Secure Shell) permet d'établir une connexion sécurisée à un autre ordinateur sur un réseau. Elle est principalement utilisée pour accéder à des serveurs à distance et exécuter des commandes de manière sécurisée.
 
 ## Usage
 La syntaxe de base de la commande `ssh` est la suivante :
 
-```bash
+```csh
 ssh [options] [utilisateur@]hôte
 ```
 
 ## Common Options
 Voici quelques options courantes pour la commande `ssh` :
 
-- `-p PORT` : Spécifie le port à utiliser pour la connexion (par défaut, c'est le port 22).
-- `-i FICHIER` : Utilise une clé d'authentification spécifique (fichier de clé privée).
-- `-v` : Active le mode verbeux pour afficher des informations de débogage.
-- `-X` : Active le transfert X11, permettant d'exécuter des applications graphiques à distance.
-- `-C` : Active la compression des données pour réduire la bande passante utilisée.
+- `-p [port]` : Spécifie le port à utiliser pour la connexion SSH.
+- `-i [clé]` : Utilise une clé d'authentification spécifique.
+- `-v` : Active le mode verbeux pour le débogage.
+- `-X` : Active le transfert X11 pour exécuter des applications graphiques à distance.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `ssh` :
 
-1. **Connexion à un serveur distant :**
-   ```bash
-   ssh utilisateur@192.168.1.1
+1. Connexion à un serveur distant :
+   ```csh
+   ssh utilisateur@serveur.com
    ```
 
-2. **Connexion à un serveur distant sur un port spécifique :**
-   ```bash
-   ssh -p 2222 utilisateur@192.168.1.1
+2. Connexion à un serveur sur un port spécifique :
+   ```csh
+   ssh -p 2222 utilisateur@serveur.com
    ```
 
-3. **Utilisation d'une clé d'authentification spécifique :**
-   ```bash
-   ssh -i ~/.ssh/id_rsa utilisateur@192.168.1.1
+3. Utilisation d'une clé d'authentification :
+   ```csh
+   ssh -i ~/.ssh/ma_cle_rsa utilisateur@serveur.com
    ```
 
-4. **Exécution d'une commande à distance :**
-   ```bash
-   ssh utilisateur@192.168.1.1 'ls -l /var/www'
+4. Activation du mode verbeux pour le débogage :
+   ```csh
+   ssh -v utilisateur@serveur.com
    ```
 
-5. **Transfert de fichiers avec SCP (Secure Copy) :**
-   ```bash
-   scp fichier.txt utilisateur@192.168.1.1:/chemin/destination/
+5. Exécution d'une commande à distance :
+   ```csh
+   ssh utilisateur@serveur.com 'ls -l /var/www'
    ```
 
 ## Tips
-- **Utiliser des clés SSH** : Pour une sécurité accrue, utilisez des clés SSH plutôt que des mots de passe pour vous authentifier.
-- **Configurer le fichier `~/.ssh/config`** : Simplifiez vos connexions en configurant des alias pour vos serveurs dans ce fichier.
-- **Vérifier les connexions** : Utilisez l'option `-v` pour diagnostiquer les problèmes de connexion.
-- **Désactiver l'authentification par mot de passe** : Pour renforcer la sécurité, envisagez de désactiver l'authentification par mot de passe sur vos serveurs.
+- Utilisez des clés SSH pour une authentification plus sécurisée au lieu de mots de passe.
+- Gardez votre clé privée sécurisée et ne la partagez jamais.
+- Pensez à configurer votre fichier `~/.ssh/config` pour simplifier les connexions fréquentes à différents hôtes.

@@ -1,45 +1,43 @@
-# [Linux] Bash lsmod Uso: Muestra los módulos del kernel cargados
+# [Linux] C Shell (csh) lsmod Uso: Muestra los módulos del kernel cargados
 
 ## Overview
-El comando `lsmod` se utiliza en sistemas Linux para mostrar una lista de los módulos del kernel que están actualmente cargados en la memoria. Es una herramienta útil para los administradores del sistema que necesitan verificar qué controladores y módulos están activos en su sistema.
+El comando `lsmod` se utiliza en sistemas Linux para mostrar los módulos del kernel que están actualmente cargados en la memoria. Es una herramienta útil para verificar qué controladores y extensiones del kernel están activos en el sistema.
 
 ## Usage
 La sintaxis básica del comando `lsmod` es la siguiente:
 
-```bash
-lsmod [opciones]
+```csh
+lsmod [opciones] [argumentos]
 ```
 
 ## Common Options
-El comando `lsmod` no tiene muchas opciones, pero aquí están algunas de las más comunes:
+A continuación se presentan algunas opciones comunes que se pueden utilizar con `lsmod`:
 
-- **(sin opciones)**: Muestra la lista de módulos cargados.
-- **-h, --help**: Muestra la ayuda y la información sobre el uso del comando.
+- **-h, --help**: Muestra la ayuda del comando.
+- **-V, --version**: Muestra la versión del comando.
 
 ## Common Examples
+Aquí hay algunos ejemplos prácticos del uso de `lsmod`:
 
-### Ejemplo 1: Listar módulos cargados
-Para ver todos los módulos del kernel que están actualmente cargados, simplemente ejecuta:
+1. **Listar todos los módulos cargados**:
+   ```csh
+   lsmod
+   ```
 
-```bash
-lsmod
-```
+2. **Mostrar ayuda sobre el comando**:
+   ```csh
+   lsmod --help
+   ```
 
-### Ejemplo 2: Filtrar la salida
-Si deseas buscar un módulo específico, puedes combinar `lsmod` con `grep`. Por ejemplo, para buscar el módulo `nvidia`:
-
-```bash
-lsmod | grep nvidia
-```
-
-### Ejemplo 3: Ver módulos con detalles
-Aunque `lsmod` no proporciona detalles extensos, puedes usar `modinfo` para obtener más información sobre un módulo específico. Primero, usa `lsmod` para encontrar el módulo y luego:
-
-```bash
-modinfo nvidia
-```
+3. **Ver la versión de lsmod**:
+   ```csh
+   lsmod --version
+   ```
 
 ## Tips
-- Utiliza `lsmod` junto con otros comandos como `modprobe` y `rmmod` para gestionar módulos del kernel de manera efectiva.
-- Recuerda que los módulos cargados pueden afectar el rendimiento del sistema, así que verifica regularmente los módulos que están activos.
-- Si experimentas problemas con hardware, revisa `lsmod` para asegurarte de que los módulos necesarios están cargados.
+- Utiliza `lsmod` sin opciones para obtener una lista rápida de todos los módulos cargados.
+- Combina `lsmod` con otros comandos como `grep` para filtrar resultados específicos. Por ejemplo:
+  ```csh
+  lsmod | grep <nombre_del_módulo>
+  ```
+- Revisa regularmente los módulos cargados para asegurarte de que no haya controladores innecesarios que puedan afectar el rendimiento del sistema.

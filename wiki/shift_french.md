@@ -1,51 +1,51 @@
-# [Linux] Bash shift usage : décaler les paramètres positionnels
+# [Linux] C Shell (csh) shift : décaler les paramètres de position
 
 ## Overview
-La commande `shift` en Bash est utilisée pour décaler les paramètres positionnels vers la gauche. Cela signifie que le premier paramètre devient le second, le second devient le troisième, et ainsi de suite. Cela est particulièrement utile dans les scripts où vous devez traiter plusieurs arguments.
+La commande `shift` dans C Shell (csh) est utilisée pour décaler les paramètres de position vers la gauche. Cela signifie que le paramètre `$1` devient `$0`, `$2` devient `$1`, et ainsi de suite. Cela est particulièrement utile dans les scripts pour traiter les arguments de manière séquentielle.
 
 ## Usage
 La syntaxe de base de la commande `shift` est la suivante :
 
-```bash
+```csh
 shift [n]
 ```
 
-Ici, `n` est le nombre de positions à décaler. Si `n` n'est pas spécifié, il décale par défaut d'une position.
+Ici, `n` est un nombre optionnel qui indique combien de positions doivent être décalées. Si `n` n'est pas spécifié, la commande décale les paramètres de position d'une seule unité.
 
 ## Common Options
-- `n` : Nombre d'arguments à décaler. Si omis, le décalage est de 1.
+- `n` : Un nombre qui spécifie le nombre de positions à décaler. Si omis, le décalage par défaut est de 1.
 
 ## Common Examples
 
-### Exemple 1 : Décalage simple
-```bash
-#!/bin/bash
-echo "Avant shift : $1 $2 $3"
-shift
-echo "Après shift : $1 $2 $3"
-```
-Dans cet exemple, si vous exécutez le script avec trois arguments, le premier argument sera supprimé après l'exécution de `shift`.
+1. **Décalage simple** :
+   Décaler les paramètres de position d'une unité.
+   ```csh
+   set args = (a b c d)
+   echo $1  # Affiche 'a'
+   shift
+   echo $1  # Affiche 'b'
+   ```
 
-### Exemple 2 : Décalage multiple
-```bash
-#!/bin/bash
-echo "Avant shift : $1 $2 $3"
-shift 2
-echo "Après shift : $1 $2 $3"
-```
-Ici, après un décalage de 2, les deux premiers arguments sont supprimés.
+2. **Décalage multiple** :
+   Décaler les paramètres de position de deux unités.
+   ```csh
+   set args = (a b c d)
+   echo $1  # Affiche 'a'
+   shift 2
+   echo $1  # Affiche 'c'
+   ```
 
-### Exemple 3 : Utilisation dans une boucle
-```bash
-#!/bin/bash
-while [ "$#" -gt 0 ]; do
-    echo "Traitement de : $1"
-    shift
-done
-```
-Cette boucle continue de traiter les arguments tant qu'il en reste, en les décalant à chaque itération.
+3. **Utilisation dans un script** :
+   Un exemple de script qui traite tous les arguments fournis.
+   ```csh
+   #!/bin/csh
+   while ($#argv > 0)
+       echo "Traitement de : $1"
+       shift
+   end
+   ```
 
 ## Tips
-- Utilisez `shift` dans des scripts qui nécessitent le traitement d'une liste d'arguments pour simplifier la gestion des paramètres.
-- Soyez prudent avec le nombre de décalages, car décaler plus que le nombre d'arguments fournis peut entraîner des erreurs.
-- Combinez `shift` avec d'autres commandes comme `getopts` pour une gestion plus avancée des options de script.
+- Utilisez `shift` dans des boucles pour traiter tous les arguments un par un.
+- Vérifiez toujours le nombre d'arguments restants avec `$#argv` avant d'utiliser `shift` pour éviter des erreurs.
+- Pensez à utiliser `shift` avec prudence dans des scripts complexes pour ne pas perdre de vue les paramètres importants.

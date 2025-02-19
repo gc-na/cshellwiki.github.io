@@ -1,45 +1,40 @@
-# [Linux] Bash mesg Utilizzo: Controlla la possibilità di inviare messaggi agli utenti
+# [Linux] C Shell (csh) mesg <Utilizzo equivalente>: Controlla la ricezione dei messaggi
 
 ## Overview
-Il comando `mesg` in Bash viene utilizzato per controllare se gli utenti possono inviare messaggi al terminale corrente. Questo è particolarmente utile in ambienti multiutente, dove si desidera gestire la privacy e la comunicazione tra gli utenti.
+Il comando `mesg` in C Shell (csh) viene utilizzato per controllare se il terminale è in grado di ricevere messaggi da altri utenti. Questo è particolarmente utile in ambienti multiutente, dove gli utenti possono inviare messaggi di testo tramite il comando `write`.
 
 ## Usage
 La sintassi di base del comando `mesg` è la seguente:
 
-```bash
-mesg [options] [arguments]
+```
+mesg [opzioni] [argomenti]
 ```
 
 ## Common Options
-- `y`: Consente di ricevere messaggi dagli altri utenti.
-- `n`: Impedisce di ricevere messaggi dagli altri utenti.
-- `--help`: Mostra un messaggio di aiuto con le opzioni disponibili.
-- `--version`: Mostra la versione del comando `mesg`.
+- `y` : Abilita la ricezione di messaggi.
+- `n` : Disabilita la ricezione di messaggi.
+- `-n` : Alias per `n`, disabilita la ricezione.
+- `-y` : Alias per `y`, abilita la ricezione.
 
 ## Common Examples
 Ecco alcuni esempi pratici dell'uso del comando `mesg`:
 
-1. **Consentire di ricevere messaggi:**
-   ```bash
-   mesg y
-   ```
+### Abilitare la ricezione di messaggi
+```csh
+mesg y
+```
 
-2. **Impedire di ricevere messaggi:**
-   ```bash
-   mesg n
-   ```
+### Disabilitare la ricezione di messaggi
+```csh
+mesg n
+```
 
-3. **Controllare lo stato attuale:**
-   ```bash
-   mesg
-   ```
-
-4. **Visualizzare le opzioni disponibili:**
-   ```bash
-   mesg --help
-   ```
+### Controllare lo stato attuale
+```csh
+mesg
+```
 
 ## Tips
-- Utilizza `mesg n` se desideri lavorare senza interruzioni in un ambiente condiviso.
-- Ricorda di impostare `mesg y` quando hai bisogno di comunicare con altri utenti.
-- Controlla frequentemente il tuo stato con `mesg` per assicurarti che le impostazioni siano quelle desiderate.
+- Utilizza `mesg y` quando desideri ricevere messaggi da altri utenti, ad esempio durante una sessione di lavoro collaborativo.
+- Se stai lavorando in un ambiente pubblico e non vuoi essere disturbato, usa `mesg n` per disabilitare i messaggi.
+- Ricorda che le impostazioni di `mesg` sono specifiche per ogni terminale; quindi, se apri una nuova sessione, dovrai impostare di nuovo le preferenze.

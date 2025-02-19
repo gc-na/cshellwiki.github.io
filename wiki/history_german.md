@@ -1,50 +1,52 @@
-# [Linux] Bash history Verwendung: Verlauf der Befehle anzeigen
+# [Linux] C Shell (csh) history Verwendung: Befehlsverlauf anzeigen
 
-## Übersicht
-Der Befehl `history` in Bash zeigt eine Liste der zuletzt ausgeführten Befehle an. Dies ist besonders nützlich, um schnell auf frühere Befehle zuzugreifen oder um zu sehen, welche Befehle in einer Sitzung verwendet wurden.
+## Overview
+Der Befehl `history` in der C Shell (csh) zeigt eine Liste der zuletzt eingegebenen Befehle an. Dies ist besonders nützlich, um schnell auf frühere Befehle zuzugreifen oder um sie erneut auszuführen, ohne sie erneut eingeben zu müssen.
 
-## Verwendung
-Die grundlegende Syntax des Befehls lautet:
+## Usage
+Die grundlegende Syntax des `history`-Befehls lautet:
 
-```bash
-history [Optionen] [Argumente]
+```
+history [options] [arguments]
 ```
 
-## Häufige Optionen
-- `-c`: Löscht den Verlauf der aktuellen Sitzung.
-- `-d <N>`: Löscht den Befehl mit der Nummer `<N>` aus dem Verlauf.
-- `-a`: Fügt die neuen Befehle am Ende der Verlaufdatei hinzu.
-- `-r`: Liest die Verlaufdatei und fügt die Befehle zum aktuellen Verlauf hinzu.
+## Common Options
+Hier sind einige häufig verwendete Optionen für den `history`-Befehl:
 
-## Häufige Beispiele
-Hier sind einige praktische Beispiele zur Verwendung des `history`-Befehls:
+- `-c`: Löscht den gesamten Befehlsverlauf.
+- `-n`: Liest den Verlauf von der Datei, ohne die aktuelle Sitzung zu beeinflussen.
+- `-r`: Liest den Verlauf aus der Datei und fügt ihn der aktuellen Sitzung hinzu.
+- `-w`: Schreibt den aktuellen Verlauf in die Datei.
 
-1. **Anzeigen des gesamten Verlaufs:**
-   ```bash
+## Common Examples
+Hier sind einige praktische Beispiele für die Verwendung des `history`-Befehls:
+
+1. **Anzeigen des gesamten Befehlsverlaufs:**
+   ```csh
    history
    ```
 
 2. **Anzeigen der letzten 10 Befehle:**
-   ```bash
+   ```csh
    history 10
    ```
 
-3. **Löschen eines bestimmten Befehls (z.B. Befehl Nummer 5):**
-   ```bash
-   history -d 5
+3. **Löschen des gesamten Befehlsverlaufs:**
+   ```csh
+   history -c
    ```
 
-4. **Verlauf in eine Datei schreiben:**
-   ```bash
-   history -a
-   ```
-
-5. **Verlauf aus einer Datei lesen:**
-   ```bash
+4. **Befehle aus einer Datei lesen:**
+   ```csh
    history -r
    ```
 
-## Tipps
-- Verwenden Sie die Pfeiltasten nach oben und unten, um durch den Verlauf zu navigieren, ohne den `history`-Befehl einzugeben.
-- Nutzen Sie `!<Nummer>`, um einen bestimmten Befehl aus dem Verlauf erneut auszuführen (z.B. `!5` führt den Befehl mit der Nummer 5 erneut aus).
-- Regelmäßiges Aufräumen des Verlaufs kann helfen, die Übersichtlichkeit zu bewahren, insbesondere bei häufigen Befehlen.
+5. **Aktuellen Verlauf in eine Datei schreiben:**
+   ```csh
+   history -w
+   ```
+
+## Tips
+- Nutzen Sie die Pfeiltasten nach oben und unten, um schnell durch Ihren Befehlsverlauf zu navigieren.
+- Verwenden Sie `!n`, um den n-ten Befehl aus dem Verlauf erneut auszuführen, wobei `n` die Nummer des Befehls ist.
+- Regelmäßiges Speichern und Löschen des Verlaufs kann helfen, die Übersichtlichkeit zu bewahren und sensible Informationen zu schützen.

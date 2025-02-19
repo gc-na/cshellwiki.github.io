@@ -1,49 +1,48 @@
-# [Linux] Bash pkg sử dụng: Quản lý gói phần mềm
+# [Hệ điều hành] C Shell (csh) pkg: Quản lý gói phần mềm
 
-## Overview
-Lệnh `pkg` được sử dụng để quản lý các gói phần mềm trên hệ thống. Nó cho phép người dùng cài đặt, gỡ bỏ, và cập nhật các gói phần mềm một cách dễ dàng.
+## Tổng quan
+Lệnh `pkg` trong C Shell (csh) được sử dụng để quản lý các gói phần mềm trên hệ thống. Nó cho phép người dùng cài đặt, cập nhật và gỡ bỏ các gói phần mềm một cách dễ dàng.
 
-## Usage
+## Cách sử dụng
 Cú pháp cơ bản của lệnh `pkg` như sau:
-
 ```
 pkg [options] [arguments]
 ```
 
-## Common Options
-- `install`: Cài đặt một gói phần mềm.
-- `remove`: Gỡ bỏ một gói phần mềm.
-- `update`: Cập nhật danh sách các gói phần mềm.
-- `upgrade`: Nâng cấp tất cả các gói phần mềm đã cài đặt lên phiên bản mới nhất.
-- `search`: Tìm kiếm một gói phần mềm trong kho lưu trữ.
+## Các tùy chọn phổ biến
+- `install`: Cài đặt một gói phần mềm mới.
+- `remove`: Gỡ bỏ một gói phần mềm đã cài đặt.
+- `update`: Cập nhật các gói phần mềm hiện có.
+- `list`: Liệt kê tất cả các gói phần mềm đã cài đặt.
+- `info`: Hiển thị thông tin chi tiết về một gói phần mềm cụ thể.
 
-## Common Examples
+## Ví dụ phổ biến
 - Cài đặt một gói phần mềm:
-  ```bash
-  pkg install tên-gói
+  ```csh
+  pkg install tên_gói
   ```
 
 - Gỡ bỏ một gói phần mềm:
-  ```bash
-  pkg remove tên-gói
+  ```csh
+  pkg remove tên_gói
   ```
 
-- Cập nhật danh sách các gói phần mềm:
-  ```bash
+- Cập nhật tất cả các gói phần mềm:
+  ```csh
   pkg update
   ```
 
-- Nâng cấp tất cả các gói phần mềm:
-  ```bash
-  pkg upgrade
+- Liệt kê tất cả các gói đã cài đặt:
+  ```csh
+  pkg list
   ```
 
-- Tìm kiếm một gói phần mềm:
-  ```bash
-  pkg search tên-gói
+- Hiển thị thông tin về một gói cụ thể:
+  ```csh
+  pkg info tên_gói
   ```
 
-## Tips
-- Luôn cập nhật danh sách gói trước khi cài đặt hoặc nâng cấp để đảm bảo bạn có phiên bản mới nhất.
-- Sử dụng `pkg search` để tìm kiếm gói phần mềm nếu bạn không chắc chắn về tên chính xác của nó.
-- Kiểm tra các phụ thuộc của gói trước khi cài đặt để tránh xung đột phần mềm.
+## Mẹo
+- Luôn kiểm tra các gói đã cài đặt trước khi cài đặt mới để tránh xung đột.
+- Sử dụng tùy chọn `info` để tìm hiểu thêm về một gói trước khi cài đặt.
+- Thường xuyên cập nhật các gói phần mềm để đảm bảo hệ thống của bạn luôn an toàn và ổn định.

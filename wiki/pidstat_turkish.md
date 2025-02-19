@@ -1,51 +1,49 @@
-# [Linux] Bash pidstat Kullanımı: Süreç istatistiklerini görüntüleme
+# [Linux] C Shell (csh) pidstat Kullanımı: İşlem istatistiklerini görüntüleme
 
-## Overview
-`pidstat` komutu, Linux sistemlerinde çalışan süreçlerin istatistiklerini görüntülemek için kullanılır. Bu komut, belirli bir süre boyunca süreçlerin CPU, bellek ve diğer kaynak kullanımlarını izleyerek sistem yöneticilerine yardımcı olur.
+## Genel Bakış
+`pidstat` komutu, sistemdeki işlemlerin performans istatistiklerini görüntülemek için kullanılır. Bu komut, belirli bir işlem veya işlemler grubunun CPU, bellek ve diğer kaynak kullanımını izlemeye yardımcı olur.
 
-## Usage
-Temel kullanım sözdizimi aşağıdaki gibidir:
+## Kullanım
+Temel sözdizimi aşağıdaki gibidir:
 
 ```bash
-pidstat [options] [arguments]
+pidstat [seçenekler] [argümanlar]
 ```
 
-## Common Options
+## Yaygın Seçenekler
 - `-h`: Başlıkları gösterir.
-- `-r`: Bellek kullanımı istatistiklerini gösterir.
+- `-r`: Bellek kullanım istatistiklerini gösterir.
 - `-u`: CPU kullanım istatistiklerini gösterir.
-- `-p`: Belirli bir süreç ID'si (PID) için istatistikleri görüntüler.
-- `-t`: Tüm alt süreçlerin istatistiklerini gösterir.
+- `-p <pid>`: Belirtilen işlem kimliğine (PID) göre istatistikleri görüntüler.
+- `-t`: Tüm iş parçacıklarının istatistiklerini gösterir.
 
-## Common Examples
-Aşağıda `pidstat` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+## Yaygın Örnekler
+Aşağıda `pidstat` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-### 1. Tüm süreçlerin CPU kullanımını görüntüleme
-```bash
-pidstat
-```
+1. Tüm işlemler için CPU kullanımını görüntüleme:
+   ```bash
+   pidstat -u
+   ```
 
-### 2. Belirli bir PID için CPU ve bellek kullanımını görüntüleme
-```bash
-pidstat -p 1234
-```
+2. Belirli bir PID için bellek kullanımını görüntüleme:
+   ```bash
+   pidstat -r -p 1234
+   ```
 
-### 3. Her 2 saniyede bir CPU kullanımını görüntüleme
-```bash
-pidstat 2
-```
+3. Her 2 saniyede bir CPU ve bellek kullanımını izleme:
+   ```bash
+   pidstat -u -r 2
+   ```
 
-### 4. Bellek kullanımını gösterme
-```bash
-pidstat -r
-```
+4. Tüm iş parçacıkları için istatistikleri görüntüleme:
+   ```bash
+   pidstat -t
+   ```
 
-### 5. Tüm alt süreçlerin istatistiklerini görüntüleme
-```bash
-pidstat -t
-```
-
-## Tips
-- `pidstat` komutunu belirli bir süre aralığında çalıştırarak süreçlerin zaman içindeki performansını izleyebilirsiniz.
-- Komutun çıktısını bir dosyaya yönlendirmek için `>` operatörünü kullanarak verileri kaydedebilirsiniz.
-- Süreçlerin performansını analiz etmek için `pidstat` ile birlikte `grep` komutunu kullanarak belirli süreçleri filtreleyebilirsiniz.
+## İpuçları
+- `pidstat` komutunu bir betik içinde kullanarak belirli işlemlerin performansını düzenli olarak izleyebilirsiniz.
+- İstatistikleri daha iyi analiz etmek için çıktıyı bir dosyaya yönlendirebilirsiniz:
+  ```bash
+  pidstat -u > istatistikler.txt
+  ```
+- Uzun süreli izleme için `-h` seçeneğini kullanarak başlıkları görünür tutmayı unutmayın.

@@ -1,44 +1,45 @@
-# [Linux] Bash compctl gebruik: Beheer van autocompletie
+# [Unix] C Shell (csh) compctl gebruik: Automatiseren van commando-aanvullingen
 
 ## Overzicht
-De `compctl` opdracht in Bash wordt gebruikt om de autocompletie van commando's en argumenten te beheren. Het stelt gebruikers in staat om hun eigen regels voor autocompletie te definiëren, waardoor de efficiëntie van het werken met de commandoregel wordt verhoogd.
+De `compctl` opdracht in C Shell (csh) wordt gebruikt om de manier waarop de shell commando-aanvullingen behandelt aan te passen. Hiermee kun je specifieke regels instellen voor het aanvullen van commando's, bestandsnamen en andere argumenten, waardoor de gebruikerservaring wordt verbeterd.
 
 ## Gebruik
 De basis syntaxis van de `compctl` opdracht is als volgt:
 
-```bash
+```
 compctl [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- `-g`: Specificeert een glob-patroon voor de autocompletie.
-- `-k`: Bepaalt de opties die beschikbaar zijn voor autocompletie.
-- `-x`: Voegt extra voorwaarden toe voor het activeren van de autocompletie.
+## Veelvoorkomende Opties
+- `-d`: Definieert een nieuwe aanvulregel.
+- `-k`: Geeft een lijst van mogelijke aanvulwaarden op.
+- `-n`: Specificeert het aantal argumenten dat moet worden aangevuld.
+- `-S`: Voegt een suffix toe aan de aangevulde waarden.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
 
-### Voorbeeld 1: Eenvoudige autocompletie instellen
-Stel een eenvoudige autocompletie in voor een commando:
+### Voorbeeld 1: Eenvoudige bestandsaanvulling
+Om de aanvulling voor een bepaalde extensie in te stellen, kun je het volgende gebruiken:
 
-```bash
-compctl -k '("optie1" "optie2" "optie3")' mijncommando
+```csh
+compctl -k '(*.txt)' mycommand
 ```
 
-### Voorbeeld 2: Glob-patroon gebruiken
-Gebruik een glob-patroon om bestanden te completeren:
+### Voorbeeld 2: Meerdere opties voor aanvulling
+Je kunt meerdere opties opgeven voor een commando:
 
-```bash
-compctl -g '*.txt' mijncommando
+```csh
+compctl -d -k '(*.jpg *.png)' imageview
 ```
 
-### Voorbeeld 3: Meerdere opties combineren
-Combineer verschillende opties voor meer geavanceerde autocompletie:
+### Voorbeeld 3: Specifieke argumenten aanvullen
+Als je wilt dat een commando slechts een bepaald aantal argumenten aanvult:
 
-```bash
-compctl -g '*.jpg' -k '("upload" "download")' mijncommando
+```csh
+compctl -n 2 -k '(option1 option2 option3)' myscript
 ```
 
 ## Tips
-- Experimenteer met verschillende opties om de autocompletie aan te passen aan jouw workflow.
-- Documenteer je `compctl` instellingen in je `.bashrc` bestand om ze persistent te maken.
-- Test je instellingen grondig om ervoor te zorgen dat de autocompletie werkt zoals verwacht.
+- Zorg ervoor dat je `compctl` regels test in een veilige omgeving voordat je ze in je dagelijkse workflow gebruikt.
+- Gebruik duidelijke en specifieke aanvulwaarden om verwarring te voorkomen.
+- Documenteer je `compctl` instellingen, zodat je ze later gemakkelijk kunt terugvinden of aanpassen.

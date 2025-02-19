@@ -1,49 +1,47 @@
-# [Linux] Bash watch gebruik: Voortdurend een commando uitvoeren
+# [Linux] C Shell (csh) watch gebruik: Voortdurend een commando uitvoeren
 
 ## Overzicht
-De `watch`-opdracht in Bash stelt gebruikers in staat om een bepaald commando op regelmatige tijdstippen uit te voeren en de uitvoer in real-time te bekijken. Dit is bijzonder handig voor het monitoren van veranderingen in de uitvoer van een commando, zoals systeemstatistieken of logbestanden.
+De `watch` opdracht in C Shell (csh) stelt gebruikers in staat om een specifiek commando op regelmatige tijdstippen uit te voeren en de uitvoer in real-time te bekijken. Dit is bijzonder nuttig voor het monitoren van veranderingen in de uitvoer van een commando, zoals systeemstatistieken of logbestanden.
 
 ## Gebruik
-De basis syntaxis van de `watch`-opdracht is als volgt:
+De basis syntaxis van de `watch` opdracht is als volgt:
 
-```bash
-watch [opties] [commando]
+```csh
+watch [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
-- `-n, --interval`: Stel het interval in seconden in tussen de uitvoeringen van het commando. Standaard is dit 2 seconden.
-- `-d, --differences`: Markeer de verschillen tussen de huidige en de vorige uitvoer.
-- `-t, --no-title`: Verberg de titelbalk met informatie over het commando en het interval.
-- `-x, --exec`: Voer een commando uit met argumenten.
+## Veelvoorkomende opties
+- `-n <seconden>`: Bepaalt de intervaltijd in seconden tussen de uitvoeringen van het commando. Standaard is dit 2 seconden.
+- `-d`: Markeer de wijzigingen in de uitvoer door de gewijzigde regels te benadrukken.
+- `-t`: Verberg de header die de tijd en het commando toont.
 
-## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van de `watch`-opdracht:
+## Veelvoorkomende voorbeelden
 
-1. **Systeembronnen controleren:**
-   Om de CPU-gebruik in real-time te volgen, gebruik je:
-   ```bash
-   watch -n 1 mpstat
-   ```
+### Voorbeeld 1: Systeemprocessen monitoren
+Voer het `ps` commando uit elke 5 seconden om actieve processen te bekijken:
+```csh
+watch -n 5 ps aux
+```
 
-2. **Bestandssysteemgebruik monitoren:**
-   Om het gebruik van schijfruimte elke 5 seconden te controleren:
-   ```bash
-   watch -n 5 df -h
-   ```
+### Voorbeeld 2: Schijfruimte controleren
+Controleer de schijfruimte op de schijven elke 10 seconden:
+```csh
+watch -n 10 df -h
+```
 
-3. **Netwerkverbindingen volgen:**
-   Om actieve netwerkverbindingen te bekijken:
-   ```bash
-   watch -n 2 netstat -tuln
-   ```
+### Voorbeeld 3: Logbestanden volgen
+Volg een logbestand en markeer wijzigingen:
+```csh
+watch -d tail -n 10 /var/log/syslog
+```
 
-4. **Logbestanden in de gaten houden:**
-   Om de laatste regels van een logbestand te volgen:
-   ```bash
-   watch tail -n 10 /var/log/syslog
-   ```
+### Voorbeeld 4: Netwerkverbindingen controleren
+Bekijk actieve netwerkverbindingen elke 3 seconden:
+```csh
+watch -n 3 netstat -tuln
+```
 
 ## Tips
-- Gebruik de `-d` optie om snel veranderingen in de uitvoer te identificeren, wat handig kan zijn bij het monitoren van logbestanden of systeemstatistieken.
-- Pas het interval aan met de `-n` optie om de belasting op het systeem te minimaliseren, vooral bij commando's die veel middelen vereisen.
-- Combineer `watch` met andere commando's zoals `grep` om specifieke informatie te filteren en alleen relevante uitvoer te tonen.
+- Gebruik de `-d` optie om snel veranderingen op te merken in de uitvoer, vooral bij lange lijsten.
+- Pas de intervaltijd aan met de `-n` optie om de belasting op het systeem te minimaliseren, vooral bij zware commando's.
+- Combineer `watch` met andere commando's om specifieke informatie te monitoren die voor jou belangrijk is.

@@ -1,61 +1,44 @@
-# [Linux] Bash script uso: Capture terminal sessions
+# [Linux] C Shell (csh) script uso: Create a typescript of terminal session
 
 ## Overview
-The `script` command in Bash is used to record a terminal session. It captures all the input and output of the terminal, allowing users to save their work or share their command-line activities with others. This can be particularly useful for creating tutorials, documenting processes, or debugging.
+The `script` command in C Shell (csh) is used to create a typescript of your terminal session. This allows you to record all the input and output of your terminal session into a file, which can be useful for documentation, debugging, or sharing your work with others.
 
 ## Usage
 The basic syntax of the `script` command is as follows:
 
-```bash
+```csh
 script [options] [file]
 ```
 
-Here, `[file]` is optional and specifies the name of the file where the session will be saved. If no file is provided, the output will be saved to a file named `typescript` by default.
-
 ## Common Options
-- `-a`: Append the output to the file instead of overwriting it.
-- `-c`: Run a command and save its output to the file.
-- `-f`: Flush the output after each write, which can be useful for real-time monitoring.
-- `-q`: Operate in quiet mode, suppressing the start and stop messages.
+- `-a`: Append the output to the specified file instead of overwriting it.
+- `-q`: Run in quiet mode, suppressing the start and stop messages.
+- `-t`: Record timing information for the session, which can be useful for playback.
 
 ## Common Examples
+Here are some practical examples of using the `script` command:
 
-### Basic Session Recording
-To start recording a session and save it to a file named `session.log`:
+1. **Basic usage**: Start recording your session to a file named `typescript`.
+   ```csh
+   script typescript
+   ```
 
-```bash
-script session.log
-```
+2. **Appending to an existing file**: Append the session output to an existing file.
+   ```csh
+   script -a typescript
+   ```
 
-### Appending to an Existing File
-To append the output of a new session to an existing file:
+3. **Quiet mode**: Record your session without displaying start and stop messages.
+   ```csh
+   script -q typescript
+   ```
 
-```bash
-script -a session.log
-```
-
-### Recording a Specific Command
-To record the output of a specific command, such as `ls`, and save it to a file:
-
-```bash
-script -c "ls -l" command_output.log
-```
-
-### Real-time Monitoring
-To record a session while ensuring that the output is flushed in real-time:
-
-```bash
-script -f session.log
-```
-
-### Quiet Mode
-To start a session in quiet mode, suppressing the usual start and stop messages:
-
-```bash
-script -q session.log
-```
+4. **Recording with timing**: Record your session along with timing information.
+   ```csh
+   script -t typescript
+   ```
 
 ## Tips
-- Always check the contents of the output file after ending the session to ensure everything was recorded as expected.
-- Use the `-f` option if you need to monitor the session in real-time, especially during long-running commands.
-- Consider using the `-a` option if you plan to record multiple sessions and want to keep a continuous log without overwriting previous data.
+- Always check the contents of your typescript file after your session to ensure everything was recorded as expected.
+- Use the `-a` option if you want to keep adding to the same file over multiple sessions.
+- Consider using `cat` or `less` to view your typescript file, especially if it contains a lot of output.

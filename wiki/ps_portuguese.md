@@ -1,23 +1,22 @@
-# [Linux] Bash ps Uso: Exibir processos em execução
+# [Linux] C Shell (csh) ps Uso: Exibir processos em execução
 
 ## Overview
-O comando `ps` é utilizado para exibir informações sobre os processos em execução no sistema. Ele fornece uma visão instantânea dos processos, permitindo que os usuários monitorem o que está ativo e obtenham detalhes como o uso de CPU e memória.
+O comando `ps` é utilizado para exibir informações sobre os processos em execução no sistema. Ele fornece uma visão instantânea dos processos, permitindo que os usuários vejam quais programas estão ativos e suas respectivas informações, como PID (identificador do processo), uso de CPU e memória.
 
 ## Usage
 A sintaxe básica do comando `ps` é a seguinte:
 
-```bash
+```
 ps [opções] [argumentos]
 ```
 
 ## Common Options
 Aqui estão algumas opções comuns do comando `ps`:
 
-- `-e` ou `-A`: Exibe todos os processos em execução.
-- `-f`: Exibe informações completas sobre os processos, incluindo o comando completo e os parâmetros.
-- `-u [usuario]`: Exibe processos pertencentes a um usuário específico.
-- `-aux`: Exibe todos os processos com informações detalhadas (uma combinação de opções).
-- `--sort`: Permite ordenar a saída com base em um critério específico, como uso de memória ou CPU.
+- `-e`: Exibe todos os processos em execução.
+- `-f`: Mostra a saída em um formato completo, incluindo informações adicionais sobre os processos.
+- `-u [usuário]`: Exibe os processos pertencentes a um usuário específico.
+- `-aux`: Exibe todos os processos em execução, incluindo aqueles que não têm um terminal associado.
 
 ## Common Examples
 Aqui estão alguns exemplos práticos do uso do comando `ps`:
@@ -27,7 +26,7 @@ Aqui estão alguns exemplos práticos do uso do comando `ps`:
    ps -e
    ```
 
-2. **Exibir processos com detalhes completos:**
+2. **Exibir processos em formato completo:**
    ```bash
    ps -f
    ```
@@ -37,17 +36,12 @@ Aqui estão alguns exemplos práticos do uso do comando `ps`:
    ps -u nome_do_usuario
    ```
 
-4. **Exibir todos os processos com informações detalhadas:**
+4. **Exibir todos os processos, incluindo os que não têm terminal:**
    ```bash
    ps aux
    ```
 
-5. **Ordenar a saída pelo uso de memória:**
-   ```bash
-   ps aux --sort=-%mem
-   ```
-
 ## Tips
-- Utilize `ps aux | grep [nome_do_processo]` para filtrar processos específicos.
-- Combine `ps` com outros comandos, como `less`, para facilitar a leitura de saídas longas: `ps aux | less`.
-- Lembre-se de que o `ps` fornece uma captura instantânea; para monitoramento contínuo, considere usar o comando `top`.
+- Utilize `ps aux | grep [nome_do_processo]` para filtrar e encontrar um processo específico.
+- Combine `ps` com outros comandos, como `sort` ou `head`, para organizar melhor a saída.
+- Lembre-se de que o `ps` captura um instantâneo dos processos em um dado momento; para monitoramento contínuo, considere usar o comando `top`.

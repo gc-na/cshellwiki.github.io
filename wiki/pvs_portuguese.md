@@ -1,54 +1,46 @@
-# [Linux] Bash pvs Uso equivalente: Exibir informações sobre volumes lógicos
+# [Linux] C Shell (csh) pvs Uso equivalente: [listar versões de arquivos]
 
 ## Overview
-O comando `pvs` é utilizado para exibir informações sobre os volumes físicos em um sistema Linux que utiliza o gerenciamento de volumes lógicos (LVM). Ele fornece uma visão geral dos volumes físicos, incluindo detalhes como tamanho, espaço utilizado e atributos.
+O comando `pvs` no C Shell (csh) é utilizado para exibir informações sobre as versões de arquivos em sistemas de controle de versão. Ele é especialmente útil para desenvolvedores que precisam monitorar alterações e versões de arquivos em projetos.
 
 ## Usage
 A sintaxe básica do comando `pvs` é a seguinte:
 
-```bash
+```
 pvs [opções] [argumentos]
 ```
 
 ## Common Options
 Aqui estão algumas opções comuns que podem ser usadas com o comando `pvs`:
 
-- `-o, --options`: Especifica quais informações exibir.
-- `-u, --units`: Exibe tamanhos em unidades legíveis (por exemplo, MB, GB).
-- `-f, --noheadings`: Remove os cabeçalhos da saída.
-- `-d, --debug`: Ativa a saída de depuração para ajudar na resolução de problemas.
+- `-a`: Exibe todas as versões, incluindo as que estão ocultas.
+- `-f`: Mostra informações detalhadas sobre cada versão.
+- `-r`: Exibe apenas as versões mais recentes de cada arquivo.
 
 ## Common Examples
+Aqui estão alguns exemplos práticos do uso do comando `pvs`:
 
-### Exibir todos os volumes físicos
-Para listar todos os volumes físicos no sistema, você pode usar o seguinte comando:
+1. Para listar todas as versões de um arquivo específico:
+   ```csh
+   pvs arquivo.txt
+   ```
 
-```bash
-pvs
-```
+2. Para exibir todas as versões, incluindo as ocultas:
+   ```csh
+   pvs -a arquivo.txt
+   ```
 
-### Exibir informações detalhadas
-Para obter informações mais detalhadas sobre os volumes físicos, use a opção `-o`:
+3. Para mostrar informações detalhadas sobre as versões de um arquivo:
+   ```csh
+   pvs -f arquivo.txt
+   ```
 
-```bash
-pvs -o +pv_size,pv_free
-```
-
-### Exibir tamanhos em unidades legíveis
-Para mostrar os tamanhos em unidades mais compreensíveis, utilize a opção `-u`:
-
-```bash
-pvs -u
-```
-
-### Remover cabeçalhos da saída
-Se você deseja uma saída mais limpa, sem cabeçalhos, use a opção `-f`:
-
-```bash
-pvs -f
-```
+4. Para listar apenas as versões mais recentes de todos os arquivos em um diretório:
+   ```csh
+   pvs -r *
+   ```
 
 ## Tips
-- Sempre verifique se você tem permissões adequadas para acessar informações de volumes físicos.
-- Combine `pvs` com outros comandos LVM, como `lvdisplay` e `vgdisplay`, para obter uma visão mais completa do gerenciamento de volumes.
-- Utilize a opção `-d` se você encontrar problemas, pois isso pode ajudar a identificar o que está acontecendo.
+- Sempre verifique as opções disponíveis com `man pvs` para entender melhor as funcionalidades do comando.
+- Utilize o comando em diretórios de projetos para monitorar alterações de forma eficiente.
+- Combine `pvs` com outros comandos de controle de versão para obter uma visão mais abrangente do seu projeto.

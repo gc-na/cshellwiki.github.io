@@ -1,47 +1,42 @@
-# [Linux] Bash mkdir użycie: Tworzenie nowych katalogów
+# [Linux] C Shell (csh) mkdir Użycie: Tworzenie nowych katalogów
 
 ## Overview
-Polecenie `mkdir` służy do tworzenia nowych katalogów w systemie plików. Umożliwia użytkownikom organizowanie plików w struktury folderów, co ułatwia zarządzanie danymi.
+Polecenie `mkdir` w C Shell (csh) służy do tworzenia nowych katalogów w systemie plików. Umożliwia użytkownikom organizowanie plików w hierarchicznej strukturze.
 
 ## Usage
 Podstawowa składnia polecenia `mkdir` jest następująca:
 
-```bash
+```csh
 mkdir [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-p`: Tworzy katalogi nadrzędne w razie potrzeby. Jeśli katalog nadrzędny nie istnieje, zostanie utworzony.
-- `-v`: Wyświetla szczegółowe informacje o tworzonych katalogach.
-- `-m`: Ustawia uprawnienia dla nowego katalogu w formacie oktalnym.
+- `-p`: Tworzy katalogi rodzicielskie, jeśli nie istnieją.
+- `-m`: Ustawia uprawnienia dla nowego katalogu (np. `-m 755`).
+- `--help`: Wyświetla pomoc dotyczącą polecenia.
 
 ## Common Examples
-1. Tworzenie pojedynczego katalogu:
-   ```bash
-   mkdir nowy_katalog
-   ```
+- Tworzenie pojedynczego katalogu:
+```csh
+mkdir nowy_katalog
+```
 
-2. Tworzenie wielu katalogów jednocześnie:
-   ```bash
-   mkdir katalog1 katalog2 katalog3
-   ```
+- Tworzenie wielu katalogów jednocześnie:
+```csh
+mkdir katalog1 katalog2 katalog3
+```
 
-3. Tworzenie katalogu z katalogiem nadrzędnym:
-   ```bash
-   mkdir -p /ścieżka/do/katalogu/nadrzędnego/nowy_katalog
-   ```
+- Tworzenie katalogu z uprawnieniami:
+```csh
+mkdir -m 700 prywatny_katalog
+```
 
-4. Tworzenie katalogu i wyświetlenie informacji:
-   ```bash
-   mkdir -v nowy_katalog
-   ```
-
-5. Tworzenie katalogu z określonymi uprawnieniami:
-   ```bash
-   mkdir -m 755 nowy_katalog
-   ```
+- Tworzenie katalogu z katalogami rodzicielskimi:
+```csh
+mkdir -p /sciezka/do/katalogu/nowy_katalog
+```
 
 ## Tips
-- Używaj opcji `-p`, gdy nie jesteś pewien, czy katalog nadrzędny już istnieje, aby uniknąć błędów.
-- Zawsze sprawdzaj uprawnienia katalogu, zwłaszcza gdy tworzysz katalogi w lokalizacjach systemowych.
-- Możesz używać `mkdir` w skryptach Bash, aby automatycznie organizować pliki i katalogi.
+- Używaj opcji `-p`, aby uniknąć błędów, gdy próbujesz utworzyć katalog w lokalizacji, gdzie niektóre katalogi rodzicielskie mogą nie istnieć.
+- Sprawdzaj uprawnienia katalogów po ich utworzeniu, aby upewnić się, że są zgodne z twoimi wymaganiami.
+- Regularnie organizuj swoje katalogi, aby ułatwić sobie zarządzanie plikami.

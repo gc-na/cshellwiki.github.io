@@ -1,45 +1,45 @@
-# [Linux] Bash nl Penggunaan: Menampilkan nomor baris dalam file teks
+# [Sistem Operasi] C Shell (csh) nl: Menampilkan nomor baris dalam file teks
 
 ## Overview
-Perintah `nl` digunakan untuk menampilkan isi file teks dengan menambahkan nomor baris di sebelah kiri setiap baris. Ini sangat berguna untuk memudahkan referensi dan navigasi dalam file yang panjang.
+Perintah `nl` digunakan untuk menambahkan nomor baris pada file teks. Ini sangat berguna saat Anda ingin melihat atau mencetak file dengan nomor baris yang jelas, sehingga memudahkan referensi dan navigasi.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `nl`:
 
-```bash
+```csh
 nl [options] [arguments]
 ```
 
 ## Common Options
-- `-b` : Menentukan cara penomoran baris (misalnya, `-b a` untuk menomori semua baris).
-- `-f` : Menentukan baris yang tidak akan dinomori (misalnya, `-f 2` untuk tidak menomori baris kedua).
-- `-h` : Menentukan header yang akan ditampilkan di atas nomor baris.
-- `-n` : Menentukan format penomoran (misalnya, `-n ln` untuk nomor baris dengan nol di depan).
+- `-b` : Menentukan cara penomoran baris. Misalnya, `-b a` untuk menomori semua baris.
+- `-f` : Menentukan karakter yang digunakan untuk memisahkan file.
+- `-h` : Menentukan jumlah baris kosong yang akan diabaikan sebelum penomoran dimulai.
+- `-n` : Menentukan format penomoran, seperti `-n ln` untuk nomor baris dengan panjang tetap.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `nl`:
 
-1. Menampilkan nomor baris dari file `contoh.txt`:
-   ```bash
-   nl contoh.txt
+1. Menampilkan nomor baris pada file teks:
+   ```csh
+   nl file.txt
    ```
 
-2. Menampilkan nomor baris dengan format nol di depan:
-   ```bash
-   nl -n ln contoh.txt
+2. Menomori semua baris, termasuk yang kosong:
+   ```csh
+   nl -b a file.txt
    ```
 
-3. Menampilkan nomor baris tetapi melewatkan baris kosong:
-   ```bash
-   nl -b a contoh.txt
+3. Mengabaikan dua baris kosong sebelum memulai penomoran:
+   ```csh
+   nl -h 2 file.txt
    ```
 
-4. Menggunakan header untuk menampilkan judul sebelum nomor baris:
-   ```bash
-   nl -h "Isi File" contoh.txt
+4. Menggunakan format penomoran dengan panjang tetap:
+   ```csh
+   nl -n ln file.txt
    ```
 
 ## Tips
-- Gunakan opsi `-b` untuk mengontrol baris mana yang dinomori, sehingga Anda dapat menyesuaikan output sesuai kebutuhan.
-- Cobalah menggabungkan `nl` dengan perintah lain seperti `grep` untuk menomori hasil pencarian dalam file.
-- Pastikan untuk memeriksa file yang sangat besar, karena output `nl` bisa menjadi panjang dan sulit dibaca tanpa pengaturan yang tepat.
+- Gunakan opsi `-b` untuk menyesuaikan penomoran sesuai kebutuhan Anda.
+- Cobalah menggabungkan beberapa opsi untuk mendapatkan hasil yang diinginkan.
+- Selalu periksa hasil output untuk memastikan penomoran sesuai dengan yang Anda harapkan.

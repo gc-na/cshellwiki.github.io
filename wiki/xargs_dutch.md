@@ -1,53 +1,48 @@
-# [Linux] Bash xargs gebruik: Verwerkt argumenten van standaardinvoer
+# [Linux] C Shell (csh) xargs gebruik: Verwerkt argumenten van standaardinvoer
 
 ## Overzicht
-Het `xargs`-commando in Bash wordt gebruikt om argumenten van standaardinvoer om te zetten in opdrachten die aan andere commando's kunnen worden doorgegeven. Dit is bijzonder nuttig wanneer je een lijst van items wilt verwerken die door een ander commando zijn geproduceerd, zoals `find` of `grep`.
+De `xargs`-opdracht in C Shell (csh) wordt gebruikt om argumenten van de standaardinvoer te verwerken en deze door te geven aan andere commando's. Dit is vooral handig wanneer je een lijst van items wilt doorgeven aan een commando dat deze items als argumenten vereist.
 
 ## Gebruik
-De basis syntaxis van het `xargs`-commando is als volgt:
+De basis syntaxis van de `xargs`-opdracht is als volgt:
 
-```bash
+```
 xargs [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
-- `-n N`: Geef maximaal N argumenten door aan het volgende commando.
-- `-d DELIM`: Gebruik DELIM als scheidingsteken in plaats van spaties of nieuwe regels.
-- `-0`: Verwerkt invoer die is gescheiden door null-terminators, handig voor bestandsnamen met spaties.
-- `-p`: Vraag bevestiging voordat een opdracht wordt uitgevoerd.
-- `-I {}`: Vervang `{}` door de invoer in de opgegeven opdracht.
+## Veelvoorkomende opties
+- `-n N`: Geeft maximaal N argumenten door aan het volgende commando.
+- `-d DELIM`: Specificeert een scheidingsteken voor de invoer in plaats van de standaard spaties of nieuwe regels.
+- `-p`: Vraagt om bevestiging voordat elk commando wordt uitgevoerd.
+- `-0`: Verwerkt invoer die is gescheiden door null-tekens, wat handig is voor bestandsnamen met spaties.
 
-## Veelvoorkomende Voorbeelden
+## Veelvoorkomende voorbeelden
 
-### Voorbeeld 1: Bestanden verwijderen
-Gebruik `find` om bestanden te vinden en `xargs` om ze te verwijderen.
+1. **Gebruik xargs met echo**:
+   Dit voorbeeld toont hoe je een lijst van woorden kunt doorgeven aan het `echo`-commando.
+   ```csh
+   echo "Hallo wereld" | xargs echo
+   ```
 
-```bash
-find . -name "*.tmp" | xargs rm
-```
+2. **Verwijderen van bestanden met xargs**:
+   Hier gebruiken we `find` om bestanden te zoeken en deze door te geven aan `rm` om ze te verwijderen.
+   ```csh
+   find . -name "*.tmp" | xargs rm
+   ```
 
-### Voorbeeld 2: Bestanden kopiëren
-Kopieer bestanden naar een andere map met behulp van `find` en `xargs`.
+3. **Limiteer het aantal argumenten**:
+   Dit voorbeeld toont hoe je maximaal 2 argumenten per keer doorgeeft aan het `echo`-commando.
+   ```csh
+   echo "een twee drie vier" | xargs -n 2 echo
+   ```
 
-```bash
-find . -name "*.jpg" | xargs -I {} cp {} /pad/naar/doelmap/
-```
-
-### Voorbeeld 3: Aantal regels tellen
-Tel het aantal regels in meerdere tekstbestanden.
-
-```bash
-ls *.txt | xargs wc -l
-```
-
-### Voorbeeld 4: Bestanden met spaties
-Gebruik `-0` om bestanden met spaties correct te verwerken.
-
-```bash
-find . -name "*.pdf" -print0 | xargs -0 cp -t /pad/naar/doelmap/
-```
+4. **Gebruik van een specifiek scheidingsteken**:
+   Dit voorbeeld toont hoe je een lijst van items kunt scheiden met een komma.
+   ```csh
+   echo "item1,item2,item3" | xargs -d ',' echo
+   ```
 
 ## Tips
-- Gebruik `-n` om het aantal argumenten dat naar het volgende commando wordt doorgestuurd te beperken, wat handig kan zijn voor commando's die niet goed werken met een groot aantal argumenten.
+- Gebruik de `-p` optie om te controleren wat er uitgevoerd zal worden, vooral bij destructieve commando's zoals `rm`.
 - Combineer `xargs` met `find` voor krachtige bestandsverwerking.
-- Wees voorzichtig met `rm` en andere destructieve commando's; gebruik `-p` om bevestiging te vragen voordat je de opdrachten uitvoert.
+- Let op de invoerformaten; gebruik `-0` bij bestandsnamen met spaties om fouten te voorkomen.

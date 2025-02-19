@@ -1,50 +1,54 @@
-# [Linux] Bash sha256sum Uso: Calcular e verificar somas de verificação SHA-256
+# [Linux] C Shell (csh) sha256sum uso: Calcula e verifica somas de verificação SHA-256
 
 ## Overview
-O comando `sha256sum` é utilizado para calcular e verificar a soma de verificação SHA-256 de arquivos. Essa soma de verificação é uma representação única do conteúdo do arquivo, sendo útil para garantir a integridade dos dados.
+O comando `sha256sum` é utilizado para calcular e verificar somas de verificação SHA-256 de arquivos. Essa função é essencial para garantir a integridade dos dados, permitindo que os usuários verifiquem se um arquivo foi alterado ou corrompido.
 
 ## Usage
 A sintaxe básica do comando `sha256sum` é a seguinte:
 
-```bash
+```
 sha256sum [opções] [argumentos]
 ```
 
 ## Common Options
+Aqui estão algumas opções comuns que podem ser usadas com o comando `sha256sum`:
+
 - `-b`: Calcula a soma de verificação em modo binário.
 - `-c`: Verifica as somas de verificação a partir de um arquivo.
-- `--help`: Exibe uma mensagem de ajuda com as opções disponíveis.
-- `--version`: Mostra a versão do `sha256sum`.
+- `-h`: Exibe a ajuda e as opções disponíveis.
+- `--quiet`: Não exibe mensagens de erro.
 
 ## Common Examples
-Aqui estão alguns exemplos práticos de como usar o `sha256sum`:
 
 ### Calcular a soma de verificação de um arquivo
-```bash
-sha256sum arquivo.txt
-```
+Para calcular a soma de verificação SHA-256 de um arquivo chamado `exemplo.txt`, você pode usar o seguinte comando:
 
-### Calcular a soma de verificação de vários arquivos
 ```bash
-sha256sum arquivo1.txt arquivo2.txt
-```
-
-### Salvar a soma de verificação em um arquivo
-```bash
-sha256sum arquivo.txt > soma.txt
+sha256sum exemplo.txt
 ```
 
 ### Verificar a soma de verificação a partir de um arquivo
+Se você tiver um arquivo chamado `checksums.txt` que contém somas de verificação e nomes de arquivos, você pode verificar os arquivos com o seguinte comando:
+
 ```bash
-sha256sum -c soma.txt
+sha256sum -c checksums.txt
 ```
 
-### Calcular a soma de verificação em modo binário
+### Calcular a soma de verificação de vários arquivos
+Para calcular as somas de verificação de vários arquivos ao mesmo tempo, você pode listar os arquivos:
+
 ```bash
-sha256sum -b arquivo.bin
+sha256sum arquivo1.txt arquivo2.txt arquivo3.txt
+```
+
+### Usar modo binário
+Para calcular a soma de verificação em modo binário, utilize a opção `-b`:
+
+```bash
+sha256sum -b exemplo.bin
 ```
 
 ## Tips
-- Sempre verifique a soma de verificação de arquivos baixados da internet para garantir que não foram corrompidos ou alterados.
-- Utilize o redirecionamento para salvar somas de verificação em arquivos para futuras referências.
-- Combine o `sha256sum` com outros comandos, como `find`, para calcular somas de verificação de múltiplos arquivos em diretórios.
+- Sempre verifique as somas de verificação após o download de arquivos importantes para garantir que não houve corrupção.
+- Mantenha um registro das somas de verificação em um arquivo separado para facilitar a verificação futura.
+- Use a opção `--quiet` se você deseja suprimir mensagens de erro durante a verificação de arquivos.

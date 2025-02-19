@@ -1,44 +1,44 @@
-# [Linux] Bash swapon Uso: Attivare lo swap in Linux
+# [Linux] C Shell (csh) swapon utilizzo: Abilitare lo swap
 
 ## Overview
-Il comando `swapon` è utilizzato per attivare i dispositivi di swap o i file di swap in un sistema Linux. Lo swap è una parte della memoria virtuale che il sistema utilizza quando la RAM è piena, permettendo di gestire meglio le risorse di memoria.
+Il comando `swapon` viene utilizzato per attivare i dispositivi di swap o i file di swap nel sistema. Lo swap è una parte della memoria virtuale che consente di utilizzare spazio su disco per estendere la memoria disponibile, migliorando così la gestione della memoria nei sistemi operativi.
 
 ## Usage
 La sintassi di base del comando `swapon` è la seguente:
 
-```bash
+```csh
 swapon [options] [arguments]
 ```
 
 ## Common Options
 - `-a`: Attiva tutti i dispositivi di swap elencati nel file `/etc/fstab`.
-- `-e`: Ignora gli errori e continua ad attivare gli altri dispositivi di swap.
-- `--show`: Mostra informazioni sui dispositivi di swap attivi.
+- `-e`: Ignora gli errori durante l'attivazione dei dispositivi di swap.
+- `-s`: Mostra un riepilogo dei dispositivi di swap attivi.
 
 ## Common Examples
+Ecco alcuni esempi pratici di utilizzo del comando `swapon`:
 
-### Attivare un file di swap specifico
-Per attivare un file di swap specifico, puoi utilizzare il seguente comando:
+1. Attivare un file di swap specifico:
+   ```csh
+   swapon /path/to/swapfile
+   ```
 
-```bash
-swapon /path/to/swapfile
-```
+2. Attivare tutti i dispositivi di swap definiti nel file `/etc/fstab`:
+   ```csh
+   swapon -a
+   ```
 
-### Attivare tutti i dispositivi di swap
-Per attivare tutti i dispositivi di swap definiti nel file di configurazione, usa:
+3. Mostrare un riepilogo dei dispositivi di swap attivi:
+   ```csh
+   swapon -s
+   ```
 
-```bash
-swapon -a
-```
-
-### Visualizzare i dispositivi di swap attivi
-Per visualizzare i dispositivi di swap attivi e le loro informazioni, esegui:
-
-```bash
-swapon --show
-```
+4. Attivare un dispositivo di swap e ignorare eventuali errori:
+   ```csh
+   swapon -e /dev/sdX
+   ```
 
 ## Tips
-- Assicurati che il file di swap sia creato e formattato correttamente prima di attivarlo.
-- Controlla regolarmente l'uso dello swap per evitare rallentamenti nel sistema.
-- Disattiva i file di swap non utilizzati con il comando `swapoff` per liberare risorse.
+- Assicurati che il file di swap sia stato creato e formattato correttamente prima di attivarlo.
+- Controlla regolarmente lo stato del tuo swap utilizzando `swapon -s` per monitorare l'utilizzo della memoria.
+- Considera di attivare lo swap all'avvio del sistema modificando il file `/etc/fstab` per garantire che sia sempre attivo.

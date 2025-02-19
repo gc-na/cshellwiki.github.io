@@ -1,43 +1,44 @@
-# [Linux] Bash groups uso: Exibe os grupos de um usuário
+# [Linux] C Shell (csh) groups uso: Exibe grupos de usuários
 
 ## Overview
-O comando `groups` é utilizado no Bash para exibir os grupos aos quais um usuário pertence. Ele pode ser usado para verificar rapidamente as permissões e a associação de grupos de um usuário específico ou do usuário atual.
+O comando `groups` no C Shell (csh) é utilizado para exibir os grupos aos quais um usuário pertence. Essa informação é útil para entender as permissões e acessos que um usuário possui em um sistema.
 
 ## Usage
 A sintaxe básica do comando `groups` é a seguinte:
 
-```bash
+```
 groups [opções] [argumentos]
 ```
 
 ## Common Options
-- `-h`, `--help`: Exibe uma mensagem de ajuda com informações sobre o comando.
-- `-v`, `--version`: Mostra a versão do comando `groups`.
+- `-a`: Mostra todos os grupos, incluindo os grupos secundários.
+- `-g`: Exibe apenas os grupos primários do usuário.
+- `-h`: Exibe uma ajuda sobre o uso do comando.
 
 ## Common Examples
 Aqui estão alguns exemplos práticos do uso do comando `groups`:
 
 1. **Exibir grupos do usuário atual:**
-   ```bash
+   ```csh
    groups
    ```
 
 2. **Exibir grupos de um usuário específico:**
-   ```bash
+   ```csh
    groups nome_do_usuario
    ```
 
-3. **Usar com opções de ajuda:**
-   ```bash
-   groups --help
+3. **Exibir todos os grupos, incluindo grupos secundários:**
+   ```csh
+   groups -a nome_do_usuario
    ```
 
-4. **Ver a versão do comando:**
-   ```bash
-   groups --version
+4. **Exibir apenas o grupo primário do usuário:**
+   ```csh
+   groups -g nome_do_usuario
    ```
 
 ## Tips
-- Utilize o comando `groups` sem argumentos para verificar rapidamente os grupos do usuário que está logado.
-- Para verificar os grupos de outro usuário, você deve ter permissões adequadas, caso contrário, o comando pode não retornar as informações desejadas.
-- Combine o comando `groups` com outros comandos, como `grep`, para filtrar informações específicas sobre grupos.
+- Utilize o comando `groups` sem argumentos para rapidamente verificar a quais grupos você pertence.
+- Combine o uso do comando `groups` com outros comandos, como `id`, para obter informações mais detalhadas sobre permissões de usuário.
+- Verifique frequentemente os grupos de usuários, especialmente em ambientes colaborativos, para garantir que as permissões estejam corretas.

@@ -1,51 +1,48 @@
-# [Linux] Bash umask utilizzo: Imposta i permessi predefiniti per i nuovi file e directory
+# [Linux] C Shell (csh) umask uso: Impostare i permessi predefiniti per i file
 
 ## Overview
-Il comando `umask` in Bash viene utilizzato per impostare i permessi predefiniti per i nuovi file e directory creati dagli utenti. La maschera di umask determina quali permessi verranno negati quando vengono creati nuovi file o directory, influenzando quindi la sicurezza e l'accesso ai file.
+Il comando `umask` in C Shell (csh) viene utilizzato per impostare i permessi predefiniti per i nuovi file e directory creati dagli utenti. Questo comando determina quali permessi saranno negati quando un nuovo file o una nuova directory viene creato, influenzando così la sicurezza e l'accessibilità dei file.
 
 ## Usage
 La sintassi di base del comando `umask` è la seguente:
 
-```bash
-umask [opzioni] [argomenti]
+```csh
+umask [options] [arguments]
 ```
 
 ## Common Options
-- `-S`: Mostra la maschera di umask in forma simbolica.
-- `-p`: Mostra la maschera di umask corrente in modo persistente.
+- **-S**: Mostra i permessi in formato simbolico.
+- **-p**: Mostra il valore corrente di umask in modo persistente.
 
 ## Common Examples
 Ecco alcuni esempi pratici dell'uso del comando `umask`:
 
-1. **Visualizzare la maschera umask corrente:**
-
-   ```bash
+1. **Visualizzare il valore corrente di umask**:
+   ```csh
    umask
    ```
 
-2. **Impostare una nuova maschera umask:**
-
-   ```bash
-   umask 027
+2. **Impostare umask per negare i permessi di scrittura per il gruppo e altri**:
+   ```csh
+   umask 022
    ```
 
-   Questo comando imposta i permessi predefiniti in modo che il proprietario abbia tutti i permessi, il gruppo abbia solo i permessi di lettura ed esecuzione, e gli altri non abbiano alcun permesso.
+3. **Impostare umask per negare tutti i permessi per il gruppo e altri**:
+   ```csh
+   umask 077
+   ```
 
-3. **Visualizzare la maschera umask in forma simbolica:**
-
-   ```bash
+4. **Mostrare il valore di umask in formato simbolico**:
+   ```csh
    umask -S
    ```
 
-4. **Impostare una maschera umask simbolica:**
-
-   ```bash
-   umask u=rwx,g=rx,o=
+5. **Impostare umask in modo persistente**:
+   ```csh
+   umask 027
    ```
 
-   Questo comando imposta i permessi per il proprietario, il gruppo e gli altri in modo specifico.
-
 ## Tips
-- È consigliabile controllare la maschera umask prima di creare file sensibili per garantire che i permessi siano appropriati.
-- Puoi aggiungere il comando `umask` nel tuo file di configurazione della shell (come `.bashrc` o `.bash_profile`) per impostare automaticamente i permessi desiderati all'avvio della sessione.
-- Ricorda che i permessi di umask sono sottratti dai permessi predefiniti (664 per i file e 775 per le directory).
+- È buona pratica controllare il valore di umask prima di creare file sensibili per garantire che i permessi siano appropriati.
+- Ricorda che un valore di umask più restrittivo aumenta la sicurezza, ma potrebbe limitare l'accesso per gli utenti che necessitano di collaborare.
+- Puoi aggiungere il comando `umask` nel tuo file di configurazione della shell (come `.cshrc`) per applicare automaticamente le impostazioni desiderate ad ogni sessione.

@@ -1,7 +1,7 @@
-# [Linux] Bash kubectl Użycie: zarządzanie klastrami Kubernetes
+# [Linux] C Shell (csh) kubectl użycie: zarządzanie klastrami Kubernetes
 
 ## Overview
-`kubectl` to narzędzie wiersza poleceń, które umożliwia interakcję z klastrami Kubernetes. Umożliwia użytkownikom zarządzanie aplikacjami uruchomionymi w klastrze, a także monitorowanie i konfigurowanie zasobów.
+Polecenie `kubectl` jest narzędziem wiersza poleceń, które pozwala na interakcję z klastrami Kubernetes. Umożliwia użytkownikom zarządzanie zasobami, wdrażanie aplikacji oraz monitorowanie stanu klastra.
 
 ## Usage
 Podstawowa składnia polecenia `kubectl` jest następująca:
@@ -11,39 +11,39 @@ kubectl [opcje] [argumenty]
 ```
 
 ## Common Options
-- `get`: Pobiera informacje o zasobach.
-- `describe`: Wyświetla szczegółowe informacje o zasobach.
-- `apply`: Zastosowuje zmiany w zasobach z pliku konfiguracyjnego.
+- `get`: Pobiera informacje o zasobach w klastrze.
+- `apply`: Zastosowuje zmiany w zasobach na podstawie pliku konfiguracyjnego.
 - `delete`: Usuwa zasoby z klastra.
-- `logs`: Wyświetla logi kontenera.
+- `describe`: Wyświetla szczegółowe informacje o zasobach.
+- `logs`: Wyświetla logi kontenerów w podach.
 
 ## Common Examples
-1. **Pobieranie listy podów:**
-   ```bash
-   kubectl get pods
-   ```
+- Aby uzyskać listę wszystkich podów w domyślnej przestrzeni nazw:
+  ```bash
+  kubectl get pods
+  ```
 
-2. **Wyświetlanie szczegółów konkretnego poda:**
-   ```bash
-   kubectl describe pod [nazwa-poda]
-   ```
+- Aby zastosować zmiany w zasobach na podstawie pliku YAML:
+  ```bash
+  kubectl apply -f plik.yaml
+  ```
 
-3. **Zastosowanie zmian z pliku YAML:**
-   ```bash
-   kubectl apply -f [plik.yaml]
-   ```
+- Aby usunąć określony pod:
+  ```bash
+  kubectl delete pod nazwa-podu
+  ```
 
-4. **Usuwanie poda:**
-   ```bash
-   kubectl delete pod [nazwa-poda]
-   ```
+- Aby wyświetlić szczegóły konkretnego podu:
+  ```bash
+  kubectl describe pod nazwa-podu
+  ```
 
-5. **Wyświetlanie logów kontenera:**
-   ```bash
-   kubectl logs [nazwa-poda]
-   ```
+- Aby zobaczyć logi kontenera w podzie:
+  ```bash
+  kubectl logs nazwa-podu
+  ```
 
 ## Tips
-- Używaj `kubectl get all`, aby uzyskać przegląd wszystkich zasobów w klastrze.
-- Zawsze sprawdzaj status zasobów po zastosowaniu zmian, używając `kubectl get [typ-zasobu]`.
-- Możesz używać aliasów w Bashu, aby skrócić polecenia, np. `alias k=kubectl`.
+- Używaj opcji `-n` aby wskazać konkretną przestrzeń nazw, np. `kubectl get pods -n nazwa-przestrzeni`.
+- Regularnie aktualizuj swoje pliki konfiguracyjne YAML, aby uniknąć problemów z synchronizacją.
+- Zawsze sprawdzaj status zasobów po zastosowaniu zmian, aby upewnić się, że wszystko działa poprawnie.

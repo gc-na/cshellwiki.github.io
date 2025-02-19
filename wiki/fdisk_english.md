@@ -1,54 +1,46 @@
-# [Linux] Bash fdisk Uso: Manage disk partitions
+# [Linux] C Shell (csh) fdisk用法: Manage disk partitions
 
 ## Overview
-The `fdisk` command is a powerful utility used for managing disk partitions in Linux. It allows users to create, delete, resize, and manipulate disk partitions on hard drives and other storage devices.
+The `fdisk` command is a powerful utility used to manage disk partitions on a system. It allows users to create, delete, resize, and modify partitions on hard drives and other storage devices.
 
 ## Usage
 The basic syntax of the `fdisk` command is as follows:
 
 ```bash
-fdisk [options] [device]
+fdisk [options] [arguments]
 ```
 
-Where `[device]` is typically the path to the disk you want to manage (e.g., `/dev/sda`).
-
 ## Common Options
-- `-l`: List all available partitions on all disks.
-- `-u`: Use sectors instead of cylinders for displaying partition sizes.
-- `-n`: Create a new partition.
-- `-d`: Delete a partition.
-- `-p`: Print the partition table of the specified device.
-- `-s`: Display the size of a partition.
+- `-l`: Lists all available disk partitions.
+- `-u`: Uses sectors instead of cylinders for displaying partition sizes.
+- `-n`: Creates a new partition.
+- `-d`: Deletes a partition.
+- `-p`: Prints the partition table.
 
 ## Common Examples
-1. **List all partitions on all disks:**
+1. **List all partitions on a disk:**
    ```bash
    fdisk -l
    ```
 
-2. **View the partition table of a specific disk:**
+2. **Create a new partition:**
+   ```bash
+   fdisk /dev/sda
+   ```
+   After running this command, follow the interactive prompts to create a new partition.
+
+3. **Delete a partition:**
+   ```bash
+   fdisk /dev/sda
+   ```
+   Similar to creating a partition, you'll need to follow the prompts to delete a specific partition.
+
+4. **Print the partition table:**
    ```bash
    fdisk -p /dev/sda
    ```
 
-3. **Create a new partition:**
-   ```bash
-   fdisk /dev/sda
-   ```
-   (Follow the interactive prompts to create a new partition.)
-
-4. **Delete a partition:**
-   ```bash
-   fdisk /dev/sda
-   ```
-   (Use the interactive mode to select and delete a partition.)
-
-5. **Display the size of a specific partition:**
-   ```bash
-   fdisk -s /dev/sda1
-   ```
-
 ## Tips
-- Always back up important data before modifying disk partitions to prevent data loss.
-- Use `parted` or `gparted` for a more user-friendly graphical interface if you're not comfortable with command-line tools.
-- Be cautious when deleting partitions, as this action is irreversible and can result in data loss.
+- Always back up your data before modifying partitions to prevent data loss.
+- Use the `-u` option if you prefer to work with sectors for more precise partitioning.
+- Be cautious when deleting partitions; ensure you are targeting the correct one to avoid accidental data loss.

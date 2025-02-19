@@ -1,50 +1,44 @@
-# [Linux] Bash finger uso: Muestra información sobre usuarios del sistema
+# [Linux] C Shell (csh) finger uso: Muestra información sobre usuarios del sistema
 
 ## Overview
-El comando `finger` se utiliza para mostrar información sobre los usuarios que están registrados en el sistema. Proporciona detalles como el nombre completo, la hora de inicio de sesión, el tiempo de inactividad y la ubicación del usuario, entre otros.
+El comando `finger` se utiliza para mostrar información sobre los usuarios que están conectados al sistema. Proporciona detalles como el nombre de usuario, el nombre completo, la hora de inicio de sesión y el estado de la sesión.
 
 ## Usage
 La sintaxis básica del comando `finger` es la siguiente:
 
-```bash
+```csh
 finger [opciones] [argumentos]
 ```
 
 ## Common Options
-- `-l`: Muestra la información en un formato más detallado.
-- `-m`: Ignora las mayúsculas en los nombres de usuario.
-- `-s`: Muestra un resumen breve de la información del usuario.
-- `-p`: No muestra la información de la dirección de correo electrónico.
+- `-l`: Muestra información detallada sobre los usuarios.
+- `-m`: Permite buscar usuarios por nombre parcial.
+- `-s`: Muestra un resumen breve de la información de los usuarios.
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso del comando `finger`:
 
-1. Mostrar información de todos los usuarios:
-   ```bash
+1. Mostrar información de todos los usuarios conectados:
+   ```csh
    finger
    ```
 
 2. Mostrar información detallada de un usuario específico:
-   ```bash
+   ```csh
    finger nombre_usuario
    ```
 
-3. Mostrar un resumen breve de todos los usuarios:
-   ```bash
+3. Mostrar un resumen breve de todos los usuarios conectados:
+   ```csh
    finger -s
    ```
 
-4. Mostrar información de un usuario sin la dirección de correo electrónico:
-   ```bash
-   finger -p nombre_usuario
-   ```
-
-5. Ignorar mayúsculas al buscar un usuario:
-   ```bash
-   finger -m NOMBRE_USUARIO
+4. Buscar usuarios por nombre parcial:
+   ```csh
+   finger -m parte_del_nombre
    ```
 
 ## Tips
-- Utiliza `finger` en combinación con otros comandos como `grep` para filtrar la información que necesitas.
-- Recuerda que la información mostrada por `finger` depende de la configuración del sistema y de los permisos de los usuarios.
-- Es útil para administradores de sistemas que necesitan supervisar el estado de los usuarios en el sistema.
+- Utiliza `finger` regularmente para monitorear quién está conectado al sistema y su actividad.
+- Combina `finger` con otros comandos como `grep` para filtrar resultados específicos.
+- Recuerda que la información mostrada por `finger` puede depender de la configuración del sistema y de los permisos de usuario.

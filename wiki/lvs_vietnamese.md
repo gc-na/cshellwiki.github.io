@@ -1,42 +1,49 @@
-# [Linux] Bash lvs: Hiển thị thông tin về các logical volume
+# [Hệ điều hành Unix] C Shell (csh) lvs: Hiển thị thông tin về các volume logical
 
 ## Overview
-Lệnh `lvs` được sử dụng để hiển thị thông tin về các logical volume trong hệ thống Linux sử dụng LVM (Logical Volume Manager). Nó cung cấp cái nhìn tổng quan về các logical volume, bao gồm kích thước, trạng thái và các thuộc tính khác.
+Lệnh `lvs` trong C Shell (csh) được sử dụng để hiển thị thông tin về các volume logical trong hệ thống quản lý logical volume (LVM). Lệnh này giúp người dùng theo dõi và quản lý các volume logical một cách hiệu quả.
 
 ## Usage
 Cú pháp cơ bản của lệnh `lvs` như sau:
-```bash
+```
 lvs [options] [arguments]
 ```
 
 ## Common Options
-- `-a`, `--all`: Hiển thị tất cả các logical volume, bao gồm cả những volume không hoạt động.
-- `-o`, `--units`: Chỉ định các trường hiển thị và đơn vị kích thước.
-- `-h`, `--help`: Hiển thị hướng dẫn sử dụng lệnh.
-- `-o`, `--options`: Chỉ định các thuộc tính cụ thể cần hiển thị, ví dụ như `lv_size`, `lv_attr`.
+- `-o` : Chỉ định các trường thông tin cần hiển thị.
+- `-a` : Hiển thị tất cả các volume, bao gồm cả những volume không hoạt động.
+- `--units` : Đặt đơn vị hiển thị cho kích thước (ví dụ: k, M, G).
+- `--sort` : Sắp xếp kết quả theo một trường cụ thể.
 
 ## Common Examples
-- Hiển thị danh sách tất cả các logical volume:
-  ```bash
-  lvs
-  ```
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `lvs`:
 
-- Hiển thị thông tin chi tiết về các logical volume, bao gồm kích thước và trạng thái:
-  ```bash
-  lvs -o +devices
-  ```
+1. Hiển thị danh sách tất cả các volume logical:
+   ```bash
+   lvs
+   ```
 
-- Hiển thị tất cả các logical volume, bao gồm cả những volume không hoạt động:
-  ```bash
-  lvs -a
-  ```
+2. Hiển thị thông tin chi tiết về các volume logical, bao gồm kích thước:
+   ```bash
+   lvs -o +devices
+   ```
 
-- Hiển thị thông tin về logical volume với các thuộc tính cụ thể:
-  ```bash
-  lvs -o lv_name,lv_size,lv_attr
-  ```
+3. Hiển thị tất cả các volume, bao gồm cả volume không hoạt động:
+   ```bash
+   lvs -a
+   ```
+
+4. Sắp xếp danh sách volume theo kích thước:
+   ```bash
+   lvs --sort size
+   ```
+
+5. Hiển thị thông tin với đơn vị là megabyte:
+   ```bash
+   lvs --units m
+   ```
 
 ## Tips
-- Sử dụng tùy chọn `-o` để tùy chỉnh thông tin hiển thị theo nhu cầu của bạn.
-- Kết hợp lệnh `lvs` với các lệnh khác như `lvcreate`, `lvremove` để quản lý logical volume hiệu quả hơn.
-- Thường xuyên kiểm tra trạng thái của các logical volume để đảm bảo hệ thống hoạt động ổn định.
+- Hãy sử dụng tùy chọn `-o` để tùy chỉnh thông tin hiển thị, giúp bạn chỉ xem những gì cần thiết.
+- Kết hợp các tùy chọn để có được thông tin chi tiết hơn và dễ dàng quản lý các volume logical.
+- Thường xuyên kiểm tra các volume logical để đảm bảo hệ thống hoạt động ổn định và không có vấn đề về dung lượng.

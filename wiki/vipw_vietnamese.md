@@ -1,35 +1,38 @@
-# [Linux] Bash vipw Cách sử dụng: Chỉnh sửa tệp passwd an toàn
+# [Hệ điều hành Unix] C Shell (csh) vipw <Sử dụng tương đương>: Chỉnh sửa tệp passwd an toàn
 
-## Overview
-Lệnh `vipw` được sử dụng để chỉnh sửa tệp passwd một cách an toàn. Nó đảm bảo rằng chỉ một phiên bản của tệp passwd được mở trong quá trình chỉnh sửa, giúp ngăn chặn các lỗi có thể xảy ra do nhiều người dùng chỉnh sửa cùng một lúc.
+## Tổng quan
+Lệnh `vipw` được sử dụng để chỉnh sửa tệp passwd một cách an toàn. Nó đảm bảo rằng tệp passwd không bị thay đổi bởi các quá trình khác trong khi bạn đang chỉnh sửa, giúp tránh các lỗi và xung đột.
 
-## Usage
+## Cách sử dụng
 Cú pháp cơ bản của lệnh `vipw` như sau:
+
+```csh
+vipw [tùy chọn] [đối số]
 ```
-vipw [options]
-```
 
-## Common Options
-- `-s`: Sử dụng tùy chọn này để chỉnh sửa tệp shadow thay vì tệp passwd.
-- `-m`: Tùy chọn này cho phép bạn chỉnh sửa tệp nhóm (group file) thay vì tệp passwd.
+## Các tùy chọn phổ biến
+- `-s`: Chạy lệnh trong chế độ an toàn, không cho phép chỉnh sửa nếu tệp passwd đang được sử dụng.
+- `-m`: Sử dụng tệp passwd mặc định để chỉnh sửa.
 
-## Common Examples
-- Mở tệp passwd để chỉnh sửa:
-  ```bash
-  vipw
-  ```
+## Ví dụ thường gặp
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `vipw`:
 
-- Mở tệp shadow để chỉnh sửa:
-  ```bash
-  vipw -s
-  ```
+1. Mở tệp passwd để chỉnh sửa:
+   ```csh
+   vipw
+   ```
 
-- Mở tệp nhóm để chỉnh sửa:
-  ```bash
-  vipw -m
-  ```
+2. Chạy lệnh trong chế độ an toàn:
+   ```csh
+   vipw -s
+   ```
 
-## Tips
-- Luôn sao lưu tệp passwd trước khi thực hiện bất kỳ thay đổi nào để tránh mất mát dữ liệu.
+3. Sử dụng tệp passwd mặc định:
+   ```csh
+   vipw -m
+   ```
+
+## Mẹo
+- Luôn sử dụng `vipw` thay vì chỉnh sửa trực tiếp tệp passwd để tránh lỗi.
 - Kiểm tra kỹ các thay đổi trước khi lưu để đảm bảo không có lỗi cú pháp.
-- Sử dụng `vipw` thay vì chỉnh sửa trực tiếp tệp passwd bằng các trình soạn thảo khác để bảo vệ tính toàn vẹn của tệp.
+- Sử dụng chế độ an toàn nếu bạn nghi ngờ rằng tệp passwd có thể đang được sử dụng bởi một quá trình khác.

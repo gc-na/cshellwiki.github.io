@@ -1,7 +1,7 @@
-# [Linux] Bash screen penggunaan: Mengelola sesi terminal
+# [Sistem Operasi] C Shell (csh) screen: Mengelola sesi terminal
 
 ## Overview
-Perintah `screen` adalah alat yang memungkinkan pengguna untuk menjalankan beberapa sesi terminal dalam satu jendela. Dengan `screen`, Anda dapat menjalankan proses di latar belakang, terputus dari sesi, dan kemudian terhubung kembali tanpa kehilangan pekerjaan yang sedang berlangsung.
+Perintah `screen` adalah alat yang memungkinkan pengguna untuk mengelola beberapa sesi terminal dalam satu jendela. Dengan `screen`, Anda dapat menjalankan proses di latar belakang, terputus dari sesi, dan kemudian terhubung kembali tanpa kehilangan pekerjaan yang sedang berlangsung.
 
 ## Usage
 Sintaks dasar dari perintah `screen` adalah sebagai berikut:
@@ -11,40 +11,38 @@ screen [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang sering digunakan dengan perintah `screen`:
+Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah `screen`:
 
-- `-S [nama]`: Menentukan nama sesi untuk memudahkan pengelolaan.
+- `-S <nama>`: Menetapkan nama untuk sesi baru.
 - `-d -r`: Memisahkan sesi yang sedang berjalan dan menghubungkannya kembali.
-- `-list`: Menampilkan daftar sesi `screen` yang sedang berjalan.
-- `-h [jumlah]`: Menentukan jumlah baris riwayat yang akan disimpan.
+- `-list`: Menampilkan daftar sesi yang sedang berjalan.
+- `-X <perintah>`: Mengirim perintah ke sesi yang sedang berjalan.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan `screen`:
+Berikut adalah beberapa contoh penggunaan perintah `screen`:
 
-1. **Memulai sesi baru**:
+1. **Membuat sesi baru:**
    ```bash
-   screen
+   screen -S sesi_saya
    ```
 
-2. **Memulai sesi baru dengan nama**:
-   ```bash
-   screen -S mysession
-   ```
-
-3. **Melihat daftar sesi yang sedang berjalan**:
+2. **Melihat daftar sesi yang sedang berjalan:**
    ```bash
    screen -list
    ```
 
-4. **Menghubungkan kembali ke sesi yang terputus**:
+3. **Menghubungkan kembali ke sesi yang terputus:**
    ```bash
-   screen -r mysession
+   screen -d -r sesi_saya
    ```
 
-5. **Memisahkan sesi yang sedang berjalan**:
-   Tekan `Ctrl + A`, lalu `D`.
+4. **Mengirim perintah ke sesi yang sedang berjalan:**
+   ```bash
+   screen -S sesi_saya -X stuff "echo Hello World\n"
+   ```
 
 ## Tips
-- Selalu beri nama pada sesi Anda dengan opsi `-S` agar lebih mudah dikenali.
-- Gunakan perintah `screen -ls` untuk memeriksa sesi yang sedang berjalan sebelum memulai sesi baru.
-- Jika Anda sering bekerja dengan aplikasi yang memerlukan waktu lama, pertimbangkan untuk menggunakan `screen` agar tidak kehilangan kemajuan saat terputus dari koneksi.
+- Gunakan nama sesi yang deskriptif agar lebih mudah diingat dan dikelola.
+- Untuk keluar dari sesi `screen`, tekan `Ctrl + A`, lalu `D` untuk memisahkan sesi tanpa menghentikannya.
+- Jika Anda ingin menutup sesi `screen`, cukup ketik `exit` di dalam sesi tersebut.
+- Periksa kembali sesi yang terputus secara berkala untuk memastikan tidak ada proses penting yang terhenti.

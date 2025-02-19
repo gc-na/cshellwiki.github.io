@@ -1,57 +1,53 @@
-# [Linux] Bash stty użycie: Konfiguracja terminala
+# [Linux] C Shell (csh) stty użycie: Ustawianie i wyświetlanie opcji terminala
 
 ## Overview
-Polecenie `stty` służy do zmiany ustawień terminala w systemach Unix i Linux. Umożliwia użytkownikom dostosowanie sposobu, w jaki terminal interpretuje dane wejściowe i wyjściowe, co może być przydatne w różnych scenariuszach, takich jak zmiana klawiszy funkcyjnych czy ustawienie opóźnień.
+Polecenie `stty` w C Shell (csh) służy do ustawiania i wyświetlania opcji terminala. Umożliwia użytkownikom dostosowanie zachowania terminala, co może być przydatne w różnych scenariuszach, takich jak zmiana ustawień wejścia/wyjścia czy konfiguracja sygnałów.
 
 ## Usage
 Podstawowa składnia polecenia `stty` jest następująca:
 
-```bash
+```csh
 stty [opcje] [argumenty]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji polecenia `stty`:
+Oto niektóre z najczęściej używanych opcji polecenia `stty`:
 
-- `-a` - Wyświetla wszystkie aktualne ustawienia terminala.
-- `-g` - Zwraca aktualne ustawienia w formacie, który można później użyć do przywrócenia tych ustawień.
-- `erase` - Ustala znak, który będzie używany do usuwania ostatniego znaku (domyślnie to Backspace).
-- `kill` - Ustala znak, który będzie używany do usuwania całej linii (domyślnie to Ctrl+U).
-- `intr` - Ustala znak używany do przerywania procesu (domyślnie to Ctrl+C).
+- `-a`: Wyświetla wszystkie ustawienia terminala.
+- `-g`: Zapisuje aktualne ustawienia terminala w formacie, który można później przywrócić.
+- `erase`: Ustawia znak do usuwania (domyślnie jest to Backspace).
+- `kill`: Ustawia znak do usuwania linii (domyślnie jest to Ctrl+U).
+- `intr`: Ustawia znak do przerwania (domyślnie jest to Ctrl+C).
 
 ## Common Examples
+Oto kilka praktycznych przykładów użycia polecenia `stty`:
 
-1. **Wyświetlenie wszystkich ustawień terminala:**
+1. Wyświetlenie wszystkich ustawień terminala:
+   ```csh
+   stty -a
+   ```
 
-```bash
-stty -a
-```
+2. Ustawienie znaku usuwania na Backspace:
+   ```csh
+   stty erase ^H
+   ```
 
-2. **Ustawienie klawisza Backspace jako znaku usuwania:**
+3. Ustawienie znaku do usuwania linii na Ctrl+X:
+   ```csh
+   stty kill ^X
+   ```
 
-```bash
-stty erase ^H
-```
+4. Zapisanie aktualnych ustawień terminala do zmiennej:
+   ```csh
+   stty -g > ustawienia.txt
+   ```
 
-3. **Ustawienie znaku przerywania na Ctrl+C:**
-
-```bash
-stty intr ^C
-```
-
-4. **Zapisanie aktualnych ustawień do zmiennej:**
-
-```bash
-current_settings=$(stty -g)
-```
-
-5. **Przywrócenie ustawień z zapisanej zmiennej:**
-
-```bash
-stty $current_settings
-```
+5. Przywrócenie ustawień terminala z pliku:
+   ```csh
+   stty `cat ustawienia.txt`
+   ```
 
 ## Tips
-- Zawsze sprawdzaj aktualne ustawienia terminala przed wprowadzeniem zmian, aby uniknąć niezamierzonych efektów.
-- Używaj opcji `-g`, aby zapisać ustawienia przed ich modyfikacją, co pozwoli na łatwe przywrócenie ich później.
-- Eksperymentuj z różnymi ustawieniami w bezpiecznym środowisku, aby zrozumieć, jak wpływają na działanie terminala.
+- Używaj opcji `-a`, aby szybko sprawdzić wszystkie aktualne ustawienia terminala przed wprowadzeniem zmian.
+- Zapisuj ustawienia terminala przed ich modyfikacją, aby móc je łatwo przywrócić w razie potrzeby.
+- Pamiętaj, że zmiany wprowadzone za pomocą `stty` są tymczasowe i znikną po zamknięciu terminala.

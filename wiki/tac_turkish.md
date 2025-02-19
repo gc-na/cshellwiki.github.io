@@ -1,43 +1,49 @@
-# [Linux] Bash tac Kullanımı: Dosya içeriğini ters sırayla görüntüleme
+# [Linux] C Shell (csh) tac Kullanımı: Dosyaları ters sırada görüntüleme
 
-## Genel Bakış
-`tac` komutu, bir dosyanın içeriğini ters sırayla görüntülemek için kullanılır. Bu komut, "cat" komutunun tersidir; yani, dosyadaki satırları alt alta değil, en son satırdan başlayarak gösterir.
+## Overview
+`tac` komutu, bir dosyanın içeriğini ters sırada görüntülemek için kullanılır. Bu, dosyadaki son satırın ilk olarak gösterilmesi anlamına gelir. Genellikle log dosyalarını incelemek veya son eklenen verileri hızlıca görmek için faydalıdır.
 
-## Kullanım
+## Usage
 Temel sözdizimi şu şekildedir:
-```bash
-tac [seçenekler] [argümanlar]
+```csh
+tac [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-b`, `--before`: Satırları ters sırayla yazmadan önce boş satırları korur.
-- `-r`, `--regex`: Satırları düzenli ifadeye göre ters sırayla yazmak için kullanılır.
-- `-s`, `--separator`: Satırları ayırmak için özel bir ayırıcı belirler.
+## Common Options
+- `-b`: Boş satırları atlar.
+- `-s`: Satırları belirli bir ayırıcı ile ayırır.
+- `-r`: Satır sonu karakterlerini düzenli ifadelerle eşleştirir.
 
-## Yaygın Örnekler
-Aşağıda `tac` komutunun bazı pratik örnekleri verilmiştir:
+## Common Examples
+Aşağıda `tac` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
-1. Bir dosyanın içeriğini ters sırayla görüntüleme:
-   ```bash
+1. Bir dosyanın içeriğini ters sırada görüntüleme:
+   ```csh
    tac dosya.txt
    ```
 
-2. Boş satırları koruyarak dosya içeriğini ters sırayla görüntüleme:
-   ```bash
-   tac -b dosya.txt
-   ```
-
-3. Birden fazla dosyanın içeriğini ters sırayla görüntüleme:
-   ```bash
+2. Birden fazla dosyanın içeriğini ters sırada görüntüleme:
+   ```csh
    tac dosya1.txt dosya2.txt
    ```
 
-4. Özel bir ayırıcı kullanarak dosya içeriğini ters sırayla görüntüleme:
-   ```bash
+3. Boş satırları atlayarak dosyayı ters sırada görüntüleme:
+   ```csh
+   tac -b dosya.txt
+   ```
+
+4. Belirli bir ayırıcı kullanarak satırları ters sırada görüntüleme:
+   ```csh
    tac -s ',' dosya.csv
    ```
 
-## İpuçları
-- `tac` komutunu, büyük dosyaların sonuna hızlıca erişmek için kullanabilirsiniz.
-- Çıktıyı başka bir komutla birleştirerek daha karmaşık işlemler gerçekleştirebilirsiniz. Örneğin, `grep` ile birlikte kullanarak belirli bir terimi arayabilirsiniz.
-- `tac` komutunu, günlük dosyalarını analiz etmek veya log dosyalarını ters sırayla incelemek için faydalı bulabilirsiniz.
+## Tips
+- `tac` komutunu büyük log dosyalarını analiz ederken kullanmak, son eklenen kayıtları hızlıca görmenizi sağlar.
+- Çıktıyı başka bir dosyaya yönlendirmek için `>` operatörünü kullanabilirsiniz:
+  ```csh
+  tac dosya.txt > ters_dosya.txt
+  ```
+- `tac` komutunu `grep` gibi diğer komutlarla birleştirerek daha karmaşık sorgular yapabilirsiniz. Örneğin, belirli bir kelimeyi içeren satırları ters sırada görüntülemek için:
+  ```csh
+  grep 'kelime' dosya.txt | tac
+  ```

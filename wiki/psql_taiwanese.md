@@ -1,44 +1,51 @@
-# [Linux] Bash psql 使用法: 連接與操作 PostgreSQL 資料庫
+# [台灣] C Shell (csh) psql 使用法: 用於操作 PostgreSQL 資料庫的命令行介面
 
 ## Overview
-`psql` 是 PostgreSQL 的互動式命令列工具，允許使用者連接到 PostgreSQL 資料庫並執行 SQL 查詢。它提供了一個強大的環境來管理資料庫，執行查詢，並檢視資料。
+`psql` 是 PostgreSQL 的命令行介面，允許使用者與 PostgreSQL 資料庫進行互動。透過 `psql`，使用者可以執行 SQL 查詢、管理資料庫以及執行各種資料庫管理任務。
 
 ## Usage
 基本語法如下：
-```bash
+```csh
 psql [options] [arguments]
 ```
 
 ## Common Options
 - `-h`：指定資料庫伺服器的主機名稱。
-- `-p`：指定連接的埠號，預設為 5432。
-- `-U`：指定用戶名稱。
+- `-U`：指定用戶名以連接資料庫。
 - `-d`：指定要連接的資料庫名稱。
-- `-W`：要求輸入密碼。
+- `-p`：指定連接的端口號。
+- `-c`：執行單一 SQL 命令並退出。
 
 ## Common Examples
-1. 連接到本地資料庫：
-   ```bash
-   psql -U username -d databasename
+以下是一些常見的 `psql` 使用範例：
+
+1. 連接到預設資料庫：
+   ```csh
+   psql
    ```
 
-2. 連接到遠端資料庫：
-   ```bash
-   psql -h remote_host -U username -d databasename
+2. 連接到指定的資料庫：
+   ```csh
+   psql -d mydatabase
    ```
 
-3. 執行 SQL 檔案：
-   ```bash
-   psql -U username -d databasename -f filename.sql
+3. 使用指定用戶名連接資料庫：
+   ```csh
+   psql -U myuser -d mydatabase
    ```
 
-4. 查詢資料表中的所有資料：
-   ```bash
-   psql -U username -d databasename -c "SELECT * FROM tablename;"
+4. 執行 SQL 命令並退出：
+   ```csh
+   psql -d mydatabase -c "SELECT * FROM mytable;"
+   ```
+
+5. 連接到遠端資料庫伺服器：
+   ```csh
+   psql -h remotehost -U myuser -d mydatabase
    ```
 
 ## Tips
-- 使用 `\l` 命令可以列出所有資料庫。
-- 使用 `\dt` 命令可以查看當前資料庫中的所有資料表。
-- 若要退出 psql，請輸入 `\q`。
-- 建議在執行重要操作前備份資料庫，以防資料損失。
+- 確保 PostgreSQL 伺服器正在運行，否則無法連接。
+- 使用 `\?` 在 `psql` 內部查看可用的命令和選項。
+- 使用 `\q` 退出 `psql` 介面。
+- 定期備份資料庫，以防資料遺失。

@@ -1,62 +1,66 @@
-# [Linux] Bash endsw uso: Finaliza un script o un bloque de código
+# [Linux] C Shell (csh) endsw uso: Finaliza bloques de control
 
 ## Overview
-El comando `endsw` en Bash se utiliza para finalizar un script o un bloque de código que se ha iniciado con una instrucción de control como `case`. Es útil para estructurar el flujo de un script y asegurar que se ejecute correctamente.
+El comando `endsw` en C Shell (csh) se utiliza para finalizar un bloque de control que ha sido iniciado con el comando `switch`. Es una parte importante de la estructura de control que permite ejecutar diferentes bloques de código según el valor de una variable.
 
 ## Usage
 La sintaxis básica del comando es la siguiente:
 
-```bash
+```csh
 endsw
 ```
 
 ## Common Options
-El comando `endsw` no tiene opciones específicas, ya que su función principal es simplemente marcar el final de un bloque de código. Sin embargo, se utiliza en conjunto con otras instrucciones de control.
+El comando `endsw` no tiene opciones específicas, ya que su función principal es simplemente cerrar un bloque de control `switch`.
 
 ## Common Examples
 
-### Ejemplo 1: Uso básico en un script
-```bash
-#!/bin/bash
-
-case $1 in
-    "opcion1")
-        echo "Has elegido la opción 1"
-        ;;
-    "opcion2")
-        echo "Has elegido la opción 2"
-        ;;
-    *)
+### Ejemplo 1: Uso básico de `endsw`
+```csh
+set variable = "opcion1"
+switch ($variable)
+    case "opcion1":
+        echo "Seleccionaste la opción 1"
+        breaksw
+    case "opcion2":
+        echo "Seleccionaste la opción 2"
+        breaksw
+    default:
         echo "Opción no válida"
-        ;;
-esac
+endsw
 ```
-En este ejemplo, `endsw` se utiliza implícitamente al finalizar el bloque `case` con `esac`.
 
-### Ejemplo 2: Combinación con otras estructuras
-```bash
-#!/bin/bash
-
-read -p "Introduce un número: " numero
-
-case $numero in
-    1)
-        echo "Uno"
-        ;;
-    2)
-        echo "Dos"
-        ;;
-    3)
-        echo "Tres"
-        ;;
-    *)
-        echo "Número no reconocido"
-        ;;
-esac
+### Ejemplo 2: Múltiples casos
+```csh
+set dia = "lunes"
+switch ($dia)
+    case "lunes":
+        echo "Hoy es lunes"
+        breaksw
+    case "martes":
+        echo "Hoy es martes"
+        breaksw
+    default:
+        echo "No es un día de la semana"
+endsw
 ```
-Aquí, el bloque `case` se cierra con `esac`, que es el equivalente a `endsw`.
+
+### Ejemplo 3: Uso con `default`
+```csh
+set color = "verde"
+switch ($color)
+    case "rojo":
+        echo "El color es rojo"
+        breaksw
+    case "azul":
+        echo "El color es azul"
+        breaksw
+    default:
+        echo "Color no reconocido"
+endsw
+```
 
 ## Tips
-- Asegúrate de que cada bloque de control que inicies tenga su correspondiente finalización para evitar errores de sintaxis.
-- Utiliza comentarios para aclarar la lógica de tus bloques de código, especialmente en scripts más largos.
-- Prueba tus scripts en un entorno seguro antes de ejecutarlos en producción para asegurarte de que funcionan como se espera.
+- Asegúrate de que cada bloque `switch` tenga un `endsw` correspondiente para evitar errores de sintaxis.
+- Utiliza `breaksw` para salir de un caso específico y evitar que se ejecuten los siguientes casos.
+- Recuerda que el `default` es útil para manejar situaciones no previstas en tus condiciones.

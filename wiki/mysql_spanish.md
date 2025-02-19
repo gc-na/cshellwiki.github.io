@@ -1,52 +1,44 @@
-# [Linux] Bash mysql uso: Interactuar con bases de datos MySQL
+# [Linux] C Shell (csh) mysql uso: Interactuar con bases de datos MySQL
 
 ## Overview
-El comando `mysql` es una herramienta de línea de comandos que permite a los usuarios interactuar con bases de datos MySQL. Con `mysql`, puedes ejecutar consultas SQL, gestionar bases de datos y realizar diversas operaciones de administración.
+El comando `mysql` se utiliza para interactuar con bases de datos MySQL desde la línea de comandos. Permite a los usuarios ejecutar consultas SQL, gestionar bases de datos y realizar diversas operaciones administrativas.
 
 ## Usage
-La sintaxis básica del comando `mysql` es la siguiente:
+La sintaxis básica del comando es la siguiente:
 
 ```bash
-mysql [opciones] [argumentos]
+mysql [options] [arguments]
 ```
 
 ## Common Options
-- `-u, --user=usuario`: Especifica el nombre de usuario para conectarse a la base de datos.
-- `-p, --password`: Solicita la contraseña del usuario. Si se omite, se pedirá al usuario que la ingrese.
-- `-h, --host=host`: Especifica el host donde se encuentra el servidor MySQL.
-- `-D, --database=base_de_datos`: Selecciona la base de datos a utilizar al conectarse.
-- `-e, --execute=consulta`: Permite ejecutar una consulta SQL directamente desde la línea de comandos.
+- `-u [usuario]`: Especifica el nombre de usuario para conectarse a la base de datos.
+- `-p`: Solicita la contraseña del usuario.
+- `-h [host]`: Define el host donde se encuentra el servidor MySQL (por defecto es localhost).
+- `-D [base_de_datos]`: Selecciona la base de datos a utilizar al iniciar la sesión.
+- `-e "[consulta]"`: Permite ejecutar una consulta SQL directamente desde la línea de comandos.
 
 ## Common Examples
-Aquí hay algunos ejemplos prácticos del uso del comando `mysql`:
-
-1. **Conectar a MySQL con un usuario y contraseña:**
+1. Conectar a MySQL con un usuario y solicitar contraseña:
    ```bash
-   mysql -u usuario -p
+   mysql -u mi_usuario -p
    ```
 
-2. **Conectar a una base de datos específica:**
+2. Conectar a una base de datos específica:
    ```bash
-   mysql -u usuario -p -D nombre_base_datos
+   mysql -u mi_usuario -p -D mi_base_de_datos
    ```
 
-3. **Ejecutar una consulta SQL directamente:**
+3. Ejecutar una consulta SQL directamente:
    ```bash
-   mysql -u usuario -p -e "SELECT * FROM tabla;"
+   mysql -u mi_usuario -p -e "SELECT * FROM mi_tabla;"
    ```
 
-4. **Importar un archivo SQL a una base de datos:**
+4. Conectar a un servidor remoto:
    ```bash
-   mysql -u usuario -p nombre_base_datos < archivo.sql
-   ```
-
-5. **Exportar una base de datos a un archivo SQL:**
-   ```bash
-   mysqldump -u usuario -p nombre_base_datos > archivo.sql
+   mysql -u mi_usuario -p -h 192.168.1.100
    ```
 
 ## Tips
-- Siempre utiliza el flag `-p` para que la contraseña no se muestre en la línea de comandos.
-- Si trabajas con múltiples bases de datos, considera usar el flag `-D` para evitar confusiones.
-- Utiliza `mysqldump` para hacer copias de seguridad de tus bases de datos regularmente.
+- Siempre utiliza la opción `-p` para proteger tu contraseña y evitar que se muestre en la línea de comandos.
 - Familiarízate con las consultas SQL básicas para aprovechar al máximo el uso de `mysql`.
+- Considera utilizar archivos de configuración para almacenar credenciales y opciones de conexión, lo que puede simplificar el proceso de conexión.

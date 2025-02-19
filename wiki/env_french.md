@@ -1,56 +1,45 @@
-# [Linux] Bash env : [afficher ou modifier l'environnement d'exécution]
+# [Linux] C Shell (csh) env : Exécute des commandes dans un environnement modifié
 
 ## Overview
-La commande `env` est utilisée pour afficher ou modifier l'environnement d'exécution des programmes. Elle permet de lancer des programmes avec un environnement spécifique, ce qui peut être utile pour tester des configurations ou exécuter des scripts avec des variables d'environnement personnalisées.
+La commande `env` dans C Shell (csh) est utilisée pour exécuter des commandes dans un environnement modifié. Elle permet de définir ou de modifier des variables d'environnement avant d'exécuter une commande, ce qui est utile pour tester des configurations ou exécuter des programmes avec des paramètres spécifiques.
 
 ## Usage
 La syntaxe de base de la commande `env` est la suivante :
 
-```bash
+```csh
 env [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes de la commande `env` :
+Voici quelques options courantes pour la commande `env` :
 
 - `-i` : Exécute la commande dans un environnement vide, sans variables d'environnement héritées.
 - `-u` : Supprime une variable d'environnement spécifique avant d'exécuter la commande.
-- `VAR=value` : Définit une variable d'environnement pour la commande qui suit.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `env` :
 
 1. **Afficher toutes les variables d'environnement :**
-
-   ```bash
+   ```csh
    env
    ```
 
-2. **Exécuter un programme avec un environnement vide :**
-
-   ```bash
-   env -i bash
+2. **Exécuter une commande avec un environnement vide :**
+   ```csh
+   env -i /bin/bash
    ```
 
-3. **Supprimer une variable d'environnement avant d'exécuter une commande :**
-
-   ```bash
-   env -u PATH command
+3. **Définir une variable d'environnement temporaire :**
+   ```csh
+   env VAR=value command
    ```
 
-4. **Définir une variable d'environnement temporaire :**
-
-   ```bash
-   env MY_VAR=value command
-   ```
-
-5. **Lancer un script avec des variables d'environnement spécifiques :**
-
-   ```bash
-   env VAR1=value1 VAR2=value2 ./myscript.sh
+4. **Supprimer une variable d'environnement avant d'exécuter une commande :**
+   ```csh
+   env -u VAR command
    ```
 
 ## Tips
-- Utilisez `env` pour tester des scripts dans un environnement contrôlé sans interférences d'autres variables d'environnement.
-- Soyez prudent lorsque vous utilisez l'option `-u`, car cela peut empêcher certaines commandes de fonctionner correctement si elles dépendent de la variable supprimée.
-- Pour vérifier les variables d'environnement d'un processus en cours, vous pouvez utiliser `env` en combinaison avec d'autres commandes comme `grep`.
+- Utilisez `env` pour tester des scripts dans un environnement contrôlé sans interférence des variables d'environnement existantes.
+- Lorsque vous définissez des variables d'environnement temporaires, assurez-vous de les utiliser dans la même ligne de commande pour éviter des effets indésirables.
+- Pour voir les effets de vos modifications d'environnement, combinez `env` avec des commandes comme `printenv` ou `echo`.

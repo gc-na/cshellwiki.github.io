@@ -1,50 +1,46 @@
-# [Linux] Bash wait gebruik: Wacht op achtergrondprocessen
+# [Nederlands] C Shell (csh) wait gebruik: Wacht op een achtergrondproces
 
 ## Overzicht
-De `wait` opdracht in Bash wordt gebruikt om te wachten op de voltooiing van achtergrondprocessen. Het is handig wanneer je wilt dat een script of een reeks opdrachten pas verder gaat nadat bepaalde processen zijn afgerond.
+De `wait` opdracht in C Shell (csh) wordt gebruikt om te wachten op de voltooiing van een of meerdere achtergrondprocessen. Het is handig wanneer je wilt dat een script of een commando wacht tot een bepaald proces is afgerond voordat het verder gaat.
 
 ## Gebruik
 De basis syntaxis van de `wait` opdracht is als volgt:
 
-```bash
-wait [options] [arguments]
+```csh
+wait [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- `-n`: Wacht op de voltooiing van de eerstvolgende achtergrondtaak.
-- `PID`: Geef een specifieke proces-ID op om op te wachten.
+## Veelvoorkomende Opties
+- `pid`: Wacht op het proces met het opgegeven proces-ID. Als er geen PID wordt opgegeven, wacht `wait` op alle achtergrondprocessen.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
 
-### Voorbeeld 1: Wachten op alle achtergrondprocessen
-```bash
-sleep 5 &
-sleep 10 &
-wait
-echo "Alle achtergrondprocessen zijn voltooid."
-```
-In dit voorbeeld worden twee `sleep` opdrachten op de achtergrond uitgevoerd. Het script wacht totdat beide zijn voltooid voordat het verder gaat.
+1. Wacht op alle achtergrondprocessen:
+   ```csh
+   wait
+   ```
 
-### Voorbeeld 2: Wachten op een specifieke achtergrondtaak
-```bash
-sleep 5 &
-PID=$!
-echo "Wacht op proces met PID $PID"
-wait $PID
-echo "Proces $PID is voltooid."
-```
-Hier wordt de PID van de achtergrond `sleep` taak opgeslagen en het script wacht specifiek op die taak.
+2. Wacht op een specifiek proces met PID 1234:
+   ```csh
+   wait 1234
+   ```
 
-### Voorbeeld 3: Wachten op de eerstvolgende achtergrondtaak
-```bash
-sleep 3 &
-sleep 5 &
-wait -n
-echo "Eerste achtergrondtaak is voltooid."
-```
-In dit geval wacht het script op de eerstvolgende achtergrondtaak die is voltooid, ongeacht welke dat is.
+3. Start een achtergrondproces en wacht vervolgens op de voltooiing:
+   ```csh
+   sleep 10 &
+   wait
+   echo "Het achtergrondproces is voltooid."
+   ```
+
+4. Start meerdere achtergrondprocessen en wacht op hun voltooiing:
+   ```csh
+   sleep 5 &
+   sleep 8 &
+   wait
+   echo "Alle achtergrondprocessen zijn voltooid."
+   ```
 
 ## Tips
-- Gebruik `wait` aan het einde van een script om ervoor te zorgen dat alle achtergrondprocessen zijn afgerond voordat het script eindigt.
-- Houd rekening met de PID's van processen als je met meerdere achtergrondprocessen werkt, zodat je gerichter kunt wachten.
-- Combineer `wait` met andere commando's in een script om de controle over de uitvoering van taken te verbeteren.
+- Gebruik `wait` in scripts om ervoor te zorgen dat taken in de juiste volgorde worden uitgevoerd.
+- Controleer altijd of een achtergrondproces correct is gestart voordat je `wait` aanroept, om onverwachte resultaten te voorkomen.
+- Houd rekening met de PID's van de processen die je wilt volgen, vooral in scripts met meerdere gelijktijdige processen.

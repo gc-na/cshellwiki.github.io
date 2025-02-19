@@ -1,45 +1,45 @@
-# [Linux] Bash unsetopt Kullanımı: Seçenekleri devre dışı bırakma
+# [Linux] C Shell (csh) unsetopt Kullanımı: Seçenekleri devre dışı bırakma
 
-## Overview
-`unsetopt` komutu, Bash kabuğunda belirli seçenekleri devre dışı bırakmak için kullanılır. Bu, kullanıcıların kabuk davranışını özelleştirmelerine olanak tanır.
+## Genel Bakış
+`unsetopt` komutu, C Shell (csh) ortamında belirli seçenekleri devre dışı bırakmak için kullanılır. Bu komut, shell'in davranışını özelleştirmek ve kullanıcı deneyimini iyileştirmek amacıyla belirli özellikleri kapatmanıza olanak tanır.
 
-## Usage
+## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
 
-```bash
-unsetopt [options]
+```
+unsetopt [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `allexport`: Tüm değişkenlerin otomatik olarak dışa aktarılmasını devre dışı bırakır.
-- `braceexpand`: Süslü parantez genişletmesini devre dışı bırakır.
-- `emacs`: Emacs tarzı düzenleme modunu devre dışı bırakır.
-- `noclobber`: Mevcut dosyaların üzerine yazılmasını engelleyen seçeneği devre dışı bırakır.
+## Yaygın Seçenekler
+- `all`: Tüm seçenekleri devre dışı bırakır.
+- `login`: Giriş shell'inde kullanılan seçenekleri devre dışı bırakır.
+- `noclobber`: Var olan dosyaların üzerine yazmayı engelleyen seçeneği devre dışı bırakır.
+- `nullglob`: Boş kalıp eşleşmelerinin boş bir liste olarak değerlendirilmesini devre dışı bırakır.
 
-## Common Examples
-Aşağıda `unsetopt` komutunun bazı pratik örnekleri verilmiştir:
+## Yaygın Örnekler
+Aşağıda `unsetopt` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-### 1. Tüm değişkenlerin dışa aktarılmasını devre dışı bırakma
-```bash
-unsetopt allexport
+### Tüm Seçenekleri Devre Dışı Bırakma
+```csh
+unsetopt all
 ```
 
-### 2. Süslü parantez genişletmesini devre dışı bırakma
-```bash
-unsetopt braceexpand
+### Giriş Shell Seçeneklerini Devre Dışı Bırakma
+```csh
+unsetopt login
 ```
 
-### 3. Emacs düzenleme modunu devre dışı bırakma
-```bash
-unsetopt emacs
-```
-
-### 4. Mevcut dosyaların üzerine yazılmasını engelleme
-```bash
+### Var Olan Dosyaların Üzerine Yazmayı Engelleyen Seçeneği Devre Dışı Bırakma
+```csh
 unsetopt noclobber
 ```
 
-## Tips
-- `unsetopt` komutunu kullanmadan önce mevcut seçeneklerinizi kontrol etmek için `set` komutunu kullanabilirsiniz.
-- Değişikliklerinizi kalıcı hale getirmek için `.bashrc` veya `.bash_profile` dosyanıza `unsetopt` komutunu ekleyebilirsiniz.
-- Seçenekleri devre dışı bırakmadan önce, hangi seçeneklerin aktif olduğunu anlamak için `set -o` komutunu kullanmak faydalı olabilir.
+### Boş Kalıp Eşleşmelerini Varsayılan Olarak Değerlendirme
+```csh
+unsetopt nullglob
+```
+
+## İpuçları
+- `unsetopt` komutunu kullanmadan önce mevcut seçeneklerinizi görmek için `set` komutunu kullanarak mevcut ayarları kontrol edin.
+- Seçenekleri devre dışı bırakmadan önce, hangi seçeneklerin kapatılacağını iyi düşünün; bazı seçenekler, shell'in davranışını önemli ölçüde etkileyebilir.
+- `unsetopt` komutunu sık kullandığınız ayarlarla birlikte bir başlangıç dosyasına eklemeyi düşünün, böylece her oturum açışınızda otomatik olarak uygulanır.

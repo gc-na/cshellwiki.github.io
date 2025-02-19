@@ -1,50 +1,50 @@
-# [台灣] Bash pkg 使用方式: 管理套件的命令
+# [台灣] C Shell (csh) pkg 使用法: 管理軟體包
 
 ## Overview
-`pkg` 命令是一個用於管理軟體套件的工具，主要在 FreeBSD 和其他類似系統中使用。它可以幫助用戶安裝、更新和移除軟體包，簡化系統的軟體管理過程。
+`pkg` 命令用於管理軟體包，讓使用者可以安裝、更新和移除系統中的軟體。這個命令簡化了軟體的管理過程，特別是在需要處理多個依賴項的情況下。
 
 ## Usage
 基本語法如下：
 ```
-pkg [options] [arguments]
+pkg [選項] [參數]
 ```
 
 ## Common Options
-- `install`: 安裝指定的套件。
-- `remove`: 移除指定的套件。
-- `update`: 更新套件資料庫。
-- `upgrade`: 升級所有已安裝的套件到最新版本。
-- `search`: 搜尋可用的套件。
+- `install`: 安裝指定的軟體包。
+- `remove`: 移除指定的軟體包。
+- `update`: 更新已安裝的軟體包到最新版本。
+- `list`: 列出所有已安裝的軟體包。
+- `info`: 顯示指定軟體包的詳細資訊。
 
 ## Common Examples
-以下是一些常見的 `pkg` 使用範例：
+以下是一些常見的使用範例：
 
-1. 安裝一個套件：
+1. 安裝一個軟體包：
    ```bash
-   pkg install vim
+   pkg install package_name
    ```
 
-2. 移除一個套件：
+2. 移除一個軟體包：
    ```bash
-   pkg remove vim
+   pkg remove package_name
    ```
 
-3. 更新套件資料庫：
+3. 更新所有已安裝的軟體包：
    ```bash
    pkg update
    ```
 
-4. 升級所有已安裝的套件：
+4. 列出所有已安裝的軟體包：
    ```bash
-   pkg upgrade
+   pkg list
    ```
 
-5. 搜尋可用的套件：
+5. 顯示指定軟體包的詳細資訊：
    ```bash
-   pkg search nginx
+   pkg info package_name
    ```
 
 ## Tips
-- 在執行 `pkg` 命令前，建議先使用 `pkg update` 確保資料庫是最新的。
-- 使用 `pkg info` 可以查看已安裝套件的詳細資訊。
-- 定期執行 `pkg upgrade` 以保持系統的安全性和穩定性。
+- 在安裝或更新軟體包之前，建議先執行 `pkg update` 以確保獲得最新的軟體版本。
+- 使用 `pkg list` 可以快速檢查系統中已安裝的所有軟體包，這對於管理系統非常有幫助。
+- 當移除軟體包時，請確認不會影響到其他依賴於該包的應用程式。

@@ -1,52 +1,52 @@
-# [Linux] Bash bindkey用法: 绑定键盘快捷键
+# [Unix] C Shell (csh) bindkey <Usage equivalent in English>: Bind keyboard shortcuts
 
 ## Overview
-The `bindkey` command is used in the Zsh shell to set or display key bindings. It allows users to customize keyboard shortcuts for various commands and functions, enhancing the efficiency of command-line interactions.
+The `bindkey` command in C Shell (csh) is used to set or display keyboard shortcuts for command-line editing. It allows users to customize their command-line experience by binding specific keys to commands or functions, enhancing productivity and efficiency.
 
 ## Usage
 The basic syntax of the `bindkey` command is as follows:
 
-```bash
+```csh
 bindkey [options] [arguments]
 ```
 
 ## Common Options
-- `-L`: List all current key bindings.
-- `-s`: Specify a string to be sent when a key sequence is pressed.
-- `-e`: Use Emacs-style key bindings.
-- `-v`: Use Vi-style key bindings.
+- `-e`: Use emacs-style key bindings.
+- `-v`: Use vi-style key bindings.
+- `-s`: Bind a key to a string of characters.
+- `-d`: Display the current key bindings.
 
 ## Common Examples
-1. **List Current Key Bindings**
-   ```bash
-   bindkey -L
-   ```
 
-2. **Set a Key Binding for a Command**
-   ```bash
-   bindkey '^x' 'exit'
-   ```
-   This binds `Ctrl+x` to the `exit` command.
+### Example 1: Display Current Key Bindings
+To display the current key bindings, you can use the following command:
 
-3. **Set a Key Binding for a Custom Function**
-   ```bash
-   bindkey '^g' 'git status'
-   ```
-   This binds `Ctrl+g` to run `git status`.
+```csh
+bindkey -d
+```
 
-4. **Use Vi Mode Key Bindings**
-   ```bash
-   bindkey -v
-   ```
-   This switches the key bindings to Vi mode.
+### Example 2: Set a Key Binding for a Command
+To bind the `Ctrl + x` key combination to the `exit` command, use:
 
-5. **Bind a Key Sequence to Insert Text**
-   ```bash
-   bindkey '^[o' 'echo "Hello, World!"'
-   ```
-   This binds the `Esc` followed by `o` to insert the text "Hello, World!".
+```csh
+bindkey "^X" "exit"
+```
+
+### Example 3: Bind a Key to a String
+To bind the `F1` key to insert the text "Hello, World!", use:
+
+```csh
+bindkey "^[OP" "Hello, World!"
+```
+
+### Example 4: Switch to Emacs Key Bindings
+To switch to emacs-style key bindings, you can execute:
+
+```csh
+bindkey -e
+```
 
 ## Tips
-- Always check your current key bindings using `bindkey -L` before making changes to avoid conflicts.
-- Use descriptive names for your custom key bindings to remember their functions easily.
-- Experiment with different modes (Emacs and Vi) to find which one suits your workflow best.
+- Use `bindkey -d` frequently to review your current bindings and ensure they are set as intended.
+- Experiment with different key combinations to find what works best for your workflow.
+- Remember that key bindings can conflict; be mindful of existing bindings when creating new ones.

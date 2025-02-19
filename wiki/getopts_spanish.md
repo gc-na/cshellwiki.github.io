@@ -1,90 +1,82 @@
-# [Linux] Bash getopts Uso: [analizar opciones de línea de comandos]
+# [Linux] C Shell (csh) getopts Uso: [analizar opciones de línea de comandos]
 
 ## Overview
-El comando `getopts` en Bash se utiliza para analizar las opciones de línea de comandos en scripts. Permite a los desarrolladores manejar argumentos de manera estructurada, facilitando la creación de scripts más flexibles y fáciles de usar.
+El comando `getopts` en C Shell (csh) se utiliza para analizar las opciones de línea de comandos en scripts. Permite a los scripts manejar argumentos de manera más estructurada, facilitando la creación de interfaces de línea de comandos más amigables.
 
 ## Usage
 La sintaxis básica del comando `getopts` es la siguiente:
 
-```bash
-getopts [options] [arguments]
+```csh
+getopts [opciones] [argumentos]
 ```
 
 ## Common Options
-- `-a`: Permite especificar opciones adicionales.
-- `-o`: Define las opciones que se pueden utilizar.
-- `-l`: Permite el uso de opciones largas.
+- `-a`: Permite especificar un argumento adicional.
+- `-b`: Indica que se debe manejar una opción de tipo booleano.
+- `-c`: Usado para definir un contador de opciones.
 
 ## Common Examples
 
 ### Ejemplo 1: Análisis básico de opciones
-```bash
-#!/bin/bash
+Este ejemplo muestra cómo analizar una opción simple `-f` para un archivo.
 
-while getopts "ab:c" opt; do
-  case $opt in
-    a)
-      echo "Opción A seleccionada"
-      ;;
-    b)
-      echo "Opción B con argumento: $OPTARG"
-      ;;
-    c)
-      echo "Opción C seleccionada"
-      ;;
-    *)
-      echo "Opción no válida"
-      ;;
-  esac
-done
+```csh
+#!/bin/csh
+set file = ""
+while getopts "f:" opt
+    switch ($opt)
+        case "f":
+            set file = $OPTARG
+        case "?":
+            echo "Opción no válida"
+    endsw
+end
+echo "Archivo especificado: $file"
 ```
 
-### Ejemplo 2: Uso de opciones largas
-```bash
-#!/bin/bash
+### Ejemplo 2: Múltiples opciones
+Aquí se analizan varias opciones, incluyendo `-f` y `-v`.
 
-while getopts ":a:b:c" opt; do
-  case $opt in
-    a)
-      echo "Opción A seleccionada"
-      ;;
-    b)
-      echo "Opción B con argumento: $OPTARG"
-      ;;
-    c)
-      echo "Opción C seleccionada"
-      ;;
-    *)
-      echo "Opción no válida"
-      ;;
-  esac
-done
+```csh
+#!/bin/csh
+set verbose = 0
+set file = ""
+while getopts "vf:" opt
+    switch ($opt)
+        case "v":
+            set verbose = 1
+        case "f":
+            set file = $OPTARG
+        case "?":
+            echo "Opción no válida"
+    endsw
+end
+if ($verbose) then
+    echo "Modo verboso activado"
+endif
+echo "Archivo especificado: $file"
 ```
 
-### Ejemplo 3: Manejo de argumentos obligatorios
-```bash
-#!/bin/bash
+### Ejemplo 3: Opción booleana
+Este ejemplo muestra cómo manejar una opción booleana.
 
-while getopts ":a:b:" opt; do
-  case $opt in
-    a)
-      echo "Opción A seleccionada con argumento: $OPTARG"
-      ;;
-    b)
-      echo "Opción B seleccionada con argumento: $OPTARG"
-      ;;
-    *)
-      echo "Opción no válida"
-      ;;
-  esac
-done
-
-if [ -z "$OPTARG" ]; then
-  echo "Se requiere un argumento para la opción -a"
-fi
+```csh
+#!/bin/csh
+set debug = 0
+while getopts "d" opt
+    switch ($opt)
+        case "d":
+            set debug = 1
+        case "?":
+            echo "Opción no válida"
+    endsw
+end
+if ($debug) then
+    echo "Modo de depuración activado"
+endif
 ```
 
 ## Tips
-- Siempre verifica si los argumentos son válidos antes de procesarlos.
-- Utiliza `OPTIND` para restablecer el índice de opciones si necesitas analizar múltiples conjuntos de opciones.
-- Documenta las opciones que tu script acepta para que los usuarios puedan entender cómo utilizarlo correctamente.
+- Siempre proporciona un mensaje de ayuda para que los usuarios puedan entender las opciones disponibles.
+- Utiliza `case` para manejar las opciones de manera clara y estructurada.
+- Recuerda inicializar variables antes de usarlas para evitar comportamientos inesperados.

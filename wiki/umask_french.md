@@ -1,43 +1,48 @@
-# [Linux] Bash umask Utilisation : Gérer les permissions par défaut des fichiers
+# [Linux] C Shell (csh) umask : [définir les permissions par défaut des fichiers]
 
 ## Overview
-La commande `umask` est utilisée pour définir les permissions par défaut des fichiers et des répertoires créés par un utilisateur. Elle détermine les permissions qui ne seront pas attribuées lors de la création de nouveaux fichiers.
+La commande `umask` dans C Shell (csh) permet de définir les permissions par défaut pour les nouveaux fichiers et répertoires créés par l'utilisateur. Elle détermine les permissions qui seront retirées des fichiers et répertoires nouvellement créés.
 
 ## Usage
 La syntaxe de base de la commande `umask` est la suivante :
 
-```bash
+```csh
 umask [options] [arguments]
 ```
 
 ## Common Options
 - `-S` : Affiche les permissions sous forme symbolique.
-- `-p` : Affiche la valeur actuelle de umask dans un format qui peut être utilisé dans le script.
+- `-p` : Affiche la valeur actuelle de umask en mode symbolique.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `umask` :
 
 1. **Afficher la valeur actuelle de umask :**
-   ```bash
+   ```csh
    umask
    ```
 
-2. **Définir umask pour interdire l'écriture pour le groupe et les autres :**
-   ```bash
+2. **Définir umask pour retirer les permissions d'écriture pour le groupe et les autres :**
+   ```csh
    umask 022
    ```
 
-3. **Définir umask pour interdire toutes les permissions pour le groupe et les autres :**
-   ```bash
-   umask 077
+3. **Définir umask pour retirer toutes les permissions pour les autres :**
+   ```csh
+   umask 007
    ```
 
-4. **Afficher les permissions sous forme symbolique :**
-   ```bash
+4. **Afficher umask en mode symbolique :**
+   ```csh
    umask -S
    ```
 
+5. **Définir umask pour permettre uniquement les permissions de lecture et d'exécution :**
+   ```csh
+   umask 133
+   ```
+
 ## Tips
-- Vérifiez régulièrement la valeur de umask pour vous assurer que les fichiers créés ont les bonnes permissions.
-- Utilisez des valeurs de umask plus restrictives (comme 077) pour des fichiers sensibles.
-- N'oubliez pas que la valeur de umask est appliquée à chaque nouvelle session, donc il peut être utile de la définir dans votre fichier de configuration de shell (comme `.bashrc`).
+- Pensez à vérifier la valeur de `umask` avant de créer des fichiers sensibles pour vous assurer que les permissions sont appropriées.
+- Utilisez `umask -S` pour comprendre facilement les permissions actuelles sous forme symbolique.
+- Modifiez `umask` dans votre fichier de configuration de shell (comme `.cshrc`) pour appliquer vos préférences de manière persistante.

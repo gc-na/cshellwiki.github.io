@@ -1,52 +1,55 @@
-# [Linux] Bash complete uso completo: Completando comandos automáticamente
+# [Linux] C Shell (csh) complete usage: Complete command line arguments
 
 ## Overview
-The `complete` command in Bash is used to specify how command-line arguments should be completed. It allows users to define custom completion behavior for specific commands, enhancing the efficiency of command-line usage.
+The `complete` command in C Shell (csh) is used to specify how command-line arguments should be completed automatically. This feature enhances the user experience by allowing for faster and more efficient command entry.
 
 ## Usage
 The basic syntax of the `complete` command is as follows:
 
-```bash
+```csh
 complete [options] [arguments]
 ```
 
 ## Common Options
-- `-A`: Specify the type of completion (e.g., `-A command` for commands).
-- `-o`: Add options for completion behavior (e.g., `-o nospace` to prevent a space after completion).
-- `-F`: Use a specified function for generating completions.
-- `-r`: Remove completion definitions for the specified command.
+- `-c`: Specifies the command for which you want to set completion.
+- `-d`: Defines a list of directories for completion.
+- `-f`: Allows completion of filenames.
+- `-n`: Sets a condition for when the completion should occur.
+- `-s`: Specifies a short option for the command.
 
 ## Common Examples
+Here are some practical examples of how to use the `complete` command:
 
-1. **Basic Command Completion**:
-   To enable command completion for the `git` command:
-   ```bash
-   complete -o nospace -F _git git
-   ```
+### Example 1: Basic Command Completion
+To set up completion for a custom command called `mycmd`:
 
-2. **Custom Completion Function**:
-   Create a custom function for completing options for a hypothetical command `mycmd`:
-   ```bash
-   _mycmd_completions() {
-       local options="--help --version --verbose"
-       COMPREPLY=( $(compgen -W "${options}" -- "${COMP_WORDS[1]}") )
-   }
-   complete -F _mycmd_completions mycmd
-   ```
+```csh
+complete -c mycmd -f
+```
 
-3. **Removing Completion**:
-   To remove any completion definitions for the `oldcmd` command:
-   ```bash
-   complete -r oldcmd
-   ```
+### Example 2: Directory Completion
+To enable completion for a command that requires directory paths:
 
-4. **Completion for File Names**:
-   Enable completion for file names for a custom script `myscript`:
-   ```bash
-   complete -A file myscript
-   ```
+```csh
+complete -c mydircmd -d
+```
+
+### Example 3: Filename Completion
+To allow filename completion for a command:
+
+```csh
+complete -c filecmd -f
+```
+
+### Example 4: Conditional Completion
+To set up completion that only occurs when a specific condition is met:
+
+```csh
+complete -c mycmd -n '[[ $status == 0 ]]'
+```
 
 ## Tips
-- Always test your completion functions to ensure they provide the expected results.
-- Use `compgen` within your custom functions to generate possible completions dynamically.
-- Remember to check existing completions with `complete -p` to avoid conflicts with predefined completions.
+- Always test your completion settings to ensure they work as expected.
+- Use the `-n` option wisely to create context-sensitive completions.
+- Consider combining options for more complex completion scenarios.
+- Regularly review your completion settings to keep them relevant as your command usage evolves.

@@ -1,49 +1,44 @@
-# [Linux] Bash tty uso: Muestra el nombre del terminal
+# [Unix] C Shell (csh) tty uso: Muestra el nombre del terminal actual
 
 ## Overview
-El comando `tty` en Bash se utiliza para mostrar el nombre del terminal conectado a la sesión actual. Es útil para identificar el dispositivo de terminal que se está utilizando, especialmente en entornos donde hay múltiples terminales o sesiones.
+El comando `tty` en C Shell (csh) se utiliza para mostrar el nombre del terminal que está asociado con la sesión actual. Es útil para identificar el dispositivo de terminal que se está utilizando, especialmente en entornos donde se pueden tener múltiples terminales abiertos.
 
 ## Usage
 La sintaxis básica del comando `tty` es la siguiente:
 
-```bash
-tty [options] [arguments]
+```
+tty [opciones]
 ```
 
 ## Common Options
-- `-s`: Silencia la salida. No muestra el nombre del terminal, solo devuelve el código de estado.
-- `--help`: Muestra la ayuda sobre el uso del comando.
-- `--version`: Muestra la versión del comando `tty`.
+- `-s`: Ejecuta el comando en modo silencioso. No muestra la salida, pero devuelve un código de estado que indica si se está ejecutando en un terminal.
 
 ## Common Examples
-Aquí tienes algunos ejemplos prácticos del uso del comando `tty`:
+Aquí hay algunos ejemplos prácticos del uso del comando `tty`:
 
 1. **Mostrar el nombre del terminal actual:**
-   ```bash
+   ```csh
    tty
    ```
-   Salida típica:
-   ```
-   /dev/pts/0
-   ```
+   Este comando imprimirá el nombre del terminal, como `/dev/ttys000`.
 
-2. **Usar el modo silencioso:**
-   ```bash
+2. **Ejecutar tty en modo silencioso:**
+   ```csh
    tty -s
    ```
-   Este comando no mostrará nada en la salida, pero puedes verificar el código de estado con `echo $?`.
+   Este comando no mostrará ninguna salida, pero puedes verificar el estado de la ejecución con `$?`, que devolverá `0` si se está ejecutando en un terminal.
 
-3. **Ver la ayuda del comando:**
-   ```bash
-   tty --help
+3. **Usar tty en un script:**
+   ```csh
+   if ( `tty -s` ) then
+       echo "Estás en un terminal."
+   else
+       echo "No estás en un terminal."
+   endif
    ```
-
-4. **Ver la versión del comando:**
-   ```bash
-   tty --version
-   ```
+   Este script verifica si se está ejecutando en un terminal y muestra un mensaje correspondiente.
 
 ## Tips
-- Utiliza `tty` para asegurarte de que estás trabajando en el terminal correcto, especialmente si estás ejecutando scripts que dependen de la salida del terminal.
-- Cuando trabajes con múltiples sesiones de terminal, `tty` te ayudará a identificar en cuál estás ejecutando tus comandos.
-- Recuerda que el uso de `tty -s` puede ser útil en scripts para verificar si el terminal está conectado sin mostrar información innecesaria.
+- Utiliza `tty` para depurar scripts y asegurarte de que se están ejecutando en el entorno deseado.
+- Recuerda que el uso de `tty -s` es útil en scripts donde no deseas que se imprima información innecesaria en la salida estándar.
+- Puedes combinar `tty` con otros comandos para redirigir la salida o realizar acciones basadas en el terminal actual.

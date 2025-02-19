@@ -1,51 +1,50 @@
-# [Linux] Bash nl utilizzo: Numerare le righe di un file di testo
+# [Linux] C Shell (csh) nl uso: numerare le righe di un file
 
 ## Overview
-Il comando `nl` in Bash serve per numerare le righe di un file di testo. È utile per aggiungere numeri di riga a un output, facilitando la lettura e la referenziazione di specifiche linee in un file.
+Il comando `nl` in C Shell (csh) è utilizzato per numerare le righe di un file di testo. Questo comando è utile per visualizzare il contenuto di un file con i numeri di riga, facilitando la lettura e la referenziazione.
 
 ## Usage
-La sintassi di base del comando `nl` è la seguente:
+La sintassi di base del comando è la seguente:
 
-```bash
+```csh
 nl [options] [arguments]
 ```
 
 ## Common Options
-- `-b` : Specifica il metodo di numerazione delle righe. Può essere `a` (numerare tutte le righe), `t` (numerare solo le righe non vuote) o `n` (non numerare affatto).
-- `-f` : Indica il numero di righe da saltare all'inizio del file.
-- `-h` : Specifica un'intestazione da stampare prima della numerazione.
-- `-w` : Imposta la larghezza del numero di riga.
-- `-s` : Specifica il carattere da utilizzare come separatore tra il numero di riga e il contenuto della riga.
+- `-b`: Specifica il tipo di numerazione da utilizzare (ad esempio, `-b a` per numerare tutte le righe).
+- `-f`: Indica il numero di righe da saltare prima di iniziare la numerazione.
+- `-n`: Definisce il formato della numerazione (ad esempio, `-n ln` per numerazione a sinistra).
+- `-w`: Specifica la larghezza del numero di riga.
 
 ## Common Examples
-Ecco alcuni esempi pratici di utilizzo del comando `nl`:
+Ecco alcuni esempi pratici dell'uso del comando `nl`:
 
-1. Numerare tutte le righe di un file di testo:
-   ```bash
+1. Numerare tutte le righe di un file:
+   ```csh
    nl file.txt
    ```
 
 2. Numerare solo le righe non vuote:
-   ```bash
-   nl -b t file.txt
+   ```csh
+   nl -b a file.txt
    ```
 
 3. Saltare le prime 2 righe e numerare il resto:
-   ```bash
+   ```csh
    nl -f 2 file.txt
    ```
 
-4. Utilizzare un carattere di separazione personalizzato:
-   ```bash
-   nl -s ": " file.txt
-   ```
-
-5. Impostare una larghezza di 5 caratteri per i numeri di riga:
-   ```bash
+4. Usare una larghezza di 5 caratteri per i numeri di riga:
+   ```csh
    nl -w 5 file.txt
    ```
 
+5. Numerare le righe e formattare la numerazione a sinistra:
+   ```csh
+   nl -n ln file.txt
+   ```
+
 ## Tips
-- Utilizza l'opzione `-h` per aggiungere intestazioni informative quando numeri più file.
-- Sperimenta con le opzioni di numerazione per adattare l'output alle tue esigenze specifiche.
-- Combina `nl` con altri comandi come `cat` o `grep` per un'analisi più dettagliata dei file di testo.
+- Utilizza l'opzione `-b` per personalizzare quali righe numerare, a seconda delle tue esigenze.
+- Sperimenta con l'opzione `-w` per migliorare la leggibilità, specialmente in file con molte righe.
+- Ricorda che `nl` non modifica il file originale; crea solo un output numerato sul terminale.

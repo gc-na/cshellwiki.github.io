@@ -1,52 +1,44 @@
-# [Linux] Bash stat gebruik: Toon bestandseigenschappen
+# [Linux] C Shell (csh) stat gebruik: Toont bestandseigenschappen
 
 ## Overzicht
-De `stat`-opdracht in Bash wordt gebruikt om gedetailleerde informatie over bestanden en directories weer te geven. Het toont metadata zoals de bestandsgrootte, de laatste wijzigingsdatum, en de bestandspermissies.
+De `stat`-opdracht in C Shell (csh) wordt gebruikt om gedetailleerde informatie over bestanden en directories weer te geven. Dit omvat metadata zoals de bestandsgrootte, de laatste wijzigingsdatum en de toegangsrechten.
 
 ## Gebruik
 De basis syntaxis van de `stat`-opdracht is als volgt:
 
-```bash
+```csh
 stat [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- `-c` : Specificeer een opmaak voor de uitvoer.
-- `--format` : Een alternatieve manier om de uitvoer op te maken.
-- `-f` : Toon informatie over het bestandssysteem in plaats van het bestand zelf.
-- `-L` : Volg symbolische links en toon informatie over het doelbestand.
+## Veelvoorkomende Opties
+- `-c` : Specificeert een aangepaste uitvoerformaat.
+- `-f` : Geeft informatie over het bestandssysteem in plaats van het bestand.
+- `-L` : Volgt symbolische links en toont informatie over het doelbestand.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van de `stat`-opdracht:
 
-### Basisinformatie over een bestand
-Om basisinformatie over een bestand te krijgen, gebruik je:
+1. Basisinformatie over een bestand:
+   ```csh
+   stat mijnbestand.txt
+   ```
 
-```bash
-stat bestand.txt
-```
+2. Informatie over een directory:
+   ```csh
+   stat /pad/naar/directory
+   ```
 
-### Specifieke opmaak van de uitvoer
-Als je alleen de bestandsgrootte wilt weergeven, kun je de `-c` optie gebruiken:
+3. Aangepaste uitvoer met specifieke velden:
+   ```csh
+   stat -c '%s %y' mijnbestand.txt
+   ```
 
-```bash
-stat -c %s bestand.txt
-```
-
-### Informatie over een directory
-Om informatie over een directory te krijgen, gebruik je:
-
-```bash
-stat /pad/naar/directory
-```
-
-### Informatie over een symbolische link
-Om informatie over het doel van een symbolische link te krijgen, gebruik je de `-L` optie:
-
-```bash
-stat -L symlink.txt
-```
+4. Informatie over een symbolische link:
+   ```csh
+   stat -L mijnlink
+   ```
 
 ## Tips
-- Gebruik de `-c` optie om de uitvoer aan te passen aan jouw behoeften, wat handig kan zijn voor scripts.
+- Gebruik de `-c` optie om alleen de informatie te krijgen die je nodig hebt, wat de uitvoer overzichtelijker maakt.
 - Combineer `stat` met andere commando's zoals `grep` om specifieke informatie te filteren.
-- Vergeet niet dat `stat` ook werkt met directories, niet alleen met bestanden, wat handig kan zijn voor systeembeheer.
+- Controleer altijd de rechten van bestanden met `stat` om ervoor te zorgen dat je de juiste toegang hebt.

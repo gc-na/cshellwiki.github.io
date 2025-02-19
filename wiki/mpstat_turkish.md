@@ -1,48 +1,49 @@
-# [Linux] Bash mpstat Kullanımı: CPU istatistiklerini görüntüleme
+# [Linux] C Shell (csh) mpstat Kullanımı: CPU istatistiklerini görüntüleme
 
 ## Genel Bakış
-`mpstat` komutu, çok çekirdekli sistemlerde CPU kullanım istatistiklerini görüntülemek için kullanılır. Bu komut, her bir CPU çekirdeği için ayrı ayrı istatistikler sunarak sistem performansını analiz etmenize yardımcı olur.
+mpstat komutu, sistemdeki CPU kullanım istatistiklerini görüntülemek için kullanılır. Bu komut, her bir CPU'nun yükünü ve performansını analiz etmek için faydalıdır.
 
 ## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
+mpstat komutunun temel sözdizimi aşağıdaki gibidir:
 
-```bash
+```csh
 mpstat [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-P ALL`: Tüm CPU çekirdekleri için istatistikleri gösterir.
-- `-u`: CPU kullanım yüzdelerini görüntüler.
+- `-P ALL`: Tüm CPU'ların istatistiklerini gösterir.
+- `-u`: Kullanıcı ve sistem CPU kullanım yüzdelerini görüntüler.
 - `-h`: Çıktıyı daha okunabilir hale getirir.
-- `-o`: Çıktıyı belirtilen dosyaya kaydeder.
+- `interval`: İstatistiklerin güncellenme aralığını saniye cinsinden belirtir.
+- `count`: İstatistiklerin kaç kez gösterileceğini belirtir.
 
 ## Yaygın Örnekler
-Aşağıda `mpstat` komutunun bazı pratik kullanımları verilmiştir:
+Aşağıda mpstat komutunun bazı pratik örnekleri verilmiştir:
 
-1. Tüm CPU çekirdekleri için istatistikleri görüntüleme:
-   ```bash
+1. Tüm CPU'ların istatistiklerini görüntülemek için:
+   ```csh
    mpstat -P ALL
    ```
 
-2. CPU kullanım yüzdelerini gösterme:
-   ```bash
+2. Kullanıcı ve sistem CPU kullanım yüzdelerini görüntülemek için:
+   ```csh
    mpstat -u
    ```
 
-3. Çıktıyı daha okunabilir hale getirme:
-   ```bash
+3. Her 2 saniyede bir CPU istatistiklerini güncellemek için (5 kez):
+   ```csh
+   mpstat 2 5
+   ```
+
+4. Daha okunabilir bir çıktı almak için:
+   ```csh
    mpstat -h
    ```
 
-4. Çıktıyı bir dosyaya kaydetme:
-   ```bash
-   mpstat -o JSON > cpu_stats.json
-   ```
-
 ## İpuçları
-- `mpstat` komutunu belirli aralıklarla çalıştırarak CPU kullanımını zaman içinde izleyebilirsiniz. Örneğin, her 5 saniyede bir güncel verileri görmek için:
-  ```bash
-  mpstat 5
+- mpstat komutunu, sistem performansını izlemek için düzenli aralıklarla çalıştırarak sistemdeki darboğazları tespit edebilirsiniz.
+- Çıktıyı bir dosyaya yönlendirerek, zaman içinde CPU kullanımını analiz etmek için verileri kaydedebilirsiniz:
+  ```csh
+  mpstat -P ALL 2 5 > cpu_istatistikleri.txt
   ```
-- Uzun süreli izleme için çıktıyı bir dosyaya yönlendirmek, verileri daha sonra analiz etmenizi sağlar.
-- CPU performansını etkileyen diğer süreçleri belirlemek için `top` veya `htop` gibi araçlarla birlikte kullanabilirsiniz.
+- Özellikle yoğun yük altında çalışan sistemlerde, CPU kullanımını izlemek için mpstat'ı kullanmak, performans sorunlarını hızlı bir şekilde tanımlamanıza yardımcı olabilir.

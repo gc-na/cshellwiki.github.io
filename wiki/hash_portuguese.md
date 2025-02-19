@@ -1,44 +1,51 @@
-# [Linux] Bash hash uso: Gerencia o cache de comandos
+# [Linux] C Shell (csh) hash uso equivalente: Armazenar caminhos de comandos
 
 ## Overview
-O comando `hash` no Bash é utilizado para gerenciar o cache de comandos executados. Ele armazena os caminhos dos comandos que foram utilizados, permitindo que o shell os encontre mais rapidamente em execuções futuras.
+O comando `hash` no C Shell (csh) é utilizado para gerenciar e exibir a tabela de caminhos dos comandos executados. Ele permite que o usuário veja quais comandos foram armazenados em cache, facilitando o acesso rápido a eles sem a necessidade de procurar o caminho completo.
 
 ## Usage
 A sintaxe básica do comando `hash` é a seguinte:
 
-```bash
+```csh
 hash [opções] [argumentos]
 ```
 
 ## Common Options
-- `-r`: Limpa o cache de comandos, removendo todas as entradas armazenadas.
-- `-p <comando>`: Define um caminho específico para um comando, substituindo a entrada atual no cache.
-- `-l`: Lista todos os comandos armazenados no cache, mostrando seus caminhos.
+- `-r`: Limpa a tabela de hash, removendo todos os comandos armazenados.
+- `-p`: Adiciona um comando específico à tabela de hash, permitindo que você especifique o caminho completo.
+- `-l`: Lista todos os comandos armazenados na tabela de hash.
 
 ## Common Examples
-Aqui estão alguns exemplos práticos do uso do comando `hash`:
 
-1. **Listar comandos armazenados no cache:**
-   ```bash
-   hash -l
-   ```
+### Listar comandos armazenados
+Para exibir todos os comandos que estão atualmente na tabela de hash, você pode usar:
 
-2. **Limpar o cache de comandos:**
-   ```bash
-   hash -r
-   ```
+```csh
+hash
+```
 
-3. **Definir um caminho específico para um comando:**
-   ```bash
-   hash -p /usr/local/bin/meu_comando meu_comando
-   ```
+### Limpar a tabela de hash
+Se você deseja remover todos os comandos armazenados, utilize:
 
-4. **Verificar o caminho de um comando específico:**
-   ```bash
-   hash ls
-   ```
+```csh
+hash -r
+```
+
+### Adicionar um comando específico
+Para adicionar um comando específico à tabela de hash, você pode usar:
+
+```csh
+hash -p /usr/local/bin/meu_comando
+```
+
+### Listar comandos com detalhes
+Para listar os comandos armazenados com seus respectivos caminhos, utilize:
+
+```csh
+hash -l
+```
 
 ## Tips
-- Utilize `hash -l` regularmente para verificar quais comandos estão armazenados em cache e seus respectivos caminhos.
-- Após instalar novos programas, considere usar `hash -r` para garantir que o cache esteja atualizado e reflita as novas localizações dos comandos.
-- Definir caminhos específicos com `-p` pode ser útil se você tiver versões diferentes de um comando em locais diferentes.
+- Utilize `hash` após executar comandos frequentemente para otimizar o tempo de execução.
+- Lembre-se de limpar a tabela de hash com `-r` se você fizer alterações nos caminhos dos comandos, para evitar conflitos.
+- Verifique a tabela de hash regularmente para garantir que você está utilizando os caminhos corretos dos comandos.

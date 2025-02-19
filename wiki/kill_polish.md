@@ -1,57 +1,42 @@
-# [Linux] Bash kill użycie: Zakończ procesy
+# [Linux] C Shell (csh) kill użycie: Zakończ procesy
 
-## Overview
-Polecenie `kill` w systemie Linux służy do wysyłania sygnałów do procesów, co najczęściej wykorzystywane jest do ich zakończenia. Dzięki temu użytkownicy mogą zarządzać działającymi aplikacjami i procesami w systemie.
+## Przegląd
+Polecenie `kill` w C Shell (csh) służy do wysyłania sygnałów do procesów, co najczęściej wykorzystywane jest do ich zakończenia. Umożliwia to użytkownikom zarządzanie działającymi procesami w systemie.
 
-## Usage
-Podstawowa składnia polecenia `kill` wygląda następująco:
+## Użycie
+Podstawowa składnia polecenia `kill` jest następująca:
 
-```bash
+```csh
 kill [opcje] [argumenty]
 ```
 
-## Common Options
-Oto kilka powszechnie używanych opcji polecenia `kill`:
-
+## Częste opcje
 - `-l`: Wyświetla listę dostępnych sygnałów.
-- `-s SIGNAL`: Określa sygnał do wysłania (domyślnie jest to `TERM`).
+- `-s SIGNAL`: Wysyła określony sygnał do procesu.
 - `-n NUMBER`: Wysyła sygnał o numerze podanym w argumentach.
-- `-p`: Wysyła sygnał do procesów, które są potomkami bieżącego procesu.
 
-## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `kill`:
-
-1. Zakończenie procesu za pomocą jego PID (identyfikatora procesu):
-
-   ```bash
+## Częste przykłady
+1. Zakończenie procesu za pomocą jego identyfikatora (PID):
+   ```csh
    kill 1234
    ```
 
-2. Wysłanie sygnału `SIGKILL` (natychmiastowe zakończenie procesu):
-
-   ```bash
-   kill -9 1234
+2. Wysłanie sygnału `SIGTERM` do procesu:
+   ```csh
+   kill -s TERM 1234
    ```
 
-3. Wysłanie sygnału `SIGTERM` do wielu procesów:
-
-   ```bash
-   kill 1234 5678 91011
-   ```
-
-4. Wyświetlenie listy dostępnych sygnałów:
-
-   ```bash
+3. Wyświetlenie dostępnych sygnałów:
+   ```csh
    kill -l
    ```
 
-5. Zakończenie procesu na podstawie nazwy (używając `pkill`):
-
-   ```bash
-   pkill nazwa_procesu
+4. Zakończenie wszystkich procesów o danym nazwie:
+   ```csh
+   killall myprocess
    ```
 
-## Tips
-- Zawsze staraj się używać sygnału `SIGTERM` (domyślnie) przed `SIGKILL`, ponieważ pozwala to procesowi na prawidłowe zakończenie.
-- Używaj `ps` lub `top`, aby znaleźć PID procesów, które chcesz zakończyć.
-- Pamiętaj, że do zakończenia niektórych procesów mogą być wymagane uprawnienia administratora, więc w razie potrzeby użyj `sudo`.
+## Wskazówki
+- Używaj `kill -l`, aby sprawdzić dostępne sygnały przed ich wysłaniem.
+- Zawsze upewnij się, że kończysz właściwy proces, aby uniknąć niezamierzonych konsekwencji.
+- Rozważ użycie `kill -9` (SIGKILL) tylko w ostateczności, ponieważ nie pozwala to procesowi na czyszczenie zasobów.

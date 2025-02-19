@@ -1,49 +1,43 @@
-# [Linux] Bash htop Kullanımı: Sistem kaynaklarını izleme aracı
+# [Linux] C Shell (csh) htop Kullanımı: Sistem kaynaklarını izleme aracı
 
 ## Genel Bakış
-htop, Linux tabanlı sistemlerde çalışan bir etkileşimli süreç izleme aracıdır. Kullanıcıların sistemdeki işlemleri, bellek kullanımı ve CPU yükünü gerçek zamanlı olarak görüntülemelerine olanak tanır. htop, top komutuna göre daha kullanıcı dostu bir arayüze sahiptir ve kullanıcıların süreçleri daha kolay yönetmesine yardımcı olur.
+htop, sistem kaynaklarını gerçek zamanlı olarak izlemek için kullanılan bir komut satırı aracıdır. Kullanıcı dostu bir arayüze sahip olan htop, CPU, bellek ve işlem bilgilerini görsel olarak sunar.
 
 ## Kullanım
 htop komutunun temel sözdizimi aşağıdaki gibidir:
 
-```bash
+```csh
 htop [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
 - `-h`, `--help`: Yardım bilgilerini gösterir.
-- `-s`, `--sort`: Belirtilen bir alana göre sıralama yapar.
-- `-p`, `--pid`: Belirtilen işlem kimliklerini izler.
-- `-u`, `--user`: Belirtilen kullanıcıya ait işlemleri gösterir.
+- `-s`, `--sort`: İşlemleri belirli bir kritere göre sıralar (örneğin, CPU veya bellek kullanımı).
+- `-p`, `--pid`: Belirli bir işlem kimliğini izler.
+- `-u`, `--user`: Belirli bir kullanıcıya ait işlemleri gösterir.
 
 ## Yaygın Örnekler
-Aşağıda htop komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+- htop'u başlatmak için:
+  ```csh
+  htop
+  ```
 
-1. **htop'u başlatmak için:**
-   ```bash
-   htop
-   ```
+- İşlemleri CPU kullanımına göre sıralamak için:
+  ```csh
+  htop -s PERCENT_CPU
+  ```
 
-2. **Belirli bir kullanıcıya ait işlemleri görüntülemek için:**
-   ```bash
-   htop -u kullanıcı_adı
-   ```
+- Belirli bir işlem kimliğini izlemek için (örneğin, PID 1234):
+  ```csh
+  htop -p 1234
+  ```
 
-3. **Belirli bir işlem kimliğini izlemek için:**
-   ```bash
-   htop -p 1234
-   ```
-
-4. **Sıralama yapmak için (örneğin, bellek kullanımına göre):**
-   ```bash
-   htop -s MEM%
-   ```
+- Belirli bir kullanıcıya ait işlemleri görüntülemek için (örneğin, kullanıcı adı "kullanici"):
+  ```csh
+  htop -u kullanici
+  ```
 
 ## İpuçları
-- htop arayüzünde, `F1` tuşuna basarak yardım menüsüne erişebilirsiniz.
-- Süreçleri sonlandırmak için, bir işlemi seçip `F9` tuşuna basarak "SIGKILL" sinyali gönderebilirsiniz.
-- Görünüm ayarlarını değiştirmek için `F2` tuşuna basarak yapılandırma menüsüne gidebilirsiniz.
-- Performans izleme için htop'u terminalde çalıştırırken, `-d` seçeneği ile güncelleme hızını ayarlayabilirsiniz. Örneğin, her 2 saniyede bir güncellemek için:
-  ```bash
-  htop -d 2
-  ```
+- htop arayüzünde, işlemleri seçip `F9` tuşuna basarak sonlandırabilirsiniz.
+- Arayüzdeki renk kodları, kaynak kullanımını hızlıca anlamanızı sağlar; yeşil CPU, mavi bellek ve kırmızı swap kullanımını temsil eder.
+- htop'u daha verimli kullanmak için klavye kısayollarını öğrenmek faydalıdır; örneğin, `F3` ile arama yapabilir, `F6` ile sıralama kriterini değiştirebilirsiniz.

@@ -1,7 +1,7 @@
-# [Linux] Bash dpkg gebruik: Beheer van Debian-pakketten
+# [Linux] C Shell (csh) dpkg gebruik: Beheer van Debian-pakketten
 
 ## Overzicht
-De `dpkg`-opdracht is een laag-niveau pakketbeheerder voor Debian-gebaseerde systemen. Het wordt gebruikt om softwarepakketten te installeren, te verwijderen en te beheren op een systeem dat het Debian-pakketformaat gebruikt.
+De `dpkg`-opdracht is een laag-niveau pakketbeheerder voor Debian-gebaseerde systemen. Het wordt gebruikt om .deb-pakketten te installeren, verwijderen en beheren.
 
 ## Gebruik
 De basis syntaxis van de `dpkg`-opdracht is als volgt:
@@ -11,42 +11,41 @@ dpkg [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-i`, `--install`: Installeert een pakket.
-- `-r`, `--remove`: Verwijdert een geïnstalleerd pakket.
-- `-l`, `--list`: Lijst alle geïnstalleerde pakketten op.
-- `-s`, `--status`: Toont de status van een specifiek pakket.
-- `-P`, `--purge`: Verwijdert een pakket en zijn configuratiebestanden.
+- `-i` : Installeer een .deb-pakket.
+- `-r` : Verwijder een geïnstalleerd pakket.
+- `-l` : Lijst alle geïnstalleerde pakketten.
+- `-s` : Toon de status van een specifiek pakket.
+- `-P` : Verwijder een pakket volledig, inclusief configuratiebestanden.
 
 ## Veelvoorkomende Voorbeelden
-- **Een pakket installeren:**
-  ```bash
-  sudo dpkg -i pakketnaam.deb
-  ```
+Hier zijn enkele praktische voorbeelden van het gebruik van `dpkg`:
 
-- **Een pakket verwijderen:**
-  ```bash
-  sudo dpkg -r pakketnaam
-  ```
+### Een pakket installeren
+```bash
+dpkg -i pakketnaam.deb
+```
 
-- **Een pakket en zijn configuratiebestanden verwijderen:**
-  ```bash
-  sudo dpkg -P pakketnaam
-  ```
+### Een pakket verwijderen
+```bash
+dpkg -r pakketnaam
+```
 
-- **Lijst van alle geïnstalleerde pakketten:**
-  ```bash
-  dpkg -l
-  ```
+### Lijst van geïnstalleerde pakketten
+```bash
+dpkg -l
+```
 
-- **Status van een specifiek pakket controleren:**
-  ```bash
-  dpkg -s pakketnaam
-  ```
+### De status van een specifiek pakket controleren
+```bash
+dpkg -s pakketnaam
+```
+
+### Een pakket volledig verwijderen
+```bash
+dpkg -P pakketnaam
+```
 
 ## Tips
-- Gebruik `dpkg` in combinatie met `apt` voor een betere gebruikerservaring, aangezien `apt` automatisch afhankelijkheden beheert.
-- Controleer altijd de status van een pakket na installatie of verwijdering om te bevestigen dat de actie succesvol was.
-- Maak gebruik van de `--help` optie om meer informatie over de beschikbare opties te krijgen:
-  ```bash
-  dpkg --help
-  ```
+- Zorg ervoor dat je de juiste rechten hebt (gebruik `sudo` indien nodig) bij het installeren of verwijderen van pakketten.
+- Gebruik `dpkg` in combinatie met `apt` voor een betere pakketbeheerervaring, omdat `apt` afhankelijkheden beter beheert.
+- Controleer altijd de documentatie van een pakket voor specifieke installatie-instructies of vereisten.

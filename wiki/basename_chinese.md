@@ -1,21 +1,23 @@
-# [Linux] Bash basename 用法: 提取文件名
+# [Linux] C Shell (csh) basename 用法等价: 提取文件名
 
 ## 概述
-`basename` 命令用于从给定的路径中提取文件名部分。它可以去掉路径中的目录部分，仅返回文件的名称。
+`basename` 命令用于从给定的路径中提取文件名部分。它可以去掉路径中的目录部分，只保留文件名及其扩展名。
 
 ## 用法
 基本语法如下：
-```bash
+```csh
 basename [options] [arguments]
 ```
 
 ## 常用选项
 - `-a`：处理多个路径，返回每个路径的文件名。
-- `-s`：指定后缀，去掉文件名中的指定后缀。
+- `-s`：去掉指定的后缀。
 
 ## 常见示例
-1. 提取单个文件名：
-   ```bash
+以下是一些常见的 `basename` 使用示例：
+
+1. 提取文件名：
+   ```csh
    basename /usr/local/bin/script.sh
    ```
    输出：
@@ -23,8 +25,8 @@ basename [options] [arguments]
    script.sh
    ```
 
-2. 提取文件名并去掉后缀：
-   ```bash
+2. 提取文件名并去掉扩展名：
+   ```csh
    basename /usr/local/bin/script.sh .sh
    ```
    输出：
@@ -33,25 +35,25 @@ basename [options] [arguments]
    ```
 
 3. 处理多个路径：
-   ```bash
-   basename -a /usr/local/bin/script.sh /home/user/document.txt
+   ```csh
+   basename -a /usr/local/bin/script.sh /usr/bin/another_script.py
    ```
    输出：
    ```
    script.sh
-   document.txt
+   another_script.py
    ```
 
-4. 使用自定义后缀：
-   ```bash
-   basename /var/log/syslog.log .log
+4. 去掉自定义后缀：
+   ```csh
+   basename /path/to/file.txt .txt
    ```
    输出：
    ```
-   syslog
+   file
    ```
 
 ## 小贴士
-- 使用 `basename` 时，可以结合其他命令（如 `find`）来处理文件路径。
-- 注意后缀的匹配是精确的，确保提供正确的后缀以获得预期结果。
-- 对于复杂的路径处理，可以考虑使用 `dirname` 命令与 `basename` 结合使用。
+- 使用 `basename` 时，确保提供正确的路径，以避免意外的输出。
+- 可以结合其他命令使用，例如与 `find` 命令结合，提取查找到的文件名。
+- 对于处理多个文件名，使用 `-a` 选项可以简化操作。

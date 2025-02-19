@@ -1,58 +1,54 @@
-# [Linux] Bash else gebruik: Voorwaardelijke uitvoering in scripts
+# [Linux] C Shell (csh) else: Voer alternatieve commando's uit
 
 ## Overzicht
-De `else`-opdracht in Bash wordt gebruikt binnen een `if`-structuur om alternatieve commando's uit te voeren wanneer de voorwaarde van de `if`-verklaring niet waar is. Het stelt gebruikers in staat om verschillende paden in hun scripts te volgen op basis van voorwaarden.
+De `else`-opdracht in C Shell (csh) wordt gebruikt in combinatie met de `if`-structuur om alternatieve commando's uit te voeren wanneer de voorwaarde van de `if`-verklaring niet waar is. Dit maakt het mogelijk om verschillende acties te ondernemen op basis van de uitkomst van een voorwaarde.
 
 ## Gebruik
-De basisstructuur van de `else`-opdracht is als volgt:
+De basis syntaxis van de `else`-opdracht is als volgt:
 
-```bash
-if [ voorwaarde ]; then
-    # commando's als de voorwaarde waar is
+```
+if (voorwaarde) then
+    commando1
 else
-    # commando's als de voorwaarde niet waar is
-fi
+    commando2
+endif
 ```
 
-## Veelvoorkomende Opties
-De `else`-opdracht zelf heeft geen specifieke opties, maar het wordt vaak gebruikt in combinatie met de `if`-opdracht. Hier zijn enkele veelvoorkomende voorwaarden die je kunt gebruiken:
-
-- `[ -f bestand ]`: Controleert of een bestand bestaat.
-- `[ -d map ]`: Controleert of een map bestaat.
-- `[ -z string ]`: Controleert of een string leeg is.
+## Veelvoorkomende opties
+De `else`-opdracht zelf heeft geen specifieke opties, omdat het voornamelijk een onderdeel is van de controleflow in scripts. Het is echter belangrijk om de `if`-structuur correct te gebruiken.
 
 ## Veelvoorkomende Voorbeelden
 
-### Voorbeeld 1: Bestandscontrole
-```bash
-if [ -f mijnbestand.txt ]; then
-    echo "Bestand bestaat."
+### Voorbeeld 1: Eenvoudige if-else
+```csh
+set VAR = 10
+if ($VAR > 5) then
+    echo "VAR is groter dan 5"
 else
-    echo "Bestand bestaat niet."
-fi
+    echo "VAR is 5 of kleiner"
+endif
 ```
 
-### Voorbeeld 2: Mapcontrole
-```bash
-if [ -d mijnmap ]; then
-    echo "Map bestaat."
+### Voorbeeld 2: Controle op een bestand
+```csh
+if (-e bestand.txt) then
+    echo "Het bestand bestaat."
 else
-    echo "Map bestaat niet."
-fi
+    echo "Het bestand bestaat niet."
+endif
 ```
 
-### Voorbeeld 3: Stringcontrole
-```bash
-input=""
-
-if [ -z "$input" ]; then
-    echo "De string is leeg."
+### Voorbeeld 3: Alternatieve uitvoer
+```csh
+set NUM = 3
+if ($NUM == 1) then
+    echo "Num is één."
 else
-    echo "De string is niet leeg."
-fi
+    echo "Num is niet één."
+endif
 ```
 
 ## Tips
-- Zorg ervoor dat je de juiste spaties gebruikt in je voorwaarden; de syntaxis is gevoelig voor spaties.
-- Gebruik haakjes om complexe voorwaarden te groeperen, bijvoorbeeld: `if [ -f bestand ] && [ -r bestand ]; then`.
-- Test je scripts met verschillende scenario's om ervoor te zorgen dat de `else`-structuur correct werkt.
+- Zorg ervoor dat je de `endif`-verklaring niet vergeet om de `if`-structuur correct af te sluiten.
+- Gebruik haakjes om de voorwaarden duidelijk te maken en om fouten te voorkomen.
+- Test je scripts met verschillende invoerwaarden om te controleren of de `else`-structuur correct werkt.

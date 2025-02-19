@@ -1,52 +1,48 @@
-# [Linux] Bash hostname Uso equivalente: Retrieve or set the system's hostname
+# [Linux] C Shell (csh) hostname Uso: Display or set the system's hostname
 
 ## Overview
-The `hostname` command in Bash is used to display or set the name of the current host system. The hostname is a label that identifies the device on a network, making it easier to manage and connect to different machines.
+The `hostname` command in C Shell (csh) is used to display or set the name of the current host system. The hostname is a label that identifies the device on a network, making it easier to communicate with other devices.
 
 ## Usage
 The basic syntax of the `hostname` command is as follows:
 
-```bash
+```csh
 hostname [options] [arguments]
 ```
 
 ## Common Options
-- `-a`, `--alias`: Display the alias name of the host.
-- `-d`, `--domain`: Show the domain name of the host.
-- `-f`, `--fqdn`: Display the fully qualified domain name (FQDN).
-- `-i`, `--ip-address`: Show the IP address associated with the hostname.
-- `-s`, `--short`: Display the short hostname (without domain).
-- `-V`, `--version`: Show the version of the hostname command.
+- `-s`: Display only the short hostname (the part before the first dot).
+- `-f`: Display the fully qualified domain name (FQDN).
+- `-i`: Display the IP address associated with the hostname.
 
 ## Common Examples
-Here are some practical examples of using the `hostname` command:
 
 1. **Display the current hostname:**
-   ```bash
+   ```csh
    hostname
    ```
 
-2. **Show the fully qualified domain name (FQDN):**
-   ```bash
-   hostname -f
-   ```
-
-3. **Display the short hostname:**
-   ```bash
+2. **Display the short hostname:**
+   ```csh
    hostname -s
    ```
 
-4. **Get the IP address of the hostname:**
-   ```bash
+3. **Display the fully qualified domain name:**
+   ```csh
+   hostname -f
+   ```
+
+4. **Set a new hostname:**
+   ```csh
+   hostname new-hostname
+   ```
+
+5. **Display the IP address of the hostname:**
+   ```csh
    hostname -i
    ```
 
-5. **Set a new hostname:**
-   ```bash
-   sudo hostname new-hostname
-   ```
-
 ## Tips
-- Always use `sudo` when changing the hostname to ensure you have the necessary permissions.
-- After changing the hostname, consider updating the `/etc/hosts` file to reflect the new name for local resolution.
-- Use the `hostnamectl` command on systems with `systemd` for more advanced hostname management, including setting static and transient hostnames.
+- Always ensure you have the necessary permissions to change the hostname, as it may require superuser privileges.
+- After changing the hostname, consider checking your network settings to ensure that the new hostname is correctly registered.
+- Use the `hostname` command without options to quickly verify the current hostname before making any changes.

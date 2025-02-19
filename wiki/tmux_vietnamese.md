@@ -1,44 +1,44 @@
-# [Linux] Bash tmux cách sử dụng: Quản lý phiên làm việc trong terminal
+# [Hệ điều hành] C Shell (csh) tmux: Quản lý phiên làm việc trong terminal
 
-## Overview
-Tmux là một trình quản lý phiên làm việc trong terminal, cho phép người dùng tạo, quản lý và điều khiển nhiều phiên làm việc trong một cửa sổ terminal duy nhất. Điều này rất hữu ích cho việc tổ chức công việc và làm việc với nhiều tác vụ cùng một lúc.
+## Tổng quan
+Tmux là một trình quản lý phiên làm việc trong terminal, cho phép người dùng tạo, quản lý và chia sẻ các phiên làm việc. Với tmux, bạn có thể chạy nhiều phiên làm việc trong cùng một cửa sổ terminal, giúp tăng hiệu suất làm việc và quản lý các tác vụ dễ dàng hơn.
 
-## Usage
+## Cú pháp
 Cú pháp cơ bản của lệnh tmux như sau:
-```
+```bash
 tmux [options] [arguments]
 ```
 
-## Common Options
+## Các tùy chọn phổ biến
 - `new`: Tạo một phiên tmux mới.
 - `attach`: Kết nối lại với một phiên tmux đã tồn tại.
 - `detach`: Ngắt kết nối khỏi phiên tmux hiện tại.
-- `list-sessions`: Liệt kê tất cả các phiên tmux đang chạy.
+- `list-sessions`: Liệt kê tất cả các phiên tmux đang hoạt động.
 - `kill-session`: Kết thúc một phiên tmux cụ thể.
 
-## Common Examples
+## Ví dụ phổ biến
 - Tạo một phiên tmux mới:
-  ```bash
-  tmux new -s mysession
-  ```
+```bash
+tmux new -s mysession
+```
 - Kết nối lại với một phiên tmux đã tồn tại:
-  ```bash
-  tmux attach -t mysession
-  ```
+```bash
+tmux attach -t mysession
+```
 - Ngắt kết nối khỏi phiên tmux hiện tại:
-  ```bash
-  Ctrl + b, d
-  ```
+```bash
+Ctrl + b, d
+```
 - Liệt kê tất cả các phiên tmux:
-  ```bash
-  tmux list-sessions
-  ```
-- Kết thúc một phiên tmux cụ thể:
-  ```bash
-  tmux kill-session -t mysession
-  ```
+```bash
+tmux list-sessions
+```
+- Kết thúc một phiên tmux:
+```bash
+tmux kill-session -t mysession
+```
 
-## Tips
-- Sử dụng tổ hợp phím `Ctrl + b` để truy cập các lệnh tmux nhanh chóng.
+## Mẹo
+- Sử dụng phím tắt `Ctrl + b` để truy cập vào các lệnh tmux nhanh chóng.
 - Đặt tên cho các phiên tmux để dễ dàng quản lý và phân biệt.
 - Sử dụng tmux trong các tác vụ dài để có thể ngắt kết nối và quay lại mà không mất tiến trình làm việc.

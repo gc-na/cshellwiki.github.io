@@ -1,7 +1,7 @@
-# [Linux] Bash reboot gebruik: Herstart het systeem
+# [Linux] C Shell (csh) reboot gebruik: Herstart het systeem
 
 ## Overzicht
-De `reboot` opdracht wordt gebruikt om een Linux-systeem opnieuw op te starten. Dit kan nodig zijn na het installeren van updates of het aanbrengen van systeemwijzigingen die een herstart vereisen.
+De `reboot` opdracht in C Shell (csh) wordt gebruikt om het systeem opnieuw op te starten. Dit kan nuttig zijn na systeemupdates of om problemen op te lossen die een herstart vereisen.
 
 ## Gebruik
 De basis syntaxis van de `reboot` opdracht is als volgt:
@@ -11,38 +11,37 @@ reboot [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-f`: Forceert een onmiddellijke herstart zonder het afsluiten van actieve processen.
-- `-i`: Voorkomt het afsluiten van het systeem en herstart alleen als het systeem in een veilige modus is.
-- `-p`: Schakelt het systeem uit in plaats van het opnieuw op te starten.
+Hier zijn enkele veelvoorkomende opties voor de `reboot` opdracht:
+
+- `-f`: Forceert een onmiddellijke herstart zonder waarschuwing of het afsluiten van actieve processen.
+- `-n`: Voorkomt het uitvoeren van het synchroniseren van schijven voordat het systeem opnieuw wordt opgestart.
+- `-w`: Schrijft alleen de herstartstatus naar de log zonder het systeem daadwerkelijk opnieuw op te starten.
 
 ## Veelvoorkomende Voorbeelden
+
 Hier zijn enkele praktische voorbeelden van het gebruik van de `reboot` opdracht:
 
-1. **Standaard herstart:**
+1. **Standaard herstart**:
    ```
    reboot
    ```
-   Dit commando herstart het systeem op de gebruikelijke manier.
 
-2. **Forceer een herstart:**
+2. **Forceer een onmiddellijke herstart**:
    ```
    reboot -f
    ```
-   Dit commando dwingt een onmiddellijke herstart, zonder te wachten op actieve processen.
 
-3. **Herstart met een vertraging:**
+3. **Herstart zonder schijf synchronisatie**:
    ```
-   reboot --delay 5
+   reboot -n
    ```
-   Dit commando herstart het systeem na een vertraging van 5 seconden.
 
-4. **Systeem uitschakelen in plaats van herstarten:**
+4. **Log de herstart zonder daadwerkelijk opnieuw op te starten**:
    ```
-   reboot -p
+   reboot -w
    ```
-   Dit commando schakelt het systeem uit in plaats van het opnieuw op te starten.
 
 ## Tips
-- Gebruik `reboot` alleen wanneer het nodig is, vooral op productie-servers, om dataverlies of onderbrekingen te voorkomen.
-- Zorg ervoor dat je alle belangrijke gegevens hebt opgeslagen voordat je het commando uitvoert.
-- Overweeg om een waarschuwing te geven aan andere gebruikers voordat je het systeem herstart, vooral op gedeelde systemen.
+- Gebruik de `-f` optie met voorzichtigheid, omdat dit actieve processen kan beëindigen zonder waarschuwing.
+- Zorg ervoor dat je alle belangrijke gegevens hebt opgeslagen voordat je het systeem opnieuw opstart.
+- Het is een goede gewoonte om een melding te geven aan andere gebruikers voordat je het systeem herstart, vooral op gedeelde systemen.

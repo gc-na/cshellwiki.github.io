@@ -1,56 +1,48 @@
-# [Linux] Bash wait użycie: Czekanie na zakończenie procesów
+# [Linux] C Shell (csh) wait użycie: Czeka na zakończenie procesów
 
 ## Overview
-Polecenie `wait` w Bash służy do czekania na zakończenie jednego lub więcej procesów. Umożliwia synchronizację skryptów, zapewniając, że dalsze instrukcje nie będą wykonywane, dopóki określone procesy nie zakończą swojego działania.
+Polecenie `wait` w C Shell (csh) służy do zatrzymywania wykonywania skryptu lub sesji do momentu zakończenia określonego procesu. Umożliwia to synchronizację z procesami uruchomionymi w tle.
 
 ## Usage
 Podstawowa składnia polecenia `wait` jest następująca:
 
-```bash
+```csh
 wait [options] [arguments]
 ```
 
 ## Common Options
-- `-n`: Czeka na zakończenie dowolnego procesu, a nie tylko na te, które zostały uruchomione w bieżącym skrypcie.
-- `PID`: Można podać identyfikator procesu (PID), aby czekać tylko na zakończenie konkretnego procesu.
+- `-p` : Czeka na zakończenie procesów, które są uruchomione w tle.
+- `-n` : Czeka na zakończenie dowolnego procesu, który został uruchomiony w tle.
 
 ## Common Examples
 
-### Czekanie na zakończenie wszystkich procesów
-Aby poczekać na zakończenie wszystkich procesów uruchomionych w bieżącym skrypcie, użyj polecenia `wait` bez żadnych argumentów:
+### Przykład 1: Czekanie na zakończenie konkretnego procesu
+Aby poczekać na zakończenie procesu o określonym identyfikatorze PID, użyj:
 
-```bash
-#!/bin/bash
-sleep 5 &
-sleep 3 &
-wait
-echo "Wszystkie procesy zakończone."
+```csh
+sleep 10 &  # Uruchomienie procesu w tle
+wait $!     # Czekanie na zakończenie ostatniego uruchomionego procesu
 ```
 
-### Czekanie na konkretny proces
-Możesz czekać na zakończenie konkretnego procesu, podając jego PID:
+### Przykład 2: Czekanie na wszystkie procesy w tle
+Możesz czekać na wszystkie procesy uruchomione w tle w danym skrypcie:
 
-```bash
-#!/bin/bash
-sleep 5 &
-PID=$!
-echo "Czekam na proces o PID: $PID"
-wait $PID
-echo "Proces o PID: $PID zakończony."
+```csh
+sleep 5 &  # Uruchomienie pierwszego procesu w tle
+sleep 3 &  # Uruchomienie drugiego procesu w tle
+wait       # Czekanie na zakończenie wszystkich procesów w tle
 ```
 
-### Czekanie na dowolny proces
-Używając opcji `-n`, możesz czekać na zakończenie dowolnego procesu:
+### Przykład 3: Użycie opcji -n
+Aby czekać na zakończenie dowolnego procesu w tle:
 
-```bash
-#!/bin/bash
-sleep 5 &
-sleep 3 &
-wait -n
-echo "Jeden z procesów zakończony."
+```csh
+sleep 4 &  # Uruchomienie procesu w tle
+sleep 6 &  # Uruchomienie kolejnego procesu w tle
+wait -n    # Czekanie na zakończenie dowolnego procesu
 ```
 
 ## Tips
-- Używaj `wait` w skryptach, aby zapewnić, że wszystkie procesy zakończą się przed kontynuowaniem dalszych działań.
-- Zawsze sprawdzaj PID procesów, aby upewnić się, że czekasz na właściwe procesy.
-- Możesz użyć `wait` w połączeniu z innymi poleceniami, aby tworzyć bardziej złożone skrypty, które wymagają synchronizacji.
+- Używaj `wait` w skryptach, aby upewnić się, że wszystkie procesy w tle zakończą się przed kontynuowaniem dalszych działań.
+- Zawsze sprawdzaj, czy PID, na który czekasz, jest aktywny, aby uniknąć błędów.
+- Możesz używać `wait` w połączeniu z innymi poleceniami, aby zbudować bardziej złożone skrypty.

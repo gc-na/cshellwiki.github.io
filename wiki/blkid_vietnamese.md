@@ -1,42 +1,41 @@
-# [Linux] Bash blkid Cách sử dụng: Xác định thông tin về thiết bị lưu trữ
+# [Hệ điều hành] C Shell (csh) blkid: Xác định thông tin thiết bị lưu trữ
 
-## Overview
-Lệnh `blkid` được sử dụng để xác định và hiển thị thông tin về các thiết bị lưu trữ trên hệ thống. Nó cung cấp thông tin như UUID, loại hệ thống tệp và nhãn của các phân vùng.
+## Tổng quan
+Lệnh `blkid` được sử dụng để xác định và hiển thị thông tin về các thiết bị lưu trữ, bao gồm UUID, loại hệ thống tệp và nhãn của các phân vùng.
 
-## Usage
+## Cách sử dụng
 Cú pháp cơ bản của lệnh `blkid` như sau:
 ```
 blkid [options] [arguments]
 ```
 
-## Common Options
-- `-o, --output`: Chỉ định định dạng đầu ra (ví dụ: `value`, `full`, `device`).
-- `-s, --match-tag`: Lọc thông tin theo thẻ cụ thể (ví dụ: `UUID`, `TYPE`).
-- `-p, --probe`: Thực hiện kiểm tra để xác định thông tin về thiết bị.
-- `-h, --help`: Hiển thị hướng dẫn sử dụng và các tùy chọn có sẵn.
+## Các tùy chọn phổ biến
+- `-o, --output`: Chỉ định định dạng đầu ra (ví dụ: `value`, `full`).
+- `-s, --match-tag`: Chỉ định chỉ hiển thị thông tin cho thẻ cụ thể.
+- `-p, --probe`: Thực hiện một cuộc kiểm tra để xác định thông tin thiết bị.
 
-## Common Examples
-- Hiển thị thông tin về tất cả các thiết bị lưu trữ:
-  ```bash
-  blkid
-  ```
+## Ví dụ thường gặp
+1. Hiển thị thông tin tất cả các thiết bị lưu trữ:
+   ```csh
+   blkid
+   ```
 
-- Hiển thị thông tin chỉ về UUID của các thiết bị:
-  ```bash
-  blkid -s UUID
-  ```
+2. Hiển thị thông tin chỉ cho một thiết bị cụ thể:
+   ```csh
+   blkid /dev/sda1
+   ```
 
-- Lọc và hiển thị loại hệ thống tệp của một thiết bị cụ thể:
-  ```bash
-  blkid -s TYPE /dev/sda1
-  ```
+3. Xuất định dạng đầu ra chỉ chứa UUID:
+   ```csh
+   blkid -o value -s UUID /dev/sda1
+   ```
 
-- Xuất thông tin với định dạng giá trị:
-  ```bash
-  blkid -o value -s UUID /dev/sda1
-  ```
+4. Thực hiện kiểm tra để xác định thông tin thiết bị:
+   ```csh
+   blkid -p /dev/sda1
+   ```
 
-## Tips
-- Sử dụng `sudo` nếu bạn không có quyền truy cập vào một số thiết bị.
-- Kiểm tra thường xuyên thông tin UUID để đảm bảo các thiết bị được nhận diện chính xác trong hệ thống.
-- Kết hợp `blkid` với các lệnh khác như `grep` để lọc thông tin một cách hiệu quả hơn.
+## Mẹo
+- Sử dụng lệnh `blkid` với quyền `sudo` nếu bạn không thấy thông tin của một số thiết bị do thiếu quyền truy cập.
+- Kết hợp `blkid` với các lệnh khác như `grep` để lọc thông tin một cách hiệu quả.
+- Lưu ý rằng thông tin được hiển thị có thể thay đổi nếu thiết bị được gắn hoặc ngắt kết nối.

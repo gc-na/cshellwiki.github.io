@@ -1,61 +1,50 @@
-# [Linux] Bash systemctl użycie: Zarządzanie usługami systemowymi
+# [Linux] C Shell (csh) systemctl użycie: zarządzanie usługami systemowymi
 
-## Overview
-Polecenie `systemctl` jest narzędziem do zarządzania systemem i usługami w systemach opartych na systemd. Umożliwia uruchamianie, zatrzymywanie, restartowanie oraz sprawdzanie statusu usług systemowych.
+## Przegląd
+Polecenie `systemctl` jest używane do zarządzania systemem i usługami w systemach operacyjnych opartych na systemd. Umożliwia uruchamianie, zatrzymywanie, włączanie i wyłączanie usług, a także sprawdzanie ich statusu.
 
-## Usage
+## Użycie
 Podstawowa składnia polecenia `systemctl` jest następująca:
 
 ```
 systemctl [opcje] [argumenty]
 ```
 
-## Common Options
-- `start`: Uruchamia określoną usługę.
-- `stop`: Zatrzymuje określoną usługę.
-- `restart`: Restartuje określoną usługę.
-- `status`: Wyświetla status określonej usługi.
-- `enable`: Włącza usługę, aby uruchamiała się automatycznie przy starcie systemu.
-- `disable`: Wyłącza automatyczne uruchamianie usługi przy starcie systemu.
-- `list-units`: Wyświetla listę wszystkich jednostek (usług) w systemie.
+## Częste opcje
+- `start`: uruchamia wskazaną usługę.
+- `stop`: zatrzymuje wskazaną usługę.
+- `restart`: restartuje wskazaną usługę.
+- `status`: wyświetla status wskazanej usługi.
+- `enable`: włącza usługę, aby uruchamiała się automatycznie przy starcie systemu.
+- `disable`: wyłącza automatyczne uruchamianie usługi przy starcie systemu.
 
-## Common Examples
-1. **Uruchamianie usługi**
-   ```bash
-   systemctl start nazwa_usługi
-   ```
+## Częste przykłady
+- Aby uruchomić usługę, użyj:
+  ```bash
+  systemctl start nazwa_usługi
+  ```
 
-2. **Zatrzymywanie usługi**
-   ```bash
-   systemctl stop nazwa_usługi
-   ```
+- Aby zatrzymać usługę, użyj:
+  ```bash
+  systemctl stop nazwa_usługi
+  ```
 
-3. **Restartowanie usługi**
-   ```bash
-   systemctl restart nazwa_usługi
-   ```
+- Aby sprawdzić status usługi, użyj:
+  ```bash
+  systemctl status nazwa_usługi
+  ```
 
-4. **Sprawdzanie statusu usługi**
-   ```bash
-   systemctl status nazwa_usługi
-   ```
+- Aby włączyć usługę przy starcie systemu, użyj:
+  ```bash
+  systemctl enable nazwa_usługi
+  ```
 
-5. **Włączanie usługi przy starcie systemu**
-   ```bash
-   systemctl enable nazwa_usługi
-   ```
+- Aby wyłączyć usługę przy starcie systemu, użyj:
+  ```bash
+  systemctl disable nazwa_usługi
+  ```
 
-6. **Wyłączanie usługi przy starcie systemu**
-   ```bash
-   systemctl disable nazwa_usługi
-   ```
-
-7. **Wyświetlanie listy wszystkich usług**
-   ```bash
-   systemctl list-units --type=service
-   ```
-
-## Tips
-- Używaj `sudo` przed poleceniem `systemctl`, aby uzyskać uprawnienia administratora, jeśli operujesz na usługach systemowych.
-- Regularnie sprawdzaj status usług, aby upewnić się, że działają poprawnie.
-- Zapisuj logi systemowe, aby móc analizować problemy z usługami w przyszłości.
+## Wskazówki
+- Zawsze sprawdzaj status usługi po jej uruchomieniu lub zatrzymaniu, aby upewnić się, że działa zgodnie z oczekiwaniami.
+- Używaj opcji `--quiet`, aby zredukować ilość wyjścia w przypadku, gdy nie potrzebujesz szczegółowych informacji.
+- Pamiętaj, aby uruchamiać polecenia `systemctl` z uprawnieniami administratora (np. używając `sudo`), jeśli wymagają one takich uprawnień.

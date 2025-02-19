@@ -1,55 +1,45 @@
-# [Linux] Bash uname Kullanımı: Sistem bilgilerini görüntüleme
+# [Linux] C Shell (csh) uname Kullanımı: Sistem bilgilerini görüntüleme
 
-## Genel Bakış
-`uname` komutu, işletim sistemi hakkında bilgi almak için kullanılan bir Bash komutudur. Bu komut, sistemin çekirdek adı, sürüm numarası, mimarisi gibi bilgileri görüntülemenizi sağlar.
+## Overview
+`uname` komutu, işletim sisteminin adı, sürümü ve diğer sistem bilgilerini görüntülemek için kullanılır. Bu komut, sistem yöneticileri ve kullanıcılar için yararlı bilgiler sağlar.
 
-## Kullanım
+## Usage
 Temel sözdizimi aşağıdaki gibidir:
-
-```bash
-uname [seçenekler] [argümanlar]
+```csh
+uname [options] [arguments]
 ```
 
-## Yaygın Seçenekler
+## Common Options
 - `-a`: Tüm bilgileri bir arada gösterir.
-- `-s`: Çekirdek adını gösterir.
-- `-n`: Ağ ana bilgisayar adını gösterir.
-- `-r`: Çekirdek sürümünü gösterir.
-- `-v`: Çekirdek sürüm bilgilerini gösterir.
-- `-m`: Makine mimarisini gösterir.
-- `-p`: İşlemci türünü gösterir.
-- `-i`: Donanım platformunu gösterir.
-- `-o`: İşletim sistemi adını gösterir.
+- `-s`: İşletim sisteminin adını gösterir.
+- `-r`: İşletim sistemi çekirdeğinin sürümünü gösterir.
+- `-v`: İşletim sistemi çekirdeği hakkında daha fazla bilgi verir.
+- `-m`: Donanım mimarisini gösterir.
 
-## Yaygın Örnekler
-Aşağıda `uname` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+## Common Examples
+Aşağıda `uname` komutunun bazı pratik örnekleri verilmiştir:
 
-1. **Tüm sistem bilgilerini görüntüleme:**
-   ```bash
-   uname -a
-   ```
-
-2. **Çekirdek adını görüntüleme:**
-   ```bash
+1. İşletim sisteminin adını görüntülemek için:
+   ```csh
    uname -s
    ```
 
-3. **Çekirdek sürümünü görüntüleme:**
-   ```bash
+2. İşletim sistemi çekirdeğinin sürümünü görüntülemek için:
+   ```csh
    uname -r
    ```
 
-4. **Makine mimarisini görüntüleme:**
-   ```bash
+3. Tüm sistem bilgilerini görüntülemek için:
+   ```csh
+   uname -a
+   ```
+
+4. Donanım mimarisini öğrenmek için:
+   ```csh
    uname -m
    ```
 
-5. **Ağ ana bilgisayar adını görüntüleme:**
-   ```bash
-   uname -n
-   ```
-
-## İpuçları
+## Tips
 - `uname -a` komutunu kullanarak sistem hakkında kapsamlı bilgi alabilirsiniz.
-- Sadece belirli bir bilgiye ihtiyaç duyuyorsanız, ilgili seçeneği kullanarak daha az bilgi görüntüleyebilirsiniz.
-- `uname` komutunu bir betik içinde kullanarak sistem bilgilerini otomatik olarak alabilir ve işleyebilirsiniz.
+- Sıkça kullandığınız bilgileri hızlıca görüntülemek için bir alias oluşturmayı düşünebilirsiniz.
+- Sistem güncellemeleri sonrasında `uname -r` komutunu kullanarak çekirdek sürümünüzü kontrol edin.

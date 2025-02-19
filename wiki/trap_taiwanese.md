@@ -1,49 +1,44 @@
-# [Linux] Bash trap 用法: 捕捉信號
+# [台灣] C Shell (csh) trap 使用法: 控制信號處理
 
 ## Overview
-`trap` 命令用來捕捉和處理信號，讓使用者能夠在接收到特定信號時執行自定義的命令或清理操作。這在編寫腳本時特別有用，因為它可以幫助管理腳本的終止和錯誤處理。
+`trap` 命令用於設定在接收到特定信號時要執行的命令。這對於處理異常情況或清理資源非常有用。
 
 ## Usage
 基本語法如下：
-```bash
-trap [options] [commands] [signals]
+```
+trap [options] [arguments]
 ```
 
 ## Common Options
 - `-l`：列出所有可用的信號名稱。
 - `-p`：顯示當前的 trap 設定。
-- `commands`：當接收到指定的信號時要執行的命令。
-- `signals`：要捕捉的信號名稱或數字。
+- `SIGNAL`：指定要捕獲的信號，例如 `INT` 或 `TERM`。
+- `COMMAND`：在捕獲信號時要執行的命令。
 
 ## Common Examples
-以下是一些常見的 `trap` 使用範例：
+以下是一些常見的使用範例：
 
-### 1. 捕捉退出信號
-在腳本中捕捉 `EXIT` 信號，以便在腳本結束時執行清理操作：
-```bash
-trap 'echo "Script is exiting..."' EXIT
-```
+1. 捕獲中斷信號並執行清理命令：
+   ```csh
+   trap 'echo "中斷信號被捕獲，正在清理..."' INT
+   ```
 
-### 2. 捕捉中斷信號
-捕捉 `SIGINT` 信號（通常是 Ctrl+C）：
-```bash
-trap 'echo "Caught SIGINT, cleaning up..."; exit' SIGINT
-```
+2. 在接收到終止信號時顯示提示：
+   ```csh
+   trap 'echo "程序即將終止..."' TERM
+   ```
 
-### 3. 捕捉多個信號
-可以同時捕捉多個信號，並執行相同的命令：
-```bash
-trap 'echo "Caught SIGTERM or SIGINT"; exit' SIGTERM SIGINT
-```
+3. 列出所有可用的信號名稱：
+   ```csh
+   trap -l
+   ```
 
-### 4. 清理臨時檔案
-在腳本中使用 `trap` 來確保即使在錯誤情況下也能刪除臨時檔案：
-```bash
-tempfile=$(mktemp)
-trap 'rm -f "$tempfile"; echo "Temporary file removed."' EXIT
-```
+4. 顯示當前的 trap 設定：
+   ```csh
+   trap -p
+   ```
 
 ## Tips
-- 確保在腳本的開始部分設置 `trap`，這樣可以捕捉到所有相關的信號。
-- 使用 `trap -` 可以清除先前設置的 trap。
-- 測試你的 trap 設定，確保在不同情況下都能正常運作，特別是在錯誤或中斷的情況下。
+- 確保在腳本的開始部分設定 `trap`，以便在整個腳本執行期間都能捕獲信號。
+- 使用 `trap` 來處理清理任務，例如關閉文件描述符或刪除臨時文件。
+- 測試你的 trap 設定，以確保它們在預期的情況下正常工作。

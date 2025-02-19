@@ -1,52 +1,45 @@
-# [Linux] Bash sha256sum uso: Calculate SHA-256 checksums
+# [Linux] C Shell (csh) sha256sum uso equivalente: Calculate SHA-256 checksums
 
 ## Overview
-The `sha256sum` command is used to compute and verify SHA-256 checksums for files. This is particularly useful for ensuring data integrity by comparing the checksum of a file against a known value.
+The `sha256sum` command is used to compute and verify SHA-256 checksums for files. This is particularly useful for ensuring data integrity by allowing users to compare the checksum of a file against a known value.
 
 ## Usage
 The basic syntax of the `sha256sum` command is as follows:
 
-```bash
+```csh
 sha256sum [options] [arguments]
 ```
 
 ## Common Options
-- `-b`, `--binary`: Read the input data in binary mode.
-- `-c`, `--check`: Read SHA-256 checksums from a file and verify them against the corresponding files.
-- `-t`, `--text`: Read the input data in text mode (default).
-- `--tag`: Create a BSD-style checksum output.
+- `-b`: Read the input files in binary mode.
+- `-c`: Check the SHA-256 checksums against the provided checksum file.
+- `-h`: Display help information about the command.
+- `--quiet`: Suppress output messages.
 
 ## Common Examples
+Here are some practical examples of using the `sha256sum` command:
 
-### Calculate SHA-256 Checksum of a File
-To compute the SHA-256 checksum of a file named `example.txt`, use:
+1. **Calculate the SHA-256 checksum of a file:**
+   ```csh
+   sha256sum myfile.txt
+   ```
 
-```bash
-sha256sum example.txt
-```
+2. **Save the checksum to a file:**
+   ```csh
+   sha256sum myfile.txt > myfile.txt.sha256
+   ```
 
-### Verify a Checksum
-If you have a file `checksums.txt` containing checksums, you can verify the files listed in it:
+3. **Verify a file against a checksum file:**
+   ```csh
+   sha256sum -c myfile.txt.sha256
+   ```
 
-```bash
-sha256sum -c checksums.txt
-```
-
-### Generate Checksum for Multiple Files
-You can also generate checksums for multiple files at once:
-
-```bash
-sha256sum file1.txt file2.txt file3.txt
-```
-
-### Save Checksum to a File
-To save the checksum output to a file, you can redirect the output:
-
-```bash
-sha256sum example.txt > example_checksum.txt
-```
+4. **Calculate the checksum of multiple files:**
+   ```csh
+   sha256sum file1.txt file2.txt file3.txt
+   ```
 
 ## Tips
-- Always verify checksums after downloading files from the internet to ensure they haven't been tampered with.
-- Use the `-c` option with a checksum file to automate the verification process for multiple files.
-- For large files, consider using the `-b` option to ensure accurate checksum calculation in binary mode.
+- Always verify checksums after downloading files to ensure they have not been corrupted.
+- Use the `-c` option with a checksum file to automate the verification process.
+- Consider using the `-b` option when dealing with binary files to avoid issues with newline characters.

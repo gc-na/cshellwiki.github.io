@@ -1,58 +1,54 @@
-# [Linux] Bash else : Exécuter une commande alternative
+# [Linux] C Shell (csh) else : Exécuter une commande alternative
 
 ## Overview
-La commande `else` dans un script Bash est utilisée dans les structures conditionnelles. Elle permet d'exécuter un bloc de code lorsque la condition précédente est fausse. Cela est particulièrement utile pour gérer des scénarios où plusieurs chemins d'exécution sont nécessaires.
+La commande `else` dans le C Shell (csh) est utilisée dans les structures de contrôle conditionnelles. Elle permet d'exécuter un bloc de commandes lorsque la condition d'une instruction `if` est fausse.
 
 ## Usage
 La syntaxe de base de la commande `else` est la suivante :
 
-```bash
-if [ condition ]; then
+```csh
+if (condition) then
     # commandes si la condition est vraie
 else
     # commandes si la condition est fausse
-fi
+endif
 ```
 
 ## Common Options
-La commande `else` n'a pas d'options spécifiques, car elle fait partie d'une structure conditionnelle. Cependant, elle est souvent utilisée avec les commandes suivantes :
-- `if` : pour vérifier une condition.
-- `elif` : pour ajouter des conditions supplémentaires avant d'atteindre le bloc `else`.
+La commande `else` n'a pas d'options spécifiques, car elle fait partie de la structure de contrôle conditionnelle. Cependant, elle doit toujours être utilisée en conjonction avec `if` et `endif`.
 
 ## Common Examples
 
 ### Exemple 1 : Vérification d'un fichier
-```bash
-if [ -f "mon_fichier.txt" ]; then
+```csh
+if (-e fichier.txt) then
     echo "Le fichier existe."
 else
     echo "Le fichier n'existe pas."
-fi
+endif
 ```
 
 ### Exemple 2 : Vérification d'une variable
-```bash
-nombre=10
-if [ $nombre -gt 20 ]; then
-    echo "Le nombre est supérieur à 20."
+```csh
+set var = 5
+if ($var > 10) then
+    echo "La variable est supérieure à 10."
 else
-    echo "Le nombre est inférieur ou égal à 20."
-fi
+    echo "La variable est inférieure ou égale à 10."
+endif
 ```
 
-### Exemple 3 : Utilisation avec `elif`
-```bash
-note=15
-if [ $note -ge 18 ]; then
-    echo "Mention Très Bien"
-elif [ $note -ge 14 ]; then
-    echo "Mention Bien"
+### Exemple 3 : Exécution de commandes basées sur l'entrée utilisateur
+```csh
+set answer = $< "Voulez-vous continuer ? (oui/non) "
+if ("$answer" == "oui") then
+    echo "Vous avez choisi de continuer."
 else
-    echo "Mention Passable"
-fi
+    echo "Vous avez choisi d'arrêter."
+endif
 ```
 
 ## Tips
-- Utilisez des parenthèses pour grouper des conditions complexes.
-- N'oubliez pas de toujours fermer vos blocs conditionnels avec `fi`.
-- Testez vos scripts avec différentes conditions pour vous assurer qu'ils fonctionnent comme prévu.
+- Assurez-vous de toujours terminer une structure conditionnelle avec `endif` pour éviter des erreurs de syntaxe.
+- Utilisez des parenthèses pour grouper des conditions complexes dans l'instruction `if`.
+- Testez toujours vos conditions avec des valeurs appropriées pour éviter des comportements inattendus.

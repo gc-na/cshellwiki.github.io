@@ -1,45 +1,50 @@
-# [Linux] Bash cmp Penggunaan: Membandingkan file biner
+# [Sistem Operasi] C Shell (csh) cmp Penggunaan: Membandingkan dua file
 
 ## Overview
-Perintah `cmp` digunakan untuk membandingkan dua file biner byte demi byte. Jika ada perbedaan antara file yang dibandingkan, `cmp` akan menunjukkan lokasi perbedaan tersebut. Ini sangat berguna untuk memeriksa integritas file atau memastikan bahwa dua file identik.
+Perintah `cmp` digunakan untuk membandingkan dua file byte demi byte. Jika file yang dibandingkan berbeda, `cmp` akan menunjukkan lokasi perbedaan tersebut. Jika file identik, tidak ada output yang dihasilkan.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `cmp`:
 
 ```bash
-cmp [options] [file1] [file2]
+cmp [options] [arguments]
 ```
 
 ## Common Options
 - `-l`: Menampilkan byte yang berbeda dalam format numerik.
-- `-s`: Tidak menampilkan output, hanya mengembalikan status keluar.
-- `-i OFFSET`: Mengabaikan byte awal dari file pertama.
-- `-n N`: Hanya membandingkan N byte pertama dari file.
+- `-s`: Menyembunyikan output dan hanya mengembalikan status exit.
+- `-i <n>`: Mengabaikan n byte pertama dari setiap file.
+- `-n <n>`: Membandingkan hanya n byte pertama dari file.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan `cmp`:
+Berikut adalah beberapa contoh penggunaan perintah `cmp`:
 
-1. **Membandingkan dua file**:
+1. Membandingkan dua file dan menampilkan perbedaan:
    ```bash
-   cmp file1.bin file2.bin
+   cmp file1.txt file2.txt
    ```
 
-2. **Membandingkan dua file dan menampilkan byte yang berbeda**:
+2. Menggunakan opsi `-l` untuk menampilkan byte yang berbeda:
    ```bash
-   cmp -l file1.bin file2.bin
+   cmp -l file1.txt file2.txt
    ```
 
-3. **Membandingkan dua file tanpa output, hanya status keluar**:
+3. Menggunakan opsi `-s` untuk membandingkan tanpa output:
    ```bash
-   cmp -s file1.bin file2.bin
+   cmp -s file1.txt file2.txt
    ```
 
-4. **Membandingkan hanya 10 byte pertama dari dua file**:
+4. Mengabaikan n byte pertama dari file saat membandingkan:
    ```bash
-   cmp -n 10 file1.bin file2.bin
+   cmp -i 10 file1.txt file2.txt
+   ```
+
+5. Membandingkan hanya n byte pertama dari file:
+   ```bash
+   cmp -n 20 file1.txt file2.txt
    ```
 
 ## Tips
 - Gunakan opsi `-s` jika Anda hanya ingin mengetahui apakah file berbeda tanpa melihat detailnya.
-- Jika Anda bekerja dengan file besar, pertimbangkan untuk menggunakan opsi `-n` untuk membatasi jumlah byte yang dibandingkan.
-- `cmp` sangat berguna dalam skrip untuk memeriksa apakah file telah berhasil disalin atau diunduh tanpa kesalahan.
+- Opsi `-l` sangat berguna untuk debugging, karena memberikan informasi spesifik tentang byte yang berbeda.
+- Pastikan untuk memeriksa status exit dari perintah `cmp` untuk menentukan apakah file identik atau tidak. Status exit `0` berarti file identik, `1` berarti berbeda, dan `2` menunjukkan kesalahan.

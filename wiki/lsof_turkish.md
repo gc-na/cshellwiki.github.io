@@ -1,7 +1,7 @@
-# [Linux] Bash lsof Kullanımı: Açık dosyaları listeleme
+# [Linux] C Shell (csh) lsof Kullanımı: Açık dosyaları listeleme
 
 ## Genel Bakış
-`lsof` (List Open Files), sistemde açık olan dosyaları ve bu dosyaları kullanan süreçleri listeleyen bir komuttur. Bu komut, dosya tanımlayıcıları, ağ bağlantıları ve daha fazlası hakkında bilgi edinmek için kullanılır.
+`lsof` (List Open Files) komutu, sistemde açık olan dosyaların ve bunları kullanan süreçlerin listesini gösterir. Bu komut, dosya tanımlayıcılarını, süreç kimliklerini ve dosya yollarını görüntülemek için kullanılır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
@@ -11,46 +11,44 @@ lsof [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-i`: Ağ bağlantılarını listelemek için kullanılır.
-- `-u [kullanıcı]`: Belirtilen kullanıcıya ait açık dosyaları gösterir.
-- `-p [PID]`: Belirtilen süreç kimliğine (PID) ait açık dosyaları listeler.
-- `+D [dizin]`: Belirtilen dizindeki tüm açık dosyaları gösterir.
+- `-u [kullanıcı]`: Belirtilen kullanıcıya ait açık dosyaları listeler.
+- `-p [PID]`: Belirtilen süreç kimliğine (PID) ait açık dosyaları gösterir.
+- `-i`: Ağ bağlantılarını ve açık soketleri listeler.
+- `+D [dizin]`: Belirtilen dizin ve alt dizinlerindeki açık dosyaları gösterir.
+- `-t`: Sadece süreç kimliklerini (PID) döndürür.
 
 ## Yaygın Örnekler
 Aşağıda `lsof` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-### Tüm Açık Dosyaları Listeleme
-```bash
-lsof
-```
+- Belirli bir kullanıcıya ait açık dosyaları listeleme:
+  ```bash
+  lsof -u username
+  ```
 
-### Belirli Bir Kullanıcının Açık Dosyalarını Listeleme
-```bash
-lsof -u kullanıcı_adı
-```
+- Belirli bir süreç kimliğine ait açık dosyaları görüntüleme:
+  ```bash
+  lsof -p 1234
+  ```
 
-### Belirli Bir Sürecin Açık Dosyalarını Listeleme
-```bash
-lsof -p 1234
-```
+- Ağ bağlantılarını listeleme:
+  ```bash
+  lsof -i
+  ```
 
-### Ağ Bağlantılarını Listeleme
-```bash
-lsof -i
-```
+- Belirli bir dizindeki açık dosyaları gösterme:
+  ```bash
+  lsof +D /path/to/directory
+  ```
 
-### Belirli Bir Dizin Altındaki Açık Dosyaları Listeleme
-```bash
-lsof +D /path/to/directory
-```
+- Sadece süreç kimliklerini döndürme:
+  ```bash
+  lsof -t -i
+  ```
 
 ## İpuçları
-- `lsof` komutunu `grep` ile birleştirerek belirli dosya türlerini veya süreçleri filtreleyebilirsiniz. Örneğin:
+- `lsof` komutunu kullanmadan önce, yeterli izinlere sahip olduğunuzdan emin olun; bazı dosyalar yalnızca root kullanıcı tarafından görüntülenebilir.
+- Ağ bağlantılarını izlemek için `lsof -i` komutunu kullanarak hangi süreçlerin hangi portları kullandığını kolayca görebilirsiniz.
+- `lsof` çıktısını daha okunabilir hale getirmek için `grep` ile filtreleme yapabilirsiniz. Örneğin, belirli bir dosya adını aramak için:
   ```bash
-  lsof | grep .txt
+  lsof | grep filename
   ```
-- `lsof` çıktısını bir dosyaya yönlendirmek için `>` operatörünü kullanabilirsiniz:
-  ```bash
-  lsof > acik_dosyalar.txt
-  ```
-- `lsof` komutunu çalıştırmak için genellikle yönetici (root) izinlerine ihtiyaç duyulabilir, bu nedenle `sudo` kullanmayı unutmayın.

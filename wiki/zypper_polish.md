@@ -1,7 +1,7 @@
-# [Linux] Bash zypper użycie: zarządzanie pakietami w systemie openSUSE
+# [Linux] C Shell (csh) zypper użycie: Zarządzanie pakietami w systemie
 
 ## Overview
-Zypper to potężne narzędzie do zarządzania pakietami w systemie openSUSE. Umożliwia instalację, aktualizację oraz usuwanie oprogramowania, a także zarządzanie repozytoriami.
+Zypper to narzędzie do zarządzania pakietami w systemach opartych na openSUSE i SUSE Linux Enterprise. Umożliwia instalację, aktualizację i usuwanie pakietów oprogramowania oraz zarządzanie repozytoriami.
 
 ## Usage
 Podstawowa składnia polecenia zypper jest następująca:
@@ -11,45 +11,45 @@ zypper [opcje] [argumenty]
 ```
 
 ## Common Options
-- `install` - instaluje pakiet.
-- `remove` - usuwa pakiet.
-- `update` - aktualizuje zainstalowane pakiety.
-- `search` - wyszukuje pakiety w repozytoriach.
-- `refresh` - odświeża listę dostępnych pakietów i repozytoriów.
-- `info` - wyświetla szczegółowe informacje o pakiecie.
+- `install`: Instaluje pakiet.
+- `remove`: Usuwa pakiet.
+- `update`: Aktualizuje zainstalowane pakiety.
+- `search`: Wyszukuje pakiety w repozytoriach.
+- `info`: Wyświetla informacje o pakiecie.
+- `refresh`: Odświeża listę dostępnych pakietów i repozytoriów.
 
 ## Common Examples
-1. **Instalacja pakietu:**
-   ```bash
-   zypper install nazwa_pakietu
-   ```
+- Instalacja pakietu:
+  ```bash
+  zypper install nazwa_pakietu
+  ```
 
-2. **Usuwanie pakietu:**
-   ```bash
-   zypper remove nazwa_pakietu
-   ```
+- Usunięcie pakietu:
+  ```bash
+  zypper remove nazwa_pakietu
+  ```
 
-3. **Aktualizacja wszystkich zainstalowanych pakietów:**
-   ```bash
-   zypper update
-   ```
+- Aktualizacja wszystkich zainstalowanych pakietów:
+  ```bash
+  zypper update
+  ```
 
-4. **Wyszukiwanie pakietu:**
-   ```bash
-   zypper search nazwa_pakietu
-   ```
+- Wyszukiwanie pakietu:
+  ```bash
+  zypper search nazwa_pakietu
+  ```
 
-5. **Odświeżenie repozytoriów:**
-   ```bash
-   zypper refresh
-   ```
+- Wyświetlanie informacji o pakiecie:
+  ```bash
+  zypper info nazwa_pakietu
+  ```
 
-6. **Wyświetlanie informacji o pakiecie:**
-   ```bash
-   zypper info nazwa_pakietu
-   ```
+- Odświeżenie repozytoriów:
+  ```bash
+  zypper refresh
+  ```
 
 ## Tips
-- Zawsze wykonuj `zypper refresh` przed aktualizacją, aby mieć pewność, że masz najnowsze informacje o pakietach.
-- Używaj opcji `-y` przy poleceniach, aby automatycznie potwierdzać instalację lub usuwanie pakietów, np. `zypper install -y nazwa_pakietu`.
-- Regularnie aktualizuj system, aby zapewnić sobie najnowsze poprawki bezpieczeństwa i funkcjonalności.
+- Zawsze sprawdzaj dostępność aktualizacji przed instalacją nowych pakietów, aby uniknąć konfliktów.
+- Używaj opcji `--dry-run`, aby zobaczyć, co się stanie przed wykonaniem polecenia.
+- Regularnie odświeżaj repozytoria, aby mieć dostęp do najnowszych wersji pakietów.

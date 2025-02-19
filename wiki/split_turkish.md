@@ -1,42 +1,48 @@
-# [Linux] Bash split Kullanımı: Dosyaları parçalara ayırma
+# [Linux] C Shell (csh) split Kullanımı: Dosyaları parçalara ayırma
 
 ## Overview
-`split` komutu, büyük dosyaları daha küçük parçalara ayırmak için kullanılır. Bu, özellikle büyük veri setleriyle çalışırken veya belirli bir boyut sınırına ulaşan dosyaları yönetirken faydalıdır.
+`split` komutu, büyük dosyaları daha küçük parçalara ayırmak için kullanılır. Bu, büyük dosyaların yönetimini kolaylaştırır ve belirli boyutlarda dosyalar oluşturmanıza olanak tanır.
 
 ## Usage
-Temel sözdizimi şu şekildedir:
-```bash
+Temel sözdizimi aşağıdaki gibidir:
+```
 split [options] [arguments]
 ```
 
 ## Common Options
-- `-b, --bytes=SIZE`: Her parçanın boyutunu belirler. Örneğin, `-b 1M` 1 megabaytlık parçalar oluşturur.
-- `-l, --lines=NUMBER`: Her parçanın kaç satır içereceğini belirler.
-- `-d, --numeric-suffixes`: Parça isimlerinde sayısal ekler kullanır.
-- `--additional-suffix=SUFFIX`: Parça dosyalarına ek bir uzantı ekler.
+- `-b SIZE`: Her parçanın boyutunu belirler. Örneğin, `-b 1M` 1 megabaytlık parçalar oluşturur.
+- `-l NUM`: Her parçanın satır sayısını belirler. Örneğin, `-l 100` her parçanın 100 satır içermesini sağlar.
+- `-d`: Parçaların adlandırılmasında sayısal bir sıralama kullanır. Varsayılan olarak harf sıralaması kullanılır.
+- `--additional-suffix=SUFFIX`: Parçalara ek bir uzantı ekler.
 
 ## Common Examples
-1. **Bir dosyayı 100 satırlık parçalara ayırma:**
-   ```bash
-   split -l 100 dosya.txt
-   ```
+Aşağıda `split` komutunun bazı pratik örnekleri verilmiştir:
 
-2. **Bir dosyayı 1 megabaytlık parçalara ayırma:**
-   ```bash
-   split -b 1M dosya.txt
-   ```
+### Örnek 1: Satır sayısına göre parçalama
+```bash
+split -l 50 büyük_dosya.txt
+```
+Bu komut, `büyük_dosya.txt` dosyasını her biri 50 satır içeren parçalara ayırır.
 
-3. **Parça dosyalarına sayısal ek ekleyerek ayırma:**
-   ```bash
-   split -d -l 50 dosya.txt parca_
-   ```
+### Örnek 2: Boyuta göre parçalama
+```bash
+split -b 1M büyük_dosya.txt
+```
+Bu komut, `büyük_dosya.txt` dosyasını her biri 1 megabayt boyutunda parçalara ayırır.
 
-4. **Ek bir uzantı ile parça dosyaları oluşturma:**
-   ```bash
-   split --additional-suffix=.txt -b 500k dosya.txt parca_
-   ```
+### Örnek 3: Sayısal sıralama ile parçalama
+```bash
+split -d -l 100 büyük_dosya.txt parça_
+```
+Bu komut, `büyük_dosya.txt` dosyasını her biri 100 satır içeren parçalara ayırır ve parçaları `parça_00`, `parça_01`, vb. şeklinde adlandırır.
+
+### Örnek 4: Ek uzantı ile parçalama
+```bash
+split --additional-suffix=.txt -b 500k büyük_dosya.txt parça_
+```
+Bu komut, `büyük_dosya.txt` dosyasını her biri 500 kilobayt boyutunda parçalara ayırır ve her parçaya `.txt` uzantısı ekler.
 
 ## Tips
-- Parçaların adlandırılmasını kolaylaştırmak için `-d` seçeneğini kullanarak sayısal ekler ekleyebilirsiniz.
-- Parçaların boyutunu belirlerken, dosyanızın içeriğine göre uygun bir boyut seçmeye dikkat edin.
-- Büyük dosyalarla çalışırken, parçaları bir dizine kaydetmek, dosya yönetimini kolaylaştırabilir.
+- Büyük dosyaları parçalara ayırmadan önce dosyanın boyutunu kontrol edin, böylece uygun boyutları seçebilirsiniz.
+- Parçaları adlandırırken anlamlı isimler kullanmak, dosyaları daha sonra bulmayı kolaylaştırır.
+- `split` komutunu sık sık kullananlar için, sık kullanılan seçenekleri bir alias olarak tanımlamak faydalı olabilir.

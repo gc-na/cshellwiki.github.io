@@ -1,47 +1,49 @@
-# [Linux] Bash mkdir Uso: Crear directorios en el sistema de archivos
+# [Linux] C Shell (csh) mkdir Uso: Crear directorios en el sistema de archivos
 
 ## Overview
-El comando `mkdir` se utiliza en Bash para crear nuevos directorios en el sistema de archivos. Es una herramienta fundamental para organizar archivos y carpetas de manera efectiva.
+El comando `mkdir` se utiliza en C Shell (csh) para crear nuevos directorios en el sistema de archivos. Es una herramienta fundamental para organizar archivos y mantener una estructura de directorios clara.
 
 ## Usage
-La sintaxis básica del comando es la siguiente:
+La sintaxis básica del comando `mkdir` es la siguiente:
 
-```bash
+```csh
 mkdir [opciones] [argumentos]
 ```
 
 ## Common Options
-- `-p`: Crea directorios padres según sea necesario. Si los directorios intermedios no existen, los crea automáticamente.
-- `-v`: Muestra un mensaje por cada directorio que se crea, lo que puede ser útil para verificar la creación de directorios.
-- `-m`: Establece los permisos del nuevo directorio al momento de su creación, utilizando la notación octal.
+- `-p`: Crea directorios padres según sea necesario. Si los directorios intermedios no existen, se crearán automáticamente.
+- `-m`: Establece los permisos del nuevo directorio utilizando un modo octal específico.
+- `-v`: Muestra un mensaje de confirmación por cada directorio creado.
 
 ## Common Examples
+Aquí hay algunos ejemplos prácticos del uso del comando `mkdir`:
+
 1. **Crear un solo directorio:**
-   ```bash
-   mkdir mi_directorio
+   ```csh
+   mkdir nuevo_directorio
    ```
 
-2. **Crear varios directorios a la vez:**
-   ```bash
-   mkdir directorio1 directorio2 directorio3
+2. **Crear múltiples directorios a la vez:**
+   ```csh
+   mkdir dir1 dir2 dir3
    ```
 
-3. **Crear un directorio y sus padres si no existen:**
-   ```bash
-   mkdir -p ruta/a/mi_directorio
+3. **Crear un directorio y sus padres:**
+   ```csh
+   mkdir -p padre/hijo/nieto
    ```
 
-4. **Crear un directorio y mostrar un mensaje:**
-   ```bash
-   mkdir -v nuevo_directorio
+4. **Crear un directorio con permisos específicos:**
+   ```csh
+   mkdir -m 755 directorio_con_permisos
    ```
 
-5. **Crear un directorio con permisos específicos:**
-   ```bash
-   mkdir -m 755 mi_directorio
+5. **Crear un directorio y mostrar un mensaje de confirmación:**
+   ```csh
+   mkdir -v directorio_confirmacion
    ```
 
 ## Tips
-- Utiliza la opción `-p` cuando no estés seguro si los directorios intermedios existen; esto evitará errores.
-- Revisa los permisos de los directorios creados con `ls -l` para asegurarte de que son los deseados.
-- Considera usar nombres descriptivos para tus directorios, lo que facilitará la organización y búsqueda de archivos en el futuro.
+- Siempre verifica si el directorio ya existe antes de crear uno nuevo para evitar errores.
+- Utiliza la opción `-p` para crear estructuras de directorios complejas de una sola vez.
+- Considera establecer permisos adecuados al crear directorios, especialmente en entornos compartidos.

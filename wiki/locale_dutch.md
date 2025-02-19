@@ -1,52 +1,48 @@
-# [Linux] Bash locale gebruik: Toon systeemlocale-instellingen
+# [Linux] C Shell (csh) locale gebruik: Toon locale-informatie
 
 ## Overzicht
-De `locale` opdracht in Bash wordt gebruikt om informatie over de huidige locale-instellingen van het systeem weer te geven. Dit omvat gegevens zoals taal, tijdzone en andere regionale instellingen die van invloed zijn op de uitvoer van programma's en de manier waarop tekst wordt weergegeven.
+De `locale` opdracht in C Shell (csh) wordt gebruikt om informatie over de huidige locale-instellingen van het systeem weer te geven. Dit omvat gegevens zoals taal, tijdzone en andere regionale instellingen die van invloed zijn op de uitvoer van programma's.
 
 ## Gebruik
-De basisstructuur van de `locale` opdracht is als volgt:
+De basis syntaxis van de `locale` opdracht is als volgt:
 
-```bash
+```csh
 locale [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
+Hier zijn enkele veelvoorkomende opties voor de `locale` opdracht:
+
 - `-a`: Toont een lijst van alle beschikbare locales op het systeem.
-- `-m`: Toont een lijst van alle beschikbare locale-mogelijkheden.
-- `-k`: Toont de waarden van specifieke locale-instellingen.
-- `-c`: Controleert of de locale-instellingen correct zijn.
+- `-m`: Toont een lijst van de beschikbare locale-categorieën.
+- `-k`: Toont de waarden van een specifieke locale-categorie.
+- `-c`: Toont de huidige locale-instellingen.
 
 ## Veelvoorkomende Voorbeelden
 
-### 1. Toon de huidige locale-instellingen
-Om de huidige locale-instellingen van je systeem te bekijken, gebruik je:
+Hier zijn enkele praktische voorbeelden van het gebruik van de `locale` opdracht:
 
-```bash
-locale
-```
+1. **Toon de huidige locale-instellingen:**
+   ```csh
+   locale
+   ```
 
-### 2. Lijst van beschikbare locales
-Om een lijst van alle beschikbare locales op je systeem te tonen, gebruik je:
+2. **Toon een lijst van alle beschikbare locales:**
+   ```csh
+   locale -a
+   ```
 
-```bash
-locale -a
-```
+3. **Toon de beschikbare locale-categorieën:**
+   ```csh
+   locale -m
+   ```
 
-### 3. Toon specifieke locale-instellingen
-Als je de waarden van specifieke locale-instellingen wilt zien, bijvoorbeeld voor `LC_TIME`, gebruik je:
-
-```bash
-locale -k LC_TIME
-```
-
-### 4. Controleer locale-instellingen
-Om te controleren of de locale-instellingen correct zijn, gebruik je:
-
-```bash
-locale -c
-```
+4. **Toon de waarden van een specifieke locale-categorie, bijvoorbeeld 'LC_TIME':**
+   ```csh
+   locale -k LC_TIME
+   ```
 
 ## Tips
-- Zorg ervoor dat je de juiste locale instelt voor je toepassingen om problemen met tekens en datums te voorkomen.
-- Gebruik `locale -m` om te zien welke locale-mogelijkheden beschikbaar zijn, wat handig kan zijn bij het configureren van nieuwe locales.
-- Het is een goed idee om je locale-instellingen te controleren na het installeren van nieuwe software die afhankelijk is van specifieke regionale instellingen.
+- Zorg ervoor dat je de juiste locale hebt ingesteld voor je applicaties om onverwachte resultaten te voorkomen.
+- Gebruik `locale -a` om te controleren of de gewenste locale beschikbaar is op je systeem voordat je deze instelt.
+- Controleer regelmatig je locale-instellingen, vooral na systeemupdates of wijzigingen in configuratiebestanden.

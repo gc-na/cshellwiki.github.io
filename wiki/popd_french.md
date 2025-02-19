@@ -1,43 +1,43 @@
-# [Linux] Bash popd : Gérer les répertoires de la pile
+# [Linux] C Shell (csh) popd : Gérer la pile de répertoires
 
 ## Overview
-La commande `popd` est utilisée dans un environnement Bash pour supprimer le répertoire supérieur de la pile de répertoires et se déplacer vers ce répertoire. Elle permet de naviguer facilement entre plusieurs répertoires sans avoir à taper les chemins complets.
+La commande `popd` dans C Shell (csh) permet de supprimer le répertoire supérieur de la pile de répertoires et de changer le répertoire de travail courant à celui qui se trouve au sommet de cette pile. Cela facilite la navigation entre différents répertoires sans avoir à taper le chemin complet.
 
 ## Usage
 La syntaxe de base de la commande `popd` est la suivante :
 
-```bash
+```csh
 popd [options]
 ```
 
 ## Common Options
-- `-n` : Ne pas changer de répertoire, juste afficher la pile.
-- `+N` : Aller au N-ième répertoire de la pile, en commençant par 0 pour le sommet.
+- `-n` : Ne pas changer le répertoire courant, mais afficher le répertoire qui serait sélectionné.
+- `+n` : Spécifie un index dans la pile de répertoires à partir du sommet (0 étant le sommet).
 
 ## Common Examples
 
 ### Exemple 1 : Utilisation de base
-Pour revenir au répertoire supérieur de la pile :
+Pour revenir au répertoire supérieur dans la pile :
 
-```bash
+```csh
 popd
 ```
 
-### Exemple 2 : Afficher la pile sans changer de répertoire
-Pour afficher la pile actuelle sans changer de répertoire :
+### Exemple 2 : Afficher le répertoire sans changer
+Pour afficher le répertoire supérieur sans changer le répertoire courant :
 
-```bash
+```csh
 popd -n
 ```
 
-### Exemple 3 : Accéder à un répertoire spécifique dans la pile
-Pour accéder au deuxième répertoire de la pile :
+### Exemple 3 : Utiliser un index spécifique
+Pour changer le répertoire courant au répertoire à l'index 1 de la pile :
 
-```bash
+```csh
 popd +1
 ```
 
 ## Tips
-- Utilisez `pushd` avant `popd` pour ajouter des répertoires à la pile, ce qui rend la navigation plus fluide.
-- Vérifiez régulièrement la pile de répertoires avec `dirs` pour garder une trace de votre position.
-- Combinez `popd` avec des scripts pour automatiser la navigation dans des projets avec plusieurs sous-répertoires.
+- Assurez-vous d'utiliser `pushd` pour ajouter des répertoires à la pile avant d'utiliser `popd`.
+- Utilisez `dirs` pour afficher la pile de répertoires actuelle avant de faire un `popd`, afin de savoir où vous allez.
+- Évitez d'utiliser `popd` si la pile est vide, car cela peut générer une erreur.

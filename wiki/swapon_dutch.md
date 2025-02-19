@@ -1,44 +1,43 @@
-# [Linux] Bash swapon gebruik: Activeer swapruimte
+# [Linux] C Shell (csh) swapon gebruik: Activeer swapruimte
 
 ## Overzicht
-De `swapon` opdracht in Bash wordt gebruikt om swapruimte in te schakelen op een Linux-systeem. Swapruimte is een deel van de schijf dat wordt gebruikt als virtueel geheugen wanneer het fysieke RAM vol is. Dit helpt om de prestaties van het systeem te verbeteren door extra geheugen beschikbaar te stellen voor actieve processen.
+De `swapon` opdracht wordt gebruikt om swapruimte in te schakelen op een Linux-systeem. Swapruimte is een deel van de schijf dat wordt gebruikt als virtueel geheugen, wat helpt om de prestaties van het systeem te verbeteren wanneer het fysieke RAM vol is.
 
 ## Gebruik
 De basis syntaxis van de `swapon` opdracht is als volgt:
 
-```bash
+```
 swapon [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-a`: Activeert alle swapbestanden die zijn gedefinieerd in `/etc/fstab`.
-- `-e`: Controleert of de swapruimte geldig is voordat deze wordt geactiveerd.
-- `-s`: Toont een samenvatting van de actieve swapruimtes.
+- `-a`: Activeert alle swapbestanden die zijn opgegeven in `/etc/fstab`.
+- `-e`: Negeert fouten bij het inschakelen van swapruimte.
+- `-s`: Toont een samenvatting van de actieve swapruimte.
 
 ## Veelvoorkomende Voorbeelden
 
-### 1. Activeer een specifieke swapbestand
-Om een specifiek swapbestand te activeren, gebruik je de volgende opdracht:
+1. **Activeer een specifieke swapbestand**:
+   ```csh
+   swapon /path/to/swapfile
+   ```
 
-```bash
-swapon /path/to/swapfile
-```
+2. **Activeer alle swapbestanden in fstab**:
+   ```csh
+   swapon -a
+   ```
 
-### 2. Activeer alle swapruimtes
-Om alle swapruimtes die in `/etc/fstab` zijn gedefinieerd te activeren, gebruik je:
+3. **Toon actieve swapruimte**:
+   ```csh
+   swapon -s
+   ```
 
-```bash
-swapon -a
-```
-
-### 3. Controleer actieve swapruimtes
-Om een lijst van actieve swapruimtes te bekijken, gebruik je:
-
-```bash
-swapon -s
-```
+4. **Activeer een swapbestand met foutafhandeling**:
+   ```csh
+   swapon -e /path/to/swapfile
+   ```
 
 ## Tips
-- Zorg ervoor dat je swapbestanden correct zijn geconfigureerd in `/etc/fstab` voor een automatische activering bij het opstarten.
-- Controleer regelmatig de status van je swapruimte met `swapon -s` om te zien of je systeem voldoende virtueel geheugen heeft.
-- Gebruik swapruimte verstandig; te veel afhankelijkheid van swap kan de prestaties van je systeem negatief beïnvloeden.
+- Zorg ervoor dat de swapbestanden de juiste permissies hebben om toegang te krijgen.
+- Controleer regelmatig de status van de swapruimte met `swapon -s` om te zien of alles correct is ingeschakeld.
+- Overweeg om swapruimte te configureren in `/etc/fstab` voor automatische activering bij het opstarten van het systeem.

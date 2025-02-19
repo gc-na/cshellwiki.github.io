@@ -1,46 +1,45 @@
-# [Linux] Bash fsck Kullanımı: Dosya sistemini kontrol etme
+# [Linux] C Shell (csh) fsck Kullanımı: Dosya sistemini kontrol etme
 
-## Genel Bakış
-`fsck` (file system check), Linux ve Unix benzeri işletim sistemlerinde dosya sistemlerini kontrol etmek ve onarmak için kullanılan bir komuttur. Dosya sistemindeki hataları tespit eder ve mümkünse düzeltir. Bu komut, sistemin güvenilirliğini artırmak ve veri kaybını önlemek için düzenli olarak kullanılmalıdır.
+## Overview
+`fsck` (file system check), dosya sistemlerini kontrol etmek ve onarmak için kullanılan bir komuttur. Dosya sistemindeki hataları tespit eder ve düzeltir, bu sayede veri kaybını önlemeye yardımcı olur.
 
-## Kullanım
-Temel sözdizimi şu şekildedir:
+## Usage
+Temel sözdizimi aşağıdaki gibidir:
+
 ```bash
-fsck [seçenekler] [argümanlar]
+fsck [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-a`: Hataları otomatik olarak düzeltir.
-- `-n`: Hataları düzeltmeden sadece kontrol eder (okuma modu).
-- `-y`: Tüm hataları otomatik olarak onaylar ve düzeltir.
-- `-t`: Hangi dosya sisteminin kontrol edileceğini belirtir.
+## Common Options
+- `-a`: Otomatik onarım yapar. Hataları düzeltmek için kullanıcı müdahalesi gerektirmez.
+- `-n`: Dosya sistemini kontrol eder ancak onarım yapmaz. Sadece hataları raporlar.
+- `-y`: Tüm hataları otomatik olarak düzeltir. Kullanıcıdan onay istemez.
+- `-t`: Belirli bir dosya sisteminin kontrol süresini gösterir.
 
-## Yaygın Örnekler
-1. **Bir dosya sistemini kontrol etme**:
+## Common Examples
+Aşağıda `fsck` komutunun bazı pratik örnekleri bulunmaktadır:
+
+1. Tüm dosya sistemlerini kontrol etmek için:
+   ```bash
+   fsck -A
+   ```
+
+2. Belirli bir dosya sistemini kontrol etmek için:
    ```bash
    fsck /dev/sda1
    ```
-   Bu komut, `/dev/sda1` dosya sistemini kontrol eder.
 
-2. **Otomatik düzeltme ile kontrol etme**:
-   ```bash
-   fsck -a /dev/sda1
-   ```
-   Bu komut, `/dev/sda1` dosya sistemindeki hataları otomatik olarak düzeltir.
-
-3. **Sadece kontrol etme (okuma modu)**:
-   ```bash
-   fsck -n /dev/sda1
-   ```
-   Bu komut, hataları düzeltmeden sadece kontrol eder.
-
-4. **Tüm hataları onaylayarak düzeltme**:
+3. Hataları otomatik olarak düzeltmek için:
    ```bash
    fsck -y /dev/sda1
    ```
-   Bu komut, `/dev/sda1` dosya sistemindeki tüm hataları otomatik olarak onaylayarak düzeltir.
 
-## İpuçları
-- `fsck` komutunu çalıştırmadan önce dosya sisteminin montajının kaldırıldığından emin olun. Montajda olan bir dosya sistemi üzerinde `fsck` çalıştırmak veri kaybına yol açabilir.
-- Düzenli aralıklarla dosya sisteminizi kontrol etmek, sistem güvenilirliğini artırır.
-- Eğer bir dosya sistemi hatalıysa, `fsck` komutunu çalıştırmadan önce önemli verilerinizi yedeklemeyi unutmayın.
+4. Sadece hataları raporlamak için:
+   ```bash
+   fsck -n /dev/sda1
+   ```
+
+## Tips
+- `fsck` komutunu çalıştırmadan önce dosya sisteminin montajının kaldırıldığından emin olun. Aksi takdirde, veri kaybı riski vardır.
+- Düzenli olarak dosya sisteminizi kontrol etmek, potansiyel sorunları erken tespit etmenize yardımcı olabilir.
+- Eğer bir dosya sisteminde sürekli hatalarla karşılaşıyorsanız, donanım sorunlarını kontrol etmekte fayda vardır.

@@ -1,49 +1,43 @@
-# [Linux] Bash renice uso: Modifica la priorità dei processi in esecuzione
+# [Linux] C Shell (csh) renice: Modifica la priorità di un processo
 
 ## Overview
-Il comando `renice` in Bash viene utilizzato per modificare la priorità di esecuzione dei processi già in esecuzione. La priorità determina quanto tempo della CPU un processo può utilizzare rispetto ad altri processi. Un valore di priorità più basso significa una maggiore priorità.
+Il comando `renice` viene utilizzato per modificare la priorità di esecuzione di uno o più processi già in esecuzione. La priorità determina quanto CPU un processo riceve rispetto ad altri processi. Un valore di priorità più basso indica una priorità più alta.
 
 ## Usage
 La sintassi di base del comando `renice` è la seguente:
 
-```bash
-renice [opzioni] [valore] [PID...]
+```csh
+renice [opzioni] [argomenti]
 ```
 
 ## Common Options
-- `-n`, `--priority`: Specifica il nuovo valore di priorità. Può essere un numero intero da -20 (massima priorità) a 19 (minima priorità).
-- `-p`, `--pid`: Indica che il valore di priorità deve essere applicato ai processi specificati dai loro ID di processo (PID).
-- `-g`, `--pgrp`: Modifica la priorità di tutti i processi in un gruppo di processi specificato.
-- `-u`, `--user`: Modifica la priorità di tutti i processi appartenenti a un utente specificato.
+- `-n`: Specifica il nuovo valore di priorità.
+- `-p`: Indica il PID (Process ID) del processo da modificare.
+- `-g`: Modifica la priorità di tutti i processi appartenenti a un gruppo di processi specificato.
+- `-u`: Modifica la priorità di tutti i processi di un utente specificato.
 
 ## Common Examples
-Ecco alcuni esempi pratici di utilizzo del comando `renice`:
+Ecco alcuni esempi pratici dell'uso del comando `renice`:
 
-1. **Modificare la priorità di un singolo processo**:
-   Per aumentare la priorità di un processo con PID 1234 a -5:
-   ```bash
-   renice -n -5 -p 1234
+1. **Modificare la priorità di un processo specifico**:
+   ```csh
+   renice -n 10 -p 1234
    ```
+   Questo comando imposta la priorità del processo con PID 1234 a 10.
 
-2. **Modificare la priorità di più processi**:
-   Per impostare la priorità a 10 per i processi con PID 1234 e 5678:
-   ```bash
-   renice -n 10 -p 1234 5678
+2. **Modificare la priorità di tutti i processi di un utente**:
+   ```csh
+   renice -n 5 -u username
    ```
+   Qui, la priorità di tutti i processi dell'utente "username" viene impostata a 5.
 
-3. **Modificare la priorità di tutti i processi di un utente**:
-   Per abbassare la priorità di tutti i processi dell'utente "mario" a 15:
-   ```bash
-   renice -n 15 -u mario
+3. **Modificare la priorità di un gruppo di processi**:
+   ```csh
+   renice -n -5 -g 5678
    ```
-
-4. **Modificare la priorità di un gruppo di processi**:
-   Per aumentare la priorità di tutti i processi nel gruppo di processi con ID 1000 a -3:
-   ```bash
-   renice -n -3 -g 1000
-   ```
+   Questo comando imposta la priorità a -5 per tutti i processi nel gruppo con GID 5678.
 
 ## Tips
-- Assicurati di avere i permessi necessari per modificare la priorità dei processi, in quanto potrebbe essere necessario eseguire il comando come superutente (utilizzando `sudo`).
-- Usa valori di priorità con cautela; abbassare eccessivamente la priorità di un processo critico potrebbe influire sulle prestazioni del sistema.
-- Controlla la priorità attuale dei processi utilizzando il comando `ps` o `top` prima di applicare `renice`.
+- Assicurati di avere i permessi necessari per modificare la priorità dei processi; potresti aver bisogno di privilegi di superutente.
+- Usa valori di priorità con cautela; impostare una priorità troppo alta per un processo può influenzare negativamente le prestazioni del sistema.
+- Controlla le priorità correnti dei processi con il comando `ps` prima di utilizzare `renice` per fare scelte informate.

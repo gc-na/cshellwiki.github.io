@@ -1,47 +1,44 @@
-# [Linux] Bash nohup utilizzo: Esegui comandi senza interruzioni
+# [Linux] C Shell (csh) nohup utilizzo: Esecuzione di comandi senza interruzione
 
 ## Overview
-Il comando `nohup` (no hang up) è utilizzato in Bash per eseguire processi in modo che continuino a funzionare anche dopo che l'utente ha disconnesso la sessione. Questo è particolarmente utile per eseguire script o comandi a lungo termine su server remoti.
+Il comando `nohup` (no hang up) è utilizzato per eseguire un comando in modo che continui a funzionare anche dopo che l'utente ha effettuato il logout dalla sessione. Questo è particolarmente utile per eseguire processi a lungo termine senza preoccuparsi che vengano interrotti.
 
 ## Usage
 La sintassi di base del comando `nohup` è la seguente:
 
-```bash
-nohup [opzioni] [argomenti] &
+```
+nohup [options] [arguments]
 ```
 
-L'ampersand (`&`) alla fine del comando serve a eseguire il processo in background.
-
 ## Common Options
-- `-h`, `--help`: Mostra un messaggio di aiuto e termina.
-- `-V`, `--version`: Mostra la versione del comando `nohup`.
-- `-o FILE`: Specifica un file in cui scrivere l'output standard (default è `nohup.out`).
-- `-e FILE`: Specifica un file in cui scrivere l'output di errore (default è `nohup.out`).
+- `&`: Esegue il comando in background.
+- `-h`: Mostra un messaggio di aiuto.
+- `-p`: Ignora il segnale SIGHUP per il processo specificato.
 
 ## Common Examples
 Ecco alcuni esempi pratici di utilizzo del comando `nohup`:
 
 1. Eseguire uno script in background:
-   ```bash
+   ```csh
    nohup ./script.sh &
    ```
 
-2. Eseguire un comando e reindirizzare l'output in un file specifico:
-   ```bash
+2. Eseguire un comando lungo e salvare l'output in un file:
+   ```csh
    nohup long_running_command > output.log &
    ```
 
-3. Eseguire un comando e reindirizzare sia l'output che l'errore:
-   ```bash
-   nohup long_running_command > output.log 2>&1 &
+3. Eseguire un comando senza output sul terminale:
+   ```csh
+   nohup command > /dev/null 2>&1 &
    ```
 
-4. Eseguire un processo in background e ignorare l'output:
-   ```bash
-   nohup some_command > /dev/null 2>&1 &
+4. Eseguire un processo e visualizzare l'output in tempo reale:
+   ```csh
+   nohup tail -f /var/log/syslog &
    ```
 
 ## Tips
-- Assicurati di utilizzare l'ampersand (`&`) per eseguire il comando in background, altrimenti il terminale rimarrà bloccato fino al completamento del processo.
-- Controlla il file `nohup.out` per eventuali messaggi di output o errori se non hai specificato un file di output personalizzato.
-- Utilizza `jobs` per visualizzare i processi in background e `fg` per riportarli in primo piano se necessario.
+- Utilizza `&` per eseguire il comando in background e liberare il terminale.
+- Controlla il file `nohup.out` per eventuali messaggi di errore o output se non hai specificato un file di output.
+- È buona pratica utilizzare `nohup` per processi che richiedono molto tempo, come backup o elaborazione di dati, per evitare interruzioni accidentali.

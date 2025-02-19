@@ -1,59 +1,49 @@
-# [Linux] Bash tcpdump użycie: Analiza ruchu sieciowego
+# [Linux] C Shell (csh) tcpdump użycie: Narzędzie do przechwytywania pakietów sieciowych
 
-## Overview
-Polecenie `tcpdump` jest narzędziem do przechwytywania i analizy pakietów przesyłanych w sieci. Umożliwia monitorowanie ruchu sieciowego w czasie rzeczywistym oraz zapisywanie danych do późniejszej analizy. Jest to niezwykle przydatne narzędzie dla administratorów systemów i specjalistów ds. bezpieczeństwa.
+## Przegląd
+Polecenie `tcpdump` jest narzędziem do przechwytywania i analizy ruchu sieciowego. Umożliwia monitorowanie pakietów przesyłanych przez interfejsy sieciowe, co jest przydatne do diagnozowania problemów z siecią oraz do analizy bezpieczeństwa.
 
-## Usage
+## Użycie
 Podstawowa składnia polecenia `tcpdump` jest następująca:
 
 ```bash
 tcpdump [opcje] [argumenty]
 ```
 
-## Common Options
-Oto kilka powszechnie używanych opcji dla `tcpdump`:
-
-- `-i <interfejs>`: Określa interfejs sieciowy, z którego mają być przechwytywane pakiety.
+## Częste opcje
+- `-i <interfejs>`: Określa interfejs sieciowy do monitorowania.
+- `-n`: Wyłącza rozwiązywanie nazw hostów, co przyspiesza działanie.
+- `-c <liczba>`: Przechwytuje określoną liczbę pakietów.
 - `-w <plik>`: Zapisuje przechwycone pakiety do pliku.
 - `-r <plik>`: Odczytuje pakiety z pliku.
-- `-c <liczba>`: Przechwytuje określoną liczbę pakietów.
-- `-n`: Nie przekształca adresów IP na nazwy hostów.
-- `-v`, `-vv`, `-vvv`: Zwiększa szczegółowość wyjścia.
 
-## Common Examples
+## Częste przykłady
+- Przechwytywanie pakietów na domyślnym interfejsie:
+  ```bash
+  tcpdump
+  ```
 
-1. **Przechwytywanie pakietów na domyślnym interfejsie:**
-   ```bash
-   tcpdump
-   ```
+- Przechwytywanie pakietów na określonym interfejsie:
+  ```bash
+  tcpdump -i eth0
+  ```
 
-2. **Przechwytywanie pakietów na określonym interfejsie:**
-   ```bash
-   tcpdump -i eth0
-   ```
+- Przechwytywanie tylko 10 pakietów:
+  ```bash
+  tcpdump -c 10
+  ```
 
-3. **Zapis przechwyconych pakietów do pliku:**
-   ```bash
-   tcpdump -w ruch.pcap
-   ```
+- Zapis przechwyconych pakietów do pliku:
+  ```bash
+  tcpdump -w pakiety.pcap
+  ```
 
-4. **Odczyt pakietów z pliku:**
-   ```bash
-   tcpdump -r ruch.pcap
-   ```
+- Odczyt pakietów z pliku:
+  ```bash
+  tcpdump -r pakiety.pcap
+  ```
 
-5. **Przechwytywanie tylko 10 pakietów:**
-   ```bash
-   tcpdump -c 10
-   ```
-
-6. **Przechwytywanie pakietów bez rozwiązywania nazw:**
-   ```bash
-   tcpdump -n
-   ```
-
-## Tips
-- Używaj opcji `-i` do wskazania konkretnego interfejsu, aby uniknąć przechwytywania niepotrzebnych danych.
-- Zapisuj przechwycone pakiety do pliku, aby móc je później analizować w narzędziach takich jak Wireshark.
-- Regularnie korzystaj z opcji `-v`, aby uzyskać więcej informacji o pakietach, co może pomóc w diagnozowaniu problemów.
-- Pamiętaj, że do używania `tcpdump` mogą być wymagane uprawnienia administratora, dlatego warto uruchamiać polecenie z `sudo`, jeśli to konieczne.
+## Wskazówki
+- Używaj opcji `-n`, aby uniknąć opóźnień związanych z rozwiązywaniem nazw hostów.
+- Regularnie filtruj przechwytywane pakiety, aby skupić się na interesujących cię danych, na przykład używając `tcp port 80` do monitorowania ruchu HTTP.
+- Zapisuj przechwycone pakiety do pliku, aby móc je później analizować za pomocą narzędzi takich jak Wireshark.

@@ -1,49 +1,61 @@
-# [Linux] Bash @ gebruik: [verander de bestandsnaam]
+# [Linux] C Shell (csh) @ Gebruik: Voer aritmetische bewerkingen uit
 
 ## Overzicht
-De `mv` (move) opdracht in Bash wordt gebruikt om bestanden of mappen te verplaatsen of om de naam van een bestand of map te wijzigen. Het is een veelzijdige opdracht die essentieel is voor bestandsbeheer in een Linux-omgeving.
+De `@` opdracht in C Shell (csh) wordt gebruikt om eenvoudige aritmetische bewerkingen uit te voeren en variabelen te manipuleren. Het stelt gebruikers in staat om rekenkundige expressies te evalueren en de resultaten aan variabelen toe te wijzen.
 
 ## Gebruik
-De basis syntaxis van de `mv` opdracht is als volgt:
+De basis syntaxis van de `@` opdracht is als volgt:
 
-```bash
-mv [opties] [bronnen] [doel]
+```
+@ [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- `-i`: Vraag om bevestiging voordat een bestaand bestand wordt overschreven.
-- `-u`: Verplaats alleen als de bron nieuwer is dan de bestemming of als de bestemming niet bestaat.
-- `-v`: Toon gedetailleerde uitvoer van wat er gebeurt tijdens de uitvoering van de opdracht.
+## Veelvoorkomende Opties
+- **-v**: Toont de waarde van de variabele na de bewerking.
+- **-n**: Voert de bewerking niet uit, maar toont alleen de opdracht.
 
-## Veelvoorkomende voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van de `mv` opdracht:
+## Veelvoorkomende Voorbeelden
 
-1. **Bestand verplaatsen naar een andere map:**
-   ```bash
-   mv bestand.txt /pad/naar/doelmap/
-   ```
+### Voorbeeld 1: Basis Aritmetische Operatie
+Toewijzen van de som van twee getallen aan een variabele.
 
-2. **Bestand hernoemen:**
-   ```bash
-   mv oude_naam.txt nieuwe_naam.txt
-   ```
+```csh
+set a = 5
+set b = 10
+@ c = $a + $b
+echo $c  # Output: 15
+```
 
-3. **Meerdere bestanden verplaatsen:**
-   ```bash
-   mv bestand1.txt bestand2.txt /pad/naar/doelmap/
-   ```
+### Voorbeeld 2: Vermenigvuldigen van Waarden
+Vermenigvuldigen van twee variabelen en het resultaat opslaan.
 
-4. **Bestand verplaatsen met bevestiging:**
-   ```bash
-   mv -i bestand.txt /pad/naar/doelmap/
-   ```
+```csh
+set x = 4
+set y = 3
+@ z = $x * $y
+echo $z  # Output: 12
+```
 
-5. **Bestand verplaatsen met gedetailleerde uitvoer:**
-   ```bash
-   mv -v bestand.txt /pad/naar/doelmap/
-   ```
+### Voorbeeld 3: Incrementeer een Waarde
+Een waarde met 1 verhogen.
+
+```csh
+set count = 0
+@ count++
+echo $count  # Output: 1
+```
+
+### Voorbeeld 4: Complexe Expressie
+Een complexe wiskundige bewerking uitvoeren.
+
+```csh
+set a = 20
+set b = 5
+@ result = ($a - $b) / 3
+echo $result  # Output: 5
+```
 
 ## Tips
-- Gebruik de `-i` optie om per ongeluk overschrijven van bestanden te voorkomen.
-- Controleer altijd de bestandslocaties voordat je de `mv` opdracht uitvoert, vooral bij het verplaatsen van belangrijke bestanden.
-- Maak gebruik van de `-v` optie om te zien wat er precies gebeurt, vooral als je met meerdere bestanden werkt.
+- Zorg ervoor dat je variabelen zijn ingesteld voordat je ze in een `@` opdracht gebruikt.
+- Gebruik haakjes om de volgorde van bewerkingen te bepalen, vooral bij complexe expressies.
+- Houd rekening met de datatypes van de variabelen; `@` werkt alleen met gehele getallen.

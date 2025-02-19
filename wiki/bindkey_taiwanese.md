@@ -1,44 +1,43 @@
-# [Linux] Bash bindkey 使用方法: 設定鍵盤快捷鍵
+# [台灣] C Shell (csh) bindkey 用法: [設定鍵盤快捷鍵]
 
 ## Overview
-`bindkey` 是一個用於設定和管理鍵盤快捷鍵的命令，主要在 Zsh 環境中使用。透過這個命令，使用者可以自訂鍵盤按鍵的功能，以提高操作效率。
+`bindkey` 命令用於在 C Shell 中設定和管理鍵盤快捷鍵。這個命令可以幫助用戶自定義鍵盤輸入，以提高效率和方便性。
 
 ## Usage
 基本語法如下：
-```bash
+```
 bindkey [options] [arguments]
 ```
 
 ## Common Options
-- `-L`：列出所有當前的鍵盤綁定。
-- `-e`：使用 Emacs 鍵綁定風格。
-- `-v`：使用 Vi 鍵綁定風格。
-- `-s`：將按鍵序列綁定到指定的命令。
+- `-e`：使用 Emacs 鍵綁定。
+- `-v`：使用 Vi 鍵綁定。
+- `-s`：將鍵盤輸入綁定為指定的字串。
 
 ## Common Examples
 以下是一些常見的 `bindkey` 使用範例：
 
-1. 列出當前的鍵盤綁定：
-   ```bash
-   bindkey -L
-   ```
+### 設定 Emacs 鍵綁定
+```csh
+bindkey -e
+```
 
-2. 將 `Ctrl+X` 綁定為 `exit` 命令：
-   ```bash
-   bindkey '^X' exit
-   ```
+### 設定 Vi 鍵綁定
+```csh
+bindkey -v
+```
 
-3. 使用 Emacs 鍵綁定風格：
-   ```bash
-   bindkey -e
-   ```
+### 將 Ctrl+X 綁定為清除螢幕
+```csh
+bindkey "^X" "clear\n"
+```
 
-4. 將 `F2` 鍵綁定為顯示當前日期：
-   ```bash
-   bindkey -s 'F2' 'date\n'
-   ```
+### 將 F1 鍵綁定為顯示幫助
+```csh
+bindkey "^[OP" "man\n"
+```
 
 ## Tips
-- 在修改鍵盤綁定之前，建議先備份當前的設定，以便隨時恢復。
-- 使用 `bindkey -L` 來檢查現有的綁定，避免衝突。
-- 可以將常用的綁定添加到你的 `.zshrc` 檔案中，以便每次啟動終端時自動加載。
+- 在使用 `bindkey` 前，建議先了解當前的鍵綁定，以避免衝突。
+- 可以使用 `bindkey -L` 來列出所有當前的鍵綁定。
+- 定期檢查和更新你的鍵綁定，以適應新的工作流程或習慣。

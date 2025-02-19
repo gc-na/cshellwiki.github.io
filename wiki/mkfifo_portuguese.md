@@ -1,49 +1,47 @@
-# [Linux] Bash mkfifo Uso: Criar um FIFO (First In, First Out)
+# [Linux] C Shell (csh) mkfifo: criar arquivos FIFO
 
 ## Overview
-O comando `mkfifo` é utilizado para criar um arquivo FIFO (First In, First Out) no sistema de arquivos. Um FIFO é um tipo especial de arquivo que permite a comunicação entre processos, onde os dados escritos em um FIFO são lidos na ordem em que foram escritos.
+O comando `mkfifo` é utilizado para criar arquivos FIFO (First In, First Out) no sistema. Esses arquivos permitem a comunicação entre processos, funcionando como canais de dados onde um processo pode escrever e outro pode ler.
 
 ## Usage
 A sintaxe básica do comando `mkfifo` é a seguinte:
 
-```bash
+```csh
 mkfifo [opções] [argumentos]
 ```
 
 ## Common Options
-- `-m, --mode=MODE`: Define as permissões do arquivo FIFO a ser criado. O modo deve ser especificado em formato octal.
-- `--help`: Exibe uma mensagem de ajuda com informações sobre o uso do comando.
-- `--version`: Mostra a versão do comando `mkfifo`.
+- `-m, --mode`: Define as permissões do arquivo FIFO a ser criado.
+- `-Z, --context`: Define o contexto de segurança SELinux para o arquivo.
 
 ## Common Examples
 Aqui estão alguns exemplos práticos do uso do comando `mkfifo`:
 
-### Criar um FIFO simples
-```bash
-mkfifo meu_fifo
-```
-Este comando cria um arquivo FIFO chamado `meu_fifo` no diretório atual.
+1. **Criar um arquivo FIFO simples:**
 
-### Criar um FIFO com permissões específicas
-```bash
-mkfifo -m 644 meu_fifo
-```
-Neste exemplo, o FIFO `meu_fifo` é criado com permissões de leitura e escrita para o proprietário e leitura para o grupo e outros.
+   ```csh
+   mkfifo meu_fifo
+   ```
 
-### Usar um FIFO para comunicação entre processos
-1. Em um terminal, execute:
-   ```bash
-   cat > meu_fifo
+2. **Criar um arquivo FIFO com permissões específicas:**
+
+   ```csh
+   mkfifo -m 644 meu_fifo
    ```
-   Isso aguardará a entrada de dados.
-   
-2. Em outro terminal, execute:
-   ```bash
-   echo "Olá, FIFO!" > meu_fifo
+
+3. **Criar múltiplos arquivos FIFO de uma só vez:**
+
+   ```csh
+   mkfifo fifo1 fifo2 fifo3
    ```
-   O primeiro terminal exibirá "Olá, FIFO!" assim que o comando acima for executado.
+
+4. **Criar um arquivo FIFO com contexto de segurança:**
+
+   ```csh
+   mkfifo -Z meu_fifo
+   ```
 
 ## Tips
-- Sempre verifique as permissões do FIFO após a criação, especialmente se você estiver permitindo que outros usuários acessem o arquivo.
-- Use `rm meu_fifo` para remover um FIFO quando não for mais necessário, assim como faria com um arquivo comum.
-- Lembre-se de que o FIFO bloqueia a leitura até que haja dados disponíveis, então tenha cuidado ao projetar a lógica de comunicação entre processos.
+- Sempre verifique as permissões do arquivo FIFO após a criação, especialmente se vários usuários ou processos irão acessá-lo.
+- Utilize o comando `ls -l` para visualizar as permissões e garantir que estão configuradas corretamente.
+- Lembre-se de que os arquivos FIFO são temporários e devem ser removidos quando não forem mais necessários, utilizando o comando `rm`.

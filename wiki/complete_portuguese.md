@@ -1,47 +1,43 @@
-# [Linux] Bash complete uso completo: Completar comandos e argumentos
+# [Linux] C Shell (csh) complete uso: Completa comandos e argumentos
 
 ## Overview
-O comando `complete` é utilizado no Bash para definir como a autocompletação de comandos e argumentos deve funcionar. Ele permite que os usuários personalizem a forma como o shell completa os comandos, facilitando a utilização do terminal.
+O comando `complete` no C Shell (csh) é utilizado para definir ou exibir as regras de conclusão automática para comandos e seus argumentos. Isso facilita a entrada de comandos, permitindo que o usuário complete automaticamente os nomes de arquivos ou opções de comandos.
 
 ## Usage
-A sintaxe básica do comando `complete` é a seguinte:
+A sintaxe básica do comando é a seguinte:
 
-```bash
+```
 complete [options] [arguments]
 ```
 
 ## Common Options
-- `-A`: Especifica o tipo de argumento que deve ser completado (por exemplo, `-A command` para completar comandos).
-- `-o`: Adiciona opções de comportamento, como `-o nospace` que impede a adição de espaço após a conclusão.
-- `-F`: Define uma função que será chamada para gerar as opções de completamento.
+- `-c`: Define a regra de conclusão para um comando específico.
+- `-d`: Remove a regra de conclusão para um comando.
+- `-l`: Lista todas as regras de conclusão atualmente definidas.
 
 ## Common Examples
-Aqui estão alguns exemplos práticos do uso do comando `complete`:
 
-1. **Completar comandos de um script específico**:
-   ```bash
-   complete -o nospace -F _meu_script_completar meu_script
+1. **Definindo uma regra de conclusão para um comando específico:**
+   ```csh
+   complete -c mycommand 'p/*/p'
    ```
 
-2. **Completar nomes de arquivos com uma extensão específica**:
-   ```bash
-   complete -W "*.txt" meu_comando
+2. **Removendo uma regra de conclusão:**
+   ```csh
+   complete -d mycommand
    ```
 
-3. **Usar uma função para gerar opções de completamento**:
-   ```bash
-   _minha_funcao_completar() {
-       COMPREPLY=( $(compgen -W "opcao1 opcao2 opcao3" -- "${COMP_WORDS[COMP_CWORD]}") )
-   }
-   complete -F _minha_funcao_completar meu_comando
+3. **Listando todas as regras de conclusão:**
+   ```csh
+   complete -l
    ```
 
-4. **Completar diretórios**:
-   ```bash
-   complete -o dirnames -F _meu_comando meu_comando
+4. **Definindo uma regra de conclusão para um comando com opções:**
+   ```csh
+   complete -c git 'p/(add commit push pull)'
    ```
 
 ## Tips
-- Sempre teste suas definições de completamento para garantir que funcionem como esperado.
-- Use funções para gerar opções dinâmicas de completamento, especialmente se você tiver uma lista longa ou variável.
-- Combine `complete` com outros comandos do Bash para melhorar a eficiência do seu fluxo de trabalho no terminal.
+- Sempre verifique as regras de conclusão existentes com `complete -l` antes de adicionar novas, para evitar conflitos.
+- Use regras de conclusão específicas para comandos que você utiliza com frequência, isso pode aumentar sua eficiência na linha de comando.
+- Experimente diferentes padrões de conclusão para encontrar o que melhor se adapta ao seu fluxo de trabalho.

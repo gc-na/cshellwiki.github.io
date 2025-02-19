@@ -1,62 +1,54 @@
-# [Linux] Bash sftp Penggunaan: Transfer file secara aman
+# [Sistem Operasi] C Shell (csh) sftp Penggunaan: Transfer file secara aman
 
 ## Overview
-Perintah `sftp` (SSH File Transfer Protocol) digunakan untuk mentransfer file secara aman antara komputer lokal dan server jarak jauh. Dengan menggunakan protokol SSH, `sftp` menyediakan cara yang aman untuk meng-upload dan mengunduh file.
+Perintah `sftp` (Secure File Transfer Protocol) digunakan untuk mentransfer file secara aman antara komputer lokal dan remote melalui jaringan. Ini adalah bagian dari paket SSH dan menyediakan cara yang aman untuk mengakses, mentransfer, dan mengelola file di server.
 
 ## Usage
-Berikut adalah sintaks dasar dari perintah `sftp`:
+Sintaks dasar dari perintah `sftp` adalah sebagai berikut:
 
-```bash
+```
 sftp [options] [user@]host
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang dapat digunakan dengan `sftp`:
+Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah `sftp`:
 
-- `-P` : Menentukan port yang digunakan untuk koneksi.
-- `-o` : Mengatur opsi SSH, seperti `-o StrictHostKeyChecking=no`.
-- `-b` : Menjalankan perintah dari file batch.
-- `-r` : Mengizinkan pengunduhan dan pengunggahan direktori secara rekursif.
+- `-b batchfile` : Menentukan file batch yang berisi perintah-perintah sftp.
+- `-C` : Mengaktifkan kompresi untuk transfer yang lebih cepat.
+- `-o option` : Mengatur opsi tertentu untuk koneksi SSH.
+- `-P port` : Menentukan port yang digunakan untuk koneksi.
 
 ## Common Examples
+Berikut adalah beberapa contoh praktis penggunaan perintah `sftp`:
 
-### Menghubungkan ke server SFTP
-Untuk menghubungkan ke server SFTP, gunakan perintah berikut:
+1. **Menghubungkan ke server SFTP:**
+   ```bash
+   sftp user@hostname
+   ```
 
-```bash
-sftp user@hostname
-```
+2. **Mengupload file ke server:**
+   ```bash
+   sftp user@hostname
+   put localfile.txt
+   ```
 
-### Mengunduh file dari server
-Untuk mengunduh file dari server SFTP, gunakan perintah:
+3. **Mendownload file dari server:**
+   ```bash
+   sftp user@hostname
+   get remotefile.txt
+   ```
 
-```bash
-get namafile.txt
-```
+4. **Menggunakan file batch untuk mengupload beberapa file:**
+   ```bash
+   sftp -b batchfile.txt user@hostname
+   ```
 
-### Mengunggah file ke server
-Untuk mengunggah file ke server SFTP, gunakan perintah:
-
-```bash
-put namafile.txt
-```
-
-### Mengunduh direktori secara rekursif
-Untuk mengunduh seluruh direktori dari server, gunakan opsi `-r`:
-
-```bash
-get -r namadirektori
-```
-
-### Mengunggah direktori secara rekursif
-Untuk mengunggah seluruh direktori ke server, gunakan:
-
-```bash
-put -r namadirektori
-```
+5. **Mengaktifkan kompresi saat mentransfer:**
+   ```bash
+   sftp -C user@hostname
+   ```
 
 ## Tips
-- Selalu pastikan Anda terhubung ke server yang aman dengan memverifikasi kunci host.
-- Gunakan opsi `-b` untuk menjalankan perintah SFTP secara otomatis dari file skrip.
-- Manfaatkan opsi `-P` jika server SFTP Anda menggunakan port yang berbeda dari port default (22).
-- Untuk keamanan tambahan, pertimbangkan untuk menggunakan kunci SSH daripada kata sandi saat menghubungkan ke server.
+- Selalu gunakan koneksi SFTP untuk menjaga keamanan data saat mentransfer file.
+- Periksa izin file di server setelah mentransfer untuk memastikan bahwa file dapat diakses dengan benar.
+- Gunakan file batch untuk mengotomatiskan proses transfer file jika Anda memiliki banyak file untuk ditransfer.

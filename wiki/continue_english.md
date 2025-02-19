@@ -1,83 +1,83 @@
-# [Linux] Bash continue Usage: Control loop execution
+# [Unix] C Shell (csh) continue 用法等价: Resume execution of a loop
 
 ## Overview
-The `continue` command in Bash is used within loops to skip the current iteration and proceed to the next one. This allows you to bypass certain conditions or commands within the loop without terminating the entire loop.
+The `continue` command in C Shell (csh) is used within loops to skip the remaining commands in the current iteration and proceed to the next iteration of the loop. This is particularly useful when you want to bypass certain conditions without terminating the entire loop.
 
 ## Usage
 The basic syntax of the `continue` command is as follows:
 
-```bash
+```csh
 continue [n]
 ```
 
-Here, `n` is an optional argument that specifies how many levels of nested loops to skip. If not provided, it defaults to 1.
+Here, `n` is an optional argument that specifies how many levels of nested loops to continue. If `n` is not provided, it defaults to 1, meaning it will continue the innermost loop.
 
 ## Common Options
-- `n`: Specifies the number of nested loops to skip. For example, `continue 2` will skip to the next iteration of the second outermost loop.
+- `n`: Specifies the number of nested loops to continue. If you have multiple nested loops, you can use this option to skip to the next iteration of a specific loop level.
 
 ## Common Examples
 
-### Example 1: Basic Usage
-In this example, we use `continue` to skip even numbers in a loop.
+### Example 1: Basic usage in a loop
+In this example, the loop iterates through numbers 1 to 5, but skips the number 3.
 
-```bash
-for i in {1..10}; do
-    if (( i % 2 == 0 )); then
+```csh
+foreach i (1 2 3 4 5)
+    if ($i == 3) then
         continue
-    fi
+    endif
     echo $i
-done
+end
 ```
-*Output:*
+**Output:**
 ```
 1
-3
+2
+4
 5
-7
-9
 ```
 
-### Example 2: Skipping Specific Conditions
-Here, we skip processing when a variable equals a certain value.
+### Example 2: Continuing a nested loop
+Here’s an example with nested loops where we skip the inner loop when `j` is 2.
 
-```bash
-for file in file1.txt file2.txt file3.txt; do
-    if [[ $file == "file2.txt" ]]; then
-        continue
-    fi
-    echo "Processing $file"
-done
-```
-*Output:*
-```
-Processing file1.txt
-Processing file3.txt
-```
-
-### Example 3: Nested Loops
-In this example, we use `continue` to skip to the next iteration of the outer loop.
-
-```bash
-for i in {1..3}; do
-    for j in {1..3}; do
-        if (( j == 2 )); then
+```csh
+foreach i (1 2)
+    foreach j (1 2 3)
+        if ($j == 2) then
             continue 2
-        fi
-        echo "i: $i, j: $j"
-    done
-done
+        endif
+        echo "$i $j"
+    end
+end
 ```
-*Output:*
+**Output:**
 ```
-i: 1, j: 1
-i: 1, j: 3
-i: 2, j: 1
-i: 2, j: 3
-i: 3, j: 1
-i: 3, j: 3
+1 1
+1 3
+2 1
+2 3
+```
+
+### Example 3: Using `continue` with a condition
+In this example, we only print even numbers from 1 to 10.
+
+```csh
+foreach i (1 2 3 4 5 6 7 8 9 10)
+    if ($i % 2 != 0) then
+        continue
+    endif
+    echo $i
+end
+```
+**Output:**
+```
+2
+4
+6
+8
+10
 ```
 
 ## Tips
-- Use `continue` to enhance the readability of your loops by avoiding deeply nested conditional statements.
-- Remember that `continue` only affects the loop it is called in; if you have nested loops, specify the level of the loop you want to continue.
-- Combine `continue` with other control structures like `if` to create more complex loop behaviors.
+- Use `continue` to make your loops cleaner by avoiding deeply nested `if` statements.
+- Always ensure that the condition for `continue` is clearly defined to avoid skipping unintended iterations.
+- When using nested loops, specify the correct level with `n` to avoid confusion about which loop is being continued.

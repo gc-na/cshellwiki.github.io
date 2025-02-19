@@ -1,22 +1,23 @@
-# [Linux] Bash wget gebruik: Bestanden downloaden van het web
+# [Linux] C Shell (csh) wget gebruik: Bestanden downloaden van het web
 
 ## Overzicht
-De `wget`-opdracht is een krachtige tool in de Bash-omgeving die wordt gebruikt om bestanden van het internet te downloaden. Het ondersteunt verschillende protocollen, waaronder HTTP, HTTPS en FTP, en kan worden gebruikt voor zowel eenvoudige downloads als meer geavanceerde taken zoals het downloaden van volledige websites.
+De `wget`-opdracht is een krachtige tool die wordt gebruikt om bestanden van het internet te downloaden. Het ondersteunt verschillende protocollen zoals HTTP, HTTPS en FTP, en kan worden gebruikt voor zowel eenvoudige downloads als complexe taken zoals het mirroren van websites.
 
 ## Gebruik
 De basis syntaxis van de `wget`-opdracht is als volgt:
-```bash
+
+```
 wget [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
-- `-O <bestand>`: Sla het gedownloade bestand op met een specifieke naam.
+## Veelvoorkomende opties
+- `-O <bestand>`: Sla het gedownloade bestand op met de opgegeven naam.
+- `-q`: Voer de opdracht uit in stille modus, zonder uitvoer naar het scherm.
+- `-r`: Download bestanden recursief, wat handig is voor het mirroren van websites.
 - `-c`: Hervat een onderbroken download.
-- `-r`: Download bestanden recursief (bijvoorbeeld voor het downloaden van een hele website).
-- `-p`: Download alle benodigde bestanden om een webpagina correct weer te geven (zoals afbeeldingen en CSS).
-- `--limit-rate=<snelheid>`: Beperk de downloadsnelheid tot een bepaalde waarde.
+- `--limit-rate=<snelheid>`: Beperk de downloadsnelheid tot de opgegeven waarde.
 
-## Veelvoorkomende Voorbeelden
+## Veelvoorkomende voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van `wget`:
 
 1. **Een enkel bestand downloaden:**
@@ -24,27 +25,32 @@ Hier zijn enkele praktische voorbeelden van het gebruik van `wget`:
    wget https://example.com/bestand.zip
    ```
 
-2. **Een bestand opslaan met een specifieke naam:**
+2. **Een bestand opslaan met een andere naam:**
    ```bash
-   wget -O mijn_bestand.zip https://example.com/bestand.zip
+   wget -O nieuwe_naam.zip https://example.com/bestand.zip
    ```
 
-3. **Een download hervatten:**
+3. **Downloaden in stille modus:**
    ```bash
-   wget -c https://example.com/groot_bestand.zip
+   wget -q https://example.com/bestand.zip
    ```
 
-4. **Een hele website downloaden:**
+4. **Recursief downloaden van een website:**
    ```bash
-   wget -r https://example.com
+   wget -r https://example.com/
    ```
 
-5. **Alle benodigde bestanden voor een webpagina downloaden:**
+5. **Een onderbroken download hervatten:**
    ```bash
-   wget -p https://example.com/pagina.html
+   wget -c https://example.com/bestand.zip
+   ```
+
+6. **De downloadsnelheid beperken:**
+   ```bash
+   wget --limit-rate=200k https://example.com/bestand.zip
    ```
 
 ## Tips
-- Gebruik de optie `-q` voor stille downloads, zodat er geen output naar de terminal wordt gestuurd.
-- Combineer de `-r` en `--limit-rate` opties om grote websites efficiënt te downloaden zonder je bandbreedte te overbelasten.
-- Controleer altijd de rechten en het beleid van de website voordat je grote hoeveelheden gegevens downloadt, om te voorkomen dat je de server overbelast.
+- Gebruik de `-q` optie voor stille downloads als je niet wilt dat de terminal volloopt met uitvoer.
+- Combineer de `-r` optie met `-np` (no parent) om te voorkomen dat je naar bovenliggende mappen in de directorystructuur gaat.
+- Controleer altijd de downloadlink voordat je een bestand downloadt om te zorgen dat het veilig is.

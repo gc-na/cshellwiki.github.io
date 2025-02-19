@@ -1,47 +1,44 @@
-# [Linux] Bash env gebruik: Omgevingsvariabelen beheren
+# [Linux] C Shell (csh) env gebruik: Omgevingsvariabelen beheren
 
 ## Overzicht
-De `env`-opdracht in Bash wordt gebruikt om omgevingsvariabelen te beheren en om programma's met een aangepaste omgeving uit te voeren. Het stelt gebruikers in staat om de huidige omgevingsvariabelen te bekijken of nieuwe omgevingsvariabelen te definiëren voor een specifieke opdracht.
+Het `env` commando in C Shell (csh) wordt gebruikt om omgevingsvariabelen te beheren en om programma's uit te voeren met een aangepaste omgeving. Het stelt gebruikers in staat om de variabelen die beschikbaar zijn voor een bepaald commando te wijzigen of te bekijken.
 
 ## Gebruik
-De basis syntaxis van de `env`-opdracht is als volgt:
+De basis syntaxis van het `env` commando is als volgt:
 
-```bash
+```csh
 env [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
+## Veelvoorkomende Opties
 - `-i`: Start een nieuwe omgeving zonder bestaande omgevingsvariabelen.
-- `-u VAR`: Verwijdert de opgegeven omgevingsvariabele VAR uit de omgeving.
-- `VAR=value`: Definieert een nieuwe omgevingsvariabele VAR met de opgegeven waarde.
+- `-u VAR`: Verwijdert de opgegeven omgevingsvariabele `VAR` uit de omgeving.
+- `VAR=waarde`: Stelt een nieuwe omgevingsvariabele in of wijzigt een bestaande variabele voor de uitvoering van het volgende commando.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van het `env` commando:
 
-1. **Weergeven van omgevingsvariabelen**:
-   Om alle huidige omgevingsvariabelen weer te geven, gebruik je:
-   ```bash
+1. **Bekijk alle omgevingsvariabelen**:
+   ```csh
    env
    ```
 
-2. **Een programma uitvoeren met een aangepaste omgevingsvariabele**:
-   Om een programma uit te voeren met een specifieke omgevingsvariabele, bijvoorbeeld `MY_VAR`, gebruik je:
-   ```bash
-   env MY_VAR=waarde mijn_programma
+2. **Voer een commando uit met een specifieke omgevingsvariabele**:
+   ```csh
+   env PATH=/usr/local/bin mycommand
    ```
 
-3. **Een programma uitvoeren zonder bestaande omgevingsvariabelen**:
-   Om een programma te starten zonder enige bestaande omgevingsvariabelen, gebruik je:
-   ```bash
-   env -i mijn_programma
+3. **Verwijder een omgevingsvariabele voor een commando**:
+   ```csh
+   env -u USER mycommand
    ```
 
-4. **Verwijderen van een omgevingsvariabele**:
-   Om een omgevingsvariabele te verwijderen voordat je een programma uitvoert, gebruik je:
-   ```bash
-   env -u MY_VAR mijn_programma
+4. **Start een nieuwe omgeving zonder bestaande variabelen**:
+   ```csh
+   env -i /bin/bash
    ```
 
 ## Tips
-- Gebruik `env` om snel omgevingsvariabelen te testen zonder je shell-configuratie aan te passen.
-- Het gebruik van `env -i` is handig voor het debuggen van programma's die afhankelijk zijn van specifieke omgevingsvariabelen.
-- Vergeet niet dat omgevingsvariabelen hoofdlettergevoelig zijn; `VAR` en `var` worden als verschillende variabelen beschouwd.
+- Gebruik `env` om tijdelijke omgevingsvariabelen in te stellen zonder de huidige sessie te beïnvloeden.
+- Wees voorzichtig met het gebruik van `-i`, omdat dit alle bestaande variabelen verwijdert, wat kan leiden tot onverwachte resultaten.
+- Combineer `env` met andere commando's om de uitvoer van scripts en programma's aan te passen aan specifieke behoeften.

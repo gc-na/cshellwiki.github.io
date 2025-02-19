@@ -1,42 +1,37 @@
-# [Linux] Bash wall gebruik: Stuur een bericht naar alle ingelogde gebruikers
+# [Linux] C Shell (csh) wall gebruik: verzend een bericht naar alle gebruikers
 
 ## Overzicht
-De `wall` (write all) opdracht in Bash wordt gebruikt om een bericht naar alle ingelogde gebruikers op een systeem te sturen. Dit kan handig zijn voor systeembeheerders om belangrijke mededelingen of waarschuwingen te delen.
+De `wall` (write all) opdracht in C Shell (csh) wordt gebruikt om een bericht naar alle ingelogde gebruikers op een systeem te verzenden. Dit kan handig zijn voor systeembeheerders om belangrijke mededelingen of waarschuwingen te communiceren.
 
 ## Gebruik
 De basis syntaxis van de `wall` opdracht is als volgt:
 
-```bash
-wall [opties] [bestanden]
+```csh
+wall [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
-- `-n`: Schakel de melding uit dat het bericht naar de gebruikers is verzonden.
-- `-f`: Forceer het verzenden van het bericht, zelfs als de terminal van de gebruiker niet beschikbaar is.
+## Veelvoorkomende opties
+- `-n`: Schakel de melding uit dat het bericht is verzonden.
+- `-f`: Lees het bericht uit een bestand in plaats van van de standaardinvoer.
 
-## Veelvoorkomende Voorbeelden
+## Veelvoorkomende voorbeelden
 
-1. **Stuur een eenvoudig bericht:**
-   ```bash
-   echo "Systeemonderhoud om 22:00 uur" | wall
+1. Een eenvoudig bericht verzenden:
+   ```csh
+   wall "Het systeem wordt binnenkort opnieuw opgestart."
    ```
 
-2. **Stuur een bericht vanuit een bestand:**
-   ```bash
-   wall /pad/naar/bericht.txt
+2. Een bericht verzenden vanuit een bestand:
+   ```csh
+   wall -f /pad/naar/bericht.txt
    ```
 
-3. **Gebruik een optie om de melding uit te schakelen:**
-   ```bash
-   echo "Let op: systeem zal opnieuw opstarten" | wall -n
-   ```
-
-4. **Forceer het verzenden van een bericht:**
-   ```bash
-   echo "Belangrijke update: controleer je e-mail" | wall -f
+3. Een bericht verzenden zonder bevestiging:
+   ```csh
+   wall -n "Let op: onderhoud gepland voor vanavond."
    ```
 
 ## Tips
-- Zorg ervoor dat je de juiste machtigingen hebt om `wall` te gebruiken, aangezien niet alle gebruikers berichten naar anderen kunnen sturen.
-- Houd je berichten kort en duidelijk om verwarring te voorkomen.
-- Gebruik `wall` met mate, aangezien te veel berichten storend kunnen zijn voor gebruikers.
+- Gebruik `wall` met zorg, aangezien het alle gebruikers kan storen.
+- Zorg ervoor dat je berichten duidelijk en beknopt zijn.
+- Test je berichten eerst in een kleine groep voordat je ze naar alle gebruikers verzendt.

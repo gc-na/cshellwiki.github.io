@@ -1,42 +1,44 @@
-# [Linux] Bash swapon użycie: Włączanie przestrzeni wymiany
+# [Linux] C Shell (csh) swapon użycie: Włączanie pamięci swap
 
-## Overview
-Polecenie `swapon` służy do aktywacji przestrzeni wymiany (swap) w systemie Linux. Przestrzeń wymiany jest używana przez system operacyjny do przechowywania danych, które nie mieszczą się w pamięci RAM, co pozwala na efektywniejsze zarządzanie pamięcią.
+## Przegląd
+Polecenie `swapon` służy do aktywacji plików lub partycji swap w systemie operacyjnym. Swap to obszar na dysku twardym, który jest używany jako dodatkowa pamięć, gdy pamięć RAM jest pełna. Umożliwia to systemowi zarządzanie większą ilością danych, co może poprawić wydajność w przypadku dużych obciążeń.
 
-## Usage
+## Użycie
 Podstawowa składnia polecenia `swapon` jest następująca:
 
-```bash
+```csh
 swapon [opcje] [argumenty]
 ```
 
-## Common Options
-- `-a` – Aktywuje wszystkie urządzenia wymiany wymienione w pliku `/etc/fstab`.
-- `-e` – Sprawdza, czy przestrzeń wymiany jest poprawna przed jej aktywacją.
-- `-s` – Wyświetla informacje o aktywnych przestrzeniach wymiany.
+## Typowe opcje
+- `-a` – Aktywuje wszystkie pliki swap wymienione w pliku `/etc/fstab`.
+- `-e` – Sprawdza, czy pliki swap są poprawne przed ich aktywacją.
+- `-s` – Wyświetla statystyki dotyczące aktywnych plików swap.
 
-## Common Examples
-1. Aktywacja przestrzeni wymiany zdefiniowanej w pliku `/etc/fstab`:
-   ```bash
+## Przykłady
+Oto kilka praktycznych przykładów użycia polecenia `swapon`:
+
+1. Aktywacja wszystkich plików swap z pliku `/etc/fstab`:
+   ```csh
    swapon -a
    ```
 
-2. Aktywacja konkretnego pliku wymiany:
-   ```bash
+2. Aktywacja konkretnego pliku swap:
+   ```csh
    swapon /path/to/swapfile
    ```
 
-3. Sprawdzenie aktywnych przestrzeni wymiany:
-   ```bash
+3. Wyświetlenie statystyk dotyczących aktywnych plików swap:
+   ```csh
    swapon -s
    ```
 
-4. Aktywacja przestrzeni wymiany z weryfikacją:
-   ```bash
+4. Aktywacja pliku swap z weryfikacją:
+   ```csh
    swapon -e /path/to/swapfile
    ```
 
-## Tips
-- Upewnij się, że przestrzeń wymiany została poprawnie utworzona przed jej aktywacją.
-- Regularnie sprawdzaj status przestrzeni wymiany, aby upewnić się, że system działa optymalnie.
-- Rozważ użycie `swapon -a` po każdorazowym uruchomieniu systemu, aby automatycznie aktywować przestrzenie wymiany.
+## Wskazówki
+- Upewnij się, że pliki swap mają odpowiednie uprawnienia, aby uniknąć problemów z aktywacją.
+- Regularnie sprawdzaj statystyki swap, aby monitorować wykorzystanie pamięci w systemie.
+- Pamiętaj, aby deaktywować pliki swap za pomocą polecenia `swapoff`, gdy nie są już potrzebne, aby zwolnić zasoby systemowe.

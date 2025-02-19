@@ -1,10 +1,10 @@
-# [Linux] Bash helm 使用法: Kubernetes アプリケーションの管理
+# [日本] C Shell (csh) helm 使用法: パッケージ管理とデプロイメント
 
 ## 概要
-`helm` コマンドは、Kubernetes アプリケーションのパッケージマネージャーであり、アプリケーションのインストール、アップグレード、削除を簡単に行うことができます。Helm チャートを使用することで、複雑なアプリケーションのデプロイを簡素化します。
+`helm` コマンドは、Kubernetes のパッケージマネージャーであり、アプリケーションのデプロイメントや管理を簡素化するために使用されます。Helm チャートを利用することで、複雑なアプリケーションを簡単にインストール、アップグレード、削除できます。
 
 ## 使用法
-基本的な構文は次のとおりです。
+基本的な構文は以下の通りです。
 
 ```bash
 helm [options] [arguments]
@@ -13,39 +13,39 @@ helm [options] [arguments]
 ## 一般的なオプション
 - `install`: 新しいリリースをインストールします。
 - `upgrade`: 既存のリリースをアップグレードします。
-- `uninstall`: リリースを削除します。
-- `list`: インストールされているリリースの一覧を表示します。
+- `delete`: 指定したリリースを削除します。
+- `list`: 現在のリリースのリストを表示します。
 - `repo`: Helm リポジトリを管理します。
 
 ## 一般的な例
-以下に、`helm` コマンドのいくつかの実用的な例を示します。
+以下は、`helm` コマンドのいくつかの実用的な例です。
 
-### アプリケーションのインストール
+### 1. アプリケーションのインストール
 ```bash
-helm install my-release stable/nginx
+helm install my-release stable/mysql
 ```
 
-### アプリケーションのアップグレード
+### 2. アプリケーションのアップグレード
 ```bash
-helm upgrade my-release stable/nginx
+helm upgrade my-release stable/mysql --set mysqlRootPassword=newpassword
 ```
 
-### アプリケーションの削除
+### 3. アプリケーションの削除
 ```bash
-helm uninstall my-release
+helm delete my-release
 ```
 
-### インストールされているリリースの一覧表示
+### 4. リリースのリスト表示
 ```bash
 helm list
 ```
 
-### リポジトリの追加
+### 5. リポジトリの追加
 ```bash
-helm repo add my-repo https://example.com/charts
+helm repo add stable https://charts.helm.sh/stable
 ```
 
 ## ヒント
-- Helm チャートを使用する際は、公式のリポジトリを確認して、信頼できるチャートを選択しましょう。
-- リリースのバージョン管理を行うために、適切なバージョンを指定してインストールやアップグレードを行うことをお勧めします。
-- `helm` コマンドのヘルプを表示するには、`helm help` を使用して、利用可能なオプションやコマンドを確認できます。
+- Helm チャートのバージョン管理を行うことで、アプリケーションの安定性を保つことができます。
+- 公式の Helm ドキュメントを参照して、最新の機能やベストプラクティスを確認してください。
+- テスト環境で変更を試すことをお勧めします。これにより、本番環境への影響を最小限に抑えることができます。

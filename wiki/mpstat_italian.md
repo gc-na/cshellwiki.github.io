@@ -1,47 +1,45 @@
-# [Linux] Bash mpstat Utilizzo: Monitoraggio delle statistiche CPU
+# [Linux] C Shell (csh) mpstat Utilizzo: Monitorare le statistiche della CPU
 
 ## Overview
-Il comando `mpstat` è utilizzato per visualizzare le statistiche di utilizzo della CPU su sistemi Linux. Fornisce informazioni dettagliate sull'attività della CPU, consentendo agli utenti di monitorare le prestazioni del sistema e identificare eventuali colli di bottiglia.
+Il comando `mpstat` è utilizzato per visualizzare le statistiche di utilizzo della CPU in un sistema. Fornisce informazioni dettagliate sulle prestazioni della CPU, consentendo agli utenti di monitorare l'attività della CPU in tempo reale.
 
 ## Usage
 La sintassi di base del comando `mpstat` è la seguente:
 
-```bash
+```csh
 mpstat [options] [arguments]
 ```
 
 ## Common Options
 - `-P ALL`: Mostra le statistiche per tutte le CPU.
-- `-u`: Visualizza le statistiche di utilizzo della CPU in percentuale.
-- `-h`: Mostra l'output in un formato leggibile.
-- `-o`: Specifica il formato di output (es. CSV).
-- `interval`: Specifica l'intervallo di tempo tra le misurazioni (in secondi).
-- `count`: Numero di volte che il comando deve essere eseguito.
+- `-u`: Visualizza l'utilizzo della CPU in percentuale.
+- `-w`: Mostra le statistiche di attesa della CPU.
+- `-h`: Mostra l'help con le opzioni disponibili.
 
 ## Common Examples
-Ecco alcuni esempi pratici di utilizzo del comando `mpstat`:
+Ecco alcuni esempi pratici dell'uso del comando `mpstat`:
 
 1. **Visualizzare le statistiche di utilizzo della CPU per tutte le CPU:**
-   ```bash
+   ```csh
    mpstat -P ALL
    ```
 
-2. **Monitorare l'utilizzo della CPU ogni 2 secondi per 5 volte:**
-   ```bash
-   mpstat 2 5
+2. **Visualizzare l'utilizzo della CPU ogni 5 secondi:**
+   ```csh
+   mpstat 5
    ```
 
-3. **Visualizzare le statistiche di utilizzo della CPU in formato leggibile:**
-   ```bash
-   mpstat -h
+3. **Mostrare solo l'utilizzo della CPU:**
+   ```csh
+   mpstat -u
    ```
 
-4. **Esportare le statistiche in formato CSV:**
-   ```bash
-   mpstat -o CSV
+4. **Visualizzare le statistiche di attesa della CPU:**
+   ```csh
+   mpstat -w
    ```
 
 ## Tips
-- Utilizza l'opzione `-P ALL` per ottenere una panoramica completa delle prestazioni di tutte le CPU, specialmente su sistemi multi-core.
-- Monitora l'utilizzo della CPU durante i picchi di carico per identificare eventuali problemi di prestazioni.
-- Considera di eseguire `mpstat` in combinazione con altri strumenti di monitoraggio per un'analisi più approfondita del sistema.
+- Utilizza l'opzione `-P ALL` per avere una visione completa dell'utilizzo della CPU su sistemi multi-core.
+- Esegui `mpstat` in combinazione con altri strumenti di monitoraggio per ottenere un quadro più dettagliato delle prestazioni del sistema.
+- Considera di impostare un intervallo di aggiornamento per monitorare le tendenze nel tempo, ad esempio utilizzando `mpstat 1` per aggiornamenti ogni secondo.

@@ -1,48 +1,47 @@
-# [Linux] Bash colrm użycie: Usuwanie kolumn z tekstu
+# [Linux] C Shell (csh) colrm Użycie: Usuwa kolumny z tekstu
 
 ## Overview
-Polecenie `colrm` w systemie Linux służy do usuwania określonych kolumn z tekstu w plikach lub z wejścia standardowego. Jest to przydatne narzędzie, gdy potrzebujemy przetworzyć dane tekstowe i usunąć niepotrzebne informacje.
+Polecenie `colrm` w C Shell (csh) służy do usuwania określonych kolumn z tekstu w plikach lub z danych wejściowych. Jest to przydatne narzędzie, gdy potrzebujesz przefiltrować dane, aby skupić się tylko na interesujących cię częściach.
 
 ## Usage
 Podstawowa składnia polecenia `colrm` wygląda następująco:
 
-```bash
+```csh
 colrm [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-f` : Określa numer kolumny, od której ma rozpocząć się usuwanie.
-- `-l` : Określa numer kolumny, do której ma trwać usuwanie.
-- `-o` : Używane do wyjścia do pliku zamiast do standardowego wyjścia.
+- `-` : Umożliwia określenie zakresu kolumn do usunięcia, np. `1-5` usunie kolumny od 1 do 5.
+- `-c` : Użyj tej opcji, aby usunąć kolumny z danych wejściowych, które są przekazywane przez potok.
 
 ## Common Examples
 Oto kilka praktycznych przykładów użycia polecenia `colrm`:
 
-1. Usuwanie kolumn od 5 do 10 z pliku `dane.txt`:
+1. Usunięcie kolumn od 1 do 3 z pliku `dane.txt`:
 
-    ```bash
-    colrm 5 10 < dane.txt
+    ```csh
+    colrm 1-3 dane.txt
     ```
 
-2. Usuwanie kolumn od 1 do 3 z wejścia standardowego:
+2. Usunięcie kolumn od 2 do 4 z danych wejściowych przekazywanych przez potok:
 
-    ```bash
-    echo -e "kolumna1 kolumna2 kolumna3 kolumna4" | colrm 1 3
+    ```csh
+    cat dane.txt | colrm 2-4
     ```
 
-3. Usuwanie kolumn od 2 do końca z pliku `przyklad.txt`:
+3. Usunięcie tylko pierwszej kolumny z pliku `przyklad.txt`:
 
-    ```bash
-    colrm 2 < przyklad.txt
+    ```csh
+    colrm 1 przyklad.txt
     ```
 
-4. Usuwanie kolumn od 1 do 4 i zapisanie wyniku do nowego pliku `wynik.txt`:
+4. Usunięcie kolumn od 3 do 6 z pliku i zapisanie wyniku do nowego pliku `wynik.txt`:
 
-    ```bash
-    colrm 1 4 < dane.txt > wynik.txt
+    ```csh
+    colrm 3-6 dane.txt > wynik.txt
     ```
 
 ## Tips
-- Używaj `colrm` w połączeniu z innymi poleceniami, takimi jak `grep` lub `awk`, aby uzyskać bardziej zaawansowane przetwarzanie tekstu.
-- Zawsze sprawdzaj wynik działania polecenia na małych próbkach danych, aby upewnić się, że usuwane kolumny są zgodne z oczekiwaniami.
-- Możesz używać `colrm` w skryptach bash do automatyzacji przetwarzania plików tekstowych.
+- Zawsze sprawdzaj, jakie kolumny chcesz usunąć, aby nie stracić ważnych danych.
+- Możesz używać `colrm` w połączeniu z innymi poleceniami, aby tworzyć bardziej złożone potoki przetwarzania danych.
+- Używaj opcji `-c`, gdy chcesz szybko przefiltrować dane bez zapisywania ich do pliku.

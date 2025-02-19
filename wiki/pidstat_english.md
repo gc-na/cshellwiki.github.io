@@ -1,7 +1,7 @@
-# [Linux] Bash pidstat Uso: Monitor process statistics
+# [Linux] C Shell (csh) pidstat 使用法: Monitor process statistics
 
 ## Overview
-The `pidstat` command is a part of the `sysstat` package and is used to monitor individual process statistics in Linux. It provides detailed information about CPU usage, memory usage, and other performance metrics for running processes, making it a valuable tool for system administrators and developers.
+The `pidstat` command is a useful tool for monitoring individual process statistics in real-time. It provides detailed information about CPU usage, memory consumption, and other performance metrics for running processes, making it invaluable for system administrators and developers who need to optimize performance.
 
 ## Usage
 The basic syntax of the `pidstat` command is as follows:
@@ -11,51 +11,41 @@ pidstat [options] [arguments]
 ```
 
 ## Common Options
-- `-h`: Display the help message with available options.
-- `-p <pid>`: Monitor a specific process by its process ID (PID).
+- `-h`: Display the output in a human-readable format.
 - `-r`: Report memory usage statistics.
 - `-u`: Report CPU usage statistics.
-- `-d`: Report I/O statistics.
-- `-t`: Report statistics for threads.
+- `-p <pid>`: Specify the process ID to monitor.
+- `-t`: Display statistics for threads.
 
 ## Common Examples
+Here are some practical examples of how to use the `pidstat` command:
 
-### Monitor CPU Usage of All Processes
-To display CPU usage statistics for all running processes:
+1. **Monitor CPU usage for all processes:**
+   ```bash
+   pidstat -u 1
+   ```
+   This command will display CPU usage statistics for all processes every second.
 
-```bash
-pidstat
-```
+2. **Monitor memory usage for a specific process:**
+   ```bash
+   pidstat -r -p 1234 1
+   ```
+   Replace `1234` with the actual process ID. This will show memory usage statistics for the specified process every second.
 
-### Monitor a Specific Process
-To monitor a specific process with PID 1234:
+3. **Monitor both CPU and memory usage:**
+   ```bash
+   pidstat -u -r 1
+   ```
+   This command will provide both CPU and memory usage statistics for all processes every second.
 
-```bash
-pidstat -p 1234
-```
-
-### Monitor Memory Usage
-To report memory usage statistics for all processes:
-
-```bash
-pidstat -r
-```
-
-### Monitor CPU and Memory Usage with Interval
-To monitor CPU and memory usage every 2 seconds:
-
-```bash
-pidstat -r -u 2
-```
-
-### Monitor I/O Statistics
-To report I/O statistics for all processes:
-
-```bash
-pidstat -d
-```
+4. **Monitor thread statistics for a specific process:**
+   ```bash
+   pidstat -t -p 5678 1
+   ```
+   Replace `5678` with the desired process ID. This will display thread-level statistics for the specified process every second.
 
 ## Tips
-- Use the `-h` option to quickly view all available options and their descriptions.
-- Combine options to get a comprehensive view of process performance, such as `pidstat -r -u -d`.
-- Consider using `pidstat` in conjunction with other monitoring tools like `top` or `htop` for a more complete analysis of system performance.
+- Use the `-h` option to make the output more readable, especially when dealing with large numbers.
+- Combine options to get a comprehensive view of process performance; for example, using `-u -r` together.
+- Regularly monitor processes during peak usage times to identify performance bottlenecks.
+- Consider redirecting the output to a file for further analysis using `pidstat [options] > output.txt`.

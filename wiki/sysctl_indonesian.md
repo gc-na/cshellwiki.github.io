@@ -1,45 +1,45 @@
-# [Linux] Bash sysctl Penggunaan: Mengelola parameter kernel
+# [Sistem Operasi] C Shell (csh) sysctl Penggunaan: Mengelola parameter kernel
 
 ## Overview
-Perintah `sysctl` digunakan untuk mengelola dan mengonfigurasi parameter kernel Linux pada waktu berjalan. Dengan menggunakan `sysctl`, pengguna dapat membaca dan mengubah pengaturan sistem yang mempengaruhi perilaku kernel dan subsistem.
+Perintah `sysctl` digunakan untuk mengelola dan mengonfigurasi parameter kernel di sistem operasi berbasis Unix. Dengan `sysctl`, pengguna dapat membaca dan mengubah pengaturan kernel secara langsung, yang dapat mempengaruhi kinerja dan perilaku sistem.
 
 ## Usage
-Sintaks dasar dari perintah `sysctl` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `sysctl`:
 
-```bash
+```csh
 sysctl [options] [arguments]
 ```
 
 ## Common Options
 - `-a`: Menampilkan semua parameter kernel yang dapat diatur.
 - `-w`: Mengubah nilai parameter kernel.
-- `-p [file]`: Membaca parameter dari file konfigurasi, biasanya `/etc/sysctl.conf`.
 - `-n`: Menampilkan nilai parameter tanpa nama parameter.
+- `-q`: Menyembunyikan pesan kesalahan.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan `sysctl`:
+Berikut adalah beberapa contoh penggunaan perintah `sysctl`:
 
-1. **Menampilkan semua parameter kernel**:
-   ```bash
+1. Menampilkan semua parameter kernel:
+   ```csh
    sysctl -a
    ```
 
-2. **Mengubah nilai parameter kernel** (misalnya, mengubah ukuran buffer TCP):
-   ```bash
-   sysctl -w net.core.rmem_max=16777216
+2. Mengubah nilai parameter kernel (misalnya, mengubah ukuran buffer TCP):
+   ```csh
+   sysctl -w net.ipv4.tcp_rmem="4096 87380 6291456"
    ```
 
-3. **Membaca nilai parameter tertentu** (misalnya, untuk melihat nilai maksimum buffer TCP):
-   ```bash
-   sysctl net.core.rmem_max
+3. Menampilkan nilai spesifik dari parameter kernel:
+   ```csh
+   sysctl -n net.ipv4.ip_forward
    ```
 
-4. **Membaca parameter dari file konfigurasi**:
-   ```bash
-   sysctl -p
+4. Menyembunyikan pesan kesalahan saat menampilkan nilai parameter:
+   ```csh
+   sysctl -q net.ipv4.conf.all.forwarding
    ```
 
 ## Tips
-- Selalu periksa nilai parameter yang ingin diubah sebelum melakukan perubahan untuk menghindari masalah sistem.
-- Gunakan `sysctl -n` jika Anda hanya ingin melihat nilai tanpa informasi tambahan.
-- Setelah mengubah parameter dengan `sysctl -w`, pertimbangkan untuk menambahkannya ke file `/etc/sysctl.conf` agar perubahan tetap ada setelah reboot.
+- Selalu pastikan untuk memeriksa nilai parameter sebelum mengubahnya untuk menghindari masalah pada sistem.
+- Gunakan opsi `-n` untuk mendapatkan nilai parameter tanpa informasi tambahan, yang berguna untuk skrip otomatis.
+- Simpan perubahan yang dilakukan dengan `sysctl -w` ke dalam file konfigurasi sistem agar tetap berlaku setelah reboot.

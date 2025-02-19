@@ -1,52 +1,52 @@
-# [Linux] Bash udevadm gebruik: Beheer van apparaatbeheer
+# [Linux] C Shell (csh) udevadm gebruik: Beheer van udev apparaten
 
 ## Overzicht
-Het `udevadm` commando is een hulpmiddel voor het beheren van de udev daemon, die verantwoordelijk is voor het dynamisch beheren van apparaatbestanden in Linux. Het stelt gebruikers in staat om informatie over apparaten te bekijken, regels te beheren en de status van de udev daemon te controleren.
+Het `udevadm` commando is een hulpmiddel voor het beheren van de udev daemon, die verantwoordelijk is voor het dynamisch beheren van apparaten in Linux-systemen. Met `udevadm` kunnen gebruikers informatie over apparaten opvragen, regels beheren en de status van de udev daemon controleren.
 
 ## Gebruik
-De basisstructuur van het `udevadm` commando is als volgt:
+De basis syntaxis van het `udevadm` commando is als volgt:
 
-```bash
+```
 udevadm [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
-- `info`: Toon informatie over een specifiek apparaat.
-- `trigger`: Activeer de regels voor een specifiek apparaat of alle apparaten.
+## Veelvoorkomende opties
+- `info`: Toont informatie over een specifiek apparaat.
+- `trigger`: Activeert de udev regels voor alle apparaten of een specifiek apparaat.
+- `control`: Beheert de udev daemon, zoals het herladen van regels.
 - `settle`: Wacht tot alle udev gebeurtenissen zijn afgehandeld.
-- `control`: Beheer de udev daemon, zoals het herstarten of stoppen ervan.
 
-## Veelvoorkomende Voorbeelden
+## Veelvoorkomende voorbeelden
 
-### Apparaatinformatie opvragen
+### Apparatinformatie opvragen
 Om informatie over een specifiek apparaat op te vragen, gebruik je het `info` commando:
 
-```bash
+```csh
 udevadm info --query=all --name=/dev/sda
 ```
 
 ### Apparaten triggeren
-Om de udev regels voor een bepaald apparaat te activeren, gebruik je het `trigger` commando:
+Om de udev regels voor een specifiek apparaat te activeren, gebruik je het `trigger` commando:
 
-```bash
-udevadm trigger --subsystem=block
+```csh
+udevadm trigger --subsystem=net
 ```
 
-### Wachten op udev gebeurtenissen
-Als je wilt wachten tot alle udev gebeurtenissen zijn afgehandeld, gebruik je:
+### Udev daemon herladen
+Als je wijzigingen hebt aangebracht in de udev regels, kun je de daemon herladen met:
 
-```bash
-udevadm settle
-```
-
-### Udev daemon beheren
-Om de udev daemon opnieuw te starten, gebruik je:
-
-```bash
+```csh
 udevadm control --reload-rules
 ```
 
+### Wachten op udev gebeurtenissen
+Om te wachten tot alle udev gebeurtenissen zijn afgehandeld, gebruik je:
+
+```csh
+udevadm settle
+```
+
 ## Tips
-- Gebruik `udevadm info` om snel te controleren welke regels van toepassing zijn op een apparaat.
-- Wees voorzichtig met het `trigger` commando, omdat dit kan leiden tot onbedoelde acties op apparaten.
-- Regelmatig de udev regels herladen kan helpen bij het oplossen van problemen met apparaatdetectie.
+- Zorg ervoor dat je de juiste rechten hebt om `udevadm` commando's uit te voeren, vaak zijn root-rechten vereist.
+- Gebruik `udevadm monitor` om live udev gebeurtenissen te volgen, wat handig kan zijn voor het debuggen.
+- Controleer regelmatig de udev regels in `/etc/udev/rules.d/` om ervoor te zorgen dat je systeem goed geconfigureerd is.

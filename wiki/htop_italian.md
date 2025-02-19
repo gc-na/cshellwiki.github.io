@@ -1,50 +1,52 @@
-# [Linux] Bash htop utilizzo: Monitorare le risorse di sistema in tempo reale
+# [Linux] C Shell (csh) htop Utilizzo: Monitorare i processi di sistema
 
 ## Overview
-Il comando `htop` è un visualizzatore interattivo dei processi in esecuzione su un sistema Linux. A differenza del comando `top`, `htop` offre un'interfaccia utente più amichevole e consente di gestire i processi in modo più semplice e intuitivo.
+Il comando `htop` è un visualizzatore interattivo dei processi in esecuzione su un sistema Unix-like. A differenza del comando `top`, `htop` offre un'interfaccia più user-friendly e consente di gestire i processi in modo più semplice.
 
 ## Usage
 La sintassi di base del comando `htop` è la seguente:
 
-```bash
+```csh
 htop [opzioni] [argomenti]
 ```
 
 ## Common Options
 Ecco alcune opzioni comuni per `htop`:
 
-- `-h`, `--help`: Mostra un messaggio di aiuto con le opzioni disponibili.
-- `-s`, `--sort`: Permette di ordinare i processi in base a un criterio specifico (es. CPU, memoria).
-- `-p`, `--pid`: Mostra solo i processi con gli ID specificati.
-- `-u`, `--user`: Mostra solo i processi appartenenti a un utente specifico.
+- `-d [delay]`: Imposta il ritardo tra gli aggiornamenti della visualizzazione (in decimi di secondo).
+- `-u [utente]`: Mostra solo i processi appartenenti a un determinato utente.
+- `-p [pid]`: Mostra solo il processo con l'ID specificato.
+- `--sort-key [chiave]`: Ordina i processi in base alla chiave specificata (ad esempio, `PID`, `MEM`, `CPU`).
 
 ## Common Examples
-
 Ecco alcuni esempi pratici di utilizzo di `htop`:
 
-1. **Avviare htop senza opzioni**:
-   ```bash
+1. Avviare `htop` senza opzioni:
+   ```csh
    htop
    ```
 
-2. **Ordinare i processi per utilizzo della CPU**:
-   ```bash
-   htop -s PERCENT_CPU
-   ```
-
-3. **Mostrare solo i processi di un utente specifico**:
-   ```bash
+2. Visualizzare i processi di un utente specifico:
+   ```csh
    htop -u nome_utente
    ```
 
-4. **Mostrare solo processi specifici per ID**:
-   ```bash
-   htop -p 1234,5678
+3. Impostare un ritardo di aggiornamento di 2 secondi:
+   ```csh
+   htop -d 20
+   ```
+
+4. Mostrare solo un processo specifico con PID 1234:
+   ```csh
+   htop -p 1234
+   ```
+
+5. Ordinare i processi per utilizzo della memoria:
+   ```csh
+   htop --sort-key MEM
    ```
 
 ## Tips
 - Usa le frecce direzionali per navigare tra i processi e `F9` per terminare un processo selezionato.
-- Puoi personalizzare la visualizzazione premendo `F2` per accedere al menu di configurazione.
-- Per aggiornare manualmente la visualizzazione, premi `F5` per passare alla vista ad albero dei processi.
-
-Utilizzare `htop` è un modo efficace per monitorare le risorse del sistema e gestire i processi in modo più efficiente.
+- Puoi personalizzare la visualizzazione premendo `F2` per accedere alle impostazioni.
+- Ricorda che `htop` richiede i permessi di root per visualizzare tutti i processi di sistema. Usa `sudo htop` se necessario.

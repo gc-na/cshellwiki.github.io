@@ -1,49 +1,51 @@
-# [Linux] Bash service użycie: zarządzanie usługami systemowymi
+# [Linux] C Shell (csh) service użycie: zarządzanie usługami systemowymi
 
 ## Overview
-Polecenie `service` w systemach Linux służy do zarządzania usługami systemowymi. Umożliwia uruchamianie, zatrzymywanie, restartowanie oraz sprawdzanie statusu usług działających na systemie.
+Polecenie `service` w C Shell (csh) służy do zarządzania usługami systemowymi. Umożliwia uruchamianie, zatrzymywanie oraz sprawdzanie statusu różnych usług działających na systemie.
 
 ## Usage
 Podstawowa składnia polecenia `service` jest następująca:
 
-```bash
-service [nazwa_usługi] [akcja]
+```
+service [opcje] [nazwa_usługi] [akcja]
 ```
 
 ## Common Options
-- `start`: uruchamia wskazaną usługę.
-- `stop`: zatrzymuje wskazaną usługę.
-- `restart`: restartuje wskazaną usługę.
-- `status`: wyświetla status wskazanej usługi.
-- `reload`: przeładowuje konfigurację usługi bez jej zatrzymywania.
+- `--status-all`: Wyświetla status wszystkich dostępnych usług.
+- `start`: Uruchamia wskazaną usługę.
+- `stop`: Zatrzymuje wskazaną usługę.
+- `restart`: Restartuje wskazaną usługę.
+- `status`: Sprawdza status wskazanej usługi.
 
 ## Common Examples
-1. **Uruchamianie usługi**
-   ```bash
+Przykłady użycia polecenia `service`:
+
+1. Uruchomienie usługi:
+   ```csh
    service apache2 start
    ```
 
-2. **Zatrzymywanie usługi**
-   ```bash
+2. Zatrzymanie usługi:
+   ```csh
    service mysql stop
    ```
 
-3. **Restartowanie usługi**
-   ```bash
+3. Restartowanie usługi:
+   ```csh
    service ssh restart
    ```
 
-4. **Sprawdzanie statusu usługi**
-   ```bash
+4. Sprawdzenie statusu usługi:
+   ```csh
    service nginx status
    ```
 
-5. **Przeładowanie konfiguracji usługi**
-   ```bash
-   service postfix reload
+5. Wyświetlenie statusu wszystkich usług:
+   ```csh
+   service --status-all
    ```
 
 ## Tips
 - Upewnij się, że masz odpowiednie uprawnienia (np. użyj `sudo`), aby zarządzać usługami.
 - Regularnie sprawdzaj status usług, aby upewnić się, że działają poprawnie.
-- W przypadku problemów z usługą, spróbuj najpierw jej zrestartować, co często rozwiązuje drobne błędy.
+- Zawsze wykonuj restart usługi po wprowadzeniu zmian w jej konfiguracji, aby zastosować nowe ustawienia.

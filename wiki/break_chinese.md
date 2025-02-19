@@ -1,30 +1,28 @@
-# [Linux] Bash break 用法: 退出循环
+# [操作系统] C Shell (csh) break 用法: 退出循环
 
 ## 概述
-`break` 命令用于在 Bash 脚本或命令行中退出循环结构。它可以用于 `for`、`while` 和 `until` 循环，帮助程序在满足特定条件时提前终止循环。
+`break` 命令用于在 C Shell 脚本或交互式会话中退出循环。当程序执行到 `break` 命令时，循环将立即终止，控制权将转移到循环之后的代码。
 
 ## 用法
 基本语法如下：
-```bash
-break [n]
 ```
-其中 `n` 是一个可选参数，表示要退出的循环层级，默认值为 1。
+break [选项] [参数]
+```
 
-## 常见选项
-- `n`：指定要退出的循环层级。如果有嵌套循环，可以使用此参数退出特定层级的循环。
+## 常用选项
+- `n`：指定要退出的循环层数。如果不提供，默认退出最内层的循环。
 
 ## 常见示例
-以下是一些常见的 `break` 使用示例：
+以下是一些使用 `break` 命令的实际示例：
 
-### 示例 1: 基本用法
-退出一个简单的 `for` 循环：
-```bash
-for i in {1..5}; do
-  if [ $i -eq 3 ]; then
-    break
-  fi
-  echo $i
-done
+### 示例 1: 退出最内层循环
+```csh
+foreach i (1 2 3 4 5)
+    if ($i == 3) then
+        break
+    endif
+    echo $i
+end
 ```
 输出：
 ```
@@ -32,38 +30,28 @@ done
 2
 ```
 
-### 示例 2: 退出嵌套循环
-退出外层循环：
-```bash
-for i in {1..3}; do
-  for j in {1..3}; do
-    if [ $i -eq 2 ]; then
-      break 2
-    fi
-    echo "i: $i, j: $j"
-  done
-done
+### 示例 2: 退出多层循环
+```csh
+set outer = 1
+while ($outer <= 3)
+    set inner = 1
+    while ($inner <= 5)
+        if ($inner == 3) then
+            break 2
+        endif
+        echo "$outer - $inner"
+        @ inner++
+    end
+    @ outer++
+end
 ```
 输出：
 ```
-i: 1, j: 1
-i: 1, j: 2
-i: 1, j: 3
-```
-
-### 示例 3: 使用条件退出
-根据用户输入退出循环：
-```bash
-while true; do
-  read -p "输入 'exit' 退出循环: " input
-  if [ "$input" == "exit" ]; then
-    break
-  fi
-  echo "你输入了: $input"
-done
+1 - 1
+1 - 2
 ```
 
 ## 提示
-- 在使用 `break` 时，确保逻辑清晰，以避免意外退出循环。
-- 使用 `break n` 可以有效管理嵌套循环，避免复杂的条件判断。
-- 在调试脚本时，可以使用 `echo` 语句跟踪循环的执行情况，帮助理解 `break` 的效果。
+- 在复杂的嵌套循环中使用 `break n` 可以更精确地控制退出的层级。
+- 使用 `break` 时，确保在适当的条件下调用，以避免意外终止循环。
+- 结合 `continue` 命令使用，可以更灵活地控制循环的执行流程。

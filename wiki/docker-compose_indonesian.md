@@ -1,7 +1,7 @@
-# [Linux] Bash docker-compose Penggunaan: Mengelola aplikasi Docker
+# [Sistem Operasi] C Shell (csh) docker-compose Penggunaan: Mengelola aplikasi Docker
 
 ## Overview
-Perintah `docker-compose` digunakan untuk mendefinisikan dan menjalankan aplikasi multi-kontainer Docker. Dengan menggunakan file konfigurasi YAML, pengguna dapat mengatur layanan, jaringan, dan volume yang diperlukan untuk aplikasi mereka dengan mudah.
+Perintah `docker-compose` digunakan untuk mendefinisikan dan menjalankan aplikasi multi-container Docker. Dengan menggunakan file konfigurasi, pengguna dapat dengan mudah mengelola berbagai layanan yang saling berinteraksi dalam satu aplikasi.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `docker-compose`:
@@ -11,41 +11,41 @@ docker-compose [options] [arguments]
 ```
 
 ## Common Options
-- `up`: Menjalankan kontainer yang ditentukan dalam file `docker-compose.yml`.
-- `down`: Menghentikan dan menghapus kontainer yang sedang berjalan.
+- `up`: Membangun, (re)start, dan menjalankan semua layanan yang didefinisikan dalam file `docker-compose.yml`.
+- `down`: Menghentikan dan menghapus semua container yang dibuat oleh `up`.
 - `build`: Membangun atau membangun ulang layanan.
-- `logs`: Melihat log dari kontainer yang sedang berjalan.
-- `ps`: Menampilkan daftar kontainer yang dikelola oleh docker-compose.
+- `logs`: Melihat log dari semua layanan yang sedang berjalan.
+- `ps`: Menampilkan status dari layanan yang sedang berjalan.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `docker-compose`:
 
-1. **Menjalankan aplikasi**:
+1. **Menjalankan aplikasi dengan `docker-compose up`:**
    ```bash
    docker-compose up
    ```
 
-2. **Menjalankan aplikasi di background**:
+2. **Menjalankan aplikasi di background (detached mode):**
    ```bash
    docker-compose up -d
    ```
 
-3. **Menghentikan dan menghapus kontainer**:
+3. **Menghentikan dan menghapus container dengan `docker-compose down`:**
    ```bash
    docker-compose down
    ```
 
-4. **Melihat log dari kontainer**:
+4. **Melihat log dari layanan:**
    ```bash
    docker-compose logs
    ```
 
-5. **Membangun ulang layanan**:
+5. **Membangun ulang layanan:**
    ```bash
    docker-compose build
    ```
 
 ## Tips
-- Selalu gunakan file `docker-compose.yml` untuk mendefinisikan semua layanan dan konfigurasi yang diperlukan agar lebih terorganisir.
-- Gunakan opsi `-d` untuk menjalankan kontainer di latar belakang, sehingga terminal Anda tetap bebas untuk digunakan.
-- Periksa log secara berkala untuk memastikan bahwa semua layanan berjalan dengan baik dan untuk mengidentifikasi masalah lebih awal.
+- Selalu periksa file `docker-compose.yml` untuk memastikan semua layanan dan dependensinya didefinisikan dengan benar.
+- Gunakan opsi `-d` untuk menjalankan aplikasi di background agar terminal tetap tersedia untuk perintah lain.
+- Manfaatkan perintah `docker-compose logs` untuk debugging jika ada masalah dengan layanan yang berjalan.

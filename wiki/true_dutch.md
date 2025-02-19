@@ -1,55 +1,46 @@
-# [Linux] Bash true gebruik: Voert altijd een succesvolle exitstatus uit
+# [Linux] C Shell (csh) true gebruik: Altijd succesvol uitvoeren
 
-## Overview
-De `true` opdracht in Bash is een eenvoudige, maar nuttige commandoregeltool die altijd een succesvolle exitstatus (0) retourneert. Het wordt vaak gebruikt in scripts en commando's waar een succesvolle uitvoering vereist is, maar waar geen specifieke actie nodig is.
+## Overzicht
+De `true` opdracht in C Shell (csh) is een eenvoudige opdracht die altijd een succesvolle exitstatus (0) retourneert. Het wordt vaak gebruikt in scripts en commando's waar een succesvolle uitvoering vereist is, zonder dat er daadwerkelijk iets wordt uitgevoerd.
 
-## Usage
+## Gebruik
 De basis syntaxis van de `true` opdracht is als volgt:
 
-```bash
+```csh
 true [options] [arguments]
 ```
 
-## Common Options
-De `true` opdracht heeft geen specifieke opties of argumenten. Het is een eenvoudige opdracht die altijd succesvol is.
+## Veelvoorkomende Opties
+De `true` opdracht heeft geen specifieke opties, omdat het altijd succesvol is en geen argumenten vereist. Het is een standalone opdracht.
 
-## Common Examples
+## Veelvoorkomende Voorbeelden
 
-### Voorbeeld 1: Basisgebruik
-Het eenvoudigste gebruik van `true` is gewoon het uitvoeren van de opdracht:
+### Voorbeeld 1: Eenvoudig gebruik
+Voer de `true` opdracht uit om een succesvolle exitstatus te genereren.
 
-```bash
+```csh
 true
 ```
 
-### Voorbeeld 2: Gebruik in een if-structuur
-Je kunt `true` gebruiken in een `if`-structuur om altijd de "true" tak te laten uitvoeren:
+### Voorbeeld 2: Gebruik in een if-statement
+Gebruik `true` in een if-statement om een blok code uit te voeren als de voorwaarde waar is.
 
-```bash
-if true; then
+```csh
+if (true) then
     echo "Dit zal altijd worden uitgevoerd."
-fi
+endif
 ```
 
 ### Voorbeeld 3: In een loop
-`true` kan ook worden gebruikt in een oneindige loop:
+Gebruik `true` om een oneindige loop te creëren die nooit stopt.
 
-```bash
-while true; do
-    echo "Dit blijft doorgaan totdat het proces wordt gestopt."
-    sleep 1
-done
-```
-
-### Voorbeeld 4: Als placeholder
-Je kunt `true` gebruiken als een placeholder in scripts waar je later een echte opdracht wilt toevoegen:
-
-```bash
-# TODO: Voeg hier een echte opdracht toe
-true
+```csh
+while (true)
+    echo "Dit blijft herhalen."
+end
 ```
 
 ## Tips
-- Gebruik `true` als een placeholder in scripts om de structuur te behouden terwijl je aan de functionaliteit werkt.
-- Combineer `true` met andere commando's in een pipeline om altijd een succesvolle status te garanderen.
-- Wees voorzichtig met het gebruik van `true` in loops, omdat dit kan leiden tot oneindige uitvoeringen als er geen exit-voorwaarde is.
+- Gebruik `true` in scripts waar je een succesvolle uitvoering wilt simuleren zonder dat er verdere acties nodig zijn.
+- Combineer `true` met andere commando's in scripts om voorwaarden te creëren die altijd waar zijn.
+- Wees voorzichtig met het gebruik van `true` in loops, aangezien dit kan leiden tot oneindige uitvoeringen zonder een manier om te stoppen.

@@ -1,48 +1,44 @@
-# [Linux] Bash pvs użycie: Wyświetlanie informacji o woluminach logicznych
+# [Linux] C Shell (csh) pvs Użycie: wyświetlanie wersji pakietów
 
-## Przegląd
-Polecenie `pvs` (Physical Volumes) jest używane w systemach Linux do wyświetlania informacji o fizycznych woluminach w systemie zarządzania woluminami logicznymi (LVM). Umożliwia użytkownikom monitorowanie stanu woluminów oraz ich właściwości, co jest przydatne w zarządzaniu dyskami i przestrzenią dyskową.
+## Overview
+Polecenie `pvs` w C Shell (csh) służy do wyświetlania informacji o wersjach pakietów w systemie. Umożliwia użytkownikom łatwe sprawdzenie, które wersje pakietów są zainstalowane oraz jakie są ich zależności.
 
-## Użycie
+## Usage
 Podstawowa składnia polecenia `pvs` jest następująca:
 
-```bash
+```
 pvs [opcje] [argumenty]
 ```
 
-## Często używane opcje
-- `-a`, `--all`: Wyświetla wszystkie woluminy, w tym te, które są nieaktywne.
-- `-o`, `--options`: Umożliwia określenie, które kolumny mają być wyświetlane.
-- `-h`, `--help`: Wyświetla pomoc dotyczącą użycia polecenia.
-- `-v`, `--verbose`: Włącza tryb szczegółowy, pokazując więcej informacji.
+## Common Options
+- `-a`: Wyświetla wszystkie informacje o pakietach, w tym te, które są ukryte.
+- `-n`: Pokazuje tylko nazwy pakietów.
+- `-r`: Wyświetla informacje o zależnościach między pakietami.
 
-## Przykłady
-Oto kilka praktycznych przykładów użycia polecenia `pvs`:
+## Common Examples
+Przykłady użycia polecenia `pvs`:
 
-1. Wyświetlenie podstawowych informacji o wszystkich fizycznych woluminach:
-   ```bash
+1. Wyświetlenie wszystkich zainstalowanych pakietów:
+   ```csh
    pvs
    ```
 
-2. Wyświetlenie wszystkich woluminów, w tym nieaktywnych:
-   ```bash
+2. Wyświetlenie szczegółowych informacji o pakietach:
+   ```csh
    pvs -a
    ```
 
-3. Wyświetlenie szczegółowych informacji z trybem szczegółowym:
-   ```bash
-   pvs -v
+3. Pokazanie tylko nazw pakietów:
+   ```csh
+   pvs -n
    ```
 
-4. Wyświetlenie tylko wybranych kolumn, takich jak nazwa i rozmiar:
-   ```bash
-   pvs -o +pv_size
+4. Wyświetlenie zależności dla konkretnego pakietu:
+   ```csh
+   pvs -r nazwa_pakietu
    ```
 
-## Wskazówki
-- Regularnie używaj `pvs`, aby monitorować stan fizycznych woluminów, co pomoże w zarządzaniu przestrzenią dyskową.
-- Używaj opcji `-v`, aby uzyskać więcej informacji, szczególnie podczas rozwiązywania problemów z woluminami.
-- Zapisuj wyniki polecenia do pliku, aby móc je później analizować:
-  ```bash
-  pvs > pvs_output.txt
-  ```
+## Tips
+- Używaj opcji `-a`, aby uzyskać pełny obraz wszystkich zainstalowanych pakietów, co może być przydatne przy rozwiązywaniu problemów.
+- Regularnie sprawdzaj wersje pakietów, aby upewnić się, że masz zainstalowane najnowsze aktualizacje.
+- Kombinuj różne opcje, aby dostosować wyjście do swoich potrzeb, na przykład `pvs -n -r`, aby zobaczyć nazwy pakietów i ich zależności.

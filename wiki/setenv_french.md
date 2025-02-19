@@ -1,39 +1,42 @@
-# [Linux] Bash setenv : [définir des variables d'environnement]
+# [Linux] C Shell (csh) setenv : Définir des variables d'environnement
 
 ## Overview
-La commande `setenv` est utilisée pour définir des variables d'environnement dans les shells compatibles avec C, comme `csh` ou `tcsh`. Elle permet aux utilisateurs de créer ou de modifier des variables qui influencent le comportement des processus exécutés dans le shell.
+La commande `setenv` dans le C Shell (csh) est utilisée pour définir des variables d'environnement. Ces variables peuvent être utilisées par le système et les applications pour configurer leur comportement.
 
 ## Usage
 La syntaxe de base de la commande `setenv` est la suivante :
 
-```bash
-setenv [nom_variable] [valeur]
+```csh
+setenv NOM_Variable valeur
 ```
 
 ## Common Options
-`setenv` n'a pas de nombreuses options, mais voici quelques points à considérer :
-- Il n'y a pas d'options spécifiques à `setenv`, car la commande est principalement utilisée pour définir des variables.
+La commande `setenv` n'a pas d'options spécifiques, mais elle nécessite deux arguments : le nom de la variable et sa valeur.
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de `setenv` :
 
-1. **Définir une variable d'environnement simple :**
-   ```bash
-   setenv PATH /usr/local/bin:$PATH
-   ```
+### Exemple 1 : Définir une variable d'environnement
+Pour définir une variable d'environnement appelée `PATH` :
 
-2. **Définir une variable pour une application :**
-   ```bash
-   setenv JAVA_HOME /usr/lib/jvm/java-11-openjdk
-   ```
+```csh
+setenv PATH /usr/local/bin:/usr/bin:/bin
+```
 
-3. **Définir plusieurs variables d'environnement :**
-   ```bash
-   setenv EDITOR nano
-   setenv VISUAL vim
-   ```
+### Exemple 2 : Définir une variable pour une application
+Pour définir une variable d'environnement pour une application, comme `JAVA_HOME` :
+
+```csh
+setenv JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
+```
+
+### Exemple 3 : Définir une variable pour le langage
+Pour définir une variable d'environnement pour le langage, comme `LANG` :
+
+```csh
+setenv LANG fr_FR.UTF-8
+```
 
 ## Tips
-- Assurez-vous que les variables que vous définissez sont nécessaires pour votre session ou vos applications, afin d'éviter la confusion.
-- Utilisez `printenv` pour vérifier les variables d'environnement actuellement définies.
-- Pour rendre les variables d'environnement persistantes, envisagez de les ajouter à votre fichier de configuration de shell, comme `.cshrc` ou `.tcshrc`.
+- Utilisez des noms de variables en majuscules pour les variables d'environnement, car cela est une convention courante.
+- Vérifiez les variables d'environnement existantes avec la commande `printenv` pour éviter les conflits.
+- Pensez à ajouter vos définitions de variables dans votre fichier de démarrage (`.cshrc`) pour qu'elles soient disponibles à chaque session.

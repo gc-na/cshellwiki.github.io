@@ -1,7 +1,7 @@
-# [Linux] Bash pidstat użycie: Monitorowanie statystyk procesów
+# [Linux] C Shell (csh) pidstat: Monitorowanie statystyk procesów
 
 ## Overview
-Polecenie `pidstat` jest narzędziem do monitorowania statystyk procesów w systemie Linux. Umożliwia użytkownikom śledzenie wykorzystania CPU, pamięci oraz innych zasobów przez konkretne procesy, co jest przydatne w diagnostyce i optymalizacji wydajności systemu.
+Polecenie `pidstat` jest używane do monitorowania statystyk procesów w systemie operacyjnym. Umożliwia użytkownikom śledzenie zużycia CPU, pamięci i innych zasobów przez poszczególne procesy w czasie rzeczywistym.
 
 ## Usage
 Podstawowa składnia polecenia `pidstat` wygląda następująco:
@@ -11,42 +11,42 @@ pidstat [opcje] [argumenty]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji dla `pidstat`:
+Oto kilka powszechnie używanych opcji dla polecenia `pidstat`:
 
 - `-h`: Wyświetla nagłówki w formacie bardziej czytelnym.
-- `-r`: Pokazuje statystyki użycia pamięci.
-- `-u`: Wyświetla statystyki CPU.
-- `-p <pid>`: Monitoruje konkretne procesy na podstawie ich identyfikatora PID.
-- `-t`: Pokazuje statystyki dla wszystkich wątków w procesie.
+- `-r`: Pokazuje statystyki pamięci dla procesów.
+- `-u`: Wyświetla statystyki użycia CPU.
+- `-p <pid>`: Monitoruje tylko procesy o podanym identyfikatorze PID.
+- `-t`: Pokazuje statystyki dla wszystkich wątków procesów.
 
 ## Common Examples
+Oto kilka praktycznych przykładów użycia polecenia `pidstat`:
 
-1. **Monitorowanie użycia CPU dla wszystkich procesów:**
-   ```bash
-   pidstat -u
-   ```
+1. Aby monitorować użycie CPU przez wszystkie procesy co 1 sekundę:
 
-2. **Monitorowanie użycia pamięci dla wszystkich procesów:**
-   ```bash
-   pidstat -r
-   ```
+    ```bash
+    pidstat 1
+    ```
 
-3. **Monitorowanie konkretnego procesu o PID 1234:**
-   ```bash
-   pidstat -p 1234
-   ```
+2. Aby wyświetlić statystyki pamięci dla wszystkich procesów:
 
-4. **Wyświetlanie statystyk dla wszystkich wątków w procesie o PID 5678:**
-   ```bash
-   pidstat -t -p 5678
-   ```
+    ```bash
+    pidstat -r
+    ```
 
-5. **Monitorowanie statystyk co 2 sekundy:**
-   ```bash
-   pidstat 2
-   ```
+3. Aby monitorować tylko konkretny proces o PID 1234:
+
+    ```bash
+    pidstat -p 1234
+    ```
+
+4. Aby uzyskać szczegółowe informacje o wszystkich wątkach procesów:
+
+    ```bash
+    pidstat -t
+    ```
 
 ## Tips
-- Używaj opcji `-h`, aby uzyskać bardziej czytelne nagłówki, co ułatwia analizę wyników.
-- Regularne monitorowanie procesów może pomóc w identyfikacji problemów z wydajnością, dlatego warto zautomatyzować to zadanie przy użyciu skryptów.
-- Możesz łączyć `pidstat` z innymi narzędziami, takimi jak `grep`, aby filtrować wyniki i skupić się na interesujących cię procesach.
+- Używaj opcji `-h`, aby poprawić czytelność wyników.
+- Regularne monitorowanie procesów może pomóc w identyfikacji problemów z wydajnością.
+- Połącz `pidstat` z innymi narzędziami, takimi jak `grep`, aby filtrować wyniki według potrzeb.

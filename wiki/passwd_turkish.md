@@ -1,54 +1,44 @@
-# [Linux] Bash passwd Kullanımı: Şifreyi değiştirme komutu
+# [Linux] C Shell (csh) passwd Kullanımı: Şifre değiştirme komutu
 
 ## Genel Bakış
-`passwd` komutu, kullanıcıların şifrelerini değiştirmelerine olanak tanır. Bu komut, hem sistem yöneticileri hem de kullanıcılar tarafından kullanılabilir. Kullanıcı, kendi şifresini değiştirebilirken, bir sistem yöneticisi başka kullanıcıların şifrelerini de değiştirebilir.
+`passwd` komutu, kullanıcıların hesap şifrelerini değiştirmelerini sağlar. Bu komut, hem kullanıcılar hem de yöneticiler tarafından kullanılabilir ve güvenlik açısından önemli bir işlemdir.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-
-```bash
+```
 passwd [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-d`: Kullanıcının şifresini siler.
 - `-l`: Kullanıcının hesabını kilitler.
-- `-u`: Kullanıcının hesabının kilidini açar.
-- `-e`: Kullanıcının şifresini zorla değiştirmeye zorlar.
-- `-S`: Kullanıcının şifre durumunu gösterir.
+- `-u`: Kilitli bir hesabı açar.
+- `-d`: Kullanıcının şifresini siler.
+- `-e`: Kullanıcının şifresinin süresinin dolmasını sağlar.
 
 ## Yaygın Örnekler
-Kullanıcı şifresini değiştirmek için:
+Aşağıda `passwd` komutunun bazı pratik örnekleri bulunmaktadır:
 
-```bash
-passwd
-```
+1. Kullanıcının kendi şifresini değiştirmek için:
+   ```csh
+   passwd
+   ```
 
-Başka bir kullanıcının şifresini değiştirmek için (sistem yöneticisi olarak):
+2. Belirli bir kullanıcının şifresini değiştirmek için (yönetici olarak):
+   ```csh
+   passwd kullanıcı_adı
+   ```
 
-```bash
-sudo passwd kullanıcı_adı
-```
+3. Kullanıcının hesabını kilitlemek için:
+   ```csh
+   passwd -l kullanıcı_adı
+   ```
 
-Kullanıcının hesabını kilitlemek için:
-
-```bash
-sudo passwd -l kullanıcı_adı
-```
-
-Kullanıcının şifresini silmek için:
-
-```bash
-sudo passwd -d kullanıcı_adı
-```
-
-Kullanıcının şifre durumunu kontrol etmek için:
-
-```bash
-passwd -S kullanıcı_adı
-```
+4. Kilitli bir hesabı açmak için:
+   ```csh
+   passwd -u kullanıcı_adı
+   ```
 
 ## İpuçları
-- Şifrenizi düzenli olarak değiştirin ve güçlü bir şifre kullanmaya özen gösterin.
-- Şifre değişikliği sırasında, yeni şifrenizin güvenli olduğundan emin olun; büyük harf, küçük harf, rakam ve özel karakter içermesi önerilir.
-- Eğer bir sistem yöneticisi iseniz, diğer kullanıcıların şifrelerini değiştirirken dikkatli olun ve kullanıcıların onayını alın.
+- Şifre değiştirirken güçlü bir şifre kullanmaya özen gösterin.
+- Şifrelerinizi düzenli aralıklarla değiştirin.
+- Şifre değişikliği sonrası, yeni şifrenizi güvenli bir yerde saklayın.

@@ -1,61 +1,52 @@
-# [Linux] Bash last uso: Exibir registros de logins de usuários
+# [Linux] C Shell (csh) last comando: exibir logins recentes
 
 ## Overview
-O comando `last` é utilizado para exibir uma lista dos últimos logins dos usuários no sistema. Ele lê o arquivo de log `/var/log/wtmp`, que armazena informações sobre as sessões de login e logout, permitindo que você veja quem acessou o sistema e quando.
+O comando `last` é utilizado para exibir uma lista dos usuários que fizeram login no sistema, juntamente com informações sobre o tempo e a duração de suas sessões. Ele lê o arquivo de log `/var/log/wtmp`, que registra todos os logins e logouts.
 
 ## Usage
 A sintaxe básica do comando `last` é a seguinte:
 
-```bash
+```csh
 last [opções] [argumentos]
 ```
 
 ## Common Options
-Aqui estão algumas opções comuns que você pode usar com o comando `last`:
+Aqui estão algumas opções comuns que podem ser usadas com o comando `last`:
 
-- `-a`: Mostra o nome do host (hostname) ao lado do nome do usuário.
-- `-n [número]`: Limita a saída aos últimos `número` de logins.
-- `-x`: Exibe informações sobre as sessões encerradas, além dos logins.
+- `-n [n]`: Exibe apenas os últimos `n` logins.
 - `-R`: Não exibe o nome do host.
+- `-f [arquivo]`: Lê de um arquivo específico em vez do padrão `/var/log/wtmp`.
+- `-x`: Exibe também as sessões de shutdown e reboot.
 
 ## Common Examples
+Aqui estão alguns exemplos práticos do uso do comando `last`:
 
-### Exibir todos os logins
-Para ver todos os logins registrados, você pode simplesmente usar:
+1. **Exibir todos os logins recentes:**
+   ```csh
+   last
+   ```
 
-```bash
-last
-```
+2. **Exibir os últimos 5 logins:**
+   ```csh
+   last -n 5
+   ```
 
-### Limitar a saída
-Para mostrar apenas os 5 últimos logins, use:
+3. **Exibir logins sem mostrar o nome do host:**
+   ```csh
+   last -R
+   ```
 
-```bash
-last -n 5
-```
+4. **Ler de um arquivo específico:**
+   ```csh
+   last -f /caminho/para/arquivo
+   ```
 
-### Mostrar logins com nome do host
-Para incluir o nome do host na saída, utilize:
-
-```bash
-last -a
-```
-
-### Exibir sessões encerradas
-Para ver também as sessões que foram encerradas, execute:
-
-```bash
-last -x
-```
-
-### Filtrar por um usuário específico
-Se você quiser ver os logins de um usuário específico, como `joao`, use:
-
-```bash
-last joao
-```
+5. **Incluir sessões de shutdown e reboot:**
+   ```csh
+   last -x
+   ```
 
 ## Tips
-- Utilize `last -n 10` para rapidamente verificar os últimos 10 logins, o que pode ser útil para auditorias rápidas.
-- Combine opções, como `last -a -n 5`, para personalizar a saída conforme suas necessidades.
-- Lembre-se de que o arquivo de log pode ser rotacionado, o que significa que os dados mais antigos podem não estar disponíveis se o sistema estiver configurado para manter logs por um período limitado.
+- Utilize a opção `-n` para limitar a saída e facilitar a leitura, especialmente em sistemas com muitos logins.
+- Combine opções para personalizar a saída conforme necessário, como `last -n 10 -R` para os últimos 10 logins sem o nome do host.
+- Verifique regularmente os logs de login para monitorar a atividade do sistema e detectar acessos não autorizados.

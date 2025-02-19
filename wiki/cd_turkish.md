@@ -1,48 +1,44 @@
-# [Linux] Bash cd Kullanımı: Dizinler arasında geçiş yapma komutu
+# [Linux] C Shell (csh) cd Kullanımı: Dizinler arasında geçiş yapma
 
-## Genel Bakış
-`cd` komutu, kullanıcıların dosya sisteminde dizinler arasında geçiş yapmalarını sağlar. Bu komut, terminalde çalışırken bulunduğunuz dizini değiştirmenize olanak tanır.
+## Overview
+`cd` komutu, kullanıcıların dosya sisteminde dizinler arasında geçiş yapmalarını sağlar. Bu komut, "change directory" ifadesinin kısaltmasıdır ve terminalde çalışırken bulunduğunuz dizini değiştirmenize olanak tanır.
 
-## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
-```bash
-cd [seçenekler] [argümanlar]
+## Usage
+Temel sözdizimi şu şekildedir:
+
+```csh
+cd [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `..` : Bir üst dizine geçiş yapar.
-- `-` : Önceki dizine geri döner.
-- `~` : Kullanıcının ana dizinine geçiş yapar.
+## Common Options
+- `-`: Önceki dizine geri döner.
+- `~`: Kullanıcının ana dizinine geçiş yapar.
+- `..`: Bir üst dizine geçiş yapar.
 
-## Yaygın Örnekler
-Aşağıda `cd` komutunun bazı pratik örnekleri bulunmaktadır:
+## Common Examples
+Aşağıda `cd` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
-1. Bir üst dizine geçiş yapmak:
-   ```bash
-   cd ..
-   ```
-
-2. Kullanıcının ana dizinine geçiş yapmak:
-   ```bash
+1. Ana dizine geçiş:
+   ```csh
    cd ~
    ```
 
-3. Önceki dizine geri dönmek:
-   ```bash
+2. Bir üst dizine geçiş:
+   ```csh
+   cd ..
+   ```
+
+3. Belirli bir dizine geçiş (örneğin, "Belgeler" dizinine):
+   ```csh
+   cd Belgeler
+   ```
+
+4. Önceki dizine geri dönme:
+   ```csh
    cd -
    ```
 
-4. Belirli bir dizine geçiş yapmak (örneğin, belgeler dizini):
-   ```bash
-   cd ~/Belgeler
-   ```
-
-5. Gösterim için tam yol kullanarak bir dizine geçiş yapmak:
-   ```bash
-   cd /home/kullanici/Belgeler/Projeler
-   ```
-
-## İpuçları
-- `cd` komutunu kullanırken, dizin adlarını tam olarak yazmak yerine otomatik tamamlama özelliğinden yararlanmak için `Tab` tuşuna basabilirsiniz.
-- Dizin yolunu kısaltmak için `~` sembolünü kullanarak ana dizin altındaki dizinlere hızlıca geçiş yapabilirsiniz.
-- Geçiş yaptığınız dizinin içeriğini görmek için `ls` komutunu kullanabilirsiniz.
+## Tips
+- `cd` komutunu kullanırken, dizin adlarını tam olarak yazmak yerine kısaltmalar kullanabilirsiniz. Örneğin, `cd ~/Belgeler` ile ana dizinin altındaki "Belgeler" dizinine hızlıca geçebilirsiniz.
+- Dizin adları büyük/küçük harf duyarlıdır, bu nedenle doğru yazdığınızdan emin olun.
+- Dizinler arasında geçiş yaparken, terminaldeki mevcut konumunuzu kontrol etmek için `pwd` (print working directory) komutunu kullanabilirsiniz.

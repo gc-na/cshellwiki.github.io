@@ -1,12 +1,12 @@
-# [Linux] Bash ss Penggunaan: Menampilkan soket jaringan
+# [Sistem Operasi] C Shell (csh) ss: Menampilkan informasi soket jaringan
 
 ## Overview
-Perintah `ss` adalah alat yang digunakan untuk menampilkan informasi tentang soket jaringan di sistem Linux. Ini memberikan rincian tentang koneksi TCP, UDP, dan soket lainnya, serta status dan statistik yang berkaitan dengan mereka. `ss` adalah pengganti yang lebih cepat dan lebih efisien untuk perintah `netstat`.
+Perintah `ss` digunakan untuk menampilkan informasi tentang soket jaringan yang sedang aktif di sistem. Ini memberikan detail tentang koneksi TCP, UDP, dan soket lainnya, serta statusnya.
 
 ## Usage
-Berikut adalah sintaks dasar dari perintah `ss`:
+Sintaks dasar dari perintah `ss` adalah sebagai berikut:
 
-```bash
+```
 ss [options] [arguments]
 ```
 
@@ -16,12 +16,11 @@ ss [options] [arguments]
 - `-l`: Menampilkan soket yang sedang mendengarkan.
 - `-p`: Menampilkan proses yang menggunakan soket.
 - `-n`: Menampilkan alamat dan port dalam format numerik.
-- `-s`: Menampilkan ringkasan statistik soket.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `ss`:
 
-1. Menampilkan semua koneksi TCP:
+1. Menampilkan semua soket TCP:
    ```bash
    ss -t
    ```
@@ -36,7 +35,7 @@ Berikut adalah beberapa contoh penggunaan perintah `ss`:
    ss -l
    ```
 
-4. Menampilkan semua soket dengan informasi proses:
+4. Menampilkan semua soket beserta proses yang menggunakannya:
    ```bash
    ss -p
    ```
@@ -46,12 +45,7 @@ Berikut adalah beberapa contoh penggunaan perintah `ss`:
    ss -n
    ```
 
-6. Menampilkan ringkasan statistik soket:
-   ```bash
-   ss -s
-   ```
-
 ## Tips
-- Gunakan opsi `-n` untuk mempercepat output dengan menghindari resolusi nama host.
-- Kombinasikan beberapa opsi untuk mendapatkan informasi yang lebih lengkap, misalnya `ss -tunlp` untuk melihat semua soket TCP dan UDP yang mendengarkan beserta prosesnya.
-- Perintah `ss` dapat dijalankan dengan hak akses root untuk mendapatkan informasi lebih lengkap tentang semua soket yang ada di sistem.
+- Gunakan kombinasi opsi untuk mendapatkan informasi yang lebih spesifik, misalnya `ss -tunlp` untuk menampilkan semua soket TCP dan UDP yang mendengarkan beserta prosesnya.
+- Perintah `ss` lebih cepat dan lebih efisien dibandingkan dengan perintah `netstat`, sehingga lebih disarankan untuk digunakan dalam analisis jaringan.
+- Pastikan Anda menjalankan perintah ini dengan hak akses yang sesuai jika ingin melihat informasi proses yang lebih mendetail.

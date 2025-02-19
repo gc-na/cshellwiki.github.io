@@ -1,50 +1,44 @@
-# [Linux] Bash dirs Verwendung: Verwalten von Verzeichnisspeicher
+# [Linux] C Shell (csh) dirs Verwendung: Verzeichnisstapel anzeigen
 
-## Übersicht
-Der Befehl `dirs` wird in der Bash verwendet, um die Liste der Verzeichnisse anzuzeigen, die im Verzeichnisstapel gespeichert sind. Dies ist besonders nützlich, wenn Sie zwischen verschiedenen Verzeichnissen navigieren und schnell auf vorherige Verzeichnisse zugreifen möchten.
+## Überblick
+Der Befehl `dirs` im C Shell (csh) wird verwendet, um die Liste der Verzeichnisse anzuzeigen, die im Verzeichnisstapel gespeichert sind. Dieser Stapel ermöglicht es Benutzern, zwischen verschiedenen Verzeichnissen zu navigieren, ohne den vollständigen Pfad eingeben zu müssen.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
-dirs [Optionen] [Argumente]
+```csh
+dirs [optionen] [argumente]
 ```
 
 ## Häufige Optionen
 - `-c`: Löscht den Verzeichnisstapel.
-- `-l`: Zeigt die Verzeichnisse in einer langen Form an.
-- `+N`: Zeigt das N-te Verzeichnis im Stapel an.
-- `-N`: Zeigt das N-te Verzeichnis vom Ende des Stapels an.
+- `-l`: Zeigt die Verzeichnisse in langen Formaten an.
+- `-p`: Zeigt die Verzeichnisse in einer einzigen Zeile an.
 
 ## Häufige Beispiele
 Hier sind einige praktische Beispiele für die Verwendung des `dirs`-Befehls:
 
 1. **Anzeigen des aktuellen Verzeichnisstapels:**
-   ```bash
+   ```csh
    dirs
    ```
 
-2. **Löschen des Verzeichnisstapels:**
-   ```bash
-   dirs -c
-   ```
-
-3. **Anzeigen des Verzeichnisses an der Position 2 im Stapel:**
-   ```bash
-   dirs +2
-   ```
-
-4. **Anzeigen des letzten Verzeichnisses im Stapel:**
-   ```bash
-   dirs -1
-   ```
-
-5. **Anzeigen der Verzeichnisse in langer Form:**
-   ```bash
+2. **Anzeigen des Verzeichnisstapels in langer Form:**
+   ```csh
    dirs -l
    ```
 
+3. **Anzeigen des Verzeichnisstapels in einer einzigen Zeile:**
+   ```csh
+   dirs -p
+   ```
+
+4. **Löschen des Verzeichnisstapels:**
+   ```csh
+   dirs -c
+   ```
+
 ## Tipps
-- Nutzen Sie `pushd` und `popd` in Kombination mit `dirs`, um effizient zwischen Verzeichnissen zu wechseln und den Überblick über Ihre Navigation zu behalten.
-- Überprüfen Sie regelmäßig den Verzeichnisstapel mit `dirs`, um sicherzustellen, dass Sie sich in den gewünschten Verzeichnissen befinden.
-- Experimentieren Sie mit den Optionen, um die für Ihre Bedürfnisse am besten geeignete Anzeige zu finden.
+- Verwenden Sie `pushd` und `popd` zusammen mit `dirs`, um effizient zwischen Verzeichnissen zu wechseln.
+- Überprüfen Sie regelmäßig den Verzeichnisstapel, um den Überblick über Ihre Navigation zu behalten.
+- Nutzen Sie die Optionen `-l` und `-p`, um die Anzeige an Ihre Bedürfnisse anzupassen.

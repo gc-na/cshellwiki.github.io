@@ -1,12 +1,12 @@
-# [Linux] Bash uname utilizzo: Ottieni informazioni sul sistema
+# [Linux] C Shell (csh) uname Utilizzo: Ottiene informazioni sul sistema
 
 ## Overview
-Il comando `uname` è utilizzato per ottenere informazioni sul sistema operativo in uso. Fornisce dettagli come il nome del kernel, la versione, l'architettura e altre informazioni utili per la gestione del sistema.
+Il comando `uname` è utilizzato per ottenere informazioni sul sistema operativo in uso. Può fornire dettagli come il nome del kernel, la versione e altre informazioni pertinenti riguardanti l'ambiente in cui si sta operando.
 
 ## Usage
-La sintassi di base del comando è la seguente:
+La sintassi di base del comando `uname` è la seguente:
 
-```bash
+```
 uname [options] [arguments]
 ```
 
@@ -15,45 +15,40 @@ Ecco alcune opzioni comuni per il comando `uname`:
 
 - `-a`: Mostra tutte le informazioni disponibili sul sistema.
 - `-s`: Mostra il nome del kernel.
-- `-n`: Mostra il nome del nodo di rete.
+- `-n`: Mostra il nome della rete del computer.
 - `-r`: Mostra la versione del kernel.
-- `-v`: Mostra la data di rilascio del kernel.
+- `-v`: Mostra la data di compilazione del kernel.
 - `-m`: Mostra l'architettura della macchina.
 
 ## Common Examples
 Ecco alcuni esempi pratici dell'uso del comando `uname`:
 
 1. **Mostrare tutte le informazioni sul sistema:**
-
-   ```bash
+   ```csh
    uname -a
    ```
 
 2. **Mostrare solo il nome del kernel:**
-
-   ```bash
+   ```csh
    uname -s
    ```
 
 3. **Mostrare la versione del kernel:**
-
-   ```bash
+   ```csh
    uname -r
    ```
 
 4. **Mostrare l'architettura della macchina:**
-
-   ```bash
+   ```csh
    uname -m
    ```
 
-5. **Mostrare il nome del nodo di rete:**
-
-   ```bash
+5. **Mostrare il nome della rete del computer:**
+   ```csh
    uname -n
    ```
 
 ## Tips
-- Utilizza `uname -a` per ottenere una panoramica completa del sistema in un solo comando.
-- Puoi combinare le opzioni per ottenere informazioni specifiche; ad esempio, `uname -sr` mostra sia il nome del kernel che la sua versione.
+- Utilizza `uname -a` per ottenere un riepilogo completo delle informazioni sul tuo sistema in un solo comando.
+- Puoi combinare più opzioni per ottenere informazioni specifiche in modo più efficiente.
 - Ricorda che l'output di `uname` può variare a seconda del sistema operativo e della sua configurazione.

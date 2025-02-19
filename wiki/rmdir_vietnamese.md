@@ -1,40 +1,39 @@
-# [Linux] Bash rmdir Cách sử dụng: Xóa thư mục rỗng
+# [Hệ điều hành] C Shell (csh) rmdir: Xóa thư mục rỗng
 
 ## Tổng quan
-Lệnh `rmdir` được sử dụng để xóa các thư mục rỗng trong hệ thống tệp. Nếu thư mục không rỗng, lệnh sẽ không thực hiện được và sẽ thông báo lỗi.
+Lệnh `rmdir` trong C Shell (csh) được sử dụng để xóa các thư mục rỗng. Nếu thư mục bạn muốn xóa không rỗng, lệnh này sẽ không thực hiện được và sẽ thông báo lỗi.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `rmdir` như sau:
+
 ```
 rmdir [tùy chọn] [đối số]
 ```
 
 ## Tùy chọn phổ biến
-- `-p`: Xóa thư mục rỗng và tất cả các thư mục cha của nó nếu chúng cũng rỗng.
-- `--ignore-fail-on-non-empty`: Bỏ qua lỗi nếu thư mục không rỗng.
+- `-p`: Xóa thư mục cha nếu nó cũng rỗng.
+- `--help`: Hiển thị thông tin trợ giúp về lệnh.
+- `--version`: Hiển thị phiên bản của lệnh.
 
 ## Ví dụ phổ biến
-- Xóa một thư mục rỗng:
-  ```bash
-  rmdir my_empty_directory
-  ```
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `rmdir`:
 
-- Xóa nhiều thư mục rỗng cùng lúc:
-  ```bash
-  rmdir dir1 dir2 dir3
-  ```
+1. Xóa một thư mục rỗng:
+   ```bash
+   rmdir thu_muc_rong
+   ```
 
-- Xóa thư mục rỗng và các thư mục cha của nó:
-  ```bash
-  rmdir -p parent_dir/child_dir
-  ```
+2. Xóa nhiều thư mục rỗng cùng một lúc:
+   ```bash
+   rmdir thu_muc1 thu_muc2 thu_muc3
+   ```
 
-- Bỏ qua lỗi khi thư mục không rỗng:
-  ```bash
-  rmdir --ignore-fail-on-non-empty my_directory
-  ```
+3. Xóa thư mục cha nếu nó cũng rỗng:
+   ```bash
+   rmdir -p thu_muc_con/thu_muc_cha
+   ```
 
 ## Mẹo
-- Trước khi sử dụng `rmdir`, hãy chắc chắn rằng thư mục bạn muốn xóa là rỗng để tránh thông báo lỗi.
-- Sử dụng lệnh `ls` để kiểm tra nội dung của thư mục trước khi xóa.
-- Để xóa thư mục không rỗng, hãy sử dụng lệnh `rm -r` thay vì `rmdir`.
+- Trước khi sử dụng `rmdir`, hãy chắc chắn rằng thư mục bạn muốn xóa là rỗng. Bạn có thể sử dụng lệnh `ls` để kiểm tra nội dung của thư mục.
+- Nếu bạn cần xóa thư mục không rỗng, hãy sử dụng lệnh `rm -r` thay vì `rmdir`.
+- Luôn cẩn thận khi xóa thư mục để tránh mất dữ liệu quan trọng.

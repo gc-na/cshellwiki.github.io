@@ -1,43 +1,44 @@
-# [Linux] Bash time Verwendung: Zeitmessung von Befehlen
+# [Linux] C Shell (csh) time Verwendung: Zeitmessung von Befehlen
 
 ## Übersicht
-Der Befehl `time` wird in der Bash verwendet, um die Ausführungszeit eines bestimmten Befehls zu messen. Er gibt Informationen über die benötigte CPU-Zeit, die reale Zeit und den Speicherverbrauch aus, was nützlich ist, um die Leistung von Skripten und Programmen zu analysieren.
+Der `time` Befehl in der C Shell wird verwendet, um die Ausführungszeit eines bestimmten Befehls oder Skripts zu messen. Er gibt Informationen über die benötigte CPU-Zeit sowie die reale Zeit zurück, die für die Ausführung des Befehls erforderlich war.
 
 ## Verwendung
-Die grundlegende Syntax des `time`-Befehls lautet:
+Die grundlegende Syntax des `time` Befehls lautet:
 
-```bash
+```csh
 time [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-p`: Gibt die Ausgabe im POSIX-Format aus.
-- `-o DATEI`: Schreibt die Ausgabe in die angegebene Datei.
-- `-v`: Gibt detaillierte Informationen über die Ausführung aus, einschließlich Speicher- und I/O-Nutzung.
+- `-p`: Gibt die Ausgabe im POSIX-Format zurück.
+- `-o <dateiname>`: Speichert die Ausgabe in die angegebene Datei.
+- `-v`: Gibt detaillierte Informationen über die Ausführung zurück.
 
 ## Häufige Beispiele
+Hier sind einige praktische Beispiele für die Verwendung des `time` Befehls:
 
-1. **Einfaches Zeitmessen eines Befehls:**
-   ```bash
+1. Messen der Ausführungszeit eines einfachen Befehls:
+   ```csh
    time ls -l
    ```
 
-2. **Ausgabe im POSIX-Format:**
-   ```bash
-   time -p sleep 2
+2. Messen der Ausführungszeit eines Skripts und Ausgabe im POSIX-Format:
+   ```csh
+   time -p ./mein_script.sh
    ```
 
-3. **Speichern der Ausgabe in einer Datei:**
-   ```bash
-   time -o zeit.txt find / -name "*.txt"
+3. Speichern der Zeitmessung in einer Datei:
+   ```csh
+   time -o zeit.txt ./mein_programm
    ```
 
-4. **Detaillierte Ausführungsmessung:**
-   ```bash
-   time -v grep "Suchbegriff" große_datei.txt
+4. Detaillierte Zeitmessung eines Befehls:
+   ```csh
+   time -v find / -name "*.txt"
    ```
 
 ## Tipps
-- Verwenden Sie `time` mit ressourcenintensiven Befehlen, um Engpässe zu identifizieren.
-- Kombinieren Sie `time` mit Skripten, um die Leistung über verschiedene Ausführungen hinweg zu vergleichen.
-- Achten Sie darauf, die Ausgabe zu analysieren, um Optimierungsmöglichkeiten zu erkennen.
+- Verwenden Sie die `-p` Option, wenn Sie eine standardisierte Ausgabe benötigen, die leicht zu interpretieren ist.
+- Speichern Sie die Ausgabe in einer Datei, um die Ergebnisse später analysieren zu können.
+- Nutzen Sie die `-v` Option, um zusätzliche Informationen zu erhalten, die bei der Optimierung von Skripten hilfreich sein können.

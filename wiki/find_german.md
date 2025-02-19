@@ -1,56 +1,54 @@
-# [Linux] Bash find Verwendung: Dateien suchen
+# [Linux] C Shell (csh) find Verwendung: Dateinamen finden
 
 ## Übersicht
-Der `find`-Befehl wird verwendet, um Dateien und Verzeichnisse in einem Verzeichnisbaum zu suchen. Er bietet eine leistungsstarke Möglichkeit, nach Dateien basierend auf verschiedenen Kriterien wie Namen, Typ, Größe und Änderungsdatum zu suchen.
+Der `find`-Befehl wird verwendet, um Dateien und Verzeichnisse in einem Verzeichnisbaum zu suchen. Er ermöglicht es Benutzern, nach bestimmten Kriterien wie Namen, Typ, Größe und Änderungsdatum zu filtern.
 
 ## Verwendung
 Die grundlegende Syntax des `find`-Befehls lautet:
 
-```bash
+```csh
 find [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-name <Muster>`: Sucht nach Dateien, deren Namen dem angegebenen Muster entsprechen.
-- `-type <Typ>`: Filtert die Suche nach dem Dateityp (z.B. `f` für reguläre Dateien, `d` für Verzeichnisse).
-- `-size <Größe>`: Sucht nach Dateien, die eine bestimmte Größe haben (z.B. `+100k` für mehr als 100 Kilobyte).
-- `-mtime <Tage>`: Sucht nach Dateien, die in den letzten n Tagen geändert wurden.
-- `-exec <Befehl> {} \;`: Führt einen Befehl für jede gefundene Datei aus.
+- `-name`: Sucht nach Dateien mit einem bestimmten Namen.
+- `-type`: Filtert nach Dateitypen (z.B. `f` für reguläre Dateien, `d` für Verzeichnisse).
+- `-size`: Sucht nach Dateien einer bestimmten Größe.
+- `-mtime`: Sucht nach Dateien, die in den letzten n Tagen geändert wurden.
+- `-exec`: Führt einen Befehl für jede gefundene Datei aus.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung des `find`-Befehls:
+- Suchen nach einer Datei mit dem Namen "beispiel.txt" im aktuellen Verzeichnis und Unterverzeichnissen:
 
-- Suchen nach einer Datei mit dem Namen `example.txt` im aktuellen Verzeichnis und allen Unterverzeichnissen:
-
-```bash
-find . -name "example.txt"
+```csh
+find . -name "beispiel.txt"
 ```
 
 - Suchen nach allen Verzeichnissen im aktuellen Verzeichnisbaum:
 
-```bash
+```csh
 find . -type d
 ```
 
-- Suchen nach Dateien, die größer als 1 Megabyte sind:
+- Suchen nach Dateien, die größer als 1 MB sind:
 
-```bash
+```csh
 find . -size +1M
 ```
 
 - Suchen nach Dateien, die in den letzten 7 Tagen geändert wurden:
 
-```bash
+```csh
 find . -mtime -7
 ```
 
-- Ausführen eines Befehls (z.B. `rm`) für alle `.log`-Dateien im aktuellen Verzeichnisbaum:
+- Ausführen eines Befehls auf jeder gefundenen Datei, z.B. das Löschen von Dateien mit der Endung ".tmp":
 
-```bash
-find . -name "*.log" -exec rm {} \;
+```csh
+find . -name "*.tmp" -exec rm {} \;
 ```
 
 ## Tipps
-- Verwenden Sie `-iname` anstelle von `-name`, um die Groß- und Kleinschreibung bei der Namenssuche zu ignorieren.
-- Kombinieren Sie mehrere Optionen, um die Suche zu verfeinern (z.B. `find . -type f -size +1M -mtime -30`).
-- Testen Sie Ihre Befehle zuerst mit `-print`, um zu sehen, welche Dateien gefunden werden, bevor Sie Aktionen wie `-exec` ausführen.
+- Verwenden Sie `-iname` anstelle von `-name`, um die Suche nicht zwischen Groß- und Kleinschreibung zu unterscheiden.
+- Kombinieren Sie mehrere Optionen, um die Suche zu verfeinern, z.B. `find . -type f -size +1M -mtime -30`.
+- Testen Sie Ihre `find`-Befehle zuerst ohne `-exec`, um sicherzustellen, dass Sie die richtigen Dateien finden, bevor Sie Aktionen darauf ausführen.

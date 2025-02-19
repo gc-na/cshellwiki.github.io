@@ -1,55 +1,48 @@
-# [Linux] Bash w Usage: Show who is logged on and what they are doing
+# [Linux] C Shell (csh) w: Display logged-in users and their activity
 
 ## Overview
-The `w` command in Bash is used to display information about the users currently logged into the system and their activities. It provides a snapshot of user sessions, including their login time, idle time, and the command they are currently executing.
+The `w` command in C Shell (csh) is used to display information about users currently logged into the system, along with their activities. It provides details such as the username, terminal, login time, idle time, and the command being executed.
 
 ## Usage
 The basic syntax of the `w` command is as follows:
 
-```bash
+```
 w [options] [arguments]
 ```
 
 ## Common Options
-- `-h`: Suppresses the header line.
-- `-s`: Displays the output in a short format, omitting the idle time and other details.
-- `-u`: Shows the user’s idle time in a more human-readable format.
-- `-f`: Displays the full hostname of the users instead of just the username.
+- `-h`: Suppresses the header line in the output.
+- `-s`: Displays the output in a short format, omitting the idle time and JCPU.
+- `-f`: Shows the full login name and the host name of the users.
 
 ## Common Examples
 Here are some practical examples of using the `w` command:
 
 1. **Basic Usage**
-   ```bash
+   ```csh
    w
    ```
-   This command displays a list of users currently logged in along with their activities.
+   This command displays a list of all users currently logged in, along with their activity.
 
-2. **Suppress Header**
-   ```bash
+2. **Suppressing the Header**
+   ```csh
    w -h
    ```
-   This command shows the same information but without the header line.
+   This command shows the same information as the basic usage but without the header line.
 
-3. **Short Format**
-   ```bash
+3. **Short Format Output**
+   ```csh
    w -s
    ```
-   This command provides a concise output, omitting idle time and other details.
+   This command provides a concise view of logged-in users without idle time and JCPU information.
 
-4. **Full Hostname**
-   ```bash
+4. **Full User Information**
+   ```csh
    w -f
    ```
-   This command displays the full hostname of the users logged in.
-
-5. **Detailed User Activity**
-   ```bash
-   w -u
-   ```
-   This command shows user idle time in a more readable format.
+   This command displays the full login names and host names of the users, providing more context about who is logged in.
 
 ## Tips
-- Use `w` in combination with other commands like `grep` to filter specific users or activities.
-- Regularly check the output of `w` to monitor system usage and identify any potential issues with user sessions.
-- Consider using `w` alongside commands like `who` or `last` for a more comprehensive view of user activity on the system.
+- Use `w` regularly to monitor user activity on a multi-user system.
+- Combine `w` with other commands like `grep` to filter results for specific users.
+- Familiarize yourself with the output format to quickly interpret user activity and system load.

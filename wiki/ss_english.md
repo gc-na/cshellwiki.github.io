@@ -1,7 +1,7 @@
-# [Linux] Bash ss Usage equivalent in English: Display socket statistics
+# [Linux] C Shell (csh) ss用法: 查看套接字统计信息
 
 ## Overview
-The `ss` command is a utility in Linux used to investigate sockets. It provides detailed information about network connections, including TCP, UDP, and UNIX domain sockets. `ss` is often preferred over the older `netstat` command due to its speed and the depth of information it can provide.
+The `ss` command is used to investigate sockets on a Linux system. It provides detailed information about network connections, including TCP, UDP, and UNIX sockets, making it a powerful tool for network diagnostics and monitoring.
 
 ## Usage
 The basic syntax of the `ss` command is as follows:
@@ -16,10 +16,10 @@ ss [options] [arguments]
 - `-l`: Show listening sockets.
 - `-p`: Show the process using the socket.
 - `-n`: Show numerical addresses instead of resolving hostnames.
-- `-a`: Show all sockets (listening and non-listening).
-- `-s`: Display summary statistics.
+- `-a`: Display all sockets (listening and non-listening).
 
 ## Common Examples
+Here are several practical examples of using the `ss` command:
 
 1. **Display all TCP sockets:**
    ```bash
@@ -41,17 +41,17 @@ ss [options] [arguments]
    ss -p
    ```
 
-5. **Display all sockets in numerical format:**
+5. **Display all sockets with numerical addresses:**
    ```bash
    ss -n
    ```
 
-6. **Get a summary of socket statistics:**
+6. **Show both listening and non-listening sockets:**
    ```bash
-   ss -s
+   ss -a
    ```
 
 ## Tips
-- Use `ss -tuln` to quickly view all listening TCP and UDP sockets with numerical addresses.
-- Combine options for more specific queries, such as `ss -tunlp` to see all TCP and UDP sockets with process information.
-- If you need to monitor socket activity in real-time, consider using `watch ss -tuln` to refresh the output periodically.
+- Use the `-n` option to speed up the output by avoiding DNS resolution, especially on systems with many connections.
+- Combine options for more specific queries, such as `ss -tunlp` to show TCP and UDP sockets with process information.
+- Regularly check socket statistics to monitor for unusual activity or potential security issues.

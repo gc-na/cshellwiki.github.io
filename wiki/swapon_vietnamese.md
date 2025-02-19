@@ -1,44 +1,44 @@
-# [Linux] Bash swapon Cách sử dụng: Kích hoạt không gian swap
+# [Hệ điều hành] C Shell (csh) swapon: Kích hoạt vùng swap
 
 ## Overview
-Lệnh `swapon` được sử dụng để kích hoạt không gian swap trên hệ thống Linux. Swap là một phần của bộ nhớ ảo, cho phép hệ điều hành sử dụng không gian trên đĩa cứng như một phần mở rộng của bộ nhớ RAM, giúp cải thiện hiệu suất khi bộ nhớ RAM đầy.
+Lệnh `swapon` trong C Shell (csh) được sử dụng để kích hoạt các vùng swap trên hệ thống. Vùng swap là không gian trên đĩa cứng được sử dụng để mở rộng bộ nhớ ảo, cho phép hệ điều hành quản lý bộ nhớ hiệu quả hơn.
 
 ## Usage
 Cú pháp cơ bản của lệnh `swapon` như sau:
 
-```bash
+```csh
 swapon [options] [arguments]
 ```
 
 ## Common Options
-- `-a`: Kích hoạt tất cả các không gian swap được định nghĩa trong tệp `/etc/fstab`.
-- `-s`: Hiển thị thông tin về các không gian swap hiện tại.
-- `--show`: Tương tự như `-s`, hiển thị thông tin chi tiết về không gian swap.
+- `-a`: Kích hoạt tất cả các vùng swap được chỉ định trong tệp `/etc/fstab`.
+- `-e`: Kiểm tra các vùng swap trước khi kích hoạt.
+- `-s`: Hiển thị thông tin về các vùng swap hiện tại.
 
 ## Common Examples
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `swapon`:
 
-### Kích hoạt không gian swap từ tệp fstab
-```bash
-swapon -a
-```
+1. Kích hoạt tất cả các vùng swap được chỉ định trong tệp `/etc/fstab`:
+   ```csh
+   swapon -a
+   ```
 
-### Hiển thị thông tin về không gian swap
-```bash
-swapon -s
-```
+2. Kích hoạt một vùng swap cụ thể:
+   ```csh
+   swapon /dev/sdX
+   ```
 
-### Kích hoạt một tệp swap cụ thể
-```bash
-swapon /path/to/swapfile
-```
+3. Kiểm tra các vùng swap hiện tại:
+   ```csh
+   swapon -s
+   ```
 
-### Kích hoạt không gian swap và hiển thị thông tin
-```bash
-swapon --show
-```
+4. Kích hoạt vùng swap và kiểm tra trước khi thực hiện:
+   ```csh
+   swapon -e /dev/sdX
+   ```
 
 ## Tips
-- Đảm bảo rằng không gian swap đã được tạo và định dạng đúng trước khi sử dụng lệnh `swapon`.
-- Sử dụng `swapon -s` để kiểm tra tình trạng không gian swap hiện tại và xác định xem có cần thêm không gian swap hay không.
-- Để tắt không gian swap, bạn có thể sử dụng lệnh `swapoff` theo cú pháp tương tự.
+- Luôn kiểm tra tình trạng vùng swap sau khi kích hoạt bằng cách sử dụng `swapon -s`.
+- Nếu bạn gặp vấn đề với bộ nhớ, hãy xem xét việc thêm vùng swap để cải thiện hiệu suất.
+- Đảm bảo rằng các vùng swap đã được định dạng đúng và có đủ không gian trên đĩa trước khi kích hoạt.

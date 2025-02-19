@@ -1,42 +1,40 @@
-# [Linux] Bash bg用法: 将作业放入后台运行
+# [Linux] C Shell (csh) bg用法: Background job control
 
 ## Overview
-The `bg` command in Bash is used to resume a suspended job and run it in the background. This allows users to continue working in the terminal while the job processes without needing to keep it in the foreground.
+The `bg` command in C Shell (csh) is used to resume a suspended job and run it in the background. This allows users to continue using the terminal while the job executes.
 
 ## Usage
 The basic syntax of the `bg` command is as follows:
 
-```bash
-bg [options] [job_spec]
+```csh
+bg [job_spec]
 ```
 
 ## Common Options
-- `job_spec`: Specifies which job to resume in the background. This can be a job number (e.g., `%1`) or a job name.
-- `-n`: Suppresses the output of the job when it is resumed in the background.
+- `job_spec`: This specifies the job to be resumed in the background. It can be a job number (e.g., `%1`) or a process ID.
 
 ## Common Examples
+Here are some practical examples of using the `bg` command:
 
-1. **Resume the most recent job in the background:**
-   ```bash
+1. **Resuming the Most Recent Suspended Job**
+   ```csh
    bg
    ```
+   This command resumes the most recently suspended job in the background.
 
-2. **Resume a specific job by job number:**
-   ```bash
+2. **Resuming a Specific Job by Job Number**
+   ```csh
    bg %1
    ```
+   This command resumes the job with job number 1 in the background.
 
-3. **Resume a job by its name (if applicable):**
-   ```bash
-   bg my_script.sh
+3. **Resuming a Job by Process ID**
+   ```csh
+   bg %1234
    ```
-
-4. **Suppress output when resuming a job:**
-   ```bash
-   bg -n %2
-   ```
+   This command resumes the job with the process ID 1234 in the background.
 
 ## Tips
-- Use the `jobs` command to list all current jobs and their statuses before using `bg`. This helps you identify which job you want to resume.
-- Remember that jobs can be suspended using `Ctrl + Z`, allowing you to then use `bg` to run them in the background.
-- If you want to bring a job back to the foreground, use the `fg` command instead of `bg`.
+- Always check the status of your jobs using the `jobs` command before using `bg` to ensure you are resuming the correct job.
+- Use `fg` if you need to bring a background job back to the foreground.
+- Remember that background jobs will continue to run even if you close the terminal, but they may be terminated if the shell session ends.

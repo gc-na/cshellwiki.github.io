@@ -1,47 +1,43 @@
-# [Linux] Bash history Kullanımı: Komut geçmişini görüntüleme
+# [Unix] C Shell (csh) history Kullanımı: Komut geçmişini görüntüleme
 
-## Overview
-`history` komutu, Bash kabuğunda daha önce çalıştırılan komutların bir listesini görüntülemek için kullanılır. Bu, kullanıcıların geçmişteki komutları hızlı bir şekilde hatırlamasını ve tekrar kullanmasını sağlar.
+## Genel Bakış
+`history` komutu, C Shell (csh) ortamında daha önce çalıştırılmış komutların listesini görüntülemeye yarar. Bu komut, kullanıcıların geçmişteki komutlarını hatırlamalarına ve tekrar kullanmalarına olanak tanır.
 
-## Usage
+## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-```
+
+```csh
 history [options] [arguments]
 ```
 
-## Common Options
+## Yaygın Seçenekler
 - `-c`: Geçmişi temizler.
-- `-d offset`: Belirtilen konumda (offset) bulunan komutu siler.
-- `-a`: Geçmişi dosyaya ekler.
-- `-r`: Geçmiş dosyasını okur ve mevcut geçmişe ekler.
+- `-n`: Geçmiş dosyasını okur ve mevcut geçmişe ekler.
+- `-r`: Geçmiş dosyasını okur ve geçmişi günceller.
+- `-w`: Geçmişi dosyaya yazar.
 
-## Common Examples
-1. Tüm geçmişi görüntüleme:
-   ```bash
+## Yaygın Örnekler
+1. Tüm geçmişi görüntülemek için:
+   ```csh
    history
    ```
 
-2. Geçmişteki son 10 komutu görüntüleme:
-   ```bash
+2. Geçmişteki son 10 komutu görüntülemek için:
+   ```csh
    history 10
    ```
 
-3. Belirli bir komutu tekrar çalıştırma (örneğin, 25 numaralı komut):
-   ```bash
-   !25
-   ```
-
-4. Geçmişten belirli bir komutu silme (örneğin, 10 numaralı komut):
-   ```bash
-   history -d 10
-   ```
-
-5. Geçmişi temizleme:
-   ```bash
+3. Geçmişi temizlemek için:
+   ```csh
    history -c
    ```
 
-## Tips
-- Geçmişteki komutları aramak için `Ctrl + r` tuş kombinasyonunu kullanabilirsiniz.
-- Sık kullandığınız komutları bir dosyaya kaydedebilir ve gerektiğinde bu dosyayı okuyarak hızlıca erişebilirsiniz.
-- Geçmişi düzenli olarak temizlemek, gereksiz komutların birikmesini önler ve daha düzenli bir çalışma ortamı sağlar.
+4. Geçmiş dosyasını güncellemek için:
+   ```csh
+   history -w
+   ```
+
+## İpuçları
+- Geçmişteki komutları hızlıca tekrar çalıştırmak için `!` operatörünü kullanabilirsiniz. Örneğin, `!5` komutu, geçmişteki 5. komutu tekrar çalıştırır.
+- Geçmişi düzenli olarak temizlemek, gereksiz karmaşayı önler ve daha verimli bir çalışma ortamı sağlar.
+- Geçmiş dosyasını yedeklemek, önemli komutları kaybetmemek için iyi bir uygulamadır.

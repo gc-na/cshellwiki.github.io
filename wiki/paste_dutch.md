@@ -1,51 +1,47 @@
-# [Linux] Bash paste gebruik: Samenvoegen van bestanden
+# [Linux] C Shell (csh) paste gebruik: Samengestelde bestanden samenvoegen
 
 ## Overzicht
-De `paste` opdracht in Bash wordt gebruikt om de inhoud van meerdere bestanden samen te voegen. Het combineert de lijnen van de bestanden en plaatst ze naast elkaar, gescheiden door een tab. Dit is handig voor het combineren van gegevens uit verschillende bronnen in een overzichtelijke indeling.
+De `paste` opdracht in C Shell (csh) wordt gebruikt om de inhoud van meerdere bestanden samen te voegen, waarbij de inhoud van elk bestand naast elkaar wordt weergegeven. Dit is handig voor het combineren van gegevens uit verschillende bronnen in één overzichtelijke weergave.
 
 ## Gebruik
 De basis syntaxis van de `paste` opdracht is als volgt:
 
-```bash
+```csh
 paste [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-d`: Hiermee kun je een ander scheidingsteken opgeven dan de standaard tab.
-- `-s`: Hiermee worden de lijnen van elk bestand samengevoegd in plaats van ze naast elkaar te plaatsen.
-- `-z`: Hiermee wordt een null-byte als scheidingsteken gebruikt, wat nuttig kan zijn voor bepaalde toepassingen.
+- `-d`: Hiermee kunt u een specifieke scheidingsteken opgeven tussen de samengevoegde regels.
+- `-s`: Hiermee worden de invoerregels samengevoegd in plaats van ze naast elkaar te plaatsen, wat resulteert in een enkele regel per bestand.
+- `-z`: Dit voegt de inhoud van de bestanden samen met een nulbyte als scheidingsteken.
 
 ## Veelvoorkomende Voorbeelden
 
-### Voorbeeld 1: Basis gebruik
-Om twee bestanden, `bestand1.txt` en `bestand2.txt`, naast elkaar te plaatsen:
+1. **Basis gebruik van paste**:
+   Combineer de inhoud van twee bestanden `file1.txt` en `file2.txt`:
+   ```csh
+   paste file1.txt file2.txt
+   ```
 
-```bash
-paste bestand1.txt bestand2.txt
-```
+2. **Gebruik van een specifiek scheidingsteken**:
+   Gebruik een komma als scheidingsteken tussen de inhoud van de bestanden:
+   ```csh
+   paste -d ',' file1.txt file2.txt
+   ```
 
-### Voorbeeld 2: Gebruik van een ander scheidingsteken
-Als je een komma als scheidingsteken wilt gebruiken in plaats van een tab:
+3. **Inhoud van bestanden samengevoegd in één regel**:
+   Combineer de inhoud van `file1.txt` en `file2.txt` in één regel per bestand:
+   ```csh
+   paste -s file1.txt file2.txt
+   ```
 
-```bash
-paste -d, bestand1.txt bestand2.txt
-```
-
-### Voorbeeld 3: Samengevoegd in één lijn
-Om de inhoud van een bestand in één lijn te combineren:
-
-```bash
-paste -s bestand1.txt
-```
-
-### Voorbeeld 4: Meerdere bestanden samenvoegen
-Je kunt ook meer dan twee bestanden samenvoegen:
-
-```bash
-paste bestand1.txt bestand2.txt bestand3.txt
-```
+4. **Gebruik van nulbyte als scheidingsteken**:
+   Combineer bestanden met een nulbyte als scheidingsteken:
+   ```csh
+   paste -z file1.txt file2.txt
+   ```
 
 ## Tips
-- Controleer altijd de inhoud van je bestanden voordat je `paste` gebruikt om ervoor te zorgen dat ze de juiste indeling hebben.
-- Gebruik de `-d` optie om de uitvoer beter leesbaar te maken, vooral als je met tekstbestanden werkt die specifieke scheidingstekens vereisen.
-- Experimenteer met de `-s` optie voor een alternatieve weergave van gegevens, vooral handig voor rapportages.
+- Zorg ervoor dat de bestanden die u wilt samenvoegen dezelfde structuur hebben voor een duidelijker resultaat.
+- Experimenteer met verschillende scheidingstekens om de output aan te passen aan uw behoeften.
+- Gebruik de `man paste` opdracht voor meer gedetailleerde informatie over de beschikbare opties en gebruiksmogelijkheden.

@@ -1,49 +1,45 @@
-# [Linux] Bash getent użycie: Pobieranie informacji o systemie
+# [Linux] C Shell (csh) getent użycie: uzyskiwanie informacji o wpisach w bazach danych
 
-## Overview
-Polecenie `getent` służy do pobierania informacji z różnych baz danych systemowych, takich jak użytkownicy, grupy, hosty i inne. Umożliwia dostęp do tych danych w sposób spójny, niezależnie od źródła, z którego pochodzą.
+## Przegląd
+Polecenie `getent` służy do uzyskiwania informacji o wpisach w różnych bazach danych systemowych, takich jak użytkownicy, grupy, hosty i inne. Umożliwia dostęp do tych informacji w sposób ujednolicony, niezależnie od źródła, z którego pochodzą.
 
-## Usage
+## Użycie
 Podstawowa składnia polecenia `getent` jest następująca:
 
-```bash
+```csh
 getent [opcje] [argumenty]
 ```
 
-## Common Options
-- `passwd` - Pobiera informacje o użytkownikach.
-- `group` - Pobiera informacje o grupach.
-- `hosts` - Pobiera informacje o hostach.
-- `services` - Pobiera informacje o usługach.
-- `networks` - Pobiera informacje o sieciach.
+## Typowe opcje
+- `passwd` - uzyskuje informacje o użytkownikach.
+- `group` - uzyskuje informacje o grupach.
+- `hosts` - uzyskuje informacje o hostach.
+- `services` - uzyskuje informacje o usługach.
 
-## Common Examples
-1. **Pobieranie informacji o użytkownikach:**
-   ```bash
+## Przykłady
+Oto kilka praktycznych przykładów użycia polecenia `getent`:
+
+1. Uzyskiwanie informacji o użytkownikach:
+   ```csh
    getent passwd
    ```
 
-2. **Pobieranie informacji o konkretnej grupie:**
-   ```bash
-   getent group nazwa_grupy
+2. Uzyskiwanie informacji o konkretnej grupie:
+   ```csh
+   getent group administrators
    ```
 
-3. **Pobieranie informacji o hostach:**
-   ```bash
-   getent hosts example.com
+3. Uzyskiwanie informacji o hostach:
+   ```csh
+   getent hosts
    ```
 
-4. **Pobieranie informacji o usługach:**
-   ```bash
-   getent services http
+4. Uzyskiwanie informacji o usługach:
+   ```csh
+   getent services
    ```
 
-5. **Pobieranie informacji o sieciach:**
-   ```bash
-   getent networks
-   ```
-
-## Tips
-- Używaj `getent` zamiast bezpośredniego przeszukiwania plików, takich jak `/etc/passwd`, aby uzyskać bardziej spójną i zaktualizowaną informację.
+## Wskazówki
+- Używaj `getent` zamiast bezpośredniego przeszukiwania plików, aby uzyskać spójne wyniki z różnych źródeł.
 - Możesz łączyć `getent` z innymi poleceniami, takimi jak `grep`, aby filtrować wyniki.
-- Sprawdzaj dostępność różnych baz danych, używając `getent` bez argumentów, aby zobaczyć, co jest dostępne w Twoim systemie.
+- Zawsze sprawdzaj, czy masz odpowiednie uprawnienia do przeglądania informacji o użytkownikach i grupach.

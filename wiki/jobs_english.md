@@ -1,47 +1,49 @@
-# [Linux] Bash jobs uso: Manage background jobs in the shell
+# [Linux] C Shell (csh) jobs 用法等价: Manage Background and Stopped Jobs
 
 ## Overview
-The `jobs` command in Bash is used to display the status of jobs that are running in the background or have been suspended in the current shell session. It provides information about the jobs, including their job numbers, statuses, and process IDs.
+The `jobs` command in C Shell (csh) is used to display the status of jobs that are running in the background or have been stopped. It provides information about each job, including its job number, status, and command line.
 
 ## Usage
 The basic syntax of the `jobs` command is as follows:
 
-```bash
+```csh
 jobs [options] [arguments]
 ```
 
 ## Common Options
-- `-l`: Show process IDs along with job information.
-- `-n`: Display only jobs that have changed status since the last time the command was run.
-- `-p`: Show only the process IDs of the jobs.
+- `-l`: Displays the process IDs (PIDs) along with the job status.
+- `-n`: Shows only jobs that have changed status since the last time the command was run.
+- `-p`: Displays only the process IDs of the jobs.
 
 ## Common Examples
 
-1. **List all background jobs:**
-   To see all jobs running in the background, simply use:
-   ```bash
+1. **Display all jobs:**
+   ```csh
    jobs
    ```
 
-2. **List jobs with process IDs:**
-   To include process IDs in the output, use the `-l` option:
-   ```bash
+2. **Display jobs with process IDs:**
+   ```csh
    jobs -l
    ```
 
 3. **Show only jobs that have changed status:**
-   To display only jobs that have changed since the last check, use:
-   ```bash
+   ```csh
    jobs -n
    ```
 
 4. **Display only process IDs of jobs:**
-   If you want to see just the process IDs of the jobs, you can use:
-   ```bash
+   ```csh
    jobs -p
    ```
 
+5. **Check the status of jobs after running a background command:**
+   ```csh
+   sleep 60 &
+   jobs
+   ```
+
 ## Tips
-- Use `bg` to resume a suspended job in the background after checking its status with `jobs`.
-- Use `fg` to bring a background job to the foreground if you need to interact with it.
-- Remember that the job numbers displayed by `jobs` can be used with `bg` and `fg` commands to manage jobs effectively. For example, `fg %1` brings job number 1 to the foreground.
+- Use `jobs` frequently to monitor your background tasks and ensure they are running as expected.
+- Combine `jobs` with other commands like `fg` or `bg` to manage jobs more effectively.
+- Remember that jobs will be listed only if they were started in the current shell session.

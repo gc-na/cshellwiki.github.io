@@ -1,51 +1,50 @@
-# [Linux] Bash ping Kullanımı: Ağ bağlantısını test etme aracı
+# [Linux] C Shell (csh) ping Kullanımı: Ağ bağlantısını test etme aracı
 
 ## Genel Bakış
-`ping` komutu, bir ağ üzerindeki bir cihazın erişilebilirliğini test etmek için kullanılır. Bu komut, belirli bir IP adresine veya alan adına ICMP (Internet Control Message Protocol) "echo request" paketleri gönderir ve bu paketlerin geri dönüş süresini ölçerek bağlantının durumunu belirler.
+Ping komutu, bir ağ üzerindeki bir hedefe (genellikle bir IP adresi veya alan adı) veri paketleri göndererek bağlantının durumunu kontrol etmeye yarar. Bu komut, ağ bağlantısının sağlıklı olup olmadığını anlamak için yaygın olarak kullanılır.
 
 ## Kullanım
-Temel sözdizimi şu şekildedir:
-```bash
+Ping komutunun temel sözdizimi aşağıdaki gibidir:
+
+```csh
 ping [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-c [sayı]`: Gönderilecek ping sayısını belirler. Varsayılan olarak sonsuz ping gönderir.
-- `-i [saniye]`: Ping paketleri arasında bekleme süresini ayarlar.
-- `-t [sayı]`: TTL (Time To Live) değerini ayarlar.
-- `-s [boyut]`: Gönderilecek veri paketinin boyutunu ayarlar.
-- `-W [saniye]`: Zaman aşımını ayarlar.
+- `-c [sayı]`: Gönderilecek ping paketlerinin sayısını belirler.
+- `-i [saniye]`: Paketler arasında bekleme süresini saniye cinsinden ayarlar.
+- `-s [boyut]`: Gönderilecek paketlerin boyutunu bayt cinsinden ayarlar.
+- `-t [süre]`: Zaman aşımını ayarlar.
 
 ## Yaygın Örnekler
-Aşağıda `ping` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+Aşağıda ping komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. Belirli bir IP adresine ping atma:
-   ```bash
+1. **Bir IP adresine ping atma:**
+   ```csh
    ping 192.168.1.1
    ```
 
-2. Bir alan adına ping atma:
-   ```bash
-   ping www.example.com
+2. **Bir alan adına ping atma:**
+   ```csh
+   ping example.com
    ```
 
-3. Sadece 4 ping paketi gönderme:
-   ```bash
-   ping -c 4 8.8.8.8
+3. **Belirli sayıda paket gönderme:**
+   ```csh
+   ping -c 4 192.168.1.1
    ```
 
-4. Ping paketleri arasında 2 saniye bekleme:
-   ```bash
-   ping -i 2 google.com
+4. **Paket boyutunu ayarlama:**
+   ```csh
+   ping -s 64 example.com
    ```
 
-5. Paket boyutunu 100 bayta ayarlama:
-   ```bash
-   ping -s 100 192.168.1.1
+5. **Paketler arasında bekleme süresi ayarlama:**
+   ```csh
+   ping -i 2 192.168.1.1
    ```
 
 ## İpuçları
 - Ping komutunu kullanarak ağ bağlantınızın hızını ve kararlılığını test edebilirsiniz.
-- Eğer ping sonuçları çok yüksekse veya zaman aşımına uğruyorsa, ağ bağlantınızı kontrol edin.
-- Ping komutunu sürekli çalıştırmak yerine belirli sayıda paket göndererek test yapmak daha verimli olabilir.
-- Ağ sorunlarını teşhis etmek için farklı sunuculara ping atmayı deneyin.
+- Ping sonuçlarını analiz ederek ağda olası sorunları tespit edebilirsiniz.
+- Ping atarken hedefin yanıt vermesi için yeterli süre tanımak önemlidir; bu nedenle zaman aşımını ayarlamak faydalı olabilir.

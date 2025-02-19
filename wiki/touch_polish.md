@@ -1,56 +1,50 @@
-# [Linux] Bash touch użycie: Tworzenie lub aktualizacja znaczników czasu plików
+# [Linux] C Shell (csh) touch użycie: Tworzenie lub aktualizacja znaczników czasowych plików
 
 ## Overview
-Polecenie `touch` w systemie Linux służy do tworzenia nowych plików lub aktualizacji znaczników czasu istniejących plików. Jeśli plik o podanej nazwie nie istnieje, `touch` utworzy go jako pusty plik. Jeśli plik już istnieje, polecenie zaktualizuje jego czas ostatniego dostępu i modyfikacji na bieżący czas.
+Polecenie `touch` w C Shell (csh) służy do tworzenia nowych plików lub aktualizacji znaczników czasowych istniejących plików. Jeśli plik nie istnieje, `touch` go utworzy. Jeśli plik już istnieje, polecenie zaktualizuje jego czas ostatniego dostępu i modyfikacji na bieżący czas.
 
 ## Usage
 Podstawowa składnia polecenia `touch` jest następująca:
 
-```bash
+```csh
 touch [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-a`: Aktualizuje tylko czas ostatniego dostępu.
-- `-m`: Aktualizuje tylko czas ostatniej modyfikacji.
-- `-c`: Nie tworzy pliku, jeśli nie istnieje.
-- `-t`: Umożliwia ustawienie konkretnego znacznika czasu w formacie `[[CC]YY]MMDDhhmm[.ss]`.
+- `-a` - aktualizuje tylko czas dostępu pliku.
+- `-m` - aktualizuje tylko czas modyfikacji pliku.
+- `-c` - nie tworzy pliku, jeśli nie istnieje.
+- `-t` - pozwala na ustawienie konkretnego czasu w formacie `[[CC]YY]MMDDhhmm[.ss]`.
 
 ## Common Examples
-1. **Tworzenie nowego pliku:**
-   ```bash
+Oto kilka praktycznych przykładów użycia polecenia `touch`:
+
+1. Tworzenie nowego pliku:
+   ```csh
    touch nowy_plik.txt
    ```
 
-2. **Aktualizacja znacznika czasu istniejącego pliku:**
-   ```bash
+2. Aktualizacja czasu modyfikacji istniejącego pliku:
+   ```csh
    touch istniejący_plik.txt
    ```
 
-3. **Aktualizacja tylko czasu ostatniego dostępu:**
-   ```bash
+3. Aktualizacja tylko czasu dostępu pliku:
+   ```csh
    touch -a istniejący_plik.txt
    ```
 
-4. **Aktualizacja tylko czasu ostatniej modyfikacji:**
-   ```bash
-   touch -m istniejący_plik.txt
+4. Ustawienie konkretnego czasu na pliku:
+   ```csh
+   touch -t 202310151200 nowy_plik.txt
    ```
 
-5. **Ustawienie konkretnego znacznika czasu:**
-   ```bash
-   touch -t 202310151230 nowy_plik.txt
-   ```
-
-6. **Nie tworzenie pliku, jeśli nie istnieje:**
-   ```bash
+5. Użycie opcji `-c`, aby nie tworzyć pliku, jeśli nie istnieje:
+   ```csh
    touch -c nieistniejący_plik.txt
    ```
 
 ## Tips
-- Używaj opcji `-c`, aby uniknąć przypadkowego tworzenia plików, gdy nie są potrzebne.
-- Możesz użyć `touch` w skryptach do aktualizacji znaczników czasu plików logów, co może być przydatne w zarządzaniu danymi.
-- Aby szybko utworzyć wiele plików, możesz podać ich nazwy jako argumenty:
-  ```bash
-  touch plik1.txt plik2.txt plik3.txt
-  ```
+- Używaj `touch` do szybkiego tworzenia plików konfiguracyjnych lub skryptów, aby rozpocząć nowy projekt.
+- Regularnie aktualizuj znaczniki czasowe plików, aby mieć pewność, że są one aktualne, co może być przydatne w procesach backupowych.
+- Pamiętaj, aby używać opcji `-c`, gdy nie chcesz przypadkowo tworzyć plików, które mogą być niepotrzebne.

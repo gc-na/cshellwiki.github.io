@@ -1,44 +1,50 @@
-# [Linux] Bash endsw Kullanımı: Komutların sonunu belirtir
+# [Linux] C Shell (csh) endsw Kullanımı: Koşullu ifadeleri sonlandırma
 
 ## Genel Bakış
-`endsw` komutu, bir Bash betiğinde veya komut dosyasında, belirli bir komutun sonunu belirtmek için kullanılır. Bu komut, genellikle bir koşulun veya döngünün sonunu tanımlamak için kullanılır.
+`endsw` komutu, C Shell (csh) ortamında koşullu ifadelerin sonlandırılmasında kullanılır. Bu komut, bir `switch` ifadesinin sonunu belirtmek için gereklidir ve program akışını kontrol etmek için önemli bir rol oynar.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-```bash
-endsw [options] [arguments]
+```
+endsw
 ```
 
 ## Yaygın Seçenekler
-- `-h`, `--help`: Komut hakkında yardım bilgisi gösterir.
-- `-v`, `--version`: Komutun sürüm bilgisini gösterir.
+`endsw` komutunun kendisi için özel bir seçenek yoktur. Ancak, `switch` ifadesinin bir parçası olarak kullanılır.
 
 ## Yaygın Örnekler
-Aşağıda `endsw` komutunun nasıl kullanılabileceğine dair bazı örnekler bulunmaktadır:
+Aşağıda `endsw` komutunun kullanıldığı bazı örnekler bulunmaktadır:
 
-### Örnek 1: Basit bir koşul kullanımı
-```bash
-if [ "$x" -eq 1 ]; then
-    echo "X 1'e eşit."
+### Örnek 1: Basit bir switch ifadesi
+```csh
+switch ($variable)
+    case value1:
+        echo "Değer 1"
+        breaksw
+    case value2:
+        echo "Değer 2"
+        breaksw
+    default:
+        echo "Varsayılan değer"
 endsw
 ```
 
-### Örnek 2: Döngü içinde kullanım
-```bash
-for i in {1..5}; do
-    echo "Sayı: $i"
+### Örnek 2: Birden fazla durum
+```csh
+switch ($option)
+    case "a":
+        echo "Seçenek A"
+        breaksw
+    case "b":
+        echo "Seçenek B"
+        breaksw
+    case "c":
+        echo "Seçenek C"
+        breaksw
 endsw
-```
-
-### Örnek 3: Bir fonksiyon içinde kullanım
-```bash
-my_function() {
-    echo "Fonksiyon çalışıyor."
-endsw
-}
 ```
 
 ## İpuçları
-- `endsw` komutunu kullanırken, her zaman uygun bir koşul veya döngü ile eşleştirdiğinizden emin olun.
-- Komut dosyalarınızı daha okunabilir hale getirmek için `endsw` komutunu düzenli bir şekilde yerleştirin.
-- Hata ayıklama sırasında, `endsw` komutunun doğru yerleştirildiğinden emin olmak için dikkatli olun.
+- `endsw` komutunu kullanmadan önce, `switch` ifadesinin doğru bir şekilde tanımlandığından emin olun.
+- Her `case` ifadesinden sonra `breaksw` kullanarak akışı kontrol edin; aksi takdirde, tüm durumlar çalıştırılabilir.
+- `endsw` komutunu kullanarak kodunuzu daha okunabilir hale getirin ve mantıksal akışı netleştirin.

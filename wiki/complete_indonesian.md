@@ -1,50 +1,39 @@
-# [Linux] Bash lengkap perintah: Melengkapi argumen perintah
+# [Sistem Operasi] C Shell (csh) lengkap perintah `complete`: Menyelesaikan nama perintah
 
 ## Overview
-Perintah `complete` dalam Bash digunakan untuk mengatur cara penyelesaian otomatis argumen perintah. Dengan menggunakan perintah ini, pengguna dapat menentukan bagaimana shell menyarankan argumen ketika pengguna menekan tombol Tab.
+Perintah `complete` dalam C Shell digunakan untuk mengatur penyelesaian otomatis untuk perintah yang Anda masukkan di terminal. Ini memungkinkan pengguna untuk menambahkan atau mengubah cara penyelesaian otomatis bekerja, sehingga meningkatkan efisiensi saat mengetik perintah.
 
 ## Usage
-Berikut adalah sintaks dasar dari perintah `complete`:
+Berikut adalah sintaks dasar untuk perintah `complete`:
 
-```bash
+```
 complete [options] [arguments]
 ```
 
 ## Common Options
-- `-A`: Menentukan tipe argumen yang akan dilengkapi, seperti `command`, `file`, atau `directory`.
-- `-o`: Menambahkan opsi khusus untuk penyelesaian, seperti `nospace` untuk menghindari penambahan spasi setelah argumen.
-- `-F`: Menentukan fungsi penyelesaian yang akan digunakan untuk melengkapi argumen.
+- `-e` : Menghapus penyelesaian otomatis yang ada untuk perintah tertentu.
+- `-p` : Menampilkan penyelesaian otomatis yang ada untuk perintah yang ditentukan.
+- `-c` : Menambahkan penyelesaian otomatis baru untuk perintah yang ditentukan.
 
 ## Common Examples
+Berikut adalah beberapa contoh penggunaan perintah `complete`:
 
-1. **Menyelesaikan nama file**:
-   Untuk melengkapi nama file saat menggunakan perintah `mycmd`:
-   ```bash
-   complete -o nospace -F _filedir mycmd
+1. **Menambahkan penyelesaian otomatis untuk perintah `git`:**
+   ```csh
+   complete -c git -o "-a commit -b branch -c checkout"
    ```
 
-2. **Menyelesaikan argumen berdasarkan perintah**:
-   Jika Anda ingin melengkapi argumen berdasarkan perintah yang sudah ada:
-   ```bash
-   complete -A command mycmd
+2. **Menghapus penyelesaian otomatis untuk perintah `ls`:**
+   ```csh
+   complete -e ls
    ```
 
-3. **Menyelesaikan dengan opsi khusus**:
-   Menyediakan opsi khusus untuk penyelesaian:
-   ```bash
-   complete -o nospace -A file mycmd
-   ```
-
-4. **Menggunakan fungsi untuk penyelesaian**:
-   Jika Anda memiliki fungsi khusus untuk penyelesaian:
-   ```bash
-   _my_custom_completion() {
-       COMPREPLY=( $(compgen -W "option1 option2 option3" -- "${COMP_WORDS[1]}") )
-   }
-   complete -F _my_custom_completion mycmd
+3. **Menampilkan penyelesaian otomatis yang ada untuk perintah `ssh`:**
+   ```csh
+   complete -p ssh
    ```
 
 ## Tips
-- Selalu uji penyelesaian otomatis yang Anda buat untuk memastikan bahwa mereka berfungsi seperti yang diharapkan.
-- Gunakan opsi `-o` untuk menyesuaikan perilaku penyelesaian agar lebih sesuai dengan kebutuhan Anda.
-- Pertimbangkan untuk membuat fungsi penyelesaian yang lebih kompleks jika Anda memiliki banyak argumen atau opsi yang perlu dilengkapi.
+- Pastikan untuk selalu memeriksa penyelesaian otomatis yang ada sebelum menambahkannya untuk menghindari konflik.
+- Gunakan opsi `-p` untuk melihat penyelesaian yang sudah ada dan menyesuaikan sesuai kebutuhan Anda.
+- Praktikkan penggunaan `complete` di sesi terminal yang terpisah untuk menghindari kesalahan pada sesi utama Anda.

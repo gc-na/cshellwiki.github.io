@@ -1,52 +1,50 @@
-# [Linux] Bash watch utilisation : surveiller les commandes en temps réel
+# [Linux] C Shell (csh) watch utilisation : surveiller les commandes en temps réel
 
 ## Overview
-La commande `watch` permet d'exécuter une commande à intervalles réguliers, affichant ainsi la sortie de cette commande en temps réel. Cela est particulièrement utile pour surveiller les changements dans les fichiers, les processus ou d'autres informations système.
+La commande `watch` permet d'exécuter périodiquement une autre commande et d'afficher sa sortie dans le terminal. Cela est particulièrement utile pour surveiller les changements dans les fichiers ou les processus en cours d'exécution.
 
 ## Usage
 La syntaxe de base de la commande `watch` est la suivante :
 
-```bash
+```csh
 watch [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes pour `watch` :
+Voici quelques options courantes pour la commande `watch` :
 
-- `-n, --interval` : Définit l'intervalle en secondes entre les exécutions de la commande. Par défaut, l'intervalle est de 2 secondes.
-- `-d, --differences` : Met en surbrillance les différences entre les sorties successives.
-- `-t, --no-title` : Supprime l'affichage de l'en-tête de la commande en cours d'exécution.
-- `-x, --exec` : Exécute la commande spécifiée sans passer par un shell.
+- `-n <seconds>` : définit l'intervalle de temps en secondes entre chaque exécution de la commande.
+- `-d` : met en surbrillance les différences entre les sorties successives.
+- `-t` : supprime l'affichage de l'horodatage en haut de l'écran.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `watch` :
 
-1. Surveiller l'utilisation de la mémoire :
-   ```bash
-   watch free -h
+1. Surveiller l'utilisation de l'espace disque toutes les 2 secondes :
+
+   ```csh
+   watch -n 2 df -h
    ```
 
-2. Observer les processus actifs :
-   ```bash
-   watch ps aux
+2. Afficher les processus en cours d'exécution et mettre en surbrillance les changements :
+
+   ```csh
+   watch -d ps aux
    ```
 
-3. Vérifier les modifications dans un répertoire :
-   ```bash
-   watch ls -l /chemin/vers/répertoire
+3. Vérifier les modifications dans un fichier texte toutes les 5 secondes :
+
+   ```csh
+   watch -n 5 cat /path/to/file.txt
    ```
 
-4. Surveiller un fichier journal :
-   ```bash
-   watch tail -n 10 /var/log/syslog
-   ```
+4. Surveiller l'état d'un service (par exemple, Apache) sans horodatage :
 
-5. Afficher les différences dans un fichier :
-   ```bash
-   watch -d cat fichier.txt
+   ```csh
+   watch -t systemctl status apache2
    ```
 
 ## Tips
-- Utilisez l'option `-n` pour ajuster l'intervalle d'exécution selon vos besoins.
-- Combinez `watch` avec d'autres commandes pour surveiller des informations spécifiques.
-- Pensez à utiliser l'option `-d` pour mieux visualiser les changements importants dans les sorties.
+- Utilisez l'option `-d` pour mieux visualiser les changements, surtout lorsque vous surveillez des informations qui changent fréquemment.
+- Choisissez un intervalle de temps approprié avec `-n` pour éviter de surcharger votre terminal avec des mises à jour trop fréquentes.
+- Combinez `watch` avec d'autres commandes pour des tâches de surveillance plus complexes, comme `grep` ou `awk`, pour filtrer les résultats.

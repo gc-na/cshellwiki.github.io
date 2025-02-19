@@ -1,7 +1,7 @@
-# [Linux] Bash flatpak uso: Gestión de aplicaciones en entornos aislados
+# [Linux] C Shell (csh) flatpak uso: Gestión de aplicaciones en entornos aislados
 
 ## Overview
-El comando `flatpak` se utiliza para gestionar aplicaciones en entornos aislados, lo que permite instalar, ejecutar y mantener aplicaciones de manera segura y eficiente en diferentes distribuciones de Linux. Flatpak facilita la distribución de software al permitir que las aplicaciones se ejecuten en un entorno controlado, independientemente de las bibliotecas del sistema.
+El comando `flatpak` se utiliza para gestionar aplicaciones en entornos aislados, permitiendo a los usuarios instalar, ejecutar y administrar aplicaciones de manera segura y eficiente en diferentes distribuciones de Linux.
 
 ## Usage
 La sintaxis básica del comando `flatpak` es la siguiente:
@@ -13,9 +13,9 @@ flatpak [opciones] [argumentos]
 ## Common Options
 - `install`: Instala una aplicación desde un repositorio.
 - `run`: Ejecuta una aplicación instalada.
+- `update`: Actualiza las aplicaciones instaladas a sus versiones más recientes.
 - `remove`: Elimina una aplicación instalada.
-- `update`: Actualiza las aplicaciones instaladas a la última versión.
-- `list`: Muestra una lista de aplicaciones instaladas.
+- `list`: Muestra las aplicaciones instaladas.
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso del comando `flatpak`:
@@ -30,14 +30,14 @@ Aquí hay algunos ejemplos prácticos del uso del comando `flatpak`:
    flatpak run org.videolan.VLC
    ```
 
-3. **Eliminar una aplicación**:
-   ```bash
-   flatpak remove org.videolan.VLC
-   ```
-
-4. **Actualizar aplicaciones instaladas**:
+3. **Actualizar aplicaciones instaladas**:
    ```bash
    flatpak update
+   ```
+
+4. **Eliminar una aplicación**:
+   ```bash
+   flatpak remove org.videolan.VLC
    ```
 
 5. **Listar aplicaciones instaladas**:
@@ -46,6 +46,6 @@ Aquí hay algunos ejemplos prácticos del uso del comando `flatpak`:
    ```
 
 ## Tips
-- Asegúrate de tener configurado el repositorio `flathub`, ya que es el más común para encontrar aplicaciones.
+- Asegúrate de tener el repositorio `flathub` agregado para acceder a una amplia gama de aplicaciones.
 - Utiliza `flatpak info [nombre de la aplicación]` para obtener información detallada sobre una aplicación instalada.
-- Considera usar `flatpak override` para ajustar permisos de aplicaciones según sea necesario, mejorando así la seguridad.
+- Considera usar `flatpak update --appstream` para asegurarte de que la información sobre las aplicaciones esté actualizada antes de realizar una actualización.

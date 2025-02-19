@@ -1,48 +1,39 @@
-# [Linux] Bash domyślny polecenie: [wyświetlanie zawartości plików]
+# [Linux] C Shell (csh) default użycie: Ustawienie domyślnej powłoki
 
-## Przegląd
-Polecenie `cat` w systemie Linux służy do wyświetlania zawartości plików tekstowych. Może być również używane do łączenia kilku plików w jeden oraz do tworzenia nowych plików.
+## Overview
+Polecenie `default` w C Shell (csh) służy do ustawiania domyślnej powłoki dla użytkownika w systemie. Umożliwia to skonfigurowanie, która powłoka będzie używana, gdy użytkownik loguje się do systemu.
 
-## Użycie
-Podstawowa składnia polecenia `cat` wygląda następująco:
+## Usage
+Podstawowa składnia polecenia `default` jest następująca:
 
-```bash
-cat [opcje] [argumenty]
+```csh
+default [options] [arguments]
 ```
 
-## Często używane opcje
-- `-n`: Numeruje wszystkie linie w wyjściu.
-- `-b`: Numeruje tylko niepuste linie.
-- `-E`: Wyświetla znak końca linii `$` na końcu każdej linii.
-- `-s`: Usuwa puste linie.
+## Common Options
+- `-l`: Ustawia domyślną powłokę na powłokę logowania.
+- `-s`: Ustawia domyślną powłokę na powłokę interaktywną.
+- `-h`: Wyświetla pomoc dotycząca użycia polecenia.
 
-## Przykłady
-1. Wyświetlenie zawartości pliku:
-   ```bash
-   cat plik.txt
+## Common Examples
+Przykłady użycia polecenia `default`:
+
+1. Ustawienie domyślnej powłoki na powłokę logowania:
+   ```csh
+   default -l /bin/csh
    ```
 
-2. Wyświetlenie zawartości kilku plików:
-   ```bash
-   cat plik1.txt plik2.txt
+2. Ustawienie domyślnej powłoki na powłokę interaktywną:
+   ```csh
+   default -s /bin/bash
    ```
 
-3. Połączenie kilku plików w jeden:
-   ```bash
-   cat plik1.txt plik2.txt > nowy_plik.txt
+3. Wyświetlenie pomocy dotyczącej polecenia:
+   ```csh
+   default -h
    ```
 
-4. Wyświetlenie zawartości pliku z numerami linii:
-   ```bash
-   cat -n plik.txt
-   ```
-
-5. Usunięcie pustych linii z wyjścia:
-   ```bash
-   cat -s plik.txt
-   ```
-
-## Wskazówki
-- Używaj opcji `-n` lub `-b`, aby lepiej zrozumieć strukturę pliku, zwłaszcza w dłuższych dokumentach.
-- Możesz użyć `cat` w połączeniu z innymi poleceniami, na przykład `grep`, aby przeszukiwać zawartość plików.
-- Pamiętaj, że `cat` jest najlepsze do pracy z plikami tekstowymi; nie używaj go do wyświetlania plików binarnych, ponieważ może to prowadzić do nieczytelnych danych.
+## Tips
+- Upewnij się, że powłoka, którą chcesz ustawić jako domyślną, jest zainstalowana w systemie.
+- Zawsze sprawdzaj, czy zmiany wprowadzone za pomocą polecenia `default` są zgodne z wymaganiami twojego środowiska pracy.
+- Możesz użyć polecenia `echo $SHELL`, aby sprawdzić, która powłoka jest aktualnie ustawiona jako domyślna.

@@ -1,52 +1,57 @@
-# [Linux] Bash md5sum Verwendung: Berechnung von MD5-Prüfziffern
+# [Linux] C Shell (csh) md5sum Verwendung: Berechnung von MD5-Prüfziffern
 
 ## Übersicht
-Der Befehl `md5sum` wird verwendet, um die MD5-Prüfziffer (Checksumme) einer Datei zu berechnen. Diese Prüfziffer wird häufig verwendet, um die Integrität von Dateien zu überprüfen und sicherzustellen, dass sie nicht verändert wurden.
+Der Befehl `md5sum` wird verwendet, um die MD5-Prüfziffer (Checksum) einer Datei zu berechnen. Diese Prüfziffer dient dazu, die Integrität von Dateien zu überprüfen, indem sie sicherstellt, dass der Inhalt einer Datei nicht verändert wurde.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```csh
 md5sum [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-b`: Behandelt die Eingabedatei als Binärdatei.
-- `-c`: Überprüft die Prüfziffern einer Datei, die zuvor mit `md5sum` erstellt wurde.
-- `-t`: Berechnet die Prüfziffer für die Eingabe von Standard-Input (stdin).
-- `--help`: Zeigt eine Hilfeseite mit Informationen zur Verwendung des Befehls an.
+- `-b`: Berechnet die Prüfziffer für Binärdateien.
+- `-c`: Überprüft die Prüfziffern von Dateien anhand einer Prüfziffernliste.
+- `-t`: Berechnet die Prüfziffer für Textdateien.
+- `--help`: Zeigt eine Hilfeseite mit Informationen zu den verfügbaren Optionen an.
 
 ## Häufige Beispiele
+Hier sind einige praktische Beispiele für die Verwendung von `md5sum`:
 
-### Berechnung der MD5-Prüfziffer einer Datei
-Um die MD5-Prüfziffer einer Datei zu berechnen, verwenden Sie den folgenden Befehl:
+1. **Berechnung der MD5-Prüfziffer einer Datei:**
 
-```bash
-md5sum dateiname.txt
-```
+   ```csh
+   md5sum datei.txt
+   ```
 
-### Berechnung der MD5-Prüfziffer für mehrere Dateien
-Um die MD5-Prüfzifferen mehrerer Dateien gleichzeitig zu berechnen, geben Sie die Dateinamen einfach hintereinander an:
+2. **Berechnung der MD5-Prüfziffer für mehrere Dateien:**
 
-```bash
-md5sum datei1.txt datei2.txt datei3.txt
-```
+   ```csh
+   md5sum datei1.txt datei2.txt
+   ```
 
-### Überprüfung einer MD5-Prüfziffer
-Wenn Sie eine Datei haben, die eine Liste von MD5-Prüfziffern enthält, können Sie diese mit dem folgenden Befehl überprüfen:
+3. **Überprüfung der Prüfziffern anhand einer Liste:**
 
-```bash
-md5sum -c checksummen.txt
-```
+   Zuerst erstellen Sie eine Prüfziffernliste:
 
-### MD5-Prüfziffer von Standard-Input
-Um die MD5-Prüfziffer von Daten zu berechnen, die über die Standard-Eingabe eingegeben werden, verwenden Sie:
+   ```csh
+   md5sum datei.txt > checksums.md5
+   ```
 
-```bash
-echo "Beispieltext" | md5sum
-```
+   Dann überprüfen Sie die Prüfziffern:
+
+   ```csh
+   md5sum -c checksums.md5
+   ```
+
+4. **Berechnung der Prüfziffer für eine Binärdatei:**
+
+   ```csh
+   md5sum -b bild.png
+   ```
 
 ## Tipps
-- Speichern Sie die MD5-Prüfziffern in einer Datei, um die Integrität wichtiger Dateien regelmäßig zu überprüfen.
-- Verwenden Sie `-b`, wenn Sie mit Binärdateien arbeiten, um genaue Ergebnisse zu gewährleisten.
-- Seien Sie sich bewusst, dass MD5 nicht als sicher gilt für kryptografische Anwendungen; für sicherheitskritische Anwendungen sollten Sie stärkere Algorithmen wie SHA-256 in Betracht ziehen.
+- Verwenden Sie `md5sum` in Kombination mit `-c`, um sicherzustellen, dass Dateien nicht verändert wurden, insbesondere bei wichtigen Daten.
+- Speichern Sie Prüfziffern in einer Datei, um die Integrität von Downloads oder Backups zu überprüfen.
+- Beachten Sie, dass MD5 nicht als sicher gilt für kryptografische Zwecke, verwenden Sie es daher nur zur Integritätsprüfung.

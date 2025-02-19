@@ -1,54 +1,54 @@
-# [Linux] Bash script uso: Grabar sesiones de terminal
+# [Linux] C Shell (csh) script uso: Grabar sesiones de terminal
 
 ## Overview
-El comando `script` se utiliza para grabar una sesión de terminal en un archivo. Esto es útil para registrar la salida de comandos y la interacción con el sistema, permitiendo revisitar la sesión más tarde.
+El comando `script` en C Shell (csh) se utiliza para grabar una sesión de terminal en un archivo. Esto es útil para documentar el trabajo realizado en la terminal, permitiendo a los usuarios revisar los comandos ejecutados y sus salidas más tarde.
 
 ## Usage
-La sintaxis básica del comando es la siguiente:
+La sintaxis básica del comando `script` es la siguiente:
 
-```bash
-script [opciones] [archivo]
+```csh
+script [options] [archivo]
 ```
 
 ## Common Options
 - `-a`: Añadir la salida al final del archivo existente en lugar de sobrescribirlo.
-- `-c`: Ejecutar un comando específico y grabar su salida.
-- `-f`: Forzar la salida en tiempo real, mostrando los datos a medida que se generan.
-- `-q`: Modo silencioso, no muestra mensajes de inicio y final.
+- `-f`: Forzar la escritura de la salida en el archivo en tiempo real.
+- `-q`: Ejecutar en modo silencioso, sin mostrar mensajes de inicio y final.
 
 ## Common Examples
+Aquí hay algunos ejemplos prácticos del uso del comando `script`:
 
-1. **Grabar una sesión en un archivo llamado `mi_sesion.txt`:**
+1. **Grabar una sesión en un archivo por defecto:**
+   ```csh
+   script
+   ```
+   Esto comenzará a grabar la sesión en un archivo llamado `typescript`.
 
-   ```bash
+2. **Grabar una sesión en un archivo específico:**
+   ```csh
    script mi_sesion.txt
    ```
+   Esto grabará la sesión en el archivo `mi_sesion.txt`.
 
-2. **Grabar una sesión y añadirla a un archivo existente:**
-
-   ```bash
+3. **Añadir a un archivo existente:**
+   ```csh
    script -a mi_sesion.txt
    ```
+   Esto añadirá la nueva sesión al final de `mi_sesion.txt`.
 
-3. **Ejecutar un comando específico y grabar su salida:**
-
-   ```bash
-   script -c "ls -l" salida.txt
-   ```
-
-4. **Grabar una sesión en tiempo real:**
-
-   ```bash
+4. **Grabar en tiempo real:**
+   ```csh
    script -f mi_sesion.txt
    ```
+   Esto grabará la sesión en `mi_sesion.txt` y actualizará el archivo en tiempo real.
 
-5. **Iniciar una sesión en modo silencioso:**
-
-   ```bash
+5. **Ejecutar en modo silencioso:**
+   ```csh
    script -q mi_sesion.txt
    ```
+   Esto grabará la sesión sin mostrar mensajes de inicio y final.
 
 ## Tips
-- Asegúrate de finalizar la sesión correctamente usando el comando `exit` para que el archivo se cierre adecuadamente.
-- Utiliza la opción `-a` si deseas mantener un registro continuo de varias sesiones en el mismo archivo.
-- Revisa el archivo grabado con un editor de texto o utilizando comandos como `cat` o `less` para visualizar el contenido.
+- Asegúrate de terminar la grabación usando el comando `exit` o presionando `Ctrl+D` para que el archivo se cierre correctamente.
+- Revisa el archivo generado después de la sesión para asegurarte de que toda la información necesaria ha sido grabada.
+- Utiliza la opción `-f` si necesitas ver la salida en tiempo real, especialmente útil en sesiones largas.

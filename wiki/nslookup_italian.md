@@ -1,45 +1,44 @@
-# [Linux] Bash nslookup utilizzo: Risolvere nomi di dominio in indirizzi IP
+# [Linux] C Shell (csh) nslookup Uso: Strumento per la risoluzione dei nomi di dominio
 
 ## Overview
-Il comando `nslookup` è uno strumento di rete utilizzato per interrogare i server DNS al fine di ottenere informazioni sui nomi di dominio. Permette di risolvere un nome di dominio in un indirizzo IP e viceversa, fornendo così un modo per diagnosticare problemi di rete e verificare la configurazione DNS.
+Il comando `nslookup` è uno strumento utilizzato per interrogare i server DNS al fine di ottenere informazioni sui nomi di dominio, come gli indirizzi IP associati. È utile per diagnosticare problemi di rete e verificare la configurazione DNS.
 
 ## Usage
-La sintassi di base del comando `nslookup` è la seguente:
+La sintassi di base del comando è la seguente:
 
-```
-nslookup [opzioni] [argomenti]
+```csh
+nslookup [options] [arguments]
 ```
 
 ## Common Options
-- `-type=tipo`: Specifica il tipo di record DNS da cercare (es. A, AAAA, MX).
-- `-timeout=secondi`: Imposta il tempo di attesa per una risposta dal server DNS.
-- `-retry=numero`: Imposta il numero di tentativi in caso di mancata risposta.
-- `server`: Specifica un server DNS diverso da quello predefinito da utilizzare per la query.
+- `-type=<type>`: Specifica il tipo di record DNS da cercare (es. A, AAAA, MX).
+- `-debug`: Abilita la modalità di debug per visualizzare informazioni dettagliate sulla query.
+- `-timeout=<seconds>`: Imposta il tempo di attesa per la risposta dal server DNS.
 
 ## Common Examples
 Ecco alcuni esempi pratici di utilizzo del comando `nslookup`:
 
-### Esempio 1: Risolvere un nome di dominio
-```bash
-nslookup www.example.com
-```
+1. **Ottenere l'indirizzo IP di un dominio:**
+   ```csh
+   nslookup example.com
+   ```
 
-### Esempio 2: Ottenere il record MX di un dominio
-```bash
-nslookup -type=MX example.com
-```
+2. **Cercare un record MX per un dominio:**
+   ```csh
+   nslookup -type=MX example.com
+   ```
 
-### Esempio 3: Utilizzare un server DNS specifico
-```bash
-nslookup www.example.com 8.8.8.8
-```
+3. **Utilizzare un server DNS specifico:**
+   ```csh
+   nslookup example.com 8.8.8.8
+   ```
 
-### Esempio 4: Verificare un indirizzo IP
-```bash
-nslookup 93.184.216.34
-```
+4. **Abilitare la modalità di debug:**
+   ```csh
+   nslookup -debug example.com
+   ```
 
 ## Tips
-- Utilizza il comando `nslookup` in modalità interattiva per eseguire più query senza dover digitare nuovamente il comando.
-- Ricorda di specificare il tipo di record se stai cercando informazioni specifiche, come i record MX per le email.
-- Se riscontri problemi di risoluzione, prova a utilizzare un server DNS pubblico come quelli di Google (8.8.8.8) per verificare se il problema è legato al tuo server DNS locale.
+- Assicurati di avere una connessione a Internet attiva quando utilizzi `nslookup`, poiché richiede l'accesso a un server DNS.
+- Utilizza l'opzione `-type` per ottenere informazioni specifiche sui record DNS, facilitando la diagnosi di problemi.
+- Se stai riscontrando problemi con un dominio, prova a utilizzare diversi server DNS per vedere se il problema persiste.

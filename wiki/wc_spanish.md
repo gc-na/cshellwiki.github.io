@@ -1,18 +1,16 @@
-# [Linux] Bash wc Uso equivalente en español: Contar líneas, palabras y caracteres
+# [Linux] C Shell (csh) wc Uso equivalente: Contar líneas, palabras y caracteres en archivos
 
 ## Overview
-El comando `wc` (word count) en Bash se utiliza para contar líneas, palabras y caracteres en uno o más archivos. Es una herramienta útil para obtener estadísticas rápidas sobre el contenido de archivos de texto.
+El comando `wc` (word count) se utiliza para contar líneas, palabras y caracteres en uno o más archivos. Es una herramienta útil para obtener información rápida sobre el contenido de archivos de texto.
 
 ## Usage
 La sintaxis básica del comando `wc` es la siguiente:
 
-```bash
+```csh
 wc [opciones] [argumentos]
 ```
 
 ## Common Options
-A continuación se presentan algunas de las opciones más comunes que se pueden utilizar con el comando `wc`:
-
 - `-l`: Cuenta solo las líneas.
 - `-w`: Cuenta solo las palabras.
 - `-c`: Cuenta solo los caracteres.
@@ -22,35 +20,53 @@ A continuación se presentan algunas de las opciones más comunes que se pueden 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso del comando `wc`:
 
-1. Contar el número de líneas en un archivo:
-   ```bash
-   wc -l archivo.txt
-   ```
+1. Contar el número total de líneas, palabras y caracteres en un archivo:
 
-2. Contar el número de palabras en un archivo:
-   ```bash
-   wc -w archivo.txt
-   ```
-
-3. Contar el número de caracteres en un archivo:
-   ```bash
-   wc -c archivo.txt
-   ```
-
-4. Contar líneas, palabras y caracteres al mismo tiempo:
-   ```bash
+   ```csh
    wc archivo.txt
    ```
 
-5. Contar el número de líneas en varios archivos:
-   ```bash
-   wc -l archivo1.txt archivo2.txt
+2. Contar solo las líneas de un archivo:
+
+   ```csh
+   wc -l archivo.txt
+   ```
+
+3. Contar solo las palabras de un archivo:
+
+   ```csh
+   wc -w archivo.txt
+   ```
+
+4. Contar solo los caracteres de un archivo:
+
+   ```csh
+   wc -c archivo.txt
+   ```
+
+5. Contar la longitud de la línea más larga en un archivo:
+
+   ```csh
+   wc -L archivo.txt
    ```
 
 ## Tips
-- Puedes combinar varias opciones en un solo comando. Por ejemplo, `wc -lw archivo.txt` contará tanto líneas como palabras.
-- Si deseas contar el contenido de la entrada estándar (stdin), puedes usar `wc` sin especificar un archivo. Por ejemplo:
-  ```bash
-  echo "Hola mundo" | wc -w
+- Puedes combinar varias opciones. Por ejemplo, para contar líneas y palabras, puedes usar:
+
+  ```csh
+  wc -l -w archivo.txt
   ```
-- Para obtener estadísticas de archivos grandes, considera usar `wc` junto con otros comandos como `find` o `grep` para filtrar los archivos que deseas analizar.
+
+- Si deseas contar múltiples archivos al mismo tiempo, simplemente enumera los nombres de los archivos:
+
+  ```csh
+  wc archivo1.txt archivo2.txt
+  ```
+
+- Para redirigir la salida a un archivo, puedes usar el operador `>`:
+
+  ```csh
+  wc archivo.txt > conteo.txt
+  ``` 
+
+Utiliza `wc` para obtener rápidamente estadísticas sobre tus archivos de texto y mejorar tu flujo de trabajo.

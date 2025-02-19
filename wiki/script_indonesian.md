@@ -1,65 +1,50 @@
-# [Linux] Bash script Penggunaan: Merekam sesi terminal
+# [Sistem Operasi] C Shell (csh) script Penggunaan: Merekam sesi terminal
 
 ## Overview
-Perintah `script` digunakan untuk merekam sesi terminal ke dalam sebuah file. Ini sangat berguna untuk mencatat perintah yang dijalankan dan output yang dihasilkan selama sesi terminal, sehingga Anda dapat mereview atau membagikannya nanti.
+Perintah `script` digunakan untuk merekam sesi terminal ke dalam sebuah file. Ini sangat berguna untuk mencatat semua perintah yang dijalankan dan output yang dihasilkan selama sesi tersebut, sehingga Anda dapat mereview atau membagikannya di kemudian hari.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `script`:
 
-```bash
-script [options] [file]
+```
+script [options] [arguments]
 ```
 
 ## Common Options
-- `-a`: Menambahkan output ke file yang sudah ada, bukan menimpa file.
-- `-c`: Menjalankan perintah yang ditentukan dan merekam outputnya.
-- `-f`: Menampilkan output ke layar secara real-time saat merekam.
-- `-q`: Menjalankan dalam mode diam, tanpa menampilkan pesan pembuka atau penutup.
+- `-a`: Menambahkan output ke file yang sudah ada, bukan menimpanya.
+- `-f`: Menampilkan output ke terminal secara langsung saat merekam.
+- `-q`: Menjalankan dalam mode senyap, tanpa menampilkan pesan pembuka.
+- `-t`: Merekam waktu yang dibutuhkan untuk setiap perintah yang dijalankan.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `script`:
 
-1. **Merekam sesi terminal ke file default:**
-
+1. Merekam sesi terminal ke dalam file bernama `output.txt`:
    ```bash
-   script
+   script output.txt
    ```
 
-   Ini akan mulai merekam sesi terminal dan menyimpannya ke file bernama `typescript`.
-
-2. **Merekam sesi dengan nama file tertentu:**
-
+2. Merekam sesi terminal dan menambahkan output ke file yang sudah ada:
    ```bash
-   script mysession.txt
+   script -a output.txt
    ```
 
-   Ini akan merekam sesi ke dalam file `mysession.txt`.
-
-3. **Menambahkan output ke file yang sudah ada:**
-
+3. Merekam sesi terminal dengan tampilan langsung ke terminal:
    ```bash
-   script -a mysession.txt
+   script -f output.txt
    ```
 
-   Ini akan menambahkan output ke file `mysession.txt` yang sudah ada.
-
-4. **Merekam output dari perintah tertentu:**
-
+4. Menjalankan `script` dalam mode senyap:
    ```bash
-   script -c "ls -l" output.txt
+   script -q output.txt
    ```
 
-   Ini akan menjalankan perintah `ls -l` dan merekam outputnya ke dalam file `output.txt`.
-
-5. **Merekam sesi dengan tampilan real-time:**
-
+5. Merekam waktu untuk setiap perintah yang dijalankan:
    ```bash
-   script -f mysession.txt
+   script -t output.txt
    ```
-
-   Ini akan merekam sesi dan menampilkan output ke layar secara real-time.
 
 ## Tips
-- Selalu periksa file hasil rekaman setelah sesi selesai untuk memastikan semua informasi yang diperlukan telah tercatat.
-- Gunakan opsi `-q` jika Anda tidak ingin melihat pesan pembuka atau penutup saat merekam.
-- Pertimbangkan untuk menggunakan opsi `-a` jika Anda ingin merekam beberapa sesi ke dalam file yang sama tanpa kehilangan data sebelumnya.
+- Pastikan untuk menghentikan sesi `script` dengan mengetik `exit` atau `Ctrl+D` agar file hasil rekaman tersimpan dengan benar.
+- Gunakan opsi `-a` jika Anda ingin merekam beberapa sesi ke dalam file yang sama tanpa kehilangan data sebelumnya.
+- Periksa file hasil rekaman dengan menggunakan perintah `cat` atau `less` untuk melihat isi dari sesi yang telah direkam.

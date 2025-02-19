@@ -1,46 +1,45 @@
-# [Linux] Bash htop gebruik: Procesbeheer en systeemmonitoring
+# [Linux] C Shell (csh) htop gebruik: Procesbeheer en systeemmonitoring
 
 ## Overzicht
-De `htop` opdracht is een interactieve procesviewer voor Unix-systemen. Het biedt een real-time overzicht van de actieve processen, het gebruik van systeembronnen en andere belangrijke systeeminformatie. In tegenstelling tot de traditionele `top`-opdracht, biedt `htop` een gebruiksvriendelijke interface met kleurcodering en de mogelijkheid om processen eenvoudig te beheren.
+De `htop`-opdracht is een interactieve procesviewer voor Unix-systemen. Het biedt een dynamische weergave van de systeemprocessen, geheugen- en CPU-gebruik, en stelt gebruikers in staat om processen te beheren en te monitoren op een gebruiksvriendelijke manier.
 
 ## Gebruik
-De basis syntaxis van de `htop` opdracht is als volgt:
+De basis syntaxis van de `htop`-opdracht is als volgt:
 
-```bash
+```csh
 htop [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
+## Veelvoorkomende opties
 - `-h`, `--help`: Toont de helpinformatie voor htop.
-- `-s`, `--sort`: Sorteert de weergegeven processen op basis van een opgegeven kolom.
-- `-p`, `--pid`: Toont alleen de processen met de opgegeven PID.
-- `-u`, `--user`: Toont alleen de processen die aan een specifieke gebruiker zijn toegewezen.
+- `-s`, `--sort`: Sorteert de weergegeven processen op basis van een opgegeven kolom (bijvoorbeeld `PID`, `CPU`, `MEM`).
+- `-p`, `--pid`: Toont alleen de processen met de opgegeven PID's.
+- `-u`, `--user`: Toont alleen de processen die door de opgegeven gebruiker worden uitgevoerd.
 
-## Veelvoorkomende Voorbeelden
+## Veelvoorkomende voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van `htop`:
 
-1. Gewoon `htop` uitvoeren om de procesviewer te openen:
-   ```bash
+1. Start htop zonder opties:
+   ```csh
    htop
    ```
 
-2. `htop` uitvoeren en processen sorteren op gebruik van CPU:
-   ```bash
+2. Sorteer processen op CPU-gebruik:
+   ```csh
    htop -s PERCENT_CPU
    ```
 
-3. Alleen de processen van een specifieke gebruiker weergeven:
-   ```bash
+3. Toon alleen processen van een specifieke gebruiker:
+   ```csh
    htop -u gebruikersnaam
    ```
 
-4. Specifieke processen bekijken met een bepaalde PID:
-   ```bash
-   htop -p 1234
+4. Toon processen met specifieke PID's:
+   ```csh
+   htop -p 1234,5678
    ```
 
 ## Tips
-- Gebruik de pijltjestoetsen om door de processen te navigeren en `F9` om een proces te beëindigen.
-- Druk op `F2` om de instellingen van htop aan te passen, zoals het kleurenschema en de weergave-instellingen.
-- Maak gebruik van de zoekfunctie met `F3` om snel een specifiek proces te vinden.
-- Vergeet niet dat `htop` root-rechten nodig kan hebben voor het bekijken van alle processen, dus overweeg om het met `sudo` uit te voeren als dat nodig is.
+- Gebruik de sneltoetsen binnen htop, zoals `F3` om te zoeken naar processen en `F9` om een proces te beëindigen.
+- Pas de weergave aan door op `F2` te drukken en de instellingen te configureren naar jouw voorkeur.
+- Houd rekening met de sorteeropties om snel inzicht te krijgen in welke processen de meeste middelen gebruiken.

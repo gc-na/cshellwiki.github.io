@@ -1,7 +1,7 @@
-# [Linux] Bash watch 使用法: 監控命令輸出
+# [台灣] C Shell (csh) watch 使用法: 監控命令輸出
 
 ## Overview
-`watch` 命令用於定期執行指定的命令，並在終端中顯示其輸出。這對於需要持續監控某個命令的結果非常有用，例如查看系統資源使用情況或文件變更。
+`watch` 命令用於定期執行指定的命令並顯示其輸出，這對於監控系統狀態或變化非常有用。
 
 ## Usage
 基本語法如下：
@@ -10,33 +10,32 @@ watch [options] [arguments]
 ```
 
 ## Common Options
-- `-n, --interval`: 設定每次執行命令的間隔時間（以秒為單位）。
-- `-d, --differences`: 高亮顯示輸出中的差異。
-- `-t, --no-title`: 不顯示標題行。
-- `-p, --precise`: 提供更精確的時間間隔。
+- `-n <seconds>`: 指定每次執行命令之間的間隔時間（以秒為單位）。
+- `-d`: 高亮顯示輸出中的變更部分。
+- `-t`: 隱藏標題，僅顯示命令輸出。
 
 ## Common Examples
-1. 每2秒執行 `date` 命令，顯示當前時間：
-   ```bash
-   watch -n 2 date
+1. 每 2 秒檢查當前目錄的檔案清單：
+   ```csh
+   watch -n 2 ls
    ```
 
-2. 監控 `/var/log/syslog` 文件的變更，每1秒更新一次：
-   ```bash
-   watch -n 1 tail -n 10 /var/log/syslog
+2. 每 5 秒監控系統的記憶體使用情況：
+   ```csh
+   watch -n 5 free -h
    ```
 
-3. 每5秒檢查系統的磁碟使用情況：
-   ```bash
-   watch -n 5 df -h
+3. 監控某個進程的狀態並高亮顯示變更：
+   ```csh
+   watch -d ps aux | grep my_process
    ```
 
-4. 使用 `-d` 選項高亮顯示變更的 `ps` 命令輸出：
-   ```bash
-   watch -d ps aux
+4. 隱藏標題，每 10 秒檢查網路連接：
+   ```csh
+   watch -t -n 10 ping -c 1 google.com
    ```
 
 ## Tips
-- 使用 `-t` 選項可以讓界面更乾淨，適合不需要標題的情況。
-- 結合 `-d` 和 `-n` 可以更有效地監控變化，尤其是在頻繁變化的環境中。
-- 若要停止 `watch`，可以按下 `Ctrl+C`。
+- 使用 `-d` 選項可以快速識別輸出中的變化，特別是在監控變化頻繁的命令時。
+- 根據需要調整 `-n` 的時間間隔，以避免過於頻繁的執行影響系統性能。
+- 結合其他命令使用 `watch`，可以更靈活地監控特定的系統狀態或應用程序。

@@ -1,50 +1,50 @@
-# [Linux] Bash wait : Attendre la fin des processus
+# [Linux] C Shell (csh) wait : Attendre la fin d'un processus
 
 ## Overview
-La commande `wait` en Bash est utilisée pour attendre la fin d'un ou plusieurs processus en arrière-plan. Elle est particulièrement utile lorsque vous lancez des tâches en parallèle et que vous souhaitez synchroniser leur achèvement avant de continuer l'exécution d'un script.
+La commande `wait` dans C Shell (csh) est utilisée pour suspendre l'exécution d'un script jusqu'à ce qu'un ou plusieurs processus enfants se terminent. Cela permet de synchroniser les tâches dans un environnement shell.
 
 ## Usage
-La syntaxe de base de la commande `wait` est la suivante :
+La syntaxe de base de la commande est la suivante :
 
-```bash
+```csh
 wait [options] [arguments]
 ```
 
 ## Common Options
-- `-n` : Attend la fin du prochain processus en arrière-plan.
-- `PID` : Spécifiez l'identifiant du processus (PID) pour lequel vous souhaitez attendre la fin.
+- `pid` : Spécifie l'identifiant du processus (PID) pour lequel vous souhaitez attendre la fin.
+- `-n` : Attend la fin de n'importe quel processus enfant.
 
 ## Common Examples
 
-### Exemple 1 : Attendre tous les processus en arrière-plan
-```bash
-sleep 5 &
-sleep 3 &
+### Exemple 1 : Attendre un processus spécifique
+Pour attendre qu'un processus avec un PID spécifique se termine, vous pouvez utiliser :
+
+```csh
+wait 1234
+```
+Ici, `1234` est l'identifiant du processus que vous attendez.
+
+### Exemple 2 : Attendre tous les processus enfants
+Pour attendre que tous les processus enfants se terminent, utilisez simplement :
+
+```csh
 wait
-echo "Tous les processus sont terminés."
 ```
-Dans cet exemple, le script attend que les deux commandes `sleep` se terminent avant d'afficher le message.
 
-### Exemple 2 : Attendre un processus spécifique
-```bash
-sleep 5 &
-PID=$!
-echo "Attente du processus avec PID $PID..."
-wait $PID
-echo "Le processus $PID est terminé."
-```
-Ici, le script attend spécifiquement que le processus `sleep` avec l'identifiant `$PID` se termine.
+### Exemple 3 : Attendre un processus en arrière-plan
+Si vous avez lancé un processus en arrière-plan, par exemple :
 
-### Exemple 3 : Utiliser l'option -n
-```bash
-sleep 2 &
-sleep 4 &
-wait -n
-echo "Un des processus en arrière-plan est terminé."
+```csh
+sleep 10 &
 ```
-Cet exemple montre comment utiliser l'option `-n` pour attendre la fin du prochain processus en arrière-plan.
+Vous pouvez attendre qu'il se termine avec :
+
+```csh
+wait $!
+```
+Ici, `$!` fait référence au dernier processus lancé en arrière-plan.
 
 ## Tips
-- Utilisez `wait` dans des scripts pour gérer des tâches parallèles et éviter les conflits de ressources.
-- Vérifiez les codes de sortie des processus en utilisant `wait` pour une gestion d'erreurs plus efficace.
-- Combinez `wait` avec des structures de contrôle comme `if` pour exécuter des actions conditionnelles basées sur le succès ou l'échec des processus.
+- Utilisez `wait` dans des scripts pour gérer l'ordre d'exécution des tâches.
+- Vérifiez le statut de sortie d'un processus après `wait` en utilisant `$?` pour savoir s'il s'est terminé avec succès.
+- Évitez d'utiliser `wait` sans spécifier de PID si vous avez plusieurs processus en arrière-plan, car cela peut rendre difficile le suivi de l'état de chaque processus.

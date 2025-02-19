@@ -1,68 +1,47 @@
-# [Linux] Bash diff użycie: Porównywanie plików i katalogów
+# [Linux] C Shell (csh) diff <Porównywanie plików>: Porównuje różnice między plikami
 
 ## Overview
-Polecenie `diff` służy do porównywania dwóch plików tekstowych lub katalogów, aby zidentyfikować różnice między nimi. Umożliwia to użytkownikom łatwe śledzenie zmian w plikach lub analizowanie różnic w wersjach dokumentów.
+Polecenie `diff` w C Shell (csh) służy do porównywania dwóch plików tekstowych i wyświetlania różnic między nimi. Jest to przydatne narzędzie dla programistów i osób pracujących z tekstem, które chcą zobaczyć, co się zmieniło w plikach.
 
 ## Usage
-Podstawowa składnia polecenia `diff` wygląda następująco:
+Podstawowa składnia polecenia `diff` jest następująca:
 
-```bash
+```csh
 diff [opcje] [argumenty]
 ```
 
 ## Common Options
 Oto kilka powszechnie używanych opcji dla polecenia `diff`:
 
-- `-u`: Wyświetla różnice w formacie "unified", co jest bardziej czytelne i zawiera kontekst.
-- `-c`: Wyświetla różnice w formacie "context", który również pokazuje kontekst zmian.
+- `-u`: Wyświetla różnice w formacie z kontekstem (unified).
+- `-c`: Wyświetla różnice w formacie kontekstowym.
 - `-i`: Ignoruje różnice w wielkości liter.
-- `-w`: Ignoruje różnice w białych znakach (spacjach i tabulatorach).
-- `-r`: Porównuje katalogi rekurencyjnie.
+- `-w`: Ignoruje różnice w białych znakach.
 
 ## Common Examples
+Oto kilka praktycznych przykładów użycia polecenia `diff`:
 
-### Porównanie dwóch plików
-Aby porównać dwa pliki tekstowe, użyj:
+1. Porównanie dwóch plików tekstowych:
+   ```csh
+   diff plik1.txt plik2.txt
+   ```
 
-```bash
-diff plik1.txt plik2.txt
-```
+2. Porównanie z ignorowaniem wielkości liter:
+   ```csh
+   diff -i plik1.txt plik2.txt
+   ```
 
-### Porównanie z opcją unified
-Aby uzyskać różnice w formacie "unified":
+3. Wyświetlenie różnic w formacie z kontekstem:
+   ```csh
+   diff -u plik1.txt plik2.txt
+   ```
 
-```bash
-diff -u plik1.txt plik2.txt
-```
-
-### Ignorowanie wielkości liter
-Aby zignorować różnice w wielkości liter:
-
-```bash
-diff -i plik1.txt plik2.txt
-```
-
-### Porównanie katalogów
-Aby porównać dwa katalogi rekurencyjnie:
-
-```bash
-diff -r katalog1/ katalog2/
-```
-
-### Porównanie z ignorowaniem białych znaków
-Aby zignorować różnice w białych znakach:
-
-```bash
-diff -w plik1.txt plik2.txt
-```
+4. Porównanie dwóch katalogów:
+   ```csh
+   diff -r katalog1/ katalog2/
+   ```
 
 ## Tips
-- Używaj opcji `-u` lub `-c`, aby uzyskać bardziej czytelne wyniki, szczególnie przy dużych różnicach.
-- Zawsze sprawdzaj różnice w plikach konfiguracyjnych przed ich aktualizacją, aby uniknąć niezamierzonych zmian.
-- Możesz przekierować wyniki `diff` do pliku, używając `>`:
-
-```bash
-diff plik1.txt plik2.txt > różnice.txt
-```
-
-Dzięki tym wskazówkom i przykładom, korzystanie z polecenia `diff` stanie się prostsze i bardziej efektywne.
+- Używaj opcji `-u`, aby uzyskać bardziej czytelny wynik, szczególnie przy większych zmianach.
+- Przechowuj kopie zapasowe plików przed ich modyfikacją, aby móc łatwo porównać zmiany.
+- Jeśli często porównujesz te same pliki, rozważ użycie skryptu, aby zautomatyzować proces.

@@ -1,67 +1,62 @@
-# [Linux] Bash test gebruik: Voer evaluaties uit op bestanden en variabelen
+# [Linux] C Shell (csh) test gebruik: Controleer voorwaarden
 
 ## Overzicht
-De `test` opdracht in Bash wordt gebruikt om evaluaties uit te voeren op bestanden en variabelen. Het helpt bij het controleren van voorwaarden, zoals of een bestand bestaat, of een variabele leeg is, of twee waarden gelijk zijn, en meer. Dit is vooral nuttig in scripts om beslissingen te nemen op basis van de resultaten van deze evaluaties.
+De `test` opdracht in C Shell (csh) wordt gebruikt om voorwaarden te evalueren. Het is een handige manier om te controleren of bepaalde bestanden bestaan, of om numerieke en string vergelijkingen uit te voeren.
 
 ## Gebruik
 De basis syntaxis van de `test` opdracht is als volgt:
 
-```bash
+```csh
 test [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-Hier zijn enkele veelgebruikte opties voor de `test` opdracht:
-
+## Veelvoorkomende Opties
 - `-e bestand`: Controleert of het opgegeven bestand bestaat.
 - `-f bestand`: Controleert of het opgegeven bestand een regulier bestand is.
-- `-d map`: Controleert of het opgegeven pad een directory is.
+- `-d map`: Controleert of de opgegeven naam een directory is.
 - `-z string`: Controleert of de opgegeven string leeg is.
-- `string1 = string2`: Controleert of twee strings gelijk zijn.
-- `n1 -eq n2`: Controleert of twee getallen gelijk zijn.
+- `=`: Vergelijkt twee strings op gelijkheid.
+- `-ne`: Vergelijkt twee getallen op ongelijkheid.
 
-## Veelvoorkomende voorbeelden
-
+## Veelvoorkomende Voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van de `test` opdracht:
 
-### Voorbeeld 1: Controleer of een bestand bestaat
-```bash
-if test -e mijn_bestand.txt; then
+### Voorbeeld 1: Bestaan van een bestand controleren
+```csh
+if ( `test -e mijnbestand.txt` ) then
     echo "Het bestand bestaat."
 else
     echo "Het bestand bestaat niet."
-fi
+endif
 ```
 
-### Voorbeeld 2: Controleer of een variabele leeg is
-```bash
-variabele=""
-if test -z "$variabele"; then
-    echo "De variabele is leeg."
+### Voorbeeld 2: Controleer of een directory bestaat
+```csh
+if ( `test -d mijnmap` ) then
+    echo "De directory bestaat."
 else
-    echo "De variabele is niet leeg."
-fi
+    echo "De directory bestaat niet."
+endif
 ```
 
-### Voorbeeld 3: Vergelijk twee getallen
-```bash
-getal1=10
-getal2=20
-if test $getal1 -lt $getal2; then
-    echo "$getal1 is kleiner dan $getal2."
-fi
+### Voorbeeld 3: Vergelijking van twee getallen
+```csh
+set a = 5
+set b = 10
+if ( `test $a -ne $b` ) then
+    echo "De getallen zijn niet gelijk."
+endif
 ```
 
-### Voorbeeld 4: Controleer of een pad een directory is
-```bash
-if test -d /pad/naar/map; then
-    echo "Dit is een directory."
-else
-    echo "Dit is geen directory."
-fi
+### Voorbeeld 4: Controleer of een string leeg is
+```csh
+set mijnstring = ""
+if ( `test -z $mijnstring` ) then
+    echo "De string is leeg."
+endif
 ```
 
 ## Tips
-- Gebruik de `[` en `]` haakjes als een alternatieve syntaxis voor `test`, bijvoorbeeld: `[ -e mijn_bestand.txt ]`.
-- Zorg ervoor dat je spaties gebruikt rondom de haakjes en operators voor een correcte syntaxis.
-- Combineer meerdere voorwaarden met `-a` (en) of `-o` (of) voor complexere evaluaties.
+- Gebruik haakjes om de voorwaarden duidelijk te maken in complexe vergelijkingen.
+- Combineer meerdere voorwaarden met `&&` (EN) of `||` (OF) voor meer geavanceerde logica.
+- Vergeet niet dat de `test` opdracht ook kan worden vervangen door de `[` en `]` syntaxis, wat de leesbaarheid kan verbeteren.

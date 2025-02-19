@@ -1,47 +1,45 @@
-# [Linux] Bash getent uso: consulta de banco de dados de sistema
+# [Linux] C Shell (csh) getent Uso: Recupera informações de bancos de dados do sistema
 
 ## Overview
-O comando `getent` é utilizado para consultar entradas em bancos de dados do sistema, como usuários, grupos e serviços. Ele pode acessar informações de várias fontes, incluindo arquivos locais e serviços de rede.
+O comando `getent` é utilizado para recuperar entradas de bancos de dados do sistema, como usuários, grupos e serviços. Ele consulta as bases de dados configuradas no sistema, permitindo que você acesse informações de forma simples e rápida.
 
 ## Usage
 A sintaxe básica do comando `getent` é a seguinte:
 
-```bash
-getent [opções] [argumentos]
+```csh
+getent [options] [arguments]
 ```
 
 ## Common Options
-Aqui estão algumas opções comuns do `getent`:
-
-- `passwd`: Exibe informações sobre usuários do sistema.
-- `group`: Exibe informações sobre grupos do sistema.
-- `hosts`: Exibe informações sobre endereços IP e nomes de host.
-- `services`: Exibe informações sobre serviços de rede e suas portas.
+- `passwd`: Recupera informações sobre usuários.
+- `group`: Recupera informações sobre grupos.
+- `hosts`: Recupera informações sobre endereços de host.
+- `services`: Recupera informações sobre serviços de rede.
 
 ## Common Examples
-Aqui estão alguns exemplos práticos do uso do `getent`:
+Aqui estão alguns exemplos práticos do uso do comando `getent`:
 
-1. Para listar informações sobre um usuário específico:
-   ```bash
+1. Para listar informações de um usuário específico:
+   ```csh
    getent passwd nome_do_usuario
    ```
 
-2. Para listar todos os grupos do sistema:
-   ```bash
+2. Para listar todos os grupos disponíveis no sistema:
+   ```csh
    getent group
    ```
 
-3. Para consultar informações sobre um host específico:
-   ```bash
+3. Para buscar informações sobre um host específico:
+   ```csh
    getent hosts nome_do_host
    ```
 
-4. Para listar serviços disponíveis e suas portas:
-   ```bash
-   getent services
+4. Para obter informações sobre um serviço específico:
+   ```csh
+   getent services nome_do_serviço
    ```
 
 ## Tips
-- Utilize `getent` em scripts para verificar a existência de usuários ou grupos antes de realizar operações administrativas.
+- Utilize `getent` em scripts para verificar a existência de usuários ou grupos antes de realizar operações que dependem dessas informações.
 - Combine `getent` com outros comandos, como `grep`, para filtrar resultados específicos.
-- Verifique as configurações de resolução de nomes do seu sistema para garantir que `getent` funcione corretamente com serviços de rede.
+- Lembre-se de que `getent` acessa as informações conforme configurado nos arquivos de configuração do sistema, como `/etc/nsswitch.conf`.

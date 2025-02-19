@@ -1,50 +1,45 @@
-# [Linux] Bash umask Uso: Define permissões padrão de arquivos e diretórios
+# [Linux] C Shell (csh) umask uso: Define permissões padrão de arquivos
 
 ## Overview
-O comando `umask` é utilizado para definir as permissões padrão de arquivos e diretórios criados em um sistema Unix/Linux. Ele determina quais permissões serão negadas, influenciando assim as permissões finais dos novos arquivos e diretórios.
+O comando `umask` no C Shell (csh) é utilizado para definir as permissões padrão para novos arquivos e diretórios criados no sistema. Ele especifica quais permissões devem ser removidas das permissões padrão, permitindo um controle mais rigoroso sobre a segurança dos arquivos.
 
 ## Usage
 A sintaxe básica do comando `umask` é a seguinte:
 
-```bash
-umask [opções] [máscara]
+```csh
+umask [opções] [argumentos]
 ```
 
 ## Common Options
 - `-S`: Exibe a máscara de permissão em formato simbólico.
-- `-p`: Exibe a máscara de permissão atual em um formato que pode ser usado em um script.
+- `-p`: Exibe a máscara de permissão atual sem alterá-la.
 
 ## Common Examples
+Aqui estão alguns exemplos práticos do uso do comando `umask`:
 
-### Exibir a máscara atual
-Para ver a máscara de permissão atual, você pode simplesmente usar:
+1. **Verificar a máscara atual:**
+   ```csh
+   umask
+   ```
 
-```bash
-umask
-```
+2. **Definir uma nova máscara:**
+   Para definir a máscara para que novos arquivos tenham permissões de leitura e escrita para o proprietário, e nenhuma permissão para o grupo e outros:
+   ```csh
+   umask 077
+   ```
 
-### Definir uma nova máscara
-Para definir uma nova máscara que negue permissões de escrita para o grupo e outros, use:
+3. **Exibir a máscara em formato simbólico:**
+   ```csh
+   umask -S
+   ```
 
-```bash
-umask 022
-```
-
-### Usar formato simbólico
-Para exibir a máscara atual em formato simbólico, utilize:
-
-```bash
-umask -S
-```
-
-### Definir máscara em formato simbólico
-Para definir uma nova máscara de forma simbólica que negue a permissão de escrita para outros, você pode usar:
-
-```bash
-umask u=rwx,g=rx,o=rx
-```
+4. **Restaurar a máscara padrão:**
+   Para restaurar a máscara padrão do sistema:
+   ```csh
+   umask 022
+   ```
 
 ## Tips
-- Sempre verifique a máscara atual antes de criar novos arquivos, para garantir que as permissões estejam configuradas conforme desejado.
-- Considere adicionar o comando `umask` em seus arquivos de inicialização, como `.bashrc` ou `.profile`, para definir suas preferências de máscara de forma persistente.
-- Use a opção `-S` para entender melhor as permissões em um formato mais legível, especialmente se você estiver começando a trabalhar com permissões no Linux.
+- Sempre verifique a máscara atual antes de criar novos arquivos, especialmente em ambientes compartilhados, para evitar permissões indesejadas.
+- Use a opção `-S` para entender melhor as permissões que estão sendo aplicadas.
+- Considere definir a máscara em arquivos de inicialização, como `.cshrc`, para garantir que suas preferências sejam aplicadas sempre que você iniciar uma nova sessão do shell.

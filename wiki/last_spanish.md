@@ -1,50 +1,47 @@
-# [Linux] Bash last uso: Muestra los últimos inicios de sesión
+# [Linux] C Shell (csh) last comando: muestra los últimos inicios de sesión
 
 ## Overview
-El comando `last` se utiliza en sistemas Unix y Linux para mostrar una lista de los últimos inicios de sesión de los usuarios. Esta información se extrae del archivo de registro `/var/log/wtmp`, que mantiene un historial de todos los inicios y cierres de sesión.
+El comando `last` en C Shell (csh) se utiliza para mostrar una lista de los últimos inicios de sesión de los usuarios en el sistema. Esta herramienta es útil para monitorear la actividad del sistema y verificar quién ha accedido recientemente.
 
 ## Usage
-La sintaxis básica del comando `last` es la siguiente:
+La sintaxis básica del comando es la siguiente:
 
-```bash
+```
 last [opciones] [argumentos]
 ```
 
 ## Common Options
-- `-a`: Muestra la dirección IP o el nombre de host del usuario que se ha conectado.
-- `-n [número]`: Limita la salida a los últimos `número` de inicios de sesión.
-- `-R`: Suprime la impresión del nombre del host.
-- `-x`: Muestra información sobre los inicios de sesión y los apagados del sistema.
+- `-n`: Especifica el número de entradas que se mostrarán.
+- `-R`: Suprime la impresión de la información de la dirección IP.
+- `-f`: Permite especificar un archivo de registro alternativo en lugar de `/var/log/wtmp`.
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso del comando `last`:
 
-1. **Mostrar todos los inicios de sesión:**
-   ```bash
+1. Mostrar los últimos inicios de sesión:
+   ```csh
    last
    ```
 
-2. **Mostrar los últimos 5 inicios de sesión:**
-   ```bash
+2. Mostrar solo los últimos 5 inicios de sesión:
+   ```csh
    last -n 5
    ```
 
-3. **Mostrar inicios de sesión con direcciones IP:**
-   ```bash
-   last -a
+3. Mostrar inicios de sesión sin información de dirección IP:
+   ```csh
+   last -R
    ```
 
-4. **Mostrar información de apagados del sistema:**
-   ```bash
-   last -x
-   ```
-
-5. **Filtrar por un usuario específico:**
-   ```bash
-   last nombre_usuario
+4. Usar un archivo de registro alternativo:
+   ```csh
+   last -f /ruta/al/archivo
    ```
 
 ## Tips
-- Utiliza `last -n 10` para revisar rápidamente los últimos 10 inicios de sesión.
-- Puedes combinar opciones, como `last -a -n 5`, para obtener una salida más específica.
-- Revisa el archivo `/var/log/wtmp` si necesitas más información sobre los registros de inicio de sesión.
+- Utiliza `last -n` para limitar la salida y hacerla más manejable, especialmente en sistemas con mucho historial.
+- Revisa regularmente los inicios de sesión para detectar accesos no autorizados.
+- Combina `last` con otros comandos como `grep` para filtrar resultados específicos, por ejemplo, para buscar un usuario en particular:
+  ```csh
+  last | grep nombre_usuario
+  ```

@@ -1,52 +1,48 @@
-# [Linux] Bash sha512sum Utilisation : Calculer des sommes de contrôle SHA-512
+# [Linux] C Shell (csh) sha512sum : Calculer des sommes de contrôle SHA-512
 
 ## Overview
-La commande `sha512sum` est utilisée pour calculer et vérifier les sommes de contrôle SHA-512 d'un fichier. Cela permet de garantir l'intégrité des données en générant une empreinte numérique unique pour chaque fichier.
+La commande `sha512sum` est utilisée pour calculer et vérifier les sommes de contrôle SHA-512 d'un fichier. Cela permet de garantir l'intégrité des données en s'assurant qu'un fichier n'a pas été modifié.
 
 ## Usage
 La syntaxe de base de la commande est la suivante :
 
-```bash
+```csh
 sha512sum [options] [arguments]
 ```
 
 ## Common Options
-- `-b` : Traite le fichier en mode binaire.
-- `-c` : Vérifie les sommes de contrôle à partir d'un fichier de sommes.
-- `-h` : Affiche l'aide et les options disponibles.
-- `-o` : Écrit la sortie dans un fichier spécifié.
+- `-b` : Traite les fichiers en mode binaire.
+- `-c` : Vérifie les sommes de contrôle à partir d'un fichier.
+- `--help` : Affiche l'aide et les options disponibles.
+- `--version` : Affiche la version de la commande.
 
 ## Common Examples
+Voici quelques exemples pratiques de l'utilisation de `sha512sum` :
 
-### Calculer la somme de contrôle d'un fichier
-Pour calculer la somme de contrôle SHA-512 d'un fichier nommé `monfichier.txt`, utilisez :
+1. **Calculer la somme de contrôle d'un fichier :**
+   ```csh
+   sha512sum mon_fichier.txt
+   ```
 
-```bash
-sha512sum monfichier.txt
-```
+2. **Vérifier les sommes de contrôle à partir d'un fichier :**
+   ```csh
+   sha512sum -c sommes.txt
+   ```
 
-### Vérifier une somme de contrôle
-Si vous avez un fichier de sommes de contrôle, par exemple `somme.txt`, vous pouvez vérifier les fichiers correspondants avec :
+3. **Calculer la somme de contrôle d'un fichier en mode binaire :**
+   ```csh
+   sha512sum -b mon_fichier.bin
+   ```
 
-```bash
-sha512sum -c somme.txt
-```
-
-### Calculer la somme de contrôle d'un fichier en mode binaire
-Pour traiter un fichier en mode binaire, utilisez l'option `-b` :
-
-```bash
-sha512sum -b monfichier.bin
-```
-
-### Écrire la sortie dans un fichier
-Pour enregistrer la somme de contrôle dans un fichier nommé `somme.txt`, vous pouvez rediriger la sortie :
-
-```bash
-sha512sum monfichier.txt > somme.txt
-```
+4. **Afficher l'aide de la commande :**
+   ```csh
+   sha512sum --help
+   ```
 
 ## Tips
-- Toujours vérifier les sommes de contrôle après le téléchargement de fichiers importants pour garantir leur intégrité.
-- Utilisez des fichiers de sommes de contrôle pour automatiser la vérification de plusieurs fichiers à la fois.
-- Pensez à utiliser `-o` pour garder vos résultats organisés si vous traitez plusieurs fichiers.
+- Toujours vérifier les sommes de contrôle après le téléchargement de fichiers importants pour s'assurer qu'ils n'ont pas été corrompus.
+- Utilisez le fichier de sommes de contrôle pour vérifier plusieurs fichiers en une seule commande.
+- Pensez à rediriger la sortie vers un fichier si vous souhaitez conserver les sommes de contrôle pour une utilisation future :
+  ```csh
+  sha512sum mon_fichier.txt > somme.txt
+  ```

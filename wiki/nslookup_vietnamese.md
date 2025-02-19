@@ -1,45 +1,43 @@
-# [Linux] Bash nslookup Cách sử dụng: Tra cứu thông tin DNS
+# [Hệ điều hành] C Shell (csh) nslookup Cách sử dụng: Tra cứu thông tin DNS
 
 ## Tổng quan
-Lệnh `nslookup` được sử dụng để truy vấn thông tin về tên miền và địa chỉ IP từ hệ thống DNS (Domain Name System). Nó cho phép người dùng kiểm tra và xác minh các bản ghi DNS, giúp xác định các vấn đề liên quan đến mạng.
+Lệnh `nslookup` được sử dụng để tra cứu thông tin về các tên miền và địa chỉ IP trong hệ thống DNS (Domain Name System). Nó cho phép người dùng xác định địa chỉ IP của một tên miền hoặc tìm kiếm tên miền tương ứng với một địa chỉ IP.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `nslookup` như sau:
-
-```bash
+```
 nslookup [options] [arguments]
 ```
 
 ## Các tùy chọn phổ biến
-- `-type=TYPE`: Chỉ định loại bản ghi DNS cần truy vấn, ví dụ như A, AAAA, MX, TXT.
-- `-timeout=SECONDS`: Đặt thời gian chờ cho mỗi truy vấn.
-- `-retry=COUNT`: Đặt số lần thử lại khi không nhận được phản hồi.
-- `-debug`: Hiển thị thông tin chi tiết về quá trình truy vấn.
+- `-type=type`: Chỉ định loại bản ghi DNS cần tra cứu (ví dụ: A, MX, CNAME).
+- `-timeout=seconds`: Đặt thời gian chờ cho mỗi truy vấn DNS.
+- `-retry=number`: Đặt số lần thử lại nếu không nhận được phản hồi.
 
 ## Ví dụ phổ biến
-Dưới đây là một số ví dụ thực tế khi sử dụng lệnh `nslookup`:
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `nslookup`:
 
 1. Tra cứu địa chỉ IP của một tên miền:
    ```bash
    nslookup example.com
    ```
 
-2. Tra cứu bản ghi MX (Mail Exchange) của một tên miền:
+2. Tra cứu bản ghi MX của một tên miền:
    ```bash
    nslookup -type=MX example.com
    ```
 
-3. Tra cứu bản ghi TXT của một tên miền:
+3. Tra cứu tên miền từ một địa chỉ IP:
    ```bash
-   nslookup -type=TXT example.com
+   nslookup 93.184.216.34
    ```
 
-4. Sử dụng một máy chủ DNS cụ thể để thực hiện truy vấn:
+4. Thay đổi máy chủ DNS để tra cứu:
    ```bash
    nslookup example.com 8.8.8.8
    ```
 
 ## Mẹo
-- Sử dụng tùy chọn `-debug` để nhận thêm thông tin chi tiết khi gặp vấn đề với truy vấn DNS.
-- Kiểm tra nhiều loại bản ghi khác nhau để có cái nhìn toàn diện về cấu hình DNS của tên miền.
-- Lưu ý rằng một số tên miền có thể có nhiều bản ghi, vì vậy hãy xem xét tất cả các kết quả trả về.
+- Sử dụng `nslookup` trong chế độ tương tác bằng cách chỉ gõ `nslookup` mà không có tham số nào để nhập nhiều lệnh tra cứu.
+- Kiểm tra các bản ghi DNS khác nhau như A, AAAA, CNAME, và TXT để có cái nhìn toàn diện về cấu hình DNS của một tên miền.
+- Nếu bạn gặp sự cố với DNS, hãy thử sử dụng máy chủ DNS công cộng như Google (8.8.8.8) để xem liệu vấn đề có phải do máy chủ DNS của bạn hay không.

@@ -1,22 +1,22 @@
-# [Linux] Bash finger Kullanımı: Kullanıcı bilgilerini görüntüleme aracı
+# [Linux] C Shell (csh) finger Kullanımı: Kullanıcı bilgilerini görüntüleme
 
 ## Genel Bakış
-`finger` komutu, sistemdeki kullanıcılar hakkında bilgi sağlar. Bu bilgi, kullanıcıların kimlik bilgileri, oturum durumu ve kişisel bilgileri gibi detayları içerir. `finger`, bir sistemdeki kullanıcıların durumunu hızlı bir şekilde kontrol etmek için kullanışlıdır.
+`finger` komutu, sistemdeki kullanıcıların bilgilerini görüntülemek için kullanılır. Bu komut, kullanıcı adı, tam ad, oturum durumu ve son giriş zamanı gibi bilgileri sağlar.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
 
-```bash
+```
 finger [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-l`: Kullanıcı bilgilerini daha ayrıntılı bir şekilde gösterir.
-- `-m`: Kullanıcı adını tam olarak eşleştirir.
-- `-s`: Daha kısa bir çıktı sağlar; yalnızca temel bilgileri gösterir.
+- `-l`: Kullanıcı hakkında daha ayrıntılı bilgi gösterir.
+- `-m`: Kullanıcı adını tam olarak eşleştirmek için kullanılır.
+- `-s`: Kısa biçimde kullanıcı bilgilerini gösterir.
 
 ## Yaygın Örnekler
-Aşağıda `finger` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+Aşağıda `finger` komutunun bazı pratik örnekleri bulunmaktadır:
 
 1. Tüm kullanıcıların bilgilerini görüntüleme:
    ```bash
@@ -28,22 +28,17 @@ Aşağıda `finger` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
    finger kullanıcı_adı
    ```
 
-3. Kullanıcı bilgilerini ayrıntılı olarak görüntüleme:
+3. Ayrıntılı kullanıcı bilgilerini görüntüleme:
    ```bash
    finger -l kullanıcı_adı
    ```
 
-4. Kullanıcı adını tam olarak eşleştirerek görüntüleme:
-   ```bash
-   finger -m kullanıcı_adı
-   ```
-
-5. Daha kısa bir çıktı ile kullanıcı bilgilerini görüntüleme:
+4. Kısa biçimde kullanıcı bilgilerini görüntüleme:
    ```bash
    finger -s
    ```
 
 ## İpuçları
-- `finger` komutunu kullanmadan önce, sistemde `finger` paketinin yüklü olduğundan emin olun.
-- Kullanıcı bilgilerini kontrol etmek için `finger` komutunu sık sık kullanıyorsanız, sık kullandığınız kullanıcı adlarını bir alias ile kısayol olarak tanımlayabilirsiniz.
-- `finger` çıktısındaki bilgilerin güncel olduğundan emin olmak için, kullanıcıların oturum açıp açmadığını kontrol edin.
+- `finger` komutunu kullanmadan önce, sistemde bu komutun yüklü olduğundan emin olun.
+- Kullanıcı bilgilerini görüntülemek için doğru kullanıcı adını girdiğinizden emin olun.
+- `finger` komutu, kullanıcıların çevrimiçi durumlarını görmek için yararlıdır, bu nedenle sistem yönetimi için faydalı bir araçtır.

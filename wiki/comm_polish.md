@@ -1,55 +1,46 @@
-# [Linux] Bash comm użycie: porównywanie plików linia po linii
+# [Linux] C Shell (csh) comm: porównywanie plików tekstowych
 
 ## Overview
-Polecenie `comm` służy do porównywania dwóch posortowanych plików tekstowych linia po linii. Umożliwia wyświetlenie linii, które są unikalne dla każdego z plików oraz linii, które są wspólne.
+Polecenie `comm` służy do porównywania dwóch posortowanych plików tekstowych, wyświetlając linie, które są unikalne dla każdego pliku oraz linie wspólne. Dzięki temu można łatwo zidentyfikować różnice między dwoma zestawami danych.
 
 ## Usage
-Podstawowa składnia polecenia `comm` wygląda następująco:
+Podstawowa składnia polecenia `comm` jest następująca:
 
-```bash
-comm [opcje] [plik1] [plik2]
+```csh
+comm [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-1`: Ukrywa linie unikalne dla pliku 1.
-- `-2`: Ukrywa linie unikalne dla pliku 2.
-- `-3`: Ukrywa linie wspólne.
-- `-i`: Ignoruje wielkość liter podczas porównywania.
-- `-u`: Wyświetla tylko unikalne linie.
+- `-1`: Ukrywa linie, które są unikalne dla pierwszego pliku.
+- `-2`: Ukrywa linie, które są unikalne dla drugiego pliku.
+- `-3`: Ukrywa linie, które są wspólne dla obu plików.
+- `-i`: Ignoruje różnice w wielkości liter podczas porównywania.
 
 ## Common Examples
-
-1. **Podstawowe porównanie dwóch plików:**
-   ```bash
-   comm plik1.txt plik2.txt
+1. Porównanie dwóch plików i wyświetlenie wszystkich linii:
+   ```csh
+   comm file1.txt file2.txt
    ```
 
-2. **Wyświetlenie tylko linii unikalnych dla pliku 1:**
-   ```bash
-   comm -13 plik1.txt plik2.txt
+2. Wyświetlenie tylko linii unikalnych dla pierwszego pliku:
+   ```csh
+   comm -13 file1.txt file2.txt
    ```
 
-3. **Wyświetlenie tylko linii unikalnych dla pliku 2:**
-   ```bash
-   comm -12 plik1.txt plik2.txt
+3. Wyświetlenie tylko linii wspólnych dla obu plików:
+   ```csh
+   comm -23 file1.txt file2.txt
    ```
 
-4. **Porównanie z ignorowaniem wielkości liter:**
-   ```bash
-   comm -i plik1.txt plik2.txt
-   ```
-
-5. **Wyświetlenie tylko wspólnych linii:**
-   ```bash
-   comm -23 plik1.txt plik2.txt
+4. Porównanie dwóch plików z ignorowaniem wielkości liter:
+   ```csh
+   comm -i file1.txt file2.txt
    ```
 
 ## Tips
 - Upewnij się, że pliki są posortowane przed użyciem `comm`, ponieważ polecenie działa poprawnie tylko na posortowanych danych.
-- Możesz użyć polecenia `sort`, aby posortować pliki przed porównaniem:
-  ```bash
-  sort plik1.txt > posortowany1.txt
-  sort plik2.txt > posortowany2.txt
-  comm posortowany1.txt posortowany2.txt
+- Możesz użyć polecenia `sort` w połączeniu z `comm`, aby automatycznie posortować pliki przed porównaniem:
+  ```csh
+  comm <(sort file1.txt) <(sort file2.txt)
   ```
-- Warto używać opcji `-i`, gdy porównujesz pliki, które mogą zawierać różnice w wielkości liter, aby uzyskać bardziej dokładne wyniki.
+- Zawsze przetestuj polecenie na małych plikach, aby upewnić się, że rozumiesz jego działanie, zanim użyjesz go na większych zbiorach danych.

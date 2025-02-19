@@ -1,84 +1,64 @@
-# [Linux] Bash expr Penggunaan: Menghitung dan membandingkan ekspresi
+# [Sistem Operasi] C Shell (csh) expr Penggunaan: Menghitung ekspresi
 
 ## Overview
-Perintah `expr` dalam Bash digunakan untuk mengevaluasi ekspresi aritmatika dan logika. Ini memungkinkan pengguna untuk melakukan operasi dasar seperti penjumlahan, pengurangan, perbandingan, dan manipulasi string.
+Perintah `expr` dalam C Shell (csh) digunakan untuk mengevaluasi ekspresi aritmatika, string, dan logika. Ini memungkinkan pengguna untuk melakukan perhitungan dasar dan manipulasi string dalam skrip shell.
 
 ## Usage
-Berikut adalah sintaks dasar dari perintah `expr`:
+Sintaks dasar dari perintah `expr` adalah sebagai berikut:
 
-```bash
+```csh
 expr [options] [arguments]
 ```
 
 ## Common Options
-- `+` : Menjumlahkan dua angka.
-- `-` : Mengurangi angka kedua dari angka pertama.
+- `+` : Menambahkan dua angka.
+- `-` : Mengurangkan satu angka dari angka lainnya.
 - `*` : Mengalikan dua angka.
-- `/` : Membagi angka pertama dengan angka kedua.
+- `/` : Membagi satu angka dengan angka lainnya.
 - `%` : Menghitung sisa dari pembagian dua angka.
 - `=` : Membandingkan dua nilai untuk kesetaraan.
 - `!=` : Membandingkan dua nilai untuk ketidaksetaraan.
-- `<` : Memeriksa apakah nilai pertama kurang dari nilai kedua.
-- `>` : Memeriksa apakah nilai pertama lebih besar dari nilai kedua.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `expr`:
 
-### Contoh 1: Penjumlahan
-Menjumlahkan dua angka:
+1. **Menjumlahkan dua angka:**
+   ```csh
+   set result = `expr 5 + 3`
+   echo $result  # Output: 8
+   ```
 
-```bash
-expr 5 + 3
-```
+2. **Mengurangkan dua angka:**
+   ```csh
+   set result = `expr 10 - 4`
+   echo $result  # Output: 6
+   ```
 
-Output: `8`
+3. **Mengalikan dua angka:**
+   ```csh
+   set result = `expr 7 \* 6`
+   echo $result  # Output: 42
+   ```
 
-### Contoh 2: Pengurangan
-Mengurangi angka:
+4. **Membagi dua angka:**
+   ```csh
+   set result = `expr 20 / 4`
+   echo $result  # Output: 5
+   ```
 
-```bash
-expr 10 - 4
-```
+5. **Menghitung sisa pembagian:**
+   ```csh
+   set result = `expr 10 % 3`
+   echo $result  # Output: 1
+   ```
 
-Output: `6`
-
-### Contoh 3: Perkalian
-Mengalikan dua angka:
-
-```bash
-expr 7 \* 6
-```
-
-Output: `42`
-
-### Contoh 4: Pembagian
-Membagi angka:
-
-```bash
-expr 20 / 4
-```
-
-Output: `5`
-
-### Contoh 5: Modulus
-Menghitung sisa dari pembagian:
-
-```bash
-expr 10 % 3
-```
-
-Output: `1`
-
-### Contoh 6: Perbandingan
-Memeriksa kesetaraan:
-
-```bash
-expr 5 = 5
-```
-
-Output: `1` (true)
+6. **Membandingkan dua nilai:**
+   ```csh
+   set isEqual = `expr 5 = 5`
+   echo $isEqual  # Output: 1 (true)
+   ```
 
 ## Tips
-- Selalu gunakan tanda backslash (`\`) sebelum operator `*` untuk menghindari kesalahan interpretasi oleh shell.
-- Gunakan tanda kurung untuk mengelompokkan operasi jika melakukan lebih dari satu operasi dalam satu perintah.
-- `expr` mengembalikan nilai 0 jika ekspresi benar dan 1 jika salah, yang dapat digunakan dalam skrip untuk pengkondisian.
+- Selalu gunakan tanda backticks (`` ` ``) saat menggunakan `expr` dalam skrip untuk memastikan hasilnya disimpan dalam variabel.
+- Ingat untuk menghindari spasi di sekitar operator aritmatika, karena C Shell memerlukan format tertentu untuk mengenali ekspresi.
+- Untuk operasi yang lebih kompleks, pertimbangkan untuk menggunakan bahasa pemrograman lain atau alat yang lebih kuat seperti `bc` atau `awk`.

@@ -1,48 +1,51 @@
-# [Linux] Bash hash Verwendung: Verwalten von Befehlscaches
+# [Unix] C Shell (csh) hash Verwendung: Verwalten von Befehlscaches
 
 ## Übersicht
-Der `hash` Befehl in Bash wird verwendet, um den Cache von Befehlen zu verwalten. Er speichert die Pfade zu ausführbaren Dateien, die in der aktuellen Shell-Sitzung verwendet wurden, um die Ausführungsgeschwindigkeit zu erhöhen.
+Der `hash`-Befehl in der C Shell (csh) wird verwendet, um den Cache von Befehlen zu verwalten, die in der aktuellen Sitzung ausgeführt wurden. Er speichert die Pfade zu den ausführbaren Dateien, um die Ausführungsgeschwindigkeit zu erhöhen, indem er die Notwendigkeit reduziert, nach den Befehlen zu suchen.
 
 ## Verwendung
-Die grundlegende Syntax des `hash` Befehls lautet:
+Die grundlegende Syntax des `hash`-Befehls lautet:
 
-```bash
-hash [Optionen] [Argumente]
+```
+hash [optionen] [argumente]
 ```
 
 ## Häufige Optionen
-- `-r`: Löscht den gesamten Befehlscache.
-- `-l`: Listet alle aktuell im Cache gespeicherten Befehle auf.
-- `-p`: Legt einen spezifischen Pfad für einen Befehl fest, um diesen im Cache zu speichern.
+- `-r`: Löscht den aktuellen Befehlscache.
+- `-p`: Fügt einen spezifischen Befehl zum Cache hinzu, ohne ihn auszuführen.
+- `-l`: Listet alle im Cache gespeicherten Befehle auf.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung des `hash` Befehls:
 
-1. **Cache anzeigen**:
-   Um alle im Cache gespeicherten Befehle anzuzeigen, verwenden Sie:
-   ```bash
-   hash
-   ```
+### 1. Befehlscache anzeigen
+Um alle im Befehlscache gespeicherten Befehle anzuzeigen, verwenden Sie:
 
-2. **Cache löschen**:
-   Um den gesamten Befehlscache zu löschen, führen Sie aus:
-   ```bash
-   hash -r
-   ```
+```csh
+hash
+```
 
-3. **Spezifischen Befehl im Cache speichern**:
-   Um den Pfad eines bestimmten Befehls zu speichern, verwenden Sie:
-   ```bash
-   hash -p /usr/bin/ls ls
-   ```
+### 2. Befehlscache löschen
+Um den gesamten Befehlscache zu löschen, verwenden Sie:
 
-4. **Cache mit Pfad anzeigen**:
-   Um die Pfade der im Cache gespeicherten Befehle aufzulisten, verwenden Sie:
-   ```bash
-   hash -l
-   ```
+```csh
+hash -r
+```
+
+### 3. Spezifischen Befehl zum Cache hinzufügen
+Um einen bestimmten Befehl zum Cache hinzuzufügen, verwenden Sie:
+
+```csh
+hash -p /usr/local/bin/meinBefehl
+```
+
+### 4. Befehlscache auflisten
+Um die im Cache gespeicherten Befehle aufzulisten, verwenden Sie:
+
+```csh
+hash -l
+```
 
 ## Tipps
-- Verwenden Sie `hash -r`, wenn Sie neue Versionen von Programmen installiert haben, um sicherzustellen, dass die aktuelle Version verwendet wird.
-- Überprüfen Sie regelmäßig den Befehlscache mit `hash`, um sicherzustellen, dass keine veralteten Pfade gespeichert sind.
-- Nutzen Sie `hash -p`, um sicherzustellen, dass ein spezifischer Befehl immer auf den gewünschten Pfad verweist, besonders wenn mehrere Versionen eines Programms vorhanden sind.
+- Nutzen Sie `hash -r`, wenn Sie Änderungen an den ausführbaren Dateien vorgenommen haben, um sicherzustellen, dass der Cache aktualisiert wird.
+- Überprüfen Sie regelmäßig den Befehlscache mit `hash`, um sicherzustellen, dass die richtigen Pfade gespeichert sind.
+- Verwenden Sie `hash -p`, um häufig verwendete Befehle manuell hinzuzufügen, die möglicherweise nicht automatisch erkannt werden.

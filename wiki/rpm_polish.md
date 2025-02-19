@@ -1,28 +1,23 @@
-# [Linux] Bash rpm użycie: Zarządzanie pakietami RPM
+# [Linux] C Shell (csh) rpm użycie: zarządzanie pakietami RPM
 
 ## Overview
-Polecenie `rpm` jest narzędziem do zarządzania pakietami w systemach operacyjnych opartych na Red Hat, takich jak Fedora, CentOS czy RHEL. Umożliwia instalację, usuwanie, aktualizację oraz sprawdzanie pakietów w formacie RPM.
+Polecenie `rpm` jest narzędziem do zarządzania pakietami w systemach opartych na Red Hat, takich jak Fedora czy CentOS. Umożliwia instalację, usuwanie, aktualizację oraz sprawdzanie pakietów RPM.
 
 ## Usage
-Podstawowa składnia polecenia `rpm` wygląda następująco:
+Podstawowa składnia polecenia `rpm` jest następująca:
 
 ```bash
-rpm [opcje] [argumenty]
+rpm [options] [arguments]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji polecenia `rpm`:
-
 - `-i` : Instalacja nowego pakietu.
 - `-e` : Usunięcie zainstalowanego pakietu.
 - `-U` : Aktualizacja zainstalowanego pakietu do nowszej wersji.
-- `-q` : Zapytanie o zainstalowane pakiety.
-- `-V` : Weryfikacja zainstalowanego pakietu.
+- `-q` : Zapytanie o informacje na temat zainstalowanego pakietu.
 - `--help` : Wyświetlenie pomocy dotyczącej użycia polecenia.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `rpm`:
-
 1. **Instalacja pakietu:**
    ```bash
    rpm -i nazwa_pakietu.rpm
@@ -38,17 +33,20 @@ Oto kilka praktycznych przykładów użycia polecenia `rpm`:
    rpm -U nazwa_pakietu.rpm
    ```
 
-4. **Sprawdzenie, czy pakiet jest zainstalowany:**
+4. **Sprawdzenie zainstalowanego pakietu:**
    ```bash
    rpm -q nazwa_pakietu
    ```
 
-5. **Weryfikacja pakietu:**
+5. **Wyświetlenie pomocy:**
    ```bash
-   rpm -V nazwa_pakietu
+   rpm --help
    ```
 
 ## Tips
-- Zawsze sprawdzaj zależności przed instalacją pakietu, aby uniknąć problemów.
-- Używaj opcji `-q` z dodatkowymi parametrami, aby uzyskać więcej informacji o zainstalowanych pakietach.
-- Regularnie aktualizuj swoje pakiety, aby zapewnić bezpieczeństwo i stabilność systemu.
+- Zawsze sprawdzaj zależności przed instalacją pakietu, aby uniknąć problemów z brakującymi bibliotekami.
+- Używaj opcji `-q` z `-l`, aby zobaczyć, jakie pliki są zainstalowane w danym pakiecie:
+  ```bash
+  rpm -ql nazwa_pakietu
+  ```
+- Regularnie aktualizuj system, aby mieć najnowsze poprawki bezpieczeństwa i funkcjonalności.

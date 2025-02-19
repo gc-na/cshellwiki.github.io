@@ -1,62 +1,56 @@
-# [Linux] Bash ulimit Uso: Limitar recursos do sistema
+# [Linux] C Shell (csh) ulimit: Limitar recursos do sistema
 
 ## Overview
-O comando `ulimit` é utilizado para definir ou exibir limites de recursos para processos em um shell. Isso é útil para controlar o uso de recursos do sistema, como a quantidade de memória ou o número máximo de arquivos abertos, evitando que um único processo consuma todos os recursos disponíveis.
+O comando `ulimit` no C Shell (csh) é utilizado para definir ou exibir limites de recursos para o shell e os processos que ele cria. Isso é útil para evitar que um único processo consuma todos os recursos do sistema, garantindo uma melhor estabilidade e desempenho.
 
 ## Usage
 A sintaxe básica do comando `ulimit` é a seguinte:
 
-```bash
+```csh
 ulimit [opções] [argumentos]
 ```
 
 ## Common Options
-Aqui estão algumas opções comuns do `ulimit`:
+Aqui estão algumas opções comuns que podem ser usadas com o comando `ulimit`:
 
-- `-a`: Exibe todos os limites atuais.
-- `-c`: Define o tamanho máximo do arquivo de core dump.
+- `-c`: Define o tamanho máximo do arquivo de despejo de núcleo (core dump).
 - `-d`: Define o tamanho máximo da memória do segmento de dados.
 - `-f`: Define o tamanho máximo dos arquivos que podem ser criados.
-- `-l`: Define o tamanho máximo da memória bloqueada.
-- `-n`: Define o número máximo de descritores de arquivo abertos.
+- `-l`: Define o tamanho máximo que pode ser bloqueado na memória.
+- `-m`: Define o tamanho máximo da memória residente.
 - `-s`: Define o tamanho máximo da pilha.
 - `-t`: Define o tempo máximo de CPU em segundos.
+- `-v`: Define o tamanho máximo da memória virtual.
 
 ## Common Examples
+Aqui estão alguns exemplos práticos do uso do comando `ulimit`:
 
-Aqui estão alguns exemplos práticos do uso do `ulimit`:
-
-1. **Exibir todos os limites atuais:**
-
-   ```bash
+1. **Verificar limites atuais:**
+   ```csh
    ulimit -a
    ```
 
-2. **Definir o número máximo de arquivos abertos para 1024:**
-
-   ```bash
-   ulimit -n 1024
-   ```
-
-3. **Definir o tamanho máximo do arquivo de core dump para 0 (desabilitar):**
-
-   ```bash
+2. **Definir o tamanho máximo do arquivo de despejo de núcleo para 0 (desativar):**
+   ```csh
    ulimit -c 0
    ```
 
-4. **Definir o tamanho máximo da pilha para 8192 KB:**
-
-   ```bash
-   ulimit -s 8192
+3. **Definir o tamanho máximo de arquivos que podem ser criados para 100 MB:**
+   ```csh
+   ulimit -f 102400
    ```
 
-5. **Definir o tempo máximo de CPU para 60 segundos:**
-
-   ```bash
+4. **Definir o tempo máximo de CPU para 60 segundos:**
+   ```csh
    ulimit -t 60
    ```
 
+5. **Definir o tamanho máximo da pilha para 8 MB:**
+   ```csh
+   ulimit -s 8192
+   ```
+
 ## Tips
-- Sempre verifique os limites atuais com `ulimit -a` antes de fazer alterações, para entender o que está sendo modificado.
-- Use `ulimit` em scripts para garantir que os processos não excedam os limites de recursos definidos.
-- Lembre-se de que as alterações feitas com `ulimit` são aplicáveis apenas ao shell atual e seus subprocessos; não afetam outros shells ou processos em execução.
+- Sempre verifique os limites atuais com `ulimit -a` antes de fazer alterações, para entender o estado do sistema.
+- Use limites mais restritivos em ambientes de produção para evitar que processos mal comportados afetem o desempenho do sistema.
+- Lembre-se de que os limites definidos com `ulimit` são aplicáveis apenas ao shell atual e seus processos filhos. Para definir limites permanentes, você pode precisar editar arquivos de configuração do sistema.

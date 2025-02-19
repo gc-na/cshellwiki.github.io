@@ -1,7 +1,7 @@
-# [Linux] Bash mpstat Verwendung: Überwachung der CPU-Auslastung
+# [Linux] C Shell (csh) mpstat Verwendung: Überwachung der CPU-Auslastung
 
 ## Übersicht
-Der Befehl `mpstat` wird verwendet, um die CPU-Auslastung auf einem Linux-System zu überwachen. Er zeigt Statistiken über die CPU-Nutzung an, einschließlich der Auslastung pro CPU-Kern, was nützlich ist, um Engpässe oder Leistungsprobleme zu identifizieren.
+Der Befehl `mpstat` wird verwendet, um die CPU-Auslastung auf einem System anzuzeigen. Er liefert Informationen über die Leistung der einzelnen CPUs und ermöglicht es Benutzern, Engpässe und Probleme bei der CPU-Nutzung zu identifizieren.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
@@ -12,41 +12,35 @@ mpstat [Optionen] [Argumente]
 
 ## Häufige Optionen
 - `-P ALL`: Zeigt Statistiken für alle CPUs an.
-- `-u`: Zeigt die CPU-Auslastung in Prozent an.
+- `-u`: Zeigt die CPU-Nutzung in Prozent an.
 - `-h`: Gibt die Ausgabe in einem menschenlesbaren Format aus.
-- `-o DATEINAME`: Speichert die Ausgabe in einer Datei.
 - `interval`: Gibt das Intervall in Sekunden an, in dem die Statistiken aktualisiert werden sollen.
-- `count`: Gibt die Anzahl der gewünschten Ausgaben an.
+- `count`: Gibt die Anzahl der gewünschten Berichte an.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele zur Verwendung von `mpstat`:
+Hier sind einige praktische Beispiele für die Verwendung von `mpstat`:
 
-1. **CPU-Auslastung für alle CPUs anzeigen**:
+1. **CPU-Nutzung für alle CPUs anzeigen:**
    ```bash
    mpstat -P ALL
    ```
 
-2. **CPU-Auslastung alle 2 Sekunden anzeigen**:
+2. **CPU-Nutzung alle 5 Sekunden anzeigen:**
    ```bash
-   mpstat 2
+   mpstat 5
    ```
 
-3. **CPU-Auslastung für alle CPUs und in menschenlesbarem Format anzeigen**:
+3. **CPU-Nutzung mit menschenlesbarem Format:**
    ```bash
-   mpstat -P ALL -h
+   mpstat -h
    ```
 
-4. **Ausgabe in eine Datei speichern**:
+4. **CPU-Nutzung für eine bestimmte CPU anzeigen:**
    ```bash
-   mpstat -P ALL -o output.txt
-   ```
-
-5. **CPU-Auslastung für eine bestimmte Anzahl von Abfragen anzeigen**:
-   ```bash
-   mpstat 1 5
+   mpstat -P 0 5 3
    ```
 
 ## Tipps
-- Verwenden Sie `mpstat -P ALL`, um eine detaillierte Übersicht über die Nutzung jeder CPU zu erhalten, besonders bei Mehrkernprozessoren.
-- Kombinieren Sie `mpstat` mit anderen Befehlen wie `grep`, um spezifische Informationen herauszufiltern.
-- Überwachen Sie die CPU-Auslastung während intensiver Anwendungen, um Engpässe zu identifizieren und die Leistung zu optimieren.
+- Verwenden Sie `mpstat -P ALL`, um eine umfassende Übersicht über die Leistung aller CPUs zu erhalten.
+- Kombinieren Sie `mpstat` mit anderen Überwachungstools wie `top` oder `htop`, um ein vollständiges Bild der Systemleistung zu erhalten.
+- Achten Sie darauf, die Intervalle und die Anzahl der Berichte so zu wählen, dass sie Ihren Überwachungsanforderungen entsprechen, um die Ausgabe übersichtlich zu halten.

@@ -1,63 +1,53 @@
-# [Linux] Bash yum użycie: Zarządzanie pakietami w systemie Linux
+# [Linux] C Shell (csh) yum użycie: Zarządzanie pakietami w systemie Linux
 
 ## Overview
-Polecenie `yum` (Yellowdog Updater Modified) to narzędzie do zarządzania pakietami w systemach opartych na Red Hat, takich jak CentOS czy Fedora. Umożliwia instalację, aktualizację, usuwanie oraz zarządzanie oprogramowaniem z repozytoriów.
+Polecenie `yum` (Yellowdog Updater, Modified) jest narzędziem do zarządzania pakietami w systemach Linux opartych na RPM (Red Hat Package Manager). Umożliwia instalację, aktualizację i usuwanie oprogramowania oraz zarządzanie repozytoriami.
 
 ## Usage
-Podstawowa składnia polecenia `yum` wygląda następująco:
+Podstawowa składnia polecenia `yum` jest następująca:
 
 ```bash
 yum [opcje] [argumenty]
 ```
 
 ## Common Options
+Oto kilka powszechnie używanych opcji dla polecenia `yum`:
+
 - `install`: Instaluje pakiet.
 - `remove`: Usuwa pakiet.
 - `update`: Aktualizuje zainstalowane pakiety do najnowszych wersji.
 - `search`: Wyszukuje pakiety w repozytoriach.
 - `info`: Wyświetla szczegóły dotyczące pakietu.
-- `list`: Wyświetla listę dostępnych lub zainstalowanych pakietów.
 
 ## Common Examples
-- Instalacja pakietu:
-  ```bash
-  yum install nazwa_pakietu
-  ```
+Oto kilka praktycznych przykładów użycia polecenia `yum`:
 
-- Usunięcie pakietu:
-  ```bash
-  yum remove nazwa_pakietu
-  ```
+1. **Instalacja pakietu:**
+   ```bash
+   yum install nazwa_pakietu
+   ```
 
-- Aktualizacja wszystkich zainstalowanych pakietów:
-  ```bash
-  yum update
-  ```
+2. **Usuwanie pakietu:**
+   ```bash
+   yum remove nazwa_pakietu
+   ```
 
-- Wyszukiwanie pakietu:
-  ```bash
-  yum search nazwa_pakietu
-  ```
+3. **Aktualizacja wszystkich zainstalowanych pakietów:**
+   ```bash
+   yum update
+   ```
 
-- Wyświetlenie informacji o pakiecie:
-  ```bash
-  yum info nazwa_pakietu
-  ```
+4. **Wyszukiwanie pakietu:**
+   ```bash
+   yum search nazwa_pakietu
+   ```
 
-- Wyświetlenie listy zainstalowanych pakietów:
-  ```bash
-  yum list installed
-  ```
+5. **Wyświetlanie informacji o pakiecie:**
+   ```bash
+   yum info nazwa_pakietu
+   ```
 
 ## Tips
-- Zawsze warto używać opcji `-y`, aby automatycznie potwierdzać instalacje i aktualizacje, co przyspiesza proces:
-  ```bash
-  yum install -y nazwa_pakietu
-  ```
-
-- Regularnie aktualizuj system, aby zapewnić bezpieczeństwo i stabilność:
-  ```bash
-  yum update
-  ```
-
-- Sprawdzaj dostępność nowych repozytoriów, aby mieć dostęp do najnowszych pakietów i aktualizacji.
+- Zawsze sprawdzaj dostępność aktualizacji przed instalacją nowych pakietów, aby uniknąć konfliktów.
+- Używaj opcji `-y`, aby automatycznie potwierdzić instalację lub usunięcie pakietów, co może zaoszczędzić czas.
+- Regularnie przeglądaj dostępne repozytoria, aby mieć dostęp do najnowszego oprogramowania.

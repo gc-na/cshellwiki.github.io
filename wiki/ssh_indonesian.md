@@ -1,53 +1,46 @@
-# [Linux] Bash ssh Penggunaan: Menghubungkan ke server secara aman
+# [Sistem Operasi] C Shell (csh) ssh Penggunaan: Mengakses server secara aman
 
 ## Overview
-Perintah `ssh` (Secure Shell) digunakan untuk menghubungkan ke server atau komputer lain secara aman melalui jaringan. Dengan menggunakan enkripsi, `ssh` memastikan bahwa data yang ditransfer antara klien dan server tetap aman dari penyadapan.
+Perintah `ssh` (Secure Shell) digunakan untuk mengakses dan mengelola server secara aman melalui jaringan. Dengan menggunakan enkripsi, `ssh` memastikan bahwa data yang ditransfer antara klien dan server terlindungi dari penyadapan.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `ssh`:
 
-```bash
+```csh
 ssh [options] [user@]hostname
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang sering digunakan dengan perintah `ssh`:
-
 - `-p port` : Menentukan port yang akan digunakan untuk koneksi (default adalah 22).
-- `-i identity_file` : Menentukan file kunci identitas yang akan digunakan untuk otentikasi.
-- `-v` : Menampilkan informasi debug yang berguna untuk troubleshooting.
-- `-X` : Mengaktifkan forwarding X11, memungkinkan aplikasi grafis untuk dijalankan di server dan ditampilkan di klien.
+- `-i identity_file` : Menentukan file kunci identitas yang akan digunakan untuk autentikasi.
+- `-v` : Menampilkan informasi verbose untuk membantu dalam debugging koneksi.
+- `-X` : Mengaktifkan forwarding X11 untuk menjalankan aplikasi grafis dari server.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan perintah `ssh`:
+Berikut adalah beberapa contoh penggunaan `ssh`:
 
-1. Menghubungkan ke server dengan nama pengguna default:
-   ```bash
-   ssh hostname
-   ```
-
-2. Menghubungkan ke server dengan nama pengguna yang ditentukan:
-   ```bash
+1. Mengakses server dengan nama pengguna dan hostname:
+   ```csh
    ssh user@hostname
    ```
 
-3. Menghubungkan ke server menggunakan port yang berbeda:
-   ```bash
+2. Mengakses server dengan port yang berbeda:
+   ```csh
    ssh -p 2222 user@hostname
    ```
 
-4. Menggunakan kunci identitas untuk otentikasi:
-   ```bash
+3. Menggunakan file kunci identitas untuk autentikasi:
+   ```csh
    ssh -i ~/.ssh/id_rsa user@hostname
    ```
 
-5. Mengaktifkan forwarding X11:
-   ```bash
+4. Mengaktifkan forwarding X11:
+   ```csh
    ssh -X user@hostname
    ```
 
 ## Tips
-- Selalu gunakan kunci SSH daripada kata sandi untuk keamanan yang lebih baik.
-- Periksa file `~/.ssh/authorized_keys` di server untuk memastikan kunci publik Anda telah ditambahkan.
-- Gunakan opsi `-v` untuk mendapatkan informasi lebih lanjut jika Anda mengalami masalah saat menghubungkan.
-- Pertimbangkan untuk menggunakan `ssh config` untuk menyimpan pengaturan koneksi yang sering digunakan, sehingga Anda tidak perlu mengetikkan semua opsi setiap kali.
+- Selalu gunakan kunci SSH untuk autentikasi yang lebih aman dibandingkan dengan kata sandi.
+- Simpan kunci privat Anda di lokasi yang aman dan jangan membagikannya.
+- Gunakan opsi `-v` untuk mendapatkan informasi lebih lanjut jika terjadi masalah saat koneksi.
+- Pertimbangkan untuk menggunakan file konfigurasi `~/.ssh/config` untuk menyimpan pengaturan koneksi yang sering digunakan.

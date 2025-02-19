@@ -1,40 +1,40 @@
-# [Linux] Bash whoami Użycie: Zwraca nazwę aktualnego użytkownika
+# [Linux] C Shell (csh) whoami Użycie: wyświetla nazwę użytkownika
 
 ## Overview
-Polecenie `whoami` w systemie Linux służy do wyświetlania nazwy użytkownika, który aktualnie jest zalogowany w sesji terminala. Jest to przydatne narzędzie do szybkiego sprawdzenia, pod jakim kontem użytkownik pracuje w danym momencie.
+Polecenie `whoami` w C Shell (csh) służy do wyświetlenia nazwy aktualnie zalogowanego użytkownika. Jest to przydatne narzędzie, gdy potrzebujesz szybko sprawdzić, pod jakim kontem jesteś zalogowany w systemie.
 
 ## Usage
 Podstawowa składnia polecenia `whoami` jest następująca:
 
-```bash
-whoami [opcje]
+```csh
+whoami [opcje] [argumenty]
 ```
 
 ## Common Options
-Chociaż `whoami` nie ma wielu opcji, oto kilka, które mogą być przydatne:
+Polecenie `whoami` nie ma wielu opcji, ale oto kilka, które mogą być użyteczne:
 
 - `--help`: Wyświetla pomoc dotyczącą polecenia.
-- `--version`: Pokazuje wersję programu.
+- `--version`: Wyświetla wersję polecenia.
 
 ## Common Examples
 Oto kilka praktycznych przykładów użycia polecenia `whoami`:
 
-1. **Wyświetlenie nazwy aktualnego użytkownika:**
-   ```bash
+1. Aby wyświetlić nazwę aktualnego użytkownika:
+   ```csh
    whoami
    ```
 
-2. **Wyświetlenie pomocy:**
-   ```bash
+2. Aby uzyskać pomoc na temat polecenia:
+   ```csh
    whoami --help
    ```
 
-3. **Sprawdzenie wersji polecenia:**
-   ```bash
+3. Aby sprawdzić wersję polecenia:
+   ```csh
    whoami --version
    ```
 
 ## Tips
-- Używaj `whoami` w skryptach, aby dynamicznie uzyskiwać informacje o użytkowniku, co może być przydatne w kontekście uprawnień.
-- Możesz łączyć `whoami` z innymi poleceniami, aby dostosować skrypty do działania w zależności od zalogowanego użytkownika.
-- Pamiętaj, że `whoami` zwraca tylko nazwę użytkownika, a nie inne informacje, takie jak identyfikator użytkownika (UID).
+- Używaj polecenia `whoami` w skryptach, aby dynamicznie dostosować działania do zalogowanego użytkownika.
+- Możesz łączyć `whoami` z innymi poleceniami, aby uzyskać bardziej złożone informacje o użytkowniku.
+- Pamiętaj, że `whoami` zawsze zwraca nazwę użytkownika, pod którym jesteś aktualnie zalogowany, co może być przydatne w systemach z wieloma kontami.

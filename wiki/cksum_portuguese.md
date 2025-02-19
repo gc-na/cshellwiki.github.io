@@ -1,46 +1,46 @@
-# [Linux] Bash cksum: Calcula e exibe o checksum de arquivos
+# [Linux] C Shell (csh) cksum uso equivalente: calcular e exibir a soma de verificação de arquivos
 
 ## Overview
-O comando `cksum` é utilizado para calcular e exibir o valor de checksum (soma de verificação) de um arquivo. Ele fornece um valor numérico que pode ser usado para verificar a integridade dos dados, ajudando a identificar alterações ou corrupções em arquivos.
+O comando `cksum` é utilizado para calcular e exibir a soma de verificação (checksum) de um arquivo, juntamente com o número de bytes que ele contém. Essa soma de verificação é útil para verificar a integridade dos dados.
 
 ## Usage
-A sintaxe básica do comando `cksum` é a seguinte:
+A sintaxe básica do comando é a seguinte:
 
-```bash
+```csh
 cksum [opções] [argumentos]
 ```
 
 ## Common Options
-Aqui estão algumas opções comuns do `cksum`:
+Aqui estão algumas opções comuns do comando `cksum`:
 
-- `-a, --algorithm=ALGO`: Especifica o algoritmo de checksum a ser usado.
-- `--help`: Exibe uma mensagem de ajuda com informações sobre o uso do comando.
-- `--version`: Mostra a versão do comando `cksum`.
+- `-a, --algorithm=ALG` : Especifica o algoritmo a ser utilizado para calcular a soma de verificação.
+- `--help` : Exibe uma mensagem de ajuda e sai.
+- `--version` : Mostra a versão do comando.
 
 ## Common Examples
-Aqui estão alguns exemplos práticos do uso do `cksum`:
+Aqui estão alguns exemplos práticos do uso do comando `cksum`:
 
-1. Calcular o checksum de um arquivo:
-   ```bash
+1. Calcular a soma de verificação de um único arquivo:
+   ```csh
    cksum arquivo.txt
    ```
 
-2. Calcular o checksum de vários arquivos:
-   ```bash
+2. Calcular a soma de verificação de múltiplos arquivos:
+   ```csh
    cksum arquivo1.txt arquivo2.txt
    ```
 
-3. Usar o `cksum` com um redirecionamento para salvar a saída em um arquivo:
-   ```bash
-   cksum arquivo.txt > checksum.txt
+3. Exibir a soma de verificação de um arquivo em um formato legível:
+   ```csh
+   cksum -a crc arquivo.txt
    ```
 
-4. Exibir a ajuda do comando:
-   ```bash
-   cksum --help
+4. Usar `cksum` com redirecionamento para salvar a saída em um arquivo:
+   ```csh
+   cksum arquivo.txt > soma_verificacao.txt
    ```
 
 ## Tips
-- Sempre verifique o checksum de arquivos importantes após transferências ou cópias para garantir que não houve corrupção.
-- Combine o `cksum` com outros comandos, como `find`, para verificar múltiplos arquivos em diretórios.
-- Utilize o redirecionamento para salvar os checksums em um arquivo para referência futura.
+- Sempre verifique a soma de verificação de arquivos críticos após transferências para garantir que não houve corrupção de dados.
+- Utilize a opção `--version` para garantir que você está usando a versão mais recente do comando, que pode incluir melhorias e correções de bugs.
+- Combine `cksum` com outros comandos, como `find`, para verificar a integridade de múltiplos arquivos em diretórios.

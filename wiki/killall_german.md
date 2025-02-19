@@ -1,50 +1,47 @@
-# [Linux] Bash killall Verwendung: Beenden von Prozessen
+# [Linux] C Shell (csh) killall Verwendung: Prozesse beenden
 
 ## Übersicht
-Der Befehl `killall` wird verwendet, um Prozesse anhand ihres Namens zu beenden. Dies ist besonders nützlich, wenn mehrere Instanzen eines Programms laufen und Sie alle gleichzeitig schließen möchten.
+Der Befehl `killall` wird verwendet, um alle Prozesse mit einem bestimmten Namen zu beenden. Dies ist nützlich, wenn Sie mehrere Instanzen eines Programms laufen haben und alle gleichzeitig schließen möchten.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
-killall [Optionen] [Argumente]
+```csh
+killall [optionen] [argumente]
 ```
 
 ## Häufige Optionen
-- `-u <Benutzer>`: Beendet nur die Prozesse, die von dem angegebenen Benutzer ausgeführt werden.
+- `-u [benutzer]`: Beendet nur die Prozesse, die von dem angegebenen Benutzer ausgeführt werden.
 - `-i`: Fragt vor dem Beenden jedes Prozesses nach Bestätigung.
-- `-q`: Unterdrückt die Ausgabe von Fehlermeldungen.
-- `-s <Signal>`: Gibt das zu sendende Signal an (z.B. `SIGTERM`, `SIGKILL`).
+- `-q`: Unterdrückt die Ausgabe von Fehlermeldungen, wenn kein Prozess gefunden wird.
+- `-s [signal]`: Gibt das Signal an, das an die Prozesse gesendet werden soll (z.B. `SIGTERM`, `SIGKILL`).
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung von `killall`:
+Um alle Instanzen eines Programms namens `firefox` zu beenden, verwenden Sie:
 
-1. Alle Instanzen eines Programms beenden:
-   ```bash
-   killall firefox
-   ```
+```csh
+killall firefox
+```
 
-2. Alle Prozesse eines bestimmten Benutzers beenden:
-   ```bash
-   killall -u benutzername
-   ```
+Um alle `python`-Prozesse zu beenden und vorher um Bestätigung zu bitten, verwenden Sie:
 
-3. Vor dem Beenden nach Bestätigung fragen:
-   ```bash
-   killall -i gedit
-   ```
+```csh
+killall -i python
+```
 
-4. Ein spezifisches Signal senden (z.B. SIGKILL):
-   ```bash
-   killall -s SIGKILL myprocess
-   ```
+Um alle Prozesse eines bestimmten Benutzers zu beenden, verwenden Sie:
 
-5. Alle Prozesse mit unterdrückter Fehlermeldung beenden:
-   ```bash
-   killall -q myprocess
-   ```
+```csh
+killall -u username
+```
+
+Um ein spezifisches Signal, wie `SIGKILL`, an alle `gedit`-Prozesse zu senden, verwenden Sie:
+
+```csh
+killall -s SIGKILL gedit
+```
 
 ## Tipps
-- Verwenden Sie `killall -i`, um sicherzustellen, dass Sie keine wichtigen Prozesse versehentlich beenden.
-- Seien Sie vorsichtig mit `SIGKILL`, da es Prozesse sofort beendet, ohne ihnen die Möglichkeit zu geben, ihre Arbeit zu speichern.
-- Überprüfen Sie mit `ps aux`, welche Prozesse gerade laufen, bevor Sie `killall` verwenden, um sicherzustellen, dass Sie die richtigen Prozesse beenden.
+- Seien Sie vorsichtig mit `killall`, da es alle Prozesse mit dem angegebenen Namen beendet. Vergewissern Sie sich, dass Sie den richtigen Prozess angeben.
+- Nutzen Sie die `-i`-Option, um versehentliche Beendigungen zu vermeiden, besonders in produktiven Umgebungen.
+- Überprüfen Sie die laufenden Prozesse mit `ps` oder `top`, um sicherzustellen, dass Sie die richtigen Prozesse beenden.

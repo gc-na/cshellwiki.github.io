@@ -1,48 +1,44 @@
-# [Linux] Bash hash Kullanımı: Komutların konumunu görüntüleme
+# [Linux] C Shell (csh) hash Kullanımı: Komut geçmişini yönetme
 
-## Genel Bakış
-`hash` komutu, Bash kabuğunda daha önce kullanılan komutların konumlarını saklar ve görüntüler. Bu, komutların daha hızlı çalıştırılmasını sağlar çünkü kabuk, komutun tam yolunu her seferinde aramak zorunda kalmaz.
+## Overview
+`hash` komutu, C Shell (csh) ortamında daha önce kullanılan komutların ve bunların yol bilgilerini saklar. Bu, kullanıcıların daha hızlı bir şekilde daha önce çalıştırdıkları komutları tekrar kullanmalarını sağlar.
 
-## Kullanım
+## Usage
 Temel sözdizimi aşağıdaki gibidir:
 
-```bash
+```csh
 hash [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-r`: Tüm hash tablosunu sıfırlar.
-- `-p`: Belirtilen bir komutun tam yolunu hash tablosuna ekler.
-- `-l`: Hash tablosundaki tüm komutların listesini gösterir.
+## Common Options
+- `-c`: Tüm hash tablosunu temizler.
+- `-r`: Hash tablosunu sıfırlar ve mevcut komut yollarını yeniden tarar.
+- `-l`: Hash tablosundaki mevcut komutların listesini gösterir.
 
-## Yaygın Örnekler
+## Common Examples
+Aşağıda `hash` komutunun bazı pratik örnekleri bulunmaktadır:
 
 1. **Hash Tablosunu Görüntüleme**
-   ```bash
+   ```csh
    hash
    ```
 
-2. **Belirli Bir Komutun Yolunu Görüntüleme**
-   ```bash
-   hash ls
+2. **Hash Tablosunu Temizleme**
+   ```csh
+   hash -c
    ```
 
 3. **Hash Tablosunu Sıfırlama**
-   ```bash
+   ```csh
    hash -r
    ```
 
-4. **Belirli Bir Komutun Yolunu Ekleme**
-   ```bash
-   hash -p /usr/local/bin/mycommand mycommand
-   ```
-
-5. **Hash Tablosundaki Tüm Komutları Listeleme**
-   ```bash
+4. **Mevcut Komutların Listesini Gösterme**
+   ```csh
    hash -l
    ```
 
-## İpuçları
-- `hash` komutunu kullanarak sık kullandığınız komutların yollarını önceden belirleyebilir ve böylece daha hızlı erişim sağlayabilirsiniz.
+## Tips
+- `hash` komutunu kullanarak sık kullandığınız komutların yol bilgilerini saklayarak, komutları daha hızlı çalıştırabilirsiniz.
 - Eğer bir komutun yolunu değiştirdiyseniz, hash tablosunu sıfırlamak için `hash -r` komutunu kullanmayı unutmayın.
-- `hash` komutunu kullanarak, hangi komutların hangi yollarla çalıştığını kolayca takip edebilirsiniz.
+- Komut geçmişinizi düzenli olarak kontrol etmek, hangi komutların kaydedildiğini görmek için faydalıdır.

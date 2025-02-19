@@ -1,44 +1,49 @@
-# [Linux] Bash chgrp gebruik: Wijzig de groepsrechten van bestanden
+# [Linux] C Shell (csh) chgrp gebruik: Wijzig de groepsrechten van bestanden
 
 ## Overzicht
-De `chgrp` opdracht in Bash wordt gebruikt om de groepseigenaar van een bestand of directory te wijzigen. Dit is nuttig voor het beheren van toegangsrechten en het delen van bestanden binnen een groep gebruikers.
+Het `chgrp`-commando wordt gebruikt om de groepsrechten van bestanden en mappen te wijzigen. Hiermee kunt u de groep toewijzen die toegang heeft tot een specifiek bestand of map.
 
 ## Gebruik
-De basis syntaxis van de `chgrp` opdracht is als volgt:
+De basis syntaxis van het `chgrp`-commando is als volgt:
 
-```bash
-chgrp [opties] [groep] [bestanden]
+```csh
+chgrp [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-R`: Wijzig de groep recursief voor alle bestanden en subdirectories binnen een opgegeven directory.
+- `-R`: Wijzig de groep van bestanden en submappen recursief.
 - `-v`: Toon een uitvoer van de wijzigingen die zijn aangebracht.
-- `--reference=BESTAND`: Stel de groep in op die van een ander bestand.
+- `-c`: Geef alleen de bestanden weer waarvan de groep daadwerkelijk is gewijzigd.
 
 ## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van de `chgrp` opdracht:
+Hier zijn enkele praktische voorbeelden van het gebruik van het `chgrp`-commando:
 
 1. Wijzig de groep van een enkel bestand:
-   ```bash
-   chgrp developers bestand.txt
+   ```csh
+   chgrp gebruikers bestand.txt
    ```
 
 2. Wijzig de groep van meerdere bestanden:
-   ```bash
-   chgrp developers bestand1.txt bestand2.txt bestand3.txt
+   ```csh
+   chgrp gebruikers bestand1.txt bestand2.txt
    ```
 
-3. Wijzig de groep van een directory en alle inhoud recursief:
-   ```bash
-   chgrp -R developers /pad/naar/directory
+3. Wijzig de groep van een map en al zijn inhoud recursief:
+   ```csh
+   chgrp -R gebruikers /pad/naar/map
    ```
 
-4. Gebruik de referentie van een ander bestand om de groep in te stellen:
-   ```bash
-   chgrp --reference=voorbeeld.txt bestand.txt
+4. Toon welke bestanden zijn gewijzigd:
+   ```csh
+   chgrp -v gebruikers bestand.txt
+   ```
+
+5. Geef alleen de bestanden weer waarvan de groep is gewijzigd:
+   ```csh
+   chgrp -c gebruikers bestand.txt
    ```
 
 ## Tips
-- Zorg ervoor dat je de juiste rechten hebt om de groep van een bestand te wijzigen; je moet meestal de eigenaar van het bestand zijn of root-toegang hebben.
-- Gebruik de `-v` optie om te bevestigen dat de wijzigingen correct zijn toegepast.
-- Controleer de huidige groepsinstellingen met de `ls -l` opdracht voordat je wijzigingen aanbrengt.
+- Zorg ervoor dat u de juiste machtigingen hebt om de groepsrechten van een bestand of map te wijzigen.
+- Gebruik de `-R` optie met voorzichtigheid, vooral in grote mappen, om onbedoelde wijzigingen te voorkomen.
+- Controleer altijd de huidige groepsinstellingen met het `ls -l`-commando voordat u wijzigingen aanbrengt.

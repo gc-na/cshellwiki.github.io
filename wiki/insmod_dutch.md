@@ -1,43 +1,44 @@
-# [Linux] Bash insmod gebruik: Laad een kernelmodule in de Linux-kernel
+# [Linux] C Shell (csh) insmod gebruik: Laad een kernelmodule in de Linux-kernel
 
 ## Overzicht
-De `insmod`-opdracht wordt gebruikt om een kernelmodule in de Linux-kernel te laden. Dit is een essentieel onderdeel van het uitbreiden van de functionaliteit van de kernel zonder deze opnieuw op te starten.
+De `insmod`-opdracht wordt gebruikt om een kernelmodule in de Linux-kernel te laden. Dit stelt gebruikers in staat om extra functionaliteit aan de kernel toe te voegen zonder de noodzaak om de hele kernel opnieuw te compileren.
 
 ## Gebruik
 De basis syntaxis van de `insmod`-opdracht is als volgt:
 
-```bash
+```csh
 insmod [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-f`: Dwingt het laden van de module, zelfs als deze al is geladen.
-- `-n`: Specificeert een alternatieve naam voor de module.
-- `-v`: Verhoogt de uitvoer om meer gedetailleerde informatie te geven tijdens het laden.
+- `-f`: Dwingt het laden van de module, zelfs als er al een versie van de module is geladen.
+- `-n`: Negeert het controleren van afhankelijkheden voor de module.
+- `-v`: Geeft gedetailleerde uitvoer over het laadproces van de module.
 
 ## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van `insmod`:
 
-1. **Een module laden zonder opties:**
-   ```bash
+1. **Een module laden zonder opties**:
+   ```csh
    insmod mijnmodule.ko
    ```
 
-2. **Een module laden met gedetailleerde uitvoer:**
-   ```bash
+2. **Een module laden met gedetailleerde uitvoer**:
+   ```csh
    insmod -v mijnmodule.ko
    ```
 
-3. **Een module forceren om te laden:**
-   ```bash
+3. **Een module forceren om te laden**:
+   ```csh
    insmod -f mijnmodule.ko
    ```
 
-4. **Een module laden met een alternatieve naam:**
-   ```bash
-   insmod -n alternatieve_naam mijnmodule.ko
+4. **Een module laden zonder afhankelijkheden te controleren**:
+   ```csh
+   insmod -n mijnmodule.ko
    ```
 
 ## Tips
 - Zorg ervoor dat je de juiste rechten hebt om modules te laden; vaak zijn root-rechten vereist.
-- Controleer altijd of de module correct is geladen met `lsmod` of `dmesg` voor eventuele foutmeldingen.
-- Gebruik `rmmod` om een geladen module veilig te verwijderen voordat je een nieuwe versie laadt.
+- Controleer altijd of de module correct is geladen met de `lsmod`-opdracht na het gebruik van `insmod`.
+- Wees voorzichtig met het forceren van modules, omdat dit kan leiden tot instabiliteit van het systeem.

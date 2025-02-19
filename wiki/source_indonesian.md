@@ -1,43 +1,37 @@
-# [Linux] Bash source Penggunaan: Menjalankan skrip di shell saat ini
+# [Sistem Operasi] C Shell (csh) source: Menjalankan skrip shell
 
 ## Overview
-Perintah `source` dalam Bash digunakan untuk menjalankan skrip shell dalam konteks shell saat ini. Ini berarti bahwa setiap perubahan yang dilakukan oleh skrip, seperti pengaturan variabel atau fungsi, akan tetap ada setelah skrip selesai dijalankan.
+Perintah `source` dalam C Shell (csh) digunakan untuk mengeksekusi skrip shell dalam konteks shell saat ini. Ini memungkinkan pengguna untuk menjalankan skrip tanpa membuat subshell baru, sehingga semua variabel dan fungsi yang didefinisikan dalam skrip tersebut akan tersedia di shell yang sedang aktif.
 
 ## Usage
-Sintaks dasar dari perintah `source` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `source`:
 
 ```
 source [options] [arguments]
 ```
 
 ## Common Options
-- `-h`, `--help`: Menampilkan bantuan mengenai penggunaan perintah `source`.
-- `-V`, `--version`: Menampilkan versi dari shell yang digunakan.
+- Tidak ada opsi khusus untuk perintah `source` dalam C Shell. Perintah ini biasanya digunakan dengan argumen berupa nama file skrip yang ingin dijalankan.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `source`:
 
-1. Menjalankan skrip bernama `myscript.sh`:
-   ```bash
-   source myscript.sh
+1. Menjalankan skrip shell sederhana:
+   ```csh
+   source myscript.csh
    ```
 
-2. Menggunakan titik (.) sebagai alternatif untuk `source`:
-   ```bash
-   . myscript.sh
+2. Menggunakan `source` untuk memuat variabel lingkungan dari file:
+   ```csh
+   source ~/.bash_profile
    ```
 
-3. Menjalankan skrip yang mengatur variabel lingkungan:
-   ```bash
-   source setenv.sh
-   ```
-
-4. Memuat fungsi dari skrip ke dalam shell saat ini:
-   ```bash
-   source functions.sh
+3. Memuat fungsi yang didefinisikan dalam skrip:
+   ```csh
+   source functions.csh
    ```
 
 ## Tips
-- Gunakan `source` untuk memuat skrip yang sering digunakan agar tidak perlu mengeksekusi ulang setiap kali.
-- Pastikan skrip yang akan dijalankan memiliki izin eksekusi yang sesuai.
-- Jika skrip mengubah variabel, pastikan untuk memeriksa nilai variabel tersebut setelah menjalankan `source` untuk memastikan perubahan diterapkan.
+- Pastikan skrip yang ingin dijalankan memiliki izin eksekusi yang benar.
+- Gunakan `source` untuk memuat konfigurasi atau pengaturan yang sering digunakan tanpa harus keluar dari shell.
+- Jika Anda ingin menguji perubahan dalam skrip tanpa memulai shell baru, `source` adalah cara yang efisien untuk melakukannya.

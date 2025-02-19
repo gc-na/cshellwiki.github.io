@@ -1,7 +1,7 @@
-# [English] Bash ftp Usage: Transfer files over a network
+# [Linux] C Shell (csh) ftp用法: Transfer files between systems
 
 ## Overview
-The `ftp` command is a standard network protocol used to transfer files between a client and a server over the Internet or an intranet. It allows users to upload and download files, manage directories, and perform various file operations on remote systems.
+The `ftp` command in C Shell (csh) is used to transfer files between a local computer and a remote server using the File Transfer Protocol (FTP). It allows users to upload and download files, manage directories, and perform various file operations on the remote server.
 
 ## Usage
 The basic syntax of the `ftp` command is as follows:
@@ -12,48 +12,45 @@ ftp [options] [arguments]
 
 ## Common Options
 - `-i`: Turns off interactive prompting during multiple file transfers.
-- `-n`: Restricts automatic login upon initial connection.
 - `-v`: Enables verbose mode, providing detailed information about the transfer process.
-- `-p`: Enables passive mode, which is useful for navigating firewalls.
+- `-n`: Prevents automatic login upon connection, allowing for manual login.
+- `-g`: Disables filename globbing, allowing for the use of special characters in filenames.
 
 ## Common Examples
+Here are some practical examples of using the `ftp` command:
 
-### Connecting to an FTP Server
-To connect to an FTP server, use the following command:
+1. **Connecting to an FTP Server:**
+   ```bash
+   ftp ftp.example.com
+   ```
 
-```bash
-ftp ftp.example.com
-```
+2. **Uploading a File to the Server:**
+   ```bash
+   put localfile.txt
+   ```
 
-### Uploading a File
-To upload a file from your local machine to the FTP server, use the `put` command after connecting:
+3. **Downloading a File from the Server:**
+   ```bash
+   get remotefile.txt
+   ```
 
-```bash
-put localfile.txt
-```
+4. **Listing Files in the Current Directory on the Server:**
+   ```bash
+   ls
+   ```
 
-### Downloading a File
-To download a file from the FTP server to your local machine, use the `get` command:
+5. **Changing Directory on the Server:**
+   ```bash
+   cd /path/to/directory
+   ```
 
-```bash
-get remotefile.txt
-```
-
-### Listing Files in a Directory
-To list files in the current directory on the FTP server, use the `ls` command:
-
-```bash
-ls
-```
-
-### Changing Directories
-To change the current directory on the FTP server, use the `cd` command:
-
-```bash
-cd /path/to/directory
-```
+6. **Downloading Multiple Files:**
+   ```bash
+   mget *.txt
+   ```
 
 ## Tips
-- Always use secure alternatives like `sftp` or `ftps` when transferring sensitive data to ensure encryption.
-- Use the `-i` option for batch file transfers to avoid prompts for each file.
-- Familiarize yourself with FTP commands such as `mget` and `mput` for transferring multiple files at once.
+- Always use the `-i` option when transferring multiple files to avoid being prompted for each file.
+- Use `mput` and `mget` for batch uploads and downloads, respectively, to save time.
+- Ensure you have the necessary permissions on the remote server to upload or download files.
+- Consider using secure alternatives like `sftp` for encrypted file transfers.

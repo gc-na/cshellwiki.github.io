@@ -1,49 +1,47 @@
-# [Linux] Bash date Kullanımı: Tarih ve saat bilgisi gösterimi
+# [Linux] C Shell (csh) date Kullanımı: Tarih ve saat bilgisi gösterir
 
 ## Overview
-`date` komutu, sistemin tarih ve saat bilgilerini görüntülemek için kullanılır. Bu komut, tarih ve saat formatlarını özelleştirmenize de olanak tanır.
+`date` komutu, sistemin tarih ve saat bilgilerini görüntülemek için kullanılır. Bu komut, kullanıcıların mevcut tarih ve saat bilgilerini kolayca görmelerini sağlar.
 
 ## Usage
-Temel sözdizimi aşağıdaki gibidir:
+Temel sözdizimi şu şekildedir:
 
-```bash
+```csh
 date [options] [arguments]
 ```
 
 ## Common Options
 - `+FORMAT`: Tarih ve saat çıktısını belirli bir formatta gösterir.
-- `-u`: UTC (Evrensel Koordinat Zamanı) zaman diliminde tarih ve saat gösterir.
-- `-d STRING`: Belirtilen tarih ve saat dizesini kullanarak tarih ve saat hesaplar.
+- `-u`: UTC (Evrensel Koordinat Zamanı) cinsinden tarih ve saat bilgisi gösterir.
+- `-d STRING`: Belirtilen STRING ifadesine göre tarih ve saat bilgisi gösterir.
 
 ## Common Examples
-Aşağıda `date` komutunun bazı yaygın kullanım örnekleri verilmiştir:
+Aşağıda `date` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
-### 1. Mevcut tarih ve saati görüntüleme
-```bash
-date
-```
+1. Mevcut tarih ve saati görüntüleme:
+   ```csh
+   date
+   ```
 
-### 2. Tarih ve saati belirli bir formatta gösterme
-```bash
-date "+%Y-%m-%d %H:%M:%S"
-```
+2. Tarih ve saati belirli bir formatta gösterme (örneğin, YYYY-AA-GG):
+   ```csh
+   date +%Y-%m-%d
+   ```
 
-### 3. UTC zaman diliminde tarih ve saat gösterme
-```bash
-date -u
-```
+3. UTC cinsinden tarih ve saat bilgisi gösterme:
+   ```csh
+   date -u
+   ```
 
-### 4. Belirli bir tarih ve saat dizesini kullanarak tarih hesaplama
-```bash
-date -d "next Friday"
-```
-
-### 5. Özel format kullanarak tarih ve saat gösterme
-```bash
-date "+%A, %d %B %Y"
-```
+4. Belirli bir tarih ve saat bilgisi gösterme (örneğin, "2023-12-25" tarihi için):
+   ```csh
+   date -d "2023-12-25"
+   ```
 
 ## Tips
-- Tarih ve saat formatlarını özelleştirirken, `%` işaretini kullanarak farklı bileşenleri belirtebilirsiniz.
-- `date` komutunu bir betik içinde kullanarak otomatik tarih ve saat bilgisi alabilirsiniz.
-- Tarih ve saat bilgilerini dosya isimlerinde kullanırken, boşluk ve özel karakterlerden kaçınmak için uygun formatları tercih edin.
+- Tarih ve saat formatını özelleştirmek için `+FORMAT` seçeneğini kullanarak istediğiniz biçimi elde edebilirsiniz.
+- UTC zamanını kullanmak, farklı zaman dilimlerinde çalışan sistemler için faydalıdır.
+- Tarih ve saat bilgilerini betiklerde kullanmak için `date` komutunu değişkenlere atayabilirsiniz. Örneğin:
+  ```csh
+  set current_date = `date +%Y-%m-%d`
+  ```

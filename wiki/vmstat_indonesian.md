@@ -1,51 +1,53 @@
-# [Linux] Bash vmstat Penggunaan: Memantau Statistik Sistem
+# [Sistem Operasi] C Shell (csh) vmstat: Memantau statistik sistem
 
 ## Overview
-Perintah `vmstat` digunakan untuk memantau statistik sistem, termasuk penggunaan memori, proses, dan aktivitas I/O. Dengan menggunakan `vmstat`, pengguna dapat memperoleh informasi penting tentang kinerja sistem secara real-time.
+Perintah `vmstat` digunakan untuk memantau statistik sistem, termasuk penggunaan memori, proses, dan aktivitas sistem secara keseluruhan. Ini memberikan informasi yang berguna untuk menganalisis kinerja sistem.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `vmstat`:
 
-```bash
+```
 vmstat [options] [arguments]
 ```
 
 ## Common Options
-- `-a`: Menampilkan statistik memori aktif dan tidak aktif.
-- `-m`: Menampilkan statistik penggunaan memori untuk cache dan buffer.
-- `-s`: Menampilkan statistik sistem dalam format ringkas.
-- `-d`: Menampilkan statistik disk.
-- `interval`: Menentukan interval waktu (dalam detik) untuk pembaruan statistik.
+- `-a`: Menampilkan informasi tentang memori aktif dan tidak aktif.
+- `-n`: Menonaktifkan pengulangan output.
+- `-s`: Menampilkan statistik memori secara keseluruhan.
+- `-m`: Menampilkan informasi tentang memori yang digunakan oleh cache.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `vmstat`:
 
 1. Menampilkan statistik sistem secara default:
-   ```bash
+   ```
    vmstat
    ```
 
 2. Menampilkan statistik setiap 2 detik:
-   ```bash
+   ```
    vmstat 2
    ```
 
-3. Menampilkan statistik memori aktif dan tidak aktif:
-   ```bash
-   vmstat -a
+3. Menampilkan statistik memori dengan opsi `-s`:
    ```
-
-4. Menampilkan statistik disk:
-   ```bash
-   vmstat -d
-   ```
-
-5. Menampilkan statistik sistem dalam format ringkas:
-   ```bash
    vmstat -s
    ```
 
+4. Menampilkan informasi memori aktif dan tidak aktif:
+   ```
+   vmstat -a
+   ```
+
+5. Menampilkan statistik dengan opsi `-m` untuk cache:
+   ```
+   vmstat -m
+   ```
+
 ## Tips
-- Gunakan `vmstat` bersama dengan perintah lain seperti `top` atau `htop` untuk mendapatkan gambaran yang lebih lengkap tentang kinerja sistem.
-- Perhatikan nilai `si` (swap in) dan `so` (swap out) untuk memahami apakah sistem Anda menggunakan swap, yang dapat mempengaruhi kinerja.
-- Cobalah untuk menjalankan `vmstat` dalam interval yang berbeda untuk melihat bagaimana statistik berubah seiring waktu, terutama saat menjalankan aplikasi berat.
+- Gunakan `vmstat` secara berkala untuk memantau kinerja sistem dan mendeteksi masalah lebih awal.
+- Kombinasikan `vmstat` dengan perintah lain seperti `top` untuk analisis yang lebih mendalam.
+- Simpan output `vmstat` ke dalam file untuk analisis lebih lanjut dengan menggunakan redirection, misalnya:
+  ```
+  vmstat 2 > vmstat_output.txt
+  ```

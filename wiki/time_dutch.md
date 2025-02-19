@@ -1,48 +1,47 @@
-# [Linux] Bash tijdsopdracht: Meet de uitvoeringstijd van een commando
+# [Linux] C Shell (csh) tijd: Meet de uitvoeringstijd van commando's
 
 ## Overzicht
-De `time` opdracht in Bash wordt gebruikt om de tijd te meten die een bepaalde opdracht of script nodig heeft om uit te voeren. Het geeft inzicht in de systeembelasting en kan helpen bij het optimaliseren van scripts en commando's.
+De `time`-opdracht in C Shell (csh) wordt gebruikt om de tijd te meten die een bepaald commando nodig heeft om uit te voeren. Dit is nuttig voor het optimaliseren van scripts en het analyseren van de prestaties van verschillende commando's.
 
 ## Gebruik
-De basis syntaxis van de `time` opdracht is als volgt:
+De basis syntaxis van de `time`-opdracht is als volgt:
 
-```bash
+```csh
 time [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- `-p`: Toon de tijd in een eenvoudig formaat.
-- `-o [bestand]`: Schrijf de uitvoer naar het opgegeven bestand.
-- `-v`: Geef gedetailleerde informatie over de uitvoeringstijd.
+## Veelvoorkomende Opties
+- `-p`: Geeft de tijd weer in een eenvoudig formaat.
+- `-o bestand`: Schrijft de tijdsresultaten naar een opgegeven bestand.
+- `-v`: Geeft gedetailleerde informatie over de tijdsmeting.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
 
-1. **Basis gebruik van time**
-   ```bash
-   time ls -l
+1. **Basisgebruik**:
+   Meet de tijd van een eenvoudig commando, zoals `ls`:
+   ```csh
+   time ls
    ```
 
-2. **Tijd meten van een script**
-   ```bash
-   time ./mijn_script.sh
-   ```
-
-3. **Tijd in eenvoudig formaat**
-   ```bash
+2. **Tijd in eenvoudig formaat**:
+   Gebruik de `-p` optie om de tijd in een eenvoudig formaat weer te geven:
+   ```csh
    time -p sleep 2
    ```
 
-4. **Tijd naar een bestand schrijven**
-   ```bash
-   time -o tijdsresultaten.txt sleep 3
+3. **Resultaten naar een bestand schrijven**:
+   Schrijf de tijdsresultaten naar een bestand genaamd `tijd.txt`:
+   ```csh
+   time -o tijd.txt sleep 3
    ```
 
-5. **Gedetailleerde tijdsmeting**
-   ```bash
-   time -v find / -name "bestandsnaam"
+4. **Gedetailleerde tijdsmeting**:
+   Gebruik de `-v` optie voor een gedetailleerd overzicht van de uitvoeringstijd:
+   ```csh
+   time -v find . -name "*.txt"
    ```
 
 ## Tips
-- Gebruik `time` voor het optimaliseren van scripts door te analyseren welke delen de meeste tijd kosten.
-- Combineer `time` met andere commando's om de prestaties van complexe opdrachten te meten.
-- Vergeet niet dat de gemeten tijd ook kan worden beïnvloed door andere processen die op het systeem draaien.
+- Gebruik `time` in combinatie met andere commando's om de prestaties van scripts te analyseren.
+- Vergeet niet dat de gemeten tijd kan variëren afhankelijk van systeembelasting en andere factoren.
+- Experimenteer met verschillende opties om de output te krijgen die het beste bij jouw behoeften past.

@@ -1,50 +1,50 @@
-# [Linux] Bash sftp gebruik: Bestanden veilig overdragen
+# [Linux] C Shell (csh) sftp gebruik: Bestanden veilig overdragen
 
 ## Overzicht
-De `sftp` (Secure File Transfer Protocol) opdracht wordt gebruikt om bestanden veilig over te dragen tussen een lokale en een externe computer via SSH (Secure Shell). Het biedt een veilige manier om bestanden te verzenden en te ontvangen, met encryptie voor de gegevensoverdracht.
+De `sftp` (Secure File Transfer Protocol) opdracht wordt gebruikt om bestanden veilig over te dragen tussen computers via een netwerk. Het biedt een veilige manier om bestanden te uploaden en downloaden door gebruik te maken van SSH (Secure Shell).
 
 ## Gebruik
 De basis syntaxis van de `sftp` opdracht is als volgt:
 
-```bash
-sftp [opties] [gebruikersnaam@]host
+```csh
+sftp [opties] [gebruikersnaam@host]
 ```
 
 ## Veelvoorkomende Opties
-- `-P port`: Specificeert de poort die gebruikt moet worden voor de verbinding.
-- `-i identity_file`: Geeft het pad op naar een specifieke privésleutel voor authenticatie.
-- `-o option`: Stelt specifieke SSH opties in, zoals `-o StrictHostKeyChecking=no`.
+- `-b batchfile`: Voer opdrachten uit vanuit een batchbestand.
+- `-C`: Schakel compressie in voor de overdracht.
+- `-P port`: Specificeer een alternatieve poort voor de verbinding.
+- `-o option`: Specificeer een extra SSH-optie.
 
 ## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van `sftp`:
+Hier zijn enkele praktische voorbeelden van het gebruik van de `sftp` opdracht:
 
-1. Verbinden met een externe server:
-   ```bash
+1. Verbinden met een remote server:
+   ```csh
    sftp gebruiker@voorbeeld.com
    ```
 
-2. Bestanden uploaden naar de server:
-   ```bash
+2. Uploaden van een bestand naar de server:
+   ```csh
    put lokaal_bestand.txt
    ```
 
-3. Bestanden downloaden van de server:
-   ```bash
-   get server_bestand.txt
+3. Downloaden van een bestand van de server:
+   ```csh
+   get remote_bestand.txt
    ```
 
-4. Een hele map uploaden:
-   ```bash
-   put -r lokale_map/
+4. Uploaden van een hele directory:
+   ```csh
+   put -r lokale_map
    ```
 
-5. Lijst met bestanden op de server bekijken:
-   ```bash
-   ls
+5. Downloaden van een hele directory:
+   ```csh
+   get -r remote_map
    ```
 
 ## Tips
-- Zorg ervoor dat je SSH-toegang hebt tot de server voordat je `sftp` gebruikt.
-- Gebruik de `-P` optie als de server een andere poort dan de standaardpoort 22 gebruikt.
-- Maak gebruik van de `-i` optie om je verbinding te beveiligen met een privésleutel.
-- Controleer altijd de integriteit van bestanden na het overdragen, vooral bij grote bestanden.
+- Zorg ervoor dat je de juiste gebruikersnaam en hostnaam gebruikt om verbinding te maken.
+- Gebruik de `-C` optie voor snellere overdrachten, vooral bij grote bestanden.
+- Controleer altijd de bestandsrechten na het uploaden of downloaden van bestanden om ervoor te zorgen dat ze correct zijn ingesteld.

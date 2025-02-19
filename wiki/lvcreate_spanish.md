@@ -1,47 +1,46 @@
-# [Linux] Bash lvcreate Uso: Crear volúmenes lógicos en LVM
+# [Linux] C Shell (csh) lvcreate Uso: Crear volúmenes lógicos en sistemas de archivos
 
 ## Overview
-El comando `lvcreate` se utiliza en Linux para crear volúmenes lógicos dentro de un grupo de volúmenes en el sistema de gestión de volúmenes lógicos (LVM). Esto permite la gestión eficiente del almacenamiento, facilitando la creación, eliminación y redimensionamiento de volúmenes.
+El comando `lvcreate` se utiliza para crear volúmenes lógicos en sistemas de archivos que utilizan LVM (Logical Volume Manager). Permite gestionar el almacenamiento de manera más flexible, facilitando la creación, eliminación y redimensionamiento de volúmenes lógicos.
 
 ## Usage
-La sintaxis básica del comando es la siguiente:
+La sintaxis básica del comando `lvcreate` es la siguiente:
 
 ```bash
 lvcreate [opciones] [argumentos]
 ```
 
 ## Common Options
-- `-n, --name <nombre>`: Especifica el nombre del volumen lógico que se va a crear.
-- `-L, --size <tamaño>`: Define el tamaño del volumen lógico a crear.
-- `-l, --extents <número>`: Especifica el número de extensiones a utilizar para el volumen lógico.
-- `-C, --mirrored`: Crea un volumen lógico espejo.
-- `-Z, --zero n`: Controla si se debe inicializar el volumen lógico con ceros.
+- `-n` : Especifica el nombre del volumen lógico que se va a crear.
+- `-L` : Define el tamaño del volumen lógico.
+- `-l` : Permite especificar el tamaño en unidades de extents.
+- `-m` : Establece el número de copias del volumen lógico.
+- `-C` : Controla la creación de volúmenes lógicos en modo "copy-on-write".
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso de `lvcreate`:
 
-1. **Crear un volumen lógico de 10 GB:**
+1. **Crear un volumen lógico de 10GB:**
    ```bash
    lvcreate -L 10G -n mi_volumen vg01
    ```
 
-2. **Crear un volumen lógico de 5 extensiones:**
+2. **Crear un volumen lógico con un nombre específico y tamaño en extents:**
    ```bash
-   lvcreate -l 5 -n volumen_extendido vg01
+   lvcreate -l 100 -n volumen_extents vg01
    ```
 
-3. **Crear un volumen lógico espejo:**
+3. **Crear un volumen lógico con copias:**
    ```bash
-   lvcreate -m 1 -n volumen_espejo -L 20G vg01
+   lvcreate -m 1 -L 5G -n volumen_copia vg01
    ```
 
-4. **Crear un volumen lógico y formatearlo con ext4:**
+4. **Crear un volumen lógico en modo "copy-on-write":**
    ```bash
-   lvcreate -L 15G -n volumen_formateado vg01
-   mkfs.ext4 /dev/vg01/volumen_formateado
+   lvcreate -C y -L 15G -n volumen_cow vg01
    ```
 
 ## Tips
-- Asegúrate de tener suficiente espacio libre en el grupo de volúmenes antes de crear un nuevo volumen lógico.
-- Utiliza nombres descriptivos para los volúmenes lógicos para facilitar su identificación en el futuro.
-- Considera el uso de volúmenes lógicos espejo para mejorar la redundancia y la disponibilidad de los datos.
+- Asegúrate de tener suficiente espacio en el grupo de volúmenes antes de crear un nuevo volumen lógico.
+- Utiliza nombres descriptivos para los volúmenes lógicos para facilitar su identificación y gestión.
+- Considera crear copias de seguridad de los datos importantes antes de realizar cambios en los volúmenes lógicos.

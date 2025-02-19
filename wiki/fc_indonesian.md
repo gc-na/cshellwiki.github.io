@@ -1,50 +1,49 @@
-# [Linux] Bash fc Penggunaan: Mengedit dan menjalankan perintah sebelumnya
+# [Sistem Operasi] C Shell (csh) fc Penggunaan: Mengedit dan menjalankan perintah sebelumnya
 
 ## Overview
-Perintah `fc` dalam Bash digunakan untuk mengedit dan menjalankan kembali perintah-perintah yang telah dieksekusi sebelumnya. Ini sangat berguna ketika Anda ingin memperbaiki kesalahan atau mengubah perintah yang telah Anda jalankan tanpa harus mengetik ulang semuanya.
+Perintah `fc` dalam C Shell (csh) digunakan untuk mengedit dan menjalankan kembali perintah yang telah dieksekusi sebelumnya. Dengan `fc`, pengguna dapat dengan mudah memperbaiki kesalahan atau mengubah perintah tanpa harus mengetik ulang dari awal.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `fc`:
 
-```
+```csh
 fc [options] [arguments]
 ```
 
 ## Common Options
 - `-l`: Menampilkan daftar perintah yang telah dieksekusi sebelumnya.
-- `-r`: Menjalankan perintah dalam urutan terbalik.
-- `-s`: Menjalankan perintah terakhir tanpa membuka editor.
-- `-n`: Menampilkan nomor perintah saat menggunakan opsi `-l`.
+- `-e`: Menentukan editor yang akan digunakan untuk mengedit perintah.
+- `-n`: Menjalankan perintah tanpa menampilkan nomor perintah.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan perintah `fc`:
+Berikut adalah beberapa contoh penggunaan `fc`:
 
 1. **Menampilkan daftar perintah sebelumnya:**
-   ```bash
+   ```csh
    fc -l
    ```
 
-2. **Mengedit perintah terakhir yang dijalankan:**
-   ```bash
+2. **Mengedit perintah terakhir menggunakan editor default:**
+   ```csh
    fc
    ```
 
-3. **Menjalankan perintah terakhir tanpa mengedit:**
-   ```bash
-   fc -s
+3. **Mengedit perintah tertentu (misalnya perintah ke-5):**
+   ```csh
+   fc 5
    ```
 
-4. **Menampilkan daftar perintah sebelumnya dengan nomor:**
-   ```bash
-   fc -ln -5
+4. **Menjalankan perintah terakhir tanpa mengedit:**
+   ```csh
+   fc -n -e -
    ```
 
-5. **Mengedit perintah tertentu dari daftar:**
-   ```bash
-   fc 10
+5. **Mengedit perintah terakhir dengan editor tertentu (misalnya `nano`):**
+   ```csh
+   fc -e nano
    ```
 
 ## Tips
-- Gunakan `fc` secara rutin untuk memperbaiki kesalahan kecil dalam perintah yang baru saja Anda jalankan.
-- Anda dapat menggabungkan `fc` dengan editor teks favorit Anda dengan mengatur variabel `EDITOR`.
-- Cobalah menggunakan opsi `-r` untuk menjalankan perintah dalam urutan terbalik jika Anda sering menggunakan perintah yang sama.
+- Selalu gunakan `fc -l` untuk melihat perintah yang telah dieksekusi sebelumnya sebelum mengedit.
+- Jika Anda sering melakukan kesalahan ketik, pertimbangkan untuk menggunakan `fc` untuk memperbaikinya daripada mengetik ulang.
+- Pilih editor yang Anda kuasai untuk mengedit perintah, agar lebih efisien saat melakukan perubahan.

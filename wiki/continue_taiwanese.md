@@ -1,55 +1,75 @@
-# [Linux] Bash continue 用法: 繼續執行迴圈
+# [台灣] C Shell (csh) continue 使用法: 繼續執行迴圈
 
 ## Overview
-`continue` 命令用於在迴圈中跳過當前的迭代，並直接進入下一次迭代。這在需要根據特定條件跳過某些步驟時非常有用。
+`continue` 命令用於在 C Shell 的迴圈中跳過當前的迭代，並直接進入下一次迭代。這對於在滿足特定條件時跳過某些操作非常有用。
 
 ## Usage
 基本語法如下：
-```bash
-continue [n]
+```csh
+continue [options]
 ```
-這裡的 `n` 是可選的，表示跳過的迭代次數。
 
 ## Common Options
-- `n`: 指定要跳過的迭代次數。如果不指定，則默認為 1，表示跳過當前迭代。
+`continue` 命令通常不需要額外的選項，但可以在某些情況下與其他命令結合使用。主要用法是直接在迴圈中使用。
 
 ## Common Examples
-1. **基本用法**：在 `for` 迴圈中跳過特定的數字。
-   ```bash
-   for i in {1..5}; do
-       if [ $i -eq 3 ]; then
-           continue
-       fi
-       echo $i
-   done
-   ```
-   這段程式碼將輸出 1, 2, 4, 5，跳過了 3。
 
-2. **在 `while` 迴圈中使用**：
-   ```bash
-   count=0
-   while [ $count -lt 5 ]; do
-       count=$((count + 1))
-       if [ $count -eq 2 ]; then
-           continue
-       fi
-       echo $count
-   done
-   ```
-   這段程式碼將輸出 1, 3, 4, 5，跳過了 2。
+### 範例 1: 跳過偶數
+在這個範例中，我們使用 `continue` 跳過所有偶數，僅顯示奇數。
+```csh
+foreach i (1 2 3 4 5)
+    if ( $i % 2 == 0 ) then
+        continue
+    endif
+    echo $i
+end
+```
+輸出：
+```
+1
+3
+5
+```
 
-3. **使用 `n` 參數跳過多次迭代**：
-   ```bash
-   for i in {1..10}; do
-       if [ $i -lt 5 ]; then
-           continue 2
-       fi
-       echo $i
-   done
-   ```
-   這段程式碼將輸出 5, 6, 7, 8, 9, 10，跳過了 1 到 4。
+### 範例 2: 跳過特定條件
+這個範例展示如何在迴圈中跳過特定條件的項目。
+```csh
+set items = (apple banana cherry date)
+foreach item ($items)
+    if ( $item == "banana" ) then
+        continue
+    endif
+    echo $item
+end
+```
+輸出：
+```
+apple
+cherry
+date
+```
+
+### 範例 3: 使用 `continue` 在 `while` 迴圈中
+在 `while` 迴圈中使用 `continue` 跳過不需要的迭代。
+```csh
+set count = 0
+while ( $count < 5 )
+    @ count++
+    if ( $count == 3 ) then
+        continue
+    endif
+    echo $count
+end
+```
+輸出：
+```
+1
+2
+4
+5
+```
 
 ## Tips
-- 使用 `continue` 時，確保條件判斷正確，以避免無意中跳過重要的迭代。
-- 在複雜的迴圈中，考慮使用註解來提高可讀性，讓其他人更容易理解你的邏輯。
-- 測試你的迴圈邏輯，確保 `continue` 的使用不會導致無窮迴圈或錯誤的結果。
+- 確保在使用 `continue` 時，迴圈的邏輯清晰，以避免無限迴圈。
+- 使用 `continue` 可以提高程式碼的可讀性，讓跳過特定條件的邏輯更加明確。
+- 在複雜的迴圈中，適當地使用 `continue` 可以減少不必要的計算，提升效率。

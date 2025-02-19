@@ -1,53 +1,52 @@
-# [Linux] Bash tcpdump Uso: Captura de paquetes de red
+# [Linux] C Shell (csh) tcpdump Uso: Captura y análisis de paquetes de red
 
 ## Overview
-El comando `tcpdump` es una herramienta de línea de comandos utilizada para capturar y analizar el tráfico de red que pasa a través de una interfaz de red en un sistema. Permite a los usuarios ver los paquetes que se envían y reciben, lo que es útil para la solución de problemas de red y el análisis de seguridad.
+El comando `tcpdump` es una herramienta de línea de comandos que permite capturar y analizar paquetes de datos que se transmiten a través de una red. Es útil para la depuración de problemas de red y para la monitorización del tráfico.
 
 ## Usage
 La sintaxis básica del comando `tcpdump` es la siguiente:
 
-```bash
-tcpdump [opciones] [argumentos]
+```csh
+tcpdump [options] [arguments]
 ```
 
 ## Common Options
-- `-i <interfaz>`: Especifica la interfaz de red a utilizar (por ejemplo, `eth0`).
-- `-n`: No resuelve nombres de host, mostrando direcciones IP en su lugar.
-- `-v`: Muestra información más detallada sobre los paquetes.
-- `-c <número>`: Captura solo un número específico de paquetes.
-- `-w <archivo>`: Guarda la salida de la captura en un archivo en lugar de mostrarla en la pantalla.
-- `-r <archivo>`: Lee paquetes desde un archivo en lugar de una interfaz de red.
+- `-i <interface>`: Especifica la interfaz de red a utilizar (por ejemplo, `eth0`).
+- `-n`: No resuelve direcciones IP a nombres de host, lo que acelera la salida.
+- `-c <count>`: Captura un número específico de paquetes y luego se detiene.
+- `-w <file>`: Guarda la captura en un archivo para su análisis posterior.
+- `-r <file>`: Lee paquetes desde un archivo en lugar de desde la red.
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso de `tcpdump`:
 
 1. Capturar paquetes en la interfaz `eth0`:
-   ```bash
+   ```csh
    tcpdump -i eth0
    ```
 
-2. Capturar solo 10 paquetes y mostrar información detallada:
-   ```bash
-   tcpdump -i eth0 -c 10 -v
+2. Capturar solo 10 paquetes:
+   ```csh
+   tcpdump -c 10 -i eth0
    ```
 
-3. Guardar la captura de paquetes en un archivo llamado `captura.pcap`:
-   ```bash
+3. Guardar la captura en un archivo llamado `captura.pcap`:
+   ```csh
    tcpdump -i eth0 -w captura.pcap
    ```
 
-4. Leer paquetes desde un archivo de captura:
-   ```bash
+4. Leer paquetes desde un archivo:
+   ```csh
    tcpdump -r captura.pcap
    ```
 
-5. Capturar tráfico HTTP (puerto 80):
-   ```bash
+5. Capturar solo paquetes HTTP (puerto 80):
+   ```csh
    tcpdump -i eth0 port 80
    ```
 
 ## Tips
-- Asegúrate de tener permisos adecuados (puede requerir `sudo`) para capturar paquetes en la interfaz de red.
-- Utiliza el flag `-n` para evitar la resolución de nombres y acelerar la captura.
-- Filtra el tráfico por dirección IP o puerto para enfocarte en el tráfico relevante.
-- Guarda las capturas en un archivo para un análisis posterior, especialmente si estás trabajando con un gran volumen de tráfico.
+- Asegúrate de tener los permisos adecuados para capturar paquetes en la interfaz de red.
+- Utiliza la opción `-n` para evitar la resolución de nombres y mejorar el rendimiento.
+- Guarda las capturas en un archivo si planeas analizarlas más tarde con herramientas como Wireshark.
+- Filtra el tráfico por protocolo o puerto para enfocarte en el tráfico relevante.

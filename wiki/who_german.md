@@ -1,7 +1,7 @@
-# [Linux] Bash who Verwendung: Zeigt angemeldete Benutzer an
+# [Linux] C Shell (csh) who Verwendung: Zeigt angemeldete Benutzer an
 
 ## Übersicht
-Der Befehl `who` wird verwendet, um eine Liste der Benutzer anzuzeigen, die derzeit am System angemeldet sind. Er liefert Informationen wie den Benutzernamen, das Terminal, von dem aus der Benutzer angemeldet ist, sowie das Datum und die Uhrzeit der Anmeldung.
+Der Befehl `who` zeigt eine Liste der Benutzer an, die derzeit am System angemeldet sind. Diese Informationen umfassen den Benutzernamen, das Terminal, von dem aus sie angemeldet sind, sowie das Datum und die Uhrzeit ihrer Anmeldung.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
@@ -11,37 +11,40 @@ who [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-a`: Zeigt alle verfügbaren Informationen an, einschließlich der Benutzer, die sich nicht mehr angemeldet haben.
+- `-a`: Zeigt alle verfügbaren Informationen über die Benutzer an.
 - `-b`: Gibt die letzte Systemstartzeit aus.
 - `-q`: Zeigt nur die Benutzernamen und die Anzahl der angemeldeten Benutzer an.
-- `--help`: Zeigt eine Hilfeübersicht für den Befehl an.
+- `-r`: Zeigt die aktuelle Runlevel-Nummer des Systems an.
 
 ## Häufige Beispiele
+Hier sind einige praktische Beispiele für die Verwendung des `who`-Befehls:
 
-1. **Einfacher Aufruf von who:**
-   ```bash
+1. **Einfaches Anzeigen der angemeldeten Benutzer:**
+   ```csh
    who
    ```
 
 2. **Anzeigen aller verfügbaren Informationen:**
-   ```bash
+   ```csh
    who -a
    ```
 
-3. **Letzte Systemstartzeit anzeigen:**
-   ```bash
+3. **Anzeigen der letzten Systemstartzeit:**
+   ```csh
    who -b
    ```
 
-4. **Nur Benutzernamen und Anzahl der angemeldeten Benutzer anzeigen:**
-   ```bash
+4. **Anzeigen der Anzahl der angemeldeten Benutzer:**
+   ```csh
    who -q
    ```
 
+5. **Anzeigen der aktuellen Runlevel-Nummer:**
+   ```csh
+   who -r
+   ```
+
 ## Tipps
-- Verwenden Sie `who -b`, um schnell zu überprüfen, wann das System zuletzt neu gestartet wurde.
-- Kombinieren Sie `who` mit anderen Befehlen wie `grep`, um gezielt nach bestimmten Benutzern zu suchen. Beispiel:
-  ```bash
-  who | grep username
-  ```
-- Nutzen Sie `who --help`, um eine vollständige Liste der verfügbaren Optionen und deren Erklärungen zu erhalten.
+- Verwenden Sie `who -a`, um umfassende Informationen zu erhalten, die Ihnen helfen können, das System besser zu verstehen.
+- Kombinieren Sie `who` mit anderen Befehlen wie `grep`, um spezifische Benutzer zu finden.
+- Nutzen Sie `who -q`, wenn Sie schnell die Anzahl der Benutzer überprüfen möchten, ohne eine vollständige Liste anzuzeigen.

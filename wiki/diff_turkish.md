@@ -1,57 +1,50 @@
-# [Linux] Bash diff Kullanımı: İki dosya arasındaki farkları karşılaştırma
+# [Linux] C Shell (csh) diff Kullanımı: Dosya farklılıklarını karşılaştırma
 
 ## Genel Bakış
-`diff` komutu, iki dosya arasındaki farklılıkları karşılaştırmak için kullanılır. Bu komut, metin dosyalarını karşılaştırarak, hangi satırların eklendiğini, silindiğini veya değiştirildiğini gösterir. Yazılım geliştirme süreçlerinde, özellikle sürüm kontrol sistemlerinde sıkça kullanılır.
+`diff` komutu, iki dosya arasındaki farklılıkları karşılaştırmak için kullanılır. Bu komut, hangi satırların eklendiğini, silindiğini veya değiştirildiğini gösterir ve genellikle metin dosyaları üzerinde çalışırken oldukça faydalıdır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-
-```bash
+```
 diff [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-u`: Birleştirilmiş formatta çıktı verir, bu format daha okunabilir bir görünüm sunar.
-- `-i`: Büyük/küçük harf duyarlılığını göz ardı eder.
-- `-w`: Boşlukları göz ardı eder, sadece anlamlı farklılıkları gösterir.
-- `-r`: Dizindeki alt dizinlerdeki dosyaları da karşılaştırır.
+- `-u`: Birleştirilmiş biçimde çıktı verir.
+- `-c`: Bağlam biçiminde çıktı verir.
+- `-i`: Büyük/küçük harf duyarsız karşılaştırma yapar.
+- `-w`: Boşlukları dikkate almaz.
 
 ## Yaygın Örnekler
+Aşağıda `diff` komutunun bazı pratik örnekleri bulunmaktadır:
 
-### İki dosya arasındaki farkları gösterme
-```bash
+### Örnek 1: İki dosya arasındaki farklılıkları gösterme
+```csh
 diff dosya1.txt dosya2.txt
 ```
 
-### Birleştirilmiş formatta farkları gösterme
-```bash
+### Örnek 2: Birleştirilmiş biçimde çıktı alma
+```csh
 diff -u dosya1.txt dosya2.txt
 ```
 
-### Büyük/küçük harf duyarlılığını göz ardı etme
-```bash
+### Örnek 3: Büyük/küçük harf duyarsız karşılaştırma
+```csh
 diff -i dosya1.txt dosya2.txt
 ```
 
-### Boşlukları göz ardı ederek karşılaştırma
-```bash
+### Örnek 4: Boşlukları dikkate almadan karşılaştırma
+```csh
 diff -w dosya1.txt dosya2.txt
 ```
 
-### Alt dizinlerdeki dosyaları karşılaştırma
-```bash
-diff -r dizin1/ dizin2/
-```
-
 ## İpuçları
-- `diff` çıktısını daha iyi anlamak için `-u` seçeneğini kullanarak birleştirilmiş formatta görüntüleyin.
+- `diff` çıktısını daha iyi anlamak için `-u` veya `-c` seçeneklerini kullanarak daha okunabilir bir format elde edebilirsiniz.
 - Farklılıkları daha iyi analiz etmek için `diff` çıktısını bir dosyaya yönlendirebilirsiniz:
-  ```bash
+  ```csh
   diff dosya1.txt dosya2.txt > farklar.txt
   ```
-- `diff` komutunu sık kullanılan dosya karşılaştırmalarında bir alias olarak tanımlamak, kullanımınızı kolaylaştırabilir. Örneğin:
-  ```bash
+- `diff` komutunu sıkça kullandığınız dosyalar için bir alias tanımlamak, işlemlerinizi hızlandırabilir. Örneğin:
+  ```csh
   alias d='diff -u'
   ```
-
-Bu bilgilerle, `diff` komutunu etkili bir şekilde kullanarak dosyalar arasındaki farklılıkları kolayca tespit edebilirsiniz.

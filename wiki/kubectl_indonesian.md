@@ -1,54 +1,53 @@
-# [Linux] Bash kubectl Penggunaan: Mengelola Kubernetes
+# [Sistem Operasi] C Shell (csh) kubectl Penggunaan: Mengelola Kubernetes
 
 ## Overview
-Perintah `kubectl` adalah alat baris perintah yang digunakan untuk berinteraksi dengan kluster Kubernetes. Dengan `kubectl`, pengguna dapat mengelola aplikasi yang berjalan di dalam kluster, memeriksa status sumber daya, dan melakukan berbagai operasi administrasi.
+Perintah `kubectl` adalah alat baris perintah yang digunakan untuk mengelola kluster Kubernetes. Dengan `kubectl`, pengguna dapat melakukan berbagai operasi seperti mengatur aplikasi, memantau status, dan mengelola sumber daya dalam kluster Kubernetes.
 
 ## Usage
-Sintaks dasar dari perintah `kubectl` adalah sebagai berikut:
+Sintaks dasar untuk menggunakan `kubectl` adalah sebagai berikut:
 
-```
+```bash
 kubectl [options] [arguments]
 ```
 
 ## Common Options
 Berikut adalah beberapa opsi umum yang sering digunakan dengan `kubectl`:
 
-- `get`: Mengambil informasi tentang sumber daya tertentu.
-- `create`: Membuat sumber daya baru di kluster.
-- `delete`: Menghapus sumber daya yang ada.
-- `apply`: Menerapkan perubahan konfigurasi pada sumber daya.
-- `describe`: Menampilkan detail lengkap tentang sumber daya tertentu.
+- `get`: Mengambil dan menampilkan informasi tentang sumber daya.
+- `apply`: Menerapkan perubahan konfigurasi ke sumber daya.
+- `delete`: Menghapus sumber daya dari kluster.
+- `describe`: Menampilkan informasi rinci tentang sumber daya tertentu.
+- `logs`: Menampilkan log dari pod tertentu.
 
 ## Common Examples
-Berikut adalah beberapa contoh praktis penggunaan `kubectl`:
+Berikut adalah beberapa contoh penggunaan `kubectl`:
 
-1. **Mengambil daftar pod yang berjalan:**
+1. **Mengambil daftar pod dalam namespace default:**
    ```bash
    kubectl get pods
    ```
 
-2. **Membuat sebuah pod dari file YAML:**
+2. **Menerapkan konfigurasi dari file YAML:**
    ```bash
-   kubectl create -f pod.yaml
+   kubectl apply -f deployment.yaml
    ```
 
-3. **Menghapus sebuah deployment:**
+3. **Menghapus sebuah pod:**
    ```bash
-   kubectl delete deployment nama-deployment
+   kubectl delete pod nama-pod
    ```
 
-4. **Menerapkan perubahan dari file konfigurasi:**
-   ```bash
-   kubectl apply -f config.yaml
-   ```
-
-5. **Menampilkan detail tentang sebuah service:**
+4. **Menampilkan informasi rinci tentang sebuah service:**
    ```bash
    kubectl describe service nama-service
    ```
 
+5. **Melihat log dari pod tertentu:**
+   ```bash
+   kubectl logs nama-pod
+   ```
+
 ## Tips
 - Selalu gunakan opsi `--namespace` jika Anda bekerja dengan beberapa namespace untuk menghindari kebingungan.
-- Gunakan `kubectl get all` untuk mendapatkan informasi tentang semua sumber daya dalam namespace saat ini.
-- Manfaatkan file YAML untuk mendefinisikan konfigurasi sumber daya, sehingga memudahkan pengelolaan dan penerapan perubahan.
-- Gunakan `kubectl logs [pod-name]` untuk melihat log dari pod tertentu, yang sangat berguna untuk debugging.
+- Gunakan `kubectl get --help` untuk melihat opsi dan argumen yang tersedia untuk perintah `get`.
+- Simpan konfigurasi yang sering digunakan dalam file YAML untuk memudahkan penerapan kembali di masa mendatang.

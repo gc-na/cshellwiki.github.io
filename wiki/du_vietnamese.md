@@ -1,50 +1,53 @@
-# [Linux] Bash du: Đo kích thước thư mục và tệp
+# [Hệ điều hành] C Shell (csh) du: Đo kích thước thư mục
 
 ## Overview
-Lệnh `du` (disk usage) được sử dụng để đo kích thước của thư mục và tệp trong hệ thống tệp. Nó giúp người dùng xác định dung lượng mà các tệp và thư mục đang chiếm trên đĩa cứng.
+Lệnh `du` (disk usage) trong C Shell được sử dụng để đo kích thước của các thư mục và tệp tin trong hệ thống. Nó giúp người dùng hiểu rõ hơn về không gian lưu trữ đang được sử dụng.
 
 ## Usage
 Cú pháp cơ bản của lệnh `du` như sau:
-```bash
+
+```csh
 du [options] [arguments]
 ```
 
 ## Common Options
 - `-h`: Hiển thị kích thước theo định dạng dễ đọc (KB, MB, GB).
-- `-s`: Tóm tắt kích thước của thư mục mà không liệt kê các tệp con.
-- `-a`: Hiển thị kích thước của cả tệp và thư mục.
-- `-c`: Tính tổng kích thước của tất cả các tệp và thư mục được liệt kê.
+- `-s`: Tóm tắt kích thước của thư mục mà không hiển thị kích thước của các tệp con.
+- `-a`: Hiển thị kích thước của tất cả các tệp và thư mục.
+- `-c`: Tính tổng kích thước và hiển thị ở cuối danh sách.
 
 ## Common Examples
-- Đo kích thước của thư mục hiện tại:
-```bash
-du
-```
+Dưới đây là một số ví dụ thực tế khi sử dụng lệnh `du`:
 
-- Đo kích thước của thư mục hiện tại và hiển thị kết quả theo định dạng dễ đọc:
-```bash
-du -h
-```
+1. Đo kích thước của thư mục hiện tại:
+   ```csh
+   du
+   ```
 
-- Tóm tắt kích thước của một thư mục cụ thể:
-```bash
-du -sh /path/to/directory
-```
+2. Đo kích thước của một thư mục cụ thể với định dạng dễ đọc:
+   ```csh
+   du -h /path/to/directory
+   ```
 
-- Hiển thị kích thước của tất cả các tệp và thư mục trong thư mục hiện tại:
-```bash
-du -ah
-```
+3. Tóm tắt kích thước của một thư mục mà không hiển thị chi tiết:
+   ```csh
+   du -sh /path/to/directory
+   ```
 
-- Tính tổng kích thước của tất cả các thư mục con trong thư mục hiện tại:
-```bash
-du -ch *
-```
+4. Hiển thị kích thước của tất cả các tệp và thư mục trong thư mục hiện tại:
+   ```csh
+   du -a
+   ```
+
+5. Tính tổng kích thước của các thư mục và hiển thị ở cuối:
+   ```csh
+   du -ch /path/to/directory/*
+   ```
 
 ## Tips
 - Sử dụng tùy chọn `-h` để dễ dàng đọc kích thước, đặc biệt khi làm việc với các thư mục lớn.
-- Kết hợp `du` với lệnh `sort` để sắp xếp kết quả theo kích thước:
-```bash
-du -h | sort -h
-```
-- Thường xuyên kiểm tra kích thước của các thư mục để quản lý không gian đĩa hiệu quả hơn.
+- Kết hợp `du` với lệnh `sort` để sắp xếp các thư mục theo kích thước:
+  ```csh
+  du -h | sort -hr
+  ```
+- Thường xuyên kiểm tra kích thước thư mục để quản lý không gian lưu trữ hiệu quả hơn.

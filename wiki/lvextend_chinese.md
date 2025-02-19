@@ -1,42 +1,36 @@
-# [Linux] Bash lvextend 用法: 扩展逻辑卷的大小
+# [Linux] C Shell (csh) lvextend 用法: 扩展逻辑卷的大小
 
 ## 概述
-`lvextend` 命令用于扩展逻辑卷（Logical Volume, LV）的大小。通过增加逻辑卷的大小，用户可以为文件系统提供更多的存储空间。
+`lvextend` 命令用于扩展逻辑卷的大小。它可以增加逻辑卷的存储容量，以便在需要更多空间时使用。
 
 ## 用法
 基本语法如下：
-```bash
-lvextend [options] [arguments]
+```
+lvextend [选项] [参数]
 ```
 
 ## 常用选项
-- `-L +size`：增加逻辑卷的大小，例如 `-L +10G` 表示增加 10GB。
-- `-l +size`：按逻辑扩展单元（LE）增加大小，例如 `-l +100` 表示增加 100 个逻辑扩展单元。
-- `-r`：在扩展逻辑卷的同时自动扩展文件系统。
-- `-n`：指定新的逻辑卷名称。
+- `-L +大小`：增加指定的大小。
+- `-L 大小`：将逻辑卷扩展到指定的大小。
+- `-r`：在扩展逻辑卷后自动调整文件系统的大小。
 
 ## 常见示例
-1. 增加逻辑卷的大小 10GB：
+1. 将逻辑卷扩展 10G：
    ```bash
-   lvextend -L +10G /dev/vgname/lvname
+   lvextend -L +10G /dev/vg_name/lv_name
    ```
 
-2. 按逻辑扩展单元增加 100 个 LE：
+2. 将逻辑卷扩展到 50G：
    ```bash
-   lvextend -l +100 /dev/vgname/lvname
+   lvextend -L 50G /dev/vg_name/lv_name
    ```
 
-3. 扩展逻辑卷并自动扩展文件系统：
+3. 扩展逻辑卷并自动调整文件系统大小：
    ```bash
-   lvextend -r -L +5G /dev/vgname/lvname
-   ```
-
-4. 更改逻辑卷名称：
-   ```bash
-   lvextend -n newlvname /dev/vgname/lvname
+   lvextend -r -L +5G /dev/vg_name/lv_name
    ```
 
 ## 提示
 - 在扩展逻辑卷之前，确保有足够的物理空间可用。
-- 使用 `-r` 选项可以简化操作，避免手动扩展文件系统。
-- 在生产环境中操作前，建议备份重要数据，以防意外情况发生。
+- 使用 `-r` 选项可以简化操作，避免手动调整文件系统。
+- 定期检查逻辑卷的使用情况，以便及时扩展。

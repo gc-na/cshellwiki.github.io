@@ -1,49 +1,49 @@
-# [Linux] Bash mpstat Penggunaan: Memantau Statistik CPU
+# [Sistem Operasi] C Shell (csh) mpstat Penggunaan: Memantau statistik CPU
 
 ## Overview
-Perintah `mpstat` digunakan untuk menampilkan statistik penggunaan CPU pada sistem Linux. Ini memberikan informasi tentang penggunaan CPU secara keseluruhan dan juga per CPU jika ada lebih dari satu. Dengan `mpstat`, pengguna dapat menganalisis kinerja CPU dan mengidentifikasi potensi masalah.
+Perintah `mpstat` digunakan untuk menampilkan statistik penggunaan CPU secara real-time. Ini memberikan informasi tentang aktivitas CPU di sistem, termasuk persentase waktu CPU yang digunakan untuk berbagai tugas seperti pengguna, sistem, dan idle.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `mpstat`:
 
-```bash
+```csh
 mpstat [options] [arguments]
 ```
 
 ## Common Options
-- `-P ALL` : Menampilkan statistik untuk semua CPU.
-- `-u` : Menampilkan penggunaan CPU dalam persentase.
-- `-h` : Menampilkan output dalam format yang lebih mudah dibaca (human-readable).
-- `interval` : Menentukan interval waktu (dalam detik) antara pengukuran.
-- `count` : Menentukan jumlah pengukuran yang akan dilakukan.
+- `-P ALL`: Menampilkan statistik untuk semua CPU.
+- `-u`: Menampilkan statistik penggunaan CPU dalam format persentase.
+- `-h`: Menampilkan output dalam format yang lebih mudah dibaca.
+- `interval`: Menentukan interval waktu (dalam detik) untuk pembaruan statistik.
+- `count`: Menentukan jumlah pengulangan yang akan ditampilkan.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `mpstat`:
 
-1. Menampilkan statistik CPU untuk semua CPU setiap 1 detik:
-   ```bash
-   mpstat -P ALL 1
+1. Menampilkan statistik CPU untuk semua prosesor setiap 5 detik:
+   ```csh
+   mpstat -P ALL 5
    ```
 
-2. Menampilkan penggunaan CPU dalam format yang lebih mudah dibaca:
-   ```bash
-   mpstat -u -h 1 5
+2. Menampilkan penggunaan CPU dalam format persentase:
+   ```csh
+   mpstat -u
    ```
 
-3. Menampilkan statistik CPU untuk CPU tertentu (misalnya CPU 0):
-   ```bash
-   mpstat -P 0 2
+3. Menampilkan statistik CPU dengan output yang lebih mudah dibaca:
+   ```csh
+   mpstat -h
    ```
 
-4. Menampilkan statistik CPU dengan interval 2 detik dan 3 pengukuran:
-   ```bash
+4. Menampilkan statistik CPU setiap 2 detik selama 3 kali:
+   ```csh
    mpstat 2 3
    ```
 
 ## Tips
-- Gunakan opsi `-P ALL` untuk mendapatkan gambaran lengkap tentang penggunaan CPU di semua inti.
-- Perhatikan nilai `idle` untuk memahami seberapa banyak CPU yang tidak digunakan, ini bisa membantu dalam mengidentifikasi bottleneck.
-- Jika Anda melakukan pemantauan jangka panjang, pertimbangkan untuk mengarahkan output ke file untuk analisis lebih lanjut:
-  ```bash
-  mpstat -P ALL 1 10 > cpu_stats.txt
+- Gunakan opsi `-P ALL` untuk mendapatkan gambaran lengkap dari semua CPU di sistem Anda.
+- Pertimbangkan untuk menggabungkan `mpstat` dengan alat pemantauan lainnya untuk analisis yang lebih mendalam.
+- Simpan output `mpstat` ke dalam file untuk analisis lebih lanjut dengan menggunakan redirection, misalnya:
+  ```csh
+  mpstat -P ALL 5 > cpu_stats.txt
   ```

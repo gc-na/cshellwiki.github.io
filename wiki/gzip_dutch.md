@@ -1,58 +1,50 @@
-# [Linux] Bash gzip gebruik: Bestanden comprimeren en decomprimeren
+# [Linux] C Shell (csh) gzip gebruik: Bestanden comprimeren
 
 ## Overzicht
-De `gzip`-opdracht is een veelgebruikte tool in Unix-achtige systemen voor het comprimeren en decomprimeren van bestanden. Het vermindert de bestandsgrootte door gebruik te maken van de DEFLATE-compressiemethode, wat handig is voor het besparen van schijfruimte en het versnellen van bestandsoverdrachten.
+De `gzip`-opdracht wordt gebruikt om bestanden te comprimeren met behulp van de GNU zip-compressiemethode. Het vermindert de bestandsgrootte, waardoor het efficiënter is om bestanden op te slaan en te verzenden.
 
 ## Gebruik
 De basis syntaxis van de `gzip`-opdracht is als volgt:
 
-```bash
+```csh
 gzip [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-d`, `--decompress`: Decomprimeert een bestand.
-- `-k`, `--keep`: Houdt het originele bestand behouden na compressie.
-- `-v`, `--verbose`: Toont gedetailleerde informatie over het compressieproces.
-- `-r`, `--recursive`: Comprimeert bestanden in submappen.
+- `-d` : Decompressie van een bestand.
+- `-k` : Houd het originele bestand intact na compressie.
+- `-v` : Toon gedetailleerde informatie over het compressieproces.
+- `-r` : Recursief compressie toepassen op alle bestanden in een directory.
 
 ## Veelvoorkomende Voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van `gzip`:
 
-1. **Een bestand comprimeren**:
-   ```bash
+1. **Een enkel bestand comprimeren:**
+   ```csh
    gzip bestand.txt
    ```
-   Dit zal `bestand.txt` comprimeren en het origineel verwijderen, resulterend in `bestand.txt.gz`.
 
-2. **Een bestand decomprimeren**:
-   ```bash
+2. **Een bestand decompressie:**
+   ```csh
    gzip -d bestand.txt.gz
    ```
-   Dit herstelt `bestand.txt` uit de gecomprimeerde versie.
 
-3. **Een bestand comprimeren en het origineel behouden**:
-   ```bash
+3. **Een bestand comprimeren en het origineel behouden:**
+   ```csh
    gzip -k bestand.txt
    ```
-   Dit maakt een gecomprimeerd bestand `bestand.txt.gz`, terwijl `bestand.txt` behouden blijft.
 
-4. **Alle bestanden in een map comprimeren**:
-   ```bash
-   gzip *.txt
+4. **Recursief compressie toepassen op alle .txt-bestanden in een directory:**
+   ```csh
+   gzip -r *.txt
    ```
-   Dit comprimeert alle `.txt`-bestanden in de huidige map.
 
-5. **Recursief bestanden in submappen comprimeren**:
-   ```bash
-   gzip -r mapnaam/
+5. **Gedetailleerde informatie over het compressieproces weergeven:**
+   ```csh
+   gzip -v bestand.txt
    ```
-   Dit comprimeert alle bestanden in `mapnaam` en zijn submappen.
 
 ## Tips
-- Gebruik de `-v` optie om te zien hoeveel ruimte je bespaart tijdens het compressieproces.
-- Wees voorzichtig met het gebruik van `gzip` op grote bestanden, omdat het geheugen kan verbruiken.
-- Overweeg om `tar` te gebruiken in combinatie met `gzip` voor het archiveren en comprimeren van meerdere bestanden in één stap. Bijvoorbeeld:
-  ```bash
-  tar -czf archief.tar.gz mapnaam/
-  ```
+- Gebruik de `-k` optie als je het originele bestand wilt behouden voor later gebruik.
+- Controleer de bestandsgrootte na compressie met de `ls -lh` opdracht om te zien hoeveel ruimte je hebt bespaard.
+- Voor het decompressieproces kun je ook de `gunzip` opdracht gebruiken, die een alias is voor `gzip -d`.

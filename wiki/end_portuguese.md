@@ -1,39 +1,46 @@
-# [Linux] Bash end uso equivalente: Finalizar processos
+# [Linux] C Shell (csh) end <Uso equivalente em português>: Finaliza a execução de um script
 
 ## Overview
-O comando `end` é utilizado para finalizar processos em execução no sistema. Ele permite que os usuários encerrem tarefas que não estão respondendo ou que não são mais necessárias, ajudando a liberar recursos do sistema.
+O comando `end` no C Shell (csh) é utilizado para finalizar a execução de um script ou de um bloco de código. Ele é frequentemente usado em estruturas de controle, como loops e condicionais, para indicar o término da execução de um bloco específico.
 
 ## Usage
 A sintaxe básica do comando `end` é a seguinte:
 
-```
-end [opções] [argumentos]
+```csh
+end
 ```
 
 ## Common Options
-- `-p`: Especifica o PID (Process ID) do processo a ser finalizado.
-- `-f`: Força a finalização do processo, mesmo que ele não esteja respondendo.
-- `-h`: Exibe a ajuda sobre o comando e suas opções.
+O comando `end` não possui opções específicas, pois sua função é simplesmente encerrar um bloco de código. No entanto, ele deve ser utilizado em conjunto com estruturas de controle, como `if`, `while` ou `foreach`.
 
 ## Common Examples
-Aqui estão alguns exemplos práticos do uso do comando `end`:
 
-1. Finalizar um processo pelo PID:
-   ```bash
-   end -p 1234
-   ```
+### Exemplo 1: Usando `end` com `if`
+```csh
+if ( $var == "valor" ) then
+    echo "A variável é igual a valor."
+else
+    echo "A variável não é igual a valor."
+endif
+```
 
-2. Forçar a finalização de um processo:
-   ```bash
-   end -f -p 5678
-   ```
+### Exemplo 2: Usando `end` com `while`
+```csh
+set count = 1
+while ( $count <= 5 )
+    echo "Contagem: $count"
+    @ count++
+end
+```
 
-3. Exibir ajuda sobre o comando:
-   ```bash
-   end -h
-   ```
+### Exemplo 3: Usando `end` com `foreach`
+```csh
+foreach item (item1 item2 item3)
+    echo "Processando: $item"
+end
+```
 
 ## Tips
-- Sempre verifique se você realmente deseja finalizar um processo, pois isso pode causar perda de dados não salvos.
-- Utilize o comando `ps` para listar os processos em execução e encontrar o PID correto antes de usar o `end`.
-- Considere usar a opção `-f` com cautela, pois forçar a finalização pode resultar em corrupção de dados.
+- Sempre use `end` para fechar estruturas de controle, como `if`, `while` e `foreach`, para garantir que seu script seja executado corretamente.
+- Mantenha a indentação consistente em seu código para facilitar a leitura e a compreensão das estruturas de controle.
+- Teste seus scripts em um ambiente seguro antes de executá-los em produção para evitar comportamentos inesperados.

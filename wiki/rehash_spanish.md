@@ -1,40 +1,40 @@
-# [Linux] Bash rehash uso equivalente: Actualiza la tabla de comandos
+# [Linux] C Shell (csh) rehash uso equivalente: Actualiza la tabla de comandos
 
 ## Overview
-El comando `rehash` se utiliza en Bash para actualizar la tabla de comandos. Esto es especialmente útil cuando se han agregado nuevos ejecutables a los directorios que están en el `PATH`, ya que permite que el shell reconozca estos nuevos comandos sin necesidad de reiniciar la sesión.
+El comando `rehash` en C Shell (csh) se utiliza para actualizar la tabla de comandos del shell. Esto es útil cuando se han añadido nuevos ejecutables a los directorios que están en el `PATH`, permitiendo que el shell reconozca y ejecute estos nuevos comandos sin necesidad de reiniciar la sesión.
 
 ## Usage
 La sintaxis básica del comando es la siguiente:
 
-```bash
-rehash [opciones]
+```
+rehash [opciones] [argumentos]
 ```
 
 ## Common Options
-- No tiene opciones comunes específicas, ya que `rehash` se utiliza generalmente sin argumentos.
+El comando `rehash` no tiene opciones comunes, ya que su uso es bastante directo. Simplemente se ejecuta sin argumentos para actualizar la tabla de comandos.
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso del comando `rehash`:
 
-### Ejemplo 1: Actualizar la tabla de comandos
-Si has instalado un nuevo programa en un directorio que está en tu `PATH`, puedes ejecutar:
+1. **Actualizar la tabla de comandos después de instalar un nuevo programa:**
+   ```csh
+   rehash
+   ```
 
-```bash
-rehash
-```
+2. **Ejecutar un nuevo comando inmediatamente después de su instalación:**
+   Supongamos que has instalado un programa llamado `nuevo_comando`. Después de ejecutar `rehash`, puedes usarlo de la siguiente manera:
+   ```csh
+   rehash
+   nuevo_comando
+   ```
 
-Esto actualizará la tabla de comandos y permitirá que el nuevo programa sea reconocido.
-
-### Ejemplo 2: Uso en una sesión interactiva
-Si estás en una sesión de terminal y has agregado un nuevo script ejecutable, simplemente ejecuta:
-
-```bash
-rehash
-```
-
-Después de esto, podrás ejecutar el script sin problemas.
+3. **Verificar que el nuevo comando está disponible:**
+   Después de ejecutar `rehash`, puedes comprobar si el nuevo comando está en la tabla de comandos:
+   ```csh
+   which nuevo_comando
+   ```
 
 ## Tips
-- Es recomendable usar `rehash` después de instalar nuevos programas o scripts en tu sistema para asegurarte de que están disponibles inmediatamente.
-- Si utilizas un shell diferente a Bash, verifica si el comando `rehash` está disponible, ya que su uso puede variar entre diferentes shells.
-- Si experimentas problemas al ejecutar un comando que debería estar disponible, intenta primero con `rehash` antes de buscar otros problemas.
+- Es recomendable ejecutar `rehash` cada vez que instales un nuevo programa o cambies la ubicación de un ejecutable en tu sistema.
+- Si estás trabajando en un entorno donde frecuentemente instalas o actualizas software, considera añadir `rehash` a tu archivo de inicio de C Shell para que se ejecute automáticamente al iniciar una nueva sesión.
+- Recuerda que `rehash` solo actualiza la tabla de comandos; no afecta a los alias o funciones que hayas definido en tu sesión.

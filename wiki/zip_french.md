@@ -1,4 +1,4 @@
-# [Linux] Bash zip utilisation : Compresser des fichiers
+# [Linux] C Shell (csh) zip utilisation : Compresser des fichiers
 
 ## Overview
 La commande `zip` est utilisée pour compresser des fichiers et des répertoires en un seul fichier archive. Cela permet de réduire l'espace de stockage et de faciliter le partage de fichiers.
@@ -6,58 +6,48 @@ La commande `zip` est utilisée pour compresser des fichiers et des répertoires
 ## Usage
 La syntaxe de base de la commande `zip` est la suivante :
 
-```bash
+```csh
 zip [options] [arguments]
 ```
 
 ## Common Options
 Voici quelques options courantes pour la commande `zip` :
 
-- `-r` : Compresse un répertoire de manière récursive.
+- `-r` : Compresse récursivement les répertoires.
 - `-e` : Chiffre le fichier zip avec un mot de passe.
 - `-u` : Met à jour un fichier zip existant en ajoutant de nouveaux fichiers.
-- `-d` : Supprime des fichiers d'une archive zip existante.
-- `-q` : Exécute la commande en mode silencieux, sans afficher de messages.
+- `-d` : Supprime des fichiers d'un fichier zip existant.
+- `-l` : Liste le contenu d'un fichier zip sans l'extraire.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `zip` :
 
-### Compresser des fichiers
-Pour compresser plusieurs fichiers dans une archive zip :
+1. **Créer un fichier zip à partir de fichiers spécifiques :**
+   ```csh
+   zip archive.zip fichier1.txt fichier2.txt
+   ```
 
-```bash
-zip archive.zip fichier1.txt fichier2.txt fichier3.txt
-```
+2. **Compresser un répertoire entier :**
+   ```csh
+   zip -r archive.zip mon_repertoire
+   ```
 
-### Compresser un répertoire
-Pour compresser un répertoire entier de manière récursive :
+3. **Chiffrer un fichier zip :**
+   ```csh
+   zip -e archive.zip fichier1.txt
+   ```
 
-```bash
-zip -r archive.zip mon_dossier/
-```
+4. **Mettre à jour un fichier zip existant :**
+   ```csh
+   zip -u archive.zip fichier3.txt
+   ```
 
-### Chiffrer une archive
-Pour créer une archive zip chiffrée :
-
-```bash
-zip -e archive_secure.zip fichier1.txt fichier2.txt
-```
-
-### Mettre à jour une archive existante
-Pour ajouter de nouveaux fichiers à une archive zip existante :
-
-```bash
-zip -u archive.zip nouveau_fichier.txt
-```
-
-### Supprimer un fichier d'une archive
-Pour supprimer un fichier d'une archive zip :
-
-```bash
-zip -d archive.zip fichier_a_supprimer.txt
-```
+5. **Lister le contenu d'un fichier zip :**
+   ```csh
+   zip -l archive.zip
+   ```
 
 ## Tips
-- Utilisez l'option `-q` pour réduire le bruit lors de la compression de nombreux fichiers.
-- Pensez à vérifier l'intégrité de votre archive zip avec la commande `unzip -t archive.zip` après compression.
-- Pour des fichiers très volumineux, envisagez d'utiliser des algorithmes de compression supplémentaires ou d'autres outils comme `tar` pour une meilleure efficacité.
+- Toujours vérifier l'espace disque disponible avant de créer des archives zip, surtout pour de gros fichiers.
+- Utilisez l'option `-e` pour protéger vos fichiers sensibles avec un mot de passe.
+- Pour une compression optimale, essayez de compresser des fichiers de type texte plutôt que des fichiers déjà compressés (comme les images ou les vidéos).

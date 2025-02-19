@@ -1,49 +1,49 @@
-# [Linux] Bash curl 用法：用于数据传输的命令行工具
+# [操作系统] C Shell (csh) curl 使用方法: 用于数据传输的命令行工具
 
 ## 概述
-curl 是一个用于从或向服务器传输数据的命令行工具。它支持多种协议，包括 HTTP、HTTPS、FTP 等，广泛用于下载文件、发送 API 请求等。
+curl 是一个用于从或向服务器传输数据的命令行工具，支持多种协议，包括 HTTP、HTTPS、FTP 等。它广泛用于下载文件、发送请求和与 API 交互。
 
 ## 用法
-curl 的基本语法如下：
+curl 命令的基本语法如下：
+
 ```bash
 curl [options] [arguments]
 ```
 
 ## 常用选项
-- `-X`：指定请求方法（如 GET、POST）。
-- `-d`：发送数据（通常用于 POST 请求）。
-- `-H`：添加 HTTP 头部信息。
-- `-o`：将输出保存到文件。
-- `-I`：仅获取 HTTP 头部信息。
-- `-L`：跟随重定向。
+- `-O`：将下载的文件保存为与服务器上相同的文件名。
+- `-o <file>`：将下载的内容保存到指定的文件中。
+- `-I`：仅获取 HTTP 响应头。
+- `-d <data>`：发送 POST 请求时使用的数据。
+- `-H <header>`：添加自定义 HTTP 头部。
 
 ## 常见示例
-1. **下载文件**
+1. 下载文件并保存为原文件名：
    ```bash
-   curl -O https://example.com/file.zip
+   curl -O http://example.com/file.zip
    ```
 
-2. **发送 GET 请求**
+2. 下载文件并保存为指定文件名：
    ```bash
-   curl https://api.example.com/data
+   curl -o myfile.zip http://example.com/file.zip
    ```
 
-3. **发送 POST 请求**
+3. 获取 HTTP 响应头：
    ```bash
-   curl -X POST -d "name=John&age=30" https://api.example.com/users
+   curl -I http://example.com
    ```
 
-4. **添加自定义头部**
+4. 发送 POST 请求：
    ```bash
-   curl -H "Authorization: Bearer token" https://api.example.com/protected
+   curl -d "param1=value1&param2=value2" http://example.com/api
    ```
 
-5. **获取 HTTP 头部信息**
+5. 添加自定义 HTTP 头部：
    ```bash
-   curl -I https://example.com
+   curl -H "Authorization: Bearer token" http://example.com/api
    ```
 
-## 提示
-- 使用 `-L` 选项可以确保 curl 跟随重定向，避免下载失败。
-- 在处理敏感数据时，确保使用 HTTPS 协议以加密传输。
-- 使用 `-o` 选项保存输出时，确保文件名是唯一的，以免覆盖已有文件。
+## 小贴士
+- 使用 `-v` 选项可以查看详细的请求和响应信息，帮助调试。
+- 对于需要身份验证的请求，可以使用 `-u username:password` 选项。
+- 在处理大文件时，可以使用 `-C -` 选项支持断点续传。

@@ -1,75 +1,81 @@
-# [Linux] Bash switch Kullanımı: Komutları değiştirme
+# [Linux] C Shell (csh) switch Kullanımı: Komut alternatiflerini yönetme
 
-## Genel Bakış
-`switch` komutu, belirli bir koşula bağlı olarak farklı komutların çalıştırılmasını sağlayan bir yapıdır. Genellikle birden fazla durumu kontrol etmek ve her duruma göre farklı işlemler gerçekleştirmek için kullanılır.
+## Overview
+`switch` komutu, C Shell (csh) ortamında birden fazla durumu kontrol etmek için kullanılır. Bu komut, belirli bir değişkenin değerine göre farklı komutlar çalıştırmanıza olanak tanır.
 
-## Kullanım
+## Usage
 Temel sözdizimi aşağıdaki gibidir:
 
-```bash
-switch [seçenekler] [argümanlar]
+```csh
+switch (değişken)
+    case değer1:
+        komut1
+        breaksw
+    case değer2:
+        komut2
+        breaksw
+    default:
+        komut_default
+end
 ```
 
-## Yaygın Seçenekler
-- `-e`: Belirtilen ifadeyi değerlendirmek için kullanılır.
-- `-d`: Varsayılan durumu belirtir.
-- `-h`: Yardım bilgilerini görüntüler.
+## Common Options
+`switch` komutunun kendine özgü bir seçenek seti yoktur, ancak `case` ve `default` yapıları ile birlikte kullanılır. İşte bazı önemli bileşenler:
 
-## Yaygın Örnekler
-Aşağıda `switch` komutunun bazı pratik örnekleri bulunmaktadır:
+- `case`: Belirli bir değeri kontrol eder.
+- `breaksw`: `case` bloğunun sonunu belirtir ve `switch` komutunu sonlandırır.
+- `default`: Hiçbir `case` ile eşleşmeyen durumlar için varsayılan komutları tanımlar.
+
+## Common Examples
 
 ### Örnek 1: Basit bir switch yapısı
-```bash
-case $1 in
-    "bir")
-        echo "Bir seçildi."
-        ;;
-    "iki")
-        echo "İki seçildi."
-        ;;
-    *)
+```csh
+set renk = "kırmızı"
+switch ($renk)
+    case "kırmızı":
+        echo "Renk kırmızı."
+        breaksw
+    case "mavi":
+        echo "Renk mavi."
+        breaksw
+    default:
+        echo "Bilinmeyen renk."
+end
+```
+
+### Örnek 2: Birden fazla durum kontrolü
+```csh
+set gün = "Cumartesi"
+switch ($gün)
+    case "Pazartesi":
+        echo "Haftanın başı."
+        breaksw
+    case "Cumartesi":
+    case "Pazar":
+        echo "Hafta sonu."
+        breaksw
+    default:
+        echo "Hafta içi."
+end
+```
+
+### Örnek 3: Kullanıcıdan girdi alma
+```csh
+echo "Bir sayı girin:"
+set sayi = $< 
+switch ($sayi)
+    case "1":
+        echo "Bir seçtiniz."
+        breaksw
+    case "2":
+        echo "İki seçtiniz."
+        breaksw
+    default:
         echo "Geçersiz seçim."
-        ;;
-esac
+end
 ```
 
-### Örnek 2: Kullanıcıdan seçim alma
-```bash
-echo "Lütfen bir sayı girin (1-3):"
-read sayi
-case $sayi in
-    1)
-        echo "Seçim 1."
-        ;;
-    2)
-        echo "Seçim 2."
-        ;;
-    3)
-        echo "Seçim 3."
-        ;;
-    *)
-        echo "Geçersiz seçim."
-        ;;
-esac
-```
-
-### Örnek 3: Dosya uzantısına göre işlem yapma
-```bash
-dosya="belge.txt"
-case "${dosya##*.}" in
-    "txt")
-        echo "Bu bir metin dosyası."
-        ;;
-    "jpg" | "png")
-        echo "Bu bir resim dosyası."
-        ;;
-    *)
-        echo "Tanımlanamayan dosya türü."
-        ;;
-esac
-```
-
-## İpuçları
-- `switch` yapısını kullanırken her durumu net bir şekilde tanımlamak, kodun okunabilirliğini artırır.
-- `case` yapısında her durumu bitirmek için `;;` kullanmayı unutmayın.
-- Kullanıcıdan alınan girdileri doğrulamak, hatalı seçimlerin önüne geçer.
+## Tips
+- `switch` komutunu kullanırken, her `case` bloğunun sonunda `breaksw` ifadesini eklemeyi unutmayın; aksi takdirde, kontrol akışı bir sonraki `case` bloğuna geçebilir.
+- `default` bloğunu kullanarak, beklenmeyen durumlar için bir geri dönüş sağlamayı düşünün.
+- Değişkenlerinizi doğru bir şekilde tanımladığınızdan emin olun; aksi takdirde, `switch` komutu beklenmedik sonuçlar verebilir.

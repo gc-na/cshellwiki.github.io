@@ -1,52 +1,44 @@
-# [Linux] Bash dnf Cách sử dụng: Quản lý gói phần mềm
+# [Linux] C Shell (csh) dnf <Sử dụng tương đương>: Quản lý gói phần mềm
 
 ## Tổng quan
-Lệnh `dnf` (Dandified YUM) là một công cụ quản lý gói phần mềm trên các hệ điều hành dựa trên RPM như Fedora, CentOS và RHEL. Nó cho phép người dùng cài đặt, cập nhật, xóa và quản lý các gói phần mềm một cách dễ dàng và hiệu quả.
+Lệnh `dnf` (Dandified YUM) là một công cụ quản lý gói phần mềm trên các hệ điều hành dựa trên RPM, giúp người dùng cài đặt, cập nhật và gỡ bỏ các gói phần mềm một cách dễ dàng và hiệu quả.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `dnf` như sau:
-```
+```csh
 dnf [options] [arguments]
 ```
 
-## Tùy chọn phổ biến
-- `install`: Cài đặt gói phần mềm.
-- `remove`: Gỡ bỏ gói phần mềm.
-- `update`: Cập nhật gói phần mềm đã cài đặt.
-- `search`: Tìm kiếm gói phần mềm.
-- `info`: Hiển thị thông tin chi tiết về gói phần mềm.
-- `list`: Liệt kê các gói đã cài đặt hoặc có sẵn.
+## Các tùy chọn phổ biến
+- `install`: Cài đặt một hoặc nhiều gói phần mềm.
+- `remove`: Gỡ bỏ một hoặc nhiều gói phần mềm.
+- `update`: Cập nhật các gói phần mềm đã cài đặt lên phiên bản mới nhất.
+- `search`: Tìm kiếm các gói phần mềm theo tên hoặc mô tả.
+- `info`: Hiển thị thông tin chi tiết về một gói phần mềm.
 
 ## Ví dụ phổ biến
 - Cài đặt một gói phần mềm:
-  ```bash
-  dnf install vim
-  ```
-
+```csh
+dnf install vim
+```
 - Gỡ bỏ một gói phần mềm:
-  ```bash
-  dnf remove vim
-  ```
-
+```csh
+dnf remove vim
+```
 - Cập nhật tất cả các gói phần mềm:
-  ```bash
-  dnf update
-  ```
-
+```csh
+dnf update
+```
 - Tìm kiếm một gói phần mềm:
-  ```bash
-  dnf search httpd
-  ```
-
+```csh
+dnf search httpd
+```
 - Hiển thị thông tin về một gói phần mềm:
-  ```bash
-  dnf info httpd
-  ```
+```csh
+dnf info httpd
+```
 
 ## Mẹo
-- Luôn cập nhật danh sách gói trước khi cài đặt bằng cách sử dụng `dnf makecache`.
-- Sử dụng `dnf history` để xem lại lịch sử các lệnh đã thực hiện.
-- Kết hợp với `--assumeyes` để tự động xác nhận các yêu cầu trong quá trình cài đặt hoặc gỡ bỏ:
-  ```bash
-  dnf install vim --assumeyes
-  ```
+- Luôn kiểm tra các gói phần mềm có sẵn trước khi cài đặt bằng cách sử dụng lệnh `dnf search`.
+- Sử dụng `dnf update` thường xuyên để giữ cho hệ thống của bạn được cập nhật với các bản vá bảo mật và tính năng mới.
+- Nếu bạn muốn xem các gói đã cài đặt, hãy sử dụng lệnh `dnf list installed`.

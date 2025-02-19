@@ -1,50 +1,51 @@
-# [Linux] Bash lvm użycie: Zarządzanie woluminami logicznymi
+# [Linux] C Shell (csh) lvm użycie: zarządzanie woluminami logicznymi
 
-## Overview
-Polecenie `lvm` (Logical Volume Manager) jest używane do zarządzania woluminami logicznymi w systemach Linux. Umożliwia tworzenie, usuwanie i modyfikowanie woluminów logicznych oraz grup woluminów, co pozwala na elastyczne zarządzanie przestrzenią dyskową.
+## Przegląd
+Polecenie `lvm` (Logical Volume Manager) służy do zarządzania woluminami logicznymi w systemach Linux. Umożliwia tworzenie, usuwanie oraz modyfikowanie woluminów logicznych, co pozwala na elastyczne zarządzanie przestrzenią dyskową.
 
-## Usage
-Podstawowa składnia polecenia `lvm` jest następująca:
+## Użycie
+Podstawowa składnia polecenia `lvm` wygląda następująco:
 
 ```bash
 lvm [opcje] [argumenty]
 ```
 
-## Common Options
-- `vgcreate`: Tworzy nową grupę woluminów.
-- `lvcreate`: Tworzy nowy wolumin logiczny.
-- `lvremove`: Usuwa wolumin logiczny.
-- `lvextend`: Zwiększa rozmiar woluminu logicznego.
-- `lvreduce`: Zmniejsza rozmiar woluminu logicznego.
-- `vgextend`: Dodaje fizyczne wolumeny do grupy woluminów.
+## Częste opcje
+- `create`: Tworzy nowy wolumin logiczny.
+- `remove`: Usuwa istniejący wolumin logiczny.
+- `extend`: Powiększa istniejący wolumin logiczny.
+- `reduce`: Zmniejsza rozmiar woluminu logicznego.
+- `lvdisplay`: Wyświetla szczegóły dotyczące woluminów logicznych.
 
-## Common Examples
-1. **Tworzenie grupy woluminów**:
+## Przykłady
+Oto kilka praktycznych przykładów użycia polecenia `lvm`:
+
+1. **Tworzenie nowego woluminu logicznego:**
    ```bash
-   vgcreate my_volume_group /dev/sdb1 /dev/sdc1
+   lvm create -n my_volume -L 10G my_volume_group
    ```
 
-2. **Tworzenie woluminu logicznego**:
+2. **Usuwanie woluminu logicznego:**
    ```bash
-   lvcreate -n my_logical_volume -L 10G my_volume_group
+   lvm remove my_volume
    ```
 
-3. **Usuwanie woluminu logicznego**:
+3. **Rozszerzanie woluminu logicznego:**
    ```bash
-   lvremove /dev/my_volume_group/my_logical_volume
+   lvm extend -L +5G /dev/my_volume_group/my_volume
    ```
 
-4. **Zwiększanie rozmiaru woluminu logicznego**:
+4. **Zmniejszanie rozmiaru woluminu logicznego:**
    ```bash
-   lvextend -L +5G /dev/my_volume_group/my_logical_volume
+   lvm reduce -L -5G /dev/my_volume_group/my_volume
    ```
 
-5. **Zmniejszanie rozmiaru woluminu logicznego**:
+5. **Wyświetlanie szczegółów woluminów logicznych:**
    ```bash
-   lvreduce -L -5G /dev/my_volume_group/my_logical_volume
+   lvm lvdisplay
    ```
 
-## Tips
-- Zawsze wykonuj kopię zapasową danych przed modyfikacją woluminów logicznych.
-- Używaj opcji `-n` przy tworzeniu woluminów logicznych, aby nadać im czytelne nazwy.
-- Monitoruj użycie przestrzeni dyskowej, aby uniknąć problemów z brakiem miejsca.
+## Wskazówki
+- Zawsze wykonuj kopie zapasowe danych przed modyfikacją woluminów logicznych.
+- Używaj opcji `--dry-run`, aby zobaczyć, co polecenie zrobi, zanim je wykonasz.
+- Regularnie monitoruj stan woluminów logicznych, aby uniknąć problemów z przestrzenią dyskową.

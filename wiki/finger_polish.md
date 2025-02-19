@@ -1,25 +1,21 @@
-# [Linux] Bash finger użycie: wyświetlanie informacji o użytkownikach
+# [Linux] C Shell (csh) finger użycie: wyświetlanie informacji o użytkownikach
 
 ## Overview
-Polecenie `finger` służy do wyświetlania informacji o użytkownikach systemu. Umożliwia uzyskanie szczegółowych danych, takich jak nazwa użytkownika, pełne imię i nazwisko, czas logowania oraz inne istotne informacje.
+Polecenie `finger` służy do wyświetlania informacji o użytkownikach systemu. Umożliwia uzyskanie szczegółowych danych, takich jak nazwa użytkownika, pełne imię i nazwisko, czas logowania oraz inne informacje związane z kontem użytkownika.
 
 ## Usage
 Podstawowa składnia polecenia `finger` jest następująca:
 
-```bash
+```
 finger [opcje] [argumenty]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji dla polecenia `finger`:
-
 - `-l`: Wyświetla szczegółowe informacje o użytkownikach.
 - `-m`: Ignoruje wielkość liter w nazwach użytkowników.
 - `-s`: Wyświetla skrócone informacje o użytkownikach.
 
 ## Common Examples
-Poniżej znajdują się przykłady użycia polecenia `finger`:
-
 1. Wyświetlenie informacji o wszystkich użytkownikach:
    ```bash
    finger
@@ -27,7 +23,7 @@ Poniżej znajdują się przykłady użycia polecenia `finger`:
 
 2. Wyświetlenie szczegółowych informacji o konkretnym użytkowniku:
    ```bash
-   finger username
+   finger janek
    ```
 
 3. Wyświetlenie skróconych informacji o wszystkich użytkownikach:
@@ -35,12 +31,12 @@ Poniżej znajdują się przykłady użycia polecenia `finger`:
    finger -s
    ```
 
-4. Wyświetlenie szczegółowych informacji o użytkowniku z ignorowaniem wielkości liter:
+4. Ignorowanie wielkości liter przy wyszukiwaniu użytkownika:
    ```bash
-   finger -m Username
+   finger -m Ania
    ```
 
 ## Tips
-- Używaj opcji `-l`, aby uzyskać pełne informacje o użytkownikach, co może być przydatne w administracji systemem.
+- Używaj opcji `-l`, aby uzyskać pełne informacje o użytkownikach, co może być przydatne w administracji systemu.
+- W przypadku dużych systemów, korzystaj z opcji `-s`, aby szybko przeglądać użytkowników bez zbędnych szczegółów.
 - Pamiętaj, że dostępność informacji może być ograniczona przez ustawienia prywatności użytkowników.
-- Regularne korzystanie z polecenia `finger` może pomóc w monitorowaniu aktywności użytkowników w systemie.

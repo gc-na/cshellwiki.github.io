@@ -1,42 +1,47 @@
-# [Linux] Bash chown użycie: Zmiana właściciela plików i katalogów
+# [Linux] C Shell (csh) chown Użycie: Zmiana właściciela plików
 
 ## Overview
-Polecenie `chown` w systemie Linux służy do zmiany właściciela i grupy plików oraz katalogów. Umożliwia to administratorom zarządzanie dostępem do zasobów systemowych.
+Polecenie `chown` służy do zmiany właściciela plików i katalogów w systemie Unix/Linux. Umożliwia przypisanie nowych właścicieli do plików, co jest przydatne w zarządzaniu uprawnieniami dostępu.
 
 ## Usage
-Podstawowa składnia polecenia `chown` wygląda następująco:
+Podstawowa składnia polecenia `chown` jest następująca:
 
-```bash
-chown [opcje] [nowy_właściciel][:nowa_grupa] [plik/katalog]
+```csh
+chown [opcje] [nowy_właściciel] [plik/katalog]
 ```
 
 ## Common Options
-- `-R`: Rekursywnie zmienia właściciela dla wszystkich plików i katalogów w podanym katalogu.
-- `-v`: Wyświetla szczegółowe informacje o tym, co zostało zmienione.
-- `--reference=plik`: Ustawia właściciela i grupę na podstawie innego pliku.
+- `-R`: Rekurencyjnie zmienia właściciela dla wszystkich plików i katalogów w danym katalogu.
+- `-f`: Tłumi komunikaty o błędach.
+- `-v`: Wyświetla szczegóły dotyczące zmiany właściciela.
 
 ## Common Examples
 1. Zmiana właściciela pliku:
-   ```bash
-   chown janek plik.txt
+   ```csh
+   chown nowy_użytkownik plik.txt
    ```
 
-2. Zmiana właściciela i grupy pliku:
-   ```bash
-   chown janek:admin plik.txt
+2. Zmiana właściciela katalogu rekurencyjnie:
+   ```csh
+   chown -R nowy_użytkownik katalog/
    ```
 
-3. Rekursywna zmiana właściciela katalogu:
-   ```bash
-   chown -R janek katalog/
+3. Zmiana właściciela i grupy pliku:
+   ```csh
+   chown nowy_użytkownik:nowa_grupa plik.txt
    ```
 
-4. Ustawienie właściciela i grupy na podstawie innego pliku:
-   ```bash
-   chown --reference=plik_wzorcowy plik_do_zmiany.txt
+4. Tłumienie komunikatów o błędach:
+   ```csh
+   chown -f nowy_użytkownik plik.txt
+   ```
+
+5. Wyświetlanie szczegółów zmiany:
+   ```csh
+   chown -v nowy_użytkownik plik.txt
    ```
 
 ## Tips
-- Zawsze sprawdzaj, czy masz odpowiednie uprawnienia do zmiany właściciela plików.
-- Używaj opcji `-v`, aby zobaczyć, które pliki zostały zmienione, co może pomóc w diagnostyce.
-- Przy używaniu opcji `-R` bądź ostrożny, aby nie zmienić właściciela plików systemowych lub ważnych dla działania aplikacji.
+- Upewnij się, że masz odpowiednie uprawnienia do zmiany właściciela pliku.
+- Zawsze używaj opcji `-R` ostrożnie, aby nie zmienić właściciela niezamierzonych plików.
+- Sprawdź aktualnego właściciela pliku przed dokonaniem zmian, używając polecenia `ls -l`.

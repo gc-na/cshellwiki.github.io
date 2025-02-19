@@ -1,72 +1,82 @@
-# [Linux] Bash switch Verwendung: Schaltet zwischen verschiedenen Optionen um
+# [Linux] C Shell (csh) switch Verwendung: Wechseln zwischen verschiedenen Optionen
 
 ## Übersicht
-Der `switch` Befehl in Bash wird verwendet, um zwischen verschiedenen Optionen oder Fällen zu wechseln. Er ermöglicht es, verschiedene Bedingungen zu überprüfen und entsprechend zu handeln, was die Programmierung von Skripten vereinfacht.
+Der `switch` Befehl in der C Shell (csh) wird verwendet, um verschiedene Optionen oder Fälle zu überprüfen und entsprechend zu handeln. Es ist eine nützliche Möglichkeit, um Entscheidungen in Skripten zu treffen, basierend auf den Werten von Variablen oder Eingaben.
 
 ## Verwendung
 Die grundlegende Syntax des `switch` Befehls sieht folgendermaßen aus:
 
-```bash
-switch [optionen] [argumente]
+```csh
+switch (ausdruck)
+    case wert1:
+        # Befehle für wert1
+        breaksw
+    case wert2:
+        # Befehle für wert2
+        breaksw
+    default:
+        # Befehle für den Standardfall
+        breaksw
+end
 ```
 
 ## Häufige Optionen
-- `-c`: Führt einen bestimmten Fall aus.
-- `-d`: Setzt einen Standardfall, der ausgeführt wird, wenn keine anderen Bedingungen erfüllt sind.
-- `-h`: Zeigt die Hilfe und die verfügbaren Optionen an.
+- `case wert:`: Definiert einen Fall, der mit dem Ausdruck verglichen wird.
+- `breaksw`: Beendet den aktuellen Fall und verlässt die `switch`-Anweisung.
+- `default:`: Definiert die Anweisungen, die ausgeführt werden, wenn kein anderer Fall zutrifft.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung des `switch` Befehls:
 
 ### Beispiel 1: Einfache Fallunterscheidung
-```bash
-case $variable in
-    wert1)
-        echo "Fall 1 ausgewählt"
-        ;;
-    wert2)
-        echo "Fall 2 ausgewählt"
-        ;;
-    *)
-        echo "Standardfall"
-        ;;
-esac
+```csh
+set farbe = "rot"
+switch ($farbe)
+    case "rot":
+        echo "Die Farbe ist rot."
+        breaksw
+    case "blau":
+        echo "Die Farbe ist blau."
+        breaksw
+    default:
+        echo "Unbekannte Farbe."
+        breaksw
+end
 ```
 
-### Beispiel 2: Mehrere Bedingungen
-```bash
-case $farbe in
-    rot)
-        echo "Die Farbe ist rot"
-        ;;
-    blau)
-        echo "Die Farbe ist blau"
-        ;;
-    grün)
-        echo "Die Farbe ist grün"
-        ;;
-    *)
-        echo "Unbekannte Farbe"
-        ;;
-esac
+### Beispiel 2: Mehrere Werte in einem Fall
+```csh
+set tier = "Hund"
+switch ($tier)
+    case "Hund":
+    case "Katze":
+        echo "Das Tier ist ein Haustier."
+        breaksw
+    default:
+        echo "Das Tier ist kein Haustier."
+        breaksw
+end
 ```
 
 ### Beispiel 3: Verwendung von Variablen
-```bash
-case $tag in
-    Montag)
-        echo "Heute ist Montag"
-        ;;
-    Freitag)
-        echo "Heute ist Freitag"
-        ;;
-    *)
-        echo "Ein anderer Tag"
-        ;;
-esac
+```csh
+set zahl = 2
+switch ($zahl)
+    case 1:
+        echo "Die Zahl ist eins."
+        breaksw
+    case 2:
+        echo "Die Zahl ist zwei."
+        breaksw
+    case 3:
+        echo "Die Zahl ist drei."
+        breaksw
+    default:
+        echo "Die Zahl ist unbekannt."
+        breaksw
+end
 ```
 
 ## Tipps
-- Verwenden Sie klare und aussagekräftige Variablennamen, um die Lesbarkeit Ihres Codes zu verbessern.
-- Stellen Sie sicher, dass Sie den Standardfall (`*`) immer am Ende der Fallunterscheidung hinzufügen, um unerwartete Eingaben zu behandeln.
-- Testen Sie Ihre Skripte gründlich, um sicherzustellen, dass alle möglichen Fälle abgedeckt sind.
+- Achten Sie darauf, die `breaksw` Anweisung zu verwenden, um unerwartete Ausführungen von nachfolgenden Fällen zu vermeiden.
+- Verwenden Sie den `default` Fall, um eine robustere Fehlerbehandlung zu gewährleisten.
+- Halten Sie die Fälle klar und eindeutig, um die Lesbarkeit des Codes zu verbessern.

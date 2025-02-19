@@ -1,42 +1,40 @@
-# [Linux] Bash vigr Verwendung: Bearbeiten von Systemkonfigurationsdateien
+# [Linux] C Shell (csh) vigr Verwendung: Bearbeiten von Systemkonfigurationsdateien
 
 ## Übersicht
-Der Befehl `vigr` wird verwendet, um die Datei `/etc/group` und `/etc/passwd` in einem sicheren Texteditor zu bearbeiten. Er stellt sicher, dass die Datei während der Bearbeitung nicht von anderen Prozessen verändert wird, was zu Inkonsistenzen führen könnte.
+Der Befehl `vigr` wird verwendet, um die Datei `/etc/group` oder `/etc/passwd` in einem sicheren Editor zu bearbeiten. Er stellt sicher, dass die Datei nicht von mehreren Benutzern gleichzeitig bearbeitet wird und überprüft die Datei auf Syntaxfehler, bevor die Änderungen gespeichert werden.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```csh
 vigr [Optionen] [Datei]
 ```
 
 ## Häufige Optionen
-- `-c`: Überprüft die Datei auf Syntaxfehler.
-- `-s`: Startet den Editor im schreibgeschützten Modus.
-- `-h`: Zeigt die Hilfe an und listet alle verfügbaren Optionen auf.
+- `-s`: Startet den Editor im "silent" Modus, ohne zusätzliche Ausgaben.
+- `-c`: Überprüft die Datei auf Syntaxfehler, bevor sie geöffnet wird.
+- `-p`: Gibt den Pfad zur Datei an, die bearbeitet werden soll.
 
 ## Häufige Beispiele
-1. **Öffnen der Standardkonfigurationsdatei:**
-   ```bash
-   vigr
-   ```
+Um die Datei `/etc/passwd` zu bearbeiten:
 
-2. **Öffnen einer spezifischen Datei zur Bearbeitung:**
-   ```bash
-   vigr /etc/group
-   ```
+```csh
+vigr /etc/passwd
+```
 
-3. **Überprüfen der Datei auf Syntaxfehler:**
-   ```bash
-   vigr -c
-   ```
+Um die Datei `/etc/group` im "silent" Modus zu bearbeiten:
 
-4. **Öffnen im schreibgeschützten Modus:**
-   ```bash
-   vigr -s
-   ```
+```csh
+vigr -s /etc/group
+```
+
+Um die Datei `/etc/passwd` auf Syntaxfehler zu überprüfen, bevor sie geöffnet wird:
+
+```csh
+vigr -c /etc/passwd
+```
 
 ## Tipps
-- Verwenden Sie `vigr` immer anstelle von `vi` oder `nano`, um sicherzustellen, dass keine anderen Prozesse die Datei während der Bearbeitung beeinflussen.
+- Verwenden Sie `vigr` anstelle von `vi` oder `nano`, wenn Sie Systemkonfigurationsdateien bearbeiten, um sicherzustellen, dass keine Konflikte auftreten.
+- Überprüfen Sie immer die Datei auf Syntaxfehler, bevor Sie Änderungen speichern, um Probleme im System zu vermeiden.
 - Machen Sie regelmäßig Backups von wichtigen Konfigurationsdateien, bevor Sie Änderungen vornehmen.
-- Nutzen Sie die Option `-c`, um sicherzustellen, dass Ihre Änderungen keine Syntaxfehler verursachen.

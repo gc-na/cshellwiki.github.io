@@ -1,42 +1,43 @@
-# [Linux] Bash readonly Verwendung: Variablen schreibgeschützt machen
+# [Linux] C Shell (csh) readonly Verwendung: Variablen als schreibgeschützt markieren
 
 ## Übersicht
-Der Befehl `readonly` in Bash wird verwendet, um Variablen als schreibgeschützt zu markieren. Einmal als readonly gesetzt, können diese Variablen nicht mehr verändert oder gelöscht werden, was hilfreich ist, um wichtige Werte während der Ausführung eines Skripts zu schützen.
+Der Befehl `readonly` in der C Shell (csh) wird verwendet, um Variablen als schreibgeschützt zu markieren. Einmal als schreibgeschützt festgelegt, können diese Variablen nicht mehr verändert oder gelöscht werden, was hilft, versehentliche Änderungen zu vermeiden.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
-readonly [options] [arguments]
+```csh
+readonly [optionen] [argumente]
 ```
 
 ## Häufige Optionen
-- `-p`: Gibt eine Liste aller readonly-Variablen und deren Werte aus.
+- `-p`: Zeigt alle schreibgeschützten Variablen an.
+- `variable`: Der Name der Variablen, die als schreibgeschützt markiert werden soll.
 
 ## Häufige Beispiele
 
-### Beispiel 1: Eine Variable als readonly setzen
-```bash
-my_var="Hallo Welt"
-readonly my_var
-```
-In diesem Beispiel wird die Variable `my_var` auf "Hallo Welt" gesetzt und anschließend als readonly markiert.
+1. **Eine Variable als schreibgeschützt festlegen:**
+   ```csh
+   set meineVariable = "Hallo Welt"
+   readonly meineVariable
+   ```
 
-### Beispiel 2: Versuch, eine readonly-Variable zu ändern
-```bash
-my_var="Hallo Welt"
-readonly my_var
-my_var="Neue Werte"  # Dies führt zu einem Fehler
-```
-Hier wird ein Fehler ausgegeben, wenn versucht wird, `my_var` zu ändern, da sie als readonly festgelegt wurde.
+2. **Versuch, eine schreibgeschützte Variable zu ändern:**
+   ```csh
+   set meineVariable = "Neue Werte"  # Dies wird einen Fehler verursachen
+   ```
 
-### Beispiel 3: Auflisten aller readonly-Variablen
-```bash
-readonly -p
-```
-Dieser Befehl zeigt alle derzeit als readonly markierten Variablen und deren Werte an.
+3. **Alle schreibgeschützten Variablen anzeigen:**
+   ```csh
+   readonly -p
+   ```
+
+4. **Eine schreibgeschützte Variable löschen (nicht möglich, aber zur Veranschaulichung):**
+   ```csh
+   unset meineVariable  # Dies wird ebenfalls einen Fehler verursachen
+   ```
 
 ## Tipps
-- Verwenden Sie `readonly` für Variablen, die nicht verändert werden sollen, um unbeabsichtigte Fehler zu vermeiden.
-- Überprüfen Sie regelmäßig die Liste der readonly-Variablen mit `readonly -p`, um sicherzustellen, dass wichtige Werte geschützt bleiben.
-- Beachten Sie, dass readonly-Variablen nur im aktuellen Shell-Kontext gelten.
+- Verwenden Sie `readonly`, um wichtige Variablen zu schützen, insbesondere in Skripten, um unbeabsichtigte Änderungen zu vermeiden.
+- Überprüfen Sie regelmäßig mit `readonly -p`, welche Variablen als schreibgeschützt festgelegt sind, um Ihre Umgebung besser zu verwalten.
+- Denken Sie daran, dass `readonly` nur für die aktuelle Shell-Sitzung gilt; beim Neustart der Shell sind die Variablen nicht mehr schreibgeschützt, es sei denn, Sie setzen sie in Ihrer Konfigurationsdatei.

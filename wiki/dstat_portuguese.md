@@ -1,55 +1,48 @@
-# [Linux] Bash dstat Uso: Monitoramento de recursos do sistema em tempo real
+# [Linux] C Shell (csh) dstat Uso: Monitora recursos do sistema em tempo real
 
 ## Overview
-O comando `dstat` é uma ferramenta poderosa para monitorar recursos do sistema em tempo real. Ele combina as funcionalidades de várias ferramentas como `vmstat`, `iostat`, `netstat`, entre outras, permitindo que você visualize informações sobre CPU, memória, disco e rede de forma integrada.
+O comando `dstat` é uma ferramenta poderosa que permite monitorar recursos do sistema em tempo real. Ele combina as funcionalidades de várias ferramentas de monitoramento, como `vmstat`, `iostat`, `netstat`, e `ifstat`, fornecendo uma visão abrangente do desempenho do sistema.
 
 ## Usage
 A sintaxe básica do comando `dstat` é a seguinte:
 
-```bash
+```
 dstat [opções] [argumentos]
 ```
 
 ## Common Options
 Aqui estão algumas opções comuns que você pode usar com o `dstat`:
 
-- `-c`: Mostra a utilização da CPU.
-- `-d`: Exibe a atividade do disco.
-- `-n`: Mostra a atividade da rede.
+- `-c`: Mostra o uso da CPU.
+- `-d`: Exibe estatísticas de disco.
+- `-n`: Mostra estatísticas de rede.
 - `-m`: Exibe informações sobre a memória.
-- `--time`: Adiciona um timestamp à saída.
-- `-r`: Mostra a atividade de leitura e escrita no disco.
+- `--time`: Adiciona um timestamp a cada linha de saída.
 
 ## Common Examples
-Aqui estão alguns exemplos práticos de como usar o `dstat`:
+Aqui estão alguns exemplos práticos do uso do `dstat`:
 
-1. **Monitorar CPU e Disco:**
+1. **Monitorar uso da CPU e da memória:**
    ```bash
-   dstat -cd
+   dstat -c -m
    ```
 
-2. **Monitorar Rede e Memória:**
+2. **Ver estatísticas de disco e rede:**
    ```bash
-   dstat -nm
+   dstat -d -n
    ```
 
-3. **Monitorar todos os recursos com timestamp:**
+3. **Monitorar todos os recursos com timestamps:**
    ```bash
    dstat --time -cdmn
    ```
 
-4. **Salvar a saída em um arquivo:**
+4. **Exibir informações detalhadas de CPU, disco e rede:**
    ```bash
-   dstat -cdmn --output estatisticas.csv
-   ```
-
-5. **Monitorar a utilização da CPU com intervalos de 2 segundos:**
-   ```bash
-   dstat -c 2
+   dstat -t -c -d -n --full
    ```
 
 ## Tips
-- Utilize a opção `--output` para registrar a saída em um arquivo, facilitando a análise posterior.
-- Combine várias opções para obter uma visão abrangente do desempenho do sistema.
-- Experimente diferentes intervalos de tempo para ver como os recursos variam sob diferentes cargas de trabalho.
-- Lembre-se de executar o `dstat` com permissões adequadas, especialmente se você estiver monitorando recursos em um sistema restrito.
+- Utilize o `dstat` em scripts de monitoramento para coletar dados de desempenho ao longo do tempo.
+- Combine várias opções para obter uma visão mais completa do sistema.
+- Considere redirecionar a saída do `dstat` para um arquivo para análise posterior, usando `dstat > output.txt`.

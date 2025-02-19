@@ -1,46 +1,55 @@
-# [Linux] Bash endsw: Mengakhiri eksekusi skrip
+# [Sistem Operasi] C Shell (csh) endsw <Penggunaan setara>: Mengakhiri blok pernyataan if
 
 ## Overview
-Perintah `endsw` dalam Bash digunakan untuk mengakhiri eksekusi skrip atau fungsi. Ini berguna untuk menghentikan proses yang sedang berjalan dan kembali ke shell atau memutuskan eksekusi lebih lanjut dari skrip.
+Perintah `endsw` dalam C Shell (csh) digunakan untuk menandai akhir dari blok pernyataan `switch`. Ini membantu dalam mengorganisir dan mengelompokkan berbagai kasus dalam struktur kontrol alur program.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `endsw`:
 
-```bash
-endsw [options] [arguments]
+```csh
+endsw
 ```
 
 ## Common Options
-- `-h`, `--help`: Menampilkan bantuan dan informasi tentang penggunaan perintah.
-- `-v`, `--version`: Menampilkan versi dari perintah yang digunakan.
+Perintah `endsw` tidak memiliki opsi tambahan. Ini digunakan secara langsung untuk menandai akhir dari blok `switch`.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan perintah `endsw`:
+Berikut adalah beberapa contoh penggunaan `endsw` dalam skrip C Shell:
 
-### Contoh 1: Menghentikan eksekusi skrip
-```bash
-#!/bin/bash
-echo "Skrip dimulai"
+### Contoh 1: Penggunaan dasar
+```csh
+set var = "apple"
+switch ($var)
+    case "apple":
+        echo "Ini adalah apel."
+        breaksw
+    case "banana":
+        echo "Ini adalah pisang."
+        breaksw
+    default:
+        echo "Buah tidak dikenal."
 endsw
-echo "Skrip tidak akan mencapai baris ini"
 ```
 
-### Contoh 2: Menghentikan fungsi
-```bash
-my_function() {
-    echo "Fungsi dimulai"
-    endsw
-    echo "Fungsi tidak akan mencapai baris ini"
-}
-my_function
-```
-
-### Contoh 3: Menggunakan opsi bantuan
-```bash
-endsw --help
+### Contoh 2: Menggunakan `switch` dengan beberapa kasus
+```csh
+set color = "red"
+switch ($color)
+    case "red":
+        echo "Warna merah dipilih."
+        breaksw
+    case "blue":
+        echo "Warna biru dipilih."
+        breaksw
+    case "green":
+        echo "Warna hijau dipilih."
+        breaksw
+    default:
+        echo "Warna tidak dikenal."
+endsw
 ```
 
 ## Tips
-- Gunakan `endsw` dengan bijak untuk memastikan bahwa skrip atau fungsi Anda berhenti pada titik yang tepat.
-- Selalu tambahkan komentar dalam skrip Anda untuk menjelaskan mengapa Anda menggunakan `endsw`, agar lebih mudah dipahami oleh orang lain yang membaca kode Anda.
-- Pertimbangkan untuk menggunakan perintah ini dalam situasi di mana kondisi tertentu terpenuhi, untuk menghindari eksekusi yang tidak diinginkan.
+- Pastikan untuk selalu menggunakan `endsw` setelah blok `switch` untuk menghindari kesalahan dalam skrip.
+- Gunakan `breaksw` di dalam setiap kasus untuk menghentikan eksekusi lebih lanjut setelah kasus yang cocok ditemukan.
+- Strukturkan kode Anda dengan baik agar lebih mudah dibaca dan dipahami, terutama saat menggunakan banyak kasus dalam `switch`.

@@ -1,64 +1,68 @@
-# [Linux] Bash test usage : Vérifier des conditions
+# [Linux] C Shell (csh) test : Vérifie des expressions conditionnelles
 
 ## Overview
-La commande `test` en Bash est utilisée pour évaluer des expressions conditionnelles. Elle permet de vérifier des fichiers, des chaînes de caractères, et des valeurs numériques, facilitant ainsi la prise de décisions dans les scripts.
+La commande `test` est utilisée dans le C Shell pour évaluer des expressions conditionnelles. Elle permet de vérifier des conditions telles que l'existence de fichiers, les comparaisons numériques et les comparaisons de chaînes. Cette commande est souvent utilisée dans des scripts pour contrôler le flux d'exécution.
 
 ## Usage
 La syntaxe de base de la commande `test` est la suivante :
 
-```bash
+```csh
 test [options] [arguments]
 ```
 
 ## Common Options
 Voici quelques options courantes pour la commande `test` :
 
-- `-e [fichier]` : Vérifie si le fichier existe.
-- `-d [répertoire]` : Vérifie si le chemin spécifié est un répertoire.
-- `-f [fichier]` : Vérifie si le chemin spécifié est un fichier régulier.
-- `-z [chaîne]` : Vérifie si la chaîne est vide.
-- `-n [chaîne]` : Vérifie si la chaîne n'est pas vide.
-- `[valeur1] -eq [valeur2]` : Vérifie si les deux valeurs sont égales.
-- `[valeur1] -lt [valeur2]` : Vérifie si la première valeur est inférieure à la seconde.
+- `-e fichier` : Vérifie si le fichier existe.
+- `-f fichier` : Vérifie si le fichier est un fichier régulier.
+- `-d dossier` : Vérifie si le dossier existe et est un répertoire.
+- `-z chaîne` : Vérifie si la longueur de la chaîne est nulle.
+- `-eq` : Vérifie si deux nombres sont égaux.
+- `-ne` : Vérifie si deux nombres ne sont pas égaux.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `test` :
 
-1. Vérifier si un fichier existe :
+### Vérifier l'existence d'un fichier
+```csh
+if ( `test -e monfichier.txt` ) then
+    echo "Le fichier existe."
+else
+    echo "Le fichier n'existe pas."
+endif
+```
 
-   ```bash
-   test -e mon_fichier.txt && echo "Le fichier existe."
-   ```
+### Vérifier si un fichier est un fichier régulier
+```csh
+if ( `test -f monfichier.txt` ) then
+    echo "C'est un fichier régulier."
+else
+    echo "Ce n'est pas un fichier régulier."
+endif
+```
 
-2. Vérifier si un répertoire existe :
+### Comparer deux nombres
+```csh
+set a = 5
+set b = 10
+if ( `test $a -lt $b` ) then
+    echo "$a est inférieur à $b."
+else
+    echo "$a n'est pas inférieur à $b."
+endif
+```
 
-   ```bash
-   test -d mon_repertoire && echo "C'est un répertoire."
-   ```
-
-3. Vérifier si une chaîne est vide :
-
-   ```bash
-   ma_chaine=""
-   test -z "$ma_chaine" && echo "La chaîne est vide."
-   ```
-
-4. Comparer deux nombres :
-
-   ```bash
-   a=5
-   b=10
-   test $a -lt $b && echo "$a est inférieur à $b."
-   ```
-
-5. Vérifier si un fichier est un fichier régulier :
-
-   ```bash
-   test -f mon_script.sh && echo "C'est un fichier régulier."
-   ```
+### Vérifier si une chaîne est vide
+```csh
+set ma_chaine = ""
+if ( `test -z "$ma_chaine"` ) then
+    echo "La chaîne est vide."
+else
+    echo "La chaîne n'est pas vide."
+endif
+```
 
 ## Tips
-- Utilisez `[` comme une alternative à `test`, par exemple : `[ -e mon_fichier.txt ]`.
-- N'oubliez pas d'ajouter des espaces autour des crochets lors de l'utilisation de `[` et `]`.
-- Combinez plusieurs tests avec `&&` et `||` pour créer des conditions plus complexes.
-- Utilisez des parenthèses pour regrouper des expressions si nécessaire, par exemple : `test \( -e fichier1 -o -e fichier2 \)`.
+- Utilisez des parenthèses autour des expressions pour éviter des erreurs de syntaxe.
+- Combinez plusieurs tests avec des opérateurs logiques comme `-a` (et) et `-o` (ou) pour des conditions plus complexes.
+- N'oubliez pas que `test` peut également être utilisé avec des crochets `[` et `]`, par exemple : `[ -e monfichier.txt ]`.

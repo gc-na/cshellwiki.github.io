@@ -1,53 +1,60 @@
-# [Linux] Bash flatpak gebruik: Beheer van applicaties in sandboxed omgevingen
+# [Linux] C Shell (csh) flatpak gebruik: Beheer van applicaties in sandbox-omgevingen
 
-## Overview
-De `flatpak`-opdracht is een hulpmiddel voor het installeren, uitvoeren en beheren van applicaties in een sandboxed omgeving. Dit zorgt ervoor dat applicaties veilig en onafhankelijk van het besturingssysteem kunnen draaien, wat de compatibiliteit en beveiliging verbetert.
+## Overzicht
+De `flatpak`-opdracht wordt gebruikt om applicaties te beheren die zijn verpakt in sandbox-omgevingen. Dit maakt het mogelijk om software te installeren, bij te werken en te verwijderen zonder dat dit invloed heeft op het systeem of andere applicaties.
 
-## Usage
+## Gebruik
 De basis syntaxis van de `flatpak`-opdracht is als volgt:
 
-```bash
+```csh
 flatpak [opties] [argumenten]
 ```
 
-## Common Options
-Hier zijn enkele veelvoorkomende opties voor de `flatpak`-opdracht:
-
+## Veelvoorkomende Opties
 - `install`: Installeert een Flatpak-applicatie.
-- `run`: Voert een geïnstalleerde Flatpak-applicatie uit.
+- `update`: Werkt geïnstalleerde Flatpak-applicaties bij.
 - `remove`: Verwijdert een geïnstalleerde Flatpak-applicatie.
 - `list`: Toont een lijst van geïnstalleerde Flatpak-applicaties.
-- `update`: Werk geïnstalleerde Flatpak-applicaties bij naar de nieuwste versie.
+- `run`: Voert een geïnstalleerde Flatpak-applicatie uit.
 
-## Common Examples
-Hier zijn enkele praktische voorbeelden van het gebruik van de `flatpak`-opdracht:
+## Veelvoorkomende Voorbeelden
 
-1. **Een applicatie installeren:**
-   ```bash
-   flatpak install flathub org.videolan.VLC
-   ```
+### Installeren van een applicatie
+Om een applicatie te installeren, gebruik je de volgende opdracht:
 
-2. **Een applicatie uitvoeren:**
-   ```bash
-   flatpak run org.videolan.VLC
-   ```
+```csh
+flatpak install flathub org.example.AppName
+```
 
-3. **Een applicatie verwijderen:**
-   ```bash
-   flatpak remove org.videolan.VLC
-   ```
+### Bijwerken van applicaties
+Om alle geïnstalleerde Flatpak-applicaties bij te werken, gebruik je:
 
-4. **Een lijst van geïnstalleerde applicaties bekijken:**
-   ```bash
-   flatpak list
-   ```
+```csh
+flatpak update
+```
 
-5. **Geïnstalleerde applicaties bijwerken:**
-   ```bash
-   flatpak update
-   ```
+### Verwijderen van een applicatie
+Om een applicatie te verwijderen, gebruik je:
+
+```csh
+flatpak remove org.example.AppName
+```
+
+### Lijst van geïnstalleerde applicaties
+Om een lijst van alle geïnstalleerde Flatpak-applicaties te bekijken, gebruik je:
+
+```csh
+flatpak list
+```
+
+### Een applicatie uitvoeren
+Om een geïnstalleerde applicatie uit te voeren, gebruik je:
+
+```csh
+flatpak run org.example.AppName
+```
 
 ## Tips
-- Zorg ervoor dat je de juiste repository hebt toegevoegd voordat je een applicatie installeert. De meeste populaire applicaties zijn beschikbaar in de `flathub` repository.
-- Gebruik `flatpak info [applicatie]` om meer informatie over een specifieke applicatie te krijgen, zoals de versie en de geïnstalleerde runtime.
-- Het is handig om regelmatig je Flatpak-applicaties bij te werken om beveiligingspatches en nieuwe functies te ontvangen.
+- Zorg ervoor dat je altijd de laatste versie van Flatpak gebruikt voor de beste compatibiliteit en beveiliging.
+- Gebruik `flatpak info org.example.AppName` om meer informatie over een specifieke applicatie te krijgen.
+- Overweeg om Flatpak-applicaties te installeren vanuit de officiële Flathub-repository voor de meest betrouwbare software.

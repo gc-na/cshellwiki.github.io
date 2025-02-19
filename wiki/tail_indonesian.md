@@ -1,45 +1,44 @@
-# [Linux] Bash tail Penggunaan: Menampilkan bagian akhir dari file
+# [Sistem Operasi] C Shell (csh) tail Penggunaan: Menampilkan bagian akhir dari file
 
 ## Overview
-Perintah `tail` digunakan untuk menampilkan bagian akhir dari file teks. Secara default, `tail` akan menampilkan 10 baris terakhir dari file yang ditentukan. Ini sangat berguna untuk memantau log atau file yang terus diperbarui.
+Perintah `tail` digunakan untuk menampilkan bagian akhir dari file teks. Secara default, `tail` akan menampilkan 10 baris terakhir dari file yang ditentukan, tetapi pengguna dapat mengubah jumlah baris yang ditampilkan sesuai kebutuhan.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `tail`:
 
-```bash
+```csh
 tail [options] [arguments]
 ```
 
 ## Common Options
-- `-n [jumlah]`: Menentukan jumlah baris yang ingin ditampilkan dari akhir file. Contoh: `-n 20` untuk menampilkan 20 baris terakhir.
-- `-f`: Mengikuti file secara real-time. Ini berguna untuk melihat pembaruan yang terjadi pada file log.
-- `-c [jumlah]`: Menampilkan sejumlah byte terakhir dari file. Misalnya, `-c 100` untuk menampilkan 100 byte terakhir.
-- `--help`: Menampilkan bantuan mengenai penggunaan perintah `tail`.
+- `-n [jumlah]` : Menentukan jumlah baris terakhir yang ingin ditampilkan. Misalnya, `-n 20` akan menampilkan 20 baris terakhir.
+- `-f` : Mengikuti file yang sedang ditulis. Ini berguna untuk melihat log secara real-time.
+- `-c [jumlah]` : Menampilkan sejumlah byte terakhir dari file.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `tail`:
 
 1. Menampilkan 10 baris terakhir dari file `log.txt`:
-   ```bash
+   ```csh
    tail log.txt
    ```
 
 2. Menampilkan 20 baris terakhir dari file `data.txt`:
-   ```bash
+   ```csh
    tail -n 20 data.txt
    ```
 
 3. Mengikuti file log `server.log` secara real-time:
-   ```bash
+   ```csh
    tail -f server.log
    ```
 
 4. Menampilkan 50 byte terakhir dari file `output.txt`:
-   ```bash
+   ```csh
    tail -c 50 output.txt
    ```
 
 ## Tips
-- Gunakan opsi `-f` untuk memantau file log secara langsung saat aplikasi sedang berjalan.
-- Kombinasikan `tail` dengan perintah lain menggunakan pipe (`|`) untuk analisis lebih lanjut. Misalnya, `tail -n 100 log.txt | grep "ERROR"` untuk mencari baris yang mengandung kata "ERROR".
-- Jika Anda ingin melihat lebih banyak baris dari file yang lebih besar, pertimbangkan untuk menggunakan `less` atau `more` untuk navigasi yang lebih baik.
+- Gunakan opsi `-f` ketika Anda ingin memantau file log yang terus diperbarui, seperti saat menjalankan aplikasi.
+- Kombinasikan `tail` dengan perintah lain menggunakan pipe (`|`) untuk analisis lebih lanjut, misalnya `tail -n 100 log.txt | grep "ERROR"`.
+- Jika Anda ingin menyimpan output dari `tail` ke dalam file lain, gunakan operator redirection (`>`), contohnya: `tail log.txt > output.txt`.

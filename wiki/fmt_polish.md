@@ -1,46 +1,42 @@
-# [Linux] Bash fmt użycie: Formatowanie tekstu
+# [Linux] C Shell (csh) fmt Użycie: formatowanie tekstu
 
 ## Overview
-Polecenie `fmt` służy do formatowania tekstu, co oznacza, że przekształca tekst w jednolite linie o określonej długości. Jest to przydatne, gdy chcemy poprawić czytelność tekstu lub dostosować go do określonego formatu.
+Polecenie `fmt` w C Shell (csh) służy do formatowania tekstu. Umożliwia automatyczne dostosowywanie długości linii tekstu, co jest przydatne przy przygotowywaniu dokumentów lub tekstów do druku.
 
 ## Usage
-Podstawowa składnia polecenia `fmt` wygląda następująco:
+Podstawowa składnia polecenia `fmt` jest następująca:
 
-```bash
+```
 fmt [opcje] [argumenty]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji dla polecenia `fmt`:
-
-- `-w, --width=NUM` - Ustawia maksymalną długość linii na NUM znaków (domyślnie 75).
-- `-s, --split-only` - Dzieli tekst tylko w miejscach, gdzie występują spacje.
-- `-u, --uniform` - Używa jednolitego odstępu między wyrazami.
+- `-w [liczba]` - Ustala maksymalną długość linii na podaną liczbę znaków.
+- `-s` - Nie łamie linii, które już są krótsze niż maksymalna długość.
+- `-u` - Używa wyrównania do lewej, co może być przydatne w niektórych przypadkach.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `fmt`:
-
-1. Formatowanie pliku tekstowego do domyślnej długości linii:
-   ```bash
+1. **Podstawowe formatowanie tekstu:**
+   ```csh
    fmt tekst.txt
    ```
 
-2. Ustawienie maksymalnej długości linii na 50 znaków:
-   ```bash
+2. **Ustawienie maksymalnej długości linii na 50 znaków:**
+   ```csh
    fmt -w 50 tekst.txt
    ```
 
-3. Formatowanie tekstu z zachowaniem tylko miejsc podziału na spacje:
-   ```bash
+3. **Formatowanie z zachowaniem krótkich linii:**
+   ```csh
    fmt -s tekst.txt
    ```
 
-4. Użycie opcji `-u` do uzyskania jednolitego odstępu:
-   ```bash
+4. **Wyrównanie tekstu do lewej:**
+   ```csh
    fmt -u tekst.txt
    ```
 
 ## Tips
-- Używaj opcji `-w`, aby dostosować długość linii do swoich potrzeb, co może być szczególnie przydatne w dokumentach o różnych formatach.
-- Jeśli pracujesz z długimi tekstami, warto przetestować różne wartości dla opcji `-w`, aby znaleźć najbardziej czytelny układ.
-- Pamiętaj, że `fmt` nie zmienia oryginalnego pliku, chyba że przekierujesz wynik do nowego pliku lub użyjesz opcji `-o`.
+- Używaj opcji `-w`, aby dostosować długość linii do swoich potrzeb, co może poprawić czytelność dokumentów.
+- Sprawdzaj wynik formatowania, aby upewnić się, że tekst jest odpowiednio sformatowany przed jego dalszym użyciem.
+- Możesz używać `fmt` w połączeniu z innymi poleceniami, aby automatycznie formatować tekst w potokach.

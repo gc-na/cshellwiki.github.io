@@ -1,24 +1,22 @@
-# [Linux] Bash chkconfig użycie: Zarządzanie usługami systemowymi
+# [Linux] C Shell (csh) chkconfig użycie: Zarządzanie usługami systemowymi
 
-## Overview
-Polecenie `chkconfig` jest używane do zarządzania usługami systemowymi w systemach Linux, które korzystają z systemu init. Umożliwia włączanie, wyłączanie oraz sprawdzanie statusu usług, co jest kluczowe dla zarządzania działaniem systemu operacyjnego.
+## Przegląd
+Polecenie `chkconfig` służy do zarządzania usługami systemowymi w systemach opartych na Linuxie. Umożliwia użytkownikowi włączanie, wyłączanie oraz sprawdzanie statusu usług, co jest szczególnie przydatne w kontekście zarządzania procesami uruchamianymi przy starcie systemu.
 
-## Usage
+## Użycie
 Podstawowa składnia polecenia `chkconfig` jest następująca:
 
 ```bash
 chkconfig [opcje] [argumenty]
 ```
 
-## Common Options
-Oto kilka powszechnie używanych opcji dla polecenia `chkconfig`:
+## Częste opcje
+- `--list` - wyświetla wszystkie usługi oraz ich status (włączone/wyłączone).
+- `--add` - dodaje nową usługę do zarządzania przez chkconfig.
+- `--del` - usuwa usługę z zarządzania przez chkconfig.
+- `--level` - określa poziomy uruchamiania, w których usługa ma być włączona lub wyłączona.
 
-- `--list` - Wyświetla wszystkie usługi oraz ich status (włączone/wyłączone) dla różnych poziomów uruchamiania.
-- `--add <usługa>` - Dodaje nową usługę do zarządzania przez `chkconfig`.
-- `--del <usługa>` - Usuwa usługę z zarządzania przez `chkconfig`.
-- `--level <poziom>` - Określa poziom uruchamiania, dla którego ma być zastosowana operacja (np. 2, 3, 4, 5).
-
-## Common Examples
+## Przykłady
 Oto kilka praktycznych przykładów użycia polecenia `chkconfig`:
 
 1. **Wyświetlenie statusu wszystkich usług:**
@@ -26,12 +24,12 @@ Oto kilka praktycznych przykładów użycia polecenia `chkconfig`:
    chkconfig --list
    ```
 
-2. **Włączenie usługi:**
+2. **Włączenie usługi przy starcie systemu:**
    ```bash
    chkconfig httpd on
    ```
 
-3. **Wyłączenie usługi:**
+3. **Wyłączenie usługi przy starcie systemu:**
    ```bash
    chkconfig httpd off
    ```
@@ -46,7 +44,7 @@ Oto kilka praktycznych przykładów użycia polecenia `chkconfig`:
    chkconfig --del myservice
    ```
 
-## Tips
+## Wskazówki
 - Zawsze sprawdzaj status usług po ich włączeniu lub wyłączeniu, aby upewnić się, że działają zgodnie z oczekiwaniami.
-- Używaj opcji `--level`, aby precyzyjnie określić, na jakim poziomie uruchamiania ma być aktywna usługa.
+- Używaj opcji `--level`, aby precyzyjnie określić, w których runlevelach ma być aktywna dana usługa.
 - Regularnie przeglądaj listę usług, aby zarządzać nimi efektywnie i unikać niepotrzebnych obciążeń systemu.

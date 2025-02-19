@@ -1,49 +1,57 @@
-# [Linux] Bash renice uso: Adjust process priority
+# [Linux] C Shell (csh) renice用法: Adjust process priority
 
 ## Overview
-The `renice` command in Bash is used to change the priority of running processes. It allows users to modify the "niceness" value of a process, which affects its scheduling priority. A lower niceness value means higher priority, while a higher niceness value means lower priority.
+The `renice` command in C Shell (csh) is used to change the priority of running processes. By adjusting a process's priority, you can influence how much CPU time it receives compared to other processes. A lower nice value means higher priority, while a higher nice value means lower priority.
 
 ## Usage
-The basic syntax of the `renice` command is as follows:
+The basic syntax for the `renice` command is as follows:
 
-```bash
+```csh
 renice [options] [arguments]
 ```
 
 ## Common Options
-- `-n, --priority <number>`: Specify the new niceness value. The value can range from -20 (highest priority) to 19 (lowest priority).
-- `-p, --pid <pid>`: Change the priority of a specific process by its process ID (PID).
-- `-g, --pgroup <pgroup>`: Change the priority of all processes in a specific process group.
-- `-u, --user <user>`: Change the priority of all processes owned by a specific user.
+- `-n`: Specify the new nice value. This is required to change the priority.
+- `-p`: Change the priority of a process by its process ID (PID).
+- `-g`: Change the priority of all processes in a specified group.
+- `-u`: Change the priority of all processes owned by a specified user.
 
 ## Common Examples
-Here are some practical examples of using the `renice` command:
+Here are some practical examples of how to use the `renice` command:
 
-1. **Change the priority of a specific process:**
-   To change the niceness value of a process with PID 1234 to 10:
-   ```bash
+1. **Change the priority of a specific process by PID:**
+
+   ```csh
    renice -n 10 -p 1234
    ```
 
-2. **Increase the priority of a process:**
-   To set the niceness value of a process with PID 5678 to -5:
-   ```bash
-   renice -n -5 -p 5678
+   This command sets the nice value of the process with PID 1234 to 10.
+
+2. **Change the priority of all processes owned by a specific user:**
+
+   ```csh
+   renice -n -5 -u username
    ```
 
-3. **Change the priority for all processes of a user:**
-   To change the niceness value of all processes owned by the user "john" to 15:
-   ```bash
-   renice -n 15 -u john
+   This command lowers the nice value of all processes owned by "username" to -5, giving them higher priority.
+
+3. **Change the priority of a process group:**
+
+   ```csh
+   renice -n 15 -g 5678
    ```
 
-4. **Change the priority of a process group:**
-   To change the priority of all processes in the group with ID 1000 to 0:
-   ```bash
-   renice -n 0 -g 1000
+   This command sets the nice value of all processes in the group with GID 5678 to 15.
+
+4. **Check the current nice value of a process:**
+
+   ```csh
+   ps -o pid,nice,cmd -p 1234
    ```
+
+   While not part of `renice`, this command helps you check the current nice value of the process with PID 1234 before making changes.
 
 ## Tips
-- Use `renice` with caution, especially when lowering the niceness value, as it can affect system performance.
-- You may need superuser privileges (using `sudo`) to change the priority of processes owned by other users.
-- To check the current niceness value of a process, you can use the `ps` command with appropriate options.
+- Always check the current nice value of a process before changing it to avoid unintended consequences.
+- Use negative nice values cautiously, as they can significantly affect system performance by prioritizing certain processes over others.
+- Remember that only the superuser (root) can set a negative nice value; regular users can only increase the nice value (lower priority).

@@ -1,12 +1,12 @@
-# [Linux] Bash export uso equivalente: Establecer variables de entorno
+# [Linux] C Shell (csh) export Uso: Establecer variables de entorno
 
 ## Overview
-El comando `export` en Bash se utiliza para establecer variables de entorno que estarán disponibles para los procesos hijos del shell. Esto permite que las variables definidas en un shell se utilicen en otros programas o scripts que se ejecuten desde ese shell.
+El comando `export` en C Shell (csh) se utiliza para establecer variables de entorno que estarán disponibles para los procesos hijos. Esto es útil para compartir configuraciones y parámetros entre diferentes programas y scripts que se ejecutan en la misma sesión de shell.
 
 ## Usage
 La sintaxis básica del comando `export` es la siguiente:
 
-```bash
+```csh
 export [opciones] [argumentos]
 ```
 
@@ -15,43 +15,32 @@ export [opciones] [argumentos]
 - `-p`: Muestra todas las variables de entorno que están actualmente exportadas.
 
 ## Common Examples
+Aquí hay algunos ejemplos prácticos del uso del comando `export`:
 
-### Establecer una variable de entorno
-Para establecer una variable de entorno llamada `MY_VAR` con el valor `Hello World`, puedes usar:
+1. **Establecer una variable de entorno:**
+   ```csh
+   set MY_VAR="Hola Mundo"
+   export MY_VAR
+   ```
 
-```bash
-export MY_VAR="Hello World"
-```
+2. **Verificar las variables de entorno exportadas:**
+   ```csh
+   export -p
+   ```
 
-### Verificar una variable de entorno
-Para verificar que la variable se ha establecido correctamente, puedes usar el comando `echo`:
+3. **Eliminar la exportación de una variable:**
+   ```csh
+   unset MY_VAR
+   export -n MY_VAR
+   ```
 
-```bash
-echo $MY_VAR
-```
-
-### Exportar múltiples variables
-Puedes exportar múltiples variables en una sola línea:
-
-```bash
-export VAR1="Valor1" VAR2="Valor2"
-```
-
-### Eliminar la exportación de una variable
-Si deseas eliminar la exportación de `MY_VAR`, puedes hacerlo con:
-
-```bash
-export -n MY_VAR
-```
-
-### Listar todas las variables exportadas
-Para ver todas las variables de entorno que has exportado, utiliza:
-
-```bash
-export -p
-```
+4. **Establecer una variable de entorno para un comando específico:**
+   ```csh
+   set PATH="/usr/local/bin:$PATH"
+   export PATH
+   ```
 
 ## Tips
-- Siempre usa comillas alrededor de los valores que contienen espacios para evitar errores.
-- Recuerda que las variables de entorno son sensibles a mayúsculas y minúsculas; `MY_VAR` y `my_var` son diferentes.
-- Para hacer que las variables de entorno persistan entre sesiones, considera añadir el comando `export` en tu archivo de configuración de shell, como `~/.bashrc` o `~/.bash_profile`.
+- Asegúrate de exportar las variables que necesiten ser accesibles por otros programas o scripts.
+- Utiliza `export -p` para revisar las variables de entorno antes de ejecutar un script, asegurándote de que todas las configuraciones necesarias estén presentes.
+- Recuerda que las variables de entorno son sensibles a mayúsculas y minúsculas, así que mantén una convención consistente al nombrarlas.

@@ -1,7 +1,7 @@
-# [Linux] Bash mkswap 使用法: 創建交換空間
+# [台灣] C Shell (csh) mkswap 使用方式: 設定交換區域
 
 ## Overview
-`mkswap` 是一個用於設定交換空間的命令。交換空間是系統用來擴展虛擬記憶體的區域，當物理記憶體不足時，系統會將不常使用的資料移至交換空間。
+mkswap 命令用於設定交換區域，這是 Linux 系統中用來擴展記憶體的一種方式。透過這個命令，使用者可以將磁碟空間轉換為交換空間，以便在系統記憶體不足時使用。
 
 ## Usage
 基本語法如下：
@@ -10,28 +10,34 @@ mkswap [選項] [參數]
 ```
 
 ## Common Options
-- `-L, --label <label>`: 設定交換空間的標籤。
-- `-f, --force`: 強制執行，即使檔案已經被標記為交換空間。
-- `-p, --pagesize <size>`: 指定頁面大小。
+- `-f`：強制執行，即使檔案已經被標記為交換區域。
+- `-L label`：為交換區域指定一個標籤。
+- `-p priority`：設定交換區域的優先權，數字越大優先權越高。
 
 ## Common Examples
-1. 創建一個交換檔案：
+以下是一些常見的使用範例：
+
+1. 設定一個新的交換檔案：
    ```bash
-   sudo fallocate -l 1G /swapfile
-   sudo mkswap /swapfile
+   mkswap /dev/sdX
    ```
 
-2. 設定交換空間的標籤：
+2. 為交換區域指定標籤：
    ```bash
-   sudo mkswap -L my_swap /swapfile
+   mkswap -L my_swap /dev/sdX
    ```
 
-3. 強制重新設置已存在的交換空間：
+3. 設定交換區域的優先權：
    ```bash
-   sudo mkswap -f /swapfile
+   mkswap -p 10 /dev/sdX
+   ```
+
+4. 強制重新設定已存在的交換區域：
+   ```bash
+   mkswap -f /dev/sdX
    ```
 
 ## Tips
-- 在創建交換檔案之前，確保檔案系統有足夠的空間。
-- 使用 `swapon` 命令啟用交換空間，並使用 `swapoff` 停用。
-- 定期檢查交換空間的使用情況，以確保系統性能。
+- 在設定交換區域之前，確保您有足夠的磁碟空間。
+- 使用 `swapon` 命令來啟用交換區域，並確認其是否正常運作。
+- 定期檢查交換區域的使用情況，以確保系統性能最佳。

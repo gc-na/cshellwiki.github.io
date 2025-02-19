@@ -1,41 +1,41 @@
-# [Linux] Bash chgrp Kullanımı: Dosya grubunu değiştirme
+# [Linux] C Shell (csh) chgrp Kullanımı: Grup sahipliğini değiştirme
 
-## Genel Bakış
-`chgrp` komutu, bir dosyanın veya dizinin grup sahipliğini değiştirmek için kullanılır. Bu komut, dosya veya dizinlerin erişim izinlerini yönetmekte önemli bir rol oynar.
+## Overview
+`chgrp` komutu, bir dosya veya dizinin grup sahipliğini değiştirmek için kullanılır. Bu komut, dosya erişim izinlerini yönetmek ve kullanıcı grupları arasında dosya paylaşımını düzenlemek için önemlidir.
 
-## Kullanım
-Temel sözdizimi şu şekildedir:
-```bash
-chgrp [seçenekler] [argümanlar]
+## Usage
+Temel sözdizimi aşağıdaki gibidir:
+```csh
+chgrp [options] [arguments]
 ```
 
-## Yaygın Seçenekler
+## Common Options
 - `-R`: Alt dizinler dahil olmak üzere, belirtilen dizindeki tüm dosya ve dizinlerin grup sahipliğini değiştirir.
-- `-v`: Her bir dosya veya dizin için işlem hakkında bilgi verir.
-- `-c`: Değişiklik yapılan dosyalar hakkında bilgi verir.
+- `-v`: Her değişiklik yapıldığında, hangi dosyanın grup sahipliğinin değiştirildiğini gösterir.
+- `-c`: Sadece değişiklik yapılan dosyalar hakkında bilgi verir.
 
-## Yaygın Örnekler
-1. Bir dosyanın grup sahipliğini değiştirme:
-   ```bash
-   chgrp users dosya.txt
+## Common Examples
+1. Bir dosyanın grup sahipliğini değiştirmek:
+   ```csh
+   chgrp users example.txt
    ```
 
-2. Bir dizinin grup sahipliğini değiştirme:
-   ```bash
-   chgrp admin /path/to/directory
-   ```
-
-3. Alt dizinler dahil tüm dosyaların grup sahipliğini değiştirme:
-   ```bash
+2. Bir dizindeki tüm dosyaların grup sahipliğini değiştirmek için:
+   ```csh
    chgrp -R users /path/to/directory
    ```
 
-4. İşlem hakkında bilgi almak için:
-   ```bash
-   chgrp -v users dosya.txt
+3. Değişikliklerin detaylarını görmek için:
+   ```csh
+   chgrp -v users example.txt
    ```
 
-## İpuçları
-- `chgrp` komutunu kullanmadan önce, dosya veya dizin üzerinde gerekli izinlere sahip olduğunuzdan emin olun.
-- Grup sahipliğini değiştirmeden önce, mevcut grup sahipliğini kontrol etmek için `ls -l` komutunu kullanabilirsiniz.
-- `chgrp` komutunu sıkça kullandığınız dizinler için bir alias tanımlayarak işlemlerinizi hızlandırabilirsiniz.
+4. Sadece değişiklik yapılan dosyalar hakkında bilgi almak için:
+   ```csh
+   chgrp -c users example.txt
+   ```
+
+## Tips
+- `chgrp` komutunu kullanmadan önce, dosya veya dizinin mevcut grup sahipliğini kontrol etmek iyi bir uygulamadır.
+- Grup sahipliğini değiştirmek için yeterli izinlere sahip olduğunuzdan emin olun.
+- `chgrp` komutunu sık sık kullanıyorsanız, sık kullandığınız gruplar için alias tanımlamak işinizi kolaylaştırabilir.

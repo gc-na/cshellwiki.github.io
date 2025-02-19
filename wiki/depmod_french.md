@@ -1,52 +1,45 @@
-# [Linux] Bash depmod : [gérer les modules du noyau]
+# [Linux] C Shell (csh) depmod : [gérer les modules du noyau]
 
 ## Overview
-La commande `depmod` est utilisée pour générer des fichiers de dépendance pour les modules du noyau Linux. Elle analyse les modules présents dans le système et crée des fichiers qui indiquent quelles dépendances existent entre ces modules. Cela permet au système de charger les modules nécessaires au bon fonctionnement du noyau.
+La commande `depmod` est utilisée pour générer des fichiers de dépendances pour les modules du noyau Linux. Elle analyse les modules chargés et crée un fichier qui décrit les dépendances entre eux, facilitant ainsi le chargement et la gestion des modules.
 
 ## Usage
-La syntaxe de base de la commande `depmod` est la suivante :
+La syntaxe de base de la commande est la suivante :
 
-```bash
+```csh
 depmod [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes pour la commande `depmod` :
-
-- `-a` : Ajoute les modules et met à jour les fichiers de dépendance.
-- `-n` : Affiche les dépendances sans les écrire dans les fichiers.
-- `-F <file>` : Utilise un fichier de version spécifique pour les modules.
-- `-r` : Supprime les fichiers de dépendance existants avant de les recréer.
+- `-a` : Met à jour tous les fichiers de dépendance pour tous les modules.
+- `-n` : Ne pas écrire de fichiers, juste afficher les informations à l'écran.
+- `-F <file>` : Spécifie un fichier de version du noyau différent.
+- `-e` : Ignore les erreurs de dépendance.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `depmod` :
 
-1. **Générer les fichiers de dépendance pour tous les modules :**
-   ```bash
-   depmod
-   ```
-
-2. **Mettre à jour les fichiers de dépendance avec l'option -a :**
-   ```bash
+1. **Mettre à jour les dépendances pour tous les modules** :
+   ```csh
    depmod -a
    ```
 
-3. **Afficher les dépendances sans les écrire dans les fichiers :**
-   ```bash
+2. **Afficher les dépendances sans écrire de fichiers** :
+   ```csh
    depmod -n
    ```
 
-4. **Utiliser un fichier de version spécifique :**
-   ```bash
-   depmod -F /lib/modules/$(uname -r)/modules.dep.bin
+3. **Utiliser un fichier de version spécifique** :
+   ```csh
+   depmod -F /path/to/version_file
    ```
 
-5. **Supprimer les fichiers de dépendance existants avant de les recréer :**
-   ```bash
-   depmod -r
+4. **Ignorer les erreurs de dépendance** :
+   ```csh
+   depmod -e
    ```
 
 ## Tips
-- Assurez-vous d'exécuter `depmod` avec les privilèges root pour éviter les problèmes d'autorisation.
-- Utilisez l'option `-n` pour vérifier les dépendances avant de les écrire, ce qui peut être utile pour le débogage.
-- Pensez à exécuter `depmod` après l'installation de nouveaux modules pour garantir que le système reconnaisse les nouvelles dépendances.
+- Assurez-vous d'exécuter `depmod` avec les privilèges appropriés, souvent en tant que superutilisateur, pour éviter les problèmes d'autorisation.
+- Utilisez l'option `-n` pour tester vos modifications sans affecter le système, ce qui est utile lors du débogage.
+- Pensez à exécuter `depmod` après l'installation de nouveaux modules pour garantir que toutes les dépendances sont correctement gérées.

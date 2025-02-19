@@ -1,46 +1,44 @@
-# [Linux] Bash false użycie: Zwraca kod błędu 1
+# [Linux] C Shell (csh) false użycie: Zwraca kod błędu
 
 ## Overview
-Polecenie `false` w systemie Bash jest prostym narzędziem, które zawsze kończy się niepowodzeniem, zwracając kod błędu 1. Jest często używane w skryptach do testowania warunków lub jako miejsce, które wymaga niepowodzenia.
+Polecenie `false` w C Shell (csh) jest prostym narzędziem, które zawsze kończy się błędem, zwracając kod wyjścia 1. Jest to przydatne w skryptach, gdzie potrzebne jest symulowanie błędu lub testowanie warunków.
 
 ## Usage
 Podstawowa składnia polecenia `false` jest następująca:
 
-```bash
+```csh
 false [opcje] [argumenty]
 ```
 
 ## Common Options
-Polecenie `false` nie ma żadnych opcji ani argumentów, które można by użyć. Jego jedyną funkcją jest zwrócenie kodu błędu 1.
+Polecenie `false` nie ma żadnych opcji ani argumentów. Jego jedyną funkcją jest zakończenie działania z kodem błędu.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `false`:
 
-1. **Proste użycie:**
-   ```bash
+1. **Proste użycie**:
+   ```csh
    false
-   echo $?
    ```
-   W tym przykładzie `false` zwróci kod błędu 1, a następnie `echo $?` wyświetli ten kod.
+   To polecenie zakończy się błędem i zwróci kod wyjścia 1.
 
-2. **Użycie w skrypcie warunkowym:**
-   ```bash
-   if false; then
-       echo "To się nie zdarzy."
-   else
-       echo "Zdarzyło się niepowodzenie."
-   fi
+2. **Sprawdzanie kodu wyjścia**:
+   ```csh
+   false
+   if ($status != 0) then
+       echo "Wystąpił błąd."
+   endif
    ```
-   W tym przypadku, ponieważ `false` zawsze zwraca błąd, zostanie wyświetlona wiadomość "Zdarzyło się niepowodzenie."
+   W tym przykładzie, jeśli `false` zakończy się błędem, zostanie wyświetlona wiadomość "Wystąpił błąd."
 
-3. **Użycie w potoku:**
-   ```bash
-   true && false
-   echo $?
+3. **Użycie w skrypcie**:
+   ```csh
+   #!/bin/csh
+   false
+   echo "To nie zostanie wyświetlone, ponieważ false zakończy się błędem."
    ```
-   Tutaj, mimo że `true` zwraca kod 0, `false` kończy się błędem, więc wynik to 1.
+   W tym skrypcie, linia z `echo` nie zostanie wykonana, ponieważ `false` kończy się błędem.
 
 ## Tips
-- Używaj `false` w skryptach, aby symulować błędy lub testować logikę warunkową.
-- Możesz używać `false` w połączeniu z innymi poleceniami, aby kontrolować przepływ skryptów.
+- Używaj `false` w skryptach do testowania warunków, które powinny zakończyć się niepowodzeniem.
+- Możesz użyć `false` w połączeniu z innymi poleceniami, aby kontrolować przepływ skryptu w zależności od kodu wyjścia.
 - Pamiętaj, że `false` nie przyjmuje żadnych argumentów ani opcji, więc nie próbuj ich dodawać.

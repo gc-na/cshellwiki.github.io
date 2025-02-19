@@ -1,49 +1,44 @@
-# [Linux] Bash env Penggunaan: Mengelola Variabel Lingkungan
+# [Sistem Operasi] C Shell (csh) env: Menjalankan perintah dengan lingkungan yang ditentukan
 
 ## Overview
-Perintah `env` digunakan untuk menampilkan atau mengatur variabel lingkungan dalam sistem operasi berbasis Unix. Ini memungkinkan pengguna untuk menjalankan program dalam lingkungan yang ditentukan, serta melihat variabel yang sedang aktif.
+Perintah `env` digunakan untuk menampilkan atau mengatur variabel lingkungan sebelum menjalankan perintah lain. Ini sangat berguna untuk mengatur lingkungan yang diperlukan untuk menjalankan aplikasi tertentu.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `env`:
 
-```bash
+```csh
 env [options] [arguments]
 ```
 
 ## Common Options
-- `-i`: Menjalankan perintah dalam lingkungan kosong, tanpa variabel lingkungan yang ada.
-- `-u`: Menghapus variabel lingkungan yang ditentukan sebelum menjalankan perintah.
-- `VAR=value`: Menetapkan variabel lingkungan baru untuk perintah yang akan dijalankan.
+- `-i`: Menghapus semua variabel lingkungan sebelum menjalankan perintah.
+- `-u <name>`: Menghapus variabel lingkungan tertentu.
+- `<name>=<value>`: Menetapkan variabel lingkungan baru untuk perintah yang akan dijalankan.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `env`:
 
 1. **Menampilkan semua variabel lingkungan:**
-   ```bash
+   ```csh
    env
    ```
 
-2. **Menjalankan perintah dengan lingkungan kosong:**
-   ```bash
-   env -i bash
+2. **Menjalankan perintah dengan variabel lingkungan yang ditentukan:**
+   ```csh
+   env VAR1=value1 VAR2=value2 command
    ```
 
 3. **Menghapus variabel lingkungan tertentu:**
-   ```bash
-   env -u USER bash
+   ```csh
+   env -u VAR1 command
    ```
 
-4. **Menetapkan variabel lingkungan baru saat menjalankan perintah:**
-   ```bash
-   env MY_VAR=hello bash -c 'echo $MY_VAR'
-   ```
-
-5. **Menjalankan skrip dengan variabel lingkungan yang ditentukan:**
-   ```bash
-   env PATH=/usr/local/bin:$PATH ./myscript.sh
+4. **Menjalankan perintah dalam lingkungan kosong:**
+   ```csh
+   env -i command
    ```
 
 ## Tips
-- Gunakan `env` untuk menghindari konflik variabel lingkungan saat menjalankan skrip atau aplikasi.
-- Memanfaatkan opsi `-i` sangat berguna untuk debugging, karena Anda dapat melihat bagaimana program berfungsi tanpa variabel lingkungan yang ada.
-- Selalu periksa variabel lingkungan yang aktif dengan `env` sebelum menjalankan perintah yang sensitif terhadap lingkungan.
+- Gunakan `env` untuk menguji aplikasi dalam lingkungan yang bersih tanpa variabel yang tidak diinginkan.
+- Selalu periksa variabel lingkungan yang ada sebelum menjalankan aplikasi untuk memastikan bahwa aplikasi tersebut memiliki semua yang dibutuhkan.
+- Kombinasikan `env` dengan skrip shell untuk mengatur lingkungan secara dinamis sebelum menjalankan program.

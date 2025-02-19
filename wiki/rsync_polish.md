@@ -1,44 +1,47 @@
-# [Linux] Bash rsync użycie: Synchronizacja plików i katalogów
+# [Linux] C Shell (csh) rsync użycie: Synchronizacja plików i katalogów
 
 ## Overview
-Rsync to potężne narzędzie do synchronizacji plików i katalogów między różnymi lokalizacjami. Umożliwia efektywne przesyłanie danych, minimalizując ilość przesyłanych danych dzięki mechanizmowi różnicowemu.
+Rsync to potężne narzędzie do synchronizacji plików i katalogów między lokalnym a zdalnym systemem. Umożliwia efektywne przesyłanie danych, minimalizując ilość przesyłanych informacji poprzez kopiowanie tylko zmienionych fragmentów plików.
 
 ## Usage
-Podstawowa składnia polecenia rsync wygląda następująco:
+Podstawowa składnia polecenia rsync jest następująca:
 
 ```bash
-rsync [opcje] [źródło] [cel]
+rsync [options] [arguments]
 ```
 
 ## Common Options
-- `-a`: Archiwizuje, co oznacza, że zachowuje uprawnienia, symlink, itp.
-- `-v`: Włącza tryb szczegółowy, aby wyświetlić postęp operacji.
+- `-a`: Archiwizuje pliki, zachowując ich uprawnienia, daty modyfikacji i inne atrybuty.
+- `-v`: Włącza tryb szczegółowy, wyświetlając postęp operacji.
 - `-z`: Kompresuje dane podczas przesyłania, co może przyspieszyć transfer.
 - `-r`: Rekurencyjnie synchronizuje katalogi.
-- `--delete`: Usuwa pliki w katalogu docelowym, które nie istnieją w katalogu źródłowym.
+- `--delete`: Usuwa pliki w docelowym katalogu, które nie istnieją w źródłowym.
 
 ## Common Examples
-1. Synchronizacja lokalnego katalogu z innym lokalnym katalogiem:
-   ```bash
-   rsync -av /ścieżka/do/katalogu1/ /ścieżka/do/katalogu2/
-   ```
+- Synchronizacja lokalnego katalogu do zdalnego serwera:
+  ```bash
+  rsync -av /local/directory/ user@remote:/remote/directory/
+  ```
 
-2. Synchronizacja lokalnego katalogu z katalogiem na zdalnym serwerze:
-   ```bash
-   rsync -av /ścieżka/do/katalogu/ użytkownik@serwer:/ścieżka/do/katalogu/
-   ```
+- Synchronizacja zdalnego katalogu do lokalnego:
+  ```bash
+  rsync -av user@remote:/remote/directory/ /local/directory/
+  ```
 
-3. Synchronizacja z kompresją:
-   ```bash
-   rsync -avz /ścieżka/do/katalogu/ użytkownik@serwer:/ścieżka/do/katalogu/
-   ```
+- Synchronizacja z kompresją:
+  ```bash
+  rsync -avz /local/directory/ user@remote:/remote/directory/
+  ```
 
-4. Synchronizacja z usunięciem nieaktualnych plików:
-   ```bash
-   rsync -av --delete /ścieżka/do/katalogu1/ /ścieżka/do/katalogu2/
-   ```
+- Synchronizacja z usunięciem niepotrzebnych plików:
+  ```bash
+  rsync -av --delete /local/directory/ user@remote:/remote/directory/
+  ```
 
 ## Tips
-- Zawsze testuj polecenie z opcją `-n` (symulacja), aby zobaczyć, co zostanie zrobione, zanim faktycznie wykonasz synchronizację.
-- Używaj opcji `-e` do określenia protokołu SSH, jeśli synchronizujesz zdalnie, np. `rsync -av -e ssh /ścieżka/do/katalogu/ użytkownik@serwer:/ścieżka/do/katalogu/`.
-- Regularnie twórz kopie zapasowe ważnych danych przed użyciem opcji `--delete`.
+- Zawsze testuj polecenie rsync z opcją `-n` (dry run), aby zobaczyć, co zostanie zrobione, zanim wykonasz rzeczywistą synchronizację.
+- Używaj opcji `-e` do określenia protokołu SSH, jeśli chcesz zabezpieczyć transfer:
+  ```bash
+  rsync -av -e ssh /local/directory/ user@remote:/remote/directory/
+  ```
+- Regularnie twórz kopie zapasowe ważnych danych, korzystając z rsync, aby zapewnić ich bezpieczeństwo.

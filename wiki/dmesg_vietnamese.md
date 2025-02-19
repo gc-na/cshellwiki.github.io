@@ -1,49 +1,42 @@
-# [Linux] Bash dmesg Cách sử dụng: Xem thông tin log kernel
+# [Hệ điều hành] C Shell (csh) dmesg Cách sử dụng: Xem thông tin hệ thống khởi động
 
 ## Tổng quan
-Lệnh `dmesg` được sử dụng để hiển thị thông tin log của kernel, giúp người dùng theo dõi các sự kiện hệ thống, thông báo lỗi, và trạng thái của phần cứng. Đây là công cụ hữu ích cho việc gỡ lỗi và phân tích các vấn đề liên quan đến hệ thống.
+Lệnh `dmesg` được sử dụng để hiển thị các thông báo từ bộ đệm của kernel, thường chứa thông tin về quá trình khởi động hệ thống và các sự kiện phần cứng. Nó rất hữu ích cho việc chẩn đoán sự cố và theo dõi hoạt động của hệ thống.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `dmesg` như sau:
 ```
-dmesg [options] [arguments]
+dmesg [tùy chọn] [đối số]
 ```
 
 ## Các tùy chọn phổ biến
-- `-c`: Xóa log sau khi hiển thị.
-- `-n level`: Đặt mức độ thông báo tối thiểu để hiển thị.
-- `-T`: Hiển thị thời gian dạng con người (human-readable).
-- `--follow`: Theo dõi log theo thời gian thực.
+- `-c`: Xóa bộ đệm sau khi hiển thị thông tin.
+- `-n <mức độ>`: Thiết lập mức độ thông báo được hiển thị.
+- `-T`: Hiển thị thời gian theo định dạng dễ đọc.
+- `-f <loại>`: Chỉ hiển thị thông báo từ loại cụ thể.
 
 ## Ví dụ thường gặp
-Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `dmesg`:
+- Hiển thị tất cả thông báo từ bộ đệm kernel:
+  ```csh
+  dmesg
+  ```
 
-1. Hiển thị tất cả thông tin log kernel:
-   ```bash
-   dmesg
-   ```
+- Hiển thị thông báo với thời gian dễ đọc:
+  ```csh
+  dmesg -T
+  ```
 
-2. Hiển thị log với thời gian dạng con người:
-   ```bash
-   dmesg -T
-   ```
+- Xóa bộ đệm sau khi hiển thị thông báo:
+  ```csh
+  dmesg -c
+  ```
 
-3. Xóa log sau khi hiển thị:
-   ```bash
-   dmesg -c
-   ```
-
-4. Theo dõi log theo thời gian thực:
-   ```bash
-   dmesg --follow
-   ```
-
-5. Đặt mức độ thông báo tối thiểu là thông báo cảnh báo:
-   ```bash
-   dmesg -n 1
-   ```
+- Chỉ hiển thị thông báo từ loại lỗi:
+  ```csh
+  dmesg -f err
+  ```
 
 ## Mẹo
-- Sử dụng `dmesg | less` để dễ dàng cuộn qua các thông báo dài.
-- Kết hợp với `grep` để tìm kiếm thông báo cụ thể, ví dụ: `dmesg | grep error`.
-- Thường xuyên kiểm tra log kernel khi gặp sự cố phần cứng hoặc lỗi hệ thống để có thông tin chi tiết hơn.
+- Sử dụng `dmesg | less` để dễ dàng cuộn qua thông báo dài.
+- Kiểm tra thường xuyên thông báo từ `dmesg` để phát hiện sớm các vấn đề phần cứng.
+- Kết hợp `dmesg` với các lệnh khác như `grep` để tìm kiếm thông tin cụ thể.

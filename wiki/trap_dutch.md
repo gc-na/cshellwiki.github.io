@@ -1,54 +1,58 @@
-# [Linux] Bash trap gebruik: Beheer signalen en exit-statussen
+# [Linux] C Shell (csh) trap gebruik: Beheer signalen en beëindigingen
 
 ## Overzicht
-De `trap`-opdracht in Bash wordt gebruikt om signalen en exit-statussen te beheren. Hiermee kun je specifieke acties uitvoeren wanneer een script een bepaald signaal ontvangt of wanneer het beëindigd wordt. Dit is handig voor het opschonen van bronnen of het uitvoeren van bepaalde taken voordat een script stopt.
+De `trap`-opdracht in C Shell (csh) wordt gebruikt om signalen en beëindigingen van processen te beheren. Hiermee kun je specifieke acties definiëren die moeten worden uitgevoerd wanneer een bepaald signaal wordt ontvangen, zoals het beëindigen van een script of het uitvoeren van een opruimactie.
 
 ## Gebruik
 De basis syntaxis van de `trap`-opdracht is als volgt:
 
-```bash
-trap [opties] [commando's]
+```csh
+trap [actie] [signaal]
 ```
 
 ## Veelvoorkomende opties
-- `SIGINT`: Dit signaal wordt verzonden wanneer de gebruiker Ctrl+C indrukt. Je kunt `trap` gebruiken om een commando uit te voeren in plaats van het script abrupt te beëindigen.
-- `EXIT`: Dit signaal wordt verzonden wanneer het script eindigt. Je kunt hiermee een opruimcommando uitvoeren.
-- `SIGTERM`: Dit signaal wordt verzonden om een proces te beëindigen. Je kunt hierop reageren met een specifieke actie.
+- `action`: De actie die moet worden uitgevoerd wanneer het opgegeven signaal wordt ontvangen. Dit kan een commando zijn of een reeks commando's.
+- `signal`: Het signaal dat je wilt opvangen, zoals `INT` (interrupt), `TERM` (terminate) of `QUIT`.
 
 ## Veelvoorkomende voorbeelden
 
-### Voorbeeld 1: Afhandelen van SIGINT
-Dit voorbeeld toont hoe je een script kunt laten reageren op Ctrl+C:
+### Voorbeeld 1: Basis gebruik van trap
+Dit voorbeeld toont hoe je een script kunt beëindigen met een bericht wanneer het `INT`-signaal (bijvoorbeeld Ctrl+C) wordt ontvangen.
 
-```bash
-trap 'echo "Script onderbroken"; exit' SIGINT
-while true; do
-    echo "Voer een taak uit..."
-    sleep 1
-done
-```
-
-### Voorbeeld 2: Opruimen bij beëindigen
-Hier is een voorbeeld dat een opruimactie uitvoert wanneer het script eindigt:
-
-```bash
-trap 'echo "Opruimen..."; rm -f /tmp/mijnbestand' EXIT
-echo "Script aan het draaien..."
-sleep 5
-```
-
-### Voorbeeld 3: Afhandelen van meerdere signalen
-In dit voorbeeld worden meerdere signalen afgehandeld:
-
-```bash
-trap 'echo "Script beëindigd"; exit' SIGINT SIGTERM
-while true; do
+```csh
+#!/bin/csh
+trap 'echo "Script beëindigd door gebruiker"; exit' INT
+while (1)
     echo "Script draait..."
     sleep 1
-done
+end
+```
+
+### Voorbeeld 2: Opruimactie bij beëindiging
+Hier is een voorbeeld waarbij een opruimactie wordt uitgevoerd voordat het script wordt beëindigd.
+
+```csh
+#!/bin/csh
+trap 'echo "Opruimen..."; rm -f temp.txt; exit' TERM
+echo "Script draait. Stuur een TERM signaal om te beëindigen."
+while (1)
+    sleep 1
+end
+```
+
+### Voorbeeld 3: Meerdere signalen opvangen
+In dit voorbeeld worden meerdere signalen opgevangen en wordt dezelfde actie uitgevoerd.
+
+```csh
+#!/bin/csh
+trap 'echo "Script beëindigd"; exit' INT TERM
+while (1)
+    echo "Script draait..."
+    sleep 1
+end
 ```
 
 ## Tips
-- Gebruik `trap` om ervoor te zorgen dat belangrijke opruimacties worden uitgevoerd, zelfs als een script onverwacht wordt beëindigd.
-- Test je scripts grondig om er zeker van te zijn dat de `trap`-commando's correct reageren op de gewenste signalen.
-- Houd rekening met de volgorde van signalen; sommige signalen kunnen andere signalen overschrijven of negeren.
+- Zorg ervoor dat je de juiste signalen opvangt die relevant zijn voor jouw script.
+- Gebruik duidelijke en informatieve berichten in je acties om de gebruiker te informeren over wat er gebeurt.
+- Test je scripts grondig om ervoor te zorgen dat de `trap`-opdrachten correct functioneren in verschillende scenario's.

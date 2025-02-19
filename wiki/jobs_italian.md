@@ -1,51 +1,44 @@
-# [Linux] Bash jobs utilizzo: Gestire i processi in background
+# [Linux] C Shell (csh) jobs uso equivalente: visualizzare i processi in background
 
 ## Overview
-Il comando `jobs` in Bash è utilizzato per visualizzare i processi in background e in sospensione che sono stati avviati dalla shell corrente. Questo comando è utile per monitorare e gestire i lavori che non sono attualmente in esecuzione in primo piano.
+Il comando `jobs` in C Shell (csh) è utilizzato per visualizzare i processi in background e in sospensione avviati dalla shell corrente. Questo comando è utile per gestire e monitorare i processi che non sono attualmente in primo piano.
 
 ## Usage
-La sintassi di base del comando `jobs` è la seguente:
+La sintassi di base del comando è la seguente:
 
-```bash
+```csh
 jobs [options] [arguments]
 ```
 
 ## Common Options
-- `-l`: Mostra il PID (Process ID) dei processi.
-- `-n`: Mostra solo i lavori che sono cambiati di stato dall'ultima esecuzione del comando.
-- `-p`: Mostra solo i PID dei processi in background.
+- `-l`: Mostra i numeri di processo (PID) insieme agli stati dei lavori.
+- `-n`: Mostra solo i lavori che sono cambiati di stato dall'ultima volta che è stato eseguito il comando.
+- `-p`: Mostra solo i numeri di processo dei lavori.
 
 ## Common Examples
+Ecco alcuni esempi pratici dell'uso del comando `jobs`:
 
-### Visualizzare i lavori attivi
-Per visualizzare i processi in background e in sospensione, basta eseguire:
+1. **Visualizzare tutti i lavori in background:**
+   ```csh
+   jobs
+   ```
 
-```bash
-jobs
-```
+2. **Visualizzare i lavori con i numeri di processo:**
+   ```csh
+   jobs -l
+   ```
 
-### Visualizzare i lavori con PID
-Per ottenere informazioni sui lavori attivi insieme ai loro PID, usa l'opzione `-l`:
+3. **Visualizzare solo i lavori che sono cambiati di stato:**
+   ```csh
+   jobs -n
+   ```
 
-```bash
-jobs -l
-```
-
-### Mostrare solo i lavori modificati
-Se desideri vedere solo i lavori che hanno cambiato stato dall'ultima volta che hai eseguito il comando, utilizza:
-
-```bash
-jobs -n
-```
-
-### Mostrare solo i PID dei processi
-Per visualizzare solo i PID dei processi in background, puoi usare:
-
-```bash
-jobs -p
-```
+4. **Visualizzare solo i numeri di processo dei lavori:**
+   ```csh
+   jobs -p
+   ```
 
 ## Tips
-- Ricorda che il comando `jobs` mostra solo i processi avviati dalla shell corrente. Se hai aperto più shell, dovrai eseguire `jobs` in ciascuna di esse per vedere i relativi processi.
-- Utilizza `fg` per riportare un lavoro in primo piano e `bg` per continuare un lavoro in background.
-- È utile eseguire `jobs` frequentemente per tenere traccia dei processi in esecuzione e gestirli in modo efficace.
+- Utilizza `jobs` frequentemente per tenere traccia dei tuoi processi in background, specialmente quando lavori con più attività contemporaneamente.
+- Ricorda che i lavori in background possono essere riportati in primo piano usando il comando `fg` seguito dal numero del lavoro.
+- Se hai bisogno di terminare un lavoro, puoi utilizzare il comando `kill` con il numero di processo mostrato da `jobs -l`.

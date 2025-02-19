@@ -1,64 +1,63 @@
-# [Linux] Bash if gebruik: Voorwaardelijke uitvoering van commando's
+# [Unix] C Shell (csh) if gebruik: Voorwaardelijke uitvoering van commando's
 
 ## Overzicht
-De `if`-opdracht in Bash wordt gebruikt om voorwaardelijke logica in scripts te implementeren. Hiermee kun je bepalen welke commando's moeten worden uitgevoerd op basis van de evaluatie van een bepaalde voorwaarde.
+De `if`-opdracht in C Shell (csh) wordt gebruikt om voorwaardelijke logica toe te passen in scripts. Hiermee kun je bepaalde commando's uitvoeren op basis van de evaluatie van een voorwaarde.
 
 ## Gebruik
 De basis syntaxis van de `if`-opdracht is als volgt:
 
-```bash
-if [ voorwaarde ]; then
-    # commando's die uitgevoerd worden als de voorwaarde waar is
-fi
+```
+if (voorwaarde) 
+    commando
+endif
 ```
 
-## Veelvoorkomende opties
+## Veelvoorkomende Opties
 - `-e`: Controleert of een bestand bestaat.
-- `-d`: Controleert of een directory bestaat.
-- `-f`: Controleert of een bestand een regulier bestand is.
-- `-z`: Controleert of een string leeg is.
-- `-n`: Controleert of een string niet leeg is.
+- `-d`: Controleert of een pad een directory is.
+- `-f`: Controleert of een pad een regulier bestand is.
+- `==`: Vergelijkt twee strings op gelijkheid.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
 
-### Voorbeeld 1: Bestaan van een bestand controleren
-```bash
-if [ -e "bestand.txt" ]; then
+### Voorbeeld 1: Bestandscontrole
+Controleer of een bestand bestaat en voer een commando uit.
+```csh
+if (-e bestand.txt) then
     echo "Het bestand bestaat."
-else
-    echo "Het bestand bestaat niet."
-fi
+endif
 ```
 
-### Voorbeeld 2: Controleer of een directory bestaat
-```bash
-if [ -d "mijn_map" ]; then
-    echo "De map bestaat."
-else
-    echo "De map bestaat niet."
-fi
+### Voorbeeld 2: Directorycontrole
+Controleer of een pad een directory is.
+```csh
+if (-d /pad/naar/directory) then
+    echo "Dit is een directory."
+endif
 ```
 
-### Voorbeeld 3: Controleer of een variabele leeg is
-```bash
-VAR=""
-if [ -z "$VAR" ]; then
-    echo "De variabele is leeg."
-else
-    echo "De variabele is niet leeg."
-fi
+### Voorbeeld 3: Stringvergelijking
+Vergelijk twee strings.
+```csh
+set naam = "John"
+if ("$naam" == "John") then
+    echo "Hallo John!"
+endif
 ```
 
-### Voorbeeld 4: Vergelijking van getallen
-```bash
-a=5
-b=10
-if [ $a -lt $b ]; then
-    echo "$a is kleiner dan $b."
-fi
+### Voorbeeld 4: Meerdere voorwaarden
+Gebruik geneste `if`-structuren voor complexere logica.
+```csh
+if (-e bestand.txt) then
+    echo "Het bestand bestaat."
+else if (-e ander_bestand.txt) then
+    echo "Het andere bestand bestaat."
+else
+    echo "Geen van beide bestanden bestaat."
+endif
 ```
 
 ## Tips
-- Zorg ervoor dat je spaties gebruikt rondom de haakjes in de `if`-opdracht, anders kan de syntaxis fout zijn.
-- Gebruik `elif` voor meerdere voorwaarden en `else` voor alternatieve acties.
-- Test je scripts grondig om ervoor te zorgen dat de voorwaarden correct worden geëvalueerd.
+- Zorg ervoor dat je de juiste haakjes gebruikt bij de voorwaarden.
+- Gebruik duidelijke en beschrijvende namen voor je variabelen om de leesbaarheid te verbeteren.
+- Test je scripts met verschillende voorwaarden om onvoorziene fouten te voorkomen.

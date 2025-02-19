@@ -1,46 +1,44 @@
-# [Linux] Bash vmstat Kullanımı: Sistem kaynaklarını izleme aracı
+# [Linux] C Shell (csh) vmstat Kullanımı: Sistem performansını izleme aracı
 
 ## Genel Bakış
-`vmstat` komutu, sistemin bellek, işlemci ve I/O (giriş/çıkış) durumunu izlemek için kullanılır. Bu komut, sistem performansını değerlendirmek ve sorunları teşhis etmek için yararlıdır.
+`vmstat` komutu, sistemin bellek, işlemci ve diğer kaynaklarının kullanımını izlemek için kullanılan bir araçtır. Bu komut, sistemin genel performansını değerlendirmek ve potansiyel sorunları tespit etmek için yararlıdır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-```bash
+```csh
 vmstat [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
 - `-a`: Tüm bellek alanlarını gösterir.
-- `-m`: Bellek sayfalarının istatistiklerini gösterir.
-- `-s`: Bellek istatistiklerini tablo halinde gösterir.
+- `-m`: Bellek sayfalarının kullanımını gösterir.
+- `-s`: Bellek istatistiklerini toplu olarak gösterir.
 - `-d`: Disk istatistiklerini gösterir.
-- `-t`: Zaman damgası ekler.
 
 ## Yaygın Örnekler
-1. Sistem durumunu 5 saniye aralıklarla görüntülemek için:
-   ```bash
-   vmstat 5
+Aşağıda `vmstat` komutunun bazı pratik kullanımları bulunmaktadır:
+
+1. **Temel sistem durumu görüntüleme:**
+   ```csh
+   vmstat
    ```
 
-2. Bellek istatistiklerini detaylı bir şekilde görüntülemek için:
-   ```bash
-   vmstat -a
+2. **Her 2 saniyede bir sistem durumu görüntüleme:**
+   ```csh
+   vmstat 2
    ```
 
-3. Disk istatistiklerini görüntülemek için:
-   ```bash
+3. **Bellek istatistiklerini gösterme:**
+   ```csh
+   vmstat -s
+   ```
+
+4. **Disk istatistiklerini görüntüleme:**
+   ```csh
    vmstat -d
    ```
 
-4. Zaman damgası ile birlikte sistem durumunu görüntülemek için:
-   ```bash
-   vmstat -t 5
-   ```
-
 ## İpuçları
-- `vmstat` çıktısını analiz ederken, sistemin genel performansını değerlendirmek için diğer izleme araçlarıyla birlikte kullanın.
-- Çıktıyı bir dosyaya yönlendirmek için `>` operatörünü kullanarak verileri kaydedebilirsiniz:
-  ```bash
-  vmstat 5 > vmstat_output.txt
-  ```
-- Uzun süreli izleme için `vmstat` komutunu bir arka plan işlemi olarak çalıştırabilirsiniz.
+- `vmstat` çıktısını analiz ederken, bellek ve işlemci kullanımını dikkate alarak sistemin performansını değerlendirin.
+- Uzun süreli izleme için `vmstat` komutunu bir betik içinde kullanarak belirli aralıklarla çıktıyı kaydedebilirsiniz.
+- `vmstat` çıktısını diğer sistem izleme araçlarıyla birleştirerek daha kapsamlı bir analiz yapabilirsiniz.

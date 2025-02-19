@@ -1,7 +1,7 @@
-# [Linux] Bash sed Uso: Herramienta para la manipulación de texto
+# [Linux] C Shell (csh) sed Uso: Herramienta para manipular texto
 
 ## Overview
-El comando `sed`, que significa "stream editor", es una herramienta poderosa en Bash utilizada para realizar transformaciones básicas en texto. Permite editar, buscar y reemplazar texto en archivos o flujos de datos de manera eficiente.
+El comando `sed` (Stream Editor) es una herramienta poderosa en Unix y Linux que permite realizar transformaciones de texto en un flujo de datos. Se utiliza comúnmente para buscar, reemplazar, insertar o eliminar texto en archivos o en la entrada estándar.
 
 ## Usage
 La sintaxis básica del comando `sed` es la siguiente:
@@ -11,42 +11,45 @@ sed [opciones] [argumentos]
 ```
 
 ## Common Options
-- `-e`: Permite agregar múltiples expresiones de edición.
-- `-i`: Edita los archivos en su lugar (in-place), modificando el archivo original.
-- `-n`: Suprime la salida automática, permitiendo mostrar solo las líneas que se especifiquen.
-- `s/patrón/reemplazo/`: Realiza una sustitución del patrón por el reemplazo.
+- `-e`: Permite especificar múltiples expresiones de edición.
+- `-i`: Edita archivos en el lugar, modificando el archivo original.
+- `-n`: Suprime la salida automática, permitiendo mostrar solo las líneas que coinciden con las expresiones.
+- `s`: Realiza una sustitución de texto.
 
 ## Common Examples
+Aquí hay algunos ejemplos prácticos del uso de `sed`:
 
-### 1. Reemplazar texto en un archivo
-Para reemplazar todas las ocurrencias de "manzana" por "naranja" en un archivo llamado `frutas.txt`:
+1. **Reemplazar texto en un archivo**:
+   ```bash
+   sed 's/hola/adiós/' archivo.txt
+   ```
+   Este comando reemplaza la primera aparición de "hola" por "adiós" en cada línea de `archivo.txt`.
 
-```bash
-sed -i 's/manzana/naranja/g' frutas.txt
-```
+2. **Reemplazar todas las apariciones de un texto**:
+   ```bash
+   sed 's/hola/adiós/g' archivo.txt
+   ```
+   Aquí, el modificador `g` indica que se deben reemplazar todas las apariciones de "hola" por "adiós".
 
-### 2. Mostrar solo líneas que contienen un patrón
-Para mostrar solo las líneas que contienen la palabra "error" en un archivo de registro:
+3. **Eliminar líneas específicas**:
+   ```bash
+   sed '3d' archivo.txt
+   ```
+   Este comando elimina la tercera línea del archivo `archivo.txt`.
 
-```bash
-sed -n '/error/p' registro.log
-```
+4. **Modificar un archivo en el lugar**:
+   ```bash
+   sed -i 's/hola/adiós/g' archivo.txt
+   ```
+   Con la opción `-i`, este comando reemplaza "hola" por "adiós" directamente en `archivo.txt`.
 
-### 3. Eliminar líneas vacías
-Para eliminar todas las líneas vacías de un archivo:
-
-```bash
-sed '/^$/d' archivo.txt
-```
-
-### 4. Cambiar el delimitador en la sustitución
-Si el texto a reemplazar contiene barras (`/`), se puede usar otro delimitador, como `|`:
-
-```bash
-sed -i 's|/usr/bin|/usr/local/bin|g' rutas.txt
-```
+5. **Mostrar solo líneas que coinciden con un patrón**:
+   ```bash
+   sed -n '/hola/p' archivo.txt
+   ```
+   Este comando muestra solo las líneas que contienen "hola" en `archivo.txt`.
 
 ## Tips
-- Siempre es recomendable hacer una copia de seguridad del archivo original antes de usar la opción `-i`.
-- Puedes combinar múltiples comandos de `sed` utilizando `-e` para realizar varias ediciones en una sola ejecución.
-- Usa `sed` en combinación con otros comandos de Unix, como `grep`, para un procesamiento de texto más avanzado.
+- Siempre es recomendable hacer una copia de seguridad de los archivos antes de realizar ediciones en el lugar con `-i`.
+- Utiliza comillas simples para evitar que el shell interprete caracteres especiales en las expresiones de `sed`.
+- Prueba tus comandos de `sed` sin la opción `-i` primero para asegurarte de que los resultados sean los esperados.

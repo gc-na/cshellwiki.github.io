@@ -1,55 +1,52 @@
-# [Linux] Bash udevadm Penggunaan: Mengelola perangkat di Linux
+# [Linux] C Shell (csh) udevadm Penggunaan: Mengelola perangkat di Linux
 
 ## Overview
-Perintah `udevadm` adalah alat yang digunakan untuk mengelola perangkat di sistem Linux. Ia berfungsi untuk berinteraksi dengan sistem udev, yang bertanggung jawab untuk mengelola perangkat keras yang terhubung ke sistem, seperti USB, hard drive, dan perangkat lainnya. Dengan `udevadm`, pengguna dapat memantau, mengkonfigurasi, dan mengelola aturan perangkat.
+Perintah `udevadm` digunakan untuk mengelola perangkat di sistem Linux. Ini berfungsi untuk berinteraksi dengan daemon udev, yang bertanggung jawab untuk mengelola perangkat keras yang terhubung ke sistem, termasuk pengenalan, pengaturan, dan penghapusan perangkat.
 
 ## Usage
-Sintaks dasar dari perintah `udevadm` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `udevadm`:
 
-```
+```csh
 udevadm [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum untuk `udevadm` beserta penjelasannya:
-
 - `info`: Menampilkan informasi tentang perangkat tertentu.
-- `trigger`: Memicu udev untuk memproses perangkat yang terhubung.
-- `settle`: Menunggu hingga semua perangkat telah diproses.
-- `control`: Mengontrol perilaku daemon udev.
+- `trigger`: Memicu udev untuk memproses semua perangkat.
+- `settle`: Menunggu hingga semua perubahan perangkat selesai diproses.
+- `control`: Mengontrol daemon udev (misalnya, untuk menghentikan atau memulai).
+- `monitor`: Memantau peristiwa yang terjadi pada perangkat.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `udevadm`:
 
-### Menampilkan Informasi Perangkat
-Untuk menampilkan informasi tentang perangkat tertentu, gunakan perintah berikut:
+1. **Menampilkan informasi tentang perangkat tertentu**:
+   ```csh
+   udevadm info --query=all --name=/dev/sda
+   ```
 
-```bash
-udevadm info --query=all --name=/dev/sda
-```
+2. **Memicu pemrosesan perangkat**:
+   ```csh
+   udevadm trigger
+   ```
 
-### Memicu Proses Udev
-Untuk memicu udev agar memproses perangkat yang terhubung, gunakan:
+3. **Menunggu hingga semua perubahan perangkat selesai**:
+   ```csh
+   udevadm settle
+   ```
 
-```bash
-udevadm trigger
-```
+4. **Memantau peristiwa perangkat secara real-time**:
+   ```csh
+   udevadm monitor
+   ```
 
-### Menunggu Proses Udev Selesai
-Untuk menunggu hingga semua perangkat diproses, gunakan:
-
-```bash
-udevadm settle
-```
-
-### Mengontrol Daemon Udev
-Untuk mengontrol perilaku daemon udev, Anda dapat menggunakan:
-
-```bash
-udevadm control --reload-rules
-```
+5. **Mengontrol daemon udev**:
+   ```csh
+   udevadm control --reload-rules
+   ```
 
 ## Tips
-- Selalu gunakan opsi `info` untuk memeriksa detail perangkat sebelum melakukan perubahan.
-- Gunakan `trigger` setelah menambahkan atau mengubah aturan untuk memastikan perangkat dikenali dengan benar.
+- Selalu gunakan opsi `info` untuk memverifikasi informasi perangkat sebelum melakukan perubahan.
+- Gunakan `trigger` setelah menambahkan atau menghapus perangkat untuk memastikan sistem mengenali perubahan.
+- Saat menggunakan `monitor`, Anda dapat melihat peristiwa secara langsung, yang sangat berguna untuk debugging.
 - Pastikan untuk menjalankan perintah ini dengan hak akses yang sesuai, biasanya sebagai pengguna root, untuk menghindari masalah izin.

@@ -1,39 +1,38 @@
-# [Linux] Bash colrm Kullanımı: Metin satırlarından belirli sütunları kaldırma
+# [Linux] C Shell (csh) colrm Kullanımı: Sütunları kaldırma komutu
 
 ## Genel Bakış
-`colrm` komutu, metin dosyalarındaki satırlardan belirli sütunları kaldırmak için kullanılır. Bu komut, özellikle metin verilerini düzenlemek ve belirli bilgileri çıkarmak için oldukça faydalıdır.
+`colrm` komutu, metin dosyalarındaki belirli sütunları kaldırmak için kullanılır. Bu komut, özellikle metin verilerini düzenlemek ve istenmeyen sütunları temizlemek için faydalıdır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-```
-colrm [seçenekler] [argümanlar]
+
+```csh
+colrm [başlangıç_sütunu] [bitiş_sütunu]
 ```
 
 ## Yaygın Seçenekler
-- `-` : Başlangıç sütununu belirtir.
-- `-` : Bitiş sütununu belirtir.
-- `-f` : Belirli bir sütun aralığını kaldırmak için kullanılır.
+- `başlangıç_sütunu`: Kaldırılacak sütunların başlangıç numarasını belirtir.
+- `bitiş_sütunu`: Kaldırılacak sütunların bitiş numarasını belirtir.
 
 ## Yaygın Örnekler
-1. **Belirli bir sütun aralığını kaldırma:**
-   ```bash
-   colrm 5 10 < dosya.txt
-   ```
-   Bu komut, `dosya.txt` dosyasındaki her satırın 5. ile 10. sütunları arasındaki karakterleri kaldırır.
+Aşağıda `colrm` komutunun bazı pratik örnekleri bulunmaktadır:
 
-2. **Sadece başlangıç sütununu kaldırma:**
-   ```bash
+1. **Bir dosyadan 1. sütundan 5. sütuna kadar olan sütunları kaldırma:**
+   ```csh
+   colrm 1 5 < dosya.txt
+   ```
+
+2. **Bir dosyadan sadece 3. sütunu kaldırma:**
+   ```csh
    colrm 3 < dosya.txt
    ```
-   Bu komut, `dosya.txt` dosyasındaki her satırın 3. sütunundan sonrasını gösterir.
 
-3. **Bir dosyayı başka bir dosyaya yönlendirme:**
-   ```bash
-   colrm 1 5 < girdi.txt > cikti.txt
+3. **Standart girdi üzerinden sütunları kaldırma:**
+   ```csh
+   echo "Bu bir test metnidir." | colrm 4 7
    ```
-   Bu komut, `girdi.txt` dosyasındaki 1. ile 5. sütunları arasındaki karakterleri kaldırarak sonucu `cikti.txt` dosyasına yazar.
 
 ## İpuçları
-- `colrm` komutunu kullanmadan önce dosyanızın bir yedeğini almak iyi bir uygulamadır.
-- Komutu bir boru (pipe) ile diğer komutlarla birleştirerek daha karmaşık işlemler gerçekleştirebilirsiniz.
-- Büyük dosyalarla çalışırken, komutun çıktısını bir dosyaya yönlendirmek, terminaldeki karmaşayı azaltır.
+- `colrm` komutunu kullanmadan önce dosyanızın bir yedeğini almayı unutmayın.
+- Komutu kullanırken sütun numaralarını dikkatlice belirleyin; yanlış bir sütun numarası, beklenmeyen sonuçlara yol açabilir.
+- `colrm` komutunu diğer komutlarla birleştirerek daha karmaşık veri işleme görevleri gerçekleştirebilirsiniz. Örneğin, `grep` ile filtreleme yapıp ardından `colrm` ile sütunları kaldırabilirsiniz.

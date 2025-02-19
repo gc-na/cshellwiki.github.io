@@ -1,49 +1,45 @@
-# [Linux] Bash kill Kullanımı: Süreçleri sonlandırma komutu
+# [Linux] C Shell (csh) kill Kullanımı: Süreçleri sonlandırma
 
-## Genel Bakış
-`kill` komutu, işletim sisteminde çalışan süreçleri sonlandırmak için kullanılır. Belirli bir süreç kimliğine (PID) sahip olan bir süreci durdurmak veya sonlandırmak için kullanılır. Bu komut, sistem yöneticileri ve geliştiriciler için önemli bir araçtır.
+## Overview
+`kill` komutu, işletim sisteminde çalışan süreçleri sonlandırmak için kullanılır. Belirli bir süreç kimliği (PID) ile belirtilen süreci durdurmak için bu komut kullanılır.
 
-## Kullanım
-Temel sözdizimi şu şekildedir:
+## Usage
+Temel sözdizimi aşağıdaki gibidir:
 
 ```
-kill [seçenekler] [argümanlar]
+kill [options] [arguments]
 ```
 
-## Yaygın Seçenekler
+## Common Options
 - `-l`: Tüm sinyal isimlerini listeler.
-- `-s`: Göndermek istediğiniz sinyali belirtir.
-- `-9`: Süreci zorla sonlandırmak için kullanılır (SIGKILL).
-- `-15`: Süreci nazikçe sonlandırmak için kullanılır (SIGTERM).
+- `-s`: Göndermek istediğiniz sinyalin adını veya numarasını belirtir.
+- `-n`: Sinyal numarasını belirtir.
 
-## Yaygın Örnekler
+## Common Examples
+Aşağıda `kill` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
-1. Bir süreci PID ile sonlandırma:
-   ```bash
+1. Belirli bir PID ile süreci sonlandırma:
+   ```csh
    kill 1234
    ```
 
-2. Zorla bir süreci sonlandırma:
-   ```bash
+2. Belirli bir sinyal göndererek süreci sonlandırma (örneğin, SIGKILL):
+   ```csh
    kill -9 1234
    ```
 
-3. Belirli bir sinyal gönderme:
-   ```bash
-   kill -s SIGTERM 1234
+3. Tüm süreçleri listeleme ve ardından bir süreci sonlandırma:
+   ```csh
+   ps
+   kill 5678
    ```
 
-4. Birden fazla süreci aynı anda sonlandırma:
-   ```bash
-   kill 1234 5678 91011
+4. Belirli bir sinyal ile süreci durdurma (örneğin, SIGTERM):
+   ```csh
+   kill -15 1234
    ```
 
-5. Tüm süreçleri sonlandırma (dikkatli kullanılmalıdır):
-   ```bash
-   kill -9 -1
-   ```
-
-## İpuçları
-- Süreçleri sonlandırmadan önce, hangi süreçlerin çalıştığını görmek için `ps` veya `top` komutlarını kullanın.
-- `kill` komutunu kullanmadan önce, sürecin neden çalıştığını anlamak için log dosyalarını kontrol edin.
-- Zorla sonlandırma (`-9` seçeneği) kullanmadan önce, sürecin düzgün bir şekilde kapanmasını sağlamak için `-15` seçeneğini tercih edin.
+## Tips
+- Süreçlerinizi sonlandırmadan önce, hangi sürecin hangi PID'ye sahip olduğunu kontrol etmek için `ps` komutunu kullanın.
+- `kill` komutunu kullanırken dikkatli olun; yanlış bir süreci sonlandırmak sistemde sorunlara yol açabilir.
+- Süreçlerinizi daha iyi yönetmek için, `killall` komutunu kullanarak belirli bir isimdeki tüm süreçleri aynı anda sonlandırabilirsiniz.

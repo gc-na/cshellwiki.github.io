@@ -1,11 +1,11 @@
-# [Linux] Bash psql Kullanımı: PostgreSQL veritabanına erişim
+# [Linux] C Shell (csh) psql Kullanımı: Veritabanı sorgulama aracı
 
 ## Genel Bakış
-`psql`, PostgreSQL veritabanı yönetim sistemine komut satırı üzerinden erişim sağlayan bir araçtır. Kullanıcıların veritabanlarıyla etkileşimde bulunmasına, SQL sorguları çalıştırmasına ve veritabanı yönetim görevlerini yerine getirmesine olanak tanır.
+`psql`, PostgreSQL veritabanı yönetim sistemi için bir komut satırı arayüzüdür. Kullanıcıların veritabanlarına bağlanmasına, SQL sorguları çalıştırmasına ve veritabanı nesneleri üzerinde işlem yapmasına olanak tanır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-```bash
+```
 psql [seçenekler] [argümanlar]
 ```
 
@@ -14,30 +14,32 @@ psql [seçenekler] [argümanlar]
 - `-U`: Veritabanı kullanıcı adını belirtir.
 - `-d`: Bağlanılacak veritabanının adını belirtir.
 - `-p`: Veritabanı sunucusunun port numarasını belirtir.
-- `-f`: Bir dosyadan SQL komutlarını çalıştırmak için kullanılır.
+- `-W`: Şifre girişi için kullanıcıdan onay ister.
 
 ## Yaygın Örnekler
-1. PostgreSQL veritabanına bağlanma:
+Aşağıda `psql` komutunun bazı pratik örnekleri verilmiştir:
+
+1. Belirli bir veritabanına bağlanmak:
    ```bash
-   psql -h localhost -U kullanici_adi -d veritabani_adi
+   psql -h localhost -U kullaniciadi -d veritabaniadi
    ```
 
-2. SQL dosyasını çalıştırma:
+2. SQL sorgusu çalıştırmak:
    ```bash
-   psql -U kullanici_adi -d veritabani_adi -f dosya.sql
+   psql -d veritabaniadi -c "SELECT * FROM tablo_adi;"
    ```
 
-3. Veritabanındaki tüm tabloları listeleme:
+3. Veritabanındaki tüm tabloları listelemek:
    ```bash
-   psql -U kullanici_adi -d veritabani_adi -c "\dt"
+   psql -d veritabaniadi -c "\dt"
    ```
 
-4. Belirli bir SQL sorgusunu çalıştırma:
+4. Bir SQL dosyasını çalıştırmak:
    ```bash
-   psql -U kullanici_adi -d veritabani_adi -c "SELECT * FROM tablo_adi;"
+   psql -d veritabaniadi -f dosya.sql
    ```
 
 ## İpuçları
-- `psql` oturumunu başlatmadan önce veritabanı kullanıcı adınızı ve şifrenizi kontrol edin.
-- Sık kullandığınız sorguları bir dosyaya kaydedip `-f` seçeneği ile çalıştırarak zaman kazanabilirsiniz.
-- `\help` komutunu kullanarak `psql` içindeki komutlar hakkında bilgi alabilirsiniz.
+- `psql` oturumunu başlatmadan önce veritabanı bağlantı bilgilerini doğru girdiğinizden emin olun.
+- Sık kullanılan sorguları bir dosyada saklayarak `-f` seçeneği ile kolayca çalıştırabilirsiniz.
+- `\?` komutunu kullanarak `psql` içindeki komutların listesini görüntüleyebilirsiniz.

@@ -1,48 +1,47 @@
-# [Linux] Bash pvs Kullanımı: Fiziksel hacim durumunu görüntüleme
+# [Linux] C Shell (csh) pvs Kullanımı: Mevcut süreçlerin görüntülenmesi
 
 ## Genel Bakış
-`pvs` komutu, LVM (Logical Volume Manager) kullanarak fiziksel hacimlerin durumunu görüntülemek için kullanılır. Bu komut, sistemdeki fiziksel hacimlerin bilgilerini ve durumlarını hızlı bir şekilde sunar.
+`pvs` komutu, sistemdeki mevcut süreçlerin ve bunların özelliklerinin görüntülenmesini sağlar. Bu komut, özellikle sistem yöneticileri ve geliştiriciler için yararlıdır, çünkü sistemdeki aktif süreçler hakkında bilgi edinmelerine yardımcı olur.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-
-```bash
+```
 pvs [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-o, --options`: Görüntülemek istediğiniz belirli alanları seçmenizi sağlar.
-- `-f, --full`: Tüm bilgileri, detaylı bir şekilde görüntüler.
-- `--units`: Çıktı birimlerini belirtmek için kullanılır.
-- `-d, --debug`: Hata ayıklama bilgilerini gösterir.
+- `-a`: Tüm süreçleri gösterir, gizli süreçler dahil.
+- `-u`: Kullanıcı süreçlerini gösterir.
+- `-p`: Süreçlerin PID'lerini (Process ID) gösterir.
+- `-e`: Süreçlerin daha ayrıntılı bilgilerini gösterir.
 
 ## Yaygın Örnekler
-Aşağıda `pvs` komutunun bazı pratik kullanım örnekleri verilmiştir:
+Aşağıda `pvs` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. Tüm fiziksel hacimlerin durumunu görüntüleme:
-   ```bash
-   pvs
+1. Tüm süreçleri görüntülemek için:
+   ```csh
+   pvs -a
    ```
 
-2. Belirli alanları görüntüleme (örneğin, `pv_name` ve `vg_name`):
-   ```bash
-   pvs -o pv_name,vg_name
+2. Sadece kullanıcı süreçlerini listelemek için:
+   ```csh
+   pvs -u
    ```
 
-3. Detaylı bilgi almak için:
-   ```bash
-   pvs -f
+3. Süreçlerin PID'leri ile birlikte görüntülenmesi için:
+   ```csh
+   pvs -p
    ```
 
-4. Çıktı birimlerini ayarlamak için:
-   ```bash
-   pvs --units g
+4. Daha ayrıntılı süreç bilgilerini görmek için:
+   ```csh
+   pvs -e
    ```
 
 ## İpuçları
-- `pvs` komutunu sık sık kullanıyorsanız, çıktıyı daha okunabilir hale getirmek için `--units` seçeneğini kullanmayı düşünebilirsiniz.
-- Detaylı bilgi almak için `-f` seçeneğini kullanarak daha fazla bilgi edinebilirsiniz.
-- Çıktıyı bir dosyaya yönlendirmek için `>` operatörünü kullanabilirsiniz:
-  ```bash
-  pvs > pvs_output.txt
+- `pvs` komutunu sık sık kullanarak sistemdeki süreçlerin durumunu takip edebilirsiniz.
+- Komutun çıktısını bir dosyaya yönlendirmek için `>` operatörünü kullanabilirsiniz:
+  ```csh
+  pvs -a > süreçler.txt
   ```
+- Belirli bir sürecin detaylarını görmek için, sürecin PID'sini kullanarak filtreleme yapabilirsiniz.

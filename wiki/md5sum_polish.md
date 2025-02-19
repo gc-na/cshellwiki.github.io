@@ -1,47 +1,43 @@
-# [Linux] Bash md5sum użycie: Obliczanie sum kontrolnych MD5
+# [Linux] C Shell (csh) md5sum użycie: Obliczanie sum kontrolnych MD5
 
-## Przegląd
-Polecenie `md5sum` służy do obliczania i weryfikacji sum kontrolnych MD5 dla plików. Jest to przydatne narzędzie do sprawdzania integralności danych, umożliwiające wykrycie zmian w plikach.
+## Overview
+Polecenie `md5sum` służy do obliczania sum kontrolnych MD5 dla plików. Jest to przydatne narzędzie do weryfikacji integralności danych, umożliwiające porównanie sum kontrolnych plików w celu sprawdzenia, czy nie zostały one zmienione.
 
-## Użycie
+## Usage
 Podstawowa składnia polecenia `md5sum` jest następująca:
 
-```bash
+```csh
 md5sum [opcje] [argumenty]
 ```
 
-## Często używane opcje
-- `-b`: Oblicza sumę kontrolną dla plików binarnych.
-- `-c`: Sprawdza sumy kontrolne z pliku.
-- `-t`: Oblicza sumę kontrolną dla danych z standardowego wejścia.
-- `--help`: Wyświetla pomoc dotyczącą użycia polecenia.
+## Common Options
+- `-b` : Oblicza sumę kontrolną dla plików binarnych.
+- `-c` : Sprawdza sumy kontrolne z pliku.
+- `-t` : Oblicza sumę kontrolną dla danych tekstowych.
+- `--help` : Wyświetla pomoc dotyczącą użycia polecenia.
 
-## Przykłady
-1. **Obliczanie sumy kontrolnej dla pliku:**
-
-   ```bash
+## Common Examples
+1. Obliczanie sumy kontrolnej dla pojedynczego pliku:
+   ```csh
    md5sum plik.txt
    ```
 
-2. **Zapis sum kontrolnych do pliku:**
-
-   ```bash
-   md5sum plik1.txt plik2.txt > sumy.txt
+2. Obliczanie sumy kontrolnej dla wielu plików:
+   ```csh
+   md5sum plik1.txt plik2.txt
    ```
 
-3. **Weryfikacja sum kontrolnych z pliku:**
-
-   ```bash
-   md5sum -c sumy.txt
+3. Zapisywanie sum kontrolnych do pliku:
+   ```csh
+   md5sum plik.txt > suma.txt
    ```
 
-4. **Obliczanie sumy kontrolnej dla danych z wejścia:**
-
-   ```bash
-   echo "Przykładowy tekst" | md5sum
+4. Sprawdzanie sum kontrolnych z pliku:
+   ```csh
+   md5sum -c suma.txt
    ```
 
-## Wskazówki
-- Używaj opcji `-b`, gdy pracujesz z plikami binarnymi, aby uzyskać dokładne wyniki.
-- Zawsze zapisuj sumy kontrolne w osobnym pliku, aby móc je później łatwo zweryfikować.
-- Regularnie sprawdzaj integralność ważnych plików, aby upewnić się, że nie zostały one zmienione.
+## Tips
+- Zawsze używaj opcji `-b` dla plików binarnych, aby uzyskać dokładne wyniki.
+- Regularnie porównuj sumy kontrolne po przesyłaniu lub kopiowaniu plików, aby upewnić się, że nie uległy one zmianie.
+- Użyj opcji `--help`, aby uzyskać więcej informacji na temat dostępnych opcji i ich zastosowania.

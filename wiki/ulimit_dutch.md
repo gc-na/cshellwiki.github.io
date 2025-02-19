@@ -1,54 +1,53 @@
-# [Linux] Bash ulimit gebruik: Beperkingen voor systeembronnen instellen
+# [Linux] C Shell (csh) ulimit gebruik: Beperk systeembronnen
 
 ## Overzicht
-De `ulimit`-opdracht in Bash wordt gebruikt om de limieten voor systeembronnen in te stellen die een shell of een proces kan gebruiken. Dit helpt bij het beheren van systeembronnen zoals geheugen, CPU-tijd en het aantal open bestanden, wat belangrijk is voor het stabiliseren van de prestaties van een systeem.
+De `ulimit`-opdracht in C Shell (csh) wordt gebruikt om de systeembronnen te beperken die een shell of een proces kan gebruiken. Dit helpt bij het beheren van systeembronnen en voorkomt dat een enkele gebruiker of proces te veel middelen verbruikt.
 
 ## Gebruik
 De basis syntaxis van de `ulimit`-opdracht is als volgt:
 
-```bash
+```csh
 ulimit [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
-- `-a`: Toon alle huidige limieten.
-- `-c [waarde]`: Stel de limiet voor core-bestandsgrootte in.
-- `-d [waarde]`: Stel de limiet voor de datagrootte in.
-- `-f [waarde]`: Stel de limiet voor de grootte van bestanden in.
-- `-l [waarde]`: Stel de limiet voor gelockt geheugen in.
-- `-n [waarde]`: Stel de limiet voor het aantal open bestanden in.
-- `-s [waarde]`: Stel de limiet voor de stapelgrootte in.
-- `-t [waarde]`: Stel de limiet voor CPU-tijd in.
+## Veelvoorkomende opties
+- `-a`: Toont alle huidige limieten.
+- `-c`: Stelt de maximale grootte van core-bestanden in.
+- `-d`: Stelt de maximale grootte van het datasegment in.
+- `-f`: Stelt de maximale grootte van bestanden die kunnen worden aangemaakt in.
+- `-l`: Stelt de maximale grootte van gelockte geheugenpagina's in.
+- `-s`: Stelt de maximale grootte van de stack in.
+- `-t`: Stelt de maximale CPU-tijd in (in seconden).
+- `-v`: Stelt de maximale virtuele geheugenruimte in.
 
-## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van `ulimit`:
+## Veelvoorkomende voorbeelden
 
-1. **Toon alle limieten**:
-   ```bash
+1. **Toon alle huidige limieten:**
+   ```csh
    ulimit -a
    ```
 
-2. **Stel de limiet voor open bestanden in op 1024**:
-   ```bash
-   ulimit -n 1024
-   ```
-
-3. **Stel de limiet voor de datagrootte in op 2048 kilobytes**:
-   ```bash
-   ulimit -d 2048
-   ```
-
-4. **Stel de limiet voor CPU-tijd in op 60 seconden**:
-   ```bash
-   ulimit -t 60
-   ```
-
-5. **Stel de limiet voor core-bestandsgrootte in op 0 (geen core dumps)**:
-   ```bash
+2. **Stel de maximale grootte van core-bestanden in op 0 (geen core-bestanden):**
+   ```csh
    ulimit -c 0
    ```
 
+3. **Stel de maximale bestandsgrootte in op 100 MB:**
+   ```csh
+   ulimit -f 102400
+   ```
+
+4. **Stel de maximale CPU-tijd in op 60 seconden:**
+   ```csh
+   ulimit -t 60
+   ```
+
+5. **Stel de maximale grootte van het datasegment in op 512 MB:**
+   ```csh
+   ulimit -d 524288
+   ```
+
 ## Tips
-- Gebruik `ulimit -a` om een overzicht te krijgen van de huidige limieten voordat je wijzigingen aanbrengt.
-- Wees voorzichtig met het verhogen van limieten, vooral voor productieomgevingen, om systeeminstabiliteit te voorkomen.
-- Overweeg om limieten in je shell-configuratiebestanden (zoals `.bashrc` of `.bash_profile`) in te stellen voor blijvende effecten.
+- Controleer regelmatig de huidige limieten met `ulimit -a` om ervoor te zorgen dat ze geschikt zijn voor uw behoeften.
+- Pas limieten aan op basis van de specifieke eisen van uw applicaties om systeembronnen efficiënt te beheren.
+- Wees voorzichtig met het verhogen van limieten, aangezien dit kan leiden tot systeeminstabiliteit als processen te veel middelen verbruiken.

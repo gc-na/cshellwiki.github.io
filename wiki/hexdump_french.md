@@ -1,12 +1,12 @@
-# [Linux] Bash hexdump Utilisation : Afficher le contenu binaire en hexadécimal
+# [Linux] C Shell (csh) hexdump : Afficher le contenu binaire d'un fichier
 
 ## Overview
-La commande `hexdump` est utilisée pour afficher le contenu binaire d'un fichier sous forme hexadécimale. Cela permet aux utilisateurs de visualiser les données brutes d'un fichier, ce qui est particulièrement utile pour le débogage ou l'analyse de fichiers binaires.
+La commande `hexdump` permet d'afficher le contenu binaire d'un fichier sous forme hexadécimale. Cela est particulièrement utile pour analyser les fichiers non textuels ou pour le débogage.
 
 ## Usage
 La syntaxe de base de la commande `hexdump` est la suivante :
 
-```bash
+```csh
 hexdump [options] [arguments]
 ```
 
@@ -14,44 +14,42 @@ hexdump [options] [arguments]
 Voici quelques options courantes pour la commande `hexdump` :
 
 - `-C` : Affiche le contenu en hexadécimal et en ASCII.
-- `-n <nombre>` : Limite la sortie à un nombre spécifique d'octets.
-- `-v` : Affiche tous les octets, même ceux qui se répètent.
-- `-e <format>` : Définit un format de sortie personnalisé.
+- `-n N` : Limite la sortie aux premiers N octets du fichier.
+- `-s N` : Ignore les premiers N octets du fichier avant de commencer à afficher.
+- `-v` : Affiche tous les octets, y compris les répétitions.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `hexdump` :
 
 1. Afficher le contenu d'un fichier en hexadécimal :
-
-   ```bash
+   ```csh
    hexdump fichier.bin
    ```
 
-2. Afficher le contenu d'un fichier en hexadécimal avec l'ASCII correspondant :
-
-   ```bash
+2. Afficher le contenu en hexadécimal et ASCII :
+   ```csh
    hexdump -C fichier.bin
    ```
 
-3. Limiter la sortie aux 16 premiers octets d'un fichier :
-
-   ```bash
+3. Limiter l'affichage aux 16 premiers octets :
+   ```csh
    hexdump -n 16 fichier.bin
    ```
 
-4. Afficher tous les octets, même ceux qui se répètent :
+4. Ignorer les 10 premiers octets et afficher le reste :
+   ```csh
+   hexdump -s 10 fichier.bin
+   ```
 
-   ```bash
+5. Afficher tous les octets, y compris les répétitions :
+   ```csh
    hexdump -v fichier.bin
    ```
 
-5. Utiliser un format de sortie personnalisé :
-
-   ```bash
-   hexdump -e '16/1 "%02x " "\n"' fichier.bin
-   ```
-
 ## Tips
-- Utilisez l'option `-C` pour une visualisation plus claire, car elle montre à la fois les valeurs hexadécimales et les caractères ASCII.
-- Pour analyser des fichiers volumineux, combinez `hexdump` avec `head` ou `tail` pour limiter la sortie.
-- Familiarisez-vous avec les formats de sortie personnalisés pour répondre à vos besoins spécifiques.
+- Utilisez l'option `-C` pour obtenir une vue plus lisible avec les valeurs ASCII correspondantes.
+- Pour les fichiers volumineux, combinez `-n` et `-s` pour cibler des sections spécifiques du fichier.
+- Pensez à rediriger la sortie vers un fichier si vous travaillez avec de grandes quantités de données :
+  ```csh
+  hexdump fichier.bin > sortie.txt
+  ```

@@ -1,52 +1,41 @@
-# [Linux] Bash hostnamectl の使い方: ホスト名の管理
+# [Linux] C Shell (csh) hostnamectl の使い方: ホスト名とシステム情報の管理
 
-## Overview
-`hostnamectl` コマンドは、システムのホスト名や関連する設定を管理するためのツールです。このコマンドを使用すると、ホスト名の表示、変更、さらにはオペレーティングシステムのバージョン情報を確認することができます。
+## 概要
+`hostnamectl` コマンドは、Linux システムのホスト名や関連するメタデータを管理するためのツールです。このコマンドを使用することで、システムのホスト名を設定したり、表示したりすることができます。
 
-## Usage
+## 使用法
 基本的な構文は次のとおりです。
 
-```bash
+```csh
 hostnamectl [options] [arguments]
 ```
 
-## Common Options
-- `set-hostname`: 新しいホスト名を設定します。
-- `status`: 現在のホスト名やその他の情報を表示します。
-- `set-icon-name`: アイコン名を設定します。
-- `set-chassis`: チャシスのタイプを設定します（例：desktop, laptop, serverなど）。
+## 一般的なオプション
+- `set-hostname`：新しいホスト名を設定します。
+- `status`：現在のホスト名とシステム情報を表示します。
+- `set-icon-name`：アイコン名を設定します。
+- `set-chassis`：システムのシャーシタイプを設定します。
 
-## Common Examples
+## 一般的な例
+- 現在のホスト名とシステム情報を表示する：
 
-### ホスト名の表示
-現在のホスト名を確認するには、次のコマンドを使用します。
-
-```bash
+```csh
 hostnamectl status
 ```
 
-### ホスト名の変更
-ホスト名を「my-new-hostname」に変更するには、次のコマンドを実行します。
+- 新しいホスト名を設定する：
 
-```bash
-sudo hostnamectl set-hostname my-new-hostname
+```csh
+hostnamectl set-hostname new-hostname
 ```
 
-### アイコン名の設定
-アイコン名を「computer」に設定するには、以下のコマンドを使用します。
+- システムのシャーシタイプを設定する：
 
-```bash
-sudo hostnamectl set-icon-name computer
+```csh
+hostnamectl set-chassis laptop
 ```
 
-### チャシスの設定
-チャシスのタイプを「laptop」に設定するには、次のコマンドを実行します。
-
-```bash
-sudo hostnamectl set-chassis laptop
-```
-
-## Tips
-- ホスト名を変更した後は、システムを再起動する必要がない場合が多いですが、変更が反映されない場合は再起動を検討してください。
-- ホスト名にはスペースや特殊文字を使用しないようにしましょう。一般的には、英数字とハイフンを使用することが推奨されます。
-- `hostnamectl` コマンドは、root権限が必要な場合がありますので、必要に応じて `sudo` を使用してください。
+## ヒント
+- ホスト名を変更した後は、システムを再起動することをお勧めします。
+- `status` オプションを使用して、現在の設定を確認することが重要です。
+- ホスト名は、システムの識別に重要な役割を果たすため、適切な名前を選ぶようにしましょう。

@@ -1,53 +1,46 @@
-# [Linux] Bash cryptsetup utilizzo: Gestire volumi crittografati
+# [Linux] C Shell (csh) cryptsetup utilizzo: Gestire volumi crittografati
 
 ## Overview
-Il comando `cryptsetup` è uno strumento utilizzato per gestire volumi crittografati su Linux. Permette di creare, aprire, chiudere e gestire dispositivi crittografati, rendendo i dati più sicuri e protetti.
+Il comando `cryptsetup` è utilizzato per gestire volumi crittografati su sistemi Linux. Permette di creare, aprire, chiudere e gestire dispositivi crittografati, facilitando la protezione dei dati sensibili.
 
 ## Usage
-La sintassi di base del comando `cryptsetup` è la seguente:
+La sintassi di base del comando è la seguente:
 
 ```bash
 cryptsetup [opzioni] [argomenti]
 ```
 
 ## Common Options
-Ecco alcune opzioni comuni per `cryptsetup`:
-
-- `luksFormat`: Crea un volume crittografato LUKS.
-- `luksOpen`: Apre un volume crittografato LUKS.
-- `luksClose`: Chiude un volume crittografato LUKS.
+- `luks`: Specifica che si sta utilizzando LUKS (Linux Unified Key Setup) per la crittografia.
+- `create`: Crea un nuovo dispositivo crittografato.
+- `open`: Apre un dispositivo crittografato per l'accesso.
+- `close`: Chiude un dispositivo crittografato.
 - `status`: Mostra lo stato di un dispositivo crittografato.
-- `luksAddKey`: Aggiunge una nuova chiave a un volume LUKS esistente.
 
 ## Common Examples
-Ecco alcuni esempi pratici di utilizzo di `cryptsetup`:
+Ecco alcuni esempi pratici di utilizzo del comando `cryptsetup`:
 
-### Creare un volume crittografato
+### Creare un dispositivo crittografato
 ```bash
 cryptsetup luksFormat /dev/sdX
 ```
 
-### Aprire un volume crittografato
+### Aprire un dispositivo crittografato
 ```bash
-cryptsetup luksOpen /dev/sdX nome_volume
+cryptsetup luksOpen /dev/sdX nome_dispositivo
 ```
 
-### Chiudere un volume crittografato
+### Chiudere un dispositivo crittografato
 ```bash
-cryptsetup luksClose nome_volume
+cryptsetup luksClose nome_dispositivo
 ```
 
-### Controllare lo stato di un volume crittografato
+### Controllare lo stato di un dispositivo crittografato
 ```bash
-cryptsetup status nome_volume
-```
-
-### Aggiungere una chiave a un volume LUKS
-```bash
-cryptsetup luksAddKey /dev/sdX
+cryptsetup status nome_dispositivo
 ```
 
 ## Tips
-- Assicurati di avere un backup delle chiavi di crittografia, poiché perderle può comportare la perdita permanente dei dati.
-- Utilizza nomi descrittivi per i volumi crittografati per facilitare la gestione.
-- Considera di utilizzare opzioni di sicurezza aggiuntive, come l'autenticazione a due fattori, per aumentare la protezione dei tuoi dati.
+- Assicurati di avere un backup delle chiavi di crittografia, poiché perderle può rendere inaccessibili i dati.
+- Utilizza nomi descrittivi per i dispositivi crittografati per facilitare la gestione.
+- Verifica sempre lo stato del dispositivo dopo averlo aperto o chiuso per assicurarti che le operazioni siano andate a buon fine.

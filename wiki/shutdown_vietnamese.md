@@ -1,49 +1,50 @@
-# [Linux] Bash shutdown lệnh: Tắt máy tính hoặc khởi động lại hệ thống
+# [Hệ điều hành] C Shell (csh) shutdown: Tắt máy tính
 
-## Tổng quan
-Lệnh `shutdown` trong Bash được sử dụng để tắt máy tính hoặc khởi động lại hệ thống một cách an toàn. Nó cho phép người dùng lên lịch tắt máy hoặc khởi động lại, giúp đảm bảo rằng tất cả các tiến trình đang chạy được xử lý đúng cách trước khi hệ thống tắt.
+## Overview
+Lệnh `shutdown` trong C Shell (csh) được sử dụng để tắt hoặc khởi động lại hệ thống. Đây là một công cụ quan trọng để quản lý trạng thái của máy tính, cho phép người dùng thực hiện các thao tác tắt máy một cách an toàn.
 
-## Cú pháp
+## Usage
 Cú pháp cơ bản của lệnh `shutdown` như sau:
 ```
-shutdown [options] [time] [message]
+shutdown [options] [arguments]
 ```
 
-## Các tùy chọn phổ biến
-- `-h` hoặc `--halt`: Tắt máy tính ngay lập tức.
-- `-r` hoặc `--reboot`: Khởi động lại máy tính.
-- `-P` hoặc `--poweroff`: Tắt máy tính và ngắt nguồn.
-- `now`: Thực hiện lệnh ngay lập tức.
-- `+m`: Tắt máy sau `m` phút (ví dụ: `+5` để tắt sau 5 phút).
-- `hh:mm`: Đặt thời gian tắt máy theo định dạng giờ:phút.
+## Common Options
+- `-h`: Tắt máy tính.
+- `-r`: Khởi động lại máy tính.
+- `-k`: Thông báo tắt máy nhưng không thực hiện tắt.
+- `+m`: Tắt máy sau `m` phút.
+- `hh:mm`: Tắt máy vào thời gian cụ thể (theo định dạng 24 giờ).
 
-## Ví dụ phổ biến
-- Tắt máy ngay lập tức:
-  ```bash
-  shutdown now
-  ```
+## Common Examples
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `shutdown`:
 
-- Khởi động lại máy tính ngay lập tức:
-  ```bash
-  shutdown -r now
-  ```
+1. Tắt máy ngay lập tức:
+   ```csh
+   shutdown -h now
+   ```
 
-- Tắt máy sau 10 phút:
-  ```bash
-  shutdown +10
-  ```
+2. Khởi động lại máy tính ngay lập tức:
+   ```csh
+   shutdown -r now
+   ```
 
-- Tắt máy vào lúc 22:30:
-  ```bash
-  shutdown 22:30
-  ```
+3. Tắt máy sau 10 phút:
+   ```csh
+   shutdown -h +10
+   ```
 
-- Gửi thông báo trước khi tắt máy:
-  ```bash
-  shutdown -h +5 "Máy tính sẽ tắt sau 5 phút. Vui lòng lưu công việc của bạn."
-  ```
+4. Thông báo tắt máy trong 5 phút nhưng không thực hiện:
+   ```csh
+   shutdown -k +5
+   ```
 
-## Mẹo
+5. Tắt máy vào lúc 22:30:
+   ```csh
+   shutdown -h 22:30
+   ```
+
+## Tips
 - Luôn thông báo cho người dùng khác trước khi tắt máy để họ có thể lưu công việc của mình.
-- Sử dụng tùy chọn `-r` để khởi động lại máy tính nếu bạn cần áp dụng các thay đổi cấu hình mà không cần tắt nguồn hoàn toàn.
+- Sử dụng tùy chọn `-k` để thông báo mà không thực hiện tắt máy, giúp kiểm tra xem có ai đang sử dụng hệ thống hay không.
 - Kiểm tra các tiến trình đang chạy trước khi tắt máy để tránh mất dữ liệu.

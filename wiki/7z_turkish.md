@@ -1,59 +1,55 @@
-# [Linux] Bash 7z Kullanımı: Dosyaları sıkıştırma ve açma aracı
+# [Linux] C Shell (csh) 7z Kullanımı: Dosyaları sıkıştırma ve açma aracı
 
 ## Genel Bakış
-7z, dosyaları sıkıştırmak ve açmak için kullanılan güçlü bir komut satırı aracıdır. 7z formatı, yüksek sıkıştırma oranları sunarak dosyaların daha az yer kaplamasını sağlar. Ayrıca, birçok farklı dosya formatını destekler.
+7z, dosyaları sıkıştırmak ve açmak için kullanılan güçlü bir komut satırı aracıdır. Özellikle yüksek sıkıştırma oranları sunarak, dosya boyutunu azaltma konusunda etkilidir. 7z, 7-Zip arşiv formatını destekler ve birçok farklı dosya formatıyla çalışabilir.
 
 ## Kullanım
-Temel sözdizimi şu şekildedir:
+Temel sözdizimi aşağıdaki gibidir:
 ```
 7z [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
 - `a`: Yeni bir arşiv oluşturur ve dosyaları ekler.
-- `x`: Arşivden dosyaları çıkarır.
-- `l`: Arşivdeki dosyaların listesini gösterir.
-- `t`: Arşivin bütünlüğünü kontrol eder.
+- `x`: Arşivden dosyaları çıkartır.
+- `t`: Arşivin içeriğini test eder.
+- `l`: Arşivin içeriğini listele.
 - `d`: Arşivden dosyaları siler.
 
 ## Yaygın Örnekler
-1. **Yeni bir arşiv oluşturma**:
-   ```bash
-   7z a arşiv.7z dosya1.txt dosya2.txt
-   ```
-   Bu komut, `dosya1.txt` ve `dosya2.txt` dosyalarını `arşiv.7z` adlı bir arşive ekler.
+Aşağıda 7z komutunun bazı pratik örnekleri bulunmaktadır:
 
-2. **Arşivden dosyaları çıkarma**:
-   ```bash
-   7z x arşiv.7z
-   ```
-   Bu komut, `arşiv.7z` içindeki tüm dosyaları mevcut dizine çıkarır.
+### 1. Yeni bir arşiv oluşturma
+```
+7z a arşiv.7z dosya1.txt dosya2.txt
+```
+Bu komut, `dosya1.txt` ve `dosya2.txt` dosyalarını `arşiv.7z` adlı bir arşive ekler.
 
-3. **Arşivdeki dosyaların listesini gösterme**:
-   ```bash
-   7z l arşiv.7z
-   ```
-   Bu komut, `arşiv.7z` içindeki dosyaların listesini görüntüler.
+### 2. Arşivden dosyaları çıkartma
+```
+7z x arşiv.7z
+```
+Bu komut, `arşiv.7z` içindeki tüm dosyaları mevcut dizine çıkartır.
 
-4. **Arşivin bütünlüğünü kontrol etme**:
-   ```bash
-   7z t arşiv.7z
-   ```
-   Bu komut, `arşiv.7z` dosyasının bozulup bozulmadığını kontrol eder.
+### 3. Arşivin içeriğini listeleme
+```
+7z l arşiv.7z
+```
+Bu komut, `arşiv.7z` içindeki dosyaların listesini gösterir.
 
-5. **Arşivden belirli bir dosyayı silme**:
-   ```bash
-   7z d arşiv.7z dosya1.txt
-   ```
-   Bu komut, `arşiv.7z` içinden `dosya1.txt` dosyasını siler.
+### 4. Arşivin içeriğini test etme
+```
+7z t arşiv.7z
+```
+Bu komut, `arşiv.7z` dosyasının bozulup bozulmadığını kontrol eder.
+
+### 5. Arşivden dosya silme
+```
+7z d arşiv.7z dosya1.txt
+```
+Bu komut, `arşiv.7z` içinden `dosya1.txt` dosyasını siler.
 
 ## İpuçları
-- Sıkıştırma oranını artırmak için `-mx=9` seçeneğini kullanabilirsiniz. Örneğin:
-  ```bash
-  7z a -mx=9 arşiv.7z dosya.txt
-  ```
-- Arşivlerinizi şifrelemek için `-p` seçeneğini kullanabilirsiniz:
-  ```bash
-  7z a -pşifre arşiv.7z dosya.txt
-  ```
-- Büyük dosyaları sıkıştırırken, işlem süresinin uzayabileceğini unutmayın; sabırlı olun.
+- Sıkıştırma oranını artırmak için `-mx=9` seçeneğini kullanarak en yüksek sıkıştırma seviyesini seçebilirsiniz.
+- Arşiv oluştururken dosya uzantılarını belirtmek, dosyaların daha kolay yönetilmesini sağlar.
+- Büyük dosyalarla çalışırken, işlem tamamlanana kadar sabırlı olun; sıkıştırma işlemi zaman alabilir.

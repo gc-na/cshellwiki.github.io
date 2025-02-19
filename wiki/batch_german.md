@@ -1,38 +1,41 @@
-# [Linux] Bash batch Verwendung: Batch-Jobs planen und ausführen
+# [Linux] C Shell (csh) batch Verwendung: Batch-Jobs planen und ausführen
 
 ## Übersicht
-Der `batch` Befehl in Bash wird verwendet, um Befehle oder Skripte zu planen, die zu einem späteren Zeitpunkt ausgeführt werden sollen, wenn das System weniger ausgelastet ist. Dies ist besonders nützlich für ressourcenintensive Aufgaben, die nicht sofort ausgeführt werden müssen.
+Der Befehl `batch` wird verwendet, um Befehle oder Skripte zu planen, die zu einem späteren Zeitpunkt ausgeführt werden sollen, wenn das System weniger ausgelastet ist. Dies ist besonders nützlich für ressourcenintensive Aufgaben, die nicht sofort ausgeführt werden müssen.
 
 ## Verwendung
-Die grundlegende Syntax des `batch` Befehls lautet:
+Die grundlegende Syntax des Befehls lautet:
 
-```bash
-batch [optionen] [argumente]
+```csh
+batch [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-l`: Gibt die maximale Anzahl der Jobs an, die gleichzeitig ausgeführt werden können.
-- `-n`: Legt die maximale Anzahl der Jobs fest, die in einer Warteschlange stehen können.
-- `-q`: Gibt die Warteschlange an, in der der Job ausgeführt werden soll.
+- `-l`: Führt den Befehl in einer Login-Shell aus.
+- `-m`: Sendet eine E-Mail-Benachrichtigung, wenn der Job abgeschlossen ist.
+- `-q`: Wartet, bis die Systemlast unter einen bestimmten Wert fällt, bevor der Job ausgeführt wird.
 
 ## Häufige Beispiele
 
-1. **Ein einfaches Skript zur späteren Ausführung hinzufügen:**
-   ```bash
-   echo "echo 'Hallo Welt'" | batch
+1. **Einen einfachen Befehl planen:**
+   Um einen Befehl zu planen, geben Sie einfach den Befehl in die Eingabeaufforderung ein:
+   ```csh
+   echo "ls -l" | batch
    ```
 
-2. **Ein Skript mit einer spezifischen Datei zur Ausführung hinzufügen:**
-   ```bash
+2. **Ein Skript zur späteren Ausführung planen:**
+   Um ein Skript zu planen, verwenden Sie den folgenden Befehl:
+   ```csh
    batch < mein_skript.sh
    ```
 
-3. **Einen Befehl zur Ausführung hinzufügen und die Ausgabe in eine Datei umleiten:**
-   ```bash
-   echo "ls -l" | batch > ausgabe.txt
+3. **Einen Befehl mit Optionen planen:**
+   Um einen Befehl mit der `-m` Option zu planen, der eine E-Mail sendet, wenn der Job abgeschlossen ist:
+   ```csh
+   echo "backup.sh" | batch -m
    ```
 
 ## Tipps
-- Verwenden Sie `atq`, um eine Liste der geplanten Jobs anzuzeigen.
-- Nutzen Sie `atrm`, um einen geplanten Job zu löschen, falls er nicht mehr benötigt wird.
-- Stellen Sie sicher, dass Ihr Skript ausführbar ist, bevor Sie es mit `batch` einfügen.
+- Stellen Sie sicher, dass Sie die richtigen Berechtigungen haben, um Skripte oder Befehle auszuführen, die Sie planen möchten.
+- Überprüfen Sie regelmäßig die Warteschlange Ihrer geplanten Jobs, um sicherzustellen, dass alles wie gewünscht funktioniert.
+- Nutzen Sie die E-Mail-Benachrichtigung, um über den Abschluss Ihrer Jobs informiert zu werden, insbesondere bei längeren Aufgaben.

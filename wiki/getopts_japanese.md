@@ -1,71 +1,62 @@
-# [Linux] Bash getopts 使用法: コマンドラインオプションの解析
+# [日本語] C Shell (csh) getopts 使用法: コマンドラインオプションの解析
 
-## Overview
-`getopts` コマンドは、シェルスクリプト内でコマンドラインオプションを解析するためのツールです。これにより、スクリプトに渡されたオプションを簡単に処理し、ユーザーからの入力を柔軟に受け取ることができます。
+## 概要
+`getopts` コマンドは、シェルスクリプト内でコマンドラインオプションを解析するために使用されます。これにより、スクリプトに渡されたオプションを簡単に処理し、適切なアクションを実行することができます。
 
-## Usage
+## 使用法
 基本的な構文は以下の通りです。
 
-```bash
-getopts optstring variable
+```csh
+getopts [options] [arguments]
 ```
 
-- `optstring` は、受け取るオプションを指定する文字列です。
-- `variable` は、オプションの値を格納するための変数です。
+## 一般的なオプション
+- `-a` : オプションを解析する際のエラーメッセージを表示します。
+- `-o` : オプションの短縮形を指定します。
+- `-s` : サイレントモードで動作し、エラーメッセージを表示しません。
 
-## Common Options
-- `-a`: オプション `a` を指定します。
-- `-b`: オプション `b` を指定します。
-- `-c`: オプション `c` を指定します。通常、引数を必要とします。
+## 一般的な例
+以下に、`getopts` を使用したいくつかの実用的な例を示します。
 
-## Common Examples
-
-### 例1: 基本的なオプションの解析
-以下のスクリプトは、`-a` と `-b` のオプションを解析します。
-
-```bash
-#!/bin/bash
-
-while getopts "ab" option; do
-  case $option in
-    a) echo "オプション -a が指定されました";;
-    b) echo "オプション -b が指定されました";;
-    *) echo "無効なオプション";;
-  esac
-done
+### 例1: 簡単なオプション解析
+```csh
+#!/bin/csh
+set optstring = "ab:"
+while (getopts "$optstring" option)
+    switch ($option)
+        case "a":
+            echo "オプションAが指定されました"
+            breaksw
+        case "b":
+            echo "オプションBが指定されました。引数: $OPTARG"
+            breaksw
+        case "?":
+            echo "無効なオプション"
+            breaksw
+    endsw
+end
 ```
 
-### 例2: 引数を必要とするオプション
-次のスクリプトは、`-c` オプションに引数を必要とします。
-
-```bash
-#!/bin/bash
-
-while getopts "c:" option; do
-  case $option in
-    c) echo "オプション -c が指定され、引数は $OPTARG です";;
-    *) echo "無効なオプション";;
-  esac
-done
+### 例2: 複数オプションの処理
+```csh
+#!/bin/csh
+set optstring = "x:y:z"
+while (getopts "$optstring" option)
+    switch ($option)
+        case "x":
+            echo "オプションXが指定されました。引数: $OPTARG"
+            breaksw
+        case "y":
+            echo "オプションYが指定されました。引数: $OPTARG"
+            breaksw
+        case "z":
+            echo "オプションZが指定されました"
+            breaksw
+    endsw
+end
 ```
 
-### 例3: 複数のオプションを同時に解析
-以下のスクリプトは、複数のオプションを同時に解析します。
-
-```bash
-#!/bin/bash
-
-while getopts "abc:" option; do
-  case $option in
-    a) echo "オプション -a が指定されました";;
-    b) echo "オプション -b が指定されました";;
-    c) echo "オプション -c が指定され、引数は $OPTARG です";;
-    *) echo "無効なオプション";;
-  esac
-done
-```
-
-## Tips
-- `getopts` は、オプションの順序を気にせずに解析できるため、ユーザーにとって使いやすいインターフェースを提供します。
-- 引数が必要なオプションには、`:` を付けて指定します。
-- スクリプトの最後で `shift $((OPTIND -1))` を使用すると、残りの引数を処理することができます。
+## ヒント
+- `getopts` を使用する際は、オプションの引数を明確に指定することが重要です。
+- スクリプトの初めに `set optstring` を定義し、解析するオプションを整理しておくと良いでしょう。
+- エラーメッセージを適切に表示することで、ユーザーにとって使いやすいスクリプトになります。

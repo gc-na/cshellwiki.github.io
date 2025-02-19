@@ -1,43 +1,45 @@
-# [Linux] Bash iotop Verwendung: Überwachung der I/O-Aktivität von Prozessen
+# [Linux] C Shell (csh) iotop Verwendung: Überwachung der I/O-Nutzung von Prozessen
 
 ## Übersicht
-Das `iotop`-Kommando ist ein nützliches Tool zur Überwachung der Ein- und Ausgabeaktivität (I/O) von Prozessen in Echtzeit. Es zeigt an, welche Prozesse die meiste I/O-Leistung beanspruchen, was bei der Fehlersuche und Optimierung von Systemressourcen hilfreich ist.
+Der Befehl `iotop` wird verwendet, um die Ein- und Ausgabe (I/O) von Prozessen in Echtzeit zu überwachen. Er zeigt an, welche Prozesse die meisten Ressourcen für Festplattenoperationen verbrauchen, was bei der Fehlersuche und Leistungsoptimierung hilfreich sein kann.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```csh
 iotop [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-o`, `--only`: Zeigt nur Prozesse an, die aktuell I/O-Aktivität haben.
-- `-b`, `--batch`: Führt `iotop` im Batch-Modus aus, nützlich für die Ausgabe in eine Datei.
-- `-n NUM`, `--iter=NUM`: Gibt an, wie oft die Ausgabe aktualisiert werden soll (z. B. `-n 5` für 5 Aktualisierungen).
-- `-d SEC`, `--delay=SEC`: Legt die Verzögerung zwischen den Aktualisierungen in Sekunden fest.
+- `-o`, `--only`: Zeigt nur Prozesse an, die tatsächlich I/O verwenden.
+- `-b`, `--batch`: Führt `iotop` im Batch-Modus aus, ideal für Skripte.
+- `-d`, `--delay`: Legt die Aktualisierungsrate in Sekunden fest.
+- `-p`, `--pid`: Überwacht nur den angegebenen Prozess mit der angegebenen PID.
 
 ## Häufige Beispiele
-1. **Standardausgabe von iotop**:
-   ```bash
+Hier sind einige praktische Beispiele zur Verwendung von `iotop`:
+
+1. **Einfache Überwachung der I/O-Nutzung**:
+   ```csh
    iotop
    ```
 
 2. **Nur Prozesse mit I/O-Aktivität anzeigen**:
-   ```bash
+   ```csh
    iotop -o
    ```
 
-3. **Batch-Modus mit 10 Sekunden Verzögerung und 5 Iterationen**:
-   ```bash
-   iotop -b -n 5 -d 10
+3. **Batch-Modus mit einer Aktualisierungsrate von 2 Sekunden**:
+   ```csh
+   iotop -b -d 2
    ```
 
-4. **Ausgabe in eine Datei umleiten**:
-   ```bash
-   iotop -b -n 10 > iotop_output.txt
+4. **Überwachung eines bestimmten Prozesses mit PID 1234**:
+   ```csh
+   iotop -p 1234
    ```
 
 ## Tipps
-- Verwenden Sie den Batch-Modus, wenn Sie die Ausgabe in eine Datei speichern möchten, um die I/O-Aktivität über einen bestimmten Zeitraum zu protokollieren.
-- Kombinieren Sie die Optionen `-o` und `-d`, um gezielt Prozesse mit I/O-Aktivität in festgelegten Intervallen zu überwachen.
-- Achten Sie darauf, `iotop` mit Root-Rechten auszuführen, um vollständige Informationen zu erhalten.
+- Verwenden Sie den Batch-Modus, wenn Sie `iotop` in Skripten integrieren möchten, um die Ausgabe zu protokollieren.
+- Achten Sie darauf, `iotop` mit Root-Rechten auszuführen, um vollständige Informationen über alle Prozesse zu erhalten.
+- Nutzen Sie die Option `-d`, um die Aktualisierungsrate anzupassen, je nach Bedarf an Echtzeitdaten.

@@ -1,64 +1,57 @@
-# [Linux] Bash systemctl gebruik: Beheer van systeemdiensten
+# [Linux] C Shell (csh) systemctl gebruik: Beheer van systeemdiensten
 
 ## Overzicht
-De `systemctl` opdracht is een essentieel hulpmiddel in Linux-systemen voor het beheren van systeemdiensten en het controleren van de status van deze diensten. Het maakt deel uit van het systemd-init-systeem en biedt een uniforme manier om services te starten, stoppen, herstarten en hun status te controleren.
+De `systemctl` opdracht is een krachtige tool voor het beheren van systeemdiensten en -processen op Linux-systemen die het systemd-init systeem gebruiken. Met `systemctl` kun je diensten starten, stoppen, herstarten en hun status controleren.
 
 ## Gebruik
 De basis syntaxis van de `systemctl` opdracht is als volgt:
 
-```bash
+```csh
 systemctl [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- `start`: Start een opgegeven service.
-- `stop`: Stop een actieve service.
-- `restart`: Herstart een service.
-- `status`: Toon de huidige status van een service.
-- `enable`: Zet een service aan om automatisch te starten bij het opstarten van het systeem.
-- `disable`: Voorkom dat een service automatisch start bij het opstarten van het systeem.
-- `list-units`: Toon een lijst van actieve eenheden (services, sockets, etc.).
+## Veelvoorkomende Opties
+- `start`: Start een opgegeven dienst.
+- `stop`: Stop een actieve dienst.
+- `restart`: Herstart een dienst.
+- `status`: Toon de status van een dienst.
+- `enable`: Schakel een dienst in om automatisch te starten bij het opstarten.
+- `disable`: Schakel een dienst uit zodat deze niet automatisch start.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van `systemctl`:
 
-1. **Een service starten:**
-   ```bash
-   sudo systemctl start apache2
-   ```
+### Start een dienst
+```csh
+systemctl start naam_van_dienst
+```
 
-2. **Een service stoppen:**
-   ```bash
-   sudo systemctl stop apache2
-   ```
+### Stop een dienst
+```csh
+systemctl stop naam_van_dienst
+```
 
-3. **Een service herstarten:**
-   ```bash
-   sudo systemctl restart apache2
-   ```
+### Herstart een dienst
+```csh
+systemctl restart naam_van_dienst
+```
 
-4. **De status van een service controleren:**
-   ```bash
-   systemctl status apache2
-   ```
+### Controleer de status van een dienst
+```csh
+systemctl status naam_van_dienst
+```
 
-5. **Een service inschakelen bij opstarten:**
-   ```bash
-   sudo systemctl enable apache2
-   ```
+### Schakel een dienst in bij opstarten
+```csh
+systemctl enable naam_van_dienst
+```
 
-6. **Een service uitschakelen bij opstarten:**
-   ```bash
-   sudo systemctl disable apache2
-   ```
-
-7. **Lijst van actieve eenheden tonen:**
-   ```bash
-   systemctl list-units --type=service
-   ```
+### Schakel een dienst uit bij opstarten
+```csh
+systemctl disable naam_van_dienst
+```
 
 ## Tips
-- Gebruik `sudo` voor opdrachten die root-toegang vereisen, zoals starten of stoppen van services.
-- Controleer regelmatig de status van belangrijke services om ervoor te zorgen dat ze correct functioneren.
-- Maak gebruik van de `--quiet` optie om minder uitvoer te krijgen bij het uitvoeren van opdrachten.
-- Gebruik `systemctl list-units --failed` om snel te zien welke services zijn mislukt.
+- Gebruik `systemctl list-units --type=service` om een lijst van alle actieve diensten te bekijken.
+- Controleer altijd de status van een dienst na het starten of stoppen om te bevestigen dat de actie succesvol was.
+- Wees voorzichtig met het inschakelen van diensten bij opstarten; zorg ervoor dat ze noodzakelijk zijn om de prestaties van je systeem te optimaliseren.

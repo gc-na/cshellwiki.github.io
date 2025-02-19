@@ -1,45 +1,44 @@
-# [Linux] Bash host penggunaan: Mencari alamat IP dan informasi DNS
+# [Sistem Operasi] C Shell (csh) host: [menampilkan informasi DNS]
 
 ## Overview
-Perintah `host` digunakan untuk melakukan pencarian DNS (Domain Name System). Dengan menggunakan perintah ini, pengguna dapat menemukan alamat IP dari nama domain tertentu atau mendapatkan informasi DNS lainnya.
+Perintah `host` digunakan untuk melakukan pencarian DNS (Domain Name System) dan memberikan informasi tentang alamat IP dari nama domain, serta informasi terkait lainnya. Ini sangat berguna untuk memecahkan masalah jaringan dan memastikan bahwa nama domain dapat diresolusikan dengan benar.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `host`:
 
-```
+```csh
 host [options] [arguments]
 ```
 
 ## Common Options
-- `-a`: Menampilkan semua informasi yang tersedia tentang nama host.
-- `-t [type]`: Menentukan jenis catatan DNS yang ingin dicari, seperti A, MX, atau TXT.
-- `-v`: Mengaktifkan mode verbose untuk menampilkan informasi lebih detail tentang pencarian.
-- `-r`: Menggunakan resolusi rekursif untuk mencari informasi.
+- `-a`: Menampilkan semua informasi yang tersedia untuk nama host.
+- `-t type`: Menentukan jenis pencarian DNS, seperti A, MX, atau CNAME.
+- `-v`: Menampilkan informasi lebih rinci tentang proses pencarian.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `host`:
 
-1. Mencari alamat IP dari nama domain:
-   ```bash
+1. Mencari alamat IP dari sebuah nama domain:
+   ```csh
    host example.com
    ```
 
-2. Mencari catatan MX (Mail Exchange) untuk domain:
-   ```bash
-   host -t MX example.com
-   ```
-
-3. Menampilkan semua informasi DNS untuk nama host:
-   ```bash
+2. Menampilkan semua informasi DNS untuk nama host:
+   ```csh
    host -a example.com
    ```
 
-4. Menggunakan resolusi rekursif untuk mencari alamat IP:
-   ```bash
-   host -r example.com
+3. Mencari catatan MX (Mail Exchange) untuk sebuah domain:
+   ```csh
+   host -t MX example.com
+   ```
+
+4. Menampilkan informasi lebih rinci tentang pencarian:
+   ```csh
+   host -v example.com
    ```
 
 ## Tips
-- Selalu gunakan opsi `-v` jika Anda ingin mendapatkan informasi lebih lengkap tentang proses pencarian.
-- Jika Anda tidak yakin jenis catatan DNS yang ingin dicari, gunakan opsi `-a` untuk mendapatkan semua informasi yang tersedia.
-- Perintah `host` sangat berguna untuk troubleshooting masalah jaringan, jadi pastikan untuk memanfaatkannya saat menghadapi masalah konektivitas.
+- Gunakan opsi `-a` untuk mendapatkan gambaran lengkap tentang semua catatan DNS yang terkait dengan nama domain tertentu.
+- Jika Anda hanya tertarik pada jenis catatan tertentu, gunakan opsi `-t` untuk mempercepat pencarian.
+- Periksa koneksi internet Anda jika perintah `host` tidak memberikan hasil yang diharapkan, karena masalah jaringan dapat mempengaruhi kemampuan untuk melakukan pencarian DNS.

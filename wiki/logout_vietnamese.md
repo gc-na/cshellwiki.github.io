@@ -1,39 +1,30 @@
-# [Linux] Bash logout cách sử dụng: Đăng xuất khỏi phiên làm việc
+# [Hệ điều hành Unix] C Shell (csh) logout <Sử dụng tương đương>: Đăng xuất khỏi phiên làm việc
 
-## Overview
-Lệnh `logout` trong Bash được sử dụng để kết thúc phiên làm việc hiện tại của người dùng. Khi bạn thực hiện lệnh này, hệ thống sẽ đăng xuất người dùng khỏi shell hiện tại, thường là khi bạn đang làm việc trong một terminal hoặc một phiên SSH.
+## Tổng quan
+Lệnh `logout` trong C Shell (csh) được sử dụng để kết thúc phiên làm việc của người dùng. Khi bạn thực hiện lệnh này, bạn sẽ được đăng xuất khỏi shell hiện tại và quay lại màn hình đăng nhập hoặc môi trường trước đó.
 
-## Usage
+## Cú pháp
 Cú pháp cơ bản của lệnh `logout` như sau:
-
-```
+```csh
 logout [options]
 ```
 
-## Common Options
-Lệnh `logout` không có nhiều tùy chọn, nhưng dưới đây là một số thông tin hữu ích:
+## Các tùy chọn phổ biến
+- Không có tùy chọn đặc biệt nào cho lệnh `logout`. Lệnh này thường được sử dụng mà không có tham số bổ sung.
 
-- Không có tùy chọn: Lệnh `logout` thường không cần thêm tùy chọn nào và sẽ hoạt động ngay khi được gọi.
+## Ví dụ thường gặp
+Dưới đây là một số ví dụ thực tế khi sử dụng lệnh `logout`:
 
-## Common Examples
-Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `logout`:
-
-1. Đăng xuất khỏi phiên shell hiện tại:
-   ```bash
+1. Đăng xuất khỏi phiên làm việc:
+   ```csh
    logout
    ```
 
-2. Nếu bạn đang sử dụng một phiên SSH và muốn đăng xuất:
-   ```bash
-   logout
-   ```
-
-3. Trong một terminal, bạn có thể sử dụng lệnh `exit` tương đương với `logout`:
-   ```bash
+2. Nếu bạn đang sử dụng một shell con và muốn quay lại shell cha, bạn có thể sử dụng:
+   ```csh
    exit
    ```
 
-## Tips
-- Hãy chắc chắn rằng bạn đã lưu lại tất cả công việc trước khi thực hiện lệnh `logout`, vì lệnh này sẽ đóng phiên làm việc và không thể khôi phục lại.
-- Nếu bạn đang sử dụng nhiều tab trong terminal, hãy kiểm tra xem bạn đang ở tab nào trước khi đăng xuất để tránh mất dữ liệu không mong muốn.
-- Lệnh `logout` thường được sử dụng trong các phiên làm việc không phải là root. Nếu bạn đang ở chế độ root, hãy sử dụng `exit` để thoát khỏi shell.
+## Mẹo
+- Hãy chắc chắn rằng bạn đã lưu tất cả công việc của mình trước khi thực hiện lệnh `logout`, vì lệnh này sẽ đóng tất cả các tiến trình đang chạy trong phiên làm việc.
+- Nếu bạn đang làm việc trên một máy chủ từ xa, hãy kiểm tra xem có bất kỳ kết nối nào đang hoạt động trước khi đăng xuất để tránh mất dữ liệu.

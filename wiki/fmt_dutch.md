@@ -1,44 +1,43 @@
-# [Linux] Bash fmt gebruik: Tekst formatteren
+# [Linux] C Shell (csh) fmt Gebruik: Tekst formatteren
 
 ## Overzicht
-De `fmt`-opdracht is een eenvoudige tekstformatteringshulpmiddel in Bash. Het wordt gebruikt om tekstbestanden te herformatteren, zodat ze een consistente breedte hebben, wat handig is voor het verbeteren van de leesbaarheid.
+De `fmt` opdracht in C Shell (csh) wordt gebruikt om tekstbestanden te formatteren. Het doel is om lange regels tekst te breken en te zorgen voor een consistente regelbreedte, wat de leesbaarheid verbetert.
 
 ## Gebruik
-De basis syntaxis van de `fmt`-opdracht is als volgt:
+De basis syntaxis van de `fmt` opdracht is als volgt:
 
-```bash
+```
 fmt [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-w, --width <nummer>`: Stelt de maximale breedte in voor de regels (standaard is 75 tekens).
-- `-s, --split-only`: Splits alleen regels die langer zijn dan de opgegeven breedte, zonder extra spaties toe te voegen.
-- `-p, --prefix <prefix>`: Voegt een prefix toe aan elke regel in de uitvoer.
+- `-w [waarde]`: Stel de maximale regelbreedte in (standaard is 75 tekens).
+- `-s`: Vermijd het splitsen van alinea's; behoud de oorspronkelijke spatiëring.
+- `-u`: Schakel de uitlijning van tekst uit.
 
 ## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van de `fmt`-opdracht:
 
-1. **Basis formattering van een tekstbestand:**
-   ```bash
+1. **Basis formattering van een tekstbestand**:
+   ```csh
    fmt tekstbestand.txt
    ```
 
-2. **Formatteren met een specifieke breedte van 50 tekens:**
-   ```bash
+2. **Formatteren met een specifieke regelbreedte**:
+   ```csh
    fmt -w 50 tekstbestand.txt
    ```
 
-3. **Splits alleen lange regels zonder extra spaties:**
-   ```bash
+3. **Formatteren zonder alinea-splitsing**:
+   ```csh
    fmt -s tekstbestand.txt
    ```
 
-4. **Voeg een prefix toe aan elke regel:**
-   ```bash
-   fmt -p "> " tekstbestand.txt
+4. **Formatteren en de uitvoer naar een nieuw bestand schrijven**:
+   ```csh
+   fmt tekstbestand.txt > geformatteerd_bestand.txt
    ```
 
 ## Tips
-- Gebruik de `-w` optie om de leesbaarheid van lange teksten te verbeteren, vooral voor documenten die op een terminal worden weergegeven.
-- Combineer de `-s` optie met andere opties om meer controle te hebben over hoe de tekst wordt opgemaakt.
-- Test de formattering met een klein tekstbestand voordat je het op grotere bestanden toepast, om te zien hoe de uitvoer eruitziet.
+- Gebruik de optie `-w` om de leesbaarheid te verbeteren, vooral bij lange teksten.
+- Controleer altijd de uitvoer van `fmt` door het naar een nieuw bestand te schrijven, zodat je de originele tekst behoudt.
+- Experimenteer met verschillende regelbreedtes om te zien wat het beste werkt voor jouw specifieke tekst.

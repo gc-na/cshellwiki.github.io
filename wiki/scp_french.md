@@ -1,12 +1,12 @@
-# [Linux] Bash scp Utilisation : Transférer des fichiers de manière sécurisée
+# [Système d'exploitation] C Shell (csh) scp : Copier des fichiers de manière sécurisée
 
 ## Overview
-La commande `scp` (Secure Copy Protocol) permet de transférer des fichiers et des répertoires entre des machines sur un réseau de manière sécurisée. Elle utilise le protocole SSH pour garantir la sécurité des données pendant le transfert.
+La commande `scp` (Secure Copy Protocol) permet de copier des fichiers et des répertoires entre des hôtes sur un réseau de manière sécurisée. Elle utilise le protocole SSH pour garantir la sécurité des données pendant le transfert.
 
 ## Usage
 La syntaxe de base de la commande `scp` est la suivante :
 
-```bash
+```csh
 scp [options] [source] [destination]
 ```
 
@@ -16,32 +16,36 @@ Voici quelques options courantes que vous pouvez utiliser avec `scp` :
 - `-r` : Copie récursive des répertoires.
 - `-P` : Spécifie le port à utiliser pour la connexion SSH.
 - `-i` : Utilise une clé d'identification spécifique pour l'authentification.
-- `-v` : Affiche des informations détaillées sur le processus de transfert (mode verbeux).
+- `-v` : Mode verbeux, affiche des informations détaillées sur le processus de copie.
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de `scp` :
+Voici quelques exemples pratiques de l'utilisation de la commande `scp` :
 
-1. **Transférer un fichier local vers un serveur distant :**
-   ```bash
-   scp /chemin/vers/fichier.txt utilisateur@serveur:/chemin/vers/destination/
-   ```
+1. **Copier un fichier local vers un hôte distant :**
 
-2. **Transférer un fichier d'un serveur distant vers votre machine locale :**
-   ```bash
-   scp utilisateur@serveur:/chemin/vers/fichier.txt /chemin/vers/destination/
-   ```
+```csh
+scp fichier.txt utilisateur@hote_distant:/chemin/vers/destination/
+```
 
-3. **Copier un répertoire entier vers un serveur distant :**
-   ```bash
-   scp -r /chemin/vers/répertoire utilisateur@serveur:/chemin/vers/destination/
-   ```
+2. **Copier un fichier d'un hôte distant vers la machine locale :**
 
-4. **Transférer un fichier en spécifiant un port SSH différent :**
-   ```bash
-   scp -P 2222 /chemin/vers/fichier.txt utilisateur@serveur:/chemin/vers/destination/
-   ```
+```csh
+scp utilisateur@hote_distant:/chemin/vers/fichier.txt /chemin/local/
+```
+
+3. **Copier un répertoire entier vers un hôte distant :**
+
+```csh
+scp -r mon_repertoire utilisateur@hote_distant:/chemin/vers/destination/
+```
+
+4. **Copier un fichier en spécifiant un port SSH :**
+
+```csh
+scp -P 2222 fichier.txt utilisateur@hote_distant:/chemin/vers/destination/
+```
 
 ## Tips
-- Assurez-vous que le service SSH est actif sur le serveur distant avant d'utiliser `scp`.
-- Utilisez l'option `-v` pour diagnostiquer les problèmes de connexion ou de transfert.
-- Pour des transferts fréquents, envisagez d'utiliser une clé SSH pour éviter de saisir votre mot de passe à chaque fois.
+- Assurez-vous que le service SSH est en cours d'exécution sur l'hôte distant avant d'utiliser `scp`.
+- Utilisez l'option `-v` pour le débogage si vous rencontrez des problèmes de connexion.
+- Pour des transferts fréquents, envisagez d'utiliser des clés SSH pour éviter de saisir votre mot de passe à chaque fois.

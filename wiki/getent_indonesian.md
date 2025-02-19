@@ -1,50 +1,45 @@
-# [Linux] Bash getent Penggunaan: Mengambil informasi dari database sistem
+# [Linux] C Shell (csh) getent Penggunaan: Mengambil informasi dari basis data sistem
 
 ## Overview
-Perintah `getent` digunakan untuk mengambil informasi dari database sistem, seperti pengguna, grup, dan informasi jaringan. Ini memungkinkan pengguna untuk mengakses data yang biasanya tersedia melalui file konfigurasi seperti `/etc/passwd` atau `/etc/group`.
+Perintah `getent` digunakan untuk mengambil informasi dari berbagai basis data sistem seperti pengguna, grup, dan host. Ini memungkinkan pengguna untuk mengakses informasi yang biasanya tersedia melalui file konfigurasi atau layanan jaringan.
 
 ## Usage
-Sintaks dasar dari perintah `getent` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `getent`:
 
-```bash
+```
 getent [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang dapat digunakan dengan `getent`:
-
-- `passwd`: Mengambil informasi pengguna dari database.
-- `group`: Mengambil informasi grup dari database.
-- `hosts`: Mengambil informasi tentang host dari database.
-- `services`: Mengambil informasi tentang layanan jaringan.
+- `passwd`: Mengambil informasi pengguna dari basis data pengguna.
+- `group`: Mengambil informasi grup dari basis data grup.
+- `hosts`: Mengambil informasi host dari basis data host.
+- `services`: Mengambil informasi layanan dari basis data layanan.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan `getent`:
+Berikut adalah beberapa contoh penggunaan perintah `getent`:
 
 1. Mengambil informasi pengguna:
-   ```bash
+   ```csh
    getent passwd username
    ```
 
 2. Mengambil informasi grup:
-   ```bash
+   ```csh
    getent group groupname
    ```
 
-3. Mengambil informasi tentang host:
-   ```bash
+3. Mengambil informasi host:
+   ```csh
    getent hosts hostname
    ```
 
-4. Mengambil informasi tentang layanan:
-   ```bash
+4. Mengambil informasi layanan:
+   ```csh
    getent services servicename
    ```
 
 ## Tips
-- Pastikan untuk menggunakan nama pengguna, grup, atau host yang benar untuk mendapatkan hasil yang akurat.
-- Anda dapat menggabungkan `getent` dengan perintah lain menggunakan pipe (`|`) untuk memfilter hasil, misalnya:
-  ```bash
-  getent passwd | grep username
-  ```
-- Gunakan `man getent` untuk melihat dokumentasi lengkap dan opsi lainnya yang tersedia.
+- Pastikan untuk menggunakan nama yang tepat untuk pengguna, grup, atau layanan yang ingin Anda ambil informasinya.
+- Gunakan perintah `getent` dalam skrip untuk mengotomatisasi pengambilan informasi sistem.
+- Periksa file konfigurasi seperti `/etc/nsswitch.conf` untuk memahami dari mana `getent` mengambil datanya.

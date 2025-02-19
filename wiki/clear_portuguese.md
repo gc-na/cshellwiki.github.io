@@ -1,45 +1,35 @@
-# [Linux] Bash clear Uso: Limpar o terminal
-
-O comando `clear` é utilizado para limpar a tela do terminal, proporcionando um ambiente mais organizado e legível.
+# [Linux] C Shell (csh) clear uso: Limpa a tela do terminal
 
 ## Overview
-O comando `clear` remove todo o conteúdo visível do terminal, permitindo que o usuário comece com uma tela limpa. Isso é especialmente útil quando há muitas informações na tela e você deseja focar em novas saídas de comandos.
+O comando `clear` é utilizado para limpar a tela do terminal, proporcionando um espaço de trabalho mais organizado e livre de informações anteriores. Isso é especialmente útil quando você deseja focar em novas saídas ou comandos sem distrações.
 
 ## Usage
-A sintaxe básica do comando é a seguinte:
+A sintaxe básica do comando `clear` é a seguinte:
 
-```bash
-clear [opções]
+```
+clear [opções] [argumentos]
 ```
 
 ## Common Options
-Aqui estão algumas opções comuns que podem ser usadas com o comando `clear`:
+Embora o comando `clear` não tenha muitas opções, aqui estão algumas comuns:
 
-- `-x` : Limpa a tela e também remove o histórico de rolagem do terminal.
-- `--help` : Exibe uma mensagem de ajuda com informações sobre o uso do comando.
+- `-x`: Limpa a tela e elimina o conteúdo do buffer de rolagem, fazendo com que não seja possível rolar para cima e ver o que estava anteriormente na tela.
 
 ## Common Examples
+
 Aqui estão alguns exemplos práticos do uso do comando `clear`:
 
 1. **Limpar a tela do terminal:**
-
-   ```bash
+   ```csh
    clear
    ```
 
-2. **Limpar a tela e remover o histórico de rolagem:**
-
-   ```bash
+2. **Limpar a tela e eliminar o buffer de rolagem:**
+   ```csh
    clear -x
    ```
 
-3. **Exibir a ajuda do comando:**
-
-   ```bash
-   clear --help
-   ```
-
 ## Tips
-- Utilize o comando `clear` frequentemente durante sessões longas no terminal para manter a tela organizada.
-- Você pode criar um atalho de teclado para o comando `clear`, facilitando o acesso rápido.
-- Combine o uso do `clear` com outros comandos, como `echo`, para criar scripts que limpam a tela antes de exibir novas informações.
+- Utilize o comando `clear` sempre que sua tela estiver cheia de informações e você precisar de um espaço limpo para novos comandos.
+- Você pode criar um atalho no seu terminal para o comando `clear`, facilitando o acesso rápido.
+- Lembre-se de que o comando `clear` não exclui dados ou arquivos; ele apenas limpa a visualização atual no terminal.

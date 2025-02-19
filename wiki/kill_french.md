@@ -1,49 +1,46 @@
-# [Linux] Bash kill : Terminer des processus
+# [Linux] C Shell (csh) kill : Terminer des processus
 
 ## Overview
-La commande `kill` est utilisée pour envoyer des signaux à des processus en cours d'exécution sur un système Unix/Linux. Son utilisation la plus courante est de terminer un processus en envoyant le signal `SIGTERM`, mais elle peut également envoyer d'autres signaux pour contrôler le comportement des processus.
+La commande `kill` dans C Shell (csh) est utilisée pour envoyer des signaux à des processus en cours d'exécution. Son utilisation principale est de terminer un processus spécifique en utilisant son identifiant de processus (PID).
 
 ## Usage
 La syntaxe de base de la commande `kill` est la suivante :
 
-```bash
+```csh
 kill [options] [arguments]
 ```
 
 ## Common Options
-- `-l` : Liste tous les signaux disponibles.
-- `-s <signal>` : Spécifie le signal à envoyer.
-- `-n <numéro>` : Envoie le signal correspondant au numéro spécifié.
-- `-p` : Affiche le PID sans envoyer de signal.
+Voici quelques options courantes pour la commande `kill` :
+
+- `-l` : Affiche la liste des signaux disponibles.
+- `-s SIGNAL` : Spécifie le signal à envoyer (par défaut, c'est TERM).
+- `-n NUMBER` : Envoie le signal correspondant au numéro spécifié.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `kill` :
 
-1. **Terminer un processus par son PID :**
-   ```bash
+1. Terminer un processus avec un PID spécifique :
+   ```csh
    kill 1234
    ```
-   Cela enverra le signal `SIGTERM` au processus avec le PID 1234.
 
-2. **Forcer la terminaison d'un processus :**
-   ```bash
-   kill -9 1234
+2. Envoyer un signal spécifique (par exemple, SIGKILL) à un processus :
+   ```csh
+   kill -s KILL 1234
    ```
-   Ici, le signal `SIGKILL` est envoyé, ce qui force le processus à se terminer immédiatement.
 
-3. **Envoyer un signal spécifique :**
-   ```bash
-   kill -s SIGSTOP 1234
-   ```
-   Cela suspend le processus avec le PID 1234.
-
-4. **Lister tous les signaux disponibles :**
-   ```bash
+3. Afficher la liste des signaux disponibles :
+   ```csh
    kill -l
    ```
-   Cette commande affichera une liste de tous les signaux que vous pouvez utiliser avec `kill`.
+
+4. Terminer plusieurs processus à la fois :
+   ```csh
+   kill 1234 5678
+   ```
 
 ## Tips
-- Utilisez `kill -l` pour connaître les signaux disponibles avant d'envoyer un signal spécifique.
-- Soyez prudent avec `kill -9`, car cela ne permet pas au processus de se fermer proprement, ce qui peut entraîner une perte de données.
-- Pour trouver le PID d'un processus, vous pouvez utiliser des commandes comme `ps` ou `pgrep` avant d'utiliser `kill`.
+- Toujours vérifier le PID du processus avant d'utiliser `kill` pour éviter de terminer le mauvais processus.
+- Utilisez `kill -l` pour vous rappeler des signaux disponibles si vous n'êtes pas sûr du signal à envoyer.
+- Pour un arrêt plus doux, essayez d'abord d'envoyer le signal TERM avant d'utiliser KILL, car ce dernier ne permet pas au processus de se terminer proprement.

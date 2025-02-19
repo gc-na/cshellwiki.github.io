@@ -1,12 +1,12 @@
-# [Linux] Bash shutdown utilisation : Arrêter ou redémarrer le système
+# [Linux] C Shell (csh) shutdown : Arrêter le système
 
 ## Overview
-La commande `shutdown` est utilisée pour arrêter ou redémarrer un système Linux. Elle permet de planifier l'arrêt ou le redémarrage de l'ordinateur à un moment précis ou après un certain délai.
+La commande `shutdown` est utilisée pour arrêter ou redémarrer un système Unix/Linux de manière contrôlée. Elle permet d'avertir les utilisateurs connectés et de fermer les processus en cours avant d'éteindre l'ordinateur.
 
 ## Usage
-La syntaxe de base de la commande est la suivante :
+La syntaxe de base de la commande `shutdown` est la suivante :
 
-```bash
+```csh
 shutdown [options] [arguments]
 ```
 
@@ -15,34 +15,34 @@ Voici quelques options courantes pour la commande `shutdown` :
 
 - `-h` : Arrête le système.
 - `-r` : Redémarre le système.
-- `-t [seconds]` : Définit un délai avant l'arrêt ou le redémarrage (en secondes).
-- `now` : Indique que l'arrêt ou le redémarrage doit se faire immédiatement.
-- `+m` : Planifie l'arrêt ou le redémarrage dans `m` minutes.
+- `-k` : Envoie un message d'avertissement sans arrêter le système.
+- `time` : Spécifie le délai avant l'arrêt (ex. `now`, `+5` pour 5 minutes).
+- `message` : Un message à afficher aux utilisateurs avant l'arrêt.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `shutdown` :
 
-1. **Arrêter le système immédiatement :**
-   ```bash
+1. Pour arrêter le système immédiatement :
+   ```csh
    shutdown -h now
    ```
 
-2. **Redémarrer le système dans 5 minutes :**
-   ```bash
-   shutdown -r +5
+2. Pour redémarrer le système dans 10 minutes :
+   ```csh
+   shutdown -r +10
    ```
 
-3. **Arrêter le système à une heure précise (par exemple, 22h00) :**
-   ```bash
+3. Pour envoyer un message d'avertissement sans arrêter le système :
+   ```csh
+   shutdown -k now "Le système sera arrêté bientôt."
+   ```
+
+4. Pour arrêter le système à une heure précise (par exemple, 22h00) :
+   ```csh
    shutdown -h 22:00
    ```
 
-4. **Annuler un arrêt planifié :**
-   ```bash
-   shutdown -c
-   ```
-
 ## Tips
-- Toujours avertir les utilisateurs connectés avant d'arrêter ou de redémarrer le système pour éviter la perte de données.
-- Utiliser `shutdown -h now` avec précaution, car cela arrête immédiatement le système sans délai.
-- Pour des opérations régulières, envisagez d'utiliser des scripts pour automatiser l'arrêt ou le redémarrage à des moments spécifiques.
+- Toujours informer les utilisateurs avant d'utiliser `shutdown` pour éviter toute perte de données.
+- Utilisez l'option `-k` pour tester le message d'avertissement sans effectuer l'arrêt.
+- Vérifiez les processus en cours et sauvegardez les travaux importants avant d'arrêter le système.

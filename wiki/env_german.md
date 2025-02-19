@@ -1,43 +1,41 @@
-# [Linux] Bash env Verwendung: Umgebungsvariablen anzeigen und ändern
+# [Linux] C Shell (csh) env Verwendung: Umgebungsvariablen verwalten
 
 ## Übersicht
-Der `env` Befehl wird verwendet, um Umgebungsvariablen anzuzeigen oder zu ändern. Er ermöglicht es Benutzern, Programme mit einer modifizierten Umgebung auszuführen, ohne die aktuelle Shell-Umgebung zu beeinflussen.
+Der Befehl `env` wird verwendet, um Umgebungsvariablen anzuzeigen oder neue Umgebungsvariablen für die Ausführung eines Programms festzulegen. Er ist besonders nützlich, um sicherzustellen, dass ein Programm mit einer bestimmten Umgebung ausgeführt wird, ohne die aktuelle Shell-Umgebung zu verändern.
 
 ## Verwendung
-Die grundlegende Syntax des `env` Befehls lautet:
+Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```csh
 env [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-i`: Startet eine neue Umgebung ohne bestehende Umgebungsvariablen.
-- `-u VAR`: Entfernt die angegebene Umgebungsvariable.
-- `VAR=WERT`: Setzt eine neue Umgebungsvariable für den Befehl, der danach folgt.
+- `-i`: Startet eine leere Umgebung, ohne bestehende Umgebungsvariablen zu erben.
+- `-u VAR`: Entfernt die angegebene Umgebungsvariable VAR aus der Umgebung, bevor das Programm ausgeführt wird.
 
 ## Häufige Beispiele
-
 1. **Anzeigen aller Umgebungsvariablen:**
-   ```bash
+   ```csh
    env
    ```
 
-2. **Ausführen eines Befehls mit einer neuen Umgebungsvariable:**
-   ```bash
-   env MY_VAR=123 bash -c 'echo $MY_VAR'
+2. **Ausführen eines Programms mit einer modifizierten Umgebungsvariable:**
+   ```csh
+   env VAR=value programmname
    ```
 
-3. **Entfernen einer Umgebungsvariable:**
-   ```bash
-   env -u MY_VAR bash -c 'echo $MY_VAR'
+3. **Starten eines Programms mit einer leeren Umgebung:**
+   ```csh
+   env -i programmname
    ```
 
-4. **Starten einer neuen Umgebung ohne bestehende Variablen:**
-   ```bash
-   env -i bash -c 'echo $HOME'
+4. **Entfernen einer Umgebungsvariablen vor der Ausführung:**
+   ```csh
+   env -u VAR programmname
    ```
 
 ## Tipps
-- Verwenden Sie `env` in Skripten, um sicherzustellen, dass bestimmte Umgebungsvariablen gesetzt sind, bevor Sie einen Befehl ausführen.
-- Nutzen Sie die `-i` Option, um sicherzustellen, dass keine unerwünschten Umgebungsvariablen in Ihre neue Shell gelangen.
-- Seien Sie vorsichtig beim Entfernen von Variablen mit `-u`, da dies die Ausführung von Programmen beeinträchtigen kann, die auf diese Variablen angewiesen sind.
+- Verwenden Sie `env` in Skripten, um sicherzustellen, dass Programme mit den richtigen Umgebungsvariablen ausgeführt werden.
+- Nutzen Sie die Option `-i`, wenn Sie sicherstellen möchten, dass keine unerwünschten Umgebungsvariablen vorhanden sind.
+- Überprüfen Sie die Ausgabe von `env`, um zu verstehen, welche Variablen in Ihrer aktuellen Umgebung gesetzt sind.

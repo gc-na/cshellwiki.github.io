@@ -1,57 +1,46 @@
-# [Linux] Bash fdisk użycie: Narzędzie do zarządzania partycjami dysków
+# [Linux] C Shell (csh) fdisk użycie: zarządzanie partycjami dysku
 
 ## Overview
-Polecenie `fdisk` jest narzędziem służącym do zarządzania partycjami dysków w systemach operacyjnych opartych na jądrze Linux. Umożliwia użytkownikom tworzenie, usuwanie i modyfikowanie partycji na dyskach twardych oraz innych nośnikach danych.
+Polecenie `fdisk` służy do zarządzania partycjami dysku w systemach operacyjnych Unix i Linux. Umożliwia użytkownikom tworzenie, usuwanie oraz modyfikowanie partycji na dyskach twardych.
 
 ## Usage
-Podstawowa składnia polecenia `fdisk` wygląda następująco:
+Podstawowa składnia polecenia `fdisk` jest następująca:
 
-```bash
+```csh
 fdisk [opcje] [argumenty]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji dla polecenia `fdisk`:
-
-- `-l`: Wyświetla listę wszystkich dostępnych dysków i ich partycji.
-- `-u`: Używa jednostek cylindrów zamiast sektorów do wyświetlania informacji o partycjach.
-- `-s`: Wyświetla rozmiar określonej partycji.
-- `-n`: Tworzy nową partycję.
-- `-d`: Usuwa istniejącą partycję.
+- `-l` - Wyświetla listę wszystkich dostępnych dysków i ich partycji.
+- `-u` - Używa jednostek cylindrów zamiast sektorów.
+- `-n` - Tworzy nową partycję.
+- `-d` - Usuwa istniejącą partycję.
+- `-p` - Wyświetla aktualną tablicę partycji.
 
 ## Common Examples
+1. **Wyświetlenie listy partycji na dysku**:
+   ```csh
+   fdisk -l
+   ```
 
-### Wyświetlenie listy partycji
-Aby zobaczyć wszystkie dostępne partycje na dysku, użyj:
+2. **Tworzenie nowej partycji**:
+   ```csh
+   fdisk /dev/sda
+   ```
+   Następnie w interaktywnym menu wybierz opcję `n`, aby utworzyć nową partycję.
 
-```bash
-fdisk -l
-```
+3. **Usuwanie partycji**:
+   ```csh
+   fdisk /dev/sda
+   ```
+   W interaktywnym menu wybierz opcję `d`, aby usunąć partycję.
 
-### Tworzenie nowej partycji
-Aby utworzyć nową partycję, uruchom `fdisk` z odpowiednim dyskiem:
-
-```bash
-fdisk /dev/sda
-```
-Następnie wprowadź `n`, aby dodać nową partycję i postępuj zgodnie z instrukcjami.
-
-### Usuwanie partycji
-Aby usunąć partycję, uruchom `fdisk` na odpowiednim dysku:
-
-```bash
-fdisk /dev/sda
-```
-Wprowadź `d`, a następnie wybierz numer partycji, którą chcesz usunąć.
-
-### Wyświetlenie rozmiaru partycji
-Aby sprawdzić rozmiar konkretnej partycji, użyj:
-
-```bash
-fdisk -s /dev/sda1
-```
+4. **Wyświetlenie tablicy partycji**:
+   ```csh
+   fdisk -p /dev/sda
+   ```
 
 ## Tips
 - Zawsze wykonuj kopię zapasową danych przed modyfikowaniem partycji, aby uniknąć utraty danych.
-- Używaj opcji `-l` przed wprowadzeniem jakichkolwiek zmian, aby upewnić się, że znasz aktualny układ partycji.
-- Po zakończeniu pracy z `fdisk`, pamiętaj o uruchomieniu polecenia `partprobe` lub ponownym uruchomieniu systemu, aby zastosować zmiany.
+- Używaj opcji `-l`, aby szybko sprawdzić, jakie partycje są dostępne przed dokonaniem jakichkolwiek zmian.
+- Upewnij się, że masz odpowiednie uprawnienia (najlepiej jako root), aby używać polecenia `fdisk`.

@@ -1,45 +1,44 @@
-# [Linux] Bash lsmod Verwendung: Zeigt geladene Kernel-Module an
+# [Linux] C Shell (csh) lsmod Verwendung: Zeigt geladene Kernel-Module an
 
 ## Übersicht
-Der Befehl `lsmod` wird verwendet, um eine Liste der derzeit geladenen Kernel-Module in einem Linux-System anzuzeigen. Diese Module sind Treiber oder andere Programme, die vom Kernel zur Unterstützung von Hardware oder zur Bereitstellung von Funktionen verwendet werden.
+Der Befehl `lsmod` wird verwendet, um eine Liste der derzeit geladenen Kernel-Module in einem Linux-System anzuzeigen. Dies ist nützlich, um zu überprüfen, welche Module aktiv sind und welche möglicherweise geladen oder entladen werden müssen.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
-lsmod [Optionen] [Argumente]
+```csh
+lsmod [optionen] [argumente]
 ```
 
 ## Häufige Optionen
-- **-h, --help**: Zeigt eine Hilfemeldung mit den verfügbaren Optionen an.
-- **-n, --noheadings**: Unterdrückt die Kopfzeilen in der Ausgabe.
-- **-o, --output**: Ermöglicht die Angabe von spezifischen Ausgabefeldern.
+- `-h`, `--help`: Zeigt eine Hilfe-Seite mit Informationen zur Verwendung des Befehls an.
+- `-n`, `--no-heading`: Unterdrückt die Kopfzeile in der Ausgabe.
 
 ## Häufige Beispiele
-- Um alle geladenen Module anzuzeigen:
+Um alle geladenen Module anzuzeigen, verwenden Sie einfach:
 
-```bash
+```csh
 lsmod
 ```
 
-- Um die Ausgabe ohne Kopfzeilen zu erhalten:
+Um die Ausgabe ohne Kopfzeile zu erhalten, verwenden Sie:
 
-```bash
+```csh
 lsmod -n
 ```
 
-- Um spezifische Ausgabefelder anzuzeigen, z.B. nur die Modulnamen:
+Um Hilfe zum Befehl anzuzeigen, verwenden Sie:
 
-```bash
-lsmod --output=name
+```csh
+lsmod --help
 ```
 
 ## Tipps
-- Verwenden Sie `lsmod` in Kombination mit `grep`, um nach einem bestimmten Modul zu suchen, z.B.:
+- Überprüfen Sie regelmäßig die geladenen Module, um sicherzustellen, dass keine unerwünschten Module aktiv sind.
+- Nutzen Sie `grep`, um gezielt nach einem bestimmten Modul zu suchen, z.B.:
 
-```bash
-lsmod | grep <Modulname>
+```csh
+lsmod | grep modulname
 ```
 
-- Beachten Sie, dass `lsmod` keine Optionen zum Laden oder Entladen von Modulen bietet; dafür sollten Sie `modprobe` oder `rmmod` verwenden.
-- Überprüfen Sie regelmäßig die geladenen Module, um sicherzustellen, dass alle benötigten Treiber aktiv sind und keine unnötigen Module geladen sind.
+- Denken Sie daran, dass Änderungen an geladenen Modulen möglicherweise einen Neustart des Systems erfordern, um wirksam zu werden.

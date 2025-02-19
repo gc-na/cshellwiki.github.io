@@ -1,45 +1,52 @@
-# [Linux] Bash umask gebruik: Beheer van bestandspermissies
+# [Linux] C Shell (csh) umask gebruik: Beheer van bestandspermissies
 
-## Overview
-De `umask`-opdracht in Bash wordt gebruikt om de standaard bestandspermissies in te stellen voor nieuwe bestanden en mappen die door een gebruiker worden aangemaakt. Het bepaalt welke rechten niet worden toegekend aan nieuwe bestanden en mappen.
+## Overzicht
+De `umask`-opdracht in C Shell (csh) wordt gebruikt om de standaard bestandspermissies in te stellen voor nieuwe bestanden en directories. Het bepaalt welke rechten niet worden toegewezen aan nieuwe bestanden die door een gebruiker worden gemaakt.
 
-## Usage
+## Gebruik
 De basis syntaxis van de `umask`-opdracht is als volgt:
 
-```bash
+```csh
 umask [opties] [argumenten]
 ```
 
-## Common Options
-Hier zijn enkele veelvoorkomende opties voor `umask`:
+## Veelvoorkomende opties
+- `-S`: Toont de huidige umask in symbolische notatie.
+- `-p`: Toont de huidige umask zonder deze te wijzigen.
 
-- `-S`: Toont de umask in symbolische notatie.
-- `-p`: Toont de huidige umask-waarde in een uitvoerbare vorm.
+## Veelvoorkomende voorbeelden
 
-## Common Examples
-Hier zijn enkele praktische voorbeelden van het gebruik van `umask`:
+1. **Huidige umask weergeven:**
 
-1. **Toon de huidige umask-waarde:**
-   ```bash
-   umask
-   ```
+```csh
+umask
+```
 
-2. **Stel een nieuwe umask-waarde in (bijvoorbeeld 027):**
-   ```bash
-   umask 027
-   ```
+2. **Huidige umask in symbolische notatie weergeven:**
 
-3. **Toon de umask-waarde in symbolische notatie:**
-   ```bash
-   umask -S
-   ```
+```csh
+umask -S
+```
 
-4. **Stel de umask in voor de huidige sessie:**
-   ```bash
-   umask 002
-   ```
+3. **Umask instellen op 022:**
+
+```csh
+umask 022
+```
+
+4. **Umask instellen op 007:**
+
+```csh
+umask 007
+```
+
+5. **Umask instellen op 077 voor maximale beveiliging:**
+
+```csh
+umask 077
+```
 
 ## Tips
-- Het is een goede gewoonte om de umask-waarde in je shell-configuratiebestand (zoals `.bashrc` of `.bash_profile`) in te stellen, zodat deze automatisch wordt toegepast bij elke nieuwe sessie.
-- Controleer regelmatig je umask-instellingen om ervoor te zorgen dat ze voldoen aan de beveiligingsvereisten van je systeem.
-- Wees voorzichtig met het instellen van een te permissieve umask, omdat dit kan leiden tot ongewenste toegang tot je bestanden door andere gebruikers.
+- Stel de umask in op een waarde die past bij de beveiligingsbehoeften van je project.
+- Controleer regelmatig je umask-instellingen om ervoor te zorgen dat ze overeenkomen met je huidige vereisten.
+- Gebruik de `-S` optie om de umask in een begrijpelijke vorm te bekijken, vooral als je met meerdere gebruikers werkt.

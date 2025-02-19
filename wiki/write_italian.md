@@ -1,43 +1,41 @@
-# [Linux] Bash write utilizzo: Inviare messaggi a un altro utente
+# [Linux] C Shell (csh) write utilizzo: Inviare messaggi ad altri utenti
 
 ## Overview
-Il comando `write` in Bash consente di inviare messaggi di testo a un altro utente che è attualmente connesso al sistema. Questo strumento è utile per comunicazioni rapide tra utenti in un ambiente multiutente.
+Il comando `write` in C Shell (csh) consente di inviare messaggi di testo ad altri utenti che sono attualmente connessi al sistema. Questo strumento è utile per comunicazioni rapide e dirette tra utenti.
 
 ## Usage
 La sintassi di base del comando `write` è la seguente:
 
-```bash
+```
 write [opzioni] [utente] [tty]
 ```
 
-Dove:
-- `[utente]` è il nome dell'utente a cui si desidera inviare il messaggio.
-- `[tty]` è l'opzione per specificare il terminale, se necessario.
-
 ## Common Options
-- `-n`: Non invia il messaggio se l'utente non è connesso.
+- `-n`: Non invia un messaggio se l'utente non è connesso.
 - `-h`: Mostra un messaggio di aiuto.
 
 ## Common Examples
-Ecco alcuni esempi pratici dell'uso del comando `write`:
+Ecco alcuni esempi pratici di utilizzo del comando `write`:
 
 1. Inviare un messaggio a un utente specifico:
    ```bash
    write mario
-   ```
-   Dopo aver eseguito questo comando, puoi digitare il tuo messaggio e premere `Ctrl+D` per inviarlo.
-
-2. Inviare un messaggio a un utente specifico su un terminale specifico:
-   ```bash
-   write mario pts/1
+   Ciao Mario, come va?
    ```
 
-3. Inviare un messaggio e poi terminare la sessione:
+2. Inviare un messaggio a un utente su un terminale specifico:
    ```bash
-   echo "Ciao, come va?" | write mario
+   write lucia pts/2
+   Ti aspetto in sala riunioni.
+   ```
+
+3. Usare l'opzione `-n` per evitare di inviare messaggi a utenti disconnessi:
+   ```bash
+   write -n giovanni
+   Questo messaggio non verrà inviato se Giovanni non è online.
    ```
 
 ## Tips
-- Assicurati che l'utente a cui stai inviando il messaggio sia connesso e abbia il terminale attivo.
-- Puoi utilizzare `who` per vedere chi è attualmente connesso e quali terminali stanno utilizzando.
-- Ricorda che il messaggio sarà visibile a chiunque stia utilizzando il terminale dell'utente destinatario.
+- Assicurati che l'utente a cui stai scrivendo sia connesso e non abbia disabilitato la ricezione dei messaggi.
+- Puoi terminare la scrittura del messaggio premendo `Ctrl+D`.
+- Utilizza `who` per controllare quali utenti sono attualmente connessi prima di inviare un messaggio.

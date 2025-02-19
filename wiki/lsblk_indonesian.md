@@ -1,53 +1,51 @@
-# [Linux] Bash lsblk Penggunaan: Menampilkan informasi blok perangkat
+# [Linux] C Shell (csh) lsblk Penggunaan: Menampilkan informasi tentang perangkat blok
 
 ## Overview
-Perintah `lsblk` digunakan untuk menampilkan informasi tentang perangkat blok di sistem Linux. Ini termasuk disk, partisi, dan perangkat penyimpanan lainnya. Dengan `lsblk`, pengguna dapat dengan mudah melihat struktur penyimpanan dan ukuran perangkat yang terpasang.
+Perintah `lsblk` digunakan untuk menampilkan informasi tentang perangkat blok di sistem Linux. Ini termasuk disk, partisi, dan perangkat penyimpanan lainnya, memberikan gambaran yang jelas tentang struktur penyimpanan di sistem Anda.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `lsblk`:
 
-```bash
+```csh
 lsblk [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang dapat digunakan dengan `lsblk`:
-
-- `-a` atau `--all`: Menampilkan semua perangkat, termasuk yang tidak terpasang.
-- `-f` atau `--fs`: Menampilkan informasi sistem file pada perangkat.
-- `-l` atau `--list`: Menampilkan output dalam format daftar.
-- `-o` atau `--output`: Menentukan kolom mana yang akan ditampilkan.
-- `-p` atau `--paths`: Menampilkan jalur perangkat lengkap.
+- `-a` : Menampilkan semua perangkat, termasuk yang tidak terpasang.
+- `-f` : Menampilkan informasi sistem file pada perangkat.
+- `-l` : Menampilkan output dalam format daftar (list).
+- `-o` : Menentukan kolom yang ingin ditampilkan.
+- `-p` : Menampilkan nama perangkat lengkap.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan `lsblk`:
+Berikut adalah beberapa contoh penggunaan perintah `lsblk`:
 
-1. Menampilkan semua perangkat blok yang terpasang:
-   ```bash
+1. Menampilkan semua perangkat blok:
+   ```csh
    lsblk
    ```
 
 2. Menampilkan semua perangkat termasuk yang tidak terpasang:
-   ```bash
+   ```csh
    lsblk -a
    ```
 
-3. Menampilkan informasi sistem file pada perangkat:
-   ```bash
+3. Menampilkan informasi sistem file:
+   ```csh
    lsblk -f
    ```
 
 4. Menampilkan output dalam format daftar:
-   ```bash
+   ```csh
    lsblk -l
    ```
 
-5. Menentukan kolom yang ditampilkan, misalnya hanya nama dan ukuran:
-   ```bash
-   lsblk -o NAME,SIZE
+5. Menentukan kolom yang ingin ditampilkan:
+   ```csh
+   lsblk -o NAME,SIZE,TYPE,MOUNTPOINT
    ```
 
 ## Tips
-- Gunakan opsi `-f` untuk mendapatkan informasi lebih lanjut tentang sistem file, seperti tipe dan label.
-- Kombinasikan `lsblk` dengan perintah lain seperti `grep` untuk mencari perangkat tertentu.
-- Periksa secara berkala perangkat blok Anda untuk memastikan tidak ada masalah dengan penyimpanan yang terpasang.
+- Gunakan opsi `-f` untuk mendapatkan informasi lebih detail tentang sistem file pada perangkat.
+- Kombinasikan opsi untuk menyesuaikan output sesuai kebutuhan Anda, misalnya `lsblk -a -f`.
+- Selalu periksa perangkat yang terpasang sebelum melakukan operasi yang dapat mempengaruhi data, seperti format atau penghapusan.

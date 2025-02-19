@@ -1,41 +1,44 @@
-# [Linux] Bash write uso equivalente: Enviar mensagens para outros usuários
+# [Linux] C Shell (csh) write uso: Enviar mensagens para outros usuários
 
 ## Overview
-O comando `write` permite que um usuário envie mensagens de texto para outro usuário que esteja logado no mesmo sistema. É uma forma simples de comunicação em tempo real entre usuários em um ambiente de terminal.
+O comando `write` no C Shell (csh) permite que você envie mensagens de texto para outros usuários que estão logados no mesmo sistema. É uma maneira simples e direta de se comunicar com colegas de trabalho ou amigos que estão usando o mesmo computador.
 
 ## Usage
 A sintaxe básica do comando `write` é a seguinte:
 
-```bash
+```
 write [opções] [usuário] [terminal]
 ```
 
 ## Common Options
 - `-n`: Não exibe o nome do usuário que está enviando a mensagem.
-- `-s`: Envia a mensagem em modo silencioso, sem exibir o cabeçalho.
+- `-h`: Não envia a mensagem se o usuário estiver ocupado.
 
 ## Common Examples
 
-1. **Enviar uma mensagem para um usuário específico:**
-   Para enviar uma mensagem para o usuário `joao` que está logado no terminal `pts/1`, você pode usar:
-   ```bash
-   write joao pts/1
-   ```
-   Após executar este comando, você pode digitar sua mensagem e pressionar `Enter` para enviá-la.
+### Enviar uma mensagem para um usuário específico
+Para enviar uma mensagem para um usuário chamado `joao`, você pode usar o seguinte comando:
 
-2. **Enviar uma mensagem sem exibir o nome do usuário:**
-   Para enviar uma mensagem sem mostrar seu nome, use a opção `-n`:
-   ```bash
-   write -n joao
-   ```
+```csh
+write joao
+```
+Após executar o comando, você pode digitar sua mensagem e pressionar `Ctrl+D` para enviar.
 
-3. **Usar o comando em modo silencioso:**
-   Para enviar uma mensagem em modo silencioso, você pode usar a opção `-s`:
-   ```bash
-   write -s joao
-   ```
+### Enviar uma mensagem para um usuário em um terminal específico
+Se você souber que `maria` está logada em um terminal específico, como `pts/1`, você pode enviar uma mensagem diretamente para esse terminal:
+
+```csh
+write maria pts/1
+```
+
+### Enviar uma mensagem sem mostrar seu nome
+Para enviar uma mensagem sem que o destinatário veja seu nome, utilize a opção `-n`:
+
+```csh
+write -n joao
+```
 
 ## Tips
-- Certifique-se de que o usuário destinatário esteja logado e que o terminal esteja ativo para receber a mensagem.
-- Para encerrar a mensagem, pressione `Ctrl+D` ou `Ctrl+C`.
-- Use o comando `who` para verificar quais usuários estão logados e onde eles estão, antes de enviar uma mensagem.
+- Certifique-se de que o usuário que você deseja contatar está logado e disponível para receber mensagens.
+- Use `who` para verificar quais usuários estão logados e em quais terminais.
+- Lembre-se de que o destinatário pode estar ocupado e pode não responder imediatamente.

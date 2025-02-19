@@ -1,47 +1,49 @@
-# [Linux] Bash export gebruik: Omgevingsvariabelen instellen
+# [Linux] C Shell (csh) export gebruik: Omgevingsvariabelen instellen
 
 ## Overzicht
-De `export` opdracht in Bash wordt gebruikt om omgevingsvariabelen in te stellen en beschikbaar te maken voor sub-processen. Dit is nuttig wanneer je variabelen wilt delen met andere programma's of scripts die je uitvoert vanuit de huidige shell.
+De `export` opdracht in C Shell (csh) wordt gebruikt om omgevingsvariabelen in te stellen en beschikbaar te maken voor subprocessen. Dit betekent dat wanneer je een variabele exporteert, deze toegankelijk is voor alle programma's die vanuit de huidige shell worden uitgevoerd.
 
 ## Gebruik
 De basis syntaxis van de `export` opdracht is als volgt:
 
-```bash
+```csh
 export [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-n`: Verwijdert de exportstatus van een variabele, waardoor deze niet meer beschikbaar is voor sub-processen.
-- `-p`: Toont een lijst van alle geëxporteerde variabelen en hun waarden.
+- `-n`: Verwijdert de exportstatus van een variabele.
+- `-p`: Toont een lijst van alle geëxporteerde variabelen.
 
 ## Veelvoorkomende Voorbeelden
 
-### 1. Een nieuwe omgevingsvariabele instellen
-```bash
-export MY_VAR="Hallo Wereld"
+### Voorbeeld 1: Een variabele exporteren
+```csh
+set VARIABEL = "waarde"
+export VARIABEL
 ```
+In dit voorbeeld wordt de variabele `VARIABEL` ingesteld op "waarde" en vervolgens geëxporteerd, zodat deze beschikbaar is voor subprocessen.
 
-### 2. Een omgevingsvariabele controleren
-```bash
-echo $MY_VAR
+### Voorbeeld 2: Meerdere variabelen exporteren
+```csh
+set VAR1 = "waarde1"
+set VAR2 = "waarde2"
+export VAR1 VAR2
 ```
+Hier worden zowel `VAR1` als `VAR2` geëxporteerd, zodat beide variabelen toegankelijk zijn voor andere programma's.
 
-### 3. Een omgevingsvariabele verwijderen
-```bash
-export -n MY_VAR
+### Voorbeeld 3: Exporteren met de -n optie
+```csh
+export -n VARIABEL
 ```
+Met deze opdracht wordt de exportstatus van `VARIABEL` verwijderd, waardoor deze niet langer beschikbaar is voor subprocessen.
 
-### 4. Een variabele exporteren en direct gebruiken
-```bash
-export PATH="$PATH:/usr/local/bin"
-```
-
-### 5. Lijst van geëxporteerde variabelen weergeven
-```bash
+### Voorbeeld 4: Lijst van geëxporteerde variabelen
+```csh
 export -p
 ```
+Dit toont een lijst van alle momenteel geëxporteerde variabelen in de shell.
 
 ## Tips
-- Zorg ervoor dat je de juiste syntaxis gebruikt bij het instellen van variabelen om fouten te voorkomen.
-- Gebruik `export` in je `.bashrc` of `.bash_profile` om omgevingsvariabelen automatisch in te stellen bij het opstarten van een nieuwe shell.
-- Controleer altijd de waarde van een variabele met `echo` voordat je deze in scripts gebruikt, om te bevestigen dat deze correct is ingesteld.
+- Zorg ervoor dat je variabelen een duidelijke naam hebben om verwarring te voorkomen.
+- Gebruik de `-p` optie regelmatig om te controleren welke variabelen zijn geëxporteerd.
+- Vergeet niet dat geëxporteerde variabelen alleen beschikbaar zijn voor subprocessen, niet voor de huidige shell.

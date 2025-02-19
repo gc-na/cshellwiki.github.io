@@ -1,48 +1,48 @@
-# [Linux] Bash pkg 使用方法: 包管理工具
+# [操作系统] C Shell (csh) pkg 使用方法: 管理软件包
 
 ## 概述
-`pkg` 命令是一个用于管理软件包的工具，通常用于安装、更新和删除软件。它可以帮助用户轻松地处理系统中的软件包，确保系统保持最新和安全。
+`pkg` 命令用于管理软件包，允许用户安装、更新和删除软件包。它是一个强大的工具，能够帮助用户轻松管理系统中的软件。
 
-## 使用方法
+## 用法
 基本语法如下：
 ```
 pkg [options] [arguments]
 ```
 
 ## 常用选项
-- `install`：安装一个或多个软件包。
-- `remove`：卸载一个或多个软件包。
-- `update`：更新已安装的软件包列表。
-- `upgrade`：升级所有已安装的软件包到最新版本。
-- `search`：搜索软件包。
+- `install`：安装指定的软件包。
+- `remove`：删除指定的软件包。
+- `update`：更新已安装的软件包。
+- `list`：列出已安装的软件包。
+- `info`：显示指定软件包的详细信息。
 
 ## 常见示例
-1. 安装软件包：
-   ```bash
-   pkg install package_name
-   ```
+- 安装软件包：
+  ```shell
+  pkg install package_name
+  ```
+  
+- 删除软件包：
+  ```shell
+  pkg remove package_name
+  ```
 
-2. 卸载软件包：
-   ```bash
-   pkg remove package_name
-   ```
+- 更新所有已安装的软件包：
+  ```shell
+  pkg update
+  ```
 
-3. 更新软件包列表：
-   ```bash
-   pkg update
-   ```
+- 列出所有已安装的软件包：
+  ```shell
+  pkg list
+  ```
 
-4. 升级所有已安装的软件包：
-   ```bash
-   pkg upgrade
-   ```
-
-5. 搜索软件包：
-   ```bash
-   pkg search package_name
-   ```
+- 获取软件包的详细信息：
+  ```shell
+  pkg info package_name
+  ```
 
 ## 小贴士
-- 在执行 `upgrade` 命令之前，建议先运行 `update` 以确保软件包列表是最新的。
-- 使用 `search` 命令时，可以使用通配符来查找相关的软件包。
-- 定期检查和清理不再使用的软件包，以节省磁盘空间。
+- 在安装或删除软件包之前，建议使用 `pkg list` 查看当前已安装的软件包，以避免不必要的错误。
+- 定期使用 `pkg update` 来保持软件包的最新状态，确保系统安全和稳定。
+- 使用 `pkg info` 命令可以帮助你了解软件包的依赖关系和版本信息。

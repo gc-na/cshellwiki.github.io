@@ -1,66 +1,50 @@
-# [Linux] Bash snap Kullanımı: Yazılım paketlerini yönetme aracı
+# [Linux] C Shell (csh) snap kullanımı: Snap paketlerini yönetme
 
-## Overview
-`snap` komutu, Linux sistemlerinde yazılım paketlerini yönetmek için kullanılan bir araçtır. Snap, uygulamaların bağımsız bir şekilde dağıtımını ve güncellenmesini sağlar, böylece farklı sistemlerde tutarlılık sunar.
+## Genel Bakış
+`snap` komutu, Snap paket yöneticisi aracılığıyla yazılımları yüklemek, güncellemek ve yönetmek için kullanılır. Snap, uygulamaların bağımsız bir şekilde çalışmasını sağlayarak sistemin diğer bileşenlerinden izole edilmesini sağlar.
 
-## Usage
-Temel kullanım sözdizimi şu şekildedir:
-```bash
-snap [options] [arguments]
+## Kullanım
+Temel sözdizimi aşağıdaki gibidir:
+```csh
+snap [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `install`: Belirtilen bir snap paketini yükler.
-- `remove`: Yüklenmiş bir snap paketini kaldırır.
-- `list`: Yüklenmiş snap paketlerini listeler.
-- `refresh`: Yüklenmiş snap paketlerini günceller.
-- `info`: Belirtilen bir snap paketi hakkında bilgi gösterir.
+## Yaygın Seçenekler
+- `install`: Belirtilen bir Snap paketini yükler.
+- `remove`: Yüklenmiş bir Snap paketini kaldırır.
+- `list`: Yüklenmiş Snap paketlerini listeler.
+- `refresh`: Yüklenmiş Snap paketlerini günceller.
+- `info`: Belirtilen Snap paketi hakkında bilgi verir.
 
-## Common Examples
-Aşağıda `snap` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+## Yaygın Örnekler
+Aşağıda `snap` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-### 1. Snap Paketini Yükleme
-```bash
-snap install <paket_adı>
-```
-Örneğin, VLC medya oynatıcısını yüklemek için:
-```bash
-snap install vlc
-```
+1. Snap paketini yüklemek:
+   ```csh
+   snap install paket_adi
+   ```
 
-### 2. Snap Paketini Kaldırma
-```bash
-snap remove <paket_adı>
-```
-Örneğin, VLC'yi kaldırmak için:
-```bash
-snap remove vlc
-```
+2. Snap paketini kaldırmak:
+   ```csh
+   snap remove paket_adi
+   ```
 
-### 3. Yüklenmiş Snap Paketlerini Listeleme
-```bash
-snap list
-```
+3. Yüklenmiş Snap paketlerini listelemek:
+   ```csh
+   snap list
+   ```
 
-### 4. Snap Paketini Güncelleme
-```bash
-snap refresh <paket_adı>
-```
-Tüm snap paketlerini güncellemek için:
-```bash
-snap refresh
-```
+4. Yüklenmiş bir Snap paketini güncellemek:
+   ```csh
+   snap refresh paket_adi
+   ```
 
-### 5. Snap Paketi Hakkında Bilgi Alma
-```bash
-snap info <paket_adı>
-```
-Örneğin, VLC hakkında bilgi almak için:
-```bash
-snap info vlc
-```
+5. Bir Snap paketi hakkında bilgi almak:
+   ```csh
+   snap info paket_adi
+   ```
 
-## Tips
+## İpuçları
 - Snap paketlerini güncel tutmak için düzenli olarak `snap refresh` komutunu kullanın.
-- Snap paketleri, sisteminizin diğer bölümlerinden izole çalıştıkları için güvenlik açısından avantaj sağlar.
-- Snap uygulamalarını başlatmak için genellikle terminalde uygulama adını yazmanız yeterlidir; örneğin, `vlc` yazarak VLC'yi başlatabilirsiniz.
+- Snap paketlerini yüklerken, sisteminizde yeterli depolama alanı olduğundan emin olun.
+- Snap paketlerinin bağımsız çalıştığını unutmayın; bu, bazı durumlarda sistem kaynaklarını daha fazla kullanabileceği anlamına gelir.

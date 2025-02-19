@@ -1,41 +1,40 @@
-# [Linux] Bash renice użycie: Zmiana priorytetu procesów
+# [Linux] C Shell (csh) renice: Zmiana priorytetu procesów
 
 ## Overview
-Polecenie `renice` służy do zmiany priorytetu już działających procesów w systemie Linux. Priorytet procesu wpływa na to, jak dużo czasu procesora otrzymuje w porównaniu do innych procesów. Niższy numer priorytetu oznacza wyższy priorytet.
+Polecenie `renice` w systemie C Shell (csh) służy do zmiany priorytetu już działających procesów. Umożliwia to użytkownikom dostosowanie, które procesy powinny otrzymywać więcej lub mniej zasobów systemowych.
 
 ## Usage
-Podstawowa składnia polecenia `renice` jest następująca:
+Podstawowa składnia polecenia `renice` wygląda następująco:
 
-```bash
-renice [opcje] [wartość priorytetu] [PID]
+```csh
+renice [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-n`, `--priority`: Umożliwia ustawienie nowego priorytetu.
-- `-p`, `--pid`: Określa identyfikator procesu (PID), którego priorytet ma być zmieniony.
-- `-g`, `--group`: Zmienia priorytet wszystkich procesów w danej grupie.
-- `-u`, `--user`: Zmienia priorytet wszystkich procesów uruchomionych przez określonego użytkownika.
+- `-n` : Umożliwia ustawienie nowego priorytetu.
+- `-p` : Określa, że zmiana dotyczy procesu o podanym identyfikatorze PID.
+- `-g` : Zmienia priorytet wszystkich procesów w grupie o podanym identyfikatorze GID.
 
 ## Common Examples
 1. Zmiana priorytetu pojedynczego procesu:
-   ```bash
+   ```csh
    renice -n 10 -p 1234
    ```
-   W tym przykładzie priorytet procesu o PID 1234 zostaje ustawiony na 10.
+   W tym przykładzie priorytet procesu o PID 1234 zostanie zmieniony na 10.
 
-2. Zmiana priorytetu wszystkich procesów użytkownika:
-   ```bash
-   renice -n 5 -u username
+2. Zmiana priorytetu wielu procesów:
+   ```csh
+   renice -n -5 -p 1234 5678
    ```
-   Tutaj wszystkie procesy uruchomione przez użytkownika `username` otrzymują priorytet 5.
+   Tutaj priorytet procesów o PID 1234 i 5678 zostanie zwiększony o 5.
 
-3. Zmiana priorytetu grupy procesów:
-   ```bash
-   renice -n -5 -g groupname
+3. Zmiana priorytetu wszystkich procesów w grupie:
+   ```csh
+   renice -n 15 -g 1000
    ```
-   W tym przypadku wszystkie procesy w grupie `groupname` mają priorytet ustawiony na -5.
+   W tym przypadku wszystkie procesy w grupie o GID 1000 otrzymają priorytet 15.
 
 ## Tips
-- Zmiana priorytetu procesów wymaga uprawnień administratora, więc często konieczne jest użycie polecenia `sudo`.
-- Używaj wartości priorytetu w zakresie od -20 (najwyższy priorytet) do 19 (najniższy priorytet).
-- Regularnie monitoruj priorytety procesów, aby upewnić się, że system działa optymalnie, szczególnie w środowiskach z dużym obciążeniem.
+- Używaj `renice` z rozwagą, ponieważ zbyt niski priorytet dla krytycznych procesów może spowodować spowolnienie systemu.
+- Sprawdź aktualne priorytety procesów za pomocą polecenia `ps` przed dokonaniem zmian.
+- Aby zmienić priorytet na wartość wyższą (czyli bardziej preferowaną), użyj wartości ujemnych.

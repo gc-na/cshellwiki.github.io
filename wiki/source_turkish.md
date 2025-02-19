@@ -1,56 +1,43 @@
-# [Linux] Bash source Kullanımı: Komut dosyalarını çalıştırma
+# [Linux] C Shell (csh) source kullanımı: Komut dosyalarını çalıştırma
 
-## Overview
-`source` komutu, bir Bash betiğini veya dosyasını mevcut kabuk ortamında çalıştırmak için kullanılır. Bu, betikteki değişkenlerin ve işlevlerin mevcut oturumda tanımlanmasını sağlar, böylece kullanıcı bu değişkenlere ve işlevlere doğrudan erişebilir.
+## Genel Bakış
+`source` komutu, C Shell (csh) ortamında bir dosyayı çalıştırmak için kullanılır. Bu komut, belirtilen dosyadaki komutları mevcut shell oturumunda yürütür ve genellikle ortam değişkenlerini ayarlamak veya fonksiyonları tanımlamak için kullanılır.
 
-## Usage
+## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
 
-```bash
+```csh
 source [seçenekler] [argümanlar]
 ```
 
-Alternatif olarak, `.` (nokta) ile de kullanılabilir:
+## Yaygın Seçenekler
+- `-h`: Yardım bilgilerini gösterir.
+- `-v`: Komut dosyasını çalıştırmadan önce içeriğini görüntüler.
 
-```bash
-. [seçenekler] [argümanlar]
-```
+## Yaygın Örnekler
+Aşağıda `source` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-## Common Options
-- `-e`: Hata oluşursa, hata mesajı vermeden devam eder.
-- `-u`: Betik dosyasındaki değişkenlerin tanımlı olup olmadığını kontrol eder.
+1. **Bir ortam dosyasını yükleme:**
+   ```csh
+   source ~/.cshrc
+   ```
+   Bu komut, kullanıcının ev dizinindeki `.cshrc` dosyasını yükler ve ortam ayarlarını günceller.
 
-## Common Examples
+2. **Bir komut dosyasını çalıştırma:**
+   ```csh
+   source myscript.csh
+   ```
+   `myscript.csh` adlı bir komut dosyasını mevcut shell oturumunda çalıştırır.
 
-### 1. Bir betiği çalıştırma
-Aşağıdaki komut, `script.sh` adlı bir betiği mevcut kabukta çalıştırır:
+3. **Bir dizindeki tüm komut dosyalarını çalıştırma:**
+   ```csh
+   foreach file (*.csh)
+       source $file
+   end
+   ```
+   Bu döngü, mevcut dizindeki tüm `.csh` dosyalarını sırayla çalıştırır.
 
-```bash
-source script.sh
-```
-
-### 2. Nokta ile çalıştırma
-Aynı işlemi nokta ile de yapabilirsiniz:
-
-```bash
-. script.sh
-```
-
-### 3. Ortam değişkenlerini ayarlama
-Bir betik dosyası içindeki ortam değişkenlerini ayarlamak için `source` kullanabilirsiniz:
-
-```bash
-source set_env.sh
-```
-
-### 4. Hata kontrolü ile çalıştırma
-Hata oluşursa devam etmemek için `-e` seçeneğini kullanabilirsiniz:
-
-```bash
-source -e script.sh
-```
-
-## Tips
-- `source` komutunu, sık kullandığınız ortam değişkenlerini veya işlevleri tanımlayan betikler için kullanmak, her seferinde yeniden tanımlamak zorunda kalmamanız için faydalıdır.
-- Betik dosyanızın çalıştığından emin olmak için, dosyanın doğru izinlere sahip olduğundan emin olun.
-- `source` komutunu kullanırken, çalıştırdığınız betiğin mevcut kabuk ortamını etkileyebileceğini unutmayın; bu nedenle dikkatli olun.
+## İpuçları
+- `source` komutunu kullanmadan önce dosyanın doğru bir şekilde yazıldığından emin olun; aksi takdirde hata mesajları alabilirsiniz.
+- Ortam değişkenlerini ayarlamak için `source` komutunu kullanmak, değişikliklerin mevcut shell oturumunda hemen etkili olmasını sağlar.
+- Komut dosyalarınızı düzenli tutun ve açıklamalar ekleyin, böylece ileride daha kolay anlayabilirsiniz.

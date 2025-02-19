@@ -1,12 +1,12 @@
-# [Linux] Bash hwclock Verwendung: Uhrzeit des Systems und Hardware-Uhr verwalten
+# [Linux] C Shell (csh) hwclock Verwendung: Uhrzeit und Datum verwalten
 
 ## Übersicht
-Der Befehl `hwclock` wird verwendet, um die Hardware-Uhr (RTC - Real Time Clock) eines Systems zu lesen und zu setzen. Dies ist besonders nützlich, um sicherzustellen, dass die Systemzeit mit der Hardware-Uhr synchronisiert ist, insbesondere nach einem Neustart oder bei Systemen, die nicht ständig eingeschaltet sind.
+Der Befehl `hwclock` wird verwendet, um die Hardware-Uhr eines Computers zu lesen oder zu setzen. Diese Uhr läuft unabhängig vom Betriebssystem und wird häufig verwendet, um sicherzustellen, dass die Systemzeit korrekt ist.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```csh
 hwclock [Optionen] [Argumente]
 ```
 
@@ -15,37 +15,33 @@ hwclock [Optionen] [Argumente]
 - `--set`: Setzt die Hardware-Uhr auf die angegebene Zeit.
 - `--hctosys`: Synchronisiert die Systemzeit mit der Hardware-Uhr.
 - `--systohc`: Setzt die Hardware-Uhr auf die aktuelle Systemzeit.
-- `--utc`: Gibt an, dass die Hardware-Uhr in UTC (Koordinierte Weltzeit) läuft.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung von `hwclock`:
+Um die aktuelle Zeit der Hardware-Uhr anzuzeigen, verwenden Sie:
 
-### Aktuelle Hardware-Uhr anzeigen
-```bash
+```csh
 hwclock --show
 ```
 
-### Hardware-Uhr auf eine bestimmte Zeit setzen
-```bash
+Um die Hardware-Uhr auf eine bestimmte Zeit zu setzen, verwenden Sie:
+
+```csh
 hwclock --set --date="2023-10-01 12:00:00"
 ```
 
-### Systemzeit mit der Hardware-Uhr synchronisieren
-```bash
+Um die Systemzeit mit der Hardware-Uhr zu synchronisieren, verwenden Sie:
+
+```csh
 hwclock --hctosys
 ```
 
-### Hardware-Uhr auf die aktuelle Systemzeit setzen
-```bash
+Um die Hardware-Uhr auf die aktuelle Systemzeit zu setzen, verwenden Sie:
+
+```csh
 hwclock --systohc
 ```
 
-### Hardware-Uhr im UTC-Modus setzen
-```bash
-hwclock --systohc --utc
-```
-
 ## Tipps
-- Stellen Sie sicher, dass Sie über die erforderlichen Berechtigungen verfügen, um die Hardware-Uhr zu ändern, da dies in der Regel Administratorrechte erfordert.
-- Verwenden Sie `hwclock --show` regelmäßig, um sicherzustellen, dass die Hardware-Uhr korrekt funktioniert, insbesondere nach einem Systemneustart.
-- Es ist ratsam, die Hardware-Uhr auf UTC zu setzen, wenn Sie mit mehreren Zeitzonen arbeiten, um Verwirrung zu vermeiden.
+- Stellen Sie sicher, dass Sie über die erforderlichen Berechtigungen verfügen, um die Hardware-Uhr zu ändern.
+- Verwenden Sie `hwclock --show`, um regelmäßig die Zeit zu überprüfen, insbesondere nach einem Neustart.
+- Es kann hilfreich sein, die Hardware-Uhr regelmäßig mit einem Zeitserver zu synchronisieren, um Zeitabweichungen zu vermeiden.

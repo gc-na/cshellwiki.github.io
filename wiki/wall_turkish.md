@@ -1,38 +1,37 @@
-# [Linux] Bash duvar komutu: [tüm kullanıcıları bilgilendirir]
+# [Linux] C Shell (csh) wall Kullanımı: Mesaj gönderme aracı
 
-## Genel Bakış
-`wall` komutu, sistemdeki tüm oturum açmış kullanıcılara mesaj göndermek için kullanılır. Bu komut, genellikle sistem yöneticileri tarafından bakım veya acil durum bildirimleri için kullanılır.
+## Overview
+`wall` komutu, sistemdeki tüm kullanıcıların terminaline mesaj göndermek için kullanılır. Bu, sistem yöneticilerinin veya diğer kullanıcıların önemli duyuruları iletmesine olanak tanır.
 
-## Kullanım
+## Usage
 Temel sözdizimi şu şekildedir:
-```bash
-wall [seçenekler] [argümanlar]
+```csh
+wall [options] [arguments]
 ```
 
-## Yaygın Seçenekler
+## Common Options
 - `-n`: Mesajın başında kullanıcı adını göstermez.
 - `-f`: Mesajı bir dosyadan okur.
-- `-s`: Mesajı sessiz bir şekilde gönderir.
 
-## Yaygın Örnekler
+## Common Examples
 Aşağıda `wall` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. Tüm kullanıcılara basit bir mesaj gönderme:
-   ```bash
+1. Basit bir mesaj gönderme:
+   ```csh
    wall "Sistem bakımı nedeniyle 10 dakika içinde kapatılacaktır."
    ```
 
 2. Bir dosyadan mesaj gönderme:
-   ```bash
-   wall -f mesaj.txt
+   ```csh
+   wall -f /path/to/message.txt
    ```
 
-3. Kullanıcı adını göstermeden mesaj gönderme:
-   ```bash
+3. Kullanıcı adını gizleyerek mesaj gönderme:
+   ```csh
    wall -n "Dikkat! Acil durum toplantısı başlıyor."
    ```
 
-## İpuçları
-- Mesajınızı göndermeden önce, mesajın doğru ve net olduğundan emin olun.
-- `wall` komutunu kullanırken, gereksiz yere sık mesaj göndermekten kaçının; bu, kullanıcıları rahatsız edebilir.
-- Mesajınızı göndermeden önce, diğer kullanıcıların aktif olup olmadığını kontrol etmek için `who` komutunu kullanabilirsiniz.
+## Tips
+- Mesaj gönderirken dikkatli olun; çok sık mesaj göndermek kullanıcıları rahatsız edebilir.
+- Önemli duyurular için `wall` komutunu kullanarak tüm kullanıcıları bilgilendirmek etkili bir yöntemdir.
+- Mesajınızın net ve anlaşılır olmasına özen gösterin, böylece herkes durumu kolayca anlayabilir.

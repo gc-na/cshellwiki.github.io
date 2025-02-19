@@ -1,51 +1,44 @@
-# [Linux] Bash flatpak sử dụng: Quản lý ứng dụng trong môi trường độc lập
+# [Hệ điều hành] C Shell (csh) flatpak: Quản lý ứng dụng trong môi trường độc lập
 
-## Overview
-Lệnh `flatpak` được sử dụng để quản lý các ứng dụng trong môi trường độc lập, cho phép người dùng cài đặt, gỡ bỏ và quản lý các ứng dụng mà không làm ảnh hưởng đến hệ thống chính. Flatpak giúp tạo ra một môi trường an toàn và tách biệt cho các ứng dụng, giúp giảm thiểu xung đột và tăng cường bảo mật.
+## Tổng quan
+Lệnh `flatpak` được sử dụng để quản lý các ứng dụng trong môi trường độc lập, cho phép người dùng cài đặt, cập nhật và gỡ bỏ các ứng dụng mà không ảnh hưởng đến hệ thống chính.
 
-## Usage
-Cú pháp cơ bản của lệnh `flatpak` như sau:
-
-```bash
+## Cú pháp
+Cú pháp cơ bản của lệnh flatpak như sau:
+```csh
 flatpak [options] [arguments]
 ```
 
-## Common Options
-- `install`: Cài đặt một ứng dụng từ một nguồn cụ thể.
+## Các tùy chọn phổ biến
+- `install`: Cài đặt một ứng dụng từ kho lưu trữ.
+- `update`: Cập nhật các ứng dụng đã cài đặt.
 - `remove`: Gỡ bỏ một ứng dụng đã cài đặt.
-- `list`: Liệt kê các ứng dụng đã được cài đặt.
-- `update`: Cập nhật các ứng dụng đã cài đặt lên phiên bản mới nhất.
-- `run`: Chạy một ứng dụng đã được cài đặt.
+- `list`: Liệt kê các ứng dụng đã cài đặt.
+- `info`: Hiển thị thông tin chi tiết về một ứng dụng.
 
-## Common Examples
-Dưới đây là một số ví dụ thực tiễn về cách sử dụng lệnh `flatpak`:
-
-### Cài đặt một ứng dụng
-```bash
+## Ví dụ phổ biến
+- Cài đặt một ứng dụng:
+```csh
 flatpak install flathub org.videolan.VLC
 ```
-
-### Gỡ bỏ một ứng dụng
-```bash
-flatpak remove org.videolan.VLC
-```
-
-### Liệt kê các ứng dụng đã cài đặt
-```bash
-flatpak list
-```
-
-### Cập nhật các ứng dụng
-```bash
+- Cập nhật tất cả các ứng dụng:
+```csh
 flatpak update
 ```
-
-### Chạy một ứng dụng
-```bash
-flatpak run org.videolan.VLC
+- Gỡ bỏ một ứng dụng:
+```csh
+flatpak remove org.videolan.VLC
+```
+- Liệt kê các ứng dụng đã cài đặt:
+```csh
+flatpak list
+```
+- Hiển thị thông tin về một ứng dụng:
+```csh
+flatpak info org.videolan.VLC
 ```
 
-## Tips
-- Luôn kiểm tra các bản cập nhật cho các ứng dụng đã cài đặt để đảm bảo bạn đang sử dụng phiên bản mới nhất.
-- Sử dụng `flatpak list --app` để chỉ liệt kê các ứng dụng, giúp dễ dàng tìm kiếm hơn.
-- Nếu bạn gặp sự cố với một ứng dụng, hãy thử gỡ bỏ và cài đặt lại ứng dụng đó để khắc phục.
+## Mẹo
+- Luôn kiểm tra các bản cập nhật thường xuyên để đảm bảo ứng dụng của bạn luôn được bảo mật và ổn định.
+- Sử dụng tùy chọn `--user` khi cài đặt ứng dụng nếu bạn không có quyền truy cập root.
+- Khám phá các kho lưu trữ khác ngoài Flathub để tìm kiếm nhiều ứng dụng hơn.

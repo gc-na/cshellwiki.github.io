@@ -1,45 +1,44 @@
-# [Linux] Bash wait Kullanımı: İşlem bekletme komutu
+# [Linux] C Shell (csh) wait Kullanımı: Süreçlerin tamamlanmasını bekleme
 
 ## Overview
-`wait` komutu, bir veya daha fazla arka plan işleminin tamamlanmasını beklemek için kullanılır. Bu komut, özellikle birden fazla işlemi aynı anda yürütürken, belirli bir işlemin bitmesini beklemek için faydalıdır.
+`wait` komutu, C Shell (csh) ortamında arka planda çalışan süreçlerin tamamlanmasını beklemek için kullanılır. Bu komut, belirli bir süreç kimliğine (PID) sahip olan bir sürecin bitmesini bekleyerek, o sürecin çıkış durumunu almanıza olanak tanır.
 
 ## Usage
-Temel sözdizimi şu şekildedir:
-```bash
+Temel sözdizimi aşağıdaki gibidir:
+
+```csh
 wait [options] [arguments]
 ```
 
 ## Common Options
-- `-n`: Bekleyen ilk tamamlanan işlemi bekler.
-- `PID`: Belirtilen işlem kimliğine (PID) sahip olan işlemi bekler. Eğer PID verilmezse, tüm arka plan işlemleri beklenir.
+- `-p`: Beklenen süreçlerin PID'lerini belirtir.
+- `-n`: Bekleyen ilk sürecin bitmesini bekler.
 
 ## Common Examples
-1. **Tüm arka plan işlemlerini beklemek:**
-   ```bash
+1. Arka planda bir süreç başlatıp, onun bitmesini beklemek:
+   ```csh
+   sleep 10 &
+   wait $!
+   echo "Süreç tamamlandı."
+   ```
+
+2. Birden fazla sürecin bitmesini beklemek:
+   ```csh
    sleep 5 &
-   sleep 3 &
+   sleep 10 &
    wait
-   echo "Tüm işlemler tamamlandı."
+   echo "Tüm süreçler tamamlandı."
    ```
 
-2. **Belirli bir PID'yi beklemek:**
-   ```bash
-   sleep 5 &
-   PID=$!
-   echo "PID: $PID"
-   wait $PID
-   echo "Belirtilen işlem tamamlandı."
-   ```
-
-3. **İlk tamamlanan işlemi beklemek:**
-   ```bash
-   sleep 5 &
-   sleep 3 &
-   wait -n
-   echo "İlk tamamlanan işlem sona erdi."
+3. Belirli bir PID için beklemek:
+   ```csh
+   sleep 15 &
+   pid=$!
+   wait $pid
+   echo "Süreç $pid tamamlandı."
    ```
 
 ## Tips
-- `wait` komutunu kullanmadan önce işlemlerin arka planda çalıştığından emin olun.
-- Birden fazla işlem başlatırken, her birinin PID'sini kaydedip, bunları beklemek için kullanabilirsiniz.
-- `wait` komutunu bir betikte kullanarak, işlemlerin sıralı bir şekilde tamamlanmasını sağlayabilirsiniz.
+- Arka planda çalışan süreçlerin PID'lerini kaydetmek, `wait` komutunu daha etkili kullanmanıza yardımcı olur.
+- `wait` komutunu kullanmadan önce, sürecin gerçekten arka planda çalıştığından emin olun.
+- Birden fazla sürecin bitmesini beklemek için `wait` komutunu herhangi bir argüman olmadan kullanabilirsiniz; bu, tüm arka plan süreçlerinin tamamlanmasını sağlar.

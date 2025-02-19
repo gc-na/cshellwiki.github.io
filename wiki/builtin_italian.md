@@ -1,43 +1,43 @@
-# [Linux] Bash builtin : [esegue comandi shell]
+# [Linux] C Shell (csh) builtin `alias`: Crea abbreviazioni per comandi
 
 ## Overview
-Il comando `builtin` in Bash è utilizzato per eseguire comandi incorporati nel contesto della shell, bypassando eventuali comandi esterni con lo stesso nome. Questo è utile quando si desidera garantire che venga eseguito il comando interno di Bash piuttosto che un comando esterno.
+Il comando `alias` nel C Shell (csh) consente di creare abbreviazioni per comandi lunghi o complessi. Questo è utile per semplificare l'uso di comandi frequentemente utilizzati, rendendo la tua esperienza nella shell più efficiente.
 
 ## Usage
-La sintassi di base del comando `builtin` è la seguente:
+La sintassi di base del comando `alias` è la seguente:
 
-```bash
-builtin [options] [arguments]
+```csh
+alias [nome_alias] '[comando]'
 ```
 
 ## Common Options
-- `-p`: Utilizza la ricerca del comando predefinita per trovare il comando incorporato.
-- `command`: Specifica il comando incorporato che si desidera eseguire.
+- `-p`: Mostra tutti gli alias attualmente definiti.
+- `-d`: Rimuove un alias esistente.
 
 ## Common Examples
-Ecco alcuni esempi pratici dell'uso del comando `builtin`:
+Ecco alcuni esempi pratici di utilizzo del comando `alias`:
 
-### Eseguire un comando incorporato
-```bash
-builtin echo "Questo è un comando incorporato"
-```
+1. Creare un alias per il comando `ls -la`:
+   ```csh
+   alias ll 'ls -la'
+   ```
 
-### Usare `builtin` per eseguire `cd`
-```bash
-builtin cd /home/utente
-```
+2. Creare un alias per navigare rapidamente nella directory home:
+   ```csh
+   alias home 'cd ~'
+   ```
 
-### Eseguire `type` per verificare il tipo di comando
-```bash
-builtin type echo
-```
+3. Visualizzare tutti gli alias definiti:
+   ```csh
+   alias -p
+   ```
 
-### Eseguire `set` per impostare variabili
-```bash
-builtin set -x
-```
+4. Rimuovere un alias precedentemente creato:
+   ```csh
+   alias -d ll
+   ```
 
 ## Tips
-- Utilizza `builtin` quando hai bisogno di garantire che venga eseguito un comando interno, specialmente se ci sono conflitti con comandi esterni.
-- Ricorda che non tutti i comandi possono essere utilizzati con `builtin`; è specifico per i comandi incorporati di Bash.
-- Puoi combinare `builtin` con altre opzioni di shell per ottenere risultati più complessi e personalizzati.
+- Utilizza alias per i comandi che usi frequentemente per risparmiare tempo.
+- Assicurati di non sovrascrivere comandi di sistema esistenti con i tuoi alias.
+- Puoi aggiungere i tuoi alias nel file `.cshrc` per renderli permanenti tra le sessioni.

@@ -1,50 +1,51 @@
-# [Linux] Bash ss gebruik: Netwerkverbindingen bekijken
+# [Linux] C Shell (csh) ss gebruik: Netwerkverbindingen weergeven
 
 ## Overzicht
-De `ss` (socket statistics) command is een krachtig hulpmiddel in Linux dat wordt gebruikt om netwerkverbindingen en sockets te bekijken. Het biedt gedetailleerde informatie over actieve verbindingen, inclusief TCP, UDP, en andere socket-informatie.
+De `ss`-opdracht wordt gebruikt om netwerkverbindingen en sockets op een systeem weer te geven. Het is een krachtig hulpmiddel voor het analyseren van netwerkverbindingen en het diagnosticeren van netwerkproblemen.
 
 ## Gebruik
-De basis syntaxis van de `ss` command is als volgt:
+De basis syntaxis van de `ss`-opdracht is als volgt:
 
-```
+```csh
 ss [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
+## Veelvoorkomende Opties
 - `-t`: Toon alleen TCP-sockets.
 - `-u`: Toon alleen UDP-sockets.
 - `-l`: Toon alleen luisterende sockets.
-- `-p`: Toon de processen die de sockets gebruiken.
-- `-n`: Toon IP-adressen en poorten in numerieke vorm in plaats van de hostnamen.
+- `-p`: Toon het proces dat de socket gebruikt.
+- `-n`: Toon netwerkadressen en poorten in numerieke vorm.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van de `ss`-opdracht:
 
-### 1. Toon alle actieve verbindingen
-```bash
-ss
-```
+1. **Toon alle actieve verbindingen:**
+   ```csh
+   ss
+   ```
 
-### 2. Toon alleen TCP-verbindingen
-```bash
-ss -t
-```
+2. **Toon alleen TCP-sockets:**
+   ```csh
+   ss -t
+   ```
 
-### 3. Toon alleen luisterende sockets
-```bash
-ss -l
-```
+3. **Toon alleen luisterende sockets:**
+   ```csh
+   ss -l
+   ```
 
-### 4. Toon UDP-sockets met procesinformatie
-```bash
-ss -u -p
-```
+4. **Toon UDP-sockets met procesinformatie:**
+   ```csh
+   ss -u -p
+   ```
 
-### 5. Toon verbindingen met numerieke adressen
-```bash
-ss -n
-```
+5. **Toon alle verbindingen in numerieke vorm:**
+   ```csh
+   ss -n
+   ```
 
 ## Tips
-- Gebruik de `-s` optie om een samenvatting van socketstatistieken te krijgen.
-- Combineer opties voor meer gerichte resultaten, bijvoorbeeld `ss -tunlp` om alle actieve TCP en UDP verbindingen met procesinformatie te tonen.
-- Het is handig om `ss` te gebruiken in scripts voor netwerkdiagnose of monitoring.
+- Gebruik de `-p` optie om te zien welke processen de netwerkverbindingen gebruiken, wat handig kan zijn voor probleemoplossing.
+- Combineer opties om gerichte informatie te krijgen, bijvoorbeeld `ss -t -l` om alleen luisterende TCP-sockets te zien.
+- Controleer regelmatig de netwerkverbindingen op je systeem om ongewenste of verdachte verbindingen te identificeren.

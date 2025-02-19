@@ -1,49 +1,56 @@
-# [Linux] Bash sed Penggunaan: Mengedit teks dalam aliran
+# [Sistem Operasi] C Shell (csh) sed Penggunaan: Mengedit teks secara otomatis
 
 ## Overview
-Perintah `sed` (stream editor) adalah alat yang digunakan untuk memanipulasi dan mengedit teks dalam aliran data. Dengan `sed`, Anda dapat melakukan berbagai operasi seperti pencarian, penggantian, dan penghapusan teks secara efisien.
+Perintah `sed` (stream editor) digunakan untuk mengedit teks secara otomatis dalam aliran data. Perintah ini sangat berguna untuk melakukan penggantian, penghapusan, dan penyisipan teks dalam file atau output dari perintah lain.
 
 ## Usage
-Berikut adalah sintaks dasar dari perintah `sed`:
+Sintaks dasar untuk menggunakan `sed` adalah sebagai berikut:
 
 ```bash
 sed [options] [arguments]
 ```
 
 ## Common Options
+Berikut adalah beberapa opsi umum yang sering digunakan dengan `sed`:
+
 - `-e`: Menentukan ekspresi yang akan dieksekusi.
+- `-f`: Mengambil skrip dari file.
 - `-i`: Mengedit file secara langsung (in-place).
-- `-n`: Menonaktifkan output default, hanya menampilkan hasil yang ditentukan.
-- `s`: Menandakan operasi penggantian.
+- `-n`: Menonaktifkan output otomatis, hanya menampilkan hasil yang ditentukan.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan `sed`:
 
-1. **Mengganti teks dalam file**:
-   Mengganti semua kemunculan "lama" dengan "baru" dalam file `file.txt`.
+1. **Mengganti teks dalam file:**
+   Mengganti semua kemunculan "lama" dengan "baru" dalam file `contoh.txt`.
    ```bash
-   sed -i 's/lama/baru/g' file.txt
+   sed 's/lama/baru/g' contoh.txt
    ```
 
-2. **Menampilkan baris tertentu**:
-   Menampilkan hanya baris ke-2 dari file `file.txt`.
+2. **Menghapus baris tertentu:**
+   Menghapus baris ke-2 dari file `contoh.txt`.
    ```bash
-   sed -n '2p' file.txt
+   sed '2d' contoh.txt
    ```
 
-3. **Menghapus baris yang mengandung teks tertentu**:
-   Menghapus semua baris yang mengandung kata "hapus" dari file `file.txt`.
+3. **Menambahkan teks di akhir setiap baris:**
+   Menambahkan " - selesai" di akhir setiap baris dalam file `contoh.txt`.
    ```bash
-   sed -i '/hapus/d' file.txt
+   sed 's/$/ - selesai/' contoh.txt
    ```
 
-4. **Menambahkan teks di akhir setiap baris**:
-   Menambahkan " - akhir" di akhir setiap baris dalam file `file.txt`.
+4. **Menggunakan file skrip:**
+   Menggunakan file `skrip.sed` untuk menjalankan beberapa perintah `sed`.
    ```bash
-   sed -i 's/$/ - akhir/' file.txt
+   sed -f skrip.sed contoh.txt
+   ```
+
+5. **Mengedit file secara langsung:**
+   Mengganti "lama" dengan "baru" dalam file `contoh.txt` secara langsung.
+   ```bash
+   sed -i 's/lama/baru/g' contoh.txt
    ```
 
 ## Tips
-- Selalu buat salinan cadangan file sebelum menggunakan opsi `-i` untuk menghindari kehilangan data.
-- Gunakan `-n` bersamaan dengan perintah `p` untuk menampilkan hasil yang lebih spesifik.
-- Pelajari ekspresi reguler untuk memaksimalkan kemampuan pencarian dan penggantian dalam `sed`.
+- Selalu buat salinan cadangan dari file sebelum menggunakan opsi `-i` untuk menghindari kehilangan data.
+- Gunakan opsi `-n` bersama dengan perintah `p` untuk menampilkan hanya hasil yang relevan.
+- Cobalah untuk menguji perintah `sed` pada terminal sebelum menerapkannya pada file penting untuk memastikan hasil yang diinginkan.

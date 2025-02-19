@@ -1,63 +1,53 @@
-# [Linux] Bash getent utilisation : récupérer des informations sur les bases de données système
+# [Linux] C Shell (csh) getent : obtenir des informations sur les bases de données
 
 ## Overview
-La commande `getent` est utilisée pour récupérer des informations à partir des bases de données du système, telles que les utilisateurs, les groupes, les hôtes et d'autres données configurées dans les fichiers de configuration du système. Elle permet d'accéder à ces informations de manière uniforme, que ce soit à partir de fichiers locaux ou de services réseau.
+La commande `getent` est utilisée pour récupérer des informations à partir des bases de données de l'interface de nom de service (NSS) sur un système Unix/Linux. Elle permet d'accéder à des informations telles que les utilisateurs, les groupes, et d'autres données stockées dans des fichiers ou des services réseau.
 
 ## Usage
 La syntaxe de base de la commande `getent` est la suivante :
 
-```bash
+```csh
 getent [options] [arguments]
 ```
 
 ## Common Options
-- `-h`, `--help` : Affiche l'aide et les options disponibles pour la commande.
-- `-s`, `--service` : Spécifie un service particulier à interroger, comme `passwd` ou `group`.
-- `-r`, `--raw` : Affiche les résultats sans traitement supplémentaire.
+- `passwd` : Récupère les informations des utilisateurs.
+- `group` : Récupère les informations des groupes.
+- `hosts` : Récupère les informations sur les hôtes.
+- `services` : Récupère les informations sur les services réseau.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `getent` :
 
-### 1. Récupérer les informations d'un utilisateur
-Pour obtenir les informations d'un utilisateur spécifique, utilisez :
-
-```bash
+### Obtenir des informations sur un utilisateur
+```csh
 getent passwd nom_utilisateur
 ```
 
-### 2. Lister tous les utilisateurs
-Pour afficher tous les utilisateurs du système, exécutez :
-
-```bash
-getent passwd
-```
-
-### 3. Récupérer les informations d'un groupe
-Pour obtenir les informations d'un groupe spécifique, utilisez :
-
-```bash
+### Obtenir des informations sur un groupe
+```csh
 getent group nom_groupe
 ```
 
-### 4. Lister tous les groupes
-Pour afficher tous les groupes du système, exécutez :
+### Lister tous les utilisateurs
+```csh
+getent passwd
+```
 
-```bash
+### Lister tous les groupes
+```csh
 getent group
 ```
 
-### 5. Récupérer des informations sur un hôte
-Pour obtenir des informations sur un hôte, utilisez :
-
-```bash
+### Obtenir des informations sur un hôte
+```csh
 getent hosts nom_hôte
 ```
 
 ## Tips
-- Utilisez `getent passwd` pour vérifier rapidement les utilisateurs sans avoir besoin d'accéder directement aux fichiers `/etc/passwd`.
-- Combinez `getent` avec d'autres commandes comme `grep` pour filtrer les résultats. Par exemple, pour trouver un utilisateur contenant "admin" :
-
-```bash
-getent passwd | grep admin
-```
-- Pensez à utiliser `getent` dans des scripts pour automatiser la récupération d'informations sur les utilisateurs et les groupes.
+- Utilisez `getent` pour vérifier les informations d'utilisateur et de groupe sans avoir besoin d'accéder directement aux fichiers `/etc/passwd` ou `/etc/group`.
+- Combinez `getent` avec d'autres commandes comme `grep` pour filtrer les résultats. Par exemple :
+  ```csh
+  getent passwd | grep nom_utilisateur
+  ```
+- Familiarisez-vous avec les différentes bases de données disponibles pour tirer le meilleur parti de `getent`.

@@ -1,42 +1,37 @@
-# [Linux] Bash source lệnh: Thực thi các lệnh trong tệp
+# [Hệ điều hành Unix] C Shell (csh) source: Thực thi tập lệnh trong phiên làm việc hiện tại
 
 ## Overview
-Lệnh `source` trong Bash được sử dụng để thực thi các lệnh từ một tệp kịch bản trong môi trường hiện tại của shell. Điều này có nghĩa là các biến và hàm được định nghĩa trong tệp sẽ có sẵn trong phiên làm việc hiện tại.
+Lệnh `source` trong C Shell (csh) được sử dụng để thực thi các lệnh trong một tập lệnh shell trong phiên làm việc hiện tại. Điều này cho phép người dùng tải lại các biến môi trường hoặc chức năng mà không cần phải khởi động lại shell.
 
 ## Usage
 Cú pháp cơ bản của lệnh `source` như sau:
-```
-source [tùy chọn] [tệp]
+```csh
+source [options] [arguments]
 ```
 
 ## Common Options
-- Không có tùy chọn chính thức nào cho lệnh `source`, nhưng bạn có thể sử dụng:
-  - `-` : Thường được sử dụng để chỉ định rằng tệp kịch bản nên được thực thi trong chế độ không tương tác.
+- `-h`: Hiển thị thông tin trợ giúp về lệnh `source`.
+- `-v`: Chạy lệnh trong chế độ verbose, hiển thị các lệnh khi chúng được thực thi.
 
 ## Common Examples
-Dưới đây là một số ví dụ thực tiễn về cách sử dụng lệnh `source`:
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `source`:
 
-1. **Thực thi một tệp kịch bản**:
-   ```bash
-   source myscript.sh
+1. **Thực thi một tập lệnh đơn giản**:
+   ```csh
+   source myscript.csh
    ```
 
-2. **Thực thi một tệp kịch bản với đường dẫn đầy đủ**:
-   ```bash
-   source /path/to/myscript.sh
+2. **Tải lại biến môi trường từ tệp cấu hình**:
+   ```csh
+   source ~/.cshrc
    ```
 
-3. **Tải lại tệp cấu hình `.bashrc`**:
-   ```bash
-   source ~/.bashrc
-   ```
-
-4. **Thực thi tệp kịch bản và truyền tham số**:
-   ```bash
-   source myscript.sh arg1 arg2
+3. **Chạy một tập lệnh và hiển thị lệnh khi thực thi**:
+   ```csh
+   source -v myscript.csh
    ```
 
 ## Tips
-- Sử dụng `source` để tải lại các thay đổi trong tệp cấu hình mà không cần khởi động lại shell.
-- Đảm bảo rằng tệp kịch bản có quyền thực thi nếu bạn muốn sử dụng nó với lệnh `./` thay vì `source`.
-- Kiểm tra các biến môi trường sau khi thực thi tệp kịch bản để xác nhận rằng chúng đã được thiết lập đúng cách.
+- Sử dụng `source` để cập nhật các thay đổi trong tệp cấu hình mà không cần khởi động lại shell.
+- Đảm bảo rằng các tập lệnh bạn muốn thực thi có quyền thực thi và không có lỗi cú pháp.
+- Kiểm tra các biến môi trường sau khi sử dụng `source` để đảm bảo chúng đã được cập nhật đúng cách.

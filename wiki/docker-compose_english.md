@@ -1,7 +1,7 @@
-# [English] Bash docker-compose Usage: Manage multi-container Docker applications
+# [Linux] C Shell (csh) docker-compose uso: Manage multi-container Docker applications
 
 ## Overview
-The `docker-compose` command is a tool for defining and running multi-container Docker applications. It allows users to configure application services, networks, and volumes in a single YAML file, making it easier to manage complex setups.
+The `docker-compose` command is a tool used to define and run multi-container Docker applications. With a simple YAML file, you can configure your application services, networks, and volumes, allowing you to manage complex setups easily.
 
 ## Usage
 The basic syntax of the `docker-compose` command is as follows:
@@ -11,47 +11,53 @@ docker-compose [options] [arguments]
 ```
 
 ## Common Options
-- `up`: Starts the services defined in the `docker-compose.yml` file.
-- `down`: Stops and removes the containers defined in the `docker-compose.yml` file.
-- `build`: Builds or rebuilds the services defined in the `docker-compose.yml` file.
-- `logs`: Displays the logs from the services.
+- `up`: Builds, (re)creates, starts, and attaches to containers for a service.
+- `down`: Stops and removes containers, networks, images, and volumes created by `up`.
+- `build`: Builds or rebuilds services.
+- `logs`: Displays logs from containers.
 - `exec`: Executes a command in a running container.
+- `ps`: Lists containers associated with the project.
 
 ## Common Examples
-Here are some practical examples of using the `docker-compose` command:
+Here are some practical examples of using `docker-compose`:
 
-1. **Starting services**:
+1. **Start services defined in `docker-compose.yml`:**
    ```bash
    docker-compose up
    ```
 
-2. **Starting services in detached mode**:
+2. **Start services in detached mode (in the background):**
    ```bash
    docker-compose up -d
    ```
 
-3. **Stopping services**:
+3. **Stop and remove all containers and networks:**
    ```bash
    docker-compose down
    ```
 
-4. **Building services**:
+4. **Build or rebuild services:**
    ```bash
    docker-compose build
    ```
 
-5. **Viewing logs**:
+5. **View logs from all services:**
    ```bash
    docker-compose logs
    ```
 
-6. **Executing a command in a running container**:
+6. **Execute a command in a specific service's container:**
    ```bash
-   docker-compose exec web bash
+   docker-compose exec <service_name> <command>
+   ```
+
+7. **List all running containers:**
+   ```bash
+   docker-compose ps
    ```
 
 ## Tips
-- Always ensure your `docker-compose.yml` file is correctly formatted to avoid errors.
-- Use the `-d` option with `up` to run containers in the background, allowing you to continue using the terminal.
-- Regularly check logs with `docker-compose logs` to monitor the behavior of your services.
-- Utilize version control for your `docker-compose.yml` file to track changes and collaborate with others effectively.
+- Always define your services in a `docker-compose.yml` file to keep your configurations organized.
+- Use the `-d` option with `up` for a cleaner terminal output and to run your containers in the background.
+- Regularly check logs with `docker-compose logs` to troubleshoot issues with your services.
+- Use version control for your `docker-compose.yml` file to track changes and collaborate with others effectively.

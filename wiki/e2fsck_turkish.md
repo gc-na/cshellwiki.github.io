@@ -1,54 +1,42 @@
-# [Linux] Bash e2fsck Kullanımı: Dosya sistemini kontrol etme ve onarma
+# [Linux] C Shell (csh) e2fsck Kullanımı: Dosya sistemini kontrol etme aracı
 
-## Overview
-e2fsck, Linux işletim sistemlerinde kullanılan bir komuttur ve ext2, ext3 ve ext4 dosya sistemlerini kontrol etmek ve onarmak için kullanılır. Bu komut, dosya sistemindeki hataları tespit eder ve düzeltir, böylece veri kaybını önlemeye yardımcı olur.
+## Genel Bakış
+e2fsck, Linux işletim sistemlerinde kullanılan bir komut olup, dosya sistemlerini kontrol etmek ve onarmak için kullanılır. Özellikle ext2, ext3 ve ext4 dosya sistemleri üzerinde çalışır. Bu komut, dosya sistemindeki hataları tespit eder ve düzeltir.
 
-## Usage
+## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-
-```bash
-e2fsck [options] [arguments]
+```
+e2fsck [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `-p`: Hızlı kontrol yapar ve hataları otomatik olarak düzeltir.
-- `-f`: Dosya sisteminin her zaman kontrol edilmesini sağlar, hata varsa düzeltir.
-- `-y`: Tüm sorulara "evet" yanıtı verir, bu da tüm hataların otomatik olarak düzeltilmesini sağlar.
-- `-c`: Dosya sistemindeki kötü sektörleri kontrol eder ve raporlar.
-- `-n`: Dosya sistemini kontrol eder ancak düzeltme yapmaz.
+## Yaygın Seçenekler
+- `-p`: Hızlı onarım yapar, kullanıcıdan onay istemez.
+- `-f`: Dosya sistemini zorla kontrol eder, hataları tespit eder.
+- `-y`: Tüm onarım işlemlerini otomatik olarak onaylar.
+- `-c`: Dosya sistemindeki blokların kötü olup olmadığını kontrol eder.
 
-## Common Examples
-Aşağıda e2fsck komutunun bazı pratik örnekleri bulunmaktadır:
+## Yaygın Örnekler
+1. Bir dosya sistemini kontrol etmek için:
+   ```bash
+   e2fsck /dev/sda1
+   ```
 
-### Temel Kontrol
-Dosya sistemini kontrol etmek için:
+2. Hataları otomatik olarak onarmak için:
+   ```bash
+   e2fsck -y /dev/sda1
+   ```
 
-```bash
-e2fsck /dev/sda1
-```
+3. Dosya sistemini zorla kontrol etmek için:
+   ```bash
+   e2fsck -f /dev/sda1
+   ```
 
-### Hızlı Kontrol ve Düzeltme
-Hataları otomatik olarak düzeltmek için:
+4. Kötü blokları kontrol etmek için:
+   ```bash
+   e2fsck -c /dev/sda1
+   ```
 
-```bash
-e2fsck -p /dev/sda1
-```
-
-### Kötü Sektör Kontrolü
-Kötü sektörleri kontrol etmek için:
-
-```bash
-e2fsck -c /dev/sda1
-```
-
-### Tüm Sorulara Evet
-Tüm hataları otomatik olarak düzeltmek için:
-
-```bash
-e2fsck -y /dev/sda1
-```
-
-## Tips
-- e2fsck komutunu çalıştırmadan önce dosya sisteminin montajlı olmadığından emin olun. Aksi takdirde, veri kaybı yaşanabilir.
-- Düzenli olarak dosya sisteminizi kontrol etmek, olası hataların önüne geçmek için iyi bir uygulamadır.
-- Eğer büyük bir dosya sisteminiz varsa, işlemin uzun sürebileceğini unutmayın; bu nedenle, işlemi mümkünse bakım zamanlarında yapın.
+## İpuçları
+- e2fsck komutunu çalıştırmadan önce dosya sisteminin montajının kaldırıldığından emin olun.
+- Önemli verilerinizi yedeklemeyi unutmayın, çünkü bazı onarım işlemleri veri kaybına yol açabilir.
+- Hataları düzeltmek için `-y` seçeneğini kullanırken dikkatli olun; bu seçenek tüm onarımları otomatik olarak onaylar.

@@ -1,69 +1,77 @@
-# [Linux] Bash switch użycie: Przełączanie między różnymi opcjami
+# [Linux] C Shell (csh) switch użycie: Przełączanie między różnymi wartościami
 
 ## Overview
-Polecenie `switch` w Bashu jest używane do przełączania między różnymi opcjami lub przypadkami w skryptach. Umożliwia to wykonanie różnych działań w zależności od wartości zmiennej.
+Polecenie `switch` w C Shell (csh) służy do przeprowadzania warunkowego przełączania na podstawie wartości zmiennej. Umożliwia to wykonanie różnych bloków kodu w zależności od wartości, co jest przydatne w skryptach.
 
 ## Usage
 Podstawowa składnia polecenia `switch` wygląda następująco:
 
-```bash
-switch [opcje] [argumenty]
+```
+switch (wyrażenie)
+case wartość1:
+    # kod do wykonania dla wartość1
+    breaksw
+case wartość2:
+    # kod do wykonania dla wartość2
+    breaksw
+default:
+    # kod do wykonania, jeśli żadna z wartości nie pasuje
+endsw
 ```
 
 ## Common Options
-- `-e`: Umożliwia określenie wyrażenia do oceny.
-- `-d`: Ustawia domyślną akcję, która ma być wykonana, jeśli żaden przypadek nie pasuje.
-- `-h`: Wyświetla pomoc dotycząca użycia polecenia.
+- `case`: Służy do określenia wartości, dla których ma być wykonany dany blok kodu.
+- `breaksw`: Kończy bieżący blok `case` i przechodzi do końca konstrukcji `switch`.
+- `default`: Umożliwia zdefiniowanie kodu, który ma być wykonany, gdy żadna z wartości nie pasuje.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `switch`:
 
-### Przykład 1: Prosty switch
-```bash
-case $1 in
-    start)
-        echo "Rozpoczynam..."
-        ;;
-    stop)
-        echo "Zatrzymuję..."
-        ;;
-    *)
-        echo "Nieznana opcja."
-        ;;
-esac
+### Przykład 1: Proste przełączanie
+```csh
+set color = "czerwony"
+switch ($color)
+case "czerwony":
+    echo "Wybrałeś kolor czerwony."
+    breaksw
+case "zielony":
+    echo "Wybrałeś kolor zielony."
+    breaksw
+default:
+    echo "Nieznany kolor."
+endsw
 ```
 
-### Przykład 2: Switch z domyślną opcją
-```bash
-case $1 in
-    add)
-        echo "Dodawanie..."
-        ;;
-    remove)
-        echo "Usuwanie..."
-        ;;
-    *)
-        echo "Proszę podać 'add' lub 'remove'."
-        ;;
-esac
+### Przykład 2: Przełączanie z wieloma przypadkami
+```csh
+set day = "poniedziałek"
+switch ($day)
+case "poniedziałek":
+case "wtorek":
+case "środa":
+    echo "To jest dzień roboczy."
+    breaksw
+case "sobota":
+case "niedziela":
+    echo "To jest weekend."
+    breaksw
+default:
+    echo "Nieznany dzień."
+endsw
 ```
 
-### Przykład 3: Switch z wieloma argumentami
-```bash
-case $1 in
-    hello)
-        echo "Cześć!"
-        ;;
-    goodbye)
-        echo "Do widzenia!"
-        ;;
-    *)
-        echo "Nie rozumiem."
-        ;;
-esac
+### Przykład 3: Użycie default
+```csh
+set fruit = "jabłko"
+switch ($fruit)
+case "banan":
+    echo "Wybrałeś banana."
+    breaksw
+default:
+    echo "To nie jest banan."
+endsw
 ```
 
 ## Tips
-- Używaj `case` zamiast `if` w przypadku wielu warunków, aby poprawić czytelność skryptu.
-- Pamiętaj o dodaniu `;;` na końcu każdego przypadku, aby zakończyć dany blok.
-- Zawsze uwzględniaj przypadek domyślny (`*`), aby obsłużyć nieoczekiwane wartości.
+- Używaj `breaksw` w każdym bloku `case`, aby uniknąć niezamierzonego przechodzenia do następnych bloków.
+- Zawsze rozważ dodanie bloku `default`, aby obsłużyć nieoczekiwane wartości.
+- Używaj przełączania, gdy masz wiele warunków do sprawdzenia, co może poprawić czytelność kodu w porównaniu do zagnieżdżonych instrukcji `if`.

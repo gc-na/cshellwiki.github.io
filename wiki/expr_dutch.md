@@ -1,63 +1,63 @@
-# [Linux] Bash expr gebruik: Voer berekeningen en stringmanipulaties uit
+# [Linux] C Shell (csh) expr gebruik: Voer expressies uit en berekeningen
 
 ## Overzicht
-De `expr` opdracht in Bash wordt gebruikt voor het uitvoeren van eenvoudige berekeningen en stringmanipulaties. Het kan worden gebruikt om wiskundige expressies te evalueren, strings te vergelijken en substrings te extraheren.
+De `expr`-opdracht in C Shell (csh) wordt gebruikt om eenvoudige berekeningen uit te voeren en expressies te evalueren. Het kan worden gebruikt voor wiskundige berekeningen, stringmanipulatie en logische vergelijkingen.
 
 ## Gebruik
-De basis syntaxis van de `expr` opdracht is als volgt:
+De basis syntaxis van de `expr`-opdracht is als volgt:
 
-```bash
+```csh
 expr [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
 - `+` : Optelling van twee getallen.
 - `-` : Aftrekking van twee getallen.
-- `*` : Vermenigvuldiging van twee getallen (let op: gebruik `\*` om de sterretje te ontsnappen).
+- `*` : Vermenigvuldiging van twee getallen.
 - `/` : Deling van twee getallen.
 - `%` : Modulus (rest) van twee getallen.
 - `=` : Vergelijking van twee waarden.
-- `:` : Extractie van een substring.
+- `:` : Stringlengte.
 
 ## Veelvoorkomende Voorbeelden
 
 ### Voorbeeld 1: Optelling
-```bash
+```csh
 expr 5 + 3
 ```
 Dit geeft `8` als resultaat.
 
 ### Voorbeeld 2: Aftrekking
-```bash
+```csh
 expr 10 - 4
 ```
 Dit geeft `6` als resultaat.
 
 ### Voorbeeld 3: Vermenigvuldiging
-```bash
-expr 7 \* 3
+```csh
+expr 7 \* 6
 ```
-Dit geeft `21` als resultaat.
+Dit geeft `42` als resultaat. (Let op de escape-teken voor de sterretje.)
 
 ### Voorbeeld 4: Deling
-```bash
+```csh
 expr 20 / 4
 ```
 Dit geeft `5` als resultaat.
 
-### Voorbeeld 5: Vergelijking
-```bash
+### Voorbeeld 5: Stringlengte
+```csh
+expr length "Hallo Wereld"
+```
+Dit geeft `12` als resultaat, de lengte van de string.
+
+### Voorbeeld 6: Vergelijking
+```csh
 expr 5 = 5
 ```
 Dit geeft `1` (waar) als resultaat, omdat de waarden gelijk zijn.
 
-### Voorbeeld 6: Substring Extractie
-```bash
-expr substr "Hallo Wereld" 1 5
-```
-Dit geeft `Hallo` als resultaat, waarbij de substring vanaf positie 1 van lengte 5 wordt geëxtraheerd.
-
 ## Tips
-- Vergeet niet om de operator `*` te ontsnappen met een backslash (`\`) om te voorkomen dat deze door de shell wordt geïnterpreteerd.
-- Gebruik haakjes om de volgorde van bewerkingen te bepalen, bijvoorbeeld: `expr \( 2 + 3 \) \* 4`.
-- `expr` retourneert alleen gehele getallen; voor drijvende getallen zijn er andere tools zoals `bc` nodig.
+- Vergeet niet om de operatoren correct te escapen, vooral de vermenigvuldigingsoperator (`*`).
+- Gebruik haakjes om de volgorde van bewerkingen te bepalen, bijvoorbeeld: `expr \( 5 + 3 \) \* 2`.
+- `expr` retourneert altijd een string, dus wees voorzichtig met het interpreteren van de resultaten in scripts.

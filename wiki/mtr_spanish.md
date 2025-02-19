@@ -1,49 +1,47 @@
-# [Linux] Bash mtr Uso: Herramienta de diagnóstico de red
+# [Linux] C Shell (csh) mtr Uso: Herramienta de diagnóstico de red
 
 ## Overview
-El comando `mtr` (My Traceroute) combina las funcionalidades de `traceroute` y `ping` para proporcionar información sobre la ruta que toman los paquetes a través de una red. Es útil para diagnosticar problemas de conectividad y latencia en redes.
+El comando `mtr` combina las funcionalidades de `ping` y `traceroute` para proporcionar información sobre la ruta que toman los paquetes de datos hacia un destino específico. Es útil para diagnosticar problemas de red y analizar la calidad de la conexión.
 
 ## Usage
 La sintaxis básica del comando `mtr` es la siguiente:
 
-```bash
+```csh
 mtr [opciones] [destino]
 ```
 
 ## Common Options
-- `-r`: Ejecuta `mtr` en modo report, mostrando un resumen al final.
-- `-c [n]`: Especifica el número de pings a enviar.
-- `-i [segundos]`: Define el intervalo entre pings.
-- `-p`: Muestra el puerto en el que se está realizando el ping.
-- `-n`: No resuelve nombres de host, mostrando solo direcciones IP.
+- `-r`: Muestra un resumen de la ruta y los tiempos de respuesta.
+- `-c [n]`: Especifica el número de pings a enviar, donde `[n]` es un número entero.
+- `-i [segundos]`: Establece el intervalo entre pings en segundos.
+- `-w`: Muestra la salida en formato de ancho ajustado, facilitando la lectura.
 
 ## Common Examples
-1. **Ejecutar un mtr básico a un destino:**
-   ```bash
-   mtr google.com
-   ```
+- Para realizar un diagnóstico básico hacia un host, como `google.com`:
 
-2. **Ejecutar mtr en modo report con un número específico de pings:**
-   ```bash
-   mtr -r -c 10 google.com
-   ```
+```csh
+mtr google.com
+```
 
-3. **Ejecutar mtr sin resolver nombres de host:**
-   ```bash
-   mtr -n google.com
-   ```
+- Para enviar 10 pings y mostrar un resumen al final:
 
-4. **Especificar un intervalo de 2 segundos entre pings:**
-   ```bash
-   mtr -i 2 google.com
-   ```
+```csh
+mtr -r -c 10 google.com
+```
 
-5. **Mostrar el puerto utilizado:**
-   ```bash
-   mtr -p google.com
-   ```
+- Para establecer un intervalo de 2 segundos entre pings:
+
+```csh
+mtr -i 2 google.com
+```
+
+- Para mostrar la salida en un formato más legible:
+
+```csh
+mtr -w google.com
+```
 
 ## Tips
-- Utiliza el modo report (`-r`) para obtener un resumen claro de la conectividad.
-- Ajusta el número de pings con `-c` para obtener resultados más precisos en conexiones inestables.
-- Si estás depurando problemas de DNS, considera usar la opción `-n` para evitar la resolución de nombres que puede añadir latencia.
+- Utiliza la opción `-r` para obtener un resumen rápido después de realizar múltiples pings.
+- Experimenta con diferentes intervalos de tiempo usando `-i` para observar cómo varían los tiempos de respuesta.
+- Revisa la documentación completa de `mtr` para descubrir más opciones avanzadas que pueden ser útiles en situaciones específicas.

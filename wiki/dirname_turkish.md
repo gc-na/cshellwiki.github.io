@@ -1,51 +1,53 @@
-# [Linux] Bash dirname Kullanımı: Dosya yolundan dizin adını çıkarma
+# [Linux] C Shell (csh) dirname Kullanımı: Dosya yolunu dizin adıyla döndürür
 
-## Genel Bakış
-`dirname` komutu, bir dosya yolundan dizin adını çıkarmak için kullanılır. Bu komut, verilen bir dosya yolunun dizin kısmını ayırarak yalnızca dizin adını döndürür.
+## Overview
+`dirname` komutu, bir dosya yolunun dizin adını döndürmek için kullanılır. Bu komut, bir dosyanın bulunduğu dizinin yolunu almak istediğinizde oldukça faydalıdır.
 
-## Kullanım
+## Usage
 Temel sözdizimi aşağıdaki gibidir:
 ```
-dirname [seçenekler] [argümanlar]
+dirname [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-z`, `--zero`: Girdi dosyası yollarını sıfır karakteri ile ayırarak işleme alır.
-- `--help`: Komut hakkında yardım bilgilerini gösterir.
+## Common Options
+- `-z`: Boş dizin adı döndürür.
+- `--help`: Komutun kullanımını gösterir.
 - `--version`: Komutun sürüm bilgilerini gösterir.
 
-## Yaygın Örnekler
-Aşağıda `dirname` komutunun bazı pratik kullanımları verilmiştir:
+## Common Examples
+Aşağıda `dirname` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. Basit bir dosya yolu için dizin adını alma:
-   ```bash
-   dirname /home/kullanici/dosya.txt
-   ```
-   Çıktı:
-   ```
-   /home/kullanici
-   ```
+### Örnek 1: Basit Kullanım
+Bir dosya yolunun dizin adını almak için:
+```bash
+dirname /home/kullanici/dosya.txt
+```
+Çıktı:
+```
+/home/kullanici
+```
 
-2. Bir dosya yolunda son dizin adını almak:
-   ```bash
-   dirname /var/log/syslog
-   ```
-   Çıktı:
-   ```
-   /var/log
-   ```
+### Örnek 2: Dizin Yolu
+Bir dizin yolunun dizin adını almak için:
+```bash
+dirname /var/log/syslog
+```
+Çıktı:
+```
+/var/log
+```
 
-3. Birden fazla dosya yolu için dizin adlarını alma:
-   ```bash
-   dirname /usr/local/bin/script.sh /etc/nginx/nginx.conf
-   ```
-   Çıktı:
-   ```
-   /usr/local/bin
-   /etc/nginx
-   ```
+### Örnek 3: Boş Dizin
+Boş bir dizin adı döndürmek için:
+```bash
+dirname ""
+```
+Çıktı:
+```
+.
+```
 
-## İpuçları
-- `dirname` komutunu, dosya yollarını işleyen betiklerinizde kullanarak dizinleri kolayca ayırabilirsiniz.
-- Birden fazla dosya yolu ile çalışırken, çıktıların her birinin ayrı satırlarda olacağını unutmayın.
-- `dirname` komutunu diğer komutlarla birleştirerek daha karmaşık dosya işlemleri gerçekleştirebilirsiniz. Örneğin, bir dosyanın bulunduğu dizine gitmek için `cd $(dirname dosya_yolu)` komutunu kullanabilirsiniz.
+## Tips
+- `dirname` komutunu, script yazarken dosya yollarını yönetmek için kullanışlı hale getirebilirsiniz.
+- Birden fazla dosya yolunu işlemek için `xargs` ile birlikte kullanabilirsiniz.
+- `dirname` çıktısını başka komutlarla birleştirerek daha karmaşık işlemler gerçekleştirebilirsiniz.

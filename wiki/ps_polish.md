@@ -1,56 +1,42 @@
-# [Linux] Bash ps użycie: wyświetlanie informacji o procesach
+# [Linux] C Shell (csh) ps użycie: wyświetlanie informacji o procesach
 
-## Overview
-Polecenie `ps` (process status) służy do wyświetlania informacji o bieżących procesach działających w systemie. Umożliwia monitorowanie aktywności systemu oraz zarządzanie procesami.
+## Przegląd
+Polecenie `ps` w C Shell (csh) służy do wyświetlania informacji o bieżących procesach działających w systemie. Umożliwia użytkownikom monitorowanie aktywności procesów oraz uzyskiwanie szczegółowych danych na ich temat.
 
-## Usage
+## Użycie
 Podstawowa składnia polecenia `ps` jest następująca:
-
-```bash
+```
 ps [opcje] [argumenty]
 ```
 
-## Common Options
-Oto kilka powszechnie używanych opcji dla polecenia `ps`:
+## Częste opcje
+- `-e` lub `-A`: wyświetla wszystkie procesy.
+- `-f`: pokazuje pełny format, w tym informacje o rodzicach procesów.
+- `-u [użytkownik]`: wyświetla procesy dla określonego użytkownika.
+- `-p [PID]`: pokazuje informacje o procesie o podanym identyfikatorze PID.
 
-- `-e` lub `-A`: Wyświetla wszystkie procesy w systemie.
-- `-f`: Wyświetla pełny format informacji o procesach, w tym identyfikatory rodziców.
-- `-u [użytkownik]`: Wyświetla procesy dla określonego użytkownika.
-- `-aux`: Wyświetla szczegółowe informacje o wszystkich procesach, w tym te, które nie mają terminala.
-- `--sort`: Sortuje wyniki według określonego kryterium, np. `--sort=-%mem` sortuje według użycia pamięci.
-
-## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `ps`:
-
-1. Wyświetlenie wszystkich procesów działających w systemie:
-   ```bash
+## Przykłady
+1. Wyświetlenie wszystkich procesów:
+   ```csh
    ps -e
    ```
 
-2. Wyświetlenie procesów w formacie pełnym:
-   ```bash
+2. Wyświetlenie procesów w pełnym formacie:
+   ```csh
    ps -f
    ```
 
 3. Wyświetlenie procesów dla konkretnego użytkownika:
-   ```bash
+   ```csh
    ps -u username
    ```
 
-4. Wyświetlenie wszystkich procesów z detalami:
-   ```bash
-   ps aux
+4. Wyświetlenie informacji o konkretnym procesie:
+   ```csh
+   ps -p 1234
    ```
 
-5. Sortowanie procesów według użycia pamięci:
-   ```bash
-   ps aux --sort=-%mem
-   ```
-
-## Tips
-- Używaj opcji `-f` w połączeniu z `-e`, aby uzyskać bardziej szczegółowe informacje o procesach.
-- Możesz użyć `grep`, aby filtrować wyniki, na przykład:
-  ```bash
-  ps aux | grep firefox
-  ```
-- Regularne monitorowanie procesów może pomóc w identyfikacji problemów z wydajnością systemu.
+## Wskazówki
+- Używaj opcji `-f`, aby uzyskać bardziej szczegółowe informacje o procesach, co może być pomocne w diagnozowaniu problemów.
+- Możesz łączyć różne opcje, aby uzyskać bardziej precyzyjne wyniki, na przykład `ps -ef` wyświetli wszystkie procesy w pełnym formacie.
+- Regularne monitorowanie procesów za pomocą `ps` może pomóc w zarządzaniu zasobami systemowymi i identyfikacji procesów, które mogą powodować problemy.

@@ -1,46 +1,52 @@
-# [Linux] Bash history Penggunaan: Menampilkan riwayat perintah
+# [Sistem Operasi] C Shell (csh) history: Menampilkan riwayat perintah
 
 ## Overview
-Perintah `history` dalam Bash digunakan untuk menampilkan daftar perintah yang telah dieksekusi sebelumnya dalam sesi terminal. Ini sangat berguna untuk mengingat dan mengulangi perintah yang sering digunakan tanpa harus mengetiknya lagi.
+Perintah `history` dalam C Shell (csh) digunakan untuk menampilkan daftar perintah yang telah dijalankan sebelumnya dalam sesi terminal. Ini sangat berguna untuk melihat kembali perintah yang telah digunakan, sehingga pengguna dapat mengulang atau memodifikasi perintah tersebut tanpa harus mengetiknya dari awal.
 
 ## Usage
-Sintaks dasar dari perintah `history` adalah sebagai berikut:
+Berikut adalah sintaks dasar untuk menggunakan perintah `history`:
 
 ```
 history [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum untuk perintah `history` beserta penjelasannya:
+Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah `history`:
 
 - `-c`: Menghapus seluruh riwayat perintah.
-- `-d offset`: Menghapus perintah pada posisi tertentu dalam riwayat.
-- `n`: Menampilkan `n` baris terakhir dari riwayat perintah.
+- `-n`: Membaca riwayat dari file riwayat dan menambahkannya ke daftar saat ini.
+- `-r`: Membaca riwayat dari file riwayat tanpa menambahkannya ke daftar saat ini.
+- `-w`: Menulis riwayat saat ini ke file riwayat.
 
 ## Common Examples
-Berikut adalah beberapa contoh praktis penggunaan perintah `history`:
+Berikut adalah beberapa contoh penggunaan perintah `history`:
 
 1. Menampilkan seluruh riwayat perintah:
-   ```bash
+   ```csh
    history
    ```
 
 2. Menampilkan 10 perintah terakhir:
-   ```bash
+   ```csh
    history 10
    ```
 
 3. Menghapus seluruh riwayat perintah:
-   ```bash
+   ```csh
    history -c
    ```
 
-4. Menghapus perintah tertentu dari riwayat (misalnya, perintah ke-5):
-   ```bash
-   history -d 5
+4. Menulis riwayat saat ini ke file riwayat:
+   ```csh
+   history -w
+   ```
+
+5. Membaca riwayat dari file riwayat:
+   ```csh
+   history -r
    ```
 
 ## Tips
-- Gunakan `!n` untuk menjalankan perintah ke-n dari riwayat. Misalnya, `!100` akan menjalankan perintah yang terdaftar sebagai perintah ke-100.
-- Untuk mencari perintah sebelumnya, tekan `Ctrl + r` dan mulai ketikkan perintah yang ingin dicari.
-- Simpan riwayat perintah ke dalam file dengan menggunakan `history > nama_file.txt` untuk referensi di masa mendatang.
+- Gunakan `!n` untuk menjalankan perintah ke-n dalam riwayat, di mana n adalah nomor perintah yang ditampilkan oleh `history`.
+- Untuk mempercepat penggunaan, Anda dapat menggunakan tombol panah atas dan bawah untuk menavigasi melalui riwayat perintah yang telah digunakan sebelumnya.
+- Pertimbangkan untuk secara berkala menghapus riwayat yang tidak perlu untuk menjaga kebersihan dan keamanan sesi terminal Anda.

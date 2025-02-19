@@ -1,7 +1,7 @@
-# [Linux] Bash uniq Penggunaan: Menghapus baris duplikat
+# [Sistem Operasi] C Shell (csh) uniq Penggunaan: Menghapus baris duplikat dari file
 
 ## Overview
-Perintah `uniq` dalam Bash digunakan untuk menghapus baris yang duplikat dari file atau input standar. Perintah ini sangat berguna ketika Anda ingin mendapatkan daftar unik dari data yang mungkin memiliki entri yang sama.
+Perintah `uniq` digunakan untuk menghapus baris-baris yang duplikat dari file atau output. Perintah ini hanya menghapus duplikat yang berurutan, sehingga penting untuk mengurutkan data terlebih dahulu jika ingin menghapus semua duplikat.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `uniq`:
@@ -11,41 +11,40 @@ uniq [options] [arguments]
 ```
 
 ## Common Options
-Beberapa opsi umum yang dapat digunakan dengan `uniq` antara lain:
-
 - `-c`: Menghitung jumlah kemunculan setiap baris.
 - `-d`: Menampilkan hanya baris yang muncul lebih dari sekali.
 - `-u`: Menampilkan hanya baris yang unik (tidak ada duplikat).
-- `-i`: Mengabaikan perbedaan huruf besar/kecil saat membandingkan baris.
+- `-i`: Mengabaikan perbedaan antara huruf besar dan kecil saat membandingkan.
 
 ## Common Examples
+Berikut adalah beberapa contoh penggunaan perintah `uniq`:
 
-1. **Menghapus baris duplikat dari file:**
+1. Menghapus baris duplikat dari file:
    ```bash
    uniq file.txt
    ```
 
-2. **Menghitung jumlah kemunculan setiap baris:**
-   ```bash
-   uniq -c file.txt
-   ```
-
-3. **Menampilkan hanya baris yang muncul lebih dari sekali:**
-   ```bash
-   uniq -d file.txt
-   ```
-
-4. **Menampilkan hanya baris yang unik:**
-   ```bash
-   uniq -u file.txt
-   ```
-
-5. **Menggunakan uniq dengan sort untuk menghapus duplikat dari output yang tidak terurut:**
+2. Mengurutkan file terlebih dahulu dan kemudian menghapus duplikat:
    ```bash
    sort file.txt | uniq
    ```
 
+3. Menghitung jumlah kemunculan setiap baris:
+   ```bash
+   uniq -c file.txt
+   ```
+
+4. Menampilkan hanya baris yang muncul lebih dari sekali:
+   ```bash
+   uniq -d file.txt
+   ```
+
+5. Menampilkan hanya baris yang unik:
+   ```bash
+   uniq -u file.txt
+   ```
+
 ## Tips
-- Pastikan untuk mengurutkan file terlebih dahulu jika Anda ingin menghapus duplikat secara efektif, karena `uniq` hanya menghapus baris yang berurutan.
-- Gunakan opsi `-i` jika Anda ingin mengabaikan perbedaan huruf besar/kecil saat membandingkan baris.
-- Kombinasikan `uniq` dengan perintah lain seperti `sort` untuk memproses data dengan lebih efisien.
+- Selalu urutkan data Anda sebelum menggunakan `uniq` jika Anda ingin menghapus semua duplikat.
+- Gunakan opsi `-c` untuk mendapatkan informasi lebih lanjut tentang berapa kali setiap baris muncul.
+- Jika Anda bekerja dengan data yang sensitif terhadap huruf besar dan kecil, pertimbangkan untuk menggunakan opsi `-i`.

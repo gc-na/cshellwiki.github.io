@@ -1,51 +1,44 @@
-# [Linux] Bash sleep Kullanımı: Bekleme süresi ayarlama
+# [Linux] C Shell (csh) sleep Kullanımı: Zamanlayıcı işlevi
 
-## Overview
-`sleep` komutu, belirli bir süre boyunca işlemciyi duraklatmak için kullanılır. Bu, scriptlerde belirli bir süre beklemek gerektiğinde oldukça faydalıdır.
+## Genel Bakış
+`sleep` komutu, belirli bir süre boyunca işlemi duraklatmak için kullanılır. Bu komut, genellikle betiklerde zamanlama yapmak veya belirli bir süre beklemek gerektiğinde faydalıdır.
 
-## Usage
+## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-```bash
-sleep [seçenekler] [süre]
+
+```csh
+sleep [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `-s`, `--seconds`: Süreyi saniye cinsinden belirtir. Varsayılan olarak, süre saniye cinsindendir.
-- `-m`, `--minutes`: Süreyi dakika cinsinden belirtir.
-- `-h`, `--hours`: Süreyi saat cinsinden belirtir.
-- `-d`, `--days`: Süreyi gün cinsinden belirtir.
+## Yaygın Seçenekler
+- `-m`: Dakika cinsinden süre belirtir.
+- `-s`: Saniye cinsinden süre belirtir.
+- `-h`: Saat cinsinden süre belirtir.
 
-## Common Examples
-Aşağıda `sleep` komutunun bazı pratik örnekleri bulunmaktadır:
-
-1. **5 saniye beklemek:**
-   ```bash
+## Yaygın Örnekler
+1. **5 saniye beklemek için:**
+   ```csh
    sleep 5
    ```
 
-2. **2 dakika beklemek:**
-   ```bash
+2. **2 dakika beklemek için:**
+   ```csh
    sleep 2m
    ```
 
-3. **1 saat beklemek:**
-   ```bash
+3. **1 saat beklemek için:**
+   ```csh
    sleep 1h
    ```
 
-4. **3 gün beklemek:**
-   ```bash
-   sleep 3d
-   ```
-
-5. **Bir script içinde bekleme süresi ayarlamak:**
-   ```bash
-   echo "İşlem başlıyor..."
+4. **Bir komutun ardından 10 saniye beklemek için:**
+   ```csh
+   echo "Bu bir test mesajıdır."
    sleep 10
-   echo "İşlem tamamlandı!"
+   echo "10 saniye bekledikten sonra bu mesaj görüntülenecek."
    ```
 
-## Tips
-- `sleep` komutunu, zamanlayıcılar veya döngüler içinde kullanarak scriptlerinizi daha verimli hale getirebilirsiniz.
-- Uzun süreli beklemelerde, süreyi gün, saat veya dakika cinsinden belirtmek, komutun okunabilirliğini artırır.
-- `sleep` komutunu kullanırken, bekleme süresinin gereksiz yere uzun olmamasına dikkat edin; bu, scriptin genel performansını etkileyebilir.
+## İpuçları
+- Betiklerinizde `sleep` komutunu kullanarak, belirli işlemler arasında bekleme süreleri ekleyebilirsiniz.
+- Çok kısa bekleme süreleri kullanmaktan kaçının; bu, sistem kaynaklarını gereksiz yere tüketebilir.
+- `sleep` komutunu, döngüler içinde kullanarak belirli aralıklarla işlemleri tekrarlamak için faydalı hale getirebilirsiniz.

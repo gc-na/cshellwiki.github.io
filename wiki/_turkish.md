@@ -1,47 +1,46 @@
-# [Linux] Bash @ Kullanımı: Komutları çalıştırma
+# [Linux] C Shell (csh) @ Kullanımı: Değişkenleri atama
 
-## Genel Bakış
-`@` komutu, Bash ortamında bir komutun arka planda çalıştırılmasını sağlar. Bu, komutların terminalde görünmeden veya kullanıcıdan herhangi bir girdi almadan çalıştırılmasına olanak tanır.
+## Overview
+`@` komutu, C Shell (csh) ortamında değişkenlere değer atamak için kullanılır. Bu komut, matematiksel işlemler yaparak değişkenlerin değerlerini güncelleyebilir.
 
-## Kullanım
+## Usage
 Temel sözdizimi aşağıdaki gibidir:
 
-```bash
-@ [seçenekler] [argümanlar]
+```csh
+@ [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-n`: Komutun çalıştırılmadan önce yalnızca sözdizimini kontrol etmesini sağlar.
-- `-v`: Komutları çalıştırmadan önce terminalde gösterir.
-- `-e`: Belirtilen komutları çalıştırır.
+## Common Options
+- `-`: Negatif bir değeri belirtmek için kullanılır.
+- `=`: Değişken atamak için kullanılır.
 
-## Yaygın Örnekler
-Aşağıda, `@` komutunun bazı pratik örnekleri bulunmaktadır:
+## Common Examples
+Aşağıda `@` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
-1. Basit bir komutun arka planda çalıştırılması:
-   ```bash
-   @ echo "Merhaba Dünya"
+1. Değişken atama:
+   ```csh
+   @ a = 5
    ```
 
-2. Bir dosyanın içeriğini arka planda görüntülemek:
-   ```bash
-   @ cat dosya.txt
+2. Matematiksel işlem yaparak değişken güncelleme:
+   ```csh
+   @ a = a + 10
    ```
 
-3. Bir betiği arka planda çalıştırmak:
-   ```bash
-   @ ./script.sh
+3. Birden fazla değişkeni aynı anda atama:
+   ```csh
+   @ a = 5; @ b = 10; @ c = a + b
    ```
 
-4. Birden fazla komutu arka planda çalıştırmak:
-   ```bash
-   @ echo "İlk Komut" && echo "İkinci Komut"
+4. Negatif değer atama:
+   ```csh
+   @ a = -5
    ```
 
-## İpuçları
-- Arka planda çalıştırılan komutların çıktısını görmek için `-v` seçeneğini kullanabilirsiniz.
-- Komutların düzgün çalıştığından emin olmak için `-n` seçeneği ile sözdizimi kontrolü yapmayı unutmayın.
-- Uzun süreli çalışan komutlar için, çıktıları bir dosyaya yönlendirmek iyi bir uygulamadır. Örneğin:
-  ```bash
-  @ uzun_komut > cikti.txt 2>&1
+## Tips
+- Değişkenleri kullanmadan önce mutlaka tanımlayın.
+- Matematiksel işlemler için `@` komutunu kullanarak daha okunabilir ve düzenli bir kod yazabilirsiniz.
+- Değişkenlerinizi kontrol etmek için `echo` komutunu kullanarak değerlerini görüntüleyebilirsiniz. Örneğin:
+  ```csh
+  echo $a
   ```

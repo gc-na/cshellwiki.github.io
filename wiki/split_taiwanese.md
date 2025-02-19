@@ -1,7 +1,7 @@
-# [Linux] Bash split 使用方式: 將檔案分割成多個小檔案
+# [台灣] C Shell (csh) split 使用法: 將檔案分割成多個小檔案
 
 ## Overview
-`split` 命令用於將一個大檔案分割成多個小檔案，方便管理和傳輸。這在處理大型檔案時特別有用，讓使用者能夠更輕鬆地處理和分享資料。
+`split` 命令用於將一個大檔案分割成多個小檔案，方便管理和處理。這在處理大型資料檔案時特別有用，可以根據需要將檔案分割成固定大小或特定行數的小檔案。
 
 ## Usage
 基本語法如下：
@@ -10,37 +10,35 @@ split [options] [arguments]
 ```
 
 ## Common Options
-- `-l NUM`：根據行數分割檔案，每個小檔案包含 NUM 行。
-- `-b SIZE`：根據檔案大小分割檔案，每個小檔案的大小為 SIZE。
-- `-d`：使用數字後綴來命名分割後的檔案。
-- `--additional-suffix=SUFFIX`：為分割後的檔案添加額外的副檔名。
+- `-b SIZE`：指定每個小檔案的大小，例如 `-b 1M` 代表每個檔案大小為 1MB。
+- `-l LINES`：指定每個小檔案的行數，例如 `-l 100` 代表每個檔案包含 100 行。
+- `-d`：使用數字作為檔案後綴，而不是字母。
+- `PREFIX`：指定生成的小檔案的前綴名稱。
 
 ## Common Examples
-- 根據行數分割檔案：
-  ```bash
-  split -l 100 largefile.txt smallfile_
-  ```
-  這會將 `largefile.txt` 每 100 行分割成小檔案，命名為 `smallfile_aa`, `smallfile_ab` 等。
+以下是一些常見的使用範例：
 
-- 根據檔案大小分割檔案：
-  ```bash
-  split -b 1M largefile.txt smallfile_
-  ```
-  這會將 `largefile.txt` 每 1MB 分割成小檔案。
+1. 將檔案 `largefile.txt` 每 100 行分割成小檔案：
+   ```csh
+   split -l 100 largefile.txt
+   ```
 
-- 使用數字後綴：
-  ```bash
-  split -d -l 50 largefile.txt smallfile_
-  ```
-  這會將檔案每 50 行分割，並使用數字後綴命名，例如 `smallfile_00`, `smallfile_01`。
+2. 將檔案 `data.csv` 每個小檔案大小為 1MB：
+   ```csh
+   split -b 1M data.csv
+   ```
 
-- 添加額外副檔名：
-  ```bash
-  split --additional-suffix=.txt -l 10 largefile.txt smallfile_
-  ```
-  這會將每個小檔案命名為 `smallfile_aa.txt`, `smallfile_ab.txt` 等。
+3. 使用數字作為檔案後綴，將檔案 `report.txt` 每 50 行分割：
+   ```csh
+   split -l 50 -d report.txt report_part_
+   ```
+
+4. 將檔案 `bigfile.txt` 每 500KB 分割，並指定檔案前綴為 `part_`：
+   ```csh
+   split -b 500k bigfile.txt part_
+   ```
 
 ## Tips
-- 在分割檔案之前，確保了解檔案的內容和結構，以避免在不適當的地方分割。
-- 使用 `-d` 選項可以讓檔案命名更具可讀性，特別是在處理大量檔案時。
-- 考慮使用 `cat` 命令來合併分割後的檔案，這樣可以方便地恢復原始檔案。
+- 在分割大型檔案時，選擇合適的大小或行數可以提高後續處理的效率。
+- 使用 `-d` 選項可以讓檔案後綴更具可讀性，特別是在處理大量檔案時。
+- 確保在分割檔案之前備份原始檔案，以防止資料遺失。

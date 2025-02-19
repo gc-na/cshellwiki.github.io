@@ -1,56 +1,50 @@
-# [Linux] Bash strace Kullanımı: Sistem çağrılarını izleme aracı
+# [Linux] C Shell (csh) strace Kullanımı: Sistem çağrılarını izleme aracı
 
 ## Genel Bakış
-`strace`, bir programın sistem çağrılarını ve sinyallerini izlemek için kullanılan güçlü bir araçtır. Bu komut, bir uygulamanın nasıl çalıştığını anlamak, hataları ayıklamak veya performans sorunlarını teşhis etmek için oldukça faydalıdır.
+`strace`, bir programın sistem çağrılarını ve sinyallerini izlemek için kullanılan bir komuttur. Bu komut, bir uygulamanın hangi sistem kaynaklarına eriştiğini ve hangi işlemleri gerçekleştirdiğini anlamak için oldukça faydalıdır. Hata ayıklama ve performans analizi gibi durumlarda sıklıkla kullanılır.
 
 ## Kullanım
-Temel sözdizimi şu şekildedir:
-```bash
+Temel sözdizimi aşağıdaki gibidir:
+
+```csh
 strace [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-o <dosya>`: Çıktıyı belirtilen dosyaya yönlendirir.
-- `-e <ifade>`: Belirli bir sistem çağrısını izlemek için filtre uygular.
-- `-p <pid>`: Belirtilen işlem kimliğine (PID) bağlanır ve onu izler.
 - `-c`: Sistem çağrılarının istatistiklerini toplar ve özetler.
-- `-f`: Alt süreçleri de izler.
+- `-e`: Belirli bir sistem çağrısını izlemek için kullanılır. Örneğin, `-e trace=open` sadece `open` çağrılarını izler.
+- `-o <dosya>`: Çıktıyı belirtilen dosyaya yönlendirir.
+- `-p <pid>`: Belirli bir işlem kimliğini izler.
 
 ## Yaygın Örnekler
 Aşağıda `strace` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-1. **Basit bir programı izlemek:**
-   ```bash
+1. Basit bir programı izlemek:
+   ```csh
    strace ls
    ```
-   Bu komut, `ls` komutunun çalışması sırasında yaptığı sistem çağrılarını gösterir.
 
-2. **Çıktıyı bir dosyaya yönlendirmek:**
-   ```bash
+2. Çıktıyı bir dosyaya yönlendirmek:
+   ```csh
    strace -o output.txt ls
    ```
-   `ls` komutunun sistem çağrılarını `output.txt` dosyasına kaydeder.
 
-3. **Belirli bir sistem çağrısını izlemek:**
-   ```bash
+3. Belirli bir sistem çağrısını izlemek:
+   ```csh
    strace -e trace=open ls
    ```
-   Sadece `open` sistem çağrılarını izler.
 
-4. **Bir işlemi izlemek:**
-   ```bash
+4. Çalışan bir işlemi izlemek:
+   ```csh
    strace -p 1234
    ```
-   PID'si 1234 olan bir işlemi izler.
 
-5. **Sistem çağrılarının istatistiklerini toplamak:**
-   ```bash
+5. İstatistikleri toplamak:
+   ```csh
    strace -c ls
    ```
-   `ls` komutunun sistem çağrılarıyla ilgili istatistikleri toplar ve özetler.
 
 ## İpuçları
-- `strace` kullanırken, çıktının büyük olabileceğini unutmayın. Çıktıyı bir dosyaya yönlendirmek, incelemeyi kolaylaştırabilir.
-- Belirli bir sistem çağrısını izlemek için `-e` seçeneğini kullanarak çıktıyı daraltabilirsiniz.
-- Uzun süreli çalışan işlemleri izlerken, `-p` seçeneği ile işlem kimliğini belirlemek faydalı olabilir.
-- `strace` çıktısını analiz ederken, sistem çağrılarının sırasını ve hangi hataların meydana geldiğini dikkatlice gözlemleyin.
+- `strace` kullanırken, izlemek istediğiniz programın çıktısını etkileyebileceğini unutmayın. Bu nedenle, kritik uygulamalarda dikkatli olun.
+- Çıktıyı dosyaya yönlendirmek, daha sonra analiz yapabilmeniz için faydalı olabilir.
+- Belirli sistem çağrılarını izlemek, sorunları daha hızlı çözmenize yardımcı olabilir.

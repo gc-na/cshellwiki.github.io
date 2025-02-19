@@ -1,55 +1,50 @@
-# [Linux] Bash ftp Kullanımı: Dosya transferi için bir protokol
+# [Unix] C Shell (csh) ftp Kullanımı: Dosya transferi için bir komut
 
-## Overview
-`ftp` (File Transfer Protocol), dosyaların bir ağ üzerinden transfer edilmesini sağlayan bir protokoldür. Bu komut, kullanıcıların dosyaları uzak bir sunucuya yüklemesine veya sunucudan indirmesine olanak tanır.
+## Genel Bakış
+`ftp` komutu, dosyaları bir ağ üzerinden transfer etmek için kullanılan bir protokoldür. Bu komut, kullanıcıların bir FTP sunucusuna bağlanarak dosya yüklemesine veya indirmesine olanak tanır.
 
-## Usage
-Temel kullanım sözdizimi aşağıdaki gibidir:
-```bash
-ftp [options] [arguments]
+## Kullanım
+Temel sözdizimi aşağıdaki gibidir:
+```csh
+ftp [seçenekler] [argümanlar]
 ```
 
-## Common Options
+## Yaygın Seçenekler
 - `-i`: Etkileşimli moddan çıkış yapar, yani dosya transferi sırasında onay istemez.
-- `-n`: Oturum açmadan önce otomatik olarak bir bağlantı kurmaz.
 - `-v`: Ayrıntılı modda çalışır, daha fazla bilgi gösterir.
-- `-p`: Pasif modda bağlantı kurar, bazı ağ yapılandırmaları için gereklidir.
+- `-n`: Otomatik olarak giriş yapmaz, kullanıcıdan kimlik bilgilerini girmesini ister.
 
-## Common Examples
-Aşağıda `ftp` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+## Yaygın Örnekler
+Aşağıda `ftp` komutunun bazı pratik örnekleri bulunmaktadır:
 
-### Sunucuya Bağlanma
-Bir FTP sunucusuna bağlanmak için:
-```bash
-ftp ftp.example.com
-```
+1. FTP sunucusuna bağlanma:
+   ```csh
+   ftp ftp.example.com
+   ```
 
-### Kullanıcı Adı ve Şifre ile Bağlanma
-Kullanıcı adı ve şifre ile bağlanmak için:
-```bash
-ftp -n ftp.example.com
-```
-Ardından, `user` komutunu kullanarak kullanıcı adınızı ve şifrenizi girebilirsiniz.
+2. Kullanıcı adı ve şifre ile giriş yapma:
+   ```csh
+   ftp
+   Name (ftp.example.com:user): kullanıcı_adı
+   Password: şifre
+   ```
 
-### Dosya İndirme
-Bir dosyayı sunucudan indirmek için:
-```bash
-get dosya.txt
-```
+3. Dosya indirme:
+   ```csh
+   get dosya.txt
+   ```
 
-### Dosya Yükleme
-Bir dosyayı sunucuya yüklemek için:
-```bash
-put dosya.txt
-```
+4. Dosya yükleme:
+   ```csh
+   put dosya.txt
+   ```
 
-### Tüm Dosyaları İndirme
-Bir dizindeki tüm dosyaları indirmek için:
-```bash
-mget *
-```
+5. Tüm dosyaları indirme:
+   ```csh
+   mget *
+   ```
 
-## Tips
-- FTP bağlantısı sırasında güvenlik için mümkünse SFTP (Secure FTP) kullanmayı tercih edin.
-- Dosya transferi yapmadan önce bağlantı ayarlarını kontrol edin.
-- Büyük dosyalar için `-i` seçeneğini kullanarak onay istemeden transfer yapabilirsiniz.
+## İpuçları
+- Bağlantı kurmadan önce FTP sunucusunun adresini ve kimlik bilgilerini doğru girdiğinizden emin olun.
+- Dosya transferi sırasında bağlantının kesilmemesi için mümkünse kablolu bir bağlantı kullanın.
+- `-i` seçeneğini kullanarak çok sayıda dosya transferi yaparken onay istemeden işlemi hızlandırabilirsiniz.

@@ -1,7 +1,7 @@
-# [台灣] Bash hostname 用法: 顯示或設定主機名稱
+# [台灣] C Shell (csh) hostname 使用法: 顯示或設定主機名稱
 
 ## Overview
-`hostname` 命令用於顯示或設定系統的主機名稱。主機名稱是用來識別網路上的設備，通常在網路通信中扮演重要角色。
+`hostname` 命令用於顯示或設定系統的主機名稱。主機名稱是用來識別網絡中的設備，對於網絡管理和配置來說非常重要。
 
 ## Usage
 基本語法如下：
@@ -10,39 +10,39 @@ hostname [options] [arguments]
 ```
 
 ## Common Options
-- `-a`, `--alias`：顯示主機的別名。
-- `-d`, `--domain`：顯示主機的網域名稱。
-- `-f`, `--fqdn`：顯示完全合格的域名（FQDN）。
-- `-i`, `--ip-address`：顯示主機的 IP 地址。
-- `-s`, `--short`：顯示主機的短名稱。
+- `-s`：顯示短主機名稱。
+- `-f`：顯示完整的主機名稱。
+- `-i`：顯示主機的 IP 地址。
 
 ## Common Examples
-- 顯示當前主機名稱：
-  ```bash
-  hostname
-  ```
+以下是一些常見的使用範例：
 
-- 顯示主機的完全合格域名：
-  ```bash
-  hostname -f
-  ```
+1. 顯示當前主機名稱：
+   ```csh
+   hostname
+   ```
 
-- 顯示主機的 IP 地址：
-  ```bash
-  hostname -i
-  ```
+2. 顯示短主機名稱：
+   ```csh
+   hostname -s
+   ```
 
-- 設定新的主機名稱：
-  ```bash
-  sudo hostname new-hostname
-  ```
+3. 顯示完整主機名稱：
+   ```csh
+   hostname -f
+   ```
 
-- 顯示主機的網域名稱：
-  ```bash
-  hostname -d
-  ```
+4. 顯示主機的 IP 地址：
+   ```csh
+   hostname -i
+   ```
+
+5. 設定新的主機名稱（需要管理員權限）：
+   ```csh
+   hostname new-hostname
+   ```
 
 ## Tips
-- 在更改主機名稱後，建議重新啟動系統以確保所有服務都能正確識別新的名稱。
-- 使用 `hostnamectl` 命令可以更方便地管理主機名稱，特別是在使用 systemd 的系統上。
-- 確保新的主機名稱符合網路規範，避免使用特殊字符。
+- 在更改主機名稱後，建議重啟系統以確保所有服務都能正確識別新的名稱。
+- 使用 `hostname` 命令時，確保你擁有適當的權限，特別是在設定新的主機名稱時。
+- 定期檢查主機名稱可以幫助你保持網絡配置的整潔和一致性。

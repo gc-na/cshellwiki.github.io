@@ -1,7 +1,7 @@
-# [Linux] Bash pacman : Gestionnaire de paquets pour Arch Linux
+# [Linux] C Shell (csh) pacman Utilisation : Gestionnaire de paquets pour Arch Linux
 
 ## Overview
-La commande `pacman` est un gestionnaire de paquets utilisé par Arch Linux et ses dérivés. Elle permet d'installer, de mettre à jour et de gérer des logiciels sur le système.
+La commande `pacman` est un gestionnaire de paquets utilisé sur les systèmes basés sur Arch Linux. Elle permet d'installer, de mettre à jour et de supprimer des logiciels, ainsi que de gérer les dépendances des paquets.
 
 ## Usage
 La syntaxe de base de la commande `pacman` est la suivante :
@@ -11,48 +11,44 @@ pacman [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes pour la commande `pacman` :
+Voici quelques options courantes pour `pacman` :
 
-- `-S` : Installer un ou plusieurs paquets.
-- `-R` : Supprimer un ou plusieurs paquets.
-- `-U` : Installer un paquet à partir d'un fichier local.
-- `-Sy` : Synchroniser les bases de données de paquets et mettre à jour les paquets installés.
-- `-Q` : Interroger les paquets installés.
+- `-S` : Installe un paquet.
+- `-R` : Supprime un paquet.
+- `-U` : Met à jour un paquet à partir d'un fichier local.
+- `-Sy` : Synchronise les dépôts et met à jour la base de données des paquets.
+- `-Ss` : Recherche un paquet dans les dépôts.
+- `-Qi` : Affiche les informations sur un paquet installé.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `pacman` :
 
-- Pour installer un paquet, par exemple `vim` :
+1. **Installer un paquet :**
+   ```bash
+   pacman -S nom_du_paquet
+   ```
 
-```bash
-pacman -S vim
-```
+2. **Supprimer un paquet :**
+   ```bash
+   pacman -R nom_du_paquet
+   ```
 
-- Pour supprimer un paquet, par exemple `vim` :
+3. **Mettre à jour tous les paquets installés :**
+   ```bash
+   pacman -Syu
+   ```
 
-```bash
-pacman -R vim
-```
+4. **Rechercher un paquet :**
+   ```bash
+   pacman -Ss nom_du_paquet
+   ```
 
-- Pour mettre à jour tous les paquets installés :
-
-```bash
-pacman -Syu
-```
-
-- Pour installer un paquet à partir d'un fichier local :
-
-```bash
-pacman -U /chemin/vers/le/paquet.pkg.tar.zst
-```
-
-- Pour lister tous les paquets installés :
-
-```bash
-pacman -Q
-```
+5. **Afficher les informations sur un paquet installé :**
+   ```bash
+   pacman -Qi nom_du_paquet
+   ```
 
 ## Tips
 - Toujours exécuter `pacman -Syu` régulièrement pour garder votre système à jour.
-- Utilisez `pacman -Ss <nom_du_paquet>` pour rechercher des paquets disponibles dans les dépôts.
-- Faites attention lors de la suppression de paquets, car cela peut entraîner la suppression de dépendances importantes.
+- Utilisez `pacman -Rns nom_du_paquet` pour supprimer un paquet ainsi que ses dépendances qui ne sont plus nécessaires.
+- Vérifiez les journaux de `pacman` pour voir l'historique des installations et des mises à jour, ce qui peut être utile pour le dépannage.

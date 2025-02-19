@@ -1,47 +1,43 @@
-# [Linux] Bash mv Kullanımı: Dosya ve dizin taşımak veya yeniden adlandırmak
+# [Linux] C Shell (csh) mv Kullanımı: Dosya ve dizinleri taşımak veya yeniden adlandırmak
 
-## Overview
-`mv` komutu, dosya ve dizinleri taşımak veya yeniden adlandırmak için kullanılır. Bu komut, belirli bir dosyayı veya dizini yeni bir konuma taşıyabilir veya mevcut bir dosyanın adını değiştirebilir.
+## Genel Bakış
+`mv` komutu, dosyaları ve dizinleri taşımak veya yeniden adlandırmak için kullanılır. Bu komut, belirtilen kaynak dosyayı hedef konuma taşır veya dosyanın adını değiştirir.
 
-## Usage
+## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-
-```bash
-mv [options] [arguments]
+```csh
+mv [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `-i`: Hedef dosya zaten varsa, kullanıcıdan onay ister.
-- `-f`: Hedef dosya zaten varsa, onay istemeden üzerine yazar.
+## Yaygın Seçenekler
+- `-i`: Hedef dosya mevcutsa, üzerine yazmadan önce kullanıcıdan onay ister.
+- `-f`: Hedef dosya mevcutsa, üzerine yazmadan onay istemez.
 - `-u`: Sadece kaynak dosya, hedef dosyadan daha yeni ise taşır.
-- `-v`: Taşıma işlemi sırasında hangi dosyaların taşındığını gösterir.
 
-## Common Examples
-1. **Dosyayı yeniden adlandırma:**
-   ```bash
-   mv eski_dosya.txt yeni_dosya.txt
-   ```
-   Bu komut, `eski_dosya.txt` dosyasını `yeni_dosya.txt` olarak yeniden adlandırır.
+## Yaygın Örnekler
+Aşağıda `mv` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-2. **Dosyayı başka bir dizine taşıma:**
-   ```bash
+1. Bir dosyayı başka bir dizine taşımak:
+   ```csh
    mv dosya.txt /hedef/dizin/
    ```
-   Bu komut, `dosya.txt` dosyasını `/hedef/dizin/` konumuna taşır.
 
-3. **Birden fazla dosyayı taşıma:**
-   ```bash
-   mv dosya1.txt dosya2.txt /hedef/dizin/
+2. Bir dosyanın adını değiştirmek:
+   ```csh
+   mv eski_ad.txt yeni_ad.txt
    ```
-   Bu komut, `dosya1.txt` ve `dosya2.txt` dosyalarını belirtilen dizine taşır.
 
-4. **Dosyayı onay isteyerek taşıma:**
-   ```bash
+3. Bir dosyayı başka bir dizine taşırken adını değiştirmek:
+   ```csh
+   mv dosya.txt /hedef/dizin/yeni_ad.txt
+   ```
+
+4. Hedef dosya mevcutsa, üzerine yazmadan önce onay istemek:
+   ```csh
    mv -i dosya.txt /hedef/dizin/
    ```
-   Bu komut, `dosya.txt` dosyasını taşırken hedef dizinde aynı isimde bir dosya varsa onay ister.
 
-## Tips
-- Dosyaları taşımadan önce, hedef dizinin var olduğundan emin olun. Aksi takdirde, `mv` komutu hata verebilir.
-- `-v` seçeneğini kullanarak hangi dosyaların taşındığını görmek, işlemi takip etmek için faydalıdır.
-- Önemli dosyaları taşırken `-i` seçeneğini kullanarak yanlışlıkla üzerine yazmayı önleyebilirsiniz.
+## İpuçları
+- `mv` komutunu kullanmadan önce, hedef dizinin doğru olduğundan emin olun.
+- Dosya adlarını değiştirmek için `-i` seçeneğini kullanarak yanlışlıkla dosyaların üzerine yazmayı önleyebilirsiniz.
+- Sık kullanılan dizinlere taşımak için, tam yol yerine kısa yollar kullanmayı düşünün.

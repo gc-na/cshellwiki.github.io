@@ -1,49 +1,44 @@
-# [Linux] Bash nohup用法: 运行命令而不受挂起影响
+# [Linux] C Shell (csh) nohup用法: Prevent command termination on logout
 
 ## Overview
-The `nohup` command in Bash is used to run another command immune to hangups, allowing it to continue executing even after the user has logged out or the terminal has been closed. This is particularly useful for long-running processes.
+The `nohup` command in C Shell (csh) is used to run another command that will continue executing even after the user has logged out of the shell. It effectively ignores the HUP (hangup) signal, which is sent to processes when the terminal is closed.
 
 ## Usage
 The basic syntax of the `nohup` command is as follows:
 
-```bash
+```
 nohup [options] [arguments]
 ```
 
 ## Common Options
-- `&`: Runs the command in the background.
-- `-h`: Displays help information about the command.
-- `-p`: Specifies the process ID to be used with the command.
+- `&`: Run the command in the background.
+- `-o`: Redirect output to a specified file instead of the default `nohup.out`.
+- `-h`: Display help information about the command.
 
 ## Common Examples
 Here are some practical examples of using `nohup`:
 
-1. **Running a script in the background:**
-   ```bash
-   nohup ./my_script.sh &
+1. **Run a script in the background:**
+   ```csh
+   nohup myscript.sh &
    ```
-   This command runs `my_script.sh` in the background, allowing you to log out without stopping the script.
 
-2. **Running a command with output redirected to a file:**
-   ```bash
-   nohup python my_script.py > output.log &
+2. **Run a long-running command and redirect output:**
+   ```csh
+   nohup long_running_command > output.log &
    ```
-   This command runs `my_script.py` and redirects its output to `output.log`.
 
-3. **Running a long-running process:**
-   ```bash
-   nohup tar -czf backup.tar.gz /path/to/directory &
+3. **Run a Python script with nohup:**
+   ```csh
+   nohup python myscript.py &
    ```
-   This command creates a compressed backup of a directory, allowing it to continue even if you log out.
 
-4. **Checking the output of a nohup command:**
-   ```bash
-   tail -f nohup.out
+4. **Run a command and specify a custom output file:**
+   ```csh
+   nohup mycommand -o custom_output.log &
    ```
-   This command allows you to monitor the output of the last `nohup` command in real-time.
 
 ## Tips
-- Always redirect output to a file to avoid cluttering the terminal.
-- Use `&` to run the command in the background, freeing up your terminal for other tasks.
-- Check the `nohup.out` file for any output or errors if you forget to redirect output.
-- Combine `nohup` with other commands like `cron` for scheduled tasks that need to run without interruption.
+- Always redirect output to a file when using `nohup` to avoid cluttering your terminal with messages.
+- Use `&` to run the command in the background, allowing you to continue using the terminal for other tasks.
+- Check the `nohup.out` file (or your specified output file) for any logs or errors after the command has run.

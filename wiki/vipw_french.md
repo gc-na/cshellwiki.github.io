@@ -1,40 +1,35 @@
-# [Linux] Bash vipw usage : Édition sécurisée des fichiers de mots de passe
+# [Linux] C Shell (csh) vipw : Édition sécurisée des fichiers de mots de passe
 
 ## Overview
-La commande `vipw` est utilisée pour éditer le fichier des mots de passe de manière sécurisée. Elle verrouille le fichier pour éviter les modifications simultanées, ce qui permet de prévenir les corruptions de données.
+La commande `vipw` permet d'éditer le fichier des mots de passe (`/etc/passwd`) de manière sécurisée. Elle verrouille le fichier pour éviter les modifications simultanées, ce qui prévient les corruptions de données.
 
 ## Usage
 La syntaxe de base de la commande est la suivante :
 
-```bash
+```csh
 vipw [options]
 ```
 
 ## Common Options
-Voici quelques options courantes pour `vipw` :
-
-- `-s` : Utilise un éditeur de texte spécifique, défini par la variable d'environnement `EDITOR`.
-- `-u` : Édite le fichier des mots de passe pour un utilisateur spécifique.
+- `-s` : Utilise un éditeur de texte sécurisé pour l'édition.
+- `-h` : Affiche l'aide et les options disponibles.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `vipw` :
 
-1. Éditer le fichier des mots de passe par défaut :
-   ```bash
-   vipw
-   ```
+### Édition du fichier de mots de passe
+```csh
+vipw
+```
+Cette commande ouvre le fichier `/etc/passwd` dans l'éditeur de texte par défaut.
 
-2. Éditer le fichier des mots de passe en utilisant un éditeur spécifique (par exemple, `nano`) :
-   ```bash
-   EDITOR=nano vipw
-   ```
-
-3. Éditer le fichier des mots de passe pour un utilisateur spécifique :
-   ```bash
-   vipw -u username
-   ```
+### Utilisation d'un éditeur spécifique
+```csh
+vipw -s
+```
+Cette commande ouvre le fichier de manière sécurisée, en utilisant un éditeur spécifié par la variable d'environnement `EDITOR`.
 
 ## Tips
-- Assurez-vous d'avoir les permissions nécessaires pour modifier le fichier des mots de passe.
-- Utilisez `vipw` plutôt que `vi /etc/passwd` pour éviter les problèmes de concurrence.
-- Faites toujours une sauvegarde du fichier avant de le modifier, surtout si vous travaillez sur un système de production.
+- Toujours utiliser `vipw` pour modifier le fichier des mots de passe afin d'éviter les conflits.
+- Vérifiez les permissions du fichier `/etc/passwd` avant de l'éditer pour garantir que vous avez les droits nécessaires.
+- Faites une sauvegarde du fichier avant de procéder à des modifications importantes.

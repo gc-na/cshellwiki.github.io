@@ -1,51 +1,51 @@
-# [Linux] Bash df utilizzo: Visualizza lo spazio su disco disponibile
+# [Linux] C Shell (csh) df Uso: Visualizza informazioni sullo spazio su disco
 
 ## Overview
-Il comando `df` (disk free) è utilizzato per mostrare la quantità di spazio su disco disponibile e utilizzato sui file system montati. È uno strumento utile per monitorare lo stato del disco e gestire le risorse di archiviazione.
+Il comando `df` in C Shell (csh) viene utilizzato per visualizzare informazioni sullo spazio su disco disponibile e utilizzato sui filesystem montati. È uno strumento utile per monitorare l'uso del disco e gestire lo spazio di archiviazione.
 
 ## Usage
 La sintassi di base del comando `df` è la seguente:
 
-```bash
+```csh
 df [options] [arguments]
 ```
 
 ## Common Options
-Ecco alcune opzioni comuni per il comando `df`:
-
-- `-h`: Mostra le dimensioni in un formato leggibile dall'uomo (ad esempio, KB, MB, GB).
-- `-T`: Mostra il tipo di file system.
-- `-a`: Mostra anche i file system che hanno zero blocchi.
-- `-i`: Mostra l'uso degli inode invece dello spazio su disco.
+- `-h`: Mostra le dimensioni in un formato leggibile dall'utente (ad esempio, KB, MB, GB).
+- `-T`: Mostra il tipo di filesystem.
+- `-i`: Mostra informazioni sull'uso degli inode invece dello spazio su disco.
+- `-a`: Include i filesystem con zero blocchi.
+- `-l`: Limita l'output ai filesystem locali.
 
 ## Common Examples
-Ecco alcuni esempi pratici dell'uso del comando `df`:
+Ecco alcuni esempi pratici di utilizzo del comando `df`:
 
-1. **Visualizzare lo spazio su disco in formato leggibile:**
-
-   ```bash
+1. **Visualizzare lo spazio su disco in formato leggibile**:
+   ```csh
    df -h
    ```
 
-2. **Visualizzare il tipo di file system insieme allo spazio disponibile:**
-
-   ```bash
-   df -hT
+2. **Visualizzare il tipo di filesystem**:
+   ```csh
+   df -T
    ```
 
-3. **Mostrare anche i file system con zero blocchi:**
-
-   ```bash
-   df -a
-   ```
-
-4. **Controllare l'uso degli inode:**
-
-   ```bash
+3. **Controllare l'uso degli inode**:
+   ```csh
    df -i
    ```
 
+4. **Visualizzare informazioni su tutti i filesystem, compresi quelli con zero blocchi**:
+   ```csh
+   df -a
+   ```
+
+5. **Limitare l'output ai filesystem locali**:
+   ```csh
+   df -l
+   ```
+
 ## Tips
-- Utilizza l'opzione `-h` per rendere le informazioni più comprensibili, specialmente quando lavori con file system di grandi dimensioni.
+- Utilizza l'opzione `-h` per rendere i dati più comprensibili, specialmente quando lavori con grandi volumi di dati.
 - Controlla regolarmente lo spazio su disco per evitare problemi di archiviazione.
-- Puoi combinare più opzioni, ad esempio `df -hT` per ottenere informazioni dettagliate in un formato leggibile.
+- Usa `df` insieme ad altri comandi come `du` per avere una visione più completa dell'uso dello spazio su disco.

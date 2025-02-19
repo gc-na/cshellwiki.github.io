@@ -1,45 +1,44 @@
-# [Linux] Bash mpstat gebruik: Toont CPU-statistieken
+# [Linux] C Shell (csh) mpstat gebruik: Toont CPU-statistieken
 
 ## Overzicht
-De `mpstat`-opdracht is een onderdeel van de sysstat-toolset en wordt gebruikt om CPU-statistieken te verzamelen en weer te geven. Het biedt informatie over de CPU-belasting, inclusief het percentage tijd dat de CPU actief is, inactief is of wacht op I/O-bewerkingen. Dit is nuttig voor systeembeheerders om de prestaties van hun systemen te monitoren.
+De `mpstat` opdracht is een hulpmiddel dat informatie geeft over de CPU-activiteit op een systeem. Het toont statistieken per processor, wat nuttig is voor het analyseren van de prestaties en het identificeren van knelpunten.
 
 ## Gebruik
-De basis syntaxis van de `mpstat`-opdracht is als volgt:
+De basis syntaxis van de `mpstat` opdracht is als volgt:
 
-```bash
+```csh
 mpstat [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
 - `-P ALL`: Toon statistieken voor alle CPU's.
-- `-u`: Toon de CPU-gebruikstatistieken.
-- `-h`: Toon een helpbericht met beschikbare opties.
-- `interval`: Geef het interval in seconden op voor het verzamelen van gegevens.
-- `count`: Geef het aantal keren op dat de statistieken moeten worden weergegeven.
+- `-u`: Toon alleen de gebruiksstatistieken van de CPU.
+- `-h`: Toon de helpinformatie voor de opdracht.
 
 ## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van `mpstat`:
 
 1. Toon CPU-statistieken voor alle CPU's:
-   ```bash
-   mpstat -P ALL
-   ```
+    ```csh
+    mpstat -P ALL
+    ```
 
-2. Toon CPU-gebruikstatistieken elke 2 seconden, 5 keer:
-   ```bash
-   mpstat -u 2 5
-   ```
+2. Toon alleen de gebruiksstatistieken van de CPU:
+    ```csh
+    mpstat -u
+    ```
 
-3. Toon alleen de statistieken voor de eerste CPU:
-   ```bash
-   mpstat -P 0
-   ```
+3. Toon CPU-statistieken met een interval van 5 seconden:
+    ```csh
+    mpstat 5
+    ```
 
-4. Toon een helpbericht met beschikbare opties:
-   ```bash
-   mpstat -h
-   ```
+4. Toon CPU-statistieken voor een specifieke CPU (bijvoorbeeld CPU 0):
+    ```csh
+    mpstat -P 0
+    ```
 
 ## Tips
-- Gebruik `mpstat` in combinatie met andere monitoringtools zoals `top` of `htop` voor een uitgebreidere analyse van systeembronnen.
-- Monitor regelmatig de CPU-statistieken om trends in gebruik te identificeren en om mogelijke prestatieproblemen vroegtijdig op te sporen.
-- Experimenteer met verschillende intervallen en tellingen om een beter inzicht te krijgen in de CPU-prestaties tijdens piekuren.
+- Gebruik `mpstat` in combinatie met andere monitoringtools voor een uitgebreidere analyse van systeemprestaties.
+- Regelmatig gebruik van `mpstat` kan helpen bij het identificeren van trends in CPU-gebruik over de tijd.
+- Vergeet niet om de juiste opties te gebruiken om alleen de informatie te krijgen die je nodig hebt.

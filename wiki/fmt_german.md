@@ -1,52 +1,42 @@
-# [Linux] Bash fmt Verwendung: Textformatierung für lesbare Ausgaben
+# [Linux] C Shell (csh) fmt Verwendung: Textformatierung
 
 ## Übersicht
-Der `fmt`-Befehl wird verwendet, um Textdateien zu formatieren und leserfreundlich zu gestalten. Er passt die Breite der Zeilen an und entfernt überflüssige Leerzeichen, um den Text klarer und strukturierter darzustellen.
+Der Befehl `fmt` wird verwendet, um Textdateien zu formatieren, indem er die Zeilenlängen anpasst und den Text in ein lesbares Format bringt. Dies ist besonders nützlich, um sicherzustellen, dass der Text in einer bestimmten Breite bleibt, was die Lesbarkeit verbessert.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
-fmt [Optionen] [Datei]
+```csh
+fmt [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-w, --width=N`: Setzt die maximale Breite der Zeilen auf N Zeichen.
-- `-s, --split-only`: Teilt nur an Leerzeichen, ohne zusätzliche Zeilenumbrüche hinzuzufügen.
-- `-u, --uniform`: Formatiert den Text gleichmäßig, sodass alle Zeilen die gleiche Länge haben.
+- `-w [Breite]`: Setzt die maximale Breite der Zeilen auf die angegebene Zahl.
+- `-s`: Unterdrückt das Zusammenfassen von Absätzen.
+- `-u`: Entfernt überflüssige Leerzeichen zwischen Wörtern.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele zur Verwendung des `fmt`-Befehls:
+1. **Einfaches Formatieren einer Textdatei:**
+   ```csh
+   fmt textdatei.txt
+   ```
 
-### Beispiel 1: Standardformatierung
-Um eine Textdatei namens `beispiel.txt` zu formatieren, verwenden Sie den folgenden Befehl:
+2. **Formatieren mit einer maximalen Zeilenbreite von 50 Zeichen:**
+   ```csh
+   fmt -w 50 textdatei.txt
+   ```
 
-```bash
-fmt beispiel.txt
-```
+3. **Formatieren und Absätze nicht zusammenfassen:**
+   ```csh
+   fmt -s textdatei.txt
+   ```
 
-### Beispiel 2: Zeilenbreite anpassen
-Um die Zeilenbreite auf 50 Zeichen zu setzen, verwenden Sie die `-w`-Option:
-
-```bash
-fmt -w 50 beispiel.txt
-```
-
-### Beispiel 3: Nur an Leerzeichen teilen
-Um den Text nur an Leerzeichen zu teilen, ohne zusätzliche Zeilenumbrüche hinzuzufügen:
-
-```bash
-fmt -s beispiel.txt
-```
-
-### Beispiel 4: Einheitliche Formatierung
-Um den Text gleichmäßig zu formatieren, sodass alle Zeilen die gleiche Länge haben:
-
-```bash
-fmt -u beispiel.txt
-```
+4. **Formatieren mit Entfernen überflüssiger Leerzeichen:**
+   ```csh
+   fmt -u textdatei.txt
+   ```
 
 ## Tipps
-- Verwenden Sie die `-w`-Option, um sicherzustellen, dass Ihre Ausgaben in verschiedenen Umgebungen gut lesbar sind.
-- Kombinieren Sie Optionen, um die Formatierung weiter anzupassen, z.B. `fmt -w 60 -s beispiel.txt`.
-- Überprüfen Sie die Ausgabe, um sicherzustellen, dass der Text nach Ihren Wünschen formatiert ist, insbesondere bei langen Absätzen.
+- Verwenden Sie die Option `-w`, um sicherzustellen, dass der Text in einem bestimmten Layout bleibt, besonders wenn Sie den Text für Druck oder Präsentationen vorbereiten.
+- Überprüfen Sie die Datei nach dem Formatieren, um sicherzustellen, dass keine wichtigen Informationen verloren gegangen sind, insbesondere bei der Verwendung der Optionen `-s` und `-u`.
+- Kombinieren Sie `fmt` mit anderen Befehlen, wie `cat`, um mehrere Dateien gleichzeitig zu formatieren.

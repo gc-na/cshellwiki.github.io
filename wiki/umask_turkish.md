@@ -1,41 +1,40 @@
-# [Linux] Bash umask Kullanımı: Dosya izinlerini yönetme
+# [Linux] C Shell (csh) umask Kullanımı: Dosya izinlerini ayarlamak
 
 ## Overview
-`umask` komutu, yeni oluşturulan dosya ve dizinlerin varsayılan izinlerini belirlemek için kullanılır. Bu komut, kullanıcıların dosya ve dizinlerine erişim kontrolü sağlamalarına yardımcı olur.
+`umask` komutu, yeni oluşturulan dosyaların ve dizinlerin varsayılan izinlerini ayarlamak için kullanılır. Bu komut, kullanıcıların dosya ve dizin izinlerini kontrol etmelerine olanak tanır.
 
 ## Usage
 Temel sözdizimi şu şekildedir:
-```bash
-umask [seçenekler] [argümanlar]
+```
+umask [options] [arguments]
 ```
 
 ## Common Options
-- `-S`: İzinleri sembolik biçimde gösterir.
-- `-p`: Geçerli umask değerini gösterir.
-- `-c`: Umask değerini geçici olarak değiştirir.
+- `-S`: Mevcut umask değerini sembolik biçimde gösterir.
+- `-p`: Mevcut umask değerini gösterir, ancak değişiklik yapmaz.
 
 ## Common Examples
-1. **Geçerli umask değerini görüntüleme:**
-   ```bash
+1. Mevcut umask değerini görüntüleme:
+   ```csh
    umask
    ```
 
-2. **Umask değerini ayarlama (örneğin, 022):**
-   ```bash
+2. Umask değerini 022 olarak ayarlama (grup ve diğer kullanıcılar için yazma iznini kaldırır):
+   ```csh
    umask 022
    ```
 
-3. **Umask değerini sembolik olarak görüntüleme:**
-   ```bash
+3. Umask değerini sembolik olarak görüntüleme:
+   ```csh
    umask -S
    ```
 
-4. **Umask değerini geçici olarak değiştirme:**
-   ```bash
-   umask -c 077
+4. Umask değerini 007 olarak ayarlama (sadece sahibi için tam izin, grup ve diğerleri için hiç izin yok):
+   ```csh
+   umask 007
    ```
 
 ## Tips
-- Umask değerini ayarlarken, her zaman izinlerin doğru ayarlandığından emin olun; yanlış ayarlar, dosyalarınıza istenmeyen erişimlere yol açabilir.
-- Umask değerini `.bashrc` veya `.profile` dosyanıza ekleyerek her oturumda otomatik olarak ayarlanmasını sağlayabilirsiniz.
-- Umask değerini belirlerken, genellikle `022` veya `007` gibi değerler kullanılır; bu değerler, dosya ve dizin izinlerini kontrol etmek için yaygın olarak tercih edilir.
+- Umask değerini ayarladıktan sonra, yeni oluşturulan dosyaların izinlerini kontrol etmek için `ls -l` komutunu kullanın.
+- Umask ayarlarını kalıcı hale getirmek için, bu komutu kullanıcı profil dosyanıza ekleyin (örneğin, `.cshrc`).
+- Farklı projeler için farklı umask değerleri kullanarak, dosya izinlerini daha iyi yönetebilirsiniz.

@@ -1,61 +1,61 @@
-# [Linux] Bash minikube Kullanımı: Kubernetes için yerel bir geliştirme ortamı oluşturma
+# [Linux] C Shell (csh) minikube Kullanımı: Kubernetes için yerel bir ortam oluşturma
 
 ## Genel Bakış
-Minikube, geliştiricilerin yerel bir Kubernetes ortamı oluşturmasına olanak tanıyan bir araçtır. Bu araç, Kubernetes kümesini yerel bir makinede çalıştırarak, uygulamaların geliştirilmesi ve test edilmesi için pratik bir çözüm sunar.
+Minikube, yerel bir Kubernetes ortamı oluşturmak için kullanılan bir araçtır. Geliştiricilerin Kubernetes ile uygulama geliştirmelerini ve test etmelerini kolaylaştırır. Minikube, sanal bir makine üzerinde Kubernetes kümesi kurarak, kullanıcıların yerel bilgisayarlarında Kubernetes uygulamalarını çalıştırmalarına olanak tanır.
 
 ## Kullanım
 Minikube komutunun temel sözdizimi aşağıdaki gibidir:
 
-```bash
+```shell
 minikube [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
 - `start`: Minikube kümesini başlatır.
 - `stop`: Minikube kümesini durdurur.
-- `delete`: Minikube kümesini siler.
 - `status`: Minikube kümesinin durumunu gösterir.
-- `kubectl`: Kubernetes komut satırı aracını kullanarak Minikube ile etkileşimde bulunur.
+- `delete`: Mevcut Minikube kümesini siler.
+- `dashboard`: Kubernetes dashboard'unu başlatır.
 
 ## Yaygın Örnekler
-Aşağıda, minikube komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+Aşağıda minikube komutunun bazı pratik örnekleri verilmiştir:
 
 ### Minikube Başlatma
 Minikube kümesini başlatmak için aşağıdaki komutu kullanabilirsiniz:
 
-```bash
+```shell
 minikube start
 ```
 
-### Minikube Durdurma
-Minikube kümesini durdurmak için şu komutu çalıştırın:
+### Minikube Durumunu Kontrol Etme
+Minikube kümesinin durumunu kontrol etmek için:
 
-```bash
+```shell
+minikube status
+```
+
+### Minikube Durdurma
+Minikube kümesini durdurmak için:
+
+```shell
 minikube stop
 ```
 
 ### Minikube Silme
-Minikube kümesini tamamen silmek için:
+Mevcut Minikube kümesini silmek için:
 
-```bash
+```shell
 minikube delete
 ```
 
-### Minikube Durumunu Kontrol Etme
-Minikube kümesinin mevcut durumunu kontrol etmek için:
+### Kubernetes Dashboard'u Açma
+Kubernetes dashboard'unu başlatmak için:
 
-```bash
-minikube status
-```
-
-### Kubectl ile Etkileşim
-Minikube ile birlikte kubectl kullanarak bir pod oluşturmak için:
-
-```bash
-kubectl create deployment my-deployment --image=nginx
+```shell
+minikube dashboard
 ```
 
 ## İpuçları
-- Minikube kullanmadan önce sisteminizin sanallaştırma desteğine sahip olduğundan emin olun.
-- Minikube'un en son sürümünü kullanarak yeni özelliklerden faydalanın.
-- Geliştirme ortamınızı yönetmek için `minikube dashboard` komutunu kullanarak görsel bir arayüz açabilirsiniz.
+- Minikube kullanmadan önce sisteminizde gerekli sanal makine yöneticisinin (örneğin, VirtualBox veya Docker) kurulu olduğundan emin olun.
+- Minikube ile çalışırken, kaynakların yeterli olduğuna dikkat edin; aksi takdirde performans sorunları yaşayabilirsiniz.
+- Minikube sürümünüzü güncel tutarak yeni özelliklerden ve iyileştirmelerden faydalanabilirsiniz.

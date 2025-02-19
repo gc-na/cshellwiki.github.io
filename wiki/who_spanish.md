@@ -1,7 +1,7 @@
-# [Linux] Bash who uso equivalente: Muestra quién está conectado al sistema
+# [Linux] C Shell (csh) who uso: Muestra quién está conectado al sistema
 
 ## Overview
-El comando `who` se utiliza en sistemas Unix y Linux para mostrar una lista de los usuarios que están actualmente conectados al sistema. Proporciona información sobre el nombre de usuario, la terminal, la fecha y hora de inicio de sesión, así como la dirección IP o el nombre del host desde donde se conectaron.
+El comando `who` en C Shell (csh) se utiliza para mostrar una lista de los usuarios que están actualmente conectados al sistema. Proporciona información sobre los usuarios, como sus nombres de usuario, terminales, y la hora de inicio de sesión.
 
 ## Usage
 La sintaxis básica del comando `who` es la siguiente:
@@ -11,40 +11,34 @@ who [opciones] [argumentos]
 ```
 
 ## Common Options
-- `-a`: Muestra toda la información disponible, incluyendo usuarios, tiempos de inactividad y más.
-- `-b`: Muestra la última vez que se reinició el sistema.
+- `-a`: Muestra toda la información disponible, incluyendo usuarios y sus tiempos de inactividad.
+- `-b`: Muestra la hora de arranque del sistema.
 - `-q`: Muestra solo los nombres de los usuarios conectados y el número total de usuarios.
-- `--help`: Muestra la ayuda del comando.
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso del comando `who`:
 
-1. **Mostrar todos los usuarios conectados:**
-   ```bash
+1. **Mostrar usuarios conectados:**
+   ```csh
    who
    ```
 
-2. **Mostrar información detallada de los usuarios conectados:**
-   ```bash
+2. **Mostrar información detallada de los usuarios:**
+   ```csh
    who -a
    ```
 
-3. **Mostrar la última vez que se reinició el sistema:**
-   ```bash
+3. **Mostrar la hora de arranque del sistema:**
+   ```csh
    who -b
    ```
 
 4. **Mostrar solo los nombres de los usuarios conectados:**
-   ```bash
+   ```csh
    who -q
    ```
 
-5. **Mostrar información de un usuario específico:**
-   ```bash
-   who username
-   ```
-
 ## Tips
-- Utiliza `who -a` para obtener la información más completa sobre los usuarios conectados.
-- Si necesitas saber cuándo fue la última vez que se reinició el sistema, `who -b` es muy útil.
-- Combina `who` con otros comandos como `grep` para filtrar resultados específicos, por ejemplo, `who | grep username` para buscar un usuario en particular.
+- Utiliza `who` regularmente para monitorear la actividad de los usuarios en el sistema.
+- Combina `who` con otros comandos como `grep` para filtrar información específica.
+- Recuerda que la salida de `who` puede variar según los permisos de usuario y la configuración del sistema.

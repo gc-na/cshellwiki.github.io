@@ -1,48 +1,43 @@
-# [Linux] Bash command użycie: [wyświetlanie zawartości plików]
+# [Linux] C Shell (csh) command echo: [wyświetlanie tekstu]
 
 ## Overview
-Polecenie `cat` (concatenate) w systemie Linux służy do wyświetlania zawartości plików tekstowych w terminalu. Może być również używane do łączenia kilku plików w jeden.
+Polecenie `echo` w C Shell (csh) służy do wyświetlania tekstu lub zmiennych na standardowym wyjściu. Jest to przydatne narzędzie do szybkiego wyświetlania informacji w terminalu.
 
 ## Usage
-Podstawowa składnia polecenia `cat` wygląda następująco:
+Podstawowa składnia polecenia `echo` jest następująca:
 
-```bash
-cat [opcje] [argumenty]
+```
+echo [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-n`: Numeruje linie wyjścia.
-- `-b`: Numeruje tylko niepuste linie.
-- `-E`: Dodaje znak końca linii `$` na końcu każdej linii.
-- `-s`: Usuwa puste linie.
+- `-n`: Nie dodawaj nowej linii na końcu wyjścia.
+- `-e`: Włącz interpretację sekwencji escape, takich jak `\n` (nowa linia) czy `\t` (tabulator).
+- `-E`: Wyłącz interpretację sekwencji escape (domyślne zachowanie).
 
 ## Common Examples
-1. Wyświetlenie zawartości pliku:
-   ```bash
-   cat plik.txt
+1. Wyświetlenie prostego tekstu:
+   ```csh
+   echo "Witaj, świecie!"
    ```
 
-2. Łączenie dwóch plików w jeden:
-   ```bash
-   cat plik1.txt plik2.txt > polaczony.txt
+2. Wyświetlenie zmiennej:
+   ```csh
+   set nazwa = "Jan"
+   echo "Cześć, $nazwa!"
    ```
 
-3. Wyświetlenie zawartości pliku z numeracją linii:
-   ```bash
-   cat -n plik.txt
+3. Użycie opcji `-n`, aby uniknąć nowej linii:
+   ```csh
+   echo -n "To jest tekst bez nowej linii."
    ```
 
-4. Usunięcie pustych linii z wyjścia:
-   ```bash
-   cat -s plik.txt
-   ```
-
-5. Wyświetlenie zawartości pliku z oznaczeniem końca linii:
-   ```bash
-   cat -E plik.txt
+4. Użycie opcji `-e` do interpretacji sekwencji escape:
+   ```csh
+   echo -e "Pierwsza linia\nDruga linia"
    ```
 
 ## Tips
-- Używaj `cat` w połączeniu z innymi poleceniami, takimi jak `grep`, aby filtrować wyniki.
-- Zamiast `cat` do wyświetlania dużych plików, rozważ użycie `less` lub `more`, aby lepiej zarządzać przewijaniem.
-- Pamiętaj, że `cat` może być używane do tworzenia nowych plików, ale upewnij się, że nie nadpisujesz ważnych danych.
+- Używaj opcji `-n`, gdy chcesz kontynuować wyjście w tej samej linii.
+- Pamiętaj, aby używać cudzysłowów do ochrony tekstu zawierającego spacje.
+- Możesz łączyć zmienne z tekstem, aby tworzyć dynamiczne komunikaty.

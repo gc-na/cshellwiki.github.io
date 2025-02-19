@@ -1,49 +1,44 @@
-# [Linux] Bash stat Kullanımı: Dosya ve dizin bilgilerini görüntüleme
+# [Linux] C Shell (csh) stat Kullanımı: Dosya bilgilerini görüntüleme
 
 ## Overview
-`stat` komutu, dosya ve dizinlerin ayrıntılı bilgilerini görüntülemek için kullanılır. Bu bilgiler arasında dosyanın boyutu, oluşturulma tarihi, son erişim tarihi ve izinler gibi özellikler yer alır.
+`stat` komutu, dosyaların ve dizinlerin detaylı bilgilerini görüntülemek için kullanılır. Bu bilgiler arasında dosya boyutu, oluşturulma tarihi, son erişim tarihi ve izinler gibi veriler bulunur.
 
 ## Usage
-Temel kullanım şekli aşağıdaki gibidir:
-
-```bash
+Temel sözdizimi aşağıdaki gibidir:
+```
 stat [options] [arguments]
 ```
 
 ## Common Options
-- `-c` veya `--format`: Çıktının formatını belirler.
-- `-f` veya `--file-system`: Dosya sistemine ilişkin bilgileri gösterir.
-- `--help`: Komutun kullanımına dair yardım bilgilerini görüntüler.
-- `--version`: `stat` komutunun sürümünü gösterir.
+- `-c` : Özelleştirilmiş çıktı formatı belirtir.
+- `-f` : Dosya sistemine özgü bilgileri görüntüler.
+- `-L` : Sembolik bağlantıların hedef dosyalarının bilgilerini gösterir.
+- `--help` : Komut hakkında yardım bilgisi gösterir.
 
 ## Common Examples
 Aşağıda `stat` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
-### 1. Basit kullanım
-Bir dosyanın bilgilerini görüntülemek için:
-```bash
-stat dosya.txt
-```
+1. Bir dosyanın bilgilerini görüntülemek:
+   ```bash
+   stat dosya.txt
+   ```
 
-### 2. Özel format ile görüntüleme
-Dosyanın boyutunu ve izinlerini özel bir format ile görüntülemek için:
-```bash
-stat -c "Boyut: %s, İzinler: %A" dosya.txt
-```
+2. Bir dizinin bilgilerini görüntülemek:
+   ```bash
+   stat /home/kullanici
+   ```
 
-### 3. Dizin bilgilerini görüntüleme
-Bir dizinin bilgilerini görmek için:
-```bash
-stat /home/kullanici/
-```
+3. Özelleştirilmiş çıktı formatı ile dosya bilgilerini görüntülemek:
+   ```bash
+   stat -c '%s %y' dosya.txt
+   ```
 
-### 4. Dosya sistemine dair bilgiler
-Dosya sistemine ait bilgileri görüntülemek için:
-```bash
-stat -f /home/kullanici/
-```
+4. Sembolik bağlantının hedef dosyasının bilgilerini görüntülemek:
+   ```bash
+   stat -L link.txt
+   ```
 
 ## Tips
-- `stat` komutunu sık kullanılan dosyalar için bir alias ile kısaltabilirsiniz.
-- Çıktıyı daha okunabilir hale getirmek için `-c` seçeneği ile özel formatlar kullanmayı deneyin.
-- Dosya izinlerini kontrol etmek için `stat` komutunu kullanmak, güvenlik açısından önemlidir.
+- Dosya bilgilerini hızlıca kontrol etmek için `stat` komutunu sıkça kullanın.
+- Özelleştirilmiş formatlar kullanarak yalnızca gerekli bilgileri görüntüleyebilirsiniz.
+- Sembolik bağlantılarla çalışırken `-L` seçeneğini kullanmayı unutmayın, aksi takdirde bağlantının kendisi hakkında bilgi alırsınız.

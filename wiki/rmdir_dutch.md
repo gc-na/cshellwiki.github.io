@@ -1,43 +1,46 @@
-# [Linux] Bash rmdir gebruik: Verwijder lege mappen
+# [Linux] C Shell (csh) rmdir gebruik: Verwijder lege mappen
 
-## Overzicht
-De `rmdir` opdracht in Bash wordt gebruikt om lege directories te verwijderen. Het is een eenvoudige maar krachtige tool voor het beheren van je bestandssysteem.
+## Overview
+De `rmdir` opdracht in C Shell (csh) wordt gebruikt om lege directories te verwijderen. Het is een eenvoudige manier om ongewenste, lege mappen uit je bestandssysteem te verwijderen.
 
-## Gebruik
+## Usage
 De basis syntaxis van de `rmdir` opdracht is als volgt:
 
-```bash
+```
 rmdir [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
-- `-p`: Verwijdert de opgegeven directory en, indien leeg, ook de bovenliggende directories.
-- `--ignore-fail-on-non-empty`: Negeert fouten als de directory niet leeg is.
+## Common Options
+Hier zijn enkele veelvoorkomende opties voor `rmdir`:
 
-## Veelvoorkomende Voorbeelden
+- `-p`: Verwijdert ook de bovenliggende directories als ze leeg zijn.
+- `--help`: Toont een helpbericht met informatie over het gebruik van de opdracht.
+- `--version`: Toont de versie-informatie van de `rmdir` opdracht.
 
-### Een lege directory verwijderen
-Om een lege directory genaamd `mijnmap` te verwijderen, gebruik je:
+## Common Examples
+Hier zijn enkele praktische voorbeelden van het gebruik van `rmdir`:
 
-```bash
-rmdir mijnmap
-```
+1. Verwijder een enkele lege directory:
+   ```csh
+   rmdir mijn_leeg_map
+   ```
 
-### Meerdere lege directories verwijderen
-Je kunt ook meerdere lege directories in één opdracht verwijderen:
+2. Verwijder meerdere lege directories:
+   ```csh
+   rmdir map1 map2 map3
+   ```
 
-```bash
-rmdir map1 map2 map3
-```
+3. Verwijder een lege directory en zijn bovenliggende lege directories:
+   ```csh
+   rmdir -p bovenliggende_map/mijn_leeg_map
+   ```
 
-### Een lege directory en zijn bovenliggende lege directories verwijderen
-Als je een directory genaamd `submap` hebt binnen `hoofdmmap` en beide zijn leeg, kun je ze als volgt verwijderen:
-
-```bash
-rmdir -p hoofdmmap/submap
-```
+4. Toon helpinformatie over de `rmdir` opdracht:
+   ```csh
+   rmdir --help
+   ```
 
 ## Tips
-- Zorg ervoor dat de directory leeg is voordat je `rmdir` gebruikt, anders krijg je een foutmelding.
-- Gebruik de `-p` optie om ook bovenliggende lege directories in één keer te verwijderen.
-- Controleer altijd de inhoud van een directory met `ls` voordat je deze verwijdert om onbedoeld verlies van gegevens te voorkomen.
+- Zorg ervoor dat de directory die je wilt verwijderen echt leeg is; `rmdir` kan alleen lege directories verwijderen.
+- Gebruik de `-p` optie met voorzichtigheid, omdat dit ook bovenliggende directories kan verwijderen als ze leeg zijn.
+- Controleer altijd de inhoud van een directory voordat je deze verwijdert om onbedoeld verlies van gegevens te voorkomen.

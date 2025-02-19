@@ -1,44 +1,44 @@
-# [Linux] Bash lvcreate Kullanımı: Mantıksal birim oluşturma
+# [Linux] C Shell (csh) lvcreate Kullanımı: Mantıksal birim oluşturma
 
 ## Genel Bakış
-`lvcreate` komutu, Linux sistemlerinde mantıksal birimler (logical volumes) oluşturmak için kullanılır. Bu komut, LVM (Logical Volume Manager) ile birlikte çalışarak depolama alanını daha esnek bir şekilde yönetmenizi sağlar.
+`lvcreate` komutu, Linux sistemlerinde mantıksal birimlerin (logical volume) oluşturulmasını sağlar. Bu komut, bir fiziksel birimden (physical volume) mantıksal birim oluşturmak için kullanılır ve depolama alanını daha esnek bir şekilde yönetmeye yardımcı olur.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-
 ```bash
 lvcreate [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-n, --name <isim>`: Oluşturulacak mantıksal birimin adını belirtir.
-- `-L, --size <boyut>`: Mantıksal birimin boyutunu tanımlar.
-- `-l, --extents <uzantı sayısı>`: Mantıksal birimin uzantı sayısını belirtir.
-- `-C, --mirrors <kopya sayısı>`: Mantıksal birimin kaç kopyasının oluşturulacağını tanımlar.
-- `-Z, --zero n` : Mantıksal birimin oluşturulmadan önce sıfırlanıp sıfırlanmayacağını belirler.
+- `-n`: Oluşturulacak mantıksal birimin adını belirtir.
+- `-L`: Mantıksal birimin boyutunu belirtir.
+- `-l`: Mantıksal birimin boyutunu fiziksel alan birimleri cinsinden belirtir.
+- `-C`: Mantıksal birimin sürekli (contiguous) olup olmayacağını belirtir.
 
 ## Yaygın Örnekler
 Aşağıda `lvcreate` komutunun bazı pratik örnekleri bulunmaktadır:
 
-### Örnek 1: Basit bir mantıksal birim oluşturma
-```bash
-lvcreate -n my_volume -L 10G my_volume_group
-```
-Bu komut, `my_volume_group` içinde `my_volume` adında 10 GB boyutunda bir mantıksal birim oluşturur.
+1. 10 GB boyutunda "data" adlı bir mantıksal birim oluşturma:
+    ```bash
+    lvcreate -n data -L 10G /dev/vgname
+    ```
 
-### Örnek 2: Uzantı sayısı ile mantıksal birim oluşturma
-```bash
-lvcreate -n my_extents_volume -l 100 my_volume_group
-```
-Bu komut, `my_volume_group` içinde 100 uzantıdan oluşan `my_extents_volume` adında bir mantıksal birim oluşturur.
+2. 100 MB boyutunda "backup" adlı bir mantıksal birim oluşturma:
+    ```bash
+    lvcreate -n backup -L 100M /dev/vgname
+    ```
 
-### Örnek 3: Aynalı mantıksal birim oluşturma
-```bash
-lvcreate -n my_mirrored_volume -m 1 -L 20G my_volume_group
-```
-Bu komut, `my_volume_group` içinde 20 GB boyutunda ve 1 ayna kopyası olan `my_mirrored_volume` adında bir mantıksal birim oluşturur.
+3. Fiziksel alan birimleri cinsinden (örneğin, 50%VG) bir mantıksal birim oluşturma:
+    ```bash
+    lvcreate -n myvolume -l 50%VG /dev/vgname
+    ```
+
+4. Sürekli bir mantıksal birim oluşturma:
+    ```bash
+    lvcreate -n continuous -L 5G -C y /dev/vgname
+    ```
 
 ## İpuçları
-- Mantıksal birimlerinizi adlandırırken anlamlı isimler kullanın; bu, yönetimi kolaylaştırır.
-- Boyutları belirlerken gelecekteki ihtiyaçlarınızı göz önünde bulundurun; gerektiğinde genişletmek zor olabilir.
-- LVM yedekleme ve geri yükleme işlemleri için uygun bir strateji geliştirin; bu, veri kaybını önler.
+- Mantıksal birimlerinizi oluştururken, adlandırma kurallarına dikkat edin. Anlamlı isimler kullanmak, yönetimi kolaylaştırır.
+- Boyutları belirlerken, sisteminizin mevcut fiziksel alanını göz önünde bulundurun.
+- Mantıksal birimlerinizi düzenli olarak kontrol edin ve gereksiz olanları kaldırarak depolama alanınızı optimize edin.

@@ -1,44 +1,42 @@
-# [Linux] Bash tee Kullanımı: Verileri dosyaya ve ekrana yazdırma
+# [Linux] C Shell (csh) tee Kullanımı: Verileri dosyaya ve ekrana yazma
 
-## Genel Bakış
-`tee` komutu, standart girdi akışını hem ekrana yazdırmak hem de bir veya daha fazla dosyaya yönlendirmek için kullanılır. Bu, komut çıktısını izlemek ve aynı zamanda dosyalara kaydetmek isteyen kullanıcılar için oldukça faydalıdır.
+## Overview
+`tee` komutu, standart girdi verilerini hem ekrana hem de bir veya daha fazla dosyaya yazmak için kullanılır. Bu, verileri anlık olarak görüntülemenizi ve aynı zamanda dosyaya kaydetmenizi sağlar.
 
-## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
+## Usage
+Temel sözdizimi şu şekildedir:
+```csh
+tee [options] [arguments]
 ```
-tee [seçenekler] [argümanlar]
-```
 
-## Yaygın Seçenekler
-- `-a`, `--append`: Çıktıyı dosyaya ekler, dosyanın üzerine yazmaz.
-- `-i`, `--ignore-interrupts`: Kesme sinyallerini yok sayar.
-- `--help`: Komutun kullanımına dair yardım bilgilerini gösterir.
-- `--version`: Komutun sürüm bilgilerini gösterir.
+## Common Options
+- `-a`: Dosyaya ekleme yapar, yani mevcut içeriğin üzerine yazmak yerine yeni verileri ekler.
+- `-i`: Girdi akışını keser, yani sinyal yakalamayı devre dışı bırakır.
 
-## Yaygın Örnekler
-Aşağıda `tee` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+## Common Examples
+Aşağıda `tee` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. **Basit Kullanım**: Bir komutun çıktısını hem ekrana yazdırmak hem de bir dosyaya kaydetmek için:
-   ```bash
+1. **Temel Kullanım**: Bir dosyaya yazarken aynı zamanda ekrana yazdırma.
+   ```csh
    echo "Merhaba Dünya" | tee dosya.txt
    ```
 
-2. **Dosyaya Ekleme**: Çıktıyı mevcut bir dosyaya eklemek için:
-   ```bash
+2. **Dosyaya Ekleyerek Yazma**: Mevcut dosya içeriğinin üzerine yazmadan ekleme yapma.
+   ```csh
    echo "Yeni Satır" | tee -a dosya.txt
    ```
 
-3. **Birden Fazla Dosyaya Yazma**: Çıktıyı birden fazla dosyaya yönlendirmek için:
-   ```bash
+3. **Birden Fazla Dosyaya Yazma**: Veriyi birden fazla dosyaya aynı anda yazma.
+   ```csh
    echo "Veri" | tee dosya1.txt dosya2.txt
    ```
 
-4. **Komut Çıktısını Kaydetme**: Bir komutun çıktısını kaydetmek için:
-   ```bash
-   ls -l | tee liste.txt
+4. **Girdi Akışını Kesme**: Sinyal yakalamayı devre dışı bırakma.
+   ```csh
+   echo "Önemli Veri" | tee -i dosya.txt
    ```
 
-## İpuçları
-- `tee` komutunu, uzun süren işlemler sırasında çıktıyı kaydetmek için kullanabilirsiniz.
-- Çıktıyı izlemek için `tail -f` komutuyla birlikte kullanmak, dosyadaki güncellemeleri gerçek zamanlı olarak görmenizi sağlar.
-- `tee` komutunu bir boru hattında (pipeline) kullanarak, birden fazla komutun çıktısını aynı anda yönetebilirsiniz.
+## Tips
+- `tee` komutunu kullanırken, dosya adlarını belirtirken dikkatli olun; yanlış dosya adları mevcut verilerinizi kaybetmenize neden olabilir.
+- `-a` seçeneğini kullanarak, verilerinizi kaybetmeden dosyaya ekleme yapabilirsiniz.
+- `tee` komutunu, uzun komut dizilerini daha okunabilir hale getirmek için boru (pipe) ile birleştirerek kullanabilirsiniz.

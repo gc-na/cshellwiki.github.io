@@ -1,44 +1,50 @@
-# [Linux] Bash en at: Programar tareas para más tarde
+# [Linux] C Shell (csh) at: Programar tareas para ejecución futura
 
 ## Overview
-El comando `at` se utiliza en sistemas Unix y Linux para programar la ejecución de comandos o scripts en un momento específico en el futuro. Esto permite a los usuarios automatizar tareas sin necesidad de estar presentes en el momento de su ejecución.
+El comando `at` se utiliza para programar la ejecución de comandos o scripts en un momento específico en el futuro. Es útil para tareas que no necesitan ejecutarse inmediatamente, permitiendo que los usuarios planifiquen trabajos que se ejecutarán automáticamente.
 
 ## Usage
 La sintaxis básica del comando `at` es la siguiente:
 
-```bash
+```
 at [opciones] [hora]
 ```
 
 ## Common Options
-- `-f archivo`: Especifica un archivo que contiene los comandos a ejecutar.
-- `-m`: Envía un correo electrónico al usuario después de que se ejecute el comando, incluso si no se produce salida.
-- `-q cola`: Permite especificar una cola de trabajo diferente para la tarea programada.
-- `-V`: Muestra la versión del comando `at`.
+- `-f`: Especifica un archivo que contiene los comandos a ejecutar.
+- `-l`: Lista los trabajos programados para el usuario actual.
+- `-d`: Elimina un trabajo programado.
+- `-m`: Envía un correo electrónico al usuario cuando el trabajo se completa.
 
 ## Common Examples
-1. **Programar un comando para que se ejecute a una hora específica:**
-   ```bash
-   echo "echo 'Hola, mundo'" | at 14:00
-   ```
-   Este comando mostrará "Hola, mundo" a las 14:00.
+Aquí hay algunos ejemplos prácticos del uso del comando `at`:
 
-2. **Programar un script para que se ejecute mañana a las 9 AM:**
-   ```bash
-   at 09:00 tomorrow -f /ruta/al/script.sh
+1. **Programar un comando para ejecutarse a las 3 PM:**
+   ```csh
+   echo "echo 'Hola, mundo'" | at 15:00
    ```
 
-3. **Programar un comando para que se ejecute en 5 minutos:**
-   ```bash
-   echo "backup.sh" | at now + 5 minutes
+2. **Ejecutar un script a las 10:30 AM del día siguiente:**
+   ```csh
+   at 10:30 tomorrow -f /ruta/al/script.sh
    ```
 
-4. **Programar un comando y recibir un correo después de su ejecución:**
-   ```bash
-   echo "tar -czf backup.tar.gz /ruta/al/directorio" | at -m 02:00
+3. **Listar trabajos programados:**
+   ```csh
+   at -l
+   ```
+
+4. **Eliminar un trabajo programado (suponiendo que el ID del trabajo es 1):**
+   ```csh
+   at -d 1
+   ```
+
+5. **Programar un comando para ejecutarse en 5 minutos:**
+   ```csh
+   echo "echo 'Tarea ejecutada'" | at now + 5 minutes
    ```
 
 ## Tips
-- Asegúrate de que el servicio `atd` esté en funcionamiento en tu sistema para que las tareas programadas se ejecuten correctamente.
-- Puedes ver las tareas programadas con el comando `atq`.
-- Para eliminar una tarea programada, utiliza `atrm [número de trabajo]`, donde el número de trabajo se obtiene con `atq`.
+- Asegúrate de que el servicio `atd` esté en funcionamiento en tu sistema para que los trabajos programados se ejecuten correctamente.
+- Utiliza el comando `at -l` frecuentemente para revisar tus trabajos programados y evitar duplicaciones.
+- Considera usar el flag `-m` si deseas recibir notificaciones por correo electrónico cuando se complete un trabajo.

@@ -1,43 +1,37 @@
-# [Linux] Bash vgs użycie: wyświetlanie informacji o grupach woluminów
+# [Linux] C Shell (csh) vgs Użycie: wyświetlanie informacji o grupach woluminów
 
-## Przegląd
-Polecenie `vgs` jest używane w systemach Linux do wyświetlania informacji o grupach woluminów w systemie zarządzania woluminami logicznymi (LVM). Umożliwia administratorom systemu monitorowanie stanu grup woluminów oraz ich właściwości.
+## Overview
+Polecenie `vgs` jest używane do wyświetlania informacji o grupach woluminów w systemie zarządzania woluminami logicznymi (LVM). Umożliwia użytkownikom monitorowanie stanu grup woluminów, ich rozmiarów oraz dostępnych zasobów.
 
-## Użycie
+## Usage
 Podstawowa składnia polecenia `vgs` jest następująca:
 
-```bash
+```csh
 vgs [opcje] [argumenty]
 ```
 
-## Częste opcje
-- `-o, --options`: Określa, które kolumny mają być wyświetlane.
-- `-h, --units`: Wyświetla rozmiary w określonych jednostkach.
-- `-n, --noheadings`: Ukrywa nagłówki kolumn w wyjściu.
-- `-s, --separator`: Umożliwia ustawienie niestandardowego separatora dla wyjścia.
+## Common Options
+- `-o` : Określa, które kolumny mają być wyświetlane.
+- `--units` : Umożliwia określenie jednostek dla wyświetlanych wartości.
+- `-h` : Wyświetla pomoc dotycząca użycia polecenia.
 
-## Przykłady
+## Common Examples
 1. Wyświetlenie podstawowych informacji o grupach woluminów:
-   ```bash
+   ```csh
    vgs
    ```
 
-2. Wyświetlenie informacji z określonymi kolumnami:
-   ```bash
-   vgs -o +pv_count,lv_count
+2. Wyświetlenie szczegółowych informacji z określonymi kolumnami:
+   ```csh
+   vgs -o vg_name,lv_count,vg_size
    ```
 
-3. Wyświetlenie informacji bez nagłówków:
-   ```bash
-   vgs -n
+3. Wyświetlenie informacji w jednostkach megabajtów:
+   ```csh
+   vgs --units m
    ```
 
-4. Użycie niestandardowego separatora:
-   ```bash
-   vgs --separator "," -o vg_name,vg_size
-   ```
-
-## Wskazówki
-- Używaj opcji `-o`, aby dostosować wyjście do swoich potrzeb, co może ułatwić analizę danych.
-- Regularnie monitoruj grupy woluminów, aby upewnić się, że nie brakuje miejsca na dysku.
-- Zapisz często używane polecenia w skrypcie, aby zaoszczędzić czas na ich ponowne wpisywanie.
+## Tips
+- Używaj opcji `-o`, aby dostosować wyświetlane informacje do swoich potrzeb.
+- Regularnie monitoruj grupy woluminów, aby upewnić się, że masz wystarczająco dużo miejsca na nowe dane.
+- Zawsze sprawdzaj dokumentację `man vgs`, aby uzyskać najnowsze informacje o dostępnych opcjach.

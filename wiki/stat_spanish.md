@@ -1,50 +1,45 @@
-# [Linux] Bash stat Uso equivalente: Muestra información sobre archivos y sistemas de archivos
+# [Linux] C Shell (csh) stat Uso: Obtener información sobre archivos y sistemas de archivos
 
 ## Overview
-El comando `stat` en Bash se utiliza para mostrar información detallada sobre archivos y sistemas de archivos. Proporciona datos como el tamaño del archivo, la fecha de creación, la última modificación y los permisos, entre otros.
+El comando `stat` se utiliza para mostrar información detallada sobre archivos y sistemas de archivos. Proporciona datos como el tamaño del archivo, las fechas de acceso y modificación, y los permisos de archivo.
 
 ## Usage
 La sintaxis básica del comando es la siguiente:
 
-```bash
-stat [opciones] [argumentos]
+```csh
+stat [options] [arguments]
 ```
 
 ## Common Options
-- `-c, --format=FORMATO`: Permite especificar un formato personalizado para la salida.
-- `-f, --file-system`: Muestra información sobre el sistema de archivos en lugar de un archivo específico.
-- `-L, --dereference`: Sigue los enlaces simbólicos y muestra la información del archivo al que apuntan.
-- `--help`: Muestra la ayuda sobre el uso del comando.
+- `-c` : Permite especificar un formato de salida personalizado.
+- `-f` : Muestra información sobre el sistema de archivos en lugar de un archivo específico.
+- `--help` : Muestra la ayuda sobre el uso del comando.
+- `--version` : Muestra la versión del comando `stat`.
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso del comando `stat`:
 
-1. **Mostrar información básica de un archivo:**
-   ```bash
+1. **Mostrar información de un archivo específico:**
+   ```csh
    stat archivo.txt
    ```
 
-2. **Mostrar información de un directorio:**
-   ```bash
-   stat /ruta/al/directorio
+2. **Obtener información en un formato específico:**
+   ```csh
+   stat -c '%s bytes' archivo.txt
    ```
 
-3. **Usar un formato personalizado para la salida:**
-   ```bash
-   stat -c '%n: %s bytes, Modificado: %y' archivo.txt
-   ```
-
-4. **Mostrar información del sistema de archivos:**
-   ```bash
+3. **Mostrar información del sistema de archivos:**
+   ```csh
    stat -f /
    ```
 
-5. **Seguir enlaces simbólicos:**
-   ```bash
-   stat -L enlace_simbolico
+4. **Ver la versión del comando:**
+   ```csh
+   stat --version
    ```
 
 ## Tips
-- Utiliza el formato personalizado con `-c` para obtener solo la información que necesitas, lo que puede hacer que la salida sea más legible.
-- Si trabajas con enlaces simbólicos, recuerda usar la opción `-L` para obtener información del archivo objetivo.
-- Para obtener información rápida sobre el uso del comando, no dudes en usar `stat --help`.
+- Utiliza la opción `-c` para personalizar la salida y obtener solo la información que necesitas.
+- Si trabajas con múltiples archivos, puedes pasar varios nombres de archivo al comando `stat` para obtener información sobre todos ellos a la vez.
+- Recuerda que los permisos y las fechas pueden ser cruciales para la gestión de archivos, así que revisa esta información frecuentemente.

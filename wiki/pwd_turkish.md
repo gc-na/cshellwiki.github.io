@@ -1,35 +1,38 @@
-# [Linux] Bash pwd Kullanımı: Mevcut dizini gösterir
+# [Linux] C Shell (csh) pwd Kullanımı: Mevcut dizini gösterir
 
 ## Genel Bakış
-`pwd` (print working directory) komutu, kullanıcıların terminalde bulundukları mevcut dizinin tam yolunu gösterir. Bu komut, dosya sisteminde hangi dizinde çalıştığınızı anlamanıza yardımcı olur.
+`pwd` (print working directory) komutu, kullanıcının o anki çalışma dizinini gösterir. Terminalde hangi dizinde bulunduğunuzu hızlıca öğrenmek için kullanılır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
+
 ```
-pwd [seçenekler] [argümanlar]
+pwd [options] [arguments]
 ```
 
 ## Yaygın Seçenekler
-- `-L`: Mantıksal dizini gösterir. (Varsayılan)
-- `-P`: Fiziksel dizini gösterir. (Sembolik bağlantıları takip etmez)
+- `-L`: Sembolik bağlantılar üzerinden mevcut dizini gösterir.
+- `-P`: Fiziksel dizin yolunu gösterir, yani sembolik bağlantıları dikkate almaz.
 
 ## Yaygın Örnekler
-1. Mevcut dizini görüntülemek için:
-   ```bash
+Aşağıda `pwd` komutunun bazı pratik örnekleri verilmiştir:
+
+1. Mevcut dizini görüntüleme:
+   ```csh
    pwd
    ```
 
-2. Fiziksel dizini görüntülemek için:
-   ```bash
+2. Fiziksel dizin yolunu görüntüleme:
+   ```csh
    pwd -P
    ```
 
-3. Mantıksal dizini görüntülemek için:
-   ```bash
+3. Sembolik bağlantılar üzerinden mevcut dizini görüntüleme:
+   ```csh
    pwd -L
    ```
 
 ## İpuçları
-- `pwd` komutunu sık sık kullanarak, hangi dizinde çalıştığınızı kolayca kontrol edebilirsiniz.
-- Özellikle karmaşık dizin yapılarında çalışıyorsanız, `pwd -P` seçeneği ile sembolik bağlantılardan kaçınarak gerçek dizin yolunu öğrenmek faydalı olabilir.
-- `pwd` komutunu bir betikte kullanarak, betiğin hangi dizinde çalıştığını kaydedebilirsiniz.
+- `pwd` komutunu sık sık kullanarak, terminalde hangi dizinde olduğunuzu kontrol edebilirsiniz.
+- Özellikle karmaşık dizin yapılarında çalışırken, `pwd -P` seçeneği ile gerçek dizin yolunu görmek faydalı olabilir.
+- Komutun çıktısını başka komutlarla birleştirerek, dizin yolunu kullanabilirsiniz; örneğin, `cd $(pwd)` ile mevcut dizine geri dönebilirsiniz.

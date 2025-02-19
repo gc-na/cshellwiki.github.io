@@ -1,59 +1,60 @@
-# [Linux] Bash continue uso equivalente: Retomar a execução de um loop
+# [Linux] C Shell (csh) continue uso equivalente: Retomar a execução de um loop
 
 ## Overview
-O comando `continue` no Bash é utilizado dentro de estruturas de repetição, como `for`, `while` e `until`, para pular a iteração atual e continuar com a próxima. Isso é útil quando você deseja ignorar certas condições sem sair completamente do loop.
+O comando `continue` no C Shell (csh) é utilizado para interromper a iteração atual de um loop e continuar com a próxima iteração. Isso é útil quando você deseja pular certas partes do código dentro de um loop com base em uma condição específica.
 
 ## Usage
 A sintaxe básica do comando `continue` é a seguinte:
 
-```bash
+```
 continue [n]
 ```
 
-Onde `n` é um número opcional que indica quantos níveis de loop devem ser ignorados. Se não for especificado, o padrão é 1.
+Aqui, `n` é um número opcional que indica quantos níveis de loop você deseja pular. Se não for especificado, o padrão é 1.
 
 ## Common Options
-- `n`: Um número que especifica quantos níveis de loop devem ser ignorados. Por exemplo, `continue 2` pulará a iteração atual do loop mais interno e continuará com o próximo nível externo.
+- `n`: Um número que especifica quantos níveis de loop devem ser ignorados. Por exemplo, `continue 2` fará com que o comando pule dois níveis de loop.
 
 ## Common Examples
 
-### Exemplo 1: Ignorando números ímpares
-```bash
-for i in {1..10}; do
-  if (( i % 2 != 0 )); then
-    continue
-  fi
-  echo $i
-done
+### Exemplo 1: Usando continue em um loop simples
+```csh
+foreach i (1 2 3 4 5)
+    if ($i == 3) then
+        continue
+    endif
+    echo "Número: $i"
+end
 ```
-Neste exemplo, o loop imprime apenas os números pares de 1 a 10.
+Neste exemplo, o número 3 será pulado e não será exibido.
 
-### Exemplo 2: Ignorando arquivos temporários
-```bash
-for file in *; do
-  if [[ $file == *.tmp ]]; then
-    continue
-  fi
-  echo "Processando $file"
-done
+### Exemplo 2: Usando continue com um loop while
+```csh
+set i = 0
+while ($i < 5)
+    @ i++
+    if ($i == 2) then
+        continue
+    endif
+    echo "Valor de i: $i"
+end
 ```
-Aqui, o loop processa todos os arquivos no diretório atual, exceto aqueles que têm a extensão `.tmp`.
+Aqui, o valor 2 será ignorado na saída.
 
-### Exemplo 3: Usando `continue` em um loop `while`
-```bash
-count=1
-while [ $count -le 5 ]; do
-  if [ $count -eq 3 ]; then
-    count=$((count + 1))
-    continue
-  fi
-  echo "Contagem: $count"
-  count=$((count + 1))
-done
+### Exemplo 3: Usando continue em um loop aninhado
+```csh
+foreach i (1 2)
+    foreach j (1 2 3)
+        if ($j == 2) then
+            continue
+        endif
+        echo "i: $i, j: $j"
+    end
+end
 ```
-Neste caso, o número 3 é ignorado na contagem, e o loop continua com os outros números.
+Neste caso, quando `j` é igual a 2, a iteração correspondente será pulada.
 
 ## Tips
-- Utilize `continue` para simplificar a lógica de loops, evitando a necessidade de aninhar condicionais.
-- Sempre verifique se a condição que leva ao `continue` é clara, para que o código permaneça legível.
-- Lembre-se de que o uso excessivo de `continue` pode tornar o fluxo do seu script mais difícil de seguir, então use-o com moderação.
+- Utilize `continue` para evitar a execução de código desnecessário dentro de loops, melhorando a legibilidade e eficiência.
+- Sempre verifique as condições que levam ao uso de `continue` para garantir que a lógica do seu programa permaneça clara.
+- Teste seu código com diferentes condições para entender como o `continue` afeta o fluxo de execução.

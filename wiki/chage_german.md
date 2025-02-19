@@ -1,50 +1,48 @@
-# [Linux] Bash chage Verwendung: Benutzerpasswort-Ablauf verwalten
+# [Linux] C Shell (csh) chage Verwendung: Benutzerpasswortalter verwalten
 
 ## Übersicht
-Der Befehl `chage` wird verwendet, um die Passwortablauf- und Änderungsrichtlinien für Benutzerkonten in Linux-Systemen zu verwalten. Mit `chage` können Administratoren festlegen, wie oft ein Benutzer sein Passwort ändern muss und wann das Passwort abläuft.
+Der Befehl `chage` wird verwendet, um die Passwortablaufrichtlinien für Benutzerkonten in einem Linux-System zu verwalten. Mit `chage` können Administratoren festlegen, wie lange ein Passwort gültig bleibt und wann der Benutzer gezwungen wird, ein neues Passwort zu wählen.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
 ```bash
-chage [Optionen] [Benutzername]
+chage [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-l`: Zeigt die aktuellen Passwortablaufinformationen für den angegebenen Benutzer an.
-- `-m`: Legt die minimale Anzahl von Tagen fest, die zwischen Passwortänderungen liegen müssen.
-- `-M`: Legt die maximale Anzahl von Tagen fest, die ein Passwort gültig ist.
-- `-I`: Legt die Anzahl der Tage fest, nach denen das Konto inaktiv wird, nachdem das Passwort abgelaufen ist.
-- `-E`: Setzt das Ablaufdatum des Kontos.
+- `-l, --list`: Zeigt die aktuellen Passwortablaufrichtlinien für den angegebenen Benutzer an.
+- `-m, --mindays`: Legt die minimale Anzahl von Tagen fest, die zwischen Passwortänderungen liegen müssen.
+- `-M, --maxdays`: Legt die maximale Anzahl von Tagen fest, die ein Passwort gültig ist.
+- `-I, --inactive`: Legt die Anzahl der Tage fest, nach denen ein Konto inaktiv wird, nachdem das Passwort abgelaufen ist.
+- `-E, --expire`: Legt das Ablaufdatum für das Benutzerkonto fest.
 
 ## Häufige Beispiele
+- Um die aktuellen Passwortablaufrichtlinien für einen Benutzer namens `max` anzuzeigen:
 
-1. **Aktuelle Passwortablaufinformationen anzeigen:**
-   ```bash
-   chage -l benutzername
-   ```
+```bash
+chage -l max
+```
 
-2. **Minimale Tage zwischen Passwortänderungen auf 7 setzen:**
-   ```bash
-   chage -m 7 benutzername
-   ```
+- Um die maximale Gültigkeitsdauer eines Passworts für den Benutzer `max` auf 90 Tage festzulegen:
 
-3. **Maximale Gültigkeitsdauer des Passworts auf 30 Tage setzen:**
-   ```bash
-   chage -M 30 benutzername
-   ```
+```bash
+chage -M 90 max
+```
 
-4. **Inaktivitätszeit auf 15 Tage setzen:**
-   ```bash
-   chage -I 15 benutzername
-   ```
+- Um die minimale Anzahl von Tagen zwischen Passwortänderungen für den Benutzer `max` auf 7 Tage festzulegen:
 
-5. **Ablaufdatum des Kontos auf den 1. Januar 2024 setzen:**
-   ```bash
-   chage -E 2024-01-01 benutzername
-   ```
+```bash
+chage -m 7 max
+```
+
+- Um das Ablaufdatum für das Benutzerkonto `max` auf den 31. Dezember 2023 festzulegen:
+
+```bash
+chage -E 2023-12-31 max
+```
 
 ## Tipps
-- Überprüfen Sie regelmäßig die Passwortablaufinformationen für alle Benutzer, um die Sicherheit zu gewährleisten.
-- Setzen Sie angemessene Fristen für Passwortänderungen, um die Benutzer nicht unnötig zu belasten.
-- Dokumentieren Sie Änderungen an den Passwortrichtlinien, um die Nachverfolgbarkeit zu gewährleisten.
+- Überprüfen Sie regelmäßig die Passwortablaufrichtlinien Ihrer Benutzer, um die Sicherheit zu gewährleisten.
+- Verwenden Sie die Option `-l`, um sicherzustellen, dass die Einstellungen korrekt angewendet wurden.
+- Informieren Sie Benutzer im Voraus über bevorstehende Passwortablaufdaten, um Unterbrechungen zu vermeiden.

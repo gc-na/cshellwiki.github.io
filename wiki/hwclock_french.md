@@ -1,58 +1,53 @@
-# [Linux] Bash hwclock : [gérer l'horloge matérielle]
+# [Linux] C Shell (csh) hwclock : [afficher l'heure du matériel]
 
 ## Overview
-La commande `hwclock` est utilisée pour interagir avec l'horloge matérielle d'un système. Elle permet de lire, régler et synchroniser l'horloge du système avec l'horloge matérielle, ce qui est essentiel pour maintenir une heure précise, même lorsque le système est éteint.
+La commande `hwclock` est utilisée pour afficher ou modifier l'heure du matériel (BIOS) sur un système. Elle permet de synchroniser l'horloge système avec l'horloge matérielle, ce qui est essentiel pour le bon fonctionnement des systèmes d'exploitation.
 
 ## Usage
-La syntaxe de base de la commande `hwclock` est la suivante :
+La syntaxe de base de la commande est la suivante :
 
-```bash
+```csh
 hwclock [options] [arguments]
 ```
 
 ## Common Options
 Voici quelques options courantes pour la commande `hwclock` :
 
-- `--show` : Affiche la date et l'heure de l'horloge matérielle.
-- `--set` : Définit la date et l'heure de l'horloge matérielle.
-- `--hctosys` : Synchronise l'horloge système avec l'horloge matérielle.
+- `--show` : Affiche l'heure actuelle de l'horloge matérielle.
+- `--set` : Définit l'heure de l'horloge matérielle.
 - `--systohc` : Synchronise l'horloge matérielle avec l'horloge système.
-- `--utc` : Indique que l'horloge matérielle est configurée pour l'heure UTC.
+- `--hctosys` : Synchronise l'horloge système avec l'horloge matérielle.
+- `--utc` : Indique que l'heure est en temps universel coordonné (UTC).
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de la commande `hwclock` :
+Voici quelques exemples pratiques d'utilisation de la commande `hwclock` :
 
-1. **Afficher l'heure de l'horloge matérielle :**
-
-   ```bash
+1. **Afficher l'heure actuelle de l'horloge matérielle :**
+   ```csh
    hwclock --show
    ```
 
-2. **Définir l'heure de l'horloge matérielle :**
-
-   ```bash
-   hwclock --set --date="2023-10-01 12:00:00"
-   ```
-
-3. **Synchroniser l'horloge système avec l'horloge matérielle :**
-
-   ```bash
-   hwclock --hctosys
-   ```
-
-4. **Synchroniser l'horloge matérielle avec l'horloge système :**
-
-   ```bash
+2. **Synchroniser l'horloge matérielle avec l'horloge système :**
+   ```csh
    hwclock --systohc
    ```
 
-5. **Afficher l'heure de l'horloge matérielle en UTC :**
+3. **Synchroniser l'horloge système avec l'horloge matérielle :**
+   ```csh
+   hwclock --hctosys
+   ```
 
-   ```bash
+4. **Définir une nouvelle heure pour l'horloge matérielle :**
+   ```csh
+   hwclock --set --date="2023-10-01 12:00:00"
+   ```
+
+5. **Afficher l'heure de l'horloge matérielle en UTC :**
+   ```csh
    hwclock --show --utc
    ```
 
 ## Tips
-- Assurez-vous d'exécuter `hwclock` avec des privilèges root si vous devez modifier l'horloge matérielle.
-- Utilisez `hwclock --systohc` après avoir réglé l'heure de votre système pour vous assurer que l'horloge matérielle est à jour.
-- Vérifiez régulièrement l'heure de l'horloge matérielle, surtout après un redémarrage, pour éviter des problèmes de synchronisation.
+- Assurez-vous d'exécuter `hwclock` avec des privilèges d'administrateur si vous modifiez l'heure de l'horloge matérielle.
+- Utilisez `--utc` si votre système est configuré pour utiliser l'heure UTC, cela évite des problèmes de décalage horaire.
+- Vérifiez régulièrement l'heure de votre horloge matérielle pour éviter des problèmes de synchronisation, surtout sur les serveurs.

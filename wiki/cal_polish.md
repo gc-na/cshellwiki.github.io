@@ -1,52 +1,50 @@
-# [Linux] Bash cal <Użycie: wyświetlanie kalendarza>
+# [Linux] C Shell (csh) cal <Użycie: wyświetlanie kalendarza>
 
 ## Overview
-Polecenie `cal` w systemie Linux służy do wyświetlania kalendarza w terminalu. Umożliwia szybki podgląd miesięcy, lat oraz dni tygodnia, co jest przydatne do planowania i organizacji.
+Polecenie `cal` w C Shell (csh) służy do wyświetlania kalendarza w terminalu. Umożliwia użytkownikom przeglądanie miesięcznych lub rocznych kalendarzy, co jest przydatne do planowania i organizacji.
 
 ## Usage
 Podstawowa składnia polecenia `cal` jest następująca:
 
-```bash
+```csh
 cal [opcje] [argumenty]
 ```
 
 ## Common Options
 - `-m` : Wyświetla kalendarz w formacie miesięcznym.
-- `-y` : Wyświetla kalendarz na bieżący rok.
+- `-y` : Wyświetla kalendarz na cały rok.
 - `-3` : Wyświetla kalendarz dla bieżącego miesiąca oraz miesiąca poprzedniego i następnego.
 - `-j` : Wyświetla numery dni w roku.
-- `-A <liczba>` : Wyświetla dodatkowe miesiące po bieżącym.
-- `-B <liczba>` : Wyświetla dodatkowe miesiące przed bieżącym.
 
 ## Common Examples
 Oto kilka praktycznych przykładów użycia polecenia `cal`:
 
 1. Wyświetlenie kalendarza na bieżący miesiąc:
-   ```bash
+   ```csh
    cal
    ```
 
-2. Wyświetlenie kalendarza na rok 2023:
-   ```bash
-   cal 2023
+2. Wyświetlenie kalendarza na cały rok 2023:
+   ```csh
+   cal -y 2023
    ```
 
 3. Wyświetlenie kalendarza dla miesiąca grudnia 2023:
-   ```bash
+   ```csh
    cal 12 2023
    ```
 
-4. Wyświetlenie kalendarza dla bieżącego miesiąca oraz miesiąca poprzedniego i następnego:
-   ```bash
+4. Wyświetlenie kalendarza dla bieżącego miesiąca oraz poprzedniego i następnego:
+   ```csh
    cal -3
    ```
 
 5. Wyświetlenie kalendarza z numerami dni w roku:
-   ```bash
+   ```csh
    cal -j
    ```
 
 ## Tips
-- Używaj opcji `-A` i `-B`, aby szybko zobaczyć kalendarz w szerszym kontekście, co może być przydatne przy planowaniu.
-- Możesz połączyć różne opcje, aby dostosować wyświetlany kalendarz do swoich potrzeb, np. `cal -m -A 1 -B 1` wyświetli kalendarz w formacie miesięcznym z miesiącem poprzednim i następnym.
-- Jeśli często korzystasz z kalendarza, rozważ dodanie aliasu do swojego pliku `.bashrc`, aby przyspieszyć dostęp do najczęściej używanych opcji.
+- Użyj opcji `-m`, aby uzyskać bardziej przejrzysty widok miesięczny.
+- Możesz szybko sprawdzić, w którym dniu tygodnia przypada konkretna data, korzystając z kalendarza.
+- Eksperymentuj z różnymi opcjami, aby dostosować wyświetlanie kalendarza do swoich potrzeb.

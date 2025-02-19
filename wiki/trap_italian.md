@@ -1,53 +1,55 @@
-# [Linux] Bash trap uso: Gestire i segnali e le uscite
+# [Linux] C Shell (csh) trap utilizzo: Gestire i segnali nel terminale
 
 ## Overview
-Il comando `trap` in Bash viene utilizzato per catturare segnali e gestire le uscite di uno script. Permette di eseguire comandi specifici quando si ricevono determinati segnali o quando si esce dallo script, migliorando così il controllo e la gestione degli errori.
+Il comando `trap` nel C Shell (csh) viene utilizzato per gestire i segnali e le interruzioni nel terminale. Permette di specificare azioni da eseguire quando il processo riceve determinati segnali, consentendo una gestione più controllata degli eventi nel programma.
 
 ## Usage
 La sintassi di base del comando `trap` è la seguente:
 
-```bash
+```csh
 trap [azioni] [segnali]
 ```
 
 ## Common Options
-- `EXIT`: Specifica un'azione da eseguire quando lo script termina.
-- `SIGINT`: Cattura il segnale di interruzione (Ctrl+C).
-- `SIGTERM`: Cattura il segnale di terminazione.
-- `SIGQUIT`: Cattura il segnale di uscita (Ctrl+\).
+- `SIGINT`: Interruzione (Ctrl+C).
+- `SIGTERM`: Richiesta di terminazione.
+- `SIGQUIT`: Uscita dal programma (Ctrl+\).
+- `EXIT`: Azione da eseguire quando lo script termina.
 
 ## Common Examples
 
-### Eseguire un comando all'uscita
-Ecco come eseguire un comando quando lo script termina:
+### Esempio 1: Intercettare SIGINT
+Questo esempio mostra come utilizzare `trap` per gestire l'interruzione del programma quando si preme Ctrl+C.
 
-```bash
-trap 'echo "Script terminato."' EXIT
+```csh
+trap 'echo "Interruzione ricevuta!"' SIGINT
+while (1)
+    echo "In esecuzione..."
+    sleep 1
+end
 ```
 
-### Catturare un'interruzione
-Per gestire l'interruzione dello script con Ctrl+C:
+### Esempio 2: Pulizia alla chiusura
+In questo esempio, `trap` viene utilizzato per eseguire un comando di pulizia quando lo script termina.
 
-```bash
-trap 'echo "Interruzione ricevuta!"; exit' SIGINT
+```csh
+trap 'rm -f temp_file.txt; echo "File temporaneo rimosso."' EXIT
+echo "Esecuzione dello script..."
+sleep 5
 ```
 
-### Pulire i file temporanei
-È possibile utilizzare `trap` per rimuovere file temporanei all'uscita dello script:
+### Esempio 3: Gestire SIGTERM
+Questo esempio mostra come gestire un segnale di terminazione.
 
-```bash
-trap 'rm -f /tmp/tempfile' EXIT
-```
-
-### Catturare più segnali
-Puoi catturare più segnali e specificare azioni diverse:
-
-```bash
-trap 'echo "Interruzione"; exit' SIGINT
-trap 'echo "Terminazione"; exit' SIGTERM
+```csh
+trap 'echo "Ricevuto SIGTERM, terminazione in corso..."' SIGTERM
+while (1)
+    echo "In esecuzione..."
+    sleep 1
+end
 ```
 
 ## Tips
-- Utilizza `trap` per garantire che le risorse vengano sempre liberate, anche in caso di errori.
-- Testa sempre il comportamento del tuo script con i segnali per assicurarti che le azioni siano eseguite come previsto.
-- Ricorda che le azioni specificate in `trap` possono contenere comandi complessi, ma è consigliabile mantenerle semplici per evitare confusione.
+- Utilizza `trap` per garantire che le risorse vengano sempre liberate, anche in caso di interruzione.
+- Testa sempre il comportamento del tuo script con i segnali per assicurarti che le azioni di `trap` vengano eseguite come previsto.
+- Ricorda che `trap` può essere utilizzato anche per gestire segnali personalizzati, migliorando la robustezza del tuo script.

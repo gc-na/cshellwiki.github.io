@@ -1,57 +1,50 @@
-# [Linux] Bash dmesg Kullanımı: Çekirdek döküm bilgilerini görüntüleme
+# [Linux] C Shell (csh) dmesg Kullanımı: Sistem günlüklerini görüntüleme
 
 ## Genel Bakış
-`dmesg` komutu, Linux çekirdeği tarafından üretilen mesajları görüntülemek için kullanılır. Bu komut, sistem başlangıcında ve donanım ile ilgili olaylarda oluşan log kayıtlarını gösterir. Genellikle, sistem hatalarını veya donanım sorunlarını teşhis etmek için kullanılır.
+`dmesg` komutu, çekirdek ring buffer'ından sistem mesajlarını görüntülemek için kullanılır. Genellikle sistem başlangıcında veya donanım ile ilgili sorunların giderilmesinde faydalıdır.
 
 ## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
-
-```
+Temel sözdizimi şu şekildedir:
+```csh
 dmesg [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-C`: Dmesg tamponunu temizler.
-- `-c`: Dmesg tamponunu temizler ve mevcut içeriği gösterir.
-- `-n <seviye>`: Belirtilen seviyeden daha düşük olan mesajları gösterir.
-- `-T`: Zaman damgalarını okunabilir bir formatta gösterir.
-- `--help`: Komut hakkında yardım bilgisi gösterir.
+- `-C`: Ring buffer'ı temizler.
+- `-n <seviye>`: Belirtilen seviye veya daha yüksek seviyedeki mesajları gösterir.
+- `-T`: Zaman damgalarını insan tarafından okunabilir bir biçimde gösterir.
+- `--help`: Kullanım bilgilerini gösterir.
 
 ## Yaygın Örnekler
-Aşağıda `dmesg` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+Aşağıda `dmesg` komutunun bazı pratik örnekleri bulunmaktadır:
 
-### 1. Tüm dmesg mesajlarını görüntüleme
-```bash
-dmesg
-```
+1. Tüm sistem mesajlarını görüntüleme:
+   ```csh
+   dmesg
+   ```
 
-### 2. Zaman damgalarını okunabilir formatta gösterme
-```bash
-dmesg -T
-```
+2. Zaman damgalarını insan tarafından okunabilir formatta görüntüleme:
+   ```csh
+   dmesg -T
+   ```
 
-### 3. Dmesg tamponunu temizleme
-```bash
-dmesg -C
-```
+3. Belirli bir seviye mesajlarını görüntüleme (örneğin, hata mesajları):
+   ```csh
+   dmesg -n 1
+   ```
 
-### 4. Belirli bir hata seviyesindeki mesajları görüntüleme
-```bash
-dmesg -n 3
-```
-
-### 5. Dmesg çıktısını bir dosyaya yönlendirme
-```bash
-dmesg > dmesg_output.txt
-```
+4. Ring buffer'ı temizleme:
+   ```csh
+   dmesg -C
+   ```
 
 ## İpuçları
-- `dmesg` çıktısını daha okunabilir hale getirmek için `less` veya `more` komutları ile birleştirebilirsiniz:
-  ```bash
+- `dmesg` çıktısını daha iyi analiz etmek için `less` veya `more` gibi sayfalayıcılarla birlikte kullanabilirsiniz:
+  ```csh
   dmesg | less
   ```
-- Belirli bir anahtar kelimeyi aramak için `grep` ile birlikte kullanabilirsiniz:
-  ```bash
-  dmesg | grep hata
+- Belirli bir terimi aramak için `grep` ile birleştirebilirsiniz:
+  ```csh
+  dmesg | grep "hata"
   ```
-- Sistem başlangıcında oluşan hataları incelemek için `dmesg` çıktısını düzenli olarak kontrol etmek iyi bir uygulamadır.
+- Sistemin başlangıç süresi ve donanım hataları hakkında bilgi almak için `dmesg` çıktısını düzenli olarak kontrol etmek iyi bir uygulamadır.

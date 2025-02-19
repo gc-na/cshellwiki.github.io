@@ -1,48 +1,45 @@
-# [Linux] Bash complete Verwendung: Vervollständigung von Befehlen
+# [Unix] C Shell (csh) complete Befehl: Vervollständigung von Befehlen
 
 ## Übersicht
-Der Befehl `complete` in Bash wird verwendet, um die automatische Vervollständigung von Befehlen zu konfigurieren. Dies ermöglicht es Benutzern, benutzerdefinierte Vervollständigungen für ihre Shell-Befehle zu definieren, was die Effizienz und Benutzerfreundlichkeit erhöht.
+Der `complete` Befehl in der C Shell (csh) wird verwendet, um die automatische Vervollständigung von Befehlen und Argumenten zu ermöglichen. Dies erleichtert die Eingabe von Befehlen, indem es Benutzern hilft, die richtigen Optionen und Argumente schnell zu finden.
 
 ## Verwendung
-Die grundlegende Syntax des Befehls lautet:
+Die grundlegende Syntax des `complete` Befehls sieht wie folgt aus:
 
-```bash
-complete [Optionen] [Befehl]
+```csh
+complete [options] [arguments]
 ```
 
 ## Häufige Optionen
-- `-o`: Fügt eine Option hinzu, die das Verhalten der Vervollständigung steuert.
-- `-A`: Definiert den Typ der Argumente, die vervollständigt werden sollen (z.B. `file`, `command`).
-- `-F`: Gibt eine benutzerdefinierte Funktion an, die zur Vervollständigung verwendet werden soll.
-- `-r`: Entfernt die Vervollständigung für den angegebenen Befehl.
+- `-c`: Aktiviert die Vervollständigung für einen bestimmten Befehl.
+- `-d`: Vervollständigt Verzeichnisse.
+- `-f`: Vervollständigt Dateinamen.
+- `-n`: Deaktiviert die Vervollständigung für bestimmte Argumente.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele zur Verwendung des `complete`-Befehls:
+Hier sind einige praktische Beispiele zur Verwendung des `complete` Befehls:
 
-1. **Einfache Vervollständigung für einen Befehl:**
-   ```bash
-   complete -o default mycommand
+1. **Aktivieren der Vervollständigung für den Befehl `ls`:**
+   ```csh
+   complete -c ls
    ```
 
-2. **Vervollständigung für Dateinamen:**
-   ```bash
-   complete -A file mycommand
+2. **Vervollständigung von Verzeichnissen für den Befehl `cd`:**
+   ```csh
+   complete -d cd
    ```
 
-3. **Benutzerdefinierte Vervollständigung mit einer Funktion:**
-   ```bash
-   _my_custom_completion() {
-       COMPREPLY=( $(compgen -W "option1 option2 option3" -- "${COMP_WORDS[COMP_CWORD]}") )
-   }
-   complete -F _my_custom_completion mycommand
+3. **Vervollständigung von Dateinamen für den Befehl `cp`:**
+   ```csh
+   complete -f cp
    ```
 
-4. **Entfernen der Vervollständigung für einen Befehl:**
-   ```bash
-   complete -r mycommand
+4. **Deaktivieren der Vervollständigung für ein bestimmtes Argument:**
+   ```csh
+   complete -n 'arg1' command
    ```
 
 ## Tipps
-- Nutzen Sie benutzerdefinierte Funktionen für komplexe Vervollständigungen, um die Benutzererfahrung zu verbessern.
-- Testen Sie Ihre Vervollständigungen gründlich, um sicherzustellen, dass sie wie gewünscht funktionieren.
-- Dokumentieren Sie Ihre benutzerdefinierten Vervollständigungen, damit andere Benutzer oder Sie selbst sie in Zukunft leicht verstehen können.
+- Nutzen Sie die Vervollständigung, um Tippfehler zu vermeiden und die Eingabezeit zu verkürzen.
+- Experimentieren Sie mit verschiedenen Optionen, um die Vervollständigung an Ihre Bedürfnisse anzupassen.
+- Überprüfen Sie regelmäßig die Konfiguration Ihrer Vervollständigung, um sicherzustellen, dass sie optimal funktioniert.

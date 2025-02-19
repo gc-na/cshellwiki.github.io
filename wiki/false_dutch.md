@@ -1,50 +1,48 @@
-# [Linux] Bash false gebruik: Altijd een foutmelding genereren
+# [Linux] C Shell (csh) false gebruik: Voert een foutstatus uit
 
 ## Overzicht
-De `false` opdracht in Bash is een eenvoudige commando dat altijd een foutstatus retourneert. Dit betekent dat het altijd een exitcode van 1 oplevert, wat aangeeft dat er iets mis is gegaan. Het wordt vaak gebruikt in scripts om een foutconditie te simuleren of om een bepaalde logica te forceren.
+De `false` opdracht in C Shell (csh) is een eenvoudige commandoregeltool die altijd een foutstatus retourneert. Dit betekent dat het altijd een exitcode van 1 geeft, wat aangeeft dat er iets mis is gegaan. Het wordt vaak gebruikt in scripts om een foutconditie te simuleren of om te testen hoe andere commando's reageren op een mislukking.
 
 ## Gebruik
-De basis syntaxis van het `false` commando is als volgt:
+De basis syntaxis van de `false` opdracht is als volgt:
 
-```bash
-false [options] [arguments]
+```csh
+false [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-De `false` opdracht heeft geen specifieke opties of argumenten. Het is een eenvoudig commando dat altijd dezelfde functie vervult.
+## Veelvoorkomende Opties
+De `false` opdracht heeft geen specifieke opties of argumenten. Het is een standalone commando dat altijd dezelfde foutstatus retourneert.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
+
+Hier zijn enkele praktische voorbeelden van het gebruik van de `false` opdracht:
 
 ### Voorbeeld 1: Simuleren van een fout
-Je kunt `false` gebruiken om een fout te simuleren in een script:
-
-```bash
-if false; then
+```csh
+if (false) then
     echo "Dit zal nooit worden uitgevoerd."
 else
-    echo "Een fout is opgetreden."
-fi
+    echo "De foutstatus is succesvol gedetecteerd."
+endif
 ```
 
-### Voorbeeld 2: Gebruik in een while-lus
-Hier is een voorbeeld van hoe je `false` kunt gebruiken in een while-lus om een eindeloze lus te beëindigen:
-
-```bash
-while true; do
-    false
-    echo "Deze regel wordt nooit bereikt."
-done
+### Voorbeeld 2: Gebruik in een script
+```csh
+#!/bin/csh
+echo "Start van het script."
+false
+echo "Dit wordt niet uitgevoerd als false een foutstatus retourneert."
 ```
 
-### Voorbeeld 3: In combinatie met andere commando's
-Je kunt `false` ook gebruiken in combinatie met andere commando's in een pipeline:
-
-```bash
-echo "Dit is een test." | false
-echo "Dit wordt niet uitgevoerd omdat de vorige opdracht faalde."
+### Voorbeeld 3: Testen van foutafhandeling
+```csh
+false
+if ($status != 0) then
+    echo "De opdracht is mislukt."
+endif
 ```
 
 ## Tips
 - Gebruik `false` in scripts om foutafhandelingslogica te testen zonder echte fouten te veroorzaken.
-- Combineer `false` met andere commando's om de controleflow in je scripts te beheren.
-- Houd er rekening mee dat `false` altijd een foutstatus retourneert, wat handig kan zijn voor debugging en foutafhandeling.
+- Combineer `false` met andere commando's om complexe foutscenario's te simuleren.
+- Onthoud dat `false` altijd een foutstatus retourneert, wat nuttig kan zijn voor debugging en testen.

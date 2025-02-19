@@ -1,48 +1,43 @@
-# [Linux] Bash trap Verwendung: Behandeln von Signalen und Fehlern
+# [Linux] C Shell (csh) trap Verwendung: Behandeln von Signalen und Fehlern
 
-## Overview
-Der `trap` Befehl in Bash wird verwendet, um bestimmte Aktionen auszuführen, wenn das Skript ein Signal empfängt oder einen Fehler auftritt. Dies ist besonders nützlich, um Ressourcen freizugeben oder um sicherzustellen, dass bestimmte Bereinigungsaktionen durchgeführt werden, bevor das Skript beendet wird.
+## Übersicht
+Der Befehl `trap` in der C Shell (csh) wird verwendet, um Signale und Fehler zu behandeln. Er ermöglicht es Benutzern, bestimmte Aktionen auszuführen, wenn ein Signal empfangen wird, was besonders nützlich ist, um Skripte sauber zu beenden oder Ressourcen freizugeben.
 
-## Usage
-Die grundlegende Syntax des `trap` Befehls lautet:
+## Verwendung
+Die grundlegende Syntax des Befehls `trap` lautet:
 
-```bash
+```csh
 trap [Aktion] [Signal]
 ```
 
-## Common Options
-- `EXIT`: Führt die angegebene Aktion aus, wenn das Skript beendet wird.
-- `SIGINT`: Reagiert auf das Interrupt-Signal (z.B. Strg+C).
-- `SIGTERM`: Reagiert auf das Terminationssignal.
-- `ERR`: Führt die angegebene Aktion aus, wenn ein Fehler auftritt.
+## Häufige Optionen
+- `ACTION`: Die Aktion, die ausgeführt werden soll, wenn das Signal empfangen wird. Dies kann ein Befehl oder eine Funktion sein.
+- `SIGNAL`: Das Signal, das abgefangen werden soll, z.B. `INT` für Interrupts (z.B. Ctrl+C) oder `TERM` für das Beenden des Prozesses.
 
-## Common Examples
+## Häufige Beispiele
 
-### Beispiel 1: Aufräumarbeiten bei Skriptende
-```bash
-trap 'echo "Skript wird beendet"; rm -f /tmp/tempfile' EXIT
+1. **Ein einfaches Beispiel, um ein Signal abzufangen:**
+
+```csh
+trap 'echo "Signal empfangen!"' INT
 ```
-In diesem Beispiel wird eine Nachricht ausgegeben und eine temporäre Datei gelöscht, wenn das Skript endet.
+In diesem Beispiel wird eine Nachricht ausgegeben, wenn das Skript mit Ctrl+C unterbrochen wird.
 
-### Beispiel 2: Reaktion auf SIGINT
-```bash
-trap 'echo "Skript unterbrochen"; exit' SIGINT
+2. **Ressourcen freigeben, bevor das Skript beendet wird:**
+
+```csh
+trap 'rm -f temp.txt; echo "Temporäre Dateien gelöscht."' EXIT
 ```
-Hier wird eine Nachricht angezeigt und das Skript beendet, wenn der Benutzer Strg+C drückt.
+Hier wird beim Beenden des Skripts die temporäre Datei `temp.txt` gelöscht.
 
-### Beispiel 3: Fehlerbehandlung
-```bash
-trap 'echo "Ein Fehler ist aufgetreten"; exit 1' ERR
+3. **Behandeln mehrerer Signale:**
+
+```csh
+trap 'echo "Programm wird beendet."' INT TERM
 ```
-In diesem Fall wird eine Fehlermeldung ausgegeben, wenn ein Fehler im Skript auftritt.
+In diesem Beispiel wird die gleiche Nachricht ausgegeben, wenn entweder ein Interrupt- oder ein Terminationssignal empfangen wird.
 
-### Beispiel 4: Mehrere Signale behandeln
-```bash
-trap 'echo "Signal empfangen"; exit' SIGINT SIGTERM
-```
-Dieses Beispiel zeigt, wie man auf mehrere Signale gleichzeitig reagieren kann.
-
-## Tips
-- Verwenden Sie `trap` am Anfang Ihres Skripts, um sicherzustellen, dass alle Signale und Fehler von Anfang an behandelt werden.
-- Testen Sie Ihre `trap`-Befehle gründlich, um sicherzustellen, dass sie wie gewünscht funktionieren, insbesondere bei unerwarteten Fehlern.
-- Nutzen Sie `trap` nicht nur für Fehlerbehandlung, sondern auch für allgemeine Aufräumarbeiten, um sicherzustellen, dass Ihr Skript immer in einem sauberen Zustand endet.
+## Tipps
+- Verwenden Sie `trap` am Anfang Ihres Skripts, um sicherzustellen, dass alle Signale von Anfang an behandelt werden.
+- Testen Sie Ihre Skripte gründlich, um sicherzustellen, dass die `trap`-Befehle wie gewünscht funktionieren.
+- Seien Sie vorsichtig bei der Verwendung von `trap`, da das Abfangen von Signalen das Verhalten Ihres Skripts erheblich ändern kann.

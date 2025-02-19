@@ -1,43 +1,43 @@
-# [Linux] Bash jobs sử dụng: Quản lý các tiến trình nền
+# [Hệ điều hành] C Shell (csh) jobs: Quản lý các tiến trình nền
 
 ## Overview
-Lệnh `jobs` trong Bash được sử dụng để hiển thị danh sách các tiến trình nền đang chạy trong phiên làm việc hiện tại của người dùng. Nó cho phép bạn theo dõi và quản lý các tiến trình mà bạn đã khởi động trước đó.
+Lệnh `jobs` trong C Shell (csh) được sử dụng để hiển thị danh sách các tiến trình nền đang chạy trong phiên làm việc hiện tại. Nó cho phép người dùng theo dõi trạng thái của các tiến trình mà họ đã khởi động.
 
 ## Usage
 Cú pháp cơ bản của lệnh `jobs` như sau:
-```bash
+```
 jobs [options] [arguments]
 ```
 
 ## Common Options
 - `-l`: Hiển thị PID (Process ID) của các tiến trình.
-- `-n`: Chỉ hiển thị các tiến trình đã thay đổi trạng thái kể từ lần gọi lệnh trước.
+- `-n`: Chỉ hiển thị các tiến trình đã thay đổi trạng thái kể từ lần gọi lệnh trước đó.
 - `-p`: Chỉ hiển thị PID của các tiến trình.
 
 ## Common Examples
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `jobs`:
 
-1. **Hiển thị danh sách các tiến trình nền:**
-   ```bash
+1. Hiển thị danh sách tất cả các tiến trình nền:
+   ```csh
    jobs
    ```
 
-2. **Hiển thị danh sách các tiến trình với PID:**
-   ```bash
+2. Hiển thị danh sách các tiến trình với PID:
+   ```csh
    jobs -l
    ```
 
-3. **Hiển thị các tiến trình đã thay đổi trạng thái:**
-   ```bash
+3. Hiển thị chỉ các tiến trình đã thay đổi trạng thái:
+   ```csh
    jobs -n
    ```
 
-4. **Chỉ hiển thị PID của các tiến trình:**
-   ```bash
+4. Hiển thị chỉ PID của các tiến trình:
+   ```csh
    jobs -p
    ```
 
 ## Tips
-- Sử dụng `bg` và `fg` để chuyển đổi giữa các tiến trình nền và tiến trình nền.
-- Nếu bạn muốn dừng một tiến trình, bạn có thể sử dụng `Ctrl + Z` và sau đó sử dụng lệnh `jobs` để xem tiến trình đã dừng.
-- Hãy nhớ rằng lệnh `jobs` chỉ hiển thị các tiến trình trong phiên làm việc hiện tại, do đó nếu bạn mở một phiên mới, bạn sẽ không thấy các tiến trình từ phiên trước.
+- Sử dụng lệnh `bg` để tiếp tục một tiến trình đang dừng lại và chuyển nó sang chế độ nền.
+- Sử dụng lệnh `fg` để đưa một tiến trình nền về chế độ nền.
+- Kiểm tra thường xuyên danh sách tiến trình với `jobs` để quản lý hiệu quả các tác vụ đang chạy.

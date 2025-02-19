@@ -1,56 +1,51 @@
-# [Linux] Bash ulimit Penggunaan: Mengatur batas sumber daya proses
+# [Sistem Operasi] C Shell (csh) ulimit: Mengatur batas sumber daya sistem
 
 ## Overview
-Perintah `ulimit` digunakan untuk mengatur batas sumber daya yang dapat digunakan oleh proses di sistem operasi Unix dan Linux. Ini berguna untuk mencegah satu proses menggunakan semua sumber daya sistem, yang dapat menyebabkan masalah kinerja.
+Perintah `ulimit` dalam C Shell (csh) digunakan untuk mengatur batas sumber daya yang dapat digunakan oleh proses yang dijalankan dalam shell. Ini berguna untuk mencegah satu proses menggunakan terlalu banyak sumber daya sistem, yang dapat mempengaruhi kinerja sistem secara keseluruhan.
 
 ## Usage
-Berikut adalah sintaks dasar dari perintah `ulimit`:
+Sintaks dasar dari perintah `ulimit` adalah sebagai berikut:
 
-```bash
+```
 ulimit [options] [arguments]
 ```
 
 ## Common Options
-- `-a`: Menampilkan semua batas sumber daya saat ini.
-- `-c`: Mengatur batas ukuran file core dump.
-- `-d`: Mengatur batas ukuran segmen data.
-- `-f`: Mengatur batas ukuran file yang dapat dibuat.
-- `-l`: Mengatur batas ukuran memori yang dapat dikunci.
-- `-m`: Mengatur batas ukuran memori fisik.
-- `-n`: Mengatur batas jumlah file yang dapat dibuka.
-- `-s`: Mengatur batas ukuran stack.
-- `-t`: Mengatur batas waktu CPU dalam detik.
-- `-v`: Mengatur batas ukuran memori virtual.
+Berikut adalah beberapa opsi umum yang dapat digunakan dengan `ulimit`:
+
+- `-a` : Menampilkan semua batas sumber daya saat ini.
+- `-c [size]` : Mengatur ukuran file core yang diizinkan.
+- `-d [size]` : Mengatur ukuran maksimum dari segmen data.
+- `-f [size]` : Mengatur ukuran maksimum file yang dapat dibuat.
+- `-l [size]` : Mengatur ukuran maksimum dari memori yang dapat dikunci.
+- `-m [size]` : Mengatur ukuran maksimum dari memori fisik.
+- `-s [size]` : Mengatur ukuran maksimum dari stack.
+- `-t [seconds]` : Mengatur waktu maksimum yang diizinkan untuk proses.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan perintah `ulimit`:
+Berikut adalah beberapa contoh praktis penggunaan perintah `ulimit`:
 
 1. Menampilkan semua batas sumber daya saat ini:
-   ```bash
+   ```csh
    ulimit -a
    ```
 
-2. Mengatur batas ukuran file core dump menjadi 0 (menonaktifkan core dumps):
-   ```bash
-   ulimit -c 0
+2. Mengatur ukuran maksimum file yang dapat dibuat menjadi 100MB:
+   ```csh
+   ulimit -f 102400
    ```
 
-3. Mengatur batas jumlah file yang dapat dibuka menjadi 1024:
-   ```bash
-   ulimit -n 1024
-   ```
-
-4. Mengatur batas waktu CPU menjadi 60 detik:
-   ```bash
+3. Mengatur waktu maksimum proses menjadi 60 detik:
+   ```csh
    ulimit -t 60
    ```
 
-5. Mengatur batas ukuran stack menjadi 8192 kilobyte:
-   ```bash
-   ulimit -s 8192
+4. Mengatur ukuran maksimum dari segmen data menjadi 512MB:
+   ```csh
+   ulimit -d 524288
    ```
 
 ## Tips
-- Selalu periksa batas saat ini dengan `ulimit -a` sebelum mengubahnya untuk memahami pengaturan yang ada.
-- Gunakan `ulimit` dalam skrip shell untuk memastikan bahwa batas yang tepat diterapkan saat menjalankan aplikasi.
-- Hati-hati saat meningkatkan batas, karena dapat mempengaruhi stabilitas sistem jika tidak dikelola dengan baik.
+- Selalu periksa batas sumber daya saat ini dengan `ulimit -a` sebelum mengubahnya untuk memahami pengaturan yang ada.
+- Gunakan `ulimit` dengan hati-hati, terutama saat mengatur batas yang lebih rendah, karena dapat menyebabkan proses gagal jika melebihi batas tersebut.
+- Pertimbangkan untuk menambahkan pengaturan `ulimit` ke dalam skrip startup shell Anda untuk memastikan batas yang konsisten setiap kali Anda membuka terminal.

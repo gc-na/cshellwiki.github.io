@@ -1,52 +1,43 @@
-# [Linux] Bash traceroute6 Cách sử dụng: Xác định đường đi của gói tin IPv6
+# [Hệ điều hành] C Shell (csh) traceroute6: Xác định đường đi của gói tin IPv6
 
-## Overview
-Lệnh `traceroute6` được sử dụng để xác định đường đi của gói tin IPv6 từ máy tính của bạn đến một địa chỉ IP hoặc tên miền cụ thể. Nó giúp người dùng theo dõi các bước mà gói tin đi qua trên mạng, từ đó phát hiện các vấn đề về kết nối hoặc độ trễ.
+## Tổng quan
+Lệnh `traceroute6` được sử dụng để theo dõi đường đi của gói tin IPv6 từ máy tính của bạn đến một địa chỉ IP hoặc tên miền cụ thể. Nó giúp người dùng xác định các bước mà gói tin đi qua và thời gian mà mỗi bước mất.
 
-## Usage
+## Cách sử dụng
 Cú pháp cơ bản của lệnh `traceroute6` như sau:
-
-```bash
-traceroute6 [options] [arguments]
+```
+traceroute6 [tùy chọn] [đối số]
 ```
 
-## Common Options
-Dưới đây là một số tùy chọn phổ biến cho lệnh `traceroute6`:
+## Tùy chọn phổ biến
+- `-m <số>`: Đặt số lượng hops tối đa mà gói tin có thể đi qua.
+- `-w <giây>`: Đặt thời gian chờ cho mỗi gói tin.
+- `-q <số>`: Đặt số lượng gói tin được gửi đến mỗi hop.
 
-- `-m <hops>`: Xác định số lượng bước nhảy tối đa mà gói tin có thể đi qua.
-- `-p <port>`: Chỉ định cổng mà gói tin sẽ sử dụng.
-- `-w <seconds>`: Đặt thời gian chờ cho mỗi phản hồi.
-- `-n`: Hiển thị địa chỉ IP thay vì cố gắng phân giải tên miền.
+## Ví dụ phổ biến
+Dưới đây là một số ví dụ về cách sử dụng lệnh `traceroute6`:
 
-## Common Examples
-Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `traceroute6`:
-
-1. **Traceroute đến một địa chỉ IPv6 cụ thể:**
+1. Theo dõi đường đi đến một địa chỉ IPv6 cụ thể:
    ```bash
    traceroute6 2001:4860:4860::8888
    ```
 
-2. **Traceroute đến một tên miền:**
+2. Theo dõi đường đi đến một tên miền với số hops tối đa là 20:
    ```bash
-   traceroute6 google.com
+   traceroute6 -m 20 google.com
    ```
 
-3. **Traceroute với số bước nhảy tối đa là 15:**
+3. Gửi 3 gói tin đến mỗi hop:
    ```bash
-   traceroute6 -m 15 2001:4860:4860::8888
+   traceroute6 -q 3 facebook.com
    ```
 
-4. **Traceroute với cổng 80:**
+4. Đặt thời gian chờ là 2 giây cho mỗi gói tin:
    ```bash
-   traceroute6 -p 80 google.com
+   traceroute6 -w 2 youtube.com
    ```
 
-5. **Traceroute mà không phân giải tên miền:**
-   ```bash
-   traceroute6 -n 2001:4860:4860::8888
-   ```
-
-## Tips
-- Sử dụng tùy chọn `-n` để tăng tốc độ thực hiện lệnh nếu bạn không cần tên miền.
-- Kiểm tra kết nối mạng của bạn trước khi sử dụng lệnh để đảm bảo rằng bạn có thể gửi gói tin.
-- Nếu bạn gặp vấn đề về kết nối, hãy thử với các địa chỉ IP khác để xác định xem vấn đề có phải do một địa chỉ cụ thể hay không.
+## Mẹo
+- Sử dụng tùy chọn `-m` để giới hạn số hops nếu bạn chỉ muốn xem một phần của đường đi.
+- Kiểm tra kết nối mạng của bạn trước khi sử dụng `traceroute6` để đảm bảo rằng bạn có thể gửi và nhận gói tin.
+- Nếu bạn gặp phải vấn đề với một địa chỉ IP cụ thể, hãy thử sử dụng `traceroute6` với các tùy chọn khác nhau để thu thập thêm thông tin.

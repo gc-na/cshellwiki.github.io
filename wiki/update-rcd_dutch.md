@@ -1,44 +1,45 @@
-# [Linux] Bash update-rc.d gebruik: Beheer van opstartservices
+# [Linux] C Shell (csh) update-rc.d gebruik: Beheer van opstartscripts
 
 ## Overzicht
-Het `update-rc.d` commando wordt gebruikt om opstartscripts voor services in te stellen en te beheren op Debian-gebaseerde systemen. Dit commando maakt het mogelijk om scripts toe te voegen of te verwijderen uit de opstart- en stopprocessen van het systeem.
+Het `update-rc.d` commando wordt gebruikt om opstartscripts te beheren in Debian-gebaseerde systemen. Het stelt gebruikers in staat om scripts toe te voegen, te verwijderen of te configureren voor het opstarten en afsluiten van services.
 
 ## Gebruik
-De basis syntaxis van het `update-rc.d` commando is als volgt:
+De basis syntaxis van het commando is als volgt:
 
-```bash
+```csh
 update-rc.d [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `defaults`: Voegt de standaard runlevels toe voor de service.
-- `remove`: Verwijdert de service uit de opstartprocessen.
-- `enable`: Schakelt de service in voor de opgegeven runlevels.
-- `disable`: Schakelt de service uit voor de opgegeven runlevels.
+- `defaults`: Voegt het script toe met standaardinstellingen voor opstart- en afsluitvolgorde.
+- `remove`: Verwijdert het script uit de opstartconfiguratie.
+- `enable`: Schakelt het script in voor opstarten.
+- `disable`: Schakelt het script uit voor opstarten.
 
 ## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van `update-rc.d`:
 
-1. **Een service toevoegen met standaardinstellingen:**
-   ```bash
-   sudo update-rc.d mijn-service defaults
-   ```
+1. **Voeg een script toe met standaardinstellingen**:
+    ```csh
+    update-rc.d mijn-service defaults
+    ```
 
-2. **Een service verwijderen uit de opstartprocessen:**
-   ```bash
-   sudo update-rc.d mijn-service remove
-   ```
+2. **Verwijder een script uit de opstartconfiguratie**:
+    ```csh
+    update-rc.d mijn-service remove
+    ```
 
-3. **Een service inschakelen voor specifieke runlevels:**
-   ```bash
-   sudo update-rc.d mijn-service enable
-   ```
+3. **Schakel een script in voor opstarten**:
+    ```csh
+    update-rc.d mijn-service enable
+    ```
 
-4. **Een service uitschakelen voor specifieke runlevels:**
-   ```bash
-   sudo update-rc.d mijn-service disable
-   ```
+4. **Schakel een script uit voor opstarten**:
+    ```csh
+    update-rc.d mijn-service disable
+    ```
 
 ## Tips
-- Zorg ervoor dat je de juiste rechten hebt (gebruik `sudo`) om wijzigingen aan te brengen in de opstartservices.
-- Controleer altijd of je de service correct hebt toegevoegd of verwijderd door de status van de service te controleren met `service --status-all`.
-- Wees voorzichtig bij het uitschakelen van services, aangezien sommige essentieel kunnen zijn voor de werking van het systeem.
+- Zorg ervoor dat je de juiste rechten hebt om `update-rc.d` uit te voeren; meestal zijn root-rechten vereist.
+- Controleer altijd de status van je scripts na het toevoegen of verwijderen om te bevestigen dat ze correct zijn ingesteld.
+- Gebruik `man update-rc.d` om meer gedetailleerde informatie en opties te bekijken.

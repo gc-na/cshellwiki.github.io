@@ -1,7 +1,7 @@
-# [Linux] Bash rpm uso: Gestión de paquetes en sistemas Linux
+# [Linux] C Shell (csh) rpm uso: Gestión de paquetes en sistemas Linux
 
 ## Overview
-El comando `rpm` (Red Hat Package Manager) se utiliza para gestionar paquetes en sistemas basados en Linux, especialmente en distribuciones como Red Hat, Fedora y CentOS. Permite instalar, desinstalar, actualizar y consultar paquetes de software.
+El comando `rpm` se utiliza para gestionar paquetes en sistemas basados en Linux. Permite instalar, desinstalar, actualizar y consultar paquetes de software en formato RPM (Red Hat Package Manager).
 
 ## Usage
 La sintaxis básica del comando `rpm` es la siguiente:
@@ -11,54 +11,41 @@ rpm [opciones] [argumentos]
 ```
 
 ## Common Options
-A continuación se presentan algunas de las opciones más comunes del comando `rpm`:
-
 - `-i`: Instala un nuevo paquete.
 - `-e`: Elimina un paquete instalado.
-- `-U`: Actualiza un paquete existente a una nueva versión.
-- `-q`: Consulta información sobre un paquete instalado.
-- `-l`: Lista los archivos que se instalaron con un paquete.
-- `--force`: Fuerza la instalación o eliminación de un paquete, ignorando ciertos errores.
+- `-U`: Actualiza un paquete existente.
+- `-q`: Consulta información sobre un paquete.
+- `--help`: Muestra la ayuda del comando.
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso del comando `rpm`:
 
-### Instalar un paquete
-Para instalar un paquete RPM, utiliza la opción `-i`:
+1. **Instalar un paquete:**
+   ```bash
+   rpm -i nombre_del_paquete.rpm
+   ```
 
-```bash
-rpm -i nombre_del_paquete.rpm
-```
+2. **Eliminar un paquete:**
+   ```bash
+   rpm -e nombre_del_paquete
+   ```
 
-### Desinstalar un paquete
-Para eliminar un paquete instalado, utiliza la opción `-e`:
+3. **Actualizar un paquete:**
+   ```bash
+   rpm -U nombre_del_paquete.rpm
+   ```
 
-```bash
-rpm -e nombre_del_paquete
-```
+4. **Consultar un paquete instalado:**
+   ```bash
+   rpm -q nombre_del_paquete
+   ```
 
-### Actualizar un paquete
-Para actualizar un paquete a una nueva versión, utiliza la opción `-U`:
-
-```bash
-rpm -U nombre_del_paquete.rpm
-```
-
-### Consultar un paquete instalado
-Para obtener información sobre un paquete instalado, utiliza la opción `-q`:
-
-```bash
-rpm -q nombre_del_paquete
-```
-
-### Listar archivos de un paquete
-Para ver los archivos que se instalaron con un paquete, utiliza la opción `-l`:
-
-```bash
-rpm -ql nombre_del_paquete
-```
+5. **Listar todos los paquetes instalados:**
+   ```bash
+   rpm -qa
+   ```
 
 ## Tips
-- Asegúrate de tener los permisos necesarios (generalmente como superusuario) para instalar o eliminar paquetes.
-- Utiliza la opción `--force` con precaución, ya que puede causar problemas de dependencia.
-- Es recomendable verificar la integridad de un paquete antes de instalarlo, utilizando la opción `--checksig` para comprobar la firma digital.
+- Asegúrate de tener permisos de superusuario (root) al instalar o eliminar paquetes.
+- Utiliza la opción `-v` para obtener información más detallada durante la ejecución de los comandos.
+- Siempre verifica las dependencias de los paquetes antes de instalarlos para evitar problemas de compatibilidad.

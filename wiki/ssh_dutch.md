@@ -1,52 +1,45 @@
-# [Linux] Bash ssh gebruik: Verbind met externe servers
+# [Linux] C Shell (csh) ssh gebruik: Verbinden met een externe server
 
 ## Overzicht
-De `ssh` (Secure Shell) command is een netwerkprotocol dat veilige communicatie tussen een client en een server mogelijk maakt. Het wordt vaak gebruikt om op afstand in te loggen op servers en om veilige gegevensoverdracht uit te voeren.
+De `ssh` (Secure Shell) opdracht wordt gebruikt om veilig verbinding te maken met een externe server of computer via een netwerk. Het biedt een versleutelde verbinding, waardoor gegevens veilig kunnen worden verzonden en ontvangen.
 
 ## Gebruik
-De basis syntaxis van de `ssh` command is als volgt:
+De basis syntaxis van de `ssh` opdracht is als volgt:
 
-```bash
+```csh
 ssh [opties] [gebruikersnaam@]host
 ```
 
 ## Veelvoorkomende Opties
-- `-p [poort]`: Specificeer een alternatieve poort voor de verbinding.
-- `-i [sleutelbestand]`: Gebruik een specifieke privésleutel voor authenticatie.
-- `-v`: Zet de uitvoer in verbose modus voor gedetailleerde informatie over het verbindingsproces.
-- `-X`: Sta X11 forwarding toe, zodat grafische applicaties op de server kunnen draaien en op de client worden weergegeven.
-- `-C`: Zet compressie aan voor de verbinding, wat nuttig kan zijn bij langzame netwerken.
+- `-p <poort>`: Specificeert een alternatieve poort voor de verbinding.
+- `-i <sleutelbestand>`: Geeft een specifiek privésleutelbestand op voor authenticatie.
+- `-v`: Zet de uitvoer in verbose modus, wat nuttig is voor foutopsporing.
+- `-X`: Staat X11 forwarding toe, zodat grafische applicaties op de externe server kunnen worden uitgevoerd.
 
 ## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van de `ssh` command:
+Hier zijn enkele praktische voorbeelden van het gebruik van de `ssh` opdracht:
 
 1. Verbinden met een server met de standaardpoort (22):
-   ```bash
+   ```csh
    ssh gebruiker@voorbeeld.com
    ```
 
-2. Verbinden met een server op een alternatieve poort (bijvoorbeeld 2222):
-   ```bash
+2. Verbinden met een server op een specifieke poort:
+   ```csh
    ssh -p 2222 gebruiker@voorbeeld.com
    ```
 
-3. Verbinden met een server met een specifieke privésleutel:
-   ```bash
-   ssh -i /pad/naar/sleutel.pem gebruiker@voorbeeld.com
+3. Verbinden met een server met een specifiek privésleutelbestand:
+   ```csh
+   ssh -i ~/.ssh/id_rsa gebruiker@voorbeeld.com
    ```
 
-4. Verbinden met X11 forwarding ingeschakeld:
-   ```bash
+4. Verbinden met X11 forwarding:
+   ```csh
    ssh -X gebruiker@voorbeeld.com
-   ```
-
-5. Verbinden met verbose uitvoer om problemen te diagnosticeren:
-   ```bash
-   ssh -v gebruiker@voorbeeld.com
    ```
 
 ## Tips
 - Zorg ervoor dat je de juiste gebruikersnaam en hostnaam gebruikt om verbindingsproblemen te voorkomen.
-- Gebruik sleutels in plaats van wachtwoorden voor een veiligere en gemakkelijkere authenticatie.
-- Overweeg om `ssh-agent` te gebruiken om je privésleutels te beheren en automatisch in te loggen zonder telkens een wachtwoord in te voeren.
-- Maak gebruik van `~/.ssh/config` om vaak gebruikte verbindingen te vereenvoudigen en te automatiseren.
+- Gebruik de `-v` optie voor meer gedetailleerde foutmeldingen als je problemen ondervindt bij het verbinden.
+- Overweeg het gebruik van SSH-sleutels voor een veiligere en eenvoudigere authenticatie in plaats van wachtwoorden.

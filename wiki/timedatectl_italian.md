@@ -1,51 +1,45 @@
-# [Linux] Bash timedatectl utilizzo: Gestire data e ora di sistema
+# [Linux] C Shell (csh) timedatectl Utilizzo: Gestire le impostazioni di data e ora
 
 ## Overview
-Il comando `timedatectl` è utilizzato per visualizzare e modificare le impostazioni di data e ora del sistema in ambienti Linux. Permette di gestire anche il fuso orario e la sincronizzazione dell'orologio di sistema.
+Il comando `timedatectl` è utilizzato per visualizzare e modificare le impostazioni di data e ora del sistema. Permette anche di gestire il fuso orario e la sincronizzazione dell'orologio di sistema.
 
 ## Usage
 La sintassi di base del comando è la seguente:
 
-```bash
-timedatectl [opzioni] [argomenti]
+```csh
+timedatectl [options] [arguments]
 ```
 
 ## Common Options
-- `status`: Mostra lo stato attuale della data e ora.
-- `set-time`: Imposta manualmente la data e l'ora.
-- `set-timezone`: Cambia il fuso orario del sistema.
-- `set-ntp`: Abilita o disabilita la sincronizzazione automatica dell'orologio tramite NTP (Network Time Protocol).
-- `list-timezones`: Elenca tutti i fusi orari disponibili.
+- `status`: Mostra lo stato attuale della data e ora del sistema.
+- `set-time <time>`: Imposta la data e l'ora del sistema.
+- `set-timezone <timezone>`: Modifica il fuso orario del sistema.
+- `set-ntp <boolean>`: Abilita o disabilita la sincronizzazione automatica dell'ora tramite NTP.
 
 ## Common Examples
 Ecco alcuni esempi pratici di utilizzo del comando `timedatectl`:
 
-1. **Visualizzare lo stato attuale di data e ora:**
-   ```bash
+1. **Visualizzare lo stato attuale:**
+   ```csh
    timedatectl status
    ```
 
-2. **Impostare manualmente la data e l'ora:**
-   ```bash
+2. **Impostare la data e l'ora:**
+   ```csh
    timedatectl set-time '2023-10-01 12:00:00'
    ```
 
-3. **Cambiare il fuso orario:**
-   ```bash
+3. **Modificare il fuso orario:**
+   ```csh
    timedatectl set-timezone Europe/Rome
    ```
 
 4. **Abilitare la sincronizzazione NTP:**
-   ```bash
+   ```csh
    timedatectl set-ntp true
    ```
 
-5. **Elencare tutti i fusi orari disponibili:**
-   ```bash
-   timedatectl list-timezones
-   ```
-
 ## Tips
-- Assicurati di avere i permessi di superutente (root) per modificare le impostazioni di data e ora.
-- Controlla frequentemente lo stato della sincronizzazione NTP per garantire che il tuo sistema mantenga l'ora corretta.
-- Utilizza `timedatectl list-timezones` per trovare il fuso orario corretto prima di impostarlo.
+- Assicurati di avere i permessi necessari per modificare le impostazioni di data e ora, poiché potrebbero essere richiesti privilegi di amministratore.
+- Controlla sempre il fuso orario corretto per evitare problemi di sincronizzazione, specialmente se il tuo sistema è utilizzato in diverse località.
+- Utilizza il comando `timedatectl list-timezones` per visualizzare un elenco di fusi orari disponibili prima di impostarne uno.

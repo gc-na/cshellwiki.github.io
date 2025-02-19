@@ -1,7 +1,7 @@
-# [Linux] Bash uname Penggunaan: Menampilkan informasi sistem
+# [Sistem Operasi] C Shell (csh) uname Penggunaan: Menampilkan informasi sistem
 
 ## Overview
-Perintah `uname` digunakan untuk menampilkan informasi tentang sistem operasi yang sedang berjalan. Ini termasuk nama kernel, versi, dan informasi lainnya yang relevan dengan sistem.
+Perintah `uname` digunakan untuk menampilkan informasi tentang sistem operasi yang sedang digunakan. Ini termasuk nama kernel, nama host, versi, dan informasi lainnya yang berkaitan dengan sistem.
 
 ## Usage
 Sintaks dasar dari perintah `uname` adalah sebagai berikut:
@@ -11,48 +11,43 @@ uname [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah `uname`:
+Berikut adalah beberapa opsi umum untuk perintah `uname` beserta penjelasannya:
 
 - `-a`: Menampilkan semua informasi sistem.
 - `-s`: Menampilkan nama kernel.
-- `-n`: Menampilkan nama jaringan dari mesin.
+- `-n`: Menampilkan nama host.
 - `-r`: Menampilkan versi kernel.
 - `-v`: Menampilkan informasi versi tambahan.
-- `-m`: Menampilkan arsitektur mesin.
-- `-p`: Menampilkan jenis prosesor (jika tersedia).
-- `-i`: Menampilkan informasi platform (jika tersedia).
-- `-o`: Menampilkan nama sistem operasi.
 
 ## Common Examples
-
 Berikut adalah beberapa contoh penggunaan perintah `uname`:
 
 1. Menampilkan semua informasi sistem:
-   ```bash
+   ```csh
    uname -a
    ```
 
 2. Menampilkan nama kernel:
-   ```bash
+   ```csh
    uname -s
    ```
 
-3. Menampilkan versi kernel:
-   ```bash
+3. Menampilkan nama host:
+   ```csh
+   uname -n
+   ```
+
+4. Menampilkan versi kernel:
+   ```csh
    uname -r
    ```
 
-4. Menampilkan arsitektur mesin:
-   ```bash
-   uname -m
-   ```
-
-5. Menampilkan nama sistem operasi:
-   ```bash
-   uname -o
+5. Menampilkan informasi versi tambahan:
+   ```csh
+   uname -v
    ```
 
 ## Tips
-- Gunakan opsi `-a` untuk mendapatkan gambaran lengkap tentang sistem Anda dalam satu perintah.
-- Perintah `uname` sangat berguna dalam skrip untuk memeriksa lingkungan sistem sebelum menjalankan perintah lain.
-- Jika Anda hanya memerlukan informasi tertentu, gunakan opsi spesifik untuk mempercepat proses dan mengurangi clutter output.
+- Gunakan `uname -a` untuk mendapatkan gambaran lengkap tentang sistem Anda dalam satu perintah.
+- Kombinasikan opsi untuk mendapatkan informasi yang lebih spesifik sesuai kebutuhan.
+- Perintah ini sangat berguna saat melakukan pemecahan masalah atau ketika Anda perlu mengetahui spesifikasi sistem.

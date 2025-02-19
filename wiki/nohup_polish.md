@@ -1,42 +1,44 @@
-# [Linux] Bash nohup użycie: Uruchamianie procesów w tle
+# [Linux] C Shell (csh) nohup użycie: Uruchamianie procesów w tle
 
-## Overview
-Polecenie `nohup` (no hang up) pozwala na uruchamianie procesów w tle, które nie zostaną przerwane, nawet jeśli użytkownik wyloguje się z systemu. Jest to przydatne w sytuacjach, gdy chcesz, aby proces kontynuował działanie po zamknięciu terminala.
+## Przegląd
+Polecenie `nohup` (no hang up) w systemie C Shell (csh) służy do uruchamiania procesów w tle, które nie zostaną przerwane, nawet jeśli użytkownik wyloguje się z sesji. Dzięki temu można kontynuować wykonywanie długotrwałych zadań bez obawy o ich zakończenie.
 
-## Usage
+## Użycie
 Podstawowa składnia polecenia `nohup` jest następująca:
 
-```bash
+```
 nohup [opcje] [argumenty]
 ```
 
-## Common Options
-- `&` - Uruchamia proces w tle.
-- `-o [plik]` - Przekierowuje standardowe wyjście do określonego pliku.
-- `-e [plik]` - Przekierowuje standardowe wyjście błędów do określonego pliku.
+## Często używane opcje
+- `&` - uruchamia proces w tle.
+- `-o [plik]` - przekierowuje standardowe wyjście do określonego pliku.
+- `-e [plik]` - przekierowuje standardowe wyjście błędów do określonego pliku.
 
-## Common Examples
-1. Uruchamianie skryptu w tle:
-   ```bash
+## Przykłady
+Oto kilka praktycznych przykładów użycia polecenia `nohup`:
+
+1. Uruchomienie skryptu w tle:
+   ```csh
    nohup ./myscript.sh &
    ```
 
-2. Uruchamianie polecenia z przekierowaniem wyjścia do pliku:
-   ```bash
-   nohup mycommand > output.log &
+2. Uruchomienie polecenia `ping` w tle i zapisanie wyjścia do pliku:
+   ```csh
+   nohup ping google.com > ping_output.txt &
    ```
 
-3. Uruchamianie polecenia z przekierowaniem błędów:
-   ```bash
-   nohup mycommand 2> error.log &
+3. Uruchomienie procesu z przekierowaniem błędów do innego pliku:
+   ```csh
+   nohup ./myapp 2> error_log.txt &
    ```
 
-4. Uruchamianie polecenia z przekierowaniem zarówno wyjścia, jak i błędów:
-   ```bash
-   nohup mycommand > output.log 2> error.log &
+4. Uruchomienie długotrwałego zadania i zapisanie zarówno wyjścia, jak i błędów:
+   ```csh
+   nohup ./long_running_task > output.log 2>&1 &
    ```
 
-## Tips
-- Zawsze używaj `&`, aby uruchomić proces w tle, co pozwoli na dalszą pracę w terminalu.
-- Sprawdzaj pliki wyjściowe, aby monitorować postęp procesu.
-- Używaj `disown`, aby odłączyć proces od terminala po jego uruchomieniu.
+## Wskazówki
+- Zawsze używaj `&` na końcu polecenia, aby uruchomić proces w tle.
+- Sprawdzaj pliki wyjściowe, aby monitorować postęp zadań uruchomionych za pomocą `nohup`.
+- Używaj opcji przekierowania, aby lepiej zarządzać wyjściem i błędami, co ułatwia debugowanie.

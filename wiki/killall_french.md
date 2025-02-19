@@ -1,47 +1,50 @@
-# [Linux] Bash killall Utilisation : Terminer tous les processus d'un nom donné
+# [Linux] C Shell (csh) killall : Terminer tous les processus d'un nom donné
 
 ## Overview
-La commande `killall` est utilisée pour terminer tous les processus qui correspondent à un nom spécifique. Cela permet de gérer facilement plusieurs instances d'un programme sans avoir à identifier chaque processus individuellement.
+La commande `killall` est utilisée pour terminer tous les processus qui correspondent à un nom spécifique. Cela permet de gérer facilement plusieurs instances d'un même programme sans avoir à les identifier individuellement.
 
 ## Usage
 La syntaxe de base de la commande `killall` est la suivante :
 
-```bash
+```csh
 killall [options] [arguments]
 ```
 
 ## Common Options
 Voici quelques options courantes pour `killall` :
 
-- `-u <utilisateur>` : Terminer uniquement les processus appartenant à un utilisateur spécifique.
-- `-i` : Demander confirmation avant de tuer chaque processus.
-- `-q` : Ne pas afficher de messages d'erreur pour les processus qui n'existent pas.
-- `-s <signal>` : Spécifier le signal à envoyer (par défaut, c'est SIGTERM).
+- `-9` : Envoie un signal SIGKILL pour forcer l'arrêt immédiat des processus.
+- `-v` : Affiche des informations détaillées sur les processus qui sont terminés.
+- `-i` : Demande une confirmation avant de tuer chaque processus.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `killall` :
 
 1. Terminer tous les processus nommés `firefox` :
-   ```bash
+
+   ```csh
    killall firefox
    ```
 
-2. Terminer tous les processus `gedit` en demandant une confirmation :
-   ```bash
-   killall -i gedit
+2. Forcer l'arrêt de tous les processus nommés `gedit` :
+
+   ```csh
+   killall -9 gedit
    ```
 
-3. Terminer tous les processus d'un utilisateur spécifique, par exemple `alice` :
-   ```bash
-   killall -u alice
+3. Afficher les processus qui seront terminés sans les arrêter :
+
+   ```csh
+   killall -v gnome-terminal
    ```
 
-4. Envoyer un signal spécifique, comme SIGKILL, à tous les processus `myapp` :
-   ```bash
-   killall -s SIGKILL myapp
+4. Demander une confirmation avant de terminer chaque processus nommé `ssh` :
+
+   ```csh
+   killall -i ssh
    ```
 
 ## Tips
-- Utilisez l'option `-q` pour éviter les messages d'erreur si vous essayez de tuer des processus qui ne sont pas en cours d'exécution.
-- Soyez prudent avec `killall`, car il peut terminer plusieurs processus en une seule commande, ce qui peut entraîner une perte de données si des applications ne sont pas sauvegardées.
-- Pour vérifier quels processus sont en cours d'exécution avant de les terminer, utilisez la commande `ps` ou `pgrep`.
+- Utilisez l'option `-v` pour voir quels processus sont affectés, cela peut être utile pour le débogage.
+- Soyez prudent avec l'option `-9`, car elle ne permet pas aux processus de se fermer proprement, ce qui peut entraîner une perte de données.
+- Vérifiez toujours le nom exact du processus que vous souhaitez terminer pour éviter de fermer des applications non désirées.

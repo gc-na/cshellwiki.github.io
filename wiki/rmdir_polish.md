@@ -1,42 +1,37 @@
-# [Linux] Bash rmdir użycie: Usuwanie pustych katalogów
+# [Linux] C Shell (csh) rmdir: Usuwanie pustych katalogów
 
 ## Overview
-Polecenie `rmdir` służy do usuwania pustych katalogów w systemie Linux. Jeśli katalog zawiera jakiekolwiek pliki lub inne katalogi, `rmdir` nie będzie w stanie go usunąć.
+Polecenie `rmdir` służy do usuwania pustych katalogów w systemie operacyjnym. Jeśli katalog zawiera pliki lub inne katalogi, `rmdir` nie będzie w stanie go usunąć.
 
 ## Usage
 Podstawowa składnia polecenia `rmdir` jest następująca:
 
-```bash
+```
 rmdir [opcje] [argumenty]
 ```
 
 ## Common Options
-- `--ignore-fail-on-non-empty`: Ignoruje błędy, jeśli katalog nie jest pusty.
-- `--verbose`: Wyświetla szczegółowe informacje o usuwanych katalogach.
-- `--help`: Wyświetla pomoc dotyczącą polecenia.
+- `-p`: Usuwa katalogi nadrzędne, jeśli są puste.
+- `--help`: Wyświetla pomoc dotyczącą użycia polecenia.
+- `--version`: Wyświetla wersję polecenia `rmdir`.
 
 ## Common Examples
 1. Usunięcie pustego katalogu:
-   ```bash
-   rmdir moj_katalog
+   ```csh
+   rmdir katalog
    ```
 
-2. Usunięcie wielu pustych katalogów jednocześnie:
-   ```bash
-   rmdir katalog1 katalog2 katalog3
+2. Usunięcie pustego katalogu wraz z jego pustym katalogiem nadrzędnym:
+   ```csh
+   rmdir -p katalog/nadrzędny
    ```
 
-3. Użycie opcji `--verbose` do uzyskania informacji o usuwanych katalogach:
-   ```bash
-   rmdir --verbose moj_katalog
-   ```
-
-4. Ignorowanie błędów przy próbie usunięcia niepustego katalogu:
-   ```bash
-   rmdir --ignore-fail-on-non-empty moj_katalog
+3. Wyświetlenie pomocy dotyczącej polecenia:
+   ```csh
+   rmdir --help
    ```
 
 ## Tips
-- Zawsze upewnij się, że katalog jest pusty przed użyciem `rmdir`, aby uniknąć błędów.
-- Możesz użyć polecenia `ls` przed `rmdir`, aby sprawdzić zawartość katalogu.
-- Jeśli chcesz usunąć katalog wraz z jego zawartością, rozważ użycie polecenia `rm -r` zamiast `rmdir`.
+- Upewnij się, że katalog, który chcesz usunąć, jest pusty, aby uniknąć błędów.
+- Możesz użyć opcji `-p`, aby usunąć kilka pustych katalogów jednocześnie, co jest przydatne w przypadku złożonej struktury katalogów.
+- Zawsze sprawdzaj, czy nie masz ważnych danych w katalogach, które zamierzasz usunąć.

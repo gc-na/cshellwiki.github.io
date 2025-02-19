@@ -1,45 +1,37 @@
-# [Linux] Bash unalias: Xóa alias trong Bash
+# [Hệ điều hành] C Shell (csh) unalias: Xóa alias đã định nghĩa
 
-## Tổng quan
-Lệnh `unalias` được sử dụng để xóa một hoặc nhiều alias đã được định nghĩa trong shell Bash. Alias là những tên gọi tắt cho các lệnh dài hoặc phức tạp, giúp người dùng tiết kiệm thời gian khi gõ lệnh.
+## Overview
+Lệnh `unalias` trong C Shell (csh) được sử dụng để xóa một alias đã được định nghĩa trước đó. Alias là những tên gọi tắt cho các lệnh dài hoặc phức tạp, giúp người dùng tiết kiệm thời gian khi gõ lệnh.
 
-## Cú pháp
+## Usage
 Cú pháp cơ bản của lệnh `unalias` như sau:
-
-```bash
-unalias [tùy chọn] [alias]
+```
+unalias [options] [arguments]
 ```
 
-## Các tùy chọn phổ biến
-- `-a`: Xóa tất cả các alias đã được định nghĩa.
-- `-p`: Hiển thị danh sách các alias hiện có mà không xóa chúng.
+## Common Options
+- `-a`: Xóa tất cả các alias đã định nghĩa.
+- `-m`: Xóa các alias theo mẫu (pattern) nhất định.
 
-## Ví dụ thường gặp
+## Common Examples
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `unalias`:
 
 1. **Xóa một alias cụ thể**:
-   Giả sử bạn đã tạo một alias cho lệnh `ls` như sau:
-   ```bash
-   alias ls='ls --color=auto'
-   ```
-   Để xóa alias này, bạn sử dụng:
-   ```bash
-   unalias ls
+   ```csh
+   unalias ll
    ```
 
 2. **Xóa tất cả các alias**:
-   Nếu bạn muốn xóa tất cả các alias đã định nghĩa, bạn có thể sử dụng:
-   ```bash
+   ```csh
    unalias -a
    ```
 
-3. **Hiển thị danh sách các alias hiện có**:
-   Để xem danh sách các alias mà bạn đã tạo, bạn có thể sử dụng:
-   ```bash
-   unalias -p
+3. **Xóa alias theo mẫu**:
+   ```csh
+   unalias -m 'l*'
    ```
 
-## Mẹo
-- Hãy cẩn thận khi sử dụng `unalias -a`, vì lệnh này sẽ xóa tất cả alias mà bạn đã tạo, có thể làm mất đi những alias hữu ích.
-- Nếu bạn chỉ muốn tạm thời xóa một alias, hãy xem xét việc định nghĩa lại alias đó với một tên khác thay vì xóa.
-- Để tránh mất thời gian, hãy kiểm tra danh sách alias hiện có trước khi quyết định xóa chúng bằng cách sử dụng lệnh `alias`.
+## Tips
+- Hãy kiểm tra danh sách alias hiện tại bằng lệnh `alias` trước khi xóa để đảm bảo bạn không xóa nhầm.
+- Sử dụng `unalias -a` với cẩn thận, vì lệnh này sẽ xóa tất cả alias mà bạn đã định nghĩa.
+- Nếu bạn muốn giữ một alias nhưng chỉ tạm thời không sử dụng, hãy cân nhắc việc sử dụng `set` để thay đổi giá trị của alias thay vì xóa nó.

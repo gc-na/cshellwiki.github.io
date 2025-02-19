@@ -1,39 +1,44 @@
-# [Linux] Bash groups użycie: wyświetlanie grup użytkowników
+# [Linux] C Shell (csh) groups użycie: wyświetlanie grup użytkowników
 
 ## Overview
-Polecenie `groups` w systemie Linux służy do wyświetlania grup, do których należy dany użytkownik. Może być używane do sprawdzenia przynależności do grup oraz do zarządzania uprawnieniami w systemie.
+Polecenie `groups` w C Shell (csh) służy do wyświetlania grup, do których należy dany użytkownik. Umożliwia to szybkie sprawdzenie przynależności do grup, co jest przydatne w zarządzaniu uprawnieniami i dostępem do zasobów systemowych.
 
 ## Usage
 Podstawowa składnia polecenia `groups` jest następująca:
 
-```bash
+```
 groups [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-h`, `--help` - wyświetla pomoc dotyczącą polecenia.
-- `-v`, `--version` - wyświetla wersję polecenia.
+- `-a` - Wyświetla wszystkie grupy, do których należy użytkownik, w tym grupy, które są nieaktywne.
+- `-h` - Nie wyświetla nagłówków w wynikach.
+- `-n` - Wyświetla tylko nazwy grup, bez dodatkowych informacji.
 
 ## Common Examples
-1. **Wyświetlenie grup dla bieżącego użytkownika:**
+Oto kilka praktycznych przykładów użycia polecenia `groups`:
 
-```bash
-groups
-```
+1. Wyświetlenie grup, do których należy bieżący użytkownik:
+   ```csh
+   groups
+   ```
 
-2. **Wyświetlenie grup dla konkretnego użytkownika:**
+2. Wyświetlenie grup dla konkretnego użytkownika (np. `janek`):
+   ```csh
+   groups janek
+   ```
 
-```bash
-groups nazwa_użytkownika
-```
+3. Wyświetlenie grup z dodatkowymi informacjami:
+   ```csh
+   groups -a
+   ```
 
-3. **Wyświetlenie grup dla wielu użytkowników:**
-
-```bash
-groups użytkownik1 użytkownik2
-```
+4. Wyświetlenie tylko nazw grup dla użytkownika:
+   ```csh
+   groups -n janek
+   ```
 
 ## Tips
-- Używaj polecenia `groups` bez argumentów, aby szybko sprawdzić, do jakich grup należy aktualnie zalogowany użytkownik.
-- Możesz używać `groups` w skryptach, aby dynamicznie sprawdzać uprawnienia użytkowników.
-- Pamiętaj, że przynależność do grup wpływa na dostęp do plików i zasobów w systemie, więc warto regularnie monitorować te informacje.
+- Używaj polecenia `groups` regularnie, aby monitorować przynależność do grup, szczególnie po zmianach w konfiguracji systemu.
+- Jeśli pracujesz w zespole, upewnij się, że znasz grupy, do których należą Twoi współpracownicy, aby lepiej zarządzać dostępem do plików i zasobów.
+- Pamiętaj, że przynależność do grup może wpływać na uprawnienia do plików, więc zawsze sprawdzaj, czy masz odpowiednie grupy przypisane przed wykonaniem operacji wymagających specjalnych uprawnień.

@@ -1,39 +1,41 @@
-# [Linux] Bash write użycie: Wysyłanie wiadomości do innych użytkowników
+# [Linux] C Shell (csh) write użycie: Wysyłanie wiadomości do innych użytkowników
 
 ## Overview
-Polecenie `write` w systemie Linux umożliwia wysyłanie wiadomości tekstowych do innych użytkowników zalogowanych na tym samym systemie. Jest to przydatne narzędzie do komunikacji w czasie rzeczywistym, szczególnie w środowiskach wieloużytkownikowych.
+Polecenie `write` w C Shell (csh) umożliwia użytkownikom wysyłanie wiadomości do innych użytkowników zalogowanych na tym samym systemie. Jest to przydatne narzędzie do komunikacji w czasie rzeczywistym.
 
 ## Usage
 Podstawowa składnia polecenia `write` jest następująca:
 
-```bash
-write [opcje] [użytkownik] [terminal]
+```
+write [opcje] [użytkownik] 
 ```
 
 ## Common Options
-- `-n`: Nie wyświetla komunikatu o rozpoczęciu pisania.
-- `-h`: Wyświetla pomoc dotycząca użycia polecenia.
+- `-n` : Nie wyświetla nagłówka wiadomości.
+- `-h` : Wyświetla pomoc dotycząca użycia polecenia.
 
 ## Common Examples
-1. Wysyłanie wiadomości do użytkownika `janek`:
-   ```bash
+1. Wysłanie wiadomości do użytkownika o nazwie "janek":
+   ```csh
    write janek
-   Cześć Janek, jak się masz?
    ```
+   Po wpisaniu tej komendy można wpisać wiadomość, która zostanie wysłana do użytkownika "janek".
 
-2. Wysyłanie wiadomości do użytkownika `ania` na terminalu `pts/1`:
-   ```bash
-   write ania pts/1
-   Spotkajmy się o 15:00!
-   ```
-
-3. Wysyłanie wiadomości bez komunikatu o rozpoczęciu pisania:
-   ```bash
+2. Wysłanie wiadomości bez nagłówka:
+   ```csh
    write -n janek
-   Pracuję nad projektem, zadzwoń później.
    ```
+   Ta komenda wysyła wiadomość do "janek" bez wyświetlania nagłówka.
+
+3. Wysłanie wiadomości do użytkownika "ania" i zakończenie sesji:
+   ```csh
+   write ania
+   Hello Ania, how are you?
+   ^D
+   ```
+   W tym przykładzie wiadomość "Hello Ania, how are you?" jest wysyłana, a `^D` kończy sesję.
 
 ## Tips
-- Upewnij się, że użytkownik, do którego chcesz wysłać wiadomość, jest zalogowany i ma otwarty terminal.
-- Aby zakończyć pisanie wiadomości, naciśnij `Ctrl+D`, co sygnalizuje koniec wiadomości.
-- Możesz używać `write` w połączeniu z innymi poleceniami, aby automatyzować wysyłanie wiadomości w skryptach.
+- Upewnij się, że użytkownik, do którego chcesz wysłać wiadomość, jest zalogowany na tym samym systemie.
+- Możesz używać `write` w połączeniu z innymi poleceniami, aby zwiększyć efektywność komunikacji.
+- Pamiętaj, że niektórzy użytkownicy mogą mieć wyłączoną możliwość odbierania wiadomości, co uniemożliwi wysłanie do nich wiadomości.

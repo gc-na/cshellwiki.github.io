@@ -1,47 +1,51 @@
-# [Linux] Bash sysctl Verwendung: Konfiguration des Kernelverhaltens
+# [Linux] C Shell (csh) sysctl Verwendung: Systemparameter anzeigen und ändern
 
 ## Übersicht
-Der Befehl `sysctl` wird verwendet, um Kernelparameter zur Laufzeit zu lesen und zu ändern. Dies ermöglicht es Benutzern, das Verhalten des Linux-Kernels anzupassen, ohne das System neu starten zu müssen.
+Der Befehl `sysctl` wird verwendet, um Kernelparameter zur Laufzeit anzuzeigen und zu ändern. Dies ermöglicht es Benutzern, verschiedene Aspekte des Betriebssystems zu konfigurieren, ohne den Kernel neu starten zu müssen.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```csh
 sysctl [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-a`: Zeigt alle aktuellen Kernelparameter an.
+- `-a`: Zeigt alle verfügbaren Kernelparameter an.
 - `-w`: Ändert den Wert eines Kernelparameters.
-- `-p`: Lädt die Parameter aus einer Datei (standardmäßig `/etc/sysctl.conf`).
-- `-n`: Gibt den Wert eines Parameters ohne zusätzliche Informationen aus.
+- `-n`: Gibt den Wert eines Kernelparameters ohne den Parameter-Namen aus.
 
 ## Häufige Beispiele
-- Um alle aktuellen Kernelparameter anzuzeigen:
 
-```bash
+### Alle Kernelparameter anzeigen
+Um alle verfügbaren Kernelparameter anzuzeigen, verwenden Sie:
+
+```csh
 sysctl -a
 ```
 
-- Um den Wert eines bestimmten Parameters zu ändern, z.B. die maximale Anzahl an offenen Dateien:
+### Wert eines spezifischen Parameters anzeigen
+Um den Wert eines bestimmten Parameters, z.B. `vm.swappiness`, anzuzeigen, verwenden Sie:
 
-```bash
-sysctl -w fs.file-max=100000
+```csh
+sysctl vm.swappiness
 ```
 
-- Um die Parameter aus der Konfigurationsdatei zu laden:
+### Wert eines Parameters ändern
+Um den Wert von `vm.swappiness` auf 10 zu ändern, verwenden Sie:
 
-```bash
-sysctl -p
+```csh
+sysctl -w vm.swappiness=10
 ```
 
-- Um den Wert eines Parameters ohne zusätzliche Informationen anzuzeigen, z.B. die aktuelle Größe des Kernel-Puffers:
+### Wert eines Parameters ohne Namen anzeigen
+Um nur den Wert von `vm.swappiness` ohne den Namen anzuzeigen, verwenden Sie:
 
-```bash
-sysctl -n kernel.shmmax
+```csh
+sysctl -n vm.swappiness
 ```
 
 ## Tipps
-- Stellen Sie sicher, dass Sie über die erforderlichen Berechtigungen verfügen, um Kernelparameter zu ändern; oft sind Root-Rechte erforderlich.
-- Änderungen, die mit `sysctl -w` vorgenommen werden, sind nicht persistent und gehen nach einem Neustart verloren. Verwenden Sie die `/etc/sysctl.conf`, um dauerhafte Änderungen vorzunehmen.
-- Überprüfen Sie regelmäßig die aktuellen Kernelparameter, um sicherzustellen, dass Ihr System optimal konfiguriert ist.
+- Stellen Sie sicher, dass Sie über die erforderlichen Berechtigungen verfügen, um Kernelparameter zu ändern, da dies Administratorrechte erfordern kann.
+- Überprüfen Sie die aktuellen Werte von Kernelparametern, bevor Sie Änderungen vornehmen, um unerwünschte Auswirkungen zu vermeiden.
+- Dokumentieren Sie Änderungen an Kernelparametern, um die Nachverfolgbarkeit und Wiederherstellbarkeit zu gewährleisten.

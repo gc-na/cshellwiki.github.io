@@ -1,50 +1,44 @@
-# [Linux] Bash bindkey Verwendung: Tastenkombinationen anpassen
+# [Linux] C Shell (csh) bindkey Verwendung: Tastenkombinationen anpassen
 
 ## Übersicht
-Der Befehl `bindkey` wird in der Bash-Shell verwendet, um Tastenkombinationen zu definieren und anzupassen. Mit `bindkey` können Benutzer die Tastenbelegung für die Eingabeaufforderung ändern, um die Effizienz und Benutzerfreundlichkeit zu verbessern.
+Der Befehl `bindkey` wird in der C Shell (csh) verwendet, um Tastenkombinationen für die Eingabeaufforderung anzupassen. Mit diesem Befehl können Benutzer ihre eigenen Tastenkombinationen definieren und bestehende ändern, um die Effizienz bei der Eingabe von Befehlen zu steigern.
 
 ## Verwendung
-Die grundlegende Syntax des Befehls lautet:
+Die grundlegende Syntax des Befehls `bindkey` lautet:
 
-```bash
+```csh
 bindkey [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-l`: Listet alle derzeitigen Bindings auf.
-- `-e`: Wechselt in den Emacs-Modus für Tastenkombinationen.
-- `-v`: Wechselt in den Vi-Modus für Tastenkombinationen.
-- `-s`: Bindet eine Tastenkombination an einen bestimmten Befehl.
+- `-e`: Aktiviert den Emacs-Modus für Tastenkombinationen.
+- `-v`: Aktiviert den Vi-Modus für Tastenkombinationen.
+- `-s`: Setzt eine Tastenkombination, die einen bestimmten Befehl ausführt.
 
 ## Häufige Beispiele
 Hier sind einige praktische Beispiele für die Verwendung von `bindkey`:
 
-1. **Auflisten der aktuellen Bindings:**
-   ```bash
-   bindkey -l
-   ```
-
-2. **Wechseln in den Emacs-Modus:**
-   ```bash
+1. **Aktivieren des Emacs-Modus**:
+   ```csh
    bindkey -e
    ```
 
-3. **Wechseln in den Vi-Modus:**
-   ```bash
+2. **Aktivieren des Vi-Modus**:
+   ```csh
    bindkey -v
    ```
 
-4. **Binden einer Tastenkombination an einen Befehl:**
-   ```bash
-   bindkey '^X^R' 'run-my-script'
+3. **Zuweisen einer Tastenkombination für den Befehl `ls`**:
+   ```csh
+   bindkey "^L" "ls\n"
    ```
 
-5. **Binden einer Tastenkombination, um den aktuellen Befehl zu wiederholen:**
-   ```bash
-   bindkey '^R' history-search-backward
+4. **Zuweisen einer Tastenkombination für das Wechseln in das Home-Verzeichnis**:
+   ```csh
+   bindkey "^H" "cd ~\n"
    ```
 
 ## Tipps
-- Überprüfen Sie regelmäßig Ihre Bindings mit `bindkey -l`, um sicherzustellen, dass Sie keine Konflikte haben.
-- Experimentieren Sie mit verschiedenen Modi (Emacs und Vi), um herauszufinden, welcher am besten zu Ihrem Arbeitsstil passt.
-- Dokumentieren Sie Ihre benutzerdefinierten Bindings in einer Konfigurationsdatei, um sie bei Bedarf schnell wiederherstellen zu können.
+- Überprüfen Sie regelmäßig Ihre Tastenkombinationen, um sicherzustellen, dass sie Ihren Arbeitsabläufen entsprechen.
+- Nutzen Sie den Emacs- oder Vi-Modus, je nachdem, welche Art von Eingabeaufforderung Sie bevorzugen.
+- Experimentieren Sie mit verschiedenen Tastenkombinationen, um herauszufinden, welche für Sie am besten funktionieren.

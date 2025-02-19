@@ -1,54 +1,52 @@
-# [Linux] Bash dstat Uso equivalente: Monitor system resources in real-time
+# [Linux] C Shell (csh) dstat用法: Monitor system resources in real-time
 
 ## Overview
-The `dstat` command is a versatile tool for monitoring system resources in real-time. It provides a comprehensive overview of various system metrics, including CPU usage, memory consumption, disk activity, and network statistics. This makes it an essential utility for system administrators and developers who need to analyze system performance and troubleshoot issues.
+The `dstat` command is a versatile tool used to monitor system resources in real-time. It combines the functionality of various monitoring tools, providing detailed information about CPU, memory, disk, network, and other system metrics in a single output.
 
 ## Usage
 The basic syntax of the `dstat` command is as follows:
 
-```bash
+```csh
 dstat [options] [arguments]
 ```
 
 ## Common Options
-- `-c`: Show CPU statistics.
-- `-d`: Display disk statistics.
-- `-n`: Show network statistics.
-- `-m`: Display memory statistics.
+- `-c`: Show CPU usage.
+- `-d`: Display disk activity.
+- `-n`: Monitor network activity.
+- `-m`: Report memory usage.
 - `-t`: Include a timestamp in the output.
-- `--help`: Show help information and available options.
+- `--help`: Display help information for the command.
 
 ## Common Examples
+Here are some practical examples of using the `dstat` command:
 
-### Monitor CPU and Memory Usage
-To monitor CPU and memory usage in real-time, you can use:
+1. **Basic Resource Monitoring**:
+   ```csh
+   dstat
+   ```
 
-```bash
-dstat -c -m
-```
+2. **Monitor CPU and Disk Activity**:
+   ```csh
+   dstat -cd
+   ```
 
-### Monitor Disk and Network Activity
-To see disk and network activity, you can run:
+3. **View Network and Memory Usage**:
+   ```csh
+   dstat -nm
+   ```
 
-```bash
-dstat -d -n
-```
+4. **Include Timestamps**:
+   ```csh
+   dstat -t
+   ```
 
-### Comprehensive Resource Monitoring
-For a complete overview of system resources, use:
-
-```bash
-dstat -cdnm
-```
-
-### Include Timestamps
-If you want to include timestamps in your output, you can add the `-t` option:
-
-```bash
-dstat -cdnmt
-```
+5. **Monitor All Resources**:
+   ```csh
+   dstat -cdnm
+   ```
 
 ## Tips
-- Combine options to tailor the output to your needs; for example, `dstat -cdnm` gives a broad view of system performance.
-- Use `dstat --help` to explore all available options and customize your monitoring.
-- Consider running `dstat` in a screen session or redirecting output to a file for long-term monitoring.
+- Use the `-t` option to add timestamps, which can help in correlating events with system performance.
+- Combine multiple options to get a comprehensive view of system performance.
+- Consider running `dstat` in a separate terminal window to keep monitoring while performing other tasks.

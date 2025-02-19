@@ -1,45 +1,43 @@
-# [Linux] Bash blkid gebruik: Toon schijfpartitie-informatie
+# [Linux] C Shell (csh) blkid gebruik: Identificeer schijfpartities en hun bestandssystemen
 
 ## Overzicht
-De `blkid`-opdracht in Bash wordt gebruikt om informatie over blokapparaten op een Linux-systeem op te vragen. Het geeft details zoals het bestandssysteemtype, UUID (Universally Unique Identifier) en label van de schijfpartities weer.
+De `blkid` opdracht wordt gebruikt om informatie over blokapparaten te verkrijgen, zoals schijfpartities en hun bestandssystemen. Het toont details zoals het UUID (Universally Unique Identifier) en het type bestandssysteem van de apparaten.
 
 ## Gebruik
-De basis syntaxis van de `blkid`-opdracht is als volgt:
+De basis syntaxis van de `blkid` opdracht is als volgt:
 
-```bash
+```csh
 blkid [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-o, --output`: Bepaalt het uitvoerformaat (bijv. `value`, `full`).
-- `-s, --subtype`: Geeft het subtype van het bestandssysteem weer.
-- `-p, --probe`: Probeert het apparaat te identificeren, zelfs als het niet is gemonteerd.
-- `-c, --cache`: Gebruik een cachebestand voor snellere toegang.
+- `-o` : Bepaalt de uitvoerindeling (bijv. `value`, `full`, `list`).
+- `-s` : Specificeert welke attributen moeten worden weergegeven (bijv. `UUID`, `TYPE`).
+- `-p` : Negeert de cache en leest de informatie opnieuw van de schijf.
 
 ## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van `blkid`:
 
-1. **Toon informatie van alle blokapparaten:**
-   ```bash
+1. **Toon alle blokapparaten**:
+   ```csh
    blkid
    ```
 
-2. **Toon alleen de UUID's van de schijfpartities:**
-   ```bash
-   blkid -o value -s UUID
+2. **Toon specifieke informatie (bijv. UUID en TYPE)**:
+   ```csh
+   blkid -s UUID -s TYPE
    ```
 
-3. **Toon het bestandssysteemtype van een specifieke partitie:**
-   ```bash
-   blkid /dev/sda1
+3. **Gebruik een specifieke uitvoerindeling**:
+   ```csh
+   blkid -o value -s UUID /dev/sda1
    ```
 
-4. **Gebruik de probe-optie om informatie te verkrijgen van een niet-gemonteerd apparaat:**
-   ```bash
-   blkid -p /dev/sdb
+4. **Negeer de cache en lees opnieuw**:
+   ```csh
+   blkid -p
    ```
 
 ## Tips
-- Gebruik de `-o value` optie om alleen de waarde van een specifiek attribuut te krijgen, wat handig kan zijn voor scripts.
-- Controleer regelmatig de UUID's van je partities, vooral na het maken van back-ups of het verplaatsen van gegevens.
-- Combineer `blkid` met andere commando's zoals `grep` om specifieke informatie snel te filteren.
+- Gebruik `blkid` zonder argumenten om een overzicht van alle beschikbare blokapparaten te krijgen.
+- Combineer opties om gerichte informatie te verkrijgen, zoals alleen het UUID van een specifieke partitie.
+- Controleer regelmatig de uitvoer van `blkid` om te bevestigen dat de schijfconfiguratie correct is, vooral na het aanbrengen van wijzigingen in partities.

@@ -1,56 +1,50 @@
-# [Linux] Bash pacman Kullanımı: Paket yönetimi aracı
+# [Linux] C Shell (csh) pacman Kullanımı: Paket yönetimi aracı
 
-## Genel Bakış
-`pacman`, Arch Linux ve türevlerinde kullanılan bir paket yönetim aracıdır. Bu komut, yazılım paketlerini yüklemek, güncellemek ve kaldırmak için kullanılır. Kullanıcıların sistemlerini güncel tutmalarına ve gerekli yazılımları kolayca yönetmelerine olanak tanır.
+## Overview
+`pacman`, Arch Linux ve türevlerinde kullanılan bir paket yönetim aracıdır. Yazılımları yüklemek, güncellemek ve kaldırmak için kullanılır. Kullanıcıların sistemlerini kolayca yönetmelerine olanak tanır.
 
-## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
-```bash
-pacman [seçenekler] [argümanlar]
+## Usage
+Temel sözdizimi şu şekildedir:
+```
+pacman [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-S`: Paket yüklemek veya güncellemek için kullanılır.
-- `-R`: Paket kaldırmak için kullanılır.
+## Common Options
+- `-S`: Yeni bir paket yüklemek için kullanılır.
+- `-R`: Yüklenmiş bir paketi kaldırmak için kullanılır.
 - `-U`: Yerel bir paket dosyasını yüklemek için kullanılır.
-- `-Q`: Yüklü paketleri sorgulamak için kullanılır.
-- `-Sy`: Paket veritabanını güncellemek için kullanılır.
-- `-Syu`: Sistemi güncellemek için kullanılır.
+- `-Q`: Yüklenmiş paketleri sorgulamak için kullanılır.
+- `-Sy`: Paket veritabanını güncelleyip ardından paket yüklemek için kullanılır.
 
-## Yaygın Örnekler
+## Common Examples
 Aşağıda `pacman` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
-### 1. Paket Yükleme
-Bir paketi yüklemek için:
+### Yeni Paket Yükleme
 ```bash
-sudo pacman -S paket_adi
+pacman -S paket_adi
 ```
 
-### 2. Paket Kaldırma
-Bir paketi kaldırmak için:
+### Paket Kaldırma
 ```bash
-sudo pacman -R paket_adi
+pacman -R paket_adi
 ```
 
-### 3. Tüm Sistemi Güncelleme
-Sistemdeki tüm paketleri güncellemek için:
+### Yerel Paket Yükleme
 ```bash
-sudo pacman -Syu
+pacman -U /yol/paket_dosyasi.pkg.tar.zst
 ```
 
-### 4. Yüklü Paketleri Listeleme
-Sistemde yüklü olan tüm paketleri listelemek için:
+### Yüklenmiş Paketleri Listeleme
 ```bash
 pacman -Q
 ```
 
-### 5. Belirli Bir Paketin Bilgilerini Görüntüleme
-Belirli bir paket hakkında bilgi almak için:
+### Paket Veritabanını Güncelleme ve Yükleme
 ```bash
-pacman -Qi paket_adi
+pacman -Sy paket_adi
 ```
 
-## İpuçları
-- `pacman` komutunu kullanmadan önce, sisteminizi güncel tutmak için düzenli olarak `pacman -Syu` komutunu çalıştırın.
-- Paket kaldırma işlemi yaparken, bağımlılıkları kontrol etmek için `-Rns` seçeneğini kullanarak gereksiz dosyaları temizleyebilirsiniz.
-- Yeni bir paket yüklemeden önce, mevcut paketlerin güncel olduğundan emin olun. Bu, uyumsuzluk sorunlarını önlemeye yardımcı olur.
+## Tips
+- `pacman -Syu` komutunu kullanarak sisteminizi güncel tutabilirsiniz; bu, hem paket veritabanını günceller hem de mevcut paketleri günceller.
+- Yüklemek istediğiniz paketlerin bağımlılıklarını kontrol etmek için `pacman -Qi paket_adi` komutunu kullanabilirsiniz.
+- Kaldırma işlemi yapmadan önce, paketin sistemdeki diğer paketlerle olan ilişkisini kontrol etmek için `pacman -Qi paket_adi` komutunu kullanmak iyi bir uygulamadır.

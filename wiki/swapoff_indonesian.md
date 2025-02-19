@@ -1,40 +1,44 @@
-# [Linux] Bash swapoff Penggunaan: Menonaktifkan ruang swap
+# [Sistem Operasi] C Shell (csh) swapoff: Menonaktifkan area swap
 
 ## Overview
-Perintah `swapoff` digunakan untuk menonaktifkan ruang swap pada sistem Linux. Swap adalah area di disk yang digunakan ketika RAM penuh, dan menonaktifkan swap dapat membantu meningkatkan kinerja sistem dalam situasi tertentu.
+Perintah `swapoff` digunakan untuk menonaktifkan area swap pada sistem. Swap adalah ruang di disk yang digunakan untuk menyimpan data ketika RAM penuh. Dengan menonaktifkan swap, Anda dapat mengelola penggunaan memori secara lebih efektif.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `swapoff`:
 
-```bash
+```csh
 swapoff [options] [arguments]
 ```
 
 ## Common Options
-- `-a` : Menonaktifkan semua ruang swap yang terdaftar dalam file `/etc/fstab`.
-- `-e` : Mengabaikan kesalahan yang mungkin terjadi saat menonaktifkan swap.
-- `-h` : Menampilkan bantuan dan informasi penggunaan.
+- `-a`: Menonaktifkan semua area swap yang terdaftar dalam file `/etc/fstab`.
+- `-e`: Mengabaikan kesalahan yang mungkin terjadi saat menonaktifkan swap.
+- `-h`: Menampilkan bantuan dan informasi tentang penggunaan perintah.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `swapoff`:
 
-1. **Menonaktifkan semua ruang swap yang terdaftar:**
-   ```bash
+1. Menonaktifkan semua area swap:
+   ```csh
    swapoff -a
    ```
 
-2. **Menonaktifkan ruang swap tertentu:**
-   ```bash
+2. Menonaktifkan area swap tertentu:
+   ```csh
    swapoff /dev/sdX
    ```
-   Gantilah `/dev/sdX` dengan nama perangkat swap yang ingin dinonaktifkan.
 
-3. **Menonaktifkan swap dan mengabaikan kesalahan:**
-   ```bash
+3. Menonaktifkan area swap dan mengabaikan kesalahan:
+   ```csh
    swapoff -e /dev/sdX
    ```
 
+4. Menampilkan bantuan untuk perintah swapoff:
+   ```csh
+   swapoff -h
+   ```
+
 ## Tips
-- Pastikan untuk memeriksa penggunaan RAM sebelum menonaktifkan swap, karena menonaktifkan swap dapat menyebabkan sistem kehabisan memori.
-- Gunakan perintah `free -h` untuk memantau penggunaan memori dan swap sebelum dan sesudah menonaktifkan swap.
-- Jika Anda mengalami masalah kinerja setelah menonaktifkan swap, pertimbangkan untuk mengaktifkannya kembali dengan perintah `swapon`.
+- Pastikan untuk memeriksa penggunaan memori sebelum menonaktifkan swap, karena ini dapat mempengaruhi kinerja sistem.
+- Gunakan perintah `swapon` untuk mengaktifkan kembali area swap jika diperlukan.
+- Selalu lakukan backup data penting sebelum melakukan perubahan pada pengaturan swap.

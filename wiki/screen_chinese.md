@@ -1,47 +1,47 @@
-# [Linux] Bash screen 使用: 管理终端会话
+# [Linux] C Shell (csh) screen 使用等价: 管理终端会话
 
 ## 概述
-`screen` 命令是一个终端多路复用器，它允许用户在一个单一的终端窗口中创建和管理多个会话。用户可以在这些会话之间切换，甚至在断开连接后重新连接，保持工作状态。
+`screen` 命令用于在 Unix/Linux 系统中管理多个终端会话。它允许用户在一个窗口中运行多个会话，并在需要时进行切换，极大地提高了工作效率。
 
 ## 使用方法
 基本语法如下：
 ```
-screen [options] [arguments]
+screen [选项] [参数]
 ```
 
 ## 常用选项
-- `-S <session_name>`: 创建一个命名的会话。
+- `-S <session_name>`: 指定会话名称，方便后续管理。
 - `-d -r <session_name>`: 断开并重新连接到指定的会话。
-- `-list`: 列出所有当前的会话。
-- `-X <command>`: 向指定的会话发送命令。
+- `-list`: 列出当前所有的 screen 会话。
+- `-X <command>`: 向指定会话发送命令。
 
 ## 常见示例
-1. 创建一个新的会话：
+1. 创建一个新的 screen 会话：
    ```bash
    screen -S mysession
    ```
 
-2. 列出所有会话：
+2. 列出所有当前的 screen 会话：
    ```bash
    screen -list
    ```
 
-3. 断开当前会话：
+3. 重新连接到一个已存在的会话：
    ```bash
-   Ctrl + A, D
+   screen -d -r mysession
    ```
 
-4. 重新连接到一个会话：
-   ```bash
-   screen -r mysession
-   ```
-
-5. 向会话发送命令：
+4. 向会话发送命令：
    ```bash
    screen -S mysession -X stuff "echo Hello World\n"
    ```
 
-## 小贴士
-- 使用命名会话可以更方便地管理多个会话。
-- 定期保存你的工作，以防止意外断开连接。
-- 可以使用 `Ctrl + A` 然后按 `?` 查看所有快捷键帮助。
+5. 退出当前的 screen 会话：
+   ```bash
+   exit
+   ```
+
+## 提示
+- 使用 `Ctrl-a` 后接 `d` 可以将当前会话分离，方便你在后台继续运行。
+- 为每个会话指定一个清晰的名称，便于管理和识别。
+- 定期检查和清理不再使用的会话，以保持系统的整洁。

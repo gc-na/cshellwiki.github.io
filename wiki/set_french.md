@@ -1,51 +1,49 @@
-# [Linux] Bash set : Configurer les options de l'environnement de shell
+# [Unix] C Shell (csh) set : Modifier les variables d'environnement
 
 ## Overview
-La commande `set` en Bash est utilisée pour définir ou modifier les options de l'environnement du shell. Elle permet de contrôler le comportement du shell et de gérer les variables d'environnement.
+La commande `set` dans C Shell (csh) est utilisée pour définir ou modifier des variables d'environnement et des options de shell. Elle permet aux utilisateurs de gérer les paramètres de leur session shell.
 
 ## Usage
 La syntaxe de base de la commande `set` est la suivante :
 
-```bash
+```
 set [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes pour la commande `set` :
-
 - `-e` : Arrête l'exécution si une commande échoue.
-- `-u` : Traite les variables non définies comme des erreurs.
 - `-x` : Affiche chaque commande avant son exécution, utile pour le débogage.
-- `-o` : Permet de définir des options spécifiques, comme `-o noclobber` pour empêcher l'écrasement des fichiers.
+- `-u` : Traite les variables non définies comme une erreur.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `set` :
 
-1. **Arrêter l'exécution en cas d'erreur :**
-   ```bash
-   set -e
+1. **Définir une variable simple :**
+   ```csh
+   set nom_utilisateur = "Alice"
    ```
-   Cela signifie que si une commande échoue, le script s'arrête immédiatement.
 
-2. **Activer le débogage :**
-   ```bash
+2. **Afficher la valeur d'une variable :**
+   ```csh
+   echo $nom_utilisateur
+   ```
+
+3. **Activer l'affichage des commandes :**
+   ```csh
    set -x
    ```
-   Cela affichera chaque commande exécutée, ce qui est utile pour le débogage.
 
-3. **Traiter les variables non définies comme erreurs :**
-   ```bash
-   set -u
+4. **Définir plusieurs variables à la fois :**
+   ```csh
+   set var1 = "valeur1" var2 = "valeur2"
    ```
-   Cela renvoie une erreur si une variable non définie est utilisée.
 
-4. **Combiner plusieurs options :**
-   ```bash
-   set -e -u -x
+5. **Activer le mode d'arrêt sur erreur :**
+   ```csh
+   set -e
    ```
-   Cela active les trois options simultanément pour un meilleur contrôle du script.
 
 ## Tips
-- Utilisez `set -e` pour éviter que des erreurs passent inaperçues dans vos scripts.
-- Activez `set -u` pour vous assurer que toutes les variables utilisées sont définies, ce qui peut aider à éviter des comportements inattendus.
-- Pour le débogage, `set -x` est très utile, mais n'oubliez pas de le désactiver une fois que vous avez terminé le débogage pour éviter d'afficher des informations sensibles.
+- Utilisez `set` avec prudence, car des modifications non intentionnelles des variables d'environnement peuvent affecter le comportement de votre shell.
+- Pour vérifier toutes les variables définies, utilisez simplement `set` sans arguments.
+- Pensez à utiliser `set -x` lors du débogage de scripts pour mieux comprendre l'exécution des commandes.

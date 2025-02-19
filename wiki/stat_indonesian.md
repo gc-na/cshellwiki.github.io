@@ -1,47 +1,44 @@
-# [Linux] Bash stat Penggunaan: Menampilkan informasi status file
+# [Sistem Operasi] C Shell (csh) stat <Penggunaan setara>: Menampilkan informasi status file
 
 ## Overview
-Perintah `stat` digunakan untuk menampilkan informasi status dari file atau direktori di sistem Linux. Informasi yang ditampilkan mencakup ukuran file, waktu akses, waktu modifikasi, dan banyak lagi.
+Perintah `stat` digunakan untuk menampilkan informasi status dari file atau direktori. Informasi yang ditampilkan mencakup ukuran file, waktu akses terakhir, waktu modifikasi terakhir, dan banyak lagi.
 
 ## Usage
-Sintaks dasar dari perintah `stat` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `stat`:
 
-```bash
+```csh
 stat [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah `stat`:
-
 - `-c` : Menentukan format output yang ingin ditampilkan.
-- `-f` : Menampilkan informasi sistem file dari file yang ditentukan.
-- `--format` : Menentukan format output secara lebih spesifik.
-- `-h` : Menampilkan ukuran file dalam format yang lebih mudah dibaca (misalnya, KB, MB).
+- `-f` : Menampilkan informasi dalam format yang lebih ringkas.
+- `-L` : Mengikuti symbolic link dan menampilkan informasi dari file yang ditunjuk.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `stat`:
 
-1. Menampilkan informasi dasar dari sebuah file:
-   ```bash
+1. Menampilkan informasi lengkap dari sebuah file:
+   ```csh
    stat namafile.txt
    ```
 
-2. Menampilkan informasi dengan format yang lebih ringkas:
-   ```bash
-   stat -c '%s bytes' namafile.txt
+2. Menggunakan opsi `-c` untuk menampilkan ukuran file saja:
+   ```csh
+   stat -c %s namafile.txt
    ```
 
-3. Menampilkan informasi sistem file dari sebuah direktori:
-   ```bash
-   stat -f /path/to/directory
+3. Menampilkan informasi dari symbolic link:
+   ```csh
+   stat -L symlinkfile
    ```
 
-4. Menampilkan ukuran file dalam format yang lebih mudah dibaca:
-   ```bash
-   stat -h namafile.txt
+4. Menampilkan informasi dalam format ringkas:
+   ```csh
+   stat -f "%N: %z bytes" namafile.txt
    ```
 
 ## Tips
 - Gunakan opsi `-c` untuk menyesuaikan output agar lebih sesuai dengan kebutuhan Anda.
-- Periksa informasi waktu akses dan modifikasi untuk memahami kapan file terakhir diubah.
-- Jika Anda bekerja dengan banyak file, pertimbangkan untuk menggunakan wildcard (misalnya, `*.txt`) untuk mendapatkan informasi tentang beberapa file sekaligus.
+- Periksa informasi waktu modifikasi untuk memastikan file Anda terbaru.
+- Jika bekerja dengan symbolic links, selalu gunakan opsi `-L` untuk mendapatkan informasi yang tepat.

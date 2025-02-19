@@ -1,38 +1,41 @@
-# [Linux] Bash printenv Kullanımı: Ortam değişkenlerini görüntüleme
+# [Linux] C Shell (csh) printenv Kullanımı: Ortam değişkenlerini görüntüler
 
-## Overview
-`printenv` komutu, mevcut ortam değişkenlerini görüntülemek için kullanılır. Bu komut, sistemdeki çeşitli ayarları ve bilgileri gösterir.
+## Genel Bakış
+`printenv` komutu, mevcut ortam değişkenlerini ve bunların değerlerini görüntülemek için kullanılır. Bu komut, sistemdeki çevresel ayarları kontrol etmek ve hata ayıklamak için oldukça faydalıdır.
 
-## Usage
-Temel sözdizimi şu şekildedir:
+## Kullanım
+Temel sözdizimi aşağıdaki gibidir:
 
-```bash
+```csh
 printenv [options] [arguments]
 ```
 
-## Common Options
-- `-0`, `--null`: Çıktıyı null karakter ile ayırır.
-- `NAME`: Belirtilen ortam değişkeninin değerini gösterir. Eğer değişken mevcut değilse, hiçbir şey döndürmez.
+## Yaygın Seçenekler
+- `-0`: Çıktıyı null karakter ile ayırır.
+- `VARIABLE`: Belirtilen ortam değişkeninin değerini görüntüler.
 
-## Common Examples
-Aşağıda `printenv` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+## Yaygın Örnekler
+Aşağıda `printenv` komutunun bazı pratik örnekleri verilmiştir:
 
 1. Tüm ortam değişkenlerini görüntüleme:
-   ```bash
+   ```csh
    printenv
    ```
 
 2. Belirli bir ortam değişkeninin değerini görüntüleme (örneğin, `HOME`):
-   ```bash
+   ```csh
    printenv HOME
    ```
 
 3. Çıktıyı null karakter ile ayırarak görüntüleme:
-   ```bash
+   ```csh
    printenv -0
    ```
 
-## Tips
-- `printenv` komutunu kullanarak sistemdeki tüm ortam değişkenlerini hızlıca kontrol edebilirsiniz.
-- Belirli bir değişkenin varlığını kontrol etmek için `printenv NAME` şeklinde kullanabilirsiniz.
-- Ortam değişkenlerini düzenlemek için `export` komutunu kullanmayı unutmayın.
+## İpuçları
+- Ortam değişkenlerini kontrol etmek, özellikle yazılım geliştirme ve sistem yönetimi sırasında sorunları çözmek için yararlıdır.
+- Belirli bir değişkenin varlığını kontrol etmek için `printenv VARIABLE_NAME` komutunu kullanabilirsiniz.
+- Çıktıyı bir dosyaya yönlendirmek için `>` operatörünü kullanarak ortam değişkenlerini kaydedebilirsiniz:
+  ```csh
+  printenv > ortam_degiskenleri.txt
+  ```

@@ -1,50 +1,56 @@
-# [Linux] Bash mkfifo gebruik: Maak een named pipe aan
+# [Linux] C Shell (csh) mkfifo gebruik: Maak een named pipe aan
 
-## Overzicht
-De `mkfifo` opdracht in Bash wordt gebruikt om een named pipe (of FIFO) aan te maken. Een named pipe is een speciale soort bestand dat wordt gebruikt voor interprocesscommunicatie, waardoor verschillende processen gegevens kunnen uitwisselen.
+## Overview
+De `mkfifo`-opdracht in C Shell (csh) wordt gebruikt om een named pipe (FIFO) te maken. Een named pipe is een speciaal soort bestand dat wordt gebruikt voor interprocesscommunicatie, waardoor verschillende processen gegevens kunnen uitwisselen.
 
-## Gebruik
-De basis syntaxis van de `mkfifo` opdracht is als volgt:
+## Usage
+De basis syntaxis van de `mkfifo`-opdracht is als volgt:
 
-```bash
+```csh
 mkfifo [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
-- `-m, --mode`: Hiermee kun je de bestandspermissies instellen voor de aangemaakte pipe.
-- `-Z`: Dit is een optie voor SELinux die de context van het bestand instelt.
+## Common Options
+Hier zijn enkele veelvoorkomende opties voor `mkfifo`:
 
-## Veelvoorkomende Voorbeelden
+- `-m, --mode`: Hiermee kunt u de bestandspermissies instellen voor de aangemaakte pipe.
+- `--help`: Toont een helpbericht met informatie over de opdracht.
+- `--version`: Toont de versie-informatie van de `mkfifo`-opdracht.
 
-### Voorbeeld 1: Een eenvoudige named pipe aanmaken
-Om een named pipe met de naam `mijn_pipe` aan te maken, gebruik je de volgende opdracht:
+## Common Examples
+Hier zijn enkele praktische voorbeelden van het gebruik van `mkfifo`:
 
-```bash
-mkfifo mijn_pipe
-```
+1. Maak een eenvoudige named pipe aan:
 
-### Voorbeeld 2: Een named pipe met specifieke permissies aanmaken
-Als je een named pipe wilt aanmaken met specifieke permissies, bijvoorbeeld 644, gebruik je:
+    ```csh
+    mkfifo mijn_pipe
+    ```
 
-```bash
-mkfifo -m 644 mijn_pipe
-```
+2. Maak een named pipe aan met specifieke bestandspermissies:
 
-### Voorbeeld 3: Gegevens naar de pipe schrijven
-Je kunt gegevens naar de pipe schrijven met een opdracht zoals:
+    ```csh
+    mkfifo -m 660 mijn_pipe
+    ```
 
-```bash
-echo "Hallo, wereld!" > mijn_pipe
-```
+3. Controleer of de pipe is aangemaakt:
 
-### Voorbeeld 4: Gegevens lezen van de pipe
-In een andere terminal kun je de gegevens lezen die naar de pipe zijn geschreven:
+    ```csh
+    ls -l mijn_pipe
+    ```
 
-```bash
-cat < mijn_pipe
-```
+4. Gebruik de pipe in een proces:
+
+    ```csh
+    cat > mijn_pipe &
+    ```
+
+    En in een ander terminalvenster:
+
+    ```csh
+    cat < mijn_pipe
+    ```
 
 ## Tips
-- Zorg ervoor dat je de named pipe verwijdert met `rm mijn_pipe` wanneer je deze niet meer nodig hebt, om rommel in je bestandssysteem te voorkomen.
-- Named pipes zijn handig voor het synchroniseren van processen; gebruik ze om gegevens tussen verschillende scripts of programma's te delen.
-- Test je scripts met `mkfifo` in een veilige omgeving om te begrijpen hoe interprocesscommunicatie werkt voordat je ze in productie gebruikt.
+- Zorg ervoor dat u de juiste bestandspermissies instelt met de `-m` optie, zodat andere processen toegang hebben tot de pipe.
+- Gebruik `ls -l` om de status en permissies van uw named pipe te controleren.
+- Vergeet niet dat een named pipe blokkeert totdat er een proces is dat de gegevens leest, dus zorg ervoor dat u zowel schrijvende als lezende processen correct opzet.

@@ -1,7 +1,7 @@
-# [Linux] Bash rsync utilisation : Synchroniser des fichiers et des répertoires
+# [Linux] C Shell (csh) rsync : Synchroniser des fichiers et des répertoires
 
 ## Overview
-La commande `rsync` est un outil puissant utilisé pour synchroniser des fichiers et des répertoires entre différents emplacements, que ce soit sur la même machine ou entre des machines distantes. Elle est particulièrement appréciée pour sa capacité à ne transférer que les fichiers modifiés, ce qui la rend efficace en termes de bande passante et de temps.
+La commande `rsync` est un outil puissant utilisé pour synchroniser des fichiers et des répertoires entre deux emplacements, que ce soit localement ou à distance. Elle est particulièrement appréciée pour sa rapidité et son efficacité, car elle ne transfère que les différences entre les fichiers source et destination.
 
 ## Usage
 La syntaxe de base de la commande `rsync` est la suivante :
@@ -22,37 +22,27 @@ Voici quelques options courantes que vous pouvez utiliser avec `rsync` :
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `rsync` :
 
-1. **Synchroniser un répertoire local avec un autre répertoire local :**
-
+1. **Synchroniser un répertoire local :**
    ```bash
    rsync -av /chemin/vers/source/ /chemin/vers/destination/
    ```
 
-2. **Synchroniser un répertoire local avec un répertoire distant :**
-
+2. **Synchroniser un répertoire vers un serveur distant :**
    ```bash
    rsync -av /chemin/vers/source/ utilisateur@serveur:/chemin/vers/destination/
    ```
 
-3. **Synchroniser un répertoire distant avec un répertoire local :**
-
+3. **Synchroniser un répertoire distant vers un répertoire local :**
    ```bash
    rsync -av utilisateur@serveur:/chemin/vers/source/ /chemin/vers/destination/
    ```
 
-4. **Synchroniser en compressant les fichiers :**
-
-   ```bash
-   rsync -avz /chemin/vers/source/ utilisateur@serveur:/chemin/vers/destination/
-   ```
-
-5. **Synchroniser en supprimant les fichiers obsolètes dans le répertoire de destination :**
-
+4. **Synchroniser tout en supprimant les fichiers non présents dans la source :**
    ```bash
    rsync -av --delete /chemin/vers/source/ /chemin/vers/destination/
    ```
 
 ## Tips
-- Toujours utiliser l'option `-n` (dry run) pour simuler la commande avant de l'exécuter réellement. Cela permet de voir ce qui sera transféré sans effectuer de modifications.
-- Pensez à utiliser des chemins relatifs pour éviter des erreurs de destination.
-- Pour des transferts fréquents, envisagez d'utiliser un script pour automatiser le processus avec `cron`.
+- Utilisez l'option `-n` (dry run) pour simuler la synchronisation sans effectuer de modifications, ce qui vous permet de vérifier ce qui sera transféré.
+- Pensez à utiliser `-z` pour compresser les fichiers lors de la synchronisation sur des connexions lentes.
+- Vérifiez toujours les permissions et les chemins avant de lancer des synchronisations, surtout avec l'option `--delete`, pour éviter de perdre des données.

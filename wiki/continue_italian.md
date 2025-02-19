@@ -1,59 +1,56 @@
-# [Linux] Bash continue uso: Consente di riprendere l'esecuzione di un ciclo
+# [Linux] C Shell (csh) continue uso equivalente: Riprende l'esecuzione di un ciclo
 
 ## Overview
-Il comando `continue` in Bash viene utilizzato all'interno di cicli per saltare l'iterazione corrente e passare direttamente alla successiva. È particolarmente utile quando si desidera ignorare determinate condizioni senza interrompere l'intero ciclo.
+Il comando `continue` nel C Shell (csh) viene utilizzato all'interno di un ciclo per saltare l'iterazione corrente e passare direttamente alla successiva. Questo è particolarmente utile quando si desidera ignorare alcune condizioni senza terminare completamente il ciclo.
 
 ## Usage
 La sintassi di base del comando è la seguente:
 
-```bash
-continue [n]
+```
+continue [options]
 ```
 
-Dove `n` è un numero opzionale che indica quante iterazioni del ciclo devono essere saltate. Se non specificato, il valore predefinito è 1.
-
 ## Common Options
-- `n`: Numero di iterazioni da saltare. Se omesso, il comando salta solo l'iterazione corrente.
+Il comando `continue` non ha opzioni specifiche. Viene utilizzato principalmente all'interno di cicli come `foreach` o `while`.
 
 ## Common Examples
 
-### Esempio 1: Ignorare numeri dispari
-Questo esempio mostra come utilizzare `continue` per ignorare i numeri dispari in un ciclo `for`.
-
-```bash
-for i in {1..10}; do
-    if (( i % 2 != 0 )); then
+### Esempio 1: Ignorare numeri pari in un ciclo
+```csh
+foreach i (1 2 3 4 5)
+    if ($i % 2 == 0) then
         continue
-    fi
-    echo "Numero pari: $i"
-done
+    endif
+    echo $i
+end
 ```
+In questo esempio, il comando `continue` salta l'iterazione per i numeri pari, stampando solo i numeri dispari.
 
 ### Esempio 2: Saltare file non leggibili
-In questo esempio, si utilizza `continue` per saltare file che non possono essere letti in una directory.
-
-```bash
-for file in *; do
-    if [ ! -r "$file" ]; then
+```csh
+foreach file (*)
+    if (! -r $file) then
         continue
-    fi
+    endif
     echo "File leggibile: $file"
-done
+end
 ```
+Qui, il comando `continue` viene utilizzato per saltare i file che non possono essere letti, stampando solo i file leggibili.
 
-### Esempio 3: Saltare iterazioni in un ciclo while
-Utilizzando `continue` in un ciclo `while` per saltare le iterazioni basate su una condizione.
-
-```bash
-count=1
-while [ $count -le 10 ]; do
-    (( count % 3 == 0 )) && { count=$((count + 1)); continue; }
-    echo "Numero: $count"
-    ((count++))
-done
+### Esempio 3: Usare continue in un ciclo while
+```csh
+set count = 0
+while ($count < 10)
+    @ count++
+    if ($count == 5) then
+        continue
+    endif
+    echo "Count: $count"
+end
 ```
+In questo caso, il ciclo salta l'iterazione quando il contatore raggiunge 5, quindi non verrà stampato.
 
 ## Tips
-- Utilizza `continue` per migliorare la leggibilità del codice, evitando annidamenti complessi di `if`.
-- Ricorda che `continue` influisce solo sul ciclo in cui è chiamato; non interrompe l'esecuzione di script o di altri cicli.
-- Sii cauto nell'uso di `continue` in cicli annidati, poiché salterà solo l'iterazione del ciclo più interno.
+- Utilizza `continue` per semplificare la logica dei tuoi cicli, evitando annidamenti complessi.
+- Ricorda che `continue` influisce solo sull'iterazione corrente del ciclo in cui è stato chiamato.
+- Testa sempre il tuo codice per assicurarti che le condizioni di salto siano corrette e non portino a comportamenti inattesi.

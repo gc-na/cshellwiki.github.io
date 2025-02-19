@@ -1,50 +1,50 @@
-# [Linux] Bash foreach Kullanımı: Dizi elemanları üzerinde döngü oluşturma
+# [Linux] C Shell (csh) foreach Kullanımı: Döngüsel işlem yapma komutu
 
-## Genel Bakış
-`foreach` komutu, bir dizi elemanını teker teker işlemek için kullanılan bir döngü yapısıdır. Genellikle, belirli bir komutu veya işlemi her bir dizi elemanı için tekrar etmek amacıyla kullanılır.
+## Overview
+`foreach` komutu, C Shell (csh) ortamında bir dizi öğe üzerinde döngüsel işlemler gerçekleştirmek için kullanılır. Bu komut, belirli bir komutu veya komut grubunu her bir öğe için tekrarlamak amacıyla kullanılır.
 
-## Kullanım
-Temel sözdizimi şu şekildedir:
+## Usage
+Temel sözdizimi aşağıdaki gibidir:
 
-```bash
-foreach [seçenekler] [argümanlar]
+```
+foreach [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-n`: Her bir döngü iterasyonunda çıktı vermeden işlemi gerçekleştirir.
-- `-p`: Kullanıcıdan her iterasyonda girdi alır.
-- `-v`: Değişkenlerin değerlerini görüntüler.
+## Common Options
+- `-n`: Her bir döngü adımında komutları çalıştırmadan önce gösterir.
+- `-p`: Her bir döngü adımında komutları çalıştırmadan önce kullanıcıdan onay ister.
 
-## Yaygın Örnekler
-Aşağıda `foreach` komutunun bazı pratik örnekleri verilmiştir:
+## Common Examples
+Aşağıda `foreach` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
-### Örnek 1: Basit Dizi Üzerinde Döngü
-```bash
-foreach i (1 2 3 4 5)
-    echo "Sayı: $i"
-end
-```
-Bu örnek, 1'den 5'e kadar olan sayıları ekrana yazdırır.
+### Örnek 1: Basit döngü
+Belirli bir dizi dosya üzerinde işlem yapmak için:
 
-### Örnek 2: Dosya Uzantılarını Değiştirme
-```bash
+```csh
 foreach file (*.txt)
-    mv $file $file:r.md
+    echo "Processing $file"
 end
 ```
-Bu komut, mevcut dizindeki tüm `.txt` dosyalarını `.md` uzantısına dönüştürür.
 
-### Örnek 3: Kullanıcıdan Girdi Alma
-```bash
-foreach i (1 2 3)
-    echo "Lütfen bir sayı girin:"
-    set num = $< 
-    echo "Girdiğiniz sayı: $num"
+### Örnek 2: Sayıları döngü ile yazdırma
+1'den 5'e kadar olan sayıları yazdırmak için:
+
+```csh
+foreach i (1 2 3 4 5)
+    echo "Number: $i"
 end
 ```
-Bu örnek, her iterasyonda kullanıcıdan bir sayı girmesini ister ve ardından bu sayıyı ekrana yazdırır.
 
-## İpuçları
-- `foreach` komutunu kullanırken, döngü içindeki değişkenlerin doğru tanımlandığından emin olun.
-- Uzun döngülerde performansı artırmak için gereksiz işlemlerden kaçının.
-- Kullanıcı girdisi alırken, girdilerin doğruluğunu kontrol etmek için ek kontroller eklemeyi düşünün.
+### Örnek 3: Komutların birleştirilmesi
+Bir dizi dosyayı kopyalamak için:
+
+```csh
+foreach file (*.jpg)
+    cp $file /backup/
+end
+```
+
+## Tips
+- `foreach` komutunu kullanırken, her döngü adımının sonunda `end` ifadesini eklemeyi unutmayın.
+- Komutları test etmek için `-n` seçeneğini kullanarak döngüdeki işlemleri görmeden önce kontrol edebilirsiniz.
+- Daha karmaşık işlemler için döngü içinde başka komutlar veya koşullar kullanabilirsiniz.

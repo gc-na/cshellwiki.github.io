@@ -1,46 +1,46 @@
-# [Linux] Bash printenv Gebruik: Toont omgevingsvariabelen
+# [Linux] C Shell (csh) printenv Gebruik: Toon omgevingsvariabelen
 
 ## Overzicht
-De `printenv` opdracht in Bash wordt gebruikt om de huidige omgevingsvariabelen weer te geven. Omgevingsvariabelen zijn dynamische waarden die informatie bevatten over de omgeving waarin een proces draait, zoals systeeminstellingen en gebruikersinformatie.
+De `printenv` opdracht in C Shell (csh) wordt gebruikt om de waarden van omgevingsvariabelen weer te geven. Dit is handig voor het controleren van configuraties en het debuggen van omgevingsinstellingen.
 
 ## Gebruik
 De basis syntaxis van de `printenv` opdracht is als volgt:
 
-```bash
+```csh
 printenv [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-0` : Scheidt de uitvoer met null-terminators in plaats van nieuwe regels.
-- `VARIABEL` : Geef de waarde van een specifieke omgevingsvariabele weer. Als de variabele niet bestaat, wordt er geen uitvoer gegeven.
+- `-0`: Scheidt de uitvoer met null bytes in plaats van nieuwe regels. Dit is nuttig voor het verwerken van omgevingsvariabelen met speciale tekens.
+- `VAR`: Geef de naam van een specifieke omgevingsvariabele op om alleen de waarde daarvan weer te geven.
 
 ## Veelvoorkomende Voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van `printenv`:
 
 1. **Alle omgevingsvariabelen weergeven:**
-   ```bash
+
+   ```csh
    printenv
    ```
 
-2. **Een specifieke omgevingsvariabele weergeven (bijvoorbeeld PATH):**
-   ```bash
-   printenv PATH
+2. **Een specifieke omgevingsvariabele weergeven, bijvoorbeeld `HOME`:**
+
+   ```csh
+   printenv HOME
    ```
 
-3. **Omgevingsvariabelen scheiden met null-terminators:**
-   ```bash
+3. **Omgevingsvariabelen weergeven met null byte scheiding:**
+
+   ```csh
    printenv -0
-   ```
-
-4. **Een niet-bestaande variabele controleren:**
-   ```bash
-   printenv ONBEKENDE_VAR
    ```
 
 ## Tips
 - Gebruik `printenv` zonder argumenten om snel een overzicht van alle omgevingsvariabelen te krijgen.
-- Combineer `printenv` met andere opdrachten zoals `grep` om specifieke variabelen te filteren. Bijvoorbeeld:
-  ```bash
-  printenv | grep USER
-  ```
-- Houd er rekening mee dat `printenv` alleen omgevingsvariabelen toont en geen shell-variabelen. Gebruik `set` voor een volledige lijst van alle variabelen.
+- Combineer `printenv` met andere commando's zoals `grep` om specifieke variabelen te filteren. Bijvoorbeeld:
+
+   ```csh
+   printenv | grep PATH
+   ```
+
+- Wees voorzichtig met het gebruik van omgevingsvariabelen in scripts, aangezien ze invloed kunnen hebben op de uitvoering van je programma's.

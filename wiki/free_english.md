@@ -1,50 +1,50 @@
-# [Linux] Bash free comando: mostrar información de memoria
+# [Linux] C Shell (csh) free comando: Muestra la memoria del sistema
 
 ## Overview
-The `free` command in Linux is used to display information about the system's memory usage, including total, used, free, shared, buffer/cache, and available memory. This command is useful for monitoring memory usage and diagnosing performance issues.
+The `free` command in C Shell (csh) is used to display the amount of free and used memory in the system. It provides a quick overview of memory usage, including physical memory, swap memory, and buffers used by the kernel.
 
 ## Usage
 The basic syntax of the `free` command is as follows:
 
-```bash
+```csh
 free [options] [arguments]
 ```
 
 ## Common Options
-- `-h`: Display the memory sizes in a human-readable format (e.g., KB, MB, GB).
+- `-h`: Display the memory in a human-readable format (e.g., KB, MB).
 - `-m`: Show the memory usage in megabytes.
 - `-g`: Show the memory usage in gigabytes.
-- `-s <seconds>`: Continuously display memory usage at specified intervals (in seconds).
-- `-t`: Display a total line that summarizes the memory usage.
+- `-s <seconds>`: Continuously display memory usage at specified intervals.
 
 ## Common Examples
+Here are some practical examples of using the `free` command:
 
-1. **Display memory usage in human-readable format:**
-   ```bash
+1. **Display memory usage in the default format:**
+   ```csh
+   free
+   ```
+
+2. **Display memory usage in a human-readable format:**
+   ```csh
    free -h
    ```
 
-2. **Show memory usage in megabytes:**
-   ```bash
+3. **Show memory usage in megabytes:**
+   ```csh
    free -m
    ```
 
-3. **Show memory usage in gigabytes:**
-   ```bash
+4. **Show memory usage in gigabytes:**
+   ```csh
    free -g
    ```
 
-4. **Continuously display memory usage every 5 seconds:**
-   ```bash
+5. **Continuously display memory usage every 5 seconds:**
+   ```csh
    free -s 5
    ```
 
-5. **Display memory usage with a total line:**
-   ```bash
-   free -t -h
-   ```
-
 ## Tips
-- Use the `-h` option for easier readability when checking memory usage.
-- Combine the `-s` option with `-h` for a continuous, easy-to-read output.
-- Regularly monitor memory usage, especially on servers, to ensure optimal performance and prevent memory exhaustion.
+- Use the `-h` option for a quick and easy-to-read summary of memory usage.
+- Combine the `-s` option with `-h` for real-time monitoring in a human-readable format.
+- Regularly check memory usage to identify potential performance issues in your system.

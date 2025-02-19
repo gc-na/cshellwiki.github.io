@@ -1,7 +1,7 @@
-# [Linux] Bash pidstat Verwendung: Überwachung von Prozessstatistiken
+# [Linux] C Shell (csh) pidstat: Prozessstatistiken anzeigen
 
 ## Übersicht
-Der Befehl `pidstat` ist ein nützliches Tool zur Überwachung von Prozessstatistiken in Echtzeit. Es zeigt Informationen über CPU-Nutzung, Speicherverbrauch und andere Leistungsmetriken für laufende Prozesse an. Dies ist besonders hilfreich für Systemadministratoren und Entwickler, die die Leistung ihrer Anwendungen analysieren möchten.
+Der Befehl `pidstat` wird verwendet, um die CPU- und Speicherverbrauchsstatistiken von Prozessen in Echtzeit anzuzeigen. Er ist besonders nützlich, um die Leistung von Prozessen zu überwachen und Engpässe zu identifizieren.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
@@ -11,41 +11,36 @@ pidstat [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-h`: Zeigt die Hilfe an und listet alle verfügbaren Optionen auf.
-- `-r`: Zeigt die Speichernutzung der Prozesse an.
+- `-h`: Zeigt die Statistiken in einem menschenlesbaren Format an.
+- `-r`: Zeigt den Speicherverbrauch der Prozesse an.
+- `-p <PID>`: Überwacht einen spezifischen Prozess anhand seiner Prozess-ID.
 - `-u`: Zeigt die CPU-Nutzung der Prozesse an.
-- `-p <PID>`: Überwacht einen spezifischen Prozess anhand seiner Prozess-ID (PID).
-- `-t`: Zeigt die Statistiken für Threads an.
+- `-t`: Zeigt die Statistiken für alle Threads eines Prozesses an.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele zur Verwendung von `pidstat`:
+Hier sind einige praktische Beispiele für die Verwendung von `pidstat`:
 
-1. **CPU-Nutzung aller Prozesse anzeigen**:
+1. **CPU-Nutzung aller Prozesse anzeigen:**
    ```bash
    pidstat -u
    ```
 
-2. **Speichernutzung für alle Prozesse anzeigen**:
+2. **Speicherverbrauch eines spezifischen Prozesses überwachen:**
    ```bash
-   pidstat -r
+   pidstat -r -p 1234
    ```
 
-3. **Überwachung eines spezifischen Prozesses (z.B. PID 1234)**:
+3. **Statistiken für alle Threads eines Prozesses anzeigen:**
    ```bash
-   pidstat -p 1234
+   pidstat -t -p 5678
    ```
 
-4. **Statistiken für Threads eines Prozesses anzeigen**:
+4. **Statistiken alle 5 Sekunden aktualisieren:**
    ```bash
-   pidstat -t -p 1234
-   ```
-
-5. **CPU- und Speichernutzung alle 2 Sekunden anzeigen**:
-   ```bash
-   pidstat -u -r 2
+   pidstat 5
    ```
 
 ## Tipps
-- Verwenden Sie die Option `-h`, um eine vollständige Liste der verfügbaren Optionen zu erhalten und sich mit den Funktionen vertraut zu machen.
-- Kombinieren Sie `pidstat` mit anderen Befehlen wie `grep`, um spezifische Prozesse zu filtern.
-- Nutzen Sie die Möglichkeit, Statistiken über einen längeren Zeitraum zu sammeln, indem Sie die Abfrageintervalle anpassen, um Trends in der Nutzung zu erkennen.
+- Verwenden Sie die Option `-h`, um die Ausgabe besser lesbar zu machen, insbesondere bei großen Datenmengen.
+- Kombinieren Sie Optionen, um umfassendere Informationen zu erhalten, z.B. `pidstat -u -r`.
+- Überwachen Sie regelmäßig die Prozesse, um potenzielle Leistungsprobleme frühzeitig zu erkennen.

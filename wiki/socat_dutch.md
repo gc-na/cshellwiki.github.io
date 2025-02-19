@@ -1,50 +1,46 @@
-# [Linux] Bash socat gebruik: Verbind netwerken en streams
+# [Linux] C Shell (csh) socat gebruik: Verbind netwerksockets en bestanden
 
 ## Overzicht
-De `socat` (SOcket CAT) opdracht is een veelzijdig hulpmiddel voor het maken van verbindingen tussen verschillende datastromen, zoals netwerkverbindingen en lokale bestanden. Het kan worden gebruikt om gegevens door te sturen, te converteren of te manipuleren tussen verschillende bronnen.
+De `socat` (SOcket CAT) opdracht is een veelzijdig hulpmiddel dat wordt gebruikt om gegevens tussen verschillende datastromen te verplaatsen. Het kan verbinding maken met netwerksockets, bestanden, en andere invoer- en uitvoerbronnen, waardoor het een krachtig hulpmiddel is voor netwerkcommunicatie en gegevensoverdracht.
 
 ## Gebruik
 De basis syntaxis van de `socat` opdracht is als volgt:
 
-```bash
+```csh
 socat [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
-- `-d`: Schakel debug-informatie in.
-- `-v`: Toon gedetailleerde uitvoer van de gegevens die worden verzonden en ontvangen.
-- `TCP:<host>:<poort>`: Verbind met een TCP-server op de opgegeven host en poort.
-- `UDP:<host>:<poort>`: Verbind met een UDP-server op de opgegeven host en poort.
+## Veelvoorkomende opties
+- `-h`: Toon de helpinformatie.
+- `-v`: Zet de uitvoer in de verbose modus voor meer gedetailleerde informatie.
+- `TCP:<host>:<port>`: Verbind met een TCP-host op een specifieke poort.
+- `UDP:<host>:<port>`: Verbind met een UDP-host op een specifieke poort.
 - `FILE:<bestand>`: Lees of schrijf naar een bestand.
 
-## Veelvoorkomende Voorbeelden
+## Veelvoorkomende voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van `socat`:
 
-1. **Verbind met een TCP-server:**
-   ```bash
-   socat - TCP:example.com:80
+1. **Verbinding maken met een TCP-server**:
+   ```csh
+   socat -v - TCP:example.com:80
    ```
 
-2. **Verbind met een UDP-server:**
-   ```bash
-   socat - UDP:example.com:1234
-   ```
-
-3. **Verbind een lokale poort met een externe server:**
-   ```bash
+2. **Een lokale poort doorsturen naar een externe server**:
+   ```csh
    socat TCP-LISTEN:8080,fork TCP:example.com:80
    ```
 
-4. **Verbind een bestand met een TCP-server:**
-   ```bash
-   socat FILE:/pad/naar/bestand.txt TCP:example.com:80
+3. **Gegevens verzenden van een bestand naar een TCP-server**:
+   ```csh
+   socat FILE:input.txt TCP:example.com:1234
    ```
 
-5. **Verzend gegevens van een lokale poort naar een bestand:**
-   ```bash
-   socat TCP-LISTEN:8080,fork FILE:/pad/naar/bestand.txt
+4. **Een UDP-verbinding maken**:
+   ```csh
+   socat -v UDP:example.com:1234 -
    ```
 
 ## Tips
-- Gebruik de `-d -v` opties voor debug-informatie om problemen op te lossen.
-- Zorg ervoor dat je de juiste rechten hebt voor bestanden en poorten die je wilt gebruiken.
-- Test verbindingen met een eenvoudige `socat` opdracht voordat je complexere configuraties instelt.
+- Gebruik de `-v` optie om meer inzicht te krijgen in wat er gebeurt tijdens de uitvoering van de opdracht.
+- Zorg ervoor dat je de juiste poorten en protocollen gebruikt om verbindingsproblemen te voorkomen.
+- Test je commando's in een veilige omgeving voordat je ze in productie gebruikt, vooral bij het werken met netwerken.

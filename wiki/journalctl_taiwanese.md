@@ -1,48 +1,40 @@
-# [Linux] Bash journalctl 使用說明: 查看系統日誌
+# [台灣] C Shell (csh) journalctl 用法: 查看系統日誌
 
 ## Overview
-`journalctl` 是一個用於查詢和顯示系統日誌的命令。它可以從 systemd 日誌中檢索和顯示各種服務和系統事件的詳細信息，幫助用戶進行故障排除和監控系統狀態。
+`journalctl` 是一個用於查看系統日誌的命令，特別是由 systemd 管理的日誌。它可以幫助用戶檢查系統的運行狀態、錯誤和其他重要事件。
 
 ## Usage
 基本語法如下：
-```
+```csh
 journalctl [options] [arguments]
 ```
 
 ## Common Options
-- `-b`：顯示當前啟動以來的日誌。
-- `-f`：持續顯示最新的日誌輸出，類似於 `tail -f`。
-- `--since`：顯示指定時間以來的日誌，例如 `--since "2023-10-01"`。
-- `--until`：顯示直到指定時間的日誌，例如 `--until "2023-10-02"`。
-- `-u`：顯示特定服務的日誌，例如 `-u nginx.service`。
+- `-b`：顯示當前啟動的日誌。
+- `-f`：實時跟蹤日誌輸出。
+- `--since`：顯示從指定時間以來的日誌。
+- `--until`：顯示直到指定時間的日誌。
+- `-u`：顯示特定單元（如服務）的日誌。
 
 ## Common Examples
-- 查看當前啟動以來的所有日誌：
-  ```bash
-  journalctl -b
-  ```
-
-- 持續顯示最新的日誌：
-  ```bash
-  journalctl -f
-  ```
-
-- 查看特定時間範圍內的日誌：
-  ```bash
-  journalctl --since "2023-10-01" --until "2023-10-02"
-  ```
-
+- 查看當前啟動的日誌：
+```csh
+journalctl -b
+```
+- 實時跟蹤日誌：
+```csh
+journalctl -f
+```
+- 查看從特定日期以來的日誌：
+```csh
+journalctl --since "2023-10-01"
+```
 - 查看特定服務的日誌：
-  ```bash
-  journalctl -u ssh.service
-  ```
-
-- 查看特定優先級的日誌（例如錯誤）：
-  ```bash
-  journalctl -p err
-  ```
+```csh
+journalctl -u ssh.service
+```
 
 ## Tips
-- 使用 `-n` 選項可以限制顯示的日誌行數，例如 `journalctl -n 100` 只顯示最近的 100 行日誌。
-- 結合 `grep` 使用可以更精確地查找特定內容，例如 `journalctl | grep "error"`。
-- 定期檢查日誌可以幫助及早發現系統問題，建議將其納入日常維護流程中。
+- 使用 `-f` 選項可以方便地監控系統日誌，特別是在排查問題時。
+- 結合 `--since` 和 `--until` 可以精確篩選日誌，方便查找特定時間範圍內的事件。
+- 定期檢查日誌可以幫助及早發現潛在的系統問題。

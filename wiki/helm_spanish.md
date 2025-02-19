@@ -1,7 +1,7 @@
-# [Linux] Bash helm uso: Gestionar paquetes de Kubernetes
+# [Linux] C Shell (csh) helm uso: Gestionar aplicaciones en Kubernetes
 
 ## Overview
-El comando `helm` es una herramienta de gestión de paquetes para Kubernetes que permite a los usuarios definir, instalar y actualizar aplicaciones en clústeres de Kubernetes. Facilita la implementación de aplicaciones complejas mediante el uso de "charts", que son colecciones de archivos que describen un conjunto relacionado de recursos de Kubernetes.
+El comando `helm` se utiliza para gestionar aplicaciones en Kubernetes mediante la creación, instalación y actualización de paquetes llamados "charts". Helm facilita la implementación de aplicaciones complejas al proporcionar una forma sencilla de definir, instalar y gestionar aplicaciones en un clúster de Kubernetes.
 
 ## Usage
 La sintaxis básica del comando `helm` es la siguiente:
@@ -15,37 +15,37 @@ helm [opciones] [argumentos]
 - `upgrade`: Actualiza una instalación existente de un chart.
 - `uninstall`: Desinstala un chart de un clúster de Kubernetes.
 - `list`: Muestra las instalaciones de charts en el clúster.
-- `repo`: Gestiona los repositorios de charts.
+- `repo`: Gestiona repositorios de charts.
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso del comando `helm`:
 
-### Instalar un chart
-```bash
-helm install mi-aplicacion stable/mi-chart
-```
+1. **Instalar un chart**:
+   ```bash
+   helm install mi-aplicacion stable/mi-chart
+   ```
 
-### Actualizar un chart
-```bash
-helm upgrade mi-aplicacion stable/mi-chart
-```
+2. **Actualizar una instalación existente**:
+   ```bash
+   helm upgrade mi-aplicacion stable/mi-chart
+   ```
 
-### Desinstalar un chart
-```bash
-helm uninstall mi-aplicacion
-```
+3. **Desinstalar un chart**:
+   ```bash
+   helm uninstall mi-aplicacion
+   ```
 
-### Listar instalaciones de charts
-```bash
-helm list
-```
+4. **Listar todas las instalaciones de charts**:
+   ```bash
+   helm list
+   ```
 
-### Añadir un repositorio de charts
-```bash
-helm repo add mi-repo https://mi-repo.com/charts
-```
+5. **Agregar un repositorio de charts**:
+   ```bash
+   helm repo add mi-repo https://mi-repo-url.com
+   ```
 
 ## Tips
-- Asegúrate de mantener tus repositorios de charts actualizados utilizando `helm repo update`.
-- Utiliza `helm search repo` para buscar charts disponibles en tus repositorios.
-- Revisa la documentación de cada chart para entender las configuraciones y opciones disponibles antes de la instalación.
+- Asegúrate de tener configurado correctamente tu clúster de Kubernetes antes de usar Helm.
+- Utiliza `helm repo update` para mantener tus repositorios de charts actualizados.
+- Revisa la documentación de cada chart para entender las configuraciones y opciones disponibles.

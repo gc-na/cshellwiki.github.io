@@ -1,44 +1,44 @@
-# [Linux] Bash tại at: Lập lịch thực thi lệnh
+# [Hệ điều hành] C Shell (csh) tại at: [lên lịch thực thi lệnh]
 
-## Overview
-Lệnh `at` trong Bash cho phép người dùng lập lịch để thực thi một lệnh hoặc một tập lệnh vào một thời điểm cụ thể trong tương lai. Điều này rất hữu ích cho việc tự động hóa các tác vụ mà bạn muốn thực hiện mà không cần phải can thiệp thủ công.
+## Tổng quan
+Lệnh `at` trong C Shell (csh) cho phép người dùng lên lịch thực thi các lệnh hoặc tập lệnh vào một thời điểm cụ thể trong tương lai. Điều này rất hữu ích cho việc tự động hóa các tác vụ mà bạn muốn thực hiện mà không cần phải can thiệp thủ công.
 
-## Usage
+## Cách sử dụng
 Cú pháp cơ bản của lệnh `at` như sau:
 ```
-at [options] [time]
+at [options] [arguments]
 ```
 
-## Common Options
-- `-f FILE`: Chỉ định một tệp chứa lệnh cần thực thi.
+## Các tùy chọn phổ biến
+- `-f <file>`: Chỉ định tệp chứa các lệnh cần thực thi.
 - `-m`: Gửi email thông báo khi lệnh đã được thực thi.
-- `-q QUEUE`: Chỉ định hàng đợi mà lệnh sẽ được thêm vào.
-- `-l`: Liệt kê các tác vụ đã được lập lịch.
+- `-q <queue>`: Chỉ định hàng đợi để thực hiện lệnh.
+- `-l`: Liệt kê các công việc đã được lên lịch.
 
-## Common Examples
+## Ví dụ thường gặp
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `at`:
 
-1. **Lập lịch một lệnh để thực thi ngay sau 5 phút:**
+1. **Lên lịch một lệnh đơn giản**:
    ```bash
-   echo "echo 'Hello, World!'" | at now + 5 minutes
+   echo "echo Hello, World!" | at now + 1 minute
    ```
 
-2. **Lập lịch một lệnh vào lúc 3 giờ chiều hôm nay:**
+2. **Lên lịch thực thi một tệp lệnh**:
    ```bash
-   echo "backup.sh" | at 15:00
+   at 5 PM -f myscript.sh
    ```
 
-3. **Lập lịch một lệnh từ một tệp:**
+3. **Lên lịch một lệnh và nhận thông báo qua email**:
    ```bash
-   at -f myscript.sh 10:00
+   echo "backup.sh" | at now + 2 hours -m
    ```
 
-4. **Liệt kê các tác vụ đã được lập lịch:**
+4. **Liệt kê các công việc đã lên lịch**:
    ```bash
    at -l
    ```
 
-## Tips
-- Hãy chắc chắn rằng dịch vụ `atd` đang chạy trên hệ thống của bạn để lệnh `at` hoạt động.
-- Sử dụng tùy chọn `-m` để nhận thông báo qua email khi lệnh đã được thực thi, giúp bạn theo dõi các tác vụ đã lập lịch.
-- Kiểm tra lại thời gian và ngày tháng khi lập lịch để tránh nhầm lẫn và đảm bảo lệnh được thực thi đúng thời điểm mong muốn.
+## Mẹo
+- Hãy chắc chắn rằng bạn đã cài đặt dịch vụ `atd` để lệnh `at` hoạt động.
+- Kiểm tra thường xuyên các công việc đã lên lịch để tránh xung đột hoặc thực thi không mong muốn.
+- Sử dụng tùy chọn `-m` để nhận thông báo qua email, giúp bạn theo dõi các công việc đã thực hiện.

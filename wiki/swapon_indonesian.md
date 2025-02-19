@@ -1,52 +1,44 @@
-# [Linux] Bash swapon Penggunaan: Mengaktifkan ruang swap
+# [Sistem Operasi] C Shell (csh) swapon: Mengaktifkan ruang swap
 
 ## Overview
-Perintah `swapon` digunakan untuk mengaktifkan ruang swap di sistem Linux. Ruang swap adalah area di disk yang digunakan sebagai memori tambahan ketika RAM penuh. Dengan mengaktifkan swap, sistem dapat mengelola memori dengan lebih efisien, terutama saat menjalankan aplikasi yang membutuhkan banyak sumber daya.
+Perintah `swapon` digunakan untuk mengaktifkan ruang swap di sistem Unix-like. Ruang swap adalah area di disk yang digunakan untuk memperluas memori virtual, memungkinkan sistem untuk menangani lebih banyak data daripada yang dapat ditampung dalam RAM.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `swapon`:
 
-```bash
+```
 swapon [options] [arguments]
 ```
 
 ## Common Options
-Beberapa opsi umum untuk `swapon` meliputi:
-
-- `-a`: Mengaktifkan semua ruang swap yang terdaftar di file `/etc/fstab`.
-- `-e`: Mengaktifkan swap dengan memeriksa kesalahan.
-- `--show`: Menampilkan informasi tentang ruang swap yang sedang aktif.
+- `-a`: Mengaktifkan semua ruang swap yang terdaftar dalam file `/etc/fstab`.
+- `-e`: Menampilkan pesan kesalahan jika ada masalah saat mengaktifkan ruang swap.
+- `-s`: Menampilkan status ruang swap yang sedang aktif.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan perintah `swapon`:
+Berikut adalah beberapa contoh penggunaan `swapon`:
 
-1. **Mengaktifkan semua ruang swap yang terdaftar:**
-
-   ```bash
+1. **Mengaktifkan semua ruang swap yang terdaftar**:
+   ```csh
    swapon -a
    ```
 
-2. **Mengaktifkan ruang swap tertentu:**
-
-   ```bash
+2. **Mengaktifkan ruang swap tertentu**:
+   ```csh
    swapon /dev/sdX
    ```
 
-   Gantilah `/dev/sdX` dengan nama perangkat swap yang sesuai.
-
-3. **Menampilkan informasi tentang ruang swap yang aktif:**
-
-   ```bash
-   swapon --show
+3. **Menampilkan status ruang swap yang aktif**:
+   ```csh
+   swapon -s
    ```
 
-4. **Mengaktifkan swap dengan memeriksa kesalahan:**
-
-   ```bash
+4. **Mengaktifkan ruang swap dengan menampilkan kesalahan**:
+   ```csh
    swapon -e /dev/sdX
    ```
 
 ## Tips
-- Pastikan ruang swap sudah dibuat sebelum mengaktifkannya. Anda dapat menggunakan perintah `mkswap` untuk membuat ruang swap baru.
-- Periksa status ruang swap dengan perintah `free -h` untuk memastikan bahwa swap aktif dan digunakan dengan benar.
-- Gunakan opsi `-a` untuk mengaktifkan semua swap secara otomatis setelah reboot, dengan menambahkannya ke file `/etc/fstab`.
+- Pastikan ruang swap sudah dibuat dan diformat sebelum mengaktifkannya.
+- Periksa status ruang swap secara berkala menggunakan `swapon -s` untuk memastikan sistem berjalan dengan baik.
+- Gunakan `swapoff` untuk menonaktifkan ruang swap jika diperlukan.

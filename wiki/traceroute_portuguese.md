@@ -1,12 +1,12 @@
-# [Linux] Bash traceroute uso: Rastrear o caminho dos pacotes de rede
+# [Linux] C Shell (csh) traceroute uso: Rastrear o caminho de pacotes de rede
 
 ## Overview
-O comando `traceroute` é utilizado para rastrear o caminho que os pacotes de dados percorrem até um destino específico na rede. Ele fornece informações sobre cada salto (hop) que os pacotes fazem, incluindo o tempo que levam para chegar a cada ponto, o que pode ser útil para diagnosticar problemas de conectividade.
+O comando `traceroute` é utilizado para rastrear a rota que os pacotes de dados tomam até um destino específico na rede. Ele fornece informações sobre cada salto (hop) que os pacotes fazem, permitindo identificar onde podem ocorrer problemas de conectividade.
 
 ## Usage
 A sintaxe básica do comando `traceroute` é a seguinte:
 
-```bash
+```csh
 traceroute [opções] [destino]
 ```
 
@@ -14,39 +14,39 @@ traceroute [opções] [destino]
 Aqui estão algumas opções comuns que podem ser usadas com o comando `traceroute`:
 
 - `-m <max_hops>`: Define o número máximo de saltos a serem rastreados.
-- `-w <timeout>`: Define o tempo de espera para cada resposta (em segundos).
-- `-n`: Não resolve os endereços IP em nomes de host, mostrando apenas os endereços numéricos.
-- `-p <port>`: Especifica a porta a ser utilizada para o envio dos pacotes.
+- `-n`: Não resolve endereços IP em nomes de host, exibindo apenas os endereços IP.
+- `-w <timeout>`: Define o tempo limite em segundos para aguardar uma resposta de cada salto.
+- `-q <nqueries>`: Especifica o número de consultas a serem enviadas a cada salto.
 
 ## Common Examples
 Aqui estão alguns exemplos práticos do uso do comando `traceroute`:
 
-1. Rastrear o caminho até um site específico:
-   ```bash
-   traceroute www.example.com
+1. Rastrear a rota para um site específico:
+   ```csh
+   traceroute www.exemplo.com
    ```
 
-2. Rastrear o caminho até um endereço IP, limitando a 10 saltos:
-   ```bash
-   traceroute -m 10 192.168.1.1
+2. Rastrear a rota com um número máximo de saltos definido:
+   ```csh
+   traceroute -m 15 www.exemplo.com
    ```
 
-3. Rastrear o caminho sem resolver nomes de host:
-   ```bash
-   traceroute -n www.example.com
+3. Rastrear a rota sem resolver nomes de host:
+   ```csh
+   traceroute -n 8.8.8.8
    ```
 
-4. Rastrear o caminho com um tempo de espera de 2 segundos:
-   ```bash
-   traceroute -w 2 www.example.com
+4. Definir um tempo limite de resposta de 2 segundos:
+   ```csh
+   traceroute -w 2 www.exemplo.com
    ```
 
-5. Rastrear o caminho usando uma porta específica:
-   ```bash
-   traceroute -p 80 www.example.com
+5. Enviar 3 consultas a cada salto:
+   ```csh
+   traceroute -q 3 www.exemplo.com
    ```
 
 ## Tips
-- Utilize a opção `-n` se você quiser resultados mais rápidos, evitando a resolução de nomes de host.
-- Se você estiver enfrentando problemas de conectividade, observe os saltos onde o tempo de resposta aumenta significativamente, pois isso pode indicar um ponto de falha na rede.
-- Combine o `traceroute` com outros comandos de rede, como `ping`, para obter uma visão mais completa da conectividade da rede.
+- Utilize a opção `-n` se você estiver interessado apenas nos endereços IP, pois isso pode acelerar o processo.
+- Se você estiver enfrentando problemas de conectividade, analise os saltos que estão levando mais tempo para responder.
+- Combine opções para personalizar a saída e obter informações mais relevantes para suas necessidades de diagnóstico.

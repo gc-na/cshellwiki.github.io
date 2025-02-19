@@ -1,49 +1,44 @@
-# [Linux] Bash sha256sum gebruik: Controleer de integriteit van bestanden
+# [Linux] C Shell (csh) sha256sum gebruik: Bereken SHA-256 hashes
 
 ## Overzicht
-De `sha256sum` opdracht wordt gebruikt om de SHA-256 hashwaarde van bestanden te berekenen. Dit is nuttig voor het controleren van de integriteit van bestanden en het verifiëren of ze niet zijn gewijzigd of beschadigd.
+De `sha256sum` opdracht wordt gebruikt om de SHA-256 hash van bestanden te berekenen. Dit is nuttig voor het verifiëren van de integriteit van bestanden en het vergelijken van bestanden op basis van hun hashwaarden.
 
 ## Gebruik
 De basis syntaxis van de `sha256sum` opdracht is als volgt:
 
-```bash
+```csh
 sha256sum [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- `-b`: Verwerkt bestanden in binaire modus.
-- `-c`: Controleert de hashwaarden van bestanden op basis van een gegeven checksum-bestand.
-- `-h`: Toont een helpbericht met informatie over het gebruik van de opdracht.
-- `--tag`: Voegt een tag toe aan de output, wat handig kan zijn voor compatibiliteit met andere tools.
+## Veelvoorkomende Opties
+- `-b`: Behandel de invoer als binaire bestanden.
+- `-c`: Controleer de hashes van bestanden op basis van een eerder gegenereerde checksum.
+- `-o`: Schrijf de output naar een specifiek bestand.
+- `--help`: Toon een helpbericht met informatie over het gebruik van de opdracht.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
 
 1. **Bereken de SHA-256 hash van een bestand:**
-   ```bash
-   sha256sum voorbeeld.txt
+   ```csh
+   sha256sum bestand.txt
    ```
 
 2. **Bereken de SHA-256 hash van meerdere bestanden:**
-   ```bash
+   ```csh
    sha256sum bestand1.txt bestand2.txt
    ```
 
-3. **Sla de hashwaarde op in een bestand:**
-   ```bash
-   sha256sum voorbeeld.txt > hashwaarde.txt
+3. **Controleer de hash met een checksum bestand:**
+   ```csh
+   sha256sum -c checksums.sha256
    ```
 
-4. **Controleer de hashwaarde met een checksum-bestand:**
-   Eerst maak je een checksum-bestand:
-   ```bash
-   sha256sum voorbeeld.txt > voorbeeld.sha256
-   ```
-   Vervolgens controleer je het bestand:
-   ```bash
-   sha256sum -c voorbeeld.sha256
+4. **Schrijf de hash naar een bestand:**
+   ```csh
+   sha256sum bestand.txt > hash.txt
    ```
 
 ## Tips
-- Gebruik `sha256sum` in combinatie met andere commando's zoals `find` om de hashwaarden van meerdere bestanden in één keer te berekenen.
-- Bewaar de hashwaarden in een veilig bestand om later de integriteit van je bestanden te kunnen controleren.
-- Controleer regelmatig de hashwaarden van belangrijke bestanden om ervoor te zorgen dat ze niet zijn gewijzigd.
+- Gebruik de `-c` optie om de integriteit van gedownloade bestanden te verifiëren met een checksum bestand.
+- Voor binaire bestanden, zorg ervoor dat je de `-b` optie gebruikt om correcte resultaten te krijgen.
+- Het is een goede gewoonte om hashes te vergelijken na het verplaatsen of kopiëren van bestanden om dataverlies te voorkomen.

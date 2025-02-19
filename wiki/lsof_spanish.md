@@ -1,7 +1,7 @@
-# [Linux] Bash lsof Uso: Muestra archivos abiertos y procesos asociados
+# [Linux] C Shell (csh) lsof Uso: Muestra archivos abiertos por procesos
 
 ## Overview
-El comando `lsof` (List Open Files) se utiliza en sistemas Unix y Linux para mostrar una lista de todos los archivos abiertos y los procesos que los están utilizando. Esto incluye archivos regulares, directorios, bibliotecas, sockets y dispositivos. Es una herramienta valiosa para la administración del sistema y la resolución de problemas.
+El comando `lsof` (List Open Files) se utiliza para mostrar una lista de todos los archivos abiertos y los procesos que los están utilizando. Esto es útil para diagnosticar problemas de sistema, monitorear el uso de archivos y gestionar recursos.
 
 ## Usage
 La sintaxis básica del comando `lsof` es la siguiente:
@@ -11,49 +11,44 @@ lsof [opciones] [argumentos]
 ```
 
 ## Common Options
-Aquí hay algunas opciones comunes que puedes utilizar con `lsof`:
-
-- `-a`: Combina múltiples criterios de búsqueda.
-- `-c <nombre>`: Muestra solo los archivos abiertos por el proceso con el nombre especificado.
-- `-u <usuario>`: Muestra solo los archivos abiertos por el usuario especificado.
-- `-p <PID>`: Muestra solo los archivos abiertos por el proceso con el ID de proceso especificado.
-- `+D <directorio>`: Muestra todos los archivos abiertos en el directorio especificado y sus subdirectorios.
+- `-a`: Combina criterios de búsqueda (AND).
+- `-c <nombre>`: Muestra los archivos abiertos por procesos cuyo nombre comienza con el especificado.
+- `-u <usuario>`: Muestra los archivos abiertos por el usuario especificado.
+- `-p <PID>`: Muestra los archivos abiertos por el proceso con el ID de proceso especificado.
+- `+D <directorio>`: Muestra los archivos abiertos en el directorio especificado y sus subdirectorios.
 
 ## Common Examples
-Aquí tienes algunos ejemplos prácticos del uso de `lsof`:
+- Para listar todos los archivos abiertos en el sistema:
 
-1. **Listar todos los archivos abiertos:**
-   ```bash
-   lsof
-   ```
+```bash
+lsof
+```
 
-2. **Ver archivos abiertos por un usuario específico:**
-   ```bash
-   lsof -u nombre_usuario
-   ```
+- Para ver los archivos abiertos por un usuario específico:
 
-3. **Listar archivos abiertos por un proceso específico:**
-   ```bash
-   lsof -p 1234
-   ```
+```bash
+lsof -u nombre_usuario
+```
 
-4. **Buscar archivos abiertos en un directorio:**
-   ```bash
-   lsof +D /ruta/al/directorio
-   ```
+- Para listar archivos abiertos por un proceso específico usando su PID:
 
-5. **Combinar criterios para ver archivos abiertos por un usuario en un proceso específico:**
-   ```bash
-   lsof -u nombre_usuario -p 1234
-   ```
+```bash
+lsof -p 1234
+```
+
+- Para mostrar archivos abiertos en un directorio específico:
+
+```bash
+lsof +D /ruta/al/directorio
+```
+
+- Para buscar archivos abiertos por un comando específico:
+
+```bash
+lsof -c nombre_comando
+```
 
 ## Tips
-- Utiliza `sudo` para obtener información más completa sobre archivos abiertos por procesos que no pertenecen a tu usuario.
-- Filtra los resultados usando `grep` para encontrar información específica. Por ejemplo:
-  ```bash
-  lsof | grep nombre_archivo
-  ```
-- Recuerda que `lsof` puede generar una gran cantidad de salida, así que considera redirigir la salida a un archivo si necesitas revisarla más tarde:
-  ```bash
-  lsof > archivos_abiertos.txt
-  ```
+- Utiliza `sudo` para obtener información más completa sobre los archivos abiertos por todos los usuarios.
+- Filtra los resultados utilizando opciones para enfocarte en procesos o archivos específicos, lo que puede hacer que la salida sea más manejable.
+- Revisa regularmente los archivos abiertos para identificar posibles fugas de recursos o problemas de rendimiento en el sistema.

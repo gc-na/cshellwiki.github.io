@@ -1,48 +1,43 @@
-# [Linux] Bash complete użycie: Uzupełnianie poleceń
+# [Linux] C Shell (csh) complete: Uzupełnianie poleceń
 
 ## Overview
-Polecenie `complete` w Bash służy do definiowania, jak uzupełnianie poleceń działa dla określonych komend. Umożliwia to dostosowanie uzupełniania, aby lepiej pasowało do specyficznych potrzeb użytkownika.
+Polecenie `complete` w powłoce C Shell (csh) jest używane do automatycznego uzupełniania nazw plików i poleceń. Umożliwia to użytkownikom szybsze wprowadzanie komend, co zwiększa wydajność pracy w terminalu.
 
 ## Usage
 Podstawowa składnia polecenia `complete` wygląda następująco:
 
-```bash
+```csh
 complete [options] [arguments]
 ```
 
 ## Common Options
-- `-o` : Umożliwia dodanie opcji do uzupełniania.
-- `-F` : Określa funkcję, która ma być używana do uzupełniania.
-- `-A` : Umożliwia uzupełnianie na podstawie typu argumentu, np. plików lub katalogów.
+- `-c` : Umożliwia uzupełnianie poleceń.
+- `-f` : Umożliwia uzupełnianie nazw plików.
+- `-n` : Umożliwia uzupełnianie na podstawie nazw plików w katalogu.
+- `-d` : Umożliwia uzupełnianie katalogów.
 
 ## Common Examples
+1. Uzupełnianie poleceń:
+   ```csh
+   complete -c ls
+   ```
 
-### Przykład 1: Uzupełnianie dla własnej komendy
-Aby dodać uzupełnianie dla komendy `mycmd`, można użyć:
+2. Uzupełnianie nazw plików:
+   ```csh
+   complete -f cp
+   ```
 
-```bash
-complete -o nospace mycmd
-```
+3. Uzupełnianie nazw katalogów:
+   ```csh
+   complete -d mkdir
+   ```
 
-### Przykład 2: Użycie funkcji do uzupełniania
-Możesz zdefiniować funkcję, która zwraca listę możliwych argumentów:
-
-```bash
-_mycmd_completions() {
-    local commands="start stop restart"
-    COMPREPLY=( $(compgen -W "$commands" -- "${COMP_WORDS[1]}") )
-}
-complete -F _mycmd_completions mycmd
-```
-
-### Przykład 3: Uzupełnianie plików
-Aby umożliwić uzupełnianie plików dla komendy `filecmd`, użyj:
-
-```bash
-complete -A file filecmd
-```
+4. Uzupełnianie na podstawie nazw plików w katalogu:
+   ```csh
+   complete -n mv
+   ```
 
 ## Tips
-- Zawsze testuj nowe uzupełnienia w terminalu, aby upewnić się, że działają zgodnie z oczekiwaniami.
-- Używaj opcji `-o` do modyfikacji zachowania uzupełniania, aby dostosować je do swoich potrzeb.
-- Pamiętaj, aby dodać definicje uzupełniania do swojego pliku `.bashrc`, aby były dostępne przy każdym uruchomieniu terminala.
+- Używaj polecenia `complete` w połączeniu z innymi poleceniami, aby zwiększyć efektywność pracy.
+- Pamiętaj, aby regularnie aktualizować swoje uzupełnienia, aby były zgodne z nowymi plikami i katalogami w systemie.
+- Eksperymentuj z różnymi opcjami, aby znaleźć najlepsze ustawienia dla swoich potrzeb.

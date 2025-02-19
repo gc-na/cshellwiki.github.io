@@ -1,43 +1,46 @@
-# [Linux] Bash unexpand użycie: Konwertuje spacje na tabulatory
+# [Linux] C Shell (csh) unexpand użycie: Konwertuje spacje na tabulatory
 
-## Overview
-Polecenie `unexpand` w systemie Linux służy do konwertowania spacji w plikach tekstowych na tabulatory. Jest to przydatne, gdy chcemy zredukować rozmiar pliku lub dostosować formatowanie tekstu do wymagań programów, które preferują tabulatory.
+## Przegląd
+Polecenie `unexpand` w powłoce C Shell (csh) służy do konwertowania spacji w plikach tekstowych na tabulatory. Jest to przydatne, gdy chcemy zmniejszyć rozmiar pliku lub dostosować formatowanie tekstu.
 
-## Usage
-Podstawowa składnia polecenia `unexpand` jest następująca:
+## Użycie
+Podstawowa składnia polecenia `unexpand` wygląda następująco:
 
-```bash
+```
 unexpand [opcje] [argumenty]
 ```
 
-## Common Options
-- `-t, --tabs=N` - Ustawia szerokość tabulatorów na N znaków. Domyślnie jest to 8.
-- `-a, --all` - Konwertuje wszystkie spacje na tabulatory, a nie tylko te, które mogą być zamienione.
-- `-h, --help` - Wyświetla pomoc dotyczącą polecenia.
-- `-V, --version` - Wyświetla wersję programu.
+## Częste opcje
+- `-t, --tabs=NUM` - Ustala szerokość tabulatorów na NUM spacji.
+- `-a, --all` - Konwertuje wszystkie spacje na tabulatory, nie tylko te, które są na początku linii.
+- `-i, --initial` - Konwertuje tylko spacje na początku linii.
 
-## Common Examples
+## Częste przykłady
 1. Konwersja spacji na tabulatory w pliku `plik.txt`:
-   ```bash
+
+   ```csh
    unexpand plik.txt
    ```
 
-2. Zapisanie wyniku do nowego pliku `plik_z_tabulatorami.txt`:
-   ```bash
-   unexpand plik.txt > plik_z_tabulatorami.txt
-   ```
+2. Ustawienie szerokości tabulatorów na 4 spacje:
 
-3. Ustawienie szerokości tabulatorów na 4 znaki:
-   ```bash
+   ```csh
    unexpand -t 4 plik.txt
    ```
 
-4. Konwersja wszystkich spacji na tabulatory:
-   ```bash
+3. Konwersja wszystkich spacji w pliku `plik.txt`:
+
+   ```csh
    unexpand -a plik.txt
    ```
 
-## Tips
-- Używaj opcji `-t`, aby dostosować szerokość tabulatorów do swoich potrzeb.
-- Zawsze warto przetestować polecenie na kopii pliku, aby uniknąć utraty danych.
-- Możesz użyć `cat -A`, aby zobaczyć, jak spacje i tabulatory są reprezentowane w pliku, co może pomóc w lepszym zrozumieniu efektów działania `unexpand`.
+4. Konwersja spacji tylko na początku linii w pliku `plik.txt`:
+
+   ```csh
+   unexpand -i plik.txt
+   ```
+
+## Wskazówki
+- Zawsze warto wykonać kopię zapasową pliku przed dokonaniem konwersji, aby uniknąć utraty danych.
+- Możesz użyć `unexpand` w połączeniu z innymi poleceniami, takimi jak `grep` lub `sed`, aby przetwarzać dane w bardziej zaawansowany sposób.
+- Sprawdzaj wyniki konwersji, aby upewnić się, że formatowanie jest zgodne z oczekiwaniami.

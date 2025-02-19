@@ -1,7 +1,7 @@
-# [Linux] Bash docker-compose utilizzo: Gestire applicazioni Docker multi-contenitore
+# [Linux] C Shell (csh) docker-compose utilizzo: Gestire applicazioni Docker
 
 ## Overview
-Il comando `docker-compose` è uno strumento per definire e gestire applicazioni Docker che consistono in più contenitori. Utilizzando un file di configurazione, è possibile specificare i servizi, le reti e i volumi necessari per l'applicazione, semplificando così il processo di avvio e gestione.
+Il comando `docker-compose` è uno strumento che consente di definire e gestire applicazioni multi-container Docker. Con `docker-compose`, puoi configurare i servizi, le reti e i volumi necessari per la tua applicazione in un file di configurazione, semplificando così il processo di avvio e gestione dei container.
 
 ## Usage
 La sintassi di base del comando `docker-compose` è la seguente:
@@ -11,46 +11,49 @@ docker-compose [opzioni] [argomenti]
 ```
 
 ## Common Options
-- `up`: Avvia i contenitori definiti nel file `docker-compose.yml`.
-- `down`: Ferma e rimuove i contenitori, le reti e i volumi creati da `up`.
-- `build`: Costruisce o ricostruisce i servizi.
-- `logs`: Mostra i log dei contenitori.
-- `ps`: Elenca i contenitori in esecuzione.
+Ecco alcune opzioni comuni per `docker-compose`:
+
+- `up`: Avvia i container definiti nel file `docker-compose.yml`.
+- `down`: Ferma e rimuove i container, le reti e i volumi creati da `up`.
+- `build`: Costruisce o ricostruisce i servizi definiti nel file.
+- `logs`: Mostra i log dei container in esecuzione.
+- `exec`: Esegue un comando in un container in esecuzione.
 
 ## Common Examples
 Ecco alcuni esempi pratici di utilizzo di `docker-compose`:
 
-### Avviare i contenitori
-```bash
-docker-compose up
-```
+1. **Avviare i container**:
+   ```bash
+   docker-compose up
+   ```
 
-### Avviare i contenitori in modalità staccata
-```bash
-docker-compose up -d
-```
+2. **Avviare i container in modalità staccata**:
+   ```bash
+   docker-compose up -d
+   ```
 
-### Fermare i contenitori
-```bash
-docker-compose down
-```
+3. **Fermare e rimuovere i container**:
+   ```bash
+   docker-compose down
+   ```
 
-### Costruire i servizi
-```bash
-docker-compose build
-```
+4. **Costruire i servizi**:
+   ```bash
+   docker-compose build
+   ```
 
-### Visualizzare i log dei contenitori
-```bash
-docker-compose logs
-```
+5. **Visualizzare i log dei container**:
+   ```bash
+   docker-compose logs
+   ```
 
-### Elencare i contenitori in esecuzione
-```bash
-docker-compose ps
-```
+6. **Eseguire un comando in un container**:
+   ```bash
+   docker-compose exec nome_servizio comando
+   ```
 
 ## Tips
-- Utilizza il flag `-d` con `up` per eseguire i contenitori in background, permettendo di continuare a utilizzare il terminale.
-- Assicurati di avere un file `docker-compose.yml` ben configurato per evitare errori durante l'avvio dei servizi.
-- Usa `docker-compose exec [servizio] [comando]` per eseguire comandi all'interno di un contenitore in esecuzione.
+- Assicurati di avere un file `docker-compose.yml` ben configurato per evitare errori durante l'esecuzione.
+- Utilizza l'opzione `-d` per eseguire i container in background, specialmente in ambienti di produzione.
+- Controlla regolarmente i log dei container per monitorare lo stato e risolvere eventuali problemi.
+- Sfrutta i profili nel file `docker-compose.yml` per gestire diverse configurazioni di ambiente.

@@ -1,7 +1,7 @@
-# [Linux] Bash awk utilisation : Traitement et analyse de texte
+# [Linux] C Shell (csh) awk Utilisation : Traitement de texte et extraction de données
 
 ## Overview
-La commande `awk` est un puissant outil de traitement de texte en ligne de commande qui permet d'analyser et de manipuler des fichiers texte ou des flux de données. Elle est particulièrement utile pour extraire des colonnes de données, effectuer des calculs et générer des rapports formatés.
+La commande `awk` est un puissant outil de traitement de texte et d'extraction de données. Elle permet de manipuler des fichiers texte en fonction de motifs spécifiques, facilitant ainsi l'analyse et la transformation des données.
 
 ## Usage
 La syntaxe de base de la commande `awk` est la suivante :
@@ -13,38 +13,39 @@ awk [options] [arguments]
 ## Common Options
 Voici quelques options courantes pour `awk` :
 
-- `-F` : Définit le séparateur de champ (par défaut, c'est un espace ou une tabulation).
+- `-F` : Définit le séparateur de champs. Par défaut, c'est un espace.
 - `-v` : Permet de définir une variable avant l'exécution du programme `awk`.
 - `-f` : Spécifie un fichier contenant le programme `awk` à exécuter.
 
 ## Common Examples
-Voici quelques exemples pratiques d'utilisation de `awk` :
+Voici quelques exemples pratiques de l'utilisation de `awk` :
 
-### Exemple 1 : Afficher la première colonne d'un fichier
-```bash
-awk '{print $1}' fichier.txt
-```
-Cet exemple affiche la première colonne de chaque ligne du fichier `fichier.txt`.
+1. **Afficher la première colonne d'un fichier :**
+   ```bash
+   awk '{print $1}' fichier.txt
+   ```
 
-### Exemple 2 : Utiliser un séparateur de champ
-```bash
-awk -F, '{print $2}' fichier.csv
-```
-Ici, `awk` utilise la virgule comme séparateur de champ pour afficher la deuxième colonne d'un fichier CSV.
+2. **Utiliser un séparateur de champs personnalisé :**
+   ```bash
+   awk -F, '{print $2}' fichier.csv
+   ```
 
-### Exemple 3 : Calculer la somme d'une colonne
-```bash
-awk '{somme += $1} END {print somme}' fichier.txt
-```
-Cet exemple calcule et affiche la somme de tous les nombres présents dans la première colonne du fichier `fichier.txt`.
+3. **Calculer la somme d'une colonne :**
+   ```bash
+   awk '{sum += $1} END {print sum}' fichier.txt
+   ```
 
-### Exemple 4 : Filtrer les lignes avec une condition
-```bash
-awk '$3 > 50' fichier.txt
-```
-Cet exemple affiche toutes les lignes du fichier `fichier.txt` où la valeur de la troisième colonne est supérieure à 50.
+4. **Filtrer les lignes contenant un motif spécifique :**
+   ```bash
+   awk '/motif/ {print}' fichier.txt
+   ```
+
+5. **Définir une variable et l'utiliser :**
+   ```bash
+   awk -v seuil=10 '$1 > seuil {print $0}' fichier.txt
+   ```
 
 ## Tips
-- Utilisez des commentaires dans vos scripts `awk` pour expliquer la logique de votre code.
-- Testez vos commandes `awk` sur de petits fichiers avant de les appliquer à des fichiers plus volumineux pour éviter des erreurs.
-- Combinez `awk` avec d'autres commandes comme `grep` ou `sort` pour des analyses de données plus complexes.
+- Utilisez des commentaires dans vos scripts `awk` pour clarifier votre logique.
+- Testez vos commandes `awk` sur des petits fichiers avant de les appliquer à des fichiers plus volumineux.
+- Combinez `awk` avec d'autres commandes Unix pour des analyses plus complexes, comme `grep` ou `sort`.

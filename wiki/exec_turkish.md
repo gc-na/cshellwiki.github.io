@@ -1,39 +1,39 @@
-# [Linux] Bash exec Kullanımı: Komutları çalıştırma
+# [Linux] C Shell (csh) exec Kullanımı: Komutları değiştirme
 
-## Genel Bakış
-`exec` komutu, mevcut shell oturumunda yeni bir komut çalıştırmak için kullanılır. Bu komut, mevcut shell sürecini yeni bir komut ile değiştirir, yani yeni bir shell başlatmaz. Bu sayede, çalıştırılan komut tamamlandığında shell oturumu da sonlanır.
+## Overview
+`exec` komutu, mevcut shell oturumunda yeni bir komut çalıştırmak için kullanılır. Bu komut, mevcut shell'i yeni bir programla değiştirir ve bu program çalıştıktan sonra shell geri dönmez.
 
-## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
-```bash
-exec [seçenekler] [argümanlar]
+## Usage
+Temel sözdizimi şu şekildedir:
+```csh
+exec [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-a`: Belirtilen komutun farklı bir isimle çalıştırılmasını sağlar.
-- `-l`: Yeni bir login shell başlatır.
-- `-p`: Çalıştırılan komutun ortam değişkenlerini korur.
+## Common Options
+- `-a`: Belirtilen programı çalıştırmadan önce alternatif bir isim belirler.
+- `-l`: Yeni shell'i oturum açma shell'i olarak başlatır.
+- `-c`: Komutları bir dize olarak alır ve çalıştırır.
 
-## Yaygın Örnekler
-1. Bir komutu çalıştırmak:
-   ```bash
+## Common Examples
+1. Basit bir komut çalıştırma:
+   ```csh
    exec ls -l
    ```
-   Bu komut, mevcut shell'i `ls -l` komutuyla değiştirir ve sonuçları gösterir.
+   Bu komut, mevcut shell'i `ls -l` komutuyla değiştirir ve dosya listesini gösterir.
 
-2. Yeni bir shell başlatmak:
-   ```bash
-   exec bash
+2. Bir programı alternatif bir isimle çalıştırma:
+   ```csh
+   exec -a myalias /usr/bin/python3
    ```
-   Bu komut, mevcut shell'i `bash` ile değiştirir ve yeni bir bash oturumu başlatır.
+   Bu komut, `python3` programını `myalias` adıyla çalıştırır.
 
-3. Bir komutu farklı bir isimle çalıştırmak:
-   ```bash
-   exec -a yeni_isim /path/to/original_command
+3. Bir shell oturumu başlatma:
+   ```csh
+   exec -l /bin/bash
    ```
-   Bu komut, belirtilen komutu `yeni_isim` adıyla çalıştırır.
+   Bu komut, mevcut shell'i `bash` ile değiştirir ve oturum açma shell'i olarak başlatır.
 
-## İpuçları
-- `exec` komutunu kullanmadan önce, mevcut shell oturumunuzda kaydedilmesi gereken herhangi bir değişiklik olup olmadığını kontrol edin, çünkü `exec` mevcut shell'i değiştirecektir.
-- `exec` ile çalıştırılan komutlar, shell oturumunu sonlandıracağı için dikkatli kullanılmalıdır.
-- `exec` komutunu, betik dosyalarında sonlandırma işlemleri için kullanmak, daha temiz bir çıkış sağlar.
+## Tips
+- `exec` komutunu kullanırken, mevcut shell oturumunun sona ereceğini unutmayın. Bu nedenle, önemli işlemleri kaydettiğinizden emin olun.
+- `exec` ile çalıştırdığınız programın sonlanması durumunda, shell geri dönmeyecektir. Bu yüzden dikkatli kullanın.
+- `exec` komutunu, bir script içinde kullanarak, scriptin sonrasında başka bir komut çalıştırmak yerine mevcut shell'i değiştirmek için faydalı hale getirebilirsiniz.

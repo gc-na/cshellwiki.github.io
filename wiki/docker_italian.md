@@ -1,59 +1,53 @@
-# [Linux] Bash docker uso: Gestire container e immagini
+# [Linux] C Shell (csh) docker utilizzo: Gestire contenitori e immagini
 
 ## Overview
-Il comando `docker` è uno strumento fondamentale per gestire container e immagini in un ambiente di virtualizzazione. Permette di creare, eseguire e gestire applicazioni in modo isolato, semplificando il processo di sviluppo e distribuzione.
+Il comando `docker` è uno strumento potente per gestire contenitori e immagini in un ambiente di virtualizzazione. Permette di creare, eseguire e gestire applicazioni in contenitori isolati, facilitando lo sviluppo e il deployment.
 
 ## Usage
 La sintassi di base del comando `docker` è la seguente:
 
-```bash
-docker [opzioni] [argomenti]
+```csh
+docker [options] [arguments]
 ```
 
 ## Common Options
 Ecco alcune opzioni comuni utilizzate con il comando `docker`:
 
-- `run`: Esegue un nuovo container.
-- `ps`: Elenca i container in esecuzione.
-- `images`: Mostra le immagini disponibili localmente.
-- `pull`: Scarica un'immagine da un registro.
-- `build`: Costruisce un'immagine a partire da un Dockerfile.
+- `run`: Esegue un nuovo contenitore.
+- `ps`: Mostra i contenitori in esecuzione.
+- `images`: Elenca le immagini disponibili localmente.
+- `rmi`: Rimuove un'immagine.
+- `exec`: Esegue un comando in un contenitore in esecuzione.
 
 ## Common Examples
 Ecco alcuni esempi pratici dell'uso del comando `docker`:
 
-1. **Eseguire un nuovo container**:
-   ```bash
+1. **Eseguire un nuovo contenitore**:
+   ```csh
    docker run hello-world
    ```
-   Questo comando scarica l'immagine `hello-world` e la esegue, mostrando un messaggio di benvenuto.
 
-2. **Elencare i container in esecuzione**:
-   ```bash
+2. **Elencare i contenitori in esecuzione**:
+   ```csh
    docker ps
    ```
-   Mostra tutti i container attualmente in esecuzione.
 
 3. **Elencare tutte le immagini disponibili**:
-   ```bash
+   ```csh
    docker images
    ```
-   Visualizza tutte le immagini scaricate e disponibili localmente.
 
-4. **Scaricare un'immagine da un registro**:
-   ```bash
-   docker pull ubuntu
+4. **Rimuovere un'immagine**:
+   ```csh
+   docker rmi nome_immagine
    ```
-   Scarica l'immagine di Ubuntu dal Docker Hub.
 
-5. **Costruire un'immagine da un Dockerfile**:
-   ```bash
-   docker build -t my-image .
+5. **Eseguire un comando in un contenitore esistente**:
+   ```csh
+   docker exec -it nome_contenitore bash
    ```
-   Costruisce un'immagine chiamata `my-image` utilizzando il Dockerfile presente nella directory corrente.
 
 ## Tips
-- Assicurati di avere Docker installato e in esecuzione prima di utilizzare i comandi.
-- Utilizza il comando `docker --help` per ottenere ulteriori informazioni su opzioni e argomenti disponibili.
-- Mantieni le tue immagini e container aggiornati per garantire la sicurezza e le prestazioni ottimali.
-- Considera l'uso di volumi per gestire dati persistenti tra i container.
+- Assicurati di avere i permessi necessari per eseguire i comandi `docker`, potresti dover utilizzare `sudo` in alcune configurazioni.
+- Utilizza `docker-compose` per gestire applicazioni multi-contenitore in modo più semplice.
+- Mantieni le tue immagini aggiornate per sfruttare le ultime funzionalità e correzioni di sicurezza.

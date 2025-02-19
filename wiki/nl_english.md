@@ -1,64 +1,53 @@
-# [English] Bash nl Usage equivalent in English: Number lines in text files
+# [Linux] C Shell (csh) nl用法: Number lines in text files
 
 ## Overview
-The `nl` command in Bash is used to number the lines of files. It can be particularly useful for adding line numbers to text files for better readability or for processing data in scripts.
+The `nl` command in C Shell (csh) is used to number the lines of a file. It is particularly useful for adding line numbers to text files, making it easier to reference specific lines in scripts or documents.
 
 ## Usage
 The basic syntax of the `nl` command is as follows:
 
-```bash
+```
 nl [options] [arguments]
 ```
 
 ## Common Options
-- `-b` : Specify how to number lines. Options include `a` (number all lines), `t` (number only non-empty lines), and `p` (number lines based on a regular expression).
-- `-f` : Specify the number of lines to be skipped before numbering.
-- `-h` : Specify a header to be printed before the numbered lines.
-- `-n` : Control the format of the line numbers. Options include `ln` (left justified), `rn` (right justified), and `zn` (zero-padded).
-- `-w` : Specify the width of the line numbers.
+- `-b`: Specifies how to number lines. Options include `a` (number all lines), `t` (number only non-empty lines), and `n` (number no lines).
+- `-f`: Specifies the number of blank lines to be treated as a single line.
+- `-h`: Allows you to specify a header to be printed before the numbered lines.
+- `-w`: Sets the width of the line numbers.
 
 ## Common Examples
+Here are some practical examples of using the `nl` command:
 
-### Example 1: Basic Line Numbering
-To number all lines in a text file called `example.txt`, you can use:
+1. **Number all lines in a file:**
+   ```csh
+   nl myfile.txt
+   ```
 
-```bash
-nl example.txt
-```
+2. **Number only non-empty lines:**
+   ```csh
+   nl -b t myfile.txt
+   ```
 
-### Example 2: Numbering Only Non-Empty Lines
-To number only the non-empty lines in `example.txt`, use the `-b t` option:
+3. **Set a specific width for line numbers:**
+   ```csh
+   nl -w 4 myfile.txt
+   ```
 
-```bash
-nl -b t example.txt
-```
+4. **Add a header before the numbered lines:**
+   ```csh
+   nl -h "Line Numbers:" myfile.txt
+   ```
 
-### Example 3: Customizing Line Number Format
-To number lines with right justification and a width of 5, you can use:
-
-```bash
-nl -n rn -w 5 example.txt
-```
-
-### Example 4: Adding a Header
-To add a header before the numbered lines, use the `-h` option:
-
-```bash
-nl -h "Header: Line Numbers" example.txt
-```
-
-### Example 5: Skipping Lines
-To skip the first 2 lines of `example.txt` before numbering, use the `-f` option:
-
-```bash
-nl -f 2 example.txt
-```
+5. **Number lines while ignoring blank lines:**
+   ```csh
+   nl -b n myfile.txt
+   ```
 
 ## Tips
-- Use `nl` in combination with other commands in a pipeline for more complex processing of text files.
-- Always check the output format with different options to ensure it meets your needs.
+- Use the `-w` option to ensure line numbers align properly, especially in larger files.
+- Combine `nl` with other commands using pipes for more complex processing, such as `cat myfile.txt | nl`.
 - Consider redirecting the output to a new file if you want to save the numbered lines:
-
-```bash
-nl example.txt > numbered_example.txt
-```
+  ```csh
+  nl myfile.txt > numbered_file.txt
+  ```

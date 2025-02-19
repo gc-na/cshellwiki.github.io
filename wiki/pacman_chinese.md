@@ -1,61 +1,48 @@
-# [Linux] Bash pacman 使用方法: 包管理器命令
+# [Linux] C Shell (csh) pacman 用法: 管理软件包
 
 ## 概述
-`pacman` 是 Arch Linux 及其衍生发行版的包管理器，用于安装、更新和删除软件包。它能够处理二进制包和源代码包，提供了一种方便的方式来管理系统中的软件。
+`pacman` 是一个用于管理软件包的命令行工具，主要用于 Arch Linux 及其衍生版本。它可以安装、更新和删除软件包，确保系统中的软件保持最新状态。
 
-## 使用方法
+## 用法
 基本语法如下：
 ```bash
 pacman [options] [arguments]
 ```
 
 ## 常用选项
-- `-S`：安装或更新软件包。
+- `-S`：安装软件包。
 - `-R`：删除软件包。
 - `-U`：从本地文件安装软件包。
-- `-Q`：查询已安装的软件包。
 - `-Sy`：同步软件包数据库并安装软件包。
-- `-Syu`：同步软件包数据库并更新所有已安装的软件包。
+- `-Su`：更新所有已安装的软件包。
 
 ## 常见示例
-1. **安装软件包**
+1. 安装软件包：
    ```bash
    pacman -S package_name
    ```
-   例如，安装 `vim` 编辑器：
-   ```bash
-   pacman -S vim
-   ```
 
-2. **删除软件包**
+2. 删除软件包：
    ```bash
    pacman -R package_name
    ```
-   例如，删除 `vim` 编辑器：
+
+3. 从本地文件安装软件包：
    ```bash
-   pacman -R vim
+   pacman -U /path/to/package_file.pkg.tar.zst
    ```
 
-3. **更新所有已安装的软件包**
+4. 更新所有已安装的软件包：
    ```bash
-   pacman -Syu
+   pacman -Su
    ```
 
-4. **查询已安装的软件包**
+5. 同步数据库并安装软件包：
    ```bash
-   pacman -Q package_name
-   ```
-   例如，查询 `vim` 是否已安装：
-   ```bash
-   pacman -Q vim
+   pacman -Sy package_name
    ```
 
-5. **从本地文件安装软件包**
-   ```bash
-   pacman -U /path/to/package.pkg.tar.zst
-   ```
-
-## 提示
-- 在使用 `pacman` 进行更新时，建议使用 `-Syu` 选项，以确保软件包数据库和已安装的软件包都是最新的。
-- 定期清理未使用的包，可以使用 `pacman -Rns package_name` 来删除不再需要的依赖项。
-- 使用 `pacman -Qdt` 可以列出所有孤立的包，这些包是没有其他包依赖的，可以考虑删除。
+## 小贴士
+- 在执行更新命令之前，建议先备份重要数据，以防止意外情况。
+- 使用 `-Syu` 可以同时更新数据库和所有已安装的软件包，确保系统保持最新。
+- 定期清理未使用的软件包，可以使用 `pacman -Rns package_name` 来删除软件包及其不再需要的依赖。

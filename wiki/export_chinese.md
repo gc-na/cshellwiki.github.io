@@ -1,45 +1,43 @@
-# [Linux] Bash export 用法: 设置环境变量
+# [操作系统] C Shell (csh) export 使用方法: 设置环境变量
 
 ## 概述
-`export` 命令用于设置或导出环境变量，使得这些变量在当前 shell 会话及其子进程中可用。通过使用 `export`，用户可以在脚本或命令行中定义变量，并确保它们在后续的命令中可用。
+`export` 命令用于在 C Shell 中设置环境变量，使得这些变量在当前 shell 及其子进程中可用。通过使用 `export`，用户可以将变量的值传递给其他程序和脚本。
 
 ## 用法
 基本语法如下：
-```bash
+```
 export [options] [arguments]
 ```
 
 ## 常用选项
-- `-n`：取消导出指定的变量。
+- `-n`：取消对变量的导出。
 - `-p`：显示所有已导出的变量及其值。
 
 ## 常见示例
-1. **导出一个变量**
-   ```bash
-   MY_VAR="Hello, World!"
-   export MY_VAR
+1. 导出一个变量：
+   ```csh
+   set myVar="Hello, World!"
+   export myVar
    ```
-   在这个例子中，`MY_VAR` 被设置为 "Hello, World!" 并被导出，使其在子进程中可用。
 
-2. **在导出时定义变量**
-   ```bash
-   export MY_VAR="Hello, World!"
+2. 导出多个变量：
+   ```csh
+   set var1="Value1"
+   set var2="Value2"
+   export var1 var2
    ```
-   这行命令同时定义并导出变量 `MY_VAR`。
 
-3. **查看已导出的变量**
-   ```bash
+3. 使用 `-n` 取消导出：
+   ```csh
+   export -n myVar
+   ```
+
+4. 显示所有已导出的变量：
+   ```csh
    export -p
    ```
-   这将列出所有当前导出的环境变量及其值。
-
-4. **取消导出变量**
-   ```bash
-   export -n MY_VAR
-   ```
-   这行命令会取消 `MY_VAR` 的导出，使其在子进程中不可用。
 
 ## 提示
-- 在脚本中使用 `export` 时，确保在使用变量之前先导出它们。
-- 使用 `export -p` 可以帮助你快速检查当前的环境变量设置。
-- 如果需要在多个命令中使用同一个变量，建议在脚本的开头导出它。
+- 确保在导出变量之前先定义它们。
+- 使用 `export -p` 可以方便地检查当前环境中有哪些变量已经被导出。
+- 在脚本中使用 `export` 可以确保子进程能够访问所需的环境变量。

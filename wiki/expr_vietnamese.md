@@ -1,63 +1,65 @@
-# [Linux] Bash expr cách sử dụng: Tính toán và so sánh
+# [Hệ điều hành] C Shell (csh) expr Cách sử dụng: Tính toán và so sánh biểu thức
 
 ## Overview
-Lệnh `expr` trong Bash được sử dụng để thực hiện các phép toán số học, so sánh và chuỗi. Nó cho phép người dùng thực hiện các phép toán đơn giản và trả về kết quả.
+Lệnh `expr` trong C Shell (csh) được sử dụng để thực hiện các phép toán số học, so sánh và xử lý chuỗi. Nó cho phép người dùng thực hiện các phép toán đơn giản trong dòng lệnh.
 
 ## Usage
 Cú pháp cơ bản của lệnh `expr` như sau:
-```bash
+```
 expr [options] [arguments]
 ```
 
 ## Common Options
-- `+`: Phép cộng.
-- `-`: Phép trừ.
-- `*`: Phép nhân (cần phải được thoát bằng dấu `\` hoặc đặt trong dấu nháy đơn).
-- `/`: Phép chia.
-- `%`: Phép chia lấy dư.
-- `=`: So sánh bằng.
-- `!=`: So sánh không bằng.
-- `<`: So sánh nhỏ hơn.
-- `>`: So sánh lớn hơn.
+- `+` : Phép cộng.
+- `-` : Phép trừ.
+- `*` : Phép nhân.
+- `/` : Phép chia.
+- `%` : Phép chia lấy dư.
+- `=` : So sánh bằng.
+- `!=` : So sánh khác.
+- `<` : So sánh nhỏ hơn.
+- `>` : So sánh lớn hơn.
 
 ## Common Examples
-- **Phép cộng hai số:**
-```bash
-expr 5 + 3
-```
-Kết quả: `8`
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `expr`:
 
-- **Phép trừ hai số:**
-```bash
-expr 10 - 4
-```
-Kết quả: `6`
+1. **Phép cộng hai số:**
+   ```csh
+   expr 5 + 3
+   ```
+   Kết quả sẽ là `8`.
 
-- **Phép nhân hai số:**
-```bash
-expr 4 \* 7
-```
-Kết quả: `28`
+2. **Phép trừ hai số:**
+   ```csh
+   expr 10 - 4
+   ```
+   Kết quả sẽ là `6`.
 
-- **Phép chia hai số:**
-```bash
-expr 20 / 4
-```
-Kết quả: `5`
+3. **Phép nhân hai số:**
+   ```csh
+   expr 7 \* 3
+   ```
+   Kết quả sẽ là `21`.
 
-- **So sánh hai số:**
-```bash
-expr 5 = 5
-```
-Kết quả: `1` (đúng)
+4. **Phép chia hai số:**
+   ```csh
+   expr 20 / 4
+   ```
+   Kết quả sẽ là `5`.
 
-- **So sánh không bằng:**
-```bash
-expr 5 != 3
-```
-Kết quả: `1` (đúng)
+5. **So sánh hai số:**
+   ```csh
+   expr 5 = 5
+   ```
+   Kết quả sẽ là `1` (đúng).
+
+6. **So sánh chuỗi:**
+   ```csh
+   expr "hello" = "hello"
+   ```
+   Kết quả sẽ là `1` (đúng).
 
 ## Tips
-- Khi sử dụng phép nhân với `*`, hãy nhớ thoát ký tự bằng dấu `\` hoặc sử dụng dấu nháy đơn để tránh lỗi cú pháp.
-- `expr` chỉ hỗ trợ các phép toán số học và so sánh đơn giản, nếu cần thực hiện các phép toán phức tạp hơn, hãy xem xét sử dụng các công cụ khác như `bc` hoặc `awk`.
-- Luôn kiểm tra kết quả của lệnh `expr` để đảm bảo rằng các phép toán được thực hiện chính xác.
+- Khi sử dụng phép nhân (`*`), hãy nhớ thêm dấu gạch chéo ngược (`\`) trước ký tự để tránh nhầm lẫn với ký tự wildcard.
+- Sử dụng dấu ngoặc đơn để nhóm các phép toán phức tạp nhằm đảm bảo thứ tự thực hiện chính xác.
+- Lệnh `expr` chỉ hỗ trợ số nguyên, vì vậy hãy cẩn thận khi làm việc với số thực.

@@ -1,39 +1,38 @@
-# [Linux] Bash readonly Kullanımı: Değiştirilemeyen değişkenler oluşturma
+# [Linux] C Shell (csh) readonly Kullanımı: Değiştirilemez değişkenler tanımlama
 
-## Genel Bakış
-`readonly` komutu, bir değişkenin değerini değiştirilmez hale getirir. Bu, bir değişkenin tanımlandıktan sonra başka bir değer almasını engelleyerek, programlar veya betikler içinde sabit değerler oluşturmanıza yardımcı olur.
+## Overview
+`readonly` komutu, C Shell (csh) ortamında bir değişkenin değerini değiştirilmez hale getirmek için kullanılır. Bu, belirli bir değişkenin yanlışlıkla değiştirilmesini önlemek için faydalıdır.
 
-## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
-```bash
+## Usage
+Temel sözdizimi şu şekildedir:
+
+```csh
 readonly [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-p`: Mevcut readonly değişkenlerini ve değerlerini listelemek için kullanılır.
+## Common Options
+- `-p`: Mevcut readonly değişkenlerini listelemek için kullanılır.
 
-## Yaygın Örnekler
+## Common Examples
+Aşağıda `readonly` komutunun bazı pratik örnekleri verilmiştir:
 
-### 1. Basit readonly Değişken Tanımlama
-```bash
-readonly MY_VAR="Sabit Değer"
-```
-Bu komut, `MY_VAR` değişkenini "Sabit Değer" olarak tanımlar ve daha sonra bu değerin değiştirilmesini engeller.
+1. Basit bir readonly değişken tanımlama:
+   ```csh
+   set myVar = "Değiştirilemez"
+   readonly myVar
+   ```
 
-### 2. readonly Değişkenin Değerini Değiştirmeye Çalışmak
-```bash
-readonly MY_VAR="Sabit Değer"
-MY_VAR="Yeni Değer"  # Bu satır hata verecektir.
-```
-`MY_VAR` değişkeni readonly olarak tanımlandığı için, burada yapılan değişiklik bir hata oluşturur.
+2. Değişkenin değerini değiştirmeye çalışmak (hata alırsınız):
+   ```csh
+   set myVar = "Yeni Değer"  # Bu, hata verecektir.
+   ```
 
-### 3. Mevcut readonly Değişkenlerini Listeleme
-```bash
-readonly -p
-```
-Bu komut, mevcut tüm readonly değişkenlerini ve değerlerini listeler.
+3. Mevcut readonly değişkenlerini listeleme:
+   ```csh
+   readonly -p
+   ```
 
-## İpuçları
-- readonly değişkenleri, betiklerinizde sabit değerler kullanmak istediğinizde oldukça yararlıdır.
-- Değişkenleri readonly olarak tanımladıktan sonra, bu değişkenlerin değerlerini değiştirmeye çalıştığınızda hata alacağınızı unutmayın.
-- Betiklerinizi daha okunabilir hale getirmek için, önemli sabitleri readonly olarak tanımlamak iyi bir uygulamadır.
+## Tips
+- `readonly` kullanarak önemli değişkenlerinizi koruyabilirsiniz; bu, özellikle karmaşık betikler yazarken faydalıdır.
+- Değişkenleri readonly olarak tanımlamadan önce, doğru değerleri atladığınızdan emin olun.
+- Eğer bir değişkeni yeniden tanımlamanız gerekiyorsa, önce `unset` komutunu kullanarak onu kaldırmalısınız.

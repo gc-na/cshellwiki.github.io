@@ -1,42 +1,48 @@
-# [Linux] Bash env uso equivalente: [gestionar el entorno de ejecución]
+# [Linux] C Shell (csh) env <Uso equivalente en español>: Ejecutar un comando en un entorno modificado
 
 ## Overview
-El comando `env` en Bash se utiliza para mostrar o modificar el entorno de ejecución de un programa. Permite ejecutar un comando en un entorno modificado, estableciendo variables de entorno específicas o simplemente mostrando las variables de entorno actuales.
+El comando `env` en C Shell (csh) se utiliza para ejecutar un comando en un entorno modificado. Permite establecer o modificar variables de entorno antes de ejecutar un programa, lo que es útil para personalizar el comportamiento de los comandos.
 
 ## Usage
 La sintaxis básica del comando `env` es la siguiente:
 
-```bash
+```csh
 env [opciones] [argumentos]
 ```
 
 ## Common Options
-- `-i`: Inicia un entorno vacío, eliminando todas las variables de entorno.
-- `-u VAR`: Elimina la variable de entorno especificada antes de ejecutar el comando.
-- `VAR=valor`: Establece una variable de entorno para el comando que se va a ejecutar.
+- `-i`: Inicia un entorno vacío, sin variables de entorno heredadas.
+- `-u VARIABLE`: Elimina la variable de entorno especificada antes de ejecutar el comando.
+- `VARIABLE=valor`: Establece una variable de entorno con un valor específico para el comando que se va a ejecutar.
 
 ## Common Examples
-1. **Mostrar todas las variables de entorno:**
-   ```bash
-   env
-   ```
+Aquí hay algunos ejemplos prácticos del uso del comando `env`:
 
-2. **Ejecutar un comando con una variable de entorno específica:**
-   ```bash
-   env MY_VAR=valor comando
-   ```
+1. **Ejecutar un comando con una variable de entorno personalizada:**
 
-3. **Eliminar una variable de entorno antes de ejecutar un comando:**
-   ```bash
-   env -u MY_VAR comando
-   ```
+```csh
+env MY_VAR=valor_comando my_command
+```
 
-4. **Iniciar un entorno vacío y ejecutar un comando:**
-   ```bash
-   env -i comando
-   ```
+2. **Eliminar una variable de entorno antes de ejecutar un comando:**
+
+```csh
+env -u MY_VAR my_command
+```
+
+3. **Iniciar un entorno vacío y ejecutar un comando:**
+
+```csh
+env -i my_command
+```
+
+4. **Ejecutar un script con variables de entorno específicas:**
+
+```csh
+env VAR1=valor1 VAR2=valor2 ./mi_script.sh
+```
 
 ## Tips
-- Utiliza `env` para asegurarte de que un comando se ejecute con un entorno limpio, especialmente útil para pruebas.
-- Es recomendable usar `env` para establecer variables de entorno temporales sin afectar el entorno global.
-- Puedes combinar varias opciones y variables de entorno en un solo comando para mayor flexibilidad.
+- Utiliza `env -i` para evitar que las variables de entorno existentes afecten la ejecución de tu comando.
+- Recuerda que las variables de entorno establecidas con `env` solo son válidas para el comando que se ejecuta y no afectan al entorno de la shell actual.
+- Puedes verificar las variables de entorno actuales usando el comando `printenv` antes de ejecutar `env`.

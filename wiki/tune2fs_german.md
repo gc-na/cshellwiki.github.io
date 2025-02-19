@@ -1,7 +1,7 @@
-# [Linux] Bash tune2fs Verwendung: Anpassen von ext2/ext3/ext4 Dateisystemen
+# [Linux] C Shell (csh) tune2fs Verwendung: Anpassung von ext2/ext3/ext4-Dateisystemen
 
 ## Übersicht
-Der Befehl `tune2fs` wird verwendet, um verschiedene Parameter eines ext2-, ext3- oder ext4-Dateisystems zu ändern. Dies ermöglicht es Benutzern, die Leistung und das Verhalten des Dateisystems anzupassen, ohne die Daten zu verlieren.
+Der Befehl `tune2fs` wird verwendet, um verschiedene Parameter eines ext2-, ext3- oder ext4-Dateisystems zu ändern. Mit diesem Befehl können Administratoren Einstellungen wie die maximale Anzahl an Mounts, die Zeit bis zur Überprüfung des Dateisystems und andere wichtige Optionen anpassen.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
@@ -11,46 +11,41 @@ tune2fs [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-c <anzahl>`: Setzt die maximale Anzahl der Mounts, nach denen das Dateisystem überprüft werden soll.
-- `-i <Intervall>`: Legt das Zeitintervall fest, nach dem das Dateisystem überprüft werden soll.
-- `-m <Prozentsatz>`: Setzt den Prozentsatz des Speicherplatzes, der für den Root-Benutzer reserviert ist.
-- `-L <Label>`: Ändert das Label des Dateisystems.
-- `-O <Feature>`: Aktiviert bestimmte Dateisystemmerkmale.
+- `-c <anzahl>`: Setzt die maximale Anzahl an Mounts, nach denen das Dateisystem überprüft werden soll.
+- `-i <intervall>`: Legt das Zeitintervall fest, nach dem das Dateisystem überprüft wird.
+- `-m <prozent>`: Setzt den Prozentsatz des Speicherplatzes, der für den Root-Benutzer reserviert ist.
+- `-L <label>`: Ändert das Label des Dateisystems.
+- `-O <features>`: Aktiviert bestimmte Dateisystemfunktionen.
 
 ## Häufige Beispiele
 Hier sind einige praktische Beispiele zur Verwendung von `tune2fs`:
 
-1. **Maximale Anzahl der Mounts setzen:**
+1. **Maximale Anzahl an Mounts setzen:**
    ```bash
    tune2fs -c 30 /dev/sda1
    ```
-   Dieser Befehl setzt die maximale Anzahl der Mounts auf 30 für das Dateisystem auf `/dev/sda1`.
 
-2. **Zeitintervall für die Überprüfung festlegen:**
+2. **Überprüfungsintervall auf 6 Monate setzen:**
    ```bash
-   tune2fs -i 2w /dev/sda1
+   tune2fs -i 6m /dev/sda1
    ```
-   Dieser Befehl legt fest, dass das Dateisystem alle zwei Wochen überprüft werden soll.
 
-3. **Reservierten Speicherplatz ändern:**
+3. **Reservierten Speicherplatz auf 5% setzen:**
    ```bash
    tune2fs -m 5 /dev/sda1
    ```
-   Hiermit wird der reservierte Speicherplatz für den Root-Benutzer auf 5% gesetzt.
 
 4. **Label des Dateisystems ändern:**
    ```bash
    tune2fs -L MeinLabel /dev/sda1
    ```
-   Dieser Befehl ändert das Label des Dateisystems auf `/dev/sda1` in "MeinLabel".
 
-5. **Aktivieren eines Dateisystemmerkmals:**
+5. **Aktivieren von Dateisystemfunktionen:**
    ```bash
    tune2fs -O dir_index /dev/sda1
    ```
-   Hiermit wird das `dir_index`-Merkmal für das Dateisystem aktiviert, was die Verzeichnissuche beschleunigen kann.
 
 ## Tipps
-- Führen Sie `tune2fs` immer mit Root-Rechten aus, um sicherzustellen, dass Sie die erforderlichen Berechtigungen haben.
-- Überprüfen Sie die aktuellen Einstellungen des Dateisystems mit dem Befehl `tune2fs -l /dev/sda1`, um zu sehen, welche Parameter bereits konfiguriert sind.
-- Seien Sie vorsichtig beim Ändern von Parametern, da falsche Einstellungen die Stabilität des Dateisystems beeinträchtigen können.
+- Stellen Sie sicher, dass das Dateisystem nicht gemountet ist, bevor Sie `tune2fs` verwenden, um Datenverlust zu vermeiden.
+- Überprüfen Sie die aktuellen Einstellungen des Dateisystems mit dem Befehl `tune2fs -l /dev/sda1`.
+- Verwenden Sie `tune2fs` mit Bedacht, da falsche Einstellungen zu Problemen mit dem Dateisystem führen können.

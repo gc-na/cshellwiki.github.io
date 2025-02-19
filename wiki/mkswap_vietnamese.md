@@ -1,45 +1,44 @@
-# [Linux] Bash mkswap: Tạo không gian hoán đổi cho hệ thống
+# [Hệ điều hành] C Shell (csh) mkswap <Sử dụng tương đương>: Tạo không gian hoán đổi
 
-## Overview
-Lệnh `mkswap` được sử dụng để tạo một không gian hoán đổi (swap space) trên một thiết bị hoặc tệp tin. Không gian hoán đổi là một phần của bộ nhớ ảo, cho phép hệ thống sử dụng không gian trên đĩa cứng như một phần của bộ nhớ RAM, giúp cải thiện hiệu suất khi bộ nhớ vật lý bị đầy.
+## Tổng quan
+Lệnh `mkswap` được sử dụng để định dạng một phân vùng hoặc tệp để sử dụng như không gian hoán đổi trong hệ thống. Không gian hoán đổi là một phần của bộ nhớ ảo, cho phép hệ điều hành sử dụng đĩa cứng như một phần mở rộng của bộ nhớ RAM.
 
-## Usage
+## Cú pháp
 Cú pháp cơ bản của lệnh `mkswap` như sau:
-
-```bash
-mkswap [options] [arguments]
+```
+mkswap [tùy chọn] [đối số]
 ```
 
-## Common Options
-- `-L, --label <label>`: Gán nhãn cho không gian hoán đổi.
-- `-f, --force`: Bỏ qua các cảnh báo và ép buộc tạo không gian hoán đổi.
-- `-p, --pagesize <size>`: Xác định kích thước trang cho không gian hoán đổi.
+## Các tùy chọn phổ biến
+- `-L <nhãn>`: Gán một nhãn cho không gian hoán đổi.
+- `-p <độ ưu tiên>`: Thiết lập độ ưu tiên cho không gian hoán đổi. Độ ưu tiên cao hơn sẽ được sử dụng trước.
+- `-f`: Bỏ qua kiểm tra phân vùng và buộc định dạng.
 
-## Common Examples
+## Ví dụ phổ biến
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `mkswap`:
 
-1. **Tạo không gian hoán đổi từ một tệp tin**:
+1. **Tạo không gian hoán đổi từ một tệp**:
    ```bash
-   sudo fallocate -l 1G /swapfile
-   sudo mkswap /swapfile
+   dd if=/dev/zero of=/swapfile bs=1M count=1024
+   mkswap /swapfile
    ```
 
 2. **Tạo không gian hoán đổi từ một phân vùng**:
    ```bash
-   sudo mkswap /dev/sdX1
+   mkswap /dev/sdX1
    ```
 
-3. **Tạo không gian hoán đổi với nhãn**:
+3. **Gán nhãn cho không gian hoán đổi**:
    ```bash
-   sudo mkswap -L my_swap /dev/sdX1
+   mkswap -L my_swap /dev/sdX1
    ```
 
-4. **Ép buộc tạo không gian hoán đổi**:
+4. **Thiết lập độ ưu tiên cho không gian hoán đổi**:
    ```bash
-   sudo mkswap -f /dev/sdX1
+   mkswap -p 10 /dev/sdX1
    ```
 
-## Tips
-- Đảm bảo rằng tệp tin hoặc phân vùng bạn muốn sử dụng cho không gian hoán đổi đã được tạo và không chứa dữ liệu quan trọng.
-- Sau khi tạo không gian hoán đổi, bạn cần kích hoạt nó bằng lệnh `swapon`.
-- Kiểm tra trạng thái không gian hoán đổi bằng lệnh `swapon --show` để đảm bảo nó đã được kích hoạt thành công.
+## Mẹo
+- Hãy chắc chắn rằng phân vùng hoặc tệp bạn đang định dạng không chứa dữ liệu quan trọng, vì lệnh `mkswap` sẽ xóa mọi dữ liệu hiện có.
+- Kiểm tra không gian hoán đổi đã được tạo bằng lệnh `swapon --show` để xác nhận rằng nó đã được kích hoạt thành công.
+- Sử dụng `swapon` để kích hoạt không gian hoán đổi sau khi đã tạo.

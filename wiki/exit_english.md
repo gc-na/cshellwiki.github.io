@@ -1,56 +1,53 @@
-# [Linux] Bash exit usage: Terminate a shell session
+# [Linux] C Shell (csh) exit用法: Terminate a shell session
 
 ## Overview
-The `exit` command in Bash is used to terminate a shell session. It allows users to exit from the current shell or script and can also return an exit status to the calling process. This is particularly useful in scripts to indicate success or failure.
+The `exit` command in C Shell (csh) is used to terminate the current shell session. It can also return a specific exit status to the calling process, which can be useful for scripting and error handling.
 
 ## Usage
 The basic syntax of the `exit` command is as follows:
 
-```bash
-exit [n]
+```csh
+exit [status]
 ```
 
-Where `n` is an optional exit status code. If no status code is provided, the exit status of the last executed command is used.
+Where `status` is an optional numeric value that indicates the exit status.
 
 ## Common Options
-- `n`: An optional numeric argument that specifies the exit status. By convention, a status of `0` indicates success, while any non-zero value indicates an error or abnormal termination.
+- `status`: A numeric value (0-255) that indicates the exit status. By convention, a status of `0` means success, while any non-zero value indicates an error or abnormal termination.
 
 ## Common Examples
 
-1. **Exiting a shell session:**
-   To simply exit the current shell, you can use:
-   ```bash
+1. **Exit with default status (0)**:
+   ```csh
    exit
    ```
 
-2. **Exiting with a specific status code:**
-   To exit with a specific status code, for example, `1`, you can use:
-   ```bash
+2. **Exit with a specific status**:
+   ```csh
    exit 1
    ```
 
-3. **Using exit in a script:**
-   In a Bash script, you might want to exit based on a condition:
-   ```bash
-   #!/bin/bash
-   if [ ! -f "important_file.txt" ]; then
-       echo "File not found!"
+3. **Using exit in a script**:
+   ```csh
+   #!/bin/csh
+   echo "Running script..."
+   if (some_condition) then
+       echo "Condition met, exiting with status 0."
+       exit 0
+   else
+       echo "Condition not met, exiting with status 1."
        exit 1
-   fi
-   echo "File found, continuing..."
+   endif
    ```
 
-4. **Exiting from a subshell:**
-   If you are in a subshell and want to exit back to the parent shell:
-   ```bash
-   ( 
-       echo "Inside subshell"
-       exit 0
-   )
-   echo "Back in parent shell"
+4. **Exiting from a nested shell**:
+   ```csh
+   csh
+   echo "Inside nested shell."
+   exit 2
    ```
 
 ## Tips
-- Always use meaningful exit status codes in scripts to help with debugging and error handling.
-- Use `exit 0` to indicate successful completion of a script or command.
-- Remember that exiting from a subshell will not affect the parent shell; it only terminates the subshell session.
+- Always use meaningful exit statuses in scripts to help with debugging and error tracking.
+- Remember that an exit status of `0` indicates success, while any non-zero value indicates an error.
+- If you don't specify a status, `exit` will default to `0`, which may not always be the desired behavior in scripts.

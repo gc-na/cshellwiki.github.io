@@ -1,53 +1,49 @@
-# [Linux] Bash docker użycie: Zarządzanie kontenerami aplikacji
+# [Linux] C Shell (csh) docker użycie: zarządzanie kontenerami
 
 ## Overview
-Polecenie `docker` jest narzędziem do zarządzania kontenerami aplikacji. Umożliwia użytkownikom tworzenie, uruchamianie i zarządzanie kontenerami, co pozwala na łatwe wdrażanie aplikacji w różnych środowiskach.
+Polecenie `docker` jest używane do zarządzania kontenerami aplikacji w systemie operacyjnym. Umożliwia użytkownikom uruchamianie, zatrzymywanie i zarządzanie kontenerami, co pozwala na łatwe wdrażanie aplikacji w izolowanym środowisku.
 
 ## Usage
-Podstawowa składnia polecenia `docker` wygląda następująco:
+Podstawowa składnia polecenia `docker` jest następująca:
 
-```bash
+```
 docker [options] [arguments]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji dla polecenia `docker`:
-
-- `run`: uruchamia nowy kontener.
-- `ps`: wyświetla uruchomione kontenery.
-- `stop`: zatrzymuje działający kontener.
-- `rm`: usuwa kontener.
-- `images`: wyświetla listę obrazów dostępnych na lokalnej maszynie.
+- `run`: Uruchamia nowy kontener.
+- `ps`: Wyświetla listę uruchomionych kontenerów.
+- `stop`: Zatrzymuje działający kontener.
+- `rm`: Usuwa zatrzymany kontener.
+- `images`: Wyświetla listę dostępnych obrazów.
 
 ## Common Examples
-Poniżej przedstawiono kilka praktycznych przykładów użycia polecenia `docker`:
+- Uruchomienie nowego kontenera z obrazem `nginx`:
+  ```csh
+  docker run -d nginx
+  ```
 
-1. **Uruchomienie nowego kontenera**:
-   ```bash
-   docker run hello-world
-   ```
+- Wyświetlenie listy uruchomionych kontenerów:
+  ```csh
+  docker ps
+  ```
 
-2. **Wyświetlenie uruchomionych kontenerów**:
-   ```bash
-   docker ps
-   ```
+- Zatrzymanie kontenera o identyfikatorze `abc123`:
+  ```csh
+  docker stop abc123
+  ```
 
-3. **Zatrzymanie kontenera**:
-   ```bash
-   docker stop <container_id>
-   ```
+- Usunięcie zatrzymanego kontenera o identyfikatorze `abc123`:
+  ```csh
+  docker rm abc123
+  ```
 
-4. **Usunięcie kontenera**:
-   ```bash
-   docker rm <container_id>
-   ```
-
-5. **Wyświetlenie dostępnych obrazów**:
-   ```bash
-   docker images
-   ```
+- Wyświetlenie listy dostępnych obrazów:
+  ```csh
+  docker images
+  ```
 
 ## Tips
-- Zawsze używaj opcji `-d` (detached mode), aby uruchomić kontener w tle, co pozwala na dalszą pracę w terminalu.
-- Regularnie usuwaj nieużywane kontenery i obrazy, aby zaoszczędzić miejsce na dysku, używając polecenia `docker system prune`.
-- Korzystaj z plików `Dockerfile` do automatyzacji procesu budowania obrazów, co ułatwia zarządzanie zależnościami aplikacji.
+- Używaj opcji `-d` przy uruchamianiu kontenerów, aby działały w tle.
+- Regularnie sprawdzaj dostępne obrazy i kontenery, aby utrzymać porządek w systemie.
+- Zawsze używaj unikalnych nazw lub identyfikatorów dla kontenerów, aby uniknąć konfliktów.

@@ -1,48 +1,45 @@
-# [Linux] Bash mpstat Uso: Monitoreo del rendimiento de la CPU
+# [Linux] C Shell (csh) mpstat Uso: Monitoreo de estadísticas de CPU
 
 ## Overview
-El comando `mpstat` se utiliza para mostrar estadísticas de uso de la CPU en sistemas Linux. Permite a los usuarios obtener información detallada sobre el rendimiento de cada núcleo de la CPU, lo que es útil para identificar cuellos de botella y optimizar el rendimiento del sistema.
+El comando `mpstat` se utiliza para mostrar estadísticas de uso de la CPU en sistemas Unix y Linux. Proporciona información sobre la carga de trabajo de cada procesador, lo que permite a los administradores del sistema identificar cuellos de botella y optimizar el rendimiento.
 
 ## Usage
 La sintaxis básica del comando `mpstat` es la siguiente:
 
 ```bash
-mpstat [opciones] [intervalo] [número de repeticiones]
+mpstat [opciones] [argumentos]
 ```
 
 ## Common Options
-- `-P ALL`: Muestra estadísticas para todas las CPUs.
+- `-P ALL`: Muestra estadísticas para todos los procesadores.
 - `-u`: Muestra el uso de la CPU en porcentaje.
-- `-h`: Muestra la salida en un formato más legible (human-readable).
-- `-o`: Especifica el formato de salida (por ejemplo, CSV).
-- `-V`: Muestra la versión del comando.
+- `-r`: Muestra estadísticas de E/S de disco.
+- `-h`: Muestra la salida en un formato más legible.
 
 ## Common Examples
-1. **Mostrar estadísticas de todas las CPUs cada 2 segundos:**
+Aquí hay algunos ejemplos prácticos del uso de `mpstat`:
 
+1. Mostrar estadísticas de todos los procesadores:
    ```bash
-   mpstat -P ALL 2
+   mpstat -P ALL
    ```
 
-2. **Mostrar el uso de la CPU en un formato legible:**
-
+2. Mostrar el uso de la CPU en porcentaje:
    ```bash
-   mpstat -u -h 1 5
+   mpstat -u
    ```
 
-3. **Guardar la salida en formato CSV:**
-
+3. Monitorear las estadísticas de CPU cada 5 segundos:
    ```bash
-   mpstat -P ALL -o CSV 1 10 > estadisticas_cpu.csv
+   mpstat 5
    ```
 
-4. **Mostrar estadísticas de la CPU 0 cada 5 segundos:**
-
+4. Mostrar estadísticas de E/S de disco:
    ```bash
-   mpstat -P 0 5
+   mpstat -r
    ```
 
 ## Tips
-- Utiliza `mpstat -P ALL` para tener una visión completa del rendimiento de cada núcleo de la CPU.
-- Combina `mpstat` con otras herramientas como `grep` para filtrar información específica.
-- Considera usar `-h` para facilitar la lectura de los resultados, especialmente en sistemas con múltiples núcleos.
+- Utiliza `mpstat` junto con otras herramientas como `vmstat` y `iostat` para obtener una visión más completa del rendimiento del sistema.
+- Considera ejecutar `mpstat` en intervalos regulares para registrar el rendimiento a lo largo del tiempo y detectar tendencias.
+- Asegúrate de tener permisos adecuados para ejecutar el comando y acceder a las estadísticas del sistema.

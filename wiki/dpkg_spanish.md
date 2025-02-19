@@ -1,7 +1,7 @@
-# [Linux] Bash dpkg Uso: Gestión de paquetes en sistemas Debian
+# [Linux] C Shell (csh) dpkg uso: Gestionar paquetes en sistemas Debian
 
 ## Overview
-El comando `dpkg` es una herramienta de bajo nivel utilizada para gestionar paquetes en sistemas basados en Debian, como Ubuntu. Permite instalar, eliminar y gestionar paquetes `.deb`, así como consultar información sobre ellos.
+El comando `dpkg` es una herramienta de bajo nivel utilizada en sistemas basados en Debian para gestionar paquetes. Permite instalar, eliminar y administrar paquetes de software en el sistema.
 
 ## Usage
 La sintaxis básica del comando `dpkg` es la siguiente:
@@ -11,60 +11,41 @@ dpkg [opciones] [argumentos]
 ```
 
 ## Common Options
-Aquí hay algunas opciones comunes que se pueden utilizar con `dpkg`:
-
-- `-i`, `--install`: Instala un paquete `.deb`.
-- `-r`, `--remove`: Elimina un paquete, pero conserva sus archivos de configuración.
-- `-P`, `--purge`: Elimina un paquete junto con sus archivos de configuración.
-- `-l`, `--list`: Muestra una lista de todos los paquetes instalados.
-- `-s`, `--status`: Muestra el estado de un paquete específico.
-- `-c`, `--contents`: Muestra el contenido de un paquete `.deb`.
+- `-i`: Instala un paquete .deb.
+- `-r`: Elimina un paquete.
+- `-l`: Lista todos los paquetes instalados.
+- `-s`: Muestra el estado de un paquete específico.
+- `-L`: Lista los archivos instalados por un paquete.
 
 ## Common Examples
+Aquí hay algunos ejemplos prácticos del uso de `dpkg`:
 
-### Instalar un paquete
-Para instalar un paquete `.deb`, utiliza el siguiente comando:
+1. **Instalar un paquete .deb**:
+   ```bash
+   dpkg -i nombre-paquete.deb
+   ```
 
-```bash
-dpkg -i nombre_del_paquete.deb
-```
+2. **Eliminar un paquete**:
+   ```bash
+   dpkg -r nombre-paquete
+   ```
 
-### Eliminar un paquete
-Para eliminar un paquete sin borrar su configuración:
+3. **Listar todos los paquetes instalados**:
+   ```bash
+   dpkg -l
+   ```
 
-```bash
-dpkg -r nombre_del_paquete
-```
+4. **Ver el estado de un paquete específico**:
+   ```bash
+   dpkg -s nombre-paquete
+   ```
 
-### Purgar un paquete
-Para eliminar un paquete y sus archivos de configuración:
-
-```bash
-dpkg -P nombre_del_paquete
-```
-
-### Listar paquetes instalados
-Para ver todos los paquetes instalados en el sistema:
-
-```bash
-dpkg -l
-```
-
-### Ver el estado de un paquete
-Para comprobar el estado de un paquete específico:
-
-```bash
-dpkg -s nombre_del_paquete
-```
-
-### Mostrar el contenido de un paquete
-Para ver qué archivos contiene un paquete `.deb`:
-
-```bash
-dpkg -c nombre_del_paquete.deb
-```
+5. **Listar archivos de un paquete instalado**:
+   ```bash
+   dpkg -L nombre-paquete
+   ```
 
 ## Tips
-- Siempre verifica las dependencias de un paquete antes de instalarlo, ya que `dpkg` no resuelve automáticamente las dependencias.
-- Utiliza `apt` o `apt-get` para instalaciones y eliminaciones más sencillas, ya que manejan automáticamente las dependencias.
-- Si encuentras errores durante la instalación, revisa el archivo de registro de `dpkg` en `/var/log/dpkg.log` para obtener más información.
+- Asegúrate de tener permisos de superusuario (root) al instalar o eliminar paquetes.
+- Usa `dpkg --configure -a` para configurar paquetes que no se configuraron correctamente.
+- Para resolver dependencias de paquetes, considera usar `apt` o `apt-get`, ya que `dpkg` no maneja automáticamente las dependencias.

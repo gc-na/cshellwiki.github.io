@@ -1,52 +1,58 @@
-# [Linux] Bash ftp użycie: Protokół transferu plików
+# [Linux] C Shell (csh) ftp użycie: Przesyłanie plików przez protokół FTP
 
 ## Overview
-Polecenie `ftp` (File Transfer Protocol) służy do przesyłania plików między komputerami w sieci. Umożliwia nawiązywanie połączeń z serwerami FTP, co pozwala na pobieranie i wysyłanie plików.
+Polecenie `ftp` w C Shell (csh) służy do przesyłania plików między komputerem a serwerem FTP. Umożliwia użytkownikom łączenie się z serwerami, pobieranie plików oraz przesyłanie ich na serwer.
 
 ## Usage
 Podstawowa składnia polecenia `ftp` wygląda następująco:
 
-```bash
-ftp [opcje] [adres_serwera]
+```
+ftp [opcje] [argumenty]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji dla polecenia `ftp`:
-
-- `-i`: Wyłącza tryb interaktywny, co pozwala na przesyłanie plików bez potwierdzenia.
-- `-n`: Nie nawiązuje automatycznie połączenia z serwerem po uruchomieniu.
 - `-v`: Włącza tryb szczegółowy, wyświetlając więcej informacji o połączeniu.
+- `-n`: Nie nawiązuje automatycznie połączenia z serwerem przy starcie.
+- `-i`: Wyłącza tryb interaktywny, co pozwala na przesyłanie plików bez potwierdzenia.
 - `-g`: Wyłącza globbing, co pozwala na przesyłanie plików z nazwami zawierającymi znaki specjalne.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `ftp`:
+### Połączenie z serwerem FTP
+Aby połączyć się z serwerem FTP, użyj polecenia:
 
-1. **Nawiązanie połączenia z serwerem FTP:**
-   ```bash
-   ftp ftp.example.com
-   ```
+```
+ftp ftp.example.com
+```
 
-2. **Nawiązanie połączenia bez automatycznego logowania:**
-   ```bash
-   ftp -n ftp.example.com
-   ```
+### Pobieranie pliku
+Aby pobrać plik z serwera, użyj polecenia `get`:
 
-3. **Pobranie pliku z serwera:**
-   ```bash
-   get nazwa_pliku.txt
-   ```
+```
+get nazwa_pliku.txt
+```
 
-4. **Wysłanie pliku na serwer:**
-   ```bash
-   put lokalny_plik.txt
-   ```
+### Przesyłanie pliku
+Aby przesłać plik na serwer, użyj polecenia `put`:
 
-5. **Pobranie wszystkich plików z katalogu:**
-   ```bash
-   mget *
-   ```
+```
+put lokalny_plik.txt
+```
+
+### Zmiana katalogu
+Aby zmienić katalog na serwerze FTP, użyj polecenia `cd`:
+
+```
+cd katalog_na_serwerze
+```
+
+### Wyświetlanie zawartości katalogu
+Aby wyświetlić zawartość katalogu na serwerze, użyj polecenia `ls`:
+
+```
+ls
+```
 
 ## Tips
-- Używaj opcji `-i`, gdy przesyłasz wiele plików, aby uniknąć potwierdzeń dla każdego z nich.
-- Zawsze sprawdzaj, czy masz odpowiednie uprawnienia do przesyłania lub pobierania plików z serwera.
-- Jeśli często łączysz się z tym samym serwerem, rozważ utworzenie skryptu, aby uprościć proces logowania i przesyłania plików.
+- Zawsze sprawdzaj, czy masz odpowiednie uprawnienia do przesyłania lub pobierania plików.
+- Używaj opcji `-v`, aby uzyskać więcej informacji o procesie transferu.
+- Pamiętaj o wylogowaniu się z serwera FTP po zakończeniu pracy, używając polecenia `bye`.

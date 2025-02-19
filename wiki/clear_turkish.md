@@ -1,38 +1,37 @@
-# [Linux] Bash clear Kullanımı: Ekranı temizler
+# [Linux] C Shell (csh) clear Kullanımı: Ekranı temizler
 
 ## Overview
-`clear` komutu, terminal ekranını temizlemek için kullanılır. Bu komut, kullanıcıların daha düzenli bir çalışma alanına sahip olmalarını sağlar ve önceki komutların çıktılarının görünümünü ortadan kaldırır.
+`clear` komutu, terminal ekranını temizleyerek kullanıcıya daha düzenli bir çalışma alanı sunar. Bu komut, terminaldeki mevcut çıktıları siler ve imleci ekranın en üstüne getirir.
 
 ## Usage
-Temel sözdizimi aşağıdaki gibidir:
-
-```bash
+Temel kullanım sözdizimi aşağıdaki gibidir:
+```csh
 clear [options] [arguments]
 ```
 
 ## Common Options
-- `-x`: Ekranı temizlerken, geçmiş komutların kaydını tutar.
-- `-s`: Ekranı temizler, ancak ekranın alt kısmındaki satırları korur.
+- `-x`: Ekrandaki tüm karakterleri temizler ve sadece boş bir ekran bırakır.
+- `-s`: Ekranı temizler ancak önceki komutların çıktısını kaydeder.
 
 ## Common Examples
-Aşağıda `clear` komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda `clear` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
-1. Terminal ekranını temizlemek için:
-   ```bash
+1. **Ekranı temizlemek için basit kullanım:**
+   ```csh
    clear
    ```
 
-2. Ekranı temizlerken geçmişi tutmak için:
-   ```bash
-   clear -x
-   ```
-
-3. Ekranı temizlerken alt satırları korumak için:
-   ```bash
+2. **Ekranı temizlerken önceki çıktıları kaydetmek:**
+   ```csh
    clear -s
    ```
 
+3. **Ekranı tamamen boşaltmak için:**
+   ```csh
+   clear -x
+   ```
+
 ## Tips
-- `clear` komutunu sık sık kullanarak terminalinizin daha düzenli görünmesini sağlayabilirsiniz.
-- Ekranı temizlemek için `Ctrl + L` kısayolunu da kullanabilirsiniz; bu, `clear` komutuyla aynı etkiyi yaratır.
-- Terminalde uzun bir işlem yaptıktan sonra ekranı temizlemek, daha iyi bir odaklanma sağlar.
+- `clear` komutunu sık sık kullanarak terminaldeki karmaşayı azaltabilir ve daha verimli çalışabilirsiniz.
+- Terminalde uzun bir işlem yaptıktan sonra ekranı temizlemek, yeni çıktıları daha net görmenizi sağlar.
+- `Ctrl + L` kısayolunu kullanarak da ekranı hızlı bir şekilde temizleyebilirsiniz; bu, `clear` komutuyla aynı işlevi görür.

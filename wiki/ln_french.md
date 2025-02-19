@@ -1,49 +1,44 @@
-# [Linux] Bash ln Utilisation : Créer des liens entre fichiers
+# [Linux] C Shell (csh) ln <Utilisation équivalente en français>: créer des liens entre fichiers
 
 ## Overview
-La commande `ln` est utilisée pour créer des liens entre fichiers dans un système de fichiers Unix/Linux. Elle permet de créer des liens physiques ou symboliques, facilitant ainsi l'accès à des fichiers sans avoir à les dupliquer.
+La commande `ln` est utilisée pour créer des liens entre fichiers dans un système de fichiers. Elle permet de créer des liens symboliques ou des liens physiques, facilitant ainsi la gestion des fichiers.
 
 ## Usage
 La syntaxe de base de la commande `ln` est la suivante :
 
-```bash
+```csh
 ln [options] [arguments]
 ```
 
 ## Common Options
 - `-s` : Crée un lien symbolique au lieu d'un lien physique.
 - `-f` : Force la création du lien en écrasant les fichiers existants.
-- `-n` : Ne pas écraser les fichiers existants, même si l'option `-f` est utilisée.
-- `-v` : Affiche les actions effectuées par la commande.
+- `-n` : Ne pas suivre les liens symboliques lors de la création d'un lien.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `ln` :
 
 ### Créer un lien physique
-```bash
+```csh
 ln fichier.txt lien_fichier.txt
 ```
-Cela crée un lien physique nommé `lien_fichier.txt` pointant vers `fichier.txt`.
 
 ### Créer un lien symbolique
-```bash
+```csh
 ln -s fichier.txt lien_symbolique.txt
 ```
-Cela crée un lien symbolique nommé `lien_symbolique.txt` pointant vers `fichier.txt`.
 
 ### Forcer la création d'un lien
-```bash
+```csh
 ln -f fichier.txt lien_fichier.txt
 ```
-Cela écrase `lien_fichier.txt` s'il existe déjà et crée un nouveau lien vers `fichier.txt`.
 
-### Afficher les actions
-```bash
-ln -v fichier.txt lien_fichier.txt
+### Créer un lien symbolique vers un répertoire
+```csh
+ln -s /chemin/vers/répertoire lien_répertoire
 ```
-Cela affiche un message indiquant que le lien a été créé.
 
 ## Tips
-- Utilisez des liens symboliques pour des fichiers qui peuvent changer de place, car ils ne pointent pas directement vers l'emplacement du fichier.
-- Soyez prudent avec l'option `-f`, car elle peut écraser des fichiers existants sans avertissement.
-- Vérifiez toujours le type de lien créé avec `ls -l` pour vous assurer que vous avez le bon type de lien (physique ou symbolique).
+- Utilisez des liens symboliques pour pointer vers des fichiers ou des répertoires qui peuvent changer de place, car ils sont plus flexibles que les liens physiques.
+- Vérifiez toujours si le lien existe déjà avant de créer un nouveau lien pour éviter d'écraser des fichiers importants.
+- Utilisez l'option `-n` pour éviter de suivre les liens symboliques existants si vous souhaitez créer un nouveau lien dans un répertoire contenant déjà des liens.

@@ -1,12 +1,12 @@
-# [Linux] Bash docker Verwendung: Container verwalten und ausführen
+# [Linux] C Shell (csh) docker Verwendung: Container verwalten und orchestrieren
 
 ## Übersicht
-Der `docker` Befehl ist ein leistungsstarkes Werkzeug zur Verwaltung von Containern. Mit Docker können Entwickler Anwendungen in Containern isoliert ausführen, was die Bereitstellung und Skalierung von Software vereinfacht.
+Der `docker` Befehl wird verwendet, um Container zu verwalten und zu orchestrieren. Mit Docker können Sie Anwendungen in Containern isoliert ausführen, was eine konsistente Umgebung für die Entwicklung und Bereitstellung schafft.
 
 ## Verwendung
 Die grundlegende Syntax des `docker` Befehls lautet:
 
-```bash
+```csh
 docker [optionen] [argumente]
 ```
 
@@ -14,44 +14,43 @@ docker [optionen] [argumente]
 - `run`: Startet einen neuen Container.
 - `ps`: Listet alle laufenden Container auf.
 - `stop`: Stoppt einen laufenden Container.
-- `rm`: Entfernt einen Container.
-- `images`: Listet alle verfügbaren Images auf.
+- `rm`: Entfernt einen gestoppten Container.
+- `images`: Zeigt alle verfügbaren Images an.
 
 ## Häufige Beispiele
 Hier sind einige praktische Beispiele für die Verwendung des `docker` Befehls:
 
 ### 1. Einen neuen Container starten
-```bash
-docker run hello-world
+```csh
+docker run -d --name mein_container nginx
 ```
-Dieser Befehl startet einen neuen Container mit dem Image `hello-world`, das eine einfache Bestätigung ausgibt.
+Dieser Befehl startet einen neuen Container mit dem Namen `mein_container` basierend auf dem `nginx` Image.
 
-### 2. Alle laufenden Container auflisten
-```bash
+### 2. Laufende Container auflisten
+```csh
 docker ps
 ```
-Mit diesem Befehl können Sie alle aktuell laufenden Container anzeigen.
+Mit diesem Befehl können Sie alle derzeit laufenden Container anzeigen.
 
 ### 3. Einen Container stoppen
-```bash
-docker stop <container_id>
+```csh
+docker stop mein_container
 ```
-Ersetzen Sie `<container_id>` durch die ID des Containers, den Sie stoppen möchten.
+Dieser Befehl stoppt den Container mit dem Namen `mein_container`.
 
-### 4. Einen Container entfernen
-```bash
-docker rm <container_id>
+### 4. Einen gestoppten Container entfernen
+```csh
+docker rm mein_container
 ```
-Dieser Befehl entfernt den angegebenen Container. Stellen Sie sicher, dass der Container gestoppt ist, bevor Sie ihn entfernen.
+Hiermit wird der gestoppte Container `mein_container` entfernt.
 
-### 5. Alle verfügbaren Images auflisten
-```bash
+### 5. Verfügbare Images anzeigen
+```csh
 docker images
 ```
-Mit diesem Befehl können Sie alle Images auf Ihrem System anzeigen.
+Dieser Befehl listet alle lokal gespeicherten Docker-Images auf.
 
 ## Tipps
-- Verwenden Sie `docker-compose`, um mehrere Container gleichzeitig zu verwalten und zu orchestrieren.
-- Halten Sie Ihre Docker-Images klein, um die Ladezeiten zu verkürzen.
-- Nutzen Sie Volumes, um Daten persistent zu speichern und zwischen Container-Neustarts zu erhalten.
-- Überprüfen Sie regelmäßig die Sicherheit Ihrer Images, um Schwachstellen zu vermeiden.
+- Verwenden Sie `docker-compose`, um mehrere Container als Dienst zu verwalten.
+- Halten Sie Ihre Images klein, um die Ladezeiten zu verbessern.
+- Nutzen Sie Tags, um verschiedene Versionen Ihrer Images zu verwalten und zu kennzeichnen.

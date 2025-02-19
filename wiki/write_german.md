@@ -1,42 +1,41 @@
-# [Linux] Bash write Verwendung: Nachrichten an andere Benutzer senden
+# [Linux] C Shell (csh) write Verwendung: Nachrichten an andere Benutzer senden
 
 ## Übersicht
-Der `write` Befehl in Bash ermöglicht es Benutzern, Nachrichten direkt an andere Benutzer auf demselben System zu senden. Dies ist besonders nützlich in Mehrbenutzerumgebungen, wo schnelle Kommunikation erforderlich ist.
+Der `write` Befehl in der C Shell (csh) ermöglicht es Benutzern, Nachrichten direkt an andere Benutzer auf dem gleichen System zu senden. Dies ist besonders nützlich für die Kommunikation in Echtzeit, ohne auf E-Mail oder andere Kommunikationsmittel zurückgreifen zu müssen.
 
 ## Verwendung
 Die grundlegende Syntax des `write` Befehls lautet:
 
-```bash
+```
 write [Benutzername] [Terminal]
 ```
 
-Wenn kein Terminal angegeben wird, wird standardmäßig das Terminal des angegebenen Benutzers verwendet.
-
 ## Häufige Optionen
-- `-n`: Verhindert, dass der Benutzer benachrichtigt wird, wenn eine Nachricht gesendet wird.
-- `-h`: Zeigt eine Hilfe-Information an.
+- `-n`: Unterdrückt die Ausgabe von Bestätigungen, wenn die Nachricht gesendet wird.
+- `-h`: Zeigt eine Hilfe zu den verfügbaren Optionen an.
 
 ## Häufige Beispiele
-1. **Nachricht an einen Benutzer senden:**
-   Um eine Nachricht an den Benutzer `max` zu senden, geben Sie einfach ein:
-   ```bash
+Hier sind einige praktische Beispiele für die Verwendung des `write` Befehls:
+
+1. **Nachricht an einen Benutzer senden**:
+   ```csh
    write max
    ```
-   Danach können Sie Ihre Nachricht eingeben und mit `Strg+D` beenden.
+   Dies öffnet eine Verbindung zu dem Benutzer `max`, und Sie können direkt eine Nachricht eingeben.
 
-2. **Nachricht an einen bestimmten Terminal senden:**
-   Wenn Sie wissen, dass `max` auf `pts/1` eingeloggt ist, können Sie die Nachricht direkt dorthin senden:
-   ```bash
+2. **Nachricht an einen bestimmten Terminal senden**:
+   ```csh
    write max pts/1
    ```
+   Hier wird eine Nachricht an den Benutzer `max`, der auf dem Terminal `pts/1` angemeldet ist, gesendet.
 
-3. **Nachricht ohne Benachrichtigung senden:**
-   Um eine Nachricht zu senden, ohne dass der Empfänger benachrichtigt wird:
-   ```bash
+3. **Nachricht ohne Bestätigung senden**:
+   ```csh
    write -n max
    ```
+   Diese Option sendet die Nachricht an `max`, ohne eine Bestätigung anzuzeigen.
 
 ## Tipps
-- Stellen Sie sicher, dass der Empfänger nicht den `mesg n` Befehl ausgeführt hat, da dies das Empfangen von Nachrichten blockiert.
-- Nutzen Sie `write` in Kombination mit `who`, um herauszufinden, wer gerade eingeloggt ist und auf welchem Terminal sie sich befinden.
-- Seien Sie höflich und verwenden Sie `write` für wichtige Mitteilungen, um den Empfänger nicht unnötig zu stören.
+- Stellen Sie sicher, dass der Benutzer, an den Sie eine Nachricht senden möchten, angemeldet und verfügbar ist.
+- Verwenden Sie `who` oder `w`, um eine Liste der angemeldeten Benutzer und deren Terminals zu erhalten.
+- Seien Sie respektvoll und vermeiden Sie es, unerwünschte Nachrichten zu senden, um Störungen zu vermeiden.

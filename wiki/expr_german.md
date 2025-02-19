@@ -1,83 +1,69 @@
-# [Linux] Bash expr Verwendung: Berechnungen und Stringvergleiche
+# [Linux] C Shell (csh) expr Verwendung: Berechnungen und String-Manipulationen
 
 ## Übersicht
-Der `expr` Befehl in Bash wird verwendet, um einfache Berechnungen durchzuführen und Stringvergleiche anzustellen. Er ermöglicht die Auswertung von Ausdrücken und die Rückgabe von Ergebnissen, die in Skripten oder der Kommandozeile weiterverwendet werden können.
+Der Befehl `expr` wird in der C Shell verwendet, um einfache mathematische Berechnungen durchzuführen und Zeichenfolgen zu manipulieren. Er kann sowohl arithmetische Ausdrücke als auch logische Vergleiche verarbeiten.
 
 ## Verwendung
-Die grundlegende Syntax des `expr` Befehls sieht wie folgt aus:
+Die Grundsyntax des Befehls lautet:
 
-```bash
+```csh
 expr [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
 - `+` : Addition von zwei Zahlen.
 - `-` : Subtraktion von zwei Zahlen.
-- `*` : Multiplikation von zwei Zahlen (muss mit Escape-Zeichen `\*` verwendet werden).
+- `*` : Multiplikation von zwei Zahlen (muss mit Escape-Zeichen verwendet werden: `\*`).
 - `/` : Division von zwei Zahlen.
-- `%` : Modulo-Operation, gibt den Rest einer Division zurück.
-- `=` : Vergleicht zwei Strings auf Gleichheit.
-- `!=` : Vergleicht zwei Strings auf Ungleichheit.
+- `%` : Modulo-Operation (Rest der Division).
+- `=` : Vergleicht zwei Werte auf Gleichheit.
+- `!=` : Vergleicht zwei Werte auf Ungleichheit.
 
 ## Häufige Beispiele
 
-### 1. Addition
-Um zwei Zahlen zu addieren, verwenden Sie:
-
-```bash
+### Beispiel 1: Einfache Addition
+```csh
 expr 5 + 3
 ```
 Ausgabe: `8`
 
-### 2. Subtraktion
-Um eine Zahl von einer anderen zu subtrahieren:
-
-```bash
+### Beispiel 2: Subtraktion
+```csh
 expr 10 - 4
 ```
 Ausgabe: `6`
 
-### 3. Multiplikation
-Um zwei Zahlen zu multiplizieren:
-
-```bash
-expr 4 \* 2
+### Beispiel 3: Multiplikation
+```csh
+expr 7 \* 6
 ```
-Ausgabe: `8`
+Ausgabe: `42`
 
-### 4. Division
-Um eine Zahl durch eine andere zu dividieren:
-
-```bash
+### Beispiel 4: Division
+```csh
 expr 20 / 4
 ```
 Ausgabe: `5`
 
-### 5. Modulo
-Um den Rest einer Division zu berechnen:
-
-```bash
+### Beispiel 5: Modulo
+```csh
 expr 10 % 3
 ```
 Ausgabe: `1`
 
-### 6. Stringvergleich
-Um zwei Strings auf Gleichheit zu überprüfen:
-
-```bash
-expr "Hallo" = "Hallo"
+### Beispiel 6: String-Länge
+```csh
+expr length "Hallo Welt"
 ```
-Ausgabe: `1` (wahr)
+Ausgabe: `11`
 
-### 7. Ungleichheitsvergleich
-Um zu prüfen, ob zwei Strings ungleich sind:
-
-```bash
-expr "Hallo" != "Welt"
+### Beispiel 7: String-Konkatenation
+```csh
+expr "Hallo " : "Hallo \(.*\)"
 ```
-Ausgabe: `1` (wahr)
+Ausgabe: `0` (Länge des übereinstimmenden Teils)
 
 ## Tipps
-- Achten Sie darauf, Multiplikation mit einem Escape-Zeichen `\*` zu verwenden, um Missverständnisse mit Shell-Wildcards zu vermeiden.
-- Nutzen Sie Klammern, um die Reihenfolge der Berechnungen zu steuern, z.B. `expr \( 2 + 3 \) \* 4`.
-- `expr` gibt nur Ganzzahlen zurück. Für Fließkommaoperationen sollten andere Tools wie `bc` verwendet werden.
+- Achten Sie darauf, mathematische Operatoren wie `*` mit einem Escape-Zeichen (`\`) zu versehen, um Missverständnisse mit der Shell zu vermeiden.
+- Verwenden Sie Klammern, um die Reihenfolge der Berechnungen klarzustellen.
+- `expr` gibt nur Ganzzahlen zurück; für Fließkommaoperationen sollten Sie andere Werkzeuge wie `bc` verwenden.

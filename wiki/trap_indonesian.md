@@ -1,55 +1,44 @@
-# [Linux] Bash trap Penggunaan: Mengelola sinyal dan kejadian
+# [Sistem Operasi] C Shell (csh) trap: Mengelola sinyal dan kejadian
 
 ## Overview
-Perintah `trap` dalam Bash digunakan untuk menangani sinyal dan kejadian tertentu yang terjadi selama eksekusi skrip. Dengan menggunakan `trap`, Anda dapat menentukan tindakan yang harus diambil ketika sinyal tertentu diterima, seperti menghentikan skrip dengan bersih atau menjalankan fungsi tertentu.
+Perintah `trap` dalam C Shell (csh) digunakan untuk menangkap sinyal dan kejadian tertentu yang terjadi selama eksekusi skrip. Dengan menggunakan `trap`, pengguna dapat menentukan tindakan yang harus diambil ketika sinyal tertentu diterima, seperti menghentikan skrip atau menjalankan perintah tertentu.
 
 ## Usage
-Sintaks dasar dari perintah `trap` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `trap`:
 
-```bash
-trap [options] [commands] [signals]
+```csh
+trap [options] [arguments]
 ```
 
 ## Common Options
-- `-l`: Menampilkan daftar sinyal yang tersedia.
-- `-p`: Menampilkan perintah yang terdaftar untuk sinyal yang ditentukan.
-- `signals`: Daftar sinyal yang ingin Anda tangani, seperti `SIGINT`, `SIGTERM`, dll.
+- `SIGINT`: Menangkap sinyal interupsi (Ctrl+C).
+- `SIGTERM`: Menangkap sinyal terminasi.
+- `EXIT`: Menangkap kejadian ketika skrip keluar.
+- `DEBUG`: Menangkap setiap perintah yang dieksekusi.
 
 ## Common Examples
 
-### Contoh 1: Menangani Sinyal SIGINT
-Menangkap sinyal `SIGINT` (biasanya dihasilkan oleh Ctrl+C) dan menjalankan perintah tertentu.
+1. **Menangkap sinyal interupsi (Ctrl+C)**:
+   ```csh
+   trap 'echo "Sinyal interupsi diterima!"' SIGINT
+   ```
 
-```bash
-trap 'echo "Sinyal SIGINT diterima. Keluar..."' SIGINT
-while true; do
-    echo "Menunggu sinyal..."
-    sleep 1
-done
-```
+2. **Menangkap sinyal terminasi dan menjalankan perintah**:
+   ```csh
+   trap 'echo "Skrip dihentikan!"' SIGTERM
+   ```
 
-### Contoh 2: Membersihkan Sebelum Keluar
-Menggunakan `trap` untuk membersihkan file sementara sebelum skrip keluar.
+3. **Menangkap kejadian saat skrip keluar**:
+   ```csh
+   trap 'echo "Skrip selesai!"' EXIT
+   ```
 
-```bash
-trap 'rm -f /tmp/tempfile; echo "File sementara dihapus."' EXIT
-touch /tmp/tempfile
-echo "Skrip sedang berjalan..."
-sleep 5
-```
-
-### Contoh 3: Menangani Beberapa Sinyal
-Menangani beberapa sinyal sekaligus dengan satu perintah.
-
-```bash
-trap 'echo "Sinyal diterima, keluar..."' SIGINT SIGTERM
-while true; do
-    echo "Menunggu sinyal..."
-    sleep 1
-done
-```
+4. **Menangkap setiap perintah yang dieksekusi**:
+   ```csh
+   trap 'echo "Perintah dieksekusi."' DEBUG
+   ```
 
 ## Tips
-- Selalu gunakan `trap` untuk menangani sinyal yang dapat menghentikan skrip Anda secara tiba-tiba, seperti `SIGINT` dan `SIGTERM`.
-- Pastikan untuk menguji skrip Anda dengan sinyal yang berbeda untuk memastikan bahwa penanganan sinyal berfungsi seperti yang diharapkan.
-- Gunakan `trap` dengan perintah `EXIT` untuk menjalankan pembersihan atau tindakan lain saat skrip selesai, baik secara normal maupun karena sinyal.
+- Selalu gunakan `trap` untuk menangani sinyal yang tidak terduga agar skrip dapat berfungsi dengan baik dan tidak berhenti secara tiba-tiba.
+- Pastikan untuk menguji skrip Anda dengan berbagai sinyal untuk memastikan bahwa tindakan yang diinginkan dijalankan dengan benar.
+- Gunakan `trap` dengan bijak untuk menjaga agar skrip Anda tetap bersih dan mudah dipahami, terutama ketika menangani banyak sinyal.

@@ -1,54 +1,50 @@
-# [Linux] Bash swapon Uso: Ativar espaço de troca
+# [Linux] C Shell (csh) swapon Uso: Ativar dispositivos de swap
 
 ## Overview
-O comando `swapon` é utilizado para ativar dispositivos ou arquivos de swap no sistema Linux. O swap é uma área no disco rígido que o sistema utiliza como memória virtual, permitindo que ele gerencie a memória de forma mais eficiente, especialmente quando a RAM está cheia.
+O comando `swapon` é utilizado para ativar dispositivos de swap no sistema. O swap é uma área no disco rígido que o sistema operacional utiliza como uma extensão da memória RAM, permitindo que o sistema gerencie melhor a memória disponível.
 
 ## Usage
 A sintaxe básica do comando `swapon` é a seguinte:
 
-```bash
+```csh
 swapon [opções] [argumentos]
 ```
 
 ## Common Options
 Aqui estão algumas opções comuns que podem ser usadas com o comando `swapon`:
 
-- `-a`: Ativa todas as áreas de swap listadas no arquivo `/etc/fstab`.
-- `-e`: Ignora erros ao ativar áreas de swap.
-- `--show`: Exibe informações sobre as áreas de swap ativas.
+- `-a`: Ativa todos os dispositivos de swap listados no arquivo `/etc/fstab`.
+- `-e`: Ignora os dispositivos que não podem ser ativados.
+- `-s`: Exibe uma lista dos dispositivos de swap atualmente ativos.
 
 ## Common Examples
 Aqui estão alguns exemplos práticos do uso do comando `swapon`:
 
-1. **Ativar uma área de swap específica**:
-   ```bash
-   swapon /dev/sdX
-   ```
-   Substitua `/dev/sdX` pelo caminho do dispositivo de swap que você deseja ativar.
+1. Ativar todos os dispositivos de swap listados no arquivo `/etc/fstab`:
 
-2. **Ativar todas as áreas de swap listadas no fstab**:
-   ```bash
+   ```csh
    swapon -a
    ```
 
-3. **Mostrar as áreas de swap ativas**:
-   ```bash
-   swapon --show
+2. Ativar um dispositivo de swap específico:
+
+   ```csh
+   swapon /dev/sdX
    ```
 
-4. **Ativar um arquivo de swap**:
-   Primeiro, crie um arquivo de swap:
-   ```bash
-   fallocate -l 1G /swapfile
-   chmod 600 /swapfile
-   mkswap /swapfile
+3. Ignorar dispositivos que não podem ser ativados:
+
+   ```csh
+   swapon -e /dev/sdX
    ```
-   Em seguida, ative o arquivo de swap:
-   ```bash
-   swapon /swapfile
+
+4. Listar todos os dispositivos de swap ativos:
+
+   ```csh
+   swapon -s
    ```
 
 ## Tips
-- Sempre verifique se a área de swap foi ativada corretamente usando `swapon --show` após executar o comando.
-- Para garantir que a área de swap seja ativada automaticamente na inicialização, adicione a entrada correspondente no arquivo `/etc/fstab`.
-- Use o comando `free -h` para monitorar o uso da memória e do swap em tempo real.
+- Sempre verifique se o dispositivo de swap está corretamente configurado no arquivo `/etc/fstab` para facilitar a ativação automática na inicialização.
+- Use o comando `free -m` para monitorar a utilização da memória e do swap após ativar o swap.
+- É uma boa prática ter pelo menos um arquivo ou partição de swap configurado para evitar problemas de falta de memória.

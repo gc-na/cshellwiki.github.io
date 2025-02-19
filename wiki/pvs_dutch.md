@@ -1,55 +1,38 @@
-# [Linux] Bash pvs gebruik: Toon informatie over fysieke volumes
+# [Linux] C Shell (csh) pvs gebruik: [weergeven van de versies van de bestanden]
 
 ## Overzicht
-De `pvs` opdracht in Bash wordt gebruikt om informatie weer te geven over fysieke volumes in een Logical Volume Management (LVM) systeem. Het biedt een overzicht van de fysieke opslagapparaten die zijn toegewezen aan de LVM-configuratie.
+De `pvs`-opdracht in C Shell (csh) wordt gebruikt om de versies van bestanden in een versiebeheersysteem weer te geven. Het biedt een overzicht van de verschillende versies van bestanden, wat handig is voor het beheren van wijzigingen en het volgen van de ontwikkeling van projecten.
 
 ## Gebruik
-De basis syntaxis van de `pvs` opdracht is als volgt:
+De basis syntaxis van de `pvs`-opdracht is als volgt:
 
-```bash
+```
 pvs [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-o, --options`: Specificeer welke kolommen moeten worden weergegeven.
-- `-h, --human-readable`: Toon de uitvoer in een leesbaar formaat (bijvoorbeeld met eenheden zoals GB).
-- `-v, --verbose`: Geef meer gedetailleerde informatie weer.
-- `--noheadings`: Verberg de koppen in de uitvoer.
+- `-a`: Toont alle versies, inclusief verborgen versies.
+- `-h`: Geeft een korte helptekst weer met informatie over het gebruik van de opdracht.
+- `-r`: Toont alleen de meest recente versies van de bestanden.
 
 ## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van de `pvs` opdracht:
 
-1. **Basisinformatie over fysieke volumes weergeven:**
-
-   ```bash
-   pvs
+1. **Toon alle versies van een bestand:**
+   ```csh
+   pvs -a mijn_bestand.txt
    ```
 
-2. **Informatie in een leesbaar formaat weergeven:**
+2. **Toon alleen de meest recente versie van een bestand:**
+   ```csh
+   pvs -r mijn_bestand.txt
+   ```
 
-   ```bash
+3. **Vraag hulp over de pvs-opdracht:**
+   ```csh
    pvs -h
    ```
 
-3. **Specifieke kolommen weergeven:**
-
-   ```bash
-   pvs -o +pv_size,pv_free
-   ```
-
-4. **Gedetailleerde informatie tonen:**
-
-   ```bash
-   pvs -v
-   ```
-
-5. **Koppen verbergen in de uitvoer:**
-
-   ```bash
-   pvs --noheadings
-   ```
-
 ## Tips
-- Gebruik de `-h` optie om de uitvoer gemakkelijker te lezen, vooral bij grote volumes.
-- Combineer `pvs` met andere LVM-opdrachten zoals `lvdisplay` en `vgdisplay` voor een completer overzicht van je opslagconfiguratie.
-- Controleer regelmatig de status van je fysieke volumes om ervoor te zorgen dat er geen problemen zijn met de opslagcapaciteit.
+- Gebruik de `-a` optie om een volledig overzicht van alle versies te krijgen, vooral als je werkt met bestanden die vaak worden bijgewerkt.
+- Combineer de `-r` optie met specifieke bestandsnamen om snel de laatste wijzigingen te controleren.
+- Vergeet niet om regelmatig de versies van belangrijke bestanden te controleren om een goed overzicht van de voortgang te behouden.

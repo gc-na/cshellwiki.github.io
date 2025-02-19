@@ -1,50 +1,47 @@
-# [Linux] Bash mv użycie: Przenoszenie i zmiana nazw plików
+# [Linux] C Shell (csh) mv Użycie: Przenoszenie lub zmiana nazw plików
 
 ## Overview
-Polecenie `mv` w systemie Linux służy do przenoszenia plików i katalogów oraz zmiany ich nazw. Jest to jedno z podstawowych poleceń w Bash, które pozwala na organizowanie i zarządzanie plikami w systemie.
+Polecenie `mv` w C Shell (csh) służy do przenoszenia plików i katalogów oraz zmiany ich nazw. Jest to podstawowe narzędzie do zarządzania plikami w systemie Unix i Linux.
 
 ## Usage
 Podstawowa składnia polecenia `mv` jest następująca:
 
-```bash
+```csh
 mv [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-i`: Interaktywnie, zapyta przed nadpisaniem istniejącego pliku.
+- `-i`: Pyta o potwierdzenie przed nadpisaniem istniejącego pliku.
 - `-u`: Przenosi plik tylko wtedy, gdy źródło jest nowsze od celu lub gdy cel nie istnieje.
-- `-v`: Wyświetla szczegóły operacji przenoszenia lub zmiany nazwy.
-- `-n`: Nie nadpisuje istniejących plików.
+- `-v`: Wyświetla szczegóły operacji przenoszenia.
 
 ## Common Examples
-Przykłady użycia polecenia `mv`:
-
-1. **Przenoszenie pliku do innego katalogu:**
-   ```bash
-   mv plik.txt /ścieżka/do/katalogu/
+1. **Przeniesienie pliku do innego katalogu:**
+   ```csh
+   mv dokument.txt /home/użytkownik/dokumenty/
    ```
 
 2. **Zmiana nazwy pliku:**
-   ```bash
-   mv stara_nazwa.txt nowa_nazwa.txt
+   ```csh
+   mv stary_nazwa.txt nowy_nazwa.txt
    ```
 
-3. **Przenoszenie wielu plików do katalogu:**
-   ```bash
-   mv plik1.txt plik2.txt /ścieżka/do/katalogu/
+3. **Przeniesienie wielu plików do katalogu:**
+   ```csh
+   mv plik1.txt plik2.txt /home/użytkownik/dokumenty/
    ```
 
-4. **Przenoszenie pliku z potwierdzeniem:**
-   ```bash
-   mv -i plik.txt /ścieżka/do/katalogu/
+4. **Przeniesienie pliku z potwierdzeniem:**
+   ```csh
+   mv -i dokument.txt /home/użytkownik/dokumenty/
    ```
 
-5. **Wyświetlanie szczegółów przenoszenia:**
-   ```bash
-   mv -v plik.txt /ścieżka/do/katalogu/
+5. **Przeniesienie pliku, jeśli jest nowszy:**
+   ```csh
+   mv -u dokument.txt /home/użytkownik/dokumenty/
    ```
 
 ## Tips
-- Zawsze używaj opcji `-i`, gdy przenosisz pliki do katalogu, w którym mogą istnieć pliki o tej samej nazwie, aby uniknąć przypadkowego nadpisania.
-- Sprawdź, czy plik źródłowy istnieje przed przeniesieniem, aby uniknąć błędów.
-- Możesz używać `mv` do przenoszenia plików między różnymi systemami plików, co czyni je bardzo wszechstronnym narzędziem.
+- Zawsze używaj opcji `-i`, aby uniknąć przypadkowego nadpisania plików.
+- Sprawdzaj, czy plik docelowy już istnieje, aby uniknąć utraty danych.
+- Używaj opcji `-v`, aby śledzić, co się dzieje podczas przenoszenia plików.

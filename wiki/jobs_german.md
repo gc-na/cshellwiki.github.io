@@ -1,42 +1,43 @@
-# [Linux] Bash jobs Verwendung: Zeigt aktive Jobs an
+# [Linux] C Shell (csh) jobs Verwendung: Zeigt aktive Jobs an
 
 ## Übersicht
-Der Befehl `jobs` in Bash wird verwendet, um eine Liste der aktuell laufenden Jobs in der aktuellen Shell-Sitzung anzuzeigen. Ein Job ist ein Prozess, der von der Shell gestartet wurde und entweder im Vordergrund oder im Hintergrund läuft. Mit `jobs` können Benutzer den Status dieser Prozesse überwachen.
+Der Befehl `jobs` in der C Shell (csh) wird verwendet, um eine Liste der aktuell aktiven Jobs anzuzeigen, die im Hintergrund oder im Vordergrund laufen. Dies ist nützlich, um den Status von Prozessen zu überwachen, die von der Shell gestartet wurden.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
-jobs [Optionen] [Argumente]
+```csh
+jobs [optionen] [argumente]
 ```
 
 ## Häufige Optionen
-- `-l`: Zeigt die Prozess-ID (PID) der Jobs an.
-- `-n`: Zeigt nur Jobs an, die seit der letzten Ausführung von `jobs` geändert wurden.
+- `-l`: Zeigt die Prozess-ID (PID) für jeden Job an.
+- `-n`: Zeigt nur die Jobs an, die seit dem letzten Aufruf von `jobs` geändert wurden.
 - `-p`: Gibt nur die Prozess-IDs der Jobs aus.
 
 ## Häufige Beispiele
-1. **Einfaches Anzeigen von Jobs:**
-   ```bash
+
+1. **Einfaches Anzeigen aktiver Jobs:**
+   ```csh
    jobs
    ```
 
-2. **Jobs mit Prozess-IDs anzeigen:**
-   ```bash
+2. **Anzeigen von Jobs mit Prozess-IDs:**
+   ```csh
    jobs -l
    ```
 
-3. **Nur neue oder geänderte Jobs anzeigen:**
-   ```bash
+3. **Anzeigen von nur neuen oder geänderten Jobs:**
+   ```csh
    jobs -n
    ```
 
-4. **Nur die Prozess-IDs der Jobs anzeigen:**
-   ```bash
+4. **Anzeigen von nur den Prozess-IDs der Jobs:**
+   ```csh
    jobs -p
    ```
 
 ## Tipps
-- Verwenden Sie `bg` und `fg`, um Jobs im Hintergrund oder Vordergrund fortzusetzen, nachdem Sie sie mit `Ctrl + Z` gestoppt haben.
-- Überprüfen Sie regelmäßig Ihre Jobs mit `jobs`, um sicherzustellen, dass keine wichtigen Prozesse im Hintergrund laufen, die Sie möglicherweise vergessen haben.
-- Nutzen Sie die Optionen `-l` oder `-p`, wenn Sie spezifische Informationen über Ihre Jobs benötigen, insbesondere wenn Sie mit mehreren Prozessen arbeiten.
+- Verwenden Sie `jobs -l`, um eine bessere Übersicht über die Jobs zu erhalten, insbesondere wenn Sie die Prozess-IDs benötigen.
+- Kombinieren Sie `jobs` mit anderen Befehlen wie `fg` oder `bg`, um Jobs im Vordergrund oder Hintergrund fortzusetzen.
+- Überprüfen Sie regelmäßig den Status Ihrer Jobs, um sicherzustellen, dass keine unerwarteten Prozesse laufen, die Ressourcen beanspruchen.

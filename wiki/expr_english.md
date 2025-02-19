@@ -1,95 +1,74 @@
-# [Linux] Bash expr Usage Equivalent: Evaluate expressions and perform calculations
+# [Unix] C Shell (csh) expr 用法: Evaluate expressions and perform calculations
 
 ## Overview
-The `expr` command in Bash is used for evaluating expressions and performing calculations. It can handle arithmetic operations, string manipulations, and logical comparisons, making it a versatile tool for scripting and command-line tasks.
+The `expr` command in C Shell (csh) is used to evaluate expressions and perform basic arithmetic operations. It can handle integer arithmetic, string operations, and logical comparisons, making it a versatile tool for scripting and command-line tasks.
 
 ## Usage
 The basic syntax of the `expr` command is as follows:
 
-```bash
+```csh
 expr [options] [arguments]
 ```
 
 ## Common Options
-- `+` : Addition
-- `-` : Subtraction
-- `*` : Multiplication (must be escaped as `\*` or quoted)
-- `/` : Division
-- `%` : Modulus
-- `=` : String comparison for equality
-- `!=` : String comparison for inequality
-- `>` : Greater than comparison
-- `<` : Less than comparison
-- `length` : Returns the length of a string
+- `+` : Addition of two numbers.
+- `-` : Subtraction of two numbers.
+- `*` : Multiplication of two numbers (note that `*` must be escaped or quoted).
+- `/` : Division of two numbers.
+- `%` : Modulus operation (remainder of division).
+- `=` : String comparison for equality.
+- `!=` : String comparison for inequality.
+- `>` : Greater than comparison.
+- `<` : Less than comparison.
+- `>=` : Greater than or equal to comparison.
+- `<=` : Less than or equal to comparison.
 
 ## Common Examples
-Here are some practical examples of using the `expr` command:
 
-### Arithmetic Operations
-1. **Addition**
-   ```bash
+1. **Basic Arithmetic Addition**
+   ```csh
    expr 5 + 3
    ```
-   Output: `8`
+   This command outputs `8`, which is the result of adding 5 and 3.
 
 2. **Subtraction**
-   ```bash
+   ```csh
    expr 10 - 4
    ```
-   Output: `6`
+   The output will be `6`, the result of subtracting 4 from 10.
 
 3. **Multiplication**
-   ```bash
+   ```csh
    expr 7 \* 6
    ```
-   Output: `42`
+   This will give `42`. Note the backslash before the asterisk to prevent shell interpretation.
 
 4. **Division**
-   ```bash
+   ```csh
    expr 20 / 4
    ```
-   Output: `5`
+   The output is `5`, the result of dividing 20 by 4.
 
 5. **Modulus**
-   ```bash
+   ```csh
    expr 10 % 3
    ```
-   Output: `1`
+   This command returns `1`, which is the remainder of dividing 10 by 3.
 
-### String Operations
-1. **String Length**
-   ```bash
-   expr length "Hello World"
+6. **String Comparison**
+   ```csh
+   expr "hello" = "hello"
    ```
-   Output: `11`
+   This will output `1`, indicating that the two strings are equal.
 
-2. **String Comparison**
-   ```bash
-   expr "apple" = "apple"
-   ```
-   Output: `1` (true)
-
-3. **Inequality Comparison**
-   ```bash
-   expr "banana" != "apple"
-   ```
-   Output: `1` (true)
-
-### Logical Comparisons
-1. **Greater Than**
-   ```bash
+7. **Logical Comparison**
+   ```csh
    expr 5 \> 3
    ```
-   Output: `1` (true)
-
-2. **Less Than**
-   ```bash
-   expr 2 \< 4
-   ```
-   Output: `1` (true)
+   The output will be `1`, meaning that 5 is greater than 3.
 
 ## Tips
-- Always remember to escape the asterisk `*` when performing multiplication to avoid shell interpretation.
-- Use parentheses to group expressions for clarity, especially in complex calculations.
-- `expr` returns `0` for false and `1` for true in logical comparisons, which can be useful in conditional statements.
-- Consider using `$(())` for arithmetic operations in Bash as it is often more straightforward and easier to read.
+- Always escape the multiplication operator (`*`) to avoid shell interpretation issues.
+- Use parentheses for complex expressions to ensure the correct order of operations.
+- Remember that `expr` only works with integers; for floating-point arithmetic, consider using other tools like `bc`.
+- When using string comparisons, ensure that the strings are enclosed in quotes to avoid unexpected results.

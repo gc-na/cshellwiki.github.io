@@ -1,49 +1,48 @@
-# [Linux] Bash passwd Cách sử dụng: Thay đổi mật khẩu người dùng
+# [Hệ điều hành] C Shell (csh) passwd <Sử dụng tương đương>: Thay đổi mật khẩu người dùng
 
 ## Tổng quan
-Lệnh `passwd` trong Bash được sử dụng để thay đổi mật khẩu của người dùng trong hệ thống Linux. Nó cho phép người dùng cập nhật mật khẩu của chính mình hoặc của người khác (nếu có quyền truy cập).
+Lệnh `passwd` trong C Shell (csh) được sử dụng để thay đổi mật khẩu của người dùng. Lệnh này cho phép người dùng cập nhật mật khẩu của mình, đảm bảo an toàn và bảo mật cho tài khoản.
 
-## Cách sử dụng
+## Cú pháp
 Cú pháp cơ bản của lệnh `passwd` như sau:
-
-```bash
-passwd [tùy chọn] [tên người dùng]
+```
+passwd [tùy chọn] [tham số]
 ```
 
 ## Tùy chọn phổ biến
-- `-d`: Xóa mật khẩu của người dùng, cho phép đăng nhập mà không cần mật khẩu.
-- `-l`: Khóa tài khoản người dùng, ngăn không cho đăng nhập.
-- `-u`: Mở khóa tài khoản người dùng đã bị khóa.
-- `-e`: Buộc người dùng phải thay đổi mật khẩu khi đăng nhập lần tiếp theo.
-- `-S`: Hiển thị trạng thái của tài khoản người dùng.
+- `-l`: Khóa tài khoản người dùng.
+- `-u`: Mở khóa tài khoản người dùng.
+- `-d`: Xóa mật khẩu của người dùng, làm cho tài khoản không có mật khẩu.
 
 ## Ví dụ phổ biến
-- Thay đổi mật khẩu của người dùng hiện tại:
-    ```bash
-    passwd
-    ```
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `passwd`:
 
-- Thay đổi mật khẩu cho một người dùng cụ thể (cần quyền root):
-    ```bash
-    sudo passwd ten_nguoi_dung
-    ```
+1. Thay đổi mật khẩu của người dùng hiện tại:
+   ```csh
+   passwd
+   ```
 
-- Khóa tài khoản người dùng:
-    ```bash
-    sudo passwd -l ten_nguoi_dung
-    ```
+2. Thay đổi mật khẩu cho một người dùng cụ thể (cần quyền quản trị):
+   ```csh
+   passwd username
+   ```
 
-- Mở khóa tài khoản người dùng:
-    ```bash
-    sudo passwd -u ten_nguoi_dung
-    ```
+3. Khóa tài khoản người dùng:
+   ```csh
+   passwd -l username
+   ```
 
-- Buộc người dùng thay đổi mật khẩu khi đăng nhập lần tiếp theo:
-    ```bash
-    sudo passwd -e ten_nguoi_dung
-    ```
+4. Mở khóa tài khoản người dùng:
+   ```csh
+   passwd -u username
+   ```
+
+5. Xóa mật khẩu của người dùng:
+   ```csh
+   passwd -d username
+   ```
 
 ## Mẹo
-- Luôn sử dụng mật khẩu mạnh để bảo vệ tài khoản của bạn.
-- Thay đổi mật khẩu định kỳ để tăng cường bảo mật.
-- Sử dụng tùy chọn `-S` để kiểm tra trạng thái tài khoản người dùng trước khi thực hiện thay đổi.
+- Đảm bảo rằng mật khẩu mới đủ mạnh, bao gồm chữ hoa, chữ thường, số và ký tự đặc biệt.
+- Thường xuyên thay đổi mật khẩu để bảo vệ tài khoản của bạn.
+- Sử dụng lệnh `passwd` với quyền quản trị để thay đổi mật khẩu cho người dùng khác.

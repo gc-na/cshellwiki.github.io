@@ -1,12 +1,12 @@
-# [Linux] Bash chmod utilisation : Modifier les permissions des fichiers
+# [Linux] C Shell (csh) chmod Utilisation : Modifier les permissions des fichiers
 
 ## Overview
-La commande `chmod` (change mode) est utilisée pour modifier les permissions d'accès des fichiers et des répertoires sous Linux. Elle permet de définir qui peut lire, écrire ou exécuter un fichier.
+La commande `chmod` est utilisée pour modifier les permissions d'accès des fichiers et des répertoires dans un système Unix/Linux. Elle permet de définir qui peut lire, écrire ou exécuter un fichier.
 
 ## Usage
 La syntaxe de base de la commande `chmod` est la suivante :
 
-```bash
+```csh
 chmod [options] [arguments]
 ```
 
@@ -14,43 +14,37 @@ chmod [options] [arguments]
 Voici quelques options courantes pour la commande `chmod` :
 
 - `-R` : Applique les changements de manière récursive à tous les fichiers et sous-répertoires.
-- `-v` : Affiche les fichiers pour lesquels les permissions ont été modifiées.
-- `--reference=FICHIER` : Utilise les permissions d'un fichier de référence pour modifier les permissions du fichier cible.
+- `u` : Représente le propriétaire du fichier (user).
+- `g` : Représente le groupe associé au fichier (group).
+- `o` : Représente les autres utilisateurs (others).
+- `+` : Ajoute une permission.
+- `-` : Retire une permission.
+- `=` : Définit une permission exacte.
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de `chmod` :
+Voici quelques exemples pratiques de l'utilisation de la commande `chmod` :
 
-1. **Accorder des permissions de lecture, d'écriture et d'exécution à l'utilisateur :**
-
-   ```bash
-   chmod u+rwx fichier.txt
+1. **Ajouter la permission d'exécution pour le propriétaire :**
+   ```csh
+   chmod u+x mon_script.sh
    ```
 
-2. **Retirer la permission d'exécution pour tous les utilisateurs :**
-
-   ```bash
-   chmod a-x script.sh
+2. **Retirer la permission d'écriture pour le groupe :**
+   ```csh
+   chmod g-w mon_fichier.txt
    ```
 
-3. **Accorder des permissions de lecture et d'écriture au groupe et aux autres utilisateurs :**
-
-   ```bash
-   chmod go+rw document.pdf
+3. **Définir les permissions de lecture, écriture et exécution pour le propriétaire, et seulement de lecture pour le groupe et les autres :**
+   ```csh
+   chmod u=rwx,g=r,o=r mon_document.pdf
    ```
 
-4. **Modifier les permissions de manière récursive pour un répertoire :**
-
-   ```bash
+4. **Appliquer les changements de manière récursive à un répertoire :**
+   ```csh
    chmod -R 755 mon_repertoire/
-   ```
-
-5. **Utiliser un fichier de référence pour ajuster les permissions :**
-
-   ```bash
-   chmod --reference=modele.txt cible.txt
    ```
 
 ## Tips
 - Utilisez `ls -l` pour vérifier les permissions actuelles d'un fichier avant de les modifier.
-- Soyez prudent avec les permissions `777`, car elles permettent à tout le monde d'accéder à un fichier, ce qui peut poser des problèmes de sécurité.
-- Pour des scripts ou des programmes, il est souvent préférable d'accorder uniquement les permissions nécessaires pour éviter les accès non autorisés.
+- Soyez prudent lorsque vous utilisez l'option `-R`, car elle affecte tous les fichiers et sous-répertoires.
+- Pour des permissions spécifiques, utilisez la notation numérique (par exemple, `chmod 644` pour un fichier avec des permissions de lecture et écriture pour le propriétaire, et de lecture pour le groupe et les autres).

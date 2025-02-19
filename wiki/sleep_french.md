@@ -1,54 +1,52 @@
-# [Linux] Bash sleep utilisation : Mettre en pause l'exécution
+# [Linux] C Shell (csh) sleep : Mettre en pause l'exécution
 
 ## Overview
-La commande `sleep` est utilisée dans les scripts Bash pour suspendre l'exécution d'un script pendant une durée spécifiée. Cela peut être utile pour créer des délais entre les commandes ou pour attendre que certaines conditions soient remplies avant de continuer.
+La commande `sleep` dans C Shell (csh) est utilisée pour suspendre l'exécution d'un script ou d'une commande pendant une durée spécifiée. Cela peut être utile pour créer des délais entre les commandes ou pour attendre un certain temps avant de continuer l'exécution d'un script.
 
 ## Usage
 La syntaxe de base de la commande `sleep` est la suivante :
 
-```bash
+```csh
 sleep [options] [arguments]
 ```
 
 ## Common Options
-- `-s`, `--seconds` : Spécifie la durée en secondes (c'est la valeur par défaut).
-- `-m`, `--minutes` : Spécifie la durée en minutes.
-- `-h`, `--hours` : Spécifie la durée en heures.
-- `-d`, `--days` : Spécifie la durée en jours.
+- `-s` : Spécifie que le temps doit être en secondes (par défaut).
+- `-m` : Spécifie que le temps doit être en minutes.
+- `-h` : Spécifie que le temps doit être en heures.
+- `-d` : Spécifie que le temps doit être en jours.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `sleep` :
 
 1. **Mettre en pause pendant 5 secondes :**
-   ```bash
+   ```csh
    sleep 5
    ```
 
 2. **Mettre en pause pendant 2 minutes :**
-   ```bash
+   ```csh
    sleep 2m
    ```
 
 3. **Mettre en pause pendant 1 heure :**
-   ```bash
+   ```csh
    sleep 1h
    ```
 
-4. **Utiliser sleep dans un script pour créer un délai entre les commandes :**
-   ```bash
-   echo "Début du processus..."
-   sleep 10
-   echo "Processus en cours..."
-   sleep 5
-   echo "Processus terminé."
+4. **Mettre en pause pendant 3 jours :**
+   ```csh
+   sleep 3d
    ```
 
-5. **Combiner plusieurs durées :**
-   ```bash
-   sleep 1d 2h 30m
+5. **Utiliser sleep dans un script :**
+   ```csh
+   echo "Début du script"
+   sleep 10
+   echo "10 secondes se sont écoulées"
    ```
 
 ## Tips
-- Utilisez `sleep` pour éviter de surcharger les ressources système en ajoutant des délais entre les tâches dans vos scripts.
-- Soyez prudent avec des délais trop longs, car cela peut rendre vos scripts moins réactifs.
-- Combinez `sleep` avec d'autres commandes dans des boucles pour créer des scripts d'attente efficaces.
+- Utilisez `sleep` pour éviter de surcharger le système lors de l'exécution de scripts qui nécessitent des délais.
+- Combinez `sleep` avec d'autres commandes pour créer des pauses entre les tâches dans vos scripts.
+- Soyez prudent avec les durées longues, car cela peut rendre votre script moins réactif.

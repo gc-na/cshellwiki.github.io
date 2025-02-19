@@ -1,45 +1,49 @@
-# [Linux] Bash cmp Kullanımı: İki dosyayı karşılaştırma
+# [Linux] C Shell (csh) cmp Kullanımı: İki dosyayı karşılaştırma
 
 ## Overview
-`cmp` komutu, iki dosyanın içeriğini karşılaştırmak için kullanılır. Bu komut, dosyalar arasındaki farklılıkları belirlemek ve hangi baytların farklı olduğunu göstermek için idealdir.
+`cmp` komutu, iki dosyanın içeriğini karşılaştırmak için kullanılır. Bu komut, dosyalar arasında farklılıkları tespit eder ve hangi baytların farklı olduğunu gösterir.
 
 ## Usage
-Temel sözdizimi aşağıdaki gibidir:
-
-```bash
+Temel sözdizimi şu şekildedir:
+```csh
 cmp [options] [arguments]
 ```
 
 ## Common Options
-- `-l`: Farklı baytları ve konumlarını listele.
-- `-s`: Çıktıyı bastır, sadece dosyaların farklı olup olmadığını belirt.
-- `-i`: Belirtilen bayt sayısına kadar karşılaştırma yap.
-- `-n`: Belirtilen bayt sayısı kadar karşılaştırma yap, eğer bu sayı dosyanın boyutundan küçükse.
+- `-l`: Farklı baytların konumlarını ve değerlerini gösterir.
+- `-s`: Farklılık olup olmadığını kontrol eder, ancak herhangi bir çıktı vermez.
+- `-i OFFSET`: Karşılaştırmaya belirli bir bayt konumundan başlar.
+- `-n N`: Sadece ilk N baytı karşılaştırır.
 
 ## Common Examples
-Aşağıda `cmp` komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda `cmp` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
-1. İki dosyayı karşılaştır ve farklılıkları göster:
-   ```bash
-   cmp dosya1.txt dosya2.txt
-   ```
+### İki dosyayı karşılaştırma
+```csh
+cmp dosya1.txt dosya2.txt
+```
 
-2. Farklı baytları ve konumlarını listele:
-   ```bash
-   cmp -l dosya1.txt dosya2.txt
-   ```
+### Farklı baytların konumlarını ve değerlerini gösterme
+```csh
+cmp -l dosya1.txt dosya2.txt
+```
 
-3. Sadece dosyaların farklı olup olmadığını kontrol et:
-   ```bash
-   cmp -s dosya1.txt dosya2.txt
-   ```
+### Sadece farklılık olup olmadığını kontrol etme
+```csh
+cmp -s dosya1.txt dosya2.txt
+```
 
-4. İlk 10 baytı karşılaştır:
-   ```bash
-   cmp -n 10 dosya1.txt dosya2.txt
-   ```
+### Belirli bir bayt konumundan karşılaştırmaya başlama
+```csh
+cmp -i 10 dosya1.txt dosya2.txt
+```
+
+### İlk N baytı karşılaştırma
+```csh
+cmp -n 100 dosya1.txt dosya2.txt
+```
 
 ## Tips
-- `cmp` komutunu kullanmadan önce dosyaların boyutlarını kontrol etmek, gereksiz karşılaştırmaların önüne geçebilir.
-- Büyük dosyalarla çalışırken, `-s` seçeneği ile yalnızca farklılıkların olup olmadığını kontrol etmek zaman kazandırabilir.
-- Farklılıkları daha iyi anlamak için `-l` seçeneği ile detaylı bir çıktı almak faydalı olabilir.
+- `cmp` komutunu kullanırken, dosyaların boyutlarının aynı olup olmadığını kontrol etmek iyi bir uygulamadır.
+- Farklılıkları daha iyi anlamak için `-l` seçeneğini kullanarak hangi baytların farklı olduğunu görebilirsiniz.
+- `cmp` komutunu sık sık kullananlar için, alias tanımlayarak daha hızlı erişim sağlamak faydalı olabilir.

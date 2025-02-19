@@ -1,47 +1,50 @@
-# [Linux] Bash swapon Utilisation : Activer un fichier ou une partition d'échange
+# [Linux] C Shell (csh) swapon : Activer l'utilisation des fichiers d'échange
 
 ## Overview
-La commande `swapon` est utilisée pour activer des fichiers ou des partitions d'échange sur un système Linux. Cela permet au système d'utiliser de l'espace disque comme mémoire virtuelle, ce qui peut être utile lorsque la mémoire RAM est insuffisante.
+La commande `swapon` est utilisée pour activer les fichiers ou partitions d'échange sur un système Unix/Linux. Cela permet au système d'utiliser l'espace d'échange pour gérer la mémoire, en déplaçant des données de la mémoire vive vers l'espace d'échange lorsque cela est nécessaire.
 
 ## Usage
 La syntaxe de base de la commande `swapon` est la suivante :
 
-```bash
+```csh
 swapon [options] [arguments]
 ```
 
 ## Common Options
 Voici quelques options courantes pour la commande `swapon` :
 
-- `-a` : Active tous les fichiers et partitions d'échange spécifiés dans `/etc/fstab`.
-- `-e` : Ignore les erreurs lors de l'activation des fichiers d'échange.
-- `-s` : Affiche l'état des espaces d'échange actifs.
+- `-a` : Active tous les fichiers d'échange mentionnés dans le fichier `/etc/fstab`.
+- `-e` : Vérifie l'intégrité des fichiers d'échange avant de les activer.
+- `-s` : Affiche l'état des fichiers d'échange actuellement actifs.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `swapon` :
 
-### Activer un fichier d'échange
-Pour activer un fichier d'échange spécifique, utilisez la commande suivante :
+1. Activer tous les fichiers d'échange définis dans `/etc/fstab` :
 
-```bash
-sudo swapon /path/to/swapfile
-```
+   ```csh
+   swapon -a
+   ```
 
-### Activer tous les fichiers d'échange
-Pour activer tous les fichiers et partitions d'échange définis dans `/etc/fstab`, utilisez :
+2. Activer un fichier d'échange spécifique :
 
-```bash
-sudo swapon -a
-```
+   ```csh
+   swapon /path/to/swapfile
+   ```
 
-### Vérifier l'état des espaces d'échange
-Pour afficher l'état des espaces d'échange actifs, utilisez :
+3. Vérifier l'intégrité d'un fichier d'échange avant de l'activer :
 
-```bash
-swapon -s
-```
+   ```csh
+   swapon -e /path/to/swapfile
+   ```
+
+4. Afficher l'état des fichiers d'échange actifs :
+
+   ```csh
+   swapon -s
+   ```
 
 ## Tips
-- Assurez-vous que le fichier ou la partition d'échange a été correctement créé avant de l'activer.
-- Utilisez `swapoff` pour désactiver un fichier ou une partition d'échange lorsque vous n'en avez plus besoin.
+- Assurez-vous que le fichier d'échange a été créé et formaté correctement avant de l'activer.
+- Utilisez `swapoff` pour désactiver un fichier d'échange lorsque vous n'en avez plus besoin.
 - Vérifiez régulièrement l'utilisation de l'espace d'échange pour éviter des problèmes de performance.

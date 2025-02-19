@@ -1,44 +1,47 @@
-# [Linux] Bash colrm Utilisation : Supprimer des colonnes de texte
+# [Linux] C Shell (csh) colrm : Supprimer des colonnes d'un texte
 
 ## Overview
-La commande `colrm` est utilisée pour supprimer des colonnes spécifiques d'un texte. Elle est particulièrement utile pour formater des sorties de données ou pour nettoyer des fichiers en supprimant des informations non désirées.
+La commande `colrm` est utilisée dans le C Shell pour supprimer des colonnes spécifiques d'un texte. Cela peut être particulièrement utile pour formater des données ou nettoyer des sorties de commandes.
 
 ## Usage
 La syntaxe de base de la commande `colrm` est la suivante :
 
-```bash
+```csh
 colrm [options] [arguments]
 ```
 
 ## Common Options
-- `-c` : Spécifie les colonnes à supprimer.
-- `-f` : Indique le fichier d'entrée à traiter. Si ce n'est pas spécifié, `colrm` lit depuis l'entrée standard.
-- `-o` : Permet de rediriger la sortie vers un fichier.
+- `-` : Indique la colonne de début à supprimer.
+- `-` : Indique la colonne de fin à supprimer.
+- `-f` : Force la suppression même si le fichier est en lecture seule.
 
 ## Common Examples
+Voici quelques exemples pratiques de l'utilisation de la commande `colrm` :
 
-### Exemple 1 : Supprimer les colonnes 5 à 10
-Pour supprimer les colonnes de 5 à 10 d'un fichier texte :
+1. **Supprimer des colonnes spécifiques d'un fichier :**
+   ```csh
+   colrm 5 10 < fichier.txt
+   ```
+   Cela supprimera les colonnes 5 à 10 du fichier `fichier.txt`.
 
-```bash
-colrm 5 10 < fichier.txt
-```
+2. **Supprimer uniquement la première colonne :**
+   ```csh
+   colrm 1 < fichier.txt
+   ```
+   Cela supprimera la première colonne de `fichier.txt`.
 
-### Exemple 2 : Supprimer les colonnes à partir de la colonne 3
-Pour supprimer toutes les colonnes à partir de la colonne 3 :
+3. **Supprimer les colonnes de 3 à 7 et afficher le résultat :**
+   ```csh
+   colrm 3 7 < fichier.txt
+   ```
 
-```bash
-colrm 3 < fichier.txt
-```
-
-### Exemple 3 : Utiliser avec un fichier d'entrée
-Pour traiter un fichier d'entrée et enregistrer la sortie dans un nouveau fichier :
-
-```bash
-colrm 1 5 -f fichier.txt -o sortie.txt
-```
+4. **Utiliser avec une commande :**
+   ```csh
+   ls -l | colrm 1 10
+   ```
+   Cela affichera la liste des fichiers en supprimant les 10 premiers caractères de chaque ligne.
 
 ## Tips
-- Assurez-vous de vérifier le contenu de votre fichier avant d'utiliser `colrm`, car les données supprimées ne peuvent pas être récupérées.
-- Utilisez `cat` ou `less` pour visualiser le fichier avant de le modifier, afin de déterminer quelles colonnes doivent être supprimées.
-- Combinez `colrm` avec d'autres commandes comme `grep` ou `awk` pour des manipulations de texte plus avancées.
+- Assurez-vous de rediriger la sortie vers un fichier si vous souhaitez conserver le résultat.
+- Utilisez `cat` pour visualiser le contenu d'un fichier avant d'appliquer `colrm` afin de choisir les colonnes à supprimer avec précision.
+- Testez d'abord sur un petit fichier pour vous familiariser avec le comportement de la commande.

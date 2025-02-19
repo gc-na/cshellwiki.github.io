@@ -1,48 +1,44 @@
-# [Linux] Bash fc użycie: Edytowanie i ponowne wykonywanie poleceń
+# [Linux] C Shell (csh) fc <Użycie: edytowanie i ponowne wykonywanie poleceń>
 
 ## Overview
-Polecenie `fc` w Bashu służy do edytowania i ponownego wykonywania wcześniej wprowadzonych poleceń. Umożliwia użytkownikowi przeglądanie historii poleceń oraz ich modyfikację przed ponownym wykonaniem.
+Polecenie `fc` w powłoce C Shell (csh) służy do edytowania i ponownego wykonywania wcześniej wprowadzonych poleceń. Umożliwia użytkownikom przeglądanie historii poleceń oraz ich modyfikację przed ponownym uruchomieniem.
 
 ## Usage
 Podstawowa składnia polecenia `fc` wygląda następująco:
 
-```bash
+```csh
 fc [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-l`: Wyświetla listę poleceń z historii.
-- `-s`: Wykonuje polecenie bez otwierania edytora.
-- `-n`: Nie wyświetla numerów poleceń w historii.
-- `-e`: Określa edytor do użycia (domyślnie jest to edytor ustawiony w zmiennej środowiskowej `EDITOR`).
+- `-l`: Wyświetla listę ostatnich poleceń z historii.
+- `-s`: Wykonuje polecenie bez jego edytowania.
+- `-n`: Nie wyświetla numerów poleceń w liście.
 
 ## Common Examples
 1. **Wyświetlenie ostatnich poleceń**:
-   ```bash
+   ```csh
    fc -l
    ```
 
-2. **Edytowanie ostatniego polecenia**:
-   ```bash
-   fc
+2. **Edytowanie konkretnego polecenia**:
+   ```csh
+   fc 10
    ```
+   (gdzie `10` to numer polecenia w historii)
 
-3. **Wykonanie ostatniego polecenia bez edycji**:
-   ```bash
+3. **Wykonanie ostatniego polecenia bez edytowania**:
+   ```csh
    fc -s
    ```
 
-4. **Wyświetlenie poleceń z określonego zakresu**:
-   ```bash
-   fc -l 10 20
+4. **Wyświetlenie poleceń z zakresu**:
+   ```csh
+   fc -l 5 10
    ```
-
-5. **Użycie innego edytora do edycji poleceń**:
-   ```bash
-   fc -e nano
-   ```
+   (wyświetli polecenia od numeru 5 do 10)
 
 ## Tips
-- Użyj `fc -l` regularnie, aby przeglądać historię poleceń i unikać powtarzania tych samych komend.
-- Możesz szybko edytować ostatnie polecenie, co pozwala na łatwe wprowadzanie poprawek.
-- Zmieniaj edytor, jeśli preferujesz inny niż domyślny, aby dostosować doświadczenie do swoich potrzeb.
+- Używaj `fc` regularnie, aby szybko poprawić błędy w ostatnich poleceniach.
+- Możesz używać edytora tekstu, aby wprowadzać zmiany w poleceniach, co ułatwia ich modyfikację.
+- Zapamiętaj numery poleceń, aby sprawnie korzystać z historii i unikać ponownego wpisywania długich komend.

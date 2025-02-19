@@ -1,42 +1,50 @@
-# [Linux] Bash unxz użycie: Rozpakowywanie plików .xz
+# [Linux] C Shell (csh) unxz Użycie: Rozpakowywanie plików skompresowanych w formacie XZ
 
 ## Overview
-Polecenie `unxz` służy do dekompresji plików skompresowanych za pomocą algorytmu XZ. Jest to narzędzie, które pozwala na przywrócenie oryginalnych danych z plików o rozszerzeniu .xz.
+Polecenie `unxz` służy do dekompresji plików skompresowanych w formacie XZ. Jest to narzędzie, które umożliwia użytkownikom łatwe przywracanie oryginalnych plików z ich skompresowanych wersji.
 
 ## Usage
 Podstawowa składnia polecenia `unxz` jest następująca:
 
-```bash
+```csh
 unxz [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-k`, `--keep`: Zachowuje oryginalny plik .xz po dekompresji.
-- `-f`, `--force`: Wymusza dekompresję, nawet jeśli plik docelowy już istnieje.
-- `-v`, `--verbose`: Wyświetla szczegółowe informacje o postępie dekompresji.
+Oto kilka powszechnie używanych opcji dla polecenia `unxz`:
+
+- `-k` : Zachowuje oryginalny plik skompresowany po dekompresji.
+- `-f` : Wymusza dekompresję, nawet jeśli plik docelowy już istnieje.
+- `-v` : Wyświetla szczegółowe informacje o postępie dekompresji.
 
 ## Common Examples
-1. **Dekomprensja pojedynczego pliku:**
-   ```bash
-   unxz plik.xz
+Poniżej znajdują się przykłady użycia polecenia `unxz`:
+
+1. Aby rozpakować plik `example.xz`:
+
+   ```csh
+   unxz example.xz
    ```
 
-2. **Zachowanie oryginalnego pliku:**
-   ```bash
-   unxz -k plik.xz
+2. Aby rozpakować plik `example.xz`, zachowując oryginalny plik:
+
+   ```csh
+   unxz -k example.xz
    ```
 
-3. **Wymuszenie dekompresji:**
-   ```bash
-   unxz -f plik.xz
+3. Aby wymusić dekompresję pliku `example.xz`, nawet jeśli plik `example` już istnieje:
+
+   ```csh
+   unxz -f example.xz
    ```
 
-4. **Dekomprensja z wyświetlaniem szczegółów:**
-   ```bash
-   unxz -v plik.xz
+4. Aby uzyskać szczegółowe informacje podczas dekompresji:
+
+   ```csh
+   unxz -v example.xz
    ```
 
 ## Tips
-- Zawsze sprawdzaj, czy masz wystarczająco dużo miejsca na dysku przed dekompresją, aby uniknąć problemów z brakiem miejsca.
-- Używaj opcji `-k`, jeśli chcesz zachować oryginalny plik, co może być przydatne w przypadku błędów podczas dekompresji.
-- Regularnie aktualizuj swoje narzędzia do dekompresji, aby korzystać z najnowszych funkcji i poprawek bezpieczeństwa.
+- Zawsze sprawdzaj, czy masz odpowiednie uprawnienia do zapisu w katalogu, w którym chcesz dekompresować pliki.
+- Używaj opcji `-k`, jeśli chcesz zachować oryginalne pliki skompresowane na wypadek, gdybyś potrzebował ich ponownie.
+- Regularnie aktualizuj swoje narzędzia do dekompresji, aby zapewnić najlepszą wydajność i bezpieczeństwo.

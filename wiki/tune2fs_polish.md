@@ -1,7 +1,7 @@
-# [Linux] Bash tune2fs użycie: Narzędzie do modyfikacji parametrów systemu plików ext2/ext3/ext4
+# [Linux] C Shell (csh) tune2fs użycie: Narzędzie do dostosowywania systemu plików ext2/ext3/ext4
 
 ## Overview
-Polecenie `tune2fs` jest używane do modyfikacji parametrów systemu plików ext2, ext3 oraz ext4. Umożliwia użytkownikom dostosowanie różnych opcji systemu plików, takich jak liczba bloków, rozmiar bloków, a także ustawienia dotyczące dziennika.
+Polecenie `tune2fs` służy do modyfikacji parametrów systemu plików ext2, ext3 i ext4. Umożliwia użytkownikom dostosowanie różnych opcji systemu plików, takich jak liczba bloków, rozmiar bloku oraz inne ustawienia, które mogą wpłynąć na wydajność i zachowanie systemu plików.
 
 ## Usage
 Podstawowa składnia polecenia `tune2fs` jest następująca:
@@ -11,43 +11,39 @@ tune2fs [opcje] [argumenty]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji polecenia `tune2fs`:
-
 - `-c <liczba>`: Ustawia maksymalną liczbę montowań przed sprawdzeniem systemu plików.
-- `-i <czas>`: Ustawia interwał czasu między sprawdzeniami systemu plików.
-- `-m <procent>`: Ustawia procent miejsca na dysku, które ma być zarezerwowane dla użytkownika root.
-- `-O <opcja>`: Włącza określoną opcję w systemie plików.
-- `-L <etykieta>`: Ustawia etykietę systemu plików.
+- `-i <czas>`: Ustawia maksymalny czas między sprawdzeniami systemu plików.
+- `-O <opcje>`: Włącza określone opcje systemu plików.
+- `-L <nazwa>`: Ustawia etykietę systemu plików.
+- `-e <typ>`: Ustawia domyślny typ błędu dla systemu plików.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia `tune2fs`:
-
 1. Ustawienie maksymalnej liczby montowań przed sprawdzeniem systemu plików na 20:
    ```bash
    tune2fs -c 20 /dev/sda1
    ```
 
-2. Ustawienie interwału czasu między sprawdzeniami systemu plików na 30 dni:
+2. Ustawienie maksymalnego czasu między sprawdzeniami systemu plików na 30 dni:
    ```bash
    tune2fs -i 30d /dev/sda1
    ```
 
-3. Zarezerwowanie 5% miejsca na dysku dla użytkownika root:
-   ```bash
-   tune2fs -m 5 /dev/sda1
-   ```
-
-4. Włączenie opcji "dir_index" w systemie plików:
+3. Włączenie opcji "dir_index" w systemie plików:
    ```bash
    tune2fs -O dir_index /dev/sda1
    ```
 
-5. Ustawienie etykiety systemu plików na "MojaEtykieta":
+4. Ustawienie etykiety systemu plików na "MojaEtykieta":
    ```bash
    tune2fs -L MojaEtykieta /dev/sda1
    ```
 
+5. Ustawienie domyślnego typu błędu na "panic":
+   ```bash
+   tune2fs -e panic /dev/sda1
+   ```
+
 ## Tips
 - Zawsze wykonuj kopię zapasową danych przed wprowadzeniem zmian w systemie plików.
-- Używaj opcji `-l` (mała litera L) do wyświetlenia aktualnych ustawień systemu plików przed dokonaniem zmian.
-- Upewnij się, że system plików jest odmontowany przed użyciem `tune2fs`, aby uniknąć uszkodzenia danych.
+- Używaj opcji `-l` do wyświetlenia aktualnych ustawień systemu plików przed ich modyfikacją.
+- Upewnij się, że system plików nie jest zamontowany podczas używania `tune2fs`, aby uniknąć problemów z integralnością danych.

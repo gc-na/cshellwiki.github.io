@@ -1,54 +1,50 @@
-# [Linux] Bash shutdown gebruik: Schakel het systeem uit of herstart het
+# [Linux] C Shell (csh) shutdown gebruik: Systeem afsluiten of herstarten
 
 ## Overzicht
-De `shutdown`-opdracht in Bash wordt gebruikt om een Linux-systeem veilig uit te schakelen of opnieuw op te starten. Het biedt een manier om het systeem af te sluiten met een waarschuwing voor ingelogde gebruikers, zodat ze hun werk kunnen opslaan.
+De `shutdown` opdracht in C Shell (csh) wordt gebruikt om een systeem veilig af te sluiten of opnieuw op te starten. Dit is een belangrijke functie voor systeembeheerders om ervoor te zorgen dat alle processen correct worden beëindigd en dat er geen gegevensverlies optreedt.
 
 ## Gebruik
-De basis syntaxis van de `shutdown`-opdracht is als volgt:
+De basis syntaxis van de `shutdown` opdracht is als volgt:
 
-```bash
-shutdown [opties] [tijd] [bericht]
+```
+shutdown [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-h` : Schakel het systeem uit.
-- `-r` : Herstart het systeem.
-- `-t` : Stel de tijd in voor het afsluiten (bijvoorbeeld `+5` voor vijf minuten later).
-- `now` : Voer de opdracht onmiddellijk uit.
-- `+tijd` : Geef een vertraging aan in minuten (bijvoorbeeld `+10` voor tien minuten later).
-- `hh:mm` : Specificeer een exacte tijd (bijvoorbeeld `22:00` voor 10 uur 's avonds).
-- `-c` : Annuleer een eerder geplande shutdown.
+- `-h`: Dit geeft aan dat het systeem moet worden afgesloten.
+- `-r`: Dit geeft aan dat het systeem opnieuw moet worden opgestart.
+- `now`: Dit geeft aan dat de actie onmiddellijk moet worden uitgevoerd.
+- `+tijd`: Hiermee kun je een vertraging instellen voor de actie, bijvoorbeeld `+5` voor vijf minuten later.
 
 ## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van de `shutdown`-opdracht:
+Hier zijn enkele praktische voorbeelden van het gebruik van de `shutdown` opdracht:
 
-1. **Systeem onmiddellijk uitschakelen:**
-   ```bash
+1. **Systeem onmiddellijk afsluiten:**
+   ```csh
    shutdown -h now
    ```
 
-2. **Systeem herstarten na 5 minuten:**
-   ```bash
+2. **Systeem opnieuw opstarten:**
+   ```csh
+   shutdown -r now
+   ```
+
+3. **Systeem afsluiten na 10 minuten:**
+   ```csh
+   shutdown -h +10
+   ```
+
+4. **Systeem opnieuw opstarten na 5 minuten:**
+   ```csh
    shutdown -r +5
    ```
 
-3. **Systeem uitschakelen om 22:00:**
-   ```bash
-   shutdown -h 22:00
-   ```
-
-4. **Systeem herstarten met een bericht:**
-   ```bash
-   shutdown -r +1 "Systeem wordt herstart voor onderhoud."
-   ```
-
-5. **Een geplande shutdown annuleren:**
-   ```bash
-   shutdown -c
+5. **Systeem afsluiten met een waarschuwing voor gebruikers:**
+   ```csh
+   shutdown -h +1 "Het systeem wordt over 1 minuut afgesloten."
    ```
 
 ## Tips
-- Zorg ervoor dat je ingelogd bent als root of gebruik `sudo` om de `shutdown`-opdracht uit te voeren.
-- Gebruik de `-h` optie voor een veilige uitschakeling van het systeem om gegevensverlies te voorkomen.
-- Informeer gebruikers over een geplande shutdown door een bericht toe te voegen, zodat ze hun werk kunnen opslaan.
-- Test de opdracht in een veilige omgeving voordat je deze op een productie-systeem uitvoert.
+- Zorg ervoor dat je voldoende tijd geeft voor actieve gebruikers om hun werk op te slaan voordat je het systeem afsluit.
+- Gebruik de `-k` optie om een waarschuwing te sturen zonder het systeem daadwerkelijk af te sluiten.
+- Controleer altijd of je de juiste rechten hebt om de `shutdown` opdracht uit te voeren, meestal zijn hiervoor beheerdersrechten nodig.

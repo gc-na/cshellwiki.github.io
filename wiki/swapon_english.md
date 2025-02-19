@@ -1,7 +1,7 @@
-# [Linux] Bash swapon Usage: Enable swap space
+# [Linux] C Shell (csh) swapon用法: Enable swap space on Linux systems
 
 ## Overview
-The `swapon` command in Linux is used to enable devices and files for paging and swapping. It allows the operating system to use additional memory resources, which can help improve performance when the physical RAM is full.
+The `swapon` command is used in Linux systems to enable swap space, which is an area on a disk that is used as virtual memory. This allows the system to use disk space to supplement RAM, helping to manage memory more efficiently.
 
 ## Usage
 The basic syntax of the `swapon` command is as follows:
@@ -11,38 +11,32 @@ swapon [options] [arguments]
 ```
 
 ## Common Options
-- `-a`: Enables all swap devices listed in `/etc/fstab`.
-- `-e`: Ignores errors when enabling swap devices.
+- `-a`: Enables all swap spaces listed in `/etc/fstab`.
+- `-e`: Ignores errors when enabling swap space.
 - `-s`: Displays summary information about swap space.
-- `--show`: Similar to `-s`, but provides more detailed output.
 
 ## Common Examples
-
-1. **Enable all swap devices:**
-   To enable all swap devices defined in the `/etc/fstab` file, you can use:
+1. **Enable all swap spaces defined in `/etc/fstab`:**
    ```bash
    swapon -a
    ```
 
 2. **Enable a specific swap file:**
-   If you have a specific swap file (e.g., `/swapfile`) that you want to enable, you can do so with:
    ```bash
-   swapon /swapfile
+   swapon /path/to/swapfile
    ```
 
-3. **Display current swap usage:**
-   To see a summary of the currently active swap space, use:
+3. **Check the current swap space usage:**
    ```bash
-   swapon --show
+   swapon -s
    ```
 
-4. **Enable swap with error ignoring:**
-   If you want to enable a swap device and ignore any errors that might occur, you can run:
+4. **Enable swap space while ignoring errors:**
    ```bash
-   swapon -e /dev/sdX
+   swapon -e /path/to/swapfile
    ```
 
 ## Tips
-- Always check your swap space after enabling it with `swapon --show` to ensure it's active.
-- Consider using `swapon -a` during system startup by adding it to your initialization scripts for automatic swap management.
-- Monitor your system's memory usage to determine if you need to adjust your swap space settings.
+- Always ensure that the swap file or partition is properly created and formatted before using `swapon`.
+- Use `swapon -s` to verify that the swap space is active after enabling it.
+- Consider using `swapoff` to disable swap space when it is no longer needed, to free up resources.

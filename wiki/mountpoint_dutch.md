@@ -1,40 +1,42 @@
-# [Linux] Bash mountpoint gebruik: Controleer of een pad een mountpoint is
+# [Linux] C Shell (csh) mountpoint gebruik: Controleer of een pad een mountpoint is
 
 ## Overzicht
-De `mountpoint` opdracht in Bash wordt gebruikt om te controleren of een opgegeven pad een mountpoint is. Een mountpoint is een directory waar een bestandssysteem is aangekoppeld. Deze opdracht geeft een eenvoudige bevestiging terug, wat handig is voor systeembeheerders en gebruikers die met bestandssystemen werken.
+De `mountpoint` opdracht wordt gebruikt om te controleren of een bepaald pad een mountpoint is, wat betekent dat het een bestandssysteem bevat dat is aangekoppeld aan de huidige bestandsstructuur.
 
 ## Gebruik
 De basis syntaxis van de `mountpoint` opdracht is als volgt:
 
-```bash
+```csh
 mountpoint [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- `-q`: Stilte modus, geeft geen output terug, maar retourneert een exitstatus.
-- `-d`: Geeft een gedetailleerde beschrijving van het mountpoint.
+## Veelvoorkomende Opties
+- `-q`: Stille modus, geen output tenzij er een fout optreedt.
+- `-d`: Geeft aan dat het pad een directory moet zijn.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
 
-### Voorbeeld 1: Controleer of een directory een mountpoint is
-```bash
-mountpoint /mnt/usb
-```
-Dit commando controleert of de directory `/mnt/usb` een mountpoint is en geeft een bevestiging terug.
+1. Controleer of een specifiek pad een mountpoint is:
+   ```csh
+   mountpoint /mnt/usb
+   ```
 
-### Voorbeeld 2: Gebruik de stille modus
-```bash
-mountpoint -q /mnt/usb
-```
-Dit commando controleert of `/mnt/usb` een mountpoint is zonder enige output te geven. Je kunt de exitstatus controleren om te zien of het een mountpoint is.
+2. Gebruik de stille modus om alleen een exit-status te krijgen:
+   ```csh
+   mountpoint -q /mnt/usb
+   ```
 
-### Voorbeeld 3: Gedetailleerde informatie over het mountpoint
-```bash
-mountpoint -d /mnt/usb
-```
-Dit geeft gedetailleerde informatie over het mountpoint, indien het bestaat.
+3. Controleer een directory en geef een foutmelding als het geen mountpoint is:
+   ```csh
+   mountpoint -d /mnt/usb
+   ```
+
+4. Controleer meerdere paden tegelijk:
+   ```csh
+   mountpoint /mnt/usb /mnt/cdrom
+   ```
 
 ## Tips
-- Gebruik de `-q` optie als je alleen de exitstatus wilt controleren zonder output, wat handig kan zijn in scripts.
-- Controleer altijd de exitstatus van de `mountpoint` opdracht om te bepalen of een pad daadwerkelijk een mountpoint is. Een exitstatus van 0 betekent dat het een mountpoint is, terwijl 1 betekent dat het dat niet is.
-- Combineer `mountpoint` met andere commando's in scripts voor geavanceerde bestands- en systeembeheer taken.
+- Gebruik de stille modus (`-q`) voor scripts om alleen de exit-status te controleren zonder extra output.
+- Combineer `mountpoint` met andere commando's in scripts om automatisch te reageren op mountpoint-statussen.
+- Controleer regelmatig je mountpoints om ervoor te zorgen dat ze correct zijn aangekoppeld, vooral na systeemupdates of herstarts.

@@ -1,42 +1,41 @@
-# [Linux] Bash md5sum 使用方法: 計算檔案的 MD5 雜湊值
+# [台灣] C Shell (csh) md5sum 使用法: 計算檔案的 MD5 雜湊值
 
 ## Overview
-`md5sum` 命令用於計算和驗證檔案的 MD5 雜湊值。這個雜湊值可以用來檢查檔案的完整性，確保檔案在傳輸或儲存過程中未被修改。
+md5sum 命令用於計算和驗證檔案的 MD5 雜湊值。這個雜湊值可以用來檢查檔案的完整性，確保檔案在傳輸或儲存過程中沒有被修改。
 
 ## Usage
 基本語法如下：
-```
-md5sum [選項] [檔案]
+```csh
+md5sum [options] [arguments]
 ```
 
 ## Common Options
-- `-b`：以二進位模式讀取檔案。
-- `-c`：檢查檔案的 MD5 雜湊值。
-- `-t`：以純文字模式讀取檔案。
-- `--help`：顯示幫助信息。
+- `-b`：以二進位模式處理檔案。
+- `-c`：檢查檔案的 MD5 雜湊值是否與給定的檔案匹配。
+- `-t`：以文本模式處理檔案。
 
 ## Common Examples
-計算單個檔案的 MD5 雜湊值：
-```bash
-md5sum example.txt
-```
+1. 計算單一檔案的 MD5 雜湊值：
+   ```csh
+   md5sum example.txt
+   ```
 
-計算多個檔案的 MD5 雜湊值：
-```bash
-md5sum file1.txt file2.txt
-```
+2. 計算多個檔案的 MD5 雜湊值：
+   ```csh
+   md5sum file1.txt file2.txt
+   ```
 
-將 MD5 雜湊值輸出到檔案：
-```bash
-md5sum example.txt > example.md5
-```
+3. 將 MD5 雜湊值輸出到檔案：
+   ```csh
+   md5sum example.txt > checksum.md5
+   ```
 
-檢查檔案的 MD5 雜湊值：
-```bash
-md5sum -c example.md5
-```
+4. 檢查 MD5 雜湊值：
+   ```csh
+   md5sum -c checksum.md5
+   ```
 
 ## Tips
-- 當檔案較大時，使用 `-b` 選項可以提高計算效率。
-- 為了確保檔案的完整性，建議在傳輸檔案後進行 MD5 檢查。
-- 將 MD5 雜湊值儲存到檔案中，可以方便日後進行檢查。
+- 在使用 md5sum 前，確保檔案存在，以避免錯誤訊息。
+- 將 MD5 雜湊值儲存到檔案中，可以方便未來的檢查。
+- 使用 `-b` 選項來處理二進位檔案，確保計算的準確性。

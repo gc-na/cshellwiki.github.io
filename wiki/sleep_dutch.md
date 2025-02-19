@@ -1,48 +1,43 @@
-# [Linux] Bash sleep gebruik: Pauzeert de uitvoering van een script
+# [Linux] C Shell (csh) sleep gebruik: Pauzeert de uitvoering van een script
 
 ## Overzicht
-De `sleep` opdracht in Bash wordt gebruikt om de uitvoering van een script of commando voor een bepaalde periode te pauzeren. Dit kan handig zijn in verschillende situaties, zoals het wachten op een proces of het creëren van vertragingen in een script.
+De `sleep` opdracht in C Shell (csh) wordt gebruikt om de uitvoering van een script of commando voor een bepaalde tijd te pauzeren. Dit kan nuttig zijn om tijd te geven voor processen om te voltooien of om een vertraging in de uitvoering in te bouwen.
 
 ## Gebruik
 De basis syntaxis van de `sleep` opdracht is als volgt:
 
-```
+```csh
 sleep [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
-- `-h`, `--help`: Toont een helpbericht met informatie over het gebruik van de opdracht.
-- `-v`, `--version`: Toont de versie van de `sleep` opdracht.
+## Veelvoorkomende opties
+- **-n**: Negeert de standaard uitvoer en geeft geen foutmeldingen.
+- **-h**: Toont een helpbericht met informatie over het gebruik van de opdracht.
 
-## Veelvoorkomende Voorbeelden
+## Veelvoorkomende voorbeelden
 
-1. **Pauzeer voor 5 seconden:**
-   ```bash
+1. **Slaap voor 5 seconden**
+   ```csh
    sleep 5
    ```
 
-2. **Pauzeer voor 2 minuten:**
-   ```bash
-   sleep 2m
+2. **Slaap voor 10 seconden en voer daarna een commando uit**
+   ```csh
+   sleep 10; echo "10 seconden gewacht"
    ```
 
-3. **Pauzeer voor 1 uur:**
-   ```bash
-   sleep 1h
+3. **Slaap voor 1 minuut (60 seconden)**
+   ```csh
+   sleep 60
    ```
 
-4. **Pauzeer voor 10 seconden en voer daarna een commando uit:**
-   ```bash
-   sleep 10 && echo "10 seconden gewacht"
-   ```
-
-5. **Pauzeer voor een variabele tijd:**
-   ```bash
-   tijd=3
+4. **Slaap voor een variabele tijd**
+   ```csh
+   set tijd = 15
    sleep $tijd
    ```
 
 ## Tips
-- Gebruik `sleep` in scripts om de uitvoering te synchroniseren met externe processen of om een wachttijd in te bouwen.
-- Combineer `sleep` met andere commando's om een betere controle over de uitvoeringstijd van taken te krijgen.
-- Houd rekening met de tijdseenheden: je kunt seconden, minuten (m), uren (h) en dagen (d) gebruiken.
+- Gebruik `sleep` in scripts om een betere controle over de uitvoeringstijd te krijgen.
+- Combineer `sleep` met andere commando's om een sequentiële uitvoering te creëren.
+- Wees voorzichtig met lange slaapperiodes in scripts, omdat dit de algehele uitvoering kan vertragen.

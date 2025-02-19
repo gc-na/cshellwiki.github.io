@@ -1,58 +1,51 @@
-# [Linux] Bash timedatectl : Gérer la date et l'heure du système
+# [Linux] C Shell (csh) timedatectl : Gérer les paramètres de date et d'heure
 
 ## Overview
-La commande `timedatectl` permet de gérer et de configurer la date et l'heure du système sous Linux. Elle fait partie du système de gestion de l'heure de systemd et offre une interface simple pour afficher et modifier les paramètres de temps.
+La commande `timedatectl` est utilisée pour afficher et modifier les paramètres de date et d'heure du système. Elle permet également de gérer les paramètres de synchronisation de l'heure via des serveurs NTP (Network Time Protocol).
 
 ## Usage
 La syntaxe de base de la commande est la suivante :
 
-```bash
+```csh
 timedatectl [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes pour `timedatectl` :
-
 - `status` : Affiche l'état actuel de la date et de l'heure.
 - `set-time` : Définit la date et l'heure manuellement.
 - `set-timezone` : Change le fuseau horaire du système.
-- `set-ntp` : Active ou désactive la synchronisation NTP (Network Time Protocol).
-- `list-timezones` : Affiche la liste des fuseaux horaires disponibles.
+- `set-ntp` : Active ou désactive la synchronisation NTP.
+- `list-timezones` : Affiche une liste de tous les fuseaux horaires disponibles.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `timedatectl` :
 
 1. **Afficher l'état actuel de la date et de l'heure :**
-
-   ```bash
+   ```csh
    timedatectl status
    ```
 
-2. **Définir la date et l'heure manuellement :**
-
-   ```bash
+2. **Définir manuellement la date et l'heure :**
+   ```csh
    timedatectl set-time '2023-10-01 12:00:00'
    ```
 
 3. **Changer le fuseau horaire :**
-
-   ```bash
+   ```csh
    timedatectl set-timezone Europe/Paris
    ```
 
 4. **Activer la synchronisation NTP :**
-
-   ```bash
+   ```csh
    timedatectl set-ntp true
    ```
 
 5. **Lister tous les fuseaux horaires disponibles :**
-
-   ```bash
+   ```csh
    timedatectl list-timezones
    ```
 
 ## Tips
-- Assurez-vous d'avoir les droits d'administrateur pour modifier la date et l'heure du système.
+- Assurez-vous d'avoir les privilèges administratifs (root) pour modifier les paramètres de date et d'heure.
 - Utilisez `timedatectl list-timezones` pour trouver le fuseau horaire correct avant de le définir.
-- Vérifiez régulièrement l'état de la synchronisation NTP pour garantir que votre système reste à l'heure.
+- Vérifiez régulièrement l'état de votre synchronisation NTP pour éviter des problèmes de temps sur votre système.

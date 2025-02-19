@@ -1,47 +1,45 @@
-# [Linux] Bash sleep cách sử dụng: Tạm dừng thực thi trong một khoảng thời gian
+# [Hệ điều hành] C Shell (csh) sleep Cách sử dụng: Tạm dừng thực thi trong một khoảng thời gian
 
-## Tổng quan
-Lệnh `sleep` trong Bash được sử dụng để tạm dừng thực thi của một script hoặc lệnh trong một khoảng thời gian nhất định. Điều này hữu ích khi bạn cần tạo ra khoảng thời gian chờ giữa các lệnh hoặc để trì hoãn một hành động nào đó.
+## Overview
+Lệnh `sleep` trong C Shell (csh) được sử dụng để tạm dừng thực thi của một script hoặc lệnh trong một khoảng thời gian nhất định. Điều này hữu ích khi bạn muốn tạo ra độ trễ giữa các lệnh hoặc khi cần chờ đợi một sự kiện nào đó xảy ra.
 
-## Cách sử dụng
+## Usage
 Cú pháp cơ bản của lệnh `sleep` như sau:
-
-```bash
-sleep [tùy chọn] [thời gian]
+```
+sleep [options] [arguments]
 ```
 
-## Tùy chọn phổ biến
-- `-s`: Tạm dừng trong giây (mặc định).
-- `-m`: Tạm dừng trong phút.
-- `-h`: Tạm dừng trong giờ.
-- `-d`: Tạm dừng trong ngày.
+## Common Options
+- `-m`: Chỉ định thời gian tạm dừng bằng phút.
+- `-s`: Chỉ định thời gian tạm dừng bằng giây (mặc định).
+- `-h`: Chỉ định thời gian tạm dừng bằng giờ.
 
-## Ví dụ phổ biến
+## Common Examples
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `sleep`:
 
 1. Tạm dừng trong 5 giây:
-   ```bash
+   ```csh
    sleep 5
    ```
 
 2. Tạm dừng trong 2 phút:
-   ```bash
+   ```csh
    sleep 2m
    ```
 
 3. Tạm dừng trong 1 giờ:
-   ```bash
+   ```csh
    sleep 1h
    ```
 
-4. Sử dụng `sleep` trong một script để trì hoãn giữa các lệnh:
-   ```bash
+4. Sử dụng sleep trong một script để tạo độ trễ giữa các lệnh:
+   ```csh
    echo "Bắt đầu..."
    sleep 3
-   echo "Kết thúc sau 3 giây."
+   echo "Tiếp tục sau 3 giây."
    ```
 
-## Mẹo
-- Sử dụng `sleep` để tạo khoảng thời gian chờ giữa các lệnh trong script, giúp dễ dàng theo dõi quá trình thực thi.
-- Kết hợp `sleep` với các lệnh khác trong một vòng lặp để thực hiện các tác vụ định kỳ.
-- Tránh sử dụng `sleep` quá lâu trong các script quan trọng, vì nó có thể làm chậm quá trình thực thi.
+## Tips
+- Sử dụng `sleep` để tạo độ trễ giữa các lệnh trong script có thể giúp cải thiện khả năng đọc và theo dõi quá trình thực thi.
+- Hãy cẩn thận với thời gian tạm dừng quá dài, vì nó có thể làm cho script của bạn chạy chậm hơn và không hiệu quả.
+- Kết hợp `sleep` với các lệnh khác để tạo ra các kịch bản tự động hóa hiệu quả hơn.

@@ -1,12 +1,12 @@
-# [Linux] Bash umount : Démonter un système de fichiers
+# [Linux] C Shell (csh) umount : Démonter un système de fichiers
 
 ## Overview
-La commande `umount` est utilisée pour démonter un système de fichiers monté sur un système Linux. Cela signifie qu'elle permet de rendre un système de fichiers inaccessible, libérant ainsi les ressources associées et garantissant que toutes les données sont correctement écrites sur le disque avant de le retirer.
+La commande `umount` est utilisée pour démonter un système de fichiers qui a été monté précédemment. Cela permet de libérer les ressources et de s'assurer que toutes les opérations d'écriture sont terminées avant de déconnecter le périphérique.
 
 ## Usage
 La syntaxe de base de la commande `umount` est la suivante :
 
-```bash
+```
 umount [options] [arguments]
 ```
 
@@ -14,39 +14,38 @@ umount [options] [arguments]
 Voici quelques options courantes pour la commande `umount` :
 
 - `-a` : Démonte tous les systèmes de fichiers mentionnés dans `/etc/mtab`.
-- `-f` : Force le démontage d'un système de fichiers, même s'il est occupé.
-- `-l` : Démontage paresseux, qui permet de détacher le système de fichiers même s'il est utilisé, mais le démonte réellement plus tard.
-- `-r` : Monte le système de fichiers en lecture seule si le démontage échoue.
+- `-f` : Force le démontage, même si le système de fichiers est occupé.
+- `-l` : Démontage paresseux, qui permet de démonter le système de fichiers même s'il est encore utilisé, mais le fait de manière différée.
+- `-r` : Tente de monter le système de fichiers en lecture seule si le démontage échoue.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `umount` :
 
-1. Démonter un système de fichiers spécifique :
-   ```bash
-   umount /mnt/mon_dossier
+1. Pour démonter un système de fichiers monté sur `/mnt` :
+
+   ```csh
+   umount /mnt
    ```
 
-2. Démonter tous les systèmes de fichiers :
-   ```bash
+2. Pour démonter tous les systèmes de fichiers :
+
+   ```csh
    umount -a
    ```
 
-3. Forcer le démontage d'un système de fichiers :
-   ```bash
-   umount -f /mnt/mon_dossier
+3. Pour forcer le démontage d'un système de fichiers :
+
+   ```csh
+   umount -f /dev/sdb1
    ```
 
-4. Démontage paresseux d'un système de fichiers :
-   ```bash
-   umount -l /mnt/mon_dossier
-   ```
+4. Pour effectuer un démontage paresseux :
 
-5. Démonter un système de fichiers en lecture seule en cas d'échec :
-   ```bash
-   umount -r /mnt/mon_dossier
+   ```csh
+   umount -l /mnt
    ```
 
 ## Tips
-- Assurez-vous que le système de fichiers n'est pas utilisé avant de le démonter pour éviter la perte de données.
-- Utilisez `df` ou `mount` pour vérifier quels systèmes de fichiers sont actuellement montés.
-- Si vous rencontrez des problèmes pour démonter, vérifiez les processus en cours d'utilisation avec `lsof` ou `fuser`.
+- Assurez-vous que vous n'êtes pas dans le répertoire du système de fichiers que vous essayez de démonter.
+- Utilisez `df` ou `mount` pour vérifier quels systèmes de fichiers sont actuellement montés avant de tenter un démontage.
+- Si un système de fichiers ne se démonte pas, vérifiez les processus en cours qui pourraient l'utiliser avec la commande `lsof`.

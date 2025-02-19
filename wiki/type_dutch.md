@@ -1,71 +1,49 @@
-# [Linux] Bash type gebruik: [bepaal het type van een commando]
+# [Linux] C Shell (csh) type gebruik: Bepaal het type van een commando
 
 ## Overzicht
-De `type` opdracht in Bash wordt gebruikt om het type van een commando te bepalen. Het kan aangeven of een commando een ingebouwd shell-commando, een alias, een functie of een externe executable is. Dit is nuttig om te begrijpen hoe een commando wordt uitgevoerd in de shell.
+De `type` opdracht in C Shell (csh) wordt gebruikt om het type van een opgegeven commando te bepalen. Dit kan nuttig zijn om te begrijpen of een commando een ingebouwd commando, een alias, een functie of een uitvoerbaar bestand is.
 
 ## Gebruik
 De basis syntaxis van de `type` opdracht is als volgt:
 
-```bash
-type [opties] [argumenten]
+```csh
+type [options] [arguments]
 ```
 
 ## Veelvoorkomende Opties
-- `-t`: Geeft alleen het type van het commando weer, zonder extra informatie.
-- `-a`: Toont alle locaties van het commando, inclusief aliassen en functies.
-- `-p`: Geeft het pad naar de uitvoerbare versie van het commando weer, indien beschikbaar.
+- `-a`: Toont alle locaties van het opgegeven commando, inclusief aliassen en functies.
+- `-t`: Geeft alleen het type van het commando terug (bijvoorbeeld "alias", "function", "file").
+- `-p`: Toont het pad naar het uitvoerbare bestand van het commando.
 
 ## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van de `type` opdracht:
 
-1. Bepaal het type van een ingebouwd commando:
-    ```bash
-    type cd
-    ```
-    **Uitvoer:**
-    ```
-    cd is a shell builtin
-    ```
+1. **Bepaal het type van een commando:**
+   ```csh
+   type ls
+   ```
 
-2. Controleer het type van een externe executable:
-    ```bash
-    type ls
-    ```
-    **Uitvoer:**
-    ```
-    ls is /bin/ls
-    ```
+2. **Toon alle locaties van een commando:**
+   ```csh
+   type -a echo
+   ```
 
-3. Bekijk het type van een alias:
-    ```bash
-    alias ll='ls -l'
-    type ll
-    ```
-    **Uitvoer:**
-    ```
-    ll is aliased to `ls -l'
-    ```
+3. **Ontdek het type van een alias:**
+   ```csh
+   alias myalias='ls -l'
+   type myalias
+   ```
 
-4. Gebruik de `-a` optie om alle versies van een commando te tonen:
-    ```bash
-    type -a echo
-    ```
-    **Uitvoer:**
-    ```
-    echo is a shell builtin
-    echo is /bin/echo
-    ```
+4. **Krijg alleen het type van een commando:**
+   ```csh
+   type -t cd
+   ```
 
-5. Gebruik de `-t` optie om alleen het type te krijgen:
-    ```bash
-    type -t pwd
-    ```
-    **Uitvoer:**
-    ```
-    builtin
-    ```
+5. **Toon het pad naar een uitvoerbaar bestand:**
+   ```csh
+   type -p python
+   ```
 
 ## Tips
-- Gebruik `type` om verwarring te voorkomen over welke versie van een commando wordt uitgevoerd, vooral als je zowel aliassen als externe executables hebt.
-- Combineer `type` met andere commando's in scripts om dynamisch gedrag te implementeren op basis van het type van een commando.
-- Vergeet niet dat `type` alleen werkt in de context van de huidige shell; het kan geen informatie geven over commando's in andere shells of omgevingen.
+- Gebruik `type -a` om te controleren of er meerdere definities zijn voor een commando, zoals een alias en een functie.
+- Het gebruik van `type -t` kan handig zijn in scripts om beslissingen te nemen op basis van het type van een commando.
+- Vergeet niet dat de `type` opdracht niet alleen nuttig is voor ingebouwde commando's, maar ook voor externe programma's die in je pad staan.

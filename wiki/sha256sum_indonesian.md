@@ -1,50 +1,45 @@
-# [Linux] Bash sha256sum Penggunaan: Menghitung checksum SHA-256
+# [Sistem Operasi] C Shell (csh) sha256sum Penggunaan: Menghitung checksum SHA-256
 
 ## Overview
-Perintah `sha256sum` digunakan untuk menghitung dan memverifikasi checksum SHA-256 dari file. Ini berguna untuk memastikan integritas data dengan membandingkan checksum yang dihasilkan dengan checksum yang diketahui.
+Perintah `sha256sum` digunakan untuk menghitung dan memverifikasi checksum SHA-256 dari file. Ini berguna untuk memastikan integritas file dengan membandingkan checksum yang dihasilkan dengan checksum yang diketahui.
 
 ## Usage
-Berikut adalah sintaks dasar dari perintah `sha256sum`:
+Sintaks dasar dari perintah `sha256sum` adalah sebagai berikut:
 
-```bash
+```csh
 sha256sum [options] [arguments]
 ```
 
 ## Common Options
-- `-b`, `--binary`: Menghitung checksum dalam mode biner.
-- `-c`, `--check`: Memeriksa checksum dari file yang telah dihitung sebelumnya.
-- `-h`, `--help`: Menampilkan bantuan penggunaan perintah.
-- `-o`, `--output`: Menentukan file output untuk menyimpan hasil checksum.
+- `-b`: Menghitung checksum untuk file biner.
+- `-c`: Memeriksa checksum dari file yang telah dihitung sebelumnya.
+- `-o`: Menentukan file output untuk menyimpan hasil checksum.
+- `--help`: Menampilkan bantuan tentang penggunaan perintah.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `sha256sum`:
 
-1. Menghitung checksum dari sebuah file:
-   ```bash
+1. Menghitung checksum dari file:
+   ```csh
    sha256sum file.txt
    ```
 
-2. Menghitung checksum dari beberapa file sekaligus:
-   ```bash
-   sha256sum file1.txt file2.txt
-   ```
-
-3. Menyimpan hasil checksum ke dalam file:
-   ```bash
-   sha256sum file.txt > checksum.txt
-   ```
-
-4. Memeriksa checksum dari file menggunakan file checksum:
-   ```bash
-   sha256sum -c checksum.txt
-   ```
-
-5. Menghitung checksum dalam mode biner:
-   ```bash
+2. Menghitung checksum untuk file biner:
+   ```csh
    sha256sum -b file.bin
    ```
 
+3. Memeriksa checksum dari file menggunakan file daftar:
+   ```csh
+   sha256sum -c checksum.txt
+   ```
+
+4. Menyimpan hasil checksum ke dalam file:
+   ```csh
+   sha256sum file.txt -o hasil.txt
+   ```
+
 ## Tips
-- Selalu simpan file checksum di tempat yang aman untuk memudahkan verifikasi di masa mendatang.
-- Gunakan opsi `-c` untuk memverifikasi file setelah diunduh atau dipindahkan untuk memastikan tidak ada kerusakan data.
-- Untuk file besar, pertimbangkan untuk menghitung checksum di latar belakang dengan menggunakan `&` agar tidak mengganggu pekerjaan lain.
+- Selalu simpan checksum yang dihasilkan untuk referensi di masa mendatang.
+- Gunakan opsi `-c` untuk memverifikasi file setelah diunduh atau dipindahkan.
+- Pastikan untuk menggunakan file yang sesuai (biner atau teks) saat menghitung checksum untuk hasil yang akurat.

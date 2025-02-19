@@ -1,47 +1,47 @@
-# [Linux] Bash setopt użycie: Ustawia opcje powłoki
+# [Linux] C Shell (csh) setopt użycie: Ustawianie opcji powłoki
 
 ## Overview
-Polecenie `setopt` w Bash służy do włączania lub wyłączania różnych opcji powłoki, co pozwala dostosować zachowanie powłoki do indywidualnych potrzeb użytkownika. Dzięki `setopt` można m.in. zmieniać sposób interpretacji poleceń czy zarządzać zachowaniem skryptów.
+Polecenie `setopt` w powłoce C Shell (csh) służy do ustawiania różnych opcji konfiguracyjnych, które wpływają na zachowanie powłoki. Dzięki temu użytkownicy mogą dostosować środowisko pracy do swoich potrzeb.
 
 ## Usage
 Podstawowa składnia polecenia `setopt` jest następująca:
 
-```bash
+```csh
 setopt [opcje] [argumenty]
 ```
 
 ## Common Options
 Oto kilka powszechnie używanych opcji dla `setopt`:
 
-- `allexport`: Automatycznie eksportuje wszystkie zmienne do środowiska.
 - `noclobber`: Zapobiega nadpisywaniu istniejących plików podczas redirekcji.
-- `noexec`: Nie wykonuje skryptów, co jest przydatne do testowania.
-- `pipefail`: Ustawia status wyjścia potoku na wartość ostatniego polecenia, które zakończyło się błędem.
+- `ignoreeof`: Ignoruje sygnał EOF (End Of File), co zapobiega przypadkowemu wyjściu z powłoki.
+- `allexport`: Automatycznie eksportuje wszystkie zmienne do podprocesów.
+- `verbose`: Włącza tryb szczegółowy, wyświetlając więcej informacji o wykonywanych poleceniach.
 
 ## Common Examples
 Oto kilka praktycznych przykładów użycia `setopt`:
 
-1. Włączenie opcji `noclobber`, aby zapobiec nadpisywaniu plików:
-   ```bash
+1. Aby zapobiec nadpisywaniu plików:
+   ```csh
    setopt noclobber
    ```
 
-2. Włączenie opcji `allexport`, aby wszystkie zmienne były automatycznie eksportowane:
-   ```bash
+2. Aby zignorować sygnał EOF:
+   ```csh
+   setopt ignoreeof
+   ```
+
+3. Aby automatycznie eksportować wszystkie zmienne:
+   ```csh
    setopt allexport
    ```
 
-3. Włączenie opcji `pipefail`, aby uzyskać status wyjścia potoku:
-   ```bash
-   setopt pipefail
-   ```
-
-4. Wyłączenie opcji `noexec`, aby ponownie umożliwić wykonywanie skryptów:
-   ```bash
-   unsetopt noexec
+4. Aby włączyć tryb szczegółowy:
+   ```csh
+   setopt verbose
    ```
 
 ## Tips
-- Używaj `setopt` w skryptach, aby zapewnić spójne zachowanie powłoki.
-- Sprawdź aktualnie ustawione opcje za pomocą polecenia `set -o`.
-- Pamiętaj, aby po zakończeniu korzystania z opcji `setopt` przywrócić domyślne ustawienia, jeśli to konieczne, używając `unsetopt`.
+- Zawsze sprawdzaj aktualne ustawienia opcji przed ich zmianą, aby uniknąć niezamierzonych konsekwencji.
+- Używaj `unsetopt` do wyłączania opcji, które już nie są potrzebne.
+- Zapisuj swoje preferencje w pliku konfiguracyjnym, aby były automatycznie stosowane przy każdym uruchomieniu powłoki.

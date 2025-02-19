@@ -1,51 +1,45 @@
-# [Linux] Bash tail użycie: Wyświetlanie końca pliku
+# [Linux] C Shell (csh) tail użycie: wyświetlanie końca plików
 
-## Overview
-Polecenie `tail` w systemie Linux służy do wyświetlania ostatnich linii pliku tekstowego. Jest to przydatne narzędzie do monitorowania logów lub plików, które są regularnie aktualizowane.
+## Przegląd
+Polecenie `tail` służy do wyświetlania ostatnich linii pliku tekstowego. Jest to przydatne narzędzie do monitorowania logów lub plików, które są regularnie aktualizowane.
 
-## Usage
-Podstawowa składnia polecenia `tail` wygląda następująco:
+## Użycie
+Podstawowa składnia polecenia `tail` jest następująca:
 
-```bash
+```csh
 tail [opcje] [argumenty]
 ```
 
-## Common Options
-- `-n NUM` – Wyświetla ostatnie NUM linii z pliku. Na przykład `-n 10` pokaże ostatnie 10 linii.
-- `-f` – Śledzi plik w czasie rzeczywistym, wyświetlając nowe linie, gdy są dodawane.
-- `-c NUM` – Wyświetla ostatnie NUM bajtów z pliku.
-- `-q` – Wyłącza nagłówki plików, gdy wyświetlane są wiele plików.
+## Częste opcje
+- `-n [liczba]`: Wyświetla ostatnie `liczba` linii pliku.
+- `-f`: Śledzi zmiany w pliku w czasie rzeczywistym, wyświetlając nowe linie, gdy są dodawane.
+- `-c [liczba]`: Wyświetla ostatnie `liczba` bajtów pliku.
 
-## Common Examples
-1. Wyświetlenie ostatnich 10 linii pliku:
-   ```bash
-   tail /var/log/syslog
+## Przykłady
+1. Wyświetlenie ostatnich 10 linii pliku `log.txt`:
+   ```csh
+   tail log.txt
    ```
 
-2. Wyświetlenie ostatnich 20 linii pliku:
-   ```bash
-   tail -n 20 /var/log/syslog
+2. Wyświetlenie ostatnich 20 linii pliku `data.txt`:
+   ```csh
+   tail -n 20 data.txt
    ```
 
-3. Śledzenie pliku w czasie rzeczywistym:
-   ```bash
-   tail -f /var/log/syslog
+3. Śledzenie pliku `server.log` w czasie rzeczywistym:
+   ```csh
+   tail -f server.log
    ```
 
-4. Wyświetlenie ostatnich 100 bajtów z pliku:
-   ```bash
-   tail -c 100 /var/log/syslog
+4. Wyświetlenie ostatnich 50 bajtów pliku `output.txt`:
+   ```csh
+   tail -c 50 output.txt
    ```
 
-5. Wyświetlenie ostatnich 5 linii z kilku plików:
-   ```bash
-   tail -n 5 plik1.txt plik2.txt
-   ```
-
-## Tips
-- Używaj opcji `-f`, aby monitorować pliki logów w czasie rzeczywistym, co jest szczególnie przydatne podczas debugowania.
+## Wskazówki
+- Używaj opcji `-f`, gdy chcesz monitorować plik logów na żywo, co jest szczególnie przydatne w przypadku aplikacji serwerowych.
 - Możesz łączyć `tail` z innymi poleceniami, takimi jak `grep`, aby filtrować wyniki. Na przykład:
-  ```bash
-  tail -f /var/log/syslog | grep "error"
+  ```csh
+  tail -f server.log | grep "ERROR"
   ```
-- Pamiętaj, że `tail` działa najlepiej z plikami tekstowymi. Używanie go z plikami binarnymi może dać nieprzewidywalne wyniki.
+- Pamiętaj, że `tail` domyślnie wyświetla 10 ostatnich linii, co może być wystarczające w wielu przypadkach.

@@ -1,10 +1,10 @@
-# [লিনাক্স] Bash scp ব্যবহার: ফাইল স্থানান্তর করা
+# [লিনাক্স] C Shell (csh) scp ব্যবহার: ফাইল স্থানান্তর করা
 
 ## Overview
-`scp` (Secure Copy Protocol) কমান্ডটি একটি নিরাপদ পদ্ধতিতে ফাইল স্থানান্তরের জন্য ব্যবহৃত হয়। এটি SSH প্রোটোকল ব্যবহার করে স্থানীয় এবং দূরবর্তী সিস্টেমের মধ্যে ফাইল কপি করতে সক্ষম।
+`scp` কমান্ডটি নিরাপদ কপি করার জন্য ব্যবহৃত হয়। এটি SSH প্রোটোকল ব্যবহার করে একটি কম্পিউটার থেকে অন্য কম্পিউটারে ফাইল স্থানান্তর করতে সাহায্য করে।
 
 ## Usage
-`scp` কমান্ডের মৌলিক সিনট্যাক্স হল:
+`scp` কমান্ডের মৌলিক সিনট্যাক্স হলো:
 
 ```bash
 scp [options] [source] [destination]
@@ -12,32 +12,32 @@ scp [options] [source] [destination]
 
 ## Common Options
 - `-r`: ডিরেক্টরি এবং এর সমস্ত বিষয়বস্তু রিকার্সিভলি কপি করতে ব্যবহৃত হয়।
-- `-P`: দূরবর্তী সার্ভারের পোর্ট নম্বর নির্দিষ্ট করতে ব্যবহৃত হয় (বড় P)।
-- `-i`: একটি নির্দিষ্ট SSH কী ফাইল ব্যবহার করতে ব্যবহৃত হয়।
-- `-v`: ডিবাগ তথ্য প্রদর্শন করতে ব্যবহৃত হয়, যা সমস্যা সমাধানে সহায়ক।
+- `-P`: SSH পোর্ট নম্বর নির্দিষ্ট করতে ব্যবহৃত হয় (মৌলিক পোর্ট 22)।
+- `-i`: নির্দিষ্ট SSH কী ফাইল ব্যবহার করতে ব্যবহৃত হয়।
+- `-v`: ডিবাগ তথ্য দেখানোর জন্য ব্যবহৃত হয়, যা সমস্যা সমাধানে সহায়ক।
 
 ## Common Examples
-1. স্থানীয় থেকে দূরবর্তী সার্ভারে একটি ফাইল কপি করা:
-   ```bash
-   scp /path/to/local/file.txt username@remote_host:/path/to/remote/directory/
-   ```
+- একটি ফাইল স্থানান্তর করা:
+```bash
+scp /path/to/local/file.txt user@remote_host:/path/to/remote/directory/
+```
 
-2. দূরবর্তী সার্ভার থেকে স্থানীয় মেশিনে একটি ফাইল কপি করা:
-   ```bash
-   scp username@remote_host:/path/to/remote/file.txt /path/to/local/directory/
-   ```
+- একটি ডিরেক্টরি স্থানান্তর করা:
+```bash
+scp -r /path/to/local/directory user@remote_host:/path/to/remote/directory/
+```
 
-3. একটি সম্পূর্ণ ডিরেক্টরি রিকার্সিভলি কপি করা:
-   ```bash
-   scp -r /path/to/local/directory username@remote_host:/path/to/remote/directory/
-   ```
+- একটি নির্দিষ্ট পোর্ট ব্যবহার করে ফাইল স্থানান্তর করা:
+```bash
+scp -P 2222 /path/to/local/file.txt user@remote_host:/path/to/remote/directory/
+```
 
-4. একটি নির্দিষ্ট পোর্ট ব্যবহার করে ফাইল কপি করা:
-   ```bash
-   scp -P 2222 /path/to/local/file.txt username@remote_host:/path/to/remote/directory/
-   ```
+- SSH কী ফাইল ব্যবহার করে ফাইল স্থানান্তর করা:
+```bash
+scp -i /path/to/private_key.pem /path/to/local/file.txt user@remote_host:/path/to/remote/directory/
+```
 
 ## Tips
-- নিশ্চিত করুন যে SSH সার্ভারটি সক্রিয় এবং আপনার কাছে যথাযথ অনুমতি রয়েছে।
-- ফাইল স্থানান্তরের সময় নিরাপত্তা নিশ্চিত করতে SSH কী ব্যবহার করুন।
+- স্থানান্তরের আগে নিশ্চিত করুন যে আপনি সঠিক ব্যবহারকারীর নাম এবং হোস্ট ঠিকানা ব্যবহার করছেন।
 - বড় ফাইল স্থানান্তরের সময় `-v` অপশন ব্যবহার করে প্রক্রিয়ার অগ্রগতি পর্যবেক্ষণ করুন।
+- নিরাপত্তার জন্য SSH কী ব্যবহার করা সবসময় ভাল অভ্যাস।

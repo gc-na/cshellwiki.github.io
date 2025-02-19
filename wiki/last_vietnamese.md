@@ -1,50 +1,49 @@
-# [Linux] Bash last lệnh: Xem lịch sử đăng nhập của người dùng
+# [Hệ điều hành] C Shell (csh) last lệnh: Hiển thị lịch sử đăng nhập của người dùng
 
-## Overview
-Lệnh `last` trong Bash được sử dụng để hiển thị danh sách các lần đăng nhập gần đây của người dùng trên hệ thống. Nó cung cấp thông tin về thời gian, địa chỉ IP và thời gian đăng xuất của người dùng.
+## Tổng quan
+Lệnh `last` trong C Shell (csh) được sử dụng để hiển thị lịch sử đăng nhập của người dùng trên hệ thống. Nó cung cấp thông tin về thời gian, địa chỉ IP và tên người dùng đã đăng nhập.
 
-## Usage
+## Cú pháp
 Cú pháp cơ bản của lệnh `last` như sau:
-
-```bash
+```
 last [options] [arguments]
 ```
 
-## Common Options
-- `-a`: Hiển thị địa chỉ IP hoặc tên máy của người dùng.
-- `-n [number]`: Giới hạn số lượng bản ghi được hiển thị (mặc định là 10).
-- `-R`: Không hiển thị tên máy.
-- `-x`: Hiển thị thông tin về các phiên làm việc và các lần khởi động lại hệ thống.
+## Các tùy chọn phổ biến
+- `-a`: Hiển thị địa chỉ IP của người dùng cuối cùng.
+- `-n [số]`: Chỉ định số lượng bản ghi lịch sử đăng nhập cần hiển thị.
+- `-R`: Không hiển thị tên máy chủ.
+- `-x`: Hiển thị cả các phiên làm việc đã kết thúc.
 
-## Common Examples
-Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `last`:
+## Ví dụ phổ biến
+Dưới đây là một số ví dụ thực tế khi sử dụng lệnh `last`:
 
-1. **Xem lịch sử đăng nhập gần đây**:
+1. Hiển thị toàn bộ lịch sử đăng nhập:
    ```bash
    last
    ```
 
-2. **Giới hạn số lượng bản ghi hiển thị**:
+2. Hiển thị 5 bản ghi đăng nhập gần nhất:
    ```bash
    last -n 5
    ```
 
-3. **Hiển thị địa chỉ IP của người dùng**:
+3. Hiển thị lịch sử đăng nhập kèm theo địa chỉ IP:
    ```bash
    last -a
    ```
 
-4. **Hiển thị thông tin về các phiên làm việc**:
+4. Hiển thị lịch sử đăng nhập mà không có tên máy chủ:
+   ```bash
+   last -R
+   ```
+
+5. Hiển thị cả các phiên làm việc đã kết thúc:
    ```bash
    last -x
    ```
 
-5. **Xem lịch sử đăng nhập của một người dùng cụ thể**:
-   ```bash
-   last username
-   ```
-
-## Tips
-- Sử dụng tùy chọn `-n` để chỉ định số lượng bản ghi bạn muốn xem, giúp bạn dễ dàng quản lý thông tin.
-- Kết hợp với lệnh `grep` để tìm kiếm thông tin cụ thể, ví dụ: `last | grep username`.
-- Để theo dõi các lần khởi động lại hệ thống, hãy sử dụng tùy chọn `-x` để có cái nhìn tổng quan hơn.
+## Mẹo
+- Sử dụng tùy chọn `-n` để giới hạn số lượng bản ghi hiển thị, giúp dễ dàng quản lý thông tin.
+- Kết hợp các tùy chọn để có được thông tin chi tiết hơn, như hiển thị địa chỉ IP và loại phiên làm việc.
+- Thường xuyên kiểm tra lịch sử đăng nhập để theo dõi hoạt động của người dùng trên hệ thống.

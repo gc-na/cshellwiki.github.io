@@ -1,28 +1,33 @@
-# [日本語] Bash docker-compose 使用法: コンテナの管理とオーケストレーション
+# [日本] C Shell (csh) docker-compose 使用法: 複数のDockerコンテナを管理する
 
-## Overview
-`docker-compose` コマンドは、複数の Docker コンテナを定義し、実行するためのツールです。YAML ファイルを使用して、アプリケーションのサービス、ネットワーク、およびボリュームを簡単に管理できます。
+## 概要
+docker-composeは、複数のDockerコンテナを簡単に管理するためのツールです。YAMLファイルを使用してアプリケーションのサービスを定義し、これを基にコンテナを一括で起動、停止、構築することができます。
 
-## Usage
+## 使用法
 基本的な構文は以下の通りです。
 
 ```bash
 docker-compose [options] [arguments]
 ```
 
-## Common Options
+## 一般的なオプション
 - `up`: 定義されたサービスを起動します。
-- `down`: 実行中のサービスを停止し、リソースをクリーンアップします。
+- `down`: 起動したサービスを停止し、ネットワークを削除します。
 - `build`: サービスのイメージをビルドします。
 - `logs`: サービスのログを表示します。
 - `exec`: 実行中のコンテナ内でコマンドを実行します。
 
-## Common Examples
-以下にいくつかの実用的な例を示します。
+## 一般的な例
+以下に、docker-composeの一般的な使用例を示します。
 
 ### サービスの起動
 ```bash
 docker-compose up
+```
+
+### バックグラウンドでサービスを起動
+```bash
+docker-compose up -d
 ```
 
 ### サービスの停止
@@ -30,7 +35,7 @@ docker-compose up
 docker-compose down
 ```
 
-### イメージのビルド
+### サービスのビルド
 ```bash
 docker-compose build
 ```
@@ -40,16 +45,12 @@ docker-compose build
 docker-compose logs
 ```
 
-### コンテナ内でのコマンド実行
+### コンテナ内でコマンドを実行
 ```bash
-docker-compose exec <サービス名> <コマンド>
-```
-例:
-```bash
-docker-compose exec web bash
+docker-compose exec <service_name> <command>
 ```
 
-## Tips
-- `docker-compose up -d` を使用すると、バックグラウンドでサービスを起動できます。
-- `docker-compose.yml` ファイルをプロジェクトのルートディレクトリに配置することを忘れないでください。
-- サービスの変更後は、`docker-compose up --build` を使用して再ビルドを行うと便利です。
+## ヒント
+- `docker-compose.yml`ファイルを適切に設定することで、サービスの依存関係を管理しやすくなります。
+- `-d`オプションを使用してバックグラウンドで実行することで、ターミナルを占有せずに作業を続けられます。
+- 定期的に`docker-compose down`を実行して、不要なリソースをクリーンアップすることをお勧めします。

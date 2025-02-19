@@ -1,49 +1,43 @@
-# [Linux] Bash unxz cách sử dụng: Giải nén tệp tin .xz
+# [Hệ điều hành] C Shell (csh) unxz: Giải nén tệp tin .xz
 
-## Tổng quan
-Lệnh `unxz` được sử dụng để giải nén các tệp tin có định dạng .xz, một định dạng nén phổ biến. Lệnh này giúp bạn khôi phục lại tệp tin gốc từ tệp tin nén, tiết kiệm không gian lưu trữ và dễ dàng chia sẻ dữ liệu.
+## Overview
+Lệnh `unxz` được sử dụng để giải nén các tệp tin có định dạng `.xz`. Đây là một công cụ hữu ích trong việc xử lý các tệp nén, giúp tiết kiệm không gian lưu trữ và dễ dàng truyền tải dữ liệu.
 
-## Cách sử dụng
+## Usage
 Cú pháp cơ bản của lệnh `unxz` như sau:
-
-```bash
-unxz [tùy chọn] [tệp tin]
+```
+unxz [options] [arguments]
 ```
 
-## Tùy chọn phổ biến
-- `-k`, `--keep`: Giữ lại tệp tin nén sau khi giải nén.
-- `-f`, `--force`: Buộc giải nén ngay cả khi tệp tin đích đã tồn tại.
-- `-v`, `--verbose`: Hiển thị thông tin chi tiết trong quá trình giải nén.
+## Common Options
+- `-k`: Giữ lại tệp tin gốc sau khi giải nén.
+- `-f`: Buộc giải nén ngay cả khi tệp tin đã tồn tại.
+- `-v`: Hiển thị thông tin chi tiết về quá trình giải nén.
 
-## Ví dụ phổ biến
+## Common Examples
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `unxz`:
 
-1. Giải nén một tệp tin .xz:
+1. Giải nén một tệp tin `.xz`:
    ```bash
    unxz file.xz
    ```
 
-2. Giải nén và giữ lại tệp tin nén:
+2. Giải nén và giữ lại tệp tin gốc:
    ```bash
    unxz -k file.xz
    ```
 
-3. Giải nén một tệp tin và buộc ghi đè nếu tệp tin đích đã tồn tại:
+3. Giải nén tệp tin và buộc ghi đè nếu tệp đã tồn tại:
    ```bash
    unxz -f file.xz
    ```
 
-4. Giải nén nhiều tệp tin cùng lúc:
-   ```bash
-   unxz file1.xz file2.xz file3.xz
-   ```
-
-5. Hiển thị thông tin chi tiết trong quá trình giải nén:
+4. Giải nén và hiển thị thông tin chi tiết:
    ```bash
    unxz -v file.xz
    ```
 
-## Mẹo
-- Luôn kiểm tra dung lượng đĩa trước khi giải nén, đặc biệt với các tệp tin lớn.
-- Sử dụng tùy chọn `-k` nếu bạn muốn giữ lại tệp tin nén để sử dụng sau này.
-- Đọc kỹ thông báo lỗi nếu lệnh không thực hiện thành công, điều này có thể giúp bạn xác định vấn đề nhanh chóng.
+## Tips
+- Luôn kiểm tra dung lượng đĩa trước khi giải nén, vì tệp tin giải nén có thể chiếm nhiều không gian hơn.
+- Sử dụng tùy chọn `-k` nếu bạn không chắc chắn về việc có cần giữ lại tệp tin gốc hay không.
+- Đọc tài liệu hướng dẫn (`man unxz`) để tìm hiểu thêm về các tùy chọn và cách sử dụng lệnh.

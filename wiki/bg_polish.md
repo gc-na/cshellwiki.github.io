@@ -1,42 +1,43 @@
-# [Linux] Bash bg użycie: Wznawianie zadań w tle
+# [Linux] C Shell (csh) bg użycie: Wznawia procesy w tle
 
 ## Overview
-Polecenie `bg` w systemie Bash służy do wznawiania zatrzymanych zadań w tle. Umożliwia to kontynuowanie pracy z procesami, które zostały wstrzymane, bez blokowania terminala.
+Polecenie `bg` w C Shell (csh) służy do wznawiania zatrzymanych procesów w tle. Umożliwia to kontynuowanie pracy nad innymi zadaniami w terminalu, podczas gdy procesy działają w tle.
 
 ## Usage
 Podstawowa składnia polecenia `bg` jest następująca:
 
-```bash
-bg [opcje] [argumenty]
+```csh
+bg [options] [arguments]
 ```
 
 ## Common Options
-- `job_spec` - Specyfikuje zadanie, które ma być wznowione w tle. Można użyć numeru zadania lub identyfikatora procesu (PID).
+- `job_id` - identyfikator zadania, który chcesz wznowić w tle. Możesz użyć numeru zadania (np. `%1`) lub jego identyfikatora.
+- `-l` - wyświetla numery zadań w formacie długim.
 
 ## Common Examples
-1. Wznowienie ostatniego zatrzymanego zadania w tle:
-   ```bash
+Oto kilka praktycznych przykładów użycia polecenia `bg`:
+
+1. Wznawianie ostatniego zatrzymanego zadania w tle:
+   ```csh
    bg
    ```
 
-2. Wznowienie konkretnego zadania, na przykład zadania o numerze 1:
-   ```bash
+2. Wznawianie konkretnego zadania (np. zadanie o numerze 1):
+   ```csh
    bg %1
    ```
 
-3. Wznowienie zadania z identyfikatorem procesu (PID):
-   ```bash
-   bg 1234
+3. Wznawianie zadania o określonym identyfikatorze:
+   ```csh
+   bg -l %2
    ```
 
-4. Wznowienie zadania w tle i kontynuowanie pracy w terminalu:
-   ```bash
-   sleep 100 &
-   # Po zatrzymaniu zadania
-   bg %1
+4. Wznawianie wszystkich zatrzymanych zadań w tle:
+   ```csh
+   bg %%
    ```
 
 ## Tips
-- Używaj polecenia `jobs`, aby sprawdzić status zatrzymanych i działających w tle zadań.
-- Pamiętaj, że zadania w tle mogą generować wyjście, które może zalać terminal. Rozważ przekierowanie wyjścia do pliku.
-- Aby zakończyć zadanie działające w tle, użyj polecenia `kill` z odpowiednim PID.
+- Używaj polecenia `jobs`, aby sprawdzić, które zadania są zatrzymane lub działają w tle.
+- Pamiętaj, że zadania w tle mogą generować wyjścia, które mogą zalać twój terminal. Rozważ użycie przekierowania wyjścia, aby uniknąć bałaganu.
+- Możesz użyć polecenia `fg`, aby przenieść zadanie z powrotem na pierwszy plan, jeśli potrzebujesz z nim interakcji.

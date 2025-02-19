@@ -1,7 +1,7 @@
-# [Linux] Bash reboot utilizzo: Riavviare il sistema
+# [Linux] C Shell (csh) reboot uso: Riavvia il sistema
 
 ## Overview
-Il comando `reboot` viene utilizzato per riavviare il sistema operativo. È un modo semplice e diretto per terminare tutte le attività in corso e riavviare il computer.
+Il comando `reboot` in C Shell (csh) viene utilizzato per riavviare il sistema operativo. Questo comando è utile quando è necessario applicare aggiornamenti, risolvere problemi o semplicemente riavviare il computer.
 
 ## Usage
 La sintassi di base del comando è la seguente:
@@ -11,34 +11,34 @@ reboot [options] [arguments]
 ```
 
 ## Common Options
-- `-f`: Forza il riavvio senza eseguire il controllo del file system.
-- `-p`: Spegne il sistema dopo il riavvio.
-- `-h`: Ferma il sistema senza riavviarlo.
+- `-f`: Forza il riavvio senza eseguire il processo di shutdown.
+- `-n`: Non scrivere su disco prima di riavviare, utile in situazioni di emergenza.
+- `-w`: Scrive un messaggio nel log di sistema senza riavviare il computer.
 
 ## Common Examples
 Ecco alcuni esempi pratici dell'uso del comando `reboot`:
 
 1. **Riavviare il sistema normalmente:**
-   ```bash
+   ```csh
    reboot
    ```
 
-2. **Forzare il riavvio senza controlli:**
-   ```bash
+2. **Forzare il riavvio senza shutdown:**
+   ```csh
    reboot -f
    ```
 
-3. **Riavviare e spegnere il sistema:**
-   ```bash
-   reboot -p
+3. **Riavviare senza scrivere su disco:**
+   ```csh
+   reboot -n
    ```
 
-4. **Riavviare il sistema con un messaggio di avviso:**
-   ```bash
-   shutdown -r now
+4. **Scrivere un messaggio nel log senza riavviare:**
+   ```csh
+   reboot -w
    ```
 
 ## Tips
-- Assicurati di salvare il lavoro non salvato prima di eseguire il comando `reboot`.
-- Utilizza l'opzione `-f` solo se necessario, poiché potrebbe causare la perdita di dati.
-- Puoi pianificare un riavvio utilizzando il comando `shutdown` con un timer, ad esempio `shutdown -r +5` per riavviare dopo 5 minuti.
+- Assicurati di salvare tutti i tuoi lavori prima di eseguire il comando `reboot`, poiché il riavvio chiuderà tutte le applicazioni aperte.
+- Utilizza l'opzione `-f` solo in situazioni di emergenza, poiché potrebbe causare la perdita di dati.
+- Controlla sempre eventuali aggiornamenti di sistema che richiedono un riavvio per garantire che il tuo sistema rimanga sicuro e aggiornato.

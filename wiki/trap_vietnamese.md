@@ -1,56 +1,49 @@
-# [Linux] Bash trap cách sử dụng: Bắt và xử lý tín hiệu
+# [Hệ điều hành] C Shell (csh) trap Cách sử dụng: Quản lý tín hiệu trong shell
 
-## Overview
-Lệnh `trap` trong Bash được sử dụng để bắt và xử lý các tín hiệu hoặc sự kiện trong quá trình thực thi của một script. Điều này cho phép người dùng thực hiện các hành động cụ thể khi một tín hiệu nhất định được nhận, như khi script bị dừng hoặc khi có lỗi xảy ra.
+## Tổng quan
+Lệnh `trap` trong C Shell (csh) được sử dụng để thiết lập các hành động cụ thể khi nhận được tín hiệu nhất định. Điều này rất hữu ích để xử lý các tình huống như dừng hoặc thoát khỏi một script một cách an toàn.
 
-## Usage
+## Cách sử dụng
 Cú pháp cơ bản của lệnh `trap` như sau:
 
-```bash
-trap [options] [commands] [signals]
+```
+trap [options] [arguments]
 ```
 
-## Common Options
-- `-l`: Liệt kê tất cả các tín hiệu có sẵn.
-- `-p`: Hiển thị các lệnh trap hiện tại cho các tín hiệu.
+## Các tùy chọn phổ biến
 - `SIGINT`: Tín hiệu ngắt (Ctrl+C).
-- `SIGTERM`: Tín hiệu yêu cầu dừng.
+- `SIGTERM`: Tín hiệu yêu cầu dừng chương trình.
+- `EXIT`: Hành động sẽ được thực hiện khi script kết thúc.
+- `DEBUG`: Hành động sẽ được thực hiện trước mỗi lệnh trong script.
 
-## Common Examples
+## Ví dụ phổ biến
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `trap`:
 
-### Bắt tín hiệu SIGINT
-Dưới đây là ví dụ về cách sử dụng `trap` để bắt tín hiệu ngắt:
+1. **Bắt tín hiệu ngắt (Ctrl+C)**:
+   ```csh
+   trap 'echo "Script bị ngắt"; exit' SIGINT
+   while true; do
+       echo "Đang chạy..."
+       sleep 1
+   end
+   ```
 
-```bash
-trap 'echo "Script bị ngắt"; exit' SIGINT
-while true; do
-    echo "Đang chạy..."
-    sleep 1
-done
-```
+2. **Thực hiện hành động khi script kết thúc**:
+   ```csh
+   trap 'echo "Script đã kết thúc."' EXIT
+   echo "Chạy một số lệnh..."
+   ```
 
-### Dọn dẹp tài nguyên trước khi thoát
-Trong ví dụ này, chúng ta sẽ dọn dẹp tài nguyên khi script kết thúc:
+3. **Bắt tín hiệu dừng**:
+   ```csh
+   trap 'echo "Nhận tín hiệu dừng"; exit' SIGTERM
+   while true; do
+       echo "Chạy liên tục..."
+       sleep 2
+   end
+   ```
 
-```bash
-trap 'echo "Đang dọn dẹp..."; rm -f temp_file.txt; exit' EXIT
-touch temp_file.txt
-echo "Script đang chạy..."
-sleep 5
-```
-
-### Bắt nhiều tín hiệu
-Bạn có thể bắt nhiều tín hiệu cùng một lúc:
-
-```bash
-trap 'echo "Đã nhận tín hiệu ngắt"; exit' SIGINT SIGTERM
-while true; do
-    echo "Đang chạy..."
-    sleep 1
-done
-```
-
-## Tips
-- Sử dụng `trap` để đảm bảo rằng các tài nguyên được dọn dẹp đúng cách khi script kết thúc.
-- Kiểm tra các tín hiệu có sẵn bằng cách sử dụng `trap -l` để biết tín hiệu nào có thể được bắt.
-- Đặt lệnh `trap` ở đầu script để đảm bảo rằng nó luôn hoạt động từ đầu đến cuối.
+## Mẹo
+- Sử dụng `trap` để đảm bảo rằng các tài nguyên được giải phóng hoặc các hành động cần thiết được thực hiện khi script kết thúc.
+- Đặt các lệnh `trap` ở đầu script để đảm bảo rằng chúng luôn được thiết lập trước khi bất kỳ lệnh nào khác được thực hiện.
+- Kiểm tra các tín hiệu có thể được sử dụng với lệnh `trap` bằng cách tham khảo tài liệu hoặc sử dụng lệnh `kill -l` để xem danh sách các tín hiệu.

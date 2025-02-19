@@ -1,43 +1,42 @@
-# [Linux] Bash tamamla kullanımı: Komutları tamamlamak için
+# [Linux] C Shell (csh) complete kullanım: Tamamlanmış komutları gösterir
 
 ## Genel Bakış
-`complete` komutu, Bash kabuğunda kullanıcı tanımlı komutlar için otomatik tamamlama işlevselliği sağlar. Bu, kullanıcıların belirli bir komutun argümanlarını veya seçeneklerini hızlı bir şekilde tamamlamasına yardımcı olur.
+`complete` komutu, C Shell (csh) ortamında, kullanıcıların yazmaya başladıkları komutların tamamlanmasını sağlamak için kullanılır. Bu komut, kullanıcıların daha hızlı ve verimli bir şekilde komut yazmalarına yardımcı olur.
 
 ## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
+Temel sözdizimi şu şekildedir:
 
-```bash
-complete [options] [arguments]
+```csh
+complete [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-o`: Tamamlamanın nasıl yapılacağını belirten seçenekler ekler.
-- `-F`: Belirtilen bir fonksiyonu tamamlamak için kullanır.
-- `-A`: Tamamlanacak argüman türünü belirtir (örneğin, dosya, kullanıcı adı).
+- `-c`: Tamamlanacak komutun adını belirtir.
+- `-d`: Tamamlanacak dizinleri gösterir.
+- `-f`: Dosya adlarını tamamlamak için kullanılır.
 
 ## Yaygın Örnekler
-1. **Basit bir komut için tamamlayıcı eklemek:**
-   ```bash
-   complete -o nospace mycommand
-   ```
-   Bu, `mycommand` için otomatik tamamlama işlevini etkinleştirir.
+Aşağıda `complete` komutunun bazı pratik örnekleri verilmiştir:
 
-2. **Bir fonksiyon kullanarak tamamlayıcı oluşturmak:**
-   ```bash
-   _myfunction() {
-       COMPREPLY=( $(compgen -W "option1 option2 option3" -- "${COMP_WORDS[1]}") )
-   }
-   complete -F _myfunction mycommand
-   ```
-   Bu, `mycommand` için `option1`, `option2`, ve `option3` seçeneklerini tamamlar.
+### Örnek 1: Basit Tamamlama
+```csh
+complete -c ls
+```
+Bu komut, `ls` komutunu tamamlamak için kullanılacak seçenekleri gösterir.
 
-3. **Dosya isimleri için tamamlayıcı eklemek:**
-   ```bash
-   complete -A file mycommand
-   ```
-   Bu, `mycommand` için dosya isimleri ile otomatik tamamlama sağlar.
+### Örnek 2: Dizin Tamamlama
+```csh
+complete -d cd
+```
+Bu komut, `cd` komutunu kullanarak mevcut dizinleri tamamlamak için seçenekleri listeler.
+
+### Örnek 3: Dosya Tamamlama
+```csh
+complete -f cp
+```
+Bu komut, `cp` komutunu kullanarak dosya adlarını tamamlamak için seçenekleri gösterir.
 
 ## İpuçları
-- Tamamlayıcıları tanımlarken, kullanıcıların hangi argümanları beklediğini düşünerek seçenekleri belirleyin.
-- Tamamlayıcı fonksiyonlarınızı test edin, böylece beklenmedik hatalarla karşılaşmazsınız.
-- Tamamlayıcıları tanımlarken, kullanıcı deneyimini artırmak için açıklayıcı ve anlamlı seçenekler kullanın.
+- `complete` komutunu kullanmadan önce hangi komutları tamamlamak istediğinizi belirleyin.
+- Tamamlanacak komutlar için doğru seçenekleri kullanarak daha verimli bir deneyim elde edebilirsiniz.
+- Komutları yazarken, tamamlamanın nasıl çalıştığını anlamak için `complete` komutunu sık sık deneyin.

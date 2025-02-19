@@ -1,59 +1,50 @@
-# [Linux] Bash bindkey Utilisation : Gérer les raccourcis clavier dans l'interface de ligne de commande
+# [Unix] C Shell (csh) bindkey : [configurer les touches de raccourci]
 
 ## Overview
-La commande `bindkey` est utilisée dans les environnements de ligne de commande, comme Zsh, pour gérer les raccourcis clavier. Elle permet de lier des combinaisons de touches à des commandes spécifiques, facilitant ainsi l'interaction avec le terminal.
+La commande `bindkey` dans C Shell (csh) permet de configurer les touches de raccourci pour les commandes dans le shell. Elle est utile pour personnaliser l'expérience utilisateur en attribuant des actions spécifiques à des combinaisons de touches.
 
 ## Usage
 La syntaxe de base de la commande `bindkey` est la suivante :
 
-```bash
+```csh
 bindkey [options] [arguments]
 ```
 
 ## Common Options
-- `-l` : Liste toutes les liaisons de touches actuelles.
-- `-e` : Active le mode Emacs pour les liaisons de touches.
-- `-v` : Active le mode Vi pour les liaisons de touches.
-- `-s` : Permet de lier une séquence de touches à une chaîne de caractères.
+- `-e` : Active le mode Emacs pour les raccourcis.
+- `-v` : Active le mode Vi pour les raccourcis.
+- `-s` : Permet de lier une séquence de touches à une commande.
+- `-d` : Supprime une liaison de touche existante.
 
 ## Common Examples
+Voici quelques exemples pratiques de l'utilisation de `bindkey` :
 
-### Lister les liaisons de touches
-Pour afficher toutes les liaisons de touches actuelles, utilisez :
+1. **Activer le mode Emacs :**
+   ```csh
+   bindkey -e
+   ```
 
-```bash
-bindkey -l
-```
+2. **Activer le mode Vi :**
+   ```csh
+   bindkey -v
+   ```
 
-### Passer en mode Emacs
-Pour activer le mode Emacs, exécutez :
+3. **Lier une touche à une commande :**
+   ```csh
+   bindkey '^X' 'ls -l'
+   ```
 
-```bash
-bindkey -e
-```
+4. **Supprimer une liaison de touche :**
+   ```csh
+   bindkey -d '^X'
+   ```
 
-### Passer en mode Vi
-Pour activer le mode Vi, exécutez :
-
-```bash
-bindkey -v
-```
-
-### Lier une touche à une commande
-Pour lier la combinaison de touches `Ctrl + x` à la commande `ls`, utilisez :
-
-```bash
-bindkey '^x' 'ls'
-```
-
-### Lier une séquence de touches
-Pour lier `Ctrl + g` à la chaîne de caractères "Hello, World!", utilisez :
-
-```bash
-bindkey -s '^g' 'Hello, World!'
-```
+5. **Lier une séquence de touches à une commande :**
+   ```csh
+   bindkey -s 'jj' 'exit\n'
+   ```
 
 ## Tips
-- Pensez à sauvegarder vos liaisons de touches dans votre fichier de configuration (`.zshrc`) pour qu'elles soient disponibles à chaque démarrage du terminal.
-- Utilisez des combinaisons de touches qui ne sont pas déjà utilisées par d'autres commandes pour éviter les conflits.
-- Testez vos liaisons de touches après les avoir définies pour vous assurer qu'elles fonctionnent comme prévu.
+- Pensez à sauvegarder vos configurations de `bindkey` dans votre fichier de démarrage pour qu'elles soient appliquées à chaque session.
+- Utilisez `bindkey` sans arguments pour afficher toutes les liaisons de touches actuelles.
+- Expérimentez avec différentes liaisons pour trouver celles qui améliorent votre efficacité dans le shell.

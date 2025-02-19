@@ -1,53 +1,48 @@
-# [Linux] Bash kill Usage: Terminate processes
+# [Linux] C Shell (csh) kill用法: Terminate processes
 
 ## Overview
-The `kill` command in Bash is used to send signals to processes, primarily to terminate them. It allows users to control running processes by specifying their process ID (PID) and the type of signal they wish to send.
+The `kill` command in C Shell (csh) is used to send signals to processes, typically to terminate them. It allows users to manage running processes by specifying their process IDs (PIDs) or by using other identifiers.
 
 ## Usage
 The basic syntax of the `kill` command is as follows:
 
-```bash
+```
 kill [options] [arguments]
 ```
 
 ## Common Options
-- `-l`: Lists all signal names.
-- `-s SIGNAL`: Specifies the signal to send (default is TERM).
-- `-n NUMBER`: Sends the signal corresponding to the specified number.
-- `-p`: Suppresses the output of the command, useful for scripting.
+- `-l`: List all signal names.
+- `-s SIGNAL`: Specify the signal to send (e.g., `TERM`, `KILL`).
+- `-n NUMBER`: Send the signal specified by the signal number.
 
 ## Common Examples
-1. **Terminate a process by PID**:
-   To terminate a process with PID 1234:
-   ```bash
+Here are some practical examples of using the `kill` command:
+
+1. **Terminate a process by PID:**
+   ```csh
    kill 1234
    ```
+   This command sends the default `TERM` signal to the process with PID 1234.
 
-2. **Send a specific signal**:
-   To send the SIGKILL signal to a process with PID 5678:
-   ```bash
-   kill -s KILL 5678
+2. **Forcefully kill a process:**
+   ```csh
+   kill -9 1234
    ```
+   This command sends the `KILL` signal to the process with PID 1234, forcing it to terminate immediately.
 
-3. **List all available signals**:
-   To display all signal names:
-   ```bash
+3. **Send a specific signal:**
+   ```csh
+   kill -s HUP 1234
+   ```
+   This command sends the `HUP` (hang up) signal to the process with PID 1234.
+
+4. **List all available signals:**
+   ```csh
    kill -l
    ```
-
-4. **Terminate multiple processes**:
-   To terminate processes with PIDs 2345 and 6789:
-   ```bash
-   kill 2345 6789
-   ```
-
-5. **Using signal numbers**:
-   To send the signal number 9 (SIGKILL) to a process with PID 1234:
-   ```bash
-   kill -n 9 1234
-   ```
+   This command displays a list of all signal names that can be used with the `kill` command.
 
 ## Tips
-- Always try to use the default TERM signal before resorting to KILL, as it allows processes to clean up.
+- Always try to use the default `TERM` signal before resorting to `KILL`, as it allows processes to clean up resources.
 - Use `ps` or `top` commands to find the PID of the process you want to terminate.
-- Be cautious when terminating processes, especially system processes, as it may lead to instability.
+- Be cautious when killing processes, especially system processes, as it may lead to system instability.

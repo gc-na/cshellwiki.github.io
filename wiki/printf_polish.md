@@ -1,51 +1,48 @@
-# [Linux] Bash printf użycie: Formatowanie i wyświetlanie tekstu
+# [Linux] C Shell (csh) printf użycie: formatowanie i wyświetlanie danych
 
 ## Overview
-Polecenie `printf` w Bashu służy do formatowania i wyświetlania tekstu na standardowym wyjściu. Jest to bardziej zaawansowana wersja polecenia `echo`, która umożliwia precyzyjne kontrolowanie formatu wyjścia.
+Polecenie `printf` w C Shell (csh) służy do formatowania i wyświetlania danych na standardowym wyjściu. Umożliwia precyzyjne kontrolowanie, jak dane są prezentowane, co jest szczególnie przydatne w skryptach i automatyzacji.
 
 ## Usage
 Podstawowa składnia polecenia `printf` jest następująca:
 
-```bash
+```csh
 printf [opcje] [argumenty]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji dla polecenia `printf`:
-
-- `-v` : Przypisuje sformatowany tekst do zmiennej.
-- `-f` : Umożliwia użycie formatu specyfikacji.
-- `--help` : Wyświetla pomoc dotyczącą użycia polecenia.
+- `-v`: Używane do przypisania sformatowanego wyniku do zmiennej.
+- `-f`: Określa format danych do wyświetlenia.
+- `-n`: Nie dodaje nowej linii na końcu wyjścia.
 
 ## Common Examples
-
-### Przykład 1: Proste wyświetlenie tekstu
-```bash
-printf "Witaj, świecie!\n"
+### Przykład 1: Proste formatowanie tekstu
+```csh
+printf "Witaj, %s!\n" "Świecie"
 ```
+Ten przykład wyświetli: `Witaj, Świecie!`
 
 ### Przykład 2: Formatowanie liczb
-```bash
-printf "Liczba: %d\n" 42
+```csh
+printf "Liczba: %.2f\n" 3.14159
 ```
+To polecenie wyświetli: `Liczba: 3.14`
 
-### Przykład 3: Wyświetlanie z wypełnieniem
-```bash
-printf "|%10s|\n" "tekst"
+### Przykład 3: Użycie zmiennej
+```csh
+set name = "Jan"
+printf "Cześć, %s!\n" $name
 ```
+Wynik to: `Cześć, Jan!`
 
 ### Przykład 4: Przypisanie do zmiennej
-```bash
-printf -v zmienna "Wartość: %s" "test"
-echo "$zmienna"
+```csh
+printf -v result "Wynik: %d" 42
+echo $result
 ```
-
-### Przykład 5: Użycie wielu argumentów
-```bash
-printf "Imię: %s, Wiek: %d\n" "Jan" 30
-```
+To przypisze `Wynik: 42` do zmiennej `result` i wyświetli ją.
 
 ## Tips
-- Używaj `\n` do dodawania nowych linii w wyjściu.
-- Zawsze sprawdzaj, czy odpowiedni format specyfikacji jest użyty dla typów danych, aby uniknąć błędów.
-- Możesz używać `printf` w skryptach do generowania bardziej złożonych raportów i formatów wyjściowych.
+- Używaj odpowiednich specyfikatorów formatu, aby uzyskać pożądany wynik.
+- Testuj formatowanie w prostych skryptach, aby upewnić się, że działa zgodnie z oczekiwaniami.
+- Zwracaj uwagę na typy danych, aby uniknąć błędów w formatowaniu.

@@ -1,55 +1,44 @@
-# [Linux] Bash cryptsetup użycie: Zarządzanie szyfrowaniem dysków
+# [Linux] C Shell (csh) cryptsetup użycie: Zarządzanie szyfrowaniem dysków
 
 ## Overview
-Polecenie `cryptsetup` służy do zarządzania szyfrowaniem dysków w systemach Linux. Umożliwia tworzenie, otwieranie, zamykanie oraz konfigurowanie szyfrowanych wolumenów, co jest kluczowe dla zabezpieczania danych.
+Polecenie `cryptsetup` jest używane do zarządzania szyfrowaniem dysków w systemach Linux. Umożliwia tworzenie, otwieranie, zamykanie oraz zarządzanie zaszyfrowanymi woluminami, co zapewnia dodatkowe bezpieczeństwo danych.
 
 ## Usage
 Podstawowa składnia polecenia `cryptsetup` jest następująca:
 
-```bash
+```
 cryptsetup [opcje] [argumenty]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji w `cryptsetup`:
-
-- `luksFormat`: Szyfruje nowy wolumen w formacie LUKS.
-- `luksOpen`: Otwiera istniejący zaszyfrowany wolumen.
-- `luksClose`: Zamyka otwarty zaszyfrowany wolumen.
-- `status`: Wyświetla status zaszyfrowanego wolumenu.
-- `remove`: Usuwa zaszyfrowany wolumen.
+- `luks`: Używane do pracy z LUKS (Linux Unified Key Setup), standardem szyfrowania w systemach Linux.
+- `create`: Tworzy nowy zaszyfrowany wolumin.
+- `open`: Otwiera istniejący zaszyfrowany wolumin.
+- `close`: Zamyka otwarty zaszyfrowany wolumin.
+- `status`: Wyświetla status zaszyfrowanego woluminu.
 
 ## Common Examples
+1. **Tworzenie nowego zaszyfrowanego woluminu:**
+   ```bash
+   cryptsetup luksFormat /dev/sdX
+   ```
 
-### Tworzenie nowego zaszyfrowanego wolumenu
-Aby utworzyć nowy zaszyfrowany wolumen w formacie LUKS, użyj polecenia:
+2. **Otwieranie zaszyfrowanego woluminu:**
+   ```bash
+   cryptsetup luksOpen /dev/sdX my_encrypted_volume
+   ```
 
-```bash
-cryptsetup luksFormat /dev/sdX
-```
+3. **Zamykanie zaszyfrowanego woluminu:**
+   ```bash
+   cryptsetup luksClose my_encrypted_volume
+   ```
 
-### Otwieranie zaszyfrowanego wolumenu
-Aby otworzyć istniejący zaszyfrowany wolumen, użyj:
-
-```bash
-cryptsetup luksOpen /dev/sdX my_encrypted_volume
-```
-
-### Zamykanie zaszyfrowanego wolumenu
-Aby zamknąć otwarty zaszyfrowany wolumen, użyj:
-
-```bash
-cryptsetup luksClose my_encrypted_volume
-```
-
-### Sprawdzanie statusu wolumenu
-Aby sprawdzić status zaszyfrowanego wolumenu, użyj:
-
-```bash
-cryptsetup status my_encrypted_volume
-```
+4. **Sprawdzanie statusu zaszyfrowanego woluminu:**
+   ```bash
+   cryptsetup status my_encrypted_volume
+   ```
 
 ## Tips
-- Zawsze twórz kopie zapasowe kluczy szyfrujących i ważnych danych przed manipulowaniem zaszyfrowanymi wolumenami.
-- Używaj silnych haseł do szyfrowania, aby zwiększyć bezpieczeństwo danych.
-- Regularnie aktualizuj oprogramowanie, aby korzystać z najnowszych poprawek bezpieczeństwa.
+- Zawsze wykonuj kopię zapasową kluczy szyfrujących i ważnych danych przed użyciem `cryptsetup`.
+- Używaj silnych haseł do szyfrowania, aby zwiększyć bezpieczeństwo.
+- Regularnie sprawdzaj status swoich zaszyfrowanych woluminów, aby upewnić się, że są one w dobrym stanie.

@@ -1,44 +1,51 @@
-# [Linux] Bash expand gebruik: Tekst met spaties uitbreiden
+# [Linux] C Shell (csh) expand gebruik: Tekst met spaties uitbreiden
 
 ## Overzicht
-Het `expand` commando in Bash wordt gebruikt om tabs in een tekstbestand te vervangen door spaties. Dit is handig voor het uniformiseren van de opmaak van tekstbestanden, vooral wanneer ze worden weergegeven in omgevingen die tabs niet goed ondersteunen.
+De `expand`-opdracht in C Shell (csh) wordt gebruikt om tabs in tekstbestanden te vervangen door spaties. Dit is handig voor het formatteren van tekst zodat deze beter leesbaar is in omgevingen waar tabs niet goed worden weergegeven.
 
 ## Gebruik
-De basis syntaxis van het `expand` commando is als volgt:
+De basis syntaxis van de `expand`-opdracht is als volgt:
 
-```bash
+```csh
 expand [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-t, --tabs=TABSTOPS`: Stel de tabstops in op de opgegeven waarden. Standaard is dit 8 spaties.
-- `-i, --initial`: Vervang alleen tabs die worden gevolgd door een spatie of een nieuw regel.
-- `-n, --no-tabs`: Voorkom dat tabs worden vervangen door spaties.
+- `-t N` : Stel de breedte van de tab in op N spaties.
+- `-i` : Negeer tabs in de eerste kolom.
+- `-n` : Geen spaties toevoegen aan de output, maar alleen de tabs vervangen.
 
 ## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van het `expand` commando:
 
-1. **Basis gebruik**: Vervang tabs door spaties in een bestand.
-   ```bash
-   expand bestand.txt
-   ```
+### Voorbeeld 1: Basis gebruik
+Vervang tabs in een bestand genaamd `voorbeeld.txt` door spaties met de standaardinstellingen.
 
-2. **Tabstops instellen**: Vervang tabs door spaties met aangepaste tabstops.
-   ```bash
-   expand -t 4 bestand.txt
-   ```
+```csh
+expand voorbeeld.txt
+```
 
-3. **Initial tabs vervangen**: Vervang alleen tabs die gevolgd worden door een spatie.
-   ```bash
-   expand -i bestand.txt
-   ```
+### Voorbeeld 2: Tabs vervangen met een specifieke breedte
+Vervang tabs door 4 spaties in `voorbeeld.txt`.
 
-4. **Resultaat naar een nieuw bestand schrijven**: Sla de output op in een nieuw bestand.
-   ```bash
-   expand bestand.txt > uitgebreid_bestand.txt
-   ```
+```csh
+expand -t 4 voorbeeld.txt
+```
+
+### Voorbeeld 3: Tabs in de eerste kolom negeren
+Vervang tabs in `voorbeeld.txt`, maar negeer tabs in de eerste kolom.
+
+```csh
+expand -i voorbeeld.txt
+```
+
+### Voorbeeld 4: Geen spaties toevoegen
+Vervang tabs in `voorbeeld.txt` zonder extra spaties in de output.
+
+```csh
+expand -n voorbeeld.txt
+```
 
 ## Tips
-- Gebruik de optie `-t` om de tabstops aan te passen aan de vereisten van je project of omgeving.
-- Controleer altijd de output van het `expand` commando door het naar de terminal te sturen voordat je het naar een bestand schrijft, om te zorgen dat de opmaak correct is.
-- Combineer `expand` met andere commando's zoals `cat` of `less` voor een betere weergave van bestanden met tabs.
+- Gebruik de `-t` optie om de tabgrootte aan te passen aan de vereisten van uw project of omgeving.
+- Combineer `expand` met andere commando's zoals `cat` of `more` om de output direct in de terminal te bekijken.
+- Controleer altijd de output van `expand` met een teksteditor om te zien of de opmaak naar wens is.

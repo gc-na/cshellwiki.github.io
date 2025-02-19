@@ -1,51 +1,58 @@
-# [Linux] Bash lsblk Uso: Muestra información sobre dispositivos de bloques
+# [Linux] C Shell (csh) lsblk Uso: [listar bloques de dispositivos]
 
 ## Overview
-El comando `lsblk` se utiliza para listar información sobre todos los dispositivos de bloques disponibles en el sistema, como discos duros, particiones y dispositivos de almacenamiento extraíbles. Este comando es útil para obtener una visión general de la estructura de almacenamiento en un sistema Linux.
+El comando `lsblk` se utiliza para listar todos los dispositivos de bloques en el sistema, como discos duros, particiones y dispositivos de almacenamiento extraíbles. Este comando proporciona una vista clara de la estructura de almacenamiento, mostrando información como el tamaño y el tipo de cada dispositivo.
 
 ## Usage
 La sintaxis básica del comando `lsblk` es la siguiente:
 
-```bash
+```csh
 lsblk [opciones] [argumentos]
 ```
 
 ## Common Options
-- `-a`, `--all`: Muestra todos los dispositivos, incluidos los que no tienen un sistema de archivos.
-- `-f`, `--fs`: Muestra información sobre los sistemas de archivos en los dispositivos.
-- `-l`, `--list`: Muestra la salida en formato de lista en lugar de árbol.
-- `-o`, `--output`: Especifica las columnas que se deben mostrar en la salida.
-- `-p`, `--paths`: Muestra las rutas completas de los dispositivos.
+Aquí hay algunas opciones comunes que se pueden utilizar con `lsblk`:
+
+- `-a` o `--all`: Muestra todos los dispositivos, incluidos los que no están montados.
+- `-f` o `--fs`: Muestra información sobre el sistema de archivos de cada dispositivo.
+- `-l` o `--list`: Muestra la salida en formato de lista en lugar de árbol.
+- `-o` o `--output`: Permite especificar qué columnas mostrar en la salida.
+- `-n` o `--noheadings`: Suprime los encabezados de las columnas en la salida.
 
 ## Common Examples
-Aquí hay algunos ejemplos prácticos del uso de `lsblk`:
+A continuación, se presentan algunos ejemplos prácticos del uso de `lsblk`:
 
-1. **Listar todos los dispositivos de bloques:**
-   ```bash
+1. **Listar todos los dispositivos de bloques**:
+   ```csh
    lsblk
    ```
 
-2. **Listar todos los dispositivos, incluidos los que no tienen sistema de archivos:**
-   ```bash
+2. **Listar todos los dispositivos, incluidos los no montados**:
+   ```csh
    lsblk -a
    ```
 
-3. **Mostrar información sobre los sistemas de archivos:**
-   ```bash
+3. **Mostrar información del sistema de archivos**:
+   ```csh
    lsblk -f
    ```
 
-4. **Mostrar la salida en formato de lista:**
-   ```bash
+4. **Mostrar la salida en formato de lista**:
+   ```csh
    lsblk -l
    ```
 
-5. **Especificar columnas para mostrar:**
-   ```bash
-   lsblk -o NAME,SIZE,TYPE,MOUNTPOINT
+5. **Especificar columnas a mostrar**:
+   ```csh
+   lsblk -o NAME,SIZE,TYPE
+   ```
+
+6. **Suprimir encabezados de columnas**:
+   ```csh
+   lsblk -n
    ```
 
 ## Tips
-- Utiliza `lsblk -f` para obtener información detallada sobre los sistemas de archivos, lo que puede ser útil al gestionar particiones.
+- Utiliza la opción `-f` para obtener información adicional sobre los sistemas de archivos, lo que puede ser útil para la administración de discos.
 - Combina `lsblk` con otros comandos como `grep` para filtrar la salida y encontrar dispositivos específicos.
-- Recuerda que `lsblk` no requiere privilegios de superusuario, lo que lo hace accesible para todos los usuarios en el sistema.
+- Familiarízate con la salida del comando para poder identificar rápidamente los dispositivos que necesitas gestionar.

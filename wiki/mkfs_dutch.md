@@ -1,45 +1,45 @@
-# [Linux] Bash mkfs gebruik: Maak een bestandssysteem aan
+# [Linux] C Shell (csh) mkfs gebruik: Schijfbestandsysteem maken
 
 ## Overzicht
-De `mkfs` (make filesystem) opdracht in Bash wordt gebruikt om een nieuw bestandssysteem te creëren op een specifieke schijf of partitie. Dit is een essentiële stap bij het voorbereiden van opslagmedia voor gebruik in een Linux-omgeving.
+De `mkfs` (make filesystem) opdracht wordt gebruikt om een bestandssysteem te creëren op een schijf of partitie. Dit is een essentiële stap bij het voorbereiden van opslagmedia voor gebruik in een besturingssysteem.
 
 ## Gebruik
 De basis syntaxis van de `mkfs` opdracht is als volgt:
 
-```bash
+```csh
 mkfs [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- `-t, --type`: Specificeert het type bestandssysteem (bijv. ext4, xfs).
-- `-L, --label`: Stelt een label in voor het bestandssysteem.
-- `-n, --no-progress`: Voorkomt dat voortgangsinformatie wordt weergegeven tijdens het maken van het bestandssysteem.
-- `-V, --verbose`: Geeft gedetailleerde informatie weer tijdens de uitvoering.
+## Veelvoorkomende Opties
+- `-t <type>`: Specificeert het type bestandssysteem dat moet worden gemaakt (bijv. ext4, vfat).
+- `-L <label>`: Geeft een label op voor het bestandssysteem.
+- `-n`: Voorkomt dat het bestandssysteem wordt gemonteerd, maar maakt het wel aan.
+- `-V`: Toont gedetailleerde informatie over het proces.
 
-## Veelvoorkomende voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van de `mkfs` opdracht:
+## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van `mkfs`:
 
-1. **Een ext4 bestandssysteem maken op /dev/sdb1**:
-   ```bash
-   mkfs.ext4 /dev/sdb1
+1. Maak een ext4 bestandssysteem op `/dev/sdb1`:
+   ```csh
+   mkfs -t ext4 /dev/sdb1
    ```
 
-2. **Een xfs bestandssysteem maken met een label**:
-   ```bash
-   mkfs.xfs -L mijn_label /dev/sdc1
+2. Maak een vfat bestandssysteem met een label "DATA":
+   ```csh
+   mkfs -t vfat -L DATA /dev/sdc1
    ```
 
-3. **Een FAT32 bestandssysteem maken**:
-   ```bash
-   mkfs.vfat /dev/sdd1
+3. Maak een bestandssysteem zonder het te mounten:
+   ```csh
+   mkfs -n /dev/sdd1
    ```
 
-4. **Een ext4 bestandssysteem maken zonder voortgangsinformatie**:
-   ```bash
-   mkfs.ext4 -n /dev/sde1
+4. Toon gedetailleerde informatie tijdens het maken van een ext3 bestandssysteem:
+   ```csh
+   mkfs -t ext3 -V /dev/sde1
    ```
 
 ## Tips
-- Zorg ervoor dat je de juiste schijf of partitie selecteert voordat je `mkfs` uitvoert, omdat deze opdracht alle gegevens op de geselecteerde schijf of partitie zal wissen.
-- Maak altijd een back-up van belangrijke gegevens voordat je een bestandssysteem aanmaakt.
-- Gebruik de `-V` optie om meer inzicht te krijgen in wat er tijdens het proces gebeurt, vooral als je nieuw bent met deze opdracht.
+- Zorg ervoor dat je de juiste schijf of partitie selecteert, want het gebruik van `mkfs` zal alle gegevens op die schijf of partitie wissen.
+- Maak altijd een back-up van belangrijke gegevens voordat je een nieuw bestandssysteem aanmaakt.
+- Controleer of het bestandssysteem dat je wilt maken compatibel is met je besturingssysteem en de toepassingen die je gebruikt.

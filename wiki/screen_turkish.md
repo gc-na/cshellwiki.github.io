@@ -1,49 +1,44 @@
-# [Linux] Bash screen Kullanımı: Terminal oturumlarını yönetmek
+# [Linux] C Shell (csh) ekran komutu: Çoklu oturum yönetimi
 
-## Overview
-`screen` komutu, birden fazla terminal oturumunu yönetmenizi sağlayan bir araçtır. Bu komut sayesinde, terminal oturumlarınızı arka planda çalıştırabilir, oturumlar arasında geçiş yapabilir ve bağlantınız kesilse bile işlemlerinizi sürdürebilirsiniz.
+## Genel Bakış
+`screen` komutu, birden fazla terminal oturumu oluşturmanıza ve yönetmenize olanak tanır. Bu sayede, uzun süren işlemleri arka planda çalıştırabilir ve oturumlar arasında geçiş yapabilirsiniz.
 
-## Usage
-Temel sözdizimi şu şekildedir:
+## Kullanım
+Temel sözdizimi aşağıdaki gibidir:
 ```bash
-screen [options] [arguments]
+screen [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `-S <session_name>`: Yeni bir oturum oluştururken özel bir isim vermek için kullanılır.
-- `-d -r`: Ayrılmış bir oturumu yeniden bağlamak için kullanılır.
-- `-list`: Mevcut oturumların listesini gösterir.
-- `-X <command>`: Belirtilen oturuma bir komut gönderir.
+## Yaygın Seçenekler
+- `-S <isim>`: Yeni bir ekran oturumu oluşturur ve ona bir isim verir.
+- `-d -r <isim>`: Ayrılmış bir ekran oturumunu yeniden bağlar.
+- `-list`: Mevcut ekran oturumlarını listeler.
+- `-X <komut>`: Belirtilen oturuma bir komut gönderir.
 
-## Common Examples
-### Yeni bir oturum başlatma
+## Yaygın Örnekler
+Aşağıda `screen` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+
+### Yeni bir ekran oturumu oluşturma
 ```bash
-screen -S mysession
+screen -S benim_oturumum
 ```
-Bu komut, "mysession" adında yeni bir oturum başlatır.
 
-### Oturumu arka planda çalıştırma
-Oturumdan çıkmak için `Ctrl + A` ardından `D` tuşlarına basabilirsiniz. Bu, oturumu arka plana alır.
-
-### Ayrılmış oturumu yeniden bağlama
+### Ayrılmış bir ekran oturumunu yeniden bağlama
 ```bash
-screen -d -r mysession
+screen -d -r benim_oturumum
 ```
-Bu komut, "mysession" adındaki ayrılmış oturuma yeniden bağlanmanızı sağlar.
 
-### Mevcut oturumları listeleme
+### Mevcut ekran oturumlarını listeleme
 ```bash
 screen -list
 ```
-Bu komut, aktif olan tüm screen oturumlarını listeler.
 
-### Oturumdan çıkma
+### Belirli bir oturuma komut gönderme
 ```bash
-exit
+screen -S benim_oturumum -X stuff "ls\n"
 ```
-Bu komut, mevcut screen oturumunu kapatır.
 
-## Tips
-- Oturumlarınızı düzenli tutmak için anlamlı isimler kullanın.
-- Uzun süreli işlemler için screen kullanarak bağlantı kopmalarında işlerinizi kaybetmeyin.
-- Oturumlar arasında geçiş yaparken `Ctrl + A` ardından `"` tuşlarına basarak açık oturumları görüntüleyebilirsiniz.
+## İpuçları
+- Ekran oturumlarınızı isimlendirerek yönetimi kolaylaştırabilirsiniz.
+- Oturumdan çıkmak için `Ctrl+A` ardından `D` tuşlarına basarak oturumu ayrılmış hale getirebilirsiniz.
+- Ekran oturumlarınızı düzenli olarak kontrol edin, gereksiz oturumları kapatmayı unutmayın.

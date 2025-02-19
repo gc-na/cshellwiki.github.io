@@ -1,44 +1,46 @@
-# [Linux] Bash export Penggunaan: Mengatur Variabel Lingkungan
+# [Sistem Operasi] C Shell (csh) export Penggunaan: Mengatur Variabel Lingkungan
 
 ## Overview
-Perintah `export` dalam Bash digunakan untuk menetapkan variabel lingkungan yang dapat diakses oleh proses anak yang dijalankan dari shell saat ini. Dengan menggunakan `export`, Anda dapat membuat variabel yang sebelumnya hanya tersedia di shell saat ini menjadi tersedia untuk program lain yang dijalankan dari shell tersebut.
+Perintah `export` dalam C Shell (csh) digunakan untuk mengatur variabel lingkungan yang dapat diakses oleh proses anak. Ini memungkinkan pengguna untuk mendefinisikan variabel yang dapat digunakan oleh program lain yang dijalankan dalam sesi shell yang sama.
 
 ## Usage
-Berikut adalah sintaks dasar dari perintah `export`:
+Sintaks dasar dari perintah `export` adalah sebagai berikut:
 
-```bash
+```csh
 export [options] [arguments]
 ```
 
 ## Common Options
 - `-n`: Menghapus variabel dari daftar variabel yang diekspor.
 - `-p`: Menampilkan semua variabel yang diekspor saat ini.
-- `VAR=value`: Menetapkan nilai untuk variabel dan mengekspornya sekaligus.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan `export`:
+Berikut adalah beberapa contoh penggunaan perintah `export`:
 
-1. Menetapkan dan mengekspor variabel:
-   ```bash
-   export MY_VAR="Hello World"
+1. **Mengekspor Variabel Lingkungan**
+   ```csh
+   set MY_VAR="Hello, World!"
+   export MY_VAR
    ```
 
-2. Menampilkan semua variabel yang diekspor:
-   ```bash
-   export -p
+2. **Mengekspor Beberapa Variabel Sekaligus**
+   ```csh
+   set VAR1="Value1"
+   set VAR2="Value2"
+   export VAR1 VAR2
    ```
 
-3. Menghapus variabel dari ekspor:
-   ```bash
+3. **Menghapus Variabel dari Daftar Ekspor**
+   ```csh
    export -n MY_VAR
    ```
 
-4. Menetapkan dan mengekspor variabel dalam satu langkah:
-   ```bash
-   export PATH="$PATH:/usr/local/bin"
+4. **Menampilkan Variabel yang Diekspor**
+   ```csh
+   export -p
    ```
 
 ## Tips
-- Selalu periksa variabel yang diekspor dengan `export -p` untuk memastikan bahwa variabel yang Anda butuhkan tersedia.
-- Gunakan `unset VAR` untuk menghapus variabel jika Anda tidak lagi membutuhkannya.
-- Pastikan untuk mengekspor variabel sebelum menjalankan program yang membutuhkannya agar program tersebut dapat mengakses nilai variabel tersebut.
+- Pastikan untuk mengekspor variabel setelah mendefinisikannya agar dapat diakses oleh proses anak.
+- Gunakan `export -p` untuk memeriksa variabel yang telah diekspor, sehingga Anda dapat menghindari konflik nama.
+- Hati-hati saat menghapus variabel dengan `export -n`, karena ini akan menghilangkan akses ke variabel tersebut dalam proses anak.

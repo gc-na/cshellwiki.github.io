@@ -1,43 +1,43 @@
-# [Linux] Bash getconf Penggunaan: Mengambil informasi konfigurasi sistem
+# [Sistem Operasi] C Shell (csh) getconf: Mengambil informasi konfigurasi sistem
 
 ## Overview
-Perintah `getconf` digunakan untuk mengambil informasi konfigurasi sistem dan parameter runtime. Ini memungkinkan pengguna untuk mendapatkan nilai dari berbagai parameter yang berkaitan dengan sistem operasi, seperti ukuran maksimum file, jumlah maksimum proses, dan banyak lagi.
+Perintah `getconf` digunakan untuk mengambil informasi konfigurasi sistem dan parameter yang berkaitan dengan lingkungan eksekusi. Ini berguna untuk mendapatkan nilai-nilai yang dapat mempengaruhi perilaku program dan skrip.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `getconf`:
 
-```bash
+```csh
 getconf [options] [arguments]
 ```
 
 ## Common Options
 - `-a`: Menampilkan semua nilai konfigurasi yang tersedia.
-- `NAME`: Nama parameter yang ingin Anda ambil nilainya. Misalnya, `PAGE_SIZE` untuk ukuran halaman memori.
-  
+- `variable`: Nama variabel yang ingin Anda ambil nilainya, seperti `PAGE_SIZE` atau `ARG_MAX`.
+
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan `getconf`:
+Berikut adalah beberapa contoh penggunaan perintah `getconf`:
 
 1. **Menampilkan semua nilai konfigurasi:**
-   ```bash
+   ```csh
    getconf -a
    ```
 
-2. **Mengambil ukuran halaman memori:**
-   ```bash
+2. **Mengambil ukuran halaman sistem:**
+   ```csh
    getconf PAGE_SIZE
    ```
 
-3. **Mengetahui jumlah maksimum proses yang dapat dijalankan:**
-   ```bash
-   getconf _SC_CHILD_MAX
+3. **Mendapatkan jumlah maksimum argumen yang dapat diterima oleh program:**
+   ```csh
+   getconf ARG_MAX
    ```
 
-4. **Mendapatkan ukuran maksimum nama file:**
-   ```bash
-   getconf NAME_MAX /
+4. **Menampilkan nilai untuk variabel tertentu, misalnya `PATH` maksimal:**
+   ```csh
+   getconf PATH_MAX /
    ```
 
 ## Tips
-- Gunakan `getconf -a` untuk mendapatkan gambaran umum dari semua parameter yang tersedia di sistem Anda.
-- Pastikan untuk memeriksa dokumentasi sistem Anda untuk mengetahui parameter spesifik yang didukung oleh `getconf`.
-- Menggunakan `getconf` dapat membantu dalam pengembangan aplikasi yang memerlukan informasi spesifik tentang lingkungan eksekusi.
+- Gunakan `getconf -a` untuk menjelajahi semua opsi yang tersedia dan memahami lebih baik tentang konfigurasi sistem Anda.
+- Pastikan Anda memiliki izin yang tepat untuk menjalankan perintah ini, terutama jika Anda mencoba mengakses informasi sistem yang sensitif.
+- Perintah ini sangat berguna dalam skrip untuk menyesuaikan perilaku program berdasarkan konfigurasi sistem yang ada.

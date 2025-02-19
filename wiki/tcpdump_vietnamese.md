@@ -1,53 +1,44 @@
-# [Linux] Bash tcpdump Cách sử dụng: Ghi lại và phân tích lưu lượng mạng
+# [Hệ điều hành] C Shell (csh) tcpdump Cách sử dụng: Ghi lại và phân tích lưu lượng mạng
 
 ## Tổng quan
-Lệnh `tcpdump` là một công cụ mạnh mẽ trong Bash dùng để ghi lại và phân tích lưu lượng mạng. Nó cho phép người dùng xem các gói dữ liệu đang được gửi và nhận qua mạng, giúp trong việc chẩn đoán sự cố và bảo mật.
+Lệnh `tcpdump` được sử dụng để ghi lại và phân tích lưu lượng mạng trên máy tính. Nó cho phép người dùng xem các gói dữ liệu đang được gửi và nhận qua mạng, giúp trong việc chẩn đoán và khắc phục sự cố mạng.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `tcpdump` như sau:
-
-```bash
+```
 tcpdump [options] [arguments]
 ```
 
 ## Các tùy chọn phổ biến
-- `-i <interface>`: Chỉ định giao diện mạng để theo dõi (ví dụ: eth0, wlan0).
-- `-c <count>`: Số lượng gói tin sẽ được ghi lại trước khi dừng.
-- `-w <file>`: Ghi lại lưu lượng vào một tệp tin.
-- `-r <file>`: Đọc lưu lượng từ một tệp tin đã ghi.
+- `-i <interface>`: Chỉ định giao diện mạng mà bạn muốn theo dõi.
 - `-n`: Không phân giải địa chỉ IP thành tên miền.
-- `-v`, `-vv`, `-vvv`: Tăng cường mức độ chi tiết của thông tin được hiển thị.
+- `-v`: Hiển thị thông tin chi tiết hơn về các gói dữ liệu.
+- `-c <count>`: Dừng ghi lại sau khi nhận được số gói dữ liệu đã chỉ định.
+- `-w <file>`: Ghi lại lưu lượng vào một tệp tin.
 
-## Ví dụ phổ biến
-Dưới đây là một số ví dụ thực tế về cách sử dụng `tcpdump`:
+## Ví dụ thường gặp
+- Ghi lại tất cả lưu lượng trên giao diện mạng `eth0`:
+  ```bash
+  tcpdump -i eth0
+  ```
 
-1. Ghi lại tất cả lưu lượng trên giao diện mạng `eth0`:
-   ```bash
-   tcpdump -i eth0
-   ```
+- Ghi lại lưu lượng mà không phân giải tên miền:
+  ```bash
+  tcpdump -i eth0 -n
+  ```
 
-2. Ghi lại 10 gói tin và sau đó dừng:
-   ```bash
-   tcpdump -i eth0 -c 10
-   ```
+- Dừng ghi lại sau khi nhận được 10 gói dữ liệu:
+  ```bash
+  tcpdump -i eth0 -c 10
+  ```
 
-3. Ghi lại lưu lượng vào tệp tin `capture.pcap`:
-   ```bash
-   tcpdump -i eth0 -w capture.pcap
-   ```
-
-4. Đọc lưu lượng từ tệp tin `capture.pcap`:
-   ```bash
-   tcpdump -r capture.pcap
-   ```
-
-5. Ghi lại lưu lượng HTTP (cổng 80):
-   ```bash
-   tcpdump -i eth0 port 80
-   ```
+- Ghi lại lưu lượng vào tệp tin `capture.pcap`:
+  ```bash
+  tcpdump -i eth0 -w capture.pcap
+  ```
 
 ## Mẹo
-- Sử dụng tùy chọn `-n` để tăng tốc độ ghi lại bằng cách tránh phân giải tên miền.
-- Kiểm tra các giao diện mạng có sẵn bằng lệnh `tcpdump -D`.
-- Thực hiện lệnh với quyền `sudo` nếu cần thiết để có quyền truy cập vào các giao diện mạng.
-- Lưu trữ các tệp tin ghi lại để phân tích sau này, đặc biệt trong các tình huống bảo mật.
+- Hãy chắc chắn rằng bạn có quyền truy cập cần thiết để chạy `tcpdump`, thường là quyền root.
+- Sử dụng tùy chọn `-v` hoặc `-vv` để có thêm thông tin chi tiết về các gói dữ liệu.
+- Lưu lại các phiên ghi vào tệp tin để phân tích sau này, sử dụng tùy chọn `-w`.
+- Kiểm tra các giao thức cụ thể bằng cách sử dụng bộ lọc, ví dụ: `tcpdump -i eth0 tcp` để chỉ ghi lại lưu lượng TCP.

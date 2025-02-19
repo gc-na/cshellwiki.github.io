@@ -1,51 +1,43 @@
-# [Linux] Bash exec użycie: Wykonaj polecenie w bieżącym procesie
+# [Linux] C Shell (csh) exec użycie: Uruchamianie poleceń w nowym kontekście
 
 ## Overview
-Polecenie `exec` w Bashu służy do uruchamiania poleceń w bieżącym procesie powłoki, co oznacza, że zastępuje aktualny proces powłoki nowym procesem. Dzięki temu można zmieniać zachowanie powłoki bez konieczności uruchamiania nowej instancji.
+Polecenie `exec` w powłoce C Shell (csh) służy do uruchamiania innego programu, zastępując bieżący proces powłoki. Oznacza to, że po wykonaniu polecenia `exec`, powłoka nie wraca do poprzedniego stanu, a zamiast tego kontynuuje działanie nowego programu.
 
 ## Usage
 Podstawowa składnia polecenia `exec` jest następująca:
 
-```bash
+```
 exec [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-a` : Umożliwia określenie innej nazwy dla uruchamianego polecenia.
-- `-l` : Sprawia, że nowe polecenie jest uruchamiane jako login shell.
-- `--` : Umożliwia przekazanie argumentów do polecenia, które mogą zaczynać się od `-`.
+- `-l`: Uruchamia program jako login shell.
+- `-c`: Wykonuje polecenie w nowym kontekście, ale nie zmienia bieżącego procesu powłoki.
 
 ## Common Examples
+Przykłady użycia polecenia `exec`:
 
-### Przykład 1: Zastąpienie powłoki nowym poleceniem
-Zastąpienie bieżącej powłoki poleceniem `bash`:
+1. Uruchomienie programu `ls` w bieżącej powłoce:
+   ```csh
+   exec ls -l
+   ```
 
-```bash
-exec bash
-```
+2. Uruchomienie edytora tekstu `nano`:
+   ```csh
+   exec nano myfile.txt
+   ```
 
-### Przykład 2: Uruchomienie programu z inną nazwą
-Uruchomienie programu `ls` z inną nazwą:
+3. Uruchomienie skryptu powłoki:
+   ```csh
+   exec ./myscript.csh
+   ```
 
-```bash
-exec -a mylist ls -l
-```
-
-### Przykład 3: Uruchomienie skryptu jako login shell
-Uruchomienie skryptu `myscript.sh` jako login shell:
-
-```bash
-exec -l ./myscript.sh
-```
-
-### Przykład 4: Przekazywanie argumentów
-Uruchomienie polecenia `grep` z przekazaniem argumentów:
-
-```bash
-exec grep "tekst" plik.txt
-```
+4. Uruchomienie powłoki `bash` jako login shell:
+   ```csh
+   exec -l bash
+   ```
 
 ## Tips
-- Używaj `exec` z ostrożnością, ponieważ zastępuje bieżący proces powłoki, co oznacza, że po jego wykonaniu nie wrócisz do poprzedniego stanu.
-- Możesz używać `exec` do zwiększenia wydajności skryptów, eliminując potrzebę tworzenia nowych procesów.
-- Sprawdzaj, czy polecenie, które chcesz uruchomić, jest dostępne w systemie, aby uniknąć błędów.
+- Używaj `exec` do uruchamiania programów, gdy chcesz, aby proces powłoki został zastąpiony, co może być przydatne w skryptach.
+- Pamiętaj, że po użyciu `exec` nie wrócisz do poprzedniej powłoki, więc upewnij się, że chcesz zakończyć bieżącą sesję.
+- Testuj polecenia w bezpiecznym środowisku, aby uniknąć przypadkowego zamknięcia powłoki.

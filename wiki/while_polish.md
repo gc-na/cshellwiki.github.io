@@ -1,53 +1,60 @@
-# [Linux] Bash while użycie: Wykonywanie pętli do momentu spełnienia warunku
+# [Linux] C Shell (csh) while użycie: wykonuje polecenia w pętli
 
 ## Overview
-Polecenie `while` w Bashu służy do wykonywania bloku kodu tak długo, jak długo określony warunek jest spełniony. Jest to przydatne w sytuacjach, gdy chcemy powtarzać operacje, dopóki nie zajdzie zmiana w stanie lub wartości.
+Polecenie `while` w C Shell (csh) służy do wykonywania zestawu poleceń w pętli, dopóki określony warunek jest spełniony. Jest to przydatne w sytuacjach, gdy chcemy powtarzać operacje, aż do momentu, gdy warunek przestanie być prawdziwy.
 
 ## Usage
-Podstawowa składnia polecenia `while` wygląda następująco:
+Podstawowa składnia polecenia `while` jest następująca:
 
-```bash
-while [warunek]; do
-    # komendy do wykonania
-done
+```csh
+while (warunek)
+    polecenie1
+    polecenie2
+    ...
+end
 ```
 
 ## Common Options
-Polecenie `while` nie ma wielu opcji, ale oto kilka ważnych aspektów, które warto znać:
+Polecenie `while` w C Shell nie ma wielu opcji, ale można używać różnych warunków logicznych w celu kontrolowania pętli. Oto kilka przykładów warunków, które można stosować:
 
-- `-n`: Sprawdza, czy długość ciągu jest różna od zera.
-- `-z`: Sprawdza, czy długość ciągu jest równa zeru.
+- `-eq`: równe
+- `-ne`: różne
+- `-lt`: mniejsze
+- `-gt`: większe
+- `-le`: mniejsze lub równe
+- `-ge`: większe lub równe
 
 ## Common Examples
 
 ### Przykład 1: Liczenie od 1 do 5
-```bash
-count=1
-while [ $count -le 5 ]; do
-    echo "Liczba: $count"
-    ((count++))
-done
+```csh
+set i = 1
+while ($i <= 5)
+    echo "Liczba: $i"
+    @ i++
+end
 ```
 
-### Przykład 2: Odczyt z pliku linia po linii
-```bash
-while IFS= read -r line; do
-    echo "Linia: $line"
-done < plik.txt
+### Przykład 2: Oczekiwanie na plik
+```csh
+set filename = "plik.txt"
+while (! -e $filename)
+    echo "Czekam na plik $filename..."
+    sleep 2
+end
+echo "Plik $filename został znaleziony!"
 ```
 
-### Przykład 3: Pętla nieskończona z warunkiem przerwania
-```bash
-while true; do
-    echo "Naciśnij q, aby zakończyć."
-    read -r input
-    if [ "$input" = "q" ]; then
-        break
-    fi
-done
+### Przykład 3: Wykonywanie polecenia do momentu spełnienia warunku
+```csh
+set count = 0
+while ($count < 3)
+    echo "To jest powtórzenie numer: $count"
+    @ count++
+end
 ```
 
 ## Tips
-- Używaj `break` do przerywania pętli, gdy warunek nie jest już spełniony.
-- Zawsze upewnij się, że warunek w pętli `while` ma szansę na spełnienie, aby uniknąć pętli nieskończonej.
-- Możesz używać `sleep` w pętli, aby ograniczyć obciążenie CPU, gdy pętla wykonuje się często.
+- Upewnij się, że warunek w pętli `while` ma szansę na spełnienie, aby uniknąć nieskończonych pętli.
+- Używaj polecenia `sleep`, aby wprowadzić opóźnienie w pętli, co może być przydatne w przypadku oczekiwania na zasoby.
+- Zawsze testuj swoje skrypty w bezpiecznym środowisku, aby upewnić się, że działają zgodnie z oczekiwaniami.

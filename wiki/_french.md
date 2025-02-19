@@ -1,44 +1,62 @@
-# [Linux] Bash @ Utilisation : Exécuter des commandes en arrière-plan
+# [Linux] C Shell (csh) @ Utilisation : Exécute des calculs arithmétiques
 
 ## Overview
-La commande `@` permet d'exécuter des commandes en arrière-plan dans un terminal Bash. Cela permet de libérer le terminal pour d'autres tâches tout en laissant une commande s'exécuter sans interruption.
+La commande `@` dans C Shell (csh) est utilisée pour effectuer des calculs arithmétiques simples. Elle permet d'assigner des valeurs à des variables et de réaliser des opérations mathématiques de base.
 
 ## Usage
-La syntaxe de base de la commande est la suivante :
+La syntaxe de base de la commande `@` est la suivante :
 
-```bash
+```csh
 @ [options] [arguments]
 ```
 
 ## Common Options
-- `&` : Exécute la commande en arrière-plan.
-- `disown` : Supprime un travail de la liste des travaux, permettant à la commande de continuer à s'exécuter même après la fermeture du terminal.
+- `-v` : Affiche la valeur de la variable après l'opération.
+- `-n` : N'exécute pas la commande, mais affiche ce qui serait exécuté.
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de la commande `@` :
 
-1. Exécuter un script en arrière-plan :
-   ```bash
-   ./mon_script.sh &
-   ```
+### Exemple 1 : Addition
+Pour additionner deux nombres et assigner le résultat à une variable :
 
-2. Lancer un serveur web en arrière-plan :
-   ```bash
-   python -m http.server 8000 &
-   ```
+```csh
+set a = 5
+set b = 10
+@ c = $a + $b
+echo $c  # Affiche 15
+```
 
-3. Exécuter une commande longue et la détacher :
-   ```bash
-   long_running_command &
-   disown
-   ```
+### Exemple 2 : Soustraction
+Pour soustraire un nombre d'un autre :
 
-4. Exécuter plusieurs commandes en arrière-plan :
-   ```bash
-   command1 & command2 &
-   ```
+```csh
+set x = 20
+set y = 8
+@ z = $x - $y
+echo $z  # Affiche 12
+```
+
+### Exemple 3 : Multiplication
+Pour multiplier deux nombres :
+
+```csh
+set p = 4
+set q = 7
+@ r = $p * $q
+echo $r  # Affiche 28
+```
+
+### Exemple 4 : Division
+Pour diviser un nombre par un autre :
+
+```csh
+set num = 30
+set denom = 6
+@ result = $num / $denom
+echo $result  # Affiche 5
+```
 
 ## Tips
-- Utilisez `jobs` pour voir les tâches en cours d'exécution en arrière-plan.
-- Pour ramener une tâche en arrière-plan au premier plan, utilisez `fg %n`, où `n` est le numéro de la tâche.
-- Pensez à utiliser `nohup` pour éviter que la commande ne soit arrêtée lorsque vous fermez le terminal.
+- Utilisez des parenthèses pour contrôler l'ordre des opérations, par exemple : `@ result = ($a + $b) * $c`.
+- Assurez-vous que les variables sont initialisées avant de les utiliser dans des calculs.
+- Pour éviter les erreurs, vérifiez que vous ne divisez pas par zéro.

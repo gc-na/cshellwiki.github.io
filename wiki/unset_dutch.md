@@ -1,43 +1,49 @@
-# [Linux] Bash unset gebruik: Verwijder variabelen of functies
+# [Linux] C Shell (csh) unset gebruik: Verwijder variabelen of functies
 
 ## Overzicht
-De `unset` opdracht in Bash wordt gebruikt om variabelen of functies te verwijderen uit de huidige shell-omgeving. Dit kan handig zijn om geheugen vrij te maken of om ervoor te zorgen dat bepaalde instellingen niet meer beschikbaar zijn.
+De `unset` opdracht in C Shell (csh) wordt gebruikt om omgevingsvariabelen of functies te verwijderen. Dit is nuttig wanneer je niet langer een bepaalde variabele of functie nodig hebt en je deze wilt opruimen uit de huidige shell-omgeving.
 
 ## Gebruik
 De basis syntaxis van de `unset` opdracht is als volgt:
 
-```bash
+```
 unset [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
+## Veelvoorkomende Opties
 - `-f`: Verwijdert een functie.
 - `-v`: Verwijdert een variabele.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
 
-### Voorbeeld 1: Een variabele verwijderen
-Om een variabele genaamd `mijn_var` te verwijderen, gebruik je:
+### Voorbeeld 1: Verwijder een variabele
+Stel dat je een variabele genaamd `VAR` hebt ingesteld en je wilt deze verwijderen:
 
-```bash
-unset mijn_var
+```csh
+set VAR="Hallo Wereld"
+unset VAR
 ```
 
-### Voorbeeld 2: Een functie verwijderen
-Als je een functie genaamd `mijn_functie` hebt en deze wilt verwijderen, gebruik je:
+### Voorbeeld 2: Verwijder een functie
+Als je een functie genaamd `mijnFunctie` hebt gedefinieerd en je wilt deze verwijderen:
 
-```bash
-unset -f mijn_functie
+```csh
+function mijnFunctie {
+    echo "Dit is een functie."
+}
+unset -f mijnFunctie
 ```
 
-### Voorbeeld 3: Meerdere variabelen tegelijk verwijderen
-Je kunt ook meerdere variabelen in één opdracht verwijderen:
+### Voorbeeld 3: Verwijder meerdere variabelen
+Je kunt ook meerdere variabelen tegelijk verwijderen:
 
-```bash
-unset var1 var2 var3
+```csh
+set VAR1="Eerste"
+set VAR2="Tweede"
+unset VAR1 VAR2
 ```
 
 ## Tips
-- Controleer altijd of de variabele of functie bestaat voordat je `unset` gebruikt om fouten te voorkomen.
-- Gebruik `declare -p` om de huidige variabelen te bekijken voordat je ze verwijdert.
-- Wees voorzichtig met het verwijderen van variabelen die door andere scripts of functies worden gebruikt, om onverwachte fouten te voorkomen.
+- Controleer altijd of de variabele of functie die je wilt verwijderen daadwerkelijk bestaat om fouten te voorkomen.
+- Gebruik `set` om de huidige variabelen en functies te bekijken voordat je `unset` gebruikt.
+- Wees voorzichtig met het verwijderen van omgevingsvariabelen die door andere scripts of programma's kunnen worden gebruikt.

@@ -1,72 +1,50 @@
-# [Linux] Bash bzip2 gebruik: Bestanden comprimeren en decomprimeren
+# [Linux] C Shell (csh) bzip2 gebruik: Bestanden comprimeren en decomprimeren
 
 ## Overzicht
-De `bzip2` opdracht is een populaire tool in Linux en andere Unix-achtige besturingssystemen voor het comprimeren en decomprimeren van bestanden. Het gebruikt de Burrows-Wheeler-algoritme en biedt een goede compressieverhouding, waardoor het ideaal is voor het verkleinen van bestandsgrootte.
+De `bzip2` opdracht is een compressieprogramma dat bestanden verkleint door gebruik te maken van de Burrows-Wheeler-algoritme. Het is vooral nuttig voor het verminderen van de bestandsgrootte, waardoor opslag en overdracht efficiënter worden.
 
 ## Gebruik
 De basis syntaxis van de `bzip2` opdracht is als volgt:
 
-```bash
+```csh
 bzip2 [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-d`, `--decompress`: Decomprimeert een bestand.
-- `-k`, `--keep`: Houdt het originele bestand na compressie of decompressie.
-- `-f`, `--force`: Dwingt de opdracht om bestaande bestanden te overschrijven.
-- `-v`, `--verbose`: Geeft gedetailleerde informatie weer tijdens het compressie- of decompressieproces.
-- `-z`, `--compress`: Comprimeert een bestand (standaardgedrag).
+- `-d` : Decompressie van een bestand.
+- `-k` : Houd het originele bestand na compressie.
+- `-f` : Dwingt compressie, zelfs als het doelbestand al bestaat.
+- `-v` : Toon gedetailleerde informatie tijdens de compressie of decompressie.
 
 ## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van `bzip2`:
 
-### Bestanden comprimeren
-Om een bestand genaamd `voorbeeld.txt` te comprimeren, gebruik je:
-
-```bash
-bzip2 voorbeeld.txt
+### Een bestand comprimeren
+```csh
+bzip2 bestand.txt
 ```
 
-Dit zal het bestand `voorbeeld.txt` comprimeren en het resultaat zal `voorbeeld.txt.bz2` zijn.
-
-### Bestanden decomprimeren
-Om een gecomprimeerd bestand genaamd `voorbeeld.txt.bz2` te decomprimeren, gebruik je:
-
-```bash
-bzip2 -d voorbeeld.txt.bz2
+### Een bestand decomprimeren
+```csh
+bzip2 -d bestand.txt.bz2
 ```
 
-Of gebruik de alternatieve syntaxis:
-
-```bash
-bunzip2 voorbeeld.txt.bz2
+### Een bestand comprimeren en het origineel behouden
+```csh
+bzip2 -k bestand.txt
 ```
 
-### Meerdere bestanden comprimeren
-Je kunt meerdere bestanden tegelijk comprimeren door ze allemaal op te sommen:
-
-```bash
-bzip2 bestand1.txt bestand2.txt bestand3.txt
+### Dwing compressie, zelfs als het bestand al bestaat
+```csh
+bzip2 -f bestand.txt
 ```
 
-### Originele bestanden behouden
-Als je de originele bestanden wilt behouden na compressie, gebruik dan de `-k` optie:
-
-```bash
-bzip2 -k voorbeeld.txt
+### Gedetailleerde uitvoer tonen tijdens compressie
+```csh
+bzip2 -v bestand.txt
 ```
 
 ## Tips
-- Gebruik de `-v` optie voor meer inzicht in het compressieproces, vooral bij grote bestanden.
-- Voor het comprimeren van mappen, combineer `tar` met `bzip2` door het volgende commando te gebruiken:
-
-```bash
-tar -cvjf archief.tar.bz2 mapnaam
-```
-
-- Controleer de integriteit van gecomprimeerde bestanden met de `-t` optie:
-
-```bash
-bzip2 -t voorbeeld.txt.bz2
-```
-
-Met deze basisinformatie en voorbeelden kun je effectief gebruik maken van de `bzip2` opdracht in je dagelijkse taken.
+- Gebruik de `-k` optie als je het originele bestand wilt behouden voor toekomstig gebruik.
+- Controleer altijd de bestandsgrootte na compressie om te bevestigen dat de compressie effectief was.
+- Voor het decompressieproces is het handig om de `-d` optie te gebruiken, zodat je snel kunt terugkeren naar het originele bestand.

@@ -1,50 +1,44 @@
-# [Linux] Bash nohup Verwendung: Prozesse im Hintergrund ausführen
+# [Linux] C Shell (csh) nohup Verwendung: Befehle im Hintergrund ausführen
 
 ## Übersicht
-Der `nohup`-Befehl (no hang up) wird verwendet, um Prozesse im Hintergrund auszuführen, sodass sie auch dann weiterlaufen, wenn die Sitzung beendet wird. Dies ist besonders nützlich, wenn Sie lange laufende Aufgaben haben, die nicht unterbrochen werden sollen, wenn Sie sich abmelden.
+Der Befehl `nohup` (no hang up) wird verwendet, um Prozesse im Hintergrund auszuführen, die auch nach dem Abmelden des Benutzers weiterlaufen. Dies ist besonders nützlich, wenn lange laufende Aufgaben nicht unterbrochen werden sollen.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
-nohup [Optionen] [Befehle] &
+```csh
+nohup [Optionen] [Argumente]
 ```
 
-Das `&` am Ende des Befehls sorgt dafür, dass der Prozess im Hintergrund ausgeführt wird.
-
 ## Häufige Optionen
-- `-h`: Zeigt die Hilfe an und listet alle verfügbaren Optionen auf.
-- `-v`: Aktiviert den ausführlichen Modus, um mehr Informationen über den Prozess anzuzeigen.
-- `--help`: Zeigt eine Hilfeseite mit Informationen zur Verwendung von nohup an.
+- `&`: Führt den Befehl im Hintergrund aus.
+- `-o [Datei]`: Leitet die Ausgabe in die angegebene Datei um (standardmäßig `nohup.out`).
+- `-h`: Zeigt eine Hilfe zu den Optionen an.
 
 ## Häufige Beispiele
 Hier sind einige praktische Beispiele für die Verwendung von `nohup`:
 
 1. **Ein einfaches Skript im Hintergrund ausführen:**
-
-   ```bash
+   ```csh
    nohup ./mein_skript.sh &
    ```
 
-2. **Einen Python-Server im Hintergrund starten:**
-
-   ```bash
-   nohup python3 -m http.server 8000 &
+2. **Ein lang laufender Befehl mit Ausgabeumleitung:**
+   ```csh
+   nohup long_running_command > ausgabe.log &
    ```
 
-3. **Ein lang laufendes Backup-Skript ausführen und die Ausgabe in eine Datei umleiten:**
-
-   ```bash
-   nohup ./backup.sh > backup.log 2>&1 &
+3. **Einen Python-Prozess im Hintergrund starten:**
+   ```csh
+   nohup python mein_programm.py &
    ```
 
-4. **Einen Prozess mit einer spezifischen Priorität im Hintergrund ausführen:**
-
-   ```bash
-   nohup nice -n 19 ./langlaufender_prozess &
+4. **Einen Befehl im Hintergrund ausführen und die Ausgabe in eine Datei umleiten:**
+   ```csh
+   nohup ls -l > dateiliste.txt &
    ```
 
 ## Tipps
-- Verwenden Sie `nohup` zusammen mit `&`, um sicherzustellen, dass der Prozess im Hintergrund läuft und nicht von der Sitzung abhängt.
-- Leiten Sie die Ausgabe in eine Datei um, um Protokolle zu speichern und Fehler zu überwachen.
+- Verwenden Sie `tail -f nohup.out`, um die Ausgabe eines laufenden Prozesses in Echtzeit zu überwachen.
 - Überprüfen Sie regelmäßig die Ausgabedatei, um sicherzustellen, dass der Prozess wie erwartet läuft.
+- Kombinieren Sie `nohup` mit `screen` oder `tmux`, um eine noch bessere Kontrolle über Ihre Hintergrundprozesse zu haben.

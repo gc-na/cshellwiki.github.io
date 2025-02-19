@@ -1,45 +1,50 @@
-# [Linux] Bash crontab Kullanımı: Zamanlanmış görevleri yönetme
+# [Linux] C Shell (csh) crontab Kullanımı: Zamanlanmış görevleri yönetme
 
 ## Genel Bakış
-`crontab` komutu, belirli zamanlarda otomatik olarak çalıştırılacak görevleri tanımlamak için kullanılır. Bu komut, sistem yöneticileri ve kullanıcılar tarafından, düzenli olarak yapılması gereken işler için zamanlama ayarlamak amacıyla yaygın olarak kullanılır.
+`crontab` komutu, belirli zaman dilimlerinde otomatik olarak çalıştırılacak görevleri tanımlamak için kullanılır. Bu komut, sistem yöneticileri ve kullanıcılar tarafından, tekrarlayan görevleri kolayca planlamak amacıyla yaygın olarak kullanılır.
 
 ## Kullanım
-Temel sözdizimi şu şekildedir:
+Temel sözdizimi aşağıdaki gibidir:
 
 ```bash
 crontab [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-e`: Kullanıcının crontab dosyasını düzenlemesine olanak tanır.
-- `-l`: Kullanıcının mevcut crontab dosyasını listelemesini sağlar.
-- `-r`: Kullanıcının crontab dosyasını siler.
+- `-e`: Mevcut crontab dosyasını düzenlemek için kullanılır.
+- `-l`: Mevcut crontab dosyasını listelemek için kullanılır.
+- `-r`: Mevcut crontab dosyasını silmek için kullanılır.
 - `-i`: `-r` seçeneği ile birlikte kullanıldığında, silme işlemi öncesinde onay ister.
 
 ## Yaygın Örnekler
-Aşağıda `crontab` komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda `crontab` komutunun bazı pratik örnekleri verilmiştir:
 
-1. Her gün saat 2:30'da bir yedekleme scriptini çalıştırmak:
+1. **Crontab dosyasını düzenleme:**
    ```bash
-   30 2 * * * /path/to/backup.sh
+   crontab -e
    ```
 
-2. Her Pazartesi saat 14:00'te bir güncelleme kontrolü yapmak:
+2. **Mevcut crontab dosyasını görüntüleme:**
    ```bash
-   0 14 * * 1 /path/to/update-check.sh
+   crontab -l
    ```
 
-3. Her 5 dakikada bir bir log dosyasını temizlemek:
+3. **Crontab dosyasını silme:**
    ```bash
-   */5 * * * * /path/to/cleanup-log.sh
+   crontab -r
    ```
 
-4. Her ayın ilk günü saat 00:01'de rapor oluşturmak:
+4. **Her gün saat 2'de bir yedekleme script'ini çalıştırma:**
    ```bash
-   1 0 1 * * /path/to/report.sh
+   0 2 * * * /path/to/backup_script.sh
+   ```
+
+5. **Her 5 dakikada bir bir log dosyasını temizleme:**
+   ```bash
+   */5 * * * * /path/to/clear_log.sh
    ```
 
 ## İpuçları
-- Crontab dosyasını düzenlerken dikkatli olun; yanlış bir zamanlama, istenmeyen sonuçlara yol açabilir.
-- Görevlerin çıktısını bir log dosyasına yönlendirmek için `>> /path/to/logfile.log 2>&1` ekleyebilirsiniz.
-- Zamanlama ifadelerini test etmek için `cron` yerine `sleep` komutunu kullanarak kısa süreli testler yapabilirsiniz.
+- Görevlerinizi düzenli olarak kontrol edin ve gereksiz olanları temizleyin.
+- Görevlerinizi test etmek için başlangıçta daha kısa zaman dilimleri kullanın.
+- Log dosyalarını kullanarak görevlerinizin çıktısını kaydedin; bu, sorunları teşhis etmenize yardımcı olur.

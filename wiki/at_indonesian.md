@@ -1,51 +1,52 @@
-# [Linux] Bash di at: Menjadwalkan Eksekusi Perintah
+# [Sistem Operasi] C Shell (csh) at: Menjadwalkan Eksekusi Perintah
 
 ## Overview
-Perintah `at` digunakan untuk menjadwalkan eksekusi perintah atau skrip pada waktu tertentu di masa depan. Ini sangat berguna untuk mengotomatisasi tugas yang perlu dilakukan hanya sekali pada waktu yang ditentukan.
+Perintah `at` digunakan untuk menjadwalkan eksekusi perintah atau skrip pada waktu tertentu di masa depan. Dengan `at`, pengguna dapat mengatur tugas yang akan dijalankan secara otomatis tanpa perlu interaksi manual.
 
 ## Usage
-Berikut adalah sintaks dasar dari perintah `at`:
+Sintaks dasar dari perintah `at` adalah sebagai berikut:
 
 ```
 at [options] [arguments]
 ```
 
 ## Common Options
-- `-f FILE`: Menentukan file yang berisi perintah yang akan dieksekusi.
-- `-m`: Mengirimkan email kepada pengguna setelah perintah selesai dieksekusi.
-- `-q QUEUE`: Menentukan antrean untuk perintah yang dijadwalkan.
-- `-l`: Menampilkan daftar perintah yang telah dijadwalkan.
-- `-d JOB_ID`: Menghapus perintah yang telah dijadwalkan berdasarkan ID pekerjaan.
+Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah `at`:
+
+- `-f [file]`: Menentukan file yang berisi perintah yang akan dijalankan.
+- `-l`: Menampilkan daftar pekerjaan yang telah dijadwalkan.
+- `-d [job_id]`: Menghapus pekerjaan yang telah dijadwalkan berdasarkan ID pekerjaan.
+- `-m`: Mengirimkan email setelah pekerjaan selesai.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `at`:
 
-1. Menjadwalkan perintah untuk dieksekusi pada waktu tertentu:
-   ```bash
+1. Menjadwalkan perintah untuk dijalankan pada waktu tertentu:
+   ```csh
    echo "backup.sh" | at 02:00
    ```
 
-2. Menjadwalkan perintah untuk dieksekusi pada hari tertentu:
-   ```bash
-   echo "echo 'Hello World'" | at 10:00 12/31/2023
+2. Menjadwalkan perintah untuk dijalankan pada tanggal tertentu:
+   ```csh
+   echo "cleanup.sh" | at 2023-10-15 14:00
    ```
 
-3. Menggunakan file untuk menjadwalkan perintah:
-   ```bash
-   at -f myscript.sh 15:00
+3. Menjadwalkan perintah dari file:
+   ```csh
+   at -f myscript.sh 03:00
    ```
 
-4. Melihat daftar perintah yang telah dijadwalkan:
-   ```bash
+4. Melihat daftar pekerjaan yang telah dijadwalkan:
+   ```csh
    at -l
    ```
 
-5. Menghapus perintah yang telah dijadwalkan:
-   ```bash
+5. Menghapus pekerjaan yang telah dijadwalkan:
+   ```csh
    at -d 5
    ```
 
 ## Tips
-- Pastikan untuk memeriksa waktu sistem Anda sebelum menjadwalkan perintah untuk menghindari kesalahan.
-- Gunakan opsi `-m` jika Anda ingin mendapatkan notifikasi setelah perintah selesai dieksekusi.
-- Simpan skrip yang sering digunakan dalam file dan gunakan opsi `-f` untuk menjadwalkannya, sehingga lebih mudah dan terorganisir.
+- Pastikan untuk memeriksa waktu sistem Anda sebelum menjadwalkan tugas dengan `at`.
+- Gunakan opsi `-m` jika Anda ingin mendapatkan notifikasi melalui email setelah tugas selesai.
+- Selalu periksa daftar pekerjaan yang dijadwalkan dengan `at -l` untuk menghindari penjadwalan ganda.

@@ -1,52 +1,58 @@
-# [Linux] Bash ls gebruik: Lijst bestanden en mappen
+# [Linux] C Shell (csh) ls gebruik: Lijst bestanden en mappen
 
 ## Overzicht
-De `ls`-opdracht in Bash wordt gebruikt om de inhoud van een directory weer te geven. Het toont een lijst van bestanden en submappen in de opgegeven directory, wat handig is voor het navigeren door het bestandssysteem.
+De `ls`-opdracht in C Shell (csh) wordt gebruikt om de inhoud van een directory weer te geven. Het toont een lijst van bestanden en submappen, wat handig is voor het navigeren door de bestandssysteemstructuur.
 
 ## Gebruik
 De basis syntaxis van de `ls`-opdracht is als volgt:
 
-```
+```csh
 ls [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-Hier zijn enkele veelgebruikte opties voor de `ls`-opdracht:
+Hier zijn enkele veelvoorkomende opties die je kunt gebruiken met de `ls`-opdracht:
 
-- `-l`: Toont een gedetailleerde lijstweergave met informatie zoals bestandsrechten, eigenaar, grootte en datum van laatste wijziging.
+- `-l`: Toont de bestanden in een lange lijstweergave, inclusief details zoals permissies, eigenaar, grootte en datum.
 - `-a`: Toont ook verborgen bestanden (bestanden die beginnen met een punt).
-- `-h`: Toont bestandsgroottes in een leesbaar formaat (bijvoorbeeld KB, MB).
-- `-R`: Toont de inhoud van subdirectories recursief.
+- `-h`: Toont bestandsgroottes in een leesbaar formaat (bijv. K, M).
+- `-R`: Toont de inhoud van submappen recursief.
 - `-t`: Sorteert bestanden op tijd van laatste wijziging.
 
 ## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van de `ls`-opdracht:
 
-1. **Basisgebruik**: Lijst de bestanden in de huidige directory.
-   ```bash
+1. Gewone lijst van bestanden in de huidige directory:
+   ```csh
    ls
    ```
 
-2. **Lijst met details**: Toont een gedetailleerde lijst van bestanden.
-   ```bash
+2. Lijst van bestanden met details in lange weergave:
+   ```csh
    ls -l
    ```
 
-3. **Verborgen bestanden weergeven**: Toont ook verborgen bestanden.
-   ```bash
+3. Lijst inclusief verborgen bestanden:
+   ```csh
    ls -a
    ```
 
-4. **Bestanden sorteren op tijd**: Toont bestanden gesorteerd op de datum van laatste wijziging.
-   ```bash
-   ls -lt
+4. Lijst van bestanden met leesbare bestandsgroottes:
+   ```csh
+   ls -lh
    ```
 
-5. **Recursief weergeven**: Toont de inhoud van subdirectories.
-   ```bash
+5. Recursieve lijst van bestanden in de huidige directory en subdirectories:
+   ```csh
    ls -R
    ```
 
+6. Lijst van bestanden gesorteerd op tijd van laatste wijziging:
+   ```csh
+   ls -lt
+   ```
+
 ## Tips
-- Gebruik `ls -lh` om een overzicht te krijgen van bestanden met leesbare groottes.
-- Combineer opties voor meer specifieke weergaven, bijvoorbeeld `ls -laR` om een gedetailleerd overzicht van alle bestanden in de huidige directory en subdirectories te krijgen.
-- Vergeet niet dat de volgorde van opties niet uitmaakt; `ls -al` is hetzelfde als `ls -la`.
+- Gebruik `ls -la` om een volledig overzicht van alle bestanden, inclusief verborgen bestanden, te krijgen.
+- Combineer opties voor meer specifieke resultaten, zoals `ls -lhR` voor een gedetailleerde, leesbare, recursieve lijst.
+- Vergeet niet dat de volgorde van opties niet uitmaakt; `ls -la` is hetzelfde als `ls -al`.

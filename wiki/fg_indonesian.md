@@ -1,43 +1,37 @@
-# [Linux] Bash fg Penggunaan: Mengembalikan proses ke latar depan
+# [Sistem Operasi] C Shell (csh) fg Penggunaan: Mengembalikan proses ke latar depan
 
 ## Overview
-Perintah `fg` dalam Bash digunakan untuk mengembalikan proses yang sedang berjalan di latar belakang ke latar depan. Ini sangat berguna ketika Anda ingin berinteraksi dengan proses yang sebelumnya Anda jalankan di latar belakang.
+Perintah `fg` dalam C Shell (csh) digunakan untuk mengembalikan proses yang sedang berjalan di latar belakang ke latar depan. Ini memungkinkan pengguna untuk berinteraksi dengan proses tersebut secara langsung.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `fg`:
 
 ```
-fg [options] [job_spec]
+fg [options] [arguments]
 ```
 
 ## Common Options
-- `job_spec`: Menentukan proses yang ingin Anda kembalikan ke latar depan. Anda dapat menggunakan nomor pekerjaan (job number) atau nama proses.
-- `+`: Mengembalikan proses terakhir yang dijalankan di latar belakang.
-- `-`: Mengembalikan proses kedua terakhir yang dijalankan di latar belakang.
+- `job_id`: Menentukan ID pekerjaan yang ingin dibawa ke latar depan. Jika tidak ditentukan, `fg` akan mengembalikan pekerjaan terakhir yang dijalankan di latar belakang.
 
 ## Common Examples
+Berikut adalah beberapa contoh penggunaan perintah `fg`:
 
-1. Mengembalikan proses terakhir yang berjalan di latar belakang:
-   ```bash
+1. Mengembalikan pekerjaan terakhir yang dijalankan di latar belakang:
+   ```csh
    fg
    ```
 
-2. Mengembalikan proses tertentu dengan nomor pekerjaan, misalnya pekerjaan nomor 1:
-   ```bash
+2. Mengembalikan pekerjaan tertentu dengan ID pekerjaan 1:
+   ```csh
    fg %1
    ```
 
-3. Mengembalikan proses kedua terakhir yang berjalan di latar belakang:
-   ```bash
-   fg -
-   ```
-
-4. Mengembalikan proses dengan nama tertentu (jika ada):
-   ```bash
-   fg %nama_proses
+3. Mengembalikan pekerjaan tertentu dengan ID pekerjaan 2:
+   ```csh
+   fg %2
    ```
 
 ## Tips
-- Pastikan untuk memeriksa daftar proses latar belakang Anda dengan menggunakan perintah `jobs` sebelum menggunakan `fg`.
-- Jika Anda sering beralih antara proses latar depan dan latar belakang, pertimbangkan untuk menggunakan `Ctrl+Z` untuk menghentikan proses dan mengirimnya ke latar belakang sebelum menggunakan `fg`.
-- Gunakan `bg` jika Anda ingin melanjutkan proses di latar belakang tanpa mengembalikannya ke latar depan.
+- Pastikan untuk memeriksa daftar pekerjaan yang sedang berjalan menggunakan perintah `jobs` sebelum menggunakan `fg`, agar Anda tahu pekerjaan mana yang ingin dibawa ke latar depan.
+- Jika Anda ingin menghentikan proses yang sedang berjalan di latar depan, Anda dapat menggunakan kombinasi tombol `Ctrl + C`.
+- Gunakan `bg` untuk melanjutkan proses di latar belakang jika Anda tidak ingin berinteraksi langsung dengan proses tersebut.

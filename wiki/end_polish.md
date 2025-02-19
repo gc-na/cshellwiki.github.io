@@ -1,40 +1,46 @@
-# [Linux] Bash end użycie: Zakończ procesy
+# [Linux] C Shell (csh) end użycie: kończy procesy
 
 ## Overview
-Polecenie `end` w systemie Linux służy do zakończenia procesów działających w systemie. Umożliwia użytkownikom kontrolowanie i zarządzanie aktywnymi aplikacjami oraz ich zamykanie w razie potrzeby.
+Polecenie `end` w C Shell (csh) jest używane do zakończenia bieżącego skryptu lub sesji powłoki. Umożliwia to użytkownikowi zakończenie wykonywania skryptu w dowolnym momencie.
 
 ## Usage
 Podstawowa składnia polecenia `end` jest następująca:
 
-```bash
-end [opcje] [argumenty]
+```csh
+end [options] [arguments]
 ```
 
 ## Common Options
-- `-p` : Zakończ procesy na podstawie identyfikatora procesu (PID).
-- `-n` : Zakończ procesy na podstawie nazwy.
-- `-f` : Wymuś zakończenie procesu, nawet jeśli nie odpowiada.
+- `-h` : Wyświetla pomoc dotyczącą użycia polecenia.
+- `-v` : Włącza tryb szczegółowego wyjścia, pokazując więcej informacji podczas wykonywania.
 
 ## Common Examples
-Zakończenie procesu za pomocą PID:
+1. Zakończenie skryptu w dowolnym momencie:
+   ```csh
+   if ($condition) then
+       echo "Zakończenie skryptu"
+       end
+   endif
+   ```
 
-```bash
-end -p 1234
-```
+2. Użycie `end` w pętli:
+   ```csh
+   foreach item ($list)
+       if ($item == "stop") then
+           echo "Zatrzymanie pętli"
+           end
+       endif
+       echo $item
+   end
+   ```
 
-Zakończenie procesu na podstawie nazwy:
-
-```bash
-end -n nazwa_procesu
-```
-
-Wymuszenie zakończenia procesu:
-
-```bash
-end -f 5678
-```
+3. Zakończenie sesji powłoki:
+   ```csh
+   echo "Zakończenie sesji"
+   end
+   ```
 
 ## Tips
-- Używaj opcji `-f` ostrożnie, ponieważ może to prowadzić do utraty danych.
-- Zawsze sprawdzaj, które procesy są aktywne przed ich zakończeniem, aby uniknąć przypadkowego zamknięcia ważnych aplikacji.
-- Możesz użyć polecenia `ps` do wyświetlenia listy aktywnych procesów przed użyciem `end`.
+- Używaj `end` w odpowiednich miejscach w skryptach, aby uniknąć nieoczekiwanych błędów.
+- Zawsze testuj skrypty w środowisku deweloperskim przed ich wdrożeniem, aby upewnić się, że `end` działa zgodnie z oczekiwaniami.
+- Pamiętaj, że `end` kończy tylko bieżący skrypt lub sesję, a nie inne procesy.

@@ -1,44 +1,44 @@
-# [Linux] Bash fold usage : Plier le texte à une largeur spécifiée
+# [Linux] C Shell (csh) fold : Plier le texte en lignes de longueur fixe
 
 ## Overview
-La commande `fold` est utilisée pour plier le texte à une largeur spécifiée. Elle permet de formater le texte en ajoutant des retours à la ligne afin que chaque ligne ne dépasse pas un certain nombre de caractères, ce qui est particulièrement utile pour l'affichage sur des terminaux ou pour la préparation de fichiers texte.
+La commande `fold` est utilisée pour plier le texte en lignes de longueur fixe. Cela permet de reformater le contenu d'un fichier ou d'une entrée standard afin que chaque ligne ne dépasse pas un certain nombre de caractères, facilitant ainsi la lecture sur des écrans ou des imprimantes.
 
 ## Usage
 La syntaxe de base de la commande `fold` est la suivante :
 
-```bash
+```csh
 fold [options] [arguments]
 ```
 
 ## Common Options
-- `-w, --width=N` : Définit la largeur maximale des lignes à N caractères.
-- `-s, --spaces` : Plie le texte en respectant les espaces, ce qui signifie qu'il ne coupera pas les mots à la fin d'une ligne.
-- `-b, --bytes` : Compte la largeur en octets au lieu de caractères, ce qui peut être utile pour les fichiers contenant des caractères multibytes.
+Voici quelques options courantes pour la commande `fold` :
+
+- `-w <largeur>` : Définit la largeur maximale des lignes pliées (par défaut, 80 caractères).
+- `-s` : Plie le texte à la fin des mots au lieu de couper les mots en plein milieu.
+- `-b` : Compte les octets au lieu des caractères pour la largeur.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `fold` :
 
-1. Plier un fichier texte à une largeur de 50 caractères :
-   ```bash
+1. Plier un fichier texte à 50 caractères de large :
+
+   ```csh
    fold -w 50 mon_fichier.txt
    ```
 
-2. Plier le texte d'une entrée standard (stdin) à 30 caractères, en respectant les espaces :
-   ```bash
+2. Plier l'entrée standard avec des mots entiers :
+
+   ```csh
    echo "Ceci est un exemple de texte qui sera plié." | fold -s -w 30
    ```
 
-3. Plier un fichier texte et rediriger la sortie vers un nouveau fichier :
-   ```bash
-   fold -w 60 mon_fichier.txt > fichier_plie.txt
-   ```
+3. Plier un fichier tout en comptant les octets :
 
-4. Plier le texte tout en comptant les octets :
-   ```bash
-   fold -b -w 40 mon_fichier.txt
+   ```csh
+   fold -b -w 100 mon_fichier.txt
    ```
 
 ## Tips
-- Utilisez l'option `-s` pour éviter de couper les mots à la fin des lignes, ce qui rend le texte plus lisible.
-- Testez différentes largeurs pour voir ce qui fonctionne le mieux pour votre affichage ou votre formatage.
-- Combinez `fold` avec d'autres commandes comme `cat` ou `less` pour un affichage amélioré de fichiers texte longs.
+- Utilisez l'option `-s` pour éviter de couper les mots, ce qui rend le texte plus lisible.
+- Testez différentes largeurs avec l'option `-w` pour voir ce qui fonctionne le mieux pour votre affichage.
+- Combinez `fold` avec d'autres commandes comme `cat` ou `grep` pour un traitement de texte plus avancé.

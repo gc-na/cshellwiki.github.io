@@ -1,51 +1,50 @@
-# [Linux] Bash usermod 使用法: 用於修改使用者帳號的指令
+# [台灣] C Shell (csh) usermod 使用法: 修改使用者帳號資訊
 
 ## Overview
-`usermod` 是一個用於修改現有使用者帳號的指令。透過這個指令，系統管理員可以變更使用者的屬性，例如使用者名稱、群組、家目錄等。
+`usermod` 命令用於修改現有使用者帳號的屬性，例如更改使用者的家目錄、使用者名稱或群組等。
 
 ## Usage
 基本語法如下：
-```bash
+```csh
 usermod [options] [arguments]
 ```
 
 ## Common Options
-- `-l, --login NEW_LOGIN`：變更使用者的登入名稱。
-- `-d, --home NEW_HOME`：變更使用者的家目錄。
-- `-m, --move-home`：在變更家目錄時，將舊的家目錄內容移動到新的家目錄。
-- `-G, --groups GROUP1[,GROUP2,...]`：設定使用者所屬的附加群組。
-- `-a, --append`：將使用者添加到附加群組時，保留原有群組。
-- `-s, --shell SHELL`：變更使用者的預設 shell。
+- `-l <new_username>`: 更改使用者名稱。
+- `-d <new_home>`: 更改使用者的家目錄。
+- `-g <new_group>`: 更改使用者的主要群組。
+- `-aG <group>`: 將使用者添加到附加群組中。
+- `-s <shell>`: 更改使用者的默認 shell。
 
 ## Common Examples
-以下是幾個常見的使用範例：
+以下是一些常見的使用範例：
 
-1. 變更使用者的登入名稱：
-   ```bash
+1. 更改使用者名稱：
+   ```csh
    usermod -l newusername oldusername
    ```
 
-2. 變更使用者的家目錄：
-   ```bash
+2. 更改使用者的家目錄：
+   ```csh
    usermod -d /new/home/directory username
    ```
 
-3. 變更使用者的家目錄並移動舊內容：
-   ```bash
-   usermod -d /new/home/directory -m username
+3. 更改使用者的主要群組：
+   ```csh
+   usermod -g newgroup username
    ```
 
-4. 添加使用者到附加群組：
-   ```bash
-   usermod -a -G group1,group2 username
+4. 將使用者添加到附加群組：
+   ```csh
+   usermod -aG additionalgroup username
    ```
 
-5. 變更使用者的預設 shell：
-   ```bash
+5. 更改使用者的默認 shell：
+   ```csh
    usermod -s /bin/zsh username
    ```
 
 ## Tips
-- 在執行 `usermod` 指令之前，建議先備份相關的使用者資料，以防止意外的資料遺失。
-- 使用 `usermod` 變更使用者名稱時，請確保沒有其他進程正在使用該使用者的會話。
-- 確認變更後的設定可以使用 `id username` 指令來檢查使用者的屬性。
+- 在執行 `usermod` 命令之前，建議先備份使用者的資料。
+- 確保在更改使用者名稱或家目錄後，更新相關的權限和擁有者設定。
+- 使用 `usermod` 命令時，通常需要具有管理員權限。

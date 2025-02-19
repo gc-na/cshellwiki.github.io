@@ -1,46 +1,30 @@
-# [Linux] Bash clear gebruik: Verwijder de terminalinhoud
+# [Linux] C Shell (csh) clear gebruik: Verwijdert de terminalinhoud
 
-## Overview
-De `clear` opdracht in Bash wordt gebruikt om de terminalinhoud te wissen. Dit is handig om een schone werkruimte te creëren, vooral wanneer de terminal vol is met tekst en je een frisse start wilt maken.
+## Overzicht
+De `clear` opdracht in C Shell (csh) wordt gebruikt om de terminalinhoud te wissen. Dit is handig om een schone werkomgeving te creëren zonder afleiding van eerdere commando's of uitvoer.
 
-## Usage
+## Gebruik
 De basis syntaxis van de `clear` opdracht is als volgt:
 
-```bash
-clear [opties]
+```csh
+clear [opties] [argumenten]
 ```
 
-## Common Options
-Hier zijn enkele veelvoorkomende opties voor de `clear` opdracht:
+## Veelvoorkomende Opties
+- **-x**: Verwijdert de inhoud van de terminal zonder de cursorpositie te resetten.
 
-- `-x`: Verwijdert de terminalinhoud en herstelt de cursor naar de bovenkant van het scherm.
-- `--help`: Toont een helpbericht met informatie over het gebruik van de opdracht.
-- `--version`: Geeft de versie-informatie van de `clear` opdracht weer.
+## Veelvoorkomende Voorbeelden
 
-## Common Examples
-Hier zijn enkele praktische voorbeelden van het gebruik van de `clear` opdracht:
-
-1. Gewoon de terminal wissen:
-   ```bash
+1. **Eenvoudig de terminal wissen**:
+   ```csh
    clear
    ```
 
-2. De terminal wissen en de cursor naar de bovenkant van het scherm verplaatsen:
-   ```bash
+2. **De terminal wissen met de -x optie**:
+   ```csh
    clear -x
    ```
 
-3. Hulpinformatie opvragen:
-   ```bash
-   clear --help
-   ```
-
-4. Versie-informatie opvragen:
-   ```bash
-   clear --version
-   ```
-
 ## Tips
-- Gebruik `clear` regelmatig om je terminal overzichtelijk te houden, vooral tijdens lange sessies.
-- Combineer `clear` met andere opdrachten in scripts om de uitvoer te organiseren.
-- Vergeet niet dat `clear` alleen de zichtbare terminalinhoud verwijdert; het heeft geen invloed op de geschiedenis van de terminal.
+- Gebruik `clear` regelmatig om je terminal overzichtelijk te houden, vooral na het uitvoeren van lange opdrachten.
+- Combineer `clear` met andere commando's in scripts om de uitvoer te organiseren en te verfrissen.

@@ -1,43 +1,41 @@
-# [Linux] Bash mountpoint Verwendung: Überprüfen, ob ein Verzeichnis ein Mountpunkt ist
+# [Linux] C Shell (csh) mountpoint Verwendung: Überprüfen von Einhängepunkten
 
 ## Übersicht
-Der Befehl `mountpoint` wird verwendet, um zu überprüfen, ob ein bestimmtes Verzeichnis ein Mountpunkt ist. Ein Mountpunkt ist ein Verzeichnis, das mit einem Dateisystem verbunden ist, das von einem anderen Speichergerät stammt.
+Der Befehl `mountpoint` wird verwendet, um zu überprüfen, ob ein bestimmter Verzeichnis-Pfad ein gültiger Einhängepunkt für ein Dateisystem ist. Dies ist nützlich, um sicherzustellen, dass ein Verzeichnis tatsächlich ein gemountetes Dateisystem darstellt, bevor man Operationen darauf ausführt.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```
 mountpoint [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-q`: Führt die Überprüfung durch, gibt jedoch keine Ausgabe zurück. Nützlich für Skripte.
-- `-d`: Gibt detaillierte Informationen über den Mountpunkt aus.
+- `-q`: Führt eine stille Überprüfung durch, ohne eine Ausgabe zu erzeugen.
+- `-d`: Gibt an, dass der Pfad ein Verzeichnis ist, das überprüft werden soll.
 
 ## Häufige Beispiele
 
-### Überprüfen eines Mountpunkts
-Um zu überprüfen, ob ein Verzeichnis ein Mountpunkt ist, verwenden Sie:
+1. Überprüfen, ob ein Verzeichnis ein Einhängepunkt ist:
+   ```csh
+   mountpoint /mnt/daten
+   ```
 
-```bash
-mountpoint /mnt/usb
-```
+2. Stille Überprüfung eines Einhängepunkts:
+   ```csh
+   mountpoint -q /mnt/daten
+   ```
 
-### Stille Überprüfung
-Wenn Sie nur wissen möchten, ob ein Verzeichnis ein Mountpunkt ist, ohne eine Ausgabe zu erhalten, verwenden Sie die stille Option:
-
-```bash
-mountpoint -q /mnt/usb
-```
-
-### Detaillierte Informationen
-Um detaillierte Informationen über einen Mountpunkt zu erhalten, verwenden Sie die `-d` Option:
-
-```bash
-mountpoint -d /mnt/usb
-```
+3. Überprüfen eines Verzeichnisses und Ausgabe einer Nachricht:
+   ```csh
+   if ( `mountpoint /mnt/daten` == "/mnt/daten ist ein Einhängepunkt" ) then
+       echo "Das Verzeichnis ist gemountet."
+   else
+       echo "Das Verzeichnis ist nicht gemountet."
+   endif
+   ```
 
 ## Tipps
-- Verwenden Sie `mountpoint -q`, wenn Sie den Befehl in Skripten verwenden, um die Ausgabe zu unterdrücken und nur den Exit-Status zu überprüfen.
-- Überprüfen Sie regelmäßig Ihre Mountpunkte, um sicherzustellen, dass alle benötigten Dateisysteme korrekt verbunden sind.
-- Nutzen Sie `man mountpoint`, um weitere Informationen und Optionen zu erhalten.
+- Verwenden Sie die Option `-q`, wenn Sie Skripte schreiben, um die Ausgabe zu minimieren und nur den Rückgabewert zu verwenden.
+- Überprüfen Sie immer, ob ein Verzeichnis ein Einhängepunkt ist, bevor Sie darauf zugreifen, um Fehler zu vermeiden.
+- Nutzen Sie `mountpoint` in Kombination mit anderen Befehlen in Shell-Skripten, um die Robustheit Ihrer Skripte zu erhöhen.

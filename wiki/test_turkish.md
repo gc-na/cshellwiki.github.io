@@ -1,68 +1,53 @@
-# [Linux] Bash test Kullanımı: Koşul testleri yapma
+# [Linux] C Shell (csh) test Kullanımı: Koşul ifadelerini değerlendirme
 
-## Genel Bakış
-`test` komutu, belirli koşulları kontrol etmek için kullanılan bir Bash komutudur. Dosya varlığı, dosya türü, karşılaştırmalar gibi çeşitli koşulları test etmek için kullanılır. Bu komut, genellikle if ifadeleriyle birlikte kullanılarak, program akışını kontrol etmekte yardımcı olur.
+## Overview
+`test` komutu, bir koşul ifadesini değerlendirerek, belirtilen koşulun doğru (true) veya yanlış (false) olduğunu belirler. Bu komut, genellikle betiklerde koşullu ifadeleri kontrol etmek için kullanılır.
 
-## Kullanım
-Temel sözdizimi şu şekildedir:
+## Usage
+Temel sözdizimi aşağıdaki gibidir:
 
-```bash
-test [seçenekler] [argümanlar]
+```csh
+test [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-e`: Belirtilen dosyanın var olup olmadığını kontrol eder.
-- `-f`: Belirtilen dosyanın bir dosya olup olmadığını kontrol eder.
-- `-d`: Belirtilen yolun bir dizin olup olmadığını kontrol eder.
-- `-z`: Belirtilen stringin boş olup olmadığını kontrol eder.
-- `=`: İki stringin eşit olup olmadığını kontrol eder.
-- `-lt`: İlk sayının ikinci sayıdan küçük olup olmadığını kontrol eder.
+## Common Options
+- `-e [dosya]`: Belirtilen dosyanın var olup olmadığını kontrol eder.
+- `-d [dosya]`: Belirtilen dosyanın bir dizin olup olmadığını kontrol eder.
+- `-f [dosya]`: Belirtilen dosyanın bir dosya olup olmadığını kontrol eder.
+- `-z [string]`: Belirtilen string'in boş olup olmadığını kontrol eder.
+- `-n [string]`: Belirtilen string'in boş olmadığını kontrol eder.
 
-## Yaygın Örnekler
+## Common Examples
+Aşağıda `test` komutunun bazı pratik örnekleri bulunmaktadır:
 
-### Dosya Varlığını Kontrol Etme
-```bash
-if test -e dosya.txt; then
-    echo "dosya.txt mevcut."
-else
-    echo "dosya.txt mevcut değil."
-fi
+### 1. Dosyanın varlığını kontrol etme
+```csh
+test -e dosya.txt && echo "Dosya mevcut."
 ```
 
-### Bir Dizinin Var Olup Olmadığını Kontrol Etme
-```bash
-if test -d /home/kullanici; then
-    echo "Dizin mevcut."
-else
-    echo "Dizin mevcut değil."
-fi
+### 2. Dizin kontrolü
+```csh
+test -d /home/kullanici && echo "Bu bir dizin."
 ```
 
-### String Karşılaştırması
-```bash
-string1="merhaba"
-string2="merhaba"
-
-if test "$string1" = "$string2"; then
-    echo "Stringler eşit."
-else
-    echo "Stringler eşit değil."
-fi
+### 3. Dosya kontrolü
+```csh
+test -f /etc/passwd && echo "Bu bir dosya."
 ```
 
-### Sayı Karşılaştırması
-```bash
-sayi1=5
-sayi2=10
-
-if test $sayi1 -lt $sayi2; then
-    echo "$sayi1, $sayi2'den küçüktür."
-else
-    echo "$sayi1, $sayi2'den küçük değildir."
-fi
+### 4. Boş string kontrolü
+```csh
+string=""
+test -z "$string" && echo "String boş."
 ```
 
-## İpuçları
-- `test` komutunu kullanırken, koşulları daha okunabilir hale getirmek için köşeli parantezler `[ ]` kullanabilirsiniz. Örneğin, `if [ -e dosya.txt ]; then`.
-- Koşul ifadelerinde boşluklara dikkat edin; yanlış yerleştirilen boşluklar hatalara neden olabilir.
-- `test` yerine `[` ve `]` kullanarak daha kısa bir sözdizimi elde edebilirsiniz. Örneğin, `if [ -f dosya.txt ]; then` şeklinde yazabilirsiniz.
+### 5. Boş olmayan string kontrolü
+```csh
+string="Merhaba"
+test -n "$string" && echo "String boş değil."
+```
+
+## Tips
+- `test` komutunu kullanırken, koşul ifadelerinizi parantez içinde yazmak, karmaşık koşulları daha okunabilir hale getirebilir.
+- `test` komutunun yerine `[` veya `[[` kullanarak da benzer işlemleri gerçekleştirebilirsiniz; bu, bazı durumlarda daha fazla seçenek sunabilir.
+- Koşul ifadelerinizi bir betik içinde kullanırken, `if` yapısını kullanarak daha iyi kontrol akışı sağlayabilirsiniz.

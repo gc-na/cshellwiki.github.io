@@ -1,49 +1,49 @@
-# [Linux] Bash stty Uso: Configuración de terminal
+# [Linux] C Shell (csh) stty: Configurar terminales
 
 ## Overview
-El comando `stty` se utiliza para cambiar y mostrar las configuraciones de la terminal. Permite ajustar parámetros como el tamaño de la línea, los caracteres de control y otras opciones que afectan la entrada y salida de datos en la terminal.
+El comando `stty` se utiliza para cambiar y mostrar las configuraciones de la terminal en sistemas Unix y Linux. Permite ajustar parámetros como el control de flujo, la configuración de caracteres especiales y otras propiedades que afectan la interacción del usuario con la terminal.
 
 ## Usage
 La sintaxis básica del comando `stty` es la siguiente:
 
-```bash
+```csh
 stty [opciones] [argumentos]
 ```
 
 ## Common Options
 - `-a`: Muestra todas las configuraciones actuales de la terminal.
-- `-g`: Muestra la configuración actual en un formato que se puede usar posteriormente.
-- `erase`: Establece el carácter de borrado (por defecto, suele ser el retroceso).
-- `kill`: Establece el carácter de eliminación de línea (por defecto, suele ser Ctrl+U).
-- `intr`: Establece el carácter de interrupción (por defecto, suele ser Ctrl+C).
+- `-g`: Muestra la configuración actual en un formato que se puede usar como argumento para `stty`.
+- `erase <carácter>`: Establece el carácter de borrado.
+- `kill <carácter>`: Establece el carácter de eliminación de línea.
+- `intr <carácter>`: Establece el carácter de interrupción.
 
 ## Common Examples
-1. **Mostrar configuraciones actuales:**
-   ```bash
+1. **Mostrar todas las configuraciones de la terminal:**
+   ```csh
    stty -a
    ```
 
-2. **Cambiar el carácter de borrado a `^H`:**
-   ```bash
+2. **Establecer el carácter de borrado a `^H` (retroceso):**
+   ```csh
    stty erase ^H
    ```
 
 3. **Establecer el carácter de interrupción a `^C`:**
-   ```bash
+   ```csh
    stty intr ^C
    ```
 
-4. **Guardar la configuración actual en una variable:**
-   ```bash
-   config=$(stty -g)
+4. **Guardar la configuración actual para su uso posterior:**
+   ```csh
+   stty -g > config.txt
    ```
 
-5. **Restaurar la configuración desde una variable:**
-   ```bash
-   stty $config
+5. **Restaurar la configuración desde un archivo:**
+   ```csh
+   stty `cat config.txt`
    ```
 
 ## Tips
-- Siempre verifica la configuración actual con `stty -a` antes de realizar cambios, para evitar configuraciones indeseadas.
-- Si cambias la configuración de la terminal y no puedes volver atrás, puedes cerrar la terminal y abrir una nueva para restablecerla a los valores predeterminados.
-- Utiliza `stty -g` para guardar la configuración actual antes de hacer cambios, lo que te permitirá restaurarla fácilmente más tarde.
+- Siempre verifica la configuración actual de la terminal antes de hacer cambios para evitar problemas inesperados.
+- Utiliza `stty -g` para guardar configuraciones que puedas necesitar más tarde.
+- Recuerda que algunos caracteres especiales pueden requerir que los ingreses como combinaciones de teclas (por ejemplo, `^C` para Ctrl+C).

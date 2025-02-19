@@ -1,48 +1,45 @@
-# [Linux] Bash vgs Uso: Muestra información sobre grupos de volúmenes LVM
+# [Linux] C Shell (csh) vgs Uso: Muestra información sobre grupos de volúmenes
 
 ## Overview
-El comando `vgs` se utiliza en sistemas Linux para mostrar información sobre los grupos de volúmenes en el sistema de gestión de volúmenes lógicos (LVM). Este comando proporciona datos como el nombre del grupo, el tamaño total, el tamaño utilizado y el número de volúmenes lógicos en cada grupo.
+El comando `vgs` se utiliza para mostrar información sobre los grupos de volúmenes en un sistema que utiliza LVM (Logical Volume Manager). Proporciona detalles como el tamaño, el número de volúmenes lógicos y físicos, y el estado del grupo de volúmenes.
 
 ## Usage
-La sintaxis básica del comando `vgs` es la siguiente:
+La sintaxis básica del comando es la siguiente:
 
-```bash
+```csh
 vgs [opciones] [argumentos]
 ```
 
 ## Common Options
-- `-o, --options`: Especifica las columnas que se mostrarán en la salida.
-- `-h, --human-readable`: Muestra los tamaños en un formato legible para humanos.
-- `-s, --short`: Muestra una salida más corta y concisa.
-- `-d, --debug`: Muestra información de depuración adicional.
+- `-o`: Especifica qué columnas mostrar en la salida.
+- `--units`: Permite establecer las unidades de medida para la salida.
+- `-h`: Muestra la ayuda sobre el uso del comando.
+- `-d`: Muestra información detallada sobre los grupos de volúmenes.
 
 ## Common Examples
-1. **Mostrar todos los grupos de volúmenes:**
-   ```bash
+Aquí hay algunos ejemplos prácticos del uso del comando `vgs`:
+
+1. **Mostrar información básica de todos los grupos de volúmenes:**
+   ```csh
    vgs
    ```
 
-2. **Mostrar información en un formato legible para humanos:**
-   ```bash
-   vgs -h
+2. **Mostrar información con columnas específicas:**
+   ```csh
+   vgs -o vg_name,lv_count,lv_size
    ```
 
-3. **Mostrar columnas específicas (nombre y tamaño):**
-   ```bash
-   vgs -o vg_name,size
+3. **Mostrar información detallada de un grupo de volúmenes específico:**
+   ```csh
+   vgs -d nombre_del_grupo
    ```
 
-4. **Mostrar una salida corta:**
-   ```bash
-   vgs -s
-   ```
-
-5. **Mostrar información de depuración:**
-   ```bash
-   vgs -d
+4. **Mostrar la información en unidades específicas:**
+   ```csh
+   vgs --units g
    ```
 
 ## Tips
-- Utiliza la opción `-h` para facilitar la lectura de los tamaños, especialmente en sistemas con grandes volúmenes.
-- Combina `vgs` con otros comandos de LVM, como `lvdisplay`, para obtener una visión más completa de tu configuración de almacenamiento.
-- Revisa regularmente los grupos de volúmenes para asegurarte de que no estén llenos y para planificar la expansión si es necesario.
+- Siempre verifica los permisos necesarios para ejecutar `vgs`, ya que puede requerir privilegios de administrador.
+- Utiliza la opción `-o` para personalizar la salida y obtener solo la información que necesitas.
+- Consulta la página de manual (`man vgs`) para obtener más detalles sobre las opciones disponibles y ejemplos adicionales.

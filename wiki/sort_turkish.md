@@ -1,56 +1,56 @@
-# [Linux] Bash sort Kullanımı: Dosya içeriğini sıralama
+# [Linux] C Shell (csh) sort Kullanımı: Dosya içeriğini sıralama
 
-## Genel Bakış
-`sort` komutu, bir dosyadaki veya standart girdideki metin satırlarını sıralamak için kullanılır. Bu komut, verileri alfabetik veya sayısal olarak düzenleyerek daha okunabilir hale getirir.
+## Overview
+`sort` komutu, metin dosyalarındaki satırları sıralamak için kullanılır. Bu komut, verileri belirli bir düzene göre (alfabetik veya sayısal) sıralayarak daha düzenli bir görünüm sağlar.
 
-## Kullanım
+## Usage
 Temel sözdizimi aşağıdaki gibidir:
 
-```bash
-sort [seçenekler] [argümanlar]
+```csh
+sort [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-r`: Sıralamayı tersine çevirir (azalan sırada).
+## Common Options
+- `-r`: Ters sıralama yapar (büyükten küçüğe).
 - `-n`: Sayısal sıralama yapar.
-- `-k`: Belirli bir alanı (kolonu) kullanarak sıralama yapar.
+- `-k`: Belirtilen sütuna göre sıralama yapar.
 - `-u`: Tekrar eden satırları kaldırarak yalnızca benzersiz satırları gösterir.
-- `-o`: Sonuçları belirtilen dosyaya kaydeder.
+- `-o`: Sıralanmış çıktıyı belirtilen dosyaya yazar.
 
-## Yaygın Örnekler
-1. **Temel sıralama**:
-   Aşağıdaki komut, `dosya.txt` içindeki satırları alfabetik olarak sıralar.
-   ```bash
+## Common Examples
+Aşağıda `sort` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+
+1. Bir dosyayı alfabetik olarak sıralama:
+   ```csh
    sort dosya.txt
    ```
 
-2. **Ters sıralama**:
-   `-r` seçeneği ile satırları azalan sırada sıralamak için:
-   ```bash
+2. Bir dosyayı ters sırayla sıralama:
+   ```csh
    sort -r dosya.txt
    ```
 
-3. **Sayısal sıralama**:
-   Sayıları içeren bir dosyayı sayısal olarak sıralamak için:
-   ```bash
+3. Sayısal sıralama yapmak:
+   ```csh
    sort -n sayilar.txt
    ```
 
-4. **Belirli bir alan ile sıralama**:
-   İkinci alanı kullanarak sıralama yapmak için:
-   ```bash
-   sort -k2 dosya.txt
+4. Belirli bir sütuna göre sıralama (örneğin, ikinci sütun):
+   ```csh
+   sort -k 2 dosya.txt
    ```
 
-5. **Sonucu bir dosyaya kaydetme**:
-   Sıralanmış çıktıyı `sirali_dosya.txt` dosyasına kaydetmek için:
-   ```bash
-   sort dosya.txt -o sirali_dosya.txt
+5. Tekrar eden satırları kaldırarak sıralama:
+   ```csh
+   sort -u dosya.txt
    ```
 
-## İpuçları
-- Sıralama işlemi büyük/küçük harf duyarlıdır. Eğer büyük harfleri göz ardı etmek istiyorsanız `-f` seçeneğini kullanabilirsiniz.
-- Sıralama işlemi, varsayılan olarak alfabetik sıralama yapar; sayısal sıralama için `-n` seçeneğini kullanmayı unutmayın.
-- Birden fazla dosya sıralamak isterseniz, dosya isimlerini boşlukla ayırarak yazabilirsiniz. `sort dosya1.txt dosya2.txt` gibi.
+6. Sıralanmış çıktıyı yeni bir dosyaya yazma:
+   ```csh
+   sort -o sirali_dosya.txt dosya.txt
+   ```
 
-Bu bilgilerle `sort` komutunu etkili bir şekilde kullanabilirsiniz.
+## Tips
+- Sıralama işlemini hızlandırmak için büyük dosyalar üzerinde çalışırken `-S` seçeneği ile bellek boyutunu ayarlayabilirsiniz.
+- Sıralama işlemi öncesinde dosyanızın yedeğini almak iyi bir uygulamadır.
+- Farklı sıralama seçeneklerini bir arada kullanarak daha karmaşık sıralama işlemleri gerçekleştirebilirsiniz.

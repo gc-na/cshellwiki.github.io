@@ -1,47 +1,43 @@
-# [Linux] Bash cut użycie: Wyodrębnianie fragmentów tekstu
+# [Linux] C Shell (csh) cut użycie: Wyodrębnianie fragmentów tekstu
 
 ## Overview
-Polecenie `cut` w systemie Linux służy do wyodrębniania fragmentów tekstu z plików lub danych wejściowych. Umożliwia selekcję określonych kolumn lub znaków, co jest przydatne w obróbce danych.
+Polecenie `cut` w C Shell (csh) służy do wyodrębniania określonych fragmentów tekstu z plików lub danych wejściowych. Umożliwia selekcję kolumn lub znaków, co jest przydatne w analizie danych.
 
 ## Usage
-Podstawowa składnia polecenia `cut` wygląda następująco:
+Podstawowa składnia polecenia `cut` jest następująca:
 
-```bash
+```csh
 cut [opcje] [argumenty]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji dla polecenia `cut`:
-
-- `-f`: Wybiera określone pola (kolumny) z danych.
-- `-d`: Ustala separator, który oddziela pola (domyślnie to tabulator).
-- `-c`: Wybiera określone znaki z wierszy.
-- `--complement`: Zwraca wszystkie pola z wyjątkiem tych określonych.
+- `-f`: Wybiera określone pola (kolumny) na podstawie separatora.
+- `-d`: Ustala separator pól (domyślnie jest to tabulator).
+- `-c`: Wybiera określone znaki z każdej linii.
+- `--complement`: Zwraca wszystko oprócz wybranych pól lub znaków.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `cut`:
-
-1. Wyodrębnianie drugiego pola z pliku, gdzie pola są oddzielone przecinkami:
-   ```bash
+1. Wyodrębnianie drugiego pola z pliku tekstowego, gdzie pola są oddzielone przecinkami:
+   ```csh
    cut -d ',' -f 2 plik.txt
    ```
 
-2. Wyodrębnianie pierwszych 10 znaków z pliku:
-   ```bash
-   cut -c 1-10 plik.txt
+2. Wybieranie znaków od 1 do 5 z każdej linii:
+   ```csh
+   cut -c 1-5 plik.txt
    ```
 
-3. Wyodrębnianie wielu pól (1 i 3) z pliku, gdzie pola są oddzielone tabulatorami:
-   ```bash
-   cut -f 1,3 plik.txt
+3. Wyodrębnianie pierwszego i trzeciego pola z pliku, gdzie pola są oddzielone dwukropkiem:
+   ```csh
+   cut -d ':' -f 1,3 plik.txt
    ```
 
-4. Użycie `cut` w połączeniu z `echo`:
-   ```bash
-   echo "jeden,dwa,trzy" | cut -d ',' -f 2
+4. Zwracanie wszystkich pól poza drugim:
+   ```csh
+   cut -d ',' -f 2 --complement plik.txt
    ```
 
 ## Tips
-- Używaj opcji `-d` do określenia separatora, aby dostosować `cut` do różnych formatów plików.
-- Możesz łączyć `cut` z innymi poleceniami, takimi jak `grep` czy `sort`, aby uzyskać bardziej zaawansowane operacje na danych.
-- Sprawdzaj wyniki polecenia na małych próbkach danych przed zastosowaniem go na większych plikach, aby upewnić się, że działa zgodnie z oczekiwaniami.
+- Używaj opcji `-n`, aby uniknąć dzielenia słów, gdy używasz separatorów.
+- Sprawdzaj zawartość pliku przed użyciem `cut`, aby upewnić się, że pola są poprawnie zdefiniowane.
+- Możesz łączyć `cut` z innymi poleceniami, takimi jak `grep` lub `sort`, aby uzyskać bardziej zaawansowane wyniki.

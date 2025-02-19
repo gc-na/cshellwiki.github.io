@@ -1,52 +1,44 @@
-# [Linux] Bash dirname cách sử dụng: Lấy tên thư mục chứa tệp
+# [Hệ điều hành] C Shell (csh) dirname Cách sử dụng: Lấy tên thư mục từ đường dẫn
 
 ## Overview
-Lệnh `dirname` trong Bash được sử dụng để trích xuất tên thư mục chứa một tệp hoặc đường dẫn. Nó giúp người dùng dễ dàng lấy phần thư mục của một đường dẫn mà không cần phải xử lý thủ công.
+Lệnh `dirname` trong C Shell (csh) được sử dụng để trích xuất tên thư mục từ một đường dẫn đầy đủ. Nó giúp người dùng dễ dàng lấy phần thư mục của một đường dẫn mà không cần phải xử lý thủ công.
 
 ## Usage
 Cú pháp cơ bản của lệnh `dirname` như sau:
-
-```bash
+```
 dirname [options] [arguments]
 ```
 
 ## Common Options
-- `-z`, `--zero`: Kết thúc mỗi tên đường dẫn bằng ký tự null, hữu ích khi xử lý các tên đường dẫn có khoảng trắng.
-- `--help`: Hiển thị thông tin trợ giúp về lệnh `dirname`.
+- `-z`: Chỉ định rằng đầu vào là một chuỗi rỗng.
+- `--help`: Hiển thị thông tin trợ giúp về lệnh.
 - `--version`: Hiển thị phiên bản của lệnh `dirname`.
 
 ## Common Examples
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `dirname`:
 
-1. **Lấy tên thư mục từ đường dẫn tệp:**
-   ```bash
+1. Lấy tên thư mục từ một đường dẫn đầy đủ:
+   ```csh
    dirname /home/user/documents/file.txt
    ```
    Kết quả: `/home/user/documents`
 
-2. **Lấy tên thư mục từ đường dẫn tương đối:**
-   ```bash
-   dirname ./projects/script.sh
+2. Lấy tên thư mục từ một đường dẫn tương đối:
+   ```csh
+   dirname ./projects/coding/script.sh
    ```
-   Kết quả: `./projects`
+   Kết quả: `./projects/coding`
 
-3. **Làm việc với nhiều đường dẫn:**
-   ```bash
-   dirname /var/log/syslog /etc/hosts
+3. Sử dụng với nhiều đường dẫn:
+   ```csh
+   dirname /var/log/syslog /usr/local/bin/script.sh
    ```
    Kết quả:
    ```
    /var/log
-   /etc
+   /usr/local/bin
    ```
-
-4. **Sử dụng với ký tự null:**
-   ```bash
-   printf "/home/user/documents/file.txt\0" | xargs -0 dirname
-   ```
-   Kết quả: `/home/user/documents`
 
 ## Tips
-- Sử dụng `dirname` trong các kịch bản tự động hóa để dễ dàng quản lý và thao tác với đường dẫn tệp.
-- Kết hợp `dirname` với các lệnh khác như `basename` để xử lý đường dẫn một cách hiệu quả hơn.
-- Hãy nhớ kiểm tra các tùy chọn của lệnh bằng cách sử dụng `dirname --help` để biết thêm chi tiết.
+- Khi làm việc với nhiều đường dẫn, bạn có thể sử dụng `dirname` trong một vòng lặp để xử lý từng đường dẫn một cách tự động.
+- Kết hợp `dirname` với các lệnh khác như `basename` có thể giúp bạn dễ dàng quản lý và xử lý các đường dẫn tệp tin trong shell.

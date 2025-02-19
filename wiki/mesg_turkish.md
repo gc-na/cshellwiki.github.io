@@ -1,37 +1,39 @@
-# [Linux] Bash mesg Kullanımı: Mesaj iletimi kontrolü
+# [Linux] C Shell (csh) mesg Kullanımı: Mesaj alımını kontrol etme
 
-## Overview
-`mesg` komutu, terminal oturumlarındaki mesaj iletimini kontrol etmek için kullanılır. Bu komut, diğer kullanıcıların terminalinize mesaj göndermesine izin verip vermeyeceğinizi belirlemenizi sağlar.
+## Genel Bakış
+`mesg` komutu, terminaldeki kullanıcıların mesaj alıp almayacağını kontrol etmek için kullanılır. Bu komut, diğer kullanıcıların terminalinize mesaj göndermesini engelleyebilir veya izin verebilir.
 
-## Usage
+## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-```bash
+
+```csh
 mesg [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `y`: Mesaj alımını etkinleştirir. Diğer kullanıcıların size mesaj göndermesine izin verir.
-- `n`: Mesaj alımını devre dışı bırakır. Diğer kullanıcıların size mesaj göndermesine izin vermez.
-- `--help`: Komutun kullanımını gösterir.
+## Yaygın Seçenekler
+- `y`: Mesaj alımını etkinleştirir.
+- `n`: Mesaj alımını devre dışı bırakır.
+- `?`: Mevcut mesaj durumu hakkında bilgi verir.
 
-## Common Examples
-Aşağıda `mesg` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+## Yaygın Örnekler
+Aşağıda `mesg` komutunun bazı pratik örnekleri bulunmaktadır:
 
 1. Mesaj alımını etkinleştirmek için:
-   ```bash
+   ```csh
    mesg y
    ```
 
 2. Mesaj alımını devre dışı bırakmak için:
-   ```bash
+   ```csh
    mesg n
    ```
 
-3. Komutun kullanımını görmek için:
-   ```bash
-   mesg --help
+3. Mevcut mesaj durumunu kontrol etmek için:
+   ```csh
+   mesg ?
    ```
 
-## Tips
-- Terminal oturumlarınızda gizliliği korumak için, özellikle paylaşılan sistemlerde `mesg n` komutunu kullanmayı düşünebilirsiniz.
-- Mesaj alımını etkinleştirmek veya devre dışı bırakmak, oturum açtığınız her terminal için geçerlidir; bu nedenle, her yeni oturumda ayarları kontrol etmek iyi bir uygulamadır.
+## İpuçları
+- Terminaldeki mesaj alımını devre dışı bırakmak, rahatsız edici mesajlardan kaçınmanıza yardımcı olabilir.
+- Birden fazla terminal oturumu açtığınızda, her birinde mesaj durumunu kontrol etmeyi unutmayın.
+- Mesaj durumunu sık sık değiştirmek istemiyorsanız, bir alias oluşturmayı düşünebilirsiniz.

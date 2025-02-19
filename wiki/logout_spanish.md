@@ -1,47 +1,41 @@
-# [Linux] Bash logout uso: Cerrar sesión en la terminal
+# [Linux] C Shell (csh) logout uso: Cerrar la sesión del shell actual
 
 ## Overview
-El comando `logout` se utiliza en entornos de terminal para cerrar la sesión del usuario actual. Es especialmente útil en sesiones de shell de login, donde se desea salir de manera ordenada y liberar recursos del sistema.
+El comando `logout` en C Shell (csh) se utiliza para cerrar la sesión del shell actual. Esto es útil cuando deseas salir de una sesión de terminal o de un entorno de trabajo en el que ya no necesitas estar activo.
 
 ## Usage
-La sintaxis básica del comando es la siguiente:
+La sintaxis básica del comando `logout` es la siguiente:
 
-```bash
-logout [options]
+```
+logout [options] [arguments]
 ```
 
 ## Common Options
-El comando `logout` no tiene muchas opciones, pero aquí hay algunas que pueden ser útiles:
-
-- `-f`: Forzar el cierre de sesión sin preguntar.
-- `-n`: No ejecutar el script de cierre de sesión.
+El comando `logout` no tiene muchas opciones, ya que su función principal es simplemente cerrar la sesión. Sin embargo, es importante mencionar que no se suelen utilizar argumentos adicionales.
 
 ## Common Examples
+Aquí hay algunos ejemplos prácticos del uso del comando `logout`:
 
-### Ejemplo 1: Cerrar sesión normalmente
-Para cerrar la sesión de la terminal actual, simplemente escribe:
+1. **Cerrar la sesión actual:**
+   ```csh
+   logout
+   ```
 
-```bash
-logout
-```
+2. **Cerrar la sesión en un script:**
+   ```csh
+   #!/bin/csh
+   echo "Cerrando sesión..."
+   logout
+   ```
 
-### Ejemplo 2: Forzar el cierre de sesión
-Si deseas cerrar la sesión sin confirmación, puedes usar la opción `-f`:
-
-```bash
-logout -f
-```
-
-### Ejemplo 3: Cerrar sesión en un script
-Si estás ejecutando un script y deseas cerrar la sesión al final, puedes incluir el comando `logout` al final del script:
-
-```bash
-#!/bin/bash
-# Tu script aquí
-logout
-```
+3. **Cerrar la sesión después de ejecutar un comando:**
+   ```csh
+   echo "Ejecutando tareas..."
+   # Aquí se pueden agregar otros comandos
+   logout
+   ```
 
 ## Tips
-- Asegúrate de guardar tu trabajo antes de ejecutar `logout`, ya que cerrará la sesión y perderás cualquier trabajo no guardado.
-- Utiliza `exit` en lugar de `logout` si estás en un subshell o en una sesión no de login.
-- Si estás utilizando un entorno gráfico, considera cerrar la sesión a través de la interfaz en lugar de usar el comando `logout`.
+- Asegúrate de guardar tu trabajo antes de usar `logout`, ya que cerrar la sesión terminará todos los procesos en ejecución en esa terminal.
+- Si estás utilizando un entorno gráfico, considera cerrar la sesión desde el menú del sistema en lugar de usar `logout` en la terminal.
+- Si necesitas salir de un subshell, puedes usar `exit` en lugar de `logout`, ya que `logout` está destinado a cerrar sesiones de login.

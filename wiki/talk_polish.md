@@ -1,36 +1,39 @@
-# [Linux] Bash talk użycie: Rozmowa z innym użytkownikiem
+# [Linux] C Shell (csh) talk użycie: Rozmowa z innym użytkownikiem
 
 ## Overview
-Polecenie `talk` w systemie Linux pozwala na prowadzenie rozmów w czasie rzeczywistym z innymi użytkownikami systemu. Umożliwia to komunikację tekstową, która odbywa się w podzielonym oknie terminala, co sprawia, że jest to wygodne narzędzie do szybkiej wymiany informacji.
+Polecenie `talk` w C Shell (csh) pozwala na prowadzenie rozmów w czasie rzeczywistym z innymi użytkownikami systemu. Umożliwia to interaktywne komunikowanie się, co jest przydatne w sytuacjach, gdy potrzebna jest szybka wymiana informacji.
 
 ## Usage
 Podstawowa składnia polecenia `talk` jest następująca:
 
-```
-talk [opcje] [użytkownik]@[host]
+```csh
+talk [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-s`: Wymusza użycie trybu "silent", co oznacza, że nie będą wysyłane dźwięki powiadomień.
-- `-h`: Wyświetla pomoc i informacje o użyciu polecenia.
+- `-a`: Umożliwia ignorowanie ustawień dotyczących nieprzeszkadzania.
+- `-s`: Wysyła wiadomość do użytkownika, nawet jeśli jest on zalogowany na innym terminalu.
+- `-n`: Umożliwia określenie numeru terminala, na którym ma być prowadzona rozmowa.
 
 ## Common Examples
-1. Rozpoczęcie rozmowy z użytkownikiem `jan` na tym samym hoście:
-   ```bash
-   talk jan
+Oto kilka praktycznych przykładów użycia polecenia `talk`:
+
+1. Rozpoczęcie rozmowy z użytkownikiem o nazwie `janek`:
+   ```csh
+   talk janek
    ```
 
-2. Rozpoczęcie rozmowy z użytkownikiem `ania` na zdalnym hoście `example.com`:
-   ```bash
-   talk ania@example.com
+2. Rozpoczęcie rozmowy z użytkownikiem `ania` na terminalu `pts/1`:
+   ```csh
+   talk ania pts/1
    ```
 
-3. Rozpoczęcie rozmowy w trybie cichym z użytkownikiem `marek`:
-   ```bash
-   talk -s marek
+3. Wysłanie wiadomości do użytkownika `maria`, ignorując ustawienia nieprzeszkadzania:
+   ```csh
+   talk -a maria
    ```
 
 ## Tips
-- Upewnij się, że obaj użytkownicy są zalogowani w systemie, aby rozmowa mogła się odbyć.
-- Możesz użyć polecenia `who` lub `w`, aby sprawdzić, którzy użytkownicy są aktualnie zalogowani.
-- Pamiętaj, że `talk` może nie działać w niektórych środowiskach graficznych, które nie obsługują terminali w tradycyjny sposób.
+- Upewnij się, że obie strony są zalogowane w systemie i mają otwarte terminale, aby rozmowa mogła się odbyć.
+- Zawsze sprawdzaj, czy użytkownik, z którym chcesz rozmawiać, jest dostępny, aby uniknąć niepotrzebnych prób nawiązania kontaktu.
+- Pamiętaj, że `talk` może być zablokowane przez ustawienia prywatności, więc warto skontaktować się z użytkownikiem w inny sposób przed próbą rozmowy.

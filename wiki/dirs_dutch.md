@@ -1,45 +1,49 @@
-# [Linux] Bash dirs gebruik: Beheer van de directory stack
+# [Linux] C Shell (csh) dirs gebruik: Beheer van de directory stack
 
 ## Overzicht
-De `dirs` opdracht in Bash wordt gebruikt om de inhoud van de directory stack weer te geven. Deze stack houdt een lijst bij van de directories die je hebt bezocht met de `pushd` en `popd` commando's. Het is een handige manier om snel tussen verschillende directories te navigeren.
+De `dirs` opdracht in C Shell (csh) wordt gebruikt om de huidige directory stack weer te geven. Deze stack houdt bij welke directories je hebt bezocht, zodat je eenvoudig kunt navigeren tussen verschillende locaties in het bestandssysteem.
 
 ## Gebruik
 De basis syntaxis van de `dirs` opdracht is als volgt:
 
-```bash
+```
 dirs [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-l`: Toont de directories in een lange lijstvorm.
-- `-p`: Toont de directories in een padvorm, wat nuttig kan zijn voor een snellere weergave.
+- `-c`: Leeg de directory stack.
+- `-l`: Toon de directory stack met volledige paden.
+- `+n`: Toon de directory op positie n in de stack.
+- `-n`: Toon de directory op positie n van de bovenkant van de stack.
 
 ## Veelvoorkomende Voorbeelden
 
 1. **Toon de huidige directory stack:**
-   ```bash
+   ```csh
    dirs
    ```
 
-2. **Toon de directory stack in lange lijstvorm:**
-   ```bash
+2. **Toon de directory stack met volledige paden:**
+   ```csh
    dirs -l
    ```
 
-3. **Toon de directory stack in padvorm:**
-   ```bash
-   dirs -p
+3. **Toon de directory op positie 1:**
+   ```csh
+   dirs +1
    ```
 
-4. **Gebruik `pushd` en `popd` om directories toe te voegen en te verwijderen:**
-   ```bash
-   pushd /pad/naar/directory
-   dirs
-   popd
-   dirs
+4. **Leeg de directory stack:**
+   ```csh
+   dirs -c
+   ```
+
+5. **Toon de directory op positie 0 van de bovenkant van de stack:**
+   ```csh
+   dirs -0
    ```
 
 ## Tips
-- Gebruik `pushd` en `popd` samen met `dirs` om efficiënt te navigeren tussen verschillende directories.
-- Vergeet niet dat de volgorde van de directories in de stack belangrijk is; de bovenste directory is de huidige werkdirectory.
-- Experimenteer met de opties om te zien welke weergave het beste voor jou werkt.
+- Gebruik `pushd` en `popd` in combinatie met `dirs` om efficiënt tussen directories te navigeren.
+- Controleer regelmatig je directory stack met `dirs` om te zien waar je je bevindt in je navigatiegeschiedenis.
+- Maak gebruik van de `-l` optie als je met lange paden werkt, zodat je altijd het volledige pad kunt zien.

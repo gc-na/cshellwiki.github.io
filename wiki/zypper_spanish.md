@@ -1,7 +1,7 @@
-# [Linux] Bash zypper Uso: Gestor de paquetes para sistemas openSUSE
+# [Linux] C Shell (csh) zypper uso: Gestor de paquetes para sistemas basados en openSUSE
 
 ## Overview
-El comando `zypper` es una herramienta de línea de comandos utilizada para gestionar paquetes en sistemas operativos basados en openSUSE. Permite instalar, actualizar y eliminar software, así como gestionar repositorios y resolver dependencias de manera eficiente.
+El comando `zypper` es una herramienta de línea de comandos utilizada para gestionar paquetes en sistemas operativos basados en openSUSE. Permite instalar, actualizar y eliminar software, así como gestionar repositorios y dependencias de paquetes.
 
 ## Usage
 La sintaxis básica del comando `zypper` es la siguiente:
@@ -13,45 +13,45 @@ zypper [opciones] [argumentos]
 ## Common Options
 - `install`: Instala uno o más paquetes.
 - `remove`: Elimina uno o más paquetes.
-- `update`: Actualiza los paquetes instalados a la última versión disponible.
+- `update`: Actualiza todos los paquetes instalados a la última versión.
 - `search`: Busca paquetes que coincidan con un término específico.
-- `refresh`: Actualiza la información de los repositorios.
-- `list-updates`: Muestra una lista de paquetes que tienen actualizaciones disponibles.
+- `info`: Muestra información detallada sobre un paquete.
+- `refresh`: Actualiza la lista de repositorios.
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso de `zypper`:
 
-### Instalar un paquete
-```bash
-zypper install nombre_del_paquete
-```
+- **Instalar un paquete**:
+  ```bash
+  zypper install nombre_del_paquete
+  ```
 
-### Eliminar un paquete
-```bash
-zypper remove nombre_del_paquete
-```
+- **Eliminar un paquete**:
+  ```bash
+  zypper remove nombre_del_paquete
+  ```
 
-### Actualizar todos los paquetes instalados
-```bash
-zypper update
-```
+- **Actualizar todos los paquetes**:
+  ```bash
+  zypper update
+  ```
 
-### Buscar un paquete
-```bash
-zypper search nombre_del_paquete
-```
+- **Buscar un paquete**:
+  ```bash
+  zypper search nombre_del_paquete
+  ```
 
-### Refrescar la información de los repositorios
-```bash
-zypper refresh
-```
+- **Mostrar información sobre un paquete**:
+  ```bash
+  zypper info nombre_del_paquete
+  ```
 
-### Listar actualizaciones disponibles
-```bash
-zypper list-updates
-```
+- **Actualizar la lista de repositorios**:
+  ```bash
+  zypper refresh
+  ```
 
 ## Tips
-- Siempre es recomendable ejecutar `zypper refresh` antes de instalar o actualizar paquetes para asegurarte de que tienes la información más reciente de los repositorios.
-- Utiliza `zypper search` para encontrar paquetes específicos antes de instalarlos, lo que te ayudará a evitar errores de escritura en los nombres de los paquetes.
-- Puedes combinar opciones, por ejemplo, `zypper install paquete1 paquete2` para instalar múltiples paquetes a la vez.
+- Siempre es recomendable ejecutar `zypper refresh` antes de realizar actualizaciones para asegurarte de que tienes la información más reciente de los repositorios.
+- Utiliza `zypper search` para encontrar paquetes antes de instalarlos, asegurándote de que estás eligiendo el correcto.
+- Puedes usar `zypper update nombre_del_paquete` para actualizar un paquete específico en lugar de todos los paquetes.

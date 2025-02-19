@@ -1,53 +1,49 @@
-# [Linux] Bash hostname Verwendung: Zeigt oder setzt den Hostnamen des Systems an
+# [Linux] C Shell (csh) hostname Verwendung: Zeigt den Hostnamen des Systems an
 
 ## Übersicht
-Der Befehl `hostname` wird verwendet, um den aktuellen Hostnamen des Systems anzuzeigen oder zu ändern. Der Hostname ist der Name, unter dem ein Computer im Netzwerk identifiziert wird.
+Der Befehl `hostname` wird verwendet, um den Namen des aktuellen Hosts (Rechners) anzuzeigen oder zu ändern. Dies ist besonders nützlich, um den Computer in einem Netzwerk zu identifizieren.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
-hostname [Optionen] [Argumente]
+```csh
+hostname [optionen] [argumente]
 ```
 
 ## Häufige Optionen
-- `-s`: Zeigt nur den kurzen Hostnamen an (ohne Domain).
-- `-f`: Zeigt den vollständigen Hostnamen (Fully Qualified Domain Name, FQDN) an.
-- `-i`: Gibt die IP-Adresse des Hostnamens zurück.
-- `-b`: Setzt den Hostnamen auf den angegebenen Wert.
+- `-f`: Zeigt den vollständigen qualifizierten Domainnamen (FQDN) des Hosts an.
+- `-s`: Gibt nur den kurzen Hostnamen aus.
+- `-i`: Zeigt die IP-Adresse des Hosts an.
 
 ## Häufige Beispiele
-Um den aktuellen Hostnamen anzuzeigen:
+Hier sind einige praktische Beispiele für die Verwendung des `hostname`-Befehls:
 
-```bash
-hostname
-```
+1. **Aktuellen Hostnamen anzeigen:**
+   ```csh
+   hostname
+   ```
 
-Um den kurzen Hostnamen anzuzeigen:
+2. **Vollständigen qualifizierten Domainnamen anzeigen:**
+   ```csh
+   hostname -f
+   ```
 
-```bash
-hostname -s
-```
+3. **Kurzen Hostnamen anzeigen:**
+   ```csh
+   hostname -s
+   ```
 
-Um den vollständigen Hostnamen anzuzeigen:
+4. **IP-Adresse des Hosts anzeigen:**
+   ```csh
+   hostname -i
+   ```
 
-```bash
-hostname -f
-```
-
-Um die IP-Adresse des Hostnamens zu erhalten:
-
-```bash
-hostname -i
-```
-
-Um den Hostnamen zu ändern:
-
-```bash
-sudo hostname neuer-hostname
-```
+5. **Hostnamen ändern:**
+   ```csh
+   hostname neuer-hostname
+   ```
 
 ## Tipps
-- Verwenden Sie `sudo`, um den Hostnamen zu ändern, da Administratorrechte erforderlich sind.
-- Überprüfen Sie nach dem Ändern des Hostnamens die Netzwerkeinstellungen, um sicherzustellen, dass alles korrekt konfiguriert ist.
-- Denken Sie daran, dass Änderungen am Hostnamen möglicherweise einen Neustart des Systems oder der Netzwerkschnittstelle erfordern, um wirksam zu werden.
+- Stellen Sie sicher, dass Sie über die erforderlichen Berechtigungen verfügen, um den Hostnamen zu ändern.
+- Verwenden Sie den Befehl `hostname` ohne Optionen, um schnell den aktuellen Hostnamen zu überprüfen.
+- Der Hostname sollte einfach und einprägsam sein, insbesondere in Netzwerken mit vielen Geräten.

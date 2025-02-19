@@ -1,47 +1,39 @@
-# [Linux] Bash rmmod gebruik: Verwijder een kernelmodule
+# [Linux] C Shell (csh) rmmod gebruik: Verwijder een kernelmodule
 
 ## Overzicht
-De `rmmod`-opdracht wordt gebruikt om een geladen kernelmodule uit de Linux-kernel te verwijderen. Dit kan nodig zijn om systeembronnen vrij te maken of om conflicten met andere modules te voorkomen.
+Het `rmmod` commando wordt gebruikt om een geladen kernelmodule uit de Linux kernel te verwijderen. Dit is nuttig voor het beheren van modules die niet langer nodig zijn of die moeten worden vervangen.
 
 ## Gebruik
-De basis syntaxis van de `rmmod`-opdracht is als volgt:
+De basis syntaxis van het `rmmod` commando is als volgt:
 
-```bash
+```csh
 rmmod [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
 - `-f`: Forceert het verwijderen van de module, zelfs als deze in gebruik is.
-- `-n`: Negeert de controle op de module en verwijdert deze zonder waarschuwing.
-- `--all`: Verwijdert alle modules die kunnen worden verwijderd.
+- `-n`: Voorkomt dat de module wordt geladen of verwijderd, maar geeft alleen de naam van de module weer.
+- `--help`: Toont een helpbericht met informatie over het gebruik van het commando.
 
 ## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van `rmmod`:
 
 1. **Verwijder een specifieke module:**
-
-   ```bash
+   ```csh
    rmmod mijn_module
    ```
 
-2. **Forceer het verwijderen van een module:**
-
-   ```bash
+2. **Verwijder een module met de force optie:**
+   ```csh
    rmmod -f mijn_module
    ```
 
-3. **Verwijder alle verwijderbare modules:**
-
-   ```bash
-   rmmod --all
-   ```
-
-4. **Verwijder een module met een specifieke optie:**
-
-   ```bash
-   rmmod -n mijn_module
+3. **Toon hulpinformatie:**
+   ```csh
+   rmmod --help
    ```
 
 ## Tips
-- Controleer altijd of de module in gebruik is voordat je deze probeert te verwijderen, om systeeminstabiliteit te voorkomen.
-- Gebruik de `lsmod`-opdracht om een lijst van geladen modules te bekijken voordat je `rmmod` gebruikt.
-- Wees voorzichtig met het gebruik van de `-f`-optie, omdat dit kan leiden tot onverwachte systeemgedragingen.
+- Zorg ervoor dat de module niet in gebruik is voordat je deze probeert te verwijderen, tenzij je de `-f` optie gebruikt.
+- Controleer altijd de status van de module met `lsmod` voordat je `rmmod` gebruikt om te bevestigen dat deze is geladen.
+- Gebruik `dmesg` om eventuele foutmeldingen te bekijken die kunnen optreden tijdens het verwijderen van een module.

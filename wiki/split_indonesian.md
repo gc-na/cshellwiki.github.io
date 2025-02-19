@@ -1,51 +1,47 @@
-# [Linux] Bash split penggunaan: Memecah file menjadi beberapa bagian
+# [Sistem Operasi] C Shell (csh) split Penggunaan: Memecah file menjadi beberapa bagian
 
 ## Overview
-Perintah `split` digunakan untuk membagi file besar menjadi beberapa bagian yang lebih kecil. Ini sangat berguna ketika Anda perlu mengelola file yang terlalu besar untuk diproses sekaligus atau untuk mengirim melalui email.
+Perintah `split` dalam C Shell (csh) digunakan untuk membagi file besar menjadi beberapa bagian yang lebih kecil. Ini sangat berguna ketika Anda perlu mengelola file yang terlalu besar untuk diproses sekaligus atau untuk mengirim melalui email.
 
 ## Usage
 Sintaks dasar dari perintah `split` adalah sebagai berikut:
 
-```bash
+```
 split [options] [arguments]
 ```
 
 ## Common Options
 Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah `split`:
 
-- `-l [jumlah]`: Membagi file berdasarkan jumlah baris.
-- `-b [ukuran]`: Membagi file berdasarkan ukuran byte.
-- `-d`: Menggunakan angka desimal untuk penamaan file output.
+- `-l [jumlah]`: Membagi file berdasarkan jumlah baris tertentu.
+- `-b [ukuran]`: Membagi file berdasarkan ukuran byte tertentu.
+- `-d`: Menggunakan angka sebagai sufiks untuk nama file output.
 - `--additional-suffix=[sufiks]`: Menambahkan sufiks tambahan pada nama file output.
 
 ## Common Examples
 Berikut adalah beberapa contoh praktis penggunaan perintah `split`:
 
-1. **Membagi file berdasarkan jumlah baris:**
-   ```bash
+1. Membagi file berdasarkan jumlah baris:
+   ```csh
    split -l 1000 file.txt
    ```
-   Perintah ini akan membagi `file.txt` menjadi beberapa file yang masing-masing berisi 1000 baris.
 
-2. **Membagi file berdasarkan ukuran byte:**
-   ```bash
-   split -b 1M file.zip
+2. Membagi file berdasarkan ukuran byte:
+   ```csh
+   split -b 1M file_large.txt
    ```
-   Perintah ini akan membagi `file.zip` menjadi beberapa file yang masing-masing berukuran 1 Megabyte.
 
-3. **Membagi file dengan penamaan angka desimal:**
-   ```bash
-   split -d -l 500 file.txt part_
+3. Menggunakan angka sebagai sufiks untuk nama file output:
+   ```csh
+   split -d -l 500 file.txt
    ```
-   Perintah ini akan membagi `file.txt` menjadi bagian-bagian yang masing-masing berisi 500 baris, dengan nama file output seperti `part_00`, `part_01`, dan seterusnya.
 
-4. **Menambahkan sufiks tambahan pada nama file output:**
-   ```bash
-   split -l 2000 --additional-suffix=.txt file.txt part_
+4. Menambahkan sufiks tambahan pada nama file output:
+   ```csh
+   split --additional-suffix=.txt -l 200 file.txt
    ```
-   Perintah ini akan membagi `file.txt` menjadi bagian-bagian yang masing-masing berisi 2000 baris, dengan nama file output seperti `part_aa.txt`, `part_ab.txt`, dan seterusnya.
 
 ## Tips
-- Pastikan untuk memeriksa ukuran dan jumlah baris file sebelum membagi untuk menghindari pembuatan terlalu banyak file kecil.
-- Gunakan opsi `-d` jika Anda ingin penamaan file lebih teratur dengan angka.
-- Pertimbangkan untuk menggunakan `cat` untuk menggabungkan kembali file yang telah dibagi jika diperlukan.
+- Pastikan untuk memeriksa ukuran file output setelah membagi untuk memastikan bahwa tidak ada data yang hilang.
+- Gunakan opsi `-d` jika Anda ingin menghindari kebingungan dengan nama file yang dihasilkan.
+- Pertimbangkan untuk menggunakan opsi `--additional-suffix` jika Anda ingin menjaga konsistensi format file.

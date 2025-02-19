@@ -1,51 +1,48 @@
-# [Linux] Bash timedatectl Kullanımı: Sistem tarih ve saatini yönetme
+# [Linux] C Shell (csh) timedatectl Kullanımı: Zaman ve tarih ayarlarını yönetme
 
-## Overview
-`timedatectl`, sistemin tarih ve saat ayarlarını yönetmek için kullanılan bir komuttur. Bu komut, sistem saatini ayarlamanıza, zaman dilimini değiştirmenize ve NTP (Ağ Zaman Protokolü) senkronizasyonunu kontrol etmenize olanak tanır.
+## Genel Bakış
+`timedatectl` komutu, sistemin zaman ve tarih ayarlarını yönetmek için kullanılır. Bu komut, sistem saatini ayarlamak, zaman dilimini değiştirmek ve NTP (Ağ Zaman Protokolü) senkronizasyonunu kontrol etmek gibi işlevleri yerine getirir.
 
-## Usage
-Temel sözdizimi şu şekildedir:
-
-```bash
-timedatectl [options] [arguments]
+## Kullanım
+Temel sözdizimi aşağıdaki gibidir:
+```csh
+timedatectl [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `status`: Sistem tarih ve saat bilgilerini gösterir.
-- `set-time`: Belirtilen tarihi ve saati ayarlar.
-- `set-timezone`: Belirtilen zaman dilimini ayarlar.
-- `set-ntp`: NTP senkronizasyonunu etkinleştirir veya devre dışı bırakır.
-- `list-timezones`: Mevcut zaman dilimlerini listeler.
+## Yaygın Seçenekler
+- `set-time`: Sistemin saatini ayarlamak için kullanılır.
+- `set-timezone`: Zaman dilimini değiştirmek için kullanılır.
+- `status`: Mevcut zaman ve tarih ayarlarını görüntüler.
+- `list-timezones`: Tüm zaman dilimlerini listeler.
+- `set-ntp`: NTP senkronizasyonunu etkinleştirmek veya devre dışı bırakmak için kullanılır.
 
-## Common Examples
-Aşağıda `timedatectl` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
-
-### 1. Sistem tarih ve saat bilgilerini görüntüleme
-```bash
-timedatectl status
-```
-
-### 2. Tarih ve saati ayarlama
-```bash
+## Yaygın Örnekler
+Sistem saatini ayarlamak için:
+```csh
 timedatectl set-time '2023-10-01 12:00:00'
 ```
 
-### 3. Zaman dilimini ayarlama
-```bash
+Zaman dilimini değiştirmek için:
+```csh
 timedatectl set-timezone Europe/Istanbul
 ```
 
-### 4. NTP senkronizasyonunu etkinleştirme
-```bash
-timedatectl set-ntp true
+Mevcut zaman ve tarih ayarlarını görüntülemek için:
+```csh
+timedatectl status
 ```
 
-### 5. Mevcut zaman dilimlerini listeleme
-```bash
+Tüm zaman dilimlerini listelemek için:
+```csh
 timedatectl list-timezones
 ```
 
-## Tips
-- Tarih ve saat ayarlarını yapmadan önce mevcut ayarları kontrol etmek için `timedatectl status` komutunu kullanın.
-- Zaman dilimi ayarlarken, doğru zaman dilimini seçtiğinizden emin olun; aksi takdirde tarih ve saat yanlış olabilir.
-- NTP senkronizasyonunu etkinleştirerek sistem saatinin otomatik olarak güncel kalmasını sağlayabilirsiniz.
+NTP senkronizasyonunu etkinleştirmek için:
+```csh
+timedatectl set-ntp true
+```
+
+## İpuçları
+- Zaman dilimini ayarlarken doğru zaman dilimini seçtiğinizden emin olun.
+- `timedatectl status` komutunu kullanarak sistem saatinin doğru ayarlandığını kontrol edin.
+- NTP senkronizasyonunu etkinleştirmek, sistem saatinin her zaman doğru olmasını sağlar, bu nedenle bu seçeneği kullanmayı unutmayın.

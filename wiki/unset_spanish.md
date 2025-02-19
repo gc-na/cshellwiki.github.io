@@ -1,12 +1,12 @@
-# [Linux] Bash unset Uso: Eliminar variables de entorno
+# [Linux] C Shell (csh) unset Uso: Eliminar variables de entorno
 
 ## Overview
-El comando `unset` se utiliza en Bash para eliminar variables de entorno y funciones definidas en el shell. Al usar `unset`, puedes liberar espacio en la memoria y evitar que se utilicen variables que ya no son necesarias.
+El comando `unset` en C Shell (csh) se utiliza para eliminar variables de entorno o funciones definidas en el shell. Esto es útil para liberar memoria o evitar conflictos al redefinir variables.
 
 ## Usage
-La sintaxis básica del comando `unset` es la siguiente:
+La sintaxis básica del comando es la siguiente:
 
-```bash
+```csh
 unset [opciones] [argumentos]
 ```
 
@@ -18,33 +18,33 @@ unset [opciones] [argumentos]
 Aquí hay algunos ejemplos prácticos del uso de `unset`:
 
 1. **Eliminar una variable de entorno:**
-   ```bash
-   MY_VAR="Hola Mundo"
-   echo $MY_VAR  # Salida: Hola Mundo
+   ```csh
+   set MY_VAR="Hola Mundo"
+   echo $MY_VAR  # Muestra "Hola Mundo"
    unset MY_VAR
-   echo $MY_VAR  # Salida: (vacío)
+   echo $MY_VAR  # No muestra nada
    ```
 
 2. **Eliminar una función:**
-   ```bash
-   mi_funcion() {
-       echo "Esta es una función."
+   ```csh
+   function greet {
+       echo "¡Hola!"
    }
-   mi_funcion  # Salida: Esta es una función.
-   unset -f mi_funcion
-   mi_funcion  # Salida: comando no encontrado
+   greet  # Muestra "¡Hola!"
+   unset -f greet
+   greet  # Genera un error porque la función ya no existe
    ```
 
 3. **Eliminar múltiples variables a la vez:**
-   ```bash
-   VAR1="Valor 1"
-   VAR2="Valor 2"
-   echo $VAR1 $VAR2  # Salida: Valor 1 Valor 2
+   ```csh
+   set VAR1="Valor 1"
+   set VAR2="Valor 2"
    unset VAR1 VAR2
-   echo $VAR1 $VAR2  # Salida: (vacío) (vacío)
+   echo $VAR1  # No muestra nada
+   echo $VAR2  # No muestra nada
    ```
 
 ## Tips
-- Asegúrate de que la variable o función que deseas eliminar no sea necesaria antes de usar `unset`, ya que no se puede recuperar una vez eliminada.
-- Utiliza `unset -v` para eliminar solo variables y `unset -f` para funciones, lo que te permite ser más específico en lo que deseas eliminar.
-- Es una buena práctica limpiar las variables que ya no necesitas al final de tus scripts para evitar conflictos en futuras ejecuciones.
+- Asegúrate de que no necesitas la variable o función antes de usar `unset`, ya que no se puede recuperar una vez eliminada.
+- Utiliza `unset -v` para eliminar solo variables y `unset -f` para funciones, lo que te permite gestionar mejor el espacio en memoria.
+- Puedes verificar si una variable ha sido eliminada usando `echo` o `set` para listar las variables actuales.

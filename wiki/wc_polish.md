@@ -1,59 +1,53 @@
-# [Linux] Bash wc użycie: Zliczanie linii, słów i znaków w plikach
+# [Linux] C Shell (csh) wc użycie: zliczanie linii, słów i bajtów
 
-## Overview
-Polecenie `wc` (word count) w systemie Linux służy do zliczania linii, słów i znaków w plikach tekstowych. Jest to przydatne narzędzie do analizy zawartości plików oraz do szybkiego uzyskiwania informacji o ich wielkości.
+## Przegląd
+Polecenie `wc` (word count) w C Shell służy do zliczania linii, słów i bajtów w plikach tekstowych. Jest to przydatne narzędzie do analizy zawartości plików.
 
-## Usage
+## Użycie
 Podstawowa składnia polecenia `wc` jest następująca:
 
-```bash
+```csh
 wc [opcje] [argumenty]
 ```
 
-## Common Options
-Oto kilka powszechnie używanych opcji dla polecenia `wc`:
+## Często używane opcje
+- `-l` – zlicza tylko linie.
+- `-w` – zlicza tylko słowa.
+- `-c` – zlicza tylko bajty.
+- `-m` – zlicza znaki (w tym przypadku również znaki multibyte).
 
-- `-l`: Zlicza tylko linie.
-- `-w`: Zlicza tylko słowa.
-- `-c`: Zlicza tylko znaki.
-- `-m`: Zlicza znaki (w tym znaki multibyte).
-- `-L`: Wyświetla długość najdłuższej linii.
-
-## Common Examples
+## Przykłady
 Oto kilka praktycznych przykładów użycia polecenia `wc`:
 
 1. Zliczanie linii w pliku:
-   ```bash
+   ```csh
    wc -l plik.txt
    ```
 
 2. Zliczanie słów w pliku:
-   ```bash
+   ```csh
    wc -w plik.txt
    ```
 
-3. Zliczanie znaków w pliku:
-   ```bash
+3. Zliczanie bajtów w pliku:
+   ```csh
    wc -c plik.txt
    ```
 
-4. Zliczanie linii, słów i znaków jednocześnie:
-   ```bash
+4. Zliczanie linii, słów i bajtów jednocześnie:
+   ```csh
    wc plik.txt
    ```
 
-5. Zliczanie najdłuższej linii w pliku:
-   ```bash
-   wc -L plik.txt
+5. Zliczanie linii w wielu plikach:
+   ```csh
+   wc -l plik1.txt plik2.txt
    ```
 
-## Tips
-- Możesz używać `wc` w połączeniu z innymi poleceniami, na przykład z `cat`, aby zliczać zawartość wielu plików:
-  ```bash
-  cat plik1.txt plik2.txt | wc
+## Wskazówki
+- Używaj opcji `-l`, `-w` i `-c` w zależności od tego, co chcesz zliczyć, aby uzyskać bardziej precyzyjne wyniki.
+- Możesz używać `wc` w połączeniu z innymi poleceniami, na przykład z `grep`, aby zliczać linie spełniające określone kryteria:
+  ```csh
+  grep "szukany_tekst" plik.txt | wc -l
   ```
-- Jeśli chcesz zliczać zawartość wielu plików jednocześnie, wystarczy podać ich nazwy jako argumenty:
-  ```bash
-  wc plik1.txt plik2.txt
-  ```
-- Pamiętaj, że `wc` działa również na danych wejściowych z potoku, co czyni go bardzo elastycznym narzędziem w skryptach bashowych.
+- Zawsze sprawdzaj, czy plik, który chcesz zliczyć, istnieje, aby uniknąć błędów.

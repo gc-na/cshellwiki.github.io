@@ -1,48 +1,44 @@
-# [Linux] Bash blkid Kullanımı: Disk ve dosya sistemlerini tanımlama
+# [Linux] C Shell (csh) blkid Kullanımı: Disk bölümlerinin etiketlerini ve UUID'lerini görüntüleme
 
-## Overview
-`blkid` komutu, sistemdeki blok aygıtlarının (diskler, bölümler vb.) kimlik bilgilerini ve dosya sistemlerini görüntülemek için kullanılır. Bu komut, aygıtların UUID'lerini, etiketlerini ve dosya sistemlerini hızlı bir şekilde elde etmenizi sağlar.
+## Genel Bakış
+`blkid` komutu, sistemdeki disk bölümlerinin etiketlerini, UUID'lerini ve dosya sistemlerini görüntülemek için kullanılır. Bu komut, disk yönetimi ve dosya sistemleri hakkında bilgi edinmek için oldukça faydalıdır.
 
-## Usage
-Temel kullanım şekli aşağıdaki gibidir:
-
+## Kullanım
+Temel sözdizimi aşağıdaki gibidir:
 ```bash
 blkid [options] [arguments]
 ```
 
-## Common Options
-- `-o, --output`: Çıktı formatını belirler. Örneğin, `value`, `full`, `list` gibi seçenekler mevcuttur.
-- `-s, --match-tag`: Belirli bir etiketle eşleşen bilgileri gösterir.
-- `-p, --probe`: Aygıtları sorgulamak için kullanılır.
-- `-h, --help`: Komutun kullanımını ve seçeneklerini gösterir.
+## Yaygın Seçenekler
+- `-o`: Çıktı formatını belirler. Örneğin, `-o value` sadece değerleri gösterir.
+- `-s`: Belirli bir özellik için çıktı alır. Örneğin, `-s UUID` sadece UUID'leri gösterir.
+- `-p`: Cihaz dosyalarını otomatik olarak bulmayı devre dışı bırakır.
+- `-c`: Önbellek dosyasını belirtir.
 
-## Common Examples
-Aşağıda `blkid` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+## Yaygın Örnekler
+Aşağıda `blkid` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-1. Tüm blok aygıtlarını listeleme:
+1. Tüm disk bölümlerinin bilgilerini görüntüleme:
    ```bash
    blkid
    ```
 
-2. Belirli bir aygıtın bilgilerini görüntüleme:
+2. Sadece UUID'leri listeleme:
+   ```bash
+   blkid -s UUID
+   ```
+
+3. Belirli bir dosya sisteminin bilgilerini görüntüleme (örneğin, `/dev/sda1`):
    ```bash
    blkid /dev/sda1
    ```
 
-3. Çıktıyı sadece UUID ile gösterme:
+4. Çıktıyı sadece değer formatında gösterme:
    ```bash
-   blkid -o value -s UUID /dev/sda1
+   blkid -o value -s UUID
    ```
 
-4. Tüm aygıtların dosya sistemlerini listeleme:
-   ```bash
-   blkid -o list
-   ```
-
-## Tips
-- `blkid` komutunu `sudo` ile çalıştırmak, bazı aygıtlara erişim izni gerektiren durumlarda faydalı olabilir.
-- Çıktıyı bir dosyaya yönlendirmek için `>` operatörünü kullanabilirsiniz:
-  ```bash
-  blkid > aygıt_bilgileri.txt
-  ```
-- UUID'leri kullanarak belirli bir aygıta referans vermek, sistemdeki aygıtların değişkenlik göstermesi durumunda daha güvenilir bir yöntemdir.
+## İpuçları
+- `blkid` komutunu kullanmadan önce, sistemdeki disk bölümlerinin güncel olduğundan emin olun.
+- Çıktıyı daha okunabilir hale getirmek için `grep` ile birleştirerek belirli bilgileri filtreleyebilirsiniz.
+- Disk bölümlerinin etiketlerini ve UUID'lerini not almak, sistem yönetimi sırasında faydalı olabilir.

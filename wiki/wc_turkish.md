@@ -1,56 +1,57 @@
-# [Linux] Bash wc Kullanımı: Dosya içeriğindeki satır, kelime ve byte sayısını hesaplar
+# [Linux] C Shell (csh) wc Kullanımı: Dosya içeriğini sayma
 
-## Overview
-`wc` (word count), bir dosyanın içeriğindeki satır, kelime ve byte sayısını hesaplamak için kullanılan bir Bash komutudur. Bu komut, metin dosyalarının analizinde ve içeriklerinin hızlı bir şekilde özetlenmesinde oldukça faydalıdır.
+## Genel Bakış
+`wc` (word count) komutu, bir dosyanın içindeki satır, kelime ve byte sayısını hesaplamak için kullanılır. Bu komut, metin dosyalarının analizinde oldukça faydalıdır.
 
-## Usage
-Temel sözdizimi aşağıdaki gibidir:
+## Kullanım
+Temel sözdizimi şu şekildedir:
+
 ```bash
-wc [options] [arguments]
+wc [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `-l`: Sadece satır sayısını gösterir.
-- `-w`: Sadece kelime sayısını gösterir.
-- `-c`: Sadece byte sayısını gösterir.
-- `-m`: Sadece karakter sayısını gösterir.
+## Yaygın Seçenekler
+- `-l`: Satır sayısını gösterir.
+- `-w`: Kelime sayısını gösterir.
+- `-c`: Byte sayısını gösterir.
+- `-m`: Karakter sayısını gösterir.
 - `-L`: En uzun satırın uzunluğunu gösterir.
 
-## Common Examples
-Aşağıda `wc` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+## Yaygın Örnekler
+Aşağıda `wc` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. Bir dosyanın satır, kelime ve byte sayısını görüntülemek:
-   ```bash
-   wc dosya.txt
-   ```
-
-2. Sadece satır sayısını almak:
+1. Bir dosyanın satır sayısını öğrenmek için:
    ```bash
    wc -l dosya.txt
    ```
 
-3. Sadece kelime sayısını almak:
+2. Bir dosyanın kelime sayısını öğrenmek için:
    ```bash
    wc -w dosya.txt
    ```
 
-4. Sadece byte sayısını almak:
+3. Bir dosyanın byte sayısını öğrenmek için:
    ```bash
    wc -c dosya.txt
    ```
 
-5. Birden fazla dosyanın satır, kelime ve byte sayısını görüntülemek:
+4. Birden fazla dosyanın satır, kelime ve byte sayısını öğrenmek için:
    ```bash
    wc dosya1.txt dosya2.txt
    ```
 
-## Tips
-- `wc` komutunu diğer komutlarla birleştirerek daha karmaşık analizler yapabilirsiniz. Örneğin, `grep` ile belirli bir kelimeyi içeren satırları sayabilirsiniz:
+5. En uzun satırın uzunluğunu öğrenmek için:
+   ```bash
+   wc -L dosya.txt
+   ```
+
+## İpuçları
+- `wc` komutunu `cat` komutuyla birleştirerek, birden fazla dosyanın içeriğini bir arada sayabilirsiniz:
   ```bash
-  grep "kelime" dosya.txt | wc -l
+  cat dosya1.txt dosya2.txt | wc
   ```
-- Dosya içeriğini incelemeden önce `wc` komutunu kullanarak dosyanın büyüklüğünü hızlıca öğrenebilirsiniz.
-- `wc` komutunu bir dosya yerine standart girdi ile de kullanabilirsiniz. Örneğin, bir metni doğrudan terminalden girerek kelime sayısını öğrenmek için:
+- Çıktıyı daha okunabilir hale getirmek için, `sort` komutuyla birlikte kullanabilirsiniz:
   ```bash
-  echo "Bu bir test metnidir." | wc -w
+  wc -l dosya.txt | sort -n
   ```
+- `wc` komutunu bir dosya içeriğini analiz etmek için bir betik içinde kullanarak otomatikleştirebilirsiniz.

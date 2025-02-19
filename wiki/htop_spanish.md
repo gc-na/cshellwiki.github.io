@@ -1,7 +1,7 @@
-# [Linux] Bash htop Uso: Monitorización interactiva de procesos
+# [Linux] C Shell (csh) htop uso: Monitoreo interactivo de procesos
 
 ## Overview
-El comando `htop` es una herramienta de monitorización interactiva que permite visualizar en tiempo real los procesos que se están ejecutando en un sistema Linux. A diferencia de `top`, `htop` ofrece una interfaz más amigable y permite la navegación y gestión de procesos de manera más sencilla.
+El comando `htop` es una herramienta de monitoreo interactivo que permite visualizar y gestionar los procesos que se están ejecutando en un sistema. A diferencia del comando `top`, `htop` ofrece una interfaz más amigable y colorida, permitiendo a los usuarios realizar acciones como matar procesos, cambiar la prioridad y más, todo desde una sola pantalla.
 
 ## Usage
 La sintaxis básica del comando `htop` es la siguiente:
@@ -11,37 +11,40 @@ htop [opciones] [argumentos]
 ```
 
 ## Common Options
-- `-h`, `--help`: Muestra la ayuda y las opciones disponibles.
-- `-s`, `--sort`: Permite ordenar los procesos por diferentes criterios (por ejemplo, uso de CPU o memoria).
+- `-h`, `--help`: Muestra la ayuda y la información sobre el uso de `htop`.
+- `-s`, `--sort`: Permite especificar el criterio de ordenación de los procesos (por ejemplo, CPU, memoria).
 - `-p`, `--pid`: Muestra solo los procesos con los identificadores de proceso (PID) especificados.
-- `-u`, `--user`: Filtra los procesos para mostrar solo aquellos pertenecientes a un usuario específico.
+- `-u`, `--user`: Muestra solo los procesos del usuario especificado.
 
 ## Common Examples
-- Para iniciar `htop` simplemente, ejecuta:
+Aquí hay algunos ejemplos prácticos del uso de `htop`:
 
-```bash
-htop
-```
+1. **Iniciar htop**:
+   ```bash
+   htop
+   ```
 
-- Para ordenar los procesos por uso de CPU:
+2. **Ordenar por uso de CPU**:
+   ```bash
+   htop -s PERCENT_CPU
+   ```
 
-```bash
-htop -s PERCENT_CPU
-```
+3. **Mostrar procesos de un usuario específico**:
+   ```bash
+   htop -u nombre_usuario
+   ```
 
-- Para mostrar solo los procesos de un usuario específico, por ejemplo, "usuario1":
+4. **Mostrar solo un proceso específico**:
+   ```bash
+   htop -p 1234
+   ```
 
-```bash
-htop -u usuario1
-```
-
-- Para mostrar información de procesos específicos por PID, por ejemplo, 1234:
-
-```bash
-htop -p 1234
-```
+5. **Mostrar ayuda**:
+   ```bash
+   htop -h
+   ```
 
 ## Tips
-- Usa las teclas de función (F1 a F10) para acceder a diferentes funciones dentro de `htop`, como la ayuda (F1) o la búsqueda (F3).
-- Puedes matar un proceso seleccionándolo y presionando `F9`, lo que te permitirá finalizar procesos de manera rápida.
-- Personaliza la visualización de columnas y la información que deseas ver presionando `F2` para acceder a la configuración.
+- Utiliza las teclas de función (F1 a F10) para acceder a diferentes opciones y configuraciones dentro de `htop`.
+- Puedes usar las teclas de flecha para navegar entre los procesos y la tecla `F9` para matar un proceso seleccionado.
+- Personaliza la visualización de `htop` presionando `F2` para acceder a la configuración y ajustar las columnas mostradas según tus necesidades.

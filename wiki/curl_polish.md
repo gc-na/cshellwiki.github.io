@@ -1,59 +1,49 @@
-# [Linux] Bash curl użycie: Pobieranie i wysyłanie danych przez URL
+# [Linux] C Shell (csh) curl użycie: Pobieranie danych z internetu
 
 ## Overview
-Polecenie `curl` jest narzędziem wiersza poleceń, które umożliwia przesyłanie danych do lub z serwera przy użyciu różnych protokołów, w tym HTTP, HTTPS, FTP i wielu innych. Jest często używane do pobierania plików, testowania API oraz interakcji z serwisami internetowymi.
+Polecenie `curl` służy do przesyłania danych za pomocą różnych protokołów, takich jak HTTP, HTTPS, FTP i wielu innych. Umożliwia pobieranie plików, wysyłanie danych oraz interakcję z API.
 
 ## Usage
-Podstawowa składnia polecenia `curl` jest następująca:
+Podstawowa składnia polecenia `curl` wygląda następująco:
 
-```bash
+```csh
 curl [opcje] [argumenty]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji dla `curl`:
-
 - `-O` - Pobiera plik i zapisuje go z oryginalną nazwą.
-- `-o [plik]` - Pobiera plik i zapisuje go pod określoną nazwą.
+- `-o <nazwa_pliku>` - Pobiera plik i zapisuje go pod określoną nazwą.
 - `-I` - Wysyła zapytanie HEAD i wyświetla nagłówki odpowiedzi.
-- `-d [dane]` - Wysyła dane w ciele żądania (przydatne w przypadku POST).
-- `-H [nagłówek]` - Dodaje nagłówek do żądania.
-- `-u [użytkownik:hasło]` - Używa podanych danych do autoryzacji.
+- `-d <dane>` - Wysyła dane w żądaniu POST.
+- `-H <nagłówek>` - Dodaje niestandardowy nagłówek do żądania.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia `curl`:
+- Pobieranie pliku z internetu i zapisanie go z oryginalną nazwą:
+  ```csh
+  curl -O http://example.com/plik.txt
+  ```
 
-1. **Pobieranie pliku z internetu:**
+- Pobieranie pliku i zapisanie go pod inną nazwą:
+  ```csh
+  curl -o nowa_nazwa.txt http://example.com/plik.txt
+  ```
 
-   ```bash
-   curl -O https://example.com/plik.txt
-   ```
+- Wysyłanie zapytania HEAD i wyświetlanie nagłówków odpowiedzi:
+  ```csh
+  curl -I http://example.com
+  ```
 
-2. **Pobieranie pliku i zapisanie go pod inną nazwą:**
+- Wysyłanie danych w żądaniu POST:
+  ```csh
+  curl -d "parametr1=wartosc1&parametr2=wartosc2" http://example.com/api
+  ```
 
-   ```bash
-   curl -o nowa_nazwa.txt https://example.com/plik.txt
-   ```
-
-3. **Wysyłanie zapytania GET do API:**
-
-   ```bash
-   curl https://api.example.com/dane
-   ```
-
-4. **Wysyłanie danych za pomocą metody POST:**
-
-   ```bash
-   curl -d "nazwa=Jan&wiek=30" -X POST https://api.example.com/użytkownik
-   ```
-
-5. **Dodawanie nagłówka do zapytania:**
-
-   ```bash
-   curl -H "Authorization: Bearer token" https://api.example.com/chronione-dane
-   ```
+- Dodawanie niestandardowego nagłówka do żądania:
+  ```csh
+  curl -H "Authorization: Bearer token" http://example.com/api
+  ```
 
 ## Tips
-- Używaj opcji `-I`, aby szybko sprawdzić nagłówki odpowiedzi bez pobierania całej zawartości.
-- Zawsze sprawdzaj dokumentację API, aby wiedzieć, jakie nagłówki i dane są wymagane.
-- Możesz używać `curl` w skryptach Bash, aby automatyzować interakcje z serwisami internetowymi.
+- Używaj opcji `-v`, aby uzyskać szczegółowe informacje o przesyłanych danych i odpowiedziach serwera.
+- Sprawdzaj dokumentację `curl` za pomocą `man curl`, aby poznać wszystkie dostępne opcje.
+- Zawsze testuj swoje zapytania w bezpiecznym środowisku przed użyciem ich w produkcji.

@@ -1,82 +1,65 @@
-# [Linux] Bash shift用法: Shift positional parameters
+# [Unix] C Shell (csh) shift 用法: Shift positional parameters
 
 ## Overview
-The `shift` command in Bash is used to manipulate positional parameters. It shifts the values of the positional parameters to the left, effectively discarding the first parameter and moving all others one position down. This is particularly useful in scripts where you need to process command-line arguments sequentially.
+The `shift` command in C Shell (csh) is used to shift the positional parameters to the left. This means that the value of `$1` is discarded, and the value of `$2` becomes `$1`, `$3` becomes `$2`, and so on. This is particularly useful in scripts where you want to process command-line arguments sequentially.
 
 ## Usage
 The basic syntax of the `shift` command is as follows:
 
-```bash
+```csh
 shift [n]
 ```
 
-Where `n` is an optional argument that specifies how many positions to shift. If `n` is not provided, it defaults to 1.
+Where `n` is the number of positions to shift. If `n` is not specified, it defaults to 1.
 
 ## Common Options
-- `n`: An optional numeric argument that indicates how many positions to shift the positional parameters. If omitted, it shifts by one.
+- `n`: Specifies the number of positions to shift. If omitted, the default is 1.
 
 ## Common Examples
 
 ### Example 1: Basic Shift
-This example demonstrates a simple shift of positional parameters.
-
-```bash
-#!/bin/bash
-set -- one two three four
-echo "Before shift: $1 $2 $3 $4"
+```csh
+set args = (one two three four)
+echo $args
 shift
-echo "After shift: $1 $2 $3 $4"
+echo $args
 ```
-
 **Output:**
 ```
-Before shift: one two three four
-After shift: two three four
+one two three four
+two three four
 ```
 
-### Example 2: Shifting Multiple Positions
-You can specify how many positions to shift.
-
-```bash
-#!/bin/bash
-set -- apple banana cherry date
-echo "Before shift: $1 $2 $3 $4"
+### Example 2: Shift by Multiple Positions
+```csh
+set args = (apple banana cherry date)
+echo $args
 shift 2
-echo "After shift: $1 $2 $3 $4"
+echo $args
 ```
-
 **Output:**
 ```
-Before shift: apple banana cherry date
-After shift: cherry date
+apple banana cherry date
+cherry date
 ```
 
-### Example 3: Looping Through Arguments
-Using `shift` in a loop to process all command-line arguments.
-
-```bash
-#!/bin/bash
-echo "Processing arguments:"
-while [ "$#" -gt 0 ]; do
-    echo "Argument: $1"
+### Example 3: Using Shift in a Loop
+```csh
+set args = (first second third fourth)
+while ($#args > 0)
+    echo "Processing: $1"
     shift
-done
+end
 ```
-
-**Usage:**
-```bash
-./script.sh arg1 arg2 arg3
-```
-
 **Output:**
 ```
-Processing arguments:
-Argument: arg1
-Argument: arg2
-Argument: arg3
+Processing: first
+Processing: second
+Processing: third
+Processing: fourth
 ```
 
 ## Tips
-- Use `shift` when you need to process command-line arguments one at a time in a loop.
+- Use `shift` when you need to process command-line arguments one by one in a script.
 - Always check the number of positional parameters (`$#`) before shifting to avoid errors.
-- Combine `shift` with other commands like `case` or `if` to create more complex argument processing logic.
+- Combine `shift` with loops for efficient argument processing in scripts.

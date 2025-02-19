@@ -1,50 +1,46 @@
-# [Linux] Bash dstat Kullanımı: Sistem kaynaklarını izleme aracı
+# [Linux] C Shell (csh) dstat Kullanımı: Sistem kaynaklarını izleme aracı
 
-## Overview
-dstat, sistem kaynaklarını gerçek zamanlı olarak izlemek için kullanılan bir komut satırı aracıdır. CPU, disk, ağ ve bellek gibi sistem bileşenlerinin performansını izlemek için kullanılır. dstat, sistem yöneticileri ve geliştiriciler için yararlı bir araçtır, çünkü sistemin durumunu anlık olarak gözlemlemeye olanak tanır.
+## Genel Bakış
+dstat, sistem kaynaklarını gerçek zamanlı olarak izlemek için kullanılan bir komuttur. CPU, bellek, disk ve ağ gibi sistem bileşenlerinin performansını takip etmenizi sağlar. Bu sayede sistem yöneticileri ve kullanıcılar, sistemin durumunu daha iyi anlayabilir ve gerektiğinde müdahale edebilir.
 
-## Usage
-dstat komutunun temel sözdizimi aşağıdaki gibidir:
+## Kullanım
+Temel sözdizimi aşağıdaki gibidir:
 
-```bash
-dstat [options] [arguments]
+```csh
+dstat [seçenekler] [argümanlar]
 ```
 
-## Common Options
+## Yaygın Seçenekler
 - `-c`: CPU kullanımını gösterir.
 - `-d`: Disk I/O istatistiklerini gösterir.
-- `-n`: Ağ istatistiklerini gösterir.
+- `-n`: Ağ trafiğini gösterir.
 - `-m`: Bellek kullanımını gösterir.
-- `-t`: Zaman damgası ekler.
-- `--help`: dstat komutunun yardım sayfasını gösterir.
+- `--help`: dstat komutunun yardım menüsünü görüntüler.
 
-## Common Examples
-Aşağıda dstat komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+## Yaygın Örnekler
+Aşağıda dstat komutunun bazı pratik örnekleri verilmiştir:
 
-1. Sadece CPU ve bellek kullanımını izlemek için:
-   ```bash
-   dstat -c -m
+1. Sadece CPU kullanımını izlemek için:
+   ```csh
+   dstat -c
    ```
 
-2. Disk ve ağ istatistiklerini izlemek için:
-   ```bash
+2. Disk I/O ve ağ trafiğini izlemek için:
+   ```csh
    dstat -d -n
    ```
 
-3. Tüm istatistikleri zaman damgası ile birlikte izlemek için:
-   ```bash
-   dstat -t
+3. Tüm sistem kaynaklarını izlemek için:
+   ```csh
+   dstat
    ```
 
-4. Belirli bir süre boyunca (örneğin, 10 saniye) izlemek için:
-   ```bash
-   dstat 10
+4. Belirli bir süre boyunca verileri toplamak için (örneğin, her 2 saniyede bir):
+   ```csh
+   dstat 2
    ```
 
-## Tips
-- dstat'ı kullanırken, hangi kaynakların izlenmesi gerektiğini belirlemek için sistemin ihtiyaçlarını göz önünde bulundurun.
-- Uzun süreli izleme yapacaksanız, çıktıyı bir dosyaya yönlendirmek için `>` operatörünü kullanabilirsiniz:
-  ```bash
-  dstat -c -d > istatistikler.txt
-  ```
-- dstat'ı diğer komutlarla birleştirerek daha kapsamlı analizler yapabilirsiniz. Örneğin, `grep` ile belirli bir çıktıyı filtreleyebilirsiniz.
+## İpuçları
+- dstat komutunu, sistem performansını analiz etmek için bir izleme aracı olarak kullanın.
+- Farklı seçenekleri birleştirerek daha kapsamlı veriler elde edebilirsiniz.
+- Uzun süreli izleme için çıktı dosyasına yönlendirme yapabilirsiniz; örneğin: `dstat > output.txt`.

@@ -1,61 +1,52 @@
-# [Linux] Bash shift Kullanımı: Komut satırındaki argümanları kaydırma
+# [Linux] C Shell (csh) shift Kullanımı: Argümanları sola kaydırma
 
 ## Overview
-`shift` komutu, Bash kabuğunda komut satırındaki argümanları sola kaydırmak için kullanılır. Bu, birden fazla argümanla çalışırken, ilk argümanı kaldırarak geri kalan argümanlara erişimi kolaylaştırır.
+`shift` komutu, C Shell (csh) ortamında, komut satırında tanımlı argümanları sola kaydırmak için kullanılır. Bu, argümanların sırasını değiştirerek, belirli bir argümanı işlemek için diğerlerini kolayca atlamanızı sağlar.
 
 ## Usage
-Temel sözdizimi şu şekildedir:
+Temel sözdizimi aşağıdaki gibidir:
 
-```bash
-shift [n]
+```csh
+shift [options] [arguments]
 ```
 
-Burada `n`, kaç adet argümanın kaydırılacağını belirtir. Eğer `n` verilmezse, varsayılan olarak 1 kabul edilir.
-
 ## Common Options
-- `n`: Kaç argümanın kaydırılacağını belirtir. Örneğin, `shift 2` komutu, ilk iki argümanı kaydırır.
+- `n`: Argümanları `n` kadar sola kaydırır. Eğer `n` belirtilmezse, varsayılan olarak 1 kaydırma yapılır.
 
 ## Common Examples
 
-### Örnek 1: Basit Kaydırma
-Aşağıdaki örnekte, iki argümanla `shift` komutunun nasıl çalıştığını görebilirsiniz.
+### Örnek 1: Basit kaydırma
+Aşağıdaki komut, ilk argümanı kaydırarak ikinci argümanı ilk pozisyona getirir.
 
-```bash
-#!/bin/bash
-echo "İlk argüman: $1"
-echo "İkinci argüman: $2"
+```csh
+set args = (arg1 arg2 arg3)
+echo $args[1]  # Çıktı: arg1
 shift
-echo "Kaydırmadan sonra ilk argüman: $1"
+echo $args[1]  # Çıktı: arg2
 ```
 
-Bu script çalıştırıldığında, ilk argüman kaydırılır ve ikinci argüman birinci argüman haline gelir.
+### Örnek 2: Birden fazla kaydırma
+`shift` komutunu birden fazla argümanı kaydırmak için kullanabilirsiniz.
 
-### Örnek 2: Birden Fazla Argümanı Kaydırma
-Birden fazla argümanı kaydırmak için `n` parametresini kullanabilirsiniz.
-
-```bash
-#!/bin/bash
-echo "Argümanlar: $@"
+```csh
+set args = (arg1 arg2 arg3 arg4)
+echo $args[1]  # Çıktı: arg1
 shift 2
-echo "Kaydırmadan sonra argümanlar: $@"
+echo $args[1]  # Çıktı: arg3
 ```
 
-Bu script, iki argümanı kaydırarak geri kalan argümanları gösterir.
-
-### Örnek 3: Döngü ile Argümanları İşleme
+### Örnek 3: Argümanları döngü ile işleme
 `shift` komutunu bir döngü içinde kullanarak tüm argümanları işleyebilirsiniz.
 
-```bash
-#!/bin/bash
-while [ "$#" -gt 0 ]; do
-    echo "İşlenen argüman: $1"
+```csh
+set args = (arg1 arg2 arg3 arg4)
+while ($#args > 0)
+    echo $args[1]
     shift
-done
+end
 ```
 
-Bu script, verilen tüm argümanları sırayla işler.
-
 ## Tips
-- `shift` komutunu kullanmadan önce argüman sayısını kontrol etmek için `"$#"` değişkenini kullanabilirsiniz.
-- Argümanları kaydırmadan önce önemli bilgileri kaydetmek istiyorsanız, argümanları bir diziye atayarak daha sonra kullanabilirsiniz.
-- `shift` komutunu kullanırken dikkatli olun; yanlış kaydırma, beklenmeyen sonuçlara yol açabilir.
+- `shift` komutunu kullanmadan önce argümanların sayısını kontrol etmek için `$#args` ifadesini kullanın.
+- Argümanları kaydırmadan önce, hangi argümanın işleneceğini belirlemek için `echo` komutunu kullanarak argümanları görüntüleyin.
+- `shift` komutunu, scriptlerinizde argümanları yönetmek için etkili bir yöntem olarak kullanabilirsiniz.

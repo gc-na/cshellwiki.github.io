@@ -1,49 +1,44 @@
-# [Linux] Bash nice Usage: Adjust process priority
+# [Linux] C Shell (csh) nice用法: 控制进程优先级
 
 ## Overview
-The `nice` command in Bash is used to run a program with a modified scheduling priority. By default, processes run with a priority of 0, but you can use `nice` to increase or decrease this priority, which can help manage system resources effectively. Lowering the priority of a process allows other processes to run more smoothly, while increasing it can help ensure that a critical task gets the CPU time it needs.
+The `nice` command in C Shell (csh) is used to run a command with a modified scheduling priority. It allows users to influence the priority of processes, making it possible to give more or less CPU time to specific tasks. By default, processes run with a priority of 0, but `nice` can adjust this value.
 
 ## Usage
 The basic syntax of the `nice` command is as follows:
 
-```bash
+```csh
 nice [options] [command [arguments]]
 ```
 
 ## Common Options
-- `-n, --adjustment=N`: Set the priority adjustment value, where N can be a positive or negative integer. The default is 10.
-- `-h, --help`: Display help information about the command.
-- `-v, --version`: Show version information for the `nice` command.
+- `-n` or `--adjustment`: Specifies the priority adjustment value. The default is 10. Negative values can be used to increase priority.
+- `-h` or `--help`: Displays help information about the command.
+- `-v` or `--version`: Shows the version information of the `nice` command.
 
 ## Common Examples
-Here are several practical examples of using the `nice` command:
+Here are some practical examples of using the `nice` command:
 
-1. **Run a command with default nice value (10):**
-   ```bash
+1. **Run a command with default nice value (10)**:
+   ```csh
    nice myscript.sh
    ```
 
-2. **Run a command with a specific nice value (e.g., -5):**
-   ```bash
+2. **Run a command with a specific nice value (e.g., 15)**:
+   ```csh
+   nice -n 15 myscript.sh
+   ```
+
+3. **Run a command with increased priority (e.g., -5)**:
+   ```csh
    nice -n -5 myscript.sh
    ```
 
-3. **Run a command with increased priority (e.g., 19):**
-   ```bash
-   nice -n 19 myscript.sh
-   ```
-
-4. **Check the nice value of a running process:**
-   ```bash
+4. **Check the nice value of a running process** (using `ps`):
+   ```csh
    ps -o pid,nice,cmd
    ```
 
-5. **Start a CPU-intensive task with lower priority:**
-   ```bash
-   nice -n 19 ./heavy_task
-   ```
-
 ## Tips
-- Use `nice` for background tasks that are not time-sensitive to free up CPU resources for other processes.
-- To check the nice value of a running process, use the `ps` command as shown in the examples.
-- Remember that only the superuser can set a negative nice value (higher priority). Regular users can only increase the nice value (lower priority).
+- Use `nice` to run background tasks without hogging CPU resources, allowing other processes to run smoothly.
+- Be cautious when using negative nice values, as they can affect system performance by prioritizing certain processes over others.
+- Always check the current nice value of a process if you are unsure about its priority, using the `ps` command.

@@ -1,50 +1,49 @@
-# [Linux] Bash ssh uso: Conectar a servidores de forma segura
+# [Linux] C Shell (csh) ssh uso: Conexión segura a servidores remotos
 
 ## Overview
-El comando `ssh` (Secure Shell) se utiliza para establecer una conexión segura con un servidor remoto. Permite a los usuarios acceder a la línea de comandos de otro sistema a través de una red, proporcionando autenticación y cifrado de datos.
+El comando `ssh` (Secure Shell) se utiliza para establecer una conexión segura y encriptada a un servidor remoto. Permite a los usuarios acceder a la línea de comandos de otro sistema a través de una red no segura, garantizando la confidencialidad e integridad de los datos transmitidos.
 
 ## Usage
 La sintaxis básica del comando `ssh` es la siguiente:
 
-```
+```csh
 ssh [opciones] [usuario@]host
 ```
 
 ## Common Options
-- `-p [puerto]`: Especifica el puerto a utilizar para la conexión SSH.
-- `-i [archivo]`: Indica el archivo de clave privada a usar para la autenticación.
-- `-v`: Muestra información detallada sobre el proceso de conexión, útil para depuración.
+- `-p`: Especifica el puerto a utilizar para la conexión. Por defecto, se usa el puerto 22.
+- `-i`: Permite especificar un archivo de clave privada para la autenticación.
+- `-v`: Activa el modo de verbose, proporcionando información detallada sobre el proceso de conexión.
 - `-X`: Habilita el reenvío de X11, permitiendo ejecutar aplicaciones gráficas de forma remota.
-- `-C`: Activa la compresión de datos, lo que puede mejorar la velocidad de la conexión en redes lentas.
 
 ## Common Examples
-1. **Conexión básica a un servidor:**
-   ```bash
+1. Conexión a un servidor remoto con el usuario predeterminado:
+   ```csh
    ssh usuario@servidor.com
    ```
 
-2. **Conexión a un servidor en un puerto diferente:**
-   ```bash
+2. Conexión a un servidor remoto utilizando un puerto diferente:
+   ```csh
    ssh -p 2222 usuario@servidor.com
    ```
 
-3. **Uso de una clave privada específica:**
-   ```bash
-   ssh -i ~/.ssh/mi_clave_privada usuario@servidor.com
+3. Conexión utilizando una clave privada específica:
+   ```csh
+   ssh -i /ruta/a/mi_clave.pem usuario@servidor.com
    ```
 
-4. **Habilitar el reenvío de X11:**
-   ```bash
+4. Activar el reenvío de X11:
+   ```csh
    ssh -X usuario@servidor.com
    ```
 
-5. **Conexión con compresión:**
-   ```bash
-   ssh -C usuario@servidor.com
+5. Conexión en modo verbose para depuración:
+   ```csh
+   ssh -v usuario@servidor.com
    ```
 
 ## Tips
-- Siempre utiliza claves SSH en lugar de contraseñas para mejorar la seguridad.
-- Considera configurar el archivo `~/.ssh/config` para simplificar las conexiones a servidores frecuentes.
-- Mantén tus claves privadas seguras y nunca las compartas.
-- Usa la opción `-v` si experimentas problemas de conexión para obtener más información sobre el error.
+- Asegúrate de que el puerto SSH (por defecto el 22) esté abierto en el firewall del servidor remoto.
+- Utiliza claves SSH en lugar de contraseñas para mejorar la seguridad de tus conexiones.
+- Considera configurar el archivo `~/.ssh/config` para simplificar las conexiones a servidores que usas frecuentemente.
+- Mantén tu software SSH actualizado para beneficiarte de las últimas mejoras de seguridad.

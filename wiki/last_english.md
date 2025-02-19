@@ -1,50 +1,49 @@
-# [Linux] Bash last command: Display login history
+# [Linux] C Shell (csh) last 命令: 显示用户登录历史
 
 ## Overview
-The `last` command is used in Linux to display a list of the most recent logins to the system. It reads from the `/var/log/wtmp` file, which records all logins and logouts. This command is useful for monitoring user activity and understanding who accessed the system and when.
+The `last` command in C Shell (csh) is used to display a list of the most recent user logins on the system. It reads from the `/var/log/wtmp` file, which records all login and logout events, allowing users to track who has accessed the system and when.
 
 ## Usage
 The basic syntax of the `last` command is as follows:
 
-```bash
+```csh
 last [options] [arguments]
 ```
 
 ## Common Options
-- `-a`: Display the hostname on the last column.
-- `-n <number>`: Limit the output to the last `<number>` of entries.
+- `-n [number]`: Show the last `[number]` logins.
 - `-R`: Suppress the display of the hostname.
-- `-x`: Show system shutdown entries and run level changes.
+- `-f [file]`: Use the specified `[file]` instead of the default `/var/log/wtmp`.
 
 ## Common Examples
 Here are some practical examples of using the `last` command:
 
-1. **Display all login history:**
-   ```bash
+1. **Display all recent logins:**
+   ```csh
    last
    ```
 
 2. **Show the last 5 logins:**
-   ```bash
+   ```csh
    last -n 5
    ```
 
-3. **Display logins with hostnames:**
-   ```bash
-   last -a
-   ```
-
-4. **Suppress hostname display:**
-   ```bash
+3. **Suppress the hostname in the output:**
+   ```csh
    last -R
    ```
 
-5. **Include system shutdown entries:**
-   ```bash
-   last -x
+4. **Check logins from a specific file:**
+   ```csh
+   last -f /path/to/custom/wtmp
+   ```
+
+5. **Display logins for a specific user:**
+   ```csh
+   last username
    ```
 
 ## Tips
-- Use `last | less` to paginate through the output if there are many entries.
-- Combine `last` with `grep` to filter results for a specific user, e.g., `last | grep username`.
-- Remember that the `last` command shows historical data, so it may not reflect current user sessions. For current sessions, consider using the `who` command.
+- Use the `-n` option to limit the output to a manageable number of entries, especially on systems with extensive login histories.
+- Combine `last` with other commands like `grep` to filter results for specific users or timeframes.
+- Regularly check login history to monitor unauthorized access or unusual login patterns.

@@ -1,7 +1,7 @@
-# [Linux] Bash lvm uso: Gestión de volúmenes lógicos
+# [Linux] C Shell (csh) lvm Uso: Gestión de volúmenes lógicos
 
 ## Overview
-El comando `lvm` (Logical Volume Manager) se utiliza para gestionar volúmenes lógicos en sistemas Linux. Permite a los administradores de sistemas crear, eliminar y modificar volúmenes lógicos, facilitando la gestión del espacio en disco de manera flexible y eficiente.
+El comando `lvm` se utiliza para gestionar volúmenes lógicos en sistemas Linux. Permite a los administradores de sistemas crear, eliminar y modificar volúmenes lógicos, facilitando la administración del espacio en disco y la flexibilidad en la gestión de almacenamiento.
 
 ## Usage
 La sintaxis básica del comando `lvm` es la siguiente:
@@ -15,37 +15,37 @@ lvm [opciones] [argumentos]
 - `remove`: Elimina un volumen lógico existente.
 - `extend`: Aumenta el tamaño de un volumen lógico.
 - `reduce`: Disminuye el tamaño de un volumen lógico.
-- `lvdisplay`: Muestra información sobre los volúmenes lógicos existentes.
+- `lvdisplay`: Muestra información sobre volúmenes lógicos existentes.
 
 ## Common Examples
 Aquí hay algunos ejemplos prácticos del uso del comando `lvm`:
 
-### Crear un volumen lógico
-```bash
-lvcreate -n mi_volumen -L 10G vg_mi_grupo
-```
+1. **Crear un volumen lógico:**
+   ```bash
+   lvm create -n mi_volumen -L 10G grupo_volumen
+   ```
 
-### Eliminar un volumen lógico
-```bash
-lvremove /dev/vg_mi_grupo/mi_volumen
-```
+2. **Eliminar un volumen lógico:**
+   ```bash
+   lvm remove mi_volumen
+   ```
 
-### Ampliar un volumen lógico
-```bash
-lvextend -L +5G /dev/vg_mi_grupo/mi_volumen
-```
+3. **Extender un volumen lógico:**
+   ```bash
+   lvm extend -L +5G mi_volumen
+   ```
 
-### Reducir un volumen lógico
-```bash
-lvreduce -L -5G /dev/vg_mi_grupo/mi_volumen
-```
+4. **Reducir un volumen lógico:**
+   ```bash
+   lvm reduce -L -3G mi_volumen
+   ```
 
-### Mostrar información de volúmenes lógicos
-```bash
-lvdisplay
-```
+5. **Mostrar información de volúmenes lógicos:**
+   ```bash
+   lvm lvdisplay
+   ```
 
 ## Tips
-- Siempre realiza copias de seguridad antes de modificar volúmenes lógicos, especialmente al reducir su tamaño.
-- Utiliza `lvdisplay` para verificar el estado de los volúmenes lógicos antes y después de realizar cambios.
-- Familiarízate con las opciones de `lvm` para aprovechar al máximo la gestión de volúmenes lógicos en tu sistema.
+- Siempre realiza una copia de seguridad de tus datos antes de modificar volúmenes lógicos.
+- Utiliza el comando `lvdisplay` para verificar el estado de los volúmenes antes y después de realizar cambios.
+- Asegúrate de que el volumen lógico no esté montado antes de intentar reducir su tamaño.

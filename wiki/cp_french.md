@@ -1,52 +1,52 @@
-# [Linux] Bash cp Utilisation : Copier des fichiers et des répertoires
+# [Linux] C Shell (csh) cp Utilisation : Copier des fichiers et des répertoires
 
 ## Overview
-La commande `cp` est utilisée pour copier des fichiers et des répertoires dans un système Linux. Elle permet de créer une ou plusieurs copies d'un fichier ou d'un répertoire source vers une destination spécifiée.
+La commande `cp` dans le C Shell (csh) est utilisée pour copier des fichiers et des répertoires d'un emplacement à un autre. Elle permet de créer des duplicatas de fichiers tout en préservant leur contenu.
 
 ## Usage
 La syntaxe de base de la commande `cp` est la suivante :
 
-```bash
+```csh
 cp [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes de la commande `cp` :
+Voici quelques options courantes pour la commande `cp` :
 
+- `-i` : Demande une confirmation avant d'écraser un fichier existant.
 - `-r` : Copie récursivement les répertoires et leur contenu.
-- `-i` : Demande confirmation avant d'écraser un fichier existant.
 - `-u` : Copie uniquement si le fichier source est plus récent que le fichier de destination ou si le fichier de destination n'existe pas.
-- `-v` : Affiche les fichiers au fur et à mesure qu'ils sont copiés (mode verbeux).
+- `-v` : Affiche les fichiers au fur et à mesure qu'ils sont copiés.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `cp` :
 
-1. Copier un fichier :
-   ```bash
-   cp fichier.txt copie_fichier.txt
+1. Copier un fichier dans un autre emplacement :
+   ```csh
+   cp fichier.txt /chemin/vers/destination/
    ```
 
 2. Copier un répertoire et son contenu :
-   ```bash
-   cp -r dossier_source/ dossier_destination/
+   ```csh
+   cp -r mon_repertoire /chemin/vers/destination/
    ```
 
-3. Copier un fichier avec confirmation avant écrasement :
-   ```bash
-   cp -i fichier.txt copie_fichier.txt
+3. Copier un fichier en demandant confirmation avant d'écraser :
+   ```csh
+   cp -i fichier.txt /chemin/vers/destination/
    ```
 
 4. Copier un fichier uniquement s'il est plus récent :
-   ```bash
-   cp -u fichier.txt copie_fichier.txt
+   ```csh
+   cp -u fichier.txt /chemin/vers/destination/
    ```
 
-5. Copier plusieurs fichiers dans un répertoire :
-   ```bash
-   cp fichier1.txt fichier2.txt dossier_destination/
+5. Copier un fichier tout en affichant les détails :
+   ```csh
+   cp -v fichier.txt /chemin/vers/destination/
    ```
 
 ## Tips
-- Utilisez l'option `-v` pour suivre le processus de copie, surtout lorsque vous copiez plusieurs fichiers.
-- Soyez prudent avec l'option `-r`, car elle peut écraser des fichiers sans avertissement si vous ne l'utilisez pas avec `-i`.
-- Pour éviter des erreurs, vérifiez toujours le chemin de destination avant de lancer la commande, surtout lorsque vous copiez des fichiers importants.
+- Utilisez l'option `-i` pour éviter d'écraser accidentellement des fichiers importants.
+- Pour copier plusieurs fichiers à la fois, vous pouvez spécifier plusieurs fichiers sources suivis du répertoire de destination.
+- Pensez à vérifier les permissions des fichiers et répertoires, car cela peut affecter votre capacité à copier des fichiers.

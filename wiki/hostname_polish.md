@@ -1,49 +1,48 @@
-# [Linux] Bash hostname użycie: Wyświetlanie lub ustawianie nazwy hosta
+# [Linux] C Shell (csh) hostname użycie: Wyświetlanie lub ustawianie nazwy hosta
 
 ## Overview
-Polecenie `hostname` w systemie Linux służy do wyświetlania lub ustawiania nazwy hosta systemu. Nazwa hosta to unikalny identyfikator komputera w sieci, który umożliwia innym urządzeniom jego rozpoznanie.
+Polecenie `hostname` w C Shell (csh) służy do wyświetlania lub ustawiania nazwy hosta systemu. Nazwa hosta to unikalny identyfikator, który pozwala na rozróżnienie urządzeń w sieci.
 
 ## Usage
 Podstawowa składnia polecenia `hostname` jest następująca:
 
-```bash
+```
 hostname [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-a`, `--alias`: Wyświetla alias hosta.
-- `-d`, `--domain`: Wyświetla nazwę domeny.
-- `-f`, `--fqdn`: Wyświetla pełną nazwę kwalifikowaną (FQDN) hosta.
-- `-i`, `--ip-address`: Wyświetla adres IP hosta.
-- `-s`, `--short`: Wyświetla krótką nazwę hosta.
+- `-f` – Wyświetla pełną nazwę hosta (FQDN).
+- `-s` – Wyświetla tylko krótką nazwę hosta.
+- `-i` – Wyświetla adres IP przypisany do hosta.
+- `-V` – Wyświetla wersję polecenia.
 
 ## Common Examples
-1. Wyświetlenie aktualnej nazwy hosta:
-   ```bash
-   hostname
-   ```
+- Aby wyświetlić aktualną nazwę hosta:
+  ```csh
+  hostname
+  ```
 
-2. Ustawienie nowej nazwy hosta:
-   ```bash
-   sudo hostname nowa-nazwa-host
-   ```
+- Aby ustawić nową nazwę hosta:
+  ```csh
+  hostname nowa_nazwa
+  ```
 
-3. Wyświetlenie pełnej nazwy kwalifikowanej:
-   ```bash
-   hostname -f
-   ```
+- Aby wyświetlić pełną nazwę hosta:
+  ```csh
+  hostname -f
+  ```
 
-4. Wyświetlenie adresu IP hosta:
-   ```bash
-   hostname -i
-   ```
+- Aby wyświetlić tylko krótką nazwę hosta:
+  ```csh
+  hostname -s
+  ```
 
-5. Wyświetlenie krótkiej nazwy hosta:
-   ```bash
-   hostname -s
-   ```
+- Aby wyświetlić adres IP hosta:
+  ```csh
+  hostname -i
+  ```
 
 ## Tips
-- Aby zmiany w nazwie hosta były trwałe po restarcie, należy zaktualizować odpowiedni plik konfiguracyjny, np. `/etc/hostname`.
-- Używaj polecenia `hostname` z uprawnieniami administratora (np. `sudo`), gdy chcesz zmienić nazwę hosta.
-- Regularnie sprawdzaj nazwę hosta, aby upewnić się, że jest zgodna z polityką nazewnictwa w Twojej sieci.
+- Upewnij się, że masz odpowiednie uprawnienia, aby zmieniać nazwę hosta, ponieważ może to wymagać uprawnień administratora.
+- Po zmianie nazwy hosta, rozważ zaktualizowanie pliku `/etc/hosts`, aby odzwierciedlić nową nazwę.
+- Sprawdź, czy nowa nazwa hosta jest poprawnie rozpoznawana w sieci, używając polecenia `ping`.

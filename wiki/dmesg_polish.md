@@ -1,52 +1,48 @@
-# [Linux] Bash dmesg użycie: Wyświetlanie komunikatów jądra
+# [Linux] C Shell (csh) dmesg użycie: wyświetlanie komunikatów jądra
 
-## Overview
-Polecenie `dmesg` służy do wyświetlania komunikatów jądra systemu operacyjnego, które są generowane podczas uruchamiania systemu oraz w trakcie jego działania. Umożliwia to użytkownikom i administratorom monitorowanie zdarzeń systemowych, diagnozowanie problemów oraz analizowanie działania sprzętu.
+## Przegląd
+Polecenie `dmesg` służy do wyświetlania komunikatów jądra systemu operacyjnego. Umożliwia użytkownikom przeglądanie logów systemowych, które są generowane podczas rozruchu systemu oraz w trakcie działania. Informacje te mogą być przydatne w diagnostyce problemów sprzętowych i systemowych.
 
-## Usage
+## Użycie
 Podstawowa składnia polecenia `dmesg` jest następująca:
 
-```bash
+```csh
 dmesg [opcje] [argumenty]
 ```
 
-## Common Options
-- `-C` – Wyczyść bufor komunikatów jądra.
-- `-c` – Wyświetl komunikaty i następnie je wyczyść.
-- `-n level` – Ustaw poziom logowania komunikatów.
-- `-T` – Wyświetl czas w formacie czytelnym dla ludzi.
-- `-f facility` – Filtruj komunikaty według określonej jednostki (np. kern, user).
+## Częste opcje
+- `-C` - Wyczyść bufor komunikatów jądra.
+- `-c` - Wyświetl komunikaty i następnie je wyczyść.
+- `-n level` - Ustaw poziom logowania komunikatów.
+- `-s size` - Ustaw rozmiar bufora w bajtach.
 
-## Common Examples
-1. **Wyświetlenie wszystkich komunikatów jądra:**
-   ```bash
+## Przykłady
+1. Aby wyświetlić wszystkie komunikaty jądra:
+   ```csh
    dmesg
    ```
 
-2. **Wyświetlenie komunikatów z czytelnym czasem:**
-   ```bash
-   dmesg -T
-   ```
-
-3. **Wyczyść bufor komunikatów jądra:**
-   ```bash
+2. Aby wyczyścić bufor komunikatów jądra:
+   ```csh
    dmesg -C
    ```
 
-4. **Filtracja komunikatów według jednostki:**
-   ```bash
-   dmesg -f user
+3. Aby wyświetlić komunikaty i je wyczyścić:
+   ```csh
+   dmesg -c
    ```
 
-5. **Ustawienie poziomu logowania:**
-   ```bash
-   dmesg -n 1
+4. Aby ustawić poziom logowania na 4:
+   ```csh
+   dmesg -n 4
    ```
 
-## Tips
-- Używaj opcji `-T`, aby łatwiej interpretować czasy komunikatów.
-- Regularnie sprawdzaj komunikaty jądra po aktualizacji sprzętu lub oprogramowania, aby szybko wychwycić potencjalne problemy.
-- Możesz użyć potoku (pipe) z `grep`, aby wyszukiwać konkretne komunikaty, co ułatwia analizę:
-  ```bash
-  dmesg | grep error
-  ```
+5. Aby wyświetlić komunikaty z ograniczeniem do 1000 bajtów:
+   ```csh
+   dmesg -s 1000
+   ```
+
+## Wskazówki
+- Regularnie przeglądaj komunikaty jądra, aby monitorować stan systemu i wykrywać potencjalne problemy.
+- Używaj opcji `-c` w celu jednorazowego przeglądania komunikatów i ich czyszczenia, co może pomóc w analizie problemów.
+- Zapisuj ważne komunikaty do pliku, używając przekierowania, np. `dmesg > log.txt`, aby mieć do nich łatwy dostęp w przyszłości.

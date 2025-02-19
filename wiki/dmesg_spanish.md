@@ -1,54 +1,46 @@
-# [Linux] Bash dmesg Uso: Muestra mensajes del núcleo del sistema
+# [Linux] C Shell (csh) dmesg Uso: Muestra mensajes del núcleo del sistema
 
 ## Overview
-El comando `dmesg` se utiliza para mostrar los mensajes del núcleo del sistema, que son generados por el sistema operativo durante el arranque y durante la operación del sistema. Estos mensajes son útiles para diagnosticar problemas de hardware y para entender el comportamiento del sistema.
+El comando `dmesg` se utiliza para mostrar los mensajes del núcleo del sistema, que incluyen información sobre el hardware, controladores y otros eventos del sistema. Es especialmente útil para diagnosticar problemas relacionados con el arranque y la configuración del hardware.
 
 ## Usage
-La sintaxis básica del comando `dmesg` es la siguiente:
+La sintaxis básica del comando es la siguiente:
 
-```bash
+```csh
 dmesg [opciones] [argumentos]
 ```
 
 ## Common Options
-- `-C`: Borra el buffer de mensajes del núcleo.
-- `-c`: Borra el buffer de mensajes después de mostrarlos.
-- `-n nivel`: Establece el nivel de mensajes que se mostrarán.
-- `-T`: Muestra las marcas de tiempo en un formato legible.
-- `--help`: Muestra la ayuda sobre el uso del comando.
+- `-c`: Borra el búfer de mensajes después de mostrarlos.
+- `-n nivel`: Establece el nivel de prioridad de los mensajes que se mostrarán.
+- `-T`: Convierte las marcas de tiempo en un formato legible por humanos.
+- `-s tamaño`: Establece el tamaño del búfer en bytes.
 
 ## Common Examples
-Aquí hay algunos ejemplos prácticos del uso de `dmesg`:
+- Para mostrar todos los mensajes del núcleo:
+  ```csh
+  dmesg
+  ```
 
-1. **Mostrar todos los mensajes del núcleo:**
-   ```bash
-   dmesg
-   ```
+- Para mostrar los mensajes del núcleo con marcas de tiempo legibles:
+  ```csh
+  dmesg -T
+  ```
 
-2. **Mostrar mensajes con marcas de tiempo legibles:**
-   ```bash
-   dmesg -T
-   ```
+- Para borrar el búfer de mensajes después de mostrarlos:
+  ```csh
+  dmesg -c
+  ```
 
-3. **Borrar el buffer de mensajes del núcleo:**
-   ```bash
-   dmesg -C
-   ```
-
-4. **Mostrar mensajes de un nivel específico (por ejemplo, solo errores):**
-   ```bash
-   dmesg -n 1
-   ```
-
-5. **Mostrar los últimos 10 mensajes del núcleo:**
-   ```bash
-   dmesg | tail -n 10
-   ```
+- Para establecer el nivel de prioridad a 3 (solo mensajes de advertencia y errores):
+  ```csh
+  dmesg -n 3
+  ```
 
 ## Tips
-- Utiliza `dmesg -T` para facilitar la lectura de los mensajes, especialmente si necesitas revisar eventos recientes.
-- Si estás depurando problemas de hardware, revisa los mensajes inmediatamente después de un fallo.
-- Puedes redirigir la salida de `dmesg` a un archivo para un análisis posterior: 
-  ```bash
+- Utiliza `dmesg -T` para facilitar la lectura de los mensajes, especialmente si estás revisando registros antiguos.
+- Revisa los mensajes de `dmesg` después de un arranque para identificar problemas de hardware o controladores.
+- Puedes redirigir la salida de `dmesg` a un archivo para un análisis posterior:
+  ```csh
   dmesg > dmesg_output.txt
   ```

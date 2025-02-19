@@ -1,25 +1,25 @@
-# [Linux] Bash dirname Usage: Extract directory path from a file path
+# [Unix] C Shell (csh) dirname Usage: Extract directory path from file name
 
 ## Overview
-The `dirname` command in Bash is used to extract the directory path from a given file path. It removes the last component of the path, returning only the directory portion. This is particularly useful for scripting and file manipulation tasks where you need to work with directory paths.
+The `dirname` command is used to extract the directory path from a given file name. It takes a full file path as input and returns the path leading up to the file, effectively removing the file name itself.
 
 ## Usage
 The basic syntax of the `dirname` command is as follows:
 
-```bash
+```csh
 dirname [options] [arguments]
 ```
 
 ## Common Options
-- `-z`, `--zero`: This option allows the command to handle input paths that are separated by a null character instead of a newline.
-- `--help`: Displays help information about the command and its options.
+- `-z`: Suppresses the output if the input is an empty string.
+- `--help`: Displays help information about the command.
 - `--version`: Shows the version of the `dirname` command.
 
 ## Common Examples
+Here are some practical examples of using the `dirname` command:
 
-1. **Basic Usage**
-   Extract the directory from a file path:
-   ```bash
+1. Extracting the directory from a full file path:
+   ```csh
    dirname /home/user/documents/file.txt
    ```
    Output:
@@ -27,44 +27,35 @@ dirname [options] [arguments]
    /home/user/documents
    ```
 
-2. **Using with a Relative Path**
-   Extract the directory from a relative file path:
-   ```bash
-   dirname ./projects/code/script.sh
+2. Using `dirname` with a relative path:
+   ```csh
+   dirname ./scripts/run.sh
    ```
    Output:
    ```
-   ./projects/code
+   ./scripts
    ```
 
-3. **Handling Multiple Paths**
-   You can provide multiple paths to `dirname`:
-   ```bash
-   dirname /var/log/syslog /etc/hosts
+3. Handling multiple file paths:
+   ```csh
+   dirname /var/log/syslog /usr/local/bin/script.sh
    ```
    Output:
    ```
    /var/log
-   /etc
-   ```
-
-4. **Using with Variables**
-   You can also use `dirname` with shell variables:
-   ```bash
-   FILE_PATH="/usr/local/bin/script.sh"
-   echo $(dirname "$FILE_PATH")
-   ```
-   Output:
-   ```
    /usr/local/bin
    ```
 
+4. Using `dirname` with an empty string:
+   ```csh
+   dirname ""
+   ```
+   Output:
+   ```
+   (no output)
+   ```
+
 ## Tips
-- Always quote your file paths, especially if they contain spaces or special characters, to avoid unexpected behavior.
-- Use `dirname` in scripts to dynamically build paths based on file locations, enhancing portability and flexibility.
-- Combine `dirname` with other commands like `basename` to manipulate file paths effectively. For example:
-  ```bash
-  DIR=$(dirname "$FILE_PATH")
-  BASENAME=$(basename "$FILE_PATH")
-  echo "Directory: $DIR, File: $BASENAME"
-  ```
+- Always ensure that the input path is valid to avoid unexpected results.
+- You can chain `dirname` with other commands using pipes for more complex operations.
+- Use `dirname` in scripts to dynamically handle file paths, making your scripts more flexible and robust.

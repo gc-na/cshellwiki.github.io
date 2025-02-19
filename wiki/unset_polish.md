@@ -1,50 +1,49 @@
-# [Linux] Bash unset użycie: Usuwa zmienne i funkcje
+# [Linux] C Shell (csh) unset: Usuwanie zmiennych środowiskowych
 
 ## Overview
-Polecenie `unset` w Bash służy do usuwania zmiennych oraz funkcji z bieżącego środowiska powłoki. Dzięki temu można zwolnić pamięć lub zresetować stan zmiennych.
+Polecenie `unset` w C Shell (csh) służy do usuwania zmiennych środowiskowych oraz aliasów. Umożliwia to zwolnienie pamięci oraz eliminację niepotrzebnych zmiennych z bieżącego środowiska.
 
 ## Usage
 Podstawowa składnia polecenia `unset` jest następująca:
 
-```bash
+```
 unset [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-f`: Usuwa funkcję. 
-- `-v`: Usuwa zmienną. (Domyślnie `unset` działa na zmienne, więc ta opcja jest często pomijana.)
+- `-f` - Używane do usuwania funkcji.
+- `-v` - Używane do usuwania zmiennych.
 
 ## Common Examples
+Oto kilka praktycznych przykładów użycia polecenia `unset`:
 
-### Usuwanie zmiennej
-Aby usunąć zmienną o nazwie `myVar`, użyj polecenia:
+1. Usunięcie zmiennej środowiskowej:
+   ```csh
+   set myVar = "Hello, World!"
+   unset myVar
+   ```
 
-```bash
-unset myVar
-```
+2. Usunięcie aliasu:
+   ```csh
+   alias ll 'ls -l'
+   unset ll
+   ```
 
-### Usuwanie funkcji
-Aby usunąć funkcję o nazwie `myFunction`, użyj polecenia:
+3. Usunięcie funkcji:
+   ```csh
+   function myFunc() {
+       echo "This is a function."
+   }
+   unset -f myFunc
+   ```
 
-```bash
-unset -f myFunction
-```
-
-### Usuwanie wielu zmiennych
-Możesz również usunąć kilka zmiennych jednocześnie:
-
-```bash
-unset var1 var2 var3
-```
-
-### Sprawdzanie, czy zmienna została usunięta
-Możesz sprawdzić, czy zmienna została usunięta, używając polecenia `echo`:
-
-```bash
-echo $myVar  # Nie wyświetli nic, jeśli zmienna została usunięta
-```
+4. Usunięcie zmiennej z użyciem opcji `-v`:
+   ```csh
+   set myVar2 = "Temporary"
+   unset -v myVar2
+   ```
 
 ## Tips
-- Zawsze upewnij się, że zmienna lub funkcja, którą chcesz usunąć, nie jest już potrzebna, aby uniknąć błędów w skryptach.
-- Używaj `unset` w skryptach, aby zarządzać pamięcią i unikać niepotrzebnych zmiennych, które mogą prowadzić do nieprzewidywalnych zachowań.
-- Pamiętaj, że `unset` nie może usunąć zmiennych wbudowanych powłoki, takich jak `PATH` czy `HOME`.
+- Upewnij się, że zmienna, którą chcesz usunąć, nie jest używana w innych częściach skryptu, aby uniknąć błędów.
+- Możesz używać `unset` w skryptach, aby dynamicznie zarządzać zmiennymi w zależności od potrzeb.
+- Zawsze sprawdzaj, czy zmienna została usunięta, używając polecenia `echo $myVar`, aby upewnić się, że nie jest już dostępna.

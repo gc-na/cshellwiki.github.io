@@ -1,54 +1,53 @@
-# [Linux] Bash watch uso: Atualiza a saída de um comando periodicamente
+# [Linux] C Shell (csh) watch uso: Monitora a execução de comandos periodicamente
 
 ## Overview
-O comando `watch` é utilizado para executar periodicamente um comando e exibir sua saída em tempo real no terminal. Isso é útil para monitorar mudanças em arquivos, processos ou qualquer outra saída de comando que você deseje observar ao longo do tempo.
+O comando `watch` é utilizado para executar periodicamente um comando e exibir sua saída na tela. Isso é útil para monitorar mudanças em tempo real, como a atualização de arquivos ou o estado de processos.
 
 ## Usage
 A sintaxe básica do comando `watch` é a seguinte:
 
-```bash
+```csh
 watch [opções] [comando]
 ```
 
 ## Common Options
-Aqui estão algumas opções comuns que você pode usar com o comando `watch`:
+Aqui estão algumas opções comuns do comando `watch`:
 
-- `-n, --interval <segundos>`: Define o intervalo em segundos entre as execuções do comando. O padrão é 2 segundos.
-- `-d, --differences`: Destaca as diferenças entre as saídas sucessivas do comando.
-- `-t, --no-title`: Remove a linha de título que exibe o comando e o intervalo.
-- `-x, --exec`: Permite executar um comando com argumentos.
+- `-n <segundos>`: Define o intervalo de tempo em segundos entre as execuções do comando.
+- `-d`: Destaca as diferenças entre a saída anterior e a nova.
+- `-t`: Remove a exibição do cabeçalho que mostra o comando sendo executado e o tempo.
 
 ## Common Examples
 
-### Exemplo 1: Monitorar o uso de memória
-Para monitorar o uso de memória do sistema a cada 5 segundos, você pode usar:
+### Exemplo 1: Monitorar o uso de disco
+Para monitorar o uso de disco a cada 5 segundos, você pode usar:
 
-```bash
-watch -n 5 free -h
+```csh
+watch -n 5 df -h
 ```
 
-### Exemplo 2: Verificar processos em execução
-Para observar os processos em execução e suas informações a cada 2 segundos, utilize:
+### Exemplo 2: Monitorar processos
+Para observar a lista de processos em execução e suas mudanças, execute:
 
-```bash
+```csh
 watch ps aux
 ```
 
-### Exemplo 3: Destacar mudanças em um arquivo
-Para monitorar um diretório e destacar as mudanças em um arquivo específico, você pode fazer:
+### Exemplo 3: Verificar a carga do sistema
+Para verificar a carga do sistema a cada 2 segundos, utilize:
 
-```bash
-watch -d ls -l /caminho/do/diretorio
+```csh
+watch -n 2 uptime
 ```
 
-### Exemplo 4: Monitorar espaço em disco
-Para verificar o espaço em disco disponível a cada 10 segundos, execute:
+### Exemplo 4: Monitorar um arquivo de log
+Para monitorar um arquivo de log e ver as novas entradas, você pode usar:
 
-```bash
-watch -n 10 df -h
+```csh
+watch tail -n 10 /var/log/syslog
 ```
 
 ## Tips
-- Use a opção `-d` para facilitar a visualização de mudanças importantes nas saídas.
-- Ajuste o intervalo com `-n` para um tempo que faça sentido para o que você está monitorando, evitando atualizações muito frequentes que podem sobrecarregar o terminal.
-- Combine `watch` com outros comandos para monitorar logs ou saídas de scripts, como `tail -f`, para um acompanhamento mais dinâmico.
+- Use a opção `-d` para facilitar a visualização de mudanças significativas na saída.
+- Combine o `watch` com comandos que fornecem informações em tempo real, como `top` ou `netstat`, para obter uma visão dinâmica do sistema.
+- Lembre-se de que o uso excessivo de `watch` pode consumir recursos do sistema, então ajuste o intervalo de tempo conforme necessário.

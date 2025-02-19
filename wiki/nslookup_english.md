@@ -1,53 +1,50 @@
-# [Linux] Bash nslookup Uso: Query DNS records
+# [Linux] C Shell (csh) nslookup Uso: Query DNS information
 
 ## Overview
-The `nslookup` command is a network utility used to query the Domain Name System (DNS) to obtain domain name or IP address mapping information. It helps users troubleshoot DNS issues by allowing them to look up DNS records for a specific domain or IP address.
+The `nslookup` command is a network utility used to query the Domain Name System (DNS) to obtain domain name or IP address mapping information. It helps in troubleshooting DNS-related issues by allowing users to look up DNS records for specific domains.
 
 ## Usage
 The basic syntax of the `nslookup` command is as follows:
 
-```bash
+```
 nslookup [options] [arguments]
 ```
 
 ## Common Options
-- `-type=TYPE`: Specifies the type of DNS record to query (e.g., A, AAAA, MX, TXT).
-- `-timeout=SECONDS`: Sets the time to wait for a response before timing out.
-- `-retry=NUM`: Specifies the number of retries for a query.
-- `-debug`: Enables debugging mode for more detailed output.
+- `-type=TYPE`: Specify the type of DNS record to query (e.g., A, AAAA, MX, etc.).
+- `-timeout=seconds`: Set the time to wait for a response from the DNS server.
+- `-port=port`: Specify the port number to use for the DNS query (default is 53).
+- `-debug`: Enable debugging output to help diagnose issues.
 
 ## Common Examples
-Here are some practical examples of using the `nslookup` command:
+Here are several practical examples of using the `nslookup` command:
 
-### 1. Querying an A Record
-To find the IP address associated with a domain name:
+1. **Basic Domain Lookup**
+   ```
+   nslookup example.com
+   ```
 
-```bash
-nslookup example.com
-```
+2. **Lookup a Specific Record Type (MX)**
+   ```
+   nslookup -type=MX example.com
+   ```
 
-### 2. Querying a Specific DNS Record Type
-To look up the MX (Mail Exchange) records for a domain:
+3. **Query a Specific DNS Server**
+   ```
+   nslookup example.com 8.8.8.8
+   ```
 
-```bash
-nslookup -type=MX example.com
-```
+4. **Set a Custom Timeout**
+   ```
+   nslookup -timeout=5 example.com
+   ```
 
-### 3. Specifying a DNS Server
-To query a specific DNS server (e.g., Google's public DNS):
-
-```bash
-nslookup example.com 8.8.8.8
-```
-
-### 4. Using Debug Mode
-To enable debug mode for detailed output:
-
-```bash
-nslookup -debug example.com
-```
+5. **Debugging Output**
+   ```
+   nslookup -debug example.com
+   ```
 
 ## Tips
-- Use `nslookup` with different record types to gather comprehensive information about a domain.
-- If you encounter issues, try querying different DNS servers to see if the problem persists.
-- Familiarize yourself with common DNS record types to make the most out of `nslookup`.
+- Always specify the type of record you are interested in for more precise results.
+- Use a reliable DNS server (like Google’s 8.8.8.8) for queries to avoid issues with your local DNS.
+- If you encounter issues, the `-debug` option can provide valuable insights into what might be going wrong.

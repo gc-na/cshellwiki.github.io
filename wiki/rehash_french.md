@@ -1,40 +1,44 @@
-# [Linux] Bash rehash utilisation : Met à jour la liste des commandes disponibles
+# [Linux] C Shell (csh) rehash : Mettre à jour le cache des commandes
 
 ## Overview
-La commande `rehash` dans Bash est utilisée pour mettre à jour le cache des commandes disponibles dans le shell. Cela est particulièrement utile lorsque de nouveaux exécutables ont été ajoutés à un répertoire qui est déjà dans le chemin d'accès, permettant ainsi à l'utilisateur d'accéder à ces nouveaux exécutables sans redémarrer le shell.
+La commande `rehash` dans C Shell (csh) est utilisée pour mettre à jour le cache des commandes. Cela permet au shell de reconnaître les nouveaux exécutables ajoutés au chemin sans avoir à redémarrer le shell.
 
 ## Usage
 La syntaxe de base de la commande `rehash` est la suivante :
 
-```bash
+```csh
 rehash [options] [arguments]
 ```
 
 ## Common Options
-La commande `rehash` n'a pas d'options spécifiques, elle est généralement utilisée sans arguments. 
+La commande `rehash` ne dispose pas d'options spécifiques. Elle s'utilise généralement sans arguments.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `rehash` :
 
-1. **Mettre à jour le cache des commandes** :
-   ```bash
-   rehash
-   ```
+### Exemple 1 : Mettre à jour le cache après l'ajout d'un nouveau programme
+Si vous avez installé un nouveau programme et que vous souhaitez que le shell le reconnaisse, utilisez :
 
-2. **Après avoir ajouté un nouvel exécutable dans un répertoire** :
-   Supposons que vous ayez ajouté un script nommé `myscript.sh` dans `/usr/local/bin`, vous pouvez exécuter :
-   ```bash
-   rehash
-   ```
-   Ensuite, vous pourrez exécuter `myscript.sh` directement.
+```csh
+rehash
+```
 
-3. **Utilisation après l'installation d'un nouveau logiciel** :
-   Si vous avez installé un nouveau logiciel qui a ajouté des commandes dans votre chemin, utilisez :
-   ```bash
-   rehash
-   ```
+### Exemple 2 : Utilisation après modification du PATH
+Après avoir modifié votre variable d'environnement `PATH`, exécutez :
+
+```csh
+rehash
+```
+
+### Exemple 3 : Vérification du cache
+Pour vérifier que le cache a été mis à jour, vous pouvez essayer d'exécuter le programme nouvellement installé après avoir utilisé `rehash` :
+
+```csh
+rehash
+mon_nouveau_programme
+```
 
 ## Tips
-- Utilisez `rehash` régulièrement si vous installez fréquemment de nouveaux outils ou scripts.
-- Si vous ne voyez pas un nouvel exécutable dans votre terminal, essayez d'abord `rehash` avant de vérifier votre chemin d'accès.
-- Notez que certains shells, comme `zsh`, utilisent `rehash` automatiquement, donc cette commande peut ne pas être nécessaire dans ces environnements.
+- Utilisez `rehash` chaque fois que vous installez de nouveaux programmes ou modifiez votre `PATH` pour éviter les erreurs de commande non trouvée.
+- Il est bon de savoir que `rehash` n'affecte pas les alias ou les fonctions définies dans votre shell.
+- Si vous utilisez souvent des scripts ou des programmes installés dynamiquement, envisagez d'ajouter `rehash` à votre fichier de démarrage `.cshrc` pour automatiser le processus.

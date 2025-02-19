@@ -1,46 +1,55 @@
-# [Linux] Bash compctl Utilisation : Gérer l'achèvement des commandes
+# [Unix] C Shell (csh) compctl : [configuration de l'achèvement des commandes]
 
 ## Overview
-La commande `compctl` est utilisée dans les systèmes basés sur Unix pour configurer le comportement de l'achèvement des commandes dans le shell. Elle permet aux utilisateurs de définir comment les complétions doivent se comporter pour différentes commandes, facilitant ainsi l'interaction avec le terminal.
+La commande `compctl` dans C Shell (csh) est utilisée pour configurer le comportement de l'achèvement automatique des commandes. Elle permet aux utilisateurs de définir comment les complétions de commandes doivent se comporter, en spécifiant des règles et des options pour différentes commandes.
 
 ## Usage
 La syntaxe de base de la commande `compctl` est la suivante :
 
-```bash
+```csh
 compctl [options] [arguments]
 ```
 
 ## Common Options
-- `-d`: Définit une description pour la complétion.
-- `-k`: Spécifie une liste de mots clés à compléter.
-- `-n`: Indique le nombre d'arguments requis avant d'activer la complétion.
-- `-s`: Définit une chaîne de caractères à utiliser pour la complétion.
+Voici quelques options courantes pour `compctl` :
+
+- `-d` : Définit un type de complétion pour le répertoire.
+- `-f` : Active la complétion pour les fichiers.
+- `-n` : Spécifie le nombre d'arguments requis pour la complétion.
+- `-s` : Permet de spécifier une chaîne de caractères pour la complétion.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `compctl` :
 
 ### Exemple 1 : Complétion de fichiers
-Pour activer la complétion de fichiers pour une commande personnalisée :
+Pour activer la complétion des fichiers pour la commande `ls` :
 
-```bash
-compctl -f ma_commande
+```csh
+compctl -f ls
 ```
 
-### Exemple 2 : Complétion avec des mots clés
-Pour définir des mots clés spécifiques pour une commande :
+### Exemple 2 : Complétion de répertoires
+Pour activer la complétion des répertoires pour la commande `cd` :
 
-```bash
-compctl -k "option1 option2 option3" ma_commande
+```csh
+compctl -d cd
 ```
 
-### Exemple 3 : Complétion avec description
-Pour ajouter une description à une complétion :
+### Exemple 3 : Complétion avec un nombre d'arguments
+Pour spécifier que la commande `cp` doit avoir deux arguments pour la complétion :
 
-```bash
-compctl -d "Complétez avec un fichier" -f ma_commande
+```csh
+compctl -n 2 cp
+```
+
+### Exemple 4 : Complétion avec une chaîne spécifique
+Pour activer la complétion de la commande `git` avec une chaîne spécifique :
+
+```csh
+compctl -s "add commit push" git
 ```
 
 ## Tips
-- Utilisez `compctl` pour personnaliser l'achèvement des commandes afin de rendre votre expérience de terminal plus efficace.
-- Testez vos configurations dans un environnement sûr avant de les appliquer à votre shell principal.
-- Consultez la documentation de votre shell pour des options avancées et des fonctionnalités spécifiques à votre environnement.
+- Utilisez `compctl` pour personnaliser l'achèvement des commandes selon vos besoins spécifiques.
+- Testez vos configurations après chaque modification pour vous assurer qu'elles fonctionnent comme prévu.
+- Consultez la documentation de csh pour des options avancées et des exemples supplémentaires.

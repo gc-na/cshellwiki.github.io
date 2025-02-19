@@ -1,60 +1,52 @@
-# [Linux] Bash parted Usage: Manage disk partitions
+# [Linux] C Shell (csh) parted用法: Manage disk partitions
 
 ## Overview
-The `parted` command is a powerful tool used in Linux for managing disk partitions. It allows users to create, delete, resize, and manipulate disk partitions on various storage devices. `parted` supports both MBR (Master Boot Record) and GPT (GUID Partition Table) partitioning schemes, making it versatile for different systems.
+The `parted` command is a powerful tool used for managing disk partitions in Linux. It allows users to create, delete, resize, and manipulate disk partitions, making it essential for system administration and disk management tasks.
 
 ## Usage
 The basic syntax of the `parted` command is as follows:
 
-```bash
+```shell
 parted [options] [arguments]
 ```
 
 ## Common Options
+- `-l`, `--list`: List all available partitions on all devices.
 - `-s`, `--script`: Run in script mode, suppressing all interactive prompts.
-- `-m`, `--machine`: Output in a machine-readable format.
-- `--version`: Display the version of `parted`.
-- `--help`: Show help information about the command and its options.
+- `mkpart`: Create a new partition.
+- `rm`: Remove a partition.
+- `resizepart`: Resize an existing partition.
+- `print`: Display the partition table of the specified device.
 
 ## Common Examples
+Here are some practical examples of using the `parted` command:
 
-### Start parted with a specific device
-To start `parted` on a specific disk (e.g., `/dev/sda`):
+1. **List all partitions on a device:**
+   ```shell
+   parted -l
+   ```
 
-```bash
-parted /dev/sda
-```
+2. **Create a new partition:**
+   ```shell
+   parted /dev/sda mkpart primary ext4 1MiB 100MiB
+   ```
 
-### Create a new partition
-To create a new partition of 10GB on `/dev/sda` starting at 1GB:
+3. **Remove a partition:**
+   ```shell
+   parted /dev/sda rm 1
+   ```
 
-```bash
-parted /dev/sda mkpart primary ext4 1GB 11GB
-```
+4. **Resize an existing partition:**
+   ```shell
+   parted /dev/sda resizepart 1 200MiB
+   ```
 
-### Resize a partition
-To resize an existing partition (e.g., partition 1) to 20GB:
-
-```bash
-parted /dev/sda resizepart 1 20GB
-```
-
-### Delete a partition
-To delete partition 2 on `/dev/sda`:
-
-```bash
-parted /dev/sda rm 2
-```
-
-### Print the partition table
-To display the current partition layout of the disk:
-
-```bash
-parted /dev/sda print
-```
+5. **Display the partition table of a specific device:**
+   ```shell
+   parted /dev/sda print
+   ```
 
 ## Tips
-- Always back up important data before modifying partitions to prevent data loss.
-- Use the `-s` option when running scripts to avoid interactive prompts that can halt automated processes.
-- Familiarize yourself with the partitioning scheme (MBR or GPT) of your disk to avoid compatibility issues.
-- Use `print` frequently to check your changes and ensure everything is as expected before finalizing any operations.
+- Always back up important data before modifying partitions.
+- Use the `--script` option when running commands in scripts to avoid interactive prompts.
+- Be cautious when resizing partitions, as it can lead to data loss if not done correctly.

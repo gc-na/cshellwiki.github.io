@@ -1,12 +1,12 @@
-# [Linux] Bash md5sum Uso: Calcular e verificar somas de verificação MD5
+# [Linux] C Shell (csh) md5sum Uso: Calcular e verificar somas de verificação MD5
 
 ## Overview
-O comando `md5sum` é utilizado para calcular e verificar a soma de verificação MD5 de arquivos. Essa soma de verificação é uma representação única do conteúdo do arquivo, permitindo verificar a integridade dos dados.
+O comando `md5sum` é utilizado para calcular e verificar a soma de verificação MD5 de arquivos. Essa soma de verificação é uma representação única do conteúdo do arquivo, permitindo a verificação de integridade e autenticidade.
 
 ## Usage
 A sintaxe básica do comando `md5sum` é a seguinte:
 
-```bash
+```csh
 md5sum [opções] [argumentos]
 ```
 
@@ -14,41 +14,38 @@ md5sum [opções] [argumentos]
 - `-b`: Processa arquivos binários.
 - `-c`: Verifica as somas de verificação a partir de um arquivo.
 - `-t`: Calcula a soma de verificação apenas para arquivos de texto.
-- `--help`: Exibe a ajuda do comando.
+- `--help`: Exibe uma ajuda sobre o uso do comando.
+- `--version`: Mostra a versão do `md5sum`.
 
 ## Common Examples
+Aqui estão alguns exemplos práticos do uso do `md5sum`:
 
-1. **Calcular a soma de verificação de um arquivo:**
+1. **Calcular a soma de verificação MD5 de um arquivo:**
+   ```csh
+   md5sum arquivo.txt
+   ```
 
-```bash
-md5sum arquivo.txt
-```
+2. **Salvar a soma de verificação em um arquivo:**
+   ```csh
+   md5sum arquivo.txt > arquivo.md5
+   ```
 
-2. **Calcular a soma de verificação de vários arquivos:**
+3. **Verificar a soma de verificação a partir de um arquivo:**
+   ```csh
+   md5sum -c arquivo.md5
+   ```
 
-```bash
-md5sum arquivo1.txt arquivo2.txt
-```
+4. **Calcular a soma de verificação de um arquivo binário:**
+   ```csh
+   md5sum -b arquivo.bin
+   ```
 
-3. **Salvar a soma de verificação em um arquivo:**
-
-```bash
-md5sum arquivo.txt > arquivo.md5
-```
-
-4. **Verificar a soma de verificação a partir de um arquivo:**
-
-```bash
-md5sum -c arquivo.md5
-```
-
-5. **Calcular a soma de verificação de um arquivo binário:**
-
-```bash
-md5sum -b arquivo.bin
-```
+5. **Exibir a versão do md5sum:**
+   ```csh
+   md5sum --version
+   ```
 
 ## Tips
-- Sempre verifique a soma de verificação após transferir arquivos importantes para garantir que não houve corrupção.
-- Utilize o redirecionamento para salvar somas de verificação em um arquivo, facilitando a verificação futura.
-- Combine o `md5sum` com outros comandos, como `find`, para calcular somas de verificação em múltiplos arquivos de forma eficiente.
+- Sempre verifique a soma de verificação após transferir arquivos para garantir que não houve corrupção.
+- Utilize o `-c` para verificar múltiplos arquivos de uma só vez, facilitando a manutenção de integridade em grandes conjuntos de dados.
+- Considere usar somas de verificação diferentes, como SHA-256, para maior segurança, já que o MD5 não é mais considerado seguro contra colisões.

@@ -1,69 +1,54 @@
-# [Linux] Bash break cách sử dụng: Dừng vòng lặp
+# [Hệ điều hành] C Shell (csh) break Cách sử dụng: Dừng vòng lặp
 
 ## Overview
-Lệnh `break` trong Bash được sử dụng để thoát khỏi một vòng lặp, chẳng hạn như vòng lặp `for`, `while`, hoặc `until`. Khi lệnh `break` được thực thi, chương trình sẽ dừng lại ngay lập tức và tiếp tục với lệnh tiếp theo sau vòng lặp.
+Lệnh `break` trong C Shell (csh) được sử dụng để thoát khỏi một vòng lặp. Khi lệnh này được thực thi, nó sẽ dừng vòng lặp hiện tại và tiếp tục với lệnh tiếp theo sau vòng lặp.
 
 ## Usage
 Cú pháp cơ bản của lệnh `break` như sau:
-```bash
-break [n]
+
 ```
-Trong đó, `n` là số lượng vòng lặp cần thoát. Nếu không chỉ định `n`, lệnh sẽ thoát khỏi vòng lặp gần nhất.
+break [options]
+```
 
 ## Common Options
-- `n`: Số lượng vòng lặp cần thoát. Nếu `n` được chỉ định, `break` sẽ thoát khỏi vòng lặp thứ `n` từ trong ra ngoài.
+Lệnh `break` không có nhiều tùy chọn. Tuy nhiên, bạn có thể sử dụng nó trong các vòng lặp như `foreach`, `while`, hoặc `for`.
 
 ## Common Examples
-### Ví dụ 1: Thoát khỏi vòng lặp `for`
-```bash
-for i in {1..5}; do
-  if [ $i -eq 3 ]; then
-    break
-  fi
-  echo "Số: $i"
-done
-```
-Kết quả:
-```
-Số: 1
-Số: 2
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `break`:
+
+### Ví dụ 1: Dừng vòng lặp `while`
+```csh
+set count = 1
+while ($count <= 5)
+    echo "Count is $count"
+    if ($count == 3) then
+        break
+    endif
+    @ count++
+end
 ```
 
-### Ví dụ 2: Thoát khỏi vòng lặp `while`
-```bash
-count=1
-while [ $count -le 5 ]; do
-  if [ $count -eq 4 ]; then
-    break
-  fi
-  echo "Đếm: $count"
-  ((count++))
-done
-```
-Kết quả:
-```
-Đếm: 1
-Đếm: 2
-Đếm: 3
+### Ví dụ 2: Dừng vòng lặp `foreach`
+```csh
+foreach item (apple banana cherry)
+    if ("$item" == "banana") then
+        break
+    endif
+    echo "Current item: $item"
+end
 ```
 
-### Ví dụ 3: Thoát khỏi vòng lặp lồng nhau
-```bash
-for i in {1..3}; do
-  for j in {1..3}; do
-    if [ $j -eq 2 ]; then
-      break 2
-    fi
-    echo "i: $i, j: $j"
-  done
-done
-```
-Kết quả:
-```
-i: 1, j: 1
+### Ví dụ 3: Sử dụng trong vòng lặp `for`
+```csh
+foreach i (1 2 3 4 5)
+    if ($i == 4) then
+        break
+    endif
+    echo "Number: $i"
+end
 ```
 
 ## Tips
-- Sử dụng `break` để kiểm soát luồng chương trình trong các vòng lặp phức tạp.
-- Khi làm việc với vòng lặp lồng nhau, hãy chỉ định số lượng vòng lặp cần thoát để tránh nhầm lẫn.
-- Kết hợp `break` với các điều kiện để tạo ra các vòng lặp linh hoạt và hiệu quả hơn.
+- Sử dụng `break` khi bạn cần dừng vòng lặp sớm trong các tình huống cụ thể.
+- Kết hợp `break` với các điều kiện để kiểm soát luồng thực thi của chương trình một cách hiệu quả hơn.
+- Hãy chắc chắn rằng bạn hiểu rõ cấu trúc của vòng lặp để sử dụng `break` một cách hợp lý.

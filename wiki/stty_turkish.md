@@ -1,55 +1,45 @@
-# [Linux] Bash stty Kullanımı: Terminal ayarlarını yapılandırma
+# [Linux] C Shell (csh) stty Kullanımı: Terminal ayarlarını değiştirme
 
 ## Genel Bakış
-`stty` komutu, terminal ayarlarını yapılandırmak ve kontrol etmek için kullanılır. Bu komut, terminalin davranışını değiştirmek ve giriş/çıkış ayarlarını yönetmek için oldukça faydalıdır.
+`stty` komutu, terminal ayarlarını değiştirmek için kullanılan bir komuttur. Bu komut, terminalin giriş ve çıkış özelliklerini yapılandırarak kullanıcı deneyimini iyileştirir.
 
 ## Kullanım
-Temel sözdizimi şu şekildedir:
-
-```bash
+Temel sözdizimi aşağıdaki gibidir:
+```csh
 stty [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
 - `-a`: Tüm terminal ayarlarını gösterir.
-- `-g`: Terminal ayarlarını bir dize olarak gösterir, bu dize daha sonra geri yüklenebilir.
+- `-g`: Terminal ayarlarını bir dize olarak gösterir.
 - `erase`: Silme karakterini ayarlar.
-- `kill`: Satırı silmek için kullanılan karakteri ayarlar.
+- `kill`: Satır silme karakterini ayarlar.
 - `intr`: Kesme karakterini ayarlar.
 
 ## Yaygın Örnekler
-Aşağıda `stty` komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda `stty` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-### 1. Tüm Terminal Ayarlarını Görüntüleme
-```bash
+### 1. Tüm terminal ayarlarını görüntüleme
+```csh
 stty -a
 ```
 
-### 2. Silme Karakterini Ayarlama
-```bash
+### 2. Silme karakterini ayarlama
+```csh
 stty erase ^H
 ```
-Bu komut, silme karakterini `^H` (backspace) olarak ayarlar.
 
-### 3. Kesme Karakterini Ayarlama
-```bash
+### 3. Kesme karakterini ayarlama
+```csh
 stty intr ^C
 ```
-Bu komut, kesme karakterini `^C` olarak ayarlar.
 
-### 4. Terminal Ayarlarını Dize Olarak Kaydetme
-```bash
-stty -g > ayarlar.txt
+### 4. Terminal ayarlarını dize olarak gösterme
+```csh
+stty -g
 ```
-Bu komut, mevcut terminal ayarlarını `ayarlar.txt` dosyasına kaydeder.
-
-### 5. Terminal Ayarlarını Geri Yükleme
-```bash
-stty $(cat ayarlar.txt)
-```
-Bu komut, daha önce kaydedilmiş ayarları geri yükler.
 
 ## İpuçları
 - Terminal ayarlarını değiştirmeden önce mevcut ayarları kaydetmek iyi bir uygulamadır.
-- `stty` komutunu kullanarak terminalinizin davranışını özelleştirebilir, böylece daha verimli çalışabilirsiniz.
-- Değişikliklerinizi test etmek için terminali kapatıp açmayı unutmayın; bazı ayarlar kalıcı olmayabilir.
+- `stty` komutunu kullanırken dikkatli olun; yanlış ayarlar terminalin çalışmasını etkileyebilir.
+- Ayarları kalıcı hale getirmek için, `stty` komutunu başlangıç dosyalarınıza eklemeyi düşünün.

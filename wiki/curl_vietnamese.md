@@ -1,7 +1,7 @@
-# [Linux] Bash curl cách sử dụng: Gửi và nhận dữ liệu qua giao thức HTTP
+# [Hệ điều hành] C Shell (csh) curl Cách sử dụng: Lấy và truyền tải dữ liệu từ máy chủ
 
 ## Tổng quan
-Lệnh `curl` là một công cụ dòng lệnh mạnh mẽ cho phép người dùng gửi và nhận dữ liệu từ hoặc đến một máy chủ thông qua các giao thức như HTTP, HTTPS, FTP, và nhiều hơn nữa. Nó thường được sử dụng để kiểm tra API, tải xuống tệp, hoặc gửi dữ liệu đến máy chủ.
+Lệnh `curl` được sử dụng để lấy hoặc truyền tải dữ liệu từ hoặc đến một máy chủ thông qua các giao thức như HTTP, HTTPS, FTP, và nhiều hơn nữa. Đây là một công cụ mạnh mẽ và linh hoạt cho việc tương tác với các dịch vụ web.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `curl` như sau:
@@ -10,39 +10,41 @@ curl [options] [arguments]
 ```
 
 ## Các tùy chọn phổ biến
-- `-X`: Chỉ định phương thức HTTP (GET, POST, PUT, DELETE, v.v.).
-- `-d`: Gửi dữ liệu trong yêu cầu POST.
-- `-H`: Thêm tiêu đề HTTP vào yêu cầu.
-- `-o`: Chỉ định tệp đầu ra để lưu dữ liệu nhận được.
-- `-I`: Chỉ nhận tiêu đề của phản hồi.
+- `-O`: Tải tệp và lưu với tên tệp gốc.
+- `-o <file>`: Tải tệp và lưu với tên tệp chỉ định.
+- `-L`: Theo dõi các chuyển hướng.
+- `-I`: Chỉ lấy tiêu đề HTTP.
+- `-d <data>`: Gửi dữ liệu trong yêu cầu POST.
 
 ## Ví dụ phổ biến
-- **Gửi yêu cầu GET đến một trang web:**
+- Tải một tệp từ URL và lưu với tên gốc:
   ```bash
-  curl https://www.example.com
+  curl -O http://example.com/file.txt
   ```
 
-- **Gửi yêu cầu POST với dữ liệu:**
+- Tải một tệp và lưu với tên chỉ định:
   ```bash
-  curl -X POST -d "name=John&age=30" https://www.example.com/api
+  curl -o myfile.txt http://example.com/file.txt
   ```
 
-- **Tải xuống tệp và lưu vào tệp cục bộ:**
+- Theo dõi chuyển hướng và tải tệp:
   ```bash
-  curl -o myfile.txt https://www.example.com/file.txt
+  curl -L -O http://example.com/redirect
   ```
 
-- **Gửi yêu cầu với tiêu đề tùy chỉnh:**
+- Lấy tiêu đề HTTP của một trang web:
   ```bash
-  curl -H "Authorization: Bearer token" https://www.example.com/api
+  curl -I http://example.com
   ```
 
-- **Chỉ nhận tiêu đề phản hồi:**
+- Gửi dữ liệu trong yêu cầu POST:
   ```bash
-  curl -I https://www.example.com
+  curl -d "param1=value1&param2=value2" http://example.com/submit
   ```
 
 ## Mẹo
-- Sử dụng `-v` để xem thông tin chi tiết về yêu cầu và phản hồi, giúp bạn gỡ lỗi dễ dàng hơn.
-- Khi gửi dữ liệu nhạy cảm, hãy sử dụng giao thức HTTPS để bảo mật thông tin.
-- Kiểm tra mã trạng thái HTTP bằng cách sử dụng tùy chọn `-w` để đảm bảo yêu cầu của bạn thành công.
+- Sử dụng `-v` để xem thông tin chi tiết về quá trình truyền tải, điều này hữu ích cho việc gỡ lỗi.
+- Kết hợp `-H` để thêm tiêu đề tùy chỉnh vào yêu cầu của bạn.
+- Để lưu trữ lịch sử các yêu cầu, bạn có thể ghi lại đầu ra của lệnh vào một tệp bằng cách sử dụng `>`.
+
+Hy vọng rằng bài viết này sẽ giúp bạn hiểu rõ hơn về lệnh `curl` trong C Shell!

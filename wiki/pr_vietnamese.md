@@ -1,50 +1,49 @@
-# [Linux] Bash pr: [in ấn tài liệu]
+# [Hệ điều hành] C Shell (csh) pr <Sử dụng tương đương>: In định dạng tài liệu
 
-## Overview
-Lệnh `pr` trong Bash được sử dụng để định dạng và in nội dung của các tệp tin văn bản. Nó giúp người dùng tạo ra các trang in có định dạng đẹp mắt, dễ đọc hơn bằng cách chia nội dung thành các cột và thêm tiêu đề.
+## Tổng quan
+Lệnh `pr` trong C Shell (csh) được sử dụng để định dạng và in nội dung của các tệp văn bản. Nó giúp chia nhỏ nội dung thành các trang và cột, làm cho việc đọc tài liệu trở nên dễ dàng hơn.
 
-## Usage
+## Cách sử dụng
 Cú pháp cơ bản của lệnh `pr` như sau:
-```bash
-pr [options] [arguments]
+```
+pr [tùy chọn] [đối số]
 ```
 
-## Common Options
-- `-h, --header=HEADER`: Thêm tiêu đề cho trang in.
-- `-l, --length=NUMBER`: Đặt chiều dài trang in (số dòng trên mỗi trang).
-- `-n, --number`: Đánh số dòng trong tài liệu.
-- `-t, --omit-header`: Bỏ qua tiêu đề trang.
-- `-s, --separator=CHAR`: Đặt ký tự phân cách giữa các cột.
+## Tùy chọn phổ biến
+- `-l <số>`: Đặt chiều dài trang (số dòng trên mỗi trang).
+- `-w <số>`: Đặt chiều rộng trang (số ký tự trên mỗi dòng).
+- `-h <tiêu đề>`: Thêm tiêu đề cho mỗi trang.
+- `-s <ký tự>`: Chỉ định ký tự để phân cách các cột.
 
-## Common Examples
-Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `pr`:
+## Ví dụ phổ biến
+Dưới đây là một số ví dụ về cách sử dụng lệnh `pr`:
 
-1. **In một tệp tin với tiêu đề**:
+1. In nội dung của tệp `file.txt` với chiều dài trang mặc định:
    ```bash
-   pr -h "Tiêu đề Tài liệu" file.txt
+   pr file.txt
    ```
 
-2. **In tệp tin với 2 cột**:
-   ```bash
-   pr -2 file.txt
-   ```
-
-3. **In tệp tin với số dòng**:
-   ```bash
-   pr -n file.txt
-   ```
-
-4. **In tệp tin với chiều dài trang là 50 dòng**:
+2. In nội dung của tệp `file.txt` với chiều dài trang là 50 dòng:
    ```bash
    pr -l 50 file.txt
    ```
 
-5. **In tệp tin mà không có tiêu đề**:
+3. In nội dung của tệp `file.txt` với chiều rộng trang là 80 ký tự:
    ```bash
-   pr -t file.txt
+   pr -w 80 file.txt
    ```
 
-## Tips
-- Sử dụng tùy chọn `-h` để thêm tiêu đề giúp tài liệu của bạn trở nên chuyên nghiệp hơn.
-- Kết hợp các tùy chọn như `-2` và `-n` để tạo ra một tài liệu dễ đọc và có tổ chức.
-- Kiểm tra nội dung trước khi in để đảm bảo rằng định dạng phù hợp với yêu cầu của bạn.
+4. In nội dung của tệp `file.txt` với tiêu đề là "Báo cáo":
+   ```bash
+   pr -h "Báo cáo" file.txt
+   ```
+
+5. In nội dung của tệp `file.txt` với 2 cột và ký tự phân cách là dấu phẩy:
+   ```bash
+   pr -s ',' -2 file.txt
+   ```
+
+## Mẹo
+- Sử dụng tùy chọn `-h` để thêm tiêu đề giúp tài liệu trở nên chuyên nghiệp hơn.
+- Kiểm tra chiều dài và chiều rộng trang trước khi in để đảm bảo nội dung được hiển thị đúng cách.
+- Thử nghiệm với các tùy chọn khác nhau để tìm ra định dạng phù hợp nhất cho tài liệu của bạn.

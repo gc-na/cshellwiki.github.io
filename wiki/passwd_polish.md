@@ -1,49 +1,50 @@
-# [Linux] Bash passwd użycie: Zmiana hasła użytkownika
+# [Linux] C Shell (csh) passwd użycie: Zmiana hasła użytkownika
 
 ## Overview
-Polecenie `passwd` służy do zmiany hasła użytkownika w systemie Linux. Umożliwia użytkownikom aktualizację swoich haseł oraz administratorom zarządzanie hasłami innych użytkowników.
+Polecenie `passwd` w C Shell (csh) służy do zmiany hasła użytkownika. Umożliwia użytkownikom aktualizację swojego hasła, co jest kluczowe dla bezpieczeństwa systemu.
 
 ## Usage
-Podstawowa składnia polecenia `passwd` jest następująca:
+Podstawowa składnia polecenia `passwd` wygląda następująco:
 
-```bash
+```csh
 passwd [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-d` : Usuwa hasło użytkownika, co oznacza, że konto staje się dostępne bez hasła.
-- `-l` : Blokuje konto użytkownika, uniemożliwiając logowanie.
-- `-u` : Odblokowuje konto użytkownika.
-- `-e` : Wymusza zmianę hasła przy następnym logowaniu.
-- `-S` : Wyświetla status konta użytkownika.
+- `-l` : Zablokuj konto użytkownika.
+- `-u` : Odblokuj konto użytkownika.
+- `-e` : Wymuś zmianę hasła przy następnym logowaniu.
+- `-d` : Usuń hasło użytkownika (zablokuje dostęp do konta).
 
 ## Common Examples
+Oto kilka praktycznych przykładów użycia polecenia `passwd`:
+
 1. Zmiana hasła dla bieżącego użytkownika:
-   ```bash
+   ```csh
    passwd
    ```
 
 2. Zmiana hasła dla innego użytkownika (wymaga uprawnień administratora):
-   ```bash
-   sudo passwd nazwa_użytkownika
+   ```csh
+   passwd username
    ```
 
-3. Usunięcie hasła użytkownika:
-   ```bash
-   sudo passwd -d nazwa_użytkownika
+3. Zablokowanie konta użytkownika:
+   ```csh
+   passwd -l username
    ```
 
-4. Blokowanie konta użytkownika:
-   ```bash
-   sudo passwd -l nazwa_użytkownika
+4. Odblokowanie konta użytkownika:
+   ```csh
+   passwd -u username
    ```
 
 5. Wymuszenie zmiany hasła przy następnym logowaniu:
-   ```bash
-   sudo passwd -e nazwa_użytkownika
+   ```csh
+   passwd -e username
    ```
 
 ## Tips
-- Zawsze używaj silnych haseł, aby zwiększyć bezpieczeństwo konta.
-- Regularnie zmieniaj hasła, zwłaszcza na kontach z uprawnieniami administratora.
-- Używaj opcji `-S`, aby sprawdzić status konta przed dokonaniem zmian.
+- Upewnij się, że hasło jest silne, zawierające litery, cyfry i znaki specjalne.
+- Regularnie zmieniaj hasło, aby zwiększyć bezpieczeństwo konta.
+- Używaj opcji `-e`, aby wymusić na użytkownikach zmianę hasła po pewnym czasie.

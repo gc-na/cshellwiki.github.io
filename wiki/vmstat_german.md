@@ -1,51 +1,52 @@
-# [Linux] Bash vmstat Verwendung: Überwachung von Systemressourcen
+# [Linux] C Shell (csh) vmstat Verwendung: Überwachung von Systemressourcen
 
-## Overview
-Der `vmstat`-Befehl (Virtual Memory Statistics) ist ein nützliches Werkzeug zur Überwachung von Systemressourcen in Echtzeit. Er liefert Informationen über die Speichernutzung, den CPU-Status und andere Systemaktivitäten, was bei der Diagnose von Leistungsproblemen hilfreich ist.
+## Übersicht
+Der Befehl `vmstat` (Virtual Memory Statistics) wird verwendet, um Informationen über die Systemressourcennutzung anzuzeigen, einschließlich Speicher, Prozesse, Paging und CPU-Aktivität. Er hilft dabei, die Leistung des Systems zu überwachen und Engpässe zu identifizieren.
 
-## Usage
-Die grundlegende Syntax des `vmstat`-Befehls lautet:
+## Verwendung
+Die grundlegende Syntax des Befehls lautet:
 
-```bash
-vmstat [Optionen] [Intervalle] [Anzahl]
+```csh
+vmstat [Optionen] [Argumente]
 ```
 
-## Common Options
-- `-a`: Zeigt alle Speicherstatistiken an, einschließlich der aktiven und inaktiven Speicher.
-- `-m`: Zeigt Informationen über den Speicherverbrauch von Slab-Cache-Objekten.
-- `-s`: Gibt eine zusammenfassende Statistik über den Systemstatus aus.
-- `-d`: Zeigt Statistiken über Blockgeräte an.
-- `-w`: Wechselt in den "Wide"-Modus, um breitere Ausgaben zu ermöglichen.
+## Häufige Optionen
+- `-a`: Zeigt alle Speicherinformationen an, einschließlich aktiver und inaktiver Seiten.
+- `-m`: Zeigt Informationen über den Speicherverbrauch von Speicherpools an.
+- `-s`: Gibt eine zusammenfassende Statistik über die Systemressourcen aus.
+- `interval`: Gibt an, wie oft die Statistiken aktualisiert werden sollen (in Sekunden).
+- `count`: Gibt die Anzahl der gewünschten Aktualisierungen an.
 
-## Common Examples
-Hier sind einige praktische Beispiele für die Verwendung von `vmstat`:
+## Häufige Beispiele
+- Um die Systemressourcen einmalig anzuzeigen:
 
-1. **Grundlegende Systemstatistiken anzeigen:**
-   ```bash
-   vmstat
-   ```
+```csh
+vmstat
+```
 
-2. **Statistiken alle 5 Sekunden anzeigen:**
-   ```bash
-   vmstat 5
-   ```
+- Um die Statistiken alle 5 Sekunden für 10 Intervalle anzuzeigen:
 
-3. **Statistiken alle 5 Sekunden für 10 Intervalle anzeigen:**
-   ```bash
-   vmstat 5 10
-   ```
+```csh
+vmstat 5 10
+```
 
-4. **Speicherstatistiken im Detail anzeigen:**
-   ```bash
-   vmstat -a
-   ```
+- Um detaillierte Informationen über den Speicher anzuzeigen:
 
-5. **Statistiken über Blockgeräte anzeigen:**
-   ```bash
-   vmstat -d
-   ```
+```csh
+vmstat -a
+```
 
-## Tips
-- Verwenden Sie `vmstat` in Kombination mit anderen Monitoring-Tools, um ein umfassenderes Bild der Systemleistung zu erhalten.
-- Achten Sie darauf, die Intervalle und Anzahl der Abfragen so zu wählen, dass sie Ihren Überwachungsbedürfnissen entsprechen, um die Ausgabe übersichtlich zu halten.
-- Nutzen Sie die Option `-s`, um eine schnelle Zusammenfassung der Systemstatistiken zu erhalten, die bei der Fehlersuche hilfreich sein kann.
+- Um eine zusammenfassende Statistik anzuzeigen:
+
+```csh
+vmstat -s
+```
+
+## Tipps
+- Verwenden Sie `vmstat` in Kombination mit anderen Überwachungswerkzeugen, um ein umfassenderes Bild der Systemleistung zu erhalten.
+- Achten Sie auf hohe Werte bei der CPU-Auslastung oder beim Paging, da dies auf mögliche Engpässe hinweisen kann.
+- Speichern Sie die Ausgabe von `vmstat` in eine Datei, um die Leistung über einen längeren Zeitraum zu analysieren:
+
+```csh
+vmstat 5 10 > vmstat_output.txt
+```

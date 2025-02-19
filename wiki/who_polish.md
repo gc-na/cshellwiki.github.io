@@ -1,50 +1,46 @@
-# [Linux] Bash who użycie: wyświetlanie aktywnych użytkowników
+# [Linux] C Shell (csh) who użycie: wyświetla listę zalogowanych użytkowników
 
 ## Overview
-Polecenie `who` w systemie Linux służy do wyświetlania listy aktualnie zalogowanych użytkowników. Informacje te obejmują nazwę użytkownika, terminal, z którego się zalogowali, datę oraz godzinę logowania.
+Polecenie `who` w C Shell (csh) służy do wyświetlania listy użytkowników aktualnie zalogowanych do systemu. Informacje te mogą być przydatne do monitorowania aktywności użytkowników i zarządzania systemem.
 
 ## Usage
 Podstawowa składnia polecenia `who` jest następująca:
 
-```bash
+```csh
 who [opcje] [argumenty]
 ```
 
 ## Common Options
 Oto kilka powszechnie używanych opcji dla polecenia `who`:
 
-- `-a`: Wyświetla wszystkie dostępne informacje o użytkownikach.
-- `-b`: Pokazuje czas ostatniego uruchomienia systemu.
-- `-q`: Wyświetla tylko listę zalogowanych użytkowników oraz ich liczbę.
-- `--help`: Wyświetla pomoc dotyczącą użycia polecenia.
+- `-b`: Wyświetla czas ostatniego uruchomienia systemu.
+- `-q`: Wyświetla tylko listę użytkowników oraz ich liczbę.
+- `-H`: Wyświetla nagłówki kolumn w wynikach.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `who`:
+Poniżej znajdują się przykłady użycia polecenia `who`:
 
-1. Wyświetlenie listy wszystkich zalogowanych użytkowników:
-   ```bash
+1. Aby wyświetlić listę wszystkich zalogowanych użytkowników:
+   ```csh
    who
    ```
 
-2. Wyświetlenie szczegółowych informacji o użytkownikach:
-   ```bash
-   who -a
-   ```
-
-3. Sprawdzenie czasu ostatniego uruchomienia systemu:
-   ```bash
+2. Aby zobaczyć czas ostatniego uruchomienia systemu:
+   ```csh
    who -b
    ```
 
-4. Wyświetlenie tylko liczby zalogowanych użytkowników:
-   ```bash
+3. Aby wyświetlić tylko użytkowników i ich liczbę:
+   ```csh
    who -q
    ```
 
+4. Aby wyświetlić listę użytkowników z nagłówkami kolumn:
+   ```csh
+   who -H
+   ```
+
 ## Tips
-- Używaj opcji `-a`, aby uzyskać pełny obraz aktywności użytkowników w systemie.
-- Regularnie sprawdzaj, kto jest zalogowany, aby monitorować bezpieczeństwo systemu.
-- Możesz połączyć `who` z innymi poleceniami, takimi jak `grep`, aby filtrować wyniki według konkretnego użytkownika. Na przykład:
-  ```bash
-  who | grep username
-  ```
+- Używaj opcji `-q`, gdy chcesz szybko sprawdzić, ilu użytkowników jest zalogowanych, bez przeglądania pełnej listy.
+- Regularne monitorowanie zalogowanych użytkowników może pomóc w identyfikacji nieautoryzowanych sesji.
+- Możesz łączyć `who` z innymi poleceniami, aby uzyskać bardziej szczegółowe informacje, na przykład używając `grep`, aby filtrować wyniki.

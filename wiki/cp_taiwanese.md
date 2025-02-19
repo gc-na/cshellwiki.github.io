@@ -1,48 +1,47 @@
-# [Linux] Bash cp 使用法: 複製檔案和目錄
+# [台灣] C Shell (csh) cp 使用方式: 複製檔案和目錄
 
 ## Overview
-`cp` 命令用於在 Linux 系統中複製檔案和目錄。它可以將一個或多個檔案從一個位置複製到另一個位置，並提供多種選項來控制複製的行為。
+`cp` 命令用於在檔案系統中複製檔案和目錄。它可以將一個或多個檔案複製到指定的目的地，並且可以選擇性地覆蓋現有檔案。
 
 ## Usage
 基本語法如下：
-```bash
-cp [options] [source] [destination]
+```
+cp [options] [arguments]
 ```
 
 ## Common Options
-- `-r`：遞迴複製目錄及其內容。
 - `-i`：在覆蓋檔案之前提示使用者確認。
-- `-u`：僅在源檔案較新或目標檔案不存在時才複製。
-- `-v`：顯示詳細的操作過程。
-- `-a`：以檔案的所有屬性進行複製，等同於 `-dR --preserve=all`。
+- `-r`：遞迴複製目錄及其內容。
+- `-u`：只複製源檔案比目的檔案更新的檔案。
+- `-v`：在複製過程中顯示詳細信息。
 
 ## Common Examples
-- 複製單個檔案：
-```bash
-cp file.txt /path/to/destination/
-```
+1. 複製單一檔案：
+   ```csh
+   cp file1.txt file2.txt
+   ```
 
-- 複製多個檔案到目錄：
-```bash
-cp file1.txt file2.txt /path/to/destination/
-```
+2. 複製並覆蓋檔案，並提示確認：
+   ```csh
+   cp -i file1.txt file2.txt
+   ```
 
-- 遞迴複製目錄：
-```bash
-cp -r /path/to/source_directory /path/to/destination_directory
-```
+3. 遞迴複製目錄：
+   ```csh
+   cp -r dir1/ dir2/
+   ```
 
-- 使用提示確認覆蓋：
-```bash
-cp -i file.txt /path/to/destination/
-```
+4. 只複製更新的檔案：
+   ```csh
+   cp -u file1.txt file2.txt
+   ```
 
-- 顯示詳細過程的複製：
-```bash
-cp -v file.txt /path/to/destination/
-```
+5. 顯示詳細的複製過程：
+   ```csh
+   cp -v file1.txt file2.txt
+   ```
 
 ## Tips
-- 在複製重要檔案時，建議使用 `-i` 選項，以避免意外覆蓋。
-- 使用 `-u` 選項可以幫助您僅更新較舊的檔案，節省時間和空間。
-- 當需要保留檔案屬性時，使用 `-a` 選項是最佳選擇。
+- 使用 `-i` 選項可以避免意外覆蓋重要檔案。
+- 在複製大型目錄時，建議使用 `-v` 來監控進度。
+- 確保目的地路徑存在，否則 `cp` 可能會報錯。

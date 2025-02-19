@@ -1,43 +1,38 @@
-# [Linux] Bash builtin `builtin`: Führt Shell-Befehle aus
+# [Linux] C Shell (csh) builtin: eingebauter Befehl zur Ausführung von Shell-Funktionen
 
 ## Übersicht
-Der `builtin` Befehl in Bash wird verwendet, um interne Shell-Befehle auszuführen, die normalerweise von externen Programmen überschrieben werden könnten. Mit `builtin` können Sie sicherstellen, dass die interne Version eines Befehls verwendet wird.
+Der `builtin` Befehl in der C Shell (csh) wird verwendet, um Shell-interne Befehle auszuführen, die normalerweise von externen Programmen bereitgestellt werden. Dies ermöglicht eine schnellere Ausführung und eine bessere Kontrolle über die Shell-Umgebung.
 
 ## Verwendung
-Die grundlegende Syntax des `builtin` Befehls ist wie folgt:
+Die grundlegende Syntax des `builtin` Befehls lautet:
 
-```bash
-builtin [options] [arguments]
+```
+builtin [optionen] [argumente]
 ```
 
 ## Häufige Optionen
-- `-h`, `--help`: Zeigt eine Hilfe-Seite für den `builtin` Befehl an.
-- `-v`, `--version`: Gibt die Versionsnummer der Bash aus.
+- `-c`: Führt einen Befehl aus und gibt das Ergebnis zurück.
+- `-h`: Zeigt eine Hilfe zu den verfügbaren internen Befehlen an.
 
 ## Häufige Beispiele
 Hier sind einige praktische Beispiele für die Verwendung des `builtin` Befehls:
 
-1. **Verwendung von `echo` als builtin**:
-   ```bash
-   builtin echo "Dies ist ein interner Befehl."
+1. **Ausführen eines internen Befehls**:
+   ```csh
+   builtin echo "Hallo, Welt!"
    ```
 
-2. **Verwendung von `cd` als builtin**:
-   ```bash
-   builtin cd /home/user
-   ```
-
-3. **Verwendung von `exit` als builtin**:
-   ```bash
-   builtin exit 0
-   ```
-
-4. **Hilfe für `builtin` anzeigen**:
-   ```bash
+2. **Hilfe zu internen Befehlen anzeigen**:
+   ```csh
    builtin -h
    ```
 
+3. **Einen Befehl ausführen und das Ergebnis zurückgeben**:
+   ```csh
+   builtin -c "set var = 10"
+   ```
+
 ## Tipps
-- Verwenden Sie `builtin`, wenn Sie sicherstellen möchten, dass die interne Version eines Befehls ausgeführt wird, insbesondere wenn ein externes Programm mit demselben Namen vorhanden ist.
-- Überprüfen Sie die verfügbaren internen Befehle mit `help`, um zu sehen, welche Sie mit `builtin` verwenden können.
-- Seien Sie vorsichtig beim Einsatz von `builtin exit`, da dies die aktuelle Shell-Sitzung beendet.
+- Verwenden Sie `builtin`, wenn Sie sicherstellen möchten, dass ein interner Befehl der Shell und nicht ein externes Programm ausgeführt wird.
+- Überprüfen Sie regelmäßig die Hilfe, um sich über die verfügbaren internen Befehle und deren Optionen zu informieren.
+- Nutzen Sie `builtin` in Skripten, um die Leistung zu optimieren, indem Sie interne Befehle bevorzugen.

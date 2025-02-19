@@ -1,51 +1,43 @@
-# [Linux] Bash od: wyświetlanie zawartości plików w różnych formatach
+# [Linux] C Shell (csh) od: wyświetlanie zawartości plików w różnych formatach
 
 ## Overview
-Polecenie `od` (octal dump) służy do wyświetlania zawartości plików w różnych formatach, takich jak ósemkowy, szesnastkowy, czy tekstowy. Umożliwia analizę danych binarnych oraz tekstowych w sposób, który ułatwia ich interpretację.
+Polecenie `od` (octal dump) służy do wyświetlania zawartości plików w różnych formatach, takich jak ósemkowy, szesnastkowy, czy tekstowy. Jest przydatne do analizy plików binarnych i tekstowych, umożliwiając użytkownikom zrozumienie ich zawartości na poziomie surowych danych.
 
 ## Usage
 Podstawowa składnia polecenia `od` jest następująca:
 
-```bash
+```
 od [opcje] [argumenty]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji dla polecenia `od`:
-
-- `-A, --address-radix=RADIX` – Ustawia podstawę adresów (np. d dla dziesiętnego, o dla ósemkowego, x dla szesnastkowego).
-- `-t, --format=FORMAT` – Umożliwia określenie formatu wyjścia (np. c dla znaków, d dla liczb dziesiętnych, x dla liczb szesnastkowych).
-- `-N, --read-bytes=N` – Odczytuje tylko pierwsze N bajtów pliku.
-- `-v, --output-duplicates` – Wyświetla duplikaty w wyjściu.
+- `-A, --address-radix=RADIX` - Ustawia system liczbowy dla adresów (np. `d` dla dziesiętnego, `o` dla ósemkowego, `x` dla szesnastkowego).
+- `-t, --format=TYPE` - Określa format wyjścia (np. `c` dla znaków, `d` dla dziesiętnych, `x` dla szesnastkowych).
+- `-N, --read-bytes=N` - Odczytuje tylko pierwsze N bajtów z pliku.
+- `-v, --output-duplicates` - Wyświetla powtarzające się wartości.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `od`:
-
 1. Wyświetlenie zawartości pliku w formacie szesnastkowym:
-
    ```bash
-   od -t x1 plik.txt
+   od -x plik.txt
    ```
 
-2. Odczytanie pierwszych 16 bajtów pliku:
-
+2. Odczytanie pierwszych 16 bajtów pliku w formacie dziesiętnym:
    ```bash
-   od -N 16 plik.bin
+   od -N 16 -t d1 plik.bin
    ```
 
-3. Wyświetlenie zawartości pliku w formacie znakowym:
-
+3. Wyświetlenie zawartości pliku w formacie ósemkowym z adresami w formacie szesnastkowym:
    ```bash
-   od -t c plik.txt
+   od -A x -t o1 plik.bin
    ```
 
-4. Wyświetlenie adresów w formacie dziesiętnym:
-
+4. Wyświetlenie zawartości pliku jako znaków:
    ```bash
-   od -A d plik.bin
+   od -c plik.txt
    ```
 
 ## Tips
-- Używaj opcji `-N`, aby ograniczyć ilość odczytywanych danych, co może być przydatne przy dużych plikach.
-- Eksperymentuj z różnymi formatami wyjścia, aby lepiej zrozumieć strukturę danych w plikach binarnych.
-- Pamiętaj, że `od` jest szczególnie przydatne w analizie plików binarnych, takich jak obrazy czy pliki wykonywalne.
+- Używaj opcji `-N`, aby ograniczyć liczbę odczytywanych bajtów, co może przyspieszyć analizę dużych plików.
+- Eksperymentuj z różnymi formatami wyjścia, aby lepiej zrozumieć strukturę danych w pliku.
+- Pamiętaj, że `od` jest narzędziem do analizy, więc używaj go w połączeniu z innymi poleceniami, aby uzyskać pełniejszy obraz danych.

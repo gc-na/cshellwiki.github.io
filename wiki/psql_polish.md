@@ -1,49 +1,44 @@
-# [Linux] Bash psql Użycie: interakcja z bazą danych PostgreSQL
+# [Linux] C Shell (csh) psql użycie: interfejs do zarządzania bazą danych PostgreSQL
 
-## Overview
-Polecenie `psql` jest interaktywnym narzędziem do zarządzania bazą danych PostgreSQL. Umożliwia użytkownikom wykonywanie zapytań SQL, zarządzanie bazami danych oraz administrację serwerem PostgreSQL.
+## Przegląd
+Polecenie `psql` jest interaktywnym narzędziem linii poleceń do zarządzania bazą danych PostgreSQL. Umożliwia użytkownikom wykonywanie zapytań SQL, zarządzanie bazami danych oraz administrację systemu baz danych.
 
-## Usage
-Podstawowa składnia polecenia `psql` wygląda następująco:
+## Użycie
+Podstawowa składnia polecenia `psql` jest następująca:
 
-```bash
+```
 psql [opcje] [argumenty]
 ```
 
-## Common Options
-Oto kilka powszechnie używanych opcji dla polecenia `psql`:
+## Częste opcje
+- `-h` – określa adres hosta serwera bazy danych.
+- `-U` – pozwala na podanie nazwy użytkownika do logowania.
+- `-d` – określa nazwę bazy danych, z którą chcesz się połączyć.
+- `-p` – ustawia port, na którym nasłuchuje serwer bazy danych.
+- `-W` – wymusza podanie hasła przed połączeniem.
 
-- `-h` – określa adres hosta serwera PostgreSQL.
-- `-U` – pozwala na określenie nazwy użytkownika do logowania.
-- `-d` – wskazuje nazwę bazy danych, z którą chcesz się połączyć.
-- `-p` – ustawia port, na którym nasłuchuje serwer PostgreSQL.
-- `-f` – wykonuje polecenia z pliku.
-
-## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `psql`:
-
+## Częste przykłady
 1. Połączenie z lokalną bazą danych:
    ```bash
-   psql -U nazwa_użytkownika -d nazwa_bazy
+   psql -d nazwa_bazy
    ```
 
-2. Połączenie z zdalnym serwerem PostgreSQL:
+2. Połączenie z serwerem na innym hoście:
    ```bash
-   psql -h adres_serwera -U nazwa_użytkownika -d nazwa_bazy
+   psql -h adres_hosta -U nazwa_użytkownika -d nazwa_bazy
    ```
 
 3. Wykonanie zapytania SQL z pliku:
    ```bash
-   psql -U nazwa_użytkownika -d nazwa_bazy -f zapytanie.sql
+   psql -d nazwa_bazy -f ścieżka/do/pliku.sql
    ```
 
 4. Wyświetlenie listy tabel w bieżącej bazie danych:
    ```bash
-   psql -U nazwa_użytkownika -d nazwa_bazy -c "\dt"
+   \dt
    ```
 
-## Tips
-- Używaj opcji `-W`, aby wymusić podanie hasła przy logowaniu.
-- Możesz korzystać z opcji `\?` w interfejsie `psql`, aby uzyskać pomoc dotyczącą dostępnych poleceń.
-- Zapisuj często używane zapytania w plikach, aby móc je łatwo ponownie wykonać.
-- Regularnie aktualizuj swoją wersję PostgreSQL, aby korzystać z najnowszych funkcji i poprawek bezpieczeństwa.
+## Wskazówki
+- Zawsze używaj opcji `-W`, aby zapewnić bezpieczeństwo hasła.
+- Możesz używać polecenia `\?` w `psql`, aby uzyskać pomoc dotyczącą dostępnych poleceń.
+- Regularnie wykonuj kopie zapasowe swoich baz danych, aby uniknąć utraty danych.

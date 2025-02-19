@@ -1,82 +1,60 @@
-# [Linux] Bash continue uso: Continuar con el siguiente ciclo en un bucle
+# [Linux] C Shell (csh) continue uso: Reanuda la ejecución de un bucle
 
 ## Overview
-El comando `continue` en Bash se utiliza dentro de estructuras de control de bucle, como `for`, `while` y `until`. Su función principal es omitir el resto del código en la iteración actual del bucle y continuar con la siguiente iteración.
+El comando `continue` en C Shell (csh) se utiliza para reanudar la ejecución de un bucle, omitiendo el resto del código dentro del bucle para la iteración actual. Es útil cuando se desea saltar a la siguiente iteración de un bucle basado en una condición específica.
 
 ## Usage
 La sintaxis básica del comando es la siguiente:
 
-```bash
+```
 continue [n]
 ```
 
-Donde `n` es un número opcional que especifica cuántas iteraciones del bucle se deben omitir. Si no se proporciona un número, se omite solo la iteración actual.
+Donde `n` es un número opcional que especifica cuántos niveles de bucles hacia atrás se deben continuar. Si no se proporciona `n`, se continuará con el bucle más interno.
 
 ## Common Options
-- `n`: Especifica cuántas iteraciones del bucle se deben omitir. Por defecto, se omite solo la iteración actual.
+- `n`: Especifica el número de niveles de bucles que se deben continuar. Si se omite, se considera el bucle más interno.
 
 ## Common Examples
 
-### Ejemplo 1: Usar continue en un bucle for
-```bash
-for i in {1..5}; do
-    if [ $i -eq 3 ]; then
+### Ejemplo 1: Continuar en un bucle `foreach`
+```csh
+foreach i (1 2 3 4 5)
+    if ($i == 3) then
         continue
-    fi
-    echo "Número: $i"
-done
+    endif
+    echo $i
+end
 ```
-**Salida:**
-```
-Número: 1
-Número: 2
-Número: 4
-Número: 5
-```
-En este ejemplo, cuando `i` es igual a 3, se omite esa iteración y se continúa con el siguiente número.
+En este ejemplo, el número `3` no se imprimirá porque se omite en esa iteración.
 
-### Ejemplo 2: Usar continue en un bucle while
-```bash
-contador=1
-while [ $contador -le 5 ]; do
-    if [ $contador -eq 2 ]; then
-        contador=$((contador + 1))
+### Ejemplo 2: Continuar en un bucle `while`
+```csh
+set i = 0
+while ($i < 5)
+    @ i++
+    if ($i == 2) then
         continue
-    fi
-    echo "Contador: $contador"
-    contador=$((contador + 1))
-done
+    endif
+    echo $i
+end
 ```
-**Salida:**
-```
-Contador: 1
-Contador: 3
-Contador: 4
-Contador: 5
-```
-Aquí, cuando el contador es 2, se omite esa iteración y se continúa con el siguiente número.
+Aquí, el número `2` se omite en la salida, ya que se salta esa iteración.
 
-### Ejemplo 3: Usar continue con un número
-```bash
-for i in {1..10}; do
-    if [ $i -lt 5 ]; then
-        continue 2
-    fi
-    echo "Número: $i"
-done
+### Ejemplo 3: Usar `continue` con un nivel específico
+```csh
+foreach i (1 2)
+    foreach j (1 2 3)
+        if ($j == 2) then
+            continue 2
+        endif
+        echo "$i $j"
+    end
+end
 ```
-**Salida:**
-```
-Número: 5
-Número: 6
-Número: 7
-Número: 8
-Número: 9
-Número: 10
-```
-En este caso, al usar `continue 2`, se omiten las dos primeras iteraciones del bucle.
+En este caso, se omiten todas las iteraciones del bucle interno cuando `j` es `2`, y se continúa con el siguiente `i`.
 
 ## Tips
-- Utiliza `continue` para mejorar la legibilidad de tu código al evitar bloques anidados innecesarios.
-- Asegúrate de que el uso de `continue` no cause bucles infinitos. Verifica las condiciones de salida adecuadamente.
-- Es una buena práctica documentar el uso de `continue` en tus scripts para que otros desarrolladores comprendan la lógica detrás de su uso.
+- Utiliza `continue` para simplificar la lógica de tus bucles, evitando la necesidad de anidar múltiples condiciones.
+- Recuerda que `continue` solo afecta al bucle más interno, así que si necesitas saltar varios niveles, asegúrate de especificar el número correcto.
+- Es recomendable usar `continue` en bucles donde la lógica de omisión es clara para mejorar la legibilidad del código.

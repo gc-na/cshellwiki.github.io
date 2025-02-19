@@ -1,53 +1,57 @@
-# [Linux] Bash while Verwendung: Schleifensteuerung in Bash
+# [Linux] C Shell (csh) while: Schleifensteuerung in Skripten
 
 ## Übersicht
-Der `while`-Befehl in Bash wird verwendet, um eine Schleife zu erstellen, die eine bestimmte Bedingung überprüft. Solange die Bedingung wahr ist, wird der enthaltene Codeblock wiederholt ausgeführt. Dies ist nützlich für Aufgaben, die wiederholt ausgeführt werden müssen, bis ein bestimmter Zustand erreicht ist.
+Der `while`-Befehl in der C Shell (csh) wird verwendet, um eine Schleife zu erstellen, die so lange ausgeführt wird, wie eine bestimmte Bedingung wahr ist. Dies ist nützlich, um wiederholte Aufgaben zu automatisieren, bis ein bestimmter Zustand erreicht wird.
 
 ## Verwendung
-Die grundlegende Syntax des `while`-Befehls sieht folgendermaßen aus:
+Die grundlegende Syntax des `while`-Befehls sieht wie folgt aus:
 
-```bash
-while [Bedingung]; do
-    # Befehle
-done
+```csh
+while (Bedingung)
+    Befehle
+end
 ```
 
 ## Häufige Optionen
-- **Bedingung**: Ein Ausdruck, der wahr oder falsch sein kann. Die Schleife wird fortgesetzt, solange dieser Ausdruck wahr ist.
-- **do**: Leitet den Block von Befehlen ein, die wiederholt ausgeführt werden sollen.
-- **done**: Beendet den `while`-Block.
+Der `while`-Befehl hat keine speziellen Optionen, da er hauptsächlich zur Steuerung der Schleifenlogik verwendet wird. Die Bedingung kann jedoch verschiedene logische Ausdrücke enthalten, die in der C Shell unterstützt werden.
 
 ## Häufige Beispiele
 
-### Beispiel 1: Zählen von 1 bis 5
-```bash
-count=1
-while [ $count -le 5 ]; do
-    echo "Zahl: $count"
-    ((count++))
-done
+### Beispiel 1: Zähler
+In diesem Beispiel wird eine Schleife verwendet, um die Zahlen von 1 bis 5 auszugeben.
+
+```csh
+set count = 1
+while ($count <= 5)
+    echo $count
+    @ count++
+end
 ```
 
-### Beispiel 2: Benutzereingabe abfragen
-```bash
-input=""
-while [ "$input" != "exit" ]; do
-    read -p "Geben Sie etwas ein (exit zum Beenden): " input
+### Beispiel 2: Benutzerinteraktion
+Hier wird eine Schleife verwendet, um den Benutzer nach Eingaben zu fragen, bis er "exit" eingibt.
+
+```csh
+set input = ""
+while ("$input" != "exit")
+    set input = $< "Geben Sie etwas ein (oder 'exit' zum Beenden): "
     echo "Sie haben eingegeben: $input"
-done
+end
 ```
 
-### Beispiel 3: Dateien in einem Verzeichnis auflisten
-```bash
-files=(*)
-index=0
-while [ $index -lt ${#files[@]} ]; do
-    echo "Datei: ${files[$index]}"
-    ((index++))
-done
+### Beispiel 3: Dateizähler
+In diesem Beispiel wird eine Schleife verwendet, um alle Dateien in einem Verzeichnis zu zählen.
+
+```csh
+set count = 0
+set files = (`ls`)
+while ($count < $#files)
+    echo "Datei: $files[$count]"
+    @ count++
+end
 ```
 
 ## Tipps
-- Achten Sie darauf, dass die Bedingung irgendwann falsch wird, um eine Endlosschleife zu vermeiden.
-- Verwenden Sie `break`, um die Schleife vorzeitig zu beenden, wenn eine bestimmte Bedingung erfüllt ist.
-- Nutzen Sie `sleep`, um die Ausführung innerhalb der Schleife zu verzögern, falls nötig, um die Systemressourcen zu schonen.
+- Achten Sie darauf, dass die Bedingung in der `while`-Schleife irgendwann falsch wird, um eine Endlosschleife zu vermeiden.
+- Verwenden Sie `@` für arithmetische Operationen innerhalb der Schleife.
+- Nutzen Sie die Möglichkeit, Variablen zu setzen und zu ändern, um die Schleifenlogik dynamisch zu gestalten.

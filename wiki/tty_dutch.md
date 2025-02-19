@@ -1,46 +1,38 @@
-# [Linux] Bash tty gebruik: Toon het terminal apparaat
+# [Linux] C Shell (csh) tty gebruik: Toon de terminalnaam
 
-## Overview
-De `tty`-opdracht in Bash wordt gebruikt om het terminalapparaat te identificeren dat aan de huidige shell is gekoppeld. Dit kan nuttig zijn voor het debuggen of voor scripts die afhankelijk zijn van specifieke terminalinstellingen.
+## Overzicht
+De `tty`-opdracht in C Shell (csh) wordt gebruikt om de naam van de terminal weer te geven die op dat moment wordt gebruikt. Dit kan nuttig zijn voor scripts of om te verifiëren welke terminalsessie actief is.
 
-## Usage
-De basisstructuur van de `tty`-opdracht is als volgt:
+## Gebruik
+De basis syntaxis van de `tty`-opdracht is als volgt:
 
-```bash
-tty [opties]
+```csh
+tty [opties] [argumenten]
 ```
 
-## Common Options
-Hier zijn enkele veelvoorkomende opties voor de `tty`-opdracht:
+## Veelvoorkomende Opties
+- `-s`: Stille modus; geen uitvoer, maar geeft een exitstatus terug.
+- `-V`: Toont de versie-informatie van de `tty`-opdracht.
 
-- `-s`: Stil, geeft geen uitvoer terug, maar retourneert een exitstatus.
-- `--help`: Toont een hulpbericht met informatie over het gebruik van de opdracht.
-- `--version`: Toont de versie-informatie van de `tty`-opdracht.
-
-## Common Examples
+## Veelvoorkomende Voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van de `tty`-opdracht:
 
-1. **Basisgebruik**: Om het huidige terminalapparaat te tonen:
-    ```bash
+1. **Basis gebruik**: Toon de naam van de huidige terminal.
+    ```csh
     tty
     ```
 
-2. **Stille modus**: Om te controleren of de shell aan een terminal is gekoppeld zonder uitvoer:
-    ```bash
+2. **Stille modus**: Controleer of de terminal een geldige tty is zonder uitvoer.
+    ```csh
     tty -s
     ```
 
-3. **Hulpinformatie**: Om hulpinformatie over de `tty`-opdracht te bekijken:
-    ```bash
-    tty --help
-    ```
-
-4. **Versie-informatie**: Om de versie van de `tty`-opdracht te controleren:
-    ```bash
-    tty --version
+3. **Versie-informatie**: Verkrijg informatie over de versie van de `tty`-opdracht.
+    ```csh
+    tty -V
     ```
 
 ## Tips
-- Gebruik `tty` in scripts om te controleren of ze aan een terminal zijn gekoppeld voordat ze uitvoer genereren.
-- Combineer `tty` met andere commando's om dynamisch te reageren op de omgeving waarin je script draait.
-- Vergeet niet dat de uitvoer van `tty` het pad naar het terminalapparaat is, wat handig kan zijn voor logging of foutopsporing.
+- Gebruik de `-s` optie in scripts om te controleren of de uitvoer naar een terminal gaat zonder dat er onnodige uitvoer is.
+- Combineer `tty` met andere commando's in scripts om terminal-specifieke acties uit te voeren.
+- Vergeet niet dat `tty` alleen de naam van de terminal toont en geen andere informatie over de omgeving of sessie.

@@ -1,12 +1,12 @@
-# [Linux] Bash comm uso: Comparar líneas de archivos
+# [Unix] C Shell (csh) comm: Comparar líneas de archivos
 
 ## Overview
-El comando `comm` se utiliza para comparar dos archivos de texto ordenados línea por línea. Este comando muestra las líneas que son únicas para cada archivo y las líneas que son comunes a ambos.
+El comando `comm` se utiliza para comparar dos archivos de texto ordenados línea por línea. Este comando muestra las líneas que son únicas para cada archivo y las que son comunes entre ellos.
 
 ## Usage
 La sintaxis básica del comando es la siguiente:
 
-```bash
+```csh
 comm [opciones] [archivo1] [archivo2]
 ```
 
@@ -14,43 +14,45 @@ comm [opciones] [archivo1] [archivo2]
 - `-1`: Suprime las líneas que son únicas para el primer archivo.
 - `-2`: Suprime las líneas que son únicas para el segundo archivo.
 - `-3`: Suprime las líneas que son comunes a ambos archivos.
-- `--nocheck-order`: Permite comparar archivos que no están ordenados.
+- `--nocheck-order`: Permite que los archivos no estén ordenados.
 
 ## Common Examples
 
-### Comparar dos archivos
-Para comparar dos archivos y ver todas las líneas, puedes usar:
+### Ejemplo 1: Comparar dos archivos
+Supongamos que tenemos dos archivos, `archivo1.txt` y `archivo2.txt`, y queremos ver las diferencias entre ellos.
 
-```bash
+```csh
 comm archivo1.txt archivo2.txt
 ```
 
-### Suprimir líneas únicas del primer archivo
-Si solo deseas ver las líneas que son comunes y las del segundo archivo, puedes usar:
+### Ejemplo 2: Mostrar solo líneas únicas del segundo archivo
+Si solo queremos ver las líneas que están en `archivo2.txt` y no en `archivo1.txt`, podemos usar la opción `-2`.
 
-```bash
-comm -13 archivo1.txt archivo2.txt
+```csh
+comm -2 archivo1.txt archivo2.txt
 ```
 
-### Suprimir líneas comunes
-Para ver solo las líneas únicas de cada archivo, puedes usar:
+### Ejemplo 3: Mostrar solo líneas comunes
+Para mostrar solo las líneas que aparecen en ambos archivos, utilizamos la opción `-1` y `-2`.
 
-```bash
+```csh
 comm -12 archivo1.txt archivo2.txt
 ```
 
-### Comparar archivos no ordenados
-Si los archivos no están ordenados, puedes usar la opción `--nocheck-order`:
+### Ejemplo 4: Comparar archivos no ordenados
+Si los archivos no están ordenados, podemos usar la opción `--nocheck-order`.
 
-```bash
+```csh
 comm --nocheck-order archivo1.txt archivo2.txt
 ```
 
 ## Tips
 - Asegúrate de que los archivos estén ordenados antes de usar `comm` para obtener resultados precisos.
-- Puedes usar `sort` en combinación con `comm` para ordenar los archivos automáticamente:
+- Puedes combinar opciones para personalizar la salida según tus necesidades.
+- Utiliza `sort` para ordenar los archivos si no están en orden antes de compararlos:
 
-```bash
-comm <(sort archivo1.txt) <(sort archivo2.txt)
+```csh
+sort archivo1.txt > archivo1_ordenado.txt
+sort archivo2.txt > archivo2_ordenado.txt
+comm archivo1_ordenado.txt archivo2_ordenado.txt
 ```
-- Utiliza las opciones adecuadas para filtrar la salida según tus necesidades específicas.

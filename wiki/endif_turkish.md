@@ -1,47 +1,48 @@
-# [Linux] Bash endif kullanımı: Koşullu ifadeleri sonlandırma
+# [Linux] C Shell (csh) endif Kullanımı: Koşul ifadelerini sonlandırma
 
-## Genel Bakış
-`endif` komutu, bir koşullu ifadenin sonunu belirtmek için kullanılır. Genellikle `if` yapıları içinde kullanılır ve bir koşulun değerlendirilmesinin ardından hangi kod bloğunun çalıştırılacağını belirlemek için önemlidir.
+## Overview
+`endif` komutu, C Shell (csh) programlama dilinde koşul ifadelerini sonlandırmak için kullanılır. `if` koşulunun bitişini belirtir ve bu sayede kodun akışını kontrol eder.
 
-## Kullanım
+## Usage
 Temel sözdizimi aşağıdaki gibidir:
-
-```bash
+```
 endif
 ```
 
-## Yaygın Seçenekler
-`endif` komutunun kendisi için özel bir seçenek yoktur, çünkü bu komut yalnızca bir koşulun sonunu belirtir. Ancak, `if` komutuyla birlikte kullanıldığında, `if` komutunun seçenekleri geçerli olur.
+## Common Options
+`endif` komutunun kendisi için özel bir seçenek yoktur, ancak koşul ifadeleri ile birlikte kullanılır. Dolayısıyla, `if` ve `else` gibi diğer komutlarla birlikte düşünülmelidir.
 
-## Yaygın Örnekler
-Aşağıda `endif` komutunun nasıl kullanılacağına dair bazı örnekler bulunmaktadır:
+## Common Examples
+Aşağıda `endif` komutunun kullanımına dair bazı örnekler verilmiştir:
 
-### Örnek 1: Basit bir koşul
-```bash
-if [ "$a" -lt 10 ]; then
-    echo "a 10'dan küçüktür."
+### Örnek 1: Basit if-endif Kullanımı
+```csh
+if ( $var == 1 ) then
+    echo "Değişken 1'e eşit."
 endif
 ```
 
-### Örnek 2: Birden fazla koşul
-```bash
-if [ "$a" -lt 10 ]; then
-    echo "a 10'dan küçüktür."
-elif [ "$a" -eq 10 ]; then
-    echo "a 10'a eşittir."
+### Örnek 2: else ile Birlikte Kullanım
+```csh
+if ( $var == 1 ) then
+    echo "Değişken 1'e eşit."
 else
-    echo "a 10'dan büyüktür."
+    echo "Değişken 1'e eşit değil."
 endif
 ```
 
-### Örnek 3: Koşul içinde bir komut çalıştırma
-```bash
-if [ -f "dosya.txt" ]; then
-    echo "Dosya mevcut."
+### Örnek 3: Çoklu Koşul
+```csh
+if ( $var == 1 ) then
+    echo "Bir."
+else if ( $var == 2 ) then
+    echo "İki."
+else
+    echo "Bilinmeyen değer."
 endif
 ```
 
-## İpuçları
+## Tips
 - `endif` komutunu kullanırken, her `if` ifadesinin bir `endif` ile kapatıldığından emin olun.
-- Koşul ifadelerinizi daha okunabilir hale getirmek için uygun boşluk ve girintileri kullanın.
-- Karmaşık koşul yapılarında, kodunuzu daha iyi organize etmek için `then` ve `endif` arasına açıklayıcı yorumlar ekleyin.
+- Koşul ifadelerinizi düzenli tutmak için uygun girintileme kullanın; bu, kodun okunabilirliğini artırır.
+- Karmaşık koşul ifadelerinde `else if` kullanarak kodun akışını daha iyi yönetebilirsiniz.

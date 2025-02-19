@@ -1,50 +1,49 @@
-# [Linux] Bash zip gebruik: Bestanden comprimeren
+# [Linux] C Shell (csh) zip gebruik: Bestanden comprimeren
 
 ## Overzicht
-De `zip`-opdracht is een veelgebruikte tool in de Bash-omgeving voor het comprimeren van bestanden en mappen. Het maakt een gecomprimeerd archiefbestand aan met de extensie `.zip`, waardoor het gemakkelijker wordt om bestanden op te slaan en te delen.
+De `zip`-opdracht wordt gebruikt om bestanden en mappen te comprimeren in een enkel archiefbestand. Dit maakt het gemakkelijker om bestanden op te slaan en te verzenden, terwijl de opslagruimte wordt verminderd.
 
 ## Gebruik
 De basis syntaxis van de `zip`-opdracht is als volgt:
 
-```bash
-zip [opties] [archiefnaam] [bestanden]
+```csh
+zip [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
+## Veelvoorkomende opties
 - `-r`: Recursief bestanden en mappen toevoegen.
-- `-e`: Versleuteling inschakelen voor het archief.
-- `-u`: Bestaande bestanden in het archief bijwerken.
-- `-d`: Bestanden uit het archief verwijderen.
-- `-q`: Stil, geen output tonen tijdens het proces.
+- `-e`: Versleuteling inschakelen voor het zip-bestand.
+- `-9`: Maximaliseer de compressie.
+- `-q`: Stil, geen output tonen tijdens het zippen.
 
-## Veelvoorkomende Voorbeelden
+## Veelvoorkomende voorbeelden
 
-1. **Een enkel bestand comprimeren:**
-   ```bash
-   zip mijn_bestand.zip document.txt
+1. **Een enkel bestand zippen**:
+   ```csh
+   zip mijn_bestand.zip mijn_bestand.txt
    ```
 
-2. **Meerdere bestanden comprimeren:**
-   ```bash
-   zip mijn_archief.zip document1.txt document2.txt afbeelding.png
+2. **Meerdere bestanden zippen**:
+   ```csh
+   zip archief.zip bestand1.txt bestand2.txt bestand3.txt
    ```
 
-3. **Een hele map comprimeren:**
-   ```bash
+3. **Een map zippen**:
+   ```csh
    zip -r mijn_map.zip mijn_map/
    ```
 
-4. **Een bestand bijwerken in een bestaand archief:**
-   ```bash
-   zip -u mijn_archief.zip document.txt
+4. **Een zip-bestand met versleuteling maken**:
+   ```csh
+   zip -e beveiligd.zip mijn_bestand.txt
    ```
 
-5. **Een bestand uit een archief verwijderen:**
-   ```bash
-   zip -d mijn_archief.zip document2.txt
+5. **Maximale compressie toepassen**:
+   ```csh
+   zip -9 gecomprimeerd.zip mijn_bestand.txt
    ```
 
 ## Tips
-- Gebruik de `-e` optie om gevoelige informatie te beschermen door je archief te versleutelen.
-- Controleer altijd de inhoud van je zip-bestand met `unzip -l [archiefnaam]` voordat je het deelt.
-- Houd rekening met de bestandsgrootte; grote bestanden kunnen veel tijd kosten om te comprimeren.
+- Gebruik de `-r` optie als je een hele map wilt zippen, zodat alle submappen en bestanden worden opgenomen.
+- Overweeg om de `-e` optie te gebruiken voor gevoelige bestanden die je wilt beschermen met een wachtwoord.
+- Controleer altijd de grootte van het zip-bestand om te zien of de compressie effectief is geweest.

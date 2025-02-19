@@ -1,52 +1,52 @@
-# [台灣] Bash sed 用法: 文本替換與處理工具
+# [台灣] C Shell (csh) sed 用法: 文本處理工具
 
 ## Overview
-`sed` 是一個流編輯器，用於對文本進行非互動式的處理和變更。它可以用來替換、刪除、插入或轉換文本行，常用於自動化文本處理任務。
+`sed` 是一個流編輯器，用於對文本進行基本的處理和轉換。它可以用來執行查找、替換、刪除和插入等操作，非常適合處理大型文本文件。
 
 ## Usage
 基本語法如下：
-```bash
+```csh
 sed [options] [arguments]
 ```
 
 ## Common Options
 - `-e`: 指定要執行的編輯命令。
+- `-f`: 從指定的文件中讀取編輯命令。
 - `-i`: 直接在文件中進行修改，而不是輸出到標準輸出。
-- `-n`: 抑制自動輸出，僅在使用 `p` 命令時輸出。
-- `s`: 替換命令，用於替換文本。
+- `-n`: 只輸出被處理的行，通常與 `p` 命令一起使用。
 
 ## Common Examples
 1. **替換文本**
    將文件中的 "apple" 替換為 "orange"：
-   ```bash
+   ```csh
    sed 's/apple/orange/g' filename.txt
    ```
 
-2. **直接修改文件**
-   在文件中直接替換 "apple" 為 "orange"：
-   ```bash
-   sed -i 's/apple/orange/g' filename.txt
-   ```
-
-3. **刪除行**
+2. **刪除行**
    刪除包含 "delete this" 的行：
-   ```bash
+   ```csh
    sed '/delete this/d' filename.txt
    ```
 
-4. **插入行**
-   在第 2 行之前插入 "New Line"：
-   ```bash
+3. **插入行**
+   在第2行前插入 "New Line":
+   ```csh
    sed '2i New Line' filename.txt
    ```
 
-5. **顯示特定行**
-   只顯示第 3 行：
-   ```bash
-   sed -n '3p' filename.txt
+4. **從文件中讀取命令**
+   從 `commands.sed` 文件中讀取命令並執行：
+   ```csh
+   sed -f commands.sed filename.txt
+   ```
+
+5. **直接修改文件**
+   直接在文件中將 "foo" 替換為 "bar"：
+   ```csh
+   sed -i 's/foo/bar/g' filename.txt
    ```
 
 ## Tips
-- 使用 `-i.bak` 選項可以在修改文件之前備份原始文件。
-- 組合多個 `-e` 選項可以在一個命令中執行多個編輯操作。
-- 測試命令時，先不使用 `-i` 選項，以避免意外修改文件。
+- 使用 `-n` 參數可以讓你只顯示特定的行，這在處理大型文件時特別有用。
+- 在進行文件修改時，建議先備份原始文件，以防不小心刪除或修改了重要內容。
+- 結合使用 `sed` 和管道 (`|`) 可以提高處理效率，例如將 `grep` 的輸出直接傳遞給 `sed` 進行進一步處理。

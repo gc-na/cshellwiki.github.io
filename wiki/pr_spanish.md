@@ -1,49 +1,50 @@
-# [Linux] Bash pr: Formatear archivos de texto para impresión
+# [Linux] C Shell (csh) pr: Formatear archivos de texto para impresión
 
 ## Overview
-El comando `pr` se utiliza en sistemas Unix y Linux para formatear archivos de texto de manera que sean más fáciles de leer al imprimir. Este comando organiza el contenido en columnas y agrega encabezados y pies de página, lo que resulta útil para la presentación de documentos.
+El comando `pr` se utiliza en C Shell (csh) para formatear archivos de texto de manera que sean más legibles al imprimir. Este comando organiza el contenido en columnas y añade encabezados y pies de página, facilitando la visualización de la información.
 
 ## Usage
 La sintaxis básica del comando `pr` es la siguiente:
 
-```bash
+```
 pr [opciones] [argumentos]
 ```
 
 ## Common Options
-- `-h, --header=STRING`: Especifica un encabezado personalizado para la salida.
-- `-f, --form-feed`: Imprime un salto de página antes de cada archivo.
-- `-t, --omit-header`: Omite el encabezado de la salida.
-- `-s, --separator=STRING`: Define un separador personalizado entre columnas.
-- `-w, --width=N`: Establece el ancho de la salida en N caracteres.
+- `-h`: Especifica un encabezado personalizado para la salida.
+- `-l`: Define la longitud de la página en líneas.
+- `-w`: Establece el ancho de la página en caracteres.
+- `-s`: Suprime la separación entre las páginas.
 
 ## Common Examples
-1. **Formatear un archivo de texto simple:**
-   ```bash
+Aquí hay algunos ejemplos prácticos del uso del comando `pr`:
+
+1. **Formatear un archivo de texto para impresión:**
+   ```csh
    pr archivo.txt
    ```
 
 2. **Agregar un encabezado personalizado:**
-   ```bash
+   ```csh
    pr -h "Mi Encabezado" archivo.txt
    ```
 
-3. **Imprimir múltiples archivos con salto de página:**
-   ```bash
-   pr -f archivo1.txt archivo2.txt
+3. **Establecer la longitud de la página a 50 líneas:**
+   ```csh
+   pr -l 50 archivo.txt
    ```
 
-4. **Omitir el encabezado y establecer un ancho específico:**
-   ```bash
-   pr -t -w 80 archivo.txt
+4. **Definir un ancho de página de 80 caracteres:**
+   ```csh
+   pr -w 80 archivo.txt
    ```
 
-5. **Separar columnas con un carácter específico:**
-   ```bash
-   pr -s "," archivo.txt
+5. **Suprimir la separación entre páginas:**
+   ```csh
+   pr -s archivo.txt
    ```
 
 ## Tips
-- Utiliza la opción `-w` para ajustar el ancho de la salida según el tamaño del papel que vayas a utilizar.
-- Si estás imprimiendo varios archivos, considera usar la opción `-f` para mejorar la legibilidad.
-- Experimenta con diferentes separadores utilizando la opción `-s` para ver cuál se adapta mejor a tus necesidades.
+- Siempre revisa el formato de salida antes de imprimir para asegurarte de que se vea como deseas.
+- Combina varias opciones para personalizar aún más la salida según tus necesidades.
+- Utiliza la opción `-h` para incluir información relevante sobre el contenido del archivo, lo que puede ser útil al compartir documentos.

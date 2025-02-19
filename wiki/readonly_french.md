@@ -1,40 +1,38 @@
-# [Linux] Bash readonly : Définit des variables en lecture seule
+# [Linux] C Shell (csh) readonly : Définir des variables en lecture seule
 
 ## Overview
-La commande `readonly` en Bash permet de définir des variables qui ne peuvent pas être modifiées par la suite. Une fois qu'une variable est marquée comme `readonly`, toute tentative de modification de sa valeur entraînera une erreur. Cela est utile pour protéger des valeurs critiques dans vos scripts.
+La commande `readonly` dans C Shell (csh) est utilisée pour définir des variables d'environnement ou des variables shell comme étant en lecture seule. Cela signifie que ces variables ne peuvent pas être modifiées ou supprimées une fois qu'elles ont été définies comme readonly.
 
 ## Usage
-La syntaxe de base de la commande est la suivante :
+La syntaxe de base de la commande `readonly` est la suivante :
 
-```bash
+```csh
 readonly [options] [arguments]
 ```
 
 ## Common Options
-- `-p` : Affiche une liste des variables en lecture seule actuellement définies.
+- `-p` : Affiche toutes les variables readonly actuellement définies.
 
 ## Common Examples
+Voici quelques exemples pratiques de l'utilisation de la commande `readonly` :
 
 ### Exemple 1 : Définir une variable en lecture seule
-```bash
-readonly VAR="Valeur fixe"
+```csh
+set VAR="Valeur initiale"
+readonly VAR
 ```
-Dans cet exemple, `VAR` est définie comme une variable en lecture seule avec la valeur "Valeur fixe".
 
-### Exemple 2 : Tentative de modification d'une variable en lecture seule
-```bash
-readonly VAR="Valeur fixe"
-VAR="Nouvelle valeur"  # Cela générera une erreur
+### Exemple 2 : Essayer de modifier une variable readonly
+```csh
+set VAR="Nouvelle valeur"  # Cela échouera car VAR est readonly
 ```
-Ici, la tentative de modification de `VAR` entraînera une erreur, car elle est définie comme `readonly`.
 
-### Exemple 3 : Afficher les variables en lecture seule
-```bash
+### Exemple 3 : Afficher les variables readonly
+```csh
 readonly -p
 ```
-Cette commande affichera toutes les variables qui ont été définies comme `readonly` dans la session actuelle.
 
 ## Tips
-- Utilisez `readonly` pour protéger les variables qui contiennent des informations sensibles ou critiques dans vos scripts.
-- Pensez à utiliser `readonly` pour les constantes qui ne doivent pas changer, afin d'éviter des erreurs accidentelles.
-- Vérifiez régulièrement les variables en lecture seule avec `readonly -p` pour garder une trace de celles qui sont définies dans votre environnement.
+- Utilisez `readonly` pour protéger des variables critiques que vous ne souhaitez pas voir modifiées accidentellement.
+- Pensez à vérifier les variables readonly existantes avec `readonly -p` avant de définir de nouvelles variables pour éviter les conflits.
+- Les variables readonly peuvent être utiles dans des scripts pour garantir que certaines valeurs restent constantes tout au long de l'exécution.

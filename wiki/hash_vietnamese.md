@@ -1,44 +1,38 @@
-# [Linux] Bash hash cách sử dụng: Lưu trữ vị trí của các lệnh
+# [Hệ điều hành] C Shell (csh) hash: [quản lý lệnh đã thực thi]
 
-## Tổng quan
-Lệnh `hash` trong Bash được sử dụng để quản lý và lưu trữ vị trí của các lệnh đã được thực thi. Khi bạn chạy một lệnh, Bash sẽ ghi nhớ vị trí của nó để tăng tốc độ thực thi trong tương lai. Điều này giúp giảm thiểu thời gian tìm kiếm lệnh khi bạn gọi lại chúng.
+## Overview
+Lệnh `hash` trong C Shell (csh) được sử dụng để quản lý và theo dõi các lệnh đã được thực thi. Nó giúp người dùng lưu trữ thông tin về vị trí của các lệnh, từ đó tăng tốc độ thực thi cho các lần gọi lệnh sau.
 
-## Cách sử dụng
+## Usage
 Cú pháp cơ bản của lệnh `hash` như sau:
-
-```bash
+```
 hash [options] [arguments]
 ```
 
-## Các tùy chọn phổ biến
-- `-r`: Xóa tất cả các mục trong bảng băm, tức là làm mới bộ nhớ cache của các lệnh.
-- `-l`: Hiển thị danh sách các lệnh đã được lưu trữ cùng với vị trí của chúng.
-- `-p`: Cung cấp một đường dẫn cụ thể cho lệnh mà bạn muốn lưu trữ.
+## Common Options
+- `-c`: Xóa tất cả các mục trong bảng hash.
+- `-r`: Làm mới bảng hash, cập nhật thông tin về các lệnh đã thực thi.
+- `-l`: Hiển thị danh sách các lệnh đã được lưu trong bảng hash.
 
-## Ví dụ phổ biến
+## Common Examples
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `hash`:
 
-1. **Hiển thị danh sách các lệnh đã được lưu trữ**:
-   ```bash
-   hash
+1. **Hiển thị danh sách các lệnh đã lưu**:
+   ```csh
+   hash -l
    ```
 
-2. **Làm mới bảng băm**:
-   ```bash
+2. **Xóa tất cả các mục trong bảng hash**:
+   ```csh
+   hash -c
+   ```
+
+3. **Làm mới bảng hash**:
+   ```csh
    hash -r
    ```
 
-3. **Lưu trữ một lệnh với đường dẫn cụ thể**:
-   ```bash
-   hash -p /usr/local/bin/mycommand mycommand
-   ```
-
-4. **Hiển thị vị trí của một lệnh cụ thể**:
-   ```bash
-   hash mycommand
-   ```
-
-## Mẹo
-- Sử dụng `hash -r` khi bạn đã cài đặt hoặc gỡ bỏ một lệnh mới để đảm bảo Bash nhận diện đúng vị trí của các lệnh.
-- Kiểm tra bảng băm thường xuyên để biết các lệnh nào đang được lưu trữ và vị trí của chúng, điều này giúp bạn quản lý môi trường làm việc hiệu quả hơn.
-- Khi sử dụng `hash -p`, hãy chắc chắn rằng đường dẫn bạn cung cấp là chính xác để tránh lỗi khi gọi lệnh.
+## Tips
+- Sử dụng `hash -l` thường xuyên để kiểm tra các lệnh đã lưu và đảm bảo rằng bạn đang sử dụng phiên bản mới nhất của chúng.
+- Nếu bạn thay đổi vị trí của một lệnh, hãy sử dụng `hash -r` để cập nhật bảng hash và tránh lỗi khi gọi lệnh.
+- Lệnh `hash` rất hữu ích trong việc tối ưu hóa quy trình làm việc của bạn, đặc biệt khi bạn thường xuyên sử dụng các lệnh nặng.

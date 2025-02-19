@@ -1,43 +1,45 @@
-# [Linux] Bash tee 使用法: 將輸出同時寫入檔案和標準輸出
+# [台灣] C Shell (csh) tee 使用方式: 將輸出同時寫入檔案和標準輸出
 
 ## Overview
-`tee` 命令的主要功能是從標準輸入讀取資料，然後將這些資料寫入到標準輸出和一個或多個檔案中。這使得使用者可以在處理資料的同時，保留一份檔案的副本。
+`tee` 命令用於從標準輸入讀取資料，並將其寫入標準輸出和一個或多個檔案。這使得用戶可以在查看輸出結果的同時，將其保存到檔案中。
 
 ## Usage
 基本語法如下：
-```bash
-tee [選項] [檔案...]
+```
+tee [options] [arguments]
 ```
 
 ## Common Options
-- `-a`：以附加模式寫入檔案，而不是覆蓋檔案。
-- `-i`：忽略中斷信號。
-- `-p`：在寫入檔案的同時，將輸出寫入到標準輸出。
+- `-a`：將輸出附加到檔案的末尾，而不是覆蓋檔案。
+- `-i`：忽略中斷信號，讓命令在接收到中斷時仍然繼續執行。
 
 ## Common Examples
-以下是一些常見的 `tee` 使用範例：
+以下是一些常見的使用範例：
 
-1. 將輸出寫入檔案：
-   ```bash
+1. 將輸出寫入檔案並顯示在終端：
+   ```csh
    echo "Hello, World!" | tee output.txt
    ```
 
-2. 將輸出附加到檔案中：
-   ```bash
-   echo "Another line" | tee -a output.txt
+2. 將輸出附加到已存在的檔案：
+   ```csh
+   echo "Appending this line." | tee -a output.txt
    ```
 
-3. 同時寫入多個檔案：
-   ```bash
-   echo "Logging data" | tee file1.txt file2.txt
+3. 同時將多個檔案寫入：
+   ```csh
+   echo "Data for both files." | tee file1.txt file2.txt
    ```
 
-4. 結合其他命令使用：
-   ```bash
-   ls -l | tee directory_list.txt
+4. 忽略中斷信號：
+   ```csh
+   some_command | tee -i output.txt
    ```
 
 ## Tips
-- 使用 `-a` 選項可以避免覆蓋檔案，這在記錄日誌時特別有用。
-- 結合管道使用 `tee` 可以方便地在多個命令之間傳遞資料。
-- 確保有適當的檔案權限，否則 `tee` 可能無法寫入檔案。
+- 使用 `-a` 選項可以避免覆蓋檔案，特別是在需要記錄多次輸出時。
+- 將 `tee` 與其他命令結合使用，可以方便地記錄過程中的輸出，例如：
+  ```csh
+  ls -l | tee directory_list.txt
+  ```
+- 確保檔案的寫入權限，否則 `tee` 可能會失敗。

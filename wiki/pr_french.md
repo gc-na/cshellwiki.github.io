@@ -1,52 +1,61 @@
-# [Linux] Bash pr : afficher des fichiers formatés
+# [Linux] C Shell (csh) pr : Afficher et formater le contenu des fichiers
 
 ## Overview
-La commande `pr` est utilisée pour formater des fichiers texte pour une impression ou une visualisation plus claire. Elle divise le texte en colonnes et ajoute des en-têtes, ce qui facilite la lecture des données.
+La commande `pr` est utilisée pour formater le contenu des fichiers texte en vue d'une impression. Elle permet de diviser le texte en colonnes, d'ajouter des en-têtes et de gérer la pagination, ce qui facilite la lecture et l'impression des documents.
 
 ## Usage
-La syntaxe de base de la commande `pr` est la suivante :
+Voici la syntaxe de base de la commande `pr` :
 
-```bash
+```csh
 pr [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes pour la commande `pr` :
-
-- `-h` : spécifie un en-tête personnalisé pour la sortie.
-- `-l` : définit le nombre de lignes par page.
-- `-t` : supprime les numéros de page et les en-têtes.
-- `-s` : définit un séparateur personnalisé entre les colonnes.
+- `-h` : Spécifie un en-tête personnalisé pour la sortie.
+- `-l` : Définit le nombre de lignes par page.
+- `-w` : Définit la largeur de la page en caractères.
+- `-s` : Spécifie un séparateur entre les colonnes.
+- `-t` : Supprime les en-têtes et les pieds de page par défaut.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `pr` :
 
-1. **Afficher un fichier avec des colonnes par défaut :**
-   ```bash
-   pr mon_fichier.txt
-   ```
+### Exemple 1 : Formatage simple d'un fichier
+Pour formater le contenu d'un fichier texte nommé `document.txt` :
 
-2. **Afficher un fichier avec un en-tête personnalisé :**
-   ```bash
-   pr -h "Mon En-tête Personnalisé" mon_fichier.txt
-   ```
+```csh
+pr document.txt
+```
 
-3. **Afficher un fichier avec 50 lignes par page :**
-   ```bash
-   pr -l 50 mon_fichier.txt
-   ```
+### Exemple 2 : Ajouter un en-tête personnalisé
+Pour ajouter un en-tête à la sortie :
 
-4. **Supprimer les en-têtes et numéros de page :**
-   ```bash
-   pr -t mon_fichier.txt
-   ```
+```csh
+pr -h "Mon Document" document.txt
+```
 
-5. **Afficher deux fichiers côte à côte avec un séparateur :**
-   ```bash
-   pr -s ' | ' fichier1.txt fichier2.txt
-   ```
+### Exemple 3 : Définir le nombre de lignes par page
+Pour définir 50 lignes par page :
+
+```csh
+pr -l 50 document.txt
+```
+
+### Exemple 4 : Utiliser plusieurs colonnes
+Pour afficher le contenu de deux fichiers en colonnes :
+
+```csh
+pr file1.txt file2.txt
+```
+
+### Exemple 5 : Supprimer les en-têtes et pieds de page
+Pour afficher le contenu sans en-têtes ni pieds de page :
+
+```csh
+pr -t document.txt
+```
 
 ## Tips
-- Utilisez l'option `-h` pour rendre vos sorties plus claires et personnalisées.
-- Expérimentez avec le nombre de lignes par page pour adapter la sortie à votre imprimante ou à votre écran.
-- Combinez `pr` avec d'autres commandes comme `cat` ou `less` pour une visualisation améliorée.
+- Utilisez l'option `-w` pour ajuster la largeur de la page si vous imprimez sur différents formats de papier.
+- Combinez plusieurs options pour personnaliser la sortie selon vos besoins spécifiques.
+- Vérifiez toujours le formatage en utilisant `pr` sur un petit fichier avant de l'appliquer à des documents plus volumineux.

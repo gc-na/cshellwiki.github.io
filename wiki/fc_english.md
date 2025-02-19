@@ -1,56 +1,59 @@
-# [Linux] Bash fc Usage: Edit and re-execute commands
+# [Linux] C Shell (csh) fc用法: Edit and re-execute commands
 
 ## Overview
-The `fc` command in Bash is used to list, edit, and re-execute commands from the shell's history. It allows users to quickly modify previous commands and run them again without retyping everything.
+The `fc` command in C Shell (csh) is used to list, edit, and re-execute commands from the shell's history. It allows users to modify previous commands before running them again, making it a powerful tool for efficient command line usage.
 
 ## Usage
 The basic syntax of the `fc` command is as follows:
 
-```bash
+```csh
 fc [options] [arguments]
 ```
 
 ## Common Options
-- `-l`: List the commands from the history.
-- `-r`: Reverses the order of the commands when listing.
-- `-n`: Suppresses the command numbers when listing.
-- `-s`: Re-execute the command without opening an editor.
-- `-e`: Specify a different editor to use for editing the command.
+- `-l`: List the commands in the history without editing.
+- `-e editor`: Specify a custom editor for editing the command (default is the user's defined editor).
+- `-n`: Suppress the command numbers when listing commands.
+- `-s`: Execute the command without opening it in an editor.
 
 ## Common Examples
 
-### List Recent Commands
-To list the last 10 commands from your history, you can use:
-```bash
-fc -l -n -10
+### Listing Recent Commands
+To list the last 10 commands executed:
+
+```csh
+fc -l -10
 ```
 
-### Edit the Last Command
-To edit the most recent command in your default text editor, simply run:
-```bash
+### Editing a Specific Command
+To edit the most recent command:
+
+```csh
 fc
 ```
 
-### Re-execute a Specific Command
-If you want to re-execute a specific command from your history, you can use:
-```bash
-fc -s 123
-```
-Replace `123` with the command number you want to re-execute.
+### Editing a Command by Number
+To edit a command with a specific history number (e.g., command number 5):
 
-### List Commands in Reverse Order
-To list the last 5 commands in reverse order, use:
-```bash
-fc -l -r -5
+```csh
+fc 5
 ```
 
-### Use a Specific Editor
-If you want to edit a command using a specific editor, such as `nano`, you can do:
-```bash
+### Executing a Command Directly
+To execute the most recent command without editing:
+
+```csh
+fc -s
+```
+
+### Using a Custom Editor
+To edit the last command using `nano` as the editor:
+
+```csh
 fc -e nano
 ```
 
 ## Tips
-- Use `fc -l` frequently to keep track of your command history and find commands you may want to reuse.
-- If you often make the same changes to commands, consider using `fc -s` to quickly re-execute modified commands.
-- Customize your default editor for `fc` by setting the `EDITOR` environment variable to your preferred text editor.
+- Use `fc -l` frequently to keep track of your command history and avoid retyping.
+- Customize your default editor in your shell configuration for a smoother editing experience.
+- Combine `fc` with other commands to streamline your workflow, such as using `fc -s` after a failed command to quickly retry it.

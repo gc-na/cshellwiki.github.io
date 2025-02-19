@@ -1,49 +1,45 @@
-# [Linux] Bash timedatectl gebruik: Beheer tijd en datum instellingen
+# [Linux] C Shell (csh) timedatectl gebruik: Beheer tijd- en datuminstellingen
 
 ## Overzicht
-De `timedatectl` opdracht is een hulpmiddel in Linux dat wordt gebruikt om de systeemdatum en -tijd te beheren. Het biedt een interface om de tijdzone in te stellen, de systeemklok te synchroniseren en de huidige tijd- en datuminstellingen te bekijken.
+De `timedatectl` opdracht is een hulpmiddel in Linux-systemen dat gebruikers in staat stelt om de tijd- en datuminstellingen van het systeem te beheren. Het biedt informatie over de huidige tijdzone, systeemklok en synchronisatie met tijdservers.
 
 ## Gebruik
-De basis syntaxis van de `timedatectl` opdracht is:
+De basis syntaxis van de `timedatectl` opdracht is als volgt:
 
-```bash
+```csh
 timedatectl [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- `set-time`: Stel de systeemdatum en -tijd in.
-- `set-timezone`: Wijzig de tijdzone van het systeem.
-- `status`: Toon de huidige tijd- en datuminstellingen.
-- `list-timezones`: Lijst alle beschikbare tijdzones.
-- `set-ntp`: Schakel Network Time Protocol (NTP) in of uit.
+## Veelvoorkomende Opties
+- `status`: Toont de huidige tijd- en datuminstellingen.
+- `set-time <tijd>`: Stelt de systeemklok in op de opgegeven tijd.
+- `set-timezone <tijdzone>`: Wijzigt de tijdzone van het systeem.
+- `set-ntp <boolean>`: Zet NTP (Network Time Protocol) synchronisatie aan of uit.
 
-## Veelvoorkomende voorbeelden
-- **Bekijk de huidige tijd- en datuminstellingen:**
-  ```bash
-  timedatectl status
-  ```
+## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van `timedatectl`:
 
-- **Stel de systeemdatum en -tijd in:**
-  ```bash
-  timedatectl set-time '2023-10-01 12:00:00'
-  ```
+1. **Huidige tijd- en datuminstellingen weergeven:**
+   ```csh
+   timedatectl status
+   ```
 
-- **Wijzig de tijdzone naar Amsterdam:**
-  ```bash
-  timedatectl set-timezone Europe/Amsterdam
-  ```
+2. **Systeemklok instellen op een specifieke tijd:**
+   ```csh
+   timedatectl set-time '2023-10-01 12:00:00'
+   ```
 
-- **Lijst alle beschikbare tijdzones:**
-  ```bash
-  timedatectl list-timezones
-  ```
+3. **Tijdzone wijzigen naar Amsterdam:**
+   ```csh
+   timedatectl set-timezone Europe/Amsterdam
+   ```
 
-- **Schakel NTP in voor automatische tijdsynchronisatie:**
-  ```bash
-  timedatectl set-ntp true
-  ```
+4. **NTP synchronisatie inschakelen:**
+   ```csh
+   timedatectl set-ntp true
+   ```
 
 ## Tips
-- Zorg ervoor dat je de juiste tijdzone selecteert om tijdsverwarring te voorkomen.
-- Gebruik de `status` optie regelmatig om te controleren of je systeemklok correct is ingesteld.
-- Overweeg om NTP in te schakelen voor automatische synchronisatie met internetservers, wat helpt om de tijd nauwkeurig te houden.
+- Controleer regelmatig de tijd- en datuminstellingen om ervoor te zorgen dat ze correct zijn, vooral op servers.
+- Gebruik de `status` optie om snel een overzicht van de huidige instellingen te krijgen.
+- Vergeet niet om de juiste tijdzone in te stellen, vooral als je met meerdere tijdzones werkt.

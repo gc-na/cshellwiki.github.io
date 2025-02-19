@@ -1,12 +1,12 @@
-# [Linux] Bash lsmod Penggunaan: Menampilkan modul kernel yang dimuat
+# [Sistem Operasi] C Shell (csh) lsmod: [menampilkan modul kernel yang dimuat]
 
 ## Overview
-Perintah `lsmod` digunakan untuk menampilkan daftar modul kernel yang saat ini dimuat ke dalam sistem Linux. Modul-modul ini adalah bagian dari kernel yang dapat dimuat dan dibongkar secara dinamis, memungkinkan sistem untuk menyesuaikan fungsionalitasnya sesuai kebutuhan.
+Perintah `lsmod` digunakan untuk menampilkan daftar modul kernel yang saat ini dimuat pada sistem. Modul kernel adalah komponen perangkat lunak yang dapat dimuat dan dibongkar ke dalam kernel saat runtime, memungkinkan fungsionalitas tambahan tanpa perlu memuat ulang sistem.
 
 ## Usage
-Sintaks dasar dari perintah `lsmod` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `lsmod`:
 
-```bash
+```csh
 lsmod [options] [arguments]
 ```
 
@@ -14,35 +14,36 @@ lsmod [options] [arguments]
 Berikut adalah beberapa opsi umum yang dapat digunakan dengan `lsmod`:
 
 - `-h`, `--help`: Menampilkan bantuan tentang penggunaan perintah.
-- `-v`, `--verbose`: Menampilkan informasi lebih detail tentang modul yang dimuat.
+- `-n`, `--no-heading`: Menampilkan output tanpa judul kolom.
+- `-r`, `--reverse`: Mengurutkan output dalam urutan terbalik.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `lsmod`:
 
-1. **Menampilkan semua modul yang dimuat:**
-
-   ```bash
+1. Menampilkan semua modul yang dimuat:
+   ```csh
    lsmod
    ```
 
-2. **Menampilkan bantuan untuk lsmod:**
+2. Menampilkan modul yang dimuat tanpa judul kolom:
+   ```csh
+   lsmod -n
+   ```
 
-   ```bash
+3. Menampilkan modul yang dimuat dalam urutan terbalik:
+   ```csh
+   lsmod -r
+   ```
+
+4. Menampilkan bantuan tentang penggunaan perintah:
+   ```csh
    lsmod --help
    ```
 
-3. **Menampilkan informasi detail tentang modul:**
-
-   ```bash
-   lsmod --verbose
-   ```
-
 ## Tips
-- Gunakan `lsmod` secara berkala untuk memantau modul yang dimuat, terutama setelah menginstal perangkat keras baru.
-- Kombinasikan `lsmod` dengan perintah lain seperti `grep` untuk mencari modul tertentu. Misalnya:
-
-  ```bash
+- Gunakan `lsmod` secara rutin untuk memeriksa modul yang dimuat, terutama setelah menginstal perangkat keras baru.
+- Kombinasikan `lsmod` dengan perintah lain seperti `grep` untuk mencari modul tertentu. Contoh:
+  ```csh
   lsmod | grep <nama_modul>
   ```
-
-- Jika Anda ingin mempelajari lebih lanjut tentang modul tertentu, Anda dapat menggunakan perintah `modinfo <nama_modul>` setelah menemukan nama modul dengan `lsmod`.
+- Perhatikan bahwa output dari `lsmod` dapat membantu dalam pemecahan masalah jika perangkat keras tidak berfungsi dengan baik.

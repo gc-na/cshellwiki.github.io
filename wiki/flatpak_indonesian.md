@@ -1,10 +1,10 @@
-# [Linux] Bash flatpak penggunaan: Mengelola aplikasi dengan Flatpak
+# [Linux] C Shell (csh) flatpak penggunaan: Mengelola aplikasi dengan Flatpak
 
 ## Overview
-Flatpak adalah sistem manajemen paket yang memungkinkan pengguna untuk menginstal, menjalankan, dan mengelola aplikasi di berbagai distribusi Linux dengan cara yang konsisten. Dengan Flatpak, aplikasi dapat dijalankan dalam lingkungan terisolasi, sehingga mengurangi konflik antara aplikasi dan meningkatkan keamanan.
+Flatpak adalah sistem manajemen paket yang memungkinkan pengguna untuk menginstal, menjalankan, dan mengelola aplikasi secara terisolasi dari sistem operasi utama. Dengan Flatpak, aplikasi dapat berjalan di berbagai distribusi Linux tanpa perlu khawatir tentang ketergantungan yang berbeda.
 
 ## Usage
-Berikut adalah sintaks dasar dari perintah flatpak:
+Sintaks dasar untuk menggunakan perintah flatpak adalah sebagai berikut:
 
 ```
 flatpak [options] [arguments]
@@ -46,6 +46,6 @@ Berikut adalah beberapa contoh penggunaan perintah flatpak:
    ```
 
 ## Tips
-- Selalu periksa repositori Flatpak yang tersedia, seperti Flathub, untuk menemukan aplikasi baru.
-- Gunakan `flatpak info [application]` untuk mendapatkan informasi lebih lanjut tentang aplikasi yang terinstal.
+- Selalu periksa repositori Flatpak yang tersedia untuk menemukan aplikasi yang Anda butuhkan.
+- Gunakan `flatpak info [nama-aplikasi]` untuk mendapatkan informasi lebih lanjut tentang aplikasi yang terinstal.
 - Pertimbangkan untuk menggunakan `flatpak update` secara berkala untuk memastikan aplikasi Anda selalu diperbarui dengan fitur terbaru dan perbaikan keamanan.

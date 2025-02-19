@@ -1,39 +1,44 @@
-# [台灣] Bash 完整命令使用法: 自動補全選項
+# [台灣] C Shell (csh) complete 使用說明: 自動補全命令
 
 ## Overview
-`complete` 命令用於為 Bash 提供自動補全的功能，讓使用者在輸入命令時可以快速填入參數或選項，提升命令行操作的效率。
+`complete` 命令用於在 C Shell 中自動補全命令或參數，幫助用戶更快地輸入命令，提升效率。
 
 ## Usage
 基本語法如下：
-```bash
+```
 complete [options] [arguments]
 ```
 
 ## Common Options
-- `-A`: 指定補全類型，例如 `-A command` 會補全命令名稱。
-- `-G`: 使用正則表達式來匹配補全的選項。
-- `-o`: 指定補全的行為選項，例如 `-o nospace` 會在補全後不添加空格。
+- `-c` : 指定要補全的命令。
+- `-d` : 列出可用的選項。
+- `-f` : 將補全的選項設置為文件名。
+- `-n` : 指定不進行補全的條件。
 
 ## Common Examples
-1. 為自定義命令添加補全：
-    ```bash
-    complete -W "start stop restart" mycommand
-    ```
-    這會讓 `mycommand` 在輸入時可以自動補全 `start`、`stop` 和 `restart`。
+以下是一些常見的使用範例：
 
-2. 使用正則表達式進行補全：
-    ```bash
-    complete -G "*.txt" mytexteditor
-    ```
-    這會讓 `mytexteditor` 自動補全當前目錄下的所有 `.txt` 文件。
+1. 為 `ls` 命令設置自動補全：
+   ```csh
+   complete -c ls -f
+   ```
 
-3. 為命令選項添加補全：
-    ```bash
-    complete -o nospace -W "--help --version" myscript
-    ```
-    這會讓 `myscript` 在輸入時可以補全 `--help` 和 `--version`，且不會在補全後添加空格。
+2. 為 `git` 命令設置選項補全：
+   ```csh
+   complete -c git -d
+   ```
+
+3. 為 `ssh` 命令設置主機名補全：
+   ```csh
+   complete -c ssh -f
+   ```
+
+4. 為 `cp` 命令設置文件名補全：
+   ```csh
+   complete -c cp -f
+   ```
 
 ## Tips
-- 在使用 `complete` 時，確保你已經定義了相應的命令，否則補全將不會生效。
-- 可以將補全命令放入你的 `.bashrc` 檔案中，這樣每次啟動終端時都會自動加載。
-- 測試補全功能時，可以使用 `Tab` 鍵來檢查是否正確運作。
+- 使用 `complete` 命令時，確保你已經知道需要補全的命令及其選項。
+- 可以結合多個選項來達到更精確的補全效果。
+- 定期檢查你的補全設置，以確保它們符合你的工作流程需求。

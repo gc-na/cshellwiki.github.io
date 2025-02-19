@@ -1,42 +1,48 @@
-# [Linux] Bash 服务命令使用: 管理系统服务
+# [Linux] C Shell (csh) service 用法: 启动和管理系统服务
 
 ## 概述
-`service` 命令用于在 Linux 系统中管理系统服务。它允许用户启动、停止、重启和检查服务的状态，通常用于系统管理和维护。
+`service` 命令用于启动、停止和管理系统服务。它提供了一种简单的方式来控制系统服务的状态，适用于许多 Linux 发行版。
 
 ## 用法
 基本语法如下：
-```bash
+```
 service [options] [service_name] [command]
 ```
 
 ## 常用选项
+- `--status-all`：列出所有服务及其状态。
 - `start`：启动指定的服务。
 - `stop`：停止指定的服务。
 - `restart`：重启指定的服务。
-- `status`：查看指定服务的当前状态。
+- `status`：显示指定服务的当前状态。
 
 ## 常见示例
 1. 启动服务：
-   ```bash
-   service apache2 start
+   ```csh
+   service nginx start
    ```
 
 2. 停止服务：
-   ```bash
-   service mysql stop
+   ```csh
+   service nginx stop
    ```
 
 3. 重启服务：
-   ```bash
+   ```csh
    service nginx restart
    ```
 
 4. 查看服务状态：
-   ```bash
-   service ssh status
+   ```csh
+   service nginx status
    ```
 
-## 小贴士
-- 在使用 `service` 命令时，确保你有足够的权限（通常需要使用 `sudo`）。
-- 使用 `status` 命令可以帮助你快速了解服务是否正在运行，避免不必要的启动或停止操作。
-- 对于系统服务的管理，建议定期检查服务状态，以确保系统的稳定性和安全性。
+5. 列出所有服务及其状态：
+   ```csh
+   service --status-all
+   ```
+
+## 提示
+- 确保以超级用户权限运行 `service` 命令，以便能够启动或停止系统服务。
+- 使用 `status` 命令可以快速检查服务是否正在运行，帮助排查问题。
+- 定期检查服务状态，确保关键服务始终处于运行状态。

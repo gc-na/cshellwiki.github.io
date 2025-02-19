@@ -1,55 +1,56 @@
-# [리눅스] Bash continue 사용법: 루프를 계속 진행하기
+# [리눅스] C Shell (csh) continue 사용법: 루프를 계속 진행하기
 
 ## Overview
-`continue` 명령은 Bash 스크립트 내에서 루프를 제어하는 데 사용됩니다. 이 명령은 현재 반복을 중단하고 다음 반복으로 넘어가게 합니다. 주로 조건문과 함께 사용되어 특정 조건을 만족할 때만 루프의 나머지 부분을 건너뛰고 다음 반복을 실행하도록 합니다.
+`continue` 명령은 C Shell 스크립트 내에서 반복문을 사용할 때, 현재 반복의 나머지 부분을 건너뛰고 다음 반복으로 넘어가도록 하는 기능을 제공합니다. 주로 조건에 따라 특정 반복을 건너뛰고 싶을 때 유용하게 사용됩니다.
 
 ## Usage
 기본 구문은 다음과 같습니다:
+
 ```
 continue [options]
 ```
 
 ## Common Options
-- `n`: 특정 반복에서 몇 번째 반복을 건너뛸지를 지정합니다. 예를 들어, `continue 2`는 두 번째 다음 반복으로 넘어갑니다.
+`continue` 명령은 특별한 옵션을 필요로 하지 않지만, 특정 반복문 내에서 사용해야 합니다. 
 
 ## Common Examples
 
-### 예제 1: 기본 사용법
-```bash
-for i in {1..5}; do
-  if [ $i -eq 3 ]; then
-    continue
-  fi
-  echo $i
-done
+### 예제 1: 단순 반복문에서 continue 사용하기
+```csh
+foreach i (1 2 3 4 5)
+    if ($i == 3) then
+        continue
+    endif
+    echo $i
+end
 ```
-이 스크립트는 1부터 5까지의 숫자를 출력하지만, 3은 건너뜁니다.
+이 예제에서는 숫자 3을 건너뛰고 1, 2, 4, 5를 출력합니다.
 
-### 예제 2: 조건문과 함께 사용
-```bash
-for i in {1..10}; do
-  if [ $((i % 2)) -eq 0 ]; then
-    continue
-  fi
-  echo $i
-done
+### 예제 2: while 루프에서 continue 사용하기
+```csh
+set i = 0
+while ($i < 5)
+    @ i++
+    if ($i == 2) then
+        continue
+    endif
+    echo $i
+end
 ```
-이 스크립트는 홀수만 출력합니다. 짝수일 경우 `continue` 명령으로 다음 반복으로 넘어갑니다.
+위의 코드는 2를 건너뛰고 1, 3, 4, 5를 출력합니다.
 
-### 예제 3: 중첩 루프에서 사용
-```bash
-for i in {1..3}; do
-  for j in {1..3}; do
-    if [ $j -eq 2 ]; then
-      continue
-    fi
-    echo "i: $i, j: $j"
-  done
-done
+### 예제 3: 조건문과 함께 사용하기
+```csh
+foreach file (*)
+    if (! -e $file) then
+        continue
+    endif
+    echo "Processing $file"
+end
 ```
-이 스크립트는 중첩 루프에서 `j`가 2일 때 해당 반복을 건너뛰고 출력합니다.
+이 예제에서는 존재하지 않는 파일을 건너뛰고, 존재하는 파일만 처리합니다.
 
 ## Tips
-- `continue` 명령은 주로 `for`, `while`, `until` 루프와 함께 사용됩니다.
-- 루프의 흐름을 명확하게 이해하고 사용해야 합니다. 조건문을 적절히 설정하여 의도한 대로 루프가 작동하도록 하세요.
-- 디버깅 시, `echo` 명령을 사용하여 현재 반복의 상태를 출력하면 `continue`의 동작을 이해하는 데 도움이 됩니다.
+- `continue`는 반복문 내에서만 사용해야 하며, 잘못된 위치에서 사용하면 오류가 발생할 수 있습니다.
+- 조건문과 함께 사용하여 특정 상황에서만 반복을 건너뛰도록 설정하는 것이 좋습니다.
+- 코드의 가독성을 높이기 위해, `continue` 사용 시 조건을 명확하게 작성하세요.

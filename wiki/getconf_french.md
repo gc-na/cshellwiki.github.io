@@ -1,46 +1,43 @@
-# [Linux] Bash getconf : Obtenir des informations sur les paramètres système
+# [Linux] C Shell (csh) getconf : obtenir des informations sur les configurations système
 
 ## Overview
-La commande `getconf` est utilisée pour obtenir des informations sur les paramètres système et les configurations de l'environnement d'exécution. Elle permet d'interroger des valeurs spécifiques qui peuvent être utiles pour le développement et l'administration système.
+La commande `getconf` est utilisée pour récupérer des informations sur les configurations système et les limites de l'environnement d'exécution. Elle permet d'accéder à des valeurs spécifiques qui peuvent être utiles pour le développement et l'administration système.
 
 ## Usage
 La syntaxe de base de la commande `getconf` est la suivante :
 
-```bash
+```csh
 getconf [options] [arguments]
 ```
 
 ## Common Options
 - `-a` : Affiche toutes les valeurs de configuration disponibles.
-- `variable` : Spécifie le nom de la variable dont vous souhaitez obtenir la valeur.
+- `variable` : Spécifie le nom de la variable de configuration dont vous souhaitez obtenir la valeur.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `getconf` :
 
-1. **Obtenir la taille maximale d'un fichier** :
-   ```bash
-   getconf _PC_MAX_INPUT
-   ```
-
-2. **Afficher toutes les valeurs de configuration** :
-   ```bash
+1. Pour afficher toutes les valeurs de configuration disponibles :
+   ```csh
    getconf -a
    ```
 
-3. **Vérifier la taille de la page mémoire** :
-   ```bash
-   getconf PAGE_SIZE
+2. Pour obtenir la taille maximale d'un fichier :
+   ```csh
+   getconf _PC_MAX_INPUT
    ```
 
-4. **Obtenir le nombre maximum de fichiers ouverts** :
-   ```bash
+3. Pour vérifier la taille de la mémoire de page :
+   ```csh
+   getconf PAGESIZE
+   ```
+
+4. Pour obtenir le nombre maximum de fichiers ouverts :
+   ```csh
    getconf OPEN_MAX
    ```
 
 ## Tips
 - Utilisez `getconf -a` pour explorer toutes les variables disponibles si vous n'êtes pas sûr de ce que vous cherchez.
-- Combinez `getconf` avec d'autres commandes comme `grep` pour filtrer les résultats, par exemple :
-  ```bash
-  getconf -a | grep PAGE
-  ```
-- Vérifiez la documentation de votre système pour connaître les variables spécifiques prises en charge par `getconf`, car elles peuvent varier d'un système à l'autre.
+- Combinez `getconf` avec d'autres commandes pour automatiser des scripts qui dépendent de la configuration système.
+- Vérifiez la documentation de votre système pour des variables spécifiques qui peuvent ne pas être disponibles sur tous les systèmes.

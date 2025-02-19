@@ -1,10 +1,10 @@
-# [Linux] Bash cryptsetup Kullanımı: Şifreli disk yönetimi aracı
+# [Linux] C Shell (csh) cryptsetup Kullanımı: Şifreli disk yönetimi
 
 ## Genel Bakış
-`cryptsetup`, Linux sistemlerinde şifreli disk bölümleri oluşturmak ve yönetmek için kullanılan bir komuttur. Bu araç, disk şifrelemesi için LUKS (Linux Unified Key Setup) standardını kullanarak verilerinizi korumanıza yardımcı olur.
+`cryptsetup`, Linux sistemlerinde şifreli disk bölümleri oluşturmak ve yönetmek için kullanılan bir komuttur. Bu komut, LUKS (Linux Unified Key Setup) formatında şifreleme yaparak verilerinizi korumanıza yardımcı olur.
 
 ## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
+Temel sözdizimi şu şekildedir:
 
 ```bash
 cryptsetup [seçenekler] [argümanlar]
@@ -12,38 +12,40 @@ cryptsetup [seçenekler] [argümanlar]
 
 ## Yaygın Seçenekler
 - `luksFormat`: Yeni bir LUKS şifreli bölüm oluşturur.
-- `luksOpen`: Var olan bir LUKS şifreli bölümü açar.
-- `luksClose`: Açık olan bir LUKS bölümünü kapatır.
+- `luksOpen`: Var olan bir LUKS bölümünü açar.
+- `luksClose`: Açık bir LUKS bölümünü kapatır.
 - `status`: Şifreli bölümün durumunu gösterir.
-- `luksAddKey`: Yeni bir anahtar ekler.
+- `luksAddKey`: Mevcut bir LUKS bölümü için yeni bir anahtar ekler.
 
 ## Yaygın Örnekler
-1. Yeni bir LUKS şifreli bölüm oluşturma:
-   ```bash
-   cryptsetup luksFormat /dev/sdX
-   ```
+Aşağıda `cryptsetup` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-2. Var olan bir LUKS şifreli bölümü açma:
-   ```bash
-   cryptsetup luksOpen /dev/sdX my_encrypted_volume
-   ```
+### Yeni LUKS Bölümü Oluşturma
+```bash
+cryptsetup luksFormat /dev/sdX
+```
 
-3. Açık olan bir LUKS bölümünü kapatma:
-   ```bash
-   cryptsetup luksClose my_encrypted_volume
-   ```
+### LUKS Bölümünü Açma
+```bash
+cryptsetup luksOpen /dev/sdX my_encrypted_volume
+```
 
-4. Şifreli bölümün durumunu kontrol etme:
-   ```bash
-   cryptsetup status my_encrypted_volume
-   ```
+### LUKS Bölümünü Kapatma
+```bash
+cryptsetup luksClose my_encrypted_volume
+```
 
-5. Yeni bir anahtar ekleme:
-   ```bash
-   cryptsetup luksAddKey /dev/sdX
-   ```
+### Şifreli Bölümün Durumunu Kontrol Etme
+```bash
+cryptsetup status my_encrypted_volume
+```
+
+### Yeni Anahtar Ekleme
+```bash
+cryptsetup luksAddKey /dev/sdX
+```
 
 ## İpuçları
-- Şifreli bölümlerinizi düzenli olarak yedekleyin.
-- Anahtarlarınızı güvenli bir yerde saklayın; kaybolması durumunda verilere erişim kaybolabilir.
-- `cryptsetup` komutunu kullanmadan önce, ilgili disk bölümlerinin doğru olduğundan emin olun. Yanlış bir işlem veri kaybına neden olabilir.
+- Şifreli bölümlerinizi yönetirken dikkatli olun; yanlış bir komut verildiğinde verilerinizi kaybedebilirsiniz.
+- Anahtarlarınızı güvenli bir yerde saklayın ve yedeklemelerini yapın.
+- `--help` seçeneğini kullanarak daha fazla bilgi alabilir ve mevcut seçenekleri görebilirsiniz.

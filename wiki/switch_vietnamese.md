@@ -1,72 +1,87 @@
-# [Linux] Bash switch lệnh: Chuyển đổi giữa các giá trị
+# [Hệ điều hành] C Shell (csh) switch: Chuyển đổi giữa các lựa chọn
 
-## Tổng quan
-Lệnh `switch` trong Bash không phải là một lệnh độc lập mà là một cấu trúc điều kiện cho phép bạn kiểm tra một biến và thực hiện các hành động khác nhau dựa trên giá trị của biến đó. Nó giúp tổ chức mã nguồn một cách rõ ràng và dễ hiểu hơn.
+## Overview
+Lệnh `switch` trong C Shell (csh) được sử dụng để thực hiện các lựa chọn điều kiện trong một kịch bản. Nó cho phép người dùng kiểm tra giá trị của một biến và thực hiện các hành động khác nhau dựa trên giá trị đó.
 
-## Cách sử dụng
-Cú pháp cơ bản của lệnh `switch` trong Bash như sau:
-
-```bash
-switch [biến]
-case [giá trị1]:
-    # Lệnh cho giá trị1
-    ;;
-case [giá trị2]:
-    # Lệnh cho giá trị2
-    ;;
-...
-esac
+## Usage
+Cú pháp cơ bản của lệnh `switch` như sau:
+```
+switch (biến)
+    case giá_trị_1:
+        lệnh_1
+        breaksw
+    case giá_trị_2:
+        lệnh_2
+        breaksw
+    default:
+        lệnh_mặc_dịnh
+        breaksw
+endsw
 ```
 
-## Các tùy chọn phổ biến
-- `case`: Xác định một giá trị mà bạn muốn kiểm tra.
-- `esac`: Kết thúc cấu trúc `switch`.
-- `;;`: Đánh dấu sự kết thúc của một trường hợp (case).
+## Common Options
+- `case`: Được sử dụng để xác định một giá trị mà biến có thể khớp.
+- `breaksw`: Kết thúc một trường hợp và thoát khỏi lệnh `switch`.
+- `default`: Được sử dụng để chỉ định hành động mặc định nếu không có trường hợp nào khớp.
 
-## Ví dụ phổ biến
-Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `switch` trong Bash:
+## Common Examples
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `switch`:
 
 ### Ví dụ 1: Kiểm tra ngày trong tuần
-```bash
-day="Thứ Hai"
-
-case $day in
-    "Thứ Hai")
-        echo "Hôm nay là Thứ Hai!"
-        ;;
-    "Thứ Ba")
-        echo "Hôm nay là Thứ Ba!"
-        ;;
-    "Thứ Tư")
-        echo "Hôm nay là Thứ Tư!"
-        ;;
-    *)
-        echo "Không phải ngày trong tuần!"
-        ;;
-esac
+```csh
+set day = "Thứ Hai"
+switch ($day)
+    case "Thứ Hai":
+        echo "Hôm nay là thứ Hai."
+        breaksw
+    case "Thứ Ba":
+        echo "Hôm nay là thứ Ba."
+        breaksw
+    default:
+        echo "Hôm nay không phải là thứ Hai hoặc thứ Ba."
+        breaksw
+endsw
 ```
 
-### Ví dụ 2: Kiểm tra trạng thái
-```bash
-status="hoàn thành"
-
-case $status in
-    "đang xử lý")
-        echo "Công việc đang được xử lý."
-        ;;
-    "hoàn thành")
-        echo "Công việc đã hoàn thành."
-        ;;
-    "thất bại")
-        echo "Công việc đã thất bại."
-        ;;
-    *)
-        echo "Trạng thái không xác định."
-        ;;
-esac
+### Ví dụ 2: Kiểm tra số
+```csh
+set num = 2
+switch ($num)
+    case 1:
+        echo "Số là một."
+        breaksw
+    case 2:
+        echo "Số là hai."
+        breaksw
+    case 3:
+        echo "Số là ba."
+        breaksw
+    default:
+        echo "Số không nằm trong khoảng 1 đến 3."
+        breaksw
+endsw
 ```
 
-## Mẹo
-- Sử dụng `*` trong `case` để xử lý các trường hợp không xác định.
-- Đảm bảo mỗi trường hợp kết thúc bằng `;;` để tránh lỗi.
-- Sử dụng các biến rõ ràng để dễ dàng theo dõi giá trị mà bạn đang kiểm tra.
+### Ví dụ 3: Kiểm tra loại tệp
+```csh
+set file_type = "pdf"
+switch ($file_type)
+    case "txt":
+        echo "Đây là tệp văn bản."
+        breaksw
+    case "pdf":
+        echo "Đây là tệp PDF."
+        breaksw
+    case "jpg":
+        echo "Đây là tệp hình ảnh."
+        breaksw
+    default:
+        echo "Loại tệp không xác định."
+        breaksw
+endsw
+```
+
+## Tips
+- Sử dụng `breaksw` để đảm bảo rằng chỉ một trường hợp được thực hiện và không tiếp tục kiểm tra các trường hợp khác.
+- Đặt `default` ở cuối để xử lý các trường hợp không khớp.
+- Đảm bảo rằng biến được kiểm tra đã được khởi tạo trước khi sử dụng lệnh `switch`.

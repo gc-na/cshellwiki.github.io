@@ -1,7 +1,7 @@
-# [Linux] Bash ftp uso: Interactuar con servidores FTP
+# [Sistema Operativo] C Shell (csh) ftp Uso: Transferencia de archivos a través de la red
 
 ## Overview
-El comando `ftp` se utiliza para transferir archivos entre un cliente y un servidor utilizando el protocolo File Transfer Protocol (FTP). Permite a los usuarios conectarse a servidores FTP, subir y bajar archivos, y gestionar directorios en el servidor.
+El comando `ftp` (File Transfer Protocol) se utiliza para transferir archivos entre un cliente y un servidor a través de una red. Permite a los usuarios conectarse a un servidor FTP, subir y bajar archivos, y realizar diversas operaciones relacionadas con la gestión de archivos.
 
 ## Usage
 La sintaxis básica del comando `ftp` es la siguiente:
@@ -11,44 +11,40 @@ ftp [opciones] [argumentos]
 ```
 
 ## Common Options
-- `-i`: Desactiva el modo interactivo, lo que permite la transferencia de archivos sin solicitar confirmación.
-- `-n`: Evita que `ftp` intente iniciar sesión automáticamente.
+- `-i`: Desactiva el modo interactivo, lo que permite transferencias de archivos sin solicitar confirmación.
 - `-v`: Muestra información detallada sobre la conexión y la transferencia de archivos.
-- `-p`: Utiliza un puerto pasivo para la conexión, lo que puede ser útil en redes con firewalls.
+- `-n`: Evita que `ftp` intente iniciar sesión automáticamente al conectarse al servidor.
+- `-p`: Utiliza un puerto pasivo para la transferencia de archivos, útil en redes con firewalls.
 
 ## Common Examples
+Aquí hay algunos ejemplos prácticos del uso del comando `ftp`:
 
-### Conectar a un servidor FTP
-```bash
-ftp ftp.ejemplo.com
-```
+1. **Conectar a un servidor FTP:**
+   ```bash
+   ftp ftp.ejemplo.com
+   ```
 
-### Subir un archivo al servidor
-```bash
-put archivo.txt
-```
+2. **Subir un archivo al servidor:**
+   ```bash
+   ftp> put archivo.txt
+   ```
 
-### Descargar un archivo del servidor
-```bash
-get archivo.txt
-```
+3. **Bajar un archivo del servidor:**
+   ```bash
+   ftp> get archivo.txt
+   ```
 
-### Cambiar de directorio en el servidor
-```bash
-cd /ruta/del/directorio
-```
+4. **Listar archivos en el directorio del servidor:**
+   ```bash
+   ftp> ls
+   ```
 
-### Listar archivos en el directorio actual del servidor
-```bash
-ls
-```
-
-### Salir de la sesión FTP
-```bash
-bye
-```
+5. **Cambiar el directorio en el servidor:**
+   ```bash
+   ftp> cd /ruta/del/directorio
+   ```
 
 ## Tips
-- Asegúrate de tener las credenciales correctas para conectarte al servidor FTP.
-- Utiliza el modo pasivo (`-p`) si tienes problemas de conexión en redes restringidas.
-- Recuerda que la transferencia de archivos a través de FTP no es segura; considera usar SFTP o FTPS para mayor seguridad.
+- Siempre verifica la conexión y la autenticidad del servidor FTP antes de transferir archivos.
+- Utiliza el modo pasivo (`-p`) si experimentas problemas de conexión en redes con restricciones.
+- Recuerda cerrar la sesión correctamente con el comando `bye` o `quit` después de finalizar tus transferencias.

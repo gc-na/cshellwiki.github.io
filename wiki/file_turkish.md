@@ -1,42 +1,43 @@
-# [Linux] Bash dosya komutu kullanımı: Dosya türünü belirleme
+# [Linux] C Shell (csh) dosya komutu: Dosya türlerini belirleme
 
 ## Genel Bakış
-`file` komutu, bir dosyanın içeriğine dayanarak dosya türünü belirlemek için kullanılır. Bu komut, dosyanın içeriğini analiz ederek, metin dosyası, ikili dosya, resim dosyası gibi türleri tanımlar.
+`file` komutu, bir dosyanın içeriğine bakarak dosyanın türünü belirlemeye yarar. Bu komut, dosyanın içeriğini analiz ederek, metin dosyası, ikili dosya, resim dosyası gibi farklı türlerde olup olmadığını tespit eder.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-```bash
+```
 file [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-b`: Dosya adını gösterir, dosya türü dışında başka bilgi vermez.
-- `-i`: MIME türünü gösterir.
-- `-f`: Bir dosya listesini okur ve her bir dosyanın türünü belirler.
+- `-b`: Dosya türünü yalnızca isimle gösterir, ön ek bilgisi olmadan.
+- `-i`: MIME türü bilgisi ile birlikte dosya türünü gösterir.
+- `-f`: Bir dosya listesini alır ve her bir dosyanın türünü belirler.
 
 ## Yaygın Örnekler
 Aşağıda `file` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
 1. Bir dosyanın türünü belirleme:
-   ```bash
-   file example.txt
+   ```csh
+   file dosya.txt
    ```
 
-2. Birden fazla dosyanın türünü belirleme:
-   ```bash
-   file example.txt image.png script.sh
+2. Birden fazla dosyanın türlerini kontrol etme:
+   ```csh
+   file dosya1.txt dosya2.jpg dosya3.bin
    ```
 
-3. MIME türünü gösterme:
-   ```bash
-   file -i example.txt
+3. MIME türü ile dosya türünü gösterme:
+   ```csh
+   file -i resim.png
    ```
 
-4. Dosya listesinden türleri belirleme:
-   ```bash
-   file -f file_list.txt
+4. Bir dosya listesinden türleri belirleme:
+   ```csh
+   file -f dosya_listesi.txt
    ```
 
 ## İpuçları
-- `file` komutunu, dosya türünü bilmediğiniz dosyalar için kullanarak, hangi uygulamaların açabileceğini öğrenebilirsiniz.
-- Dosya türlerini belirlemek için `file` komutunu sıkça kullanıyorsanız, sık kullanılan dosya türlerini not alarak zaman kazanabilirsiniz.
+- `file` komutunu, dosyanın içeriğini bilmediğiniz durumlarda kullanarak dosya türünü hızlıca öğrenebilirsiniz.
+- Özellikle betik dosyaları veya veri dosyaları ile çalışırken, dosya türünü kontrol etmek, hataları önlemek için faydalıdır.
+- `-b` seçeneği ile çıktıyı daha temiz hale getirerek, yalnızca dosya türünü görmek isteyebilirsiniz.

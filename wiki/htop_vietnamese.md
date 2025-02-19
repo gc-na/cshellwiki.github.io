@@ -1,45 +1,42 @@
-# [Linux] Bash htop Cách sử dụng: Quản lý tiến trình hệ thống
+# [Hệ điều hành] C Shell (csh) htop: [quản lý tiến trình tương tác]
 
 ## Tổng quan
-Lệnh `htop` là một công cụ tương tác để theo dõi và quản lý các tiến trình đang chạy trên hệ thống. Nó cung cấp một giao diện người dùng trực quan hơn so với lệnh `top`, cho phép người dùng dễ dàng xem thông tin về CPU, bộ nhớ, và các tiến trình khác.
+Lệnh `htop` là một công cụ quản lý tiến trình tương tác trong môi trường dòng lệnh. Nó cho phép người dùng theo dõi và quản lý các tiến trình đang chạy trên hệ thống một cách trực quan và dễ dàng hơn so với các công cụ khác như `top`.
 
-## Cách sử dụng
+## Cú pháp
 Cú pháp cơ bản của lệnh `htop` như sau:
-
-```bash
-htop [tùy chọn] [đối số]
+```
+htop [tùy chọn] [tham số]
 ```
 
 ## Các tùy chọn phổ biến
-- `-h`, `--help`: Hiển thị thông tin trợ giúp về lệnh htop.
-- `-s`, `--sort`: Sắp xếp các tiến trình theo một tiêu chí nhất định (ví dụ: CPU, bộ nhớ).
-- `-p`, `--pid`: Chỉ hiển thị thông tin cho một hoặc nhiều PID cụ thể.
-- `-C`, `--no-color`: Chạy htop mà không có màu sắc.
+- `-h`, `--help`: Hiển thị hướng dẫn sử dụng.
+- `-u`, `--user`: Chỉ hiển thị các tiến trình của người dùng cụ thể.
+- `-p`, `--pid`: Chỉ hiển thị các tiến trình với ID tiến trình cụ thể.
+- `-s`, `--sort-key`: Sắp xếp các tiến trình theo khóa cụ thể.
 
-## Ví dụ phổ biến
-Dưới đây là một số ví dụ thực tế khi sử dụng lệnh `htop`:
+## Các ví dụ phổ biến
+- Chạy `htop` để mở giao diện quản lý tiến trình:
+  ```bash
+  htop
+  ```
 
-1. Mở htop để xem các tiến trình đang chạy:
-   ```bash
-   htop
-   ```
+- Chỉ hiển thị các tiến trình của người dùng `username`:
+  ```bash
+  htop -u username
+  ```
 
-2. Mở htop và sắp xếp theo mức sử dụng CPU:
-   ```bash
-   htop -s PERCENT_CPU
-   ```
+- Chỉ hiển thị tiến trình với ID tiến trình là 1234:
+  ```bash
+  htop -p 1234
+  ```
 
-3. Chỉ hiển thị thông tin cho một PID cụ thể (ví dụ PID 1234):
-   ```bash
-   htop -p 1234
-   ```
-
-4. Mở htop mà không có màu sắc:
-   ```bash
-   htop -C
-   ```
+- Sắp xếp các tiến trình theo mức sử dụng CPU:
+  ```bash
+  htop -s PERCENT_CPU
+  ```
 
 ## Mẹo
-- Sử dụng phím mũi tên để điều hướng giữa các tiến trình và phím F9 để gửi tín hiệu đến tiến trình (ví dụ: dừng hoặc kết thúc).
-- Bạn có thể tìm kiếm tiến trình bằng cách nhấn `F3` và nhập tên tiến trình.
-- Để tùy chỉnh cách hiển thị, nhấn `F2` để truy cập vào menu cấu hình.
+- Sử dụng phím `F3` để tìm kiếm tiến trình cụ thể trong danh sách.
+- Nhấn `F9` để gửi tín hiệu đến một tiến trình, cho phép bạn dừng hoặc kết thúc tiến trình đó.
+- Bạn có thể sử dụng phím `F2` để truy cập vào menu cấu hình và tùy chỉnh giao diện của `htop` theo ý muốn.

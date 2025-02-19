@@ -1,35 +1,38 @@
-# [Linux] Bash mountpoint Kullanımı: Montaj noktalarını kontrol etme
+# [Linux] C Shell (csh) mountpoint Kullanımı: Bir dosya sisteminin bağlanma noktasını kontrol etme
 
 ## Overview
-`mountpoint` komutu, belirli bir dizinin bir montaj noktası olup olmadığını kontrol etmek için kullanılır. Bu, dosya sistemlerinin doğru bir şekilde bağlanıp bağlanmadığını doğrulamak için faydalıdır.
+`mountpoint` komutu, bir dizinin bir dosya sistemi bağlanma noktası olup olmadığını kontrol etmek için kullanılır. Bu komut, belirli bir dizinin bağlı olup olmadığını hızlı bir şekilde belirlemenizi sağlar.
 
 ## Usage
-Temel sözdizimi şu şekildedir:
-```bash
+Temel sözdizimi aşağıdaki gibidir:
+
+```csh
 mountpoint [options] [arguments]
 ```
 
 ## Common Options
-- `-q`: Sessiz modda çalışır, yani herhangi bir çıktı vermez.
-- `-d`: Montaj noktasının detaylı bilgilerini gösterir.
+- `-q`: Sessiz modda çalışır, herhangi bir çıktı vermez.
+- `-d`: Eğer belirtilen dizin bir bağlanma noktasıysa, dizinin içeriğini gösterir.
 
 ## Common Examples
-1. Belirli bir dizinin montaj noktası olup olmadığını kontrol etme:
-   ```bash
+Aşağıda `mountpoint` komutunun bazı pratik örnekleri bulunmaktadır:
+
+1. Bir dizinin bağlanma noktası olup olmadığını kontrol etme:
+   ```csh
    mountpoint /mnt/mydrive
    ```
 
 2. Sessiz modda kontrol etme (çıktı yok):
-   ```bash
+   ```csh
    mountpoint -q /mnt/mydrive
    ```
 
-3. Montaj noktasının detaylı bilgilerini gösterme:
-   ```bash
+3. Bir dizinin içeriğini gösterme (bağlıysa):
+   ```csh
    mountpoint -d /mnt/mydrive
    ```
 
 ## Tips
-- Montaj noktalarını kontrol etmeden önce, dizinin gerçekten var olduğundan emin olun.
-- Script yazarken `-q` seçeneğini kullanarak gereksiz çıktıdan kaçınabilirsiniz.
-- Montaj noktalarının doğru çalıştığını doğrulamak, sistemin stabilitesi için önemlidir.
+- `mountpoint` komutunu, bir dosya sisteminin bağlı olup olmadığını kontrol etmek için sıkça kullanabilirsiniz; bu, sistem yönetimi sırasında faydalıdır.
+- Eğer bir dizinin bağlı olup olmadığını kontrol etmek istiyorsanız, `-q` seçeneğini kullanarak gereksiz çıktılardan kaçınabilirsiniz.
+- Bağlanma noktası olan dizinleri düzenli olarak kontrol etmek, sisteminizin sağlığını korumaya yardımcı olabilir.

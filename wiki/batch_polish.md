@@ -1,44 +1,39 @@
-# [Linux] Bash batch użycie: Wykonywanie zadań w tle
+# [Linux] C Shell (csh) batch użycie: Uruchamianie zadań w tle
 
 ## Overview
-Polecenie `batch` w systemie Linux służy do planowania zadań, które mają być wykonane w tle, gdy system jest mniej obciążony. Umożliwia użytkownikom przesyłanie poleceń do wykonania w późniejszym czasie, co jest szczególnie przydatne w przypadku długotrwałych procesów.
+Polecenie `batch` w C Shell (csh) służy do planowania zadań, które mają być wykonane w tle, gdy system jest mniej obciążony. Umożliwia to użytkownikom uruchamianie długotrwałych procesów bez konieczności czekania na ich zakończenie.
 
 ## Usage
 Podstawowa składnia polecenia `batch` jest następująca:
 
-```bash
+```
 batch [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-f`, `--file`: Wczytuje polecenia z pliku.
-- `-h`, `--help`: Wyświetla pomoc dotycząca użycia polecenia.
-- `-V`, `--version`: Wyświetla wersję programu.
+- `-l` : Użyj tego przełącznika, aby uruchomić polecenie w trybie interaktywnym.
+- `-q` : Umożliwia dodanie zadania do kolejki bez oczekiwania na zakończenie bieżących zadań.
+- `-n` : Umożliwia określenie liczby jednoczesnych zadań, które mogą być uruchomione.
 
 ## Common Examples
+Oto kilka praktycznych przykładów użycia polecenia `batch`:
 
-### Przykład 1: Wykonanie prostego polecenia
-Aby zaplanować proste polecenie, takie jak `echo`, można użyć:
+1. Aby uruchomić skrypt `myscript.sh` w tle, użyj:
+   ```csh
+   batch < myscript.sh
+   ```
 
-```bash
-echo "echo 'Hello, World!'" | batch
-```
+2. Aby dodać polecenie do wykonania w tle, możesz wpisać:
+   ```csh
+   echo "python myscript.py" | batch
+   ```
 
-### Przykład 2: Wykonanie skryptu
-Możesz również zaplanować wykonanie skryptu:
-
-```bash
-batch < /path/to/your/script.sh
-```
-
-### Przykład 3: Wczytanie poleceń z pliku
-Jeśli masz wiele poleceń zapisanych w pliku, możesz je wczytać w ten sposób:
-
-```bash
-batch -f /path/to/your/commands.txt
-```
+3. Aby uruchomić polecenie `tar` do archiwizacji katalogu `myfolder`, użyj:
+   ```csh
+   echo "tar -czf myfolder.tar.gz myfolder" | batch
+   ```
 
 ## Tips
-- Upewnij się, że Twoje polecenia są poprawne, ponieważ błędy w skryptach mogą prowadzić do nieoczekiwanych rezultatów.
-- Sprawdzaj kolejkę zadań za pomocą polecenia `atq`, aby zobaczyć, jakie zadania są zaplanowane do wykonania.
-- Rozważ użycie `at` zamiast `batch`, jeśli chcesz zaplanować zadania na konkretną godzinę.
+- Upewnij się, że skrypty lub polecenia, które chcesz uruchomić, są poprawne i działają w trybie interaktywnym przed dodaniem ich do `batch`.
+- Sprawdzaj regularnie kolejkę zadań, aby monitorować postęp i upewnić się, że wszystko działa zgodnie z planem.
+- Rozważ użycie plików logów, aby śledzić wyniki zadań uruchamianych w tle.

@@ -1,54 +1,56 @@
-# [Linux] Bash test lệnh: Kiểm tra điều kiện
+# [Hệ điều hành] C Shell (csh) test: Kiểm tra điều kiện
 
 ## Overview
-Lệnh `test` trong Bash được sử dụng để kiểm tra điều kiện và trả về mã trạng thái. Nó thường được sử dụng trong các câu lệnh điều kiện để xác định xem một điều kiện có đúng hay không.
+Lệnh `test` trong C Shell (csh) được sử dụng để kiểm tra các điều kiện khác nhau, chẳng hạn như sự tồn tại của tệp, giá trị của biến, hoặc các điều kiện số học. Kết quả của lệnh này có thể được sử dụng trong các câu lệnh điều kiện để điều khiển luồng thực thi của chương trình.
 
 ## Usage
 Cú pháp cơ bản của lệnh `test` như sau:
-```bash
+
+```csh
 test [options] [arguments]
 ```
 
 ## Common Options
-- `-e FILE`: Kiểm tra xem tệp có tồn tại hay không.
-- `-d FILE`: Kiểm tra xem tệp có phải là thư mục hay không.
-- `-f FILE`: Kiểm tra xem tệp có phải là tệp thường hay không.
-- `-z STRING`: Kiểm tra xem chuỗi có rỗng hay không.
-- `-n STRING`: Kiểm tra xem chuỗi có không rỗng hay không.
-- `STRING1 = STRING2`: Kiểm tra xem hai chuỗi có bằng nhau hay không.
+- `-e file`: Kiểm tra xem tệp có tồn tại hay không.
+- `-d file`: Kiểm tra xem tệp có phải là thư mục hay không.
+- `-f file`: Kiểm tra xem tệp có phải là tệp thường hay không.
+- `-z string`: Kiểm tra xem chuỗi có rỗng hay không.
+- `-n string`: Kiểm tra xem chuỗi có không rỗng hay không.
+- `string1 = string2`: Kiểm tra xem hai chuỗi có bằng nhau hay không.
+- `num1 -eq num2`: Kiểm tra xem hai số có bằng nhau hay không.
 
 ## Common Examples
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `test`:
 
 1. Kiểm tra xem một tệp có tồn tại hay không:
-   ```bash
-   test -e /path/to/file && echo "Tệp tồn tại"
+   ```csh
+   test -e myfile.txt && echo "Tệp tồn tại."
    ```
 
 2. Kiểm tra xem một thư mục có tồn tại hay không:
-   ```bash
-   test -d /path/to/directory && echo "Thư mục tồn tại"
+   ```csh
+   test -d mydirectory && echo "Thư mục tồn tại."
    ```
 
 3. Kiểm tra xem một tệp có phải là tệp thường hay không:
-   ```bash
-   test -f /path/to/file && echo "Đây là tệp thường"
+   ```csh
+   test -f myfile.txt && echo "Đây là tệp thường."
    ```
 
 4. Kiểm tra xem một chuỗi có rỗng hay không:
-   ```bash
-   STRING=""
-   test -z "$STRING" && echo "Chuỗi rỗng"
+   ```csh
+   mystring=""
+   test -z "$mystring" && echo "Chuỗi rỗng."
    ```
 
-5. So sánh hai chuỗi:
-   ```bash
-   STRING1="Hello"
-   STRING2="World"
-   test "$STRING1" = "$STRING2" && echo "Hai chuỗi bằng nhau" || echo "Hai chuỗi khác nhau"
+5. So sánh hai số:
+   ```csh
+   num1=5
+   num2=10
+   test $num1 -lt $num2 && echo "$num1 nhỏ hơn $num2."
    ```
 
 ## Tips
-- Sử dụng `[[ ... ]]` thay vì `test` để có cú pháp dễ đọc hơn và hỗ trợ thêm các tính năng như so sánh chuỗi.
-- Kết hợp lệnh `test` với các câu lệnh điều kiện trong Bash như `if` để thực hiện các hành động dựa trên kết quả kiểm tra.
-- Luôn kiểm tra mã trạng thái của lệnh `test` để xử lý các tình huống khác nhau trong kịch bản của bạn.
+- Sử dụng `&&` để kết hợp lệnh `test` với các lệnh khác, giúp dễ dàng kiểm tra điều kiện và thực hiện hành động tương ứng.
+- Để tăng tính rõ ràng, bạn có thể sử dụng dấu ngoặc đơn để nhóm các điều kiện phức tạp.
+- Hãy nhớ rằng lệnh `test` trả về mã thoát 0 (thành công) nếu điều kiện đúng và 1 (thất bại) nếu điều kiện sai.

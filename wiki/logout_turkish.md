@@ -1,44 +1,37 @@
-# [Linux] Bash çıkış komutu: Oturumu kapatma
+# [Linux] C Shell (csh) logout Kullanımı: Oturumu kapatma komutu
 
-## Genel Bakış
-`logout` komutu, bir kullanıcı oturumunu kapatmak için kullanılır. Bu komut, genellikle bir terminal oturumunu sonlandırmak amacıyla kullanılır ve kullanıcıyı sistemden çıkış yapar.
+## Overview
+`logout` komutu, C Shell (csh) ortamında kullanıcı oturumunu kapatmak için kullanılır. Bu komut, kullanıcıyı shell'den çıkartarak oturumunu sonlandırır.
 
-## Kullanım
+## Usage
 Temel sözdizimi aşağıdaki gibidir:
-
-```bash
-logout [seçenekler] [argümanlar]
+```
+logout [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-f`: Zorla çıkış yapar, oturumun kapatılmasını sağlar.
-- `-n`: Çıkış yapmadan önce kullanıcıdan onay ister.
+## Common Options
+- `-f`: Zorla çıkış yapar. Kullanıcıdan onay almadan oturumu kapatır.
+- `-n`: Oturum kapatmadan önce herhangi bir komut çalıştırılmasını engeller.
 
-## Yaygın Örnekler
-Aşağıda `logout` komutunun bazı pratik kullanımları bulunmaktadır:
+## Common Examples
+Aşağıda `logout` komutunun bazı pratik örnekleri verilmiştir:
 
-### Örnek 1: Basit Çıkış
-Bir terminal oturumunu kapatmak için sadece `logout` komutunu yazabilirsiniz:
+1. Basit oturum kapatma:
+   ```csh
+   logout
+   ```
 
-```bash
-logout
-```
+2. Zorla oturum kapatma:
+   ```csh
+   logout -f
+   ```
 
-### Örnek 2: Zorla Çıkış
-Eğer oturumunuzu zorla kapatmak istiyorsanız, `-f` seçeneğini kullanabilirsiniz:
+3. Oturum kapatmadan önce komut çalıştırmama:
+   ```csh
+   logout -n
+   ```
 
-```bash
-logout -f
-```
-
-### Örnek 3: Onay ile Çıkış
-Kullanıcıdan onay almak için `-n` seçeneğini kullanarak çıkış yapabilirsiniz:
-
-```bash
-logout -n
-```
-
-## İpuçları
-- `logout` komutunu kullanmadan önce, açık olan işlemlerinizi kaydettiğinizden emin olun.
-- Eğer birden fazla terminal oturumu açıksa, sadece çalıştığınız oturumu kapatmak için `logout` komutunu kullanın.
-- `logout` komutunu, yalnızca interaktif oturumlarda kullanabilirsiniz; betiklerde çalışmaz.
+## Tips
+- `logout` komutunu kullanmadan önce, kaydedilmemiş işlerinizin olup olmadığını kontrol edin.
+- Eğer birden fazla shell oturumu açtıysanız, sadece aktif olan oturumu kapatmak için `logout` komutunu kullanın.
+- `logout` komutunu kullanmadan önce, önemli dosyalarınızı kaydetmeyi unutmayın.

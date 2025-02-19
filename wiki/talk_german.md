@@ -1,43 +1,40 @@
-# [Linux] Bash talk Verwendung: Mit anderen Benutzern kommunizieren
+# [Unix] C Shell (csh) talk Verwendung: Mit anderen Benutzern kommunizieren
 
 ## Übersicht
-Der Befehl `talk` ermöglicht es Benutzern, in Echtzeit miteinander zu kommunizieren, indem sie eine interaktive Sitzung auf dem Terminal öffnen. Dies ist besonders nützlich für die Zusammenarbeit oder das schnelle Klären von Fragen.
+Der Befehl `talk` ermöglicht es Benutzern, in Echtzeit miteinander zu kommunizieren, indem sie eine geteilte Bildschirmansicht nutzen. Dieser Befehl öffnet ein separates Fenster, in dem beide Benutzer Nachrichten austauschen können.
 
 ## Verwendung
-Die grundlegende Syntax des `talk`-Befehls lautet:
+Die grundlegende Syntax des Befehls lautet:
 
-```bash
-talk [Optionen] [Benutzer]@[Host]
+```csh
+talk [optionen] [benutzer@host]
 ```
 
 ## Häufige Optionen
-- `-a`: Erlaubt es, eine Verbindung zu einem Benutzer herzustellen, auch wenn dieser nicht eingeloggt ist.
-- `-m`: Aktiviert den Modus, in dem das Terminal nicht gesperrt wird.
-- `-s`: Sendet eine Nachricht an den Benutzer, bevor die Sitzung gestartet wird.
+- `-a`: Erlaubt es dem Benutzer, die Verbindung zu einem anderen Benutzer herzustellen, auch wenn dieser nicht in der gleichen Sitzung ist.
+- `-s`: Stellt eine Verbindung zu einem anderen Benutzer her, ohne eine Benachrichtigung zu senden.
+- `-n`: Verwendet eine andere Terminalnummer für die Verbindung.
 
 ## Häufige Beispiele
+1. Um mit einem Benutzer namens `max` auf demselben Computer zu sprechen:
 
-1. **Eine Sitzung mit einem anderen Benutzer starten:**
-   ```bash
-   talk max@hostname
+   ```csh
+   talk max
    ```
 
-2. **Eine Sitzung mit einem anderen Benutzer auf einem anderen Host:**
-   ```bash
-   talk max@192.168.1.10
+2. Um mit einem Benutzer namens `anna` auf einem anderen Computer mit der Adresse `example.com` zu sprechen:
+
+   ```csh
+   talk anna@example.com
    ```
 
-3. **Eine Sitzung im anonymen Modus starten:**
-   ```bash
-   talk -a max
-   ```
+3. Um eine Verbindung zu einem Benutzer herzustellen, ohne eine Benachrichtigung zu senden:
 
-4. **Mit einem Benutzer im Modus ohne Terminal-Sperre kommunizieren:**
-   ```bash
-   talk -m max
+   ```csh
+   talk -s max
    ```
 
 ## Tipps
 - Stellen Sie sicher, dass der Benutzer, mit dem Sie kommunizieren möchten, ebenfalls `talk` aktiviert hat.
-- Verwenden Sie `who`, um herauszufinden, wer derzeit angemeldet ist und ob sie für eine `talk`-Sitzung verfügbar sind.
-- Achten Sie darauf, dass Ihr Terminal nicht durch andere Anwendungen blockiert wird, um eine reibungslose Kommunikation zu gewährleisten.
+- Überprüfen Sie Ihre Netzwerkeinstellungen, um sicherzustellen, dass keine Firewall die Verbindung blockiert.
+- Verwenden Sie `Ctrl+C`, um die `talk`-Sitzung zu beenden, wenn Sie fertig sind.

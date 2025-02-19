@@ -1,7 +1,7 @@
-# [Linux] Bash unexpand Kullanımı: Boşlukları sekme karakterlerine dönüştürme
+# [Linux] C Shell (csh) unexpand Kullanımı: Boşlukları genişletme
 
 ## Genel Bakış
-`unexpand` komutu, metin dosyalarındaki boşluk karakterlerini sekme karakterlerine dönüştürmek için kullanılır. Bu, metin dosyalarının daha düzenli görünmesini sağlamak ve bazı programlarla uyumluluğu artırmak için faydalıdır.
+`unexpand` komutu, bir dosyadaki sekme karakterlerini boşluk karakterleriyle değiştirmek için kullanılır. Bu, özellikle metin dosyalarını daha okunabilir hale getirmek için faydalıdır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
@@ -11,36 +11,37 @@ unexpand [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-t, --tabs=N`: Sekme genişliğini N karakter olarak ayarlar.
-- `-a, --all`: Tüm boşlukları sekmelere dönüştürür, yalnızca baştaki boşlukları değil.
-- `-h, --help`: Kullanım hakkında yardım bilgisi gösterir.
-- `-V, --version`: Versiyon bilgisi gösterir.
+- `-a`: Tüm sekme karakterlerini boşluklarla değiştirir.
+- `-t N`: Sekme genişliğini N boşluk olarak ayarlar. Varsayılan değer 8'dir.
+- `-n`: Çıktıda değişiklik yapılmadan, yalnızca hangi satırların değiştiğini gösterir.
 
 ## Yaygın Örnekler
-1. **Temel Kullanım**: Bir dosyadaki boşlukları sekmelere dönüştürmek için:
+Aşağıda `unexpand` komutunun bazı pratik örnekleri verilmiştir:
+
+1. **Temel Kullanım**: Bir dosyadaki sekmeleri boşluklarla değiştirmek.
    ```bash
    unexpand dosya.txt
    ```
 
-2. **Belirli Bir Sekme Genişliği Belirlemek**: Sekme genişliğini 4 karakter olarak ayarlamak için:
+2. **Belirli Bir Genişlikte Boşluk Kullanma**: Sekmeleri 4 boşlukla değiştirmek.
    ```bash
    unexpand -t 4 dosya.txt
    ```
 
-3. **Tüm Boşlukları Dönüştürmek**: Dosyadaki tüm boşlukları sekmelere dönüştürmek için:
+3. **Tüm Sekmeleri Değiştirme**: Tüm sekmeleri boşluklarla değiştirmek.
    ```bash
    unexpand -a dosya.txt
    ```
 
-4. **Sonuçları Yeni Bir Dosyaya Yönlendirmek**: Dönüştürülmüş çıktıyı yeni bir dosyaya kaydetmek için:
+4. **Değişiklikleri Gösterme**: Değişiklik yapılmadan hangi satırların değiştiğini görmek.
    ```bash
-   unexpand dosya.txt > yeni_dosya.txt
+   unexpand -n dosya.txt
    ```
 
 ## İpuçları
-- `unexpand` komutunu kullanmadan önce dosyanızın bir yedeğini almak iyi bir uygulamadır.
-- Farklı sekme genişlikleri deneyerek dosyanızın görünümünü optimize edebilirsiniz.
-- `unexpand` komutunu bir boru (pipe) ile diğer komutlarla birleştirerek daha karmaşık işlemler gerçekleştirebilirsiniz. Örneğin, `cat` komutuyla birlikte kullanabilirsiniz:
+- `unexpand` komutunu, metin dosyalarını düzenlemeden önce yedeklemek için kullanabilirsiniz.
+- Farklı genişlik seçeneklerini deneyerek, dosyalarınızı en okunabilir hale getirebilirsiniz.
+- `unexpand` ile birlikte `cat` komutunu kullanarak, çıktıyı anında görüntüleyebilirsiniz:
   ```bash
   cat dosya.txt | unexpand -t 4
   ```

@@ -1,68 +1,81 @@
-# [Linux] Bash endsw usage: End a script or command execution
+# [Unix] C Shell (csh) endsw <Usage equivalent in English>: Control flow for conditional execution
 
 ## Overview
-The `endsw` command in Bash is used to terminate the execution of a script or command based on specific conditions. It allows users to control the flow of their scripts by providing a way to exit from loops or functions when certain criteria are met.
+The `endsw` command in C Shell (csh) is used to mark the end of a switch statement. It is part of the control flow structure that allows users to execute different blocks of code based on the value of a variable or expression. The `endsw` command is essential for properly closing a switch statement, ensuring that the shell understands where the conditional logic concludes.
 
 ## Usage
 The basic syntax of the `endsw` command is as follows:
 
-```bash
-endsw [options] [arguments]
+```csh
+endsw
 ```
+
+It does not take any options or arguments directly; it simply serves as a terminator for the switch statement.
 
 ## Common Options
-- `-h`, `--help`: Displays help information about the command.
-- `-v`, `--version`: Shows the version of the command being used.
-
-(Note: The `endsw` command is not a standard command in Bash; it is often used in conjunction with specific scripting contexts or frameworks.)
+The `endsw` command does not have any options. It is solely used to indicate the end of a switch block.
 
 ## Common Examples
-Here are some practical examples of how to use the `endsw` command:
 
-### Example 1: Exiting a loop
-```bash
-for i in {1..10}; do
-    if [ $i -eq 5 ]; then
-        endsw
-    fi
-    echo $i
-done
+### Example 1: Basic Switch Statement
+Here is a simple example of using `endsw` in a switch statement:
+
+```csh
+set var = "apple"
+switch ($var)
+    case "apple":
+        echo "This is an apple."
+        breaksw
+    case "banana":
+        echo "This is a banana."
+        breaksw
+    default:
+        echo "Unknown fruit."
+endsw
 ```
-In this example, the loop will terminate when the variable `i` equals 5.
 
-### Example 2: Conditional exit in a function
-```bash
-my_function() {
-    if [ "$1" -lt 0 ]; then
-        endsw
-    fi
-    echo "Positive number: $1"
-}
+### Example 2: Using Multiple Cases
+In this example, multiple cases are handled within the switch statement:
 
-my_function 10
-my_function -5
+```csh
+set day = "Monday"
+switch ($day)
+    case "Monday":
+        echo "Start of the week."
+        breaksw
+    case "Friday":
+        echo "End of the work week."
+        breaksw
+    case "Saturday":
+    case "Sunday":
+        echo "It's the weekend!"
+        breaksw
+    default:
+        echo "Just another day."
+endsw
 ```
-Here, the function will exit if a negative number is passed as an argument.
 
-### Example 3: Using with a case statement
-```bash
-case $1 in
-    start)
-        echo "Starting..."
-        ;;
-    stop)
-        echo "Stopping..."
-        endsw
-        ;;
-    *)
-        echo "Invalid option"
-        endsw
-        ;;
-esac
+### Example 3: Nested Switch Statements
+You can also nest switch statements, with `endsw` marking the end of each:
+
+```csh
+set color = "red"
+switch ($color)
+    case "red":
+        echo "Color is red."
+        switch ($color)
+            case "red":
+                echo "It's a bright color."
+            endsw
+        breaksw
+    case "blue":
+        echo "Color is blue."
+        breaksw
+endsw
 ```
-In this case statement, the script will exit if an invalid option is provided or if the `stop` option is selected.
 
 ## Tips
-- Always ensure that the conditions for using `endsw` are clearly defined to avoid unexpected exits.
-- Use comments in your scripts to explain why and when you are using `endsw` for better readability.
-- Test your scripts thoroughly to ensure that the `endsw` command is being triggered as expected in different scenarios.
+- Always remember to use `endsw` to close your switch statements; failing to do so will result in syntax errors.
+- Use `breaksw` to exit a case block after executing the desired commands.
+- Keep your case labels clear and distinct to avoid confusion when reading your code.
+- Consider using default cases to handle unexpected values gracefully.

@@ -1,43 +1,45 @@
-# [Linux] Bash comm Kullanımı: İki dosya arasındaki farklılıkları karşılaştırma
+# [Linux] C Shell (csh) comm kullanımı: İki dosya arasındaki farklılıkları karşılaştırma
 
 ## Genel Bakış
-`comm` komutu, iki sıralı dosya arasındaki satırları karşılaştırmak için kullanılır. Bu komut, her iki dosyada bulunan, yalnızca birinde bulunan ve her iki dosyada da bulunan satırları ayırarak çıktıyı düzenler.
+`comm` komutu, iki sıralı dosya arasındaki satırları karşılaştırarak ortak ve farklı satırları gösterir. Bu komut, özellikle metin dosyaları arasındaki farkları analiz etmek için kullanışlıdır.
 
 ## Kullanım
-Temel sözdizimi şu şekildedir:
-```bash
+Temel sözdizimi aşağıdaki gibidir:
+```csh
 comm [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-1`: İlk dosyada bulunan satırları gizler.
-- `-2`: İkinci dosyada bulunan satırları gizler.
-- `-3`: Her iki dosyada da bulunan satırları gizler.
+- `-1`: İlk dosyada bulunan ancak ikinci dosyada bulunmayan satırları göstermez.
+- `-2`: İkinci dosyada bulunan ancak ilk dosyada bulunmayan satırları göstermez.
+- `-3`: Her iki dosyada da bulunan satırları göstermez.
 - `-i`: Büyük/küçük harf duyarsız karşılaştırma yapar.
-- `-u`: Sadece benzersiz satırları gösterir.
 
 ## Yaygın Örnekler
-1. **İki dosya arasındaki tüm farklılıkları gösterme:**
-   ```bash
+1. İki dosya arasındaki tüm farklılıkları görmek için:
+   ```csh
    comm dosya1.txt dosya2.txt
    ```
 
-2. **Sadece birinci dosyada bulunan satırları gösterme:**
-   ```bash
+2. Sadece `dosya1.txt`'te bulunan satırları listelemek için:
+   ```csh
    comm -13 dosya1.txt dosya2.txt
    ```
 
-3. **Sadece ikinci dosyada bulunan satırları gösterme:**
-   ```bash
+3. Sadece `dosya2.txt`'te bulunan satırları listelemek için:
+   ```csh
+   comm -23 dosya1.txt dosya2.txt
+   ```
+
+4. Her iki dosyada da bulunan satırları hariç tutarak karşılaştırmak için:
+   ```csh
    comm -12 dosya1.txt dosya2.txt
    ```
 
-4. **Büyük/küçük harf duyarsız karşılaştırma yapma:**
-   ```bash
-   comm -i dosya1.txt dosya2.txt
-   ```
-
 ## İpuçları
-- `comm` komutunu kullanmadan önce dosyaların sıralı olduğundan emin olun. Sıralı değillerse, `sort` komutunu kullanarak dosyaları sıralayabilirsiniz.
-- Çıktıyı daha okunabilir hale getirmek için `-1`, `-2` veya `-3` seçeneklerini kullanarak gereksiz bilgileri gizleyebilirsiniz.
-- `comm` komutunu, dosya karşılaştırmaları için bir betik içinde otomatikleştirmek, düzenli dosya kontrolü yaparken faydalı olabilir.
+- Dosyaların sıralı olduğundan emin olun; `comm` komutu, sıralı dosyalarla en iyi şekilde çalışır. Gerekirse `sort` komutunu kullanarak dosyaları sıralayın.
+- Büyük/küçük harf duyarsız karşılaştırma yapmak istiyorsanız `-i` seçeneğini kullanmayı unutmayın.
+- Sonuçları bir dosyaya kaydetmek için çıktı yönlendirmesini kullanabilirsiniz:
+  ```csh
+  comm dosya1.txt dosya2.txt > farklar.txt
+  ```

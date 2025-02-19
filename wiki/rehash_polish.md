@@ -1,38 +1,43 @@
-# [Linux] Bash rehash użycie: Odświeżanie ścieżek do poleceń
+# [Linux] C Shell (csh) rehash użycie: Odświeżanie ścieżek do poleceń
 
 ## Overview
-Polecenie `rehash` w Bash jest używane do odświeżania pamięci podręcznej poleceń. Kiedy dodajesz nowe polecenia lub zmieniasz istniejące w katalogach, `rehash` pozwala na aktualizację listy dostępnych poleceń, co umożliwia ich natychmiastowe użycie bez konieczności ponownego uruchamiania powłoki.
+Polecenie `rehash` w C Shell (csh) służy do odświeżania pamięci podręcznej ścieżek do poleceń. Kiedy dodajesz nowe programy do katalogów, które są już w twojej zmiennej środowiskowej `PATH`, `rehash` pozwala na ich natychmiastowe użycie bez potrzeby ponownego uruchamiania powłoki.
 
 ## Usage
 Podstawowa składnia polecenia `rehash` jest następująca:
 
-```bash
+```csh
 rehash [options] [arguments]
 ```
 
 ## Common Options
-- `-p`: Użyj tej opcji, aby zaktualizować tylko pamięć podręczną dla poleceń w katalogach znajdujących się w zmiennej środowiskowej `PATH`.
+Polecenie `rehash` nie ma wielu opcji, ale oto kilka, które mogą być przydatne:
+
+- `-h` : Wyświetla pomoc dotycząca użycia polecenia.
 
 ## Common Examples
 Oto kilka praktycznych przykładów użycia polecenia `rehash`:
 
-1. **Podstawowe użycie rehash**:
-   ```bash
+1. **Podstawowe użycie**:
+   Odświeżenie pamięci podręcznej po dodaniu nowych programów do katalogu:
+   ```csh
    rehash
    ```
 
-2. **Odświeżenie pamięci podręcznej poleceń w katalogach PATH**:
-   ```bash
-   rehash -p
+2. **Sprawdzenie dostępnych poleceń**:
+   Po dodaniu nowego programu do katalogu, użyj `rehash`, aby upewnić się, że jest on dostępny:
+   ```csh
+   rehash
+   my_new_command
    ```
 
-3. **Dodanie nowego polecenia i odświeżenie pamięci podręcznej**:
-   Załóżmy, że dodałeś nowy skrypt do katalogu `/usr/local/bin`, aby go użyć, wystarczy wywołać:
-   ```bash
-   rehash
+3. **Wyświetlenie pomocy**:
+   Aby uzyskać więcej informacji na temat użycia polecenia:
+   ```csh
+   rehash -h
    ```
 
 ## Tips
-- Używaj `rehash` po dodaniu nowych skryptów do katalogów, aby upewnić się, że są one dostępne w bieżącej sesji powłoki.
-- Jeśli często zmieniasz polecenia, rozważ dodanie `rehash` do swojego skryptu startowego, aby automatycznie aktualizować pamięć podręczną przy każdym uruchomieniu powłoki.
-- Pamiętaj, że `rehash` działa tylko w powłoce, która obsługuje to polecenie, jak `csh` lub `tcsh`. W Bash nie jest to konieczne, ponieważ Bash automatycznie aktualizuje pamięć podręczną poleceń.
+- Używaj `rehash` po instalacji nowych programów, aby uniknąć błędów związanych z brakiem dostępu do poleceń.
+- Regularnie odświeżaj pamięć podręczną, zwłaszcza w środowiskach, gdzie często dodawane są nowe skrypty lub aplikacje.
+- Pamiętaj, że `rehash` działa tylko w C Shell (csh) i nie jest dostępne w innych powłokach, takich jak Bash.

@@ -1,7 +1,7 @@
-# [Linux] Bash screen utilisation : Gestion des sessions terminal
+# [Linux] C Shell (csh) screen : Gérer des sessions de terminal
 
 ## Overview
-La commande `screen` permet de créer des sessions terminal virtuelles qui peuvent être détachées et réattachées. Cela est particulièrement utile pour exécuter des programmes à long terme ou pour gérer plusieurs sessions dans un seul terminal.
+La commande `screen` permet de créer des sessions de terminal détachées, ce qui signifie que vous pouvez exécuter des programmes dans un terminal et les laisser fonctionner même si vous vous déconnectez. Cela est particulièrement utile pour les tâches de longue durée ou pour travailler sur des serveurs distants.
 
 ## Usage
 La syntaxe de base de la commande `screen` est la suivante :
@@ -11,40 +11,40 @@ screen [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes de la commande `screen` :
+Voici quelques options courantes pour la commande `screen` :
 
 - `-S <nom>` : Crée une nouvelle session avec le nom spécifié.
-- `-d -r <nom>` : Détache et réattache une session existante avec le nom spécifié.
-- `-list` : Affiche la liste des sessions `screen` en cours.
-- `-X <commande>` : Envoie une commande à une session `screen` existante.
+- `-d -r <nom>` : Détache une session et la rattache à votre terminal.
+- `-list` : Affiche la liste des sessions `screen` en cours d'exécution.
+- `-h <nombre>` : Définit le nombre de lignes d'historique à conserver.
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de `screen` :
+Voici quelques exemples pratiques de l'utilisation de la commande `screen` :
 
-1. **Créer une nouvelle session `screen` :**
+1. **Créer une nouvelle session :**
    ```bash
    screen -S ma_session
    ```
 
 2. **Détacher une session :**
-   Pour détacher la session en cours, appuyez sur `Ctrl + A`, puis `D`.
+   Pour détacher une session en cours, appuyez sur `Ctrl-a` puis `d`.
 
-3. **Lister les sessions `screen` en cours :**
+3. **Lister les sessions actives :**
    ```bash
    screen -list
    ```
 
-4. **Réattacher une session détachée :**
+4. **Rattacher une session détachée :**
    ```bash
    screen -r ma_session
    ```
 
-5. **Envoyer une commande à une session `screen` :**
+5. **Créer une session avec un historique de 1000 lignes :**
    ```bash
-   screen -S ma_session -X quit
+   screen -h 1000
    ```
 
 ## Tips
-- Utilisez des noms de session significatifs pour faciliter la gestion de plusieurs sessions.
-- N'oubliez pas que vous pouvez détacher une session à tout moment, ce qui vous permet de continuer à travailler sur d'autres tâches.
-- Pour quitter complètement une session `screen`, tapez `exit` dans la session ou utilisez `Ctrl + D`.
+- Utilisez des noms de session descriptifs pour faciliter la gestion de plusieurs sessions.
+- N'oubliez pas d'utiliser `Ctrl-a` suivi de `?` pour afficher l'aide des commandes de `screen`.
+- Pour quitter une session `screen`, tapez `exit` dans le terminal de la session ou détachez-la et fermez le terminal principal.

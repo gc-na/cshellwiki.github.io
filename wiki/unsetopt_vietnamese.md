@@ -1,47 +1,38 @@
-# [Linux] Bash unsetopt Cách sử dụng: Tắt các tùy chọn trong Bash
+# [Hệ điều hành Unix] C Shell (csh) unsetopt: [hủy bỏ tùy chọn]
 
-## Overview
-Lệnh `unsetopt` trong Bash được sử dụng để tắt các tùy chọn shell đã được thiết lập trước đó. Điều này cho phép người dùng điều chỉnh hành vi của shell theo nhu cầu của họ.
+## Tổng quan
+Lệnh `unsetopt` trong C Shell (csh) được sử dụng để hủy bỏ các tùy chọn đã được thiết lập trước đó. Điều này cho phép người dùng điều chỉnh hành vi của shell theo nhu cầu cụ thể của họ.
 
-## Usage
+## Cú pháp
 Cú pháp cơ bản của lệnh `unsetopt` như sau:
-
-```bash
-unsetopt [options]
+```
+unsetopt [tùy chọn] [tham số]
 ```
 
-## Common Options
-Dưới đây là một số tùy chọn phổ biến cho lệnh `unsetopt` cùng với giải thích ngắn gọn:
+## Các tùy chọn phổ biến
+- `all`: Hủy bỏ tất cả các tùy chọn đã được thiết lập.
+- `noclobber`: Cho phép ghi đè lên các tệp đã tồn tại.
+- `noglob`: Hủy bỏ tính năng mở rộng ký tự đại diện.
 
-- `allexport`: Tắt chế độ tự động xuất biến.
-- `braceexpand`: Tắt mở rộng dấu ngoặc nhọn.
-- `emacs`: Tắt chế độ chỉnh sửa dòng lệnh theo kiểu Emacs.
-- `noglob`: Tắt chế độ không mở rộng ký tự đại diện.
-
-## Common Examples
+## Ví dụ phổ biến
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `unsetopt`:
 
-1. Tắt chế độ tự động xuất biến:
-   ```bash
-   unsetopt allexport
+1. Hủy bỏ tùy chọn `noclobber`:
+   ```csh
+   unsetopt noclobber
    ```
 
-2. Tắt mở rộng dấu ngoặc nhọn:
-   ```bash
-   unsetopt braceexpand
-   ```
-
-3. Tắt chế độ chỉnh sửa dòng lệnh theo kiểu Emacs:
-   ```bash
-   unsetopt emacs
-   ```
-
-4. Tắt chế độ không mở rộng ký tự đại diện:
-   ```bash
+2. Hủy bỏ tùy chọn `noglob`:
+   ```csh
    unsetopt noglob
    ```
 
-## Tips
-- Hãy kiểm tra các tùy chọn hiện tại bằng lệnh `set -o` trước khi sử dụng `unsetopt` để biết những tùy chọn nào đang được kích hoạt.
-- Sử dụng `unsetopt` cẩn thận, vì việc tắt các tùy chọn có thể ảnh hưởng đến cách mà shell xử lý các lệnh và biến.
-- Nếu bạn muốn khôi phục lại các tùy chọn đã tắt, bạn có thể sử dụng lệnh `setopt` tương ứng.
+3. Hủy bỏ tất cả các tùy chọn:
+   ```csh
+   unsetopt all
+   ```
+
+## Mẹo
+- Hãy kiểm tra các tùy chọn hiện tại bằng lệnh `set` trước khi sử dụng `unsetopt` để biết rõ những gì bạn đang thay đổi.
+- Sử dụng `unsetopt` cẩn thận, vì việc hủy bỏ các tùy chọn có thể ảnh hưởng đến hành vi của shell và các lệnh bạn thực hiện.
+- Để biết thêm thông tin về các tùy chọn có thể sử dụng, hãy tham khảo tài liệu hướng dẫn của C Shell.

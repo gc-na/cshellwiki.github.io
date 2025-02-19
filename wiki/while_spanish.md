@@ -1,59 +1,61 @@
-# [Linux] Bash while uso: Ejecutar comandos repetidamente
+# [Unix] C Shell (csh) while: Ejecutar comandos repetidamente
 
 ## Overview
-El comando `while` en Bash se utiliza para ejecutar un bloque de comandos de manera repetitiva mientras una condición especificada sea verdadera. Es una herramienta poderosa para automatizar tareas que requieren repetición hasta que se cumpla una condición.
+El comando `while` en C Shell (csh) se utiliza para ejecutar un bloque de comandos de manera repetitiva mientras se cumpla una condición específica. Es útil para realizar tareas que requieren repetición hasta que se alcance un estado deseado.
 
 ## Usage
 La sintaxis básica del comando `while` es la siguiente:
 
-```bash
-while [ condición ]; do
-    # comandos a ejecutar
-done
+```
+while ( condición )
+    comando1
+    comando2
+    ...
+end
 ```
 
 ## Common Options
-El comando `while` no tiene opciones específicas, pero la condición puede incluir diversas expresiones y comandos que devuelvan un estado de éxito o fracaso. Algunas de las condiciones comunes son:
-
-- `true`: siempre devuelve verdadero, ejecutando el bucle indefinidamente.
-- `false`: siempre devuelve falso, evitando que se ejecute el bucle.
-- Comparaciones numéricas: como `-eq`, `-ne`, `-lt`, `-le`, `-gt`, `-ge`.
-- Comprobaciones de archivos: como `-e` (existe), `-d` (es un directorio), `-f` (es un archivo regular).
+El comando `while` no tiene opciones específicas, pero se puede utilizar con condiciones que evalúan expresiones o comandos. Las condiciones pueden incluir comparaciones numéricas, verificaciones de archivos, etc.
 
 ## Common Examples
 
 ### Ejemplo 1: Contador simple
-Este ejemplo muestra cómo contar del 1 al 5.
+Este ejemplo muestra cómo usar `while` para contar hasta 5.
 
-```bash
-contador=1
-while [ $contador -le 5 ]; do
-    echo "Contador: $contador"
-    contador=$((contador + 1))
-done
+```csh
+set i = 1
+while ( $i <= 5 )
+    echo "Contador: $i"
+    @ i++
+end
 ```
 
-### Ejemplo 2: Leer líneas de un archivo
-Este ejemplo lee un archivo línea por línea.
+### Ejemplo 2: Leer archivos hasta el final
+Este ejemplo ilustra cómo leer líneas de un archivo hasta que se alcance el final.
 
-```bash
-archivo="mi_archivo.txt"
-while IFS= read -r linea; do
-    echo "Línea: $linea"
-done < "$archivo"
+```csh
+set file = "mi_archivo.txt"
+set line = ""
+while ( "$line" != "" )
+    set line = `head -n 1 $file`
+    echo $line
+    set file = `tail -n +2 $file`
+end
 ```
 
-### Ejemplo 3: Bucle infinito
-Este ejemplo ejecuta un bucle infinito que se puede detener con `Ctrl+C`.
+### Ejemplo 3: Esperar hasta que un archivo exista
+Este ejemplo espera hasta que un archivo específico sea creado.
 
-```bash
-while true; do
-    echo "Este bucle se ejecuta indefinidamente."
-    sleep 1
-done
+```csh
+set archivo = "archivo.txt"
+while ( ! -e $archivo )
+    echo "Esperando a que el archivo $archivo exista..."
+    sleep 2
+end
+echo "El archivo $archivo ha sido creado."
 ```
 
 ## Tips
-- Asegúrate de que la condición del bucle eventualmente se vuelva falsa para evitar bucles infinitos no deseados.
-- Usa `sleep` dentro del bucle para evitar que consuma demasiados recursos del sistema en bucles que se ejecutan rápidamente.
-- Considera el uso de `break` para salir del bucle bajo ciertas condiciones y `continue` para saltar a la siguiente iteración.
+- Asegúrate de que la condición en el `while` se pueda evaluar correctamente para evitar bucles infinitos.
+- Utiliza `sleep` dentro del bucle si estás esperando un evento externo, para no sobrecargar la CPU.
+- Recuerda que el bloque de comandos debe estar correctamente indentado para mejorar la legibilidad.

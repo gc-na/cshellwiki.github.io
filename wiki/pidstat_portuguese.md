@@ -1,7 +1,7 @@
-# [Linux] Bash pidstat Uso: Monitora estatísticas de desempenho de processos
+# [Linux] C Shell (csh) pidstat: [monitorar estatísticas de processos]
 
 ## Overview
-O comando `pidstat` é uma ferramenta do pacote `sysstat` que permite monitorar o desempenho de processos em tempo real. Ele fornece informações detalhadas sobre o uso de CPU, memória e outras métricas de desempenho para processos específicos em execução no sistema.
+O comando `pidstat` é utilizado para monitorar as estatísticas de utilização de recursos de processos em execução no sistema. Ele fornece informações detalhadas sobre o uso de CPU, memória e outros recursos, permitindo que os usuários identifiquem processos que podem estar consumindo muitos recursos.
 
 ## Usage
 A sintaxe básica do comando `pidstat` é a seguinte:
@@ -13,40 +13,41 @@ pidstat [opções] [argumentos]
 ## Common Options
 Aqui estão algumas opções comuns do `pidstat`:
 
-- `-h`: Mostra a saída em formato legível, omitindo os cabeçalhos de coluna.
+- `-p <pid>`: Especifica o ID do processo a ser monitorado.
 - `-r`: Exibe informações sobre o uso de memória.
-- `-u`: Mostra estatísticas de uso da CPU.
-- `-p <PID>`: Especifica o ID do processo a ser monitorado.
-- `-t`: Exibe informações sobre threads individuais de um processo.
+- `-u`: Mostra informações sobre o uso de CPU.
+- `-h`: Exibe a ajuda com informações sobre as opções disponíveis.
+- `-t`: Mostra informações sobre threads.
 
 ## Common Examples
-Aqui estão alguns exemplos práticos de uso do `pidstat`:
+Aqui estão alguns exemplos práticos do uso do `pidstat`:
 
-1. **Monitorar o uso da CPU de todos os processos:**
+1. Monitorar todos os processos e suas estatísticas de CPU:
    ```bash
-   pidstat -u 1
+   pidstat
    ```
-   Este comando exibe o uso da CPU de todos os processos a cada segundo.
 
-2. **Monitorar um processo específico pelo PID:**
+2. Monitorar um processo específico com ID 1234:
    ```bash
-   pidstat -p 1234 1
+   pidstat -p 1234
    ```
-   Substitua `1234` pelo ID do processo que você deseja monitorar. O comando mostrará as estatísticas a cada segundo.
 
-3. **Exibir informações sobre o uso de memória:**
+3. Exibir estatísticas de uso de memória:
    ```bash
-   pidstat -r 1
+   pidstat -r
    ```
-   Este comando fornece informações sobre o uso de memória de todos os processos a cada segundo.
 
-4. **Monitorar threads de um processo específico:**
+4. Monitorar o uso de CPU a cada 5 segundos:
    ```bash
-   pidstat -t -p 1234 1
+   pidstat 5
    ```
-   Isso mostrará estatísticas detalhadas para cada thread do processo especificado.
+
+5. Mostrar informações sobre threads:
+   ```bash
+   pidstat -t
+   ```
 
 ## Tips
-- Utilize o `pidstat` em combinação com outros comandos como `grep` para filtrar resultados específicos.
-- Experimente usar o `-h` para uma saída mais limpa e legível, especialmente quando você está monitorando muitos processos.
-- Considere redirecionar a saída para um arquivo para análise posterior, usando `> output.txt`.
+- Utilize a opção `-r` em conjunto com `-p` para obter uma visão mais completa do uso de recursos de um processo específico.
+- Combine `pidstat` com outros comandos como `grep` para filtrar resultados e encontrar processos específicos rapidamente.
+- Considere usar `pidstat` em scripts de monitoramento para automatizar a coleta de dados sobre o desempenho do sistema.

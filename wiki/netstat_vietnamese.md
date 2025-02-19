@@ -1,59 +1,50 @@
-# [Linux] Bash netstat Cách sử dụng: Kiểm tra kết nối mạng
+# [Hệ điều hành] C Shell (csh) netstat Cách sử dụng: Hiển thị thông tin mạng
 
-## Overview
-Lệnh `netstat` là một công cụ mạnh mẽ trong Bash được sử dụng để hiển thị thông tin về các kết nối mạng, bảng định tuyến, và các giao thức mạng đang hoạt động trên hệ thống. Nó giúp người dùng theo dõi và phân tích tình trạng mạng của máy tính.
+## Tổng quan
+Lệnh `netstat` được sử dụng để hiển thị các kết nối mạng, bảng định tuyến, và các thông tin khác liên quan đến mạng trên hệ thống. Nó rất hữu ích để theo dõi trạng thái mạng và phát hiện các vấn đề liên quan đến kết nối.
 
-## Usage
+## Cách sử dụng
 Cú pháp cơ bản của lệnh `netstat` như sau:
-
-```bash
+```
 netstat [options] [arguments]
 ```
 
-## Common Options
-Dưới đây là một số tùy chọn phổ biến của lệnh `netstat`:
-
+## Các tùy chọn phổ biến
 - `-a`: Hiển thị tất cả các kết nối và cổng đang lắng nghe.
+- `-n`: Hiển thị địa chỉ IP và số cổng thay vì tên miền.
 - `-t`: Hiển thị các kết nối TCP.
 - `-u`: Hiển thị các kết nối UDP.
-- `-n`: Hiển thị địa chỉ và số cổng dưới dạng số thay vì tên.
-- `-l`: Hiển thị các cổng đang lắng nghe.
-- `-p`: Hiển thị PID và tên của chương trình đang sử dụng kết nối.
+- `-r`: Hiển thị bảng định tuyến.
 
-## Common Examples
-Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `netstat`:
+## Ví dụ phổ biến
+Dưới đây là một số ví dụ thực tế khi sử dụng lệnh `netstat`:
 
 1. Hiển thị tất cả các kết nối và cổng đang lắng nghe:
-   ```bash
+   ```csh
    netstat -a
    ```
 
 2. Hiển thị các kết nối TCP:
-   ```bash
+   ```csh
    netstat -t
    ```
 
-3. Hiển thị các kết nối UDP:
-   ```bash
-   netstat -u
-   ```
-
-4. Hiển thị địa chỉ và số cổng dưới dạng số:
-   ```bash
+3. Hiển thị địa chỉ IP và số cổng thay vì tên miền:
+   ```csh
    netstat -n
    ```
 
-5. Hiển thị các cổng đang lắng nghe:
-   ```bash
-   netstat -l
+4. Hiển thị bảng định tuyến:
+   ```csh
+   netstat -r
    ```
 
-6. Hiển thị PID và tên của chương trình đang sử dụng kết nối:
-   ```bash
-   netstat -p
+5. Hiển thị các kết nối UDP:
+   ```csh
+   netstat -u
    ```
 
-## Tips
-- Sử dụng `netstat -tuln` để nhanh chóng xem các cổng TCP và UDP đang lắng nghe mà không cần tên.
-- Kết hợp `grep` với `netstat` để tìm kiếm thông tin cụ thể, ví dụ: `netstat -tuln | grep 80` để tìm các kết nối trên cổng 80.
-- Thường xuyên kiểm tra kết nối mạng của bạn để phát hiện các hoạt động bất thường hoặc không mong muốn.
+## Mẹo
+- Sử dụng tùy chọn `-n` để tăng tốc độ hiển thị, đặc biệt khi có nhiều kết nối.
+- Kết hợp các tùy chọn để có được thông tin chi tiết hơn, ví dụ: `netstat -an` để xem tất cả các kết nối với địa chỉ IP.
+- Thường xuyên kiểm tra trạng thái mạng của bạn để phát hiện sớm các vấn đề tiềm ẩn.

@@ -1,49 +1,44 @@
-# [Linux] Bash mountpoint uso: Verificar puntos de montaje
+# [Linux] C Shell (csh) mountpoint uso: Verifica si un directorio es un punto de montaje
 
 ## Overview
-El comando `mountpoint` se utiliza para verificar si un directorio específico es un punto de montaje de un sistema de archivos. Esto es útil para asegurarse de que un dispositivo o sistema de archivos está correctamente montado antes de realizar operaciones sobre él.
+El comando `mountpoint` se utiliza para determinar si un directorio específico es un punto de montaje en el sistema de archivos. Esto es útil para gestionar y verificar sistemas de archivos montados.
 
 ## Usage
 La sintaxis básica del comando es la siguiente:
 
-```bash
+```
 mountpoint [opciones] [argumentos]
 ```
 
 ## Common Options
-- `-q`: Ejecuta el comando en modo silencioso, sin salida a la consola.
-- `-n`: No verifica el estado del punto de montaje, solo comprueba la existencia del directorio.
+- `-q`: Silencia la salida. Solo devuelve el código de estado.
+- `-n`: No realiza la verificación de la existencia del directorio.
+- `-v`: Muestra información detallada sobre el punto de montaje.
 
 ## Common Examples
+Aquí hay algunos ejemplos prácticos del uso del comando `mountpoint`:
 
-### Verificar un punto de montaje
-Para verificar si un directorio es un punto de montaje, puedes usar el siguiente comando:
+1. Verificar si un directorio es un punto de montaje:
+   ```csh
+   mountpoint /mnt
+   ```
 
-```bash
-mountpoint /mnt/usb
-```
+2. Usar la opción silenciosa para verificar sin salida:
+   ```csh
+   mountpoint -q /mnt
+   ```
 
-Si `/mnt/usb` es un punto de montaje, el comando devolverá un mensaje confirmando que lo es.
+3. Verificar un directorio que no existe:
+   ```csh
+   mountpoint /noexiste
+   ```
 
-### Uso en modo silencioso
-Si solo deseas saber si un directorio es un punto de montaje sin recibir mensajes en la consola, utiliza la opción `-q`:
-
-```bash
-mountpoint -q /mnt/usb
-```
-
-No habrá salida si el directorio es un punto de montaje; si no lo es, puedes verificar el estado con el código de salida.
-
-### Comprobar múltiples puntos de montaje
-Puedes verificar varios directorios a la vez:
-
-```bash
-mountpoint /mnt/usb /mnt/disk
-```
-
-El comando mostrará el estado de cada directorio especificado.
+4. Mostrar información detallada sobre un punto de montaje:
+   ```csh
+   mountpoint -v /mnt
+   ```
 
 ## Tips
-- Siempre verifica que un dispositivo esté montado antes de intentar acceder a sus archivos para evitar errores.
-- Utiliza el modo silencioso (`-q`) en scripts para evitar salidas innecesarias en la consola.
-- Recuerda que `mountpoint` solo verifica si un directorio es un punto de montaje, no realiza el montaje en sí.
+- Siempre verifica que el directorio que estás comprobando realmente existe para evitar confusiones.
+- Utiliza la opción `-q` en scripts para evitar la salida innecesaria y solo comprobar el estado.
+- Recuerda que `mountpoint` es útil en la administración de sistemas para asegurarte de que los puntos de montaje están correctamente configurados.

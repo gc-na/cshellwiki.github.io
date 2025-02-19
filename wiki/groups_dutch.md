@@ -1,43 +1,42 @@
-# [Linux] Bash groepen gebruik: Beheer van gebruikersgroepen
+# [Linux] C Shell (csh) groepen gebruik: Beheer van gebruikersgroepen
 
 ## Overzicht
-De `groups` opdracht in Bash toont de groepen waartoe een specifieke gebruiker behoort. Dit is nuttig voor systeembeheerders en gebruikers die willen begrijpen welke rechten en toegang ze hebben op een systeem.
+De `groups` opdracht in C Shell (csh) toont de groepen waartoe een gebruiker behoort. Dit is nuttig voor systeembeheerders en gebruikers om te begrijpen welke rechten en toegang ze hebben op een systeem.
 
 ## Gebruik
 De basis syntaxis van de `groups` opdracht is als volgt:
 
-```bash
+```csh
 groups [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-a`: Toont ook de aanvullende groepen van de gebruiker.
-- `-g`: Toont alleen de primaire groep van de gebruiker.
-- `--help`: Geeft een helpbericht weer met informatie over het gebruik van de opdracht.
+- `-a`: Toont alle groepen waartoe de gebruiker behoort, inclusief de primaire groep.
+- `-g`: Toont alleen de groepsnamen zonder de gebruikersnaam.
 
 ## Veelvoorkomende Voorbeelden
 
-1. **Toon de groepen van de huidige gebruiker:**
-   ```bash
+1. **Toon groepen voor de huidige gebruiker:**
+   ```csh
    groups
    ```
 
-2. **Toon de groepen van een specifieke gebruiker:**
-   ```bash
-   groups gebruikersnaam
+2. **Toon groepen voor een specifieke gebruiker:**
+   ```csh
+   groups username
    ```
 
-3. **Toon de primaire groep van de huidige gebruiker:**
-   ```bash
-   groups -g
+3. **Toon alle groepen inclusief primaire groep:**
+   ```csh
+   groups -a
    ```
 
-4. **Toon de aanvullende groepen van een specifieke gebruiker:**
-   ```bash
-   groups -a gebruikersnaam
+4. **Toon alleen groepsnamen zonder gebruikersnaam:**
+   ```csh
+   groups -g username
    ```
 
 ## Tips
-- Gebruik de `groups` opdracht zonder argumenten om snel te controleren welke groepen je zelf tot behoren.
-- Combineer de `groups` opdracht met andere commando's zoals `id` voor meer gedetailleerde informatie over gebruikers en hun rechten.
-- Vergeet niet dat je root-toegang nodig kunt hebben om de groepen van andere gebruikers te bekijken, afhankelijk van de systeeminstellingen.
+- Gebruik de `groups` opdracht regelmatig om te controleren of je de juiste toegang hebt tot bestanden en mappen.
+- Combineer de `groups` opdracht met andere commando's zoals `id` voor meer gedetailleerde informatie over gebruikers en groepen.
+- Vergeet niet dat je mogelijk extra rechten nodig hebt om de groepen van andere gebruikers te bekijken.

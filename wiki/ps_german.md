@@ -1,54 +1,57 @@
-# [Linux] Bash ps Verwendung: Prozesse anzeigen
+# [Linux] C Shell (csh) ps Verwendung: Prozessstatus anzeigen
 
 ## Übersicht
-Der `ps`-Befehl wird in Unix-ähnlichen Betriebssystemen verwendet, um Informationen über die aktuell laufenden Prozesse anzuzeigen. Er bietet eine Momentaufnahme der Prozesse, die auf dem System aktiv sind, und zeigt wichtige Details wie Prozess-ID, CPU- und Speicherauslastung.
+Der Befehl `ps` wird verwendet, um Informationen über die aktuell laufenden Prozesse im System anzuzeigen. Er bietet eine Momentaufnahme der Prozesse, die von einem Benutzer oder dem System selbst ausgeführt werden.
 
 ## Verwendung
-Die grundlegende Syntax des `ps`-Befehls lautet:
+Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```
 ps [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-e` oder `-A`: Zeigt alle Prozesse an.
-- `-f`: Zeigt die Prozesse in einem vollständigen Format an, einschließlich der Elternprozess-ID.
-- `-u [Benutzer]`: Zeigt die Prozesse für einen bestimmten Benutzer an.
-- `-aux`: Zeigt alle Prozesse mit detaillierten Informationen an (eine Kombination von Optionen).
-- `--sort`: Sortiert die Ausgabe nach einem bestimmten Kriterium, z.B. `--sort=-%mem` für die Speicherauslastung.
+- `-e`: Zeigt alle Prozesse an, die im System laufen.
+- `-f`: Zeigt die Prozesse in einem vollständigen Format an, einschließlich der PID, PPID und des Befehls.
+- `-u [Benutzer]`: Zeigt die Prozesse eines bestimmten Benutzers an.
+- `-l`: Zeigt die Prozesse in einer langen Liste an, die zusätzliche Informationen enthält.
+- `-a`: Zeigt Prozesse aller Benutzer an, nicht nur die des aktuellen Benutzers.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung des `ps`-Befehls:
+Um die Verwendung des `ps`-Befehls zu verdeutlichen, hier einige praktische Beispiele:
 
-1. **Alle Prozesse anzeigen:**
-   ```bash
+1. Alle laufenden Prozesse anzeigen:
+   ```csh
    ps -e
    ```
 
-2. **Detaillierte Informationen über alle Prozesse:**
-   ```bash
-   ps aux
+2. Prozesse im vollständigen Format anzeigen:
+   ```csh
+   ps -f
    ```
 
-3. **Prozesse eines bestimmten Benutzers anzeigen:**
-   ```bash
+3 Prozesse eines bestimmten Benutzers anzeigen (z.B. `username`):
+   ```csh
    ps -u username
    ```
 
-4. **Prozesse nach Speicherauslastung sortieren:**
-   ```bash
-   ps aux --sort=-%mem
+4. Eine lange Liste aller Prozesse anzeigen:
+   ```csh
+   ps -l
    ```
 
-5. **Vollständige Informationen über einen bestimmten Prozess anzeigen:**
-   ```bash
-   ps -f -p 1234
+5. Alle Prozesse, einschließlich der von anderen Benutzern, anzeigen:
+   ```csh
+   ps -a
    ```
 
 ## Tipps
-- Verwenden Sie `ps aux | grep [Suchbegriff]`, um nach einem bestimmten Prozess zu suchen.
-- Kombinieren Sie `ps` mit anderen Befehlen wie `less`, um die Ausgabe besser lesen zu können: 
-  ```bash
-  ps aux | less
+- Verwenden Sie `ps aux`, um eine umfassende Liste aller Prozesse mit detaillierten Informationen zu erhalten.
+- Kombinieren Sie `ps` mit `grep`, um nach einem bestimmten Prozess zu suchen:
+  ```csh
+  ps -e | grep [Prozessname]
   ```
-- Nutzen Sie `htop` oder `top` für eine dynamische und interaktive Ansicht der Prozesse, wenn Sie eine kontinuierliche Überwachung benötigen.
+- Nutzen Sie die Option `-o`, um spezifische Informationen anzuzeigen, z.B. nur die PID und den Befehl:
+  ```csh
+  ps -eo pid,cmd
+  ```
