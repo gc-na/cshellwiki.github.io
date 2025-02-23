@@ -1,7 +1,7 @@
 # [Sistem Operasi] C Shell (csh) getopts: [mengelola opsi baris perintah]
 
 ## Overview
-Perintah `getopts` dalam C Shell (csh) digunakan untuk memproses opsi dan argumen dari baris perintah. Ini memungkinkan pengguna untuk mendefinisikan opsi yang dapat diterima oleh skrip atau program, sehingga meningkatkan fleksibilitas dan interaktivitas.
+Perintah `getopts` dalam C Shell (csh) digunakan untuk memproses opsi yang diberikan melalui baris perintah. Ini memungkinkan skrip untuk menerima argumen dan opsi dengan cara yang terstruktur, sehingga memudahkan pengguna dalam memberikan input.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `getopts`:
@@ -11,53 +11,79 @@ getopts [options] [arguments]
 ```
 
 ## Common Options
-Beberapa opsi umum yang digunakan dengan `getopts` adalah sebagai berikut:
+Beberapa opsi umum yang dapat digunakan dengan `getopts` meliputi:
 
-- `-a`: Mengizinkan penggunaan opsi yang tidak terdaftar.
-- `-n`: Menentukan nama program yang akan ditampilkan dalam pesan kesalahan.
-- `-s`: Menyembunyikan output kesalahan.
+- `-a`: Menentukan bahwa opsi yang diterima adalah argumen tambahan.
+- `-b`: Mengizinkan penggunaan opsi ganda.
+- `-c`: Menyediakan cara untuk mengonfigurasi opsi yang diterima.
 
 ## Common Examples
-Berikut adalah beberapa contoh praktis penggunaan `getopts`:
+Berikut adalah beberapa contoh penggunaan `getopts` dalam skrip C Shell:
 
-### Contoh 1: Menggunakan Opsi Tunggal
+### Contoh 1: Menggunakan getopts untuk opsi sederhana
 ```csh
 #!/bin/csh
-while getopts "a:b:" opt; do
-    case $opt in
-        a) echo "Opsi A: $OPTARG" ;;
-        b) echo "Opsi B: $OPTARG" ;;
-        *) echo "Opsi tidak dikenal" ;;
-    esac
-done
+set opts = ""
+while ( "$#argv" > 0 )
+    switch ( `getopts "ab:" opts` )
+        case "a":
+            echo "Opsi A dipilih"
+            breaksw
+        case "b":
+            echo "Opsi B dengan argumen: $OPTARG"
+            breaksw
+        case "?":
+            echo "Opsi tidak dikenal"
+            breaksw
+    endsw
+end
 ```
 
-### Contoh 2: Menggunakan Opsi dengan Default
+### Contoh 2: Menggunakan getopts untuk beberapa opsi
 ```csh
 #!/bin/csh
-set default="default_value"
-while getopts "o:" opt; do
-    case $opt in
-        o) set default="$OPTARG" ;;
-        *) echo "Opsi tidak dikenal" ;;
-    esac
-done
-echo "Nilai default: $default"
+set opts = ""
+while ( "$#argv" > 0 )
+    switch ( `getopts "abc:" opts` )
+        case "a":
+            echo "Opsi A dipilih"
+            breaksw
+        case "b":
+            echo "Opsi B dipilih"
+            breaksw
+        case "c":
+            echo "Opsi C dengan argumen: $OPTARG"
+            breaksw
+        case "?":
+            echo "Opsi tidak dikenal"
+            breaksw
+    endsw
+end
 ```
 
-### Contoh 3: Menangani Opsi Tidak Dikenal
+### Contoh 3: Menangani opsi yang tidak valid
 ```csh
 #!/bin/csh
-while getopts "x:y:" opt; do
-    case $opt in
-        x) echo "Opsi X: $OPTARG" ;;
-        y) echo "Opsi Y: $OPTARG" ;;
-        *) echo "Opsi tidak dikenal: -$OPTARG" ;;
-    esac
-done
+set opts = ""
+while ( "$#argv" > 0 )
+    switch ( `getopts "x:y:z:" opts` )
+        case "x":
+            echo "Opsi X dipilih"
+            breaksw
+        case "y":
+            echo "Opsi Y dipilih"
+            breaksw
+        case "z":
+            echo "Opsi Z dengan argumen: $OPTARG"
+            breaksw
+        case "?":
+            echo "Opsi '$OPTARG' tidak dikenal"
+            breaksw
+    endsw
+end
 ```
 
 ## Tips
-- Selalu gunakan `case` untuk menangani opsi yang berbeda agar skrip lebih terstruktur.
-- Pastikan untuk mendefinisikan opsi yang diperlukan dengan jelas agar pengguna dapat memahami cara menggunakan skrip Anda.
-- Gunakan opsi `-n` untuk memberikan nama program yang jelas dalam pesan kesalahan, sehingga lebih mudah untuk mengidentifikasi masalah saat menjalankan skrip.
+- Selalu gunakan `getopts` dalam loop untuk memastikan semua opsi diproses.
+- Gunakan `switch` untuk menangani setiap opsi dengan cara yang jelas dan terstruktur.
+- Pastikan untuk memberikan pesan kesalahan yang informatif jika pengguna memberikan opsi yang tidak valid.

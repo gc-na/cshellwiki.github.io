@@ -1,47 +1,47 @@
 # [Linux] C Shell (csh) htop użycie: Monitorowanie procesów systemowych
 
 ## Overview
-Polecenie `htop` jest interaktywnym narzędziem do monitorowania procesów w systemie Linux. Umożliwia użytkownikom przeglądanie aktywnych procesów w czasie rzeczywistym oraz zarządzanie nimi w bardziej przyjazny sposób niż tradycyjne narzędzie `top`.
+Polecenie `htop` to interaktywne narzędzie do monitorowania procesów w systemie Linux. Umożliwia użytkownikom przeglądanie i zarządzanie uruchomionymi procesami w bardziej przyjazny sposób niż tradycyjne `top`, oferując kolorowe wyświetlenie oraz możliwość łatwego sortowania i filtrowania.
 
 ## Usage
 Podstawowa składnia polecenia `htop` jest następująca:
 
-```csh
+```bash
 htop [opcje] [argumenty]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji dla polecenia `htop`:
-
 - `-h`, `--help`: Wyświetla pomoc i dostępne opcje.
+- `-v`, `--version`: Wyświetla wersję programu.
+- `-C`, `--no-color`: Uruchamia htop bez kolorów.
 - `-s`, `--sort`: Umożliwia sortowanie procesów według określonego kryterium, np. CPU lub pamięci.
-- `-p`, `--pid`: Monitoruje tylko procesy o podanym identyfikatorze PID.
-- `-u`, `--user`: Wyświetla procesy tylko dla określonego użytkownika.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `htop`:
+- Aby uruchomić `htop` w domyślnym trybie, wystarczy wpisać:
 
-1. Uruchomienie `htop` bez żadnych opcji:
-   ```csh
-   htop
-   ```
+```bash
+htop
+```
 
-2. Uruchomienie `htop` z sortowaniem według użycia CPU:
-   ```csh
-   htop -s PERCENT_CPU
-   ```
+- Aby uruchomić `htop` bez kolorów:
 
-3. Monitorowanie procesów dla konkretnego użytkownika:
-   ```csh
-   htop -u username
-   ```
+```bash
+htop -C
+```
 
-4. Monitorowanie konkretnego procesu za pomocą PID:
-   ```csh
-   htop -p 1234
-   ```
+- Aby uzyskać pomoc dotyczącą opcji:
+
+```bash
+htop -h
+```
+
+- Aby posortować procesy według użycia CPU:
+
+```bash
+htop -s PERCENT_CPU
+```
 
 ## Tips
-- Aby zakończyć działanie `htop`, naciśnij klawisz `q`.
-- Możesz używać klawiszy strzałek do nawigacji po procesach oraz klawisza `F9`, aby zakończyć wybrany proces.
-- Regularnie aktualizuj widok, naciskając klawisz `F5`, aby uzyskać najnowsze informacje o procesach.
+- Użyj klawiszy strzałek do nawigacji po procesach i `F9`, aby zakończyć wybrany proces.
+- Możesz filtrować procesy, naciskając `F3` i wpisując nazwę procesu.
+- Aby zmienić priorytet procesu, wybierz go i naciśnij `F7` (zwiększenie priorytetu) lub `F8` (zmniejszenie priorytetu).

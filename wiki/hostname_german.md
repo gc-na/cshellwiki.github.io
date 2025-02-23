@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) hostname Verwendung: Zeigt den Hostnamen des Systems an
 
 ## Übersicht
-Der Befehl `hostname` wird verwendet, um den Namen des aktuellen Hosts (Rechners) anzuzeigen oder zu ändern. Dies ist besonders nützlich, um den Computer in einem Netzwerk zu identifizieren.
+Der Befehl `hostname` wird verwendet, um den Namen des aktuellen Hosts (Rechners) anzuzeigen oder zu ändern. Er ist nützlich, um Informationen über das System zu erhalten oder um den Hostnamen für Netzwerkverbindungen festzulegen.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
@@ -11,12 +11,13 @@ hostname [optionen] [argumente]
 ```
 
 ## Häufige Optionen
-- `-f`: Zeigt den vollständigen qualifizierten Domainnamen (FQDN) des Hosts an.
-- `-s`: Gibt nur den kurzen Hostnamen aus.
+- `-f`: Gibt den vollständigen qualifizierten Domainnamen (FQDN) des Hosts zurück.
+- `-s`: Gibt nur den kurzen Hostnamen zurück.
 - `-i`: Zeigt die IP-Adresse des Hosts an.
+- `-a`: Gibt den Alias des Hosts zurück.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung des `hostname`-Befehls:
+Hier sind einige praktische Beispiele zur Verwendung des Befehls `hostname`:
 
 1. **Aktuellen Hostnamen anzeigen:**
    ```csh
@@ -38,12 +39,12 @@ Hier sind einige praktische Beispiele für die Verwendung des `hostname`-Befehls
    hostname -i
    ```
 
-5. **Hostnamen ändern:**
+5. **Alias des Hosts anzeigen:**
    ```csh
-   hostname neuer-hostname
+   hostname -a
    ```
 
 ## Tipps
-- Stellen Sie sicher, dass Sie über die erforderlichen Berechtigungen verfügen, um den Hostnamen zu ändern.
-- Verwenden Sie den Befehl `hostname` ohne Optionen, um schnell den aktuellen Hostnamen zu überprüfen.
-- Der Hostname sollte einfach und einprägsam sein, insbesondere in Netzwerken mit vielen Geräten.
+- Verwenden Sie `hostname -f`, um sicherzustellen, dass Ihr System korrekt im Netzwerk identifiziert wird.
+- Achten Sie darauf, dass Änderungen des Hostnamens möglicherweise einen Neustart des Systems erfordern, um wirksam zu werden.
+- Nutzen Sie den kurzen Hostnamen für lokale Skripte, während der vollständige Domainname für Netzwerkkonfigurationen nützlich ist.

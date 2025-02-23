@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) psql Verwendung: Interaktive PostgreSQL-Datenbankabfrage
+# [Linux] C Shell (csh) psql Verwendung: Datenbankabfragen durchführen
 
 ## Übersicht
-Der Befehl `psql` ist ein interaktives Terminal-Programm für die PostgreSQL-Datenbank. Es ermöglicht Benutzern, SQL-Abfragen auszuführen, Daten zu verwalten und mit der Datenbank zu interagieren.
+Der `psql`-Befehl ist ein interaktives Terminal-Programm für PostgreSQL, das es Benutzern ermöglicht, SQL-Abfragen auszuführen, Datenbanken zu verwalten und mit PostgreSQL-Datenbanken zu interagieren.
 
 ## Verwendung
 Die grundlegende Syntax des `psql`-Befehls lautet:
@@ -12,35 +12,37 @@ psql [Optionen] [Argumente]
 
 ## Häufige Optionen
 - `-h`: Gibt den Hostnamen des Datenbankservers an.
-- `-U`: Legt den Benutzernamen für die Verbindung zur Datenbank fest.
-- `-d`: Gibt den Namen der Datenbank an, mit der eine Verbindung hergestellt werden soll.
-- `-p`: Definiert den Port, über den die Verbindung zur Datenbank erfolgt.
-- `-f`: Führt die SQL-Befehle aus einer Datei aus.
+- `-U`: Gibt den Benutzernamen an, der zur Authentifizierung verwendet werden soll.
+- `-d`: Gibt die zu verwendende Datenbank an.
+- `-p`: Gibt den Port an, über den die Verbindung hergestellt werden soll.
+- `-f`: Führt SQL-Befehle aus einer Datei aus.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung von `psql`:
+- Verbinden mit einer Datenbank:
 
-1. **Verbindung zu einer Datenbank herstellen:**
-   ```csh
-   psql -U benutzername -d datenbankname
-   ```
+```csh
+psql -h localhost -U benutzername -d datenbankname
+```
 
-2. **SQL-Befehle aus einer Datei ausführen:**
-   ```csh
-   psql -U benutzername -d datenbankname -f befehle.sql
-   ```
+- Ausführen eines SQL-Befehls:
 
-3. **Datenbankinformationen anzeigen:**
-   ```csh
-   psql -U benutzername -d datenbankname -c "\l"
-   ```
+```csh
+psql -c "SELECT * FROM tabelle;"
+```
 
-4. **Eine Tabelle anzeigen:**
-   ```csh
-   psql -U benutzername -d datenbankname -c "SELECT * FROM tabellenname;"
-   ```
+- Ausführen von SQL-Befehlen aus einer Datei:
+
+```csh
+psql -f befehle.sql
+```
+
+- Anzeigen aller Datenbanken:
+
+```csh
+psql -l
+```
 
 ## Tipps
 - Verwenden Sie die Option `-W`, um zur Eingabe eines Passworts aufgefordert zu werden.
-- Nutzen Sie die Tabulatortaste für die Autovervollständigung von Befehlen und Objektnamen.
-- Speichern Sie häufig verwendete Befehle in einer Datei und führen Sie sie mit der `-f`-Option aus, um Zeit zu sparen.
+- Nutzen Sie die `\?`-Befehlszeile innerhalb von `psql`, um eine Liste aller verfügbaren Befehle anzuzeigen.
+- Speichern Sie häufig verwendete Optionen in einer `.pgpass`-Datei, um die Authentifizierung zu vereinfachen.

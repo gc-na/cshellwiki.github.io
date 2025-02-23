@@ -1,44 +1,45 @@
-# [Linux] C Shell (csh) bindkey gebruik: Toewijzen van sneltoetsen
+# [Linux] C Shell (csh) bindkey gebruik: Toewijzen van toetsen aan functies
 
 ## Overzicht
-De `bindkey`-opdracht in C Shell (csh) wordt gebruikt om toetsenbordcommando's of sneltoetsen toe te wijzen aan specifieke acties of functies. Dit maakt het mogelijk om de efficiëntie van de shell-ervaring te verbeteren door vaak gebruikte commando's snel toegankelijk te maken.
+De `bindkey` opdracht in C Shell (csh) wordt gebruikt om toetsenbordinvoer te koppelen aan specifieke functies of commando's. Dit stelt gebruikers in staat om hun werkomgeving aan te passen en de efficiëntie te verhogen door sneltoetsen in te stellen voor vaak gebruikte opdrachten.
 
 ## Gebruik
-De basis syntaxis van de `bindkey`-opdracht is als volgt:
+De basis syntaxis van de `bindkey` opdracht is als volgt:
 
 ```csh
 bindkey [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- `-e`: Schakelt de Emacs-modus in voor toetsenbindingen.
-- `-v`: Schakelt de vi-modus in voor toetsenbindingen.
-- `-s`: Bind een toets aan een reeks karakters.
+## Veelvoorkomende Opties
+- `-e`: Zet de toetsenbindingen in Emacs-stijl.
+- `-v`: Zet de toetsenbindingen in vi-stijl.
+- `-n`: Negeert de standaard toetsenbindingen.
+- `-s`: Koppelt een reeks toetsen aan een specifieke opdracht.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
 
-### Voorbeeld 1: Sneltoets toewijzen
-Toewijzen van de toets `Ctrl + x` om het commando `ls -l` uit te voeren:
+### Voorbeeld 1: Toewijzen van een sneltoets
+Om de toetscombinatie `Ctrl + X` toe te wijzen aan het commando `ls`, gebruik je:
 
 ```csh
-bindkey "^X" "ls -l\n"
+bindkey "^X" "ls\n"
 ```
 
-### Voorbeeld 2: Schakelen tussen modi
-Schakel over naar de Emacs-modus voor toetsenbindingen:
+### Voorbeeld 2: Schakelen naar vi-stijl
+Om de toetsenbindingen over te schakelen naar vi-stijl, gebruik je:
 
 ```csh
-bindkey -e
+bindkey -v
 ```
 
-### Voorbeeld 3: Een reeks karakters binden
-Bind de toets `F2` aan de reeks `echo "Hello, World!"`:
+### Voorbeeld 3: Een reeks toetsen toewijzen
+Om de toetscombinatie `Alt + H` toe te wijzen aan het commando `history`, gebruik je:
 
 ```csh
-bindkey "F2" "echo \"Hello, World!\"\n"
+bindkey "^[H" "history\n"
 ```
 
 ## Tips
-- Experimenteer met verschillende toetsenbindingen om je workflow te optimaliseren.
-- Documenteer je bindings in een configuratiebestand zodat je ze gemakkelijk kunt terugvinden of opnieuw instellen.
+- Experimenteer met verschillende toetsenbindingen om te zien welke het beste voor jou werkt.
+- Documenteer je aangepaste toetsenbindingen, zodat je ze gemakkelijk kunt terugvinden of opnieuw kunt instellen.
 - Gebruik de `bindkey -L` opdracht om een lijst van huidige toetsenbindingen te bekijken en te beheren.

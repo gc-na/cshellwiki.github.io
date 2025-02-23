@@ -1,11 +1,11 @@
-# [Linux] C Shell (csh) iconv Kullanımı: Karakter kodlamalarını dönüştürme
+# [Linux] C Shell (csh) iconv Kullanımı: Karakter kodlamalarını dönüştürme aracı
 
 ## Genel Bakış
-`iconv` komutu, dosyaların karakter kodlamalarını dönüştürmek için kullanılır. Farklı platformlar veya uygulamalar arasında uyumluluğu sağlamak amacıyla metin dosyalarının karakter setlerini değiştirmek için idealdir.
+`iconv`, farklı karakter kodlamaları arasında dönüşüm yapmaya yarayan bir komuttur. Özellikle metin dosyalarının farklı platformlarda veya sistemlerde uyumlu hale getirilmesi için kullanılır.
 
 ## Kullanım
 Temel sözdizimi şu şekildedir:
-```bash
+```csh
 iconv [seçenekler] [argümanlar]
 ```
 
@@ -16,24 +16,27 @@ iconv [seçenekler] [argümanlar]
 - `-l, --list`: Desteklenen tüm karakter kodlamalarının listesini gösterir.
 
 ## Yaygın Örnekler
-Aşağıda `iconv` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
-
 1. UTF-8'den ISO-8859-1'e dönüştürme:
-   ```bash
-   iconv -f UTF-8 -t ISO-8859-1 dosya.txt -o dosya_donusturulmus.txt
+   ```csh
+   iconv -f UTF-8 -t ISO-8859-1 input.txt -o output.txt
    ```
 
-2. UTF-16 kodlamasındaki bir dosyayı UTF-8'e dönüştürme:
-   ```bash
-   iconv -f UTF-16 -t UTF-8 dosya_utf16.txt -o dosya_utf8.txt
+2. UTF-16'dan UTF-8'e dönüştürme:
+   ```csh
+   iconv -f UTF-16 -t UTF-8 input.txt -o output.txt
    ```
 
 3. Desteklenen karakter kodlamalarının listesini görüntüleme:
-   ```bash
+   ```csh
    iconv -l
    ```
 
+4. Hedef dosya belirtmeden standart çıktıya yazdırma:
+   ```csh
+   iconv -f UTF-8 -t ASCII input.txt
+   ```
+
 ## İpuçları
-- Dönüştürme işlemi yapmadan önce dosyanızın yedeğini almayı unutmayın.
-- Hedef kodlama ile ilgili sorun yaşamamak için, dönüştürme işlemi yapmadan önce kaynak dosyanın kodlamasını kontrol edin.
-- `iconv` komutunu bir betik içinde kullanarak toplu dosya dönüştürmeleri gerçekleştirebilirsiniz.
+- Dönüştürme işlemi sırasında hata alıyorsanız, kaynak ve hedef kodlamalarının doğru olduğundan emin olun.
+- Büyük dosyalarla çalışırken, dönüşüm işleminin tamamlanmasını bekleyin; aksi takdirde dosya bozulabilir.
+- `iconv` komutunu sıkça kullanıyorsanız, sık kullandığınız kodlamaları not alarak zaman kazanabilirsiniz.

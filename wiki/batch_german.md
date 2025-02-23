@@ -1,41 +1,49 @@
-# [Linux] C Shell (csh) batch Verwendung: Batch-Jobs planen und ausführen
+# [Linux] C Shell (csh) batch Verwendung: Ausführen von Befehlen im Hintergrund
 
 ## Übersicht
-Der Befehl `batch` wird verwendet, um Befehle oder Skripte zu planen, die zu einem späteren Zeitpunkt ausgeführt werden sollen, wenn das System weniger ausgelastet ist. Dies ist besonders nützlich für ressourcenintensive Aufgaben, die nicht sofort ausgeführt werden müssen.
+Der `batch` Befehl in der C Shell (csh) ermöglicht es Benutzern, Befehle im Hintergrund zu planen, die zu einem späteren Zeitpunkt ausgeführt werden, wenn das System weniger ausgelastet ist. Dies ist besonders nützlich für ressourcenintensive Aufgaben, die nicht sofort ausgeführt werden müssen.
 
 ## Verwendung
-Die grundlegende Syntax des Befehls lautet:
+Die grundlegende Syntax des `batch` Befehls lautet:
 
-```csh
+```
 batch [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-l`: Führt den Befehl in einer Login-Shell aus.
-- `-m`: Sendet eine E-Mail-Benachrichtigung, wenn der Job abgeschlossen ist.
-- `-q`: Wartet, bis die Systemlast unter einen bestimmten Wert fällt, bevor der Job ausgeführt wird.
+- `-f`: Führt den Befehl im aktuellen Verzeichnis aus.
+- `-n`: Gibt die Anzahl der maximalen gleichzeitigen Jobs an.
 
 ## Häufige Beispiele
 
-1. **Einen einfachen Befehl planen:**
-   Um einen Befehl zu planen, geben Sie einfach den Befehl in die Eingabeaufforderung ein:
-   ```csh
-   echo "ls -l" | batch
-   ```
+### Beispiel 1: Einfache Batch-Datei erstellen
+Um einen Befehl in die Warteschlange zu stellen, können Sie einfach `batch` eingeben und den Befehl in der Eingabeaufforderung eingeben:
 
-2. **Ein Skript zur späteren Ausführung planen:**
-   Um ein Skript zu planen, verwenden Sie den folgenden Befehl:
-   ```csh
-   batch < mein_skript.sh
-   ```
+```bash
+batch
+echo "Hallo Welt" > hallo.txt
+```
 
-3. **Einen Befehl mit Optionen planen:**
-   Um einen Befehl mit der `-m` Option zu planen, der eine E-Mail sendet, wenn der Job abgeschlossen ist:
-   ```csh
-   echo "backup.sh" | batch -m
-   ```
+### Beispiel 2: Batch-Befehle aus einer Datei ausführen
+Sie können auch eine Datei mit Befehlen erstellen und diese dann mit `batch` ausführen:
+
+```bash
+cat > meine_befehle.bat
+echo "Befehl 1" 
+echo "Befehl 2"
+^D  # Drücken Sie Ctrl+D, um die Eingabe zu beenden
+batch < meine_befehle.bat
+```
+
+### Beispiel 3: Batch mit Optionen
+Um einen Befehl mit Optionen auszuführen, verwenden Sie:
+
+```bash
+batch -f
+echo "Daten sichern" >> backup.log
+```
 
 ## Tipps
-- Stellen Sie sicher, dass Sie die richtigen Berechtigungen haben, um Skripte oder Befehle auszuführen, die Sie planen möchten.
-- Überprüfen Sie regelmäßig die Warteschlange Ihrer geplanten Jobs, um sicherzustellen, dass alles wie gewünscht funktioniert.
-- Nutzen Sie die E-Mail-Benachrichtigung, um über den Abschluss Ihrer Jobs informiert zu werden, insbesondere bei längeren Aufgaben.
+- Stellen Sie sicher, dass Sie die Berechtigungen für die Ausführung der Befehle in der Batch-Datei korrekt gesetzt haben.
+- Überprüfen Sie regelmäßig die Warteschlange mit dem Befehl `atq`, um den Status Ihrer geplanten Jobs zu sehen.
+- Nutzen Sie `atrm`, um nicht mehr benötigte Jobs aus der Warteschlange zu entfernen.

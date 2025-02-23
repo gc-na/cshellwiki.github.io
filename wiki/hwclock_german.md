@@ -1,47 +1,47 @@
 # [Linux] C Shell (csh) hwclock Verwendung: Uhrzeit und Datum verwalten
 
 ## Übersicht
-Der Befehl `hwclock` wird verwendet, um die Hardware-Uhr eines Computers zu lesen oder zu setzen. Diese Uhr läuft unabhängig vom Betriebssystem und wird häufig verwendet, um sicherzustellen, dass die Systemzeit korrekt ist.
+Der Befehl `hwclock` wird verwendet, um die Hardware-Uhr eines Computers zu lesen und zu setzen. Diese Uhr bleibt auch dann aktiv, wenn der Computer ausgeschaltet ist, und ist nützlich, um die Systemzeit beim Booten korrekt einzustellen.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```csh
+```
 hwclock [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `--show`: Zeigt die aktuelle Zeit der Hardware-Uhr an.
-- `--set`: Setzt die Hardware-Uhr auf die angegebene Zeit.
+- `--show` oder `-r`: Zeigt die aktuelle Zeit der Hardware-Uhr an.
+- `--set` oder `-w`: Setzt die Hardware-Uhr auf die aktuelle Systemzeit.
 - `--hctosys`: Synchronisiert die Systemzeit mit der Hardware-Uhr.
 - `--systohc`: Setzt die Hardware-Uhr auf die aktuelle Systemzeit.
 
 ## Häufige Beispiele
 Um die aktuelle Zeit der Hardware-Uhr anzuzeigen, verwenden Sie:
 
-```csh
+```bash
 hwclock --show
 ```
 
-Um die Hardware-Uhr auf eine bestimmte Zeit zu setzen, verwenden Sie:
+Um die Hardware-Uhr auf die aktuelle Systemzeit zu setzen, führen Sie aus:
 
-```csh
+```bash
 hwclock --set --date="2023-10-01 12:00:00"
 ```
 
 Um die Systemzeit mit der Hardware-Uhr zu synchronisieren, verwenden Sie:
 
-```csh
+```bash
 hwclock --hctosys
 ```
 
 Um die Hardware-Uhr auf die aktuelle Systemzeit zu setzen, verwenden Sie:
 
-```csh
+```bash
 hwclock --systohc
 ```
 
 ## Tipps
-- Stellen Sie sicher, dass Sie über die erforderlichen Berechtigungen verfügen, um die Hardware-Uhr zu ändern.
-- Verwenden Sie `hwclock --show`, um regelmäßig die Zeit zu überprüfen, insbesondere nach einem Neustart.
-- Es kann hilfreich sein, die Hardware-Uhr regelmäßig mit einem Zeitserver zu synchronisieren, um Zeitabweichungen zu vermeiden.
+- Stellen Sie sicher, dass die Systemzeit korrekt ist, bevor Sie die Hardware-Uhr setzen.
+- Verwenden Sie `hwclock --show`, um regelmäßig die Zeit der Hardware-Uhr zu überprüfen.
+- Führen Sie `hwclock` mit Root-Rechten aus, um Berechtigungsprobleme zu vermeiden.

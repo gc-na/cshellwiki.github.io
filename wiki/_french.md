@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) @ Utilisation : Exécute des calculs arithmétiques
+# [Unix] C Shell (csh) @ Utilisation : Exécute des opérations arithmétiques
 
 ## Overview
-La commande `@` dans C Shell (csh) est utilisée pour effectuer des calculs arithmétiques simples. Elle permet d'assigner des valeurs à des variables et de réaliser des opérations mathématiques de base.
+La commande `@` dans C Shell (csh) est utilisée pour effectuer des opérations arithmétiques simples sur des variables. Elle permet d'assigner des valeurs numériques à des variables et d'effectuer des calculs directement dans le shell.
 
 ## Usage
 La syntaxe de base de la commande `@` est la suivante :
@@ -11,52 +11,54 @@ La syntaxe de base de la commande `@` est la suivante :
 ```
 
 ## Common Options
-- `-v` : Affiche la valeur de la variable après l'opération.
-- `-n` : N'exécute pas la commande, mais affiche ce qui serait exécuté.
+La commande `@` ne possède pas d'options spécifiques, mais elle est souvent utilisée avec des opérations arithmétiques telles que :
+
+- `=` : pour assigner une valeur à une variable.
+- `+` : pour additionner des valeurs.
+- `-` : pour soustraire des valeurs.
+- `*` : pour multiplier des valeurs.
+- `/` : pour diviser des valeurs.
 
 ## Common Examples
 
-### Exemple 1 : Addition
-Pour additionner deux nombres et assigner le résultat à une variable :
+Voici quelques exemples pratiques de l'utilisation de la commande `@` :
 
+### Exemple 1 : Addition
 ```csh
 set a = 5
-set b = 10
-@ c = $a + $b
-echo $c  # Affiche 15
+@ a = a + 3
+echo $a  # Affiche 8
 ```
 
 ### Exemple 2 : Soustraction
-Pour soustraire un nombre d'un autre :
-
 ```csh
-set x = 20
-set y = 8
-@ z = $x - $y
-echo $z  # Affiche 12
+set b = 10
+@ b = b - 4
+echo $b  # Affiche 6
 ```
 
 ### Exemple 3 : Multiplication
-Pour multiplier deux nombres :
-
 ```csh
-set p = 4
-set q = 7
-@ r = $p * $q
-echo $r  # Affiche 28
+set c = 2
+@ c = c * 5
+echo $c  # Affiche 10
 ```
 
 ### Exemple 4 : Division
-Pour diviser un nombre par un autre :
-
 ```csh
-set num = 30
-set denom = 6
-@ result = $num / $denom
-echo $result  # Affiche 5
+set d = 20
+@ d = d / 4
+echo $d  # Affiche 5
+```
+
+### Exemple 5 : Opérations combinées
+```csh
+set e = 10
+@ e = e + 2 * 3
+echo $e  # Affiche 16
 ```
 
 ## Tips
-- Utilisez des parenthèses pour contrôler l'ordre des opérations, par exemple : `@ result = ($a + $b) * $c`.
-- Assurez-vous que les variables sont initialisées avant de les utiliser dans des calculs.
-- Pour éviter les erreurs, vérifiez que vous ne divisez pas par zéro.
+- Assurez-vous que les variables sont définies avant d'effectuer des opérations arithmétiques.
+- Utilisez des parenthèses pour contrôler l'ordre des opérations, par exemple : `@ result = (a + b) * c`.
+- Rappelez-vous que la commande `@` ne gère que les entiers. Pour les calculs à virgule flottante, envisagez d'utiliser des outils comme `bc`.

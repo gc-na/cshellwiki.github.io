@@ -1,52 +1,46 @@
 # [Linux] C Shell (csh) iotop Kullanımı: Disk I/O işlemlerini izleme aracı
 
 ## Genel Bakış
-iotop, sistemdeki disk girdi/çıktı (I/O) işlemlerini izlemek için kullanılan bir komut satırı aracıdır. Bu komut, hangi süreçlerin disk üzerinde ne kadar I/O kaynağı kullandığını gösterir, böylece sistem performansını analiz etmenize yardımcı olur.
+iotop, sistemdeki disk girdi/çıktı (I/O) işlemlerini izlemek için kullanılan bir komuttur. Bu komut, hangi süreçlerin en fazla I/O kaynağını kullandığını göstererek, sistem performansını analiz etmenize yardımcı olur.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
+
 ```bash
 iotop [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-o`, `--only`: Sadece I/O işlemi yapan süreçleri gösterir.
-- `-b`, `--batch`: Çıktıyı toplu modda gösterir, bu da komutun arka planda çalıştırılmasına olanak tanır.
-- `-n NUM`, `--iter=NUM`: Belirtilen sayıda döngü çalıştırır ve ardından çıkış yapar.
-- `-d SEC`, `--delay=SEC`: Her güncelleme arasında beklemek için saniye cinsinden bir süre belirtir.
+- `-o`: Sadece I/O işlemi yapan süreçleri gösterir.
+- `-b`: Arka planda çalışır ve çıktıyı sürekli günceller.
+- `-d <saniye>`: Güncellemeler arasındaki süreyi belirler (varsayılan 1 saniye).
+- `-n <sayı>`: Belirtilen sayıda güncelleme sonrası çıkış yapar.
 
 ## Yaygın Örnekler
-Aşağıda iotop komutunun bazı pratik örnekleri bulunmaktadır:
-
-1. Temel iotop kullanımı:
+1. **Temel Kullanım**: Tüm I/O işlemlerini izlemek için.
    ```bash
    iotop
    ```
 
-2. Sadece I/O işlemi yapan süreçleri görüntülemek için:
+2. **Sadece I/O yapan süreçleri gösterme**:
    ```bash
    iotop -o
    ```
 
-3. Çıktıyı toplu modda görüntülemek için:
+3. **Arka planda çalıştırma ve her 2 saniyede bir güncelleme**:
    ```bash
-   iotop -b
+   iotop -b -d 2
    ```
 
-4. Her 2 saniyede bir güncelleme yapmak için:
-   ```bash
-   iotop -d 2
-   ```
-
-5. 5 döngü çalıştırmak için:
+4. **5 güncellemeden sonra çıkış yapma**:
    ```bash
    iotop -n 5
    ```
 
 ## İpuçları
-- iotop'u çalıştırmadan önce, komutun doğru çalışabilmesi için root yetkilerine sahip olmanız gerektiğini unutmayın.
-- Uzun süreli izleme yapmak istiyorsanız, toplu modda çalıştırarak çıktıyı bir dosyaya yönlendirebilirsiniz:
+- iotop komutunu çalıştırmak için genellikle root yetkilerine ihtiyaç duyarsınız; bu nedenle `sudo` ile kullanmanız gerekebilir.
+- Disk I/O sorunlarını analiz ederken, hangi süreçlerin en fazla kaynak tükettiğini belirlemek için `-o` seçeneğini kullanmak faydalıdır.
+- Uzun süreli izleme yapacaksanız, çıktıyı bir dosyaya yönlendirmek için `-b` seçeneği ile birlikte `>` operatörünü kullanabilirsiniz. Örneğin:
   ```bash
-  iotop -b -n 10 > iotop_output.txt
+  iotop -b -d 2 > iotop_log.txt
   ```
-- Performans sorunlarını teşhis etmek için iotop'u kullanırken, yüksek I/O kullanımı olan süreçleri not alın ve gerekirse bu süreçleri durdurmayı düşünün.

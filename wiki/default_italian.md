@@ -1,43 +1,44 @@
 # [Linux] C Shell (csh) default uso: Esegue un comando predefinito
 
 ## Overview
-Il comando `default` in C Shell (csh) viene utilizzato per impostare o visualizzare il comando predefinito da eseguire quando un comando non viene trovato. È utile per personalizzare l'ambiente di lavoro e gestire gli errori di comando.
+Il comando `default` in C Shell (csh) viene utilizzato per impostare o visualizzare il comando predefinito per un determinato tipo di file. Questo è particolarmente utile quando si desidera specificare quale programma deve essere utilizzato per aprire file di un certo tipo.
 
 ## Usage
-La sintassi di base del comando è la seguente:
+La sintassi di base del comando `default` è la seguente:
 
 ```
-default [opzioni] [argomenti]
+default [options] [arguments]
 ```
 
 ## Common Options
-- `-s`: Mostra il comando predefinito attuale.
-- `-n`: Non eseguire il comando, solo visualizza il risultato.
+- `-a`: Aggiunge un nuovo comando predefinito senza rimuovere quelli esistenti.
+- `-r`: Rimuove il comando predefinito attuale per il tipo di file specificato.
+- `-l`: Elenca i comandi predefiniti attuali per i tipi di file.
 
 ## Common Examples
-Ecco alcuni esempi pratici dell'uso del comando `default`:
+Ecco alcuni esempi pratici di utilizzo del comando `default`:
 
-1. **Visualizzare il comando predefinito attuale:**
+1. **Impostare un comando predefinito per i file .txt:**
    ```csh
-   default -s
+   default -a .txt vi
    ```
 
-2. **Impostare un nuovo comando predefinito:**
+2. **Rimuovere il comando predefinito per i file .jpg:**
    ```csh
-   default mycommand
+   default -r .jpg
    ```
 
-3. **Verificare se il comando predefinito è stato impostato correttamente:**
+3. **Elencare i comandi predefiniti attuali:**
    ```csh
-   default -s
+   default -l
    ```
 
-4. **Impostare un comando predefinito senza eseguirlo:**
+4. **Impostare un comando predefinito per i file .pdf:**
    ```csh
-   default -n mycommand
+   default .pdf evince
    ```
 
 ## Tips
-- Assicurati di controllare il comando predefinito attuale prima di modificarlo, per evitare conflitti.
-- Utilizza l'opzione `-n` per testare un nuovo comando predefinito senza eseguirlo effettivamente.
-- Ricorda che il comando predefinito verrà eseguito solo se il comando richiesto non è trovato, quindi impostalo con attenzione.
+- Assicurati di avere i permessi necessari per modificare i comandi predefiniti.
+- Utilizza l'opzione `-l` per controllare i comandi predefiniti attuali prima di apportare modifiche.
+- Ricorda che le modifiche ai comandi predefiniti possono influenzare il modo in cui i file vengono aperti nel tuo ambiente di lavoro.

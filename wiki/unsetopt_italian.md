@@ -1,47 +1,47 @@
-# [Linux] C Shell (csh) unsetopt: Disabilita le opzioni della shell
+# [Linux] C Shell (csh) unsetopt: Disattivare le opzioni della shell
 
 ## Overview
-Il comando `unsetopt` in C Shell (csh) viene utilizzato per disabilitare le opzioni della shell precedentemente attivate. Questo comando è utile per ripristinare il comportamento predefinito della shell o per modificare le impostazioni di esecuzione.
+Il comando `unsetopt` nella C Shell (csh) viene utilizzato per disattivare specifiche opzioni della shell. Queste opzioni possono influenzare il comportamento della shell e l'esecuzione dei comandi.
 
 ## Usage
 La sintassi di base del comando `unsetopt` è la seguente:
 
 ```csh
-unsetopt [options] [arguments]
+unsetopt [opzioni] [argomenti]
 ```
 
 ## Common Options
 Ecco alcune opzioni comuni per `unsetopt`:
 
-- `allexport`: Disabilita l'esportazione automatica delle variabili.
-- `ignoreeof`: Disabilita l'uscita dalla shell quando si preme Ctrl+D.
+- `allexport`: Disattiva l'esportazione automatica delle variabili.
 - `noclobber`: Permette di sovrascrivere i file esistenti durante la redirezione.
-- `noglob`: Disabilita l'espansione dei caratteri jolly.
+- `noexec`: Disattiva l'esecuzione dei comandi, utile per il debug.
+- `interactive`: Disattiva la modalità interattiva della shell.
 
 ## Common Examples
-Ecco alcuni esempi pratici di utilizzo del comando `unsetopt`:
+Ecco alcuni esempi pratici dell'uso di `unsetopt`:
 
-1. Disabilitare l'esportazione automatica delle variabili:
+1. Disattivare l'esportazione automatica delle variabili:
    ```csh
    unsetopt allexport
    ```
 
-2. Disabilitare l'uscita dalla shell con Ctrl+D:
-   ```csh
-   unsetopt ignoreeof
-   ```
-
-3. Permettere la sovrascrittura dei file esistenti:
+2. Permettere la sovrascrittura dei file esistenti:
    ```csh
    unsetopt noclobber
    ```
 
-4. Disabilitare l'espansione dei caratteri jolly:
+3. Disattivare la modalità di esecuzione dei comandi:
    ```csh
-   unsetopt noglob
+   unsetopt noexec
+   ```
+
+4. Disattivare la modalità interattiva:
+   ```csh
+   unsetopt interactive
    ```
 
 ## Tips
-- Controlla sempre le opzioni attive con il comando `set` prima di utilizzare `unsetopt` per sapere quali opzioni disattivare.
-- Utilizza `unsetopt` con cautela, poiché alcune opzioni possono influenzare il comportamento della shell in modi imprevisti.
-- È buona pratica documentare le modifiche alle opzioni della shell, specialmente in script complessi, per facilitare la manutenzione.
+- Assicurati di sapere quali opzioni stai disattivando, poiché alcune potrebbero influenzare il comportamento della tua shell in modi imprevisti.
+- Puoi visualizzare le opzioni attualmente attive utilizzando il comando `set` senza argomenti.
+- Utilizza `setopt` per riattivare le opzioni disattivate in un secondo momento, se necessario.

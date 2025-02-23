@@ -1,7 +1,7 @@
-# [Hệ điều hành] C Shell (csh) vigr Cách sử dụng: Chỉnh sửa tệp cấu hình vi
+# [Hệ điều hành] C Shell (csh) vigr: [chỉnh sửa tệp cấu hình vi]
 
 ## Overview
-Lệnh `vigr` được sử dụng để chỉnh sửa các tệp cấu hình của hệ thống, đặc biệt là tệp `/etc/group` và `/etc/passwd`. Lệnh này mở tệp trong trình soạn thảo vi, giúp người dùng thực hiện các thay đổi một cách an toàn và hiệu quả.
+Lệnh `vigr` được sử dụng để chỉnh sửa tệp cấu hình của trình quản lý người dùng `vi` trong môi trường C Shell. Nó đảm bảo rằng tệp cấu hình được mở một cách an toàn và không bị thay đổi bởi các quá trình khác trong khi bạn đang chỉnh sửa.
 
 ## Usage
 Cú pháp cơ bản của lệnh `vigr` như sau:
@@ -10,28 +10,34 @@ vigr [options] [arguments]
 ```
 
 ## Common Options
-- `-s`: Kiểm tra tệp trước khi mở để đảm bảo không có lỗi.
-- `-f <file>`: Chỉ định tệp cụ thể để chỉnh sửa, thay vì tệp mặc định.
+- `-c`: Kiểm tra tệp cấu hình để đảm bảo không có lỗi cú pháp.
+- `-s`: Chỉ định chế độ chỉ đọc cho tệp cấu hình.
+- `-f <file>`: Chỉ định tệp cấu hình cụ thể để chỉnh sửa thay vì tệp mặc định.
 
 ## Common Examples
 Dưới đây là một số ví dụ thực tế khi sử dụng lệnh `vigr`:
 
-1. Mở tệp cấu hình nhóm:
+1. Mở tệp cấu hình mặc định để chỉnh sửa:
    ```bash
    vigr
    ```
 
-2. Mở tệp `/etc/passwd` để chỉnh sửa:
+2. Kiểm tra tệp cấu hình trước khi chỉnh sửa:
    ```bash
-   vigr -f /etc/passwd
+   vigr -c
    ```
 
-3. Kiểm tra tệp trước khi mở:
+3. Mở một tệp cấu hình cụ thể:
+   ```bash
+   vigr -f /etc/hosts
+   ```
+
+4. Mở tệp cấu hình chỉ với quyền đọc:
    ```bash
    vigr -s
    ```
 
 ## Tips
-- Hãy chắc chắn rằng bạn có quyền truy cập để chỉnh sửa các tệp cấu hình trước khi sử dụng `vigr`.
-- Sử dụng tùy chọn `-s` để kiểm tra tệp trước khi thực hiện bất kỳ thay đổi nào, giúp tránh các lỗi không mong muốn.
-- Làm quen với các lệnh cơ bản của trình soạn thảo vi để chỉnh sửa tệp một cách hiệu quả hơn.
+- Luôn kiểm tra tệp cấu hình với tùy chọn `-c` trước khi lưu để tránh lỗi cú pháp.
+- Sử dụng tùy chọn `-s` nếu bạn chỉ cần xem tệp mà không muốn thay đổi.
+- Đảm bảo bạn có quyền truy cập cần thiết để chỉnh sửa tệp cấu hình, đặc biệt là các tệp hệ thống.

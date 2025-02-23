@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) dnf użycie: Zarządzanie pakietami w systemie
+# [Linux] C Shell (csh) dnf użycie: zarządzanie pakietami
 
 ## Overview
-Polecenie `dnf` (Dandified YUM) jest menedżerem pakietów dla systemów opartych na Red Hat, takich jak Fedora i CentOS. Umożliwia instalację, aktualizację i usuwanie pakietów oprogramowania, a także zarządzanie ich zależnościami.
+Polecenie `dnf` (Dandified YUM) jest menedżerem pakietów dla systemów Linux, który umożliwia instalację, aktualizację i usuwanie oprogramowania. Jest to nowoczesna wersja YUM, oferująca lepszą wydajność i więcej funkcji.
 
 ## Usage
 Podstawowa składnia polecenia `dnf` jest następująca:
@@ -11,11 +11,11 @@ dnf [opcje] [argumenty]
 ```
 
 ## Common Options
-- `install`: Instaluje pakiet.
-- `remove`: Usuwa zainstalowany pakiet.
-- `update`: Aktualizuje zainstalowane pakiety do najnowszych wersji.
-- `search`: Wyszukuje pakiety według nazwy lub opisu.
-- `list`: Wyświetla listę dostępnych lub zainstalowanych pakietów.
+- `install`: Instalacja pakietu.
+- `remove`: Usunięcie pakietu.
+- `update`: Aktualizacja zainstalowanych pakietów.
+- `search`: Wyszukiwanie pakietów w repozytoriach.
+- `info`: Wyświetlenie informacji o pakiecie.
 
 ## Common Examples
 - Instalacja pakietu:
@@ -38,12 +38,12 @@ dnf [opcje] [argumenty]
   dnf search nazwa_pakietu
   ```
 
-- Wyświetlanie listy zainstalowanych pakietów:
+- Wyświetlenie informacji o pakiecie:
   ```bash
-  dnf list installed
+  dnf info nazwa_pakietu
   ```
 
 ## Tips
-- Zawsze sprawdzaj dostępność aktualizacji przed instalacją nowych pakietów, aby uniknąć problemów z zależnościami.
-- Używaj opcji `-y`, aby automatycznie potwierdzać instalację lub usunięcie pakietów, co przyspiesza proces.
-- Regularnie przeglądaj zainstalowane pakiety i usuwaj te, które nie są już potrzebne, aby zaoszczędzić miejsce na dysku.
+- Zawsze sprawdzaj dostępność aktualizacji przed instalacją nowych pakietów, aby zapewnić zgodność.
+- Używaj opcji `-y`, aby automatycznie potwierdzać wszystkie pytania podczas instalacji lub aktualizacji.
+- Regularnie przeglądaj zainstalowane pakiety, aby utrzymać system w czystości i porządku.

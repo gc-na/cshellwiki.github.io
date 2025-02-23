@@ -1,51 +1,50 @@
 # [Sistem Operasi] C Shell (csh) basename Penggunaan: Mengambil nama file tanpa path
 
 ## Overview
-Perintah `basename` digunakan untuk mengambil nama file dari sebuah path lengkap, menghilangkan direktori dan ekstensi file jika diinginkan. Ini sangat berguna ketika Anda hanya ingin menampilkan nama file tanpa informasi tambahan tentang lokasi atau jenis file.
+Perintah `basename` digunakan untuk mengambil nama file dari sebuah path lengkap, menghapus direktori dan ekstensi file jika diinginkan. Ini sangat berguna ketika Anda hanya ingin menampilkan nama file tanpa informasi tambahan dari path.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `basename`:
 
-```csh
+```
 basename [options] [arguments]
 ```
 
 ## Common Options
 - `-s, --suffix`: Menghapus sufiks tertentu dari nama file.
-- `-a, --multiple`: Mengambil nama dari beberapa argumen sekaligus.
+- `-a, --multiple`: Mengambil nama dari beberapa file sekaligus.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan perintah `basename`:
 
-1. Mengambil nama file dari path lengkap:
-    ```csh
-    basename /home/user/documents/file.txt
-    ```
-    Output: `file.txt`
+1. **Mengambil nama file dari path lengkap:**
+   ```csh
+   basename /home/user/documents/file.txt
+   ```
+   Output: `file.txt`
 
-2. Mengambil nama file tanpa ekstensi:
-    ```csh
-    basename /home/user/documents/file.txt .txt
-    ```
-    Output: `file`
+2. **Menghapus ekstensi dari nama file:**
+   ```csh
+   basename /home/user/documents/file.txt .txt
+   ```
+   Output: `file`
 
-3. Mengambil nama dari beberapa file:
-    ```csh
-    basename -a /home/user/documents/file1.txt /home/user/documents/file2.txt
-    ```
-    Output:
-    ```
-    file1.txt
-    file2.txt
-    ```
+3. **Mengambil nama dari beberapa file:**
+   ```csh
+   basename -a /home/user/documents/file1.txt /home/user/documents/file2.txt
+   ```
+   Output:
+   ```
+   file1.txt
+   file2.txt
+   ```
 
-4. Menghapus sufiks dari nama file:
-    ```csh
-    basename /home/user/documents/report.pdf .pdf
-    ```
-    Output: `report`
+4. **Menghapus sufiks tertentu:**
+   ```csh
+   basename /home/user/documents/report.pdf .pdf
+   ```
+   Output: `report`
 
 ## Tips
-- Gunakan `basename` dalam skrip untuk memproses nama file secara otomatis.
-- Kombinasikan `basename` dengan perintah lain seperti `find` untuk mendapatkan nama file dari hasil pencarian.
-- Pastikan untuk menyertakan ekstensi yang tepat saat menggunakan opsi `-s` untuk menghindari hasil yang tidak diinginkan.
+- Gunakan `basename` ketika Anda perlu mengekstrak nama file dari path dalam skrip shell untuk memudahkan pemrosesan file.
+- Pertimbangkan untuk menggunakan opsi `-a` jika Anda bekerja dengan beberapa file untuk menghemat waktu dan usaha.
+- Pastikan untuk menyertakan sufiks yang benar saat menggunakan opsi `-s` agar hasil yang diinginkan sesuai.

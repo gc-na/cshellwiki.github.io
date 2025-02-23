@@ -1,17 +1,17 @@
-# [Linux] C Shell (csh) umask Kullanımı: Dosya izinlerini ayarlamak
+# [Linux] C Shell (csh) umask Kullanımı: Dosya izinlerini ayarlama
 
 ## Overview
-`umask` komutu, yeni oluşturulan dosyaların ve dizinlerin varsayılan izinlerini ayarlamak için kullanılır. Bu komut, kullanıcıların dosya ve dizin izinlerini kontrol etmelerine olanak tanır.
+`umask` komutu, yeni oluşturulan dosya ve dizinlerin varsayılan izinlerini belirlemek için kullanılır. Bu komut, kullanıcıların dosya ve dizinlerinin kimler tarafından erişilebileceğini kontrol etmelerine yardımcı olur.
 
 ## Usage
 Temel sözdizimi şu şekildedir:
-```
+```csh
 umask [options] [arguments]
 ```
 
 ## Common Options
-- `-S`: Mevcut umask değerini sembolik biçimde gösterir.
-- `-p`: Mevcut umask değerini gösterir, ancak değişiklik yapmaz.
+- `-S`: Umask değerini sembolik olarak gösterir.
+- `-p`: Mevcut umask değerini gösterir.
 
 ## Common Examples
 1. Mevcut umask değerini görüntüleme:
@@ -19,7 +19,7 @@ umask [options] [arguments]
    umask
    ```
 
-2. Umask değerini 022 olarak ayarlama (grup ve diğer kullanıcılar için yazma iznini kaldırır):
+2. Umask değerini 022 olarak ayarlama (diğer kullanıcıların yazma iznini kaldırma):
    ```csh
    umask 022
    ```
@@ -29,12 +29,12 @@ umask [options] [arguments]
    umask -S
    ```
 
-4. Umask değerini 007 olarak ayarlama (sadece sahibi için tam izin, grup ve diğerleri için hiç izin yok):
+4. Umask değerini 007 olarak ayarlama (sadece sahibi ve grup üyeleri için okuma/yazma izni):
    ```csh
    umask 007
    ```
 
 ## Tips
-- Umask değerini ayarladıktan sonra, yeni oluşturulan dosyaların izinlerini kontrol etmek için `ls -l` komutunu kullanın.
-- Umask ayarlarını kalıcı hale getirmek için, bu komutu kullanıcı profil dosyanıza ekleyin (örneğin, `.cshrc`).
-- Farklı projeler için farklı umask değerleri kullanarak, dosya izinlerini daha iyi yönetebilirsiniz.
+- Umask değerini ayarlarken, dosya ve dizin izinlerini dikkatlice düşünün; yanlış ayarlar, istenmeyen erişim kısıtlamalarına yol açabilir.
+- Umask ayarlarını, kullanıcı oturumunuzun başlangıcında `.cshrc` dosyasına ekleyerek kalıcı hale getirebilirsiniz.
+- Umask değerini kontrol etmek için sık sık `umask` komutunu kullanarak mevcut ayarları gözden geçirin.

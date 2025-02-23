@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) clear gebruik: Verwijdert de terminalinhoud
+# [Linux] C Shell (csh) clear gebruik: Scherm wissen
 
 ## Overzicht
-De `clear` opdracht in C Shell (csh) wordt gebruikt om de terminalinhoud te wissen. Dit is handig om een schone werkomgeving te creëren zonder afleiding van eerdere commando's of uitvoer.
+De `clear` opdracht in C Shell (csh) wordt gebruikt om de terminal of het scherm te wissen. Dit is handig om een schone werkruimte te creëren zonder afleiding van eerdere commando's en uitvoer.
 
 ## Gebruik
 De basis syntaxis van de `clear` opdracht is als volgt:
@@ -11,20 +11,29 @@ clear [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- **-x**: Verwijdert de inhoud van de terminal zonder de cursorpositie te resetten.
+De `clear` opdracht heeft meestal geen complexe opties, maar hier zijn enkele nuttige:
+
+- `-x` : Verwijdert de inhoud van het scherm zonder de cursorpositie te resetten.
 
 ## Veelvoorkomende Voorbeelden
 
-1. **Eenvoudig de terminal wissen**:
-   ```csh
-   clear
-   ```
+Hier zijn enkele praktische voorbeelden van het gebruik van de `clear` opdracht:
 
-2. **De terminal wissen met de -x optie**:
-   ```csh
-   clear -x
-   ```
+### Voorbeeld 1: Gewoon scherm wissen
+Om het scherm te wissen, typ je eenvoudig:
+
+```csh
+clear
+```
+
+### Voorbeeld 2: Scherm wissen met cursorpositie behouden
+Als je de cursorpositie wilt behouden, gebruik dan de `-x` optie:
+
+```csh
+clear -x
+```
 
 ## Tips
-- Gebruik `clear` regelmatig om je terminal overzichtelijk te houden, vooral na het uitvoeren van lange opdrachten.
-- Combineer `clear` met andere commando's in scripts om de uitvoer te organiseren en te verfrissen.
+- Gebruik `clear` regelmatig om je terminal overzichtelijk te houden, vooral na het uitvoeren van lange commando's.
+- Combineer `clear` met andere commando's in een script om een schone uitvoer te garanderen.
+- Onthoud dat `clear` alleen de zichtbare inhoud van de terminal wist; eerdere opdrachten blijven in de geschiedenis en kunnen met de pijltoetsen worden opgeroepen.

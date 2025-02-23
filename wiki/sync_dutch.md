@@ -1,42 +1,45 @@
 # [Linux] C Shell (csh) sync gebruik: Zorgt voor het synchroniseren van schijfbuffers
 
 ## Overzicht
-De `sync` opdracht in C Shell (csh) wordt gebruikt om de schijfbuffers te synchroniseren met de schijf. Dit betekent dat alle gegevens die in het geheugen zijn opgeslagen, maar nog niet naar de schijf zijn geschreven, worden weggeschreven. Dit is vooral nuttig om gegevensverlies te voorkomen bij een onverwachte systeemcrash of stroomuitval.
+De `sync`-opdracht in C Shell (csh) wordt gebruikt om de gegevens in de schijfbuffers naar de schijf te schrijven. Dit is belangrijk om ervoor te zorgen dat alle gegevens die in het geheugen zijn opgeslagen, correct worden opgeslagen op de harde schijf, vooral voor het afsluiten van het systeem of het ontkoppelen van een schijf.
 
 ## Gebruik
-De basis syntaxis van de `sync` opdracht is als volgt:
+De basis syntaxis van de `sync`-opdracht is als volgt:
 
 ```csh
 sync [opties] [argumenten]
 ```
 
 ## Veelvoorkomende opties
-De `sync` opdracht heeft meestal geen opties, maar hier zijn enkele relevante punten:
+De `sync`-opdracht heeft meestal geen opties, maar hier zijn enkele relevante details:
 
-- **-f**: Forceert een synchronisatie, zelfs als er geen wijzigingen zijn gedetecteerd.
-- **-n**: Voorkomt dat de opdracht een foutmelding geeft als er geen wijzigingen zijn.
+- **-f**: Forceert het synchroniseren van een specifiek bestandssysteem.
+- **-a**: Synchroniseert alle gemonteerde bestandssystemen.
 
-## Veelvoorkomende Voorbeelden
+## Veelvoorkomende voorbeelden
 
-1. **Basis synchronisatie**:
-   Om alle buffers te synchroniseren, gebruik je simpelweg:
-   ```csh
-   sync
-   ```
+### Voorbeeld 1: Basis synchronisatie
+Om alle schijfbuffers te synchroniseren, voer je gewoon het volgende commando uit:
 
-2. **Forceer synchronisatie**:
-   Om een geforceerde synchronisatie uit te voeren, gebruik je:
-   ```csh
-   sync -f
-   ```
+```csh
+sync
+```
 
-3. **Synchronisatie zonder foutmeldingen**:
-   Om een synchronisatie uit te voeren zonder foutmeldingen, gebruik je:
-   ```csh
-   sync -n
-   ```
+### Voorbeeld 2: Synchroniseren van een specifiek bestandssysteem
+Als je een specifiek bestandssysteem wilt synchroniseren, gebruik dan de -f optie:
+
+```csh
+sync -f /pad/naar/bestandssysteem
+```
+
+### Voorbeeld 3: Synchroniseren van alle gemonteerde bestandssystemen
+Gebruik de -a optie om alle gemonteerde bestandssystemen te synchroniseren:
+
+```csh
+sync -a
+```
 
 ## Tips
-- Voer `sync` uit voordat je een systeem afsluit of opnieuw opstart om ervoor te zorgen dat alle gegevens veilig zijn opgeslagen.
-- Het is een goede gewoonte om `sync` regelmatig te gebruiken bij het werken met belangrijke bestanden om gegevensverlies te minimaliseren.
-- Combineer `sync` met andere opdrachten in scripts om de gegevensintegriteit te waarborgen na het uitvoeren van schrijfoperaties.
+- Voer `sync` uit voordat je een systeem afsluit of een schijf ontkoppelt om gegevensverlies te voorkomen.
+- Het is een goede gewoonte om `sync` regelmatig te gebruiken bij het werken met belangrijke bestanden.
+- Houd er rekening mee dat het gebruik van `sync` enige tijd kan duren, afhankelijk van de hoeveelheid gegevens die moeten worden geschreven.

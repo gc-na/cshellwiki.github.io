@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) uptime Verwendung: Zeigt die Systemlaufzeit an
 
 ## Übersicht
-Der Befehl `uptime` zeigt an, wie lange das System bereits läuft, sowie die aktuelle Systemlast und die Anzahl der Benutzer, die angemeldet sind. Dies ist nützlich, um die Stabilität und Leistung eines Systems zu überwachen.
+Der Befehl `uptime` zeigt an, wie lange das System bereits läuft, sowie die aktuelle Uhrzeit, die Anzahl der angemeldeten Benutzer und die durchschnittliche Systemlast über verschiedene Zeiträume.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
@@ -15,25 +15,29 @@ uptime [Optionen]
 - `-s`: Gibt das Datum und die Uhrzeit an, zu der das System gestartet wurde.
 
 ## Häufige Beispiele
+
+### Beispiel 1: Grundlegende Verwendung
 Um die Systemlaufzeit und die aktuelle Last anzuzeigen, verwenden Sie einfach:
 
-```csh
+```
 uptime
 ```
 
-Um die Laufzeit in einem lesbaren Format anzuzeigen, verwenden Sie:
+### Beispiel 2: Laufzeit im lesbaren Format
+Um die Laufzeit in einem lesbaren Format anzuzeigen, verwenden Sie die Option `-p`:
 
-```csh
+```
 uptime -p
 ```
 
-Um das Startdatum und die Uhrzeit des Systems anzuzeigen, verwenden Sie:
+### Beispiel 3: Startzeit des Systems anzeigen
+Um das genaue Startdatum und die Uhrzeit des Systems zu sehen, verwenden Sie die Option `-s`:
 
-```csh
+```
 uptime -s
 ```
 
 ## Tipps
-- Verwenden Sie `uptime` regelmäßig, um die Systemleistung zu überwachen, insbesondere auf Servern.
+- Verwenden Sie `uptime` regelmäßig, um die Systemleistung zu überwachen und Engpässe frühzeitig zu erkennen.
 - Kombinieren Sie `uptime` mit anderen Befehlen wie `top` oder `htop`, um eine umfassendere Analyse der Systemressourcen zu erhalten.
-- Achten Sie auf die Systemlastwerte, um Engpässe frühzeitig zu erkennen.
+- Nutzen Sie die Option `-p`, um die Informationen für weniger technische Benutzer verständlicher zu machen.

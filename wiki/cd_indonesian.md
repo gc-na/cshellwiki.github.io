@@ -1,7 +1,7 @@
-# [Sistem Operasi] C Shell (csh) cd: Navigasi Direktori
+# [Sistem Operasi] C Shell (csh) cd: Navigasi direktori
 
 ## Overview
-Perintah `cd` (change directory) digunakan dalam C Shell untuk berpindah antara direktori di sistem file. Dengan menggunakan perintah ini, pengguna dapat mengakses folder yang berbeda untuk menjalankan perintah atau mengelola file.
+Perintah `cd` (change directory) dalam C Shell digunakan untuk berpindah antara direktori dalam sistem file. Dengan menggunakan perintah ini, pengguna dapat mengakses folder yang berbeda untuk menjalankan perintah atau mengelola file.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `cd`:
@@ -12,33 +12,38 @@ cd [options] [arguments]
 
 ## Common Options
 - `-`: Kembali ke direktori sebelumnya.
-- `~`: Mengarah ke direktori home pengguna.
-- `..`: Mengarah ke direktori induk dari direktori saat ini.
+- `..`: Pindah ke direktori induk (parent directory).
+- `~`: Pindah ke direktori home pengguna.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `cd`:
 
-1. **Berpindah ke direktori home:**
-   ```csh
-   cd ~
-   ```
-
-2. **Berpindah ke direktori induk:**
-   ```csh
-   cd ..
-   ```
-
-3. **Berpindah ke direktori tertentu:**
+1. Pindah ke direktori tertentu:
    ```csh
    cd /path/to/directory
    ```
 
-4. **Kembali ke direktori sebelumnya:**
+2. Kembali ke direktori sebelumnya:
    ```csh
    cd -
    ```
 
+3. Pindah ke direktori induk:
+   ```csh
+   cd ..
+   ```
+
+4. Pindah ke direktori home pengguna:
+   ```csh
+   cd ~
+   ```
+
+5. Pindah ke subdirektori dalam direktori saat ini:
+   ```csh
+   cd subdirectory_name
+   ```
+
 ## Tips
-- Selalu gunakan `cd ~` untuk cepat kembali ke direktori home Anda.
-- Gunakan `cd ..` untuk navigasi cepat ke atas dalam struktur direktori.
-- Anda dapat menggunakan tab untuk menyelesaikan nama direktori secara otomatis, yang dapat menghemat waktu dan mengurangi kesalahan pengetikan.
+- Gunakan `cd -` untuk dengan cepat kembali ke direktori terakhir yang Anda kunjungi.
+- Untuk memeriksa direktori saat ini setelah berpindah, gunakan perintah `pwd` (print working directory).
+- Selalu pastikan jalur direktori yang Anda masukkan benar untuk menghindari kesalahan navigasi.

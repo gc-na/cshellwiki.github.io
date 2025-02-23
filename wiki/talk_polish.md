@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) talk użycie: Rozmowa z innym użytkownikiem
+# [Linux] C Shell (csh) talk użycie: komunikacja w czasie rzeczywistym
 
 ## Overview
-Polecenie `talk` w C Shell (csh) pozwala na prowadzenie rozmów w czasie rzeczywistym z innymi użytkownikami systemu. Umożliwia to interaktywne komunikowanie się, co jest przydatne w sytuacjach, gdy potrzebna jest szybka wymiana informacji.
+Polecenie `talk` w systemie C Shell (csh) służy do prowadzenia rozmów w czasie rzeczywistym z innymi użytkownikami systemu. Umożliwia to interaktywną komunikację, gdzie użytkownicy mogą wymieniać wiadomości w osobnych oknach terminala.
 
 ## Usage
 Podstawowa składnia polecenia `talk` jest następująca:
@@ -11,29 +11,27 @@ talk [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-a`: Umożliwia ignorowanie ustawień dotyczących nieprzeszkadzania.
-- `-s`: Wysyła wiadomość do użytkownika, nawet jeśli jest on zalogowany na innym terminalu.
-- `-n`: Umożliwia określenie numeru terminala, na którym ma być prowadzona rozmowa.
+- `-a`: Umożliwia ignorowanie ustawień dotyczących dźwięku.
+- `-s`: Umożliwia wysyłanie wiadomości w trybie "silent", co oznacza, że nie będą wyświetlane powiadomienia dźwiękowe.
+- `-u`: Umożliwia wyświetlanie informacji o użytkownikach, którzy są aktualnie zalogowani.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `talk`:
-
-1. Rozpoczęcie rozmowy z użytkownikiem o nazwie `janek`:
+1. Rozpoczęcie rozmowy z użytkownikiem `janek`:
    ```csh
    talk janek
    ```
 
-2. Rozpoczęcie rozmowy z użytkownikiem `ania` na terminalu `pts/1`:
+2. Rozpoczęcie rozmowy z użytkownikiem `ania` z wyłączonymi dźwiękami:
    ```csh
-   talk ania pts/1
+   talk -a ania
    ```
 
-3. Wysłanie wiadomości do użytkownika `maria`, ignorując ustawienia nieprzeszkadzania:
+3. Rozpoczęcie rozmowy z użytkownikiem `marek` w trybie cichym:
    ```csh
-   talk -a maria
+   talk -s marek
    ```
 
 ## Tips
-- Upewnij się, że obie strony są zalogowane w systemie i mają otwarte terminale, aby rozmowa mogła się odbyć.
-- Zawsze sprawdzaj, czy użytkownik, z którym chcesz rozmawiać, jest dostępny, aby uniknąć niepotrzebnych prób nawiązania kontaktu.
-- Pamiętaj, że `talk` może być zablokowane przez ustawienia prywatności, więc warto skontaktować się z użytkownikiem w inny sposób przed próbą rozmowy.
+- Upewnij się, że obaj użytkownicy są zalogowani w tym samym czasie, aby rozmowa była możliwa.
+- Sprawdź, czy masz odpowiednie uprawnienia do korzystania z polecenia `talk`, ponieważ niektórzy administratorzy mogą je ograniczyć.
+- Zawsze możesz zakończyć rozmowę, wpisując `Ctrl+C` w oknie terminala.

@@ -1,11 +1,12 @@
-# [Linux] C Shell (csh) systemctl Kullanımı: Sistem hizmetlerini yönetme
+# [Linux] C Shell (csh) systemctl Kullanımı: Sistem hizmetlerini yönetme aracı
 
 ## Genel Bakış
-`systemctl`, Linux sistemlerinde hizmetleri ve birim dosyalarını yönetmek için kullanılan bir komuttur. Bu komut, sistemin durumunu kontrol etme, hizmetleri başlatma veya durdurma gibi işlemleri gerçekleştirmeye olanak tanır.
+`systemctl`, Linux sistemlerinde hizmetleri ve birim dosyalarını yönetmek için kullanılan bir komuttur. Bu komut, sistemin durumunu kontrol etme, hizmetleri başlatma veya durdurma ve sistem birimlerini yönetme gibi işlevleri yerine getirir.
 
 ## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
-```bash
+Temel sözdizimi şu şekildedir:
+
+```csh
 systemctl [seçenekler] [argümanlar]
 ```
 
@@ -14,43 +15,43 @@ systemctl [seçenekler] [argümanlar]
 - `stop`: Belirtilen hizmeti durdurur.
 - `restart`: Belirtilen hizmeti yeniden başlatır.
 - `status`: Belirtilen hizmetin durumunu gösterir.
-- `enable`: Hizmeti sistem başlangıcında otomatik olarak başlatılacak şekilde ayarlar.
-- `disable`: Hizmeti sistem başlangıcında otomatik olarak başlatılmayacak şekilde ayarlar.
+- `enable`: Hizmeti sistem başlangıcında otomatik olarak başlatmak için etkinleştirir.
+- `disable`: Hizmeti sistem başlangıcında otomatik olarak başlatmaktan devre dışı bırakır.
 
 ## Yaygın Örnekler
-Aşağıda `systemctl` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+Aşağıda `systemctl` komutunun bazı pratik örnekleri verilmiştir:
 
 - Bir hizmeti başlatmak için:
-```bash
+```csh
 systemctl start httpd
 ```
 
 - Bir hizmeti durdurmak için:
-```bash
+```csh
 systemctl stop httpd
 ```
 
 - Bir hizmetin durumunu kontrol etmek için:
-```bash
+```csh
 systemctl status httpd
 ```
 
 - Bir hizmeti yeniden başlatmak için:
-```bash
+```csh
 systemctl restart httpd
 ```
 
-- Bir hizmeti otomatik olarak başlatmak için:
-```bash
+- Bir hizmeti sistem başlangıcında otomatik olarak başlatmak için:
+```csh
 systemctl enable httpd
 ```
 
 - Bir hizmetin otomatik başlatılmasını devre dışı bırakmak için:
-```bash
+```csh
 systemctl disable httpd
 ```
 
 ## İpuçları
-- Hizmetlerin durumunu kontrol etmek için `status` seçeneğini kullanarak sorunları hızlıca tespit edebilirsiniz.
-- Hizmetlerin otomatik başlatılmasını ayarlamak, sisteminizin her açılışında gerekli hizmetlerin çalışmasını sağlar.
-- `systemctl` komutunu kullanırken, yönetici (root) yetkilerine sahip olduğunuzdan emin olun; aksi takdirde bazı komutlar çalışmayabilir.
+- Hizmetlerin durumunu düzenli olarak kontrol etmek, sisteminizin sağlığını korumanıza yardımcı olur.
+- `systemctl` komutunu kullanmadan önce, gerekli izinlere sahip olduğunuzdan emin olun; genellikle `sudo` ile çalıştırmak gerekebilir.
+- Hizmetlerin günlüklerini kontrol etmek için `journalctl` komutunu kullanabilirsiniz; bu, sorun giderme sürecinde faydalı olabilir.

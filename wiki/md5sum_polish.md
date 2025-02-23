@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) md5sum użycie: Obliczanie sum kontrolnych MD5
 
 ## Overview
-Polecenie `md5sum` służy do obliczania sum kontrolnych MD5 dla plików. Jest to przydatne narzędzie do weryfikacji integralności danych, umożliwiające porównanie sum kontrolnych plików w celu sprawdzenia, czy nie zostały one zmienione.
+Polecenie `md5sum` służy do obliczania i weryfikacji sum kontrolnych MD5 dla plików. Jest to przydatne narzędzie do sprawdzania integralności danych, ponieważ pozwala na porównanie sum kontrolnych plików w celu wykrycia ewentualnych zmian lub uszkodzeń.
 
 ## Usage
 Podstawowa składnia polecenia `md5sum` jest następująca:
@@ -11,10 +11,10 @@ md5sum [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-b` : Oblicza sumę kontrolną dla plików binarnych.
-- `-c` : Sprawdza sumy kontrolne z pliku.
-- `-t` : Oblicza sumę kontrolną dla danych tekstowych.
-- `--help` : Wyświetla pomoc dotyczącą użycia polecenia.
+- `-b`: Oblicza sumę kontrolną dla plików binarnych.
+- `-c`: Sprawdza sumy kontrolne z pliku.
+- `-t`: Oblicza sumę kontrolną dla danych tekstowych.
+- `--help`: Wyświetla pomoc dotyczącą użycia polecenia.
 
 ## Common Examples
 1. Obliczanie sumy kontrolnej dla pojedynczego pliku:
@@ -27,17 +27,17 @@ md5sum [opcje] [argumenty]
    md5sum plik1.txt plik2.txt
    ```
 
-3. Zapisywanie sum kontrolnych do pliku:
+3. Zapis sum kontrolnych do pliku:
    ```csh
-   md5sum plik.txt > suma.txt
+   md5sum plik.txt > suma.md5
    ```
 
 4. Sprawdzanie sum kontrolnych z pliku:
    ```csh
-   md5sum -c suma.txt
+   md5sum -c suma.md5
    ```
 
 ## Tips
-- Zawsze używaj opcji `-b` dla plików binarnych, aby uzyskać dokładne wyniki.
-- Regularnie porównuj sumy kontrolne po przesyłaniu lub kopiowaniu plików, aby upewnić się, że nie uległy one zmianie.
-- Użyj opcji `--help`, aby uzyskać więcej informacji na temat dostępnych opcji i ich zastosowania.
+- Zawsze zapisuj sumy kontrolne do pliku, aby móc je później zweryfikować.
+- Używaj opcji `-b` dla plików binarnych, aby uzyskać dokładne wyniki.
+- Regularnie sprawdzaj sumy kontrolne ważnych plików, aby zapewnić ich integralność.

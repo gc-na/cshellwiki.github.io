@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) tput gebruik: Beheer terminal eigenschappen
 
 ## Overzicht
-De `tput`-opdracht wordt gebruikt om terminal eigenschappen te beheren en aan te passen. Hiermee kun je verschillende terminalfunctionaliteiten aanroepen, zoals het instellen van kleuren, het verplaatsen van de cursor en het aanpassen van de weergave-instellingen.
+De `tput`-opdracht wordt gebruikt om terminalcapaciteiten te beheren. Het stelt gebruikers in staat om terminalinstellingen aan te passen, zoals kleuren, cursorpositie en andere weergave-instellingen.
 
 ## Gebruik
 De basis syntaxis van de `tput`-opdracht is als volgt:
@@ -10,46 +10,52 @@ De basis syntaxis van de `tput`-opdracht is als volgt:
 tput [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
-- `setaf [kleur]`: Stel de voorgrondkleur in.
-- `setab [kleur]`: Stel de achtergrondkleur in.
-- `clear`: Maak het terminalvenster leeg.
-- `cup [rij] [kolom]`: Verplaats de cursor naar een specifieke rij en kolom.
-- `bold`: Zet de tekst in vetgedrukte stijl.
+## Veelvoorkomende opties
+- `setaf`: Stel de voorgrondkleur in.
+- `setab`: Stel de achtergrondkleur in.
+- `clear`: Wis het scherm.
+- `cup`: Verplaats de cursor naar een specifieke positie.
+- `bold`: Zet de tekst in vet.
 
-## Veelvoorkomende Voorbeelden
+## Veelvoorkomende voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van `tput`:
 
 ### Voorgrondkleur instellen
+Om de voorgrondkleur op rood in te stellen, gebruik je:
+
 ```csh
-tput setaf 2  # Zet de voorgrondkleur op groen
-echo "Dit is groene tekst"
+tput setaf 1
 ```
 
 ### Achtergrondkleur instellen
+Om de achtergrondkleur op blauw in te stellen, gebruik je:
+
 ```csh
-tput setab 4  # Zet de achtergrondkleur op blauw
-echo "Dit is tekst met een blauwe achtergrond"
+tput setab 4
 ```
 
-### Terminal wissen
+### Scherm wissen
+Om het scherm te wissen, gebruik je:
+
 ```csh
-tput clear  # Maak het terminalvenster leeg
+tput clear
 ```
 
-### Cursor verplaatsen
+### Cursorpositie instellen
+Om de cursor naar rij 10, kolom 20 te verplaatsen, gebruik je:
+
 ```csh
-tput cup 10 20  # Verplaats de cursor naar rij 10, kolom 20
-echo "Cursor is verplaatst"
+tput cup 10 20
 ```
 
 ### Vetgedrukte tekst
+Om tekst in vet weer te geven, gebruik je:
+
 ```csh
-tput bold  # Zet de tekst in vet
-echo "Dit is vetgedrukte tekst"
+tput bold
 ```
 
 ## Tips
-- Gebruik `tput reset` om de terminalinstellingen terug te zetten naar de standaardwaarden.
-- Combineer verschillende `tput`-commando's in een script om complexe terminalweergaven te creëren.
-- Controleer de beschikbare kleuren en instellingen voor jouw specifieke terminal, aangezien deze kunnen variëren.
+- Gebruik `tput reset` om de terminal naar de standaardinstellingen terug te zetten.
+- Combineer verschillende `tput`-commando's in een script om de terminalweergave te automatiseren.
+- Controleer de beschikbare kleuren en instellingen met `tput colors` om te zien wat je kunt gebruiken.

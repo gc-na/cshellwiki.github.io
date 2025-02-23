@@ -1,44 +1,44 @@
-# [Linux] C Shell (csh) reboot Kullanımı: Sistemi yeniden başlatma
+# [Linux] C Shell (csh) reboot Kullanımı: Sistemi yeniden başlatır
 
-## Genel Bakış
-`reboot` komutu, bir Unix veya Linux sistemini yeniden başlatmak için kullanılır. Bu komut, sistemin düzgün bir şekilde kapanmasını ve ardından yeniden açılmasını sağlar.
+## Overview
+`reboot` komutu, işletim sistemini yeniden başlatmak için kullanılır. Bu komut, sistemin düzgün bir şekilde kapanmasını ve ardından yeniden açılmasını sağlar.
 
-## Kullanım
-Komutun temel sözdizimi aşağıdaki gibidir:
+## Usage
+Temel sözdizimi aşağıdaki gibidir:
 
+```csh
+reboot [options] [arguments]
 ```
-reboot [seçenekler] [argümanlar]
-```
 
-## Yaygın Seçenekler
-- `-f`: Sistemi zorla yeniden başlatır, kapatma işlemi yapılmadan.
+## Common Options
+- `-f`: Sistemi zorla yeniden başlatır, açık olan işlemleri kapatmadan.
 - `-n`: Sistemi yeniden başlatırken dosya sistemlerini kontrol etmez.
-- `-w`: Yeniden başlatma işlemi yapmadan, yalnızca yazma işlemi yapar.
+- `-w`: Yeniden başlatma işlemini simüle eder, gerçek bir yeniden başlatma yapmaz.
 
-## Yaygın Örnekler
-Aşağıda `reboot` komutunun bazı pratik örnekleri bulunmaktadır:
+## Common Examples
+Aşağıda `reboot` komutunun bazı pratik örnekleri verilmiştir:
 
-1. **Sistemi normal bir şekilde yeniden başlatma:**
+1. Sistemi normal bir şekilde yeniden başlatmak için:
    ```csh
    reboot
    ```
 
-2. **Sistemi zorla yeniden başlatma:**
+2. Sistemi zorla yeniden başlatmak için:
    ```csh
    reboot -f
    ```
 
-3. **Sistemi yeniden başlatmadan önce dosya sistemlerini kontrol etmeden:**
+3. Dosya sistemlerini kontrol etmeden yeniden başlatmak için:
    ```csh
    reboot -n
    ```
 
-4. **Sadece yazma işlemi yapmak için:**
+4. Yeniden başlatma işlemini simüle etmek için:
    ```csh
    reboot -w
    ```
 
-## İpuçları
-- `reboot` komutunu kullanmadan önce, açık olan tüm uygulamaları kaydettiğinizden emin olun.
-- Zorla yeniden başlatma (`-f`) seçeneğini yalnızca acil durumlarda kullanın, çünkü bu veri kaybına yol açabilir.
-- Sistem yöneticisi iseniz, kullanıcıları yeniden başlatma işlemi hakkında bilgilendirmek iyi bir uygulamadır.
+## Tips
+- `reboot` komutunu kullanmadan önce açık olan tüm dosyaları kaydettiğinizden emin olun.
+- Sistem üzerinde kritik işlemler varsa, yeniden başlatmadan önce bu işlemleri durdurmak iyi bir uygulamadır.
+- Zorla yeniden başlatma (`-f` seçeneği) kullanırken dikkatli olun, çünkü bu açık olan işlemleri kaybetmenize neden olabilir.

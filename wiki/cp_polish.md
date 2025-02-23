@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) cp użycie: Kopiowanie plików i katalogów
+# [Linux] C Shell (csh) cp Użycie: Kopiowanie plików i katalogów
 
 ## Overview
-Polecenie `cp` w C Shell (csh) służy do kopiowania plików i katalogów. Umożliwia użytkownikom tworzenie kopii plików w tym samym lub innym katalogu.
+Polecenie `cp` w C Shell (csh) służy do kopiowania plików i katalogów. Umożliwia tworzenie kopii zapasowych lub przenoszenie danych w systemie plików.
 
 ## Usage
 Podstawowa składnia polecenia `cp` jest następująca:
@@ -11,38 +11,47 @@ cp [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-i`: Interaktywnie pyta przed nadpisaniem istniejącego pliku.
-- `-r`: Rekursywnie kopiuje katalogi i ich zawartość.
-- `-u`: Kopiuje tylko wtedy, gdy źródło jest nowsze niż cel lub cel nie istnieje.
-- `-v`: Wyświetla szczegóły operacji kopiowania.
+Oto kilka powszechnie używanych opcji dla polecenia `cp`:
+
+- `-i`: Pyta o potwierdzenie przed nadpisaniem istniejącego pliku.
+- `-r`: Kopiuje katalogi rekurencyjnie.
+- `-u`: Kopiuje tylko pliki, które są nowsze od istniejących plików docelowych lub gdy plik docelowy nie istnieje.
+- `-v`: Wyświetla szczegóły dotyczące kopiowania plików.
 
 ## Common Examples
-1. Kopiowanie pliku do innego katalogu:
+Poniżej znajdują się przykłady użycia polecenia `cp`:
+
+1. Kopiowanie pojedynczego pliku:
+
    ```csh
-   cp plik.txt /ścieżka/do/katalogu/
+   cp plik.txt kopia_plik.txt
    ```
 
-2. Kopiowanie pliku i nadpisywanie bez pytania:
+2. Kopiowanie katalogu rekurencyjnie:
+
    ```csh
-   cp -f plik.txt /ścieżka/do/katalogu/
+   cp -r katalog/ kopia_katalogu/
    ```
 
-3. Rekursywne kopiowanie katalogu:
+3. Kopiowanie pliku z potwierdzeniem przed nadpisaniem:
+
    ```csh
-   cp -r katalog/ /ścieżka/do/katalogu/
+   cp -i plik.txt kopia_plik.txt
    ```
 
-4. Interaktywne kopiowanie z pytaniem o nadpisanie:
+4. Kopiowanie tylko nowszych plików:
+
    ```csh
-   cp -i plik.txt /ścieżka/do/katalogu/
+   cp -u plik.txt kopia_plik.txt
    ```
 
-5. Kopiowanie tylko nowszych plików:
+5. Wyświetlanie szczegółów podczas kopiowania:
+
    ```csh
-   cp -u plik.txt /ścieżka/do/katalogu/
+   cp -v plik.txt kopia_plik.txt
    ```
 
 ## Tips
-- Zawsze używaj opcji `-i`, gdy kopiujesz pliki do katalogów, w których mogą już istnieć pliki o tej samej nazwie, aby uniknąć przypadkowego nadpisania.
-- Przy kopiowaniu dużych katalogów użyj opcji `-v`, aby śledzić postęp operacji.
-- Regularnie twórz kopie zapasowe ważnych plików, korzystając z `cp`, aby zabezpieczyć swoje dane.
+- Zawsze używaj opcji `-i`, gdy kopiujesz pliki do katalogów, w których mogą już istnieć pliki o tych samych nazwach, aby uniknąć przypadkowego nadpisania.
+- Przy kopiowaniu dużych katalogów użyj opcji `-r`, aby upewnić się, że wszystkie podkatalogi i pliki zostaną skopiowane.
+- Regularnie twórz kopie zapasowe ważnych plików, aby zabezpieczyć się przed ich utratą.

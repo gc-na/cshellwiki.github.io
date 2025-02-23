@@ -1,38 +1,44 @@
-# [Unix] C Shell (csh) talk : Discuter avec d'autres utilisateurs
+# [Unix] C Shell (csh) talk : Communiquer avec d'autres utilisateurs
 
 ## Overview
-La commande `talk` permet à deux utilisateurs de communiquer en temps réel via une session de chat sur un système Unix. Elle ouvre une fenêtre de terminal pour chaque utilisateur, permettant ainsi une conversation interactive.
+La commande `talk` permet à deux utilisateurs de communiquer en temps réel sur un système Unix. Elle ouvre une session de chat où chacun peut voir les messages de l'autre, facilitant ainsi la conversation.
 
 ## Usage
 La syntaxe de base de la commande est la suivante :
+
 ```csh
-talk [options] [utilisateur@machine]
+talk [options] [utilisateur]@[hôte]
 ```
 
 ## Common Options
-- `-s` : Utiliser un son pour signaler la réception d'un message.
-- `-d` : Afficher les messages de débogage.
-- `-h` : Afficher l'aide et quitter.
+- `-a` : Permet d'envoyer un message à un utilisateur même s'il est déjà en conversation.
+- `-m` : Utilise un mode de message minimal, affichant uniquement les messages sans les détails supplémentaires.
+- `-s` : Démarre une session de talk en mode silencieux, sans son.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `talk` :
 
-1. **Démarrer une conversation avec un utilisateur local :**
+1. Pour commencer une conversation avec un utilisateur nommé `alice` sur la même machine :
    ```csh
-   talk utilisateur
+   talk alice
    ```
 
-2. **Démarrer une conversation avec un utilisateur sur une machine distante :**
+2. Pour discuter avec un utilisateur sur un hôte distant, par exemple `bob` sur `example.com` :
    ```csh
-   talk utilisateur@machine
+   talk bob@example.com
    ```
 
-3. **Démarrer une conversation avec un son :**
+3. Pour envoyer un message à un utilisateur déjà en conversation :
    ```csh
-   talk -s utilisateur
+   talk -a charlie
+   ```
+
+4. Pour démarrer une session de talk en mode silencieux :
+   ```csh
+   talk -s dave
    ```
 
 ## Tips
-- Assurez-vous que l'utilisateur que vous souhaitez contacter est connecté et disponible pour discuter.
-- Utilisez la commande `write` si vous souhaitez envoyer un message sans ouvrir une session de chat.
-- Pensez à quitter la session de `talk` en utilisant `Ctrl+C` pour éviter de laisser une fenêtre ouverte inutilement.
+- Assurez-vous que l'utilisateur avec qui vous souhaitez discuter est connecté et disponible pour recevoir des messages.
+- Utilisez `Ctrl+C` pour quitter la session de talk à tout moment.
+- Vérifiez que votre terminal est configuré pour afficher correctement les messages, afin d'éviter toute confusion pendant la conversation.

@@ -6,15 +6,15 @@ La commande `touch` est utilisée pour mettre à jour les horodatages d'accès e
 ## Usage
 La syntaxe de base de la commande `touch` est la suivante :
 
-```
+```csh
 touch [options] [arguments]
 ```
 
 ## Common Options
 - `-a` : Met à jour uniquement l'horodatage d'accès.
 - `-m` : Met à jour uniquement l'horodatage de modification.
-- `-c` : Ne crée pas de fichier s'il n'existe pas déjà.
-- `-t` : Permet de spécifier un horodatage personnalisé au format `[[CC]YY]MMDDhhmm[.ss]`.
+- `-c` : Ne crée pas de fichier si celui-ci n'existe pas.
+- `-t` : Permet de spécifier une date et une heure précises pour l'horodatage.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `touch` :
@@ -39,17 +39,17 @@ Voici quelques exemples pratiques de l'utilisation de la commande `touch` :
    touch -m fichier_existant.txt
    ```
 
-5. **Créer un fichier sans erreur si le fichier existe déjà :**
+5. **Spécifier une date et une heure précises :**
    ```csh
-   touch -c fichier_existant.txt
+   touch -t 202310251200 fichier_existant.txt
    ```
 
-6. **Spécifier un horodatage personnalisé :**
+6. **Ne pas créer de fichier si celui-ci n'existe pas :**
    ```csh
-   touch -t 202310150830.00 fichier_existant.txt
+   touch -c fichier_non_existant.txt
    ```
 
 ## Tips
-- Utilisez `touch` pour créer rapidement des fichiers temporaires lors de l'écriture de scripts.
-- Vérifiez les horodatages des fichiers avec la commande `ls -l` pour vous assurer que `touch` a fonctionné comme prévu.
+- Utilisez `touch` pour créer rapidement des fichiers vides lorsque vous avez besoin d'un espace de travail.
+- Vérifiez les permissions de fichier si vous rencontrez des problèmes lors de la mise à jour des horodatages.
 - Combinez `touch` avec d'autres commandes dans des scripts pour automatiser la gestion des fichiers.

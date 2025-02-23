@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) groups użycie: wyświetlanie grup użytkowników
 
 ## Overview
-Polecenie `groups` w C Shell (csh) służy do wyświetlania grup, do których należy dany użytkownik. Umożliwia to szybkie sprawdzenie przynależności do grup, co jest przydatne w zarządzaniu uprawnieniami i dostępem do zasobów systemowych.
+Polecenie `groups` w powłoce C Shell (csh) służy do wyświetlania grup, do których należy dany użytkownik. Umożliwia to szybkie sprawdzenie przynależności do grup, co może być przydatne w zarządzaniu uprawnieniami i dostępem.
 
 ## Usage
 Podstawowa składnia polecenia `groups` jest następująca:
@@ -11,34 +11,33 @@ groups [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-a` - Wyświetla wszystkie grupy, do których należy użytkownik, w tym grupy, które są nieaktywne.
-- `-h` - Nie wyświetla nagłówków w wynikach.
-- `-n` - Wyświetla tylko nazwy grup, bez dodatkowych informacji.
+- `-a`: Wyświetla wszystkie grupy, do których należy użytkownik, w tym grupy, które nie są aktualnie aktywne.
+- `-g`: Wyświetla tylko grupy, do których należy użytkownik, bez dodatkowych informacji.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `groups`:
+Przykłady użycia polecenia `groups`:
 
 1. Wyświetlenie grup, do których należy bieżący użytkownik:
    ```csh
    groups
    ```
 
-2. Wyświetlenie grup dla konkretnego użytkownika (np. `janek`):
+2. Wyświetlenie grup dla innego użytkownika (np. `janek`):
    ```csh
    groups janek
    ```
 
-3. Wyświetlenie grup z dodatkowymi informacjami:
+3. Wyświetlenie wszystkich grup, do których należy bieżący użytkownik, w tym nieaktywne:
    ```csh
    groups -a
    ```
 
-4. Wyświetlenie tylko nazw grup dla użytkownika:
+4. Wyświetlenie grup dla innego użytkownika z opcją `-g`:
    ```csh
-   groups -n janek
+   groups -g janek
    ```
 
 ## Tips
-- Używaj polecenia `groups` regularnie, aby monitorować przynależność do grup, szczególnie po zmianach w konfiguracji systemu.
-- Jeśli pracujesz w zespole, upewnij się, że znasz grupy, do których należą Twoi współpracownicy, aby lepiej zarządzać dostępem do plików i zasobów.
-- Pamiętaj, że przynależność do grup może wpływać na uprawnienia do plików, więc zawsze sprawdzaj, czy masz odpowiednie grupy przypisane przed wykonaniem operacji wymagających specjalnych uprawnień.
+- Używaj polecenia `groups` regularnie, aby upewnić się, że masz odpowiednie uprawnienia do wykonywania zadań.
+- Możesz łączyć polecenie `groups` z innymi poleceniami, aby uzyskać bardziej szczegółowe informacje o uprawnieniach użytkowników.
+- Sprawdzaj przynależność do grup przed przydzieleniem nowych uprawnień, aby uniknąć problemów z dostępem.

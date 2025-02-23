@@ -1,42 +1,46 @@
-# [Linux] C Shell (csh) cd gebruik: Verander van directory
+# [Linux] C Shell (csh) cd gebruik: Verander de huidige map
 
-## Overzicht
-De `cd` (change directory) opdracht in C Shell wordt gebruikt om de huidige werkdirectory te wijzigen. Dit stelt gebruikers in staat om naar verschillende mappen binnen het bestandssysteem te navigeren.
+## Overview
+De `cd` (change directory) opdracht in C Shell (csh) wordt gebruikt om de huidige werkdirectory te wijzigen. Dit is een fundamentele opdracht die je helpt om door de mappenstructuur van je systeem te navigeren.
 
-## Gebruik
-De basisstructuur van de `cd` opdracht is als volgt:
+## Usage
+De basis syntaxis van de `cd` opdracht is als volgt:
 
-```csh
+```
 cd [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
-- `-` : Ga terug naar de vorige directory.
-- `~` : Ga naar de home directory van de gebruiker.
-- `..` : Ga naar de bovenliggende directory van de huidige directory.
+## Common Options
+Hier zijn enkele veelvoorkomende opties voor de `cd` opdracht:
 
-## Veelvoorkomende Voorbeelden
-- Ga naar de home directory:
-  ```csh
-  cd ~
-  ```
+- `-`: Ga terug naar de vorige directory.
+- `~`: Ga naar de home directory van de huidige gebruiker.
+- `..`: Ga naar de bovenliggende directory.
 
-- Ga naar een specifieke directory, bijvoorbeeld `documenten`:
-  ```csh
-  cd documenten
-  ```
+## Common Examples
+Hier zijn enkele praktische voorbeelden van het gebruik van de `cd` opdracht:
 
-- Ga naar de bovenliggende directory:
-  ```csh
-  cd ..
-  ```
+1. Ga naar de home directory:
+   ```csh
+   cd ~
+   ```
 
-- Ga terug naar de vorige directory:
-  ```csh
-  cd -
-  ```
+2. Ga naar een specifieke directory:
+   ```csh
+   cd /pad/naar/directory
+   ```
+
+3. Ga naar de bovenliggende directory:
+   ```csh
+   cd ..
+   ```
+
+4. Ga terug naar de vorige directory:
+   ```csh
+   cd -
+   ```
 
 ## Tips
-- Gebruik `cd` zonder argumenten om snel naar je home directory te gaan.
-- Controleer altijd je huidige directory met de `pwd` (print working directory) opdracht na het gebruik van `cd`.
-- Gebruik tab-completion om snel naar directories te navigeren zonder de volledige naam in te voeren.
+- Gebruik `cd ~` om snel naar je home directory te gaan.
+- Gebruik `cd ..` om efficiënt door de mappenstructuur omhoog te navigeren.
+- Vergeet niet dat je de exacte naam van de directory moet invoeren, inclusief hoofdletters, omdat de meeste besturingssystemen hoofdlettergevoelig zijn.

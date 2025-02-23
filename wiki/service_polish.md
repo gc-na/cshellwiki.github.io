@@ -1,13 +1,13 @@
 # [Linux] C Shell (csh) service użycie: zarządzanie usługami systemowymi
 
 ## Overview
-Polecenie `service` w C Shell (csh) służy do zarządzania usługami systemowymi. Umożliwia uruchamianie, zatrzymywanie oraz sprawdzanie statusu różnych usług działających na systemie.
+Polecenie `service` w systemie C Shell (csh) służy do zarządzania usługami systemowymi. Umożliwia uruchamianie, zatrzymywanie oraz sprawdzanie statusu różnych usług działających na systemie.
 
 ## Usage
 Podstawowa składnia polecenia `service` jest następująca:
 
 ```
-service [opcje] [nazwa_usługi] [akcja]
+service [opcje] [usługa] [akcja]
 ```
 
 ## Common Options
@@ -18,34 +18,34 @@ service [opcje] [nazwa_usługi] [akcja]
 - `status`: Sprawdza status wskazanej usługi.
 
 ## Common Examples
-Przykłady użycia polecenia `service`:
+Oto kilka praktycznych przykładów użycia polecenia `service`:
 
-1. Uruchomienie usługi:
+1. **Uruchomienie usługi**:
    ```csh
    service apache2 start
    ```
 
-2. Zatrzymanie usługi:
+2. **Zatrzymanie usługi**:
    ```csh
    service mysql stop
    ```
 
-3. Restartowanie usługi:
+3. **Restartowanie usługi**:
    ```csh
    service ssh restart
    ```
 
-4. Sprawdzenie statusu usługi:
+4. **Sprawdzanie statusu usługi**:
    ```csh
    service nginx status
    ```
 
-5. Wyświetlenie statusu wszystkich usług:
+5. **Wyświetlanie statusu wszystkich usług**:
    ```csh
    service --status-all
    ```
 
 ## Tips
-- Upewnij się, że masz odpowiednie uprawnienia (np. użyj `sudo`), aby zarządzać usługami.
-- Regularnie sprawdzaj status usług, aby upewnić się, że działają poprawnie.
-- Zawsze wykonuj restart usługi po wprowadzeniu zmian w jej konfiguracji, aby zastosować nowe ustawienia.
+- Upewnij się, że masz odpowiednie uprawnienia (np. uruchamiaj polecenia jako root), aby zarządzać usługami.
+- Zawsze sprawdzaj status usługi po jej uruchomieniu lub zatrzymaniu, aby upewnić się, że operacja zakończyła się pomyślnie.
+- Korzystaj z opcji `--status-all`, aby uzyskać przegląd wszystkich usług i ich statusów, co może pomóc w diagnozowaniu problemów.

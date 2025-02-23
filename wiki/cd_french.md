@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) cd : Changer de répertoire
 
 ## Overview
-La commande `cd` (change directory) permet de naviguer entre les répertoires dans le système de fichiers. Elle est essentielle pour se déplacer dans l'arborescence des fichiers et accéder aux fichiers et dossiers souhaités.
+La commande `cd` (change directory) est utilisée dans le C Shell pour changer le répertoire de travail actuel. Cela permet à l'utilisateur de naviguer dans le système de fichiers et d'accéder à différents dossiers.
 
 ## Usage
 La syntaxe de base de la commande `cd` est la suivante :
@@ -11,39 +11,34 @@ cd [options] [arguments]
 ```
 
 ## Common Options
-- `..` : Permet de remonter d'un niveau dans l'arborescence des répertoires.
-- `-` : Retourne au dernier répertoire visité.
+- `-` : Retourne au dernier répertoire utilisé.
 - `~` : Accède au répertoire personnel de l'utilisateur.
+- `..` : Monte d'un niveau dans l'arborescence des répertoires.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `cd` :
 
-1. **Accéder à un répertoire spécifique :**
+1. Changer vers un répertoire spécifique :
    ```csh
    cd /chemin/vers/le/répertoire
    ```
 
-2. **Remonter d'un niveau :**
-   ```csh
-   cd ..
-   ```
-
-3. **Retourner au dernier répertoire :**
-   ```csh
-   cd -
-   ```
-
-4. **Accéder au répertoire personnel :**
+2. Retourner au répertoire personnel :
    ```csh
    cd ~
    ```
 
-5. **Accéder à un sous-répertoire :**
+3. Revenir au dernier répertoire utilisé :
    ```csh
-   cd mon_dossier/sous_dossier
+   cd -
+   ```
+
+4. Monter d'un niveau dans l'arborescence :
+   ```csh
+   cd ..
    ```
 
 ## Tips
 - Utilisez `cd -` pour naviguer rapidement entre deux répertoires.
-- Pour éviter les erreurs, utilisez des chemins absolus lorsque vous n'êtes pas sûr de votre position actuelle dans l'arborescence.
-- N'oubliez pas que les chemins sont sensibles à la casse, donc `Dossier` et `dossier` sont considérés comme différents.
+- Pour éviter les erreurs de chemin, utilisez toujours des chemins absolus lorsque cela est possible.
+- Vous pouvez utiliser la touche de tabulation pour compléter automatiquement les noms de répertoires, ce qui facilite la navigation.

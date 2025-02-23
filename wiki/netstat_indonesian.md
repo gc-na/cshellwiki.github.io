@@ -1,22 +1,20 @@
-# [Sistem Operasi] C Shell (csh) netstat Penggunaan: Menampilkan statistik jaringan
+# [Sistem Operasi] C Shell (csh) netstat Penggunaan: Menampilkan informasi jaringan
 
 ## Overview
-Perintah `netstat` digunakan untuk menampilkan informasi tentang koneksi jaringan, tabel routing, dan statistik antarmuka jaringan. Ini sangat berguna untuk mendiagnosis masalah jaringan dan memantau aktivitas jaringan di sistem.
+Perintah `netstat` digunakan untuk menampilkan informasi tentang koneksi jaringan, tabel routing, dan statistik antarmuka jaringan. Ini sangat berguna untuk mendiagnosis masalah jaringan dan memantau aktivitas jaringan pada sistem.
 
 ## Usage
-Sintaks dasar dari perintah `netstat` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `netstat`:
 
-```csh
+```
 netstat [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah `netstat`:
-
 - `-a`: Menampilkan semua koneksi dan port yang mendengarkan.
 - `-n`: Menampilkan alamat dan nomor port dalam format numerik.
 - `-r`: Menampilkan tabel routing.
-- `-i`: Menampilkan statistik antarmuka jaringan.
+- `-i`: Menampilkan informasi tentang antarmuka jaringan.
 - `-s`: Menampilkan statistik protokol.
 
 ## Common Examples
@@ -27,7 +25,7 @@ Berikut adalah beberapa contoh penggunaan perintah `netstat`:
    netstat -a
    ```
 
-2. Menampilkan koneksi dalam format numerik:
+2. Menampilkan koneksi dengan alamat dan nomor port dalam format numerik:
    ```csh
    netstat -n
    ```
@@ -37,7 +35,7 @@ Berikut adalah beberapa contoh penggunaan perintah `netstat`:
    netstat -r
    ```
 
-4. Menampilkan statistik antarmuka jaringan:
+4. Menampilkan informasi tentang antarmuka jaringan:
    ```csh
    netstat -i
    ```
@@ -48,6 +46,6 @@ Berikut adalah beberapa contoh penggunaan perintah `netstat`:
    ```
 
 ## Tips
-- Gunakan opsi `-n` untuk mempercepat tampilan hasil, terutama pada sistem dengan banyak koneksi.
-- Kombinasikan opsi untuk mendapatkan informasi yang lebih spesifik, misalnya `netstat -an` untuk melihat semua koneksi dalam format numerik.
+- Gunakan opsi `-n` untuk mempercepat output, terutama pada sistem dengan banyak koneksi.
+- Kombinasikan beberapa opsi untuk mendapatkan informasi yang lebih lengkap, misalnya `netstat -an` untuk melihat semua koneksi dalam format numerik.
 - Periksa secara berkala untuk memantau aktivitas jaringan dan mendeteksi masalah lebih awal.

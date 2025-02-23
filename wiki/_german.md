@@ -1,7 +1,7 @@
-# [Unix] C Shell (csh) @ Verwendung: Variablenzuweisung
+# [Linux] C Shell (csh) @ Verwendung: Variablen zuweisen und Berechnungen durchführen
 
 ## Übersicht
-Der `@` Befehl in der C Shell (csh) wird verwendet, um arithmetische Berechnungen durchzuführen und Variablen zuzuweisen. Er ermöglicht es Benutzern, mathematische Ausdrücke zu evaluieren und das Ergebnis einer Variablen zuzuweisen.
+Der `@` Befehl in der C Shell (csh) wird verwendet, um Variablen zuzuweisen und einfache mathematische Berechnungen durchzuführen. Er ermöglicht es Benutzern, arithmetische Operationen direkt in der Shell auszuführen.
 
 ## Verwendung
 Die grundlegende Syntax des `@` Befehls lautet:
@@ -11,38 +11,46 @@ Die grundlegende Syntax des `@` Befehls lautet:
 ```
 
 ## Häufige Optionen
-- `-v`: Gibt den Wert der Variablen aus.
-- `-n`: Führt den Befehl aus, ohne ihn tatsächlich auszuführen (nur zur Überprüfung).
+- `=`: Weist einer Variablen einen Wert zu.
+- `+`: Addiert Werte.
+- `-`: Subtrahiert Werte.
+- `*`: Multipliziert Werte.
+- `/`: Dividiert Werte.
 
 ## Häufige Beispiele
+Hier sind einige praktische Beispiele für die Verwendung des `@` Befehls:
 
-1. **Einfaches Zuweisen und Berechnen:**
-   ```csh
-   @ a = 5 + 3
-   ```
-   In diesem Beispiel wird der Wert 8 der Variablen `a` zugewiesen.
+### Beispiel 1: Einfache Zuweisung
+```csh
+@ x = 5
+```
+In diesem Beispiel wird der Variable `x` der Wert 5 zugewiesen.
 
-2. **Inkrementieren einer Variablen:**
-   ```csh
-   @ count++
-   ```
-   Hier wird die Variable `count` um 1 erhöht.
+### Beispiel 2: Addition
+```csh
+@ sum = x + 10
+```
+Hier wird der Wert von `x` (5) um 10 erhöht, und das Ergebnis (15) wird der Variablen `sum` zugewiesen.
 
-3. **Komplexe Berechnung:**
-   ```csh
-   @ result = (2 * 3) + (4 / 2)
-   ```
-   In diesem Fall wird `result` der Wert 10 zugewiesen.
+### Beispiel 3: Subtraktion
+```csh
+@ difference = x - 2
+```
+In diesem Fall wird 2 von `x` (5) subtrahiert, was zu einem Ergebnis von 3 führt.
 
-4. **Verwendung von Variablen in Berechnungen:**
-   ```csh
-   @ x = 10
-   @ y = 5
-   @ sum = $x + $y
-   ```
-   Hier wird die Summe der Variablen `x` und `y` berechnet und `sum` zugewiesen.
+### Beispiel 4: Multiplikation
+```csh
+@ product = x * 4
+```
+Hier wird `x` (5) mit 4 multipliziert, was 20 ergibt.
+
+### Beispiel 5: Division
+```csh
+@ quotient = x / 5
+```
+In diesem Beispiel wird `x` (5) durch 5 dividiert, was 1 ergibt.
 
 ## Tipps
-- Achten Sie darauf, dass Sie Leerzeichen um die Operatoren verwenden, da dies für die korrekte Auswertung erforderlich ist.
-- Verwenden Sie die `-v` Option, um den Wert von Variablen zu überprüfen, bevor Sie sie in Berechnungen verwenden.
-- Nutzen Sie Klammern, um die Reihenfolge der Berechnungen klarzustellen und Missverständnisse zu vermeiden.
+- Achten Sie darauf, dass Sie keine Leerzeichen um die mathematischen Operatoren verwenden, da dies zu Fehlern führen kann.
+- Verwenden Sie Klammern, um die Reihenfolge der Berechnungen zu steuern, wenn Sie komplexere Ausdrücke haben.
+- Der `@` Befehl ist nützlich für Skripte, in denen Sie Berechnungen durchführen und die Ergebnisse in Variablen speichern möchten.

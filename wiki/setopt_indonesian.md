@@ -1,7 +1,7 @@
 # [Sistem Operasi] C Shell (csh) setopt: [mengatur opsi shell]
 
 ## Overview
-Perintah `setopt` dalam C Shell (csh) digunakan untuk mengatur berbagai opsi yang mempengaruhi perilaku shell. Dengan menggunakan `setopt`, pengguna dapat mengaktifkan atau menonaktifkan fitur tertentu untuk meningkatkan pengalaman penggunaan shell.
+Perintah `setopt` dalam C Shell (csh) digunakan untuk mengatur berbagai opsi yang mempengaruhi perilaku shell. Dengan menggunakan `setopt`, pengguna dapat mengaktifkan atau menonaktifkan fitur tertentu yang dapat meningkatkan pengalaman penggunaan shell.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `setopt`:
@@ -13,32 +13,29 @@ setopt [options] [arguments]
 ## Common Options
 Beberapa opsi umum yang dapat digunakan dengan `setopt` antara lain:
 
-- `noclobber`: Mencegah file yang ada tertimpa saat menggunakan pengalihan output.
+- `noclobber`: Mencegah penimpaan file yang sudah ada saat menggunakan operator `>` untuk redirection.
 - `ignoreeof`: Mencegah shell keluar saat menerima sinyal EOF (End Of File).
-- `verbose`: Mengaktifkan mode verbose, yang memberikan informasi lebih banyak tentang perintah yang dijalankan.
+- `allexport`: Secara otomatis mengekspor semua variabel yang didefinisikan ke lingkungan subshell.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `setopt`:
 
-1. **Mengaktifkan opsi noclobber**:
+1. Mengaktifkan opsi `noclobber` untuk mencegah penimpaan file:
    ```csh
    setopt noclobber
    ```
-   Dengan mengaktifkan opsi ini, Anda tidak akan secara tidak sengaja menimpa file yang sudah ada saat mengalihkan output.
 
-2. **Mengaktifkan opsi ignoreeof**:
+2. Mengaktifkan opsi `ignoreeof` untuk mencegah keluar dari shell dengan Ctrl+D:
    ```csh
    setopt ignoreeof
    ```
-   Opsi ini berguna untuk mencegah shell keluar ketika Anda menekan Ctrl+D.
 
-3. **Mengaktifkan opsi verbose**:
+3. Mengaktifkan opsi `allexport` untuk mengekspor semua variabel:
    ```csh
-   setopt verbose
+   setopt allexport
    ```
-   Dengan opsi ini, shell akan memberikan informasi lebih rinci tentang perintah yang sedang dieksekusi.
 
 ## Tips
-- Selalu periksa opsi yang aktif dengan menggunakan `set` untuk memastikan pengaturan sesuai dengan kebutuhan Anda.
+- Selalu periksa opsi yang aktif dengan menggunakan perintah `set` untuk memastikan konfigurasi shell sesuai dengan kebutuhan Anda.
 - Gunakan `unsetopt` untuk menonaktifkan opsi yang tidak lagi diperlukan.
-- Pertimbangkan untuk menambahkan pengaturan `setopt` ke dalam file konfigurasi shell Anda (seperti `.cshrc`) agar pengaturan tersebut tetap aktif di sesi berikutnya.
+- Pertimbangkan untuk menambahkan pengaturan `setopt` ke dalam file konfigurasi shell Anda (seperti `.cshrc`) agar pengaturan tersebut diterapkan secara otomatis setiap kali shell dibuka.

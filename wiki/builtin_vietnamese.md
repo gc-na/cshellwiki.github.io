@@ -1,7 +1,7 @@
 # [Hệ điều hành] C Shell (csh) builtin: [thực thi lệnh]
 
 ## Overview
-Lệnh builtin trong C Shell (csh) cho phép người dùng thực thi các lệnh nội bộ mà không cần phải gọi đến các chương trình bên ngoài. Điều này giúp tăng tốc độ thực thi và tiết kiệm tài nguyên hệ thống.
+Lệnh builtin trong C Shell (csh) cho phép người dùng thực thi các lệnh mà không cần phải gọi một chương trình bên ngoài. Điều này giúp tiết kiệm thời gian và tài nguyên hệ thống, đồng thời cải thiện hiệu suất khi thực hiện các tác vụ thường xuyên.
 
 ## Usage
 Cú pháp cơ bản của lệnh builtin như sau:
@@ -11,27 +11,27 @@ builtin [options] [arguments]
 
 ## Common Options
 - `-h`: Hiển thị thông tin trợ giúp về lệnh builtin.
-- `-v`: Hiển thị thông tin chi tiết về các lệnh đã thực thi.
+- `-q`: Kiểm tra xem lệnh có phải là một builtin hay không.
 
 ## Common Examples
-Dưới đây là một số ví dụ thực tiễn về cách sử dụng lệnh builtin:
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh builtin:
 
-### Ví dụ 1: Thực thi một lệnh nội bộ
-```csh
-builtin echo "Hello, World!"
-```
+1. **Kiểm tra lệnh builtin**
+   ```csh
+   builtin -q echo
+   ```
 
-### Ví dụ 2: Hiển thị thông tin trợ giúp
-```csh
-builtin -h
-```
+2. **Hiển thị thông tin trợ giúp**
+   ```csh
+   builtin -h
+   ```
 
-### Ví dụ 3: Kiểm tra lệnh đã thực thi
-```csh
-builtin -v
-```
+3. **Thực thi một lệnh builtin cụ thể**
+   ```csh
+   builtin cd /path/to/directory
+   ```
 
 ## Tips
-- Sử dụng lệnh builtin khi bạn muốn tăng tốc độ thực thi lệnh mà không cần phải gọi đến các chương trình bên ngoài.
-- Thường xuyên kiểm tra thông tin trợ giúp để hiểu rõ hơn về các tùy chọn có sẵn cho lệnh builtin.
-- Kết hợp lệnh builtin với các lệnh khác để tối ưu hóa quy trình làm việc của bạn.
+- Sử dụng lệnh builtin để tối ưu hóa hiệu suất khi thực hiện các lệnh thường xuyên.
+- Kiểm tra xem lệnh có phải là một builtin trước khi gọi nó để tiết kiệm tài nguyên.
+- Tham khảo tài liệu trợ giúp thường xuyên để nắm rõ các tùy chọn và cách sử dụng của các lệnh builtin.

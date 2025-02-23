@@ -1,7 +1,7 @@
 # [Sistem Operasi] C Shell (csh) hostname: Menampilkan atau mengatur nama host
 
 ## Overview
-Perintah `hostname` digunakan untuk menampilkan atau mengatur nama host dari sistem yang sedang digunakan. Nama host adalah identifikasi unik untuk perangkat dalam jaringan, yang memungkinkan perangkat lain untuk mengenalinya.
+Perintah `hostname` dalam C Shell (csh) digunakan untuk menampilkan atau mengatur nama host dari sistem yang sedang digunakan. Nama host adalah identitas unik yang diberikan kepada komputer dalam jaringan.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `hostname`:
@@ -11,8 +11,8 @@ hostname [options] [arguments]
 ```
 
 ## Common Options
-- `-f`: Menampilkan nama host lengkap (fully qualified domain name).
 - `-s`: Menampilkan hanya nama host singkat.
+- `-f`: Menampilkan nama host lengkap (fully qualified domain name).
 - `-i`: Menampilkan alamat IP dari nama host.
 
 ## Common Examples
@@ -23,27 +23,27 @@ Berikut adalah beberapa contoh penggunaan perintah `hostname`:
    hostname
    ```
 
-2. Menampilkan nama host lengkap:
-   ```csh
-   hostname -f
-   ```
-
-3. Menampilkan nama host singkat:
+2. Menampilkan nama host singkat:
    ```csh
    hostname -s
    ```
 
-4. Mengatur nama host baru:
+3. Menampilkan nama host lengkap:
    ```csh
-   hostname new-hostname
+   hostname -f
    ```
 
-5. Menampilkan alamat IP dari nama host:
+4. Menampilkan alamat IP dari nama host:
    ```csh
    hostname -i
    ```
 
+5. Mengatur nama host baru:
+   ```csh
+   hostname new-hostname
+   ```
+
 ## Tips
-- Pastikan Anda memiliki hak akses yang diperlukan untuk mengubah nama host.
-- Setelah mengubah nama host, Anda mungkin perlu me-reboot sistem agar perubahan dapat diterapkan sepenuhnya.
-- Gunakan opsi `-f` untuk mendapatkan informasi lengkap tentang nama host, terutama jika Anda bekerja dalam lingkungan jaringan yang kompleks.
+- Pastikan Anda memiliki hak akses yang cukup untuk mengubah nama host.
+- Setelah mengubah nama host, Anda mungkin perlu me-restart layanan jaringan agar perubahan diterapkan.
+- Gunakan opsi `-f` untuk memastikan Anda mendapatkan nama host lengkap yang diperlukan untuk konfigurasi jaringan.

@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) cksum: Berechnung von Prüfzahlen für Dateien
+# [Linux] C Shell (csh) cksum: Berechnung von Prüfziffern
 
 ## Übersicht
-Der Befehl `cksum` wird verwendet, um die Prüfzahlen und die Byte-Anzahl von Dateien zu berechnen. Er gibt eine Prüfziffer, die Dateigröße und den Dateinamen aus, was nützlich ist, um die Integrität von Dateien zu überprüfen.
+Der Befehl `cksum` wird verwendet, um die Prüfziffer (Checksumme) und die Byteanzahl einer Datei zu berechnen. Diese Prüfziffer kann nützlich sein, um die Integrität von Dateien zu überprüfen.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
@@ -11,34 +11,34 @@ cksum [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-a, --algorithm`: Gibt den Algorithmus an, der zur Berechnung der Prüfziffer verwendet werden soll.
-- `-h, --help`: Zeigt eine Hilfenachricht mit den verfügbaren Optionen an.
-- `-o, --output`: Gibt die Ausgabedatei an, in die die Prüfzahlen geschrieben werden sollen.
+- `-a, --algorithm=ALGORITHM`: Gibt den Algorithmus an, der zur Berechnung der Prüfziffer verwendet werden soll.
+- `-h, --help`: Zeigt eine Hilfe-Seite mit Informationen zur Verwendung des Befehls an.
+- `-V, --version`: Gibt die Versionsnummer des Befehls aus.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung von `cksum`:
+Hier sind einige praktische Beispiele zur Verwendung von `cksum`:
 
-1. Berechnung der Prüfziffer für eine einzelne Datei:
+1. **Berechnung der Prüfziffer einer Datei:**
    ```csh
    cksum datei.txt
    ```
 
-2. Berechnung der Prüfziffer für mehrere Dateien:
+2. **Berechnung der Prüfziffer mehrerer Dateien:**
    ```csh
-   cksum datei1.txt datei2.txt datei3.txt
+   cksum datei1.txt datei2.txt
    ```
 
-3. Ausgabe der Prüfziffer in eine Datei:
+3. **Verwendung einer bestimmten Prüfziffer-Algorithmus:**
    ```csh
-   cksum datei.txt > pruefziffer.txt
+   cksum -a crc32 datei.txt
    ```
 
-4. Verwendung einer spezifischen Prüfziffer-Algorithmus:
+4. **Hilfe zur Verwendung des Befehls anzeigen:**
    ```csh
-   cksum -a md5 datei.txt
+   cksum --help
    ```
 
 ## Tipps
-- Überprüfen Sie regelmäßig die Prüfziffern wichtiger Dateien, um sicherzustellen, dass sie nicht beschädigt wurden.
-- Nutzen Sie die Ausgabe von `cksum`, um eine einfache Integritätsprüfung in Skripten zu implementieren.
-- Speichern Sie Prüfziffern in einer Datei, um sie später zur Überprüfung der Dateiintegrität verwenden zu können.
+- Verwenden Sie `cksum`, um sicherzustellen, dass Dateien während der Übertragung nicht beschädigt wurden.
+- Speichern Sie die Ausgabe von `cksum` in einer Datei, um spätere Vergleiche zu ermöglichen.
+- Nutzen Sie die Option `--version`, um sicherzustellen, dass Sie die neueste Version des Befehls verwenden, die möglicherweise neue Funktionen bietet.

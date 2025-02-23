@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) unset: Usuwanie zmiennych środowiskowych
+# [Linux] C Shell (csh) unset użycie: Usuwa zmienne środowiskowe
 
 ## Overview
-Polecenie `unset` w C Shell (csh) służy do usuwania zmiennych środowiskowych oraz aliasów. Umożliwia to zwolnienie pamięci oraz eliminację niepotrzebnych zmiennych z bieżącego środowiska.
+Polecenie `unset` w powłoce C Shell (csh) służy do usuwania zmiennych środowiskowych lub funkcji. Umożliwia to zwolnienie pamięci i zapobieganie niezamierzonym użyciom zmiennych, które nie są już potrzebne.
 
 ## Usage
 Podstawowa składnia polecenia `unset` jest następująca:
@@ -11,39 +11,33 @@ unset [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-f` - Używane do usuwania funkcji.
-- `-v` - Używane do usuwania zmiennych.
+- `-f` - Usuwa funkcję zdefiniowaną w powłoce.
+- `-v` - Usuwa zmienną.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `unset`:
 
-1. Usunięcie zmiennej środowiskowej:
-   ```csh
-   set myVar = "Hello, World!"
-   unset myVar
-   ```
+### Usuwanie zmiennej
+Aby usunąć zmienną o nazwie `MY_VAR`, użyj następującego polecenia:
 
-2. Usunięcie aliasu:
-   ```csh
-   alias ll 'ls -l'
-   unset ll
-   ```
+```csh
+unset MY_VAR
+```
 
-3. Usunięcie funkcji:
-   ```csh
-   function myFunc() {
-       echo "This is a function."
-   }
-   unset -f myFunc
-   ```
+### Usuwanie funkcji
+Aby usunąć funkcję o nazwie `myFunction`, użyj:
 
-4. Usunięcie zmiennej z użyciem opcji `-v`:
-   ```csh
-   set myVar2 = "Temporary"
-   unset -v myVar2
-   ```
+```csh
+unset -f myFunction
+```
+
+### Usuwanie wielu zmiennych
+Możesz również usunąć wiele zmiennych jednocześnie:
+
+```csh
+unset VAR1 VAR2 VAR3
+```
 
 ## Tips
-- Upewnij się, że zmienna, którą chcesz usunąć, nie jest używana w innych częściach skryptu, aby uniknąć błędów.
-- Możesz używać `unset` w skryptach, aby dynamicznie zarządzać zmiennymi w zależności od potrzeb.
-- Zawsze sprawdzaj, czy zmienna została usunięta, używając polecenia `echo $myVar`, aby upewnić się, że nie jest już dostępna.
+- Upewnij się, że zmienna lub funkcja, którą chcesz usunąć, nie jest już używana w skryptach, aby uniknąć błędów.
+- Regularnie przeglądaj i usuwaj nieużywane zmienne, aby utrzymać porządek w środowisku powłoki.
+- Możesz sprawdzić, czy zmienna została usunięta, używając polecenia `echo $MY_VAR`, które powinno zwrócić pusty wynik.

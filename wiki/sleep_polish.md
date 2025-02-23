@@ -1,47 +1,53 @@
 # [Linux] C Shell (csh) sleep użycie: Wstrzymaj wykonanie skryptu na określony czas
 
 ## Overview
-Polecenie `sleep` w C Shell (csh) służy do wstrzymywania wykonania skryptu na określony czas. Jest to przydatne, gdy chcemy wprowadzić opóźnienia pomiędzy różnymi operacjami w skrypcie.
+Polecenie `sleep` w C Shell (csh) służy do wstrzymywania wykonania skryptu na określony czas. Jest to przydatne, gdy chcemy wprowadzić opóźnienie w działaniu skryptu lub w przypadku synchronizacji z innymi procesami.
 
 ## Usage
 Podstawowa składnia polecenia `sleep` jest następująca:
 
 ```csh
-sleep [czas]
+sleep [opcje] [argumenty]
 ```
 
-Gdzie `[czas]` to liczba sekund, na które chcemy wstrzymać wykonanie.
-
 ## Common Options
-Polecenie `sleep` w csh nie ma wielu opcji, ale oto kilka, które mogą być użyteczne:
-
-- **[czas]**: Określa czas w sekundach, przez który skrypt ma być wstrzymany. Można również używać jednostek czasu, takich jak `m` (minuty), `h` (godziny), `d` (dni).
+- **-s**: Umożliwia podanie czasu w sekundach.
+- **-m**: Umożliwia podanie czasu w minutach.
+- **-h**: Umożliwia podanie czasu w godzinach.
+- **-d**: Umożliwia podanie czasu w dniach.
 
 ## Common Examples
 Oto kilka praktycznych przykładów użycia polecenia `sleep`:
 
-1. Wstrzymaj wykonanie na 5 sekund:
+1. Wstrzymaj skrypt na 5 sekund:
    ```csh
    sleep 5
    ```
 
-2. Wstrzymaj wykonanie na 2 minuty:
+2. Wstrzymaj skrypt na 2 minuty:
    ```csh
    sleep 2m
    ```
 
-3. Wstrzymaj wykonanie na 1 godzinę:
+3. Wstrzymaj skrypt na 1 godzinę:
    ```csh
    sleep 1h
    ```
 
-4. Wstrzymaj wykonanie na 10 sekund, a następnie wykonaj inne polecenie:
+4. Wstrzymaj skrypt na 3 dni:
    ```csh
-   sleep 10
-   echo "Wykonano po 10 sekundach"
+   sleep 3d
+   ```
+
+5. Użycie `sleep` w pętli do wykonywania zadania co 10 sekund:
+   ```csh
+   while (1)
+       echo "Wykonuję zadanie..."
+       sleep 10
+   end
    ```
 
 ## Tips
-- Używaj `sleep` w skryptach, aby wprowadzić opóźnienia między operacjami, co może być przydatne w przypadku interakcji z systemami zewnętrznymi.
-- Zawsze upewnij się, że czas wstrzymania jest odpowiedni do kontekstu skryptu, aby uniknąć niepotrzebnych opóźnień.
-- Możesz łączyć `sleep` z innymi poleceniami w skryptach, aby kontrolować przepływ wykonania.
+- Używaj `sleep` w skryptach, aby uniknąć przeciążenia systemu, zwłaszcza podczas wykonywania zadań wymagających dużych zasobów.
+- Możesz łączyć `sleep` z innymi poleceniami, aby wprowadzić opóźnienia między ich wykonaniem.
+- Zawsze upewnij się, że czas opóźnienia jest odpowiedni do kontekstu, aby nie spowodować niepotrzebnych opóźnień w działaniu skryptu.

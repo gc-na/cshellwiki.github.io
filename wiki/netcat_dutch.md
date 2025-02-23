@@ -1,53 +1,51 @@
-# [Linux] C Shell (csh) netcat gebruik: Netwerkverbindingen maken en testen
+# [Linux] C Shell (csh) netcat gebruik: netwerkcommunicatie en debugging
 
 ## Overzicht
-Het `netcat`-commando, vaak afgekort als `nc`, is een veelzijdig netwerkhulpmiddel dat wordt gebruikt voor het maken van TCP- of UDP-verbindingen. Het kan worden gebruikt voor verschillende doeleinden, zoals het testen van netwerkverbindingen, het overdragen van bestanden en het uitvoeren van netwerkdiagnoses.
+De `netcat`-opdracht, vaak afgekort als `nc`, is een veelzijdig netwerkhulpmiddel dat wordt gebruikt voor het lezen en schrijven van gegevens via netwerkverbindingen, gebruikmakend van TCP of UDP. Het kan worden gebruikt voor verschillende doeleinden, zoals het testen van netwerkverbindingen, het verzenden van bestanden en het opzetten van eenvoudige servers.
 
 ## Gebruik
-De basis syntaxis van het `netcat`-commando is als volgt:
+De basis syntaxis van de `netcat`-opdracht is als volgt:
 
 ```csh
 netcat [opties] [argumenten]
 ```
 
 ## Veelvoorkomende opties
-- `-l`: Luister naar inkomende verbindingen.
-- `-p`: Specificeer de poort waarop geluisterd moet worden.
+- `-l`: Luistermodus, waarmee netcat als server fungeert.
+- `-p <poort>`: Specificeert de poort waarop geluisterd of verbinding gemaakt moet worden.
 - `-u`: Gebruik UDP in plaats van TCP.
-- `-v`: Geef gedetailleerde uitvoer (verbose).
-- `-w`: Stel een time-out in voor verbindingen.
+- `-v`: Verbose modus, geeft meer gedetailleerde uitvoer.
+- `-z`: Scannen op open poorten zonder gegevens te verzenden.
 
 ## Veelvoorkomende voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van `netcat`:
 
-### Een eenvoudige TCP-verbinding maken
-Om verbinding te maken met een server op poort 80:
+1. **Een eenvoudige TCP-server opzetten:**
+   ```csh
+   netcat -l -p 1234
+   ```
 
-```csh
-netcat example.com 80
-```
+2. **Verbinden met een TCP-server:**
+   ```csh
+   netcat example.com 80
+   ```
 
-### Een bestand verzenden via netcat
-Verzend een bestand naar een andere machine die luistert op poort 1234:
+3. **Een bestand verzenden via netcat:**
+   ```csh
+   netcat -l -p 1234 < bestand.txt
+   ```
 
-```csh
-netcat -w 3 192.168.1.2 1234 < bestand.txt
-```
+4. **Een bestand ontvangen via netcat:**
+   ```csh
+   netcat example.com 1234 > ontvangen_bestand.txt
+   ```
 
-### Een server opzetten die luistert naar inkomende verbindingen
-Start een server die luistert op poort 1234:
-
-```csh
-netcat -l -p 1234
-```
-
-### Een UDP-verbinding maken
-Gebruik netcat om een UDP-pakket te verzenden:
-
-```csh
-netcat -u 192.168.1.2 1234
-```
+5. **Scannen op open poorten:**
+   ```csh
+   netcat -z -v example.com 1-1000
+   ```
 
 ## Tips
-- Gebruik de `-v` optie voor gedetailleerde uitvoer, vooral bij het oplossen van problemen.
-- Zorg ervoor dat de firewall-instellingen op beide machines de benodigde poorten toestaan.
-- Test altijd je verbindingen met een eenvoudige `ping` voordat je `netcat` gebruikt voor meer complexe taken.
+- Gebruik de `-v` optie om meer inzicht te krijgen in wat er gebeurt tijdens de verbinding.
+- Zorg ervoor dat je de juiste poorten open hebt staan in je firewall om verbindingen toe te staan.
+- Combineer `netcat` met andere commando's zoals `gzip` voor het verzenden van gecomprimeerde bestanden.

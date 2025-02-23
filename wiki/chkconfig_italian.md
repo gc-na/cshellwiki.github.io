@@ -1,52 +1,52 @@
-# [Linux] C Shell (csh) chkconfig utilizzo: Gestire i servizi di sistema
+# [Linux] C Shell (csh) chkconfig: Gestire i servizi di sistema
 
 ## Overview
-Il comando `chkconfig` è utilizzato per gestire i servizi di sistema su Linux, consentendo agli utenti di attivare o disattivare i servizi all'avvio del sistema. Questo strumento è particolarmente utile per configurare i servizi che devono essere eseguiti automaticamente quando il sistema si avvia.
+Il comando `chkconfig` è utilizzato per gestire i servizi di sistema in ambienti Linux. Permette di attivare o disattivare i servizi in base ai runlevel, facilitando la configurazione e la gestione dei servizi di avvio.
 
 ## Usage
-La sintassi di base del comando `chkconfig` è la seguente:
+La sintassi di base del comando è la seguente:
 
-```bash
-chkconfig [opzioni] [argomenti]
+```csh
+chkconfig [options] [arguments]
 ```
 
 ## Common Options
-Ecco alcune opzioni comuni per `chkconfig`:
-
-- `--list`: Elenca tutti i servizi e il loro stato attuale.
-- `--add <servizio>`: Aggiunge un nuovo servizio al sistema di gestione dei servizi.
-- `--del <servizio>`: Rimuove un servizio dal sistema di gestione dei servizi.
-- `--level <livello>`: Specifica i livelli di esecuzione per i quali attivare o disattivare un servizio.
+- `--list`: Mostra lo stato di tutti i servizi configurati.
+- `--add <service>`: Aggiunge un nuovo servizio al sistema.
+- `--del <service>`: Rimuove un servizio dal sistema.
+- `--level <level>`: Specifica il runlevel per cui si desidera modificare lo stato del servizio.
+- `--on <service>`: Attiva un servizio per i runlevel specificati.
+- `--off <service>`: Disattiva un servizio per i runlevel specificati.
 
 ## Common Examples
-Ecco alcuni esempi pratici dell'uso del comando `chkconfig`:
+Ecco alcuni esempi pratici dell'uso di `chkconfig`:
 
 1. **Elencare tutti i servizi e il loro stato:**
-   ```bash
+   ```csh
    chkconfig --list
    ```
 
-2. **Aggiungere un nuovo servizio:**
-   ```bash
-   chkconfig --add nome_servizio
+2. **Attivare un servizio per i runlevel 3 e 5:**
+   ```csh
+   chkconfig --level 35 httpd on
    ```
 
-3. **Rimuovere un servizio esistente:**
-   ```bash
-   chkconfig --del nome_servizio
+3. **Disattivare un servizio per tutti i runlevel:**
+   ```csh
+   chkconfig --del ftp
    ```
 
-4. **Attivare un servizio per un livello di esecuzione specifico:**
-   ```bash
-   chkconfig nome_servizio on --level 234
+4. **Aggiungere un nuovo servizio:**
+   ```csh
+   chkconfig --add myservice
    ```
 
-5. **Disattivare un servizio per un livello di esecuzione specifico:**
-   ```bash
-   chkconfig nome_servizio off --level 234
+5. **Disattivare un servizio specifico:**
+   ```csh
+   chkconfig --off sshd
    ```
 
 ## Tips
-- Assicurati di avere i privilegi di amministratore quando utilizzi `chkconfig`, poiché molte operazioni richiedono permessi elevati.
-- Controlla sempre lo stato dei servizi dopo aver apportato modifiche per assicurarti che siano attivi o inattivi come previsto.
-- Utilizza `chkconfig --list` regolarmente per monitorare i servizi attivi e disattivi sul tuo sistema.
+- Assicurati di avere i privilegi di amministratore per eseguire `chkconfig`.
+- Controlla sempre lo stato dei servizi dopo aver effettuato modifiche per assicurarti che siano attivi o disattivi come previsto.
+- Usa `chkconfig --list` regolarmente per monitorare i servizi attivi nel tuo sistema.

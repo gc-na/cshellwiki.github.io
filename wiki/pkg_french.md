@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) pkg utilisation : gestion des paquets
+# [Linux] C Shell (csh) pkg utilisation : Gestion des paquets
 
 ## Overview
-La commande `pkg` est utilisée pour gérer les paquets dans les systèmes basés sur Unix. Elle permet d'installer, de mettre à jour et de supprimer des logiciels, facilitant ainsi la gestion des dépendances et des versions.
+La commande `pkg` est utilisée pour gérer les paquets logiciels sur les systèmes basés sur Unix. Elle permet d'installer, de mettre à jour et de supprimer des paquets, facilitant ainsi la gestion des logiciels sur votre système.
 
 ## Usage
 La syntaxe de base de la commande `pkg` est la suivante :
@@ -14,40 +14,45 @@ pkg [options] [arguments]
 Voici quelques options courantes pour la commande `pkg` :
 
 - `install` : Installe un ou plusieurs paquets.
-- `remove` : Supprime un ou plusieurs paquets.
-- `update` : Met à jour tous les paquets installés.
-- `search` : Recherche des paquets disponibles selon un critère.
-- `info` : Affiche des informations sur un paquet spécifique.
+- `remove` : Supprime un ou plusieurs paquets installés.
+- `update` : Met à jour les paquets installés vers la dernière version disponible.
+- `list` : Affiche la liste des paquets installés sur le système.
+- `info` : Fournit des informations détaillées sur un paquet spécifique.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `pkg` :
 
-1. Installer un paquet :
+1. Pour installer un paquet :
+
    ```csh
    pkg install nom_du_paquet
    ```
 
-2. Supprimer un paquet :
+2. Pour supprimer un paquet :
+
    ```csh
    pkg remove nom_du_paquet
    ```
 
-3. Mettre à jour tous les paquets installés :
+3. Pour mettre à jour tous les paquets installés :
+
    ```csh
    pkg update
    ```
 
-4. Rechercher un paquet :
+4. Pour lister tous les paquets installés :
+
    ```csh
-   pkg search critère_de_recherche
+   pkg list
    ```
 
-5. Afficher des informations sur un paquet :
+5. Pour obtenir des informations sur un paquet spécifique :
+
    ```csh
    pkg info nom_du_paquet
    ```
 
 ## Tips
 - Toujours vérifier les dépendances d'un paquet avant de l'installer pour éviter des conflits.
-- Utiliser `pkg update` régulièrement pour garder les paquets à jour et sécurisés.
-- En cas de problème, consulter la documentation du paquet pour des instructions spécifiques.
+- Utilisez `pkg update` régulièrement pour garder vos paquets à jour et sécurisés.
+- Lisez la documentation de chaque paquet pour comprendre ses fonctionnalités et son utilisation.

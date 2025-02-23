@@ -1,43 +1,36 @@
-# [Linux] C Shell (csh) bg użycie: Wznawia procesy w tle
+# [Linux] C Shell (csh) bg Użycie: Wznawia zadanie w tle
 
 ## Overview
-Polecenie `bg` w C Shell (csh) służy do wznawiania zatrzymanych procesów w tle. Umożliwia to kontynuowanie pracy nad innymi zadaniami w terminalu, podczas gdy procesy działają w tle.
+Polecenie `bg` w C Shell (csh) służy do wznawiania zatrzymanych zadań w tle. Umożliwia to kontynuowanie pracy nad zadaniami, które zostały wstrzymane, bez blokowania terminala.
 
 ## Usage
 Podstawowa składnia polecenia `bg` jest następująca:
 
-```csh
+```
 bg [options] [arguments]
 ```
 
 ## Common Options
-- `job_id` - identyfikator zadania, który chcesz wznowić w tle. Możesz użyć numeru zadania (np. `%1`) lub jego identyfikatora.
-- `-l` - wyświetla numery zadań w formacie długim.
+- `job_spec` - Określa, które zadanie ma być wznowione w tle. Można użyć numeru zadania lub identyfikatora procesu.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `bg`:
 
 1. Wznawianie ostatniego zatrzymanego zadania w tle:
    ```csh
    bg
    ```
 
-2. Wznawianie konkretnego zadania (np. zadanie o numerze 1):
+2. Wznawianie konkretnego zadania, na przykład zadania o numerze 1:
    ```csh
    bg %1
    ```
 
-3. Wznawianie zadania o określonym identyfikatorze:
+3. Wznawianie zadania o określonym identyfikatorze procesu (PID):
    ```csh
-   bg -l %2
-   ```
-
-4. Wznawianie wszystkich zatrzymanych zadań w tle:
-   ```csh
-   bg %%
+   bg %1234
    ```
 
 ## Tips
-- Używaj polecenia `jobs`, aby sprawdzić, które zadania są zatrzymane lub działają w tle.
-- Pamiętaj, że zadania w tle mogą generować wyjścia, które mogą zalać twój terminal. Rozważ użycie przekierowania wyjścia, aby uniknąć bałaganu.
-- Możesz użyć polecenia `fg`, aby przenieść zadanie z powrotem na pierwszy plan, jeśli potrzebujesz z nim interakcji.
+- Użyj polecenia `jobs`, aby zobaczyć listę aktualnych zadań i ich status.
+- Pamiętaj, że zadania w tle mogą generować wyjście, które będzie wyświetlane w terminalu, co może być mylące. Rozważ przekierowanie wyjścia do pliku.
+- Aby zatrzymać zadanie, które działa w tle, użyj polecenia `kill` z odpowiednim identyfikatorem procesu.

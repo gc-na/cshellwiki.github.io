@@ -1,47 +1,45 @@
 # [Linux] C Shell (csh) pvs Kullanımı: Mevcut süreçlerin görüntülenmesi
 
-## Genel Bakış
-`pvs` komutu, sistemdeki mevcut süreçlerin ve bunların özelliklerinin görüntülenmesini sağlar. Bu komut, özellikle sistem yöneticileri ve geliştiriciler için yararlıdır, çünkü sistemdeki aktif süreçler hakkında bilgi edinmelerine yardımcı olur.
+## Overview
+`pvs` komutu, sistemdeki mevcut süreçlerin ve bunların bağlı olduğu sanal alanların (virtual memory areas) görüntülenmesini sağlar. Bu komut, sistem yöneticileri ve geliştiriciler için süreçlerin durumunu analiz etmek amacıyla oldukça yararlıdır.
 
-## Kullanım
+## Usage
 Temel sözdizimi aşağıdaki gibidir:
-```
-pvs [seçenekler] [argümanlar]
+
+```csh
+pvs [options] [arguments]
 ```
 
-## Yaygın Seçenekler
+## Common Options
 - `-a`: Tüm süreçleri gösterir, gizli süreçler dahil.
-- `-u`: Kullanıcı süreçlerini gösterir.
+- `-e`: Sadece belirli bir süreç için bilgi gösterir.
 - `-p`: Süreçlerin PID'lerini (Process ID) gösterir.
-- `-e`: Süreçlerin daha ayrıntılı bilgilerini gösterir.
+- `-u`: Kullanıcı bazında süreçleri filtreler.
 
-## Yaygın Örnekler
-Aşağıda `pvs` komutunun bazı pratik örnekleri bulunmaktadır:
+## Common Examples
+Aşağıda `pvs` komutunun bazı pratik örnekleri verilmiştir:
 
-1. Tüm süreçleri görüntülemek için:
+1. Tüm süreçleri ve sanal alanlarını görüntüleme:
    ```csh
    pvs -a
    ```
 
-2. Sadece kullanıcı süreçlerini listelemek için:
+2. Belirli bir sürecin bilgilerini görüntüleme:
    ```csh
-   pvs -u
+   pvs -e 1234
    ```
 
-3. Süreçlerin PID'leri ile birlikte görüntülenmesi için:
+3. Süreçlerin PID'lerini gösterme:
    ```csh
    pvs -p
    ```
 
-4. Daha ayrıntılı süreç bilgilerini görmek için:
+4. Kullanıcı bazında süreçleri filtreleme:
    ```csh
-   pvs -e
+   pvs -u username
    ```
 
-## İpuçları
+## Tips
 - `pvs` komutunu sık sık kullanarak sistemdeki süreçlerin durumunu takip edebilirsiniz.
-- Komutun çıktısını bir dosyaya yönlendirmek için `>` operatörünü kullanabilirsiniz:
-  ```csh
-  pvs -a > süreçler.txt
-  ```
-- Belirli bir sürecin detaylarını görmek için, sürecin PID'sini kullanarak filtreleme yapabilirsiniz.
+- Özellikle sistem kaynaklarının yönetimi için `-a` seçeneğini kullanarak gizli süreçleri de göz önünde bulundurmayı unutmayın.
+- Belirli bir süreç üzerinde derinlemesine bilgi almak için `-e` seçeneği ile birlikte PID kullanmak faydalı olacaktır.

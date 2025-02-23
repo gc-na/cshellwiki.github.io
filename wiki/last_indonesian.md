@@ -1,7 +1,7 @@
 # [Sistem Operasi] C Shell (csh) last: Menampilkan riwayat login pengguna
 
 ## Overview
-Perintah `last` digunakan untuk menampilkan daftar login pengguna yang terakhir pada sistem. Ini memberikan informasi tentang pengguna yang telah masuk ke sistem, termasuk waktu dan durasi sesi mereka.
+Perintah `last` digunakan untuk menampilkan daftar login pengguna yang terakhir di sistem. Ini memberikan informasi tentang siapa yang telah masuk dan kapan mereka melakukannya, serta dari mana mereka masuk.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `last`:
@@ -11,9 +11,9 @@ last [options] [arguments]
 ```
 
 ## Common Options
-- `-n [number]`: Menampilkan jumlah entri terakhir yang ditentukan.
+- `-n <number>`: Menampilkan jumlah login terakhir yang ditentukan.
 - `-R`: Menghilangkan nama host dari output.
-- `-f [file]`: Menggunakan file tertentu sebagai sumber data, bukan file log default.
+- `-f <file>`: Menggunakan file tertentu sebagai sumber data, bukan file log default.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `last`:
@@ -28,7 +28,7 @@ Berikut adalah beberapa contoh penggunaan perintah `last`:
    last -n 5
    ```
 
-3. Menampilkan login terakhir tanpa nama host:
+3. Menampilkan login tanpa nama host:
    ```csh
    last -R
    ```
@@ -39,6 +39,9 @@ Berikut adalah beberapa contoh penggunaan perintah `last`:
    ```
 
 ## Tips
-- Gunakan opsi `-n` untuk membatasi jumlah entri yang ditampilkan agar output lebih ringkas.
+- Gunakan opsi `-n` untuk membatasi output jika Anda hanya tertarik pada beberapa entri terbaru.
 - Periksa file log yang berbeda jika Anda ingin melihat riwayat login dari waktu yang lebih lama.
-- Kombinasikan `last` dengan perintah lain seperti `grep` untuk mencari pengguna tertentu dalam riwayat login.
+- Ingat bahwa output dari `last` bisa sangat panjang, jadi pertimbangkan untuk menggunakan `less` untuk menggulir hasilnya dengan lebih mudah:
+  ```csh
+  last | less
+  ```

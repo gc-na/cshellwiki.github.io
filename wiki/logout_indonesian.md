@@ -1,7 +1,7 @@
-# [Sistem Operasi] C Shell (csh) logout <Penggunaan>: Mengakhiri sesi shell
+# [Sistem Operasi] C Shell (csh) logout <Penggunaan>: Mengakhiri sesi pengguna
 
 ## Overview
-Perintah `logout` dalam C Shell (csh) digunakan untuk mengakhiri sesi shell yang sedang berjalan. Ini berguna ketika Anda ingin keluar dari terminal atau sesi yang sedang aktif.
+Perintah `logout` dalam C Shell (csh) digunakan untuk mengakhiri sesi pengguna saat ini. Ini biasanya digunakan ketika Anda ingin keluar dari shell yang sedang aktif dan kembali ke antarmuka pengguna sebelumnya atau menutup terminal.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `logout`:
@@ -11,10 +11,10 @@ logout [options] [arguments]
 ```
 
 ## Common Options
-Perintah `logout` tidak memiliki banyak opsi. Namun, berikut adalah beberapa yang umum digunakan:
+Berikut adalah beberapa opsi umum untuk perintah `logout`:
 
-- `-f`: Mengabaikan sinyal hangup dan keluar secara paksa.
-- `-n`: Tidak menyimpan status sesi yang sedang berjalan.
+- `-f` : Memaksa keluar tanpa meminta konfirmasi.
+- `-n` : Tidak menyimpan status sesi saat ini.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `logout`:
@@ -24,17 +24,16 @@ Berikut adalah beberapa contoh penggunaan perintah `logout`:
    logout
    ```
 
-2. **Keluar dari sesi shell dengan mengabaikan sinyal hangup:**
+2. **Keluar tanpa konfirmasi:**
    ```csh
    logout -f
    ```
 
-3. **Keluar dari sesi shell tanpa menyimpan status:**
+3. **Keluar tanpa menyimpan status sesi:**
    ```csh
    logout -n
    ```
 
 ## Tips
 - Pastikan untuk menyimpan pekerjaan Anda sebelum menggunakan `logout`, karena perintah ini akan menutup sesi shell dan semua proses yang berjalan di dalamnya.
-- Gunakan `exit` sebagai alternatif jika Anda menggunakan shell lain yang mendukungnya, meskipun `logout` lebih spesifik untuk C Shell.
-- Jika Anda terhubung melalui SSH, menggunakan `logout` akan memutuskan koneksi Anda dari server.
+- Gunakan opsi `-f` dengan hati-hati, karena ini akan mengabaikan permintaan konfirmasi dan langsung keluar dari sesi.

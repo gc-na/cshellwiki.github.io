@@ -1,7 +1,7 @@
 # [Hệ điều hành] C Shell (csh) pvs Cách sử dụng: [hiển thị thông tin về các phiên bản của file]
 
 ## Tổng quan
-Lệnh `pvs` trong C Shell được sử dụng để hiển thị thông tin về các phiên bản (version) của các file trong một volume logical. Nó giúp người dùng dễ dàng theo dõi và quản lý các phiên bản của file trong hệ thống.
+Lệnh `pvs` trong C Shell (csh) được sử dụng để hiển thị thông tin về các phiên bản của các file trong hệ thống. Nó giúp người dùng theo dõi và quản lý các phiên bản khác nhau của file một cách hiệu quả.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `pvs` như sau:
@@ -11,34 +11,34 @@ pvs [options] [arguments]
 ```
 
 ## Các tùy chọn phổ biến
-- `-o`: Hiển thị thông tin chi tiết về các phiên bản.
-- `-n`: Chỉ hiển thị tên của các phiên bản.
-- `-u`: Hiển thị các phiên bản không sử dụng.
+- `-a`: Hiển thị tất cả các phiên bản, bao gồm cả các phiên bản không còn tồn tại.
+- `-f`: Hiển thị thông tin chi tiết về các phiên bản.
+- `-n`: Chỉ hiển thị tên của các phiên bản mà không có thông tin bổ sung.
 
 ## Ví dụ thường gặp
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `pvs`:
 
-1. Hiển thị tất cả các phiên bản của file:
+1. Hiển thị tất cả các phiên bản của một file cụ thể:
    ```csh
-   pvs
+   pvs myfile.txt
    ```
 
 2. Hiển thị thông tin chi tiết về các phiên bản:
    ```csh
-   pvs -o
+   pvs -f myfile.txt
    ```
 
-3. Chỉ hiển thị tên của các phiên bản:
+3. Hiển thị chỉ tên của các phiên bản:
    ```csh
-   pvs -n
+   pvs -n myfile.txt
    ```
 
-4. Hiển thị các phiên bản không sử dụng:
+4. Hiển thị tất cả các phiên bản, bao gồm cả các phiên bản không còn tồn tại:
    ```csh
-   pvs -u
+   pvs -a myfile.txt
    ```
 
 ## Mẹo
-- Hãy sử dụng tùy chọn `-o` để có cái nhìn tổng quan hơn về các thông tin liên quan đến phiên bản.
-- Kết hợp `pvs` với các lệnh khác để quản lý file hiệu quả hơn.
-- Thường xuyên kiểm tra các phiên bản để đảm bảo rằng bạn đang làm việc với phiên bản mới nhất.
+- Luôn sử dụng tùy chọn `-f` khi bạn cần thông tin chi tiết để hiểu rõ hơn về các phiên bản của file.
+- Kết hợp các tùy chọn để tùy chỉnh đầu ra theo nhu cầu của bạn.
+- Kiểm tra thường xuyên các phiên bản của file quan trọng để đảm bảo bạn không mất dữ liệu quan trọng.

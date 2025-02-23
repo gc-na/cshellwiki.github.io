@@ -1,54 +1,58 @@
 # [Linux] C Shell (csh) find użycie: znajdowanie nazw plików
 
-## Przegląd
-Polecenie `find` w C Shell (csh) służy do wyszukiwania plików i katalogów w hierarchii systemu plików na podstawie określonych kryteriów, takich jak nazwa, typ, rozmiar czy data modyfikacji.
+## Overview
+Polecenie `find` w C Shell (csh) służy do wyszukiwania plików i katalogów w hierarchii systemu plików. Umożliwia użytkownikom lokalizowanie plików na podstawie różnych kryteriów, takich jak nazwa, typ, rozmiar czy data modyfikacji.
 
-## Użycie
+## Usage
 Podstawowa składnia polecenia `find` jest następująca:
 
 ```csh
 find [opcje] [argumenty]
 ```
 
-## Częste opcje
-- `-name <nazwa>`: wyszukuje pliki o podanej nazwie.
-- `-type <typ>`: filtruje wyniki według typu pliku (np. `f` dla plików, `d` dla katalogów).
-- `-size <rozmiar>`: wyszukuje pliki o określonym rozmiarze.
-- `-mtime <liczba>`: wyszukuje pliki zmodyfikowane w ciągu ostatnich `liczba` dni.
-- `-exec <polecenie> {} \;`: wykonuje podane polecenie na każdym znalezionym pliku.
+## Common Options
+Oto kilka powszechnie używanych opcji polecenia `find`:
 
-## Częste przykłady
-- Znajdowanie plików o nazwie `plik.txt` w bieżącym katalogu i podkatalogach:
+- `-name <nazwa>`: Wyszukuje pliki o podanej nazwie.
+- `-type <typ>`: Filtruje wyniki według typu pliku (np. `f` dla plików, `d` dla katalogów).
+- `-size <rozmiar>`: Wyszukuje pliki o określonym rozmiarze.
+- `-mtime <dni>`: Znajduje pliki zmodyfikowane w ciągu ostatnich dni.
+- `-exec <polecenie> {} \;`: Wykonuje określone polecenie na każdym znalezionym pliku.
 
-```csh
-find . -name "plik.txt"
-```
+## Common Examples
+Oto kilka praktycznych przykładów użycia polecenia `find`:
 
-- Wyszukiwanie wszystkich katalogów w systemie:
+1. Wyszukiwanie plików o nazwie `example.txt` w bieżącym katalogu i podkatalogach:
 
-```csh
-find / -type d
-```
+   ```csh
+   find . -name "example.txt"
+   ```
 
-- Znajdowanie plików większych niż 1 MB:
+2. Wyszukiwanie wszystkich katalogów w systemie:
 
-```csh
-find . -size +1M
-```
+   ```csh
+   find / -type d
+   ```
 
-- Wyszukiwanie plików zmodyfikowanych w ciągu ostatnich 7 dni:
+3. Wyszukiwanie plików większych niż 1 MB w bieżącym katalogu:
 
-```csh
-find . -mtime -7
-```
+   ```csh
+   find . -size +1M
+   ```
 
-- Usuwanie wszystkich plików z rozszerzeniem `.tmp`:
+4. Wyszukiwanie plików zmodyfikowanych w ciągu ostatnich 7 dni:
 
-```csh
-find . -name "*.tmp" -exec rm {} \;
-```
+   ```csh
+   find . -mtime -7
+   ```
 
-## Wskazówki
-- Używaj opcji `-print` (domyślnie włączona w wielu systemach), aby wyświetlić wyniki wyszukiwania.
-- Zawsze testuj polecenia `find` z opcją `-print` przed użyciem `-exec`, aby upewnić się, że operujesz na właściwych plikach.
-- Możesz używać opcji `-maxdepth` i `-mindepth`, aby ograniczyć głębokość przeszukiwania katalogów, co może przyspieszyć proces.
+5. Usuwanie wszystkich plików tymczasowych z rozszerzeniem `.tmp`:
+
+   ```csh
+   find . -name "*.tmp" -exec rm {} \;
+   ```
+
+## Tips
+- Używaj opcji `-print` na końcu, aby wyświetlić wyniki w czytelny sposób, jeśli nie używasz `-exec`.
+- Zawsze testuj polecenia `find` z opcją `-print`, zanim użyjesz `-exec`, aby uniknąć przypadkowego usunięcia lub zmodyfikowania plików.
+- Możesz łączyć różne opcje, aby precyzyjniej określić kryteria wyszukiwania, co zwiększa efektywność polecenia.

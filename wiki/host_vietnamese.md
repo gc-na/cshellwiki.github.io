@@ -1,47 +1,48 @@
-# [Hệ điều hành] C Shell (csh) host: [truy vấn thông tin DNS]
+# [Hệ điều hành] C Shell (csh) host <Sử dụng tương đương>: [truy vấn thông tin DNS]
 
-## Overview
-Lệnh `host` được sử dụng để truy vấn thông tin DNS (Domain Name System) cho một tên miền cụ thể. Nó cho phép người dùng tìm kiếm địa chỉ IP tương ứng với tên miền hoặc ngược lại, giúp xác định thông tin mạng liên quan đến tên miền.
+## Tổng quan
+Lệnh `host` trong C Shell (csh) được sử dụng để truy vấn thông tin DNS. Nó cho phép người dùng tìm kiếm địa chỉ IP của một tên miền hoặc tìm kiếm tên miền tương ứng với một địa chỉ IP.
 
-## Usage
+## Cú pháp
 Cú pháp cơ bản của lệnh `host` như sau:
 ```
-host [options] [arguments]
+host [tùy chọn] [đối số]
 ```
 
-## Common Options
+## Tùy chọn phổ biến
 - `-a`: Hiển thị tất cả các bản ghi DNS cho tên miền.
-- `-t type`: Chỉ định loại bản ghi DNS cần truy vấn (ví dụ: A, MX, NS).
-- `-v`: Bật chế độ chi tiết, hiển thị thông tin bổ sung trong quá trình truy vấn.
+- `-t <loại>`: Chỉ định loại bản ghi DNS cần truy vấn (ví dụ: A, MX, CNAME).
+- `-v`: Bật chế độ chi tiết, hiển thị thêm thông tin về truy vấn.
 
-## Common Examples
+## Ví dụ phổ biến
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `host`:
 
-1. **Truy vấn địa chỉ IP của một tên miền:**
+1. **Tìm địa chỉ IP của một tên miền:**
    ```bash
    host example.com
    ```
 
-2. **Truy vấn tất cả các bản ghi DNS cho một tên miền:**
+2. **Tìm tên miền tương ứng với một địa chỉ IP:**
+   ```bash
+   host 93.184.216.34
+   ```
+
+3. **Hiển thị tất cả các bản ghi DNS cho một tên miền:**
    ```bash
    host -a example.com
    ```
 
-3. **Truy vấn bản ghi MX (Mail Exchange) cho một tên miền:**
+4. **Truy vấn một loại bản ghi cụ thể (ví dụ: MX):**
    ```bash
    host -t MX example.com
    ```
 
-4. **Truy vấn bản ghi NS (Name Server) cho một tên miền:**
-   ```bash
-   host -t NS example.com
-   ```
-
-5. **Sử dụng chế độ chi tiết để xem thông tin bổ sung:**
+5. **Sử dụng chế độ chi tiết:**
    ```bash
    host -v example.com
    ```
 
-## Tips
-- Sử dụng tùy chọn `-t` để chỉ định loại bản ghi bạn muốn truy vấn, giúp tiết kiệm thời gian và tài nguyên.
-- Kiểm tra nhiều tên miền khác nhau để hiểu rõ hơn về cách hoạt động của DNS.
-- Kết hợp lệnh `host` với các công cụ khác như `grep` để lọc thông tin cần thiết một cách hiệu quả.
+## Mẹo
+- Sử dụng `host` để kiểm tra nhanh tình trạng DNS của một tên miền trước khi triển khai.
+- Kết hợp với các công cụ khác như `dig` để có thêm thông tin chi tiết về DNS.
+- Thử nghiệm với các tùy chọn khác nhau để hiểu rõ hơn về cách hoạt động của DNS.

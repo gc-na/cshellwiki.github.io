@@ -1,49 +1,48 @@
-# [Linux] C Shell (csh) udevadm Kullanımı: Aygıt yönetimi ve sorgulama aracı
+# [Linux] C Shell (csh) udevadm Kullanımı: Aygıt yönetimi için bir komut
 
 ## Genel Bakış
-`udevadm`, Linux sistemlerinde aygıt yönetimi ve sorgulama işlemleri için kullanılan bir komuttur. Bu komut, aygıtların durumunu kontrol etmek, aygıt bilgilerini görüntülemek ve udev kurallarını yönetmek için kullanılır.
+`udevadm`, Linux sistemlerinde aygıt yönetimi için kullanılan bir komuttur. Aygıtların durumunu kontrol etmek, aygıt bilgilerini almak ve udev kurallarını yönetmek için kullanılır. Bu komut, sistemdeki aygıtların dinamik olarak tanınmasını ve yönetilmesini sağlar.
 
 ## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
-
+Temel sözdizimi şu şekildedir:
 ```
 udevadm [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `info`: Belirtilen aygıt hakkında bilgi gösterir.
-- `trigger`: Udev olaylarını tetikler.
-- `settle`: Tüm udev olaylarının tamamlanmasını bekler.
-- `control`: Udev daemon'unu kontrol eder.
+- `info`: Belirtilen aygıt hakkında bilgi alır.
+- `trigger`: Aygıt olaylarını tetikler.
+- `settle`: Aygıtların durumunu bekler ve tamamlanmasını sağlar.
+- `control`: udev daemon'unu kontrol eder (örneğin, başlatma veya durdurma).
 
 ## Yaygın Örnekler
-Aşağıda `udevadm` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+Aşağıda `udevadm` komutunun bazı pratik örnekleri bulunmaktadır:
 
 ### Aygıt Bilgisi Alma
-Belirli bir aygıtın bilgilerini görüntülemek için:
+Belirli bir aygıt hakkında bilgi almak için:
 ```bash
 udevadm info --query=all --name=/dev/sda
 ```
 
 ### Aygıt Olaylarını Tetikleme
-Tüm aygıt olaylarını tetiklemek için:
+Yeni bir aygıt bağlandığında olayları tetiklemek için:
 ```bash
 udevadm trigger
 ```
 
-### Udev Olaylarının Tamamlanmasını Bekleme
-Tüm udev olaylarının tamamlanmasını beklemek için:
+### Aygıt Durumunu Bekleme
+Aygıtların durumunu beklemek için:
 ```bash
 udevadm settle
 ```
 
-### Udev Daemon'unu Kontrol Etme
-Udev daemon'unun durumunu kontrol etmek için:
+### udev Daemon'unu Kontrol Etme
+udev daemon'unu durdurmak için:
 ```bash
-udevadm control --reload-rules
+udevadm control --stop
 ```
 
 ## İpuçları
-- `udevadm info` komutunu kullanarak aygıtların detaylı bilgilerini alabilir ve sorun giderme işlemlerini kolaylaştırabilirsiniz.
-- Udev kurallarını değiştirdikten sonra `udevadm control --reload-rules` komutunu kullanarak değişikliklerin etkili olmasını sağlayın.
-- Aygıtların durumunu düzenli olarak kontrol etmek, sistem yönetimi açısından faydalıdır.
+- Aygıt bilgilerini almak için `--query` seçeneğini kullanarak daha spesifik bilgiler edinebilirsiniz.
+- `udevadm trigger` komutunu kullanmadan önce, sistemdeki mevcut aygıtları kontrol etmek iyi bir uygulamadır.
+- Aygıtların doğru bir şekilde yönetilmesi için udev kurallarını düzenli olarak gözden geçirin ve güncelleyin.

@@ -1,56 +1,49 @@
 # [Sistem Operasi] C Shell (csh) sed Penggunaan: Mengedit teks secara otomatis
 
 ## Overview
-Perintah `sed` (stream editor) digunakan untuk mengedit teks secara otomatis dalam aliran data. Perintah ini sangat berguna untuk melakukan penggantian, penghapusan, dan penyisipan teks dalam file atau output dari perintah lain.
+Perintah `sed` (stream editor) digunakan untuk memanipulasi dan mengedit teks dalam aliran data. Dengan `sed`, Anda dapat melakukan berbagai operasi seperti pencarian, penggantian, dan penghapusan teks dalam file atau input standar.
 
 ## Usage
-Sintaks dasar untuk menggunakan `sed` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `sed`:
 
 ```bash
 sed [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang sering digunakan dengan `sed`:
-
-- `-e`: Menentukan ekspresi yang akan dieksekusi.
-- `-f`: Mengambil skrip dari file.
+- `-e`: Menentukan ekspresi untuk dieksekusi.
+- `-f`: Mengambil perintah dari file.
 - `-i`: Mengedit file secara langsung (in-place).
-- `-n`: Menonaktifkan output otomatis, hanya menampilkan hasil yang ditentukan.
+- `-n`: Menonaktifkan output default, hanya menampilkan hasil yang ditentukan.
 
 ## Common Examples
+Berikut adalah beberapa contoh penggunaan `sed`:
 
 1. **Mengganti teks dalam file:**
-   Mengganti semua kemunculan "lama" dengan "baru" dalam file `contoh.txt`.
+   Mengganti semua kemunculan "lama" dengan "baru" dalam file `file.txt`.
    ```bash
-   sed 's/lama/baru/g' contoh.txt
+   sed 's/lama/baru/g' file.txt
    ```
 
-2. **Menghapus baris tertentu:**
-   Menghapus baris ke-2 dari file `contoh.txt`.
+2. **Menghapus baris yang mengandung teks tertentu:**
+   Menghapus semua baris yang mengandung kata "hapus" dari `file.txt`.
    ```bash
-   sed '2d' contoh.txt
+   sed '/hapus/d' file.txt
    ```
 
-3. **Menambahkan teks di akhir setiap baris:**
-   Menambahkan " - selesai" di akhir setiap baris dalam file `contoh.txt`.
+3. **Menambahkan teks di awal setiap baris:**
+   Menambahkan "Awal: " di depan setiap baris dalam file `file.txt`.
    ```bash
-   sed 's/$/ - selesai/' contoh.txt
+   sed 's/^/Awal: /' file.txt
    ```
 
-4. **Menggunakan file skrip:**
-   Menggunakan file `skrip.sed` untuk menjalankan beberapa perintah `sed`.
+4. **Mengedit file secara langsung:**
+   Mengganti "lama" dengan "baru" dan menyimpan perubahan langsung ke `file.txt`.
    ```bash
-   sed -f skrip.sed contoh.txt
-   ```
-
-5. **Mengedit file secara langsung:**
-   Mengganti "lama" dengan "baru" dalam file `contoh.txt` secara langsung.
-   ```bash
-   sed -i 's/lama/baru/g' contoh.txt
+   sed -i 's/lama/baru/g' file.txt
    ```
 
 ## Tips
-- Selalu buat salinan cadangan dari file sebelum menggunakan opsi `-i` untuk menghindari kehilangan data.
-- Gunakan opsi `-n` bersama dengan perintah `p` untuk menampilkan hanya hasil yang relevan.
-- Cobalah untuk menguji perintah `sed` pada terminal sebelum menerapkannya pada file penting untuk memastikan hasil yang diinginkan.
+- Selalu buat salinan cadangan file sebelum menggunakan opsi `-i` untuk menghindari kehilangan data.
+- Gunakan opsi `-n` bersama dengan perintah `p` untuk hanya menampilkan hasil yang relevan.
+- Cobalah menggunakan file skrip untuk menyimpan perintah `sed` yang kompleks agar lebih mudah digunakan kembali.

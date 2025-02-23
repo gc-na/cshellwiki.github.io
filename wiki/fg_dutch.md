@@ -1,42 +1,42 @@
 # [Linux] C Shell (csh) fg Gebruik: Breng een achtergrondtaak naar de voorgrond
 
-## Overzicht
-De `fg`-opdracht in C Shell (csh) wordt gebruikt om een taak die op de achtergrond draait, terug naar de voorgrond te brengen. Dit is handig wanneer je een proces wilt hervatten en interactie wilt hebben met de terminal.
+## Overview
+De `fg` opdracht in C Shell (csh) wordt gebruikt om een achtergrondtaak naar de voorgrond te brengen. Dit is handig wanneer je een proces hebt gestart in de achtergrond en je wilt dat het de focus krijgt, zodat je ermee kunt interageren.
 
-## Gebruik
-De basis syntaxis van de `fg`-opdracht is als volgt:
-
-```csh
-fg [opties] [argumenten]
-```
-
-## Veelvoorkomende Opties
-- **%job_spec**: Hiermee geef je de specifieke taak aan die je naar de voorgrond wilt brengen. Dit kan een jobnummer of een jobnaam zijn.
-  
-## Veelvoorkomende Voorbeelden
-
-### Voorbeeld 1: Breng de laatste achtergrondtaak naar de voorgrond
-Als je een taak op de achtergrond hebt uitgevoerd, kun je deze eenvoudig naar de voorgrond brengen met:
+## Usage
+De basis syntaxis van de `fg` opdracht is als volgt:
 
 ```csh
-fg
+fg [options] [job_spec]
 ```
 
-### Voorbeeld 2: Breng een specifieke taak naar de voorgrond
-Stel dat je meerdere achtergrondtaken hebt en je wilt een specifieke taak met jobnummer 1 naar de voorgrond brengen:
+## Common Options
+- `job_spec`: Dit is een optionele specificatie van de taak die je naar de voorgrond wilt brengen. Dit kan een jobnummer of een proces-ID zijn.
 
-```csh
-fg %1
-```
+## Common Examples
+Hier zijn enkele praktische voorbeelden van het gebruik van de `fg` opdracht:
 
-### Voorbeeld 3: Breng een taak met een specifieke naam naar de voorgrond
-Als je een taak met de naam "editor" hebt die op de achtergrond draait, kun je deze als volgt naar de voorgrond brengen:
+1. **Breng de laatste achtergrondtaak naar de voorgrond:**
+   ```csh
+   fg
+   ```
 
-```csh
-fg %editor
-```
+2. **Breng een specifieke taak naar de voorgrond met jobnummer 1:**
+   ```csh
+   fg %1
+   ```
+
+3. **Breng een taak naar de voorgrond met een specifieke proces-ID (bijvoorbeeld 1234):**
+   ```csh
+   fg %1234
+   ```
+
+4. **Als je meerdere taken hebt, kun je de taak met jobnummer 2 naar de voorgrond brengen:**
+   ```csh
+   fg %2
+   ```
 
 ## Tips
-- Zorg ervoor dat je de juiste job-spec opgeeft als je meerdere taken hebt draaien, om verwarring te voorkomen.
-- Gebruik de `jobs`-opdracht om een lijst van actieve achtergrondtaken te bekijken voordat je `fg` gebruikt.
-- Vergeet niet dat je interactie kunt hebben met de taak zodra deze naar de voorgrond is gebracht, dus zorg ervoor dat je klaar bent om ermee te werken.
+- Zorg ervoor dat je de juiste jobnummer of proces-ID gebruikt om verwarring te voorkomen.
+- Gebruik de `jobs` opdracht om een lijst van actieve achtergrondtaken te bekijken voordat je `fg` gebruikt.
+- Als je een taak naar de voorgrond brengt, kun je deze onderbreken met `Ctrl + C` als je deze wilt stoppen.

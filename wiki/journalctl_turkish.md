@@ -1,12 +1,12 @@
 # [Linux] C Shell (csh) journalctl Kullanımı: Sistem günlüklerini görüntüleme
 
 ## Genel Bakış
-`journalctl`, sistem günlüklerini görüntülemek için kullanılan bir komuttur. Bu komut, sistemdeki hizmetlerin, çekirdek mesajlarının ve diğer günlüklerin kaydedildiği `systemd` günlük sistemine erişim sağlar. Kullanıcılar, günlükleri filtreleyebilir, sıralayabilir ve belirli bir zaman dilimindeki olayları inceleyebilir.
+`journalctl`, sistem günlüklerini görüntülemek için kullanılan bir komuttur. Bu komut, sistemdeki hizmetlerin ve uygulamaların günlük kayıtlarını incelemenizi sağlar. Özellikle hata ayıklama ve sistem durumu analizi için oldukça faydalıdır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
 
-```
+```bash
 journalctl [seçenekler] [argümanlar]
 ```
 
@@ -15,48 +15,37 @@ journalctl [seçenekler] [argümanlar]
 - `-f`: Gerçek zamanlı olarak günlükleri takip eder.
 - `--since "tarih"`: Belirtilen tarihten itibaren günlükleri gösterir.
 - `--until "tarih"`: Belirtilen tarihe kadar günlükleri gösterir.
-- `-p [seviyeler]`: Belirtilen öncelik seviyesine göre günlükleri filtreler (örneğin, `-p err` sadece hata mesajlarını gösterir).
+- `-u [hizmet_adı]`: Belirtilen hizmete ait günlükleri gösterir.
 
 ## Yaygın Örnekler
-Aşağıda `journalctl` komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda `journalctl` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-1. Son sistem başlangıcından itibaren günlükleri görüntüleme:
+1. Son sistem başlangıcından itibaren günlükleri görüntülemek için:
    ```bash
    journalctl -b
    ```
 
-2. Gerçek zamanlı günlük takibi:
+2. Gerçek zamanlı olarak günlükleri takip etmek için:
    ```bash
    journalctl -f
    ```
 
-3. Belirli bir tarihten itibaren günlükleri görüntüleme:
+3. Belirli bir tarihten itibaren günlükleri görüntülemek için:
    ```bash
    journalctl --since "2023-10-01"
    ```
 
-4. Belirli bir tarihe kadar günlükleri görüntüleme:
+4. Belirli bir tarihe kadar günlükleri görüntülemek için:
    ```bash
    journalctl --until "2023-10-10"
    ```
 
-5. Sadece hata mesajlarını görüntüleme:
+5. Belirli bir hizmete ait günlükleri görüntülemek için:
    ```bash
-   journalctl -p err
+   journalctl -u sshd
    ```
 
 ## İpuçları
-- Günlükleri daha iyi analiz etmek için `less` komutuyla birleştirerek sayfalandırabilirsiniz:
-  ```bash
-  journalctl | less
-  ```
-- Belirli bir hizmete ait günlükleri görüntülemek için hizmet adını belirtebilirsiniz:
-  ```bash
-  journalctl -u [hizmet_adı]
-  ```
-- Günlükleri belirli bir dosyaya yönlendirmek için `>` operatörünü kullanabilirsiniz:
-  ```bash
-  journalctl > günlükler.txt
-  ```
-
-Bu bilgilerle `journalctl` komutunu etkili bir şekilde kullanabilir ve sistem günlüklerinizi yönetebilirsiniz.
+- Günlükleri daha okunabilir hale getirmek için `-o` seçeneği ile çıktı formatını değiştirebilirsiniz. Örneğin, `-o short` kullanarak daha kısa bir format elde edebilirsiniz.
+- Uzun günlük kayıtlarını filtrelemek için `grep` komutunu kullanarak belirli anahtar kelimeleri arayabilirsiniz.
+- Günlükleri belirli bir zaman diliminde incelemek için `--since` ve `--until` seçeneklerini bir arada kullanabilirsiniz.

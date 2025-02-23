@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) if : Évaluer des conditions
+# [Linux] C Shell (csh) if : Exécuter des commandes conditionnelles
 
 ## Overview
-La commande `if` dans C Shell (csh) est utilisée pour évaluer des conditions et exécuter des commandes en fonction du résultat de cette évaluation. Elle permet d'exécuter des blocs de code conditionnellement, ce qui est essentiel pour le contrôle de flux dans les scripts.
+La commande `if` dans C Shell (csh) permet d'exécuter des commandes en fonction d'une condition. Si la condition est vraie, les commandes spécifiées sont exécutées.
 
 ## Usage
 La syntaxe de base de la commande `if` est la suivante :
@@ -13,10 +13,11 @@ endif
 ```
 
 ## Common Options
-- `then` : Indique le début du bloc de commandes à exécuter si la condition est vraie.
-- `endif` : Marque la fin de la structure conditionnelle `if`.
+- `then` : Indique le début des commandes à exécuter si la condition est vraie.
+- `endif` : Marque la fin de la structure conditionnelle.
 
 ## Common Examples
+Voici quelques exemples pratiques de l'utilisation de la commande `if` :
 
 ### Exemple 1 : Vérifier si un fichier existe
 ```csh
@@ -35,23 +36,14 @@ endif
 
 ### Exemple 3 : Comparer des nombres
 ```csh
-set a = 10
-set b = 20
+set a = 5
+set b = 10
 if ($a < $b) then
     echo "$a est inférieur à $b."
 endif
 ```
 
-### Exemple 4 : Utiliser `else`
-```csh
-if (-e monfichier.txt) then
-    echo "Le fichier existe."
-else
-    echo "Le fichier n'existe pas."
-endif
-```
-
 ## Tips
-- Assurez-vous d'utiliser des parenthèses autour de la condition.
-- Utilisez des espaces autour des opérateurs pour éviter les erreurs de syntaxe.
-- N'oubliez pas de fermer chaque bloc `if` avec `endif` pour éviter des erreurs d'exécution.
+- Utilisez des parenthèses pour encadrer la condition afin d'améliorer la lisibilité.
+- N'oubliez pas de toujours terminer une structure `if` par `endif` pour éviter les erreurs de syntaxe.
+- Testez vos conditions avec des commandes simples avant de les intégrer dans des scripts plus complexes.

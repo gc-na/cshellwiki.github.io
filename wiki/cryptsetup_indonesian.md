@@ -1,7 +1,7 @@
-# [Sistem Operasi] C Shell (csh) cryptsetup Penggunaan: Mengelola enkripsi disk
+# [Linux] C Shell (csh) cryptsetup Penggunaan: Mengelola enkripsi disk
 
 ## Overview
-Perintah `cryptsetup` digunakan untuk mengelola enkripsi disk pada sistem Linux. Dengan menggunakan `cryptsetup`, pengguna dapat membuat, membuka, dan mengelola volume terenkripsi, yang membantu melindungi data sensitif dari akses yang tidak sah.
+Perintah `cryptsetup` digunakan untuk mengelola enkripsi disk di sistem Linux. Dengan `cryptsetup`, pengguna dapat membuat, membuka, dan mengelola volume terenkripsi menggunakan teknologi LUKS (Linux Unified Key Setup).
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `cryptsetup`:
@@ -11,36 +11,52 @@ cryptsetup [options] [arguments]
 ```
 
 ## Common Options
-- `luks`: Mengindikasikan bahwa volume yang akan dibuat atau dibuka menggunakan LUKS (Linux Unified Key Setup).
-- `create`: Membuat volume terenkripsi baru.
-- `open`: Membuka volume terenkripsi yang sudah ada.
-- `close`: Menutup volume terenkripsi yang sedang dibuka.
+Berikut adalah beberapa opsi umum yang digunakan dengan `cryptsetup`:
+
+- `luksFormat`: Menginisialisasi volume sebagai LUKS.
+- `luksOpen`: Membuka volume terenkripsi untuk diakses.
+- `luksClose`: Menutup volume terenkripsi yang telah dibuka.
+- `luksAddKey`: Menambahkan kunci baru ke volume LUKS.
 - `status`: Menampilkan status dari volume terenkripsi.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan `cryptsetup`:
 
-1. **Membuat volume terenkripsi baru:**
-   ```bash
-   cryptsetup luksFormat /dev/sdX
-   ```
+### Membuat Volume Terenkripsi
+Untuk membuat volume terenkripsi baru, gunakan perintah berikut:
 
-2. **Membuka volume terenkripsi:**
-   ```bash
-   cryptsetup luksOpen /dev/sdX my_encrypted_volume
-   ```
+```bash
+cryptsetup luksFormat /dev/sdX
+```
 
-3. **Menutup volume terenkripsi:**
-   ```bash
-   cryptsetup luksClose my_encrypted_volume
-   ```
+### Membuka Volume Terenkripsi
+Untuk membuka volume yang telah dienkripsi, gunakan:
 
-4. **Menampilkan status dari volume terenkripsi:**
-   ```bash
-   cryptsetup status my_encrypted_volume
-   ```
+```bash
+cryptsetup luksOpen /dev/sdX nama_volume
+```
+
+### Menutup Volume Terenkripsi
+Setelah selesai menggunakan volume, tutup dengan:
+
+```bash
+cryptsetup luksClose nama_volume
+```
+
+### Menambahkan Kunci Baru
+Untuk menambahkan kunci baru ke volume LUKS, gunakan:
+
+```bash
+cryptsetup luksAddKey /dev/sdX
+```
+
+### Menampilkan Status Volume
+Untuk melihat status dari volume terenkripsi, gunakan:
+
+```bash
+cryptsetup status nama_volume
+```
 
 ## Tips
-- Selalu pastikan untuk membuat cadangan kunci atau passphrase Anda, karena kehilangan akses dapat mengakibatkan hilangnya data.
-- Gunakan volume terenkripsi untuk menyimpan data sensitif, seperti informasi pribadi atau dokumen penting.
-- Periksa dokumentasi resmi `cryptsetup` untuk opsi dan fitur tambahan yang mungkin berguna untuk kebutuhan spesifik Anda.
+- Pastikan untuk mencadangkan kunci LUKS Anda, karena kehilangan kunci dapat mengakibatkan kehilangan akses ke data.
+- Gunakan opsi `--verbose` untuk mendapatkan informasi lebih detail saat menjalankan perintah.
+- Selalu periksa apakah volume telah ditutup setelah selesai menggunakannya untuk menjaga keamanan data.

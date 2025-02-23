@@ -1,21 +1,22 @@
-# [Linux] C Shell (csh) last : afficher les connexions précédentes
+# [Linux] C Shell (csh) last : afficher les connexions précédentes des utilisateurs
 
 ## Overview
-La commande `last` dans C Shell (csh) est utilisée pour afficher les connexions précédentes des utilisateurs sur le système. Elle lit le fichier `/var/log/wtmp` pour fournir un historique des connexions et des déconnexions.
+La commande `last` dans C Shell (csh) est utilisée pour afficher les connexions précédentes des utilisateurs sur le système. Elle lit le fichier de journalisation des connexions et fournit des informations sur les utilisateurs qui se sont connectés et déconnectés, ainsi que sur les heures de connexion.
 
 ## Usage
 La syntaxe de base de la commande `last` est la suivante :
 
-```csh
+```
 last [options] [arguments]
 ```
 
 ## Common Options
 Voici quelques options courantes pour la commande `last` :
 
-- `-n [nombre]` : Affiche les [nombre] dernières connexions.
-- `-R` : N'affiche pas le nom d'hôte.
-- `-x` : Affiche également les événements de démarrage et d'arrêt du système.
+- `-n [nombre]` : Affiche les derniers enregistrements de connexion, où `[nombre]` spécifie combien d'entrées afficher.
+- `-R` : N'affiche pas le nom d'hôte des connexions.
+- `-a` : Affiche l'adresse IP ou le nom d'hôte de la connexion à la fin de chaque ligne.
+- `-f [fichier]` : Utilise un fichier de journalisation spécifique au lieu du fichier par défaut.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `last` :
@@ -35,12 +36,17 @@ Voici quelques exemples pratiques de l'utilisation de la commande `last` :
    last -R
    ```
 
-4. Afficher les connexions avec les événements de démarrage et d'arrêt :
+4. Afficher les connexions avec l'adresse IP :
    ```csh
-   last -x
+   last -a
+   ```
+
+5. Utiliser un fichier de journalisation spécifique :
+   ```csh
+   last -f /var/log/wtmp.1
    ```
 
 ## Tips
-- Utilisez `last` régulièrement pour surveiller l'activité des utilisateurs sur votre système.
-- Combinez `last` avec d'autres commandes comme `grep` pour filtrer les résultats selon des utilisateurs spécifiques.
-- Pensez à vérifier les permissions d'accès au fichier `/var/log/wtmp` si vous ne voyez pas les résultats attendus.
+- Utilisez l'option `-n` pour limiter le nombre d'entrées affichées, ce qui peut être utile pour des systèmes avec de nombreux utilisateurs.
+- Combinez les options pour personnaliser la sortie selon vos besoins, par exemple, `last -n 10 -a` pour afficher les 10 dernières connexions avec les adresses IP.
+- Pensez à vérifier régulièrement les connexions pour surveiller l'activité des utilisateurs sur le système.

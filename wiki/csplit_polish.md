@@ -1,51 +1,54 @@
-# [Linux] C Shell (csh) csplit użycie: Dzieli plik na mniejsze części
+# [Linux] C Shell (csh) csplit <Podział plików tekstowych>: Dzieli plik tekstowy na mniejsze części
 
 ## Overview
-Polecenie `csplit` w C Shell (csh) służy do dzielenia plików tekstowych na mniejsze fragmenty. Umożliwia to łatwiejsze zarządzanie dużymi plikami, a także analizowanie ich zawartości w mniejszych częściach.
+Polecenie `csplit` w C Shell (csh) służy do dzielenia plików tekstowych na mniejsze fragmenty na podstawie określonych wzorców lub liczby linii. Jest to przydatne, gdy potrzebujesz podzielić duży plik na mniejsze, łatwiejsze do zarządzania części.
 
 ## Usage
-Podstawowa składnia polecenia `csplit` jest następująca:
+Podstawowa składnia polecenia `csplit` wygląda następująco:
 
-```shell
+```bash
 csplit [opcje] [argumenty]
 ```
 
 ## Common Options
 Oto kilka powszechnie używanych opcji dla `csplit`:
 
-- `-f <prefix>`: Umożliwia określenie prefiksu dla nazw plików wynikowych.
-- `-n <digits>`: Umożliwia określenie liczby cyfr w numerach plików wynikowych.
-- `-b <suffix>`: Umożliwia określenie sufiksu dla nazw plików wynikowych.
-- `-s`: Wyłącza wyświetlanie informacji o postępie na standardowym wyjściu.
+- `-f PREFIX` - Umożliwia określenie prefiksu dla nazw plików wynikowych.
+- `-n NUM` - Umożliwia określenie liczby cyfr w numerze pliku wynikowego.
+- `-b SUFFIX` - Umożliwia określenie sufiksu dla nazw plików wynikowych.
+- `-k` - Zachowuje pliki wynikowe nawet w przypadku błędów.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia `csplit`:
 
-1. **Podział pliku na części na podstawie linii:**
-   ```shell
-   csplit myfile.txt 10
-   ```
-   Ten przykład dzieli plik `myfile.txt` na części po 10 liniach.
+### Przykład 1: Podział pliku na podstawie liczby linii
+Aby podzielić plik `dane.txt` na części po 100 linijek, użyj:
 
-2. **Podział pliku na podstawie wzorca:**
-   ```shell
-   csplit myfile.txt /START/ /END/
-   ```
-   W tym przypadku plik `myfile.txt` zostanie podzielony na części, zaczynając od wzorca `START` i kończąc na wzorcu `END`.
+```bash
+csplit dane.txt 100
+```
 
-3. **Użycie prefiksu dla plików wynikowych:**
-   ```shell
-   csplit -f part_ myfile.txt 10
-   ```
-   Ten przykład tworzy pliki wynikowe z prefiksem `part_`, np. `part_00`, `part_01`, itd.
+### Przykład 2: Podział pliku na podstawie wzorca
+Aby podzielić plik `raport.txt` na części, gdzie występuje słowo "Rozdział", użyj:
 
-4. **Podział z określeniem sufiksu:**
-   ```shell
-   csplit -b '%02d.txt' myfile.txt 10
-   ```
-   W tym przypadku pliki wynikowe będą miały sufiks w formacie `00.txt`, `01.txt`, itd.
+```bash
+csplit raport.txt /Rozdział/
+```
+
+### Przykład 3: Użycie prefiksu dla plików wynikowych
+Aby podzielić plik `notatki.txt` na części i nadać im prefiks `czesc`, użyj:
+
+```bash
+csplit -f czesc notatki.txt 100
+```
+
+### Przykład 4: Zachowanie plików w przypadku błędów
+Aby podzielić plik `log.txt` i zachować pliki nawet w przypadku błędów, użyj:
+
+```bash
+csplit -k log.txt /Błąd/
+```
 
 ## Tips
-- Używaj opcji `-s`, aby zredukować ilość informacji wyjściowych, jeśli nie potrzebujesz widzieć postępu.
-- Zawsze przetestuj `csplit` na kopii pliku, aby uniknąć przypadkowego usunięcia danych.
-- Eksperymentuj z różnymi wzorcami, aby dostosować podział do swoich potrzeb.
+- Zawsze przetestuj `csplit` na kopii pliku, aby uniknąć utraty danych.
+- Używaj opcji `-n` dla lepszej organizacji plików wynikowych, zwłaszcza gdy dzielisz duże pliki.
+- Sprawdź dokumentację `man csplit`, aby uzyskać więcej informacji o dostępnych opcjach i ich zastosowaniach.

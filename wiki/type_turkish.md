@@ -1,19 +1,18 @@
-# [Unix] C Shell (csh) türü komutu: [komut türünü belirleme]
+# [Unix] C Shell (csh) type kullanımı: Komut türünü belirleme
 
 ## Genel Bakış
-`type` komutu, bir komutun veya bir değişkenin hangi türde olduğunu belirlemek için kullanılır. Bu, komutun yerleşik mi yoksa kullanıcı tanımlı mı olduğunu anlamaya yardımcı olur.
+`type` komutu, bir komutun türünü belirlemek için kullanılır. Bu komut, verilen bir komutun yerel bir komut mu, bir shell fonksiyonu mu, bir alias mı yoksa bir dış program mı olduğunu gösterir.
 
 ## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
-
+Temel sözdizimi şu şekildedir:
 ```csh
 type [options] [arguments]
 ```
 
 ## Yaygın Seçenekler
-- `-t`: Komutun türünü sadece isim olarak döndürür.
-- `-a`: Komutun tüm tanımlarını gösterir, yani hem yerleşik hem de kullanıcı tanımlı olanları.
-- `-p`: Komutun tam yolunu gösterir.
+- `-t`: Komutun türünü yalnızca gösterir (örneğin, "alias", "function", "builtin" veya "file").
+- `-p`: Komutun bulunduğu yolu gösterir.
+- `-a`: Komutun tüm tanımlarını gösterir.
 
 ## Yaygın Örnekler
 Aşağıda `type` komutunun bazı pratik örnekleri bulunmaktadır:
@@ -23,23 +22,29 @@ Aşağıda `type` komutunun bazı pratik örnekleri bulunmaktadır:
    type ls
    ```
 
-2. Bir değişkenin türünü kontrol etmek:
+2. Bir alias'ın türünü kontrol etmek:
    ```csh
-   set myVar = "Hello"
-   type myVar
+   alias ll='ls -l'
+   type ll
    ```
 
-3. Tüm tanımları görmek:
+3. Bir shell fonksiyonunun türünü görmek:
    ```csh
-   type -a echo
+   function myfunc { echo "Hello, World!"; }
+   type myfunc
    ```
 
-4. Bir komutun tam yolunu bulmak:
+4. Komutun bulunduğu yolu öğrenmek:
    ```csh
    type -p grep
    ```
 
+5. Tüm tanımları görmek:
+   ```csh
+   type -a ls
+   ```
+
 ## İpuçları
-- `type` komutunu kullanarak, hangi komutların yerleşik olduğunu ve hangilerinin kullanıcı tanımlı olduğunu kolayca ayırt edebilirsiniz.
-- Komutların tam yollarını bulmak, özellikle birden fazla versiyonun bulunduğu sistemlerde faydalıdır.
-- `type` komutunu sıkça kullanarak, terminaldeki komutlarınızın nasıl çalıştığını daha iyi anlayabilirsiniz.
+- `type` komutunu kullanarak, hangi komutların yerel olarak tanımlandığını ve hangilerinin dış programlar olduğunu kolayca ayırt edebilirsiniz.
+- Eğer bir alias veya fonksiyon tanımladıysanız, `type` komutunu kullanarak bunların doğru çalıştığını doğrulayabilirsiniz.
+- Komutların türlerini öğrenmek, shell script yazarken hangi komutları kullanmanız gerektiğine karar vermenize yardımcı olabilir.

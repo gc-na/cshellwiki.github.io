@@ -1,19 +1,17 @@
-# [Linux] C Shell (csh) whoami Kullanımı: Kullanıcının adını gösterir
+# [Linux] C Shell (csh) whoami Kullanımı: Kullanıcı adını gösterir
 
 ## Genel Bakış
-`whoami` komutu, mevcut oturumda kim olduğunuzu gösterir. Yani, terminalde oturum açmış olan kullanıcı adını döndürür. Bu komut, özellikle birden fazla kullanıcı hesabı olan sistemlerde hangi kullanıcıyla işlem yaptığınızı kontrol etmek için faydalıdır.
+`whoami` komutu, mevcut oturumda oturum açmış olan kullanıcının adını gösterir. Bu, özellikle birden fazla kullanıcı hesabı olan sistemlerde hangi kullanıcıyla işlem yaptığınızı hızlıca öğrenmek için faydalıdır.
 
 ## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
-
-```
+Temel sözdizimi şu şekildedir:
+```csh
 whoami [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-`whoami` komutunun genellikle kullanılan seçenekleri şunlardır:
-- `--help`: Komutun kullanımına dair yardım bilgilerini gösterir.
-- `--version`: Komutun sürüm bilgilerini gösterir.
+- `-a`: Kullanıcı hakkında daha fazla bilgi gösterir.
+- `-m`: Kullanıcının mevcut adını gösterir.
 
 ## Yaygın Örnekler
 Aşağıda `whoami` komutunun bazı pratik örnekleri bulunmaktadır:
@@ -23,16 +21,17 @@ Aşağıda `whoami` komutunun bazı pratik örnekleri bulunmaktadır:
    whoami
    ```
 
-2. Yardım bilgilerini görüntülemek için:
+2. Kullanıcı hakkında daha fazla bilgi almak için:
    ```csh
-   whoami --help
+   whoami -a
    ```
 
-3. Komutun sürümünü kontrol etmek için:
+3. Mevcut kullanıcı adını tekrar kontrol etmek için:
    ```csh
-   whoami --version
+   whoami -m
    ```
 
 ## İpuçları
 - `whoami` komutunu sık sık kullanıyorsanız, bir alias oluşturarak daha hızlı erişim sağlayabilirsiniz.
-- Eğer birden fazla terminal açtıysanız, hangi terminalde hangi kullanıcıyla işlem yaptığınızı kontrol etmek için `whoami` komutunu kullanmayı unutmayın.
+- Eğer birden fazla terminal penceresi açtıysanız, her birinde `whoami` komutunu kullanarak hangi kullanıcıyla oturum açtığınızı kontrol edebilirsiniz.
+- `whoami` komutunu, scriptler içinde kullanıcı doğrulama işlemleri için kullanmak faydalı olabilir.

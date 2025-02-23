@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) psql Utilizzo: Interagire con PostgreSQL
 
 ## Overview
-Il comando `psql` è un'interfaccia a riga di comando per interagire con i database PostgreSQL. Permette agli utenti di eseguire query SQL, gestire database e visualizzare i risultati direttamente dal terminale.
+Il comando `psql` è un'interfaccia a riga di comando per interagire con il database PostgreSQL. Permette agli utenti di eseguire query SQL, gestire database e amministrare il sistema di gestione del database.
 
 ## Usage
 La sintassi di base del comando `psql` è la seguente:
@@ -12,15 +12,15 @@ psql [options] [arguments]
 
 ## Common Options
 - `-h`: Specifica l'host del server PostgreSQL.
-- `-p`: Indica la porta su cui il server è in ascolto.
-- `-U`: Specifica il nome dell'utente per la connessione al database.
-- `-d`: Indica il nome del database a cui ci si vuole connettere.
+- `-p`: Indica la porta su cui il server PostgreSQL è in ascolto.
+- `-U`: Specifica il nome utente per la connessione al database.
+- `-d`: Indica il nome del database a cui connettersi.
 - `-f`: Esegue un file contenente comandi SQL.
 
 ## Common Examples
-Ecco alcuni esempi pratici dell'uso del comando `psql`:
+Ecco alcuni esempi pratici di utilizzo del comando `psql`:
 
-1. **Connessione a un database locale:**
+1. **Connessione a un database:**
    ```csh
    psql -U nome_utente -d nome_database
    ```
@@ -41,6 +41,6 @@ Ecco alcuni esempi pratici dell'uso del comando `psql`:
    ```
 
 ## Tips
-- Utilizza l'opzione `-W` per richiedere la password dell'utente in modo sicuro.
-- Sfrutta la funzionalità di completamento automatico di `psql` per facilitare la scrittura delle query.
-- Puoi utilizzare il comando `\?` all'interno di `psql` per visualizzare un elenco di comandi e opzioni disponibili.
+- Assicurati di avere i permessi necessari per accedere al database e alle tabelle.
+- Usa l'opzione `-W` per richiedere la password al momento della connessione.
+- Familiarizzati con i comandi interni di `psql`, come `\q` per uscire e `\h` per ottenere aiuto sui comandi SQL.

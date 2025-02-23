@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) watch utilisation : surveiller les commandes en temps réel
 
 ## Overview
-La commande `watch` permet d'exécuter périodiquement une autre commande et d'afficher sa sortie dans le terminal. Cela est particulièrement utile pour surveiller les changements dans les fichiers ou les processus en cours d'exécution.
+La commande `watch` permet d'exécuter une commande à intervalles réguliers et d'afficher sa sortie à l'écran. Cela est particulièrement utile pour surveiller les changements dans l'état d'un système ou d'un fichier.
 
 ## Usage
 La syntaxe de base de la commande `watch` est la suivante :
@@ -13,38 +13,34 @@ watch [options] [arguments]
 ## Common Options
 Voici quelques options courantes pour la commande `watch` :
 
-- `-n <seconds>` : définit l'intervalle de temps en secondes entre chaque exécution de la commande.
-- `-d` : met en surbrillance les différences entre les sorties successives.
-- `-t` : supprime l'affichage de l'horodatage en haut de l'écran.
+- `-n <seconds>` : Définit l'intervalle en secondes entre chaque exécution de la commande.
+- `-d` : Met en surbrillance les différences entre les sorties successives.
+- `-t` : Supprime l'affichage de l'en-tête, montrant uniquement la sortie de la commande.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `watch` :
 
-1. Surveiller l'utilisation de l'espace disque toutes les 2 secondes :
-
+1. Surveiller l'utilisation de la mémoire :
    ```csh
-   watch -n 2 df -h
+   watch -n 5 free -h
    ```
 
-2. Afficher les processus en cours d'exécution et mettre en surbrillance les changements :
-
+2. Vérifier les processus en cours :
    ```csh
-   watch -d ps aux
+   watch ps aux
    ```
 
-3. Vérifier les modifications dans un fichier texte toutes les 5 secondes :
-
+3. Surveiller les changements dans un répertoire :
    ```csh
-   watch -n 5 cat /path/to/file.txt
+   watch -d ls -l /path/to/directory
    ```
 
-4. Surveiller l'état d'un service (par exemple, Apache) sans horodatage :
-
+4. Afficher l'espace disque toutes les 10 secondes :
    ```csh
-   watch -t systemctl status apache2
+   watch -n 10 df -h
    ```
 
 ## Tips
-- Utilisez l'option `-d` pour mieux visualiser les changements, surtout lorsque vous surveillez des informations qui changent fréquemment.
-- Choisissez un intervalle de temps approprié avec `-n` pour éviter de surcharger votre terminal avec des mises à jour trop fréquentes.
-- Combinez `watch` avec d'autres commandes pour des tâches de surveillance plus complexes, comme `grep` ou `awk`, pour filtrer les résultats.
+- Utilisez l'option `-d` pour mieux visualiser les changements dans les sorties.
+- Choisissez un intervalle raisonnable avec `-n` pour éviter de surcharger le système avec trop d'exécutions.
+- Pensez à utiliser `-t` si vous souhaitez une sortie plus propre sans l'en-tête.

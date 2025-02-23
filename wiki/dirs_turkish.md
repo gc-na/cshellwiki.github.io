@@ -1,44 +1,43 @@
 # [Linux] C Shell (csh) dirs Kullanımı: Dizin yığınını görüntüleme
 
 ## Overview
-`dirs` komutu, C Shell (csh) ortamında mevcut dizin yığınını görüntülemek için kullanılır. Bu komut, kullanıcıların dizinler arasında geçiş yaparken hangi dizinlerin yığınında olduğunu hızlıca görmelerine olanak tanır.
+`dirs` komutu, C Shell (csh) ortamında mevcut dizin yığınını görüntülemek için kullanılır. Kullanıcı, dizinler arasında geçiş yaparken, hangi dizinlerin yığınında olduğunu hızlıca kontrol edebilir.
 
 ## Usage
 Temel sözdizimi aşağıdaki gibidir:
-
-```csh
+```
 dirs [options] [arguments]
 ```
 
 ## Common Options
 - `-c`: Dizin yığınını temizler.
-- `-l`: Dizinlerin tam yolunu gösterir.
-- `-p`: Dizinleri tek satırda, boşlukla ayrılmış olarak gösterir.
+- `-l`: Uzun biçimde dizinleri gösterir.
+- `-p`: Dizinleri sadece yol olarak gösterir.
 
 ## Common Examples
 Aşağıda `dirs` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. Mevcut dizin yığınını görüntüleme:
-   ```csh
-   dirs
-   ```
+### Örnek 1: Mevcut dizin yığınını görüntüleme
+```csh
+dirs
+```
 
-2. Dizin yığınını tam yollarla görüntüleme:
-   ```csh
-   dirs -l
-   ```
+### Örnek 2: Dizin yığınını uzun biçimde görüntüleme
+```csh
+dirs -l
+```
 
-3. Dizin yığınını temizleme:
-   ```csh
-   dirs -c
-   ```
+### Örnek 3: Dizin yığınını temizleme
+```csh
+dirs -c
+```
 
-4. Dizinleri tek satırda görüntüleme:
-   ```csh
-   dirs -p
-   ```
+### Örnek 4: Dizinleri sadece yol olarak gösterme
+```csh
+dirs -p
+```
 
 ## Tips
 - Dizin yığınını yönetmek için `pushd` ve `popd` komutları ile birlikte kullanabilirsiniz.
-- Dizin yığınını düzenli tutmak için gereksiz dizinleri temizlemek iyi bir uygulamadır.
-- `dirs` komutunu sık sık kullanarak, dizinler arasında geçiş yaparken hangi dizinde olduğunuzu kolayca takip edebilirsiniz.
+- Dizin yığınını düzenli tutmak, projeler arasında geçiş yaparken zaman kazandırır.
+- `dirs -l` seçeneği, dizinlerin tam yollarını görmek için faydalıdır, böylece hangi dizinde olduğunuzu daha iyi anlayabilirsiniz.

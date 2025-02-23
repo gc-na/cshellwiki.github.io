@@ -1,38 +1,44 @@
 # [Hệ điều hành] C Shell (csh) mpstat Cách sử dụng: Theo dõi hiệu suất CPU
 
-## Tổng quan
-Lệnh `mpstat` được sử dụng để hiển thị thông tin về hiệu suất của các bộ xử lý trong hệ thống. Nó cho phép người dùng theo dõi mức sử dụng CPU theo thời gian, giúp phát hiện các vấn đề về hiệu suất.
+## Overview
+Lệnh `mpstat` được sử dụng để theo dõi và báo cáo hiệu suất của các CPU trong hệ thống. Nó cung cấp thông tin chi tiết về mức sử dụng CPU, giúp người dùng phân tích và tối ưu hóa hiệu suất hệ thống.
 
-## Cách sử dụng
+## Usage
 Cú pháp cơ bản của lệnh `mpstat` như sau:
 ```
 mpstat [options] [arguments]
 ```
 
-## Các tùy chọn phổ biến
+## Common Options
 - `-P ALL`: Hiển thị thông tin cho tất cả các CPU.
 - `-u`: Hiển thị thông tin về mức sử dụng CPU.
+- `-w`: Hiển thị thông tin về mức sử dụng bộ nhớ.
 - `-h`: Hiển thị thông tin theo định dạng dễ đọc hơn.
-- `interval`: Thời gian giữa các lần cập nhật thông tin (tính bằng giây).
-- `count`: Số lần cập nhật thông tin.
 
-## Ví dụ phổ biến
-- Hiển thị thông tin sử dụng CPU cho tất cả các bộ xử lý:
-  ```bash
-  mpstat -P ALL
-  ```
+## Common Examples
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `mpstat`:
 
-- Hiển thị thông tin sử dụng CPU mỗi 2 giây, 5 lần:
-  ```bash
-  mpstat 2 5
-  ```
+1. Hiển thị thông tin sử dụng CPU cho tất cả các CPU:
+   ```bash
+   mpstat -P ALL
+   ```
 
-- Hiển thị thông tin sử dụng CPU với định dạng dễ đọc:
-  ```bash
-  mpstat -h
-  ```
+2. Hiển thị thông tin sử dụng CPU với định dạng dễ đọc:
+   ```bash
+   mpstat -u -h
+   ```
 
-## Mẹo
-- Sử dụng tùy chọn `-P ALL` để có cái nhìn tổng quát về tất cả các CPU trong hệ thống.
-- Thực hiện lệnh `mpstat` với khoảng thời gian ngắn để theo dõi hiệu suất trong thời gian thực.
+3. Theo dõi hiệu suất CPU mỗi 5 giây:
+   ```bash
+   mpstat 5
+   ```
+
+4. Hiển thị thông tin sử dụng CPU cho CPU 0:
+   ```bash
+   mpstat -P 0
+   ```
+
+## Tips
+- Sử dụng tùy chọn `-P ALL` để có cái nhìn tổng quan về tất cả các CPU trong hệ thống.
 - Kết hợp `mpstat` với các lệnh khác như `grep` để lọc thông tin cần thiết.
+- Theo dõi hiệu suất CPU trong thời gian thực bằng cách sử dụng tùy chọn thời gian, giúp phát hiện các vấn đề kịp thời.

@@ -3,48 +3,40 @@
 ## Tổng quan
 Lệnh `cal` trong C Shell (csh) được sử dụng để hiển thị lịch tháng hoặc năm. Nó cho phép người dùng xem lịch một cách nhanh chóng và dễ dàng từ dòng lệnh.
 
-## Cách sử dụng
+## Cú pháp
 Cú pháp cơ bản của lệnh `cal` như sau:
 ```
-cal [tùy chọn] [tham số]
+cal [options] [arguments]
 ```
 
-## Tùy chọn phổ biến
-- `-m`: Hiển thị lịch của tháng hiện tại.
-- `-y`: Hiển thị lịch của cả năm hiện tại.
+## Các tùy chọn phổ biến
+- `-1`: Hiển thị lịch của tháng hiện tại.
 - `-3`: Hiển thị lịch của tháng trước, tháng hiện tại và tháng sau.
-- `-j`: Hiển thị ngày trong năm (ngày thứ).
-- `-w`: Hiển thị tuần hiện tại.
+- `-y`: Hiển thị lịch của cả năm.
+- `-m`: Hiển thị tháng cụ thể (theo số) trong năm.
 
-## Ví dụ phổ biến
-Dưới đây là một số ví dụ về cách sử dụng lệnh `cal`:
+## Các ví dụ phổ biến
+- Hiển thị lịch của tháng hiện tại:
+  ```csh
+  cal
+  ```
 
-1. Hiển thị lịch của tháng hiện tại:
-   ```csh
-   cal
-   ```
+- Hiển thị lịch của tháng 5 năm 2023:
+  ```csh
+  cal 5 2023
+  ```
 
-2. Hiển thị lịch của tháng 12 năm 2023:
-   ```csh
-   cal 12 2023
-   ```
+- Hiển thị lịch của cả năm 2023:
+  ```csh
+  cal -y 2023
+  ```
 
-3. Hiển thị lịch của cả năm 2023:
-   ```csh
-   cal -y 2023
-   ```
-
-4. Hiển thị lịch của tháng trước, tháng hiện tại và tháng sau:
-   ```csh
-   cal -3
-   ```
-
-5. Hiển thị lịch với ngày trong năm:
-   ```csh
-   cal -j
-   ```
+- Hiển thị lịch của tháng trước, tháng hiện tại và tháng sau:
+  ```csh
+  cal -3
+  ```
 
 ## Mẹo
-- Sử dụng tùy chọn `-m` để nhanh chóng kiểm tra lịch tháng hiện tại mà không cần thêm tham số.
-- Kết hợp `cal` với các lệnh khác trong shell để tạo ra các script tự động hóa lịch.
-- Tham khảo tài liệu hướng dẫn của hệ thống để biết thêm các tùy chọn nâng cao và cách sử dụng.
+- Sử dụng tùy chọn `-m` để chỉ định tháng cụ thể mà bạn muốn xem.
+- Kết hợp `cal` với lệnh `grep` để tìm các ngày cụ thể trong lịch.
+- Thường xuyên sử dụng `cal` để lên kế hoạch cho các sự kiện hoặc cuộc họp trong tháng.

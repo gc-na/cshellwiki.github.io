@@ -1,45 +1,47 @@
-# [Hệ điều hành] C Shell (csh) sed Cách sử dụng: Chỉnh sửa văn bản trong dòng lệnh
+# [Hệ điều hành Unix] C Shell (csh) sed Cách sử dụng: Chỉnh sửa văn bản
 
-## Overview
-Lệnh `sed` (stream editor) là một công cụ mạnh mẽ trong C Shell (csh) dùng để chỉnh sửa văn bản theo dòng. Nó cho phép người dùng thực hiện các thao tác như thay thế, xóa hoặc chèn văn bản trong các tệp hoặc đầu vào từ dòng lệnh.
+## Tổng quan
+Lệnh `sed` (stream editor) là một công cụ mạnh mẽ trong C Shell dùng để chỉnh sửa văn bản trong dòng. Nó cho phép người dùng thực hiện các thao tác như thay thế, xóa hoặc chèn văn bản một cách tự động trong các tệp hoặc đầu vào từ dòng lệnh.
 
-## Usage
+## Cách sử dụng
 Cú pháp cơ bản của lệnh `sed` như sau:
-
 ```bash
 sed [options] [arguments]
 ```
 
-## Common Options
-- `-e`: Chỉ định một lệnh để thực hiện.
-- `-f`: Chỉ định một tệp chứa các lệnh `sed`.
-- `-i`: Thay đổi tệp gốc mà không cần tạo tệp tạm.
-- `-n`: Ngăn không in ra tất cả các dòng, chỉ in những dòng được chỉ định.
+## Các tùy chọn phổ biến
+- `-e`: Cho phép thực hiện nhiều lệnh `sed` trong một lần gọi.
+- `-i`: Chỉnh sửa tệp trực tiếp mà không cần tạo tệp tạm.
+- `-n`: Ngăn không in ra đầu ra mặc định, chỉ in ra những dòng được chỉ định.
+- `s`: Thay thế một chuỗi văn bản bằng một chuỗi khác.
 
-## Common Examples
-Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `sed`:
+## Ví dụ phổ biến
+- **Thay thế một chuỗi văn bản trong tệp**:
+```bash
+sed 's/old_text/new_text/' filename.txt
+```
 
-1. **Thay thế một từ trong tệp:**
-   ```bash
-   sed 's/oldword/newword/g' filename.txt
-   ```
+- **Thay thế tất cả các chuỗi trong tệp**:
+```bash
+sed 's/old_text/new_text/g' filename.txt
+```
 
-2. **Xóa các dòng chứa một từ cụ thể:**
-   ```bash
-   sed '/word/d' filename.txt
-   ```
+- **Chỉnh sửa tệp trực tiếp**:
+```bash
+sed -i 's/old_text/new_text/g' filename.txt
+```
 
-3. **Chèn một dòng mới sau một dòng cụ thể:**
-   ```bash
-   sed '/pattern/a new line of text' filename.txt
-   ```
+- **In ra các dòng chứa một chuỗi cụ thể**:
+```bash
+sed -n '/pattern/p' filename.txt
+```
 
-4. **Thay đổi trực tiếp tệp mà không tạo tệp tạm:**
-   ```bash
-   sed -i 's/oldword/newword/g' filename.txt
-   ```
+- **Xóa các dòng chứa một chuỗi cụ thể**:
+```bash
+sed '/pattern/d' filename.txt
+```
 
-## Tips
-- Sử dụng tùy chọn `-n` để chỉ in những dòng mà bạn thực sự cần, điều này giúp giảm bớt thông tin không cần thiết.
-- Khi sử dụng `-i`, hãy sao lưu tệp gốc trước khi thực hiện thay đổi để tránh mất dữ liệu.
-- Thực hành với các lệnh `sed` trên các tệp nhỏ trước khi áp dụng cho các tệp lớn để làm quen với cú pháp và kết quả.
+## Mẹo
+- Hãy luôn sao lưu tệp trước khi sử dụng tùy chọn `-i` để tránh mất dữ liệu.
+- Sử dụng tùy chọn `-n` để chỉ in ra những dòng bạn quan tâm, giúp đầu ra gọn gàng hơn.
+- Thực hành với các tệp nhỏ trước khi áp dụng trên các tệp lớn để làm quen với cú pháp và hành vi của `sed`.

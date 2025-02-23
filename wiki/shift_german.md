@@ -1,47 +1,54 @@
 # [Linux] C Shell (csh) shift Verwendung: Verschieben von Positionsparametern
 
 ## Übersicht
-Der `shift` Befehl in der C Shell (csh) wird verwendet, um die Positionsparameter in einem Skript oder einer Shell-Sitzung zu verschieben. Dies bedeutet, dass der erste Parameter (z.B. `$1`) entfernt wird und alle nachfolgenden Parameter um eins nach vorne verschoben werden. Dies ist besonders nützlich, wenn Sie mehrere Argumente verarbeiten und den ersten Parameter nach der Verarbeitung ignorieren möchten.
+Der Befehl `shift` in der C Shell (csh) wird verwendet, um die Positionsparameter in einem Skript oder einer Shell-Umgebung zu verschieben. Dies bedeutet, dass der erste Positionsparameter (z.B. `$1`) entfernt wird und alle nachfolgenden Parameter um eine Position nach vorne verschoben werden (z.B. `$2` wird zu `$1`, `$3` wird zu `$2` usw.).
 
 ## Verwendung
-Die grundlegende Syntax des `shift` Befehls lautet:
+Die grundlegende Syntax des Befehls lautet:
 
 ```csh
 shift [n]
 ```
 
-Hierbei ist `n` die Anzahl der Positionen, um die die Parameter verschoben werden sollen. Wenn `n` nicht angegeben ist, wird standardmäßig um eins verschoben.
+Hierbei ist `n` die Anzahl der Positionen, um die die Parameter verschoben werden sollen. Wenn `n` nicht angegeben wird, wird standardmäßig um eins verschoben.
 
 ## Häufige Optionen
-- `n`: Gibt an, um wie viele Positionen die Parameter verschoben werden sollen. Wenn `n` nicht angegeben ist, wird um eins verschoben.
+- `n`: Gibt die Anzahl der Positionen an, um die die Parameter verschoben werden sollen. Wenn `n` größer ist als die Anzahl der vorhandenen Parameter, werden alle Parameter entfernt.
 
 ## Häufige Beispiele
 
 ### Beispiel 1: Einfaches Verschieben
 ```csh
-set args = (eins zwei drei vier)
-echo $1  # Ausgabe: eins
+set arg1 = "Hallo"
+set arg2 = "Welt"
+set arg3 = "!"
+echo $1 $2 $3  # Ausgabe: Hallo Welt !
 shift
-echo $1  # Ausgabe: zwei
+echo $1 $2 $3  # Ausgabe: Welt !
 ```
 
-### Beispiel 2: Mehrfaches Verschieben
+### Beispiel 2: Verschieben um mehrere Positionen
 ```csh
-set args = (eins zwei drei vier)
+set arg1 = "A"
+set arg2 = "B"
+set arg3 = "C"
+set arg4 = "D"
+echo $1 $2 $3 $4  # Ausgabe: A B C D
 shift 2
-echo $1  # Ausgabe: drei
+echo $1 $2 $3 $4  # Ausgabe: C D
 ```
 
-### Beispiel 3: Verwendung in einer Schleife
+### Beispiel 3: Verschieben ohne Angabe von n
 ```csh
-set args = (eins zwei drei vier)
-while ($#args > 0)
-    echo $1
-    shift
-end
+set arg1 = "Erster"
+set arg2 = "Zweiter"
+set arg3 = "Dritter"
+echo $1 $2 $3  # Ausgabe: Erster Zweiter Dritter
+shift
+echo $1 $2 $3  # Ausgabe: Zweiter Dritter
 ```
 
 ## Tipps
-- Verwenden Sie `shift` in Schleifen, um alle Argumente nacheinander zu verarbeiten.
-- Achten Sie darauf, dass Sie nicht mehr Parameter verschieben, als vorhanden sind, da dies zu unerwartetem Verhalten führen kann.
-- Kombinieren Sie `shift` mit anderen Befehlen wie `set` und `echo`, um die Verarbeitung von Skriptargumenten zu optimieren.
+- Verwenden Sie `shift` in Schleifen, um durch eine Liste von Argumenten zu iterieren.
+- Achten Sie darauf, die Anzahl der vorhandenen Parameter zu überprüfen, bevor Sie `shift` verwenden, um Fehler zu vermeiden.
+- Nutzen Sie `shift` in Kombination mit anderen Befehlen, um die Handhabung von Skriptargumenten zu erleichtern.

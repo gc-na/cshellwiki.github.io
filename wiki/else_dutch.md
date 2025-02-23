@@ -1,54 +1,61 @@
-# [Linux] C Shell (csh) else: Voer alternatieve commando's uit
+# [Linux] C Shell (csh) else: Voorwaardelijke uitvoering van commando's
 
 ## Overzicht
-De `else`-opdracht in C Shell (csh) wordt gebruikt in combinatie met de `if`-structuur om alternatieve commando's uit te voeren wanneer de voorwaarde van de `if`-verklaring niet waar is. Dit maakt het mogelijk om verschillende acties te ondernemen op basis van de uitkomst van een voorwaarde.
+De `else`-opdracht in C Shell (csh) wordt gebruikt in combinatie met `if`-verklaringen om alternatieve acties uit te voeren wanneer een bepaalde voorwaarde niet waar is. Het stelt gebruikers in staat om verschillende paden in hun scripts te volgen, afhankelijk van de uitkomst van een voorwaarde.
 
 ## Gebruik
-De basis syntaxis van de `else`-opdracht is als volgt:
+De basisstructuur van de `else`-opdracht is als volgt:
 
-```
+```csh
 if (voorwaarde) then
-    commando1
+    # commando's als de voorwaarde waar is
 else
-    commando2
+    # commando's als de voorwaarde niet waar is
 endif
 ```
 
 ## Veelvoorkomende opties
-De `else`-opdracht zelf heeft geen specifieke opties, omdat het voornamelijk een onderdeel is van de controleflow in scripts. Het is echter belangrijk om de `if`-structuur correct te gebruiken.
+De `else`-opdracht zelf heeft geen specifieke opties, maar het wordt vaak gebruikt in combinatie met de `if`-opdracht. Hier zijn enkele relevante opties voor `if`:
+
+- `-eq`: Controleert of twee waarden gelijk zijn.
+- `-ne`: Controleert of twee waarden niet gelijk zijn.
+- `-lt`: Controleert of de linkerwaarde kleiner is dan de rechterwaarde.
+- `-gt`: Controleert of de linkerwaarde groter is dan de rechterwaarde.
 
 ## Veelvoorkomende Voorbeelden
 
 ### Voorbeeld 1: Eenvoudige if-else
 ```csh
-set VAR = 10
-if ($VAR > 5) then
-    echo "VAR is groter dan 5"
+set x = 10
+if ($x == 10) then
+    echo "x is gelijk aan 10"
 else
-    echo "VAR is 5 of kleiner"
+    echo "x is niet gelijk aan 10"
 endif
 ```
 
 ### Voorbeeld 2: Controle op een bestand
 ```csh
-if (-e bestand.txt) then
+set bestand = "voorbeeld.txt"
+if (-e $bestand) then
     echo "Het bestand bestaat."
 else
     echo "Het bestand bestaat niet."
 endif
 ```
 
-### Voorbeeld 3: Alternatieve uitvoer
+### Voorbeeld 3: Numerieke vergelijking
 ```csh
-set NUM = 3
-if ($NUM == 1) then
-    echo "Num is één."
+set a = 5
+set b = 10
+if ($a -lt $b) then
+    echo "$a is kleiner dan $b"
 else
-    echo "Num is niet één."
+    echo "$a is niet kleiner dan $b"
 endif
 ```
 
 ## Tips
-- Zorg ervoor dat je de `endif`-verklaring niet vergeet om de `if`-structuur correct af te sluiten.
+- Zorg ervoor dat je de juiste syntaxis gebruikt voor de `if`-verklaring, anders kan de `else`-sectie niet correct worden uitgevoerd.
 - Gebruik haakjes om de voorwaarden duidelijk te maken en om fouten te voorkomen.
-- Test je scripts met verschillende invoerwaarden om te controleren of de `else`-structuur correct werkt.
+- Test je scripts met verschillende voorwaarden om ervoor te zorgen dat de `else`-sectie correct wordt uitgevoerd wanneer dat nodig is.

@@ -1,41 +1,39 @@
-# [Hệ điều hành Unix] C Shell (csh) bindkey: [gán phím tắt]
+# [Hệ điều hành] C Shell (csh) bindkey: [gán phím tắt cho lệnh]
 
 ## Tổng quan
-Lệnh `bindkey` trong C Shell (csh) được sử dụng để gán các phím tắt cho các lệnh hoặc chức năng cụ thể trong môi trường dòng lệnh. Điều này giúp tăng tốc độ làm việc và cải thiện hiệu suất khi sử dụng shell.
+Lệnh `bindkey` trong C Shell (csh) được sử dụng để gán các phím tắt cho các lệnh hoặc chức năng cụ thể. Điều này giúp người dùng có thể thực hiện các tác vụ nhanh chóng hơn mà không cần phải gõ toàn bộ lệnh.
 
-## Cú pháp
+## Cách sử dụng
 Cú pháp cơ bản của lệnh `bindkey` như sau:
-```
+
+```csh
 bindkey [tùy chọn] [tham số]
 ```
 
 ## Các tùy chọn phổ biến
-- `-e`: Sử dụng chế độ vi (emacs) để gán phím.
-- `-v`: Sử dụng chế độ vim để gán phím.
+- `-e`: Chuyển sang chế độ vi (emacs) cho các phím tắt.
+- `-v`: Chuyển sang chế độ vim cho các phím tắt.
 - `-s`: Gán một chuỗi lệnh cho một phím tắt cụ thể.
 
 ## Ví dụ phổ biến
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `bindkey`:
 
-1. Gán phím tắt cho lệnh `ls`:
+1. Gán phím tắt để xóa dòng hiện tại:
    ```csh
-   bindkey -s "^l" "ls\n"
+   bindkey "^U" backward-kill-line
    ```
-   Khi bạn nhấn `Ctrl+l`, lệnh `ls` sẽ được thực thi.
 
-2. Chuyển sang chế độ vi:
+2. Gán phím tắt để thực hiện lệnh `ls`:
+   ```csh
+   bindkey "^L" "ls -l"
+   ```
+
+3. Chuyển sang chế độ vi:
    ```csh
    bindkey -v
    ```
-   Điều này sẽ cho phép bạn sử dụng các phím tắt của vim trong shell.
-
-3. Gán phím tắt cho lệnh `clear`:
-   ```csh
-   bindkey -s "^c" "clear\n"
-   ```
-   Khi bạn nhấn `Ctrl+c`, màn hình sẽ được làm sạch.
 
 ## Mẹo
-- Hãy thử nghiệm với các phím tắt khác nhau để tìm ra những gì phù hợp nhất với bạn.
-- Ghi chú lại các phím tắt mà bạn đã gán để dễ dàng nhớ và sử dụng sau này.
-- Sử dụng chế độ vi hoặc emacs tùy thuộc vào phong cách làm việc của bạn để tối ưu hóa trải nghiệm sử dụng shell.
+- Hãy thử gán các phím tắt cho các lệnh mà bạn sử dụng thường xuyên để tiết kiệm thời gian.
+- Kiểm tra các phím tắt đã được gán trước đó để tránh xung đột.
+- Sử dụng chế độ vi hoặc emacs tùy thuộc vào phong cách làm việc của bạn để có trải nghiệm tốt hơn.

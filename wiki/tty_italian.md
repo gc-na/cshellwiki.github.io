@@ -1,24 +1,23 @@
-# [Linux] C Shell (csh) tty utilizzo: visualizza il terminale corrente
+# [Linux] C Shell (csh) tty utilizzo: mostrare il nome del terminale
 
 ## Overview
-Il comando `tty` in C Shell (csh) è utilizzato per visualizzare il nome del terminale collegato alla sessione corrente. Questo è utile per identificare quale terminale si sta utilizzando, specialmente in ambienti con più terminali aperti.
+Il comando `tty` in C Shell (csh) viene utilizzato per visualizzare il nome del terminale collegato alla sessione corrente. Questo è utile per identificare quale terminale si sta utilizzando, specialmente quando si lavora con più terminali o sessioni.
 
 ## Usage
 La sintassi di base del comando è la seguente:
 
-```csh
-tty [opzioni] [argomenti]
+```
+tty [options] [arguments]
 ```
 
 ## Common Options
-- `-s`: Esegue il comando in modalità silenziosa, senza stampare l'output. Restituisce solo il codice di uscita.
-- `--help`: Mostra un messaggio di aiuto con informazioni sulle opzioni disponibili.
-- `--version`: Mostra la versione del comando `tty`.
+- `-s`: Esegue il comando in modalità silenziosa, senza stampare l'output sullo schermo. Restituisce solo il codice di uscita.
+- `--help`: Mostra un messaggio di aiuto con le opzioni disponibili.
 
 ## Common Examples
 Ecco alcuni esempi pratici dell'uso del comando `tty`:
 
-1. **Visualizzare il terminale corrente:**
+1. **Visualizzare il nome del terminale corrente:**
    ```csh
    tty
    ```
@@ -28,16 +27,12 @@ Ecco alcuni esempi pratici dell'uso del comando `tty`:
    tty -s
    ```
 
-3. **Controllare se si è in un terminale:**
+3. **Mostrare il messaggio di aiuto:**
    ```csh
-   if ( $? == 0 ) then
-       echo "Sei in un terminale."
-   else
-       echo "Non sei in un terminale."
-   endif
+   tty --help
    ```
 
 ## Tips
-- Utilizza `tty` per verificare rapidamente quale terminale stai utilizzando, specialmente quando lavori su più sessioni.
-- In script, puoi utilizzare l'opzione `-s` per controllare se il comando `tty` ha successo senza stampare l'output.
-- Ricorda che `tty` è utile anche per il debug, poiché ti aiuta a capire il contesto in cui il tuo script viene eseguito.
+- Utilizza `tty` per confermare rapidamente quale terminale stai utilizzando, specialmente in ambienti complessi.
+- Se stai scrivendo script, considera l'uso dell'opzione `-s` per evitare output non necessario.
+- Ricorda che il comando `tty` può essere utile anche per il debug, per verificare se un comando viene eseguito in un terminale interattivo.

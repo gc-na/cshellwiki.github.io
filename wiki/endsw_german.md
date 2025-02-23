@@ -1,42 +1,50 @@
-# [Linux] C Shell (csh) endsw Verwendung: Beendet die Ausführung von Bedingungen
+# [Unix] C Shell (csh) endsw Verwendung: Beenden von Bedingungen
 
 ## Übersicht
-Der `endsw` Befehl in der C Shell (csh) wird verwendet, um das Ende einer `switch`-Anweisung zu kennzeichnen. Er ist ein wichtiger Bestandteil der Steuerflusskontrolle in Skripten, da er es ermöglicht, verschiedene Ausführungswege basierend auf Bedingungen zu definieren.
+Der `endsw` Befehl in der C Shell (csh) wird verwendet, um das Ende einer Switch-Anweisung zu kennzeichnen. Er ist ein wichtiger Bestandteil der Steuerflusskontrolle in Skripten, die mehrere Bedingungen überprüfen.
 
 ## Verwendung
-Die grundlegende Syntax des `endsw` Befehls ist wie folgt:
+Die grundlegende Syntax des Befehls lautet:
 
-```csh
+```
 endsw
 ```
 
 ## Häufige Optionen
-Der `endsw` Befehl hat keine spezifischen Optionen. Er wird einfach verwendet, um das Ende einer `switch`-Anweisung zu signalisieren.
+Der `endsw` Befehl hat keine speziellen Optionen, da er einfach als Abschluss für eine Switch-Anweisung dient.
 
 ## Häufige Beispiele
 
-### Beispiel 1: Einfache Verwendung in einer switch-Anweisung
+### Beispiel 1: Einfache Switch-Anweisung
 ```csh
-set var = "B"
-switch ($var)
-    case "A":
-        echo "Die Variable ist A"
+switch ($variable)
+    case "wert1":
+        echo "Wert ist 1"
         breaksw
-    case "B":
-        echo "Die Variable ist B"
-        breaksw
-    case "C":
-        echo "Die Variable ist C"
+    case "wert2":
+        echo "Wert ist 2"
         breaksw
     default:
-        echo "Die Variable ist unbekannt"
+        echo "Wert ist unbekannt"
 endsw
 ```
 
-### Beispiel 2: Verwendung mit einer numerischen Variable
+### Beispiel 2: Verwendung mit Variablen
 ```csh
-set zahl = 2
-switch ($zahl)
+set myVar = "test"
+switch ($myVar)
+    case "test":
+        echo "Die Variable ist 'test'"
+        breaksw
+    default:
+        echo "Die Variable ist etwas anderes"
+endsw
+```
+
+### Beispiel 3: Mehrere Bedingungen
+```csh
+set number = 3
+switch ($number)
     case 1:
         echo "Eins"
         breaksw
@@ -47,27 +55,11 @@ switch ($zahl)
         echo "Drei"
         breaksw
     default:
-        echo "Unbekannte Zahl"
-endsw
-```
-
-### Beispiel 3: Verwendung in einem Skript
-```csh
-#!/bin/csh
-set farbe = "rot"
-switch ($farbe)
-    case "rot":
-        echo "Die Farbe ist Rot"
-        breaksw
-    case "blau":
-        echo "Die Farbe ist Blau"
-        breaksw
-    default:
-        echo "Unbekannte Farbe"
+        echo "Keine der Bedingungen erfüllt"
 endsw
 ```
 
 ## Tipps
-- Stellen Sie sicher, dass jede `switch`-Anweisung mit einem `endsw` Befehl endet, um Syntaxfehler zu vermeiden.
-- Verwenden Sie `breaksw`, um die Ausführung der `switch`-Anweisung nach einem Treffer zu beenden.
-- Achten Sie darauf, die Variablen in Klammern zu setzen, wenn Sie sie in einer `switch`-Anweisung verwenden.
+- Stellen Sie sicher, dass jede `switch`-Anweisung mit einem `endsw` abgeschlossen wird, um Syntaxfehler zu vermeiden.
+- Verwenden Sie `breaksw`, um die Ausführung nach einer passenden Bedingung zu beenden und nicht weiter zu prüfen.
+- Halten Sie die Bedingungen klar und präzise, um die Lesbarkeit und Wartbarkeit Ihres Skripts zu verbessern.

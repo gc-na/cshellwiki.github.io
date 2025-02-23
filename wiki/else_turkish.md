@@ -1,26 +1,29 @@
 # [Linux] C Shell (csh) else komutu: Koşullu ifadelerde alternatif yol
 
 ## Genel Bakış
-`else` komutu, C Shell (csh) programlama dilinde koşullu ifadelerde alternatif bir yol sunar. Bir `if` ifadesinin ardından gelir ve eğer `if` koşulu sağlanmazsa çalıştırılacak komutları belirler.
+`else` komutu, C Shell (csh) programlama dilinde koşullu ifadelerde alternatif bir yol sunar. Bir `if` koşulu sağlanmadığında, `else` bloğu çalıştırılır. Bu, program akışını kontrol etmek için kullanılır.
 
 ## Kullanım
-Temel sözdizimi şu şekildedir:
+Temel sözdizimi aşağıdaki gibidir:
 
 ```csh
+if (koşul) then
+    # koşul doğruysa çalışacak komutlar
 else
-    [komutlar]
+    # koşul yanlışsa çalışacak komutlar
+endif
 ```
 
 ## Yaygın Seçenekler
-`else` komutunun kendisi için özel bir seçenek yoktur, ancak genellikle `if` komutu ile birlikte kullanılır. `if` komutunun bazı yaygın seçenekleri şunlardır:
+`else` komutunun kendine özgü seçenekleri yoktur, ancak `if` komutu ile birlikte kullanılır. `if` komutunun bazı yaygın seçenekleri şunlardır:
 - `-e`: Dosyanın var olup olmadığını kontrol eder.
 - `-d`: Belirtilen yolun bir dizin olup olmadığını kontrol eder.
 - `-f`: Belirtilen yolun bir dosya olup olmadığını kontrol eder.
 
 ## Yaygın Örnekler
-Aşağıda `else` komutunun kullanımına dair bazı pratik örnekler bulunmaktadır:
+Aşağıda, `else` komutunun kullanıldığı bazı pratik örnekler bulunmaktadır:
 
-### Örnek 1: Basit if-else yapısı
+### Örnek 1: Dosya var mı kontrolü
 ```csh
 if (-e dosya.txt) then
     echo "Dosya mevcut."
@@ -31,23 +34,23 @@ endif
 
 ### Örnek 2: Dizin kontrolü
 ```csh
-if (-d /path/to/directory) then
+if (-d /home/kullanici) then
     echo "Dizin mevcut."
 else
     echo "Dizin mevcut değil."
 endif
 ```
 
-### Örnek 3: Dosya kontrolü
+### Örnek 3: Dosya türü kontrolü
 ```csh
-if (-f /path/to/file) then
-    echo "Dosya var."
+if (-f script.sh) then
+    echo "Script dosyası mevcut."
 else
-    echo "Dosya yok."
+    echo "Script dosyası mevcut değil."
 endif
 ```
 
 ## İpuçları
-- `else` komutunu kullanırken, `if` koşulunun doğru bir şekilde tanımlandığından emin olun.
-- Koşul ifadelerinizi net ve anlaşılır tutun, böylece kodunuz okunabilir olur.
-- `else` komutunu kullanarak, hata durumlarını daha iyi yönetebilir ve kullanıcıya daha anlamlı geri bildirimler verebilirsiniz.
+- `else` komutunu kullanırken, her zaman `endif` ile kapatmayı unutmayın.
+- Koşullarınızı net bir şekilde tanımlamak, kodun okunabilirliğini artırır.
+- Birden fazla `if` ve `else` bloğu kullanıyorsanız, kodunuzu düzenli tutmak için uygun girintileme yapın.

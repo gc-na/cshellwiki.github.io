@@ -1,7 +1,7 @@
-# [Sistem Operasi] C Shell (csh) builtin: mengeksekusi perintah dalam shell
+# [Sistem Operasi] C Shell (csh) builtin: Menjalankan perintah internal
 
 ## Overview
-Perintah `builtin` dalam C Shell (csh) digunakan untuk mengeksekusi perintah yang merupakan bagian dari shell itu sendiri, bukan perintah eksternal. Ini berguna untuk menjalankan fungsi-fungsi yang sudah ada dalam shell tanpa memanggil program terpisah.
+Perintah `builtin` dalam C Shell (csh) digunakan untuk menjalankan perintah internal yang sudah ada dalam shell, alih-alih mencari perintah eksternal di sistem. Ini berguna untuk memastikan bahwa perintah yang dijalankan adalah versi yang diintegrasikan ke dalam shell.
 
 ## Usage
 Berikut adalah sintaks dasar untuk menggunakan perintah `builtin`:
@@ -11,28 +11,27 @@ builtin [options] [arguments]
 ```
 
 ## Common Options
-- `-h`: Menampilkan bantuan untuk perintah builtin yang tersedia.
-- `-v`: Menampilkan versi dari perintah builtin yang sedang digunakan.
+- `-c`: Menjalankan perintah yang diberikan sebagai argumen.
+- `-h`: Menampilkan bantuan untuk perintah yang ditentukan.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `builtin`:
 
-1. Menjalankan perintah `echo` yang merupakan builtin:
+1. Menjalankan perintah `echo` sebagai perintah internal:
    ```csh
-   builtin echo "Hello, World!"
+   builtin echo "Ini adalah perintah internal"
    ```
 
-2. Menggunakan `builtin` untuk memanggil `set`:
+2. Menampilkan bantuan untuk perintah `set`:
    ```csh
-   builtin set var=value
+   builtin -h set
    ```
 
-3. Menampilkan bantuan untuk perintah builtin:
+3. Menjalankan perintah `cd` untuk berpindah direktori:
    ```csh
-   builtin -h
+   builtin cd /path/to/directory
    ```
 
 ## Tips
-- Gunakan `builtin` ketika Anda ingin memastikan bahwa Anda menjalankan versi internal dari perintah, bukan versi eksternal.
-- Periksa opsi yang tersedia untuk setiap perintah builtin dengan menggunakan opsi `-h` untuk mendapatkan informasi lebih lanjut.
-- Menggunakan `builtin` dapat meningkatkan kecepatan eksekusi, karena tidak perlu memanggil proses terpisah.
+- Gunakan `builtin` ketika Anda ingin memastikan bahwa Anda menggunakan versi internal dari perintah, terutama jika ada versi eksternal yang mungkin terpasang di sistem.
+- Periksa dokumentasi untuk mengetahui perintah internal yang tersedia di C Shell agar dapat memanfaatkan fitur-fitur tersebut secara maksimal.

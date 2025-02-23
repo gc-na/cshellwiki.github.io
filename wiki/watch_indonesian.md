@@ -1,19 +1,19 @@
-# [Sistem Operasi] C Shell (csh) watch Penggunaan: Memantau Perintah Secara Berkala
+# [Sistem Operasi] C Shell (csh) watch penggunaan: Memantau perintah secara berkala
 
 ## Overview
-Perintah `watch` digunakan untuk menjalankan perintah tertentu secara berkala dan menampilkan outputnya di layar. Ini sangat berguna untuk memantau perubahan dalam output dari perintah yang dijalankan, seperti status sistem atau file log.
+Perintah `watch` digunakan untuk menjalankan perintah tertentu secara berkala dan menampilkan outputnya di terminal. Ini sangat berguna untuk memantau perubahan dalam output dari perintah yang dijalankan, seperti status sistem atau file.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `watch`:
 
-```csh
+```
 watch [options] [arguments]
 ```
 
 ## Common Options
-- `-n <seconds>`: Menentukan interval waktu dalam detik antara setiap eksekusi perintah.
-- `-d`: Menyoroti perbedaan antara output yang baru dan sebelumnya.
-- `-t`: Menghilangkan tampilan header yang menunjukkan waktu dan perintah yang dijalankan.
+- `-n <detik>`: Menentukan interval waktu dalam detik antara setiap eksekusi perintah.
+- `-d`: Menyoroti perbedaan antara output sebelumnya dan output saat ini.
+- `-t`: Menonaktifkan tampilan header yang menunjukkan waktu dan perintah yang sedang dijalankan.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `watch`:
@@ -23,7 +23,7 @@ Berikut adalah beberapa contoh penggunaan perintah `watch`:
    watch -n 2 top
    ```
 
-2. Melihat isi direktori secara berkala:
+2. Melihat isi direktori secara berkala setiap 5 detik:
    ```csh
    watch -n 5 ls -l
    ```
@@ -39,6 +39,6 @@ Berikut adalah beberapa contoh penggunaan perintah `watch`:
    ```
 
 ## Tips
-- Gunakan opsi `-d` untuk lebih mudah melihat perubahan pada output.
-- Sesuaikan interval waktu dengan kebutuhan Anda agar tidak membebani sistem.
-- Cobalah kombinasi perintah untuk memantau berbagai aspek sistem secara bersamaan.
+- Gunakan opsi `-d` untuk dengan mudah melihat perubahan dalam output, terutama saat memantau log atau status sistem.
+- Sesuaikan interval waktu dengan kebutuhan Anda; interval yang terlalu pendek dapat membuat output sulit dibaca.
+- Pertimbangkan untuk menggunakan perintah yang menghasilkan output ringkas agar tidak membanjiri terminal dengan informasi.

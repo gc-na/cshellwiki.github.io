@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) stat <Użycie: wyświetlanie informacji o plikach>
 
 ## Przegląd
-Polecenie `stat` w C Shell (csh) służy do wyświetlania szczegółowych informacji o plikach i katalogach, takich jak rozmiar, uprawnienia, czas modyfikacji i inne atrybuty.
+Polecenie `stat` w C Shell (csh) służy do wyświetlania szczegółowych informacji o plikach i katalogach. Umożliwia użytkownikom uzyskanie danych takich jak rozmiar pliku, daty modyfikacji oraz uprawnienia.
 
 ## Użycie
 Podstawowa składnia polecenia `stat` jest następująca:
@@ -10,35 +10,33 @@ Podstawowa składnia polecenia `stat` jest następująca:
 stat [opcje] [argumenty]
 ```
 
-## Typowe opcje
-- `-c` : Umożliwia określenie formatu wyjścia.
-- `-f` : Wyświetla informacje w formacie systemu plików.
-- `-L` : Śledzi dowiązania symboliczne, wyświetlając informacje o pliku, do którego prowadzą.
+## Częste opcje
+- `-c` : Umożliwia formatowanie wyjścia według podanego wzoru.
+- `-f` : Wyświetla informacje o systemie plików.
+- `-L` : Śledzi dowiązania symboliczne i wyświetla informacje o pliku, do którego prowadzą.
 
 ## Przykłady
-Oto kilka praktycznych przykładów użycia polecenia `stat`:
-
-1. Wyświetlenie podstawowych informacji o pliku:
+1. Aby wyświetlić podstawowe informacje o pliku:
    ```csh
-   stat plik.txt
+   stat myfile.txt
    ```
 
-2. Wyświetlenie informacji o katalogu:
+2. Aby uzyskać szczegółowe informacje w formacie dostosowanym:
    ```csh
-   stat /ścieżka/do/katalogu
+   stat -c '%n: %s bytes, modified %y' myfile.txt
    ```
 
-3. Użycie opcji `-c` do dostosowania formatu wyjścia:
+3. Aby wyświetlić informacje o katalogu:
    ```csh
-   stat -c "Rozmiar: %s bajtów, Czas modyfikacji: %y" plik.txt
+   stat /home/user/
    ```
 
-4. Śledzenie dowiązań symbolicznych:
+4. Aby śledzić dowiązania symboliczne:
    ```csh
-   stat -L dowiazanie.txt
+   stat -L symlink.txt
    ```
 
 ## Wskazówki
-- Używaj opcji `-c`, aby dostosować wyjście do swoich potrzeb, co może być przydatne w skryptach.
-- Sprawdzaj uprawnienia plików, aby upewnić się, że masz odpowiednie dostępy do plików, z którymi pracujesz.
-- Regularnie korzystaj z `stat` w połączeniu z innymi poleceniami, aby uzyskać pełniejszy obraz stanu systemu plików.
+- Używaj opcji `-c` do dostosowywania wyjścia, co może być przydatne w skryptach.
+- Sprawdzaj uprawnienia plików, aby upewnić się, że masz odpowiednie dostępy przed ich edytowaniem.
+- Pamiętaj, że `stat` może być użyteczne w diagnostyce problemów z plikami i systemem plików.

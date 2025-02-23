@@ -1,44 +1,44 @@
-# [Sistem Operasi] C Shell (csh) fold penggunaan: Membatasi lebar teks
+# [Sistem Operasi] C Shell (csh) fold Penggunaan: Memformat teks menjadi kolom
 
 ## Overview
-Perintah `fold` digunakan untuk membatasi lebar teks pada output, sehingga setiap baris tidak melebihi jumlah karakter tertentu. Ini sangat berguna untuk memformat teks agar lebih mudah dibaca, terutama saat menampilkan konten di terminal.
+Perintah `fold` digunakan untuk memformat teks dengan membagi baris panjang menjadi beberapa baris yang lebih pendek. Ini berguna untuk memastikan bahwa teks dapat dibaca dengan lebih mudah, terutama saat ditampilkan pada layar dengan lebar terbatas.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `fold`:
 
-```
+```csh
 fold [options] [arguments]
 ```
 
 ## Common Options
-- `-w <width>`: Menentukan lebar maksimum karakter per baris. Jika tidak ditentukan, lebar default adalah 80 karakter.
-- `-s`: Memotong baris pada batas kata terdekat, bukan di tengah kata.
+- `-w <width>`: Menentukan lebar maksimum dari setiap baris yang dihasilkan.
+- `-s`: Memotong baris pada spasi terdekat sebelum lebar maksimum, bukan di tengah kata.
 - `-b`: Menghitung lebar dalam byte, bukan karakter.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `fold`:
 
-1. Membatasi lebar teks menjadi 50 karakter:
+1. Memformat file teks dengan lebar 50 karakter:
    ```csh
    fold -w 50 file.txt
    ```
 
-2. Menggunakan opsi `-s` untuk memotong pada batas kata:
+2. Menggunakan opsi `-s` untuk memotong pada spasi:
    ```csh
    fold -s -w 30 file.txt
    ```
 
-3. Menghitung lebar dalam byte:
+3. Menghitung lebar dalam byte dan memformat output:
    ```csh
    fold -b -w 40 file.txt
    ```
 
-4. Menggunakan `fold` pada output dari perintah lain:
+4. Mengalihkan output ke file baru:
    ```csh
-   echo "Ini adalah contoh teks yang sangat panjang dan perlu dibatasi lebar barisnya." | fold -w 20
+   fold -w 60 file.txt > output.txt
    ```
 
 ## Tips
-- Selalu gunakan opsi `-s` jika Anda ingin memastikan bahwa kata tidak terputus di tengah saat membatasi lebar.
-- Periksa lebar terminal Anda untuk menentukan lebar maksimum yang sesuai saat menggunakan `fold`.
-- Cobalah menggabungkan `fold` dengan perintah lain menggunakan pipe untuk memformat output secara langsung.
+- Selalu gunakan opsi `-s` jika Anda ingin menjaga kata-kata utuh saat memformat teks.
+- Cobalah berbagai lebar untuk menemukan ukuran yang paling nyaman untuk dibaca di layar Anda.
+- Gunakan `fold` dalam kombinasi dengan perintah lain seperti `cat` atau `echo` untuk memformat teks yang dihasilkan secara langsung.

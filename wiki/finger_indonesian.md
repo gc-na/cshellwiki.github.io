@@ -1,7 +1,7 @@
 # [Sistem Operasi] C Shell (csh) finger Penggunaan: Menampilkan informasi pengguna
 
 ## Overview
-Perintah `finger` digunakan untuk menampilkan informasi tentang pengguna yang terdaftar di sistem. Informasi ini dapat mencakup nama lengkap, waktu login, dan status saat ini dari pengguna. Dengan `finger`, Anda dapat dengan mudah mengetahui siapa yang sedang aktif di sistem dan informasi terkait lainnya.
+Perintah `finger` digunakan untuk menampilkan informasi tentang pengguna yang terdaftar di sistem. Informasi yang ditampilkan termasuk nama lengkap, waktu login, dan status pengguna.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `finger`:
@@ -11,14 +11,14 @@ finger [options] [arguments]
 ```
 
 ## Common Options
-- `-l`: Menampilkan informasi lengkap tentang pengguna.
+- `-l`: Menampilkan informasi lebih lengkap tentang pengguna.
 - `-m`: Mengabaikan pencarian untuk nama pengguna yang tidak valid.
 - `-s`: Menampilkan informasi ringkas tentang pengguna.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `finger`:
 
-1. Menampilkan informasi semua pengguna yang terdaftar di sistem:
+1. Menampilkan informasi tentang semua pengguna:
    ```bash
    finger
    ```
@@ -28,7 +28,7 @@ Berikut adalah beberapa contoh penggunaan perintah `finger`:
    finger -l username
    ```
 
-3. Menampilkan informasi ringkas tentang pengguna tertentu:
+3. Menampilkan informasi ringkas tentang pengguna:
    ```bash
    finger -s username
    ```
@@ -39,6 +39,6 @@ Berikut adalah beberapa contoh penggunaan perintah `finger`:
    ```
 
 ## Tips
-- Gunakan opsi `-l` untuk mendapatkan informasi lebih detail jika Anda perlu mengetahui status pengguna secara mendalam.
-- Jika Anda hanya ingin melihat daftar pengguna yang sedang aktif, cukup jalankan `finger` tanpa argumen.
-- Pastikan Anda memiliki izin yang tepat untuk melihat informasi pengguna di sistem, karena beberapa informasi mungkin dibatasi untuk pengguna tertentu.
+- Gunakan opsi `-l` untuk mendapatkan informasi lebih mendetail jika Anda memerlukan data tambahan tentang pengguna.
+- Jika Anda hanya ingin melihat daftar pengguna yang sedang aktif, cukup gunakan perintah `finger` tanpa argumen.
+- Pastikan Anda memiliki izin yang tepat untuk melihat informasi pengguna lain di sistem.

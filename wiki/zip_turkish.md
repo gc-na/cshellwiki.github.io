@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) zip Kullanımı: Dosyaları sıkıştırma aracı
+# [Linux] C Shell (csh) zip Kullanımı: Dosyaları sıkıştırma
 
 ## Genel Bakış
-`zip` komutu, dosyaları sıkıştırmak ve arşivlemek için kullanılan bir araçtır. Bu komut, bir veya daha fazla dosyayı bir araya getirerek daha az yer kaplayan bir dosya oluşturur. Sıkıştırılmış dosyalar, genellikle .zip uzantısına sahiptir ve dosya transferini kolaylaştırır.
+`zip` komutu, dosyaları sıkıştırmak ve arşivlemek için kullanılan bir araçtır. Bu komut, bir veya daha fazla dosyayı tek bir sıkıştırılmış dosya içinde birleştirir, böylece disk alanından tasarruf sağlar ve dosyaların taşınmasını kolaylaştırır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
@@ -11,39 +11,39 @@ zip [seçenekler] [argümanlar]
 
 ## Yaygın Seçenekler
 - `-r`: Alt dizinleri de dahil ederek sıkıştırma.
-- `-e`: Şifre korumalı zip dosyası oluşturma.
-- `-u`: Mevcut zip dosyasına dosya ekleme.
-- `-d`: Zip dosyasından dosya silme.
+- `-e`: Sıkıştırılan dosyayı şifrelemek için.
+- `-q`: Sessiz modda çalışarak çıktı vermemek.
+- `-d`: Belirtilen dosyaları arşivden silmek için.
 
 ## Yaygın Örnekler
-Aşağıda `zip` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+Aşağıda `zip` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. Basit bir zip dosyası oluşturma:
+1. Basit bir dosyayı sıkıştırma:
    ```csh
-   zip arşiv.zip dosya1.txt dosya2.txt
+   zip dosya.zip dosya.txt
    ```
 
-2. Bir dizindeki tüm dosyaları sıkıştırma:
+2. Birden fazla dosyayı sıkıştırma:
    ```csh
-   zip -r arşiv.zip /path/to/dizin
+   zip arşiv.zip dosya1.txt dosya2.txt dosya3.txt
    ```
 
-3. Şifre korumalı zip dosyası oluşturma:
+3. Alt dizinlerle birlikte sıkıştırma:
    ```csh
-   zip -e arşiv.zip dosya1.txt
+   zip -r arşiv.zip dizin/
    ```
 
-4. Mevcut bir zip dosyasına dosya ekleme:
+4. Sıkıştırılan dosyayı şifreleme:
    ```csh
-   zip -u arşiv.zip dosya3.txt
+   zip -e gizli.zip dosya.txt
    ```
 
-5. Zip dosyasından bir dosya silme:
+5. Arşivden dosya silme:
    ```csh
-   zip -d arşiv.zip dosya2.txt
+   zip -d arşiv.zip dosya1.txt
    ```
 
 ## İpuçları
-- Sıkıştırma işlemi sırasında dosya isimlerinin doğru yazıldığından emin olun.
-- Büyük dosyalarla çalışırken, sıkıştırma işleminin zaman alabileceğini unutmayın.
-- Zip dosyalarını açmak için `unzip` komutunu kullanmayı unutmayın.
+- Sıkıştırma işlemi sırasında dosyaların yedeğini almak iyi bir uygulamadır.
+- Şifreleme kullanıyorsanız, şifrenizi güvenli bir yerde saklayın.
+- Sıkıştırılmış dosyaların boyutunu kontrol etmek için `unzip -l` komutunu kullanabilirsiniz.

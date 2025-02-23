@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) logrotate użycie: Zarządzanie rotacją plików dziennika
+# [Linux] C Shell (csh) logrotate użycie: zarządzanie rotacją plików dziennika
 
 ## Przegląd
-Polecenie `logrotate` służy do zarządzania rotacją plików dziennika w systemach Unix i Linux. Umożliwia automatyczne archiwizowanie, usuwanie lub kompresowanie plików dziennika, co pomaga w utrzymaniu porządku i oszczędzaniu miejsca na dysku.
+Polecenie `logrotate` jest używane do zarządzania rotacją plików dziennika. Umożliwia automatyczne archiwizowanie, usuwanie lub kompresowanie starych plików dziennika, co pomaga w zarządzaniu przestrzenią dyskową i utrzymaniu porządku w systemie.
 
 ## Użycie
 Podstawowa składnia polecenia `logrotate` jest następująca:
@@ -10,34 +10,38 @@ Podstawowa składnia polecenia `logrotate` jest następująca:
 logrotate [opcje] [argumenty]
 ```
 
-## Częste opcje
-- `-f` : Wymusza rotację plików dziennika, niezależnie od ustawień.
-- `-s` : Określa plik stanu, który przechowuje informacje o rotacji.
-- `-v` : Włącza tryb szczegółowy, wyświetlając więcej informacji podczas działania.
-- `-d` : Uruchamia w trybie debugowania, bez rzeczywistej rotacji.
+## Typowe opcje
+- `-f`: Wymusza rotację plików dziennika, niezależnie od ustawień.
+- `-s`: Określa plik stanu, który przechowuje informacje o rotacji.
+- `-v`: Włącza tryb szczegółowy, wyświetlając więcej informacji o procesie rotacji.
+- `-d`: Uruchamia logrotate w trybie debugowania, bez wprowadzania zmian.
 
-## Częste przykłady
-1. **Podstawowe użycie z domyślnym plikiem konfiguracyjnym:**
-   ```bash
-   logrotate /etc/logrotate.conf
-   ```
+## Przykłady
+Przykład 1: Rotacja plików dziennika zgodnie z domyślną konfiguracją.
 
-2. **Wymuszenie rotacji pliku dziennika:**
-   ```bash
-   logrotate -f /etc/logrotate.conf
-   ```
+```bash
+logrotate /etc/logrotate.conf
+```
 
-3. **Uruchomienie w trybie szczegółowym:**
-   ```bash
-   logrotate -v /etc/logrotate.conf
-   ```
+Przykład 2: Wymuszenie rotacji plików dziennika.
 
-4. **Użycie pliku stanu:**
-   ```bash
-   logrotate -s /var/lib/logrotate/status /etc/logrotate.conf
-   ```
+```bash
+logrotate -f /etc/logrotate.conf
+```
+
+Przykład 3: Uruchomienie logrotate w trybie szczegółowym.
+
+```bash
+logrotate -v /etc/logrotate.conf
+```
+
+Przykład 4: Użycie pliku stanu do śledzenia rotacji.
+
+```bash
+logrotate -s /var/lib/logrotate/status /etc/logrotate.conf
+```
 
 ## Wskazówki
-- Regularnie sprawdzaj plik konfiguracyjny `logrotate`, aby upewnić się, że wszystkie pliki dziennika są prawidłowo skonfigurowane.
-- Używaj opcji `-d` przed rzeczywistym uruchomieniem, aby zobaczyć, co zostanie zrobione bez wprowadzania zmian.
-- Rozważ użycie kompresji dla starszych plików dziennika, aby zaoszczędzić miejsce na dysku.
+- Regularnie przeglądaj konfigurację `logrotate`, aby upewnić się, że pliki dziennika są odpowiednio zarządzane.
+- Używaj opcji `-v` podczas testowania nowych konfiguracji, aby zobaczyć, co się dzieje.
+- Zautomatyzuj rotację plików dziennika, dodając `logrotate` do crontaba, aby działał w regularnych odstępach czasu.

@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) tail Utilisation : Afficher les dernières lignes d'un fichier
 
 ## Overview
-La commande `tail` est utilisée pour afficher les dernières lignes d'un fichier. C'est particulièrement utile pour surveiller les fichiers de log ou pour voir les dernières entrées d'un fichier texte.
+La commande `tail` est utilisée pour afficher les dernières lignes d'un fichier. Elle est particulièrement utile pour surveiller les fichiers journaux ou pour voir les dernières entrées d'un fichier texte.
 
 ## Usage
 La syntaxe de base de la commande `tail` est la suivante :
@@ -15,38 +15,38 @@ Voici quelques options courantes pour la commande `tail` :
 
 - `-n [nombre]` : Affiche les dernières [nombre] lignes du fichier spécifié.
 - `-f` : Suivre le fichier en temps réel, affichant les nouvelles lignes au fur et à mesure qu'elles sont ajoutées.
-- `-c [nombre]` : Affiche les derniers [nombre] octets du fichier.
+- `-q` : Ne pas afficher le nom des fichiers lors de l'affichage de plusieurs fichiers.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `tail` :
 
 1. Afficher les 10 dernières lignes d'un fichier :
    ```csh
-   tail monfichier.txt
+   tail mon_fichier.txt
    ```
 
 2. Afficher les 20 dernières lignes d'un fichier :
    ```csh
-   tail -n 20 monfichier.txt
+   tail -n 20 mon_fichier.txt
    ```
 
-3. Suivre un fichier de log en temps réel :
+3. Suivre un fichier en temps réel (par exemple, un fichier journal) :
    ```csh
-   tail -f /var/log/syslog
+   tail -f mon_fichier.log
    ```
 
-4. Afficher les 50 derniers octets d'un fichier :
+4. Afficher les dernières lignes de plusieurs fichiers :
    ```csh
-   tail -c 50 monfichier.txt
+   tail -q mon_fichier1.txt mon_fichier2.txt
    ```
 
 ## Tips
-- Utilisez l'option `-f` pour surveiller les fichiers de log pendant que votre application s'exécute, ce qui est très utile pour le débogage.
-- Combinez `tail` avec d'autres commandes comme `grep` pour filtrer les résultats, par exemple :
+- Utilisez l'option `-f` pour surveiller les fichiers journaux en temps réel, ce qui est très utile pour le débogage.
+- Combinez `tail` avec d'autres commandes comme `grep` pour filtrer les résultats. Par exemple :
   ```csh
-  tail -f monfichier.txt | grep "Erreur"
+  tail -f mon_fichier.log | grep "Erreur"
   ```
-- Pensez à rediriger la sortie vers un fichier si vous souhaitez conserver les dernières lignes pour une analyse ultérieure :
+- Pensez à rediriger la sortie de `tail` vers un fichier si vous souhaitez conserver les résultats pour une consultation ultérieure :
   ```csh
-  tail -n 100 monfichier.txt > dernieres_lignes.txt
+  tail mon_fichier.txt > dernieres_lignes.txt
   ```

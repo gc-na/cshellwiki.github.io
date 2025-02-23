@@ -1,11 +1,11 @@
 # [Hệ điều hành] C Shell (csh) pushd: [chuyển đổi thư mục]
 
 ## Overview
-Lệnh `pushd` trong C Shell (csh) được sử dụng để thay đổi thư mục làm việc hiện tại và đồng thời lưu trữ thư mục trước đó vào ngăn xếp. Điều này cho phép bạn dễ dàng quay lại thư mục trước đó bằng cách sử dụng lệnh `popd`.
+Lệnh `pushd` trong C Shell (csh) được sử dụng để thay đổi thư mục làm việc hiện tại và đồng thời lưu trữ thư mục trước đó vào một ngăn xếp. Điều này cho phép bạn dễ dàng quay lại thư mục trước đó bằng cách sử dụng lệnh `popd`.
 
 ## Usage
 Cú pháp cơ bản của lệnh `pushd` như sau:
-```csh
+```
 pushd [options] [arguments]
 ```
 
@@ -15,9 +15,7 @@ pushd [options] [arguments]
 - `-`: Quay lại thư mục trước đó.
 
 ## Common Examples
-Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `pushd`:
-
-1. Chuyển đến một thư mục cụ thể:
+1. Chuyển đến một thư mục cụ thể và lưu thư mục hiện tại:
    ```csh
    pushd /path/to/directory
    ```
@@ -29,7 +27,7 @@ Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh 
 
 3. Quay lại thư mục trước đó:
    ```csh
-   pushd -
+   popd
    ```
 
 4. Chuyển đến thư mục thứ ba từ cuối ngăn xếp:
@@ -38,6 +36,6 @@ Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh 
    ```
 
 ## Tips
-- Sử dụng `pushd` để dễ dàng quản lý nhiều thư mục mà không cần phải ghi nhớ đường dẫn.
-- Kết hợp `pushd` với `popd` để tạo ra một quy trình làm việc hiệu quả khi chuyển đổi giữa các thư mục.
-- Kiểm tra ngăn xếp thư mục hiện tại bằng lệnh `dirs` để xem các thư mục đã được lưu trữ.
+- Sử dụng `dirs` để xem danh sách các thư mục trong ngăn xếp hiện tại.
+- Kết hợp `pushd` và `popd` để dễ dàng điều hướng giữa nhiều thư mục mà không cần nhớ đường dẫn cụ thể.
+- Hãy nhớ rằng thứ tự của các thư mục trong ngăn xếp sẽ thay đổi mỗi khi bạn sử dụng `pushd`.

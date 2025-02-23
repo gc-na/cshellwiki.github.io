@@ -1,46 +1,46 @@
 # [Linux] C Shell (csh) dstat Verwendung: Systemressourcen überwachen
 
 ## Übersicht
-Der Befehl `dstat` ist ein leistungsfähiges Werkzeug zur Überwachung von Systemressourcen in Echtzeit. Er kombiniert die Funktionen von verschiedenen Monitoring-Tools und zeigt Informationen über CPU-Auslastung, Speicher, Netzwerk und andere Systemmetriken an.
+Der Befehl `dstat` ist ein vielseitiges Werkzeug zur Überwachung von Systemressourcen in Echtzeit. Er kombiniert die Funktionalitäten mehrerer anderer Befehle, um eine umfassende Übersicht über die Leistung des Systems zu bieten.
 
 ## Verwendung
-Die grundlegende Syntax des `dstat`-Befehls lautet:
+Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```csh
 dstat [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
 - `-c`: Zeigt die CPU-Auslastung an.
-- `-d`: Zeigt die Disk-I/O-Statistiken an.
-- `-n`: Zeigt die Netzwerkstatistiken an.
-- `-m`: Zeigt die Speichernutzung an.
-- `-t`: Fügt einen Zeitstempel zu den Ausgaben hinzu.
+- `-d`: Zeigt die Festplattenaktivität an.
+- `-n`: Zeigt die Netzwerkaktivität an.
+- `-r`: Zeigt den Speicherverbrauch an.
+- `-t`: Fügt Zeitstempel zu den Ausgaben hinzu.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele zur Verwendung von `dstat`:
+Hier sind einige praktische Beispiele für die Verwendung von `dstat`:
 
-1. **CPU- und Speicherüberwachung:**
-   ```bash
-   dstat -c -m
+1. **CPU- und Speicherüberwachung**:
+   ```csh
+   dstat -c -r
    ```
 
-2. **Disk- und Netzwerkstatistiken anzeigen:**
-   ```bash
+2. **Festplatten- und Netzwerkaktivität**:
+   ```csh
    dstat -d -n
    ```
 
-3. **Alle Statistiken mit Zeitstempel:**
-   ```bash
-   dstat -t -c -d -n -m
+3. **Alle verfügbaren Statistiken in Echtzeit**:
+   ```csh
+   dstat -cdnr
    ```
 
-4. **Überwachung mit einer bestimmten Intervallzeit (z.B. alle 5 Sekunden):**
-   ```bash
-   dstat -t -c -d 5
+4. **Mit Zeitstempel**:
+   ```csh
+   dstat -cdnrt
    ```
 
 ## Tipps
-- Verwenden Sie `dstat` in Kombination mit anderen Monitoring-Tools, um umfassendere Einblicke in die Systemleistung zu erhalten.
-- Experimentieren Sie mit verschiedenen Optionen, um die für Ihre Bedürfnisse relevantesten Informationen anzuzeigen.
-- Nutzen Sie die Möglichkeit, `dstat` in Skripten zu verwenden, um automatisierte Überwachungsberichte zu erstellen.
+- Verwenden Sie `dstat` mit verschiedenen Optionen, um die für Ihre Bedürfnisse relevantesten Informationen zu erhalten.
+- Kombinieren Sie Optionen, um eine umfassende Übersicht über die Systemleistung zu erhalten.
+- Nutzen Sie die Möglichkeit, `dstat` in Skripten zu verwenden, um regelmäßige Leistungsüberwachungen durchzuführen.

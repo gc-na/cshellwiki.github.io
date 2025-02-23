@@ -1,29 +1,29 @@
-# [Linux] C Shell (csh) passwd Kullanımı: Şifre değiştirme komutu
+# [Linux] C Shell (csh) passwd Kullanımı: Şifreyi değiştirme komutu
 
-## Genel Bakış
-`passwd` komutu, kullanıcıların hesap şifrelerini değiştirmelerini sağlar. Bu komut, hem kullanıcılar hem de yöneticiler tarafından kullanılabilir ve güvenlik açısından önemli bir işlemdir.
+## Overview
+`passwd` komutu, kullanıcıların şifrelerini değiştirmelerine olanak tanır. Bu komut, sistem yöneticileri tarafından kullanıcı hesaplarının güvenliğini sağlamak için sıklıkla kullanılır.
 
-## Kullanım
+## Usage
 Temel sözdizimi aşağıdaki gibidir:
 ```
-passwd [seçenekler] [argümanlar]
+passwd [options] [arguments]
 ```
 
-## Yaygın Seçenekler
+## Common Options
 - `-l`: Kullanıcının hesabını kilitler.
 - `-u`: Kilitli bir hesabı açar.
 - `-d`: Kullanıcının şifresini siler.
-- `-e`: Kullanıcının şifresinin süresinin dolmasını sağlar.
+- `-e`: Kullanıcının şifresini hemen değiştirmeye zorlar.
 
-## Yaygın Örnekler
-Aşağıda `passwd` komutunun bazı pratik örnekleri bulunmaktadır:
+## Common Examples
+Aşağıda `passwd` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
-1. Kullanıcının kendi şifresini değiştirmek için:
+1. Kullanıcının şifresini değiştirmek için:
    ```csh
    passwd
    ```
 
-2. Belirli bir kullanıcının şifresini değiştirmek için (yönetici olarak):
+2. Belirli bir kullanıcının şifresini değiştirmek için (sadece root yetkisi ile):
    ```csh
    passwd kullanıcı_adı
    ```
@@ -33,12 +33,17 @@ Aşağıda `passwd` komutunun bazı pratik örnekleri bulunmaktadır:
    passwd -l kullanıcı_adı
    ```
 
-4. Kilitli bir hesabı açmak için:
+4. Kullanıcının hesabını açmak için:
    ```csh
    passwd -u kullanıcı_adı
    ```
 
-## İpuçları
-- Şifre değiştirirken güçlü bir şifre kullanmaya özen gösterin.
-- Şifrelerinizi düzenli aralıklarla değiştirin.
-- Şifre değişikliği sonrası, yeni şifrenizi güvenli bir yerde saklayın.
+5. Kullanıcının şifresini silmek için:
+   ```csh
+   passwd -d kullanıcı_adı
+   ```
+
+## Tips
+- Şifre değiştirirken güçlü bir şifre seçmeye özen gösterin; büyük harf, küçük harf, rakam ve özel karakter içermesi önerilir.
+- Şifre değişim işlemi sırasında, mevcut şifrenizi doğru girdiğinizden emin olun.
+- Kullanıcı hesaplarının güvenliğini artırmak için düzenli aralıklarla şifrelerinizi değiştirin.

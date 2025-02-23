@@ -1,47 +1,44 @@
 # [Linux] C Shell (csh) chgrp: Zmiana grupy plików
 
 ## Overview
-Polecenie `chgrp` służy do zmiany grupy przypisanej do plików lub katalogów w systemie Unix/Linux. Umożliwia to administratorom i użytkownikom zarządzanie dostępem do zasobów systemowych poprzez przypisywanie odpowiednich grup.
+Polecenie `chgrp` służy do zmiany grupy, do której należy plik lub katalog. Umożliwia to administratorom i użytkownikom zarządzanie dostępem do plików w systemie UNIX/Linux.
 
 ## Usage
 Podstawowa składnia polecenia `chgrp` jest następująca:
 
-```
+```csh
 chgrp [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-R`: Rekurencyjnie zmienia grupę dla katalogów i ich zawartości.
+- `-R`: Rekursywnie zmienia grupę dla wszystkich plików i katalogów w podanym katalogu.
 - `-v`: Wyświetla szczegóły dotyczące zmiany grupy dla każdego pliku.
 - `-c`: Wyświetla tylko pliki, dla których zmiana grupy się powiodła.
 
 ## Common Examples
-1. Zmiana grupy dla pojedynczego pliku:
-   ```bash
-   chgrp developers dokument.txt
+Przykłady użycia polecenia `chgrp`:
+
+1. Zmiana grupy pliku na `developers`:
+   ```csh
+   chgrp developers plik.txt
    ```
 
-2. Zmiana grupy dla katalogu:
-   ```bash
-   chgrp admin katalog/
+2. Rekursywna zmiana grupy dla katalogu `projekt`:
+   ```csh
+   chgrp -R developers projekt
    ```
 
-3. Rekurencyjna zmiana grupy dla wszystkich plików w katalogu:
-   ```bash
-   chgrp -R users katalog/
+3. Wyświetlenie szczegółów zmiany grupy:
+   ```csh
+   chgrp -v developers plik.txt
    ```
 
-4. Wyświetlenie szczegółów zmiany grupy:
-   ```bash
-   chgrp -v developers dokument.txt
-   ```
-
-5. Zmiana grupy tylko dla plików, które zostały zmienione:
-   ```bash
-   chgrp -c developers dokument.txt
+4. Zmiana grupy dla wielu plików jednocześnie:
+   ```csh
+   chgrp developers plik1.txt plik2.txt plik3.txt
    ```
 
 ## Tips
 - Upewnij się, że masz odpowiednie uprawnienia do zmiany grupy plików.
-- Zawsze sprawdzaj aktualną grupę pliku przed dokonaniem zmian, używając polecenia `ls -l`.
-- Używaj opcji `-R` ostrożnie, aby nie zmienić grupy dla niezamierzonych plików.
+- Zawsze sprawdzaj, czy zmiana grupy została przeprowadzona pomyślnie, używając polecenia `ls -l`, aby zobaczyć aktualne grupy plików.
+- Używaj opcji `-R` ostrożnie, aby nie zmienić grupy dla niezamierzonych plików w podkatalogach.

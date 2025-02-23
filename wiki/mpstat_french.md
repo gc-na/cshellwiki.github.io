@@ -1,47 +1,47 @@
-# [Linux] C Shell (csh) mpstat Utilisation : surveiller l'utilisation du processeur
+# [Linux] C Shell (csh) mpstat : surveiller l'utilisation du processeur
 
 ## Overview
-La commande `mpstat` permet de surveiller l'utilisation du processeur sur un système. Elle affiche des statistiques sur l'activité des processeurs, ce qui est utile pour analyser la performance et identifier les goulets d'étranglement.
+La commande `mpstat` est utilisée pour afficher des statistiques sur l'utilisation du processeur. Elle fournit des informations détaillées sur la charge du processeur, permettant aux utilisateurs de surveiller la performance de leur système en temps réel.
 
 ## Usage
 La syntaxe de base de la commande `mpstat` est la suivante :
 
-```csh
+```bash
 mpstat [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes pour la commande `mpstat` :
+Voici quelques options courantes pour `mpstat` :
 
 - `-P ALL` : Affiche les statistiques pour tous les processeurs.
 - `-u` : Affiche l'utilisation du processeur en pourcentage.
-- `-r` : Affiche les statistiques de l'utilisation de la mémoire.
-- `-h` : Affiche l'aide et les options disponibles.
+- `-h` : Affiche les résultats dans un format lisible.
+- `-t` : Affiche l'heure et la date avec les statistiques.
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de `mpstat` :
+Voici quelques exemples pratiques de l'utilisation de la commande `mpstat` :
 
-1. Afficher les statistiques d'utilisation du processeur pour tous les cœurs :
-   ```csh
+1. Afficher les statistiques d'utilisation du processeur pour tous les processeurs :
+   ```bash
    mpstat -P ALL
    ```
 
 2. Afficher l'utilisation du processeur en pourcentage :
-   ```csh
+   ```bash
    mpstat -u
    ```
 
-3. Afficher les statistiques de mémoire :
-   ```csh
-   mpstat -r
+3. Afficher les statistiques avec un format lisible :
+   ```bash
+   mpstat -h
    ```
 
-4. Afficher les statistiques toutes les 5 secondes :
-   ```csh
-   mpstat 5
+4. Afficher les statistiques avec l'heure et la date :
+   ```bash
+   mpstat -t
    ```
 
 ## Tips
-- Utilisez l'option `-P ALL` pour obtenir une vue d'ensemble de l'utilisation de tous les cœurs de votre processeur.
+- Utilisez l'option `-P ALL` pour obtenir une vue d'ensemble de tous les cœurs de processeur, ce qui est particulièrement utile sur les systèmes multicœurs.
 - Combinez `mpstat` avec d'autres outils comme `grep` pour filtrer les résultats et obtenir des informations spécifiques.
-- Pensez à exécuter `mpstat` avec des privilèges d'administrateur pour accéder à des informations plus détaillées sur le système.
+- Exécutez `mpstat` à intervalles réguliers en utilisant une boucle dans un script pour surveiller l'utilisation du processeur sur une période prolongée.

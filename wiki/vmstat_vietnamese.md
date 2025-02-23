@@ -1,49 +1,44 @@
-# [Hệ điều hành] C Shell (csh) vmstat Sử dụng: Theo dõi trạng thái hệ thống
+# [Hệ điều hành] C Shell (csh) vmstat: [hiển thị thông tin về hệ thống]
 
-## Overview
-Lệnh `vmstat` trong C Shell (csh) được sử dụng để hiển thị thông tin về trạng thái của hệ thống, bao gồm bộ nhớ, quy trình, và hoạt động của đĩa. Nó giúp người dùng theo dõi hiệu suất của hệ thống theo thời gian thực.
+## Tổng quan
+Lệnh `vmstat` trong C Shell (csh) được sử dụng để hiển thị thông tin về tình trạng của hệ thống, bao gồm bộ nhớ, quy trình, và hoạt động I/O. Nó giúp người dùng theo dõi hiệu suất của hệ thống một cách nhanh chóng và hiệu quả.
 
-## Usage
+## Cách sử dụng
 Cú pháp cơ bản của lệnh `vmstat` như sau:
-```csh
-vmstat [options] [arguments]
+```
+vmstat [tùy chọn] [tham số]
 ```
 
-## Common Options
-- `-a`: Hiển thị thông tin về bộ nhớ ảo.
-- `-n`: Ngăn không cho hiển thị tiêu đề nhiều lần.
-- `-s`: Hiển thị thống kê bộ nhớ chi tiết.
-- `-t`: Hiển thị thời gian và ngày tháng trong đầu ra.
+## Tùy chọn phổ biến
+- `-s`: Hiển thị thông tin thống kê bộ nhớ.
+- `-m`: Hiển thị thông tin về bộ nhớ vật lý.
+- `-d`: Hiển thị thông tin về các đĩa.
+- `-w`: Cập nhật thông tin theo khoảng thời gian nhất định.
 
-## Common Examples
+## Ví dụ phổ biến
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `vmstat`:
 
-1. Hiển thị thông tin hệ thống cơ bản:
-   ```csh
+1. Hiển thị thông tin hệ thống mặc định:
+   ```bash
    vmstat
    ```
 
-2. Hiển thị thông tin về bộ nhớ ảo:
-   ```csh
-   vmstat -a
-   ```
-
-3. Hiển thị thống kê bộ nhớ chi tiết:
-   ```csh
+2. Hiển thị thông tin thống kê bộ nhớ:
+   ```bash
    vmstat -s
    ```
 
+3. Hiển thị thông tin về các đĩa:
+   ```bash
+   vmstat -d
+   ```
+
 4. Cập nhật thông tin mỗi 5 giây:
-   ```csh
+   ```bash
    vmstat 5
    ```
 
-5. Hiển thị thông tin mà không có tiêu đề nhiều lần:
-   ```csh
-   vmstat -n 5
-   ```
-
-## Tips
-- Sử dụng tùy chọn `-t` để theo dõi thời gian và ngày tháng, giúp bạn dễ dàng xác định thời điểm xảy ra sự cố.
+## Mẹo
+- Sử dụng tùy chọn `-w` để theo dõi hiệu suất hệ thống trong thời gian thực.
 - Kết hợp `vmstat` với các lệnh khác như `grep` để lọc thông tin cần thiết.
-- Theo dõi thường xuyên thông tin từ `vmstat` có thể giúp bạn phát hiện sớm các vấn đề về hiệu suất hệ thống.
+- Theo dõi các chỉ số bộ nhớ và I/O thường xuyên để phát hiện sớm các vấn đề về hiệu suất.

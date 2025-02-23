@@ -1,48 +1,45 @@
 # [Linux] C Shell (csh) mkdir Kullanımı: Klasör oluşturma komutu
 
 ## Overview
-`mkdir` komutu, belirtilen isimle yeni bir dizin (klasör) oluşturmak için kullanılır. Bu komut, dosya sisteminde düzen sağlamak ve dosyaları kategorize etmek için oldukça yararlıdır.
+`mkdir` komutu, C Shell (csh) ortamında yeni dizinler (klasörler) oluşturmak için kullanılır. Bu komut, kullanıcıların dosya sisteminde düzenli bir yapı kurmasına yardımcı olur.
 
 ## Usage
-Temel sözdizimi şu şekildedir:
-```
+Temel sözdizimi aşağıdaki gibidir:
+```csh
 mkdir [options] [arguments]
 ```
 
 ## Common Options
-- `-p`: Ana dizin yoksa, ara dizinleri de oluşturarak yeni dizin oluşturur.
-- `-m`: Oluşturulan dizinin izinlerini belirlemek için kullanılır. Örneğin, `-m 755` ile dizin oluşturulabilir.
-- `-v`: Oluşturulan dizin hakkında bilgi verir. Her oluşturulan dizin için bir çıktı gösterir.
+- `-p`: Ara dizinleri oluşturur. Yani, belirtilen yol boyunca eksik olan dizinleri de oluşturur.
+- `-m`: Oluşturulan dizinin izinlerini belirler. Örneğin, `-m 755` ile dizin 755 izinleriyle oluşturulur.
 
 ## Common Examples
-Aşağıda `mkdir` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+Aşağıda `mkdir` komutunun bazı pratik örnekleri verilmiştir:
 
 1. Basit bir dizin oluşturma:
-   ```bash
+   ```csh
    mkdir yeni_klasor
    ```
 
 2. Birden fazla dizin oluşturma:
-   ```bash
+   ```csh
    mkdir klasor1 klasor2 klasor3
    ```
 
 3. Ara dizinlerle birlikte dizin oluşturma:
-   ```bash
+   ```csh
    mkdir -p ana_klasor/alt_klasor
    ```
 
 4. Belirli izinlerle dizin oluşturma:
-   ```bash
-   mkdir -m 755 ozel_klasor
-   ```
-
-5. Oluşturulan dizinler hakkında bilgi alma:
-   ```bash
-   mkdir -v yeni_klasor
+   ```csh
+   mkdir -m 700 gizli_klasor
    ```
 
 ## Tips
-- Dizin oluştururken, dizin adlarının geçerli karakterler içerdiğinden emin olun.
-- `-p` seçeneğini kullanarak, birden fazla katmanlı dizin yapısını kolayca oluşturabilirsiniz.
-- Dizin oluşturma işlemlerini otomatikleştirmek için bir betik dosyası yazmayı düşünebilirsiniz.
+- Dizin adlarında boşluk kullanıyorsanız, dizin adını tırnak içine almayı unutmayın. Örneğin:
+  ```csh
+  mkdir "Yeni Klasör"
+  ```
+- `-p` seçeneğini kullanarak birden fazla seviyede dizin oluşturmak, karmaşık dizin yapıları oluştururken işinizi kolaylaştırır.
+- Oluşturduğunuz dizinlerin izinlerini kontrol etmek için `ls -l` komutunu kullanabilirsiniz.

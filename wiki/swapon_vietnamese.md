@@ -1,31 +1,31 @@
 # [Hệ điều hành] C Shell (csh) swapon: Kích hoạt vùng swap
 
-## Overview
-Lệnh `swapon` trong C Shell (csh) được sử dụng để kích hoạt các vùng swap trên hệ thống. Vùng swap là không gian trên đĩa cứng được sử dụng để mở rộng bộ nhớ ảo, cho phép hệ điều hành quản lý bộ nhớ hiệu quả hơn.
+## Tổng quan
+Lệnh `swapon` trong C Shell (csh) được sử dụng để kích hoạt các vùng swap trên hệ thống. Vùng swap là không gian trên đĩa cứng được sử dụng để mở rộng bộ nhớ ảo, cho phép hệ thống xử lý nhiều tác vụ hơn so với bộ nhớ vật lý có sẵn.
 
-## Usage
+## Cách sử dụng
 Cú pháp cơ bản của lệnh `swapon` như sau:
 
 ```csh
 swapon [options] [arguments]
 ```
 
-## Common Options
+## Các tùy chọn phổ biến
 - `-a`: Kích hoạt tất cả các vùng swap được chỉ định trong tệp `/etc/fstab`.
-- `-e`: Kiểm tra các vùng swap trước khi kích hoạt.
+- `-e`: Kiểm tra và báo lỗi nếu không thể kích hoạt vùng swap.
 - `-s`: Hiển thị thông tin về các vùng swap hiện tại.
 
-## Common Examples
+## Ví dụ phổ biến
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `swapon`:
 
-1. Kích hoạt tất cả các vùng swap được chỉ định trong tệp `/etc/fstab`:
-   ```csh
-   swapon -a
-   ```
-
-2. Kích hoạt một vùng swap cụ thể:
+1. Kích hoạt một vùng swap cụ thể:
    ```csh
    swapon /dev/sdX
+   ```
+
+2. Kích hoạt tất cả các vùng swap từ tệp cấu hình:
+   ```csh
+   swapon -a
    ```
 
 3. Kiểm tra các vùng swap hiện tại:
@@ -33,12 +33,12 @@ Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh 
    swapon -s
    ```
 
-4. Kích hoạt vùng swap và kiểm tra trước khi thực hiện:
+4. Kích hoạt vùng swap và kiểm tra lỗi:
    ```csh
    swapon -e /dev/sdX
    ```
 
-## Tips
-- Luôn kiểm tra tình trạng vùng swap sau khi kích hoạt bằng cách sử dụng `swapon -s`.
-- Nếu bạn gặp vấn đề với bộ nhớ, hãy xem xét việc thêm vùng swap để cải thiện hiệu suất.
-- Đảm bảo rằng các vùng swap đã được định dạng đúng và có đủ không gian trên đĩa trước khi kích hoạt.
+## Mẹo
+- Trước khi sử dụng lệnh `swapon`, hãy đảm bảo rằng vùng swap đã được tạo và định dạng đúng.
+- Sử dụng tùy chọn `-s` để kiểm tra trạng thái của các vùng swap hiện tại, giúp bạn quản lý bộ nhớ hiệu quả hơn.
+- Nếu bạn thường xuyên cần kích hoạt vùng swap, hãy xem xét thêm chúng vào tệp `/etc/fstab` để tự động kích hoạt khi khởi động hệ thống.

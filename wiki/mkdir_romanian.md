@@ -11,11 +11,15 @@ mkdir [opțiuni] [argumente]
 ```
 
 ## Common Options
+Iată câteva opțiuni comune pentru `mkdir`:
+
 - `-p`: Creează directoare părinte, dacă acestea nu există deja.
 - `-m`: Setează permisiunile pentru noul director, specificând un mod numeric.
 - `-v`: Afișează un mesaj pentru fiecare director creat.
 
 ## Common Examples
+Iată câteva exemple practice de utilizare a comenzii `mkdir`:
+
 1. Crearea unui singur director:
    ```csh
    mkdir nou_director
@@ -26,9 +30,9 @@ mkdir [opțiuni] [argumente]
    mkdir director1 director2 director3
    ```
 
-3. Crearea unui director părinte și a subdirectoarelor:
+3. Crearea unui director părinte și a unui subdirector:
    ```csh
-   mkdir -p parinte/subdirector1/subdirector2
+   mkdir -p parinte/subdirector
    ```
 
 4. Crearea unui director cu permisiuni specifice:
@@ -36,12 +40,12 @@ mkdir [opțiuni] [argumente]
    mkdir -m 755 director_permisiuni
    ```
 
-5. Afișarea mesajelor de confirmare pentru fiecare director creat:
+5. Crearea unui director și afișarea unui mesaj:
    ```csh
    mkdir -v director_afisat
    ```
 
 ## Tips
-- Folosiți opțiunea `-p` pentru a evita erorile atunci când creați o structură de directoare complexă.
-- Verificați permisiunile după crearea unui director, mai ales dacă folosiți opțiunea `-m`.
-- Utilizați `mkdir` în combinație cu alte comenzi, cum ar fi `cd`, pentru a naviga rapid în noile directoare create.
+- Folosiți opțiunea `-p` pentru a evita erorile atunci când creați un director într-o structură de directoare complexă.
+- Verificați permisiunile directorului creat folosind comanda `ls -l` pentru a vă asigura că sunt setate corect.
+- Utilizați `mkdir` în scripturi pentru a automatiza procesul de organizare a fișierelor.

@@ -1,47 +1,47 @@
 # [Linux] C Shell (csh) modprobe uso: Carica moduli del kernel
 
 ## Overview
-Il comando `modprobe` è utilizzato per caricare e scaricare moduli del kernel in un sistema operativo Linux. Questo comando gestisce automaticamente le dipendenze tra i moduli, rendendo più semplice l'aggiunta o la rimozione di funzionalità dal kernel.
+Il comando `modprobe` è utilizzato per caricare e scaricare moduli del kernel in Linux. Questi moduli sono componenti del kernel che possono essere caricati o scaricati in modo dinamico, consentendo al sistema di supportare hardware o funzionalità specifiche senza dover riavviare.
 
 ## Usage
 La sintassi di base del comando `modprobe` è la seguente:
 
-```csh
+```bash
 modprobe [options] [arguments]
 ```
 
 ## Common Options
 Ecco alcune opzioni comuni per `modprobe`:
 
-- `-r` : Scarica un modulo dal kernel.
-- `--list` : Mostra i moduli disponibili.
-- `--show-depends` : Mostra le dipendenze del modulo specificato.
-- `--quiet` : Riduce l'output del comando.
+- `-r` o `--remove`: Rimuove un modulo dal kernel.
+- `-n` o `--dry-run`: Mostra quali moduli verrebbero caricati o rimossi senza eseguirli effettivamente.
+- `-v` o `--verbose`: Fornisce output dettagliato durante l'esecuzione del comando.
+- `--show`: Mostra i moduli che verrebbero caricati senza eseguirli.
 
 ## Common Examples
-Ecco alcuni esempi pratici di utilizzo del comando `modprobe`:
+Ecco alcuni esempi pratici di utilizzo di `modprobe`:
 
 1. **Caricare un modulo**:
-   ```csh
+   ```bash
    modprobe nome_modulo
    ```
 
-2. **Scaricare un modulo**:
-   ```csh
+2. **Rimuovere un modulo**:
+   ```bash
    modprobe -r nome_modulo
    ```
 
-3. **Mostrare le dipendenze di un modulo**:
-   ```csh
-   modprobe --show-depends nome_modulo
+3. **Eseguire un dry run per vedere quali moduli verrebbero caricati**:
+   ```bash
+   modprobe -n nome_modulo
    ```
 
-4. **Elencare i moduli disponibili**:
-   ```csh
-   modprobe --list
+4. **Caricare un modulo con output dettagliato**:
+   ```bash
+   modprobe -v nome_modulo
    ```
 
 ## Tips
-- Assicurati di avere i permessi di root quando utilizzi `modprobe`, poiché è necessario per caricare e scaricare moduli del kernel.
-- Controlla sempre le dipendenze di un modulo prima di tentare di caricarlo, per evitare errori.
-- Utilizza l'opzione `--quiet` se desideri un output meno verboso, utile per script o automazioni.
+- Assicurati di avere i permessi necessari (spesso come root) per caricare o rimuovere moduli.
+- Controlla sempre la documentazione del modulo specifico per eventuali dipendenze che potrebbero essere necessarie.
+- Utilizza l'opzione `--show` per ottenere informazioni sui moduli prima di eseguire il comando, per evitare sorprese.

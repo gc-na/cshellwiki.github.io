@@ -1,21 +1,23 @@
 # [Linux] C Shell (csh) vgs Użycie: wyświetlanie informacji o grupach woluminów
 
-## Overview
-Polecenie `vgs` jest używane do wyświetlania informacji o grupach woluminów w systemie zarządzania woluminami logicznymi (LVM). Umożliwia użytkownikom monitorowanie stanu grup woluminów, ich rozmiarów oraz dostępnych zasobów.
+## Przegląd
+Polecenie `vgs` służy do wyświetlania informacji o grupach woluminów w systemach zarządzania woluminami logicznymi (LVM). Umożliwia użytkownikom monitorowanie stanu grup woluminów, ich rozmiarów oraz dostępnych zasobów.
 
-## Usage
+## Użycie
 Podstawowa składnia polecenia `vgs` jest następująca:
 
 ```csh
 vgs [opcje] [argumenty]
 ```
 
-## Common Options
-- `-o` : Określa, które kolumny mają być wyświetlane.
-- `--units` : Umożliwia określenie jednostek dla wyświetlanych wartości.
-- `-h` : Wyświetla pomoc dotycząca użycia polecenia.
+## Typowe opcje
+- `-o`: Określa, które kolumny mają być wyświetlane.
+- `--units`: Umożliwia ustawienie jednostek dla wyświetlanych wartości.
+- `-h`: Wyświetla pomoc dotyczącą użycia polecenia.
 
-## Common Examples
+## Przykłady
+Oto kilka praktycznych przykładów użycia polecenia `vgs`:
+
 1. Wyświetlenie podstawowych informacji o grupach woluminów:
    ```csh
    vgs
@@ -23,15 +25,20 @@ vgs [opcje] [argumenty]
 
 2. Wyświetlenie szczegółowych informacji z określonymi kolumnami:
    ```csh
-   vgs -o vg_name,lv_count,vg_size
+   vgs -o vg_name,vg_size,vg_free
    ```
 
-3. Wyświetlenie informacji w jednostkach megabajtów:
+3. Wyświetlenie informacji z jednostkami:
    ```csh
-   vgs --units m
+   vgs --units g
    ```
 
-## Tips
+4. Uzyskanie pomocy dotyczącej polecenia:
+   ```csh
+   vgs -h
+   ```
+
+## Wskazówki
 - Używaj opcji `-o`, aby dostosować wyświetlane informacje do swoich potrzeb.
-- Regularnie monitoruj grupy woluminów, aby upewnić się, że masz wystarczająco dużo miejsca na nowe dane.
-- Zawsze sprawdzaj dokumentację `man vgs`, aby uzyskać najnowsze informacje o dostępnych opcjach.
+- Regularnie monitoruj grupy woluminów, aby upewnić się, że masz wystarczająco dużo dostępnego miejsca.
+- Zawsze sprawdzaj dokumentację polecenia, aby być na bieżąco z nowymi opcjami i funkcjami.

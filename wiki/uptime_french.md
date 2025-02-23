@@ -1,20 +1,20 @@
 # [Linux] C Shell (csh) uptime : Afficher le temps de fonctionnement du système
 
 ## Overview
-La commande `uptime` dans C Shell (csh) est utilisée pour afficher depuis combien de temps le système fonctionne, ainsi que le nombre d'utilisateurs connectés et la charge moyenne du système sur les 1, 5 et 15 dernières minutes.
+La commande `uptime` dans C Shell (csh) permet d'afficher depuis combien de temps le système est en fonctionnement, ainsi que le nombre d'utilisateurs connectés et la charge moyenne du système sur différentes périodes.
 
 ## Usage
-La syntaxe de base de la commande `uptime` est la suivante :
+La syntaxe de base de la commande est la suivante :
 
 ```csh
-uptime [options] [arguments]
+uptime [options]
 ```
 
 ## Common Options
 Voici quelques options courantes pour la commande `uptime` :
 
 - `-p` : Affiche le temps de fonctionnement sous une forme lisible.
-- `-h` : Affiche l'aide et les options disponibles.
+- `-s` : Affiche l'heure à laquelle le système a démarré.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `uptime` :
@@ -29,12 +29,12 @@ Voici quelques exemples pratiques de l'utilisation de la commande `uptime` :
    uptime -p
    ```
 
-3. Afficher l'aide pour la commande uptime :
+3. Afficher l'heure de démarrage du système :
    ```csh
-   uptime -h
+   uptime -s
    ```
 
 ## Tips
-- Utilisez `uptime` régulièrement pour surveiller la santé de votre système, surtout avant d'effectuer des mises à jour ou des modifications importantes.
+- Utilisez `uptime` régulièrement pour surveiller la santé de votre système.
 - Combinez `uptime` avec d'autres commandes comme `who` pour obtenir des informations supplémentaires sur les utilisateurs connectés.
-- Pensez à automatiser l'exécution de `uptime` dans vos scripts de maintenance pour garder un œil sur les performances du système.
+- Pensez à vérifier la charge moyenne pour évaluer la performance du système, surtout lors de périodes de forte utilisation.

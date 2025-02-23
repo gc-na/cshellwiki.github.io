@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) mtr Verwendung: Netzwerkverbindung testen und analysieren
+# [Linux] C Shell (csh) mtr Verwendung: Netzwerkverbindung testen
 
 ## Übersicht
-Der Befehl `mtr` (My Traceroute) kombiniert die Funktionen von `ping` und `traceroute`, um die Netzwerkverbindung zu einem Ziel zu testen und die Route, die die Pakete nehmen, zu analysieren. Er bietet eine kontinuierliche Überwachung der Netzwerkverbindung und zeigt die Latenz und Paketverluste für jeden Hop auf dem Weg zum Ziel an.
+Der Befehl `mtr` (My Traceroute) kombiniert die Funktionen von `ping` und `traceroute`, um die Netzwerkverbindung zu einem Ziel zu überprüfen. Er zeigt die Route und die Zeit, die Pakete benötigen, um zu ihrem Ziel zu gelangen, sowie die Paketverluste auf jedem Hop.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
@@ -11,41 +11,40 @@ mtr [Optionen] [Ziel]
 ```
 
 ## Häufige Optionen
-- `-r`: Führt einen einmaligen Test durch und gibt die Ergebnisse im Berichtformat aus.
-- `-c [Anzahl]`: Gibt die Anzahl der gesendeten Pakete an.
-- `-i [Intervall]`: Setzt das Intervall zwischen den gesendeten Paketen in Sekunden.
+- `-r`: Führt einen einmaligen Test durch und gibt die Ergebnisse in einem Bericht aus.
+- `-c <Anzahl>`: Gibt die Anzahl der gesendeten Pakete an.
+- `-i <Intervall>`: Setzt das Intervall zwischen den gesendeten Paketen in Sekunden.
 - `-p`: Zeigt die Ports der Zielhosts an.
-- `-n`: Verwendet IP-Adressen anstelle von Hostnamen.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung von `mtr`:
+Hier sind einige praktische Beispiele zur Verwendung von `mtr`:
 
-1. **Einfacher Test zu einer Domain:**
-   ```
+1. **Einfacher Test zu einem Ziel:**
+   ```bash
    mtr example.com
    ```
 
-2. **Einmaliger Test mit Bericht:**
-   ```
+2. **Einmaliger Bericht über die Verbindung:**
+   ```bash
    mtr -r example.com
    ```
 
 3. **Test mit einer bestimmten Anzahl von Paketen:**
-   ```
+   ```bash
    mtr -c 10 example.com
    ```
 
-4. **Test mit Intervall von 2 Sekunden:**
-   ```
-   mtr -i 2 example.com
+4. **Test mit einem Intervall von 1 Sekunde:**
+   ```bash
+   mtr -i 1 example.com
    ```
 
-5. **Test mit Anzeige der IP-Adressen:**
-   ```
-   mtr -n example.com
+5. **Test, der auch die Ports anzeigt:**
+   ```bash
+   mtr -p example.com
    ```
 
 ## Tipps
-- Verwenden Sie `mtr` mit der `-r` Option, wenn Sie eine schnelle Zusammenfassung der Netzwerkverbindung benötigen.
-- Kombinieren Sie die `-c` Option, um die Anzahl der gesendeten Pakete zu steuern und die Testergebnisse zu optimieren.
-- Nutzen Sie die `-n` Option, um die Ausgabe zu beschleunigen, wenn Sie nur an den IP-Adressen interessiert sind.
+- Verwenden Sie die Option `-r`, wenn Sie eine schnelle Übersicht über die Verbindung wünschen, ohne die kontinuierliche Ausgabe.
+- Kombinieren Sie die Optionen, um spezifische Tests durchzuführen, z.B. `mtr -c 5 -i 2 example.com`, um alle 2 Sekunden 5 Pakete zu senden.
+- Achten Sie darauf, dass einige Netzwerke ICMP-Pakete blockieren können, was die Ergebnisse von `mtr` beeinflussen kann.

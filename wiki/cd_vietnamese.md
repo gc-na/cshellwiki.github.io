@@ -1,41 +1,38 @@
-# [Hệ điều hành] C Shell (csh) cd: Di chuyển giữa các thư mục
+# [Hệ điều hành] C Shell (csh) cd: Chuyển đổi thư mục làm việc
 
 ## Overview
-Lệnh `cd` (change directory) trong C Shell được sử dụng để thay đổi thư mục làm việc hiện tại. Khi bạn sử dụng lệnh này, bạn có thể di chuyển đến bất kỳ thư mục nào trên hệ thống tệp của bạn.
+Lệnh `cd` trong C Shell (csh) được sử dụng để thay đổi thư mục làm việc hiện tại. Khi bạn sử dụng lệnh này, bạn có thể điều hướng đến các thư mục khác trên hệ thống tệp của bạn.
 
 ## Usage
 Cú pháp cơ bản của lệnh `cd` như sau:
-```
-cd [tùy chọn] [đối số]
+```csh
+cd [options] [arguments]
 ```
 
 ## Common Options
 - `-`: Quay lại thư mục trước đó.
 - `~`: Chuyển đến thư mục chính của người dùng hiện tại.
-- `..`: Di chuyển lên một cấp thư mục.
+- `..`: Chuyển đến thư mục cha của thư mục hiện tại.
 
 ## Common Examples
-- Di chuyển đến thư mục chính của người dùng:
-  ```csh
-  cd ~
-  ```
-
-- Di chuyển đến thư mục cha:
-  ```csh
-  cd ..
-  ```
-
-- Di chuyển đến một thư mục cụ thể:
-  ```csh
-  cd /path/to/directory
-  ```
-
+- Chuyển đến thư mục chính của người dùng:
+```csh
+cd ~
+```
+- Chuyển đến thư mục cha:
+```csh
+cd ..
+```
 - Quay lại thư mục trước đó:
-  ```csh
-  cd -
-  ```
+```csh
+cd -
+```
+- Chuyển đến một thư mục cụ thể, ví dụ thư mục "Documents":
+```csh
+cd ~/Documents
+```
 
 ## Tips
-- Sử dụng `cd ~` để nhanh chóng trở về thư mục chính của bạn.
-- Bạn có thể sử dụng `cd ..` nhiều lần để di chuyển lên nhiều cấp thư mục.
-- Để kiểm tra thư mục hiện tại, bạn có thể sử dụng lệnh `pwd` sau khi thay đổi thư mục.
+- Sử dụng `cd -` để nhanh chóng quay lại thư mục trước đó mà bạn đã làm việc.
+- Bạn có thể sử dụng dấu tilda `~` để nhanh chóng truy cập vào thư mục chính của mình mà không cần nhập đường dẫn đầy đủ.
+- Hãy chắc chắn rằng bạn kiểm tra đường dẫn thư mục trước khi sử dụng lệnh `cd` để tránh lỗi không tìm thấy thư mục.

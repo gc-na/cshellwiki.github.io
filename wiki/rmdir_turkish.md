@@ -1,22 +1,21 @@
-# [Linux] C Shell (csh) rmdir Kullanımı: Boş dizinleri silme
+# [Linux] C Shell (csh) rmdir Kullanımı: Boş dizinleri silme komutu
 
 ## Genel Bakış
-`rmdir` komutu, belirtilen dizinleri silmek için kullanılır. Ancak, yalnızca boş dizinleri silebilir; eğer dizin içinde dosya veya başka dizinler varsa, bu komut çalışmaz.
+`rmdir` komutu, C Shell (csh) ortamında boş dizinleri silmek için kullanılır. Bu komut, yalnızca içi boş olan dizinleri kaldırır; eğer dizin içinde dosya veya başka dizinler varsa, komut başarısız olur.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-
-```csh
+```
 rmdir [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-p`: Üst dizinleri de siler, yalnızca boş oldukları takdirde.
-- `--help`: Komutun kullanımına dair yardım bilgilerini gösterir.
+- `-p`: Üst dizinleri de siler, eğer bunlar da boşsa.
+- `--help`: Komut hakkında yardım bilgisi gösterir.
 - `--version`: Komutun sürüm bilgilerini gösterir.
 
 ## Yaygın Örnekler
-Aşağıda `rmdir` komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda `rmdir` komutunun bazı pratik örnekleri verilmiştir:
 
 1. Boş bir dizini silmek:
    ```csh
@@ -28,9 +27,9 @@ Aşağıda `rmdir` komutunun bazı pratik örnekleri bulunmaktadır:
    rmdir /path/to/empty_directory1 /path/to/empty_directory2
    ```
 
-3. Üst dizinleri de silmek (boş oldukları takdirde):
+3. Üst dizinleri de silmek (eğer boşlarsa):
    ```csh
-   rmdir -p /path/to/parent_directory/empty_directory
+   rmdir -p /path/to/empty_directory/sub_directory
    ```
 
 4. Yardım almak için:
@@ -39,6 +38,6 @@ Aşağıda `rmdir` komutunun bazı pratik örnekleri bulunmaktadır:
    ```
 
 ## İpuçları
-- `rmdir` komutunu kullanmadan önce dizinin gerçekten boş olduğundan emin olun; aksi takdirde komut başarısız olacaktır.
-- Dizinleri silmeden önce içindeki dosyaları kontrol etmek için `ls` komutunu kullanabilirsiniz.
-- Eğer dizin içinde dosyalar varsa ve bunları silmek istiyorsanız, `rm -r` komutunu kullanmalısınız.
+- `rmdir` komutunu kullanmadan önce, silmek istediğiniz dizinlerin gerçekten boş olduğundan emin olun.
+- Dizin silme işlemi geri alınamaz, bu yüzden dikkatli olun.
+- Eğer dizin içinde dosyalar varsa ve bunları silmek istiyorsanız, `rm -r` komutunu kullanmayı düşünebilirsiniz.

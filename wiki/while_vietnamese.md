@@ -1,56 +1,58 @@
-# [Hệ điều hành Unix] C Shell (csh) while: Thực hiện lặp lại một khối lệnh
+# [Hệ điều hành] C Shell (csh) while: Lặp lại một khối lệnh
 
 ## Overview
-Lệnh `while` trong C Shell (csh) được sử dụng để thực hiện một khối lệnh nhiều lần miễn là điều kiện được chỉ định là đúng. Điều này rất hữu ích khi bạn cần lặp lại một tác vụ cho đến khi một điều kiện nào đó không còn đúng nữa.
+Lệnh `while` trong C Shell (csh) được sử dụng để thực hiện một khối lệnh nhiều lần miễn là điều kiện được chỉ định là đúng. Đây là một công cụ hữu ích để tự động hóa các tác vụ lặp đi lặp lại trong kịch bản.
 
 ## Usage
 Cú pháp cơ bản của lệnh `while` như sau:
 
-```
+```csh
 while ( điều kiện )
-    lệnh
+    # các lệnh cần thực hiện
 end
 ```
 
 ## Common Options
-Lệnh `while` không có nhiều tùy chọn như các lệnh khác, nhưng điều kiện trong lệnh có thể sử dụng các biểu thức điều kiện cơ bản như:
-
+Lệnh `while` không có nhiều tùy chọn, nhưng điều kiện bên trong dấu ngoặc có thể sử dụng nhiều biểu thức khác nhau, bao gồm:
 - `-eq`: Kiểm tra xem hai giá trị có bằng nhau không.
 - `-ne`: Kiểm tra xem hai giá trị có khác nhau không.
 - `-lt`: Kiểm tra xem giá trị bên trái có nhỏ hơn giá trị bên phải không.
 - `-gt`: Kiểm tra xem giá trị bên trái có lớn hơn giá trị bên phải không.
 
 ## Common Examples
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `while`:
 
-### Ví dụ 1: Lặp qua số từ 1 đến 5
+### Ví dụ 1: Đếm từ 1 đến 5
 ```csh
-set i = 1
-while ( $i <= 5 )
-    echo "Số hiện tại là: $i"
-    @ i++
+set count = 1
+while ( $count <= 5 )
+    echo "Đếm: $count"
+    @ count++
 end
 ```
 
-### Ví dụ 2: Đọc đầu vào cho đến khi người dùng nhập "exit"
+### Ví dụ 2: Lặp cho đến khi người dùng nhập 'exit'
 ```csh
 set input = ""
 while ( "$input" != "exit" )
-    echo "Nhập một từ (hoặc 'exit' để thoát):"
-    set input = $<
+    echo "Nhập một lệnh (hoặc 'exit' để thoát):"
+    set input = $< 
 end
 ```
 
-### Ví dụ 3: Lặp cho đến khi một tệp tồn tại
+### Ví dụ 3: Tính tổng các số từ 1 đến n
 ```csh
-set filename = "test.txt"
-while ( ! -e $filename )
-    echo "Tệp chưa tồn tại, đang chờ..."
-    sleep 2
+set n = 10
+set sum = 0
+set count = 1
+while ( $count <= $n )
+    @ sum += $count
+    @ count++
 end
-echo "Tệp đã tồn tại!"
+echo "Tổng từ 1 đến $n là: $sum"
 ```
 
 ## Tips
-- Đảm bảo rằng điều kiện trong lệnh `while` sẽ có khả năng trở thành sai để tránh việc lặp vô hạn.
-- Sử dụng lệnh `sleep` trong vòng lặp để giảm tải cho CPU nếu cần thiết.
-- Kiểm tra kỹ các biến và điều kiện trước khi sử dụng để đảm bảo chúng hoạt động như mong muốn.
+- Đảm bảo rằng điều kiện trong lệnh `while` sẽ trở thành sai tại một thời điểm nào đó để tránh vòng lặp vô hạn.
+- Sử dụng lệnh `@` để thực hiện các phép toán số học trong C Shell.
+- Kiểm tra kỹ các biến trước khi sử dụng để đảm bảo chúng có giá trị mong muốn.

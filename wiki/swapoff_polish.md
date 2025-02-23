@@ -1,37 +1,37 @@
-# [Linux] C Shell (csh) swapoff użycie: Dezaktywacja przestrzeni wymiany
+# [Linux] C Shell (csh) swapoff: Dezaktywacja przestrzeni wymiany
 
 ## Overview
-Polecenie `swapoff` służy do dezaktywacji przestrzeni wymiany (swap) w systemie operacyjnym. Umożliwia to wyłączenie określonego pliku lub partycji swap, co może być przydatne w celu zarządzania pamięcią systemową.
+Polecenie `swapoff` służy do dezaktywacji przestrzeni wymiany w systemie operacyjnym. Umożliwia to wyłączenie użycia plików lub partycji swap, co może być przydatne w różnych scenariuszach zarządzania pamięcią.
 
 ## Usage
 Podstawowa składnia polecenia `swapoff` jest następująca:
 
-```
+```csh
 swapoff [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-a`: Dezaktywuje wszystkie przestrzenie wymiany wymienione w pliku `/etc/fstab`.
-- `-e`: Ignoruje błędy, które mogą wystąpić podczas dezaktywacji.
-- `-h`: Wyświetla pomoc dotycząca użycia polecenia.
+- `-a` - Dezaktywuje wszystkie dostępne obszary wymiany.
+- `-e` - Umożliwia dezaktywację obszaru wymiany, nawet jeśli jest używany.
+- `-h` - Wyświetla pomoc i informacje o użyciu polecenia.
 
 ## Common Examples
-1. Dezaktywacja konkretnego pliku swap:
-   ```csh
-   swapoff /swapfile
-   ```
-
-2. Dezaktywacja wszystkich przestrzeni wymiany:
+1. Dezaktywacja wszystkich obszarów wymiany:
    ```csh
    swapoff -a
    ```
 
-3. Dezaktywacja przestrzeni wymiany z ignorowaniem błędów:
+2. Dezaktywacja konkretnego pliku wymiany:
    ```csh
-   swapoff -e /dev/sda2
+   swapoff /path/to/swapfile
+   ```
+
+3. Dezaktywacja obszaru wymiany z wymuszeniem:
+   ```csh
+   swapoff -e /dev/sdX
    ```
 
 ## Tips
-- Zawsze upewnij się, że masz wystarczającą ilość pamięci RAM przed dezaktywacją przestrzeni wymiany, aby uniknąć problemów z wydajnością.
-- Regularnie monitoruj użycie pamięci i przestrzeni wymiany, aby lepiej zarządzać zasobami systemowymi.
-- Używaj opcji `-h`, aby uzyskać pomoc i więcej informacji na temat dostępnych opcji polecenia.
+- Upewnij się, że nie masz aktywnych procesów wymagających pamięci, zanim dezaktywujesz swap, aby uniknąć problemów z wydajnością.
+- Regularnie monitoruj użycie pamięci, aby zdecydować, kiedy dezaktywować swap.
+- Zawsze wykonuj kopię zapasową ważnych danych przed wprowadzeniem zmian w konfiguracji pamięci.

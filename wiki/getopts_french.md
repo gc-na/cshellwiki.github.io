@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) getopts : [traitement des options de ligne de commande]
 
 ## Overview
-La commande `getopts` est utilisée dans les scripts C Shell pour analyser les options de ligne de commande. Elle permet de gérer les arguments passés au script, facilitant ainsi la création de programmes interactifs et flexibles.
+La commande `getopts` est utilisée dans les scripts C Shell pour analyser les options de ligne de commande. Elle permet de gérer facilement les arguments passés à un script, en facilitant la lecture et la gestion des options.
 
 ## Usage
 La syntaxe de base de la commande `getopts` est la suivante :
@@ -10,14 +10,14 @@ La syntaxe de base de la commande `getopts` est la suivante :
 getopts optstring variable
 ```
 
-- `optstring` : une chaîne de caractères qui définit les options valides.
-- `variable` : le nom de la variable qui recevra l'option actuelle.
+- `optstring` : une chaîne de caractères qui définit les options acceptées.
+- `variable` : le nom de la variable qui recevra l'option courante.
 
 ## Common Options
-Voici quelques options courantes que vous pouvez utiliser avec `getopts` :
+Voici quelques options courantes utilisées avec `getopts` :
 
-- `:` : Indique que l'option nécessite un argument.
-- `?` : Indique une option invalide, ce qui permet de gérer les erreurs.
+- `:` : Indique qu'une option nécessite un argument.
+- `?` : Affiche un message d'erreur si une option inconnue est rencontrée.
 
 ## Common Examples
 
@@ -25,19 +25,21 @@ Voici quelques options courantes que vous pouvez utiliser avec `getopts` :
 ```csh
 #!/bin/csh
 set optstring = "ab:c"
-while (getopts "$optstring" option)
+while (1)
+    getopts $optstring option
+    if ($? != 0) break
     switch ($option)
         case "a":
-            echo "Option A sélectionnée"
+            echo "Option a sélectionnée"
             breaksw
         case "b":
-            echo "Option B avec argument : $OPTARG"
+            echo "Option b avec argument: $OPTARG"
             breaksw
         case "c":
-            echo "Option C sélectionnée"
+            echo "Option c sélectionnée"
             breaksw
         case "?":
-            echo "Option invalide : $OPTARG"
+            echo "Option inconnue: $OPTARG"
             breaksw
     endsw
 end
@@ -47,10 +49,10 @@ end
 ```csh
 #!/bin/csh
 set optstring = "f:vh"
-while (getopts "$optstring" option)
+while (getopts $optstring option)
     switch ($option)
         case "f":
-            echo "Fichier spécifié : $OPTARG"
+            echo "Fichier spécifié: $OPTARG"
             breaksw
         case "v":
             echo "Mode verbeux activé"
@@ -58,36 +60,31 @@ while (getopts "$optstring" option)
         case "h":
             echo "Affichage de l'aide"
             breaksw
-        case "?":
-            echo "Option invalide : $OPTARG"
-            breaksw
     endsw
 end
 ```
 
-### Exemple 3 : Gestion d'options multiples
+### Exemple 3 : Gestion des erreurs
 ```csh
 #!/bin/csh
-set optstring = "x:y:z"
-while (getopts "$optstring" option)
+set optstring = "x:y:"
+while (getopts $optstring option)
     switch ($option)
         case "x":
-            echo "Option X avec argument : $OPTARG"
+            echo "Option x avec argument: $OPTARG"
             breaksw
         case "y":
-            echo "Option Y avec argument : $OPTARG"
-            breaksw
-        case "z":
-            echo "Option Z sélectionnée"
+            echo "Option y avec argument: $OPTARG"
             breaksw
         case "?":
-            echo "Option invalide : $OPTARG"
+            echo "Erreur : Option inconnue"
+            exit 1
             breaksw
     endsw
 end
 ```
 
 ## Tips
-- Toujours définir un `optstring` clair pour éviter la confusion lors de l'analyse des options.
-- Utilisez `:` pour indiquer les options qui nécessitent un argument afin de gérer les erreurs correctement.
-- Pensez à inclure une option d'aide pour améliorer l'expérience utilisateur de votre script.
+- Toujours vérifier la valeur de `$?` après l'appel à `getopts` pour savoir si l'analyse s'est bien déroulée.
+- Utiliser des messages d'aide clairs pour chaque option afin d'améliorer l'expérience utilisateur.
+- Évitez d'utiliser des options ambiguës qui pourraient prêter à confusion.

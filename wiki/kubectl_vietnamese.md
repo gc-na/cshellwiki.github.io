@@ -1,48 +1,48 @@
-# [Hệ điều hành] C Shell (csh) kubectl Cách sử dụng: Quản lý Kubernetes
+# [Hệ điều hành] C Shell (csh) kubectl Sử dụng: Quản lý Kubernetes
 
 ## Tổng quan
-Lệnh `kubectl` là công cụ dòng lệnh chính để quản lý các cụm Kubernetes. Nó cho phép người dùng thực hiện các thao tác như triển khai ứng dụng, kiểm tra trạng thái của các tài nguyên, và quản lý các cấu hình trong cụm Kubernetes.
+Lệnh `kubectl` là công cụ dòng lệnh chính để quản lý các cụm Kubernetes. Nó cho phép người dùng triển khai ứng dụng, kiểm tra và quản lý trạng thái của các tài nguyên trong cụm Kubernetes.
 
-## Cách sử dụng
+## Cú pháp
 Cú pháp cơ bản của lệnh `kubectl` như sau:
 ```
 kubectl [options] [arguments]
 ```
 
-## Các tùy chọn phổ biến
+## Tùy chọn phổ biến
 - `get`: Lấy thông tin về các tài nguyên trong cụm.
-- `apply`: Áp dụng các thay đổi từ file cấu hình vào cụm.
-- `delete`: Xóa tài nguyên khỏi cụm.
-- `describe`: Hiển thị thông tin chi tiết về một tài nguyên cụ thể.
-- `logs`: Xem nhật ký của một pod.
+- `apply`: Áp dụng các thay đổi từ một tệp cấu hình.
+- `delete`: Xóa một tài nguyên cụ thể.
+- `describe`: Hiển thị thông tin chi tiết về một tài nguyên.
+- `logs`: Lấy nhật ký của một pod.
 
 ## Ví dụ phổ biến
-- Lấy danh sách tất cả các pod trong namespace mặc định:
+- Lấy danh sách tất cả các pod trong cụm:
   ```bash
   kubectl get pods
   ```
 
-- Áp dụng cấu hình từ file YAML:
+- Áp dụng một tệp cấu hình YAML:
   ```bash
   kubectl apply -f deployment.yaml
   ```
 
 - Xóa một pod cụ thể:
   ```bash
-  kubectl delete pod my-pod
+  kubectl delete pod <tên-pod>
   ```
 
 - Hiển thị thông tin chi tiết về một dịch vụ:
   ```bash
-  kubectl describe service my-service
+  kubectl describe service <tên-dịch-vụ>
   ```
 
-- Xem nhật ký của một pod:
+- Lấy nhật ký của một pod:
   ```bash
-  kubectl logs my-pod
+  kubectl logs <tên-pod>
   ```
 
 ## Mẹo
-- Sử dụng `kubectl get all` để lấy thông tin về tất cả các tài nguyên trong namespace hiện tại.
-- Thêm tùy chọn `-n <namespace>` để chỉ định namespace cụ thể khi thực hiện các lệnh.
-- Sử dụng `--watch` để theo dõi sự thay đổi của tài nguyên theo thời gian thực.
+- Sử dụng `kubectl get all` để lấy thông tin về tất cả các tài nguyên trong không gian tên hiện tại.
+- Thêm `-n <tên-không-gian-tên>` để chỉ định không gian tên cụ thể khi thực hiện các lệnh.
+- Sử dụng `--help` với bất kỳ lệnh nào để xem hướng dẫn và các tùy chọn có sẵn.

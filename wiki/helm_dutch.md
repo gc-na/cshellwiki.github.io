@@ -1,51 +1,60 @@
 # [Linux] C Shell (csh) helm gebruik: Beheer van Kubernetes-applicaties
 
 ## Overzicht
-De `helm`-opdracht is een pakketbeheerder voor Kubernetes die het eenvoudig maakt om applicaties te installeren, te upgraden en te beheren. Het biedt een manier om applicaties in de vorm van "charts" te verpakken, die alle benodigde configuratie en afhankelijkheden bevatten.
+De `helm`-opdracht is een pakketbeheerder voor Kubernetes die het eenvoudig maakt om applicaties te installeren, te upgraden en te beheren. Het biedt een gestandaardiseerde manier om Kubernetes-resources te definiëren en te beheren via zogenaamde "charts".
 
 ## Gebruik
-De basis syntaxis van de `helm`-opdracht is als volgt:
+De basis syntaxis van de helm-opdracht is als volgt:
 
 ```csh
 helm [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
+## Veelvoorkomende opties
 - `install`: Installeert een nieuwe release van een chart.
-- `upgrade`: Upgrade een bestaande release naar een nieuwe versie van een chart.
-- `uninstall`: Verwijdert een release.
-- `list`: Toont een lijst van alle releases.
-- `repo`: Beheert Helm-repositories.
+- `upgrade`: Werkt een bestaande release bij naar een nieuwe versie van een chart.
+- `uninstall`: Verwijdert een release van een chart.
+- `list`: Toont een lijst van alle geïnstalleerde releases.
+- `repo`: Beheert de helm-repositories.
 
-## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van de `helm`-opdracht:
+## Veelvoorkomende voorbeelden
 
 ### Installeren van een chart
+Om een nieuwe applicatie te installeren met helm, gebruik je de volgende opdracht:
+
 ```csh
 helm install mijn-app stable/mijn-chart
 ```
 
 ### Upgraden van een release
+Als je een bestaande applicatie wilt upgraden, gebruik je:
+
 ```csh
 helm upgrade mijn-app stable/mijn-chart
 ```
 
 ### Verwijderen van een release
+Om een applicatie te verwijderen, gebruik je:
+
 ```csh
 helm uninstall mijn-app
 ```
 
-### Lijst van alle releases
+### Lijst van geïnstalleerde releases
+Om een overzicht te krijgen van alle geïnstalleerde releases, gebruik je:
+
 ```csh
 helm list
 ```
 
-### Toevoegen van een repository
+### Beheren van repositories
+Om een nieuwe helm-repository toe te voegen, gebruik je:
+
 ```csh
 helm repo add mijn-repo https://example.com/charts
 ```
 
 ## Tips
-- Zorg ervoor dat je de juiste context hebt ingesteld voor je Kubernetes-cluster voordat je `helm` gebruikt.
-- Gebruik `helm search` om beschikbare charts in je repositories te vinden.
-- Maak gebruik van `--dry-run` bij installaties of upgrades om te zien wat er zou gebeuren zonder daadwerkelijk wijzigingen aan te brengen.
+- Zorg ervoor dat je altijd de laatste versie van helm gebruikt voor de nieuwste functies en bugfixes.
+- Maak gebruik van helm-charts die goed gedocumenteerd zijn om de installatie en configuratie te vergemakkelijken.
+- Test nieuwe releases in een staging-omgeving voordat je ze in productie gebruikt om onverwachte problemen te voorkomen.

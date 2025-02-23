@@ -1,79 +1,85 @@
-# [Unix] C Shell (csh) switch : Changer de valeur d'une variable
+# [Linux] C Shell (csh) switch : basculer entre les options
 
 ## Overview
-La commande `switch` dans C Shell (csh) est utilisée pour effectuer des comparaisons conditionnelles. Elle permet de tester une variable contre plusieurs valeurs possibles et d'exécuter des commandes en fonction de la correspondance trouvée.
+La commande `switch` dans C Shell (csh) est utilisée pour effectuer des sélections conditionnelles basées sur la valeur d'une variable. Elle permet d'exécuter différents blocs de code en fonction de la valeur fournie, facilitant ainsi la gestion des flux de contrôle dans les scripts.
 
 ## Usage
 La syntaxe de base de la commande `switch` est la suivante :
 
 ```csh
 switch (expression)
-    case valeur1:
-        commandes1
+    case pattern1:
+        # commandes à exécuter si l'expression correspond à pattern1
         breaksw
-    case valeur2:
-        commandes2
+    case pattern2:
+        # commandes à exécuter si l'expression correspond à pattern2
         breaksw
     default:
-        commandes_par_defaut
-end
+        # commandes à exécuter si aucune correspondance n'est trouvée
+        breaksw
+endsw
 ```
 
 ## Common Options
-- `case`: Définit une valeur à comparer avec l'expression.
-- `breaksw`: Met fin à l'exécution des cas dans le switch.
-- `default`: Spécifie les commandes à exécuter si aucune des valeurs ne correspond.
+- `case`: Définit un modèle à comparer avec l'expression.
+- `breaksw`: Met fin à l'exécution du bloc de cas actuel et sort de la structure `switch`.
+- `default`: Spécifie le bloc de code à exécuter si aucune des correspondances n'est trouvée.
 
 ## Common Examples
+Voici quelques exemples pratiques de l'utilisation de la commande `switch` :
 
-### Exemple 1 : Utilisation basique
+### Exemple 1 : Vérifier le jour de la semaine
 ```csh
-set fruit = "pomme"
-switch ($fruit)
-    case "pomme":
-        echo "C'est une pomme."
-        breaksw
-    case "banane":
-        echo "C'est une banane."
-        breaksw
-    default:
-        echo "Fruit inconnu."
-end
-```
-
-### Exemple 2 : Comparaison de plusieurs valeurs
-```csh
-set jour = "lundi"
-switch ($jour)
+set day = "lundi"
+switch ($day)
     case "lundi":
-    case "mardi":
         echo "C'est le début de la semaine."
         breaksw
-    case "samedi":
-    case "dimanche":
-        echo "C'est le week-end."
+    case "vendredi":
+        echo "C'est presque le week-end."
         breaksw
     default:
-        echo "C'est un jour de semaine."
-end
+        echo "C'est un autre jour."
+        breaksw
+endsw
 ```
 
-### Exemple 3 : Utilisation avec des variables d'environnement
+### Exemple 2 : Évaluer une note
 ```csh
-set status = $1
-switch ($status)
-    case "success":
-        echo "L'opération a réussi."
+set note = "B"
+switch ($note)
+    case "A":
+        echo "Excellent!"
         breaksw
-    case "failure":
-        echo "L'opération a échoué."
+    case "B":
+        echo "Bien fait!"
+        breaksw
+    case "C":
+        echo "Passable."
         breaksw
     default:
-        echo "Statut inconnu."
-end
+        echo "Note non reconnue."
+        breaksw
+endsw
+```
+
+### Exemple 3 : Choisir une action
+```csh
+set action = "sauvegarder"
+switch ($action)
+    case "sauvegarder":
+        echo "Sauvegarde en cours..."
+        breaksw
+    case "restaurer":
+        echo "Restauration en cours..."
+        breaksw
+    default:
+        echo "Action inconnue."
+        breaksw
+endsw
 ```
 
 ## Tips
-- Utilisez `breaksw` pour éviter d'exécuter des cas supplémentaires après une correspondance.
-- Assurez-vous que les valeurs dans les cases sont bien définies pour éviter des résultats inattendus.
-- N'oubliez pas de terminer votre structure `switch` avec `end` pour indiquer la fin des conditions.
+- Utilisez des motifs génériques (comme `*`) pour capturer plusieurs valeurs dans un même cas.
+- Assurez-vous d'inclure un bloc `default` pour gérer les cas non prévus, ce qui améliore la robustesse de votre script.
+- Évitez d'utiliser des espaces autour des parenthèses dans la condition `switch`, car cela peut entraîner des erreurs de syntaxe.

@@ -1,45 +1,56 @@
-# [Sistem Operasi] C Shell (csh) pkg Penggunaan: Mengelola paket perangkat lunak
+# [Sistem Operasi] C Shell (csh) pkg penggunaan: Mengelola paket perangkat lunak
 
 ## Overview
-Perintah `pkg` dalam C Shell (csh) digunakan untuk mengelola paket perangkat lunak di sistem Unix-like. Dengan `pkg`, pengguna dapat menginstal, menghapus, dan memperbarui paket dengan mudah.
+Perintah `pkg` dalam C Shell (csh) digunakan untuk mengelola paket perangkat lunak. Dengan perintah ini, pengguna dapat menginstal, menghapus, dan memperbarui paket dengan mudah.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `pkg`:
 
-```csh
+```
 pkg [options] [arguments]
 ```
 
 ## Common Options
 - `install`: Menginstal paket baru.
 - `remove`: Menghapus paket yang sudah terinstal.
-- `update`: Memperbarui paket yang sudah terinstal ke versi terbaru.
-- `list`: Menampilkan daftar paket yang terinstal di sistem.
+- `update`: Memperbarui paket yang sudah ada.
+- `list`: Menampilkan daftar paket yang terinstal.
+- `info`: Menampilkan informasi tentang paket tertentu.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `pkg`:
 
-1. **Menginstal paket baru**:
-   ```csh
-   pkg install nama_paket
-   ```
+### Menginstal Paket
+Untuk menginstal paket baru, gunakan perintah berikut:
+```
+pkg install nama_paket
+```
 
-2. **Menghapus paket yang terinstal**:
-   ```csh
-   pkg remove nama_paket
-   ```
+### Menghapus Paket
+Untuk menghapus paket yang sudah terinstal, gunakan perintah berikut:
+```
+pkg remove nama_paket
+```
 
-3. **Memperbarui paket yang terinstal**:
-   ```csh
-   pkg update nama_paket
-   ```
+### Memperbarui Paket
+Untuk memperbarui paket yang sudah ada, gunakan perintah berikut:
+```
+pkg update nama_paket
+```
 
-4. **Menampilkan daftar paket yang terinstal**:
-   ```csh
-   pkg list
-   ```
+### Menampilkan Daftar Paket
+Untuk menampilkan daftar semua paket yang terinstal, gunakan perintah berikut:
+```
+pkg list
+```
+
+### Menampilkan Informasi Paket
+Untuk menampilkan informasi tentang paket tertentu, gunakan perintah berikut:
+```
+pkg info nama_paket
+```
 
 ## Tips
-- Selalu periksa versi paket sebelum menginstal atau memperbarui untuk menghindari konflik.
-- Gunakan opsi `-y` untuk mengonfirmasi tindakan secara otomatis saat menginstal atau menghapus paket.
-- Rutin periksa pembaruan untuk menjaga sistem tetap aman dan terkini.
+- Selalu periksa daftar paket yang terinstal sebelum melakukan penghapusan untuk menghindari kesalahan.
+- Gunakan opsi `update` secara berkala untuk memastikan semua paket Anda diperbarui dengan versi terbaru.
+- Bacalah dokumentasi resmi untuk setiap paket untuk memahami fungsionalitas dan opsi yang tersedia.

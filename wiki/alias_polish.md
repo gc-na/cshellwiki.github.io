@@ -1,18 +1,18 @@
-# [Linux] C Shell (csh) alias użycie: Umożliwia tworzenie skrótów do poleceń
+# [Linux] C Shell (csh) alias użycie: Tworzenie skrótów do poleceń
 
 ## Overview
-Polecenie `alias` w C Shell (csh) pozwala na tworzenie skrótów do długich lub często używanych poleceń. Dzięki temu użytkownicy mogą zaoszczędzić czas i zwiększyć efektywność pracy w terminalu.
+Polecenie `alias` w C Shell (csh) służy do tworzenia skrótów dla długich lub często używanych poleceń. Dzięki temu użytkownicy mogą łatwo wywoływać skomplikowane komendy za pomocą krótszych, bardziej zrozumiałych nazw.
 
 ## Usage
 Podstawowa składnia polecenia `alias` jest następująca:
 
-```csh
+```
 alias [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-p`: Wyświetla wszystkie zdefiniowane aliasy.
-- `-d`: Usuwa zdefiniowany alias.
+- `-p` - Wyświetla wszystkie zdefiniowane aliasy.
+- `-x` - Umożliwia zdefiniowanie aliasu, który będzie dostępny w skryptach.
 
 ## Common Examples
 Oto kilka praktycznych przykładów użycia polecenia `alias`:
@@ -21,25 +21,27 @@ Oto kilka praktycznych przykładów użycia polecenia `alias`:
    ```csh
    alias ll 'ls -l'
    ```
-   Teraz, zamiast wpisywać `ls -l`, wystarczy wpisać `ll`.
+   Teraz możesz używać `ll`, aby wyświetlić szczegółową listę plików.
 
-2. Tworzenie aliasu z wieloma poleceniami:
+2. Alias z wieloma poleceniami:
    ```csh
    alias update 'sudo apt update && sudo apt upgrade'
    ```
-   Umożliwia to jednoczesne wykonanie aktualizacji systemu.
+   Użyj `update`, aby zaktualizować system w jednym kroku.
 
-3. Wyświetlanie wszystkich zdefiniowanych aliasów:
+3. Wyświetlanie wszystkich aliasów:
    ```csh
    alias -p
    ```
+   To polecenie pokaże wszystkie zdefiniowane aliasy w bieżącej sesji.
 
 4. Usuwanie aliasu:
    ```csh
-   alias -d ll
+   unalias ll
    ```
+   Użyj `unalias`, aby usunąć wcześniej zdefiniowany alias.
 
 ## Tips
-- Używaj krótkich i łatwych do zapamiętania nazw aliasów, aby zwiększyć swoją wydajność.
+- Staraj się nadawać aliasom intuicyjne nazwy, aby łatwo je zapamiętać.
 - Regularnie przeglądaj swoje aliasy, aby upewnić się, że są aktualne i użyteczne.
-- Rozważ dodanie aliasów do swojego pliku konfiguracyjnego (np. `.cshrc`), aby były dostępne po każdym uruchomieniu terminala.
+- Możesz dodać swoje aliasy do pliku konfiguracyjnego (np. `.cshrc`), aby były dostępne w każdej sesji.

@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) cksum : Calculer le checksum d'un fichier
+# [Linux] C Shell (csh) cksum : Calculer les sommes de contrôle des fichiers
 
 ## Overview
-La commande `cksum` dans C Shell (csh) est utilisée pour calculer le checksum (somme de contrôle) d'un fichier. Elle génère une valeur de checksum qui peut être utilisée pour vérifier l'intégrité des données.
+La commande `cksum` dans le C Shell (csh) est utilisée pour calculer et afficher la somme de contrôle d'un fichier ainsi que sa taille en octets. Cela peut être utile pour vérifier l'intégrité des fichiers.
 
 ## Usage
 La syntaxe de base de la commande `cksum` est la suivante :
@@ -11,34 +11,34 @@ cksum [options] [arguments]
 ```
 
 ## Common Options
-- `-a` : Spécifie le type d'algorithme de checksum à utiliser.
-- `-h` : Affiche l'aide et les options disponibles pour la commande.
-- `-o` : Permet de spécifier un fichier de sortie pour le résultat.
+- `-a, --algorithm=ALGO` : Spécifie l'algorithme de somme de contrôle à utiliser.
+- `--help` : Affiche l'aide et les options disponibles pour la commande.
+- `--version` : Affiche la version de la commande `cksum`.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `cksum` :
 
-1. Calculer le checksum d'un fichier :
+1. Calculer la somme de contrôle d'un fichier :
    ```csh
-   cksum monfichier.txt
+   cksum fichier.txt
    ```
 
-2. Calculer le checksum de plusieurs fichiers :
+2. Calculer la somme de contrôle de plusieurs fichiers :
    ```csh
    cksum fichier1.txt fichier2.txt
    ```
 
-3. Utiliser une option pour afficher l'aide :
+3. Afficher l'aide de la commande :
    ```csh
-   cksum -h
+   cksum --help
    ```
 
-4. Rediriger la sortie vers un fichier :
+4. Vérifier la somme de contrôle d'un fichier avec un algorithme spécifique :
    ```csh
-   cksum monfichier.txt > checksum.txt
+   cksum -a md5 fichier.txt
    ```
 
 ## Tips
-- Assurez-vous de vérifier le checksum après le transfert de fichiers pour garantir leur intégrité.
-- Utilisez `cksum` en combinaison avec d'autres commandes comme `tar` pour vérifier les archives.
-- Gardez à l'esprit que le checksum peut varier selon le système de fichiers, donc vérifiez toujours dans le même environnement.
+- Utilisez `cksum` pour vérifier l'intégrité des fichiers après un transfert ou une sauvegarde.
+- Combinez `cksum` avec d'autres commandes comme `find` pour traiter plusieurs fichiers à la fois.
+- Gardez à l'esprit que la somme de contrôle peut varier selon les algorithmes utilisés, alors choisissez celui qui convient le mieux à vos besoins.

@@ -1,24 +1,24 @@
 # [Linux] C Shell (csh) helm Verwendung: Verwaltung von Kubernetes-Anwendungen
 
 ## Übersicht
-Der `helm` Befehl ist ein Paketmanager für Kubernetes, der es ermöglicht, Anwendungen einfach zu installieren, zu verwalten und zu aktualisieren. Mit Helm können Benutzer "Charts" verwenden, um komplexe Anwendungen in Kubernetes-Clustern zu verwalten.
+Der `helm` Befehl ist ein Paketmanager für Kubernetes, der es ermöglicht, Anwendungen einfach zu installieren, zu verwalten und zu aktualisieren. Helm verwendet sogenannte "Charts", die eine Sammlung von Kubernetes-Ressourcen beschreiben, um Anwendungen bereitzustellen.
 
 ## Verwendung
-Die grundlegende Syntax des Helm-Befehls lautet:
+Die grundlegende Syntax des `helm` Befehls lautet:
 
 ```bash
 helm [options] [arguments]
 ```
 
 ## Häufige Optionen
-- `install`: Installiert ein neues Chart in einem Kubernetes-Cluster.
+- `install`: Installiert ein neues Helm-Chart.
 - `upgrade`: Aktualisiert eine bestehende Installation eines Charts.
-- `uninstall`: Entfernt eine installierte Anwendung.
-- `list`: Zeigt alle installierten Releases an.
-- `repo add`: Fügt ein neues Helm-Repository hinzu.
+- `uninstall`: Entfernt eine installierte Helm-Anwendung.
+- `list`: Listet alle installierten Releases auf.
+- `repo`: Verwalten von Helm-Repositories.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele zur Verwendung von Helm:
+Hier sind einige praktische Beispiele für die Verwendung des `helm` Befehls:
 
 ### 1. Installieren eines Charts
 ```bash
@@ -46,6 +46,6 @@ helm repo add mein-repo https://example.com/charts
 ```
 
 ## Tipps
-- Überprüfen Sie regelmäßig die verfügbaren Updates für Ihre Charts, um sicherzustellen, dass Sie die neuesten Funktionen und Sicherheitsupdates nutzen.
-- Verwenden Sie `helm template`, um die Kubernetes-Ressourcen zu generieren, bevor Sie sie tatsächlich anwenden, um zu sehen, was erstellt wird.
-- Halten Sie Ihre Helm-Repositorys aktuell mit `helm repo update`, um die neuesten Charts zu erhalten.
+- Verwenden Sie `helm search` um nach verfügbaren Charts in Ihren Repositories zu suchen.
+- Halten Sie Ihre Helm-Repositories mit `helm repo update` auf dem neuesten Stand.
+- Nutzen Sie `--dry-run`, um zu sehen, was bei einer Installation oder Aktualisierung passieren würde, ohne tatsächlich Änderungen vorzunehmen.

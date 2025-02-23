@@ -1,49 +1,52 @@
-# [Linux] C Shell (csh) id kullanımı: Kullanıcı kimlik bilgilerini görüntüleme
+# [Linux] C Shell (csh) id Kullanımı: Kullanıcı kimliğini görüntüleme
 
-## Overview
-`id` komutu, kullanıcının kimlik bilgilerini görüntülemek için kullanılır. Bu komut, mevcut kullanıcının UID (Kullanıcı Kimliği), GID (Grup Kimliği) ve üye olduğu gruplar hakkında bilgi sağlar.
+## Genel Bakış
+`id` komutu, kullanıcı kimliği (UID) ve grup kimliği (GID) bilgilerini görüntülemek için kullanılır. Bu komut, sistemdeki kullanıcıların ve grupların kimlik bilgilerini hızlı bir şekilde kontrol etmenizi sağlar.
 
-## Usage
+## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
 ```
-id [options] [arguments]
+id [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `-u`: Sadece kullanıcı kimliğini (UID) gösterir.
-- `-g`: Sadece grup kimliğini (GID) gösterir.
-- `-G`: Kullanıcının üye olduğu grupların kimliklerini gösterir.
+## Yaygın Seçenekler
+- `-u`: Kullanıcının UID'sini gösterir.
+- `-g`: Kullanıcının GID'sini gösterir.
+- `-G`: Kullanıcının ait olduğu tüm grup kimliklerini gösterir.
 - `-n`: Kullanıcı veya grup adını gösterir.
 
-## Common Examples
-Aşağıda `id` komutunun bazı pratik örnekleri bulunmaktadır:
+## Yaygın Örnekler
+Aşağıda `id` komutunun bazı pratik örnekleri verilmiştir:
 
-1. Mevcut kullanıcının kimlik bilgilerini görüntüleme:
-   ```csh
+1. Kullanıcı kimliğini ve grup bilgilerini görüntüleme:
+   ```bash
    id
    ```
 
-2. Sadece kullanıcı kimliğini görüntüleme:
-   ```csh
-   id -u
+2. Belirli bir kullanıcının UID ve GID bilgilerini görüntüleme:
+   ```bash
+   id kullanıcı_adı
    ```
 
-3. Sadece grup kimliğini görüntüleme:
-   ```csh
-   id -g
+3. Sadece kullanıcı UID'sini görüntüleme:
+   ```bash
+   id -u kullanıcı_adı
    ```
 
-4. Kullanıcının üye olduğu grupların kimliklerini görüntüleme:
-   ```csh
-   id -G
+4. Kullanıcının ait olduğu tüm grup kimliklerini görüntüleme:
+   ```bash
+   id -G kullanıcı_adı
    ```
 
-5. Belirli bir kullanıcının kimlik bilgilerini görüntüleme (örneğin, "username"):
-   ```csh
-   id username
+5. Kullanıcı adı ile birlikte UID ve GID bilgilerini görüntüleme:
+   ```bash
+   id -n kullanıcı_adı
    ```
 
-## Tips
-- `id` komutunu kullanarak sistemdeki kullanıcı ve grup bilgilerini hızlıca kontrol edebilirsiniz.
-- Sadece gerekli bilgileri almak için uygun seçenekleri kullanarak komutu daha verimli hale getirin.
-- Eğer birden fazla kullanıcı hakkında bilgi almak istiyorsanız, her bir kullanıcı için ayrı ayrı `id` komutunu çalıştırmalısınız.
+## İpuçları
+- `id` komutunu kullanarak, bir kullanıcının hangi gruplara ait olduğunu hızlıca öğrenebilirsiniz.
+- Özellikle sistem yöneticileri için, kullanıcıların izinlerini kontrol etmek amacıyla `id` komutu oldukça faydalıdır.
+- `id` komutunu sık kullanıyorsanız, alias tanımlayarak daha kısa bir komut oluşturabilirsiniz. Örneğin:
+  ```bash
+  alias uid='id -u'
+  ```

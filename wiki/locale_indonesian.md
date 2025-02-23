@@ -1,19 +1,21 @@
 # [Sistem Operasi] C Shell (csh) locale: Menampilkan informasi lokal
 
 ## Overview
-Perintah `locale` dalam C Shell digunakan untuk menampilkan informasi tentang pengaturan lokal yang sedang digunakan oleh sistem. Ini termasuk informasi tentang bahasa, format tanggal, dan pengaturan lainnya yang mempengaruhi tampilan dan perilaku program.
+Perintah `locale` dalam C Shell (csh) digunakan untuk menampilkan informasi tentang pengaturan lokal yang sedang digunakan oleh sistem. Ini mencakup informasi seperti bahasa, format tanggal, dan pengaturan lainnya yang mempengaruhi bagaimana data ditampilkan dan diproses.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `locale`:
 
-```
+```csh
 locale [options] [arguments]
 ```
 
 ## Common Options
+Berikut adalah beberapa opsi umum untuk perintah `locale` beserta penjelasannya:
+
 - `-a`: Menampilkan semua lokal yang tersedia di sistem.
-- `-m`: Menampilkan daftar nama lokal yang dapat digunakan.
-- `-k`: Menampilkan kunci lokal tertentu.
+- `-m`: Menampilkan daftar karakter yang digunakan oleh lokal yang tersedia.
+- `-k`: Menampilkan nilai dari variabel lokal tertentu.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `locale`:
@@ -23,17 +25,22 @@ Berikut adalah beberapa contoh penggunaan perintah `locale`:
    locale -a
    ```
 
-2. Menampilkan informasi lokal saat ini:
+2. Menampilkan informasi tentang lokal yang sedang digunakan:
    ```csh
    locale
    ```
 
-3. Menampilkan kunci lokal tertentu, misalnya untuk `LC_TIME`:
+3. Menampilkan daftar karakter untuk lokal yang tersedia:
    ```csh
-   locale -k LC_TIME
+   locale -m
+   ```
+
+4. Menampilkan nilai dari variabel lokal tertentu, misalnya `LANG`:
+   ```csh
+   locale -k LANG
    ```
 
 ## Tips
-- Selalu gunakan `locale` tanpa opsi untuk memeriksa pengaturan lokal saat ini sebelum menjalankan aplikasi yang bergantung pada lokal.
-- Jika Anda ingin mengubah lokal, Anda dapat melakukannya dengan mengatur variabel lingkungan seperti `LANG` atau `LC_ALL`.
-- Gunakan opsi `-m` untuk mengetahui lokal yang dapat Anda gunakan jika Anda perlu mengkonfigurasi pengaturan lokal baru.
+- Pastikan untuk memeriksa lokal yang tersedia di sistem Anda dengan opsi `-a` untuk mengetahui pilihan yang dapat digunakan.
+- Gunakan perintah `locale` tanpa opsi untuk dengan cepat melihat pengaturan lokal yang aktif saat ini.
+- Jika Anda mengalami masalah dengan tampilan karakter, periksa pengaturan lokal Anda dan pastikan bahwa lokal yang sesuai telah diatur.

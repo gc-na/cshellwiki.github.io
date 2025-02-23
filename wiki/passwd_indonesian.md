@@ -1,49 +1,43 @@
 # [Sistem Operasi] C Shell (csh) passwd Penggunaan: Mengubah kata sandi pengguna
 
 ## Overview
-Perintah `passwd` digunakan untuk mengubah kata sandi pengguna dalam sistem berbasis Unix. Dengan menggunakan perintah ini, pengguna dapat memperbarui kata sandi mereka untuk meningkatkan keamanan akun.
+Perintah `passwd` dalam C Shell (csh) digunakan untuk mengubah kata sandi pengguna. Ini adalah alat penting untuk menjaga keamanan akun dengan memungkinkan pengguna memperbarui kata sandi mereka secara berkala.
 
 ## Usage
-Berikut adalah sintaks dasar dari perintah `passwd`:
-
-```csh
+Sintaks dasar dari perintah `passwd` adalah sebagai berikut:
+```
 passwd [options] [arguments]
 ```
 
 ## Common Options
 - `-l`: Mengunci akun pengguna.
 - `-u`: Membuka kunci akun pengguna yang terkunci.
-- `-d`: Menghapus kata sandi pengguna, memungkinkan akses tanpa kata sandi.
+- `-e`: Memaksa pengguna untuk mengubah kata sandi mereka pada login berikutnya.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `passwd`:
 
-1. **Mengubah kata sandi pengguna saat ini:**
+1. **Mengubah kata sandi untuk pengguna saat ini:**
    ```csh
    passwd
    ```
 
-2. **Mengubah kata sandi untuk pengguna tertentu (misalnya, user1):**
+2. **Mengunci akun pengguna tertentu:**
    ```csh
-   passwd user1
+   passwd -l nama_pengguna
    ```
 
-3. **Mengunci akun pengguna (misalnya, user2):**
+3. **Membuka kunci akun pengguna tertentu:**
    ```csh
-   passwd -l user2
+   passwd -u nama_pengguna
    ```
 
-4. **Membuka kunci akun pengguna yang terkunci (misalnya, user2):**
+4. **Memaksa pengguna untuk mengubah kata sandi pada login berikutnya:**
    ```csh
-   passwd -u user2
-   ```
-
-5. **Menghapus kata sandi pengguna (misalnya, user3):**
-   ```csh
-   passwd -d user3
+   passwd -e nama_pengguna
    ```
 
 ## Tips
-- Selalu gunakan kata sandi yang kuat dan unik untuk meningkatkan keamanan akun Anda.
-- Jika Anda mengubah kata sandi pengguna lain, pastikan Anda memiliki izin yang diperlukan.
-- Setelah mengubah kata sandi, pastikan untuk mengingatnya atau menyimpannya di tempat yang aman.
+- Pastikan untuk memilih kata sandi yang kuat dan sulit ditebak untuk meningkatkan keamanan akun Anda.
+- Selalu ingat kata sandi baru Anda setelah mengubahnya, atau gunakan pengelola kata sandi untuk menyimpannya dengan aman.
+- Jika Anda mengunci akun pengguna, pastikan untuk memberi tahu pengguna tersebut agar mereka dapat menghubungi administrator untuk membuka kunci akun mereka.

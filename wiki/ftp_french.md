@@ -1,7 +1,7 @@
-# [Système d'exploitation] C Shell (csh) ftp : Transférer des fichiers entre ordinateurs
+# [Système d'exploitation] C Shell (csh) ftp : Transférer des fichiers sur un réseau
 
 ## Overview
-La commande `ftp` (File Transfer Protocol) permet de transférer des fichiers entre un client et un serveur sur un réseau. Elle est largement utilisée pour télécharger ou téléverser des fichiers sur des serveurs distants.
+La commande `ftp` (File Transfer Protocol) permet de transférer des fichiers entre un ordinateur local et un serveur distant via le protocole FTP. Elle est largement utilisée pour télécharger ou téléverser des fichiers sur Internet.
 
 ## Usage
 La syntaxe de base de la commande `ftp` est la suivante :
@@ -13,10 +13,10 @@ ftp [options] [arguments]
 ## Common Options
 Voici quelques options courantes pour la commande `ftp` :
 
-- `-i` : Désactive le mode interactif, ce qui permet de transférer des fichiers sans demander confirmation.
-- `-v` : Active le mode verbeux, affichant des informations détaillées sur le transfert.
-- `-n` : Empêche l'auto-connexion au serveur FTP à l'ouverture de la commande.
-- `-g` : Permet d'ignorer les commandes de globbing (expansion de caractères génériques).
+- `-v` : Mode verbeux, affiche des informations détaillées sur le transfert.
+- `-n` : Ne pas tenter de se connecter automatiquement à un hôte par défaut.
+- `-i` : Désactive le mode interactif, ce qui permet de transférer des fichiers sans confirmation.
+- `-g` : Permet d'utiliser des caractères génériques pour les fichiers.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `ftp` :
@@ -28,25 +28,25 @@ Voici quelques exemples pratiques de l'utilisation de la commande `ftp` :
 
 2. **Télécharger un fichier depuis le serveur :**
    ```csh
-   get fichier.txt
+   ftp> get fichier.txt
    ```
 
 3. **Téléverser un fichier vers le serveur :**
    ```csh
-   put fichier_local.txt
+   ftp> put fichier.txt
    ```
 
-4. **Télécharger plusieurs fichiers :**
+4. **Lister les fichiers sur le serveur :**
    ```csh
-   mget *.jpg
+   ftp> ls
    ```
 
-5. **Téléverser plusieurs fichiers :**
+5. **Quitter la session FTP :**
    ```csh
-   mput *.txt
+   ftp> bye
    ```
 
 ## Tips
-- Assurez-vous d'utiliser un mot de passe fort pour protéger vos connexions FTP.
-- Utilisez le mode passif (avec la commande `passive`) si vous rencontrez des problèmes de connexion derrière un pare-feu.
-- Pensez à vérifier les permissions des fichiers sur le serveur après le transfert pour vous assurer qu'ils sont accessibles comme prévu.
+- Assurez-vous d'utiliser un mot de passe fort lors de la connexion à un serveur FTP pour protéger vos données.
+- Utilisez l'option `-v` pour obtenir des informations détaillées sur le transfert, ce qui peut aider à diagnostiquer des problèmes.
+- Pensez à passer en mode binaire (`binary`) lors du transfert de fichiers non texte pour éviter la corruption des données.

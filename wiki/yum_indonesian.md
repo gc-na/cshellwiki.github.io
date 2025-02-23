@@ -1,10 +1,10 @@
-# [Sistem Operasi] C Shell (csh) yum: Mengelola paket perangkat lunak
+# [Sistem Operasi] C Shell (csh) yum: [mengelola paket perangkat lunak]
 
 ## Overview
-Perintah `yum` (Yellowdog Updater Modified) adalah alat manajemen paket yang digunakan pada sistem berbasis RPM (Red Hat Package Manager). Dengan `yum`, pengguna dapat menginstal, memperbarui, dan menghapus paket perangkat lunak dengan mudah.
+Perintah `yum` (Yellowdog Updater Modified) adalah alat manajemen paket yang digunakan pada sistem berbasis RPM (Red Hat Package Manager). Dengan `yum`, pengguna dapat menginstal, menghapus, dan memperbarui perangkat lunak dengan mudah.
 
 ## Usage
-Berikut adalah sintaks dasar untuk menggunakan perintah `yum`:
+Berikut adalah sintaks dasar dari perintah `yum`:
 
 ```
 yum [options] [arguments]
@@ -14,11 +14,11 @@ yum [options] [arguments]
 - `install`: Menginstal paket baru.
 - `remove`: Menghapus paket yang sudah terinstal.
 - `update`: Memperbarui paket yang sudah terinstal ke versi terbaru.
-- `list`: Menampilkan daftar paket yang tersedia atau yang sudah terinstal.
 - `search`: Mencari paket berdasarkan nama atau deskripsi.
+- `info`: Menampilkan informasi tentang paket tertentu.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan `yum`:
+Berikut adalah beberapa contoh penggunaan perintah `yum`:
 
 1. **Menginstal paket baru**:
    ```bash
@@ -35,17 +35,17 @@ Berikut adalah beberapa contoh penggunaan `yum`:
    yum update
    ```
 
-4. **Menampilkan daftar paket yang terinstal**:
+4. **Mencari paket**:
    ```bash
-   yum list installed
+   yum search kata_kunci
    ```
 
-5. **Mencari paket tertentu**:
+5. **Menampilkan informasi tentang paket**:
    ```bash
-   yum search nama_paket
+   yum info nama_paket
    ```
 
 ## Tips
-- Selalu perbarui repositori sebelum menginstal atau memperbarui paket dengan menggunakan `yum update`.
-- Gunakan `yum clean all` untuk membersihkan cache dan menghemat ruang disk.
-- Periksa dependensi paket sebelum menginstal untuk menghindari masalah di kemudian hari.
+- Selalu periksa pembaruan sistem secara berkala dengan `yum update` untuk menjaga keamanan dan stabilitas.
+- Gunakan `yum clean all` untuk membersihkan cache dan menghemat ruang penyimpanan.
+- Sebelum menginstal atau menghapus paket, gunakan opsi `info` untuk memastikan Anda memahami apa yang akan dilakukan perintah tersebut.

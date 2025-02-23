@@ -1,20 +1,20 @@
 # [Linux] C Shell (csh) ftp Verwendung: Dateiübertragung über das Netzwerk
 
 ## Übersicht
-Der `ftp`-Befehl (File Transfer Protocol) wird verwendet, um Dateien über ein Netzwerk zu übertragen. Er ermöglicht es Benutzern, sich mit einem FTP-Server zu verbinden, Dateien herunterzuladen und hochzuladen sowie verschiedene Dateiverwaltungsoperationen durchzuführen.
+Der `ftp`-Befehl (File Transfer Protocol) wird verwendet, um Dateien über ein Netzwerk zu übertragen. Mit diesem Befehl können Benutzer sich mit einem FTP-Server verbinden, Dateien hochladen oder herunterladen und Verzeichnisse verwalten.
 
 ## Verwendung
 Die grundlegende Syntax des `ftp`-Befehls lautet:
 
-```csh
-ftp [optionen] [argumente]
+```
+ftp [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-i`: Schaltet den interaktiven Modus aus, um die Übertragung von Dateien ohne Bestätigung durchzuführen.
-- `-v`: Aktiviert den ausführlichen Modus, der zusätzliche Informationen über den Übertragungsprozess anzeigt.
+- `-i`: Schaltet den interaktiven Modus aus, sodass Dateien ohne Bestätigung übertragen werden.
+- `-v`: Aktiviert den ausführlichen Modus, der mehr Informationen über den Übertragungsprozess anzeigt.
 - `-n`: Verhindert die automatische Anmeldung beim FTP-Server.
-- `-p`: Verwendet den passiven Modus für die Verbindung, was bei Firewalls hilfreich sein kann.
+- `-g`: Erlaubt die Verwendung von Platzhaltern in Dateinamen.
 
 ## Häufige Beispiele
 Hier sind einige praktische Beispiele für die Verwendung des `ftp`-Befehls:
@@ -34,17 +34,18 @@ Hier sind einige praktische Beispiele für die Verwendung des `ftp`-Befehls:
    ftp> put datei.txt
    ```
 
-4. **Auflisten der Dateien im aktuellen Verzeichnis des FTP-Servers:**
+4. **Verzeichnis auf dem FTP-Server auflisten:**
    ```csh
    ftp> ls
    ```
 
-5. **Verwenden des passiven Modus:**
+5. **Interaktiven Modus deaktivieren und mehrere Dateien herunterladen:**
    ```csh
-   ftp> passive
+   ftp -i ftp.example.com
+   ftp> mget *.txt
    ```
 
 ## Tipps
-- Verwenden Sie den `-n`-Schalter, wenn Sie sich nicht automatisch anmelden möchten, um die Sicherheit zu erhöhen.
-- Nutzen Sie den `-v`-Schalter, um während der Übertragung mehr Informationen zu erhalten, was bei der Fehlersuche hilfreich sein kann.
-- Denken Sie daran, sich nach Abschluss Ihrer FTP-Sitzung mit dem Befehl `bye` oder `quit` abzumelden.
+- Verwenden Sie den `-v`-Schalter, um den Übertragungsstatus zu überwachen und mögliche Probleme zu identifizieren.
+- Achten Sie darauf, dass Sie sich immer von einem FTP-Server abmelden, um Ihre Verbindung sicher zu beenden.
+- Nutzen Sie den interaktiven Modus, um die verfügbaren Befehle und Optionen besser zu verstehen, bevor Sie komplexe Übertragungen durchführen.

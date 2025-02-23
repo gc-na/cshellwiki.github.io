@@ -1,35 +1,37 @@
-# [Linux] Użytkownicy C Shell (csh): Wyświetlanie aktywnych użytkowników
+# [Linux] Użytkownicy C Shell (csh): wyświetlanie aktywnych użytkowników
 
 ## Overview
-Polecenie `users` w powłoce C Shell (csh) służy do wyświetlania nazw użytkowników, którzy są aktualnie zalogowani na systemie. Jest to przydatne narzędzie do szybkiego sprawdzenia, kto jest aktywny w danym momencie.
+Polecenie `users` w C Shell (csh) służy do wyświetlania nazw użytkowników, którzy są aktualnie zalogowani na systemie. Jest to przydatne narzędzie do szybkiego sprawdzenia, kto korzysta z systemu w danym momencie.
 
 ## Usage
 Podstawowa składnia polecenia `users` jest następująca:
 
-```
+```csh
 users [options] [arguments]
 ```
 
 ## Common Options
-- `-n`: Wyświetla liczbę unikalnych użytkowników.
-- `-l`: Wyświetla pełne imiona użytkowników (jeśli dostępne).
+- `-n` : Wyświetla tylko unikalne nazwy użytkowników.
+- `-r` : Wyświetla tylko użytkowników, którzy są aktualnie aktywni.
 
 ## Common Examples
-1. Wyświetlenie wszystkich zalogowanych użytkowników:
+Oto kilka praktycznych przykładów użycia polecenia `users`:
+
+1. Wyświetlenie wszystkich aktualnie zalogowanych użytkowników:
    ```csh
    users
    ```
 
-2. Wyświetlenie liczby unikalnych użytkowników:
+2. Wyświetlenie unikalnych nazw użytkowników:
    ```csh
    users -n
    ```
 
-3. Wyświetlenie pełnych imion użytkowników:
+3. Wyświetlenie tylko aktywnych użytkowników:
    ```csh
-   users -l
+   users -r
    ```
 
 ## Tips
-- Użyj polecenia `who` lub `w`, jeśli potrzebujesz bardziej szczegółowych informacji o zalogowanych użytkownikach, takich jak czas logowania czy aktywność.
-- Polecenie `users` jest szybkie i efektywne, ale nie pokazuje szczegółowych informacji, więc warto łączyć je z innymi poleceniami dla lepszego obrazu sytuacji w systemie.
+- Używaj opcji `-n`, aby uniknąć powtarzających się nazw użytkowników, co jest szczególnie przydatne w systemach z wieloma sesjami.
+- Regularnie sprawdzaj zalogowanych użytkowników, aby monitorować aktywność w systemie, zwłaszcza na serwerach wielodostępnych.

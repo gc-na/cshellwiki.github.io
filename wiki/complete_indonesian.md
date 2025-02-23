@@ -1,39 +1,45 @@
-# [Sistem Operasi] C Shell (csh) lengkap perintah `complete`: Menyelesaikan nama perintah
+# [Sistem Operasi] C Shell (csh) lengkap perintah: Melengkapi nama perintah
 
 ## Overview
-Perintah `complete` dalam C Shell digunakan untuk mengatur penyelesaian otomatis untuk perintah yang Anda masukkan di terminal. Ini memungkinkan pengguna untuk menambahkan atau mengubah cara penyelesaian otomatis bekerja, sehingga meningkatkan efisiensi saat mengetik perintah.
+Perintah `complete` dalam C Shell (csh) digunakan untuk melengkapi nama perintah atau argumen yang sedang diketik oleh pengguna. Fitur ini sangat berguna untuk mempercepat pengetikan dan mengurangi kesalahan saat memasukkan perintah di terminal.
 
 ## Usage
 Berikut adalah sintaks dasar untuk perintah `complete`:
 
-```
+```csh
 complete [options] [arguments]
 ```
 
 ## Common Options
-- `-e` : Menghapus penyelesaian otomatis yang ada untuk perintah tertentu.
-- `-p` : Menampilkan penyelesaian otomatis yang ada untuk perintah yang ditentukan.
-- `-c` : Menambahkan penyelesaian otomatis baru untuk perintah yang ditentukan.
+- `-c`: Menentukan bahwa argumen yang diberikan adalah perintah yang akan dilengkapi.
+- `-d`: Menambahkan opsi untuk melengkapi direktori.
+- `-f`: Melengkapi nama file.
+- `-n`: Menentukan jumlah argumen yang harus ada sebelum melengkapi.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `complete`:
 
-1. **Menambahkan penyelesaian otomatis untuk perintah `git`:**
+1. Melengkapi perintah yang sedang diketik:
    ```csh
-   complete -c git -o "-a commit -b branch -c checkout"
+   complete -c ls
    ```
 
-2. **Menghapus penyelesaian otomatis untuk perintah `ls`:**
+2. Melengkapi nama file saat mengetik:
    ```csh
-   complete -e ls
+   complete -f myfile
    ```
 
-3. **Menampilkan penyelesaian otomatis yang ada untuk perintah `ssh`:**
+3. Melengkapi direktori:
    ```csh
-   complete -p ssh
+   complete -d /home/user/
+   ```
+
+4. Mengatur melengkapi untuk beberapa argumen:
+   ```csh
+   complete -n 2 -c mv
    ```
 
 ## Tips
-- Pastikan untuk selalu memeriksa penyelesaian otomatis yang ada sebelum menambahkannya untuk menghindari konflik.
-- Gunakan opsi `-p` untuk melihat penyelesaian yang sudah ada dan menyesuaikan sesuai kebutuhan Anda.
-- Praktikkan penggunaan `complete` di sesi terminal yang terpisah untuk menghindari kesalahan pada sesi utama Anda.
+- Pastikan untuk menggunakan opsi yang tepat sesuai dengan kebutuhan melengkapi perintah atau argumen.
+- Cobalah untuk mengkombinasikan beberapa opsi untuk meningkatkan efisiensi saat bekerja di terminal.
+- Selalu periksa apakah perintah yang ingin dilengkapi sudah terdaftar dalam sistem untuk menghindari kebingungan.

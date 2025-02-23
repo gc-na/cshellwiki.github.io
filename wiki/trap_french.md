@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) trap : Gérer les signaux et les erreurs
+# [Linux] C Shell (csh) trap : Gérer les signaux et les événements
 
 ## Overview
-La commande `trap` dans C Shell (csh) est utilisée pour définir des actions à exécuter lorsqu'un signal spécifique est reçu ou lorsqu'un événement particulier se produit, comme une interruption ou une erreur. Cela permet de gérer le comportement d'un script de manière plus contrôlée.
+La commande `trap` dans C Shell (csh) est utilisée pour intercepter et gérer les signaux et les événements dans un script. Elle permet d'exécuter des commandes spécifiques lorsqu'un signal particulier est reçu, ce qui est utile pour le nettoyage ou la gestion des erreurs.
 
 ## Usage
 La syntaxe de base de la commande `trap` est la suivante :
@@ -11,35 +11,49 @@ trap [options] [arguments]
 ```
 
 ## Common Options
-- `signal`: Spécifie le signal à intercepter (par exemple, `INT` pour une interruption).
-- `command`: La commande ou l'action à exécuter lorsque le signal est reçu.
+- `signal`: Le signal à intercepter (par exemple, `INT` pour une interruption).
+- `command`: La commande à exécuter lorsque le signal est reçu.
 - `-l`: Liste tous les signaux disponibles.
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de la commande `trap` :
 
-### Exemple 1 : Intercepter une interruption
-Pour exécuter une commande lorsque l'utilisateur interrompt le script avec Ctrl+C :
+### Exemple 1 : Intercepter un signal d'interruption
+Ce script intercepte le signal d'interruption (CTRL+C) et affiche un message avant de quitter.
 
 ```csh
-trap 'echo "Script interrompu"; exit' INT
+#!/bin/csh
+trap 'echo "Interruption reçue, sortie du script."' INT
+while (1)
+    echo "Exécution en cours..."
+    sleep 1
+end
 ```
 
 ### Exemple 2 : Nettoyage avant la sortie
-Pour effectuer un nettoyage avant de quitter le script :
+Ce script utilise `trap` pour supprimer un fichier temporaire avant de quitter.
 
 ```csh
-trap 'rm -f /tmp/tempfile; echo "Nettoyage effectué"; exit' EXIT
+#!/bin/csh
+trap 'rm -f /tmp/tempfile' EXIT
+echo "Création d'un fichier temporaire..."
+touch /tmp/tempfile
+# Autres opérations
 ```
 
-### Exemple 3 : Gérer les erreurs
-Pour gérer une erreur spécifique dans un script :
+### Exemple 3 : Gérer plusieurs signaux
+Ce script gère à la fois les signaux d'interruption et de terminaison.
 
 ```csh
-trap 'echo "Une erreur est survenue"; exit 1' ERR
+#!/bin/csh
+trap 'echo "Signal d'interruption reçu."' INT
+trap 'echo "Signal de terminaison reçu."' TERM
+while (1)
+    echo "Exécution en cours..."
+    sleep 1
+end
 ```
 
 ## Tips
-- Utilisez `trap` pour garantir que des ressources sont libérées, même si un script échoue ou est interrompu.
-- Testez toujours vos scripts avec des signaux pour vous assurer que les comportements sont comme prévu.
-- N'oubliez pas de réinitialiser les traps si nécessaire pour éviter des comportements inattendus dans des scripts complexes.
+- Utilisez `trap` pour garantir que les ressources sont libérées correctement, même en cas d'erreur.
+- Testez toujours vos scripts avec des signaux pour vous assurer que le comportement est celui attendu.
+- Pensez à documenter les signaux que vous interceptez pour faciliter la maintenance de vos scripts.

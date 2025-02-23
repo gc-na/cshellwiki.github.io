@@ -1,7 +1,7 @@
-# [Unix] C Shell (csh) compctl : [configuration de l'achèvement des commandes]
+# [Unix] C Shell (csh) compctl : [configuration des complétions de commandes]
 
 ## Overview
-La commande `compctl` dans C Shell (csh) est utilisée pour configurer le comportement de l'achèvement automatique des commandes. Elle permet aux utilisateurs de définir comment les complétions de commandes doivent se comporter, en spécifiant des règles et des options pour différentes commandes.
+La commande `compctl` dans le C Shell (csh) est utilisée pour configurer le comportement de complétion des commandes. Elle permet de définir comment les arguments de commande doivent être complétés automatiquement, améliorant ainsi l'efficacité lors de la saisie de commandes dans le terminal.
 
 ## Usage
 La syntaxe de base de la commande `compctl` est la suivante :
@@ -13,43 +13,39 @@ compctl [options] [arguments]
 ## Common Options
 Voici quelques options courantes pour `compctl` :
 
-- `-d` : Définit un type de complétion pour le répertoire.
-- `-f` : Active la complétion pour les fichiers.
+- `-d` : Définit une complétion pour un répertoire.
+- `-f` : Indique que la complétion doit inclure des fichiers.
 - `-n` : Spécifie le nombre d'arguments requis pour la complétion.
-- `-s` : Permet de spécifier une chaîne de caractères pour la complétion.
+- `-s` : Utilisé pour définir une chaîne de complétion spécifique.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `compctl` :
 
-### Exemple 1 : Complétion de fichiers
-Pour activer la complétion des fichiers pour la commande `ls` :
+1. **Complétion pour les fichiers :**
+   ```csh
+   compctl -f ls
+   ```
+   Cela permet de compléter les noms de fichiers lorsque vous utilisez la commande `ls`.
 
-```csh
-compctl -f ls
-```
+2. **Complétion pour les répertoires :**
+   ```csh
+   compctl -d cd
+   ```
+   Cela configure la complétion pour les répertoires lors de l'utilisation de la commande `cd`.
 
-### Exemple 2 : Complétion de répertoires
-Pour activer la complétion des répertoires pour la commande `cd` :
+3. **Complétion avec un nombre d'arguments :**
+   ```csh
+   compctl -n 2 cp
+   ```
+   Cela exige que deux arguments soient fournis lors de l'utilisation de la commande `cp`.
 
-```csh
-compctl -d cd
-```
-
-### Exemple 3 : Complétion avec un nombre d'arguments
-Pour spécifier que la commande `cp` doit avoir deux arguments pour la complétion :
-
-```csh
-compctl -n 2 cp
-```
-
-### Exemple 4 : Complétion avec une chaîne spécifique
-Pour activer la complétion de la commande `git` avec une chaîne spécifique :
-
-```csh
-compctl -s "add commit push" git
-```
+4. **Complétion personnalisée :**
+   ```csh
+   compctl -s "option1 option2" mycommand
+   ```
+   Cela permet de compléter `mycommand` avec les options `option1` et `option2`.
 
 ## Tips
-- Utilisez `compctl` pour personnaliser l'achèvement des commandes selon vos besoins spécifiques.
-- Testez vos configurations après chaque modification pour vous assurer qu'elles fonctionnent comme prévu.
-- Consultez la documentation de csh pour des options avancées et des exemples supplémentaires.
+- Utilisez `compctl` pour personnaliser votre environnement de travail et améliorer votre productivité.
+- Testez différentes options pour voir comment elles affectent la complétion des commandes.
+- N'oubliez pas de sauvegarder vos configurations dans votre fichier de démarrage (`.cshrc`) pour qu'elles persistent entre les sessions.

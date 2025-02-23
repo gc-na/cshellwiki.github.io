@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) df Utilisation : Afficher l'espace disque disponible
 
 ## Overview
-La commande `df` est utilisée pour afficher l'espace disque disponible sur les systèmes de fichiers montés. Elle fournit des informations sur la capacité totale, l'espace utilisé et l'espace libre de chaque système de fichiers.
+La commande `df` est utilisée pour afficher des informations sur l'espace disque disponible et utilisé sur les systèmes de fichiers montés. Elle permet aux utilisateurs de vérifier rapidement l'état de l'espace disque sur leur système.
 
 ## Usage
 La syntaxe de base de la commande `df` est la suivante :
@@ -15,8 +15,8 @@ Voici quelques options courantes pour la commande `df` :
 
 - `-h` : Affiche les tailles dans un format lisible par l'homme (par exemple, en Ko, Mo, Go).
 - `-T` : Affiche le type de système de fichiers.
-- `-a` : Inclut les systèmes de fichiers avec une taille de 0.
-- `-i` : Affiche l'utilisation des inodes au lieu de l'espace disque.
+- `-i` : Affiche des informations sur les inodes au lieu de l'espace disque.
+- `-a` : Affiche tous les systèmes de fichiers, y compris ceux qui sont à 0 blocs.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `df` :
@@ -33,19 +33,25 @@ Voici quelques exemples pratiques de l'utilisation de la commande `df` :
    df -h
    ```
 
-3. Afficher les types de systèmes de fichiers avec l'espace disque :
+3. Afficher le type de système de fichiers en plus de l'espace disque :
 
    ```csh
    df -T
    ```
 
-4. Afficher l'utilisation des inodes :
+4. Afficher des informations sur les inodes :
 
    ```csh
    df -i
    ```
 
+5. Afficher tous les systèmes de fichiers, y compris ceux qui sont à 0 blocs :
+
+   ```csh
+   df -a
+   ```
+
 ## Tips
-- Utilisez l'option `-h` pour rendre les informations plus faciles à lire, surtout si vous travaillez avec de grandes quantités de données.
-- Combinez les options pour obtenir des informations plus détaillées, par exemple `df -hT` pour voir à la fois les tailles lisibles et les types de systèmes de fichiers.
-- Vérifiez régulièrement l'espace disque disponible pour éviter les problèmes de stockage, surtout sur les serveurs.
+- Utilisez l'option `-h` pour rendre les résultats plus faciles à lire, surtout si vous travaillez avec de grandes quantités de données.
+- Vérifiez régulièrement l'espace disque disponible pour éviter des problèmes de stockage.
+- Combinez `df` avec d'autres commandes comme `grep` pour filtrer les résultats selon vos besoins.

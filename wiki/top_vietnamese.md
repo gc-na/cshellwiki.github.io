@@ -1,41 +1,43 @@
-# [Hệ điều hành] C Shell (csh) top: Xem thông tin hệ thống theo thời gian thực
+# [Hệ điều hành] C Shell (csh) top: Hiển thị thông tin về tiến trình
 
 ## Tổng quan
-Lệnh `top` trong C Shell (csh) được sử dụng để hiển thị thông tin về các tiến trình đang chạy trên hệ thống, bao gồm mức sử dụng CPU, bộ nhớ và nhiều thông tin khác theo thời gian thực. Đây là một công cụ hữu ích để theo dõi hiệu suất hệ thống và quản lý các tiến trình.
+Lệnh `top` trong C Shell (csh) được sử dụng để hiển thị thông tin thời gian thực về các tiến trình đang chạy trên hệ thống. Nó cho phép người dùng theo dõi hiệu suất hệ thống và quản lý các tiến trình một cách hiệu quả.
 
-## Cách sử dụng
+## Cú pháp
 Cú pháp cơ bản của lệnh `top` như sau:
 ```
 top [options] [arguments]
 ```
 
 ## Các tùy chọn phổ biến
-- `-d <seconds>`: Đặt khoảng thời gian cập nhật thông tin (mặc định là 3 giây).
-- `-u <username>`: Hiển thị chỉ các tiến trình của người dùng cụ thể.
-- `-p <pid>`: Theo dõi một tiến trình cụ thể bằng ID tiến trình (PID).
+- `-d <seconds>`: Đặt thời gian làm mới (refresh) giữa các lần cập nhật thông tin.
+- `-n <number>`: Xác định số lần cập nhật thông tin trước khi thoát.
+- `-u <user>`: Hiển thị chỉ các tiến trình của người dùng cụ thể.
 
-## Ví dụ thường gặp
-1. Mở `top` với thông tin mặc định:
+## Ví dụ phổ biến
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `top`:
+
+1. **Chạy lệnh top mặc định**:
    ```csh
    top
    ```
 
-2. Cập nhật thông tin mỗi 5 giây:
+2. **Đặt thời gian làm mới là 5 giây**:
    ```csh
    top -d 5
    ```
 
-3. Hiển thị chỉ các tiến trình của người dùng "john":
+3. **Hiển thị 10 lần cập nhật thông tin và sau đó thoát**:
+   ```csh
+   top -n 10
+   ```
+
+4. **Hiển thị chỉ các tiến trình của người dùng "john"**:
    ```csh
    top -u john
    ```
 
-4. Theo dõi một tiến trình cụ thể với PID 1234:
-   ```csh
-   top -p 1234
-   ```
-
 ## Mẹo
-- Sử dụng phím `q` để thoát khỏi giao diện `top` một cách nhanh chóng.
-- Bạn có thể sắp xếp các tiến trình theo mức sử dụng CPU hoặc bộ nhớ bằng cách nhấn phím `Shift + M` hoặc `Shift + P`.
-- Thường xuyên theo dõi các tiến trình để phát hiện các vấn đề về hiệu suất sớm hơn.
+- Sử dụng tùy chọn `-d` để điều chỉnh thời gian làm mới phù hợp với nhu cầu theo dõi của bạn.
+- Nếu bạn chỉ muốn xem thông tin về một người dùng cụ thể, hãy sử dụng tùy chọn `-u` để lọc tiến trình.
+- Thường xuyên kiểm tra các tiến trình tiêu tốn nhiều tài nguyên để quản lý hiệu suất hệ thống tốt hơn.

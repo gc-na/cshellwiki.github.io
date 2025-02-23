@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) rev: odwracanie linii tekstu
+# [Linux] C Shell (csh) rev: odwracanie tekstu
 
 ## Overview
-Polecenie `rev` służy do odwracania znaków w każdej linii tekstu. Jest to przydatne narzędzie do analizy i manipulacji danymi tekstowymi, które mogą wymagać przetwarzania w odwrotnej kolejności.
+Polecenie `rev` służy do odwracania kolejności znaków w każdej linii pliku lub tekstu. Jest to przydatne narzędzie, gdy potrzebujemy szybko zobaczyć, jak wygląda tekst w odwrotnej formie.
 
 ## Usage
 Podstawowa składnia polecenia `rev` jest następująca:
@@ -11,18 +11,19 @@ rev [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-o <plik>`: Zapisuje wynik do określonego pliku zamiast wyświetlania go na standardowym wyjściu.
-- `-h`: Wyświetla pomoc i informacje o użyciu polecenia.
+- `-o, --output=FILE` - Zapisuje wynik do wskazanego pliku zamiast wyświetlać go na standardowym wyjściu.
+- `-h, --help` - Wyświetla pomoc dotyczącą użycia polecenia.
+- `-V, --version` - Wyświetla wersję polecenia.
 
 ## Common Examples
-1. Odwracanie tekstu z pliku:
+1. Odwrócenie tekstu w pliku:
    ```csh
    rev plik.txt
    ```
 
-2. Odwracanie tekstu wprowadzonych z klawiatury:
+2. Odwrócenie tekstu wprowadzoną z klawiatury:
    ```csh
-   echo "Hello World" | rev
+   echo "Przykładowy tekst" | rev
    ```
 
 3. Zapisanie odwróconego tekstu do nowego pliku:
@@ -30,12 +31,12 @@ rev [opcje] [argumenty]
    rev plik.txt -o odwrócony_plik.txt
    ```
 
-4. Odwracanie wielu linii tekstu:
+4. Odwrócenie tekstu z wielu linii:
    ```csh
-   cat plik.txt | rev
+   cat wiele_linii.txt | rev
    ```
 
 ## Tips
-- Używaj `rev` w połączeniu z innymi poleceniami, aby tworzyć potężne potoki przetwarzania tekstu.
-- Sprawdzaj wyniki na małych plikach przed użyciem `rev` na dużych zbiorach danych, aby upewnić się, że wyniki są zgodne z oczekiwaniami.
-- Pamiętaj, że `rev` działa na poziomie linii, więc każda linia jest przetwarzana niezależnie.
+- Używaj opcji `-o`, aby łatwo zapisać wynik do pliku, co jest przydatne, gdy pracujesz z dużymi zbiorami danych.
+- Możesz łączyć `rev` z innymi poleceniami, takimi jak `grep` lub `sort`, aby uzyskać bardziej złożone operacje na tekście.
+- Pamiętaj, że `rev` działa na poziomie linii, więc każda linia w pliku będzie odwrócona niezależnie.

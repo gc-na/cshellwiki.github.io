@@ -1,56 +1,48 @@
-# [Linux] C Shell (csh) stty gebruik: Instellen van terminal eigenschappen
+# [Linux] C Shell (csh) stty gebruik: Instellen van terminaleigenschappen
 
-## Overzicht
-De `stty`-opdracht wordt gebruikt om de eigenschappen van de terminal in te stellen en te wijzigen. Hiermee kun je verschillende instellingen configureren, zoals invoer- en uitvoerinstellingen, speciale toetsen en meer.
+## Overview
+Het `stty`-commando wordt gebruikt om de terminalinstellingen te configureren en te beheren. Hiermee kun je verschillende eigenschappen van de terminal aanpassen, zoals het instellen van speciale toetsen, het wijzigen van de invoer- en uitvoermodi, en het beheren van de flow control.
 
-## Gebruik
-De basis syntaxis van de `stty`-opdracht is als volgt:
+## Usage
+De basis syntaxis van het `stty`-commando is als volgt:
 
 ```csh
 stty [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- `-a`: Toont alle huidige instellingen van de terminal.
-- `-g`: Geeft de huidige instellingen weer in een formaat dat later kan worden hersteld.
-- `erase`: Stelt het teken in dat gebruikt wordt om een teken te wissen.
-- `kill`: Stelt het teken in dat gebruikt wordt om de huidige regel te wissen.
-- `intr`: Stelt het teken in dat gebruikt wordt om een onderbreking te genereren (bijv. Ctrl+C).
+## Common Options
+Hier zijn enkele veelvoorkomende opties voor `stty`:
 
-## Veelvoorkomende voorbeelden
+- `-a`: Toont alle huidige terminalinstellingen.
+- `-g`: Geeft de huidige instellingen weer in een formaat dat kan worden opgeslagen en later kan worden hersteld.
+- `erase`: Stelt het teken in dat gebruikt wordt om een teken te wissen.
+- `kill`: Stelt het teken in dat gebruikt wordt om een regel te wissen.
+- `intr`: Stelt het teken in dat gebruikt wordt om een onderbreking te genereren.
+
+## Common Examples
 Hier zijn enkele praktische voorbeelden van het gebruik van `stty`:
 
-### Huidige instellingen weergeven
-Om de huidige instellingen van de terminal weer te geven, gebruik je:
+1. **Toon alle terminalinstellingen**:
+   ```csh
+   stty -a
+   ```
 
-```csh
-stty -a
-```
+2. **Stel het wis-teken in op Backspace**:
+   ```csh
+   stty erase ^H
+   ```
 
-### Instellen van het wis-teken
-Om het wis-teken in te stellen op de backspace-toets, gebruik je:
+3. **Stel het onderbrekings-teken in op Ctrl+C**:
+   ```csh
+   stty intr ^C
+   ```
 
-```csh
-stty erase ^H
-```
-
-### Instellen van het onderbrekingsteken
-Om het onderbrekingsteken in te stellen op Ctrl+C, gebruik je:
-
-```csh
-stty intr ^C
-```
-
-### Instellingen opslaan en herstellen
-Om de huidige instellingen op te slaan en later te herstellen, gebruik je:
-
-```csh
-stty -g > instellingen.txt
-# Later herstellen
-stty $(<instellingen.txt)
-```
+4. **Herstel de terminalinstellingen naar een eerder opgeslagen configuratie**:
+   ```csh
+   stty $(stty -g)
+   ```
 
 ## Tips
-- Controleer altijd de huidige instellingen met `stty -a` voordat je wijzigingen aanbrengt.
-- Wees voorzichtig met het instellen van speciale toetsen, omdat dit de werking van je terminal kan beïnvloeden.
-- Gebruik de `-g` optie om instellingen op te slaan voor toekomstig gebruik, vooral als je vaak met verschillende terminals werkt.
+- Gebruik `stty -a` om een overzicht te krijgen van alle huidige instellingen voordat je wijzigingen aanbrengt.
+- Wees voorzichtig met het instellen van speciale toetsen, omdat dit de normale werking van de terminal kan beïnvloeden.
+- Sla je terminalinstellingen op met `stty -g` voordat je wijzigingen aanbrengt, zodat je ze later kunt herstellen indien nodig.

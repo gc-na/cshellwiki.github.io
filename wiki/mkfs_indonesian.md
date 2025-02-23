@@ -1,39 +1,42 @@
-# [Sistem Operasi] C Shell (csh) mkfs Penggunaan: Membuat sistem file
+# [Sistem Operasi] C Shell (csh) mkfs Penggunaan: Membuat sistem berkas
 
 ## Overview
-Perintah `mkfs` digunakan untuk membuat sistem file pada perangkat penyimpanan seperti hard disk atau partisi. Dengan menggunakan `mkfs`, pengguna dapat memformat media penyimpanan dan menyiapkannya untuk digunakan dengan sistem operasi.
+Perintah `mkfs` digunakan untuk membuat sistem berkas pada perangkat penyimpanan, seperti hard disk atau flash drive. Dengan menggunakan `mkfs`, pengguna dapat memformat perangkat penyimpanan dan menyiapkannya untuk menyimpan data.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `mkfs`:
 
-```
+```csh
 mkfs [options] [arguments]
 ```
 
 ## Common Options
-- `-t <type>`: Menentukan jenis sistem file yang akan dibuat, seperti `ext4`, `vfat`, dll.
-- `-L <label>`: Memberikan label pada sistem file yang baru dibuat.
-- `-V`: Menampilkan informasi versi dari `mkfs`.
+- `-t <type>`: Menentukan jenis sistem berkas yang akan dibuat, seperti ext4 atau vfat.
+- `-L <label>`: Memberikan label pada sistem berkas yang baru dibuat.
+- `-n`: Menjalankan perintah tanpa benar-benar memformat, hanya untuk menampilkan informasi.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `mkfs`:
 
-1. Membuat sistem file ext4 pada partisi `/dev/sdb1`:
-   ```csh
-   mkfs -t ext4 /dev/sdb1
-   ```
+1. Membuat sistem berkas ext4 pada perangkat `/dev/sdb1`:
 
-2. Membuat sistem file vfat dengan label `DATA` pada partisi `/dev/sdc1`:
-   ```csh
-   mkfs -t vfat -L DATA /dev/sdc1
-   ```
+    ```csh
+    mkfs -t ext4 /dev/sdb1
+    ```
 
-3. Menampilkan versi dari `mkfs`:
-   ```csh
-   mkfs -V
-   ```
+2. Membuat sistem berkas FAT32 dan memberikan label "DATA":
+
+    ```csh
+    mkfs -t vfat -L DATA /dev/sdc1
+    ```
+
+3. Menampilkan informasi tentang sistem berkas tanpa memformat:
+
+    ```csh
+    mkfs -n /dev/sdd1
+    ```
 
 ## Tips
-- Pastikan untuk mencadangkan data penting sebelum menjalankan `mkfs`, karena perintah ini akan menghapus semua data yang ada pada perangkat penyimpanan.
-- Gunakan opsi `-L` untuk memberikan label yang mudah diingat pada sistem file Anda, sehingga lebih mudah untuk dikenali di masa mendatang.
-- Periksa jenis sistem file yang didukung oleh perangkat Anda sebelum memilih opsi `-t`.
+- Pastikan untuk mencadangkan data penting sebelum menggunakan `mkfs`, karena perintah ini akan menghapus semua data pada perangkat yang diformat.
+- Periksa jenis sistem berkas yang paling sesuai dengan kebutuhan Anda sebelum memilih opsi `-t`.
+- Gunakan opsi `-L` untuk memberikan label yang mudah diingat pada sistem berkas Anda, sehingga lebih mudah untuk mengidentifikasi perangkat penyimpanan.

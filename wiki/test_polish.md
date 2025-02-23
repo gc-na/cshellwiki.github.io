@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) test użycie: Sprawdzanie warunków
 
 ## Overview
-Polecenie `test` w C Shell (csh) służy do oceny warunków logicznych. Umożliwia sprawdzenie różnych warunków, takich jak istnienie plików, porównania wartości czy sprawdzanie typów danych. Jest to przydatne narzędzie w skryptach powłoki do podejmowania decyzji na podstawie wyników testów.
+Polecenie `test` w powłoce C Shell (csh) służy do oceny warunków i zwraca wartość prawda lub fałsz w zależności od spełnienia określonych kryteriów. Jest to przydatne narzędzie do podejmowania decyzji w skryptach powłoki.
 
 ## Usage
 Podstawowa składnia polecenia `test` wygląda następująco:
@@ -13,40 +13,54 @@ test [opcje] [argumenty]
 ## Common Options
 Oto kilka powszechnie używanych opcji dla polecenia `test`:
 
-- `-e [plik]` - Sprawdza, czy plik istnieje.
-- `-f [plik]` - Sprawdza, czy podany argument jest plikiem regularnym.
-- `-d [katalog]` - Sprawdza, czy podany argument jest katalogiem.
-- `-z [ciąg]` - Sprawdza, czy długość ciągu jest równa zeru.
-- `-n [ciąg]` - Sprawdza, czy długość ciągu jest większa od zera.
-- `[wartość1] -eq [wartość2]` - Sprawdza, czy dwie wartości są równe.
+- `-e [plik]`: Sprawdza, czy plik istnieje.
+- `-d [katalog]`: Sprawdza, czy ścieżka jest katalogiem.
+- `-f [plik]`: Sprawdza, czy ścieżka jest plikiem regularnym.
+- `-z [łańcuch]`: Sprawdza, czy długość łańcucha jest równa zeru.
+- `-n [łańcuch]`: Sprawdza, czy długość łańcucha jest większa od zera.
+- `[argument1] -eq [argument2]`: Sprawdza, czy dwa argumenty są równe (dla liczb).
 
 ## Common Examples
 Oto kilka praktycznych przykładów użycia polecenia `test`:
 
 1. Sprawdzenie, czy plik istnieje:
    ```csh
-   test -e myfile.txt && echo "Plik istnieje"
+   if ( `test -e myfile.txt` ) then
+       echo "Plik istnieje."
+   else
+       echo "Plik nie istnieje."
+   endif
    ```
 
-2. Sprawdzenie, czy argument jest katalogiem:
+2. Sprawdzenie, czy ścieżka jest katalogiem:
    ```csh
-   test -d /home/user && echo "To jest katalog"
+   if ( `test -d /home/user` ) then
+       echo "To jest katalog."
+   else
+       echo "To nie jest katalog."
+   endif
    ```
 
-3. Porównanie dwóch liczb:
+3. Sprawdzenie, czy zmienna jest pusta:
    ```csh
-   a=5
-   b=10
-   test $a -eq $b && echo "Liczby są równe" || echo "Liczby są różne"
+   set myvar = ""
+   if ( `test -z "$myvar"` ) then
+       echo "Zmienna jest pusta."
+   endif
    ```
 
-4. Sprawdzenie, czy ciąg jest pusty:
+4. Porównanie dwóch liczb:
    ```csh
-   str=""
-   test -z "$str" && echo "Ciąg jest pusty"
+   set a = 5
+   set b = 10
+   if ( `test $a -eq $b` ) then
+       echo "Liczby są równe."
+   else
+       echo "Liczby są różne."
+   endif
    ```
 
 ## Tips
-- Używaj operatorów logicznych (np. `&&`, `||`) do łączenia wielu warunków w jednym poleceniu.
-- Pamiętaj, aby zawsze używać cudzysłowów wokół zmiennych, aby uniknąć błędów związanych z pustymi wartościami.
-- Możesz używać polecenia `test` w połączeniu z instrukcjami warunkowymi, aby tworzyć bardziej złożone skrypty.
+- Używaj polecenia `test` w połączeniu z instrukcją `if`, aby podejmować decyzje w skryptach.
+- Pamiętaj o używaniu odpowiednich operatorów porównawczych dla typów danych, aby uniknąć błędów.
+- Możesz używać nawiasów do grupowania warunków, co zwiększa czytelność skryptów.

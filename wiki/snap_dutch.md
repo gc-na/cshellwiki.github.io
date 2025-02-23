@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) snap gebruik: Beheer van softwarepakketten
+# [Linux] C Shell (csh) snap gebruik: Beheer van snaps
 
 ## Overzicht
-De `snap` opdracht wordt gebruikt voor het installeren, verwijderen en beheren van snap-pakketten op een systeem. Snap-pakketten zijn zelfvoorzienende applicaties die eenvoudig kunnen worden gedistribueerd en geïnstalleerd.
+De `snap` opdracht wordt gebruikt om snaps te beheren, wat een soort verpakte applicaties zijn die eenvoudig kunnen worden geïnstalleerd, bijgewerkt en verwijderd op Linux-systemen. Snaps zijn ontworpen om veilig en onafhankelijk van de onderliggende systeemversies te functioneren.
 
 ## Gebruik
 De basis syntaxis van de `snap` opdracht is als volgt:
@@ -10,42 +10,51 @@ De basis syntaxis van de `snap` opdracht is als volgt:
 snap [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
-- `install`: Installeert een snap-pakket.
-- `remove`: Verwijdert een snap-pakket.
-- `list`: Toont een lijst van geïnstalleerde snap-pakketten.
-- `refresh`: Update geïnstalleerde snap-pakketten naar de nieuwste versie.
-- `info`: Geeft informatie over een specifiek snap-pakket.
+## Veelvoorkomende opties
+- `install`: Installeert een snap.
+- `remove`: Verwijdert een snap.
+- `list`: Toont een lijst van geïnstalleerde snaps.
+- `info`: Geeft gedetailleerde informatie over een specifieke snap.
+- `refresh`: Update een of meerdere snaps naar de nieuwste versie.
 
-## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van de `snap` opdracht:
+## Veelvoorkomende voorbeelden
 
-1. **Een snap-pakket installeren:**
-   ```csh
-   snap install vlc
-   ```
+### Een snap installeren
+Om een snap te installeren, gebruik je de volgende opdracht:
 
-2. **Een snap-pakket verwijderen:**
-   ```csh
-   snap remove vlc
-   ```
+```csh
+snap install <snap-naam>
+```
 
-3. **Een lijst van geïnstalleerde snap-pakketten bekijken:**
-   ```csh
-   snap list
-   ```
+### Een snap verwijderen
+Om een snap te verwijderen, gebruik je:
 
-4. **Snap-pakketten bijwerken:**
-   ```csh
-   snap refresh
-   ```
+```csh
+snap remove <snap-naam>
+```
 
-5. **Informatie over een specifiek snap-pakket opvragen:**
-   ```csh
-   snap info vlc
-   ```
+### Lijst van geïnstalleerde snaps
+Om alle geïnstalleerde snaps te bekijken, gebruik je:
+
+```csh
+snap list
+```
+
+### Informatie over een specifieke snap
+Voor gedetailleerde informatie over een snap, gebruik je:
+
+```csh
+snap info <snap-naam>
+```
+
+### Snaps bijwerken
+Om een snap bij te werken naar de nieuwste versie, gebruik je:
+
+```csh
+snap refresh <snap-naam>
+```
 
 ## Tips
-- Zorg ervoor dat je systeem up-to-date is voordat je snap-pakketten installeert of bijwerkt.
-- Gebruik de `--classic` optie bij het installeren van snap-pakketten die klassieke interfaces vereisen.
-- Controleer regelmatig op updates met `snap refresh` om te profiteren van de nieuwste functies en beveiligingsupdates.
+- Zorg ervoor dat je regelmatig je snaps bijwerkt om de nieuwste functies en beveiligingsupdates te krijgen.
+- Gebruik `snap list` om te controleren welke snaps je momenteel hebt geïnstalleerd en hun versies.
+- Als je een snap niet meer nodig hebt, verwijder deze dan om schijfruimte vrij te maken.

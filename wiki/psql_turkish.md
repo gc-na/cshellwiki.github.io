@@ -1,45 +1,45 @@
-# [Linux] C Shell (csh) psql Kullanımı: Veritabanı sorgulama aracı
+# [Linux] C Shell (csh) psql Kullanımı: PostgreSQL veritabanına erişim
 
 ## Genel Bakış
-`psql`, PostgreSQL veritabanı yönetim sistemi için bir komut satırı arayüzüdür. Kullanıcıların veritabanlarına bağlanmasına, SQL sorguları çalıştırmasına ve veritabanı nesneleri üzerinde işlem yapmasına olanak tanır.
+`psql`, PostgreSQL veritabanı yönetim sistemi için bir komut satırı arayüzüdür. Kullanıcıların veritabanlarına bağlanmasını, SQL sorguları çalıştırmasını ve veritabanı yönetim görevlerini gerçekleştirmesini sağlar.
 
 ## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
-```
+Temel sözdizimi şu şekildedir:
+```bash
 psql [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
 - `-h`: Veritabanı sunucusunun adresini belirtir.
-- `-U`: Veritabanı kullanıcı adını belirtir.
+- `-U`: Veritabanı kullanıcı adını tanımlar.
 - `-d`: Bağlanılacak veritabanının adını belirtir.
-- `-p`: Veritabanı sunucusunun port numarasını belirtir.
-- `-W`: Şifre girişi için kullanıcıdan onay ister.
+- `-p`: Veritabanı sunucusunun port numarasını tanımlar.
+- `-f`: Belirtilen dosyadaki SQL komutlarını çalıştırır.
 
 ## Yaygın Örnekler
-Aşağıda `psql` komutunun bazı pratik örnekleri verilmiştir:
+Aşağıda `psql` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-1. Belirli bir veritabanına bağlanmak:
+1. Belirli bir veritabanına bağlanma:
    ```bash
-   psql -h localhost -U kullaniciadi -d veritabaniadi
+   psql -h localhost -U kullanici_adi -d veritabani_adi
    ```
 
-2. SQL sorgusu çalıştırmak:
+2. SQL dosyasını çalıştırma:
    ```bash
-   psql -d veritabaniadi -c "SELECT * FROM tablo_adi;"
+   psql -U kullanici_adi -d veritabani_adi -f dosya.sql
    ```
 
-3. Veritabanındaki tüm tabloları listelemek:
+3. Veritabanındaki tabloları listeleme:
    ```bash
-   psql -d veritabaniadi -c "\dt"
+   psql -U kullanici_adi -d veritabani_adi -c "\dt"
    ```
 
-4. Bir SQL dosyasını çalıştırmak:
+4. Belirli bir sorguyu çalıştırma:
    ```bash
-   psql -d veritabaniadi -f dosya.sql
+   psql -U kullanici_adi -d veritabani_adi -c "SELECT * FROM tablo_adi;"
    ```
 
 ## İpuçları
-- `psql` oturumunu başlatmadan önce veritabanı bağlantı bilgilerini doğru girdiğinizden emin olun.
-- Sık kullanılan sorguları bir dosyada saklayarak `-f` seçeneği ile kolayca çalıştırabilirsiniz.
-- `\?` komutunu kullanarak `psql` içindeki komutların listesini görüntüleyebilirsiniz.
+- `psql` oturumunu başlatmadan önce, gerekli kullanıcı adı ve veritabanı bilgilerini doğru girdiğinizden emin olun.
+- SQL sorgularınızı test etmek için `-c` seçeneğini kullanarak tek satırlık sorgular çalıştırabilirsiniz.
+- Sık kullanılan komutları bir dosyaya kaydedip `-f` seçeneği ile çalıştırarak zaman kazanabilirsiniz.

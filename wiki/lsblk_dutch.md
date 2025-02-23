@@ -1,51 +1,51 @@
-# [Linux] C Shell (csh) lsblk gebruik: Toont informatie over blokapparaten
+# [Linux] C Shell (csh) lsblk gebruik: Toont blokapparaten en hun eigenschappen
 
 ## Overzicht
-De `lsblk`-opdracht wordt gebruikt om informatie weer te geven over blokapparaten op een Linux-systeem. Dit omvat harde schijven, SSD's, USB-sticks en andere opslagmedia. Het biedt een overzicht van de schijfstructuur, inclusief partities en hun mount-punten.
+De `lsblk` opdracht in C Shell (csh) wordt gebruikt om informatie weer te geven over blokapparaten op een systeem. Dit omvat harde schijven, SSD's en andere opslagmedia, samen met hun partities en eigenschappen.
 
 ## Gebruik
-De basis syntaxis van de `lsblk`-opdracht is als volgt:
+De basis syntaxis van de `lsblk` opdracht is als volgt:
 
-```bash
+```csh
 lsblk [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- `-a`, `--all`: Toont ook lege apparaten.
-- `-f`, `--fs`: Toont bestandsysteeminformatie.
-- `-l`, `--list`: Toont de uitvoer in een lijstvorm in plaats van een boomstructuur.
-- `-o`, `--output`: Specificeert welke kolommen moeten worden weergegeven.
-- `-n`, `--noheadings`: Verbergt de koptekst in de uitvoer.
+## Veelvoorkomende Opties
+- `-a` : Toont ook lege apparaten.
+- `-f` : Toont informatie over bestandssystemen.
+- `-l` : Toont de uitvoer in een lijstvorm.
+- `-o` : Specificeert welke kolommen moeten worden weergegeven.
+- `-p` : Toont de volledige padnamen van de apparaten.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van `lsblk`:
 
 1. **Basisinformatie over blokapparaten weergeven:**
-   ```bash
+   ```csh
    lsblk
    ```
 
-2. **Toon ook lege apparaten:**
-   ```bash
-   lsblk -a
-   ```
-
-3. **Toon bestandsysteeminformatie:**
-   ```bash
+2. **Informatie over bestandssystemen tonen:**
+   ```csh
    lsblk -f
    ```
 
-4. **Uitvoer in lijstvorm weergeven:**
-   ```bash
+3. **Weergave in lijstvorm:**
+   ```csh
    lsblk -l
    ```
 
-5. **Specifieke kolommen weergeven, zoals naam en grootte:**
-   ```bash
-   lsblk -o NAME,SIZE
+4. **Specifieke kolommen weergeven (bijv. naam, grootte en type):**
+   ```csh
+   lsblk -o NAME,SIZE,TYPE
+   ```
+
+5. **Lege apparaten ook tonen:**
+   ```csh
+   lsblk -a
    ```
 
 ## Tips
-- Gebruik de `-n` optie om de uitvoer te vereenvoudigen zonder kopteksten, vooral handig voor scripting.
-- Combineer opties zoals `-f` en `-o` om gedetailleerde informatie over besturingssystemen en schijven te verkrijgen.
-- Controleer regelmatig de status van je schijven met `lsblk` om een overzicht te behouden van je opslagapparaten en hun partities.
+- Gebruik de `-f` optie om snel te controleren welk bestandssysteem op elk apparaat is geïnstalleerd.
+- Combineer opties voor meer gedetailleerde uitvoer, zoals `lsblk -fa`.
+- Controleer regelmatig de status van je opslagapparaten, vooral voor systeemonderhoud en troubleshooting.

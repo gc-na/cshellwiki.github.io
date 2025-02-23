@@ -1,43 +1,47 @@
 # [Linux] C Shell (csh) split użycie: Dzieli pliki na mniejsze części
 
 ## Overview
-Polecenie `split` w C Shell (csh) służy do dzielenia dużych plików na mniejsze fragmenty. Jest to przydatne, gdy chcemy ułatwić przesyłanie lub przetwarzanie dużych zbiorów danych.
+Polecenie `split` w C Shell (csh) służy do dzielenia dużych plików na mniejsze fragmenty. Jest to przydatne, gdy chcemy ułatwić zarządzanie dużymi plikami lub przesyłać je w mniejszych częściach.
 
 ## Usage
 Podstawowa składnia polecenia `split` wygląda następująco:
 
-```
+```csh
 split [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-l NUM` - dzieli plik na części zawierające NUM linii każda.
-- `-b SIZE` - dzieli plik na części o rozmiarze SIZE (np. 10k dla 10 kilobajtów).
-- `-d` - używa cyfr do nazewnictwa plików wyjściowych zamiast domyślnych liter.
-- `--additional-suffix=SUFFIX` - dodaje określony SUFFIX do nazw plików wyjściowych.
+Oto kilka powszechnie używanych opcji dla polecenia `split`:
+
+- `-b [rozmiar]` - Dzieli plik na fragmenty o określonym rozmiarze (np. `-b 1M` dla 1 MB).
+- `-l [liczba]` - Dzieli plik na fragmenty zawierające określoną liczbę linii.
+- `-d` - Używa cyfr zamiast liter do nazewnictwa fragmentów.
+- `--additional-suffix=[sufiks]` - Dodaje dodatkowy sufiks do nazw fragmentów.
 
 ## Common Examples
-1. Dzielenie pliku na części po 1000 linii:
+Oto kilka praktycznych przykładów użycia polecenia `split`:
+
+1. Dzieli plik `duzy_plik.txt` na fragmenty po 1000 linii:
    ```csh
    split -l 1000 duzy_plik.txt
    ```
 
-2. Dzielenie pliku na części o rozmiarze 1MB:
+2. Dzieli plik `duzy_plik.txt` na fragmenty o rozmiarze 1 MB:
    ```csh
-   split -b 1m duzy_plik.txt
+   split -b 1M duzy_plik.txt
    ```
 
-3. Użycie cyfr do nazewnictwa plików:
+3. Dzieli plik `duzy_plik.txt` na fragmenty z numerami zamiast liter:
    ```csh
    split -d -l 500 duzy_plik.txt
    ```
 
-4. Dzielenie pliku z dodatkowym sufiksem:
+4. Dzieli plik `duzy_plik.txt` na fragmenty z dodatkowym sufiksem `.part`:
    ```csh
-   split --additional-suffix=.txt -l 2000 duzy_plik.txt czesc_
+   split --additional-suffix=.part -l 200 duzy_plik.txt
    ```
 
 ## Tips
-- Zawsze sprawdzaj rozmiar i liczbę linii w pliku przed podziałem, aby lepiej dostosować opcje.
-- Używaj opcji `-d`, jeśli potrzebujesz łatwiejszego dostępu do poszczególnych części pliku.
-- Pamiętaj, że domyślne nazwy plików są generowane w kolejności alfabetycznej, co może być pomocne w organizacji.
+- Używaj opcji `-d`, aby łatwiej zarządzać fragmentami, szczególnie gdy dzielisz duże pliki.
+- Sprawdzaj rozmiar fragmentów, aby upewnić się, że są one odpowiednie do dalszego przetwarzania lub przesyłania.
+- Zawsze przetestuj polecenie na mniejszych plikach, aby upewnić się, że działa zgodnie z oczekiwaniami, zanim zastosujesz je do dużych danych.

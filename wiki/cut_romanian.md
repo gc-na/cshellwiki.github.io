@@ -1,43 +1,42 @@
 # [Linux] C Shell (csh) cut utilizare: Extrage porțiuni din fișiere text
 
 ## Overview
-Comanda `cut` este utilizată pentru a extrage porțiuni din fiecare linie a unui fișier text sau din datele de intrare standard. Aceasta permite utilizatorilor să selecteze și să afișeze doar anumite coloane sau caractere dintr-un text, facilitând astfel manipularea și analiza datelor.
+Comanda `cut` este utilizată pentru a extrage porțiuni specifice din fișiere text. Aceasta poate fi folosită pentru a obține coloane sau caractere specifice dintr-un fișier, facilitând manipularea și analiza datelor.
 
 ## Usage
 Sintaxa de bază a comenzii `cut` este următoarea:
-
-```csh
-cut [options] [arguments]
+```
+cut [opțiuni] [argumente]
 ```
 
 ## Common Options
-- `-f`: Specifică câmpurile care trebuie extrase, separate prin tab-uri sau delimitatori specificați.
-- `-d`: Definește delimitatorul utilizat pentru a separa câmpurile (de exemplu, `,` sau `:`).
-- `-c`: Extrage caracterele specificate din fiecare linie.
-- `--complement`: Afișează toate câmpurile, cu excepția celor specificate.
+- `-f` : Specifică câmpurile (coloanele) care trebuie extrase.
+- `-d` : Definește delimitatorul utilizat pentru a separa câmpurile (implicit este tab).
+- `-c` : Extrage caractere specifice din fiecare linie.
+- `--complement` : Inversează selecția, extrăgând tot ce nu este specificat.
 
 ## Common Examples
-1. Extrage câmpurile 1 și 3 dintr-un fișier delimitat prin tab-uri:
+1. Extrage coloana 1 dintr-un fișier delimitat prin tab:
    ```csh
-   cut -f 1,3 myfile.txt
+   cut -f 1 filename.txt
    ```
 
-2. Extrage câmpurile dintr-un fișier CSV folosind `,` ca delimitator:
+2. Extrage coloanele 1 și 3 dintr-un fișier delimitat prin virgulă:
    ```csh
-   cut -d ',' -f 2,4 data.csv
+   cut -d ',' -f 1,3 filename.csv
    ```
 
 3. Extrage primele 5 caractere din fiecare linie a unui fișier:
    ```csh
-   cut -c 1-5 textfile.txt
+   cut -c 1-5 filename.txt
    ```
 
-4. Afișează toate câmpurile, cu excepția celui specificat:
+4. Extrage toate coloanele, cu excepția coloanei 2:
    ```csh
-   cut -f 2 --complement myfile.txt
+   cut --complement -f 2 filename.txt
    ```
 
 ## Tips
-- Asigurați-vă că delimitați corect câmpurile pentru a obține rezultatele dorite.
-- Utilizați `-s` pentru a omite liniile care nu conțin delimitatorul specificat.
-- Combinați `cut` cu alte comenzi, cum ar fi `sort` sau `uniq`, pentru a realiza analize mai complexe ale datelor.
+- Asigurați-vă că știți ce delimitator este utilizat în fișierul dvs. pentru a folosi opțiunea `-d` corect.
+- Folosiți `-s` pentru a omite liniile care nu conțin delimitatorul specificat.
+- Comanda `cut` poate fi combinată cu alte comenzi, cum ar fi `grep` sau `sort`, pentru a obține rezultate mai complexe.

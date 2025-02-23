@@ -1,10 +1,10 @@
-# [Linux] C Shell (csh) zypper użycie: Zarządzanie pakietami w systemie
+# [Linux] C Shell (csh) zypper użycie: zarządzanie pakietami w systemach openSUSE
 
 ## Overview
-Zypper to narzędzie do zarządzania pakietami w systemach opartych na openSUSE i SUSE Linux Enterprise. Umożliwia instalację, aktualizację i usuwanie pakietów oprogramowania oraz zarządzanie repozytoriami.
+Zypper to potężne narzędzie do zarządzania pakietami w systemach opartych na openSUSE. Umożliwia instalację, aktualizację, usuwanie oraz zarządzanie oprogramowaniem w systemie.
 
 ## Usage
-Podstawowa składnia polecenia zypper jest następująca:
+Podstawowa składnia polecenia zypper wygląda następująco:
 
 ```bash
 zypper [opcje] [argumenty]
@@ -14,42 +14,41 @@ zypper [opcje] [argumenty]
 - `install`: Instaluje pakiet.
 - `remove`: Usuwa pakiet.
 - `update`: Aktualizuje zainstalowane pakiety.
-- `search`: Wyszukuje pakiety w repozytoriach.
-- `info`: Wyświetla informacje o pakiecie.
-- `refresh`: Odświeża listę dostępnych pakietów i repozytoriów.
+- `search`: Wyszukuje pakiety według nazwy lub opisu.
+- `info`: Wyświetla szczegółowe informacje o pakiecie.
 
 ## Common Examples
-- Instalacja pakietu:
-  ```bash
-  zypper install nazwa_pakietu
-  ```
+- Aby zainstalować pakiet, użyj:
 
-- Usunięcie pakietu:
-  ```bash
-  zypper remove nazwa_pakietu
-  ```
+```bash
+zypper install nazwa_pakietu
+```
 
-- Aktualizacja wszystkich zainstalowanych pakietów:
-  ```bash
-  zypper update
-  ```
+- Aby usunąć pakiet, użyj:
 
-- Wyszukiwanie pakietu:
-  ```bash
-  zypper search nazwa_pakietu
-  ```
+```bash
+zypper remove nazwa_pakietu
+```
 
-- Wyświetlanie informacji o pakiecie:
-  ```bash
-  zypper info nazwa_pakietu
-  ```
+- Aby zaktualizować wszystkie zainstalowane pakiety, użyj:
 
-- Odświeżenie repozytoriów:
-  ```bash
-  zypper refresh
-  ```
+```bash
+zypper update
+```
+
+- Aby wyszukać pakiet, użyj:
+
+```bash
+zypper search nazwa_pakietu
+```
+
+- Aby uzyskać informacje o pakiecie, użyj:
+
+```bash
+zypper info nazwa_pakietu
+```
 
 ## Tips
-- Zawsze sprawdzaj dostępność aktualizacji przed instalacją nowych pakietów, aby uniknąć konfliktów.
-- Używaj opcji `--dry-run`, aby zobaczyć, co się stanie przed wykonaniem polecenia.
-- Regularnie odświeżaj repozytoria, aby mieć dostęp do najnowszych wersji pakietów.
+- Zawsze sprawdzaj dostępność aktualizacji przed instalacją nowych pakietów, aby zapewnić stabilność systemu.
+- Używaj opcji `--dry-run` przed wykonaniem operacji, aby zobaczyć, co zostanie zrobione, bez wprowadzania zmian.
+- Regularnie aktualizuj zainstalowane pakiety, aby korzystać z najnowszych funkcji i poprawek bezpieczeństwa.

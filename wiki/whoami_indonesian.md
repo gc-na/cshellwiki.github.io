@@ -1,7 +1,7 @@
 # [Sistem Operasi] C Shell (csh) whoami Penggunaan: Menampilkan nama pengguna saat ini
 
 ## Overview
-Perintah `whoami` digunakan untuk menampilkan nama pengguna yang sedang aktif di terminal. Ini berguna untuk mengetahui identitas pengguna saat ini, terutama ketika bekerja di lingkungan multi-pengguna.
+Perintah `whoami` digunakan untuk menampilkan nama pengguna yang sedang aktif di sesi terminal saat ini. Ini sangat berguna untuk memastikan identitas pengguna, terutama saat bekerja di lingkungan dengan banyak pengguna.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `whoami`:
@@ -11,10 +11,10 @@ whoami [options] [arguments]
 ```
 
 ## Common Options
-Perintah `whoami` tidak memiliki banyak opsi, tetapi berikut adalah beberapa yang umum digunakan:
+Berikut adalah beberapa opsi umum yang dapat digunakan dengan `whoami`:
 
-- `-h` : Menampilkan informasi singkat tentang penggunaan perintah.
-- `-V` : Menampilkan versi dari perintah `whoami`.
+- `--help`: Menampilkan bantuan tentang penggunaan perintah.
+- `--version`: Menampilkan versi dari perintah `whoami`.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `whoami`:
@@ -24,16 +24,17 @@ Berikut adalah beberapa contoh penggunaan perintah `whoami`:
    whoami
    ```
 
-2. Menampilkan versi dari perintah `whoami`:
+2. Menampilkan informasi versi dari perintah `whoami`:
    ```csh
-   whoami -V
+   whoami --version
    ```
 
-3. Menampilkan informasi penggunaan (jika didukung):
+3. Menampilkan bantuan penggunaan:
    ```csh
-   whoami -h
+   whoami --help
    ```
 
 ## Tips
-- Gunakan `whoami` untuk memastikan Anda sedang menggunakan akun yang benar sebelum menjalankan perintah yang memerlukan hak akses tertentu.
-- Perintah ini sangat berguna dalam skrip untuk memeriksa identitas pengguna yang menjalankan skrip tersebut.
+- Gunakan `whoami` untuk memverifikasi identitas Anda sebelum menjalankan perintah yang memerlukan hak akses tertentu.
+- Jika Anda bekerja dengan beberapa sesi terminal, jalankan `whoami` di setiap sesi untuk memastikan Anda berada di akun yang benar.
+- Perintah ini sangat berguna dalam skrip untuk memeriksa apakah skrip dijalankan dengan pengguna yang tepat.

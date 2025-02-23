@@ -1,42 +1,43 @@
 # [Linux] C Shell (csh) mountpoint gebruik: Controleer of een pad een mountpoint is
 
-## Overzicht
-De `mountpoint` opdracht wordt gebruikt om te controleren of een bepaald pad een mountpoint is, wat betekent dat het een bestandssysteem bevat dat is aangekoppeld aan de huidige bestandsstructuur.
+## Overview
+De `mountpoint` opdracht in C Shell (csh) wordt gebruikt om te controleren of een bepaald pad een mountpoint is. Een mountpoint is een directory waar een bestandssysteem is aangekoppeld. Deze opdracht geeft een eenvoudige bevestiging of een opgegeven pad daadwerkelijk een mountpoint is of niet.
 
-## Gebruik
+## Usage
 De basis syntaxis van de `mountpoint` opdracht is als volgt:
 
 ```csh
 mountpoint [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
-- `-q`: Stille modus, geen output tenzij er een fout optreedt.
-- `-d`: Geeft aan dat het pad een directory moet zijn.
+## Common Options
+Hier zijn enkele veelvoorkomende opties voor de `mountpoint` opdracht:
 
-## Veelvoorkomende Voorbeelden
+- `-q`: Stille modus; geeft geen output, maar retourneert een exitstatus.
+- `-n`: Negeert de trailing slash van het pad.
+
+## Common Examples
+Hier zijn enkele praktische voorbeelden van het gebruik van de `mountpoint` opdracht:
 
 1. Controleer of een specifiek pad een mountpoint is:
+
    ```csh
-   mountpoint /mnt/usb
+   mountpoint /mnt/data
    ```
 
-2. Gebruik de stille modus om alleen een exit-status te krijgen:
+2. Gebruik de stille modus om alleen de exitstatus te controleren:
+
    ```csh
-   mountpoint -q /mnt/usb
+   mountpoint -q /mnt/data
    ```
 
-3. Controleer een directory en geef een foutmelding als het geen mountpoint is:
-   ```csh
-   mountpoint -d /mnt/usb
-   ```
+3. Controleer een pad zonder een trailing slash:
 
-4. Controleer meerdere paden tegelijk:
    ```csh
-   mountpoint /mnt/usb /mnt/cdrom
+   mountpoint -n /mnt/data/
    ```
 
 ## Tips
-- Gebruik de stille modus (`-q`) voor scripts om alleen de exit-status te controleren zonder extra output.
-- Combineer `mountpoint` met andere commando's in scripts om automatisch te reageren op mountpoint-statussen.
-- Controleer regelmatig je mountpoints om ervoor te zorgen dat ze correct zijn aangekoppeld, vooral na systeemupdates of herstarts.
+- Gebruik de `-q` optie als je alleen de status wilt controleren zonder extra output, wat handig kan zijn in scripts.
+- Vergeet niet dat je voldoende rechten moet hebben om de mountpoint status van een directory te controleren.
+- Combineer `mountpoint` met andere commando's in scripts om geavanceerdere controles uit te voeren op je bestandssystemen.

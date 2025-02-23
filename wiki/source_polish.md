@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) source użycie: Wczytywanie skryptów i plików konfiguracyjnych
+# [Linux] C Shell (csh) source użycie: Wykonuje skrypty w bieżącym środowisku
 
 ## Overview
-Polecenie `source` w C Shell (csh) służy do wykonywania skryptów lub wczytywania plików konfiguracyjnych w bieżącym kontekście powłoki. Dzięki temu zmiany wprowadzone w zmiennych środowiskowych lub funkcjach są natychmiast dostępne w bieżącej sesji.
+Polecenie `source` w C Shell (csh) służy do wykonywania skryptów lub plików konfiguracyjnych w bieżącym środowisku powłoki. Umożliwia to załadowanie zmiennych środowiskowych oraz funkcji z pliku bez konieczności uruchamiania nowej instancji powłoki.
 
 ## Usage
 Podstawowa składnia polecenia `source` jest następująca:
@@ -11,28 +11,33 @@ source [opcje] [argumenty]
 ```
 
 ## Common Options
-- **-e**: Włącza tryb rozszerzonego raportowania błędów.
-- **-h**: Wyświetla pomoc i informacje o użyciu.
+- **-c**: Wykonuje polecenie jako argument, zamiast ładować plik.
+- **-q**: Nie wyświetla komunikatów o błędach.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `source`:
+Przykłady użycia polecenia `source`:
 
-1. Wczytywanie pliku konfiguracyjnego `.cshrc`:
+1. Wykonanie skryptu konfiguracyjnego:
    ```csh
    source ~/.cshrc
    ```
 
-2. Wykonywanie skryptu `setup.csh`:
+2. Załadowanie zmiennych środowiskowych z pliku:
    ```csh
-   source setup.csh
+   source my_env_vars.csh
    ```
 
-3. Wczytywanie pliku z funkcjami:
+3. Wykonanie polecenia z argumentem:
    ```csh
-   source ~/scripts/my_functions.csh
+   source -c 'echo "Hello, World!"'
+   ```
+
+4. Wykonanie skryptu i zignorowanie błędów:
+   ```csh
+   source -q my_script.csh
    ```
 
 ## Tips
-- Upewnij się, że plik, który chcesz wczytać, ma odpowiednie uprawnienia do odczytu.
-- Używaj `source` zamiast `.` w C Shell, aby uniknąć nieporozumień z innymi powłokami, które mogą używać innej składni.
-- Regularnie aktualizuj swoje pliki konfiguracyjne, aby odzwierciedlały zmiany w środowisku lub preferencjach użytkownika.
+- Upewnij się, że plik, który chcesz załadować, ma odpowiednie uprawnienia do odczytu.
+- Używaj `source` do ładowania plików konfiguracyjnych, aby uniknąć konieczności ponownego uruchamiania powłoki.
+- Sprawdzaj, czy zmienne środowiskowe są poprawnie ustawione po użyciu `source`, aby upewnić się, że skrypt działa zgodnie z oczekiwaniami.

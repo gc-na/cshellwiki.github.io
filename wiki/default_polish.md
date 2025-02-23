@@ -1,39 +1,45 @@
-# [Linux] C Shell (csh) default użycie: Ustawienie domyślnej powłoki
+# [Linux] C Shell (csh) domyślne echo: wyświetlanie tekstu na standardowym wyjściu
 
-## Overview
-Polecenie `default` w C Shell (csh) służy do ustawiania domyślnej powłoki dla użytkownika w systemie. Umożliwia to skonfigurowanie, która powłoka będzie używana, gdy użytkownik loguje się do systemu.
+## Przegląd
+Polecenie `echo` w C Shell (csh) służy do wyświetlania tekstu lub zmiennych na standardowym wyjściu, zazwyczaj na ekranie. Jest to przydatne narzędzie do wyświetlania komunikatów, wartości zmiennych lub wyników skryptów.
 
-## Usage
-Podstawowa składnia polecenia `default` jest następująca:
+## Użycie
+Podstawowa składnia polecenia `echo` jest następująca:
 
 ```csh
-default [options] [arguments]
+echo [opcje] [argumenty]
 ```
 
-## Common Options
-- `-l`: Ustawia domyślną powłokę na powłokę logowania.
-- `-s`: Ustawia domyślną powłokę na powłokę interaktywną.
-- `-h`: Wyświetla pomoc dotycząca użycia polecenia.
+## Częste opcje
+- `-n`: Nie dodaje znaku nowej linii na końcu.
+- `-e`: Włącza interpretację sekwencji ucieczki (np. `\n` dla nowej linii).
+- `-E`: Wyłącza interpretację sekwencji ucieczki (domyślnie).
 
-## Common Examples
-Przykłady użycia polecenia `default`:
+## Przykłady
+Oto kilka praktycznych przykładów użycia polecenia `echo`:
 
-1. Ustawienie domyślnej powłoki na powłokę logowania:
+1. Wyświetlenie prostego tekstu:
    ```csh
-   default -l /bin/csh
+   echo "Witaj, świecie!"
    ```
 
-2. Ustawienie domyślnej powłoki na powłokę interaktywną:
+2. Wyświetlenie wartości zmiennej:
    ```csh
-   default -s /bin/bash
+   set nazwa = "Jan"
+   echo "Cześć, $nazwa!"
    ```
 
-3. Wyświetlenie pomocy dotyczącej polecenia:
+3. Wyświetlenie tekstu bez znaku nowej linii:
    ```csh
-   default -h
+   echo -n "To jest tekst bez nowej linii."
    ```
 
-## Tips
-- Upewnij się, że powłoka, którą chcesz ustawić jako domyślną, jest zainstalowana w systemie.
-- Zawsze sprawdzaj, czy zmiany wprowadzone za pomocą polecenia `default` są zgodne z wymaganiami twojego środowiska pracy.
-- Możesz użyć polecenia `echo $SHELL`, aby sprawdzić, która powłoka jest aktualnie ustawiona jako domyślna.
+4. Użycie sekwencji ucieczki:
+   ```csh
+   echo -e "Linia 1\nLinia 2"
+   ```
+
+## Wskazówki
+- Używaj opcji `-n`, gdy chcesz kontynuować wyjście na tej samej linii.
+- Pamiętaj, że sekwencje ucieczki są przydatne do formatowania tekstu, ale mogą być wyłączone, jeśli używasz opcji `-E`.
+- `echo` jest często używane w skryptach do debugowania, aby wyświetlić wartości zmiennych w czasie wykonywania.

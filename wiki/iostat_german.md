@@ -1,50 +1,52 @@
-# [Linux] C Shell (csh) iostat Verwendung: Überwachung von CPU- und I/O-Leistung
+# [Linux] C Shell (csh) iostat Verwendung: Überwachung der Systemleistung
 
 ## Übersicht
-Der Befehl `iostat` wird verwendet, um Informationen über die CPU- und I/O-Leistung des Systems anzuzeigen. Er hilft dabei, Engpässe in der Leistung zu identifizieren, indem er Statistiken über die Nutzung von Festplatten und anderen Speichermedien bereitstellt.
+Der Befehl `iostat` wird verwendet, um Informationen über die Input/Output-Leistung von Systemen zu überwachen. Er zeigt Statistiken über CPU-Auslastung sowie über die Leistung von Festplatten und anderen Blockgeräten an.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```
+```csh
 iostat [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-c`: Zeigt nur die CPU-Statistiken an.
-- `-d`: Zeigt nur die I/O-Geräte-Statistiken an.
-- `-x`: Zeigt erweiterte Statistiken für die I/O-Geräte an.
-- `-t`: Fügt einen Zeitstempel zu den Ausgaben hinzu.
-- `-h`: Gibt die Ausgabe in einem menschenlesbaren Format (z. B. MB/s) aus.
+- `-c`: Zeigt nur CPU-Statistiken an.
+- `-d`: Zeigt nur die Statistiken für die Blockgeräte an.
+- `-x`: Zeigt erweiterte Statistiken für die Blockgeräte an.
+- `-h`: Gibt die Ausgabe in einem menschenlesbaren Format aus.
+- `interval`: Gibt das Intervall in Sekunden an, in dem die Statistiken aktualisiert werden sollen.
+- `count`: Gibt die Anzahl der Berichte an, die ausgegeben werden sollen.
 
 ## Häufige Beispiele
+Hier sind einige praktische Beispiele für die Verwendung von `iostat`:
 
-1. **CPU-Statistiken anzeigen:**
-   ```bash
+1. **Einmalige Anzeige der CPU- und I/O-Statistiken:**
+   ```csh
+   iostat
+   ```
+
+2. **Anzeige der CPU-Statistiken:**
+   ```csh
    iostat -c
    ```
 
-2. **I/O-Geräte-Statistiken anzeigen:**
-   ```bash
+3. **Anzeige der I/O-Statistiken für Blockgeräte:**
+   ```csh
    iostat -d
    ```
 
-3. **Erweiterte Statistiken für I/O-Geräte anzeigen:**
-   ```bash
-   iostat -x
+4. **Erweiterte Statistiken für Blockgeräte alle 5 Sekunden anzeigen:**
+   ```csh
+   iostat -x 5
    ```
 
-4. **Statistiken alle 5 Sekunden aktualisieren:**
-   ```bash
-   iostat 5
-   ```
-
-5. **Statistiken mit Zeitstempel anzeigen:**
-   ```bash
-   iostat -t
+5. **Anzeige der Statistiken in einem menschenlesbaren Format:**
+   ```csh
+   iostat -h
    ```
 
 ## Tipps
-- Verwenden Sie die Option `-h`, um die Ausgabe leichter lesbar zu machen, insbesondere bei großen Datenmengen.
-- Kombinieren Sie Optionen, um spezifische Informationen zu erhalten, z. B. `iostat -c -d` für CPU- und I/O-Statistiken gleichzeitig.
-- Überwachen Sie die Statistiken über einen längeren Zeitraum, um Trends in der Systemleistung zu erkennen.
+- Verwenden Sie `iostat` in Kombination mit anderen Überwachungswerkzeugen, um ein umfassenderes Bild der Systemleistung zu erhalten.
+- Achten Sie darauf, die Ausgabe regelmäßig zu überprüfen, um potenzielle Engpässe frühzeitig zu erkennen.
+- Nutzen Sie die `-x` Option, um detaillierte Informationen zu erhalten, die bei der Fehlersuche hilfreich sein können.

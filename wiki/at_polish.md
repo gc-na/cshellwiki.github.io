@@ -1,49 +1,53 @@
-# [Linux] C Shell (csh) at: Planowanie zadań do wykonania w przyszłości
+# [Linux] C Shell (csh) at: Planowanie zadań
 
 ## Overview
-Polecenie `at` w systemie C Shell (csh) służy do planowania zadań, które mają być wykonane w określonym czasie w przyszłości. Umożliwia użytkownikom uruchamianie poleceń lub skryptów w wyznaczonym momencie, co jest przydatne w automatyzacji zadań.
+Polecenie `at` w C Shell (csh) służy do planowania jednorazowych zadań, które mają być wykonane w określonym czasie w przyszłości. Umożliwia użytkownikom uruchamianie skryptów lub poleceń w wyznaczonym momencie.
 
 ## Usage
 Podstawowa składnia polecenia `at` jest następująca:
 
-```
+```csh
 at [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-f FILE`: Wczytuje polecenia do wykonania z pliku zamiast z standardowego wejścia.
-- `-m`: Wysyła wiadomość e-mail po zakończeniu zadania, nawet jeśli nie wystąpiły żadne błędy.
-- `-q QUEUE`: Umożliwia określenie kolejki, w której zadanie ma być wykonane.
-- `-l`: Wyświetla listę zaplanowanych zadań.
+- `-f` : Określa plik, z którego mają być odczytywane polecenia do wykonania.
+- `-m` : Wysyła wiadomość e-mail po zakończeniu zadania.
+- `-l` : Wyświetla listę zaplanowanych zadań.
+- `-d` : Usuwa zaplanowane zadanie.
 
 ## Common Examples
 Oto kilka praktycznych przykładów użycia polecenia `at`:
 
-1. **Zaplanowanie prostego polecenia:**
-   Aby zaplanować uruchomienie polecenia `echo` o godzinie 15:00, użyj:
-   ```bash
-   echo "echo 'Cześć, to jest zaplanowane zadanie!'" | at 15:00
+1. **Planowanie prostego polecenia**:
+   Aby zaplanować polecenie `echo` na godzinę 14:00, można użyć:
+
+   ```csh
+   echo "Hello, World!" | at 14:00
    ```
 
-2. **Zaplanowanie skryptu:**
-   Aby uruchomić skrypt `backup.sh` o godzinie 2:00 w nocy:
-   ```bash
-   at 02:00 -f backup.sh
+2. **Planowanie skryptu**:
+   Aby uruchomić skrypt `backup.sh` o godzinie 18:30:
+
+   ```csh
+   at 18:30 -f /path/to/backup.sh
    ```
 
-3. **Zaplanowanie zadania na jutro:**
-   Aby zaplanować polecenie na jutro o 10:30:
-   ```bash
-   echo "rm -rf /tmp/*" | at 10:30 tomorrow
-   ```
+3. **Wyświetlanie zaplanowanych zadań**:
+   Aby zobaczyć wszystkie zaplanowane zadania:
 
-4. **Wyświetlenie zaplanowanych zadań:**
-   Aby zobaczyć listę wszystkich zaplanowanych zadań:
-   ```bash
+   ```csh
    at -l
    ```
 
+4. **Usuwanie zaplanowanego zadania**:
+   Aby usunąć zaplanowane zadanie o identyfikatorze `1`:
+
+   ```csh
+   at -d 1
+   ```
+
 ## Tips
-- Upewnij się, że masz odpowiednie uprawnienia do uruchamiania zaplanowanych zadań.
-- Zawsze testuj swoje skrypty przed zaplanowaniem ich wykonania, aby uniknąć niepożądanych skutków.
-- Możesz używać `atq` do przeglądania zaplanowanych zadań i `atrm` do ich usuwania.
+- Upewnij się, że masz odpowiednie uprawnienia do uruchamiania poleceń w zaplanowanym czasie.
+- Sprawdzaj regularnie zaplanowane zadania, aby uniknąć nieporozumień.
+- Używaj opcji `-m`, aby otrzymać powiadomienie e-mail po zakończeniu zadania, co może być przydatne w przypadku dłuższych operacji.

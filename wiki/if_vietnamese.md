@@ -1,53 +1,58 @@
-# [Hệ điều hành] C Shell (csh) if: Kiểm tra điều kiện
+# [Hệ điều hành Unix] C Shell (csh) if: Kiểm tra điều kiện
 
 ## Overview
-Lệnh `if` trong C Shell (csh) được sử dụng để kiểm tra các điều kiện và thực hiện các lệnh dựa trên kết quả của các điều kiện đó. Nó cho phép người dùng thực hiện các hành động khác nhau tùy thuộc vào việc điều kiện có đúng hay không.
+Lệnh `if` trong C Shell (csh) được sử dụng để kiểm tra một điều kiện và thực hiện các lệnh khác nhau dựa trên kết quả của điều kiện đó. Đây là một công cụ quan trọng trong lập trình shell để thực hiện các quyết định logic.
 
 ## Usage
 Cú pháp cơ bản của lệnh `if` như sau:
-
-```
+```csh
 if ( điều kiện ) then
-    lệnh
+    lệnh1
+else
+    lệnh2
 endif
 ```
 
 ## Common Options
 - `then`: Bắt đầu khối lệnh sẽ được thực hiện nếu điều kiện đúng.
+- `else`: Bắt đầu khối lệnh sẽ được thực hiện nếu điều kiện sai.
 - `endif`: Kết thúc khối lệnh `if`.
-- `else`: Thực hiện khối lệnh khác nếu điều kiện không đúng.
 
 ## Common Examples
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `if`:
 
 ### Ví dụ 1: Kiểm tra một biến
 ```csh
-set var = 5
-if ( $var == 5 ) then
-    echo "Biến var có giá trị là 5."
+set var = 10
+if ( $var > 5 ) then
+    echo "Biến lớn hơn 5"
+else
+    echo "Biến không lớn hơn 5"
 endif
 ```
 
-### Ví dụ 2: Kiểm tra tệp tồn tại
+### Ví dụ 2: Kiểm tra sự tồn tại của một tệp
 ```csh
 if ( -e "file.txt" ) then
-    echo "Tệp file.txt tồn tại."
+    echo "Tệp tồn tại"
 else
-    echo "Tệp file.txt không tồn tại."
+    echo "Tệp không tồn tại"
 endif
 ```
 
-### Ví dụ 3: Kiểm tra một điều kiện số
+### Ví dụ 3: Kiểm tra một điều kiện phức tạp
 ```csh
-set num = 10
-if ( $num > 5 ) then
-    echo "Số lớn hơn 5."
+set num = 15
+if ( $num < 10 ) then
+    echo "Số nhỏ hơn 10"
+else if ( $num == 15 ) then
+    echo "Số bằng 15"
 else
-    echo "Số không lớn hơn 5."
+    echo "Số lớn hơn 10 và không bằng 15"
 endif
 ```
 
 ## Tips
-- Luôn sử dụng dấu cách đúng cách giữa các phần của lệnh `if` để tránh lỗi cú pháp.
-- Có thể sử dụng nhiều điều kiện kết hợp với `&&` (và) hoặc `||` (hoặc) để kiểm tra nhiều điều kiện cùng một lúc.
-- Đảm bảo rằng bạn đã đóng khối lệnh `if` bằng `endif` để tránh lỗi trong chương trình.
+- Luôn đảm bảo rằng các điều kiện được đặt trong dấu ngoặc đơn để tránh lỗi cú pháp.
+- Sử dụng `else if` để kiểm tra nhiều điều kiện mà không cần lồng nhiều lệnh `if`.
+- Kiểm tra kỹ các biến và điều kiện trước khi thực hiện lệnh để tránh lỗi không mong muốn.

@@ -1,23 +1,23 @@
 # [Linux] C Shell (csh) setenv użycie: Ustawianie zmiennych środowiskowych
 
-## Overview
-Polecenie `setenv` w powłoce C Shell (csh) służy do ustawiania zmiennych środowiskowych. Zmienne te mogą być używane przez różne programy i skrypty, co pozwala na konfigurowanie środowiska pracy.
+## Przegląd
+Polecenie `setenv` w C Shell (csh) służy do ustawiania zmiennych środowiskowych, które mogą być używane przez programy i skrypty uruchamiane w sesji powłoki. Dzięki `setenv` można łatwo zarządzać konfiguracjami środowiska.
 
-## Usage
+## Użycie
 Podstawowa składnia polecenia `setenv` jest następująca:
 
 ```csh
 setenv [nazwa_zmiennej] [wartość]
 ```
 
-## Common Options
-Polecenie `setenv` nie ma wielu opcji, ale oto kilka istotnych informacji:
+## Typowe opcje
+Polecenie `setenv` nie ma wielu opcji, ale oto kilka, które mogą być przydatne:
 
 - **nazwa_zmiennej**: Nazwa zmiennej środowiskowej, którą chcesz ustawić.
 - **wartość**: Wartość, którą chcesz przypisać do zmiennej.
 
-## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `setenv`:
+## Przykłady
+Oto kilka praktycznych przykładów użycia `setenv`:
 
 1. Ustawienie zmiennej `PATH`:
 
@@ -43,7 +43,7 @@ Oto kilka praktycznych przykładów użycia polecenia `setenv`:
    setenv LANG pl_PL.UTF-8
    ```
 
-## Tips
-- Upewnij się, że zmienne środowiskowe są ustawione przed uruchomieniem programów, które ich potrzebują.
-- Możesz sprawdzić aktualne zmienne środowiskowe za pomocą polecenia `printenv`.
-- Aby usunąć zmienną środowiskową, użyj polecenia `unsetenv` z nazwą zmiennej. Na przykład: `unsetenv JAVA_HOME`.
+## Wskazówki
+- Upewnij się, że używasz odpowiednich nazw dla zmiennych środowiskowych, aby uniknąć konfliktów z innymi programami.
+- Sprawdzaj wartość zmiennych środowiskowych za pomocą polecenia `printenv`, aby upewnić się, że zostały poprawnie ustawione.
+- Zmienne ustawione za pomocą `setenv` będą dostępne tylko w bieżącej sesji powłoki. Aby były trwałe, dodaj polecenia do pliku konfiguracyjnego powłoki, takiego jak `.cshrc`.

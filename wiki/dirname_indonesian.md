@@ -1,17 +1,17 @@
 # [Sistem Operasi] C Shell (csh) dirname: [mengambil nama direktori dari jalur file]
 
 ## Overview
-Perintah `dirname` digunakan untuk mengambil nama direktori dari jalur file yang diberikan. Ini berguna ketika Anda ingin memisahkan nama file dari jalurnya dan hanya mendapatkan bagian direktori.
+Perintah `dirname` digunakan untuk mengambil nama direktori dari jalur file yang diberikan. Ini berguna ketika Anda ingin memisahkan nama direktori dari nama file dalam sebuah jalur.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `dirname`:
 
-```csh
+```
 dirname [options] [arguments]
 ```
 
 ## Common Options
-- `-z`: Menghasilkan output kosong jika argumen kosong.
+- `-z`: Menghasilkan output kosong jika argumen adalah string kosong.
 - `--help`: Menampilkan bantuan penggunaan perintah.
 - `--version`: Menampilkan versi dari perintah `dirname`.
 
@@ -27,26 +27,26 @@ Berikut adalah beberapa contoh penggunaan perintah `dirname`:
    /home/user/documents
    ```
 
-2. Mengambil nama direktori dari jalur file yang tidak memiliki nama file:
+2. Mengambil nama direktori dari jalur file yang tidak lengkap:
    ```csh
-   dirname /home/user/documents/
+   dirname ./file.txt
    ```
    Output:
    ```
-   /home/user/documents
+   .
    ```
 
-3. Menggunakan `dirname` dengan beberapa argumen:
+3. Menggunakan `dirname` dalam skrip untuk mendapatkan direktori dari beberapa file:
    ```csh
-   dirname /var/log/syslog /etc/hosts
+   set file = "/var/log/syslog"
+   echo "Direktori: `dirname $file`"
    ```
    Output:
    ```
-   /var/log
-   /etc
+   Direktori: /var/log
    ```
 
 ## Tips
-- Gunakan `dirname` dalam skrip untuk memproses jalur file secara otomatis.
+- Gunakan `dirname` dalam skrip untuk memudahkan pengelolaan jalur file.
 - Kombinasikan `dirname` dengan perintah lain seperti `basename` untuk manipulasi jalur file yang lebih kompleks.
-- Pastikan untuk memeriksa apakah jalur file yang diberikan valid untuk menghindari kesalahan.
+- Ingat bahwa `dirname` hanya mengembalikan nama direktori, bukan jalur lengkap, jadi pastikan untuk menggunakannya sesuai kebutuhan.

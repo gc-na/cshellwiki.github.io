@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) paste : Combiner des fichiers ligne par ligne
 
 ## Overview
-La commande `paste` dans C Shell (csh) est utilisée pour combiner plusieurs fichiers texte ligne par ligne. Elle permet de créer un fichier de sortie où les lignes de chaque fichier sont concaténées horizontalement, facilitant ainsi la comparaison ou l'analyse des données.
+La commande `paste` est utilisée pour combiner plusieurs fichiers texte ligne par ligne. Elle permet de fusionner le contenu de plusieurs fichiers en les affichant côte à côte, ce qui est particulièrement utile pour comparer des données ou créer des rapports.
 
 ## Usage
 La syntaxe de base de la commande `paste` est la suivante :
@@ -11,9 +11,11 @@ paste [options] [arguments]
 ```
 
 ## Common Options
-- `-d DELIMITER` : Spécifie un délimiteur personnalisé pour séparer les lignes au lieu de la tabulation par défaut.
-- `-s` : Combine les lignes de chaque fichier en une seule ligne, séparant les lignes par le délimiteur spécifié.
-- `-z` : Traite les fichiers comme des flux de données nulles, ce qui permet de combiner les lignes en utilisant des caractères nulles comme séparateurs.
+Voici quelques options courantes pour la commande `paste` :
+
+- `-d` : Spécifie un délimiteur personnalisé pour séparer les colonnes.
+- `-s` : Combine les lignes d'un fichier en une seule ligne, séparées par des tabulations.
+- `-z` : Utilise un délimiteur nul pour séparer les lignes.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `paste` :
@@ -25,7 +27,7 @@ Voici quelques exemples pratiques de l'utilisation de la commande `paste` :
 
 2. **Utiliser un délimiteur personnalisé :**
    ```csh
-   paste -d ',' fichier1.txt fichier2.txt
+   paste -d "," fichier1.txt fichier2.txt
    ```
 
 3. **Combiner les lignes d'un fichier en une seule ligne :**
@@ -33,20 +35,15 @@ Voici quelques exemples pratiques de l'utilisation de la commande `paste` :
    paste -s fichier.txt
    ```
 
-4. **Combiner plusieurs fichiers avec un délimiteur :**
-   ```csh
-   paste -d '|' fichier1.txt fichier2.txt fichier3.txt
-   ```
-
-5. **Utiliser le mode de flux de données nulles :**
+4. **Combiner plusieurs fichiers avec un délimiteur nul :**
    ```csh
    paste -z fichier1.txt fichier2.txt
    ```
 
 ## Tips
-- Assurez-vous que les fichiers que vous combinez ont le même nombre de lignes pour éviter des résultats inattendus.
-- Utilisez des délimiteurs clairs pour rendre la sortie plus lisible, surtout si vous travaillez avec des données complexes.
-- Pensez à rediriger la sortie vers un nouveau fichier si vous souhaitez conserver les résultats :
+- Assurez-vous que les fichiers que vous souhaitez combiner ont le même nombre de lignes pour éviter des résultats inattendus.
+- Utilisez l'option `-d` pour personnaliser le séparateur si vous avez besoin d'un format spécifique.
+- Pensez à rediriger la sortie vers un nouveau fichier si vous souhaitez conserver le résultat :
   ```csh
-  paste fichier1.txt fichier2.txt > sortie.txt
+  paste fichier1.txt fichier2.txt > resultat.txt
   ```

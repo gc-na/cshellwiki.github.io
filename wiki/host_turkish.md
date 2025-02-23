@@ -1,47 +1,46 @@
-# [Linux] C Shell (csh) host kullanımı: DNS sorguları yapmak
+# [Linux] C Shell (csh) host kullanımı: DNS sorguları yapma
 
-## Overview
-`host` komutu, bir alan adının IP adresini veya bir IP adresinin alan adını çözümlemek için kullanılan bir araçtır. DNS (Domain Name System) sorguları yaparak, internet üzerindeki kaynakların adres bilgilerini elde etmenizi sağlar.
+## Genel Bakış
+`host` komutu, bir alan adının IP adresini çözümlemek için kullanılan bir araçtır. DNS (Alan Adı Sistemi) sorguları yaparak, bir alan adının hangi IP adresine karşılık geldiğini öğrenmenizi sağlar.
 
-## Usage
+## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-
-```csh
+```
 host [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `-a`: Alan adı hakkında daha fazla bilgi gösterir.
-- `-t`: Belirli bir DNS kayıt türünü sorgulamak için kullanılır (örneğin, A, MX, CNAME).
-- `-v`: Ayrıntılı bilgi verir; sorgu sürecini ve yanıtları gösterir.
+## Yaygın Seçenekler
+- `-a`: Tüm kayıtları gösterir.
+- `-t TYPE`: Belirli bir kayıt türünü sorgular (örneğin, A, MX, CNAME).
+- `-v`: Ayrıntılı çıktı sağlar.
 
-## Common Examples
-Aşağıda `host` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+## Yaygın Örnekler
+Aşağıda `host` komutunun bazı pratik kullanımları bulunmaktadır:
 
-### 1. Bir alan adının IP adresini bulma
-```csh
-host example.com
-```
+1. Bir alan adının IP adresini öğrenmek için:
+   ```csh
+   host example.com
+   ```
 
-### 2. Belirli bir DNS kayıt türünü sorgulama
-```csh
-host -t MX example.com
-```
+2. Belirli bir kayıt türünü sorgulamak için (örneğin, MX kayıtları):
+   ```csh
+   host -t MX example.com
+   ```
 
-### 3. Bir IP adresinin alan adını bulma
-```csh
-host 93.184.216.34
-```
+3. Tüm kayıtları görüntülemek için:
+   ```csh
+   host -a example.com
+   ```
 
-### 4. Ayrıntılı bilgi ile sorgulama
-```csh
-host -v example.com
-```
+4. Ayrıntılı bilgi almak için:
+   ```csh
+   host -v example.com
+   ```
 
-## Tips
-- `host` komutunu sık kullanılan alan adları için bir alias olarak tanımlamak, sorguları hızlandırabilir.
-- DNS kayıt türlerini doğru bir şekilde belirtmek, daha hedefli sonuçlar almanızı sağlar.
-- Sık sık DNS sorguları yapıyorsanız, sonuçları bir dosyaya yönlendirmek için `>` operatörünü kullanabilirsiniz. Örneğin:
+## İpuçları
+- `host` komutunu sık kullandığınız alan adları için bir alias oluşturabilirsiniz, bu sayede daha hızlı erişim sağlayabilirsiniz.
+- DNS sorunlarını çözmek için `host` komutunu kullanarak, alan adlarının doğru şekilde yapılandırıldığını kontrol edebilirsiniz.
+- Farklı DNS sunucularını sorgulamak için `@` işareti ile birlikte sunucu adresini belirtebilirsiniz. Örneğin:
   ```csh
-  host example.com > sonuc.txt
+  host example.com @8.8.8.8
   ```

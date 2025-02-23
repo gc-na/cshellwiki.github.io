@@ -1,47 +1,49 @@
-# [Linux] C Shell (csh) tmux użycie: Zarządzanie sesjami terminala
+# [Linux] C Shell (csh) tmux użycie: Narzędzie do zarządzania sesjami terminalowymi
 
 ## Overview
-tmux to terminal multiplexer, który pozwala na tworzenie, zarządzanie i przełączanie się między wieloma sesjami terminalowymi w jednym oknie. Umożliwia użytkownikom pracę w wielu powłokach jednocześnie, co zwiększa efektywność i organizację pracy.
+tmux to terminal multiplexer, który pozwala na uruchamianie wielu sesji terminalowych w jednym oknie. Umożliwia użytkownikom podział ekranu, przełączanie się między sesjami oraz odłączanie i ponowne łączenie się z sesjami, co jest szczególnie przydatne w pracy zdalnej.
 
 ## Usage
 Podstawowa składnia polecenia tmux jest następująca:
 
-```
+```bash
 tmux [opcje] [argumenty]
 ```
 
 ## Common Options
 - `new`: Tworzy nową sesję tmux.
 - `attach`: Dołącza do istniejącej sesji.
-- `detach`: Odłącza aktualną sesję.
+- `detach`: Odłącza bieżącą sesję.
 - `list-sessions`: Wyświetla listę aktywnych sesji.
 - `kill-session`: Zamyka wskazaną sesję.
 
 ## Common Examples
-- **Tworzenie nowej sesji:**
+- Aby utworzyć nową sesję tmux:
   ```bash
   tmux new -s moja_sesja
   ```
-  
-- **Dołączanie do istniejącej sesji:**
+
+- Aby dołączyć do istniejącej sesji:
   ```bash
   tmux attach -t moja_sesja
   ```
 
-- **Odłączanie od sesji:**
-  Wciśnij `Ctrl + b`, a następnie `d`.
+- Aby odłączyć się od bieżącej sesji, można użyć kombinacji klawiszy:
+  ```bash
+  Ctrl + b, a następnie d
+  ```
 
-- **Wyświetlanie listy sesji:**
+- Aby zobaczyć listę aktywnych sesji:
   ```bash
   tmux list-sessions
   ```
 
-- **Zamykanie sesji:**
+- Aby zamknąć sesję:
   ```bash
   tmux kill-session -t moja_sesja
   ```
 
 ## Tips
-- Używaj skrótów klawiszowych tmux, aby szybko przełączać się między oknami i panelami.
-- Zapisuj sesje, aby móc do nich wrócić później, co jest szczególnie przydatne w długoterminowych projektach.
-- Eksperymentuj z podziałem okien, aby efektywnie wykorzystać przestrzeń roboczą.
+- Używaj nazw sesji, które są łatwe do zapamiętania, aby szybko się do nich odnosić.
+- Korzystaj z podziału okna (split window) w tmux, aby pracować nad wieloma zadaniami jednocześnie.
+- Regularnie zapisuj swoje sesje, aby uniknąć utraty postępu w pracy.

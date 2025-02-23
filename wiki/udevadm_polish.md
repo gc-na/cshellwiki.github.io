@@ -1,51 +1,43 @@
-# [Linux] C Shell (csh) udevadm użycie: Zarządzanie urządzeniami w systemie
+# [Linux] C Shell (csh) udevadm użycie: zarządzanie urządzeniami w systemie
 
-## Overview
-Polecenie `udevadm` jest narzędziem do zarządzania urządzeniami w systemie Linux. Umożliwia interakcję z systemem udev, który odpowiada za dynamiczne zarządzanie urządzeniami w czasie rzeczywistym. Dzięki `udevadm` można monitorować, zarządzać i konfigurować urządzenia podłączone do systemu.
+## Przegląd
+Polecenie `udevadm` jest narzędziem służącym do zarządzania urządzeniami w systemie Linux. Umożliwia monitorowanie, kontrolowanie i konfigurowanie reguł udev, które są odpowiedzialne za dynamiczne zarządzanie urządzeniami w systemie.
 
-## Usage
+## Użycie
 Podstawowa składnia polecenia `udevadm` jest następująca:
 
-```bash
+```shell
 udevadm [opcje] [argumenty]
 ```
 
-## Common Options
-- `info`: Wyświetla informacje o urządzeniu.
-- `trigger`: Wywołuje zdarzenia udev dla urządzeń.
-- `settle`: Czeka na zakończenie wszystkich zdarzeń udev.
-- `control`: Zarządza działaniem demona udev.
-- `monitor`: Monitoruje zdarzenia udev w czasie rzeczywistym.
+## Częste opcje
+- `info` - Wyświetla informacje o urządzeniu.
+- `trigger` - Wyzwala zdarzenia udev dla urządzeń.
+- `settle` - Czeka na zakończenie wszystkich operacji udev.
+- `control` - Kontroluje działanie demona udev.
 
-## Common Examples
-Przykłady użycia polecenia `udevadm`:
-
-1. **Wyświetlenie informacji o urządzeniu**
-   ```bash
+## Częste przykłady
+1. **Wyświetlenie informacji o urządzeniu:**
+   ```shell
    udevadm info --query=all --name=/dev/sda
    ```
 
-2. **Wywołanie zdarzeń udev dla wszystkich urządzeń**
-   ```bash
+2. **Wyzwolenie zdarzeń udev:**
+   ```shell
    udevadm trigger
    ```
 
-3. **Czekanie na zakończenie zdarzeń udev**
-   ```bash
+3. **Czekanie na zakończenie operacji udev:**
+   ```shell
    udevadm settle
    ```
 
-4. **Monitorowanie zdarzeń udev w czasie rzeczywistym**
-   ```bash
-   udevadm monitor
-   ```
-
-5. **Zarządzanie działaniem demona udev**
-   ```bash
+4. **Kontrolowanie demona udev:**
+   ```shell
    udevadm control --reload-rules
    ```
 
-## Tips
-- Używaj opcji `--verbose`, aby uzyskać więcej informacji podczas wykonywania poleceń.
-- Regularnie monitoruj zdarzenia udev, aby śledzić zmiany w podłączonych urządzeniach.
-- Pamiętaj, aby uruchamiać `udevadm` z odpowiednimi uprawnieniami, aby uniknąć problemów z dostępem do urządzeń.
+## Wskazówki
+- Używaj opcji `--verbose`, aby uzyskać więcej informacji o wykonywanych operacjach.
+- Regularnie sprawdzaj reguły udev, aby upewnić się, że są aktualne i odpowiadają Twoim potrzebom.
+- Pamiętaj, że zmiany w regułach mogą wymagać ponownego załadowania demona udev, aby zaczęły obowiązywać.

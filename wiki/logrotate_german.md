@@ -1,44 +1,45 @@
 # [Linux] C Shell (csh) logrotate Verwendung: Protokolldateien verwalten
 
 ## Übersicht
-Das `logrotate`-Kommando wird verwendet, um Protokolldateien zu verwalten, indem es diese automatisch dreht, komprimiert, entfernt oder archiviert. Dies hilft, die Größe von Protokolldateien zu kontrollieren und die Systemleistung zu verbessern.
+Das `logrotate`-Kommando wird verwendet, um Protokolldateien zu verwalten und zu rotieren. Es ermöglicht das automatische Archivieren, Komprimieren und Löschen von alten Protokolldateien, um Speicherplatz zu sparen und die Übersichtlichkeit zu verbessern.
 
 ## Verwendung
-Die grundlegende Syntax des Befehls lautet:
+Die grundlegende Syntax des Kommandos lautet:
 
-```bash
+```csh
 logrotate [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-f`: Erzwingt die Ausführung von logrotate, auch wenn die Protokolldateien nicht rotiert werden müssen.
-- `-v`: Aktiviert den ausführlichen Modus, der zusätzliche Informationen über den Rotationsprozess ausgibt.
-- `-s`: Gibt die Datei an, in der der Status der logrotate-Operationen gespeichert wird.
+- `-f`: Erzwingt die Rotation der Protokolldateien, unabhängig von den festgelegten Bedingungen.
+- `-s`: Gibt die Datei an, in der der Status der letzten Rotation gespeichert wird.
+- `-d`: Führt einen Testlauf durch, ohne tatsächlich Änderungen vorzunehmen (Debug-Modus).
+- `-v`: Aktiviert den ausführlichen Modus, um mehr Informationen über den Rotationsprozess anzuzeigen.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung von logrotate:
+Hier sind einige praktische Beispiele für die Verwendung von `logrotate`:
 
-1. **Standardrotation ausführen**:
-   ```bash
+1. **Standardrotation ausführen:**
+   ```csh
    logrotate /etc/logrotate.conf
    ```
 
-2. **Erzwinge die Rotation**:
-   ```bash
+2. **Erzwinge die Rotation der Protokolldateien:**
+   ```csh
    logrotate -f /etc/logrotate.conf
    ```
 
-3. **Ausführlichen Modus aktivieren**:
-   ```bash
-   logrotate -v /etc/logrotate.conf
+3. **Testlauf ohne Änderungen:**
+   ```csh
+   logrotate -d /etc/logrotate.conf
    ```
 
-4. **Benutzerdefinierte Konfiguration verwenden**:
-   ```bash
-   logrotate -s /var/lib/logrotate/status /etc/logrotate.d/myapp
+4. **Verwendung einer benutzerdefinierten Statusdatei:**
+   ```csh
+   logrotate -s /var/lib/logrotate/status /etc/logrotate.conf
    ```
 
 ## Tipps
-- Stellen Sie sicher, dass Ihre Konfigurationsdateien regelmäßig überprüft werden, um sicherzustellen, dass die Rotation wie gewünscht funktioniert.
-- Verwenden Sie den ausführlichen Modus (`-v`), um Probleme bei der Rotation zu diagnostizieren.
-- Planen Sie logrotate mit `cron`, um sicherzustellen, dass die Protokolldateien regelmäßig verwaltet werden.
+- Überprüfen Sie regelmäßig die Protokolldateien, um sicherzustellen, dass die Rotation wie gewünscht funktioniert.
+- Nutzen Sie den `-d`-Modus, um sicherzustellen, dass Ihre Konfiguration korrekt ist, bevor Sie Änderungen vornehmen.
+- Planen Sie `logrotate` in Cron-Jobs ein, um eine regelmäßige Rotation zu gewährleisten.

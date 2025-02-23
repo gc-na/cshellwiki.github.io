@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) hexdump : Afficher le contenu binaire d'un fichier
+# [Linux] C Shell (csh) hexdump : Afficher les données en hexadécimal
 
 ## Overview
-La commande `hexdump` permet d'afficher le contenu binaire d'un fichier sous forme hexadécimale. Cela est particulièrement utile pour analyser les fichiers non textuels ou pour le débogage.
+La commande `hexdump` permet de visualiser le contenu binaire d'un fichier sous forme hexadécimale. Elle est particulièrement utile pour l'analyse de fichiers non textuels, permettant aux utilisateurs de voir les données brutes.
 
 ## Usage
 La syntaxe de base de la commande `hexdump` est la suivante :
@@ -11,45 +11,40 @@ hexdump [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes pour la commande `hexdump` :
+Voici quelques options courantes pour `hexdump` :
 
 - `-C` : Affiche le contenu en hexadécimal et en ASCII.
-- `-n N` : Limite la sortie aux premiers N octets du fichier.
-- `-s N` : Ignore les premiers N octets du fichier avant de commencer à afficher.
+- `-n N` : Limite la sortie aux premiers N octets.
 - `-v` : Affiche tous les octets, y compris les répétitions.
+- `-e FORMAT` : Définit un format de sortie personnalisé.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `hexdump` :
 
-1. Afficher le contenu d'un fichier en hexadécimal :
+1. Afficher le contenu hexadécimal d'un fichier :
    ```csh
    hexdump fichier.bin
    ```
 
-2. Afficher le contenu en hexadécimal et ASCII :
-   ```csh
-   hexdump -C fichier.bin
-   ```
-
-3. Limiter l'affichage aux 16 premiers octets :
+2. Afficher les 16 premiers octets d'un fichier :
    ```csh
    hexdump -n 16 fichier.bin
    ```
 
-4. Ignorer les 10 premiers octets et afficher le reste :
+3. Afficher le contenu en hexadécimal et en ASCII :
    ```csh
-   hexdump -s 10 fichier.bin
+   hexdump -C fichier.bin
    ```
 
-5. Afficher tous les octets, y compris les répétitions :
+4. Utiliser un format de sortie personnalisé :
    ```csh
-   hexdump -v fichier.bin
+   hexdump -e '16/1 "%02x " "\n"' fichier.bin
    ```
 
 ## Tips
-- Utilisez l'option `-C` pour obtenir une vue plus lisible avec les valeurs ASCII correspondantes.
-- Pour les fichiers volumineux, combinez `-n` et `-s` pour cibler des sections spécifiques du fichier.
-- Pensez à rediriger la sortie vers un fichier si vous travaillez avec de grandes quantités de données :
+- Utilisez l'option `-C` pour une vue plus lisible qui combine l'hexadécimal et l'ASCII.
+- Limitez la sortie avec `-n` pour éviter d'être submergé par trop d'informations.
+- Pensez à rediriger la sortie vers un fichier si vous analysez de gros fichiers :
   ```csh
   hexdump fichier.bin > sortie.txt
   ```

@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) cp Utilizare: Copierea fișierelor și directoarelor
+# [Linux] C Shell (csh) cp utilizare: Copierea fișierelor și directoarelor
 
 ## Overview
-Comanda `cp` este utilizată pentru a copia fișiere și directoare în sistemul de operare. Aceasta permite utilizatorilor să creeze copii ale fișierelor existente sau să mute fișiere între diferite locații.
+Comanda `cp` este utilizată în C Shell (csh) pentru a copia fișiere și directoare. Aceasta permite utilizatorilor să creeze copii ale fișierelor existente, facilitând gestionarea datelor.
 
 ## Usage
 Sintaxa de bază a comenzii `cp` este următoarea:
@@ -11,8 +11,8 @@ cp [opțiuni] [argumente]
 ```
 
 ## Common Options
-- `-i`: Solicita confirmarea înainte de a suprascrie un fișier existent.
-- `-r`: Copiază recursiv directoare și conținutul acestora.
+- `-i`: Solicita confirmarea înainte de a suprascrie fișierele existente.
+- `-r`: Copiază directoare recursiv, inclusiv toate fișierele și subdirectoarele.
 - `-u`: Copiază fișierele doar dacă sursa este mai nouă decât destinația sau dacă destinația nu există.
 - `-v`: Afișează informații detaliate despre fișierele copiate.
 
@@ -21,28 +21,27 @@ cp [opțiuni] [argumente]
    ```csh
    cp fisier.txt copia_fisier.txt
    ```
+   Aceasta va crea o copie a `fisier.txt` numită `copia_fisier.txt`.
 
-2. **Copierea unui director și a conținutului său:**
+2. **Copierea unui director recursiv:**
    ```csh
-   cp -r director_original director_copie
+   cp -r director_original/ director_copie/
    ```
+   Aceasta va copia întregul conținut al `director_original` în `director_copie`.
 
-3. **Copierea unui fișier cu confirmare înainte de suprascriere:**
+3. **Copierea cu confirmare:**
    ```csh
-   cp -i fisier_vechi.txt fisier_nou.txt
+   cp -i fisier.txt copia_fisier.txt
    ```
+   Aceasta va solicita confirmarea înainte de a suprascrie `copia_fisier.txt`, dacă acesta există.
 
-4. **Copierea fișierelor doar dacă sursa este mai recentă:**
+4. **Copierea fișierelor doar dacă sursa este mai nouă:**
    ```csh
-   cp -u fisier.txt director_destinatie/
+   cp -u fisier_nou.txt fisier_vechi.txt
    ```
-
-5. **Afișarea detaliilor în timpul copiei:**
-   ```csh
-   cp -v fisier.txt director_destinatie/
-   ```
+   Aceasta va copia `fisier_nou.txt` în `fisier_vechi.txt` doar dacă `fisier_nou.txt` este mai recent.
 
 ## Tips
-- Folosiți opțiunea `-i` pentru a evita suprascrierea accidentală a fișierelor importante.
-- Când copiați directoare, nu uitați să folosiți opțiunea `-r` pentru a include toate subdirectoarele și fișierele.
-- Verificați întotdeauna calea de destinație pentru a vă asigura că copiați fișierele în locația dorită.
+- Folosiți opțiunea `-v` pentru a urmări progresul copiei, mai ales când copiați multe fișiere.
+- Verificați întotdeauna destinația pentru a evita suprascrierea accidentală a fișierelor importante.
+- Când copiați directoare, asigurați-vă că folosiți opțiunea `-r` pentru a include toate subdirectoarele și fișierele.

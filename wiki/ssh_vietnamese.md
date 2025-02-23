@@ -1,50 +1,42 @@
-# [Hệ điều hành] C Shell (csh) ssh: Kết nối an toàn đến máy chủ từ xa
+# [Hệ điều hành] C Shell (csh) ssh Cách sử dụng: Kết nối an toàn đến máy chủ từ xa
 
 ## Tổng quan
-Lệnh `ssh` (Secure Shell) được sử dụng để thiết lập một kết nối an toàn đến một máy chủ từ xa. Nó cho phép người dùng đăng nhập vào hệ thống từ xa và thực hiện các lệnh như thể họ đang làm việc trực tiếp trên máy chủ đó.
+Lệnh `ssh` (Secure Shell) được sử dụng để thiết lập một kết nối an toàn đến một máy chủ từ xa. Nó cho phép người dùng đăng nhập vào máy chủ và thực hiện các lệnh từ xa một cách bảo mật.
 
-## Cú pháp
+## Cách sử dụng
 Cú pháp cơ bản của lệnh `ssh` như sau:
-```
-ssh [options] [user@]hostname
+```csh
+ssh [options] [username@]hostname
 ```
 
 ## Các tùy chọn phổ biến
-- `-p [port]`: Chỉ định cổng để kết nối.
-- `-i [file]`: Sử dụng tệp khóa riêng để xác thực.
-- `-v`: Bật chế độ chi tiết để theo dõi quá trình kết nối.
-- `-X`: Kích hoạt chuyển tiếp X11 để chạy ứng dụng đồ họa từ xa.
+- `-p port`: Chỉ định cổng để kết nối (mặc định là 22).
+- `-i identity_file`: Sử dụng tệp khóa riêng để xác thực.
+- `-v`: Bật chế độ chi tiết để hiển thị thông tin kết nối.
+- `-X`: Bật chuyển tiếp X11, cho phép chạy ứng dụng đồ họa từ xa.
 
-## Ví dụ phổ biến
-Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `ssh`:
+## Ví dụ thường gặp
+- Kết nối đến máy chủ với tên người dùng:
+```csh
+ssh user@example.com
+```
 
-1. Kết nối đến máy chủ từ xa:
-   ```bash
-   ssh user@hostname
-   ```
+- Kết nối đến máy chủ qua cổng khác:
+```csh
+ssh -p 2222 user@example.com
+```
 
-2. Kết nối đến máy chủ trên cổng khác:
-   ```bash
-   ssh -p 2222 user@hostname
-   ```
+- Kết nối sử dụng tệp khóa riêng:
+```csh
+ssh -i ~/.ssh/id_rsa user@example.com
+```
 
-3. Sử dụng tệp khóa riêng để xác thực:
-   ```bash
-   ssh -i ~/.ssh/id_rsa user@hostname
-   ```
-
-4. Kết nối với chế độ chi tiết:
-   ```bash
-   ssh -v user@hostname
-   ```
-
-5. Kết nối và chuyển tiếp X11:
-   ```bash
-   ssh -X user@hostname
-   ```
+- Kết nối với chế độ chi tiết:
+```csh
+ssh -v user@example.com
+```
 
 ## Mẹo
-- Luôn sử dụng tệp khóa riêng để tăng cường bảo mật thay vì mật khẩu.
-- Kiểm tra cổng mặc định (22) và thay đổi nếu cần thiết để bảo vệ máy chủ khỏi các cuộc tấn công.
-- Sử dụng tùy chọn `-v` để gỡ lỗi nếu bạn gặp vấn đề khi kết nối.
-- Đảm bảo rằng máy chủ từ xa đã được cấu hình để cho phép kết nối SSH.
+- Luôn sử dụng khóa SSH thay vì mật khẩu để tăng cường bảo mật.
+- Kiểm tra cổng mặc định và cấu hình tường lửa trên máy chủ để đảm bảo kết nối thành công.
+- Sử dụng tệp cấu hình SSH (`~/.ssh/config`) để lưu trữ các thiết lập kết nối thường dùng, giúp tiết kiệm thời gian khi kết nối.

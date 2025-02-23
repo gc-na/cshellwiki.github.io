@@ -1,51 +1,51 @@
-# [日本語] C Shell (csh) basename 使用法: ファイル名の取得
+# [UNIX系] C Shell (csh) basename の使い方: ファイル名の抽出
 
-## Overview
-`basename` コマンドは、指定したパスからファイル名を抽出し、拡張子を取り除くために使用されます。このコマンドは、ファイルのパスを簡潔に表示したいときに便利です。
+## 概要
+`basename` コマンドは、指定したパスからファイル名を抽出するためのコマンドです。これにより、パスの情報を取り除き、純粋なファイル名だけを取得することができます。
 
-## Usage
+## 使用法
 基本的な構文は以下の通りです。
 
 ```
 basename [options] [arguments]
 ```
 
-## Common Options
-- `-a` : 複数の引数を受け取り、各引数のベース名を表示します。
-- `-s` : 指定したサフィックスを取り除いてベース名を表示します。
+## 一般的なオプション
+- `-a` : 複数の引数を指定した場合、すべてのファイル名を抽出します。
+- `-s` : 指定したサフィックスを削除します。
 
-## Common Examples
+## 一般的な例
 以下に、`basename` コマンドのいくつかの実用的な例を示します。
 
-### 例 1: 単一のファイルパスからファイル名を取得
+### 例1: 単一のファイル名を取得
 ```csh
-basename /path/to/file.txt
+basename /usr/local/bin/script.sh
 ```
 出力:
 ```
-file.txt
+script.sh
 ```
 
-### 例 2: 拡張子を取り除いたファイル名を取得
+### 例2: サフィックスを削除
 ```csh
-basename /path/to/file.txt .txt
+basename /usr/local/bin/script.sh .sh
 ```
 出力:
 ```
-file
+script
 ```
 
-### 例 3: 複数のファイルパスからファイル名を取得
+### 例3: 複数のファイル名を取得
 ```csh
-basename -a /path/to/file1.txt /path/to/file2.txt
+basename -a /usr/local/bin/script.sh /usr/local/bin/another_script.sh
 ```
 出力:
 ```
-file1.txt
-file2.txt
+script.sh
+another_script.sh
 ```
 
-## Tips
-- `basename` はスクリプト内でファイル名を扱う際に非常に役立ちます。
-- 複数のファイルを一度に処理する場合は、`-a` オプションを使用すると便利です。
-- サフィックスを指定することで、特定のファイル拡張子を除去することができます。
+## ヒント
+- `basename` コマンドは、スクリプト内でファイル名を処理する際に非常に便利です。
+- サフィックスを指定することで、特定の拡張子を持つファイル名を簡単に取得できます。
+- 複数のファイルを一度に処理する場合は、`-a` オプションを活用しましょう。

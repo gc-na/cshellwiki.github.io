@@ -1,38 +1,44 @@
-# [Hệ điều hành] C Shell (csh) swapoff: Tắt vùng nhớ hoán đổi
+# [Hệ điều hành] C Shell (csh) swapoff: Tắt không gian hoán đổi
 
 ## Tổng quan
-Lệnh `swapoff` được sử dụng để tắt các vùng nhớ hoán đổi trên hệ thống. Khi một vùng nhớ hoán đổi bị tắt, hệ thống sẽ không còn sử dụng nó để lưu trữ dữ liệu tạm thời, giúp cải thiện hiệu suất trong một số trường hợp.
+Lệnh `swapoff` được sử dụng để tắt không gian hoán đổi trên hệ thống. Khi không gian hoán đổi bị tắt, hệ thống sẽ không sử dụng nó để lưu trữ dữ liệu tạm thời, điều này có thể giúp cải thiện hiệu suất trong một số trường hợp.
 
-## Cú pháp
+## Cách sử dụng
 Cú pháp cơ bản của lệnh `swapoff` như sau:
-```csh
-swapoff [options] [arguments]
+
+```
+swapoff [tùy chọn] [đối số]
 ```
 
-## Các tùy chọn phổ biến
-- `-a`: Tắt tất cả các vùng nhớ hoán đổi.
-- `-e`: Bỏ qua các lỗi khi tắt vùng nhớ hoán đổi.
+## Tùy chọn phổ biến
+- `-a`: Tắt tất cả các không gian hoán đổi đã được định nghĩa trong tệp `/etc/fstab`.
+- `-e`: Bỏ qua các lỗi khi không thể tắt không gian hoán đổi.
 - `-h`: Hiển thị thông tin trợ giúp về lệnh.
 
-## Ví dụ thường gặp
-Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `swapoff`:
+## Ví dụ phổ biến
+Dưới đây là một số ví dụ về cách sử dụng lệnh `swapoff`:
 
-1. Tắt một vùng nhớ hoán đổi cụ thể:
+1. Tắt không gian hoán đổi cụ thể:
    ```csh
-   swapoff /swapfile
+   swapoff /dev/sdX
    ```
 
-2. Tắt tất cả các vùng nhớ hoán đổi:
+2. Tắt tất cả không gian hoán đổi:
    ```csh
    swapoff -a
    ```
 
-3. Tắt vùng nhớ hoán đổi mà không báo lỗi nếu không thành công:
+3. Tắt không gian hoán đổi và bỏ qua lỗi:
    ```csh
-   swapoff -e /swapfile
+   swapoff -e /dev/sdX
+   ```
+
+4. Hiển thị trợ giúp về lệnh:
+   ```csh
+   swapoff -h
    ```
 
 ## Mẹo
-- Trước khi tắt vùng nhớ hoán đổi, hãy đảm bảo rằng hệ thống của bạn có đủ bộ nhớ RAM để xử lý các tác vụ hiện tại.
-- Kiểm tra tình trạng sử dụng bộ nhớ của hệ thống bằng lệnh `free` hoặc `top` trước khi thực hiện lệnh `swapoff`.
-- Sử dụng lệnh `swapon` để bật lại vùng nhớ hoán đổi khi cần thiết.
+- Trước khi tắt không gian hoán đổi, hãy đảm bảo rằng hệ thống của bạn có đủ bộ nhớ RAM để xử lý các tác vụ hiện tại.
+- Sử dụng lệnh `free -m` để kiểm tra tình trạng bộ nhớ và không gian hoán đổi trước khi thực hiện lệnh `swapoff`.
+- Nếu bạn gặp phải vấn đề về hiệu suất, hãy cân nhắc việc tắt không gian hoán đổi tạm thời để kiểm tra sự khác biệt.

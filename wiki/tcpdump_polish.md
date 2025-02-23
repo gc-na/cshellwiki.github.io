@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) tcpdump użycie: Narzędzie do przechwytywania pakietów sieciowych
+# [Linux] C Shell (csh) tcpdump użycie: Narzędzie do przechwytywania i analizy pakietów sieciowych
 
 ## Przegląd
-Polecenie `tcpdump` jest narzędziem do przechwytywania i analizy ruchu sieciowego. Umożliwia monitorowanie pakietów przesyłanych przez interfejsy sieciowe, co jest przydatne do diagnozowania problemów z siecią oraz do analizy bezpieczeństwa.
+Polecenie `tcpdump` służy do przechwytywania i analizy pakietów sieciowych w systemach operacyjnych Unix i Linux. Umożliwia użytkownikom monitorowanie ruchu sieciowego, co jest przydatne w diagnostyce problemów sieciowych oraz w analizie bezpieczeństwa.
 
 ## Użycie
 Podstawowa składnia polecenia `tcpdump` jest następująca:
@@ -13,17 +13,12 @@ tcpdump [opcje] [argumenty]
 ## Częste opcje
 - `-i <interfejs>`: Określa interfejs sieciowy do monitorowania.
 - `-n`: Wyłącza rozwiązywanie nazw hostów, co przyspiesza działanie.
-- `-c <liczba>`: Przechwytuje określoną liczbę pakietów.
+- `-c <liczba>`: Zatrzymuje przechwytywanie po określonej liczbie pakietów.
 - `-w <plik>`: Zapisuje przechwycone pakiety do pliku.
 - `-r <plik>`: Odczytuje pakiety z pliku.
 
 ## Częste przykłady
-- Przechwytywanie pakietów na domyślnym interfejsie:
-  ```bash
-  tcpdump
-  ```
-
-- Przechwytywanie pakietów na określonym interfejsie:
+- Przechwytywanie pakietów na interfejsie `eth0`:
   ```bash
   tcpdump -i eth0
   ```
@@ -33,17 +28,22 @@ tcpdump [opcje] [argumenty]
   tcpdump -c 10
   ```
 
-- Zapis przechwyconych pakietów do pliku:
+- Zapisanie przechwyconych pakietów do pliku `capture.pcap`:
   ```bash
-  tcpdump -w pakiety.pcap
+  tcpdump -w capture.pcap
   ```
 
-- Odczyt pakietów z pliku:
+- Odczytanie pakietów z pliku `capture.pcap`:
   ```bash
-  tcpdump -r pakiety.pcap
+  tcpdump -r capture.pcap
+  ```
+
+- Przechwytywanie pakietów HTTP (port 80):
+  ```bash
+  tcpdump -i eth0 port 80
   ```
 
 ## Wskazówki
-- Używaj opcji `-n`, aby uniknąć opóźnień związanych z rozwiązywaniem nazw hostów.
-- Regularnie filtruj przechwytywane pakiety, aby skupić się na interesujących cię danych, na przykład używając `tcp port 80` do monitorowania ruchu HTTP.
-- Zapisuj przechwycone pakiety do pliku, aby móc je później analizować za pomocą narzędzi takich jak Wireshark.
+- Używaj opcji `-n`, aby uniknąć opóźnień związanych z rozwiązywaniem nazw.
+- Przechwytywanie dużej ilości pakietów może generować duże pliki, więc rozważ użycie opcji `-c` lub `-w`.
+- Regularnie analizuj przechwycone dane, aby zidentyfikować potencjalne problemy z siecią lub zagrożenia bezpieczeństwa.

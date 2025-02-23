@@ -1,12 +1,12 @@
 # [Linux] C Shell (csh) vgs : [afficher des groupes de volumes]
 
 ## Overview
-La commande `vgs` est utilisée pour afficher des informations sur les groupes de volumes dans un système de gestion de volumes logiques (LVM). Elle fournit des détails sur les groupes de volumes, tels que leur nom, leur taille, et l'espace utilisé.
+La commande `vgs` est utilisée pour afficher des informations sur les groupes de volumes dans un système utilisant LVM (Logical Volume Manager). Elle permet aux utilisateurs de visualiser des détails tels que la taille, l'espace utilisé et l'espace libre des groupes de volumes.
 
 ## Usage
 La syntaxe de base de la commande `vgs` est la suivante :
 
-```csh
+```bash
 vgs [options] [arguments]
 ```
 
@@ -14,33 +14,34 @@ vgs [options] [arguments]
 Voici quelques options courantes pour la commande `vgs` :
 
 - `-o` : Spécifie les colonnes à afficher.
-- `--units` : Définit les unités d'affichage pour les tailles.
-- `-h` : Affiche l'aide et les options disponibles.
+- `-h` : Affiche l'aide sur l'utilisation de la commande.
+- `--units` : Définit les unités pour l'affichage des tailles.
+- `-n` : Affiche uniquement les noms des groupes de volumes.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `vgs` :
 
 1. **Afficher tous les groupes de volumes :**
-   ```csh
+   ```bash
    vgs
    ```
 
-2. **Afficher des colonnes spécifiques (nom et taille) :**
-   ```csh
-   vgs -o vg_name,size
+2. **Afficher des informations spécifiques sur les groupes de volumes :**
+   ```bash
+   vgs -o vg_name,lv_count,vg_size
    ```
 
 3. **Afficher les groupes de volumes avec des unités spécifiques :**
-   ```csh
-   vgs --units g
+   ```bash
+   vgs --units m
    ```
 
-4. **Afficher l'aide pour la commande :**
-   ```csh
-   vgs -h
+4. **Afficher uniquement les noms des groupes de volumes :**
+   ```bash
+   vgs -n
    ```
 
 ## Tips
-- Utilisez l'option `-o` pour personnaliser les informations affichées selon vos besoins.
-- Pensez à utiliser `--units` pour faciliter la lecture des tailles, surtout si vous travaillez avec de grands volumes.
-- Vérifiez régulièrement l'état de vos groupes de volumes pour éviter des problèmes de gestion d'espace.
+- Utilisez l'option `-o` pour personnaliser les colonnes affichées selon vos besoins.
+- Pour une aide rapide, n'hésitez pas à utiliser l'option `-h`.
+- Vérifiez régulièrement l'espace libre dans vos groupes de volumes pour éviter les problèmes de stockage.

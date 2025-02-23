@@ -1,53 +1,53 @@
-# [Linux] C Shell (csh) docker utilisation : Gérer des conteneurs d'application
+# [Linux] C Shell (csh) docker utilisation : Gestion des conteneurs
 
 ## Overview
-La commande `docker` est utilisée pour gérer des conteneurs d'application. Elle permet de créer, exécuter et gérer des conteneurs, qui sont des environnements légers et portables pour exécuter des applications.
+La commande `docker` est utilisée pour gérer des conteneurs, qui sont des environnements légers et portables permettant d'exécuter des applications de manière isolée. Docker facilite le déploiement, la gestion et la mise à l'échelle d'applications dans des conteneurs.
 
 ## Usage
 La syntaxe de base de la commande `docker` est la suivante :
 
-```csh
+```
 docker [options] [arguments]
 ```
 
 ## Common Options
 Voici quelques options courantes pour la commande `docker` :
 
-- `run` : Crée et exécute un conteneur à partir d'une image.
-- `ps` : Liste les conteneurs en cours d'exécution.
-- `images` : Affiche les images disponibles sur le système.
-- `rm` : Supprime un ou plusieurs conteneurs.
-- `rmi` : Supprime une ou plusieurs images.
+- `run` : Crée et exécute un conteneur à partir d'une image spécifiée.
+- `ps` : Affiche les conteneurs en cours d'exécution.
+- `stop` : Arrête un conteneur en cours d'exécution.
+- `rm` : Supprime un conteneur arrêté.
+- `images` : Liste toutes les images disponibles sur le système.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `docker` :
 
-1. **Exécuter un conteneur simple :**
-   ```csh
+1. **Exécuter un conteneur à partir d'une image :**
+   ```bash
    docker run hello-world
    ```
 
 2. **Lister les conteneurs en cours d'exécution :**
-   ```csh
+   ```bash
    docker ps
    ```
 
-3. **Lister toutes les images disponibles :**
-   ```csh
-   docker images
+3. **Arrêter un conteneur :**
+   ```bash
+   docker stop <container_id>
    ```
 
-4. **Supprimer un conteneur spécifique :**
-   ```csh
+4. **Supprimer un conteneur arrêté :**
+   ```bash
    docker rm <container_id>
    ```
 
-5. **Supprimer une image spécifique :**
-   ```csh
-   docker rmi <image_id>
+5. **Lister toutes les images disponibles :**
+   ```bash
+   docker images
    ```
 
 ## Tips
-- Toujours vérifier l'état des conteneurs avec `docker ps` avant de tenter de les supprimer.
-- Utilisez des noms explicites pour vos conteneurs afin de faciliter leur gestion.
-- Pensez à utiliser des volumes pour conserver les données même après la suppression des conteneurs.
+- Utilisez `docker-compose` pour gérer des applications multi-conteneurs de manière plus simple.
+- Gardez vos images à jour en utilisant `docker pull` régulièrement.
+- Nommez vos conteneurs et images de manière descriptive pour faciliter la gestion et l'identification.

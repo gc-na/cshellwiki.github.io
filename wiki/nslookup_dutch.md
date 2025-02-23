@@ -1,44 +1,44 @@
-# [Linux] C Shell (csh) nslookup gebruik: Zoek DNS-informatie op
+# [Nederlandse] C Shell (csh) nslookup gebruik: Zoek DNS-informatie op
 
 ## Overzicht
-De `nslookup`-opdracht is een netwerkhulpmiddel dat wordt gebruikt om DNS-informatie op te zoeken. Het stelt gebruikers in staat om de IP-adressen van domeinnamen te vinden en omgekeerd, wat nuttig is voor netwerkbeheer en probleemoplossing.
+Het `nslookup`-commando is een netwerkhulpmiddel dat wordt gebruikt om DNS-informatie op te vragen. Het stelt gebruikers in staat om de IP-adressen van domeinnamen te vinden en omgekeerd, wat nuttig is voor netwerkbeheer en probleemoplossing.
 
 ## Gebruik
-De basis syntaxis van de `nslookup`-opdracht is als volgt:
+De basis syntaxis van het `nslookup`-commando is als volgt:
 
 ```
 nslookup [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
-- `-type=TYPE`: Specificeert het type DNS-record dat moet worden opgezocht (bijvoorbeeld A, MX, CNAME).
-- `-debug`: Geeft gedetailleerde informatie over de DNS-query.
-- `-timeout=SECONDS`: Stelt de tijdslimiet in voor de DNS-query in seconden.
+## Veelvoorkomende opties
+- `-type=TYPE`: Specificeert het type DNS-record dat moet worden opgezocht (bijv. A, MX, TXT).
+- `-timeout=SECONDS`: Bepaalt de tijdslimiet voor het wachten op een antwoord van de DNS-server.
+- `-debug`: Schakelt de debugmodus in voor meer gedetailleerde informatie over de query.
 
-## Veelvoorkomende Voorbeelden
+## Veelvoorkomende voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van `nslookup`:
 
-1. Zoek het IP-adres van een domein:
+1. **Zoek het IP-adres van een domein:**
    ```csh
    nslookup example.com
    ```
 
-2. Zoek het MX-record van een domein:
+2. **Zoek een specifiek type DNS-record (bijv. MX-record):**
    ```csh
    nslookup -type=MX example.com
    ```
 
-3. Voer een gedetailleerde query uit:
+3. **Gebruik een specifieke DNS-server voor de query:**
    ```csh
-   nslookup -debug example.com
+   nslookup example.com 8.8.8.8
    ```
 
-4. Zoek een specifiek DNS-record met een tijdslimiet:
+4. **Voer een omgekeerde DNS-lookup uit:**
    ```csh
-   nslookup -timeout=5 example.com
+   nslookup 192.0.2.1
    ```
 
 ## Tips
-- Gebruik `nslookup` in combinatie met andere netwerktools zoals `ping` en `traceroute` voor een uitgebreide netwerkdiagnose.
-- Controleer altijd of je de juiste DNS-server gebruikt door de server expliciet op te geven met `nslookup [domein] [dns-server]`.
-- Houd rekening met caching; DNS-informatie kan enige tijd in de cache blijven, wat invloed kan hebben op je resultaten.
+- Gebruik de `-debug` optie om meer inzicht te krijgen in de DNS-query's en om eventuele problemen te diagnosticeren.
+- Probeer verschillende DNS-servers om te zien of je verschillende resultaten krijgt, vooral als je problemen hebt met een specifieke server.
+- Vergeet niet dat DNS-informatie kan worden gecached, dus als je recente wijzigingen hebt aangebracht, kan het even duren voordat deze zichtbaar zijn.

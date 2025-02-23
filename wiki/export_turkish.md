@@ -1,43 +1,43 @@
 # [Linux] C Shell (csh) export Kullanımı: Ortam Değişkenlerini Ayarlama
 
-## Overview
-`export` komutu, C Shell (csh) ortamında değişkenleri tanımlamak ve bu değişkenleri alt süreçlere iletmek için kullanılır. Bu sayede, tanımlanan değişkenler, shell oturumunun dışında da erişilebilir hale gelir.
+## Genel Bakış
+`export` komutu, C Shell (csh) ortamında değişkenleri tanımlamak ve bu değişkenlerin alt süreçlerde kullanılabilmesini sağlamak için kullanılır. Bu sayede, belirli bir değişkenin değerini tüm alt süreçlere aktarabilirsiniz.
 
-## Usage
-Temel sözdizimi aşağıdaki gibidir:
+## Kullanım
+`export` komutunun temel sözdizimi aşağıdaki gibidir:
 
-```csh
-export [options] [arguments]
+```
+export [seçenekler] [argümanlar]
 ```
 
-## Common Options
+## Yaygın Seçenekler
 - `-n`: Değişkenin dışa aktarımını iptal eder.
-- `-p`: Dışa aktarılan tüm değişkenleri listeler.
+- `-p`: Dışa aktarılan tüm değişkenleri listelemek için kullanılır.
 
-## Common Examples
+## Yaygın Örnekler
 
-### Örnek 1: Basit Değişken Tanımlama
-```csh
-set MY_VAR="Merhaba Dünya"
-export MY_VAR
-```
-Bu örnekte, `MY_VAR` adlı bir değişken tanımlanır ve dışa aktarılır.
+1. Bir değişkeni dışa aktarma:
+   ```csh
+   set MY_VAR="Merhaba Dünya"
+   export MY_VAR
+   ```
 
-### Örnek 2: Dışa Aktarılan Değişkeni Kullanma
-```csh
-set MY_VAR="Merhaba"
-export MY_VAR
-csh -c 'echo $MY_VAR'
-```
-Bu komut, yeni bir C Shell oturumu başlatır ve dışa aktarılan `MY_VAR` değişkenini kullanarak "Merhaba" yazdırır.
+2. Dışa aktarılan değişkeni kontrol etme:
+   ```csh
+   echo $MY_VAR
+   ```
 
-### Örnek 3: Dışa Aktarılan Değişkenleri Listeleme
-```csh
-export -p
-```
-Bu komut, dışa aktarılan tüm değişkenleri listeler.
+3. Dışa aktarılan değişkenleri listeleme:
+   ```csh
+   export -p
+   ```
 
-## Tips
-- Değişkenlerinizi dışa aktarırken, isimlendirme kurallarına dikkat edin; özel karakterler kullanmaktan kaçının.
-- Dışa aktarılan değişkenlerinizi kontrol etmek için `export -p` komutunu kullanarak mevcut değişkenlerinizi gözden geçirin.
-- Ortam değişkenlerinizi düzenli olarak güncelleyin ve gereksiz değişkenleri temizleyin.
+4. Dışa aktarılan bir değişkenin dışa aktarımını iptal etme:
+   ```csh
+   export -n MY_VAR
+   ```
+
+## İpuçları
+- Değişkenlerinizi dışa aktarmadan önce doğru şekilde tanımladığınızdan emin olun.
+- Dışa aktarılan değişkenlerinizi kontrol etmek için `export -p` komutunu kullanarak mevcut durumu gözden geçirin.
+- Ortam değişkenlerini kullanarak uygulamalarınız arasında veri paylaşımını kolaylaştırabilirsiniz.

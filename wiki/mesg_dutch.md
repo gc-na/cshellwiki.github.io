@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) mesg Gebruik: Beheer van berichteninstellingen
+# [Linux] C Shell (csh) mesg Gebruik: Beheer van berichtenontvangst
 
 ## Overzicht
-De `mesg` opdracht in C Shell (csh) wordt gebruikt om de instellingen voor het ontvangen van berichten van andere gebruikers te beheren. Hiermee kun je bepalen of andere gebruikers je berichten kunnen sturen via de terminal.
+De `mesg` opdracht in C Shell (csh) wordt gebruikt om te bepalen of andere gebruikers berichten naar jouw terminal kunnen sturen. Dit is vooral nuttig in een multi-user omgeving waar je wilt controleren wie je kan bereiken via berichten.
 
 ## Gebruik
 De basis syntaxis van de `mesg` opdracht is als volgt:
@@ -11,35 +11,27 @@ mesg [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `y` : Sta berichten van andere gebruikers toe.
+- `y` : Sta berichten toe van andere gebruikers.
 - `n` : Weiger berichten van andere gebruikers.
-- `-n` : Dit is een alternatieve manier om berichten te weigeren.
+- `?` : Toon de huidige status van berichtenontvangst.
 
 ## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van de `mesg` opdracht:
+- Sta berichten toe:
+    ```csh
+    mesg y
+    ```
 
-### Sta berichten toe
-Om berichten van andere gebruikers toe te staan, gebruik je:
+- Weiger berichten:
+    ```csh
+    mesg n
+    ```
 
-```csh
-mesg y
-```
-
-### Weiger berichten
-Om berichten van andere gebruikers te weigeren, gebruik je:
-
-```csh
-mesg n
-```
-
-### Controleer de huidige instelling
-Om te controleren of je berichten toestaat of weigert, kun je simpelweg de `mesg` opdracht zonder argumenten uitvoeren:
-
-```csh
-mesg
-```
+- Controleer de huidige status:
+    ```csh
+    mesg ?
+    ```
 
 ## Tips
-- Gebruik `mesg y` als je openstaat voor communicatie met andere gebruikers, bijvoorbeeld in een gedeelde omgeving.
-- Gebruik `mesg n` als je je wilt concentreren en niet gestoord wilt worden door berichten.
-- Controleer regelmatig je instellingen, vooral als je in een omgeving werkt waar veel gebruikers actief zijn.
+- Gebruik `mesg n` als je niet gestoord wilt worden tijdens belangrijke werkzaamheden.
+- Vergeet niet om `mesg y` weer in te schakelen als je weer berichten wilt ontvangen.
+- Controleer regelmatig je status met `mesg ?` om te zien of je berichten ontvangt zoals je dat wilt.

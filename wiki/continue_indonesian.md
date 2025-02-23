@@ -1,58 +1,60 @@
 # [Sistem Operasi] C Shell (csh) continue: Melanjutkan eksekusi loop
 
 ## Overview
-Perintah `continue` dalam C Shell (csh) digunakan untuk melanjutkan eksekusi dari loop yang sedang berjalan. Ketika `continue` dipanggil, perintah ini akan menghentikan iterasi saat ini dan melanjutkan ke iterasi berikutnya dari loop.
+Perintah `continue` dalam C Shell (csh) digunakan untuk melanjutkan eksekusi loop dengan melewatkan sisa iterasi saat ini. Ini berguna ketika Anda ingin mengabaikan bagian tertentu dari kode dalam loop berdasarkan kondisi tertentu.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `continue`:
 
 ```csh
-continue [options] [arguments]
+continue [options]
 ```
 
 ## Common Options
 Perintah `continue` tidak memiliki banyak opsi, tetapi berikut adalah beberapa yang umum digunakan:
-- `n`: Menentukan jumlah iterasi yang akan dilewati. Misalnya, `continue 2` akan melanjutkan ke iterasi kedua berikutnya.
+
+- `n`: Menentukan loop yang ingin dilanjutkan. Misalnya, `continue 2` akan melanjutkan eksekusi dari loop kedua terluar.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan perintah `continue`:
 
-### Contoh 1: Menggunakan continue dalam loop
+### Contoh 1: Menggunakan continue dalam loop for
 ```csh
 foreach i (1 2 3 4 5)
-    if ($i == 3) then
+    if ( $i == 3 ) then
         continue
     endif
     echo $i
 end
 ```
-*Output:*
+Output:
 ```
 1
 2
 4
 5
 ```
-Pada contoh ini, ketika nilai `i` adalah 3, perintah `continue` akan melewatkan eksekusi `echo` untuk iterasi tersebut.
+Pada contoh ini, ketika `i` sama dengan 3, perintah `continue` akan melewatkan eksekusi `echo $i`.
 
-### Contoh 2: Menggunakan continue dengan opsi
+### Contoh 2: Menggunakan continue dalam loop while
 ```csh
-foreach i (1 2 3 4 5)
-    if ($i % 2 == 0) then
-        continue 1
+set i = 0
+while ( $i < 5 )
+    @ i++
+    if ( $i == 2 ) then
+        continue
     endif
     echo $i
 end
 ```
-*Output:*
+Output:
 ```
 1
 3
-5
+4
 ```
-Di sini, `continue 1` digunakan untuk melewatkan satu iterasi ketika `i` adalah angka genap.
+Di sini, ketika `i` sama dengan 2, perintah `continue` akan melewatkan output untuk nilai tersebut.
 
 ## Tips
-- Gunakan `continue` untuk meningkatkan efisiensi dalam loop dengan menghindari eksekusi kode yang tidak perlu.
-- Pastikan untuk menggunakan `continue` dengan hati-hati agar tidak menyebabkan loop tak berujung.
-- Kombinasikan `continue` dengan kondisi yang tepat untuk mengontrol alur eksekusi dalam skrip Anda.
+- Gunakan `continue` untuk meningkatkan keterbacaan kode Anda dengan menghindari nesting yang dalam.
+- Pastikan untuk menggunakan `continue` dalam konteks loop yang tepat agar tidak membingungkan alur eksekusi.
+- Cobalah untuk menambahkan komentar di sekitar penggunaan `continue` untuk menjelaskan alasan mengapa bagian tertentu dilewatkan.

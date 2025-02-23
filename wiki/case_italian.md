@@ -1,60 +1,78 @@
-# [Linux] C Shell (csh) case: Gestione delle condizioni
+# [Linux] C Shell (csh) case: Gestione delle scelte condizionali
 
 ## Overview
-Il comando `case` nel C Shell (csh) è utilizzato per eseguire confronti di pattern su variabili. Permette di eseguire diverse azioni in base al valore di una variabile, rendendo il controllo del flusso nei script molto più semplice e leggibile.
+Il comando `case` in C Shell (csh) è utilizzato per gestire le scelte condizionali. Permette di eseguire diverse azioni in base al valore di una variabile, facilitando la scrittura di script più complessi e interattivi.
 
 ## Usage
 La sintassi di base del comando `case` è la seguente:
 
-```csh
+```
 case [variabile] in
-    [pattern1]) [comando1];;
-    [pattern2]) [comando2];;
+    [pattern1] ) [comandi1];;
+    [pattern2] ) [comandi2];;
     ...
-    *) [comando_default];;
+    * ) [comandi_predefiniti];;
 esac
 ```
 
 ## Common Options
-Il comando `case` non ha opzioni specifiche, ma i pattern possono includere:
-- `*` - corrisponde a qualsiasi stringa.
-- `?` - corrisponde a un singolo carattere.
-- `[abc]` - corrisponde a uno dei caratteri specificati.
+Il comando `case` non ha molte opzioni, ma è importante conoscere i seguenti elementi:
+
+- `*`: rappresenta un pattern predefinito che corrisponde a qualsiasi valore non specificato nei pattern precedenti.
+- `;;`: indica la fine di un blocco di comandi per un pattern specifico.
 
 ## Common Examples
 
-### Esempio 1: Controllo del giorno della settimana
+### Esempio 1: Esempio di base
 ```csh
-set giorno = `date +%A`
-case $giorno in
-    Lunedì) echo "Inizio settimana!";;
-    Venerdì) echo "Quasi weekend!";;
-    Sabato|Domenica) echo "Buon fine settimana!";;
-    *) echo "Un giorno normale."; 
-esac
+set var = "apple"
+switch ($var)
+    case "apple":
+        echo "È una mela."
+        breaksw
+    case "banana":
+        echo "È una banana."
+        breaksw
+    default:
+        echo "Frutto sconosciuto."
+endsw
 ```
 
-### Esempio 2: Gestione delle estensioni dei file
+### Esempio 2: Controllo del numero
 ```csh
-set file = "documento.txt"
-case $file in
-    *.txt) echo "Questo è un file di testo.";;
-    *.jpg|*.png) echo "Questo è un'immagine.";;
-    *) echo "Tipo di file sconosciuto.";;
-esac
+set num = 2
+switch ($num)
+    case 1:
+        echo "Uno"
+        breaksw
+    case 2:
+        echo "Due"
+        breaksw
+    case 3:
+        echo "Tre"
+        breaksw
+    default:
+        echo "Numero non riconosciuto."
+endsw
 ```
 
-### Esempio 3: Opzioni dell'utente
+### Esempio 3: Esempio con più pattern
 ```csh
-set scelta = $1
-case $scelta in
-    -h|--help) echo "Mostra aiuto";;
-    -v|--version) echo "Versione 1.0";;
-    *) echo "Opzione non valida";;
-esac
+set fruit = "kiwi"
+switch ($fruit)
+    case "apple":
+    case "banana":
+        echo "Hai scelto un frutto comune."
+        breaksw
+    case "kiwi":
+        echo "Hai scelto un kiwi."
+        breaksw
+    default:
+        echo "Frutto sconosciuto."
+endsw
 ```
 
 ## Tips
-- Utilizza i pattern in modo strategico per semplificare il codice e migliorare la leggibilità.
-- Ricorda di utilizzare `;;` alla fine di ogni blocco di comandi per terminare il caso.
-- Fai attenzione all'ordine dei pattern, poiché il primo corrispondente verrà eseguito.
+- Utilizza `case` per semplificare il codice quando hai molte condizioni da gestire.
+- Ricorda di utilizzare `breaksw` per uscire dal blocco `switch` dopo aver eseguito i comandi per un pattern.
+- Assicurati di includere un pattern predefinito (`*`) per gestire eventuali valori non previsti.

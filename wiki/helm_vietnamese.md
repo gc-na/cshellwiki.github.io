@@ -1,11 +1,11 @@
-# [Hệ điều hành] C Shell (csh) helm <Sử dụng tương đương>: Quản lý biểu đồ Kubernetes
+# [Hệ điều hành] C Shell (csh) helm <Sử dụng tương đương>: Quản lý các gói ứng dụng Kubernetes
 
 ## Tổng quan
-Lệnh `helm` được sử dụng để quản lý các biểu đồ (charts) trong Kubernetes, cho phép người dùng dễ dàng cài đặt, nâng cấp và quản lý các ứng dụng trong môi trường Kubernetes.
+Lệnh `helm` là một công cụ quản lý gói cho Kubernetes, giúp người dùng dễ dàng cài đặt, nâng cấp và quản lý các ứng dụng trên nền tảng Kubernetes thông qua các biểu đồ (charts).
 
 ## Cách sử dụng
-Cú pháp cơ bản của lệnh helm như sau:
-```
+Cú pháp cơ bản của lệnh `helm` như sau:
+```shell
 helm [options] [arguments]
 ```
 
@@ -18,31 +18,27 @@ helm [options] [arguments]
 
 ## Ví dụ phổ biến
 - Cài đặt một biểu đồ:
-  ```bash
-  helm install my-release my-chart
-  ```
-  
-- Nâng cấp một biểu đồ đã cài đặt:
-  ```bash
-  helm upgrade my-release my-chart
-  ```
-
+```shell
+helm install my-release my-chart
+```
+- Nâng cấp một biểu đồ:
+```shell
+helm upgrade my-release my-chart
+```
 - Gỡ bỏ một biểu đồ:
-  ```bash
-  helm uninstall my-release
-  ```
-
+```shell
+helm uninstall my-release
+```
 - Liệt kê các biểu đồ đã cài đặt:
-  ```bash
-  helm list
-  ```
-
+```shell
+helm list
+```
 - Thêm một kho biểu đồ mới:
-  ```bash
-  helm repo add my-repo https://example.com/charts
-  ```
+```shell
+helm repo add my-repo https://example.com/charts
+```
 
 ## Mẹo
-- Luôn kiểm tra phiên bản của biểu đồ trước khi nâng cấp để tránh các vấn đề không mong muốn.
-- Sử dụng lệnh `helm template` để xem trước các tài nguyên Kubernetes mà biểu đồ sẽ tạo ra.
-- Thường xuyên cập nhật kho biểu đồ bằng lệnh `helm repo update` để đảm bảo bạn có các phiên bản mới nhất.
+- Luôn kiểm tra phiên bản của biểu đồ trước khi nâng cấp để đảm bảo tính tương thích.
+- Sử dụng các nhãn (labels) để quản lý các biểu đồ một cách hiệu quả hơn.
+- Đọc tài liệu của biểu đồ để hiểu rõ các tùy chọn cấu hình có sẵn.

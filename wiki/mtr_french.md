@@ -1,7 +1,7 @@
-# [Système d'exploitation] C Shell (csh) mtr utilisation : outil de diagnostic réseau
+# [Linux] C Shell (csh) mtr Utilisation : Outil de diagnostic de réseau
 
 ## Overview
-La commande `mtr` (My Traceroute) est un outil de diagnostic réseau qui combine les fonctionnalités de `traceroute` et `ping`. Elle permet d'analyser le chemin emprunté par les paquets de données vers une destination spécifique et de mesurer la latence à chaque étape.
+La commande `mtr` (My Traceroute) est un outil de diagnostic réseau qui combine les fonctionnalités de `ping` et de `traceroute`. Elle permet d'analyser la route prise par les paquets de données pour atteindre une destination spécifique et de mesurer la latence à chaque saut.
 
 ## Usage
 La syntaxe de base de la commande est la suivante :
@@ -11,41 +11,37 @@ mtr [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes pour la commande `mtr` :
+Voici quelques options courantes pour `mtr` :
 
-- `-r` : Exécute un rapport et sort les résultats dans un format lisible.
-- `-c <count>` : Spécifie le nombre de paquets à envoyer à chaque saut.
+- `-r` : Exécute `mtr` en mode rapport, affichant les résultats à la fin.
+- `-c <count>` : Définit le nombre de paquets à envoyer.
 - `-i <interval>` : Définit l'intervalle entre les paquets envoyés.
-- `-p` : Affiche les numéros de port dans les résultats.
+- `-p` : Affiche les numéros de port utilisés pour chaque saut.
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de la commande `mtr` :
+Voici quelques exemples pratiques de l'utilisation de `mtr` :
 
-1. Pour effectuer un test de connectivité vers un hôte :
-
+1. **Exécuter un mtr vers un hôte :**
    ```csh
    mtr example.com
    ```
 
-2. Pour exécuter un rapport avec un nombre spécifique de paquets :
-
+2. **Exécuter un rapport mtr avec un nombre défini de paquets :**
    ```csh
    mtr -r -c 10 example.com
    ```
 
-3. Pour définir un intervalle de 1 seconde entre les paquets :
-
+3. **Définir un intervalle de 2 secondes entre les paquets :**
    ```csh
-   mtr -i 1 example.com
+   mtr -i 2 example.com
    ```
 
-4. Pour afficher les numéros de port dans les résultats :
-
+4. **Afficher les numéros de port :**
    ```csh
    mtr -p example.com
    ```
 
 ## Tips
-- Utilisez l'option `-r` pour obtenir un rapport clair et concis lorsque vous partagez des résultats avec d'autres.
-- Augmentez le nombre de paquets avec `-c` pour obtenir des résultats plus fiables, surtout si vous rencontrez des pertes de paquets.
-- Pensez à exécuter `mtr` avec des privilèges d'administrateur si vous avez besoin d'informations plus détaillées sur les routes réseau.
+- Utilisez l'option `-r` pour obtenir un rapport rapide après un nombre défini de paquets, ce qui est utile pour des diagnostics ponctuels.
+- Pour une analyse continue, exécutez `mtr` sans l'option `-r` et laissez-le fonctionner jusqu'à ce que vous décidiez de l'arrêter.
+- Vérifiez les résultats pour identifier les sauts avec une latence élevée, ce qui peut indiquer des problèmes de réseau.

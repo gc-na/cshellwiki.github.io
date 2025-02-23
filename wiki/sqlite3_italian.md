@@ -1,54 +1,50 @@
-# [Linux] C Shell (csh) sqlite3 Utilizzo: Interagire con database SQLite
+# [Linux] C Shell (csh) sqlite3 Uso: Interagire con database SQLite
 
 ## Overview
-Il comando `sqlite3` è un'interfaccia a riga di comando per interagire con i database SQLite. Permette di eseguire query SQL, gestire database e manipolare dati in modo semplice e diretto.
+Il comando `sqlite3` è uno strumento da riga di comando utilizzato per interagire con i database SQLite. Permette di eseguire query SQL, gestire tabelle e manipolare i dati all'interno di un database SQLite.
 
 ## Usage
 La sintassi di base del comando `sqlite3` è la seguente:
 
-```bash
+```csh
 sqlite3 [opzioni] [argomenti]
 ```
 
 ## Common Options
-Ecco alcune opzioni comuni per il comando `sqlite3`:
-
-- `-header`: Mostra i nomi delle colonne nell'output.
-- `-csv`: Esporta i risultati in formato CSV.
-- `-init <file>`: Esegue comandi SQL da un file all'avvio.
-- `-batch`: Esegue in modalità batch, utile per script.
+- `-help`: Mostra un elenco di tutte le opzioni disponibili.
 - `-version`: Mostra la versione di SQLite in uso.
+- `-init <file>`: Esegue i comandi SQL contenuti nel file specificato all'avvio.
+- `-batch`: Esegue in modalità batch, utile per script.
 
 ## Common Examples
 Ecco alcuni esempi pratici di utilizzo del comando `sqlite3`:
 
-1. **Creare un nuovo database:**
-   ```bash
-   sqlite3 nuovo_database.db
+1. **Creare un nuovo database**:
+   ```csh
+   sqlite3 mio_database.db
    ```
 
-2. **Eseguire una query SQL:**
-   ```bash
-   sqlite3 nuovo_database.db "SELECT * FROM tabella;"
+2. **Eseguire una query SQL per creare una tabella**:
+   ```csh
+   sqlite3 mio_database.db "CREATE TABLE utenti (id INTEGER PRIMARY KEY, nome TEXT, email TEXT);"
    ```
 
-3. **Importare dati da un file CSV:**
-   ```bash
-   sqlite3 -csv nuovo_database.db ".import dati.csv tabella"
+3. **Inserire dati nella tabella**:
+   ```csh
+   sqlite3 mio_database.db "INSERT INTO utenti (nome, email) VALUES ('Mario Rossi', 'mario@example.com');"
    ```
 
-4. **Esportare dati in formato CSV:**
-   ```bash
-   sqlite3 -header -csv nuovo_database.db "SELECT * FROM tabella;" > output.csv
+4. **Selezionare dati dalla tabella**:
+   ```csh
+   sqlite3 mio_database.db "SELECT * FROM utenti;"
    ```
 
-5. **Eseguire comandi da un file SQL:**
-   ```bash
-   sqlite3 nuovo_database.db < script.sql
+5. **Esportare i dati in un file CSV**:
+   ```csh
+   sqlite3 -header -csv mio_database.db "SELECT * FROM utenti;" > utenti.csv
    ```
 
 ## Tips
-- Utilizza l'opzione `-header` per rendere l'output più leggibile.
-- Fai sempre un backup del tuo database prima di eseguire operazioni di modifica.
-- Sperimenta con la modalità batch per automatizzare le operazioni ripetitive.
-- Controlla la versione di SQLite per assicurarti di utilizzare le funzionalità più recenti.
+- Utilizza l'opzione `-init` per caricare automaticamente script SQL all'avvio di `sqlite3`.
+- Ricorda di utilizzare le virgolette per racchiudere le query SQL che contengono spazi o caratteri speciali.
+- Per una migliore leggibilità, puoi utilizzare l'opzione `-header` per visualizzare i nomi delle colonne nei risultati delle query.

@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) docker kullanımı: Docker konteynerlerini yönetme
+# [Linux] C Shell (csh) docker Kullanımı: Docker konteynerlerini yönetmek
 
 ## Genel Bakış
-Docker, yazılım uygulamalarını konteynerler içinde paketlemek, dağıtmak ve çalıştırmak için kullanılan bir platformdur. Bu, uygulamaların bağımlılıklarıyla birlikte taşınabilir ve izole bir ortamda çalışmasını sağlar.
+Docker, uygulamaları konteynerler içinde çalıştırmak için kullanılan bir platformdur. Bu konteynerler, uygulamanın tüm bağımlılıklarını ve yapılandırmalarını içeren hafif birimlerdir. Docker, geliştiricilerin uygulamaları hızlı bir şekilde dağıtmasına ve yönetmesine olanak tanır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
@@ -11,45 +11,40 @@ docker [seçenekler] [argümanlar]
 
 ## Yaygın Seçenekler
 - `run`: Yeni bir konteyner başlatır.
-- `ps`: Çalışan konteynerlerin listesini gösterir.
+- `ps`: Çalışan konteynerleri listeler.
 - `stop`: Çalışan bir konteyneri durdurur.
 - `rm`: Bir konteyneri siler.
 - `images`: Mevcut Docker imajlarını listeler.
 
 ## Yaygın Örnekler
-Aşağıda, Docker komutlarının bazı pratik örnekleri verilmiştir:
+Aşağıda bazı pratik örnekler verilmiştir:
 
-### Yeni Bir Konteyner Başlatma
-```csh
-docker run -d --name my_container nginx
-```
-Bu komut, `nginx` imajını kullanarak arka planda (`-d` seçeneği ile) `my_container` adında yeni bir konteyner başlatır.
+1. Yeni bir konteyner başlatmak:
+   ```csh
+   docker run -d --name my_container nginx
+   ```
 
-### Çalışan Konteynerleri Listeleme
-```csh
-docker ps
-```
-Bu komut, o anda çalışan tüm konteynerlerin listesini gösterir.
+2. Çalışan konteynerleri listelemek:
+   ```csh
+   docker ps
+   ```
 
-### Konteyneri Durdurma
-```csh
-docker stop my_container
-```
-Bu komut, `my_container` adındaki konteyneri durdurur.
+3. Bir konteyneri durdurmak:
+   ```csh
+   docker stop my_container
+   ```
 
-### Konteyneri Silme
-```csh
-docker rm my_container
-```
-Bu komut, durdurulmuş olan `my_container` adındaki konteyneri siler.
+4. Bir konteyneri silmek:
+   ```csh
+   docker rm my_container
+   ```
 
-### Mevcut İmajları Listeleme
-```csh
-docker images
-```
-Bu komut, sistemde mevcut olan tüm Docker imajlarını listeler.
+5. Mevcut Docker imajlarını listelemek:
+   ```csh
+   docker images
+   ```
 
 ## İpuçları
-- Konteynerlerinizi yönetirken isimlendirme kurallarına dikkat edin; bu, takip etmeyi kolaylaştırır.
-- Konteynerlerinizi düzenli olarak güncelleyin ve gereksiz olanları silin.
-- Docker imajlarınızı optimize edin; bu, daha hızlı dağıtım ve daha az disk alanı kullanımı sağlar.
+- Konteynerleri yönetirken, her zaman konteyner adlarını veya kimliklerini kullanarak işlem yapmayı unutmayın.
+- `docker logs [konteyner_adı]` komutunu kullanarak konteynerin günlüklerini görüntüleyebilirsiniz.
+- Docker imajlarını güncel tutmak için `docker pull [imaj_adı]` komutunu düzenli olarak çalıştırın.

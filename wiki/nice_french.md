@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) nice : Ajuster la priorité des processus
 
 ## Overview
-La commande `nice` dans C Shell (csh) permet de modifier la priorité d'exécution d'un processus. En ajustant la priorité, vous pouvez influencer la quantité de ressources système allouées à un processus, ce qui peut être utile pour gérer les performances des applications en cours d'exécution.
+La commande `nice` dans le C Shell (csh) permet de modifier la priorité d'exécution des processus. En utilisant `nice`, vous pouvez exécuter des commandes avec une priorité plus basse ou plus élevée, ce qui influence la quantité de ressources CPU allouées à ces processus.
 
 ## Usage
 La syntaxe de base de la commande `nice` est la suivante :
@@ -13,31 +13,28 @@ nice [options] [arguments]
 ## Common Options
 Voici quelques options courantes pour la commande `nice` :
 
-- `-n` : Spécifie la valeur de "nice" à appliquer. Les valeurs vont de -20 (priorité la plus élevée) à 19 (priorité la plus basse).
+- `-n [valeur]` : Définit la valeur de "niceness" du processus. Une valeur positive diminue la priorité, tandis qu'une valeur négative l'augmente.
 - `-h` : Affiche l'aide et les options disponibles pour la commande.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `nice` :
 
-1. **Lancer un processus avec une priorité inférieure :**
+1. Exécuter une commande avec une priorité plus basse :
    ```csh
-   nice -n 10 ./mon_script.sh
+   nice -n 10 myscript.sh
    ```
-   Cela exécute `mon_script.sh` avec une priorité de 10.
 
-2. **Lancer un processus avec une priorité plus élevée :**
+2. Exécuter un programme avec une priorité normale :
    ```csh
-   nice -n -5 ./mon_programme
+   nice myprogram
    ```
-   Cela exécute `mon_programme` avec une priorité de -5.
 
-3. **Vérifier la priorité d'un processus en cours :**
+3. Exécuter une commande avec une priorité plus élevée (nécessite des privilèges administratifs) :
    ```csh
-   ps -o pid,ni,cmd
+   sudo nice -n -5 mycriticaltask
    ```
-   Cette commande affiche les PID, les valeurs de "nice" et les commandes des processus en cours.
 
 ## Tips
-- Utilisez `nice` pour des processus non critiques afin de libérer des ressources pour d'autres tâches importantes.
-- Évitez d'utiliser des valeurs de "nice" trop basses pour ne pas monopoliser le CPU.
-- Combinez `nice` avec d'autres commandes comme `nohup` pour exécuter des processus en arrière-plan sans interruption.
+- Utilisez `nice` pour éviter que des processus gourmands en ressources n'affectent les performances d'autres tâches importantes.
+- Vérifiez la priorité actuelle d'un processus avec la commande `ps` pour décider si vous devez utiliser `nice`.
+- Soyez prudent lorsque vous augmentez la priorité d'un processus, car cela peut affecter négativement le système si trop de ressources sont allouées à une seule tâche.

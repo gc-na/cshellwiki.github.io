@@ -1,44 +1,53 @@
 # [Linux] C Shell (csh) fc <Użycie: edytowanie i ponowne wykonywanie poleceń>
 
-## Overview
-Polecenie `fc` w powłoce C Shell (csh) służy do edytowania i ponownego wykonywania wcześniej wprowadzonych poleceń. Umożliwia użytkownikom przeglądanie historii poleceń oraz ich modyfikację przed ponownym uruchomieniem.
+## Przegląd
+Polecenie `fc` w C Shell (csh) służy do edytowania i ponownego wykonywania wcześniejszych poleceń z historii. Umożliwia użytkownikom przeglądanie, modyfikowanie i uruchamianie poleceń, co ułatwia pracę w terminalu.
 
-## Usage
-Podstawowa składnia polecenia `fc` wygląda następująco:
+## Użycie
+Podstawowa składnia polecenia `fc` jest następująca:
 
 ```csh
 fc [opcje] [argumenty]
 ```
 
-## Common Options
-- `-l`: Wyświetla listę ostatnich poleceń z historii.
-- `-s`: Wykonuje polecenie bez jego edytowania.
-- `-n`: Nie wyświetla numerów poleceń w liście.
+## Częste opcje
+- `-l` - Wyświetla listę poleceń z historii.
+- `-n` - Nie wyświetla numerów poleceń w liście.
+- `-r` - Odwraca kolejność poleceń w historii.
+- `-s` - Wykonuje polecenie bez edytowania.
 
-## Common Examples
-1. **Wyświetlenie ostatnich poleceń**:
-   ```csh
-   fc -l
-   ```
+## Częste przykłady
 
-2. **Edytowanie konkretnego polecenia**:
-   ```csh
-   fc 10
-   ```
-   (gdzie `10` to numer polecenia w historii)
+### Wyświetlenie ostatnich poleceń
+Aby wyświetlić ostatnie polecenia z historii, użyj:
 
-3. **Wykonanie ostatniego polecenia bez edytowania**:
-   ```csh
-   fc -s
-   ```
+```csh
+fc -l
+```
 
-4. **Wyświetlenie poleceń z zakresu**:
-   ```csh
-   fc -l 5 10
-   ```
-   (wyświetli polecenia od numeru 5 do 10)
+### Edytowanie konkretnego polecenia
+Aby edytować konkretne polecenie z historii, użyj:
 
-## Tips
-- Używaj `fc` regularnie, aby szybko poprawić błędy w ostatnich poleceniach.
-- Możesz używać edytora tekstu, aby wprowadzać zmiany w poleceniach, co ułatwia ich modyfikację.
-- Zapamiętaj numery poleceń, aby sprawnie korzystać z historii i unikać ponownego wpisywania długich komend.
+```csh
+fc 10
+```
+gdzie `10` to numer polecenia w historii.
+
+### Wykonanie polecenia bez edytowania
+Aby wykonać ostatnie polecenie bez edytowania, użyj:
+
+```csh
+fc -s
+```
+
+### Odwrócenie kolejności poleceń
+Aby wyświetlić polecenia w odwrotnej kolejności, użyj:
+
+```csh
+fc -r -l
+```
+
+## Wskazówki
+- Regularnie przeglądaj historię poleceń, aby szybko odnaleźć i ponownie wykonać często używane komendy.
+- Używaj opcji `-n`, aby uprościć wyświetlanie poleceń, gdy nie potrzebujesz numerów.
+- Pamiętaj, że edytowanie poleceń za pomocą `fc` otworzy je w domyślnym edytorze tekstu, co może być przydatne do wprowadzania bardziej złożonych zmian.

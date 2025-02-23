@@ -1,47 +1,41 @@
 # [Linux] C Shell (csh) renice Verwendung: Ändern der Priorität von Prozessen
 
 ## Übersicht
-Der Befehl `renice` wird verwendet, um die Priorität von laufenden Prozessen in einem Unix-ähnlichen Betriebssystem zu ändern. Durch die Anpassung der Priorität kann die CPU-Zuteilung für bestimmte Prozesse beeinflusst werden, was besonders nützlich ist, um ressourcenintensive Anwendungen zu steuern.
+Der Befehl `renice` wird verwendet, um die Priorität eines oder mehrerer laufender Prozesse in einem Unix-ähnlichen Betriebssystem zu ändern. Dies kann nützlich sein, um die Systemressourcen für bestimmte Anwendungen zu optimieren.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
+```csh
+renice [Optionen] [Argumente]
 ```
-renice [Optionen] [Wert] [PID]
-```
-
-Hierbei steht `Wert` für den neuen Prioritätswert und `PID` für die Prozess-ID des Prozesses, dessen Priorität geändert werden soll.
 
 ## Häufige Optionen
-- `-n`: Gibt den neuen Prioritätswert an.
-- `-p`: Gibt die Prozess-ID an, deren Priorität geändert werden soll.
+- `-n`: Gibt den neuen Nice-Wert an. Ein höherer Wert bedeutet eine niedrigere Priorität.
+- `-p`: Gibt die Prozess-ID (PID) an, deren Priorität geändert werden soll.
 - `-g`: Ändert die Priorität aller Prozesse einer bestimmten Gruppe.
 - `-u`: Ändert die Priorität aller Prozesse eines bestimmten Benutzers.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele zur Verwendung von `renice`:
+Um die Priorität eines Prozesses mit der PID 1234 auf 10 zu setzen, verwenden Sie:
 
-1. Ändern der Priorität eines Prozesses mit der PID 1234 auf 10:
-   ```csh
-   renice -n 10 -p 1234
-   ```
+```csh
+renice -n 10 -p 1234
+```
 
-2. Ändern der Priorität aller Prozesse eines bestimmten Benutzers (z.B. `username`) auf 5:
-   ```csh
-   renice -n 5 -u username
-   ```
+Um die Priorität aller Prozesse eines bestimmten Benutzers (z. B. `benutzername`) auf 5 zu ändern, verwenden Sie:
 
-3. Ändern der Priorität aller Prozesse einer bestimmten Gruppe (z.B. Gruppe 5678) auf 15:
-   ```csh
-   renice -n 15 -g 5678
-   ```
+```csh
+renice -n 5 -u benutzername
+```
 
-4. Überprüfen der aktuellen Priorität eines Prozesses (z.B. PID 1234) vor der Änderung:
-   ```csh
-   ps -o pid,ni,comm -p 1234
-   ```
+Um die Priorität aller Prozesse einer bestimmten Gruppe (z. B. mit der GID 1001) auf 15 zu ändern, verwenden Sie:
+
+```csh
+renice -n 15 -g 1001
+```
 
 ## Tipps
-- Verwenden Sie `renice` mit Bedacht, da das Setzen einer zu hohen Priorität für einen Prozess andere wichtige Prozesse beeinträchtigen kann.
-- Überprüfen Sie regelmäßig die Prioritäten Ihrer Prozesse, um sicherzustellen, dass Ihr System effizient läuft.
-- Nutzen Sie den Befehl `top` oder `htop`, um die aktuellen Prozesse und deren Prioritäten in Echtzeit zu überwachen.
+- Verwenden Sie `renice` mit Bedacht, da das Setzen einer zu niedrigen Priorität dazu führen kann, dass wichtige Prozesse nicht genügend Ressourcen erhalten.
+- Überprüfen Sie die aktuelle Priorität eines Prozesses mit dem Befehl `ps` oder `top`, bevor Sie `renice` verwenden.
+- Beachten Sie, dass nur der Benutzer oder der Root-Benutzer die Priorität eines Prozesses ändern kann, den er nicht gestartet hat.

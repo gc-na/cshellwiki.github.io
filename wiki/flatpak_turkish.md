@@ -1,10 +1,10 @@
 # [Linux] C Shell (csh) flatpak Kullanımı: Uygulama yönetimi için bir araç
 
 ## Genel Bakış
-Flatpak, Linux üzerinde uygulamaları paketlemek ve dağıtmak için kullanılan bir sistemdir. Uygulamaların bağımlılıklarını izole ederek, farklı Linux dağıtımlarında çalışmasını sağlar. Bu sayede, kullanıcılar uygulamaları kolayca yükleyebilir, güncelleyebilir ve kaldırabilir.
+Flatpak, Linux üzerinde uygulamaların dağıtımını ve yönetimini kolaylaştıran bir sistemdir. Uygulamaları bağımsız bir şekilde çalıştırarak, sistemin geri kalanından izole eder ve farklı Linux dağıtımları arasında uyumluluk sağlar.
 
 ## Kullanım
-Flatpak komutunun temel sözdizimi aşağıdaki gibidir:
+Flatpak komutunun temel sözdizimi şu şekildedir:
 
 ```bash
 flatpak [seçenekler] [argümanlar]
@@ -12,40 +12,50 @@ flatpak [seçenekler] [argümanlar]
 
 ## Yaygın Seçenekler
 - `install`: Belirtilen bir uygulamayı yükler.
-- `remove`: Yüklenmiş bir uygulamayı kaldırır.
-- `update`: Yüklenmiş uygulamaları günceller.
+- `uninstall`: Yüklenmiş bir uygulamayı kaldırır.
+- `run`: Yüklenmiş bir uygulamayı çalıştırır.
 - `list`: Yüklenmiş uygulamaların listesini gösterir.
-- `run`: Belirtilen bir uygulamayı çalıştırır.
+- `update`: Yüklenmiş uygulamaları günceller.
 
 ## Yaygın Örnekler
-Aşağıda flatpak komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda flatpak komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
 ### Uygulama Yükleme
+Bir uygulamayı yüklemek için şu komutu kullanabilirsiniz:
+
 ```bash
-flatpak install flathub org.videolan.VLC
+flatpak install flathub org.example.AppName
 ```
 
 ### Uygulama Kaldırma
+Yüklenmiş bir uygulamayı kaldırmak için:
+
 ```bash
-flatpak remove org.videolan.VLC
+flatpak uninstall org.example.AppName
 ```
 
-### Uygulamaları Güncelleme
+### Uygulama Çalıştırma
+Yüklenmiş bir uygulamayı çalıştırmak için:
+
 ```bash
-flatpak update
+flatpak run org.example.AppName
 ```
 
-### Yüklenmiş Uygulamaların Listesini Görüntüleme
+### Yüklenmiş Uygulamaları Listeleme
+Tüm yüklenmiş uygulamaları görmek için:
+
 ```bash
 flatpak list
 ```
 
-### Uygulama Çalıştırma
+### Uygulamaları Güncelleme
+Yüklenmiş uygulamaları güncellemek için:
+
 ```bash
-flatpak run org.videolan.VLC
+flatpak update
 ```
 
 ## İpuçları
-- Uygulama yüklerken `--user` seçeneğini kullanarak yalnızca mevcut kullanıcı için yükleme yapabilirsiniz.
-- Flatpak uygulamalarını güncel tutmak için düzenli olarak `flatpak update` komutunu çalıştırmayı unutmayın.
-- Flatpak ile yüklenen uygulamalar, sistemin diğer bölümlerinden izole edildiği için daha güvenli bir deneyim sağlar.
+- Uygulamaları yüklemeden önce, hangi depolardan (repository) yükleme yapacağınızı kontrol edin.
+- Flatpak uygulamalarının güncel kalmasını sağlamak için düzenli olarak `flatpak update` komutunu çalıştırın.
+- Uygulama bağımlılıklarını yönetmek için `flatpak info` komutunu kullanarak uygulama hakkında daha fazla bilgi edinebilirsiniz.

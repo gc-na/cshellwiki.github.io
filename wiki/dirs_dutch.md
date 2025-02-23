@@ -1,49 +1,44 @@
 # [Linux] C Shell (csh) dirs gebruik: Beheer van de directory stack
 
 ## Overzicht
-De `dirs` opdracht in C Shell (csh) wordt gebruikt om de huidige directory stack weer te geven. Deze stack houdt bij welke directories je hebt bezocht, zodat je eenvoudig kunt navigeren tussen verschillende locaties in het bestandssysteem.
+De `dirs` opdracht in C Shell (csh) wordt gebruikt om de huidige directory stack weer te geven. Dit is handig voor gebruikers die vaak van directory wisselen en de geschiedenis van hun navigatie willen bijhouden.
 
 ## Gebruik
 De basis syntaxis van de `dirs` opdracht is als volgt:
 
-```
-dirs [opties] [argumenten]
+```csh
+dirs [options] [arguments]
 ```
 
-## Veelvoorkomende Opties
+## Veelvoorkomende opties
 - `-c`: Leeg de directory stack.
-- `-l`: Toon de directory stack met volledige paden.
-- `+n`: Toon de directory op positie n in de stack.
-- `-n`: Toon de directory op positie n van de bovenkant van de stack.
+- `-l`: Toon de directory stack in lange vorm, inclusief volledige paden.
 
-## Veelvoorkomende Voorbeelden
+## Veelvoorkomende voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van de `dirs` opdracht:
 
 1. **Toon de huidige directory stack:**
    ```csh
    dirs
    ```
 
-2. **Toon de directory stack met volledige paden:**
+2. **Toon de huidige directory stack in lange vorm:**
    ```csh
    dirs -l
    ```
 
-3. **Toon de directory op positie 1:**
-   ```csh
-   dirs +1
-   ```
-
-4. **Leeg de directory stack:**
+3. **Leeg de directory stack:**
    ```csh
    dirs -c
    ```
 
-5. **Toon de directory op positie 0 van de bovenkant van de stack:**
+4. **Voeg een nieuwe directory toe aan de stack en bekijk de stack:**
    ```csh
-   dirs -0
+   cd /pad/naar/directory
+   dirs
    ```
 
 ## Tips
 - Gebruik `pushd` en `popd` in combinatie met `dirs` om efficiënt tussen directories te navigeren.
-- Controleer regelmatig je directory stack met `dirs` om te zien waar je je bevindt in je navigatiegeschiedenis.
-- Maak gebruik van de `-l` optie als je met lange paden werkt, zodat je altijd het volledige pad kunt zien.
+- Controleer regelmatig je directory stack met `dirs` om te zien waar je je bevindt in de navigatiegeschiedenis.
+- Maak gebruik van de lange weergave (`dirs -l`) als je met complexe paden werkt om verwarring te voorkomen.

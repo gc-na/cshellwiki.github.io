@@ -1,53 +1,50 @@
-# [Linux] C Shell (csh) foreach gebruik: Itereren over een lijst van items
+# [Linux] C Shell (csh) foreach gebruik: Herhaal een commando voor elke waarde in een lijst
 
-## Overzicht
-De `foreach`-opdracht in C Shell (csh) wordt gebruikt om een reeks commando's uit te voeren voor elk item in een lijst. Dit maakt het mogelijk om repetitieve taken te automatiseren en efficiënt te werken met meerdere bestanden of variabelen.
+## Overview
+De `foreach`-opdracht in C Shell (csh) wordt gebruikt om een commando of een reeks commando's uit te voeren voor elke waarde in een opgegeven lijst. Dit maakt het mogelijk om taken efficiënt te automatiseren en herhalende processen te vereenvoudigen.
 
-## Gebruik
+## Usage
 De basis syntaxis van de `foreach`-opdracht is als volgt:
 
 ```csh
-foreach variabele (lijst)
+foreach variable (lijst)
     commando's
 end
 ```
 
-## Veelvoorkomende Opties
-- **variabele**: De naam van de variabele die elk item in de lijst zal bevatten.
-- **lijst**: Een lijst van items of bestanden die doorlopen moeten worden.
-- **commando's**: De commando's die uitgevoerd moeten worden voor elk item in de lijst.
+## Common Options
+De `foreach`-opdracht heeft geen specifieke opties, maar het is belangrijk om de juiste syntaxis te volgen en de juiste commando's binnen de loop te plaatsen.
 
-## Veelvoorkomende Voorbeelden
+## Common Examples
 
-### Voorbeeld 1: Basisgebruik
-Dit voorbeeld toont hoe je een lijst van bestanden kunt doorlopen en hun namen kunt afdrukken.
+### Voorbeeld 1: Eenvoudige loop
+Dit voorbeeld toont hoe je een eenvoudige loop kunt maken om een reeks getallen af te drukken.
 
 ```csh
-foreach bestand (*)
-    echo $bestand
+foreach i (1 2 3 4 5)
+    echo "Getal: $i"
 end
 ```
 
-### Voorbeeld 2: Bewerken van bestanden
-Hierdoor kun je een reeks tekstbestanden doorlopen en een bepaalde bewerking uitvoeren, zoals het kopiëren naar een andere map.
+### Voorbeeld 2: Bestanden verwerken
+Hier is een voorbeeld dat alle `.txt`-bestanden in de huidige directory afdrukt.
 
 ```csh
 foreach bestand (*.txt)
-    cp $bestand /pad/naar/doelmap/
+    echo "Bestand: $bestand"
 end
 ```
 
-### Voorbeeld 3: Itereren met een variabele
-In dit voorbeeld worden de getallen van 1 tot 5 doorlopen en wordt elk getal verdubbeld.
+### Voorbeeld 3: Combineren met andere commando's
+Je kunt `foreach` ook combineren met andere commando's, zoals `mv`, om bestanden te hernoemen.
 
 ```csh
-foreach nummer (1 2 3 4 5)
-    @ dubbel = $nummer * 2
-    echo $dubbel
+foreach bestand (*.jpg)
+    mv $bestand $bestand:r.old
 end
 ```
 
 ## Tips
-- Zorg ervoor dat je de `end`-instructie niet vergeet; dit is essentieel om de `foreach`-lus correct af te sluiten.
-- Gebruik duidelijke en beschrijvende namen voor je variabelen om de leesbaarheid van je scripts te verbeteren.
-- Test je `foreach`-commando's met een kleine lijst voordat je ze op een grotere dataset toepast om onbedoelde fouten te voorkomen.
+- Zorg ervoor dat je de `end`-instructie niet vergeet; dit sluit de `foreach`-loop af.
+- Gebruik haakjes om de lijst van waarden correct te definiëren.
+- Test je commando's met een kleine dataset voordat je ze op een grote hoeveelheid gegevens toepast, om onbedoelde wijzigingen te voorkomen.

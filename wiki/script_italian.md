@@ -1,48 +1,44 @@
-# [Linux] C Shell (csh) script utilizzo: Registra sessioni di terminale
+# [Linux] C Shell (csh) script Utilizzo: Registra sessioni del terminale
 
 ## Overview
-Il comando `script` in C Shell (csh) viene utilizzato per registrare una sessione di terminale. Questo strumento cattura tutto ciò che viene visualizzato sullo schermo e lo salva in un file, consentendo di rivedere le attività svolte in una sessione di terminale.
+Il comando `script` in C Shell (csh) viene utilizzato per registrare una sessione del terminale. Questo strumento crea un file di registro che cattura tutto ciò che viene visualizzato nel terminale, rendendo possibile rivedere le attività eseguite durante la sessione.
 
 ## Usage
-La sintassi di base del comando è la seguente:
+La sintassi di base del comando `script` è la seguente:
 
 ```csh
-script [options] [file]
+script [options] [arguments]
 ```
 
 ## Common Options
-- `-a`: Aggiunge l'output al file esistente invece di sovrascriverlo.
-- `-f`: Scrive l'output immediatamente nel file, utile per sessioni lunghe.
-- `-q`: Esegue il comando in modalità silenziosa, senza messaggi di avvio e chiusura.
+- `-a`: Aggiunge l'output al file di log esistente invece di sovrascriverlo.
+- `-f`: Scrive immediatamente l'output nel file di log, utile per monitorare in tempo reale.
+- `-q`: Esegue il comando in modalità silenziosa, senza stampare messaggi di avvio e di chiusura.
 
 ## Common Examples
 Ecco alcuni esempi pratici di utilizzo del comando `script`:
 
-1. **Registrare una sessione in un file chiamato `session.log`:**
+1. **Registrare una sessione in un file di log**:
    ```csh
-   script session.log
+   script sessione.log
    ```
-   Questo comando inizia a registrare la sessione e salva l'output in `session.log`.
 
-2. **Aggiungere l'output a un file esistente:**
+2. **Aggiungere output a un file di log esistente**:
    ```csh
-   script -a session.log
+   script -a sessione.log
    ```
-   Utilizzando l'opzione `-a`, l'output verrà aggiunto a `session.log` senza sovrascrivere il contenuto esistente.
 
-3. **Eseguire il comando in modalità silenziosa:**
+3. **Eseguire il comando in modalità silenziosa**:
    ```csh
-   script -q session.log
+   script -q sessione.log
    ```
-   Questo comando registra la sessione senza mostrare i messaggi di avvio e chiusura.
 
-4. **Scrivere l'output immediatamente nel file:**
+4. **Registrare una sessione con output immediato**:
    ```csh
-   script -f session.log
+   script -f sessione.log
    ```
-   Con l'opzione `-f`, l'output viene scritto nel file in tempo reale.
 
 ## Tips
-- Assicurati di terminare la registrazione digitando `exit` o `Ctrl+D` per chiudere correttamente il file di output.
-- Utilizza nomi di file significativi per i tuoi log, in modo da poterli identificare facilmente in seguito.
+- Assicurati di terminare la registrazione digitando `exit` o premendo `Ctrl+D` per chiudere il file di log correttamente.
 - Controlla il file di log dopo la registrazione per assicurarti che tutte le informazioni necessarie siano state catturate.
+- Utilizza l'opzione `-f` se desideri monitorare l'output in tempo reale, utile durante la risoluzione dei problemi.

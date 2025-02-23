@@ -1,49 +1,49 @@
 # [Linux] C Shell (csh) umount Kullanımı: Dosya sistemlerini ayırma
 
 ## Overview
-`umount` komutu, bağlı bir dosya sistemini ayırmak için kullanılır. Bu, dosya sisteminin artık kullanılmadığını ve sistemden çıkarıldığını belirtir. Dosya sistemini ayırmak, verilerin güvenli bir şekilde kaydedilmesini ve sistem kaynaklarının serbest bırakılmasını sağlar.
+`umount` komutu, bağlı olan dosya sistemlerini ayırmak için kullanılır. Bu, bir dosya sisteminin artık kullanılmadığını ve sistemden çıkarılması gerektiğini belirtir. Dosya sistemini ayırmak, veri kaybını önlemek ve sistemin düzgün çalışmasını sağlamak için önemlidir.
 
 ## Usage
 Temel sözdizimi aşağıdaki gibidir:
-```csh
+```
 umount [options] [arguments]
 ```
 
 ## Common Options
 - `-a`: Tüm bağlı dosya sistemlerini ayırır.
 - `-f`: Zorla ayırma işlemi yapar, dosya sistemi yanıt vermiyorsa bile.
-- `-l`: Geçici olarak ayırır; dosya sistemi, kullanımdan çıkarılmadan önce mevcut işlemlerin tamamlanmasına izin verir.
-- `-r`: Ayırma işlemi sırasında hata oluşursa, dosya sistemini otomatik olarak bağlar.
+- `-l`: Geçici olarak ayırır; dosya sistemi hala kullanılabilir, ancak bağlantı kesilecektir.
+- `-r`: Dosya sistemini ayırırken, eğer ayırma işlemi başarısız olursa, dosya sistemini sadece okunur hale getirir.
 
 ## Common Examples
-Aşağıda `umount` komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda `umount` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
 1. Belirli bir dosya sistemini ayırma:
-   ```csh
-   umount /mnt/usb
+   ```bash
+   umount /mnt/mydrive
    ```
 
 2. Tüm bağlı dosya sistemlerini ayırma:
-   ```csh
+   ```bash
    umount -a
    ```
 
-3, Zorla bir dosya sistemini ayırma:
-   ```csh
-   umount -f /mnt/usb
+3. Zorla ayırma işlemi yapma:
+   ```bash
+   umount -f /mnt/mydrive
    ```
 
 4. Geçici olarak ayırma:
-   ```csh
-   umount -l /mnt/usb
+   ```bash
+   umount -l /mnt/mydrive
    ```
 
-5. Hata durumunda otomatik bağlama:
-   ```csh
-   umount -r /mnt/usb
+5. Dosya sistemini sadece okunur hale getirme:
+   ```bash
+   umount -r /mnt/mydrive
    ```
 
 ## Tips
 - Dosya sistemini ayırmadan önce, o dosya sisteminde açık dosya veya işlem olmadığından emin olun.
-- Zorla ayırma (`-f`) kullanmadan önce dikkatli olun; bu, veri kaybına neden olabilir.
-- Ayırma işlemi sırasında hata alıyorsanız, dosya sisteminin hala kullanılıp kullanılmadığını kontrol edin.
+- `umount` komutunu kullanmadan önce, dosya sisteminin bağlı olup olmadığını kontrol etmek için `mount` komutunu kullanabilirsiniz.
+- Zorla ayırma işlemi yaparken dikkatli olun, çünkü bu veri kaybına yol açabilir.

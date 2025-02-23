@@ -1,50 +1,50 @@
 # [Linux] C Shell (csh) cp gebruik: Bestanden kopiëren
 
 ## Overzicht
-De `cp`-opdracht wordt gebruikt om bestanden en directories te kopiëren in de C Shell. Het is een essentiële tool voor het beheren van bestanden op een systeem.
+De `cp`-opdracht in C Shell (csh) wordt gebruikt om bestanden en mappen te kopiëren van de ene locatie naar de andere. Het is een essentieel hulpmiddel voor bestandsbeheer in een Unix-achtige omgeving.
 
 ## Gebruik
 De basis syntaxis van de `cp`-opdracht is als volgt:
 
-```
+```csh
 cp [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
 - `-i`: Vraagt om bevestiging voordat een bestaand bestand wordt overschreven.
 - `-r`: Kopieert directories en hun inhoud recursief.
-- `-u`: Kopieert alleen als het bronbestand nieuwer is dan het doelbestand of als het doelbestand niet bestaat.
-- `-v`: Toont de voortgang van de kopieeractie (verbose).
+- `-u`: Kopieert alleen bestanden die nieuwer zijn dan de doelbestanden of als de doelbestanden niet bestaan.
+- `-v`: Geeft gedetailleerde informatie over de kopieeroperaties weer.
 
 ## Veelvoorkomende Voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van de `cp`-opdracht:
 
-1. **Een enkel bestand kopiëren:**
+1. **Een bestand kopiëren naar een andere locatie:**
    ```csh
-   cp bestand.txt kopie_bestand.txt
+   cp bestand.txt /pad/naar/doel/
    ```
 
-2. **Een directory en zijn inhoud kopiëren:**
+2. **Een bestand kopiëren en hernoemen:**
    ```csh
-   cp -r mijn_map/ kopie_mijn_map/
+   cp bestand.txt nieuw_bestand.txt
    ```
 
-3. **Een bestand kopiëren met bevestiging:**
+3. **Een directory en zijn inhoud kopiëren:**
    ```csh
-   cp -i bestand.txt kopie_bestand.txt
+   cp -r /pad/naar/directory /pad/naar/doel/
    ```
 
-4. **Bestanden kopiëren met verbose output:**
+4. **Een bestand kopiëren met bevestiging bij overschrijven:**
    ```csh
-   cp -v bestand1.txt bestand2.txt
+   cp -i bestand.txt /pad/naar/doel/
    ```
 
-5. **Een bestand kopiëren als het bronbestand nieuwer is:**
+5. **Alleen nieuwere bestanden kopiëren:**
    ```csh
-   cp -u bestand.txt kopie_bestand.txt
+   cp -u bestand.txt /pad/naar/doel/
    ```
 
 ## Tips
-- Gebruik de `-i` optie om per ongeluk overschrijven van bestanden te voorkomen.
-- Bij het kopiëren van directories, vergeet niet de `-r` optie te gebruiken om ervoor te zorgen dat alle inhoud wordt gekopieerd.
-- Controleer altijd de bestandsrechten na het kopiëren om ervoor te zorgen dat ze correct zijn ingesteld.
+- Gebruik de `-v` optie om te zien welke bestanden worden gekopieerd, dit kan handig zijn voor het controleren van de voortgang.
+- Wees voorzichtig met de `-r` optie, vooral bij het kopiëren van grote directories, om onbedoeld gegevensverlies te voorkomen.
+- Maak altijd een back-up van belangrijke bestanden voordat je ze overschrijft met de `cp`-opdracht.

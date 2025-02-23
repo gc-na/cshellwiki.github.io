@@ -1,51 +1,49 @@
-# [Linux] C Shell (csh) pkg użycie: Zarządzanie pakietami
+# [Linux] C Shell (csh) pkg użycie: zarządzanie pakietami
 
 ## Overview
-Polecenie `pkg` w C Shell (csh) służy do zarządzania pakietami oprogramowania. Umożliwia instalację, aktualizację oraz usuwanie pakietów, co jest kluczowe dla utrzymania systemu w aktualnym stanie.
+Polecenie `pkg` w C Shell (csh) służy do zarządzania pakietami oprogramowania. Umożliwia instalację, aktualizację i usuwanie pakietów, co jest kluczowe dla utrzymania systemu w aktualnym stanie.
 
 ## Usage
 Podstawowa składnia polecenia `pkg` wygląda następująco:
 
-```
-pkg [opcje] [argumenty]
+```csh
+pkg [options] [arguments]
 ```
 
 ## Common Options
 - `install`: Instaluje nowy pakiet.
 - `remove`: Usuwa zainstalowany pakiet.
-- `update`: Aktualizuje zainstalowane pakiety do najnowszej wersji.
+- `update`: Aktualizuje zainstalowane pakiety do najnowszych wersji.
 - `list`: Wyświetla listę zainstalowanych pakietów.
-- `info`: Wyświetla szczegółowe informacje o wybranym pakiecie.
+- `info`: Wyświetla szczegóły dotyczące konkretnego pakietu.
 
 ## Common Examples
-Przykłady użycia polecenia `pkg`:
+- Aby zainstalować pakiet:
+  ```csh
+  pkg install nazwa_pakietu
+  ```
 
-1. **Instalacja pakietu:**
-   ```csh
-   pkg install nazwa_pakietu
-   ```
+- Aby usunąć pakiet:
+  ```csh
+  pkg remove nazwa_pakietu
+  ```
 
-2. **Usunięcie pakietu:**
-   ```csh
-   pkg remove nazwa_pakietu
-   ```
+- Aby zaktualizować wszystkie zainstalowane pakiety:
+  ```csh
+  pkg update
+  ```
 
-3. **Aktualizacja wszystkich pakietów:**
-   ```csh
-   pkg update
-   ```
+- Aby wyświetlić listę zainstalowanych pakietów:
+  ```csh
+  pkg list
+  ```
 
-4. **Wyświetlenie listy zainstalowanych pakietów:**
-   ```csh
-   pkg list
-   ```
-
-5. **Wyświetlenie informacji o pakiecie:**
-   ```csh
-   pkg info nazwa_pakietu
-   ```
+- Aby uzyskać szczegóły dotyczące konkretnego pakietu:
+  ```csh
+  pkg info nazwa_pakietu
+  ```
 
 ## Tips
 - Zawsze sprawdzaj dostępność aktualizacji przed instalacją nowych pakietów, aby uniknąć konfliktów.
-- Używaj opcji `info`, aby uzyskać szczegółowe informacje o pakietach, co może pomóc w podjęciu decyzji o ich instalacji lub usunięciu.
+- Używaj opcji `info`, aby uzyskać więcej informacji o pakiecie przed jego instalacją.
 - Regularnie przeglądaj listę zainstalowanych pakietów, aby utrzymać porządek w systemie.

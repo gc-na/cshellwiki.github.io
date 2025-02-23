@@ -1,11 +1,11 @@
 # [Linux] C Shell (csh) tr Kullanımı: Karakterleri Dönüştürme
 
 ## Overview
-`tr` komutu, bir dosyadaki veya standart girdi akışındaki karakterleri dönüştürmek veya silmek için kullanılır. Bu komut, metin işleme işlemlerinde oldukça faydalıdır.
+`tr` komutu, bir dosyadaki veya standart girdideki karakterleri dönüştürmek veya silmek için kullanılır. Genellikle metin işleme görevlerinde faydalıdır.
 
 ## Usage
 Temel sözdizimi aşağıdaki gibidir:
-```
+```csh
 tr [options] [arguments]
 ```
 
@@ -13,39 +13,33 @@ tr [options] [arguments]
 - `-d`: Belirtilen karakterleri siler.
 - `-s`: Ardışık aynı karakterleri tek bir karakterle birleştirir.
 - `-c`: Belirtilen karakterler dışındaki tüm karakterleri işler.
-- `-t`: Belirtilen karakterleri hedef karakterlerle değiştirir.
 
 ## Common Examples
-Aşağıda `tr` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
-
-1. **Karakter Dönüştürme**
-   Büyük harfleri küçük harflere dönüştürmek için:
+1. **Karakter Dönüştürme**: Küçük harfleri büyük harflere dönüştürme.
    ```csh
-   echo "HELLO WORLD" | tr 'A-Z' 'a-z'
+   echo "merhaba dünya" | tr 'a-z' 'A-Z'
    ```
+   Çıktı: `MERHABA DÜNYA`
 
-2. **Karakter Silme**
-   Belirli karakterleri silmek için:
+2. **Karakter Silme**: Belirli karakterleri silme.
    ```csh
-   echo "Hello, World!" | tr -d 'o'
+   echo "merhaba dünya" | tr -d 'a'
    ```
+   Çıktı: `merhb dny`
 
-3. **Ardışık Karakterleri Birleştirme**
-   Ardışık boşlukları tek bir boşlukla birleştirmek için:
+3. **Ardışık Boşlukları Tek Boşluğa Dönüştürme**:
    ```csh
-   echo "Hello    World!" | tr -s ' '
+   echo "merhaba    dünya" | tr -s ' '
    ```
+   Çıktı: `merhaba dünya`
 
-4. **Karakterleri Değiştirme**
-   Belirli karakterleri başka karakterlerle değiştirmek için:
+4. **Karakterleri Tersine Çevirme**: Belirli karakterler dışındaki tüm karakterleri dönüştürme.
    ```csh
-   echo "apple" | tr 'aeiou' 'AEIOU'
+   echo "merhaba dünya" | tr -c 'a-zA-Z' ' '
    ```
+   Çıktı: `merhaba dünya`
 
 ## Tips
 - `tr` komutunu kullanırken, girdi verisinin doğru formatta olduğundan emin olun.
-- Birden fazla karakter dönüştürmesi yapacaksanız, dönüşüm dizilerini sıralı olarak belirtin.
-- `tr` komutunu bir dosya ile kullanmak için, dosya içeriğini `cat` komutuyla `tr`'ye yönlendirebilirsiniz. Örneğin:
-  ```csh
-  cat dosya.txt | tr 'a-z' 'A-Z'
-  ```
+- Çok büyük dosyalarla çalışıyorsanız, `tr` komutunu bir dosya üzerinde kullanmak için dosya adını doğrudan belirtebilirsiniz.
+- `tr` komutunu diğer komutlarla birleştirerek daha karmaşık metin işleme görevleri gerçekleştirebilirsiniz.

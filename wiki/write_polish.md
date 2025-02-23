@@ -1,41 +1,41 @@
-# [Linux] C Shell (csh) write użycie: Wysyłanie wiadomości do innych użytkowników
+# [Linux] C Shell (csh) write użycie: wysyłanie wiadomości do innych użytkowników
 
 ## Overview
-Polecenie `write` w C Shell (csh) umożliwia użytkownikom wysyłanie wiadomości do innych użytkowników zalogowanych na tym samym systemie. Jest to przydatne narzędzie do komunikacji w czasie rzeczywistym.
+Polecenie `write` w C Shell (csh) służy do wysyłania wiadomości tekstowych do innych użytkowników zalogowanych na tym samym systemie. Umożliwia komunikację w czasie rzeczywistym, co jest przydatne w środowiskach wieloużytkownikowych.
 
 ## Usage
 Podstawowa składnia polecenia `write` jest następująca:
 
-```
-write [opcje] [użytkownik] 
+```csh
+write [opcje] [użytkownik] [terminal]
 ```
 
 ## Common Options
-- `-n` : Nie wyświetla nagłówka wiadomości.
-- `-h` : Wyświetla pomoc dotycząca użycia polecenia.
+- `-n`: Nie wysyłaj znaku nowej linii na końcu wiadomości.
+- `-h`: Wyświetl pomoc dotycząca użycia polecenia.
 
 ## Common Examples
-1. Wysłanie wiadomości do użytkownika o nazwie "janek":
+Oto kilka praktycznych przykładów użycia polecenia `write`:
+
+1. Wysłanie wiadomości do użytkownika o nazwie `janek`:
    ```csh
    write janek
+   Cześć, jak się masz?
    ```
-   Po wpisaniu tej komendy można wpisać wiadomość, która zostanie wysłana do użytkownika "janek".
 
-2. Wysłanie wiadomości bez nagłówka:
+2. Wysłanie wiadomości do użytkownika `ania` na terminalu `pts/1`:
+   ```csh
+   write ania pts/1
+   Spotkajmy się o 15:00.
+   ```
+
+3. Wysłanie krótkiej wiadomości bez nowej linii:
    ```csh
    write -n janek
+   Czy jesteś dostępny?
    ```
-   Ta komenda wysyła wiadomość do "janek" bez wyświetlania nagłówka.
-
-3. Wysłanie wiadomości do użytkownika "ania" i zakończenie sesji:
-   ```csh
-   write ania
-   Hello Ania, how are you?
-   ^D
-   ```
-   W tym przykładzie wiadomość "Hello Ania, how are you?" jest wysyłana, a `^D` kończy sesję.
 
 ## Tips
-- Upewnij się, że użytkownik, do którego chcesz wysłać wiadomość, jest zalogowany na tym samym systemie.
-- Możesz używać `write` w połączeniu z innymi poleceniami, aby zwiększyć efektywność komunikacji.
-- Pamiętaj, że niektórzy użytkownicy mogą mieć wyłączoną możliwość odbierania wiadomości, co uniemożliwi wysłanie do nich wiadomości.
+- Upewnij się, że użytkownik, do którego wysyłasz wiadomość, jest zalogowany i ma otwarty terminal.
+- Możesz używać polecenia `who` lub `users`, aby sprawdzić, którzy użytkownicy są aktualnie zalogowani.
+- Pamiętaj, że wiadomości wysyłane za pomocą `write` mogą być widoczne dla innych użytkowników, więc zachowaj ostrożność przy przesyłaniu poufnych informacji.

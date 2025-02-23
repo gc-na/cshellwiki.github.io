@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) endsw utilizare: Termină un bloc de instrucțiuni
+# [Linux] C Shell (csh) endsw utilizare: Termină un bloc de instrucțiuni condiționale
 
 ## Overview
-Comanda `endsw` în C Shell (csh) este utilizată pentru a încheia un bloc de instrucțiuni `switch`. Aceasta este parte din controlul fluxului de execuție, permițând utilizatorilor să definească ramificații în funcție de valoarea unei expresii.
+Comanda `endsw` în C Shell (csh) este utilizată pentru a încheia un bloc de instrucțiuni condiționale care a fost început cu comanda `switch`. Aceasta permite structurarea codului și gestionarea fluxului de execuție în funcție de diferite condiții.
 
 ## Usage
 Sintaxa de bază a comenzii `endsw` este următoarea:
@@ -11,12 +11,12 @@ endsw
 ```
 
 ## Common Options
-Comanda `endsw` nu are opțiuni specifice, deoarece este folosită exclusiv pentru a marca sfârșitul unui bloc `switch`.
+Comanda `endsw` nu are opțiuni specifice, deoarece este folosită exclusiv pentru a încheia un bloc de instrucțiuni `switch`. 
 
 ## Common Examples
-Iată câteva exemple practice care ilustrează utilizarea comenzii `endsw`:
+Iată câteva exemple practice ale utilizării comenzii `endsw`:
 
-### Exemplul 1: Bloc simplu `switch`
+### Exemplul 1: Utilizarea `endsw` într-un bloc `switch`
 ```csh
 set var = "apple"
 switch ($var)
@@ -27,26 +27,29 @@ switch ($var)
         echo "Este o banană."
         breaksw
     default:
-        echo "Nu este un fruct cunoscut."
+        echo "Nu este niciun fruct cunoscut."
 endsw
 ```
 
-### Exemplul 2: Utilizarea cu variabile
+### Exemplul 2: Bloc `switch` cu mai multe cazuri
 ```csh
-set color = "red"
-switch ($color)
-    case "red":
-        echo "Culoarea este roșie."
+set day = "luni"
+switch ($day)
+    case "luni":
+        echo "Este începutul săptămânii."
         breaksw
-    case "blue":
-        echo "Culoarea este albastră."
+    case "vineri":
+        echo "Este aproape weekend."
+        breaksw
+    case "duminică":
+        echo "Este zi de odihnă."
         breaksw
     default:
-        echo "Culoare necunoscută."
+        echo "Zi necunoscută."
 endsw
 ```
 
 ## Tips
-- Asigurați-vă că `endsw` este plasat corect pentru a evita erorile de sintaxă în scripturile dvs.
-- Utilizați `breaksw` înainte de `endsw` pentru a ieși din blocul `switch` după ce a fost executat un caz.
-- Structurați-vă blocurile `switch` pentru a fi ușor de citit, folosind indentarea corespunzătoare.
+- Asigurați-vă că fiecare bloc `switch` are un `endsw` corespunzător pentru a evita erorile de sintaxă.
+- Folosiți `breaksw` pentru a ieși dintr-un caz specific și a continua execuția după blocul `switch`.
+- Structurați clar blocurile `switch` pentru a îmbunătăți lizibilitatea codului, mai ales în scripturi complexe.

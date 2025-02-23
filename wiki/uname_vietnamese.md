@@ -1,26 +1,23 @@
 # [Hệ điều hành] C Shell (csh) uname Cách sử dụng: Lấy thông tin về hệ thống
 
-## Overview
-Lệnh `uname` trong C Shell (csh) được sử dụng để hiển thị thông tin về hệ thống mà bạn đang sử dụng. Nó có thể cung cấp các thông tin như tên hệ điều hành, tên máy chủ, phiên bản hạt nhân và nhiều thông tin khác liên quan đến hệ thống.
+## Tổng quan
+Lệnh `uname` trong C Shell (csh) được sử dụng để hiển thị thông tin về hệ thống mà bạn đang sử dụng, bao gồm tên hệ điều hành, tên máy chủ, và nhiều thông tin khác liên quan đến phần cứng và phần mềm.
 
-## Usage
+## Cách sử dụng
 Cú pháp cơ bản của lệnh `uname` như sau:
-
 ```
-uname [options] [arguments]
+uname [tùy chọn] [tham số]
 ```
 
-## Common Options
-Dưới đây là một số tùy chọn phổ biến của lệnh `uname` cùng với giải thích ngắn gọn:
-
+## Tùy chọn phổ biến
 - `-a`: Hiển thị tất cả thông tin hệ thống.
 - `-s`: Hiển thị tên hệ điều hành.
 - `-n`: Hiển thị tên máy chủ.
-- `-r`: Hiển thị phiên bản hạt nhân.
+- `-r`: Hiển thị phiên bản của hệ điều hành.
 - `-v`: Hiển thị thông tin phiên bản.
 
-## Common Examples
-Dưới đây là một số ví dụ thực tiễn về cách sử dụng lệnh `uname`:
+## Ví dụ phổ biến
+Dưới đây là một số ví dụ thực tế khi sử dụng lệnh `uname`:
 
 1. Hiển thị tất cả thông tin hệ thống:
    ```csh
@@ -37,7 +34,7 @@ Dưới đây là một số ví dụ thực tiễn về cách sử dụng lện
    uname -n
    ```
 
-4. Hiển thị phiên bản hạt nhân:
+4. Hiển thị phiên bản của hệ điều hành:
    ```csh
    uname -r
    ```
@@ -47,7 +44,7 @@ Dưới đây là một số ví dụ thực tiễn về cách sử dụng lện
    uname -v
    ```
 
-## Tips
-- Sử dụng tùy chọn `-a` để có cái nhìn tổng quát nhất về hệ thống của bạn.
-- Kết hợp lệnh `uname` với các lệnh khác trong shell để tự động hóa các tác vụ quản lý hệ thống.
-- Thường xuyên kiểm tra thông tin hệ thống của bạn để đảm bảo rằng bạn đang sử dụng phiên bản mới nhất và phù hợp nhất.
+## Mẹo
+- Sử dụng `uname -a` để có cái nhìn tổng quát nhất về hệ thống của bạn.
+- Kết hợp lệnh `uname` với các lệnh khác để tạo ra các script tự động kiểm tra thông tin hệ thống.
+- Thường xuyên kiểm tra thông tin hệ thống để đảm bảo rằng bạn đang chạy phiên bản phần mềm và phần cứng mới nhất.

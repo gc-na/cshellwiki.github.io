@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) ss Utilisation : Afficher les connexions réseau
+# [Linux] C Shell (csh) ss : Afficher les connexions réseau
 
 ## Overview
-La commande `ss` est utilisée pour afficher les connexions réseau, les sockets et les statistiques de réseau sur un système. Elle est souvent considérée comme un outil plus rapide et plus efficace que la commande `netstat`.
+La commande `ss` est utilisée pour afficher des informations sur les connexions réseau, les sockets et les statistiques de réseau. Elle est souvent utilisée pour diagnostiquer des problèmes de réseau ou pour surveiller l'état des connexions.
 
 ## Usage
 La syntaxe de base de la commande `ss` est la suivante :
@@ -15,9 +15,9 @@ Voici quelques options courantes pour la commande `ss` :
 
 - `-t` : Affiche uniquement les connexions TCP.
 - `-u` : Affiche uniquement les connexions UDP.
-- `-l` : Montre les sockets en écoute.
+- `-l` : Affiche uniquement les sockets à l'écoute.
 - `-p` : Affiche les processus utilisant les sockets.
-- `-n` : Affiche les adresses et numéros de port sous forme numérique, sans tenter de résoudre les noms.
+- `-n` : Affiche les adresses et numéros de port sous forme numérique.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `ss` :
@@ -32,7 +32,7 @@ Voici quelques exemples pratiques de l'utilisation de la commande `ss` :
    ss -u
    ```
 
-3. Afficher les sockets en écoute :
+3. Afficher les sockets à l'écoute :
    ```csh
    ss -l
    ```
@@ -48,6 +48,6 @@ Voici quelques exemples pratiques de l'utilisation de la commande `ss` :
    ```
 
 ## Tips
-- Utilisez `ss -t -l` pour voir les ports TCP en écoute, ce qui est utile pour le dépannage des serveurs.
+- Utilisez `ss -tuln` pour obtenir une vue d'ensemble des connexions TCP et UDP à l'écoute avec des adresses numériques.
 - Combinez plusieurs options pour affiner vos résultats, par exemple `ss -tunlp` pour afficher les connexions TCP et UDP avec les processus.
-- Pensez à exécuter `ss` avec des privilèges élevés (par exemple, en tant que super utilisateur) pour voir toutes les connexions, y compris celles des autres utilisateurs.
+- Pensez à exécuter la commande avec des privilèges élevés (par exemple, en utilisant `sudo`) pour voir toutes les connexions, y compris celles des autres utilisateurs.

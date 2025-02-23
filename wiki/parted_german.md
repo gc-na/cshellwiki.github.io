@@ -6,48 +6,45 @@ Der Befehl `parted` wird verwendet, um Partitionen auf Festplatten zu erstellen,
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```bash
+```shell
 parted [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-l`: Listet alle erkannten Partitionen auf.
+- `-l` oder `--list`: Listet alle erkannten Partitionen auf.
 - `mkpart`: Erstellt eine neue Partition.
-- `rm`: Löscht eine bestehende Partition.
-- `resizepart`: Ändert die Größe einer Partition.
-- `print`: Zeigt die Partitionstabelle an.
+- `rm`: Löscht eine Partition.
+- `resizepart`: Ändert die Größe einer bestehenden Partition.
+- `print`: Zeigt die Partitionstabelle der ausgewählten Festplatte an.
 
 ## Häufige Beispiele
 
-### 1. Partitionstabelle anzeigen
-Um die Partitionstabelle der Festplatte anzuzeigen, verwenden Sie:
+1. **Partitionen auflisten:**
+   ```shell
+   parted -l
+   ```
 
-```bash
-parted /dev/sda print
-```
+2. **Neue Partition erstellen:**
+   ```shell
+   parted /dev/sda mkpart primary ext4 1MiB 100MiB
+   ```
 
-### 2. Neue Partition erstellen
-Um eine neue Partition zu erstellen, können Sie den folgenden Befehl verwenden:
+3. **Partition löschen:**
+   ```shell
+   parted /dev/sda rm 1
+   ```
 
-```bash
-parted /dev/sda mkpart primary ext4 1MiB 100MiB
-```
+4. **Größe einer Partition ändern:**
+   ```shell
+   parted /dev/sda resizepart 1 200MiB
+   ```
 
-### 3. Partition löschen
-Um eine Partition zu löschen, verwenden Sie:
-
-```bash
-parted /dev/sda rm 1
-```
-
-### 4. Partition vergrößern
-Um eine bestehende Partition zu vergrößern, verwenden Sie:
-
-```bash
-parted /dev/sda resizepart 1 200MiB
-```
+5. **Partitionstabelle anzeigen:**
+   ```shell
+   parted /dev/sda print
+   ```
 
 ## Tipps
-- Stellen Sie sicher, dass Sie eine Sicherung Ihrer Daten haben, bevor Sie Partitionen ändern.
+- Stellen Sie sicher, dass Sie ein Backup Ihrer Daten haben, bevor Sie Partitionen ändern oder löschen.
 - Verwenden Sie `parted` mit Bedacht, da falsche Befehle zu Datenverlust führen können.
-- Überprüfen Sie die Partitionen regelmäßig mit `parted -l`, um sicherzustellen, dass alles korrekt ist.
+- Überprüfen Sie die aktuelle Partitionstabelle regelmäßig, um sicherzustellen, dass alle Änderungen korrekt durchgeführt wurden.

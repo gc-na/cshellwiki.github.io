@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) getent : obtenir des informations sur les bases de données
+# [Linux] C Shell (csh) getent : récupérer des informations sur les bases de données
 
 ## Overview
-La commande `getent` est utilisée pour récupérer des informations à partir des bases de données de l'interface de nom de service (NSS) sur un système Unix/Linux. Elle permet d'accéder à des informations telles que les utilisateurs, les groupes, et d'autres données stockées dans des fichiers ou des services réseau.
+La commande `getent` est utilisée pour récupérer des informations à partir des bases de données de l'interface de nom de service (NSS) sur les systèmes Unix et Linux. Elle permet d'accéder à des données telles que les utilisateurs, les groupes, et d'autres informations système.
 
 ## Usage
 La syntaxe de base de la commande `getent` est la suivante :
@@ -13,20 +13,15 @@ getent [options] [arguments]
 ## Common Options
 - `passwd` : Récupère les informations des utilisateurs.
 - `group` : Récupère les informations des groupes.
-- `hosts` : Récupère les informations sur les hôtes.
-- `services` : Récupère les informations sur les services réseau.
+- `hosts` : Récupère les informations des hôtes.
+- `services` : Récupère les informations des services réseau.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `getent` :
 
-### Obtenir des informations sur un utilisateur
+### Récupérer les informations d'un utilisateur
 ```csh
 getent passwd nom_utilisateur
-```
-
-### Obtenir des informations sur un groupe
-```csh
-getent group nom_groupe
 ```
 
 ### Lister tous les utilisateurs
@@ -34,12 +29,17 @@ getent group nom_groupe
 getent passwd
 ```
 
+### Récupérer les informations d'un groupe
+```csh
+getent group nom_groupe
+```
+
 ### Lister tous les groupes
 ```csh
 getent group
 ```
 
-### Obtenir des informations sur un hôte
+### Récupérer les informations d'un hôte
 ```csh
 getent hosts nom_hôte
 ```
@@ -50,4 +50,4 @@ getent hosts nom_hôte
   ```csh
   getent passwd | grep nom_utilisateur
   ```
-- Familiarisez-vous avec les différentes bases de données disponibles pour tirer le meilleur parti de `getent`.
+- Familiarisez-vous avec les différentes bases de données disponibles pour maximiser l'utilisation de `getent`.

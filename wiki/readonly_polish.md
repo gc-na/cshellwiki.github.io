@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) readonly użycie: Ustawianie zmiennych jako tylko do odczytu
+# [Linux] C Shell (csh) readonly użycie: Ustawia zmienne jako tylko do odczytu
 
 ## Overview
-Polecenie `readonly` w C Shell (csh) służy do oznaczania zmiennych jako tylko do odczytu. Po użyciu tego polecenia, zmienne nie mogą być zmieniane ani usuwane w bieżącej sesji powłoki, co może pomóc w ochronie ważnych danych przed przypadkowymi modyfikacjami.
+Polecenie `readonly` w powłoce C Shell (csh) służy do oznaczania zmiennych jako tylko do odczytu. Oznacza to, że po ustawieniu zmiennej jako `readonly`, nie można jej zmienić ani usunąć w bieżącej sesji powłoki. Jest to przydatne, gdy chcemy zabezpieczyć ważne zmienne przed przypadkowymi modyfikacjami.
 
 ## Usage
 Podstawowa składnia polecenia `readonly` jest następująca:
@@ -11,34 +11,30 @@ readonly [options] [arguments]
 ```
 
 ## Common Options
-- `-p`: Wyświetla wszystkie zmienne, które są obecnie oznaczone jako tylko do odczytu.
+- `-p`: Wyświetla wszystkie zmienne oznaczone jako tylko do odczytu.
+- `variable`: Nazwa zmiennej, którą chcemy oznaczyć jako tylko do odczytu.
 
 ## Common Examples
 
-1. **Ustawienie zmiennej jako tylko do odczytu:**
-   ```csh
-   set myVar = "Hello, World!"
-   readonly myVar
-   ```
+### Przykład 1: Ustawienie zmiennej jako tylko do odczytu
+```csh
+set myVar = "Hello, World!"
+readonly myVar
+```
 
-2. **Próba zmiany wartości zmiennej readonly:**
-   ```csh
-   set myVar = "New Value"  # To spowoduje błąd, ponieważ myVar jest readonly.
-   ```
+### Przykład 2: Próba zmiany zmiennej readonly
+```csh
+set myVar = "Hello, World!"
+readonly myVar
+set myVar = "New Value"  # To spowoduje błąd
+```
 
-3. **Wyświetlenie wszystkich zmiennych readonly:**
-   ```csh
-   readonly -p
-   ```
-
-4. **Ustawienie wielu zmiennych jako readonly:**
-   ```csh
-   set var1 = "Value1"
-   set var2 = "Value2"
-   readonly var1 var2
-   ```
+### Przykład 3: Wyświetlenie zmiennych readonly
+```csh
+readonly -p
+```
 
 ## Tips
-- Używaj `readonly` dla zmiennych, które nie powinny być modyfikowane, aby uniknąć przypadkowych błędów w skryptach.
-- Regularnie sprawdzaj zmienne readonly za pomocą opcji `-p`, aby mieć pewność, że ważne zmienne są chronione.
-- Pamiętaj, że zmienne oznaczone jako readonly mogą być usuwane tylko przez zakończenie sesji powłoki.
+- Używaj `readonly` dla zmiennych, które nie powinny być modyfikowane, aby uniknąć przypadkowych błędów.
+- Możesz użyć `unset` do usunięcia zmiennej, ale tylko jeśli nie jest oznaczona jako readonly.
+- Sprawdzaj zmienne readonly przed ich modyfikacją, aby upewnić się, że nie spowodujesz błędów w skryptach.

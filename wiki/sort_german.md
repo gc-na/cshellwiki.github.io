@@ -1,20 +1,20 @@
-# [Linux] C Shell (csh) sort Verwendung: Sortieren von Zeilen in Dateien
+# [Linux] C Shell (csh) sort Verwendung: Sortieren von Zeilen in Textdateien
 
 ## Übersicht
-Der Befehl `sort` wird verwendet, um die Zeilen einer Datei oder die Eingabe von Standard-Input in aufsteigender oder absteigender Reihenfolge zu sortieren. Dies ist besonders nützlich, um Daten zu organisieren und zu analysieren.
+Der `sort`-Befehl wird verwendet, um die Zeilen einer Datei oder der Standardeingabe in aufsteigender oder absteigender Reihenfolge zu sortieren. Dies ist besonders nützlich, um Daten zu organisieren und zu analysieren.
 
 ## Verwendung
-Die grundlegende Syntax des Befehls lautet:
+Die grundlegende Syntax des `sort`-Befehls lautet:
 
 ```csh
 sort [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-r`: Sortiert die Zeilen in absteigender Reihenfolge.
+- `-r`: Sortiert die Zeilen in umgekehrter Reihenfolge (absteigend).
 - `-n`: Sortiert die Zeilen numerisch.
-- `-k`: Gibt an, dass nach einem bestimmten Schlüssel (Feld) sortiert werden soll.
-- `-u`: Gibt nur eindeutige Zeilen aus (entfernt Duplikate).
+- `-k`: Gibt die Sortierschlüssel an, um nach bestimmten Feldern zu sortieren.
+- `-u`: Gibt nur eindeutige Zeilen aus (doppelte Zeilen werden entfernt).
 - `-o`: Gibt die sortierten Ergebnisse in eine Datei aus.
 
 ## Häufige Beispiele
@@ -25,7 +25,7 @@ Hier sind einige praktische Beispiele für die Verwendung des `sort`-Befehls:
    sort datei.txt
    ```
 
-2. **Sortieren in absteigender Reihenfolge:**
+2. **Sortieren in umgekehrter Reihenfolge:**
    ```csh
    sort -r datei.txt
    ```
@@ -35,22 +35,17 @@ Hier sind einige praktische Beispiele für die Verwendung des `sort`-Befehls:
    sort -n zahlen.txt
    ```
 
-4. **Sortieren nach einem bestimmten Feld (z.B. das zweite Feld):**
+4. **Sortieren nach einem bestimmten Feld:**
    ```csh
    sort -k 2 datei.txt
    ```
 
-5. **Eindeutige Zeilen ausgeben:**
+5. **Eindeutige Zeilen sortieren und in eine neue Datei ausgeben:**
    ```csh
-   sort -u datei.txt
-   ```
-
-6. **Sortierte Ausgabe in eine neue Datei schreiben:**
-   ```csh
-   sort datei.txt -o sortierte_datei.txt
+   sort -u -o eindeutige.txt datei.txt
    ```
 
 ## Tipps
-- Verwenden Sie die Option `-n`, wenn Sie mit numerischen Werten arbeiten, um sicherzustellen, dass die Sortierung korrekt erfolgt.
-- Kombinieren Sie mehrere Optionen, um die gewünschten Ergebnisse zu erzielen, z.B. `sort -r -n`.
-- Nutzen Sie die Option `-o`, um die sortierten Ergebnisse direkt in eine Datei zu speichern, anstatt sie nur auf dem Bildschirm anzuzeigen.
+- Verwenden Sie die Option `-o`, um die sortierten Ergebnisse direkt in eine Datei zu schreiben, anstatt sie auf dem Bildschirm anzuzeigen.
+- Kombinieren Sie `sort` mit anderen Befehlen wie `uniq`, um doppelte Einträge zu entfernen.
+- Achten Sie darauf, die richtige Sortieroption zu wählen, insbesondere bei numerischen Daten, um unerwartete Ergebnisse zu vermeiden.

@@ -1,44 +1,48 @@
-# [Linux] C Shell (csh) update-rc.d Kullanımı: Hizmetleri başlatma ve durdurma
+# [Linux] C Shell (csh) update-rc.d Kullanımı: Servisleri başlatma ve durdurma
 
 ## Genel Bakış
-`update-rc.d` komutu, Debian tabanlı sistemlerde hizmetlerin başlangıç ve kapanış işlemlerini yönetmek için kullanılır. Bu komut, sistemin başlangıcında ve kapanışında hangi hizmetlerin çalıştırılacağını belirlemeye yardımcı olur.
+`update-rc.d` komutu, Linux sistemlerinde hizmetlerin (servislerin) başlangıçta otomatik olarak başlatılması veya durdurulması için gerekli olan bağlantıları ayarlamak amacıyla kullanılır. Bu komut, özellikle Debian tabanlı dağıtımlarda yaygın olarak kullanılır.
 
 ## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
+Temel sözdizimi şu şekildedir:
 ```csh
 update-rc.d [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `defaults`: Varsayılan başlangıç ve kapanış seviyelerini ayarlar.
-- `remove`: Belirtilen hizmeti başlangıç listelerinden kaldırır.
-- `enable`: Hizmeti başlangıçta etkinleştirir.
-- `disable`: Hizmeti başlangıçta devre dışı bırakır.
+- `defaults`: Varsayılan başlangıç ve durdurma seviyelerini ayarlar.
+- `remove`: Belirtilen hizmetin başlangıç bağlantılarını kaldırır.
+- `enable`: Hizmeti başlatma seviyelerine ekler.
+- `disable`: Hizmeti başlatma seviyelerinden çıkarır.
 
 ## Yaygın Örnekler
-Aşağıda `update-rc.d` komutunun bazı pratik örnekleri verilmiştir:
+Aşağıda `update-rc.d` komutunun bazı pratik kullanımları verilmiştir:
 
-1. Varsayılan ayarlarla bir hizmet eklemek:
-   ```csh
-   update-rc.d myservice defaults
-   ```
+### Varsayılan Ayarları Kullanma
+Bir hizmeti varsayılan ayarlarla eklemek için:
+```csh
+update-rc.d myservice defaults
+```
 
-2. Bir hizmeti başlangıç listelerinden kaldırmak:
-   ```csh
-   update-rc.d myservice remove
-   ```
+### Hizmeti Kaldırma
+Bir hizmetin başlangıç bağlantılarını kaldırmak için:
+```csh
+update-rc.d myservice remove
+```
 
-3. Bir hizmeti başlangıçta etkinleştirmek:
-   ```csh
-   update-rc.d myservice enable
-   ```
+### Hizmeti Etkinleştirme
+Bir hizmeti başlatma seviyelerine eklemek için:
+```csh
+update-rc.d myservice enable
+```
 
-4. Bir hizmeti başlangıçta devre dışı bırakmak:
-   ```csh
-   update-rc.d myservice disable
-   ```
+### Hizmeti Devre Dışı Bırakma
+Bir hizmeti başlatma seviyelerinden çıkarmak için:
+```csh
+update-rc.d myservice disable
+```
 
 ## İpuçları
-- Hizmetlerinizi yönetirken, her zaman `remove` seçeneğini kullanmadan önce dikkatli olun. Yanlışlıkla önemli bir hizmeti kaldırmak istemezsiniz.
-- `update-rc.d` komutunu kullanmadan önce, hizmetinizin doğru bir şekilde yapılandırıldığından emin olun.
-- Değişikliklerinizi test etmek için sistemi yeniden başlatmadan önce `service` komutunu kullanarak hizmetlerin durumunu kontrol edin.
+- Hizmetlerin doğru şekilde çalıştığından emin olmak için, her değişiklikten sonra sisteminizi yeniden başlatmayı unutmayın.
+- `update-rc.d` komutunu kullanmadan önce, hizmetin doğru bir şekilde yapılandırıldığından emin olun.
+- Komutları çalıştırmak için genellikle yönetici (root) yetkilerine ihtiyaç duyarsınız, bu nedenle `sudo` kullanmayı unutmayın.

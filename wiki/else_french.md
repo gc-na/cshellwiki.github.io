@@ -1,21 +1,26 @@
-# [Linux] C Shell (csh) else : Exécuter une commande alternative
+# [Unix] C Shell (csh) else : Exécuter des commandes conditionnelles
 
 ## Overview
-La commande `else` dans le C Shell (csh) est utilisée dans les structures de contrôle conditionnelles. Elle permet d'exécuter un bloc de commandes lorsque la condition d'une instruction `if` est fausse.
+La commande `else` dans le C Shell (csh) est utilisée dans les structures de contrôle pour exécuter un bloc de commandes lorsque la condition d'une instruction `if` est fausse. Cela permet de gérer des scénarios où différentes actions doivent être prises en fonction de la véracité d'une condition.
 
 ## Usage
 La syntaxe de base de la commande `else` est la suivante :
 
-```csh
+```
 if (condition) then
-    # commandes si la condition est vraie
+    commandes_si_vrai
 else
-    # commandes si la condition est fausse
+    commandes_si_faux
 endif
 ```
 
 ## Common Options
-La commande `else` n'a pas d'options spécifiques, car elle fait partie de la structure de contrôle conditionnelle. Cependant, elle doit toujours être utilisée en conjonction avec `if` et `endif`.
+La commande `else` n'a pas d'options spécifiques, mais elle est toujours utilisée dans le cadre d'une structure conditionnelle `if`. Voici les éléments clés à retenir :
+
+- `if (condition)`: Vérifie si la condition est vraie.
+- `then`: Indique le début du bloc de commandes à exécuter si la condition est vraie.
+- `else`: Indique le début du bloc de commandes à exécuter si la condition est fausse.
+- `endif`: Termine la structure conditionnelle.
 
 ## Common Examples
 
@@ -30,25 +35,24 @@ endif
 
 ### Exemple 2 : Vérification d'une variable
 ```csh
-set var = 5
-if ($var > 10) then
-    echo "La variable est supérieure à 10."
+set var = 10
+if ($var > 5) then
+    echo "La variable est supérieure à 5."
 else
-    echo "La variable est inférieure ou égale à 10."
+    echo "La variable est inférieure ou égale à 5."
 endif
 ```
 
-### Exemple 3 : Exécution de commandes basées sur l'entrée utilisateur
+### Exemple 3 : Exécution de commandes basées sur l'état d'un processus
 ```csh
-set answer = $< "Voulez-vous continuer ? (oui/non) "
-if ("$answer" == "oui") then
-    echo "Vous avez choisi de continuer."
+if ( `ps | grep mon_processus` ) then
+    echo "Le processus est en cours d'exécution."
 else
-    echo "Vous avez choisi d'arrêter."
+    echo "Le processus n'est pas en cours d'exécution."
 endif
 ```
 
 ## Tips
-- Assurez-vous de toujours terminer une structure conditionnelle avec `endif` pour éviter des erreurs de syntaxe.
-- Utilisez des parenthèses pour grouper des conditions complexes dans l'instruction `if`.
-- Testez toujours vos conditions avec des valeurs appropriées pour éviter des comportements inattendus.
+- Assurez-vous de toujours utiliser `endif` pour terminer votre structure conditionnelle afin d'éviter des erreurs de syntaxe.
+- Utilisez des parenthèses autour de la condition pour garantir que la syntaxe est correcte.
+- Testez vos conditions avec des commandes simples avant de les intégrer dans des scripts plus complexes pour faciliter le débogage.

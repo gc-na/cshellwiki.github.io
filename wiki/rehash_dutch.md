@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) rehash gebruik: Vernieuw de lijst van beschikbare commando's
+# [Linux] C Shell (csh) rehash gebruik: Vernieuw de interne commando-cache
 
 ## Overzicht
-De `rehash` opdracht in C Shell (csh) wordt gebruikt om de interne cache van beschikbare commando's bij te werken. Dit is vooral nuttig wanneer nieuwe programma's zijn geïnstalleerd of wanneer de locatie van bestaande programma's is gewijzigd.
+De `rehash` opdracht in C Shell (csh) wordt gebruikt om de interne cache van commando's te vernieuwen. Dit is handig wanneer nieuwe programma's of scripts zijn toegevoegd aan de directories die in de `path` variabele zijn opgenomen, zodat ze direct kunnen worden uitgevoerd zonder de shell opnieuw te starten.
 
 ## Gebruik
 De basis syntaxis van de `rehash` opdracht is als volgt:
@@ -11,34 +11,33 @@ rehash [options] [arguments]
 ```
 
 ## Veelvoorkomende opties
-De `rehash` opdracht heeft geen specifieke opties. Het wordt meestal zonder extra argumenten gebruikt.
+De `rehash` opdracht heeft geen specifieke opties. Het wordt meestal zonder argumenten gebruikt.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
 
-### Voorbeeld 1: Gewone rehash
-Na het installeren van een nieuw programma, gebruik je de `rehash` opdracht om de cache bij te werken.
+1. **Basis gebruik van rehash**
+   Om de commando-cache te vernieuwen, gebruik je eenvoudig:
 
-```csh
-rehash
-```
+   ```csh
+   rehash
+   ```
 
-### Voorbeeld 2: Rehash na het wijzigen van de PATH
-Als je de `PATH`-variabele hebt gewijzigd, is het goed om een `rehash` uit te voeren.
+2. **Na het installeren van een nieuw programma**
+   Stel dat je een nieuw programma hebt geïnstalleerd in een directory die al in je `path` staat. Voer `rehash` uit om het nieuwe programma beschikbaar te maken:
 
-```csh
-set path=(/usr/local/bin /usr/bin /bin)
-rehash
-```
+   ```csh
+   rehash
+   ```
 
-### Voorbeeld 3: Rehash na het toevoegen van een nieuwe directory
-Als je een nieuwe directory hebt toegevoegd aan je `PATH`, voer dan `rehash` uit om deze wijzigingen door te voeren.
+3. **Na het toevoegen van een nieuwe directory aan je path**
+   Als je een nieuwe directory aan je `path` hebt toegevoegd, gebruik dan `rehash` om de wijzigingen door te voeren:
 
-```csh
-set path=(/opt/bin $path)
-rehash
-```
+   ```csh
+   set path = ($path /pad/naar/nieuwe/directory)
+   rehash
+   ```
 
 ## Tips
-- Gebruik `rehash` regelmatig na het installeren of verwijderen van software om ervoor te zorgen dat je altijd de meest actuele versie van commando's kunt aanroepen.
-- Je kunt `rehash` zonder enige argumenten uitvoeren; het is een eenvoudige en snelle manier om je omgeving bij te werken.
-- Het is een goed idee om `rehash` uit te voeren in scripts waar je nieuwe commando's of programma's aanroept die mogelijk niet in de cache staan.
+- Gebruik `rehash` regelmatig als je vaak nieuwe programma's of scripts toevoegt aan je systeem.
+- Het is een goede gewoonte om `rehash` uit te voeren na het aanpassen van je `path` variabele om ervoor te zorgen dat alle wijzigingen onmiddellijk van kracht zijn.
+- Vergeet niet dat `rehash` alleen van toepassing is op de huidige shell-sessie; het heeft geen invloed op andere open shell-sessies.

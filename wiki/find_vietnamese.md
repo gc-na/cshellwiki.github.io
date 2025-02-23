@@ -1,7 +1,7 @@
 # [Hệ điều hành] C Shell (csh) tìm kiếm: Tìm kiếm tên tệp
 
 ## Tổng quan
-Lệnh `find` trong C Shell (csh) được sử dụng để tìm kiếm các tệp và thư mục trong hệ thống tệp dựa trên các tiêu chí nhất định như tên, kích thước, thời gian sửa đổi, và nhiều thuộc tính khác.
+Lệnh `find` trong C Shell (csh) được sử dụng để tìm kiếm các tệp và thư mục trong hệ thống tệp dựa trên các tiêu chí cụ thể như tên tệp, loại tệp, kích thước, và thời gian sửa đổi.
 
 ## Cú pháp
 Cú pháp cơ bản của lệnh `find` như sau:
@@ -9,22 +9,22 @@ Cú pháp cơ bản của lệnh `find` như sau:
 find [tùy chọn] [đối số]
 ```
 
-## Các tùy chọn phổ biến
+## Tùy chọn phổ biến
 - `-name`: Tìm tệp theo tên.
 - `-type`: Tìm tệp theo loại (ví dụ: f cho tệp thường, d cho thư mục).
 - `-size`: Tìm tệp theo kích thước.
 - `-mtime`: Tìm tệp theo thời gian sửa đổi (ngày).
 - `-exec`: Thực thi một lệnh trên các tệp tìm thấy.
 
-## Ví dụ thường gặp
-- Tìm tất cả các tệp có đuôi `.txt` trong thư mục hiện tại:
+## Ví dụ phổ biến
+- Tìm tất cả các tệp có tên là `example.txt` trong thư mục hiện tại:
   ```csh
-  find . -name "*.txt"
+  find . -name "example.txt"
   ```
 
-- Tìm tất cả các thư mục trong thư mục `/home/user`:
+- Tìm tất cả các thư mục trong thư mục hiện tại:
   ```csh
-  find /home/user -type d
+  find . -type d
   ```
 
 - Tìm tất cả các tệp lớn hơn 1MB:
@@ -37,12 +37,12 @@ find [tùy chọn] [đối số]
   find . -mtime -7
   ```
 
-- Xóa tất cả các tệp `.tmp` trong thư mục hiện tại:
+- Thực thi lệnh `ls` trên tất cả các tệp có phần mở rộng `.log`:
   ```csh
-  find . -name "*.tmp" -exec rm {} \;
+  find . -name "*.log" -exec ls -l {} \;
   ```
 
 ## Mẹo
-- Sử dụng dấu `*` để tìm kiếm theo mẫu tên tệp.
+- Sử dụng dấu chấm (`.`) để chỉ định thư mục hiện tại khi tìm kiếm.
 - Kết hợp nhiều tùy chọn để thu hẹp kết quả tìm kiếm.
-- Luôn kiểm tra kết quả tìm kiếm trước khi thực hiện các lệnh như xóa để tránh mất dữ liệu quan trọng.
+- Hãy cẩn thận với các lệnh `-exec`, vì chúng có thể thay đổi tệp nếu không được sử dụng đúng cách.

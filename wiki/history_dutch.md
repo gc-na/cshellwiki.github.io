@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) geschiedenis gebruik: Beheer en bekijk de opdrachtgeschiedenis
+# [Linux] C Shell (csh) geschiedenis gebruik: Beheer je opdrachtgeschiedenis
 
 ## Overzicht
-De `history`-opdracht in C Shell (csh) wordt gebruikt om een lijst van eerder uitgevoerde opdrachten weer te geven. Dit stelt gebruikers in staat om snel terug te keren naar eerdere commando's zonder ze opnieuw te hoeven typen.
+De `history`-opdracht in de C Shell (csh) toont een lijst van eerder uitgevoerde opdrachten. Dit is handig voor gebruikers die snel eerdere commando's willen terugvinden of herhalen zonder ze opnieuw te typen.
 
 ## Gebruik
 De basis syntaxis van de `history`-opdracht is als volgt:
@@ -10,41 +10,36 @@ De basis syntaxis van de `history`-opdracht is als volgt:
 history [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- `-c`: Wis de geschiedenis.
-- `n`: Geef de laatste `n` opdrachten weer.
-- `-r`: Lees de geschiedenis van een bestand.
-- `-w`: Schrijf de huidige geschiedenis naar een bestand.
+## Veelvoorkomende Opties
+- `-c`: Wis de huidige geschiedenis.
+- `n`: Geef de laatste n opdrachten weer.
+- `-h`: Toon een korte helptekst over het gebruik van de geschiedenisopdracht.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van de `history`-opdracht:
 
-1. **Bekijk de volledige opdrachtgeschiedenis**:
+1. **Toon de volledige geschiedenis**:
    ```csh
    history
    ```
 
-2. **Bekijk de laatste 10 opdrachten**:
+2. **Toon de laatste 10 opdrachten**:
    ```csh
    history 10
    ```
 
-3. **Wis de opdrachtgeschiedenis**:
+3. **Wis de geschiedenis**:
    ```csh
    history -c
    ```
 
-4. **Schrijf de huidige geschiedenis naar een bestand**:
+4. **Herhaal een specifieke opdracht**:
    ```csh
-   history -w
+   !123
    ```
-
-5. **Lees de geschiedenis van een bestand**:
-   ```csh
-   history -r
-   ```
+   (waarbij `123` het nummer van de opdracht in de geschiedenis is).
 
 ## Tips
-- Gebruik de `!n`-notatie om een specifieke opdracht uit de geschiedenis opnieuw uit te voeren, waarbij `n` het nummer van de opdracht is.
-- Maak regelmatig gebruik van `history` om je workflow te versnellen door eerder gebruikte opdrachten snel te herhalen.
-- Overweeg om je geschiedenis op te slaan in een bestand voor toekomstig gebruik, vooral als je veel complexe opdrachten uitvoert.
+- Gebruik de `history`-opdracht regelmatig om je workflow te versnellen door eerder gebruikte commando's snel te herhalen.
+- Combineer de `history`-opdracht met andere shell-functies, zoals pijpen en omleiden, voor geavanceerdere taken.
+- Vergeet niet je geschiedenis regelmatig op te schonen om onnodige commando's te verwijderen en de lijst overzichtelijk te houden.

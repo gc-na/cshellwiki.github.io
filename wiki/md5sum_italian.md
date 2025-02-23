@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) md5sum uso equivalente: Calcola e verifica checksum MD5
 
 ## Overview
-Il comando `md5sum` è utilizzato per calcolare e verificare il checksum MD5 di file. Questo checksum è una stringa di caratteri che rappresenta un'impronta digitale unica del contenuto del file, utile per garantire l'integrità dei dati.
+Il comando `md5sum` è utilizzato per calcolare e verificare il checksum MD5 di file. Questo checksum è una stringa di caratteri che rappresenta un'impronta digitale univoca del contenuto del file, utile per verificare l'integrità dei dati.
 
 ## Usage
 La sintassi di base del comando è la seguente:
@@ -11,11 +11,11 @@ md5sum [options] [arguments]
 ```
 
 ## Common Options
-- `-b`: Calcola il checksum in modalità binaria.
-- `-c`: Verifica i checksum MD5 contro un file di checksum.
-- `-t`: Calcola il checksum solo per i file di testo.
+- `-b`: Tratta i file come binari.
+- `-c`: Controlla i checksum MD5 da un file.
+- `-t`: Calcola il checksum MD5 per l'input da stdin.
 - `--help`: Mostra un messaggio di aiuto con le opzioni disponibili.
-- `--version`: Mostra la versione del comando `md5sum`.
+- `--version`: Mostra la versione del programma.
 
 ## Common Examples
 Ecco alcuni esempi pratici di utilizzo del comando `md5sum`:
@@ -30,7 +30,7 @@ Ecco alcuni esempi pratici di utilizzo del comando `md5sum`:
    md5sum nomefile.txt > checksum.md5
    ```
 
-3. Verificare un file utilizzando un file di checksum:
+3. Verificare i checksum MD5 da un file:
    ```csh
    md5sum -c checksum.md5
    ```
@@ -40,7 +40,12 @@ Ecco alcuni esempi pratici di utilizzo del comando `md5sum`:
    md5sum file1.txt file2.txt file3.txt
    ```
 
+5. Calcolare il checksum MD5 da input standard:
+   ```csh
+   echo "Testo di esempio" | md5sum
+   ```
+
 ## Tips
 - È buona pratica generare e salvare i checksum MD5 dei file importanti per poterli verificare in seguito.
-- Utilizzare l'opzione `-c` per controllare rapidamente se i file sono stati modificati confrontando i checksum.
-- Ricordati che MD5 non è considerato sicuro per applicazioni crittografiche, quindi evita di usarlo per proteggere dati sensibili.
+- Utilizza l'opzione `-c` per controllare i file in modo batch, facilitando la verifica di più file contemporaneamente.
+- Fai attenzione a non modificare il file dopo aver calcolato il checksum, poiché qualsiasi cambiamento altererà il risultato.

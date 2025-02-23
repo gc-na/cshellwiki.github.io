@@ -1,35 +1,36 @@
-# [Linux] C Shell (csh) fg użycie: Przywraca zadanie do pierwszego planu
+# [Linux] C Shell (csh) fg użycie: Przywraca zadanie do przodu
 
 ## Overview
-Polecenie `fg` w C Shell (csh) służy do przywracania zadań, które zostały zatrzymane lub działają w tle, do pierwszego planu. Dzięki temu użytkownik może kontynuować interakcję z danym zadaniem w terminalu.
+Polecenie `fg` w C Shell (csh) służy do przywracania wstrzymanego lub działającego w tle zadania do przodu, co pozwala na jego dalsze wykonywanie w trybie interaktywnym. Umożliwia to użytkownikowi łatwe zarządzanie procesami, które zostały wcześniej zminimalizowane lub uruchomione w tle.
 
 ## Usage
 Podstawowa składnia polecenia `fg` jest następująca:
 
-```
-fg [options] [arguments]
+```csh
+fg [numer_zadania]
 ```
 
 ## Common Options
-- `job_spec` - Specyfikuje, które zadanie ma być przywrócone do pierwszego planu. Można używać numerów zadań lub identyfikatorów.
+- `numer_zadania`: Opcjonalny argument, który wskazuje, które zadanie ma być przywrócone. Można go uzyskać za pomocą polecenia `jobs`.
 
 ## Common Examples
-1. Przywrócenie ostatniego zatrzymanego zadania do pierwszego planu:
+
+1. Przywrócenie ostatniego wstrzymanego zadania:
    ```csh
    fg
    ```
 
-2. Przywrócenie konkretnego zadania, na przykład zadania o numerze 1:
+2. Przywrócenie konkretnego zadania, na przykład zadania numer 1:
    ```csh
    fg %1
    ```
 
-3. Przywrócenie zadania o nazwie "my_script":
+3. Przywrócenie zadania, które zostało uruchomione w tle, na przykład zadania numer 2:
    ```csh
-   fg %my_script
+   fg %2
    ```
 
 ## Tips
-- Używaj polecenia `jobs`, aby zobaczyć listę wszystkich zadań działających w tle i ich status.
-- Możesz używać `Ctrl+Z`, aby zatrzymać zadanie i przenieść je do tła, a następnie użyć `fg`, aby je przywrócić.
-- Pamiętaj, że przywrócone zadanie przejmuje kontrolę nad terminalem, więc upewnij się, że nie masz otwartych ważnych procesów w tle przed jego przywróceniem.
+- Użyj polecenia `jobs`, aby zobaczyć listę wszystkich zadań i ich numerów przed użyciem `fg`.
+- Pamiętaj, że jeśli nie podasz numeru zadania, `fg` przywróci ostatnie wstrzymane zadanie.
+- Możesz używać `Ctrl + Z`, aby wstrzymać bieżące zadanie i następnie przywrócić je za pomocą `fg`.

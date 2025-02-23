@@ -1,12 +1,12 @@
 # [Linux] C Shell (csh) uname Utilizzo: Ottiene informazioni sul sistema
 
 ## Overview
-Il comando `uname` è utilizzato per ottenere informazioni sul sistema operativo in uso. Può fornire dettagli come il nome del kernel, la versione e altre informazioni pertinenti riguardanti l'ambiente in cui si sta operando.
+Il comando `uname` è utilizzato per ottenere informazioni sul sistema operativo in uso. Fornisce dettagli come il nome del kernel, la versione e altre informazioni relative all'ambiente di esecuzione.
 
 ## Usage
 La sintassi di base del comando `uname` è la seguente:
 
-```
+```csh
 uname [options] [arguments]
 ```
 
@@ -14,41 +14,45 @@ uname [options] [arguments]
 Ecco alcune opzioni comuni per il comando `uname`:
 
 - `-a`: Mostra tutte le informazioni disponibili sul sistema.
-- `-s`: Mostra il nome del kernel.
-- `-n`: Mostra il nome della rete del computer.
-- `-r`: Mostra la versione del kernel.
-- `-v`: Mostra la data di compilazione del kernel.
-- `-m`: Mostra l'architettura della macchina.
+- `-s`: Restituisce il nome del kernel.
+- `-n`: Mostra il nome del nodo di rete.
+- `-r`: Fornisce la versione del kernel.
+- `-v`: Mostra la data e l'ora di compilazione del kernel.
 
 ## Common Examples
 Ecco alcuni esempi pratici dell'uso del comando `uname`:
 
 1. **Mostrare tutte le informazioni sul sistema:**
+
    ```csh
    uname -a
    ```
 
-2. **Mostrare solo il nome del kernel:**
+2. **Ottenere solo il nome del kernel:**
+
    ```csh
    uname -s
    ```
 
-3. **Mostrare la versione del kernel:**
+3. **Visualizzare la versione del kernel:**
+
    ```csh
    uname -r
    ```
 
-4. **Mostrare l'architettura della macchina:**
-   ```csh
-   uname -m
-   ```
+4. **Mostrare il nome del nodo di rete:**
 
-5. **Mostrare il nome della rete del computer:**
    ```csh
    uname -n
    ```
 
+5. **Visualizzare la data di compilazione del kernel:**
+
+   ```csh
+   uname -v
+   ```
+
 ## Tips
-- Utilizza `uname -a` per ottenere un riepilogo completo delle informazioni sul tuo sistema in un solo comando.
-- Puoi combinare più opzioni per ottenere informazioni specifiche in modo più efficiente.
+- Utilizza l'opzione `-a` per ottenere un quadro completo del sistema in un solo comando.
+- Se stai scrivendo script, considera di utilizzare `uname -s` per controllare il tipo di sistema operativo e adattare il comportamento dello script di conseguenza.
 - Ricorda che l'output di `uname` può variare a seconda del sistema operativo e della sua configurazione.

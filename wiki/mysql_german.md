@@ -1,46 +1,51 @@
-# [Linux] C Shell (csh) mysql Verwendung: Datenbankverwaltung über die Kommandozeile
+# [Linux] C Shell (csh) mysql Verwendung: Datenbankabfragen durchführen
 
 ## Übersicht
-Der `mysql` Befehl ist ein Client-Programm, das es Benutzern ermöglicht, mit MySQL-Datenbanken über die Kommandozeile zu interagieren. Mit diesem Befehl können Sie SQL-Abfragen ausführen, Datenbanken erstellen, verwalten und abfragen.
+Der `mysql`-Befehl ist ein Kommandozeilen-Client für MySQL-Datenbanken. Er ermöglicht Benutzern, SQL-Abfragen auszuführen, Daten zu verwalten und mit MySQL-Datenbanken zu interagieren.
 
 ## Verwendung
-Die grundlegende Syntax des `mysql` Befehls lautet:
+Die grundlegende Syntax des `mysql`-Befehls lautet:
 
 ```bash
 mysql [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-u [Benutzername]`: Gibt den Benutzernamen an, mit dem Sie sich bei der Datenbank anmelden möchten.
+- `-u [Benutzername]`: Gibt den Benutzernamen für die Anmeldung an.
 - `-p`: Fordert zur Eingabe des Passworts auf.
-- `-h [Host]`: Gibt den Hostnamen des MySQL-Servers an (Standard ist localhost).
-- `-D [Datenbank]`: Wählt die Datenbank aus, mit der Sie arbeiten möchten.
-- `--execute [SQL-Befehl]`: Führt einen SQL-Befehl direkt aus und beendet die Sitzung.
+- `-h [Host]`: Gibt den Hostnamen des MySQL-Servers an.
+- `-D [Datenbank]`: Wählt die zu verwendende Datenbank aus.
+- `--execute [Befehl]`: Führt den angegebenen SQL-Befehl aus.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung des `mysql` Befehls:
+Hier sind einige praktische Beispiele für die Verwendung des `mysql`-Befehls:
 
-1. **Anmelden bei MySQL:**
+1. **Verbindung zu einer MySQL-Datenbank herstellen:**
    ```bash
-   mysql -u root -p
+   mysql -u benutzername -p
    ```
 
-2. **Datenbank auswählen und eine Tabelle abfragen:**
+2. **Verbindung zu einer bestimmten Datenbank herstellen:**
    ```bash
-   mysql -u benutzer -p -D meineDatenbank -e "SELECT * FROM meineTabelle;"
+   mysql -u benutzername -p -D datenbankname
    ```
 
-3. **Eine neue Datenbank erstellen:**
+3. **SQL-Befehl ausführen:**
    ```bash
-   mysql -u benutzer -p -e "CREATE DATABASE neueDatenbank;"
+   mysql -u benutzername -p -e "SELECT * FROM tabelle;"
    ```
 
-4. **Ein SQL-Skript aus einer Datei ausführen:**
+4. **Datenbank dumpen:**
    ```bash
-   mysql -u benutzer -p -D meineDatenbank < meinSkript.sql
+   mysqldump -u benutzername -p datenbankname > dump.sql
+   ```
+
+5. **Datenbank importieren:**
+   ```bash
+   mysql -u benutzername -p datenbankname < dump.sql
    ```
 
 ## Tipps
 - Verwenden Sie die Option `-h`, um sich mit einem Remote-MySQL-Server zu verbinden.
-- Nutzen Sie die `--execute` Option für schnelle Abfragen, ohne die MySQL-Shell zu betreten.
-- Speichern Sie häufig verwendete Befehle in Skripten, um die Effizienz zu steigern.
+- Nutzen Sie `--execute`, um SQL-Befehle direkt aus der Befehlszeile auszuführen, ohne in die MySQL-Shell zu wechseln.
+- Achten Sie darauf, sensible Informationen wie Passwörter sicher zu behandeln und nicht in Skripten im Klartext zu speichern.

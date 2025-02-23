@@ -1,37 +1,45 @@
-# [Linux] C Shell (csh) default gebruik: Voert een standaardcommando uit
+# [Linux] C Shell (csh) standaard echo: toon tekst op het scherm
 
 ## Overzicht
-Het `default` commando in C Shell (csh) wordt gebruikt om een standaardcommando of een standaardwaarde in te stellen voor een bepaalde variabele of functie. Dit kan handig zijn bij het automatiseren van taken of het instellen van omgevingsvariabelen.
+De `echo`-opdracht in C Shell (csh) wordt gebruikt om tekst of variabelen naar de standaarduitvoer (meestal het scherm) te sturen. Dit is handig voor het weergeven van berichten of het controleren van de waarden van variabelen.
 
 ## Gebruik
-De basis syntaxis van het `default` commando is als volgt:
+De basis syntaxis van de `echo`-opdracht is als volgt:
 
 ```csh
-default [opties] [argumenten]
+echo [opties] [tekst]
 ```
 
-## Veelvoorkomende Opties
-- `-p` : Toont de huidige standaardinstellingen.
-- `-n` : Stelt een nieuwe standaardwaarde in zonder deze te tonen.
+## Veelvoorkomende opties
+- `-n`: Voorkomt dat er een nieuwe regel wordt toegevoegd aan het einde van de uitvoer.
+- `-e`: Schakelt de interpretatie van escape-sequenties in (zoals `\n` voor een nieuwe regel).
+- `-E`: Schakelt de interpretatie van escape-sequenties uit (standaardgedrag).
 
-## Veelvoorkomende Voorbeelden
+## Veelvoorkomende voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van de `echo`-opdracht:
 
-1. **Standaardwaarde instellen voor een variabele**:
+1. Eenvoudige tekst weergeven:
    ```csh
-   default -n VARIABEL waarde
+   echo "Hallo, wereld!"
    ```
 
-2. **Huidige standaardinstellingen bekijken**:
+2. Waarde van een variabele weergeven:
    ```csh
-   default -p
+   set naam = "Jan"
+   echo "Mijn naam is $naam."
    ```
 
-3. **Standaardinstelling voor een functie instellen**:
+3. Tekst zonder nieuwe regel aan het einde weergeven:
    ```csh
-   default -n FUNCTIE naam
+   echo -n "Dit is een test zonder nieuwe regel."
+   ```
+
+4. Gebruik van escape-sequenties:
+   ```csh
+   echo -e "Eerste regel\nTweede regel"
    ```
 
 ## Tips
-- Zorg ervoor dat je de juiste opties gebruikt om verwarring te voorkomen.
-- Controleer regelmatig je standaardinstellingen met de `-p` optie om te zien of ze nog steeds relevant zijn.
-- Documenteer je standaardinstellingen, zodat je deze gemakkelijk kunt terugvinden of delen met anderen.
+- Gebruik de `-n` optie als je meerdere `echo`-opdrachten wilt combineren zonder extra nieuwe regels.
+- Wees voorzichtig met escape-sequenties; gebruik de `-e` optie om ze correct te interpreteren.
+- Controleer altijd de waarde van variabelen met `echo` om te bevestigen dat ze de verwachte gegevens bevatten.

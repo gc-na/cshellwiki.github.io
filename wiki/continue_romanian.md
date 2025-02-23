@@ -1,56 +1,58 @@
-# [Linux] C Shell (csh) continue utilizare: Continuă execuția unui ciclu
+# [Linux] C Shell (csh) continue utilizare: Continuă execuția unui script
 
 ## Overview
-Comanda `continue` în C Shell (csh) este utilizată pentru a sări peste restul instrucțiunilor dintr-un ciclu curent și pentru a începe următoarea iterație a acelui ciclu. Aceasta este utilă atunci când doriți să omiteți anumite condiții sau instrucțiuni în cadrul unui loop.
+Comanda `continue` în C Shell (csh) este utilizată pentru a sări peste iterația curentă a unui ciclu, continuând execuția cu următoarea iterație. Aceasta este utilă atunci când doriți să omiteți anumite condiții în cadrul unui loop.
 
 ## Usage
 Sintaxa de bază a comenzii `continue` este următoarea:
 
 ```
-continue [număr]
+continue [n]
 ```
 
+Aici, `n` reprezintă numărul de niveluri de loop pe care doriți să le săriți. Dacă nu este specificat, `continue` va sări doar peste iterația curentă a loop-ului cel mai apropiat.
+
 ## Common Options
-- `număr`: Specifică nivelul ciclului pe care doriți să-l continuați. Dacă nu este specificat, se va continua ciclul cel mai interior.
+- `n`: Specifică numărul de niveluri de loop pe care doriți să le săriți. De exemplu, `continue 2` va sări peste iterația curentă a celui de-al doilea loop din interior.
 
 ## Common Examples
 
-### Exemplul 1: Utilizarea `continue` într-un ciclu `foreach`
-```csh
-foreach i (1 2 3 4 5)
-    if ( $i == 3 ) then
-        continue
-    endif
-    echo $i
-end
-```
-**Explicație:** Acest exemplu va afișa numerele 1, 2, 4 și 5, sărind peste 3.
+1. **Sărirea peste iterația curentă a unui loop:**
+   ```csh
+   foreach i (1 2 3 4 5)
+       if ($i == 3) then
+           continue
+       endif
+       echo $i
+   end
+   ```
+   În acest exemplu, numărul 3 va fi omis din output.
 
-### Exemplul 2: Utilizarea `continue` într-un ciclu `while`
-```csh
-set i = 0
-while ( $i < 5 )
-    @ i++
-    if ( $i == 2 ) then
-        continue
-    endif
-    echo $i
-end
-```
-**Explicație:** Acest exemplu va afișa 1, 3 și 4, sărind peste 2.
+2. **Utilizarea `continue` cu un loop `while`:**
+   ```csh
+   set i = 0
+   while ($i < 5)
+       @ i++
+       if ($i == 2) then
+           continue
+       endif
+       echo $i
+   end
+   ```
+   Aici, numărul 2 va fi omis din output.
 
-### Exemplul 3: Continuarea unui ciclu `for`
-```csh
-foreach j (a b c d e)
-    if ( $j == b ) then
-        continue
-    endif
-    echo $j
-end
-```
-**Explicație:** Acest exemplu va afișa literele a, c, d și e, sărind peste b.
+3. **Sărirea peste iterații multiple:**
+   ```csh
+   foreach i (1 2 3 4 5)
+       if ($i == 2 || $i == 4) then
+           continue 1
+       endif
+       echo $i
+   end
+   ```
+   În acest caz, numerele 2 și 4 vor fi omise din output.
 
 ## Tips
-- Utilizați `continue` cu precauție pentru a evita bucle infinite, asigurându-vă că există o condiție clară care să permită ieșirea din ciclu.
-- Este util să folosiți `continue` în combinație cu instrucțiuni `if` pentru a controla mai bine fluxul de execuție al programului.
-- Testați întotdeauna scripturile într-un mediu sigur înainte de a le rula în producție pentru a verifica comportamentul așteptat al comenzii `continue`.
+- Folosiți `continue` cu atenție, deoarece poate face codul mai greu de citit dacă este utilizat excesiv.
+- Asigurați-vă că condițiile pentru `continue` sunt clar definite pentru a evita sări neintenționate.
+- Testați scripturile cu diferite condiții pentru a înțelege cum funcționează `continue` în diverse scenarii.

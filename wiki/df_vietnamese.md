@@ -1,47 +1,49 @@
-# [Hệ điều hành] C Shell (csh) df Cách sử dụng: Kiểm tra dung lượng ổ đĩa
+# [Hệ điều hành] C Shell (csh) df Cách sử dụng: Kiểm tra dung lượng đĩa
 
-## Tổng quan
-Lệnh `df` trong C Shell (csh) được sử dụng để hiển thị thông tin về dung lượng ổ đĩa và tình trạng sử dụng của các hệ thống tệp. Nó giúp người dùng theo dõi dung lượng còn lại và dung lượng đã sử dụng trên các phân vùng khác nhau.
+## Overview
+Lệnh `df` trong C Shell (csh) được sử dụng để hiển thị thông tin về dung lượng đĩa của các hệ thống tập tin. Nó cho phép người dùng biết được dung lượng đã sử dụng, dung lượng còn trống và tổng dung lượng của các phân vùng đĩa.
 
-## Cách sử dụng
+## Usage
 Cú pháp cơ bản của lệnh `df` như sau:
 ```
-df [tùy chọn] [đối số]
+df [options] [arguments]
 ```
 
-## Tùy chọn phổ biến
-- `-h`: Hiển thị dung lượng theo định dạng dễ đọc (KB, MB, GB).
-- `-T`: Hiển thị loại hệ thống tệp cho mỗi phân vùng.
-- `-a`: Hiển thị tất cả các hệ thống tệp, bao gồm cả những hệ thống tệp không được gắn.
-- `-i`: Hiển thị thông tin về số lượng inode thay vì dung lượng.
+## Common Options
+- `-h`: Hiển thị dung lượng theo định dạng dễ đọc (kilo, mega, giga).
+- `-T`: Hiển thị loại hệ thống tập tin.
+- `-a`: Hiển thị tất cả các hệ thống tập tin, bao gồm cả những hệ thống không được gắn kết.
+- `-i`: Hiển thị thông tin về số lượng inode thay vì dung lượng đĩa.
 
-## Ví dụ phổ biến
-- Hiển thị thông tin dung lượng ổ đĩa:
-  ```csh
-  df
-  ```
+## Common Examples
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `df`:
 
-- Hiển thị thông tin với định dạng dễ đọc:
-  ```csh
-  df -h
-  ```
+1. Hiển thị thông tin dung lượng đĩa cơ bản:
+   ```csh
+   df
+   ```
 
-- Hiển thị loại hệ thống tệp:
-  ```csh
-  df -T
-  ```
+2. Hiển thị dung lượng đĩa theo định dạng dễ đọc:
+   ```csh
+   df -h
+   ```
 
-- Hiển thị tất cả các hệ thống tệp:
-  ```csh
-  df -a
-  ```
+3. Hiển thị loại hệ thống tập tin:
+   ```csh
+   df -T
+   ```
 
-- Hiển thị thông tin về inode:
-  ```csh
-  df -i
-  ```
+4. Hiển thị thông tin cho tất cả các hệ thống tập tin:
+   ```csh
+   df -a
+   ```
 
-## Mẹo
-- Sử dụng tùy chọn `-h` để dễ dàng đọc và hiểu dung lượng ổ đĩa.
-- Kiểm tra định kỳ dung lượng ổ đĩa để tránh tình trạng đầy ổ đĩa, có thể gây ra sự cố cho hệ thống.
-- Kết hợp lệnh `df` với các lệnh khác như `grep` để lọc thông tin cụ thể mà bạn cần.
+5. Hiển thị thông tin về số lượng inode:
+   ```csh
+   df -i
+   ```
+
+## Tips
+- Sử dụng tùy chọn `-h` để dễ dàng đọc và hiểu dung lượng đĩa.
+- Kết hợp `df` với lệnh `grep` để tìm kiếm thông tin về một phân vùng cụ thể.
+- Thường xuyên kiểm tra dung lượng đĩa để đảm bảo rằng hệ thống của bạn không bị đầy, điều này có thể gây ra sự cố cho các ứng dụng và dịch vụ đang chạy.

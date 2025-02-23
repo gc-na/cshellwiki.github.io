@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) udevadm Verwendung: Geräteverwaltung unter Linux
+# [Linux] C Shell (csh) udevadm Verwendung: Geräteverwaltung und -überwachung
 
 ## Übersicht
-Der Befehl `udevadm` ist ein wichtiges Werkzeug zur Verwaltung von Geräten in Linux-Systemen. Er ermöglicht es Benutzern, Informationen über Geräte zu erhalten, Ereignisse zu überwachen und die udev-Datenbank zu verwalten.
+Der Befehl `udevadm` wird verwendet, um die udev-Datenbank zu verwalten und Informationen über Geräte im Linux-System abzurufen. Er ermöglicht es Benutzern, Geräteereignisse zu überwachen und die Konfiguration von Geräten zu ändern.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
@@ -11,47 +11,41 @@ udevadm [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `info`: Zeigt Informationen über ein bestimmtes Gerät an.
-- `trigger`: Löst Ereignisse für alle Geräte aus, die mit einer bestimmten Regel übereinstimmen.
-- `settle`: Wartet, bis alle udev-Ereignisse verarbeitet sind.
-- `control`: Steuert den udev-Daemon, z.B. um ihn zu stoppen oder zu starten.
+- `info`: Gibt Informationen über ein bestimmtes Gerät aus.
+- `trigger`: Löst Ereignisse für alle Geräte aus, um die udev-Regeln anzuwenden.
+- `settle`: Wartet, bis alle Geräteereignisse verarbeitet sind.
+- `control`: Steuert den udev-Daemon (z. B. starten oder stoppen).
+- `monitor`: Überwacht udev-Ereignisse in Echtzeit.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung von `udevadm`:
+Hier sind einige praktische Beispiele zur Verwendung von `udevadm`:
 
-### Gerätinformationen abrufen
-Um Informationen über ein bestimmtes Gerät zu erhalten, verwenden Sie den folgenden Befehl:
+1. **Geräteinformationen abrufen**:
+   ```bash
+   udevadm info --query=all --name=/dev/sda
+   ```
 
-```bash
-udevadm info --query=all --name=/dev/sda
-```
+2. **Ereignisse für alle Geräte auslösen**:
+   ```bash
+   udevadm trigger
+   ```
 
-### Ereignisse auslösen
-Um udev-Ereignisse für alle Geräte auszulösen, können Sie den folgenden Befehl verwenden:
+3. **Warten auf die Verarbeitung aller Geräteereignisse**:
+   ```bash
+   udevadm settle
+   ```
 
-```bash
-udevadm trigger
-```
+4. **Überwachung von udev-Ereignissen**:
+   ```bash
+   udevadm monitor
+   ```
 
-### Warten auf die Verarbeitung von Ereignissen
-Um sicherzustellen, dass alle udev-Ereignisse verarbeitet wurden, verwenden Sie:
-
-```bash
-udevadm settle
-```
-
-### udev-Daemon steuern
-Um den udev-Daemon zu stoppen, verwenden Sie:
-
-```bash
-udevadm control --stop
-```
+5. **Steuerung des udev-Daemons**:
+   ```bash
+   udevadm control --reload-rules
+   ```
 
 ## Tipps
-- Verwenden Sie `udevadm info`, um schnell Informationen über neue oder unbekannte Geräte zu erhalten.
-- Achten Sie darauf, den udev-Daemon nicht zu stoppen, während wichtige Geräteoperationen durchgeführt werden.
-- Nutzen Sie die `--help` Option, um eine vollständige Liste der verfügbaren Optionen und deren Erklärungen zu erhalten:
-
-```bash
-udevadm --help
-```
+- Verwenden Sie `udevadm monitor`, um in Echtzeit zu sehen, welche Geräteereignisse auftreten, besonders während der Hardwareinstallation.
+- Achten Sie darauf, dass Sie die richtigen Berechtigungen haben, um `udevadm`-Befehle auszuführen, da einige Aktionen Administratorrechte erfordern.
+- Nutzen Sie die `--query`-Option, um gezielt Informationen über spezifische Geräte abzurufen, was bei der Fehlersuche hilfreich sein kann.

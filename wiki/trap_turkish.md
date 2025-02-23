@@ -1,44 +1,42 @@
 # [Linux] C Shell (csh) trap Kullanımı: Sinyal yakalama
 
-## Overview
-`trap` komutu, C Shell (csh) ortamında belirli sinyalleri yakalamak ve bu sinyallere yanıt vermek için kullanılır. Bu, bir betiğin belirli durumlarda (örneğin, bir sinyal alındığında) nasıl davranacağını kontrol etmenizi sağlar.
+## Genel Bakış
+`trap` komutu, C Shell (csh) ortamında belirli sinyalleri yakalamak ve bu sinyallere yanıt vermek için kullanılır. Bu, bir komutun veya betiğin çalışması sırasında belirli durumların yönetilmesine olanak tanır.
 
-## Usage
+## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
 
-```csh
+```
 trap [options] [arguments]
 ```
 
-## Common Options
-- `0`: Betik sona erdiğinde çalışacak komutları belirtir.
-- `1`: Sinyal 1 (SIGHUP) alındığında çalışacak komutları belirtir.
-- `2`: Sinyal 2 (SIGINT) alındığında çalışacak komutları belirtir.
-- `3`: Sinyal 3 (SIGQUIT) alındığında çalışacak komutları belirtir.
-- `EXIT`: Betik sona erdiğinde çalışacak komutları belirtir.
+## Yaygın Seçenekler
+- `signal`: Yakalanacak sinyalin adı veya numarası.
+- `command`: Sinyal alındığında çalıştırılacak komut.
+- `-l`: Mevcut sinyallerin listesini gösterir.
 
-## Common Examples
+## Yaygın Örnekler
 Aşağıda `trap` komutunun bazı pratik örnekleri bulunmaktadır:
 
-### Örnek 1: Sinyal 2 (SIGINT) için bir komut ayarlama
+### Örnek 1: Sinyali yakalama
 ```csh
-trap 'echo "SIGINT sinyali alındı!"' 2
+trap 'echo "Sinyal alındı!"' INT
 ```
-Bu komut, kullanıcı Ctrl+C tuşlarına bastığında "SIGINT sinyali alındı!" mesajını yazdırır.
+Bu komut, `INT` (Ctrl+C) sinyali alındığında "Sinyal alındı!" mesajını yazdırır.
 
-### Örnek 2: Betik sona erdiğinde bir temizlik işlemi yapma
+### Örnek 2: Betik sonlandırma
 ```csh
-trap 'rm -f /tmp/tempfile; echo "Geçici dosya silindi."' EXIT
+trap 'echo "Betik sonlandırılıyor..."; exit' TERM
 ```
-Bu komut, betik sona erdiğinde `/tmp/tempfile` dosyasını siler ve "Geçici dosya silindi." mesajını gösterir.
+Bu komut, `TERM` sinyali alındığında bir mesaj yazdırır ve betiği sonlandırır.
 
-### Örnek 3: Sinyal 1 (SIGHUP) için bir işlem ayarlama
+### Örnek 3: Sinyal listesini görüntüleme
 ```csh
-trap 'echo "SIGHUP sinyali alındı, yeniden başlatılıyor..."' 1
+trap -l
 ```
-Bu komut, SIGHUP sinyali alındığında bir mesaj gösterir.
+Bu komut, mevcut sinyallerin listesini gösterir.
 
-## Tips
-- `trap` komutunu kullanarak betiklerinizin daha güvenilir ve kullanıcı dostu olmasını sağlayabilirsiniz.
-- Sinyal yakalamak için `trap` komutunu betiğinizin en başında tanımlamak iyi bir uygulamadır.
-- Birden fazla sinyal için aynı komutu ayarlamak isterseniz, sinyal numaralarını boşlukla ayırarak yazabilirsiniz.
+## İpuçları
+- `trap` komutunu kullanırken, hangi sinyalleri yakalamak istediğinizi iyi belirleyin.
+- Sinyal yakalama işlemlerini, betiğinizin başında tanımlamak, daha iyi bir yapı sağlar.
+- Hata ayıklama sırasında `trap` komutunu kullanarak, hangi sinyallerin alındığını takip edebilirsiniz.

@@ -1,12 +1,12 @@
-# [Linux] C Shell (csh) basename utilizare: Extrage numele fișierului dintr-o cale
+# [Linux] C Shell (csh) basename utilizare: Extrage numele fișierului dintr-un path
 
 ## Overview
-Comanda `basename` este utilizată pentru a extrage numele fișierului dintr-o cale completă. Aceasta elimină toate componentele de director dintr-un nume de fișier, lăsând doar numele fișierului.
+Comanda `basename` este utilizată pentru a extrage numele fișierului dintr-un path complet, eliminând orice prefix de director. Aceasta este utilă atunci când doriți să obțineți doar numele fișierului fără a include calea completă.
 
 ## Usage
-Sintaxa de bază a comenzii `basename` este următoarea:
+Sintaxa de bază a comenzii este următoarea:
 ```
-basename [opțiuni] [argumente]
+basename [options] [arguments]
 ```
 
 ## Common Options
@@ -14,34 +14,28 @@ basename [opțiuni] [argumente]
 - `-s`: Specifică un sufix care va fi eliminat din numele fișierului.
 
 ## Common Examples
-1. Extrage numele fișierului dintr-o cale completă:
+1. Extrageți numele fișierului dintr-un path:
    ```csh
    basename /usr/local/bin/script.sh
    ```
-   Rezultatul va fi:
-   ```
-   script.sh
-   ```
+   Output: `script.sh`
 
-2. Elimină un sufix specific din numele fișierului:
+2. Utilizați opțiunea `-s` pentru a elimina un sufix specific:
    ```csh
-   basename /usr/local/bin/script.sh .sh
+   basename myfile.txt .txt
    ```
-   Rezultatul va fi:
-   ```
-   script
-   ```
+   Output: `myfile`
 
-3. Folosind opțiunea `-a` pentru a extrage numele de bază din mai multe căi:
+3. Extrageți numele de bază pentru mai multe fișiere:
    ```csh
-   basename -a /usr/local/bin/script.sh /usr/bin/another_script.py
+   basename -a /path/to/file1.txt /path/to/file2.txt
    ```
-   Rezultatul va fi:
+   Output:
    ```
-   script.sh
-   another_script.py
+   file1.txt
+   file2.txt
    ```
 
 ## Tips
-- Folosește `basename` în scripturi pentru a obține numele fișierelor fără a include căile complete, ceea ce poate facilita manipularea fișierelor.
-- Combină `basename` cu alte comenzi, cum ar fi `find`, pentru a procesa fișierele într-un mod mai eficient.
+- Folosiți `basename` în scripturi pentru a simplifica manipularea fișierelor.
+- Combinați `basename` cu alte comenzi, cum ar fi `find`, pentru a obține numele fișierelor dintr-o structură de directoare complexă.

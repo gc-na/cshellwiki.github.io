@@ -1,49 +1,49 @@
-# [Linux] C Shell (csh) hwclock użycie: zarządzanie zegarem sprzętowym
+# [Linux] C Shell (csh) hwclock: Ustawianie i wyświetlanie czasu sprzętowego
 
 ## Overview
-Polecenie `hwclock` służy do odczytywania i ustawiania czasu zegara sprzętowego w systemie. Zegar sprzętowy, znany również jako zegar BIOS, działa niezależnie od systemu operacyjnego i jest używany do przechowywania czasu, nawet gdy komputer jest wyłączony.
+Polecenie `hwclock` służy do odczytywania i ustawiania czasu sprzętowego (RTC - Real Time Clock) w systemie. Czas sprzętowy jest niezależny od systemu operacyjnego i jest przechowywany w pamięci, nawet gdy komputer jest wyłączony.
 
 ## Usage
 Podstawowa składnia polecenia `hwclock` jest następująca:
 
-```
-hwclock [opcje] [argumenty]
+```csh
+hwclock [options] [arguments]
 ```
 
 ## Common Options
-- `--show` - Wyświetla aktualny czas zegara sprzętowego.
-- `--set` - Ustawia czas zegara sprzętowego na podany czas.
-- `--hctosys` - Ustawia czas systemowy na czas zegara sprzętowego.
-- `--systohc` - Ustawia czas zegara sprzętowego na czas systemowy.
-- `--utc` - Używa czasu UTC (Coordinated Universal Time).
+- `--show`: Wyświetla aktualny czas sprzętowy.
+- `--set`: Ustawia czas sprzętowy na wartość podaną w argumentach.
+- `--hctosys`: Ustawia czas systemowy na czas sprzętowy.
+- `--systohc`: Ustawia czas sprzętowy na czas systemowy.
+- `--utc`: Używa czasu UTC (Coordinated Universal Time) zamiast lokalnego czasu.
 
 ## Common Examples
-1. Wyświetlenie aktualnego czasu zegara sprzętowego:
-   ```bash
+1. **Wyświetlenie aktualnego czasu sprzętowego:**
+   ```csh
    hwclock --show
    ```
 
-2. Ustawienie zegara sprzętowego na określoną datę i godzinę:
-   ```bash
+2. **Ustawienie czasu sprzętowego na określoną datę i godzinę:**
+   ```csh
    hwclock --set --date="2023-10-01 12:00:00"
    ```
 
-3. Ustawienie czasu systemowego na czas zegara sprzętowego:
-   ```bash
+3. **Ustawienie czasu systemowego na czas sprzętowy:**
+   ```csh
    hwclock --hctosys
    ```
 
-4. Ustawienie zegara sprzętowego na czas systemowy:
-   ```bash
+4. **Ustawienie czasu sprzętowego na czas systemowy:**
+   ```csh
    hwclock --systohc
    ```
 
-5. Wyświetlenie czasu zegara sprzętowego w formacie UTC:
-   ```bash
+5. **Wyświetlenie czasu sprzętowego w formacie UTC:**
+   ```csh
    hwclock --show --utc
    ```
 
 ## Tips
-- Upewnij się, że masz odpowiednie uprawnienia (zazwyczaj wymagane są uprawnienia administratora) do zmiany ustawień zegara sprzętowego.
-- Regularnie synchronizuj czas systemowy z zegarem sprzętowym, aby uniknąć rozbieżności.
-- W przypadku korzystania z systemów wielozadaniowych, rozważ użycie `ntp` do automatycznej synchronizacji czasu.
+- Zawsze upewnij się, że czas systemowy jest poprawny przed ustawieniem czasu sprzętowego.
+- Używaj opcji `--utc`, jeśli twój system operacyjny wymaga czasu w formacie UTC.
+- Regularnie synchronizuj czas sprzętowy z czasem systemowym, aby uniknąć rozbieżności.

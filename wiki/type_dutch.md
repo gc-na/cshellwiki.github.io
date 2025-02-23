@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) type gebruik: Bepaal het type van een commando
 
 ## Overzicht
-De `type` opdracht in C Shell (csh) wordt gebruikt om het type van een opgegeven commando te bepalen. Dit kan nuttig zijn om te begrijpen of een commando een ingebouwd commando, een alias, een functie of een uitvoerbaar bestand is.
+De `type` opdracht in C Shell (csh) wordt gebruikt om het type van een gegeven commando te bepalen. Het kan aangeven of een commando een ingebouwd commando, een alias, een functie of een extern programma is.
 
 ## Gebruik
 De basis syntaxis van de `type` opdracht is als volgt:
@@ -10,10 +10,9 @@ De basis syntaxis van de `type` opdracht is als volgt:
 type [options] [arguments]
 ```
 
-## Veelvoorkomende Opties
-- `-a`: Toont alle locaties van het opgegeven commando, inclusief aliassen en functies.
-- `-t`: Geeft alleen het type van het commando terug (bijvoorbeeld "alias", "function", "file").
-- `-p`: Toont het pad naar het uitvoerbare bestand van het commando.
+## Veelvoorkomende opties
+- `-t`: Geeft alleen het type van het commando weer zonder extra informatie.
+- `-a`: Toont alle locaties van het commando, inclusief aliassen en functies.
 
 ## Veelvoorkomende Voorbeelden
 
@@ -21,29 +20,28 @@ type [options] [arguments]
    ```csh
    type ls
    ```
+   Dit geeft informatie over het `ls` commando, zoals of het een ingebouwd commando of een extern programma is.
 
-2. **Toon alle locaties van een commando:**
+2. **Gebruik de -t optie:**
    ```csh
-   type -a echo
+   type -t echo
    ```
+   Dit toont alleen het type van het `echo` commando, bijvoorbeeld "builtin".
 
-3. **Ontdek het type van een alias:**
+3. **Toon alle locaties van een commando:**
    ```csh
-   alias myalias='ls -l'
-   type myalias
+   type -a python
    ```
+   Dit geeft alle versies van `python` weer die beschikbaar zijn in de huidige omgeving.
 
-4. **Krijg alleen het type van een commando:**
+4. **Controleer een alias:**
    ```csh
-   type -t cd
+   alias ll 'ls -l'
+   type ll
    ```
-
-5. **Toon het pad naar een uitvoerbaar bestand:**
-   ```csh
-   type -p python
-   ```
+   Dit toont aan dat `ll` een alias is voor `ls -l`.
 
 ## Tips
-- Gebruik `type -a` om te controleren of er meerdere definities zijn voor een commando, zoals een alias en een functie.
-- Het gebruik van `type -t` kan handig zijn in scripts om beslissingen te nemen op basis van het type van een commando.
-- Vergeet niet dat de `type` opdracht niet alleen nuttig is voor ingebouwde commando's, maar ook voor externe programma's die in je pad staan.
+- Gebruik de `-t` optie als je alleen het type wilt weten zonder extra details.
+- Controleer altijd of een commando een alias is, vooral als je onverwachte resultaten krijgt.
+- Combineer `type` met andere commando's om meer inzicht te krijgen in je shell-omgeving en configuratie.

@@ -1,45 +1,45 @@
-# [Linux] C Shell (csh) hexdump użycie: konwersja plików binarnych na format szesnastkowy
+# [Linux] C Shell (csh) hexdump użycie: wyświetlanie danych w formacie szesnastkowym
 
-## Przegląd
-Polecenie `hexdump` służy do wyświetlania zawartości plików binarnych w formacie szesnastkowym. Umożliwia to analizę danych w plikach, co jest przydatne w programowaniu, debugowaniu oraz w analizie danych.
+## Overview
+Polecenie `hexdump` służy do wyświetlania zawartości plików w formacie szesnastkowym. Umożliwia analizę danych binarnych, co jest przydatne w programowaniu i debugowaniu.
 
-## Użycie
+## Usage
 Podstawowa składnia polecenia `hexdump` jest następująca:
 
 ```csh
-hexdump [opcje] [argumenty]
+hexdump [options] [arguments]
 ```
 
-## Częste opcje
-- `-C` - wyświetla dane w formacie szesnastkowym oraz ASCII.
-- `-n <liczba>` - ogranicza liczbę bajtów do wyświetlenia.
-- `-v` - wyświetla wszystkie dane, w tym powtarzające się bajty.
-- `-e <format>` - pozwala na określenie własnego formatu wyjścia.
+## Common Options
+- `-C` - Wyświetla dane w formacie szesnastkowym z ASCII po prawej stronie.
+- `-n N` - Odczytuje tylko pierwsze N bajtów z pliku.
+- `-v` - Wyświetla wszystkie dane, w tym powtarzające się bajty.
+- `-e FORMAT` - Umożliwia zdefiniowanie własnego formatu wyjścia.
 
-## Przykłady
-Oto kilka praktycznych przykładów użycia polecenia `hexdump`:
+## Common Examples
+Przykłady użycia polecenia `hexdump`:
 
 1. Wyświetlenie zawartości pliku w formacie szesnastkowym:
    ```csh
-   hexdump plik.bin
+   hexdump myfile.bin
    ```
 
 2. Wyświetlenie pierwszych 16 bajtów pliku:
    ```csh
-   hexdump -n 16 plik.bin
+   hexdump -n 16 myfile.bin
    ```
 
-3. Wyświetlenie danych w formacie szesnastkowym i ASCII:
+3. Wyświetlenie danych w formacie szesnastkowym z ASCII:
    ```csh
-   hexdump -C plik.bin
+   hexdump -C myfile.bin
    ```
 
 4. Użycie własnego formatu wyjścia:
    ```csh
-   hexdump -e '16/1 "%02x " "\n"' plik.bin
+   hexdump -e '1/1 "%02x " "\n"' myfile.bin
    ```
 
-## Wskazówki
-- Używaj opcji `-C`, aby uzyskać czytelniejszy format wyjścia, który pokazuje zarówno wartości szesnastkowe, jak i odpowiadające im znaki ASCII.
-- Ogranicz liczbę bajtów do wyświetlenia za pomocą opcji `-n`, aby skupić się na interesujących fragmentach pliku.
-- Eksperymentuj z własnymi formatami wyjścia, aby dostosować prezentację danych do swoich potrzeb.
+## Tips
+- Używaj opcji `-C`, aby łatwiej analizować dane, zwłaszcza gdy interesuje Cię ich reprezentacja tekstowa.
+- Zawsze sprawdzaj, czy plik, który analizujesz, nie jest zbyt duży, aby uniknąć przeciążenia terminala.
+- Eksperymentuj z różnymi formatami wyjścia, aby dostosować prezentację danych do swoich potrzeb.

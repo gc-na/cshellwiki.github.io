@@ -1,12 +1,12 @@
-# [Linux] C Shell (csh) pkg gebruik: Beheer van pakketten
+# [Linux] C Shell (csh) pkg gebruik: Beheer van softwarepakketten
 
 ## Overzicht
-De `pkg`-opdracht in C Shell (csh) wordt gebruikt voor het beheren van softwarepakketten. Het stelt gebruikers in staat om pakketten te installeren, te verwijderen en te beheren op een systeem.
+De `pkg` opdracht in C Shell (csh) wordt gebruikt voor het beheren van softwarepakketten. Hiermee kunnen gebruikers pakketten installeren, verwijderen en bijwerken op een systeem dat gebruikmaakt van een pakketbeheerder.
 
 ## Gebruik
-De basis syntaxis van de `pkg`-opdracht is als volgt:
+De basis syntaxis van de `pkg` opdracht is als volgt:
 
-```
+```csh
 pkg [opties] [argumenten]
 ```
 
@@ -17,16 +17,16 @@ pkg [opties] [argumenten]
 - `list`: Toont een lijst van geïnstalleerde pakketten.
 
 ## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van de `pkg`-opdracht:
+Hier zijn enkele praktische voorbeelden van het gebruik van de `pkg` opdracht:
 
 ### Een pakket installeren
 ```csh
-pkg install pakketnaam
+pkg install naam_van_pakket
 ```
 
 ### Een pakket verwijderen
 ```csh
-pkg remove pakketnaam
+pkg remove naam_van_pakket
 ```
 
 ### Geïnstalleerde pakketten bijwerken
@@ -40,6 +40,6 @@ pkg list
 ```
 
 ## Tips
-- Controleer altijd de beschikbare opties met `pkg help` om meer te leren over de functionaliteit.
-- Gebruik `pkg list` regelmatig om te zien welke pakketten zijn geïnstalleerd en of ze up-to-date zijn.
-- Wees voorzichtig met het verwijderen van pakketten, omdat dit afhankelijkheden kan beïnvloeden.
+- Zorg ervoor dat je de juiste naam van het pakket gebruikt bij installatie of verwijdering om fouten te voorkomen.
+- Voer regelmatig `pkg update` uit om je systeem up-to-date te houden met de nieuwste versies van de pakketten.
+- Gebruik de `list` optie om te controleren welke pakketten momenteel op je systeem zijn geïnstalleerd voordat je wijzigingen aanbrengt.

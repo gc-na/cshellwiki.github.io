@@ -1,43 +1,45 @@
-# [Linux] C Shell (csh) w Kullanımı: Kullanıcıların oturum bilgilerini gösterir
+# [Linux] C Shell (csh) w Kullanımı: Aktif kullanıcıları ve sistem yükünü gösterir
 
-## Overview
-`w` komutu, sistemdeki kullanıcıların oturum bilgilerini gösterir. Bu komut, hangi kullanıcıların oturum açtığını, ne kadar süredir oturumda olduklarını ve hangi işlemleri yürüttüklerini görüntülemenizi sağlar.
+## Genel Bakış
+`w` komutu, sistemdeki aktif kullanıcıları ve onların oturum bilgilerini gösteren bir komuttur. Ayrıca, sistemin genel yük durumu hakkında bilgi verir. Bu komut, sistem yöneticileri ve kullanıcılar için hangi kullanıcıların oturum açtığını ve sistemin ne kadar meşgul olduğunu anlamak için oldukça faydalıdır.
 
-## Usage
-Temel sözdizimi şu şekildedir:
+## Kullanım
+Temel sözdizimi aşağıdaki gibidir:
+
 ```
-w [options] [arguments]
+w [seçenekler] [argümanlar]
 ```
 
-## Common Options
+## Yaygın Seçenekler
 - `-h`: Başlık satırını gizler.
-- `-s`: Daha kısa bir çıktı formatı sağlar.
-- `-f`: Kullanıcıların tam adlarını gösterir.
+- `-s`: Daha kısa bir çıktı formatı kullanır.
+- `-u`: Kullanıcı bilgilerini gösterir.
 
-## Common Examples
-Aşağıda `w` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
-
-1. Tüm kullanıcıların oturum bilgilerini görüntüleme:
+## Yaygın Örnekler
+1. Tüm aktif kullanıcıları ve sistem yükünü görüntüleme:
    ```bash
    w
    ```
 
-2. Başlık satırını gizleyerek kullanıcı bilgilerini görüntüleme:
+2. Başlık satırını gizleyerek kullanıcıları görüntüleme:
    ```bash
    w -h
    ```
 
-3. Daha kısa bir çıktı almak için:
+3. Daha kısa bir çıktı formatı ile kullanıcı bilgilerini görüntüleme:
    ```bash
    w -s
    ```
 
-4. Kullanıcıların tam adlarını gösterme:
+4. Belirli bir kullanıcı hakkında bilgi almak için:
    ```bash
-   w -f
+   w username
    ```
 
-## Tips
-- `w` komutunu sık sık kullanarak sistemdeki aktif kullanıcıları takip edebilirsiniz.
-- Çıktıyı daha okunabilir hale getirmek için `-s` seçeneğini kullanmayı deneyin.
-- Eğer yalnızca belirli bir kullanıcı hakkında bilgi almak istiyorsanız, `who` komutunu da göz önünde bulundurabilirsiniz.
+## İpuçları
+- `w` komutunu sık sık kullanarak sistemdeki kullanıcı aktivitelerini takip edebilirsiniz.
+- Eğer sistem kaynaklarını izlemek istiyorsanız, `w` komutunu `top` veya `htop` gibi diğer komutlarla birlikte kullanmayı düşünebilirsiniz.
+- Çıktıyı daha okunabilir hale getirmek için `less` komutuyla birleştirerek uzun çıktıları daha rahat inceleyebilirsiniz:
+  ```bash
+  w | less
+  ```

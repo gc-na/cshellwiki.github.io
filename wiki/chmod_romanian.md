@@ -11,13 +11,13 @@ chmod [opțiuni] [argumente]
 ```
 
 ## Common Options
-- `-R`: Aplică modificările recursiv tuturor fișierelor și subdirectoarelor.
+- `-R`: Aplică modificările recursiv în toate subdirectoarele.
 - `u`: Se referă la utilizatorul proprietar al fișierului.
 - `g`: Se referă la grupul utilizatorului.
 - `o`: Se referă la alți utilizatori.
 - `+`: Adaugă permisiuni.
 - `-`: Elimină permisiuni.
-- `=`: Setează permisiunile exact așa cum sunt specificate.
+- `=`: Setează permisiunile exact.
 
 ## Common Examples
 1. **Adăugarea permisiunii de execuție pentru utilizator:**
@@ -30,22 +30,22 @@ chmod [opțiuni] [argumente]
    chmod g-w numefisier
    ```
 
-3. **Setarea permisiunilor de citire, scriere și execuție pentru toți utilizatorii:**
+3. **Setarea permisiunilor pentru toți utilizatorii la citire și execuție:**
    ```csh
-   chmod a+rwx numefisier
+   chmod a+rx numefisier
    ```
 
-4. **Aplicarea modificărilor recursiv pentru un director:**
+4. **Modificarea permisiunilor recursiv pentru un director:**
    ```csh
-   chmod -R u+rwX numedirector
+   chmod -R 755 numedirector
    ```
 
 5. **Setarea permisiunilor exacte pentru un fișier:**
    ```csh
-   chmod 755 numefisier
+   chmod 644 numefisier
    ```
 
 ## Tips
-- Verifică permisiunile curente ale fișierelor folosind comanda `ls -l`.
-- Folosește opțiunea `-R` cu precauție, deoarece poate modifica permisiunile pentru multe fișiere simultan.
-- Este recomandat să folosești permisiuni stricte pentru fișierele sensibile pentru a proteja datele.
+- Verifică întotdeauna permisiunile curente ale fișierelor folosind comanda `ls -l` înainte de a face modificări.
+- Folosește opțiunea `-R` cu precauție, deoarece poate schimba permisiunile pentru un număr mare de fișiere și directoare.
+- Este recomandat să folosești permisiuni stricte pentru fișierele sensibile pentru a proteja informațiile.

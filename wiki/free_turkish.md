@@ -1,50 +1,54 @@
-# [Linux] C Shell (csh) free kullanımı: Bellek durumu görüntüleme
+# [Linux] C Shell (csh) free kullanım: Bellek durumu görüntüleme
 
 ## Genel Bakış
-`free` komutu, sistemdeki bellek kullanımını gösterir. Bu komut, toplam bellek, kullanılabilir bellek, boş bellek ve takas alanı gibi bilgileri sağlar. Sistem yöneticileri ve kullanıcılar, bellek durumunu izlemek için bu komutu sıklıkla kullanır.
+`free` komutu, sistemdeki bellek kullanımını gösterir. Bu komut, toplam bellek, kullanılan bellek, boş bellek ve takas alanı gibi bilgileri sağlar. Bellek yönetimi ve sistem performansını izlemek için oldukça yararlıdır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
 
-```csh
-free [options] [arguments]
+```
+free [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
 - `-h`: İnsan tarafından okunabilir formatta çıktı verir (örneğin, KB, MB).
-- `-m`: Bellek bilgilerini megabayt cinsinden gösterir.
-- `-g`: Bellek bilgilerini gigabayt cinsinden gösterir.
-- `-s [saniye]`: Belirtilen saniye aralıklarıyla sürekli güncellenen bir çıktı sağlar.
+- `-m`: Çıktıyı megabayt cinsinden gösterir.
+- `-g`: Çıktıyı gigabayt cinsinden gösterir.
+- `-s [saniye]`: Belirtilen saniye aralıklarıyla sürekli güncellemeler yapar.
+- `-t`: Toplam bellek kullanımını gösterir.
 
 ## Yaygın Örnekler
-Aşağıda `free` komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda `free` komutunun bazı pratik örnekleri verilmiştir:
 
-1. Temel bellek bilgilerini görüntüleme:
-   ```csh
+1. Temel bellek durumu görüntüleme:
+   ```bash
    free
    ```
 
-2. İnsan tarafından okunabilir formatta bellek bilgilerini görüntüleme:
-   ```csh
+2. İnsan tarafından okunabilir formatta bellek durumu görüntüleme:
+   ```bash
    free -h
    ```
 
-3. Bellek bilgilerini megabayt cinsinden görüntüleme:
-   ```csh
+3. Bellek durumunu megabayt cinsinden görüntüleme:
+   ```bash
    free -m
    ```
 
-4. Bellek bilgilerini gigabayt cinsinden görüntüleme:
-   ```csh
-   free -g
-   ```
-
-5. Her 5 saniyede bir güncellenen bellek bilgilerini görüntüleme:
-   ```csh
+4. Bellek durumunu sürekli güncelleme (her 5 saniyede bir):
+   ```bash
    free -s 5
    ```
 
+5. Toplam bellek kullanımını gösterme:
+   ```bash
+   free -t
+   ```
+
 ## İpuçları
-- `free -h` komutunu kullanarak bellek kullanımını daha kolay anlayabilirsiniz.
-- Bellek kullanımını izlemek için `free -s` seçeneği ile bir terminal penceresi açarak sürekli güncellemeleri takip edebilirsiniz.
-- Bellek kullanımını analiz ederken, takas alanının durumunu da göz önünde bulundurmak önemlidir; bu nedenle `free` çıktısındaki "Swap" bölümünü inceleyin.
+- `free` komutunu `watch` ile birleştirerek sürekli güncellemeler alabilirsiniz:
+  ```bash
+  watch free -h
+  ```
+- Bellek kullanımını analiz etmek için `free` çıktısını `grep` ile filtreleyebilirsiniz.
+- Sistem performansını izlemek için `free` komutunu diğer izleme araçlarıyla birleştirmek faydalı olabilir.

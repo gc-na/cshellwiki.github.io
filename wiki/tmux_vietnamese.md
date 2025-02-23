@@ -1,9 +1,9 @@
 # [Hệ điều hành] C Shell (csh) tmux: Quản lý phiên làm việc trong terminal
 
 ## Tổng quan
-Tmux là một trình quản lý phiên làm việc trong terminal, cho phép người dùng tạo, quản lý và chia sẻ các phiên làm việc. Với tmux, bạn có thể chạy nhiều phiên làm việc trong cùng một cửa sổ terminal, giúp tăng hiệu suất làm việc và quản lý các tác vụ dễ dàng hơn.
+Tmux là một trình quản lý phiên làm việc trong terminal, cho phép người dùng tạo, quản lý và điều khiển nhiều phiên làm việc trong một cửa sổ terminal duy nhất. Nó rất hữu ích cho việc làm việc với nhiều tác vụ đồng thời và giúp duy trì các phiên làm việc ngay cả khi bạn ngắt kết nối.
 
-## Cú pháp
+## Cách sử dụng
 Cú pháp cơ bản của lệnh tmux như sau:
 ```bash
 tmux [options] [arguments]
@@ -12,11 +12,11 @@ tmux [options] [arguments]
 ## Các tùy chọn phổ biến
 - `new`: Tạo một phiên tmux mới.
 - `attach`: Kết nối lại với một phiên tmux đã tồn tại.
-- `detach`: Ngắt kết nối khỏi phiên tmux hiện tại.
 - `list-sessions`: Liệt kê tất cả các phiên tmux đang hoạt động.
-- `kill-session`: Kết thúc một phiên tmux cụ thể.
+- `kill-session`: Đóng một phiên tmux cụ thể.
+- `detach`: Ngắt kết nối khỏi phiên tmux hiện tại.
 
-## Ví dụ phổ biến
+## Ví dụ thường gặp
 - Tạo một phiên tmux mới:
 ```bash
 tmux new -s mysession
@@ -25,20 +25,20 @@ tmux new -s mysession
 ```bash
 tmux attach -t mysession
 ```
-- Ngắt kết nối khỏi phiên tmux hiện tại:
-```bash
-Ctrl + b, d
-```
 - Liệt kê tất cả các phiên tmux:
 ```bash
 tmux list-sessions
 ```
-- Kết thúc một phiên tmux:
+- Đóng một phiên tmux:
 ```bash
 tmux kill-session -t mysession
 ```
+- Ngắt kết nối khỏi phiên tmux hiện tại:
+```bash
+Ctrl + b, d
+```
 
 ## Mẹo
-- Sử dụng phím tắt `Ctrl + b` để truy cập vào các lệnh tmux nhanh chóng.
-- Đặt tên cho các phiên tmux để dễ dàng quản lý và phân biệt.
-- Sử dụng tmux trong các tác vụ dài để có thể ngắt kết nối và quay lại mà không mất tiến trình làm việc.
+- Sử dụng `tmux` với tên phiên để dễ dàng quản lý nhiều phiên làm việc.
+- Tạo các phím tắt tùy chỉnh trong tmux để tăng tốc độ làm việc.
+- Thường xuyên kiểm tra các phiên đang hoạt động để tránh lãng phí tài nguyên hệ thống.

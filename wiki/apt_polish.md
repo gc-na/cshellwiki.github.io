@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) apt użycie: Zarządzanie pakietami
+# [Linux] C Shell (csh) apt użycie: zarządzanie pakietami
 
 ## Overview
-Polecenie `apt` jest narzędziem do zarządzania pakietami w systemach opartych na Debianie. Umożliwia instalację, aktualizację i usuwanie oprogramowania, a także zarządzanie zależnościami pakietów.
+Polecenie `apt` jest narzędziem do zarządzania pakietami w systemach opartych na Debianie. Umożliwia instalację, aktualizację i usuwanie oprogramowania oraz zarządzanie zależnościami między pakietami.
 
 ## Usage
 Podstawowa składnia polecenia `apt` wygląda następująco:
@@ -11,44 +11,41 @@ apt [opcje] [argumenty]
 ```
 
 ## Common Options
-- `install`: Instaluje nowy pakiet.
-- `remove`: Usuwa zainstalowany pakiet.
-- `update`: Aktualizuje listę dostępnych pakietów.
-- `upgrade`: Aktualizuje wszystkie zainstalowane pakiety do najnowszych wersji.
-- `search`: Wyszukuje pakiety według nazwy lub opisu.
+- `install`: Instalacja nowego pakietu.
+- `remove`: Usunięcie zainstalowanego pakietu.
+- `update`: Aktualizacja listy dostępnych pakietów.
+- `upgrade`: Aktualizacja zainstalowanych pakietów do najnowszych wersji.
+- `search`: Wyszukiwanie pakietów według nazwy lub opisu.
 
 ## Common Examples
-- Aby zainstalować pakiet, użyj:
+Oto kilka praktycznych przykładów użycia polecenia `apt`:
 
-```csh
-apt install nazwa_pakietu
-```
+1. **Aktualizacja listy pakietów:**
+   ```csh
+   apt update
+   ```
 
-- Aby usunąć pakiet, użyj:
+2. **Instalacja nowego pakietu (np. `curl`):**
+   ```csh
+   apt install curl
+   ```
 
-```csh
-apt remove nazwa_pakietu
-```
+3. **Usunięcie zainstalowanego pakietu (np. `curl`):**
+   ```csh
+   apt remove curl
+   ```
 
-- Aby zaktualizować listę pakietów, użyj:
+4. **Aktualizacja wszystkich zainstalowanych pakietów:**
+   ```csh
+   apt upgrade
+   ```
 
-```csh
-apt update
-```
-
-- Aby zaktualizować wszystkie zainstalowane pakiety, użyj:
-
-```csh
-apt upgrade
-```
-
-- Aby wyszukać pakiet, użyj:
-
-```csh
-apt search fraza
-```
+5. **Wyszukiwanie pakietu (np. `git`):**
+   ```csh
+   apt search git
+   ```
 
 ## Tips
 - Zawsze wykonuj `apt update` przed instalacją lub aktualizacją pakietów, aby mieć najnowsze informacje o dostępnych wersjach.
-- Używaj `apt upgrade` regularnie, aby utrzymać system w aktualnym stanie.
-- Rozważ użycie `apt autoremove`, aby usunąć nieużywane pakiety, które mogą zajmować miejsce na dysku.
+- Używaj opcji `-y`, aby automatycznie potwierdzać instalację lub usunięcie pakietów, co może przyspieszyć proces.
+- Regularnie aktualizuj system, aby zapewnić bezpieczeństwo i stabilność oprogramowania.

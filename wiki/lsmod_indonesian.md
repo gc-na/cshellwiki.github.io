@@ -1,7 +1,7 @@
 # [Sistem Operasi] C Shell (csh) lsmod: [menampilkan modul kernel yang dimuat]
 
 ## Overview
-Perintah `lsmod` digunakan untuk menampilkan daftar modul kernel yang saat ini dimuat pada sistem. Modul kernel adalah komponen perangkat lunak yang dapat dimuat dan dibongkar ke dalam kernel saat runtime, memungkinkan fungsionalitas tambahan tanpa perlu memuat ulang sistem.
+Perintah `lsmod` digunakan untuk menampilkan daftar modul kernel yang saat ini dimuat dalam sistem. Modul ini adalah bagian dari kernel yang dapat dimuat dan dibongkar sesuai kebutuhan, memungkinkan sistem untuk menyesuaikan fungsionalitasnya tanpa harus reboot.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `lsmod`:
@@ -14,8 +14,7 @@ lsmod [options] [arguments]
 Berikut adalah beberapa opsi umum yang dapat digunakan dengan `lsmod`:
 
 - `-h`, `--help`: Menampilkan bantuan tentang penggunaan perintah.
-- `-n`, `--no-heading`: Menampilkan output tanpa judul kolom.
-- `-r`, `--reverse`: Mengurutkan output dalam urutan terbalik.
+- `-v`, `--version`: Menampilkan versi dari perintah `lsmod`.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `lsmod`:
@@ -25,25 +24,17 @@ Berikut adalah beberapa contoh penggunaan `lsmod`:
    lsmod
    ```
 
-2. Menampilkan modul yang dimuat tanpa judul kolom:
-   ```csh
-   lsmod -n
-   ```
-
-3. Menampilkan modul yang dimuat dalam urutan terbalik:
-   ```csh
-   lsmod -r
-   ```
-
-4. Menampilkan bantuan tentang penggunaan perintah:
+2. Menampilkan bantuan untuk perintah `lsmod`:
    ```csh
    lsmod --help
    ```
 
+3. Menampilkan versi dari perintah `lsmod`:
+   ```csh
+   lsmod --version
+   ```
+
 ## Tips
-- Gunakan `lsmod` secara rutin untuk memeriksa modul yang dimuat, terutama setelah menginstal perangkat keras baru.
-- Kombinasikan `lsmod` dengan perintah lain seperti `grep` untuk mencari modul tertentu. Contoh:
-  ```csh
-  lsmod | grep <nama_modul>
-  ```
-- Perhatikan bahwa output dari `lsmod` dapat membantu dalam pemecahan masalah jika perangkat keras tidak berfungsi dengan baik.
+- Gunakan `lsmod` secara berkala untuk memantau modul yang dimuat dan memastikan bahwa modul yang diperlukan tersedia.
+- Jika Anda mengalami masalah dengan perangkat keras, periksa modul yang dimuat untuk memastikan bahwa modul yang sesuai telah diaktifkan.
+- Kombinasikan `lsmod` dengan perintah lain seperti `modinfo` untuk mendapatkan informasi lebih lanjut tentang modul tertentu.

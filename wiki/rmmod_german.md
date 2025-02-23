@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) rmmod: Entfernen eines Kernelmoduls
+# [Linux] C Shell (csh) rmmod Verwendung: Entfernen von Modulen aus dem Kernel
 
 ## Übersicht
-Der Befehl `rmmod` wird verwendet, um ein geladenes Kernelmodul aus dem Linux-Kernel zu entfernen. Dies ist nützlich, um nicht mehr benötigte Module zu entladen und Systemressourcen freizugeben.
+Der Befehl `rmmod` wird verwendet, um Module aus dem Linux-Kernel zu entfernen. Dies ist nützlich, um nicht mehr benötigte Treiber oder Funktionen zu deaktivieren, die im Kernel geladen sind.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
@@ -11,9 +11,9 @@ rmmod [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-f`: Erzwingt das Entfernen des Moduls, auch wenn es in Verwendung ist.
-- `-n`: Gibt den Namen des Moduls nicht aus, wenn es entfernt wird.
-- `--help`: Zeigt eine Hilfeseite mit den verfügbaren Optionen an.
+- `-f`: Erzwingt das Entfernen des Moduls, auch wenn es noch verwendet wird.
+- `-n`: Führt einen Testlauf durch, ohne tatsächlich Änderungen vorzunehmen.
+- `-w`: Wartet, bis alle Referenzen auf das Modul entfernt sind, bevor es gelöscht wird.
 
 ## Häufige Beispiele
 Hier sind einige praktische Beispiele für die Verwendung von `rmmod`:
@@ -28,12 +28,17 @@ Hier sind einige praktische Beispiele für die Verwendung von `rmmod`:
    rmmod -f mein_modul
    ```
 
-3. Anzeigen der Hilfeseite:
+3. Testlauf für das Entfernen eines Moduls:
    ```csh
-   rmmod --help
+   rmmod -n mein_modul
+   ```
+
+4. Entfernen eines Moduls und Warten auf Referenzen:
+   ```csh
+   rmmod -w mein_modul
    ```
 
 ## Tipps
-- Stellen Sie sicher, dass das Modul nicht mehr benötigt wird, bevor Sie es entfernen, um Systeminstabilität zu vermeiden.
-- Verwenden Sie `lsmod`, um eine Liste der aktuell geladenen Module anzuzeigen, bevor Sie `rmmod` verwenden.
-- Seien Sie vorsichtig mit der `-f`-Option, da das Erzwingen des Entfernens eines in Verwendung befindlichen Moduls zu Systemfehlern führen kann.
+- Überprüfen Sie vor dem Entfernen eines Moduls, ob es noch in Verwendung ist, um Systeminstabilität zu vermeiden.
+- Nutzen Sie den `lsmod` Befehl, um eine Liste der aktuell geladenen Module anzuzeigen, bevor Sie `rmmod` verwenden.
+- Seien Sie vorsichtig mit der `-f` Option, da sie zu unerwarteten Systemverhalten führen kann, wenn das Modul aktiv ist.

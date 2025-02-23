@@ -1,41 +1,46 @@
 # [Hệ điều hành Unix] C Shell (csh) w: Xem thông tin người dùng đang đăng nhập
 
-## Overview
-Lệnh `w` trong C Shell (csh) được sử dụng để hiển thị thông tin về người dùng đang đăng nhập vào hệ thống, bao gồm thời gian hoạt động, địa chỉ IP và các tiến trình mà họ đang chạy.
+## Tổng quan
+Lệnh `w` trong C Shell (csh) được sử dụng để hiển thị thông tin về người dùng đang đăng nhập vào hệ thống, bao gồm tên người dùng, thời gian đăng nhập, thời gian hoạt động và các thông tin khác liên quan đến hoạt động của họ.
 
-## Usage
+## Cú pháp
 Cú pháp cơ bản của lệnh `w` như sau:
 ```
-w [options] [arguments]
+w [tùy chọn] [tham số]
 ```
 
-## Common Options
-- `-h`: Ẩn tiêu đề của thông tin.
-- `-s`: Hiển thị thông tin ngắn gọn hơn.
-- `-f`: Hiển thị thông tin về tên máy chủ.
+## Tùy chọn phổ biến
+- `-h`: Không hiển thị tiêu đề.
+- `-s`: Hiển thị thông tin ngắn gọn.
+- `-f`: Hiển thị thông tin chi tiết về người dùng.
 
-## Common Examples
-- Xem thông tin người dùng đang đăng nhập:
-  ```bash
-  w
+## Ví dụ phổ biến
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `w`:
+
+1. **Hiển thị thông tin người dùng đang đăng nhập**:
+   ```csh
+   w
+   ```
+
+2. **Hiển thị thông tin mà không có tiêu đề**:
+   ```csh
+   w -h
+   ```
+
+3. **Hiển thị thông tin ngắn gọn**:
+   ```csh
+   w -s
+   ```
+
+4. **Hiển thị thông tin chi tiết về người dùng**:
+   ```csh
+   w -f
+   ```
+
+## Mẹo
+- Sử dụng lệnh `w` thường xuyên để theo dõi hoạt động của người dùng trên hệ thống.
+- Kết hợp với lệnh `grep` để tìm kiếm thông tin của một người dùng cụ thể:
+  ```csh
+  w | grep username
   ```
-
-- Xem thông tin người dùng mà không có tiêu đề:
-  ```bash
-  w -h
-  ```
-
-- Xem thông tin ngắn gọn:
-  ```bash
-  w -s
-  ```
-
-- Xem thông tin với tên máy chủ:
-  ```bash
-  w -f
-  ```
-
-## Tips
-- Sử dụng `w` để theo dõi hoạt động của người dùng trên hệ thống, giúp quản trị viên nắm bắt tình hình sử dụng tài nguyên.
-- Kết hợp lệnh `w` với các công cụ khác như `grep` để lọc thông tin theo nhu cầu cụ thể.
-- Thường xuyên kiểm tra thông tin người dùng để phát hiện các hoạt động bất thường hoặc không mong muốn.
+- Hãy chú ý đến thời gian hoạt động của người dùng để đánh giá hiệu suất làm việc.

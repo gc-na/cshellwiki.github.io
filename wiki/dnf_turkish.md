@@ -1,11 +1,10 @@
 # [Linux] C Shell (csh) dnf Kullanımı: Paket yönetimi aracı
 
 ## Genel Bakış
-dnf, Linux sistemlerinde yazılım paketlerini yönetmek için kullanılan bir komut satırı aracıdır. Yazılım yükleme, güncelleme ve kaldırma işlemlerini kolaylaştırır.
+dnf, Linux işletim sistemlerinde yazılım paketlerini yönetmek için kullanılan bir komut satırı aracıdır. Yazılım yüklemek, güncellemek veya kaldırmak için kullanılır ve genellikle RPM tabanlı dağıtımlarda tercih edilir.
 
 ## Kullanım
-dnf komutunun temel sözdizimi aşağıdaki gibidir:
-
+Temel sözdizimi aşağıdaki gibidir:
 ```bash
 dnf [seçenekler] [argümanlar]
 ```
@@ -15,40 +14,38 @@ dnf [seçenekler] [argümanlar]
 - `remove`: Belirtilen paketi kaldırır.
 - `update`: Yüklü paketleri günceller.
 - `search`: Belirtilen terimi içeren paketleri arar.
-- `info`: Belirtilen paket hakkında bilgi verir.
+- `list`: Mevcut paketleri listeler.
 
 ## Yaygın Örnekler
-Aşağıda dnf komutunun bazı pratik kullanım örnekleri bulunmaktadır:
-
 - Bir paketi yüklemek için:
-  ```bash
-  dnf install paket_adi
-  ```
+```bash
+dnf install paket_adi
+```
 
 - Bir paketi kaldırmak için:
-  ```bash
-  dnf remove paket_adi
-  ```
+```bash
+dnf remove paket_adi
+```
 
-- Yüklü paketleri güncellemek için:
-  ```bash
-  dnf update
-  ```
+- Tüm paketleri güncellemek için:
+```bash
+dnf update
+```
 
-- Belirli bir terimi içeren paketleri aramak için:
-  ```bash
-  dnf search arama_terimi
-  ```
+- Belirli bir terimi aramak için:
+```bash
+dnf search arama_terimi
+```
 
-- Bir paketin detaylı bilgilerini görmek için:
-  ```bash
-  dnf info paket_adi
-  ```
+- Mevcut paketleri listelemek için:
+```bash
+dnf list
+```
 
 ## İpuçları
-- Paketleri güncellemeden önce sisteminizi yedeklemeyi unutmayın.
-- Yüklemek istediğiniz paketlerin bağımlılıklarını kontrol edin.
-- `dnf` komutunu kullanırken `--assumeyes` seçeneği ile onay gerektiren işlemleri otomatikleştirebilirsiniz. Örneğin:
-  ```bash
-  dnf install --assumeyes paket_adi
-  ```
+- Paketleri güncellemeden önce, sisteminizin yedeğini almak iyi bir uygulamadır.
+- `dnf` komutunu kullanmadan önce, root (yönetici) yetkilerine sahip olduğunuzdan emin olun.
+- `dnf` ile birlikte `-y` seçeneğini kullanarak onay istemeden işlemleri gerçekleştirebilirsiniz: 
+```bash
+dnf -y install paket_adi
+```

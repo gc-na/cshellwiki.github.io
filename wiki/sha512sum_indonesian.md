@@ -11,14 +11,15 @@ sha512sum [options] [arguments]
 ```
 
 ## Common Options
-- `-b`: Menghitung checksum untuk file biner.
-- `-c`: Memeriksa checksum dari file yang telah dihitung sebelumnya.
-- `-h`: Menampilkan bantuan dan informasi tentang penggunaan perintah.
+- `-b`: Menghitung checksum dalam mode biner.
+- `-c`: Memeriksa checksum dari file yang diberikan.
+- `-h`: Menampilkan bantuan dan informasi penggunaan.
+- `--tag`: Menyertakan tag dalam output, berguna untuk kompatibilitas dengan perintah lain.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan `sha512sum`:
+Berikut adalah beberapa contoh penggunaan yang umum:
 
-1. Menghitung checksum dari sebuah file:
+1. Menghitung checksum SHA-512 dari sebuah file:
    ```bash
    sha512sum file.txt
    ```
@@ -28,17 +29,17 @@ Berikut adalah beberapa contoh penggunaan `sha512sum`:
    sha512sum file.txt > checksum.txt
    ```
 
-3. Memeriksa checksum dari file menggunakan file checksum:
+3. Memeriksa checksum dari file menggunakan daftar checksum:
    ```bash
    sha512sum -c checksum.txt
    ```
 
-4. Menghitung checksum untuk file biner:
+4. Menghitung checksum dalam mode biner:
    ```bash
    sha512sum -b file.bin
    ```
 
 ## Tips
-- Selalu simpan checksum yang dihasilkan untuk memudahkan verifikasi di masa mendatang.
+- Selalu simpan checksum yang dihasilkan di tempat yang aman untuk memudahkan verifikasi di masa mendatang.
 - Gunakan opsi `-c` untuk memeriksa integritas file setelah transfer atau penyimpanan.
-- Pastikan untuk menggunakan file yang valid dan tidak rusak saat memeriksa checksum.
+- Periksa checksum secara berkala untuk memastikan file tetap utuh dan tidak terkorupsi.

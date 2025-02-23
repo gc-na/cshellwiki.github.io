@@ -1,53 +1,49 @@
 # [Linux] C Shell (csh) sftp Verwendung: Dateien sicher übertragen
 
 ## Übersicht
-Der `sftp`-Befehl (SSH File Transfer Protocol) wird verwendet, um Dateien sicher zwischen einem lokalen und einem entfernten Computer zu übertragen. Er bietet eine sichere Möglichkeit, Dateien über das Netzwerk zu übertragen, indem er die SSH-Verschlüsselung nutzt.
+Der `sftp`-Befehl (Secure File Transfer Protocol) wird verwendet, um Dateien sicher zwischen einem lokalen und einem entfernten Computer über SSH (Secure Shell) zu übertragen. Er bietet eine sichere Alternative zu FTP und ermöglicht das Hochladen, Herunterladen und Verwalten von Dateien auf einem Server.
 
 ## Verwendung
 Die grundlegende Syntax des `sftp`-Befehls lautet:
 
-```bash
-sftp [Optionen] [Benutzername@Host]
+```csh
+sftp [optionen] [benutzer@host]
 ```
 
 ## Häufige Optionen
-- `-P <Port>`: Gibt den Port an, der für die Verbindung verwendet werden soll.
-- `-o <Option>`: Ermöglicht das Setzen von SSH-Optionen.
-- `-v`: Aktiviert den ausführlichen Modus, um mehr Informationen über die Verbindung zu erhalten.
+- `-P port`: Gibt den Port an, der für die Verbindung verwendet werden soll.
+- `-i datei`: Gibt eine Datei mit einem privaten Schlüssel an, die zur Authentifizierung verwendet werden soll.
+- `-b datei`: Führt Befehle aus einer Datei im Batch-Modus aus.
 
 ## Häufige Beispiele
 Hier sind einige praktische Beispiele für die Verwendung von `sftp`:
 
-1. **Verbindung zu einem entfernten Server herstellen:**
-   ```bash
-   sftp benutzername@hostname
+1. **Verbindung zu einem Server herstellen:**
+   ```csh
+   sftp benutzer@hostname
    ```
 
-2. **Datei vom lokalen Computer auf den entfernten Server hochladen:**
-   ```bash
-   sftp benutzername@hostname
+2. **Datei vom lokalen Computer auf den Server hochladen:**
+   ```csh
    put lokale_datei.txt
    ```
 
-3. **Datei vom entfernten Server auf den lokalen Computer herunterladen:**
-   ```bash
-   sftp benutzername@hostname
+3. **Datei vom Server auf den lokalen Computer herunterladen:**
+   ```csh
    get entfernte_datei.txt
    ```
 
-4. **Verzeichnisinhalt auf dem entfernten Server auflisten:**
-   ```bash
-   sftp benutzername@hostname
+4. **Verzeichnis auf dem Server auflisten:**
+   ```csh
    ls
    ```
 
-5. **Mehrere Dateien hochladen:**
-   ```bash
-   sftp benutzername@hostname
-   mput datei1.txt datei2.txt
+5. **Batch-Befehle aus einer Datei ausführen:**
+   ```csh
+   sftp -b befehle.txt benutzer@hostname
    ```
 
 ## Tipps
-- Verwenden Sie den `-v`-Schalter, um Verbindungsprobleme leichter zu diagnostizieren.
-- Stellen Sie sicher, dass der SSH-Dienst auf dem entfernten Server läuft, bevor Sie eine Verbindung herstellen.
-- Nutzen Sie `exit` oder `bye`, um die sftp-Sitzung sicher zu beenden.
+- Verwenden Sie `-P`, um einen spezifischen Port anzugeben, falls der Server nicht den Standardport 22 verwendet.
+- Nutzen Sie den Batch-Modus, um mehrere Befehle in einer Datei zu speichern und sie automatisch auszuführen.
+- Achten Sie darauf, dass Sie die richtigen Berechtigungen für die Dateien haben, die Sie übertragen möchten.

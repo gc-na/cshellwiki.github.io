@@ -1,4 +1,4 @@
-# [Linux] C Shell (csh) foreach : Exécute une commande pour chaque élément d'une liste
+# [Unix] C Shell (csh) foreach utilisation : Exécute une commande pour chaque élément d'une liste
 
 ## Overview
 La commande `foreach` dans C Shell (csh) permet d'exécuter une série de commandes pour chaque élément d'une liste. C'est un outil puissant pour automatiser des tâches répétitives en itérant sur des éléments.
@@ -13,10 +13,9 @@ end
 ```
 
 ## Common Options
-La commande `foreach` n'a pas de nombreuses options, mais voici quelques éléments à considérer :
-
+La commande `foreach` n'a pas de nombreuses options comme d'autres commandes, mais voici quelques points à considérer :
 - `variable` : Nom de la variable qui prendra la valeur de chaque élément de la liste à chaque itération.
-- `liste` : Une série d'éléments séparés par des espaces ou des parenthèses.
+- `liste` : Une liste d'éléments sur lesquels itérer.
 
 ## Common Examples
 
@@ -28,7 +27,7 @@ end
 ```
 Cet exemple affiche tous les fichiers avec l'extension `.txt` dans le répertoire courant.
 
-### Exemple 2 : Compresser des fichiers
+### Exemple 2 : Compresser plusieurs fichiers
 ```csh
 foreach file (*.log)
     gzip $file
@@ -36,15 +35,15 @@ end
 ```
 Ici, tous les fichiers avec l'extension `.log` sont compressés en utilisant `gzip`.
 
-### Exemple 3 : Exécuter une commande sur plusieurs serveurs
+### Exemple 3 : Renommer des fichiers
 ```csh
-foreach server (server1 server2 server3)
-    ssh $server 'uptime'
+foreach file (file1.txt file2.txt file3.txt)
+    mv $file ${file:r}.bak
 end
 ```
-Cet exemple se connecte à plusieurs serveurs et exécute la commande `uptime` sur chacun d'eux.
+Cet exemple renomme `file1.txt`, `file2.txt`, et `file3.txt` en ajoutant l'extension `.bak`.
 
 ## Tips
-- Utilisez des parenthèses pour définir clairement la liste des éléments.
-- Faites attention aux espaces dans les noms de fichiers ; utilisez des guillemets si nécessaire.
-- Testez vos commandes avec un petit sous-ensemble de données avant de les exécuter sur de grandes listes pour éviter des erreurs coûteuses.
+- Utilisez des glob patterns pour sélectionner des fichiers spécifiques dans votre liste.
+- Soyez prudent avec les commandes destructrices comme `rm` ; vérifiez toujours la liste d'éléments avant d'exécuter des commandes qui pourraient supprimer des fichiers.
+- Vous pouvez imbriquer des boucles `foreach` pour des tâches plus complexes, mais cela peut rendre le script plus difficile à lire.

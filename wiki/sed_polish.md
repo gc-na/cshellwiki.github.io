@@ -1,53 +1,47 @@
-# [Linux] C Shell (csh) sed Użycie: Edytowanie tekstu w strumieniu
+# [Linux] C Shell (csh) sed Użycie: Edytor strumieniowy tekstu
 
-## Overview
-Polecenie `sed` (stream editor) jest narzędziem do przetwarzania tekstu, które umożliwia edytowanie danych w strumieniu. Używa się go do wykonywania różnych operacji na plikach tekstowych, takich jak zamiana, usuwanie lub dodawanie tekstu.
+## Przegląd
+Polecenie `sed` (stream editor) jest potężnym narzędziem do przetwarzania i edytowania tekstu w strumieniu. Umożliwia wykonywanie różnych operacji na plikach tekstowych, takich jak zamiana, usuwanie i wstawianie tekstu.
 
-## Usage
+## Użycie
 Podstawowa składnia polecenia `sed` wygląda następująco:
 
 ```bash
 sed [opcje] [argumenty]
 ```
 
-## Common Options
-- `-e`: Umożliwia dodanie skryptu sed do przetwarzania.
+## Częste opcje
+- `-e`: Umożliwia podanie wielu poleceń do wykonania.
+- `-f`: Umożliwia wczytanie poleceń z pliku.
 - `-i`: Edytuje plik w miejscu, bez tworzenia kopii.
-- `-n`: Tylko wyświetla linie, które pasują do wzorca.
-- `s/pat/replace/`: Zamienia wzorzec `pat` na `replace`.
+- `-n`: Tylko wyświetla linie, które pasują do podanego wzorca.
 
-## Common Examples
+## Częste przykłady
 1. **Zamiana tekstu w pliku:**
+   Zastąp wszystkie wystąpienia "stare" na "nowe" w pliku `plik.txt`.
    ```bash
-   sed 's/stary/nowy/' plik.txt
+   sed 's/stare/nowe/g' plik.txt
    ```
-   To polecenie zamienia pierwsze wystąpienie słowa "stary" na "nowy" w każdej linii pliku `plik.txt`.
 
-2. **Zamiana wszystkich wystąpień tekstu:**
+2. **Usunięcie linii zawierających wzorzec:**
+   Usuń wszystkie linie, które zawierają "niepotrzebne" w pliku `plik.txt`.
    ```bash
-   sed 's/stary/nowy/g' plik.txt
+   sed '/niepotrzebne/d' plik.txt
    ```
-   Użycie flagi `g` powoduje, że wszystkie wystąpienia "stary" w linii zostaną zamienione na "nowy".
 
-3. **Usuwanie linii zawierających wzorzec:**
+3. **Wstawienie tekstu przed określoną linią:**
+   Wstaw "Witaj" przed drugą linią w pliku `plik.txt`.
    ```bash
-   sed '/wzorzec/d' plik.txt
+   sed '2i Witaj' plik.txt
    ```
-   To polecenie usuwa wszystkie linie, które zawierają "wzorzec" z pliku `plik.txt`.
 
-4. **Edytowanie pliku w miejscu:**
+4. **Zapisanie zmian bezpośrednio w pliku:**
+   Zastąp "stare" na "nowe" w pliku `plik.txt` i zapisz zmiany.
    ```bash
-   sed -i 's/stary/nowy/g' plik.txt
+   sed -i 's/stare/nowe/g' plik.txt
    ```
-   To polecenie zamienia wszystkie wystąpienia "stary" na "nowy" bezpośrednio w pliku `plik.txt`.
 
-5. **Wyświetlanie tylko linii pasujących do wzorca:**
-   ```bash
-   sed -n '/wzorzec/p' plik.txt
-   ```
-   Użycie opcji `-n` sprawia, że `sed` wyświetla tylko te linie, które pasują do podanego wzorca.
-
-## Tips
-- Zawsze warto zrobić kopię zapasową pliku przed użyciem opcji `-i`, aby uniknąć nieodwracalnych zmian.
-- Możesz łączyć wiele operacji w jednym poleceniu, używając opcji `-e`.
-- Używaj wyrażeń regularnych, aby zwiększyć moc i elastyczność polecenia `sed`.
+## Wskazówki
+- Zawsze wykonuj kopię zapasową plików przed użyciem opcji `-i`, aby uniknąć utraty danych.
+- Używaj opcji `-n` w połączeniu z komendą `p`, aby wyświetlić tylko te linie, które chcesz zobaczyć.
+- Testuj swoje polecenia na mniejszych plikach, aby upewnić się, że działają zgodnie z oczekiwaniami, zanim zastosujesz je do większych zbiorów danych.

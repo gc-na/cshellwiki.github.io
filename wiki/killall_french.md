@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) killall : Terminer tous les processus d'un nom donné
+# [Linux] C Shell (csh) killall : Terminer des processus par nom
 
 ## Overview
-La commande `killall` est utilisée pour terminer tous les processus qui correspondent à un nom spécifique. Cela permet de gérer facilement plusieurs instances d'un même programme sans avoir à les identifier individuellement.
+La commande `killall` est utilisée pour terminer tous les processus qui correspondent à un nom de programme spécifique. Cela permet de gérer facilement les processus en cours d'exécution sans avoir à chercher leur identifiant de processus (PID).
 
 ## Usage
 La syntaxe de base de la commande `killall` est la suivante :
@@ -13,38 +13,34 @@ killall [options] [arguments]
 ## Common Options
 Voici quelques options courantes pour `killall` :
 
-- `-9` : Envoie un signal SIGKILL pour forcer l'arrêt immédiat des processus.
-- `-v` : Affiche des informations détaillées sur les processus qui sont terminés.
-- `-i` : Demande une confirmation avant de tuer chaque processus.
+- `-9` : Force l'arrêt immédiat des processus.
+- `-v` : Affiche des informations détaillées sur les processus terminés.
+- `-i` : Demande une confirmation avant de terminer chaque processus.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `killall` :
 
-1. Terminer tous les processus nommés `firefox` :
-
+1. Terminer tous les processus de Firefox :
    ```csh
    killall firefox
    ```
 
-2. Forcer l'arrêt de tous les processus nommés `gedit` :
-
+2. Terminer tous les processus de manière forcée :
    ```csh
-   killall -9 gedit
+   killall -9 firefox
    ```
 
-3. Afficher les processus qui seront terminés sans les arrêter :
-
+3. Afficher les processus qui vont être terminés :
    ```csh
-   killall -v gnome-terminal
+   killall -v firefox
    ```
 
-4. Demander une confirmation avant de terminer chaque processus nommé `ssh` :
-
+4. Demander une confirmation avant de terminer chaque processus :
    ```csh
-   killall -i ssh
+   killall -i firefox
    ```
 
 ## Tips
-- Utilisez l'option `-v` pour voir quels processus sont affectés, cela peut être utile pour le débogage.
-- Soyez prudent avec l'option `-9`, car elle ne permet pas aux processus de se fermer proprement, ce qui peut entraîner une perte de données.
-- Vérifiez toujours le nom exact du processus que vous souhaitez terminer pour éviter de fermer des applications non désirées.
+- Utilisez l'option `-v` pour vérifier quels processus sont terminés, cela peut être utile pour le débogage.
+- Soyez prudent avec l'option `-9`, car elle force l'arrêt des processus sans leur permettre de se fermer proprement, ce qui peut entraîner une perte de données.
+- Avant d'utiliser `killall`, assurez-vous que vous avez les droits nécessaires pour terminer les processus ciblés.

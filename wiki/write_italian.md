@@ -1,41 +1,42 @@
-# [Linux] C Shell (csh) write utilizzo: Inviare messaggi ad altri utenti
+# [Linux] C Shell (csh) write uso: Inviare messaggi ad altri utenti
 
 ## Overview
-Il comando `write` in C Shell (csh) consente di inviare messaggi di testo ad altri utenti che sono attualmente connessi al sistema. Questo strumento è utile per comunicazioni rapide e dirette tra utenti.
+Il comando `write` in C Shell (csh) consente di inviare messaggi di testo ad altri utenti che sono attualmente connessi al sistema. Questo strumento è utile per comunicare rapidamente con altri utenti senza dover utilizzare e-mail o altri mezzi di comunicazione.
 
 ## Usage
 La sintassi di base del comando `write` è la seguente:
 
-```
-write [opzioni] [utente] [tty]
+```csh
+write [opzioni] [utente]
 ```
 
 ## Common Options
-- `-n`: Non invia un messaggio se l'utente non è connesso.
+- `-n`: Non invia un messaggio di avviso all'utente destinatario.
 - `-h`: Mostra un messaggio di aiuto.
 
 ## Common Examples
-Ecco alcuni esempi pratici di utilizzo del comando `write`:
+Ecco alcuni esempi pratici dell'uso del comando `write`:
 
 1. Inviare un messaggio a un utente specifico:
-   ```bash
+   ```csh
    write mario
    Ciao Mario, come va?
    ```
 
-2. Inviare un messaggio a un utente su un terminale specifico:
-   ```bash
-   write lucia pts/2
-   Ti aspetto in sala riunioni.
+2. Inviare un messaggio senza avviso:
+   ```csh
+   write -n luca
+   Sto lavorando su un progetto, ti aggiorno più tardi.
    ```
 
-3. Usare l'opzione `-n` per evitare di inviare messaggi a utenti disconnessi:
-   ```bash
-   write -n giovanni
-   Questo messaggio non verrà inviato se Giovanni non è online.
+3. Inviare un messaggio a un utente e terminare il comando:
+   ```csh
+   write giulia
+   Ci vediamo alle 5! 
+   ^D
    ```
 
 ## Tips
-- Assicurati che l'utente a cui stai scrivendo sia connesso e non abbia disabilitato la ricezione dei messaggi.
-- Puoi terminare la scrittura del messaggio premendo `Ctrl+D`.
-- Utilizza `who` per controllare quali utenti sono attualmente connessi prima di inviare un messaggio.
+- Assicurati che l'utente a cui stai scrivendo sia attualmente connesso al sistema; altrimenti, il messaggio non verrà recapitato.
+- Usa il comando `who` per vedere chi è attualmente connesso e i loro nomi utente.
+- Ricorda che il messaggio inviato sarà visibile a chiunque stia monitorando la sessione dell'utente destinatario.

@@ -1,45 +1,42 @@
-# [Sistem Operasi] C Shell (csh) cut Penggunaan: Memotong bagian dari input teks
+# [Sistem Operasi] C Shell (csh) cut Penggunaan: Memotong bagian dari teks
 
 ## Overview
-Perintah `cut` digunakan untuk memotong bagian dari input teks, baik dari file maupun dari output perintah lain. Ini sangat berguna untuk mengambil kolom tertentu dari data terstruktur seperti file CSV atau output perintah yang terformat.
+Perintah `cut` digunakan untuk mengekstrak bagian tertentu dari setiap baris dalam file atau input standar. Ini sangat berguna untuk memproses data yang terstruktur, seperti file CSV atau log.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `cut`:
 
-```
+```csh
 cut [options] [arguments]
 ```
 
 ## Common Options
-- `-f`: Menentukan field (kolom) yang ingin diambil berdasarkan pemisah.
-- `-d`: Menentukan karakter pemisah yang digunakan untuk memisahkan field.
-- `-c`: Memotong berdasarkan karakter tertentu dalam baris.
-- `--complement`: Mengambil bagian yang tidak terpotong dari input.
+- `-f`: Menentukan field (kolom) yang ingin diekstrak, menggunakan pemisah yang ditentukan.
+- `-d`: Menentukan pemisah yang digunakan untuk memisahkan field. Secara default, pemisahnya adalah tab.
+- `-c`: Menentukan karakter yang ingin diekstrak berdasarkan posisi karakter.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `cut`:
 
-1. Mengambil kolom pertama dari file teks yang dipisahkan dengan koma:
+1. **Mengambil field tertentu dari file**:
+   Mengambil field pertama dan ketiga dari file `data.txt` yang dipisahkan oleh koma.
    ```csh
-   cut -d',' -f1 data.csv
+   cut -d ',' -f 1,3 data.txt
    ```
 
-2. Mengambil karakter dari posisi 1 hingga 5 dari sebuah string:
+2. **Mengambil karakter tertentu dari input**:
+   Mengambil karakter dari posisi 1 hingga 5 dari input.
    ```csh
-   echo "Hello World" | cut -c1-5
+   echo "Hello World" | cut -c 1-5
    ```
 
-3. Mengambil kolom kedua dan ketiga dari file teks yang dipisahkan dengan tab:
+3. **Mengambil field dari output perintah lain**:
+   Mengambil nama pengguna dari output perintah `cat /etc/passwd`.
    ```csh
-   cut -d'\t' -f2,3 data.txt
-   ```
-
-4. Mengambil semua kolom kecuali kolom pertama dari file:
-   ```csh
-   cut --complement -f1 data.txt
+   cat /etc/passwd | cut -d ':' -f 1
    ```
 
 ## Tips
-- Selalu periksa pemisah yang digunakan dalam file Anda untuk memastikan Anda menggunakan opsi `-d` yang tepat.
-- Gunakan `-f` untuk mengambil beberapa kolom sekaligus dengan memisahkan nomor kolom dengan koma.
-- Kombinasikan `cut` dengan perintah lain menggunakan pipeline (`|`) untuk memproses data secara lebih efisien.
+- Selalu tentukan pemisah dengan opsi `-d` jika data Anda tidak menggunakan tab sebagai pemisah default.
+- Gunakan opsi `-f` untuk mengekstrak beberapa field sekaligus dengan memisahkan nomor field dengan koma.
+- Cobalah untuk menggabungkan `cut` dengan perintah lain menggunakan pipe (`|`) untuk memproses data secara efisien.

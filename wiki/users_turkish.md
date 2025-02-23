@@ -1,37 +1,38 @@
 # [Linux] C Shell (csh) kullanıcıları <Kullanıcıları listele>: Kullanıcıları görüntüleme komutu
 
 ## Genel Bakış
-`users` komutu, sistemde oturum açmış olan kullanıcıların adlarını listelemek için kullanılır. Bu komut, aktif kullanıcıların kimler olduğunu hızlı bir şekilde görmek isteyen sistem yöneticileri ve kullanıcılar için oldukça faydalıdır.
+`users` komutu, sistemde oturum açmış olan kullanıcıların adlarını listelemek için kullanılır. Bu komut, sistem yöneticileri ve kullanıcılar için anlık olarak kimlerin oturum açtığını görmek açısından faydalıdır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
+
 ```csh
-users [seçenekler] [argümanlar]
+users [options] [arguments]
 ```
 
 ## Yaygın Seçenekler
-- `-n`: Kullanıcı adlarını yalnızca bir kez gösterir, yani tekrar eden kullanıcı adlarını filtreler.
-- `-l`: Kullanıcıların tam adlarını ve diğer bilgilerini gösterir.
+- `-n`: Kullanıcı adlarını sadece bir kez gösterir, tekrar eden kullanıcı adlarını filtreler.
+- `-u`: Kullanıcıların oturum açma zamanlarını gösterir.
 
 ## Yaygın Örnekler
-Aşağıda `users` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+Aşağıda `users` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. Sistemdeki aktif kullanıcıları listeleme:
+1. Sistemde oturum açmış olan kullanıcıları listeleme:
    ```csh
    users
    ```
 
-2. Tekil kullanıcı adlarını listeleme:
+2. Tekrar eden kullanıcı adlarını filtreleyerek listeleme:
    ```csh
    users -n
    ```
 
-3. Kullanıcıların detaylı bilgilerini görüntüleme:
+3. Kullanıcıların oturum açma zamanlarını gösterme:
    ```csh
-   users -l
+   users -u
    ```
 
 ## İpuçları
 - `users` komutunu sık sık kullanarak sistemdeki aktif kullanıcıları takip edebilirsiniz.
-- Eğer birden fazla terminal açtıysanız, `users` komutunu kullanarak hangi kullanıcıların hangi terminalde oturum açtığını görebilirsiniz.
-- `users` komutunu diğer sistem izleme komutlarıyla birleştirerek daha kapsamlı bilgi alabilirsiniz.
+- Eğer sistemde çok sayıda kullanıcı varsa, `users -n` seçeneği ile daha temiz bir liste elde edebilirsiniz.
+- Bu komut, sistem kaynaklarını yönetirken kullanıcıların durumunu gözlemlemek için faydalı olabilir.

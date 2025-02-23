@@ -1,50 +1,45 @@
 # [Linux] C Shell (csh) ping Kullanımı: Ağ bağlantısını test etme aracı
 
-## Genel Bakış
-Ping komutu, bir ağ üzerindeki bir hedefe (genellikle bir IP adresi veya alan adı) veri paketleri göndererek bağlantının durumunu kontrol etmeye yarar. Bu komut, ağ bağlantısının sağlıklı olup olmadığını anlamak için yaygın olarak kullanılır.
+## Overview
+Ping komutu, bir ağ üzerindeki bir cihazın erişilebilirliğini test etmek için kullanılır. Bu komut, hedef cihazdan yanıt alıp almadığınızı kontrol ederek ağ bağlantılarının durumunu belirlemenize yardımcı olur.
 
-## Kullanım
+## Usage
 Ping komutunun temel sözdizimi aşağıdaki gibidir:
 
 ```csh
-ping [seçenekler] [argümanlar]
+ping [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-c [sayı]`: Gönderilecek ping paketlerinin sayısını belirler.
-- `-i [saniye]`: Paketler arasında bekleme süresini saniye cinsinden ayarlar.
-- `-s [boyut]`: Gönderilecek paketlerin boyutunu bayt cinsinden ayarlar.
-- `-t [süre]`: Zaman aşımını ayarlar.
+## Common Options
+- `-c <count>`: Belirtilen sayıda ping gönderir.
+- `-i <interval>`: Ping gönderimleri arasındaki süreyi belirler.
+- `-s <size>`: Gönderilecek paketlerin boyutunu ayarlar.
+- `-t <ttl>`: Paketlerin yaşam süresini (time to live) ayarlar.
 
-## Yaygın Örnekler
-Aşağıda ping komutunun bazı pratik örnekleri bulunmaktadır:
+## Common Examples
+Aşağıda ping komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
-1. **Bir IP adresine ping atma:**
-   ```csh
-   ping 192.168.1.1
-   ```
-
-2. **Bir alan adına ping atma:**
-   ```csh
-   ping example.com
-   ```
-
-3. **Belirli sayıda paket gönderme:**
+1. Bir IP adresine 4 ping gönderme:
    ```csh
    ping -c 4 192.168.1.1
    ```
 
-4. **Paket boyutunu ayarlama:**
+2. Belirli bir aralıkla ping gönderme (her 2 saniyede bir):
    ```csh
-   ping -s 64 example.com
+   ping -i 2 8.8.8.8
    ```
 
-5. **Paketler arasında bekleme süresi ayarlama:**
+3 Farklı boyutta paket gönderme:
    ```csh
-   ping -i 2 192.168.1.1
+   ping -s 100 10.0.0.1
    ```
 
-## İpuçları
-- Ping komutunu kullanarak ağ bağlantınızın hızını ve kararlılığını test edebilirsiniz.
-- Ping sonuçlarını analiz ederek ağda olası sorunları tespit edebilirsiniz.
-- Ping atarken hedefin yanıt vermesi için yeterli süre tanımak önemlidir; bu nedenle zaman aşımını ayarlamak faydalı olabilir.
+4. TTL değerini ayarlama:
+   ```csh
+   ping -t 64 google.com
+   ```
+
+## Tips
+- Ping komutunu kullanırken, hedef cihazın yanıt vermediği durumlarda, ağ bağlantınızı veya hedef cihazın durumunu kontrol edin.
+- Sürekli ping atmak yerine belirli bir sayıda ping göndermeyi tercih edin, bu ağ üzerindeki yükü azaltır.
+- Ping sonuçlarını analiz ederek, ağ gecikmelerini ve kayıplarını tespit edebilirsiniz.

@@ -1,48 +1,50 @@
-# [Linux] C Shell (csh) fdisk Utilisation : Gérer les partitions de disque
+# [Linux] C Shell (csh) fdisk Utilisation : Gestion des partitions de disque
 
 ## Overview
-La commande `fdisk` est utilisée pour manipuler les tables de partitions sur les disques durs. Elle permet de créer, supprimer, redimensionner et gérer les partitions de disque, ce qui est essentiel pour la gestion des systèmes de fichiers.
+La commande `fdisk` est utilisée pour manipuler les tables de partitions des disques durs sous les systèmes d'exploitation de type Unix. Elle permet de créer, supprimer, modifier et afficher les partitions sur un disque.
 
 ## Usage
-Voici la syntaxe de base de la commande `fdisk` :
+La syntaxe de base de la commande `fdisk` est la suivante :
 
 ```bash
 fdisk [options] [arguments]
 ```
 
 ## Common Options
-- `-l` : Liste toutes les partitions sur tous les disques.
-- `-u` : Utilise des unités de secteurs pour afficher les informations.
+Voici quelques options courantes de la commande `fdisk` :
+
+- `-l` : Liste toutes les partitions disponibles sur les disques.
+- `-u` : Utilise des unités de secteur pour les tailles de partition.
+- `-s` : Affiche la taille d'une partition spécifiée.
 - `-n` : Crée une nouvelle partition.
 - `-d` : Supprime une partition existante.
-- `-s` : Affiche la taille d'une partition.
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de la commande `fdisk` :
+Voici quelques exemples pratiques de l'utilisation de `fdisk` :
 
-1. **Lister les partitions sur un disque spécifique** :
+1. **Lister les partitions sur un disque :**
    ```bash
-   fdisk -l /dev/sda
+   fdisk -l
    ```
 
-2. **Créer une nouvelle partition** :
-   ```bash
-   fdisk /dev/sda
-   ```
-   Ensuite, dans l'interface interactive, utilisez `n` pour créer une nouvelle partition.
-
-3. **Supprimer une partition** :
+2. **Créer une nouvelle partition :**
    ```bash
    fdisk /dev/sda
    ```
-   Dans l'interface interactive, utilisez `d` pour supprimer une partition.
+   (Puis, suivez les instructions à l'écran pour créer une nouvelle partition.)
 
-4. **Afficher la taille d'une partition** :
+3. **Supprimer une partition :**
+   ```bash
+   fdisk /dev/sda
+   ```
+   (Sélectionnez l'option pour supprimer une partition et suivez les instructions.)
+
+4. **Afficher la taille d'une partition spécifique :**
    ```bash
    fdisk -s /dev/sda1
    ```
 
 ## Tips
-- Toujours sauvegarder vos données avant de modifier les partitions pour éviter toute perte de données.
-- Utilisez `man fdisk` pour accéder à la documentation complète et aux options avancées.
-- Soyez prudent lorsque vous supprimez des partitions, car cette action est irréversible.
+- Toujours faire une sauvegarde des données importantes avant de modifier les partitions.
+- Utilisez `fdisk` avec précaution, car des erreurs peuvent entraîner la perte de données.
+- Vérifiez le type de partition (MBR ou GPT) avant de faire des modifications, car cela peut affecter la compatibilité avec d'autres systèmes d'exploitation.

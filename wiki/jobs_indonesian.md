@@ -1,44 +1,44 @@
-# [Sistem Operasi] C Shell (csh) jobs Penggunaan: Menampilkan daftar pekerjaan yang sedang berjalan
+# [Sistem Operasi] C Shell (csh) jobs Penggunaan: Menampilkan Daftar Proses Latar Belakang
 
 ## Overview
-Perintah `jobs` dalam C Shell (csh) digunakan untuk menampilkan daftar pekerjaan yang sedang berjalan di latar belakang atau yang telah dihentikan. Ini sangat berguna untuk memantau status berbagai proses yang Anda jalankan di terminal.
+Perintah `jobs` dalam C Shell (csh) digunakan untuk menampilkan daftar proses yang berjalan di latar belakang dalam sesi shell saat ini. Ini sangat berguna untuk memantau dan mengelola pekerjaan yang sedang berjalan.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `jobs`:
 
-```csh
+```
 jobs [options] [arguments]
 ```
 
 ## Common Options
-- `-l`: Menampilkan nomor proses (PID) untuk setiap pekerjaan.
-- `-n`: Menampilkan hanya pekerjaan yang telah berubah status sejak perintah `jobs` terakhir dijalankan.
-- `-p`: Menampilkan hanya nomor proses dari pekerjaan yang sedang berjalan.
+- `-l`: Menampilkan ID proses (PID) dari setiap pekerjaan.
+- `-n`: Menampilkan hanya pekerjaan yang baru saja selesai.
+- `-p`: Menampilkan hanya ID proses dari pekerjaan yang sedang berjalan.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `jobs`:
 
-1. Menampilkan semua pekerjaan yang sedang berjalan:
+1. Menampilkan semua pekerjaan yang berjalan di latar belakang:
    ```csh
    jobs
    ```
 
-2. Menampilkan pekerjaan dengan nomor proses:
+2. Menampilkan pekerjaan dengan ID proses:
    ```csh
    jobs -l
    ```
 
-3. Menampilkan hanya pekerjaan yang baru saja berubah status:
+3. Menampilkan hanya pekerjaan yang baru saja selesai:
    ```csh
    jobs -n
    ```
 
-4. Menampilkan nomor proses dari pekerjaan yang sedang berjalan:
+4. Menampilkan hanya ID proses dari pekerjaan yang sedang berjalan:
    ```csh
    jobs -p
    ```
 
 ## Tips
-- Gunakan `jobs` secara berkala untuk memantau pekerjaan latar belakang Anda.
-- Kombinasikan perintah `jobs` dengan perintah `fg` atau `bg` untuk mengelola pekerjaan yang sedang berjalan.
-- Jika Anda memiliki banyak pekerjaan, pertimbangkan untuk menggunakan opsi `-l` untuk mendapatkan informasi lebih detail tentang setiap pekerjaan.
+- Gunakan `bg` untuk melanjutkan pekerjaan yang terhenti ke latar belakang setelah melihat daftar dengan `jobs`.
+- Gunakan `fg` untuk membawa pekerjaan latar belakang ke latar depan.
+- Selalu periksa status pekerjaan Anda secara berkala untuk memastikan bahwa tidak ada yang terhenti tanpa disadari.

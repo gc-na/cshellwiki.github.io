@@ -15,17 +15,17 @@ umask [opcje] [argumenty]
 - `-p` - Wyświetla aktualną wartość umask bez jej zmiany.
 
 ## Common Examples
-1. **Wyświetlenie aktualnej wartości umask:**
+1. **Sprawdzenie aktualnej wartości umask:**
    ```csh
    umask
    ```
 
-2. **Ustawienie umask na 022, co pozwala na odczyt dla grupy i innych użytkowników:**
+2. **Ustawienie umask na 022 (czyli usunięcie uprawnień do zapisu dla grupy i innych):**
    ```csh
    umask 022
    ```
 
-3. **Ustawienie umask na 007, co pozwala na pełne uprawnienia dla właściciela i grupy, ale żadnych dla innych:**
+3. **Ustawienie umask na 007 (czyli usunięcie uprawnień do odczytu i zapisu dla innych):**
    ```csh
    umask 007
    ```
@@ -35,7 +35,12 @@ umask [opcje] [argumenty]
    umask -S
    ```
 
+5. **Wyświetlenie aktualnej wartości umask bez jej zmiany:**
+   ```csh
+   umask -p
+   ```
+
 ## Tips
-- Ustaw umask na wartość, która odpowiada twoim potrzebom bezpieczeństwa, aby ograniczyć dostęp do plików.
-- Regularnie sprawdzaj wartość umask, aby upewnić się, że nie zmieniła się niezamierzenie.
-- Możesz dodać polecenie umask do swojego pliku konfiguracyjnego powłoki, aby automatycznie ustawiać preferowane uprawnienia przy każdym uruchomieniu terminala.
+- Ustawienie umask na 027 jest często dobrym wyborem dla bezpieczeństwa, ponieważ ogranicza dostęp do plików dla innych użytkowników.
+- Pamiętaj, że umask jest stosowany tylko do nowych plików i katalogów, więc nie wpłynie na już istniejące zasoby.
+- Możesz dodać polecenie umask do swojego pliku konfiguracyjnego powłoki (np. `.cshrc`), aby automatycznie ustawiać preferowane uprawnienia przy każdym uruchomieniu powłoki.

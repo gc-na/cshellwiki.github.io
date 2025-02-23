@@ -1,43 +1,39 @@
-# [Linux] C Shell (csh) vigr Kullanımı: Metin dosyalarını düzenleme aracı
+# [Linux] C Shell (csh) vigr Kullanımı: Metin düzenleyici ile yapılandırma dosyalarını düzenleme
 
 ## Genel Bakış
-`vigr` komutu, sistem yöneticilerinin ve kullanıcıların `/etc/` dizinindeki yapılandırma dosyalarını güvenli bir şekilde düzenlemelerine olanak tanır. Bu komut, dosyayı açmadan önce dosyanın geçerliliğini kontrol eder ve hata varsa kullanıcıyı uyarır.
+`vigr` komutu, sistem yöneticilerinin ve kullanıcıların `/etc/passwd`, `/etc/group` gibi yapılandırma dosyalarını güvenli bir şekilde düzenlemelerine olanak tanır. Bu komut, dosyaların düzenlenmesi sırasında dosya kilitleme mekanizması kullanarak veri kaybını önler.
 
 ## Kullanım
-Temel sözdizimi şu şekildedir:
-```
+Temel sözdizimi aşağıdaki gibidir:
+
+```csh
 vigr [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-h`, `--help`: Yardım mesajını gösterir.
-- `-s`, `--safe`: Dosyayı güvenli modda açar.
-- `-f`, `--file`: Belirtilen dosyayı düzenler.
+- `-f`: Belirtilen dosyayı düzenlemek için kullanılır. Örneğin, `vigr -f /etc/passwd`.
+- `-s`: Dosya düzenlenirken hata kontrolü yapar.
+- `-h`: Yardım mesajını gösterir.
 
 ## Yaygın Örnekler
-Aşağıda `vigr` komutunun bazı pratik örnekleri verilmiştir:
+Aşağıda `vigr` komutunun bazı pratik kullanım örnekleri verilmiştir:
 
-1. **Varsayılan yapılandırma dosyasını düzenlemek:**
-   ```bash
+1. **Varsayılan yapılandırma dosyasını düzenleme:**
+   ```csh
    vigr
    ```
 
-2. **Belirli bir dosyayı düzenlemek:**
-   ```bash
-   vigr /etc/hosts
+2. **Belirli bir dosyayı düzenleme:**
+   ```csh
+   vigr -f /etc/group
    ```
 
-3. **Güvenli modda bir dosyayı düzenlemek:**
-   ```bash
-   vigr -s /etc/fstab
-   ```
-
-4. **Yardım mesajını görüntülemek:**
-   ```bash
-   vigr --help
+3. **Hata kontrolü ile dosyayı düzenleme:**
+   ```csh
+   vigr -s
    ```
 
 ## İpuçları
-- `vigr` kullanırken, dosyanın geçerli olup olmadığını kontrol etmek için düzenleme yapmadan önce dosyayı açmayı tercih edin.
-- Dosyaları düzenlerken dikkatli olun; yanlış yapılandırmalar sistemin çalışmasını etkileyebilir.
-- Düzenlemelerden sonra dosyayı kaydetmeden önce değişikliklerinizi gözden geçirin.
+- `vigr` komutunu kullanmadan önce dosyanın yedeğini almak iyi bir uygulamadır.
+- Dosyayı düzenlerken dikkatli olun; yanlışlıkla kritik bilgileri silmekten kaçının.
+- `vigr` kullanırken, düzenleme işlemi sırasında başka bir kullanıcının dosyayı düzenlemediğinden emin olun. Bu, veri kaybını önler.

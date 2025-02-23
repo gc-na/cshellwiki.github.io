@@ -1,53 +1,48 @@
 # [Linux] C Shell (csh) strace użycie: Śledzenie wywołań systemowych
 
-## Overview
-Polecenie `strace` służy do śledzenia wywołań systemowych i sygnałów, które są generowane przez procesy w systemie operacyjnym. Umożliwia to programistom i administratorom systemów analizowanie interakcji aplikacji z jądrem systemu, co jest przydatne w debugowaniu i optymalizacji.
+## Przegląd
+Polecenie `strace` jest narzędziem do śledzenia wywołań systemowych i sygnałów, które są generowane przez procesy w systemie operacyjnym. Umożliwia to programistom i administratorom systemów zrozumienie, jak programy komunikują się z jądrem systemu oraz diagnozowanie problemów.
 
-## Usage
-Podstawowa składnia polecenia `strace` wygląda następująco:
+## Użycie
+Podstawowa składnia polecenia `strace` jest następująca:
 
 ```csh
 strace [opcje] [argumenty]
 ```
 
-## Common Options
-Oto kilka powszechnie używanych opcji polecenia `strace`:
+## Częste opcje
+- `-c`: Podsumowuje statystyki wywołań systemowych.
+- `-e`: Umożliwia filtrowanie wywołań systemowych według określonych kryteriów.
+- `-o <plik>`: Zapisuje wyjście śledzenia do wskazanego pliku.
+- `-p <pid>`: Śledzi już działający proces o podanym identyfikatorze PID.
 
-- `-c` - Podsumowuje statystyki wywołań systemowych.
-- `-f` - Śledzi również procesy potomne.
-- `-o <plik>` - Zapisuje wyniki do określonego pliku.
-- `-p <pid>` - Śledzi już działający proces o podanym identyfikatorze PID.
-- `-e <wyrażenie>` - Filtruje wywołania systemowe według określonego wyrażenia.
-
-## Common Examples
-Oto kilka praktycznych przykładów użycia `strace`:
-
-1. Śledzenie nowego procesu:
+## Przykłady
+1. Śledzenie wywołań systemowych dla nowego procesu:
    ```csh
    strace ls
    ```
 
-2. Śledzenie procesu z zapisem wyników do pliku:
+2. Zapisanie wyjścia do pliku:
    ```csh
-   strace -o wynik.txt ls
+   strace -o wyjscie.txt ls
    ```
 
-3. Śledzenie procesu potomnego:
-   ```csh
-   strace -f ls
-   ```
-
-4. Śledzenie już działającego procesu:
+3. Śledzenie konkretnego procesu:
    ```csh
    strace -p 1234
    ```
 
-5. Podsumowanie wywołań systemowych:
+4. Podsumowanie statystyk wywołań:
    ```csh
    strace -c ls
    ```
 
-## Tips
+5. Filtrowanie wywołań systemowych:
+   ```csh
+   strace -e trace=open,close ls
+   ```
+
+## Wskazówki
 - Używaj opcji `-o`, aby zapisać wyniki do pliku, co ułatwia analizę.
-- Filtruj wywołania za pomocą opcji `-e`, aby skupić się na interesujących cię systemowych wywołaniach.
-- Pamiętaj, że `strace` może spowolnić działanie programu, dlatego najlepiej używać go w środowisku testowym.
+- Filtrowanie wywołań za pomocą `-e` może pomóc w skupieniu się na interesujących cię aspektach działania programu.
+- Pamiętaj, że `strace` może spowolnić działanie śledzonego procesu, więc używaj go ostrożnie w środowiskach produkcyjnych.

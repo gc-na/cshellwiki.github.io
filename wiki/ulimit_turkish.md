@@ -1,56 +1,48 @@
-# [Linux] C Shell (csh) ulimit Kullanımı: Sistem kaynaklarını sınırlama
+# [Linux] C Shell (csh) ulimit Kullanımı: Kaynak Limitleme
 
-## Overview
-`ulimit` komutu, kullanıcıların shell oturumları için sistem kaynaklarını sınırlamasına olanak tanır. Bu, bellek, dosya boyutu ve işlem sayısı gibi kaynakların yönetilmesine yardımcı olur.
+## Genel Bakış
+`ulimit` komutu, kullanıcıların shell oturumları için sistem kaynaklarını sınırlamasına olanak tanır. Bu, bellek kullanımı, dosya boyutu ve işlem sayısı gibi kaynakların kontrol edilmesine yardımcı olur.
 
-## Usage
-Temel sözdizimi aşağıdaki gibidir:
+## Kullanım
+Temel sözdizimi şu şekildedir:
 
 ```csh
-ulimit [options] [arguments]
+ulimit [seçenekler] [argümanlar]
 ```
 
-## Common Options
+## Yaygın Seçenekler
 - `-a`: Tüm kaynak limitlerini gösterir.
 - `-c`: Çekirdek dosyası boyutunu ayarlar.
 - `-d`: Veri segmenti boyutunu ayarlar.
-- `-f`: Dosya boyutu limitini ayarlar.
+- `-f`: Oluşturulacak dosyaların maksimum boyutunu ayarlar.
 - `-l`: Kilitlenmiş bellek boyutunu ayarlar.
 - `-m`: Fiziksel bellek boyutunu ayarlar.
-- `-n`: Açık dosya sayısını ayarlar.
 - `-s`: Yığın boyutunu ayarlar.
-- `-t`: İşlem süresi limitini ayarlar.
+- `-t`: İşlem süresini ayarlar.
 - `-v`: Sanal bellek boyutunu ayarlar.
 
-## Common Examples
-Aşağıda `ulimit` komutunun bazı pratik kullanımları bulunmaktadır:
+## Yaygın Örnekler
+1. Tüm kaynak limitlerini görüntüleme:
+   ```csh
+   ulimit -a
+   ```
 
-### Tüm limitleri görüntüleme
-```csh
-ulimit -a
-```
+2. Maksimum dosya boyutunu 100 MB olarak ayarlama:
+   ```csh
+   ulimit -f 102400
+   ```
 
-### Açık dosya sayısını 100 olarak ayarlama
-```csh
-ulimit -n 100
-```
+3. Çekirdek dosyası boyutunu sınırsız yapma:
+   ```csh
+   ulimit -c unlimited
+   ```
 
-### Çekirdek dosyası boyutunu 0 olarak ayarlama (çekirdek dökümünü devre dışı bırakma)
-```csh
-ulimit -c 0
-```
+4. Yığın boyutunu 16 MB olarak ayarlama:
+   ```csh
+   ulimit -s 16384
+   ```
 
-### Veri segmenti boyutunu 512 MB olarak ayarlama
-```csh
-ulimit -d 524288
-```
-
-### İşlem süresi limitini 60 saniye olarak ayarlama
-```csh
-ulimit -t 60
-```
-
-## Tips
-- `ulimit` ayarlarını kalıcı hale getirmek için, bu komutları kullanıcı profil dosyalarına (örneğin, `.cshrc`) ekleyebilirsiniz.
-- Sistem kaynaklarını gereksiz yere sınırlamaktan kaçının; bu, uygulamalarınızın beklenmedik şekilde çalışmamasına neden olabilir.
-- Limitleri ayarlarken, sistem yöneticinizin önerilerine dikkat edin; bazı limitler sistemin genel performansını etkileyebilir.
+## İpuçları
+- `ulimit` ayarlarını kalıcı hale getirmek için, bu komutları kullanıcı profil dosyalarınıza ekleyebilirsiniz.
+- Kaynak limitlerini artırmadan önce, sistemin genel performansını göz önünde bulundurmalısınız.
+- `ulimit` komutunu kullanarak, belirli bir işlem için kaynakları izole etmek, sistem kararlılığını artırabilir.

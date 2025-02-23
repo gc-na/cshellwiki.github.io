@@ -1,47 +1,47 @@
 # [Hệ điều hành] C Shell (csh) zip Cách sử dụng: Nén tệp tin
 
 ## Tổng quan
-Lệnh `zip` được sử dụng để nén các tệp tin và thư mục thành một tệp zip. Điều này giúp tiết kiệm không gian lưu trữ và dễ dàng chia sẻ nhiều tệp tin trong một tệp duy nhất.
+Lệnh `zip` được sử dụng để nén các tệp tin và thư mục thành một tệp ZIP. Điều này giúp tiết kiệm không gian lưu trữ và dễ dàng chia sẻ tệp tin qua mạng.
 
 ## Cách sử dụng
-Cú pháp cơ bản của lệnh `zip` như sau:
+Cú pháp cơ bản của lệnh zip như sau:
 ```
-zip [tùy chọn] [tệp zip] [tệp tin hoặc thư mục]
+zip [options] [arguments]
 ```
 
-## Tùy chọn phổ biến
-- `-r`: Nén thư mục và tất cả các tệp tin con bên trong.
-- `-e`: Mã hóa tệp zip bằng mật khẩu.
-- `-9`: Sử dụng mức nén cao nhất.
-- `-d`: Xóa tệp tin khỏi tệp zip.
+## Các tùy chọn phổ biến
+- `-r`: Nén thư mục và tất cả các tệp con bên trong.
+- `-e`: Mã hóa tệp ZIP bằng mật khẩu.
+- `-u`: Cập nhật các tệp đã nén nếu chúng đã thay đổi.
+- `-d`: Xóa tệp từ tệp ZIP.
 
-## Ví dụ phổ biến
-- Nén một tệp tin:
+## Ví dụ thường gặp
+- Nén một tệp:
   ```bash
-  zip myfile.zip file.txt
+  zip myarchive.zip file1.txt
   ```
 
-- Nén nhiều tệp tin:
+- Nén nhiều tệp:
   ```bash
-  zip myfiles.zip file1.txt file2.txt file3.txt
+  zip myarchive.zip file1.txt file2.txt file3.txt
   ```
 
-- Nén một thư mục cùng với tất cả các tệp tin con:
+- Nén một thư mục và tất cả các tệp con:
   ```bash
-  zip -r myfolder.zip myfolder/
+  zip -r myarchive.zip myfolder
   ```
 
-- Nén và mã hóa tệp zip:
+- Cập nhật tệp đã nén:
   ```bash
-  zip -e mysecure.zip file.txt
+  zip -u myarchive.zip file1.txt
   ```
 
-- Xóa một tệp tin khỏi tệp zip:
+- Xóa một tệp từ tệp ZIP:
   ```bash
-  zip -d myfile.zip file.txt
+  zip -d myarchive.zip file1.txt
   ```
 
 ## Mẹo
-- Luôn kiểm tra kích thước tệp zip sau khi nén để đảm bảo rằng việc nén đã thành công.
-- Sử dụng tùy chọn `-9` nếu bạn cần nén tối đa, nhưng hãy lưu ý rằng điều này có thể làm chậm quá trình nén.
-- Để bảo mật thông tin, hãy sử dụng tùy chọn `-e` để mã hóa tệp zip bằng mật khẩu.
+- Luôn kiểm tra kích thước tệp ZIP sau khi nén để đảm bảo không có tệp nào bị bỏ sót.
+- Sử dụng tùy chọn `-e` để bảo vệ tệp ZIP bằng mật khẩu nếu bạn chia sẻ nó qua email hoặc mạng.
+- Thường xuyên cập nhật tệp ZIP để giữ cho nội dung luôn mới và chính xác.

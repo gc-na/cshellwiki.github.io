@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) umask Verwendung: Legt die Standardberechtigungen für neu erstellte Dateien und Verzeichnisse fest
+# [Linux] C Shell (csh) umask Verwendung: Legt die Standardberechtigungen für neu erstellte Dateien fest
 
 ## Übersicht
-Der Befehl `umask` in der C Shell (csh) wird verwendet, um die Standardberechtigungen für neu erstellte Dateien und Verzeichnisse festzulegen. Er bestimmt, welche Berechtigungen beim Erstellen neuer Dateien und Verzeichnisse standardmäßig entzogen werden.
+Der Befehl `umask` in der C Shell (csh) wird verwendet, um die Standardberechtigungen für neu erstellte Dateien und Verzeichnisse festzulegen. Er bestimmt, welche Berechtigungen von den Standardwerten abgezogen werden, wenn eine Datei oder ein Verzeichnis erstellt wird.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
@@ -12,33 +12,37 @@ umask [Optionen] [Argumente]
 
 ## Häufige Optionen
 - `-S`: Zeigt die aktuelle umask in symbolischer Form an.
-- `-p`: Gibt die aktuelle umask für den aktuellen Benutzer aus.
+- `-p`: Zeigt die aktuelle umask in numerischer Form an.
 
 ## Häufige Beispiele
+Hier sind einige praktische Beispiele für die Verwendung des umask-Befehls:
 
 1. **Aktuelle umask anzeigen:**
    ```csh
    umask
    ```
 
-2. **Umask auf 022 setzen:**
+2. **Umask auf 022 setzen (Schreibberechtigung für den Eigentümer, nur Lese- und Ausführungsberechtigungen für andere):**
    ```csh
    umask 022
    ```
-   Dies bedeutet, dass neue Dateien mit Berechtigungen von 644 (rw-r--r--) und neue Verzeichnisse mit 755 (rwxr-xr-x) erstellt werden.
 
-3. **Umask auf 007 setzen:**
+3. **Umask auf 007 setzen (keine Berechtigungen für andere, nur der Eigentümer und die Gruppe haben Zugriff):**
    ```csh
    umask 007
    ```
-   Hierbei erhalten neue Dateien die Berechtigungen 660 (rw-rw----) und neue Verzeichnisse 770 (rwxrwx---).
 
-4. **Umask in symbolischer Form anzeigen:**
+4. **Aktuelle umask in symbolischer Form anzeigen:**
    ```csh
    umask -S
    ```
 
+5. **Umask auf den Standardwert zurücksetzen (in der Regel 0022):**
+   ```csh
+   umask 0022
+   ```
+
 ## Tipps
 - Überprüfen Sie regelmäßig Ihre umask-Einstellungen, um sicherzustellen, dass sie den gewünschten Sicherheitsanforderungen entsprechen.
-- Setzen Sie die umask in Ihren Shell-Startdateien (z.B. `.cshrc`), um sicherzustellen, dass die Einstellungen bei jedem Start der Shell angewendet werden.
-- Seien Sie vorsichtig beim Setzen einer umask, die zu lockere Berechtigungen gewährt, da dies Sicherheitsrisiken mit sich bringen kann.
+- Setzen Sie die umask in Ihren Startskripten (z.B. `.cshrc`), um konsistente Berechtigungen für alle neuen Dateien und Verzeichnisse zu gewährleisten.
+- Seien Sie vorsichtig beim Setzen einer umask, die zu lockere Berechtigungen gewährt, da dies Sicherheitsrisiken verursachen kann.

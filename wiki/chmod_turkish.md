@@ -1,53 +1,46 @@
 # [Linux] C Shell (csh) chmod Kullanımı: Dosya izinlerini değiştirme
 
-## Overview
-`chmod` komutu, dosya ve dizinlerin erişim izinlerini değiştirmek için kullanılır. Bu komut sayesinde, kullanıcıların dosyalara erişim haklarını belirleyebilir ve yönetebilirsiniz.
+## Genel Bakış
+`chmod` komutu, dosya ve dizinlerin erişim izinlerini değiştirmek için kullanılır. Bu komut, kullanıcıların dosyalar üzerindeki okuma, yazma ve çalıştırma izinlerini ayarlamalarına olanak tanır.
 
-## Usage
+## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
 
-```csh
-chmod [options] [arguments]
+```shell
+chmod [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `-R`: Alt dizinler dahil olmak üzere, belirtilen dizindeki tüm dosyalara izinleri uygular.
-- `u`: Dosya sahibinin izinlerini belirtir (user).
-- `g`: Dosya grubunun izinlerini belirtir (group).
-- `o`: Diğer kullanıcıların izinlerini belirtir (others).
-- `+`: İzin ekler.
-- `-`: İzin kaldırır.
-- `=`: İzinleri belirli bir değere ayarlar.
+## Yaygın Seçenekler
+- `u`: Kullanıcı (dosyanın sahibi) için izinler.
+- `g`: Grup için izinler.
+- `o`: Diğer kullanıcılar için izinler.
+- `a`: Tüm kullanıcılar için izinler (kullanıcı, grup, diğer).
+- `+`: İzin eklemek için.
+- `-`: İzin kaldırmak için.
+- `=`: İzinleri ayarlamak için.
 
-## Common Examples
-Aşağıda `chmod` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+## Yaygın Örnekler
+- Kullanıcıya okuma ve yazma izni vermek:
+```shell
+chmod u+rw dosya.txt
+```
 
-1. **Bir dosyaya tüm kullanıcılar için okuma izni verme:**
-   ```csh
-   chmod a+r dosya.txt
-   ```
+- Diğer kullanıcılardan yazma iznini kaldırmak:
+```shell
+chmod o-w dosya.txt
+```
 
-2. **Bir dosyadan yazma iznini kaldırma:**
-   ```csh
-   chmod u-w dosya.txt
-   ```
+- Tüm kullanıcılara çalıştırma izni vermek:
+```shell
+chmod a+x dosya.txt
+```
 
-3. **Bir dizindeki tüm dosyalara okuma ve yazma izni verme:**
-   ```csh
-   chmod -R u+rw dizin/
-   ```
+- Belirli izinleri ayarlamak (sadece kullanıcıya okuma ve çalıştırma izni vermek):
+```shell
+chmod u=rx dosya.txt
+```
 
-4. **Bir dosyayı yalnızca sahibi tarafından okunabilir hale getirme:**
-   ```csh
-   chmod 400 dosya.txt
-   ```
-
-5. **Bir dosyaya çalıştırma izni verme:**
-   ```csh
-   chmod +x script.sh
-   ```
-
-## Tips
-- İzinleri ayarlarken dikkatli olun; yanlış izinler dosyalarınıza erişimi kısıtlayabilir veya güvenlik açıklarına neden olabilir.
-- `ls -l` komutunu kullanarak dosya izinlerinizi kontrol edin.
-- İzinleri ayarlarken, `-R` seçeneğini kullanıyorsanız, alt dizinlerdeki dosyaların da etkileneceğini unutmayın.
+## İpuçları
+- İzinleri kontrol etmek için `ls -l` komutunu kullanarak dosya izinlerini görüntüleyebilirsiniz.
+- İzinleri ayarlarken dikkatli olun; yanlış ayarlamalar dosyalarınıza erişimi kısıtlayabilir.
+- `chmod` komutunu kullanmadan önce dosya izinlerini yedeklemek iyi bir uygulamadır.

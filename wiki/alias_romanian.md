@@ -1,44 +1,47 @@
 # [Linux] C Shell (csh) alias utilizare: Crearea de comenzi personalizate
 
 ## Overview
-Comanda `alias` în C Shell (csh) este utilizată pentru a crea comenzi personalizate, care pot înlocui comenzi lungi sau frecvent utilizate cu un nume mai scurt. Aceasta facilitează utilizarea terminalului și îmbunătățește eficiența utilizatorului.
+Comanda `alias` în C Shell (csh) este utilizată pentru a crea comenzi personalizate sau pentru a modifica comportamentul comenzilor existente. Aceasta permite utilizatorilor să definească scurtături pentru comenzi mai lungi, facilitând astfel utilizarea terminalului.
 
 ## Usage
 Sintaxa de bază a comenzii `alias` este următoarea:
 
-```
-alias [opțiuni] [nume_alias]=[comandă]
+```csh
+alias [opțiuni] [argumente]
 ```
 
 ## Common Options
-- `-p`: Afișează toate aliasurile curente.
-- `-x`: Creează un alias care va fi exportat în subprocese.
+- `-p`: Afișează toate aliasurile definite în prezent.
+- `-x`: Permite utilizarea aliasurilor în scripturi.
 
 ## Common Examples
-1. Crearea unui alias simplu pentru o comandă frecvent utilizată:
-   ```csh
-   alias ll='ls -l'
-   ```
-   Acum, când tastați `ll`, veți obține o listă detaliată a fișierelor.
+Iată câteva exemple practice de utilizare a comenzii `alias`:
 
-2. Crearea unui alias cu opțiuni:
-   ```csh
-   alias gs='git status'
-   ```
-   Acest alias va rula comanda `git status` atunci când introduceți `gs`.
+1. Crearea unui alias simplu pentru comanda `ls`:
 
-3. Afișarea tuturor aliasurilor curente:
+   ```csh
+   alias l 'ls -la'
+   ```
+
+2. Crearea unui alias pentru a naviga rapid în directorul personal:
+
+   ```csh
+   alias home 'cd ~'
+   ```
+
+3. Crearea unui alias pentru a actualiza sistemul (presupunând că folosești o distribuție bazată pe Debian):
+
+   ```csh
+   alias update 'sudo apt update && sudo apt upgrade'
+   ```
+
+4. Afișarea tuturor aliasurilor definite:
+
    ```csh
    alias -p
    ```
 
-4. Crearea unui alias care va fi exportat în subprocese:
-   ```csh
-   alias -x mycommand='echo Hello World'
-   ```
-   Acest alias poate fi utilizat și în subprocese.
-
 ## Tips
-- Folosiți aliasuri pentru comenzi pe care le utilizați frecvent pentru a economisi timp.
-- Alegeți nume de aliasuri care sunt ușor de reținut și relevante pentru comanda pe care o înlocuiesc.
-- Verificați periodic aliasurile existente pentru a evita conflictele sau confuziile.
+- Folosește aliasuri pentru comenzi frecvent utilizate pentru a economisi timp.
+- Asigură-te că numele aliasurilor nu se suprapun cu comenzile existente pentru a evita confuziile.
+- Salvează aliasurile în fișierul tău de configurare (de exemplu, `.cshrc`) pentru a le face persistente între sesiuni.

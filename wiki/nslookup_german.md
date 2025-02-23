@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) nslookup Verwendung: Abfragen von DNS-Informationen
 
 ## Übersicht
-Der Befehl `nslookup` wird verwendet, um DNS (Domain Name System) Informationen abzufragen. Er ermöglicht es Benutzern, IP-Adressen von Hostnamen zu ermitteln und umgekehrt.
+Der `nslookup`-Befehl wird verwendet, um DNS (Domain Name System) Informationen abzufragen. Mit diesem Befehl können Benutzer die IP-Adresse einer Domain ermitteln oder umgekehrt die Domain zu einer IP-Adresse finden.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
@@ -12,33 +12,33 @@ nslookup [Optionen] [Argumente]
 
 ## Häufige Optionen
 - `-type=TYPE`: Gibt den Typ der Abfrage an, z.B. A, AAAA, MX.
-- `-timeout=SEKUNDEN`: Legt die Zeit in Sekunden fest, die auf eine Antwort gewartet werden soll.
-- `-retry=ANZAHL`: Gibt die Anzahl der Versuche an, die unternommen werden, um eine Antwort zu erhalten.
+- `-timeout=ZWEIT`: Setzt die Zeitüberschreitung für die Abfrage in Sekunden.
+- `-debug`: Aktiviert den Debug-Modus, um detaillierte Informationen über die Abfrage anzuzeigen.
 
 ## Häufige Beispiele
 Hier sind einige praktische Beispiele für die Verwendung von `nslookup`:
 
-1. **Abfrage einer IP-Adresse für einen Hostnamen:**
+1. **Abfragen der IP-Adresse einer Domain:**
    ```csh
-   nslookup www.example.com
+   nslookup example.com
    ```
 
-2. **Abfrage des Mail-Exchange-Servers für eine Domain:**
+2. **Abfragen einer bestimmten IP-Adresse:**
+   ```csh
+   nslookup 93.184.216.34
+   ```
+
+3. **Abfragen eines bestimmten Typs (z.B. MX-Einträge):**
    ```csh
    nslookup -type=MX example.com
    ```
 
-3. **Abfrage der AAAA-Adresse (IPv6) für einen Hostnamen:**
+4. **Verwendung des Debug-Modus:**
    ```csh
-   nslookup -type=AAAA www.example.com
-   ```
-
-4. **Ändern des DNS-Servers für die Abfrage:**
-   ```csh
-   nslookup www.example.com 8.8.8.8
+   nslookup -debug example.com
    ```
 
 ## Tipps
-- Verwenden Sie `nslookup` in einem Skript, um DNS-Abfragen automatisiert durchzuführen.
-- Überprüfen Sie die DNS-Einstellungen Ihres Systems, wenn Sie unerwartete Ergebnisse erhalten.
-- Nutzen Sie die Option `-timeout`, um die Wartezeit bei langsamen DNS-Servern anzupassen.
+- Verwenden Sie den Debug-Modus, um mehr Informationen über die DNS-Abfrage zu erhalten, insbesondere bei Problemen.
+- Achten Sie darauf, den richtigen Abfragetyp anzugeben, um die gewünschten Informationen zu erhalten.
+- Nutzen Sie `nslookup` in Kombination mit anderen Netzwerktools, um umfassendere Diagnosen durchzuführen.

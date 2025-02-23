@@ -1,37 +1,42 @@
 # [Linux] C Shell (csh) logout Kullanımı: Oturumu kapatma komutu
 
 ## Overview
-`logout` komutu, C Shell (csh) ortamında kullanıcı oturumunu kapatmak için kullanılır. Bu komut, kullanıcıyı shell'den çıkartarak oturumunu sonlandırır.
+`logout` komutu, C Shell (csh) ortamında oturumu kapatmak için kullanılır. Bu komut, kullanıcıyı shell'den çıkartarak oturumunu sonlandırır.
 
 ## Usage
 Temel sözdizimi aşağıdaki gibidir:
-```
+
+```csh
 logout [options] [arguments]
 ```
 
 ## Common Options
-- `-f`: Zorla çıkış yapar. Kullanıcıdan onay almadan oturumu kapatır.
-- `-n`: Oturum kapatmadan önce herhangi bir komut çalıştırılmasını engeller.
+`logout` komutunun genellikle kullanılan seçenekleri şunlardır:
+- `-f`: Zorla çıkış yapar, oturum kapatmayı zorunlu kılar.
+- `-n`: Oturumu kapatmadan önce kullanıcıdan onay ister.
 
 ## Common Examples
-Aşağıda `logout` komutunun bazı pratik örnekleri verilmiştir:
+Aşağıda `logout` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. Basit oturum kapatma:
-   ```csh
-   logout
-   ```
+### Örnek 1: Basit Oturum Kapatma
+```csh
+logout
+```
+Bu komut, mevcut oturumu kapatır.
 
-2. Zorla oturum kapatma:
-   ```csh
-   logout -f
-   ```
+### Örnek 2: Zorla Oturum Kapatma
+```csh
+logout -f
+```
+Bu komut, kullanıcıdan onay almadan oturumu zorla kapatır.
 
-3. Oturum kapatmadan önce komut çalıştırmama:
-   ```csh
-   logout -n
-   ```
+### Örnek 3: Onay İsteyerek Oturum Kapatma
+```csh
+logout -n
+```
+Bu komut, oturumu kapatmadan önce kullanıcıdan onay ister.
 
 ## Tips
-- `logout` komutunu kullanmadan önce, kaydedilmemiş işlerinizin olup olmadığını kontrol edin.
-- Eğer birden fazla shell oturumu açtıysanız, sadece aktif olan oturumu kapatmak için `logout` komutunu kullanın.
-- `logout` komutunu kullanmadan önce, önemli dosyalarınızı kaydetmeyi unutmayın.
+- `logout` komutunu kullanmadan önce, kaydedilmemiş çalışmalarınızı kaydettiğinizden emin olun.
+- Eğer birden fazla shell oturumunuz varsa, hangi oturumu kapatmak istediğinizi dikkatlice kontrol edin.
+- Oturum kapatmadan önce, sistemdeki diğer kullanıcılarla iletişim kurmak iyi bir uygulamadır.

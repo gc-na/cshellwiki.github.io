@@ -1,53 +1,53 @@
-# [Linux] C Shell (csh) helm <Utilisation équivalente en français> : gestion des applications Kubernetes
+# [Linux] C Shell (csh) helm <Utilisation équivalente en français>: [gérer les applications Kubernetes]
 
 ## Overview
-La commande `helm` est un gestionnaire de paquets pour Kubernetes qui facilite le déploiement et la gestion des applications. Elle permet aux utilisateurs de définir, installer et mettre à jour des applications Kubernetes à l'aide de "charts", qui sont des ensembles de fichiers décrivant une application.
+La commande `helm` est un gestionnaire de paquets pour Kubernetes qui permet de déployer, gérer et configurer des applications dans un cluster Kubernetes. Elle facilite l'installation et la mise à jour des applications en utilisant des "charts", qui sont des ensembles de fichiers décrivant les ressources nécessaires.
 
 ## Usage
 La syntaxe de base de la commande `helm` est la suivante :
 
-```bash
+```csh
 helm [options] [arguments]
 ```
 
 ## Common Options
 Voici quelques options courantes pour la commande `helm` :
 
-- `install` : Installe un chart dans un cluster Kubernetes.
-- `upgrade` : Met à jour une release existante avec un nouveau chart.
-- `uninstall` : Supprime une release d'un chart.
-- `list` : Affiche les releases installées dans le cluster.
+- `install` : Installe une nouvelle application à partir d'un chart.
+- `upgrade` : Met à jour une application existante avec un nouveau chart.
+- `uninstall` : Supprime une application déployée.
+- `list` : Affiche la liste des applications installées.
 - `repo` : Gère les dépôts de charts.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `helm` :
 
-1. **Installer un chart** :
-   ```bash
-   helm install mon-application ./chemin/vers/mon-chart
+1. **Installer une application** :
+   ```csh
+   helm install mon-application ./mon-chart
    ```
 
-2. **Mettre à jour une release** :
-   ```bash
-   helm upgrade mon-application ./chemin/vers/mon-nouveau-chart
+2. **Mettre à jour une application** :
+   ```csh
+   helm upgrade mon-application ./mon-chart
    ```
 
-3. **Supprimer une release** :
-   ```bash
+3. **Supprimer une application** :
+   ```csh
    helm uninstall mon-application
    ```
 
-4. **Lister les releases installées** :
-   ```bash
+4. **Lister les applications installées** :
+   ```csh
    helm list
    ```
 
 5. **Ajouter un dépôt de charts** :
-   ```bash
-   helm repo add mon-depot https://exemple.com/mon-depot
+   ```csh
+   helm repo add mon-depot https://example.com/charts
    ```
 
 ## Tips
-- Assurez-vous que votre cluster Kubernetes est opérationnel avant d'utiliser `helm`.
-- Utilisez des versions spécifiques de charts pour garantir la compatibilité avec votre application.
-- Consultez la documentation des charts pour comprendre les valeurs configurables et les dépendances.
+- Toujours vérifier la version de Helm que vous utilisez avec `helm version` pour vous assurer de la compatibilité avec vos charts.
+- Utilisez des valeurs personnalisées lors de l'installation d'un chart avec l'option `--values` pour adapter la configuration à vos besoins.
+- Consultez la documentation des charts pour comprendre les options disponibles et les configurations recommandées.

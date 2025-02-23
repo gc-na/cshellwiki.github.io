@@ -1,45 +1,36 @@
-# [Hệ điều hành] C Shell (csh) split: Chia tệp thành các phần nhỏ
+# [Hệ điều hành] C Shell (csh) split: Chia tệp thành nhiều phần
 
-## Overview
-Lệnh `split` trong C Shell (csh) được sử dụng để chia một tệp lớn thành nhiều tệp nhỏ hơn. Điều này rất hữu ích khi bạn cần xử lý hoặc truyền tải dữ liệu mà không thể xử lý một tệp lớn.
+## Tổng quan
+Lệnh `split` trong C Shell (csh) được sử dụng để chia một tệp lớn thành nhiều tệp nhỏ hơn. Điều này hữu ích khi bạn cần xử lý hoặc truyền tải dữ liệu mà không muốn làm việc với một tệp quá lớn.
 
-## Usage
+## Cú pháp
 Cú pháp cơ bản của lệnh `split` như sau:
-
 ```
 split [options] [arguments]
 ```
 
-## Common Options
-- `-l [number]`: Chia tệp thành các phần nhỏ với số dòng xác định.
-- `-b [size]`: Chia tệp thành các phần nhỏ với kích thước xác định (ví dụ: 1k cho 1 kilobyte).
-- `-d`: Sử dụng số để đánh số các tệp đầu ra thay vì chữ cái.
-- `--additional-suffix=[suffix]`: Thêm hậu tố vào tên tệp đầu ra.
+## Tùy chọn phổ biến
+- `-l N`: Chia tệp thành các tệp nhỏ với N dòng mỗi tệp.
+- `-b SIZE`: Chia tệp thành các tệp nhỏ với kích thước tối đa là SIZE (ví dụ: 1k cho 1 kilobyte).
+- `--additional-suffix=SFX`: Thêm hậu tố SFX vào tên các tệp được tạo ra.
 
-## Common Examples
-Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `split`:
+## Ví dụ phổ biến
+- Chia tệp thành các tệp nhỏ với 100 dòng mỗi tệp:
+  ```csh
+  split -l 100 input.txt
+  ```
 
-1. Chia tệp thành các phần nhỏ với 100 dòng mỗi phần:
-   ```csh
-   split -l 100 input.txt
-   ```
+- Chia tệp thành các tệp nhỏ với kích thước 1MB mỗi tệp:
+  ```csh
+  split -b 1m input.txt
+  ```
 
-2. Chia tệp thành các phần nhỏ với kích thước 1 megabyte:
-   ```csh
-   split -b 1m input.txt
-   ```
+- Chia tệp và thêm hậu tố ".part" vào tên các tệp:
+  ```csh
+  split --additional-suffix=.part -l 50 input.txt
+  ```
 
-3. Chia tệp và sử dụng số để đánh số các tệp đầu ra:
-   ```csh
-   split -d -l 50 input.txt part_
-   ```
-
-4. Chia tệp và thêm hậu tố `.txt` vào các tệp đầu ra:
-   ```csh
-   split --additional-suffix=.txt -l 10 input.txt part_
-   ```
-
-## Tips
-- Hãy chắc chắn kiểm tra kích thước và số lượng dòng của tệp đầu vào trước khi chia để đảm bảo rằng bạn có thể quản lý các tệp đầu ra.
-- Sử dụng tùy chọn `-d` nếu bạn muốn dễ dàng sắp xếp các tệp đầu ra theo thứ tự số.
-- Nếu bạn cần kết hợp các tệp đã chia lại, bạn có thể sử dụng lệnh `cat` để nối chúng lại với nhau.
+## Mẹo
+- Khi sử dụng tùy chọn `-b`, hãy chắc chắn rằng bạn đã xác định đúng kích thước để tránh tạo ra quá nhiều tệp nhỏ.
+- Kiểm tra các tệp đã chia bằng cách sử dụng lệnh `ls` để đảm bảo rằng chúng được tạo ra như mong muốn.
+- Sử dụng tùy chọn `-d` nếu bạn muốn đánh số cho các tệp đầu ra, giúp dễ dàng quản lý hơn.

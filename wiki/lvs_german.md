@@ -1,50 +1,53 @@
 # [Linux] C Shell (csh) lvs Verwendung: Zeigt logische Volumes an
 
 ## Übersicht
-Der Befehl `lvs` wird verwendet, um Informationen über logische Volumes im Logical Volume Manager (LVM) anzuzeigen. Er bietet eine einfache Möglichkeit, die Eigenschaften und den Status dieser Volumes zu überprüfen.
+Der Befehl `lvs` wird verwendet, um Informationen über logische Volumes im Logical Volume Manager (LVM) anzuzeigen. Er bietet eine Übersicht über die vorhandenen logischen Volumes und deren Eigenschaften.
 
 ## Verwendung
-Die grundlegende Syntax des Befehls `lvs` ist wie folgt:
+Die grundlegende Syntax des Befehls lautet:
 
-```csh
+```
 lvs [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
 - `-o`: Gibt an, welche Spalten angezeigt werden sollen.
 - `-a`: Zeigt auch inaktive logische Volumes an.
-- `-n`: Ermöglicht die Angabe eines spezifischen logischen Volume-Namens.
-- `--units`: Legt die Einheit für die Ausgabe fest (z. B. k, M, G).
+- `--units`: Legt die Einheit für die Ausgabe fest (z. B. MB, GB).
+- `-n`: Zeigt nur die Namen der logischen Volumes an.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung des Befehls `lvs`:
+Um alle logischen Volumes anzuzeigen, verwenden Sie:
 
-1. **Alle logischen Volumes anzeigen:**
-   ```csh
-   lvs
-   ```
+```bash
+lvs
+```
 
-2. **Detaillierte Informationen über logische Volumes anzeigen:**
-   ```csh
-   lvs -o +devices
-   ```
+Um spezifische Informationen über die logischen Volumes anzuzeigen, einschließlich ihrer Größe und Status:
 
-3. **Nur aktive logische Volumes anzeigen:**
-   ```csh
-   lvs -a
-   ```
+```bash
+lvs -o +devices
+```
 
-4. **Ein spezifisches logisches Volume anzeigen:**
-   ```csh
-   lvs -n mein_volume
-   ```
+Um alle logischen Volumes, einschließlich der inaktiven, anzuzeigen:
 
-5. **Ausgabe in einer bestimmten Einheit anzeigen:**
-   ```csh
-   lvs --units g
-   ```
+```bash
+lvs -a
+```
+
+Um die Ausgabe in Gigabyte anzuzeigen:
+
+```bash
+lvs --units g
+```
+
+Um nur die Namen der logischen Volumes anzuzeigen:
+
+```bash
+lvs -n
+```
 
 ## Tipps
-- Verwenden Sie die Option `-o`, um gezielt nur die Informationen anzuzeigen, die für Ihre Analyse relevant sind.
-- Kombinieren Sie `lvs` mit anderen LVM-Befehlen wie `lvcreate` oder `lvremove`, um effizienter mit logischen Volumes zu arbeiten.
-- Überprüfen Sie regelmäßig den Status Ihrer logischen Volumes, um sicherzustellen, dass alles ordnungsgemäß funktioniert und um Probleme frühzeitig zu erkennen.
+- Verwenden Sie die Option `-o`, um nur die für Sie relevanten Informationen anzuzeigen und die Ausgabe übersichtlicher zu gestalten.
+- Kombinieren Sie `lvs` mit anderen LVM-Befehlen, um umfassendere Informationen über Ihre Volumes zu erhalten.
+- Überprüfen Sie regelmäßig Ihre logischen Volumes, um sicherzustellen, dass genügend Speicherplatz verfügbar ist und um eine optimale Leistung zu gewährleisten.

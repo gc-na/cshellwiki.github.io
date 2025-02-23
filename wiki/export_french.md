@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) export : Définir des variables d'environnement
 
 ## Overview
-La commande `export` dans C Shell (csh) est utilisée pour définir des variables d'environnement qui peuvent être accessibles par les processus enfants. Cela permet de partager des informations entre différents programmes et scripts.
+La commande `export` dans le C Shell (csh) est utilisée pour définir des variables d'environnement qui peuvent être accessibles par les processus enfants. Cela permet aux programmes lancés à partir du shell d'accéder à ces variables.
 
 ## Usage
 La syntaxe de base de la commande `export` est la suivante :
@@ -11,34 +11,43 @@ export [options] [arguments]
 ```
 
 ## Common Options
-- `-n` : Supprime l'exportation d'une variable, la rendant locale à la session actuelle.
+- `-n` : Supprime l'exportation d'une variable, la rendant non disponible pour les processus enfants.
 - `-p` : Affiche toutes les variables d'environnement exportées.
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de la commande `export` :
 
-1. **Définir une variable d'environnement :**
-   ```csh
-   set MY_VAR="Hello, World!"
-   export MY_VAR
-   ```
+### Exporter une variable
+Pour exporter une variable d'environnement nommée `MY_VAR` avec la valeur `Hello` :
 
-2. **Vérifier si la variable est exportée :**
-   ```csh
-   echo $MY_VAR
-   ```
+```csh
+set MY_VAR = "Hello"
+export MY_VAR
+```
 
-3. **Supprimer l'exportation d'une variable :**
-   ```csh
-   export -n MY_VAR
-   ```
+### Vérifier les variables exportées
+Pour afficher toutes les variables d'environnement actuellement exportées :
 
-4. **Afficher toutes les variables d'environnement exportées :**
-   ```csh
-   export -p
-   ```
+```csh
+export -p
+```
+
+### Supprimer l'exportation d'une variable
+Pour supprimer l'exportation de `MY_VAR` :
+
+```csh
+export -n MY_VAR
+```
+
+### Exporter plusieurs variables
+Pour exporter plusieurs variables en une seule commande :
+
+```csh
+set VAR1 = "Value1"
+set VAR2 = "Value2"
+export VAR1 VAR2
+```
 
 ## Tips
-- Utilisez `set` pour créer une variable avant de l'exporter.
-- Vérifiez toujours les variables d'environnement exportées avec `export -p` pour éviter les conflits.
-- N'oubliez pas que les modifications apportées aux variables d'environnement ne persistent pas après la fermeture de la session.
+- Utilisez `export` pour vous assurer que les variables d'environnement sont accessibles par les scripts ou programmes que vous exécutez à partir de votre shell.
+- Vérifiez régulièrement les variables exportées avec `export -p` pour éviter les conflits de noms.
+- Pensez à utiliser des noms de variables descriptifs pour faciliter la compréhension de leur utilisation.

@@ -7,15 +7,16 @@ La commande `vgcreate` est utilisée pour créer un groupe de volumes dans le sy
 La syntaxe de base de la commande `vgcreate` est la suivante :
 
 ```bash
-vgcreate [options] [nom_du_groupe] [disques]
+vgcreate [options] [arguments]
 ```
 
 ## Common Options
 Voici quelques options courantes pour la commande `vgcreate` :
 
-- `-s, --stripes <nombre>` : Définit le nombre de bandes à utiliser pour le groupe de volumes.
-- `-p, --max-pv <nombre>` : Spécifie le nombre maximal de volumes physiques pouvant être ajoutés au groupe.
-- `-f, --force` : Force la création du groupe de volumes, même si des erreurs sont détectées.
+- `-n, --name`: Spécifie le nom du groupe de volumes à créer.
+- `-p, --max-pv`: Définit le nombre maximum de volumes physiques pouvant être ajoutés au groupe.
+- `-s, --stripes`: Définit le nombre de bandes à utiliser pour le groupe de volumes.
+- `-f, --force`: Force la création du groupe de volumes même si des erreurs sont détectées.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `vgcreate` :
@@ -25,17 +26,22 @@ Voici quelques exemples pratiques de l'utilisation de `vgcreate` :
    vgcreate mon_groupe /dev/sda1 /dev/sda2
    ```
 
-2. **Créer un groupe de volumes avec des options :**
+2. **Créer un groupe de volumes avec un nom spécifique :**
    ```bash
-   vgcreate -s 64K mon_groupe /dev/sdb1 /dev/sdb2
+   vgcreate -n mon_groupe /dev/sdb1 /dev/sdb2
    ```
 
-3. **Forcer la création d'un groupe de volumes :**
+3. **Créer un groupe de volumes avec un nombre maximum de volumes physiques :**
    ```bash
-   vgcreate -f mon_groupe /dev/sdc1
+   vgcreate -p 10 mon_groupe /dev/sdc1
+   ```
+
+4. **Forcer la création d'un groupe de volumes :**
+   ```bash
+   vgcreate -f mon_groupe /dev/sdd1
    ```
 
 ## Tips
-- Assurez-vous que les disques que vous ajoutez au groupe de volumes sont non montés et non utilisés par d'autres systèmes de fichiers.
-- Utilisez la commande `vgs` pour vérifier l'état de vos groupes de volumes après leur création.
-- Pensez à documenter vos groupes de volumes pour une gestion future plus facile.
+- Assurez-vous que les volumes physiques que vous souhaitez ajouter au groupe de volumes sont disponibles et non montés.
+- Vérifiez l'espace disponible sur les volumes physiques avant de créer un groupe de volumes pour éviter des erreurs.
+- Utilisez la commande `vgs` après la création pour vérifier que votre groupe de volumes a été créé avec succès.

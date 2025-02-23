@@ -1,51 +1,59 @@
 # [Linux] C Shell (csh) lvm Utilisation : Gestion des volumes logiques
 
 ## Overview
-La commande `lvm` (Logical Volume Manager) permet de gérer des volumes logiques sur un système Linux. Elle offre des fonctionnalités pour créer, supprimer, redimensionner et gérer des volumes logiques, facilitant ainsi la gestion de l'espace de stockage.
+La commande `lvm` (Logical Volume Manager) permet de gérer des volumes logiques sur un système Linux. Elle offre des fonctionnalités pour créer, supprimer, redimensionner et gérer des volumes logiques, facilitant ainsi la gestion de l'espace disque.
 
 ## Usage
-Voici la syntaxe de base de la commande `lvm` :
+La syntaxe de base de la commande `lvm` est la suivante :
 
-```bash
+```csh
 lvm [options] [arguments]
 ```
 
 ## Common Options
-- `create`: Crée un nouveau volume logique.
-- `remove`: Supprime un volume logique existant.
-- `extend`: Augmente la taille d'un volume logique.
-- `reduce`: Réduit la taille d'un volume logique.
-- `lvdisplay`: Affiche les informations sur les volumes logiques.
+Voici quelques options courantes pour la commande `lvm` :
+
+- `create` : Crée un nouveau volume logique.
+- `remove` : Supprime un volume logique existant.
+- `resize` : Redimensionne un volume logique.
+- `list` : Affiche la liste des volumes logiques.
+- `activate` : Active un volume logique.
+- `deactivate` : Désactive un volume logique.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `lvm` :
 
 ### Créer un volume logique
-```bash
+```csh
 lvm create -n mon_volume -L 10G mon_groupe
 ```
 
 ### Supprimer un volume logique
-```bash
+```csh
 lvm remove mon_volume
 ```
 
-### Étendre un volume logique
-```bash
-lvm extend -L +5G mon_volume
+### Redimensionner un volume logique
+```csh
+lvm resize -L +5G mon_volume
 ```
 
-### Réduire un volume logique
-```bash
-lvm reduce -L -3G mon_volume
+### Lister les volumes logiques
+```csh
+lvm list
 ```
 
-### Afficher les volumes logiques
-```bash
-lvm lvdisplay
+### Activer un volume logique
+```csh
+lvm activate mon_volume
+```
+
+### Désactiver un volume logique
+```csh
+lvm deactivate mon_volume
 ```
 
 ## Tips
-- Toujours sauvegarder vos données avant de modifier des volumes logiques.
-- Utilisez `lvdisplay` pour vérifier l'état des volumes avant et après les modifications.
-- Soyez prudent lors de l'utilisation des options `remove` et `reduce`, car elles peuvent entraîner une perte de données si elles sont mal utilisées.
+- Toujours vérifier l'état des volumes logiques avant d'effectuer des modifications avec `lvm list`.
+- Utilisez des noms significatifs pour vos volumes logiques afin de faciliter leur identification.
+- Faites des sauvegardes régulières de vos données avant de redimensionner ou de supprimer des volumes logiques.

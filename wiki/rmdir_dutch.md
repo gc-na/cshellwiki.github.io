@@ -1,26 +1,24 @@
 # [Linux] C Shell (csh) rmdir gebruik: Verwijder lege mappen
 
-## Overview
-De `rmdir` opdracht in C Shell (csh) wordt gebruikt om lege directories te verwijderen. Het is een eenvoudige manier om ongewenste, lege mappen uit je bestandssysteem te verwijderen.
+## Overzicht
+De `rmdir`-opdracht wordt gebruikt om lege directories te verwijderen. Het is een eenvoudige en efficiënte manier om ongewenste mappen uit het bestandssysteem te verwijderen, mits ze geen bestanden of andere directories bevatten.
 
-## Usage
-De basis syntaxis van de `rmdir` opdracht is als volgt:
+## Gebruik
+De basis syntaxis van de `rmdir`-opdracht is als volgt:
 
 ```
 rmdir [opties] [argumenten]
 ```
 
-## Common Options
-Hier zijn enkele veelvoorkomende opties voor `rmdir`:
-
-- `-p`: Verwijdert ook de bovenliggende directories als ze leeg zijn.
+## Veelvoorkomende opties
+- `-p`: Verwijdert de opgegeven directory en, indien leeg, ook de bovenliggende directories.
 - `--help`: Toont een helpbericht met informatie over het gebruik van de opdracht.
-- `--version`: Toont de versie-informatie van de `rmdir` opdracht.
+- `--version`: Toont de versie-informatie van de `rmdir`-opdracht.
 
-## Common Examples
-Hier zijn enkele praktische voorbeelden van het gebruik van `rmdir`:
+## Veelvoorkomende voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van de `rmdir`-opdracht:
 
-1. Verwijder een enkele lege directory:
+1. Verwijder een lege directory:
    ```csh
    rmdir mijn_leeg_map
    ```
@@ -32,15 +30,15 @@ Hier zijn enkele praktische voorbeelden van het gebruik van `rmdir`:
 
 3. Verwijder een lege directory en zijn bovenliggende lege directories:
    ```csh
-   rmdir -p bovenliggende_map/mijn_leeg_map
+   rmdir -p mijn_leeg_map/onderliggende_map
    ```
 
-4. Toon helpinformatie over de `rmdir` opdracht:
+4. Toon helpinformatie over de `rmdir`-opdracht:
    ```csh
    rmdir --help
    ```
 
 ## Tips
-- Zorg ervoor dat de directory die je wilt verwijderen echt leeg is; `rmdir` kan alleen lege directories verwijderen.
-- Gebruik de `-p` optie met voorzichtigheid, omdat dit ook bovenliggende directories kan verwijderen als ze leeg zijn.
-- Controleer altijd de inhoud van een directory voordat je deze verwijdert om onbedoeld verlies van gegevens te voorkomen.
+- Zorg ervoor dat de directory leeg is voordat je `rmdir` gebruikt, anders krijg je een foutmelding.
+- Gebruik de `-p` optie met voorzichtigheid, omdat het ook bovenliggende directories kan verwijderen als ze leeg zijn.
+- Controleer altijd de inhoud van een directory met `ls` voordat je deze verwijdert, om onbedoeld verlies van gegevens te voorkomen.

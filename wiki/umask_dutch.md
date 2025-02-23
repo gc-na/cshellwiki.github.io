@@ -1,52 +1,48 @@
 # [Linux] C Shell (csh) umask gebruik: Beheer van bestandspermissies
 
 ## Overzicht
-De `umask`-opdracht in C Shell (csh) wordt gebruikt om de standaard bestandspermissies in te stellen voor nieuwe bestanden en directories. Het bepaalt welke rechten niet worden toegewezen aan nieuwe bestanden die door een gebruiker worden gemaakt.
+De `umask`-opdracht in C Shell (csh) wordt gebruikt om de standaard bestandspermissies in te stellen voor nieuwe bestanden en mappen. Het bepaalt welke rechten niet worden verleend aan nieuwe bestanden die door een gebruiker worden aangemaakt.
 
 ## Gebruik
 De basis syntaxis van de `umask`-opdracht is als volgt:
 
-```csh
+```
 umask [opties] [argumenten]
 ```
 
 ## Veelvoorkomende opties
-- `-S`: Toont de huidige umask in symbolische notatie.
+- `-S`: Toont de huidige umask in symbolische vorm.
 - `-p`: Toont de huidige umask zonder deze te wijzigen.
 
 ## Veelvoorkomende voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van de `umask`-opdracht:
 
-1. **Huidige umask weergeven:**
+1. **Bekijk de huidige umask-waarde:**
+   ```csh
+   umask
+   ```
 
-```csh
-umask
-```
+2. **Stel de umask in op 022 (schrijfrechten voor de eigenaar, lees- en uitvoerrechten voor anderen):**
+   ```csh
+   umask 022
+   ```
 
-2. **Huidige umask in symbolische notatie weergeven:**
+3. **Stel de umask in op 007 (alleen de eigenaar heeft lees-, schrijf- en uitvoerrechten):**
+   ```csh
+   umask 007
+   ```
 
-```csh
-umask -S
-```
+4. **Toon de huidige umask in symbolische vorm:**
+   ```csh
+   umask -S
+   ```
 
-3. **Umask instellen op 022:**
-
-```csh
-umask 022
-```
-
-4. **Umask instellen op 007:**
-
-```csh
-umask 007
-```
-
-5. **Umask instellen op 077 voor maximale beveiliging:**
-
-```csh
-umask 077
-```
+5. **Toon de huidige umask zonder deze te wijzigen:**
+   ```csh
+   umask -p
+   ```
 
 ## Tips
-- Stel de umask in op een waarde die past bij de beveiligingsbehoeften van je project.
-- Controleer regelmatig je umask-instellingen om ervoor te zorgen dat ze overeenkomen met je huidige vereisten.
-- Gebruik de `-S` optie om de umask in een begrijpelijke vorm te bekijken, vooral als je met meerdere gebruikers werkt.
+- Het is een goede gewoonte om de umask in je shell-configuratiebestand (zoals `.cshrc`) in te stellen, zodat deze automatisch wordt toegepast bij het starten van een nieuwe shell.
+- Controleer regelmatig je umask-instellingen om ervoor te zorgen dat je de juiste bestandspermissies toepast, vooral op gedeelde systemen.
+- Wees voorzichtig met het instellen van een te permissieve umask, omdat dit kan leiden tot beveiligingsrisico's.

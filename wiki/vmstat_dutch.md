@@ -1,51 +1,51 @@
-# [Linux] C Shell (csh) vmstat gebruik: systeemstatusmonitoring
+# [Linux] C Shell (csh) vmstat gebruik: Toegang tot systeemstatistieken
 
 ## Overzicht
-De `vmstat` (virtual memory statistics) opdracht geeft informatie weer over de systeemstatus, inclusief geheugen, processen, en CPU-activiteit. Het is een nuttig hulpmiddel voor systeembeheerders om de prestaties van een systeem te analyseren.
+Het `vmstat` commando geeft informatie over processen, geheugen, paging, block I/O, traps en CPU-activiteit. Het is een nuttig hulpmiddel voor systeembeheerders om de prestaties van een systeem te monitoren en te analyseren.
 
 ## Gebruik
-De basis syntaxis van de `vmstat` opdracht is als volgt:
+De basis syntaxis van het `vmstat` commando is als volgt:
 
 ```csh
 vmstat [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-s`: Toon een samenvatting van systeemstatistieken.
+- `-a`: Toon actieve en inactieve geheugenstatistieken.
 - `-m`: Toon informatie over geheugenpagina's.
-- `-d`: Toon schijfstatistieken.
-- `interval`: Geef een tijdsinterval in seconden om de statistieken periodiek te vernieuwen.
-- `count`: Geef het aantal keren aan dat de statistieken moeten worden weergegeven.
+- `-s`: Toon een samenvatting van systeemstatistieken.
+- `interval`: Geef een tijdsinterval in seconden op voor herhaalde uitvoer.
+- `count`: Het aantal keren dat de uitvoer herhaald moet worden.
 
 ## Veelvoorkomende Voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van `vmstat`:
 
-1. **Basis systeemstatistieken weergeven:**
+1. **Basis uitvoer van systeemstatistieken**:
    ```csh
    vmstat
    ```
 
-2. **Statistieken elke 5 seconden vernieuwen:**
+2. **Herhaalde uitvoer elke 5 seconden**:
    ```csh
    vmstat 5
    ```
 
-3. **Toon een samenvatting van systeemstatistieken:**
+3. **Toon actieve en inactieve geheugenstatistieken**:
+   ```csh
+   vmstat -a
+   ```
+
+4. **Toon een samenvatting van systeemstatistieken**:
    ```csh
    vmstat -s
    ```
 
-4. **Toon schijfstatistieken:**
-   ```csh
-   vmstat -d
-   ```
-
-5. **Statistieken elke 2 seconden voor 10 keer weergeven:**
+5. **Herhaalde uitvoer elke 2 seconden, 10 keer**:
    ```csh
    vmstat 2 10
    ```
 
 ## Tips
-- Gebruik `vmstat` samen met andere monitoringtools voor een completer beeld van de systeemprestaties.
-- Let op de kolommen voor geheugen- en CPU-gebruik om knelpunten in de prestaties te identificeren.
-- Experimenteer met verschillende intervallen en tellingen om de meest relevante gegevens voor jouw situatie te verkrijgen.
+- Gebruik `vmstat` in combinatie met andere monitoring tools voor een vollediger beeld van de systeemprestaties.
+- Let op de CPU-activiteit en geheugenstatistieken om knelpunten in de prestaties te identificeren.
+- Experimenteer met verschillende opties om de meest relevante informatie voor jouw situatie te verkrijgen.

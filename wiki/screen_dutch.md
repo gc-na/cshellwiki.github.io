@@ -1,53 +1,50 @@
-# [Linux] C Shell (csh) screen gebruik: Beheer van meerdere terminalsessies
+# [Linux] C Shell (csh) schermgebruik: Beheer meerdere terminalsessies
 
 ## Overzicht
-De `screen`-opdracht is een krachtige tool die gebruikers in staat stelt om meerdere terminalsessies binnen één enkele terminalvenster te beheren. Het stelt je in staat om sessies te splitsen, te detacheren en later weer aan te sluiten, wat vooral handig is voor langdurige processen of wanneer je verbinding maakt met een server.
+De `screen`-opdracht is een krachtige tool die gebruikers in staat stelt om meerdere terminalsessies te beheren binnen één enkele console. Het biedt de mogelijkheid om sessies te splitsen, te detacheren en opnieuw te verbinden, wat handig is voor langdurige processen of wanneer je je werk wilt voortzetten op een andere terminal.
 
 ## Gebruik
 De basis syntaxis van de `screen`-opdracht is als volgt:
 
-```bash
+```csh
 screen [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
 - `-S naam`: Geef een naam aan de nieuwe sessie.
-- `-d -r`: Detach een sessie en sluit deze opnieuw aan.
-- `-list`: Toon een lijst van actieve sessies.
-- `-L`: Schakel logging in voor de sessie.
+- `-d -r`: Detacheren van een sessie en deze opnieuw verbinden.
+- `-list`: Lijst alle actieve sessies.
+- `-X commando`: Stuur een commando naar een actieve sessie.
 
 ## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van `screen`:
+Hier zijn enkele praktische voorbeelden van het gebruik van de `screen`-opdracht:
 
-1. **Een nieuwe sessie starten:**
-   ```bash
+1. **Een nieuwe screen-sessie starten:**
+   ```csh
    screen
    ```
 
-2. **Een nieuwe sessie met een specifieke naam starten:**
-   ```bash
+2. **Een nieuwe sessie starten met een specifieke naam:**
+   ```csh
    screen -S mijn_sessie
    ```
 
-3. **Detacheren van een sessie:**
-   Druk op `Ctrl-a` gevolgd door `d`.
-
-4. **Lijst van actieve sessies bekijken:**
-   ```bash
+3. **Lijst van actieve screen-sessies weergeven:**
+   ```csh
    screen -list
    ```
 
-5. **Een bestaande sessie opnieuw aansluiten:**
-   ```bash
-   screen -r mijn_sessie
-   ```
-
-6. **Detacheren en opnieuw aansluiten in één stap:**
-   ```bash
+4. **Een detach sessie opnieuw verbinden:**
+   ```csh
    screen -d -r mijn_sessie
    ```
 
+5. **Een commando naar een actieve sessie sturen:**
+   ```csh
+   screen -S mijn_sessie -X stuff 'echo Hallo Wereld\n'
+   ```
+
 ## Tips
-- Gebruik een duidelijke naam voor je sessies, zodat je ze gemakkelijk kunt identificeren.
-- Maak gebruik van de loggingfunctie (`-L`) om een geschiedenis van je sessie op te slaan.
-- Vergeet niet dat je met `Ctrl-a` gevolgd door `?` een lijst van sneltoetsen kunt bekijken voor extra functionaliteit.
+- Gebruik `Ctrl-a d` om een sessie te detacheren zonder deze te beëindigen.
+- Zorg ervoor dat je sessies een herkenbare naam hebben, vooral als je met meerdere sessies werkt.
+- Maak gebruik van de `screen`-configuratiebestanden om je instellingen te personaliseren en je workflow te verbeteren.

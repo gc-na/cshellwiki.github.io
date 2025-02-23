@@ -1,20 +1,19 @@
-# [Sistem Operasi] C Shell (csh) mesg <Penggunaan setara>: Mengatur izin pesan terminal
+# [Sistem Operasi] C Shell (csh) mesg: Mengatur izin pesan terminal
 
 ## Overview
-Perintah `mesg` digunakan dalam C Shell (csh) untuk mengatur apakah pengguna lain dapat mengirim pesan ke terminal Anda. Dengan menggunakan perintah ini, Anda dapat mengizinkan atau melarang pesan dari pengguna lain di sistem.
+Perintah `mesg` digunakan untuk mengatur izin bagi pengguna lain untuk mengirim pesan ke terminal Anda. Dengan menggunakan perintah ini, Anda dapat mengontrol apakah orang lain dapat mengirim pesan langsung ke sesi terminal Anda atau tidak.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `mesg`:
 
-```
+```csh
 mesg [options] [arguments]
 ```
 
 ## Common Options
-- `y` : Mengizinkan pengguna lain untuk mengirim pesan ke terminal Anda.
-- `n` : Melarang pengguna lain untuk mengirim pesan ke terminal Anda.
-- `-n` : Sama dengan `n`, melarang pesan.
-- `-y` : Sama dengan `y`, mengizinkan pesan.
+- `y` : Mengizinkan pesan dari pengguna lain.
+- `n` : Menolak pesan dari pengguna lain.
+- `?` : Menampilkan status izin saat ini.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `mesg`:
@@ -24,17 +23,17 @@ Berikut adalah beberapa contoh penggunaan perintah `mesg`:
    mesg y
    ```
 
-2. **Melarang pesan dari pengguna lain:**
+2. **Menolak pesan dari pengguna lain:**
    ```csh
    mesg n
    ```
 
-3. **Memeriksa status izin pesan:**
+3. **Menampilkan status izin saat ini:**
    ```csh
-   mesg
+   mesg ?
    ```
 
 ## Tips
-- Gunakan `mesg y` jika Anda ingin tetap terhubung dengan rekan kerja Anda dan menerima pesan penting.
-- Sebaiknya gunakan `mesg n` saat Anda sedang fokus pada pekerjaan dan tidak ingin terganggu oleh pesan.
-- Periksa status izin Anda secara berkala dengan hanya mengetik `mesg` untuk memastikan pengaturan Anda sesuai dengan kebutuhan saat itu.
+- Gunakan `mesg n` jika Anda sedang bekerja pada tugas yang memerlukan konsentrasi dan tidak ingin terganggu oleh pesan.
+- Sebelum mengizinkan pesan dengan `mesg y`, pastikan Anda tidak berada di lingkungan yang sensitif atau publik.
+- Periksa status izin Anda secara berkala dengan `mesg ?` untuk memastikan pengaturan Anda sesuai dengan kebutuhan saat itu.

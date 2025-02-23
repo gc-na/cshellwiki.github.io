@@ -1,16 +1,15 @@
-# [Hệ điều hành] C Shell (csh) head <Sử dụng tương đương>: Lấy một số dòng đầu tiên của tệp
+# [Hệ điều hành] C Shell (csh) head <Sử dụng tương đương>: Lấy n dòng đầu tiên của tệp
 
 ## Tổng quan
-Lệnh `head` trong C Shell (csh) được sử dụng để hiển thị một số dòng đầu tiên của một tệp. Đây là một công cụ hữu ích khi bạn chỉ muốn xem nội dung ban đầu của tệp mà không cần mở toàn bộ.
+Lệnh `head` trong C Shell (csh) được sử dụng để hiển thị một số dòng đầu tiên từ một tệp. Đây là một công cụ hữu ích để xem nhanh nội dung của tệp mà không cần mở toàn bộ.
 
 ## Cú pháp
 Cú pháp cơ bản của lệnh `head` như sau:
-
 ```
 head [options] [arguments]
 ```
 
-## Tùy chọn phổ biến
+## Các tùy chọn phổ biến
 - `-n [số]`: Chỉ định số dòng đầu tiên cần hiển thị. Mặc định là 10 dòng.
 - `-c [số]`: Hiển thị số byte đầu tiên thay vì số dòng.
 - `-q`: Không hiển thị tiêu đề tệp khi có nhiều tệp được chỉ định.
@@ -29,22 +28,22 @@ Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh 
    head -n 5 data.txt
    ```
 
-3. Hiển thị 20 byte đầu tiên của tệp `log.txt`:
+3. Hiển thị 20 byte đầu tiên của tệp `file.bin`:
    ```csh
-   head -c 20 log.txt
+   head -c 20 file.bin
    ```
 
-4. Hiển thị 10 dòng đầu tiên của nhiều tệp và không hiển thị tiêu đề:
+4. Hiển thị nội dung của nhiều tệp mà không có tiêu đề:
    ```csh
    head -q file1.txt file2.txt
    ```
 
-5. Hiển thị tiêu đề tệp và 10 dòng đầu tiên của tệp `report.txt`:
+5. Hiển thị tiêu đề tệp cho mỗi tệp khi sử dụng nhiều tệp:
    ```csh
-   head -v report.txt
+   head -v file1.txt file2.txt
    ```
 
 ## Mẹo
-- Sử dụng tùy chọn `-n` để điều chỉnh số lượng dòng bạn muốn xem, điều này rất hữu ích khi làm việc với các tệp lớn.
-- Kết hợp lệnh `head` với các lệnh khác như `grep` để lọc nội dung trước khi hiển thị.
-- Bạn có thể sử dụng `head` trong các kịch bản tự động hóa để kiểm tra nhanh nội dung của tệp mà không cần mở toàn bộ.
+- Sử dụng `head` kết hợp với các lệnh khác như `grep` hoặc `less` để lọc và xem nội dung một cách hiệu quả hơn.
+- Nếu bạn chỉ cần xem một số dòng đầu tiên của một tệp lớn, `head` là lựa chọn nhanh chóng và tiết kiệm thời gian.
+- Hãy nhớ rằng bạn có thể sử dụng các tùy chọn khác nhau để tùy chỉnh số lượng dòng hoặc byte mà bạn muốn hiển thị.

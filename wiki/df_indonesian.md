@@ -1,46 +1,50 @@
-# [Sistem Operasi] C Shell (csh) df Penggunaan: Menampilkan informasi penggunaan disk
+# [Linux] C Shell (csh) df Penggunaan: Menampilkan informasi penggunaan disk
 
 ## Overview
-Perintah `df` digunakan untuk menampilkan informasi tentang penggunaan ruang disk pada sistem file. Ini memberikan gambaran umum tentang berapa banyak ruang yang digunakan dan tersedia di setiap sistem file yang terpasang.
+Perintah `df` digunakan untuk menampilkan informasi tentang penggunaan ruang disk pada sistem file. Ini memberikan gambaran umum tentang berapa banyak ruang yang digunakan dan tersedia pada setiap sistem file yang terpasang.
 
 ## Usage
-Sintaks dasar dari perintah `df` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `df`:
 
-```
+```csh
 df [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah `df`:
-
 - `-h`: Menampilkan ukuran dalam format yang lebih mudah dibaca (misalnya, KB, MB, GB).
-- `-T`: Menampilkan tipe sistem file untuk setiap sistem file yang terdaftar.
-- `-i`: Menampilkan informasi tentang inode, bukan penggunaan ruang disk.
+- `-T`: Menampilkan tipe sistem file dari setiap sistem file yang terpasang.
+- `-a`: Menampilkan semua sistem file, termasuk yang tidak memiliki penggunaan ruang.
+- `-i`: Menampilkan informasi tentang inode, bukan ruang disk.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `df`:
 
-1. Menampilkan penggunaan disk dasar:
-   ```bash
+1. Menampilkan informasi penggunaan disk secara umum:
+   ```csh
    df
    ```
 
-2. Menampilkan penggunaan disk dengan ukuran yang lebih mudah dibaca:
-   ```bash
+2. Menampilkan informasi dengan ukuran yang lebih mudah dibaca:
+   ```csh
    df -h
    ```
 
 3. Menampilkan tipe sistem file:
-   ```bash
+   ```csh
    df -T
    ```
 
-4. Menampilkan informasi inode:
-   ```bash
+4. Menampilkan semua sistem file, termasuk yang tidak terpakai:
+   ```csh
+   df -a
+   ```
+
+5. Menampilkan informasi tentang inode:
+   ```csh
    df -i
    ```
 
 ## Tips
-- Gunakan opsi `-h` untuk memudahkan pemahaman saat melihat penggunaan disk, terutama pada sistem dengan banyak data.
-- Periksa penggunaan disk secara berkala untuk menghindari kehabisan ruang yang dapat mengganggu kinerja sistem.
-- Kombinasikan `df` dengan perintah lain seperti `grep` untuk memfilter hasil berdasarkan sistem file tertentu.
+- Gunakan opsi `-h` untuk memudahkan pemahaman ukuran ruang disk, terutama pada sistem dengan banyak data.
+- Periksa penggunaan inode dengan `-i` jika Anda mengalami masalah dengan pembuatan file baru, karena ini bisa disebabkan oleh kehabisan inode.
+- Selalu periksa sistem file yang terpasang secara berkala untuk memastikan Anda tidak kehabisan ruang disk yang dapat mengganggu operasi sistem.

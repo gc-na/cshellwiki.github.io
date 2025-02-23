@@ -1,55 +1,58 @@
-# [Linux] C Shell (csh) break Verwendung: Beenden von Schleifen
+# [Linux] C Shell (csh) break Verwendung: Beendet Schleifen vorzeitig
 
 ## Übersicht
-Der `break`-Befehl in der C Shell (csh) wird verwendet, um eine Schleife vorzeitig zu beenden. Dies ist nützlich, wenn eine bestimmte Bedingung erfüllt ist und man nicht mehr durch die Schleife iterieren möchte.
+Der Befehl `break` in der C Shell (csh) wird verwendet, um eine Schleife vorzeitig zu beenden. Dies ist nützlich, wenn eine bestimmte Bedingung erfüllt ist und Sie die Ausführung der Schleife nicht mehr fortsetzen möchten.
 
 ## Verwendung
-Die grundlegende Syntax des `break`-Befehls lautet:
+Die grundlegende Syntax des Befehls lautet:
 
-```csh
-break [options]
+```
+break [options] [arguments]
 ```
 
 ## Häufige Optionen
-Der `break`-Befehl hat keine speziellen Optionen, die häufig verwendet werden. Es wird einfach in einer Schleife verwendet, um diese zu beenden.
+- Es gibt keine speziellen Optionen für den `break` Befehl in der C Shell. Er wird in der Regel ohne zusätzliche Argumente verwendet.
 
 ## Häufige Beispiele
 
 ### Beispiel 1: Beenden einer einfachen Schleife
-In diesem Beispiel wird eine Schleife erstellt, die von 1 bis 10 zählt, aber bei 5 abbricht.
-
 ```csh
-foreach i (1 2 3 4 5 6 7 8 9 10)
-    if ($i == 5) break
+foreach i (1 2 3 4 5)
+    if ($i == 3) then
+        break
+    endif
     echo $i
 end
 ```
+In diesem Beispiel wird die Schleife bei `i == 3` beendet, sodass nur `1` und `2` ausgegeben werden.
 
 ### Beispiel 2: Beenden einer while-Schleife
-Hier wird eine `while`-Schleife verwendet, die abbricht, wenn eine bestimmte Bedingung erfüllt ist.
-
 ```csh
 set count = 1
-while ($count <= 10)
-    if ($count == 6) break
+while ($count <= 5)
+    if ($count == 4) then
+        break
+    endif
     echo $count
     @ count++
 end
 ```
+Hier wird die Schleife ebenfalls bei `count == 4` beendet, und es werden nur die Zahlen `1`, `2` und `3` ausgegeben.
 
 ### Beispiel 3: Verwendung in einer verschachtelten Schleife
-In diesem Beispiel wird `break` verwendet, um eine äußere Schleife zu beenden.
-
 ```csh
-foreach i (1 2)
-    foreach j (1 2 3)
-        if ($j == 2) break 2
-        echo "$i $j"
+foreach outer (A B)
+    foreach inner (1 2 3)
+        if ($inner == 2) then
+            break
+        endif
+        echo "$outer $inner"
     end
 end
 ```
+In diesem Beispiel wird die innere Schleife bei `inner == 2` beendet, sodass nur `A 1`, `B 1` ausgegeben wird.
 
 ## Tipps
 - Verwenden Sie `break`, um die Lesbarkeit Ihres Codes zu verbessern, indem Sie unnötige Iterationen vermeiden.
-- Stellen Sie sicher, dass Sie `break` nur in Schleifen verwenden, um unerwartete Fehler zu vermeiden.
-- Nutzen Sie `break` in Kombination mit Bedingungen, um die Kontrolle über den Fluss Ihrer Skripte zu optimieren.
+- Kombinieren Sie `break` mit Bedingungen, um die Kontrolle über komplexe Schleifen zu behalten.
+- Achten Sie darauf, dass `break` nur die innere Schleife beendet, wenn Sie verschachtelte Schleifen verwenden.

@@ -1,13 +1,13 @@
-# [Linux] C Shell (csh) switch Verwendung: Wechseln zwischen verschiedenen Optionen
+# [Linux] C Shell (csh) switch Verwendung: Wechselt zwischen verschiedenen Optionen
 
 ## Übersicht
-Der `switch` Befehl in der C Shell (csh) wird verwendet, um verschiedene Optionen oder Fälle zu überprüfen und entsprechend zu handeln. Es ist eine nützliche Möglichkeit, um Entscheidungen in Skripten zu treffen, basierend auf den Werten von Variablen oder Eingaben.
+Der Befehl `switch` in der C Shell (csh) wird verwendet, um eine Auswahl von Optionen zu treffen und verschiedene Befehle basierend auf dem Wert einer Variablen auszuführen. Dies ist besonders nützlich, um bedingte Logik in Skripten zu implementieren.
 
 ## Verwendung
-Die grundlegende Syntax des `switch` Befehls sieht folgendermaßen aus:
+Die grundlegende Syntax des `switch`-Befehls sieht wie folgt aus:
 
 ```csh
-switch (ausdruck)
+switch (variable)
     case wert1:
         # Befehle für wert1
         breaksw
@@ -21,8 +21,8 @@ end
 ```
 
 ## Häufige Optionen
-- `case wert:`: Definiert einen Fall, der mit dem Ausdruck verglichen wird.
-- `breaksw`: Beendet den aktuellen Fall und verlässt die `switch`-Anweisung.
+- `case wert:`: Definiert einen Fall, der mit der Variablen verglichen wird.
+- `breaksw`: Beendet den aktuellen Fall und springt zum Ende des `switch`.
 - `default:`: Definiert die Anweisungen, die ausgeführt werden, wenn kein anderer Fall zutrifft.
 
 ## Häufige Beispiele
@@ -43,40 +43,45 @@ switch ($farbe)
 end
 ```
 
-### Beispiel 2: Mehrere Werte in einem Fall
+### Beispiel 2: Mehrere Bedingungen
 ```csh
 set tier = "Hund"
 switch ($tier)
-    case "Hund":
     case "Katze":
-        echo "Das Tier ist ein Haustier."
+        echo "Es ist eine Katze."
+        breaksw
+    case "Hund":
+        echo "Es ist ein Hund."
+        breaksw
+    case "Vogel":
+        echo "Es ist ein Vogel."
         breaksw
     default:
-        echo "Das Tier ist kein Haustier."
+        echo "Unbekanntes Tier."
         breaksw
 end
 ```
 
-### Beispiel 3: Verwendung von Variablen
+### Beispiel 3: Verwendung mit Variablen
 ```csh
 set zahl = 2
 switch ($zahl)
     case 1:
-        echo "Die Zahl ist eins."
+        echo "Eins"
         breaksw
     case 2:
-        echo "Die Zahl ist zwei."
+        echo "Zwei"
         breaksw
     case 3:
-        echo "Die Zahl ist drei."
+        echo "Drei"
         breaksw
     default:
-        echo "Die Zahl ist unbekannt."
+        echo "Keine gültige Zahl."
         breaksw
 end
 ```
 
 ## Tipps
-- Achten Sie darauf, die `breaksw` Anweisung zu verwenden, um unerwartete Ausführungen von nachfolgenden Fällen zu vermeiden.
-- Verwenden Sie den `default` Fall, um eine robustere Fehlerbehandlung zu gewährleisten.
-- Halten Sie die Fälle klar und eindeutig, um die Lesbarkeit des Codes zu verbessern.
+- Verwenden Sie `breaksw` nach jedem Fall, um sicherzustellen, dass das Skript nicht in die nachfolgenden Fälle springt.
+- Stellen Sie sicher, dass die Variable, die Sie im `switch`-Befehl verwenden, korrekt gesetzt ist, um unerwartete Ergebnisse zu vermeiden.
+- Nutzen Sie den `default`-Fall, um eine Fehlerbehandlung für unerwartete Werte zu implementieren.

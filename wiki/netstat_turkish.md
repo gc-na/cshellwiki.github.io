@@ -1,52 +1,51 @@
-# [Linux] C Shell (csh) netstat Kullanımı: Ağ bağlantılarını görüntüleme aracı
+# [Linux] C Shell (csh) netstat Kullanımı: Ağ bağlantılarını görüntüleme
 
 ## Genel Bakış
-`netstat` komutu, ağ bağlantılarını, yönlendirme tablolarını ve ağ arayüzü istatistiklerini görüntülemek için kullanılır. Bu komut, sistemdeki aktif bağlantılar hakkında bilgi sağlar ve ağ sorunlarını teşhis etmek için yararlıdır.
+netstat komutu, ağ bağlantılarını, yönlendirme tablolarını ve ağ arayüzü istatistiklerini görüntülemek için kullanılan bir araçtır. Bu komut, sistemdeki aktif bağlantıları ve bu bağlantılara ilişkin bilgileri sağlar.
 
 ## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
+netstat komutunun temel sözdizimi aşağıdaki gibidir:
 
-```bash
+```csh
 netstat [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
 - `-a`: Tüm bağlantıları ve dinleme portlarını gösterir.
 - `-n`: Adresleri ve port numaralarını sayısal olarak gösterir.
-- `-t`: TCP bağlantılarını gösterir.
-- `-u`: UDP bağlantılarını gösterir.
-- `-l`: Sadece dinleme durumundaki bağlantıları gösterir.
-- `-p`: Bağlantının hangi süreç tarafından kullanıldığını gösterir.
+- `-r`: Yönlendirme tablosunu görüntüler.
+- `-i`: Ağ arayüzlerinin istatistiklerini gösterir.
+- `-p`: Bağlantıların hangi süreçler tarafından kullanıldığını gösterir.
 
 ## Yaygın Örnekler
-Aşağıda `netstat` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+Aşağıda netstat komutunun bazı pratik örnekleri verilmiştir:
 
-1. Tüm aktif bağlantıları ve dinleme portlarını görüntülemek için:
-   ```bash
+1. Tüm aktif bağlantıları ve dinleme portlarını görüntüleme:
+   ```csh
    netstat -a
    ```
 
-2. Sadece TCP bağlantılarını listelemek için:
-   ```bash
-   netstat -t
-   ```
-
-3. Sayısal adreslerle bağlantıları görüntülemek için:
-   ```bash
+2. Bağlantıları sayısal formatta gösterme:
+   ```csh
    netstat -n
    ```
 
-4. Dinleme durumundaki bağlantıları görmek için:
-   ```bash
-   netstat -l
+3. Yönlendirme tablosunu görüntüleme:
+   ```csh
+   netstat -r
    ```
 
-5. Hangi süreçlerin hangi bağlantıları kullandığını görmek için:
-   ```bash
+4. Ağ arayüzü istatistiklerini görüntüleme:
+   ```csh
+   netstat -i
+   ```
+
+5. Belirli bir bağlantının hangi süreç tarafından kullanıldığını gösterme:
+   ```csh
    netstat -p
    ```
 
 ## İpuçları
-- `netstat` çıktısını daha iyi analiz etmek için `grep` komutunu kullanarak belirli bağlantıları filtreleyebilirsiniz.
-- Ağ sorunlarını teşhis ederken, `-n` seçeneğini kullanmak, DNS sorgularını atlayarak daha hızlı sonuç almanızı sağlar.
-- `netstat` komutunu düzenli olarak kullanarak sisteminizdeki ağ durumunu takip edebilirsiniz.
+- netstat komutunu kullanırken, belirli bir seçeneği ekleyerek daha fazla bilgi alabilirsiniz. Örneğin, `-n` seçeneği ile IP adreslerini ve port numaralarını sayısal olarak görebilirsiniz.
+- Ağ sorunlarını teşhis etmek için netstat çıktısını dikkatlice inceleyin. Dinleyen portlar ve aktif bağlantılar, sorunların kaynağını bulmanıza yardımcı olabilir.
+- netstat komutunu sık sık kullanıyorsanız, sık kullandığınız seçenekleri bir alias olarak tanımlayarak kullanımınızı kolaylaştırabilirsiniz.

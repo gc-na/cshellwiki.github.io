@@ -1,19 +1,20 @@
-# [Sistem Operasi] C Shell (csh) while: Mengulangi perintah
+# [Sistem Operasi] C Shell (csh) while: Mengulangi Perintah
 
 ## Overview
-Perintah `while` dalam C Shell (csh) digunakan untuk menjalankan serangkaian perintah berulang kali selama suatu kondisi tertentu terpenuhi. Ini sangat berguna untuk pengulangan yang bergantung pada hasil evaluasi kondisi.
+Perintah `while` dalam C Shell (csh) digunakan untuk menjalankan serangkaian perintah berulang kali selama suatu kondisi tertentu terpenuhi. Ini sangat berguna untuk menjalankan loop yang terus berlanjut sampai kondisi yang ditentukan menjadi salah.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `while`:
 
-```
+```csh
 while (kondisi)
     perintah
 end
 ```
 
 ## Common Options
-Perintah `while` dalam C Shell tidak memiliki opsi tambahan yang umum digunakan. Namun, kondisi yang digunakan dapat bervariasi sesuai dengan kebutuhan pengguna.
+Perintah `while` tidak memiliki banyak opsi, tetapi berikut adalah beberapa hal yang perlu diperhatikan:
+- `kondisi`: Ekspresi yang dievaluasi sebelum setiap iterasi. Jika ekspresi ini bernilai benar, perintah di dalam loop akan dijalankan.
 
 ## Common Examples
 
@@ -25,30 +26,29 @@ while ($i <= 5)
     @ i++
 end
 ```
-Contoh ini akan mencetak angka 1 hingga 5 ke layar.
+Contoh ini akan mencetak angka dari 1 hingga 5.
 
-### Contoh 2: Mengulangi perintah hingga kondisi terpenuhi
+### Contoh 2: Mengulangi hingga kondisi terpenuhi
 ```csh
 set count = 0
 while ($count < 3)
-    echo "Hitung: $count"
+    echo "Ini pengulangan nomor $count"
     @ count++
 end
 ```
-Dalam contoh ini, perintah akan diulang hingga `count` mencapai 3.
+Loop ini akan mencetak pesan sebanyak tiga kali.
 
-### Contoh 3: Menggunakan kondisi berbasis file
+### Contoh 3: Menggunakan input pengguna
 ```csh
-set file = "data.txt"
-while (! -e $file)
-    echo "Menunggu file $file untuk dibuat..."
-    sleep 1
+set input = ""
+while ("$input" != "exit")
+    echo "Masukkan perintah (ketik 'exit' untuk keluar):"
+    set input = $<
 end
-echo "File $file telah dibuat."
 ```
-Contoh ini akan terus memeriksa keberadaan file `data.txt` dan menunggu hingga file tersebut ada.
+Contoh ini akan terus meminta input dari pengguna sampai pengguna mengetik "exit".
 
 ## Tips
-- Pastikan untuk mengupdate variabel yang digunakan dalam kondisi agar tidak terjadi loop tak terbatas.
-- Gunakan perintah `sleep` di dalam loop jika perlu menunggu untuk menghindari penggunaan CPU yang tinggi.
-- Selalu periksa kondisi dengan hati-hati untuk memastikan bahwa loop akan berhenti pada waktu yang tepat.
+- Pastikan untuk memperbarui kondisi di dalam loop agar tidak terjadi loop tak berujung.
+- Gunakan perintah `break` di dalam loop jika Anda ingin keluar dari loop lebih awal berdasarkan kondisi tertentu.
+- Selalu periksa sintaks Anda untuk memastikan bahwa semua tanda kurung dan kata kunci ditutup dengan benar.

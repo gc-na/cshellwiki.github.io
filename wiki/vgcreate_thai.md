@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) vgcreate การใช้งาน: สร้างกลุ่ม Volume ใหม่
 
 ## Overview
-คำสั่ง `vgcreate` ใช้สำหรับสร้างกลุ่ม Volume ใหม่ในระบบจัดการดิสก์ที่ใช้ LVM (Logical Volume Manager) ซึ่งช่วยให้ผู้ใช้สามารถจัดการพื้นที่จัดเก็บข้อมูลได้อย่างมีประสิทธิภาพ
+คำสั่ง `vgcreate` ใช้สำหรับสร้างกลุ่ม Volume ใหม่ในระบบจัดการพื้นที่เก็บข้อมูล LVM (Logical Volume Manager) ซึ่งช่วยให้ผู้ใช้สามารถจัดการพื้นที่เก็บข้อมูลได้อย่างมีประสิทธิภาพมากขึ้น
 
 ## Usage
 รูปแบบพื้นฐานของคำสั่ง `vgcreate` คือ:
@@ -11,29 +11,29 @@ vgcreate [options] [arguments]
 ```
 
 ## Common Options
-- `-s, --stripes <n>`: กำหนดจำนวน stripe ที่จะใช้
-- `-p, --pesize <size>`: กำหนดขนาดของ Physical Extents
-- `-f, --force`: บังคับให้สร้างกลุ่ม Volume แม้จะมีข้อผิดพลาด
+- `-s, --stripes <n>`: กำหนดจำนวน stripes สำหรับกลุ่ม Volume
+- `-p, --max-pv <n>`: กำหนดจำนวนสูงสุดของ Physical Volumes ที่สามารถใช้ในกลุ่ม
+- `-f, --force`: บังคับให้สร้างกลุ่มแม้ว่าจะมีข้อผิดพลาด
 
 ## Common Examples
 ตัวอย่างการใช้งานคำสั่ง `vgcreate` มีดังนี้:
 
-1. สร้างกลุ่ม Volume ใหม่ชื่อว่า `myvg` โดยใช้ดิสก์ `/dev/sdb1`:
-   ```csh
-   vgcreate myvg /dev/sdb1
+1. สร้างกลุ่ม Volume ใหม่ชื่อ `myvg` โดยใช้ Physical Volume ที่ระบุ:
+   ```bash
+   vgcreate myvg /dev/sda1
    ```
 
-2. สร้างกลุ่ม Volume ใหม่ชื่อว่า `datavg` โดยกำหนดขนาด Physical Extent เป็น 16MB:
-   ```csh
-   vgcreate -p 16M datavg /dev/sdc1
+2. สร้างกลุ่ม Volume ใหม่ชื่อ `datavg` โดยใช้ Physical Volumes หลายตัว:
+   ```bash
+   vgcreate datavg /dev/sdb1 /dev/sdc1
    ```
 
-3. สร้างกลุ่ม Volume ใหม่ชื่อว่า `backupvg` โดยใช้หลายดิสก์:
-   ```csh
-   vgcreate backupvg /dev/sdd1 /dev/sde1
+3. สร้างกลุ่ม Volume ใหม่และกำหนดจำนวนสูงสุดของ Physical Volumes:
+   ```bash
+   vgcreate -p 5 myvg /dev/sda1
    ```
 
 ## Tips
-- ตรวจสอบให้แน่ใจว่าดิสก์ที่คุณใช้สำหรับสร้างกลุ่ม Volume ไม่มีข้อมูลสำคัญ เพราะคำสั่งนี้อาจลบข้อมูลได้
-- ใช้คำสั่ง `vgdisplay` เพื่อตรวจสอบกลุ่ม Volume ที่สร้างขึ้นแล้ว
-- พิจารณาการใช้ตัวเลือก `-f` อย่างระมัดระวัง เนื่องจากอาจทำให้เกิดการสูญเสียข้อมูลได้
+- ตรวจสอบให้แน่ใจว่า Physical Volumes ที่ใช้มีการเตรียมพร้อมและฟอร์แมตอย่างถูกต้องก่อนที่จะสร้างกลุ่ม Volume
+- ใช้ตัวเลือก `-f` ด้วยความระมัดระวัง เนื่องจากอาจทำให้ข้อมูลสูญหายได้
+- ควรตรวจสอบสถานะของกลุ่ม Volume หลังจากสร้างเสร็จด้วยคำสั่ง `vgdisplay` เพื่อยืนยันการสร้างที่ถูกต้อง

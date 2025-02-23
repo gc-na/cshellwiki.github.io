@@ -1,38 +1,35 @@
-# [Hệ điều hành] C Shell (csh) fg Cách sử dụng: Kích hoạt tiến trình nền
+# [Hệ điều hành] C Shell (csh) fg Cách sử dụng: Chuyển foreground cho tiến trình
 
-## Tổng quan
-Lệnh `fg` trong C Shell (csh) được sử dụng để đưa một tiến trình đang chạy ở chế độ nền trở lại chế độ foreground (trước). Điều này cho phép người dùng tương tác với tiến trình đó trực tiếp từ dòng lệnh.
+## Overview
+Lệnh `fg` trong C Shell (csh) được sử dụng để đưa một tiến trình đang chạy ở nền (background) trở lại chế độ foreground. Điều này cho phép người dùng tương tác trực tiếp với tiến trình đó.
 
-## Cách sử dụng
+## Usage
 Cú pháp cơ bản của lệnh `fg` như sau:
 ```
 fg [options] [arguments]
 ```
 
-## Các tùy chọn phổ biến
-- `job_spec`: Chỉ định tiến trình cụ thể mà bạn muốn đưa về foreground. Bạn có thể sử dụng số thứ tự của tiến trình hoặc tên của nó.
-- `-l`: Hiển thị danh sách các tiến trình đang chạy.
+## Common Options
+- `job_id`: Chỉ định ID của tiến trình mà bạn muốn đưa về foreground. Nếu không chỉ định, `fg` sẽ đưa tiến trình gần nhất về foreground.
 
-## Ví dụ thường gặp
-Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `fg`:
+## Common Examples
+- Đưa tiến trình gần nhất về foreground:
+```csh
+fg
+```
 
-1. Đưa tiến trình gần nhất về foreground:
-   ```csh
-   fg
-   ```
+- Đưa tiến trình với ID cụ thể về foreground (ví dụ: job 1):
+```csh
+fg %1
+```
 
-2. Đưa một tiến trình cụ thể (ví dụ tiến trình số 1) về foreground:
-   ```csh
-   fg %1
-   ```
+- Nếu bạn có nhiều tiến trình đang chạy ở nền, bạn có thể sử dụng:
+```csh
+fg %2
+```
+Để đưa tiến trình thứ hai về foreground.
 
-3. Nếu bạn có nhiều tiến trình đang chạy, bạn có thể xem danh sách các tiến trình với lệnh `jobs` trước khi sử dụng `fg`:
-   ```csh
-   jobs
-   fg %2
-   ```
-
-## Mẹo
-- Sử dụng lệnh `jobs` để kiểm tra các tiến trình đang chạy trước khi sử dụng `fg`, giúp bạn biết chính xác tiến trình nào cần được đưa về foreground.
-- Nếu bạn muốn dừng một tiến trình đang chạy ở foreground, bạn có thể sử dụng tổ hợp phím `Ctrl + Z` để tạm dừng nó và sau đó sử dụng `fg` để tiếp tục.
-- Hãy nhớ rằng chỉ có thể đưa các tiến trình đã được khởi động từ phiên làm việc hiện tại về foreground.
+## Tips
+- Sử dụng lệnh `jobs` để xem danh sách các tiến trình đang chạy ở nền và ID của chúng trước khi sử dụng `fg`.
+- Nếu bạn muốn tạm dừng một tiến trình đang chạy ở foreground, bạn có thể sử dụng tổ hợp phím `Ctrl + Z` để chuyển nó về nền trước khi sử dụng `fg`.
+- Hãy chắc chắn rằng bạn đã lưu lại bất kỳ dữ liệu nào cần thiết trước khi đưa một tiến trình về foreground, vì nó có thể yêu cầu sự tương tác từ người dùng.

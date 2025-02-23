@@ -1,55 +1,53 @@
-# [Linux] C Shell (csh) sed Utilisation : Outil de traitement de texte
+# [Linux] C Shell (csh) sed Utilisation : Modifier et transformer du texte
 
-## Overview
-La commande `sed` (Stream Editor) est un éditeur de texte non interactif qui permet de manipuler et de transformer des flux de texte. Elle est souvent utilisée pour effectuer des substitutions, des suppressions ou des insertions dans des fichiers ou des entrées standard.
+## Aperçu
+La commande `sed`, qui signifie "stream editor", est un outil puissant utilisé pour manipuler et transformer du texte dans des fichiers ou des flux de données. Elle permet d'effectuer des substitutions, des suppressions et d'autres modifications sur des lignes de texte.
 
-## Usage
+## Utilisation
 La syntaxe de base de la commande `sed` est la suivante :
 
 ```bash
 sed [options] [arguments]
 ```
 
-## Common Options
-Voici quelques options courantes de `sed` :
-
-- `-e` : Permet d'ajouter une expression à exécuter.
-- `-i` : Modifie le fichier en place (sans créer de fichier temporaire).
-- `-n` : Supprime la sortie automatique, n'affiche que les lignes spécifiées.
+## Options courantes
+- `-e` : Permet d'exécuter plusieurs expressions `sed`.
+- `-i` : Modifie le fichier en place sans créer de fichier temporaire.
+- `-n` : Supprime l'affichage automatique des lignes, utile avec `p` pour afficher uniquement les lignes spécifiées.
 - `s/pattern/replacement/` : Effectue une substitution de `pattern` par `replacement`.
 
-## Common Examples
+## Exemples courants
 Voici quelques exemples pratiques de l'utilisation de `sed` :
 
-### Exemple 1 : Remplacer du texte dans un fichier
-Pour remplacer toutes les occurrences de "chat" par "chien" dans un fichier `animaux.txt` :
+### 1. Remplacer une chaîne de caractères
+Pour remplacer "chat" par "chien" dans un fichier :
 
 ```bash
-sed -i 's/chat/chien/g' animaux.txt
+sed 's/chat/chien/' fichier.txt
 ```
 
-### Exemple 2 : Afficher uniquement les lignes contenant un mot spécifique
-Pour afficher les lignes contenant le mot "erreur" dans un fichier `log.txt` :
+### 2. Modifier un fichier en place
+Pour remplacer "chat" par "chien" directement dans le fichier :
 
 ```bash
-sed -n '/erreur/p' log.txt
+sed -i 's/chat/chien/' fichier.txt
 ```
 
-### Exemple 3 : Supprimer les lignes vides d'un fichier
-Pour supprimer toutes les lignes vides d'un fichier `texte.txt` :
+### 3. Afficher uniquement les lignes contenant un mot spécifique
+Pour afficher uniquement les lignes contenant "chien" :
 
 ```bash
-sed -i '/^$/d' texte.txt
+sed -n '/chien/p' fichier.txt
 ```
 
-### Exemple 4 : Ajouter une ligne après une correspondance
-Pour ajouter "Nouvelle ligne" après chaque ligne contenant "Important" dans `notes.txt` :
+### 4. Supprimer les lignes vides
+Pour supprimer toutes les lignes vides d'un fichier :
 
 ```bash
-sed -i '/Important/a Nouvelle ligne' notes.txt
+sed '/^$/d' fichier.txt
 ```
 
-## Tips
-- Toujours faire une sauvegarde de vos fichiers avant d'utiliser l'option `-i`, car elle modifie le fichier original.
-- Utilisez des expressions régulières pour des substitutions plus complexes.
-- Testez vos commandes `sed` sans l'option `-i` pour voir les résultats avant de les appliquer définitivement.
+## Conseils
+- Toujours faire une sauvegarde de vos fichiers avant d'utiliser l'option `-i` pour éviter toute perte de données.
+- Utilisez l'option `-n` pour contrôler ce qui est affiché, cela peut rendre vos scripts plus clairs.
+- Testez vos commandes `sed` sur un petit échantillon de données avant de les appliquer à des fichiers plus volumineux.

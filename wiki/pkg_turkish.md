@@ -1,49 +1,61 @@
-# [Linux] C Shell (csh) pkg kullanımı: Paket yönetimi aracı
+# [Linux] C Shell (csh) pkg Kullanımı: Paket yönetimi için bir araç
 
-## Genel Bakış
-`pkg` komutu, C Shell (csh) ortamında yazılım paketlerini yönetmek için kullanılan bir araçtır. Bu komut, paketleri yükleme, güncelleme ve kaldırma işlemlerini kolaylaştırır.
+## Overview
+`pkg` komutu, C Shell (csh) ortamında yazılım paketlerini yönetmek için kullanılan bir araçtır. Bu komut, paketleri yüklemek, güncellemek ve kaldırmak gibi işlemleri kolaylaştırır.
 
-## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
+## Usage
+`pkg` komutunun temel sözdizimi aşağıdaki gibidir:
 
+```csh
+pkg [options] [arguments]
 ```
-pkg [seçenekler] [argümanlar]
-```
 
-## Yaygın Seçenekler
+## Common Options
 - `install`: Belirtilen paketi yükler.
 - `remove`: Belirtilen paketi kaldırır.
 - `update`: Yüklü paketleri günceller.
 - `list`: Yüklü paketlerin listesini gösterir.
+- `info`: Belirtilen paket hakkında bilgi verir.
 
-## Yaygın Örnekler
-Aşağıda `pkg` komutunun bazı pratik örnekleri bulunmaktadır:
+## Common Examples
+Aşağıda `pkg` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
 ### 1. Paket Yükleme
 Belirli bir paketi yüklemek için:
-```
-pkg install paket_adı
+
+```csh
+pkg install paket_adi
 ```
 
 ### 2. Paket Kaldırma
 Yüklü bir paketi kaldırmak için:
-```
-pkg remove paket_adı
+
+```csh
+pkg remove paket_adi
 ```
 
 ### 3. Paket Güncelleme
 Tüm yüklü paketleri güncellemek için:
-```
+
+```csh
 pkg update
 ```
 
 ### 4. Yüklü Paketleri Listeleme
 Sistemde yüklü olan paketleri listelemek için:
-```
+
+```csh
 pkg list
 ```
 
-## İpuçları
-- Paketleri yüklemeden önce, hangi paketlerin mevcut olduğunu görmek için `pkg list` komutunu kullanın.
-- Güncellemeleri düzenli olarak kontrol etmek, sisteminizin güvenliğini artırır.
-- Hata mesajları alıyorsanız, `pkg` komutunu `-v` seçeneği ile çalıştırarak daha fazla bilgi edinebilirsiniz.
+### 5. Paket Hakkında Bilgi Alma
+Belirli bir paket hakkında bilgi almak için:
+
+```csh
+pkg info paket_adi
+```
+
+## Tips
+- Paketleri yüklemeden önce, mevcut paketlerin güncel olup olmadığını kontrol etmek için `pkg update` komutunu kullanın.
+- Yüklemek istediğiniz paketin adını doğru yazdığınızdan emin olun; aksi takdirde hata alabilirsiniz.
+- Gereksiz paketleri kaldırarak sisteminizin temiz ve düzenli kalmasını sağlayın.

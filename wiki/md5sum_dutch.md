@@ -1,10 +1,10 @@
 # [Linux] C Shell (csh) md5sum gebruik: Controleer de integriteit van bestanden
 
 ## Overzicht
-De `md5sum`-opdracht genereert en controleert MD5-hashes van bestanden. Dit is nuttig om de integriteit van bestanden te verifiëren, bijvoorbeeld na het downloaden of overdragen van bestanden.
+De `md5sum` opdracht genereert en controleert MD5-hashes van bestanden. Dit is nuttig voor het verifiëren van de integriteit van bestanden door te controleren of ze niet zijn gewijzigd of beschadigd.
 
 ## Gebruik
-De basis syntaxis van de `md5sum`-opdracht is als volgt:
+De basis syntaxis van de `md5sum` opdracht is als volgt:
 
 ```csh
 md5sum [opties] [argumenten]
@@ -12,37 +12,38 @@ md5sum [opties] [argumenten]
 
 ## Veelvoorkomende Opties
 - `-b`: Behandel bestanden als binaire bestanden.
-- `-c`: Controleer MD5-hashes van bestanden die zijn opgeslagen in een bestand.
+- `-c`: Controleer de MD5-hashes van bestanden op basis van een opgegeven bestand.
 - `-t`: Behandel bestanden als tekstbestanden.
-- `--help`: Toon een helpbericht met informatie over het gebruik van de opdracht.
+- `--help`: Toon een helpbericht met informatie over de opdracht.
 
 ## Veelvoorkomende Voorbeelden
 
 1. **MD5-hash genereren van een bestand:**
+   ```csh
+   md5sum bestand.txt
+   ```
 
-```csh
-md5sum voorbeeld.txt
-```
+2. **MD5-hash genereren van meerdere bestanden:**
+   ```csh
+   md5sum bestand1.txt bestand2.txt
+   ```
 
-2. **MD5-hash genereren en opslaan in een bestand:**
+3. **MD5-hashes controleren met een bestand:**
+   Eerst genereer je een bestand met hashes:
+   ```csh
+   md5sum bestand.txt > hashes.md5
+   ```
+   Vervolgens controleer je de hashes:
+   ```csh
+   md5sum -c hashes.md5
+   ```
 
-```csh
-md5sum voorbeeld.txt > hash.txt
-```
-
-3. **Controleer de MD5-hash van een bestand met een hashbestand:**
-
-```csh
-md5sum -c hash.txt
-```
-
-4. **MD5-hash genereren van meerdere bestanden:**
-
-```csh
-md5sum bestand1.txt bestand2.txt
-```
+4. **MD5-hash van een binaire bestand genereren:**
+   ```csh
+   md5sum -b bestand.bin
+   ```
 
 ## Tips
-- Gebruik altijd de `-c` optie om de integriteit van bestanden te controleren na het downloaden.
-- Sla de MD5-hashes op in een apart bestand voor toekomstige referentie.
-- Wees voorzichtig met het gebruik van MD5 voor cryptografische doeleinden, aangezien het niet meer als veilig wordt beschouwd voor gevoelige gegevens.
+- Zorg ervoor dat je de hashbestanden veilig opslaat, zodat je ze later kunt gebruiken voor verificatie.
+- Gebruik de `-c` optie om snel te controleren of bestanden zijn gewijzigd zonder handmatig de hashes te vergelijken.
+- Voor gevoelige gegevens, overweeg om sterkere hash-algoritmen te gebruiken, zoals SHA-256, aangezien MD5 niet meer als veilig wordt beschouwd voor cryptografische doeleinden.

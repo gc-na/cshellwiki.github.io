@@ -1,38 +1,43 @@
-# [Hệ điều hành] C Shell (csh) exit <Cách sử dụng tương đương>: Kết thúc phiên làm việc
+# [Hệ điều hành] C Shell (csh) exit <Sử dụng tương đương>: Thoát khỏi shell
 
 ## Tổng quan
-Lệnh `exit` trong C Shell (csh) được sử dụng để kết thúc phiên làm việc hiện tại của shell. Khi bạn thực hiện lệnh này, shell sẽ thoát và trả về mã trạng thái cho hệ thống.
+Lệnh `exit` trong C Shell (csh) được sử dụng để thoát khỏi phiên làm việc hiện tại của shell. Khi lệnh này được thực thi, nó sẽ kết thúc quá trình shell và trả về mã thoát cho hệ thống.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `exit` như sau:
 ```
-exit [mã_trạng_thái]
+exit [mã_thoát]
 ```
 
 ## Các tùy chọn phổ biến
-- `mã_trạng_thái`: Một số nguyên tùy chọn để chỉ định mã trạng thái khi thoát. Mã trạng thái 0 thường biểu thị thành công, trong khi các mã khác có thể biểu thị lỗi hoặc tình huống khác.
+- `mã_thoát`: Đây là một số nguyên tùy chọn mà bạn có thể chỉ định để xác định mã thoát. Mã thoát 0 thường chỉ ra rằng quá trình đã hoàn thành thành công, trong khi các mã khác có thể chỉ ra lỗi hoặc lý do khác.
 
-## Ví dụ phổ biến
+## Ví dụ thường gặp
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `exit`:
 
-1. Kết thúc phiên làm việc mà không chỉ định mã trạng thái (mặc định là 0):
+1. Thoát khỏi shell mà không chỉ định mã thoát:
    ```csh
    exit
    ```
 
-2. Kết thúc phiên làm việc và trả về mã trạng thái 1:
+2. Thoát khỏi shell và trả về mã thoát 0:
+   ```csh
+   exit 0
+   ```
+
+3. Thoát khỏi shell và trả về mã thoát 1 (thường dùng để chỉ ra lỗi):
    ```csh
    exit 1
    ```
 
-3. Kết thúc phiên làm việc trong một script:
+4. Sử dụng lệnh `exit` trong một script:
    ```csh
    #!/bin/csh
-   echo "Đang thoát..."
+   echo "Đang thực hiện một số công việc..."
    exit 0
    ```
 
 ## Mẹo
-- Luôn sử dụng mã trạng thái 0 để chỉ ra rằng phiên làm việc đã kết thúc thành công.
-- Khi viết script, hãy đảm bảo rằng bạn sử dụng lệnh `exit` ở cuối để tránh việc shell tiếp tục thực thi các lệnh không mong muốn.
-- Kiểm tra mã trạng thái của lệnh trước đó bằng cách sử dụng `$?` để quyết định mã trạng thái nào nên được trả về khi thoát.
+- Luôn sử dụng mã thoát 0 để chỉ ra rằng quá trình đã hoàn thành thành công.
+- Khi viết script, hãy chắc chắn rằng bạn sử dụng lệnh `exit` ở cuối để đảm bảo rằng shell kết thúc đúng cách.
+- Kiểm tra mã thoát của lệnh trước đó bằng cách sử dụng biến `$?` để xử lý lỗi một cách hiệu quả trong script của bạn.

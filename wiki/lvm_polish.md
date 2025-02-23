@@ -1,51 +1,51 @@
-# [Linux] C Shell (csh) lvm użycie: zarządzanie woluminami logicznymi
+# [Linux] C Shell (csh) lvm użycie: zarządzanie wolumenami logicznymi
 
-## Przegląd
-Polecenie `lvm` (Logical Volume Manager) służy do zarządzania woluminami logicznymi w systemach Linux. Umożliwia tworzenie, usuwanie oraz modyfikowanie woluminów logicznych, co pozwala na elastyczne zarządzanie przestrzenią dyskową.
+## Overview
+Polecenie `lvm` (Logical Volume Manager) służy do zarządzania wolumenami logicznymi w systemach Linux. Umożliwia tworzenie, usuwanie oraz modyfikowanie wolumenów logicznych, co pozwala na elastyczne zarządzanie przestrzenią dyskową.
 
-## Użycie
+## Usage
 Podstawowa składnia polecenia `lvm` wygląda następująco:
 
-```bash
+```csh
 lvm [opcje] [argumenty]
 ```
 
-## Częste opcje
-- `create`: Tworzy nowy wolumin logiczny.
-- `remove`: Usuwa istniejący wolumin logiczny.
-- `extend`: Powiększa istniejący wolumin logiczny.
-- `reduce`: Zmniejsza rozmiar woluminu logicznego.
-- `lvdisplay`: Wyświetla szczegóły dotyczące woluminów logicznych.
+## Common Options
+- `create`: Tworzy nowy wolumen logiczny.
+- `remove`: Usuwa istniejący wolumen logiczny.
+- `extend`: Rozszerza istniejący wolumen logiczny.
+- `reduce`: Zmniejsza rozmiar wolumenu logicznego.
+- `lvdisplay`: Wyświetla informacje o wolumenach logicznych.
 
-## Przykłady
-Oto kilka praktycznych przykładów użycia polecenia `lvm`:
+## Common Examples
+Przykłady użycia polecenia `lvm`:
 
-1. **Tworzenie nowego woluminu logicznego:**
-   ```bash
+1. **Tworzenie nowego wolumenu logicznego:**
+   ```csh
    lvm create -n my_volume -L 10G my_volume_group
    ```
 
-2. **Usuwanie woluminu logicznego:**
-   ```bash
+2. **Usuwanie wolumenu logicznego:**
+   ```csh
    lvm remove my_volume
    ```
 
-3. **Rozszerzanie woluminu logicznego:**
-   ```bash
-   lvm extend -L +5G /dev/my_volume_group/my_volume
+3. **Rozszerzanie wolumenu logicznego:**
+   ```csh
+   lvm extend -L +5G my_volume
    ```
 
-4. **Zmniejszanie rozmiaru woluminu logicznego:**
-   ```bash
-   lvm reduce -L -5G /dev/my_volume_group/my_volume
+4. **Zmniejszanie wolumenu logicznego:**
+   ```csh
+   lvm reduce -L -5G my_volume
    ```
 
-5. **Wyświetlanie szczegółów woluminów logicznych:**
-   ```bash
+5. **Wyświetlanie informacji o wolumenach logicznych:**
+   ```csh
    lvm lvdisplay
    ```
 
-## Wskazówki
-- Zawsze wykonuj kopie zapasowe danych przed modyfikacją woluminów logicznych.
+## Tips
+- Zawsze wykonuj kopię zapasową danych przed modyfikacją wolumenów logicznych.
 - Używaj opcji `--dry-run`, aby zobaczyć, co polecenie zrobi, zanim je wykonasz.
-- Regularnie monitoruj stan woluminów logicznych, aby uniknąć problemów z przestrzenią dyskową.
+- Regularnie monitoruj stan wolumenów logicznych, aby uniknąć problemów z przestrzenią dyskową.

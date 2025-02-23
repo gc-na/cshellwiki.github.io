@@ -1,38 +1,37 @@
-# [Hệ điều hành] C Shell (csh) bg: [tiếp tục tiến trình ở nền]
+# [Hệ điều hành] C Shell (csh) bg Cách sử dụng: Đưa tiến trình vào nền
 
 ## Overview
-Lệnh `bg` trong C Shell (csh) được sử dụng để tiếp tục một tiến trình đã bị tạm dừng (suspended) và chạy nó ở chế độ nền. Điều này cho phép người dùng tiếp tục sử dụng dòng lệnh mà không cần phải chờ đợi tiến trình hoàn thành.
+Lệnh `bg` trong C Shell (csh) được sử dụng để đưa một tiến trình đang chạy trong chế độ nền, cho phép người dùng tiếp tục sử dụng terminal trong khi tiến trình đó vẫn hoạt động.
 
 ## Usage
 Cú pháp cơ bản của lệnh `bg` như sau:
-```
+```csh
 bg [options] [arguments]
 ```
 
 ## Common Options
-- `job_id`: Chỉ định ID của tiến trình mà bạn muốn tiếp tục. Nếu không chỉ định, `bg` sẽ tiếp tục tiến trình tạm dừng gần nhất.
+- `job_id`: Chỉ định ID của tiến trình mà bạn muốn đưa vào nền. Bạn có thể tìm thấy ID này bằng cách sử dụng lệnh `jobs`.
+- `-n`: Không thông báo khi tiến trình được đưa vào nền.
 
 ## Common Examples
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `bg`:
 
-1. **Tiếp tục tiến trình gần nhất ở nền**:
+1. Đưa tiến trình gần nhất vào nền:
    ```csh
    bg
    ```
 
-2. **Tiếp tục một tiến trình cụ thể bằng ID**:
+2. Đưa một tiến trình cụ thể vào nền bằng cách chỉ định job ID:
    ```csh
    bg %1
    ```
 
-3. **Tiếp tục tiến trình đã tạm dừng và chạy ở nền**:
+3. Đưa tiến trình vào nền mà không thông báo:
    ```csh
-   sleep 100 &
-   # (Sau đó tạm dừng tiến trình bằng Ctrl+Z)
-   bg %1
+   bg -n %2
    ```
 
 ## Tips
-- Sử dụng lệnh `jobs` để xem danh sách các tiến trình đang chạy và tạm dừng, giúp bạn dễ dàng xác định ID của tiến trình mà bạn muốn tiếp tục.
-- Khi chạy tiến trình ở nền, bạn có thể sử dụng lệnh `fg` để đưa tiến trình đó trở lại chế độ nền nếu cần.
-- Đảm bảo rằng bạn theo dõi các tiến trình chạy ở nền để tránh tiêu tốn tài nguyên hệ thống không cần thiết.
+- Sử dụng lệnh `jobs` để xem danh sách các tiến trình đang chạy và ID của chúng trước khi sử dụng `bg`.
+- Nếu bạn muốn dừng một tiến trình trước khi đưa nó vào nền, hãy sử dụng lệnh `Ctrl + Z` để tạm dừng tiến trình đó trước khi sử dụng `bg`.
+- Để kiểm tra trạng thái của các tiến trình đang chạy trong nền, bạn có thể sử dụng lệnh `jobs` để theo dõi chúng.

@@ -1,48 +1,46 @@
 # [Linux] C Shell (csh) lvcreate Penggunaan: Membuat Logical Volume
 
 ## Overview
-Perintah `lvcreate` digunakan untuk membuat logical volume baru dalam sistem manajemen volume logis (LVM). Dengan menggunakan `lvcreate`, pengguna dapat mengalokasikan ruang penyimpanan dari volume grup yang ada untuk membuat volume logis yang dapat digunakan untuk berbagai tujuan, seperti penyimpanan data atau sistem file.
+Perintah `lvcreate` digunakan untuk membuat logical volume baru dalam sistem manajemen volume logis (LVM). Dengan menggunakan perintah ini, pengguna dapat mengalokasikan ruang disk untuk aplikasi atau sistem file tertentu dengan lebih fleksibel.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `lvcreate`:
 
-```shell
+```csh
 lvcreate [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang dapat digunakan dengan `lvcreate`:
-
-- `-n` : Menentukan nama logical volume yang akan dibuat.
-- `-L` : Menentukan ukuran logical volume yang akan dibuat.
-- `-l` : Menentukan ukuran logical volume dalam unit logical extents.
-- `-C` : Menentukan apakah logical volume akan dibuat dalam mode kontinyu atau tidak.
-- `-Z` : Menentukan apakah logical volume akan diizinkan untuk diisi secara penuh.
+- `-n <name>`: Menentukan nama logical volume yang akan dibuat.
+- `-L <size>`: Menentukan ukuran logical volume yang ingin dibuat.
+- `-l <number>`: Menentukan ukuran logical volume dalam unit logical extents.
+- `-C y`: Mengaktifkan fitur "concurrent" untuk meningkatkan performa.
+- `-m <number>`: Menentukan jumlah salinan dari logical volume.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `lvcreate`:
 
-1. Membuat logical volume baru dengan nama "lv_data" dan ukuran 10GB:
-   ```shell
-   lvcreate -n lv_data -L 10G vg_data
+1. Membuat logical volume baru dengan nama "data" dan ukuran 10GB:
+   ```csh
+   lvcreate -n data -L 10G vg01
    ```
 
-2. Membuat logical volume baru dengan nama "lv_backup" menggunakan logical extents:
-   ```shell
-   lvcreate -n lv_backup -l 100 vg_data
+2. Membuat logical volume dengan ukuran 5 logical extents:
+   ```csh
+   lvcreate -n backup -l 5 vg01
    ```
 
-3. Membuat logical volume baru dengan mode kontinyu:
-   ```shell
-   lvcreate -n lv_continuous -L 5G -C y vg_data
+3. Membuat logical volume dengan fitur concurrent:
+   ```csh
+   lvcreate -n images -L 20G -C y vg01
    ```
 
-4. Membuat logical volume baru dan mengizinkan pengisian penuh:
-   ```shell
-   lvcreate -n lv_full -L 20G -Z y vg_data
+4. Membuat logical volume dengan 2 salinan:
+   ```csh
+   lvcreate -n snapshots -L 15G -m 1 vg01
    ```
 
 ## Tips
-- Pastikan untuk memeriksa ruang yang tersedia dalam volume grup sebelum membuat logical volume baru.
-- Gunakan opsi `-C` untuk meningkatkan performa jika diperlukan, terutama untuk aplikasi yang memerlukan akses cepat.
-- Selalu berikan nama yang deskriptif untuk logical volume agar mudah dikenali di masa mendatang.
+- Pastikan untuk memeriksa ruang yang tersedia di volume group sebelum membuat logical volume baru.
+- Gunakan nama yang deskriptif untuk logical volume agar mudah dikenali di masa mendatang.
+- Pertimbangkan untuk menggunakan opsi `-C y` jika Anda membutuhkan performa yang lebih baik pada volume yang sering diakses.

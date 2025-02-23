@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) sed utilizare: Modificarea textului în flux
+# [Linux] C Shell (csh) sed utilizare: Modificarea textului în fluxuri de date
 
 ## Overview
-Comanda `sed` (stream editor) este un editor de fluxuri care permite manipularea și transformarea textului din fișiere sau din intrări standard. Aceasta este utilizată frecvent pentru a efectua căutări și înlocuiri rapide de text, precum și pentru a modifica conținutul fișierelor fără a le deschide manual.
+Comanda `sed` (Stream Editor) este un editor de fluxuri de date care permite modificarea textului din fișiere sau din fluxuri de date. Aceasta este folosită frecvent pentru a efectua substituții, ștergeri sau inserții de text.
 
 ## Usage
 Sintaxa de bază a comenzii `sed` este următoarea:
@@ -11,38 +11,37 @@ sed [opțiuni] [argumente]
 ```
 
 ## Common Options
-- `-e`: Permite specificarea unei comenzi `sed` direct în linia de comandă.
+- `-e`: Permite specificarea mai multor comenzi `sed`.
 - `-i`: Modifică fișierul direct, fără a crea un fișier temporar.
-- `-n`: Suprimă ieșirea implicită, permițându-vă să controlați ce linii sunt afișate.
-- `s`: Comanda de substituție, folosită pentru a înlocui un text specificat cu altul.
+- `-n`: Suprimă ieșirea implicită, permițându-vă să controlați ce se afișează.
+- `s`: Comanda de substituție, folosită pentru a înlocui textul.
 
 ## Common Examples
-1. **Înlocuirea unui cuvânt într-un fișier**:
+1. **Substituția unui cuvânt într-un fișier:**
    ```bash
-   sed 's/cuvânt_vechi/cuvânt_nou/' fisier.txt
+   sed 's/vechi/nou/g' fisier.txt
    ```
+   Acest exemplu înlocuiește toate aparițiile cuvântului "vechi" cu "nou" în `fisier.txt`.
 
-2. **Înlocuirea tuturor aparițiilor unui cuvânt**:
+2. **Modificarea fișierului direct:**
    ```bash
-   sed 's/cuvânt_vechi/cuvânt_nou/g' fisier.txt
+   sed -i 's/vechi/actualizat/g' fisier.txt
    ```
+   Aceasta va modifica fișierul `fisier.txt` direct, înlocuind "vechi" cu "actualizat".
 
-3. **Modificarea fișierului direct**:
-   ```bash
-   sed -i 's/cuvânt_vechi/cuvânt_nou/g' fisier.txt
-   ```
-
-4. **Afișarea doar a liniilor care conțin un anumit cuvânt**:
+3. **Afișarea doar a liniilor care conțin un anumit cuvânt:**
    ```bash
    sed -n '/cuvânt/p' fisier.txt
    ```
+   Aici, comanda va afișa doar liniile din `fisier.txt` care conțin "cuvânt".
 
-5. **Ștergerea liniilor goale dintr-un fișier**:
+4. **Ștergerea liniilor goale dintr-un fișier:**
    ```bash
    sed '/^$/d' fisier.txt
    ```
+   Acest exemplu elimină toate liniile goale din `fisier.txt`.
 
 ## Tips
-- Utilizați opțiunea `-i` cu precauție, deoarece modificările sunt permanente.
-- Testați comenzile `sed` fără opțiunea `-i` pentru a verifica rezultatul înainte de a face modificări permanente.
-- Folosiți `-n` împreună cu comanda `p` pentru a controla ce linii sunt afișate, ceea ce poate fi util pentru filtrarea rezultatelor.
+- Folosiți opțiunea `-i` cu precauție, deoarece modificările sunt permanente.
+- Testați comenzile `sed` cu opțiunea `-n` pentru a verifica rezultatul înainte de a aplica modificări.
+- Familiarizați-vă cu expresiile regulate, deoarece `sed` le utilizează pentru a identifica și manipula textul.

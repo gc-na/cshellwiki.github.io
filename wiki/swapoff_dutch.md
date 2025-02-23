@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) swapoff gebruik: Schakel swap-geheugen uit
 
 ## Overzicht
-Het `swapoff` commando wordt gebruikt om swap-geheugen uit te schakelen op een systeem. Dit kan nuttig zijn wanneer je wilt dat het systeem geen gebruik maakt van swap, bijvoorbeeld om prestaties te verbeteren of om swap-geheugen te beheren.
+Het `swapoff` commando wordt gebruikt om swap-geheugen uit te schakelen op een Unix-achtige besturingssysteem. Dit kan nuttig zijn om de prestaties van het systeem te verbeteren of om te voorkomen dat swap-geheugen wordt gebruikt voor bepaalde processen.
 
 ## Gebruik
 De basis syntaxis van het `swapoff` commando is als volgt:
@@ -10,30 +10,30 @@ De basis syntaxis van het `swapoff` commando is als volgt:
 swapoff [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- `-a`: Schakel alle swap-geheugen uit.
-- `-e`: Negeer fouten bij het uitschakelen van swap-geheugen.
-- `-h`: Toon de help-informatie voor het commando.
+## Veelvoorkomende Opties
+- `-a`: Schakel alle swap-gebieden uit.
+- `-e`: Schakel een specifiek swap-gebied uit dat is opgegeven.
+- `-h`: Toon de help-informatie voor het gebruik van het commando.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van `swapoff`:
 
-1. Schakel een specifieke swap-partitie uit:
-   ```csh
-   swapoff /dev/sdX
-   ```
-
-2. Schakel alle swap-geheugen uit:
+1. Schakel alle swap-gebieden uit:
    ```csh
    swapoff -a
    ```
 
-3. Schakel een swap-bestand uit:
+2. Schakel een specifiek swap-bestand uit:
    ```csh
    swapoff /swapfile
    ```
 
+3. Toon help-informatie:
+   ```csh
+   swapoff -h
+   ```
+
 ## Tips
-- Zorg ervoor dat je voldoende fysiek geheugen hebt voordat je swap uitschakelt, om te voorkomen dat het systeem traag wordt of vastloopt.
-- Controleer de huidige swap-instellingen met het `swapon -s` commando voordat je wijzigingen aanbrengt.
-- Gebruik `swapoff` met voorzichtigheid op productie-systemen, aangezien het uitschakelen van swap-geheugen invloed kan hebben op de prestaties van applicaties.
+- Zorg ervoor dat je voldoende fysiek geheugen hebt voordat je swap uitschakelt, om te voorkomen dat je systeem traag wordt of vastloopt.
+- Controleer regelmatig het gebruik van swap-geheugen met het `swapon -s` commando om te bepalen of het nodig is om swap uit te schakelen.
+- Gebruik `swapoff` met voorzichtigheid op productie-systemen, aangezien het uitschakelen van swap-geheugen invloed kan hebben op de stabiliteit van het systeem.

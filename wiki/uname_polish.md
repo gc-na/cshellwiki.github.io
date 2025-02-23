@@ -1,48 +1,53 @@
-# [Linux] C Shell (csh) uname użycie: uzyskiwanie informacji o systemie
+# [Linux] C Shell (csh) uname użycie: Wyświetlanie informacji o systemie
 
 ## Overview
-Polecenie `uname` w C Shell (csh) służy do wyświetlania informacji o systemie operacyjnym, na którym jest uruchomione. Umożliwia uzyskanie danych takich jak nazwa systemu, wersja jądra oraz architektura sprzętowa.
+Polecenie `uname` w C Shell (csh) służy do wyświetlania informacji o systemie operacyjnym, na którym jest uruchomione. Może dostarczyć szczegółowe dane, takie jak nazwa systemu, wersja jądra oraz architektura sprzętowa.
 
 ## Usage
 Podstawowa składnia polecenia `uname` jest następująca:
 
-```
+```csh
 uname [opcje] [argumenty]
 ```
 
 ## Common Options
 Oto kilka powszechnie używanych opcji dla polecenia `uname`:
 
-- `-a`: Wyświetla wszystkie dostępne informacje o systemie.
-- `-s`: Wyświetla nazwę systemu operacyjnego.
-- `-n`: Wyświetla nazwę hosta.
-- `-r`: Wyświetla wersję jądra systemu.
-- `-v`: Wyświetla dodatkowe informacje o wersji.
+- `-a` - Wyświetla wszystkie dostępne informacje o systemie.
+- `-s` - Wyświetla nazwę systemu operacyjnego.
+- `-n` - Wyświetla nazwę hosta.
+- `-r` - Wyświetla wersję jądra systemu.
+- `-m` - Wyświetla architekturę sprzętową.
 
 ## Common Examples
 Oto kilka praktycznych przykładów użycia polecenia `uname`:
 
-1. Aby wyświetlić wszystkie informacje o systemie:
+1. Wyświetlenie wszystkich informacji o systemie:
    ```csh
    uname -a
    ```
 
-2. Aby uzyskać tylko nazwę systemu operacyjnego:
+2. Wyświetlenie tylko nazwy systemu operacyjnego:
    ```csh
    uname -s
    ```
 
-3. Aby sprawdzić wersję jądra systemu:
+3. Wyświetlenie wersji jądra systemu:
    ```csh
    uname -r
    ```
 
-4. Aby zobaczyć nazwę hosta:
+4. Wyświetlenie nazwy hosta:
    ```csh
    uname -n
    ```
 
+5. Wyświetlenie architektury sprzętowej:
+   ```csh
+   uname -m
+   ```
+
 ## Tips
-- Używaj opcji `-a`, aby uzyskać pełny obraz systemu w jednym poleceniu.
-- Możesz łączyć różne opcje, aby dostosować wyjście do swoich potrzeb.
-- Regularne sprawdzanie informacji o systemie może pomóc w diagnostyce problemów i zarządzaniu systemem.
+- Użyj opcji `-a`, aby uzyskać pełny przegląd informacji o systemie w jednym poleceniu.
+- Możesz łączyć różne opcje, aby uzyskać bardziej szczegółowe informacje, na przykład `uname -sr` wyświetli zarówno nazwę systemu, jak i wersję jądra.
+- Pamiętaj, że niektóre opcje mogą nie być dostępne w starszych wersjach systemów operacyjnych, więc warto sprawdzić dokumentację swojego systemu.

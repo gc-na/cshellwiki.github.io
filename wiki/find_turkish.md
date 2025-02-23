@@ -1,51 +1,51 @@
 # [Linux] C Shell (csh) find Kullanımı: Dosya adlarını bulma
 
 ## Genel Bakış
-`find` komutu, belirli bir dizin altında dosya ve dizinleri aramak için kullanılır. Kullanıcıların belirli kriterlere göre dosyaları bulmasını sağlar, bu da dosya yönetimini kolaylaştırır.
+`find` komutu, belirli bir dizin içinde dosya ve dizinleri aramak için kullanılır. Kullanıcıların belirli kriterlere göre dosyaları bulmasını sağlar, bu da dosya yönetimini kolaylaştırır.
 
 ## Kullanım
-Temel sözdizimi şu şekildedir:
+Temel sözdizimi aşağıdaki gibidir:
 
 ```csh
 find [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-name`: Belirtilen ada sahip dosyaları bulur.
-- `-type`: Belirli bir dosya türünü arar (örneğin, `f` dosya, `d` dizin).
-- `-size`: Belirli bir boyutta dosyaları bulur.
-- `-mtime`: Belirli bir süre önce değiştirilmiş dosyaları bulur.
-- `-exec`: Bulunan dosyalar üzerinde bir komut çalıştırır.
+- `-name`: Belirtilen isimle eşleşen dosyaları bulur.
+- `-type`: Belirli bir dosya türünü (örneğin, dosya veya dizin) arar.
+- `-size`: Belirtilen boyutta dosyaları bulur.
+- `-mtime`: Belirtilen gün sayısı içinde değiştirilmiş dosyaları bulur.
+- `-exec`: Bulunan dosyalar üzerinde belirtilen komutu çalıştırır.
 
 ## Yaygın Örnekler
-Aşağıda `find` komutunun bazı pratik örnekleri verilmiştir:
+Aşağıda `find` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. Belirli bir dizinde belirli bir ada sahip dosyaları bulma:
+1. Belirli bir isimle dosyaları bulma:
    ```csh
-   find /path/to/directory -name "dosya.txt"
+   find /home/kullanici -name "belge.txt"
    ```
 
 2. Sadece dizinleri bulma:
    ```csh
-   find /path/to/directory -type d
+   find /home/kullanici -type d
    ```
 
 3. 1 MB'den büyük dosyaları bulma:
    ```csh
-   find /path/to/directory -size +1M
+   find /home/kullanici -size +1M
    ```
 
 4. Son 7 gün içinde değiştirilmiş dosyaları bulma:
    ```csh
-   find /path/to/directory -mtime -7
+   find /home/kullanici -mtime -7
    ```
 
-5. Bulunan dosyalar üzerinde bir komut çalıştırma (örneğin, silme):
+5. Bulunan dosyalar üzerinde bir komut çalıştırma:
    ```csh
-   find /path/to/directory -name "*.tmp" -exec rm {} \;
+   find /home/kullanici -name "*.log" -exec rm {} \;
    ```
 
 ## İpuçları
-- `find` komutunu kullanırken, arama yaptığınız dizini doğru belirlemek önemlidir.
-- Arama sonuçlarını daha iyi yönetmek için `-print` seçeneğini kullanarak sonuçları görüntüleyebilirsiniz.
-- `find` komutunu diğer komutlarla birleştirerek daha karmaşık işlemler gerçekleştirebilirsiniz. Örneğin, `grep` ile birlikte kullanarak belirli içeriklere sahip dosyaları bulabilirsiniz.
+- `find` komutunu kullanırken, arama dizinini daraltmak için kesin yollar kullanmak, arama süresini kısaltabilir.
+- `-print` seçeneği varsayılan olarak etkindir, ancak çıktıyı özelleştirmek için kullanılabilir.
+- `-delete` seçeneği ile dosyaları bulduktan sonra doğrudan silebilirsiniz, ancak dikkatli olun; bu işlem geri alınamaz.

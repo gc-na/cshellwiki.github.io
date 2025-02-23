@@ -6,10 +6,10 @@ Lệnh `id` trong C Shell (csh) được sử dụng để hiển thị thông t
 ## Cú pháp
 Cú pháp cơ bản của lệnh `id` như sau:
 ```
-id [options] [arguments]
+id [tùy chọn] [tham số]
 ```
 
-## Các tùy chọn phổ biến
+## Tùy chọn phổ biến
 - `-u`: Hiển thị UID của người dùng hiện tại.
 - `-g`: Hiển thị GID của nhóm chính của người dùng hiện tại.
 - `-G`: Hiển thị danh sách tất cả các GID mà người dùng thuộc về.
@@ -26,12 +26,12 @@ id [options] [arguments]
   id -u
   ```
 
-- Hiển thị GID của nhóm chính của người dùng hiện tại:
+- Hiển thị GID của nhóm chính:
   ```csh
   id -g
   ```
 
-- Hiển thị danh sách tất cả các GID mà người dùng thuộc về:
+- Hiển thị danh sách tất cả các GID:
   ```csh
   id -G
   ```
@@ -42,6 +42,6 @@ id [options] [arguments]
   ```
 
 ## Mẹo
-- Sử dụng lệnh `id` để nhanh chóng kiểm tra quyền truy cập của người dùng trong hệ thống.
-- Kết hợp các tùy chọn để có được thông tin chi tiết hơn về người dùng và nhóm.
-- Lệnh `id` rất hữu ích trong việc xác định các quyền hạn khi thực hiện các tác vụ quản trị hệ thống.
+- Sử dụng `id` mà không có tùy chọn để nhanh chóng kiểm tra thông tin người dùng của bạn.
+- Kết hợp các tùy chọn để có được thông tin chi tiết hơn, ví dụ: `id -u -n` để hiển thị tên người dùng cùng với UID.
+- Lệnh `id` rất hữu ích trong các kịch bản shell để kiểm tra quyền truy cập và phân quyền người dùng.

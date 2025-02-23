@@ -1,7 +1,7 @@
 # [Sistem Operasi] C Shell (csh) ps Penggunaan: Menampilkan informasi proses
 
 ## Overview
-Perintah `ps` digunakan untuk menampilkan informasi tentang proses yang sedang berjalan di sistem. Ini sangat berguna untuk memantau aktivitas sistem dan mengelola proses yang berjalan.
+Perintah `ps` digunakan untuk menampilkan informasi tentang proses yang sedang berjalan di sistem. Ini memberikan gambaran tentang proses yang aktif, termasuk ID proses, status, dan penggunaan sumber daya.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `ps`:
@@ -11,10 +11,10 @@ ps [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah `ps`:
+Berikut adalah beberapa opsi umum untuk perintah `ps` beserta penjelasannya:
 
-- `-e`: Menampilkan semua proses yang sedang berjalan.
-- `-f`: Menampilkan informasi proses dalam format lengkap.
+- `-e`: Menampilkan semua proses yang berjalan di sistem.
+- `-f`: Menampilkan informasi lengkap tentang proses, termasuk argumen yang digunakan saat menjalankan proses.
 - `-u [user]`: Menampilkan proses yang dimiliki oleh pengguna tertentu.
 - `-l`: Menampilkan informasi proses dalam format panjang.
 - `-p [pid]`: Menampilkan informasi untuk proses dengan ID tertentu.
@@ -22,7 +22,7 @@ Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah `ps`:
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `ps`:
 
-1. Menampilkan semua proses yang sedang berjalan:
+1. Menampilkan semua proses yang berjalan:
    ```csh
    ps -e
    ```
@@ -48,9 +48,9 @@ Berikut adalah beberapa contoh penggunaan perintah `ps`:
    ```
 
 ## Tips
-- Gunakan opsi `-f` untuk mendapatkan informasi lebih detail tentang proses, termasuk parent process ID (PPID).
+- Gunakan opsi `-f` untuk mendapatkan informasi lebih mendetail tentang proses yang sedang berjalan.
 - Kombinasikan `ps` dengan perintah `grep` untuk mencari proses tertentu, misalnya:
   ```csh
   ps -ef | grep nama_proses
   ```
-- Perintah `top` dapat digunakan sebagai alternatif untuk memantau proses secara real-time.
+- Jika Anda ingin memantau proses secara real-time, pertimbangkan untuk menggunakan perintah `top` sebagai alternatif.

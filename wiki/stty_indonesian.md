@@ -1,51 +1,51 @@
-# [Sistem Operasi] C Shell (csh) stty: Mengatur terminal dan pengaturan input/output
+# [Sistem Operasi] C Shell (csh) stty: Mengatur terminal
 
 ## Overview
-Perintah `stty` digunakan untuk mengubah dan mengatur pengaturan terminal di sistem Unix dan Linux. Ini memungkinkan pengguna untuk mengkonfigurasi bagaimana terminal berinteraksi dengan input dan output, termasuk pengaturan karakter khusus dan pengaturan mode.
+Perintah `stty` digunakan untuk mengubah dan mengatur pengaturan terminal di C Shell. Ini memungkinkan pengguna untuk mengonfigurasi berbagai aspek dari terminal, seperti pengaturan input dan output, serta pengaturan karakter khusus.
 
 ## Usage
-Berikut adalah sintaks dasar dari perintah `stty`:
-
+Sintaks dasar dari perintah `stty` adalah sebagai berikut:
 ```
 stty [options] [arguments]
 ```
 
 ## Common Options
-- `-a` : Menampilkan semua pengaturan terminal saat ini.
-- `-g` : Menampilkan pengaturan terminal dalam format yang dapat digunakan kembali.
-- `erase` : Mengatur karakter yang digunakan untuk menghapus karakter sebelumnya.
-- `kill` : Mengatur karakter yang digunakan untuk menghapus seluruh baris.
-- `intr` : Mengatur karakter yang digunakan untuk menghentikan proses yang sedang berjalan.
+Berikut adalah beberapa opsi umum untuk `stty` beserta penjelasannya:
+- `-a`: Menampilkan semua pengaturan terminal saat ini.
+- `-g`: Menghasilkan pengaturan terminal dalam format yang dapat disimpan dan digunakan kembali.
+- `erase`: Mengatur karakter penghapus (default adalah backspace).
+- `kill`: Mengatur karakter untuk menghapus seluruh baris (default adalah Ctrl+U).
+- `intr`: Mengatur karakter untuk interupsi (default adalah Ctrl+C).
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan `stty`:
+Berikut adalah beberapa contoh praktis penggunaan `stty`:
 
-1. **Menampilkan pengaturan terminal saat ini:**
+1. Menampilkan semua pengaturan terminal saat ini:
    ```csh
    stty -a
    ```
 
-2. **Mengatur karakter penghapus menjadi Ctrl+H:**
+2. Mengatur karakter penghapus menjadi Ctrl+H:
    ```csh
    stty erase ^H
    ```
 
-3. **Mengatur karakter kill menjadi Ctrl+U:**
+3. Mengatur karakter interupsi menjadi Ctrl+Z:
    ```csh
-   stty kill ^U
+   stty intr ^Z
    ```
 
-4. **Mengatur karakter interupsi menjadi Ctrl+C:**
+4. Menyimpan pengaturan terminal saat ini ke dalam variabel:
    ```csh
-   stty intr ^C
+   set saved_stty = `stty -g`
    ```
 
-5. **Menyimpan pengaturan terminal saat ini ke dalam variabel:**
+5. Mengembalikan pengaturan terminal ke yang disimpan sebelumnya:
    ```csh
-   set terminal_settings = `stty -g`
+   stty $saved_stty
    ```
 
 ## Tips
-- Selalu periksa pengaturan terminal saat ini dengan `stty -a` sebelum melakukan perubahan.
-- Gunakan `stty -g` untuk menyimpan pengaturan terminal yang dapat digunakan kembali, sehingga Anda dapat mengembalikannya jika diperlukan.
-- Hati-hati saat mengubah pengaturan terminal, karena beberapa perubahan dapat mempengaruhi cara Anda berinteraksi dengan shell.
+- Selalu periksa pengaturan terminal Anda dengan `stty -a` sebelum melakukan perubahan untuk memahami konfigurasi saat ini.
+- Simpan pengaturan terminal yang sering Anda gunakan dalam skrip untuk memudahkan pengaturan di masa mendatang.
+- Hati-hati saat mengubah pengaturan karakter khusus, karena ini dapat mempengaruhi cara Anda berinteraksi dengan terminal.

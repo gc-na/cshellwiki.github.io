@@ -1,7 +1,7 @@
-# [Sistem Operasi] C Shell (csh) exit Penggunaan: Menghentikan Shell
+# [Sistem Operasi] C Shell (csh) exit Penggunaan: Menghentikan skrip atau sesi
 
 ## Overview
-Perintah `exit` dalam C Shell (csh) digunakan untuk keluar dari shell saat ini. Ini berguna ketika Anda ingin mengakhiri sesi terminal atau skrip yang sedang berjalan.
+Perintah `exit` dalam C Shell (csh) digunakan untuk menghentikan eksekusi skrip atau keluar dari sesi shell. Dengan menggunakan perintah ini, pengguna dapat mengakhiri proses yang sedang berjalan dan mengembalikan nilai status tertentu ke sistem.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `exit`:
@@ -11,22 +11,22 @@ exit [options] [arguments]
 ```
 
 ## Common Options
-- `n`: Menghentikan shell dengan status keluar yang ditentukan. Status ini biasanya berupa angka antara 0 hingga 255, di mana 0 menunjukkan keberhasilan dan angka lainnya menunjukkan kesalahan.
+- `status`: Angka yang menunjukkan status keluar. Nilai ini dapat digunakan untuk menunjukkan keberhasilan (0) atau kegagalan (non-zero) dari eksekusi sebelumnya.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `exit`:
 
-1. **Keluar dari shell tanpa status tertentu:**
+1. **Keluar dari sesi shell:**
    ```csh
    exit
    ```
 
-2. **Keluar dari shell dengan status keluar 0 (berhasil):**
+2. **Keluar dari skrip dengan status sukses:**
    ```csh
    exit 0
    ```
 
-3. **Keluar dari shell dengan status keluar 1 (kesalahan umum):**
+3. **Keluar dari skrip dengan status gagal:**
    ```csh
    exit 1
    ```
@@ -34,11 +34,17 @@ Berikut adalah beberapa contoh penggunaan perintah `exit`:
 4. **Menggunakan exit dalam skrip:**
    ```csh
    #!/bin/csh
-   echo "Menjalankan skrip..."
+   echo "Memulai skrip..."
+   # Beberapa perintah
+   if ( $status != 0 ) then
+       echo "Terjadi kesalahan, keluar."
+       exit 1
+   endif
+   echo "Skrip selesai."
    exit 0
    ```
 
 ## Tips
-- Selalu gunakan status keluar yang sesuai untuk menunjukkan apakah skrip atau perintah berhasil atau gagal.
-- Saat menggunakan `exit` dalam skrip, pastikan untuk menangani status keluar dengan baik di bagian lain dari skrip Anda untuk pengendalian kesalahan yang lebih baik.
-- Jika Anda hanya ingin keluar dari subshell, pastikan untuk menggunakan `exit` tanpa argumen untuk kembali ke shell sebelumnya.
+- Selalu gunakan nilai status yang sesuai untuk memberikan informasi yang jelas tentang hasil eksekusi skrip Anda.
+- Jika Anda menggunakan `exit` dalam skrip, pastikan untuk memeriksa status perintah sebelumnya agar dapat menangani kesalahan dengan baik.
+- Gunakan `exit` di akhir skrip untuk memastikan bahwa nilai status dikembalikan ke shell yang memanggil skrip tersebut.

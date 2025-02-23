@@ -1,44 +1,48 @@
-# [Linux] C Shell (csh) psql użycie: interfejs do zarządzania bazą danych PostgreSQL
+# [Linux] C Shell (csh) psql użycie: Interakcja z bazą danych PostgreSQL
 
-## Przegląd
-Polecenie `psql` jest interaktywnym narzędziem linii poleceń do zarządzania bazą danych PostgreSQL. Umożliwia użytkownikom wykonywanie zapytań SQL, zarządzanie bazami danych oraz administrację systemu baz danych.
+## Overview
+Polecenie `psql` jest interaktywnym narzędziem do zarządzania bazą danych PostgreSQL. Umożliwia użytkownikom wykonywanie zapytań SQL, zarządzanie schematami bazy danych oraz administrację serwerem PostgreSQL.
 
-## Użycie
+## Usage
 Podstawowa składnia polecenia `psql` jest następująca:
 
-```
+```csh
 psql [opcje] [argumenty]
 ```
 
-## Częste opcje
-- `-h` – określa adres hosta serwera bazy danych.
-- `-U` – pozwala na podanie nazwy użytkownika do logowania.
-- `-d` – określa nazwę bazy danych, z którą chcesz się połączyć.
-- `-p` – ustawia port, na którym nasłuchuje serwer bazy danych.
-- `-W` – wymusza podanie hasła przed połączeniem.
+## Common Options
+- `-h` : Określa adres hosta serwera PostgreSQL.
+- `-U` : Umożliwia podanie nazwy użytkownika do logowania.
+- `-d` : Określa nazwę bazy danych, z którą chcesz się połączyć.
+- `-p` : Umożliwia podanie portu, na którym nasłuchuje serwer PostgreSQL.
+- `-f` : Wykonuje polecenia SQL z pliku.
 
-## Częste przykłady
-1. Połączenie z lokalną bazą danych:
-   ```bash
-   psql -d nazwa_bazy
-   ```
+## Common Examples
+- Połączenie z lokalną bazą danych jako domyślny użytkownik:
 
-2. Połączenie z serwerem na innym hoście:
-   ```bash
-   psql -h adres_hosta -U nazwa_użytkownika -d nazwa_bazy
-   ```
+```csh
+psql
+```
 
-3. Wykonanie zapytania SQL z pliku:
-   ```bash
-   psql -d nazwa_bazy -f ścieżka/do/pliku.sql
-   ```
+- Połączenie z określoną bazą danych jako określony użytkownik:
 
-4. Wyświetlenie listy tabel w bieżącej bazie danych:
-   ```bash
-   \dt
-   ```
+```csh
+psql -U nazwa_użytkownika -d nazwa_bazy
+```
 
-## Wskazówki
-- Zawsze używaj opcji `-W`, aby zapewnić bezpieczeństwo hasła.
-- Możesz używać polecenia `\?` w `psql`, aby uzyskać pomoc dotyczącą dostępnych poleceń.
-- Regularnie wykonuj kopie zapasowe swoich baz danych, aby uniknąć utraty danych.
+- Połączenie z serwerem na innym hoście:
+
+```csh
+psql -h adres_hosta -U nazwa_użytkownika -d nazwa_bazy
+```
+
+- Wykonanie poleceń SQL z pliku:
+
+```csh
+psql -U nazwa_użytkownika -d nazwa_bazy -f sczytaj.sql
+```
+
+## Tips
+- Zawsze używaj opcji `-U`, aby upewnić się, że logujesz się jako właściwy użytkownik.
+- Możesz używać pliku `.pgpass`, aby przechowywać hasła, co ułatwia logowanie.
+- Korzystaj z opcji `\?` w interaktywnym trybie `psql`, aby uzyskać pomoc dotyczącą dostępnych poleceń i opcji.

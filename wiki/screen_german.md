@@ -1,10 +1,10 @@
-# [Linux] C Shell (csh) screen Verwendung: Ein Terminal-Multiplexer
+# [Linux] C Shell (csh) screen Verwendung: Ein Tool zur Verwaltung von Terminal-Sitzungen
 
 ## Übersicht
-Der `screen` Befehl ist ein Terminal-Multiplexer, der es Benutzern ermöglicht, mehrere Terminal-Sitzungen innerhalb eines einzigen Fensters zu verwalten. Mit `screen` können Sie Sitzungen im Hintergrund laufen lassen und später wieder darauf zugreifen, was besonders nützlich ist, wenn Sie lange laufende Prozesse haben.
+Der Befehl `screen` ermöglicht es Benutzern, mehrere Terminal-Sitzungen innerhalb eines einzigen Fensters zu verwalten. Dies ist besonders nützlich, um Prozesse im Hintergrund laufen zu lassen oder um die Verbindung zu einem Remote-Server aufrechtzuerhalten, auch wenn die Internetverbindung unterbrochen wird.
 
 ## Verwendung
-Die grundlegende Syntax des `screen` Befehls lautet:
+Die grundlegende Syntax des `screen`-Befehls lautet:
 
 ```
 screen [Optionen] [Argumente]
@@ -12,37 +12,34 @@ screen [Optionen] [Argumente]
 
 ## Häufige Optionen
 - `-S <name>`: Gibt einen Namen für die neue Sitzung an.
-- `-d -r <name>`: Trennt eine Sitzung und verbindet sich erneut mit ihr.
-- `-list`: Listet alle aktiven `screen` Sitzungen auf.
-- `-r <name>`: Stellt eine bestehende Sitzung wieder her.
+- `-d -r`: Trennt eine Sitzung und verbindet sich wieder mit ihr.
+- `-list`: Listet alle aktiven Screen-Sitzungen auf.
+- `-L`: Aktiviert das Logging der Sitzung in eine Datei.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele zur Verwendung von `screen`:
+Hier sind einige praktische Beispiele für die Verwendung des `screen`-Befehls:
 
-1. **Neue `screen` Sitzung erstellen:**
+1. **Eine neue Screen-Sitzung starten:**
    ```bash
-   screen -S meine_sitzung
+   screen -S meineSitzung
    ```
 
-2. **Sitzung trennen (detach):**
-   Drücken Sie `Ctrl-a` gefolgt von `d`, um die Sitzung zu trennen.
-
-3. **Wiederherstellen einer getrennten Sitzung:**
+2. **Eine bestehende Sitzung wiederherstellen:**
    ```bash
-   screen -r meine_sitzung
+   screen -d -r meineSitzung
    ```
 
-4. **Auflisten aller aktiven `screen` Sitzungen:**
+3. **Alle aktiven Screen-Sitzungen auflisten:**
    ```bash
    screen -list
    ```
 
-5. **Wiederherstellen einer Sitzung, die nicht benannt wurde:**
+4. **Logging einer Sitzung aktivieren:**
    ```bash
-   screen -r 12345
+   screen -L
    ```
 
 ## Tipps
-- Verwenden Sie `screen` in Kombination mit `nohup`, um sicherzustellen, dass Ihre Prozesse auch nach dem Abmelden weiterlaufen.
-- Benennen Sie Ihre Sitzungen mit `-S`, um die Verwaltung mehrerer Sitzungen zu erleichtern.
-- Nutzen Sie die Funktionalität von `screen` zur Aufzeichnung von Sitzungen, um später auf die Ausgaben zugreifen zu können.
+- Verwenden Sie den Befehl `Ctrl + A`, gefolgt von `D`, um eine Sitzung zu trennen, ohne sie zu beenden.
+- Um zwischen mehreren Sitzungen zu wechseln, verwenden Sie `Ctrl + A`, gefolgt von `"` (Anführungszeichen), um eine Liste der offenen Fenster anzuzeigen.
+- Es ist ratsam, jeder Sitzung einen eindeutigen Namen zu geben, um die Verwaltung zu erleichtern.

@@ -1,53 +1,44 @@
-# [Linux] C Shell (csh) traceroute6 Kullanımı: IPv6 ağ yollarını izleme aracı
+# [Linux] C Shell (csh) traceroute6 Kullanımı: IPv6 ağ yollarını izleme
 
 ## Genel Bakış
-traceroute6 komutu, IPv6 ağları üzerinden bir hedefe giden yolun izlenmesini sağlar. Bu komut, ağdaki yönlendiricilerin ve geçiş noktalarının listesini göstererek, veri paketlerinin hedefe ulaşırken hangi yolları izlediğini anlamaya yardımcı olur.
+traceroute6 komutu, bir IPv6 ağı üzerindeki bir hedefe giden yol boyunca geçen yönlendiricileri ve ağ cihazlarını izlemek için kullanılır. Bu komut, ağ bağlantı sorunlarını teşhis etmek ve ağın performansını değerlendirmek için oldukça faydalıdır.
 
 ## Kullanım
 Komutun temel sözdizimi aşağıdaki gibidir:
 
-```bash
+```csh
 traceroute6 [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-m <sayı>`: Maksimum atlama sayısını belirler.
-- `-p <port>`: Hedefe gönderilecek UDP paketinin port numarasını ayarlar.
-- `-w <saniye>`: Her bir atlama için bekleme süresini ayarlar.
-- `-q <sayı>`: Her bir atlama için gönderilecek sorgu sayısını belirler.
+- `-m <sayı>`: İzlenecek maksimum atlama sayısını belirler.
+- `-p <port>`: Hedefe gönderilecek UDP paketlerinin port numarasını ayarlar.
+- `-w <saniye>`: Her bir atlama için zaman aşımını saniye cinsinden ayarlar.
 
 ## Yaygın Örnekler
-Aşağıda traceroute6 komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda traceroute6 komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-### Örnek 1: Temel Kullanım
-IPv6 adresine temel bir traceroute6 komutu ile ulaşmak için:
+1. Belirli bir IPv6 adresine giden yolu izleme:
+   ```csh
+   traceroute6 2001:db8::1
+   ```
 
-```bash
-traceroute6 2001:db8::1
-```
+2. Maksimum 15 atlama ile bir hedefe izleme:
+   ```csh
+   traceroute6 -m 15 2001:db8::1
+   ```
 
-### Örnek 2: Maksimum Atlama Sayısını Ayarlama
-Maksimum 10 atlama ile bir hedefe ulaşmak için:
+3. Belirli bir port numarası ile izleme:
+   ```csh
+   traceroute6 -p 80 2001:db8::1
+   ```
 
-```bash
-traceroute6 -m 10 2001:db8::1
-```
-
-### Örnek 3: Port Numarası Belirleme
-Belirli bir port numarası ile traceroute6 yapmak için:
-
-```bash
-traceroute6 -p 80 2001:db8::1
-```
-
-### Örnek 4: Bekleme Süresini Ayarlama
-Her atlama için 2 saniye beklemek için:
-
-```bash
-traceroute6 -w 2 2001:db8::1
-```
+4. Zaman aşımını 2 saniye olarak ayarlama:
+   ```csh
+   traceroute6 -w 2 2001:db8::1
+   ```
 
 ## İpuçları
-- Ağ bağlantı sorunlarını teşhis etmek için traceroute6 komutunu kullanın; bu, sorunlu yönlendiricileri belirlemenize yardımcı olabilir.
-- Hedefin IPv6 adresini doğru girdiğinizden emin olun; yanlış bir adres, sonuçları etkileyebilir.
-- Daha fazla bilgi için `man traceroute6` komutunu kullanarak kılavuz sayfalarına erişebilirsiniz.
+- Ağ sorunlarını teşhis ederken, farklı hedefler üzerinde traceroute6 komutunu deneyerek sorunun kaynağını daha iyi anlayabilirsiniz.
+- Yüksek atlama sayıları kullanmak, daha fazla yönlendirici ve ağ cihazı hakkında bilgi almanızı sağlar, ancak bu işlem daha uzun sürebilir.
+- Hedefin yanıt vermediği durumlarda, zaman aşımını artırarak daha fazla bilgi elde edebilirsiniz.

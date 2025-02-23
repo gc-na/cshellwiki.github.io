@@ -1,51 +1,53 @@
-# [Linux] C Shell (csh) flatpak penggunaan: Mengelola aplikasi dengan Flatpak
+# [Sistem Operasi] C Shell (csh) flatpak: Mengelola aplikasi dalam sandbox
 
 ## Overview
-Flatpak adalah sistem manajemen paket yang memungkinkan pengguna untuk menginstal, menjalankan, dan mengelola aplikasi secara terisolasi dari sistem operasi utama. Dengan Flatpak, aplikasi dapat berjalan di berbagai distribusi Linux tanpa perlu khawatir tentang ketergantungan yang berbeda.
+Flatpak adalah sistem manajemen paket yang memungkinkan pengguna untuk menginstal dan menjalankan aplikasi dalam lingkungan terisolasi (sandbox). Ini membantu dalam menjaga aplikasi tetap terpisah dari sistem utama, sehingga meningkatkan keamanan dan stabilitas.
 
 ## Usage
 Sintaks dasar untuk menggunakan perintah flatpak adalah sebagai berikut:
 
-```
+```csh
 flatpak [options] [arguments]
 ```
 
 ## Common Options
-- `install`: Menginstal aplikasi dari repositori Flatpak.
+Berikut adalah beberapa opsi umum yang dapat digunakan dengan flatpak:
+
+- `install`: Menginstal aplikasi dari repositori.
 - `uninstall`: Menghapus aplikasi yang terinstal.
-- `run`: Menjalankan aplikasi yang terinstal.
-- `list`: Menampilkan daftar aplikasi yang terinstal.
 - `update`: Memperbarui aplikasi yang terinstal ke versi terbaru.
+- `list`: Menampilkan daftar aplikasi yang terinstal.
+- `run`: Menjalankan aplikasi yang terinstal.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah flatpak:
 
-1. **Menginstal aplikasi**
-   ```bash
+1. **Menginstal aplikasi:**
+   ```csh
    flatpak install flathub org.videolan.VLC
    ```
 
-2. **Menghapus aplikasi**
-   ```bash
+2. **Menghapus aplikasi:**
+   ```csh
    flatpak uninstall org.videolan.VLC
    ```
 
-3. **Menjalankan aplikasi**
-   ```bash
-   flatpak run org.videolan.VLC
+3. **Memperbarui aplikasi:**
+   ```csh
+   flatpak update org.videolan.VLC
    ```
 
-4. **Menampilkan daftar aplikasi yang terinstal**
-   ```bash
+4. **Menampilkan daftar aplikasi yang terinstal:**
+   ```csh
    flatpak list
    ```
 
-5. **Memperbarui aplikasi**
-   ```bash
-   flatpak update
+5. **Menjalankan aplikasi:**
+   ```csh
+   flatpak run org.videolan.VLC
    ```
 
 ## Tips
-- Selalu periksa repositori Flatpak yang tersedia untuk menemukan aplikasi yang Anda butuhkan.
-- Gunakan `flatpak info [nama-aplikasi]` untuk mendapatkan informasi lebih lanjut tentang aplikasi yang terinstal.
-- Pertimbangkan untuk menggunakan `flatpak update` secara berkala untuk memastikan aplikasi Anda selalu diperbarui dengan fitur terbaru dan perbaikan keamanan.
+- Selalu periksa pembaruan aplikasi secara berkala dengan menggunakan `flatpak update`.
+- Gunakan `flatpak list --app` untuk menampilkan hanya aplikasi yang terinstal, bukan runtime.
+- Manfaatkan repositori flathub untuk menemukan berbagai aplikasi yang tersedia untuk diinstal.

@@ -1,28 +1,22 @@
-# [Linux] C Shell (csh) while użycie: wykonuje polecenia w pętli
+# [Linux] C Shell (csh) while użycie: wykonywanie poleceń w pętli
 
 ## Overview
-Polecenie `while` w C Shell (csh) służy do wykonywania zestawu poleceń w pętli, dopóki określony warunek jest spełniony. Jest to przydatne w sytuacjach, gdy chcemy powtarzać operacje, aż do momentu, gdy warunek przestanie być prawdziwy.
+Polecenie `while` w C Shell (csh) służy do wykonywania zestawu poleceń w pętli, dopóki warunek określony w wyrażeniu logicznym jest spełniony. Jest to przydatne, gdy chcemy powtarzać operacje, aż do momentu, gdy warunek przestanie być prawdziwy.
 
 ## Usage
 Podstawowa składnia polecenia `while` jest następująca:
 
 ```csh
 while (warunek)
-    polecenie1
-    polecenie2
-    ...
+    polecenia
 end
 ```
 
 ## Common Options
-Polecenie `while` w C Shell nie ma wielu opcji, ale można używać różnych warunków logicznych w celu kontrolowania pętli. Oto kilka przykładów warunków, które można stosować:
+Polecenie `while` w C Shell nie ma wielu opcji, ale oto kilka istotnych elementów, które warto znać:
 
-- `-eq`: równe
-- `-ne`: różne
-- `-lt`: mniejsze
-- `-gt`: większe
-- `-le`: mniejsze lub równe
-- `-ge`: większe lub równe
+- `warunek`: Wyrażenie logiczne, które jest oceniane przed każdą iteracją pętli. Jeśli jest prawdziwe, pętla jest kontynuowana.
+- `polecenia`: Zestaw poleceń, które mają być wykonywane w każdej iteracji pętli.
 
 ## Common Examples
 
@@ -35,26 +29,28 @@ while ($i <= 5)
 end
 ```
 
-### Przykład 2: Oczekiwanie na plik
+### Przykład 2: Odczytanie pliku linia po linii
 ```csh
-set filename = "plik.txt"
-while (! -e $filename)
-    echo "Czekam na plik $filename..."
-    sleep 2
+set file = "plik.txt"
+set line = ""
+while (1)
+    set line = `head -n 1 $file`
+    if ("$line" == "") break
+    echo "Linia: $line"
+    set file = `tail -n +2 $file`
 end
-echo "Plik $filename został znaleziony!"
 ```
 
 ### Przykład 3: Wykonywanie polecenia do momentu spełnienia warunku
 ```csh
 set count = 0
-while ($count < 3)
-    echo "To jest powtórzenie numer: $count"
+while ($count < 10)
+    echo "Licznik: $count"
     @ count++
 end
 ```
 
 ## Tips
-- Upewnij się, że warunek w pętli `while` ma szansę na spełnienie, aby uniknąć nieskończonych pętli.
-- Używaj polecenia `sleep`, aby wprowadzić opóźnienie w pętli, co może być przydatne w przypadku oczekiwania na zasoby.
-- Zawsze testuj swoje skrypty w bezpiecznym środowisku, aby upewnić się, że działają zgodnie z oczekiwaniami.
+- Upewnij się, że warunek w pętli `while` będzie w końcu fałszywy, aby uniknąć nieskończonej pętli.
+- Możesz używać zmiennych do dynamicznego kontrolowania warunków pętli.
+- Zawsze testuj pętle w bezpiecznym środowisku, aby upewnić się, że działają zgodnie z oczekiwaniami.

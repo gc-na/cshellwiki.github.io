@@ -1,56 +1,56 @@
-# [Hệ điều hành] C Shell (csh) systemctl: Quản lý dịch vụ hệ thống
+# [Hệ điều hành Linux] C Shell (csh) systemctl sử dụng: Quản lý dịch vụ hệ thống
 
 ## Tổng quan
-Lệnh `systemctl` trong C Shell (csh) được sử dụng để quản lý các dịch vụ và trạng thái của hệ thống trong môi trường Linux. Nó cho phép người dùng khởi động, dừng, khởi động lại, và kiểm tra trạng thái của các dịch vụ đang chạy trên hệ thống.
+Lệnh `systemctl` là một công cụ quan trọng trong quản lý dịch vụ hệ thống trên các hệ điều hành sử dụng systemd. Nó cho phép người dùng khởi động, dừng, kiểm tra trạng thái và quản lý các dịch vụ hệ thống một cách dễ dàng.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `systemctl` như sau:
-```
+```csh
 systemctl [tùy chọn] [tham số]
 ```
 
-## Các tùy chọn phổ biến
+## Tùy chọn phổ biến
 - `start`: Khởi động một dịch vụ.
 - `stop`: Dừng một dịch vụ.
 - `restart`: Khởi động lại một dịch vụ.
 - `status`: Kiểm tra trạng thái của một dịch vụ.
-- `enable`: Bật một dịch vụ để tự động khởi động khi hệ thống khởi động.
-- `disable`: Tắt một dịch vụ không tự động khởi động khi hệ thống khởi động.
+- `enable`: Bật tự động khởi động dịch vụ khi hệ thống khởi động.
+- `disable`: Tắt tự động khởi động dịch vụ khi hệ thống khởi động.
 
 ## Ví dụ phổ biến
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `systemctl`:
 
 - Khởi động một dịch vụ:
-  ```bash
-  systemctl start httpd
-  ```
+```csh
+systemctl start httpd
+```
 
 - Dừng một dịch vụ:
-  ```bash
-  systemctl stop httpd
-  ```
+```csh
+systemctl stop httpd
+```
 
 - Khởi động lại một dịch vụ:
-  ```bash
-  systemctl restart httpd
-  ```
+```csh
+systemctl restart httpd
+```
 
 - Kiểm tra trạng thái của một dịch vụ:
-  ```bash
-  systemctl status httpd
-  ```
+```csh
+systemctl status httpd
+```
 
-- Bật một dịch vụ để tự động khởi động:
-  ```bash
-  systemctl enable httpd
-  ```
+- Bật tự động khởi động dịch vụ khi hệ thống khởi động:
+```csh
+systemctl enable httpd
+```
 
-- Tắt một dịch vụ không tự động khởi động:
-  ```bash
-  systemctl disable httpd
-  ```
+- Tắt tự động khởi động dịch vụ khi hệ thống khởi động:
+```csh
+systemctl disable httpd
+```
 
 ## Mẹo
-- Luôn kiểm tra trạng thái của dịch vụ sau khi thực hiện các thay đổi để đảm bảo rằng chúng hoạt động như mong đợi.
-- Sử dụng quyền `sudo` nếu bạn không có quyền truy cập để quản lý dịch vụ.
-- Tham khảo tài liệu chính thức của `systemctl` để tìm hiểu thêm về các tùy chọn và tham số nâng cao.
+- Hãy luôn kiểm tra trạng thái của dịch vụ sau khi thực hiện các thay đổi để đảm bảo rằng chúng đã được áp dụng thành công.
+- Sử dụng `systemctl list-units --type=service` để xem danh sách tất cả các dịch vụ đang hoạt động trên hệ thống.
+- Để tìm hiểu thêm về các tùy chọn có sẵn, bạn có thể sử dụng `man systemctl` để xem tài liệu hướng dẫn chi tiết.

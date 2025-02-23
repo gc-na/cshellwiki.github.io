@@ -1,50 +1,45 @@
-# [Linux] C Shell (csh) psql gebruik: Voer SQL-commando's uit op een PostgreSQL-database
+# [Linux] C Shell (csh) psql gebruik: Interactie met PostgreSQL databases
 
 ## Overzicht
-De `psql`-opdracht is een interactieve terminal voor het werken met PostgreSQL-databases. Het stelt gebruikers in staat om SQL-commando's uit te voeren, database-informatie op te vragen en databasebeheer uit te voeren.
+De `psql` opdracht is een krachtige commandoregelinterface voor het werken met PostgreSQL databases. Het stelt gebruikers in staat om SQL-commando's uit te voeren, database-informatie op te vragen en databasebeheer uit te voeren.
 
 ## Gebruik
-De basis syntaxis van de `psql`-opdracht is als volgt:
+De basis syntaxis van de `psql` opdracht is als volgt:
 
 ```csh
 psql [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
-- `-h`: Specificeert de host van de database.
-- `-U`: Geeft de gebruikersnaam op voor de databaseverbinding.
-- `-d`: Bepaalt de naam van de database waarmee verbinding moet worden gemaakt.
-- `-W`: Vraagt om een wachtwoord voor de opgegeven gebruiker.
-- `-c`: Voert een enkele SQL-opdracht uit en sluit daarna af.
+## Veelvoorkomende opties
+- `-h`: Specificeert de hostnaam van de database server.
+- `-p`: Geeft de poort aan waarop de database server luistert.
+- `-U`: Bepaalt de gebruikersnaam die gebruikt moet worden voor de verbinding.
+- `-d`: Geeft de naam van de database aan waarmee verbinding moet worden gemaakt.
+- `-f`: Voert een SQL-bestand uit.
 
-## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van `psql`:
+## Veelvoorkomende voorbeelden
 
 1. Verbinden met een lokale database:
-
    ```csh
    psql -U gebruikersnaam -d databasenaam
    ```
 
-2. Een SQL-opdracht uitvoeren vanuit de opdrachtregel:
+2. Verbinden met een specifieke host en poort:
+   ```csh
+   psql -h localhost -p 5432 -U gebruikersnaam -d databasenaam
+   ```
 
+3. Uitvoeren van een SQL-bestand:
+   ```csh
+   psql -U gebruikersnaam -d databasenaam -f pad/naar/bestand.sql
+   ```
+
+4. Een eenvoudige SQL-query uitvoeren:
    ```csh
    psql -U gebruikersnaam -d databasenaam -c "SELECT * FROM tabelnaam;"
    ```
 
-3. Verbinden met een database op een externe host:
-
-   ```csh
-   psql -h externe_host -U gebruikersnaam -d databasenaam
-   ```
-
-4. Een wachtwoord opgeven bij het verbinden:
-
-   ```csh
-   psql -U gebruikersnaam -d databasenaam -W
-   ```
-
 ## Tips
 - Zorg ervoor dat je de juiste gebruikersrechten hebt voor de database waarmee je verbinding maakt.
-- Gebruik de `\?`-opdracht binnen `psql` om een lijst van beschikbare commando's en opties te bekijken.
-- Maak gebruik van de `\q`-opdracht om `psql` veilig af te sluiten.
+- Gebruik de `\?` commando binnen `psql` voor een lijst met beschikbare commando's en opties.
+- Maak gebruik van het `\q` commando om `psql` netjes af te sluiten.

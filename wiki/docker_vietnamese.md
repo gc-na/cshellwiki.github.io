@@ -1,48 +1,48 @@
-# [Hệ điều hành] C Shell (csh) docker sử dụng: Quản lý container
+# [Hệ điều hành] C Shell (csh) docker cách sử dụng: Quản lý và triển khai container
 
 ## Tổng quan
-Lệnh `docker` được sử dụng để quản lý và điều phối các container trong môi trường ảo hóa. Nó cho phép người dùng tạo, chạy, dừng và xóa các container, cũng như quản lý hình ảnh và mạng.
+Lệnh `docker` được sử dụng để quản lý và triển khai các container. Docker cho phép người dùng tạo, triển khai và chạy các ứng dụng trong môi trường ảo hóa nhẹ, giúp tăng cường tính nhất quán và khả năng mở rộng.
 
-## Cú pháp
+## Cách sử dụng
 Cú pháp cơ bản của lệnh docker như sau:
 ```
-docker [tùy chọn] [tham số]
+docker [options] [arguments]
 ```
 
-## Tùy chọn phổ biến
+## Các tùy chọn phổ biến
 - `run`: Tạo và chạy một container mới.
 - `ps`: Liệt kê các container đang chạy.
 - `stop`: Dừng một hoặc nhiều container.
 - `rm`: Xóa một hoặc nhiều container.
-- `images`: Liệt kê các hình ảnh có sẵn trên hệ thống.
+- `images`: Liệt kê các hình ảnh Docker có sẵn trên hệ thống.
 
 ## Ví dụ phổ biến
-- Tạo và chạy một container mới từ hình ảnh:
+- Tạo và chạy một container mới từ hình ảnh Ubuntu:
   ```bash
-  docker run hello-world
+  docker run -it ubuntu
   ```
-
+  
 - Liệt kê các container đang chạy:
   ```bash
   docker ps
   ```
 
-- Dừng một container cụ thể:
+- Dừng một container với ID là `abc123`:
   ```bash
-  docker stop <container_id>
+  docker stop abc123
   ```
 
-- Xóa một container:
+- Xóa một container đã dừng:
   ```bash
-  docker rm <container_id>
+  docker rm abc123
   ```
 
-- Liệt kê các hình ảnh có sẵn:
+- Liệt kê các hình ảnh Docker có sẵn:
   ```bash
   docker images
   ```
 
 ## Mẹo
-- Luôn kiểm tra trạng thái của container bằng lệnh `docker ps` trước khi thực hiện các thao tác dừng hoặc xóa.
-- Sử dụng `docker logs <container_id>` để xem nhật ký của container, giúp bạn theo dõi hoạt động và xử lý sự cố.
-- Đặt tên cho container khi tạo bằng cách sử dụng tùy chọn `--name` để dễ dàng quản lý hơn.
+- Luôn kiểm tra các container đang chạy trước khi thực hiện các thao tác dừng hoặc xóa để tránh mất dữ liệu.
+- Sử dụng `docker-compose` để quản lý nhiều container một cách dễ dàng hơn.
+- Thường xuyên cập nhật hình ảnh Docker để đảm bảo bạn có các bản vá bảo mật mới nhất.

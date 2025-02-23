@@ -1,44 +1,44 @@
 # [Linux] C Shell (csh) watch użycie: monitorowanie poleceń w czasie rzeczywistym
 
 ## Overview
-Polecenie `watch` w C Shell (csh) służy do wykonywania innego polecenia w regularnych odstępach czasu, co pozwala na monitorowanie jego wyników w czasie rzeczywistym. Jest to przydatne narzędzie do obserwacji zmian w danych lub statusie systemu.
+Polecenie `watch` w C Shell (csh) służy do wykonywania innego polecenia cyklicznie w określonych odstępach czasu, co pozwala na monitorowanie jego wyników w czasie rzeczywistym. Jest to przydatne narzędzie do obserwacji zmian w danych lub statusie systemu.
 
 ## Usage
-Podstawowa składnia polecenia `watch` wygląda następująco:
+Podstawowa składnia polecenia `watch` jest następująca:
 
 ```csh
 watch [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-n <sekundy>`: Ustawia interwał czasowy w sekundach między kolejnymi wykonaniami polecenia.
+- `-n <sekundy>`: Ustala interwał czasowy w sekundach, co ile polecenie ma być wykonywane. Domyślnie jest to 2 sekundy.
 - `-d`: Podświetla różnice między kolejnymi wynikami, co ułatwia zauważenie zmian.
-- `-t`: Wyłącza wyświetlanie nagłówka z informacjami o czasie.
+- `-t`: Wyłącza wyświetlanie nagłówka, co może być przydatne w przypadku długich wyników.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `watch`:
+Przykłady użycia polecenia `watch`:
 
-1. Monitorowanie użycia pamięci co 2 sekundy:
+1. Monitorowanie zawartości katalogu co 5 sekund:
    ```csh
-   watch -n 2 free -h
+   watch -n 5 ls -l
    ```
 
-2. Obserwacja katalogu w poszukiwaniu nowych plików:
+2. Obserwacja użycia pamięci RAM:
    ```csh
-   watch -d ls -l /ścieżka/do/katalogu
+   watch free -h
    ```
 
-3. Sprawdzanie statusu usługi co 5 sekund:
+3. Monitorowanie procesu `httpd`:
    ```csh
-   watch -n 5 systemctl status nazwa_usługi
+   watch -d ps aux | grep httpd
    ```
 
-4. Wyświetlanie bieżącego czasu co 1 sekundę:
+4. Sprawdzanie statusu serwera ping co 3 sekundy:
    ```csh
-   watch -n 1 date
+   watch -n 3 ping -c 1 example.com
    ```
 
 ## Tips
-- Używaj opcji `-d`, aby łatwiej zauważyć zmiany w wynikach.
-- Dostosuj interwał czasowy do swoich potrzeb, aby nie przeciążać systemu zbyt częstymi zapytaniami.
-- Możesz łączyć `watch` z innymi poleceniami, aby uzyskać bardziej złożone wyniki, na przykład używając potoków.
+- Używaj opcji `-d`, aby szybko zauważyć zmiany w wynikach.
+- Dostosuj interwał czasowy do swoich potrzeb, aby nie obciążać systemu zbyt częstymi zapytaniami.
+- Możesz łączyć `watch` z innymi poleceniami, aby uzyskać bardziej złożone wyniki, np. używając potoków.

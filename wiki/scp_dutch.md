@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) scp gebruik: Bestanden veilig kopiëren tussen systemen
 
 ## Overzicht
-De `scp` (secure copy) opdracht wordt gebruikt om bestanden veilig te kopiëren tussen een lokale en een externe host, of tussen twee externe hosts. Het maakt gebruik van SSH (Secure Shell) voor de overdracht, wat zorgt voor encryptie en beveiliging van de gegevens.
+De `scp` (secure copy) opdracht wordt gebruikt om bestanden veilig te kopiëren tussen lokale en externe systemen via SSH (Secure Shell). Het biedt een eenvoudige manier om gegevens over netwerken te verplaatsen met encryptie voor extra beveiliging.
 
 ## Gebruik
 De basis syntaxis van de `scp` opdracht is als volgt:
@@ -11,33 +11,35 @@ scp [opties] [bron] [doel]
 ```
 
 ## Veelvoorkomende opties
-- `-r`: Kopieer mappen recursief.
-- `-P [poort]`: Specificeer een andere poort voor de SSH-verbinding.
-- `-i [sleutel]`: Gebruik een specifieke SSH-sleutel voor authenticatie.
-- `-v`: Zet de uitvoer in verbose modus voor meer gedetailleerde informatie tijdens de overdracht.
+- `-r`: Kopieert directories recursief.
+- `-P [poort]`: Specificeert de poort voor de SSH-verbinding.
+- `-i [sleutel]`: Gebruikt een specifieke privésleutel voor authenticatie.
+- `-v`: Verhoogt de uitvoer voor debugging en toont gedetailleerde informatie over de overdracht.
 
 ## Veelvoorkomende voorbeelden
-1. **Een bestand kopiëren van lokaal naar een externe host:**
+Hier zijn enkele praktische voorbeelden van het gebruik van `scp`:
+
+1. **Kopieer een lokaal bestand naar een externe server:**
    ```csh
-   scp /pad/naar/lokaal_bestand.txt gebruiker@externe_host:/pad/naar/doelmap/
+   scp /pad/naar/lokaal_bestand.txt gebruiker@server:/pad/naar/doel/
    ```
 
-2. **Een bestand kopiëren van een externe host naar lokaal:**
+2. **Kopieer een bestand van een externe server naar de lokale machine:**
    ```csh
-   scp gebruiker@externe_host:/pad/naar/externe_bestand.txt /pad/naar/lokale_map/
+   scp gebruiker@server:/pad/naar/externe_bestand.txt /pad/naar/lokaal/
    ```
 
-3. **Een map recursief kopiëren naar een externe host:**
+3. **Kopieer een hele directory naar een externe server:**
    ```csh
-   scp -r /pad/naar/lokale_map gebruiker@externe_host:/pad/naar/doelmap/
+   scp -r /pad/naar/lokale_directory gebruiker@server:/pad/naar/doel/
    ```
 
-4. **Een bestand kopiëren met een specifieke poort:**
+4. **Kopieer een bestand naar een specifieke poort:**
    ```csh
-   scp -P 2222 /pad/naar/lokaal_bestand.txt gebruiker@externe_host:/pad/naar/doelmap/
+   scp -P 2222 /pad/naar/lokaal_bestand.txt gebruiker@server:/pad/naar/doel/
    ```
 
 ## Tips
-- Zorg ervoor dat je de juiste machtigingen hebt op de externe host om bestanden te kunnen kopiëren.
-- Gebruik de `-v` optie om problemen met de verbinding of overdracht te diagnosticeren.
-- Overweeg het gebruik van SSH-sleutels voor een veiligere en gemakkelijkere authenticatie in plaats van wachtwoorden.
+- Zorg ervoor dat SSH is geïnstalleerd en geconfigureerd op zowel de lokale als de externe machine.
+- Gebruik de `-v` optie voor extra informatie als je problemen ondervindt bij het kopiëren van bestanden.
+- Overweeg het gebruik van SSH-sleutels voor een veiligere en eenvoudigere authenticatie zonder wachtwoorden.

@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) popd Verwendung: Wechselt das Verzeichnis zurück
+# [Linux] C Shell (csh) popd Verwendung: Verzeichnis vom Stapel entfernen
 
 ## Übersicht
-Der Befehl `popd` wird in der C Shell verwendet, um das zuletzt gespeicherte Verzeichnis von der Verzeichnisstapel zu entfernen und in dieses Verzeichnis zu wechseln. Dies ist besonders nützlich, wenn Sie zwischen mehreren Verzeichnissen navigieren und den Überblick über Ihren Standort behalten möchten.
+Der `popd` Befehl wird in der C Shell verwendet, um das oberste Verzeichnis von einem Verzeichnisstapel zu entfernen und in dieses Verzeichnis zu wechseln. Dies ist besonders nützlich, wenn man zwischen mehreren Verzeichnissen navigiert und die Historie der besuchten Verzeichnisse verwalten möchte.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
@@ -11,33 +11,33 @@ popd [options] [arguments]
 ```
 
 ## Häufige Optionen
-- **`-n`**: Zeigt das neue Verzeichnis an, wechselt jedoch nicht dorthin.
-- **`+n`**: Wechselt zum n-ten Verzeichnis im Stapel, wobei `n` die Position im Stapel angibt.
-- **`-n`**: Wechselt zum n-ten Verzeichnis von hinten im Stapel.
+- `-n`: Zeigt nur das Verzeichnis an, ohne tatsächlich zu wechseln.
+- `+n`: Wechselt zu dem Verzeichnis, das sich an der Position `n` im Stapel befindet.
+- `-n`: Wechselt zu dem Verzeichnis, das sich an der Position `-n` im Stapel befindet, wobei `n` von oben gezählt wird.
 
 ## Häufige Beispiele
 
-1. **Zurückwechseln zum vorherigen Verzeichnis:**
+1. **Einfaches popd**: Entfernen des obersten Verzeichnisses vom Stapel und Wechseln zu diesem Verzeichnis.
    ```csh
    popd
    ```
 
-2. **Wechseln zum zweiten Verzeichnis im Stapel:**
-   ```csh
-   popd +1
-   ```
-
-3. **Wechseln zum ersten Verzeichnis von hinten:**
-   ```csh
-   popd -1
-   ```
-
-4. **Verzeichnis anzeigen, ohne zu wechseln:**
+2. **Verzeichnis anzeigen ohne zu wechseln**: Nur das oberste Verzeichnis anzeigen.
    ```csh
    popd -n
    ```
 
+3. **Wechseln zu einem bestimmten Verzeichnis im Stapel**: Wechseln zu dem zweiten Verzeichnis im Stapel.
+   ```csh
+   popd +1
+   ```
+
+4. **Wechseln zu einem Verzeichnis von unten**: Wechseln zu dem letzten Verzeichnis im Stapel.
+   ```csh
+   popd -1
+   ```
+
 ## Tipps
-- Stellen Sie sicher, dass Sie zuvor mit `pushd` ein Verzeichnis auf den Stapel gelegt haben, bevor Sie `popd` verwenden.
-- Nutzen Sie `dirs`, um den aktuellen Verzeichnisstapel anzuzeigen, bevor Sie `popd` ausführen.
-- Verwenden Sie `popd` in Kombination mit `pushd`, um effizient zwischen mehreren Verzeichnissen zu navigieren.
+- Verwenden Sie `pushd`, um Verzeichnisse zum Stapel hinzuzufügen, bevor Sie `popd` verwenden, um die Navigation zu erleichtern.
+- Überprüfen Sie den aktuellen Verzeichnisstapel mit dem Befehl `dirs`, um zu sehen, welche Verzeichnisse verfügbar sind.
+- Nutzen Sie die Optionen `+n` und `-n`, um gezielt zu bestimmten Verzeichnissen zu wechseln, ohne den Stapel zu verändern.

@@ -1,19 +1,20 @@
-# [Linux] C Shell (csh) continue Kullanımı: Döngüleri devam ettirir
+# [Linux] C Shell (csh) continue Kullanımı: Döngüde devam etme
 
-## Overview
-`continue` komutu, C Shell (csh) içinde döngülerin kontrolünü sağlamak için kullanılır. Bu komut, döngü içerisinde bir koşul sağlandığında, döngünün geri kalan kısmını atlayarak bir sonraki yinelemeye geçilmesini sağlar.
+## Genel Bakış
+`continue` komutu, C Shell (csh) içinde döngülerin kontrolünü sağlamak için kullanılır. Bu komut, döngüdeki mevcut yinelemeyi atlayarak bir sonraki yinelemeye geçmenizi sağlar. Özellikle belirli bir koşul altında döngüdeki bazı işlemleri atlamak istediğinizde oldukça faydalıdır.
 
-## Usage
+## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
 
 ```
 continue [options]
 ```
 
-## Common Options
-`continue` komutunun kendine özgü seçenekleri yoktur; doğrudan döngü içinde kullanılır. Ancak, döngü türüne bağlı olarak belirli koşullar ile birlikte kullanılabilir.
+## Yaygın Seçenekler
+`continue` komutunun kendine özgü seçenekleri yoktur; ancak, döngü içinde kullanıldığında belirli koşullara bağlı olarak çalışır. Koşul ifadeleri ile birlikte kullanıldığında etkili olur.
 
-## Common Examples
+## Yaygın Örnekler
+Aşağıda `continue` komutunun nasıl kullanılabileceğine dair birkaç örnek bulunmaktadır:
 
 ### Örnek 1: Basit bir döngüde continue kullanımı
 ```csh
@@ -24,34 +25,21 @@ foreach i (1 2 3 4 5)
     echo $i
 end
 ```
-Bu örnekte, 3 sayısı atlanarak 1, 2, 4 ve 5 sayıları ekrana yazdırılır.
+Bu örnekte, `3` sayısı döngüde atlanacak ve çıktı olarak `1`, `2`, `4`, `5` yazdırılacaktır.
 
-### Örnek 2: while döngüsünde continue kullanımı
+### Örnek 2: Belirli bir koşul altında devam etme
 ```csh
-set i = 0
-while ($i < 5)
-    @ i++
-    if ($i == 2) then
+set numbers = (1 2 3 4 5 6 7 8 9 10)
+foreach num ($numbers)
+    if ($num % 2 == 0) then
         continue
     endif
-    echo $i
+    echo $num
 end
 ```
-Bu örnekte, 2 sayısı atlanarak 1, 3 ve 4 sayıları ekrana yazdırılır.
+Bu örnekte, çift sayılar atlanacak ve yalnızca tek sayılar (`1`, `3`, `5`, `7`, `9`) yazdırılacaktır.
 
-### Örnek 3: Bir dosyadaki belirli satırları atlamak
-```csh
-set lines = (line1 line2 line3 line4 line5)
-foreach line ($lines)
-    if ($line == line3) then
-        continue
-    endif
-    echo $line
-end
-```
-Bu örnekte, "line3" atlanarak diğer satırlar ekrana yazdırılır.
-
-## Tips
-- `continue` komutunu kullanırken, döngü koşullarınızı dikkatlice belirleyin; aksi halde beklenmeyen sonuçlar elde edebilirsiniz.
-- `continue` komutunu, döngü içinde belirli bir durumu atlamak için kullanmak, kodun okunabilirliğini artırabilir.
-- Gelişmiş döngü yapıları kullanıyorsanız, `continue` komutunu etkili bir şekilde entegre edin; bu, kodunuzu daha verimli hale getirebilir.
+## İpuçları
+- `continue` komutunu kullanmadan önce döngüde hangi koşul altında atlama yapacağınızı iyi belirleyin.
+- Karmaşık döngülerde `continue` kullanımı, kodun okunabilirliğini artırabilir, ancak aşırı kullanımdan kaçının.
+- Hataları önlemek için `continue` komutunu dikkatli bir şekilde yerleştirin; yanlış yerleştirildiğinde beklenmeyen sonuçlar doğurabilir.

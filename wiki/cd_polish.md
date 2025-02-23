@@ -1,12 +1,12 @@
 # [Linux] C Shell (csh) cd użycie: Zmiana katalogu roboczego
 
 ## Overview
-Polecenie `cd` (change directory) w C Shell (csh) służy do zmiany bieżącego katalogu roboczego. Umożliwia użytkownikom nawigację po systemie plików, co jest kluczowe dla wykonywania różnych operacji na plikach i katalogach.
+Polecenie `cd` (change directory) w powłoce C Shell służy do zmiany bieżącego katalogu roboczego. Umożliwia użytkownikom nawigację po systemie plików, co jest kluczowe dla efektywnego zarządzania plikami i folderami.
 
 ## Usage
 Podstawowa składnia polecenia `cd` jest następująca:
 
-```csh
+```
 cd [opcje] [argumenty]
 ```
 
@@ -16,6 +16,8 @@ cd [opcje] [argumenty]
 - `..` : Przechodzi do katalogu nadrzędnego.
 
 ## Common Examples
+Oto kilka praktycznych przykładów użycia polecenia `cd`:
+
 1. Przejdź do katalogu domowego:
    ```csh
    cd ~
@@ -26,7 +28,7 @@ cd [opcje] [argumenty]
    cd ..
    ```
 
-3. Przejdź do konkretnego katalogu (np. do katalogu "Dokumenty"):
+3. Przejdź do konkretnego katalogu, na przykład do katalogu "Dokumenty":
    ```csh
    cd Dokumenty
    ```
@@ -37,6 +39,6 @@ cd [opcje] [argumenty]
    ```
 
 ## Tips
-- Używaj `cd ~` aby szybko wrócić do katalogu domowego.
-- Możesz używać `cd ..` wielokrotnie, aby przejść do wyższych poziomów w hierarchii katalogów.
-- Zawsze sprawdzaj bieżący katalog roboczy za pomocą polecenia `pwd`, aby upewnić się, że jesteś w odpowiednim miejscu.
+- Używaj `cd ~` aby szybko wrócić do swojego katalogu domowego.
+- Możesz używać `cd ..` wielokrotnie, aby przejść do wyższych poziomów katalogów.
+- Zapisz często używane ścieżki w zmiennych środowiskowych, aby szybko do nich wracać.

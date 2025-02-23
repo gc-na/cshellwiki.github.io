@@ -1,21 +1,19 @@
-# [Sistem Operasi] C Shell (csh) top Penggunaan: Menampilkan proses yang berjalan
+# [Sistem Operasi] C Shell (csh) top penggunaan: Menampilkan proses yang berjalan
 
 ## Overview
-Perintah `top` digunakan untuk menampilkan informasi tentang proses yang sedang berjalan di sistem. Ini memberikan tampilan real-time dari penggunaan CPU, memori, dan informasi penting lainnya tentang proses yang aktif.
+Perintah `top` digunakan untuk menampilkan informasi tentang proses yang sedang berjalan di sistem. Ini memberikan gambaran real-time mengenai penggunaan CPU, memori, dan sumber daya lainnya oleh proses-proses tersebut.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `top`:
 
-```csh
+```
 top [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah `top`:
-
-- `-d <seconds>`: Menentukan interval pembaruan dalam detik.
-- `-p <pid>`: Menampilkan hanya proses dengan ID tertentu.
-- `-u <username>`: Menampilkan proses yang dijalankan oleh pengguna tertentu.
+- `-d <delay>`: Mengatur interval pembaruan dalam detik.
+- `-n <number>`: Menentukan jumlah pembaruan yang akan ditampilkan sebelum keluar.
+- `-u <user>`: Menampilkan hanya proses yang dimiliki oleh pengguna tertentu.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `top`:
@@ -25,17 +23,17 @@ Berikut adalah beberapa contoh penggunaan perintah `top`:
    top -d 5
    ```
 
-2. Menampilkan proses untuk pengguna tertentu:
+2. Menampilkan `top` hanya untuk proses yang dimiliki oleh pengguna "john":
    ```csh
-   top -u username
+   top -u john
    ```
 
-3. Menampilkan informasi hanya untuk proses dengan ID 1234:
+3. Menjalankan `top` dan keluar setelah 10 pembaruan:
    ```csh
-   top -p 1234
+   top -n 10
    ```
 
 ## Tips
-- Gunakan opsi `-d` untuk menyesuaikan frekuensi pembaruan tampilan agar sesuai dengan kebutuhan Anda.
-- Tekan `h` saat berada di dalam tampilan `top` untuk melihat bantuan dan daftar pintasan keyboard.
-- Untuk menghentikan proses tertentu, Anda dapat menggunakan opsi `k` di dalam antarmuka `top` dan memasukkan ID proses yang ingin dihentikan.
+- Gunakan `q` untuk keluar dari tampilan `top`.
+- Tekan `h` saat dalam tampilan `top` untuk melihat bantuan dan daftar pintasan keyboard.
+- Perhatikan kolom penggunaan CPU dan memori untuk mengidentifikasi proses yang mungkin mempengaruhi kinerja sistem.

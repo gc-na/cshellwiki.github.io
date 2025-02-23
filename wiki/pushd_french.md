@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) pushd : [changer de répertoire avec une pile]
 
 ## Overview
-La commande `pushd` dans C Shell (csh) permet de changer de répertoire tout en sauvegardant le répertoire actuel dans une pile. Cela facilite la navigation entre plusieurs répertoires, car vous pouvez revenir rapidement au répertoire précédent.
+La commande `pushd` dans C Shell (csh) est utilisée pour changer de répertoire tout en stockant l'ancien répertoire dans une pile. Cela permet de naviguer facilement entre plusieurs répertoires sans perdre la trace de votre emplacement précédent.
 
 ## Usage
 La syntaxe de base de la commande `pushd` est la suivante :
@@ -11,30 +11,34 @@ pushd [options] [arguments]
 ```
 
 ## Common Options
-- `+n` : Accède au n-ième répertoire de la pile.
-- `-` : Retourne au répertoire précédent dans la pile.
+- `+n` : Accède au n-ième répertoire de la pile, en commençant par 0.
+- `-n` : Accède au n-ième répertoire de la pile en partant de la fin.
+- `-` : Retourne au répertoire précédent.
 
 ## Common Examples
+Voici quelques exemples pratiques de l'utilisation de la commande `pushd` :
 
-### Exemple 1 : Changer de répertoire
-Pour changer de répertoire et sauvegarder le répertoire actuel :
-```csh
-pushd /chemin/vers/nouveau/repertoire
-```
+1. **Changer de répertoire et ajouter à la pile :**
+   ```csh
+   pushd /chemin/vers/nouveau/répertoire
+   ```
 
-### Exemple 2 : Accéder à un répertoire dans la pile
-Pour accéder au deuxième répertoire de la pile :
-```csh
-pushd +2
-```
+2. **Accéder à un répertoire spécifique dans la pile :**
+   ```csh
+   pushd +1
+   ```
 
-### Exemple 3 : Retourner au répertoire précédent
-Pour revenir au répertoire précédent :
-```csh
-pushd -
-```
+3. **Revenir au répertoire précédent :**
+   ```csh
+   pushd -
+   ```
+
+4. **Afficher la pile des répertoires :**
+   ```csh
+   dirs
+   ```
 
 ## Tips
-- Utilisez `dirs` pour afficher la liste des répertoires dans la pile.
-- Combinez `pushd` avec `popd` pour naviguer facilement entre plusieurs répertoires.
-- Pensez à utiliser `pushd` lorsque vous travaillez sur plusieurs projets pour garder une trace de vos répertoires de travail.
+- Utilisez `popd` pour revenir au répertoire précédent et retirer ce répertoire de la pile.
+- Pensez à utiliser `dirs` pour afficher la pile actuelle des répertoires, ce qui peut vous aider à garder une trace de votre navigation.
+- Combinez `pushd` avec des scripts pour automatiser la navigation entre plusieurs répertoires.

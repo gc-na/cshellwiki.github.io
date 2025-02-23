@@ -1,48 +1,52 @@
-# [Linux] C Shell (csh) sqlite3 Użycie: Interakcja z bazą danych SQLite
+# [Linux] C Shell (csh) sqlite3 użycie: Interakcja z bazą danych SQLite
 
 ## Overview
-Polecenie `sqlite3` jest interfejsem wiersza poleceń do systemu zarządzania bazą danych SQLite. Umożliwia użytkownikom wykonywanie zapytań SQL, zarządzanie bazami danych oraz manipulowanie danymi w prosty sposób.
+Polecenie `sqlite3` służy do interakcji z bazą danych SQLite. Umożliwia użytkownikom wykonywanie zapytań SQL, tworzenie i modyfikowanie baz danych oraz zarządzanie danymi w prosty sposób.
 
 ## Usage
 Podstawowa składnia polecenia `sqlite3` jest następująca:
 
-```bash
+```csh
 sqlite3 [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-init <plik>`: Wykonuje polecenia SQL z podanego pliku po uruchomieniu.
-- `-batch`: Uruchamia w trybie wsadowym, co oznacza, że nie wyświetla interaktywnego promptu.
+Oto kilka powszechnie używanych opcji dla polecenia `sqlite3`:
+
 - `-header`: Wyświetla nagłówki kolumn w wynikach zapytań.
-- `-version`: Wyświetla wersję SQLite.
+- `-csv`: Eksportuje wyniki zapytań w formacie CSV.
+- `-init <plik>`: Wykonuje polecenia z podanego pliku przy uruchamianiu.
+- `-batch`: Włącza tryb wsadowy, co oznacza, że nie będzie interaktywnego powiadamiania o błędach.
 
 ## Common Examples
+Oto kilka praktycznych przykładów użycia polecenia `sqlite3`:
+
 1. **Utworzenie nowej bazy danych:**
-   ```bash
+   ```csh
    sqlite3 nowa_baza.db
    ```
 
-2. **Wykonanie zapytania SQL z pliku:**
-   ```bash
-   sqlite3 nowa_baza.db -init skrypt.sql
-   ```
-
-3. **Wyświetlenie wersji SQLite:**
-   ```bash
-   sqlite3 -version
-   ```
-
-4. **Wykonanie prostego zapytania:**
-   ```bash
+2. **Wykonanie zapytania SQL:**
+   ```csh
    sqlite3 nowa_baza.db "SELECT * FROM tabela;"
    ```
 
-5. **Eksportowanie wyników zapytania do pliku CSV:**
-   ```bash
-   sqlite3 -header -csv nowa_baza.db "SELECT * FROM tabela;" > wyniki.csv
+3. **Eksport wyników do pliku CSV:**
+   ```csh
+   sqlite3 -csv nowa_baza.db "SELECT * FROM tabela;" > wyniki.csv
+   ```
+
+4. **Wykonanie poleceń z pliku:**
+   ```csh
+   sqlite3 -init skrypt.sql nowa_baza.db
+   ```
+
+5. **Wyświetlenie nagłówków kolumn:**
+   ```csh
+   sqlite3 -header nowa_baza.db "SELECT * FROM tabela;"
    ```
 
 ## Tips
-- Zawsze twórz kopie zapasowe swoich baz danych przed wprowadzeniem dużych zmian.
+- Zawsze twórz kopie zapasowe bazy danych przed wprowadzeniem istotnych zmian.
 - Używaj opcji `-header`, aby ułatwić czytanie wyników zapytań.
-- W trybie wsadowym (opcja `-batch`) możesz automatyzować procesy i skrypty SQL, co jest przydatne w codziennej pracy.
+- Eksperymentuj z różnymi formatami eksportu, aby znaleźć ten, który najlepiej pasuje do Twoich potrzeb.

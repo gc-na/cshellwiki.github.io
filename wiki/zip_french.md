@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) zip utilisation : Compresser des fichiers
 
 ## Overview
-La commande `zip` est utilisée pour compresser des fichiers et des répertoires en un seul fichier archive. Cela permet de réduire l'espace de stockage et de faciliter le partage de fichiers.
+La commande `zip` est utilisée pour compresser des fichiers et des répertoires en un seul fichier archive. Cela permet de réduire l'espace de stockage et de faciliter le transfert de plusieurs fichiers.
 
 ## Usage
 La syntaxe de base de la commande `zip` est la suivante :
@@ -13,41 +13,40 @@ zip [options] [arguments]
 ## Common Options
 Voici quelques options courantes pour la commande `zip` :
 
-- `-r` : Compresse récursivement les répertoires.
-- `-e` : Chiffre le fichier zip avec un mot de passe.
-- `-u` : Met à jour un fichier zip existant en ajoutant de nouveaux fichiers.
-- `-d` : Supprime des fichiers d'un fichier zip existant.
-- `-l` : Liste le contenu d'un fichier zip sans l'extraire.
+- `-r` : Compresser récursivement les répertoires.
+- `-e` : Chiffrer le fichier zip avec un mot de passe.
+- `-9` : Utiliser le niveau de compression maximum.
+- `-d` : Supprimer des fichiers d'une archive zip existante.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `zip` :
 
-1. **Créer un fichier zip à partir de fichiers spécifiques :**
+1. **Compresser un fichier** :
    ```csh
-   zip archive.zip fichier1.txt fichier2.txt
+   zip mon_archive.zip fichier1.txt
    ```
 
-2. **Compresser un répertoire entier :**
+2. **Compresser plusieurs fichiers** :
    ```csh
-   zip -r archive.zip mon_repertoire
+   zip mon_archive.zip fichier1.txt fichier2.txt fichier3.txt
    ```
 
-3. **Chiffrer un fichier zip :**
+3. **Compresser un répertoire** :
    ```csh
-   zip -e archive.zip fichier1.txt
+   zip -r mon_archive.zip mon_repertoire/
    ```
 
-4. **Mettre à jour un fichier zip existant :**
+4. **Compresser avec chiffrement** :
    ```csh
-   zip -u archive.zip fichier3.txt
+   zip -e mon_archive.zip fichier1.txt
    ```
 
-5. **Lister le contenu d'un fichier zip :**
+5. **Supprimer un fichier d'une archive** :
    ```csh
-   zip -l archive.zip
+   zip -d mon_archive.zip fichier1.txt
    ```
 
 ## Tips
-- Toujours vérifier l'espace disque disponible avant de créer des archives zip, surtout pour de gros fichiers.
-- Utilisez l'option `-e` pour protéger vos fichiers sensibles avec un mot de passe.
-- Pour une compression optimale, essayez de compresser des fichiers de type texte plutôt que des fichiers déjà compressés (comme les images ou les vidéos).
+- Utilisez l'option `-9` pour obtenir la meilleure compression possible, surtout si vous avez beaucoup de fichiers à compresser.
+- Pensez à chiffrer vos archives contenant des informations sensibles avec l'option `-e`.
+- Pour vérifier le contenu d'une archive zip sans l'extraire, utilisez la commande `unzip -l mon_archive.zip`.

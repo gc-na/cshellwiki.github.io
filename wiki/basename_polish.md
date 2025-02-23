@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) basename użycie: Usuwa ścieżki z nazw plików
+# [Linux] C Shell (csh) basename użycie: Zwraca nazwę pliku bez ścieżki
 
 ## Overview
-Polecenie `basename` w C Shell (csh) służy do usuwania ścieżek z nazw plików, zwracając jedynie nazwę pliku. Jest to przydatne, gdy chcemy uzyskać samą nazwę pliku bez jego lokalizacji w systemie plików.
+Polecenie `basename` służy do zwracania nazwy pliku bez jego ścieżki. Jest to przydatne, gdy chcesz uzyskać samą nazwę pliku z pełnej ścieżki.
 
 ## Usage
 Podstawowa składnia polecenia `basename` jest następująca:
@@ -11,17 +11,15 @@ basename [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-a`: Obsługuje wiele argumentów i zwraca nazwę dla każdego z nich.
-- `-s`: Umożliwia usunięcie określonego sufiksu z nazwy pliku.
+- `-a`: Przetwarza wiele argumentów i zwraca nazwę dla każdego z nich.
+- `-s`: Usuwa podany sufiks z nazwy pliku.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `basename`:
-
-1. Uzyskanie nazwy pliku z pełnej ścieżki:
+1. Zwrócenie nazwy pliku z pełnej ścieżki:
    ```csh
-   basename /usr/local/bin/skrypt.sh
+   basename /home/użytkownik/dokumenty/plik.txt
    ```
-   Wynik: `skrypt.sh`
+   Wynik: `plik.txt`
 
 2. Usunięcie sufiksu z nazwy pliku:
    ```csh
@@ -29,17 +27,16 @@ Oto kilka praktycznych przykładów użycia polecenia `basename`:
    ```
    Wynik: `plik`
 
-3. Obsługa wielu argumentów:
+3. Przetwarzanie wielu plików:
    ```csh
-   basename -a /usr/bin/komenda1 /usr/bin/komenda2
+   basename -a /home/użytkownik/dokumenty/plik1.txt /home/użytkownik/dokumenty/plik2.txt
    ```
    Wynik:
    ```
-   komenda1
-   komenda2
+   plik1.txt
+   plik2.txt
    ```
 
 ## Tips
-- Używaj opcji `-s`, aby łatwo usunąć niechciane sufiksy z nazw plików.
-- Możesz używać `basename` w skryptach, aby dynamicznie przetwarzać nazwy plików.
-- Pamiętaj, że `basename` zwraca tylko ostatni element ścieżki, więc jeśli potrzebujesz pełnej ścieżki, użyj polecenia `dirname`.
+- Używaj opcji `-s`, aby łatwo usunąć rozszerzenia plików, co może być przydatne w skryptach.
+- Możesz używać `basename` w połączeniu z innymi poleceniami, aby dynamicznie przetwarzać nazwy plików w skryptach powłoki.

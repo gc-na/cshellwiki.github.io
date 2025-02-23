@@ -1,45 +1,36 @@
-# [Hệ điều hành] C Shell (csh) sha512sum: Tính toán và xác minh mã băm SHA-512
+# [Hệ điều hành] C Shell (csh) sha512sum: Tính toán giá trị băm SHA-512
 
-## Overview
-Lệnh `sha512sum` được sử dụng để tính toán và xác minh mã băm SHA-512 cho các tệp. Mã băm SHA-512 là một chuỗi ký tự đại diện cho nội dung của tệp, giúp người dùng kiểm tra tính toàn vẹn của tệp đó.
+## Tổng quan
+Lệnh `sha512sum` được sử dụng để tính toán và kiểm tra giá trị băm SHA-512 của một tệp tin. Giá trị băm này thường được sử dụng để xác minh tính toàn vẹn của dữ liệu.
 
-## Usage
+## Cú pháp
 Cú pháp cơ bản của lệnh `sha512sum` như sau:
-
-```csh
+```
 sha512sum [options] [arguments]
 ```
 
-## Common Options
-- `-b`: Chỉ định rằng tệp đầu vào là nhị phân.
-- `-c`: Kiểm tra mã băm SHA-512 từ một tệp danh sách.
+## Các tùy chọn phổ biến
+- `-b`: Tính toán giá trị băm cho tệp nhị phân.
+- `-c`: Kiểm tra giá trị băm từ một tệp tin chứa danh sách các giá trị băm.
 - `-h`: Hiển thị thông tin trợ giúp về lệnh.
-- `--tag`: Thêm tag vào đầu ra.
 
-## Common Examples
-Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `sha512sum`:
+## Ví dụ phổ biến
+- Tính toán giá trị băm SHA-512 cho một tệp tin:
+  ```bash
+  sha512sum example.txt
+  ```
 
-1. Tính toán mã băm SHA-512 cho một tệp:
-   ```csh
-   sha512sum myfile.txt
-   ```
+- Lưu giá trị băm vào một tệp tin:
+  ```bash
+  sha512sum example.txt > example.sha512
+  ```
 
-2. Lưu mã băm vào một tệp:
-   ```csh
-   sha512sum myfile.txt > myfile.sha512
-   ```
+- Kiểm tra giá trị băm từ tệp tin chứa danh sách:
+  ```bash
+  sha512sum -c example.sha512
+  ```
 
-3. Kiểm tra mã băm từ một tệp danh sách:
-   ```csh
-   sha512sum -c myfile.sha512
-   ```
-
-4. Tính toán mã băm cho nhiều tệp cùng một lúc:
-   ```csh
-   sha512sum file1.txt file2.txt file3.txt
-   ```
-
-## Tips
-- Luôn kiểm tra mã băm của tệp sau khi tải xuống để đảm bảo tính toàn vẹn.
-- Sử dụng tùy chọn `-c` để tự động kiểm tra nhiều tệp băm từ một tệp danh sách.
-- Lưu trữ mã băm ở nơi an toàn để có thể tham chiếu lại khi cần thiết.
+## Mẹo
+- Luôn lưu giá trị băm vào một tệp tin để dễ dàng kiểm tra sau này.
+- Sử dụng tùy chọn `-b` khi làm việc với tệp nhị phân để đảm bảo tính chính xác.
+- Kiểm tra giá trị băm thường xuyên để bảo vệ dữ liệu khỏi sự thay đổi không mong muốn.

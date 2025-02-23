@@ -1,44 +1,45 @@
 # [Linux] C Shell (csh) echo Kullanımı: Metin yazdırma
 
 ## Genel Bakış
-`echo` komutu, terminalde metin veya değişken değerlerini yazdırmak için kullanılır. Bu komut, kullanıcıya bilgi vermek ya da betiklerde çıktı oluşturmak için oldukça faydalıdır.
+`echo` komutu, terminalde metin veya değişken değerlerini yazdırmak için kullanılır. Kullanıcıların çıktıyı görmesini sağlamak amacıyla basit bir şekilde bilgi vermek için idealdir.
 
 ## Kullanım
 Temel sözdizimi şu şekildedir:
-```csh
+
+```
 echo [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-n`: Yeni bir satıra geçmeden metni yazdırır.
+- `-n`: Sonunda yeni bir satır eklemeden yazdırır.
 - `-e`: Özel karakterlerin (örneğin, `\n` yeni satır, `\t` sekme) işlenmesini sağlar.
-- `-E`: Özel karakterlerin işlenmesini devre dışı bırakır (bu genellikle varsayılandır).
+- `-E`: Özel karakterlerin işlenmesini devre dışı bırakır (bu, varsayılan davranıştır).
 
 ## Yaygın Örnekler
 Aşağıda `echo` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. Basit bir metin yazdırma:
-   ```csh
-   echo "Merhaba, dünya!"
-   ```
+### Basit Metin Yazdırma
+```csh
+echo "Merhaba, Dünya!"
+```
 
-2. Değişken değerini yazdırma:
-   ```csh
-   set isim = "Ali"
-   echo "Benim adım $isim."
-   ```
+### Değişken Değeri Yazdırma
+```csh
+set isim = "Ali"
+echo "Merhaba, $isim!"
+```
 
-3. Yeni satıra geçmeden yazdırma:
-   ```csh
-   echo -n "Bu metin yeni satıra geçmeyecek."
-   ```
+### Yeni Satır Olmadan Yazdırma
+```csh
+echo -n "Bu bir satır."
+```
 
-4. Özel karakterlerle yazdırma:
-   ```csh
-   echo -e "Birinci satır\nİkinci satır"
-   ```
+### Özel Karakterlerle Yazdırma
+```csh
+echo -e "Birinci satır\nİkinci satır"
+```
 
 ## İpuçları
-- `echo` komutunu kullanırken, metin içinde özel karakterler kullanıyorsanız `-e` seçeneğini eklemeyi unutmayın.
-- Değişkenleri yazdırmak için `$` işaretini kullanmayı ihmal etmeyin.
-- Metinlerinizi daha okunabilir hale getirmek için uygun boşluklar ve yeni satırlar ekleyin.
+- `echo` komutunu kullanırken, metin içinde boşluk varsa tırnak işareti kullanmayı unutmayın.
+- Değişkenlerin değerlerini yazdırmak için `$` işaretini kullanmayı ihmal etmeyin.
+- Çıktıyı dosyaya yönlendirmek için `>` operatörünü kullanabilirsiniz. Örneğin: `echo "Bu bir dosya." > dosya.txt`.

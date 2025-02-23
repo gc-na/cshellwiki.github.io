@@ -1,52 +1,51 @@
 # [Linux] C Shell (csh) cal Verwendung: Zeigt den Kalender an
 
 ## Übersicht
-Der Befehl `cal` zeigt den Kalender für einen bestimmten Monat oder ein bestimmtes Jahr an. Er ist nützlich, um schnell einen Überblick über die Daten und Wochentage zu erhalten.
+Der Befehl `cal` wird verwendet, um einen Kalender im Terminal anzuzeigen. Er zeigt den aktuellen Monat oder einen bestimmten Monat und Jahr in einem leicht lesbaren Format an.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```
+```csh
 cal [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-m`: Zeigt den aktuellen Monat an.
-- `-y`: Zeigt das gesamte aktuelle Jahr an.
-- `-3`: Zeigt den aktuellen Monat sowie den vorherigen und den nächsten Monat an.
-- `-j`: Zeigt die Tage des Jahres an (Julianisches Datum).
-- `-A [n]`: Zeigt die nächsten n Monate an.
-- `-B [n]`: Zeigt die vorherigen n Monate an.
+- `-m`: Zeigt den Kalender für den aktuellen Monat an.
+- `-y`: Zeigt den Kalender für das aktuelle Jahr an.
+- `-3`: Zeigt den Kalender für den vorherigen, aktuellen und nächsten Monat an.
+- `-j`: Zeigt die Tage des Jahres an.
+- `-w`: Zeigt die Kalenderwochen an.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele zur Verwendung des `cal`-Befehls:
+Hier sind einige praktische Beispiele für die Verwendung des `cal`-Befehls:
 
 1. **Aktuellen Monat anzeigen:**
    ```csh
    cal
    ```
 
-2. **Kalender für einen bestimmten Monat und Jahr anzeigen (z.B. Mai 2023):**
+2. **Kalender für einen bestimmten Monat und Jahr anzeigen (z.B. April 2023):**
    ```csh
-   cal 05 2023
+   cal 04 2023
    ```
 
-3. **Kalender für das gesamte Jahr 2023 anzeigen:**
+3. **Kalender für das aktuelle Jahr anzeigen:**
    ```csh
-   cal -y 2023
+   cal -y
    ```
 
-4. **Aktuellen Monat sowie den vorherigen und nächsten Monat anzeigen:**
+4. **Kalender für die nächsten drei Monate anzeigen:**
    ```csh
    cal -3
    ```
 
-5. **Kalender mit Julianischem Datum anzeigen:**
+5. **Kalender mit Wochennummern anzeigen:**
    ```csh
-   cal -j
+   cal -w
    ```
 
 ## Tipps
-- Verwenden Sie die Option `-A` oder `-B`, um sich schnell einen Überblick über die Monate vor oder nach dem aktuellen Monat zu verschaffen.
-- Kombinieren Sie `cal` mit anderen Befehlen, um automatisierte Skripte zur Planung oder Erinnerung zu erstellen.
-- Nutzen Sie die Möglichkeit, spezifische Monate und Jahre anzugeben, um historische Daten schnell zu überprüfen.
+- Verwenden Sie die Option `-m`, um schnell den aktuellen Monat zu überprüfen, ohne zusätzliche Argumente eingeben zu müssen.
+- Nutzen Sie die Option `-y`, um einen schnellen Überblick über das gesamte Jahr zu erhalten, was besonders nützlich für die Planung ist.
+- Kombinieren Sie `cal` mit anderen Befehlen, um beispielsweise den Kalender in Skripten zu verwenden oder in Kombination mit `grep`, um bestimmte Daten zu finden.

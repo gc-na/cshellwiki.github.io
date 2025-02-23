@@ -1,22 +1,22 @@
-# [Linux] C Shell (csh) mv Użycie: Przenoszenie lub zmiana nazw plików
+# [Linux] C Shell (csh) mv użycie: Przenoszenie i zmiana nazw plików
 
 ## Overview
-Polecenie `mv` w C Shell (csh) służy do przenoszenia plików i katalogów oraz zmiany ich nazw. Jest to podstawowe narzędzie do zarządzania plikami w systemie Unix i Linux.
+Polecenie `mv` w C Shell (csh) służy do przenoszenia plików i katalogów oraz zmiany ich nazw. Jest to jedno z podstawowych narzędzi do zarządzania plikami w systemie Unix i Linux.
 
 ## Usage
 Podstawowa składnia polecenia `mv` jest następująca:
 
-```csh
+```
 mv [opcje] [argumenty]
 ```
 
 ## Common Options
 - `-i`: Pyta o potwierdzenie przed nadpisaniem istniejącego pliku.
-- `-u`: Przenosi plik tylko wtedy, gdy źródło jest nowsze od celu lub gdy cel nie istnieje.
+- `-u`: Przenosi plik tylko wtedy, gdy źródło jest nowsze niż cel lub cel nie istnieje.
 - `-v`: Wyświetla szczegóły operacji przenoszenia.
 
 ## Common Examples
-1. **Przeniesienie pliku do innego katalogu:**
+1. **Przenoszenie pliku do innego katalogu:**
    ```csh
    mv dokument.txt /home/użytkownik/dokumenty/
    ```
@@ -26,22 +26,22 @@ mv [opcje] [argumenty]
    mv stary_nazwa.txt nowy_nazwa.txt
    ```
 
-3. **Przeniesienie wielu plików do katalogu:**
+3. **Przenoszenie wielu plików do katalogu:**
    ```csh
    mv plik1.txt plik2.txt /home/użytkownik/dokumenty/
    ```
 
-4. **Przeniesienie pliku z potwierdzeniem:**
+4. **Przenoszenie pliku z potwierdzeniem:**
    ```csh
    mv -i dokument.txt /home/użytkownik/dokumenty/
    ```
 
-5. **Przeniesienie pliku, jeśli jest nowszy:**
+5. **Przenoszenie pliku tylko jeśli jest nowszy:**
    ```csh
    mv -u dokument.txt /home/użytkownik/dokumenty/
    ```
 
 ## Tips
-- Zawsze używaj opcji `-i`, aby uniknąć przypadkowego nadpisania plików.
-- Sprawdzaj, czy plik docelowy już istnieje, aby uniknąć utraty danych.
-- Używaj opcji `-v`, aby śledzić, co się dzieje podczas przenoszenia plików.
+- Zawsze używaj opcji `-i`, jeśli nie jesteś pewien, czy chcesz nadpisać istniejące pliki.
+- Używaj opcji `-v`, aby śledzić, co dokładnie robi polecenie `mv`, co może być pomocne w przypadku przenoszenia wielu plików.
+- Przed przeniesieniem plików do nowego katalogu, upewnij się, że masz odpowiednie uprawnienia do zapisu w tym katalogu.

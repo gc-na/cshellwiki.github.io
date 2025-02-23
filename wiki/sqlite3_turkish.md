@@ -1,49 +1,50 @@
-# [Linux] C Shell (csh) sqlite3 Kullanımı: Veritabanı yönetimi için bir araç
+# [Linux] C Shell (csh) sqlite3 Kullanımı: SQLite veritabanı ile etkileşim
 
 ## Genel Bakış
-`sqlite3` komutu, SQLite veritabanı dosyaları ile etkileşimde bulunmak için kullanılan bir komuttur. Bu komut, veritabanı oluşturma, sorgulama yapma, güncelleme ve silme işlemleri gibi birçok işlevi yerine getirir.
+`sqlite3` komutu, SQLite veritabanı dosyalarıyla etkileşimde bulunmak için kullanılan bir komuttur. Bu komut, veritabanı oluşturma, sorgulama yapma ve verileri yönetme gibi işlemleri gerçekleştirmenizi sağlar.
 
 ## Kullanım
-Temel sözdizimi şu şekildedir:
-```bash
+Temel sözdizimi aşağıdaki gibidir:
+
+```csh
 sqlite3 [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-help`: Yardım bilgilerini görüntüler.
-- `-version`: SQLite sürümünü gösterir.
 - `-init <dosya>`: Başlangıçta çalıştırılacak SQL komutlarını içeren bir dosya belirtir.
-- `-batch`: Komut dosyası modunda çalışır, etkileşimli girişi devre dışı bırakır.
+- `-batch`: Komut satırı etkileşimini devre dışı bırakır ve sonuçları doğrudan çıktıya yazar.
+- `-header`: Sorgu sonuçlarında sütun başlıklarını gösterir.
+- `-version`: SQLite sürümünü gösterir.
 
 ## Yaygın Örnekler
-Aşağıda `sqlite3` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+Aşağıda `sqlite3` komutunun bazı pratik örnekleri bulunmaktadır:
 
-### 1. Yeni bir veritabanı oluşturma
-```bash
-sqlite3 yeni_veritabani.db
-```
+1. Yeni bir veritabanı oluşturma:
+   ```csh
+   sqlite3 mydatabase.db
+   ```
 
-### 2. Var olan bir veritabanında tablo oluşturma
-```bash
-sqlite3 varolan_veritabani.db "CREATE TABLE kullanicilar (id INTEGER PRIMARY KEY, isim TEXT);"
-```
+2. Bir tablo oluşturma:
+   ```csh
+   sqlite3 mydatabase.db "CREATE TABLE users (id INTEGER PRIMARY KEY, name TEXT);"
+   ```
 
-### 3. Tabloya veri ekleme
-```bash
-sqlite3 varolan_veritabani.db "INSERT INTO kullanicilar (isim) VALUES ('Ahmet');"
-```
+3. Veritabanına veri ekleme:
+   ```csh
+   sqlite3 mydatabase.db "INSERT INTO users (name) VALUES ('Ali');"
+   ```
 
-### 4. Verileri sorgulama
-```bash
-sqlite3 varolan_veritabani.db "SELECT * FROM kullanicilar;"
-```
+4. Verileri sorgulama:
+   ```csh
+   sqlite3 mydatabase.db "SELECT * FROM users;"
+   ```
 
-### 5. Veritabanını bir dosyadan başlatma
-```bash
-sqlite3 -init başlangıç.sql varolan_veritabani.db
-```
+5. Veritabanını bir dosyadan başlatma:
+   ```csh
+   sqlite3 -init init.sql mydatabase.db
+   ```
 
 ## İpuçları
-- Veritabanı dosyalarınızı düzenli tutun ve yedeklemelerini alın.
-- SQL komutlarını bir dosyaya yazarak `sqlite3` ile bu dosyayı çalıştırmak, karmaşık sorguları daha kolay yönetmenizi sağlar.
-- `-batch` seçeneğini kullanarak etkileşimli moddan çıkabilir ve komut dosyalarıyla çalışmayı kolaylaştırabilirsiniz.
+- Veritabanı dosyalarının yedeğini almak için dosyayı kopyalayın.
+- Sorgularınızı test etmeden önce bir test veritabanı kullanarak denemeler yapın.
+- Sık kullanılan sorguları bir dosyada saklayarak `-init` seçeneği ile hızlı bir şekilde çalıştırabilirsiniz.

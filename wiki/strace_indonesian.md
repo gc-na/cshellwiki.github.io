@@ -1,53 +1,50 @@
-# [Sistem Operasi] C Shell (csh) strace Penggunaan: Melacak sistem panggilan
+# [Sistem Operasi] C Shell (csh) strace Penggunaan: Melacak panggilan sistem
 
 ## Overview
-Perintah `strace` digunakan untuk melacak sistem panggilan dan sinyal yang diterima oleh proses yang sedang berjalan. Ini sangat berguna untuk debugging dan menganalisis bagaimana program berinteraksi dengan kernel sistem operasi.
+Perintah `strace` digunakan untuk melacak panggilan sistem dan sinyal yang diterima oleh suatu proses. Ini sangat berguna untuk debugging dan menganalisis bagaimana program berinteraksi dengan kernel.
 
 ## Usage
-Sintaks dasar dari perintah `strace` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `strace`:
 
 ```csh
 strace [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum untuk `strace` beserta penjelasannya:
-
-- `-c`: Menghitung statistik sistem panggilan.
-- `-e trace=<syscall>`: Melacak hanya sistem panggilan tertentu.
+- `-c`: Menampilkan ringkasan statistik dari panggilan sistem yang dilakukan.
+- `-e trace=<event>`: Mengatur jenis panggilan sistem yang ingin dilacak, seperti `file`, `network`, dll.
 - `-o <file>`: Menyimpan output ke dalam file yang ditentukan.
-- `-p <pid>`: Melacak proses yang sudah berjalan dengan ID proses tertentu.
-- `-f`: Mengikuti proses anak yang dibuat oleh proses yang dilacak.
+- `-p <pid>`: Melacak proses yang sedang berjalan dengan ID proses tertentu.
 
 ## Common Examples
-Berikut adalah beberapa contoh praktis penggunaan `strace`:
+Berikut adalah beberapa contoh penggunaan `strace`:
 
-1. Melacak semua sistem panggilan dari program `ls`:
+1. Melacak semua panggilan sistem dari program `ls`:
    ```csh
    strace ls
    ```
 
-2. Menghitung statistik sistem panggilan:
-   ```csh
-   strace -c ls
-   ```
-
-3. Melacak hanya sistem panggilan `open`:
-   ```csh
-   strace -e trace=open ls
-   ```
-
-4. Menyimpan output ke dalam file:
+2. Menyimpan output `strace` ke dalam file:
    ```csh
    strace -o output.txt ls
    ```
 
-5. Melacak proses yang sudah berjalan dengan ID 1234:
+3. Melacak hanya panggilan sistem yang berkaitan dengan file:
+   ```csh
+   strace -e trace=file ls
+   ```
+
+4. Melacak proses yang sudah berjalan dengan ID 1234:
    ```csh
    strace -p 1234
    ```
 
+5. Menampilkan ringkasan statistik dari panggilan sistem:
+   ```csh
+   strace -c ls
+   ```
+
 ## Tips
-- Gunakan opsi `-c` untuk mendapatkan ringkasan statistik setelah menjalankan perintah, ini membantu dalam analisis cepat.
-- Jika Anda hanya tertarik pada sistem panggilan tertentu, gunakan opsi `-e trace=<syscall>` untuk mempersempit fokus.
-- Simpan output ke file dengan opsi `-o` jika Anda perlu menganalisis hasilnya lebih lanjut atau membagikannya dengan orang lain.
+- Gunakan opsi `-o` untuk menyimpan hasil ke dalam file agar lebih mudah dianalisis.
+- Kombinasikan opsi `-e` untuk fokus pada jenis panggilan sistem tertentu yang relevan dengan masalah yang Anda hadapi.
+- Pastikan Anda memiliki izin yang diperlukan untuk melacak proses, terutama untuk proses yang dijalankan oleh pengguna lain.

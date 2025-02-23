@@ -1,46 +1,46 @@
-# [Sistem Operasi] C Shell (csh) chage <Mengelola Kebijakan Kata Sandi>: Mengubah kebijakan kata sandi pengguna
+# [Sistem Operasi] C Shell (csh) chage <Mengelola masa berlaku kata sandi>: Mengatur kebijakan masa berlaku kata sandi pengguna
 
 ## Overview
-Perintah `chage` digunakan untuk mengelola kebijakan kata sandi pengguna di sistem berbasis Unix. Dengan `chage`, administrator dapat mengatur masa berlaku kata sandi, mengatur pengingat untuk perubahan kata sandi, dan mengelola kebijakan keamanan lainnya terkait kata sandi.
+Perintah `chage` digunakan untuk mengelola kebijakan masa berlaku kata sandi untuk pengguna di sistem Unix/Linux. Dengan `chage`, administrator dapat mengatur kapan kata sandi harus diubah dan berapa lama kata sandi dapat digunakan sebelum kedaluwarsa.
 
 ## Usage
-Berikut adalah sintaks dasar untuk perintah `chage`:
+Berikut adalah sintaks dasar dari perintah `chage`:
 
-```
+```bash
 chage [options] [arguments]
 ```
 
 ## Common Options
-- `-l, --list`: Menampilkan informasi tentang kebijakan kata sandi untuk pengguna tertentu.
-- `-m, --mindays`: Menentukan jumlah hari minimum antara perubahan kata sandi.
-- `-M, --maxdays`: Menentukan jumlah hari maksimum sebelum kata sandi harus diubah.
-- `-I, --inactive`: Menentukan jumlah hari setelah kata sandi kedaluwarsa sebelum akun dinonaktifkan.
-- `-E, --expire`: Menentukan tanggal kedaluwarsa akun pengguna.
+- `-l`: Menampilkan informasi masa berlaku kata sandi untuk pengguna tertentu.
+- `-m`: Menentukan jumlah hari minimum antara perubahan kata sandi.
+- `-M`: Menentukan jumlah hari maksimum kata sandi dapat digunakan sebelum kedaluwarsa.
+- `-I`: Menentukan jumlah hari setelah kedaluwarsa sebelum akun dinonaktifkan.
+- `-E`: Menentukan tanggal kedaluwarsa akun pengguna.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan perintah `chage`:
+Berikut adalah beberapa contoh penggunaan `chage`:
 
-1. Menampilkan informasi kebijakan kata sandi untuk pengguna `user1`:
+1. Menampilkan informasi masa berlaku kata sandi untuk pengguna `john`:
    ```bash
-   chage -l user1
+   chage -l john
    ```
 
-2. Mengatur jumlah hari maksimum sebelum kata sandi harus diubah menjadi 90 hari untuk pengguna `user2`:
+2. Mengatur masa berlaku maksimum kata sandi menjadi 90 hari untuk pengguna `alice`:
    ```bash
-   chage -M 90 user2
+   chage -M 90 alice
    ```
 
-3. Mengatur jumlah hari minimum antara perubahan kata sandi menjadi 7 hari untuk pengguna `user3`:
+3. Mengatur masa berlaku minimum kata sandi menjadi 7 hari untuk pengguna `bob`:
    ```bash
-   chage -m 7 user3
+   chage -m 7 bob
    ```
 
-4. Mengatur tanggal kedaluwarsa akun pengguna `user4` menjadi 2024-12-31:
+4. Mengatur tanggal kedaluwarsa akun pengguna `charlie` menjadi 2024-12-31:
    ```bash
-   chage -E 2024-12-31 user4
+   chage -E 2024-12-31 charlie
    ```
 
 ## Tips
-- Selalu periksa kebijakan kata sandi yang ada sebelum membuat perubahan untuk memastikan bahwa kebijakan baru sesuai dengan kebutuhan keamanan.
-- Gunakan opsi `-l` untuk meninjau pengaturan sebelum dan sesudah melakukan perubahan.
-- Pertimbangkan untuk mengatur pengingat untuk pengguna agar mereka tahu kapan mereka perlu mengubah kata sandi mereka.
+- Selalu periksa kebijakan keamanan perusahaan Anda sebelum mengatur masa berlaku kata sandi.
+- Gunakan opsi `-l` secara berkala untuk memantau status kata sandi pengguna.
+- Pastikan untuk memberi tahu pengguna tentang perubahan kebijakan kata sandi agar mereka dapat mempersiapkan diri untuk mengubah kata sandi mereka.

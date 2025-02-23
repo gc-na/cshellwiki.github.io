@@ -1,28 +1,28 @@
-# [Linux] C Shell (csh) mkfifo Kullanımı: İletişim için özel dosyalar oluşturma
+# [Linux] C Shell (csh) mkfifo Kullanımı: İletişim için FIFO dosyaları oluşturma
 
-## Overview
-`mkfifo` komutu, adlandırılmış bir boru (FIFO - First In First Out) oluşturmak için kullanılır. Bu, birden fazla işlem arasında veri iletimi sağlamak için kullanılan özel bir dosya türüdür.
+## Genel Bakış
+`mkfifo` komutu, adından da anlaşılacağı gibi, "First In, First Out" (FIFO) dosyaları oluşturmak için kullanılır. FIFO dosyaları, birden fazla süreç arasında veri iletimi sağlamak için kullanılır ve bu dosyalar, verilerin sırayla okunup yazılmasını garanti eder.
 
-## Usage
+## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
 
-```csh
-mkfifo [options] [arguments]
+```
+mkfifo [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `-m` : Oluşturulan FIFO dosyasının izinlerini belirtmek için kullanılır.
-- `-Z` : SELinux güvenlik bağlamı ayarlamak için kullanılır.
+## Yaygın Seçenekler
+- `-m, --mode=MODE`: Oluşturulan FIFO dosyasının izinlerini belirler.
+- `-Z, --context=CONTEXT`: Oluşturulan FIFO dosyasına SELinux bağlamı atar.
 
-## Common Examples
-Aşağıda `mkfifo` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+## Yaygın Örnekler
+Aşağıda `mkfifo` komutunun bazı pratik örnekleri bulunmaktadır:
 
 1. Basit bir FIFO dosyası oluşturma:
    ```csh
    mkfifo myfifo
    ```
 
-2. Belirli izinlerle FIFO dosyası oluşturma:
+2. Belirli bir izinle FIFO dosyası oluşturma:
    ```csh
    mkfifo -m 644 myfifo
    ```
@@ -32,12 +32,12 @@ Aşağıda `mkfifo` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
    mkfifo fifo1 fifo2 fifo3
    ```
 
-4. SELinux güvenlik bağlamı ile FIFO dosyası oluşturma:
+4. SELinux bağlamı ile FIFO dosyası oluşturma:
    ```csh
    mkfifo -Z myfifo
    ```
 
-## Tips
-- FIFO dosyalarını kullanırken, bir işlem veriyi yazmadan önce diğerinin okuma işlemini başlatmış olması gerektiğini unutmayın.
-- FIFO dosyalarını temizlemek için `rm` komutunu kullanabilirsiniz.
-- FIFO dosyaları, özellikle çoklu işlem iletişimi gerektiren durumlarda oldukça faydalıdır.
+## İpuçları
+- FIFO dosyalarını kullanmadan önce, bu dosyaların hangi süreçler arasında veri iletimi yapacağını planlayın.
+- FIFO dosyalarını silmek için `rm` komutunu kullanabilirsiniz.
+- FIFO dosyaları, bir süreç yazma işlemi gerçekleştirmeden önce diğer bir sürecin okuma işlemi gerçekleştirmesini bekler, bu nedenle süreçlerin sırasını iyi ayarlayın.

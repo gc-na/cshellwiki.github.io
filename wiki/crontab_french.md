@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) crontab : Planifier des tâches automatisées
+# [Linux] C Shell (csh) crontab : Gérer les tâches planifiées
 
 ## Overview
-La commande `crontab` permet de planifier des tâches automatisées dans le système d'exploitation Unix/Linux. Elle permet aux utilisateurs de spécifier des commandes à exécuter à des intervalles réguliers, facilitant ainsi l'automatisation de diverses tâches.
+La commande `crontab` permet de gérer les tâches planifiées sur un système Unix. Elle permet aux utilisateurs de définir des commandes ou des scripts à exécuter à des intervalles réguliers, facilitant ainsi l'automatisation de diverses tâches.
 
 ## Usage
 La syntaxe de base de la commande `crontab` est la suivante :
@@ -13,45 +13,46 @@ crontab [options] [arguments]
 ## Common Options
 Voici quelques options courantes pour la commande `crontab` :
 
-- `-e` : Éditer le fichier crontab de l'utilisateur.
-- `-l` : Lister les tâches planifiées de l'utilisateur.
-- `-r` : Supprimer le fichier crontab de l'utilisateur.
-- `-i` : Demander une confirmation avant de supprimer le crontab.
+- `-e` : Édite le fichier crontab de l'utilisateur courant.
+- `-l` : Affiche le contenu du fichier crontab de l'utilisateur courant.
+- `-r` : Supprime le fichier crontab de l'utilisateur courant.
+- `-i` : Demande une confirmation avant de supprimer le fichier crontab.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `crontab` :
 
-1. **Éditer le crontab :**
-   Pour ouvrir l'éditeur de texte et modifier le crontab :
+1. **Éditer le crontab** :
+   Pour ouvrir le fichier crontab dans un éditeur :
    ```bash
    crontab -e
    ```
 
-2. **Lister les tâches planifiées :**
-   Pour afficher toutes les tâches cron de l'utilisateur :
+2. **Lister les tâches planifiées** :
+   Pour afficher les tâches planifiées de l'utilisateur :
    ```bash
    crontab -l
    ```
 
-3. **Supprimer le crontab :**
-   Pour supprimer toutes les tâches cron de l'utilisateur avec confirmation :
+3. **Supprimer le crontab** :
+   Pour supprimer toutes les tâches planifiées :
    ```bash
-   crontab -r -i
+   crontab -r
    ```
 
-4. **Planifier une tâche :**
-   Pour exécuter un script tous les jours à 2h du matin, ajoutez la ligne suivante dans le crontab :
+4. **Ajouter une tâche planifiée** :
+   Pour exécuter un script tous les jours à 2h du matin, ajoutez la ligne suivante dans le fichier crontab :
    ```bash
    0 2 * * * /chemin/vers/script.sh
    ```
 
-5. **Planifier une tâche chaque lundi à 5h :**
-   Pour exécuter une commande tous les lundis à 5h du matin :
+5. **Exécuter une commande chaque minute** :
+   Pour exécuter une commande toutes les minutes :
    ```bash
-   0 5 * * 1 /chemin/vers/commande
+   * * * * * /chemin/vers/commande
    ```
 
 ## Tips
-- Assurez-vous que les chemins des scripts ou des commandes sont absolus pour éviter des erreurs d'exécution.
-- Vérifiez régulièrement votre crontab pour vous assurer que les tâches sont toujours nécessaires et fonctionnent correctement.
-- Utilisez des fichiers de log pour suivre l'exécution de vos tâches cron, ce qui peut aider à diagnostiquer des problèmes.
+- **Vérifiez les logs** : Consultez les logs système pour vérifier si vos tâches s'exécutent correctement.
+- **Utilisez des chemins absolus** : Lorsque vous spécifiez des scripts ou des commandes, utilisez toujours des chemins absolus pour éviter les problèmes de chemin.
+- **Testez vos commandes** : Avant de les ajouter au crontab, testez vos commandes dans le terminal pour vous assurer qu'elles fonctionnent comme prévu.
+- **Planifiez judicieusement** : Évitez de planifier trop de tâches à la fois, car cela peut surcharger le système.

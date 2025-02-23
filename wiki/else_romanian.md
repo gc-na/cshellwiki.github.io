@@ -1,53 +1,53 @@
-# [Unix] C Shell (csh) else: Comandă de control a fluxului
+# [Unix] C Shell (csh) else: Comandă de control al fluxului
 
 ## Overview
-Comanda `else` în C Shell (csh) este utilizată pentru a specifica o ramură alternativă într-o structură de control `if`. Aceasta permite executarea unui bloc de cod atunci când condiția specificată în instrucțiunea `if` nu este îndeplinită.
+Comanda `else` în C Shell (csh) este utilizată în structurile de control pentru a specifica o acțiune alternativă care trebuie executată atunci când o condiție anterioară este falsă. Este folosită împreună cu comanda `if` pentru a permite ramificarea logică în scripturi.
 
 ## Usage
 Sintaxa de bază a comenzii `else` este următoarea:
-
-```
+```csh
 if (condiție) then
-    # cod de executat dacă condiția este adevărată
+    # acțiuni dacă condiția este adevărată
 else
-    # cod de executat dacă condiția este falsă
+    # acțiuni dacă condiția este falsă
 endif
 ```
 
 ## Common Options
-Comanda `else` nu are opțiuni proprii, dar este utilizată împreună cu instrucțiunea `if`, care poate include diverse condiții.
+Comanda `else` nu are opțiuni proprii, deoarece este parte din structura de control `if`. Totuși, este important să fie utilizată corect în contextul `if`.
 
 ## Common Examples
+Iată câteva exemple practice care ilustrează utilizarea comenzii `else`:
 
 ### Exemplul 1: Verificarea existenței unui fișier
 ```csh
-if (-e nume_fisier.txt) then
+if (-e "fisier.txt") then
     echo "Fișierul există."
 else
     echo "Fișierul nu există."
 endif
 ```
 
-### Exemplul 2: Verificarea unei variabile
+### Exemplul 2: Verificarea unui număr
 ```csh
-set var = 10
-if ($var > 5) then
-    echo "Variabila este mai mare decât 5."
+set numar = 10
+if ($numar > 5) then
+    echo "Numărul este mai mare decât 5."
 else
-    echo "Variabila este 5 sau mai mică."
+    echo "Numărul nu este mai mare decât 5."
 endif
 ```
 
-### Exemplul 3: Verificarea unui director
+### Exemplul 3: Verificarea unei variabile de mediu
 ```csh
-if (-d /cale/catre/director) then
-    echo "Directorul există."
+if ($?VARIABILA) then
+    echo "Variabila de mediu VARIABILA este setată."
 else
-    echo "Directorul nu există."
+    echo "Variabila de mediu VARIABILA nu este setată."
 endif
 ```
 
 ## Tips
-- Asigurați-vă că utilizați `endif` pentru a încheia blocul de cod `if`/`else`.
-- Puteți combina `else` cu `else if` pentru a verifica mai multe condiții.
-- Folosiți paranteze pentru a clarifica condițiile complexe în instrucțiunile `if`.
+- Asigurați-vă că utilizați `endif` pentru a încheia structura `if`-`else`.
+- Folosiți paranteze pentru a clarifica condițiile complexe.
+- Testați întotdeauna scripturile pentru a verifica dacă ramificările funcționează conform așteptărilor.

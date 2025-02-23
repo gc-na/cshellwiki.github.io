@@ -1,54 +1,51 @@
-# [Linux] C Shell (csh) dig Kullanımı: DNS sorgulama aracı
+# [Linux] C Shell (csh) dig Kullanımı: DNS sorguları yapmak için kullanılan bir araç
 
 ## Genel Bakış
-`dig` (Domain Information Groper), DNS (Domain Name System) sorguları yapmak için kullanılan bir komut satırı aracıdır. Bu araç, belirli bir alan adı hakkında bilgi almak için kullanılır ve DNS sunucularıyla etkileşimde bulunarak alan adı ile ilgili çeşitli verileri döndürür.
+`dig` (Domain Information Groper), DNS (Alan Adı Sistemi) sorguları yapmak için kullanılan bir komut satırı aracıdır. Bu komut, bir alan adı hakkında bilgi almak için DNS sunucularına sorgular gönderir ve yanıtları kullanıcıya gösterir. `dig`, DNS yapılandırmalarını kontrol etmek ve alan adı çözümleme işlemlerini analiz etmek için yaygın olarak kullanılır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-```
+
+```csh
 dig [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `@sunucu`: Belirtilen DNS sunucusuna sorgu gönderir.
-- `-t tür`: Sorgulamak istediğiniz kayıt türünü belirtir (örneğin, A, MX, CNAME).
-- `+short`: Sonuçları daha kısa ve öz bir formatta gösterir.
-- `+trace`: Sorgunun nasıl işlendiğini adım adım gösterir.
+- `@sunucu`: Sorgunun gönderileceği DNS sunucusunu belirtir.
+- `-t tür`: Sorgulamak istediğiniz kayıt türünü belirtir (örneğin, A, MX, TXT).
+- `+short`: Yanıtı daha kısa ve öz bir formatta gösterir.
+- `+trace`: Sorgunun nasıl çözüldüğünü adım adım gösterir.
 
 ## Yaygın Örnekler
-Aşağıda `dig` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+Aşağıda `dig` komutunun bazı pratik örnekleri verilmiştir:
 
-### 1. Basit Alan Adı Sorgusu
-```
+### 1. Basit bir A kaydı sorgulama
+```csh
 dig example.com
 ```
-Bu komut, `example.com` alan adı için varsayılan DNS kayıtlarını sorgular.
 
-### 2. Belirli Bir DNS Sunucusuna Sorgu Göndermek
-```
+### 2. Belirli bir DNS sunucusuna sorgu gönderme
+```csh
 dig @8.8.8.8 example.com
 ```
-Bu komut, Google'ın DNS sunucusu olan `8.8.8.8` üzerinden `example.com` için sorgu yapar.
 
-### 3. MX Kayıtlarını Sorgulamak
-```
+### 3. MX kayıtlarını sorgulama
+```csh
 dig -t MX example.com
 ```
-Bu komut, `example.com` alan adı için e-posta sunucularını gösteren MX kayıtlarını sorgular.
 
-### 4. Kısa Formatda Sonuç Alma
-```
+### 4. Kısa yanıt almak için
+```csh
 dig +short example.com
 ```
-Bu komut, `example.com` için daha kısa ve öz bir sonuç döndürür.
 
-### 5. Sorgu İzleme
-```
+### 5. Sorgu izleme
+```csh
 dig +trace example.com
 ```
-Bu komut, `example.com` alan adı için DNS sorgusunun nasıl işlendiğini adım adım gösterir.
 
 ## İpuçları
-- Sık kullanılan DNS sunucularını (örneğin, Google DNS veya Cloudflare DNS) kullanarak sorgularınızı hızlandırabilirsiniz.
-- Sorgu sonuçlarını analiz etmek için `+short` seçeneğini kullanarak daha okunabilir hale getirin.
-- DNS kayıt türlerini iyi bilmek, doğru sorguları yapmanıza yardımcı olur; A, AAAA, MX, CNAME gibi kayıt türlerini öğrenin.
+- `dig` komutunu kullanırken, sorgularınızı belirli bir DNS sunucusuna yönlendirmek için `@sunucu` seçeneğini kullanmayı unutmayın.
+- Yanıtları daha anlaşılır hale getirmek için `+short` seçeneğini kullanabilirsiniz.
+- DNS sorunlarını teşhis etmek için `+trace` seçeneği oldukça faydalıdır; bu, sorgunun hangi adımlarla çözüldüğünü gösterir.
+- Sıklıkla kullandığınız alan adları için bir alias oluşturmak, komutları daha hızlı çalıştırmanıza yardımcı olabilir.

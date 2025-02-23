@@ -1,12 +1,12 @@
 # [Linux] C Shell (csh) mkdir Uso: Crea directory nel file system
 
 ## Overview
-Il comando `mkdir` viene utilizzato per creare nuove directory nel file system. È uno strumento fondamentale per l'organizzazione dei file e delle cartelle.
+Il comando `mkdir` è utilizzato per creare nuove directory nel file system. È uno strumento fondamentale per organizzare file e cartelle in modo strutturato.
 
 ## Usage
-La sintassi di base del comando `mkdir` è la seguente:
+La sintassi di base del comando è la seguente:
 
-```csh
+```
 mkdir [opzioni] [argomenti]
 ```
 
@@ -16,7 +16,7 @@ mkdir [opzioni] [argomenti]
 - `-v`: Mostra un messaggio per ogni directory creata.
 
 ## Common Examples
-Ecco alcuni esempi pratici dell'uso del comando `mkdir`:
+Ecco alcuni esempi pratici di utilizzo del comando `mkdir`:
 
 1. Creare una singola directory:
    ```csh
@@ -28,9 +28,9 @@ Ecco alcuni esempi pratici dell'uso del comando `mkdir`:
    mkdir cartella1 cartella2 cartella3
    ```
 
-3. Creare una directory e tutte le directory genitore necessarie:
+3. Creare una directory con directory genitore:
    ```csh
-   mkdir -p /percorso/verso/nueva_cartella
+   mkdir -p genitore/figlio
    ```
 
 4. Creare una directory con permessi specifici:
@@ -38,12 +38,12 @@ Ecco alcuni esempi pratici dell'uso del comando `mkdir`:
    mkdir -m 755 cartella_pubblica
    ```
 
-5. Creare una directory e visualizzare un messaggio di conferma:
+5. Creare una directory e visualizzare un messaggio:
    ```csh
-   mkdir -v cartella_di_test
+   mkdir -v cartella_visibile
    ```
 
 ## Tips
-- Utilizza l'opzione `-p` quando non sei sicuro se le directory genitore esistono già, per evitare errori.
-- Controlla i permessi delle directory create per garantire che siano appropriati per l'uso previsto.
-- Usa l'opzione `-v` per confermare che le directory siano state create correttamente, specialmente quando crei più directory in una sola volta.
+- Utilizza l'opzione `-p` per evitare errori quando crei directory annidate.
+- Controlla sempre i permessi delle directory create, specialmente se stai lavorando in ambienti condivisi.
+- Usa `mkdir -v` per confermare che le directory siano state create correttamente.

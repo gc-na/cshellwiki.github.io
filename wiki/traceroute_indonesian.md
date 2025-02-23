@@ -1,7 +1,7 @@
-# [Sistem Operasi] C Shell (csh) traceroute Penggunaan: Melacak rute jaringan
+# [Sistem Operasi] C Shell (csh) traceroute: Menentukan jalur jaringan
 
 ## Overview
-Perintah `traceroute` digunakan untuk melacak jalur yang dilalui paket data menuju alamat IP atau domain tertentu. Dengan menggunakan perintah ini, pengguna dapat melihat setiap hop (lompatan) yang dilalui oleh paket, serta waktu yang dibutuhkan untuk mencapai setiap hop tersebut. Ini sangat berguna untuk mendiagnosis masalah jaringan.
+Perintah `traceroute` digunakan untuk melacak rute yang dilalui paket data menuju host tertentu di jaringan. Dengan menggunakan `traceroute`, pengguna dapat melihat setiap hop (lompatan) yang dilalui paket, termasuk waktu yang dibutuhkan untuk mencapai setiap hop tersebut.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `traceroute`:
@@ -11,37 +11,37 @@ traceroute [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang dapat digunakan dengan `traceroute`:
+Beberapa opsi umum yang dapat digunakan dengan `traceroute` adalah:
 
 - `-m <max_ttl>`: Menentukan nilai maksimum Time To Live (TTL) untuk paket.
-- `-n`: Menghindari resolusi nama host, menampilkan alamat IP saja.
-- `-p <port>`: Menentukan port yang digunakan untuk pengujian.
-- `-q <nqueries>`: Menentukan jumlah kueri yang akan dikirim ke setiap hop.
+- `-n`: Menghindari resolusi nama host, hanya menampilkan alamat IP.
+- `-w <timeout>`: Menentukan waktu tunggu (timeout) untuk setiap respons.
+- `-q <nqueries>`: Menentukan jumlah permintaan yang dikirim ke setiap hop.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `traceroute`:
 
-1. Melacak rute ke domain tertentu:
+1. Melacak rute ke situs web:
    ```csh
-   traceroute example.com
+   traceroute www.example.com
    ```
 
-2. Melacak rute ke alamat IP dengan batas TTL maksimum:
+2. Melacak rute dengan batas TTL maksimum:
    ```csh
-   traceroute -m 20 192.168.1.1
+   traceroute -m 20 www.example.com
    ```
 
-3. Menggunakan opsi untuk menghindari resolusi nama host:
+3. Menghindari resolusi nama host:
    ```csh
-   traceroute -n example.com
+   traceroute -n www.example.com
    ```
 
-4. Menggunakan port tertentu untuk pengujian:
+4. Mengatur waktu tunggu untuk respons:
    ```csh
-   traceroute -p 80 example.com
+   traceroute -w 2 www.example.com
    ```
 
 ## Tips
-- Gunakan opsi `-n` jika Anda ingin mempercepat proses pelacakan, terutama pada jaringan yang lambat.
-- Perhatikan bahwa beberapa router mungkin tidak merespons permintaan traceroute, sehingga beberapa hop mungkin tidak muncul dalam hasil.
-- Gunakan `traceroute` secara berkala untuk memantau kesehatan jaringan Anda dan mendeteksi masalah yang mungkin terjadi.
+- Gunakan opsi `-n` jika Anda ingin mempercepat proses pelacakan dengan menghindari resolusi nama host.
+- Perhatikan bahwa beberapa firewall mungkin memblokir paket `traceroute`, sehingga hasilnya bisa tidak lengkap.
+- Jika Anda mengalami masalah dalam melacak rute, coba gunakan opsi `-m` untuk mengatur TTL yang lebih tinggi.

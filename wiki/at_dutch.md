@@ -1,55 +1,47 @@
-# [Linux] C Shell (csh) at gebruik: Plan taken voor uitvoering
+# [Linux] C Shell (csh) at: Tijdstippen voor het uitvoeren van opdrachten plannen
 
-## Overzicht
-De `at`-opdracht in C Shell (csh) wordt gebruikt om taken te plannen die op een specifiek tijdstip moeten worden uitgevoerd. Dit is handig voor het automatiseren van taken zonder dat je handmatig hoeft in te grijpen.
+## Overview
+Het `at` commando in C Shell (csh) wordt gebruikt om opdrachten op een specifieke tijd in de toekomst uit te voeren. Dit is handig voor het automatiseren van taken die op een later tijdstip moeten worden uitgevoerd.
 
-## Gebruik
-De basis syntaxis van de `at`-opdracht is als volgt:
+## Usage
+De basis syntaxis van het `at` commando is als volgt:
 
+```csh
+at [opties] [tijd]
 ```
-at [opties] [argumenten]
-```
 
-## Veelvoorkomende opties
-- `-f` : Specificeer een bestand dat de opdrachten bevat die moeten worden uitgevoerd.
-- `-l` : Lijst de geplande taken voor de huidige gebruiker.
-- `-d` : Verwijder een geplande taak.
-- `-m` : Stuur een e-mail naar de gebruiker na uitvoering van de taak.
+## Common Options
+Hier zijn enkele veelvoorkomende opties voor het `at` commando:
 
-## Veelvoorkomende voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van de `at`-opdracht:
+- `-f bestand`: Voer de opdrachten uit die in het opgegeven bestand staan.
+- `-m`: Stuur een e-mail naar de gebruiker wanneer de taak is voltooid.
+- `-q wachtrij`: Specificeer de wachtrij voor de taak (bijvoorbeeld 'a', 'b', 'c').
+- `-V`: Toon de versie van het `at` commando.
 
-1. **Een eenvoudige taak plannen**:
-   Plan een taak om een script uit te voeren om 15:00 uur.
-   ```bash
-   echo "sh /pad/naar/script.sh" | at 15:00
+## Common Examples
+Hier zijn enkele praktische voorbeelden van het gebruik van het `at` commando:
+
+1. **Een opdracht plannen voor 5 minuten later:**
+   ```csh
+   echo "echo 'Hallo, wereld!'" | at now + 5 minutes
    ```
 
-2. **Een taak plannen voor morgen**:
-   Plan een taak om een bestand te kopiëren naar een andere locatie om 10:30 uur morgen.
-   ```bash
-   echo "cp /pad/naar/brondocument.txt /pad/naar/doeldocument.txt" | at 10:30 tomorrow
+2. **Een script uitvoeren om 14:00 uur:**
+   ```csh
+   at 14:00 < script.sh
    ```
 
-3. **Een taak plannen met een bestand**:
-   Gebruik een bestand met opdrachten om uit te voeren.
-   ```bash
-   at -f /pad/naar/opdrachten.txt 14:00
+3. **Een opdracht plannen voor morgen om 10:30 uur:**
+   ```csh
+   echo "backup.sh" | at 10:30 tomorrow
    ```
 
-4. **Lijst geplande taken**:
-   Bekijk alle taken die je hebt gepland.
-   ```bash
-   at -l
-   ```
-
-5. **Een taak verwijderen**:
-   Verwijder een specifieke taak met het taaknummer.
-   ```bash
-   at -d 5
+4. **Een opdracht vanuit een bestand uitvoeren:**
+   ```csh
+   at -f mijn_opdrachten.txt 15:00
    ```
 
 ## Tips
-- Zorg ervoor dat je de juiste tijdzone instelt om verwarring te voorkomen bij het plannen van taken.
-- Gebruik de `-m` optie om een bevestigingsmail te ontvangen na de uitvoering van je taak.
-- Controleer regelmatig je geplande taken met `at -l` om te zien wat er op de planning staat.
+- Zorg ervoor dat je de juiste tijdsnotatie gebruikt, zoals 'now', 'tomorrow', of specifieke tijdstippen.
+- Gebruik de `-m` optie als je een bevestiging wilt ontvangen via e-mail na het uitvoeren van de taak.
+- Controleer je geplande taken met het `atq` commando om te zien welke opdrachten nog moeten worden uitgevoerd.

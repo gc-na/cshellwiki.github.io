@@ -1,38 +1,37 @@
-# [Linux] C Shell (csh) talk Kullanımı: İki kullanıcı arasında iletişim kurma
+# [Linux] C Shell (csh) talk kullanımı: İki kullanıcı arasında iletişim kurma
 
-## Genel Bakış
-`talk` komutu, iki kullanıcı arasında gerçek zamanlı metin tabanlı iletişim sağlamak için kullanılır. Bu komut, kullanıcıların birbirleriyle doğrudan etkileşimde bulunmalarını ve mesajlaşmalarını kolaylaştırır.
+## Overview
+`talk` komutu, iki kullanıcı arasında gerçek zamanlı metin tabanlı bir iletişim sağlar. Bu komut, kullanıcıların birbirleriyle doğrudan etkileşimde bulunmalarını ve mesajlaşmalarını kolaylaştırır.
 
-## Kullanım
+## Usage
 Temel sözdizimi aşağıdaki gibidir:
+
+```csh
+talk [options] [arguments]
 ```
-talk [seçenekler] [argümanlar]
-```
 
-## Yaygın Seçenekler
-- `-a`: Kullanıcı adını belirtmeden iletişim kurar.
-- `-n`: Kullanıcı adını belirtmek için kullanılabilir.
-- `-t`: Belirli bir süre içinde cevap alınmazsa iletişimi sonlandırır.
+## Common Options
+- `-a`: Kullanıcıdan gelen mesajları otomatik olarak yanıtlar.
+- `-d`: Mesajları yalnızca belirli bir kullanıcıya gönderir.
+- `-s`: Sesli bildirimleri etkinleştirir.
 
-## Yaygın Örnekler
-İki kullanıcı arasında `talk` komutunu kullanarak iletişim kurmak için aşağıdaki örnekleri inceleyebilirsiniz:
-
-1. Kullanıcı "ali" ile iletişim kurmak için:
-   ```bash
-   talk ali
+## Common Examples
+1. Başka bir kullanıcıyla konuşmak için:
+   ```csh
+   talk kullanıcı_adı
    ```
 
-2. Belirli bir kullanıcı adı ile iletişim başlatmak için:
-   ```bash
-   talk -n ahmet
+2. Belirli bir kullanıcıya sesli bildirimle mesaj göndermek için:
+   ```csh
+   talk -s kullanıcı_adı
    ```
 
-3. İletişimi belirli bir süre sonra sonlandırmak için:
-   ```bash
-   talk -t 5 ali
+3. Otomatik yanıt vermek için:
+   ```csh
+   talk -a kullanıcı_adı
    ```
 
-## İpuçları
+## Tips
 - `talk` komutunu kullanmadan önce, karşı tarafın oturum açtığından emin olun.
-- İletişim sırasında, yazdığınız mesajların anında karşı tarafa iletileceğini unutmayın; bu nedenle dikkatli olun.
-- Eğer bir kullanıcıya ulaşamıyorsanız, `write` komutunu kullanarak ona mesaj göndermeyi deneyebilirsiniz.
+- İletişim sırasında dikkatli olun; gereksiz mesajlar göndermekten kaçının.
+- Eğer birden fazla kullanıcıyla konuşuyorsanız, her bir konuşma için ayrı bir terminal penceresi açmayı düşünün.

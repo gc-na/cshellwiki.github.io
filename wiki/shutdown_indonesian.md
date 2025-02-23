@@ -1,21 +1,21 @@
-# [Sistem Operasi] C Shell (csh) shutdown Penggunaan: Mematikan sistem
+# [Sistem Operasi] C Shell (csh) shutdown: Mematikan sistem
 
 ## Overview
-Perintah `shutdown` digunakan untuk mematikan atau merestart sistem operasi dengan cara yang teratur. Ini memungkinkan pengguna untuk menutup semua proses dengan aman sebelum sistem dimatikan, sehingga mengurangi risiko kehilangan data.
+Perintah `shutdown` digunakan untuk mematikan atau merestart sistem operasi dengan cara yang aman. Ini memungkinkan pengguna untuk menutup semua proses dan layanan sebelum sistem dimatikan, sehingga mencegah kehilangan data.
 
 ## Usage
-Berikut adalah sintaks dasar untuk perintah `shutdown`:
+Berikut adalah sintaks dasar dari perintah `shutdown`:
 
 ```
 shutdown [options] [arguments]
 ```
 
 ## Common Options
-- `-h` : Mematikan sistem.
-- `-r` : Merestart sistem.
-- `-k` : Mengirim pesan peringatan tanpa mematikan sistem.
-- `+time` : Menentukan waktu penutupan dalam menit.
-- `time` : Menentukan waktu penutupan dalam format jam:menit.
+- `-h`: Mematikan sistem.
+- `-r`: Merestart sistem.
+- `-k`: Mengirimkan pesan peringatan tanpa mematikan sistem.
+- `time`: Menentukan waktu untuk mematikan sistem (misalnya, `now` atau `+5` untuk 5 menit dari sekarang).
+- `message`: Pesan yang akan ditampilkan kepada pengguna sebelum sistem dimatikan.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `shutdown`:
@@ -30,17 +30,17 @@ Berikut adalah beberapa contoh penggunaan perintah `shutdown`:
    shutdown -r +5
    ```
 
-3. Mengirim pesan peringatan 1 menit sebelum mematikan sistem:
+3. Mengirimkan pesan peringatan tanpa mematikan sistem:
    ```csh
-   shutdown -h +1 "Sistem akan dimatikan dalam 1 menit."
+   shutdown -k now "Sistem akan dimatikan dalam 1 menit."
    ```
 
-4. Mengirim pesan peringatan tanpa mematikan sistem:
+4. Mematikan sistem dengan pesan khusus:
    ```csh
-   shutdown -k now "Peringatan: Sistem akan dimatikan."
+   shutdown -h now "Sistem akan dimatikan untuk pemeliharaan."
    ```
 
 ## Tips
-- Selalu pastikan untuk menyimpan pekerjaan Anda sebelum menjalankan perintah `shutdown`.
+- Selalu pastikan untuk menyimpan pekerjaan Anda sebelum menggunakan perintah `shutdown`.
 - Gunakan opsi `-k` untuk memberi tahu pengguna lain sebelum mematikan sistem.
-- Periksa proses yang berjalan dengan `ps` sebelum melakukan shutdown untuk memastikan tidak ada proses penting yang terganggu.
+- Rencanakan waktu pemadaman untuk menghindari gangguan pada pengguna lain.

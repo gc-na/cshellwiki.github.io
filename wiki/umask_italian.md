@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) umask uso: Impostare i permessi predefiniti per i file
+# [Linux] C Shell (csh) umask utilizzo: Imposta i permessi predefiniti per i file e le directory
 
 ## Overview
-Il comando `umask` in C Shell (csh) viene utilizzato per impostare i permessi predefiniti per i nuovi file e directory creati dagli utenti. Questo comando determina quali permessi saranno negati quando un nuovo file o una nuova directory viene creato, influenzando così la sicurezza e l'accessibilità dei file.
+Il comando `umask` in C Shell (csh) viene utilizzato per impostare i permessi predefiniti per i nuovi file e directory creati dall'utente. Questo comando determina quali permessi verranno negati ai file e alle directory quando vengono creati, influenzando così la loro accessibilità.
 
 ## Usage
 La sintassi di base del comando `umask` è la seguente:
@@ -11,38 +11,33 @@ umask [options] [arguments]
 ```
 
 ## Common Options
-- **-S**: Mostra i permessi in formato simbolico.
-- **-p**: Mostra il valore corrente di umask in modo persistente.
+- `-S`: Mostra la maschera di umask in formato simbolico.
+- `-p`: Mostra la maschera di umask corrente in modo persistente.
 
 ## Common Examples
 Ecco alcuni esempi pratici dell'uso del comando `umask`:
 
-1. **Visualizzare il valore corrente di umask**:
+1. **Visualizzare la maschera umask corrente:**
    ```csh
    umask
    ```
 
-2. **Impostare umask per negare i permessi di scrittura per il gruppo e altri**:
-   ```csh
-   umask 022
-   ```
-
-3. **Impostare umask per negare tutti i permessi per il gruppo e altri**:
-   ```csh
-   umask 077
-   ```
-
-4. **Mostrare il valore di umask in formato simbolico**:
-   ```csh
-   umask -S
-   ```
-
-5. **Impostare umask in modo persistente**:
+2. **Impostare una nuova maschera umask:**
    ```csh
    umask 027
    ```
 
+3. **Visualizzare la maschera umask in formato simbolico:**
+   ```csh
+   umask -S
+   ```
+
+4. **Impostare la maschera umask per rendere i file leggibili solo dal proprietario:**
+   ```csh
+   umask 007
+   ```
+
 ## Tips
-- È buona pratica controllare il valore di umask prima di creare file sensibili per garantire che i permessi siano appropriati.
-- Ricorda che un valore di umask più restrittivo aumenta la sicurezza, ma potrebbe limitare l'accesso per gli utenti che necessitano di collaborare.
-- Puoi aggiungere il comando `umask` nel tuo file di configurazione della shell (come `.cshrc`) per applicare automaticamente le impostazioni desiderate ad ogni sessione.
+- È buona pratica controllare la maschera umask corrente prima di creare nuovi file, per assicurarsi che i permessi siano impostati come desiderato.
+- Ricorda che una maschera umask più restrittiva può migliorare la sicurezza dei file, limitando l'accesso non autorizzato.
+- Puoi aggiungere il comando `umask` nel tuo file di configurazione della shell (come `.cshrc`) per applicare automaticamente la maschera desiderata all'avvio della shell.

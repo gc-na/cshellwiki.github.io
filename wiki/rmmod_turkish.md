@@ -1,39 +1,49 @@
 # [Linux] C Shell (csh) rmmod Kullanımı: Modül kaldırma komutu
 
-## Genel Bakış
-`rmmod`, Linux işletim sistemlerinde kullanılan bir komuttur ve çekirdek modüllerini kaldırmak için kullanılır. Bu komut, sistemde yüklü olan bir modülü kaldırarak, sistem kaynaklarını serbest bırakır.
+## Overview
+`rmmod` komutu, Linux işletim sistemlerinde yüklü olan bir modülü kaldırmak için kullanılır. Bu komut, çekirdek modüllerini yönetmek için önemli bir araçtır ve sistem kaynaklarını serbest bırakmak amacıyla kullanılabilir.
 
-## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
-
-```bash
-rmmod [seçenekler] [argümanlar]
+## Usage
+Temel sözdizimi şu şekildedir:
+```
+rmmod [options] [arguments]
 ```
 
-## Yaygın Seçenekler
+## Common Options
 - `-f`: Zorla modülü kaldırır, bağımlı modüller varsa bile.
-- `-n`: Modül kaldırma işlemi sırasında herhangi bir hata mesajı göstermez.
-- `--help`: Komutun kullanımına dair yardım bilgilerini gösterir.
+- `-n`: Modül kaldırma işlemini yapmadan önce yalnızca deneme yapar.
+- `--help`: Komut hakkında yardım bilgisi gösterir.
+- `--version`: Komutun sürüm bilgilerini gösterir.
 
-## Yaygın Örnekler
-Aşağıda `rmmod` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+## Common Examples
+Aşağıda `rmmod` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
 1. Basit bir modül kaldırma:
    ```bash
-   rmmod mymodule
+   rmmod my_module
    ```
 
 2. Zorla bir modül kaldırma:
    ```bash
-   rmmod -f mymodule
+   rmmod -f my_module
    ```
 
-3. Yardım bilgilerini görüntüleme:
+3. Modül kaldırma işlemini deneme:
+   ```bash
+   rmmod -n my_module
+   ```
+
+4. Yardım bilgisi alma:
    ```bash
    rmmod --help
    ```
 
-## İpuçları
-- Modülü kaldırmadan önce, modülün sistemde kullanılmadığından emin olun. Aksi takdirde, kaldırma işlemi başarısız olabilir.
-- `lsmod` komutunu kullanarak yüklü modüllerin listesini kontrol edebilirsiniz.
-- Modül kaldırma işlemi sırasında dikkatli olun; yanlış bir modül kaldırmak sistem kararsızlığına yol açabilir.
+5. Sürüm bilgisi görüntüleme:
+   ```bash
+   rmmod --version
+   ```
+
+## Tips
+- Modülleri kaldırmadan önce, sistemde bu modüllere bağımlı olan diğer modüllerin olup olmadığını kontrol edin.
+- Zorla kaldırma seçeneğini kullanırken dikkatli olun, çünkü bu sistem kararsızlığına yol açabilir.
+- Modül kaldırma işlemi sonrasında sistemin düzgün çalıştığından emin olun.

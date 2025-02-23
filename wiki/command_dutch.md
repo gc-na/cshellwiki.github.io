@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) commando echo: Toon tekst op de terminal
+# [Linux] C Shell (csh) commando echo: [toon tekst op het scherm]
 
 ## Overzicht
-Het `echo` commando in C Shell (csh) wordt gebruikt om tekst of variabelen naar de standaarduitvoer (meestal de terminal) te sturen. Dit is handig voor het weergeven van berichten of het controleren van de waarden van variabelen.
+Het `echo` commando in C Shell (csh) wordt gebruikt om tekst of variabelen naar de standaarduitvoer (meestal het scherm) te sturen. Dit is handig voor het weergeven van berichten of het controleren van de waarde van variabelen.
 
 ## Gebruik
 De basis syntaxis van het `echo` commando is als volgt:
@@ -11,8 +11,8 @@ echo [opties] [tekst of variabele]
 ```
 
 ## Veelvoorkomende opties
-- `-n`: Voorkomt dat er een nieuwe regel wordt toegevoegd na de uitvoer.
-- `-e`: Activeert de interpretatie van escape-sequenties (zoals `\n` voor nieuwe regel).
+- `-n`: Voorkomt dat er een nieuwe regel aan het einde van de uitvoer wordt toegevoegd.
+- `-e`: Staat toe dat escape-sequenties zoals `\n` (nieuwe regel) en `\t` (tab) worden geïnterpreteerd.
 
 ## Veelvoorkomende voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van het `echo` commando:
@@ -25,12 +25,12 @@ Hier zijn enkele praktische voorbeelden van het gebruik van het `echo` commando:
 2. De waarde van een variabele weergeven:
    ```csh
    set naam = "Jan"
-   echo "Mijn naam is $naam"
+   echo "Mijn naam is $naam."
    ```
 
-3. Tekst zonder nieuwe regel weergeven:
+3. Tekst weergeven zonder nieuwe regel:
    ```csh
-   echo -n "Dit is een tekst zonder nieuwe regel."
+   echo -n "Dit is een regel zonder nieuwe regel."
    ```
 
 4. Gebruik van escape-sequenties:
@@ -40,5 +40,5 @@ Hier zijn enkele praktische voorbeelden van het gebruik van het `echo` commando:
 
 ## Tips
 - Gebruik `echo` om snel de waarde van variabelen te controleren tijdens het debuggen van scripts.
-- Wees voorzichtig met spaties in teksten; gebruik aanhalingstekens om te voorkomen dat de shell ze verkeerd interpreteert.
-- Combineer `echo` met andere commando's door gebruik te maken van pipes om de uitvoer verder te verwerken.
+- Wees voorzichtig met speciale tekens in de tekst; gebruik aanhalingstekens om te voorkomen dat ze door de shell worden geïnterpreteerd.
+- Combineer `echo` met andere commando's door gebruik te maken van pijpen (`|`) voor meer geavanceerde uitvoer.

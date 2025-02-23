@@ -1,52 +1,54 @@
-# [Linux] C Shell (csh) ulimit użycie: Ustawianie limitów zasobów dla procesów
+# [Linux] C Shell (csh) ulimit użycie: Ustawianie limitów zasobów procesów
 
 ## Overview
-Polecenie `ulimit` w powłoce C Shell (csh) służy do ustawiania i wyświetlania limitów zasobów dla procesów uruchamianych w danej sesji. Dzięki niemu można kontrolować, ile pamięci, czasu procesora i innych zasobów mogą wykorzystać uruchamiane aplikacje.
+Polecenie `ulimit` w C Shell (csh) służy do ustawiania lub wyświetlania limitów zasobów dla procesów uruchamianych w danej sesji powłoki. Dzięki temu użytkownicy mogą kontrolować, ile zasobów systemowych mogą wykorzystywać ich procesy, co jest szczególnie przydatne w zarządzaniu wydajnością i bezpieczeństwem systemu.
 
 ## Usage
-Podstawowa składnia polecenia `ulimit` wygląda następująco:
+Podstawowa składnia polecenia `ulimit` jest następująca:
 
 ```csh
 ulimit [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-a` - Wyświetla wszystkie aktualne limity.
-- `-c [rozmiar]` - Ustawia limit rozmiaru pliku zrzutu pamięci.
-- `-d [rozmiar]` - Ustawia limit rozmiaru pamięci danych.
-- `-f [rozmiar]` - Ustawia limit rozmiaru pliku, który można utworzyć.
-- `-l [rozmiar]` - Ustawia limit rozmiaru pamięci, która może być zablokowana w pamięci.
-- `-m [rozmiar]` - Ustawia limit rozmiaru pamięci fizycznej.
-- `-s [rozmiar]` - Ustawia limit rozmiaru stosu.
-- `-t [czas]` - Ustawia limit czasu CPU dla procesu.
+Oto kilka powszechnie używanych opcji dla polecenia `ulimit`:
+
+- `-a` – Wyświetla wszystkie aktualne limity zasobów.
+- `-c [rozmiar]` – Ustawia limit rozmiaru pliku zrzutu pamięci (core dump).
+- `-d [rozmiar]` – Ustawia limit rozmiaru pamięci danych.
+- `-f [rozmiar]` – Ustawia limit rozmiaru plików, które mogą być tworzone przez proces.
+- `-l [rozmiar]` – Ustawia limit rozmiaru pamięci, która może być zablokowana w pamięci fizycznej.
+- `-s [rozmiar]` – Ustawia limit rozmiaru stosu dla procesów.
 
 ## Common Examples
-1. **Wyświetlenie wszystkich limitów:**
+Poniżej przedstawiono kilka praktycznych przykładów użycia polecenia `ulimit`:
+
+1. Wyświetlenie wszystkich limitów zasobów:
    ```csh
    ulimit -a
    ```
 
-2. **Ustawienie limitu rozmiaru pliku na 100 MB:**
+2. Ustawienie limitu rozmiaru pliku zrzutu pamięci na 100 MB:
    ```csh
-   ulimit -f 102400
+   ulimit -c 100000
    ```
 
-3. **Ustawienie limitu czasu CPU na 60 sekund:**
-   ```csh
-   ulimit -t 60
-   ```
-
-4. **Ustawienie limitu rozmiaru pamięci danych na 512 MB:**
+3. Ustawienie limitu rozmiaru pamięci danych na 512 MB:
    ```csh
    ulimit -d 524288
    ```
 
-5. **Wyświetlenie limitu rozmiaru stosu:**
+4. Ustawienie limitu rozmiaru plików na 1 GB:
    ```csh
-   ulimit -s
+   ulimit -f 1048576
+   ```
+
+5. Ustawienie limitu rozmiaru stosu na 8 MB:
+   ```csh
+   ulimit -s 8192
    ```
 
 ## Tips
-- Zawsze sprawdzaj aktualne limity przed uruchomieniem zasobożernych aplikacji, aby uniknąć nieoczekiwanych błędów.
-- Ustawienia `ulimit` są lokalne dla sesji powłoki, więc jeśli chcesz, aby były trwałe, dodaj je do swojego pliku konfiguracyjnego powłoki, np. `.cshrc`.
-- Używaj opcji `-a` po każdej zmianie, aby upewnić się, że limity zostały poprawnie ustawione.
+- Zawsze sprawdzaj aktualne limity zasobów przed uruchomieniem zasobożernych procesów, aby uniknąć nieoczekiwanych błędów.
+- Ustawianie limitów zasobów może pomóc w zapobieganiu przeciążeniu systemu przez zbyt wiele jednoczesnych procesów.
+- Pamiętaj, że zmiany w limitach zasobów są tymczasowe i dotyczą tylko bieżącej sesji powłoki. Aby wprowadzić trwałe zmiany, należy dodać odpowiednie polecenia do pliku konfiguracyjnego powłoki.

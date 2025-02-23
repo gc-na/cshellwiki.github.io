@@ -1,45 +1,42 @@
-# [Linux] C Shell (csh) kill Kullanımı: Süreçleri sonlandırma
+# [Linux] C Shell (csh) kill Kullanımı: İşlemleri sonlandırma komutu
 
-## Overview
-`kill` komutu, işletim sisteminde çalışan süreçleri sonlandırmak için kullanılır. Belirli bir süreç kimliği (PID) ile belirtilen süreci durdurmak için bu komut kullanılır.
+## Genel Bakış
+`kill` komutu, işletim sisteminde çalışan bir işlemi sonlandırmak için kullanılır. Bu komut, belirli bir işlem kimliğine (PID) sahip olan işlemleri durdurmanıza olanak tanır.
 
-## Usage
+## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
 
+```csh
+kill [seçenekler] [argümanlar]
 ```
-kill [options] [arguments]
-```
 
-## Common Options
-- `-l`: Tüm sinyal isimlerini listeler.
-- `-s`: Göndermek istediğiniz sinyalin adını veya numarasını belirtir.
-- `-n`: Sinyal numarasını belirtir.
+## Yaygın Seçenekler
+- `-l`: Tüm sinyal isimlerini listele.
+- `-s`: Göndermek istediğiniz sinyali belirtir.
+- `-9`: Zorla sonlandırma sinyali (SIGKILL) gönderir.
 
-## Common Examples
-Aşağıda `kill` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
-
-1. Belirli bir PID ile süreci sonlandırma:
+## Yaygın Örnekler
+1. Belirli bir PID'ye sahip işlemi sonlandırmak için:
    ```csh
    kill 1234
    ```
 
-2. Belirli bir sinyal göndererek süreci sonlandırma (örneğin, SIGKILL):
+2. Zorla bir işlemi sonlandırmak için:
    ```csh
    kill -9 1234
    ```
 
-3. Tüm süreçleri listeleme ve ardından bir süreci sonlandırma:
+3. Tüm işlemleri listelemek için sinyal isimlerini görmek:
    ```csh
-   ps
-   kill 5678
+   kill -l
    ```
 
-4. Belirli bir sinyal ile süreci durdurma (örneğin, SIGTERM):
+4. Belirli bir sinyali göndermek için:
    ```csh
-   kill -15 1234
+   kill -s SIGTERM 1234
    ```
 
-## Tips
-- Süreçlerinizi sonlandırmadan önce, hangi sürecin hangi PID'ye sahip olduğunu kontrol etmek için `ps` komutunu kullanın.
-- `kill` komutunu kullanırken dikkatli olun; yanlış bir süreci sonlandırmak sistemde sorunlara yol açabilir.
-- Süreçlerinizi daha iyi yönetmek için, `killall` komutunu kullanarak belirli bir isimdeki tüm süreçleri aynı anda sonlandırabilirsiniz.
+## İpuçları
+- İşlemleri sonlandırmadan önce, hangi işlemi sonlandırdığınızdan emin olun. Yanlış bir işlemi sonlandırmak sisteminize zarar verebilir.
+- `kill -l` komutunu kullanarak mevcut sinyalleri öğrenmek, hangi sinyali kullanmanız gerektiği konusunda yardımcı olabilir.
+- Sürekli çalışan işlemleri yönetmek için `ps` komutunu kullanarak işlem kimliklerini (PID) kontrol edebilirsiniz.

@@ -1,47 +1,52 @@
-# [Système d'exploitation] C Shell (csh) ping6 : Vérifier la connectivité IPv6
+# [Linux] C Shell (csh) ping6 : Vérifier la connectivité IPv6
 
 ## Overview
-La commande `ping6` est utilisée pour tester la connectivité entre votre machine et une autre machine sur un réseau utilisant le protocole IPv6. Elle envoie des paquets ICMPv6 Echo Request et attend des réponses, ce qui permet de diagnostiquer les problèmes de réseau.
+La commande `ping6` est utilisée pour tester la connectivité réseau entre l'hôte local et un autre hôte sur un réseau utilisant le protocole IPv6. Elle envoie des paquets ICMPv6 Echo Request et attend des réponses Echo Reply, permettant ainsi de diagnostiquer les problèmes de réseau.
 
 ## Usage
-La syntaxe de base de la commande `ping6` est la suivante :
+La syntaxe de base de la commande est la suivante :
 
 ```csh
 ping6 [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes pour la commande `ping6` :
+Voici quelques options courantes pour `ping6` :
 
 - `-c <count>` : Spécifie le nombre de paquets à envoyer.
 - `-i <interval>` : Définit l'intervalle en secondes entre l'envoi des paquets.
-- `-t <ttl>` : Définit la durée de vie (TTL) des paquets.
 - `-s <size>` : Définit la taille des paquets à envoyer.
+- `-W <timeout>` : Définit le délai d'attente pour une réponse, en secondes.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `ping6` :
 
-1. **Pinger une adresse IPv6 :**
+1. **Pinger un hôte IPv6 :**
    ```csh
-   ping6 2001:db8::1
+   ping6 google.com
    ```
 
-2. **Envoyer 5 paquets :**
+2. **Envoyer un nombre spécifique de paquets :**
    ```csh
-   ping6 -c 5 2001:db8::1
+   ping6 -c 5 google.com
    ```
 
-3. **Définir un intervalle de 2 secondes entre les paquets :**
+3. **Définir un intervalle entre les paquets :**
    ```csh
-   ping6 -i 2 2001:db8::1
+   ping6 -i 2 google.com
    ```
 
-4. **Envoyer des paquets de 128 octets :**
+4. **Changer la taille des paquets :**
    ```csh
-   ping6 -s 128 2001:db8::1
+   ping6 -s 128 google.com
+   ```
+
+5. **Définir un délai d'attente pour les réponses :**
+   ```csh
+   ping6 -W 2 google.com
    ```
 
 ## Tips
-- Utilisez l'option `-c` pour limiter le nombre de paquets envoyés, ce qui est utile pour éviter une surcharge du réseau.
-- Vérifiez la connectivité de votre propre machine en pingant l'adresse de loopback IPv6 `::1`.
-- Si vous ne recevez pas de réponse, vérifiez les paramètres de votre pare-feu, car ils peuvent bloquer les paquets ICMPv6.
+- Utilisez l'option `-c` pour limiter le nombre de paquets envoyés, ce qui peut être utile pour des tests rapides.
+- L'option `-i` peut aider à éviter une surcharge du réseau en espaçant les paquets.
+- Vérifiez toujours que l'hôte cible est accessible avant de procéder à des diagnostics plus approfondis.

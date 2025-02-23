@@ -1,54 +1,53 @@
-# [Linux] C Shell (csh) sort utilizare: Sortează liniile din fișiere text
+# [Linux] C Shell (csh) sort utilizare: Sortează liniile de text
 
 ## Overview
-Comanda `sort` este utilizată pentru a organiza liniile din fișiere text într-o ordine specificată, fie că este vorba de ordine alfabetică, numerică sau inversă. Aceasta este o unealtă esențială pentru manipularea datelor în linie de comandă.
+Comanda `sort` este utilizată pentru a organiza liniile de text dintr-un fișier sau dintr-o intrare standard într-o ordine specificată, de obicei în ordine alfabetică sau numerică.
 
 ## Usage
 Sintaxa de bază a comenzii `sort` este următoarea:
-
-```csh
-sort [options] [arguments]
+```
+sort [opțiuni] [argumente]
 ```
 
 ## Common Options
 - `-r`: Sortează în ordine inversă.
-- `-n`: Sortează numeric, în loc de alfabetic.
-- `-k`: Specifică cheia de sortare (coloana).
-- `-u`: Elimină duplicatele din rezultatul sortat.
+- `-n`: Sortează numeric, nu alfabetically.
+- `-k`: Specifică o coloană sau un câmp pentru sortare.
+- `-u`: Elimină duplicatele din rezultatul sortării.
 - `-o`: Scrie rezultatul sortării într-un fișier specificat.
 
 ## Common Examples
-1. Sortează un fișier text în ordine alfabetică:
+1. **Sortarea unui fișier text în ordine alfabetică:**
    ```csh
    sort fisier.txt
    ```
 
-2. Sortează un fișier text în ordine inversă:
+2. **Sortarea în ordine inversă:**
    ```csh
    sort -r fisier.txt
    ```
 
-3. Sortează un fișier text numeric:
+3. **Sortarea numerică a unui fișier:**
    ```csh
-   sort -n fisier_numeric.txt
+   sort -n numere.txt
    ```
 
-4. Sortează un fișier text pe baza unei coloane specifice (de exemplu, a doua coloană):
+4. **Sortarea pe baza unei coloane specifice:**
    ```csh
    sort -k 2 fisier.txt
    ```
 
-5. Elimină duplicatele dintr-un fișier sortat:
+5. **Eliminarea liniilor duplicate și sortarea rezultatelor:**
    ```csh
    sort -u fisier.txt
    ```
 
-6. Scrie rezultatul sortării într-un alt fișier:
+6. **Scrierea rezultatelor sortării într-un nou fișier:**
    ```csh
    sort fisier.txt -o fisier_sortat.txt
    ```
 
 ## Tips
-- Folosește opțiunea `-n` pentru a evita sortarea greșită a numerelor (de exemplu, "10" înainte de "2").
-- Combină opțiunile pentru a obține rezultatele dorite, cum ar fi `sort -r -n` pentru a sorta numeric în ordine inversă.
-- Verifică întotdeauna rezultatul sortării, mai ales când lucrezi cu fișiere mari sau importante.
+- Asigurați-vă că fișierele pe care doriți să le sortați sunt accesibile și nu sunt blocate de alte procese.
+- Utilizați opțiunea `-k` pentru a sortare pe baza unor coloane specifice, ceea ce poate fi foarte util în fișierele CSV.
+- Combinați opțiunile pentru a obține rezultate mai precise, de exemplu, `sort -n -r` pentru a obține o sortare numerică inversă.

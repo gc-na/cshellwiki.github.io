@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) whoami Verwendung: Gibt den aktuellen Benutzernamen zurück
+# [Linux] C Shell (csh) whoami Verwendung: Zeigt den aktuellen Benutzernamen an
 
 ## Übersicht
-Der Befehl `whoami` wird verwendet, um den Benutzernamen des aktuell angemeldeten Benutzers im System anzuzeigen. Dies ist besonders nützlich, wenn Sie in einer Umgebung mit mehreren Benutzern arbeiten oder wenn Sie sich nicht sicher sind, unter welchem Benutzerkonto Sie gerade angemeldet sind.
+Der Befehl `whoami` gibt den Benutzernamen des aktuell angemeldeten Benutzers aus. Dies ist nützlich, um schnell zu überprüfen, unter welchem Benutzerkonto Sie gerade arbeiten.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
@@ -11,30 +11,34 @@ whoami [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-Der `whoami` Befehl hat in der Regel keine speziellen Optionen, da seine Funktion sehr einfach ist. In einigen Shells können jedoch allgemeine Optionen wie `--help` verwendet werden, um Hilfeinformationen anzuzeigen.
+- Es gibt keine speziellen Optionen für den `whoami` Befehl, da er in der Regel ohne zusätzliche Parameter verwendet wird.
 
 ## Häufige Beispiele
 Hier sind einige praktische Beispiele für die Verwendung des `whoami` Befehls:
 
-1. **Einfacher Befehl**: Um den aktuellen Benutzernamen anzuzeigen:
+1. **Einfacher Aufruf:**
    ```csh
    whoami
    ```
+   Dieser Befehl gibt den aktuellen Benutzernamen aus.
 
-2. **Verwendung in einem Skript**: Um den Benutzernamen in einer Variablen zu speichern:
+2. **Verwendung in einem Skript:**
    ```csh
-   set username = `whoami`
-   echo "Der aktuelle Benutzer ist: $username"
+   #!/bin/csh
+   echo "Der aktuelle Benutzer ist: `whoami`"
    ```
+   Dies gibt den Benutzernamen in einem Skript aus.
 
-3. **Überprüfung des Benutzernamens in einer Bedingung**:
+3. **Überprüfung des Benutzers vor einer Aktion:**
    ```csh
    if ("`whoami`" == "admin") then
-       echo "Willkommen, Administrator!"
+       echo "Sie haben Administratorrechte."
+   else
+       echo "Sie haben keine Administratorrechte."
    endif
    ```
+   Hier wird überprüft, ob der aktuelle Benutzer Administratorrechte hat.
 
 ## Tipps
-- Verwenden Sie `whoami`, um schnell zu überprüfen, ob Sie die richtigen Berechtigungen für bestimmte Aktionen haben.
-- In Skripten kann `whoami` nützlich sein, um sicherzustellen, dass das Skript mit den erwarteten Benutzerrechten ausgeführt wird.
-- Kombinieren Sie `whoami` mit anderen Befehlen, um benutzerspezifische Anpassungen vorzunehmen.
+- Verwenden Sie `whoami`, um sicherzustellen, dass Sie die richtigen Berechtigungen haben, bevor Sie kritische Befehle ausführen.
+- In Kombination mit anderen Befehlen kann `whoami` nützlich sein, um Skripte dynamisch anzupassen, je nachdem, welcher Benutzer angemeldet ist.

@@ -1,10 +1,10 @@
 # [Sistem Operasi] C Shell (csh) 7z Penggunaan: Mengelola file arsip
 
 ## Overview
-Perintah `7z` adalah alat untuk mengelola file arsip, yang memungkinkan pengguna untuk membuat, mengekstrak, dan mengelola file terkompresi dalam berbagai format. Ini adalah bagian dari program 7-Zip yang terkenal karena kemampuannya untuk menangani berbagai jenis file arsip dengan efisiensi tinggi.
+Perintah `7z` digunakan untuk mengelola file arsip, termasuk membuat, mengekstrak, dan mengelola file dalam format 7z serta format arsip lainnya seperti zip, tar, dan rar.
 
 ## Usage
-Sintaks dasar untuk menggunakan perintah `7z` adalah sebagai berikut:
+Sintaks dasar dari perintah `7z` adalah sebagai berikut:
 
 ```
 7z [options] [arguments]
@@ -20,34 +20,34 @@ Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah `7z`:
 - `t`: Menguji integritas arsip.
 
 ## Common Examples
-Berikut adalah beberapa contoh praktis penggunaan perintah `7z`:
+Berikut adalah beberapa contoh penggunaan perintah `7z`:
 
-1. **Menambahkan file ke arsip:**
-   ```bash
+1. **Menambahkan file ke arsip**:
+   ```csh
    7z a arsip.7z file1.txt file2.txt
    ```
 
-2. **Mengekstrak file dari arsip:**
-   ```bash
+2. **Mengekstrak file dari arsip**:
+   ```csh
    7z x arsip.7z
    ```
 
-3. **Menampilkan daftar file dalam arsip:**
-   ```bash
+3. **Menampilkan daftar file dalam arsip**:
+   ```csh
    7z l arsip.7z
    ```
 
-4. **Menghapus file dari arsip:**
-   ```bash
+4. **Menghapus file dari arsip**:
+   ```csh
    7z d arsip.7z file1.txt
    ```
 
-5. **Menguji integritas arsip:**
-   ```bash
+5. **Menguji integritas arsip**:
+   ```csh
    7z t arsip.7z
    ```
 
 ## Tips
-- Selalu periksa integritas arsip setelah mengekstrak file untuk memastikan tidak ada kerusakan.
-- Gunakan opsi `-p` untuk menambahkan kata sandi saat membuat arsip untuk meningkatkan keamanan.
-- Untuk menghemat ruang, pertimbangkan untuk menggunakan format kompresi yang lebih tinggi saat membuat arsip.
+- Pastikan untuk menggunakan opsi `-y` jika Anda ingin mengonfirmasi semua pertanyaan secara otomatis saat mengekstrak atau menghapus file.
+- Gunakan opsi `-p` untuk menambahkan kata sandi saat membuat arsip yang aman.
+- Selalu periksa daftar file dalam arsip sebelum mengekstrak untuk memastikan Anda mendapatkan file yang tepat.

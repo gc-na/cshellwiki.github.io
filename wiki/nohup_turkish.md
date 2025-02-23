@@ -1,44 +1,38 @@
-# [Linux] C Shell (csh) nohup Kullanımı: Arka planda komut çalıştırma
+# [Linux] C Shell (csh) nohup Kullanımı: Arka planda çalıştırma
 
 ## Genel Bakış
-`nohup` komutu, bir komutun terminal oturumu kapatıldığında bile çalışmaya devam etmesini sağlar. Bu, uzun süren işlemleri başlatmak ve terminalden çıkıldığında bile bu işlemlerin devam etmesini sağlamak için oldukça kullanışlıdır.
+`nohup` komutu, bir işlemi terminalden bağımsız olarak çalıştırmak için kullanılır. Terminal kapatılsa bile işlemin devam etmesini sağlar. Genellikle uzun süren işlemleri başlatmak için tercih edilir.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-
 ```csh
 nohup [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `&`: Komutu arka planda çalıştırır.
-- `-h`: Çıktıyı `nohup.out` dosyasına yönlendirir (varsayılan).
+- `&`: İşlemi arka planda çalıştırır.
+- `-h`: `nohup` çıktısını `nohup.out` dosyasına yönlendirir (varsayılan).
 - `-v`: `nohup` sürüm bilgilerini gösterir.
 
 ## Yaygın Örnekler
 Aşağıda `nohup` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. Basit bir komut çalıştırma:
+1. Bir Python betiğini arka planda çalıştırmak:
    ```csh
-   nohup myscript.sh &
+   nohup python script.py &
    ```
 
-2. Çıktıyı belirli bir dosyaya yönlendirme:
+2. Bir Java uygulamasını arka planda çalıştırmak:
    ```csh
-   nohup myscript.sh > output.log &
+   nohup java -jar uygulama.jar &
    ```
 
-3. Bir Python betiğini arka planda çalıştırma:
+3. Bir shell betiğini arka planda çalıştırmak ve çıktısını bir dosyaya yönlendirmek:
    ```csh
-   nohup python myscript.py &
-   ```
-
-4. Bir Java uygulamasını çalıştırma:
-   ```csh
-   nohup java -jar myapp.jar &
+   nohup ./betik.sh > cikti.txt &
    ```
 
 ## İpuçları
-- `nohup` kullanırken, çıktıyı yönlendirmek için `>` operatörünü kullanmayı unutmayın; aksi takdirde, çıktı `nohup.out` dosyasına kaydedilir.
-- Uzun süreli işlemler için, işlemin durumunu kontrol etmek amacıyla `jobs` komutunu kullanabilirsiniz.
-- Terminalden çıkmadan önce işleminizin arka planda çalıştığından emin olun; bu, işleminizin kesintiye uğramasını önler.
+- `nohup` ile çalıştırdığınız işlemlerin çıktısını takip etmek için `nohup.out` dosyasını kontrol edin.
+- İşlemi arka planda çalıştırırken `&` kullanmayı unutmayın, aksi takdirde terminal kapanınca işlem sonlanır.
+- Uzun süren işlemler için `nohup` kullanarak sistem kaynaklarını daha verimli kullanabilirsiniz.

@@ -1,44 +1,46 @@
 # [Sistem Operasi] C Shell (csh) cksum: Menghitung checksum file
 
 ## Overview
-Perintah `cksum` dalam C Shell (csh) digunakan untuk menghitung checksum dari file. Checksum adalah nilai yang dihasilkan dari data file yang dapat digunakan untuk memverifikasi integritas file tersebut. Dengan menggunakan `cksum`, pengguna dapat memastikan bahwa file tidak telah diubah atau rusak.
+Perintah `cksum` dalam C Shell (csh) digunakan untuk menghitung dan menampilkan checksum (nilai hash) dari file. Checksum ini berguna untuk memverifikasi integritas file, memastikan bahwa file tidak rusak atau telah diubah.
 
 ## Usage
-Berikut adalah sintaks dasar dari perintah `cksum`:
+Sintaks dasar dari perintah `cksum` adalah sebagai berikut:
 
-```
+```csh
 cksum [options] [arguments]
 ```
 
 ## Common Options
-- `-a` : Menentukan algoritma checksum yang digunakan.
-- `-b` : Menghitung checksum untuk file biner.
-- `-h` : Menampilkan bantuan dan informasi tentang penggunaan perintah.
+Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah `cksum`:
+
+- `-a, --algorithm`: Menentukan algoritma checksum yang akan digunakan.
+- `-h, --help`: Menampilkan bantuan dan informasi tentang penggunaan perintah.
+- `-V, --version`: Menampilkan versi dari perintah `cksum`.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `cksum`:
 
-1. Menghitung checksum untuk sebuah file:
+1. Menghitung checksum dari sebuah file:
    ```csh
-   cksum namafile.txt
+   cksum file.txt
    ```
 
-2. Menghitung checksum untuk beberapa file sekaligus:
+2. Menghitung checksum dari beberapa file sekaligus:
    ```csh
    cksum file1.txt file2.txt file3.txt
    ```
 
-3. Menghitung checksum untuk file biner:
-   ```csh
-   cksum -b filebiner.bin
-   ```
-
-4. Menampilkan bantuan untuk perintah cksum:
+3. Menampilkan bantuan untuk perintah `cksum`:
    ```csh
    cksum -h
    ```
 
+4. Menampilkan versi dari perintah `cksum`:
+   ```csh
+   cksum -V
+   ```
+
 ## Tips
-- Selalu simpan nilai checksum yang dihasilkan untuk referensi di masa mendatang, sehingga Anda dapat memverifikasi integritas file.
-- Gunakan opsi `-b` saat bekerja dengan file biner untuk mendapatkan hasil yang akurat.
-- Periksa checksum file setelah transfer atau pengunduhan untuk memastikan tidak ada kerusakan data.
+- Selalu simpan checksum dari file penting untuk memudahkan verifikasi di masa mendatang.
+- Gunakan `cksum` setelah mengunduh file untuk memastikan file tersebut tidak rusak.
+- Jika bekerja dengan file besar, pertimbangkan untuk menggunakan opsi algoritma yang lebih efisien jika tersedia.

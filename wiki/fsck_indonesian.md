@@ -1,10 +1,10 @@
-# [Sistem Operasi] C Shell (csh) fsck Penggunaan: Memeriksa dan Memperbaiki Sistem Berkas
+# [Sistem Operasi] C Shell (csh) fsck: Memeriksa dan Memperbaiki Sistem Berkas
 
 ## Overview
-Perintah `fsck` (file system check) digunakan untuk memeriksa dan memperbaiki sistem berkas pada sistem operasi berbasis Unix, termasuk C Shell. Perintah ini sangat penting untuk menjaga integritas data dan memastikan bahwa sistem berkas berfungsi dengan baik.
+Perintah `fsck` (file system check) digunakan untuk memeriksa dan memperbaiki sistem berkas pada perangkat penyimpanan. Ini sangat penting untuk memastikan integritas data dan mencegah kerusakan lebih lanjut pada sistem berkas.
 
 ## Usage
-Berikut adalah sintaks dasar dari perintah `fsck`:
+Sintaks dasar dari perintah `fsck` adalah sebagai berikut:
 
 ```csh
 fsck [options] [arguments]
@@ -13,35 +13,40 @@ fsck [options] [arguments]
 ## Common Options
 Berikut adalah beberapa opsi umum yang dapat digunakan dengan `fsck`:
 
-- `-a`: Secara otomatis memperbaiki kesalahan yang ditemukan tanpa meminta konfirmasi.
-- `-n`: Menjalankan pemeriksaan tanpa melakukan perbaikan, hanya menampilkan kesalahan.
-- `-y`: Secara otomatis menjawab "ya" untuk semua pertanyaan yang muncul selama pemeriksaan.
-- `-t`: Menampilkan waktu yang dibutuhkan untuk melakukan pemeriksaan.
+- `-a`: Secara otomatis memperbaiki kesalahan tanpa meminta konfirmasi.
+- `-n`: Menjalankan pemeriksaan tanpa melakukan perbaikan.
+- `-y`: Menjawab "ya" untuk semua pertanyaan yang diajukan selama proses pemeriksaan.
+- `-t`: Menampilkan waktu yang dibutuhkan untuk setiap langkah pemeriksaan.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan perintah `fsck`:
+Berikut adalah beberapa contoh penggunaan `fsck`:
 
-1. Memeriksa sistem berkas tanpa melakukan perbaikan:
-    ```csh
-    fsck /dev/sda1
-    ```
+1. Memeriksa sistem berkas secara interaktif:
+   ```csh
+   fsck /dev/sda1
+   ```
 
 2. Memperbaiki kesalahan secara otomatis:
-    ```csh
-    fsck -a /dev/sda1
-    ```
+   ```csh
+   fsck -a /dev/sda1
+   ```
 
-3. Menjalankan pemeriksaan tanpa perbaikan dan menampilkan kesalahan:
-    ```csh
-    fsck -n /dev/sda1
-    ```
+3. Menjalankan pemeriksaan tanpa perbaikan:
+   ```csh
+   fsck -n /dev/sda1
+   ```
 
-4. Menggunakan opsi untuk menjawab "ya" secara otomatis:
-    ```csh
-    fsck -y /dev/sda1
-    ```
+4. Menjawab "ya" untuk semua pertanyaan:
+   ```csh
+   fsck -y /dev/sda1
+   ```
+
+5. Menampilkan waktu pemeriksaan:
+   ```csh
+   fsck -t /dev/sda1
+   ```
 
 ## Tips
-- Selalu pastikan untuk melakukan backup data penting sebelum menjalankan `fsck`, terutama dengan opsi perbaikan.
-- Jalankan `fsck` saat sistem tidak sedang digunakan untuk menghindari kerusakan lebih lanjut pada sistem berkas.
-- Periksa dokumentasi sistem berkas spesifik Anda untuk opsi tambahan yang mungkin tersedia.
+- Selalu pastikan untuk melakukan backup data sebelum menjalankan `fsck`, terutama jika Anda berencana untuk memperbaiki kesalahan.
+- Jalankan `fsck` pada sistem berkas yang tidak sedang digunakan untuk menghindari konflik dan kerusakan lebih lanjut.
+- Gunakan opsi `-n` terlebih dahulu untuk melakukan pemeriksaan tanpa perbaikan, sehingga Anda dapat menilai situasi sebelum mengambil tindakan.

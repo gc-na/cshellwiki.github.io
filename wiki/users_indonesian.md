@@ -1,36 +1,41 @@
-# [Sistem Operasi] C Shell (csh) pengguna: Mengelola pengguna sistem
+# [Sistem Operasi] C Shell (csh) pengguna: [mengelola pengguna]
 
 ## Overview
-Perintah `users` dalam C Shell (csh) digunakan untuk menampilkan nama-nama pengguna yang sedang aktif di sistem. Ini berguna untuk mengetahui siapa saja yang sedang login pada saat tertentu.
+Perintah `users` dalam C Shell (csh) digunakan untuk menampilkan daftar nama pengguna yang sedang aktif di sistem. Ini memberikan informasi tentang siapa saja yang sedang login pada saat itu.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `users`:
 
-```csh
+```
 users [options] [arguments]
 ```
 
 ## Common Options
 - `-n`: Menampilkan nama pengguna tanpa duplikasi.
-- `-r`: Menampilkan pengguna yang sedang aktif secara real-time.
+- `-r`: Menampilkan nama pengguna yang sedang login secara remote.
 
 ## Common Examples
+Berikut adalah beberapa contoh penggunaan perintah `users`:
 
-1. **Menampilkan pengguna aktif:**
+1. Menampilkan semua pengguna yang sedang login:
    ```csh
    users
    ```
 
-2. **Menampilkan pengguna aktif tanpa duplikasi:**
+2. Menampilkan nama pengguna tanpa duplikasi:
    ```csh
    users -n
    ```
 
-3. **Menampilkan pengguna aktif secara real-time:**
+3. Menampilkan pengguna yang login secara remote:
    ```csh
    users -r
    ```
 
 ## Tips
-- Gunakan opsi `-n` jika Anda ingin mendapatkan daftar pengguna yang unik, terutama jika beberapa pengguna login lebih dari sekali.
-- Perintah ini dapat digunakan dalam skrip untuk memantau aktivitas pengguna di sistem secara otomatis.
+- Gunakan opsi `-n` untuk mendapatkan daftar pengguna yang lebih bersih, terutama di sistem dengan banyak sesi pengguna.
+- Kombinasikan perintah `users` dengan perintah lain seperti `wc` untuk menghitung jumlah pengguna yang sedang login:
+  ```csh
+  users | wc -w
+  ```
+- Perintah ini berguna untuk administrasi sistem, terutama dalam memantau aktivitas pengguna di server.

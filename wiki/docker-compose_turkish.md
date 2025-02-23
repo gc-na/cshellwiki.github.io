@@ -1,55 +1,61 @@
 # [Linux] C Shell (csh) docker-compose Kullanımı: Docker konteynerlerini yönetmek için bir araç
 
 ## Genel Bakış
-`docker-compose`, birden fazla Docker konteynerini tanımlamak ve yönetmek için kullanılan bir araçtır. Kullanıcıların birden fazla hizmeti tek bir yapılandırma dosyası ile kolayca başlatmalarına, durdurmalarına ve yönetmelerine olanak tanır.
+`docker-compose` komutu, birden fazla Docker konteynerini tanımlamak ve yönetmek için kullanılan bir araçtır. Bu komut, uygulamaların birden fazla servisten oluştuğu durumlarda, bu servislerin birlikte çalışmasını kolaylaştırır. `docker-compose.yml` dosyası aracılığıyla, konteynerlerin yapılandırmasını ve ilişkilerini tanımlayabilirsiniz.
 
 ## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
+Temel sözdizimi şu şekildedir:
+
 ```bash
 docker-compose [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `up`: Tanımlı hizmetleri başlatır.
-- `down`: Başlatılan hizmetleri durdurur ve ağları temizler.
-- `build`: Hizmetler için Docker imajlarını oluşturur.
-- `logs`: Hizmetlerin günlüklerini görüntüler.
-- `ps`: Çalışan hizmetlerin durumunu listeler.
+- `up`: Tanımlı servisleri başlatır.
+- `down`: Çalışan servisleri durdurur ve kaldırır.
+- `build`: Servisler için imajları oluşturur.
+- `logs`: Servislerin günlüklerini görüntüler.
+- `exec`: Çalışan bir konteyner içinde komut çalıştırır.
 
 ## Yaygın Örnekler
-Aşağıda `docker-compose` komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda `docker-compose` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
-### Hizmetleri Başlatma
+### Servisleri Başlatma
+Tüm tanımlı servisleri başlatmak için:
+
 ```bash
 docker-compose up
 ```
-Bu komut, `docker-compose.yml` dosyasında tanımlı olan tüm hizmetleri başlatır.
 
-### Hizmetleri Durdurma
+### Servisleri Arka Planda Çalıştırma
+Servisleri arka planda çalıştırmak için:
+
+```bash
+docker-compose up -d
+```
+
+### Servisleri Durdurma
+Çalışan servisleri durdurmak için:
+
 ```bash
 docker-compose down
 ```
-Bu komut, başlatılan tüm hizmetleri durdurur ve kaynakları temizler.
-
-### İmajları Oluşturma
-```bash
-docker-compose build
-```
-Bu komut, tanımlı hizmetler için gerekli Docker imajlarını oluşturur.
 
 ### Günlükleri Görüntüleme
-```bash
-docker-compose logs
-```
-Bu komut, başlatılan hizmetlerin günlüklerini görüntüler.
+Bir servisin günlüklerini görüntülemek için:
 
-### Çalışan Hizmetlerin Durumunu Listeleme
 ```bash
-docker-compose ps
+docker-compose logs [servis_adı]
 ```
-Bu komut, mevcut çalışan hizmetlerin durumunu gösterir.
+
+### Konteyner İçinde Komut Çalıştırma
+Bir konteyner içinde belirli bir komut çalıştırmak için:
+
+```bash
+docker-compose exec [servis_adı] [komut]
+```
 
 ## İpuçları
-- `docker-compose up -d`: Hizmetleri arka planda çalıştırmak için `-d` seçeneğini kullanabilirsiniz.
-- `docker-compose exec <hizmet> <komut>`: Çalışan bir hizmet içinde komut çalıştırmak için bu komutu kullanın.
-- Yapılandırma dosyanızı düzenli tutun ve yorumlar ekleyerek açıklamalar yapın, böylece ekip arkadaşlarınız için daha anlaşılır hale gelir.
+- `docker-compose.yml` dosyanızı iyi yapılandırın; bu, servisler arası bağımlılıkları ve yapılandırmaları yönetmeyi kolaylaştırır.
+- `docker-compose up -d` komutunu kullanarak servislerinizi arka planda çalıştırabilir ve terminalinizi serbest bırakabilirsiniz.
+- Günlükleri izlemek için `docker-compose logs -f` komutunu kullanarak gerçek zamanlı güncellemeleri takip edebilirsiniz.

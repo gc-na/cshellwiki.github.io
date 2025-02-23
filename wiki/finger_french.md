@@ -1,50 +1,46 @@
-# [Linux] C Shell (csh) finger Utilisation : Afficher des informations sur les utilisateurs
+# [Linux] C Shell (csh) finger : Afficher des informations sur les utilisateurs
 
 ## Overview
-La commande `finger` permet d'afficher des informations sur les utilisateurs connectés à un système. Elle fournit des détails tels que le nom complet, l'heure de connexion, et d'autres informations pertinentes sur les utilisateurs.
+La commande `finger` est utilisée pour afficher des informations sur les utilisateurs d'un système. Elle fournit des détails tels que le nom complet, le statut de connexion, et d'autres informations pertinentes sur les utilisateurs.
 
 ## Usage
 La syntaxe de base de la commande `finger` est la suivante :
 
-```csh
+```bash
 finger [options] [arguments]
 ```
 
 ## Common Options
 Voici quelques options courantes pour la commande `finger` :
 
-- `-l` : Affiche des informations détaillées sur les utilisateurs.
+- `-l` : Affiche les informations détaillées sur les utilisateurs.
 - `-m` : Ignore la casse lors de la recherche d'un utilisateur.
-- `-s` : Affiche un résumé des informations des utilisateurs au lieu de détails complets.
+- `-s` : Affiche un résumé des informations sur les utilisateurs.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `finger` :
 
-1. Afficher des informations sur tous les utilisateurs connectés :
-
-    ```csh
-    finger
-    ```
+1. Afficher des informations sur tous les utilisateurs :
+   ```bash
+   finger
+   ```
 
 2. Afficher des informations détaillées sur un utilisateur spécifique :
+   ```bash
+   finger nom_utilisateur
+   ```
 
-    ```csh
-    finger -l nom_utilisateur
-    ```
+3. Afficher un résumé des informations sur tous les utilisateurs :
+   ```bash
+   finger -s
+   ```
 
-3. Afficher un résumé des informations sur un utilisateur :
-
-    ```csh
-    finger -s nom_utilisateur
-    ```
-
-4. Ignorer la casse lors de la recherche d'un utilisateur :
-
-    ```csh
-    finger -m Nom_Utilisateur
-    ```
+4. Afficher des informations sur un utilisateur sans tenir compte de la casse :
+   ```bash
+   finger -m Nom_Utilisateur
+   ```
 
 ## Tips
-- Utilisez l'option `-l` pour obtenir des informations complètes, surtout si vous avez besoin de détails sur l'utilisateur.
-- Combinez `finger` avec d'autres commandes comme `grep` pour filtrer les résultats si vous cherchez des utilisateurs spécifiques.
-- Vérifiez régulièrement les informations des utilisateurs pour gérer efficacement les connexions sur le système.
+- Utilisez `finger` sans arguments pour obtenir une vue d'ensemble rapide de tous les utilisateurs connectés.
+- Pour obtenir des informations détaillées, n'hésitez pas à utiliser l'option `-l`.
+- Si vous recherchez un utilisateur dont vous n'êtes pas sûr de l'orthographe, l'option `-m` peut être très utile.

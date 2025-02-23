@@ -1,7 +1,7 @@
-# [Hệ điều hành] C Shell (csh) pr <Sử dụng tương đương>: In định dạng tài liệu
+# [Hệ điều hành] C Shell (csh) pr <Sử dụng tương đương>: in định dạng tài liệu
 
 ## Tổng quan
-Lệnh `pr` trong C Shell (csh) được sử dụng để định dạng và in nội dung của các tệp văn bản. Nó giúp chia nhỏ nội dung thành các trang và cột, làm cho việc đọc tài liệu trở nên dễ dàng hơn.
+Lệnh `pr` trong C Shell (csh) được sử dụng để định dạng và in nội dung của các tệp văn bản. Nó giúp người dùng dễ dàng tạo ra các bản sao tài liệu có định dạng đẹp mắt, phù hợp cho việc in ấn.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `pr` như sau:
@@ -10,40 +10,35 @@ pr [tùy chọn] [đối số]
 ```
 
 ## Tùy chọn phổ biến
-- `-l <số>`: Đặt chiều dài trang (số dòng trên mỗi trang).
-- `-w <số>`: Đặt chiều rộng trang (số ký tự trên mỗi dòng).
-- `-h <tiêu đề>`: Thêm tiêu đề cho mỗi trang.
-- `-s <ký tự>`: Chỉ định ký tự để phân cách các cột.
+- `-h`: Thêm tiêu đề cho trang in.
+- `-l [số]`: Đặt số dòng trên mỗi trang.
+- `-w [số]`: Đặt chiều rộng của trang in.
+- `-s`: Ngăn cách các tệp đầu ra bằng một dòng trống.
 
 ## Ví dụ phổ biến
-Dưới đây là một số ví dụ về cách sử dụng lệnh `pr`:
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `pr`:
 
-1. In nội dung của tệp `file.txt` với chiều dài trang mặc định:
+1. In một tệp văn bản với tiêu đề:
    ```bash
-   pr file.txt
+   pr -h "Tiêu đề Tài liệu" ten_tap.txt
    ```
 
-2. In nội dung của tệp `file.txt` với chiều dài trang là 50 dòng:
+2. In một tệp với 50 dòng mỗi trang:
    ```bash
-   pr -l 50 file.txt
+   pr -l 50 ten_tap.txt
    ```
 
-3. In nội dung của tệp `file.txt` với chiều rộng trang là 80 ký tự:
+3. In nhiều tệp và ngăn cách bằng một dòng trống:
    ```bash
-   pr -w 80 file.txt
+   pr -s tap1.txt tap2.txt
    ```
 
-4. In nội dung của tệp `file.txt` với tiêu đề là "Báo cáo":
+4. Đặt chiều rộng của trang in là 80 ký tự:
    ```bash
-   pr -h "Báo cáo" file.txt
-   ```
-
-5. In nội dung của tệp `file.txt` với 2 cột và ký tự phân cách là dấu phẩy:
-   ```bash
-   pr -s ',' -2 file.txt
+   pr -w 80 ten_tap.txt
    ```
 
 ## Mẹo
-- Sử dụng tùy chọn `-h` để thêm tiêu đề giúp tài liệu trở nên chuyên nghiệp hơn.
-- Kiểm tra chiều dài và chiều rộng trang trước khi in để đảm bảo nội dung được hiển thị đúng cách.
-- Thử nghiệm với các tùy chọn khác nhau để tìm ra định dạng phù hợp nhất cho tài liệu của bạn.
+- Sử dụng tùy chọn `-h` để thêm tiêu đề cho tài liệu của bạn, giúp nó trông chuyên nghiệp hơn.
+- Kiểm tra độ dài của tệp trước khi in để đảm bảo rằng số dòng trên mỗi trang phù hợp với nội dung.
+- Thử nghiệm với các tùy chọn khác nhau để tìm ra định dạng tốt nhất cho tài liệu của bạn.

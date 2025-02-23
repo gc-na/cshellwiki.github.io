@@ -1,37 +1,36 @@
 # [Linux] C Shell (csh) rpm gebruik: Beheer van RPM-pakketten
 
 ## Overzicht
-De `rpm`-opdracht wordt gebruikt voor het beheren van RPM-pakketten op Linux-systemen. Het stelt gebruikers in staat om software te installeren, te verwijderen, te upgraden en informatie over geïnstalleerde pakketten op te vragen.
+De `rpm`-opdracht is een pakketbeheerder voor het installeren, verwijderen en beheren van RPM-pakketten op Linux-systemen. Het biedt een manier om software te installeren en te onderhouden die in het RPM-formaat is verpakt.
 
 ## Gebruik
 De basis syntaxis van de `rpm`-opdracht is als volgt:
 
-```
+```bash
 rpm [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
+## Veelvoorkomende Opties
 - `-i`: Installeer een nieuw pakket.
 - `-e`: Verwijder een geïnstalleerd pakket.
-- `-U`: Upgrade een bestaand pakket naar een nieuwere versie.
-- `-q`: Vraag informatie op over geïnstalleerde pakketten.
-- `-v`: Toon gedetailleerde uitvoer (verbose).
-- `-h`: Toon voortgang in de vorm van een voortgangsbalk (hash).
+- `-U`: Werk een geïnstalleerd pakket bij naar een nieuwere versie.
+- `-q`: Vraag informatie op over een geïnstalleerd pakket.
+- `--verify`: Controleer de integriteit van een pakket.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van de `rpm`-opdracht:
 
-### Een pakket installeren
+### Een nieuw pakket installeren
 ```bash
 rpm -i pakketnaam.rpm
 ```
 
-### Een pakket verwijderen
+### Een geïnstalleerd pakket verwijderen
 ```bash
 rpm -e pakketnaam
 ```
 
-### Een pakket upgraden
+### Een pakket bijwerken
 ```bash
 rpm -U pakketnaam.rpm
 ```
@@ -41,12 +40,12 @@ rpm -U pakketnaam.rpm
 rpm -q pakketnaam
 ```
 
-### Gedetailleerde informatie over een pakket
+### De integriteit van een pakket controleren
 ```bash
-rpm -qi pakketnaam
+rpm --verify pakketnaam
 ```
 
 ## Tips
-- Zorg ervoor dat je de juiste rechten hebt (bijvoorbeeld als root) bij het installeren of verwijderen van pakketten.
-- Gebruik de `-v` en `-h` opties samen voor meer inzicht in het installatieproces.
-- Controleer altijd de afhankelijkheden van een pakket voordat je het installeert of verwijdert om problemen te voorkomen.
+- Zorg ervoor dat je root-toegang hebt bij het installeren of verwijderen van pakketten.
+- Gebruik de `-v` optie voor meer gedetailleerde uitvoer tijdens het uitvoeren van `rpm`-opdrachten.
+- Controleer altijd de afhankelijkheden van een pakket voordat je het installeert om problemen te voorkomen.

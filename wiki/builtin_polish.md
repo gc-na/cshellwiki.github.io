@@ -1,45 +1,48 @@
-# [Linux] C Shell (csh) builtin `alias`: Tworzenie skrótów do poleceń
+# [Linux] C Shell (csh) builtin `set`: Ustawianie zmiennych powłoki
 
 ## Overview
-Polecenie `alias` w C Shell (csh) służy do tworzenia skrótów dla dłuższych poleceń. Umożliwia to użytkownikom łatwiejsze i szybsze wprowadzanie często używanych komend.
+Polecenie `set` w powłoce C Shell (csh) służy do ustawiania zmiennych powłoki oraz do wyświetlania bieżących zmiennych i ich wartości. Jest to przydatne narzędzie do zarządzania środowiskiem powłoki.
 
 ## Usage
-Podstawowa składnia polecenia `alias` jest następująca:
+Podstawowa składnia polecenia `set` jest następująca:
 
 ```csh
-alias [nazwa_aliasu] '[polecenie]'
+set [options] [arguments]
 ```
 
 ## Common Options
-- `-p`: Wyświetla wszystkie zdefiniowane aliasy.
-- `-d`: Usuwa zdefiniowany alias.
+- `-x`: Włącza śledzenie zmiennych, co pozwala na wyświetlanie ich wartości podczas wykonywania skryptu.
+- `-e`: Umożliwia wyświetlenie wszystkich zmiennych i ich wartości w bieżącej powłoce.
 
 ## Common Examples
-1. Tworzenie prostego aliasu:
-   ```csh
-   alias ll 'ls -l'
-   ```
-   Teraz można używać `ll`, aby wyświetlić szczegółową listę plików.
 
-2. Tworzenie aliasu z wieloma poleceniami:
+1. **Ustawienie zmiennej:**
    ```csh
-   alias update 'sudo apt update && sudo apt upgrade'
+   set myVar = "Hello, World!"
    ```
-   Umożliwia to szybkie aktualizowanie systemu za pomocą jednego polecenia.
 
-3. Wyświetlanie wszystkich aliasów:
+2. **Wyświetlenie wartości zmiennej:**
    ```csh
-   alias -p
+   echo $myVar
    ```
-   To polecenie pokaże wszystkie zdefiniowane aliasy w bieżącej sesji.
 
-4. Usuwanie aliasu:
+3. **Ustawienie wielu zmiennych:**
    ```csh
-   alias -d ll
+   set var1 = "Value1"
+   set var2 = "Value2"
    ```
-   Usuwa alias `ll`, przywracając oryginalne polecenie `ls`.
+
+4. **Wyświetlenie wszystkich zmiennych:**
+   ```csh
+   set
+   ```
+
+5. **Włączenie śledzenia zmiennych:**
+   ```csh
+   set -x
+   ```
 
 ## Tips
-- Używaj aliasów do skracania długich poleceń, co zwiększa wydajność pracy w terminalu.
-- Aby zachować aliasy po zamknięciu sesji, dodaj je do pliku `.cshrc`.
-- Unikaj nadawania aliasów, które mogą kolidować z istniejącymi poleceniami systemowymi.
+- Używaj `set` do organizowania i zarządzania zmiennymi w skryptach, aby poprawić czytelność i utrzymanie kodu.
+- Pamiętaj, że zmienne są lokalne dla bieżącej sesji powłoki, chyba że zostaną przekazane do podskryptów.
+- Regularnie używaj `set` bez argumentów, aby sprawdzić, jakie zmienne są aktualnie ustawione w twoim środowisku.

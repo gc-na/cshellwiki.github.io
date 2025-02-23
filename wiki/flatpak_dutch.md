@@ -1,12 +1,12 @@
 # [Linux] C Shell (csh) flatpak gebruik: Beheer van applicaties in sandbox-omgevingen
 
 ## Overzicht
-De `flatpak`-opdracht wordt gebruikt om applicaties te beheren die zijn verpakt in sandbox-omgevingen. Dit maakt het mogelijk om software te installeren, bij te werken en te verwijderen zonder dat dit invloed heeft op het systeem of andere applicaties.
+De `flatpak`-opdracht wordt gebruikt om applicaties te installeren, bij te werken en te beheren in een sandbox-omgeving. Dit zorgt ervoor dat applicaties geïsoleerd draaien van het besturingssysteem en andere applicaties, wat de veiligheid en stabiliteit bevordert.
 
 ## Gebruik
 De basis syntaxis van de `flatpak`-opdracht is als volgt:
 
-```csh
+```bash
 flatpak [opties] [argumenten]
 ```
 
@@ -20,41 +20,41 @@ flatpak [opties] [argumenten]
 ## Veelvoorkomende Voorbeelden
 
 ### Installeren van een applicatie
-Om een applicatie te installeren, gebruik je de volgende opdracht:
+Om een Flatpak-applicatie te installeren, gebruik je de volgende opdracht:
 
-```csh
+```bash
 flatpak install flathub org.example.AppName
 ```
 
 ### Bijwerken van applicaties
 Om alle geïnstalleerde Flatpak-applicaties bij te werken, gebruik je:
 
-```csh
+```bash
 flatpak update
 ```
 
 ### Verwijderen van een applicatie
-Om een applicatie te verwijderen, gebruik je:
+Om een specifieke Flatpak-applicatie te verwijderen, gebruik je:
 
-```csh
+```bash
 flatpak remove org.example.AppName
 ```
 
 ### Lijst van geïnstalleerde applicaties
 Om een lijst van alle geïnstalleerde Flatpak-applicaties te bekijken, gebruik je:
 
-```csh
+```bash
 flatpak list
 ```
 
 ### Een applicatie uitvoeren
-Om een geïnstalleerde applicatie uit te voeren, gebruik je:
+Om een geïnstalleerde Flatpak-applicatie uit te voeren, gebruik je:
 
-```csh
+```bash
 flatpak run org.example.AppName
 ```
 
 ## Tips
-- Zorg ervoor dat je altijd de laatste versie van Flatpak gebruikt voor de beste compatibiliteit en beveiliging.
-- Gebruik `flatpak info org.example.AppName` om meer informatie over een specifieke applicatie te krijgen.
-- Overweeg om Flatpak-applicaties te installeren vanuit de officiële Flathub-repository voor de meest betrouwbare software.
+- Zorg ervoor dat je de juiste Flatpak-repositories hebt toegevoegd om toegang te krijgen tot een breed scala aan applicaties.
+- Controleer regelmatig op updates om ervoor te zorgen dat je applicaties veilig en up-to-date zijn.
+- Gebruik de `--user` optie bij installatie om applicaties alleen voor de huidige gebruiker te installeren, wat handig kan zijn voor persoonlijke projecten.

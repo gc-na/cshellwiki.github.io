@@ -1,7 +1,7 @@
-# [macOS] C Shell (csh) brew utilisation : Gestion des paquets
+# [Linux] C Shell (csh) brew usage : Gestion des paquets
 
 ## Overview
-La commande `brew` est un gestionnaire de paquets pour macOS qui permet aux utilisateurs d'installer, de mettre à jour et de gérer des logiciels facilement via la ligne de commande. Elle simplifie le processus d'installation de logiciels en automatisant les dépendances et les configurations nécessaires.
+La commande `brew` est un gestionnaire de paquets pour macOS et Linux qui permet d'installer, de mettre à jour et de gérer des logiciels facilement à partir de la ligne de commande.
 
 ## Usage
 La syntaxe de base de la commande `brew` est la suivante :
@@ -14,9 +14,9 @@ brew [options] [arguments]
 Voici quelques options courantes pour la commande `brew` :
 
 - `install` : Installe un paquet spécifié.
-- `uninstall` : Désinstalle un paquet spécifié.
-- `update` : Met à jour Homebrew lui-même.
-- `upgrade` : Met à jour tous les paquets installés vers leur dernière version.
+- `update` : Met à jour Homebrew et les formules.
+- `upgrade` : Met à jour tous les paquets installés.
+- `remove` : Désinstalle un paquet spécifié.
 - `list` : Affiche tous les paquets installés.
 
 ## Common Examples
@@ -27,19 +27,19 @@ Voici quelques exemples pratiques de l'utilisation de la commande `brew` :
    brew install wget
    ```
 
-2. **Désinstaller un paquet :**
-   ```csh
-   brew uninstall wget
-   ```
-
-3. **Mettre à jour Homebrew :**
+2. **Mettre à jour Homebrew :**
    ```csh
    brew update
    ```
 
-4. **Mettre à jour tous les paquets installés :**
+3. **Mettre à jour tous les paquets installés :**
    ```csh
    brew upgrade
+   ```
+
+4. **Désinstaller un paquet :**
+   ```csh
+   brew remove wget
    ```
 
 5. **Lister tous les paquets installés :**
@@ -48,6 +48,6 @@ Voici quelques exemples pratiques de l'utilisation de la commande `brew` :
    ```
 
 ## Tips
-- **Vérifiez les dépendances** : Avant d'installer un paquet, utilisez `brew info [package]` pour voir les dépendances requises.
-- **Utilisez des options de nettoyage** : Après des installations ou désinstallations, utilisez `brew cleanup` pour libérer de l'espace disque.
-- **Gardez Homebrew à jour** : Exécutez régulièrement `brew update` pour vous assurer que vous disposez des dernières versions des paquets et des fonctionnalités.
+- Assurez-vous de toujours exécuter `brew update` avant d'installer ou de mettre à jour des paquets pour garantir que vous disposez des dernières versions.
+- Utilisez `brew search [nom_du_paquet]` pour rechercher des paquets disponibles avant de les installer.
+- Consultez la documentation de chaque paquet avec `brew info [nom_du_paquet]` pour obtenir des informations détaillées sur son utilisation et ses options.

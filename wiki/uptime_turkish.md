@@ -1,37 +1,41 @@
-# [Linux] C Shell (csh) uptime Kullanımı: Sistem çalışma süresini gösterir
+# [Linux] C Shell (csh) uptime Kullanımı: Sistemin çalışma süresini gösterir
 
-## Overview
-`uptime` komutu, bir sistemin ne kadar süredir çalıştığını gösterir. Ayrıca, sistemdeki kullanıcı sayısını ve sistemin ortalama yükünü de sağlar. Bu bilgiler, sistem yöneticileri için sistemin genel durumu hakkında hızlı bir bakış sunar.
+## Genel Bakış
+`uptime` komutu, bir sistemin ne kadar süredir çalıştığını, sistemin yük ortalamasını ve aktif kullanıcı sayısını gösterir. Bu bilgi, sistem yöneticileri için sistemin performansını değerlendirmede oldukça faydalıdır.
 
-## Usage
+## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
+
 ```
-uptime [options] [arguments]
+uptime [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `-p`: Sistem çalışma süresini daha okunabilir bir formatta gösterir.
+## Yaygın Seçenekler
+- `-p`: Sistemin çalışma süresini daha okunabilir bir formatta gösterir.
 - `-s`: Sistemin ne zaman başlatıldığını gösterir.
+  
+## Yaygın Örnekler
+Aşağıda `uptime` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-## Common Examples
-Aşağıda `uptime` komutunun bazı yaygın kullanımları bulunmaktadır:
-
-1. Temel kullanım:
-   ```csh
+1. **Temel kullanım:**
+   ```
    uptime
    ```
+   Bu komut, sistemin çalışma süresini, yük ortalamasını ve aktif kullanıcı sayısını gösterir.
 
-2. Daha okunabilir bir formatta çalışma süresi:
-   ```csh
+2. **Okunabilir formatta çalışma süresi:**
+   ```
    uptime -p
    ```
+   Bu komut, sistemin ne kadar süredir çalıştığını daha anlaşılır bir şekilde gösterir.
 
-3. Sistemin başlatılma zamanını gösterme:
-   ```csh
+3. **Sistem başlatma zamanı:**
+   ```
    uptime -s
    ```
+   Bu komut, sistemin en son ne zaman başlatıldığını gösterir.
 
-## Tips
-- `uptime` komutunu düzenli olarak kontrol etmek, sistemin sağlığını izlemek için iyi bir uygulamadır.
-- Yüksek yük değerleri, sistem performansında sorunlar olabileceğini gösterir; bu durumda daha fazla analiz yapmanız gerekebilir.
-- `uptime` komutunu diğer sistem izleme araçlarıyla birlikte kullanarak daha kapsamlı bir analiz yapabilirsiniz.
+## İpuçları
+- `uptime` komutunu düzenli olarak kullanarak sisteminizin performansını izleyebilirsiniz.
+- Yük ortalamasını kontrol ederek, sistemin yoğunluğunu ve potansiyel darboğazları değerlendirebilirsiniz.
+- `uptime` komutunu diğer sistem izleme araçlarıyla birleştirerek daha kapsamlı bir analiz yapabilirsiniz.

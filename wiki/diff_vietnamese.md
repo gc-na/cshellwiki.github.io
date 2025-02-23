@@ -1,47 +1,44 @@
-# [Hệ điều hành] C Shell (csh) diff: So sánh sự khác biệt giữa các tệp
+# [Hệ điều hành] C Shell (csh) diff Cách sử dụng: So sánh sự khác biệt giữa các tệp
 
-## Tổng quan
-Lệnh `diff` trong C Shell (csh) được sử dụng để so sánh nội dung của hai tệp hoặc nhiều tệp và hiển thị sự khác biệt giữa chúng. Điều này rất hữu ích trong việc theo dõi thay đổi trong mã nguồn hoặc tài liệu.
+## Overview
+Lệnh `diff` trong C Shell (csh) được sử dụng để so sánh nội dung của hai tệp và hiển thị sự khác biệt giữa chúng. Lệnh này rất hữu ích cho lập trình viên và người dùng khi cần theo dõi các thay đổi trong mã nguồn hoặc tài liệu.
 
-## Cách sử dụng
+## Usage
 Cú pháp cơ bản của lệnh `diff` như sau:
 ```csh
-diff [tùy chọn] [đối số]
+diff [options] [arguments]
 ```
 
-## Tùy chọn phổ biến
-- `-u`: Hiển thị sự khác biệt theo định dạng thống nhất, dễ đọc hơn.
-- `-c`: Hiển thị sự khác biệt theo định dạng ngữ cảnh, bao gồm một số dòng trước và sau sự khác biệt.
-- `-i`: Bỏ qua sự khác biệt về chữ hoa và chữ thường.
+## Common Options
+- `-u`: Hiển thị sự khác biệt theo định dạng "unified", giúp dễ đọc hơn.
+- `-c`: Hiển thị sự khác biệt theo định dạng "context", bao gồm một số dòng ngữ cảnh xung quanh sự khác biệt.
+- `-i`: Bỏ qua sự khác biệt về chữ hoa chữ thường.
 - `-w`: Bỏ qua sự khác biệt về khoảng trắng.
 
-## Ví dụ phổ biến
+## Common Examples
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `diff`:
 
-1. So sánh hai tệp văn bản:
+1. So sánh hai tệp:
    ```csh
    diff file1.txt file2.txt
    ```
 
-2. So sánh hai tệp và hiển thị sự khác biệt theo định dạng thống nhất:
+2. Hiển thị sự khác biệt theo định dạng unified:
    ```csh
    diff -u file1.txt file2.txt
    ```
 
-3. So sánh hai tệp và hiển thị sự khác biệt theo định dạng ngữ cảnh:
-   ```csh
-   diff -c file1.txt file2.txt
-   ```
-
-4. So sánh hai tệp mà không phân biệt chữ hoa và chữ thường:
+3. So sánh hai tệp và bỏ qua sự khác biệt về chữ hoa chữ thường:
    ```csh
    diff -i file1.txt file2.txt
    ```
 
-## Mẹo
-- Khi làm việc với các tệp lớn, hãy sử dụng tùy chọn `-u` để dễ dàng theo dõi sự khác biệt.
-- Nếu bạn cần lưu kết quả so sánh vào một tệp khác, bạn có thể sử dụng toán tử chuyển hướng:
-  ```csh
-  diff file1.txt file2.txt > differences.txt
-  ```
-- Luôn kiểm tra các tùy chọn khác nhau của lệnh `diff` để tìm ra cách hiển thị sự khác biệt phù hợp nhất với nhu cầu của bạn.
+4. So sánh hai tệp và hiển thị ngữ cảnh:
+   ```csh
+   diff -c file1.txt file2.txt
+   ```
+
+## Tips
+- Sử dụng tùy chọn `-u` để có được kết quả dễ đọc hơn, đặc biệt khi làm việc với mã nguồn.
+- Kiểm tra sự khác biệt giữa các phiên bản tệp trước khi thực hiện các thay đổi lớn.
+- Kết hợp `diff` với các công cụ khác như `patch` để tự động áp dụng các thay đổi.

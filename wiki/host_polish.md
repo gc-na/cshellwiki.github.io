@@ -1,44 +1,45 @@
-# [Linux] C Shell (csh) host użycie: uzyskiwanie informacji o DNS
+# [Linux] C Shell (csh) host użycie: wyszukiwanie informacji o hostach
 
-## Przegląd
-Polecenie `host` jest używane do uzyskiwania informacji o systemie nazw domen (DNS). Umożliwia użytkownikom przekształcanie nazw domen na adresy IP oraz odwrotnie, co jest przydatne w diagnostyce sieci i rozwiązywaniu problemów z połączeniami.
+## Overview
+Polecenie `host` służy do uzyskiwania informacji o systemach nazw domen (DNS). Umożliwia użytkownikom przekształcanie nazw domen na adresy IP oraz odwrotnie, co jest przydatne w diagnostyce sieci i rozwiązywaniu problemów z połączeniami.
 
-## Użycie
+## Usage
 Podstawowa składnia polecenia `host` jest następująca:
 
-```
+```csh
 host [opcje] [argumenty]
 ```
 
-## Typowe opcje
-- `-a`: Wyświetla wszystkie dostępne informacje o danej nazwie.
-- `-t typ`: Określa typ rekordu DNS do zapytania (np. A, MX, TXT).
-- `-v`: Włącza tryb szczegółowy, wyświetlając dodatkowe informacje o zapytaniach.
+## Common Options
+- `-a` - Wyświetla wszystkie dostępne informacje o hoście.
+- `-t typ` - Określa typ rekordu DNS do wyszukania (np. A, MX, TXT).
+- `-v` - Włącza tryb szczegółowy, wyświetlając dodatkowe informacje o zapytaniach.
+- `-r` - Wykonuje zapytanie bezpośrednio do serwera DNS, omijając lokalne pamięci podręczne.
 
-## Przykłady
-Oto kilka praktycznych przykładów użycia polecenia `host`:
+## Common Examples
+Przykłady użycia polecenia `host`:
 
-1. Uzyskiwanie adresu IP dla danej nazwy domeny:
-   ```bash
+1. Aby uzyskać adres IP dla danej nazwy domeny:
+   ```csh
    host example.com
    ```
 
-2. Wykonywanie zapytania o rekord MX dla domeny:
-   ```bash
+2. Aby znaleźć rekordy MX dla domeny:
+   ```csh
    host -t MX example.com
    ```
 
-3. Uzyskiwanie szczegółowych informacji o nazwie domeny:
-   ```bash
+3. Aby uzyskać wszystkie dostępne informacje o hoście:
+   ```csh
    host -a example.com
    ```
 
-4. Włączenie trybu szczegółowego dla zapytania:
-   ```bash
-   host -v example.com
+4. Aby wykonać zapytanie do konkretnego serwera DNS:
+   ```csh
+   host example.com 8.8.8.8
    ```
 
-## Wskazówki
-- Używaj opcji `-t` do precyzyjnego określenia typu rekordu, który chcesz sprawdzić, aby uzyskać bardziej trafne wyniki.
-- W trybie szczegółowym (`-v`) możesz uzyskać więcej informacji, co może być pomocne w diagnozowaniu problemów z DNS.
-- Pamiętaj, że polecenie `host` jest szczególnie przydatne w skryptach do automatyzacji zadań związanych z siecią.
+## Tips
+- Używaj opcji `-v`, aby uzyskać więcej informacji o procesie zapytania, co może pomóc w rozwiązywaniu problemów.
+- Sprawdzaj różne typy rekordów DNS, aby uzyskać pełniejszy obraz konfiguracji domeny.
+- Regularnie testuj różne serwery DNS, aby znaleźć ten, który działa najlepiej w twojej lokalizacji.

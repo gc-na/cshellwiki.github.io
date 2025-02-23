@@ -1,10 +1,10 @@
-# [Linux] C Shell (csh) unxz Użycie: Rozpakowywanie plików skompresowanych w formacie XZ
+# [Linux] C Shell (csh) unxz: Rozpakowywanie plików XZ
 
 ## Overview
-Polecenie `unxz` służy do dekompresji plików skompresowanych w formacie XZ. Jest to narzędzie, które umożliwia użytkownikom łatwe przywracanie oryginalnych plików z ich skompresowanych wersji.
+Polecenie `unxz` służy do rozpakowywania plików skompresowanych w formacie XZ. Jest to prosty sposób na przywrócenie oryginalnych plików z ich skompresowanych wersji.
 
 ## Usage
-Podstawowa składnia polecenia `unxz` jest następująca:
+Podstawowa składnia polecenia `unxz` wygląda następująco:
 
 ```csh
 unxz [opcje] [argumenty]
@@ -13,38 +13,38 @@ unxz [opcje] [argumenty]
 ## Common Options
 Oto kilka powszechnie używanych opcji dla polecenia `unxz`:
 
-- `-k` : Zachowuje oryginalny plik skompresowany po dekompresji.
-- `-f` : Wymusza dekompresję, nawet jeśli plik docelowy już istnieje.
-- `-v` : Wyświetla szczegółowe informacje o postępie dekompresji.
+- `-k`: Zachowuje oryginalny plik skompresowany po rozpakowaniu.
+- `-f`: Wymusza nadpisanie istniejących plików bez pytania.
+- `-v`: Wyświetla szczegóły dotyczące procesu rozpakowywania.
 
 ## Common Examples
 Poniżej znajdują się przykłady użycia polecenia `unxz`:
 
-1. Aby rozpakować plik `example.xz`:
+1. Rozpakowanie pliku `plik.xz`:
 
-   ```csh
-   unxz example.xz
-   ```
+    ```csh
+    unxz plik.xz
+    ```
 
-2. Aby rozpakować plik `example.xz`, zachowując oryginalny plik:
+2. Rozpakowanie pliku `plik.xz` i zachowanie oryginalnego pliku:
 
-   ```csh
-   unxz -k example.xz
-   ```
+    ```csh
+    unxz -k plik.xz
+    ```
 
-3. Aby wymusić dekompresję pliku `example.xz`, nawet jeśli plik `example` już istnieje:
+3. Wymuszenie nadpisania istniejącego pliku podczas rozpakowywania:
 
-   ```csh
-   unxz -f example.xz
-   ```
+    ```csh
+    unxz -f plik.xz
+    ```
 
-4. Aby uzyskać szczegółowe informacje podczas dekompresji:
+4. Wyświetlenie szczegółowych informacji podczas rozpakowywania:
 
-   ```csh
-   unxz -v example.xz
-   ```
+    ```csh
+    unxz -v plik.xz
+    ```
 
 ## Tips
-- Zawsze sprawdzaj, czy masz odpowiednie uprawnienia do zapisu w katalogu, w którym chcesz dekompresować pliki.
-- Używaj opcji `-k`, jeśli chcesz zachować oryginalne pliki skompresowane na wypadek, gdybyś potrzebował ich ponownie.
-- Regularnie aktualizuj swoje narzędzia do dekompresji, aby zapewnić najlepszą wydajność i bezpieczeństwo.
+- Używaj opcji `-k`, jeśli chcesz zachować oryginalny plik skompresowany na wypadek, gdybyś potrzebował go ponownie.
+- Zawsze sprawdzaj, czy plik, który chcesz rozpakować, istnieje, aby uniknąć błędów.
+- Jeśli często pracujesz z plikami XZ, rozważ stworzenie aliasu w swoim pliku konfiguracyjnym, aby uprościć proces rozpakowywania.

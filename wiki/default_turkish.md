@@ -1,38 +1,38 @@
-# [Linux] C Shell (csh) default kullanım: Varsayılan komutları çalıştırma
+# [Linux] C Shell (csh) default komutu: Varsayılan komutları çalıştırma
 
 ## Genel Bakış
-`default` komutu, C Shell (csh) ortamında varsayılan bir komut veya işlem tanımlamak için kullanılır. Bu komut, belirli bir komutun veya işlemin varsayılan olarak çalıştırılmasını sağlamak amacıyla kullanılır.
+`default` komutu, C Shell (csh) ortamında varsayılan bir komut veya işlevi çalıştırmak için kullanılır. Bu komut, kullanıcının belirli bir işlem veya görev için varsayılan ayarları belirlemesine olanak tanır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
 
-```csh
-default [options] [arguments]
+```
+default [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-f`: Varsayılan komutu zorla çalıştırır.
-- `-n`: Varsayılan komutun çalıştırılmasını engeller.
+- `-f`: Varsayılan ayarları zorla uygular.
+- `-n`: Varsayılan ayarları gösterir, ancak uygulamaz.
 
 ## Yaygın Örnekler
-Aşağıda `default` komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda `default` komutunun bazı pratik kullanım örnekleri verilmiştir:
 
-1. Varsayılan bir komut ayarlamak:
-   ```csh
-   default mycommand
-   ```
+### Örnek 1: Varsayılan ayarları görüntüleme
+```csh
+default -n
+```
 
-2. Varsayılan komutu zorla çalıştırmak:
-   ```csh
-   default -f mycommand
-   ```
+### Örnek 2: Varsayılan ayarları zorla uygulama
+```csh
+default -f
+```
 
-3. Varsayılan komutun çalıştırılmasını engellemek:
-   ```csh
-   default -n mycommand
-   ```
+### Örnek 3: Belirli bir argüman ile varsayılan ayarları ayarlama
+```csh
+default myCommand
+```
 
 ## İpuçları
-- Varsayılan komutları ayarlarken, hangi komutların sık kullanıldığını düşünün ve bunları varsayılan olarak ayarlayın.
-- `-f` seçeneğini kullanırken dikkatli olun; bu, varsayılan komutun her durumda çalıştırılmasına neden olabilir.
-- Varsayılan komutlarınızı düzenli olarak gözden geçirin ve gereksiz olanları kaldırın.
+- Varsayılan ayarları değiştirmeden önce mevcut ayarları kontrol etmek için `-n` seçeneğini kullanın.
+- Varsayılan ayarları zorla uygulamak, mevcut ayarların üzerine yazabilir; bu nedenle dikkatli olun.
+- Komutları çalıştırmadan önce, hangi ayarların varsayılan olarak belirlendiğini bilmek faydalı olabilir.

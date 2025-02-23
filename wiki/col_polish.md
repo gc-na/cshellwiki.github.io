@@ -1,39 +1,39 @@
-# [Linux] C Shell (csh) col <Użycie>: Usuwa kontrolę formatowania z tekstu
+# [Linux] C Shell (csh) col <Użycie>: Usuwa kontrolne znaki z tekstu
 
 ## Overview
-Polecenie `col` w C Shell (csh) służy do usuwania kontrolnych sekwencji formatowania z tekstu, co pozwala na uzyskanie czystego, sformatowanego wyjścia. Jest to przydatne, gdy chcemy przetworzyć pliki tekstowe, które zawierają znaki kontrolne, na przykład z plików generowanych przez programy, które używają formatowania.
+Polecenie `col` w powłoce C Shell (csh) służy do usuwania kontrolnych znaków z tekstu, co pozwala na poprawne wyświetlanie danych w terminalu. Jest to przydatne, gdy chcemy przetworzyć pliki tekstowe, które zawierają formatowanie, ale chcemy uzyskać czysty tekst.
 
 ## Usage
 Podstawowa składnia polecenia `col` jest następująca:
 
-```csh
+```
 col [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-b` - Ignoruje znaki tabulacji.
+- `-b` - Usuwa wszystkie znaki tabulacji.
 - `-x` - Używa rozszerzonego formatu tabulacji.
-- `-f` - Ignoruje znaki formatujące, które są niepotrzebne.
+- `-f` - Ignoruje znaki kontrolne, które są używane do formatowania tekstu.
 
 ## Common Examples
-Przykłady użycia polecenia `col`:
+Oto kilka praktycznych przykładów użycia polecenia `col`:
 
-1. Usunięcie kontrolnych sekwencji formatowania z pliku:
+1. Usunięcie kontrolnych znaków z pliku:
    ```csh
-   col < plik.txt > wyjscie.txt
+   col < plik.txt > czysty_plik.txt
    ```
 
-2. Użycie opcji `-b` do ignorowania znaków tabulacji:
+2. Użycie opcji `-b` do usunięcia znaków tabulacji:
    ```csh
-   col -b < plik_z_formatowaniem.txt > czysty_plik.txt
+   col -b < plik_z_formatowaniem.txt > bez_tabulacji.txt
    ```
 
-3. Użycie opcji `-x` do przetwarzania pliku z rozszerzonym formatowaniem tabulacji:
+3. Przekierowanie wyjścia z innego polecenia do `col`:
    ```csh
-   col -x < plik_z_tabulacjami.txt > przetworzony_plik.txt
+   cat plik.txt | col > przetworzony_plik.txt
    ```
 
 ## Tips
-- Zawsze sprawdzaj zawartość pliku wejściowego przed użyciem `col`, aby upewnić się, że usunięcie sekwencji kontrolnych nie wpłynie negatywnie na dane.
-- Możesz używać `col` w połączeniu z innymi poleceniami, takimi jak `cat` lub `grep`, aby przetwarzać dane w potokach.
-- Jeśli często przetwarzasz pliki z formatowaniem, rozważ stworzenie aliasu dla polecenia `col` z preferowanymi opcjami.
+- Używaj `col` w połączeniu z innymi poleceniami, takimi jak `cat` lub `grep`, aby uzyskać czystsze wyjście.
+- Sprawdzaj wynik działania `col` w terminalu, aby upewnić się, że usunięto wszystkie niepożądane znaki.
+- Możesz łączyć różne opcje, aby dostosować działanie `col` do swoich potrzeb.

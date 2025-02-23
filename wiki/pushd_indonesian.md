@@ -1,7 +1,7 @@
-# [Sistem Operasi] C Shell (csh) pushd Penggunaan: Mengelola direktori dengan mudah
+# [Sistem Operasi] C Shell (csh) pushd: [navigasi direktori dengan mudah]
 
 ## Overview
-Perintah `pushd` dalam C Shell (csh) digunakan untuk mengubah direktori kerja saat ini dan menyimpan direktori sebelumnya dalam stack. Ini memungkinkan pengguna untuk dengan mudah beralih antara beberapa direktori tanpa kehilangan jejak lokasi sebelumnya.
+Perintah `pushd` dalam C Shell (csh) digunakan untuk mengubah direktori kerja saat ini dan menyimpan direktori sebelumnya dalam stack. Ini memungkinkan pengguna untuk dengan mudah berpindah antara direktori yang berbeda tanpa kehilangan jejak direktori yang telah dikunjungi.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `pushd`:
@@ -11,14 +11,14 @@ pushd [options] [arguments]
 ```
 
 ## Common Options
-- `+n`: Mengakses direktori yang berada di posisi n dalam stack.
-- `-n`: Mengakses direktori yang berada di posisi -n dalam stack.
-- `--help`: Menampilkan bantuan penggunaan perintah.
+- `+n`: Mengambil direktori dari stack berdasarkan indeks `n`.
+- `-n`: Mengambil direktori dari stack berdasarkan indeks `-n` (dari belakang).
+- `-`: Kembali ke direktori sebelumnya yang disimpan di stack.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `pushd`:
 
-1. **Berpindah ke direktori baru dan menyimpan direktori saat ini:**
+1. **Pindah ke direktori baru dan simpan direktori saat ini:**
    ```csh
    pushd /path/to/directory
    ```
@@ -28,17 +28,17 @@ Berikut adalah beberapa contoh penggunaan `pushd`:
    pushd -
    ```
 
-3. **Mengakses direktori yang berada di posisi kedua dalam stack:**
+3. **Mengambil direktori dari stack berdasarkan indeks:**
    ```csh
-   pushd +2
+   pushd +1
    ```
 
-4. **Menggunakan pushd dengan opsi untuk menampilkan direktori saat ini:**
+4. **Mengambil direktori dari stack berdasarkan indeks dari belakang:**
    ```csh
-   pushd /another/path && pwd
+   pushd -1
    ```
 
 ## Tips
 - Gunakan `dirs` untuk melihat daftar direktori yang ada dalam stack.
-- Kombinasikan `pushd` dengan `popd` untuk mengelola direktori dengan lebih efisien.
-- Ingat bahwa setiap kali Anda menggunakan `pushd`, direktori sebelumnya akan disimpan, sehingga Anda dapat kembali dengan mudah.
+- Kombinasikan `pushd` dengan `popd` untuk mengelola navigasi direktori dengan lebih efisien.
+- Ingat bahwa setiap kali Anda menggunakan `pushd`, direktori saat ini akan disimpan, sehingga Anda dapat kembali ke direktori tersebut dengan mudah.

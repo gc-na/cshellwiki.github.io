@@ -1,49 +1,51 @@
-# [Sistem Operasi] C Shell (csh) fc Penggunaan: Mengedit dan menjalankan perintah sebelumnya
+# [Sistem Operasi] C Shell (csh) fc <Mengedit riwayat perintah>: Mengedit dan menjalankan perintah sebelumnya
 
 ## Overview
-Perintah `fc` dalam C Shell (csh) digunakan untuk mengedit dan menjalankan kembali perintah yang telah dieksekusi sebelumnya. Dengan `fc`, pengguna dapat dengan mudah memperbaiki kesalahan atau mengubah perintah tanpa harus mengetik ulang dari awal.
+Perintah `fc` dalam C Shell (csh) digunakan untuk mengedit dan menjalankan perintah yang telah dieksekusi sebelumnya. Dengan `fc`, pengguna dapat dengan mudah mengakses riwayat perintah dan melakukan modifikasi sebelum menjalankannya kembali.
 
 ## Usage
-Berikut adalah sintaks dasar dari perintah `fc`:
+Sintaks dasar dari perintah `fc` adalah sebagai berikut:
 
-```csh
+```
 fc [options] [arguments]
 ```
 
 ## Common Options
-- `-l`: Menampilkan daftar perintah yang telah dieksekusi sebelumnya.
-- `-e`: Menentukan editor yang akan digunakan untuk mengedit perintah.
-- `-n`: Menjalankan perintah tanpa menampilkan nomor perintah.
+Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah `fc`:
+
+- `-l`: Menampilkan daftar perintah yang ada dalam riwayat.
+- `-n`: Menampilkan daftar perintah tanpa nomor.
+- `-s`: Menjalankan perintah yang telah diedit tanpa membuka editor.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan `fc`:
+Berikut adalah beberapa contoh penggunaan perintah `fc`:
 
-1. **Menampilkan daftar perintah sebelumnya:**
+1. **Menampilkan daftar perintah dalam riwayat:**
    ```csh
    fc -l
    ```
 
-2. **Mengedit perintah terakhir menggunakan editor default:**
+2. **Menampilkan daftar perintah tanpa nomor:**
+   ```csh
+   fc -n -l
+   ```
+
+3. **Mengedit perintah terakhir:**
    ```csh
    fc
    ```
 
-3. **Mengedit perintah tertentu (misalnya perintah ke-5):**
-   ```csh
-   fc 5
-   ```
-
 4. **Menjalankan perintah terakhir tanpa mengedit:**
    ```csh
-   fc -n -e -
+   fc -s
    ```
 
-5. **Mengedit perintah terakhir dengan editor tertentu (misalnya `nano`):**
+5. **Mengedit perintah tertentu dari riwayat:**
    ```csh
-   fc -e nano
+   fc 10
    ```
 
 ## Tips
-- Selalu gunakan `fc -l` untuk melihat perintah yang telah dieksekusi sebelumnya sebelum mengedit.
-- Jika Anda sering melakukan kesalahan ketik, pertimbangkan untuk menggunakan `fc` untuk memperbaikinya daripada mengetik ulang.
-- Pilih editor yang Anda kuasai untuk mengedit perintah, agar lebih efisien saat melakukan perubahan.
+- Gunakan `fc -l` untuk dengan cepat melihat perintah yang telah Anda jalankan sebelumnya, sehingga Anda dapat memilih mana yang ingin diedit.
+- Jika Anda sering melakukan kesalahan pada perintah yang sama, pertimbangkan untuk menggunakan `fc` untuk memperbaikinya tanpa harus mengetik ulang seluruh perintah.
+- Ingatlah bahwa `fc` akan membuka editor teks yang telah ditentukan dalam variabel lingkungan `EDITOR`, jadi pastikan Anda nyaman dengan editor tersebut.

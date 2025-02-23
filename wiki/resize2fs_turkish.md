@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) resize2fs Kullanımı: Dosya sistemi boyutunu ayarlama
+# [Linux] C Shell (csh) resize2fs Kullanımı: Dosya sistemini boyutlandırma aracı
 
 ## Genel Bakış
-`resize2fs` komutu, bir dosya sisteminin boyutunu değiştirmek için kullanılır. Genellikle, bir dosya sisteminin boyutunu artırmak veya azaltmak amacıyla kullanılır ve ext2, ext3 ve ext4 dosya sistemleri ile uyumludur.
+`resize2fs`, bir dosya sisteminin boyutunu değiştirmek için kullanılan bir komuttur. Genellikle, bir dosya sisteminin boyutunu artırmak veya azaltmak için kullanılır ve ext2, ext3 ve ext4 dosya sistemleri ile uyumludur.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
@@ -11,35 +11,43 @@ resize2fs [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-f`: Dosya sistemini zorla yeniden boyutlandır.
-- `-p`: İşlem sırasında ilerleme çubuğunu göster.
-- `-s`: Dosya sistemini boyutlandırırken, mevcut boyutunu koru.
-- `-M`: Dosya sistemini en küçük boyuta küçült.
+- `-f`: Zorla boyutlandırma işlemi yapar.
+- `-p`: İşlem sırasında ilerleme durumunu gösterir.
+- `-s`: Dosya sistemini boyutlandırırken, mevcut boyutunu korur.
+- `-M`: Dosya sistemini minimum boyuta küçültür.
 
 ## Yaygın Örnekler
-Aşağıda `resize2fs` komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda `resize2fs` komutunun bazı pratik kullanımları bulunmaktadır:
 
-1. **Dosya sistemini maksimum boyuta genişletme:**
-   ```bash
-   resize2fs /dev/sda1
-   ```
+### Dosya Sistemini Büyütme
+Bir dosya sistemini mevcut disk alanı ile büyütmek için:
 
-2. **Belirli bir boyuta ayarlama (örneğin, 20G):**
-   ```bash
-   resize2fs /dev/sda1 20G
-   ```
+```bash
+resize2fs /dev/sda1
+```
 
-3. **İlerleme çubuğu ile dosya sistemini genişletme:**
-   ```bash
-   resize2fs -p /dev/sda1
-   ```
+### Dosya Sistemini Küçültme
+Bir dosya sistemini belirli bir boyuta küçültmek için:
 
-4. **Dosya sistemini en küçük boyuta küçültme:**
-   ```bash
-   resize2fs -M /dev/sda1
-   ```
+```bash
+resize2fs /dev/sda1 10G
+```
+
+### İlerleme Durumunu Gösterme
+Boyutlandırma işlemi sırasında ilerlemeyi görmek için:
+
+```bash
+resize2fs -p /dev/sda1
+```
+
+### Zorla Boyutlandırma
+Eğer boyutlandırma işlemi başarısız olursa zorla devam etmek için:
+
+```bash
+resize2fs -f /dev/sda1
+```
 
 ## İpuçları
-- `resize2fs` komutunu kullanmadan önce dosya sisteminin yedeklemesini almak iyi bir uygulamadır.
-- Dosya sisteminin boyutunu değiştirmeden önce, dosya sisteminin bağlı olmadığından emin olun.
-- Boyutlandırma işlemi sırasında sisteminize zarar vermemek için, işlemi dikkatli bir şekilde gerçekleştirin ve gerekli izinlere sahip olduğunuzdan emin olun.
+- Boyutlandırma işlemi öncesinde dosya sisteminin yedeğini almak iyi bir uygulamadır.
+- Dosya sistemini küçültmeden önce, dosya sisteminin en az %10'unun boş olduğundan emin olun.
+- Boyutlandırma işlemi sırasında dosya sisteminin bağlı olmadığından emin olun; bu, veri kaybını önlemek için önemlidir.

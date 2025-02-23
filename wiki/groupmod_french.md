@@ -1,41 +1,41 @@
 # [Linux] C Shell (csh) groupmod : Modifier les groupes d'utilisateurs
 
 ## Overview
-La commande `groupmod` permet de modifier les attributs d'un groupe d'utilisateurs existant dans le système. Elle est utile pour gérer les groupes et leurs propriétés sans avoir à les supprimer et à les recréer.
+La commande `groupmod` est utilisée pour modifier les propriétés d'un groupe d'utilisateurs existant dans un système Linux. Cela inclut des actions telles que changer le nom du groupe ou son identifiant (GID).
 
 ## Usage
 La syntaxe de base de la commande `groupmod` est la suivante :
 
-```csh
+```bash
 groupmod [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes pour `groupmod` :
+Voici quelques options courantes pour la commande `groupmod` :
 
-- `-n` : Change le nom du groupe.
-- `-g` : Change l'identifiant du groupe (GID).
-- `-o` : Permet d'utiliser un GID non unique (si utilisé avec `-g`).
+- `-n, --new-name NOM` : Change le nom du groupe.
+- `-g, --gid GID` : Change l'identifiant du groupe (GID).
+- `-h, --help` : Affiche l'aide et les options disponibles.
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de `groupmod` :
+Voici quelques exemples pratiques de l'utilisation de la commande `groupmod` :
 
 1. **Changer le nom d'un groupe :**
-   ```csh
+   ```bash
    groupmod -n nouveau_nom ancien_nom
    ```
 
 2. **Changer l'identifiant d'un groupe :**
-   ```csh
+   ```bash
    groupmod -g 1001 nom_du_groupe
    ```
 
-3. **Changer le nom et l'identifiant d'un groupe :**
-   ```csh
-   groupmod -n nouveau_nom -g 1001 ancien_nom
+3. **Modifier à la fois le nom et le GID d'un groupe :**
+   ```bash
+   groupmod -n nouveau_nom -g 1002 ancien_nom
    ```
 
 ## Tips
-- Assurez-vous d'avoir les droits d'administrateur (root) pour exécuter `groupmod`.
-- Vérifiez toujours les groupes existants avec `getent group` avant de faire des modifications.
-- Soyez prudent lors du changement de GID, car cela peut affecter les permissions des fichiers et des répertoires associés à ce groupe.
+- Assurez-vous d'avoir les privilèges nécessaires (généralement en tant que superutilisateur) pour modifier les groupes.
+- Vérifiez toujours les groupes existants avec la commande `getent group` avant de faire des modifications pour éviter les conflits.
+- Utilisez `groupmod -h` pour obtenir de l'aide sur les options disponibles si vous n'êtes pas sûr de la syntaxe.

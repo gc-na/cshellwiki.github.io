@@ -1,36 +1,38 @@
 # [Hệ điều hành] C Shell (csh) nohup: Chạy lệnh không bị ngắt kết nối
 
-## Overview
-Lệnh `nohup` trong C Shell (csh) cho phép bạn chạy một lệnh mà không bị ngắt kết nối khi bạn đăng xuất khỏi phiên làm việc. Điều này rất hữu ích khi bạn muốn thực hiện các tác vụ dài mà không cần phải giữ phiên mở.
+## Tổng quan
+Lệnh `nohup` trong C Shell (csh) cho phép bạn chạy một lệnh mà không bị ngắt kết nối khi bạn đăng xuất khỏi phiên làm việc. Điều này rất hữu ích khi bạn muốn thực hiện các tác vụ lâu dài mà không cần phải giữ phiên mở.
 
-## Usage
+## Cách sử dụng
 Cú pháp cơ bản của lệnh `nohup` như sau:
 ```
 nohup [options] [arguments]
 ```
 
-## Common Options
+## Tùy chọn phổ biến
 - `&`: Chạy lệnh ở chế độ nền.
-- `-h`: Hiển thị thông tin trợ giúp về lệnh.
-- `-v`: Hiển thị thông tin chi tiết về các lệnh đang chạy.
+- `-h`: Hiển thị trợ giúp về lệnh `nohup`.
+- `-v`: Hiển thị thông tin chi tiết về lệnh đang chạy.
 
-## Common Examples
-1. Chạy một script shell trong nền mà không bị ngắt kết nối:
+## Ví dụ phổ biến
+Dưới đây là một số ví dụ thực tế khi sử dụng lệnh `nohup`:
+
+1. Chạy một script dài mà không bị ngắt kết nối:
    ```csh
-   nohup ./my_script.sh &
+   nohup ./long_script.sh &
    ```
 
-2. Chạy một lệnh dài và ghi lại đầu ra vào file `nohup.out`:
+2. Chạy một lệnh và lưu đầu ra vào file:
    ```csh
-   nohup long_running_command > output.log &
+   nohup my_command > output.log &
    ```
 
-3. Chạy lệnh `ping` liên tục mà không bị ngắt kết nối:
+3. Chạy một lệnh mà không cần quan tâm đến đầu ra:
    ```csh
-   nohup ping google.com &
+   nohup my_command >/dev/null 2>&1 &
    ```
 
-## Tips
+## Mẹo
 - Luôn kiểm tra file `nohup.out` để xem đầu ra của lệnh đã chạy.
-- Sử dụng `&` để chạy lệnh trong nền, giúp bạn có thể tiếp tục sử dụng terminal cho các lệnh khác.
-- Nếu bạn muốn dừng lệnh đang chạy, hãy sử dụng `kill` với PID của lệnh đó.
+- Sử dụng `&` để chạy lệnh ở chế độ nền, giúp bạn tiếp tục sử dụng terminal.
+- Nếu bạn không muốn lưu đầu ra, hãy chuyển hướng đến `/dev/null` để tránh tạo file không cần thiết.

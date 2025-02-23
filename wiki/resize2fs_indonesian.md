@@ -1,7 +1,7 @@
-# [Sistem Operasi] C Shell (csh) resize2fs Penggunaan: Mengubah ukuran sistem berkas ext2/ext3/ext4
+# [Sistem Operasi] C Shell (csh) resize2fs Penggunaan: Mengubah ukuran sistem file ext2/ext3/ext4
 
 ## Overview
-Perintah `resize2fs` digunakan untuk mengubah ukuran sistem berkas yang menggunakan format ext2, ext3, atau ext4. Dengan perintah ini, pengguna dapat memperbesar atau memperkecil ukuran partisi yang sudah ada tanpa kehilangan data.
+Perintah `resize2fs` digunakan untuk mengubah ukuran sistem file yang menggunakan format ext2, ext3, atau ext4. Dengan perintah ini, pengguna dapat memperbesar atau memperkecil ukuran sistem file sesuai kebutuhan, tanpa kehilangan data yang ada.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `resize2fs`:
@@ -11,35 +11,35 @@ resize2fs [options] [arguments]
 ```
 
 ## Common Options
-- `-f`: Memaksa resize meskipun ada kesalahan.
-- `-p`: Menampilkan kemajuan saat proses resize berlangsung.
-- `-s`: Mengubah ukuran sistem berkas ke ukuran yang ditentukan dalam argumen.
-- `-M`: Mengurangi ukuran sistem berkas ke ukuran minimum yang diperlukan.
+- `-f`: Memaksa perubahan ukuran sistem file meskipun ada kesalahan.
+- `-p`: Menampilkan progres saat mengubah ukuran sistem file.
+- `-s`: Mengubah ukuran sistem file ke ukuran yang ditentukan tanpa memeriksa sistem file terlebih dahulu.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `resize2fs`:
 
-1. **Memperbesar ukuran sistem berkas**:
-   ```bash
-   resize2fs /dev/sda1
-   ```
+### Memperbesar ukuran sistem file
+Untuk memperbesar ukuran sistem file pada partisi `/dev/sda1`:
 
-2. **Mengubah ukuran sistem berkas ke ukuran tertentu**:
-   ```bash
-   resize2fs -s 20G /dev/sda1
-   ```
+```bash
+resize2fs /dev/sda1
+```
 
-3. **Menampilkan kemajuan saat memperbesar sistem berkas**:
-   ```bash
-   resize2fs -p /dev/sda1
-   ```
+### Memperkecil ukuran sistem file
+Sebelum memperkecil ukuran sistem file, pastikan ukuran baru lebih besar dari ukuran yang digunakan. Misalnya, untuk mengubah ukuran menjadi 20G:
 
-4. **Memaksa resize meskipun ada kesalahan**:
-   ```bash
-   resize2fs -f /dev/sda1
-   ```
+```bash
+resize2fs /dev/sda1 20G
+```
+
+### Menampilkan progres saat mengubah ukuran
+Untuk menampilkan progres saat mengubah ukuran sistem file:
+
+```bash
+resize2fs -p /dev/sda1
+```
 
 ## Tips
-- Pastikan untuk melakukan backup data penting sebelum melakukan resize untuk menghindari kehilangan data.
-- Gunakan perintah `df -h` untuk memeriksa ukuran partisi sebelum dan sesudah menggunakan `resize2fs`.
-- Sebaiknya lakukan resize saat sistem tidak dalam keadaan aktif untuk menghindari masalah yang tidak diinginkan.
+- Selalu lakukan backup data penting sebelum mengubah ukuran sistem file untuk menghindari kehilangan data.
+- Pastikan sistem file tidak sedang digunakan saat melakukan perubahan ukuran untuk mencegah kerusakan.
+- Gunakan opsi `-f` dengan hati-hati, karena dapat mengabaikan kesalahan yang mungkin terjadi.

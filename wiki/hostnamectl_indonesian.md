@@ -1,12 +1,12 @@
 # [Sistem Operasi] C Shell (csh) hostnamectl Penggunaan: Mengelola nama host dan informasi sistem
 
 ## Overview
-Perintah `hostnamectl` digunakan untuk mengelola nama host dan informasi sistem pada sistem operasi berbasis Linux. Dengan perintah ini, pengguna dapat melihat dan mengubah nama host, serta mendapatkan informasi tentang sistem seperti versi kernel dan arsitektur.
+Perintah `hostnamectl` digunakan untuk mengelola nama host dan informasi sistem pada sistem yang menggunakan systemd. Dengan perintah ini, pengguna dapat melihat dan mengubah nama host, serta mendapatkan informasi tentang sistem yang sedang berjalan.
 
 ## Usage
-Berikut adalah sintaks dasar untuk menggunakan perintah `hostnamectl`:
+Berikut adalah sintaks dasar dari perintah `hostnamectl`:
 
-```
+```bash
 hostnamectl [options] [arguments]
 ```
 
@@ -14,23 +14,23 @@ hostnamectl [options] [arguments]
 - `set-hostname`: Mengubah nama host sistem.
 - `status`: Menampilkan informasi tentang nama host dan status sistem.
 - `set-icon-name`: Mengatur nama ikon untuk sistem.
-- `set-chassis`: Mengatur jenis chassis (misalnya, desktop, laptop, server).
-- `help`: Menampilkan bantuan untuk perintah `hostnamectl`.
+- `set-chassis`: Mengatur jenis chassis sistem (misalnya, desktop, laptop).
+- `help`: Menampilkan bantuan untuk perintah ini.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan perintah `hostnamectl`:
+Berikut adalah beberapa contoh penggunaan `hostnamectl`:
 
 1. **Menampilkan status sistem dan nama host:**
    ```bash
    hostnamectl status
    ```
 
-2. **Mengubah nama host sistem:**
+2. **Mengubah nama host:**
    ```bash
    hostnamectl set-hostname nama-baru
    ```
 
-3. **Mengatur jenis chassis sistem:**
+3. **Mengatur jenis chassis:**
    ```bash
    hostnamectl set-chassis laptop
    ```
@@ -41,6 +41,6 @@ Berikut adalah beberapa contoh penggunaan perintah `hostnamectl`:
    ```
 
 ## Tips
-- Pastikan Anda memiliki hak akses yang cukup (biasanya sebagai root) untuk mengubah nama host.
-- Setelah mengubah nama host, beberapa layanan mungkin perlu di-restart agar perubahan dapat diterapkan.
-- Gunakan perintah `hostnamectl status` secara berkala untuk memeriksa informasi sistem dan memastikan semuanya berjalan dengan baik.
+- Pastikan Anda memiliki hak akses yang cukup (biasanya sebagai pengguna root) untuk mengubah nama host.
+- Setelah mengubah nama host, Anda mungkin perlu me-reboot sistem untuk menerapkan perubahan secara penuh.
+- Gunakan `hostnamectl status` secara berkala untuk memeriksa informasi sistem dan memastikan bahwa nama host sudah benar.

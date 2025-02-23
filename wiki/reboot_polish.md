@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) reboot użycie: Uruchamianie systemu na nowo
 
 ## Overview
-Polecenie `reboot` w C Shell (csh) służy do ponownego uruchamiania systemu operacyjnego. Jest to przydatne, gdy chcesz zrestartować komputer, na przykład po zainstalowaniu aktualizacji lub w przypadku problemów z systemem.
+Polecenie `reboot` w C Shell (csh) służy do ponownego uruchamiania systemu operacyjnego. Umożliwia to zamknięcie wszystkich działających procesów i uruchomienie systemu od nowa, co jest przydatne w przypadku wprowadzania zmian w konfiguracji lub po aktualizacjach.
 
 ## Usage
 Podstawowa składnia polecenia `reboot` jest następująca:
@@ -11,12 +11,12 @@ reboot [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-f`: Wymusza natychmiastowe ponowne uruchomienie systemu bez czyszczenia systemu plików.
-- `-n`: Nie synchronizuje systemu plików przed ponownym uruchomieniem.
-- `-w`: Tylko wyświetla, co by się stało, gdyby polecenie `reboot` zostało wykonane.
+- `-f`: Wymusza natychmiastowe ponowne uruchomienie systemu bez wywoływania skryptów zamykających.
+- `-n`: Pomija synchronizację systemu plików przed ponownym uruchomieniem.
+- `-w`: Tylko zapisuje informacje o ponownym uruchomieniu, nie wykonuje go.
 
 ## Common Examples
-1. **Proste ponowne uruchomienie systemu:**
+1. **Standardowe ponowne uruchomienie systemu:**
    ```csh
    reboot
    ```
@@ -26,12 +26,17 @@ reboot [opcje] [argumenty]
    reboot -f
    ```
 
-3. **Wyświetlenie informacji o ponownym uruchomieniu bez faktycznego działania:**
+3. **Pominięcie synchronizacji systemu plików:**
+   ```csh
+   reboot -n
+   ```
+
+4. **Zapisanie informacji o ponownym uruchomieniu:**
    ```csh
    reboot -w
    ```
 
 ## Tips
-- Upewnij się, że zapisałeś wszystkie otwarte pliki przed użyciem polecenia `reboot`, aby uniknąć utraty danych.
-- Używaj opcji `-f` ostrożnie, ponieważ może to prowadzić do uszkodzenia systemu plików.
-- Zawsze sprawdzaj, czy nie ma aktywnych użytkowników lub procesów, które mogą zostać przerwane podczas ponownego uruchamiania.
+- Upewnij się, że zapisujesz wszystkie otwarte pliki przed użyciem polecenia `reboot`, aby uniknąć utraty danych.
+- Używaj opcji `-f` tylko w sytuacjach awaryjnych, ponieważ może to prowadzić do uszkodzenia systemu plików.
+- Jeśli pracujesz na serwerze, rozważ powiadomienie innych użytkowników o planowanym ponownym uruchomieniu, aby zminimalizować zakłócenia.

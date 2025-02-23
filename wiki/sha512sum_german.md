@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) sha512sum Verwendung: Berechnung von SHA-512-Prüfziffern
 
 ## Übersicht
-Der Befehl `sha512sum` wird verwendet, um den SHA-512-Hashwert einer Datei zu berechnen. Dieser Hashwert kann zur Überprüfung der Integrität von Dateien oder zur sicheren Speicherung von Passwörtern verwendet werden.
+Der Befehl `sha512sum` wird verwendet, um den SHA-512-Hash eines oder mehrerer Dateien zu berechnen. Dies ist nützlich, um die Integrität von Dateien zu überprüfen oder um sicherzustellen, dass Dateien nicht verändert wurden.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
@@ -11,35 +11,37 @@ sha512sum [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-b`: Berechnet den Hashwert für eine Binärdatei.
-- `-c`: Überprüft die Hashwerte von Dateien anhand einer Prüfziffern-Datei.
-- `-h`: Zeigt eine Hilfe mit den verfügbaren Optionen an.
-- `--tag`: Fügt einen Tag für die Ausgabe hinzu, um die Ausgabe zu formatieren.
+- `-b`: Berechnet den Hash für Binärdateien.
+- `-c`: Überprüft die Hash-Werte in einer Datei.
+- `-h`: Zeigt eine Hilfe mit Informationen zur Verwendung des Befehls an.
+- `--tag`: Fügt einen Tag zu den Ausgaben hinzu.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung von `sha512sum`:
-
-1. Berechnung des SHA-512-Hashwerts einer Datei:
+1. **Berechnung des SHA-512-Hashes einer Datei:**
    ```csh
    sha512sum datei.txt
    ```
 
-2. Berechnung des Hashwerts einer Binärdatei:
+2. **Berechnung des SHA-512-Hashes mehrerer Dateien:**
    ```csh
-   sha512sum -b binärdatei.bin
+   sha512sum datei1.txt datei2.txt
    ```
 
-3. Überprüfung von Hashwerten mit einer Prüfziffern-Datei:
+3. **Überprüfung von Hash-Werten aus einer Datei:**
+   Angenommen, Sie haben eine Datei `hashes.txt`, die Hash-Werte enthält:
    ```csh
-   sha512sum -c prüfziffern.txt
+   sha512sum -c hashes.txt
    ```
 
-4. Ausgabe des Hashwerts mit einem Tag:
+4. **Berechnung des Hashes für eine Binärdatei:**
    ```csh
-   sha512sum --tag datei.txt
+   sha512sum -b datei.bin
    ```
 
 ## Tipps
-- Achten Sie darauf, die Prüfziffern-Datei regelmäßig zu aktualisieren, um die Integrität Ihrer Dateien zu gewährleisten.
-- Verwenden Sie `sha512sum` in Kombination mit anderen Befehlen wie `find`, um Hashwerte für mehrere Dateien auf einmal zu berechnen.
-- Speichern Sie die Hashwerte an einem sicheren Ort, um sicherzustellen, dass sie nicht manipuliert werden können.
+- Verwenden Sie die Option `-c`, um sicherzustellen, dass die Dateien nicht verändert wurden, indem Sie die Hash-Werte mit einer vorher gespeicherten Liste vergleichen.
+- Speichern Sie die Ausgabe von `sha512sum` in einer Datei, um später eine Überprüfung durchführen zu können:
+  ```csh
+  sha512sum datei.txt > hashes.txt
+  ```
+- Achten Sie darauf, dass die Datei, die Sie überprüfen möchten, im gleichen Verzeichnis wie die Hash-Datei ist, um Fehler zu vermeiden.

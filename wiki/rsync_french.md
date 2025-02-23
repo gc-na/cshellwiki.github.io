@@ -1,48 +1,58 @@
-# [Linux] C Shell (csh) rsync : Synchroniser des fichiers et des répertoires
+# [Linux] C Shell (csh) rsync : Synchronisation de fichiers
 
 ## Overview
-La commande `rsync` est un outil puissant utilisé pour synchroniser des fichiers et des répertoires entre deux emplacements, que ce soit localement ou à distance. Elle est particulièrement appréciée pour sa rapidité et son efficacité, car elle ne transfère que les différences entre les fichiers source et destination.
+La commande `rsync` est utilisée pour synchroniser des fichiers et des répertoires entre deux emplacements, que ce soit localement ou à travers un réseau. Elle est particulièrement efficace car elle ne transfère que les différences entre les fichiers source et destination, ce qui réduit le temps et la bande passante nécessaires.
 
 ## Usage
 La syntaxe de base de la commande `rsync` est la suivante :
 
-```bash
+```csh
 rsync [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes que vous pouvez utiliser avec `rsync` :
+Voici quelques options courantes pour `rsync` :
 
-- `-a` : Archive, qui préserve les permissions, les timestamps, et les liens symboliques.
-- `-v` : Verbose, pour afficher des informations détaillées sur le processus de synchronisation.
-- `-z` : Compression, pour compresser les fichiers pendant le transfert.
-- `-r` : Récursif, pour copier des répertoires de manière récursive.
+- `-a` : Archive mode, qui préserve les permissions, les timestamps, et les liens symboliques.
+- `-v` : Mode verbeux, pour afficher les fichiers en cours de transfert.
+- `-z` : Compression des données pendant le transfert pour économiser la bande passante.
+- `-r` : Récursif, pour copier des répertoires et leur contenu.
 - `--delete` : Supprime les fichiers dans le répertoire de destination qui ne sont pas présents dans le répertoire source.
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de `rsync` :
+Voici quelques exemples pratiques d'utilisation de `rsync` :
 
-1. **Synchroniser un répertoire local :**
-   ```bash
-   rsync -av /chemin/vers/source/ /chemin/vers/destination/
-   ```
+1. **Synchroniser un répertoire local avec un autre répertoire local :**
 
-2. **Synchroniser un répertoire vers un serveur distant :**
-   ```bash
-   rsync -av /chemin/vers/source/ utilisateur@serveur:/chemin/vers/destination/
-   ```
+```csh
+rsync -av /chemin/vers/source/ /chemin/vers/destination/
+```
 
-3. **Synchroniser un répertoire distant vers un répertoire local :**
-   ```bash
-   rsync -av utilisateur@serveur:/chemin/vers/source/ /chemin/vers/destination/
-   ```
+2. **Synchroniser un répertoire local avec un répertoire distant :**
 
-4. **Synchroniser tout en supprimant les fichiers non présents dans la source :**
-   ```bash
-   rsync -av --delete /chemin/vers/source/ /chemin/vers/destination/
-   ```
+```csh
+rsync -av /chemin/vers/source/ utilisateur@serveur:/chemin/vers/destination/
+```
+
+3. **Synchroniser un répertoire distant avec un répertoire local :**
+
+```csh
+rsync -av utilisateur@serveur:/chemin/vers/source/ /chemin/vers/destination/
+```
+
+4. **Synchroniser tout en compressant les données :**
+
+```csh
+rsync -avz /chemin/vers/source/ utilisateur@serveur:/chemin/vers/destination/
+```
+
+5. **Synchroniser en supprimant les fichiers obsolètes dans la destination :**
+
+```csh
+rsync -av --delete /chemin/vers/source/ /chemin/vers/destination/
+```
 
 ## Tips
-- Utilisez l'option `-n` (dry run) pour simuler la synchronisation sans effectuer de modifications, ce qui vous permet de vérifier ce qui sera transféré.
-- Pensez à utiliser `-z` pour compresser les fichiers lors de la synchronisation sur des connexions lentes.
-- Vérifiez toujours les permissions et les chemins avant de lancer des synchronisations, surtout avec l'option `--delete`, pour éviter de perdre des données.
+- Toujours tester vos commandes `rsync` avec l'option `-n` (mode simulation) pour voir ce qui sera transféré sans effectuer de modifications.
+- Utilisez des chemins relatifs pour éviter les erreurs de chemin d'accès.
+- Pensez à utiliser des clés SSH pour sécuriser vos transferts lorsque vous travaillez avec des serveurs distants.

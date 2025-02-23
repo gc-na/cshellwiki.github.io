@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) vmstat Użycie: monitorowanie wydajności systemu
+# [Linux] C Shell (csh) vmstat Użycie: Monitorowanie statystyk systemowych
 
 ## Overview
-Polecenie `vmstat` (Virtual Memory Statistics) służy do monitorowania wydajności systemu operacyjnego, dostarczając informacji o pamięci wirtualnej, procesach, systemie wejścia/wyjścia oraz obciążeniu CPU. Dzięki temu narzędziu można uzyskać wgląd w działanie systemu w czasie rzeczywistym.
+Polecenie `vmstat` służy do monitorowania statystyk systemowych, takich jak użycie pamięci, procesora oraz aktywność I/O. Umożliwia użytkownikom uzyskanie wglądu w wydajność systemu w czasie rzeczywistym.
 
 ## Usage
 Podstawowa składnia polecenia `vmstat` jest następująca:
@@ -11,41 +11,47 @@ vmstat [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-a` - Wyświetla informacje o pamięci, w tym pamięć wolną i używaną.
-- `-n` - Nie wyświetla nagłówków po pierwszym wierszu.
-- `-s` - Wyświetla statystyki pamięci w formie podsumowania.
-- `-t` - Dodaje znacznik czasu do wyjścia.
-- `interval` - Określa czas w sekundach między kolejnymi pomiarami.
-- `count` - Liczba pomiarów do wykonania.
+- `-a`: Wyświetla statystyki dotyczące pamięci, w tym pamięć aktywną i nieaktywną.
+- `-n`: Wyłącza nagłówki wyjścia po pierwszym raporcie.
+- `-s`: Wyświetla podsumowanie statystyk systemowych.
+- `-t`: Dodaje znacznik czasu do wyjścia.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `vmstat`:
+1. Aby wyświetlić podstawowe statystyki systemowe co 2 sekundy, użyj:
 
-1. Wyświetlenie statystyk systemu co 5 sekund przez 10 razy:
-   ```csh
-   vmstat 5 10
-   ```
+    ```csh
+    vmstat 2
+    ```
 
-2. Wyświetlenie szczegółowych informacji o pamięci:
-   ```csh
-   vmstat -a
-   ```
+2. Aby uzyskać szczegółowe informacje o pamięci, w tym pamięć aktywną i nieaktywną:
 
-3. Wyświetlenie statystyk z czasem:
-   ```csh
-   vmstat -t
-   ```
+    ```csh
+    vmstat -a
+    ```
 
-4. Wyświetlenie podsumowania statystyk pamięci:
-   ```csh
-   vmstat -s
-   ```
+3. Aby wyświetlić podsumowanie statystyk systemowych:
+
+    ```csh
+    vmstat -s
+    ```
+
+4. Aby wyłączyć nagłówki po pierwszym raporcie:
+
+    ```csh
+    vmstat -n 2
+    ```
+
+5. Aby dodać znacznik czasu do wyjścia:
+
+    ```csh
+    vmstat -t 2
+    ```
 
 ## Tips
-- Używaj opcji `-n`, aby uniknąć zduplikowanych nagłówków w długich pomiarach.
-- Monitoruj system w czasie rzeczywistym, aby zidentyfikować potencjalne problemy z wydajnością.
-- Zapisuj wyniki do pliku, używając przekierowania, aby móc je później analizować:
-  ```csh
-  vmstat 5 10 > vmstat_output.txt
-  ```
-- Regularne monitorowanie może pomóc w optymalizacji zasobów systemowych.
+- Używaj `vmstat` w połączeniu z innymi narzędziami, takimi jak `top` lub `iostat`, aby uzyskać pełniejszy obraz wydajności systemu.
+- Regularne monitorowanie statystyk za pomocą `vmstat` może pomóc w identyfikacji problemów z wydajnością przed ich eskalacją.
+- Zapisuj wyniki do pliku, aby móc je analizować później, używając przekierowania:
+
+    ```csh
+    vmstat 2 > statystyki.txt
+    ```

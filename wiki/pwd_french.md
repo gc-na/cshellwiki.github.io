@@ -1,12 +1,12 @@
 # [Linux] C Shell (csh) pwd : Afficher le répertoire de travail actuel
 
 ## Overview
-La commande `pwd` (print working directory) est utilisée dans le C Shell pour afficher le chemin complet du répertoire de travail actuel. C'est un outil essentiel pour naviguer dans le système de fichiers et comprendre votre position actuelle dans l'arborescence des répertoires.
+La commande `pwd` (print working directory) dans le C Shell affiche le chemin complet du répertoire de travail actuel. C'est un outil essentiel pour naviguer dans le système de fichiers et savoir où vous vous trouvez à tout moment.
 
 ## Usage
-La syntaxe de base de la commande `pwd` est la suivante :
+La syntaxe de base de la commande est la suivante :
 
-```
+```csh
 pwd [options] [arguments]
 ```
 
@@ -24,17 +24,17 @@ Voici quelques exemples pratiques de l'utilisation de la commande `pwd` :
    pwd
    ```
 
-2. Afficher le chemin logique du répertoire de travail :
+2. Afficher le chemin logique :
    ```csh
    pwd -L
    ```
 
-3. Afficher le chemin physique du répertoire de travail :
+3. Afficher le chemin physique :
    ```csh
    pwd -P
    ```
 
 ## Tips
-- Utilisez `pwd` régulièrement pour vérifier votre position dans le système de fichiers, surtout avant d'exécuter des commandes qui dépendent du répertoire courant.
-- Combinez `pwd` avec d'autres commandes pour créer des scripts utiles qui nécessitent la connaissance du chemin actuel.
+- Utilisez `pwd` régulièrement pour vous assurer que vous êtes dans le bon répertoire avant d'exécuter d'autres commandes.
+- Combinez `pwd` avec d'autres commandes comme `cd` pour naviguer efficacement dans le système de fichiers.
 - Si vous travaillez avec des liens symboliques, utilisez l'option `-P` pour obtenir le chemin réel du répertoire.

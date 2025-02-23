@@ -1,24 +1,26 @@
 # [Sistem Operasi] C Shell (csh) lvm: Mengelola Volume Logis
 
 ## Overview
-Perintah `lvm` digunakan untuk mengelola volume logis dalam sistem Linux. Dengan `lvm`, pengguna dapat membuat, menghapus, dan mengubah ukuran volume logis, serta mengatur penyimpanan secara lebih fleksibel.
+Perintah `lvm` (Logical Volume Manager) digunakan untuk mengelola volume logis di sistem Linux. Dengan menggunakan `lvm`, pengguna dapat membuat, menghapus, dan mengubah ukuran volume logis, yang memungkinkan pengelolaan penyimpanan yang lebih fleksibel dan efisien.
 
 ## Usage
-Berikut adalah sintaks dasar dari perintah `lvm`:
+Sintaks dasar dari perintah `lvm` adalah sebagai berikut:
 
 ```csh
 lvm [options] [arguments]
 ```
 
 ## Common Options
+Berikut adalah beberapa opsi umum untuk `lvm` beserta penjelasannya:
+
 - `create`: Membuat volume logis baru.
 - `remove`: Menghapus volume logis yang ada.
-- `extend`: Menambah ukuran volume logis.
+- `extend`: Memperbesar ukuran volume logis.
 - `reduce`: Mengurangi ukuran volume logis.
-- `lvdisplay`: Menampilkan informasi tentang volume logis.
+- `list`: Menampilkan daftar volume logis yang ada.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan perintah `lvm`:
+Berikut adalah beberapa contoh praktis penggunaan perintah `lvm`:
 
 1. **Membuat Volume Logis Baru**
    ```csh
@@ -30,22 +32,22 @@ Berikut adalah beberapa contoh penggunaan perintah `lvm`:
    lvm remove my_volume
    ```
 
-3. **Menambah Ukuran Volume Logis**
+3. **Memperbesar Ukuran Volume Logis**
    ```csh
    lvm extend -L +5G my_volume
    ```
 
 4. **Mengurangi Ukuran Volume Logis**
    ```csh
-   lvm reduce -L -3G my_volume
+   lvm reduce -L -5G my_volume
    ```
 
-5. **Menampilkan Informasi Volume Logis**
+5. **Menampilkan Daftar Volume Logis**
    ```csh
-   lvm lvdisplay my_volume
+   lvm list
    ```
 
 ## Tips
-- Selalu pastikan untuk melakukan backup data sebelum mengubah ukuran volume logis.
-- Gunakan perintah `lvdisplay` untuk memeriksa status volume logis sebelum melakukan perubahan.
-- Pelajari lebih lanjut tentang opsi dan fitur `lvm` untuk memaksimalkan pengelolaan penyimpanan Anda.
+- Selalu pastikan untuk melakukan backup data sebelum melakukan perubahan pada volume logis.
+- Gunakan opsi `--dry-run` untuk melihat apa yang akan dilakukan perintah tanpa benar-benar menjalankannya.
+- Periksa status volume logis secara berkala untuk memastikan tidak ada masalah dengan penyimpanan Anda.

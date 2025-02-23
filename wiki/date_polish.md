@@ -1,22 +1,26 @@
 # [Linux] C Shell (csh) date użycie: Wyświetlanie i formatowanie daty i czasu
 
 ## Overview
-Polecenie `date` w powłoce C Shell (csh) służy do wyświetlania bieżącej daty i czasu. Umożliwia również formatowanie daty i czasu według określonych wzorców, co może być przydatne w skryptach i automatyzacji.
+Polecenie `date` w C Shell (csh) służy do wyświetlania aktualnej daty i czasu systemowego. Umożliwia również formatowanie daty w różnorodny sposób, co jest przydatne w skryptach i automatyzacji.
 
 ## Usage
-Podstawowa składnia polecenia `date` jest następująca:
+Podstawowa składnia polecenia `date` wygląda następująco:
 
-```csh
+```
 date [options] [arguments]
 ```
 
 ## Common Options
-- `+FORMAT` - Umożliwia formatowanie wyjścia daty i czasu. FORMAT może zawierać różne specyfikatory, takie jak `%Y` dla roku, `%m` dla miesiąca itp.
-- `-u` - Wyświetla czas w formacie UTC (czas uniwersalny).
-- `-d STRING` - Wyświetla datę określoną przez STRING, co pozwala na wyświetlenie daty w przyszłości lub przeszłości.
+Oto kilka powszechnie używanych opcji polecenia `date`:
+
+- `+FORMAT` - Umożliwia określenie formatu wyjścia. Na przykład, `%Y` zwraca rok, a `%m` miesiąc.
+- `-u` - Wyświetla datę i czas w formacie UTC (Czas Uniwersalny).
+- `-d STRING` - Wyświetla datę określoną przez ciąg znaków. Na przykład, `-d "next Friday"`.
 
 ## Common Examples
-1. Wyświetlenie bieżącej daty i czasu:
+Oto kilka praktycznych przykładów użycia polecenia `date`:
+
+1. Wyświetlenie aktualnej daty i czasu:
    ```csh
    date
    ```
@@ -26,27 +30,22 @@ date [options] [arguments]
    date +%Y-%m-%d
    ```
 
-3. Wyświetlenie czasu w formacie 24-godzinnym:
-   ```csh
-   date +%H:%M:%S
-   ```
-
-4. Wyświetlenie daty w formacie z nazwami dni tygodnia:
+3. Wyświetlenie daty w formacie pełnym:
    ```csh
    date +"%A, %d %B %Y"
    ```
 
-5. Wyświetlenie daty w UTC:
+4. Wyświetlenie daty w strefie czasowej UTC:
    ```csh
    date -u
    ```
 
-6. Wyświetlenie daty za 7 dni:
+5. Wyświetlenie daty za tydzień:
    ```csh
-   date -d "7 days"
+   date -d "next week"
    ```
 
 ## Tips
-- Używaj opcji `+FORMAT`, aby dostosować wyjście do swoich potrzeb, co jest szczególnie przydatne w skryptach.
-- Zawsze sprawdzaj strefę czasową, aby upewnić się, że wyświetlane daty i czasy są zgodne z oczekiwaniami.
-- Eksperymentuj z różnymi specyfikatorami formatu, aby uzyskać pożądany wygląd daty i czasu.
+- Używaj opcji `+FORMAT`, aby dostosować wyjście do swoich potrzeb, co może być przydatne w skryptach.
+- Sprawdź różne formaty, takie jak `%H` (godzina), `%M` (minuta) i `%S` (sekunda), aby uzyskać dokładne informacje o czasie.
+- Pamiętaj, że formatowanie daty może się różnić w zależności od lokalnych ustawień systemowych, dlatego warto przetestować różne opcje.

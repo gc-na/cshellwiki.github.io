@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) rev: Ters çevirme komutu
 
 ## Overview
-`rev` komutu, bir dosyadaki veya standart girdi akışındaki her bir satırın karakterlerini tersine çevirerek çıktısını verir. Bu, metin dosyalarındaki verileri hızlı bir şekilde analiz etmek veya düzenlemek için yararlı olabilir.
+`rev` komutu, bir dosyadaki veya standart girdideki her satırın karakterlerini ters çevirerek çıktısını verir. Bu, metin manipülasyonu için yararlı bir araçtır.
 
 ## Usage
 Temel sözdizimi aşağıdaki gibidir:
@@ -10,33 +10,34 @@ rev [options] [arguments]
 ```
 
 ## Common Options
-- `-o <file>`: Çıktıyı belirtilen dosyaya yazmak için kullanılır.
-- `-h`: Yardım bilgilerini görüntüler.
+- `-o, --output=FILE`: Çıktıyı belirtilen dosyaya yaz.
+- `-h, --help`: Yardım mesajını göster.
+- `-V, --version`: Versiyon bilgisini göster.
 
 ## Common Examples
-Aşağıda `rev` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+Aşağıda `rev` komutunun birkaç pratik örneği bulunmaktadır:
 
-1. **Bir dosyadaki satırları tersine çevirme:**
+1. Bir dosyadaki her satırı ters çevirme:
    ```csh
    rev dosya.txt
    ```
 
-2. **Standart girdi ile tersine çevirme:**
+2. Standart girdi ile ters çevirme:
    ```csh
-   echo "merhaba" | rev
+   echo "merhaba dünya" | rev
    ```
 
-3. **Tersine çevrilmiş çıktıyı başka bir dosyaya yazma:**
+3. Çıktıyı bir dosyaya yazma:
    ```csh
    rev dosya.txt -o ters_dosya.txt
    ```
 
-4. **Birden fazla dosyayı tersine çevirme:**
+4. Birden fazla dosyayı ters çevirme:
    ```csh
    rev dosya1.txt dosya2.txt
    ```
 
 ## Tips
-- `rev` komutunu, metin dosyalarındaki verileri analiz ederken kullanarak, belirli bir formatta düzenlemeler yapabilirsiniz.
-- Uzun dosyalarla çalışırken, çıktıyı bir dosyaya yönlendirmek, daha sonra incelemek için faydalı olabilir.
-- `rev` komutunu diğer komutlarla birleştirerek daha karmaşık işlemler gerçekleştirebilirsiniz; örneğin, `cat` ile birlikte kullanarak birden fazla dosyayı birleştirip tersine çevirebilirsiniz.
+- `rev` komutunu kullanırken, çıktının okunabilirliğini artırmak için dosya içeriğini önceden kontrol edin.
+- Büyük dosyalarla çalışırken, çıktıyı bir dosyaya yönlendirmek performansı artırabilir.
+- `rev` komutunu diğer metin işleme komutlarıyla birleştirerek daha karmaşık işlemler gerçekleştirebilirsiniz.

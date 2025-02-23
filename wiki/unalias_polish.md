@@ -1,43 +1,38 @@
 # [Linux] C Shell (csh) unalias: Usuwanie aliasów
 
 ## Overview
-Polecenie `unalias` w C Shell (csh) służy do usuwania wcześniej zdefiniowanych aliasów. Alias to skrót, który pozwala na zastąpienie długiego polecenia krótszym i łatwiejszym do zapamiętania. Używając `unalias`, możesz przywrócić oryginalne zachowanie poleceń, eliminując aliasy.
+Polecenie `unalias` w C Shell (csh) służy do usuwania zdefiniowanych aliasów. Alias to skrót, który pozwala na użycie dłuższego polecenia w prostszy sposób. Używając `unalias`, możesz przywrócić oryginalne polecenia, eliminując konflikty lub niepożądane skróty.
 
 ## Usage
 Podstawowa składnia polecenia `unalias` jest następująca:
 
-```
+```csh
 unalias [opcje] [argumenty]
 ```
 
 ## Common Options
 - `-a`: Usuwa wszystkie zdefiniowane aliasy.
-- `-h`: Wyświetla pomoc dotycząca użycia polecenia.
+- `-m`: Usuwa aliasy, które pasują do podanego wzorca.
 
 ## Common Examples
+Oto kilka praktycznych przykładów użycia polecenia `unalias`:
 
-### Usuwanie pojedynczego aliasu
-Aby usunąć pojedynczy alias, użyj polecenia:
+1. Usunięcie pojedynczego aliasu:
+   ```csh
+   unalias ll
+   ```
 
-```csh
-unalias myalias
-```
+2. Usunięcie wszystkich aliasów:
+   ```csh
+   unalias -a
+   ```
 
-### Usuwanie wszystkich aliasów
-Aby usunąć wszystkie aliasy w bieżącej sesji, użyj opcji `-a`:
-
-```csh
-unalias -a
-```
-
-### Wyświetlanie pomocy
-Aby uzyskać pomoc dotyczącą polecenia `unalias`, użyj opcji `-h`:
-
-```csh
-unalias -h
-```
+3. Usunięcie aliasu pasującego do wzorca:
+   ```csh
+   unalias 'l*'
+   ```
 
 ## Tips
-- Zawsze sprawdzaj, jakie aliasy są zdefiniowane w twoim środowisku, używając polecenia `alias`, zanim zdecydujesz się na ich usunięcie.
-- Używaj `unalias` z ostrożnością, aby nie usunąć aliasów, które mogą być przydatne w twojej pracy.
-- Rozważ zapisanie aliasów w pliku konfiguracyjnym, aby móc je łatwo przywrócić w przyszłości, jeśli zajdzie taka potrzeba.
+- Zawsze sprawdzaj zdefiniowane aliasy przed ich usunięciem, aby upewnić się, że nie usuwasz czegoś, co może być przydatne.
+- Możesz użyć polecenia `alias` bez argumentów, aby wyświetlić wszystkie aktualnie zdefiniowane aliasy.
+- Rozważ dodanie aliasów do pliku konfiguracyjnego, aby były dostępne po ponownym uruchomieniu powłoki.

@@ -1,53 +1,53 @@
 # [Sistem Operasi] C Shell (csh) wget Penggunaan: Mengunduh file dari internet
 
 ## Overview
-Perintah `wget` adalah alat yang digunakan untuk mengunduh file dari internet. Ia mendukung berbagai protokol seperti HTTP, HTTPS, dan FTP, dan dapat digunakan untuk mengunduh file secara langsung dari URL yang diberikan.
+Perintah `wget` adalah alat baris perintah yang digunakan untuk mengunduh file dari web. Ini mendukung berbagai protokol seperti HTTP, HTTPS, dan FTP, dan memungkinkan pengguna untuk mengunduh file secara langsung ke sistem mereka.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `wget`:
 
-```
+```csh
 wget [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang sering digunakan dengan `wget`:
+Berikut adalah beberapa opsi umum yang dapat digunakan dengan `wget`:
 
-- `-O [file]`: Menyimpan file yang diunduh dengan nama yang ditentukan.
-- `-q`: Menjalankan wget dalam mode senyap (quiet), tanpa menampilkan output.
+- `-O <file>`: Menentukan nama file output yang diinginkan.
 - `-c`: Melanjutkan unduhan yang terputus.
-- `-r`: Mengunduh secara rekursif, termasuk semua file yang terhubung.
-- `--limit-rate=[rate]`: Membatasi kecepatan unduhan.
+- `-q`: Menjalankan wget dalam mode diam (quiet), tanpa output ke layar.
+- `--limit-rate=<rate>`: Membatasi kecepatan unduhan.
+- `-r`: Mengunduh secara rekursif, termasuk semua file yang terkait.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `wget`:
 
-1. Mengunduh file dari URL:
-   ```bash
-   wget http://example.com/file.zip
+1. **Mengunduh file tunggal:**
+   ```csh
+   wget https://example.com/file.zip
    ```
 
-2. Mengunduh file dan menyimpannya dengan nama yang berbeda:
-   ```bash
-   wget -O myfile.zip http://example.com/file.zip
+2. **Mengunduh file dengan nama yang berbeda:**
+   ```csh
+   wget -O myfile.zip https://example.com/file.zip
    ```
 
-3. Mengunduh file dalam mode senyap:
-   ```bash
-   wget -q http://example.com/file.zip
+3. **Melanjutkan unduhan yang terputus:**
+   ```csh
+   wget -c https://example.com/file.zip
    ```
 
-4. Melanjutkan unduhan yang terputus:
-   ```bash
-   wget -c http://example.com/file.zip
+4. **Mengunduh secara rekursif:**
+   ```csh
+   wget -r https://example.com/directory/
    ```
 
-5. Mengunduh semua file dari situs web secara rekursif:
-   ```bash
-   wget -r http://example.com/
+5. **Membatasi kecepatan unduhan:**
+   ```csh
+   wget --limit-rate=200k https://example.com/file.zip
    ```
 
 ## Tips
-- Selalu periksa URL yang Anda masukkan untuk memastikan bahwa itu valid dan file yang diinginkan tersedia.
-- Gunakan opsi `-q` jika Anda ingin menghindari output yang berlebihan, terutama saat mengunduh banyak file.
-- Jika Anda mengunduh file besar, pertimbangkan untuk menggunakan opsi `--limit-rate` untuk menghindari penggunaan bandwidth yang berlebihan.
+- Selalu periksa URL yang ingin Anda unduh untuk memastikan keamanannya.
+- Gunakan opsi `-q` jika Anda ingin menjalankan unduhan dalam mode diam, terutama saat mengunduh banyak file.
+- Jika Anda sering mengunduh file dari situs yang sama, pertimbangkan untuk menggunakan opsi `-r` untuk mengunduh seluruh direktori.

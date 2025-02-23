@@ -45,9 +45,6 @@ Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh 
    ```
 
 ## Mẹo
-- Luôn sử dụng dấu `$` trước tên biến khi thực hiện phép toán để lấy giá trị của biến.
-- Kiểm tra kết quả của các phép toán bằng cách in giá trị của biến sau khi thực hiện lệnh `@`.
-- Sử dụng lệnh `echo` để hiển thị kết quả cho người dùng dễ dàng theo dõi. Ví dụ:
-  ```csh
-  echo "Giá trị của e là: $e"
-  ```
+- Hãy chắc chắn rằng các biến đã được gán giá trị trước khi thực hiện phép toán để tránh lỗi.
+- Sử dụng dấu `$` trước tên biến để tham chiếu đến giá trị của biến đó.
+- Lệnh `@` chỉ hỗ trợ các phép toán số học cơ bản, vì vậy hãy sử dụng các lệnh khác nếu bạn cần thực hiện các phép toán phức tạp hơn.

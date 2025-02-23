@@ -1,43 +1,43 @@
 # [Linux] C Shell (csh) col Kullanımı: Metin biçimlendirme aracı
 
 ## Genel Bakış
-`col` komutu, metin dosyalarındaki biçimlendirme kontrol karakterlerini kaldırarak, düz metin çıktısı elde etmek için kullanılır. Özellikle, sayfa düzeni veya sütunlu veriler içeren dosyaları düz metin formatına dönüştürmek için faydalıdır.
+`col` komutu, metin dosyalarındaki biçimlendirme kontrol karakterlerini kaldırarak, düz metin çıktısı üretmek için kullanılır. Özellikle, sayfa düzeni ve biçimlendirme ile ilgili karakterlerin temizlenmesi gereken durumlarda faydalıdır.
 
 ## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
-```
+Temel sözdizimi şu şekildedir:
+```csh
 col [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-b`: Tüm geri dönüş karakterlerini yok sayar.
-- `-x`: Genişlik ayarını kullanarak metni hizalar.
-- `-f`: Biçimlendirilmiş metni düz metne dönüştürür.
+- `-b`: Tüm biçimlendirme kontrol karakterlerini kaldırır.
+- `-x`: Çıktıda tab boşluklarını genişletir.
+- `-f`: Biçimlendirilmiş metinleri düz metin olarak işler.
 
 ## Yaygın Örnekler
 Aşağıda `col` komutunun bazı pratik kullanım örnekleri verilmiştir:
 
-1. Basit bir metin dosyasını düz metin formatına dönüştürmek:
+1. Biçimlendirilmiş bir dosyayı düz metin olarak çıkarmak:
    ```csh
-   col < dosya.txt > düz_metin.txt
+   col dosya.txt > düz_metin.txt
    ```
 
-2. Geri dönüş karakterlerini yok sayarak metni işlemek:
+2. Biçimlendirme kontrol karakterlerini kaldırarak çıktı almak:
    ```csh
-   col -b < dosya.txt > temiz_metin.txt
+   col -b dosya.txt
    ```
 
-3. Metni genişlik ayarları ile hizalamak:
+3. Tab boşluklarını genişleterek çıktı almak:
    ```csh
-   col -x < dosya.txt > hizalanmış_metin.txt
+   col -x dosya.txt
    ```
 
-4. Biçimlendirilmiş bir dosyayı düz metne dönüştürmek:
+4. Bir dosyayı biçimlendirilmiş olarak işleyip düz metin çıktısı almak:
    ```csh
-   col -f < biçimlendirilmiş_dosya.txt > düz_biçim.txt
+   col -f dosya.txt > temizlenmis.txt
    ```
 
 ## İpuçları
-- `col` komutunu kullanmadan önce dosyanızın biçimlendirilmiş olup olmadığını kontrol edin.
+- `col` komutunu, metin dosyalarınızı başka programlar veya komutlarla birleştirmeden önce temizlemek için kullanabilirsiniz.
 - Çıktıyı bir dosyaya yönlendirmek, orijinal dosyanızı korumanıza yardımcı olur.
-- Farklı seçenekleri bir arada kullanarak en iyi sonucu elde edebilirsiniz; örneğin, `col -b -x` komutunu deneyebilirsiniz.
+- `col` komutunu, metin dosyalarını daha okunabilir hale getirmek için diğer metin işleme araçlarıyla birlikte kullanmayı düşünün.

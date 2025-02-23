@@ -1,45 +1,43 @@
-# [Linux] C Shell (csh) fsck: Sprawdzanie systemu plików
+# [Linux] C Shell (csh) fsck użycie: Sprawdzanie systemu plików
 
-## Overview
-Polecenie `fsck` (file system check) jest używane do sprawdzania i naprawiania systemów plików w systemach Unix i Linux. Pomaga w identyfikacji i naprawie błędów w strukturze systemu plików, co jest szczególnie przydatne po nieprawidłowym zamknięciu systemu lub awarii.
+## Przegląd
+Polecenie `fsck` (file system check) służy do sprawdzania i naprawiania błędów w systemach plików. Jest to ważne narzędzie, które pomaga utrzymać integralność danych na dysku, zwłaszcza po nieprawidłowym zamknięciu systemu lub awarii sprzętu.
 
-## Usage
+## Użycie
 Podstawowa składnia polecenia `fsck` jest następująca:
 
-```
+```csh
 fsck [opcje] [argumenty]
 ```
 
-## Common Options
+## Częste opcje
 - `-a`: Automatycznie naprawia błędy bez interakcji z użytkownikiem.
-- `-n`: Sprawdza system plików, ale nie wprowadza żadnych zmian.
-- `-y`: Odpowiada "tak" na wszystkie pytania, co oznacza automatyczne naprawianie błędów.
-- `-t`: Wyświetla czas wykonania polecenia.
+- `-n`: Przeprowadza kontrolę bez wprowadzania jakichkolwiek zmian.
+- `-y`: Odpowiada "tak" na wszystkie pytania, co oznacza, że wszystkie błędy zostaną naprawione automatycznie.
+- `-t`: Wyświetla czas potrzebny na wykonanie sprawdzenia.
 
-## Common Examples
-Przykłady użycia polecenia `fsck`:
-
-1. Sprawdzenie systemu plików na urządzeniu `/dev/sda1`:
-   ```bash
+## Częste przykłady
+1. Sprawdzenie systemu plików na określonym urządzeniu:
+   ```csh
    fsck /dev/sda1
    ```
 
-2. Automatyczna naprawa błędów w systemie plików:
-   ```bash
+2. Automatyczna naprawa błędów:
+   ```csh
    fsck -a /dev/sda1
    ```
 
 3. Sprawdzenie systemu plików bez wprowadzania zmian:
-   ```bash
+   ```csh
    fsck -n /dev/sda1
    ```
 
-4. Automatyczne naprawianie błędów z potwierdzeniem:
-   ```bash
+4. Naprawa wszystkich błędów automatycznie:
+   ```csh
    fsck -y /dev/sda1
    ```
 
-## Tips
-- Zawsze wykonuj kopię zapasową ważnych danych przed użyciem `fsck`, aby uniknąć utraty danych w przypadku poważnych błędów.
-- Używaj `fsck` w trybie jednego użytkownika lub z systemem uruchomionym z nośnika ratunkowego, aby uniknąć problemów z otwartymi plikami.
-- Regularnie sprawdzaj system plików, aby zapobiec poważnym problemom w przyszłości.
+## Wskazówki
+- Zawsze wykonuj kopię zapasową ważnych danych przed użyciem `fsck`, aby uniknąć utraty danych.
+- Używaj opcji `-n` do testowania, zanim zdecydujesz się na automatyczne naprawy.
+- Wykonuj `fsck` w trybie jednego użytkownika, aby uniknąć problemów z plikami używanymi przez inne procesy.

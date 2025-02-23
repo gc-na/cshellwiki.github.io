@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) host gebruik: DNS-naam resolutie
+# [Linux] C Shell (csh) host gebruik: DNS-naamresolutie
 
 ## Overzicht
-De `host`-opdracht is een hulpmiddel voor het uitvoeren van DNS-naam resolutie. Het wordt gebruikt om informatie over een domein of IP-adres op te vragen, zoals het ophalen van het bijbehorende IP-adres of het verkrijgen van andere DNS-records.
+De `host`-opdracht is een eenvoudige tool die wordt gebruikt voor DNS-naamresolutie. Het helpt gebruikers om de IP-adressen van een domeinnaam te vinden of omgekeerd, de domeinnaam van een IP-adres.
 
 ## Gebruik
 De basis syntaxis van de `host`-opdracht is als volgt:
@@ -12,36 +12,43 @@ host [opties] [argumenten]
 
 ## Veelvoorkomende opties
 - `-a`: Toon alle beschikbare informatie over het opgegeven domein.
-- `-t type`: Vraag een specifiek type DNS-record op (bijvoorbeeld A, MX, TXT).
-- `-v`: Geef gedetailleerde uitvoer weer voor foutopsporing.
+- `-t type`: Specificeer het type DNS-record dat moet worden opgezocht (bijvoorbeeld A, MX, TXT).
+- `-v`: Zet de uitvoer in de verbose modus, wat betekent dat er meer gedetailleerde informatie wordt weergegeven.
 
 ## Veelvoorkomende voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van de `host`-opdracht:
 
-1. **Basis DNS-naam resolutie**
-   Om het IP-adres van een domein op te vragen:
+1. **Zoek het IP-adres van een domein:**
+
    ```csh
    host example.com
    ```
 
-2. **Opvragen van een specifiek type record**
-   Om het MX-record (mail exchange) voor een domein op te vragen:
+2. **Zoek de domeinnaam van een IP-adres:**
+
+   ```csh
+   host 93.184.216.34
+   ```
+
+3. **Zoek specifieke DNS-records (bijv. MX-records):**
+
    ```csh
    host -t MX example.com
    ```
 
-3. **Alle beschikbare informatie opvragen**
-   Om alle DNS-informatie voor een domein te tonen:
+4. **Toon alle informatie over een domein:**
+
    ```csh
    host -a example.com
    ```
 
-4. **Opvragen van een IP-adres van een domein**
-   Om het IP-adres van een domein te vinden:
+5. **Gebruik verbose modus voor meer details:**
+
    ```csh
-   host www.example.com
+   host -v example.com
    ```
 
 ## Tips
-- Gebruik de `-v` optie voor meer gedetailleerde uitvoer als je problemen ondervindt met DNS-resolutie.
-- Combineer de `host`-opdracht met andere netwerktools zoals `ping` of `traceroute` voor een vollediger beeld van netwerkproblemen.
-- Vergeet niet dat de `host`-opdracht afhankelijk is van de configuratie van je DNS-server, dus resultaten kunnen variëren.
+- Gebruik de `-t` optie om specifieke recordtypes te zoeken, wat nuttig kan zijn voor troubleshooting.
+- Combineer de `-v` optie met andere opties voor een beter inzicht in de DNS-resolutie.
+- Controleer altijd de spelling van domeinnamen om fouten te voorkomen bij het zoeken.

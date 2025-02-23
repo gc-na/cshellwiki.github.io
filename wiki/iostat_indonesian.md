@@ -1,12 +1,12 @@
-# [Linux] C Shell (csh) iostat Penggunaan: Memantau statistik I/O sistem
+# [Sistem Operasi] C Shell (csh) iostat Penggunaan: Memantau Statistik I/O
 
 ## Overview
-Perintah `iostat` digunakan untuk memantau statistik input/output (I/O) dari sistem. Ini membantu pengguna untuk menganalisis performa disk dan penggunaan CPU, sehingga dapat mengidentifikasi potensi masalah dalam sistem.
+Perintah `iostat` digunakan untuk memantau statistik input/output (I/O) dari sistem. Ini memberikan informasi tentang penggunaan CPU dan aktivitas disk, yang berguna untuk menganalisis kinerja sistem dan mengidentifikasi masalah.
 
 ## Usage
-Berikut adalah sintaks dasar dari perintah `iostat`:
+Sintaks dasar dari perintah `iostat` adalah sebagai berikut:
 
-```csh
+```
 iostat [options] [arguments]
 ```
 
@@ -14,40 +14,44 @@ iostat [options] [arguments]
 Berikut adalah beberapa opsi umum yang dapat digunakan dengan `iostat`:
 
 - `-c`: Menampilkan statistik CPU.
-- `-d`: Menampilkan statistik perangkat disk.
+- `-d`: Menampilkan statistik disk.
 - `-x`: Menampilkan statistik disk yang lebih mendetail.
 - `-h`: Menampilkan output dalam format yang lebih mudah dibaca (human-readable).
-- `interval`: Menentukan interval waktu dalam detik untuk pembaruan statistik.
+- `interval`: Menentukan interval waktu antara pengukuran.
+- `count`: Menentukan jumlah pengukuran yang akan dilakukan.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan perintah `iostat`:
+Berikut adalah beberapa contoh penggunaan `iostat`:
 
-1. Menampilkan statistik CPU dan disk secara default:
+1. Menampilkan statistik I/O dasar:
    ```csh
    iostat
    ```
 
-2. Menampilkan statistik CPU setiap 5 detik:
+2. Menampilkan statistik CPU:
    ```csh
-   iostat -c 5
+   iostat -c
    ```
 
-3. Menampilkan statistik perangkat disk dengan detail:
+3. Menampilkan statistik disk dengan detail:
    ```csh
-   iostat -d -x
+   iostat -dx
    ```
 
-4. Menampilkan statistik disk dalam format yang lebih mudah dibaca:
+4. Menampilkan statistik setiap 5 detik selama 10 kali:
+   ```csh
+   iostat 5 10
+   ```
+
+5. Menampilkan output dalam format yang lebih mudah dibaca:
    ```csh
    iostat -h
    ```
 
-5. Menampilkan statistik setiap 10 detik selama 3 kali:
-   ```csh
-   iostat 10 3
-   ```
-
 ## Tips
-- Gunakan opsi `-x` untuk mendapatkan informasi lebih mendetail tentang performa disk, yang dapat membantu dalam analisis lebih lanjut.
-- Perhatikan penggunaan CPU dan I/O secara bersamaan untuk mendapatkan gambaran lengkap tentang performa sistem.
-- Jika Anda mengamati adanya lonjakan penggunaan I/O, periksa proses yang berjalan untuk mengidentifikasi penyebabnya.
+- Gunakan opsi `-x` untuk mendapatkan informasi lebih mendetail tentang kinerja disk, yang dapat membantu dalam analisis masalah.
+- Perhatikan penggunaan CPU dan disk secara bersamaan untuk mendapatkan gambaran lengkap tentang kinerja sistem.
+- Simpan output dari `iostat` ke dalam file untuk analisis lebih lanjut dengan menggunakan redirection, misalnya:
+  ```csh
+  iostat -dx > iostat_output.txt
+  ```

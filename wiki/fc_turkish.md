@@ -1,54 +1,49 @@
-# [Linux] C Shell (csh) fc Kullanımı: Komut geçmişini düzenleme ve çalıştırma
+# [Linux] C Shell (csh) fc Kullanımı: Komut geçmişini düzenleme
 
-## Genel Bakış
-`fc` komutu, C Shell (csh) ortamında komut geçmişini düzenlemek ve çalıştırmak için kullanılır. Kullanıcıların daha önce çalıştırdıkları komutları kolayca bulmalarını, düzenlemelerini ve yeniden çalıştırmalarını sağlar.
+## Overview
+`fc` komutu, C Shell (csh) ortamında komut geçmişini düzenlemek ve çalıştırmak için kullanılır. Bu komut, kullanıcıların geçmişteki komutları kolayca bulup düzenlemesine ve yeniden çalıştırmasına olanak tanır.
 
-## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
-
+## Usage
+Temel sözdizimi şu şekildedir:
 ```csh
-fc [seçenekler] [argümanlar]
+fc [options] [arguments]
 ```
 
-## Yaygın Seçenekler
+## Common Options
 - `-l`: Geçmişteki komutları listelemek için kullanılır.
-- `-s`: Belirtilen komutu doğrudan çalıştırır, düzenleme yapmadan.
-- `-n`: Komut numaralarını listelemeden gösterir.
+- `-r`: Komutları ters sırada listelemek için kullanılır.
+- `-n`: Komut numaralarını göstermeden listelemek için kullanılır.
+- `-e`: Belirtilen bir editörü kullanarak komutları düzenlemek için kullanılır.
 
-## Yaygın Örnekler
-Aşağıda `fc` komutunun bazı pratik örnekleri verilmiştir:
+## Common Examples
+Aşağıda `fc` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. **Son komutu düzenleme:**
-   ```csh
-   fc
-   ```
-   Bu komut, en son çalıştırılan komutu varsayılan metin düzenleyici ile açar.
-
-2. **Belirli bir komutu listeleme:**
-   ```csh
-   fc -l
-   ```
-   Bu komut, geçmişteki tüm komutları listeleyecektir.
-
-3. **Son 5 komutu listeleme:**
+1. Son 5 komutu listeleme:
    ```csh
    fc -l -5
    ```
-   Bu komut, en son 5 çalıştırılan komutu listeleyecektir.
 
-4. **Belirli bir komutu düzenleme:**
+2. Geçmişteki tüm komutları listeleme:
+   ```csh
+   fc -l
+   ```
+
+3. Son komutu düzenleme (varsayılan editör ile):
+   ```csh
+   fc
+   ```
+
+4. Belirli bir komutu düzenleme (örneğin, 10 numaralı komut):
    ```csh
    fc 10
    ```
-   Bu komut, geçmişteki 10. komutu düzenlemek için açar.
 
-5. **Belirli bir komutu çalıştırma:**
+5. Komutları ters sırada listeleme:
    ```csh
-   fc -s 10
+   fc -r -l
    ```
-   Bu komut, geçmişteki 10. komutu düzenlemeden doğrudan çalıştırır.
 
-## İpuçları
-- `fc` komutunu kullanmadan önce, düzenlemek istediğiniz komutun numarasını öğrenmek için `fc -l` komutunu çalıştırın.
-- Komut geçmişini düzenlerken dikkatli olun; yanlış bir düzenleme, istenmeyen sonuçlara yol açabilir.
-- `fc` komutunu sık sık kullanarak, komut geçmişinizi daha verimli bir şekilde yönetebilirsiniz.
+## Tips
+- `fc` komutunu kullanmadan önce, hangi komutları düzenlemek istediğinizi belirlemek için `fc -l` komutunu kullanarak geçmişinizi gözden geçirin.
+- Düzenleme yaparken, varsayılan editörünüzü değiştirmek isterseniz, `EDITOR` ortam değişkenini ayarlayabilirsiniz.
+- `fc` komutunu sık kullanıyorsanız, belirli komutları hızlıca düzenlemek için alias'lar oluşturmayı düşünebilirsiniz.

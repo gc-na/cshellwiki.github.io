@@ -1,47 +1,42 @@
-# [Linux] C Shell (csh) xargs Kullanımı: Komut çıktısını argüman olarak kullanma
+# [Linux] C Shell (csh) xargs Kullanımı: Komut satırı argümanlarını işlemek için
 
 ## Genel Bakış
-`xargs` komutu, standart girişten aldığı verileri alarak bunları bir komutun argümanları olarak kullanır. Bu, özellikle uzun komut dizilerini veya çok sayıda dosya ismini işlemek için oldukça faydalıdır.
+`xargs` komutu, standart girişten okunan verileri alarak bunları bir komutun argümanları olarak kullanmak için kullanılır. Bu, özellikle çok sayıda dosya veya veri ile çalışırken faydalıdır.
 
 ## Kullanım
 Temel sözdizimi şu şekildedir:
-
-```bash
+```csh
 xargs [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-n`: Her seferinde kaç argüman kullanılacağını belirtir.
-- `-d`: Girdi ayırıcı karakterini belirtir.
-- `-p`: Her komut çalışmadan önce onay ister.
-- `-0`: Null karakter ile ayrılmış girdileri işler (genellikle `find` ile birlikte kullanılır).
+- `-n [N]`: Her seferinde N argüman ile komutu çalıştırır.
+- `-d [AYIRICI]`: Giriş verilerini belirtilen ayırıcı ile ayırır.
+- `-p`: Her komut çalıştırılmadan önce kullanıcıdan onay ister.
+- `-0`: Null karakter ile ayrılmış girişleri işler (genellikle `find -print0` ile birlikte kullanılır).
 
 ## Yaygın Örnekler
-1. **Dosya isimlerini silme**:
-   Belirli bir uzantıya sahip dosyaları bulup silmek için:
-   ```bash
-   find . -name "*.tmp" | xargs rm
-   ```
+1. Bir dizindeki tüm `.txt` dosyalarını silmek için:
+    ```csh
+    find . -name "*.txt" | xargs rm
+    ```
 
-2. **Dosya içeriğini sayma**:
-   Belirli bir dizindeki tüm `.txt` dosyalarının satır sayısını bulmak için:
-   ```bash
-   ls *.txt | xargs wc -l
-   ```
+2. Bir dizindeki tüm dosyaların boyutunu listelemek için:
+    ```csh
+    ls | xargs du -h
+    ```
 
-3. **Girdi ayırıcı olarak boşluk kullanma**:
-   Boşluk ile ayrılmış girdileri işlemek için:
-   ```bash
-   echo "file1 file2 file3" | xargs -n 1 echo
-   ```
+3. Her bir dosya için `wc -l` komutunu çalıştırarak satır sayısını bulmak için:
+    ```csh
+    find . -type f | xargs wc -l
+    ```
 
-4. **Null karakter ile ayrılmış girdilerle çalışma**:
-   `find` komutuyla birlikte kullanarak dosyaları güvenli bir şekilde silmek için:
-   ```bash
-   find . -type f -print0 | xargs -0 rm
-   ```
+4. Belirli bir ayırıcı ile dosya isimlerini işlemek için:
+    ```csh
+    echo "file1,file2,file3" | xargs -d ',' echo
+    ```
 
 ## İpuçları
-- `xargs` kullanırken, çok sayıda dosya ile çalışıyorsanız `-n` seçeneği ile her seferinde kaç dosya işleneceğini kontrol edebilirsiniz.
-- Girdi ayırıcı karakterlerini değiştirmek için `-d` seçeneğini kullanarak özel karakterler belirleyebilirsiniz.
-- Komutların çalışmadan önce onay almasını istiyorsanız `-p` seçeneğini kullanabilirsiniz; bu, yanlışlıkla istenmeyen işlemler yapmanızı önler.
+- `xargs` kullanırken, çok sayıda dosya ile çalışıyorsanız, `-n` seçeneğini kullanarak her seferinde belirli sayıda argüman ile komutu çalıştırmayı düşünebilirsiniz.
+- Uzun dosya isimleri veya özel karakterler içeren dosyalarla çalışırken `-0` seçeneğini kullanarak güvenli bir şekilde işlem yapabilirsiniz.
+- Komutların doğru çalıştığından emin olmak için `-p` seçeneği ile onay almayı tercih edebilirsiniz.

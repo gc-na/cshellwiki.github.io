@@ -1,20 +1,20 @@
-# [日本語] C Shell (csh) endsw 使用法: 条件分岐の終了
+# [Unix系] C Shell (csh) endsw の使い方: 条件分岐の終了を示す
 
-## Overview
-`endsw` コマンドは、C Shell (csh) における条件分岐の終了を示すために使用されます。このコマンドは、`switch` 文のブロックを終了するために必要です。
+## 概要
+`endsw` コマンドは、C Shell スクリプトにおいて条件分岐の終了を示すために使用されます。`switch` 文のブロックを終了させるために必要な構文です。
 
-## Usage
+## 使用法
 基本的な構文は以下の通りです。
 
-```csh
+```
 endsw
 ```
 
-## Common Options
-`endsw` コマンドには特にオプションはありません。単に `endsw` と記述することで、`switch` 文の終了を示します。
+## 一般的なオプション
+`endsw` には特にオプションはありません。単純に `endsw` と記述することで、`switch` 文の終了を示します。
 
-## Common Examples
-以下に、`endsw` コマンドを使用したいくつかの実用的な例を示します。
+## 一般的な例
+以下に、`endsw` を使用したいくつかの実用的な例を示します。
 
 ### 例1: 基本的な switch 文
 ```csh
@@ -31,7 +31,7 @@ switch ($var)
 endsw
 ```
 
-### 例2: 数値の条件分岐
+### 例2: 複数の条件
 ```csh
 set num = 2
 switch ($num)
@@ -45,11 +45,11 @@ switch ($num)
         echo "Number is three."
         breaksw
     default:
-        echo "Number is not recognized."
+        echo "Number is not one, two, or three."
 endsw
 ```
 
-## Tips
+## ヒント
 - `endsw` は必ず `switch` 文の後に記述してください。これにより、条件分岐が正しく終了します。
-- `breaksw` コマンドを使用して、特定のケースから抜け出すことができます。これにより、次のケースが実行されるのを防ぎます。
-- 複雑な条件分岐を使用する場合は、可読性を保つためにインデントを適切に行いましょう。
+- `breaksw` を使用して、各ケースの処理を終了させることを忘れないでください。これにより、次のケースに進むことを防ぎます。
+- 複雑な条件分岐を行う場合は、適切にインデントを使用して可読性を向上させましょう。

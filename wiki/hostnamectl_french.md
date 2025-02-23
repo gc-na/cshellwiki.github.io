@@ -1,51 +1,46 @@
-# [Linux] C Shell (csh) hostnamectl Utilisation : Gérer les paramètres d'hôte du système
+# [Linux] C Shell (csh) hostnamectl : Gérer les informations d'hôte
 
 ## Overview
-La commande `hostnamectl` est utilisée pour interagir avec le système d'exploitation afin de gérer les paramètres d'hôte. Elle permet de consulter et de modifier le nom d'hôte, le nom d'affichage et d'autres informations liées à l'identité de l'ordinateur.
+La commande `hostnamectl` est utilisée pour interagir avec le système d'exploitation afin de gérer les informations relatives à l'hôte, telles que le nom d'hôte, le nom d'affichage et d'autres paramètres liés au système.
 
 ## Usage
-La syntaxe de base de la commande `hostnamectl` est la suivante :
+La syntaxe de base de la commande est la suivante :
 
 ```csh
 hostnamectl [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes pour `hostnamectl` :
-
 - `set-hostname`: Définit un nouveau nom d'hôte.
-- `set-icon-name`: Définit un nom d'icône pour l'hôte.
-- `set-chassis`: Définit le type de châssis de l'hôte (par exemple, "desktop", "laptop").
 - `status`: Affiche les informations actuelles sur l'hôte.
+- `set-icon-name`: Définit un nom d'icône pour l'hôte.
+- `set-chassis`: Définit le type de châssis (ex. : desktop, laptop).
+- `help`: Affiche l'aide sur la commande.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `hostnamectl` :
 
 1. **Afficher les informations de l'hôte :**
-
    ```csh
    hostnamectl status
    ```
 
 2. **Définir un nouveau nom d'hôte :**
-
    ```csh
-   hostnamectl set-hostname mon-nouveau-nom
+   hostnamectl set-hostname nouveau-nom
    ```
 
-3. **Définir le type de châssis :**
+3. **Définir un nom d'icône :**
+   ```csh
+   hostnamectl set-icon-name icône-nom
+   ```
 
+4. **Définir le type de châssis :**
    ```csh
    hostnamectl set-chassis laptop
    ```
 
-4. **Définir un nom d'icône :**
-
-   ```csh
-   hostnamectl set-icon-name mon-icone
-   ```
-
 ## Tips
-- Assurez-vous d'avoir les droits d'administrateur pour modifier le nom d'hôte.
-- Utilisez `hostnamectl status` après avoir effectué des modifications pour vérifier que les changements ont été appliqués correctement.
-- Pensez à redémarrer certains services ou l'ordinateur pour que les modifications prennent effet dans toutes les applications.
+- Assurez-vous d'avoir les privilèges administratifs pour modifier le nom d'hôte.
+- Vérifiez toujours l'état actuel de l'hôte après avoir effectué des modifications pour vous assurer qu'elles ont été appliquées correctement.
+- Utilisez `hostnamectl help` pour obtenir des informations supplémentaires sur les options disponibles.

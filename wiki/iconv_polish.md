@@ -1,38 +1,38 @@
 # [Linux] C Shell (csh) iconv użycie: Konwersja kodowania znaków
 
-## Przegląd
-Polecenie `iconv` służy do konwersji tekstu pomiędzy różnymi kodowaniami znaków. Jest to przydatne narzędzie, gdy potrzebujemy zmienić format pliku tekstowego, aby był zgodny z wymaganiami systemu lub aplikacji.
+## Overview
+Polecenie `iconv` służy do konwersji tekstu między różnymi zestawami znaków. Umożliwia użytkownikom przekształcanie plików tekstowych, aby były zgodne z wymaganym kodowaniem, co jest szczególnie przydatne w przypadku pracy z danymi w różnych językach.
 
-## Użycie
+## Usage
 Podstawowa składnia polecenia `iconv` jest następująca:
 
 ```csh
 iconv [opcje] [argumenty]
 ```
 
-## Częste opcje
+## Common Options
 - `-f, --from-code=KOD`: Określa kodowanie źródłowe.
 - `-t, --to-code=KOD`: Określa kodowanie docelowe.
 - `-o, --output=PLIK`: Zapisuje wynik do określonego pliku.
 - `-c`: Pomija nieprawidłowe znaki.
 
-## Częste przykłady
-1. Konwersja pliku z kodowania UTF-8 do ISO-8859-1:
+## Common Examples
+1. Konwersja pliku z kodowania UTF-8 na ISO-8859-1:
    ```csh
-   iconv -f UTF-8 -t ISO-8859-1 plik.txt -o plik_iso.txt
+   iconv -f UTF-8 -t ISO-8859-1 plik_wejsciowy.txt -o plik_wyjsciowy.txt
    ```
 
-2. Wyświetlenie wyników konwersji na standardowe wyjście:
+2. Konwersja kodowania z Windows-1250 na UTF-8:
    ```csh
-   iconv -f UTF-8 -t UTF-16 plik.txt
+   iconv -f WINDOWS-1250 -t UTF-8 plik_wejsciowy.txt > plik_wyjsciowy.txt
    ```
 
 3. Pomijanie nieprawidłowych znaków podczas konwersji:
    ```csh
-   iconv -f UTF-8 -t ASCII//TRANSLIT plik.txt -o plik_ascii.txt
+   iconv -f UTF-8 -t ASCII//TRANSLIT plik_wejsciowy.txt -o plik_wyjsciowy.txt
    ```
 
-## Wskazówki
-- Zawsze sprawdzaj, jakie kodowanie jest używane w pliku źródłowym, aby uniknąć błędów konwersji.
-- Używaj opcji `-o`, aby zapisać wynik do nowego pliku, co pozwoli uniknąć nadpisania oryginalnego pliku.
-- Testuj konwersję na małych plikach, zanim zastosujesz ją do większych zbiorów danych.
+## Tips
+- Zawsze sprawdzaj, jakie kodowanie ma plik źródłowy, aby uniknąć błędów konwersji.
+- Używaj opcji `-o`, aby zapisać wynik do nowego pliku, zamiast nadpisywać oryginał.
+- Przetestuj konwersję na małym pliku przed zastosowaniem na dużych zbiorach danych, aby upewnić się, że wszystko działa poprawnie.

@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) docker Verwendung: Container verwalten und orchestrieren
 
 ## Übersicht
-Der `docker` Befehl wird verwendet, um Container zu verwalten und zu orchestrieren. Mit Docker können Sie Anwendungen in Containern isoliert ausführen, was eine konsistente Umgebung für die Entwicklung und Bereitstellung schafft.
+Der `docker` Befehl wird verwendet, um Container zu erstellen, zu verwalten und zu orchestrieren. Docker ermöglicht es Entwicklern, Anwendungen in Containern zu isolieren, die leicht zu verteilen und zu skalieren sind.
 
 ## Verwendung
 Die grundlegende Syntax des `docker` Befehls lautet:
@@ -20,37 +20,32 @@ docker [optionen] [argumente]
 ## Häufige Beispiele
 Hier sind einige praktische Beispiele für die Verwendung des `docker` Befehls:
 
-### 1. Einen neuen Container starten
-```csh
-docker run -d --name mein_container nginx
-```
-Dieser Befehl startet einen neuen Container mit dem Namen `mein_container` basierend auf dem `nginx` Image.
+1. **Einen neuen Container starten:**
+   ```csh
+   docker run -d --name mein_container nginx
+   ```
 
-### 2. Laufende Container auflisten
-```csh
-docker ps
-```
-Mit diesem Befehl können Sie alle derzeit laufenden Container anzeigen.
+2. **Laufende Container auflisten:**
+   ```csh
+   docker ps
+   ```
 
-### 3. Einen Container stoppen
-```csh
-docker stop mein_container
-```
-Dieser Befehl stoppt den Container mit dem Namen `mein_container`.
+3. **Einen Container stoppen:**
+   ```csh
+   docker stop mein_container
+   ```
 
-### 4. Einen gestoppten Container entfernen
-```csh
-docker rm mein_container
-```
-Hiermit wird der gestoppte Container `mein_container` entfernt.
+4. **Einen gestoppten Container entfernen:**
+   ```csh
+   docker rm mein_container
+   ```
 
-### 5. Verfügbare Images anzeigen
-```csh
-docker images
-```
-Dieser Befehl listet alle lokal gespeicherten Docker-Images auf.
+5. **Verfügbare Docker-Images anzeigen:**
+   ```csh
+   docker images
+   ```
 
 ## Tipps
 - Verwenden Sie `docker-compose`, um mehrere Container als Dienst zu verwalten.
-- Halten Sie Ihre Images klein, um die Ladezeiten zu verbessern.
-- Nutzen Sie Tags, um verschiedene Versionen Ihrer Images zu verwalten und zu kennzeichnen.
+- Achten Sie darauf, Container regelmäßig zu aktualisieren, um Sicherheitslücken zu schließen.
+- Nutzen Sie die `--rm` Option beim Starten von Containern, um sie automatisch zu entfernen, wenn sie gestoppt werden.

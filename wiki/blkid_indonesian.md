@@ -1,19 +1,20 @@
-# [Sistem Operasi] C Shell (csh) blkid Penggunaan: Menampilkan informasi perangkat penyimpanan
+# [Sistem Operasi] C Shell (csh) blkid Penggunaan: Menampilkan informasi tentang perangkat penyimpanan
 
 ## Overview
-Perintah `blkid` digunakan untuk menampilkan informasi tentang perangkat penyimpanan yang terhubung ke sistem, termasuk UUID, tipe sistem berkas, dan label dari partisi yang ada.
+Perintah `blkid` digunakan untuk menampilkan informasi tentang perangkat penyimpanan yang terhubung ke sistem. Ini termasuk UUID, tipe sistem berkas, dan label dari partisi yang ada.
 
 ## Usage
-Sintaks dasar untuk perintah `blkid` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `blkid`:
 
 ```
 blkid [options] [arguments]
 ```
 
 ## Common Options
-- `-o` : Menentukan format output, seperti `value` atau `full`.
-- `-s` : Menentukan atribut yang ingin ditampilkan, seperti `UUID` atau `TYPE`.
+- `-o` : Menentukan format output (misalnya, `value`, `full`, atau `udev`).
+- `-s` : Menentukan field tertentu yang ingin ditampilkan.
 - `-p` : Mengabaikan cache dan membaca informasi langsung dari perangkat.
+- `-c` : Menentukan file cache untuk digunakan.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `blkid`:
@@ -23,22 +24,22 @@ Berikut adalah beberapa contoh penggunaan perintah `blkid`:
    blkid
    ```
 
-2. Menampilkan hanya UUID dari semua perangkat:
-   ```csh
-   blkid -s UUID
-   ```
-
-3. Menampilkan informasi dalam format nilai:
+2. Menampilkan informasi dalam format nilai:
    ```csh
    blkid -o value
    ```
 
-4. Menampilkan informasi untuk perangkat tertentu:
+3. Menampilkan hanya UUID dari perangkat tertentu:
    ```csh
-   blkid /dev/sda1
+   blkid -s UUID /dev/sda1
+   ```
+
+4. Mengabaikan cache dan membaca informasi langsung:
+   ```csh
+   blkid -p
    ```
 
 ## Tips
 - Gunakan opsi `-o value` untuk mendapatkan output yang lebih bersih dan mudah dibaca.
-- Jika Anda tidak melihat informasi yang diharapkan, coba jalankan perintah dengan hak akses superuser menggunakan `sudo`.
-- Periksa dokumentasi lebih lanjut dengan menjalankan `man blkid` untuk memahami semua opsi yang tersedia.
+- Jika Anda sering menggunakan `blkid`, pertimbangkan untuk membuat alias di `.cshrc` untuk mempercepat akses.
+- Pastikan Anda memiliki izin yang tepat untuk mengakses perangkat penyimpanan saat menggunakan perintah ini.

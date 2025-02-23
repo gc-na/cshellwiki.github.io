@@ -1,42 +1,42 @@
-# [Hệ điều hành] C Shell (csh) alias: Tạo lệnh tắt cho các lệnh thường dùng
+# [Hệ điều hành] C Shell (csh) alias: Tạo bí danh cho lệnh
 
-## Tổng quan
-Lệnh `alias` trong C Shell (csh) cho phép người dùng tạo ra các lệnh tắt cho các lệnh dài hoặc phức tạp, giúp tiết kiệm thời gian và công sức khi làm việc trên dòng lệnh.
+## Overview
+Lệnh `alias` trong C Shell (csh) cho phép người dùng tạo ra các bí danh cho các lệnh dài hoặc phức tạp, giúp tiết kiệm thời gian và công sức khi gõ lệnh trong terminal.
 
-## Cú pháp
+## Usage
 Cú pháp cơ bản của lệnh `alias` như sau:
 ```
-alias [tùy chọn] [tên_lệnh]='[lệnh]'
+alias [tùy chọn] [bí danh]='[lệnh]'
 ```
 
-## Các tùy chọn phổ biến
-- `-p`: Hiển thị tất cả các alias hiện có.
-- `-x`: Đặt alias cho các lệnh có thể được sử dụng trong các lệnh khác.
+## Common Options
+- `-p`: Hiển thị tất cả các bí danh hiện có.
+- `-x`: Tạo bí danh có thể được sử dụng trong các lệnh khác.
 
-## Ví dụ thường gặp
+## Common Examples
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `alias`:
 
-1. Tạo alias cho lệnh `ls -l`:
+1. Tạo bí danh cho lệnh `ls -la`:
    ```csh
-   alias ll='ls -l'
+   alias ll='ls -la'
    ```
 
-2. Tạo alias cho lệnh `grep` với tùy chọn `--color`:
+2. Tạo bí danh cho lệnh `git status`:
    ```csh
-   alias grep='grep --color'
+   alias gs='git status'
    ```
 
-3. Tạo alias để xóa các tệp mà không cần xác nhận:
+3. Tạo bí danh để xóa thư mục một cách an toàn:
    ```csh
-   alias rm='rm -i'
+   alias rmd='rm -r -i'
    ```
 
-4. Hiển thị tất cả các alias hiện có:
+4. Hiển thị tất cả các bí danh hiện có:
    ```csh
    alias -p
    ```
 
-## Mẹo
-- Sử dụng alias cho các lệnh thường xuyên để tiết kiệm thời gian.
-- Đặt alias trong tệp cấu hình `.cshrc` để chúng tự động có sẵn mỗi khi bạn mở terminal.
-- Tránh đặt alias trùng với các lệnh hệ thống để tránh nhầm lẫn.
+## Tips
+- Hãy đặt tên bí danh ngắn gọn và dễ nhớ để sử dụng thuận tiện hơn.
+- Kiểm tra các bí danh đã tồn tại trước khi tạo mới để tránh xung đột.
+- Lưu các bí danh vào tệp cấu hình `.cshrc` để chúng có hiệu lực mỗi khi bạn mở terminal.

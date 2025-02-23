@@ -1,52 +1,55 @@
-# [Linux] C Shell (csh) break Utilizare: Oprește execuția unui ciclu
+# [Linux] C Shell (csh) break utilizare: Termină execuția unui ciclu
 
 ## Overview
-Comanda `break` în C Shell (csh) este utilizată pentru a întrerupe execuția unui ciclu, cum ar fi un `while` sau un `foreach`. Aceasta permite ieșirea dintr-un bloc de cod repetitiv atunci când se îndeplinesc anumite condiții.
+Comanda `break` în C Shell (csh) este utilizată pentru a termina execuția unui ciclu, cum ar fi `foreach`, `while` sau `for`. Aceasta permite ieșirea din buclele de control, facilitând gestionarea fluxului de execuție al scripturilor.
 
 ## Usage
 Sintaxa de bază a comenzii `break` este următoarea:
 
-```csh
-break [options] [arguments]
+```
+break [n]
 ```
 
+Unde `n` reprezintă nivelul buclei din care doriți să ieșiți. Dacă nu este specificat, `break` va ieși din cea mai interioară buclă.
+
 ## Common Options
-De obicei, comanda `break` nu are opțiuni specifice, dar este important de menționat că poate fi utilizată în interiorul structurilor de control.
+- `n`: Specifică numărul de niveluri de bucle din care doriți să ieșiți. De exemplu, `break 2` va ieși din două niveluri de bucle.
 
 ## Common Examples
 
-### Exemplul 1: Utilizarea break într-un ciclu while
+### Exemplul 1: Ieşirea dintr-o buclă `while`
 ```csh
-set count = 1
-while ($count <= 5)
-    echo "Numărul curent este: $count"
-    if ($count == 3) break
-    @ count++
+set i = 0
+while ($i < 10)
+    if ($i == 5) break
+    echo $i
+    @ i++
 end
 ```
-În acest exemplu, ciclul se va opri când `count` ajunge la 3.
+Acest exemplu va afișa numerele de la 0 la 4 și va ieși din buclă când `i` devine 5.
 
-### Exemplul 2: Utilizarea break într-un ciclu foreach
+### Exemplul 2: Ieşirea dintr-o buclă `foreach`
 ```csh
-foreach item (apple banana cherry date)
-    if ("$item" == "cherry") break
-    echo "Fructul curent este: $item"
+foreach item (1 2 3 4 5)
+    if ($item == 3) break
+    echo $item
 end
 ```
-Aici, execuția se va opri la fructul "cherry".
+Acest script va afișa 1 și 2, ieșind din buclă când `item` este 3.
 
-### Exemplul 3: Break într-un ciclu nested
+### Exemplul 3: Ieşirea dintr-o buclă `for` cu niveluri
 ```csh
-foreach i (1 2 3)
+set outer = (1 2)
+foreach i ($outer)
     foreach j (1 2 3)
-        if ($i == 2 && $j == 2) break 2
-        echo "i: $i, j: $j"
+        if ($j == 2) break 2
+        echo "$i $j"
     end
 end
 ```
-În acest exemplu, utilizarea `break 2` va ieși din ambele cicluri când `i` și `j` sunt ambele 2.
+Acest exemplu va afișa combinațiile de numere, dar va ieși din ambele bucle când `j` este 2.
 
 ## Tips
-- Folosește `break` cu grijă pentru a evita ieșirile neașteptate din cicluri.
-- Asigură-te că condițiile pentru `break` sunt bine definite pentru a menține claritatea codului.
-- Testează întotdeauna scripturile pentru a verifica comportamentul ciclurilor și al comenzii `break`.
+- Utilizați `break` cu grijă pentru a evita ieșirile neașteptate din bucle.
+- Specificați întotdeauna numărul de niveluri dacă lucrați cu bucle imbricate pentru a avea un control mai bun asupra execuției.
+- Testați scripturile cu bucle pentru a vă asigura că `break` funcționează conform așteptărilor.

@@ -1,51 +1,47 @@
-# [Sistem Operasi] C Shell (csh) psql Penggunaan: Mengelola Database PostgreSQL
+# [Sistem Operasi] C Shell (csh) psql Penggunaan: Mengelola Basis Data PostgreSQL
 
 ## Overview
-Perintah `psql` adalah antarmuka baris perintah untuk PostgreSQL, yang memungkinkan pengguna untuk berinteraksi dengan basis data PostgreSQL. Dengan `psql`, Anda dapat menjalankan kueri SQL, mengelola database, dan melakukan berbagai tugas administrasi.
+Perintah `psql` adalah alat baris perintah untuk berinteraksi dengan basis data PostgreSQL. Dengan `psql`, pengguna dapat menjalankan kueri SQL, mengelola skema basis data, dan melakukan berbagai tugas administrasi lainnya.
 
 ## Usage
-Berikut adalah sintaks dasar untuk menggunakan perintah `psql`:
+Berikut adalah sintaks dasar dari perintah `psql`:
 
 ```csh
 psql [options] [arguments]
 ```
 
 ## Common Options
-- `-h` : Menentukan host tempat server PostgreSQL berjalan.
-- `-p` : Menentukan port yang digunakan untuk koneksi ke server.
-- `-U` : Menentukan nama pengguna untuk autentikasi.
-- `-d` : Menentukan nama database yang ingin diakses.
-- `-f` : Menjalankan perintah dari file SQL.
+- `-h`: Menentukan host basis data.
+- `-U`: Menentukan nama pengguna untuk otentikasi.
+- `-d`: Menentukan nama basis data yang akan dihubungkan.
+- `-p`: Menentukan port untuk koneksi ke basis data.
+- `-f`: Menjalankan perintah dari file SQL.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `psql`:
 
-1. **Koneksi ke Database Default:**
+1. Menghubungkan ke basis data default dengan pengguna saat ini:
    ```csh
    psql
    ```
 
-2. **Koneksi ke Database Tertentu:**
+2. Menghubungkan ke basis data tertentu dengan pengguna tertentu:
    ```csh
-   psql -d nama_database
+   psql -U username -d database_name
    ```
 
-3. **Koneksi dengan Nama Pengguna dan Host:**
+3. Menghubungkan ke server PostgreSQL yang berjalan di host dan port tertentu:
    ```csh
-   psql -U nama_pengguna -h localhost -d nama_database
+   psql -h hostname -p port_number -U username -d database_name
    ```
 
-4. **Menjalankan Skrip SQL dari File:**
+4. Menjalankan perintah SQL dari file:
    ```csh
-   psql -d nama_database -f skrip.sql
-   ```
-
-5. **Menampilkan Daftar Tabel dalam Database:**
-   ```csh
-   \dt
+   psql -U username -d database_name -f script.sql
    ```
 
 ## Tips
-- Selalu pastikan Anda memiliki izin yang tepat untuk mengakses database yang ingin Anda kelola.
-- Gunakan opsi `-a` untuk menampilkan semua perintah yang dieksekusi saat menjalankan skrip SQL.
-- Manfaatkan fitur auto-completion dengan menekan tombol `Tab` untuk membantu menulis perintah dan nama objek database dengan lebih cepat.
+- Selalu gunakan opsi `-U` untuk memastikan Anda terhubung dengan pengguna yang tepat.
+- Gunakan `\q` untuk keluar dari sesi `psql`.
+- Manfaatkan fitur autocompletion dengan menekan tombol Tab saat mengetik perintah untuk mempercepat proses penulisan.
+- Simpan skrip SQL dalam file untuk eksekusi berulang dan pengelolaan yang lebih mudah.

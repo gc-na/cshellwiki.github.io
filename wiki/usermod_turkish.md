@@ -1,56 +1,50 @@
 # [Linux] C Shell (csh) usermod Kullanımı: Kullanıcı bilgilerini güncelleme
 
 ## Genel Bakış
-`usermod` komutu, mevcut bir kullanıcı hesabının özelliklerini güncellemek için kullanılır. Bu komut, kullanıcı adı, grup üyelikleri, ev dizini gibi bilgileri değiştirmek için oldukça faydalıdır.
+`usermod` komutu, mevcut bir kullanıcı hesabının özelliklerini güncellemek için kullanılır. Bu komut, kullanıcı adı, grup üyelikleri, ev dizini gibi bilgileri değiştirmeye olanak tanır.
 
 ## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
-
+Temel sözdizimi şu şekildedir:
 ```csh
 usermod [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-l`: Kullanıcı adını değiştirir.
-- `-d`: Kullanıcının ev dizinini değiştirir.
-- `-g`: Kullanıcının ana grubunu değiştirir.
-- `-aG`: Kullanıcıyı belirtilen gruba ekler (mevcut gruplarını koruyarak).
-- `-s`: Kullanıcının varsayılan kabuğunu değiştirir.
+- `-l`: Kullanıcı adını değiştirmek için kullanılır.
+- `-d`: Kullanıcının ev dizinini değiştirmek için kullanılır.
+- `-g`: Kullanıcının birincil grubunu değiştirmek için kullanılır.
+- `-aG`: Kullanıcıyı belirtilen gruba eklemek için kullanılır (mevcut gruplara ekler).
+- `-s`: Kullanıcının varsayılan kabuğunu değiştirmek için kullanılır.
 
 ## Yaygın Örnekler
-Aşağıda `usermod` komutunun bazı pratik kullanım örnekleri verilmiştir:
+Aşağıda `usermod` komutunun bazı pratik örnekleri bulunmaktadır:
 
 ### Kullanıcı Adını Değiştirme
-Kullanıcı adını `yeni_kullanici` olarak değiştirmek için:
 ```csh
-usermod -l yeni_kullanici eski_kullanici
+usermod -l yeniKullaniciAdi eskiKullaniciAdi
 ```
 
 ### Ev Dizini Değiştirme
-Kullanıcının ev dizinini `/home/yeni_dizin` olarak değiştirmek için:
 ```csh
-usermod -d /home/yeni_dizin kullanici_adi
+usermod -d /yeni/ev/dizini kullaniciAdi
 ```
 
-### Ana Grubu Değiştirme
-Kullanıcının ana grubunu `yeni_grup` olarak değiştirmek için:
+### Birincil Grubu Değiştirme
 ```csh
-usermod -g yeni_grup kullanici_adi
+usermod -g yeniGrup kullaniciAdi
 ```
 
-### Gruba Eklemek
-Kullanıcıyı `ek_grup` grubuna eklemek için:
+### Kullanıcıyı Bir Gruba Ekleme
 ```csh
-usermod -aG ek_grup kullanici_adi
+usermod -aG grupAdi kullaniciAdi
 ```
 
 ### Varsayılan Kabuk Değiştirme
-Kullanıcının varsayılan kabuğunu `/bin/bash` olarak değiştirmek için:
 ```csh
-usermod -s /bin/bash kullanici_adi
+usermod -s /bin/zsh kullaniciAdi
 ```
 
 ## İpuçları
-- `usermod` komutunu kullanmadan önce, değişikliklerin etkili olabilmesi için gerekli izinlere sahip olduğunuzdan emin olun.
-- Kullanıcı bilgilerini güncellerken dikkatli olun; yanlış bir değişiklik, kullanıcı erişimini etkileyebilir.
-- Değişikliklerden sonra, kullanıcının yeni ayarlarının geçerli olup olmadığını kontrol etmek için `id kullanici_adi` komutunu kullanabilirsiniz.
+- Kullanıcı bilgilerini güncellerken dikkatli olun; yanlış bir değişiklik kullanıcı erişim sorunlarına yol açabilir.
+- Değişikliklerin etkili olması için oturumu kapatıp açmanız gerekebilir.
+- `usermod` komutunu kullanmadan önce mevcut kullanıcı bilgilerini kontrol etmek için `id kullaniciAdi` komutunu kullanabilirsiniz.

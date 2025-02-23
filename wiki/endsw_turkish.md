@@ -1,50 +1,49 @@
 # [Linux] C Shell (csh) endsw Kullanımı: Koşullu ifadeleri sonlandırma
 
-## Genel Bakış
-`endsw` komutu, C Shell (csh) ortamında koşullu ifadelerin sonlandırılmasında kullanılır. Bu komut, bir `switch` ifadesinin sonunu belirtmek için gereklidir ve program akışını kontrol etmek için önemli bir rol oynar.
+## Overview
+`endsw` komutu, C Shell (csh) içinde koşullu ifadelerin sonlandırılmasını sağlar. Bu komut, bir `switch` ifadesinin sonunu belirtmek için kullanılır ve program akışını kontrol etmede önemli bir rol oynar.
 
-## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
-```
+## Usage
+Temel sözdizimi şu şekildedir:
+```csh
 endsw
 ```
 
-## Yaygın Seçenekler
-`endsw` komutunun kendisi için özel bir seçenek yoktur. Ancak, `switch` ifadesinin bir parçası olarak kullanılır.
+## Common Options
+`endsw` komutunun kendine özgü seçenekleri yoktur. Ancak, `switch` ifadesi ile birlikte kullanıldığında, belirli durumları tanımlamak için `case` ifadeleri ile birlikte kullanılır.
 
-## Yaygın Örnekler
+## Common Examples
 Aşağıda `endsw` komutunun kullanıldığı bazı örnekler bulunmaktadır:
 
 ### Örnek 1: Basit bir switch ifadesi
 ```csh
-switch ($variable)
-    case value1:
-        echo "Değer 1"
+set var = "merhaba"
+switch ($var)
+    case "merhaba":
+        echo "Selam!"
         breaksw
-    case value2:
-        echo "Değer 2"
+    case "güle güle":
+        echo "Hoşça kal!"
         breaksw
-    default:
-        echo "Varsayılan değer"
 endsw
 ```
 
 ### Örnek 2: Birden fazla durum
 ```csh
-switch ($option)
-    case "a":
-        echo "Seçenek A"
+set renk = "kırmızı"
+switch ($renk)
+    case "kırmızı":
+        echo "Renk kırmızı."
         breaksw
-    case "b":
-        echo "Seçenek B"
+    case "mavi":
+        echo "Renk mavi."
         breaksw
-    case "c":
-        echo "Seçenek C"
-        breaksw
+    default:
+        echo "Bilinmeyen renk."
 endsw
 ```
 
-## İpuçları
+## Tips
 - `endsw` komutunu kullanmadan önce, `switch` ifadesinin doğru bir şekilde tanımlandığından emin olun.
-- Her `case` ifadesinden sonra `breaksw` kullanarak akışı kontrol edin; aksi takdirde, tüm durumlar çalıştırılabilir.
-- `endsw` komutunu kullanarak kodunuzu daha okunabilir hale getirin ve mantıksal akışı netleştirin.
+- Her `case` ifadesinden sonra `breaksw` komutunu kullanarak akışı kontrol edin.
+- `default` durumu ekleyerek, beklenmeyen durumlar için bir yanıt tanımlamak iyi bir uygulamadır.

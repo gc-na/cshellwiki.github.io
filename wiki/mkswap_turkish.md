@@ -1,40 +1,40 @@
-# [Linux] C Shell (csh) mkswap Kullanımı: Swap alanı oluşturma
+# [Linux] C Shell (csh) mkswap Kullanımı: Takas alanı oluşturma
 
 ## Genel Bakış
-`mkswap` komutu, Linux sistemlerinde swap alanı oluşturmak için kullanılır. Swap alanı, sistemin bellek kullanımını optimize etmek ve bellek yetersizliği durumunda geçici veri depolamak için kullanılır.
+`mkswap` komutu, Linux sistemlerinde takas alanı (swap space) oluşturmak için kullanılır. Takas alanı, fiziksel bellek (RAM) yetersiz olduğunda, sistemin daha fazla bellek alanı kullanabilmesi için disk alanını geçici olarak kullanmasına olanak tanır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
 
-```bash
+```csh
 mkswap [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-L, --label LABEL`: Swap alanına bir etiket atar.
-- `-f, --force`: Mevcut bir swap alanını zorla oluşturur.
-- `-p, --pagesize SIZE`: Swap alanı için sayfa boyutunu belirtir.
+- `-f`: Mevcut bir takas alanını zorla oluşturur.
+- `-L <etiket>`: Takas alanına bir etiket atar.
+- `-p <öncelik>`: Takas alanının önceliğini ayarlar. Daha yüksek öncelik, daha fazla tercih edilir.
 
 ## Yaygın Örnekler
 Aşağıda `mkswap` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-1. Yeni bir swap dosyası oluşturma:
-   ```bash
+1. Yeni bir takas dosyası oluşturma:
+   ```csh
    dd if=/dev/zero of=/swapfile bs=1M count=1024
    mkswap /swapfile
    ```
 
-2. Swap alanına etiket ekleme:
-   ```bash
+2. Takas alanına etiket atama:
+   ```csh
    mkswap -L my_swap /swapfile
    ```
 
-3. Mevcut bir swap alanını zorla oluşturma:
-   ```bash
-   mkswap -f /dev/sdX
+3. Takas alanının önceliğini ayarlama:
+   ```csh
+   mkswap -p 10 /swapfile
    ```
 
 ## İpuçları
-- Swap alanını oluşturduktan sonra, kullanmak için `swapon` komutunu çalıştırmayı unutmayın.
-- Swap dosyası oluştururken, yeterli disk alanı olduğundan emin olun.
-- Swap alanını düzenli olarak kontrol edin ve gereksiz dosyaları temizleyin.
+- Takas alanı oluştururken, yeterli disk alanınız olduğundan emin olun.
+- Takas dosyasını oluşturduktan sonra, `swapon` komutunu kullanarak takas alanını etkinleştirmeyi unutmayın.
+- Takas alanını sistem başlangıcında otomatik olarak etkinleştirmek için `/etc/fstab` dosyasına gerekli satırı ekleyin.

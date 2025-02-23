@@ -1,7 +1,7 @@
 # [Hệ điều hành] C Shell (csh) mesg <Sử dụng tương đương>: Quản lý quyền nhận tin nhắn
 
 ## Tổng quan
-Lệnh `mesg` trong C Shell (csh) được sử dụng để quản lý quyền nhận tin nhắn từ người dùng khác. Lệnh này cho phép bạn bật hoặc tắt khả năng nhận tin nhắn trên terminal của mình.
+Lệnh `mesg` trong C Shell (csh) được sử dụng để quản lý quyền nhận tin nhắn từ người dùng khác. Khi bạn cho phép nhận tin nhắn, người dùng khác có thể gửi tin nhắn đến bạn qua terminal. Ngược lại, nếu bạn từ chối, họ sẽ không thể gửi tin nhắn cho bạn.
 
 ## Cú pháp
 Cú pháp cơ bản của lệnh `mesg` như sau:
@@ -11,7 +11,8 @@ mesg [tùy chọn] [tham số]
 
 ## Tùy chọn phổ biến
 - `y`: Cho phép nhận tin nhắn từ người dùng khác.
-- `n`: Tắt khả năng nhận tin nhắn từ người dùng khác.
+- `n`: Từ chối nhận tin nhắn từ người dùng khác.
+- `?`: Hiển thị trạng thái hiện tại của quyền nhận tin nhắn.
 
 ## Ví dụ phổ biến
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `mesg`:
@@ -21,16 +22,16 @@ Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh 
    mesg y
    ```
 
-2. **Tắt nhận tin nhắn:**
+2. **Từ chối nhận tin nhắn:**
    ```csh
    mesg n
    ```
 
 3. **Kiểm tra trạng thái hiện tại:**
    ```csh
-   mesg
+   mesg ?
    ```
 
 ## Mẹo
-- Hãy chắc chắn rằng bạn chỉ bật nhận tin nhắn khi bạn sẵn sàng nhận thông tin từ người khác, vì điều này có thể gây phân tâm.
-- Nếu bạn đang làm việc trong môi trường công cộng hoặc chia sẻ terminal, hãy cân nhắc tắt nhận tin nhắn để tránh bị làm phiền.
+- Hãy kiểm tra trạng thái quyền nhận tin nhắn trước khi gửi tin nhắn cho người khác để đảm bảo rằng họ có thể nhận được.
+- Sử dụng lệnh `mesg` trong các môi trường làm việc chung để tránh làm phiền người khác khi họ không muốn nhận tin nhắn.

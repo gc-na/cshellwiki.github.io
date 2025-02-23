@@ -1,4 +1,4 @@
-# [Linux] C Shell (csh) chmod Utilisation : Modifier les permissions des fichiers
+# [Linux] C Shell (csh) chmod : Modifier les permissions des fichiers
 
 ## Overview
 La commande `chmod` est utilisée pour modifier les permissions d'accès des fichiers et des répertoires dans un système Unix/Linux. Elle permet de définir qui peut lire, écrire ou exécuter un fichier.
@@ -13,16 +13,16 @@ chmod [options] [arguments]
 ## Common Options
 Voici quelques options courantes pour la commande `chmod` :
 
-- `-R` : Applique les changements de manière récursive à tous les fichiers et sous-répertoires.
-- `u` : Représente le propriétaire du fichier (user).
-- `g` : Représente le groupe associé au fichier (group).
-- `o` : Représente les autres utilisateurs (others).
-- `+` : Ajoute une permission.
-- `-` : Retire une permission.
-- `=` : Définit une permission exacte.
+- `u`: Modifie les permissions de l'utilisateur (propriétaire).
+- `g`: Modifie les permissions du groupe.
+- `o`: Modifie les permissions des autres utilisateurs.
+- `r`: Ajoute la permission de lecture.
+- `w`: Ajoute la permission d'écriture.
+- `x`: Ajoute la permission d'exécution.
+- `-`: Retire une permission.
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de la commande `chmod` :
+Voici quelques exemples pratiques de l'utilisation de `chmod` :
 
 1. **Ajouter la permission d'exécution pour le propriétaire :**
    ```csh
@@ -34,17 +34,22 @@ Voici quelques exemples pratiques de l'utilisation de la commande `chmod` :
    chmod g-w mon_fichier.txt
    ```
 
-3. **Définir les permissions de lecture, écriture et exécution pour le propriétaire, et seulement de lecture pour le groupe et les autres :**
+3. **Accorder toutes les permissions à tous les utilisateurs :**
    ```csh
-   chmod u=rwx,g=r,o=r mon_document.pdf
+   chmod a+rwx mon_dossier
    ```
 
-4. **Appliquer les changements de manière récursive à un répertoire :**
+4. **Définir des permissions spécifiques en utilisant des chiffres :**
    ```csh
-   chmod -R 755 mon_repertoire/
+   chmod 755 mon_programme
+   ```
+
+5. **Retirer la permission de lecture pour les autres utilisateurs :**
+   ```csh
+   chmod o-r mon_document.pdf
    ```
 
 ## Tips
-- Utilisez `ls -l` pour vérifier les permissions actuelles d'un fichier avant de les modifier.
-- Soyez prudent lorsque vous utilisez l'option `-R`, car elle affecte tous les fichiers et sous-répertoires.
-- Pour des permissions spécifiques, utilisez la notation numérique (par exemple, `chmod 644` pour un fichier avec des permissions de lecture et écriture pour le propriétaire, et de lecture pour le groupe et les autres).
+- Utilisez `chmod -R` pour appliquer les changements de manière récursive à tous les fichiers et sous-répertoires d'un répertoire.
+- Vérifiez les permissions actuelles d'un fichier avec la commande `ls -l` avant de les modifier.
+- Soyez prudent lors de l'utilisation de `chmod 777`, car cela donne des permissions complètes à tous les utilisateurs, ce qui peut poser des problèmes de sécurité.

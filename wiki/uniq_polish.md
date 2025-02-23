@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) uniq <Użycie: Usuwa duplikaty z pliku lub strumienia danych>
+# [Linux] C Shell (csh) uniq Użycie: Usuwa duplikaty z pliku
 
 ## Overview
-Polecenie `uniq` służy do usuwania duplikatów z plików tekstowych lub strumieni danych. Działa na podstawie porównania sąsiadujących linii, co oznacza, że tylko powtarzające się linie obok siebie są eliminowane.
+Polecenie `uniq` w C Shell (csh) służy do usuwania duplikatów z posortowanej listy linii w pliku lub z danych wejściowych. Dzięki temu można łatwo uzyskać unikalne wpisy z zestawu danych.
 
 ## Usage
 Podstawowa składnia polecenia `uniq` jest następująca:
@@ -17,14 +17,12 @@ uniq [opcje] [argumenty]
 - `-i`: Ignoruje wielkość liter podczas porównywania linii.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `uniq`:
-
 1. Usunięcie duplikatów z pliku:
    ```csh
    uniq plik.txt
    ```
 
-2. Zliczenie wystąpień unikalnych linii:
+2. Zliczanie wystąpień każdej unikalnej linii:
    ```csh
    uniq -c plik.txt
    ```
@@ -39,12 +37,10 @@ Oto kilka praktycznych przykładów użycia polecenia `uniq`:
    uniq -i plik.txt
    ```
 
-5. Usunięcie duplikatów z wyjścia innego polecenia:
-   ```csh
-   sort plik.txt | uniq
-   ```
-
 ## Tips
-- Upewnij się, że plik jest posortowany przed użyciem `uniq`, aby wszystkie duplikaty były obok siebie.
-- Możesz używać `uniq` w połączeniu z innymi poleceniami, takimi jak `sort`, aby uzyskać bardziej złożone wyniki.
-- Zawsze sprawdzaj, czy chcesz usunąć wszystkie duplikaty, czy tylko niektóre, używając odpowiednich opcji.
+- Upewnij się, że dane są posortowane przed użyciem `uniq`, aby uzyskać poprawne wyniki.
+- Możesz użyć `sort` w połączeniu z `uniq`, aby najpierw posortować dane:
+  ```csh
+  sort plik.txt | uniq
+  ```
+- Jeśli pracujesz z dużymi plikami, rozważ użycie opcji `-u` lub `-d`, aby szybko znaleźć unikalne lub duplikujące się linie.

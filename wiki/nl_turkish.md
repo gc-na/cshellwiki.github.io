@@ -1,52 +1,47 @@
 # [Linux] C Shell (csh) nl Kullanımı: Satır numaraları ekleme
 
 ## Overview
-`nl` komutu, bir dosyanın içeriğine satır numaraları ekleyerek çıktısını oluşturur. Bu, metin dosyalarını daha okunabilir hale getirmek için kullanışlıdır.
+`nl` komutu, bir dosyanın içeriğine satır numaraları ekleyerek çıktısını oluşturur. Bu, metin dosyalarının okunabilirliğini artırmak ve belirli satırları kolayca referans almak için kullanışlıdır.
 
 ## Usage
 Temel sözdizimi aşağıdaki gibidir:
-
 ```
 nl [options] [arguments]
 ```
 
 ## Common Options
-- `-b`: Satır numarası ekleme biçimini belirler. Örneğin, `-b a` tüm satırlara numara ekler.
-- `-f`: Boş satırların numaralandırılmasını kontrol eder. `-f n` ile boş satırlar numaralandırılmaz.
-- `-n`: Satır numaralarının biçimini belirler. `-n ln` ile numaralar sola yaslanır.
-- `-w`: Satır numaralarının genişliğini ayarlar. Örneğin, `-w 3` ile numaralar 3 karakter genişliğinde olur.
+- `-b` : Satır numarası ekleme biçimini belirler. Örneğin, `-b a` tüm satırlara numara ekler.
+- `-f` : Boş satırların numaralandırılmasını kontrol eder. `-f n` ile boş satırlar numaralandırılmaz.
+- `-n` : Satır numaralarının biçimini ayarlar. `-n ln` ile numaralar soldan hizalanır.
+- `-w` : Satır numaralarının genişliğini ayarlamak için kullanılır. Örneğin, `-w 4` ile numaralar 4 karakter genişliğinde olur.
 
 ## Common Examples
-Aşağıda `nl` komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda `nl` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
-1. **Temel Kullanım:**
-   Bir dosyadaki satırları numaralandırmak için:
+1. Basit bir dosyaya satır numarası eklemek:
    ```bash
    nl dosya.txt
    ```
 
-2. **Boş Satırları Atlamak:**
-   Boş satırları numaralandırmadan atlamak için:
+2. Tüm satırlara numara eklemek için:
    ```bash
-   nl -b n dosya.txt
+   nl -b a dosya.txt
    ```
 
-3. **Satır Numarası Biçimini Belirlemek:**
-   Satır numaralarını sağa yaslamak için:
+3. Boş satırları numaralandırmadan çıktı almak:
    ```bash
-   nl -n rn dosya.txt
+   nl -f n dosya.txt
    ```
 
-4. **Satır Numarası Genişliğini Ayarlamak:**
-   Satır numaralarının genişliğini 4 karakter yapmak için:
+4. Satır numaralarının genişliğini ayarlamak:
    ```bash
    nl -w 4 dosya.txt
    ```
 
 ## Tips
-- `nl` komutunu kullanırken, dosyanızın içeriğini daha iyi anlamak için farklı seçenekleri deneyin.
-- Uzun dosyalar için, çıktıyı bir dosyaya yönlendirmek için `>` operatörünü kullanabilirsiniz:
+- `nl` komutunu kullanırken, dosyanın içeriğini daha iyi anlamak için farklı seçenekleri bir arada kullanmayı deneyin.
+- Çıktıyı başka bir dosyaya yönlendirmek için `>` operatörünü kullanabilirsiniz:
   ```bash
   nl dosya.txt > numaralandirilmis_dosya.txt
   ```
-- `man nl` komutunu kullanarak daha fazla bilgi ve seçeneklere ulaşabilirsiniz.
+- `man nl` komutunu kullanarak daha fazla bilgi ve seçenekler hakkında yardım alabilirsiniz.

@@ -1,45 +1,42 @@
-# [Linux] C Shell (csh) nslookup użycie: Sprawdzanie informacji o DNS
+# [Linux] C Shell (csh) nslookup użycie: Sprawdzanie adresów IP i nazw domen
 
-## Overview
-Polecenie `nslookup` służy do uzyskiwania informacji o systemie nazw domen (DNS). Umożliwia użytkownikom wyszukiwanie adresów IP dla nazw domen oraz odwrotnie, co jest przydatne w diagnostyce problemów z siecią.
+## Przegląd
+Polecenie `nslookup` służy do zapytania systemu DNS w celu uzyskania informacji o adresach IP i nazwach domen. Umożliwia użytkownikom sprawdzanie, jakie adresy IP są przypisane do danej nazwy domeny oraz odwrotnie.
 
-## Usage
-Podstawowa składnia polecenia `nslookup` wygląda następująco:
+## Użycie
+Podstawowa składnia polecenia `nslookup` jest następująca:
 
-```csh
+```
 nslookup [opcje] [argumenty]
 ```
 
-## Common Options
-- `-type=typ`: Określa typ rekordu DNS do wyszukania (np. A, MX, CNAME).
+## Częste opcje
+- `-type=typ`: Określa typ zapytania, np. A (adres IPv4), AAAA (adres IPv6), MX (rekordy poczty).
 - `-timeout=n`: Ustala czas oczekiwania na odpowiedź w sekundach.
-- `-retry=n`: Ustala liczbę prób ponownego wysłania zapytania.
-- `-debug`: Włącza tryb debugowania, co pozwala na uzyskanie bardziej szczegółowych informacji o zapytaniach.
+- `-debug`: Włącza tryb debugowania, co pozwala na uzyskanie dodatkowych informacji o zapytaniach.
 
-## Common Examples
-Przykłady użycia polecenia `nslookup`:
-
-1. Wyszukiwanie adresu IP dla domeny:
+## Częste przykłady
+1. Sprawdzenie adresu IP dla danej nazwy domeny:
    ```csh
    nslookup example.com
    ```
 
-2. Wyszukiwanie rekordu MX dla domeny:
+2. Uzyskanie rekordów MX dla domeny:
    ```csh
    nslookup -type=MX example.com
    ```
 
-3. Ustalanie serwera DNS do użycia:
+3. Sprawdzenie adresu IP dla subdomeny:
+   ```csh
+   nslookup sub.example.com
+   ```
+
+4. Ustawienie serwera DNS do użycia:
    ```csh
    nslookup example.com 8.8.8.8
    ```
 
-4. Włączenie trybu debugowania:
-   ```csh
-   nslookup -debug example.com
-   ```
-
-## Tips
-- Używaj opcji `-type` do precyzyjnego określenia rodzaju rekordu, którego szukasz, aby uzyskać bardziej trafne wyniki.
-- Sprawdzaj różne serwery DNS, aby zweryfikować, czy problem nie leży po stronie konkretnego serwera.
-- Regularnie korzystaj z opcji `-debug`, aby zrozumieć, jak działają zapytania DNS i diagnozować problemy.
+## Wskazówki
+- Używaj opcji `-debug`, aby uzyskać więcej informacji podczas rozwiązywania problemów z DNS.
+- Pamiętaj, że wyniki mogą się różnić w zależności od używanego serwera DNS.
+- Regularnie sprawdzaj rekordy DNS, aby upewnić się, że są aktualne i poprawne.

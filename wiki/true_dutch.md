@@ -1,46 +1,46 @@
-# [Linux] C Shell (csh) true gebruik: Altijd succesvol uitvoeren
+# [Linux] C Shell (csh) true gebruik: Voert altijd een succesvolle exit uit
 
 ## Overzicht
-De `true` opdracht in C Shell (csh) is een eenvoudige opdracht die altijd een succesvolle exitstatus (0) retourneert. Het wordt vaak gebruikt in scripts en commando's waar een succesvolle uitvoering vereist is, zonder dat er daadwerkelijk iets wordt uitgevoerd.
+De `true` opdracht in C Shell (csh) is een eenvoudige commando dat altijd een succesvolle exitstatus (0) retourneert. Het wordt vaak gebruikt in scripts en commando's waar een succesvolle uitvoering vereist is, zonder dat er enige actie wordt ondernomen.
 
 ## Gebruik
-De basis syntaxis van de `true` opdracht is als volgt:
+De basis syntaxis van het `true` commando is als volgt:
 
 ```csh
 true [options] [arguments]
 ```
 
-## Veelvoorkomende Opties
-De `true` opdracht heeft geen specifieke opties, omdat het altijd succesvol is en geen argumenten vereist. Het is een standalone opdracht.
+## Veelvoorkomende opties
+De `true` opdracht heeft geen specifieke opties of argumenten. Het is een eenvoudig commando dat altijd succesvol is.
 
 ## Veelvoorkomende Voorbeelden
 
-### Voorbeeld 1: Eenvoudig gebruik
-Voer de `true` opdracht uit om een succesvolle exitstatus te genereren.
+Hier zijn enkele praktische voorbeelden van het gebruik van de `true` opdracht:
 
+### Voorbeeld 1: Gebruik in een script
 ```csh
-true
-```
-
-### Voorbeeld 2: Gebruik in een if-statement
-Gebruik `true` in een if-statement om een blok code uit te voeren als de voorwaarde waar is.
-
-```csh
-if (true) then
-    echo "Dit zal altijd worden uitgevoerd."
+#!/bin/csh
+if (some_condition) then
+    true
+else
+    echo "Er is een fout opgetreden."
 endif
 ```
 
-### Voorbeeld 3: In een loop
-Gebruik `true` om een oneindige loop te creëren die nooit stopt.
-
+### Voorbeeld 2: In een while-lus
 ```csh
 while (true)
-    echo "Dit blijft herhalen."
+    echo "Dit blijft doorgaan totdat het script wordt gestopt."
 end
 ```
 
+### Voorbeeld 3: Als een placeholder
+```csh
+true > /dev/null
+```
+In dit voorbeeld wordt `true` gebruikt om een succesvolle exit te simuleren zonder uitvoer te genereren.
+
 ## Tips
-- Gebruik `true` in scripts waar je een succesvolle uitvoering wilt simuleren zonder dat er verdere acties nodig zijn.
-- Combineer `true` met andere commando's in scripts om voorwaarden te creëren die altijd waar zijn.
-- Wees voorzichtig met het gebruik van `true` in loops, aangezien dit kan leiden tot oneindige uitvoeringen zonder een manier om te stoppen.
+- Gebruik `true` als een placeholder in scripts waar een succesvolle exit vereist is, maar geen actie nodig is.
+- Combineer `true` met andere commando's in scripts om logica te structureren zonder extra uitvoer te genereren.
+- Houd er rekening mee dat `true` altijd een exitstatus van 0 retourneert, wat betekent dat het niet geschikt is voor foutafhandeling.

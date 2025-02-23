@@ -1,44 +1,44 @@
-# [Hệ điều hành] C Shell (csh) tại at: [lên lịch thực thi lệnh]
+# [Hệ điều hành] C Shell (csh) at: [lập lịch thực thi lệnh]
 
 ## Tổng quan
-Lệnh `at` trong C Shell (csh) cho phép người dùng lên lịch thực thi các lệnh hoặc tập lệnh vào một thời điểm cụ thể trong tương lai. Điều này rất hữu ích cho việc tự động hóa các tác vụ mà bạn muốn thực hiện mà không cần phải can thiệp thủ công.
+Lệnh `at` trong C Shell (csh) cho phép người dùng lập lịch thực thi một lệnh hoặc một tập hợp các lệnh vào một thời điểm cụ thể trong tương lai. Điều này rất hữu ích cho việc tự động hóa các tác vụ mà bạn muốn thực hiện sau này.
 
-## Cách sử dụng
+## Cú pháp
 Cú pháp cơ bản của lệnh `at` như sau:
 ```
 at [options] [arguments]
 ```
 
 ## Các tùy chọn phổ biến
-- `-f <file>`: Chỉ định tệp chứa các lệnh cần thực thi.
+- `-f`: Chỉ định một tệp chứa các lệnh cần thực thi.
 - `-m`: Gửi email thông báo khi lệnh đã được thực thi.
-- `-q <queue>`: Chỉ định hàng đợi để thực hiện lệnh.
-- `-l`: Liệt kê các công việc đã được lên lịch.
+- `-q`: Chỉ định hàng đợi cho lệnh (ví dụ: a, b, c).
+- `-l`: Liệt kê các tác vụ đã được lập lịch.
 
-## Ví dụ thường gặp
+## Ví dụ phổ biến
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `at`:
 
-1. **Lên lịch một lệnh đơn giản**:
+1. **Lập lịch một lệnh để thực thi ngay sau 5 phút:**
    ```bash
-   echo "echo Hello, World!" | at now + 1 minute
+   echo "echo 'Hello, World!'" | at now + 5 minutes
    ```
 
-2. **Lên lịch thực thi một tệp lệnh**:
+2. **Lập lịch một lệnh để thực thi vào một thời điểm cụ thể:**
    ```bash
-   at 5 PM -f myscript.sh
+   echo "backup.sh" | at 2:00 PM
    ```
 
-3. **Lên lịch một lệnh và nhận thông báo qua email**:
+3. **Sử dụng tệp để thực thi nhiều lệnh:**
    ```bash
-   echo "backup.sh" | at now + 2 hours -m
+   at -f myscript.sh 3:00 PM
    ```
 
-4. **Liệt kê các công việc đã lên lịch**:
+4. **Liệt kê các lệnh đã được lập lịch:**
    ```bash
    at -l
    ```
 
 ## Mẹo
-- Hãy chắc chắn rằng bạn đã cài đặt dịch vụ `atd` để lệnh `at` hoạt động.
-- Kiểm tra thường xuyên các công việc đã lên lịch để tránh xung đột hoặc thực thi không mong muốn.
-- Sử dụng tùy chọn `-m` để nhận thông báo qua email, giúp bạn theo dõi các công việc đã thực hiện.
+- **Kiểm tra hàng đợi:** Sử dụng `at -l` để kiểm tra các lệnh đã được lập lịch và thời gian thực thi của chúng.
+- **Gửi thông báo:** Sử dụng tùy chọn `-m` để nhận thông báo qua email khi lệnh được thực thi.
+- **Lên lịch nhiều lệnh:** Bạn có thể lập lịch nhiều lệnh bằng cách sử dụng tệp chứa các lệnh và chỉ định tệp đó với tùy chọn `-f`.

@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) userdel : Supprimer un utilisateur du système
 
 ## Overview
-La commande `userdel` est utilisée pour supprimer un compte utilisateur du système. Elle permet de retirer les informations de l'utilisateur et, selon les options choisies, de supprimer également son répertoire personnel et ses fichiers.
+La commande `userdel` est utilisée pour supprimer un compte utilisateur du système. Cela inclut la suppression des fichiers associés à cet utilisateur, selon les options spécifiées.
 
 ## Usage
 La syntaxe de base de la commande `userdel` est la suivante :
@@ -11,11 +11,11 @@ userdel [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes pour la commande `userdel` :
+Voici quelques options courantes pour `userdel` :
 
-- `-r` : Supprime le répertoire personnel de l'utilisateur ainsi que son contenu.
+- `-r` : Supprime le répertoire personnel de l'utilisateur ainsi que son mail spool.
 - `-f` : Force la suppression de l'utilisateur même s'il est connecté.
-- `-Z` : Supprime les informations de sécurité associées à l'utilisateur.
+- `-Z` : Supprime les attributs de sécurité SELinux de l'utilisateur.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `userdel` :
@@ -35,12 +35,12 @@ Voici quelques exemples pratiques de l'utilisation de la commande `userdel` :
    userdel -f nom_utilisateur
    ```
 
-4. Supprimer un utilisateur tout en supprimant les informations de sécurité :
+4. Supprimer un utilisateur tout en supprimant les attributs de sécurité SELinux :
    ```csh
    userdel -Z nom_utilisateur
    ```
 
 ## Tips
-- Assurez-vous de sauvegarder les données importantes de l'utilisateur avant de le supprimer, surtout si vous utilisez l'option `-r`.
-- Vérifiez si l'utilisateur est connecté avant de le supprimer pour éviter des interruptions de service.
-- Utilisez la commande `who` pour voir les utilisateurs actuellement connectés au système.
+- Assurez-vous de sauvegarder les données importantes de l'utilisateur avant de le supprimer.
+- Utilisez l'option `-f` avec précaution, car elle peut entraîner la perte de données si l'utilisateur est actif.
+- Vérifiez toujours les dépendances d'autres services avant de supprimer un utilisateur pour éviter des interruptions de service.

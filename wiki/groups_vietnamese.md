@@ -1,42 +1,43 @@
-# [Hệ điều hành] C Shell (csh) groups: [liệt kê nhóm người dùng]
+# [Hệ điều hành] C Shell (csh) groups: Nhóm người dùng
 
-## Tổng quan
-Lệnh `groups` trong C Shell (csh) được sử dụng để hiển thị các nhóm mà một người dùng cụ thể thuộc về. Nó giúp người dùng xác định quyền truy cập và các nhóm mà họ có thể tương tác trong hệ thống.
+## Overview
+Lệnh `groups` trong C Shell (csh) được sử dụng để hiển thị các nhóm mà một người dùng thuộc về. Nó giúp người dùng xác định các quyền truy cập và vai trò mà họ có trong hệ thống.
 
-## Cú pháp
+## Usage
 Cú pháp cơ bản của lệnh `groups` như sau:
-```
-groups [tùy chọn] [tham số]
+
+```csh
+groups [options] [arguments]
 ```
 
-## Tùy chọn phổ biến
-- `-a`: Hiển thị tất cả các nhóm mà người dùng thuộc về, bao gồm cả các nhóm ẩn.
-- `-g`: Chỉ hiển thị tên của nhóm chính mà người dùng thuộc về.
+## Common Options
+- `-a`: Hiển thị tất cả các nhóm mà người dùng thuộc về, bao gồm cả nhóm chính.
+- `-g`: Chỉ hiển thị nhóm chính của người dùng.
 
-## Ví dụ phổ biến
+## Common Examples
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `groups`:
 
-1. **Hiển thị các nhóm của người dùng hiện tại:**
+1. Hiển thị các nhóm của người dùng hiện tại:
    ```csh
    groups
    ```
 
-2. **Hiển thị các nhóm của một người dùng cụ thể:**
+2. Hiển thị các nhóm của một người dùng cụ thể (ví dụ: `username`):
    ```csh
    groups username
    ```
 
-3. **Hiển thị nhóm chính của người dùng hiện tại:**
+3. Hiển thị nhóm chính của người dùng hiện tại:
    ```csh
    groups -g
    ```
 
-4. **Hiển thị tất cả các nhóm của một người dùng cụ thể, bao gồm cả nhóm ẩn:**
+4. Hiển thị tất cả các nhóm của người dùng cụ thể:
    ```csh
    groups -a username
    ```
 
-## Mẹo
-- Sử dụng lệnh `groups` để kiểm tra quyền truy cập của bạn trong các nhóm khác nhau, điều này có thể giúp bạn quản lý quyền truy cập tệp hiệu quả hơn.
-- Nếu bạn là quản trị viên hệ thống, hãy sử dụng lệnh này để xác định các nhóm mà người dùng thuộc về để quản lý quyền truy cập một cách hợp lý.
+## Tips
+- Sử dụng lệnh `groups` để kiểm tra quyền truy cập của bạn trước khi thực hiện các thao tác cần quyền hạn đặc biệt.
 - Kết hợp lệnh `groups` với các lệnh khác như `id` để có thêm thông tin về người dùng và nhóm.
+- Nếu bạn là quản trị viên, hãy thường xuyên kiểm tra các nhóm của người dùng để đảm bảo an ninh hệ thống.

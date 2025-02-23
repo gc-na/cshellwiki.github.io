@@ -1,33 +1,33 @@
-# [ระบบปฏิบัติการ] C Shell (csh) switch การใช้งาน: เปลี่ยนการทำงานตามเงื่อนไข
+# [ระบบปฏิบัติการ] C Shell (csh) switch การใช้งาน: สลับระหว่างตัวเลือก
 
 ## Overview
-คำสั่ง `switch` ใน C Shell (csh) ใช้เพื่อเปลี่ยนการทำงานตามเงื่อนไขที่กำหนด โดยจะทำการตรวจสอบค่าที่ส่งเข้ามาและทำการดำเนินการตามกรณีที่ตรงกับค่าดังกล่าว
+คำสั่ง `switch` ใน C Shell (csh) ใช้สำหรับการตรวจสอบค่าตัวแปรและทำการสลับไปยังกรณีที่ตรงกัน โดยจะช่วยให้การเขียนสคริปต์มีความชัดเจนและมีโครงสร้างที่ดีขึ้น
 
 ## Usage
-รูปแบบพื้นฐานของคำสั่ง `switch` คือ:
+- รูปแบบพื้นฐานของคำสั่ง `switch` คือ:
 
-```
+```csh
 switch (expression)
     case pattern1:
-        commands1
+        commands
         breaksw
     case pattern2:
-        commands2
+        commands
         breaksw
     default:
-        default_commands
+        commands
+        breaksw
 endsw
 ```
 
 ## Common Options
-- `case pattern:` - กำหนดรูปแบบที่ต้องการตรวจสอบ
-- `breaksw` - ใช้เพื่อออกจากคำสั่ง switch เมื่อพบกรณีที่ตรงกัน
-- `default:` - กำหนดคำสั่งที่จะทำเมื่อไม่มีกรณีใดตรงกัน
+- `case pattern:`: ใช้สำหรับกำหนดรูปแบบที่ต้องการตรวจสอบ
+- `breaksw`: ใช้เพื่อออกจากคำสั่ง switch หลังจากที่พบกรณีที่ตรงกัน
+- `default:`: ใช้สำหรับกำหนดคำสั่งที่จะทำเมื่อไม่มีกรณีใดตรงกัน
 
 ## Common Examples
-ตัวอย่างการใช้งานคำสั่ง `switch`:
+- ตัวอย่างที่ 1: ตรวจสอบค่าตัวแปร
 
-### ตัวอย่างที่ 1: การตรวจสอบค่าตัวแปร
 ```csh
 set var = "apple"
 switch ($var)
@@ -39,45 +39,31 @@ switch ($var)
         breaksw
     default:
         echo "Unknown fruit."
+        breaksw
 endsw
 ```
 
-### ตัวอย่างที่ 2: การใช้ switch กับค่าตัวเลข
+- ตัวอย่างที่ 2: ใช้ switch กับตัวเลข
+
 ```csh
-set num = 2
-switch ($num)
+set number = 2
+switch ($number)
     case 1:
-        echo "Number is one."
+        echo "One"
         breaksw
     case 2:
-        echo "Number is two."
+        echo "Two"
         breaksw
     case 3:
-        echo "Number is three."
+        echo "Three"
         breaksw
     default:
-        echo "Number is not one, two, or three."
-endsw
-```
-
-### ตัวอย่างที่ 3: การใช้ switch กับหลายกรณี
-```csh
-set day = "Monday"
-switch ($day)
-    case "Monday":
-    case "Tuesday":
-        echo "It's a weekday."
+        echo "Number not recognized."
         breaksw
-    case "Saturday":
-    case "Sunday":
-        echo "It's the weekend."
-        breaksw
-    default:
-        echo "Unknown day."
 endsw
 ```
 
 ## Tips
-- ใช้ `breaksw` ทุกครั้งหลังจากกรณีที่ตรงกันเพื่อหลีกเลี่ยงการทำงานของกรณีถัดไป
-- ตรวจสอบให้แน่ใจว่าค่าที่ใช้ใน `switch` มีการกำหนดไว้ก่อนที่จะเรียกใช้คำสั่ง
-- ใช้ `default` เพื่อจัดการกับกรณีที่ไม่ตรงกันเพื่อให้โปรแกรมทำงานได้อย่างราบรื่น
+- ใช้ `breaksw` เสมอหลังจากแต่ละกรณีเพื่อหลีกเลี่ยงการทำงานของกรณีถัดไป
+- ควรใช้ `default` เพื่อจัดการกับกรณีที่ไม่ตรงกัน เพื่อให้สคริปต์มีความสมบูรณ์
+- ตรวจสอบให้แน่ใจว่าค่าที่ใช้ใน `switch` มีการกำหนดค่าอย่างถูกต้องก่อนการใช้งาน

@@ -1,51 +1,54 @@
 # [Linux] C Shell (csh) iostat Utilizzo: Monitoraggio delle statistiche di input/output
 
 ## Overview
-Il comando `iostat` è utilizzato per monitorare le statistiche di input/output dei dispositivi di memorizzazione e delle partizioni. Fornisce informazioni utili sulle prestazioni del sistema, aiutando a identificare eventuali colli di bottiglia nelle operazioni di lettura e scrittura.
+Il comando `iostat` è utilizzato per monitorare le statistiche di input/output dei dispositivi e delle partizioni del sistema. Fornisce informazioni utili sulle prestazioni del sistema, aiutando a identificare eventuali colli di bottiglia nelle operazioni di lettura e scrittura.
 
 ## Usage
-La sintassi di base del comando `iostat` è la seguente:
+La sintassi di base del comando è la seguente:
 
-```
+```csh
 iostat [options] [arguments]
 ```
 
 ## Common Options
 - `-c`: Mostra solo le statistiche della CPU.
 - `-d`: Mostra solo le statistiche dei dispositivi.
-- `-x`: Mostra le statistiche estese per i dispositivi.
+- `-x`: Mostra informazioni estese sui dispositivi.
 - `-t`: Mostra l'ora e la data insieme alle statistiche.
-- `interval`: Specifica l'intervallo di tempo in secondi tra le misurazioni.
+- `interval`: Specifica il tempo in secondi tra le misurazioni.
 
 ## Common Examples
-Ecco alcuni esempi pratici di utilizzo del comando `iostat`:
+Ecco alcuni esempi pratici dell'uso del comando `iostat`:
 
 1. **Visualizzare le statistiche di base**:
-   ```bash
+   ```csh
    iostat
    ```
 
 2. **Mostrare solo le statistiche della CPU**:
-   ```bash
+   ```csh
    iostat -c
    ```
 
 3. **Visualizzare le statistiche dei dispositivi con dettagli estesi**:
-   ```bash
-   iostat -dx
+   ```csh
+   iostat -d -x
    ```
 
 4. **Monitorare le statistiche ogni 5 secondi**:
-   ```bash
+   ```csh
    iostat 5
    ```
 
 5. **Mostrare le statistiche con data e ora**:
-   ```bash
+   ```csh
    iostat -t
    ```
 
 ## Tips
-- Utilizza l'opzione `-x` per ottenere informazioni più dettagliate sui dispositivi, utili per analisi approfondite.
-- Combinare `iostat` con altri strumenti come `vmstat` e `mpstat` può fornire una visione più completa delle prestazioni del sistema.
-- Esegui `iostat` in un terminale separato mentre esegui operazioni intensive per monitorare in tempo reale l'impatto sulle prestazioni.
+- Utilizza l'opzione `-x` per ottenere informazioni dettagliate sui dispositivi, che possono aiutarti a diagnosticare problemi di prestazioni.
+- Esegui `iostat` in combinazione con altri strumenti come `top` o `vmstat` per avere una visione completa delle prestazioni del sistema.
+- Considera di redirigere l'output di `iostat` in un file per analisi successive, ad esempio: 
+  ```csh
+  iostat -x > iostat_output.txt
+  ```

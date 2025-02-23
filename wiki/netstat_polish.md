@@ -1,7 +1,7 @@
-# [Systemy Unixowe] C Shell (csh) netstat Użycie: Wyświetlanie informacji o połączeniach sieciowych
+# [Linux] C Shell (csh) netstat Użycie: wyświetlanie informacji o połączeniach sieciowych
 
 ## Przegląd
-Polecenie `netstat` służy do wyświetlania informacji o połączeniach sieciowych, trasach, statystykach interfejsów oraz innych danych związanych z siecią. Jest to przydatne narzędzie do monitorowania aktywności sieciowej oraz diagnozowania problemów.
+Polecenie `netstat` służy do wyświetlania informacji o połączeniach sieciowych, tabel routingu oraz statystyk interfejsów sieciowych. Umożliwia monitorowanie aktywnych połączeń oraz diagnozowanie problemów z siecią.
 
 ## Użycie
 Podstawowa składnia polecenia `netstat` jest następująca:
@@ -10,40 +10,35 @@ Podstawowa składnia polecenia `netstat` jest następująca:
 netstat [opcje] [argumenty]
 ```
 
-## Często używane opcje
-- `-a`: Wyświetla wszystkie połączenia i porty nasłuchujące.
-- `-n`: Wyświetla adresy IP i numery portów w formie numerycznej, bez rozwiązywania nazw.
-- `-r`: Wyświetla tablicę routingu.
-- `-i`: Wyświetla statystyki interfejsów sieciowych.
-- `-s`: Wyświetla statystyki protokołów.
+## Częste opcje
+- `-a` – wyświetla wszystkie połączenia i porty nasłuchujące.
+- `-t` – pokazuje tylko połączenia TCP.
+- `-u` – pokazuje tylko połączenia UDP.
+- `-n` – wyświetla adresy IP i numery portów w formie numerycznej, zamiast nazw.
+- `-r` – wyświetla tabelę routingu.
 
-## Częste przykłady
+## Przykłady
 1. Wyświetlenie wszystkich aktywnych połączeń:
    ```csh
    netstat -a
    ```
 
-2. Wyświetlenie połączeń z adresami IP w formie numerycznej:
+2. Wyświetlenie tylko połączeń TCP:
    ```csh
-   netstat -an
+   netstat -t
    ```
 
-3. Wyświetlenie tablicy routingu:
+3. Wyświetlenie połączeń UDP z adresami w formie numerycznej:
+   ```csh
+   netstat -un
+   ```
+
+4. Wyświetlenie tabeli routingu:
    ```csh
    netstat -r
    ```
 
-4. Wyświetlenie statystyk interfejsów sieciowych:
-   ```csh
-   netstat -i
-   ```
-
-5. Wyświetlenie statystyk protokołów:
-   ```csh
-   netstat -s
-   ```
-
 ## Wskazówki
-- Używaj opcji `-n`, aby przyspieszyć wyświetlanie wyników, unikając rozwiązywania nazw.
-- Regularnie monitoruj połączenia, aby szybko wykrywać nieautoryzowane aktywności.
-- Łącz różne opcje, aby uzyskać bardziej szczegółowe informacje, np. `netstat -anr`, aby zobaczyć połączenia i tablicę routingu jednocześnie.
+- Używaj opcji `-n`, aby przyspieszyć wyświetlanie wyników, unikając rozwiązywania nazw hostów.
+- Regularnie monitoruj połączenia sieciowe, aby wykrywać nieautoryzowane połączenia.
+- Łącz opcje, aby uzyskać bardziej szczegółowe informacje, na przykład `netstat -tun` dla połączeń TCP i UDP w formie numerycznej.

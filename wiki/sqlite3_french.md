@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) sqlite3 Utilisation : Interface de ligne de commande pour SQLite
 
 ## Overview
-La commande `sqlite3` permet d'interagir avec des bases de données SQLite via une interface de ligne de commande. Elle permet de créer, modifier et interroger des bases de données de manière efficace.
+La commande `sqlite3` permet d'interagir avec des bases de données SQLite via une interface en ligne de commande. Elle permet de créer, modifier et interroger des bases de données de manière efficace.
 
 ## Usage
 La syntaxe de base de la commande `sqlite3` est la suivante :
@@ -16,7 +16,7 @@ Voici quelques options courantes pour la commande `sqlite3` :
 - `-help` : Affiche l'aide et les options disponibles.
 - `-version` : Affiche la version de SQLite.
 - `-init <file>` : Exécute les commandes SQL contenues dans le fichier spécifié au démarrage.
-- `-batch` : Exécute les commandes en mode batch, sans interaction utilisateur.
+- `-batch` : Exécute les commandes en mode batch, idéal pour les scripts.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `sqlite3` :
@@ -47,6 +47,6 @@ Voici quelques exemples pratiques de l'utilisation de `sqlite3` :
    ```
 
 ## Tips
-- Utilisez l'option `-init` pour charger des scripts SQL au démarrage, ce qui peut faciliter l'automatisation des tâches.
+- Utilisez l'option `-init` pour charger des scripts SQL au démarrage, ce qui peut faciliter les configurations répétitives.
 - Pensez à sauvegarder régulièrement vos bases de données pour éviter toute perte de données.
 - Familiarisez-vous avec les commandes SQL de base pour tirer le meilleur parti de `sqlite3`.

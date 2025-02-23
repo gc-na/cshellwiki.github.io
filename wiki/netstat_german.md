@@ -6,16 +6,16 @@ Der Befehl `netstat` wird verwendet, um Netzwerkverbindungen, Routing-Tabellen, 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```
+```csh
 netstat [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
 - `-a`: Zeigt alle Verbindungen und Listening-Ports an.
 - `-n`: Zeigt Adressen und Portnummern in numerischer Form an, anstatt sie in Namen aufzulösen.
-- `-t`: Zeigt nur TCP-Verbindungen an.
-- `-u`: Zeigt nur UDP-Verbindungen an.
-- `-l`: Zeigt nur Listening-Ports an.
+- `-r`: Zeigt die Routing-Tabelle an.
+- `-i`: Zeigt Informationen über Netzwerkinterfaces an.
+- `-s`: Zeigt Statistiken für verschiedene Protokolle an.
 
 ## Häufige Beispiele
 Hier sind einige praktische Beispiele für die Verwendung von `netstat`:
@@ -25,27 +25,27 @@ Hier sind einige praktische Beispiele für die Verwendung von `netstat`:
    netstat -a
    ```
 
-2. **TCP-Verbindungen in numerischer Form anzeigen:**
+2. **Verbindungen in numerischer Form anzeigen:**
    ```csh
-   netstat -tn
+   netstat -an
    ```
 
-3. **Nur Listening-Ports anzeigen:**
+3. **Routing-Tabelle anzeigen:**
    ```csh
-   netstat -l
+   netstat -r
    ```
 
-4. **UDP-Verbindungen anzeigen:**
-   ```csh
-   netstat -u
-   ```
-
-5. **Statistiken für alle Schnittstellen anzeigen:**
+4. **Netzwerkinterfaces und deren Status anzeigen:**
    ```csh
    netstat -i
    ```
 
+5. **Statistiken für TCP-Protokolle anzeigen:**
+   ```csh
+   netstat -s -p tcp
+   ```
+
 ## Tipps
-- Verwenden Sie die Option `-n`, um die Ausgabe zu beschleunigen, da die Namensauflösung vermieden wird.
-- Kombinieren Sie Optionen, um spezifischere Informationen zu erhalten, z.B. `netstat -tunl` für alle aktiven TCP- und UDP-Verbindungen, die auf Ports lauschen.
-- Überprüfen Sie regelmäßig die Netzwerkverbindungen, um unautorisierte Zugriffe oder ungewöhnliche Aktivitäten zu erkennen.
+- Verwenden Sie die Option `-n`, um die Ausgabe zu beschleunigen, da die Namensauflösung umgangen wird.
+- Kombinieren Sie Optionen, um spezifischere Informationen zu erhalten, z. B. `netstat -anr`, um sowohl die aktiven Verbindungen als auch die Routing-Tabelle anzuzeigen.
+- Nutzen Sie `grep`, um die Ausgabe nach bestimmten Verbindungen oder Ports zu filtern, z. B. `netstat -an | grep 80`, um nur HTTP-Verbindungen anzuzeigen.

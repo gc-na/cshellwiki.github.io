@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) unalias utilizare: Elimină aliasurile definite
+# [Linux] C Shell (csh) unalias: Elimină aliasuri
 
 ## Overview
-Comanda `unalias` în C Shell (csh) este utilizată pentru a elimina aliasurile definite anterior. Un alias este o comandă scurtă care înlocuiește o comandă mai lungă, iar `unalias` permite utilizatorului să revină la comportamentul standard al comenzilor.
+Comanda `unalias` în C Shell (csh) este utilizată pentru a elimina aliasuri definite anterior. Aliasurile sunt comenzi scurte care pot înlocui comenzi mai lungi, iar `unalias` permite utilizatorilor să revină la comportamentul standard al comenzilor.
 
 ## Usage
 Sintaxa de bază a comenzii `unalias` este următoarea:
@@ -12,28 +12,28 @@ unalias [options] [arguments]
 
 ## Common Options
 - `-a`: Elimină toate aliasurile definite.
-- `-m`: Elimină aliasurile care corespund unui model specificat.
+- `-m`: Elimină aliasurile care se potrivesc cu un model specificat.
 
 ## Common Examples
-1. **Eliminarea unui alias specific:**
-   Dacă ai definit un alias numit `ll` pentru `ls -l`, îl poți elimina astfel:
+1. **Eliminarea unui alias specific**:
+   Dacă ai definit un alias numit `ll` și dorești să-l elimini, poți folosi:
    ```csh
    unalias ll
    ```
 
-2. **Eliminarea tuturor aliasurilor:**
-   Pentru a elimina toate aliasurile definite, folosește opțiunea `-a`:
+2. **Eliminarea tuturor aliasurilor**:
+   Pentru a elimina toate aliasurile din sesiunea curentă, folosește:
    ```csh
    unalias -a
    ```
 
-3. **Eliminarea aliasurilor care corespund unui model:**
-   Dacă ai aliasuri precum `list1`, `list2`, și vrei să le elimini pe toate cu prefixul `list`, folosește:
+3. **Eliminarea aliasurilor care se potrivesc cu un model**:
+   Dacă ai aliasuri care încep cu `g` și vrei să le elimini, poți utiliza:
    ```csh
-   unalias list*
+   unalias g*
    ```
 
 ## Tips
-- Verifică întotdeauna aliasurile active folosind comanda `alias` înainte de a le elimina.
+- Asigură-te că ai nevoie cu adevărat să elimini un alias, deoarece acest lucru nu poate fi anulat decât prin redefinirea aliasului.
+- Verifică aliasurile curente folosind comanda `alias` înainte de a le elimina, pentru a evita confuziile.
 - Folosește `unalias -a` cu precauție, deoarece va elimina toate aliasurile, nu doar pe cele pe care le-ai definit tu.
-- Dacă ai nevoie de un alias temporar, consideră utilizarea unei sesiuni de shell separate pentru a evita conflictele cu aliasurile existente.

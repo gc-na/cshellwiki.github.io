@@ -1,42 +1,45 @@
-# [Linux] C Shell (csh) complete kullanım: Tamamlanmış komutları gösterir
+# [Linux] C Shell (csh) complete kullanımı: Tamamlayıcı komut
 
 ## Genel Bakış
-`complete` komutu, C Shell (csh) ortamında, kullanıcıların yazmaya başladıkları komutların tamamlanmasını sağlamak için kullanılır. Bu komut, kullanıcıların daha hızlı ve verimli bir şekilde komut yazmalarına yardımcı olur.
+`complete` komutu, C Shell (csh) ortamında komut tamamlama işlevselliğini sağlamak için kullanılır. Bu komut, kullanıcıların yazdıkları komutları daha hızlı ve doğru bir şekilde tamamlamalarına yardımcı olur.
 
 ## Kullanım
-Temel sözdizimi şu şekildedir:
+Temel sözdizimi aşağıdaki gibidir:
 
 ```csh
-complete [seçenekler] [argümanlar]
+complete [options] [arguments]
 ```
 
 ## Yaygın Seçenekler
 - `-c`: Tamamlanacak komutun adını belirtir.
-- `-d`: Tamamlanacak dizinleri gösterir.
-- `-f`: Dosya adlarını tamamlamak için kullanılır.
+- `-d`: Tamamlamanın hangi dosya veya dizinlerde yapılacağını tanımlar.
+- `-f`: Tamamlamanın dosya adları ile sınırlı olmasını sağlar.
+- `-n`: Tamamlamanın hangi kelimelerden sonra yapılacağını belirtir.
 
 ## Yaygın Örnekler
-Aşağıda `complete` komutunun bazı pratik örnekleri verilmiştir:
+Aşağıda `complete` komutunun bazı pratik örnekleri bulunmaktadır:
 
-### Örnek 1: Basit Tamamlama
-```csh
-complete -c ls
-```
-Bu komut, `ls` komutunu tamamlamak için kullanılacak seçenekleri gösterir.
+1. Belirli bir komut için tamamlamayı etkinleştirme:
+   ```csh
+   complete -c git
+   ```
 
-### Örnek 2: Dizin Tamamlama
-```csh
-complete -d cd
-```
-Bu komut, `cd` komutunu kullanarak mevcut dizinleri tamamlamak için seçenekleri listeler.
+2. Belirli bir dosya uzantısı için tamamlamayı sınırlama:
+   ```csh
+   complete -c vi -d *.txt
+   ```
 
-### Örnek 3: Dosya Tamamlama
-```csh
-complete -f cp
-```
-Bu komut, `cp` komutunu kullanarak dosya adlarını tamamlamak için seçenekleri gösterir.
+3. Komut tamamlamasında sadece dizinleri kullanma:
+   ```csh
+   complete -c cd -f
+   ```
+
+4. Belirli bir kelimeden sonra tamamlamayı etkinleştirme:
+   ```csh
+   complete -c ssh -n 'hostname'
+   ```
 
 ## İpuçları
-- `complete` komutunu kullanmadan önce hangi komutları tamamlamak istediğinizi belirleyin.
-- Tamamlanacak komutlar için doğru seçenekleri kullanarak daha verimli bir deneyim elde edebilirsiniz.
-- Komutları yazarken, tamamlamanın nasıl çalıştığını anlamak için `complete` komutunu sık sık deneyin.
+- Tamamlamaları etkinleştirmeden önce, hangi komutlar için tamamlamaların gerektiğini düşünün.
+- Tamamlamaları daha verimli hale getirmek için sık kullandığınız komutlar için özelleştirilmiş tamamlamalar oluşturun.
+- Tamamlamaları test etmek için terminalde denemeler yapın ve gerektiğinde ayarlamalar yapın.

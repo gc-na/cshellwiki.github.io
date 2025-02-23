@@ -1,49 +1,48 @@
-# [Linux] C Shell (csh) xz użycie: kompresja i dekompresja plików
+# [Linux] C Shell (csh) xz użycie: Kompresja i dekompresja plików
 
-## Przegląd
-Polecenie `xz` służy do kompresji i dekompresji plików, wykorzystując algorytm LZMA. Jest to narzędzie, które pozwala na zmniejszenie rozmiaru plików, co jest szczególnie przydatne w przypadku dużych zbiorów danych.
+## Overview
+Polecenie `xz` służy do kompresji i dekompresji plików przy użyciu algorytmu LZMA. Jest to narzędzie, które pozwala na znaczne zmniejszenie rozmiaru plików, co jest przydatne w przypadku przechowywania lub przesyłania danych.
 
-## Użycie
+## Usage
 Podstawowa składnia polecenia `xz` jest następująca:
 
 ```csh
-xz [opcje] [argumenty]
+xz [options] [arguments]
 ```
 
-## Częste opcje
-- `-d`, `--decompress`: dekompresuje plik.
-- `-k`, `--keep`: zachowuje oryginalny plik po kompresji.
-- `-f`, `--force`: wymusza nadpisanie istniejących plików.
-- `-z`, `--compress`: kompresuje plik (domyślna opcja).
-- `-9`: używa maksymalnego poziomu kompresji.
+## Common Options
+- `-d`, `--decompress`: Dekompresuje plik.
+- `-k`, `--keep`: Zachowuje oryginalny plik po kompresji.
+- `-f`, `--force`: Wymusza nadpisanie istniejących plików.
+- `-v`, `--verbose`: Wyświetla szczegółowe informacje podczas kompresji lub dekompresji.
+- `-z`, `--compress`: Kompresuje plik (domyślna opcja).
 
-## Przykłady
-- Kompresja pliku:
+## Common Examples
+Kompresja pliku:
+
 ```csh
 xz myfile.txt
 ```
 
-- Dekomprensja pliku:
+Dekompresja pliku:
+
 ```csh
 xz -d myfile.txt.xz
 ```
 
-- Kompresja z zachowaniem oryginalnego pliku:
+Kompresja pliku z zachowaniem oryginału:
+
 ```csh
 xz -k myfile.txt
 ```
 
-- Wymuszenie kompresji, nawet jeśli plik już istnieje:
+Wyświetlenie szczegółowych informacji podczas kompresji:
+
 ```csh
-xz -f myfile.txt
+xz -v myfile.txt
 ```
 
-- Kompresja z maksymalnym poziomem:
-```csh
-xz -9 myfile.txt
-```
-
-## Wskazówki
-- Używaj opcji `-k`, jeśli chcesz zachować oryginalne pliki podczas kompresji.
-- Zwróć uwagę na rozmiar plików po kompresji; `xz` może znacznie zmniejszyć ich rozmiar, ale czasami może to zająć więcej czasu.
-- Sprawdzaj dokumentację, aby poznać więcej opcji i dostosować kompresję do swoich potrzeb.
+## Tips
+- Używaj opcji `-k`, jeśli chcesz zachować oryginalny plik po kompresji.
+- Sprawdzaj rozmiar plików przed i po kompresji, aby ocenić efektywność.
+- Zwracaj uwagę na pliki, które są już skompresowane (np. pliki `.zip`), ponieważ dalsza kompresja może nie przynieść znaczących oszczędności.

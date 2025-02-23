@@ -6,32 +6,33 @@ Der Befehl `clear` wird verwendet, um den Inhalt des Terminals zu löschen und d
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```
+```csh
 clear [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- **-x**: Löscht den Bildschirm und entfernt auch den Scroll-Puffer.
-- **-s**: Unterdrückt die Ausgabe von Steuerzeichen, die den Bildschirm löschen.
+- **-x**: Löscht den Bildschirm und entfernt auch die Zeilen, die in der Scrollback-Historie gespeichert sind.
+- **-h**: Zeigt die Hilfe für den Befehl an.
 
 ## Häufige Beispiele
+Hier sind einige praktische Beispiele für die Verwendung des `clear`-Befehls:
 
 1. **Einfaches Löschen des Bildschirms:**
    ```csh
    clear
    ```
 
-2. **Löschen des Bildschirms ohne Scroll-Puffer:**
+2. **Löschen des Bildschirms mit der Option -x:**
    ```csh
    clear -x
    ```
 
-3. **Löschen des Bildschirms und Unterdrückung der Ausgabe:**
+3. **Hilfe für den Befehl anzeigen:**
    ```csh
-   clear -s
+   clear -h
    ```
 
 ## Tipps
-- Verwenden Sie `clear`, um schnell eine unübersichtliche Terminalausgabe zu bereinigen.
-- Kombinieren Sie `clear` mit anderen Befehlen in Skripten, um die Lesbarkeit zu verbessern.
-- Beachten Sie, dass der Befehl `clear` keine Auswirkungen auf die laufenden Prozesse hat; es entfernt lediglich die Sichtbarkeit der vorherigen Ausgaben.
+- Verwenden Sie `clear`, um den Bildschirm regelmäßig zu reinigen, insbesondere nach langen Ausgaben, um die Lesbarkeit zu verbessern.
+- Kombinieren Sie `clear` mit anderen Befehlen in Skripten, um die Benutzeroberfläche zu optimieren.
+- Beachten Sie, dass der Befehl `clear` keine Auswirkungen auf die laufenden Prozesse hat; es löscht lediglich die Anzeige im Terminal.

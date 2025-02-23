@@ -1,38 +1,48 @@
-# [Linux] C Shell (csh) builtin: eingebauter Befehl zur Ausführung von Shell-Funktionen
+# [Linux] C Shell (csh) builtin `alias`: Befehlsalias erstellen
 
 ## Übersicht
-Der `builtin` Befehl in der C Shell (csh) wird verwendet, um Shell-interne Befehle auszuführen, die normalerweise von externen Programmen bereitgestellt werden. Dies ermöglicht eine schnellere Ausführung und eine bessere Kontrolle über die Shell-Umgebung.
+Der `alias` Befehl in der C Shell (csh) wird verwendet, um Befehlsalias zu erstellen. Dies ermöglicht es Benutzern, lange oder komplexe Befehle durch kürzere, benutzerdefinierte Namen zu ersetzen, was die Eingabe von häufig verwendeten Befehlen erleichtert.
 
 ## Verwendung
-Die grundlegende Syntax des `builtin` Befehls lautet:
+Die grundlegende Syntax des `alias` Befehls lautet:
 
-```
-builtin [optionen] [argumente]
+```csh
+alias [name] [command]
 ```
 
 ## Häufige Optionen
-- `-c`: Führt einen Befehl aus und gibt das Ergebnis zurück.
-- `-h`: Zeigt eine Hilfe zu den verfügbaren internen Befehlen an.
+- `-p`: Zeigt alle definierten Aliase an.
+- `-d`: Löscht einen definierten Alias.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung des `builtin` Befehls:
+Hier sind einige praktische Beispiele zur Verwendung des `alias` Befehls:
 
-1. **Ausführen eines internen Befehls**:
+1. **Einen einfachen Alias erstellen:**
    ```csh
-   builtin echo "Hallo, Welt!"
+   alias ll 'ls -l'
    ```
+   Dieser Befehl erstellt einen Alias `ll`, der den Befehl `ls -l` ausführt.
 
-2. **Hilfe zu internen Befehlen anzeigen**:
+2. **Einen Alias mit mehreren Befehlen:**
    ```csh
-   builtin -h
+   alias update 'sudo apt update && sudo apt upgrade'
    ```
+   Hier wird ein Alias `update` erstellt, der sowohl das Aktualisieren der Paketliste als auch das Upgrade der Pakete durchführt.
 
-3. **Einen Befehl ausführen und das Ergebnis zurückgeben**:
+3. **Alle definierten Aliase anzeigen:**
    ```csh
-   builtin -c "set var = 10"
+   alias -p
    ```
+   Mit diesem Befehl werden alle aktuell definierten Aliase aufgelistet.
+
+4. **Einen Alias löschen:**
+   ```csh
+   alias rm 'rm -i'
+   alias -d rm
+   ```
+   Zuerst wird ein Alias `rm` erstellt, der `rm -i` ausführt, und dann wird dieser Alias gelöscht.
 
 ## Tipps
-- Verwenden Sie `builtin`, wenn Sie sicherstellen möchten, dass ein interner Befehl der Shell und nicht ein externes Programm ausgeführt wird.
-- Überprüfen Sie regelmäßig die Hilfe, um sich über die verfügbaren internen Befehle und deren Optionen zu informieren.
-- Nutzen Sie `builtin` in Skripten, um die Leistung zu optimieren, indem Sie interne Befehle bevorzugen.
+- Verwenden Sie aussagekräftige Namen für Ihre Aliase, um die Lesbarkeit zu verbessern.
+- Überprüfen Sie regelmäßig Ihre definierten Aliase mit `alias -p`, um sicherzustellen, dass sie aktuell und nützlich sind.
+- Speichern Sie Ihre Aliase in Ihrer `.cshrc`-Datei, um sie bei jedem Start der Shell automatisch zu laden.

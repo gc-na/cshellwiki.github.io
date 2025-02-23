@@ -1,20 +1,20 @@
-# [Sistem Operasi] C Shell (csh) unzip Penggunaan: Ekstrak file ZIP
+# [Sistem Operasi] C Shell (csh) unzip Penggunaan: Mengekstrak file ZIP
 
 ## Overview
-Perintah `unzip` digunakan untuk mengekstrak file dari arsip ZIP. Ini memungkinkan pengguna untuk mengakses konten yang terkompresi dalam format ZIP dengan mudah.
+Perintah `unzip` digunakan untuk mengekstrak file dari arsip ZIP. Ini memungkinkan pengguna untuk mengambil konten yang terkompresi dalam format ZIP dan menggunakannya di sistem mereka.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `unzip`:
 
-```
+```csh
 unzip [options] [arguments]
 ```
 
 ## Common Options
 - `-l`: Menampilkan daftar file dalam arsip ZIP tanpa mengekstraknya.
 - `-d <directory>`: Menentukan direktori tujuan untuk mengekstrak file.
-- `-o`: Mengizinkan penimpaan file yang ada tanpa meminta konfirmasi.
-- `-q`: Menjalankan perintah dalam mode tenang, tanpa menampilkan informasi proses.
+- `-o`: Mengizinkan penimpaan file yang sudah ada tanpa meminta konfirmasi.
+- `-q`: Menjalankan perintah dalam mode senyap, mengurangi output ke layar.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `unzip`:
@@ -39,12 +39,12 @@ Berikut adalah beberapa contoh penggunaan perintah `unzip`:
    unzip -o file.zip
    ```
 
-5. **Mengekstrak file ZIP dalam mode tenang:**
+5. **Mengekstrak file ZIP dengan mode senyap:**
    ```csh
    unzip -q file.zip
    ```
 
 ## Tips
-- Selalu periksa isi arsip ZIP dengan opsi `-l` sebelum mengekstrak untuk menghindari penimpaan file penting.
-- Gunakan opsi `-d` untuk mengatur lokasi ekstraksi agar lebih terorganisir.
-- Jika sering mengekstrak file ZIP, pertimbangkan untuk membuat alias untuk perintah `unzip` dengan opsi yang sering digunakan.
+- Selalu periksa konten arsip ZIP dengan opsi `-l` sebelum mengekstrak untuk menghindari penimpaan file penting.
+- Gunakan opsi `-d` untuk mengorganisir file yang diekstrak ke dalam folder tertentu, sehingga lebih mudah dikelola.
+- Jika sering bekerja dengan file ZIP, pertimbangkan untuk membuat alias untuk perintah `unzip` dengan opsi yang sering digunakan.

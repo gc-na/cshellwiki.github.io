@@ -1,46 +1,51 @@
 # [Linux] C Shell (csh) screen użycie: zarządzanie sesjami terminalowymi
 
 ## Overview
-Polecenie `screen` w C Shell (csh) służy do zarządzania sesjami terminalowymi. Umożliwia użytkownikom uruchamianie wielu sesji w jednym oknie terminala oraz łatwe przełączanie się między nimi. Dzięki `screen` można również odłączyć sesję i wznowić ją później, co jest szczególnie przydatne w przypadku długotrwałych zadań.
+Polecenie `screen` w C Shell (csh) pozwala na tworzenie i zarządzanie wieloma sesjami terminalowymi w jednym oknie. Umożliwia to użytkownikom uruchamianie procesów w tle oraz powracanie do nich później, co jest szczególnie przydatne w przypadku długotrwałych zadań.
 
 ## Usage
-Podstawowa składnia polecenia `screen` jest następująca:
+Podstawowa składnia polecenia `screen` wygląda następująco:
 
-```bash
-screen [options] [arguments]
+```
+screen [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-S <session_name>`: Umożliwia nadanie nazwy sesji, co ułatwia jej późniejsze odnalezienie.
-- `-d -r`: Odłącza sesję, jeśli jest aktywna, a następnie ją wznawia.
-- `-list`: Wyświetla listę dostępnych sesji.
-- `-q`: Uruchamia `screen` w trybie cichym, bez wyświetlania komunikatów.
+- `-S <nazwa>`: Umożliwia nadanie sesji unikalnej nazwy.
+- `-d -r`: Odłącza sesję i łączy się z nią ponownie.
+- `-list`: Wyświetla listę aktywnych sesji.
+- `-X <komenda>`: Wysyła komendę do działającej sesji.
 
 ## Common Examples
-1. **Uruchomienie nowej sesji `screen`:**
-   ```bash
+1. **Uruchomienie nowej sesji screen:**
+   ```csh
    screen
    ```
 
-2. **Uruchomienie sesji z nazwą:**
-   ```bash
+2. **Nadanie nazwy sesji:**
+   ```csh
    screen -S moja_sesja
    ```
 
-3. **Odłączenie od sesji:**
-   Naciśnij `Ctrl + A`, a następnie `D`.
+3. **Odłączenie sesji:**
+   Naciśnij `Ctrl-a` następnie `d`.
 
-4. **Wznawianie odłączonej sesji:**
-   ```bash
+4. **Powrót do odłączonej sesji:**
+   ```csh
    screen -r
    ```
 
-5. **Wyświetlenie listy sesji:**
-   ```bash
+5. **Wyświetlenie listy aktywnych sesji:**
+   ```csh
    screen -list
    ```
 
+6. **Wysyłanie komendy do sesji:**
+   ```csh
+   screen -S moja_sesja -X quit
+   ```
+
 ## Tips
-- Używaj nazw sesji, aby łatwiej zarządzać wieloma sesjami.
-- Regularnie odłączaj sesje, aby uniknąć ich przypadkowego zamknięcia.
-- Zapoznaj się z kombinacjami klawiszy `Ctrl + A`, aby szybko nawigować między sesjami.
+- Używaj unikalnych nazw sesji, aby łatwiej je identyfikować.
+- Regularnie odłączaj sesje, aby uniknąć przeciążenia terminala.
+- Sprawdzaj aktywne sesje przed uruchomieniem nowej, aby nie tworzyć zbędnych instancji.

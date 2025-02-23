@@ -1,40 +1,40 @@
-# [Linux] C Shell (csh) readonly gebruik: Beperk variabele wijziging
+# [Linux] C Shell (csh) readonly gebruik: Beperk variabele wijzigingen
 
-## Overzicht
-De `readonly` opdracht in C Shell (csh) wordt gebruikt om variabelen als alleen-lezen te markeren. Zodra een variabele als readonly is ingesteld, kan deze niet meer worden gewijzigd of verwijderd in de huidige shell-sessie.
+## Overview
+De `readonly` opdracht in C Shell (csh) wordt gebruikt om variabelen als alleen-lezen te markeren. Dit betekent dat, eenmaal ingesteld, de waarde van deze variabelen niet meer kan worden gewijzigd. Dit kan nuttig zijn om ervoor te zorgen dat belangrijke configuraties of instellingen niet per ongeluk worden overschreven.
 
-## Gebruik
+## Usage
 De basis syntaxis van de `readonly` opdracht is als volgt:
 
 ```csh
-readonly [opties] [argumenten]
+readonly [options] [arguments]
 ```
 
-## Veelvoorkomende Opties
-- `-p`: Toont een lijst van alle readonly variabelen en hun waarden.
+## Common Options
+- `-p`: Toont een lijst van alle alleen-lezen variabelen en hun waarden.
 
-## Veelvoorkomende Voorbeelden
+## Common Examples
 
-### Voorbeeld 1: Een variabele instellen als readonly
+### Voorbeeld 1: Een variabele als alleen-lezen instellen
 ```csh
-set VARIABEL = "waarde"
-readonly VARIABEL
+set VAR1 = "Belangrijk"
+readonly VAR1
 ```
-In dit voorbeeld wordt de variabele `VARIABEL` ingesteld met de waarde "waarde" en vervolgens als readonly gemarkeerd.
+In dit voorbeeld wordt de variabele `VAR1` ingesteld op "Belangrijk" en vervolgens als alleen-lezen gemarkeerd.
 
-### Voorbeeld 2: Proberen een readonly variabele te wijzigen
+### Voorbeeld 2: Proberen de waarde van een alleen-lezen variabele te wijzigen
 ```csh
-set VARIABEL = "nieuwe waarde"  # Dit zal een foutmelding geven
+set VAR1 = "Nieuw"  # Dit zal een foutmelding geven
 ```
-Hier zal de shell een foutmelding geven omdat `VARIABEL` als readonly is ingesteld.
+Hier zal een foutmelding verschijnen omdat `VAR1` als alleen-lezen is ingesteld en niet kan worden gewijzigd.
 
-### Voorbeeld 3: Lijst van readonly variabelen
+### Voorbeeld 3: Lijst van alleen-lezen variabelen bekijken
 ```csh
 readonly -p
 ```
-Dit commando toont een lijst van alle variabelen die als readonly zijn gemarkeerd in de huidige sessie.
+Dit commando toont een lijst van alle momenteel ingestelde alleen-lezen variabelen en hun waarden.
 
 ## Tips
-- Gebruik `readonly` voor belangrijke configuratie-instellingen die niet per ongeluk gewijzigd moeten worden.
-- Controleer regelmatig de lijst van readonly variabelen met `readonly -p` om te begrijpen welke instellingen zijn vastgelegd.
-- Wees voorzichtig bij het instellen van variabelen als readonly, omdat dit kan leiden tot fouten als je later probeert ze te wijzigen.
+- Gebruik `readonly` voor variabelen die essentieel zijn voor de werking van je scripts om onbedoelde wijzigingen te voorkomen.
+- Controleer regelmatig de lijst van alleen-lezen variabelen met `readonly -p` om te begrijpen welke instellingen zijn vergrendeld.
+- Wees voorzichtig bij het instellen van variabelen als alleen-lezen, vooral in scripts die door meerdere gebruikers of processen worden uitgevoerd.

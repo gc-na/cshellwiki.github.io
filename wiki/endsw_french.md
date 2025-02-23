@@ -1,23 +1,25 @@
-# [Linux] C Shell (csh) endsw : Fin de la structure conditionnelle
+# [Linux] C Shell (csh) endsw : Terminer une structure conditionnelle
 
 ## Overview
-La commande `endsw` dans C Shell (csh) est utilisée pour marquer la fin d'une structure conditionnelle `switch`. Elle permet de structurer le code de manière claire et organisée, facilitant ainsi la gestion des différentes branches d'exécution.
+La commande `endsw` dans le C Shell (csh) est utilisée pour marquer la fin d'une structure conditionnelle `switch`. Elle permet de structurer le code de manière claire et organisée, facilitant ainsi la lecture et la maintenance.
 
 ## Usage
-La syntaxe de base de la commande `endsw` est la suivante :
+Voici la syntaxe de base de la commande `endsw` :
 
 ```csh
 endsw
 ```
 
 ## Common Options
-La commande `endsw` n'a pas d'options spécifiques. Elle est simplement utilisée pour indiquer la fin d'une structure `switch`.
+La commande `endsw` n'a pas d'options spécifiques. Elle est utilisée seule pour indiquer la fin d'un bloc `switch`.
 
 ## Common Examples
+Voici quelques exemples pratiques de l'utilisation de `endsw` dans un script C Shell :
 
-### Exemple 1 : Utilisation de `endsw` dans une structure `switch`
+### Exemple 1 : Utilisation de `switch` avec `endsw`
 ```csh
 set var = "apple"
+
 switch ($var)
     case "apple":
         echo "C'est une pomme."
@@ -27,25 +29,31 @@ switch ($var)
         breaksw
     default:
         echo "Fruit inconnu."
+        breaksw
 endsw
 ```
 
-### Exemple 2 : Structure `switch` avec plusieurs cas
+### Exemple 2 : Structure conditionnelle avec plusieurs cas
 ```csh
-set day = "Monday"
-switch ($day)
-    case "Monday":
-        echo "C'est le début de la semaine."
+set color = "rouge"
+
+switch ($color)
+    case "rouge":
+        echo "La couleur est rouge."
         breaksw
-    case "Friday":
-        echo "C'est presque le week-end."
+    case "vert":
+        echo "La couleur est verte."
+        breaksw
+    case "bleu":
+        echo "La couleur est bleue."
         breaksw
     default:
-        echo "C'est un autre jour."
+        echo "Couleur non reconnue."
+        breaksw
 endsw
 ```
 
 ## Tips
-- Assurez-vous d'utiliser `endsw` après chaque structure `switch` pour éviter des erreurs de syntaxe.
-- Utilisez `breaksw` pour sortir d'un cas spécifique avant d'atteindre `endsw`.
-- Gardez votre code bien indenté pour améliorer la lisibilité, surtout lorsque vous avez plusieurs cas dans votre structure `switch`.
+- Assurez-vous que chaque bloc `switch` a une commande `endsw` correspondante pour éviter les erreurs de syntaxe.
+- Utilisez `breaksw` pour sortir d'un cas spécifique dans le bloc `switch`.
+- Gardez vos cas simples et clairs pour améliorer la lisibilité de votre code.

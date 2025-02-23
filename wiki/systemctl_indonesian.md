@@ -1,12 +1,12 @@
-# [Sistem Operasi] C Shell (csh) systemctl: Mengelola Layanan Sistem
+# [Sistem Operasi] C Shell (csh) systemctl Penggunaan: Mengelola layanan sistem
 
 ## Overview
-Perintah `systemctl` digunakan untuk mengelola layanan dan unit sistem di Linux. Dengan `systemctl`, pengguna dapat memulai, menghentikan, dan memeriksa status layanan, serta mengelola berbagai unit lainnya dalam sistem.
+Perintah `systemctl` digunakan untuk mengelola sistem dan layanan di Linux. Dengan `systemctl`, pengguna dapat memulai, menghentikan, dan memeriksa status layanan, serta mengelola berbagai aspek dari sistem init.
 
 ## Usage
-Sintaks dasar dari perintah `systemctl` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `systemctl`:
 
-```
+```csh
 systemctl [options] [arguments]
 ```
 
@@ -17,38 +17,38 @@ Berikut adalah beberapa opsi umum yang dapat digunakan dengan `systemctl`:
 - `stop`: Menghentikan layanan.
 - `restart`: Mengulang layanan.
 - `status`: Menampilkan status layanan.
-- `enable`: Mengaktifkan layanan agar berjalan saat booting.
-- `disable`: Menonaktifkan layanan agar tidak berjalan saat booting.
+- `enable`: Mengaktifkan layanan agar berjalan saat boot.
+- `disable`: Menonaktifkan layanan agar tidak berjalan saat boot.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `systemctl`:
 
-1. **Memulai Layanan**
-   ```bash
+1. Memulai layanan:
+   ```csh
    systemctl start nama_layanan
    ```
 
-2. **Menghentikan Layanan**
-   ```bash
+2. Menghentikan layanan:
+   ```csh
    systemctl stop nama_layanan
    ```
 
-3. **Memeriksa Status Layanan**
-   ```bash
+3. Memeriksa status layanan:
+   ```csh
    systemctl status nama_layanan
    ```
 
-4. **Mengaktifkan Layanan saat Booting**
-   ```bash
+4. Mengaktifkan layanan saat boot:
+   ```csh
    systemctl enable nama_layanan
    ```
 
-5. **Menonaktifkan Layanan saat Booting**
-   ```bash
+5. Menonaktifkan layanan saat boot:
+   ```csh
    systemctl disable nama_layanan
    ```
 
 ## Tips
-- Selalu periksa status layanan setelah melakukan perubahan untuk memastikan bahwa layanan berjalan dengan baik.
-- Gunakan opsi `--quiet` untuk menyembunyikan output yang tidak perlu saat menjalankan perintah.
-- Untuk melihat semua layanan yang sedang berjalan, gunakan perintah `systemctl list-units --type=service`.
+- Selalu periksa status layanan setelah memulai atau menghentikannya untuk memastikan bahwa tindakan Anda berhasil.
+- Gunakan opsi `--quiet` untuk mengurangi output yang tidak perlu saat menjalankan perintah.
+- Pastikan Anda memiliki hak akses yang sesuai (biasanya sebagai pengguna root) untuk mengelola layanan dengan `systemctl`.

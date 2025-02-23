@@ -1,50 +1,45 @@
-# [Linux] C Shell (csh) shutdown gebruik: Systeem afsluiten of herstarten
+# [Linux] C Shell (csh) shutdown gebruik: Systeem afsluiten
 
 ## Overzicht
-De `shutdown` opdracht in C Shell (csh) wordt gebruikt om een systeem veilig af te sluiten of opnieuw op te starten. Dit is een belangrijke functie voor systeembeheerders om ervoor te zorgen dat alle processen correct worden beëindigd en dat er geen gegevensverlies optreedt.
+Het `shutdown` commando wordt gebruikt om een systeem veilig af te sluiten of opnieuw op te starten. Dit commando zorgt ervoor dat alle actieve processen correct worden beëindigd en dat gebruikers worden gewaarschuwd voordat het systeem wordt afgesloten.
 
 ## Gebruik
-De basis syntaxis van de `shutdown` opdracht is als volgt:
+De basis syntaxis van het `shutdown` commando is als volgt:
 
 ```
 shutdown [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-h`: Dit geeft aan dat het systeem moet worden afgesloten.
-- `-r`: Dit geeft aan dat het systeem opnieuw moet worden opgestart.
-- `now`: Dit geeft aan dat de actie onmiddellijk moet worden uitgevoerd.
-- `+tijd`: Hiermee kun je een vertraging instellen voor de actie, bijvoorbeeld `+5` voor vijf minuten later.
+- `-h`: Zet het systeem uit (halt).
+- `-r`: Start het systeem opnieuw op (reboot).
+- `-k`: Waarschuwt gebruikers zonder het systeem daadwerkelijk af te sluiten.
+- `time`: Specificeert wanneer het systeem moet worden afgesloten (bijvoorbeeld `now`, `+5` voor vijf minuten later).
+- `message`: Een bericht dat naar gebruikers wordt gestuurd over de afsluiting.
 
 ## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van de `shutdown` opdracht:
 
 1. **Systeem onmiddellijk afsluiten:**
    ```csh
    shutdown -h now
    ```
 
-2. **Systeem opnieuw opstarten:**
-   ```csh
-   shutdown -r now
-   ```
-
-3. **Systeem afsluiten na 10 minuten:**
-   ```csh
-   shutdown -h +10
-   ```
-
-4. **Systeem opnieuw opstarten na 5 minuten:**
+2. **Systeem opnieuw opstarten na 5 minuten:**
    ```csh
    shutdown -r +5
    ```
 
-5. **Systeem afsluiten met een waarschuwing voor gebruikers:**
+3. **Waarschuw gebruikers zonder het systeem af te sluiten:**
    ```csh
-   shutdown -h +1 "Het systeem wordt over 1 minuut afgesloten."
+   shutdown -k now "Het systeem zal binnenkort worden afgesloten."
+   ```
+
+4. **Systeem afsluiten met een specifieke tijd:**
+   ```csh
+   shutdown -h 22:00
    ```
 
 ## Tips
-- Zorg ervoor dat je voldoende tijd geeft voor actieve gebruikers om hun werk op te slaan voordat je het systeem afsluit.
-- Gebruik de `-k` optie om een waarschuwing te sturen zonder het systeem daadwerkelijk af te sluiten.
-- Controleer altijd of je de juiste rechten hebt om de `shutdown` opdracht uit te voeren, meestal zijn hiervoor beheerdersrechten nodig.
+- Gebruik het `-k` optie om gebruikers te waarschuwen voordat je daadwerkelijk het systeem afsluit, zodat ze zich kunnen voorbereiden.
+- Zorg ervoor dat je voldoende tijd geeft aan gebruikers om hun werk op te slaan voordat je het systeem afsluit.
+- Controleer altijd of je de juiste opties en argumenten gebruikt om ongewenste afsluitingen te voorkomen.

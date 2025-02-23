@@ -1,44 +1,49 @@
 # [Linux] C Shell (csh) chkconfig Kullanımı: Servislerin yönetimi
 
-## Genel Bakış
-`chkconfig` komutu, Linux sistemlerinde hizmetlerin (servislerin) yönetimi için kullanılır. Bu komut, sistem başlangıcında hangi hizmetlerin otomatik olarak başlatılacağını ve durdurulacağını ayarlamak için kullanılır.
+## Overview
+`chkconfig` komutu, sistemdeki hizmetlerin (servislerin) başlatılma durumlarını yönetmek için kullanılır. Bu komut, belirli bir hizmetin hangi çalışma seviyelerinde (runlevel) etkinleştirileceğini veya devre dışı bırakılacağını ayarlamak için idealdir.
 
-## Kullanım
+## Usage
 Temel sözdizimi aşağıdaki gibidir:
-```bash
-chkconfig [seçenekler] [argümanlar]
+```csh
+chkconfig [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `--list`: Tüm hizmetlerin durumunu listeler.
-- `--add`: Yeni bir hizmet ekler.
-- `--del`: Mevcut bir hizmeti kaldırır.
-- `--level`: Belirli bir çalışma seviyesinde hizmetleri ayarlamak için kullanılır.
+## Common Options
+- `--list`: Tüm hizmetlerin mevcut durumunu listeler.
+- `--add`: Yeni bir hizmeti sistemin başlatma yönetimine ekler.
+- `--del`: Mevcut bir hizmeti sistemin başlatma yönetiminden kaldırır.
+- `--level`: Belirli bir çalışma seviyesinde hizmetin durumunu ayarlamak için kullanılır.
 
-## Yaygın Örnekler
-Aşağıda `chkconfig` komutunun bazı pratik kullanım örnekleri verilmiştir:
+## Common Examples
+Aşağıda `chkconfig` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
 ### Tüm Hizmetlerin Durumunu Listeleme
-```bash
+```csh
 chkconfig --list
 ```
 
-### Yeni Bir Hizmet Ekleme
-```bash
+### Yeni Bir Hizmeti Eklemek
+```csh
 chkconfig --add myservice
 ```
 
-### Bir Hizmeti Kaldırma
-```bash
+### Bir Hizmeti Kaldırmak
+```csh
 chkconfig --del myservice
 ```
 
-### Belirli Bir Çalışma Seviyesinde Hizmeti Ayarlama
-```bash
-chkconfig myservice on --level 234
+### Belirli Bir Çalışma Seviyesinde Hizmeti Etkinleştirmek
+```csh
+chkconfig --level 345 myservice on
 ```
 
-## İpuçları
-- Hizmetlerin durumunu kontrol etmeden önce, sisteminizde hangi hizmetlerin mevcut olduğunu bilmek önemlidir.
-- `chkconfig` komutunu kullanmadan önce, kök (root) kullanıcı olarak oturum açtığınızdan emin olun.
-- Hizmetlerin otomatik başlatılmasını ayarlarken, yalnızca gerekli olanları etkinleştirin; bu, sistem kaynaklarınızı daha verimli kullanmanıza yardımcı olur.
+### Belirli Bir Çalışma Seviyesinde Hizmeti Devre Dışı Bırakmak
+```csh
+chkconfig --level 012 myservice off
+```
+
+## Tips
+- Hizmetlerin durumunu kontrol etmek için `chkconfig --list` komutunu düzenli olarak kullanın.
+- Yeni bir hizmet eklerken, hizmetin başlangıç dosyasının doğru bir şekilde yapılandırıldığından emin olun.
+- Çalışma seviyelerini anlamak, hangi hizmetlerin hangi durumlarda başlatılacağını yönetmek için önemlidir.

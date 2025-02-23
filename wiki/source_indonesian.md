@@ -1,37 +1,37 @@
-# [Sistem Operasi] C Shell (csh) source: Menjalankan skrip shell
+# [Sistem Operasi] C Shell (csh) source: Menjalankan skrip dalam shell saat ini
 
 ## Overview
-Perintah `source` dalam C Shell (csh) digunakan untuk mengeksekusi skrip shell dalam konteks shell saat ini. Ini memungkinkan pengguna untuk menjalankan skrip tanpa membuat subshell baru, sehingga semua variabel dan fungsi yang didefinisikan dalam skrip tersebut akan tersedia di shell yang sedang aktif.
+Perintah `source` dalam C Shell (csh) digunakan untuk mengeksekusi skrip shell atau file konfigurasi dalam konteks shell yang sedang aktif. Ini memungkinkan pengguna untuk memperbarui variabel lingkungan dan menjalankan perintah tanpa perlu membuka shell baru.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `source`:
 
-```
+```csh
 source [options] [arguments]
 ```
 
 ## Common Options
-- Tidak ada opsi khusus untuk perintah `source` dalam C Shell. Perintah ini biasanya digunakan dengan argumen berupa nama file skrip yang ingin dijalankan.
+- Tidak ada opsi khusus untuk perintah `source` dalam C Shell, tetapi Anda dapat menggunakan nama file skrip yang ingin dijalankan sebagai argumen.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `source`:
 
-1. Menjalankan skrip shell sederhana:
+1. Menjalankan skrip konfigurasi:
    ```csh
-   source myscript.csh
+   source ~/.cshrc
    ```
 
-2. Menggunakan `source` untuk memuat variabel lingkungan dari file:
+2. Menjalankan skrip yang berisi perintah-perintah tertentu:
    ```csh
-   source ~/.bash_profile
+   source ~/myscript.csh
    ```
 
-3. Memuat fungsi yang didefinisikan dalam skrip:
+3. Memuat variabel lingkungan dari file:
    ```csh
-   source functions.csh
+   source ~/env_setup.csh
    ```
 
 ## Tips
-- Pastikan skrip yang ingin dijalankan memiliki izin eksekusi yang benar.
-- Gunakan `source` untuk memuat konfigurasi atau pengaturan yang sering digunakan tanpa harus keluar dari shell.
-- Jika Anda ingin menguji perubahan dalam skrip tanpa memulai shell baru, `source` adalah cara yang efisien untuk melakukannya.
+- Pastikan skrip yang ingin Anda jalankan memiliki izin eksekusi yang sesuai.
+- Gunakan `source` untuk memperbarui pengaturan shell Anda tanpa harus membuka shell baru.
+- Jika skrip menghasilkan kesalahan, periksa kembali sintaks dan jalur file untuk memastikan semuanya benar.

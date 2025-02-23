@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) w w: wyświetlanie aktywnych użytkowników
 
 ## Overview
-Polecenie `w` w systemie C Shell (csh) służy do wyświetlania informacji o aktualnie zalogowanych użytkownikach oraz ich aktywności. Umożliwia to administratorom i użytkownikom monitorowanie, kto jest zalogowany i co aktualnie robi.
+Polecenie `w` w C Shell (csh) służy do wyświetlania informacji o aktualnie zalogowanych użytkownikach oraz ich aktywności. Umożliwia to administratorom i użytkownikom monitorowanie, kto jest zalogowany na systemie oraz co aktualnie robią.
 
 ## Usage
 Podstawowa składnia polecenia `w` jest następująca:
@@ -11,35 +11,32 @@ w [opcje] [argumenty]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji dla polecenia `w`:
-
-- `-h`: Ukrywa nagłówek wyjścia.
-- `-s`: Wyświetla skrócone informacje o użytkownikach.
-- `-u`: Wyświetla dodatkowe informacje o użytkownikach, takie jak czas bezczynności.
+- `-h`: Ukrywa nagłówki, co pozwala na bardziej kompaktowe wyświetlanie informacji.
+- `-s`: Wyświetla mniej szczegółowe informacje o użytkownikach.
+- `-u`: Pokazuje tylko użytkowników, którzy są aktualnie aktywni.
 
 ## Common Examples
-
-1. Aby wyświetlić wszystkich zalogowanych użytkowników:
+1. Wyświetlenie informacji o wszystkich zalogowanych użytkownikach:
    ```csh
    w
    ```
 
-2. Aby wyświetlić informacje bez nagłówka:
+2. Wyświetlenie informacji bez nagłówków:
    ```csh
    w -h
    ```
 
-3. Aby uzyskać skrócone informacje o użytkownikach:
+3. Wyświetlenie mniej szczegółowych informacji:
    ```csh
    w -s
    ```
 
-4. Aby zobaczyć szczegółowe informacje o użytkownikach, w tym czas bezczynności:
+4. Wyświetlenie tylko aktywnych użytkowników:
    ```csh
    w -u
    ```
 
 ## Tips
-- Używaj opcji `-h`, gdy chcesz uzyskać czystsze wyjście, szczególnie w skryptach.
-- Regularne sprawdzanie aktywności użytkowników może pomóc w zarządzaniu zasobami systemowymi.
-- Możesz łączyć polecenie `w` z innymi poleceniami, aby uzyskać bardziej szczegółowe informacje, na przykład z `grep`, aby filtrować wyniki.
+- Używaj opcji `-h`, aby uzyskać bardziej przejrzysty widok, szczególnie w skryptach lub w przypadku dużej liczby użytkowników.
+- Regularnie sprawdzaj aktywność użytkowników w systemie, aby monitorować obciążenie i wydajność.
+- Możesz łączyć polecenie `w` z innymi poleceniami, aby uzyskać bardziej szczegółowe informacje, na przykład używając `grep`, aby filtrować wyniki.

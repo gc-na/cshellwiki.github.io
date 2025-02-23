@@ -13,40 +13,39 @@ hostname [options] [arguments]
 ## Common Options
 Voici quelques options courantes pour la commande `hostname` :
 
-- `-s` : Affiche seulement le nom d'hôte court.
+- `-s` : Affiche uniquement le nom d'hôte court.
 - `-f` : Affiche le nom d'hôte complet (FQDN).
-- `-i` : Affiche l'adresse IP associée au nom d'hôte.
-- `-d` : Affiche le nom de domaine.
+- `-i` : Affiche l'adresse IP du nom d'hôte.
+- `-d` : Affiche le domaine du nom d'hôte.
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de la commande `hostname` :
 
-1. Afficher le nom d'hôte actuel :
+1. **Afficher le nom d'hôte actuel :**
    ```csh
    hostname
    ```
 
-2. Afficher le nom d'hôte court :
+2. **Afficher le nom d'hôte court :**
    ```csh
    hostname -s
    ```
 
-3. Afficher le nom d'hôte complet :
+3. **Afficher le nom d'hôte complet :**
    ```csh
    hostname -f
    ```
 
-4. Afficher l'adresse IP du nom d'hôte :
+4. **Afficher l'adresse IP associée au nom d'hôte :**
    ```csh
    hostname -i
    ```
 
-5. Définir un nouveau nom d'hôte :
+5. **Définir un nouveau nom d'hôte :**
    ```csh
    hostname nouveau_nom
    ```
 
 ## Tips
-- Assurez-vous d'avoir les permissions nécessaires pour changer le nom d'hôte, car cela peut nécessiter des privilèges administratifs.
-- Après avoir changé le nom d'hôte, il peut être nécessaire de redémarrer certains services ou le système pour que les modifications prennent effet.
-- Utilisez `hostname -d` pour vérifier rapidement le nom de domaine associé à votre système, ce qui peut être utile pour la configuration réseau.
+- Assurez-vous d'avoir les privilèges nécessaires pour changer le nom d'hôte, car cela peut nécessiter des droits administratifs.
+- Après avoir changé le nom d'hôte, il peut être nécessaire de redémarrer le système ou de redémarrer certains services pour que les modifications prennent effet.
+- Utilisez `hostname -d` pour vérifier le domaine si vous travaillez dans un environnement réseau complexe.

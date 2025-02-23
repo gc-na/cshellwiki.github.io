@@ -1,19 +1,19 @@
-# [Linux] C Shell (csh) userdel użycie: Usuwanie użytkowników z systemu
+# [Linux] C Shell (csh) userdel <Usunięcie użytkownika>: Usuwa konto użytkownika
 
 ## Overview
-Polecenie `userdel` w C Shell (csh) służy do usuwania kont użytkowników z systemu. Umożliwia administratorom systemu zarządzanie użytkownikami poprzez ich usuwanie, co jest przydatne w przypadku, gdy użytkownik nie jest już potrzebny lub gdy konto zostało naruszone.
+Polecenie `userdel` w C Shell (csh) służy do usuwania kont użytkowników z systemu. Umożliwia administratorom zarządzanie kontami, co jest istotne dla bezpieczeństwa i organizacji systemu.
 
 ## Usage
-Podstawowa składnia polecenia `userdel` jest następująca:
+Podstawowa składnia polecenia `userdel` wygląda następująco:
 
-```
+```csh
 userdel [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-r`: Usuwa katalog domowy użytkownika oraz wszystkie pliki w nim zawarte.
-- `-f`: Wymusza usunięcie konta użytkownika, nawet jeśli użytkownik jest aktualnie zalogowany.
-- `-Z`: Usuwa kontekst SELinux dla konta użytkownika.
+- `-r`: Usuwa katalog domowy użytkownika oraz jego zawartość.
+- `-f`: Wymusza usunięcie konta użytkownika, nawet jeśli jest on aktualnie zalogowany.
+- `-Z`: Usuwa kontekst SELinux użytkownika.
 
 ## Common Examples
 Oto kilka praktycznych przykładów użycia polecenia `userdel`:
@@ -33,12 +33,12 @@ Oto kilka praktycznych przykładów użycia polecenia `userdel`:
    userdel -f janek
    ```
 
-4. Usunięcie użytkownika i kontekstu SELinux:
+4. Usunięcie użytkownika z kontekstem SELinux:
    ```csh
    userdel -Z janek
    ```
 
 ## Tips
-- Zawsze upewnij się, że konto użytkownika, które chcesz usunąć, nie jest aktualnie używane, aby uniknąć problemów z dostępem.
-- Przed usunięciem użytkownika, rozważ wykonanie kopii zapasowej jego danych, jeśli mogą być one potrzebne w przyszłości.
+- Zawsze upewnij się, że nie usuwasz konta, które jest w użyciu, aby uniknąć problemów z dostępem.
+- Przed usunięciem użytkownika warto wykonać kopię zapasową jego danych, jeśli są one ważne.
 - Regularnie przeglądaj konta użytkowników w systemie, aby utrzymać porządek i bezpieczeństwo.

@@ -1,43 +1,47 @@
-# [Sistem Operasi] C Shell (csh) batch: Menjalankan perintah secara terjadwal
+# [Sistem Operasi] C Shell (csh) batch Penggunaan: Menjalankan perintah secara terjadwal
 
 ## Overview
-Perintah `batch` dalam C Shell (csh) digunakan untuk menjalankan perintah atau skrip pada waktu yang ditentukan ketika sistem tidak terlalu sibuk. Ini sangat berguna untuk menjalankan tugas-tugas yang memerlukan waktu lama tanpa mengganggu pengguna lain.
+Perintah `batch` dalam C Shell (csh) digunakan untuk menjadwalkan eksekusi perintah atau skrip ketika sistem tidak terlalu sibuk. Ini memungkinkan pengguna untuk menjalankan tugas-tugas yang memakan waktu tanpa harus menunggu hingga selesai secara manual.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `batch`:
 
-```
+```csh
 batch [options] [arguments]
 ```
 
 ## Common Options
-- `-l`: Menjalankan perintah dalam mode login shell.
-- `-q`: Menampilkan antrean pekerjaan saat ini.
-- `-n`: Menentukan jumlah maksimum pekerjaan yang dapat dijalankan secara bersamaan.
+- `-l`: Menggunakan lingkungan login saat menjalankan perintah.
+- `-q`: Menentukan antrian untuk menjalankan perintah.
+- `-n`: Menjalankan perintah tanpa menunggu antrian.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `batch`:
 
-1. Menjalankan skrip `backup.sh` saat sistem tidak sibuk:
+1. Menjadwalkan skrip untuk dijalankan saat sistem tidak sibuk:
    ```csh
-   batch < backup.sh
+   echo "sh /path/to/script.sh" | batch
    ```
 
-2. Menjalankan perintah `echo` untuk mencetak pesan ke file `output.txt`:
+2. Menjalankan perintah sederhana:
    ```csh
-   echo "Hello, World!" | batch > output.txt
+   echo "date" | batch
    ```
 
-3. Menjalankan beberapa perintah sekaligus:
+3. Menjadwalkan beberapa perintah sekaligus:
    ```csh
-   batch << EOF
-   echo "Mulai proses"
-   /path/to/your/script.sh
-   echo "Proses selesai"
-   EOF
+   {
+       echo "echo 'Hello, World!'" 
+       echo "date"
+   } | batch
+   ```
+
+4. Menggunakan opsi `-l` untuk menjalankan dalam lingkungan login:
+   ```csh
+   echo "sh /path/to/script.sh" | batch -l
    ```
 
 ## Tips
-- Pastikan untuk memeriksa antrean pekerjaan dengan opsi `-q` untuk melihat status pekerjaan yang telah dijadwalkan.
-- Gunakan skrip yang telah teruji untuk menghindari kesalahan saat menjalankan perintah dalam mode batch.
-- Perhatikan waktu eksekusi, terutama jika sistem Anda memiliki banyak pengguna, untuk memastikan bahwa pekerjaan Anda tidak mengganggu kinerja sistem.
+- Pastikan untuk memeriksa antrian tugas dengan perintah `atq` untuk melihat tugas yang telah dijadwalkan.
+- Gunakan `atrm` untuk menghapus tugas yang tidak lagi diperlukan dari antrian.
+- Sebaiknya gunakan skrip yang telah diuji sebelumnya untuk menghindari kesalahan saat dijalankan dalam mode batch.

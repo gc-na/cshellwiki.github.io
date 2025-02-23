@@ -1,50 +1,42 @@
 # [Linux] C Shell (csh) head użycie: wyświetlanie pierwszych linii pliku
 
-## Overview
+## Przegląd
 Polecenie `head` w C Shell (csh) służy do wyświetlania pierwszych kilku linii pliku tekstowego. Jest to przydatne narzędzie, gdy chcesz szybko zobaczyć zawartość pliku bez otwierania go w pełni.
 
-## Usage
+## Użycie
 Podstawowa składnia polecenia `head` jest następująca:
 
 ```
 head [opcje] [argumenty]
 ```
 
-## Common Options
-- `-n [liczba]`: Określa liczbę linii do wyświetlenia. Domyślnie `head` pokazuje 10 linii.
-- `-c [liczba]`: Wyświetla określoną liczbę bajtów z początku pliku.
-- `-q`: Nie wyświetla nagłówków plików, gdy podano wiele plików.
-- `-v`: Zawsze wyświetla nagłówki plików.
+## Częste opcje
+- `-n [liczba]`: Określa liczbę linii do wyświetlenia. Domyślnie wyświetlane jest 10 linii.
+- `-q`: Nie wyświetla nagłówków plików, gdy podano więcej niż jeden plik.
+- `-v`: Zawsze wyświetla nagłówki plików, nawet gdy jest tylko jeden plik.
 
-## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `head`:
-
+## Częste przykłady
 1. Wyświetlenie pierwszych 10 linii pliku `plik.txt`:
    ```csh
    head plik.txt
    ```
 
-2. Wyświetlenie pierwszych 5 linii pliku `dane.log`:
+2. Wyświetlenie pierwszych 5 linii pliku `dane.txt`:
    ```csh
-   head -n 5 dane.log
+   head -n 5 dane.txt
    ```
 
-3. Wyświetlenie pierwszych 100 bajtów pliku `raport.txt`:
+3. Wyświetlenie pierwszych 15 linii z pliku `log.txt`, z nagłówkiem:
    ```csh
-   head -c 100 raport.txt
+   head -n 15 -v log.txt
    ```
 
-4. Wyświetlenie pierwszych 10 linii z dwóch plików `plik1.txt` i `plik2.txt`:
+4. Wyświetlenie pierwszych 10 linii z dwóch plików `plik1.txt` i `plik2.txt`, bez nagłówków:
    ```csh
-   head plik1.txt plik2.txt
+   head -q plik1.txt plik2.txt
    ```
 
-5. Wyświetlenie pierwszych 10 linii z pliku `plik.txt` z nagłówkiem:
-   ```csh
-   head -v plik.txt
-   ```
-
-## Tips
+## Wskazówki
 - Używaj opcji `-n`, aby dostosować liczbę wyświetlanych linii do swoich potrzeb.
-- Możesz łączyć `head` z innymi poleceniami, używając potoków, aby analizować dane w czasie rzeczywistym.
-- Zawsze sprawdzaj zawartość pliku przed jego edytowaniem, aby uniknąć przypadkowych zmian w ważnych danych.
+- Jeśli pracujesz z dużymi plikami, `head` pozwala na szybkie uzyskanie wglądu w ich zawartość.
+- Możesz łączyć `head` z innymi poleceniami, używając potoków, aby na przykład wyświetlić pierwsze linie wyników innego polecenia.

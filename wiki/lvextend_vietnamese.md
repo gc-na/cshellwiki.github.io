@@ -1,45 +1,45 @@
-# [Linux] C Shell (csh) lvextend Sử dụng: Mở rộng kích thước Logical Volume
+# [Hệ điều hành] C Shell (csh) lvextend: Mở rộng kích thước logical volume
 
-## Tổng quan
-Lệnh `lvextend` trong C Shell (csh) được sử dụng để mở rộng kích thước của một Logical Volume (LV) trong hệ thống quản lý lưu trữ Logical Volume Manager (LVM). Điều này cho phép người dùng tăng dung lượng lưu trữ cho các phân vùng mà không cần phải khởi động lại hệ thống.
+## Overview
+Lệnh `lvextend` được sử dụng để mở rộng kích thước của một logical volume trong hệ thống quản lý logical volume (LVM). Khi bạn cần thêm dung lượng cho một volume đã tồn tại, `lvextend` cho phép bạn thực hiện điều này một cách dễ dàng.
 
-## Cú pháp
+## Usage
 Cú pháp cơ bản của lệnh `lvextend` như sau:
 
-```shell
-lvextend [tùy chọn] [tham số]
+```bash
+lvextend [options] [arguments]
 ```
 
-## Các tùy chọn phổ biến
-- `-L +<kích thước>`: Tăng kích thước của LV bằng một kích thước cụ thể.
-- `-l +<số lượng>`: Tăng kích thước của LV bằng số lượng Logical Extents.
-- `-r`: Tự động mở rộng hệ thống tập tin trên LV sau khi mở rộng LV.
-- `-n <tên>`: Chỉ định tên của LV cần mở rộng.
+## Common Options
+- `-L +size`: Thêm kích thước cụ thể vào logical volume.
+- `-l +size`: Thêm kích thước theo số lượng logical extents.
+- `-r`: Tự động mở rộng hệ thống tập tin sau khi mở rộng logical volume.
+- `-n`: Đặt tên cho logical volume mới.
 
-## Ví dụ phổ biến
-Dưới đây là một số ví dụ về cách sử dụng lệnh `lvextend`:
+## Common Examples
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `lvextend`:
 
-1. Mở rộng LV thêm 10GB:
-   ```shell
-   lvextend -L +10G /dev/vg01/lv01
+1. Mở rộng logical volume `my_volume` thêm 10GB:
+   ```bash
+   lvextend -L +10G /dev/vg_name/my_volume
    ```
 
-2. Mở rộng LV bằng số lượng Logical Extents:
-   ```shell
-   lvextend -l +100 /dev/vg01/lv01
+2. Mở rộng logical volume `my_volume` bằng cách thêm 5 logical extents:
+   ```bash
+   lvextend -l +5 /dev/vg_name/my_volume
    ```
 
-3. Mở rộng LV và tự động mở rộng hệ thống tập tin:
-   ```shell
-   lvextend -r -L +5G /dev/vg01/lv01
+3. Mở rộng logical volume và tự động mở rộng hệ thống tập tin:
+   ```bash
+   lvextend -r -L +20G /dev/vg_name/my_volume
    ```
 
-4. Mở rộng LV với tên cụ thể:
-   ```shell
-   lvextend -L +20G /dev/vg01/my_volume
+4. Đặt tên cho logical volume mới khi mở rộng:
+   ```bash
+   lvextend -n new_volume_name -L +15G /dev/vg_name/my_volume
    ```
 
-## Mẹo
-- Trước khi mở rộng LV, hãy đảm bảo rằng bạn có đủ không gian trống trong Volume Group (VG).
-- Sử dụng tùy chọn `-r` để tiết kiệm thời gian, vì nó sẽ tự động mở rộng hệ thống tập tin mà không cần lệnh riêng biệt.
-- Kiểm tra kích thước của LV sau khi mở rộng bằng lệnh `lvdisplay` để đảm bảo rằng thay đổi đã được áp dụng thành công.
+## Tips
+- Trước khi mở rộng logical volume, hãy đảm bảo rằng bạn có đủ không gian trống trong volume group.
+- Sử dụng tùy chọn `-r` để tự động cập nhật hệ thống tập tin, giúp tiết kiệm thời gian và công sức.
+- Kiểm tra trạng thái của logical volume sau khi mở rộng để đảm bảo rằng mọi thứ hoạt động bình thường.

@@ -1,44 +1,51 @@
-# [Linux] C Shell (csh) ping6 użycie: Sprawdzanie dostępności adresów IPv6
+# [Linux] C Shell (csh) ping6 użycie: Sprawdzanie dostępności hostów w sieci IPv6
 
 ## Przegląd
-Polecenie `ping6` jest używane do sprawdzania dostępności hostów w sieci IPv6. Wysyła pakiety ICMP Echo Request do określonego adresu IPv6 i oczekuje na odpowiedzi, co pozwala na ocenę stanu połączenia.
+Polecenie `ping6` jest używane do sprawdzania dostępności hostów w sieci IPv6. Umożliwia wysyłanie pakietów ICMPv6 Echo Request do określonego adresu IPv6 i monitorowanie odpowiedzi, co pozwala na ocenę stanu połączenia sieciowego.
 
 ## Użycie
 Podstawowa składnia polecenia `ping6` jest następująca:
 
-```
+```csh
 ping6 [opcje] [argumenty]
 ```
 
-## Często używane opcje
+## Częste opcje
 - `-c <liczba>`: Określa liczbę wysyłanych pakietów.
-- `-i <czas>`: Ustala czas w sekundach między wysyłanymi pakietami.
-- `-w <czas>`: Ustala maksymalny czas oczekiwania na odpowiedzi.
+- `-i <czas>`: Ustala czas oczekiwania między wysyłanymi pakietami (w sekundach).
+- `-s <rozmiar>`: Umożliwia określenie rozmiaru wysyłanych pakietów.
+- `-w <czas>`: Ustala maksymalny czas oczekiwania na odpowiedzi (w sekundach).
 
 ## Przykłady
 Oto kilka praktycznych przykładów użycia polecenia `ping6`:
 
-1. Sprawdzenie dostępności hosta:
-   ```bash
-   ping6 example.com
+1. Sprawdzenie dostępności hosta o adresie IPv6:
+   ```csh
+   ping6 2001:db8::1
    ```
 
-2. Wysłanie 5 pakietów do adresu IPv6:
-   ```bash
+2. Wysłanie 5 pakietów do hosta:
+   ```csh
    ping6 -c 5 2001:db8::1
    ```
 
 3. Ustalenie interwału 2 sekund między pakietami:
-   ```bash
-   ping6 -i 2 example.com
+   ```csh
+   ping6 -i 2 2001:db8::1
    ```
 
-4. Ustalenie maksymalnego czasu oczekiwania na odpowiedzi do 10 sekund:
-   ```bash
+4. Wysłanie pakietów o rozmiarze 128 bajtów:
+   ```csh
+   ping6 -s 128 2001:db8::1
+   ```
+
+5. Ustalenie maksymalnego czasu oczekiwania na odpowiedzi do 10 sekund:
+   ```csh
    ping6 -w 10 2001:db8::1
    ```
 
 ## Wskazówki
-- Używaj opcji `-c` do ograniczenia liczby wysyłanych pakietów, aby uniknąć przeciążenia sieci.
+- Używaj opcji `-c`, aby ograniczyć liczbę wysyłanych pakietów, co jest przydatne w testach.
 - Monitoruj czas odpowiedzi, aby ocenić jakość połączenia.
-- Sprawdzaj różne adresy IPv6, aby upewnić się, że twoje połączenie działa poprawnie w różnych lokalizacjach.
+- Sprawdzaj różne adresy IPv6, aby upewnić się, że sieć działa poprawnie.
+- Używaj opcji `-s`, aby testować różne rozmiary pakietów, co może pomóc w diagnozowaniu problemów z siecią.

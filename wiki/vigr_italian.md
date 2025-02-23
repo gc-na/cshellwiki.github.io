@@ -1,38 +1,39 @@
-# [Linux] C Shell (csh) vigr Uso: Modifica il file di configurazione dei gruppi
+# [Linux] C Shell (csh) vigr Utilizzo: Modifica in modo sicuro i file di configurazione di sistema
 
 ## Overview
-Il comando `vigr` è utilizzato per modificare in modo sicuro il file di configurazione dei gruppi, solitamente situato in `/etc/group`. Questo comando apre il file in un editor di testo, consentendo agli utenti di apportare modifiche senza il rischio di corruzione del file.
+Il comando `vigr` è utilizzato per modificare in modo sicuro i file di configurazione di sistema, in particolare il file `/etc/group` e `/etc/passwd`. Questo comando apre il file specificato in un editor di testo, garantendo che nessun altro processo possa modificarlo contemporaneamente.
 
 ## Usage
-La sintassi di base del comando `vigr` è la seguente:
+La sintassi di base del comando è la seguente:
 
 ```csh
-vigr [opzioni] [file]
+vigr [options] [file]
 ```
 
 ## Common Options
-- `-s`: Esegue un controllo di sintassi sul file prima di salvarlo.
-- `-f <file>`: Specifica un file diverso da modificare, se non si desidera utilizzare il file predefinito.
+- `-c`: Controlla la sintassi del file specificato prima di aprirlo.
+- `-s`: Esegue il comando in modalità silenziosa, senza visualizzare messaggi di errore.
+- `-h`: Mostra l'aiuto e le informazioni sul comando.
 
 ## Common Examples
 Ecco alcuni esempi pratici di utilizzo del comando `vigr`:
 
-1. **Modificare il file di configurazione dei gruppi predefinito:**
+1. Modificare il file `/etc/group`:
    ```csh
-   vigr
+   vigr /etc/group
    ```
 
-2. **Modificare un file di configurazione dei gruppi specifico:**
+2. Controllare la sintassi del file `/etc/passwd` prima di modificarlo:
    ```csh
-   vigr -f /etc/mygroup
+   vigr -c /etc/passwd
    ```
 
-3. **Controllare la sintassi del file prima di salvarlo:**
+3. Aprire il file `/etc/group` in modalità silenziosa:
    ```csh
-   vigr -s
+   vigr -s /etc/group
    ```
 
 ## Tips
-- Assicurati di avere i permessi necessari per modificare il file di configurazione dei gruppi.
-- Utilizza l'opzione `-s` per evitare errori di sintassi che potrebbero compromettere il file.
-- Fai sempre un backup del file originale prima di apportare modifiche significative.
+- Assicurati di avere i permessi necessari per modificare i file di sistema.
+- Usa l'opzione `-c` per evitare errori di sintassi prima di salvare le modifiche.
+- Fai sempre un backup dei file di configurazione importanti prima di modificarli.

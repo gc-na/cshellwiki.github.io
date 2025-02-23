@@ -1,10 +1,10 @@
-# [Linux] C Shell (csh) ping użycie: Sprawdzanie dostępności hostów w sieci
+# [Linux] C Shell (csh) ping użycie: Sprawdzenie dostępności hosta
 
 ## Overview
-Polecenie `ping` służy do sprawdzania dostępności hostów w sieci poprzez wysyłanie pakietów ICMP Echo Request i oczekiwanie na odpowiedzi. Jest to przydatne narzędzie do diagnozowania problemów z połączeniem sieciowym.
+Polecenie `ping` służy do sprawdzania dostępności hosta w sieci. Wysyła pakiety ICMP Echo Request do określonego adresu IP lub nazwy hosta i oczekuje na odpowiedź. Jest to przydatne narzędzie do diagnozowania problemów z połączeniem sieciowym.
 
 ## Usage
-Podstawowa składnia polecenia `ping` wygląda następująco:
+Podstawowa składnia polecenia `ping` jest następująca:
 
 ```csh
 ping [opcje] [argumenty]
@@ -12,9 +12,9 @@ ping [opcje] [argumenty]
 
 ## Common Options
 - `-c <liczba>`: Określa liczbę wysyłanych pakietów.
-- `-i <czas>`: Ustala czas w sekundach pomiędzy wysyłanymi pakietami.
-- `-s <rozmiar>`: Ustala rozmiar wysyłanych pakietów.
-- `-t <czas>`: Ustala czas życia pakietu (TTL).
+- `-i <czas>`: Ustala czas w sekundach między wysyłanymi pakietami.
+- `-s <rozmiar>`: Ustala rozmiar wysyłanych pakietów w bajtach.
+- `-t <TTL>`: Ustala wartość Time To Live dla pakietów.
 
 ## Common Examples
 1. Sprawdzenie dostępności hosta:
@@ -27,22 +27,22 @@ ping [opcje] [argumenty]
    ping -c 5 example.com
    ```
 
-3. Ustalenie interwału 2 sekund pomiędzy pakietami:
-   ```csh
-   ping -i 2 example.com
-   ```
-
-4. Wysłanie pakietów o rozmiarze 128 bajtów:
+3. Ustalenie rozmiaru pakietu na 128 bajtów:
    ```csh
    ping -s 128 example.com
    ```
 
-5. Ustalenie czasu życia pakietu na 64:
+4. Ustalenie interwału między pakietami na 2 sekundy:
+   ```csh
+   ping -i 2 example.com
+   ```
+
+5. Ustalenie wartości TTL na 64:
    ```csh
    ping -t 64 example.com
    ```
 
 ## Tips
-- Używaj opcji `-c`, aby ograniczyć liczbę wysyłanych pakietów, co jest przydatne w przypadku testów.
+- Użyj opcji `-c` w celu ograniczenia liczby wysyłanych pakietów, co jest przydatne, gdy chcesz szybko sprawdzić połączenie.
 - Monitoruj czas odpowiedzi, aby ocenić jakość połączenia.
-- Jeśli ping nie działa, sprawdź, czy host jest dostępny i czy nie ma problemów z konfiguracją sieci.
+- Jeśli nie otrzymujesz odpowiedzi, sprawdź, czy adres IP jest poprawny oraz czy masz dostęp do sieci.

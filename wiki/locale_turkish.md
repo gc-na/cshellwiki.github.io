@@ -1,45 +1,44 @@
-# [Linux] C Shell (csh) locale kullanımı: Yerel ayar bilgilerini görüntüleme
+# [Linux] C Shell (csh) locale kullanımı: Yerel ayarları görüntüleme
 
-## Genel Bakış
-`locale` komutu, sistemdeki yerel ayar bilgilerini görüntülemek için kullanılır. Bu komut, dil, tarih biçimi, para birimi ve diğer yerel ayarlarla ilgili bilgileri sağlar. Bu sayede, kullanıcılar sistemin hangi yerel ayarları kullandığını kolayca görebilirler.
+## Overview
+`locale` komutu, sistemdeki yerel ayarları görüntülemek için kullanılır. Bu komut, dil, tarih biçimi, para birimi ve diğer yerel ayarlarla ilgili bilgileri sağlar.
 
-## Kullanım
-Temel sözdizimi şu şekildedir:
-
-```csh
-locale [seçenekler] [argümanlar]
+## Usage
+Temel sözdizimi aşağıdaki gibidir:
+```
+locale [options] [arguments]
 ```
 
-## Yaygın Seçenekler
+## Common Options
 - `-a`: Tüm mevcut yerel ayarları listeler.
-- `-m`: Desteklenen yerel ayarların isimlerini ve açıklamalarını gösterir.
+- `-m`: Mevcut yerel ayarların harf dağarcığını gösterir.
+- `-c`: Yerel ayarların geçerliliğini kontrol eder.
 - `-k`: Belirli bir anahtarın değerini görüntüler.
-- `-v`: Yerel ayarların sürüm bilgilerini gösterir.
 
-## Yaygın Örnekler
+## Common Examples
 Aşağıda `locale` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. Mevcut yerel ayarları görüntüleme:
+1. Mevcut yerel ayarları görüntülemek için:
    ```csh
    locale
    ```
 
-2. Tüm mevcut yerel ayarları listeleme:
+2. Tüm mevcut yerel ayarları listelemek için:
    ```csh
    locale -a
    ```
 
-3. Belirli bir anahtarın değerini görüntüleme (örneğin, `LANG`):
+3. Yerel ayarların harf dağarcığını görüntülemek için:
+   ```csh
+   locale -m
+   ```
+
+4. Belirli bir anahtarın değerini görüntülemek için (örneğin, `LANG`):
    ```csh
    locale -k LANG
    ```
 
-4. Yerel ayarların sürüm bilgilerini gösterme:
-   ```csh
-   locale -v
-   ```
-
-## İpuçları
-- `locale` komutunu kullanarak sisteminizin yerel ayarlarını kontrol etmek, yazılım geliştirme ve hata ayıklama süreçlerinde faydalı olabilir.
-- Yerel ayarların doğru bir şekilde ayarlandığından emin olun; bu, uygulamalarınızın beklenildiği gibi çalışmasını sağlar.
-- Yerel ayarları değiştirmek isterseniz, `setenv` komutunu kullanarak ortam değişkenlerini ayarlayabilirsiniz.
+## Tips
+- Yerel ayarları değiştirirken, sistemin tüm kullanıcıları etkileyebileceğini unutmayın.
+- `locale` komutunu, yazılım geliştirme ve test süreçlerinde yerel ayarların doğruluğunu kontrol etmek için kullanabilirsiniz.
+- Farklı yerel ayarları denemek, uygulamanızın farklı dillerde nasıl çalıştığını görmek için faydalı olabilir.

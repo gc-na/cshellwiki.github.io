@@ -1,41 +1,45 @@
-# [Linux] C Shell (csh) mpstat użycie: Monitorowanie statystyk CPU
+# [Linux] C Shell (csh) mpstat użycie: monitorowanie statystyk CPU
 
-## Overview
-Polecenie `mpstat` służy do monitorowania statystyk CPU w systemie, umożliwiając użytkownikom analizę obciążenia procesora w czasie rzeczywistym. Umożliwia to identyfikację problemów związanych z wydajnością oraz optymalizację zasobów systemowych.
+## Przegląd
+Polecenie `mpstat` służy do monitorowania statystyk procesora w systemie. Umożliwia użytkownikom śledzenie obciążenia CPU oraz wydajności systemu w czasie rzeczywistym, co jest przydatne w diagnostyce i optymalizacji wydajności.
 
-## Usage
+## Użycie
 Podstawowa składnia polecenia `mpstat` jest następująca:
 
-```csh
+```
 mpstat [opcje] [argumenty]
 ```
 
-## Common Options
-- `-P ALL` - Wyświetla statystyki dla wszystkich procesorów.
-- `-u` - Pokazuje użycie CPU.
-- `-r` - Wyświetla statystyki dotyczące pamięci.
-- `-h` - Wyświetla pomoc i dostępne opcje.
+## Częste opcje
+- `-P ALL` - wyświetla statystyki dla wszystkich procesorów.
+- `-u` - pokazuje zużycie CPU w procentach.
+- `-r` - wyświetla informacje o pamięci.
+- `-h` - wyświetla pomoc i dostępne opcje.
 
-## Common Examples
-1. Aby wyświetlić statystyki CPU dla wszystkich procesorów co 5 sekund, użyj:
+## Przykłady
+Oto kilka praktycznych przykładów użycia polecenia `mpstat`:
 
-   ```csh
-   mpstat -P ALL 5
+1. Aby wyświetlić statystyki CPU dla wszystkich rdzeni:
+   ```bash
+   mpstat -P ALL
    ```
 
-2. Aby zobaczyć tylko użycie CPU, wykonaj:
-
-   ```csh
-   mpstat -u 1
+2. Aby monitorować zużycie CPU co 5 sekund:
+   ```bash
+   mpstat 5
    ```
 
-3. Aby uzyskać szczegółowe informacje o pamięci, użyj:
-
-   ```csh
-   mpstat -r 2
+3. Aby uzyskać szczegółowe informacje o pamięci:
+   ```bash
+   mpstat -r
    ```
 
-## Tips
-- Używaj opcji `-P ALL`, aby uzyskać pełny obraz obciążenia wszystkich rdzeni CPU.
-- Regularne monitorowanie za pomocą `mpstat` może pomóc w identyfikacji wąskich gardeł w systemie.
-- Rozważ użycie `mpstat` w skryptach do automatyzacji monitorowania wydajności systemu.
+4. Aby zobaczyć zużycie CPU w procentach:
+   ```bash
+   mpstat -u
+   ```
+
+## Wskazówki
+- Używaj opcji `-P ALL`, aby uzyskać pełny obraz wydajności wszystkich rdzeni procesora.
+- Regularne monitorowanie CPU może pomóc w identyfikacji problemów z wydajnością systemu.
+- Rozważ użycie `mpstat` w połączeniu z innymi narzędziami monitorującymi, aby uzyskać bardziej kompleksowy obraz stanu systemu.

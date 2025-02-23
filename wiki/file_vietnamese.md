@@ -1,39 +1,38 @@
 # [Hệ điều hành] C Shell (csh) file sử dụng: Xác định loại tệp
 
 ## Overview
-Lệnh `file` trong C Shell (csh) được sử dụng để xác định loại tệp của một hoặc nhiều tệp. Nó phân tích nội dung của tệp và cung cấp thông tin về kiểu dữ liệu mà tệp chứa.
+Lệnh `file` trong C Shell (csh) được sử dụng để xác định loại tệp của một hoặc nhiều tệp. Nó phân tích nội dung của tệp và đưa ra thông tin về loại tệp, giúp người dùng hiểu rõ hơn về dữ liệu mà họ đang làm việc.
 
 ## Usage
 Cú pháp cơ bản của lệnh `file` như sau:
-
 ```
 file [options] [arguments]
 ```
 
 ## Common Options
 - `-b`: Chỉ hiển thị loại tệp mà không có tên tệp.
-- `-i`: Hiển thị thông tin MIME type của tệp.
+- `-i`: Hiển thị loại tệp MIME.
 - `-f`: Đọc danh sách tệp từ một tệp khác.
 
 ## Common Examples
-Dưới đây là một số ví dụ thực tế khi sử dụng lệnh `file`:
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `file`:
 
 1. Xác định loại tệp của một tệp đơn:
    ```csh
    file example.txt
    ```
 
-2. Xác định loại tệp của nhiều tệp:
+2. Xác định loại tệp của nhiều tệp cùng lúc:
    ```csh
-   file example.txt example.jpg example.pdf
+   file example.txt image.png document.pdf
    ```
 
-3. Sử dụng tùy chọn `-b` để chỉ hiển thị loại tệp:
+3. Chỉ hiển thị loại tệp mà không có tên tệp:
    ```csh
    file -b example.txt
    ```
 
-4. Hiển thị thông tin MIME type:
+4. Hiển thị loại tệp MIME:
    ```csh
    file -i example.txt
    ```
@@ -44,6 +43,6 @@ Dưới đây là một số ví dụ thực tế khi sử dụng lệnh `file`:
    ```
 
 ## Tips
-- Sử dụng tùy chọn `-i` để có thông tin chi tiết hơn về loại tệp, đặc biệt hữu ích khi làm việc với các tệp web.
-- Khi kiểm tra nhiều tệp, hãy chắc chắn rằng bạn đã chỉ định đúng đường dẫn để tránh nhầm lẫn.
-- Lệnh `file` có thể hữu ích trong các kịch bản tự động hóa để xác định loại tệp trước khi xử lý.
+- Sử dụng tùy chọn `-i` để biết thêm thông tin về loại tệp MIME, điều này rất hữu ích khi làm việc với các tệp web.
+- Khi làm việc với nhiều tệp, hãy sử dụng dấu `*` để xác định tất cả các tệp trong một thư mục, ví dụ: `file *`.
+- Nếu bạn không chắc chắn về loại tệp, lệnh `file` là một công cụ nhanh chóng và hiệu quả để kiểm tra.

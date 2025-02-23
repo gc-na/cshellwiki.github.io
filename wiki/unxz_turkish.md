@@ -1,43 +1,52 @@
-# [Linux] C Shell (csh) unxz Kullanımı: Sıkıştırılmış dosyaları açar
+# [Linux] C Shell (csh) unxz Kullanımı: Sıkıştırılmış dosyaları açma
 
 ## Genel Bakış
-`unxz` komutu, `.xz` uzantılı sıkıştırılmış dosyaları açmak için kullanılır. Bu komut, XZ formatında sıkıştırılmış dosyaları orijinal hallerine geri döndürür.
+`unxz`, `.xz` uzantılı dosyaları açmak için kullanılan bir komuttur. Bu komut, XZ sıkıştırma formatında olan dosyaları dekomprese ederek orijinal dosyayı geri getirir.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-```csh
+
+```bash
 unxz [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
 - `-k`: Sıkıştırılmış dosyayı silmeden açar.
-- `-v`: Ayrıntılı çıktı sağlar, işlemin ilerlemesini gösterir.
-- `-f`: Zorla açma işlemi yapar; dosya zaten varsa üzerine yazar.
+- `-f`: Zorla açma işlemi yapar, mevcut dosyaların üzerine yazabilir.
+- `-v`: Ayrıntılı çıktı verir, işlem sırasında neler olduğunu gösterir.
 
 ## Yaygın Örnekler
-Aşağıda `unxz` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+Aşağıda `unxz` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. Basit bir sıkıştırılmış dosyayı açma:
-   ```csh
-   unxz dosya.xz
-   ```
+### Örnek 1: Basit Kullanım
+Bir `.xz` dosyasını açmak için:
 
-2. Sıkıştırılmış dosyayı silmeden açma:
-   ```csh
-   unxz -k dosya.xz
-   ```
+```bash
+unxz dosya.xz
+```
 
-3. Ayrıntılı çıktı ile dosyayı açma:
-   ```csh
-   unxz -v dosya.xz
-   ```
+### Örnek 2: Dosyayı Silmeden Açma
+Sıkıştırılmış dosyayı açarken orijinal dosyayı korumak için:
 
-4. Zorla dosyayı açma:
-   ```csh
-   unxz -f dosya.xz
-   ```
+```bash
+unxz -k dosya.xz
+```
+
+### Örnek 3: Zorla Açma
+Mevcut dosyaların üzerine yazmak için:
+
+```bash
+unxz -f dosya.xz
+```
+
+### Örnek 4: Ayrıntılı Çıktı
+İşlem sırasında ayrıntılı bilgi almak için:
+
+```bash
+unxz -v dosya.xz
+```
 
 ## İpuçları
-- Sıkıştırılmış dosyalarınızı açmadan önce, dosyanın yedeğini almak iyi bir uygulamadır.
-- `-k` seçeneğini kullanarak orijinal dosyayı koruyabilirsiniz, böylece gerektiğinde tekrar kullanabilirsiniz.
-- `-v` seçeneği ile işleminiz hakkında daha fazla bilgi edinebilirsiniz, bu özellikle büyük dosyalarla çalışırken faydalıdır.
+- `unxz` komutunu kullanmadan önce dosyanızın yedeğini almak iyi bir uygulamadır.
+- Sıkıştırılmış dosyaların bulunduğu dizinde çalıştığınızdan emin olun.
+- Eğer birden fazla dosyayı açmak istiyorsanız, dosya adlarını boşlukla ayırarak listeleyebilirsiniz. Örneğin: `unxz dosya1.xz dosya2.xz`.

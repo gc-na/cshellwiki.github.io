@@ -1,10 +1,11 @@
-# [Hệ điều hành] C Shell (csh) users: Hiển thị thông tin người dùng
+# [Hệ điều hành] C Shell (csh) users: Lấy thông tin người dùng
 
 ## Overview
-Lệnh `users` trong C Shell (csh) được sử dụng để hiển thị danh sách tên người dùng đang đăng nhập vào hệ thống. Đây là một công cụ hữu ích để theo dõi ai đang sử dụng máy tính của bạn tại một thời điểm nhất định.
+Lệnh `users` trong C Shell (csh) được sử dụng để hiển thị danh sách tên người dùng đang đăng nhập vào hệ thống. Đây là một công cụ hữu ích để theo dõi ai đang sử dụng máy tính của bạn trong thời gian thực.
 
 ## Usage
 Cú pháp cơ bản của lệnh `users` như sau:
+
 ```
 users [options] [arguments]
 ```
@@ -32,9 +33,5 @@ Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh 
    ```
 
 ## Tips
-- Sử dụng lệnh `who` để có thêm thông tin chi tiết về người dùng, chẳng hạn như thời gian đăng nhập và địa chỉ IP.
-- Kết hợp lệnh `users` với các lệnh khác như `wc` để đếm số lượng người dùng:
-   ```csh
-   users | wc -w
-   ```
-- Thường xuyên kiểm tra danh sách người dùng có thể giúp bạn phát hiện ra các đăng nhập không mong muốn.
+- Sử dụng lệnh `users` thường xuyên để theo dõi tình trạng người dùng trên hệ thống của bạn.
+- Kết hợp lệnh `users` với các lệnh khác như `who` để có thêm thông tin chi tiết về người dùng đang đăng nhập.

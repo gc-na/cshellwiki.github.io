@@ -1,43 +1,47 @@
-# [Linux] C Shell (csh) lvextend użycie: Zwiększanie rozmiaru logicznych wolumenów
+# [Linux] C Shell (csh) lvextend użycie: Zwiększanie rozmiaru logicznych woluminów
 
-## Przegląd
-Polecenie `lvextend` służy do zwiększania rozmiaru logicznych wolumenów w systemach Linux, które korzystają z LVM (Logical Volume Manager). Dzięki temu można łatwo dostosować dostępne miejsce na dysku w zależności od potrzeb aplikacji.
+## Overview
+Polecenie `lvextend` służy do zwiększania rozmiaru logicznych woluminów w systemach opartych na LVM (Logical Volume Manager). Umożliwia to elastyczne zarządzanie przestrzenią dyskową, co jest szczególnie przydatne w przypadku rosnących potrzeb przechowywania danych.
 
-## Użycie
+## Usage
 Podstawowa składnia polecenia `lvextend` jest następująca:
 
 ```bash
 lvextend [opcje] [argumenty]
 ```
 
-## Częste opcje
-- `-L [rozmiar]` - Ustawia nowy rozmiar logicznego wolumenu.
-- `-l [rozmiar]` - Ustawia nowy rozmiar w jednostkach fizycznych (PE).
-- `-r` - Automatycznie rozszerza system plików po zwiększeniu rozmiaru wolumenu.
-- `-n` - Zmienia nazwę logicznego wolumenu.
+## Common Options
+Oto kilka powszechnie używanych opcji dla polecenia `lvextend`:
 
-## Przykłady
-1. Zwiększenie rozmiaru logicznego wolumenu do 20 GB:
-   ```bash
-   lvextend -L 20G /dev/vg1/lv1
-   ```
+- `-L +rozmiar`: Zwiększa rozmiar woluminu o podaną wartość.
+- `-l +liczba`: Zwiększa rozmiar woluminu o określoną liczbę jednostek logicznych.
+- `-r`: Automatycznie rozszerza system plików po zwiększeniu rozmiaru woluminu.
+- `-n nazwa`: Umożliwia zmianę nazwy logicznego woluminu.
 
-2. Zwiększenie rozmiaru logicznego wolumenu o 10 GB:
+## Common Examples
+Oto kilka praktycznych przykładów użycia `lvextend`:
+
+1. Zwiększenie rozmiaru woluminu o 10 GB:
    ```bash
    lvextend -L +10G /dev/vg1/lv1
    ```
 
-3. Zwiększenie rozmiaru logicznego wolumenu i automatyczne rozszerzenie systemu plików:
+2. Zwiększenie rozmiaru woluminu o 5 jednostek logicznych:
    ```bash
-   lvextend -r -L +5G /dev/vg1/lv1
+   lvextend -l +5 /dev/vg1/lv1
    ```
 
-4. Zmiana nazwy logicznego wolumenu:
+3. Zwiększenie rozmiaru woluminu i automatyczne rozszerzenie systemu plików:
    ```bash
-   lvextend -n lv_new /dev/vg1/lv1
+   lvextend -L +20G -r /dev/vg1/lv1
    ```
 
-## Wskazówki
-- Zawsze upewnij się, że masz kopię zapasową danych przed zwiększeniem rozmiaru wolumenu.
-- Używaj opcji `-r`, aby automatycznie dostosować system plików, co oszczędza czas i zmniejsza ryzyko błędów.
-- Monitoruj dostępne miejsce w grupach wolumenów, aby uniknąć problemów z brakiem miejsca podczas rozszerzania.
+4. Zmiana nazwy logicznego woluminu:
+   ```bash
+   lvextend -n nowa_nazwa /dev/vg1/lv1
+   ```
+
+## Tips
+- Zawsze wykonuj kopię zapasową danych przed zwiększeniem rozmiaru woluminu, aby uniknąć utraty danych.
+- Używaj opcji `-r`, aby automatycznie dostosować system plików, co oszczędza czas i wysiłek.
+- Sprawdzaj dostępność miejsca na fizycznych woluminach przed rozszerzeniem logicznego woluminu, aby upewnić się, że masz wystarczającą przestrzeń.

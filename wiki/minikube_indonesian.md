@@ -1,51 +1,53 @@
-# [Sistem Operasi] C Shell (csh) minikube Penggunaan: Mengelola Kubernetes Lokal
+# [Sistem Operasi] C Shell (csh) minikube: Mengelola kluster Kubernetes lokal
 
 ## Overview
-Minikube adalah alat yang memungkinkan pengguna untuk menjalankan kluster Kubernetes lokal di mesin mereka. Ini sangat berguna untuk pengembangan dan pengujian aplikasi berbasis Kubernetes tanpa memerlukan infrastruktur yang kompleks.
+Minikube adalah alat yang memungkinkan pengguna untuk menjalankan kluster Kubernetes lokal di mesin pengembangan mereka. Ini sangat berguna untuk pengujian dan pengembangan aplikasi yang menggunakan Kubernetes tanpa memerlukan infrastruktur yang kompleks.
 
 ## Usage
-Berikut adalah sintaks dasar untuk menggunakan perintah minikube:
+Sintaks dasar dari perintah minikube adalah sebagai berikut:
 
 ```
 minikube [options] [arguments]
 ```
 
 ## Common Options
-- `start`: Memulai kluster minikube.
+Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah minikube:
+
+- `start`: Memulai kluster minikube baru.
 - `stop`: Menghentikan kluster minikube yang sedang berjalan.
 - `status`: Menampilkan status dari kluster minikube.
-- `delete`: Menghapus kluster minikube.
+- `delete`: Menghapus kluster minikube yang ada.
 - `dashboard`: Membuka dashboard Kubernetes di browser.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah minikube:
 
 1. **Memulai Kluster Minikube**
-   ```csh
+   ```shell
    minikube start
    ```
 
 2. **Menghentikan Kluster Minikube**
-   ```csh
+   ```shell
    minikube stop
    ```
 
 3. **Menampilkan Status Kluster**
-   ```csh
+   ```shell
    minikube status
    ```
 
 4. **Menghapus Kluster Minikube**
-   ```csh
+   ```shell
    minikube delete
    ```
 
 5. **Membuka Dashboard Kubernetes**
-   ```csh
+   ```shell
    minikube dashboard
    ```
 
 ## Tips
-- Pastikan Anda memiliki virtualisasi yang diaktifkan di BIOS untuk menjalankan minikube dengan baik.
-- Gunakan `minikube update-check` untuk memastikan Anda menggunakan versi terbaru dari minikube.
-- Manfaatkan opsi `--driver` untuk memilih driver virtualisasi yang sesuai dengan sistem Anda, seperti `virtualbox` atau `docker`.
+- Pastikan untuk memeriksa persyaratan sistem sebelum menginstal minikube agar dapat berjalan dengan baik.
+- Gunakan `minikube start --driver=<driver_name>` untuk memilih driver virtualisasi yang sesuai dengan sistem Anda.
+- Selalu periksa status kluster setelah menjalankan perintah untuk memastikan semuanya berjalan dengan baik.

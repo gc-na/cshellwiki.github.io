@@ -1,19 +1,19 @@
 # [Linux] C Shell (csh) echo użycie: Wyświetlanie tekstu na standardowym wyjściu
 
 ## Overview
-Polecenie `echo` w C Shell (csh) służy do wyświetlania tekstu lub zmiennych na standardowym wyjściu, zazwyczaj w terminalu. Jest to przydatne narzędzie do szybkiego wyświetlania informacji lub wyników skryptów.
+Polecenie `echo` w C Shell (csh) służy do wyświetlania tekstu lub wartości zmiennych na standardowym wyjściu, zazwyczaj w terminalu. Jest to przydatne narzędzie do szybkiego wyświetlania informacji lub wyników skryptów.
 
 ## Usage
 Podstawowa składnia polecenia `echo` jest następująca:
 
-```
+```csh
 echo [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-n`: Nie dodaje znaku nowej linii na końcu wyjścia.
-- `-e`: Włącza interpretację sekwencji ucieczki (np. `\n` dla nowej linii).
-- `-E`: Wyłącza interpretację sekwencji ucieczki (domyślne ustawienie).
+- `-n`: Nie dodawaj znaku nowej linii na końcu wyjścia.
+- `-e`: Włącz interpretację sekwencji specjalnych (np. `\n` dla nowej linii).
+- `-E`: Wyłącz interpretację sekwencji specjalnych (domyślne zachowanie).
 
 ## Common Examples
 Oto kilka praktycznych przykładów użycia polecenia `echo`:
@@ -23,23 +23,23 @@ Oto kilka praktycznych przykładów użycia polecenia `echo`:
    echo "Witaj, świecie!"
    ```
 
-2. Wyświetlenie zmiennej:
+2. Wyświetlenie wartości zmiennej:
    ```csh
-   set nazwa = "Jan"
-   echo "Cześć, $nazwa!"
+   set imie = "Jan"
+   echo "Cześć, $imie!"
    ```
 
-3. Użycie opcji `-n`:
+3. Użycie opcji `-n` do uniknięcia nowej linii:
    ```csh
    echo -n "To jest tekst bez nowej linii."
    ```
 
-4. Użycie opcji `-e` do interpretacji sekwencji ucieczki:
+4. Użycie opcji `-e` do interpretacji sekwencji specjalnych:
    ```csh
    echo -e "Pierwsza linia\nDruga linia"
    ```
 
 ## Tips
-- Używaj opcji `-n`, gdy chcesz kontynuować wyjście w tej samej linii.
+- Używaj opcji `-n`, gdy chcesz kontynuować wyjście na tej samej linii.
 - Zawsze sprawdzaj, czy zmienne są poprawnie ustawione przed ich wyświetleniem.
-- Pamiętaj, że sekwencje ucieczki mogą być przydatne do formatowania wyjścia, ale mogą również wprowadzać zamieszanie, jeśli nie są używane ostrożnie.
+- Używaj opcji `-e`, aby korzystać z sekwencji specjalnych, ale pamiętaj, że niektóre systemy mogą mieć różne domyślne ustawienia dla tej opcji.

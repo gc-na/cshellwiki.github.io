@@ -1,46 +1,49 @@
-# [Linux] C Shell (csh) who uso: Mostra gli utenti connessi
+# [Linux] C Shell (csh) who uso: visualizza gli utenti connessi
 
 ## Overview
-Il comando `who` in C Shell (csh) è utilizzato per visualizzare gli utenti attualmente connessi al sistema. Fornisce informazioni come il nome utente, il terminale utilizzato, la data e l'ora di accesso.
+Il comando `who` in C Shell (csh) viene utilizzato per visualizzare gli utenti attualmente connessi al sistema. Mostra informazioni come il nome dell'utente, il terminale utilizzato, la data e l'ora di accesso.
 
 ## Usage
 La sintassi di base del comando `who` è la seguente:
 
-```
-who [opzioni] [argomenti]
+```csh
+who [options] [arguments]
 ```
 
 ## Common Options
 Ecco alcune opzioni comuni per il comando `who`:
 
-- `-b`: Mostra l'ultima volta che il sistema è stato avviato.
+- `-a`: Mostra tutte le informazioni disponibili, inclusi gli utenti disconnessi.
+- `-b`: Mostra l'ora dell'ultimo riavvio del sistema.
 - `-q`: Mostra solo i nomi degli utenti connessi e il conteggio totale.
-- `-H`: Mostra l'intestazione delle colonne.
 
 ## Common Examples
 Ecco alcuni esempi pratici dell'uso del comando `who`:
 
-1. Visualizzare tutti gli utenti connessi:
-    ```bash
-    who
-    ```
+1. Visualizzare gli utenti attualmente connessi:
+   ```csh
+   who
+   ```
 
-2. Visualizzare l'ultima volta che il sistema è stato avviato:
-    ```bash
-    who -b
-    ```
+2. Visualizzare tutte le informazioni disponibili sugli utenti:
+   ```csh
+   who -a
+   ```
 
-3. Mostrare solo i nomi degli utenti connessi e il conteggio totale:
-    ```bash
-    who -q
-    ```
+3. Visualizzare l'ora dell'ultimo riavvio del sistema:
+   ```csh
+   who -b
+   ```
 
-4. Visualizzare gli utenti con un'intestazione delle colonne:
-    ```bash
-    who -H
-    ```
+4. Visualizzare solo i nomi degli utenti connessi e il conteggio totale:
+   ```csh
+   who -q
+   ```
 
 ## Tips
-- Utilizza `who` regolarmente per monitorare l'attività degli utenti sul tuo sistema.
-- Combina `who` con altri comandi come `grep` per filtrare risultati specifici.
-- Ricorda che le informazioni mostrate da `who` possono variare a seconda dei permessi dell'utente che esegue il comando.
+- Utilizza `who` regolarmente per monitorare chi è connesso al tuo sistema, specialmente in ambienti condivisi.
+- Combinare `who` con altri comandi come `grep` può aiutarti a filtrare informazioni specifiche, ad esempio:
+  ```csh
+  who | grep nome_utente
+  ```
+- Ricorda che il comando `who` può fornire informazioni sensibili, quindi usalo con cautela in ambienti pubblici o condivisi.

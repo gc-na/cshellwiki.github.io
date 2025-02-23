@@ -1,50 +1,55 @@
-# [Sistem Operasi] C Shell (csh) uniq Penggunaan: Menghapus baris duplikat dari file
+# [Sistem Operasi] C Shell (csh) uniq Penggunaan: Menghapus baris duplikat
 
 ## Overview
-Perintah `uniq` digunakan untuk menghapus baris-baris yang duplikat dari file atau output. Perintah ini hanya menghapus duplikat yang berurutan, sehingga penting untuk mengurutkan data terlebih dahulu jika ingin menghapus semua duplikat.
+Perintah `uniq` dalam C Shell (csh) digunakan untuk menghapus baris yang duplikat dari file atau output. Perintah ini sangat berguna ketika Anda ingin mendapatkan daftar unik dari data yang mungkin memiliki entri yang sama.
 
 ## Usage
-Berikut adalah sintaks dasar dari perintah `uniq`:
+Sintaks dasar dari perintah `uniq` adalah sebagai berikut:
 
 ```
 uniq [options] [arguments]
 ```
 
 ## Common Options
-- `-c`: Menghitung jumlah kemunculan setiap baris.
+Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah `uniq`:
+
+- `-c`: Menghitung jumlah kemunculan setiap baris unik.
 - `-d`: Menampilkan hanya baris yang muncul lebih dari sekali.
-- `-u`: Menampilkan hanya baris yang unik (tidak ada duplikat).
-- `-i`: Mengabaikan perbedaan antara huruf besar dan kecil saat membandingkan.
+- `-u`: Menampilkan hanya baris yang unik (tidak muncul lebih dari sekali).
+- `-i`: Mengabaikan perbedaan antara huruf besar dan kecil saat membandingkan baris.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan perintah `uniq`:
+Berikut adalah beberapa contoh praktis penggunaan perintah `uniq`:
 
 1. Menghapus baris duplikat dari file:
-   ```bash
+   ```csh
    uniq file.txt
    ```
 
-2. Mengurutkan file terlebih dahulu dan kemudian menghapus duplikat:
-   ```bash
-   sort file.txt | uniq
-   ```
-
-3. Menghitung jumlah kemunculan setiap baris:
-   ```bash
+2. Menghitung jumlah kemunculan setiap baris unik:
+   ```csh
    uniq -c file.txt
    ```
 
-4. Menampilkan hanya baris yang muncul lebih dari sekali:
-   ```bash
+3. Menampilkan hanya baris yang muncul lebih dari sekali:
+   ```csh
    uniq -d file.txt
    ```
 
-5. Menampilkan hanya baris yang unik:
-   ```bash
+4. Menampilkan hanya baris yang unik:
+   ```csh
    uniq -u file.txt
    ```
 
+5. Mengabaikan perbedaan huruf besar dan kecil:
+   ```csh
+   uniq -i file.txt
+   ```
+
 ## Tips
-- Selalu urutkan data Anda sebelum menggunakan `uniq` jika Anda ingin menghapus semua duplikat.
-- Gunakan opsi `-c` untuk mendapatkan informasi lebih lanjut tentang berapa kali setiap baris muncul.
-- Jika Anda bekerja dengan data yang sensitif terhadap huruf besar dan kecil, pertimbangkan untuk menggunakan opsi `-i`.
+- Pastikan untuk mengurutkan file sebelum menggunakan `uniq`, karena perintah ini hanya menghapus duplikat yang berurutan.
+- Anda dapat menggabungkan `uniq` dengan perintah lain seperti `sort` untuk mendapatkan hasil yang lebih baik. Contoh:
+  ```csh
+  sort file.txt | uniq
+  ```
+- Gunakan opsi `-c` untuk mendapatkan informasi lebih lanjut tentang seberapa sering setiap baris muncul, yang dapat membantu dalam analisis data.

@@ -1,49 +1,48 @@
-# [ระบบปฏิบัติการ] C Shell (csh) minikube การใช้งาน: การจัดการ Kubernetes ในเครื่อง
+# [ระบบปฏิบัติการ] C Shell (csh) minikube การใช้งาน: สร้างและจัดการคลัสเตอร์ Kubernetes
 
 ## Overview
-คำสั่ง `minikube` ใช้สำหรับสร้างและจัดการคลัสเตอร์ Kubernetes บนเครื่องของคุณ โดยช่วยให้คุณสามารถพัฒนาและทดสอบแอปพลิเคชันที่ใช้ Kubernetes ได้อย่างง่ายดาย
+คำสั่ง `minikube` ใช้สำหรับสร้างและจัดการคลัสเตอร์ Kubernetes บนเครื่องคอมพิวเตอร์ของผู้ใช้ ซึ่งช่วยให้ผู้ใช้สามารถทดลองและพัฒนาแอปพลิเคชันที่ใช้ Kubernetes ได้อย่างง่ายดาย
 
 ## Usage
-การใช้งานพื้นฐานของคำสั่ง `minikube` มีรูปแบบดังนี้:
-
+การใช้งานคำสั่ง `minikube` มีรูปแบบพื้นฐานดังนี้:
 ```
 minikube [options] [arguments]
 ```
 
 ## Common Options
 - `start`: เริ่มต้นคลัสเตอร์ Minikube
-- `stop`: หยุดคลัสเตอร์ Minikube ที่กำลังทำงานอยู่
-- `status`: แสดงสถานะของคลัสเตอร์
+- `stop`: หยุดการทำงานของคลัสเตอร์ Minikube
+- `status`: แสดงสถานะของคลัสเตอร์ Minikube
 - `delete`: ลบคลัสเตอร์ Minikube
-- `dashboard`: เปิดแดชบอร์ด Kubernetes ในเบราว์เซอร์
+- `dashboard`: เปิดแดชบอร์ด Kubernetes
 
 ## Common Examples
 - เริ่มต้นคลัสเตอร์ Minikube:
-  ```csh
+  ```bash
   minikube start
   ```
 
-- หยุดคลัสเตอร์ Minikube:
-  ```csh
+- หยุดการทำงานของคลัสเตอร์ Minikube:
+  ```bash
   minikube stop
   ```
 
-- ตรวจสอบสถานะของคลัสเตอร์:
-  ```csh
+- ตรวจสอบสถานะของคลัสเตอร์ Minikube:
+  ```bash
   minikube status
   ```
 
 - ลบคลัสเตอร์ Minikube:
-  ```csh
+  ```bash
   minikube delete
   ```
 
 - เปิดแดชบอร์ด Kubernetes:
-  ```csh
+  ```bash
   minikube dashboard
   ```
 
 ## Tips
-- ตรวจสอบให้แน่ใจว่าคุณมีเครื่องมือเสริมที่จำเป็น เช่น VirtualBox หรือ Docker ติดตั้งอยู่ก่อนเริ่มใช้งาน Minikube
-- ใช้คำสั่ง `minikube update-check` เพื่อตรวจสอบว่าคุณมีเวอร์ชันล่าสุดของ Minikube
-- หากพบปัญหาในการเริ่มต้นคลัสเตอร์ ให้ลองใช้คำสั่ง `minikube delete` เพื่อลบคลัสเตอร์เก่าแล้วเริ่มใหม่อีกครั้ง
+- ตรวจสอบให้แน่ใจว่าคุณมี Virtualization Enabled ใน BIOS เพื่อให้ Minikube ทำงานได้อย่างราบรื่น
+- ใช้ `minikube update-check` เพื่อตรวจสอบว่าเวอร์ชันของ Minikube ที่คุณใช้อยู่เป็นเวอร์ชันล่าสุด
+- หากคุณต้องการใช้ Kubernetes ที่มีการกำหนดค่าพิเศษ สามารถใช้ `--kubernetes-version` เพื่อระบุเวอร์ชันที่ต้องการได้

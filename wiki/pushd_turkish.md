@@ -1,40 +1,41 @@
 # [Linux] C Shell (csh) pushd Kullanımı: Dizin yığınını yönetme
 
-## Overview
-`pushd` komutu, C Shell (csh) ortamında dizin yığınını yönetmek için kullanılır. Bu komut, mevcut dizini yığının üstüne ekleyerek belirtilen dizine geçiş yapar.
+## Genel Bakış
+`pushd` komutu, C Shell (csh) ortamında dizin yığınını yönetmek için kullanılır. Bu komut, mevcut dizini yığınınıza ekler ve belirtilen dizine geçiş yapmanızı sağlar.
 
-## Usage
-Temel sözdizimi şu şekildedir:
+## Kullanım
+Temel sözdizimi aşağıdaki gibidir:
+```csh
+pushd [seçenekler] [argümanlar]
 ```
-pushd [options] [arguments]
-```
 
-## Common Options
-- `+n`: Yığındaki n'inci dizine geçiş yapar.
-- `-n`: Yığındaki n'inci dizine geçiş yapar ve dizin yığınını tersine çevirir.
+## Yaygın Seçenekler
+- `+n`: Yığın içindeki n'inci dizine geçiş yapar.
+- `-`: Önceki dizine geri döner.
+- `-n`: Yığındaki n'inci dizini gösterir.
 
-## Common Examples
-1. Belirli bir dizine geçiş yapmak:
+## Yaygın Örnekler
+Aşağıda `pushd` komutunun bazı pratik örnekleri bulunmaktadır:
+
+1. **Yeni bir dizine geçiş yapma:**
    ```csh
    pushd /home/kullanici/dizin
    ```
+   Bu komut, `/home/kullanici/dizin` dizinine geçer ve mevcut dizini yığına ekler.
 
-2. Yığındaki dizinleri görüntülemek:
+2. **Önceki dizine geri dönme:**
    ```csh
-   pushd
+   pushd -
    ```
+   Bu komut, yığındaki bir önceki dizine geri döner.
 
-3. Yığındaki ikinci dizine geçiş yapmak:
+3. **Yığın içindeki belirli bir dizine geçiş yapma:**
    ```csh
    pushd +1
    ```
+   Bu komut, yığındaki ikinci dizine geçiş yapar.
 
-4. Yığındaki dizinleri tersine çevirerek geçiş yapmak:
-   ```csh
-   pushd -1
-   ```
-
-## Tips
-- `pushd` komutunu sık kullandığınız dizinler arasında hızlı geçiş yapmak için kullanın.
-- Dizin yığınını kontrol etmek için `dirs` komutunu kullanarak mevcut yığın durumunu görüntüleyin.
-- `popd` komutunu kullanarak en üstteki dizini yığından çıkarmayı unutmayın.
+## İpuçları
+- `dirs` komutunu kullanarak mevcut dizin yığınını görüntüleyebilirsiniz.
+- `popd` komutunu kullanarak yığından en üstteki dizini çıkarabilir ve o dizine dönebilirsiniz.
+- `pushd` ve `popd` komutlarını birlikte kullanarak dizinler arasında hızlıca geçiş yapabilirsiniz.

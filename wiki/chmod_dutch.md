@@ -1,10 +1,10 @@
-# [Linux] C Shell (csh) chmod gebruik: Wijzig bestandspermissies
+# [Linux] C Shell (csh) chmod gebruik: Bestanden en mappen machtigingen beheren
 
 ## Overzicht
-De `chmod` (change mode) opdracht in C Shell wordt gebruikt om de bestandspermissies van bestanden en mappen te wijzigen. Hiermee kunt u bepalen wie toegang heeft tot een bestand en welke acties ze kunnen uitvoeren, zoals lezen, schrijven of uitvoeren.
+De `chmod`-opdracht in C Shell (csh) wordt gebruikt om de toegangsrechten van bestanden en mappen te wijzigen. Met deze opdracht kun je bepalen wie een bestand kan lezen, schrijven of uitvoeren.
 
 ## Gebruik
-De basis syntaxis van de `chmod` opdracht is als volgt:
+De basis syntaxis van de `chmod`-opdracht is als volgt:
 
 ```csh
 chmod [opties] [argumenten]
@@ -14,9 +14,9 @@ chmod [opties] [argumenten]
 - `u`: Verwijst naar de eigenaar van het bestand (user).
 - `g`: Verwijst naar de groep waartoe de eigenaar behoort (group).
 - `o`: Verwijst naar anderen (others).
-- `r`: Geeft leesrechten (read).
-- `w`: Geeft schrijfrechten (write).
-- `x`: Geeft uitvoeringsrechten (execute).
+- `r`: Lezen (read).
+- `w`: Schrijven (write).
+- `x`: Uitvoeren (execute).
 - `+`: Voegt rechten toe.
 - `-`: Verwijdert rechten.
 - `=`: Stelt rechten in.
@@ -26,7 +26,7 @@ Hier zijn enkele praktische voorbeelden van het gebruik van `chmod`:
 
 1. **Geef de eigenaar lees- en schrijfrechten:**
    ```csh
-   chmod u+rw bestandsnaam.txt
+   chmod u+rw bestand.txt
    ```
 
 2. **Verwijder uitvoeringsrechten voor anderen:**
@@ -34,22 +34,25 @@ Hier zijn enkele praktische voorbeelden van het gebruik van `chmod`:
    chmod o-x script.sh
    ```
 
-3. **Geef leesrechten aan de groep:**
+3. **Geef de groep lees- en uitvoeringsrechten:**
    ```csh
-   chmod g+r document.pdf
+   chmod g+rx document.pdf
    ```
 
-4. **Stel alle rechten in voor de eigenaar, en alleen leesrechten voor anderen:**
+4. **Stel de rechten in op alleen lezen voor iedereen:**
    ```csh
-   chmod u=rwx,o=r bestand.txt
+   chmod a=r bestand.txt
    ```
 
-5. **Geef uitvoeringsrechten aan iedereen:**
+5. **Geef de eigenaar alle rechten en verwijder alle rechten voor anderen:**
    ```csh
-   chmod a+x programma
+   chmod u=rwx,o= bestand.txt
    ```
 
 ## Tips
-- Gebruik `ls -l` om de huidige permissies van bestanden te controleren voordat u wijzigingen aanbrengt.
-- Wees voorzichtig met het geven van schrijfrechten aan anderen, vooral op gedeelde systemen.
-- Overweeg om `chmod` in combinatie met andere commando's te gebruiken, zoals `find`, om permissies op meerdere bestanden tegelijk te wijzigen.
+- Controleer altijd de huidige rechten van een bestand met de `ls -l` opdracht voordat je wijzigingen aanbrengt.
+- Wees voorzichtig met het toekennen van uitvoeringsrechten, vooral voor scripts, om beveiligingsrisico's te minimaliseren.
+- Gebruik de `-R` optie om rechten recursief toe te passen op alle bestanden en submappen binnen een map. Bijvoorbeeld:
+  ```csh
+  chmod -R u+rwx mapnaam/
+  ```

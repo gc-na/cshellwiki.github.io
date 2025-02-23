@@ -1,7 +1,7 @@
-# [Sistem Operasi] C Shell (csh) stat <Penggunaan setara>: Menampilkan informasi status file
+# [Sistem Operasi] C Shell (csh) stat <Mengambil informasi file>: Mengambil informasi detail tentang file atau direktori.
 
 ## Overview
-Perintah `stat` digunakan untuk menampilkan informasi status dari file atau direktori. Informasi yang ditampilkan mencakup ukuran file, waktu akses terakhir, waktu modifikasi terakhir, dan banyak lagi.
+Perintah `stat` digunakan untuk menampilkan informasi detail mengenai file atau direktori, termasuk ukuran, waktu modifikasi, dan izin akses. Ini sangat berguna untuk mendapatkan gambaran lengkap tentang atribut file.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `stat`:
@@ -11,34 +11,34 @@ stat [options] [arguments]
 ```
 
 ## Common Options
-- `-c` : Menentukan format output yang ingin ditampilkan.
+- `-c` : Menentukan format output yang disesuaikan.
 - `-f` : Menampilkan informasi dalam format yang lebih ringkas.
-- `-L` : Mengikuti symbolic link dan menampilkan informasi dari file yang ditunjuk.
+- `-L` : Mengikuti tautan simbolik dan menampilkan informasi tentang file yang dituju.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `stat`:
 
-1. Menampilkan informasi lengkap dari sebuah file:
+1. Menampilkan informasi dasar tentang file:
    ```csh
    stat namafile.txt
    ```
 
-2. Menggunakan opsi `-c` untuk menampilkan ukuran file saja:
+2. Menggunakan opsi `-c` untuk menampilkan informasi dalam format yang disesuaikan:
    ```csh
-   stat -c %s namafile.txt
+   stat -c '%n: %s bytes' namafile.txt
    ```
 
-3. Menampilkan informasi dari symbolic link:
+3. Menampilkan informasi tentang direktori:
    ```csh
-   stat -L symlinkfile
+   stat /path/to/directory
    ```
 
-4. Menampilkan informasi dalam format ringkas:
+4. Menggunakan opsi `-L` untuk mengikuti tautan simbolik:
    ```csh
-   stat -f "%N: %z bytes" namafile.txt
+   stat -L link_simbolik
    ```
 
 ## Tips
-- Gunakan opsi `-c` untuk menyesuaikan output agar lebih sesuai dengan kebutuhan Anda.
-- Periksa informasi waktu modifikasi untuk memastikan file Anda terbaru.
-- Jika bekerja dengan symbolic links, selalu gunakan opsi `-L` untuk mendapatkan informasi yang tepat.
+- Gunakan opsi `-c` untuk menyesuaikan output agar lebih mudah dibaca sesuai kebutuhan.
+- Periksa izin akses file dengan seksama, terutama saat bekerja dengan file penting.
+- Jika Anda sering menggunakan `stat`, pertimbangkan untuk membuat alias di shell Anda untuk mempercepat akses.

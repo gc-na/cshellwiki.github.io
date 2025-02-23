@@ -1,48 +1,42 @@
 # [Linux] C Shell (csh) hostname użycie: Wyświetlanie lub ustawianie nazwy hosta
 
 ## Overview
-Polecenie `hostname` w C Shell (csh) służy do wyświetlania lub ustawiania nazwy hosta systemu. Nazwa hosta to unikalny identyfikator, który pozwala na rozróżnienie urządzeń w sieci.
+Polecenie `hostname` w C Shell (csh) służy do wyświetlania lub ustawiania nazwy hosta systemu. Nazwa hosta to unikalny identyfikator, który pozwala na rozróżnienie komputerów w sieci.
 
 ## Usage
 Podstawowa składnia polecenia `hostname` jest następująca:
 
 ```
-hostname [opcje] [argumenty]
+hostname [options] [arguments]
 ```
 
 ## Common Options
-- `-f` – Wyświetla pełną nazwę hosta (FQDN).
-- `-s` – Wyświetla tylko krótką nazwę hosta.
-- `-i` – Wyświetla adres IP przypisany do hosta.
-- `-V` – Wyświetla wersję polecenia.
+- `-s` : Wyświetla tylko krótką nazwę hosta.
+- `-f` : Wyświetla pełną nazwę hosta.
+- `-i` : Wyświetla adres IP przypisany do hosta.
 
 ## Common Examples
-- Aby wyświetlić aktualną nazwę hosta:
-  ```csh
-  hostname
-  ```
+1. Wyświetlenie krótkiej nazwy hosta:
+   ```csh
+   hostname -s
+   ```
 
-- Aby ustawić nową nazwę hosta:
-  ```csh
-  hostname nowa_nazwa
-  ```
+2. Wyświetlenie pełnej nazwy hosta:
+   ```csh
+   hostname -f
+   ```
 
-- Aby wyświetlić pełną nazwę hosta:
-  ```csh
-  hostname -f
-  ```
+3. Wyświetlenie adresu IP hosta:
+   ```csh
+   hostname -i
+   ```
 
-- Aby wyświetlić tylko krótką nazwę hosta:
-  ```csh
-  hostname -s
-  ```
-
-- Aby wyświetlić adres IP hosta:
-  ```csh
-  hostname -i
-  ```
+4. Ustawienie nowej nazwy hosta:
+   ```csh
+   hostname nowa_nazwa_hosta
+   ```
 
 ## Tips
-- Upewnij się, że masz odpowiednie uprawnienia, aby zmieniać nazwę hosta, ponieważ może to wymagać uprawnień administratora.
-- Po zmianie nazwy hosta, rozważ zaktualizowanie pliku `/etc/hosts`, aby odzwierciedlić nową nazwę.
-- Sprawdź, czy nowa nazwa hosta jest poprawnie rozpoznawana w sieci, używając polecenia `ping`.
+- Upewnij się, że masz odpowiednie uprawnienia, aby zmienić nazwę hosta, ponieważ może to wymagać uprawnień administratora.
+- Po zmianie nazwy hosta, rozważ ponowne uruchomienie systemu, aby upewnić się, że wszystkie usługi działają poprawnie z nową nazwą.
+- Możesz użyć polecenia `hostname` bez żadnych opcji, aby szybko sprawdzić bieżącą nazwę hosta.

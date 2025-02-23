@@ -1,52 +1,52 @@
-# [Linux] C Shell (csh) dig : interroger des serveurs DNS
+# [Linux] C Shell (csh) dig <Utilisation équivalente>: Interroger les enregistrements DNS
 
 ## Overview
-La commande `dig` (Domain Information Groper) est un outil puissant utilisé pour interroger les serveurs DNS. Elle permet aux utilisateurs de récupérer des informations sur les enregistrements DNS d'un domaine, tels que les adresses IP, les enregistrements MX, et bien plus encore.
+La commande `dig` (Domain Information Groper) est un outil puissant utilisé pour interroger les serveurs DNS. Elle permet d'obtenir des informations sur les enregistrements DNS d'un domaine, tels que les adresses IP, les enregistrements MX, et bien plus encore.
 
 ## Usage
 La syntaxe de base de la commande `dig` est la suivante :
 
-```bash
+```csh
 dig [options] [arguments]
 ```
 
 ## Common Options
 Voici quelques options courantes que vous pouvez utiliser avec `dig` :
 
-- `@server` : Spécifie le serveur DNS à interroger.
-- `-t type` : Définit le type d'enregistrement à rechercher (par exemple, A, MX, TXT).
+- `@server` : Spécifie un serveur DNS à interroger.
+- `-t type` : Définit le type d'enregistrement DNS à interroger (ex. A, MX, TXT).
 - `+short` : Affiche une sortie simplifiée, ne montrant que les résultats pertinents.
-- `+trace` : Suit la chaîne de résolution DNS pour un nom de domaine donné.
+- `+trace` : Suit la chaîne de résolution DNS jusqu'à la réponse finale.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `dig` :
 
-1. **Interroger l'enregistrement A d'un domaine :**
-   ```bash
-   dig example.com A
+1. **Interroger un enregistrement A** :
+   ```csh
+   dig example.com
    ```
 
-2. **Obtenir l'enregistrement MX d'un domaine :**
-   ```bash
-   dig example.com MX
+2. **Interroger un enregistrement MX** :
+   ```csh
+   dig -t MX example.com
    ```
 
-3. **Utiliser un serveur DNS spécifique :**
-   ```bash
+3. **Utiliser un serveur DNS spécifique** :
+   ```csh
    dig @8.8.8.8 example.com
    ```
 
-4. **Afficher une sortie simplifiée :**
-   ```bash
-   dig example.com +short
+4. **Obtenir une sortie courte** :
+   ```csh
+   dig +short example.com
    ```
 
-5. **Suivre la chaîne de résolution DNS :**
-   ```bash
-   dig example.com +trace
+5. **Suivre la chaîne de résolution DNS** :
+   ```csh
+   dig +trace example.com
    ```
 
 ## Tips
-- Utilisez l'option `+short` pour obtenir des résultats plus lisibles, surtout si vous ne souhaitez que l'adresse IP.
-- Pour des diagnostics approfondis, l'option `+trace` peut être très utile pour comprendre comment un nom de domaine est résolu.
-- Pensez à vérifier plusieurs types d'enregistrements (A, AAAA, MX, TXT) pour obtenir une vue complète des informations DNS d'un domaine.
+- Utilisez l'option `+short` pour obtenir des résultats plus lisibles, surtout lorsque vous ne voulez que les adresses IP.
+- Pour des diagnostics avancés, l'option `+trace` peut vous aider à comprendre le chemin de résolution DNS.
+- Pensez à interroger différents serveurs DNS pour comparer les résultats, surtout si vous suspectez un problème de propagation DNS.

@@ -1,37 +1,40 @@
-# [Linux] C Shell (csh) builtin: [uitvoeren ingebouwde commando's]
+# [Linux] C Shell (csh) builtin: [voert ingebouwde commando's uit]
 
 ## Overzicht
-Het `builtin` commando in C Shell (csh) wordt gebruikt om ingebouwde commando's van de shell uit te voeren. Dit is handig wanneer je een functie wilt aanroepen die al in de shell zelf is gedefinieerd, in plaats van een extern programma.
+De `builtin` opdracht in C Shell (csh) wordt gebruikt om ingebouwde commando's uit te voeren die deel uitmaken van de shell zelf, in plaats van externe programma's. Dit kan nuttig zijn om de prestaties te verbeteren of om toegang te krijgen tot functies die niet beschikbaar zijn als externe commando's.
 
 ## Gebruik
-De basis syntaxis van het `builtin` commando is als volgt:
+De basis syntaxis van de `builtin` opdracht is als volgt:
 
 ```csh
-builtin [options] [arguments]
+builtin [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-c`: Voert een commando uit dat als argument is opgegeven.
-- `-h`: Geeft een korte helptekst weer over het gebruik van het commando.
+- `-c`: Voert een commando uit als een string.
+- `-h`: Geeft een helpbericht weer met informatie over het gebruik van de opdracht.
 
 ## Veelvoorkomende Voorbeelden
 
-1. **Voer een ingebouwd commando uit**
-   ```csh
-   builtin echo "Hallo, wereld!"
-   ```
+### Voorbeeld 1: Gebruik van een ingebouwd commando
+```csh
+builtin echo "Hallo, wereld!"
+```
+Dit voorbeeld toont het gebruik van het ingebouwde `echo` commando om een tekstbericht weer te geven.
 
-2. **Gebruik met opties**
-   ```csh
-   builtin -c "ls -l"
-   ```
+### Voorbeeld 2: Hulp krijgen voor een ingebouwd commando
+```csh
+builtin -h
+```
+Dit geeft een helpbericht weer dat je kan helpen bij het gebruik van de `builtin` opdracht.
 
-3. **Toon hulp voor een specifiek commando**
-   ```csh
-   builtin -h
-   ```
+### Voorbeeld 3: Een extern commando overschrijven
+```csh
+builtin cd /pad/naar/map
+```
+Hiermee wordt het ingebouwde `cd` commando gebruikt om naar een specifieke map te navigeren, ongeacht of er een extern `cd` commando beschikbaar is.
 
 ## Tips
-- Gebruik `builtin` wanneer je zeker wilt zijn dat je de ingebouwde versie van een commando gebruikt, vooral als er een extern programma met dezelfde naam bestaat.
-- Controleer altijd de documentatie van de shell voor specifieke ingebouwde commando's en hun opties.
-- Het gebruik van `builtin` kan de prestaties verbeteren, omdat ingebouwde commando's sneller zijn dan externe programma's.
+- Gebruik `builtin` om te controleren of je een ingebouwd commando wilt gebruiken in plaats van een extern commando, vooral als je problemen ondervindt met de uitvoering.
+- Het gebruik van ingebouwde commando's kan de snelheid van je scripts verbeteren, omdat ze niet de overhead van het starten van een extern proces met zich meebrengen.
+- Controleer altijd de documentatie van de shell om te begrijpen welke commando's ingebouwd zijn en welke opties beschikbaar zijn.

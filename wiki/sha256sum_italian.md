@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) sha256sum utilizzo: Calcola l'hash SHA-256 di file
+# [Linux] C Shell (csh) sha256sum utilizzo: Calcolare checksum SHA-256
 
 ## Overview
-Il comando `sha256sum` calcola e verifica l'hash SHA-256 di file. Questo è utile per garantire l'integrità dei dati e per confrontare file.
+Il comando `sha256sum` calcola e verifica il checksum SHA-256 di file. È utile per garantire l'integrità dei dati, confrontando il checksum di un file originale con quello di una copia.
 
 ## Usage
 La sintassi di base del comando è la seguente:
@@ -11,35 +11,40 @@ sha256sum [options] [arguments]
 ```
 
 ## Common Options
-- `-b`: Calcola l'hash in modalità binaria.
-- `-c`: Verifica gli hash SHA-256 da un file di checksum.
-- `--quiet`: Non mostrare messaggi di errore per file non validi.
-- `--tag`: Stampa l'output in formato "tagged".
+- `-b`: Esegue il calcolo su file binari.
+- `-c`: Controlla i checksum contro un file di checksum.
+- `--quiet`: Non mostra il messaggio di errore per file non corrispondenti.
+- `--tag`: Produce un output compatibile con il formato BSD.
 
 ## Common Examples
 Ecco alcuni esempi pratici dell'uso di `sha256sum`:
 
-1. Calcolare l'hash di un file:
+1. **Calcolare il checksum di un file**:
    ```csh
    sha256sum file.txt
    ```
 
-2. Salvare l'hash di un file in un file di checksum:
-   ```csh
-   sha256sum file.txt > checksum.sha256
-   ```
-
-3. Verificare un file utilizzando un file di checksum:
-   ```csh
-   sha256sum -c checksum.sha256
-   ```
-
-4. Calcolare l'hash di più file:
+2. **Calcolare il checksum di più file**:
    ```csh
    sha256sum file1.txt file2.txt
    ```
 
+3. **Salvare il checksum in un file**:
+   ```csh
+   sha256sum file.txt > checksum.txt
+   ```
+
+4. **Verificare i checksum da un file**:
+   ```csh
+   sha256sum -c checksum.txt
+   ```
+
+5. **Calcolare il checksum di un file binario**:
+   ```csh
+   sha256sum -b file.bin
+   ```
+
 ## Tips
-- Assicurati di utilizzare `sha256sum` su file che non sono stati modificati per ottenere un hash accurato.
-- È buona pratica salvare gli hash in un file separato per future verifiche.
-- Utilizza l'opzione `-c` per verificare rapidamente l'integrità di più file in una sola volta.
+- Assicurati di utilizzare `sha256sum` su file di dimensioni appropriate, poiché file molto grandi possono richiedere tempo per il calcolo.
+- È buona prassi generare e conservare i file di checksum in un luogo sicuro per future verifiche.
+- Utilizza l'opzione `-c` per confrontare i checksum in modo efficiente, specialmente quando lavori con più file.

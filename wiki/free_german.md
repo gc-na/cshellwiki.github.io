@@ -1,13 +1,13 @@
 # [Linux] C Shell (csh) free Befehl: Zeigt den Speicherstatus an
 
 ## Übersicht
-Der `free` Befehl wird verwendet, um Informationen über den aktuellen Speicherstatus des Systems anzuzeigen. Er zeigt die Menge an verwendetem, freiem und zwischengespeichertem Speicher an, was hilfreich ist, um die Leistung des Systems zu überwachen.
+Der `free` Befehl zeigt Informationen über den Speicherstatus des Systems an, einschließlich des verwendeten, freien und zwischengespeicherten Speichers. Dies ist nützlich, um einen Überblick über die Speichernutzung zu erhalten und die Leistung des Systems zu überwachen.
 
 ## Verwendung
 Die grundlegende Syntax des `free` Befehls lautet:
 
-```
-free [Optionen] [Argumente]
+```csh
+free [optionen] [argumente]
 ```
 
 ## Häufige Optionen
@@ -15,7 +15,7 @@ free [Optionen] [Argumente]
 - `-m`: Zeigt die Werte in Megabyte an.
 - `-g`: Zeigt die Werte in Gigabyte an.
 - `-s [Sekunden]`: Aktualisiert die Ausgabe alle angegebenen Sekunden.
-- `-t`: Zeigt die Gesamtsumme von verwendetem und freiem Speicher an.
+- `-t`: Zeigt die Gesamtsumme des physischen und Swap-Speichers an.
 
 ## Häufige Beispiele
 Hier sind einige praktische Beispiele für die Verwendung des `free` Befehls:
@@ -25,7 +25,7 @@ Hier sind einige praktische Beispiele für die Verwendung des `free` Befehls:
    free
    ```
 
-2. **Speicherstatus in menschenlesbarem Format anzeigen:**
+2. **Speicherstatus in einem menschenlesbaren Format anzeigen:**
    ```csh
    free -h
    ```
@@ -46,9 +46,6 @@ Hier sind einige praktische Beispiele für die Verwendung des `free` Befehls:
    ```
 
 ## Tipps
-- Verwenden Sie die `-h` Option, um die Ausgabe leichter lesbar zu machen, insbesondere wenn Sie große Speicherwerte haben.
-- Kombinieren Sie den `free` Befehl mit anderen Befehlen wie `watch`, um den Speicherstatus in Echtzeit zu überwachen:
-  ```csh
-  watch free -h
-  ```
-- Überprüfen Sie regelmäßig den Speicherstatus, um Engpässe frühzeitig zu erkennen und die Systemleistung zu optimieren.
+- Verwenden Sie die `-h` Option, um die Ausgabe leichter lesbar zu machen, besonders wenn Sie mit großen Zahlen arbeiten.
+- Kombinieren Sie den `-s` Parameter mit `-h`, um eine laufende Überwachung des Speichers in einem benutzerfreundlichen Format zu erhalten.
+- Überprüfen Sie regelmäßig den Speicherstatus, um sicherzustellen, dass Ihr System optimal läuft und um mögliche Engpässe frühzeitig zu erkennen.

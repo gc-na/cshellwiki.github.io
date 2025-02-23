@@ -1,12 +1,12 @@
-# [Linux] C Shell (csh) wc <Utilisation équivalente en français>: Compter les lignes, mots et caractères dans un fichier
+# [Linux] C Shell (csh) wc : Compter les lignes, mots et caractères
 
 ## Overview
-La commande `wc` (word count) est utilisée pour compter le nombre de lignes, de mots et de caractères dans un ou plusieurs fichiers. C'est un outil pratique pour obtenir des statistiques simples sur le contenu des fichiers texte.
+La commande `wc` (word count) est utilisée pour compter le nombre de lignes, de mots et de caractères dans un fichier ou dans l'entrée standard. C'est un outil pratique pour obtenir des statistiques simples sur le contenu textuel.
 
 ## Usage
 La syntaxe de base de la commande `wc` est la suivante :
 
-```csh
+```bash
 wc [options] [arguments]
 ```
 
@@ -16,46 +16,38 @@ Voici quelques options courantes pour la commande `wc` :
 - `-l` : Compte uniquement le nombre de lignes.
 - `-w` : Compte uniquement le nombre de mots.
 - `-c` : Compte uniquement le nombre de caractères.
-- `-m` : Compte le nombre de caractères (en tenant compte des caractères multibytes).
+- `-m` : Compte le nombre de caractères (en tenant compte des caractères multibyte).
 - `-L` : Affiche la longueur de la ligne la plus longue.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `wc` :
 
-1. Compter le nombre de lignes, de mots et de caractères dans un fichier :
-   ```csh
-   wc mon_fichier.txt
-   ```
-
-2. Compter uniquement le nombre de lignes dans un fichier :
-   ```csh
+1. Compter le nombre de lignes dans un fichier :
+   ```bash
    wc -l mon_fichier.txt
    ```
 
-3. Compter uniquement le nombre de mots dans un fichier :
-   ```csh
+2. Compter le nombre de mots dans un fichier :
+   ```bash
    wc -w mon_fichier.txt
    ```
 
-4. Compter uniquement le nombre de caractères dans un fichier :
-   ```csh
+3. Compter le nombre de caractères dans un fichier :
+   ```bash
    wc -c mon_fichier.txt
    ```
 
-5. Compter le nombre de caractères dans un fichier en tenant compte des caractères multibytes :
-   ```csh
-   wc -m mon_fichier.txt
+4. Compter les lignes, mots et caractères en une seule commande :
+   ```bash
+   wc mon_fichier.txt
    ```
 
-6. Afficher la longueur de la ligne la plus longue dans un fichier :
-   ```csh
-   wc -L mon_fichier.txt
+5. Compter les lignes dans l'entrée standard (par exemple, en utilisant un pipe) :
+   ```bash
+   cat mon_fichier.txt | wc -l
    ```
 
 ## Tips
-- Utilisez `wc` en combinaison avec d'autres commandes, comme `cat` ou `grep`, pour obtenir des statistiques sur des sorties filtrées.
-- Vous pouvez utiliser `wc` avec des fichiers multiples pour obtenir des statistiques cumulées :
-  ```csh
-  wc fichier1.txt fichier2.txt
-  ```
-- Pour une sortie plus lisible, envisagez d'utiliser des redirections ou des pipes pour traiter les résultats de `wc`.
+- Utilisez `wc` avec d'autres commandes en utilisant des pipes pour analyser rapidement le contenu généré.
+- Combinez plusieurs options pour obtenir des statistiques complètes en une seule commande.
+- Pour des fichiers très volumineux, utilisez `wc` sur des segments de fichiers pour éviter des temps de traitement trop longs.

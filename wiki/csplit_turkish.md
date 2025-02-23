@@ -1,46 +1,44 @@
 # [Linux] C Shell (csh) csplit Kullanımı: Dosyayı parçalara ayırma
 
 ## Genel Bakış
-`csplit` komutu, bir dosyayı belirli desenlere veya satır sayısına göre parçalara ayırmak için kullanılır. Bu, büyük dosyaları yönetilebilir parçalara bölmek için oldukça faydalıdır.
+csplit komutu, bir dosyayı belirli bir desen veya satır numarasına göre parçalara ayırmak için kullanılır. Bu, büyük dosyaları daha yönetilebilir parçalara bölmek için oldukça yararlıdır.
 
 ## Kullanım
-Temel sözdizimi şu şekildedir:
-
-```bash
+Temel sözdizimi aşağıdaki gibidir:
+```csh
 csplit [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-f` : Parçaların ön ekini belirtir.
-- `-n` : Parça numaralarının uzunluğunu belirtir.
-- `-b` : Parça dosyalarının adlandırma biçimini belirler.
-- `-k` : Hatalı dosyaları atlayarak işlem yapmaya devam eder.
+- `-f`: Oluşturulan dosyaların ön ekini belirtir.
+- `-n`: Oluşturulan dosyaların numara uzunluğunu ayarlar.
+- `-b`: Oluşturulan dosyaların adlandırma biçimini belirler.
+- `-s`: Çıktı dosyalarının oluşturulması sırasında bilgi mesajlarını bastırır.
 
 ## Yaygın Örnekler
-Aşağıda, `csplit` komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda csplit komutunun bazı pratik örnekleri bulunmaktadır:
 
-### Örnek 1: Belirli bir satıra göre bölme
-Bir dosyayı 10. satıra göre parçalara ayırmak için:
+1. **Bir dosyayı her 10 satırda bir parçalara ayırma:**
+   ```csh
+   csplit myfile.txt 10
+   ```
 
-```bash
-csplit myfile.txt 10
-```
+2. **Bir dosyayı belirli bir desen ile parçalara ayırma:**
+   ```csh
+   csplit myfile.txt /PATTERN/
+   ```
 
-### Örnek 2: Belirli bir desenle bölme
-Bir dosyayı "START" kelimesinin geçtiği yerden itibaren parçalara ayırmak için:
+3. **Oluşturulan dosyaların ön ekini belirleme:**
+   ```csh
+   csplit -f part_ myfile.txt 10
+   ```
 
-```bash
-csplit myfile.txt /START/
-```
-
-### Örnek 3: Ön ek ve numara belirleme
-Parçaların ön ekini "part" olarak ayarlayıp, 3 haneli numaralarla adlandırmak için:
-
-```bash
-csplit -f part -n 3 myfile.txt 10
-```
+4. **Oluşturulan dosyaların adlandırma biçimini değiştirme:**
+   ```csh
+   csplit -b '%d.txt' myfile.txt 10
+   ```
 
 ## İpuçları
-- Dosyalarınızı parçalara ayırmadan önce yedek almak iyi bir uygulamadır.
-- Desenleri dikkatlice belirleyin; yanlış bir desen, beklenmeyen sonuçlar doğurabilir.
-- `-k` seçeneğini kullanarak hatalı dosyaları atlayabilir ve işlemi sürdürebilirsiniz.
+- Büyük dosyaları işlerken, csplit komutunu kullanmadan önce dosyanın yedeğini almak iyi bir uygulamadır.
+- Desen kullanarak parçalara ayırma işlemi yaparken, doğru deseni belirlemek için dosyanızı önceden gözden geçirin.
+- Oluşturulan dosyaların isimlendirilmesi için `-f` ve `-b` seçeneklerini kullanarak daha anlamlı isimler vermek, dosyaları bulmayı kolaylaştırır.

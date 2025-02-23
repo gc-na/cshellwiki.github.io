@@ -1,44 +1,43 @@
 # [Linux] C Shell (csh) mount Kullanımı: Dosya sistemlerini bağlama
 
-## Overview
-`mount` komutu, bir dosya sistemini belirli bir dizine bağlamak için kullanılır. Bu işlem, dosya sisteminin içeriğine erişimi sağlar ve sistemin dosya yapısında görünür hale getirir.
+## Genel Bakış
+`mount` komutu, bir dosya sistemini belirli bir dizine bağlamak için kullanılır. Bu işlem, dosya sisteminin içeriğine erişim sağlar ve kullanıcıların dosyaları bu dizin üzerinden görmesini mümkün kılar.
 
-## Usage
-Temel sözdizimi şu şekildedir:
+## Kullanım
+Temel sözdizimi aşağıdaki gibidir:
 ```
-mount [options] [arguments]
+mount [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `-t type`: Bağlanacak dosya sisteminin türünü belirtir.
-- `-o options`: Bağlama işlemi için özel seçenekler tanımlar.
-- `-r`: Dosya sistemini sadece okunur modda bağlar.
-- `-w`: Dosya sistemini yazılabilir modda bağlar.
+## Yaygın Seçenekler
+- `-t`: Bağlanacak dosya sisteminin türünü belirtir.
+- `-o`: Özel bağlama seçeneklerini tanımlar (örneğin, `ro` sadece okuma için).
+- `-a`: `/etc/fstab` dosyasındaki tüm dosya sistemlerini bağlar.
 
-## Common Examples
-Aşağıda `mount` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+## Yaygın Örnekler
+Aşağıda `mount` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. Bir dosya sistemini bağlamak:
+1. **Bir dosya sistemini bağlama**:
    ```bash
    mount /dev/sdb1 /mnt/mydrive
    ```
 
-2. Belirli bir dosya sistemi türü ile bağlamak:
+2. **Belirli bir dosya sistemi türü ile bağlama**:
    ```bash
    mount -t ext4 /dev/sdb1 /mnt/mydrive
    ```
 
-3. Sadece okunur modda bağlamak:
+3. **Sadece okuma için bağlama**:
    ```bash
    mount -o ro /dev/sdb1 /mnt/mydrive
    ```
 
-4. Bir ağ dosya sistemini bağlamak (NFS örneği):
+4. **Tüm dosya sistemlerini bağlama**:
    ```bash
-   mount -t nfs server:/export /mnt/nfs
+   mount -a
    ```
 
-## Tips
-- Bağlama işlemi yapmadan önce, hedef dizinin var olduğundan emin olun.
-- Dosya sistemini bağladıktan sonra, içeriğini kontrol etmek için `ls` komutunu kullanabilirsiniz.
-- Bağlı dosya sistemlerini görmek için `mount` komutunu tek başına çalıştırabilirsiniz.
+## İpuçları
+- Bağlama işlemi yapmadan önce, bağlamak istediğiniz dizinin mevcut olduğundan emin olun.
+- Dosya sistemlerini bağlarken, doğru dosya sistemi türünü belirtmek, hataları önlemeye yardımcı olabilir.
+- Bağlı dosya sistemlerini görüntülemek için `mount` komutunu tek başına çalıştırabilirsiniz.

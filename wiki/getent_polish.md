@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) getent użycie: uzyskiwanie informacji o wpisach w bazach danych
 
 ## Przegląd
-Polecenie `getent` służy do uzyskiwania informacji o wpisach w różnych bazach danych systemowych, takich jak użytkownicy, grupy, hosty i inne. Umożliwia dostęp do tych informacji w sposób ujednolicony, niezależnie od źródła, z którego pochodzą.
+Polecenie `getent` w systemie C Shell (csh) służy do uzyskiwania informacji o wpisach w różnych bazach danych systemowych, takich jak użytkownicy, grupy, hosty i inne. Umożliwia dostęp do tych informacji w sposób znormalizowany, niezależnie od źródła danych.
 
 ## Użycie
 Podstawowa składnia polecenia `getent` jest następująca:
@@ -26,20 +26,20 @@ Oto kilka praktycznych przykładów użycia polecenia `getent`:
 
 2. Uzyskiwanie informacji o konkretnej grupie:
    ```csh
-   getent group administrators
+   getent group admin
    ```
 
 3. Uzyskiwanie informacji o hostach:
    ```csh
-   getent hosts
+   getent hosts example.com
    ```
 
 4. Uzyskiwanie informacji o usługach:
    ```csh
-   getent services
+   getent services ssh
    ```
 
 ## Wskazówki
-- Używaj `getent` zamiast bezpośredniego przeszukiwania plików, aby uzyskać spójne wyniki z różnych źródeł.
+- Używaj `getent` zamiast bezpośrednich plików, aby uzyskać bardziej znormalizowane i spójne wyniki.
 - Możesz łączyć `getent` z innymi poleceniami, takimi jak `grep`, aby filtrować wyniki.
-- Zawsze sprawdzaj, czy masz odpowiednie uprawnienia do przeglądania informacji o użytkownikach i grupach.
+- Sprawdzaj dostępność różnych baz danych w systemie, używając `getent` bez argumentów, aby zobaczyć, jakie informacje są dostępne.

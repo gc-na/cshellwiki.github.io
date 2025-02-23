@@ -1,56 +1,57 @@
 # [Hệ điều hành] C Shell (csh) else: [câu lệnh điều kiện]
 
 ## Tổng quan
-Câu lệnh `else` trong C Shell (csh) được sử dụng để thực hiện một khối lệnh khác khi điều kiện trong câu lệnh `if` không được thỏa mãn. Điều này cho phép người dùng kiểm soát luồng thực thi của chương trình dựa trên các điều kiện khác nhau.
+Câu lệnh `else` trong C Shell (csh) được sử dụng để thực hiện một khối mã khác nếu điều kiện trong câu lệnh `if` không được thỏa mãn. Đây là một phần quan trọng trong việc lập trình điều kiện, cho phép người dùng xử lý các tình huống khác nhau dựa trên các điều kiện cụ thể.
 
 ## Cách sử dụng
 Cú pháp cơ bản của câu lệnh `else` như sau:
 
 ```
 if ( điều kiện ) then
-    # khối lệnh nếu điều kiện đúng
+    # thực hiện một số lệnh
 else
-    # khối lệnh nếu điều kiện sai
+    # thực hiện các lệnh khác
 endif
 ```
 
 ## Các tùy chọn phổ biến
-- `if`: Bắt đầu một câu lệnh điều kiện.
-- `then`: Chỉ định khối lệnh sẽ được thực thi nếu điều kiện đúng.
-- `endif`: Kết thúc câu lệnh điều kiện.
+Câu lệnh `else` không có nhiều tùy chọn, nhưng nó thường được sử dụng kết hợp với câu lệnh `if`. Dưới đây là một số điểm cần lưu ý:
+- `if`: Bắt đầu một khối điều kiện.
+- `then`: Chỉ định các lệnh sẽ được thực hiện nếu điều kiện đúng.
+- `endif`: Kết thúc khối điều kiện.
 
-## Ví dụ phổ biến
-Dưới đây là một số ví dụ thực tế về cách sử dụng câu lệnh `else`:
+## Ví dụ thông dụng
+Dưới đây là một số ví dụ về cách sử dụng câu lệnh `else` trong C Shell:
 
-### Ví dụ 1: Kiểm tra tệp
+### Ví dụ 1: Kiểm tra tệp tin
 ```csh
-if (-e myfile.txt) then
-    echo "Tệp đã tồn tại."
+if (-e filename.txt) then
+    echo "Tệp tin tồn tại."
 else
-    echo "Tệp không tồn tại."
+    echo "Tệp tin không tồn tại."
 endif
 ```
 
-### Ví dụ 2: Kiểm tra biến
+### Ví dụ 2: Kiểm tra biến môi trường
 ```csh
-set var = 10
-if ($var > 5) then
-    echo "Biến lớn hơn 5."
+if ($USER == "admin") then
+    echo "Bạn là quản trị viên."
 else
-    echo "Biến không lớn hơn 5."
+    echo "Bạn không phải là quản trị viên."
 endif
 ```
 
-### Ví dụ 3: Kiểm tra quyền truy cập
+### Ví dụ 3: Kiểm tra số
 ```csh
-if (-r myfile.txt) then
-    echo "Có quyền đọc tệp."
+set number = 10
+if ($number > 0) then
+    echo "Số dương."
 else
-    echo "Không có quyền đọc tệp."
+    echo "Số không dương."
 endif
 ```
 
 ## Mẹo
-- Hãy đảm bảo rằng bạn sử dụng đúng cú pháp để tránh lỗi khi chạy chương trình.
-- Sử dụng câu lệnh `else` để xử lý các tình huống không mong muốn, giúp chương trình của bạn linh hoạt hơn.
-- Kết hợp `else` với các câu lệnh điều kiện khác như `else if` để tạo ra các cấu trúc điều kiện phức tạp hơn.
+- Luôn đảm bảo rằng bạn kết thúc khối điều kiện bằng `endif` để tránh lỗi cú pháp.
+- Sử dụng `else` để xử lý các trường hợp ngoại lệ, giúp mã của bạn trở nên linh hoạt hơn.
+- Kiểm tra kỹ lưỡng điều kiện trong câu lệnh `if` để đảm bảo rằng các lệnh trong khối `else` chỉ được thực hiện khi cần thiết.

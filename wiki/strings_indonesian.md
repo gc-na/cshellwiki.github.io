@@ -1,18 +1,19 @@
 # [Sistem Operasi] C Shell (csh) strings: Menampilkan string dari file biner
 
 ## Overview
-Perintah `strings` digunakan untuk mengekstrak dan menampilkan urutan karakter yang dapat dibaca manusia dari file biner. Ini sangat berguna untuk menganalisis file yang tidak dapat dibaca secara langsung, seperti file executable atau file data.
+Perintah `strings` digunakan untuk mengekstrak dan menampilkan urutan karakter yang dapat dibaca manusia dari file biner. Ini berguna untuk menganalisis file yang tidak dapat dibaca secara langsung, seperti file eksekusi atau file data biner lainnya.
 
 ## Usage
-Sintaks dasar dari perintah `strings` adalah sebagai berikut:
-```
+Berikut adalah sintaks dasar dari perintah `strings`:
+
+```csh
 strings [options] [arguments]
 ```
 
 ## Common Options
-- `-a`: Mencari string di seluruh file, bukan hanya di bagian yang dapat dibaca.
-- `-n <panjang>`: Menentukan panjang minimum string yang akan ditampilkan.
-- `-o`: Menampilkan offset dari string dalam file.
+- `-a` : Mencetak semua string, termasuk yang tidak terletak di bagian teks.
+- `-n <panjang>` : Menentukan panjang minimum string yang akan ditampilkan.
+- `-o` : Menampilkan offset dari string yang ditemukan dalam file.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `strings`:
@@ -27,17 +28,17 @@ Berikut adalah beberapa contoh penggunaan perintah `strings`:
    strings -n 5 file_biner
    ```
 
-3. Menampilkan string dari file biner dan menunjukkan offset:
+3. Menampilkan semua string dari file biner dan menunjukkan offset:
    ```csh
    strings -o file_biner
    ```
 
-4. Mencari string di seluruh file, termasuk bagian yang tidak dapat dibaca:
+4. Menampilkan string dari beberapa file sekaligus:
    ```csh
-   strings -a file_biner
+   strings file1 file2
    ```
 
 ## Tips
-- Gunakan opsi `-n` untuk menyaring hasil dan hanya menampilkan string yang relevan.
-- Kombinasikan `strings` dengan perintah lain seperti `grep` untuk mencari string tertentu dalam hasil.
-- Periksa file biner yang mencurigakan untuk menemukan informasi tersembunyi atau metadata yang mungkin ada.
+- Gunakan opsi `-n` untuk menyaring string yang terlalu pendek, sehingga hasilnya lebih relevan.
+- Periksa file biner yang mencurigakan dengan `strings` untuk mencari informasi yang mungkin berguna dalam analisis keamanan.
+- Kombinasikan `strings` dengan perintah lain seperti `grep` untuk mencari string tertentu dalam output.

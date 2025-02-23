@@ -1,61 +1,51 @@
-# [Linux] C Shell (csh) brew Verwendung: Paketverwaltung und Softwareinstallation
+# [Linux] C Shell (csh) brew Verwendung: Paketverwaltung und Installation
 
 ## Übersicht
-Der `brew` Befehl ist ein Paketmanager, der es Benutzern ermöglicht, Softwarepakete einfach zu installieren, zu verwalten und zu aktualisieren. Er wird häufig auf macOS verwendet, ist aber auch auf Linux-Systemen verfügbar. Mit `brew` können Benutzer Software aus verschiedenen Quellen beziehen und Abhängigkeiten automatisch verwalten.
+Der `brew`-Befehl ist ein Paketverwaltungstool, das es Benutzern ermöglicht, Softwarepakete einfach zu installieren, zu aktualisieren und zu verwalten. Es ist besonders nützlich für die Verwaltung von Programmen und Bibliotheken auf Unix-ähnlichen Systemen.
 
 ## Verwendung
-Die grundlegende Syntax des `brew` Befehls lautet:
+Die grundlegende Syntax des `brew`-Befehls lautet:
 
 ```csh
 brew [optionen] [argumente]
 ```
 
 ## Häufige Optionen
-- `install`: Installiert ein angegebenes Paket.
-- `uninstall`: Entfernt ein installiertes Paket.
+- `install`: Installiert ein Paket.
 - `update`: Aktualisiert die Liste der verfügbaren Pakete.
 - `upgrade`: Aktualisiert alle installierten Pakete auf die neueste Version.
+- `remove`: Entfernt ein installiertes Paket.
 - `list`: Zeigt alle installierten Pakete an.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung von `brew`:
+Hier sind einige praktische Beispiele für die Verwendung des `brew`-Befehls:
 
-### Installation eines Pakets
-Um ein Paket, z.B. `wget`, zu installieren, verwenden Sie den folgenden Befehl:
+1. **Ein Paket installieren**:
+   ```csh
+   brew install wget
+   ```
 
-```csh
-brew install wget
-```
+2. **Die Paketliste aktualisieren**:
+   ```csh
+   brew update
+   ```
 
-### Deinstallation eines Pakets
-Um ein Paket zu deinstallieren, z.B. `wget`, verwenden Sie:
+3. **Alle installierten Pakete aktualisieren**:
+   ```csh
+   brew upgrade
+   ```
 
-```csh
-brew uninstall wget
-```
+4. **Ein Paket entfernen**:
+   ```csh
+   brew remove wget
+   ```
 
-### Aktualisierung der Paketliste
-Um die Liste der verfügbaren Pakete zu aktualisieren, führen Sie diesen Befehl aus:
-
-```csh
-brew update
-```
-
-### Aktualisierung aller Pakete
-Um alle installierten Pakete auf die neueste Version zu aktualisieren, verwenden Sie:
-
-```csh
-brew upgrade
-```
-
-### Auflisten installierter Pakete
-Um alle installierten Pakete anzuzeigen, verwenden Sie:
-
-```csh
-brew list
-```
+5. **Alle installierten Pakete auflisten**:
+   ```csh
+   brew list
+   ```
 
 ## Tipps
-- Überprüfen Sie regelmäßig auf Updates, um sicherzustellen, dass Ihre Software auf dem neuesten Stand ist.
-- Nutzen Sie die `brew search [paketname]` Funktion, um nach verfügbaren Paketen zu suchen.
-- Lesen Sie die Dokumentation der Pakete, um spezifische Installationsanweisungen oder Abhängigkeiten zu verstehen.
+- Verwenden Sie `brew search [paketname]`, um nach verfügbaren Paketen zu suchen.
+- Führen Sie regelmäßig `brew update` und `brew upgrade` aus, um sicherzustellen, dass Ihre Software auf dem neuesten Stand ist.
+- Nutzen Sie `brew info [paketname]`, um detaillierte Informationen über ein bestimmtes Paket zu erhalten, einschließlich Abhängigkeiten und Installationsanweisungen.

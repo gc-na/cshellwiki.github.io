@@ -1,43 +1,45 @@
 # [Sistem Operasi] C Shell (csh) nice Penggunaan: Mengatur Prioritas Proses
 
 ## Overview
-Perintah `nice` digunakan dalam C Shell (csh) untuk mengatur prioritas eksekusi proses. Dengan menggunakan `nice`, pengguna dapat menentukan seberapa besar sumber daya CPU yang akan dialokasikan untuk proses tertentu, yang memungkinkan pengelolaan beban kerja yang lebih baik di sistem.
+Perintah `nice` digunakan untuk mengatur prioritas eksekusi proses di sistem operasi Unix dan Linux. Dengan `nice`, pengguna dapat menentukan seberapa besar sumber daya CPU yang akan dialokasikan untuk proses tertentu, sehingga memungkinkan pengelolaan beban kerja yang lebih baik.
 
 ## Usage
-Berikut adalah sintaks dasar dari perintah `nice`:
+Sintaks dasar dari perintah `nice` adalah sebagai berikut:
 
-```
+```csh
 nice [options] [arguments]
 ```
 
 ## Common Options
-- `-n <nilai>`: Menentukan nilai nice yang ingin diterapkan. Nilai ini dapat berkisar antara -20 (prioritas tertinggi) hingga 19 (prioritas terendah).
+Berikut adalah beberapa opsi umum yang dapat digunakan dengan `nice`:
+
+- `-n [nilai]`: Menentukan nilai nice yang baru. Nilai ini dapat berkisar dari -20 (prioritas tertinggi) hingga 19 (prioritas terendah).
 - `-h`: Menampilkan pesan bantuan tentang penggunaan perintah `nice`.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan perintah `nice`:
+Berikut adalah beberapa contoh penggunaan `nice`:
 
-1. Menjalankan proses dengan prioritas lebih rendah:
+1. Menjalankan perintah `my_script.sh` dengan prioritas normal:
    ```csh
-   nice -n 10 ./programku
+   nice my_script.sh
    ```
 
-2. Menjalankan perintah `make` dengan prioritas lebih tinggi:
+2. Menjalankan perintah `my_script.sh` dengan prioritas lebih rendah (nilai nice 10):
    ```csh
-   nice -n -5 make
+   nice -n 10 my_script.sh
    ```
 
-3. Menjalankan skrip shell dengan prioritas normal:
+3. Menjalankan perintah `my_script.sh` dengan prioritas lebih tinggi (nilai nice -5):
    ```csh
-   nice ./script.sh
+   nice -n -5 my_script.sh
    ```
 
-4. Menampilkan prioritas dari proses yang sedang berjalan:
+4. Menjalankan perintah `gzip` untuk mengompres file dengan prioritas rendah:
    ```csh
-   ps -o pid,nice,cmd
+   nice -n 15 gzip file.txt
    ```
 
 ## Tips
-- Gunakan nilai nice yang lebih rendah (misalnya, -10) untuk proses yang memerlukan lebih banyak sumber daya, seperti kompilasi atau rendering.
-- Sebaiknya tidak menggunakan nilai nice yang terlalu tinggi (misalnya, 19) untuk proses penting, karena dapat memperlambat eksekusi.
-- Periksa prioritas proses yang sedang berjalan secara berkala untuk memastikan sistem tetap responsif.
+- Gunakan nilai nice yang lebih rendah untuk proses yang memerlukan lebih banyak sumber daya, seperti kompilasi program atau pemrosesan data besar.
+- Sebaiknya gunakan `nice` saat menjalankan proses di latar belakang agar tidak mengganggu tugas lain yang sedang berjalan.
+- Periksa prioritas proses yang sedang berjalan dengan perintah `top` atau `ps` untuk memastikan pengaturan nice yang tepat.

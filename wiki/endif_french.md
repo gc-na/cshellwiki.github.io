@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) endif : Terminer une structure conditionnelle
+# [Linux] C Shell (csh) endif : Fin de conditionnelle
 
 ## Overview
-La commande `endif` dans le C Shell (csh) est utilisée pour marquer la fin d'une structure conditionnelle `if`. Elle est essentielle pour délimiter le bloc de code qui doit être exécuté si la condition spécifiée est vraie.
+La commande `endif` dans le C Shell (csh) est utilisée pour marquer la fin d'une structure conditionnelle. Elle est souvent utilisée en conjonction avec des commandes telles que `if` pour définir des blocs de code conditionnels.
 
 ## Usage
 La syntaxe de base de la commande `endif` est la suivante :
@@ -11,39 +11,43 @@ endif
 ```
 
 ## Common Options
-La commande `endif` n'a pas d'options spécifiques, car elle est simplement utilisée pour clôturer une instruction conditionnelle.
+La commande `endif` ne prend pas d'options. Elle est simplement utilisée pour clôturer une instruction conditionnelle.
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de `endif` dans un script C Shell :
 
 ### Exemple 1 : Utilisation de `if` avec `endif`
+Voici un exemple simple d'utilisation de `if` et `endif` :
+
 ```csh
-if ( $a > $b ) then
-    echo "$a est supérieur à $b"
+if ( $variable == "valeur" ) then
+    echo "La variable a la valeur attendue."
 endif
 ```
 
 ### Exemple 2 : Condition avec `else`
+Vous pouvez également utiliser `endif` dans une structure conditionnelle avec `else` :
+
 ```csh
-if ( $a < $b ) then
-    echo "$a est inférieur à $b"
+if ( $variable == "valeur" ) then
+    echo "La variable a la valeur attendue."
 else
-    echo "$a est supérieur ou égal à $b"
+    echo "La variable n'a pas la valeur attendue."
 endif
 ```
 
-### Exemple 3 : Multiple conditions
+### Exemple 3 : Utilisation dans une boucle
+`endif` peut également être utilisé dans des scripts plus complexes :
+
 ```csh
-if ( $a == 0 ) then
-    echo "a est zéro"
-else if ( $a < 0 ) then
-    echo "a est négatif"
+set variable = "test"
+if ( $variable == "test" ) then
+    echo "C'est un test."
 else
-    echo "a est positif"
+    echo "Ce n'est pas un test."
 endif
 ```
 
 ## Tips
 - Assurez-vous que chaque `if` a un `endif` correspondant pour éviter des erreurs de syntaxe.
-- Utilisez des commentaires pour expliquer des blocs de code complexes, surtout si vous avez plusieurs niveaux de conditions.
-- Testez vos scripts dans un environnement sécurisé avant de les exécuter en production pour vous assurer que la logique conditionnelle fonctionne comme prévu.
+- Utilisez des indentations appropriées pour rendre votre code plus lisible, surtout dans des scripts plus longs.
+- Testez toujours vos conditions pour vous assurer qu'elles se comportent comme prévu avant de les déployer dans des scripts de production.

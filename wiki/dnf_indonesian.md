@@ -1,51 +1,51 @@
-# [Sistem Operasi] C Shell (csh) dnf Penggunaan: Mengelola paket perangkat lunak
+# [Sistem Operasi] C Shell (csh) dnf: [mengelola paket perangkat lunak]
 
 ## Overview
-Perintah `dnf` (Dandified YUM) adalah manajer paket yang digunakan pada sistem berbasis RPM untuk menginstal, memperbarui, dan menghapus perangkat lunak. `dnf` menggantikan `yum` dan menawarkan berbagai fitur baru serta peningkatan kinerja.
+Perintah `dnf` (Dandified YUM) adalah manajer paket yang digunakan pada sistem berbasis RPM untuk menginstal, memperbarui, dan menghapus perangkat lunak. `dnf` menyediakan antarmuka yang lebih baik dan lebih efisien dibandingkan dengan pendahulunya, YUM.
 
 ## Usage
-Berikut adalah sintaks dasar untuk menggunakan perintah `dnf`:
+Berikut adalah sintaks dasar dari perintah `dnf`:
 
-```bash
+```
 dnf [options] [arguments]
 ```
 
 ## Common Options
-- `install`: Menginstal paket perangkat lunak baru.
-- `remove`: Menghapus paket perangkat lunak yang sudah terinstal.
-- `update`: Memperbarui paket perangkat lunak yang sudah terinstal ke versi terbaru.
+- `install`: Menginstal paket perangkat lunak.
+- `remove`: Menghapus paket perangkat lunak.
+- `update`: Memperbarui paket perangkat lunak yang sudah terinstal.
 - `search`: Mencari paket perangkat lunak berdasarkan nama atau deskripsi.
 - `info`: Menampilkan informasi tentang paket perangkat lunak tertentu.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan perintah `dnf`:
+Berikut adalah beberapa contoh penggunaan `dnf`:
 
-### Menginstal paket
-```bash
-dnf install nama_paket
-```
+1. **Menginstal paket perangkat lunak**:
+   ```bash
+   dnf install nama-paket
+   ```
 
-### Menghapus paket
-```bash
-dnf remove nama_paket
-```
+2. **Menghapus paket perangkat lunak**:
+   ```bash
+   dnf remove nama-paket
+   ```
 
-### Memperbarui semua paket
-```bash
-dnf update
-```
+3. **Memperbarui semua paket yang terinstal**:
+   ```bash
+   dnf update
+   ```
 
-### Mencari paket
-```bash
-dnf search nama_paket
-```
+4. **Mencari paket perangkat lunak**:
+   ```bash
+   dnf search kata-kunci
+   ```
 
-### Menampilkan informasi tentang paket
-```bash
-dnf info nama_paket
-```
+5. **Menampilkan informasi tentang paket**:
+   ```bash
+   dnf info nama-paket
+   ```
 
 ## Tips
-- Selalu jalankan `dnf update` secara berkala untuk memastikan sistem Anda memiliki perangkat lunak terbaru dan teraman.
-- Gunakan opsi `-y` untuk menghindari konfirmasi saat menginstal atau menghapus paket, misalnya `dnf install -y nama_paket`.
-- Periksa dependensi paket sebelum menginstal untuk menghindari masalah di kemudian hari.
+- Selalu perbarui basis data paket Anda dengan menjalankan `dnf update` secara berkala untuk memastikan Anda memiliki versi terbaru dari perangkat lunak.
+- Gunakan opsi `-y` untuk menghindari konfirmasi saat menginstal atau menghapus paket, seperti `dnf install -y nama-paket`.
+- Periksa dependensi paket sebelum menginstal dengan menggunakan `dnf deplist nama-paket` untuk memastikan semua kebutuhan terpenuhi.

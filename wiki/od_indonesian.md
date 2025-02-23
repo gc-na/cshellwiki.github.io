@@ -1,7 +1,7 @@
 # [Sistem Operasi] C Shell (csh) od <Penggunaan setara>: Menampilkan konten file dalam format heksadesimal dan karakter
 
 ## Overview
-Perintah `od` (octal dump) digunakan untuk menampilkan konten file dalam berbagai format, termasuk heksadesimal, oktal, dan karakter ASCII. Ini sangat berguna untuk analisis file biner dan pemrograman tingkat rendah.
+Perintah `od` (octal dump) digunakan untuk menampilkan konten file dalam berbagai format, termasuk heksadesimal, oktal, dan karakter. Ini sangat berguna untuk menganalisis file biner atau untuk melihat representasi data yang tidak dapat dibaca secara langsung.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `od`:
@@ -12,34 +12,34 @@ od [options] [arguments]
 
 ## Common Options
 - `-A` : Menentukan format alamat (misalnya, `d` untuk desimal, `o` untuk oktal, `x` untuk heksadesimal).
-- `-t` : Menentukan format keluaran, seperti `c` untuk karakter, `d` untuk desimal, `o` untuk oktal, dan `x` untuk heksadesimal.
+- `-t` : Menentukan format output, seperti `c` untuk karakter, `d` untuk desimal, `o` untuk oktal, `x` untuk heksadesimal.
 - `-N` : Menentukan jumlah byte yang akan dibaca dari file.
-- `-v` : Menampilkan semua data, termasuk nilai yang berulang.
+- `-v` : Menampilkan semua data, termasuk byte yang sama.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `od`:
 
 1. Menampilkan konten file dalam format heksadesimal:
-   ```csh
+   ```bash
    od -x nama_file.txt
    ```
 
 2. Menampilkan konten file dalam format oktal:
-   ```csh
+   ```bash
    od -o nama_file.txt
    ```
 
 3. Menampilkan 16 byte pertama dari file dalam format karakter:
-   ```csh
+   ```bash
    od -c -N 16 nama_file.txt
    ```
 
-4. Menampilkan alamat dalam format desimal:
-   ```csh
+4. Menampilkan alamat dalam format desimal dan konten dalam format heksadesimal:
+   ```bash
    od -A d -t x nama_file.txt
    ```
 
 ## Tips
-- Gunakan opsi `-v` untuk memastikan semua data ditampilkan, terutama saat bekerja dengan file yang memiliki banyak nilai yang sama.
-- Kombinasikan opsi untuk mendapatkan keluaran yang lebih informatif, seperti menampilkan alamat dan format karakter sekaligus.
-- Selalu periksa ukuran file sebelum menggunakan `od` pada file besar untuk menghindari keluaran yang terlalu panjang.
+- Gunakan opsi `-v` untuk memastikan semua data ditampilkan, terutama saat bekerja dengan file yang memiliki banyak byte yang sama.
+- Kombinasikan beberapa opsi untuk mendapatkan output yang lebih informatif sesuai kebutuhan analisis Anda.
+- Selalu periksa dokumentasi dengan `man od` untuk informasi lebih lanjut tentang opsi yang tersedia.

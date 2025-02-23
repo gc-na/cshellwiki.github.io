@@ -1,51 +1,44 @@
-# [Linux] C Shell (csh) losetup Kullanımı: Sanal blok aygıtlarını yönetme
+# [Linux] C Shell (csh) losetup Kullanımı: Sanal blok aygıtları oluşturma ve yönetme
 
 ## Genel Bakış
-`losetup` komutu, sanal blok aygıtlarını yönetmek için kullanılır. Bu komut, dosyaları veya görüntü dosyalarını sanal blok aygıtlarına bağlamanızı sağlar, böylece bunlarla disk gibi işlem yapabilirsiniz.
+`losetup` komutu, dosyaları sanal blok aygıtları olarak bağlamak için kullanılır. Bu, genellikle disk görüntüleri veya dosya sistemleri ile çalışırken faydalıdır. `losetup`, bir dosyayı bir döngüsel aygıt olarak ayarlayarak, bu dosyayı bir dosya sistemi olarak kullanmanıza olanak tanır.
 
 ## Kullanım
-Temel sözdizimi şu şekildedir:
-
+Temel sözdizimi aşağıdaki gibidir:
 ```csh
-losetup [options] [arguments]
+losetup [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-f`: Boş bir sanal aygıt bulur ve döndürür.
-- `-a`: Tüm mevcut sanal aygıtları listeler.
-- `-d`: Belirtilen sanal aygıtı aygıttan ayırır.
-- `-o OFFSET`: Dosyanın belirtilen ofsetinden başlayarak bağlar.
-- `-r`: Sadece okunur modda bağlar.
+- `-f`: Kullanılabilir ilk döngüsel aygıtı bulur.
+- `-a`: Tüm döngüsel aygıtların durumunu listeler.
+- `-d`: Belirtilen döngüsel aygıtı aygıttan kaldırır.
+- `-o`: Dosya içindeki bir ofset ile aygıtı bağlar.
 
 ## Yaygın Örnekler
 Aşağıda `losetup` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. Boş bir sanal aygıt bulma:
-   ```csh
-   losetup -f
-   ```
-
-2. Bir dosyayı sanal aygıta bağlama:
+1. **Yeni bir döngüsel aygıt oluşturma:**
    ```csh
    losetup /dev/loop0 disk_image.img
    ```
 
-3. Tüm sanal aygıtları listeleme:
+2. **Tüm döngüsel aygıtları listeleme:**
    ```csh
    losetup -a
    ```
 
-4. Sanal aygıttan ayırma:
+3. **Döngüsel aygıtı kaldırma:**
    ```csh
    losetup -d /dev/loop0
    ```
 
-5. Belirli bir ofset ile bağlama:
+4. **Ofset ile döngüsel aygıt oluşturma:**
    ```csh
    losetup -o 2048 /dev/loop1 disk_image.img
    ```
 
 ## İpuçları
-- Sanal aygıtları kullanmadan önce, hangi aygıtların mevcut olduğunu kontrol etmek için `losetup -a` komutunu kullanın.
-- Dosya sistemini bağlamadan önce, dosya veya görüntü dosyasının doğru olduğundan emin olun.
-- `-r` seçeneğini kullanarak dosyaları sadece okunur modda bağlamak, veri kaybını önleyebilir.
+- `losetup` kullanmadan önce, hangi döngüsel aygıtların mevcut olduğunu kontrol etmek için `losetup -a` komutunu kullanın.
+- Disk görüntü dosyalarınızı yönetirken, her zaman doğru döngüsel aygıtı kullandığınızdan emin olun.
+- Dosya sistemini bağlamadan önce, döngüsel aygıtın doğru şekilde ayarlandığını kontrol edin.

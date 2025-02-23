@@ -1,48 +1,46 @@
 # [Linux] C Shell (csh) ln Kullanımı: Dosya bağlantıları oluşturma
 
 ## Overview
-`ln` komutu, dosyaların bağlantılarını oluşturmak için kullanılır. Bu komut, bir dosyanın bir veya daha fazla bağlantısını oluşturmanıza olanak tanır; bu sayede dosya sisteminde yer tasarrufu sağlanabilir.
+`ln` komutu, dosyaların bağlantılarını oluşturmak için kullanılır. Bu komut, bir dosyanın başka bir konumda veya aynı konumda birden fazla referansını oluşturmanıza olanak tanır. İki tür bağlantı oluşturabilirsiniz: sert bağlantılar ve yumuşak bağlantılar (sembolik bağlantılar).
 
 ## Usage
-Temel sözdizimi aşağıdaki gibidir:
-
+Temel sözdizimi şu şekildedir:
 ```csh
 ln [options] [arguments]
 ```
 
 ## Common Options
-- `-s`: Yumuşak bağlantı (symbolic link) oluşturur. Bu, hedef dosyanın bir kopyasını değil, ona işaret eden bir bağlantı oluşturur.
-- `-f`: Var olan bağlantıyı zorla siler ve yeni bağlantıyı oluşturur.
-- `-n`: Hedef dosya bir bağlantıysa, onu değiştirmez.
+- `-s`: Yumuşak (sembolik) bağlantı oluşturur.
+- `-f`: Var olan hedef dosyayı zorla siler.
+- `-n`: Hedef dosya bir dizin ise, dizin yerine dosya bağlantısı oluşturur.
+- `-v`: İşlemi ayrıntılı olarak gösterir.
 
 ## Common Examples
-Aşağıda `ln` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
-
-1. **Basit bir bağlantı oluşturma:**
+1. **Sert bağlantı oluşturma:**
    ```csh
-   ln dosya.txt dosya_link.txt
+   ln dosya.txt dosya_baglantisi.txt
    ```
-   Bu komut, `dosya.txt` için `dosya_link.txt` adında bir bağlantı oluşturur.
+   Bu komut, `dosya.txt` için sert bir bağlantı oluşturur.
 
 2. **Yumuşak bağlantı oluşturma:**
    ```csh
-   ln -s dosya.txt dosya_yumusak_link.txt
+   ln -s dosya.txt dosya_sembolik_baglantisi.txt
    ```
-   Bu komut, `dosya.txt` için yumuşak bir bağlantı oluşturur.
+   Bu komut, `dosya.txt` için bir sembolik bağlantı oluşturur.
 
-3. **Var olan bağlantıyı zorla değiştirme:**
+3. **Var olan dosyayı zorla silerek bağlantı oluşturma:**
    ```csh
-   ln -f dosya.txt dosya_link.txt
+   ln -f dosya.txt dosya_baglantisi.txt
    ```
-   Bu komut, `dosya_link.txt` adındaki mevcut bağlantıyı siler ve yerine `dosya.txt` için yeni bir bağlantı oluşturur.
+   Eğer `dosya_baglantisi.txt` mevcutsa, bu komut onu siler ve yeni bağlantıyı oluşturur.
 
-4. **Birden fazla dosya için bağlantı oluşturma:**
+4. **Ayrıntılı işlem çıktısı ile bağlantı oluşturma:**
    ```csh
-   ln dosya1.txt dosya2.txt dosya3.txt dosya_linkler/
+   ln -v dosya.txt dosya_baglantisi.txt
    ```
-   Bu komut, `dosya1.txt`, `dosya2.txt` ve `dosya3.txt` dosyaları için `dosya_linkler` dizininde bağlantılar oluşturur.
+   Bu komut, bağlantının oluşturulma sürecini ayrıntılı olarak gösterir.
 
 ## Tips
-- Yumuşak bağlantılar, dosya taşındığında veya silindiğinde hedef dosyaya erişimi kaybetmemek için kullanışlıdır.
-- Bağlantı oluştururken, hedef dosyanın mevcut olduğundan emin olun; aksi takdirde bağlantı oluşturulamaz.
-- Bağlantıların hangi dosyaya işaret ettiğini görmek için `ls -l` komutunu kullanabilirsiniz.
+- Yumuşak bağlantılar, dosya sisteminde dosyanın taşınması durumunda daha esneklik sağlar; çünkü dosya taşındığında bağlantı geçersiz olabilir.
+- Sert bağlantılar, dosyanın fiziksel varlığını korur, bu nedenle dosya silinse bile bağlantı geçerli kalır.
+- Bağlantı oluştururken, hedef dosyanın mevcut olduğundan emin olun; aksi takdirde hata alırsınız.

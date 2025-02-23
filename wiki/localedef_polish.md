@@ -1,38 +1,38 @@
-# [Linux] C Shell (csh) localedef <Użycie: definiowanie lokalizacji>
+# [Linux] C Shell (csh) localedef <Użycie: definiowanie lokalizacji systemu>
 
 ## Przegląd
-Polecenie `localedef` służy do tworzenia i definiowania lokalizacji w systemie operacyjnym. Umożliwia to systemowi obsługę różnych języków i ustawień regionalnych, co jest istotne dla aplikacji wymagających lokalnych formatów danych.
+Polecenie `localedef` służy do tworzenia lub aktualizacji lokalizacji systemowych, które definiują zasady dotyczące formatowania danych, takich jak daty, liczby i tekst, w zależności od wybranej lokalizacji.
 
 ## Użycie
 Podstawowa składnia polecenia `localedef` jest następująca:
 
-```csh
+```bash
 localedef [opcje] [argumenty]
 ```
 
 ## Częste opcje
 - `-i, --inputfile` - Określa plik wejściowy z definicją lokalizacji.
 - `-c, --no-compile` - Nie kompiluje pliku lokalizacji, tylko sprawdza jego poprawność.
-- `-f, --charmap` - Określa plik mapy znaków do użycia.
-- `-v, --verbose` - Włącza tryb szczegółowy, wyświetlając dodatkowe informacje o procesie.
+- `-f, --charmap` - Określa mapę znaków do użycia.
+- `-A, --alias` - Umożliwia podanie pliku aliasów.
 
 ## Częste przykłady
-1. Tworzenie lokalizacji dla języka polskiego:
-   ```csh
+1. Tworzenie nowej lokalizacji z pliku definicji:
+   ```bash
    localedef -i pl_PL -f UTF-8 pl_PL.UTF-8
    ```
 
 2. Sprawdzanie poprawności pliku lokalizacji bez kompilacji:
-   ```csh
-   localedef -c -i pl_PL -f UTF-8 pl_PL.UTF-8
+   ```bash
+   localedef -c -i en_US -f UTF-8 en_US.UTF-8
    ```
 
-3. Użycie mapy znaków do tworzenia lokalizacji:
-   ```csh
-   localedef -i pl_PL -f ISO-8859-2 -v pl_PL.ISO-8859-2
+3. Użycie mapy znaków do utworzenia lokalizacji:
+   ```bash
+   localedef -i fr_FR -f ISO-8859-1 fr_FR.ISO-8859-1
    ```
 
 ## Wskazówki
-- Zawsze sprawdzaj poprawność plików lokalizacji przed ich kompilacją, aby uniknąć błędów.
-- Używaj opcji `-v`, aby uzyskać więcej informacji o procesie tworzenia lokalizacji, co może pomóc w debugowaniu.
-- Pamiętaj, aby po utworzeniu lokalizacji zaktualizować zmienną środowiskową `LANG`, aby system mógł korzystać z nowych ustawień regionalnych.
+- Zawsze sprawdzaj poprawność pliku lokalizacji przed jego kompilacją, aby uniknąć błędów.
+- Używaj opcji `-c`, aby upewnić się, że plik jest poprawny, zanim go skompilujesz.
+- Zrozumienie map znaków i definicji lokalizacji jest kluczowe dla prawidłowego formatowania danych w aplikacjach.

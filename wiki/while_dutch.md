@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) while gebruiken: Voer herhalende taken uit
+# [Linux] C Shell (csh) while gebruiken: Voer een commando uit zolang een voorwaarde waar is
 
 ## Overzicht
-De `while`-opdracht in C Shell (csh) wordt gebruikt om een blok code herhaaldelijk uit te voeren zolang een bepaalde voorwaarde waar is. Dit is handig voor het automatiseren van taken die meerdere keren moeten worden uitgevoerd totdat aan een bepaalde voorwaarde wordt voldaan.
+De `while`-opdracht in C Shell (csh) wordt gebruikt om een bepaalde reeks commando's herhaaldelijk uit te voeren zolang een opgegeven voorwaarde waar is. Dit is nuttig voor het automatiseren van taken die afhankelijk zijn van dynamische voorwaarden.
 
 ## Gebruik
 De basis syntaxis van de `while`-opdracht is als volgt:
@@ -12,47 +12,47 @@ while (voorwaarde)
 end
 ```
 
-## Veelvoorkomende Opties
-- **voorwaarde**: Een expressie die waar of onwaar kan zijn. De loop blijft draaien zolang deze waar is.
-- **commando's**: De opdrachten die herhaaldelijk worden uitgevoerd.
+## Veelvoorkomende opties
+- **voorwaarde**: Dit is de expressie die geëvalueerd wordt. Zolang deze waar is, worden de commando's binnen de `while`-lus uitgevoerd.
+  
+## Veelvoorkomende voorbeelden
 
-## Veelvoorkomende Voorbeelden
-
-### Voorbeeld 1: Eenvoudige tel-loop
-Dit voorbeeld telt van 1 tot 5.
+### Voorbeeld 1: Eenvoudige tel-lus
+Dit voorbeeld toont hoe je een teller kunt gebruiken om een commando herhaaldelijk uit te voeren.
 
 ```csh
 set i = 1
 while ($i <= 5)
-    echo $i
+    echo "Huidige waarde van i: $i"
     @ i++
 end
 ```
 
-### Voorbeeld 2: Wacht op een bestand
-Dit voorbeeld wacht tot een bestand beschikbaar is.
+### Voorbeeld 2: Bestanden lezen
+Hier is een voorbeeld waarbij we door een lijst van bestanden itereren en deze afdrukken.
 
 ```csh
-set bestand = "mijnbestand.txt"
+set files = (bestand1.txt bestand2.txt bestand3.txt)
+set i = 1
+while ($i <= $#files)
+    echo "Verwerken: $files[$i]"
+    @ i++
+end
+```
+
+### Voorbeeld 3: Wacht op een bestand
+Dit voorbeeld wacht totdat een specifiek bestand beschikbaar is.
+
+```csh
+set bestand = "output.txt"
 while (! -e $bestand)
     echo "Wachten op $bestand..."
-    sleep 2
+    sleep 1
 end
 echo "$bestand is nu beschikbaar."
 ```
 
-### Voorbeeld 3: Herhaal een commando
-Dit voorbeeld herhaalt een commando totdat een bepaalde voorwaarde waar is.
-
-```csh
-set getal = 0
-while ($getal < 10)
-    @ getal += 1
-    echo "Huidig getal: $getal"
-end
-```
-
 ## Tips
-- Zorg ervoor dat je de voorwaarde correct instelt om oneindige lussen te voorkomen.
-- Gebruik `sleep` in je loop om de belasting van de CPU te verminderen als je wacht op een bepaalde gebeurtenis.
-- Test je `while`-lussen met een kleine dataset om er zeker van te zijn dat ze correct werken voordat je ze op grotere datasets toepast.
+- Zorg ervoor dat je de juiste syntaxis gebruikt, vooral met haakjes en spaties.
+- Gebruik `sleep` in een `while`-lus om systeembronnen te sparen als je wacht op een bepaalde voorwaarde.
+- Test je voorwaarden grondig om oneindige lussen te voorkomen, wat kan leiden tot systeemvertragingen.

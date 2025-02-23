@@ -1,42 +1,43 @@
-# [Hệ điều hành] C Shell (csh) loại lệnh: [xác định loại lệnh]
+# [Hệ điều hành] C Shell (csh) loại: [xác định loại lệnh]
 
 ## Tổng quan
-Lệnh `type` trong C Shell (csh) được sử dụng để xác định loại của một lệnh. Nó cho phép người dùng biết liệu một lệnh là một lệnh nội bộ, lệnh ngoại vi, hay một lệnh được cài đặt từ một tệp tin.
+Lệnh `type` trong C Shell (csh) được sử dụng để xác định loại của một lệnh, cho biết lệnh đó là một lệnh nội bộ, lệnh bên ngoài, hoặc một alias.
 
-## Cách sử dụng
+## Cú pháp
 Cú pháp cơ bản của lệnh `type` như sau:
-
-```csh
+```
 type [options] [arguments]
 ```
 
-## Các tùy chọn phổ biến
+## Tùy chọn phổ biến
 - `-t`: Chỉ hiển thị loại lệnh mà không có thông tin bổ sung.
-- `-a`: Hiển thị tất cả các vị trí mà lệnh có thể được tìm thấy, bao gồm cả lệnh nội bộ và ngoại vi.
+- `-a`: Hiển thị tất cả các vị trí mà lệnh có thể được tìm thấy, bao gồm cả alias.
 
-## Ví dụ thường gặp
+## Ví dụ phổ biến
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `type`:
 
-1. Xác định loại lệnh `ls`:
+1. Xác định loại của một lệnh:
    ```csh
    type ls
    ```
 
-2. Xác định loại lệnh `echo` và hiển thị thông tin chi tiết:
+2. Kiểm tra loại của một alias:
    ```csh
-   type -a echo
+   alias ll='ls -l'
+   type ll
    ```
 
-3. Chỉ hiển thị loại lệnh `cd`:
+3. Hiển thị tất cả các vị trí của một lệnh:
    ```csh
-   type -t cd
+   type -a python
    ```
 
-4. Kiểm tra loại lệnh `grep`:
+4. Kiểm tra loại của một lệnh nội bộ:
    ```csh
-   type grep
+   type cd
    ```
 
 ## Mẹo
-- Sử dụng tùy chọn `-a` khi bạn muốn tìm hiểu tất cả các phiên bản của một lệnh, đặc biệt khi có nhiều lệnh có cùng tên.
-- Kết hợp lệnh `type` với các lệnh khác để kiểm tra và xác nhận các lệnh trước khi thực thi, giúp tránh lỗi không mong muốn.
+- Sử dụng tùy chọn `-t` để có được thông tin ngắn gọn và nhanh chóng về loại lệnh.
+- Kiểm tra các alias của bạn thường xuyên để tránh nhầm lẫn với các lệnh gốc.
+- Kết hợp lệnh `type` với các lệnh khác để xác định cách mà shell xử lý các lệnh trong kịch bản của bạn.

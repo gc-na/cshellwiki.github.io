@@ -1,29 +1,31 @@
-# [Linux] C Shell (csh) rmdir: Usuwanie pustych katalogów
+# [Linux] C Shell (csh) rmdir użycie: Usuwanie pustych katalogów
 
-## Overview
-Polecenie `rmdir` służy do usuwania pustych katalogów w systemie operacyjnym. Jeśli katalog zawiera pliki lub inne katalogi, `rmdir` nie będzie w stanie go usunąć.
+## Przegląd
+Polecenie `rmdir` w powłoce C Shell (csh) służy do usuwania pustych katalogów. Umożliwia to użytkownikom porządkowanie struktury katalogów poprzez eliminację niepotrzebnych, pustych folderów.
 
-## Usage
+## Użycie
 Podstawowa składnia polecenia `rmdir` jest następująca:
 
 ```
 rmdir [opcje] [argumenty]
 ```
 
-## Common Options
-- `-p`: Usuwa katalogi nadrzędne, jeśli są puste.
-- `--help`: Wyświetla pomoc dotyczącą użycia polecenia.
-- `--version`: Wyświetla wersję polecenia `rmdir`.
+## Typowe opcje
+- `-p`: Usuwa katalogi rodzicielskie, jeśli są puste.
+- `--help`: Wyświetla pomoc dotyczącą polecenia.
+- `--version`: Wyświetla wersję polecenia.
 
-## Common Examples
+## Przykłady
+Oto kilka praktycznych przykładów użycia polecenia `rmdir`:
+
 1. Usunięcie pustego katalogu:
    ```csh
-   rmdir katalog
+   rmdir katalog_pusty
    ```
 
-2. Usunięcie pustego katalogu wraz z jego pustym katalogiem nadrzędnym:
+2. Usunięcie katalogu oraz jego pustych katalogów rodzicielskich:
    ```csh
-   rmdir -p katalog/nadrzędny
+   rmdir -p katalog/rodzic/katalog_pusty
    ```
 
 3. Wyświetlenie pomocy dotyczącej polecenia:
@@ -31,7 +33,7 @@ rmdir [opcje] [argumenty]
    rmdir --help
    ```
 
-## Tips
-- Upewnij się, że katalog, który chcesz usunąć, jest pusty, aby uniknąć błędów.
-- Możesz użyć opcji `-p`, aby usunąć kilka pustych katalogów jednocześnie, co jest przydatne w przypadku złożonej struktury katalogów.
-- Zawsze sprawdzaj, czy nie masz ważnych danych w katalogach, które zamierzasz usunąć.
+## Wskazówki
+- Upewnij się, że katalog, który chcesz usunąć, jest pusty, ponieważ `rmdir` nie usunie katalogów zawierających pliki.
+- Zawsze możesz użyć opcji `-p`, aby jednocześnie usunąć puste katalogi rodzicielskie, co może pomóc w utrzymaniu porządku.
+- Przed usunięciem katalogu warto sprawdzić jego zawartość za pomocą polecenia `ls`, aby uniknąć przypadkowego usunięcia ważnych danych.

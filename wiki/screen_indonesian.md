@@ -1,27 +1,25 @@
-# [Sistem Operasi] C Shell (csh) screen: Mengelola sesi terminal
+# [Sistem Operasi] C Shell (csh) screen: Mengelola sesi terminal secara efisien
 
 ## Overview
-Perintah `screen` adalah alat yang memungkinkan pengguna untuk mengelola beberapa sesi terminal dalam satu jendela. Dengan `screen`, Anda dapat menjalankan proses di latar belakang, terputus dari sesi, dan kemudian terhubung kembali tanpa kehilangan pekerjaan yang sedang berlangsung.
+Perintah `screen` adalah alat yang sangat berguna dalam lingkungan terminal yang memungkinkan pengguna untuk mengelola sesi terminal secara efisien. Dengan `screen`, Anda dapat menjalankan beberapa sesi terminal secara bersamaan, beralih di antara sesi-sesi tersebut, dan bahkan melanjutkan sesi yang telah terputus.
 
 ## Usage
-Sintaks dasar dari perintah `screen` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `screen`:
 
-```bash
+```
 screen [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah `screen`:
-
-- `-S <nama>`: Menetapkan nama untuk sesi baru.
-- `-d -r`: Memisahkan sesi yang sedang berjalan dan menghubungkannya kembali.
+- `-S [nama]`: Menetapkan nama untuk sesi baru.
+- `-d -r`: Memutuskan sesi yang sedang berjalan dan melanjutkan sesi tersebut.
 - `-list`: Menampilkan daftar sesi yang sedang berjalan.
-- `-X <perintah>`: Mengirim perintah ke sesi yang sedang berjalan.
+- `-X [perintah]`: Mengirim perintah ke sesi yang sedang berjalan.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `screen`:
 
-1. **Membuat sesi baru:**
+1. **Membuat sesi baru dengan nama tertentu:**
    ```bash
    screen -S sesi_saya
    ```
@@ -31,7 +29,7 @@ Berikut adalah beberapa contoh penggunaan perintah `screen`:
    screen -list
    ```
 
-3. **Menghubungkan kembali ke sesi yang terputus:**
+3. **Melanjutkan sesi yang terputus:**
    ```bash
    screen -d -r sesi_saya
    ```
@@ -42,7 +40,6 @@ Berikut adalah beberapa contoh penggunaan perintah `screen`:
    ```
 
 ## Tips
-- Gunakan nama sesi yang deskriptif agar lebih mudah diingat dan dikelola.
-- Untuk keluar dari sesi `screen`, tekan `Ctrl + A`, lalu `D` untuk memisahkan sesi tanpa menghentikannya.
-- Jika Anda ingin menutup sesi `screen`, cukup ketik `exit` di dalam sesi tersebut.
-- Periksa kembali sesi yang terputus secara berkala untuk memastikan tidak ada proses penting yang terhenti.
+- Gunakan nama sesi yang deskriptif agar mudah diingat saat beralih antar sesi.
+- Untuk keluar dari sesi `screen`, tekan `Ctrl + A`, lalu `D` untuk memutuskan sesi tanpa menutupnya.
+- Jika Anda sering menggunakan `screen`, pertimbangkan untuk menambahkan alias di file konfigurasi shell Anda untuk akses yang lebih cepat.

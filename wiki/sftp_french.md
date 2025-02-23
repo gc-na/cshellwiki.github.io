@@ -1,22 +1,21 @@
-# [Linux] C Shell (csh) sftp : Transférer des fichiers en toute sécurité
+# [Système d'exploitation] C Shell (csh) sftp : Transférer des fichiers en toute sécurité
 
 ## Overview
-La commande `sftp` (SSH File Transfer Protocol) permet de transférer des fichiers de manière sécurisée entre un ordinateur local et un serveur distant. Elle utilise le protocole SSH pour garantir la sécurité des données pendant le transfert.
+La commande `sftp` (SSH File Transfer Protocol) permet de transférer des fichiers de manière sécurisée entre un client et un serveur. Elle utilise le protocole SSH pour garantir la sécurité des données pendant le transfert.
 
 ## Usage
 La syntaxe de base de la commande `sftp` est la suivante :
 
 ```csh
-sftp [options] [user@]host
+sftp [options] [arguments]
 ```
 
 ## Common Options
 Voici quelques options courantes pour la commande `sftp` :
 
-- `-b batchfile` : Utiliser un fichier batch pour exécuter des commandes `sftp` en mode non interactif.
-- `-C` : Activer la compression des données pendant le transfert.
-- `-P port` : Spécifier un port différent pour la connexion au serveur.
-- `-r` : Permet de transférer des répertoires de manière récursive.
+- `-o` : Permet de spécifier des options de configuration supplémentaires.
+- `-b` : Utilise un fichier de commandes batch pour exécuter plusieurs commandes `sftp`.
+- `-P` : Spécifie le port à utiliser pour la connexion au serveur.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `sftp` :
@@ -26,27 +25,27 @@ Voici quelques exemples pratiques de l'utilisation de la commande `sftp` :
    sftp user@hostname
    ```
 
-2. **Télécharger un fichier depuis le serveur :**
+2. **Transférer un fichier vers le serveur :**
    ```csh
-   sftp> get fichier.txt
+   put localfile.txt
    ```
 
-3. **Télécharger un répertoire entier :**
+3. **Télécharger un fichier depuis le serveur :**
    ```csh
-   sftp> get -r mon_repertoire
+   get remotefile.txt
    ```
 
-4. **Téléverser un fichier vers le serveur :**
+4. **Transférer un répertoire entier :**
    ```csh
-   sftp> put fichier.txt
+   put -r localdirectory
    ```
 
-5. **Lister les fichiers sur le serveur :**
+5. **Exécuter des commandes à partir d'un fichier batch :**
    ```csh
-   sftp> ls
+   sftp -b batchfile.txt user@hostname
    ```
 
 ## Tips
-- Utilisez l'option `-C` pour accélérer le transfert de fichiers volumineux grâce à la compression.
-- Pensez à utiliser des clés SSH pour une connexion sans mot de passe, ce qui facilite l'automatisation des transferts.
-- Vérifiez toujours les permissions des fichiers sur le serveur après un transfert pour vous assurer qu'elles sont correctes.
+- Assurez-vous que le serveur SFTP est configuré pour accepter les connexions SSH.
+- Utilisez des clés SSH pour une connexion plus sécurisée et sans mot de passe.
+- Vérifiez toujours les permissions des fichiers après le transfert pour garantir leur sécurité.

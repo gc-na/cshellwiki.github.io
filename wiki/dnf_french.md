@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) dnf : Gestionnaire de paquets pour les distributions basées sur RPM
 
 ## Overview
-La commande `dnf` (Dandified YUM) est un gestionnaire de paquets utilisé pour installer, mettre à jour et supprimer des logiciels sur les distributions Linux basées sur RPM, comme Fedora et CentOS. Elle remplace l'ancienne commande `yum` et offre des fonctionnalités améliorées.
+La commande `dnf` (Dandified YUM) est un gestionnaire de paquets utilisé pour installer, mettre à jour et gérer les logiciels sur les distributions Linux basées sur RPM, comme Fedora et CentOS. Elle remplace l'ancien gestionnaire YUM et offre une interface plus moderne et des fonctionnalités améliorées.
 
 ## Usage
 La syntaxe de base de la commande `dnf` est la suivante :
@@ -15,44 +15,40 @@ Voici quelques options courantes pour la commande `dnf` :
 
 - `install` : Installe un ou plusieurs paquets.
 - `remove` : Supprime un ou plusieurs paquets.
-- `update` : Met à jour tous les paquets installés vers la dernière version disponible.
-- `search` : Recherche un paquet dans les dépôts.
-- `info` : Affiche des informations détaillées sur un paquet.
+- `update` : Met à jour tous les paquets installés vers la dernière version.
+- `search` : Recherche des paquets dans les dépôts.
+- `info` : Affiche des informations sur un paquet spécifique.
+- `list` : Liste tous les paquets installés ou disponibles.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `dnf` :
 
-- Pour installer un paquet, par exemple `vim` :
+- Installer un paquet :
+  ```bash
+  dnf install nom_du_paquet
+  ```
 
-```bash
-dnf install vim
-```
+- Supprimer un paquet :
+  ```bash
+  dnf remove nom_du_paquet
+  ```
 
-- Pour supprimer un paquet, par exemple `nano` :
+- Mettre à jour tous les paquets installés :
+  ```bash
+  dnf update
+  ```
 
-```bash
-dnf remove nano
-```
+- Rechercher un paquet :
+  ```bash
+  dnf search nom_du_paquet
+  ```
 
-- Pour mettre à jour tous les paquets installés :
-
-```bash
-dnf update
-```
-
-- Pour rechercher un paquet, par exemple `httpd` :
-
-```bash
-dnf search httpd
-```
-
-- Pour afficher des informations sur un paquet, par exemple `curl` :
-
-```bash
-dnf info curl
-```
+- Afficher des informations sur un paquet :
+  ```bash
+  dnf info nom_du_paquet
+  ```
 
 ## Tips
-- Toujours exécuter `dnf update` régulièrement pour s'assurer que tous les paquets sont à jour et sécurisés.
-- Utilisez l'option `--assumeyes` pour automatiser les confirmations lors de l'installation ou de la mise à jour des paquets.
-- Vérifiez les dépendances d'un paquet avant de l'installer pour éviter des problèmes de compatibilité.
+- Toujours exécuter `dnf update` régulièrement pour garder votre système à jour et sécurisé.
+- Utilisez `dnf history` pour voir l'historique des transactions et restaurer des installations précédentes si nécessaire.
+- Pour éviter les conflits de dépendances, essayez d'installer des paquets en une seule commande plutôt que de les installer un par un.

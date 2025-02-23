@@ -1,10 +1,10 @@
 # [Linux] C Shell (csh) tmux Verwendung: Terminal-Multiplexer
 
 ## Übersicht
-Der Befehl `tmux` ist ein Terminal-Multiplexer, der es ermöglicht, mehrere Terminal-Sitzungen innerhalb eines einzigen Fensters zu verwalten. Mit tmux können Benutzer zwischen verschiedenen Sitzungen wechseln, Fenster teilen und ihre Arbeit in einer persistenten Umgebung fortsetzen.
+Der Befehl `tmux` ist ein Terminal-Multiplexer, der es ermöglicht, mehrere Terminal-Sitzungen innerhalb eines einzigen Fensters zu verwalten. Mit tmux können Benutzer zwischen verschiedenen Sitzungen wechseln, Fenster teilen und ihre Arbeit effizient organisieren.
 
 ## Verwendung
-Die grundlegende Syntax des `tmux`-Befehls lautet:
+Die grundlegende Syntax des tmux-Befehls lautet:
 
 ```bash
 tmux [Optionen] [Argumente]
@@ -20,32 +20,32 @@ tmux [Optionen] [Argumente]
 ## Häufige Beispiele
 Hier sind einige praktische Beispiele für die Verwendung von tmux:
 
-### Neue Sitzung erstellen
+### Neue tmux-Sitzung erstellen
 ```bash
 tmux new -s meine_sitzung
 ```
 
-### Bestehende Sitzung anhängen
+### Mit einer bestehenden Sitzung verbinden
 ```bash
 tmux attach -t meine_sitzung
 ```
 
-### Alle Sitzungen auflisten
+### Alle aktiven Sitzungen auflisten
 ```bash
 tmux list-sessions
 ```
 
-### Sitzung beenden
+### Eine Sitzung beenden
 ```bash
 tmux kill-session -t meine_sitzung
 ```
 
 ### Sitzung trennen
 ```bash
-Ctrl-b d
+tmux detach
 ```
 
 ## Tipps
-- Verwenden Sie `tmux`-Tastenkombinationen (z.B. `Ctrl-b` gefolgt von `c`), um schnell neue Fenster zu erstellen.
-- Nutzen Sie die Möglichkeit, Fenster horizontal oder vertikal zu teilen, um mehrere Aufgaben gleichzeitig zu erledigen.
-- Speichern Sie Ihre tmux-Konfiguration in einer `.tmux.conf`-Datei, um benutzerdefinierte Einstellungen zu laden.
+- Verwenden Sie `Ctrl + b` gefolgt von `%`, um das aktuelle Fenster vertikal zu teilen.
+- Nutzen Sie `Ctrl + b` gefolgt von `"` für eine horizontale Teilung des Fensters.
+- Speichern Sie Ihre tmux-Konfiguration in der Datei `~/.tmux.conf`, um Ihre Einstellungen anzupassen und zu speichern.

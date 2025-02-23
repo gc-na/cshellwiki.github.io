@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) tar Kullanımı: Dosyaları arşivleme ve sıkıştırma
+# [Linux] C Shell (csh) tar Kullanımı: Arşivleme ve sıkıştırma işlemleri
 
 ## Genel Bakış
-`tar` komutu, dosyaları bir arşiv dosyası içinde toplamak ve sıkıştırmak için kullanılan bir araçtır. Bu komut, genellikle yedekleme işlemleri veya dosyaları birleştirme amacıyla kullanılır.
+`tar` komutu, dosyaları ve dizinleri arşivlemek ve sıkıştırmak için kullanılan bir araçtır. Genellikle yedekleme işlemleri için tercih edilir ve birden fazla dosyayı tek bir dosya halinde birleştirerek taşımayı kolaylaştırır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
@@ -13,14 +13,15 @@ tar [seçenekler] [argümanlar]
 ## Yaygın Seçenekler
 - `-c`: Yeni bir arşiv oluşturur.
 - `-x`: Var olan bir arşivi çıkarır.
+- `-t`: Arşivin içeriğini listeler.
 - `-f`: Arşiv dosyasının adını belirtir.
-- `-v`: İşlem sırasında ayrıntılı çıktı verir.
-- `-z`: Arşivi gzip ile sıkıştırır veya sıkıştırılmış bir arşivi çıkarır.
+- `-v`: İşlem sırasında ayrıntılı bilgi verir.
+- `-z`: Arşivi gzip ile sıkıştırır veya açar.
 
 ## Yaygın Örnekler
 1. Yeni bir arşiv oluşturma:
    ```csh
-   tar -cvf arşiv.tar dosya1 dosya2
+   tar -cvf arşiv.tar dosya1 dosya2 dizin1
    ```
 
 2. Arşivi çıkarma:
@@ -28,17 +29,22 @@ tar [seçenekler] [argümanlar]
    tar -xvf arşiv.tar
    ```
 
-3. gzip ile sıkıştırılmış bir arşiv oluşturma:
+3. Arşivin içeriğini listeleme:
+   ```csh
+   tar -tvf arşiv.tar
+   ```
+
+4. gzip ile sıkıştırılmış bir arşivi oluşturma:
    ```csh
    tar -czvf arşiv.tar.gz dosya1 dosya2
    ```
 
-4. Sıkıştırılmış bir arşivi çıkarma:
+5. gzip ile sıkıştırılmış bir arşivi çıkarma:
    ```csh
    tar -xzvf arşiv.tar.gz
    ```
 
 ## İpuçları
-- Arşiv dosyalarınızı düzenli tutmak için tarih ve saat ekleyerek adlandırmayı düşünebilirsiniz.
-- `-v` seçeneğini kullanarak işleminiz sırasında hangi dosyaların işlendiğini görebilirsiniz.
-- Büyük dosyalarla çalışırken `-z` seçeneği ile sıkıştırma yaparak disk alanından tasarruf edebilirsiniz.
+- Arşiv dosyalarının adını belirlerken `.tar`, `.tar.gz` gibi uzantılar kullanmak, dosyanın içeriği hakkında bilgi verir.
+- Büyük dosyalarla çalışırken, arşivleme işlemi sırasında `-v` seçeneğini kullanarak işlem sürecini takip edebilirsiniz.
+- Yedekleme işlemleri için sık sık `tar` komutunu kullanıyorsanız, sıkıştırma seçeneklerini (örneğin `-z`) kullanarak disk alanından tasarruf edebilirsiniz.

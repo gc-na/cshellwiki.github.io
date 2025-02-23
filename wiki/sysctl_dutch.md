@@ -1,45 +1,44 @@
 # [Linux] C Shell (csh) sysctl gebruik: Beheer van kernelparameters
 
 ## Overzicht
-Het `sysctl` commando wordt gebruikt om kernelparameters in te stellen en te bekijken op een Unix-achtig besturingssysteem. Het stelt gebruikers in staat om de configuratie van de kernel aan te passen zonder de noodzaak om het systeem opnieuw op te starten.
+De `sysctl`-opdracht wordt gebruikt om kernelparameters in te stellen of op te vragen in een Unix-achtige omgeving. Hiermee kunnen gebruikers configuraties van het systeem dynamisch worden aangepast zonder dat een herstart nodig is.
 
 ## Gebruik
-De basis syntaxis van het `sysctl` commando is als volgt:
+De basis syntaxis van de `sysctl`-opdracht is als volgt:
 
 ```csh
 sysctl [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-a`: Toont alle beschikbare kernelparameters en hun waarden.
-- `-w`: Wijzigt de waarde van een specifieke kernelparameter.
-- `-n`: Toont alleen de waarde van de opgegeven parameter zonder extra informatie.
-- `-p`: Laadt instellingen van een bestand, meestal `/etc/sysctl.conf`.
+- `-a`: Toon alle kernelparameters en hun waarden.
+- `-w`: Wijzig de waarde van een kernelparameter.
+- `-n`: Toon alleen de waarde van de opgegeven parameter, zonder de parameternaam.
 
 ## Veelvoorkomende Voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van `sysctl`:
 
-1. **Bekijk alle kernelparameters**:
+1. **Alle kernelparameters tonen:**
    ```csh
    sysctl -a
    ```
 
-2. **Wijzig een kernelparameter** (bijvoorbeeld het verhogen van het aantal open bestanden):
+2. **Een specifieke kernelparameter opvragen:**
    ```csh
-   sysctl -w fs.file-max=100000
+   sysctl net.ipv4.ip_forward
    ```
 
-3. **Bekijk de waarde van een specifieke parameter** (bijvoorbeeld de maximale grootte van een socketbuffer):
+3. **Een kernelparameter wijzigen:**
    ```csh
-   sysctl -n net.core.rmem_max
+   sysctl -w net.ipv4.ip_forward=1
    ```
 
-4. **Laad instellingen van het configuratiebestand**:
+4. **Alleen de waarde van een parameter tonen:**
    ```csh
-   sysctl -p
+   sysctl -n kernel.hostname
    ```
 
 ## Tips
-- Zorg ervoor dat je de juiste rechten hebt om kernelparameters te wijzigen; vaak zijn root-rechten vereist.
-- Wees voorzichtig bij het wijzigen van kernelparameters, aangezien onjuiste instellingen de stabiliteit van het systeem kunnen beïnvloeden.
-- Documenteer wijzigingen die je aanbrengt, zodat je ze later kunt terugdraaien of begrijpen waarom bepaalde instellingen zijn aangepast.
+- Controleer altijd de huidige waarde van een parameter voordat je deze wijzigt, om onbedoelde gevolgen te voorkomen.
+- Gebruik de `-a` optie om een overzicht te krijgen van alle beschikbare parameters en hun huidige instellingen.
+- Vergeet niet dat sommige wijzigingen mogelijk niet persistent zijn na een herstart. Overweeg om wijzigingen in de configuratiebestanden op te nemen voor blijvende effecten.

@@ -1,12 +1,12 @@
-# [Linux] C Shell (csh) yum Kullanımı: Paket yönetimi aracı
+# [Linux] C Shell (csh) yum kullanımı: Paket yönetimi aracı
 
 ## Genel Bakış
-`yum`, Red Hat tabanlı Linux dağıtımlarında kullanılan bir paket yönetim aracıdır. Kullanıcıların yazılım paketlerini yüklemesine, güncellemesine ve kaldırmasına olanak tanır. `yum`, bağımlılıkları otomatik olarak yönetir ve sistemin güncel kalmasını sağlar.
+`yum`, Red Hat tabanlı Linux dağıtımlarında kullanılan bir paket yönetim aracıdır. Kullanıcıların yazılımları yüklemelerine, güncellemelerine ve kaldırmalarına olanak tanır. `yum`, bağımlılıkları otomatik olarak yöneterek kullanıcıların işini kolaylaştırır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
 
-```
+```bash
 yum [seçenekler] [argümanlar]
 ```
 
@@ -14,44 +14,48 @@ yum [seçenekler] [argümanlar]
 - `install`: Belirtilen paketi yükler.
 - `remove`: Belirtilen paketi kaldırır.
 - `update`: Yüklü paketleri günceller.
-- `list`: Mevcut paketleri listeler.
-- `search`: Belirtilen terimi içeren paketleri arar.
+- `search`: Belirtilen anahtar kelimeye göre paket arar.
+- `info`: Belirtilen paket hakkında bilgi verir.
 
 ## Yaygın Örnekler
 Aşağıda `yum` komutunun bazı pratik örnekleri bulunmaktadır:
 
 ### 1. Paket Yükleme
 Belirli bir paketi yüklemek için:
+
 ```bash
 yum install paket_adi
 ```
 
 ### 2. Paket Kaldırma
-Belirli bir paketi kaldırmak için:
+Yüklü bir paketi kaldırmak için:
+
 ```bash
 yum remove paket_adi
 ```
 
 ### 3. Paket Güncelleme
 Tüm yüklü paketleri güncellemek için:
+
 ```bash
 yum update
 ```
 
 ### 4. Paket Arama
-Belirli bir terimi içeren paketleri aramak için:
+Belirli bir anahtar kelimeye göre paket aramak için:
+
 ```bash
-yum search arama_terimi
+yum search anahtar_kelime
 ```
 
-### 5. Mevcut Paketleri Listeleme
-Tüm mevcut paketleri listelemek için:
+### 5. Paket Bilgisi Alma
+Bir paket hakkında detaylı bilgi almak için:
+
 ```bash
-yum list
+yum info paket_adi
 ```
 
 ## İpuçları
-- `yum` komutunu çalıştırmadan önce, sisteminizin güncel olduğundan emin olun.
-- Paket yüklemeden önce, hangi bağımlılıkların yükleneceğini kontrol edin.
-- `yum clean all` komutunu kullanarak önbelleği temizleyebilirsiniz; bu, disk alanı tasarrufu sağlar.
-- `yum info paket_adi` komutuyla bir paketin detaylarını görüntüleyebilirsiniz.
+- `yum` komutunu kullanmadan önce, sisteminizin güncel olduğundan emin olun.
+- Paket yüklemeden önce, bağımlılıkların kontrol edilmesi için `yum check-update` komutunu kullanabilirsiniz.
+- `yum` ile yapılan işlemler genellikle kök (root) yetkileri gerektirir, bu nedenle `sudo` ile birlikte kullanmayı unutmayın.

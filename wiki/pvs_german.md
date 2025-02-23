@@ -1,44 +1,44 @@
 # [Linux] C Shell (csh) pvs Verwendung: Zeigt die Versionen von Dateien an
 
 ## Übersicht
-Der Befehl `pvs` wird verwendet, um die Versionen von Dateien in einem bestimmten Verzeichnis anzuzeigen. Er ist besonders nützlich, um Informationen über die verschiedenen Versionen von Dateien zu erhalten, die im Rahmen von Versionskontrollsystemen verwaltet werden.
+Der Befehl `pvs` wird verwendet, um die Versionen von Dateien in einem bestimmten Verzeichnis anzuzeigen. Er ist besonders nützlich, um Informationen über die verschiedenen Versionen von Dateien zu erhalten, die in einem Versionskontrollsystem verwaltet werden.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```csh
+```
 pvs [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-a`: Zeigt alle Versionen der Dateien an, einschließlich der nicht aktiven.
+- `-a`: Zeigt alle Versionen der Dateien an, einschließlich der nicht mehr aktiven.
 - `-f`: Gibt die vollständigen Dateinamen aus.
-- `-n`: Zeigt nur die Namen der Versionen an, ohne zusätzliche Informationen.
+- `-r`: Zeigt nur die neuesten Versionen der Dateien an.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele zur Verwendung des `pvs`-Befehls:
+Hier sind einige praktische Beispiele für die Verwendung des `pvs`-Befehls:
 
-1. **Anzeigen aller Versionen einer Datei:**
+1. **Alle Versionen anzeigen**:
    ```csh
-   pvs -a dateiname.txt
+   pvs -a
    ```
 
-2. **Anzeigen der vollständigen Dateinamen aller Versionen:**
+2. **Nur die neuesten Versionen anzeigen**:
    ```csh
-   pvs -f dateiname.txt
+   pvs -r
    ```
 
-3. **Nur die Namen der Versionen anzeigen:**
+3. **Vollständige Dateinamen anzeigen**:
    ```csh
-   pvs -n dateiname.txt
+   pvs -f
    ```
 
-4. **Anzeigen der Versionen in einem bestimmten Verzeichnis:**
+4. **Versionen für eine bestimmte Datei anzeigen**:
    ```csh
-   pvs -a /pfad/zum/verzeichnis/dateiname.txt
+   pvs meine_datei.txt
    ```
 
 ## Tipps
-- Verwenden Sie die Option `-a`, wenn Sie eine vollständige Übersicht über alle Versionen benötigen, auch die inaktiven.
-- Kombinieren Sie Optionen, um die Ausgabe an Ihre Bedürfnisse anzupassen, z.B. `pvs -fa dateiname.txt`.
-- Überprüfen Sie regelmäßig die Versionen Ihrer Dateien, um sicherzustellen, dass Sie mit der aktuellsten Version arbeiten.
+- Verwenden Sie die Option `-a`, um sicherzustellen, dass Sie keine wichtigen Versionen übersehen.
+- Kombinieren Sie Optionen, um die Ausgabe nach Ihren Bedürfnissen anzupassen, z.B. `pvs -af`.
+- Überprüfen Sie regelmäßig die Versionen Ihrer Dateien, um den Überblick über Änderungen zu behalten.

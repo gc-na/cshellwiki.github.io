@@ -1,46 +1,46 @@
-# [Linux] C Shell (csh) who użycie: wyświetla listę zalogowanych użytkowników
+# [Linux] C Shell (csh) who użycie: wyświetla zalogowanych użytkowników
 
 ## Overview
-Polecenie `who` w C Shell (csh) służy do wyświetlania listy użytkowników aktualnie zalogowanych do systemu. Informacje te mogą być przydatne do monitorowania aktywności użytkowników i zarządzania systemem.
+Polecenie `who` w C Shell (csh) służy do wyświetlania listy użytkowników aktualnie zalogowanych do systemu. Informacje te mogą być przydatne do monitorowania aktywności użytkowników oraz do zarządzania sesjami.
 
 ## Usage
 Podstawowa składnia polecenia `who` jest następująca:
 
-```csh
+```
 who [opcje] [argumenty]
 ```
 
 ## Common Options
 Oto kilka powszechnie używanych opcji dla polecenia `who`:
 
-- `-b`: Wyświetla czas ostatniego uruchomienia systemu.
-- `-q`: Wyświetla tylko listę użytkowników oraz ich liczbę.
-- `-H`: Wyświetla nagłówki kolumn w wynikach.
+- `-b` - wyświetla czas ostatniego uruchomienia systemu.
+- `-q` - pokazuje tylko zalogowanych użytkowników oraz ich liczbę.
+- `-H` - wyświetla nagłówki kolumn w wynikach.
 
 ## Common Examples
-Poniżej znajdują się przykłady użycia polecenia `who`:
+Oto kilka praktycznych przykładów użycia polecenia `who`:
 
-1. Aby wyświetlić listę wszystkich zalogowanych użytkowników:
+1. Wyświetlenie wszystkich zalogowanych użytkowników:
    ```csh
    who
    ```
 
-2. Aby zobaczyć czas ostatniego uruchomienia systemu:
+2. Wyświetlenie czasu ostatniego uruchomienia systemu:
    ```csh
    who -b
    ```
 
-3. Aby wyświetlić tylko użytkowników i ich liczbę:
+3. Wyświetlenie tylko liczby zalogowanych użytkowników:
    ```csh
    who -q
    ```
 
-4. Aby wyświetlić listę użytkowników z nagłówkami kolumn:
+4. Wyświetlenie z nagłówkami kolumn:
    ```csh
    who -H
    ```
 
 ## Tips
-- Używaj opcji `-q`, gdy chcesz szybko sprawdzić, ilu użytkowników jest zalogowanych, bez przeglądania pełnej listy.
-- Regularne monitorowanie zalogowanych użytkowników może pomóc w identyfikacji nieautoryzowanych sesji.
-- Możesz łączyć `who` z innymi poleceniami, aby uzyskać bardziej szczegółowe informacje, na przykład używając `grep`, aby filtrować wyniki.
+- Używaj opcji `-q`, aby szybko sprawdzić, ilu użytkowników jest aktualnie zalogowanych, co może być przydatne w dużych systemach.
+- Regularnie sprawdzaj, kto jest zalogowany, aby monitorować bezpieczeństwo i aktywność w systemie.
+- Połącz polecenie `who` z innymi narzędziami, takimi jak `grep`, aby filtrować wyniki według konkretnego użytkownika.

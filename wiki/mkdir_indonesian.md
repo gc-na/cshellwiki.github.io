@@ -1,7 +1,7 @@
 # [Sistem Operasi] C Shell (csh) mkdir Penggunaan: Membuat direktori baru
 
 ## Overview
-Perintah `mkdir` digunakan untuk membuat direktori baru di sistem file. Dengan menggunakan perintah ini, pengguna dapat mengorganisir file dan folder dengan lebih baik.
+Perintah `mkdir` digunakan untuk membuat direktori baru di dalam sistem file. Ini adalah cara yang efisien untuk mengorganisir file dan folder dalam struktur yang diinginkan.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `mkdir`:
@@ -11,39 +11,39 @@ mkdir [options] [arguments]
 ```
 
 ## Common Options
-- `-p`: Membuat direktori secara rekursif, termasuk semua direktori induk yang diperlukan.
-- `-m`: Menentukan mode akses untuk direktori yang dibuat.
+- `-p`: Membuat direktori induk secara otomatis jika belum ada.
+- `-m`: Mengatur izin akses untuk direktori yang dibuat.
 - `-v`: Menampilkan pesan yang menunjukkan direktori yang telah dibuat.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `mkdir`:
 
-1. Membuat satu direktori baru:
+1. Membuat direktori baru bernama `folder_baru`:
    ```csh
-   mkdir direktori_baru
+   mkdir folder_baru
    ```
 
 2. Membuat beberapa direktori sekaligus:
    ```csh
-   mkdir direktori1 direktori2 direktori3
+   mkdir folder1 folder2 folder3
    ```
 
-3. Membuat direktori secara rekursif:
+3. Membuat direktori dengan struktur induk:
    ```csh
-   mkdir -p /path/to/direktori/baru
+   mkdir -p folder_induk/folder_anak
    ```
 
-4. Membuat direktori dengan mode akses tertentu:
+4. Membuat direktori dengan izin akses tertentu:
    ```csh
-   mkdir -m 755 direktori_akses
+   mkdir -m 755 folder_izin
    ```
 
-5. Menampilkan pesan saat membuat direktori:
+5. Menampilkan pesan saat direktori dibuat:
    ```csh
-   mkdir -v direktori_dengan_pesan
+   mkdir -v folder_ditampilkan
    ```
 
 ## Tips
-- Selalu gunakan opsi `-p` jika Anda tidak yakin apakah direktori induk sudah ada, agar tidak terjadi kesalahan.
-- Periksa izin akses direktori setelah membuatnya dengan menggunakan perintah `ls -l`.
-- Gunakan nama direktori yang deskriptif untuk memudahkan pengorganisasian file di masa depan.
+- Selalu gunakan opsi `-p` jika Anda ingin membuat beberapa tingkat direktori sekaligus untuk menghindari kesalahan.
+- Periksa izin akses direktori setelah membuatnya untuk memastikan bahwa Anda memiliki hak yang sesuai.
+- Gunakan opsi `-v` saat belajar atau saat scripting untuk mendapatkan umpan balik tentang apa yang terjadi.

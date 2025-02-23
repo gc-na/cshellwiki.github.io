@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) split : Diviser des fichiers en morceaux
 
 ## Overview
-La commande `split` permet de diviser un fichier en plusieurs morceaux de taille spécifiée. Cela peut être utile pour gérer de grands fichiers ou pour faciliter le transfert de données.
+La commande `split` est utilisée pour diviser un fichier en plusieurs parties plus petites. Cela peut être utile pour gérer de grands fichiers ou pour faciliter leur transfert.
 
 ## Usage
 La syntaxe de base de la commande `split` est la suivante :
@@ -11,35 +11,37 @@ split [options] [arguments]
 ```
 
 ## Common Options
-- `-b SIZE` : Divise le fichier en morceaux de la taille spécifiée (par exemple, `-b 1M` pour des morceaux de 1 Mo).
-- `-l LINES` : Divise le fichier après un nombre spécifié de lignes.
-- `-d` : Utilise des suffixes numériques pour nommer les fichiers de sortie au lieu de lettres.
-- `--additional-suffix=SUFFIX` : Ajoute un suffixe supplémentaire aux fichiers de sortie.
+Voici quelques options courantes pour la commande `split` :
+
+- `-l [nombre]` : Divise le fichier en morceaux contenant un nombre spécifié de lignes.
+- `-b [taille]` : Divise le fichier en morceaux d'une taille spécifiée (par exemple, `100k` pour 100 Ko).
+- `-d` : Utilise des suffixes numériques pour nommer les fichiers résultants au lieu des lettres par défaut.
+- `--additional-suffix=[suffixe]` : Ajoute un suffixe supplémentaire aux fichiers divisés.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `split` :
 
-1. Diviser un fichier en morceaux de 1000 lignes :
+1. Diviser un fichier en morceaux de 100 lignes :
    ```csh
-   split -l 1000 mon_fichier.txt
+   split -l 100 mon_fichier.txt
    ```
 
-2. Diviser un fichier en morceaux de 5 Mo :
+2. Diviser un fichier en morceaux de 1 Mo :
    ```csh
-   split -b 5M mon_fichier_grand.txt
+   split -b 1M mon_fichier.txt
    ```
 
-3. Diviser un fichier et nommer les morceaux avec des suffixes numériques :
+3. Diviser un fichier et utiliser des suffixes numériques :
    ```csh
-   split -d -b 1M mon_fichier.txt
+   split -d -l 50 mon_fichier.txt
    ```
 
-4. Diviser un fichier en morceaux de 200 lignes et ajouter un suffixe `.part` :
+4. Diviser un fichier en morceaux de 500 Ko avec un suffixe personnalisé :
    ```csh
-   split -l 200 --additional-suffix=.part mon_fichier.txt
+   split -b 500k --additional-suffix=.part mon_fichier.txt mon_fichier_part_
    ```
 
 ## Tips
-- Vérifiez la taille de vos fichiers de sortie pour vous assurer qu'ils correspondent à vos attentes.
-- Utilisez l'option `-d` si vous préférez des noms de fichiers numériques pour éviter toute confusion.
-- Pensez à combiner `split` avec d'autres commandes comme `cat` pour recombiner les fichiers si nécessaire.
+- Vérifiez la taille de votre fichier avant de le diviser pour choisir la taille appropriée des morceaux.
+- Utilisez l'option `-d` si vous souhaitez des noms de fichiers plus faciles à trier.
+- Pensez à ajouter un suffixe supplémentaire pour mieux identifier les fichiers divisés, surtout si vous divisez plusieurs fichiers.

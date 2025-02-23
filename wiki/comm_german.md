@@ -1,13 +1,13 @@
-# [Linux] C Shell (csh) comm-Befehl: Vergleicht zwei sortierte Dateien
+# [Linux] C Shell (csh) comm Befehl: Vergleicht zwei sortierte Dateien
 
 ## Übersicht
-Der `comm`-Befehl wird verwendet, um zwei sortierte Dateien zu vergleichen und die Unterschiede sowie die gemeinsamen Zeilen anzuzeigen. Dieser Befehl ist nützlich, um schnell die Unterschiede zwischen zwei Textdateien zu erkennen.
+Der `comm` Befehl wird verwendet, um zwei sortierte Dateien zu vergleichen und die Unterschiede sowie die gemeinsamen Zeilen anzuzeigen. Er gibt die Inhalte der beiden Dateien in drei Spalten aus: nur in der ersten Datei, nur in der zweiten Datei und in beiden Dateien.
 
 ## Verwendung
-Die grundlegende Syntax des Befehls lautet:
+Die grundlegende Syntax des `comm` Befehls lautet:
 
 ```csh
-comm [Optionen] [Argumente]
+comm [Optionen] [Datei1] [Datei2]
 ```
 
 ## Häufige Optionen
@@ -17,29 +17,28 @@ comm [Optionen] [Argumente]
 - `-i`: Ignoriert Groß- und Kleinschreibung beim Vergleich.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele zur Verwendung des `comm`-Befehls:
 
-1. **Vergleich von zwei Dateien:**
+1. **Vergleich von zwei Dateien**:
    ```csh
    comm datei1.txt datei2.txt
    ```
 
-2. **Nur die Zeilen anzeigen, die in der zweiten Datei vorhanden sind:**
+2. **Nur die Zeilen anzeigen, die in der ersten Datei vorhanden sind**:
    ```csh
    comm -13 datei1.txt datei2.txt
    ```
 
-3. **Gemeinsame Zeilen zwischen zwei Dateien anzeigen:**
+3. **Nur die Zeilen anzeigen, die in der zweiten Datei vorhanden sind**:
    ```csh
    comm -12 datei1.txt datei2.txt
    ```
 
-4. **Vergleich unter Ignorierung der Groß- und Kleinschreibung:**
+4. **Vergleich unter Ignorierung der Groß- und Kleinschreibung**:
    ```csh
    comm -i datei1.txt datei2.txt
    ```
 
 ## Tipps
-- Stellen Sie sicher, dass die Dateien, die Sie vergleichen möchten, vor der Verwendung des `comm`-Befehls sortiert sind, da dieser Befehl nur mit sortierten Dateien korrekt funktioniert.
-- Verwenden Sie die Optionen `-1`, `-2` und `-3`, um die Ausgabe nach Ihren Bedürfnissen anzupassen und nur die relevanten Informationen anzuzeigen.
-- Nutzen Sie den `sort`-Befehl, um Ihre Dateien vor dem Vergleich zu sortieren, falls sie noch nicht sortiert sind.
+- Stellen Sie sicher, dass die Dateien vor der Verwendung von `comm` sortiert sind, da der Befehl nur mit sortierten Eingaben korrekt funktioniert.
+- Nutzen Sie die Optionen, um die Ausgabe an Ihre Bedürfnisse anzupassen und nur die relevanten Informationen anzuzeigen.
+- Es kann hilfreich sein, die Ausgaben in eine Datei umzuleiten, um die Ergebnisse später zu analysieren, z.B. `comm datei1.txt datei2.txt > ergebnis.txt`.

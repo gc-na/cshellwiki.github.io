@@ -1,10 +1,10 @@
-# [Linux] C Shell (csh) strings użycie: Wyodrębnianie ciągów tekstowych z plików binarnych
+# [Linux] C Shell (csh) strings Użycie: Wyodrębnianie tekstu z plików binarnych
 
 ## Overview
-Polecenie `strings` w C Shell (csh) służy do wyodrębniania i wyświetlania sekwencji drukowalnych znaków z plików binarnych. Jest to przydatne narzędzie do analizy plików, które mogą zawierać tekst, ale nie są w formacie tekstowym.
+Polecenie `strings` w C Shell (csh) służy do wyodrębniania sekwencji znaków (łańcuchów) z plików binarnych. Jest to przydatne narzędzie do analizy plików, które mogą zawierać tekst, ale nie są przeznaczone do bezpośredniego odczytu.
 
 ## Usage
-Podstawowa składnia polecenia `strings` wygląda następująco:
+Podstawowa składnia polecenia `strings` jest następująca:
 
 ```csh
 strings [opcje] [argumenty]
@@ -13,42 +13,34 @@ strings [opcje] [argumenty]
 ## Common Options
 Oto kilka powszechnie używanych opcji dla polecenia `strings`:
 
-- `-n <liczba>`: Określa minimalną długość ciągu, który ma być wyświetlany. Na przykład, `-n 5` wyświetli tylko ciągi o długości pięciu znaków lub dłuższe.
-- `-a`: Przeszukuje cały plik, a nie tylko jego sekcje tekstowe.
-- `-f`: Wyświetla nazwę pliku przed każdym ciągiem, co jest przydatne przy przetwarzaniu wielu plików.
+- `-n <liczba>`: Umożliwia określenie minimalnej długości łańcucha, który ma być wyodrębniony. Domyślnie wynosi 4 znaki.
+- `-o`: Wyświetla offsety łańcuchów w pliku.
+- `-a`: Analizuje cały plik, a nie tylko jego sekcje tekstowe.
 
 ## Common Examples
 Oto kilka praktycznych przykładów użycia polecenia `strings`:
 
-1. Wyodrębnienie ciągów z pliku binarnego:
-
+1. Wyodrębnienie łańcuchów z pliku binarnego:
    ```csh
-   strings plik.bin
+   strings plik_binarne
    ```
 
-2. Wyświetlenie tylko ciągów o długości co najmniej 10 znaków:
-
+2. Wyodrębnienie łańcuchów o długości co najmniej 6 znaków:
    ```csh
-   strings -n 10 plik.bin
+   strings -n 6 plik_binarne
    ```
 
-3. Przeszukiwanie całego pliku, w tym sekcji, które nie są tekstowe:
-
+3. Wyświetlenie offsetów łańcuchów w pliku:
    ```csh
-   strings -a plik.bin
+   strings -o plik_binarne
    ```
 
-4. Przetwarzanie wielu plików i wyświetlanie nazw plików:
-
+4. Analiza całego pliku, w tym sekcji tekstowych:
    ```csh
-   strings -f plik1.bin plik2.bin
+   strings -a plik_binarne
    ```
 
 ## Tips
-- Używaj opcji `-n`, aby dostosować długość ciągów do swoich potrzeb, co może pomóc w eliminacji nieistotnych wyników.
-- Przy przetwarzaniu wielu plików, opcja `-f` ułatwia identyfikację, z którego pliku pochodzi dany ciąg.
-- Możesz przekierować wyjście do pliku, aby zachować wyniki analizy:
-
-   ```csh
-   strings plik.bin > wyniki.txt
-   ```
+- Używaj opcji `-n`, aby dostosować długość łańcuchów do swoich potrzeb, co może pomóc w eliminacji niepotrzebnych wyników.
+- W przypadku dużych plików binarnych, rozważ użycie `grep` w połączeniu z `strings`, aby filtrować wyniki według konkretnych słów kluczowych.
+- Regularnie sprawdzaj dokumentację polecenia `strings`, aby być na bieżąco z nowymi opcjami i funkcjami.

@@ -1,44 +1,49 @@
 # [Linux] C Shell (csh) ekran komutu: Çoklu oturum yönetimi
 
 ## Genel Bakış
-`screen` komutu, birden fazla terminal oturumu oluşturmanıza ve yönetmenize olanak tanır. Bu sayede, uzun süren işlemleri arka planda çalıştırabilir ve oturumlar arasında geçiş yapabilirsiniz.
+`screen` komutu, kullanıcıların birden fazla terminal oturumu oluşturmasına ve yönetmesine olanak tanır. Bu, özellikle uzun süren işlemleri arka planda çalıştırmak ve oturumlar arasında geçiş yapmak için yararlıdır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-```bash
+```csh
 screen [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-S <isim>`: Yeni bir ekran oturumu oluşturur ve ona bir isim verir.
-- `-d -r <isim>`: Ayrılmış bir ekran oturumunu yeniden bağlar.
-- `-list`: Mevcut ekran oturumlarını listeler.
-- `-X <komut>`: Belirtilen oturuma bir komut gönderir.
+- `-S <isim>`: Yeni bir ekran oturumu oluşturur ve ona belirli bir isim verir.
+- `-d -r`: Ayrılmış bir ekran oturumunu yeniden bağlar.
+- `-list`: Mevcut ekran oturumlarının listesini gösterir.
+- `-X <komut>`: Belirtilen ekran oturumuna bir komut gönderir.
 
 ## Yaygın Örnekler
-Aşağıda `screen` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+Aşağıda `screen` komutunun bazı pratik örnekleri bulunmaktadır:
 
-### Yeni bir ekran oturumu oluşturma
-```bash
-screen -S benim_oturumum
-```
+1. Yeni bir ekran oturumu başlatmak:
+   ```csh
+   screen
+   ```
 
-### Ayrılmış bir ekran oturumunu yeniden bağlama
-```bash
-screen -d -r benim_oturumum
-```
+2. Belirli bir isimle yeni bir ekran oturumu oluşturmak:
+   ```csh
+   screen -S benim_oturumum
+   ```
 
-### Mevcut ekran oturumlarını listeleme
-```bash
-screen -list
-```
+3. Ayrılmış bir ekran oturumunu yeniden bağlamak:
+   ```csh
+   screen -d -r
+   ```
 
-### Belirli bir oturuma komut gönderme
-```bash
-screen -S benim_oturumum -X stuff "ls\n"
-```
+4. Mevcut ekran oturumlarını listelemek:
+   ```csh
+   screen -list
+   ```
+
+5. Belirli bir ekran oturumuna komut göndermek:
+   ```csh
+   screen -S benim_oturumum -X quit
+   ```
 
 ## İpuçları
-- Ekran oturumlarınızı isimlendirerek yönetimi kolaylaştırabilirsiniz.
-- Oturumdan çıkmak için `Ctrl+A` ardından `D` tuşlarına basarak oturumu ayrılmış hale getirebilirsiniz.
-- Ekran oturumlarınızı düzenli olarak kontrol edin, gereksiz oturumları kapatmayı unutmayın.
+- Ekran oturumlarınızı yönetmek için anlamlı isimler kullanın; bu, oturumlar arasında geçiş yaparken işleri kolaylaştırır.
+- Uzun süren işlemler için ekran oturumlarını kullanarak, terminalinizi kapatsanız bile işlemlerin devam etmesini sağlayabilirsiniz.
+- Ekran oturumunu terk etmek için `Ctrl+A` ardından `D` tuşlarına basarak oturumu arka plana alabilirsiniz.

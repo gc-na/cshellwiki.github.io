@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) sha256sum Verwendung: Berechnung von SHA-256-Hashwerten
+# [Linux] C Shell (csh) sha256sum Verwendung: Berechnung von SHA-256-Prüfziffern
 
 ## Übersicht
-Der Befehl `sha256sum` wird verwendet, um den SHA-256-Hashwert einer Datei zu berechnen. Dieser Hashwert dient oft zur Überprüfung der Integrität von Dateien, da selbst kleinste Änderungen an einer Datei zu einem völlig anderen Hashwert führen.
+Der Befehl `sha256sum` wird verwendet, um den SHA-256-Hashwert einer Datei zu berechnen. Dieser Hashwert kann zur Überprüfung der Integrität von Dateien verwendet werden, indem man sicherstellt, dass die Datei nicht verändert wurde.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
@@ -11,38 +11,35 @@ sha256sum [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-b`: Berechnet den Hashwert für eine Binärdatei.
-- `-c`: Überprüft die Hashwerte einer Datei gegen die in einer anderen Datei gespeicherten Hashwerte.
-- `--help`: Zeigt eine Hilfeseite mit Informationen zur Verwendung des Befehls an.
-- `--version`: Gibt die Versionsnummer des Programms aus.
+- `-b`: Berechnet den Hashwert für Binärdateien.
+- `-c`: Überprüft die Hashwerte von Dateien, die in einer Prüfziffern-Datei aufgeführt sind.
+- `--quiet`: Gibt keine Warnungen aus, wenn die Überprüfung fehlschlägt.
+- `--tag`: Fügt den Dateinamen in die Ausgabe ein.
 
 ## Häufige Beispiele
 Hier sind einige praktische Beispiele zur Verwendung von `sha256sum`:
 
-1. Berechnung des SHA-256-Hashwerts einer Datei:
+1. **Berechnung des SHA-256-Hashwerts einer Datei:**
    ```csh
    sha256sum datei.txt
    ```
 
-2. Berechnung des Hashwerts für eine Binärdatei:
+2. **Berechnung des Hashwerts einer Binärdatei:**
    ```csh
    sha256sum -b datei.bin
    ```
 
-3. Überprüfung von Hashwerten aus einer Datei:
+3. **Überprüfung von Hashwerten aus einer Prüfziffern-Datei:**
    ```csh
-   sha256sum -c hashes.txt
+   sha256sum -c pruefziffern.txt
    ```
 
-4. Anzeige der Hilfe:
+4. **Berechnung des Hashwerts und Ausgabe mit Dateinamen:**
    ```csh
-   sha256sum --help
+   sha256sum --tag datei.txt
    ```
 
 ## Tipps
-- Verwenden Sie `sha256sum` in Kombination mit `>`, um den Hashwert in eine Datei zu speichern:
-  ```csh
-  sha256sum datei.txt > hash.txt
-  ```
-- Achten Sie darauf, die Hashwerte regelmäßig zu überprüfen, insbesondere bei wichtigen Dateien.
-- Nutzen Sie die Option `-c`, um sicherzustellen, dass Ihre Dateien nicht verändert wurden, indem Sie die Hashwerte mit einer vorher gespeicherten Liste vergleichen.
+- Speichern Sie die Ausgabe von `sha256sum` in einer Datei, um die Integrität später zu überprüfen.
+- Verwenden Sie die Option `-c`, um sicherzustellen, dass die Dateien nicht verändert wurden, indem Sie die Hashwerte regelmäßig überprüfen.
+- Achten Sie darauf, dass Sie die richtigen Optionen für den Dateityp verwenden, um genaue Ergebnisse zu erhalten.

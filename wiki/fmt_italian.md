@@ -1,10 +1,10 @@
 # [Linux] C Shell (csh) fmt Utilizzo: Formattare il testo
 
 ## Overview
-Il comando `fmt` in C Shell (csh) serve a formattare il testo in modo che le righe abbiano una lunghezza uniforme. È particolarmente utile per preparare documenti di testo per la stampa o per la visualizzazione su terminali con larghezza fissa.
+Il comando `fmt` è utilizzato per formattare il testo in modo che le righe abbiano una lunghezza uniforme. È utile per migliorare la leggibilità dei documenti di testo, specialmente quando si lavora con file di testo non formattati.
 
 ## Usage
-La sintassi di base del comando `fmt` è la seguente:
+La sintassi di base del comando è la seguente:
 
 ```csh
 fmt [options] [arguments]
@@ -12,46 +12,38 @@ fmt [options] [arguments]
 
 ## Common Options
 - `-w <width>`: Specifica la larghezza massima delle righe formattate. Il valore predefinito è 72 caratteri.
-- `-s`: Riduce gli spazi bianchi tra le righe, mantenendo solo una riga vuota tra i paragrafi.
-- `-u`: Disabilita la giustificazione del testo, mantenendo il testo allineato a sinistra.
+- `-s`: Non divide le righe già formattate, mantenendo la struttura originale.
+- `-c`: Utilizza il formato "c", che è più adatto per il testo con indentazione.
 
 ## Common Examples
 Ecco alcuni esempi pratici dell'uso del comando `fmt`:
 
-1. **Formattare un file di testo con larghezza predefinita:**
-
+1. **Formattare un file di testo**:
    ```csh
    fmt documento.txt
    ```
 
-2. **Formattare un file di testo specificando una larghezza di 50 caratteri:**
-
+2. **Formattare un file con una larghezza di 50 caratteri**:
    ```csh
    fmt -w 50 documento.txt
    ```
 
-3. **Formattare un file di testo e rimuovere gli spazi bianchi extra:**
+3. **Formattare il testo da input standard**:
+   ```csh
+   echo "Questo è un esempio di testo lungo che verrà formattato." | fmt
+   ```
 
+4. **Formattare un file senza modificare le righe già formattate**:
    ```csh
    fmt -s documento.txt
    ```
 
-4. **Formattare un file di testo senza giustificazione:**
-
+5. **Utilizzare il formato "c" per il testo indentato**:
    ```csh
-   fmt -u documento.txt
+   fmt -c documento_indentato.txt
    ```
 
 ## Tips
-- Quando si utilizza `fmt`, è utile visualizzare il risultato su un terminale per assicurarsi che la formattazione sia corretta.
-- Se si desidera salvare l'output formattato in un nuovo file, è possibile reindirizzare l'output con `>`:
-
-   ```csh
-   fmt documento.txt > documento_formattato.txt
-   ```
-
-- Per formattare più file contemporaneamente, è possibile elencarli tutti come argomenti:
-
-   ```csh
-   fmt file1.txt file2.txt
-   ```
+- Quando si utilizza `fmt`, è buona norma controllare il file di output per assicurarsi che la formattazione sia come desiderata.
+- Se si lavora con documenti lunghi, considerare di utilizzare `less` o `more` per visualizzare il file formattato in modo più agevole.
+- È possibile combinare `fmt` con altri comandi della shell per automatizzare la formattazione di più file contemporaneamente.

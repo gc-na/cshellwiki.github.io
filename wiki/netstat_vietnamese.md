@@ -1,50 +1,49 @@
-# [Hệ điều hành] C Shell (csh) netstat Cách sử dụng: Hiển thị thông tin mạng
+# [Hệ điều hành] C Shell (csh) netstat Cách sử dụng: Kiểm tra kết nối mạng
 
 ## Tổng quan
-Lệnh `netstat` được sử dụng để hiển thị các kết nối mạng, bảng định tuyến, và các thông tin khác liên quan đến mạng trên hệ thống. Nó rất hữu ích để theo dõi trạng thái mạng và phát hiện các vấn đề liên quan đến kết nối.
+Lệnh `netstat` được sử dụng để hiển thị thông tin về các kết nối mạng, bảng định tuyến, và các giao thức mạng đang hoạt động trên hệ thống. Nó giúp người dùng theo dõi và phân tích trạng thái mạng của máy tính.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `netstat` như sau:
+
 ```
-netstat [options] [arguments]
+netstat [tùy chọn] [tham số]
 ```
 
 ## Các tùy chọn phổ biến
 - `-a`: Hiển thị tất cả các kết nối và cổng đang lắng nghe.
-- `-n`: Hiển thị địa chỉ IP và số cổng thay vì tên miền.
+- `-n`: Hiển thị địa chỉ và số cổng dưới dạng số thay vì tên.
 - `-t`: Hiển thị các kết nối TCP.
 - `-u`: Hiển thị các kết nối UDP.
-- `-r`: Hiển thị bảng định tuyến.
+- `-l`: Hiển thị các cổng đang lắng nghe.
 
 ## Ví dụ phổ biến
-Dưới đây là một số ví dụ thực tế khi sử dụng lệnh `netstat`:
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `netstat`:
 
 1. Hiển thị tất cả các kết nối và cổng đang lắng nghe:
-   ```csh
+   ```bash
    netstat -a
    ```
 
-2. Hiển thị các kết nối TCP:
-   ```csh
+2. Hiển thị các kết nối TCP đang hoạt động:
+   ```bash
    netstat -t
    ```
 
-3. Hiển thị địa chỉ IP và số cổng thay vì tên miền:
-   ```csh
+3. Hiển thị địa chỉ IP và cổng dưới dạng số:
+   ```bash
    netstat -n
    ```
 
-4. Hiển thị bảng định tuyến:
-   ```csh
-   netstat -r
-   ```
-
-5. Hiển thị các kết nối UDP:
-   ```csh
-   netstat -u
+4. Hiển thị các cổng UDP đang lắng nghe:
+   ```bash
+   netstat -u -l
    ```
 
 ## Mẹo
-- Sử dụng tùy chọn `-n` để tăng tốc độ hiển thị, đặc biệt khi có nhiều kết nối.
-- Kết hợp các tùy chọn để có được thông tin chi tiết hơn, ví dụ: `netstat -an` để xem tất cả các kết nối với địa chỉ IP.
-- Thường xuyên kiểm tra trạng thái mạng của bạn để phát hiện sớm các vấn đề tiềm ẩn.
+- Sử dụng `netstat -an` để có cái nhìn tổng quan về tất cả các kết nối mà không cần phải phân tích tên.
+- Kết hợp `grep` với `netstat` để tìm kiếm các kết nối cụ thể:
+  ```bash
+  netstat -a | grep 80
+  ```
+- Thường xuyên kiểm tra trạng thái mạng của bạn để phát hiện các kết nối bất thường hoặc không mong muốn.

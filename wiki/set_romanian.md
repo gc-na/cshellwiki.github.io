@@ -1,29 +1,29 @@
-# [Linux] C Shell (csh) set utilizare: Setarea variabilelor de mediu
+# [Linux] C Shell (csh) set utilizare: Setează variabile de mediu și opțiuni de shell
 
 ## Overview
-Comanda `set` în C Shell (csh) este utilizată pentru a defini sau modifica variabilele de mediu și opțiunile shell-ului. Aceasta permite utilizatorilor să personalizeze comportamentul shell-ului și să gestioneze variabilele necesare pentru execuția scripturilor.
+Comanda `set` în C Shell (csh) este utilizată pentru a seta variabile de mediu și pentru a modifica opțiunile de comportament ale shell-ului. Aceasta permite utilizatorilor să configureze mediul de lucru conform nevoilor lor.
 
 ## Usage
 Sintaxa de bază a comenzii `set` este următoarea:
 
-```
+```csh
 set [opțiuni] [argumente]
 ```
 
 ## Common Options
 - `-x`: Activează modul de depanare, afișând comenzile înainte de a fi executate.
-- `-e`: Oprește execuția scriptului la prima eroare întâlnită.
-- `-u`: Afișează o eroare dacă se încearcă utilizarea unei variabile nedefinite.
+- `-e`: Oprește execuția scriptului dacă o comandă eșuează.
+- `-u`: Afișează o eroare dacă se încearcă utilizarea unei variabile neinițializate.
 
 ## Common Examples
-1. **Setarea unei variabile simple:**
+1. **Setarea unei variabile de mediu:**
    ```csh
-   set myVar = "Hello, World!"
+   set MY_VAR = "Hello, World!"
    ```
 
 2. **Afișarea valorii unei variabile:**
    ```csh
-   echo $myVar
+   echo $MY_VAR
    ```
 
 3. **Activarea modului de depanare:**
@@ -31,19 +31,17 @@ set [opțiuni] [argumente]
    set -x
    ```
 
-4. **Setarea mai multor variabile:**
+4. **Oprirea execuției la o eroare:**
    ```csh
-   set var1 = "Value1"
-   set var2 = "Value2"
+   set -e
    ```
 
-5. **Utilizarea opțiunii -u pentru a preveni utilizarea variabilelor nedefinite:**
+5. **Afișarea unei erori pentru variabile neinițializate:**
    ```csh
    set -u
-   echo $undefinedVar  # Va genera o eroare
    ```
 
 ## Tips
-- Folosește `set` pentru a organiza variabilele de mediu într-un mod clar și eficient.
-- Activează opțiunea `-x` în timpul dezvoltării scripturilor pentru a urmări execuția acestora.
-- Verifică întotdeauna variabilele înainte de a le utiliza, mai ales când folosești opțiunea `-u`, pentru a evita erorile neașteptate.
+- Folosiți `set` cu opțiunea `-x` pentru a depana scripturile și a înțelege fluxul de execuție.
+- Asigurați-vă că variabilele sunt inițializate înainte de a le utiliza, mai ales când folosiți opțiunea `-u`.
+- Utilizați `setenv` pentru a seta variabile de mediu care să fie disponibile în subprocese.

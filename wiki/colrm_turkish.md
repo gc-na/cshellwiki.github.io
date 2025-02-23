@@ -1,38 +1,43 @@
-# [Linux] C Shell (csh) colrm Kullanımı: Sütunları kaldırma komutu
+# [Linux] C Shell (csh) colrm Kullanımı: Sütunları Kaldırma
 
 ## Genel Bakış
-`colrm` komutu, metin dosyalarındaki belirli sütunları kaldırmak için kullanılır. Bu komut, özellikle metin verilerini düzenlemek ve istenmeyen sütunları temizlemek için faydalıdır.
+`colrm` komutu, bir dosyadaki veya standart girdideki belirli sütunları kaldırmak için kullanılır. Bu, metin dosyalarını düzenlerken veya belirli verileri ayıklarken oldukça faydalıdır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
 
-```csh
-colrm [başlangıç_sütunu] [bitiş_sütunu]
+```bash
+colrm [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `başlangıç_sütunu`: Kaldırılacak sütunların başlangıç numarasını belirtir.
-- `bitiş_sütunu`: Kaldırılacak sütunların bitiş numarasını belirtir.
-
+- `-` : Kaldırılacak sütun aralığını belirtir. Örneğin, `-5` ifadesi ilk 5 sütunu kaldırır.
+- `-c` : Sütunları kaldırırken, belirtilen sütunları korur. Örneğin, `-c 3` ifadesi 3. sütunu korur.
+  
 ## Yaygın Örnekler
 Aşağıda `colrm` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. **Bir dosyadan 1. sütundan 5. sütuna kadar olan sütunları kaldırma:**
-   ```csh
-   colrm 1 5 < dosya.txt
+1. İlk 5 sütunu kaldırma:
+   ```bash
+   colrm 1-5 < dosya.txt
    ```
 
-2. **Bir dosyadan sadece 3. sütunu kaldırma:**
-   ```csh
-   colrm 3 < dosya.txt
+2. 3. sütunu koruyarak diğerlerini kaldırma:
+   ```bash
+   colrm -c 3 < dosya.txt
    ```
 
-3. **Standart girdi üzerinden sütunları kaldırma:**
-   ```csh
-   echo "Bu bir test metnidir." | colrm 4 7
+3. Belirli bir sütun aralığını kaldırma (örneğin, 2'den 4'e kadar):
+   ```bash
+   colrm 2-4 < dosya.txt
+   ```
+
+4. Standart girdiden sütun kaldırma:
+   ```bash
+   echo "Bu bir test metni" | colrm 4-7
    ```
 
 ## İpuçları
-- `colrm` komutunu kullanmadan önce dosyanızın bir yedeğini almayı unutmayın.
-- Komutu kullanırken sütun numaralarını dikkatlice belirleyin; yanlış bir sütun numarası, beklenmeyen sonuçlara yol açabilir.
-- `colrm` komutunu diğer komutlarla birleştirerek daha karmaşık veri işleme görevleri gerçekleştirebilirsiniz. Örneğin, `grep` ile filtreleme yapıp ardından `colrm` ile sütunları kaldırabilirsiniz.
+- `colrm` komutunu, dosyalarınızı düzenlemeden önce bir yedek alarak kullanmanız önerilir.
+- Komutu kullanmadan önce, kaldırmak istediğiniz sütunların numaralarını belirlemek için dosyayı bir metin düzenleyici ile açın.
+- `colrm` komutunu bir boru hattı (pipe) içinde kullanarak, diğer komutlarla birlikte verileri işleyebilirsiniz.

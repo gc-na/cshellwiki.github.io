@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) swapoff : Désactiver l'espace d'échange
 
 ## Overview
-La commande `swapoff` est utilisée pour désactiver l'espace d'échange sur un système. Cela signifie que le système ne pourra plus utiliser l'espace d'échange spécifié pour stocker des données temporaires, ce qui peut être utile pour la gestion de la mémoire.
+La commande `swapoff` est utilisée pour désactiver l'espace d'échange (swap) sur un système. Cela peut être utile pour des raisons de performance ou de gestion de la mémoire, notamment lorsque vous souhaitez libérer de la mémoire physique en désactivant le swap.
 
 ## Usage
 La syntaxe de base de la commande est la suivante :
@@ -13,7 +13,7 @@ swapoff [options] [arguments]
 ## Common Options
 - `-a` : Désactive tous les fichiers d'échange spécifiés dans `/etc/fstab`.
 - `-e` : Ignore les erreurs lors de la désactivation des fichiers d'échange.
-- `-h` : Affiche l'aide et les options disponibles pour la commande.
+- `-h` : Affiche l'aide et les options disponibles.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `swapoff` :
@@ -34,6 +34,6 @@ Voici quelques exemples pratiques de l'utilisation de la commande `swapoff` :
    ```
 
 ## Tips
-- Assurez-vous que vous avez suffisamment de mémoire RAM avant de désactiver l'espace d'échange, car cela peut affecter les performances du système.
-- Utilisez `swapon` pour réactiver l'espace d'échange si nécessaire.
-- Vérifiez l'utilisation de l'espace d'échange avec la commande `free` avant de désactiver pour éviter des problèmes de mémoire.
+- Assurez-vous de vérifier l'utilisation de la mémoire avant de désactiver le swap, car cela peut affecter les performances du système.
+- Utilisez la commande `swapon` pour réactiver l'espace d'échange si nécessaire.
+- Il est recommandé de désactiver le swap uniquement lorsque vous êtes sûr que le système a suffisamment de mémoire physique disponible.

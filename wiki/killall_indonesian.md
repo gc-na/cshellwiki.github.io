@@ -1,45 +1,44 @@
 # [Sistem Operasi] C Shell (csh) killall Penggunaan: Menghentikan semua proses dengan nama tertentu
 
 ## Overview
-Perintah `killall` digunakan untuk menghentikan semua proses yang berjalan dengan nama tertentu. Ini sangat berguna ketika Anda ingin menutup beberapa instance dari aplikasi yang sama tanpa harus mencari dan menghentikan setiap proses secara manual.
+Perintah `killall` digunakan untuk menghentikan semua proses yang berjalan dengan nama tertentu. Ini sangat berguna ketika Anda ingin menghentikan beberapa instance dari aplikasi yang sama tanpa harus mencari dan menghentikan setiap proses secara manual.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `killall`:
 
-```csh
+```
 killall [options] [arguments]
 ```
 
 ## Common Options
-- `-u <username>`: Hanya menghentikan proses yang dimiliki oleh pengguna tertentu.
-- `-9`: Menghentikan proses secara paksa (SIGKILL).
-- `-l`: Menampilkan daftar sinyal yang tersedia.
-- `-v`: Menampilkan informasi lebih detail tentang proses yang dihentikan.
+- `-9`: Mengirim sinyal SIGKILL untuk menghentikan proses secara paksa.
+- `-v`: Menampilkan informasi lebih lanjut tentang proses yang dihentikan.
+- `-i`: Meminta konfirmasi sebelum menghentikan setiap proses.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan `killall`:
+Berikut adalah beberapa contoh penggunaan perintah `killall`:
 
-1. Menghentikan semua proses bernama `firefox`:
-    ```csh
-    killall firefox
-    ```
+1. Menghentikan semua proses dengan nama `firefox`:
+   ```csh
+   killall firefox
+   ```
 
-2. Menghentikan semua proses `gedit` dengan sinyal paksa:
-    ```csh
-    killall -9 gedit
-    ```
+2. Menghentikan semua proses dengan nama `gedit` dan menampilkan informasi:
+   ```csh
+   killall -v gedit
+   ```
 
-3. Menghentikan semua proses yang dimiliki oleh pengguna `john`:
-    ```csh
-    killall -u john
-    ```
+3. Menghentikan semua proses dengan nama `myapp` secara paksa:
+   ```csh
+   killall -9 myapp
+   ```
 
-4. Menampilkan daftar sinyal yang tersedia:
-    ```csh
-    killall -l
-    ```
+4. Meminta konfirmasi sebelum menghentikan proses `vlc`:
+   ```csh
+   killall -i vlc
+   ```
 
 ## Tips
-- Selalu gunakan opsi `-v` untuk mendapatkan informasi lebih lanjut tentang proses yang dihentikan, sehingga Anda tahu apa yang terjadi.
-- Hati-hati saat menggunakan opsi `-9`, karena ini akan menghentikan proses tanpa memberi kesempatan untuk menyimpan data yang belum disimpan.
-- Gunakan `killall` dengan bijak, terutama di lingkungan multi-pengguna, untuk menghindari menghentikan proses yang mungkin penting bagi pengguna lain.
+- Selalu pastikan untuk memeriksa nama proses yang ingin Anda hentikan agar tidak menghentikan proses yang salah.
+- Gunakan opsi `-v` untuk mendapatkan umpan balik tentang proses yang dihentikan, terutama saat bekerja dengan banyak proses.
+- Jika Anda tidak yakin tentang proses yang sedang berjalan, gunakan perintah `ps` untuk melihat daftar proses sebelum menggunakan `killall`.

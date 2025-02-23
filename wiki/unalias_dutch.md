@@ -1,37 +1,42 @@
-# [Nederlands] C Shell (csh) unalias gebruik: Verwijder aliasen
+# [Linux] C Shell (csh) unalias: Verwijder aliasen
 
 ## Overzicht
-De `unalias` opdracht in C Shell (csh) wordt gebruikt om een eerder gedefinieerde alias te verwijderen. Dit is handig wanneer je een alias niet langer nodig hebt of als je de naam wilt vrijmaken voor een andere alias.
+De `unalias` opdracht in C Shell (csh) wordt gebruikt om eerder gedefinieerde aliasen te verwijderen. Dit is handig wanneer je een alias niet langer nodig hebt of wanneer je een alias wilt vervangen door een andere definitie.
 
 ## Gebruik
 De basis syntaxis van de `unalias` opdracht is als volgt:
 
-```
+```csh
 unalias [opties] [argumenten]
 ```
 
 ## Veelvoorkomende opties
-- `-a`: Verwijdert alle gedefinieerde aliasen.
-- `-m`: Verwijdert alleen de aliasen die overeenkomen met een bepaald patroon.
+- `-a`: Verwijdert alle aliasen die zijn gedefinieerd in de huidige shell-sessie.
 
 ## Veelvoorkomende voorbeelden
 
-1. **Verwijder een specifieke alias:**
-   ```csh
-   unalias ll
-   ```
+### Voorbeeld 1: Een specifieke alias verwijderen
+Stel dat je een alias hebt genaamd `ll` die `ls -l` uitvoert. Om deze alias te verwijderen, gebruik je:
 
-2. **Verwijder alle aliasen:**
-   ```csh
-   unalias -a
-   ```
+```csh
+unalias ll
+```
 
-3. **Verwijder aliasen die overeenkomen met een patroon:**
-   ```csh
-   unalias -m 'l*'
-   ```
+### Voorbeeld 2: Alle aliasen verwijderen
+Als je alle aliasen wilt verwijderen die je hebt ingesteld, gebruik je de `-a` optie:
+
+```csh
+unalias -a
+```
+
+### Voorbeeld 3: Controleren van aliasen
+Voordat je een alias verwijdert, kun je de huidige aliasen bekijken met de `alias` opdracht:
+
+```csh
+alias
+```
 
 ## Tips
-- Controleer je huidige aliasen met de `alias` opdracht voordat je `unalias` gebruikt, zodat je weet welke je wilt verwijderen.
-- Wees voorzichtig bij het gebruik van `unalias -a`, omdat dit alle aliasen verwijdert en je ze opnieuw moet instellen als je ze later weer nodig hebt.
-- Overweeg om aliasen in je configuratiebestand (zoals `.cshrc`) te definiëren, zodat je ze eenvoudig kunt beheren en opnieuw kunt instellen indien nodig.
+- Zorg ervoor dat je de juiste alias verwijdert, vooral als je veel aliasen hebt gedefinieerd.
+- Gebruik `unalias -a` met voorzichtigheid, omdat dit alle aliasen in één keer verwijdert.
+- Overweeg om aliasen in je configuratiebestanden (zoals `.cshrc`) te definiëren, zodat je ze eenvoudig kunt beheren en aanpassen.

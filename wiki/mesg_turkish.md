@@ -1,22 +1,21 @@
 # [Linux] C Shell (csh) mesg Kullanımı: Mesaj alımını kontrol etme
 
-## Genel Bakış
-`mesg` komutu, terminaldeki kullanıcıların mesaj alıp almayacağını kontrol etmek için kullanılır. Bu komut, diğer kullanıcıların terminalinize mesaj göndermesini engelleyebilir veya izin verebilir.
+## Overview
+`mesg` komutu, kullanıcıların terminal oturumlarında mesaj alıp almayacaklarını kontrol etmelerini sağlar. Bu komut, diğer kullanıcıların terminalinize mesaj göndermesine izin verip vermediğinizi belirlemenize yardımcı olur.
 
-## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
-
+## Usage
+Temel kullanım sözdizimi aşağıdaki gibidir:
 ```csh
-mesg [seçenekler] [argümanlar]
+mesg [options] [arguments]
 ```
 
-## Yaygın Seçenekler
+## Common Options
 - `y`: Mesaj alımını etkinleştirir.
 - `n`: Mesaj alımını devre dışı bırakır.
-- `?`: Mevcut mesaj durumu hakkında bilgi verir.
+- `?`: Mevcut mesaj ayarlarını gösterir.
 
-## Yaygın Örnekler
-Aşağıda `mesg` komutunun bazı pratik örnekleri bulunmaktadır:
+## Common Examples
+Aşağıda `mesg` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
 1. Mesaj alımını etkinleştirmek için:
    ```csh
@@ -28,12 +27,12 @@ Aşağıda `mesg` komutunun bazı pratik örnekleri bulunmaktadır:
    mesg n
    ```
 
-3. Mevcut mesaj durumunu kontrol etmek için:
+3. Mevcut mesaj ayarlarını kontrol etmek için:
    ```csh
    mesg ?
    ```
 
-## İpuçları
-- Terminaldeki mesaj alımını devre dışı bırakmak, rahatsız edici mesajlardan kaçınmanıza yardımcı olabilir.
-- Birden fazla terminal oturumu açtığınızda, her birinde mesaj durumunu kontrol etmeyi unutmayın.
-- Mesaj durumunu sık sık değiştirmek istemiyorsanız, bir alias oluşturmayı düşünebilirsiniz.
+## Tips
+- Terminal oturumunuzda diğer kullanıcıların size mesaj göndermesini istiyorsanız, `mesg y` komutunu kullanmayı unutmayın.
+- Eğer özel bir oturumda çalışıyorsanız ve rahatsız edilmek istemiyorsanız, `mesg n` komutunu kullanarak mesaj alımını kapatabilirsiniz.
+- Mesaj ayarlarınızı kontrol etmek için sık sık `mesg ?` komutunu kullanarak mevcut durumunuzu gözden geçirin.

@@ -1,44 +1,45 @@
 # [Linux] C Shell (csh) dirs użycie: Wyświetlanie katalogów w stosie
 
 ## Overview
-Polecenie `dirs` w C Shell (csh) służy do wyświetlania katalogów znajdujących się w stosie. Umożliwia użytkownikowi przeglądanie aktualnych lokalizacji katalogów, które zostały zapisane w pamięci.
+Polecenie `dirs` w C Shell (csh) służy do wyświetlania listy katalogów w stosie. Umożliwia użytkownikom przeglądanie aktualnych ścieżek roboczych, które zostały zapisane w sesji powłoki.
 
 ## Usage
 Podstawowa składnia polecenia `dirs` jest następująca:
 
-```csh
+```
 dirs [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-l`: Wyświetla katalogi w formacie długim, pokazując pełne ścieżki.
-- `-p`: Wyświetla katalogi w formacie prostym, bez dodatkowych informacji.
+- `-c` - Czyści stos katalogów.
+- `-l` - Wyświetla pełne ścieżki katalogów zamiast skróconych.
+- `-p` - Wyświetla katalogi w formacie bardziej przyjaznym do przetwarzania przez inne programy.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `dirs`:
+Przykłady użycia polecenia `dirs`:
 
 1. Wyświetlenie aktualnego stosu katalogów:
    ```csh
    dirs
    ```
 
-2. Wyświetlenie katalogów w formacie długim:
+2. Wyświetlenie pełnych ścieżek katalogów:
    ```csh
    dirs -l
    ```
 
-3. Wyświetlenie katalogów w formacie prostym:
+3. Wyczyszczenie stosu katalogów:
    ```csh
-   dirs -p
+   dirs -c
    ```
 
-4. Użycie `dirs` po zmianie katalogu:
+4. Dodanie katalogu do stosu i wyświetlenie go:
    ```csh
-   cd /usr/local
+   pushd /home/user
    dirs
    ```
 
 ## Tips
-- Używaj `dirs` po każdej zmianie katalogu, aby szybko sprawdzić, gdzie się znajdujesz w hierarchii katalogów.
-- Zapisuj często używane katalogi w stosie, aby łatwo do nich wracać.
-- Pamiętaj, że `dirs` działa najlepiej w połączeniu z innymi poleceniami, takimi jak `pushd` i `popd`, które manipulują stosem katalogów.
+- Używaj `pushd` i `popd` w połączeniu z `dirs`, aby efektywnie zarządzać katalogami w stosie.
+- Regularnie sprawdzaj zawartość stosu za pomocą `dirs`, aby uniknąć dezorientacji w nawigacji po katalogach.
+- Rozważ użycie opcji `-l`, aby zawsze widzieć pełne ścieżki, co może być pomocne w złożonych strukturach katalogów.

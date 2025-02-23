@@ -1,42 +1,49 @@
-# [Linux] C Shell (csh) complete uso completo: Completa i nomi dei comandi
+# [Linux] C Shell (csh) complete uso completo: Completa i comandi in base all'input
 
 ## Overview
-Il comando `complete` in C Shell (csh) è utilizzato per definire come completare automaticamente i nomi dei comandi e dei file. Questo strumento migliora l'efficienza dell'utente, permettendo di risparmiare tempo durante la digitazione dei comandi.
+Il comando `complete` in C Shell (csh) è utilizzato per fornire completamento automatico dei comandi in base all'input dell'utente. Questo strumento è particolarmente utile per velocizzare la digitazione e ridurre gli errori.
 
 ## Usage
-La sintassi di base del comando `complete` è la seguente:
+La sintassi di base del comando è la seguente:
 
 ```csh
 complete [options] [arguments]
 ```
 
 ## Common Options
-- `-c`: Specifica che il completamento deve avvenire per i comandi.
-- `-f`: Indica che il completamento deve avvenire per i file.
-- `-n`: Permette di definire una condizione per il completamento, specificando un comando che deve restituire vero.
+- `-d`: Abilita il completamento per le directory.
+- `-f`: Abilita il completamento per i file.
+- `-n`: Disabilita il completamento per il comando specificato.
+- `-s`: Abilita il completamento per le opzioni brevi.
 
 ## Common Examples
-Ecco alcuni esempi pratici di utilizzo del comando `complete`:
+Ecco alcuni esempi pratici dell'uso del comando `complete`:
 
-### Esempio 1: Completamento dei comandi
-```csh
-complete -c ls
-```
-Questo comando imposta il completamento automatico per il comando `ls`.
+1. **Completamento per directory**:
+   ```csh
+   complete -d ls
+   ```
+   Questo comando abilita il completamento automatico per le directory quando si utilizza il comando `ls`.
 
-### Esempio 2: Completamento dei file
-```csh
-complete -f *.txt
-```
-Questo comando abilita il completamento automatico per tutti i file con estensione `.txt`.
+2. **Completamento per file**:
+   ```csh
+   complete -f cp
+   ```
+   Qui, il completamento automatico è attivato per i file quando si utilizza il comando `cp`.
 
-### Esempio 3: Completamento condizionale
-```csh
-complete -n '[[ -f $1 ]]' cp
-```
-In questo caso, il completamento per il comando `cp` avverrà solo se il primo argomento è un file esistente.
+3. **Disabilitare il completamento per un comando**:
+   ```csh
+   complete -n rm
+   ```
+   Questo comando disabilita il completamento automatico per il comando `rm`.
+
+4. **Completamento per opzioni brevi**:
+   ```csh
+   complete -s mv
+   ```
+   Abilita il completamento per le opzioni brevi quando si utilizza il comando `mv`.
 
 ## Tips
-- Assicurati di utilizzare il completamento in modo coerente per migliorare la tua produttività.
-- Prova a combinare diverse opzioni per personalizzare il completamento secondo le tue esigenze.
-- Ricorda che il completamento può essere utile per evitare errori di battitura nei nomi dei file e dei comandi.
+- Assicurati di configurare il completamento per i comandi che usi più frequentemente per migliorare la tua efficienza.
+- Puoi combinare più opzioni nel comando `complete` per personalizzare ulteriormente il comportamento del completamento.
+- Ricorda di testare il completamento dopo averlo configurato per assicurarti che funzioni come previsto.

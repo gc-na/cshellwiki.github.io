@@ -1,36 +1,36 @@
 # [Linux] C Shell (csh) vipw użycie: Edytowanie pliku haseł
 
 ## Overview
-Polecenie `vipw` służy do bezpiecznego edytowania pliku haseł systemowych. Umożliwia użytkownikom modyfikację pliku `/etc/passwd` oraz `/etc/shadow` w sposób, który minimalizuje ryzyko uszkodzenia tych plików.
+Polecenie `vipw` służy do bezpiecznego edytowania pliku haseł systemu. Umożliwia użytkownikom modyfikację pliku `/etc/passwd` oraz `/etc/shadow` w sposób, który minimalizuje ryzyko uszkodzenia tych krytycznych plików.
 
 ## Usage
-Podstawowa składnia polecenia `vipw` wygląda następująco:
+Podstawowa składnia polecenia `vipw` jest następująca:
 
-```csh
+```
 vipw [opcje]
 ```
 
 ## Common Options
 - `-s` : Edytuje plik `/etc/shadow` zamiast `/etc/passwd`.
-- `-l` : Używa edytora w trybie blokady, co zapobiega równoczesnemu edytowaniu przez wielu użytkowników.
+- `-c` : Sprawdza poprawność pliku haseł przed zapisaniem zmian.
 
 ## Common Examples
-1. Aby edytować plik haseł:
-   ```csh
+1. Edytowanie pliku haseł:
+   ```bash
    vipw
    ```
 
-2. Aby edytować plik haseł z użyciem opcji blokady:
-   ```csh
-   vipw -l
-   ```
-
-3. Aby edytować plik haseł systemowych:
-   ```csh
+2. Edytowanie pliku haseł z użyciem opcji `-s`:
+   ```bash
    vipw -s
    ```
 
+3. Edytowanie pliku haseł i sprawdzanie poprawności:
+   ```bash
+   vipw -c
+   ```
+
 ## Tips
-- Zawsze wykonuj kopię zapasową plików haseł przed ich edytowaniem, aby uniknąć utraty danych.
-- Używaj opcji blokady, aby zapewnić, że tylko jeden użytkownik edytuje plik w danym momencie.
-- Sprawdzaj poprawność wprowadzonych zmian przed zapisaniem pliku, aby uniknąć problemów z logowaniem użytkowników.
+- Zawsze używaj `vipw` zamiast edytorów tekstowych, aby uniknąć uszkodzenia pliku haseł.
+- Przed wprowadzeniem zmian, upewnij się, że masz kopię zapasową pliku haseł.
+- Po zakończeniu edycji, sprawdź, czy wszystkie zmiany zostały poprawnie zapisane i czy nie wystąpiły żadne błędy.

@@ -1,43 +1,46 @@
-# [Linux] C Shell (csh) typ: określenie typu polecenia
+# [Linux] C Shell (csh) typ polecenia: określenie typu polecenia
 
-## Przegląd
-Polecenie `type` w C Shell (csh) służy do określenia, jak dany identyfikator (np. polecenie) jest interpretowany przez powłokę. Umożliwia użytkownikowi sprawdzenie, czy identyfikator jest wbudowanym poleceniem, poleceniem zewnętrznym, aliasem czy funkcją.
+## Overview
+Polecenie `type` w C Shell (csh) służy do określenia, jak dany identyfikator (np. polecenie lub zmienna) jest interpretowany przez powłokę. Umożliwia użytkownikowi sprawdzenie, czy dany identyfikator jest wbudowanym poleceniem, aliasem, skryptem lub programem.
 
-## Użycie
-Podstawowa składnia polecenia `type` wygląda następująco:
+## Usage
+Podstawowa składnia polecenia `type` jest następująca:
 
 ```csh
 type [opcje] [argumenty]
 ```
 
-## Typowe opcje
-- `-a`: Wyświetla wszystkie wystąpienia identyfikatora, w tym aliasy i wbudowane polecenia.
-- `-p`: Pokazuje ścieżkę do polecenia zewnętrznego, jeśli istnieje.
-- `-t`: Zwraca krótki typ identyfikatora (np. `alias`, `function`, `builtin`, `file`).
+## Common Options
+- `-a`: Wyświetla wszystkie lokalizacje dla danego identyfikatora, w tym aliasy i wbudowane polecenia.
+- `-t`: Zwraca tylko typ identyfikatora (np. alias, funkcja, plik itp.).
+- `-p`: Pokazuje pełną ścieżkę do pliku wykonywalnego, jeśli identyfikator jest programem.
 
-## Przykłady
+## Common Examples
 1. Sprawdzenie typu polecenia:
    ```csh
    type ls
    ```
+   Wynik może wskazywać, że `ls` jest poleceniem systemowym.
 
-2. Wyświetlenie wszystkich wystąpień identyfikatora:
+2. Wyświetlenie wszystkich lokalizacji identyfikatora:
    ```csh
    type -a echo
    ```
+   To polecenie pokaże wszystkie aliasy i wbudowane polecenia związane z `echo`.
 
-3. Uzyskanie ścieżki do polecenia:
+3. Uzyskanie tylko typu identyfikatora:
    ```csh
-   type -p grep
+   type -t cd
    ```
+   Wynik może wskazywać, że `cd` jest wbudowanym poleceniem.
 
-4. Sprawdzenie typu aliasu:
+4. Sprawdzenie pełnej ścieżki do programu:
    ```csh
-   alias ll='ls -l'
-   type -t ll
+   type -p python
    ```
+   To polecenie zwróci pełną ścieżkę do pliku wykonywalnego `python`, jeśli jest zainstalowany.
 
-## Wskazówki
-- Używaj opcji `-a`, aby uzyskać pełny obraz wszystkich możliwych interpretacji danego identyfikatora.
-- Opcja `-t` jest przydatna, gdy chcesz szybko sprawdzić, jak powłoka interpretuje dany identyfikator bez zbędnych informacji.
-- Regularnie sprawdzaj typy poleceń, aby unikać nieporozumień związanych z aliasami i wbudowanymi poleceniami, szczególnie w skryptach.
+## Tips
+- Używaj opcji `-a`, aby uzyskać pełny obraz tego, jak dany identyfikator jest interpretowany w powłoce.
+- Opcja `-t` jest przydatna, gdy chcesz szybko sprawdzić typ identyfikatora bez dodatkowych informacji.
+- Regularnie sprawdzaj typy poleceń, aby uniknąć nieporozumień, szczególnie gdy masz zdefiniowane aliasy, które mogą kolidować z wbudowanymi poleceniami.

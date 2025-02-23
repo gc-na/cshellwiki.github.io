@@ -1,45 +1,45 @@
-# [Linux] C Shell (csh) setopt Kullanımı: Ayarları yapılandırma
+# [Unix/Linux] C Shell (csh) setopt Kullanımı: Ayarları değiştirme komutu
 
 ## Genel Bakış
-`setopt` komutu, C Shell (csh) ortamında çeşitli ayarları yapılandırmak için kullanılır. Bu komut, shell davranışını değiştirmek ve kullanıcı deneyimini özelleştirmek için çeşitli seçenekler sunar.
+`setopt` komutu, C Shell (csh) ortamında çeşitli ayarları değiştirmek için kullanılır. Bu komut, shell davranışını özelleştirmenize olanak tanır ve kullanıcı deneyimini geliştirmek için çeşitli seçenekler sunar.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
+
 ```csh
 setopt [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
+- `noecho`: Komutların ekrana yazılmasını engeller.
 - `noclobber`: Mevcut dosyaların üzerine yazılmasını engeller.
-- `ignoreeof`: Kullanıcının shell'den çıkmasını zorlaştırır; EOF (End Of File) sinyalini yok sayar.
-- `verbose`: Komutların çalıştırılmasını daha ayrıntılı bir şekilde gösterir.
-- `allexport`: Tüm değişkenlerin otomatik olarak dışa aktarılmasını sağlar.
+- `noglob`: Dosya adlarını genişletmeyi devre dışı bırakır.
+- `promptvars`: İstemci değişkenlerinin değerlendirilmesini sağlar.
 
 ## Yaygın Örnekler
 Aşağıda `setopt` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-### 1. Mevcut dosyaların üzerine yazılmasını engelleme
-```csh
-setopt noclobber
-```
+1. **Ekrana yazmayı engelleme:**
+   ```csh
+   setopt noecho
+   ```
 
-### 2. EOF sinyalini yok sayma
-```csh
-setopt ignoreeof
-```
+2. **Mevcut dosyaların üzerine yazmayı engelleme:**
+   ```csh
+   setopt noclobber
+   ```
 
-### 3. Komutların ayrıntılı çıktısını gösterme
-```csh
-setopt verbose
-```
+3. **Dosya adlarını genişletmeyi devre dışı bırakma:**
+   ```csh
+   setopt noglob
+   ```
 
-### 4. Tüm değişkenleri dışa aktarma
-```csh
-setopt allexport
-```
+4. **İstemci değişkenlerini değerlendirme:**
+   ```csh
+   setopt promptvars
+   ```
 
 ## İpuçları
-- `noclobber` seçeneğini kullanarak yanlışlıkla önemli dosyaların üzerine yazılmasını önleyebilirsiniz.
-- `ignoreeof` seçeneği, shell oturumlarınızı daha uzun süre açık tutmanıza yardımcı olabilir.
-- `verbose` seçeneğini etkinleştirerek, komutlarınızın ne yaptığını daha iyi anlayabilirsiniz.
-- Ayarları kalıcı hale getirmek için, `.cshrc` dosyanıza `setopt` komutlarını eklemeyi unutmayın.
+- `setopt` komutunu kullanmadan önce mevcut ayarları kontrol etmek için `set` komutunu kullanabilirsiniz.
+- Ayarları değiştirdikten sonra, değişikliklerin etkili olup olmadığını kontrol etmek için ilgili komutları test edin.
+- `setopt` ile birlikte kullanmak istediğiniz seçeneklerin tam listesini görmek için `man csh` komutunu kullanabilirsiniz.

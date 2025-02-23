@@ -4,17 +4,17 @@
 Der Befehl `crontab` wird verwendet, um zeitgesteuerte Aufgaben in Unix-ähnlichen Betriebssystemen zu planen. Mit `crontab` können Benutzer Skripte oder Befehle zu bestimmten Zeiten oder in regelmäßigen Abständen automatisch ausführen lassen.
 
 ## Verwendung
-Die grundlegende Syntax des Befehls lautet:
+Die grundlegende Syntax des `crontab`-Befehls lautet:
 
 ```bash
 crontab [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-e`: Öffnet die aktuelle Crontab-Datei im Standard-Texteditor zur Bearbeitung.
-- `-l`: Listet die aktuellen Cron-Jobs des Benutzers auf.
-- `-r`: Entfernt die aktuelle Crontab-Datei des Benutzers.
-- `-i`: Bestätigt die Löschung der Crontab-Datei, wenn die Option `-r` verwendet wird.
+- `-e`: Öffnet die Crontab-Datei im Editor zur Bearbeitung.
+- `-l`: Listet die aktuelle Crontab des Benutzers auf.
+- `-r`: Entfernt die Crontab des Benutzers.
+- `-i`: Fordert eine Bestätigung an, bevor die Crontab gelöscht wird.
 
 ## Häufige Beispiele
 Hier sind einige praktische Beispiele für die Verwendung von `crontab`:
@@ -25,31 +25,31 @@ Hier sind einige praktische Beispiele für die Verwendung von `crontab`:
    crontab -e
    ```
 
-2. **Aktuelle Cron-Jobs auflisten**:
-   Um alle aktuellen Cron-Jobs anzuzeigen, führen Sie aus:
+2. **Crontab auflisten**:
+   Um die aktuelle Crontab anzuzeigen, verwenden Sie:
    ```bash
    crontab -l
    ```
 
 3. **Crontab löschen**:
-   Um die Crontab-Datei zu löschen, verwenden Sie:
+   Um die Crontab zu löschen, verwenden Sie:
    ```bash
    crontab -r
    ```
 
 4. **Einen Job hinzufügen**:
-   Um einen Job hinzuzufügen, öffnen Sie die Crontab mit `crontab -e` und fügen Sie eine Zeile wie diese hinzu, um ein Skript jede Stunde auszuführen:
+   Um einen Job hinzuzufügen, der täglich um 2 Uhr morgens ein Skript ausführt, fügen Sie in der Crontab-Datei folgende Zeile hinzu:
    ```bash
-   0 * * * * /pfad/zum/skript.sh
+   0 2 * * * /pfad/zum/skript.sh
    ```
 
-5. **Job jeden Montag um 7 Uhr ausführen**:
-   Fügen Sie die folgende Zeile hinzu:
+5. **Ein Job, der jede Stunde ausgeführt wird**:
+   Um einen Job zu planen, der jede Stunde ausgeführt wird, verwenden Sie:
    ```bash
-   0 7 * * 1 /pfad/zum/auftrag.sh
+   0 * * * * /pfad/zum/anderes_skript.sh
    ```
 
 ## Tipps
-- Stellen Sie sicher, dass Ihre Skripte ausführbar sind, indem Sie `chmod +x /pfad/zum/skript.sh` verwenden.
-- Testen Sie Ihre Skripte manuell, bevor Sie sie in die Crontab einfügen, um sicherzustellen, dass sie wie erwartet funktionieren.
-- Verwenden Sie absolute Pfade für Skripte und Dateien in Ihren Cron-Jobs, um Probleme mit dem aktuellen Arbeitsverzeichnis zu vermeiden.
+- Stellen Sie sicher, dass die Skripte, die Sie planen, ausführbar sind (verwenden Sie `chmod +x /pfad/zum/skript.sh`).
+- Testen Sie Ihre Skripte manuell, bevor Sie sie in die Crontab einfügen, um sicherzustellen, dass sie wie gewünscht funktionieren.
+- Verwenden Sie vollständige Pfade zu Skripten und Dateien, um Probleme mit dem Arbeitsverzeichnis zu vermeiden.

@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) renice: Modifica la priorità di un processo
 
 ## Overview
-Il comando `renice` viene utilizzato per modificare la priorità di esecuzione di uno o più processi già in esecuzione. La priorità determina quanto CPU un processo riceve rispetto ad altri processi. Un valore di priorità più basso indica una priorità più alta.
+Il comando `renice` in C Shell (csh) viene utilizzato per modificare la priorità di esecuzione di uno o più processi già in esecuzione. La priorità di un processo determina la quantità di tempo di CPU che riceve rispetto ad altri processi. Aumentare il valore di nice riduce la priorità, mentre diminuirlo la aumenta.
 
 ## Usage
 La sintassi di base del comando `renice` è la seguente:
@@ -11,33 +11,39 @@ renice [opzioni] [argomenti]
 ```
 
 ## Common Options
-- `-n`: Specifica il nuovo valore di priorità.
-- `-p`: Indica il PID (Process ID) del processo da modificare.
+- `-n`: Specifica il nuovo valore di nice da assegnare al processo.
+- `-p`: Indica che si sta per modificare la priorità di un processo specifico tramite il suo ID (PID).
 - `-g`: Modifica la priorità di tutti i processi appartenenti a un gruppo di processi specificato.
-- `-u`: Modifica la priorità di tutti i processi di un utente specificato.
+- `-u`: Modifica la priorità di tutti i processi appartenenti a un utente specificato.
 
 ## Common Examples
 Ecco alcuni esempi pratici dell'uso del comando `renice`:
 
-1. **Modificare la priorità di un processo specifico**:
+1. **Modificare la priorità di un processo specifico:**
+   Per aumentare la priorità (ridurre il valore di nice) di un processo con PID 1234:
    ```csh
-   renice -n 10 -p 1234
+   renice -n -5 -p 1234
    ```
-   Questo comando imposta la priorità del processo con PID 1234 a 10.
 
-2. **Modificare la priorità di tutti i processi di un utente**:
+2. **Modificare la priorità di tutti i processi di un utente:**
+   Per aumentare la priorità di tutti i processi dell'utente "mario":
    ```csh
-   renice -n 5 -u username
+   renice -n -10 -u mario
    ```
-   Qui, la priorità di tutti i processi dell'utente "username" viene impostata a 5.
 
-3. **Modificare la priorità di un gruppo di processi**:
+3. **Modificare la priorità di un gruppo di processi:**
+   Per ridurre la priorità di tutti i processi appartenenti al gruppo di processi con GID 5678:
    ```csh
-   renice -n -5 -g 5678
+   renice -n 5 -g 5678
    ```
-   Questo comando imposta la priorità a -5 per tutti i processi nel gruppo con GID 5678.
+
+4. **Controllare la priorità attuale di un processo:**
+   Per visualizzare la priorità attuale di un processo con PID 1234:
+   ```csh
+   ps -o pid,nice,comm -p 1234
+   ```
 
 ## Tips
-- Assicurati di avere i permessi necessari per modificare la priorità dei processi; potresti aver bisogno di privilegi di superutente.
-- Usa valori di priorità con cautela; impostare una priorità troppo alta per un processo può influenzare negativamente le prestazioni del sistema.
-- Controlla le priorità correnti dei processi con il comando `ps` prima di utilizzare `renice` per fare scelte informate.
+- Assicurati di avere i permessi necessari per modificare la priorità dei processi; potresti aver bisogno di privilegi di superutente per abbassare la priorità di alcuni processi.
+- Utilizza `ps` per monitorare le priorità dei processi prima e dopo aver utilizzato `renice`.
+- Fai attenzione a non impostare valori di nice troppo bassi per evitare di compromettere le prestazioni del sistema.

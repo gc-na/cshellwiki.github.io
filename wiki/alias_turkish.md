@@ -1,51 +1,48 @@
 # [Linux] C Shell (csh) alias Kullanımı: Komut kısayolları oluşturma
 
 ## Genel Bakış
-`alias` komutu, C Shell (csh) ortamında kullanıcıların sık kullandıkları komutlar için kısayollar oluşturmasına olanak tanır. Bu sayede, uzun ve karmaşık komutları daha kısa ve hatırlanması kolay hale getirebilirsiniz.
+`alias` komutu, C Shell (csh) ortamında sık kullanılan komutlar için kısayollar oluşturmanıza olanak tanır. Bu sayede uzun ve karmaşık komutları daha kısa ve hatırlanması kolay hale getirebilirsiniz.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
 
-```
-alias [seçenekler] [kısa_ad]='[komut]'
+```csh
+alias [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
 - `-p`: Mevcut tüm alias'ları listelemek için kullanılır.
-- `-x`: Alias'ı çevresel değişken olarak ayarlamak için kullanılır.
+- `-x`: Alias'ı dışa aktarır, böylece alt shell'lerde de kullanılabilir.
 
 ## Yaygın Örnekler
-Aşağıda `alias` komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda `alias` komutunun bazı pratik örnekleri verilmiştir:
 
 1. **Basit bir alias oluşturma:**
    ```csh
-   alias ll='ls -l'
+   alias ll 'ls -l'
    ```
-   Bu komut, `ll` yazarak `ls -l` komutunu çalıştırmanızı sağlar.
+   Bu komut, `ll` yazdığınızda `ls -l` komutunu çalıştırır.
 
 2. **Birden fazla alias oluşturma:**
    ```csh
-   alias gs='git status'
-   alias ga='git add'
+   alias gs 'git status'
+   alias ga 'git add'
    ```
-   Bu örnekler, `gs` ve `ga` alias'ları ile Git komutlarını daha hızlı kullanmanızı sağlar.
+   Bu komutlar, `gs` ve `ga` yazarak Git komutlarını hızlıca çalıştırmanızı sağlar.
 
 3. **Alias'ları listeleme:**
    ```csh
    alias -p
    ```
-   Bu komut, tanımlı olan tüm alias'ları gösterir.
+   Bu komut, tanımlı tüm alias'ları gösterir.
 
-4. **Çevresel bir alias oluşturma:**
+4. **Dışa aktarma:**
    ```csh
-   alias -x mypath='~/my_scripts'
+   alias -x mycmd 'echo Hello, World!'
    ```
-   Bu, `mypath` alias'ını bir çevresel değişken olarak ayarlayarak, `~/my_scripts` dizinine hızlı erişim sağlar.
+   Bu komut, `mycmd` alias'ını alt shell'lerde de kullanılabilir hale getirir.
 
 ## İpuçları
 - Alias'larınızı `.cshrc` dosyanıza ekleyerek her oturumda otomatik olarak yüklenmelerini sağlayabilirsiniz.
-- Kısa ve anlamlı alias isimleri kullanarak, komutları daha kolay hatırlayabilirsiniz.
-- Eğer bir alias'ı silmek isterseniz, `unalias [kısa_ad]` komutunu kullanabilirsiniz. Örneğin:
-  ```csh
-  unalias ll
-  ```
+- Kısa ve anlamlı alias'lar oluşturun, böylece hatırlaması kolay olur.
+- Alias'larınızı düzenli olarak gözden geçirin ve gereksiz olanları kaldırın.

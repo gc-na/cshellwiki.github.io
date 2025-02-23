@@ -1,22 +1,24 @@
-# [Linux] C Shell (csh) expand użycie: Rozszerzanie tabulatorów na spacje
+# [Linux] C Shell (csh) expand użycie: Rozszerza tabulatory na spacje
 
-## Przegląd
-Polecenie `expand` w C Shell (csh) służy do konwertowania tabulatorów w plikach tekstowych na spacje. Jest to przydatne, gdy chcemy zapewnić jednolitą szerokość wcięć w plikach tekstowych, co ułatwia ich odczyt i edycję.
+## Overview
+Polecenie `expand` w C Shell (csh) jest używane do konwersji tabulatorów w plikach tekstowych na spacje. Jest to przydatne, gdy chcemy uzyskać jednolitą szerokość wcięć w plikach tekstowych, co ułatwia ich odczyt i edycję.
 
-## Użycie
+## Usage
 Podstawowa składnia polecenia `expand` jest następująca:
 
 ```
 expand [opcje] [argumenty]
 ```
 
-## Częste opcje
-- `-t, --tabs=SPACES` - Ustala liczbę spacji, które mają zastąpić jeden tabulator. Domyślnie jest to 8 spacji.
+## Common Options
+- `-t, --tabs=N` - Ustala szerokość tabulatorów na N spacji.
 - `-i` - Ignoruje tabulatory w wierszach, które zaczynają się od spacji.
-- `-o` - Zastępuje tabulatory tylko w wierszach, które nie zawierają spacji.
+- `-o` - Umożliwia użycie opcji do konwersji tabulatorów na spacje tylko w określonych miejscach.
 
-## Częste przykłady
-1. Rozszerzenie tabulatorów w pliku `plik.txt` na domyślne 8 spacji:
+## Common Examples
+Oto kilka praktycznych przykładów użycia polecenia `expand`:
+
+1. Rozszerzenie tabulatorów w pliku `plik.txt` na domyślną szerokość (8 spacji):
    ```csh
    expand plik.txt
    ```
@@ -26,7 +28,7 @@ expand [opcje] [argumenty]
    expand -t 4 plik.txt
    ```
 
-3. Zapisanie wyników rozszerzenia do nowego pliku `plik_rozszerzony.txt`:
+3. Zapisanie wyniku do nowego pliku `plik_rozszerzony.txt`:
    ```csh
    expand plik.txt > plik_rozszerzony.txt
    ```
@@ -36,10 +38,7 @@ expand [opcje] [argumenty]
    expand -i plik.txt
    ```
 
-## Wskazówki
-- Używaj opcji `-t`, aby dostosować liczbę spacji do swoich potrzeb, co może być szczególnie przydatne w projektach z różnymi standardami formatowania.
-- Zawsze sprawdzaj wynik działania polecenia, aby upewnić się, że formatowanie jest zgodne z oczekiwaniami.
-- Możesz łączyć polecenie `expand` z innymi poleceniami, takimi jak `cat`, aby szybko przeglądać pliki z rozszerzonymi tabulatorami:
-  ```csh
-  cat plik.txt | expand
-  ```
+## Tips
+- Używaj opcji `-t`, aby dostosować szerokość tabulatorów do swoich potrzeb.
+- Sprawdzaj wyniki polecenia `expand` w terminalu przed zapisaniem do nowego pliku, aby upewnić się, że formatowanie jest zgodne z oczekiwaniami.
+- Możesz łączyć `expand` z innymi poleceniami, takimi jak `cat` lub `grep`, aby przetwarzać dane w bardziej złożony sposób.

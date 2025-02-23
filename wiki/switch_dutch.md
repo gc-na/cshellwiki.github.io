@@ -1,13 +1,13 @@
-# [Linux] C Shell (csh) switch gebruik: Schakel tussen verschillende opties
+# [Linux] C Shell (csh) switch gebruik: Verander de uitvoer van een commando
 
 ## Overzicht
-De `switch`-opdracht in C Shell (csh) wordt gebruikt om verschillende opties of gevallen te evalueren. Het is een manier om conditionele logica in scripts te implementeren, waardoor je verschillende acties kunt uitvoeren op basis van de waarde van een variabele.
+De `switch`-opdracht in C Shell (csh) wordt gebruikt om verschillende voorwaarden te evalueren en op basis daarvan acties uit te voeren. Het is vergelijkbaar met een reeks if-else-verklaringen, maar biedt een meer gestructureerde manier om meerdere opties te beheren.
 
 ## Gebruik
 De basis syntaxis van de `switch`-opdracht is als volgt:
 
 ```csh
-switch (uitdrukking)
+switch (expressie)
     case patroon1:
         commando's
         breaksw
@@ -20,12 +20,12 @@ switch (uitdrukking)
 endsw
 ```
 
-## Veelvoorkomende Opties
-- `case`: Definieert een patroon dat vergeleken wordt met de uitdrukking.
-- `breaksw`: Beëindigt de huidige `switch`-structuur.
-- `default`: Voert commando's uit als geen van de patronen overeenkomt met de uitdrukking.
+## Veelvoorkomende opties
+- `case`: Definieert een patroon dat vergeleken wordt met de expressie.
+- `breaksw`: Beëindigt de huidige case en gaat verder met de uitvoering na de switch.
+- `default`: Voert commando's uit als geen van de andere patronen overeenkomt.
 
-## Veelvoorkomende Voorbeelden
+## Veelvoorkomende voorbeelden
 
 ### Voorbeeld 1: Eenvoudige switch
 ```csh
@@ -43,16 +43,21 @@ switch ($kleur)
 endsw
 ```
 
-### Voorbeeld 2: Meerdere patronen
+### Voorbeeld 2: Meerdere opties
 ```csh
 set fruit = "appel"
 switch ($fruit)
     case "appel":
-    case "peer":
-        echo "Dit is een vrucht."
+        echo "Je hebt een appel gekozen."
+        breaksw
+    case "banaan":
+        echo "Je hebt een banaan gekozen."
+        breaksw
+    case "sinaasappel":
+        echo "Je hebt een sinaasappel gekozen."
         breaksw
     default:
-        echo "Dit is geen vrucht."
+        echo "Onbekend fruit."
         breaksw
 endsw
 ```
@@ -71,12 +76,12 @@ switch ($getal)
         echo "Het getal is drie."
         breaksw
     default:
-        echo "Onbekend getal."
+        echo "Getal niet herkend."
         breaksw
 endsw
 ```
 
 ## Tips
-- Zorg ervoor dat je altijd een `default`-optie toevoegt om onverwachte waarden af te handelen.
-- Gebruik `breaksw` om ervoor te zorgen dat je niet per ongeluk doorloopt naar andere cases.
-- Test je `switch`-structuren met verschillende invoerwaarden om ervoor te zorgen dat ze correct functioneren.
+- Zorg ervoor dat je de juiste haakjes gebruikt bij de expressie.
+- Gebruik `breaksw` om te voorkomen dat de uitvoering doorloopt naar de volgende case.
+- Houd de patronen eenvoudig en duidelijk voor betere leesbaarheid en onderhoudbaarheid van je scripts.

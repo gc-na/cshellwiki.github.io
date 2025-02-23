@@ -1,25 +1,24 @@
-# [Linux] C Shell (csh) hostname uso: [visualizza o imposta il nome dell'host]
+# [Linux] C Shell (csh) hostname uso: Visualizza o imposta il nome dell'host
 
 ## Overview
-Il comando `hostname` in C Shell (csh) viene utilizzato per visualizzare o impostare il nome dell'host del sistema. Questo nome è importante per identificare un computer in una rete.
+Il comando `hostname` in C Shell (csh) viene utilizzato per visualizzare o impostare il nome dell'host del sistema. Questo nome è fondamentale per identificare un computer all'interno di una rete.
 
 ## Usage
 La sintassi di base del comando è la seguente:
 
-```csh
+```
 hostname [options] [arguments]
 ```
 
 ## Common Options
 - `-s`: Mostra solo il nome breve dell'host.
 - `-f`: Mostra il nome completo dell'host.
-- `-i`: Mostra l'indirizzo IP associato all'host.
-- `new_hostname`: Imposta un nuovo nome per l'host.
+- `-i`: Mostra l'indirizzo IP dell'host.
 
 ## Common Examples
 Ecco alcuni esempi pratici dell'uso del comando `hostname`:
 
-1. **Visualizzare il nome dell'host corrente:**
+1. **Visualizzare il nome dell'host:**
    ```csh
    hostname
    ```
@@ -41,10 +40,10 @@ Ecco alcuni esempi pratici dell'uso del comando `hostname`:
 
 5. **Impostare un nuovo nome per l'host:**
    ```csh
-   hostname nuovo_nome
+   hostname nuovo-nome-host
    ```
 
 ## Tips
 - Assicurati di avere i permessi necessari per cambiare il nome dell'host, poiché potrebbe richiedere privilegi di amministratore.
-- Dopo aver cambiato il nome dell'host, potrebbe essere necessario riavviare il sistema o il servizio di rete per applicare le modifiche.
-- Utilizza `hostname -f` per verificare che il nome completo dell'host sia configurato correttamente, specialmente in ambienti di rete complessi.
+- Dopo aver cambiato il nome dell'host, potrebbe essere necessario riavviare il sistema o riavviare i servizi di rete per applicare le modifiche.
+- Utilizza il comando `hostname` senza argomenti per controllare rapidamente il nome attuale dell'host prima di apportare modifiche.

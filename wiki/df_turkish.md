@@ -1,49 +1,49 @@
-# [Linux] C Shell (csh) df Kullanımı: Disk alanı bilgilerini gösterir
+# [Linux] C Shell (csh) df Kullanımı: Disk alanı bilgilerini görüntüleme
 
 ## Overview
-`df` komutu, dosya sistemlerinin disk alanı kullanımını gösteren bir komuttur. Kullanıcıların, sistemdeki disk alanının ne kadarının kullanıldığını ve ne kadarının boş olduğunu görmesine olanak tanır.
+`df` komutu, dosya sistemlerinin disk alanı kullanımını görüntülemek için kullanılır. Bu komut, her bir dosya sisteminin toplam, kullanılan ve boş alan miktarını gösterir.
 
 ## Usage
-Temel sözdizimi şu şekildedir:
+Temel sözdizimi aşağıdaki gibidir:
 ```csh
 df [options] [arguments]
 ```
 
 ## Common Options
-- `-h`: İnsan tarafından okunabilir formatta çıktı verir (örneğin, KB, MB, GB).
+- `-h`: İnsan tarafından okunabilir formatta (örneğin, MB veya GB cinsinden) çıktı verir.
 - `-T`: Dosya sisteminin türünü gösterir.
 - `-a`: Tüm dosya sistemlerini, boş olanlar dahil, listeler.
-- `-i`: Dosya sistemindeki inode kullanımını gösterir.
+- `-i`: İnode kullanımını gösterir.
 
 ## Common Examples
 Aşağıda `df` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
-1. Temel disk alanı bilgilerini gösterme:
+1. Tüm dosya sistemlerinin disk alanı kullanımını görüntüleme:
    ```csh
    df
    ```
 
-2. İnsan tarafından okunabilir formatta çıktı alma:
+2. İnsan tarafından okunabilir formatta disk alanı bilgilerini görüntüleme:
    ```csh
    df -h
    ```
 
-3. Belirli bir dosya sisteminin disk alanı kullanımını gösterme:
-   ```csh
-   df /dev/sda1
-   ```
-
-4. Tüm dosya sistemlerinin türlerini gösterme:
+3. Belirli bir dosya sisteminin türü ile birlikte disk alanı bilgilerini görüntüleme:
    ```csh
    df -T
    ```
 
-5. Inode kullanımını gösterme:
+4. Tüm dosya sistemlerini, boş olanlar dahil, listeleme:
+   ```csh
+   df -a
+   ```
+
+5. İnode kullanımını gösterme:
    ```csh
    df -i
    ```
 
 ## Tips
-- `df` komutunu sık sık kullanarak disk alanı kullanımını izlemek, sistem yönetimi için önemlidir.
-- `-h` seçeneği ile çıktıyı daha anlaşılır hale getirmek, özellikle büyük disk alanları ile çalışırken faydalıdır.
-- Disk alanı dolmadan önce düzenli olarak kontrol yapmak, sistemin sağlıklı çalışmasını sağlar.
+- `df` komutunu sık sık kullanarak sisteminizin disk alanı durumunu takip edebilirsiniz.
+- Disk alanı dolmaya başladığında, gereksiz dosyaları temizlemek için `df -h` çıktısını kontrol edin.
+- Uzun süreli izleme için `df -h` komutunu bir betik içinde kullanarak düzenli aralıklarla çıktı alabilirsiniz.

@@ -1,53 +1,49 @@
 # [Linux] C Shell (csh) minikube użycie: Uruchamianie lokalnych klastrów Kubernetes
 
-## Overview
-Minikube to narzędzie, które umożliwia uruchamianie lokalnych klastrów Kubernetes. Jest idealne do testowania i rozwoju aplikacji w środowisku Kubernetes bez potrzeby korzystania z zewnętrznych zasobów chmurowych.
+## Przegląd
+Minikube to narzędzie, które pozwala na uruchamianie lokalnych klastrów Kubernetes. Jest idealne do testowania i rozwoju aplikacji w środowisku Kubernetes bez potrzeby korzystania z zewnętrznych zasobów chmurowych.
 
-## Usage
+## Użycie
 Podstawowa składnia polecenia minikube wygląda następująco:
 
 ```csh
 minikube [opcje] [argumenty]
 ```
 
-## Common Options
-Oto kilka powszechnie używanych opcji dla minikube:
+## Częste opcje
+- `start` - Uruchamia nowy klaster Minikube.
+- `stop` - Zatrzymuje działający klaster Minikube.
+- `delete` - Usuwa klaster Minikube.
+- `status` - Wyświetla status działającego klastra.
+- `dashboard` - Otwiera interfejs graficzny Kubernetes w przeglądarce.
 
-- `start` - Uruchamia nowy klaster minikube.
-- `stop` - Zatrzymuje działający klaster minikube.
-- `delete` - Usuwa klaster minikube.
-- `status` - Wyświetla status aktualnego klastra.
-- `dashboard` - Otwiera interfejs użytkownika Kubernetes w przeglądarce.
-
-## Common Examples
-Oto kilka praktycznych przykładów użycia minikube:
-
-1. Uruchomienie nowego klastra:
+## Przykłady
+1. **Uruchomienie klastra Minikube:**
    ```csh
    minikube start
    ```
 
-2. Sprawdzenie statusu klastra:
-   ```csh
-   minikube status
-   ```
-
-3. Zatrzymanie klastra:
+2. **Zatrzymanie klastra Minikube:**
    ```csh
    minikube stop
    ```
 
-4. Usunięcie klastra:
+3. **Usunięcie klastra Minikube:**
    ```csh
    minikube delete
    ```
 
-5. Otworzenie dashboardu Kubernetes:
+4. **Sprawdzenie statusu klastra:**
+   ```csh
+   minikube status
+   ```
+
+5. **Otworzenie dashboardu Kubernetes:**
    ```csh
    minikube dashboard
    ```
 
-## Tips
-- Upewnij się, że masz zainstalowane wszystkie wymagane zależności przed uruchomieniem minikube.
-- Regularnie sprawdzaj status klastra, aby upewnić się, że działa poprawnie.
-- Korzystaj z opcji `--driver` podczas uruchamiania, aby wybrać preferowany silnik wirtualizacji, np. `--driver=virtualbox`.
+## Wskazówki
+- Upewnij się, że masz zainstalowane odpowiednie sterowniki wirtualizacji, aby Minikube mogło działać poprawnie.
+- Regularnie aktualizuj Minikube, aby korzystać z najnowszych funkcji i poprawek.
+- Zawsze sprawdzaj status klastra po jego uruchomieniu, aby upewnić się, że wszystko działa poprawnie.

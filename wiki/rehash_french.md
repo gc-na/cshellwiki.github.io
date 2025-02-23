@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) rehash : Mettre à jour le cache des commandes
 
 ## Overview
-La commande `rehash` dans C Shell (csh) est utilisée pour mettre à jour le cache des commandes. Cela permet au shell de reconnaître les nouveaux exécutables ajoutés au chemin sans avoir à redémarrer le shell.
+La commande `rehash` dans C Shell (csh) est utilisée pour mettre à jour le cache des commandes. Lorsque vous ajoutez ou modifiez des programmes dans les répertoires spécifiés dans votre variable d'environnement `PATH`, `rehash` permet à l'interpréteur de commandes de reconnaître ces changements sans avoir à redémarrer le shell.
 
 ## Usage
 La syntaxe de base de la commande `rehash` est la suivante :
@@ -11,34 +11,36 @@ rehash [options] [arguments]
 ```
 
 ## Common Options
-La commande `rehash` ne dispose pas d'options spécifiques. Elle s'utilise généralement sans arguments.
+La commande `rehash` n'a pas d'options courantes. Elle est généralement utilisée sans arguments.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `rehash` :
 
-### Exemple 1 : Mettre à jour le cache après l'ajout d'un nouveau programme
-Si vous avez installé un nouveau programme et que vous souhaitez que le shell le reconnaisse, utilisez :
+1. **Mettre à jour le cache après avoir ajouté un nouveau programme :**
+   ```csh
+   # Ajoutez un nouveau programme dans un répertoire de votre PATH
+   mv mon_programme /usr/local/bin/
+   # Mettez à jour le cache des commandes
+   rehash
+   ```
 
-```csh
-rehash
-```
+2. **Mettre à jour le cache après avoir supprimé un programme :**
+   ```csh
+   # Supprimez un programme de votre PATH
+   rm /usr/local/bin/mon_programme
+   # Mettez à jour le cache des commandes
+   rehash
+   ```
 
-### Exemple 2 : Utilisation après modification du PATH
-Après avoir modifié votre variable d'environnement `PATH`, exécutez :
-
-```csh
-rehash
-```
-
-### Exemple 3 : Vérification du cache
-Pour vérifier que le cache a été mis à jour, vous pouvez essayer d'exécuter le programme nouvellement installé après avoir utilisé `rehash` :
-
-```csh
-rehash
-mon_nouveau_programme
-```
+3. **Utilisation après avoir modifié un script :**
+   ```csh
+   # Modifiez un script dans votre répertoire
+   vi ~/scripts/mon_script.csh
+   # Mettez à jour le cache pour que les modifications soient prises en compte
+   rehash
+   ```
 
 ## Tips
-- Utilisez `rehash` chaque fois que vous installez de nouveaux programmes ou modifiez votre `PATH` pour éviter les erreurs de commande non trouvée.
-- Il est bon de savoir que `rehash` n'affecte pas les alias ou les fonctions définies dans votre shell.
-- Si vous utilisez souvent des scripts ou des programmes installés dynamiquement, envisagez d'ajouter `rehash` à votre fichier de démarrage `.cshrc` pour automatiser le processus.
+- Utilisez `rehash` chaque fois que vous ajoutez ou supprimez des commandes dans les répertoires de votre `PATH` pour éviter des erreurs de commande non trouvée.
+- Il n'est pas nécessaire de l'utiliser fréquemment si vous ne modifiez pas souvent votre environnement, mais cela peut être utile après des changements significatifs.
+- Si vous utilisez souvent des scripts, envisagez d'ajouter `rehash` à la fin de vos scripts pour garantir que les modifications soient toujours prises en compte.

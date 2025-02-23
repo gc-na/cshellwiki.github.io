@@ -1,49 +1,54 @@
-# [Linux] C Shell (csh) pr gebruik: Pagina-opmaak voor tekstbestanden
+# [Linux] C Shell (csh) pr gebruik: documenten opmaken voor afdrukken
 
 ## Overzicht
-De `pr`-opdracht in C Shell (csh) wordt gebruikt om tekstbestanden op te maken voor afdrukken. Het voegt pagina- en kolomindelingen toe, waardoor het gemakkelijker wordt om lange tekstbestanden te lezen en af te drukken.
+De `pr`-opdracht in C Shell (csh) wordt gebruikt om tekstbestanden op te maken voor afdrukken. Het formatteert de inhoud van een bestand, zodat het netjes en overzichtelijk op papier kan worden weergegeven.
 
 ## Gebruik
 De basis syntaxis van de `pr`-opdracht is als volgt:
 
-```csh
+```
 pr [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
+## Veelvoorkomende opties
 - `-l [aantal]`: Bepaalt het aantal regels per pagina.
-- `-w [aantal]`: Bepaalt de breedte van de pagina in karakters.
-- `-h [koptekst]`: Voegt een koptekst toe aan elke pagina.
-- `-t`: Verbergt de paginanummers en datum.
+- `-w [aantal]`: Stelt de breedte van de pagina in.
+- `-t`: Verbergt de paginatitels en -nummers.
+- `-s [teken]`: Geeft het scheidingsteken op tussen kolommen.
 
-## Veelvoorkomende Voorbeelden
+## Veelvoorkomende voorbeelden
 
-1. **Basis gebruik**: Om een tekstbestand op te maken voor afdrukken.
+1. **Basis gebruik van pr**:
+   Dit commando formatteert het bestand `voorbeeld.txt` voor afdrukken.
    ```csh
-   pr bestand.txt
+   pr voorbeeld.txt
    ```
 
-2. **Aangepaste regelhoogte**: Om het aantal regels per pagina in te stellen op 50.
+2. **Instellen van het aantal regels per pagina**:
+   Dit commando stelt het aantal regels per pagina in op 50.
    ```csh
-   pr -l 50 bestand.txt
+   pr -l 50 voorbeeld.txt
    ```
 
-3. **Koptekst toevoegen**: Om een koptekst "Mijn Document" toe te voegen.
+3. **Instellen van de pagina breedte**:
+   Dit commando stelt de breedte van de pagina in op 80 tekens.
    ```csh
-   pr -h "Mijn Document" bestand.txt
+   pr -w 80 voorbeeld.txt
    ```
 
-4. **Verbergen van paginanummers**: Om een bestand af te drukken zonder paginanummers.
+4. **Verbergen van paginatitels**:
+   Dit commando verbergt de paginatitels en -nummers.
    ```csh
-   pr -t bestand.txt
+   pr -t voorbeeld.txt
    ```
 
-5. **Meerdere bestanden samenvoegen**: Om meerdere bestanden samen te voegen en op te maken.
+5. **Gebruik van een scheidingsteken**:
+   Dit commando gebruikt een tab als scheidingsteken tussen kolommen.
    ```csh
-   pr bestand1.txt bestand2.txt
+   pr -s '\t' bestand1.txt bestand2.txt
    ```
 
 ## Tips
-- Gebruik de `-w` optie om de pagina-instellingen aan te passen aan de afdrukvereisten van uw printer.
-- Experimenteer met verschillende opties om de opmaak te optimaliseren voor uw specifieke behoeften.
-- Vergeet niet om een voorbeeldafdruk te maken voordat u grote documenten afdrukt, om te controleren of de opmaak naar wens is.
+- Gebruik de optie `-l` om de leesbaarheid te verbeteren door het aantal regels per pagina aan te passen aan de afdrukinstellingen.
+- Experimenteer met de optie `-w` om te zien welke breedte het beste werkt voor uw documenten.
+- Vergeet niet om uw bestanden te controleren op opmaak voordat u ze afdrukt, zodat u zeker weet dat alles correct wordt weergegeven.

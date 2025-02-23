@@ -1,10 +1,10 @@
-# [Linux] C Shell (csh) expr gebruik: Voer expressies uit en berekeningen
+# [Linux] C Shell (csh) expr gebruik: Voer berekeningen en stringoperaties uit
 
 ## Overzicht
-De `expr`-opdracht in C Shell (csh) wordt gebruikt om eenvoudige berekeningen uit te voeren en expressies te evalueren. Het kan worden gebruikt voor wiskundige berekeningen, stringmanipulatie en logische vergelijkingen.
+Het `expr` commando in C Shell (csh) wordt gebruikt voor het uitvoeren van eenvoudige berekeningen en stringoperaties. Het kan worden gebruikt om wiskundige expressies te evalueren, strings te vergelijken en substrings te extraheren.
 
 ## Gebruik
-De basis syntaxis van de `expr`-opdracht is als volgt:
+De basis syntaxis van het `expr` commando is als volgt:
 
 ```csh
 expr [opties] [argumenten]
@@ -13,11 +13,11 @@ expr [opties] [argumenten]
 ## Veelvoorkomende Opties
 - `+` : Optelling van twee getallen.
 - `-` : Aftrekking van twee getallen.
-- `*` : Vermenigvuldiging van twee getallen.
+- `*` : Vermenigvuldiging van twee getallen (gebruik `\*` om het te ontsnappen).
 - `/` : Deling van twee getallen.
 - `%` : Modulus (rest) van twee getallen.
-- `=` : Vergelijking van twee waarden.
-- `:` : Stringlengte.
+- `=` : Vergelijking van twee strings of getallen.
+- `:` : Verkrijg een substring van een string.
 
 ## Veelvoorkomende Voorbeelden
 
@@ -37,7 +37,7 @@ Dit geeft `6` als resultaat.
 ```csh
 expr 7 \* 6
 ```
-Dit geeft `42` als resultaat. (Let op de escape-teken voor de sterretje.)
+Dit geeft `42` als resultaat.
 
 ### Voorbeeld 4: Deling
 ```csh
@@ -45,19 +45,19 @@ expr 20 / 4
 ```
 Dit geeft `5` als resultaat.
 
-### Voorbeeld 5: Stringlengte
+### Voorbeeld 5: Stringvergelijking
 ```csh
-expr length "Hallo Wereld"
+expr "hello" = "hello"
 ```
-Dit geeft `12` als resultaat, de lengte van de string.
+Dit geeft `1` (waar) als resultaat.
 
-### Voorbeeld 6: Vergelijking
+### Voorbeeld 6: Substring
 ```csh
-expr 5 = 5
+expr substr "abcdef" 2 3
 ```
-Dit geeft `1` (waar) als resultaat, omdat de waarden gelijk zijn.
+Dit geeft `bcd` als resultaat.
 
 ## Tips
-- Vergeet niet om de operatoren correct te escapen, vooral de vermenigvuldigingsoperator (`*`).
-- Gebruik haakjes om de volgorde van bewerkingen te bepalen, bijvoorbeeld: `expr \( 5 + 3 \) \* 2`.
-- `expr` retourneert altijd een string, dus wees voorzichtig met het interpreteren van de resultaten in scripts.
+- Gebruik altijd een backslash (`\`) voor het vermenigvuldigingssymbool (`*`) om verwarring met shell-wildcards te voorkomen.
+- Zorg ervoor dat je spaties gebruikt tussen de operatoren en de getallen of strings, anders kan `expr` niet correct functioneren.
+- `expr` retourneert `0` voor false en `1` voor true bij vergelijkingen, wat handig kan zijn in scripts.

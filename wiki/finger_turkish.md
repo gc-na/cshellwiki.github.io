@@ -1,22 +1,22 @@
 # [Linux] C Shell (csh) finger Kullanımı: Kullanıcı bilgilerini görüntüleme
 
 ## Genel Bakış
-`finger` komutu, sistemdeki kullanıcıların bilgilerini görüntülemek için kullanılır. Bu komut, kullanıcı adı, tam ad, oturum durumu ve son giriş zamanı gibi bilgileri sağlar.
+finger komutu, sistemdeki kullanıcıların bilgilerini görüntülemek için kullanılır. Bu komut, kullanıcı adı, tam adı, oturum durumu ve son giriş zamanı gibi bilgileri sağlar.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
 
-```
+```bash
 finger [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-l`: Kullanıcı hakkında daha ayrıntılı bilgi gösterir.
-- `-m`: Kullanıcı adını tam olarak eşleştirmek için kullanılır.
-- `-s`: Kısa biçimde kullanıcı bilgilerini gösterir.
+- `-l`: Kullanıcı bilgilerini daha ayrıntılı bir şekilde gösterir.
+- `-m`: Kullanıcı adlarını büyük harfle arar.
+- `-s`: Kısa bir çıktı verir, yalnızca kullanıcı adı ve durumu gösterir.
 
 ## Yaygın Örnekler
-Aşağıda `finger` komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda finger komutunun bazı pratik örnekleri bulunmaktadır:
 
 1. Tüm kullanıcıların bilgilerini görüntüleme:
    ```bash
@@ -28,17 +28,20 @@ Aşağıda `finger` komutunun bazı pratik örnekleri bulunmaktadır:
    finger kullanıcı_adı
    ```
 
-3. Ayrıntılı kullanıcı bilgilerini görüntüleme:
+3. Ayrıntılı bilgi ile bir kullanıcının bilgilerini görüntüleme:
    ```bash
    finger -l kullanıcı_adı
    ```
 
-4. Kısa biçimde kullanıcı bilgilerini görüntüleme:
+4. Kısa bilgi ile tüm kullanıcıların durumunu görüntüleme:
    ```bash
    finger -s
    ```
 
 ## İpuçları
-- `finger` komutunu kullanmadan önce, sistemde bu komutun yüklü olduğundan emin olun.
-- Kullanıcı bilgilerini görüntülemek için doğru kullanıcı adını girdiğinizden emin olun.
-- `finger` komutu, kullanıcıların çevrimiçi durumlarını görmek için yararlıdır, bu nedenle sistem yönetimi için faydalı bir araçtır.
+- finger komutunu sık sık kullanıyorsanız, belirli bir kullanıcıyı hızlıca kontrol etmek için alias tanımlayabilirsiniz.
+- Kullanıcı bilgilerini güncel tutmak için, kullanıcıların sistemdeki oturumlarını düzenli olarak kontrol edin.
+- Eğer birden fazla kullanıcıyı kontrol ediyorsanız, çıktıların daha okunabilir olması için `less` komutuyla birleştirebilirsiniz:
+  ```bash
+  finger | less
+  ```

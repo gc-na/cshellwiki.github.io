@@ -1,43 +1,50 @@
-# [Linux] C Shell (csh) builtin `alias`: Crea abbreviazioni per comandi
+# [Linux] C Shell (csh) builtin `set`: Imposta variabili di ambiente
 
 ## Overview
-Il comando `alias` nel C Shell (csh) consente di creare abbreviazioni per comandi lunghi o complessi. Questo è utile per semplificare l'uso di comandi frequentemente utilizzati, rendendo la tua esperienza nella shell più efficiente.
+Il comando `set` in C Shell (csh) viene utilizzato per impostare o modificare le variabili di ambiente e le opzioni di shell. È uno strumento fondamentale per la configurazione dell'ambiente di lavoro della shell.
 
 ## Usage
-La sintassi di base del comando `alias` è la seguente:
+La sintassi di base del comando `set` è la seguente:
 
 ```csh
-alias [nome_alias] '[comando]'
+set [variabile[=valore]]...
 ```
 
 ## Common Options
-- `-p`: Mostra tutti gli alias attualmente definiti.
-- `-d`: Rimuove un alias esistente.
+- `-x`: Abilita l'espansione delle variabili, mostrando il loro valore quando vengono utilizzate.
+- `-e`: Abilita l'opzione di errore, che termina l'esecuzione della shell se un comando restituisce un errore.
+- `-u`: Tratta le variabili non definite come errori.
 
 ## Common Examples
-Ecco alcuni esempi pratici di utilizzo del comando `alias`:
+Ecco alcuni esempi pratici dell'uso del comando `set`:
 
-1. Creare un alias per il comando `ls -la`:
+1. **Impostare una variabile semplice:**
    ```csh
-   alias ll 'ls -la'
+   set nome="Mario"
    ```
 
-2. Creare un alias per navigare rapidamente nella directory home:
+2. **Impostare più variabili contemporaneamente:**
    ```csh
-   alias home 'cd ~'
+   set nome="Mario" età=30 città="Roma"
    ```
 
-3. Visualizzare tutti gli alias definiti:
+3. **Visualizzare il valore di una variabile:**
    ```csh
-   alias -p
+   echo $nome
    ```
 
-4. Rimuovere un alias precedentemente creato:
+4. **Abilitare l'espansione delle variabili:**
    ```csh
-   alias -d ll
+   set -x
+   echo $nome
+   ```
+
+5. **Impostare una variabile di ambiente:**
+   ```csh
+   setenv PATH "/usr/local/bin:$PATH"
    ```
 
 ## Tips
-- Utilizza alias per i comandi che usi frequentemente per risparmiare tempo.
-- Assicurati di non sovrascrivere comandi di sistema esistenti con i tuoi alias.
-- Puoi aggiungere i tuoi alias nel file `.cshrc` per renderli permanenti tra le sessioni.
+- Ricorda di utilizzare le virgolette per i valori che contengono spazi.
+- Utilizza `set -x` per il debug, in modo da vedere quali variabili vengono espanse.
+- Fai attenzione a non sovrascrivere variabili di sistema importanti, come `PATH`, senza includere i valori esistenti.

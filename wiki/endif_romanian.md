@@ -1,51 +1,42 @@
-# [Linux] C Shell (csh) endif utilizare: Termină o structură de control
+# [Sistem de operare] C Shell (csh) endif utilizare: [încheierea unei condiții]
 
 ## Overview
-Comanda `endif` în C Shell (csh) este utilizată pentru a marca sfârșitul unei structuri de control `if`. Aceasta este esențială pentru a delimita blocurile de cod care sunt executate condiționat, asigurându-se că sintaxa este corectă și că programul funcționează conform așteptărilor.
+Comanda `endif` în C Shell (csh) este utilizată pentru a marca sfârșitul unei structuri condiționale `if`. Aceasta este esențială pentru a delimita blocurile de cod care se execută în funcție de evaluarea unei condiții.
 
 ## Usage
 Sintaxa de bază a comenzii `endif` este următoarea:
 
-```
+```csh
 endif
 ```
-
-Aceasta nu necesită opțiuni sau argumente suplimentare, ci este folosită pur și simplu pentru a încheia o instrucțiune `if`.
 
 ## Common Options
-Comanda `endif` nu are opțiuni specifice, deoarece rolul său este pur structural. Este important să fie utilizată corect în contextul unei instrucțiuni `if`.
+Comanda `endif` nu are opțiuni specifice, deoarece este folosită exclusiv pentru a încheia o structură condițională.
 
 ## Common Examples
-Iată câteva exemple practice care ilustrează utilizarea comenzii `endif`:
 
-### Exemplul 1: Utilizarea de bază a `if`
+### Exemplul 1: Utilizarea `if` cu `endif`
 ```csh
-if ( $var == "valoare" ) then
+if ($var == "valoare") then
     echo "Variabila are valoarea corectă."
 endif
 ```
 
-### Exemplul 2: `if` cu `else`
+### Exemplul 2: Verificarea existenței unui fișier
 ```csh
-if ( $var == "valoare" ) then
-    echo "Variabila are valoarea corectă."
-else
-    echo "Variabila nu are valoarea corectă."
+if (-e "fisier.txt") then
+    echo "Fișierul există."
 endif
 ```
 
-### Exemplul 3: `if` cu mai multe condiții
+### Exemplul 3: Verificarea unei condiții multiple
 ```csh
-if ( $var == "valoare1" ) then
-    echo "Variabila este valoare1."
-else if ( $var == "valoare2" ) then
-    echo "Variabila este valoare2."
-else
-    echo "Variabila nu este nici valoare1, nici valoare2."
+if ($var1 == "a" && $var2 == "b") then
+    echo "Ambele variabile sunt corecte."
 endif
 ```
 
 ## Tips
-- Asigurați-vă că fiecare instrucțiune `if` are un `endif` corespunzător pentru a evita erorile de sintaxă.
-- Folosiți indentarea pentru a face codul mai ușor de citit, mai ales când aveți mai multe niveluri de condiții.
-- Testați întotdeauna scripturile pentru a verifica dacă logica condițională funcționează așa cum este prevăzut.
+- Asigurați-vă că fiecare `if` are un `endif` corespunzător pentru a evita erorile de sintaxă.
+- Folosiți indentarea corectă pentru a face codul mai ușor de citit, în special în structuri condiționale complexe.
+- Testați condițiile înainte de a le utiliza în scripturi pentru a vă asigura că funcționează conform așteptărilor.

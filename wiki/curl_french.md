@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) curl Utilisation : Récupérer des données à partir d'URL
 
 ## Overview
-La commande `curl` est un outil en ligne de commande utilisé pour transférer des données depuis ou vers un serveur à l'aide de divers protocoles, notamment HTTP, HTTPS, FTP, et plus encore. Elle est particulièrement utile pour interagir avec des API web et télécharger des fichiers.
+La commande `curl` est un outil en ligne de commande utilisé pour transférer des données vers ou depuis un serveur. Elle prend en charge divers protocoles, notamment HTTP, HTTPS, FTP et bien d'autres. `curl` est particulièrement utile pour tester des API ou télécharger des fichiers.
 
 ## Usage
 La syntaxe de base de la commande `curl` est la suivante :
@@ -13,11 +13,11 @@ curl [options] [arguments]
 ## Common Options
 Voici quelques options courantes pour `curl` :
 
-- `-O` : Télécharge le fichier et le sauvegarde avec le même nom que sur le serveur.
-- `-L` : Suit les redirections si l'URL a changé.
+- `-O` : Télécharge un fichier et le sauvegarde avec le même nom que celui du serveur.
+- `-L` : Suit les redirections.
+- `-I` : Récupère uniquement les en-têtes de la réponse.
 - `-d` : Envoie des données dans une requête POST.
-- `-H` : Ajoute un en-tête HTTP à la requête.
-- `-u` : Fournit un nom d'utilisateur et un mot de passe pour l'authentification.
+- `-H` : Ajoute un en-tête HTTP personnalisé.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `curl` :
@@ -27,27 +27,27 @@ Voici quelques exemples pratiques de l'utilisation de `curl` :
    curl -O http://example.com/fichier.txt
    ```
 
-2. **Suivre les redirections :**
+2. **Faire une requête GET :**
    ```csh
-   curl -L http://example.com
+   curl http://example.com/api/v1/ressource
    ```
 
-3. **Envoyer des données avec une requête POST :**
+3. **Faire une requête POST avec des données :**
    ```csh
-   curl -d "param1=valeur1&param2=valeur2" http://example.com/api
+   curl -d "nom=John&age=30" http://example.com/api/v1/ajouter
    ```
 
-4. **Ajouter un en-tête HTTP :**
+4. **Récupérer uniquement les en-têtes d'une réponse :**
    ```csh
-   curl -H "Authorization: Bearer token" http://example.com/api
+   curl -I http://example.com
    ```
 
-5. **Télécharger un fichier en utilisant l'authentification :**
+5. **Suivre les redirections :**
    ```csh
-   curl -u nom_utilisateur:mot_de_passe -O http://example.com/fichier_protege.txt
+   curl -L http://example.com/ancienne-url
    ```
 
 ## Tips
-- Utilisez l'option `-v` pour activer le mode verbeux et obtenir plus d'informations sur la requête et la réponse.
-- Pour tester des API, envisagez d'utiliser `curl` avec des options comme `-X` pour spécifier le type de requête (GET, POST, PUT, DELETE).
-- N'oubliez pas de vérifier les permissions des fichiers téléchargés, surtout si vous les exécutez ou les utilisez dans des scripts.
+- Utilisez l'option `-v` pour activer le mode verbeux, ce qui vous permet de voir les détails de la requête et de la réponse.
+- Pour tester des API, envisagez d'utiliser des outils comme Postman, mais `curl` est idéal pour des tests rapides en ligne de commande.
+- Pensez à consulter la documentation de `curl` en utilisant `man curl` pour explorer toutes les options disponibles.

@@ -7,7 +7,7 @@ Il comando `chmod` (change mode) è utilizzato per modificare i permessi di acce
 La sintassi di base del comando `chmod` è la seguente:
 
 ```csh
-chmod [opzioni] [argomenti]
+chmod [options] [arguments]
 ```
 
 ## Common Options
@@ -20,36 +20,37 @@ chmod [opzioni] [argomenti]
 - `x`: Permesso di esecuzione (execute).
 - `+`: Aggiunge un permesso.
 - `-`: Rimuove un permesso.
+- `=`: Imposta i permessi esatti.
 
 ## Common Examples
 Ecco alcuni esempi pratici dell'uso del comando `chmod`:
 
-1. Aggiungere il permesso di esecuzione per il proprietario:
+1. **Aggiungere permesso di esecuzione per il proprietario:**
    ```csh
    chmod u+x nomefile
    ```
 
-2. Rimuovere il permesso di scrittura per il gruppo:
+2. **Rimuovere il permesso di scrittura per il gruppo:**
    ```csh
    chmod g-w nomefile
    ```
 
-3. Impostare i permessi di lettura e scrittura per il proprietario e il gruppo, e solo lettura per gli altri:
+3. **Impostare i permessi di lettura e scrittura per il proprietario e il gruppo, e nessun permesso per gli altri:**
    ```csh
-   chmod 664 nomefile
+   chmod ug=rw,o= nomefile
    ```
 
-4. Applicare i cambiamenti in modo ricorsivo a una directory:
+4. **Applicare i cambiamenti in modo ricorsivo a una directory:**
    ```csh
-   chmod -R 755 nomedirectory
+   chmod -R u+rwx nome_directory
    ```
 
-5. Aggiungere il permesso di lettura per tutti:
+5. **Aggiungere permesso di lettura per tutti:**
    ```csh
    chmod a+r nomefile
    ```
 
 ## Tips
-- Utilizza sempre `chmod` con cautela, specialmente con l'opzione `-R`, per evitare di modificare inavvertitamente i permessi di file critici.
-- Controlla i permessi attuali di un file con il comando `ls -l` prima di apportare modifiche.
-- Ricorda che i permessi sono rappresentati in forma numerica (come 755) o simbolica (come u+x), quindi scegli il metodo che ti è più comodo.
+- Utilizza `ls -l` per controllare i permessi attuali di un file prima di modificarli.
+- Fai attenzione quando utilizzi l'opzione `-R`, poiché potrebbe cambiare i permessi di molti file e directory.
+- È buona pratica limitare i permessi a quelli strettamente necessari per garantire la sicurezza del sistema.

@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) at: Befehle zeitgesteuert ausführen
+# [Linux] C Shell (csh) at: Aufgaben zeitgesteuert ausführen
 
 ## Übersicht
-Der `at` Befehl wird verwendet, um Aufgaben zu einem bestimmten Zeitpunkt in der Zukunft auszuführen. Er ermöglicht es Benutzern, Befehle oder Skripte zu planen, die zu einem festgelegten Zeitpunkt automatisch ausgeführt werden.
+Der `at` Befehl wird verwendet, um einmalige Aufgaben zu einem bestimmten Zeitpunkt in der Zukunft auszuführen. Dies ist nützlich, um Skripte oder Befehle zu planen, die zu einem späteren Zeitpunkt automatisch ausgeführt werden sollen.
 
 ## Verwendung
 Die grundlegende Syntax des `at` Befehls lautet:
@@ -11,40 +11,34 @@ at [Optionen] [Zeit]
 ```
 
 ## Häufige Optionen
-- `-f [Datei]`: Gibt eine Datei an, die die auszuführenden Befehle enthält.
-- `-m`: Sendet eine E-Mail, wenn der Job abgeschlossen ist.
-- `-q [Warteschlange]`: Gibt die Warteschlange an, in der der Job ausgeführt werden soll.
-- `-l`: Listet die geplanten Jobs auf.
+- `-f`: Gibt eine Datei an, die die Befehle enthält, die ausgeführt werden sollen.
+- `-m`: Sendet eine E-Mail-Benachrichtigung, wenn der Job abgeschlossen ist.
+- `-q`: Gibt die Warteschlange an, in der der Job ausgeführt werden soll.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele zur Verwendung des `at` Befehls:
+Hier sind einige praktische Beispiele für die Verwendung des `at` Befehls:
 
-1. **Einen Befehl in 10 Minuten ausführen**:
-   ```bash
-   echo "echo 'Hallo Welt'" | at now + 10 minutes
+1. **Einen Befehl um 15:00 Uhr ausführen:**
+   ```csh
+   echo "echo 'Hallo Welt'" | at 15:00
    ```
 
-2. **Ein Skript zu einem bestimmten Zeitpunkt ausführen**:
-   ```bash
-   at 14:00 < /path/to/script.sh
+2. **Ein Skript zu einem bestimmten Datum und Uhrzeit ausführen:**
+   ```csh
+   at 2023-10-31 14:00 < mein_skript.sh
    ```
 
-3. **Einen Job für morgen um 8 Uhr planen**:
-   ```bash
-   echo "backup.sh" | at 08:00 tomorrow
+3. **Einen Befehl in 10 Minuten ausführen:**
+   ```csh
+   echo "backup.sh" | at now + 10 minutes
    ```
 
-4. **Einen Job mit einer E-Mail-Benachrichtigung planen**:
-   ```bash
-   echo "echo 'Job abgeschlossen'" | at -m now + 1 hour
-   ```
-
-5. **Geplante Jobs auflisten**:
-   ```bash
-   at -l
+4. **Einen Befehl aus einer Datei ausführen:**
+   ```csh
+   at -f befehle.txt 09:00
    ```
 
 ## Tipps
-- Stellen Sie sicher, dass der `at` Daemon (`atd`) läuft, damit geplante Jobs ausgeführt werden können.
-- Verwenden Sie die `-m` Option, um sicherzustellen, dass Sie eine Benachrichtigung erhalten, wenn der Job abgeschlossen ist.
-- Planen Sie Jobs in einer Testumgebung, um sicherzustellen, dass sie wie erwartet funktionieren, bevor Sie sie in einer Produktionsumgebung einsetzen.
+- Überprüfen Sie Ihre geplanten Jobs mit dem Befehl `atq`, um sicherzustellen, dass alles korrekt eingeplant ist.
+- Nutzen Sie die `-m` Option, um sicherzustellen, dass Sie eine Benachrichtigung erhalten, wenn der Job abgeschlossen ist.
+- Seien Sie vorsichtig bei der Angabe von Zeiten; verwenden Sie das 24-Stunden-Format, um Missverständnisse zu vermeiden.

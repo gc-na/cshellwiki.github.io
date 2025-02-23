@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) tcpdump Kullanımı: Ağ trafiğini analiz etme aracı
 
 ## Genel Bakış
-tcpdump, ağ trafiğini izlemek ve analiz etmek için kullanılan güçlü bir komuttur. Ağ üzerinde geçen paketleri yakalayarak, bu paketlerin içeriğini incelemenizi sağlar. Genellikle ağ sorunlarını teşhis etmek veya güvenlik denetimleri yapmak için kullanılır.
+tcpdump, ağ trafiğini izlemek ve analiz etmek için kullanılan bir komut satırı aracıdır. Ağ üzerinde geçen paketleri yakalayarak, bu paketlerin içeriğini görüntülemenizi sağlar. Bu, ağ sorunlarını teşhis etmek veya güvenlik denetimleri yapmak için oldukça yararlıdır.
 
 ## Kullanım
 tcpdump komutunun temel sözdizimi aşağıdaki gibidir:
@@ -11,41 +11,41 @@ tcpdump [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-i`: Hangi ağ arayüzünün kullanılacağını belirtir.
+- `-i <arayüz>`: Hangi ağ arayüzünün izleneceğini belirtir.
 - `-n`: IP adreslerini ve port numaralarını sayısal olarak gösterir, isim çözümlemesi yapmaz.
-- `-c`: Belirtilen sayıda paketi yakaladıktan sonra tcpdump'ı durdurur.
-- `-w`: Yakalanan verileri bir dosyaya yazmak için kullanılır.
-- `-r`: Daha önce kaydedilmiş bir dosyadan paketleri okumak için kullanılır.
+- `-c <sayı>`: Belirtilen sayıda paketi yakaladıktan sonra tcpdump'ı durdurur.
+- `-w <dosya>`: Yakalanan paketleri belirtilen dosyaya kaydeder.
+- `-r <dosya>`: Daha önce kaydedilmiş bir dosyadan paketleri okur.
 
 ## Yaygın Örnekler
-Aşağıda tcpdump komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+Aşağıda tcpdump komutunun bazı pratik örnekleri bulunmaktadır:
 
 1. Tüm ağ trafiğini izlemek için:
    ```bash
    tcpdump -i eth0
    ```
 
-2. Belirli bir IP adresine gelen trafiği izlemek için:
+2. Sadece HTTP trafiğini yakalamak için:
    ```bash
-   tcpdump -i eth0 host 192.168.1.1
+   tcpdump -i eth0 port 80
    ```
 
 3. İlk 10 paketi yakalayıp durdurmak için:
    ```bash
-   tcpdump -c 10 -i eth0
+   tcpdump -i eth0 -c 10
    ```
 
-4. Yakalanan verileri bir dosyaya yazmak için:
+4. Yakalanan verileri bir dosyaya kaydetmek için:
    ```bash
-   tcpdump -i eth0 -w trafi.pcap
+   tcpdump -i eth0 -w yakalanan_paketler.pcap
    ```
 
-5. Daha önce kaydedilmiş bir dosyayı okumak için:
+5. Kaydedilmiş bir dosyadan paketleri okumak için:
    ```bash
-   tcpdump -r trafi.pcap
+   tcpdump -r yakalanan_paketler.pcap
    ```
 
 ## İpuçları
-- tcpdump kullanırken, ağ trafiğinin yoğun olduğu zamanlarda çalıştırmak, daha fazla veri toplamanıza yardımcı olabilir.
-- Yakalanan verileri analiz etmek için Wireshark gibi grafiksel araçlarla birlikte kullanabilirsiniz.
-- Ağ güvenliği için tcpdump ile birlikte filtreleme seçeneklerini kullanarak yalnızca ilginç paketleri yakalayabilirsiniz.
+- tcpdump kullanırken, ağ trafiğini izlemek için yeterli izinlere sahip olduğunuzdan emin olun; genellikle root yetkileri gereklidir.
+- Ağ trafiğini izlerken, yalnızca gerekli bilgileri yakalamaya odaklanın; bu, daha az gürültü ve daha anlamlı sonuçlar elde etmenizi sağlar.
+- Yakalanan verilerin boyutunu kontrol edin; çok fazla veri toplamak, analiz yapmayı zorlaştırabilir.

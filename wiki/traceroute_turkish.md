@@ -1,10 +1,10 @@
-# [Linux] C Shell (csh) traceroute Kullanımı: Ağ yollarını izleme aracı
+# [Linux] C Shell (csh) traceroute Kullanımı: Ağ yolunu izleme aracı
 
 ## Genel Bakış
-`traceroute` komutu, bir ağ üzerindeki veri paketlerinin hedefe ulaşırken geçtiği yolları izlemek için kullanılır. Bu komut, ağ bağlantı sorunlarını teşhis etmek ve ağın yapısını anlamak için oldukça faydalıdır.
+`traceroute` komutu, bir ağ üzerindeki bir hedefe giden yol boyunca geçilen yönlendiricileri (router) gösterir. Bu, ağ bağlantı sorunlarını tanımlamak ve ağın performansını analiz etmek için yararlıdır.
 
 ## Kullanım
-Temel sözdizimi şu şekildedir:
+Temel sözdizimi aşağıdaki gibidir:
 
 ```csh
 traceroute [seçenekler] [argümanlar]
@@ -12,14 +12,14 @@ traceroute [seçenekler] [argümanlar]
 
 ## Yaygın Seçenekler
 - `-m <sayı>`: Maksimum atlama sayısını belirler.
-- `-p <port>`: Hedefe gönderilecek UDP paketinin portunu ayarlar.
 - `-n`: IP adreslerini çözümlemeden doğrudan gösterir.
-- `-w <saniye>`: Her bir atlama için zaman aşımını belirler.
+- `-p <port>`: Hedefe ulaşmak için kullanılacak port numarasını belirtir.
+- `-w <saniye>`: Her bir yanıt için bekleme süresini ayarlar.
 
 ## Yaygın Örnekler
-Aşağıda `traceroute` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+Aşağıda `traceroute` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. Basit bir traceroute komutu:
+1. Basit bir traceroute:
    ```csh
    traceroute example.com
    ```
@@ -29,17 +29,17 @@ Aşağıda `traceroute` komutunun bazı pratik kullanım örnekleri bulunmaktad�
    traceroute -m 15 example.com
    ```
 
-3. Belirli bir port ile traceroute:
-   ```csh
-   traceroute -p 80 example.com
-   ```
-
-4. IP adreslerini çözümlemeden gösterme:
+3. IP adreslerini çözümlemeden gösterme:
    ```csh
    traceroute -n example.com
    ```
 
+4. Belirli bir port numarası kullanarak traceroute:
+   ```csh
+   traceroute -p 80 example.com
+   ```
+
 ## İpuçları
 - `traceroute` komutunu kullanmadan önce, ağ bağlantınızın aktif olduğundan emin olun.
-- Ağ sorunlarını teşhis etmek için, farklı hedeflere traceroute yaparak karşılaştırmalar yapın.
-- Sonuçları analiz ederken, her bir atlamanın yanıt süresine dikkat edin; yüksek yanıt süreleri ağda bir sorun olabileceğini gösterebilir.
+- Ağ sorunlarını tanımlarken, farklı hedefler üzerinde `traceroute` çalıştırarak karşılaştırma yapın.
+- Yanıt sürelerini analiz ederek, ağ performansını değerlendirebilirsiniz.

@@ -1,44 +1,48 @@
-# [Linux] C Shell (csh) script Kullanımı: Komutların kaydını tutma
+# [Linux] C Shell (csh) script Kullanımı: Komut çıktısını kaydetme
 
 ## Overview
-`script` komutu, terminal oturumlarınızı kaydetmek için kullanılır. Bu komut, terminaldeki tüm çıktıyı bir dosyaya yazarak, daha sonra bu oturumu incelemenizi sağlar.
+`script` komutu, terminal oturumunuzun çıktısını bir dosyaya kaydetmek için kullanılır. Bu, özellikle komutların çıktısını belgelemek veya daha sonra incelemek için faydalıdır.
 
 ## Usage
-Temel sözdizimi aşağıdaki gibidir:
+Temel sözdizimi şu şekildedir:
 
 ```csh
 script [options] [arguments]
 ```
 
 ## Common Options
-- `-a`: Mevcut bir dosyaya ekleme yapar. Eğer dosya zaten varsa, yeni çıktılar mevcut içeriğin sonuna eklenir.
-- `-f`: Çıktıyı anında gösterir. Bu seçenek, terminaldeki çıktının hemen görünmesini sağlar.
-- `-q`: Sessiz modda çalışır. Bu seçenek ile başlangıç ve bitiş mesajları gösterilmez.
+- `-a`: Var olan bir dosyaya ekleme yapar, dosyayı silmez.
+- `-f`: Çıktıyı anlık olarak gösterir, yani çıktıyı hemen dosyaya yazar.
+- `-q`: Komutun başlangıcında bilgi mesajı göstermez.
 
 ## Common Examples
-Aşağıda `script` komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda `script` komutunun bazı pratik örnekleri verilmiştir:
 
-1. Basit bir oturum kaydı oluşturma:
+1. Basit bir oturum kaydetme:
    ```csh
    script oturum.txt
    ```
+   Bu komut, terminal oturumunu `oturum.txt` dosyasına kaydeder.
 
-2. Mevcut bir dosyaya ekleme yaparak kaydetme:
+2. Var olan bir dosyaya ekleme yapma:
    ```csh
    script -a oturum.txt
    ```
+   Bu komut, mevcut `oturum.txt` dosyasına yeni çıktılar ekler.
 
-3. Çıktıyı anında gösterme:
+3. Çıktıyı anlık olarak gösterme:
    ```csh
    script -f oturum.txt
    ```
+   Bu komut, çıktıyı hemen `oturum.txt` dosyasına yazar ve terminalde de gösterir.
 
-4. Sessiz modda oturum kaydetme:
+4. Bilgi mesajı olmadan oturum kaydetme:
    ```csh
    script -q oturum.txt
    ```
+   Bu komut, bilgi mesajı göstermeden oturumu `oturum.txt` dosyasına kaydeder.
 
 ## Tips
 - `script` komutunu kullanırken, kaydedilen dosyanın adını anlamlı bir şekilde seçmek, daha sonra bulmanızı kolaylaştırır.
-- Oturum kaydını başlatmadan önce, terminaldeki gereksiz çıktıları temizlemek için `clear` komutunu kullanabilirsiniz.
-- Kaydedilen dosyayı incelemek için `cat`, `less` veya `more` gibi komutları kullanabilirsiniz.
+- Uzun bir oturum kaydediyorsanız, dosya boyutunu kontrol edin; gerektiğinde dosyayı bölmek iyi bir fikir olabilir.
+- Kayıt sırasında terminalde yaptığınız her şey kaydedileceği için, gizli bilgileri girmemeye dikkat edin.

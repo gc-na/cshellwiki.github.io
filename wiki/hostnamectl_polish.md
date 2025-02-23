@@ -1,21 +1,22 @@
-# [Linux] C Shell (csh) hostnamectl użycie: Zmiana i wyświetlanie nazwy hosta
+# [Linux] C Shell (csh) hostnamectl Użycie: zarządzanie nazwą hosta i informacjami o systemie
 
-## Przegląd
-Polecenie `hostnamectl` jest używane do zarządzania nazwą hosta systemu operacyjnego. Umożliwia użytkownikom wyświetlanie, ustawianie i modyfikowanie nazwy hosta oraz innych informacji o systemie.
+## Overview
+Polecenie `hostnamectl` służy do zarządzania nazwą hosta oraz wyświetlania informacji o systemie operacyjnym. Umożliwia użytkownikom łatwe modyfikowanie nazwy hosta oraz uzyskiwanie szczegółowych informacji o systemie.
 
-## Użycie
+## Usage
 Podstawowa składnia polecenia `hostnamectl` jest następująca:
 
-```csh
+```
 hostnamectl [opcje] [argumenty]
 ```
 
-## Częste opcje
+## Common Options
 - `set-hostname`: Umożliwia ustawienie nowej nazwy hosta.
-- `status`: Wyświetla aktualny status i informacje o systemie.
-- `help`: Wyświetla pomoc dotyczącą użycia polecenia.
+- `status`: Wyświetla aktualny status systemu, w tym nazwę hosta.
+- `set-icon-name`: Umożliwia ustawienie ikony systemu.
+- `set-chassis`: Umożliwia określenie typu obudowy systemu (np. desktop, laptop).
 
-## Częste przykłady
+## Common Examples
 1. **Wyświetlenie aktualnej nazwy hosta:**
    ```csh
    hostnamectl status
@@ -26,12 +27,17 @@ hostnamectl [opcje] [argumenty]
    hostnamectl set-hostname nowa-nazwa-host
    ```
 
-3. **Wyświetlenie pomocy:**
+3. **Ustawienie ikony systemu:**
    ```csh
-   hostnamectl help
+   hostnamectl set-icon-name ikona-systemu
    ```
 
-## Wskazówki
-- Upewnij się, że masz odpowiednie uprawnienia (np. jako root), aby zmieniać nazwę hosta.
-- Po zmianie nazwy hosta, rozważ ponowne uruchomienie systemu, aby upewnić się, że wszystkie usługi działają poprawnie z nową nazwą.
-- Zawsze możesz użyć opcji `status`, aby sprawdzić, czy zmiany zostały zastosowane poprawnie.
+4. **Określenie typu obudowy:**
+   ```csh
+   hostnamectl set-chassis laptop
+   ```
+
+## Tips
+- Upewnij się, że masz odpowiednie uprawnienia (np. administratora), aby zmieniać nazwę hosta.
+- Po zmianie nazwy hosta, może być konieczne ponowne uruchomienie systemu, aby zmiany zaczęły obowiązywać.
+- Regularnie sprawdzaj status systemu, aby upewnić się, że wszystkie ustawienia są poprawne.

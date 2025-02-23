@@ -1,12 +1,12 @@
-# [Linux] C Shell (csh) minikube Kullanımı: Kubernetes için yerel bir ortam oluşturma
+# [Linux] C Shell (csh) minikube Kullanımı: Kubernetes yerel geliştirme ortamı oluşturma
 
 ## Genel Bakış
-Minikube, yerel bir Kubernetes ortamı oluşturmak için kullanılan bir araçtır. Geliştiricilerin Kubernetes ile uygulama geliştirmelerini ve test etmelerini kolaylaştırır. Minikube, sanal bir makine üzerinde Kubernetes kümesi kurarak, kullanıcıların yerel bilgisayarlarında Kubernetes uygulamalarını çalıştırmalarına olanak tanır.
+Minikube, yerel bir Kubernetes geliştirme ortamı oluşturmak için kullanılan bir araçtır. Geliştiricilerin Kubernetes ile uygulama geliştirmelerini ve test etmelerini kolaylaştırır. Minikube, sanal bir makine üzerinde Kubernetes kümesi kurarak çalışır.
 
 ## Kullanım
 Minikube komutunun temel sözdizimi aşağıdaki gibidir:
 
-```shell
+```csh
 minikube [seçenekler] [argümanlar]
 ```
 
@@ -14,48 +14,48 @@ minikube [seçenekler] [argümanlar]
 - `start`: Minikube kümesini başlatır.
 - `stop`: Minikube kümesini durdurur.
 - `status`: Minikube kümesinin durumunu gösterir.
-- `delete`: Mevcut Minikube kümesini siler.
-- `dashboard`: Kubernetes dashboard'unu başlatır.
+- `delete`: Minikube kümesini siler.
+- `dashboard`: Kubernetes kontrol panelini açar.
 
 ## Yaygın Örnekler
-Aşağıda minikube komutunun bazı pratik örnekleri verilmiştir:
+Aşağıda minikube komutunun bazı pratik örnekleri bulunmaktadır:
 
 ### Minikube Başlatma
-Minikube kümesini başlatmak için aşağıdaki komutu kullanabilirsiniz:
+Minikube kümesini başlatmak için:
 
-```shell
+```csh
 minikube start
-```
-
-### Minikube Durumunu Kontrol Etme
-Minikube kümesinin durumunu kontrol etmek için:
-
-```shell
-minikube status
 ```
 
 ### Minikube Durdurma
 Minikube kümesini durdurmak için:
 
-```shell
+```csh
 minikube stop
 ```
 
-### Minikube Silme
-Mevcut Minikube kümesini silmek için:
+### Minikube Durumunu Kontrol Etme
+Minikube kümesinin durumunu kontrol etmek için:
 
-```shell
+```csh
+minikube status
+```
+
+### Minikube Silme
+Minikube kümesini silmek için:
+
+```csh
 minikube delete
 ```
 
-### Kubernetes Dashboard'u Açma
-Kubernetes dashboard'unu başlatmak için:
+### Kontrol Panelini Açma
+Kubernetes kontrol panelini açmak için:
 
-```shell
+```csh
 minikube dashboard
 ```
 
 ## İpuçları
-- Minikube kullanmadan önce sisteminizde gerekli sanal makine yöneticisinin (örneğin, VirtualBox veya Docker) kurulu olduğundan emin olun.
-- Minikube ile çalışırken, kaynakların yeterli olduğuna dikkat edin; aksi takdirde performans sorunları yaşayabilirsiniz.
-- Minikube sürümünüzü güncel tutarak yeni özelliklerden ve iyileştirmelerden faydalanabilirsiniz.
+- Minikube kullanmadan önce sisteminizde sanal makine desteğinin etkin olduğundan emin olun.
+- Geliştirme sürecinde sık sık `minikube start` ve `minikube stop` komutlarını kullanarak kaynakları yönetebilirsiniz.
+- Minikube ile çalışırken, `--driver` seçeneği ile farklı sanal makine sürücüleri kullanarak performansı artırabilirsiniz.

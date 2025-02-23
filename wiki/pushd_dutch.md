@@ -1,46 +1,43 @@
-# [Linux] C Shell (csh) pushd gebruik: Navigeren tussen directories
+# [Linux] C Shell (csh) pushd gebruik: Navigeer tussen directories
 
 ## Overzicht
-De `pushd`-opdracht in C Shell (csh) wordt gebruikt om de huidige werkdirectory te wijzigen en tegelijkertijd de vorige directory op een stack op te slaan. Dit maakt het eenvoudig om terug te keren naar de vorige directory met de `popd`-opdracht.
+De `pushd`-opdracht in C Shell (csh) wordt gebruikt om de huidige werkdirectory op de stack te plaatsen en vervolgens naar een andere directory te navigeren. Dit maakt het eenvoudig om tussen verschillende directories te wisselen zonder de oorspronkelijke directory te verliezen.
 
 ## Gebruik
 De basis syntaxis van de `pushd`-opdracht is als volgt:
 
-```
+```csh
 pushd [opties] [argumenten]
 ```
 
 ## Veelvoorkomende opties
-- `+n`: Verander naar de n-de directory in de stack.
-- `-n`: Verander naar de n-de directory in de stack, maar zonder deze toe te voegen aan de stack.
+- `+n`: Navigeer naar de n-de directory op de stack.
+- `-`: Navigeer naar de vorige directory op de stack.
 
 ## Veelvoorkomende voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van `pushd`:
 
-### Voorbeeld 1: Verander naar een nieuwe directory
-```csh
-pushd /pad/naar/directory
-```
-Dit verandert de huidige directory naar `/pad/naar/directory` en voegt de vorige directory toe aan de stack.
+1. **Navigeer naar een specifieke directory:**
+   ```csh
+   pushd /pad/naar/directory
+   ```
 
-### Voorbeeld 2: Terug naar de vorige directory
-```csh
-popd
-```
-Dit haalt de laatste directory van de stack en verandert de huidige directory terug naar die locatie.
+2. **Navigeer naar de vorige directory:**
+   ```csh
+   pushd -
+   ```
 
-### Voorbeeld 3: Verander naar de tweede directory in de stack
-```csh
-pushd +1
-```
-Dit verandert de huidige directory naar de tweede directory in de stack.
+3. **Navigeer naar de tweede directory op de stack:**
+   ```csh
+   pushd +1
+   ```
 
-### Voorbeeld 4: Verander naar een directory zonder deze toe te voegen aan de stack
-```csh
-pushd -1
-```
-Dit verandert naar de tweede directory in de stack zonder de huidige directory toe te voegen.
+4. **Gebruik met een relatieve pad:**
+   ```csh
+   pushd ../andere_directory
+   ```
 
 ## Tips
-- Gebruik `dirs` om de inhoud van de directory stack te bekijken.
-- Combineer `pushd` en `popd` om efficiënt tussen verschillende directories te navigeren zonder je huidige werkdirectory te verliezen.
-- Wees voorzichtig met het aantal directories in de stack; te veel directories kunnen verwarrend zijn.
+- Gebruik `popd` om terug te keren naar de vorige directory die je hebt gepusht.
+- Controleer de huidige stack van directories met de `dirs`-opdracht.
+- Combineer `pushd` met scripts om efficiënt te navigeren tijdens het uitvoeren van taken in verschillende directories.

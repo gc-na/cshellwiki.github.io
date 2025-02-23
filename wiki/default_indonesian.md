@@ -1,38 +1,45 @@
-# [Sistem Operasi] C Shell (csh) default: [menjalankan perintah]
+# [Sistem Operasi] C Shell (csh) default echo: Menampilkan teks ke layar
 
 ## Overview
-Perintah `default` dalam C Shell (csh) digunakan untuk mengatur perintah atau program yang akan dijalankan secara default ketika sebuah perintah yang tidak dikenal dimasukkan. Ini membantu pengguna untuk mengarahkan perintah yang tidak terdefinisi ke program tertentu.
+Perintah `echo` dalam C Shell (csh) digunakan untuk menampilkan teks atau variabel ke layar. Ini adalah alat yang sangat berguna untuk memberikan umpan balik kepada pengguna atau untuk men-debug skrip.
 
 ## Usage
-Berikut adalah sintaks dasar dari perintah `default`:
+Sintaks dasar dari perintah `echo` adalah sebagai berikut:
 
 ```
-default [options] [arguments]
+echo [options] [arguments]
 ```
 
 ## Common Options
-- `-f`: Menetapkan default tanpa mengubah yang sudah ada.
-- `-r`: Menghapus pengaturan default yang ada.
+- `-n`: Tidak menambahkan karakter newline di akhir output.
+- `-e`: Mengaktifkan interpretasi karakter escape seperti `\n` untuk newline dan `\t` untuk tab.
+- `-E`: Menonaktifkan interpretasi karakter escape (ini adalah perilaku default).
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan perintah `default`:
+Berikut adalah beberapa contoh penggunaan perintah `echo`:
 
-1. Menetapkan program default untuk perintah yang tidak dikenal:
+1. Menampilkan teks sederhana:
    ```csh
-   default mycommand
+   echo "Hello, World!"
    ```
 
-2. Menetapkan program default dengan opsi:
+2. Menampilkan variabel:
    ```csh
-   default -f mycommand
+   set name = "Alice"
+   echo "Hello, $name!"
    ```
 
-3. Menghapus pengaturan default yang ada:
+3. Menampilkan teks tanpa newline di akhir:
    ```csh
-   default -r
+   echo -n "Loading..."
+   ```
+
+4. Menggunakan karakter escape:
+   ```csh
+   echo -e "Baris pertama\nBaris kedua"
    ```
 
 ## Tips
-- Pastikan untuk memeriksa pengaturan default yang ada sebelum menetapkan yang baru untuk menghindari konflik.
-- Gunakan opsi `-f` jika Anda ingin menetapkan default tanpa menghapus pengaturan yang sudah ada.
-- Selalu lakukan pengujian setelah mengatur default untuk memastikan bahwa perintah berjalan seperti yang diharapkan.
+- Gunakan opsi `-n` jika Anda ingin menampilkan beberapa output dalam satu baris.
+- Untuk men-debug skrip, gunakan `echo` untuk menampilkan nilai variabel di berbagai titik dalam skrip Anda.
+- Hati-hati dengan penggunaan karakter escape; pastikan untuk menggunakan opsi `-e` jika Anda ingin menginterpretasikannya.

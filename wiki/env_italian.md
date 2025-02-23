@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) env <Utilizzo equivalente>: gestire variabili d'ambiente
+# [Linux] C Shell (csh) env <Utilizzo equivalente>: Gestire variabili d'ambiente
 
 ## Overview
-Il comando `env` in C Shell (csh) viene utilizzato per visualizzare o modificare le variabili d'ambiente. È particolarmente utile per eseguire un programma in un ambiente modificato senza alterare l'ambiente corrente.
+Il comando `env` in C Shell (csh) viene utilizzato per visualizzare o modificare le variabili d'ambiente. È particolarmente utile per eseguire programmi in un ambiente specifico senza alterare l'ambiente globale.
 
 ## Usage
 La sintassi di base del comando `env` è la seguente:
@@ -11,39 +11,34 @@ env [options] [arguments]
 ```
 
 ## Common Options
-- `-i`: Ignora l'ambiente corrente e inizia con un ambiente vuoto.
-- `-u`: Rimuove una variabile d'ambiente specificata.
+- `-i`: Esegue il comando in un ambiente vuoto, senza variabili d'ambiente predefinite.
+- `-u`: Rimuove una variabile d'ambiente specificata prima di eseguire il comando.
 - `VAR=value`: Imposta una variabile d'ambiente temporaneamente per il comando successivo.
 
 ## Common Examples
-Ecco alcuni esempi pratici di utilizzo del comando `env`:
+Ecco alcuni esempi pratici dell'uso del comando `env`:
 
 1. **Visualizzare tutte le variabili d'ambiente**:
    ```csh
    env
    ```
 
-2. **Eseguire un comando con un ambiente vuoto**:
+2. **Eseguire un comando con una variabile d'ambiente specifica**:
    ```csh
-   env -i /path/to/command
+   env MY_VAR=hello ./my_script.sh
    ```
 
-3. **Impostare una variabile d'ambiente temporanea**:
+3. **Eseguire un comando in un ambiente vuoto**:
    ```csh
-   env VAR=value /path/to/command
+   env -i ./my_script.sh
    ```
 
-4. **Rimuovere una variabile d'ambiente**:
+4. **Rimuovere una variabile d'ambiente prima di eseguire un comando**:
    ```csh
-   env -u VAR /path/to/command
-   ```
-
-5. **Eseguire un programma con variabili d'ambiente personalizzate**:
-   ```csh
-   env PATH=/custom/path /path/to/command
+   env -u MY_VAR ./my_script.sh
    ```
 
 ## Tips
-- Utilizza `env` per testare come un programma si comporta in un ambiente diverso senza modificare il tuo ambiente attuale.
+- Utilizza `env` per testare script in ambienti controllati senza modificare le variabili d'ambiente globali.
 - Ricorda che le modifiche apportate con `env` sono temporanee e si applicano solo al comando specificato.
-- Usa l'opzione `-i` con cautela, poiché rimuove tutte le variabili d'ambiente, il che potrebbe causare errori se il comando richiede variabili specifiche.
+- È utile per eseguire applicazioni che richiedono variabili d'ambiente specifiche senza influenzare il tuo ambiente di lavoro corrente.

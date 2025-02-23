@@ -1,37 +1,44 @@
 # [Hệ điều hành] C Shell (csh) talk: Giao tiếp với người dùng khác
 
-## Tổng quan
-Lệnh `talk` trong C Shell (csh) cho phép người dùng giao tiếp trực tiếp với nhau qua một phiên trò chuyện. Khi sử dụng lệnh này, bạn có thể gửi và nhận tin nhắn theo thời gian thực với một người dùng khác trên cùng một mạng.
+## Overview
+Lệnh `talk` trong C Shell (csh) cho phép người dùng giao tiếp với nhau qua một phiên trò chuyện trực tiếp trên terminal. Khi sử dụng lệnh này, bạn có thể gửi và nhận tin nhắn từ một người dùng khác đang trực tuyến.
 
-## Cú pháp
+## Usage
 Cú pháp cơ bản của lệnh `talk` như sau:
 ```
 talk [tùy chọn] [người dùng]@[máy chủ]
 ```
 
-## Tùy chọn phổ biến
-- `-h`: Hiển thị thông tin về người dùng mà bạn đang trò chuyện.
-- `-d`: Chỉ định rằng bạn muốn trò chuyện với một người dùng trên máy chủ khác.
+## Common Options
+Dưới đây là một số tùy chọn phổ biến cho lệnh `talk` cùng với giải thích ngắn gọn:
+- `-a`: Cho phép bạn gửi tin nhắn đến một người dùng mà không cần kiểm tra xem họ có đang sử dụng terminal hay không.
+- `-s`: Sử dụng chế độ âm thanh để thông báo khi có tin nhắn mới.
+- `-n`: Không gửi thông báo đến người dùng khác khi bạn bắt đầu phiên trò chuyện.
 
-## Ví dụ phổ biến
-Dưới đây là một số ví dụ về cách sử dụng lệnh `talk`:
+## Common Examples
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `talk`:
 
-1. Giao tiếp với người dùng trên cùng một máy:
+1. Giao tiếp với người dùng `alice` trên cùng một máy chủ:
    ```bash
-   talk user1
+   talk alice
    ```
 
-2. Giao tiếp với người dùng trên một máy chủ khác:
+2. Giao tiếp với người dùng `bob` trên máy chủ `example.com`:
    ```bash
-   talk user2@remotehost
+   talk bob@example.com
    ```
 
-3. Giao tiếp với người dùng và hiển thị thông tin:
+3. Sử dụng tùy chọn `-a` để gửi tin nhắn mà không cần kiểm tra trạng thái:
    ```bash
-   talk -h user3
+   talk -a alice
    ```
 
-## Mẹo
-- Đảm bảo rằng người dùng mà bạn muốn trò chuyện đang trực tuyến và có thể nhận tin nhắn.
-- Sử dụng lệnh `write` để gửi tin nhắn nếu `talk` không khả dụng.
-- Kiểm tra cài đặt tường lửa của bạn để đảm bảo rằng các kết nối đến và đi từ lệnh `talk` không bị chặn.
+4. Bắt đầu phiên trò chuyện với âm thanh thông báo:
+   ```bash
+   talk -s bob@example.com
+   ```
+
+## Tips
+- Đảm bảo rằng người dùng bạn muốn trò chuyện cũng đang trực tuyến và sẵn sàng nhận tin nhắn.
+- Kiểm tra xem bạn có quyền truy cập vào terminal của người dùng khác trước khi sử dụng lệnh `talk`.
+- Sử dụng tùy chọn `-n` để tránh làm phiền người dùng khác khi bạn bắt đầu một cuộc trò chuyện.

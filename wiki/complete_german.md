@@ -1,45 +1,45 @@
-# [Unix] C Shell (csh) complete Befehl: Vervollständigung von Befehlen
+# [Linux] C Shell (csh) vollständige Befehle: Vervollständigung von Befehlen
 
 ## Übersicht
-Der `complete` Befehl in der C Shell (csh) wird verwendet, um die automatische Vervollständigung von Befehlen und Argumenten zu ermöglichen. Dies erleichtert die Eingabe von Befehlen, indem es Benutzern hilft, die richtigen Optionen und Argumente schnell zu finden.
+Der Befehl `complete` in der C Shell (csh) wird verwendet, um die automatische Vervollständigung von Befehlen und Argumenten zu ermöglichen. Dies erleichtert die Eingabe von Befehlen, indem es Vorschläge basierend auf dem aktuellen Kontext bietet.
 
 ## Verwendung
-Die grundlegende Syntax des `complete` Befehls sieht wie folgt aus:
+Die grundlegende Syntax des Befehls `complete` lautet:
 
 ```csh
-complete [options] [arguments]
+complete [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-c`: Aktiviert die Vervollständigung für einen bestimmten Befehl.
-- `-d`: Vervollständigt Verzeichnisse.
-- `-f`: Vervollständigt Dateinamen.
-- `-n`: Deaktiviert die Vervollständigung für bestimmte Argumente.
+- `-c`: Aktiviert die Vervollständigung für den angegebenen Befehl.
+- `-d`: Deaktiviert die Vervollständigung für den angegebenen Befehl.
+- `-f`: Fügt eine Vervollständigung für ein bestimmtes Argument hinzu.
+- `-n`: Gibt an, dass die Vervollständigung nur für bestimmte Bedingungen aktiviert werden soll.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele zur Verwendung des `complete` Befehls:
+Hier sind einige praktische Beispiele zur Verwendung des Befehls `complete`:
 
 1. **Aktivieren der Vervollständigung für den Befehl `ls`:**
    ```csh
    complete -c ls
    ```
 
-2. **Vervollständigung von Verzeichnissen für den Befehl `cd`:**
+2. **Deaktivieren der Vervollständigung für den Befehl `rm`:**
    ```csh
-   complete -d cd
+   complete -d rm
    ```
 
-3. **Vervollständigung von Dateinamen für den Befehl `cp`:**
+3. **Hinzufügen einer spezifischen Vervollständigung für ein Argument:**
    ```csh
-   complete -f cp
+   complete -f 'mycommand' 'arg1 arg2'
    ```
 
-4. **Deaktivieren der Vervollständigung für ein bestimmtes Argument:**
+4. **Aktivieren der Vervollständigung nur unter bestimmten Bedingungen:**
    ```csh
-   complete -n 'arg1' command
+   complete -n '[[ -f $1 ]]' mycommand
    ```
 
 ## Tipps
-- Nutzen Sie die Vervollständigung, um Tippfehler zu vermeiden und die Eingabezeit zu verkürzen.
-- Experimentieren Sie mit verschiedenen Optionen, um die Vervollständigung an Ihre Bedürfnisse anzupassen.
-- Überprüfen Sie regelmäßig die Konfiguration Ihrer Vervollständigung, um sicherzustellen, dass sie optimal funktioniert.
+- Verwenden Sie die Option `-c`, um die Vervollständigung für häufig verwendete Befehle zu aktivieren, um Ihre Effizienz zu steigern.
+- Denken Sie daran, die Vervollständigung für weniger häufig verwendete Befehle zu deaktivieren, um Verwirrung zu vermeiden.
+- Nutzen Sie die Hilfe-Funktion (`man complete`), um mehr über die verfügbaren Optionen und deren Verwendung zu erfahren.

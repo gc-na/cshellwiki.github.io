@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) tail gebruik: Toegang tot het einde van bestanden
 
 ## Overzicht
-De `tail`-opdracht in C Shell (csh) wordt gebruikt om de laatste regels van een bestand weer te geven. Dit is handig voor het bekijken van logbestanden of andere tekstbestanden waar je alleen de meest recente informatie wilt zien.
+De `tail`-opdracht in C Shell (csh) wordt gebruikt om de laatste regels van een bestand weer te geven. Dit is vooral nuttig voor het bekijken van logbestanden of andere gegevensbestanden waar je alleen de meest recente informatie wilt zien.
 
 ## Gebruik
 De basis syntaxis van de `tail`-opdracht is als volgt:
@@ -10,35 +10,35 @@ De basis syntaxis van de `tail`-opdracht is als volgt:
 tail [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- `-n <aantal>`: Geef het opgegeven aantal laatste regels van het bestand weer. Standaard toont `tail` de laatste 10 regels.
-- `-f`: Volg het bestand in realtime. Nieuwe regels die aan het bestand worden toegevoegd, worden onmiddellijk weergegeven.
-- `-q`: Vermijd het weergeven van de bestandsnaam bij meerdere bestanden.
+## Veelvoorkomende Opties
+- `-n [aantal]`: Geeft de laatste [aantal] regels van het bestand weer. Standaard toont het de laatste 10 regels.
+- `-f`: Volgt het bestand in realtime. Dit is handig voor logbestanden die continu worden bijgewerkt.
+- `-c [aantal]`: Geeft de laatste [aantal] bytes van het bestand weer.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van de `tail`-opdracht:
 
-1. Toont de laatste 10 regels van een bestand:
+1. Toon de laatste 10 regels van een bestand:
    ```csh
    tail bestand.txt
    ```
 
-2. Toont de laatste 20 regels van een bestand:
+2. Toon de laatste 20 regels van een bestand:
    ```csh
    tail -n 20 bestand.txt
    ```
 
-3. Volgt een logbestand in realtime:
+3. Volg een logbestand in realtime:
    ```csh
    tail -f logfile.log
    ```
 
-4. Toont de laatste 5 regels van meerdere bestanden:
+4. Toon de laatste 50 bytes van een bestand:
    ```csh
-   tail -n 5 bestand1.txt bestand2.txt
+   tail -c 50 bestand.txt
    ```
 
 ## Tips
-- Gebruik de `-f` optie voor logbestanden om continu updates te zien zonder de opdracht opnieuw te hoeven uitvoeren.
-- Combineer `tail` met andere commando's zoals `grep` om specifieke informatie uit de laatste regels te filteren.
-- Als je alleen geïnteresseerd bent in de laatste regels van een bestand dat regelmatig wordt bijgewerkt, kan `tail -f` erg handig zijn voor monitoring.
+- Gebruik de `-f` optie om logbestanden te monitoren terwijl ze worden bijgewerkt, wat handig is voor foutopsporing.
+- Combineer `tail` met andere opdrachten zoals `grep` om specifieke informatie uit de laatste regels van een bestand te filteren.
+- Als je regelmatig dezelfde bestanden bekijkt, overweeg dan om een alias in je `.cshrc`-bestand te maken voor snellere toegang.

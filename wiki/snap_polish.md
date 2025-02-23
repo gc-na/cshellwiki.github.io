@@ -1,54 +1,49 @@
 # [Linux] C Shell (csh) snap użycie: zarządzanie pakietami
 
 ## Overview
-Polecenie `snap` służy do zarządzania aplikacjami w systemie Linux, które są zainstalowane jako pakiety Snap. Umożliwia instalację, aktualizację, usuwanie oraz zarządzanie aplikacjami w prosty sposób.
+Polecenie `snap` służy do zarządzania aplikacjami i pakietami w systemach operacyjnych opartych na Linuksie. Umożliwia instalację, aktualizację i usuwanie aplikacji, które są dostarczane w formie paczek snap.
 
 ## Usage
-Podstawowa składnia polecenia `snap` wygląda następująco:
+Podstawowa składnia polecenia `snap` jest następująca:
 
-```csh
+```
 snap [opcje] [argumenty]
 ```
 
 ## Common Options
-- `install`: Instaluje aplikację z repozytorium Snap.
+- `install`: Instaluje nową aplikację.
 - `remove`: Usuwa zainstalowaną aplikację.
 - `list`: Wyświetla listę zainstalowanych aplikacji.
 - `refresh`: Aktualizuje zainstalowane aplikacje do najnowszej wersji.
-- `info`: Wyświetla szczegółowe informacje o danej aplikacji.
+- `info`: Wyświetla szczegółowe informacje o aplikacji.
 
 ## Common Examples
-- Aby zainstalować aplikację, użyj:
+- Instalacja aplikacji:
+  ```bash
+  snap install nazwa_aplikacji
+  ```
 
-```csh
-snap install nazwa_aplikacji
-```
+- Usuwanie aplikacji:
+  ```bash
+  snap remove nazwa_aplikacji
+  ```
 
-- Aby usunąć aplikację, wykonaj:
+- Wyświetlanie listy zainstalowanych aplikacji:
+  ```bash
+  snap list
+  ```
 
-```csh
-snap remove nazwa_aplikacji
-```
+- Aktualizacja aplikacji:
+  ```bash
+  snap refresh
+  ```
 
-- Aby wyświetlić listę zainstalowanych aplikacji, użyj:
-
-```csh
-snap list
-```
-
-- Aby zaktualizować wszystkie zainstalowane aplikacje, wpisz:
-
-```csh
-snap refresh
-```
-
-- Aby uzyskać informacje o konkretnej aplikacji, użyj:
-
-```csh
-snap info nazwa_aplikacji
-```
+- Wyświetlanie informacji o aplikacji:
+  ```bash
+  snap info nazwa_aplikacji
+  ```
 
 ## Tips
-- Regularnie aktualizuj swoje aplikacje za pomocą `snap refresh`, aby korzystać z najnowszych funkcji i poprawek.
-- Sprawdzaj informacje o aplikacjach przed ich instalacją, aby upewnić się, że spełniają Twoje wymagania.
-- Używaj opcji `--help` z poleceniem `snap`, aby uzyskać więcej informacji na temat dostępnych opcji i argumentów.
+- Zawsze sprawdzaj dostępne aktualizacje, aby mieć najnowsze funkcje i poprawki bezpieczeństwa.
+- Używaj opcji `--classic`, jeśli aplikacja wymaga dostępu do systemu plików w trybie klasycznym.
+- Możesz użyć `snap find`, aby wyszukać aplikacje dostępne do zainstalowania.

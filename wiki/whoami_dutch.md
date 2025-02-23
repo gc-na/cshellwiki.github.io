@@ -1,42 +1,48 @@
-# [Linux] C Shell (csh) whoami gebruik: Bepaal de huidige gebruikersnaam
+# [Linux] C Shell (csh) whoami gebruik: Toon de huidige gebruikersnaam
 
 ## Overzicht
-Het `whoami` commando in C Shell (csh) toont de gebruikersnaam van de huidige gebruiker die is ingelogd op het systeem. Dit is handig om snel te verifiëren onder welke identiteit je werkt, vooral in omgevingen met meerdere gebruikers.
+De `whoami` opdracht in C Shell (csh) toont de gebruikersnaam van de huidige gebruiker die is ingelogd op het systeem. Dit is handig om snel te verifiëren onder welke gebruiker je momenteel werkt.
 
 ## Gebruik
-De basis syntaxis van het `whoami` commando is als volgt:
+De basis syntaxis van de `whoami` opdracht is als volgt:
 
-```
+```csh
 whoami [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-Het `whoami` commando heeft geen veelvoorkomende opties, maar het kan in sommige systemen worden gebruikt met de volgende:
+De `whoami` opdracht heeft geen uitgebreide opties, maar hier zijn enkele nuttige:
 
-- `--help`: Toont een helpbericht met informatie over het gebruik van het commando.
-- `--version`: Toont de versie-informatie van het `whoami` commando.
+- `--help`: Toont een hulpbericht met informatie over het gebruik van de opdracht.
+- `--version`: Geeft de versie van de `whoami` opdracht weer.
 
 ## Veelvoorkomende Voorbeelden
 
+Hier zijn enkele praktische voorbeelden van het gebruik van de `whoami` opdracht:
+
 1. **Toon de huidige gebruikersnaam:**
+
    ```csh
    whoami
    ```
 
 2. **Toon hulpinformatie:**
+
    ```csh
    whoami --help
    ```
 
-3. **Toon versie-informatie:**
+3. **Toon de versie van de whoami opdracht:**
+
    ```csh
    whoami --version
    ```
 
 ## Tips
-- Gebruik `whoami` in scripts om te controleren onder welke gebruiker het script draait.
-- Combineer `whoami` met andere commando's zoals `echo` voor een meer informatieve output:
+- Gebruik `whoami` in scripts om de huidige gebruiker te verifiëren voordat je acties uitvoert die afhankelijk zijn van gebruikersrechten.
+- Combineer `whoami` met andere commando's zoals `echo` om meer context te geven aan je uitvoer, bijvoorbeeld:
+
   ```csh
   echo "De huidige gebruiker is: `whoami`"
   ```
-- Het is een goed idee om regelmatig je gebruikersnaam te controleren, vooral als je werkt met verschillende gebruikersaccounts of in een gedeelde omgeving.
+- Vergeet niet dat `whoami` alleen de naam van de ingelogde gebruiker toont en geen andere informatie over de sessie of het systeem geeft.

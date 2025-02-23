@@ -1,37 +1,36 @@
-# [Hệ điều hành] C Shell (csh) default lệnh: [thực thi lệnh]
+# [Hệ điều hành] C Shell (csh) default lệnh: [lệnh mặc định để thực thi]
 
 ## Tổng quan
-Lệnh `default` trong C Shell (csh) được sử dụng để thiết lập giá trị mặc định cho một biến hoặc một lệnh trong phiên làm việc của bạn. Điều này giúp bạn dễ dàng quản lý và sử dụng các lệnh mà không cần phải nhập lại nhiều lần.
+Lệnh `default` trong C Shell (csh) được sử dụng để thiết lập hoặc hiển thị lệnh mặc định cho một số loại tệp. Điều này giúp người dùng dễ dàng thực thi các chương trình tương ứng với các loại tệp mà không cần chỉ định rõ ràng.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `default` như sau:
-
-```csh
-default [tùy chọn] [tham số]
+```
+default [tùy chọn] [đối số]
 ```
 
-## Các tùy chọn phổ biến
-- `-h`: Hiển thị thông tin trợ giúp về lệnh `default`.
-- `-v`: Hiển thị giá trị hiện tại của biến mà bạn đang thiết lập.
+## Tùy chọn phổ biến
+- `-s`: Thiết lập lệnh mặc định cho loại tệp.
+- `-r`: Xóa lệnh mặc định cho loại tệp.
+- `-l`: Hiển thị lệnh mặc định hiện tại cho loại tệp.
 
-## Ví dụ thường gặp
-Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `default`:
+## Ví dụ phổ biến
+- Để thiết lập lệnh mặc định cho tệp `.txt` là `nano`, bạn có thể sử dụng:
+  ```csh
+  default -s .txt nano
+  ```
 
-1. Thiết lập giá trị mặc định cho biến `editor`:
-   ```csh
-   default editor vi
-   ```
+- Để xóa lệnh mặc định cho tệp `.jpg`, bạn có thể sử dụng:
+  ```csh
+  default -r .jpg
+  ```
 
-2. Kiểm tra giá trị hiện tại của biến `editor`:
-   ```csh
-   default -v editor
-   ```
-
-3. Thiết lập giá trị mặc định cho một lệnh cụ thể:
-   ```csh
-   default ls -l
-   ```
+- Để xem lệnh mặc định hiện tại cho tệp `.pdf`, bạn có thể sử dụng:
+  ```csh
+  default -l .pdf
+  ```
 
 ## Mẹo
-- Hãy chắc chắn rằng bạn hiểu giá trị mặc định mà bạn đang thiết lập để tránh nhầm lẫn trong quá trình sử dụng.
-- Sử dụng lệnh `default -h` để xem hướng dẫn chi tiết và các tùy chọn có sẵn khi cần thiết.
+- Hãy chắc chắn rằng bạn đã cài đặt chương trình mà bạn muốn thiết lập làm lệnh mặc định trước khi sử dụng lệnh `default`.
+- Sử dụng lệnh `default -l` thường xuyên để kiểm tra các lệnh mặc định hiện tại và đảm bảo chúng vẫn phù hợp với nhu cầu của bạn.
+- Khi thiết lập lệnh mặc định cho nhiều loại tệp, hãy ghi chú lại để tránh nhầm lẫn trong quá trình sử dụng.

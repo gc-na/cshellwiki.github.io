@@ -1,80 +1,77 @@
-# [Linux] C Shell (csh) case utilizare: evaluarea expresiilor
+# [Linux] C Shell (csh) case utilizare: Comutarea între opțiuni
 
 ## Overview
-Comanda `case` în C Shell (csh) este utilizată pentru a evalua expresii și a executa comenzi pe baza corespondenței cu modele specifice. Aceasta permite utilizatorilor să scrie scripturi mai complexe, care pot lua decizii în funcție de valorile variabilelor.
+Comanda `case` în C Shell (csh) este utilizată pentru a evalua o variabilă și a executa diferite blocuri de cod în funcție de valoarea acesteia. Este similară cu instrucțiunea `switch` din alte limbaje de programare, permițându-vă să gestionați ramificările în scripturile dvs. shell.
 
 ## Usage
 Sintaxa de bază a comenzii `case` este următoarea:
 
 ```
 case [variabilă] in
-    [model1])
-        [comenzi1]
+    [pattern1])
+        [comenzi pentru pattern1]
         ;;
-    [model2])
-        [comenzi2]
+    [pattern2])
+        [comenzi pentru pattern2]
         ;;
-    *)
-        [comenzi_default]
-        ;;
+    ...
 esac
 ```
 
 ## Common Options
-- `in`: specifică modelele care vor fi comparate cu variabila.
-- `*)`: este un model wildcard care se folosește pentru a captura orice altă valoare care nu se potrivește cu modelele anterioare.
-- `;;`: marchează sfârșitul unei secțiuni de comenzi pentru un model specific.
+Comanda `case` nu are opțiuni specifice, dar este important să folosiți corect sintaxa pentru a evita erorile. Fiecare bloc de cod trebuie să se termine cu `;;`, iar finalizarea structurii se face cu `esac`.
 
 ## Common Examples
 
-### Exemplul 1: Evaluarea unei variabile
+### Exemplu 1: Comutarea pe baza unei variabile
 ```csh
-set numar = 2
-switch ($numar)
-    case 1:
-        echo "Numărul este 1"
-        breaksw
-    case 2:
-        echo "Numărul este 2"
-        breaksw
-    default:
-        echo "Numărul nu este 1 sau 2"
-end
-```
-
-### Exemplul 2: Verificarea extensiilor de fișiere
-```csh
-set fisier = "document.txt"
-case ($fisier) in
-    *.txt)
-        echo "Este un fișier text"
+set fruit = "măr"
+case $fruit in
+    "măr")
+        echo "Ai ales un măr."
         ;;
-    *.jpg)
-        echo "Este un fișier imagine"
+    "banană")
+        echo "Ai ales o banană."
         ;;
     *)
-        echo "Tip de fișier necunoscut"
+        echo "Fructul ales nu este disponibil."
         ;;
 esac
 ```
 
-### Exemplul 3: Comportament în funcție de ziua săptămânii
+### Exemplu 2: Comutarea pe baza extensiei fișierului
 ```csh
-set zi = `date +%A`
-case ($zi) in
-    Luni)
-        echo "Începe o nouă săptămână!"
+set file = "document.txt"
+case $file in
+    *.txt)
+        echo "Este un fișier text."
         ;;
-    Vineri)
-        echo "Este aproape weekend!"
+    *.jpg)
+        echo "Este un fișier imagine."
         ;;
     *)
-        echo "Este o zi obișnuită."
+        echo "Tip de fișier necunoscut."
+        ;;
+esac
+```
+
+### Exemplu 3: Comutarea pe baza valorii unei variabile de mediu
+```csh
+set os = $OSTYPE
+case $os in
+    linux*)
+        echo "Sistemul de operare este Linux."
+        ;;
+    darwin*)
+        echo "Sistemul de operare este macOS."
+        ;;
+    *)
+        echo "Sistemul de operare nu este recunoscut."
         ;;
 esac
 ```
 
 ## Tips
-- Asigurați-vă că utilizați `breaksw` pentru a ieși din structura `switch` după ce a fost găsită o potrivire, pentru a evita executarea mai multor blocuri de comenzi.
-- Folosiți wildcard-uri pentru a face potrivirea mai flexibilă, dar aveți grijă să nu creați ambiguități.
-- Testați întotdeauna scripturile pentru a verifica dacă toate căile de execuție funcționează așa cum este de așteptat.
+- Asigurați-vă că fiecare bloc de cod se termină cu `;;` pentru a evita erorile de sintaxă.
+- Utilizați wildcard-uri (`*`, `?`) pentru a face potriviri mai flexibile în modele.
+- Structurați codul în mod clar pentru a îmbunătăți lizibilitatea, mai ales dacă aveți multe ramificații.

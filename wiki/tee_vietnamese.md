@@ -1,19 +1,20 @@
 # [Hệ điều hành] C Shell (csh) tee Cách sử dụng: Ghi và hiển thị đầu ra
 
-## Tổng quan
-Lệnh `tee` trong C Shell (csh) được sử dụng để đọc từ đầu vào chuẩn và ghi vào cả đầu ra chuẩn và một hoặc nhiều tệp. Điều này cho phép bạn xem dữ liệu đầu ra trên màn hình đồng thời lưu trữ nó vào tệp.
+## Overview
+Lệnh `tee` trong C Shell (csh) được sử dụng để đọc từ đầu vào chuẩn và ghi ra cả đầu ra chuẩn và một hoặc nhiều tệp. Điều này cho phép bạn xem đầu ra của một lệnh trên màn hình trong khi cũng lưu trữ nó vào tệp.
 
-## Cách sử dụng
+## Usage
 Cú pháp cơ bản của lệnh `tee` như sau:
 ```
 tee [options] [arguments]
 ```
 
-## Các tùy chọn phổ biến
-- `-a`: Ghi vào tệp ở chế độ bổ sung (append) thay vì ghi đè.
-- `-i`: Bỏ qua tín hiệu ngắt (interrupt signal).
+## Common Options
+- `-a`: Ghi thêm vào tệp thay vì ghi đè.
+- `-i`: Bỏ qua tín hiệu ngắt (interrupt signals).
+- `--help`: Hiển thị thông tin trợ giúp về lệnh `tee`.
 
-## Ví dụ phổ biến
+## Common Examples
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `tee`:
 
 1. Ghi đầu ra của lệnh `ls` vào tệp `output.txt`:
@@ -26,17 +27,17 @@ Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh 
    echo "Hello, World!" | tee log.txt
    ```
 
-3. Ghi đầu ra của lệnh `df` vào tệp `disk_usage.txt` ở chế độ bổ sung:
+3. Ghi thêm đầu ra của lệnh `df` vào tệp `disk_usage.txt`:
    ```csh
    df | tee -a disk_usage.txt
    ```
 
-4. Ghi đầu ra của lệnh `cat` vào tệp `data.txt` và bỏ qua tín hiệu ngắt:
+4. Sử dụng `tee` để ghi đầu ra của một lệnh phức tạp:
    ```csh
-   cat file.txt | tee -i data.txt
+   ps aux | grep httpd | tee httpd_processes.txt
    ```
 
-## Mẹo
-- Sử dụng tùy chọn `-a` khi bạn muốn thêm dữ liệu vào tệp mà không làm mất dữ liệu cũ.
-- Kết hợp `tee` với các lệnh khác trong pipeline để dễ dàng theo dõi và lưu trữ đầu ra.
-- Kiểm tra nội dung của tệp đã ghi bằng lệnh `cat` hoặc `less` để đảm bảo rằng dữ liệu đã được lưu đúng cách.
+## Tips
+- Sử dụng tùy chọn `-a` khi bạn muốn ghi thêm vào tệp mà không làm mất dữ liệu cũ.
+- Kết hợp `tee` với các lệnh khác để theo dõi và ghi lại thông tin trong quá trình thực hiện.
+- Kiểm tra nội dung của tệp đã ghi bằng lệnh `cat` để đảm bảo dữ liệu đã được lưu đúng cách.

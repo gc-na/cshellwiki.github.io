@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) awk gebruik: tekstverwerking en patroonherkenning
 
 ## Overzicht
-De `awk`-opdracht is een krachtige tekstverwerkings- en patroonherkenningstool die veel wordt gebruikt in de Unix- en Linux-omgevingen. Het stelt gebruikers in staat om gegevens uit tekstbestanden te extraheren, te manipuleren en te rapporteren op basis van specifieke patronen en voorwaarden.
+De `awk`-opdracht is een krachtige tekstverwerkings- en patroonherkenningstool die vaak wordt gebruikt voor het analyseren van tekstbestanden en het uitvoeren van bewerkingen op gegevens. Het is bijzonder nuttig voor het verwerken van gestructureerde gegevens zoals CSV-bestanden.
 
 ## Gebruik
 De basis syntaxis van de `awk`-opdracht is als volgt:
@@ -11,38 +11,48 @@ awk [opties] [argumenten]
 ```
 
 ## Veelvoorkomende opties
-- `-F`: Specificeert de veldscheidingsteken (bijvoorbeeld `-F,` voor komma's).
-- `-v`: Stelt een variabele in met een waarde (bijvoorbeeld `-v var=waarde`).
-- `-f`: Voert een awk-script uit dat in een bestand is opgeslagen (bijvoorbeeld `-f script.awk`).
+- `-F`: Stelt de scheidingsteken in voor de invoer (bijvoorbeeld `-F,` voor komma's).
+- `-v`: Definieert variabelen die in de `awk`-script kunnen worden gebruikt.
+- `-f`: Specificeert een bestand dat een `awk`-script bevat.
 
 ## Veelvoorkomende voorbeelden
 
-1. **Basis tekstverwerking**: Het afdrukken van de eerste kolom van een bestand.
+1. **Basis tekstverwerking**
+   Dit voorbeeld toont de inhoud van een bestand:
+
    ```bash
-   awk '{print $1}' bestand.txt
+   awk '{print}' bestand.txt
    ```
 
-2. **Gebruik van een veldscheidingsteken**: Het afdrukken van de tweede kolom van een CSV-bestand.
+2. **Specifieke kolom afdrukken**
+   Dit voorbeeld drukt alleen de tweede kolom van een bestand af:
+
    ```bash
-   awk -F, '{print $2}' gegevens.csv
+   awk '{print $2}' bestand.txt
    ```
 
-3. **Voorwaarden toepassen**: Het afdrukken van regels waar de waarde in de derde kolom groter is dan 100.
+3. **Gebruik van een scheidingsteken**
+   Dit voorbeeld gebruikt een komma als scheidingsteken en drukt de eerste kolom af:
+
    ```bash
-   awk '$3 > 100' bestand.txt
+   awk -F, '{print $1}' bestand.csv
    ```
 
-4. **Variabelen gebruiken**: Het tellen van het aantal regels in een bestand.
+4. **Voorwaarden toepassen**
+   Dit voorbeeld drukt alleen regels af waarin de waarde in de derde kolom groter is dan 100:
+
    ```bash
-   awk 'END {print NR}' bestand.txt
+   awk '$3 > 100 {print}' bestand.txt
    ```
 
-5. **Gecombineerde acties**: Het afdrukken van de eerste en derde kolom, gescheiden door een koppelteken.
+5. **Variabelen gebruiken**
+   Dit voorbeeld definieert een variabele en gebruikt deze in de `awk`-opdracht:
+
    ```bash
-   awk '{print $1 "-" $3}' bestand.txt
+   awk -v d=10 '$1 > d {print}' bestand.txt
    ```
 
 ## Tips
-- Gebruik `-F` om het juiste scheidingsteken in te stellen voor uw gegevens.
-- Probeer uw `awk`-scripts te scheiden in bestanden voor complexere bewerkingen, wat de leesbaarheid vergroot.
-- Maak gebruik van de `BEGIN` en `END` blokken om initiële instellingen en eindresultaten te beheren.
+- Gebruik `-F` om het scheidingsteken in te stellen voor een betere controle over de invoer.
+- Combineer `awk` met andere commando's zoals `grep` en `sort` voor complexe dataverwerking.
+- Test je `awk`-scripts met kleine datasets voordat je ze op grotere bestanden toepast om fouten te voorkomen.

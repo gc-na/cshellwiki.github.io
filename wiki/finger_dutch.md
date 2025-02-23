@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) finger gebruik: Toon informatie over gebruikers
 
 ## Overzicht
-De `finger`-opdracht is een hulpmiddel dat informatie geeft over gebruikers op een systeem. Het toont details zoals de gebruikersnaam, het volledige naam, de inlogtijd en andere relevante informatie. Dit kan nuttig zijn voor systeembeheerders en gebruikers die meer willen weten over de actieve gebruikers op een systeem.
+De `finger`-opdracht is een hulpmiddel dat informatie geeft over gebruikers die momenteel zijn aangemeld op het systeem. Het toont details zoals de gebruikersnaam, het volledige naam, de inlogtijd en andere relevante gegevens.
 
 ## Gebruik
 De basis syntaxis van de `finger`-opdracht is als volgt:
@@ -10,40 +10,35 @@ De basis syntaxis van de `finger`-opdracht is als volgt:
 finger [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
+## Veelvoorkomende Opties
 - `-l`: Toon uitgebreide informatie over de gebruiker.
-- `-s`: Toon een kort overzicht van de gebruikersinformatie.
-- `-m`: Negeer hoofdlettergevoeligheid bij het zoeken naar gebruikers.
-- `-p`: Toon de informatie zonder de 'last login' tijd.
+- `-m`: Zoek naar een gebruiker zonder hoofdlettergevoeligheid.
+- `-s`: Toon een korte samenvatting van de gebruikersinformatie.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van de `finger`-opdracht:
 
-1. **Basisgebruik**: Toon informatie over alle gebruikers.
+1. Toon informatie over alle aangemelde gebruikers:
    ```csh
    finger
    ```
 
-2. **Informatie over een specifieke gebruiker**: Verkrijg details van een specifieke gebruiker, bijvoorbeeld `janedoe`.
+2. Toon uitgebreide informatie over een specifieke gebruiker:
    ```csh
-   finger janedoe
+   finger -l username
    ```
 
-3. **Uitgebreide informatie**: Toon uitgebreide informatie over een gebruiker.
+3. Zoek naar een gebruiker zonder hoofdlettergevoeligheid:
    ```csh
-   finger -l janedoe
+   finger -m UserName
    ```
 
-4. **Kort overzicht**: Toon een kort overzicht van alle gebruikers.
+4. Toon een korte samenvatting van de gebruikersinformatie:
    ```csh
    finger -s
    ```
 
-5. **Hoofdlettergevoeligheid negeren**: Zoek naar een gebruiker zonder rekening te houden met hoofdletters.
-   ```csh
-   finger -m Janedoe
-   ```
-
 ## Tips
-- Gebruik de `-s` optie voor een snel overzicht als je veel gebruikersinformatie wilt bekijken zonder te veel details.
-- Combineer opties om de output aan te passen aan je behoeften, bijvoorbeeld `finger -ls` voor een kort overzicht met uitgebreide informatie.
-- Controleer regelmatig de gebruikersinformatie om te zien wie er actief is op het systeem, vooral in een gedeelde omgeving.
+- Gebruik de `-l` optie voor gedetailleerde informatie als je meer wilt weten over een specifieke gebruiker.
+- Probeer de `-m` optie als je niet zeker bent van de hoofdletters in de gebruikersnaam.
+- Controleer regelmatig de status van gebruikers met de `finger`-opdracht om te zien wie er momenteel is ingelogd.

@@ -1,39 +1,44 @@
-# [Sistem Operasi] C Shell (csh) groupmod Penggunaan: Mengubah atribut grup
+# [Sistem Operasi] C Shell (csh) groupmod <Mengelola grup pengguna>: Mengubah atribut grup pengguna
 
 ## Overview
-Perintah `groupmod` digunakan untuk mengubah atribut dari grup yang ada di sistem. Dengan perintah ini, Anda dapat mengubah nama grup atau GID (Group ID) dari grup yang sudah ada.
+Perintah `groupmod` digunakan untuk mengubah atribut dari grup pengguna yang sudah ada di sistem. Dengan menggunakan perintah ini, Anda dapat mengubah nama grup atau GID (Group ID) grup yang ada.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `groupmod`:
 
-```
+```csh
 groupmod [options] [arguments]
 ```
 
 ## Common Options
-- `-n, --new-name NEW_GROUP`: Mengubah nama grup menjadi NEW_GROUP.
+- `-n, --new-name NEW_GROUP`: Mengubah nama grup menjadi `NEW_GROUP`.
 - `-g, --gid GID`: Mengubah GID grup menjadi nilai yang ditentukan.
-- `-h, --help`: Menampilkan bantuan penggunaan perintah `groupmod`.
+- `-o, --non-unique`: Mengizinkan penggunaan GID yang tidak unik.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `groupmod`:
 
-1. **Mengubah nama grup:**
+1. **Mengubah nama grup**:
    ```csh
    groupmod -n nama_baru nama_lama
    ```
 
-2. **Mengubah GID grup:**
+2. **Mengubah GID grup**:
    ```csh
    groupmod -g 1001 nama_grup
    ```
 
-3. **Mengubah nama dan GID grup sekaligus:**
+3. **Mengubah nama grup dan GID**:
    ```csh
    groupmod -n nama_baru -g 1002 nama_lama
    ```
 
+4. **Mengizinkan GID tidak unik**:
+   ```csh
+   groupmod -o -g 1001 nama_grup
+   ```
+
 ## Tips
-- Pastikan Anda memiliki hak akses yang diperlukan untuk mengubah grup, biasanya Anda perlu menjadi pengguna root.
-- Periksa apakah nama grup baru yang ingin Anda gunakan sudah ada untuk menghindari konflik.
-- Setelah melakukan perubahan, pastikan untuk memeriksa grup dengan perintah `getent group` untuk memastikan perubahan telah diterapkan.
+- Pastikan Anda memiliki hak akses yang cukup untuk menjalankan perintah `groupmod`, biasanya Anda perlu menjadi pengguna dengan hak istimewa (root).
+- Selalu periksa grup yang ada sebelum melakukan perubahan untuk menghindari konflik nama atau GID.
+- Gunakan perintah `getent group` untuk melihat daftar grup dan atributnya sebelum mengubahnya.

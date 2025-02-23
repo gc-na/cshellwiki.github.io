@@ -1,49 +1,49 @@
 # [Linux] C Shell (csh) chage <Użycie: zarządzanie polityką haseł użytkowników>
 
 ## Overview
-Polecenie `chage` służy do zarządzania polityką haseł użytkowników w systemie Linux. Umożliwia administratorom systemu ustawienie różnych parametrów dotyczących wygasania haseł, takich jak maksymalny czas ważności hasła, czas powiadomienia o wygasaniu oraz minimalny czas między zmianami haseł.
+Polecenie `chage` służy do zarządzania polityką haseł użytkowników w systemie Linux. Umożliwia administratorom ustawienie różnych parametrów dotyczących wygasania haseł, takich jak maksymalny czas użytkowania hasła, czas ostrzeżenia przed wygaśnięciem oraz czas, po którym hasło musi zostać zmienione.
 
 ## Usage
-Podstawowa składnia polecenia `chage` jest następująca:
+Podstawowa składnia polecenia `chage` wygląda następująco:
 
 ```bash
 chage [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-l`, `--list`: Wyświetla szczegóły dotyczące polityki haseł dla określonego użytkownika.
-- `-m`, `--mindays`: Ustawia minimalną liczbę dni między zmianami hasła.
-- `-M`, `--maxdays`: Ustawia maksymalną liczbę dni, po których hasło wygasa.
-- `-W`, `--warndays`: Ustawia liczbę dni, po których użytkownik zostanie powiadomiony o wygasaniu hasła.
-- `-I`, `--inactive`: Ustawia liczbę dni, po których konto użytkownika stanie się nieaktywne po wygaśnięciu hasła.
+- `-l` : Wyświetla informacje o polityce haseł dla określonego użytkownika.
+- `-m` : Ustawia minimalny czas (w dniach) przed zmianą hasła.
+- `-M` : Ustawia maksymalny czas (w dniach) użytkowania hasła.
+- `-I` : Ustawia czas (w dniach) nieaktywności, po którym konto zostanie zablokowane.
+- `-E` : Ustawia datę wygaśnięcia konta użytkownika.
 
 ## Common Examples
-1. Wyświetlenie polityki haseł dla użytkownika `janek`:
+1. **Wyświetlenie polityki haseł dla użytkownika:**
    ```bash
-   chage -l janek
+   chage -l nazwa_użytkownika
    ```
 
-2. Ustawienie maksymalnej liczby dni na 90 dni dla użytkownika `ania`:
+2. **Ustawienie minimalnego czasu przed zmianą hasła na 7 dni:**
    ```bash
-   chage -M 90 ania
+   chage -m 7 nazwa_użytkownika
    ```
 
-3. Ustawienie minimalnej liczby dni na 7 dni dla użytkownika `marek`:
+3. **Ustawienie maksymalnego czasu użytkowania hasła na 90 dni:**
    ```bash
-   chage -m 7 marek
+   chage -M 90 nazwa_użytkownika
    ```
 
-4. Ustawienie powiadomienia o wygasaniu hasła na 14 dni dla użytkownika `ewa`:
+4. **Ustawienie czasu nieaktywności na 30 dni:**
    ```bash
-   chage -W 14 ewa
+   chage -I 30 nazwa_użytkownika
    ```
 
-5. Ustawienie liczby dni nieaktywności na 30 dni dla użytkownika `krzysztof`:
+5. **Ustawienie daty wygaśnięcia konta na 1 stycznia 2024:**
    ```bash
-   chage -I 30 krzysztof
+   chage -E 2024-01-01 nazwa_użytkownika
    ```
 
 ## Tips
-- Regularnie sprawdzaj politykę haseł dla użytkowników, aby zapewnić bezpieczeństwo systemu.
-- Używaj opcji `-l`, aby szybko zweryfikować ustawienia haseł przed ich modyfikacją.
-- Zawsze informuj użytkowników o zmianach w polityce haseł, aby uniknąć nieporozumień.
+- Zawsze sprawdzaj aktualną politykę haseł przed wprowadzeniem zmian, aby uniknąć nieporozumień.
+- Używaj opcji `-l`, aby upewnić się, że zmiany zostały poprawnie zastosowane.
+- Regularnie przeglądaj polityki haseł, aby dostosować je do wymagań bezpieczeństwa w organizacji.

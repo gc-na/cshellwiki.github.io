@@ -1,43 +1,49 @@
-# [Linux] C Shell (csh) htop Kullanımı: Sistem kaynaklarını izleme aracı
+# [Linux] C Shell (csh) htop Kullanımı: Sistem kaynaklarını izlemek için bir araç
 
 ## Genel Bakış
-htop, sistem kaynaklarını gerçek zamanlı olarak izlemek için kullanılan bir komut satırı aracıdır. Kullanıcı dostu bir arayüze sahip olan htop, CPU, bellek ve işlem bilgilerini görsel olarak sunar.
+htop, sistem kaynaklarını gerçek zamanlı olarak izlemek için kullanılan bir komut satırı aracıdır. Kullanıcı dostu bir arayüze sahip olan htop, CPU, bellek kullanımı ve çalışan işlemler hakkında bilgi sağlar. Ayrıca, işlemleri yönetmek için etkileşimli bir ortam sunar.
 
 ## Kullanım
 htop komutunun temel sözdizimi aşağıdaki gibidir:
 
-```csh
+```bash
 htop [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
 - `-h`, `--help`: Yardım bilgilerini gösterir.
-- `-s`, `--sort`: İşlemleri belirli bir kritere göre sıralar (örneğin, CPU veya bellek kullanımı).
-- `-p`, `--pid`: Belirli bir işlem kimliğini izler.
-- `-u`, `--user`: Belirli bir kullanıcıya ait işlemleri gösterir.
+- `-s`, `--sort`: Görüntülenen işlemleri belirtilen kritere göre sıralar.
+- `-p`, `--pid`: Belirtilen işlem kimlikleri için htop'u başlatır.
+- `-u`, `--user`: Belirtilen kullanıcıya ait işlemleri gösterir.
 
 ## Yaygın Örnekler
-- htop'u başlatmak için:
-  ```csh
-  htop
-  ```
+Aşağıda htop komutunun bazı pratik örnekleri bulunmaktadır:
 
-- İşlemleri CPU kullanımına göre sıralamak için:
-  ```csh
-  htop -s PERCENT_CPU
-  ```
+### 1. Temel htop Kullanımı
+```bash
+htop
+```
+Bu komut, htop'un varsayılan görünümünü başlatır ve sistem kaynaklarınızı izlemeye başlarsınız.
 
-- Belirli bir işlem kimliğini izlemek için (örneğin, PID 1234):
-  ```csh
-  htop -p 1234
-  ```
+### 2. Belirli Bir Kullanıcının İşlemlerini Görüntüleme
+```bash
+htop -u kullanıcı_adı
+```
+Bu komut, belirtilen kullanıcının işlemlerini gösterir.
 
-- Belirli bir kullanıcıya ait işlemleri görüntülemek için (örneğin, kullanıcı adı "kullanici"):
-  ```csh
-  htop -u kullanici
-  ```
+### 3. İşlemleri Belirli Bir Kriterle Sıralama
+```bash
+htop -s MEM
+```
+Bu komut, işlemleri bellek kullanımına göre sıralar.
+
+### 4. Belirli İşlem Kimlikleri ile Htop'u Başlatma
+```bash
+htop -p 1234,5678
+```
+Bu komut, belirtilen işlem kimliklerine sahip işlemleri görüntüler.
 
 ## İpuçları
-- htop arayüzünde, işlemleri seçip `F9` tuşuna basarak sonlandırabilirsiniz.
-- Arayüzdeki renk kodları, kaynak kullanımını hızlıca anlamanızı sağlar; yeşil CPU, mavi bellek ve kırmızı swap kullanımını temsil eder.
-- htop'u daha verimli kullanmak için klavye kısayollarını öğrenmek faydalıdır; örneğin, `F3` ile arama yapabilir, `F6` ile sıralama kriterini değiştirebilirsiniz.
+- htop arayüzünde ok tuşlarıyla gezinerek işlemler arasında geçiş yapabilirsiniz.
+- Bir işlemi sonlandırmak için, işlemi seçip `F9` tuşuna basarak kill menüsüne erişebilirsiniz.
+- Görünüm ayarlarını değiştirmek için `F2` tuşuna basarak yapılandırma menüsüne girebilirsiniz.

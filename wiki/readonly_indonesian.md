@@ -1,29 +1,31 @@
-# [Sistem Operasi] C Shell (csh) readonly Penggunaan: Menetapkan variabel sebagai hanya-baca
+# [Sistem Operasi] C Shell (csh) readonly Penggunaan: Mengatur variabel sebagai hanya-baca
 
 ## Overview
-Perintah `readonly` dalam C Shell (csh) digunakan untuk menetapkan variabel sebagai hanya-baca. Setelah variabel ditetapkan sebagai readonly, nilainya tidak dapat diubah atau dihapus selama sesi shell tersebut. Ini berguna untuk melindungi variabel penting dari modifikasi yang tidak disengaja.
+Perintah `readonly` dalam C Shell (csh) digunakan untuk menetapkan variabel sebagai hanya-baca. Setelah sebuah variabel ditetapkan sebagai readonly, nilainya tidak dapat diubah atau dihapus selama sesi shell tersebut.
 
 ## Usage
-Berikut adalah sintaks dasar untuk menggunakan perintah `readonly`:
+Berikut adalah sintaks dasar dari perintah `readonly`:
 
-```csh
+```
 readonly [options] [arguments]
 ```
 
 ## Common Options
-- `-p`: Menampilkan semua variabel readonly saat ini beserta nilainya.
+- `-p`: Menampilkan semua variabel readonly yang saat ini ada beserta nilainya.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `readonly`:
 
 1. **Menetapkan variabel sebagai readonly:**
    ```csh
-   set myVar = "Hello World"
+   set myVar = "Hello, World!"
    readonly myVar
    ```
 
-2. **Mencoba mengubah nilai variabel readonly (akan gagal):**
+2. **Mencoba mengubah nilai variabel readonly:**
    ```csh
+   set myVar = "Hello, World!"
+   readonly myVar
    set myVar = "New Value"  # Ini akan menghasilkan error
    ```
 
@@ -40,6 +42,6 @@ Berikut adalah beberapa contoh penggunaan perintah `readonly`:
    ```
 
 ## Tips
-- Gunakan `readonly` untuk variabel yang penting agar tidak diubah secara tidak sengaja.
-- Selalu periksa variabel readonly dengan opsi `-p` untuk memastikan variabel yang tepat telah ditetapkan.
-- Ingat bahwa setelah variabel ditetapkan sebagai readonly, Anda tidak dapat mengubah atau menghapusnya dalam sesi yang sama.
+- Gunakan `readonly` untuk melindungi variabel penting dari perubahan yang tidak disengaja.
+- Selalu periksa variabel readonly dengan `readonly -p` sebelum mencoba mengubahnya.
+- Pertimbangkan untuk menggunakan `readonly` pada variabel yang berisi konfigurasi atau pengaturan yang tidak boleh diubah selama eksekusi skrip.

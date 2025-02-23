@@ -1,49 +1,43 @@
-# [리눅스] C Shell (csh) sftp 사용법: 파일 전송을 위한 안전한 프로토콜
+# [한국어] C Shell (csh) sftp 사용법: 파일 전송을 위한 안전한 프로토콜
 
-## 개요
-sftp는 SSH 파일 전송 프로토콜(Secure File Transfer Protocol)의 약자로, 네트워크를 통해 안전하게 파일을 전송하는 데 사용됩니다. sftp는 암호화된 연결을 통해 데이터를 전송하여 보안을 강화합니다.
+## Overview
+`sftp` 명령은 SSH 프로토콜을 통해 안전하게 파일을 전송하는 데 사용됩니다. 이 명령은 파일을 업로드하거나 다운로드할 수 있는 기능을 제공하며, 네트워크를 통해 파일 전송 시 보안을 유지합니다.
 
-## 사용법
-sftp 명령어의 기본 구문은 다음과 같습니다:
-
-```bash
-sftp [옵션] [사용자@호스트]
+## Usage
+기본 구문은 다음과 같습니다:
+```
+sftp [options] [user@]host
 ```
 
-## 일반 옵션
-- `-P 포트번호`: 연결할 포트 번호를 지정합니다.
-- `-o 옵션`: SSH 옵션을 설정합니다.
-- `-v`: 자세한 출력을 활성화하여 디버깅 정보를 제공합니다.
+## Common Options
+- `-b <batchfile>`: 배치 모드에서 사용할 명령을 포함하는 파일을 지정합니다.
+- `-C`: 전송 중에 데이터를 압축합니다.
+- `-P <port>`: 연결할 포트를 지정합니다.
+- `-o <option>`: 특정 SSH 옵션을 설정합니다.
 
-## 일반 예제
-다음은 sftp 명령어의 몇 가지 실용적인 예제입니다.
+## Common Examples
+- 원격 서버에 연결하기:
+  ```bash
+  sftp user@hostname
+  ```
 
-1. 원격 서버에 연결하기:
-   ```bash
-   sftp user@hostname
-   ```
+- 파일 다운로드:
+  ```bash
+  sftp user@hostname:/remote/path/to/file /local/path/to/file
+  ```
 
-2. 특정 포트를 사용하여 연결하기:
-   ```bash
-   sftp -P 2222 user@hostname
-   ```
+- 파일 업로드:
+  ```bash
+  sftp /local/path/to/file user@hostname:/remote/path/to/file
+  ```
 
-3. 파일 업로드하기:
-   ```bash
-   put localfile.txt
-   ```
+- 디렉토리의 모든 파일 다운로드:
+  ```bash
+  sftp user@hostname
+  get -r /remote/path/to/directory
+  ```
 
-4. 파일 다운로드하기:
-   ```bash
-   get remotefile.txt
-   ```
-
-5. 디렉토리 목록 보기:
-   ```bash
-   ls
-   ```
-
-## 팁
-- sftp 세션에서 `help` 명령어를 입력하면 사용 가능한 모든 명령어 목록을 확인할 수 있습니다.
-- 대량의 파일을 전송할 때는 `mput` 및 `mget` 명령어를 사용하여 여러 파일을 한 번에 전송할 수 있습니다.
-- 연결이 끊어지지 않도록 주기적으로 `keepalive` 설정을 고려하세요.
+## Tips
+- 항상 안전한 비밀번호를 사용하여 보안을 강화하세요.
+- 대량의 파일 전송 시 `-b` 옵션을 사용하여 배치 파일을 활용하면 효율적입니다.
+- 전송 중 문제가 발생하면 `-C` 옵션을 사용하여 데이터를 압축하여 전송 속도를 높일 수 있습니다.

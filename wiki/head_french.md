@@ -1,52 +1,47 @@
-# [Linux] C Shell (csh) head : Afficher les premières lignes d'un fichier
+# [Linux] C Shell (csh) head : afficher les premières lignes d'un fichier
 
 ## Overview
-La commande `head` est utilisée pour afficher les premières lignes d'un fichier texte. Par défaut, elle montre les 10 premières lignes, mais cela peut être modifié en fonction des besoins de l'utilisateur.
+La commande `head` est utilisée pour afficher les premières lignes d'un fichier texte. Par défaut, elle montre les dix premières lignes, mais cela peut être modifié en utilisant des options.
 
 ## Usage
-La syntaxe de base de la commande `head` est la suivante :
+Voici la syntaxe de base de la commande `head` :
 
-```
+```csh
 head [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes pour la commande `head` :
-
-- `-n [nombre]` : Affiche le nombre spécifié de lignes à partir du début du fichier.
-- `-c [nombre]` : Affiche le nombre spécifié de caractères à partir du début du fichier.
-- `-q` : Ne pas afficher les noms des fichiers lorsque plusieurs fichiers sont fournis.
-- `-v` : Affiche le nom du fichier avant son contenu.
+- `-n [nombre]` : Spécifie le nombre de lignes à afficher. Par exemple, `-n 5` affichera les cinq premières lignes.
+- `-q` : Supprime l'en-tête des fichiers multiples lors de l'affichage.
+- `-v` : Affiche l'en-tête des fichiers multiples.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `head` :
 
-1. Afficher les 10 premières lignes d'un fichier :
-   ```bash
+1. Afficher les dix premières lignes d'un fichier :
+   ```csh
    head fichier.txt
    ```
 
-2. Afficher les 5 premières lignes d'un fichier :
-   ```bash
+2. Afficher les cinq premières lignes d'un fichier :
+   ```csh
    head -n 5 fichier.txt
    ```
 
-3. Afficher les 20 premiers caractères d'un fichier :
-   ```bash
-   head -c 20 fichier.txt
-   ```
-
-4. Afficher les 10 premières lignes de plusieurs fichiers :
-   ```bash
+3. Afficher les premières lignes de plusieurs fichiers :
+   ```csh
    head fichier1.txt fichier2.txt
    ```
 
-5. Afficher le nom du fichier avant son contenu :
-   ```bash
-   head -v fichier.txt
+4. Afficher les trois premières lignes d'un fichier sans l'en-tête :
+   ```csh
+   head -q -n 3 fichier1.txt fichier2.txt
    ```
 
 ## Tips
-- Utilisez `head` en combinaison avec d'autres commandes, comme `grep`, pour filtrer les résultats avant d'afficher les premières lignes.
-- Pour une visualisation rapide, `head` est très utile lors de l'examen de fichiers volumineux sans avoir à les ouvrir entièrement.
-- Pensez à utiliser l'option `-n` pour ajuster le nombre de lignes affichées selon vos besoins spécifiques.
+- Utilisez `head` en combinaison avec d'autres commandes, comme `grep`, pour filtrer et afficher les résultats pertinents.
+- Pensez à rediriger la sortie de `head` vers un autre fichier si vous souhaitez conserver les lignes affichées :
+  ```csh
+  head -n 10 fichier.txt > premier_dix_lignes.txt
+  ```
+- Pour une visualisation rapide, `head` est utile pour vérifier le contenu d'un fichier sans l'ouvrir complètement.

@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) echo gebruik: Toon tekst of variabelen
+# [Linux] C Shell (csh) echo gebruik: Tekst weergeven op de terminal
 
 ## Overzicht
-De `echo`-opdracht in C Shell (csh) wordt gebruikt om tekst of de waarde van variabelen naar de standaarduitvoer (meestal het scherm) te sturen. Het is een eenvoudige maar krachtige manier om informatie weer te geven.
+De `echo`-opdracht in C Shell (csh) wordt gebruikt om tekst of variabelen weer te geven op de terminal. Het is een eenvoudige maar krachtige manier om informatie te communiceren of om de uitvoer van scripts te controleren.
 
 ## Gebruik
 De basis syntaxis van de `echo`-opdracht is als volgt:
@@ -10,12 +10,12 @@ De basis syntaxis van de `echo`-opdracht is als volgt:
 echo [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
+## Veelvoorkomende Opties
 - `-n`: Voorkomt dat er een nieuwe regel aan het einde van de uitvoer wordt toegevoegd.
-- `-e`: Activeert de interpretatie van escape-sequenties zoals `\n` (nieuwe regel) en `\t` (tab).
-- `-E`: Deactiveert de interpretatie van escape-sequenties (standaard gedrag).
+- `-e`: Schakelt de interpretatie van speciale karakters in, zoals `\n` voor een nieuwe regel of `\t` voor een tab.
+- `-E`: Schakelt de interpretatie van speciale karakters uit (dit is de standaardinstelling).
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van de `echo`-opdracht:
 
 1. Eenvoudige tekst weergeven:
@@ -23,28 +23,29 @@ Hier zijn enkele praktische voorbeelden van het gebruik van de `echo`-opdracht:
    echo "Hallo, wereld!"
    ```
 
-2. De waarde van een variabele weergeven:
+2. Variabele weergeven:
    ```csh
    set naam = "Jan"
    echo "Mijn naam is $naam."
    ```
 
-3. Tekst zonder nieuwe regel aan het einde:
+3. Nieuwe regel voorkomen:
    ```csh
-   echo -n "Dit is een zin zonder nieuwe regel."
+   echo -n "Dit is op dezelfde regel."
+   echo " Dit is nog steeds op dezelfde regel."
    ```
 
-4. Gebruik van escape-sequenties:
+4. Speciale karakters gebruiken:
    ```csh
    echo -e "Eerste regel\nTweede regel"
    ```
 
-5. Weergeven van een pad met tab- en spaties:
+5. Tekst met tabs:
    ```csh
-   echo "Dit is een pad: /usr/local/bin"
+   echo -e "Kolom1\tKolom2\tKolom3"
    ```
 
 ## Tips
-- Gebruik `-n` als je meerdere echo-opdrachten wilt combineren zonder extra nieuwe regels.
-- Wees voorzichtig met de spaties in je tekst; deze kunnen invloed hebben op de uitvoer.
-- Escape-sequenties kunnen handig zijn voor het formatteren van uitvoer, maar zorg ervoor dat je `-e` gebruikt om ze te activeren.
+- Gebruik `-n` als je wilt dat de uitvoer op dezelfde regel blijft, wat handig kan zijn voor prompts.
+- Wees voorzichtig met het gebruik van `-e`, omdat niet alle systemen deze optie ondersteunen. Controleer de documentatie van je specifieke shell.
+- Voor het debuggen van scripts kan `echo` nuttig zijn om de waarden van variabelen op verschillende punten in je script weer te geven.

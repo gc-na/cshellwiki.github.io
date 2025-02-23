@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) readonly : Définir des variables en lecture seule
 
 ## Overview
-La commande `readonly` dans C Shell (csh) est utilisée pour définir des variables d'environnement ou des variables shell comme étant en lecture seule. Cela signifie que ces variables ne peuvent pas être modifiées ou supprimées une fois qu'elles ont été définies comme readonly.
+La commande `readonly` dans C Shell (csh) est utilisée pour marquer une variable comme étant en lecture seule. Cela signifie que la variable ne peut pas être modifiée ou supprimée une fois qu'elle a été définie comme telle. Cette fonctionnalité est utile pour protéger des variables importantes dans un script ou une session interactive.
 
 ## Usage
 La syntaxe de base de la commande `readonly` est la suivante :
@@ -11,28 +11,30 @@ readonly [options] [arguments]
 ```
 
 ## Common Options
-- `-p` : Affiche toutes les variables readonly actuellement définies.
+- `-p` : Affiche toutes les variables en lecture seule actuellement définies dans l'environnement.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `readonly` :
 
 ### Exemple 1 : Définir une variable en lecture seule
 ```csh
-set VAR="Valeur initiale"
-readonly VAR
+set myVar = "Hello, World!"
+readonly myVar
 ```
 
-### Exemple 2 : Essayer de modifier une variable readonly
+### Exemple 2 : Essayer de modifier une variable en lecture seule
 ```csh
-set VAR="Nouvelle valeur"  # Cela échouera car VAR est readonly
+set myVar = "Hello, World!"
+readonly myVar
+set myVar = "New Value"  # Cela générera une erreur
 ```
 
-### Exemple 3 : Afficher les variables readonly
+### Exemple 3 : Afficher les variables en lecture seule
 ```csh
 readonly -p
 ```
 
 ## Tips
-- Utilisez `readonly` pour protéger des variables critiques que vous ne souhaitez pas voir modifiées accidentellement.
-- Pensez à vérifier les variables readonly existantes avec `readonly -p` avant de définir de nouvelles variables pour éviter les conflits.
-- Les variables readonly peuvent être utiles dans des scripts pour garantir que certaines valeurs restent constantes tout au long de l'exécution.
+- Utilisez `readonly` pour protéger les variables critiques dans vos scripts afin d'éviter des modifications accidentelles.
+- Vérifiez régulièrement les variables en lecture seule avec l'option `-p` pour garder un œil sur l'environnement de votre script.
+- N'oubliez pas que les variables définies comme `readonly` ne peuvent pas être supprimées ou modifiées, alors utilisez cette commande judicieusement.

@@ -1,40 +1,38 @@
 # [Linux] C Shell (csh) uptime gebruik: Toon systeemactiviteitstijd
 
 ## Overzicht
-De `uptime` opdracht geeft informatie over hoe lang het systeem actief is, samen met het aantal ingelogde gebruikers en de gemiddelde belasting van het systeem over de laatste 1, 5 en 15 minuten. Dit is nuttig voor systeembeheerders om de prestaties en belasting van hun systemen te monitoren.
+De `uptime` opdracht in C Shell (csh) toont hoe lang het systeem actief is geweest, samen met informatie over het aantal gebruikers en de gemiddelde belasting van het systeem over de laatste 1, 5 en 15 minuten. Dit is nuttig voor systeembeheerders om de prestaties van de server te monitoren.
 
 ## Gebruik
 De basis syntaxis van de `uptime` opdracht is als volgt:
 
-```
+```csh
 uptime [opties]
 ```
 
-## Veelvoorkomende opties
-- `-p`: Toont de uptime in een leesbare zin.
-- `-s`: Toont het tijdstip waarop het systeem voor het laatst is opgestart.
+## Veelvoorkomende Opties
+- `-p`: Toont de tijdsduur in een leesbare vorm, zoals "2 uren, 30 minuten".
+- `-s`: Toont de tijd waarop het systeem voor het laatst is opgestart.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van de `uptime` opdracht:
 
-1. **Basisgebruik**:
-   Om de uptime van het systeem te bekijken, gebruik je gewoon:
+1. **Basis gebruik**:
    ```csh
    uptime
    ```
 
-2. **Uptime in leesbare zin**:
-   Om de uptime in een meer begrijpelijke zin te tonen, gebruik je de `-p` optie:
+2. **Tijdsduur in leesbare vorm**:
    ```csh
    uptime -p
    ```
 
 3. **Tijd van opstarten**:
-   Om het exacte tijdstip te zien waarop het systeem voor het laatst is opgestart, gebruik je de `-s` optie:
    ```csh
    uptime -s
    ```
 
 ## Tips
-- Gebruik `uptime` regelmatig om de belasting van je systeem in de gaten te houden, vooral tijdens piekuren.
-- Combineer `uptime` met andere monitoringtools voor een completer beeld van de systeemprestaties.
-- Houd rekening met de gemiddelde belasting; waarden boven 1.0 kunnen wijzen op een overbelast systeem, afhankelijk van het aantal CPU's.
+- Gebruik `uptime` regelmatig om de systeemstatus te controleren, vooral voordat je belangrijke updates of wijzigingen aanbrengt.
+- Combineer `uptime` met andere systeemmonitoringtools voor een uitgebreidere analyse van de systeemprestaties.
+- Houd rekening met de gemiddelde belasting; als deze constant hoog is, kan dit wijzen op een probleem dat aandacht vereist.

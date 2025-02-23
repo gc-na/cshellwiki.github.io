@@ -1,44 +1,43 @@
 # [Hệ điều hành] C Shell (csh) script: Ghi lại phiên làm việc
 
 ## Overview
-Lệnh `script` trong C Shell (csh) được sử dụng để ghi lại tất cả các hoạt động của người dùng trong một phiên làm việc. Nó tạo ra một tệp tin chứa tất cả các lệnh đã nhập và đầu ra của chúng, giúp người dùng có thể xem lại hoặc chia sẻ phiên làm việc của mình sau này.
+Lệnh `script` trong C Shell (csh) được sử dụng để ghi lại một phiên làm việc trong terminal. Khi bạn chạy lệnh này, tất cả các đầu ra trên màn hình sẽ được lưu vào một tệp, cho phép bạn xem lại hoặc chia sẻ phiên làm việc của mình sau này.
 
 ## Usage
 Cú pháp cơ bản của lệnh `script` như sau:
-
-```csh
+```
 script [options] [arguments]
 ```
 
 ## Common Options
 - `-a`: Thêm đầu ra vào tệp đã tồn tại thay vì ghi đè.
-- `-f`: Hiển thị đầu ra ngay lập tức, không chờ đến khi phiên làm việc kết thúc.
-- `-q`: Chạy lệnh mà không hiển thị thông báo bắt đầu và kết thúc.
+- `-f`: Ghi lại đầu ra ngay lập tức, không chờ đến khi phiên làm việc kết thúc.
+- `-q`: Chạy ở chế độ im lặng, không hiển thị thông báo bắt đầu và kết thúc.
 
 ## Common Examples
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `script`:
 
-1. Ghi lại phiên làm việc vào tệp `session.log`:
+1. Ghi lại một phiên làm việc vào tệp `session.log`:
    ```csh
    script session.log
    ```
 
-2. Ghi thêm vào tệp đã tồn tại:
+2. Ghi lại phiên làm việc và thêm vào tệp đã tồn tại:
    ```csh
    script -a session.log
    ```
 
-3. Ghi lại phiên làm việc và hiển thị đầu ra ngay lập tức:
+3. Ghi lại phiên làm việc ngay lập tức:
    ```csh
    script -f session.log
    ```
 
-4. Chạy lệnh mà không hiển thị thông báo:
+4. Chạy lệnh trong chế độ im lặng:
    ```csh
    script -q session.log
    ```
 
 ## Tips
-- Hãy nhớ kiểm tra kích thước của tệp tin ghi lại, vì nó có thể trở nên lớn nếu phiên làm việc kéo dài.
-- Sử dụng tùy chọn `-a` nếu bạn muốn ghi lại nhiều phiên vào cùng một tệp mà không mất dữ liệu cũ.
-- Để dừng ghi lại, chỉ cần gõ lệnh `exit` hoặc nhấn `Ctrl+D`.
+- Hãy chắc chắn kiểm tra tệp ghi lại sau khi kết thúc phiên làm việc để đảm bảo mọi thông tin cần thiết đã được lưu.
+- Sử dụng tùy chọn `-f` nếu bạn muốn theo dõi ngay lập tức các đầu ra trong thời gian thực.
+- Đặt tên tệp ghi lại theo ngày hoặc nội dung để dễ dàng tìm kiếm sau này.

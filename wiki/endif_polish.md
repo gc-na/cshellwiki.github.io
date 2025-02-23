@@ -1,48 +1,47 @@
-# [Unix] C Shell (csh) endif użycie: Zakończenie bloku warunkowego
+# [Linux] C Shell (csh) endif użycie: Zakończenie bloku warunkowego
 
 ## Overview
-Polecenie `endif` w C Shell (csh) służy do kończenia bloku warunkowego, który został rozpoczęty przez polecenie `if`. Umożliwia to kontrolowanie przepływu wykonywania skryptów w zależności od spełnienia określonych warunków.
+Polecenie `endif` w C Shell (csh) służy do zakończenia bloku warunkowego, który został wcześniej otwarty za pomocą polecenia `if`. Umożliwia to strukturalne programowanie w skryptach powłoki, pozwalając na wykonywanie różnych działań w zależności od spełnienia określonych warunków.
 
 ## Usage
 Podstawowa składnia polecenia `endif` jest następująca:
 
-```
+```csh
 endif
 ```
 
 ## Common Options
-Polecenie `endif` nie ma żadnych opcji, ponieważ jest to proste polecenie kończące blok warunkowy.
+Polecenie `endif` nie ma dodatkowych opcji. Jest to proste polecenie, które po prostu kończy blok warunkowy.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia `endif` w skryptach C Shell:
 
 ### Przykład 1: Prosty blok warunkowy
 ```csh
-if ( $var == "tak" ) then
-    echo "Zmienna jest równa 'tak'."
+if ( $?VAR ) then
+    echo "Zmienna VAR jest ustawiona."
 endif
 ```
 
-### Przykład 2: Blok warunkowy z innym warunkiem
+### Przykład 2: Blok warunkowy z alternatywą
 ```csh
-if ( $age >= 18 ) then
-    echo "Jesteś pełnoletni."
+if ( $NUM -gt 10 ) then
+    echo "Liczba jest większa niż 10."
 else
-    echo "Nie jesteś pełnoletni."
+    echo "Liczba jest mniejsza lub równa 10."
 endif
 ```
 
 ### Przykład 3: Zagnieżdżony blok warunkowy
 ```csh
-if ( $score >= 60 ) then
-    echo "Zdałeś egzamin."
-    if ( $score >= 90 ) then
-        echo "Gratulacje! Otrzymałeś ocenę A."
+if ( $USER == "admin" ) then
+    echo "Witaj, administratorze!"
+    if ( $ACCESS_LEVEL == "high" ) then
+        echo "Masz dostęp do wszystkich zasobów."
     endif
 endif
 ```
 
 ## Tips
-- Upewnij się, że każde polecenie `if` ma odpowiadające mu `endif`, aby uniknąć błędów w skryptach.
-- Stosuj wcięcia w zagnieżdżonych blokach warunkowych, aby poprawić czytelność kodu.
-- Testuj skrypty w bezpiecznym środowisku przed ich użyciem w produkcji, aby upewnić się, że działają zgodnie z oczekiwaniami.
+- Upewnij się, że każdy blok `if` ma odpowiadające `endif`, aby uniknąć błędów składniowych.
+- Zagnieżdżone bloki warunkowe są dozwolone, ale należy zachować ostrożność, aby nie wprowadzić zamieszania w strukturze kodu.
+- Używaj wcięć, aby poprawić czytelność kodu, szczególnie w przypadku złożonych warunków.

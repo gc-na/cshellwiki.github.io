@@ -1,43 +1,43 @@
-# [Linux] C Shell (csh) blkid użycie: identyfikacja systemów plików
+# [Linux] C Shell (csh) blkid użycie: identyfikacja urządzeń blokowych
 
 ## Przegląd
-Polecenie `blkid` służy do wyświetlania informacji o urządzeniach blokowych w systemie. Umożliwia identyfikację systemów plików oraz ich atrybutów, takich jak UUID (unikalny identyfikator) i typ systemu plików.
+Polecenie `blkid` służy do wyświetlania informacji o urządzeniach blokowych w systemie Linux. Umożliwia uzyskanie szczegółowych danych, takich jak UUID, typ systemu plików oraz etykiety, co jest przydatne przy zarządzaniu systemem plików i urządzeniami.
 
 ## Użycie
-Podstawowa składnia polecenia `blkid` wygląda następująco:
+Podstawowa składnia polecenia `blkid` jest następująca:
 
-```csh
+```
 blkid [opcje] [argumenty]
 ```
 
 ## Częste opcje
-- `-o` - Określa format wyjścia (np. `value`, `full`).
-- `-s` - Wybiera konkretne atrybuty do wyświetlenia (np. `UUID`, `TYPE`).
-- `-p` - Ignoruje urządzenia, które nie są dostępne.
-- `-c` - Używa pliku cache do przyspieszenia działania.
+- `-o` : Określa format wyjścia (np. `value`, `full`, `device`).
+- `-s` : Wybiera konkretne atrybuty do wyświetlenia (np. `UUID`, `TYPE`).
+- `-p` : Pomija urządzenia, które nie są podłączone.
+- `-c` : Określa plik cache do użycia.
 
 ## Przykłady
-1. Wyświetlenie wszystkich urządzeń blokowych:
-   ```csh
+1. Aby wyświetlić wszystkie urządzenia blokowe:
+   ```bash
    blkid
    ```
 
-2. Wyświetlenie UUID i typu systemu plików dla konkretnego urządzenia:
-   ```csh
-   blkid /dev/sda1 -o value -s UUID -s TYPE
+2. Aby uzyskać szczegółowe informacje o konkretnym urządzeniu:
+   ```bash
+   blkid /dev/sda1
    ```
 
-3. Użycie opcji cache dla szybszego działania:
-   ```csh
-   blkid -c /etc/blkid.tab
+3. Aby wyświetlić tylko UUID urządzeń:
+   ```bash
+   blkid -s UUID
    ```
 
-4. Wyświetlenie tylko typów systemów plików:
-   ```csh
-   blkid -o value -s TYPE
+4. Aby uzyskać informacje w formacie wartości:
+   ```bash
+   blkid -o value -s UUID /dev/sda1
    ```
 
 ## Wskazówki
-- Używaj opcji `-o` do dostosowania formatu wyjścia, aby uzyskać tylko potrzebne informacje.
-- Regularnie aktualizuj plik cache, aby polecenie `blkid` działało szybciej.
-- Sprawdzaj UUID urządzeń, aby uniknąć pomyłek przy montowaniu systemów plików.
+- Używaj opcji `-o` dla lepszego formatowania wyników, co ułatwia analizę danych.
+- Regularnie sprawdzaj UUID urządzeń, aby uniknąć problemów z montowaniem systemów plików.
+- Pamiętaj, że `blkid` może wymagać uprawnień administratora, aby uzyskać dostęp do niektórych informacji o urządzeniach.

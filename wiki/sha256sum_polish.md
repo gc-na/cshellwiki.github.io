@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) sha256sum użycie: Obliczanie sum kontrolnych SHA-256
+# [Linux] C Shell (csh) sha256sum użycie: Obliczanie sumy kontrolnej SHA-256
 
 ## Przegląd
-Polecenie `sha256sum` służy do obliczania i weryfikowania sum kontrolnych SHA-256 dla plików. Jest to przydatne narzędzie do sprawdzania integralności danych oraz porównywania plików.
+Polecenie `sha256sum` służy do obliczania sum kontrolnych SHA-256 dla plików. Jest to przydatne narzędzie do weryfikacji integralności danych, umożliwiające sprawdzenie, czy plik nie został zmieniony.
 
 ## Użycie
 Podstawowa składnia polecenia `sha256sum` jest następująca:
@@ -11,10 +11,10 @@ sha256sum [opcje] [argumenty]
 ```
 
 ## Częste opcje
-- `-b`: Oblicza sumę kontrolną dla plików binarnych.
-- `-c`: Sprawdza sumy kontrolne z pliku.
-- `-o <plik>`: Zapisuje wynik do określonego pliku.
-- `--quiet`: Nie wyświetla komunikatów o błędach.
+- `-b` – oblicza sumę kontrolną dla plików binarnych.
+- `-c` – sprawdza sumy kontrolne z pliku.
+- `-o` – zapisuje wynik do określonego pliku.
+- `--help` – wyświetla pomoc dotycząca użycia polecenia.
 
 ## Przykłady
 1. Obliczanie sumy kontrolnej dla pliku:
@@ -22,9 +22,9 @@ sha256sum [opcje] [argumenty]
    sha256sum plik.txt
    ```
 
-2. Obliczanie sumy kontrolnej dla pliku binarnego:
+2. Zapis sumy kontrolnej do pliku:
    ```csh
-   sha256sum -b plik.bin
+   sha256sum plik.txt > suma.txt
    ```
 
 3. Sprawdzanie sum kontrolnych z pliku:
@@ -32,12 +32,12 @@ sha256sum [opcje] [argumenty]
    sha256sum -c suma.txt
    ```
 
-4. Zapisanie sumy kontrolnej do pliku:
+4. Obliczanie sumy kontrolnej dla pliku binarnego:
    ```csh
-   sha256sum plik.txt -o wynik.txt
+   sha256sum -b plik.bin
    ```
 
 ## Wskazówki
-- Zawsze używaj opcji `-c`, aby upewnić się, że pliki nie zostały zmodyfikowane.
-- Używaj plików z sumami kontrolnymi, aby łatwo weryfikować integralność danych w przyszłości.
-- Pamiętaj, że suma kontrolna jest unikalna dla zawartości pliku, więc nawet najmniejsza zmiana w pliku spowoduje inną sumę kontrolną.
+- Zawsze zapisuj sumy kontrolne w osobnym pliku, aby móc je później wykorzystać do weryfikacji.
+- Używaj opcji `-c`, aby szybko sprawdzić integralność wielu plików na podstawie wcześniej obliczonych sum.
+- Regularnie weryfikuj sumy kontrolne ważnych plików, aby upewnić się, że nie zostały one zmienione.

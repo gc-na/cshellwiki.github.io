@@ -1,50 +1,49 @@
-# [Linux] C Shell (csh) socat użycie: Narzędzie do przekazywania danych między różnymi źródłami
+# [Linux] C Shell (csh) socat użycie: Narzędzie do przesyłania danych między dwoma punktami
 
-## Overview
-`socat` to potężne narzędzie do przekazywania danych, które umożliwia tworzenie połączeń między różnymi typami źródeł, takimi jak gniazda, pliki, terminale i inne. Może być używane do tunelowania, przekazywania portów oraz komunikacji między procesami.
+## Przegląd
+`socat` to potężne narzędzie w systemie Linux, które umożliwia przesyłanie danych między różnymi punktami, takimi jak gniazda, pliki, czy urządzenia. Działa jako most, który łączy różne źródła danych, co czyni go niezwykle przydatnym w różnych scenariuszach sieciowych i systemowych.
 
-## Usage
-Podstawowa składnia polecenia `socat` jest następująca:
+## Użycie
+Podstawowa składnia polecenia `socat` wygląda następująco:
 
-```bash
+```csh
 socat [opcje] [argumenty]
 ```
 
-## Common Options
-- `-d`: Włącza tryb debugowania, co pozwala na wyświetlanie dodatkowych informacji o działaniu polecenia.
-- `-v`: Włącza tryb szczegółowy, który pokazuje przesyłane dane.
-- `TCP:<adres>:<port>`: Umożliwia połączenie z zdalnym serwerem TCP.
-- `UDP:<adres>:<port>`: Umożliwia połączenie z zdalnym serwerem UDP.
-- `FILE:<ścieżka>`: Umożliwia odczyt lub zapis do pliku.
+## Często używane opcje
+- `-d` : Włącza tryb debugowania, wyświetlając dodatkowe informacje o działaniu polecenia.
+- `-v` : Włącza tryb verbose, który pokazuje więcej szczegółów o przesyłanych danych.
+- `-u` : Umożliwia otwarcie gniazda w trybie tylko do odczytu.
+- `-b` : Ustawia rozmiar bufora dla przesyłanych danych.
 
-## Common Examples
+## Przykłady
 Oto kilka praktycznych przykładów użycia `socat`:
 
-1. **Przekazywanie portu TCP:**
-   ```bash
-   socat TCP-LISTEN:1234,fork TCP:localhost:5678
-   ```
-   To polecenie nasłuchuje na porcie 1234 i przekazuje połączenia do lokalnego portu 5678.
+1. **Przesyłanie danych z jednego gniazda do drugiego:**
 
-2. **Tunelowanie połączenia SSH:**
-   ```bash
-   socat TCP-LISTEN:2222,fork EXEC:"ssh user@remote_host"
-   ```
-   To polecenie tworzy lokalny port 2222, który przekazuje połączenia do zdalnego hosta przez SSH.
+```csh
+socat TCP-LISTEN:1234,fork TCP:localhost:5678
+```
 
-3. **Przekazywanie danych z pliku:**
-   ```bash
-   socat FILE:/path/to/file.txt STDOUT
-   ```
-   To polecenie odczytuje zawartość pliku `file.txt` i wyświetla ją na standardowym wyjściu.
+2. **Przesyłanie danych z pliku do gniazda:**
 
-4. **Przekazywanie danych między dwoma gniazdami:**
-   ```bash
-   socat TCP4-LISTEN:8080,fork TCP4:example.com:80
-   ```
-   To polecenie nasłuchuje na porcie 8080 i przekazuje dane do portu 80 na `example.com`.
+```csh
+socat -u FILE:/path/to/file.txt TCP:localhost:1234
+```
 
-## Tips
-- Używaj opcji `-d` i `-v`, aby uzyskać więcej informacji o działaniu `socat`, co może pomóc w debugowaniu.
-- Zawsze testuj swoje połączenia lokalnie przed wdrożeniem ich w środowisku produkcyjnym.
-- Zwróć uwagę na prawa dostępu do plików, gdy używasz `socat` do odczytu lub zapisu danych.
+3. **Łączenie dwóch gniazd TCP:**
+
+```csh
+socat TCP:host1:port1 TCP:host2:port2
+```
+
+4. **Przesyłanie danych z urządzenia szeregowego do gniazda:**
+
+```csh
+socat -u /dev/ttyS0 TCP:localhost:1234
+```
+
+## Wskazówki
+- Używaj opcji `-d` i `-v` podczas testowania, aby uzyskać więcej informacji o działaniu `socat`.
+- Zawsze sprawdzaj, czy porty, które chcesz użyć, są dostępne i nie są zajęte przez inne procesy.
+- Zwracaj uwagę na uprawnienia do plików i urządzeń, aby uniknąć problemów z dostępem.

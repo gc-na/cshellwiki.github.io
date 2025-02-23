@@ -1,48 +1,43 @@
 # [Hệ điều hành] C Shell (csh) pkg: Quản lý gói phần mềm
 
 ## Tổng quan
-Lệnh `pkg` trong C Shell (csh) được sử dụng để quản lý các gói phần mềm trên hệ thống. Nó cho phép người dùng cài đặt, cập nhật và gỡ bỏ các gói phần mềm một cách dễ dàng.
+Lệnh `pkg` trong C Shell (csh) được sử dụng để quản lý các gói phần mềm trên hệ thống. Nó cho phép người dùng cài đặt, gỡ bỏ và quản lý các gói phần mềm một cách dễ dàng.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `pkg` như sau:
+
 ```
 pkg [options] [arguments]
 ```
 
-## Các tùy chọn phổ biến
-- `install`: Cài đặt một gói phần mềm mới.
-- `remove`: Gỡ bỏ một gói phần mềm đã cài đặt.
-- `update`: Cập nhật các gói phần mềm hiện có.
-- `list`: Liệt kê tất cả các gói phần mềm đã cài đặt.
-- `info`: Hiển thị thông tin chi tiết về một gói phần mềm cụ thể.
+## Tùy chọn phổ biến
+- `install`: Cài đặt một gói phần mềm.
+- `remove`: Gỡ bỏ một gói phần mềm.
+- `list`: Liệt kê các gói đã cài đặt.
+- `update`: Cập nhật các gói phần mềm đã cài đặt.
 
-## Ví dụ phổ biến
+## Ví dụ thường gặp
 - Cài đặt một gói phần mềm:
   ```csh
-  pkg install tên_gói
+  pkg install tên-gói
   ```
 
 - Gỡ bỏ một gói phần mềm:
   ```csh
-  pkg remove tên_gói
+  pkg remove tên-gói
   ```
 
-- Cập nhật tất cả các gói phần mềm:
-  ```csh
-  pkg update
-  ```
-
-- Liệt kê tất cả các gói đã cài đặt:
+- Liệt kê các gói đã cài đặt:
   ```csh
   pkg list
   ```
 
-- Hiển thị thông tin về một gói cụ thể:
+- Cập nhật các gói phần mềm:
   ```csh
-  pkg info tên_gói
+  pkg update
   ```
 
 ## Mẹo
-- Luôn kiểm tra các gói đã cài đặt trước khi cài đặt mới để tránh xung đột.
-- Sử dụng tùy chọn `info` để tìm hiểu thêm về một gói trước khi cài đặt.
-- Thường xuyên cập nhật các gói phần mềm để đảm bảo hệ thống của bạn luôn an toàn và ổn định.
+- Luôn kiểm tra các gói đã cài đặt trước khi gỡ bỏ để tránh xóa nhầm.
+- Sử dụng tùy chọn `-y` để tự động xác nhận khi cài đặt hoặc gỡ bỏ gói.
+- Đọc tài liệu hướng dẫn của từng gói để hiểu rõ hơn về chức năng và cách sử dụng của chúng.

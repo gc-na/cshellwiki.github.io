@@ -1,38 +1,39 @@
 # [Linux] C Shell (csh) vipw Verwendung: Benutzerkonten bearbeiten
 
-## Überblick
-Der Befehl `vipw` wird verwendet, um die Passwortdatei (`/etc/passwd`) sicher zu bearbeiten. Er öffnet die Datei in einem Texteditor und sorgt dafür, dass während der Bearbeitung keine anderen Prozesse auf die Datei zugreifen können, was die Integrität der Benutzerkonten gewährleistet.
+## Übersicht
+Der Befehl `vipw` wird verwendet, um die Datei `/etc/passwd` zu bearbeiten, die Informationen über Benutzerkonten auf einem Unix-ähnlichen System enthält. Dieser Befehl öffnet die Datei in einem sicheren Editor, um die Integrität der Datei zu gewährleisten.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```shell
+```csh
 vipw [Optionen]
 ```
 
 ## Häufige Optionen
-- `-s`: Diese Option öffnet die Datei im "sicheren" Modus, was bedeutet, dass Änderungen erst nach dem Schließen des Editors wirksam werden.
-- `-m`: Diese Option ermöglicht das Bearbeiten der Shadow-Passwortdatei (`/etc/shadow`), wenn sie vorhanden ist.
+- `-s`: Diese Option öffnet die Datei im sicheren Modus, was bedeutet, dass die Datei nur zur Ansicht geöffnet wird und keine Änderungen vorgenommen werden können.
+- `-m`: Diese Option ermöglicht es, die Datei im Modus für mehrere Benutzer zu bearbeiten.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung von `vipw`:
+- Um die Benutzerkonten in der Standardansicht zu bearbeiten, verwenden Sie einfach:
 
-1. **Öffnen der Passwortdatei zur Bearbeitung**:
-   ```shell
-   vipw
-   ```
+```csh
+vipw
+```
 
-2. **Öffnen der Passwortdatei im sicheren Modus**:
-   ```shell
-   vipw -s
-   ```
+- Um die Datei im sicheren Modus zu öffnen, verwenden Sie:
 
-3. **Öffnen der Shadow-Passwortdatei**:
-   ```shell
-   vipw -m
-   ```
+```csh
+vipw -s
+```
+
+- Um die Datei für mehrere Benutzer zu bearbeiten, verwenden Sie:
+
+```csh
+vipw -m
+```
 
 ## Tipps
-- Stellen Sie sicher, dass Sie über die erforderlichen Berechtigungen verfügen, um die Passwortdatei zu bearbeiten, da dies in der Regel Administratorrechte erfordert.
-- Machen Sie vor Änderungen an der Passwortdatei immer eine Sicherungskopie, um Datenverlust zu vermeiden.
-- Vermeiden Sie das gleichzeitige Bearbeiten der Datei durch mehrere Benutzer, um Konflikte zu verhindern.
+- Stellen Sie sicher, dass Sie über die erforderlichen Berechtigungen verfügen, um die Datei `/etc/passwd` zu bearbeiten.
+- Machen Sie vor Änderungen an der Datei eine Sicherungskopie, um Datenverlust zu vermeiden.
+- Verwenden Sie den sicheren Modus, wenn Sie nur die Datei anzeigen möchten, um versehentliche Änderungen zu verhindern.

@@ -1,12 +1,12 @@
 # [Linux] C Shell (csh) swapon gebruik: Activeer swapruimte
 
 ## Overzicht
-De `swapon` opdracht wordt gebruikt om swapruimte in te schakelen op een Linux-systeem. Swapruimte is een deel van de schijf dat wordt gebruikt als virtueel geheugen, wat helpt om de prestaties van het systeem te verbeteren wanneer het fysieke RAM vol is.
+De `swapon` opdracht in C Shell (csh) wordt gebruikt om swapruimte in te schakelen. Swapruimte is een deel van de schijf dat wordt gebruikt als virtueel geheugen, waardoor het systeem meer geheugen kan gebruiken dan fysiek beschikbaar is.
 
 ## Gebruik
 De basis syntaxis van de `swapon` opdracht is als volgt:
 
-```
+```csh
 swapon [opties] [argumenten]
 ```
 
@@ -16,8 +16,9 @@ swapon [opties] [argumenten]
 - `-s`: Toont een samenvatting van de actieve swapruimte.
 
 ## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van de `swapon` opdracht:
 
-1. **Activeer een specifieke swapbestand**:
+1. **Activeer een specifiek swapbestand**:
    ```csh
    swapon /path/to/swapfile
    ```
@@ -27,17 +28,17 @@ swapon [opties] [argumenten]
    swapon -a
    ```
 
-3. **Toon actieve swapruimte**:
+3. **Toon een samenvatting van actieve swapruimte**:
    ```csh
    swapon -s
    ```
 
-4. **Activeer een swapbestand met foutafhandeling**:
+4. **Activeer een swapbestand en negeer fouten**:
    ```csh
    swapon -e /path/to/swapfile
    ```
 
 ## Tips
-- Zorg ervoor dat de swapbestanden de juiste permissies hebben om toegang te krijgen.
-- Controleer regelmatig de status van de swapruimte met `swapon -s` om te zien of alles correct is ingeschakeld.
-- Overweeg om swapruimte te configureren in `/etc/fstab` voor automatische activering bij het opstarten van het systeem.
+- Zorg ervoor dat het swapbestand correct is aangemaakt met de juiste permissies voordat je het activeert.
+- Gebruik de `swapon -s` opdracht regelmatig om de status van je swapruimte te controleren.
+- Overweeg om swapruimte te activeren bij het opstarten door het in `/etc/fstab` op te nemen, zodat het automatisch wordt ingeschakeld.

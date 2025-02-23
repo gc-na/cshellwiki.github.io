@@ -14,22 +14,16 @@ service [options] [arguments]
 - `stop`: Dừng dịch vụ.
 - `restart`: Khởi động lại dịch vụ.
 - `status`: Kiểm tra trạng thái của dịch vụ.
-- `reload`: Tải lại cấu hình của dịch vụ mà không cần khởi động lại.
 
 ## Common Examples
 - Khởi động một dịch vụ:
   ```csh
   service httpd start
   ```
-
+  
 - Dừng một dịch vụ:
   ```csh
   service httpd stop
-  ```
-
-- Kiểm tra trạng thái của một dịch vụ:
-  ```csh
-  service httpd status
   ```
 
 - Khởi động lại một dịch vụ:
@@ -37,12 +31,12 @@ service [options] [arguments]
   service httpd restart
   ```
 
-- Tải lại cấu hình của một dịch vụ:
+- Kiểm tra trạng thái của một dịch vụ:
   ```csh
-  service httpd reload
+  service httpd status
   ```
 
 ## Tips
-- Luôn kiểm tra trạng thái của dịch vụ sau khi thực hiện các thao tác khởi động hoặc dừng để đảm bảo rằng dịch vụ hoạt động như mong muốn.
-- Sử dụng quyền quản trị (root) khi thực hiện các lệnh liên quan đến dịch vụ để tránh gặp phải lỗi quyền truy cập.
-- Tham khảo tài liệu của từng dịch vụ để biết thêm thông tin về các tùy chọn và cấu hình cụ thể.
+- Luôn kiểm tra trạng thái của dịch vụ sau khi khởi động hoặc dừng để đảm bảo rằng các thao tác đã được thực hiện thành công.
+- Sử dụng lệnh `service` với quyền quản trị (root) để đảm bảo bạn có quyền truy cập đầy đủ vào các dịch vụ hệ thống.
+- Nên có kế hoạch bảo trì cho các dịch vụ quan trọng để tránh gián đoạn trong quá trình hoạt động của hệ thống.

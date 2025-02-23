@@ -1,7 +1,7 @@
-# [Sistem Operasi] C Shell (csh) swapoff: Menonaktifkan area swap
+# [Sistem Operasi] C Shell (csh) swapoff: Menonaktifkan ruang swap
 
 ## Overview
-Perintah `swapoff` digunakan untuk menonaktifkan area swap pada sistem. Swap adalah ruang di disk yang digunakan untuk menyimpan data ketika RAM penuh. Dengan menonaktifkan swap, Anda dapat mengelola penggunaan memori secara lebih efektif.
+Perintah `swapoff` digunakan untuk menonaktifkan ruang swap pada sistem. Ruang swap adalah area di disk yang digunakan untuk menyimpan data yang tidak muat di memori fisik. Dengan menonaktifkan ruang swap, sistem akan berhenti menggunakan area tersebut untuk penyimpanan sementara.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `swapoff`:
@@ -11,24 +11,24 @@ swapoff [options] [arguments]
 ```
 
 ## Common Options
-- `-a`: Menonaktifkan semua area swap yang terdaftar dalam file `/etc/fstab`.
-- `-e`: Mengabaikan kesalahan yang mungkin terjadi saat menonaktifkan swap.
+- `-a`: Menonaktifkan semua ruang swap yang terdaftar di file `/etc/fstab`.
+- `-e`: Mengabaikan kesalahan yang mungkin terjadi saat menonaktifkan ruang swap.
 - `-h`: Menampilkan bantuan dan informasi tentang penggunaan perintah.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `swapoff`:
 
-1. Menonaktifkan semua area swap:
+1. Menonaktifkan semua ruang swap yang terdaftar:
    ```csh
    swapoff -a
    ```
 
-2. Menonaktifkan area swap tertentu:
+2. Menonaktifkan ruang swap tertentu:
    ```csh
    swapoff /dev/sdX
    ```
 
-3. Menonaktifkan area swap dan mengabaikan kesalahan:
+3. Menonaktifkan ruang swap dan mengabaikan kesalahan:
    ```csh
    swapoff -e /dev/sdX
    ```
@@ -39,6 +39,6 @@ Berikut adalah beberapa contoh penggunaan perintah `swapoff`:
    ```
 
 ## Tips
-- Pastikan untuk memeriksa penggunaan memori sebelum menonaktifkan swap, karena ini dapat mempengaruhi kinerja sistem.
-- Gunakan perintah `swapon` untuk mengaktifkan kembali area swap jika diperlukan.
-- Selalu lakukan backup data penting sebelum melakukan perubahan pada pengaturan swap.
+- Pastikan untuk memeriksa penggunaan memori sebelum menonaktifkan ruang swap, karena ini dapat mempengaruhi kinerja sistem.
+- Gunakan perintah `swapon` untuk mengaktifkan kembali ruang swap jika diperlukan.
+- Selalu lakukan backup data penting sebelum melakukan perubahan pada konfigurasi sistem.

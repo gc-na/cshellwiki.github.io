@@ -1,55 +1,58 @@
-# [Linux] C Shell (csh) tar Użycie: Archiwizowanie i kompresowanie plików
+# [Linux] C Shell (csh) tar Użycie: Narzędzie do archiwizacji plików
 
-## Przegląd
-Polecenie `tar` (tape archive) służy do archiwizowania i kompresowania plików oraz katalogów w systemie Unix/Linux. Umożliwia tworzenie jednego pliku archiwum, który może zawierać wiele plików, co ułatwia ich przechowywanie i przesyłanie.
+## Overview
+Polecenie `tar` (tape archive) służy do tworzenia archiwów plików oraz ich rozpakowywania. Jest powszechnie używane do kompresji i przenoszenia wielu plików w jednym pliku archiwum.
 
-## Użycie
+## Usage
 Podstawowa składnia polecenia `tar` jest następująca:
 
-```bash
+```csh
 tar [opcje] [argumenty]
 ```
 
-## Częste opcje
+## Common Options
 - `-c`: Tworzy nowe archiwum.
 - `-x`: Rozpakowuje archiwum.
 - `-f`: Określa nazwę pliku archiwum.
-- `-v`: Wyświetla szczegóły operacji (tryb szczegółowy).
-- `-z`: Kompresuje lub dekompresuje archiwum przy użyciu gzip.
-- `-j`: Kompresuje lub dekompresuje archiwum przy użyciu bzip2.
+- `-v`: Wyświetla szczegóły operacji (verbose).
+- `-z`: Kompresuje archiwum za pomocą gzip.
+- `-j`: Kompresuje archiwum za pomocą bzip2.
 
-## Częste przykłady
+## Common Examples
 1. Tworzenie archiwum:
-   ```bash
+   ```csh
    tar -cvf archiwum.tar /ścieżka/do/katalogu
    ```
 
 2. Rozpakowywanie archiwum:
-   ```bash
+   ```csh
    tar -xvf archiwum.tar
    ```
 
 3. Tworzenie skompresowanego archiwum gzip:
-   ```bash
+   ```csh
    tar -czvf archiwum.tar.gz /ścieżka/do/katalogu
    ```
 
 4. Rozpakowywanie skompresowanego archiwum gzip:
-   ```bash
+   ```csh
    tar -xzvf archiwum.tar.gz
    ```
 
 5. Tworzenie archiwum bzip2:
-   ```bash
+   ```csh
    tar -cjvf archiwum.tar.bz2 /ścieżka/do/katalogu
    ```
 
 6. Rozpakowywanie archiwum bzip2:
-   ```bash
+   ```csh
    tar -xjvf archiwum.tar.bz2
    ```
 
-## Wskazówki
-- Zawsze używaj opcji `-v`, aby zobaczyć postęp operacji, co ułatwia monitorowanie procesu.
-- Używaj opcji `-f` z nazwą pliku archiwum, aby uniknąć nieporozumień dotyczących domyślnej nazwy pliku.
-- Regularnie twórz kopie zapasowe ważnych danych, używając `tar`, aby zapewnić ich bezpieczeństwo.
+## Tips
+- Zawsze sprawdzaj zawartość archiwum przed rozpakowaniem, używając opcji `-t`:
+  ```csh
+  tar -tvf archiwum.tar
+  ```
+- Używaj opcji `-v`, aby zobaczyć, które pliki są przetwarzane, co może być przydatne w przypadku dużych archiwów.
+- Regularnie twórz kopie zapasowe ważnych danych, używając `tar`, aby uniknąć ich utraty.

@@ -1,50 +1,54 @@
 # [Linux] C Shell (csh) diff gebruik: Vergelijk bestanden
 
 ## Overzicht
-Het `diff`-commando wordt gebruikt om de verschillen tussen twee bestanden of mappen te vergelijken. Het toont de regels die verschillen tussen de twee invoerbestanden, waardoor het een handig hulpmiddel is voor het identificeren van wijzigingen in tekstbestanden.
+De `diff`-opdracht in C Shell (csh) wordt gebruikt om de verschillen tussen twee bestanden of mappen te vergelijken. Het toont de regels die verschillen tussen de bestanden, wat nuttig is voor het identificeren van wijzigingen of het bijhouden van versies.
 
 ## Gebruik
-De basis syntaxis van het `diff`-commando is als volgt:
+De basis syntaxis van de `diff`-opdracht is als volgt:
 
 ```csh
 diff [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- `-u`: Toon de verschillen in een uniforme weergave.
-- `-c`: Toon de verschillen in een contextweergave.
-- `-i`: Negeer hoofdlettergebruik bij het vergelijken.
-- `-w`: Negeer witruimtes bij het vergelijken.
-- `-r`: Vergelijk mappen recursief.
+## Veelvoorkomende Opties
+- `-u`: Toont de verschillen in een uniforme indeling.
+- `-c`: Toont de verschillen in een context-indeling.
+- `-i`: Negeert hoofdlettergebruik bij de vergelijking.
+- `-w`: Negeert witruimtes bij de vergelijking.
+- `-r`: Vergelijkt subdirectories recursief.
 
-## Veelvoorkomende voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van het `diff`-commando:
+## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van de `diff`-opdracht:
 
-### Voorbeeld 1: Basisvergelijking
-Vergelijk twee tekstbestanden en toon de verschillen.
-```csh
-diff bestand1.txt bestand2.txt
-```
+1. Vergelijk twee tekstbestanden en toon de verschillen:
+   ```csh
+   diff bestand1.txt bestand2.txt
+   ```
 
-### Voorbeeld 2: Uniforme weergave
-Gebruik de uniforme optie om de verschillen duidelijker weer te geven.
-```csh
-diff -u bestand1.txt bestand2.txt
-```
+2. Gebruik de uniforme indeling om de verschillen weer te geven:
+   ```csh
+   diff -u bestand1.txt bestand2.txt
+   ```
 
-### Voorbeeld 3: Contextweergave
-Toon de verschillen met context om meer informatie te geven over de wijzigingen.
-```csh
-diff -c bestand1.txt bestand2.txt
-```
+3. Negeer hoofdlettergebruik bij de vergelijking:
+   ```csh
+   diff -i bestand1.txt bestand2.txt
+   ```
 
-### Voorbeeld 4: Vergelijk mappen
-Vergelijk twee mappen en hun inhoud recursief.
-```csh
-diff -r map1/ map2/
-```
+4. Vergelijk twee mappen en hun inhoud recursief:
+   ```csh
+   diff -r map1/ map2/
+   ```
+
+5. Toon de verschillen in een context-indeling:
+   ```csh
+   diff -c bestand1.txt bestand2.txt
+   ```
 
 ## Tips
-- Gebruik de `-i` optie als je niet wilt dat hoofdletters de vergelijking beïnvloeden.
-- Combineer opties voor een meer gedetailleerde output, bijvoorbeeld `diff -u -w bestand1.txt bestand2.txt`.
-- Bekijk de man-pagina (`man diff`) voor meer informatie over geavanceerde opties en gebruik.
+- Gebruik de `-u` optie voor een overzichtelijke weergave van de verschillen, vooral bij het bekijken van grote bestanden.
+- Combineer opties om de vergelijking aan te passen aan jouw behoeften, zoals het negeren van witruimtes of hoofdletters.
+- Bewaar de uitvoer van `diff` in een bestand voor latere referentie door het gebruik van omleiding:
+  ```csh
+  diff bestand1.txt bestand2.txt > verschillen.txt
+  ```

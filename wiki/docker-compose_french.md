@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) docker-compose : Gérer des applications multi-conteneurs
 
 ## Overview
-La commande `docker-compose` permet de définir et de gérer des applications composées de plusieurs conteneurs Docker. Elle utilise un fichier de configuration, généralement nommé `docker-compose.yml`, pour spécifier les services, réseaux et volumes nécessaires à l'application.
+La commande `docker-compose` est un outil qui permet de définir et de gérer des applications composées de plusieurs conteneurs Docker. Grâce à un fichier de configuration, généralement nommé `docker-compose.yml`, vous pouvez facilement orchestrer le déploiement et la gestion de vos services.
 
 ## Usage
 La syntaxe de base de la commande `docker-compose` est la suivante :
@@ -14,15 +14,15 @@ docker-compose [options] [arguments]
 Voici quelques options courantes pour `docker-compose` :
 
 - `up` : Démarre les conteneurs définis dans le fichier `docker-compose.yml`.
-- `down` : Arrête et supprime les conteneurs, réseaux et volumes créés par `up`.
-- `build` : Construit ou reconstruit les services définis.
+- `down` : Arrête et supprime les conteneurs, les réseaux et les volumes créés par `up`.
+- `build` : Construit ou reconstruit les services définis dans le fichier.
 - `logs` : Affiche les journaux des conteneurs en cours d'exécution.
-- `ps` : Liste les conteneurs gérés par `docker-compose`.
+- `ps` : Affiche l'état des conteneurs gérés par `docker-compose`.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `docker-compose` :
 
-1. **Démarrer les services définis** :
+1. **Démarrer les services** :
    ```bash
    docker-compose up
    ```
@@ -37,17 +37,22 @@ Voici quelques exemples pratiques de l'utilisation de `docker-compose` :
    docker-compose down
    ```
 
-4. **Construire les images des services** :
+4. **Construire les services** :
    ```bash
    docker-compose build
    ```
 
-5. **Afficher les journaux des conteneurs** :
+5. **Afficher les journaux des services** :
    ```bash
    docker-compose logs
    ```
 
+6. **Afficher l'état des conteneurs** :
+   ```bash
+   docker-compose ps
+   ```
+
 ## Tips
-- Utilisez l'option `-d` avec `up` pour exécuter les conteneurs en arrière-plan, ce qui vous permet de continuer à utiliser le terminal.
+- Utilisez l'option `-d` pour exécuter vos conteneurs en mode détaché, ce qui vous permet de continuer à utiliser votre terminal.
 - Assurez-vous que votre fichier `docker-compose.yml` est correctement configuré pour éviter des erreurs lors du démarrage des services.
-- Utilisez `docker-compose ps` pour vérifier l'état de vos conteneurs et vous assurer qu'ils fonctionnent comme prévu.
+- N'hésitez pas à utiliser des alias dans votre shell pour simplifier les commandes que vous utilisez fréquemment avec `docker-compose`.

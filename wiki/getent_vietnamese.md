@@ -1,38 +1,42 @@
-# [Hệ điều hành Unix] C Shell (csh) getent: [lấy thông tin từ cơ sở dữ liệu]
+# [Hệ điều hành] C Shell (csh) getent: [lấy thông tin từ cơ sở dữ liệu]
 
-## Tổng quan
-Lệnh `getent` được sử dụng để truy xuất thông tin từ các cơ sở dữ liệu hệ thống như passwd, group, hosts, và nhiều hơn nữa. Nó cho phép người dùng lấy thông tin liên quan đến người dùng, nhóm, và các thông tin mạng một cách dễ dàng.
+## Overview
+Lệnh `getent` trong C Shell (csh) được sử dụng để truy xuất thông tin từ các cơ sở dữ liệu như passwd, group, hosts, và nhiều hơn nữa. Nó cho phép người dùng lấy thông tin cụ thể về người dùng, nhóm hoặc máy chủ từ các tệp cấu hình hệ thống.
 
-## Cách sử dụng
+## Usage
 Cú pháp cơ bản của lệnh `getent` như sau:
 ```
 getent [options] [arguments]
 ```
 
-## Các tùy chọn phổ biến
-- `passwd`: Lấy thông tin người dùng từ cơ sở dữ liệu người dùng.
-- `group`: Lấy thông tin nhóm từ cơ sở dữ liệu nhóm.
-- `hosts`: Lấy thông tin địa chỉ IP và tên máy chủ từ cơ sở dữ liệu hosts.
-- `services`: Lấy thông tin dịch vụ mạng từ cơ sở dữ liệu dịch vụ.
+## Common Options
+- `passwd`: Truy xuất thông tin người dùng từ cơ sở dữ liệu passwd.
+- `group`: Truy xuất thông tin nhóm từ cơ sở dữ liệu group.
+- `hosts`: Truy xuất thông tin máy chủ từ cơ sở dữ liệu hosts.
+- `services`: Truy xuất thông tin dịch vụ từ cơ sở dữ liệu services.
 
-## Ví dụ thường gặp
-- Lấy thông tin người dùng:
-  ```bash
+## Common Examples
+- Để lấy thông tin về một người dùng cụ thể:
+  ```csh
   getent passwd username
   ```
-- Lấy thông tin nhóm:
-  ```bash
-  getent group groupname
-  ```
-- Lấy thông tin địa chỉ IP và tên máy chủ:
-  ```bash
-  getent hosts hostname
-  ```
-- Lấy thông tin dịch vụ mạng:
-  ```bash
-  getent services servicename
+
+- Để lấy danh sách tất cả người dùng:
+  ```csh
+  getent passwd
   ```
 
-## Mẹo
-- Sử dụng `getent` thay vì các lệnh như `cat /etc/passwd` để đảm bảo bạn nhận được thông tin từ tất cả các nguồn dữ liệu, bao gồm cả LDAP nếu được cấu hình.
-- Kiểm tra các thông tin có sẵn bằng cách sử dụng `getent` với các tùy chọn khác nhau để hiểu rõ hơn về cấu trúc dữ liệu của hệ thống.
+- Để lấy thông tin về một nhóm cụ thể:
+  ```csh
+  getent group groupname
+  ```
+
+- Để lấy thông tin về một máy chủ cụ thể:
+  ```csh
+  getent hosts hostname
+  ```
+
+## Tips
+- Sử dụng `getent` để kiểm tra thông tin người dùng hoặc nhóm mà không cần truy cập trực tiếp vào các tệp hệ thống.
+- Kết hợp lệnh `getent` với `grep` để tìm kiếm thông tin cụ thể trong kết quả trả về.
+- Hãy chắc chắn rằng bạn có quyền truy cập cần thiết để sử dụng lệnh `getent` cho các cơ sở dữ liệu khác nhau.

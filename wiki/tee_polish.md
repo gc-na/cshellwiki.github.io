@@ -1,23 +1,23 @@
 # [Linux] C Shell (csh) tee użycie: Zapisz dane do pliku i wyświetl je na standardowym wyjściu
 
 ## Overview
-Polecenie `tee` w powłoce C Shell (csh) służy do odczytywania danych ze standardowego wejścia i jednoczesnego zapisywania ich do jednego lub więcej plików. Umożliwia to użytkownikom monitorowanie danych w czasie rzeczywistym, podczas gdy są one zapisywane.
+Polecenie `tee` w C Shell (csh) jest używane do odczytywania danych ze standardowego wejścia i jednoczesnego zapisywania ich do jednego lub więcej plików. Dzięki temu można zobaczyć dane na ekranie, a jednocześnie zapisać je do pliku.
 
 ## Usage
 Podstawowa składnia polecenia `tee` wygląda następująco:
 
-```csh
+```
 tee [opcje] [argumenty]
 ```
 
 ## Common Options
 Oto kilka powszechnie używanych opcji dla polecenia `tee`:
 
-- `-a`: Dodaje dane do istniejącego pliku zamiast go nadpisywać.
-- `-i`: Ignoruje sygnał przerwania (SIGINT), co pozwala na kontynuowanie działania polecenia.
+- `-a` - dodaje dane do istniejącego pliku zamiast go nadpisywać.
+- `-i` - ignoruje sygnał przerwania (SIGINT), co pozwala na kontynuowanie działania polecenia.
 
 ## Common Examples
-Poniżej znajdują się przykłady użycia polecenia `tee`:
+Oto kilka praktycznych przykładów użycia polecenia `tee`:
 
 1. Zapisz dane do pliku i wyświetl je na ekranie:
    ```csh
@@ -29,17 +29,17 @@ Poniżej znajdują się przykłady użycia polecenia `tee`:
    echo "Nowa linia" | tee -a output.txt
    ```
 
-3. Użyj `tee` z wieloma plikami:
+3. Użyj `tee` w potoku, aby zapisać wynik innego polecenia:
    ```csh
-   echo "Zapisz do dwóch plików" | tee file1.txt file2.txt
+   ls -l | tee directory_list.txt
    ```
 
-4. Ignoruj sygnał przerwania:
+4. Ignoruj sygnał przerwania podczas zapisywania danych:
    ```csh
    some_command | tee -i output.txt
    ```
 
 ## Tips
-- Używaj opcji `-a`, gdy chcesz dodać dane do pliku, aby uniknąć przypadkowego nadpisania.
-- Możesz używać `tee` w połączeniu z innymi poleceniami, aby monitorować ich wyjście w czasie rzeczywistym.
-- Pamiętaj, że `tee` działa najlepiej w skryptach lub w sytuacjach, gdzie potrzebujesz zarówno wyjścia na ekranie, jak i zapisu do pliku.
+- Używaj opcji `-a`, gdy chcesz dodać dane do pliku, aby uniknąć przypadkowego nadpisania ważnych informacji.
+- Możesz używać `tee` w połączeniu z innymi poleceniami w potokach, aby lepiej zarządzać danymi.
+- Sprawdź zawartość pliku po użyciu `tee`, aby upewnić się, że dane zostały zapisane poprawnie.

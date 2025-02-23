@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) df Użycie: Sprawdza dostępne miejsce na dysku
+# [Linux] C Shell (csh) df Użycie: Sprawdzanie dostępnej przestrzeni dyskowej
 
 ## Overview
-Polecenie `df` w C Shell (csh) służy do wyświetlania informacji o dostępnej przestrzeni dyskowej na zamontowanych systemach plików. Umożliwia użytkownikom monitorowanie wykorzystania miejsca na dysku, co jest przydatne w zarządzaniu zasobami systemowymi.
+Polecenie `df` (disk free) w systemie C Shell (csh) służy do wyświetlania informacji o dostępnej i używanej przestrzeni dyskowej na zamontowanych systemach plików. Dzięki temu użytkownicy mogą szybko ocenić, ile miejsca pozostało na dysku.
 
 ## Usage
 Podstawowa składnia polecenia `df` jest następująca:
@@ -13,29 +13,35 @@ df [opcje] [argumenty]
 ## Common Options
 Oto kilka powszechnie używanych opcji dla polecenia `df`:
 
-- `-h` - Wyświetla rozmiary w formacie "czytelnym dla ludzi" (np. 1K, 234M, 2G).
-- `-T` - Wyświetla typ systemu plików dla każdego zamontowanego systemu plików.
-- `-a` - Wyświetla wszystkie systemy plików, w tym te, które są zainstalowane, ale nie są aktualnie zamontowane.
+- `-h` - Wyświetla rozmiary w formacie czytelnym dla ludzi (np. KB, MB, GB).
+- `-T` - Wyświetla typy systemów plików.
+- `-a` - Wyświetla wszystkie systemy plików, w tym te, które mają 0 bajtów.
+- `-i` - Wyświetla informacje o inode'ach zamiast o przestrzeni dyskowej.
 
 ## Common Examples
 Oto kilka praktycznych przykładów użycia polecenia `df`:
 
-1. Wyświetlenie dostępnej przestrzeni na wszystkich zamontowanych systemach plików w formacie czytelnym dla ludzi:
+1. Wyświetlenie dostępnej przestrzeni dyskowej w formacie czytelnym dla ludzi:
    ```csh
    df -h
    ```
 
-2. Wyświetlenie typów systemów plików dla zamontowanych systemów:
+2. Wyświetlenie typów systemów plików:
    ```csh
    df -T
    ```
 
-3. Wyświetlenie informacji o wszystkich systemach plików, w tym tych, które nie są zamontowane:
+3. Wyświetlenie informacji o wszystkich systemach plików, w tym tych z zerową przestrzenią:
    ```csh
    df -a
    ```
 
+4. Wyświetlenie informacji o inode'ach:
+   ```csh
+   df -i
+   ```
+
 ## Tips
-- Regularnie sprawdzaj dostępne miejsce na dysku, aby uniknąć problemów z przechowywaniem danych.
-- Używaj opcji `-h`, aby uzyskać bardziej zrozumiałe wyniki, szczególnie gdy pracujesz z dużymi rozmiarami.
-- Zawsze sprawdzaj, które systemy plików są zamontowane, aby zrozumieć, gdzie możesz potrzebować więcej przestrzeni.
+- Regularnie sprawdzaj dostępność przestrzeni dyskowej, aby uniknąć problemów z brakiem miejsca na dysku.
+- Użyj opcji `-h` w codziennym użytkowaniu, aby łatwiej interpretować wyniki.
+- Możesz łączyć różne opcje, na przykład `df -hT`, aby uzyskać więcej informacji w przystępnej formie.

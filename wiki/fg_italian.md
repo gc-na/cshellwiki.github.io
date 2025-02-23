@@ -1,38 +1,43 @@
-# [Linux] C Shell (csh) fg Uso: Riporta un processo in primo piano
+# [Linux] C Shell (csh) fg Uso equivalente: Riporta un processo in primo piano
 
 ## Overview
-Il comando `fg` in C Shell (csh) è utilizzato per riportare un processo che è stato eseguito in background al primo piano. Questo è utile quando si desidera interagire nuovamente con un processo che è stato avviato precedentemente ma non è attualmente visibile nel terminale.
+Il comando `fg` in C Shell (csh) viene utilizzato per riportare un processo in esecuzione in background al primo piano. Questo è utile quando si desidera interagire nuovamente con un processo che è stato messo in pausa o eseguito in background.
 
 ## Usage
 La sintassi di base del comando `fg` è la seguente:
 
-```csh
+```
 fg [opzioni] [argomenti]
 ```
 
 ## Common Options
-- **%job_id**: Specifica l'ID del lavoro che si desidera riportare in primo piano. Può essere un numero o un nome di lavoro.
-- **-n**: Riporta il lavoro più recente in primo piano senza specificare un ID.
+- `job_spec`: Specifica il lavoro da riportare in primo piano. Può essere un numero di lavoro o un nome di processo.
+- `-l`: Elenca i lavori attualmente in esecuzione in background.
 
 ## Common Examples
 Ecco alcuni esempi pratici dell'uso del comando `fg`:
 
-1. Riportare il lavoro più recente in primo piano:
+1. Riportare l'ultimo processo in background al primo piano:
    ```csh
    fg
    ```
 
-2. Riportare un lavoro specifico in primo piano utilizzando l'ID del lavoro:
+2. Riportare un processo specifico in primo piano utilizzando il numero di lavoro:
    ```csh
    fg %1
    ```
 
-3. Se hai più lavori in background e vuoi riportare il secondo lavoro in primo piano:
+3. Se hai più processi in background e vuoi riportare il secondo in primo piano:
    ```csh
    fg %2
    ```
 
+4. Elencare i lavori in background:
+   ```csh
+   jobs -l
+   ```
+
 ## Tips
-- Assicurati di controllare i lavori in background utilizzando il comando `jobs` prima di usare `fg`, per sapere quali processi sono disponibili.
-- Puoi utilizzare `Ctrl + Z` per mettere un processo in background, e poi usare `fg` per riportarlo in primo piano quando necessario.
-- Ricorda che solo i processi in background possono essere riportati in primo piano; se un processo è già in primo piano, non sarà possibile utilizzare `fg` su di esso.
+- Utilizza il comando `jobs` per visualizzare i processi in background e i loro numeri di lavoro prima di usare `fg`.
+- Se non specifichi un numero di lavoro, `fg` riporterà l'ultimo processo in background.
+- Ricorda che puoi interrompere un processo in primo piano con `Ctrl + Z` per metterlo in background e poi riportarlo in primo piano con `fg`.

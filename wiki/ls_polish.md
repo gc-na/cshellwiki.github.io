@@ -1,22 +1,24 @@
 # [Linux] C Shell (csh) ls użycie: wyświetlanie zawartości katalogu
 
-## Przegląd
-Polecenie `ls` w C Shell (csh) służy do wyświetlania zawartości katalogu. Umożliwia użytkownikom przeglądanie plików i folderów znajdujących się w danym katalogu, a także dostarcza informacji o ich atrybutach.
+## Overview
+Polecenie `ls` w C Shell (csh) służy do wyświetlania zawartości katalogu. Umożliwia użytkownikom przeglądanie plików i folderów znajdujących się w określonym katalogu.
 
-## Użycie
+## Usage
 Podstawowa składnia polecenia `ls` jest następująca:
 
-```csh
+```
 ls [opcje] [argumenty]
 ```
 
-## Często używane opcje
-- `-l`: Wyświetla szczegółowy format listy, pokazując dodatkowe informacje o plikach, takie jak uprawnienia, właściciel, rozmiar i data modyfikacji.
-- `-a`: Wyświetla wszystkie pliki, w tym ukryte pliki (zaczynające się od kropki).
-- `-h`: Wyświetla rozmiary plików w formacie czytelnym dla człowieka (np. KB, MB).
+## Common Options
+Oto kilka powszechnie używanych opcji dla polecenia `ls`:
+
+- `-l`: Wyświetla szczegółowy widok plików, w tym uprawnienia, właściciela, rozmiar i datę modyfikacji.
+- `-a`: Wyświetla wszystkie pliki, w tym ukryte (zaczynające się od kropki).
+- `-h`: Wyświetla rozmiary plików w formacie czytelnym dla ludzi (np. KB, MB).
 - `-R`: Rekurencyjnie wyświetla zawartość wszystkich podkatalogów.
 
-## Przykłady
+## Common Examples
 Oto kilka praktycznych przykładów użycia polecenia `ls`:
 
 1. Wyświetlenie zawartości bieżącego katalogu:
@@ -24,7 +26,7 @@ Oto kilka praktycznych przykładów użycia polecenia `ls`:
    ls
    ```
 
-2. Wyświetlenie szczegółowej listy plików:
+2. Wyświetlenie szczegółowego widoku plików:
    ```csh
    ls -l
    ```
@@ -34,17 +36,17 @@ Oto kilka praktycznych przykładów użycia polecenia `ls`:
    ls -a
    ```
 
-4. Wyświetlenie rozmiarów plików w formacie czytelnym dla człowieka:
+4. Wyświetlenie zawartości katalogu z rozmiarami plików w formacie czytelnym:
    ```csh
    ls -lh
    ```
 
-5. Rekurencyjne wyświetlenie zawartości katalogu i podkatalogów:
+5. Rekurencyjne wyświetlenie zawartości katalogu i jego podkatalogów:
    ```csh
    ls -R
    ```
 
-## Wskazówki
-- Używaj opcji `-l`, aby uzyskać więcej informacji o plikach, co może być przydatne przy zarządzaniu uprawnieniami.
-- Kombinuj opcje, np. `ls -la` wyświetli wszystkie pliki w szczegółowym formacie.
-- Pamiętaj, że kolejność opcji nie ma znaczenia; `ls -la` i `ls -al` działają identycznie.
+## Tips
+- Używaj opcji `-l` w połączeniu z `-h`, aby uzyskać szczegółowe informacje o plikach w czytelnym formacie.
+- Aby szybko sprawdzić, które pliki są ukryte, użyj opcji `-a`.
+- Możesz łączyć różne opcje, na przykład `ls -la` wyświetli szczegółowy widok wszystkich plików, w tym ukrytych.

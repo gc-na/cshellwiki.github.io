@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) if: Sprawdzanie warunków
+# [Linux] C Shell (csh) if: Sprawdza warunki i wykonuje polecenia
 
 ## Overview
-Polecenie `if` w C Shell (csh) służy do wykonywania warunkowego kodu w skryptach. Pozwala na sprawdzenie, czy dany warunek jest spełniony, a następnie wykonanie odpowiednich poleceń w zależności od wyniku tego sprawdzenia.
+Polecenie `if` w C Shell (csh) służy do wykonywania warunkowego kodu. Umożliwia sprawdzenie, czy określony warunek jest spełniony, a następnie wykonanie odpowiednich poleceń w zależności od wyniku tego sprawdzenia.
 
 ## Usage
 Podstawowa składnia polecenia `if` jest następująca:
@@ -13,38 +13,46 @@ endif
 ```
 
 ## Common Options
-- `then`: Słowo kluczowe, które rozpoczyna blok poleceń do wykonania, jeśli warunek jest prawdziwy.
-- `endif`: Słowo kluczowe, które kończy blok `if`.
+- `then`: Wskazuje początek bloku poleceń, które mają być wykonane, jeśli warunek jest spełniony.
+- `endif`: Kończy blok `if`, wskazując, że nie ma więcej poleceń do wykonania w tym warunku.
 
 ## Common Examples
+Przykłady użycia polecenia `if`:
 
-### Przykład 1: Sprawdzenie zmiennej
-```csh
-set x = 5
-if ($x == 5) then
-    echo "x jest równe 5"
-endif
-```
+1. Sprawdzenie, czy plik istnieje:
+    ```csh
+    if (-e plik.txt) then
+        echo "Plik istnieje."
+    endif
+    ```
 
-### Przykład 2: Sprawdzenie pliku
-```csh
-if (-e "plik.txt") then
-    echo "Plik istnieje"
-else
-    echo "Plik nie istnieje"
-endif
-```
+2. Sprawdzenie, czy zmienna jest pusta:
+    ```csh
+    set zmienna = ""
+    if ("$zmienna" == "") then
+        echo "Zmienna jest pusta."
+    endif
+    ```
 
-### Przykład 3: Sprawdzenie katalogu
-```csh
-if (-d "katalog") then
-    echo "To jest katalog"
-else
-    echo "To nie jest katalog"
-endif
-```
+3. Sprawdzenie, czy liczba jest większa od zera:
+    ```csh
+    set liczba = 5
+    if ($liczba > 0) then
+        echo "Liczba jest większa od zera."
+    endif
+    ```
+
+4. Użycie `else` do alternatywnego działania:
+    ```csh
+    set liczba = -3
+    if ($liczba > 0) then
+        echo "Liczba jest dodatnia."
+    else
+        echo "Liczba jest niedodatnia."
+    endif
+    ```
 
 ## Tips
-- Używaj odpowiednich operatorów porównania, takich jak `==` dla porównania wartości oraz `-e` dla sprawdzenia istnienia pliku.
-- Zawsze zamykaj blok `if` słowem kluczowym `endif`, aby uniknąć błędów w skryptach.
-- Możesz zagnieżdżać bloki `if`, aby sprawdzać wiele warunków w jednym skrypcie.
+- Zawsze pamiętaj o zakończeniu bloku `if` poleceniem `endif`, aby uniknąć błędów składniowych.
+- Używaj odpowiednich operatorów porównania, takich jak `==`, `!=`, `>`, `<`, aby poprawnie sprawdzać warunki.
+- Możesz zagnieżdżać instrukcje `if`, aby tworzyć bardziej złożone logiki warunkowe.

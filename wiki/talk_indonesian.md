@@ -1,7 +1,7 @@
 # [Sistem Operasi] C Shell (csh) talk: Berkomunikasi dengan pengguna lain
 
 ## Overview
-Perintah `talk` dalam C Shell (csh) digunakan untuk berkomunikasi secara langsung dengan pengguna lain di sistem yang sama. Dengan `talk`, Anda dapat mengirim dan menerima pesan secara real-time, memungkinkan percakapan yang lebih interaktif.
+Perintah `talk` dalam C Shell (csh) digunakan untuk berkomunikasi secara langsung dengan pengguna lain di sistem yang sama. Dengan menggunakan `talk`, Anda dapat mengirim pesan teks secara real-time kepada pengguna lain, memungkinkan percakapan interaktif.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `talk`:
@@ -11,29 +11,28 @@ talk [options] [user]
 ```
 
 ## Common Options
-- `-d`: Menampilkan jendela percakapan dalam mode debug.
-- `-h`: Menampilkan bantuan dan informasi tentang penggunaan perintah.
-- `-s`: Menonaktifkan suara notifikasi saat menerima pesan.
+- `-a`: Mengabaikan status pengguna dan mencoba untuk menghubungi mereka meskipun mereka tidak dapat dihubungi.
+- `-s`: Menggunakan mode suara untuk notifikasi saat pesan baru diterima.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `talk`:
 
-1. **Memulai percakapan dengan pengguna lain:**
+1. Menghubungi pengguna lain:
    ```bash
    talk username
    ```
 
-2. **Menggunakan opsi untuk menonaktifkan suara:**
+2. Menghubungi pengguna dengan opsi untuk mengabaikan status:
+   ```bash
+   talk -a username
+   ```
+
+3. Menggunakan mode suara saat berkomunikasi:
    ```bash
    talk -s username
    ```
 
-3. **Menampilkan bantuan untuk perintah talk:**
-   ```bash
-   talk -h
-   ```
-
 ## Tips
-- Pastikan pengguna yang ingin Anda ajak bicara sedang online dan dapat menerima pesan.
-- Gunakan opsi `-s` jika Anda tidak ingin terganggu oleh suara notifikasi saat menerima pesan.
-- Jika Anda tidak mendapatkan balasan, coba kirim pesan lain atau pastikan bahwa pengguna tersebut tidak sedang sibuk.
+- Pastikan pengguna yang ingin Anda hubungi sedang aktif dan dapat menerima pesan.
+- Gunakan opsi `-a` jika Anda tidak yakin apakah pengguna sedang online.
+- Untuk keluar dari sesi `talk`, cukup ketik `Ctrl+C` atau tutup jendela terminal.

@@ -1,54 +1,49 @@
 # [Linux] C Shell (csh) lsblk Użycie: Wyświetlanie informacji o blokowych urządzeniach pamięci
 
-## Overview
-Polecenie `lsblk` służy do wyświetlania informacji o urządzeniach blokowych w systemie Linux. Umożliwia użytkownikom przeglądanie struktury urządzeń pamięci, takich jak dyski twarde, partycje i inne nośniki danych.
+## Przegląd
+Polecenie `lsblk` służy do wyświetlania informacji o blokowych urządzeniach pamięci w systemie Linux. Umożliwia użytkownikom łatwe zrozumienie struktury dysków oraz partycji, a także ich punktów montowania.
 
-## Usage
+## Użycie
 Podstawowa składnia polecenia `lsblk` jest następująca:
 
 ```bash
-lsblk [options] [arguments]
+lsblk [opcje] [argumenty]
 ```
 
-## Common Options
-- `-a`, `--all`: Wyświetla wszystkie urządzenia, w tym te, które nie są zamontowane.
-- `-f`, `--fs`: Pokazuje informacje o systemach plików na urządzeniach.
-- `-l`, `--list`: Wyświetla urządzenia w formacie listy, a nie w formie drzewa.
-- `-o`, `--output`: Umożliwia wybór, które kolumny mają być wyświetlane.
-- `-n`, `--noheadings`: Ukrywa nagłówki kolumn w wynikach.
+## Częste opcje
+- `-a`, `--all` - Wyświetla wszystkie urządzenia, w tym te, które nie są zamontowane.
+- `-f`, `--fs` - Pokazuje informacje o systemie plików dla każdego urządzenia.
+- `-l`, `--list` - Wyświetla urządzenia w formacie listy, co może być bardziej czytelne.
+- `-o`, `--output` - Pozwala na określenie, które kolumny mają być wyświetlane.
+- `-n`, `--noheadings` - Ukrywa nagłówki kolumn w wyjściu.
 
-## Common Examples
-- Aby wyświetlić wszystkie urządzenia blokowe w systemie:
+## Częste przykłady
+1. Wyświetlenie wszystkich blokowych urządzeń pamięci:
+   ```bash
+   lsblk
+   ```
 
-```bash
-lsblk
-```
+2. Wyświetlenie wszystkich urządzeń, w tym niezamontowanych:
+   ```bash
+   lsblk -a
+   ```
 
-- Aby wyświetlić szczegółowe informacje o systemach plików:
+3. Wyświetlenie informacji o systemie plików:
+   ```bash
+   lsblk -f
+   ```
 
-```bash
-lsblk -f
-```
+4. Wyświetlenie urządzeń w formacie listy:
+   ```bash
+   lsblk -l
+   ```
 
-- Aby wyświetlić urządzenia w formacie listy:
+5. Wyświetlenie tylko wybranych kolumn, takich jak nazwa, rozmiar i punkt montowania:
+   ```bash
+   lsblk -o NAME,SIZE,MOUNTPOINT
+   ```
 
-```bash
-lsblk -l
-```
-
-- Aby wyświetlić tylko określone kolumny, na przykład nazwę urządzenia i jego rozmiar:
-
-```bash
-lsblk -o NAME,SIZE
-```
-
-- Aby wyświetlić wszystkie urządzenia, w tym te, które nie są zamontowane:
-
-```bash
-lsblk -a
-```
-
-## Tips
-- Używaj opcji `-f`, aby szybko sprawdzić, jakie systemy plików są zainstalowane na poszczególnych urządzeniach.
-- Opcja `-n` jest przydatna, gdy potrzebujesz wyjścia do skryptów, ponieważ eliminuje nagłówki.
-- Regularnie sprawdzaj urządzenia blokowe, aby upewnić się, że wszystkie są poprawnie zamontowane i działają.
+## Wskazówki
+- Używaj opcji `-f`, aby szybko sprawdzić, jakie systemy plików są używane na różnych partycjach.
+- Opcja `-n` jest przydatna, gdy potrzebujesz czystego wyjścia do dalszego przetwarzania w skryptach.
+- Regularne sprawdzanie struktury dysków za pomocą `lsblk` może pomóc w zarządzaniu przestrzenią dyskową i unikać problemów z partycjami.

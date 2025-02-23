@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) umask utilizare: Setarea permisiunilor implicite pentru fișiere
+# [Linux] C Shell (csh) umask utilizare: Setează permisiunile implicite pentru fișiere
 
 ## Overview
-Comanda `umask` în C Shell (csh) este utilizată pentru a seta masca de permisiuni implicite pentru fișierele și directoarele create. Aceasta determină permisiunile de acces pentru utilizatori, grupuri și alții, asigurându-se astfel că fișierele noi au nivelul dorit de securitate.
+Comanda `umask` în C Shell (csh) este utilizată pentru a stabili permisiunile implicite pentru fișierele și directoarele create de utilizatori. Aceasta definește un "mask" care determină ce permisiuni vor fi eliminate din permisiunile implicite ale fișierelor și directoarelor.
 
 ## Usage
 Sintaxa de bază a comenzii `umask` este următoarea:
@@ -11,31 +11,31 @@ umask [opțiuni] [argumente]
 ```
 
 ## Common Options
-- `-S`: Afișează masca de permisiuni în format simbolic.
-- `-p`: Afișează masca curentă de permisiuni fără a o modifica.
+- `-S`: Afișează umask-ul în format simbolic.
+- `-p`: Afișează umask-ul curent fără a-l modifica.
 
 ## Common Examples
-1. **Verificarea masca curentă de permisiuni:**
+1. **Verificarea umask-ului curent:**
    ```csh
    umask
    ```
 
-2. **Setarea unei masti de permisiuni pentru a permite accesul complet pentru utilizator și citirea și executarea pentru grup și alții:**
+2. **Setarea umask-ului la 022:**
    ```csh
    umask 022
    ```
 
-3. **Setarea unei masti de permisiuni pentru a restricționa accesul complet pentru toți utilizatorii:**
-   ```csh
-   umask 077
-   ```
-
-4. **Afișarea masti curente în format simbolic:**
+3. **Afișarea umask-ului în format simbolic:**
    ```csh
    umask -S
    ```
 
+4. **Setarea umask-ului la 007:**
+   ```csh
+   umask 007
+   ```
+
 ## Tips
-- Este recomandat să verificați masca de permisiuni înainte de a crea fișiere pentru a evita expunerea neintenționată a datelor.
-- Folosiți `umask` în scripturile de inițializare pentru a asigura permisiuni corecte pentru toate fișierele create.
-- Rețineți că masca de permisiuni se aplică doar fișierelor și directoarelor create după ce a fost setată.
+- Este recomandat să verificați umask-ul curent înainte de a crea fișiere sau directoare pentru a înțelege ce permisiuni vor fi aplicate.
+- Folosiți umask-ul 027 pentru a permite accesul doar utilizatorului și grupului, protejându-vă astfel fișierele de accesul altor utilizatori.
+- Modificările aduse umask-ului se aplică doar pentru sesiunea curentă; pentru a le face permanente, adăugați comanda în fișierul de configurare al shell-ului, cum ar fi `.cshrc`.

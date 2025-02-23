@@ -1,44 +1,44 @@
-# [Hệ điều hành] C Shell (csh) mkswap <Sử dụng tương đương>: Tạo không gian hoán đổi
+# [Hệ điều hành Linux] C Shell (csh) mkswap: Tạo không gian hoán đổi
 
-## Tổng quan
-Lệnh `mkswap` được sử dụng để định dạng một phân vùng hoặc tệp để sử dụng như không gian hoán đổi trong hệ thống. Không gian hoán đổi là một phần của bộ nhớ ảo, cho phép hệ điều hành sử dụng đĩa cứng như một phần mở rộng của bộ nhớ RAM.
+## Overview
+Lệnh `mkswap` được sử dụng để tạo một vùng không gian hoán đổi (swap space) trên một thiết bị lưu trữ. Không gian hoán đổi cho phép hệ điều hành sử dụng không gian trên đĩa để mở rộng bộ nhớ ảo, giúp cải thiện hiệu suất khi bộ nhớ RAM không đủ.
 
-## Cú pháp
+## Usage
 Cú pháp cơ bản của lệnh `mkswap` như sau:
 ```
-mkswap [tùy chọn] [đối số]
+mkswap [options] [arguments]
 ```
 
-## Các tùy chọn phổ biến
-- `-L <nhãn>`: Gán một nhãn cho không gian hoán đổi.
-- `-p <độ ưu tiên>`: Thiết lập độ ưu tiên cho không gian hoán đổi. Độ ưu tiên cao hơn sẽ được sử dụng trước.
-- `-f`: Bỏ qua kiểm tra phân vùng và buộc định dạng.
+## Common Options
+- `-f`: Bỏ qua kiểm tra lỗi trên thiết bị.
+- `-L label`: Gán nhãn cho vùng hoán đổi.
+- `-p priority`: Thiết lập độ ưu tiên cho vùng hoán đổi.
 
-## Ví dụ phổ biến
+## Common Examples
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `mkswap`:
 
-1. **Tạo không gian hoán đổi từ một tệp**:
+1. Tạo một tệp hoán đổi có kích thước 1GB:
    ```bash
    dd if=/dev/zero of=/swapfile bs=1M count=1024
    mkswap /swapfile
    ```
 
-2. **Tạo không gian hoán đổi từ một phân vùng**:
+2. Tạo một vùng hoán đổi trên một phân vùng cụ thể:
    ```bash
-   mkswap /dev/sdX1
+   mkswap /dev/sda5
    ```
 
-3. **Gán nhãn cho không gian hoán đổi**:
+3. Gán nhãn cho vùng hoán đổi:
    ```bash
-   mkswap -L my_swap /dev/sdX1
+   mkswap -L my_swap /dev/sda5
    ```
 
-4. **Thiết lập độ ưu tiên cho không gian hoán đổi**:
+4. Thiết lập độ ưu tiên cho vùng hoán đổi:
    ```bash
-   mkswap -p 10 /dev/sdX1
+   mkswap -p 10 /dev/sda5
    ```
 
-## Mẹo
-- Hãy chắc chắn rằng phân vùng hoặc tệp bạn đang định dạng không chứa dữ liệu quan trọng, vì lệnh `mkswap` sẽ xóa mọi dữ liệu hiện có.
-- Kiểm tra không gian hoán đổi đã được tạo bằng lệnh `swapon --show` để xác nhận rằng nó đã được kích hoạt thành công.
-- Sử dụng `swapon` để kích hoạt không gian hoán đổi sau khi đã tạo.
+## Tips
+- Đảm bảo rằng không gian hoán đổi đủ lớn để đáp ứng nhu cầu của hệ thống, thường là từ 1 đến 2 lần kích thước RAM.
+- Sau khi tạo vùng hoán đổi, hãy sử dụng lệnh `swapon` để kích hoạt nó.
+- Kiểm tra trạng thái của không gian hoán đổi bằng lệnh `swapon --show` để xác nhận rằng nó đã được kích hoạt thành công.

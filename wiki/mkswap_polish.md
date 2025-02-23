@@ -1,43 +1,40 @@
-# [Linux] C Shell (csh) mkswap: [tworzenie obszaru wymiany]
+# [Linux] C Shell (csh) mkswap użycie: tworzenie pliku wymiany
 
-## Overview
-Polecenie `mkswap` służy do przygotowania pliku lub partycji do użycia jako obszar wymiany (swap) w systemie Linux. Obszar wymiany jest używany przez system operacyjny do przechowywania danych, które nie mieszczą się w pamięci RAM, co może pomóc w zarządzaniu pamięcią w przypadku dużych obciążeń.
+## Przegląd
+Polecenie `mkswap` służy do przygotowania pliku lub partycji do użycia jako pamięć wymiany (swap) w systemie Linux. Pamięć wymiany jest używana przez system operacyjny do przechowywania danych, gdy pamięć RAM jest pełna, co może pomóc w poprawie wydajności systemu.
 
-## Usage
+## Użycie
 Podstawowa składnia polecenia `mkswap` jest następująca:
 
 ```csh
 mkswap [opcje] [argumenty]
 ```
 
-## Common Options
-- `-f`: Wymusza utworzenie obszaru wymiany, nawet jeśli system uważa, że nie jest to konieczne.
-- `-L label`: Ustawia etykietę dla obszaru wymiany.
-- `-p priority`: Ustawia priorytet obszaru wymiany, co może być przydatne, gdy jest więcej niż jeden obszar wymiany.
+## Częste opcje
+- `-f` : Wymusza utworzenie obszaru wymiany, nawet jeśli jest on uszkodzony.
+- `-L label` : Ustawia etykietę dla obszaru wymiany.
+- `-p priority` : Ustawia priorytet obszaru wymiany, co wpływa na to, który obszar wymiany będzie używany w pierwszej kolejności.
 
-## Common Examples
-1. Tworzenie obszaru wymiany na pliku:
+## Przykłady
+Oto kilka praktycznych przykładów użycia polecenia `mkswap`:
+
+1. Tworzenie pliku wymiany o nazwie `swapfile` o rozmiarze 1 GB:
    ```csh
-   dd if=/dev/zero of=/swapfile bs=1M count=1024
+   dd if=/dev/zero of=/swapfile bs=1G count=1
    mkswap /swapfile
    ```
 
-2. Tworzenie obszaru wymiany na partycji:
+2. Ustawienie etykiety dla obszaru wymiany:
    ```csh
-   mkswap /dev/sda5
+   mkswap -L my_swap /dev/sdX1
    ```
 
-3. Ustawienie etykiety dla obszaru wymiany:
+3. Wymuszenie utworzenia obszaru wymiany:
    ```csh
-   mkswap -L my_swap /dev/sda5
+   mkswap -f /dev/sdX1
    ```
 
-4. Ustawienie priorytetu dla obszaru wymiany:
-   ```csh
-   mkswap -p 10 /dev/sda5
-   ```
-
-## Tips
-- Zawsze upewnij się, że plik lub partycja, na której tworzysz obszar wymiany, nie jest używana przez system.
-- Po utworzeniu obszaru wymiany, pamiętaj o jego aktywacji za pomocą polecenia `swapon`.
-- Regularnie monitoruj użycie obszaru wymiany, aby upewnić się, że system działa optymalnie.
+## Wskazówki
+- Zawsze upewnij się, że plik lub partycja, którą zamierzasz użyć jako pamięć wymiany, jest odpowiednio sformatowana i nie zawiera ważnych danych.
+- Po utworzeniu obszaru wymiany, nie zapomnij go aktywować za pomocą polecenia `swapon`.
+- Regularnie monitoruj użycie pamięci wymiany, aby upewnić się, że system działa optymalnie.

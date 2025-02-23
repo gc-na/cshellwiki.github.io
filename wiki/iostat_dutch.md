@@ -1,51 +1,51 @@
-# [Linux] C Shell (csh) iostat gebruik: Monitoren van systeeminvoer- en uitvoerstatistieken
+# [Linux] C Shell (csh) iostat gebruik: Monitoren van systeeminvoer/uitvoer
 
 ## Overzicht
-De `iostat`-opdracht wordt gebruikt om statistieken over invoer- en uitvoeractiviteiten van schijven en CPU's te monitoren. Het helpt systeembeheerders bij het analyseren van de prestaties van het systeem en het identificeren van mogelijke knelpunten.
+De `iostat`-opdracht is een hulpmiddel dat informatie biedt over de invoer- en uitvoeractiviteit van schijven en de CPU-belasting. Het helpt systeembeheerders bij het analyseren van de prestaties van opslagapparaten en het identificeren van knelpunten.
 
 ## Gebruik
-De basis syntaxis van de `iostat`-opdracht is als volgt:
+De basisstructuur van de `iostat`-opdracht is als volgt:
 
 ```csh
 iostat [opties] [argumenten]
 ```
 
 ## Veelvoorkomende opties
-- `-c`: Toon alleen CPU-statistieken.
-- `-d`: Toon alleen schijfstatistieken.
-- `-x`: Toon uitgebreide schijfstatistieken.
-- `-h`: Gebruik een leesbare indeling voor de uitvoer.
-- `interval`: Geef de tijdsinterval in seconden tussen de rapportages aan.
-- `count`: Geef het aantal rapportages aan dat moet worden weergegeven.
+- `-c`: Toont alleen CPU-statistieken.
+- `-d`: Toont alleen schijfstatistieken.
+- `-x`: Toont uitgebreide schijfstatistieken.
+- `-k`: Geeft de resultaten weer in kilobytes per seconde.
+- `-t`: Toont de tijdstempel bij de uitvoer.
 
 ## Veelvoorkomende voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van de `iostat`-opdracht:
 
-1. **Basisgebruik zonder opties:**
+1. **Basisinformatie over CPU en schijven weergeven:**
    ```csh
    iostat
    ```
 
-2. **Toon alleen CPU-statistieken:**
+2. **Alleen CPU-statistieken weergeven:**
    ```csh
    iostat -c
    ```
 
-3. **Toon schijfstatistieken met een interval van 5 seconden:**
-   ```csh
-   iostat -d 5
-   ```
-
-4. **Toon uitgebreide schijfstatistieken:**
+3. **Uitgebreide schijfstatistieken weergeven:**
    ```csh
    iostat -x
    ```
 
-5. **Toon schijfstatistieken in een leesbare indeling:**
+4. **Statistieken in kilobytes per seconde weergeven:**
    ```csh
-   iostat -d -h
+   iostat -k
+   ```
+
+5. **Statistieken met tijdstempel weergeven:**
+   ```csh
+   iostat -t
    ```
 
 ## Tips
-- Gebruik de `-h` optie om de uitvoer gemakkelijker te lezen, vooral bij grote getallen.
-- Combineer opties om gerichte informatie te verkrijgen, zoals `iostat -c -d`.
-- Monitor regelmatig de prestaties van je systeem om knelpunten tijdig te identificeren en op te lossen.
+- Gebruik de `-x` optie voor gedetailleerde informatie over schijfprestaties, wat nuttig kan zijn voor diepgaande analyses.
+- Combineer opties om specifieke informatie te krijgen die relevant is voor jouw situatie, zoals `iostat -cx` voor zowel CPU als uitgebreide schijfstatistieken.
+- Monitor regelmatig de uitvoer van `iostat` om trends in systeemgebruik te identificeren en proactief te reageren op mogelijke problemen.

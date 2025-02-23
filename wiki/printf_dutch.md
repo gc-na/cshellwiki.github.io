@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) printf gebruik: Geformatteerde uitvoer weergeven
+# [Linux] C Shell (csh) printf gebruik: Formatteren van uitvoer
 
 ## Overzicht
-De `printf`-opdracht in C Shell (csh) wordt gebruikt om geformatteerde uitvoer naar de standaarduitvoer te sturen. Het biedt meer controle over de opmaak van de uitvoer in vergelijking met de `echo`-opdracht.
+De `printf`-opdracht in C Shell (csh) wordt gebruikt om geformatteerde uitvoer naar de standaard uitvoer (meestal het scherm) te sturen. Het biedt meer controle over de opmaak van de uitvoer dan de standaard `echo`-opdracht.
 
 ## Gebruik
 De basis syntaxis van de `printf`-opdracht is als volgt:
@@ -10,40 +10,41 @@ De basis syntaxis van de `printf`-opdracht is als volgt:
 printf [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- `-v`: Hiermee kunt u een variabele toewijzen aan de geformatteerde uitvoer.
-- `-f`: Hiermee kunt u een specifieke opmaak opgeven voor de uitvoer.
-- `-n`: Hiermee wordt de nieuwe regel aan het einde van de uitvoer onderdrukt.
+## Veelvoorkomende Opties
+- `%s`: Formatteert een string.
+- `%d`: Formatteert een geheel getal.
+- `%f`: Formatteert een drijvend-komma getal.
+- `\n`: Voegt een nieuwe regel toe.
+- `\t`: Voegt een tab toe.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
 
-1. **Eenvoudige tekst weergeven:**
+1. **Eenvoudige stringuitvoer:**
    ```csh
    printf "Hallo, wereld!\n"
    ```
 
-2. **Geformatteerde getallen weergeven:**
+2. **Gehele getallen formatteren:**
+   ```csh
+   printf "Het getal is: %d\n" 42
+   ```
+
+3. **Drijvende-komma getallen formatteren:**
    ```csh
    printf "De waarde is: %.2f\n" 3.14159
    ```
 
-3. **Meerdere argumenten:**
+4. **Meerdere argumenten:**
    ```csh
    printf "Naam: %s, Leeftijd: %d\n" "Jan" 30
    ```
 
-4. **Variabele toewijzen aan uitvoer:**
+5. **Tab-gescheiden uitvoer:**
    ```csh
-   set resultaat = `printf "Het resultaat is: %d\n" 42`
-   echo $resultaat
-   ```
-
-5. **Nieuwe regel onderdrukken:**
-   ```csh
-   printf "Dit is een regel zonder nieuwe regel" -n
+   printf "Kolom1\tKolom2\tKolom3\n"
    ```
 
 ## Tips
-- Gebruik `%.nf` om getallen met een specifieke decimalen weer te geven, waarbij `n` het aantal decimalen is.
-- Vergeet niet om `\n` toe te voegen aan het einde van uw printf-opdrachten om een nieuwe regel te creëren, tenzij u de `-n` optie gebruikt.
-- Test uw printf-opdrachten in een veilige omgeving om de opmaak te controleren voordat u ze in scripts gebruikt.
+- Gebruik `\n` om ervoor te zorgen dat elke uitvoer op een nieuwe regel begint.
+- Controleer de opmaak specificaties om ervoor te zorgen dat de uitvoer correct is, vooral bij numerieke waarden.
+- Experimenteer met verschillende formaten om de gewenste uitvoer te bereiken.

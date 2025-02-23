@@ -1,44 +1,44 @@
 # [Linux] C Shell (csh) kill gebruik: Proces beëindigen
 
 ## Overzicht
-De `kill`-opdracht in C Shell (csh) wordt gebruikt om processen te beëindigen. Dit kan nuttig zijn wanneer een proces niet meer reageert of wanneer je een specifiek proces wilt stoppen.
+De `kill` opdracht in C Shell (csh) wordt gebruikt om processen te beëindigen. Dit kan handig zijn wanneer een programma niet meer reageert of wanneer je een proces wilt stoppen dat je niet langer nodig hebt.
 
 ## Gebruik
-De basis syntaxis van de `kill`-opdracht is als volgt:
+De basis syntaxis van de `kill` opdracht is als volgt:
 
-```csh
+```
 kill [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-l`: Lijst alle signaalnamen.
-- `-s`: Specificeert het signaal dat moet worden verzonden.
-- `-n`: Geeft het signaalnummer op in plaats van de naam.
+- `-l`: Lijst van signaalnamen.
+- `-s SIGNAAL`: Specificeert het signaal dat naar het proces moet worden gestuurd.
+- `-n NUMMER`: Gebruik het signaal met het opgegeven nummer.
 
 ## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van de `kill`-opdracht:
+Hier zijn enkele praktische voorbeelden van het gebruik van de `kill` opdracht:
 
-1. Een proces beëindigen met zijn PID (Process ID):
+1. Een proces beëindigen met een specifiek PID (Process ID):
    ```csh
    kill 1234
    ```
 
-2. Een specifiek signaal verzenden, zoals SIGKILL (9), om een proces geforceerd te beëindigen:
+2. Een proces beëindigen met een specifiek signaal (bijvoorbeeld SIGKILL):
    ```csh
-   kill -9 1234
+   kill -s KILL 1234
    ```
 
-3. Lijst van beschikbare signalen weergeven:
+3. Alle processen van een specifieke gebruiker beëindigen:
+   ```csh
+   kill -9 -u gebruikersnaam
+   ```
+
+4. Een lijst van beschikbare signalen weergeven:
    ```csh
    kill -l
    ```
 
-4. Een proces beëindigen met een signaalnaam:
-   ```csh
-   kill -s TERM 1234
-   ```
-
 ## Tips
-- Gebruik `kill -l` om een lijst van beschikbare signalen te bekijken en te begrijpen welke signalen je kunt gebruiken.
-- Wees voorzichtig met het gebruik van `kill -9`, omdat dit een proces geforceerd beëindigt zonder het de kans te geven om op te schonen.
-- Controleer altijd de PID van het proces dat je wilt beëindigen met behulp van opdrachten zoals `ps` of `top` voordat je `kill` gebruikt.
+- Gebruik `kill -9` met voorzichtigheid; dit signaal dwingt het proces om onmiddellijk te stoppen zonder kans om gegevens op te slaan.
+- Controleer altijd het PID van het proces dat je wilt beëindigen met behulp van opdrachten zoals `ps` of `top`.
+- Wees voorzichtig bij het beëindigen van systeemprocessen, omdat dit kan leiden tot instabiliteit van het systeem.

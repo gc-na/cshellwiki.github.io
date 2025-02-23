@@ -1,44 +1,44 @@
-# [Linux] C Shell (csh) watch Verwendung: Überwacht die Ausgabe eines Befehls in regelmäßigen Abständen
+# [Linux] C Shell (csh) watch Verwendung: Überwachen von Befehlen in regelmäßigen Abständen
 
 ## Übersicht
-Der `watch`-Befehl wird verwendet, um die Ausgabe eines bestimmten Befehls in festgelegten Intervallen zu überwachen. Dies ist besonders nützlich, um Änderungen in Echtzeit zu verfolgen, wie z.B. die Überwachung von Systemressourcen oder Dateiinhalten.
+Der `watch` Befehl wird verwendet, um einen bestimmten Befehl in festgelegten Zeitintervallen auszuführen und die Ausgabe auf dem Bildschirm anzuzeigen. Dies ist besonders nützlich, um die Änderungen in der Ausgabe eines Befehls im Zeitverlauf zu beobachten.
 
 ## Verwendung
-Die grundlegende Syntax des `watch`-Befehls lautet:
+Die grundlegende Syntax des `watch` Befehls lautet:
 
-```
-watch [Optionen] [Befehl]
+```csh
+watch [optionen] [befehl]
 ```
 
 ## Häufige Optionen
-- `-n <Sekunden>`: Gibt das Intervall in Sekunden an, in dem der Befehl ausgeführt werden soll. Standardmäßig beträgt das Intervall 2 Sekunden.
-- `-d`: Hebt die Unterschiede zwischen aufeinanderfolgenden Ausgaben hervor.
-- `-t`: Unterdrückt die Anzeige der Kopfzeile, die die Ausführungszeit und den Befehl zeigt.
+- `-n <Sekunden>`: Legt das Intervall in Sekunden fest, in dem der Befehl ausgeführt wird. Standardmäßig ist es 2 Sekunden.
+- `-d`: Hebt die Unterschiede zwischen den aufeinanderfolgenden Ausgaben hervor.
+- `-t`: Unterdrückt die Anzeige der Uhrzeit in der oberen rechten Ecke des Bildschirms.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung des `watch`-Befehls:
+Hier sind einige praktische Beispiele für die Verwendung des `watch` Befehls:
 
 1. Überwachen der Systemauslastung alle 5 Sekunden:
    ```csh
    watch -n 5 uptime
    ```
 
-2. Überwachen des Inhalts einer Datei und Hervorheben von Änderungen:
-   ```csh
-   watch -d cat /var/log/syslog
-   ```
-
-3. Überwachen des freien Speicherplatzes auf dem Dateisystem:
-   ```csh
-   watch df -h
-   ```
-
-4. Überwachen eines Verzeichnisses auf Änderungen:
+2. Überwachen des Inhalts eines Verzeichnisses:
    ```csh
    watch -n 2 ls -l /path/to/directory
    ```
 
+3. Überwachen der Netzwerkverbindungen:
+   ```csh
+   watch -d netstat -tuln
+   ```
+
+4. Überwachen der Speicherbelegung:
+   ```csh
+   watch -n 10 free -h
+   ```
+
 ## Tipps
-- Verwenden Sie die Option `-d`, um Änderungen schnell zu erkennen, besonders wenn die Ausgabe umfangreich ist.
-- Passen Sie das Intervall mit der `-n`-Option an, um die Systemressourcen zu schonen, wenn Sie weniger häufige Aktualisierungen benötigen.
-- Kombinieren Sie `watch` mit anderen Befehlen, um spezifische Informationen zu überwachen, z.B. `watch -n 10 ps aux | grep myprocess`.
+- Verwenden Sie die `-d` Option, um Änderungen in der Ausgabe hervorzuheben, was die Analyse erleichtert.
+- Passen Sie das Intervall mit der `-n` Option an, um die Systemressourcen zu schonen, insbesondere bei ressourcenintensiven Befehlen.
+- Beenden Sie den `watch` Befehl jederzeit mit `Ctrl + C`, um die Überwachung zu stoppen.

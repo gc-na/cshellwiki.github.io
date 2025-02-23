@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) bindkey: Ustawianie skrótów klawiszowych
 
 ## Overview
-Polecenie `bindkey` w powłoce C Shell (csh) służy do przypisywania skrótów klawiszowych do różnych poleceń lub funkcji. Umożliwia to użytkownikom szybsze i bardziej efektywne korzystanie z powłoki, umożliwiając im wykonywanie złożonych poleceń za pomocą prostych kombinacji klawiszy.
+Polecenie `bindkey` w powłoce C Shell (csh) służy do przypisywania skrótów klawiszowych do określonych poleceń lub działań. Umożliwia to użytkownikom dostosowanie swojego środowiska pracy, co może znacznie zwiększyć efektywność i wygodę korzystania z terminala.
 
 ## Usage
 Podstawowa składnia polecenia `bindkey` jest następująca:
@@ -11,32 +11,32 @@ bindkey [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-e` - Ustawia tryb emacs dla skrótów klawiszowych.
-- `-v` - Ustawia tryb vi dla skrótów klawiszowych.
-- `-s` - Przypisuje skrót klawiszowy do sekwencji poleceń.
+- `-e` : Ustawia tryb emacs dla skrótów klawiszowych.
+- `-v` : Ustawia tryb vi dla skrótów klawiszowych.
+- `-s` : Przypisuje sekwencję klawiszy do polecenia.
 
 ## Common Examples
 Przykłady użycia polecenia `bindkey`:
 
-1. Przypisanie skrótu klawiszowego do polecenia `ls`:
+1. Przypisanie klawisza `Ctrl + A` do polecenia `ls`:
 
-```csh
-bindkey -s "^l" "ls\n"
-```
+   ```csh
+   bindkey "^A" "ls\n"
+   ```
 
 2. Ustawienie trybu emacs dla skrótów klawiszowych:
 
-```csh
-bindkey -e
-```
+   ```csh
+   bindkey -e
+   ```
 
-3. Przypisanie skrótu klawiszowego do sekwencji poleceń:
+3. Przypisanie sekwencji klawiszy `Alt + X` do polecenia `exit`:
 
-```csh
-bindkey -s "^g" "git status\n"
-```
+   ```csh
+   bindkey "^[x" "exit\n"
+   ```
 
 ## Tips
-- Używaj `bindkey -e` lub `bindkey -v`, aby dostosować preferencje dotyczące edytora, co może ułatwić korzystanie z powłoki.
-- Regularnie przeglądaj swoje przypisania skrótów klawiszowych, aby upewnić się, że są one aktualne i użyteczne.
+- Używaj `bindkey -L`, aby wyświetlić aktualnie przypisane skróty klawiszowe.
 - Eksperymentuj z różnymi kombinacjami klawiszy, aby znaleźć te, które najlepiej pasują do twojego stylu pracy.
+- Zapisz swoje ustawienia `bindkey` w pliku konfiguracyjnym, aby były dostępne przy każdym uruchomieniu powłoki.

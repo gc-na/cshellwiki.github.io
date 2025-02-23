@@ -1,49 +1,47 @@
-# [Linux] C Shell (csh) wait Verwendung: Warten auf die Beendigung von Prozessen
+# [Linux] C Shell (csh) wait Verwendung: Warten auf den Abschluss eines Prozesses
 
 ## Übersicht
-Der `wait` Befehl in der C Shell (csh) wird verwendet, um auf die Beendigung eines oder mehrerer Hintergrundprozesse zu warten. Wenn ein Prozess im Hintergrund läuft, kann `wait` verwendet werden, um sicherzustellen, dass das Skript oder die Shell nicht fortfährt, bis der angegebene Prozess abgeschlossen ist.
+Der `wait` Befehl in der C Shell (csh) wird verwendet, um auf den Abschluss eines oder mehrerer Hintergrundprozesse zu warten. Wenn ein Prozess im Hintergrund läuft, kann `wait` verwendet werden, um sicherzustellen, dass das Skript oder die Shell-Sitzung nicht fortfährt, bis dieser Prozess abgeschlossen ist.
 
 ## Verwendung
 Die grundlegende Syntax des `wait` Befehls lautet:
 
-```
-wait [optionen] [argumente]
+```csh
+wait [options] [arguments]
 ```
 
 ## Häufige Optionen
-- `-n`: Wartet auf den nächsten beendeten Hintergrundprozess.
-- `pid`: Wartet auf den spezifischen Prozess mit der angegebenen Prozess-ID.
+- `pid`: Warten auf den Abschluss des Prozesses mit der angegebenen Prozess-ID. Wenn keine PID angegeben wird, wartet `wait` auf alle Hintergrundprozesse.
 
 ## Häufige Beispiele
 
-1. **Warten auf einen spezifischen Prozess**
+1. **Warten auf alle Hintergrundprozesse**:
    ```csh
-   sleep 10 &  # Startet einen Hintergrundprozess
-   wait $!     # Wartet auf den zuletzt gestarteten Hintergrundprozess
+   sleep 5 &
+   sleep 10 &
+   wait
+   echo "Alle Hintergrundprozesse sind abgeschlossen."
    ```
 
-2. **Warten auf mehrere Prozesse**
+2. **Warten auf einen bestimmten Prozess**:
    ```csh
-   sleep 5 &   # Erster Hintergrundprozess
-   sleep 8 &   # Zweiter Hintergrundprozess
-   wait        # Wartet auf beide Prozesse
+   sleep 5 &
+   my_pid=$!
+   echo "Warten auf Prozess mit PID $my_pid..."
+   wait $my_pid
+   echo "Prozess $my_pid ist abgeschlossen."
    ```
 
-3. **Warten auf einen Prozess mit einer spezifischen PID**
+3. **Warten auf mehrere Prozesse**:
    ```csh
-   sleep 15 &  # Startet einen Hintergrundprozess
-   pid=$!      # Speichert die PID
-   wait $pid   # Wartet auf den spezifischen Prozess
-   ```
-
-4. **Warten auf den nächsten beendeten Hintergrundprozess**
-   ```csh
-   sleep 3 &   # Erster Hintergrundprozess
-   sleep 6 &   # Zweiter Hintergrundprozess
-   wait -n      # Wartet auf den nächsten, der beendet wird
+   sleep 3 &
+   sleep 6 &
+   sleep 9 &
+   wait
+   echo "Alle Prozesse sind abgeschlossen."
    ```
 
 ## Tipps
-- Verwenden Sie `wait` in Skripten, um sicherzustellen, dass alle Hintergrundprozesse abgeschlossen sind, bevor das Skript fortfährt.
-- Nutzen Sie die PID-Variablen, um gezielt auf bestimmte Prozesse zu warten, besonders wenn Sie mehrere Prozesse gleichzeitig ausführen.
-- Seien Sie vorsichtig mit der Verwendung von `wait` in interaktiven Shell-Sitzungen, da es die Eingabe blockieren kann, bis der Prozess abgeschlossen ist.
+- Verwenden Sie `wait` in Skripten, um sicherzustellen, dass alle notwendigen Hintergrundprozesse abgeschlossen sind, bevor das Skript fortfährt.
+- Speichern Sie die Prozess-ID eines Hintergrundprozesses in einer Variablen, um gezielt auf diesen Prozess zu warten.
+- Nutzen Sie `wait` in Kombination mit anderen Befehlen, um komplexe Abläufe zu steuern und die Ausführung zu synchronisieren.

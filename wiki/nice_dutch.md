@@ -1,43 +1,43 @@
-# [Linux] C Shell (csh) nice gebruik: Beheer van procesprioriteit
+# [Linux] C Shell (csh) nice gebruik: Beheer de prioriteit van processen
 
 ## Overzicht
-De `nice` opdracht in C Shell (csh) wordt gebruikt om de prioriteit van processen te beheren. Hiermee kun je de CPU-tijd die aan een proces wordt toegewezen, verhogen of verlagen, wat nuttig is om de prestaties van verschillende processen te optimaliseren.
+De `nice`-opdracht in C Shell (csh) wordt gebruikt om de prioriteit van processen te beheren. Hiermee kun je de CPU-tijd die aan een proces wordt toegewezen, verhogen of verlagen, afhankelijk van de gewenste prioriteit.
 
 ## Gebruik
-De basis syntaxis van de `nice` opdracht is als volgt:
+De basis syntaxis van de `nice`-opdracht is als volgt:
 
 ```csh
 nice [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-n` : Hiermee kun je de prioriteit van het proces instellen. Een hogere waarde betekent een lagere prioriteit.
-- `-1` tot `19` : Positieve waarden verhogen de prioriteit, terwijl negatieve waarden (bijvoorbeeld `-20` tot `-1`) de prioriteit verlagen.
+- `-n` : Hiermee kun je de prioriteit specificeren. De standaardwaarde is 10. Een hogere waarde betekent een lagere prioriteit.
+- `-h` : Geeft een helpbericht weer met informatie over het gebruik van de opdracht.
 
 ## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van de `nice` opdracht:
+Hier zijn enkele praktische voorbeelden van het gebruik van `nice`:
 
-1. **Een proces met standaard prioriteit starten:**
-   ```csh
-   nice myscript.sh
-   ```
-
-2. **Een proces met verhoogde prioriteit starten:**
-   ```csh
-   nice -n -5 myscript.sh
-   ```
-
-3. **Een proces met verlaagde prioriteit starten:**
+1. Start een proces met een lagere prioriteit:
    ```csh
    nice -n 10 myscript.sh
    ```
 
-4. **De huidige prioriteit van een proces controleren:**
+2. Start een proces met een hogere prioriteit:
    ```csh
-   ps -o pid,ni,cmd | grep myscript.sh
+   nice -n -5 myscript.sh
+   ```
+
+3. Controleer de huidige prioriteit van een proces:
+   ```csh
+   ps -o pid,nice,cmd
+   ```
+
+4. Verhoog de prioriteit van een lopend proces:
+   ```csh
+   renice -n -5 -p 1234
    ```
 
 ## Tips
-- Gebruik `nice` om ervoor te zorgen dat belangrijke processen voldoende CPU-tijd krijgen, vooral op systemen met meerdere gebruikers.
-- Wees voorzichtig met het verlagen van de prioriteit van kritieke systeemprocessen, omdat dit de algehele systeemprestaties kan beïnvloeden.
-- Combineer `nice` met andere opdrachten zoals `nohup` om processen op de achtergrond te draaien zonder dat ze worden onderbroken.
+- Gebruik `nice` om ervoor te zorgen dat achtergrondprocessen de prestaties van belangrijke taken niet beïnvloeden.
+- Wees voorzichtig met het verlagen van de prioriteit van processen, omdat dit kan leiden tot langere wachttijden voor gebruikersinteracties.
+- Controleer regelmatig de prioriteiten van actieve processen met `ps` om een goed overzicht te behouden.

@@ -1,45 +1,45 @@
-# [Linux] C Shell (csh) unsetopt Kullanımı: Seçenekleri devre dışı bırakma
+# [Unix] C Shell (csh) unsetopt Kullanımı: Seçenekleri devre dışı bırakma
 
 ## Genel Bakış
-`unsetopt` komutu, C Shell (csh) ortamında belirli seçenekleri devre dışı bırakmak için kullanılır. Bu komut, shell'in davranışını özelleştirmek ve kullanıcı deneyimini iyileştirmek amacıyla belirli özellikleri kapatmanıza olanak tanır.
+`unsetopt` komutu, C Shell (csh) ortamında belirli seçenekleri devre dışı bırakmak için kullanılır. Bu komut, shell davranışını özelleştirmek ve kullanıcı deneyimini iyileştirmek amacıyla çeşitli seçenekleri kapatmanıza olanak tanır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
 
-```
+```csh
 unsetopt [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `all`: Tüm seçenekleri devre dışı bırakır.
-- `login`: Giriş shell'inde kullanılan seçenekleri devre dışı bırakır.
-- `noclobber`: Var olan dosyaların üzerine yazmayı engelleyen seçeneği devre dışı bırakır.
-- `nullglob`: Boş kalıp eşleşmelerinin boş bir liste olarak değerlendirilmesini devre dışı bırakır.
+- `allexport`: Tüm değişkenleri otomatik olarak dışa aktarmayı devre dışı bırakır.
+- `noclobber`: Mevcut dosyaların üzerine yazmayı engeller.
+- `ignoreeof`: `Ctrl+D` ile shell'den çıkmayı engeller.
+- `login`: Shell'in oturum açma shell'i gibi davranmasını devre dışı bırakır.
 
 ## Yaygın Örnekler
-Aşağıda `unsetopt` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+Aşağıda `unsetopt` komutunun bazı pratik kullanımları bulunmaktadır:
 
-### Tüm Seçenekleri Devre Dışı Bırakma
-```csh
-unsetopt all
-```
+1. **Tüm değişkenleri dışa aktarmayı devre dışı bırakma:**
+   ```csh
+   unsetopt allexport
+   ```
 
-### Giriş Shell Seçeneklerini Devre Dışı Bırakma
-```csh
-unsetopt login
-```
+2. **Mevcut dosyaların üzerine yazmayı engellemeyi devre dışı bırakma:**
+   ```csh
+   unsetopt noclobber
+   ```
 
-### Var Olan Dosyaların Üzerine Yazmayı Engelleyen Seçeneği Devre Dışı Bırakma
-```csh
-unsetopt noclobber
-```
+3. **Ctrl+D ile shell'den çıkmayı engelleme:**
+   ```csh
+   unsetopt ignoreeof
+   ```
 
-### Boş Kalıp Eşleşmelerini Varsayılan Olarak Değerlendirme
-```csh
-unsetopt nullglob
-```
+4. **Shell'in oturum açma shell'i gibi davranmasını devre dışı bırakma:**
+   ```csh
+   unsetopt login
+   ```
 
 ## İpuçları
-- `unsetopt` komutunu kullanmadan önce mevcut seçeneklerinizi görmek için `set` komutunu kullanarak mevcut ayarları kontrol edin.
-- Seçenekleri devre dışı bırakmadan önce, hangi seçeneklerin kapatılacağını iyi düşünün; bazı seçenekler, shell'in davranışını önemli ölçüde etkileyebilir.
-- `unsetopt` komutunu sık kullandığınız ayarlarla birlikte bir başlangıç dosyasına eklemeyi düşünün, böylece her oturum açışınızda otomatik olarak uygulanır.
+- `unsetopt` komutunu kullanmadan önce mevcut seçeneklerinizi kontrol etmek için `set` komutunu kullanabilirsiniz.
+- Seçenekleri devre dışı bırakmadan önce, bu değişikliklerin shell davranışınızı nasıl etkileyeceğini düşünün.
+- `unsetopt` komutunu sık kullandığınız bir shell başlangıç dosyasına eklemek, her oturumda ayarların otomatik olarak uygulanmasını sağlar.

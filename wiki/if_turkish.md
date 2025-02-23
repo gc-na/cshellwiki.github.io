@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) if Kullanımı: Koşullu ifadeleri değerlendirme
+# [Linux] C Shell (csh) if kullanımı: Koşullu ifadeleri değerlendirme
 
 ## Overview
-`if` komutu, belirli bir koşulun doğru olup olmadığını kontrol etmek için kullanılır. Eğer koşul doğruysa, belirli bir komut veya komut grubu çalıştırılır. Bu, programlama ve betik yazımında karar verme mekanizmaları oluşturmak için oldukça yararlıdır.
+`if` komutu, belirli bir koşulun doğru olup olmadığını kontrol etmek için kullanılır. Eğer koşul doğruysa, belirli bir komut veya komutlar grubu çalıştırılır. Bu, betik yazımında akış kontrolü sağlamak için oldukça yararlıdır.
 
 ## Usage
 Temel sözdizimi aşağıdaki gibidir:
@@ -13,37 +13,44 @@ endif
 ```
 
 ## Common Options
-- `-e`: Dosyanın var olup olmadığını kontrol eder.
-- `-d`: Bir dizinin var olup olmadığını kontrol eder.
-- `-f`: Bir dosyanın normal bir dosya olup olmadığını kontrol eder.
-- `-z`: Bir değişkenin boş olup olmadığını kontrol eder.
+- `then`: Koşulun doğru olduğu durumda çalıştırılacak komutların başlangıcını belirtir.
+- `endif`: `if` bloğunun sonunu belirtir.
 
 ## Common Examples
-Aşağıda `if` komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda `if` komutunun bazı pratik örnekleri verilmiştir:
 
-### Örnek 1: Dosyanın varlığını kontrol etme
+### Örnek 1: Basit Koşul Kontrolü
+Bir dosyanın var olup olmadığını kontrol etme:
+
 ```csh
 if (-e dosya.txt) then
-    echo "dosya.txt mevcut."
+    echo "Dosya mevcut."
 endif
 ```
 
-### Örnek 2: Boş bir değişken kontrolü
+### Örnek 2: Sayı Karşılaştırması
+Bir sayının pozitif olup olmadığını kontrol etme:
+
 ```csh
-set myVar = ""
-if ("$myVar" == "") then
-    echo "Değişken boş."
+set sayi = 5
+if ($sayi > 0) then
+    echo "Sayı pozitif."
 endif
 ```
 
-### Örnek 3: Dizin kontrolü
+### Örnek 3: Birden Fazla Koşul
+Bir değişkenin belirli bir değere eşit olup olmadığını kontrol etme:
+
 ```csh
-if (-d /home/kullanici) then
-    echo "Kullanıcı dizini mevcut."
+set renk = "kırmızı"
+if ($renk == "kırmızı") then
+    echo "Renk kırmızı."
+else
+    echo "Renk kırmızı değil."
 endif
 ```
 
 ## Tips
-- `if` komutunu kullanırken koşul ifadelerinizi dikkatlice yazın, çünkü yanlış bir ifade beklenmedik sonuçlara yol açabilir.
-- Birden fazla koşulu kontrol etmek için `else if` yapısını kullanabilirsiniz.
-- Koşul ifadelerinizi parantez içinde yazmayı unutmayın; bu, ifadelerin doğru bir şekilde değerlendirilmesini sağlar.
+- Koşul ifadelerinde dikkatli olun; doğru sözdizimi kullanmak önemlidir.
+- `if` komutunu karmaşık koşullar için `else` ve `else if` ile birleştirerek daha esnek hale getirebilirsiniz.
+- Koşul ifadelerini test etmek için `echo` komutunu kullanarak çıktıları kontrol etmek, hata ayıklamada faydalı olabilir.

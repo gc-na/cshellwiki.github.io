@@ -1,44 +1,39 @@
-# [Linux] C Shell (csh) lsmod Verwendung: Zeigt geladene Kernel-Module an
+# [Linux] C Shell (csh) lsmod Verwendung: Zeigt geladene Kernelmodule an
 
 ## Übersicht
-Der Befehl `lsmod` wird verwendet, um eine Liste der derzeit geladenen Kernel-Module in einem Linux-System anzuzeigen. Dies ist nützlich, um zu überprüfen, welche Module aktiv sind und welche möglicherweise geladen oder entladen werden müssen.
+Der Befehl `lsmod` wird verwendet, um eine Liste der derzeit geladenen Kernelmodule in einem Linux-System anzuzeigen. Dies ist nützlich, um zu überprüfen, welche Module aktiv sind und um Informationen über deren Abhängigkeiten zu erhalten.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
 ```csh
-lsmod [optionen] [argumente]
+lsmod [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-h`, `--help`: Zeigt eine Hilfe-Seite mit Informationen zur Verwendung des Befehls an.
-- `-n`, `--no-heading`: Unterdrückt die Kopfzeile in der Ausgabe.
+- `-h`, `--help`: Zeigt eine Hilfeseite mit Informationen zur Verwendung des Befehls an.
+- `-q`, `--quiet`: Reduziert die Ausgabe, um nur wichtige Informationen anzuzeigen.
 
 ## Häufige Beispiele
-Um alle geladenen Module anzuzeigen, verwenden Sie einfach:
+Um alle geladenen Kernelmodule anzuzeigen, verwenden Sie einfach:
 
 ```csh
 lsmod
 ```
 
-Um die Ausgabe ohne Kopfzeile zu erhalten, verwenden Sie:
-
-```csh
-lsmod -n
-```
-
-Um Hilfe zum Befehl anzuzeigen, verwenden Sie:
+Um eine Hilfe zur Verwendung von lsmod anzuzeigen, verwenden Sie:
 
 ```csh
 lsmod --help
 ```
 
-## Tipps
-- Überprüfen Sie regelmäßig die geladenen Module, um sicherzustellen, dass keine unerwünschten Module aktiv sind.
-- Nutzen Sie `grep`, um gezielt nach einem bestimmten Modul zu suchen, z.B.:
+Um die Ausgabe zu reduzieren und nur wichtige Informationen anzuzeigen, verwenden Sie:
 
 ```csh
-lsmod | grep modulname
+lsmod -q
 ```
 
-- Denken Sie daran, dass Änderungen an geladenen Modulen möglicherweise einen Neustart des Systems erfordern, um wirksam zu werden.
+## Tipps
+- Verwenden Sie `lsmod` in Kombination mit `grep`, um nach einem bestimmten Modul zu suchen, z.B. `lsmod | grep <modulname>`.
+- Überprüfen Sie regelmäßig die geladenen Module, um sicherzustellen, dass keine unerwünschten oder veralteten Module aktiv sind.
+- Nutzen Sie `modinfo <modulname>`, um detaillierte Informationen über ein spezifisches Modul zu erhalten, das Sie in der `lsmod`-Ausgabe gefunden haben.

@@ -1,48 +1,51 @@
-# [Linux] C Shell (csh) locale gebruik: Toon locale-informatie
+# [Linux] C Shell (csh) locale gebruik: toon locale-informatie
 
-## Overzicht
-De `locale` opdracht in C Shell (csh) wordt gebruikt om informatie over de huidige locale-instellingen van het systeem weer te geven. Dit omvat gegevens zoals taal, tijdzone en andere regionale instellingen die van invloed zijn op de uitvoer van programma's.
+## Overview
+De `locale` opdracht in C Shell (csh) wordt gebruikt om informatie over de huidige locale-instellingen van de omgeving weer te geven. Dit omvat gegevens zoals taal, tijdzone en andere regionale instellingen die van invloed zijn op de manier waarop informatie wordt weergegeven en verwerkt.
 
-## Gebruik
+## Usage
 De basis syntaxis van de `locale` opdracht is als volgt:
 
 ```csh
-locale [opties] [argumenten]
+locale [options] [arguments]
 ```
 
-## Veelvoorkomende Opties
+## Common Options
 Hier zijn enkele veelvoorkomende opties voor de `locale` opdracht:
 
-- `-a`: Toont een lijst van alle beschikbare locales op het systeem.
+- `-a`: Toont een lijst van alle beschikbare locales.
 - `-m`: Toont een lijst van de beschikbare locale-categorieën.
-- `-k`: Toont de waarden van een specifieke locale-categorie.
+- `-k`: Toont de waarden van specifieke locale-instellingen.
 - `-c`: Toont de huidige locale-instellingen.
 
-## Veelvoorkomende Voorbeelden
-
+## Common Examples
 Hier zijn enkele praktische voorbeelden van het gebruik van de `locale` opdracht:
 
 1. **Toon de huidige locale-instellingen:**
+
    ```csh
    locale
    ```
 
-2. **Toon een lijst van alle beschikbare locales:**
+2. **Toon alle beschikbare locales:**
+
    ```csh
    locale -a
    ```
 
 3. **Toon de beschikbare locale-categorieën:**
+
    ```csh
    locale -m
    ```
 
-4. **Toon de waarden van een specifieke locale-categorie, bijvoorbeeld 'LC_TIME':**
+4. **Toon specifieke locale-instellingen:**
+
    ```csh
    locale -k LC_TIME
    ```
 
 ## Tips
-- Zorg ervoor dat je de juiste locale hebt ingesteld voor je applicaties om onverwachte resultaten te voorkomen.
-- Gebruik `locale -a` om te controleren of de gewenste locale beschikbaar is op je systeem voordat je deze instelt.
-- Controleer regelmatig je locale-instellingen, vooral na systeemupdates of wijzigingen in configuratiebestanden.
+- Controleer regelmatig je locale-instellingen, vooral als je met meerdere talen of regio's werkt.
+- Gebruik de `-a` optie om te zien welke locales beschikbaar zijn voor installatie of gebruik.
+- Vergeet niet dat locale-instellingen invloed kunnen hebben op de uitvoer van andere commando's, zoals datums en getallen.

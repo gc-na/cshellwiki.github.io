@@ -1,42 +1,45 @@
-# [Linux] C Shell (csh) hostnamectl Kullanımı: Sistem adını ve diğer bilgileri yönetme
+# [Linux] C Shell (csh) hostnamectl Kullanımı: Sistem adını ve bilgilerini yönetme
 
 ## Genel Bakış
-`hostnamectl` komutu, sistemin adını ve diğer önemli bilgilerini yönetmek için kullanılan bir araçtır. Bu komut, sistemin ağda nasıl tanındığını ve bazı sistem özelliklerini görüntülemenizi sağlar.
+`hostnamectl` komutu, sistemin adını ve diğer bilgilerini yönetmek için kullanılan bir araçtır. Bu komut, sistemin ağ adını, makine adını ve işletim sistemi bilgilerini görüntüleme ve değiştirme işlevselliği sunar.
 
 ## Kullanım
-Temel sözdizimi şu şekildedir:
-```
+Temel sözdizimi aşağıdaki gibidir:
+
+```bash
 hostnamectl [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `set-hostname`: Sistemin adını ayarlamak için kullanılır.
+- `set-hostname`: Sistem adını ayarlamak için kullanılır.
 - `status`: Mevcut sistem bilgilerini görüntüler.
-- `set-icon-name`: Sistem simgesinin adını ayarlamak için kullanılır.
-- `set-chassis`: Sistem kasasının türünü ayarlamak için kullanılır.
+- `set-icon-name`: Sistem simgesi adını ayarlamak için kullanılır.
+- `set-chassis`: Donanım türünü ayarlamak için kullanılır.
 
 ## Yaygın Örnekler
-Sistem adını görüntülemek için:
+Aşağıda `hostnamectl` komutunun bazı pratik örnekleri bulunmaktadır:
+
+### 1. Mevcut sistem bilgilerini görüntüleme
 ```bash
 hostnamectl status
 ```
 
-Sistem adını değiştirmek için:
+### 2. Sistem adını değiştirme
 ```bash
 hostnamectl set-hostname yeni-sistem-adi
 ```
 
-Sistem simgesini ayarlamak için:
-```bash
-hostnamectl set-icon-name simge-adi
-```
-
-Sistem kasasını ayarlamak için:
+### 3. Donanım türünü ayarlama
 ```bash
 hostnamectl set-chassis sunucu
 ```
 
+### 4. Sistem simgesi adını ayarlama
+```bash
+hostnamectl set-icon-name yeni-simge
+```
+
 ## İpuçları
-- `hostnamectl` komutunu kullanmadan önce, gerekli izinlere sahip olduğunuzdan emin olun.
-- Sistem adını değiştirirken, ağ ayarlarını ve diğer sistem bileşenlerini etkileyebileceğini unutmayın.
-- Değişikliklerin etkili olması için bazı durumlarda sistemi yeniden başlatmanız gerekebilir.
+- Sistem adını değiştirirken, yeni adın geçerli bir DNS adı olduğundan emin olun.
+- Değişikliklerin etkili olabilmesi için bazı durumlarda sistemi yeniden başlatmanız gerekebilir.
+- `hostnamectl` komutunu kullanmadan önce, gerekli izinlere sahip olduğunuzdan emin olun; genellikle yönetici (root) yetkileri gerektirir.

@@ -1,10 +1,10 @@
 # [Sistem Operasi] C Shell (csh) awk Penggunaan: Memproses dan Menganalisis Teks
 
 ## Overview
-Perintah `awk` adalah alat yang kuat untuk memproses dan menganalisis teks. Ini sering digunakan untuk memanipulasi data dalam format terstruktur, seperti file teks atau output dari perintah lain. Dengan `awk`, Anda dapat melakukan pencarian, penggantian, dan pengolahan data dengan cara yang efisien.
+Perintah `awk` adalah alat yang kuat untuk memproses dan menganalisis teks. Ia digunakan untuk membaca file teks, memanipulasi data, dan menghasilkan output yang diinginkan berdasarkan pola tertentu.
 
 ## Usage
-Sintaks dasar dari perintah `awk` adalah sebagai berikut:
+Sintaks dasar untuk menggunakan perintah `awk` adalah sebagai berikut:
 
 ```csh
 awk [options] [arguments]
@@ -13,38 +13,38 @@ awk [options] [arguments]
 ## Common Options
 Berikut adalah beberapa opsi umum yang dapat digunakan dengan `awk`:
 
-- `-F`: Menentukan pemisah field (default adalah spasi).
+- `-F`: Menentukan pemisah field (field separator) yang digunakan dalam input.
 - `-v`: Mengatur variabel sebelum eksekusi program `awk`.
-- `-f`: Menggunakan file yang berisi program `awk` alih-alih menulisnya di command line.
+- `-f`: Menggunakan file yang berisi skrip `awk` alih-alih menulis skrip langsung di command line.
 
 ## Common Examples
 Berikut adalah beberapa contoh praktis penggunaan `awk`:
 
-1. **Menampilkan kolom tertentu dari file**:
-   Menampilkan kolom pertama dari file `data.txt`.
+1. **Menampilkan kolom tertentu dari file:**
    ```csh
-   awk '{print $1}' data.txt
+   awk '{print $1, $3}' data.txt
    ```
+   Contoh ini akan mencetak kolom pertama dan ketiga dari file `data.txt`.
 
-2. **Menggunakan pemisah yang berbeda**:
-   Menampilkan kolom kedua dari file CSV dengan koma sebagai pemisah.
+2. **Menggunakan pemisah field:**
    ```csh
-   awk -F',' '{print $2}' data.csv
+   awk -F, '{print $2}' data.csv
    ```
+   Di sini, `awk` menggunakan koma sebagai pemisah field dan mencetak kolom kedua dari file CSV.
 
-3. **Menghitung jumlah baris dalam file**:
-   Menghitung jumlah baris dalam file `data.txt`.
+3. **Menghitung jumlah baris dalam file:**
    ```csh
    awk 'END {print NR}' data.txt
    ```
+   Perintah ini akan mencetak jumlah total baris dalam `data.txt`.
 
-4. **Menampilkan baris yang memenuhi kondisi tertentu**:
-   Menampilkan baris yang memiliki nilai lebih dari 50 di kolom ketiga.
+4. **Mencetak baris yang memenuhi kondisi tertentu:**
    ```csh
-   awk '$3 > 50' data.txt
+   awk '$3 > 50 {print $1, $2}' data.txt
    ```
+   Ini akan mencetak kolom pertama dan kedua dari baris yang memiliki nilai lebih dari 50 di kolom ketiga.
 
 ## Tips
-- Selalu gunakan opsi `-F` jika data Anda dipisahkan oleh karakter selain spasi untuk memastikan `awk` dapat memproses data dengan benar.
-- Gunakan variabel dengan opsi `-v` untuk membuat skrip `awk` lebih dinamis dan mudah dibaca.
-- Cobalah untuk menulis skrip `awk` yang lebih kompleks dalam file terpisah untuk menjaga kebersihan dan keterbacaan perintah di command line.
+- Selalu periksa pemisah field yang digunakan dalam file Anda untuk memastikan `awk` dapat memproses data dengan benar.
+- Gunakan opsi `-v` untuk mendefinisikan variabel yang dapat digunakan dalam skrip `awk` Anda.
+- Cobalah untuk menulis skrip `awk` dalam file terpisah jika Anda memiliki logika yang kompleks, dan gunakan opsi `-f` untuk menjalankannya.

@@ -1,48 +1,42 @@
-# [Linux] C Shell (csh) tee Verwendung: Daten gleichzeitig ausgeben und speichern
+# [Linux] C Shell (csh) tee Verwendung: Daten in Dateien und Standardausgabe umleiten
 
 ## Übersicht
-Der `tee` Befehl in der C Shell (csh) wird verwendet, um Eingabedaten gleichzeitig auf der Standardausgabe anzuzeigen und in eine oder mehrere Dateien zu schreiben. Dies ist besonders nützlich, wenn Sie die Ausgabe eines Befehls sowohl sehen als auch speichern möchten.
+Der `tee` Befehl in der C Shell (csh) wird verwendet, um die Ausgabe eines Befehls sowohl auf der Standardausgabe (in der Regel das Terminal) als auch in eine oder mehrere Dateien zu schreiben. Dies ist besonders nützlich, wenn man die Ausgabe eines Befehls überwachen und gleichzeitig speichern möchte.
 
 ## Verwendung
 Die grundlegende Syntax des `tee` Befehls lautet:
 
 ```csh
-tee [optionen] [argumente]
+tee [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
 - `-a`: Fügt die Ausgabe an die angegebene Datei an, anstatt sie zu überschreiben.
 - `-i`: Ignoriert Interrupt-Signale.
-- `-p`: Gibt die Ausgabe an die Standardausgabe und die angegebene Datei weiter.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele zur Verwendung des `tee` Befehls:
 
-1. **Einfaches Speichern der Ausgabe in eine Datei:**
+1. **Einfaches Beispiel**: Ausgabe eines Befehls in eine Datei schreiben.
    ```csh
-   ls -l | tee dateiliste.txt
+   echo "Hallo Welt" | tee ausgabe.txt
    ```
-   Dies listet die Dateien im aktuellen Verzeichnis auf und speichert die Ausgabe in `dateiliste.txt`.
 
-2. **Anfügen der Ausgabe an eine bestehende Datei:**
+2. **Ausgabe an mehrere Dateien**: Ausgabe in mehrere Dateien gleichzeitig speichern.
    ```csh
-   echo "Neue Zeile" | tee -a dateiliste.txt
+   echo "Daten speichern" | tee datei1.txt datei2.txt
    ```
-   Hier wird "Neue Zeile" an das Ende von `dateiliste.txt` angefügt.
 
-3. **Gleichzeitige Ausgabe in mehrere Dateien:**
+3. **Anfügen an eine Datei**: Die Ausgabe an eine bestehende Datei anhängen.
    ```csh
-   echo "Testausgabe" | tee datei1.txt datei2.txt
+   echo "Zusätzliche Daten" | tee -a ausgabe.txt
    ```
-   Diese Zeile gibt "Testausgabe" sowohl in `datei1.txt` als auch in `datei2.txt` aus.
 
-4. **Verwendung mit einem anderen Befehl:**
+4. **Verwendung mit anderen Befehlen**: Ausgabe eines Kommandos in eine Datei und gleichzeitig im Terminal anzeigen.
    ```csh
-   ps aux | tee laufende_prozesse.txt
+   ls -l | tee verzeichnis_inhalt.txt
    ```
-   Dies speichert die Liste der laufenden Prozesse in `laufende_prozesse.txt` und zeigt sie gleichzeitig im Terminal an.
 
 ## Tipps
-- Verwenden Sie die `-a` Option, wenn Sie Daten an eine bestehende Datei anhängen möchten, um Datenverlust zu vermeiden.
-- Kombinieren Sie `tee` mit anderen Befehlen in einer Pipeline, um die Ausgabe effizient zu verarbeiten und zu speichern.
-- Überprüfen Sie immer die Berechtigungen der Datei, in die Sie schreiben möchten, um sicherzustellen, dass Sie die erforderlichen Zugriffsrechte haben.
+- Verwenden Sie die `-a` Option, wenn Sie sicherstellen möchten, dass bestehende Daten in einer Datei nicht überschrieben werden.
+- Kombinieren Sie `tee` mit anderen Befehlen in einer Pipeline, um die Ausgabe zu überwachen und zu speichern.
+- Achten Sie darauf, dass Sie die richtigen Berechtigungen haben, um in die Zieldateien zu schreiben.

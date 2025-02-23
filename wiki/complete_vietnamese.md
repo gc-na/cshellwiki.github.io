@@ -1,45 +1,44 @@
-# [Hệ điều hành] C Shell (csh) complete: [hoàn thành lệnh]
+# [Hệ điều hành] C Shell (csh) complete: Hoàn thành tên lệnh
 
-## Tổng quan
-Lệnh `complete` trong C Shell (csh) được sử dụng để tự động hoàn thành các lệnh và tham số khi bạn gõ chúng trong dòng lệnh. Điều này giúp tiết kiệm thời gian và giảm thiểu lỗi khi nhập lệnh.
+## Overview
+Lệnh `complete` trong C Shell (csh) được sử dụng để tự động hoàn thành tên lệnh hoặc tên tệp khi bạn gõ trong dòng lệnh. Điều này giúp tiết kiệm thời gian và giảm thiểu lỗi khi nhập lệnh.
 
-## Cú pháp
+## Usage
 Cú pháp cơ bản của lệnh `complete` như sau:
-
 ```
 complete [options] [arguments]
 ```
 
-## Các tùy chọn phổ biến
-- `-c`: Chỉ định một lệnh cụ thể để hoàn thành.
+## Common Options
+- `-c`: Chỉ định lệnh mà bạn muốn hoàn thành.
 - `-d`: Hoàn thành tên thư mục.
 - `-f`: Hoàn thành tên tệp.
 - `-n`: Không hoàn thành nếu có một số điều kiện nhất định.
 
-## Ví dụ phổ biến
+## Common Examples
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `complete`:
 
-1. Hoàn thành tên tệp:
+1. Hoàn thành tên lệnh:
    ```csh
-   complete -f ls
+   complete -c ls
    ```
 
-2. Hoàn thành tên thư mục:
+2. Hoàn thành tên tệp trong thư mục hiện tại:
    ```csh
-   complete -d cd
+   complete -f myfile
    ```
 
-3. Hoàn thành cho một lệnh cụ thể:
+3. Hoàn thành tên thư mục:
    ```csh
-   complete -c git
+   complete -d /usr/local
    ```
 
-4. Hoàn thành với điều kiện:
+4. Hoàn thành tên lệnh với điều kiện:
    ```csh
-   complete -n '[[ -d $1 ]]' cp
+   complete -n 'test -f $1' myscript
    ```
 
-## Mẹo
-- Sử dụng lệnh `complete` để tạo ra các tùy chọn hoàn thành cho các lệnh tùy chỉnh của bạn.
-- Kiểm tra các tùy chọn hoàn thành hiện tại bằng cách sử dụng lệnh `complete` mà không có đối số.
-- Thực hành với các lệnh khác nhau để làm quen với cách hoạt động của tính năng hoàn thành.
+## Tips
+- Sử dụng lệnh `complete` để tạo các quy tắc hoàn thành tùy chỉnh cho các lệnh thường xuyên sử dụng.
+- Kiểm tra các tùy chọn có sẵn để tối ưu hóa việc hoàn thành tên lệnh theo nhu cầu của bạn.
+- Thực hành thường xuyên với lệnh `complete` để làm quen với cách hoạt động của nó và tăng tốc độ làm việc trong môi trường dòng lệnh.

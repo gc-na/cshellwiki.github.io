@@ -1,55 +1,55 @@
 # [Linux] C Shell (csh) crontab gebruik: Automatisch taken plannen
 
 ## Overzicht
-De `crontab`-opdracht wordt gebruikt om taken automatisch op geplande tijden uit te voeren. Het is een essentieel hulpmiddel voor systeembeheerders en gebruikers die repetitieve taken willen automatiseren zonder handmatige tussenkomst.
+De `crontab`-opdracht wordt gebruikt om taken (of "cron jobs") te plannen die op specifieke tijdstippen of intervallen moeten worden uitgevoerd. Dit is handig voor het automatiseren van routinetaken op een Unix-achtige besturingssysteem.
 
 ## Gebruik
 De basis syntaxis van de `crontab`-opdracht is als volgt:
 
-```bash
+```csh
 crontab [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
 - `-e`: Bewerk de huidige crontab.
-- `-l`: Toon de huidige crontab.
+- `-l`: Lijst de huidige crontab-taken.
 - `-r`: Verwijder de huidige crontab.
-- `-i`: Vraag om bevestiging voordat de crontab wordt verwijderd.
+- `-i`: Vraag bevestiging voordat de crontab wordt verwijderd.
 
 ## Veelvoorkomende Voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van `crontab`:
 
-1. **Bewerk de crontab:**
+1. **Bewerk de crontab**:
    Om de crontab te bewerken, gebruik je de volgende opdracht:
-   ```bash
+   ```csh
    crontab -e
    ```
 
-2. **Toon de huidige crontab:**
-   Om de huidige crontab-instellingen te bekijken, voer je deze opdracht uit:
-   ```bash
+2. **Lijst de huidige crontab-taken**:
+   Om de taken die momenteel zijn ingesteld te bekijken, gebruik je:
+   ```csh
    crontab -l
    ```
 
-3. **Verwijder de crontab:**
-   Om de crontab te verwijderen, gebruik je:
-   ```bash
+3. **Verwijder de crontab**:
+   Om je crontab te verwijderen, gebruik je:
+   ```csh
    crontab -r
    ```
 
-4. **Een taak plannen om elke dag om middernacht een script uit te voeren:**
-   Voeg de volgende regel toe in de crontab:
-   ```bash
-   0 0 * * * /pad/naar/script.sh
+4. **Voeg een taak toe die elke dag om 2 uur 's nachts een script uitvoert**:
+   In de crontab-editor, voeg de volgende regel toe:
+   ```csh
+   0 2 * * * /pad/naar/script.sh
    ```
 
-5. **Een taak plannen om elke maandag om 7:30 een backup uit te voeren:**
-   Voeg deze regel toe:
-   ```bash
-   30 7 * * 1 /pad/naar/backup.sh
+5. **Voer een taak elke maandag om 5 uur 's ochtends uit**:
+   Voeg deze regel toe aan de crontab:
+   ```csh
+   0 5 * * 1 /pad/naar/ander_script.sh
    ```
 
 ## Tips
-- Zorg ervoor dat je het volledige pad naar de scripts of commando's opgeeft in de crontab om fouten te voorkomen.
-- Controleer regelmatig je crontab-instellingen om ervoor te zorgen dat alles correct is ingesteld.
-- Gebruik logbestanden om de uitvoer van je cron-taken te volgen, zodat je eventuele problemen kunt opsporen.
+- Zorg ervoor dat je het volledige pad naar scripts of commando's opgeeft in je crontab.
+- Controleer regelmatig je crontab-taken om ervoor te zorgen dat ze correct zijn ingesteld.
+- Gebruik logbestanden om de uitvoer van je cron-taken te controleren, dit kan helpen bij het oplossen van problemen.

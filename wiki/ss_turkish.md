@@ -1,55 +1,48 @@
-# [Linux] C Shell (csh) ss Kullanımı: Ağ bağlantılarını görüntüleme
+# [Linux] C Shell (csh) ss Kullanımı: Ağ soketlerini görüntüleme
 
-## Overview
-`ss` komutu, ağ bağlantılarını, dinleme soketlerini ve diğer ağ istatistiklerini görüntülemek için kullanılan bir araçtır. Bu komut, sistem yöneticileri ve geliştiriciler için ağ durumu hakkında bilgi edinmek amacıyla oldukça faydalıdır.
+## Genel Bakış
+`ss` komutu, ağ soketleri hakkında bilgi almak için kullanılan bir araçtır. Bu komut, aktif bağlantıları, dinleyen soketleri ve diğer ağ bağlantı durumlarını hızlı bir şekilde görüntülemenizi sağlar.
 
-## Usage
+## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-```bash
-ss [options] [arguments]
+```
+ss [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `-t`: TCP bağlantılarını gösterir.
-- `-u`: UDP bağlantılarını gösterir.
-- `-l`: Dinleme durumundaki soketleri listeler.
-- `-p`: Bağlantıların hangi süreçler tarafından kullanıldığını gösterir.
-- `-n`: Adres ve port numaralarını sayısal olarak gösterir.
+## Yaygın Seçenekler
+- `-t`: TCP soketlerini gösterir.
+- `-u`: UDP soketlerini gösterir.
+- `-l`: Dinleyen soketleri listeler.
+- `-p`: Soketlerle ilişkili süreçleri gösterir.
+- `-n`: Adresleri ve port numaralarını sayısal olarak gösterir.
 
-## Common Examples
-Aşağıda `ss` komutunun bazı yaygın kullanımları bulunmaktadır:
+## Yaygın Örnekler
+Aşağıda `ss` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-1. **Tüm bağlantıları görüntüleme:**
-   ```bash
-   ss
-   ```
-
-2. **Sadece TCP bağlantılarını görüntüleme:**
+1. Tüm aktif TCP bağlantılarını görüntüleme:
    ```bash
    ss -t
    ```
 
-3. **Dinleme durumundaki soketleri görüntüleme:**
+2. Dinleyen UDP soketlerini listeleme:
    ```bash
-   ss -l
+   ss -u -l
    ```
 
-4. **UDP bağlantılarını görüntüleme:**
-   ```bash
-   ss -u
-   ```
-
-5. **Bağlantıların süreç bilgisi ile birlikte görüntülenmesi:**
+3. Tüm soketleri ve ilişkili süreçleri gösterme:
    ```bash
    ss -p
    ```
 
-6. **Sayısal adres ve port numaraları ile görüntüleme:**
+4. Sayısal adres ve port numaraları ile tüm dinleyen soketleri görüntüleme:
    ```bash
-   ss -n
+   ss -l -n
    ```
 
-## Tips
-- `ss` komutunu kullanırken, belirli bir protokolü hedeflemek için `-t` veya `-u` seçeneklerini kullanmak, daha net sonuçlar almanıza yardımcı olur.
-- Ağ sorunlarını teşhis ederken, `-p` seçeneği ile süreç bilgilerini görmek, hangi uygulamaların ağ kaynaklarını kullandığını anlamanızı sağlar.
-- `ss` komutunu sık sık kullanıyorsanız, sık kullandığınız seçenekleri bir alias ile kısayol olarak tanımlamak işinizi kolaylaştırabilir.
+## İpuçları
+- `ss` komutunu kullanırken, belirli bir protokolü hedeflemek için `-t` veya `-u` seçeneklerini kullanarak çıktıyı daraltabilirsiniz.
+- Ağ sorunlarını teşhis etmek için `ss -t -p` komutunu kullanarak hangi süreçlerin hangi bağlantıları kullandığını görebilirsiniz.
+- Çıktıyı daha okunabilir hale getirmek için `grep` komutunu kullanarak belirli bir bağlantıyı veya durumu filtreleyebilirsiniz. Örneğin:
+  ```bash
+  ss -t | grep ESTAB
+  ```

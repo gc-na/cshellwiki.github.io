@@ -1,38 +1,40 @@
 # [Linux] C Shell (csh) pwd Kullanımı: Mevcut dizini gösterir
 
-## Genel Bakış
-`pwd` (print working directory) komutu, kullanıcının o anki çalışma dizinini gösterir. Terminalde hangi dizinde bulunduğunuzu hızlıca öğrenmek için kullanılır.
+## Overview
+`pwd` (print working directory), mevcut çalışma dizininizin tam yolunu gösteren bir komuttur. Terminalde hangi dizinde bulunduğunuzu hızlıca öğrenmek için kullanılır.
 
-## Kullanım
+## Usage
 Temel sözdizimi aşağıdaki gibidir:
-
 ```
 pwd [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-L`: Sembolik bağlantılar üzerinden mevcut dizini gösterir.
-- `-P`: Fiziksel dizin yolunu gösterir, yani sembolik bağlantıları dikkate almaz.
+## Common Options
+- `-L`: Mantıksal yolun gösterilmesini sağlar. Eğer sembolik bağlantılar varsa, bu seçenek ile bağlantının gösterildiği dizin görüntülenir.
+- `-P`: Fiziksel yolun gösterilmesini sağlar. Bu seçenek ile sembolik bağlantılar takip edilmez ve gerçek dizin yolu gösterilir.
 
-## Yaygın Örnekler
+## Common Examples
 Aşağıda `pwd` komutunun bazı pratik örnekleri verilmiştir:
 
-1. Mevcut dizini görüntüleme:
-   ```csh
-   pwd
-   ```
+### Örnek 1: Basit kullanım
+Mevcut dizini görüntülemek için:
+```csh
+pwd
+```
 
-2. Fiziksel dizin yolunu görüntüleme:
-   ```csh
-   pwd -P
-   ```
+### Örnek 2: Mantıksal yol gösterimi
+Mantıksal yolu görüntülemek için:
+```csh
+pwd -L
+```
 
-3. Sembolik bağlantılar üzerinden mevcut dizini görüntüleme:
-   ```csh
-   pwd -L
-   ```
+### Örnek 3: Fiziksel yol gösterimi
+Fiziksel yolu görüntülemek için:
+```csh
+pwd -P
+```
 
-## İpuçları
-- `pwd` komutunu sık sık kullanarak, terminalde hangi dizinde olduğunuzu kontrol edebilirsiniz.
-- Özellikle karmaşık dizin yapılarında çalışırken, `pwd -P` seçeneği ile gerçek dizin yolunu görmek faydalı olabilir.
-- Komutun çıktısını başka komutlarla birleştirerek, dizin yolunu kullanabilirsiniz; örneğin, `cd $(pwd)` ile mevcut dizine geri dönebilirsiniz.
+## Tips
+- `pwd` komutunu sık sık kullanarak bulunduğunuz dizini kontrol edebilir ve dosya yönetiminizi kolaylaştırabilirsiniz.
+- Eğer birden fazla terminal penceresi açtıysanız, her birinde `pwd` komutunu kullanarak hangi dizinde çalıştığınızı hızlıca öğrenebilirsiniz.
+- Sembolik bağlantılarla çalışıyorsanız, `-P` seçeneğini kullanarak gerçek dizin yolunu görmek faydalı olabilir.

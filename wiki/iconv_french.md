@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) iconv : Convertir des fichiers entre différents encodages
+# [Linux] C Shell (csh) iconv Utilisation : Convertir des fichiers entre différentes encodages
 
 ## Overview
-La commande `iconv` est utilisée pour convertir des fichiers texte d'un encodage à un autre. Cela est particulièrement utile lorsque vous travaillez avec des fichiers qui utilisent différents jeux de caractères, permettant ainsi une meilleure compatibilité entre les systèmes.
+La commande `iconv` est utilisée pour convertir des fichiers texte d'un encodage à un autre. Cela est particulièrement utile lorsque vous travaillez avec des fichiers qui utilisent différentes normes d'encodage de caractères.
 
 ## Usage
 La syntaxe de base de la commande `iconv` est la suivante :
@@ -11,12 +11,12 @@ iconv [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes pour `iconv` :
+Voici quelques options courantes pour la commande `iconv` :
 
-- `-f` : Spécifie l'encodage d'entrée (par défaut UTF-8).
-- `-t` : Spécifie l'encodage de sortie (par défaut UTF-8).
+- `-f` : Spécifie l'encodage d'entrée.
+- `-t` : Spécifie l'encodage de sortie.
 - `-o` : Permet de rediriger la sortie vers un fichier spécifié.
-- `-c` : Ignore les caractères non valides dans le texte d'entrée.
+- `-l` : Liste tous les encodages disponibles.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `iconv` :
@@ -33,13 +33,19 @@ Voici quelques exemples pratiques de l'utilisation de `iconv` :
    iconv -f UTF-16 -t UTF-8 fichier_utf16.txt -o fichier_utf8.txt
    ```
 
-3. Ignorer les caractères non valides lors de la conversion :
+3. Afficher les encodages disponibles :
 
    ```csh
-   iconv -f ISO-8859-1 -t UTF-8 -c fichier.txt -o fichier_utf8.txt
+   iconv -l
+   ```
+
+4. Convertir un fichier et afficher la sortie directement dans le terminal :
+
+   ```csh
+   iconv -f UTF-8 -t ISO-8859-1 fichier_utf8.txt
    ```
 
 ## Tips
-- Assurez-vous de connaître les encodages d'entrée et de sortie appropriés pour éviter des erreurs de conversion.
-- Utilisez l'option `-o` pour éviter d'écraser le fichier d'origine, surtout si vous n'êtes pas sûr du résultat.
-- Testez la conversion sur un petit échantillon de données avant de l'appliquer à des fichiers plus volumineux.
+- Assurez-vous de connaître l'encodage d'origine du fichier avant de le convertir pour éviter des erreurs de conversion.
+- Utilisez l'option `-o` pour éviter de perdre vos données d'origine en les écrivant directement dans le même fichier.
+- Testez la conversion avec un petit fichier avant de l'appliquer à des fichiers plus volumineux pour vous assurer que le résultat est conforme à vos attentes.

@@ -1,24 +1,24 @@
-# [Linux] C Shell (csh) endif utilizzo: Termina un blocco condizionale
+# [Linux] C Shell (csh) endif uso: Termina una struttura condizionale
 
 ## Overview
-Il comando `endif` in C Shell (csh) viene utilizzato per terminare un blocco condizionale iniziato con `if`. È essenziale per la corretta chiusura delle strutture di controllo condizionali nel codice shell.
+Il comando `endif` in C Shell (csh) viene utilizzato per terminare una struttura condizionale iniziata con `if`. È essenziale per la corretta chiusura delle istruzioni condizionali, garantendo che il codice venga eseguito in modo appropriato.
 
 ## Usage
 La sintassi di base del comando è la seguente:
 
-```
+```csh
 endif
 ```
 
 ## Common Options
-Il comando `endif` non ha opzioni comuni, poiché è utilizzato esclusivamente per chiudere un blocco condizionale.
+Il comando `endif` non ha opzioni comuni, poiché è utilizzato esclusivamente per chiudere le istruzioni `if`.
 
 ## Common Examples
 
-### Esempio 1: Utilizzo di `if` e `endif`
+### Esempio 1: Uso di `if` con `endif`
 ```csh
-if ( -e "file.txt" ) then
-    echo "Il file esiste."
+if ( $var == "valore" ) then
+    echo "La variabile è uguale a valore."
 endif
 ```
 
@@ -31,16 +31,18 @@ else
 endif
 ```
 
-### Esempio 3: Condizione annidata
+### Esempio 3: Condizioni multiple
 ```csh
-if ( $var1 == "valore1" ) then
-    if ( $var2 == "valore2" ) then
-        echo "Entrambe le variabili sono uguali."
-    endif
+if ( $var == "valore1" ) then
+    echo "La variabile è uguale a valore1."
+else if ( $var == "valore2" ) then
+    echo "La variabile è uguale a valore2."
+else
+    echo "La variabile non corrisponde a nessun valore."
 endif
 ```
 
 ## Tips
-- Assicurati di utilizzare `endif` per chiudere ogni blocco `if` per evitare errori di sintassi.
-- Mantieni il codice ben indentato per migliorare la leggibilità, specialmente con blocchi condizionali annidati.
-- Utilizza commenti per spiegare le condizioni complesse, facilitando la comprensione del codice in futuro.
+- Assicurati sempre di chiudere ogni `if` con un `endif` per evitare errori di sintassi.
+- Utilizza `else` e `else if` per gestire più condizioni in modo chiaro e leggibile.
+- Mantieni il codice indentato correttamente per migliorare la leggibilità, specialmente in strutture condizionali complesse.

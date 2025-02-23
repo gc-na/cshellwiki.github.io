@@ -1,34 +1,38 @@
-# [Linux] C Shell (csh) fg Kullanımı: Arka planda çalışan bir süreci ön plana getirir
+# [Linux] C Shell (csh) fg Kullanımı: Arka planda çalışan bir işlemi ön plana getirir
 
-## Overview
-`fg` komutu, C Shell (csh) ortamında arka planda çalışan bir süreci ön plana getirmek için kullanılır. Bu komut, kullanıcıların arka planda devam eden işlemleri kolayca yönetmelerine olanak tanır.
+## Genel Bakış
+`fg` komutu, C Shell (csh) ortamında arka planda çalışan bir işlemi ön plana getirmek için kullanılır. Bu komut, kullanıcıların daha önce başlatılmış olan ve şu anda arka planda çalışan görevleri kontrol etmelerine ve etkileşimde bulunmalarına olanak tanır.
 
-## Usage
-Temel sözdizimi aşağıdaki gibidir:
-```csh
-fg [options] [arguments]
+## Kullanım
+Temel sözdizimi şu şekildedir:
+```
+fg [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `job_spec`: Ön plana getirmek istediğiniz işin tanımı. Bu genellikle iş numarası veya iş adı ile belirtilir.
+## Yaygın Seçenekler
+- `job_id`: Ön plana getirmek istediğiniz işlemin kimliğini belirtir. Bu, `jobs` komutuyla görülebilir.
+- `%n`: Belirli bir iş numarasını temsil eder. Örneğin, `%1` birinci iş anlamına gelir.
 
-## Common Examples
-- Arka planda çalışan en son işlemi ön plana getirmek için:
-```csh
-fg
-```
+## Yaygın Örnekler
+Aşağıda `fg` komutunun bazı pratik örnekleri verilmiştir:
 
-- Belirli bir iş numarasına sahip işlemi ön plana getirmek için:
-```csh
-fg %1
-```
+1. Arka planda çalışan ilk işlemi ön plana getirmek:
+   ```csh
+   fg %1
+   ```
 
-- İş adını kullanarak bir işlemi ön plana getirmek için:
-```csh
-fg %myprocess
-```
+2. Belirli bir iş kimliğine sahip işlemi ön plana getirmek:
+   ```csh
+   fg %2
+   ```
 
-## Tips
-- `jobs` komutunu kullanarak arka planda çalışan işlemlerinizi görüntüleyebilirsiniz. Bu, hangi işlerin mevcut olduğunu ve iş numaralarını görmenize yardımcı olur.
-- Bir işlemi arka plana göndermek için `bg` komutunu kullanabilirsiniz. Bu, işlemi devam ettirirken terminali serbest bırakır.
-- İşlerinizi yönetirken iş numaralarını doğru bir şekilde kullanmaya özen gösterin; bu, işlemleri karıştırmamanıza yardımcı olur.
+3. Arka planda çalışan tüm işlemleri listelemek ve ardından birini ön plana getirmek:
+   ```csh
+   jobs
+   fg %3
+   ```
+
+## İpuçları
+- Arka planda çalışan işlemleri kontrol etmek için `jobs` komutunu kullanmayı unutmayın.
+- `fg` komutunu kullanmadan önce hangi işlemi ön plana getireceğinizi belirlemek için iş kimliklerini not edin.
+- Eğer bir işlemi durdurduysanız, `fg` ile devam ettirerek etkileşimde bulunabilirsiniz.

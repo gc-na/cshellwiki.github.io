@@ -1,45 +1,42 @@
-# [Hệ điều hành] C Shell (csh) csplit: Chia tệp thành các phần nhỏ
+# [Hệ điều hành] C Shell (csh) csplit: Chia tách tệp tin theo mẫu
 
 ## Tổng quan
-Lệnh `csplit` trong C Shell (csh) được sử dụng để chia một tệp thành nhiều phần nhỏ dựa trên các mẫu hoặc kích thước cụ thể. Điều này hữu ích khi bạn cần xử lý hoặc phân tích các phần riêng biệt của một tệp lớn.
+Lệnh `csplit` trong C Shell (csh) được sử dụng để chia tách một tệp tin thành nhiều tệp nhỏ hơn dựa trên các mẫu hoặc kích thước cụ thể. Điều này rất hữu ích khi bạn cần xử lý hoặc phân tích dữ liệu trong các tệp lớn.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `csplit` như sau:
-
-```csh
+```
 csplit [options] [arguments]
 ```
 
 ## Các tùy chọn phổ biến
-- `-f prefix`: Chỉ định tiền tố cho tên tệp đầu ra.
-- `-b suffix`: Chỉ định định dạng cho tên tệp đầu ra.
-- `-n number`: Đặt số chữ số cho phần số trong tên tệp đầu ra.
-- `-s`: Không hiển thị thông tin về các tệp đã được tạo.
+- `-f prefix`: Đặt tiền tố cho tên tệp đầu ra.
+- `-n number`: Xác định số chữ số cho phần số trong tên tệp đầu ra.
+- `-b suffix`: Đặt hậu tố cho tên tệp đầu ra.
+- `-s`: Tắt thông báo đầu ra.
 
 ## Ví dụ thường gặp
-Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `csplit`:
-
-1. Chia tệp thành các phần nhỏ dựa trên dòng đầu tiên:
-   ```csh
+1. Chia tách tệp tin thành các phần bằng cách sử dụng dòng đầu tiên:
+   ```bash
    csplit myfile.txt 1
    ```
 
-2. Chia tệp thành các phần nhỏ mỗi 100 dòng:
-   ```csh
-   csplit myfile.txt 100
+2. Chia tách tệp tin theo mẫu cụ thể:
+   ```bash
+   csplit myfile.txt /pattern/ {*}
    ```
 
-3. Sử dụng tiền tố cho tên tệp đầu ra:
-   ```csh
-   csplit -f part_ myfile.txt 100
+3. Chia tách tệp tin và đặt tiền tố cho tệp đầu ra:
+   ```bash
+   csplit -f part_ myfile.txt /pattern/ {*}
    ```
 
-4. Chia tệp dựa trên một mẫu cụ thể:
-   ```csh
-   csplit myfile.txt /pattern/ {99}
+4. Chia tách tệp tin với số chữ số trong tên tệp đầu ra:
+   ```bash
+   csplit -n 3 myfile.txt /pattern/ {*}
    ```
 
 ## Mẹo
-- Hãy chắc chắn kiểm tra tệp đầu ra để đảm bảo rằng các phần đã được chia đúng cách.
-- Sử dụng tùy chọn `-s` nếu bạn không muốn thấy thông báo về các tệp đã được tạo.
-- Thử nghiệm với các mẫu khác nhau để tìm ra cách chia tệp phù hợp nhất với nhu cầu của bạn.
+- Hãy chắc chắn kiểm tra tệp đầu ra để đảm bảo rằng việc chia tách đã diễn ra như mong muốn.
+- Sử dụng tùy chọn `-s` để giảm thiểu thông báo không cần thiết khi thực hiện lệnh.
+- Thử nghiệm với các mẫu khác nhau để tìm ra cách chia tách phù hợp nhất cho dữ liệu của bạn.

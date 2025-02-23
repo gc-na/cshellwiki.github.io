@@ -1,29 +1,31 @@
 # [Linux] C Shell (csh) losetup: Ustawianie urządzeń loopback
 
 ## Overview
-Polecenie `losetup` w systemie Linux służy do przypisywania urządzeń loopback do plików. Umożliwia to traktowanie plików jako urządzeń blokowych, co jest przydatne w różnych zastosowaniach, takich jak montowanie obrazów dysków.
+Polecenie `losetup` służy do przypisywania plików do urządzeń loopback w systemie Linux. Umożliwia to korzystanie z plików jako z urządzeń blokowych, co jest przydatne w różnych scenariuszach, takich jak montowanie obrazów dysków.
 
 ## Usage
-Podstawowa składnia polecenia `losetup` wygląda następująco:
+Podstawowa składnia polecenia `losetup` jest następująca:
 
 ```csh
-losetup [opcje] [argumenty]
+losetup [options] [arguments]
 ```
 
 ## Common Options
-- `-f` - Znajduje pierwsze dostępne urządzenie loopback.
-- `-a` - Wyświetla wszystkie aktualnie przypisane urządzenia loopback.
-- `-d` - Odłącza urządzenie loopback.
-- `-o OFFSET` - Ustala offset, od którego ma być montowany plik.
-- `-s SIZE` - Ustala rozmiar urządzenia loopback.
+- `-f` : Znajduje i zwraca pierwsze dostępne urządzenie loopback.
+- `-a` : Wyświetla wszystkie aktualnie przypisane urządzenia loopback.
+- `-d` : Odłącza urządzenie loopback.
+- `-o OFFSET` : Umożliwia ustawienie offsetu przy przypisywaniu pliku.
+- `-s` : Umożliwia ustawienie rozmiaru urządzenia loopback.
 
 ## Common Examples
+Przykłady użycia polecenia `losetup`:
+
 1. **Przypisanie pliku do urządzenia loopback:**
    ```csh
    losetup /dev/loop0 /path/to/image.img
    ```
 
-2. **Wyświetlenie wszystkich przypisanych urządzeń loopback:**
+2. **Wyświetlenie wszystkich urządzeń loopback:**
    ```csh
    losetup -a
    ```
@@ -38,12 +40,12 @@ losetup [opcje] [argumenty]
    losetup -o 2048 /dev/loop1 /path/to/image.img
    ```
 
-5. **Znalezienie pierwszego dostępnego urządzenia loopback:**
+5. **Znajdowanie dostępnego urządzenia loopback:**
    ```csh
-   losetup -f /path/to/image.img
+   losetup -f
    ```
 
 ## Tips
-- Zawsze sprawdzaj, które urządzenia loopback są aktualnie używane, zanim przypiszesz nowe, aby uniknąć konfliktów.
-- Używaj opcji `-f` do automatycznego znajdowania dostępnych urządzeń, co może uprościć proces.
-- Pamiętaj, aby odłączyć urządzenia loopback po zakończeniu ich używania, aby zwolnić zasoby systemowe.
+- Zawsze sprawdzaj, które urządzenia loopback są aktualnie używane przed przypisaniem nowego pliku, aby uniknąć konfliktów.
+- Używaj opcji `-a`, aby szybko zobaczyć, które urządzenia są aktywne.
+- Pamiętaj, aby odłączyć urządzenie loopback po zakończeniu pracy z nim, aby zwolnić zasoby systemowe.

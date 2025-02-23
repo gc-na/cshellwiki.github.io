@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) mkfifo: Tworzenie potoków nazwanych
+# [Linux] C Shell (csh) mkfifo użycie: Tworzenie nazwanych potoków
 
 ## Overview
-Polecenie `mkfifo` w C Shell (csh) służy do tworzenia potoków nazwanych, które są specjalnymi plikami używanymi do komunikacji między procesami. Potoki nazwane umożliwiają przesyłanie danych między różnymi programami w systemie operacyjnym.
+Polecenie `mkfifo` w C Shell (csh) służy do tworzenia nazwanych potoków, które umożliwiają komunikację między procesami. Nazwane potoki działają jak pliki, ale zamiast przechowywać dane, pozwalają na przesyłanie danych między różnymi programami.
 
 ## Usage
 Podstawowa składnia polecenia `mkfifo` jest następująca:
@@ -11,14 +11,13 @@ mkfifo [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-m` : Umożliwia ustawienie uprawnień dla nowego potoku. Można podać uprawnienia w formacie oktalnym.
-- `--help` : Wyświetla pomoc dotyczącą użycia polecenia.
-- `--version` : Wyświetla wersję polecenia.
+- `-m, --mode=MODE` - Ustawia uprawnienia dla nowego potoku, gdzie MODE to wartość w formacie oktalnym.
+- `-Z, --context=CONTEXT` - Ustawia kontekst SELinux dla nowego potoku.
 
 ## Common Examples
 Oto kilka praktycznych przykładów użycia polecenia `mkfifo`:
 
-1. Tworzenie prostego potoku nazwanego:
+1. Tworzenie prostego nazwanego potoku:
    ```csh
    mkfifo mypipe
    ```
@@ -28,17 +27,19 @@ Oto kilka praktycznych przykładów użycia polecenia `mkfifo`:
    mkfifo -m 644 mypipe
    ```
 
-3. Tworzenie potoku w określonym katalogu:
+3. Użycie potoku do przesyłania danych między dwoma procesami:
    ```csh
-   mkfifo /tmp/mypipe
+   mkfifo mypipe
+   cat mypipe &
+   echo "Hello, World!" > mypipe
    ```
 
-4. Sprawdzanie, czy potok został utworzony:
+4. Ustawienie kontekstu SELinux dla potoku:
    ```csh
-   ls -l mypipe
+   mkfifo -Z mypipe
    ```
 
 ## Tips
-- Upewnij się, że potok jest używany przez dwa różne procesy, aby mogły one komunikować się ze sobą.
-- Po utworzeniu potoku, można go używać jak zwykłego pliku, ale pamiętaj, że odczyt i zapis muszą być zsynchronizowane.
-- Zawsze sprawdzaj uprawnienia potoku, aby upewnić się, że są odpowiednie dla użytkowników, którzy będą go używać.
+- Upewnij się, że potok jest używany przez dwa różne procesy, aby uniknąć zablokowania.
+- Sprawdzaj uprawnienia potoku, aby zapewnić odpowiedni dostęp dla procesów, które będą z niego korzystać.
+- Pamiętaj, że potoki są usuwane automatycznie po zamknięciu wszystkich otwartych deskryptorów, więc nie musisz ich ręcznie usuwać.

@@ -1,26 +1,24 @@
 # [Linux] C Shell (csh) pacman użycie: zarządzanie pakietami w systemie
 
-## Overview
-Polecenie `pacman` jest menedżerem pakietów używanym w systemach opartych na Arch Linux. Umożliwia instalację, aktualizację i usuwanie pakietów oprogramowania, a także zarządzanie ich zależnościami.
+## Przegląd
+Polecenie `pacman` jest menedżerem pakietów używanym w dystrybucjach systemu Arch Linux. Umożliwia instalację, aktualizację oraz usuwanie pakietów oprogramowania, a także zarządzanie ich zależnościami.
 
-## Usage
-Podstawowa składnia polecenia `pacman` jest następująca:
+## Użycie
+Podstawowa składnia polecenia `pacman` wygląda następująco:
 
 ```bash
 pacman [opcje] [argumenty]
 ```
 
-## Common Options
-Oto kilka powszechnie używanych opcji dla `pacman`:
+## Często używane opcje
+- `-S` : Instalacja pakietu.
+- `-R` : Usunięcie pakietu.
+- `-U` : Aktualizacja pakietu z lokalnego pliku.
+- `-Sy` : Synchronizacja bazy danych pakietów.
+- `-Syu` : Synchronizacja i aktualizacja wszystkich zainstalowanych pakietów.
+- `-Q` : Wyświetlenie informacji o zainstalowanych pakietach.
 
-- `-S` - Instalacja pakietu.
-- `-R` - Usunięcie pakietu.
-- `-U` - Instalacja pakietu z pliku.
-- `-Sy` - Synchronizacja bazy danych pakietów.
-- `-Syu` - Aktualizacja systemu i pakietów.
-- `-Q` - Zapytanie o zainstalowane pakiety.
-
-## Common Examples
+## Przykłady
 Oto kilka praktycznych przykładów użycia `pacman`:
 
 1. Instalacja pakietu:
@@ -33,22 +31,27 @@ Oto kilka praktycznych przykładów użycia `pacman`:
    pacman -R nazwa_pakietu
    ```
 
-3. Aktualizacja systemu:
-   ```bash
-   pacman -Syu
-   ```
-
-4. Instalacja pakietu z lokalnego pliku:
+3. Aktualizacja pakietu z lokalnego pliku:
    ```bash
    pacman -U /ścieżka/do/pakietu.pkg.tar.zst
    ```
 
-5. Wyświetlenie listy zainstalowanych pakietów:
+4. Synchronizacja bazy danych pakietów:
+   ```bash
+   pacman -Sy
+   ```
+
+5. Aktualizacja wszystkich zainstalowanych pakietów:
+   ```bash
+   pacman -Syu
+   ```
+
+6. Wyświetlenie listy zainstalowanych pakietów:
    ```bash
    pacman -Q
    ```
 
-## Tips
-- Zawsze używaj opcji `-Sy` przed instalacją nowych pakietów, aby upewnić się, że masz najnowszą bazę danych pakietów.
-- Używaj opcji `-Rns`, aby usunąć pakiet oraz jego nieużywane zależności.
-- Regularnie aktualizuj system za pomocą `pacman -Syu`, aby zapewnić bezpieczeństwo i stabilność.
+## Wskazówki
+- Zawsze wykonuj `pacman -Syu` przed instalacją nowych pakietów, aby upewnić się, że system jest aktualny.
+- Używaj opcji `-Q` do sprawdzania, które pakiety są zainstalowane, co może być pomocne w zarządzaniu zależnościami.
+- Zapisuj ważne dane przed usunięciem pakietów, aby uniknąć utraty danych związanych z zależnościami.

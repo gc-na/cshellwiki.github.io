@@ -1,50 +1,44 @@
-# [Linux] C Shell (csh) vgextend : Étendre un groupe de volumes
+# [Linux] C Shell (csh) vgextend : Ajouter des volumes à un groupe de volumes
 
 ## Overview
-La commande `vgextend` est utilisée pour ajouter des volumes physiques à un groupe de volumes existant dans un système de gestion de volumes logiques (LVM). Cela permet d'augmenter la capacité de stockage d'un groupe de volumes sans avoir à le recréer.
+La commande `vgextend` est utilisée pour ajouter un ou plusieurs volumes physiques à un groupe de volumes (VG) dans un système de gestion de volumes logiques (LVM). Cela permet d'augmenter la capacité de stockage disponible dans le groupe de volumes.
 
 ## Usage
 La syntaxe de base de la commande `vgextend` est la suivante :
 
-```csh
+```bash
 vgextend [options] [arguments]
 ```
 
 ## Common Options
 Voici quelques options courantes pour la commande `vgextend` :
 
-- `-n` : Permet de spécifier un nom de groupe de volumes.
-- `-f` : Force l'extension même si certains volumes sont actifs.
-- `-d` : Affiche des informations détaillées sur l'opération.
+- `-f` : Force l'ajout des volumes même si cela pourrait entraîner des problèmes.
+- `-n` : Ne pas mettre à jour les métadonnées du groupe de volumes.
+- `-s` : Spécifie la taille des segments lors de l'ajout de nouveaux volumes.
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de `vgextend` :
+Voici quelques exemples pratiques de l'utilisation de la commande `vgextend` :
 
 1. Ajouter un volume physique à un groupe de volumes :
 
-```csh
-vgextend mon_groupe /dev/sdb1
+```bash
+vgextend mon_groupe_de_volumes /dev/sdb1
 ```
 
 2. Ajouter plusieurs volumes physiques à un groupe de volumes :
 
-```csh
-vgextend mon_groupe /dev/sdb1 /dev/sdc1
+```bash
+vgextend mon_groupe_de_volumes /dev/sdb1 /dev/sdc1
 ```
 
-3. Forcer l'extension d'un groupe de volumes :
+3. Forcer l'ajout d'un volume physique :
 
-```csh
-vgextend -f mon_groupe /dev/sdb1
-```
-
-4. Afficher des informations détaillées lors de l'extension :
-
-```csh
-vgextend -d mon_groupe /dev/sdb1
+```bash
+vgextend -f mon_groupe_de_volumes /dev/sdd1
 ```
 
 ## Tips
-- Avant d'utiliser `vgextend`, assurez-vous que les volumes physiques que vous ajoutez sont disponibles et non utilisés par d'autres groupes de volumes.
-- Vérifiez toujours l'état de votre groupe de volumes après l'extension en utilisant la commande `vgs` pour vous assurer que l'opération a réussi.
-- Pensez à faire une sauvegarde de vos données avant d'effectuer des modifications sur la configuration des volumes.
+- Assurez-vous que le volume physique que vous ajoutez est correctement initialisé avec `pvcreate`.
+- Vérifiez l'espace disponible dans le groupe de volumes après l'ajout avec `vgdisplay`.
+- Utilisez `lvextend` après `vgextend` pour augmenter la taille des volumes logiques si nécessaire.

@@ -1,49 +1,49 @@
-# [Linux] C Shell (csh) ftp utilizzo: Trasferimento di file tra computer
+# [Linux] C Shell (csh) ftp utilizzo: Comando per trasferire file tra computer
 
 ## Overview
-Il comando `ftp` (File Transfer Protocol) è utilizzato per trasferire file tra computer su una rete. Permette di connettersi a un server FTP e di eseguire operazioni come il caricamento e il download di file.
+Il comando `ftp` (File Transfer Protocol) viene utilizzato per trasferire file tra un computer locale e un server remoto. Consente di caricare e scaricare file in modo semplice e diretto.
 
 ## Usage
 La sintassi di base del comando `ftp` è la seguente:
 
 ```csh
-ftp [opzioni] [argomenti]
+ftp [options] [arguments]
 ```
 
 ## Common Options
-- `-i`: Disabilita il trasferimento in modalità interattiva.
+- `-i`: Disabilita la modalità interattiva, utile per trasferimenti batch.
 - `-n`: Non tenta di effettuare il login automaticamente.
-- `-v`: Abilita la modalità verbosa, mostrando più dettagli durante il trasferimento.
+- `-v`: Abilita la modalità verbosa, mostrando dettagli sulle operazioni in corso.
 
 ## Common Examples
 Ecco alcuni esempi pratici dell'uso del comando `ftp`:
 
-### Connessione a un server FTP
-```csh
-ftp ftp.example.com
-```
+1. **Connessione a un server FTP:**
+   ```csh
+   ftp ftp.example.com
+   ```
 
-### Download di un file
-```csh
-get nomefile.txt
-```
+2. **Scaricare un file dal server:**
+   ```csh
+   get nomefile.txt
+   ```
 
-### Upload di un file
-```csh
-put nomefile.txt
-```
+3. **Caricare un file sul server:**
+   ```csh
+   put nomefile.txt
+   ```
 
-### Visualizzazione della lista dei file
-```csh
-ls
-```
+4. **Scaricare un'intera directory:**
+   ```csh
+   mget *.txt
+   ```
 
-### Disconnessione dal server
-```csh
-bye
-```
+5. **Caricare più file:**
+   ```csh
+   mput file1.txt file2.txt
+   ```
 
 ## Tips
-- Utilizza l'opzione `-i` per velocizzare il trasferimento di file di grandi dimensioni, evitando conferme per ogni file.
-- Assicurati di avere i permessi necessari per caricare o scaricare file dal server FTP.
-- Ricorda di disconnetterti correttamente dal server usando il comando `bye` per evitare sessioni aperte.
+- Assicurati di avere le credenziali corrette per accedere al server FTP.
+- Utilizza l'opzione `-v` per diagnosticare eventuali problemi di connessione.
+- Ricorda di utilizzare la modalità binaria (`binary`) per trasferire file non testuali, come immagini o eseguibili, per evitare la corruzione dei dati.

@@ -1,7 +1,7 @@
 # [Hệ điều hành] C Shell (csh) true: [trả về giá trị đúng]
 
 ## Tổng quan
-Lệnh `true` trong C Shell (csh) được sử dụng để trả về giá trị đúng (0). Nó thường được sử dụng trong các kịch bản và lệnh để xác nhận rằng một lệnh đã thành công hoặc để tạo ra một lệnh không làm gì cả.
+Lệnh `true` trong C Shell (csh) được sử dụng để trả về giá trị đúng (0). Nó thường được sử dụng trong các kịch bản hoặc lệnh để tạo ra một điều kiện đúng mà không thực hiện bất kỳ hành động nào khác.
 
 ## Cú pháp
 Cú pháp cơ bản của lệnh `true` như sau:
@@ -9,34 +9,37 @@ Cú pháp cơ bản của lệnh `true` như sau:
 true [options] [arguments]
 ```
 
-## Tùy chọn phổ biến
-- `-h`, `--help`: Hiển thị thông tin trợ giúp về lệnh `true`.
-- `--version`: Hiển thị phiên bản của lệnh `true`.
+## Các tùy chọn phổ biến
+- `-h`: Hiển thị thông tin trợ giúp về lệnh.
+- `--version`: Hiển thị phiên bản của lệnh.
 
 ## Ví dụ phổ biến
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `true`:
 
-1. **Sử dụng `true` trong một kịch bản**:
+1. **Sử dụng true trong một vòng lặp vô hạn:**
    ```csh
-   if (condition) then
+   while (1)
        true
-   else
-       echo "Condition is false"
-   endif
-   ```
-
-2. **Kết hợp với lệnh `&&`**:
-   ```csh
-   command1 && true
-   ```
-
-3. **Sử dụng trong vòng lặp**:
-   ```csh
-   while (true) 
-       echo "This will run indefinitely"
    end
    ```
 
+2. **Kết hợp với lệnh khác để kiểm tra điều kiện:**
+   ```csh
+   if ( -e myfile.txt ) then
+       true
+   else
+       echo "File không tồn tại."
+   endif
+   ```
+
+3. **Sử dụng true trong một kịch bản:**
+   ```csh
+   #!/bin/csh
+   true
+   echo "Kịch bản đã chạy thành công."
+   ```
+
 ## Mẹo
-- Sử dụng `true` để tạo ra các lệnh không làm gì cả, giúp bạn kiểm tra các điều kiện mà không làm gián đoạn quá trình.
-- Kết hợp `true` với các lệnh khác trong kịch bản để đảm bảo rằng các lệnh trước đó đã thành công trước khi tiếp tục thực hiện lệnh tiếp theo.
+- Sử dụng lệnh `true` để tạo ra các điều kiện luôn đúng trong các kịch bản phức tạp.
+- Kết hợp với các lệnh khác để kiểm tra điều kiện mà không cần thực hiện hành động nào khác.
+- Lưu ý rằng `true` không có tác dụng phụ nào, vì vậy nó rất an toàn để sử dụng trong các kịch bản tự động.

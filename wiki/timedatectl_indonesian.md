@@ -1,7 +1,7 @@
 # [Sistem Operasi] C Shell (csh) timedatectl: Mengelola waktu dan tanggal sistem
 
 ## Overview
-Perintah `timedatectl` digunakan untuk mengelola pengaturan waktu dan tanggal pada sistem Linux. Dengan perintah ini, pengguna dapat melihat status waktu saat ini, mengubah zona waktu, dan mengatur waktu sistem.
+Perintah `timedatectl` digunakan untuk mengelola pengaturan waktu dan tanggal pada sistem berbasis Linux. Dengan perintah ini, pengguna dapat melihat dan mengubah waktu lokal, zona waktu, serta status sinkronisasi waktu.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `timedatectl`:
@@ -12,40 +12,34 @@ timedatectl [options] [arguments]
 
 ## Common Options
 - `status`: Menampilkan status waktu dan tanggal saat ini.
-- `set-time`: Mengatur waktu sistem ke waktu yang ditentukan.
-- `set-timezone`: Mengubah zona waktu sistem.
-- `list-timezones`: Menampilkan daftar zona waktu yang tersedia.
-- `set-ntp`: Mengaktifkan atau menonaktifkan sinkronisasi waktu melalui NTP.
+- `set-time`: Mengatur waktu dan tanggal sistem.
+- `set-timezone`: Mengatur zona waktu sistem.
+- `set-ntp`: Mengaktifkan atau menonaktifkan sinkronisasi waktu melalui NTP (Network Time Protocol).
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan `timedatectl`:
+Berikut adalah beberapa contoh penggunaan perintah `timedatectl`:
 
 1. **Menampilkan status waktu dan tanggal saat ini:**
    ```csh
    timedatectl status
    ```
 
-2. **Mengatur waktu sistem ke 15 Maret 2023, pukul 10:30:00:**
+2. **Mengatur waktu dan tanggal sistem:**
    ```csh
-   timedatectl set-time '2023-03-15 10:30:00'
+   timedatectl set-time '2023-10-01 12:00:00'
    ```
 
-3. **Mengubah zona waktu ke Asia/Jakarta:**
+3. **Mengatur zona waktu sistem:**
    ```csh
    timedatectl set-timezone Asia/Jakarta
    ```
 
-4. **Menampilkan daftar zona waktu yang tersedia:**
-   ```csh
-   timedatectl list-timezones
-   ```
-
-5. **Mengaktifkan sinkronisasi waktu NTP:**
+4. **Mengaktifkan sinkronisasi waktu NTP:**
    ```csh
    timedatectl set-ntp true
    ```
 
 ## Tips
-- Pastikan Anda memiliki hak akses yang cukup (misalnya, sebagai pengguna root) untuk mengubah pengaturan waktu dan tanggal.
-- Gunakan `timedatectl status` secara berkala untuk memeriksa apakah waktu sistem Anda sudah benar.
-- Jika menggunakan server, pertimbangkan untuk mengaktifkan NTP agar waktu tetap sinkron dengan server waktu global.
+- Pastikan untuk menjalankan perintah `timedatectl` dengan hak akses yang sesuai, biasanya sebagai pengguna root.
+- Selalu periksa zona waktu yang tersedia dengan perintah `timedatectl list-timezones` sebelum mengatur zona waktu.
+- Gunakan perintah `timedatectl` secara berkala untuk memastikan waktu sistem Anda akurat, terutama pada server yang memerlukan waktu yang tepat.

@@ -1,12 +1,12 @@
 # [Sistem Operasi] C Shell (csh) switch: Mengubah nilai variabel
 
 ## Overview
-Perintah `switch` dalam C Shell (csh) digunakan untuk melakukan pemilihan berdasarkan nilai dari suatu variabel. Ini mirip dengan pernyataan `switch` dalam bahasa pemrograman lain, yang memungkinkan pengguna untuk mengeksekusi blok kode yang berbeda berdasarkan nilai yang diberikan.
+Perintah `switch` dalam C Shell (csh) digunakan untuk membuat struktur pengendalian alur program yang memungkinkan pengguna untuk memilih antara beberapa opsi berdasarkan nilai dari suatu ekspresi. Ini mirip dengan pernyataan `switch` di bahasa pemrograman lain.
 
 ## Usage
 Berikut adalah sintaks dasar untuk perintah `switch`:
 
-```
+```csh
 switch (ekspresi)
     case nilai1:
         perintah1
@@ -20,28 +20,15 @@ endsw
 ```
 
 ## Common Options
-- `case nilai:`: Menentukan nilai yang akan diperiksa.
-- `breaksw`: Menghentikan eksekusi dari blok `switch` saat ini.
-- `default:`: Menentukan perintah yang dijalankan jika tidak ada nilai yang cocok.
+Perintah `switch` tidak memiliki banyak opsi, tetapi beberapa elemen penting yang perlu diperhatikan adalah:
+- `case`: Menentukan nilai yang akan dibandingkan dengan ekspresi.
+- `breaksw`: Menghentikan eksekusi lebih lanjut dari blok `switch` setelah menemukan kecocokan.
+- `default`: Menyediakan perintah yang akan dijalankan jika tidak ada kecocokan dengan nilai yang diberikan.
 
 ## Common Examples
+Berikut adalah beberapa contoh penggunaan perintah `switch`:
 
-### Contoh 1: Pemilihan Berdasarkan Bulan
-```csh
-set bulan = "Januari"
-switch ($bulan)
-    case "Januari":
-        echo "Ini bulan pertama."
-        breaksw
-    case "Februari":
-        echo "Ini bulan kedua."
-        breaksw
-    default:
-        echo "Bulan tidak dikenali."
-endsw
-```
-
-### Contoh 2: Menentukan Hari
+### Contoh 1: Menentukan hari dalam seminggu
 ```csh
 set hari = "Senin"
 switch ($hari)
@@ -56,22 +43,40 @@ switch ($hari)
 endsw
 ```
 
-### Contoh 3: Menggunakan Default
+### Contoh 2: Menentukan jenis buah
 ```csh
-set warna = "Merah"
-switch ($warna)
-    case "Hijau":
-        echo "Warna adalah Hijau."
+set buah = "Apel"
+switch ($buah)
+    case "Apel":
+        echo "Buah ini adalah Apel."
         breaksw
-    case "Biru":
-        echo "Warna adalah Biru."
+    case "Jeruk":
+        echo "Buah ini adalah Jeruk."
+        breaksw
+    case "Pisang":
+        echo "Buah ini adalah Pisang."
         breaksw
     default:
-        echo "Warna tidak dikenali, menggunakan default."
+        echo "Buah tidak dikenali."
+endsw
+```
+
+### Contoh 3: Menentukan status
+```csh
+set status = "aktif"
+switch ($status)
+    case "aktif":
+        echo "Status: Aktif."
+        breaksw
+    case "non-aktif":
+        echo "Status: Non-Aktif."
+        breaksw
+    default:
+        echo "Status tidak dikenali."
 endsw
 ```
 
 ## Tips
-- Selalu gunakan `breaksw` setelah setiap case untuk mencegah eksekusi berlanjut ke case berikutnya.
-- Gunakan `default` untuk menangani nilai yang tidak terduga.
-- Pastikan untuk mengelompokkan case yang memiliki hasil yang sama untuk mengurangi duplikasi kode.
+- Pastikan untuk selalu menggunakan `breaksw` setelah setiap `case` untuk menghindari eksekusi pernyataan di `case` berikutnya.
+- Gunakan `default` untuk menangani kasus yang tidak terduga, sehingga program Anda lebih robust.
+- Struktur `switch` dapat membantu membuat kode lebih bersih dan lebih mudah dibaca dibandingkan dengan penggunaan banyak `if` dan `else`.

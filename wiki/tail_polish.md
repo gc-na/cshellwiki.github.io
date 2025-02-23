@@ -1,45 +1,45 @@
-# [Linux] C Shell (csh) tail użycie: wyświetlanie końca plików
+# [Linux] C Shell (csh) tail użycie: Wyświetlanie końcowych linii pliku
 
-## Przegląd
-Polecenie `tail` służy do wyświetlania ostatnich linii pliku tekstowego. Jest to przydatne narzędzie do monitorowania logów lub plików, które są regularnie aktualizowane.
+## Overview
+Polecenie `tail` służy do wyświetlania ostatnich linii pliku tekstowego. Jest to przydatne narzędzie do monitorowania logów lub plików, które są często aktualizowane.
 
-## Użycie
+## Usage
 Podstawowa składnia polecenia `tail` jest następująca:
 
 ```csh
-tail [opcje] [argumenty]
+tail [options] [arguments]
 ```
 
-## Częste opcje
-- `-n [liczba]`: Wyświetla ostatnie `liczba` linii pliku.
-- `-f`: Śledzi zmiany w pliku w czasie rzeczywistym, wyświetlając nowe linie, gdy są dodawane.
-- `-c [liczba]`: Wyświetla ostatnie `liczba` bajtów pliku.
+## Common Options
+- `-n <number>`: Określa liczbę linii do wyświetlenia. Domyślnie wyświetlane jest 10 ostatnich linii.
+- `-f`: Śledzi plik w czasie rzeczywistym, wyświetlając nowe linie, gdy są dodawane.
+- `-c <number>`: Wyświetla określoną liczbę bajtów z końca pliku.
 
-## Przykłady
-1. Wyświetlenie ostatnich 10 linii pliku `log.txt`:
-   ```csh
-   tail log.txt
-   ```
+## Common Examples
+- Wyświetlenie ostatnich 10 linii pliku `log.txt`:
+  ```csh
+  tail log.txt
+  ```
 
-2. Wyświetlenie ostatnich 20 linii pliku `data.txt`:
-   ```csh
-   tail -n 20 data.txt
-   ```
+- Wyświetlenie ostatnich 20 linii pliku `log.txt`:
+  ```csh
+  tail -n 20 log.txt
+  ```
 
-3. Śledzenie pliku `server.log` w czasie rzeczywistym:
-   ```csh
-   tail -f server.log
-   ```
+- Śledzenie pliku `log.txt` w czasie rzeczywistym:
+  ```csh
+  tail -f log.txt
+  ```
 
-4. Wyświetlenie ostatnich 50 bajtów pliku `output.txt`:
-   ```csh
-   tail -c 50 output.txt
-   ```
+- Wyświetlenie ostatnich 50 bajtów pliku `data.txt`:
+  ```csh
+  tail -c 50 data.txt
+  ```
 
-## Wskazówki
-- Używaj opcji `-f`, gdy chcesz monitorować plik logów na żywo, co jest szczególnie przydatne w przypadku aplikacji serwerowych.
+## Tips
+- Używaj opcji `-f`, aby monitorować pliki logów w czasie rzeczywistym, co jest szczególnie przydatne podczas debugowania aplikacji.
 - Możesz łączyć `tail` z innymi poleceniami, takimi jak `grep`, aby filtrować wyniki. Na przykład:
   ```csh
-  tail -f server.log | grep "ERROR"
+  tail -f log.txt | grep "ERROR"
   ```
-- Pamiętaj, że `tail` domyślnie wyświetla 10 ostatnich linii, co może być wystarczające w wielu przypadkach.
+- Pamiętaj, że `tail` działa najlepiej z plikami tekstowymi; używanie go z plikami binarnymi może prowadzić do nieprzewidywalnych wyników.

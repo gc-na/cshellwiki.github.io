@@ -1,27 +1,29 @@
 # [Linux] C Shell (csh) ps użycie: wyświetlanie informacji o procesach
 
-## Przegląd
-Polecenie `ps` w C Shell (csh) służy do wyświetlania informacji o bieżących procesach działających w systemie. Umożliwia użytkownikom monitorowanie aktywności procesów oraz uzyskiwanie szczegółowych danych na ich temat.
+## Overview
+Polecenie `ps` w C Shell (csh) służy do wyświetlania informacji o bieżących procesach działających w systemie. Umożliwia użytkownikowi monitorowanie aktywności systemu oraz zarządzanie procesami.
 
-## Użycie
+## Usage
 Podstawowa składnia polecenia `ps` jest następująca:
+
 ```
 ps [opcje] [argumenty]
 ```
 
-## Częste opcje
-- `-e` lub `-A`: wyświetla wszystkie procesy.
-- `-f`: pokazuje pełny format, w tym informacje o rodzicach procesów.
-- `-u [użytkownik]`: wyświetla procesy dla określonego użytkownika.
-- `-p [PID]`: pokazuje informacje o procesie o podanym identyfikatorze PID.
+## Common Options
+- `-e` lub `-A`: Wyświetla wszystkie procesy.
+- `-f`: Wyświetla pełne informacje o procesach, w tym identyfikatory rodziców.
+- `-u [użytkownik]`: Wyświetla procesy dla określonego użytkownika.
+- `-l`: Wyświetla szczegółowy format listy procesów.
+- `-p [PID]`: Wyświetla informacje o procesie o określonym identyfikatorze (PID).
 
-## Przykłady
+## Common Examples
 1. Wyświetlenie wszystkich procesów:
    ```csh
    ps -e
    ```
 
-2. Wyświetlenie procesów w pełnym formacie:
+2. Wyświetlenie pełnych informacji o procesach:
    ```csh
    ps -f
    ```
@@ -31,12 +33,17 @@ ps [opcje] [argumenty]
    ps -u username
    ```
 
-4. Wyświetlenie informacji o konkretnym procesie:
+4. Wyświetlenie szczegółowego formatu listy procesów:
+   ```csh
+   ps -l
+   ```
+
+5. Wyświetlenie informacji o konkretnym procesie:
    ```csh
    ps -p 1234
    ```
 
-## Wskazówki
-- Używaj opcji `-f`, aby uzyskać bardziej szczegółowe informacje o procesach, co może być pomocne w diagnozowaniu problemów.
-- Możesz łączyć różne opcje, aby uzyskać bardziej precyzyjne wyniki, na przykład `ps -ef` wyświetli wszystkie procesy w pełnym formacie.
-- Regularne monitorowanie procesów za pomocą `ps` może pomóc w zarządzaniu zasobami systemowymi i identyfikacji procesów, które mogą powodować problemy.
+## Tips
+- Używaj opcji `-e` w połączeniu z `-f`, aby uzyskać pełny widok wszystkich procesów w systemie.
+- Możesz łączyć różne opcje, aby dostosować wyjście do swoich potrzeb, na przykład `ps -ef | grep program`, aby znaleźć procesy związane z określonym programem.
+- Regularne monitorowanie procesów za pomocą `ps` może pomóc w identyfikacji problemów z wydajnością systemu.

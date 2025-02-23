@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) w: Zeigt angemeldete Benutzer und ihre Aktivitäten an
+# [Linux] C Shell (csh) w Verwendung: Zeigt angemeldete Benutzer und deren Aktivitäten an
 
 ## Übersicht
-Der Befehl `w` zeigt eine Liste der aktuell angemeldeten Benutzer auf dem System sowie deren Aktivitäten an. Dies umfasst Informationen wie die Benutzer-ID, die Zeit der Anmeldung, die aktive Shell und die von den Benutzern ausgeführten Prozesse.
+Der Befehl `w` zeigt eine Liste der aktuell angemeldeten Benutzer sowie deren Aktivitäten auf dem System an. Dies umfasst Informationen wie die Benutzername, die Terminal-Nummer, die Anmeldezeit und die aktuelle Aktivität.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
@@ -12,33 +12,33 @@ w [Optionen] [Argumente]
 
 ## Häufige Optionen
 - `-h`: Unterdrückt die Anzeige der Kopfzeile.
-- `-s`: Zeigt eine kurze Ausgabe an, ohne die Informationen über die Benutzerprozesse.
-- `-u`: Zeigt die Benutzer-ID an, die standardmäßig nicht angezeigt wird.
+- `-s`: Zeigt die Ausgabe in einer kompakten Form an, ohne zusätzliche Informationen.
+- `-u`: Zeigt die Benutzer-ID (UID) der angemeldeten Benutzer an.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung des Befehls `w`:
+Hier sind einige praktische Beispiele für die Verwendung des `w`-Befehls:
 
-1. **Einfacher Befehl ohne Optionen:**
+1. **Einfacher Aufruf**:
    ```csh
    w
    ```
 
-2. **Kurze Ausgabe ohne Kopfzeile:**
+2. **Mit Unterdrückung der Kopfzeile**:
    ```csh
-   w -hs
+   w -h
    ```
 
-3. **Anzeige der Benutzer-ID:**
+3. **Kompakte Ausgabe**:
+   ```csh
+   w -s
+   ```
+
+4. **Anzeige der Benutzer-ID**:
    ```csh
    w -u
    ```
 
-4. **Nur aktive Benutzer anzeigen:**
-   ```csh
-   w | grep 'pts'
-   ```
-
 ## Tipps
-- Verwenden Sie `w` regelmäßig, um einen Überblick über die Systemnutzung zu erhalten.
-- Kombinieren Sie `w` mit anderen Befehlen wie `grep`, um spezifische Benutzer oder Aktivitäten zu filtern.
-- Beachten Sie, dass die Ausgabe von `w` je nach Benutzerrechten variieren kann.
+- Verwenden Sie `w` regelmäßig, um einen Überblick über die Systemaktivitäten und die angemeldeten Benutzer zu erhalten.
+- Kombinieren Sie `w` mit anderen Befehlen wie `grep`, um spezifische Benutzer zu filtern.
+- Achten Sie darauf, dass die Ausgabe von `w` je nach Systemkonfiguration variieren kann.

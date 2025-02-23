@@ -1,45 +1,45 @@
-# [Linux] C Shell (csh) logrotate Kullanımı: Log dosyalarını döndürme aracı
+# [Linux] C Shell (csh) logrotate Kullanımı: Log dosyalarını döndürme
 
-## Genel Bakış
-logrotate, sistem yöneticilerinin log dosyalarını yönetmelerine yardımcı olan bir komuttur. Bu komut, log dosyalarının boyutunu kontrol altında tutmak, belirli bir zaman diliminde eski logları silmek veya arşivlemek için kullanılır. Böylece disk alanı tasarrufu sağlanır ve log dosyalarının yönetimi kolaylaşır.
+## Overview
+logrotate, sistemdeki log dosyalarının boyutunu yönetmek ve düzenli olarak döndürmek için kullanılan bir komut dosyasıdır. Bu komut, log dosyalarının belirli bir boyuta ulaştığında veya belirli bir süre geçtiğinde otomatik olarak arşivlenmesini ve yeni bir log dosyası oluşturulmasını sağlar.
 
-## Kullanım
+## Usage
 Temel sözdizimi aşağıdaki gibidir:
 
-```shell
-logrotate [seçenekler] [argümanlar]
+```csh
+logrotate [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-f`: Zorla döndürme işlemi yapar, mevcut ayarları göz ardı eder.
+## Common Options
+- `-f`: Zorla döndürme işlemi yapar, mevcut ayarları dikkate almaz.
 - `-s`: Durum dosyasının konumunu belirtir.
-- `-v`: Ayrıntılı çıktı verir, işlemler hakkında daha fazla bilgi sağlar.
-- `-d`: Gerçek bir döndürme işlemi yapmadan ne olacağını gösterir (simülasyon).
+- `-d`: Simülasyon modunda çalışır, gerçek döndürme işlemi yapmaz.
+- `-v`: Ayrıntılı çıktı sağlar, işlem sırasında neler olduğunu gösterir.
 
-## Yaygın Örnekler
-Aşağıda logrotate komutunun bazı pratik örnekleri verilmiştir:
+## Common Examples
+Aşağıda logrotate komutunun bazı yaygın kullanımları bulunmaktadır:
 
-### Örnek 1: Varsayılan ayarlarla log döndürme
-```shell
-logrotate /etc/logrotate.conf
-```
+1. **Varsayılan ayarlarla log dosyalarını döndürme:**
+   ```csh
+   logrotate /etc/logrotate.conf
+   ```
 
-### Örnek 2: Zorla döndürme işlemi
-```shell
-logrotate -f /etc/logrotate.conf
-```
+2. **Simülasyon modunda döndürme işlemi:**
+   ```csh
+   logrotate -d /etc/logrotate.conf
+   ```
 
-### Örnek 3: Ayrıntılı çıktı ile döndürme
-```shell
-logrotate -v /etc/logrotate.conf
-```
+3. **Zorla döndürme işlemi:**
+   ```csh
+   logrotate -f /etc/logrotate.conf
+   ```
 
-### Örnek 4: Durum dosyası belirterek döndürme
-```shell
-logrotate -s /var/lib/logrotate/status /etc/logrotate.conf
-```
+4. **Ayrıntılı çıktı ile döndürme:**
+   ```csh
+   logrotate -v /etc/logrotate.conf
+   ```
 
-## İpuçları
-- logrotate yapılandırma dosyalarınızı düzenli olarak gözden geçirin ve güncel tutun.
-- Log dosyalarınızın boyutunu izleyin, böylece döndürme ayarlarını gerektiğinde güncelleyebilirsiniz.
-- Test modunu kullanarak (`-d` seçeneği) değişikliklerinizi uygulamadan önce simüle edin. Bu, olası hataları önlemenize yardımcı olur.
+## Tips
+- Logrotate yapılandırma dosyanızı düzenli olarak kontrol edin ve gerektiğinde güncelleyin.
+- Log dosyalarının boyutunu ve döndürme sıklığını ihtiyacınıza göre ayarlayın.
+- Simülasyon modunu kullanarak değişikliklerinizi test edin, böylece hatalardan kaçınabilirsiniz.

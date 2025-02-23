@@ -1,43 +1,43 @@
 # [Linux] C Shell (csh) sync użycie: synchronizacja danych na dysku
 
 ## Overview
-Polecenie `sync` w C Shell (csh) jest używane do synchronizacji danych w pamięci podręcznej z systemem plików. Głównym celem tego polecenia jest zapewnienie, że wszystkie dane zapisane w pamięci podręcznej są zapisane na dysku, co może pomóc w zapobieganiu utracie danych w przypadku awarii systemu.
+Polecenie `sync` w C Shell (csh) służy do synchronizacji danych w pamięci podręcznej z dyskiem. Głównym celem tego polecenia jest zapewnienie, że wszystkie dane zapisane w pamięci są rzeczywiście zapisane na nośniku, co jest szczególnie ważne przed wyłączeniem systemu lub odłączeniem urządzeń pamięci masowej.
 
 ## Usage
 Podstawowa składnia polecenia `sync` jest następująca:
 
-```csh
+```
 sync [opcje] [argumenty]
 ```
 
 ## Common Options
-Polecenie `sync` nie ma wielu opcji, ale oto kilka przydatnych informacji:
+Polecenie `sync` nie ma wielu opcji, ale oto kilka, które mogą być przydatne:
 
-- `-f` - wymusza synchronizację, nawet jeśli nie ma zmian w pamięci podręcznej.
-- `-d` - synchronizuje tylko dane, które zostały zmodyfikowane.
+- `-f` : Wymusza synchronizację dla określonego systemu plików.
+- `-d` : Synchronizuje tylko dane, a nie metadane.
 
 ## Common Examples
 Oto kilka praktycznych przykładów użycia polecenia `sync`:
 
 1. **Podstawowe użycie**:
-   Aby zsynchronizować wszystkie dane, wystarczy wpisać:
+   Aby zsynchronizować wszystkie dane w pamięci z dyskiem, wystarczy wpisać:
    ```csh
    sync
    ```
 
-2. **Wymuszenie synchronizacji**:
-   Aby wymusić synchronizację, nawet jeśli nie ma zmian:
+2. **Wymuszenie synchronizacji dla określonego systemu plików**:
+   Jeśli chcesz wymusić synchronizację dla konkretnego systemu plików, użyj opcji `-f`:
    ```csh
-   sync -f
+   sync -f /mnt/moj_system_plikow
    ```
 
-3. **Synchronizacja danych zmodyfikowanych**:
-   Aby zsynchronizować tylko zmodyfikowane dane:
+3. **Synchronizacja danych tylko**:
+   Aby zsynchronizować tylko dane, a nie metadane, użyj opcji `-d`:
    ```csh
    sync -d
    ```
 
 ## Tips
-- Używaj polecenia `sync` przed wyłączeniem systemu lub odłączeniem nośnika danych, aby upewnić się, że wszystkie dane zostały zapisane.
-- Regularne używanie `sync` może pomóc w minimalizowaniu ryzyka utraty danych w przypadku awarii zasilania.
-- W przypadku pracy z dużymi plikami lub bazami danych, rozważ użycie `sync` po każdej istotnej operacji zapisu.
+- Zawsze używaj polecenia `sync` przed wyłączeniem systemu lub odłączeniem urządzenia pamięci masowej, aby uniknąć utraty danych.
+- Możesz dodać polecenie `sync` do skryptów, które wykonują operacje na plikach, aby upewnić się, że wszystkie zmiany są zapisane.
+- Regularne używanie `sync` w systemach z dużą ilością operacji zapisu może poprawić integralność danych.

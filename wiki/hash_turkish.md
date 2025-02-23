@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) hash Kullanımı: Komut geçmişini yönetme
+# [Linux] C Shell (csh) hash Kullanımı: Komutların yolunu saklar
 
 ## Overview
-`hash` komutu, C Shell (csh) ortamında daha önce kullanılan komutların ve bunların yol bilgilerini saklar. Bu, kullanıcıların daha hızlı bir şekilde daha önce çalıştırdıkları komutları tekrar kullanmalarını sağlar.
+`hash` komutu, C Shell (csh) ortamında daha önce çalıştırılmış komutların dosya yollarını saklar. Bu, aynı komutları tekrar tekrar çalıştırdığınızda, shell'in bu komutların yerlerini hızlıca bulmasını sağlar ve böylece performansı artırır.
 
 ## Usage
 Temel sözdizimi aşağıdaki gibidir:
@@ -11,34 +11,34 @@ hash [options] [arguments]
 ```
 
 ## Common Options
-- `-c`: Tüm hash tablosunu temizler.
-- `-r`: Hash tablosunu sıfırlar ve mevcut komut yollarını yeniden tarar.
-- `-l`: Hash tablosundaki mevcut komutların listesini gösterir.
+- `-r`: Tüm saklanan yolları sıfırlar. Bu, hash tablosunu temizler ve tüm komutların yollarını yeniden öğrenmesini sağlar.
+- `-p`: Belirli bir komut için yolu günceller. Bu seçenek, belirtilen komutun mevcut yolunu hash tablosuna ekler.
 
 ## Common Examples
 Aşağıda `hash` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. **Hash Tablosunu Görüntüleme**
-   ```csh
-   hash
-   ```
+### 1. Hash Tablosunu Görüntüleme
+Hash tablosundaki tüm saklanan komutları görüntülemek için:
 
-2. **Hash Tablosunu Temizleme**
-   ```csh
-   hash -c
-   ```
+```csh
+hash
+```
 
-3. **Hash Tablosunu Sıfırlama**
-   ```csh
-   hash -r
-   ```
+### 2. Belirli Bir Komutun Yolunu Güncelleme
+`ls` komutunun yolunu güncellemek için:
 
-4. **Mevcut Komutların Listesini Gösterme**
-   ```csh
-   hash -l
-   ```
+```csh
+hash -p ls
+```
+
+### 3. Hash Tablosunu Sıfırlama
+Tüm saklanan yolları sıfırlamak için:
+
+```csh
+hash -r
+```
 
 ## Tips
-- `hash` komutunu kullanarak sık kullandığınız komutların yol bilgilerini saklayarak, komutları daha hızlı çalıştırabilirsiniz.
-- Eğer bir komutun yolunu değiştirdiyseniz, hash tablosunu sıfırlamak için `hash -r` komutunu kullanmayı unutmayın.
-- Komut geçmişinizi düzenli olarak kontrol etmek, hangi komutların kaydedildiğini görmek için faydalıdır.
+- `hash` komutunu sık sık kullanıyorsanız, belirli komutların yollarını güncelleyerek performansı artırabilirsiniz.
+- Yeni bir yazılım yükledikten sonra, `hash -r` komutunu kullanarak eski yolların güncellenmesini sağlayabilirsiniz.
+- Komutları daha hızlı çalıştırmak için, sık kullandığınız komutların yollarını hash tablosuna eklemeyi unutmayın.

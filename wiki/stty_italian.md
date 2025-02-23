@@ -1,51 +1,53 @@
 # [Linux] C Shell (csh) stty: Configurare le impostazioni del terminale
 
 ## Overview
-Il comando `stty` è utilizzato per modificare e visualizzare le impostazioni del terminale in C Shell. Permette di configurare vari parametri, come la gestione dei caratteri e le opzioni di input/output, migliorando l'interazione con il terminale.
+Il comando `stty` è utilizzato per modificare e visualizzare le impostazioni del terminale. Consente di configurare vari aspetti del terminale, come il comportamento della tastiera e le opzioni di input/output.
 
 ## Usage
 La sintassi di base del comando `stty` è la seguente:
 
 ```csh
-stty [options] [arguments]
+stty [opzioni] [argomenti]
 ```
 
 ## Common Options
+Ecco alcune opzioni comuni per `stty` con brevi spiegazioni:
+
 - `-a`: Mostra tutte le impostazioni correnti del terminale.
 - `-g`: Restituisce le impostazioni correnti in un formato che può essere riutilizzato.
-- `erase <char>`: Imposta il carattere di cancellazione.
-- `kill <char>`: Imposta il carattere di terminazione della riga.
-- `intr <char>`: Imposta il carattere di interruzione.
+- `erase <carattere>`: Imposta il carattere di cancellazione (default è il backspace).
+- `kill <carattere>`: Imposta il carattere di cancellazione della linea (default è Ctrl+U).
+- `intr <carattere>`: Imposta il carattere di interruzione (default è Ctrl+C).
 
 ## Common Examples
-Ecco alcuni esempi pratici dell'uso del comando `stty`:
+Ecco alcuni esempi pratici di utilizzo del comando `stty`:
 
-1. **Visualizzare tutte le impostazioni correnti del terminale:**
+1. **Visualizzare tutte le impostazioni del terminale:**
    ```csh
    stty -a
    ```
 
-2. **Impostare il carattere di cancellazione su `^H` (Backspace):**
+2. **Impostare il carattere di cancellazione su `^H` (backspace):**
    ```csh
    stty erase ^H
    ```
 
-3. **Impostare il carattere di terminazione della riga su `^U`:**
-   ```csh
-   stty kill ^U
-   ```
-
-4. **Impostare il carattere di interruzione su `^C`:**
+3. **Impostare il carattere di interruzione su `^C`:**
    ```csh
    stty intr ^C
    ```
 
-5. **Salvare le impostazioni correnti in una variabile:**
+4. **Salvare le impostazioni correnti in una variabile:**
    ```csh
    set settings = `stty -g`
    ```
 
+5. **Ripristinare le impostazioni da una variabile:**
+   ```csh
+   stty $settings
+   ```
+
 ## Tips
-- Utilizza `stty -a` per avere una panoramica completa delle impostazioni correnti prima di apportare modifiche.
+- È utile eseguire `stty -a` per vedere le impostazioni correnti prima di apportare modifiche.
 - Fai attenzione quando cambi i caratteri di controllo, poiché potrebbero influenzare il comportamento del terminale.
-- Puoi ripristinare le impostazioni precedenti utilizzando il valore salvato con `stty -g`.
+- Puoi salvare le impostazioni del terminale in un file di configurazione per ripristinarle facilmente in futuro.

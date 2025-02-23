@@ -1,45 +1,44 @@
 # [Linux] C Shell (csh) mtr Kullanımı: Ağ bağlantılarını izleme aracı
 
 ## Genel Bakış
-mtr (My Traceroute), ağ bağlantılarını izlemek ve analiz etmek için kullanılan bir araçtır. Hem ping hem de traceroute işlevlerini bir araya getirerek, bir hedefe olan bağlantının kalitesini ve yolunu görsel olarak sunar.
+mtr (My Traceroute), ağ bağlantılarını izlemek ve analiz etmek için kullanılan bir araçtır. Hem ping hem de traceroute işlevselliğini birleştirerek, hedefe giden yol boyunca her bir ağ cihazının performansını gösterir.
 
 ## Kullanım
 Temel komut yapısı aşağıdaki gibidir:
-
 ```csh
 mtr [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-r`: Rapor modunda çalışır ve sonuçları daha düzenli bir formatta gösterir.
-- `-c [sayı]`: Belirtilen sayıda paket gönderir ve ardından durur.
-- `-i [saniye]`: Paketler arasında bekleme süresini ayarlar.
-- `-p`: Port numarasını belirtir; varsayılan olarak 33434 kullanılır.
+- `-r`: Rapor modunu etkinleştirir; sonuçları bir rapor formatında gösterir.
+- `-c [sayı]`: Belirtilen sayıda deneme yapar ve ardından çıkış yapar.
+- `-i [saniye]`: Ping aralığını saniye cinsinden ayarlar.
+- `-p`: Port numarasını belirtmek için kullanılır.
 
 ## Yaygın Örnekler
-Aşağıda mtr komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+Aşağıda mtr komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. Basit bir mtr komutu ile bir hedefe bağlanmak:
+1. Basit bir mtr komutu ile bir hedefe bağlantıyı izleme:
    ```csh
    mtr example.com
    ```
 
-2. Rapor modunda çalıştırmak:
+2. Rapor modunda belirli bir hedefe bağlantıyı izleme:
    ```csh
    mtr -r example.com
    ```
 
-3. Belirli bir sayıda paket göndererek test yapmak:
+3. 10 ping denemesi yaparak bir hedefi izleme:
    ```csh
    mtr -c 10 example.com
    ```
 
-4. Paketler arasında 1 saniye bekleyerek izleme yapmak:
+4. Ping aralığını 2 saniye olarak ayarlayarak bir hedefi izleme:
    ```csh
-   mtr -i 1 example.com
+   mtr -i 2 example.com
    ```
 
 ## İpuçları
-- mtr komutunu çalıştırmadan önce ağ bağlantınızın aktif olduğundan emin olun.
-- Sonuçları daha iyi analiz edebilmek için `-r` seçeneğini kullanarak rapor modunda çalıştırmayı deneyin.
-- Ağ sorunlarını tespit ederken, farklı hedeflerle test yaparak karşılaştırmalar yapabilirsiniz.
+- Ağ sorunlarını teşhis etmek için mtr komutunu kullanarak, hangi ağ cihazının sorun çıkardığını hızlıca belirleyebilirsiniz.
+- Uzun süreli izleme yapmak istiyorsanız, `-c` seçeneği ile belirli bir deneme sayısı belirleyin.
+- Rapor modunu kullanarak, sonuçları daha okunabilir bir formatta elde edebilirsiniz.

@@ -1,21 +1,21 @@
 # [Linux] C Shell (csh) dpkg Verwendung: Paketverwaltung in Debian-basierten Systemen
 
 ## Übersicht
-Der `dpkg`-Befehl ist ein grundlegendes Werkzeug zur Verwaltung von Debian-Paketen auf Debian-basierten Systemen wie Ubuntu. Mit `dpkg` können Benutzer Pakete installieren, entfernen und Informationen über installierte Pakete abrufen.
+Der Befehl `dpkg` ist ein grundlegendes Werkzeug zur Verwaltung von Softwarepaketen in Debian-basierten Linux-Distributionen. Mit `dpkg` können Benutzer Pakete installieren, entfernen und Informationen über installierte Pakete abrufen.
 
 ## Verwendung
-Die grundlegende Syntax des `dpkg`-Befehls lautet:
+Die grundlegende Syntax des Befehls lautet:
 
 ```bash
 dpkg [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-i`: Installiert ein Paket.
-- `-r`: Entfernt ein Paket.
-- `-l`: Listet alle installierten Pakete auf.
-- `-s`: Zeigt den Status eines bestimmten Pakets an.
-- `-L`: Listet die Dateien eines installierten Pakets auf.
+- `-i`, `--install`: Installiert ein Paket.
+- `-r`, `--remove`: Entfernt ein Paket.
+- `-l`, `--list`: Listet alle installierten Pakete auf.
+- `-s`, `--status`: Zeigt den Status eines bestimmten Pakets an.
+- `-c`, `--contents`: Zeigt den Inhalt eines Pakets an.
 
 ## Häufige Beispiele
 Hier sind einige praktische Beispiele für die Verwendung von `dpkg`:
@@ -35,7 +35,7 @@ dpkg -r paketname
 ```
 
 ### Installierte Pakete auflisten
-Um alle installierten Pakete aufzulisten, verwenden Sie:
+Um alle installierten Pakete aufzulisten, geben Sie ein:
 
 ```bash
 dpkg -l
@@ -48,14 +48,14 @@ Um den Status eines bestimmten Pakets zu überprüfen, verwenden Sie:
 dpkg -s paketname
 ```
 
-### Dateien eines installierten Pakets auflisten
-Um die Dateien eines installierten Pakets anzuzeigen, verwenden Sie:
+### Inhalt eines Pakets anzeigen
+Um den Inhalt eines Pakets anzuzeigen, verwenden Sie:
 
 ```bash
-dpkg -L paketname
+dpkg -c paketname.deb
 ```
 
 ## Tipps
-- Stellen Sie sicher, dass Sie über die erforderlichen Berechtigungen verfügen, um Pakete zu installieren oder zu entfernen (verwenden Sie `sudo`, falls nötig).
-- Verwenden Sie `dpkg --get-selections`, um eine Liste aller installierten Pakete zu exportieren, die später wiederhergestellt werden kann.
-- Bei Problemen mit Abhängigkeiten kann der Befehl `apt-get` hilfreicher sein, da er automatisch Abhängigkeiten verwaltet.
+- Stellen Sie sicher, dass Sie über die erforderlichen Berechtigungen verfügen, um Pakete zu installieren oder zu entfernen. Oftmals müssen Sie `sudo` verwenden.
+- Verwenden Sie `dpkg` in Kombination mit `apt` für eine umfassendere Paketverwaltung, da `apt` Abhängigkeiten automatisch behandelt.
+- Überprüfen Sie regelmäßig den Status Ihrer installierten Pakete, um sicherzustellen, dass alles aktuell ist.

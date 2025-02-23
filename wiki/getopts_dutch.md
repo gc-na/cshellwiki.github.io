@@ -1,36 +1,39 @@
 # [Linux] C Shell (csh) getopts gebruik: [verwerken van commandoregelopties]
 
 ## Overzicht
-De `getopts`-opdracht in C Shell (csh) wordt gebruikt om commandoregelopties te parseren. Het stelt scripts in staat om opties en argumenten van de gebruiker te verwerken, waardoor ze flexibeler en gebruiksvriendelijker worden.
+De `getopts` opdracht in C Shell (csh) wordt gebruikt om commandoregelopties te verwerken. Het stelt scripts in staat om argumenten en opties van de gebruiker te lezen en te interpreteren, wat handig is voor het maken van flexibele en gebruiksvriendelijke scripts.
 
 ## Gebruik
-De basis syntaxis van de `getopts`-opdracht is als volgt:
+De basis syntaxis van de `getopts` opdracht is als volgt:
 
 ```csh
 getopts optstring variable
 ```
 
-Hierbij is `optstring` een string die de beschikbare opties definieert, en `variable` is de naam van de variabele waarin de huidige optie wordt opgeslagen.
+Hierbij is `optstring` een string die de opties definieert die het script kan accepteren, en `variable` is de naam van de variabele waarin de huidige optie wordt opgeslagen.
 
 ## Veelvoorkomende opties
-- `optstring`: Een string die de opties definieert. Elke optie wordt weergegeven door een enkele letter. Opties die een argument vereisen, worden gevolgd door een dubbele punt (bijvoorbeeld `a:`).
-- `variable`: De naam van de variabele waarin de huidige optie wordt opgeslagen.
+- `optstring`: Een string die de opties definieert. Elke letter vertegenwoordigt een optie. Als een optie een argument vereist, wordt deze gevolgd door een dubbele punt (`:`).
+- `variable`: De naam van de variabele die de huidige optie opslaat.
 
 ## Veelvoorkomende voorbeelden
 
-### Voorbeeld 1: Eenvoudige opties
-Dit voorbeeld toont hoe je eenvoudige opties kunt verwerken.
-
+### Voorbeeld 1: Basisopties verwerken
 ```csh
 #!/bin/csh
-set optstring = "ab"
-while (getopts $optstring opt)
-    switch ($opt)
+set optstring = "ab:c"
+while (1)
+    getopts $optstring option
+    if ($? != 0) break
+    switch ($option)
         case "a":
             echo "Optie A geselecteerd"
             breaksw
         case "b":
-            echo "Optie B geselecteerd"
+            echo "Optie B geselecteerd met argument: $OPTARG"
+            breaksw
+        case "c":
+            echo "Optie C geselecteerd"
             breaksw
         default:
             echo "Ongeldige optie"
@@ -39,18 +42,19 @@ end
 ```
 
 ### Voorbeeld 2: Opties met argumenten
-Hier is een voorbeeld dat laat zien hoe je opties met argumenten kunt verwerken.
-
 ```csh
 #!/bin/csh
-set optstring = "a:b:"
-while (getopts $optstring opt)
-    switch ($opt)
-        case "a":
-            echo "Optie A met argument: $OPTARG"
+set optstring = "f:vh"
+while (getopts $optstring option)
+    switch ($option)
+        case "f":
+            echo "Bestand: $OPTARG"
             breaksw
-        case "b":
-            echo "Optie B met argument: $OPTARG"
+        case "v":
+            echo "Versie 1.0"
+            breaksw
+        case "h":
+            echo "Help: gebruik -f voor bestand, -v voor versie"
             breaksw
         default:
             echo "Ongeldige optie"
@@ -58,18 +62,7 @@ while (getopts $optstring opt)
 end
 ```
 
-### Voorbeeld 3: Meerdere opties
-Dit voorbeeld laat zien hoe je meerdere opties tegelijk kunt verwerken.
-
-```csh
-#!/bin/csh
-set optstring = "abc"
-while (getopts $optstring opt)
-    echo "Geselecteerde optie: $opt"
-end
-```
-
 ## Tips
-- Zorg ervoor dat je de opties goed definieert in de `optstring`, zodat gebruikers weten welke opties beschikbaar zijn.
-- Gebruik de `switch`-structuur om de verschillende opties te verwerken, wat de leesbaarheid van je script verbetert.
-- Vergeet niet om de variabele `$OPTARG` te gebruiken om toegang te krijgen tot argumenten die bij opties zijn opgegeven.
+- Zorg ervoor dat je de juiste optstring definieert, vooral als je opties met argumenten hebt.
+- Gebruik `OPTARG` om toegang te krijgen tot de argumenten die bij de opties horen.
+- Test je scripts grondig om ervoor te zorgen dat ze correct omgaan met verschillende combinaties van opties.

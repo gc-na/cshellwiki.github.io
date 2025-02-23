@@ -1,57 +1,67 @@
-# [Linux] C Shell (csh) endsw <Użycie: kończy blok warunkowy>
+# [Linux] C Shell (csh) endsw użycie: Zakończenie bloku warunkowego
 
-## Przegląd
-Polecenie `endsw` w C Shell (csh) służy do kończenia bloku warunkowego `switch`. Umożliwia to programistom określenie, które instrukcje mają być wykonywane w zależności od wartości zmiennej.
+## Overview
+Polecenie `endsw` w C Shell (csh) służy do kończenia bloku warunkowego `switch`. Umożliwia to programistom organizację kodu w sposób czytelny, pozwalając na wykonanie różnych instrukcji w zależności od wartości zmiennej.
 
-## Użycie
+## Usage
 Podstawowa składnia polecenia `endsw` jest następująca:
 
 ```
 endsw
 ```
 
-## Typowe opcje
-Polecenie `endsw` nie ma opcji, ponieważ jest to proste polecenie kończące blok.
+## Common Options
+Polecenie `endsw` nie ma dodatkowych opcji. Jest używane wyłącznie do zakończenia bloku `switch`.
 
-## Przykłady
-Oto kilka praktycznych przykładów użycia `endsw`:
+## Common Examples
 
 ### Przykład 1: Prosty blok switch
 ```csh
-set var = "a"
+set var = "apple"
 switch ($var)
-    case "a":
-        echo "Zmienna to a"
+    case "apple":
+        echo "To jest jabłko."
         breaksw
-    case "b":
-        echo "Zmienna to b"
+    case "banana":
+        echo "To jest banan."
         breaksw
     default:
-        echo "Zmienna to coś innego"
-        breaksw
+        echo "Nieznany owoc."
 endsw
 ```
 
 ### Przykład 2: Blok switch z wieloma przypadkami
 ```csh
-set color = "czerwony"
-switch ($color)
-    case "czerwony":
-        echo "Kolor to czerwony"
+set day = "Monday"
+switch ($day)
+    case "Monday":
+    case "Tuesday":
+    case "Wednesday":
+        echo "To jest dzień roboczy."
         breaksw
-    case "zielony":
-        echo "Kolor to zielony"
-        breaksw
-    case "niebieski":
-        echo "Kolor to niebieski"
-        breaksw
-    default:
-        echo "Kolor nieznany"
+    case "Saturday":
+    case "Sunday":
+        echo "To jest weekend."
         breaksw
 endsw
 ```
 
-## Wskazówki
-- Upewnij się, że `endsw` jest używane tylko w kontekście bloku `switch`, aby uniknąć błędów składniowych.
-- Zawsze używaj `breaksw` po każdym przypadku, aby zakończyć wykonanie bloku `switch` przed dotarciem do `endsw`.
-- Komentarze w kodzie mogą pomóc w zrozumieniu logiki bloku `switch`, zwłaszcza w bardziej złożonych skryptach.
+### Przykład 3: Użycie z innymi poleceniami
+```csh
+set color = "red"
+switch ($color)
+    case "red":
+        echo "Czerwony jest kolorem miłości."
+        breaksw
+    case "blue":
+        echo "Niebieski jest kolorem spokoju."
+        breaksw
+    default:
+        echo "Nieznany kolor."
+endsw
+```
+
+## Tips
+- Upewnij się, że każda instrukcja `case` kończy się poleceniem `breaksw`, aby uniknąć niezamierzonego przechodzenia do następnych przypadków.
+- Zawsze kończ blok `switch` poleceniem `endsw`, aby zachować czytelność i poprawność kodu.
+- Używaj `default` jako zabezpieczenia, aby obsłużyć nieoczekiwane wartości.

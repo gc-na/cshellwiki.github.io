@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) tac Użycie: Odwraca zawartość pliku
+# [Linux] C Shell (csh) tac <Użycie: odwróć zawartość pliku>
 
 ## Overview
-Polecenie `tac` w C Shell (csh) służy do odwracania zawartości pliku, wyświetlając jego linie w odwrotnej kolejności. Jest to przydatne, gdy chcemy szybko zobaczyć ostatnie linie pliku na początku wyjścia.
+Polecenie `tac` w systemie C Shell (csh) służy do wyświetlania zawartości plików w odwrotnej kolejności, linia po linii. Działa to w przeciwnym kierunku niż polecenie `cat`, które wyświetla zawartość pliku od góry do dołu.
 
 ## Usage
 Podstawowa składnia polecenia `tac` jest następująca:
@@ -13,34 +13,34 @@ tac [opcje] [argumenty]
 ## Common Options
 Oto kilka powszechnie używanych opcji dla polecenia `tac`:
 
-- `-b` : Nie wyświetla pustych linii.
-- `-r` : Używa wyrażeń regularnych do dopasowywania.
-- `-s` : Używa określonego separatora zamiast domyślnego znaku nowej linii.
+- `-b` - Nie wyświetlaj pustych linii.
+- `-r` - Użyj wyrażeń regularnych do przetwarzania linii.
+- `-s` - Użyj określonego separatora do podziału linii.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `tac`:
+Poniżej znajdują się przykłady użycia polecenia `tac`:
 
-1. Odwrócenie zawartości pliku:
+1. **Odwrócenie zawartości pliku:**
    ```csh
    tac plik.txt
    ```
 
-2. Odwrócenie zawartości pliku i zapisanie do nowego pliku:
+2. **Odwrócenie zawartości pliku i zapisanie do nowego pliku:**
    ```csh
-   tac plik.txt > odwrócony_plik.txt
+   tac plik.txt > nowy_plik.txt
    ```
 
-3. Odwrócenie zawartości pliku z pominięciem pustych linii:
+3. **Odwrócenie zawartości pliku z pominięciem pustych linii:**
    ```csh
    tac -b plik.txt
    ```
 
-4. Użycie separatora do odwrócenia zawartości:
+4. **Odwrócenie zawartości pliku z użyciem separatora:**
    ```csh
-   tac -s ',' plik.csv
+   tac -s ',' plik.txt
    ```
 
 ## Tips
-- Używaj `tac` w połączeniu z innymi poleceniami, takimi jak `grep`, aby filtrować wyniki przed ich odwróceniem.
-- Zawsze sprawdzaj zawartość pliku przed użyciem `tac`, aby upewnić się, że dane są w odpowiednim formacie.
-- Pamiętaj, że `tac` działa na plikach tekstowych, więc unikaj używania go na plikach binarnych, co może prowadzić do nieprzewidywalnych wyników.
+- Używaj `tac` w połączeniu z innymi poleceniami, takimi jak `grep` lub `sort`, aby uzyskać bardziej zaawansowane wyniki.
+- Sprawdzaj zawartość pliku przed użyciem `tac`, aby upewnić się, że odwrócenie linii przyniesie oczekiwany efekt.
+- Pamiętaj, że `tac` działa na całych liniach, więc jeśli potrzebujesz bardziej szczegółowego przetwarzania, rozważ użycie innych narzędzi, takich jak `awk` lub `sed`.

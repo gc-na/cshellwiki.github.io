@@ -1,46 +1,48 @@
-# [Linux] C Shell (csh) tr <Użycie>: zamiana znaków
+# [Linux] C Shell (csh) tr <Użycie>: konwertowanie i usuwanie znaków
 
-## Overview
-Polecenie `tr` w C Shell (csh) służy do tłumaczenia lub usuwania znaków z wejścia. Umożliwia zamianę jednych znaków na inne, co jest przydatne w wielu scenariuszach, takich jak przetwarzanie tekstu czy formatowanie danych.
+## Przegląd
+Polecenie `tr` w C Shell (csh) służy do translacji, usuwania lub zastępowania znaków w strumieniu tekstowym. Jest to przydatne narzędzie do manipulacji tekstem, które pozwala na łatwe modyfikowanie danych wejściowych.
 
-## Usage
-Podstawowa składnia polecenia `tr` jest następująca:
+## Użycie
+Podstawowa składnia polecenia `tr` wygląda następująco:
 
-```csh
+```bash
 tr [opcje] [argumenty]
 ```
 
-## Common Options
+## Często używane opcje
 - `-d`: Usuwa wskazane znaki z wejścia.
 - `-s`: Zmniejsza powtarzające się znaki do jednego wystąpienia.
-- `-c`: Wskazuje dozwolone znaki do zamiany, a wszystkie inne są ignorowane.
+- `-c`: Używa do translacji znaków, które nie są w podanym zestawie.
 
-## Common Examples
+## Przykłady
+Oto kilka praktycznych przykładów użycia polecenia `tr`:
+
 1. **Zamiana małych liter na wielkie:**
-   ```csh
+   ```bash
    echo "hello world" | tr 'a-z' 'A-Z'
    ```
    Wynik: `HELLO WORLD`
 
 2. **Usuwanie cyfr z tekstu:**
-   ```csh
+   ```bash
    echo "abc123def456" | tr -d '0-9'
    ```
    Wynik: `abcdef`
 
-3. **Zamiana spacji na znaki podkreślenia:**
-   ```csh
-   echo "Hello World" | tr ' ' '_'
+3. **Zmniejszanie powtarzających się spacji:**
+   ```bash
+   echo "This    is    a    test." | tr -s ' '
    ```
-   Wynik: `Hello_World`
+   Wynik: `This is a test.`
 
-4. **Zmniejszanie powtarzających się spacji:**
-   ```csh
-   echo "This    is  a test" | tr -s ' '
+4. **Zamiana znaków nowej linii na spacje:**
+   ```bash
+   echo -e "Line1\nLine2\nLine3" | tr '\n' ' '
    ```
-   Wynik: `This is a test`
+   Wynik: `Line1 Line2 Line3 `
 
-## Tips
-- Używaj opcji `-d`, aby szybko usunąć niechciane znaki z danych wejściowych.
-- Pamiętaj, że `tr` działa tylko na pojedynczych znakach, więc nie używaj go do zamiany całych słów.
-- Możesz łączyć `tr` z innymi poleceniami w potokach, aby zwiększyć jego funkcjonalność.
+## Wskazówki
+- Używaj opcji `-s`, aby uprościć tekst i usunąć nadmiarowe znaki.
+- Zawsze testuj polecenie na małych próbkach danych, aby upewnić się, że działa zgodnie z oczekiwaniami.
+- Pamiętaj, że `tr` działa tylko na standardowym wejściu, więc często jest używane w połączeniu z innymi poleceniami, takimi jak `echo` czy `cat`.

@@ -1,44 +1,43 @@
-# [Linux] C Shell (csh) unxz Gebruik: Bestanden decompressen
+# [Linux] C Shell (csh) unxz Gebruik: Bestand decompressie
 
 ## Overzicht
-De `unxz` opdracht is een hulpmiddel dat wordt gebruikt om bestanden te decomprimeren die zijn gecomprimeerd met de `xz` compressiemethode. Het is een eenvoudige manier om `.xz` bestanden terug te brengen naar hun oorspronkelijke formaat.
+De `unxz` opdracht wordt gebruikt om bestanden die zijn gecomprimeerd met de `xz` compressiemethode te decomprimeren. Het herstelt de oorspronkelijke bestanden door de `.xz` extensie te verwijderen en de inhoud terug te brengen naar zijn oorspronkelijke staat.
 
 ## Gebruik
 De basis syntaxis van de `unxz` opdracht is als volgt:
-
-```csh
+```
 unxz [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-k` : Behoud het originele bestand na decompressie.
-- `-v` : Toon gedetailleerde informatie over het decompressieproces.
-- `-f` : Forceer decompressie, zelfs als het doelbestand al bestaat.
+- `-k`: Houd het originele gecomprimeerde bestand na decompressie.
+- `-v`: Toon gedetailleerde informatie over het decompressieproces.
+- `-f`: Forceer decompressie, zelfs als het doelbestand al bestaat.
 
 ## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van de `unxz` opdracht:
+Hier zijn enkele praktische voorbeelden van het gebruik van `unxz`:
 
-1. **Decompressie van een bestand**:
+1. Decompressie van een enkel bestand:
    ```csh
    unxz bestand.xz
    ```
 
-2. **Decompressie met behoud van het originele bestand**:
+2. Decompressie van een bestand en het origineel behouden:
    ```csh
    unxz -k bestand.xz
    ```
 
-3. **Decompressie met gedetailleerde uitvoer**:
+3. Decompressie met gedetailleerde uitvoer:
    ```csh
    unxz -v bestand.xz
    ```
 
-4. **Forceer decompressie, zelfs als het bestand al bestaat**:
+4. Forceer decompressie, zelfs als het doelbestand al bestaat:
    ```csh
    unxz -f bestand.xz
    ```
 
 ## Tips
-- Controleer altijd of er voldoende schijfruimte is voordat je een bestand decomprimeert.
-- Gebruik de `-k` optie als je het originele bestand wilt behouden voor toekomstige referentie.
-- Combineer de `-v` optie met andere opties om meer inzicht te krijgen in het decompressieproces.
+- Gebruik de `-k` optie als je het originele bestand wilt behouden voor toekomstig gebruik.
+- Controleer altijd de bestandsextensie om er zeker van te zijn dat je het juiste bestand decomprimeert.
+- Combineer de `-v` optie met andere opties voor meer inzicht in het decompressieproces.

@@ -1,49 +1,51 @@
-# [Linux] C Shell (csh) iostat użycie: Monitorowanie statystyk wejścia/wyjścia
+# [Linux] C Shell (csh) iostat Użycie: Monitorowanie statystyk wejścia/wyjścia
 
 ## Overview
-Polecenie `iostat` służy do monitorowania statystyk wejścia/wyjścia w systemie operacyjnym. Umożliwia użytkownikom analizowanie wydajności dysków oraz obciążenia systemu, co jest przydatne w diagnostyce problemów z wydajnością.
+Polecenie `iostat` służy do monitorowania statystyk wejścia/wyjścia systemu, w tym wydajności dysków i obciążenia systemu. Umożliwia administratorom systemów analizowanie, jak różne urządzenia przechowują i przetwarzają dane, co jest kluczowe dla optymalizacji wydajności.
 
 ## Usage
 Podstawowa składnia polecenia `iostat` jest następująca:
 
-```csh
+```
 iostat [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-c` - Wyświetla statystyki CPU.
-- `-d` - Wyświetla statystyki dysków.
-- `-x` - Wyświetla rozszerzone statystyki dysków.
-- `-t` - Dodaje znacznik czasu do wyjścia.
-- `-h` - Wyświetla wartości w formacie czytelnym dla ludzi (np. w MB/s).
+- `-c`: Wyświetla tylko statystyki CPU.
+- `-d`: Pokazuje statystyki dysków.
+- `-x`: Wyświetla rozszerzone statystyki dla urządzeń.
+- `-t`: Dodaje znacznik czasu do wyjścia.
+- `-h`: Wyświetla wartości w formacie czytelnym dla ludzi (np. MB, GB).
 
 ## Common Examples
+Przykłady użycia polecenia `iostat`:
+
 1. Aby wyświetlić podstawowe statystyki CPU i dysków:
-   ```csh
+   ```bash
    iostat
    ```
 
-2. Aby wyświetlić tylko statystyki dysków:
-   ```csh
-   iostat -d
+2. Aby uzyskać tylko statystyki CPU:
+   ```bash
+   iostat -c
    ```
 
-3. Aby wyświetlić statystyki CPU oraz dysków co 5 sekund:
-   ```csh
-   iostat -c -d 5
-   ```
-
-4. Aby uzyskać rozszerzone informacje o dyskach:
-   ```csh
+3. Aby wyświetlić rozszerzone statystyki dla dysków:
+   ```bash
    iostat -x
    ```
 
+4. Aby monitorować statystyki co 2 sekundy:
+   ```bash
+   iostat 2
+   ```
+
 5. Aby dodać znacznik czasu do wyjścia:
-   ```csh
+   ```bash
    iostat -t
    ```
 
 ## Tips
-- Regularne monitorowanie statystyk za pomocą `iostat` może pomóc w identyfikacji wąskich gardeł w systemie.
-- Używaj opcji `-h`, aby uzyskać bardziej zrozumiałe wyniki, zwłaszcza przy dużych wartościach.
-- Zbieraj dane w różnych interwałach czasowych, aby uzyskać pełniejszy obraz wydajności systemu.
+- Regularnie monitoruj statystyki, aby zidentyfikować wąskie gardła w systemie.
+- Używaj opcji `-h`, aby łatwiej interpretować wyniki.
+- Zbieraj dane w różnych porach dnia, aby uzyskać pełniejszy obraz wydajności systemu.

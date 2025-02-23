@@ -1,37 +1,38 @@
 # [Linux] C Shell (csh) clear Kullanımı: Ekranı temizler
 
-## Overview
-`clear` komutu, terminal ekranını temizleyerek kullanıcıya daha düzenli bir çalışma alanı sunar. Bu komut, terminaldeki mevcut çıktıları siler ve imleci ekranın en üstüne getirir.
+## Genel Bakış
+`clear` komutu, terminal ekranını temizlemek için kullanılır. Bu komut, kullanıcıların daha düzenli bir çalışma alanına sahip olmalarını sağlar ve önceki komutların çıktılarının görünümünü ortadan kaldırır.
 
-## Usage
-Temel kullanım sözdizimi aşağıdaki gibidir:
-```csh
-clear [options] [arguments]
+## Kullanım
+Temel sözdizimi aşağıdaki gibidir:
+
+```
+clear [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `-x`: Ekrandaki tüm karakterleri temizler ve sadece boş bir ekran bırakır.
-- `-s`: Ekranı temizler ancak önceki komutların çıktısını kaydeder.
+## Yaygın Seçenekler
+- `-x`: Ekranı temizlerken, önceki komutların çıktısını kaydetmez.
+- `-T`: Belirtilen terminal türüne göre ekranı temizler.
 
-## Common Examples
-Aşağıda `clear` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+## Yaygın Örnekler
+Aşağıda `clear` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-1. **Ekranı temizlemek için basit kullanım:**
+1. Terminal ekranını temizlemek için:
    ```csh
    clear
    ```
 
-2. **Ekranı temizlerken önceki çıktıları kaydetmek:**
+2. Ekranı temizlerken terminal türünü belirtmek için:
    ```csh
-   clear -s
+   clear -T xterm
    ```
 
-3. **Ekranı tamamen boşaltmak için:**
+3. Ekranı temizlerken önceki çıktıları kaydetmemek için:
    ```csh
    clear -x
    ```
 
-## Tips
-- `clear` komutunu sık sık kullanarak terminaldeki karmaşayı azaltabilir ve daha verimli çalışabilirsiniz.
-- Terminalde uzun bir işlem yaptıktan sonra ekranı temizlemek, yeni çıktıları daha net görmenizi sağlar.
-- `Ctrl + L` kısayolunu kullanarak da ekranı hızlı bir şekilde temizleyebilirsiniz; bu, `clear` komutuyla aynı işlevi görür.
+## İpuçları
+- `clear` komutunu sık kullananlar için, terminalinize bir kısayol atamak işleri kolaylaştırabilir.
+- Terminal ekranını temizlemek için `Ctrl + L` tuş kombinasyonunu da kullanabilirsiniz; bu, `clear` komutuyla aynı etkiyi yaratır.
+- Ekranı temizledikten sonra, önemli bilgileri kaydetmeyi unutmayın; çünkü `clear` komutu önceki çıktıları görünmez hale getirir.

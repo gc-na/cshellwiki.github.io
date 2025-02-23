@@ -1,20 +1,22 @@
-# [Linux] C Shell (csh) cal <Utilizzo equivalente in italiano>: visualizzare un calendario
+# [Linux] C Shell (csh) cal <Utilizzo equivalente>: visualizzare un calendario
 
 ## Overview
-Il comando `cal` in C Shell (csh) è utilizzato per visualizzare un calendario. Può mostrare il calendario di un mese specifico o di un intero anno, rendendo facile la consultazione delle date.
+Il comando `cal` è utilizzato per visualizzare un calendario nel terminale. È possibile visualizzare il calendario di un mese specifico o di un anno intero, rendendolo uno strumento utile per pianificare eventi o semplicemente per tenere traccia delle date.
 
 ## Usage
-La sintassi di base del comando è la seguente:
+La sintassi di base del comando `cal` è la seguente:
 
 ```csh
 cal [options] [arguments]
 ```
 
 ## Common Options
-- `-m`: Mostra il calendario del mese corrente.
-- `-y`: Visualizza il calendario dell'intero anno.
-- `-3`: Mostra il calendario del mese corrente e dei mesi precedenti e successivi.
+- `-m`: Mostra il calendario con il mese corrente evidenziato.
+- `-y`: Visualizza il calendario dell'anno corrente.
+- `-3`: Mostra il mese corrente insieme ai mesi precedente e successivo.
 - `-j`: Mostra il calendario con i giorni dell'anno.
+- `-A n`: Mostra n mesi dopo il mese corrente.
+- `-B n`: Mostra n mesi prima del mese corrente.
 
 ## Common Examples
 Ecco alcuni esempi pratici dell'uso del comando `cal`:
@@ -29,12 +31,12 @@ Ecco alcuni esempi pratici dell'uso del comando `cal`:
    cal 03 2023
    ```
 
-3. Visualizzare il calendario dell'intero anno (ad esempio, 2023):
+3. Visualizzare il calendario dell'anno corrente:
    ```csh
-   cal -y 2023
+   cal -y
    ```
 
-4. Visualizzare il calendario del mese corrente insieme ai mesi precedenti e successivi:
+4. Visualizzare il mese corrente insieme ai mesi precedente e successivo:
    ```csh
    cal -3
    ```
@@ -45,6 +47,6 @@ Ecco alcuni esempi pratici dell'uso del comando `cal`:
    ```
 
 ## Tips
-- Utilizza l'opzione `-m` per avere sempre una visualizzazione rapida del mese corrente.
-- Se hai bisogno di pianificare eventi, il comando `cal` può essere combinato con altri strumenti di scripting per automatizzare la gestione delle date.
-- Ricorda che il formato del mese e dell'anno è importante; assicurati di inserire i valori corretti per ottenere il calendario desiderato.
+- Utilizza l'opzione `-m` per evidenziare il mese corrente, rendendo più facile la lettura.
+- Se hai bisogno di pianificare eventi, considera di visualizzare più mesi insieme usando l'opzione `-3`.
+- Ricorda che puoi combinare le opzioni per personalizzare ulteriormente la visualizzazione del calendario.

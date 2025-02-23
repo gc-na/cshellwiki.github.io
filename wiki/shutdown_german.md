@@ -7,15 +7,15 @@ Der Befehl `shutdown` wird verwendet, um ein System sicher herunterzufahren oder
 Die grundlegende Syntax des Befehls lautet:
 
 ```csh
-shutdown [Optionen] [Argumente]
+shutdown [options] [arguments]
 ```
 
 ## Häufige Optionen
-- `-h`: Fährt das System herunter und schaltet es aus.
-- `-r`: Startet das System neu.
+- `-h`: Fährt das System herunter (halt).
+- `-r`: Startet das System neu (reboot).
 - `-k`: Sendet eine Warnung, ohne das System tatsächlich herunterzufahren.
-- `+m`: Gibt an, dass das Herunterfahren in `m` Minuten erfolgen soll.
-- `hh:mm`: Gibt die genaue Uhrzeit an, zu der das Herunterfahren erfolgen soll.
+- `time`: Gibt an, wann das Herunterfahren erfolgen soll (z.B. `now`, `+5` für in 5 Minuten).
+- `message`: Eine optionale Nachricht, die an alle Benutzer gesendet wird.
 
 ## Häufige Beispiele
 Hier sind einige praktische Beispiele für die Verwendung des `shutdown`-Befehls:
@@ -35,17 +35,17 @@ Hier sind einige praktische Beispiele für die Verwendung des `shutdown`-Befehls
    shutdown -r now
    ```
 
-4. **Warnung senden, ohne das System herunterzufahren:**
+4. **Warnung an Benutzer senden, ohne das System herunterzufahren:**
    ```csh
-   shutdown -k now "Das System wird in 5 Minuten heruntergefahren."
+   shutdown -k now "Das System wird in Kürze heruntergefahren."
    ```
 
-5. **System um 22:00 Uhr herunterfahren:**
+5. **System in 1 Stunde herunterfahren und Nachricht senden:**
    ```csh
-   shutdown -h 22:00
+   shutdown -h +60 "Das System wird in 1 Stunde heruntergefahren."
    ```
 
 ## Tipps
-- Verwenden Sie den `-k`-Schalter, um Benutzer zu warnen, bevor Sie das System tatsächlich herunterfahren.
-- Stellen Sie sicher, dass alle Benutzer über das bevorstehende Herunterfahren informiert sind, um Datenverlust zu vermeiden.
-- Testen Sie den Befehl in einer sicheren Umgebung, bevor Sie ihn auf einem Produktionssystem verwenden.
+- Verwenden Sie die `-k`-Option, um Benutzer zu warnen, bevor Sie das System tatsächlich herunterfahren.
+- Stellen Sie sicher, dass Sie alle wichtigen Daten gespeichert haben, bevor Sie den Befehl ausführen.
+- Testen Sie den Befehl in einer sicheren Umgebung, um sich mit den Optionen und deren Auswirkungen vertraut zu machen.

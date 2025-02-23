@@ -1,22 +1,18 @@
 # [Linux] C Shell (csh) foreach utilizare: Execută comenzi pentru fiecare element dintr-o listă
 
 ## Overview
-Comanda `foreach` în C Shell (csh) este utilizată pentru a itera printr-o listă de elemente și a executa o serie de comenzi pentru fiecare element în parte. Aceasta este utilă atunci când doriți să aplicați aceeași acțiune asupra mai multor fișiere sau argumente.
+Comanda `foreach` din C Shell (csh) permite utilizatorilor să execute o serie de comenzi pentru fiecare element dintr-o listă specificată. Aceasta este utilă pentru automatizarea sarcinilor repetitive, economisind timp și efort.
 
 ## Usage
 Sintaxa de bază a comenzii `foreach` este următoarea:
 
-```
-foreach [variabilă] (lista)
-    comenzi
-end
+```csh
+foreach [opțiuni] [argumente]
 ```
 
 ## Common Options
-Deși `foreach` nu are multe opțiuni, este important să rețineți următoarele:
-
-- `variabilă`: Numele variabilei care va conține fiecare element din listă pe parcursul iterației.
-- `lista`: O listă de elemente, care poate fi specificată direct sau generată printr-o comandă.
+- `-n`: Nu execută comanda, ci doar o afișează.
+- `-e`: Permite executarea unei comenzi direct din linia de comandă.
 
 ## Common Examples
 
@@ -28,23 +24,24 @@ end
 ```
 Acest exemplu va afișa un mesaj pentru fiecare fișier cu extensia `.txt` din directorul curent.
 
-### Exemplul 2: Executarea unei comenzi pentru fiecare argument
+### Exemplul 2: Executarea unei comenzi pentru fiecare element dintr-o listă
 ```csh
-foreach arg ($*)
-    echo "Argumentul curent este: $arg"
+set lista = (1 2 3 4 5)
+foreach num ($lista)
+    echo "Numărul curent este: $num"
 end
 ```
-Aici, comanda va afișa fiecare argument trecut scriptului.
+Aici, comanda va afișa fiecare număr din lista definită.
 
-### Exemplul 3: Utilizarea unei comenzi pentru a genera lista
+### Exemplul 3: Utilizarea opțiunii -n
 ```csh
-foreach file (`ls *.jpg`)
-    mv $file /backup/
-end
+foreach file (*.log)
+    echo "Acesta este un fișier de log: $file"
+end -n
 ```
-Acest exemplu mută toate fișierele `.jpg` în directorul `/backup/`.
+În acest caz, comanda va afișa mesajele, dar nu va executa efectiv comanda `echo`.
 
 ## Tips
-- Asigurați-vă că lista de elemente nu este goală, altfel `foreach` nu va executa nimic.
-- Folosiți ghilimele pentru a delimita argumentele care conțin spații.
-- Verificați întotdeauna variabila curentă în interiorul buclei folosind `$variabilă` pentru a obține valoarea corectă.
+- Asigurați-vă că lista de elemente este corect definită pentru a evita erorile de execuție.
+- Utilizați `-n` pentru a verifica sintaxa înainte de a rula efectiv comanda.
+- Folosiți `end` pentru a încheia blocul de comenzi `foreach`, altfel comanda nu va funcționa corect.

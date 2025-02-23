@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) lvcreate użycie: Tworzenie logicznych woluminów
 
 ## Overview
-Polecenie `lvcreate` służy do tworzenia nowych logicznych woluminów w systemach zarządzania woluminami logicznymi (LVM). Umożliwia to elastyczne zarządzanie przestrzenią dyskową, co jest szczególnie przydatne w środowiskach serwerowych.
+Polecenie `lvcreate` służy do tworzenia nowych logicznych woluminów w systemie zarządzania woluminami LVM (Logical Volume Manager). Umożliwia użytkownikom elastyczne zarządzanie przestrzenią dyskową, co jest szczególnie przydatne w środowiskach serwerowych.
 
 ## Usage
 Podstawowa składnia polecenia `lvcreate` jest następująca:
@@ -11,34 +11,32 @@ lvcreate [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-n` : Umożliwia określenie nazwy nowego woluminu.
-- `-L` : Umożliwia określenie rozmiaru woluminu.
-- `-l` : Umożliwia określenie rozmiaru woluminu w jednostkach logicznych.
-- `-s` : Tworzy wolumin lustrzany (snapshot) z istniejącego woluminu.
-- `-Z` : Umożliwia włączenie lub wyłączenie zera na nowym woluminie.
+Oto kilka powszechnie używanych opcji dla polecenia `lvcreate`:
+
+- `-n` : Umożliwia określenie nazwy nowego logicznego woluminu.
+- `-L` : Umożliwia określenie rozmiaru nowego woluminu.
+- `-l` : Umożliwia określenie rozmiaru w jednostkach logicznych (np. procentach).
+- `-m` : Umożliwia określenie liczby kopii (mirror) nowego woluminu.
 
 ## Common Examples
-1. Tworzenie nowego woluminu o nazwie "moj_wolumin" o rozmiarze 10 GB:
+Oto kilka praktycznych przykładów użycia polecenia `lvcreate`:
+
+1. Tworzenie nowego logicznego woluminu o nazwie `moj_wolumin` o rozmiarze 10 GB:
    ```csh
-   lvcreate -n moj_wolumin -L 10G vg_nazwa
+   lvcreate -n moj_wolumin -L 10G vg1
    ```
 
-2. Tworzenie woluminu o rozmiarze 5 jednostek logicznych:
+2. Tworzenie woluminu o rozmiarze 50% dostępnej przestrzeni w grupie woluminów `vg1`:
    ```csh
-   lvcreate -n moj_wolumin -l 5 vg_nazwa
+   lvcreate -n moj_wolumin -l 50%FREE vg1
    ```
 
-3. Tworzenie snapshotu istniejącego woluminu:
+3. Tworzenie lustrzanego woluminu o nazwie `lustrzany_wolumin`:
    ```csh
-   lvcreate -s -n moj_snapshot -L 1G /dev/vg_nazwa/istniejacy_wolumin
-   ```
-
-4. Tworzenie woluminu z włączonym zerowaniem:
-   ```csh
-   lvcreate -n moj_wolumin -L 10G -Z y vg_nazwa
+   lvcreate -m 1 -n lustrzany_wolumin -L 20G vg1
    ```
 
 ## Tips
-- Zawsze upewnij się, że masz wystarczającą ilość wolnego miejsca w grupie woluminów przed utworzeniem nowego woluminu.
-- Używaj opisowych nazw dla woluminów, aby łatwiej je zidentyfikować w przyszłości.
-- Regularnie sprawdzaj stan woluminów i grup woluminów, aby uniknąć problemów z przestrzenią dyskową.
+- Zawsze sprawdzaj dostępne miejsce w grupie woluminów przed utworzeniem nowego woluminu, aby uniknąć błędów.
+- Używaj opcji `-l` do precyzyjnego zarządzania przestrzenią, zwłaszcza w dynamicznych środowiskach.
+- Regularnie monitoruj i zarządzaj swoimi woluminami, aby zapewnić optymalną wydajność systemu.

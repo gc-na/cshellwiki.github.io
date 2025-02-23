@@ -1,51 +1,49 @@
 # [Linux] C Shell (csh) flatpak użycie: Zarządzanie aplikacjami w kontenerach
 
-## Przegląd
-Polecenie `flatpak` służy do zarządzania aplikacjami w kontenerach na systemach operacyjnych opartych na Linuksie. Umożliwia instalację, aktualizację, uruchamianie i usuwanie aplikacji, które są pakowane w formacie Flatpak, co zapewnia ich izolację od systemu operacyjnego.
+## Overview
+Polecenie `flatpak` służy do zarządzania aplikacjami w kontenerach. Umożliwia instalowanie, aktualizowanie i uruchamianie aplikacji w izolowanym środowisku, co zwiększa bezpieczeństwo i kompatybilność.
 
-## Użycie
-Podstawowa składnia polecenia `flatpak` wygląda następująco:
+## Usage
+Podstawowa składnia polecenia `flatpak` jest następująca:
 
 ```csh
 flatpak [opcje] [argumenty]
 ```
 
-## Częste opcje
-- `install`: Instalacja aplikacji z repozytoriów Flatpak.
-- `uninstall`: Usunięcie zainstalowanej aplikacji.
-- `run`: Uruchomienie aplikacji zainstalowanej w Flatpak.
+## Common Options
+- `install`: Instalacja aplikacji z repozytoriów.
 - `update`: Aktualizacja zainstalowanych aplikacji.
-- `list`: Wyświetlenie listy zainstalowanych aplikacji.
+- `run`: Uruchomienie zainstalowanej aplikacji.
+- `list`: Wyświetlenie zainstalowanych aplikacji.
+- `remove`: Usunięcie zainstalowanej aplikacji.
 
-## Przykłady
-Oto kilka praktycznych przykładów użycia polecenia `flatpak`:
+## Common Examples
+- Instalacja aplikacji:
+  ```csh
+  flatpak install flathub org.example.App
+  ```
+  
+- Aktualizacja zainstalowanej aplikacji:
+  ```csh
+  flatpak update org.example.App
+  ```
 
-1. **Instalacja aplikacji**:
-   ```csh
-   flatpak install flathub org.videolan.VLC
-   ```
+- Uruchomienie aplikacji:
+  ```csh
+  flatpak run org.example.App
+  ```
 
-2. **Uruchomienie aplikacji**:
-   ```csh
-   flatpak run org.videolan.VLC
-   ```
+- Wyświetlenie zainstalowanych aplikacji:
+  ```csh
+  flatpak list
+  ```
 
-3. **Aktualizacja aplikacji**:
-   ```csh
-   flatpak update
-   ```
+- Usunięcie aplikacji:
+  ```csh
+  flatpak remove org.example.App
+  ```
 
-4. **Usunięcie aplikacji**:
-   ```csh
-   flatpak uninstall org.videolan.VLC
-   ```
-
-5. **Wyświetlenie listy zainstalowanych aplikacji**:
-   ```csh
-   flatpak list
-   ```
-
-## Wskazówki
-- Zawsze sprawdzaj dostępność aktualizacji, aby mieć najnowsze wersje aplikacji.
-- Używaj repozytoriów Flathub, aby uzyskać dostęp do szerokiej gamy aplikacji.
-- Możesz używać opcji `--user`, aby instalować aplikacje tylko dla bieżącego użytkownika, co nie wymaga uprawnień administratora.
+## Tips
+- Zawsze sprawdzaj dostępność aktualizacji, aby utrzymać aplikacje w najnowszej wersji.
+- Używaj opcji `--user`, aby instalować aplikacje tylko dla bieżącego użytkownika, co może być przydatne w systemach z ograniczonymi uprawnieniami.
+- Regularnie przeglądaj listę zainstalowanych aplikacji, aby zarządzać przestrzenią dyskową.

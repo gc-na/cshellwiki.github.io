@@ -1,46 +1,48 @@
-# [Linux] C Shell (csh) logrotate : Gérer la rotation des fichiers journaux
+# [Linux] C Shell (csh) logrotate : Gestion des fichiers journaux
 
 ## Overview
-La commande `logrotate` est utilisée pour gérer la rotation des fichiers journaux sur un système Unix/Linux. Elle permet de compresser, supprimer ou archiver les fichiers journaux afin de libérer de l'espace disque et de maintenir une organisation efficace des journaux.
+La commande `logrotate` est utilisée pour gérer la rotation des fichiers journaux sur un système. Elle permet de compresser, supprimer ou archiver les fichiers journaux afin de libérer de l'espace disque et de maintenir une organisation efficace des journaux.
 
 ## Usage
-Voici la syntaxe de base de la commande `logrotate` :
+La syntaxe de base de la commande `logrotate` est la suivante :
 
 ```bash
 logrotate [options] [arguments]
 ```
 
 ## Common Options
+Voici quelques options courantes pour `logrotate` :
+
 - `-f` : Force la rotation des journaux, même si cela n'est pas nécessaire.
-- `-s` : Spécifie le fichier d'état à utiliser pour suivre les rotations.
-- `-d` : Exécute `logrotate` en mode de débogage, sans effectuer de rotations réelles.
-- `-v` : Affiche des informations détaillées sur ce que fait `logrotate`.
+- `-s` : Spécifie un fichier d'état pour suivre les rotations.
+- `-v` : Mode verbeux, affiche des informations détaillées sur ce que fait la commande.
+- `-d` : Mode de débogage, montre ce qui se passerait sans effectuer de rotation.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `logrotate` :
 
-### Exemple 1 : Rotation manuelle
-Pour forcer la rotation des journaux définis dans le fichier de configuration par défaut :
+### Exemple 1 : Rotation manuelle d'un fichier journal
+Pour forcer la rotation d'un fichier journal spécifique, vous pouvez utiliser :
 
 ```bash
 logrotate -f /etc/logrotate.conf
 ```
 
-### Exemple 2 : Exécution en mode débogage
-Pour vérifier ce que ferait `logrotate` sans effectuer de changements :
+### Exemple 2 : Exécution en mode verbeux
+Pour voir les détails de la rotation sans effectuer de changements :
 
 ```bash
-logrotate -d /etc/logrotate.conf
+logrotate -v /etc/logrotate.conf
 ```
 
-### Exemple 3 : Spécifier un fichier d'état
-Pour utiliser un fichier d'état personnalisé :
+### Exemple 3 : Utilisation d'un fichier d'état personnalisé
+Pour spécifier un fichier d'état différent :
 
 ```bash
-logrotate -s /path/to/custom.state /etc/logrotate.conf
+logrotate -s /var/lib/logrotate/status /etc/logrotate.conf
 ```
 
 ## Tips
-- **Configurer correctement le fichier de configuration** : Assurez-vous que le fichier de configuration de `logrotate` est bien configuré pour éviter des pertes de données dans vos journaux.
-- **Tester les configurations** : Utilisez l'option `-d` pour tester vos configurations avant de les appliquer.
-- **Planifier des rotations régulières** : Intégrez `logrotate` dans vos tâches cron pour automatiser la rotation des journaux à intervalles réguliers.
+- **Planification** : Configurez `logrotate` pour s'exécuter automatiquement via un cron job pour assurer une gestion régulière des journaux.
+- **Configuration** : Personnalisez le fichier de configuration `/etc/logrotate.conf` pour adapter la rotation à vos besoins spécifiques.
+- **Surveillance** : Vérifiez régulièrement les fichiers de log pour vous assurer que la rotation fonctionne comme prévu et qu'il n'y a pas de fichiers journaux qui prennent trop d'espace.

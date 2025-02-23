@@ -1,23 +1,22 @@
-# [Linux] C Shell (csh) mountpoint Kullanımı: Bir dosya sisteminin bağlanma noktasını kontrol etme
+# [Linux] C Shell (csh) mountpoint Kullanımı: Mount noktalarını kontrol etme
 
 ## Overview
-`mountpoint` komutu, bir dizinin bir dosya sistemi bağlanma noktası olup olmadığını kontrol etmek için kullanılır. Bu komut, belirli bir dizinin bağlı olup olmadığını hızlı bir şekilde belirlemenizi sağlar.
+`mountpoint` komutu, belirli bir dizinin bir mount noktası olup olmadığını kontrol etmek için kullanılır. Bu, dosya sistemlerinin ne zaman ve nasıl bağlandığını anlamak için faydalıdır.
 
 ## Usage
-Temel sözdizimi aşağıdaki gibidir:
-
-```csh
+Temel sözdizimi şu şekildedir:
+```
 mountpoint [options] [arguments]
 ```
 
 ## Common Options
-- `-q`: Sessiz modda çalışır, herhangi bir çıktı vermez.
-- `-d`: Eğer belirtilen dizin bir bağlanma noktasıysa, dizinin içeriğini gösterir.
+- `-q`: Sessiz modda çalışır; herhangi bir çıktı vermez.
+- `-d`: Eğer belirtilen dizin bir mount noktası değilse, hata mesajı verir.
 
 ## Common Examples
 Aşağıda `mountpoint` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. Bir dizinin bağlanma noktası olup olmadığını kontrol etme:
+1. Bir dizinin mount noktası olup olmadığını kontrol etme:
    ```csh
    mountpoint /mnt/mydrive
    ```
@@ -27,12 +26,11 @@ Aşağıda `mountpoint` komutunun bazı pratik örnekleri bulunmaktadır:
    mountpoint -q /mnt/mydrive
    ```
 
-3. Bir dizinin içeriğini gösterme (bağlıysa):
+3. Hata mesajı ile kontrol etme:
    ```csh
    mountpoint -d /mnt/mydrive
    ```
 
 ## Tips
-- `mountpoint` komutunu, bir dosya sisteminin bağlı olup olmadığını kontrol etmek için sıkça kullanabilirsiniz; bu, sistem yönetimi sırasında faydalıdır.
-- Eğer bir dizinin bağlı olup olmadığını kontrol etmek istiyorsanız, `-q` seçeneğini kullanarak gereksiz çıktılardan kaçınabilirsiniz.
-- Bağlanma noktası olan dizinleri düzenli olarak kontrol etmek, sisteminizin sağlığını korumaya yardımcı olabilir.
+- `mountpoint` komutunu, betiklerinizde dosya sistemlerinin durumunu kontrol etmek için kullanabilirsiniz.
+- Daima dizinlerin doğru şekilde bağlandığından emin olmak için bu komutu kullanarak sisteminizin güvenliğini artırabilirsiniz.

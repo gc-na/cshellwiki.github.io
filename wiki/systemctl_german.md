@@ -1,63 +1,57 @@
-# [Linux] C Shell (csh) systemctl Verwendung: Verwaltet Systemdienste
+# [Linux] C Shell (csh) systemctl Verwendung: Verwaltung von Systemdiensten
 
 ## Übersicht
-Der Befehl `systemctl` ist ein zentrales Werkzeug zum Verwalten von Systemdiensten und -einheiten unter Linux. Er ermöglicht das Starten, Stoppen, Neustarten und Überprüfen des Status von Diensten, die vom Systemd-Init-System verwaltet werden.
+Der Befehl `systemctl` wird verwendet, um Systemdienste und -einheiten in Linux-basierten Betriebssystemen zu verwalten. Mit `systemctl` können Benutzer Dienste starten, stoppen, neu starten und den Status von Diensten überprüfen.
 
 ## Verwendung
-Die grundlegende Syntax des `systemctl`-Befehls lautet:
+Die grundlegende Syntax des Befehls lautet:
 
 ```bash
 systemctl [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `start`: Startet eine angegebene Diensteinheit.
-- `stop`: Stoppt eine angegebene Diensteinheit.
-- `restart`: Startet eine angegebene Diensteinheit neu.
-- `status`: Zeigt den Status einer Diensteinheit an.
-- `enable`: Aktiviert eine Diensteinheit beim Booten.
-- `disable`: Deaktiviert eine Diensteinheit beim Booten.
-- `list-units`: Listet alle aktiven Einheiten auf.
+- `start`: Startet einen Dienst.
+- `stop`: Stoppt einen Dienst.
+- `restart`: Startet einen Dienst neu.
+- `status`: Zeigt den Status eines Dienstes an.
+- `enable`: Aktiviert einen Dienst beim Booten.
+- `disable`: Deaktiviert einen Dienst beim Booten.
 
 ## Häufige Beispiele
 Hier sind einige praktische Beispiele für die Verwendung von `systemctl`:
 
-- **Diensteinheit starten:**
+- **Dienst starten**:
   ```bash
-  systemctl start apache2
+  systemctl start nginx
   ```
 
-- **Diensteinheit stoppen:**
+- **Dienst stoppen**:
   ```bash
-  systemctl stop apache2
+  systemctl stop nginx
   ```
 
-- **Diensteinheit neu starten:**
+- **Dienst neu starten**:
   ```bash
-  systemctl restart apache2
+  systemctl restart nginx
   ```
 
-- **Status einer Diensteinheit überprüfen:**
+- **Status eines Dienstes überprüfen**:
   ```bash
-  systemctl status apache2
+  systemctl status nginx
   ```
 
-- **Diensteinheit beim Booten aktivieren:**
+- **Dienst beim Booten aktivieren**:
   ```bash
-  systemctl enable apache2
+  systemctl enable nginx
   ```
 
-- **Diensteinheit beim Booten deaktivieren:**
+- **Dienst beim Booten deaktivieren**:
   ```bash
-  systemctl disable apache2
-  ```
-
-- **Alle aktiven Einheiten auflisten:**
-  ```bash
-  systemctl list-units --type=service
+  systemctl disable nginx
   ```
 
 ## Tipps
-- Verwenden Sie `systemctl status [dienstname]`, um detaillierte Informationen über den Dienst zu erhalten, einschließlich Fehlerprotokollen.
-- Nutzen Sie `systemctl list-units --failed`, um fehlerhafte Dienste schnell zu identifizieren.
-- Denken Sie daran, dass einige `systemctl`-Befehle Root-Rechte benötigen. Verwenden Sie `sudo`, wenn Sie auf Berechtigungsprobleme stoßen.
+- Verwenden Sie `systemctl list-units`, um eine Liste aller aktiven Dienste und Einheiten anzuzeigen.
+- Nutzen Sie `systemctl --failed`, um eine Übersicht über fehlgeschlagene Dienste zu erhalten.
+- Achten Sie darauf, `systemctl` mit Root-Rechten auszuführen, wenn Sie Dienste verwalten möchten, um Berechtigungsprobleme zu vermeiden.

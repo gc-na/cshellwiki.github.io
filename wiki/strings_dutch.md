@@ -1,46 +1,43 @@
 # [Linux] C Shell (csh) strings gebruik: Toont leesbare tekst in binaire bestanden
 
-## Overview
-De `strings` opdracht in C Shell (csh) wordt gebruikt om leesbare tekst uit binaire bestanden te extraheren. Dit is handig voor het analyseren van bestanden die niet in een tekstformaat zijn opgeslagen, zoals uitvoerbare bestanden of objectbestanden.
+## Overzicht
+De `strings` opdracht in C Shell (csh) wordt gebruikt om leesbare tekst te extraheren uit binaire bestanden. Dit is handig voor het analyseren van bestanden die niet in een tekstformaat zijn opgeslagen, zoals uitvoerbare bestanden of objectbestanden.
 
-## Usage
+## Gebruik
 De basis syntaxis van de `strings` opdracht is als volgt:
 
 ```csh
 strings [opties] [argumenten]
 ```
 
-## Common Options
-Hier zijn enkele veelvoorkomende opties voor de `strings` opdracht:
+## Veelvoorkomende Opties
+- `-a`: Doorzoek het hele bestand, niet alleen de standaardsecties.
+- `-n <nummer>`: Geef alleen strings weer die langer zijn dan het opgegeven aantal karakters.
+- `-o`: Toon de offset van elke string in het bestand.
 
-- `-n <nummer>`: Geeft alleen strings weer die langer zijn dan het opgegeven aantal tekens.
-- `-a`: Doorzoek ook niet-standaard secties van het bestand.
-- `-f`: Toon de naam van het bestand voor elke string die wordt weergegeven.
+## Veelvoorkomende Voorbeelden
 
-## Common Examples
-Hier zijn enkele praktische voorbeelden van het gebruik van de `strings` opdracht:
-
-1. **Basis gebruik**: Toont alle leesbare strings in een bestand.
+1. **Basisgebruik**: Toon alle leesbare strings in een bestand.
    ```csh
    strings bestand.bin
    ```
 
-2. **Strings met een minimale lengte**: Toont alleen strings die langer zijn dan 5 tekens.
+2. **Strings met een minimale lengte**: Toon alleen strings die langer zijn dan 5 karakters.
    ```csh
    strings -n 5 bestand.bin
    ```
 
-3. **Doorzoek niet-standaard secties**: Doorzoek ook niet-standaard secties van een binaire uitvoer.
+3. **Offset weergeven**: Toon de strings met hun offset in het bestand.
    ```csh
-   strings -a bestand.bin
+   strings -o bestand.bin
    ```
 
-4. **Bestandsnaam weergeven**: Toon de bestandsnaam voor elke string die wordt weergegeven.
+4. **Doorzoek het hele bestand**: Zoek naar strings in een binaire uitvoerbare bestand.
    ```csh
-   strings -f bestand.bin
+   strings -a uitvoerbaar_bestand
    ```
 
 ## Tips
-- Gebruik de `-n` optie om de uitvoer te filteren en alleen relevante strings te tonen, wat de leesbaarheid kan verbeteren.
-- Combineer `strings` met andere commando's zoals `grep` om specifieke tekst binnen de uitvoer te zoeken.
-- Wees voorzichtig met het doorzoeken van grote bestanden, omdat dit veel uitvoer kan genereren en de prestaties kan beïnvloeden.
+- Gebruik de `-n` optie om de output te filteren en alleen relevante strings te tonen, wat het gemakkelijker maakt om belangrijke informatie te vinden.
+- Combineer `strings` met andere commando's zoals `grep` om specifieke patronen in de output te zoeken.
+- Wees voorzichtig met het interpreteren van de resultaten; niet alle weergegeven strings zijn noodzakelijkerwijs betekenisvol of bruikbaar.

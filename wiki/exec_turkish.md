@@ -1,39 +1,47 @@
-# [Linux] C Shell (csh) exec Kullanımı: Komutları değiştirme
+# [Linux] C Shell (csh) exec Kullanımı: Komutları değiştirme ve çalıştırma
 
 ## Overview
-`exec` komutu, mevcut shell oturumunda yeni bir komut çalıştırmak için kullanılır. Bu komut, mevcut shell'i yeni bir programla değiştirir ve bu program çalıştıktan sonra shell geri dönmez.
+`exec` komutu, mevcut shell sürecini yeni bir komutla değiştirmek için kullanılır. Bu, yeni bir programın çalıştırılmasını sağlar ve mevcut shell sürecini sonlandırır. `exec` kullanıldığında, shell'den döndüğünde eski shell'e geri dönülmez.
 
 ## Usage
 Temel sözdizimi şu şekildedir:
-```csh
+```
 exec [options] [arguments]
 ```
 
 ## Common Options
-- `-a`: Belirtilen programı çalıştırmadan önce alternatif bir isim belirler.
-- `-l`: Yeni shell'i oturum açma shell'i olarak başlatır.
-- `-c`: Komutları bir dize olarak alır ve çalıştırır.
+- `-a`: Belirtilen komutun adını değiştirmek için kullanılır.
+- `-l`: Yeni bir login shell başlatır.
+- `-c`: Komutun çalıştırılacağı ortamı temizler.
 
 ## Common Examples
-1. Basit bir komut çalıştırma:
+Aşağıda `exec` komutunun bazı pratik örnekleri bulunmaktadır:
+
+1. **Basit bir komut çalıştırma:**
    ```csh
    exec ls -l
    ```
    Bu komut, mevcut shell'i `ls -l` komutuyla değiştirir ve dosya listesini gösterir.
 
-2. Bir programı alternatif bir isimle çalıştırma:
+2. **Bir programı farklı bir isimle çalıştırma:**
    ```csh
    exec -a myalias /usr/bin/python3
    ```
    Bu komut, `python3` programını `myalias` adıyla çalıştırır.
 
-3. Bir shell oturumu başlatma:
+3. **Yeni bir login shell başlatma:**
    ```csh
-   exec -l /bin/bash
+   exec -l /bin/csh
    ```
-   Bu komut, mevcut shell'i `bash` ile değiştirir ve oturum açma shell'i olarak başlatır.
+   Bu komut, yeni bir login shell başlatır.
+
+4. **Çevreyi temizleyerek bir komut çalıştırma:**
+   ```csh
+   exec -c /usr/bin/env
+   ```
+   Bu komut, mevcut çevre değişkenlerini temizleyerek `env` komutunu çalıştırır.
 
 ## Tips
-- `exec` komutunu kullanırken, mevcut shell oturumunun sona ereceğini unutmayın. Bu nedenle, önemli işlemleri kaydettiğinizden emin olun.
-- `exec` ile çalıştırdığınız programın sonlanması durumunda, shell geri dönmeyecektir. Bu yüzden dikkatli kullanın.
-- `exec` komutunu, bir script içinde kullanarak, scriptin sonrasında başka bir komut çalıştırmak yerine mevcut shell'i değiştirmek için faydalı hale getirebilirsiniz.
+- `exec` komutunu kullanmadan önce, mevcut shell'de kaydedilmesi gereken önemli verilerinizi kontrol edin, çünkü `exec` mevcut shell'i değiştirecektir.
+- `exec` ile çalıştırılan komutlar, shell'den döndüğünde geri dönmeyeceği için, bu komutu yalnızca sonlandırmak istediğiniz durumlarda kullanın.
+- `exec` komutunu, bir betik dosyası içinde son komut olarak kullanmak, betiğin çalışmasını daha verimli hale getirebilir.

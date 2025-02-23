@@ -1,46 +1,45 @@
-# [Linux] C Shell (csh) tr <Utilizare echivalentă>: Transformă caracterele
+# [Linux] C Shell (csh) tr <Utilizare echivalentă>: Transformă caractere
 
 ## Overview
-Comanda `tr` este utilizată pentru a transforma sau a șterge caractere dintr-un flux de date. Aceasta este adesea folosită pentru a modifica textul, cum ar fi înlocuirea literelor sau eliminarea caracterelor nedorite.
+Comanda `tr` este utilizată pentru a transforma sau a șterge caractere dintr-un flux de date. Aceasta poate fi folosită pentru a înlocui caractere, a elimina caractere nedorite sau a converti literele între majuscule și minuscule.
 
 ## Usage
 Sintaxa de bază a comenzii `tr` este următoarea:
-
-```csh
+```
 tr [opțiuni] [argumente]
 ```
 
 ## Common Options
 - `-d`: Șterge caracterele specificate.
 - `-s`: Reduce secvențele de caractere repetate la un singur caracter.
-- `-c`: Inversează setul de caractere specificat, aplicând operația asupra caracterelor care nu sunt incluse în set.
+- `-c`: Inversează setul de caractere specificat, aplicând operația pe toate caracterele care nu sunt în setul dat.
 
 ## Common Examples
-1. **Înlocuirea literelor**:
-   Transformarea literelor mici în litere mari:
+1. **Înlocuirea literelor mici cu litere mari:**
    ```csh
    echo "text de exemplu" | tr 'a-z' 'A-Z'
    ```
+   Acest exemplu va transforma toate literele mici în litere mari.
 
-2. **Ștergerea caracterelor**:
-   Eliminarea spațiilor dintr-un text:
+2. **Ștergerea unui caracter specific:**
    ```csh
-   echo "text cu spatii" | tr -d ' '
+   echo "exemplu text" | tr -d 'e'
    ```
+   Acest exemplu va elimina toate literele 'e' din text.
 
-3. **Reducerea repetărilor**:
-   Reducerea secvențelor de caractere repetate:
+3. **Reducerea spațiilor multiple la un singur spațiu:**
    ```csh
-   echo "aaabbbccc" | tr -s 'a' 'b'
+   echo "exemplu    text   cu   spatii" | tr -s ' '
    ```
+   Acest exemplu va transforma secvențele de spații multiple într-un singur spațiu.
 
-4. **Inversarea setului de caractere**:
-   Înlocuirea literelor cu caracterele opuse:
+4. **Inversarea setului de caractere:**
    ```csh
-   echo "abc123" | tr -c 'a-zA-Z' 'X'
+   echo "abc123" | tr -c '0-9' 'X'
    ```
+   Acest exemplu va înlocui toate caracterele care nu sunt cifre cu 'X'.
 
 ## Tips
-- Folosește `tr` în combinație cu alte comenzi, cum ar fi `grep` sau `sed`, pentru a crea scripturi mai complexe.
-- Testează comenzile `tr` cu `echo` pentru a verifica rezultatele înainte de a le aplica pe fișiere.
-- Fii atent la seturile de caractere pe care le specifici; asigură-te că sunt corecte pentru a evita rezultate neașteptate.
+- Folosește `tr` împreună cu alte comenzi, cum ar fi `grep` sau `awk`, pentru a prelucra datele mai eficient.
+- Testează comenzile cu un set mic de date înainte de a le aplica pe fișiere mari pentru a evita pierderea de informații.
+- Fii atent la ordinea caracterelor în seturile de înlocuire, deoarece `tr` va aplica transformările în ordinea în care sunt specificate.

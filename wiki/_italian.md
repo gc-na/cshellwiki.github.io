@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) @ Uso: Esegue operazioni aritmetiche
+# [Linux] C Shell (csh) @ Utilizzo: Esecuzione di operazioni aritmetiche
 
 ## Overview
-Il comando `@` nel C Shell (csh) è utilizzato per eseguire operazioni aritmetiche e assegnare i risultati a variabili. È un modo semplice per effettuare calcoli direttamente nella shell.
+Il comando `@` in C Shell (csh) viene utilizzato per eseguire operazioni aritmetiche e assegnare valori a variabili. È un modo semplice per effettuare calcoli direttamente nella shell.
 
 ## Usage
 La sintassi di base del comando `@` è la seguente:
@@ -11,9 +11,9 @@ La sintassi di base del comando `@` è la seguente:
 ```
 
 ## Common Options
-Il comando `@` non ha molte opzioni, poiché è principalmente focalizzato sull'esecuzione di calcoli. Tuttavia, è importante notare che può essere utilizzato con diverse operazioni aritmetiche, come:
+Il comando `@` non ha molte opzioni, ma è importante sapere che può gestire diverse operazioni aritmetiche, come:
 
-- `+` : somma
+- `+` : addizione
 - `-` : sottrazione
 - `*` : moltiplicazione
 - `/` : divisione
@@ -24,35 +24,35 @@ Ecco alcuni esempi pratici dell'uso del comando `@`:
 
 1. **Somma di due numeri:**
    ```csh
-   @ risultato = 5 + 3
-   echo $risultato  # Output: 8
+   @ somma = 5 + 3
+   echo $somma  # Output: 8
    ```
 
 2. **Sottrazione:**
    ```csh
-   @ risultato = 10 - 4
-   echo $risultato  # Output: 6
+   @ differenza = 10 - 4
+   echo $differenza  # Output: 6
    ```
 
 3. **Moltiplicazione:**
    ```csh
-   @ risultato = 7 * 6
-   echo $risultato  # Output: 42
+   @ prodotto = 7 * 6
+   echo $prodotto  # Output: 42
    ```
 
 4. **Divisione:**
    ```csh
-   @ risultato = 20 / 4
-   echo $risultato  # Output: 5
+   @ quoziente = 20 / 4
+   echo $quoziente  # Output: 5
    ```
 
-5. **Uso del modulo:**
+5. **Modulo:**
    ```csh
-   @ risultato = 10 % 3
-   echo $risultato  # Output: 1
+   @ resto = 10 % 3
+   echo $resto  # Output: 1
    ```
 
 ## Tips
-- Assicurati di non lasciare spazi attorno all'operatore di assegnazione `=`; altrimenti, il comando non funzionerà correttamente.
-- Puoi utilizzare variabili precedentemente definite all'interno delle espressioni, il che rende il comando molto flessibile.
-- Ricorda che il comando `@` esegue solo operazioni aritmetiche intere; non supporta i numeri decimali.
+- Assicurati di non avere spazi attorno al segno `=` quando assegni un valore a una variabile.
+- Puoi utilizzare il comando `@` in combinazione con altre variabili per eseguire calcoli più complessi.
+- Ricorda che il comando `@` esegue solo operazioni aritmetiche intere; per numeri decimali, considera l'uso di strumenti esterni come `bc`.

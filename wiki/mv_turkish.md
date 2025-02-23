@@ -1,43 +1,44 @@
-# [Linux] C Shell (csh) mv Kullanımı: Dosya ve dizinleri taşımak veya yeniden adlandırmak
+# [Linux] C Shell (csh) mv Kullanımı: Dosya ve dizin taşımak veya yeniden adlandırmak
 
 ## Genel Bakış
-`mv` komutu, dosyaları ve dizinleri taşımak veya yeniden adlandırmak için kullanılır. Bu komut, belirtilen kaynak dosyayı hedef konuma taşır veya dosyanın adını değiştirir.
+`mv` komutu, dosyaları veya dizinleri taşımak veya yeniden adlandırmak için kullanılır. Bu komut, belirli bir dosyanın veya dizinin yerini değiştirmek ya da ismini güncellemek için oldukça faydalıdır.
 
 ## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
+Temel sözdizimi şu şekildedir:
+
 ```csh
 mv [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-i`: Hedef dosya mevcutsa, üzerine yazmadan önce kullanıcıdan onay ister.
-- `-f`: Hedef dosya mevcutsa, üzerine yazmadan onay istemez.
+- `-i`: Hedef dosya mevcutsa, üzerine yazmadan önce onay ister.
 - `-u`: Sadece kaynak dosya, hedef dosyadan daha yeni ise taşır.
+- `-v`: Taşıma işlemi sırasında hangi dosyaların taşındığını gösterir.
 
 ## Yaygın Örnekler
-Aşağıda `mv` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+Aşağıda `mv` komutunun bazı pratik kullanımları verilmiştir:
 
-1. Bir dosyayı başka bir dizine taşımak:
+1. **Bir dosyayı yeniden adlandırma:**
+   ```csh
+   mv eski_dosya.txt yeni_dosya.txt
+   ```
+
+2. **Bir dosyayı başka bir dizine taşıma:**
    ```csh
    mv dosya.txt /hedef/dizin/
    ```
 
-2. Bir dosyanın adını değiştirmek:
+3. **Bir dizini yeniden adlandırma:**
    ```csh
-   mv eski_ad.txt yeni_ad.txt
+   mv eski_dizin yeni_dizin
    ```
 
-3. Bir dosyayı başka bir dizine taşırken adını değiştirmek:
+4. **Birden fazla dosyayı bir dizine taşıma:**
    ```csh
-   mv dosya.txt /hedef/dizin/yeni_ad.txt
-   ```
-
-4. Hedef dosya mevcutsa, üzerine yazmadan önce onay istemek:
-   ```csh
-   mv -i dosya.txt /hedef/dizin/
+   mv dosya1.txt dosya2.txt /hedef/dizin/
    ```
 
 ## İpuçları
-- `mv` komutunu kullanmadan önce, hedef dizinin doğru olduğundan emin olun.
-- Dosya adlarını değiştirmek için `-i` seçeneğini kullanarak yanlışlıkla dosyaların üzerine yazmayı önleyebilirsiniz.
-- Sık kullanılan dizinlere taşımak için, tam yol yerine kısa yollar kullanmayı düşünün.
+- Dosyaları taşımadan önce, hedef dizinin var olduğundan emin olun.
+- `-i` seçeneğini kullanarak yanlışlıkla üzerine yazma işlemlerinden kaçının.
+- Taşıma işlemi sırasında `-v` seçeneği ile hangi dosyaların taşındığını takip edebilirsiniz.

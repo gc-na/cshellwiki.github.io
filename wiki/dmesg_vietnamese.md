@@ -1,7 +1,7 @@
-# [Hệ điều hành] C Shell (csh) dmesg Cách sử dụng: Xem thông tin hệ thống khởi động
+# [Hệ điều hành] C Shell (csh) dmesg Cách sử dụng: Xem thông tin log hệ thống
 
 ## Tổng quan
-Lệnh `dmesg` được sử dụng để hiển thị các thông báo từ bộ đệm của kernel, thường chứa thông tin về quá trình khởi động hệ thống và các sự kiện phần cứng. Nó rất hữu ích cho việc chẩn đoán sự cố và theo dõi hoạt động của hệ thống.
+Lệnh `dmesg` được sử dụng để hiển thị thông tin log của kernel, giúp người dùng theo dõi các sự kiện và thông báo từ hệ thống trong quá trình khởi động và hoạt động. Đây là một công cụ hữu ích để chẩn đoán và xử lý sự cố.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `dmesg` như sau:
@@ -10,33 +10,39 @@ dmesg [tùy chọn] [đối số]
 ```
 
 ## Các tùy chọn phổ biến
-- `-c`: Xóa bộ đệm sau khi hiển thị thông tin.
-- `-n <mức độ>`: Thiết lập mức độ thông báo được hiển thị.
+- `-c`: Xóa thông tin log sau khi hiển thị.
+- `-n <mức độ>`: Thiết lập mức độ thông báo mà bạn muốn hiển thị.
 - `-T`: Hiển thị thời gian theo định dạng dễ đọc.
-- `-f <loại>`: Chỉ hiển thị thông báo từ loại cụ thể.
+- `-f <loại>`: Chỉ hiển thị thông tin log của một loại cụ thể.
 
 ## Ví dụ thường gặp
-- Hiển thị tất cả thông báo từ bộ đệm kernel:
-  ```csh
+- Hiển thị toàn bộ thông tin log của kernel:
+  ```bash
   dmesg
   ```
 
-- Hiển thị thông báo với thời gian dễ đọc:
-  ```csh
+- Hiển thị thông tin log với thời gian dễ đọc:
+  ```bash
   dmesg -T
   ```
 
-- Xóa bộ đệm sau khi hiển thị thông báo:
-  ```csh
+- Xóa log sau khi hiển thị:
+  ```bash
   dmesg -c
   ```
 
-- Chỉ hiển thị thông báo từ loại lỗi:
-  ```csh
-  dmesg -f err
+- Chỉ hiển thị thông tin log với mức độ cảnh báo:
+  ```bash
+  dmesg -n 1
   ```
 
 ## Mẹo
-- Sử dụng `dmesg | less` để dễ dàng cuộn qua thông báo dài.
-- Kiểm tra thường xuyên thông báo từ `dmesg` để phát hiện sớm các vấn đề phần cứng.
-- Kết hợp `dmesg` với các lệnh khác như `grep` để tìm kiếm thông tin cụ thể.
+- Sử dụng `dmesg | less` để cuộn qua thông tin log dài một cách dễ dàng.
+- Kết hợp `dmesg` với `grep` để tìm kiếm thông tin cụ thể:
+  ```bash
+  dmesg | grep error
+  ```
+- Theo dõi log theo thời gian thực bằng cách sử dụng lệnh:
+  ```bash
+  dmesg --follow
+  ```

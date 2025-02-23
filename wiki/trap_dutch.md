@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) trap gebruik: Beheer signalen en beëindigingen
+# [Linux] C Shell (csh) trap gebruik: Beheer signalen en exit-acties
 
 ## Overzicht
-De `trap`-opdracht in C Shell (csh) wordt gebruikt om signalen en beëindigingen van processen te beheren. Hiermee kun je specifieke acties definiëren die moeten worden uitgevoerd wanneer een bepaald signaal wordt ontvangen, zoals het beëindigen van een script of het uitvoeren van een opruimactie.
+De `trap`-opdracht in C Shell (csh) wordt gebruikt om signalen en exit-acties te beheren. Het stelt gebruikers in staat om specifieke commando's uit te voeren wanneer een bepaald signaal wordt ontvangen of wanneer een script wordt beëindigd.
 
 ## Gebruik
 De basis syntaxis van de `trap`-opdracht is als volgt:
@@ -10,49 +10,50 @@ De basis syntaxis van de `trap`-opdracht is als volgt:
 trap [actie] [signaal]
 ```
 
+Hierbij is `[actie]` het commando dat moet worden uitgevoerd en `[signaal]` het signaal dat de actie triggert.
+
 ## Veelvoorkomende opties
-- `action`: De actie die moet worden uitgevoerd wanneer het opgegeven signaal wordt ontvangen. Dit kan een commando zijn of een reeks commando's.
-- `signal`: Het signaal dat je wilt opvangen, zoals `INT` (interrupt), `TERM` (terminate) of `QUIT`.
+- `SIGINT`: Dit signaal wordt verzonden wanneer de gebruiker Ctrl+C indrukt. Het kan worden gebruikt om een script veilig te beëindigen.
+- `SIGTERM`: Dit signaal wordt verzonden om een proces te beëindigen. Het kan worden opgevangen om schoonmaakacties uit te voeren voordat het script stopt.
+- `EXIT`: Dit signaal wordt verzonden wanneer een script eindigt. Het kan worden gebruikt om opruimacties uit te voeren.
 
 ## Veelvoorkomende voorbeelden
 
-### Voorbeeld 1: Basis gebruik van trap
-Dit voorbeeld toont hoe je een script kunt beëindigen met een bericht wanneer het `INT`-signaal (bijvoorbeeld Ctrl+C) wordt ontvangen.
+### Voorbeeld 1: Opvangen van SIGINT
+Dit voorbeeld toont hoe je een script kunt laten stoppen met een boodschap wanneer Ctrl+C wordt ingedrukt.
 
 ```csh
-#!/bin/csh
-trap 'echo "Script beëindigd door gebruiker"; exit' INT
-while (1)
-    echo "Script draait..."
+trap 'echo "Script onderbroken"; exit' SIGINT
+while true
+do
+    echo "Voer iets in (druk Ctrl+C om te stoppen)"
     sleep 1
 end
 ```
 
-### Voorbeeld 2: Opruimactie bij beëindiging
-Hier is een voorbeeld waarbij een opruimactie wordt uitgevoerd voordat het script wordt beëindigd.
+### Voorbeeld 2: Opruimen bij beëindigen
+Hier is een voorbeeld dat een opruimactie uitvoert wanneer het script wordt beëindigd.
 
 ```csh
-#!/bin/csh
-trap 'echo "Opruimen..."; rm -f temp.txt; exit' TERM
-echo "Script draait. Stuur een TERM signaal om te beëindigen."
-while (1)
-    sleep 1
-end
+trap 'echo "Opruimen..."; rm -f temp.txt' EXIT
+echo "Script aan het draaien..."
+touch temp.txt
+sleep 5
 ```
 
-### Voorbeeld 3: Meerdere signalen opvangen
-In dit voorbeeld worden meerdere signalen opgevangen en wordt dezelfde actie uitgevoerd.
+### Voorbeeld 3: Opvangen van SIGTERM
+Dit voorbeeld laat zien hoe je een actie kunt uitvoeren wanneer het script een SIGTERM-signaal ontvangt.
 
 ```csh
-#!/bin/csh
-trap 'echo "Script beëindigd"; exit' INT TERM
-while (1)
-    echo "Script draait..."
-    sleep 1
+trap 'echo "Ontvangen SIGTERM, beëindigen..."' SIGTERM
+while true
+do
+    echo "Script draait... (druk Ctrl+Z om op te schorten)"
+    sleep 2
 end
 ```
 
 ## Tips
-- Zorg ervoor dat je de juiste signalen opvangt die relevant zijn voor jouw script.
-- Gebruik duidelijke en informatieve berichten in je acties om de gebruiker te informeren over wat er gebeurt.
-- Test je scripts grondig om ervoor te zorgen dat de `trap`-opdrachten correct functioneren in verschillende scenario's.
+- Gebruik `trap` om ervoor te zorgen dat je scripts netjes worden afgesloten, vooral als ze tijdelijke bestanden aanmaken.
+- Test je `trap`-instellingen grondig om er zeker van te zijn dat ze de gewenste acties uitvoeren bij het ontvangen van signalen.
+- Houd rekening met de volgorde van signalen; sommige signalen kunnen andere signalen overschrijven of negeren.

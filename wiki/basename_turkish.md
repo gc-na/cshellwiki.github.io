@@ -1,24 +1,24 @@
 # [Linux] C Shell (csh) basename Kullanımı: Dosya adlarını ayıklama
 
-## Genel Bakış
-`basename` komutu, bir dosya yolundan yalnızca dosya adını ayıklamak için kullanılır. Bu, dosya yolunun son kısmını alarak, dosyanın tam yolunu bilmeden yalnızca adını elde etmenizi sağlar.
+## Overview
+`basename` komutu, bir dosya yolundan dosya adını ayıklamak için kullanılır. Bu komut, genellikle dosya yollarını işlemek ve sadece dosya adını elde etmek için faydalıdır.
 
-## Kullanım
+## Usage
 Temel sözdizimi aşağıdaki gibidir:
 
 ```csh
-basename [seçenekler] [argümanlar]
+basename [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-a`: Birden fazla dosya adı ile çalışır ve her birinin adını döndürür.
+## Common Options
+- `-a`: Birden fazla dosya adı verirken, her birini ayrı ayrı işler.
 - `-s`: Belirtilen bir uzantıyı dosya adından kaldırır.
 
-## Yaygın Örnekler
-Aşağıda `basename` komutunun bazı pratik örnekleri bulunmaktadır:
+## Common Examples
+Aşağıda `basename` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
-### Örnek 1: Basit kullanım
-Tam bir dosya yolundan yalnızca dosya adını almak için:
+### Örnek 1: Basit Kullanım
+Bir dosya yolundan sadece dosya adını almak için:
 
 ```csh
 basename /home/kullanici/dosya.txt
@@ -28,8 +28,8 @@ basename /home/kullanici/dosya.txt
 dosya.txt
 ```
 
-### Örnek 2: Uzantıyı kaldırma
-Bir dosya adından belirli bir uzantıyı kaldırmak için:
+### Örnek 2: Uzantıyı Kaldırma
+Bir dosya adından uzantıyı kaldırmak için:
 
 ```csh
 basename /home/kullanici/dosya.txt .txt
@@ -39,8 +39,8 @@ basename /home/kullanici/dosya.txt .txt
 dosya
 ```
 
-### Örnek 3: Birden fazla dosya adı ile çalışma
-Birden fazla dosya adı ile çalışmak için:
+### Örnek 3: Birden Fazla Dosya Adı İşleme
+Birden fazla dosya adı vererek işlem yapmak için:
 
 ```csh
 basename -a /home/kullanici/dosya1.txt /home/kullanici/dosya2.txt
@@ -51,7 +51,7 @@ dosya1.txt
 dosya2.txt
 ```
 
-## İpuçları
-- `basename` komutunu, dosya adlarını işlemek istediğiniz betiklerde sıkça kullanabilirsiniz.
-- Uzantıları kaldırmak için doğru uzantıyı belirttiğinizden emin olun, aksi takdirde beklenmeyen sonuçlar alabilirsiniz.
-- Birden fazla dosya adı ile çalışırken `-a` seçeneğini kullanarak tüm dosya adlarını kolayca alabilirsiniz.
+## Tips
+- `basename` komutunu, dosya adlarını işlemek için bir betik yazarken kullanışlı hale getirebilirsiniz.
+- Uzantıları kaldırmak için `-s` seçeneğini kullanarak dosya adlarını daha temiz bir şekilde elde edebilirsiniz.
+- Birden fazla dosya ile çalışırken `-a` seçeneğini kullanarak işlemleri hızlandırabilirsiniz.

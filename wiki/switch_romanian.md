@@ -1,33 +1,33 @@
-# [Linux] C Shell (csh) switch utilizare: Schimbă între opțiuni
+# [Unix] C Shell (csh) switch utilizare: Comută între opțiuni
 
 ## Overview
-Comanda `switch` în C Shell (csh) este utilizată pentru a evalua o serie de opțiuni și a executa diferite blocuri de cod în funcție de alegerea utilizatorului. Aceasta este utilă pentru a crea scripturi interactive și pentru a gestiona fluxul de execuție în funcție de condiții specifice.
+Comanda `switch` în C Shell (csh) este utilizată pentru a evalua o serie de condiții și a executa diferite blocuri de cod în funcție de rezultatul evaluării. Aceasta este utilă pentru a gestiona ramificările logice în scripturi.
 
 ## Usage
 Sintaxa de bază a comenzii `switch` este următoarea:
 
 ```csh
 switch (expresie)
-    case opțiune1:
-        # comenzi pentru opțiunea 1
+    case valoare1:
+        # comenzi pentru valoare1
         breaksw
-    case opțiune2:
-        # comenzi pentru opțiunea 2
+    case valoare2:
+        # comenzi pentru valoare2
         breaksw
     default:
-        # comenzi pentru opțiunile care nu se potrivesc
+        # comenzi pentru cazul implicit
         breaksw
 end
 ```
 
 ## Common Options
-- `case`: Definește o opțiune specifică care va fi evaluată.
-- `breaksw`: Încheie execuția blocului curent de `switch` și continuă cu următoarele instrucțiuni.
-- `default`: Specifică comenzi care vor fi executate dacă niciunul dintre cazuri nu se potrivește.
+- `case valoare:` - Definește un caz specific care va fi evaluat.
+- `breaksw` - Termină execuția unui bloc de caz și iese din comanda `switch`.
+- `default:` - Specifică blocul de cod care va fi executat dacă niciun caz nu se potrivește.
 
 ## Common Examples
 
-### Exemplul 1: Comutare simplă
+### Exemplul 1: Comutare pe baza unei variabile
 ```csh
 set numar = 2
 switch ($numar)
@@ -43,43 +43,42 @@ switch ($numar)
 end
 ```
 
-### Exemplul 2: Comutare cu mai multe opțiuni
+### Exemplul 2: Verificarea extensiei fișierului
 ```csh
-set zi = "luni"
-switch ($zi)
-    case "luni":
-        echo "Astăzi este luni"
+set fisier = "document.txt"
+switch ($fisier)
+    case *.txt:
+        echo "Fișierul este un document text."
         breaksw
-    case "marți":
-        echo "Astăzi este marți"
-        breaksw
-    case "miercuri":
-        echo "Astăzi este miercuri"
+    case *.jpg:
+        echo "Fișierul este o imagine JPG."
         breaksw
     default:
-        echo "Zi necunoscută"
+        echo "Tip de fișier necunoscut."
         breaksw
 end
 ```
 
-### Exemplul 3: Comutare cu opțiuni multiple
+### Exemplul 3: Comutare pe zilele săptămânii
 ```csh
-set culoare = "verde"
-switch ($culoare)
-    case "roșu":
-    case "verde":
-        echo "Culoarea este roșu sau verde"
+set zi = "Luni"
+switch ($zi)
+    case "Luni":
+        echo "Astăzi este Luni."
         breaksw
-    case "albastru":
-        echo "Culoarea este albastru"
+    case "Marți":
+        echo "Astăzi este Marți."
+        breaksw
+    case "Miercuri":
+        echo "Astăzi este Miercuri."
         breaksw
     default:
-        echo "Culoare necunoscută"
+        echo "Zi necunoscută."
         breaksw
 end
 ```
 
 ## Tips
-- Asigurați-vă că folosiți `breaksw` pentru a evita execuția accidentală a mai multor blocuri de cod.
-- Utilizați `default` pentru a gestiona cazurile neașteptate și a oferi feedback utilizatorului.
-- Puteți combina mai multe opțiuni în același bloc `case` pentru a simplifica codul.
+- Asigurați-vă că utilizați `breaksw` după fiecare caz pentru a evita execuția accidentală a altor cazuri.
+- Folosiți `default` pentru a gestiona situațiile în care niciun caz nu se potrivește, asigurându-vă că scriptul dvs. este robust.
+- Testați întotdeauna scripturile cu diverse valori pentru a verifica comportamentul comenzii `switch`.

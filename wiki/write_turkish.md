@@ -1,43 +1,38 @@
-# [Linux] C Shell (csh) write kullanımı: Mesaj göndermek için bir komut
+# [Linux] C Shell (csh) yazma komutu: Kullanıcılarla doğrudan iletişim kurma
 
-## Overview
-`write` komutu, bir kullanıcıdan diğer bir kullanıcıya terminal üzerinden mesaj göndermek için kullanılır. Bu komut, özellikle çoklu kullanıcı sistemlerinde iletişim kurmak için oldukça faydalıdır.
+## Genel Bakış
+`write` komutu, C Shell (csh) ortamında, belirli bir kullanıcıya doğrudan mesaj göndermek için kullanılır. Bu komut, kullanıcılar arasında anlık iletişim sağlamak için oldukça faydalıdır.
 
-## Usage
+## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
 
-```csh
-write [kullanıcı_adı] [terminal]
+```bash
+write [seçenekler] [kullanıcı_adı]
 ```
 
-Burada `kullanıcı_adı`, mesaj göndermek istediğiniz kullanıcının adıdır ve `terminal` ise mesajın gönderileceği terminaldir. Terminal belirtilmezse, varsayılan terminal kullanılır.
+## Yaygın Seçenekler
+- `-n`: Mesaj gönderirken kullanıcıya bildirimde bulunmaz.
+- `-h`: Mesajın gönderileceği kullanıcıya, mesajın gönderildiği bilgisini gösterir.
 
-## Common Options
-- `-n`: Mesajın gönderileceği terminal numarasını belirtir.
-- `-h`: Kullanıcıya mesajın gönderildiğini bildiren bir başlık gösterir.
-
-## Common Examples
-Aşağıda `write` komutunun bazı pratik örnekleri bulunmaktadır:
-
+## Yaygın Örnekler
 1. Belirli bir kullanıcıya mesaj göndermek:
-   ```csh
+   ```bash
    write ali
    Merhaba Ali, nasılsın?
    ```
 
-2. Belirli bir terminaldeki kullanıcıya mesaj göndermek:
-   ```csh
-   write ali pts/1
-   Toplantı saat 3'te başlayacak.
+2. Mesajı bir dosyadan okuyarak göndermek:
+   ```bash
+   write ali < mesaj.txt
    ```
 
-3. Kullanıcıya mesaj göndermeden önce başlık göstermek:
-   ```csh
-   write -h ali
-   Önemli bir duyuru var!
+3. Kullanıcıya bildirimde bulunmadan mesaj göndermek:
+   ```bash
+   write -n ali
+   Bu mesaj gizli!
    ```
 
-## Tips
-- Mesaj göndermeden önce, alıcının terminalinin açık olduğundan emin olun; aksi takdirde mesaj ulaşmayabilir.
-- `write` komutunu kullanırken, alıcının izinlerini kontrol edin; bazı kullanıcılar mesaj almak istemeyebilir.
-- Mesajınızı kısa ve net tutun, böylece alıcı mesajı kolayca anlayabilir.
+## İpuçları
+- Mesaj gönderirken, kullanıcıların oturum açtığından emin olun; aksi takdirde mesaj iletilemez.
+- Mesajınızı yazdıktan sonra, gönderimi tamamlamak için `Ctrl+D` tuşlarına basmayı unutmayın.
+- Eğer birden fazla kullanıcıya mesaj göndermek istiyorsanız, her bir kullanıcı için ayrı bir `write` komutu kullanmalısınız.

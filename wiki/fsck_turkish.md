@@ -1,45 +1,45 @@
 # [Linux] C Shell (csh) fsck Kullanımı: Dosya sistemini kontrol etme
 
 ## Overview
-`fsck` (file system check), dosya sistemlerini kontrol etmek ve onarmak için kullanılan bir komuttur. Dosya sistemindeki hataları tespit eder ve düzeltir, bu sayede veri kaybını önlemeye yardımcı olur.
+`fsck`, dosya sisteminin tutarlılığını kontrol etmek ve onarmak için kullanılan bir komuttur. Dosya sistemindeki hataları tespit eder ve gerektiğinde düzeltir, böylece sistemin sağlıklı bir şekilde çalışmasını sağlar.
 
 ## Usage
 Temel sözdizimi aşağıdaki gibidir:
 
-```bash
+```csh
 fsck [options] [arguments]
 ```
 
 ## Common Options
-- `-a`: Otomatik onarım yapar. Hataları düzeltmek için kullanıcı müdahalesi gerektirmez.
-- `-n`: Dosya sistemini kontrol eder ancak onarım yapmaz. Sadece hataları raporlar.
-- `-y`: Tüm hataları otomatik olarak düzeltir. Kullanıcıdan onay istemez.
-- `-t`: Belirli bir dosya sisteminin kontrol süresini gösterir.
+- `-a`: Otomatik düzeltme yapar, hataları kullanıcıdan onay almadan düzeltir.
+- `-n`: Düzeltme yapmadan sadece kontrol eder; hataları gösterir ama düzeltmez.
+- `-y`: Tüm hataları otomatik olarak düzeltir; kullanıcıdan onay istemez.
+- `-t`: Belirtilen dosya sisteminin türünü belirtir.
 
 ## Common Examples
-Aşağıda `fsck` komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda `fsck` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
-1. Tüm dosya sistemlerini kontrol etmek için:
-   ```bash
+1. Tüm dosya sistemlerini kontrol etme:
+   ```csh
    fsck -A
    ```
 
-2. Belirli bir dosya sistemini kontrol etmek için:
-   ```bash
+2. Belirli bir dosya sistemini kontrol etme (örneğin, `/dev/sda1`):
+   ```csh
    fsck /dev/sda1
    ```
 
-3. Hataları otomatik olarak düzeltmek için:
-   ```bash
+3. Hataları otomatik olarak düzeltme:
+   ```csh
    fsck -y /dev/sda1
    ```
 
-4. Sadece hataları raporlamak için:
-   ```bash
+4. Sadece kontrol etme (düzeltme yapmadan):
+   ```csh
    fsck -n /dev/sda1
    ```
 
 ## Tips
-- `fsck` komutunu çalıştırmadan önce dosya sisteminin montajının kaldırıldığından emin olun. Aksi takdirde, veri kaybı riski vardır.
-- Düzenli olarak dosya sisteminizi kontrol etmek, potansiyel sorunları erken tespit etmenize yardımcı olabilir.
-- Eğer bir dosya sisteminde sürekli hatalarla karşılaşıyorsanız, donanım sorunlarını kontrol etmekte fayda vardır.
+- `fsck` komutunu çalıştırmadan önce dosya sisteminin montajlı olmadığından emin olun. Aksi takdirde, veri kaybı yaşanabilir.
+- Düzenli olarak dosya sisteminizi kontrol etmek, sistem sağlığını korumak için faydalıdır.
+- Hatalı bir dosya sistemi ile karşılaşırsanız, `fsck` komutunu çalıştırmadan önce verilerinizi yedeklemeyi unutmayın.

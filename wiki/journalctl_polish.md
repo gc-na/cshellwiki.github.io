@@ -1,51 +1,52 @@
-# [Linux] C Shell (csh) journalctl użycie: przeglądanie logów systemowych
+# [Linux] C Shell (csh) journalctl użycie: Przeglądanie dzienników systemowych
 
-## Overview
-`journalctl` to polecenie używane do przeglądania logów systemowych w systemach Linux, które korzystają z systemd. Umożliwia dostęp do informacji o zdarzeniach systemowych, co jest przydatne do diagnostyki i monitorowania.
+## Przegląd
+Polecenie `journalctl` jest używane do przeglądania dzienników systemowych w systemach opartych na systemd. Umożliwia użytkownikom dostęp do logów, które są zbierane przez systemd-journald, co pozwala na monitorowanie i diagnozowanie problemów w systemie.
 
-## Usage
-Podstawowa składnia polecenia `journalctl` jest następująca:
+## Użycie
+Podstawowa składnia polecenia `journalctl` wygląda następująco:
 
-```csh
-journalctl [options] [arguments]
+```
+journalctl [opcje] [argumenty]
 ```
 
-## Common Options
-- `-b` – wyświetla logi od ostatniego uruchomienia systemu.
-- `-f` – śledzi na żywo nowe wpisy w logach.
-- `--since` – pozwala na określenie daty początkowej do przeszukiwania logów.
-- `--until` – pozwala na określenie daty końcowej do przeszukiwania logów.
-- `-u <nazwa_usługi>` – filtruje logi dla określonej usługi systemd.
+## Częste opcje
+- `-b` lub `--boot`: Wyświetla logi z bieżącej sesji rozruchowej.
+- `-f` lub `--follow`: Śledzi na żywo nowe wpisy w dzienniku.
+- `-p` lub `--priority`: Filtruje logi według priorytetu (np. `-p err` wyświetli tylko błędy).
+- `--since` i `--until`: Umożliwiają określenie zakresu czasowego dla logów.
+- `-u` lub `--unit`: Filtruje logi według jednostki systemd (np. `-u ssh.service`).
 
-## Common Examples
-Oto kilka praktycznych przykładów użycia `journalctl`:
-
+## Przykłady
 1. Wyświetlenie wszystkich logów:
-   ```csh
+   ```bash
    journalctl
    ```
 
-2. Wyświetlenie logów od ostatniego uruchomienia systemu:
-   ```csh
+2. Wyświetlenie logów z bieżącej sesji rozruchowej:
+   ```bash
    journalctl -b
    ```
 
-3. Śledzenie nowych wpisów w logach na żywo:
-   ```csh
+3. Śledzenie nowych wpisów w dzienniku na żywo:
+   ```bash
    journalctl -f
    ```
 
-4. Wyświetlenie logów dla konkretnej usługi, np. `nginx`:
-   ```csh
-   journalctl -u nginx
+4. Wyświetlenie logów tylko dla jednostki `ssh.service`:
+   ```bash
+   journalctl -u ssh.service
    ```
 
-5. Wyświetlenie logów w określonym przedziale czasowym:
-   ```csh
-   journalctl --since "2023-10-01" --until "2023-10-10"
+5. Wyświetlenie logów w określonym zakresie czasowym:
+   ```bash
+   journalctl --since "2023-10-01" --until "2023-10-31"
    ```
 
-## Tips
-- Używaj opcji `-f`, aby na bieżąco monitorować logi, co jest szczególnie przydatne podczas rozwiązywania problemów.
-- Filtruj logi według usług, aby skupić się na interesujących cię komponentach systemu.
-- Regularnie przeglądaj logi, aby wykrywać potencjalne problemy zanim staną się poważne.
+## Wskazówki
+- Używaj opcji `-p` do szybkiego filtrowania logów według poziomu ważności, co ułatwia diagnozowanie problemów.
+- Regularnie przeglądaj logi, aby zidentyfikować potencjalne problemy zanim staną się poważne.
+- Możesz używać `grep` w połączeniu z `journalctl`, aby wyszukiwać konkretne frazy w logach, na przykład:
+  ```bash
+  journalctl | grep "błąd"
+  ```

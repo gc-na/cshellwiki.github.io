@@ -1,40 +1,41 @@
 # [Linux] C Shell (csh) sync : Synchroniser les données sur le disque
 
 ## Overview
-La commande `sync` est utilisée pour synchroniser les données en mémoire avec le disque. Elle assure que toutes les écritures en attente dans le système de fichiers sont écrites sur le disque, ce qui est particulièrement utile avant de retirer des périphériques de stockage ou de redémarrer le système.
+La commande `sync` est utilisée pour synchroniser les données en mémoire tampon avec le disque. Cela signifie qu'elle force l'écriture des données en attente sur le disque, assurant ainsi que toutes les modifications effectuées sur les fichiers sont enregistrées.
 
 ## Usage
 La syntaxe de base de la commande `sync` est la suivante :
 
-```csh
+```
 sync [options] [arguments]
 ```
 
 ## Common Options
-La commande `sync` ne possède pas de nombreuses options, mais voici quelques-unes des plus courantes :
+La commande `sync` n'a pas de nombreuses options, mais voici quelques-unes des plus courantes :
 
-- `-f` : Force la synchronisation des fichiers, même si le système de fichiers est monté en lecture seule.
+- `-f` : Force la synchronisation des fichiers spécifiés.
+- `-d` : Synchronise les données des fichiers en mémoire tampon.
 
 ## Common Examples
+
 Voici quelques exemples pratiques de l'utilisation de la commande `sync` :
 
-1. **Synchroniser toutes les écritures en attente :**
+1. **Synchroniser toutes les données en mémoire tampon :**
    ```csh
    sync
    ```
 
-2. **Forcer la synchronisation des fichiers :**
+2. **Forcer la synchronisation d'un fichier spécifique :**
    ```csh
-   sync -f
+   sync -f /chemin/vers/fichier.txt
    ```
 
-3. **Synchroniser avant de démonter un périphérique :**
+3. **Synchroniser les données et les métadonnées :**
    ```csh
-   sync
-   umount /dev/sdb1
+   sync -d
    ```
 
 ## Tips
-- Utilisez `sync` avant de retirer un périphérique de stockage externe pour éviter la perte de données.
-- Exécutez `sync` après avoir copié de gros fichiers pour vous assurer qu'ils sont correctement écrits sur le disque.
-- Vous pouvez inclure `sync` dans des scripts pour garantir que les données sont sauvegardées avant des opérations critiques.
+- Utilisez `sync` avant d'éteindre ou de redémarrer votre système pour vous assurer que toutes les données sont correctement enregistrées.
+- Vous pouvez exécuter `sync` plusieurs fois sans effet négatif ; cela peut être utile si vous avez effectué de nombreuses modifications de fichiers.
+- Intégrez `sync` dans des scripts de sauvegarde pour garantir que toutes les données sont écrites sur le disque avant de procéder à d'autres opérations.

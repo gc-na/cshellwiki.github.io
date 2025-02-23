@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) tmux gebruik: Beheer van terminalmultiplexers
+# [Linux] C Shell (csh) tmux gebruik: Beheer van terminalvensters
 
 ## Overzicht
-De `tmux`-opdracht is een terminalmultiplexer die gebruikers in staat stelt om meerdere terminalsessies binnen één enkele venster te beheren. Dit is bijzonder handig voor het organiseren van verschillende taken en processen zonder meerdere terminalvensters te openen.
+De `tmux`-opdracht is een terminalmultiplexer die gebruikers in staat stelt om meerdere terminalsessies binnen één venster te beheren. Het biedt de mogelijkheid om sessies te splitsen, vensters te maken en te navigeren tussen verschillende opdrachten zonder dat je de terminal hoeft te sluiten.
 
 ## Gebruik
 De basis syntaxis van de `tmux`-opdracht is als volgt:
@@ -10,36 +10,40 @@ De basis syntaxis van de `tmux`-opdracht is als volgt:
 tmux [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
+## Veelvoorkomende Opties
 - `new`: Start een nieuwe tmux-sessie.
 - `attach`: Verbind met een bestaande tmux-sessie.
+- `detach`: Koppel de huidige sessie los.
 - `list-sessions`: Toon een lijst van actieve tmux-sessies.
-- `kill-session`: Sluit een specifieke tmux-sessie af.
+- `kill-session`: Sluit een specifieke tmux-sessie.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van `tmux`:
 
-1. **Een nieuwe tmux-sessie starten:**
+1. **Een nieuwe tmux-sessie starten**:
    ```bash
    tmux new -s mijnsessie
    ```
 
-2. **Verbind met een bestaande sessie:**
+2. **Verbinding maken met een bestaande sessie**:
    ```bash
    tmux attach -t mijnsessie
    ```
 
-3. **Lijst van actieve sessies bekijken:**
+3. **Een sessie loskoppelen**:
+   Druk op `Ctrl + b`, gevolgd door `d`.
+
+4. **Lijst van actieve sessies weergeven**:
    ```bash
    tmux list-sessions
    ```
 
-4. **Een specifieke sessie beëindigen:**
+5. **Een specifieke sessie beëindigen**:
    ```bash
    tmux kill-session -t mijnsessie
    ```
 
 ## Tips
-- Gebruik `Ctrl+b` gevolgd door `%` om een verticale splitsing van het venster te maken, en `Ctrl+b` gevolgd door `"` voor een horizontale splitsing.
-- Maak gebruik van paneel-navigatie met `Ctrl+b` gevolgd door de pijltjestoetsen om snel tussen verschillende vensters te schakelen.
-- Sla je sessies op door regelmatig te controleren op actieve sessies met `tmux list-sessions`, zodat je geen werk verliest.
+- Gebruik `Ctrl + b` gevolgd door een toets om snel te navigeren tussen vensters en splitsingen.
+- Geef je sessies duidelijke namen om ze gemakkelijker te kunnen identificeren.
+- Maak gebruik van splitscreen-functionaliteit om meerdere opdrachten tegelijkertijd te monitoren en uit te voeren.

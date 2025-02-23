@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) unsetopt : Désactiver des options de shell
+# [Linux] C Shell (csh) unsetopt : Désactiver les options de shell
 
 ## Overview
-La commande `unsetopt` dans C Shell (csh) est utilisée pour désactiver certaines options de shell qui peuvent modifier le comportement par défaut du shell. Cela permet aux utilisateurs de personnaliser leur environnement de travail selon leurs préférences.
+La commande `unsetopt` dans C Shell (csh) est utilisée pour désactiver certaines options du shell. Cela permet aux utilisateurs de modifier le comportement du shell en fonction de leurs besoins.
 
 ## Usage
 La syntaxe de base de la commande `unsetopt` est la suivante :
@@ -11,37 +11,37 @@ unsetopt [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes que vous pouvez désactiver avec `unsetopt` :
+Voici quelques options courantes pour `unsetopt` avec de brèves explications :
 
-- `allexport` : Désactive l'exportation automatique des variables.
-- `ignoreeof` : Permet de désactiver la sortie du shell à la réception d'un EOF (End Of File).
 - `noclobber` : Empêche l'écrasement des fichiers existants lors de la redirection de la sortie.
 - `noglob` : Désactive l'expansion des caractères génériques dans les commandes.
+- `noexec` : Empêche l'exécution des commandes, utile pour le débogage.
+- `interactive` : Désactive le mode interactif, ce qui signifie que le shell ne demandera pas de confirmation pour certaines actions.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `unsetopt` :
 
-1. Désactiver l'exportation automatique des variables :
-    ```csh
-    unsetopt allexport
-    ```
+1. Désactiver l'option `noclobber` :
+   ```csh
+   unsetopt noclobber
+   ```
 
-2. Désactiver la sortie du shell à la réception d'un EOF :
-    ```csh
-    unsetopt ignoreeof
-    ```
+2. Désactiver l'option `noglob` :
+   ```csh
+   unsetopt noglob
+   ```
 
-3. Permettre l'écrasement des fichiers existants lors de la redirection :
-    ```csh
-    unsetopt noclobber
-    ```
+3. Désactiver l'option `noexec` pour permettre l'exécution des commandes :
+   ```csh
+   unsetopt noexec
+   ```
 
-4. Désactiver l'expansion des caractères génériques :
-    ```csh
-    unsetopt noglob
-    ```
+4. Désactiver le mode interactif :
+   ```csh
+   unsetopt interactive
+   ```
 
 ## Tips
-- Utilisez `set` pour vérifier les options actuellement activées ou désactivées dans votre shell.
-- Soyez prudent lorsque vous désactivez des options comme `noclobber`, car cela peut entraîner la perte de données si vous écrasez des fichiers par inadvertance.
-- Pensez à ajouter vos préférences de configuration dans votre fichier `.cshrc` pour qu'elles soient appliquées automatiquement à chaque session.
+- Avant de désactiver une option, vérifiez son état actuel avec la commande `set`.
+- Utilisez `unsetopt` avec précaution, car certaines options peuvent affecter le comportement de votre shell de manière significative.
+- Pensez à utiliser `set` pour réactiver les options si nécessaire après avoir terminé vos opérations.

@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) sort gebruik: sorteren van tekstbestanden
+# [Linux] C Shell (csh) sort gebruik: sorteren van gegevens
 
 ## Overzicht
-De `sort`-opdracht in C Shell (csh) wordt gebruikt om de regels van tekstbestanden te sorteren. Het kan gegevens ordenen op basis van verschillende criteria, zoals alfabetisch of numeriek, en biedt verschillende opties om de sortering aan te passen.
+De `sort`-opdracht in C Shell (csh) wordt gebruikt om de regels van tekstbestanden of invoer te sorteren. Het kan gegevens sorteren op basis van verschillende criteria, zoals alfabetisch of numeriek, en biedt veel opties om de sortering aan te passen.
 
 ## Gebruik
 De basis syntaxis van de `sort`-opdracht is als volgt:
@@ -11,27 +11,26 @@ sort [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-Hier zijn enkele veelvoorkomende opties voor de `sort`-opdracht:
-
-- `-r`: Sorteert in omgekeerde volgorde.
-- `-n`: Sorteert numeriek in plaats van alfabetisch.
+- `-r`: Sorteert de invoer in omgekeerde volgorde.
+- `-n`: Sorteert de invoer numeriek in plaats van alfabetisch.
 - `-k`: Specificeert de kolom waarop gesorteerd moet worden.
-- `-u`: Verwijdert dubbele regels in de uitvoer.
+- `-u`: Verwijdert dubbele regels uit de uitvoer.
 - `-o`: Schrijft de gesorteerde uitvoer naar een bestand.
 
 ## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van de `sort`-opdracht:
 
-1. **Basis sorteren van een bestand:**
+1. **Basis sortering van een bestand:**
    ```csh
    sort bestand.txt
    ```
 
-2. **Omgekeerd sorteren:**
+2. **Omgekeerde sortering:**
    ```csh
    sort -r bestand.txt
    ```
 
-3. **Numeriek sorteren:**
+3. **Numerieke sortering:**
    ```csh
    sort -n cijfers.txt
    ```
@@ -41,12 +40,17 @@ Hier zijn enkele veelvoorkomende opties voor de `sort`-opdracht:
    sort -k 2 bestand.txt
    ```
 
-5. **Dubbele regels verwijderen en naar een nieuw bestand schrijven:**
+5. **Verwijderen van dubbele regels:**
    ```csh
-   sort -u -o gesorteerd.txt bestand.txt
+   sort -u bestand.txt
+   ```
+
+6. **Sorteren en uitvoer naar een bestand schrijven:**
+   ```csh
+   sort -o gesorteerd.txt bestand.txt
    ```
 
 ## Tips
-- Gebruik de `-o` optie om de gesorteerde uitvoer direct naar een bestand te schrijven, zodat je de originele gegevens niet verliest.
-- Combineer opties om de sortering aan te passen aan jouw behoeften, bijvoorbeeld `sort -n -r` voor numeriek omgekeerd sorteren.
-- Controleer altijd de uitvoer van de `sort`-opdracht om te bevestigen dat de gegevens correct zijn gesorteerd, vooral bij complexe bestanden.
+- Gebruik de `-n` optie als je met getallen werkt om ervoor te zorgen dat ze correct worden gesorteerd.
+- Combineer opties om de sortering aan te passen aan je behoeften, bijvoorbeeld `sort -r -n` voor omgekeerde numerieke sortering.
+- Vergeet niet dat de sortering standaard alfabetisch is, dus voor numerieke gegevens is het belangrijk om de juiste opties te gebruiken.

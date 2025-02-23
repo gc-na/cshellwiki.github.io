@@ -1,37 +1,37 @@
-# [Linux] C Shell (csh) mesg <Użycie: kontrola wiadomości od innych użytkowników>
+# [Linux] C Shell (csh) mesg <Użycie: kontrola komunikacji między użytkownikami>
 
 ## Overview
-Polecenie `mesg` w powłoce C Shell (csh) służy do kontrolowania, czy inne użytkownicy mogą wysyłać wiadomości do Twojego terminala. Umożliwia to zarządzanie prywatnością komunikacji w systemie wieloużytkownikowym.
+Polecenie `mesg` w powłoce C Shell (csh) służy do kontrolowania, czy użytkownik może odbierać wiadomości od innych użytkowników w systemie. Umożliwia to zarządzanie prywatnością i komunikacją w środowisku wieloużytkownikowym.
 
 ## Usage
 Podstawowa składnia polecenia `mesg` jest następująca:
 
-```
+```csh
 mesg [opcje] [argumenty]
 ```
 
 ## Common Options
-- `y` - Zezwala innym użytkownikom na wysyłanie wiadomości do Twojego terminala.
-- `n` - Blokuje możliwość wysyłania wiadomości przez innych użytkowników.
-- `-n` - To samo co `n`, używane w kontekście opcji.
+- `y` - Zezwala na odbieranie wiadomości od innych użytkowników.
+- `n` - Blokuje odbieranie wiadomości od innych użytkowników.
+- `-n` - Krótsza forma opcji `n`.
 
 ## Common Examples
-1. **Zezwolenie na wiadomości:**
-   ```csh
-   mesg y
-   ```
+- Aby zezwolić na odbieranie wiadomości:
+  ```csh
+  mesg y
+  ```
 
-2. **Zablokowanie wiadomości:**
-   ```csh
-   mesg n
-   ```
+- Aby zablokować odbieranie wiadomości:
+  ```csh
+  mesg n
+  ```
 
-3. **Sprawdzenie aktualnego ustawienia:**
-   ```csh
-   mesg
-   ```
+- Aby sprawdzić bieżący stan komunikacji:
+  ```csh
+  mesg
+  ```
 
 ## Tips
-- Używaj `mesg n`, gdy chcesz uniknąć zakłóceń podczas pracy w terminalu.
-- Pamiętaj, aby ustawić `mesg y`, gdy chcesz być dostępny dla innych użytkowników, na przykład podczas pracy w zespole.
-- Sprawdzaj swoje ustawienia `mesg` regularnie, aby upewnić się, że odpowiadają Twoim potrzebom komunikacyjnym.
+- Używaj `mesg n`, gdy potrzebujesz skupić się na pracy i nie chcesz być rozpraszany przez wiadomości.
+- Pamiętaj, aby włączyć odbieranie wiadomości (`mesg y`) przed ważnymi spotkaniami lub sesjami współpracy, aby inni mogli się z Tobą komunikować.
+- Sprawdzaj stan `mesg` regularnie, aby upewnić się, że Twoje ustawienia są zgodne z Twoimi potrzebami.

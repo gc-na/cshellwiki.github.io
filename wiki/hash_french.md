@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) hash : Gérer le cache des chemins des commandes
+# [Linux] C Shell (csh) hash : Gérer le cache des commandes
 
 ## Overview
-La commande `hash` dans C Shell (csh) est utilisée pour gérer le cache des chemins des commandes exécutées. Elle permet de mémoriser les chemins des commandes pour accélérer leur recherche lors des exécutions futures.
+La commande `hash` dans C Shell (csh) est utilisée pour gérer le cache des commandes. Elle permet de mémoriser les chemins des commandes exécutées, ce qui peut accélérer leur exécution lors des appels suivants.
 
 ## Usage
 La syntaxe de base de la commande `hash` est la suivante :
@@ -11,34 +11,34 @@ hash [options] [arguments]
 ```
 
 ## Common Options
-- `-r` : Réinitialise le cache des chemins des commandes.
-- `-p` : Affiche le chemin complet des commandes mémorisées.
-- `-l` : Liste les commandes mémorisées avec leurs chemins.
+- `-r` : Réinitialise le cache des commandes, supprimant toutes les entrées mémorisées.
+- `-p` : Affiche les chemins des commandes mémorisées dans le cache.
+- `-l` : Liste toutes les commandes mémorisées avec leurs chemins.
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de la commande `hash` :
 
-1. **Afficher le cache des commandes mémorisées :**
-   ```csh
-   hash
-   ```
+### Afficher le cache des commandes
+Pour afficher les chemins des commandes actuellement mémorisées, utilisez :
 
-2. **Réinitialiser le cache :**
-   ```csh
-   hash -r
-   ```
+```csh
+hash
+```
 
-3. **Afficher le chemin d'une commande spécifique :**
-   ```csh
-   hash -p ls
-   ```
+### Réinitialiser le cache
+Pour réinitialiser le cache des commandes, exécutez :
 
-4. **Lister toutes les commandes mémorisées avec leurs chemins :**
-   ```csh
-   hash -l
-   ```
+```csh
+hash -r
+```
+
+### Lister les chemins des commandes mémorisées
+Pour lister les commandes mémorisées avec leurs chemins, utilisez :
+
+```csh
+hash -l
+```
 
 ## Tips
-- Utilisez `hash -r` après avoir installé de nouvelles commandes pour vous assurer que le cache est à jour.
-- Vérifiez régulièrement le cache avec `hash` pour éviter d'utiliser des chemins obsolètes.
-- Si vous avez des commandes personnalisées, assurez-vous qu'elles sont ajoutées au cache pour un accès rapide.
+- Utilisez `hash` régulièrement pour vérifier quelles commandes sont mémorisées et optimiser votre environnement de travail.
+- Après avoir installé de nouvelles commandes, pensez à utiliser `hash -r` pour vous assurer que le cache est à jour.
+- Si vous rencontrez des problèmes avec des commandes non trouvées, vérifiez le cache avec `hash` pour voir si le chemin est correct.

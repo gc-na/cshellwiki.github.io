@@ -1,4 +1,4 @@
-# [Linux] C Shell (csh) mesg : [contrôle des messages de terminal]
+# [Linux] C Shell (csh) mesg <Utilisation équivalente en français>: Gérer les permissions de messagerie
 
 ## Overview
 La commande `mesg` permet de contrôler si les autres utilisateurs peuvent envoyer des messages à votre terminal. Elle est souvent utilisée dans des environnements multi-utilisateurs pour gérer la confidentialité des communications.
@@ -11,30 +11,29 @@ mesg [options] [arguments]
 ```
 
 ## Common Options
-- `y` : Permet aux autres utilisateurs d'envoyer des messages à votre terminal.
+- `y` : Autorise les autres utilisateurs à envoyer des messages à votre terminal.
 - `n` : Empêche les autres utilisateurs d'envoyer des messages à votre terminal.
-- `-n` : Identique à l'option `n`.
-- `-y` : Identique à l'option `y`.
+- `?` : Affiche l'état actuel de la permission de messagerie.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `mesg` :
 
-1. **Autoriser les messages :**
+1. **Autoriser les messages** :
    ```csh
    mesg y
    ```
 
-2. **Interdire les messages :**
+2. **Interdire les messages** :
    ```csh
    mesg n
    ```
 
-3. **Vérifier l'état actuel :**
+3. **Vérifier l'état actuel** :
    ```csh
-   mesg
+   mesg ?
    ```
 
 ## Tips
-- Utilisez `mesg n` lorsque vous travaillez sur des tâches sensibles pour éviter les interruptions.
-- Pensez à réactiver les messages avec `mesg y` lorsque vous êtes prêt à recevoir des communications.
-- Vérifiez régulièrement l'état de votre terminal avec `mesg` pour vous assurer que vos préférences sont en place.
+- Utilisez `mesg n` si vous travaillez dans un environnement partagé et que vous souhaitez éviter les distractions.
+- Pensez à vérifier l'état avec `mesg ?` avant de commencer une session de travail pour vous assurer que vous êtes dans le bon mode de communication.
+- Rappelez-vous que ces paramètres ne persistent pas après la déconnexion, vous devrez donc les réappliquer à chaque nouvelle session si nécessaire.

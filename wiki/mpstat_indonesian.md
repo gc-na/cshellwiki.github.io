@@ -1,7 +1,7 @@
-# [Sistem Operasi] C Shell (csh) mpstat Penggunaan: Memantau statistik CPU
+# [Sistem Operasi] C Shell (csh) mpstat Penggunaan: Memantau Statistik CPU
 
 ## Overview
-Perintah `mpstat` digunakan untuk menampilkan statistik penggunaan CPU secara real-time. Ini memberikan informasi tentang aktivitas CPU di sistem, termasuk persentase waktu CPU yang digunakan untuk berbagai tugas seperti pengguna, sistem, dan idle.
+Perintah `mpstat` digunakan untuk menampilkan statistik penggunaan CPU secara real-time. Ini memberikan informasi tentang aktivitas CPU, termasuk penggunaan waktu idle, sistem, dan pengguna, yang sangat berguna untuk analisis kinerja sistem.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `mpstat`:
@@ -11,38 +11,39 @@ mpstat [options] [arguments]
 ```
 
 ## Common Options
+Berikut adalah beberapa opsi umum yang dapat digunakan dengan `mpstat`:
+
 - `-P ALL`: Menampilkan statistik untuk semua CPU.
-- `-u`: Menampilkan statistik penggunaan CPU dalam format persentase.
+- `-u`: Menampilkan penggunaan CPU dalam persentase.
 - `-h`: Menampilkan output dalam format yang lebih mudah dibaca.
-- `interval`: Menentukan interval waktu (dalam detik) untuk pembaruan statistik.
-- `count`: Menentukan jumlah pengulangan yang akan ditampilkan.
+- `interval`: Menentukan interval waktu (dalam detik) untuk pengambilan data berulang.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `mpstat`:
 
-1. Menampilkan statistik CPU untuk semua prosesor setiap 5 detik:
+1. Menampilkan statistik CPU untuk semua prosesor:
    ```csh
-   mpstat -P ALL 5
+   mpstat -P ALL
    ```
 
-2. Menampilkan penggunaan CPU dalam format persentase:
+2. Menampilkan penggunaan CPU setiap 5 detik:
    ```csh
-   mpstat -u
+   mpstat 5
    ```
 
-3. Menampilkan statistik CPU dengan output yang lebih mudah dibaca:
+3. Menampilkan penggunaan CPU dengan format yang lebih mudah dibaca:
    ```csh
    mpstat -h
    ```
 
-4. Menampilkan statistik CPU setiap 2 detik selama 3 kali:
+4. Mengambil statistik CPU untuk prosesor tertentu (misalnya CPU 0):
    ```csh
-   mpstat 2 3
+   mpstat -P 0
    ```
 
 ## Tips
-- Gunakan opsi `-P ALL` untuk mendapatkan gambaran lengkap dari semua CPU di sistem Anda.
-- Pertimbangkan untuk menggabungkan `mpstat` dengan alat pemantauan lainnya untuk analisis yang lebih mendalam.
+- Gunakan opsi `-P ALL` untuk mendapatkan gambaran menyeluruh tentang semua CPU yang ada di sistem Anda.
+- Cobalah mengatur interval yang lebih pendek untuk memantau penggunaan CPU secara lebih dinamis saat menjalankan aplikasi berat.
 - Simpan output `mpstat` ke dalam file untuk analisis lebih lanjut dengan menggunakan redirection, misalnya:
   ```csh
   mpstat -P ALL 5 > cpu_stats.txt

@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) passwd gebruik: Wijzig wachtwoord
+# [Linux] C Shell (csh) passwd gebruik: Wachtwoord wijzigen
 
 ## Overzicht
-De `passwd` opdracht in C Shell (csh) wordt gebruikt om het wachtwoord van een gebruiker te wijzigen. Dit kan zowel voor de huidige gebruiker als voor andere gebruikers, afhankelijk van de rechten van de gebruiker die de opdracht uitvoert.
+De `passwd` opdracht in C Shell (csh) wordt gebruikt om het wachtwoord van een gebruiker te wijzigen. Dit kan zowel voor de huidige gebruiker als voor andere gebruikers, afhankelijk van de rechten.
 
 ## Gebruik
 De basis syntaxis van de `passwd` opdracht is als volgt:
@@ -13,7 +13,7 @@ passwd [opties] [argumenten]
 ## Veelvoorkomende Opties
 - `-l`: Vergrendel het account van de gebruiker.
 - `-u`: Ontgrendel het account van de gebruiker.
-- `-e`: Dwing de gebruiker om het wachtwoord bij de volgende aanmelding te wijzigen.
+- `-d`: Verwijder het wachtwoord van de gebruiker, waardoor het account zonder wachtwoord toegankelijk wordt.
 
 ## Veelvoorkomende Voorbeelden
 
@@ -37,12 +37,12 @@ passwd [opties] [argumenten]
    sudo passwd -u gebruikersnaam
    ```
 
-5. **Dwingen tot wachtwoordwijziging bij de volgende aanmelding:**
+5. **Wachtwoord verwijderen:**
    ```csh
-   sudo passwd -e gebruikersnaam
+   sudo passwd -d gebruikersnaam
    ```
 
 ## Tips
-- Zorg ervoor dat je een sterk en uniek wachtwoord kiest om de veiligheid van je account te waarborgen.
-- Gebruik de `-e` optie om gebruikers te dwingen hun wachtwoord regelmatig te wijzigen.
-- Controleer altijd of je de juiste gebruikersnaam invoert bij het wijzigen van een wachtwoord voor een andere gebruiker.
+- Zorg ervoor dat je een sterk wachtwoord kiest dat moeilijk te raden is.
+- Gebruik de `sudo` opdracht als je het wachtwoord van een andere gebruiker wilt wijzigen.
+- Vergeet niet om je wachtwoord regelmatig te wijzigen voor betere beveiliging.

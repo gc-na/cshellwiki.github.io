@@ -1,47 +1,43 @@
-# [Linux] C Shell (csh) getconf użycie: uzyskiwanie informacji o konfiguracji systemu
+# [Linux] C Shell (csh) getconf użycie: Uzyskiwanie informacji o konfiguracji systemu
 
-## Przegląd
-Polecenie `getconf` służy do uzyskiwania informacji o konfiguracji systemu, takich jak limity systemowe oraz różne parametry konfiguracyjne. Umożliwia użytkownikom dostęp do wartości konfiguracyjnych, które mogą być przydatne w skryptach i podczas diagnozowania problemów.
+## Overview
+Polecenie `getconf` w C Shell (csh) służy do uzyskiwania informacji o konfiguracji systemu oraz zmiennych systemowych. Umożliwia dostęp do różnych parametrów systemowych, co może być przydatne w skryptach oraz podczas diagnostyki.
 
-## Użycie
+## Usage
 Podstawowa składnia polecenia `getconf` jest następująca:
 
 ```csh
 getconf [opcje] [argumenty]
 ```
 
-## Częste opcje
-- `-a` - Wyświetla wszystkie dostępne wartości konfiguracyjne.
-- `variable` - Nazwa zmiennej konfiguracyjnej, której wartość chcesz uzyskać.
+## Common Options
+- `-a` – Wyświetla wszystkie dostępne zmienne konfiguracyjne.
+- `variable` – Nazwa konkretnej zmiennej, której wartość chcemy uzyskać (np. `PAGE_SIZE`).
 
-## Przykłady
+## Common Examples
 Oto kilka praktycznych przykładów użycia polecenia `getconf`:
 
-1. Aby uzyskać wszystkie dostępne wartości konfiguracyjne, użyj:
+1. Wyświetlenie wszystkich dostępnych zmiennych konfiguracyjnych:
+    ```csh
+    getconf -a
+    ```
 
-   ```csh
-   getconf -a
-   ```
+2. Uzyskanie rozmiaru strony pamięci:
+    ```csh
+    getconf PAGE_SIZE
+    ```
 
-2. Aby sprawdzić maksymalny rozmiar pliku, użyj:
+3. Sprawdzenie maksymalnej długości ścieżki pliku:
+    ```csh
+    getconf PATH_MAX /
+    ```
 
-   ```csh
-   getconf _PC_MAX_INPUT
-   ```
+4. Uzyskanie wartości zmiennej `ARG_MAX`, która określa maksymalną długość argumentów przekazywanych do polecenia:
+    ```csh
+    getconf ARG_MAX
+    ```
 
-3. Aby uzyskać wartość zmiennej `ARG_MAX`, która określa maksymalną długość argumentów przekazywanych do polecenia, użyj:
-
-   ```csh
-   getconf ARG_MAX
-   ```
-
-4. Aby sprawdzić, jakie są dostępne zmienne konfiguracyjne dla systemu, możesz użyć:
-
-   ```csh
-   getconf -a | grep _PC
-   ```
-
-## Wskazówki
-- Używaj opcji `-a`, aby szybko uzyskać pełną listę dostępnych wartości konfiguracyjnych.
-- Zawsze sprawdzaj dokumentację systemu, aby upewnić się, że używasz poprawnych nazw zmiennych konfiguracyjnych.
-- W przypadku skryptów, warto zapisać wyniki `getconf` do zmiennych, aby łatwo je wykorzystać w dalszej części skryptu.
+## Tips
+- Używaj opcji `-a`, aby szybko sprawdzić, jakie zmienne są dostępne w systemie.
+- Zawsze sprawdzaj dokumentację systemową, aby upewnić się, że używasz poprawnych nazw zmiennych.
+- W przypadku skryptów, warto zdefiniować zmienne w oparciu o wartości uzyskane z `getconf`, co zwiększa przenośność skryptów między różnymi systemami.

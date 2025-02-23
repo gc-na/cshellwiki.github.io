@@ -1,10 +1,10 @@
 # [Sistem Operasi] C Shell (csh) uname Penggunaan: Menampilkan informasi sistem
 
 ## Overview
-Perintah `uname` digunakan untuk menampilkan informasi tentang sistem operasi yang sedang digunakan. Ini termasuk nama kernel, nama host, versi, dan informasi lainnya yang berkaitan dengan sistem.
+Perintah `uname` digunakan untuk menampilkan informasi tentang sistem operasi yang sedang berjalan. Ini termasuk nama kernel, nama host, versi, dan informasi lainnya yang relevan dengan sistem.
 
 ## Usage
-Sintaks dasar dari perintah `uname` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `uname`:
 
 ```
 uname [options] [arguments]
@@ -48,6 +48,6 @@ Berikut adalah beberapa contoh penggunaan perintah `uname`:
    ```
 
 ## Tips
-- Gunakan `uname -a` untuk mendapatkan gambaran lengkap tentang sistem Anda dalam satu perintah.
-- Kombinasikan opsi untuk mendapatkan informasi yang lebih spesifik sesuai kebutuhan.
-- Perintah ini sangat berguna saat melakukan pemecahan masalah atau ketika Anda perlu mengetahui spesifikasi sistem.
+- Gunakan opsi `-a` untuk mendapatkan gambaran lengkap tentang sistem Anda dalam satu perintah.
+- Perintah ini sangat berguna untuk skrip yang memerlukan informasi sistem untuk pengaturan atau konfigurasi.
+- Pastikan untuk menjalankan perintah ini di terminal untuk mendapatkan hasil yang akurat sesuai dengan sistem operasi yang Anda gunakan.

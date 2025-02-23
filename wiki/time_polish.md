@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) time użycie: Mierzenie czasu wykonywania poleceń
+# [Linux] C Shell (csh) time użycie: Mierzenie czasu wykonania poleceń
 
 ## Overview
-Polecenie `time` w C Shell (csh) służy do mierzenia czasu wykonania innych poleceń. Umożliwia użytkownikowi ocenę wydajności skryptów i programów, dostarczając informacji o czasie rzeczywistym, czasie CPU oraz czasie systemowym.
+Polecenie `time` w C Shell (csh) służy do mierzenia czasu wykonania innych poleceń. Umożliwia użytkownikowi uzyskanie informacji o czasie, jaki zajmuje wykonanie danego polecenia, co może być przydatne w optymalizacji skryptów i procesów.
 
 ## Usage
 Podstawowa składnia polecenia `time` jest następująca:
@@ -13,9 +13,9 @@ time [opcje] [argumenty]
 ## Common Options
 Oto kilka powszechnie używanych opcji dla polecenia `time`:
 
-- `-p`: Wyświetla czas w formacie POSIX.
-- `-o plik`: Zapisuje wyniki do określonego pliku.
-- `-v`: Wyświetla szczegółowe informacje o użyciu zasobów.
+- `-p`: Użyj prostego formatu wyjścia, który jest bardziej czytelny.
+- `-o <plik>`: Zapisz wyniki do określonego pliku zamiast wyświetlać je na standardowym wyjściu.
+- `-v`: Wyświetl szczegółowe informacje o czasie wykonania, w tym czas użytkownika i czas systemowy.
 
 ## Common Examples
 Oto kilka praktycznych przykładów użycia polecenia `time`:
@@ -25,17 +25,22 @@ Oto kilka praktycznych przykładów użycia polecenia `time`:
    time ls -l
    ```
 
-2. Zapisanie wyników do pliku:
+2. Użycie opcji `-p` dla prostszego formatu:
    ```csh
-   time -o wynik.txt sleep 2
+   time -p sleep 2
    ```
 
-3. Użycie opcji szczegółowych:
+3. Zapisanie wyników do pliku:
    ```csh
-   time -v find / -name "*.txt"
+   time -o wynik.txt find / -name "*.txt"
+   ```
+
+4. Wyświetlenie szczegółowych informacji o czasie wykonania:
+   ```csh
+   time -v gcc program.c -o program
    ```
 
 ## Tips
-- Używaj opcji `-o`, aby zapisać wyniki do pliku, co ułatwia późniejsze przeglądanie.
-- Sprawdzaj różnice w czasie wykonania różnych algorytmów, aby zoptymalizować swoje skrypty.
-- Pamiętaj, że czas wykonania może się różnić w zależności od obciążenia systemu, więc wykonuj testy w różnych warunkach.
+- Używaj opcji `-o`, aby zapisywać wyniki do pliku, co jest przydatne, gdy chcesz zachować dane do późniejszej analizy.
+- Eksperymentuj z różnymi poleceniami, aby zobaczyć, jak długo zajmują wykonania, co może pomóc w identyfikacji wąskich gardeł w skryptach.
+- Pamiętaj, że czas wykonania może się różnić w zależności od obciążenia systemu, dlatego warto przeprowadzać kilka pomiarów.

@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) tput Kullanımı: Terminalde ekran kontrolü
 
 ## Genel Bakış
-`tput` komutu, terminalde ekranın özelliklerini kontrol etmek ve yönetmek için kullanılır. Bu komut, terminalin biçimlendirilmesi ve kontrolü için çeşitli özellikleri ayarlamak amacıyla terminfo veritabanını kullanır.
+`tput` komutu, terminaldeki ekran özelliklerini kontrol etmek için kullanılır. Bu komut, terminalin görünümünü ve davranışını değiştirmek için çeşitli özellikleri ayarlamanıza olanak tanır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
@@ -17,7 +17,7 @@ tput [seçenekler] [argümanlar]
 - `bold`: Metni kalın yapar.
 
 ## Yaygın Örnekler
-Aşağıda `tput` komutunun bazı pratik kullanımları verilmiştir:
+Aşağıda `tput` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
 ### Ekranı Temizleme
 ```csh
@@ -36,19 +36,20 @@ tput setab 4  # Mavi arka plan
 echo "Bu mavi arka planlı bir metin."
 ```
 
-### İmleci Taşıma
+### İmleci Belirli Bir Konuma Taşıma
 ```csh
-tput cup 10 20  # İmleci 10. satır ve 20. sütuna taşır
-echo "İmleç burada."
+tput cup 10 20  # 10. satır, 20. sütuna git
+echo "İmleç buraya taşındı."
 ```
 
-### Kalın Metin
+### Kalın Metin Yazma
 ```csh
 tput bold
 echo "Bu kalın bir metin."
+tput sgr0  # Varsayılan stil ayarlarına döner
 ```
 
 ## İpuçları
-- `tput` komutunu bir betik içinde kullanarak terminal çıktısını daha okunabilir hale getirebilirsiniz.
-- Renk numaralarını öğrenmek için `tput colors` komutunu kullanarak terminalinizin desteklediği renk sayısını kontrol edin.
-- `tput` komutunu kullanmadan önce terminalinizin terminfo veritabanına uygun olduğundan emin olun.
+- `tput` komutunu sık sık kullanıyorsanız, sık kullandığınız ayarları bir betik dosyasında saklayarak zaman kazanabilirsiniz.
+- Terminal emülatörünüzün desteklediği renk ve stil seçeneklerini kontrol edin, çünkü bazı terminal türleri farklı davranabilir.
+- `tput` komutunu kullanmadan önce terminalinizin özelliklerini kontrol etmek için `tput -T` komutunu kullanabilirsiniz.

@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) iconv gebruik: Tekstcodering converteren
 
 ## Overzicht
-De `iconv`-opdracht wordt gebruikt om tekstbestanden van de ene tekencodering naar de andere te converteren. Dit is nuttig wanneer je bestanden hebt die in verschillende coderingen zijn opgeslagen en je ze wilt uniformeren of compatibel maken met andere systemen.
+De `iconv`-opdracht wordt gebruikt om tekstbestanden van de ene codering naar de andere te converteren. Dit is handig wanneer je bestanden hebt die in verschillende tekencoderingen zijn opgeslagen en je ze wilt uniformeren.
 
 ## Gebruik
 De basis syntaxis van de `iconv`-opdracht is als volgt:
@@ -10,43 +10,37 @@ De basis syntaxis van de `iconv`-opdracht is als volgt:
 iconv [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- `-f`, `--from-code`: Specificeert de broncodering van de invoer.
-- `-t`, `--to-code`: Specificeert de doelcodering voor de uitvoer.
-- `-o`, `--output`: Geeft de naam van het uitvoerbestand op.
-- `-l`, `--list`: Lijst alle ondersteunde coderingen.
+## Veelvoorkomende Opties
+- `-f, --from-code CODE`: Specificeert de broncodering van het invoerbestand.
+- `-t, --to-code CODE`: Specificeert de doelcodering voor het uitvoerbestand.
+- `-o, --output FILE`: Bepaalt het uitvoerbestand. Als dit niet wordt opgegeven, wordt de uitvoer naar de standaarduitvoer gestuurd.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van `iconv`:
 
-### Voorbeeld 1: Basis conversie
-Converteer een bestand van ISO-8859-1 naar UTF-8.
+1. **Converteer een bestand van ISO-8859-1 naar UTF-8**:
+   ```csh
+   iconv -f ISO-8859-1 -t UTF-8 input.txt -o output.txt
+   ```
 
-```csh
-iconv -f ISO-8859-1 -t UTF-8 input.txt -o output.txt
-```
+2. **Converteer een bestand van UTF-16 naar UTF-8**:
+   ```csh
+   iconv -f UTF-16 -t UTF-8 input.txt -o output.txt
+   ```
 
-### Voorbeeld 2: Lijst van ondersteunde coderingen
-Bekijk de lijst van alle ondersteunde coderingen.
+3. **Directe conversie naar de standaarduitvoer**:
+   ```csh
+   iconv -f WINDOWS-1252 -t UTF-8 input.txt
+   ```
 
-```csh
-iconv -l
-```
-
-### Voorbeeld 3: Directe uitvoer naar de terminal
-Converteer een bestand en toon de uitvoer direct in de terminal.
-
-```csh
-iconv -f UTF-16 -t UTF-8 input.txt
-```
-
-### Voorbeeld 4: Converteer en overschrijf het originele bestand
-Converteer een bestand en overschrijf het originele bestand met de nieuwe codering.
-
-```csh
-iconv -f ISO-8859-1 -t UTF-8 input.txt > temp.txt && mv temp.txt input.txt
-```
+4. **Converteer meerdere bestanden**:
+   ```csh
+   for file in *.txt; do
+       iconv -f ISO-8859-1 -t UTF-8 "$file" -o "converted_$file"
+   done
+   ```
 
 ## Tips
-- Controleer altijd de bron- en doelcoderingen voordat je een conversie uitvoert om gegevensverlies te voorkomen.
-- Maak een back-up van je bestanden voordat je ze converteert, vooral als je ze gaat overschrijven.
-- Gebruik de `-l` optie om te verifiëren of de gewenste coderingen worden ondersteund door jouw versie van `iconv`.
+- Controleer altijd de codering van je bestanden voordat je ze converteert, om fouten te voorkomen.
+- Gebruik de `-o` optie om uitvoerbestanden te specificeren, zodat je de originele bestanden niet overschrijft.
+- Test de conversie met een klein bestand voordat je grote bestanden verwerkt, om te controleren of de resultaten naar wens zijn.

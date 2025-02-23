@@ -1,44 +1,39 @@
 # [Linux] C Shell (csh) pvs Użycie: wyświetlanie wersji pakietów
 
 ## Overview
-Polecenie `pvs` w C Shell (csh) służy do wyświetlania informacji o wersjach pakietów w systemie. Umożliwia użytkownikom łatwe sprawdzenie, które wersje pakietów są zainstalowane oraz jakie są ich zależności.
+Polecenie `pvs` w systemie C Shell (csh) służy do wyświetlania informacji o wersjach pakietów w systemie. Jest to przydatne narzędzie do zarządzania pakietami, które pozwala użytkownikom szybko sprawdzić, jakie wersje są zainstalowane.
 
 ## Usage
 Podstawowa składnia polecenia `pvs` jest następująca:
 
-```
-pvs [opcje] [argumenty]
+```csh
+pvs [options] [arguments]
 ```
 
 ## Common Options
-- `-a`: Wyświetla wszystkie informacje o pakietach, w tym te, które są ukryte.
-- `-n`: Pokazuje tylko nazwy pakietów.
-- `-r`: Wyświetla informacje o zależnościach między pakietami.
+- `-a` : Wyświetla wszystkie wersje pakietów, w tym te, które są zainstalowane, ale nieaktualne.
+- `-u` : Pokazuje tylko pakiety, które mają dostępne aktualizacje.
+- `-q` : Wyjście w trybie cichym, bez dodatkowych informacji.
 
 ## Common Examples
-Przykłady użycia polecenia `pvs`:
+Oto kilka praktycznych przykładów użycia polecenia `pvs`:
 
-1. Wyświetlenie wszystkich zainstalowanych pakietów:
-   ```csh
-   pvs
-   ```
-
-2. Wyświetlenie szczegółowych informacji o pakietach:
+1. Wyświetlenie wszystkich zainstalowanych wersji pakietów:
    ```csh
    pvs -a
    ```
 
-3. Pokazanie tylko nazw pakietów:
+2. Sprawdzenie pakietów z dostępnymi aktualizacjami:
    ```csh
-   pvs -n
+   pvs -u
    ```
 
-4. Wyświetlenie zależności dla konkretnego pakietu:
+3. Uzyskanie cichego wyjścia z informacjami o wersjach:
    ```csh
-   pvs -r nazwa_pakietu
+   pvs -q
    ```
 
 ## Tips
-- Używaj opcji `-a`, aby uzyskać pełny obraz wszystkich zainstalowanych pakietów, co może być przydatne przy rozwiązywaniu problemów.
-- Regularnie sprawdzaj wersje pakietów, aby upewnić się, że masz zainstalowane najnowsze aktualizacje.
-- Kombinuj różne opcje, aby dostosować wyjście do swoich potrzeb, na przykład `pvs -n -r`, aby zobaczyć nazwy pakietów i ich zależności.
+- Używaj opcji `-u`, aby szybko zidentyfikować pakiety wymagające aktualizacji.
+- Regularnie sprawdzaj wersje pakietów, aby zapewnić, że masz najnowsze funkcje i poprawki bezpieczeństwa.
+- Połącz `pvs` z innymi poleceniami do zarządzania pakietami, aby uzyskać bardziej szczegółowe informacje o systemie.

@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) whoami Użycie: wyświetla nazwę użytkownika
+# [Linux] C Shell (csh) whoami: [pokaż aktualnego użytkownika]
 
 ## Overview
-Polecenie `whoami` w C Shell (csh) służy do wyświetlenia nazwy aktualnie zalogowanego użytkownika. Jest to przydatne narzędzie, gdy potrzebujesz szybko sprawdzić, pod jakim kontem jesteś zalogowany w systemie.
+Polecenie `whoami` w C Shell (csh) służy do wyświetlania nazwy aktualnie zalogowanego użytkownika. Jest to przydatne narzędzie, gdy chcesz szybko sprawdzić, na jakie konto jesteś zalogowany w systemie.
 
 ## Usage
 Podstawowa składnia polecenia `whoami` jest następująca:
@@ -11,10 +11,10 @@ whoami [opcje] [argumenty]
 ```
 
 ## Common Options
-Polecenie `whoami` nie ma wielu opcji, ale oto kilka, które mogą być użyteczne:
+Polecenie `whoami` nie ma wielu opcji, ale oto kilka, które mogą być przydatne:
 
+- `-a`: Wyświetla dodatkowe informacje o użytkowniku (zależnie od systemu).
 - `--help`: Wyświetla pomoc dotyczącą polecenia.
-- `--version`: Wyświetla wersję polecenia.
 
 ## Common Examples
 Oto kilka praktycznych przykładów użycia polecenia `whoami`:
@@ -29,12 +29,12 @@ Oto kilka praktycznych przykładów użycia polecenia `whoami`:
    whoami --help
    ```
 
-3. Aby sprawdzić wersję polecenia:
+3. Aby wyświetlić dodatkowe informacje o użytkowniku (jeśli dostępne):
    ```csh
-   whoami --version
+   whoami -a
    ```
 
 ## Tips
-- Używaj polecenia `whoami` w skryptach, aby dynamicznie dostosować działania do zalogowanego użytkownika.
-- Możesz łączyć `whoami` z innymi poleceniami, aby uzyskać bardziej złożone informacje o użytkowniku.
-- Pamiętaj, że `whoami` zawsze zwraca nazwę użytkownika, pod którym jesteś aktualnie zalogowany, co może być przydatne w systemach z wieloma kontami.
+- Używaj polecenia `whoami` w skryptach, aby dynamicznie uzyskiwać informacje o użytkowniku, co może być przydatne w różnych kontekstach.
+- Możesz połączyć `whoami` z innymi poleceniami, aby dostosować skrypty do działania w zależności od zalogowanego użytkownika.
+- Pamiętaj, że `whoami` działa tylko w kontekście bieżącej sesji terminalowej, więc wyniki mogą się różnić w zależności od tego, na jakim koncie jesteś zalogowany.

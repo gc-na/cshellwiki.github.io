@@ -1,35 +1,35 @@
-# [Linux] C Shell (csh) while: Schleifensteuerung in Skripten
+# [Linux] C Shell (csh) while verwenden: Schleifensteuerung
 
 ## Übersicht
-Der `while`-Befehl in der C Shell (csh) wird verwendet, um eine Schleife zu erstellen, die so lange ausgeführt wird, wie eine bestimmte Bedingung wahr ist. Dies ist nützlich, um wiederholte Aufgaben zu automatisieren, bis ein bestimmter Zustand erreicht wird.
+Der `while`-Befehl in der C Shell (csh) wird verwendet, um eine Schleife zu erstellen, die eine bestimmte Bedingung überprüft. Solange die Bedingung wahr ist, wird der darin enthaltene Codeblock wiederholt ausgeführt. Dies ist nützlich, um wiederholte Aufgaben zu automatisieren, bis ein bestimmter Zustand erreicht ist.
 
 ## Verwendung
-Die grundlegende Syntax des `while`-Befehls sieht wie folgt aus:
+Die grundlegende Syntax des `while`-Befehls sieht folgendermaßen aus:
 
 ```csh
 while (Bedingung)
-    Befehle
+    Befehl
 end
 ```
 
 ## Häufige Optionen
-Der `while`-Befehl hat keine speziellen Optionen, da er hauptsächlich zur Steuerung der Schleifenlogik verwendet wird. Die Bedingung kann jedoch verschiedene logische Ausdrücke enthalten, die in der C Shell unterstützt werden.
+Der `while`-Befehl hat keine speziellen Optionen, da er hauptsächlich zur Steuerung von Schleifen verwendet wird. Die Bedingung kann jedoch verschiedene Ausdrücke enthalten, die in der C Shell evaluiert werden.
 
 ## Häufige Beispiele
 
-### Beispiel 1: Zähler
-In diesem Beispiel wird eine Schleife verwendet, um die Zahlen von 1 bis 5 auszugeben.
+### Beispiel 1: Zählen bis 5
+In diesem Beispiel wird eine Schleife verwendet, um von 1 bis 5 zu zählen.
 
 ```csh
-set count = 1
-while ($count <= 5)
-    echo $count
-    @ count++
+set i = 1
+while ($i <= 5)
+    echo $i
+    @ i++
 end
 ```
 
-### Beispiel 2: Benutzerinteraktion
-Hier wird eine Schleife verwendet, um den Benutzer nach Eingaben zu fragen, bis er "exit" eingibt.
+### Beispiel 2: Benutzerabfrage
+Hier wird eine Schleife verwendet, um den Benutzer nach einer Eingabe zu fragen, bis er "exit" eingibt.
 
 ```csh
 set input = ""
@@ -39,19 +39,20 @@ while ("$input" != "exit")
 end
 ```
 
-### Beispiel 3: Dateizähler
-In diesem Beispiel wird eine Schleife verwendet, um alle Dateien in einem Verzeichnis zu zählen.
+### Beispiel 3: Summieren von Zahlen
+In diesem Beispiel wird die Summe der ersten fünf natürlichen Zahlen berechnet.
 
 ```csh
-set count = 0
-set files = (`ls`)
-while ($count < $#files)
-    echo "Datei: $files[$count]"
-    @ count++
+set sum = 0
+set i = 1
+while ($i <= 5)
+    @ sum += $i
+    @ i++
 end
+echo "Die Summe der ersten fünf Zahlen ist: $sum"
 ```
 
 ## Tipps
-- Achten Sie darauf, dass die Bedingung in der `while`-Schleife irgendwann falsch wird, um eine Endlosschleife zu vermeiden.
+- Achten Sie darauf, dass die Bedingung in der `while`-Schleife irgendwann falsch wird, um eine unendliche Schleife zu vermeiden.
 - Verwenden Sie `@` für arithmetische Operationen innerhalb der Schleife.
-- Nutzen Sie die Möglichkeit, Variablen zu setzen und zu ändern, um die Schleifenlogik dynamisch zu gestalten.
+- Nutzen Sie die Möglichkeit, Variablen zu setzen und zu überprüfen, um komplexere Bedingungen zu erstellen.

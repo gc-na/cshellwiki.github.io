@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) systemctl uso: Gestire i servizi di sistema
 
 ## Overview
-Il comando `systemctl` è uno strumento fondamentale per gestire i servizi di sistema su sistemi operativi basati su systemd. Permette di avviare, fermare, riavviare e controllare lo stato dei servizi, facilitando la gestione delle applicazioni e dei demoni in esecuzione.
+Il comando `systemctl` è utilizzato per controllare il sistema e i servizi di gestione. Permette di avviare, fermare, riavviare e monitorare i servizi di sistema su sistemi operativi basati su systemd.
 
 ## Usage
 La sintassi di base del comando `systemctl` è la seguente:
@@ -11,18 +11,17 @@ systemctl [opzioni] [argomenti]
 ```
 
 ## Common Options
-Ecco alcune opzioni comuni per `systemctl` con brevi spiegazioni:
+Ecco alcune opzioni comuni per `systemctl`:
 
 - `start`: Avvia un servizio.
 - `stop`: Ferma un servizio.
 - `restart`: Riavvia un servizio.
 - `status`: Mostra lo stato di un servizio.
-- `enable`: Abilita un servizio all'avvio del sistema.
-- `disable`: Disabilita un servizio all'avvio del sistema.
-- `list-units`: Elenca tutte le unità attive.
+- `enable`: Abilita un servizio per l'avvio automatico al boot.
+- `disable`: Disabilita un servizio dall'avvio automatico al boot.
 
 ## Common Examples
-Di seguito sono riportati alcuni esempi pratici dell'uso di `systemctl`:
+Ecco alcuni esempi pratici di utilizzo di `systemctl`:
 
 ### Avviare un servizio
 ```bash
@@ -49,17 +48,12 @@ systemctl status nome_servizio
 systemctl enable nome_servizio
 ```
 
-### Disabilitare un servizio all'avvio
+### Disabilitare un servizio dall'avvio
 ```bash
 systemctl disable nome_servizio
 ```
 
-### Elencare tutte le unità attive
-```bash
-systemctl list-units --type=service
-```
-
 ## Tips
-- Assicurati di avere i permessi necessari per eseguire `systemctl`, spesso è richiesto l'accesso come superutente.
-- Usa `systemctl status` per diagnosticare problemi con i servizi, poiché fornisce informazioni dettagliate sui log.
-- Ricorda di abilitare i servizi che desideri far partire automaticamente all'avvio del sistema per evitare di doverli avviare manualmente ogni volta.
+- Assicurati di avere i permessi necessari (spesso è richiesto l'uso di `sudo`) per eseguire comandi che modificano lo stato dei servizi.
+- Utilizza `systemctl list-units --type=service` per visualizzare tutti i servizi attivi e il loro stato.
+- Controlla i log di un servizio con `journalctl -u nome_servizio` per diagnosticare problemi.

@@ -1,53 +1,53 @@
-# [Linux] C Shell (csh) pr kullanım: Dosya içeriğini biçimlendirme
+# [Linux] C Shell (csh) pr kullanımı: Dosyaları biçimlendirme
 
-## Overview
-`pr` komutu, metin dosyalarını biçimlendirmek ve çıktılarını sayfalara ayırmak için kullanılır. Bu komut, özellikle yazdırma işlemleri için dosyaların daha okunabilir hale getirilmesine yardımcı olur.
+## Genel Bakış
+`pr` komutu, metin dosyalarını sayfa düzeni biçiminde biçimlendirmek için kullanılır. Bu komut, dosyaları daha okunabilir hale getirmek amacıyla sayfa başlıkları, sayfa numaraları ve sütunlar ekleyerek çıktıyı düzenler.
 
-## Usage
+## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
 
 ```csh
-pr [options] [arguments]
+pr [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `-l <satır sayısı>`: Her sayfada gösterilecek satır sayısını belirler.
-- `-w <genişlik>`: Çıktının genişliğini ayarlar.
-- `-t`: Başlık ve sayfa numarası eklemeden çıktı verir.
-- `-s <karakter>`: Sayfalar arasındaki boşluğu belirler.
+## Yaygın Seçenekler
+- `-h`: Sayfa başlığını belirler.
+- `-l`: Sayfa uzunluğunu ayarlar (satır sayısı).
+- `-w`: Sayfa genişliğini ayarlar (karakter sayısı).
+- `-s`: Sütunlar arasında boşluk bırakır.
 
-## Common Examples
-Aşağıda `pr` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+## Yaygın Örnekler
+Aşağıda `pr` komutunun bazı pratik örnekleri verilmiştir:
 
-1. **Temel kullanım**: Bir dosyayı biçimlendirmek için.
-   ```csh
-   pr dosya.txt
-   ```
+### Örnek 1: Basit Dosya Biçimlendirme
+Bir metin dosyasını varsayılan ayarlarla biçimlendirmek için:
 
-2. **Satır sayısını ayarlamak**: Her sayfada 30 satır göstermek için.
-   ```csh
-   pr -l 30 dosya.txt
-   ```
+```csh
+pr dosya.txt
+```
 
-3. **Genişliği ayarlamak**: Çıktının genişliğini 80 karakter yapmak için.
-   ```csh
-   pr -w 80 dosya.txt
-   ```
+### Örnek 2: Sayfa Başlığı Ekleme
+Bir dosyaya özel bir başlık eklemek için:
 
-4. **Başlık olmadan çıktı almak**: Başlık ve sayfa numarası olmadan çıktı almak için.
-   ```csh
-   pr -t dosya.txt
-   ```
+```csh
+pr -h "Başlık: Örnek Dosya" dosya.txt
+```
 
-5. **Sayfalar arasındaki boşluğu ayarlamak**: Sayfalar arasındaki boşluğu bir boşluk karakteri ile ayarlamak için.
-   ```csh
-   pr -s " " dosya.txt
-   ```
+### Örnek 3: Sayfa Uzunluğunu Ayarlama
+Sayfa uzunluğunu 50 satır olarak ayarlamak için:
 
-## Tips
-- `pr` komutunu kullanmadan önce dosyanızın içeriğini kontrol edin, böylece biçimlendirme işlemi sırasında beklenmedik sonuçlarla karşılaşmazsınız.
-- Çıktıyı bir dosyaya yönlendirmek için `>` operatörünü kullanabilirsiniz. Örneğin:
-  ```csh
-  pr dosya.txt > cikti.txt
-  ```
-- `man pr` komutunu kullanarak `pr` hakkında daha fazla bilgi edinebilirsiniz.
+```csh
+pr -l 50 dosya.txt
+```
+
+### Örnek 4: Sütunlar Arasında Boşluk Bırakma
+Sütunlar arasında boşluk bırakmak için:
+
+```csh
+pr -s " " dosya.txt
+```
+
+## İpuçları
+- `pr` komutunu kullanmadan önce dosyanızın içeriğini kontrol edin; biçimlendirme, içerik yapısına bağlı olarak değişebilir.
+- Uzun dosyalar için sayfa uzunluğunu ayarlamak, çıktıyı daha okunabilir hale getirebilir.
+- Farklı seçenekleri bir arada kullanarak çıktınızı özelleştirebilirsiniz; örneğin, hem başlık hem de sütun ayarlarını aynı anda uygulamak mümkündür.

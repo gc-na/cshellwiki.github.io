@@ -1,21 +1,21 @@
-# [Linux] C Shell (csh) endsw uso: Termina un blocco condizionale
+# [Linux] C Shell (csh) endsw utilizzo: Termina un blocco condizionale
 
 ## Overview
-Il comando `endsw` viene utilizzato nel C Shell (csh) per terminare un blocco di istruzioni condizionali che sono state avviate con il comando `switch`. Questo comando è essenziale per strutturare il flusso di esecuzione del programma in base a condizioni specifiche.
+Il comando `endsw` in C Shell (csh) viene utilizzato per terminare un blocco condizionale iniziato con `switch`. È particolarmente utile per gestire flussi di controllo all'interno degli script, consentendo di eseguire diverse azioni in base al valore di una variabile.
 
 ## Usage
 La sintassi di base del comando è la seguente:
 
-```csh
+```
 endsw
 ```
 
 ## Common Options
-Il comando `endsw` non ha opzioni comuni, poiché serve esclusivamente a chiudere un blocco `switch`.
+Il comando `endsw` non ha opzioni specifiche, poiché è utilizzato esclusivamente per chiudere un blocco `switch`.
 
 ## Common Examples
 
-### Esempio 1: Utilizzo di `switch` con `endsw`
+### Esempio 1: Utilizzo di `endsw` in uno script
 ```csh
 set var = "apple"
 switch ($var)
@@ -27,28 +27,27 @@ switch ($var)
         breaksw
     default:
         echo "Frutto sconosciuto."
+        breaksw
 endsw
 ```
 
-### Esempio 2: Un altro esempio di `switch` con `endsw`
+### Esempio 2: Un altro esempio con `endsw`
 ```csh
-set numero = 2
-switch ($numero)
-    case 1:
-        echo "Uno"
+set day = "Lunedì"
+switch ($day)
+    case "Lunedì":
+        echo "Inizio della settimana."
         breaksw
-    case 2:
-        echo "Due"
-        breaksw
-    case 3:
-        echo "Tre"
+    case "Venerdì":
+        echo "Fine della settimana."
         breaksw
     default:
-        echo "Numero non riconosciuto."
+        echo "Giorno non specificato."
+        breaksw
 endsw
 ```
 
 ## Tips
-- Assicurati di utilizzare `endsw` ogni volta che utilizzi `switch` per evitare errori di sintassi.
-- Ricorda che `endsw` non accetta argomenti o opzioni; è semplicemente un delimitatore per il blocco `switch`.
-- Utilizza `breaksw` all'interno di ogni caso per uscire dal blocco `switch` prima di raggiungere `endsw`, se necessario.
+- Assicurati di utilizzare `endsw` ogni volta che inizi un blocco `switch` per evitare errori di sintassi.
+- Utilizza `breaksw` all'interno di ogni caso per uscire dal blocco `switch` dopo aver eseguito il codice desiderato.
+- Mantieni il codice chiaro e ben commentato per facilitare la lettura e la manutenzione, specialmente in script complessi.

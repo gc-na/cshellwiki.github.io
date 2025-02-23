@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) true: [zwraca prawdę]
+# [Linux] C Shell (csh) true użycie: Zwraca prawdę
 
 ## Overview
-Polecenie `true` w powłoce C Shell (csh) jest prostym narzędziem, które zawsze zwraca wartość prawdy (0). Jest często używane w skryptach do wskazywania, że operacja zakończyła się pomyślnie, lub jako placeholder w miejscach, gdzie wymagana jest komenda.
+Polecenie `true` w C Shell (csh) jest prostym narzędziem, które zawsze zwraca kod wyjścia 0, co oznacza sukces. Jest używane w skryptach i powłokach do sygnalizowania, że operacja zakończyła się pomyślnie.
 
 ## Usage
 Podstawowa składnia polecenia `true` jest następująca:
@@ -11,13 +11,14 @@ true [opcje] [argumenty]
 ```
 
 ## Common Options
-Polecenie `true` nie ma żadnych opcji ani argumentów, które można by zastosować. Jego jedyną funkcją jest zwracanie wartości 0.
+Polecenie `true` nie ma żadnych opcji ani argumentów. Jego działanie jest zawsze takie samo, niezależnie od kontekstu.
 
 ## Common Examples
 Oto kilka praktycznych przykładów użycia polecenia `true`:
 
-1. **Użycie w skrypcie:**
+1. **Użycie w skrypcie**:
    ```csh
+   #!/bin/csh
    if ( -e plik.txt ) then
        true
    else
@@ -25,20 +26,24 @@ Oto kilka praktycznych przykładów użycia polecenia `true`:
    endif
    ```
 
-2. **W pętli:**
+2. **Wykorzystanie w pętli**:
    ```csh
-   while (1)
-       true
+   while ( true )
+       echo "To jest nieskończona pętla."
+       sleep 1
    end
    ```
 
-3. **Jako część większego skryptu:**
+3. **Zastosowanie w warunkach**:
    ```csh
-   echo "Rozpoczynam proces..."
-   true
-   echo "Proces zakończony pomyślnie."
+   if ( -d katalog ) then
+       true
+   else
+       echo "Katalog nie istnieje."
+   endif
    ```
 
 ## Tips
-- Używaj `true` w skryptach, aby zasygnalizować, że dany blok kodu zakończył się sukcesem, co może być przydatne w bardziej złożonych warunkach.
-- Możesz użyć `true` w połączeniu z innymi poleceniami, aby utworzyć pętle, które nie wykonują żadnych operacji, ale są wymagane do zachowania struktury skryptu.
+- Używaj `true` w skryptach, aby zainicjować warunki, które zawsze powinny być spełnione.
+- Możesz użyć `true` w połączeniu z innymi poleceniami w celu testowania logiki skryptów.
+- Pamiętaj, że `true` nie wykonuje żadnych działań poza zwróceniem kodu wyjścia 0, więc nie jest użyteczne samodzielnie, ale może być pomocne w bardziej złożonych skryptach.

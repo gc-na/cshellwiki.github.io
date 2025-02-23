@@ -1,50 +1,50 @@
 # [Linux] C Shell (csh) dmesg Kullanımı: Sistem günlüklerini görüntüleme
 
 ## Genel Bakış
-`dmesg` komutu, çekirdek ring buffer'ından sistem mesajlarını görüntülemek için kullanılır. Genellikle sistem başlangıcında veya donanım ile ilgili sorunların giderilmesinde faydalıdır.
+`dmesg` komutu, çekirdek ve sistem ile ilgili mesajları görüntülemek için kullanılır. Genellikle sistem başlangıcında veya donanım değişikliklerinde oluşan olayları takip etmek için faydalıdır.
 
 ## Kullanım
-Temel sözdizimi şu şekildedir:
-```csh
+Temel sözdizimi aşağıdaki gibidir:
+```
 dmesg [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-C`: Ring buffer'ı temizler.
-- `-n <seviye>`: Belirtilen seviye veya daha yüksek seviyedeki mesajları gösterir.
-- `-T`: Zaman damgalarını insan tarafından okunabilir bir biçimde gösterir.
-- `--help`: Kullanım bilgilerini gösterir.
+- `-C`: Mevcut dmesg tamponunu temizler.
+- `-c`: Mesajları görüntüledikten sonra tamponu temizler.
+- `-n <seviyeler>`: Görüntülenecek mesaj seviyelerini ayarlar.
+- `-T`: Zaman damgalarını insan tarafından okunabilir formata dönüştürür.
 
 ## Yaygın Örnekler
 Aşağıda `dmesg` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. Tüm sistem mesajlarını görüntüleme:
+1. Tüm dmesg mesajlarını görüntüleme:
    ```csh
    dmesg
    ```
 
-2. Zaman damgalarını insan tarafından okunabilir formatta görüntüleme:
-   ```csh
-   dmesg -T
-   ```
-
-3. Belirli bir seviye mesajlarını görüntüleme (örneğin, hata mesajları):
-   ```csh
-   dmesg -n 1
-   ```
-
-4. Ring buffer'ı temizleme:
+2. Dmesg tamponunu temizleme:
    ```csh
    dmesg -C
    ```
 
+3. Dmesg mesajlarını zaman damgalarıyla birlikte görüntüleme:
+   ```csh
+   dmesg -T
+   ```
+
+4. Sadece kritik seviyedeki mesajları görüntüleme:
+   ```csh
+   dmesg -n 1
+   ```
+
 ## İpuçları
-- `dmesg` çıktısını daha iyi analiz etmek için `less` veya `more` gibi sayfalayıcılarla birlikte kullanabilirsiniz:
+- `dmesg` çıktısını bir dosyaya yönlendirmek için `>` operatörünü kullanabilirsiniz:
   ```csh
-  dmesg | less
+  dmesg > dmesg_output.txt
   ```
-- Belirli bir terimi aramak için `grep` ile birleştirebilirsiniz:
+- Mesajları daha iyi analiz etmek için `grep` ile birleştirerek belirli anahtar kelimeleri arayabilirsiniz:
   ```csh
-  dmesg | grep "hata"
+  dmesg | grep error
   ```
-- Sistemin başlangıç süresi ve donanım hataları hakkında bilgi almak için `dmesg` çıktısını düzenli olarak kontrol etmek iyi bir uygulamadır.
+- Sistem başlangıcında oluşan hataları incelemek için `dmesg` çıktısını düzenli olarak kontrol etmek iyi bir uygulamadır.

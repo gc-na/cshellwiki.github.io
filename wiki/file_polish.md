@@ -1,47 +1,48 @@
 # [Linux] C Shell (csh) file użycie: identyfikacja typów plików
 
 ## Overview
-Polecenie `file` służy do określenia typu pliku w systemie operacyjnym. Analizuje zawartość pliku i zwraca informację o jego typie, co jest szczególnie przydatne, gdy rozszerzenie pliku nie odzwierciedla jego rzeczywistej zawartości.
+Polecenie `file` w systemie C Shell (csh) służy do określania typu pliku. Analizuje zawartość pliku i zwraca informację o jego typie, co jest przydatne w różnych sytuacjach, na przykład przy pracy z plikami o nieznanym rozszerzeniu.
 
 ## Usage
 Podstawowa składnia polecenia `file` jest następująca:
-
-```csh
+```
 file [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-b`: Wyświetla tylko typ pliku bez dodatkowych informacji.
-- `-i`: Zwraca typ MIME pliku.
-- `-f`: Przyjmuje plik z listą plików do analizy.
+- `-b`: Wyświetla wynik bez nazwy pliku.
+- `-i`: Pokazuje typ MIME pliku.
+- `-f`: Umożliwia przetwarzanie plików z listy w pliku.
 
 ## Common Examples
+Oto kilka praktycznych przykładów użycia polecenia `file`:
+
 1. Sprawdzenie typu pojedynczego pliku:
    ```csh
    file dokument.txt
    ```
 
-2. Sprawdzenie typu pliku z ukryciem dodatkowych informacji:
+2. Sprawdzenie typu wielu plików:
+   ```csh
+   file obraz.jpg muzyka.mp3 dokument.pdf
+   ```
+
+3. Wyświetlenie typu pliku bez nazwy:
    ```csh
    file -b dokument.txt
    ```
 
-3. Uzyskanie typu MIME pliku:
+4. Uzyskanie typu MIME pliku:
    ```csh
-   file -i obraz.jpg
+   file -i obraz.png
    ```
 
-4. Analiza wielu plików jednocześnie:
-   ```csh
-   file plik1.txt plik2.jpg plik3.pdf
-   ```
-
-5. Użycie pliku z listą plików:
+5. Przetwarzanie plików z listy w pliku:
    ```csh
    file -f lista_plikow.txt
    ```
 
 ## Tips
-- Używaj opcji `-b`, gdy chcesz uzyskać czysty wynik bez dodatkowych informacji.
-- Opcja `-i` jest przydatna, gdy potrzebujesz informacji o typie MIME, co może być ważne w kontekście przesyłania plików przez sieć.
-- Zawsze sprawdzaj typ pliku przed jego otwarciem, zwłaszcza jeśli nie jesteś pewien, co on zawiera.
+- Używaj opcji `-i`, aby uzyskać bardziej szczegółowe informacje o typie pliku, szczególnie przy pracy z plikami internetowymi.
+- Jeśli pracujesz z dużą liczbą plików, rozważ użycie opcji `-f`, aby zaoszczędzić czas i zautomatyzować proces.
+- Pamiętaj, że `file` analizuje zawartość pliku, a nie tylko jego rozszerzenie, co czyni go bardziej wiarygodnym narzędziem do identyfikacji typów plików.

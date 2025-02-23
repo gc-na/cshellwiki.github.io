@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) 7z Kullanımı: Dosyaları sıkıştırma ve açma aracı
 
 ## Genel Bakış
-7z, dosyaları sıkıştırmak ve açmak için kullanılan güçlü bir komut satırı aracıdır. Özellikle yüksek sıkıştırma oranları sunarak, dosya boyutunu azaltma konusunda etkilidir. 7z, 7-Zip arşiv formatını destekler ve birçok farklı dosya formatıyla çalışabilir.
+7z, dosyaları sıkıştırmak ve açmak için kullanılan güçlü bir komut satırı aracıdır. Özellikle yüksek sıkıştırma oranları sunan 7-Zip formatını destekler. Ayrıca, birçok farklı dosya formatını da açabilir.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
@@ -12,44 +12,37 @@ Temel sözdizimi aşağıdaki gibidir:
 ## Yaygın Seçenekler
 - `a`: Yeni bir arşiv oluşturur ve dosyaları ekler.
 - `x`: Arşivden dosyaları çıkartır.
-- `t`: Arşivin içeriğini test eder.
-- `l`: Arşivin içeriğini listele.
+- `t`: Arşiv dosyasını test eder.
+- `l`: Arşiv içeriğini listeler.
 - `d`: Arşivden dosyaları siler.
 
 ## Yaygın Örnekler
-Aşağıda 7z komutunun bazı pratik örnekleri bulunmaktadır:
+1. **Bir dosyayı sıkıştırmak:**
+   ```bash
+   7z a arşiv.7z dosya.txt
+   ```
 
-### 1. Yeni bir arşiv oluşturma
-```
-7z a arşiv.7z dosya1.txt dosya2.txt
-```
-Bu komut, `dosya1.txt` ve `dosya2.txt` dosyalarını `arşiv.7z` adlı bir arşive ekler.
+2. **Bir arşivden dosyaları çıkartmak:**
+   ```bash
+   7z x arşiv.7z
+   ```
 
-### 2. Arşivden dosyaları çıkartma
-```
-7z x arşiv.7z
-```
-Bu komut, `arşiv.7z` içindeki tüm dosyaları mevcut dizine çıkartır.
+3. **Arşiv içeriğini listelemek:**
+   ```bash
+   7z l arşiv.7z
+   ```
 
-### 3. Arşivin içeriğini listeleme
-```
-7z l arşiv.7z
-```
-Bu komut, `arşiv.7z` içindeki dosyaların listesini gösterir.
+4. **Arşivi test etmek:**
+   ```bash
+   7z t arşiv.7z
+   ```
 
-### 4. Arşivin içeriğini test etme
-```
-7z t arşiv.7z
-```
-Bu komut, `arşiv.7z` dosyasının bozulup bozulmadığını kontrol eder.
-
-### 5. Arşivden dosya silme
-```
-7z d arşiv.7z dosya1.txt
-```
-Bu komut, `arşiv.7z` içinden `dosya1.txt` dosyasını siler.
+5. **Arşivden belirli bir dosyayı silmek:**
+   ```bash
+   7z d arşiv.7z dosya.txt
+   ```
 
 ## İpuçları
-- Sıkıştırma oranını artırmak için `-mx=9` seçeneğini kullanarak en yüksek sıkıştırma seviyesini seçebilirsiniz.
-- Arşiv oluştururken dosya uzantılarını belirtmek, dosyaların daha kolay yönetilmesini sağlar.
-- Büyük dosyalarla çalışırken, işlem tamamlanana kadar sabırlı olun; sıkıştırma işlemi zaman alabilir.
+- Sıkıştırma işlemi sırasında `-mx=9` seçeneğini kullanarak en yüksek sıkıştırma oranını elde edebilirsiniz.
+- Arşiv dosyalarınızı düzenli tutmak için anlamlı isimler vermeye özen gösterin.
+- Büyük dosyalarla çalışırken, işlemlerinizi arka planda gerçekleştirmek için `&` sembolünü kullanabilirsiniz.

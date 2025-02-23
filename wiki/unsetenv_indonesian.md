@@ -1,39 +1,42 @@
-# [Sistem Operasi] C Shell (csh) unsetenv Penggunaan: Menghapus variabel lingkungan
+# [Sistem Operasi] C Shell (csh) unsetenv: Menghapus variabel lingkungan
 
 ## Overview
-Perintah `unsetenv` dalam C Shell (csh) digunakan untuk menghapus variabel lingkungan yang telah ditetapkan. Ini berguna untuk membersihkan lingkungan shell Anda dari variabel yang tidak lagi diperlukan.
+Perintah `unsetenv` dalam C Shell (csh) digunakan untuk menghapus variabel lingkungan yang telah ditetapkan. Dengan menggunakan perintah ini, Anda dapat menghapus variabel yang tidak lagi diperlukan dalam sesi shell Anda.
 
 ## Usage
-Sintaks dasar dari perintah `unsetenv` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `unsetenv`:
 
 ```csh
 unsetenv [options] [arguments]
 ```
 
 ## Common Options
-Perintah `unsetenv` tidak memiliki banyak opsi. Berikut adalah beberapa yang umum digunakan:
+Perintah `unsetenv` tidak memiliki banyak opsi, tetapi berikut adalah penjelasan singkat tentang penggunaannya:
 
 - Tidak ada opsi khusus: `unsetenv` hanya memerlukan nama variabel yang ingin dihapus sebagai argumen.
 
 ## Common Examples
-Berikut adalah beberapa contoh praktis penggunaan `unsetenv`:
+Berikut adalah beberapa contoh penggunaan `unsetenv`:
 
-1. Menghapus variabel lingkungan `MY_VAR`:
+1. Menghapus variabel lingkungan sederhana:
    ```csh
-   unsetenv MY_VAR
+   setenv MYVAR "Hello World"
+   unsetenv MYVAR
    ```
 
 2. Menghapus beberapa variabel lingkungan sekaligus:
    ```csh
-   unsetenv VAR1 VAR2 VAR3
+   setenv VAR1 "Value1"
+   setenv VAR2 "Value2"
+   unsetenv VAR1 VAR2
    ```
 
-3. Menghapus variabel yang tidak ada tidak akan menghasilkan kesalahan:
+3. Menghapus variabel yang tidak ada (tidak akan menghasilkan kesalahan):
    ```csh
-   unsetenv NON_EXISTENT_VAR
+   unsetenv NONEXISTENTVAR
    ```
 
 ## Tips
-- Pastikan untuk memeriksa variabel yang ingin Anda hapus sebelum menggunakan `unsetenv`, untuk menghindari penghapusan yang tidak disengaja.
-- Anda dapat menggunakan perintah `printenv` untuk melihat daftar variabel lingkungan yang saat ini ada sebelum memutuskan untuk menghapusnya.
-- Gunakan `setenv` untuk menetapkan kembali variabel yang telah dihapus jika diperlukan.
+- Pastikan untuk memeriksa variabel yang ada sebelum menggunakan `unsetenv` untuk menghindari kebingungan.
+- Gunakan `printenv` untuk melihat daftar variabel lingkungan yang aktif sebelum dan sesudah menggunakan `unsetenv`.
+- Hati-hati saat menghapus variabel yang mungkin digunakan oleh skrip atau aplikasi lain dalam sesi shell Anda.

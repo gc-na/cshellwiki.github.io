@@ -1,20 +1,20 @@
-# [Sistem Operasi] C Shell (csh) pwd: Menampilkan direktori kerja saat ini
+# [Sistem Operasi] C Shell (csh) pwd Penggunaan: Menampilkan direktori kerja saat ini
 
 ## Overview
-Perintah `pwd` (print working directory) digunakan untuk menampilkan jalur direktori kerja saat ini di dalam terminal. Ini sangat berguna untuk mengetahui di mana Anda berada dalam struktur direktori.
+Perintah `pwd` (print working directory) digunakan untuk menampilkan jalur lengkap dari direktori kerja saat ini di dalam shell. Ini sangat berguna untuk mengetahui lokasi Anda dalam sistem file.
 
 ## Usage
-Sintaks dasar dari perintah `pwd` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `pwd`:
 
 ```
 pwd [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah `pwd`:
+Berikut adalah beberapa opsi umum yang dapat digunakan dengan `pwd`:
 
-- `-L`: Menampilkan jalur direktori yang sebenarnya, mengikuti simbolik link.
-- `-P`: Menampilkan jalur direktori fisik, tanpa mengikuti simbolik link.
+- `-L`: Menampilkan jalur simbolis dari direktori kerja saat ini.
+- `-P`: Menampilkan jalur fisik dari direktori kerja saat ini, mengabaikan tautan simbolis.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `pwd`:
@@ -24,17 +24,17 @@ Berikut adalah beberapa contoh penggunaan perintah `pwd`:
    pwd
    ```
 
-2. Menampilkan jalur direktori secara fisik:
-   ```csh
-   pwd -P
-   ```
-
-3. Menampilkan jalur direktori dengan mengikuti simbolik link:
+2. Menampilkan jalur simbolis dari direktori kerja:
    ```csh
    pwd -L
    ```
 
+3. Menampilkan jalur fisik dari direktori kerja:
+   ```csh
+   pwd -P
+   ```
+
 ## Tips
-- Gunakan `pwd` secara berkala untuk memastikan Anda berada di direktori yang tepat sebelum menjalankan perintah lain.
-- Kombinasikan `pwd` dengan perintah lain seperti `cd` untuk navigasi yang lebih efisien dalam terminal.
-- Jika Anda bekerja dengan skrip, pertimbangkan untuk menyimpan output dari `pwd` ke dalam variabel untuk referensi di kemudian hari.
+- Gunakan `pwd` secara rutin untuk memastikan Anda berada di direktori yang benar sebelum menjalankan perintah lain.
+- Kombinasikan `pwd` dengan perintah lain seperti `cd` untuk navigasi yang lebih efisien di dalam sistem file.
+- Ingat bahwa hasil dari `pwd` dapat digunakan dalam skrip untuk mengatur jalur file secara dinamis.

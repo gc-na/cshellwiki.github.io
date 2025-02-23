@@ -1,50 +1,50 @@
 # [Linux] C Shell (csh) unzip gebruik: Bestanden uitpakken
 
 ## Overzicht
-De `unzip` opdracht wordt gebruikt om bestanden uit een ZIP-archief te extraheren. Dit is een veelgebruikte methode om gecomprimeerde bestanden te beheren en te openen in verschillende besturingssystemen.
+De `unzip` opdracht wordt gebruikt om gecomprimeerde bestanden in het ZIP-formaat uit te pakken. Het is een handige tool voor het beheren van gecomprimeerde archieven en het herstellen van bestanden die in dit formaat zijn opgeslagen.
 
 ## Gebruik
 De basis syntaxis van de `unzip` opdracht is als volgt:
 
-```csh
+```
 unzip [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
+## Veelvoorkomende opties
 - `-l`: Lijst de inhoud van het ZIP-bestand zonder het uit te pakken.
-- `-d <directory>`: Specificeert de doelmap waar de bestanden moeten worden uitgepakt.
+- `-d [directory]`: Pak de bestanden uit naar de opgegeven directory.
 - `-o`: Overschrijft bestaande bestanden zonder bevestiging.
 - `-q`: Voert de opdracht uit in stille modus, zonder uitvoer naar de terminal.
 
-## Veelvoorkomende Voorbeelden
+## Veelvoorkomende voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van de `unzip` opdracht:
 
-1. **Basis unzip**: Pak een ZIP-bestand uit in de huidige map.
+1. **Een ZIP-bestand uitpakken naar de huidige directory:**
    ```csh
    unzip bestand.zip
    ```
 
-2. **Inhoud van een ZIP-bestand weergeven**: Bekijk de bestanden in een ZIP-archief zonder ze uit te pakken.
+2. **De inhoud van een ZIP-bestand weergeven zonder uit te pakken:**
    ```csh
    unzip -l bestand.zip
    ```
 
-3. **Bestanden uitpakken naar een specifieke map**: Pak bestanden uit naar een opgegeven directory.
+3. **Bestanden uitpakken naar een specifieke directory:**
    ```csh
    unzip bestand.zip -d /pad/naar/doelmap
    ```
 
-4. **Overschrijven zonder bevestiging**: Pak bestanden uit en overschrijf bestaande bestanden automatisch.
+4. **Bestaande bestanden overschrijven zonder bevestiging:**
    ```csh
    unzip -o bestand.zip
    ```
 
-5. **Stille modus**: Voer de unzip-opdracht uit zonder uitvoer naar de terminal.
+5. **Uitpakken in stille modus:**
    ```csh
    unzip -q bestand.zip
    ```
 
 ## Tips
-- Controleer altijd de inhoud van een ZIP-bestand met de `-l` optie voordat je het uitpakt, om te zien wat erin zit.
-- Gebruik de `-d` optie om bestanden georganiseerd uit te pakken in specifieke mappen.
-- Wees voorzichtig met de `-o` optie, omdat deze bestaande bestanden zonder waarschuwing kan overschrijven.
+- Controleer altijd de inhoud van een ZIP-bestand met de `-l` optie voordat je het uitpakt, vooral als het van een onbekende bron komt.
+- Gebruik de `-d` optie om bestanden georganiseerd uit te pakken in een specifieke map, zodat je je werkruimte schoon houdt.
+- Wees voorzichtig met de `-o` optie, omdat dit bestaande bestanden kan overschrijven zonder waarschuwing.

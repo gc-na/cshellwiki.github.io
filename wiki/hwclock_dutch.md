@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) hwclock gebruik: Beheer de hardwareklok
 
 ## Overzicht
-De `hwclock` opdracht wordt gebruikt om de hardwareklok van een computer te beheren. Deze klok, die onafhankelijk van het besturingssysteem functioneert, houdt de tijd bij wanneer de computer is uitgeschakeld.
+De `hwclock` opdracht wordt gebruikt om de hardwareklok van een systeem te beheren. Deze klok is onafhankelijk van het besturingssysteem en blijft de tijd bij, zelfs wanneer de computer is uitgeschakeld. Met `hwclock` kun je de tijd lezen, instellen of synchroniseren met de systeemklok.
 
 ## Gebruik
 De basis syntaxis van de `hwclock` opdracht is als volgt:
@@ -13,39 +13,39 @@ hwclock [opties] [argumenten]
 ## Veelvoorkomende Opties
 - `--show`: Toont de huidige tijd van de hardwareklok.
 - `--set`: Stelt de hardwareklok in op de opgegeven tijd.
-- `--hctosys`: Zet de systeemklok in op de tijd van de hardwareklok.
-- `--systohc`: Stelt de hardwareklok in op de tijd van de systeemklok.
-- `--utc`: Geeft aan dat de tijd in UTC moet worden behandeld.
+- `--systohc`: Synchroniseert de systeemklok met de hardwareklok.
+- `--hctosys`: Synchroniseert de hardwareklok met de systeemklok.
+- `--utc`: Geeft aan dat de tijd in UTC is.
 
 ## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van de `hwclock` opdracht:
+Hier zijn enkele praktische voorbeelden van het gebruik van `hwclock`:
 
-1. Huidige tijd van de hardwareklok weergeven:
+1. **Toon de huidige tijd van de hardwareklok:**
    ```csh
    hwclock --show
    ```
 
-2. De hardwareklok instellen op een specifieke tijd:
+2. **Stel de hardwareklok in op een specifieke tijd:**
    ```csh
    hwclock --set --date="2023-10-01 12:00:00"
    ```
 
-3. De systeemklok instellen op de tijd van de hardwareklok:
-   ```csh
-   hwclock --hctosys
-   ```
-
-4. De hardwareklok instellen op de tijd van de systeemklok:
+3. **Synchroniseer de systeemklok met de hardwareklok:**
    ```csh
    hwclock --systohc
    ```
 
-5. De tijd van de hardwareklok weergeven in UTC:
+4. **Synchroniseer de hardwareklok met de systeemklok:**
    ```csh
-   hwclock --show --utc
+   hwclock --hctosys
+   ```
+
+5. **Stel de hardwareklok in op UTC:**
+   ```csh
+   hwclock --set --date="2023-10-01 12:00:00" --utc
    ```
 
 ## Tips
-- Zorg ervoor dat je de juiste tijdzone instelt voordat je de hardwareklok aanpast.
-- Gebruik de `--utc` optie als je een dual-boot systeem hebt met verschillende besturingssystemen.
-- Controleer regelmatig de tijd van de hardwareklok om ervoor te zorgen dat deze correct is, vooral na stroomuitval.
+- Zorg ervoor dat je de juiste tijdzone instelt voordat je de hardwareklok configureert.
+- Gebruik `hwclock --show` regelmatig om te controleren of de hardwareklok correct is ingesteld.
+- Het is een goede gewoonte om de hardwareklok te synchroniseren met de systeemklok na belangrijke systeemupdates of wijzigingen in de tijdzone.

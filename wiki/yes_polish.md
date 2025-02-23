@@ -1,45 +1,41 @@
-# [Linux] C Shell (csh) yes użycie: generowanie niekończących się powtórzeń tekstu
+# [Linux] C Shell (csh) yes użycie: generowanie powtarzających się komunikatów
 
 ## Overview
-Polecenie `yes` w C Shell (csh) służy do generowania niekończącego się strumienia powtarzających się tekstów. Domyślnie wypisuje słowo "yes", ale można dostarczyć własny tekst jako argument.
+Polecenie `yes` w systemie C Shell (csh) jest używane do generowania nieskończonej serii powtarzających się komunikatów. Domyślnie wypisuje słowo "y", co jest przydatne w sytuacjach, gdy program wymaga potwierdzenia od użytkownika.
 
 ## Usage
 Podstawowa składnia polecenia `yes` jest następująca:
 
-```csh
+```
 yes [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-h`, `--help`: Wyświetla pomoc dotyczącą polecenia `yes`.
-- `-V`, `--version`: Wyświetla wersję polecenia `yes`.
+- `-h`, `--help`: Wyświetla pomoc i informacje o użyciu.
+- `-V`, `--version`: Wyświetla wersję programu.
 
 ## Common Examples
+
 1. **Domyślne użycie**:
-   Wypisuje "yes" w nieskończoność.
+   Wypisuje "y" w nieskończoność.
    ```csh
    yes
    ```
 
-2. **Wypisywanie własnego tekstu**:
-   Wypisuje "hello" w nieskończoność.
+2. **Wypisywanie innego komunikatu**:
+   Możesz podać inny tekst do powtórzenia.
    ```csh
-   yes hello
+   yes "Zgadzam się"
    ```
 
-3. **Ograniczenie liczby powtórzeń**:
-   Można użyć `head`, aby ograniczyć liczbę linii do 5.
+3. **Użycie z innym poleceniem**:
+   Możesz użyć `yes` do automatycznego potwierdzania w innych poleceniach, na przykład:
    ```csh
-   yes | head -n 5
+   yes | rm -i *.tmp
    ```
-
-4. **Zapis do pliku**:
-   Wypisuje "yes" do pliku `output.txt`.
-   ```csh
-   yes > output.txt
-   ```
+   W tym przypadku `yes` automatycznie odpowiada "y" na wszystkie zapytania o potwierdzenie usunięcia plików.
 
 ## Tips
-- Używaj `yes` w połączeniu z innymi poleceniami, aby automatycznie odpowiadać na pytania w skryptach.
-- Uważaj na użycie `yes` bez ograniczeń, ponieważ może zająć dużo zasobów systemowych.
-- Możesz użyć `Ctrl+C`, aby przerwać działanie polecenia `yes`, gdy nie jest już potrzebne.
+- Używaj `yes` ostrożnie, szczególnie w połączeniu z poleceniami, które mogą wprowadzać zmiany w systemie, aby uniknąć niezamierzonych skutków.
+- Możesz przerwać działanie `yes` w dowolnym momencie, używając kombinacji klawiszy `Ctrl + C`.
+- Zastosowanie `yes` w skryptach może znacznie uprościć procesy wymagające potwierdzeń.

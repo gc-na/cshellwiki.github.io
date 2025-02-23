@@ -1,7 +1,7 @@
-# [Sistem Operasi] C Shell (csh) sysctl Penggunaan: Mengelola parameter kernel
+# [Sistem Operasi] C Shell (csh) sysctl Penggunaan: Mengelola Parameter Kernel
 
 ## Overview
-Perintah `sysctl` digunakan untuk mengelola dan mengonfigurasi parameter kernel di sistem operasi berbasis Unix. Dengan `sysctl`, pengguna dapat membaca dan mengubah pengaturan kernel secara langsung, yang dapat mempengaruhi kinerja dan perilaku sistem.
+Perintah `sysctl` digunakan untuk mengelola dan mengonfigurasi parameter kernel di sistem operasi berbasis Unix. Dengan `sysctl`, pengguna dapat membaca dan mengubah pengaturan kernel secara dinamis tanpa perlu me-reboot sistem.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `sysctl`:
@@ -11,10 +11,9 @@ sysctl [options] [arguments]
 ```
 
 ## Common Options
-- `-a`: Menampilkan semua parameter kernel yang dapat diatur.
-- `-w`: Mengubah nilai parameter kernel.
-- `-n`: Menampilkan nilai parameter tanpa nama parameter.
-- `-q`: Menyembunyikan pesan kesalahan.
+- `-a`: Menampilkan semua parameter kernel yang tersedia.
+- `-w`: Mengubah nilai dari parameter kernel yang ditentukan.
+- `-n`: Menampilkan nilai parameter kernel tanpa nama parameter.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `sysctl`:
@@ -24,22 +23,22 @@ Berikut adalah beberapa contoh penggunaan perintah `sysctl`:
    sysctl -a
    ```
 
-2. Mengubah nilai parameter kernel (misalnya, mengubah ukuran buffer TCP):
+2. Mengubah nilai parameter kernel, misalnya mengubah ukuran maksimum file yang dapat dibuka:
    ```csh
-   sysctl -w net.ipv4.tcp_rmem="4096 87380 6291456"
+   sysctl -w fs.file-max=100000
    ```
 
-3. Menampilkan nilai spesifik dari parameter kernel:
+3. Menampilkan nilai spesifik dari parameter kernel, misalnya untuk melihat ukuran buffer jaringan:
    ```csh
-   sysctl -n net.ipv4.ip_forward
+   sysctl -n net.core.rmem_max
    ```
 
-4. Menyembunyikan pesan kesalahan saat menampilkan nilai parameter:
+4. Mengambil informasi tentang parameter tertentu, misalnya untuk melihat pengaturan swap:
    ```csh
-   sysctl -q net.ipv4.conf.all.forwarding
+   sysctl vm.swappiness
    ```
 
 ## Tips
-- Selalu pastikan untuk memeriksa nilai parameter sebelum mengubahnya untuk menghindari masalah pada sistem.
-- Gunakan opsi `-n` untuk mendapatkan nilai parameter tanpa informasi tambahan, yang berguna untuk skrip otomatis.
-- Simpan perubahan yang dilakukan dengan `sysctl -w` ke dalam file konfigurasi sistem agar tetap berlaku setelah reboot.
+- Selalu periksa nilai parameter sebelum mengubahnya untuk menghindari masalah sistem.
+- Gunakan opsi `-n` untuk mendapatkan output yang lebih bersih saat hanya membutuhkan nilai dari parameter tertentu.
+- Pertimbangkan untuk menyimpan perubahan yang dilakukan pada file konfigurasi `/etc/sysctl.conf` agar tetap berlaku setelah reboot.

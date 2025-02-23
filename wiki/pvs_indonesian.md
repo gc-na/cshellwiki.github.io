@@ -1,45 +1,44 @@
-# [Sistem Operasi] C Shell (csh) pvs Penggunaan: [menampilkan informasi tentang volume fisik]
+# [Sistem Operasi] C Shell (csh) pvs Penggunaan: Menampilkan versi paket
 
 ## Overview
-Perintah `pvs` dalam C Shell (csh) digunakan untuk menampilkan informasi tentang volume fisik dalam sistem manajemen volume logis (LVM). Ini memberikan detail tentang volume fisik yang ada, termasuk ukuran, status, dan atribut lainnya.
+Perintah `pvs` dalam C Shell (csh) digunakan untuk menampilkan informasi tentang versi paket yang terinstal di sistem. Ini berguna untuk mengelola dan memantau paket perangkat lunak yang ada.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `pvs`:
 
-```
+```csh
 pvs [options] [arguments]
 ```
 
 ## Common Options
-- `-o`: Menentukan kolom yang ingin ditampilkan.
-- `-f`: Menampilkan informasi tambahan tentang volume fisik.
-- `-a`: Menampilkan semua volume fisik, termasuk yang tidak aktif.
-- `--units`: Menentukan satuan ukuran yang ditampilkan (misalnya, MB, GB).
+- `-a`: Menampilkan semua versi paket, termasuk yang tidak aktif.
+- `-n`: Menampilkan nama paket saja tanpa informasi tambahan.
+- `-h`: Menampilkan informasi dalam format yang lebih mudah dibaca.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `pvs`:
 
-1. Menampilkan daftar semua volume fisik:
-   ```bash
+1. Menampilkan semua versi paket yang terinstal:
+   ```csh
    pvs
    ```
 
-2. Menampilkan informasi dengan kolom khusus:
-   ```bash
-   pvs -o +pv_size,pv_uuid
+2. Menampilkan hanya nama paket:
+   ```csh
+   pvs -n
    ```
 
-3. Menampilkan semua volume fisik, termasuk yang tidak aktif:
-   ```bash
+3. Menampilkan semua versi paket, termasuk yang tidak aktif:
+   ```csh
    pvs -a
    ```
 
-4. Menampilkan informasi volume fisik dengan satuan yang ditentukan:
-   ```bash
-   pvs --units m
+4. Menampilkan informasi dalam format yang lebih mudah dibaca:
+   ```csh
+   pvs -h
    ```
 
 ## Tips
-- Selalu gunakan opsi `-o` untuk menyesuaikan output sesuai kebutuhan Anda.
-- Gunakan opsi `-f` jika Anda memerlukan informasi tambahan yang mungkin tidak ditampilkan secara default.
-- Periksa status volume fisik secara berkala untuk memastikan tidak ada masalah dengan penyimpanan Anda.
+- Gunakan opsi `-n` jika Anda hanya membutuhkan nama paket tanpa detail tambahan.
+- Opsi `-h` sangat berguna saat Anda ingin memahami output dengan lebih baik.
+- Selalu periksa versi paket secara berkala untuk memastikan bahwa perangkat lunak Anda diperbarui.

@@ -1,20 +1,20 @@
-# [Linux] C Shell (csh) sha256sum gebruik: Bereken SHA-256 hashes
+# [Linux] C Shell (csh) sha256sum gebruik: Controleer de integriteit van bestanden
 
 ## Overzicht
-De `sha256sum` opdracht wordt gebruikt om de SHA-256 hash van bestanden te berekenen. Dit is nuttig voor het verifiëren van de integriteit van bestanden en het vergelijken van bestanden op basis van hun hashwaarden.
+De `sha256sum` opdracht wordt gebruikt om de SHA-256 hashwaarde van bestanden te berekenen. Dit is nuttig voor het verifiëren van de integriteit van bestanden, bijvoorbeeld na het downloaden of overdragen van bestanden.
 
 ## Gebruik
 De basis syntaxis van de `sha256sum` opdracht is als volgt:
 
-```csh
+```
 sha256sum [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
 - `-b`: Behandel de invoer als binaire bestanden.
-- `-c`: Controleer de hashes van bestanden op basis van een eerder gegenereerde checksum.
-- `-o`: Schrijf de output naar een specifiek bestand.
-- `--help`: Toon een helpbericht met informatie over het gebruik van de opdracht.
+- `-c`: Controleer de hashwaarden van bestanden die zijn opgeslagen in een bestand.
+- `-h`: Toon een helpbericht met informatie over het gebruik van de opdracht.
+- `--quiet`: Vermijd het tonen van de hashwaarden bij het controleren.
 
 ## Veelvoorkomende Voorbeelden
 
@@ -23,22 +23,22 @@ sha256sum [opties] [argumenten]
    sha256sum bestand.txt
    ```
 
-2. **Bereken de SHA-256 hash van meerdere bestanden:**
-   ```csh
-   sha256sum bestand1.txt bestand2.txt
-   ```
-
-3. **Controleer de hash met een checksum bestand:**
-   ```csh
-   sha256sum -c checksums.sha256
-   ```
-
-4. **Schrijf de hash naar een bestand:**
+2. **Sla de hashwaarde op in een bestand:**
    ```csh
    sha256sum bestand.txt > hash.txt
    ```
 
+3. **Controleer de hashwaarden van bestanden met een hashbestand:**
+   ```csh
+   sha256sum -c hash.txt
+   ```
+
+4. **Bereken de hash van meerdere bestanden:**
+   ```csh
+   sha256sum bestand1.txt bestand2.txt
+   ```
+
 ## Tips
-- Gebruik de `-c` optie om de integriteit van gedownloade bestanden te verifiëren met een checksum bestand.
-- Voor binaire bestanden, zorg ervoor dat je de `-b` optie gebruikt om correcte resultaten te krijgen.
-- Het is een goede gewoonte om hashes te vergelijken na het verplaatsen of kopiëren van bestanden om dataverlies te voorkomen.
+- Zorg ervoor dat je de hashwaarden opslaat na het berekenen, zodat je deze later kunt gebruiken voor verificatie.
+- Gebruik de `-c` optie om eenvoudig te controleren of bestanden zijn gewijzigd door hun hashwaarden te vergelijken met een eerder opgeslagen bestand.
+- Het is een goede gewoonte om hashwaarden te controleren na het downloaden van belangrijke bestanden, vooral van onbekende bronnen.

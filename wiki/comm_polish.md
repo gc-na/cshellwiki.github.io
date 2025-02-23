@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) comm: porównywanie plików tekstowych
+# [Linux] C Shell (csh) comm: Porównywanie linii w plikach
 
 ## Overview
-Polecenie `comm` służy do porównywania dwóch posortowanych plików tekstowych, wyświetlając linie, które są unikalne dla każdego pliku oraz linie wspólne. Dzięki temu można łatwo zidentyfikować różnice między dwoma zestawami danych.
+Polecenie `comm` w C Shell (csh) służy do porównywania dwóch posortowanych plików tekstowych i wyświetlania linii, które są wspólne, unikalne dla każdego z plików oraz różnice między nimi.
 
 ## Usage
 Podstawowa składnia polecenia `comm` jest następująca:
@@ -14,9 +14,11 @@ comm [opcje] [argumenty]
 - `-1`: Ukrywa linie, które są unikalne dla pierwszego pliku.
 - `-2`: Ukrywa linie, które są unikalne dla drugiego pliku.
 - `-3`: Ukrywa linie, które są wspólne dla obu plików.
-- `-i`: Ignoruje różnice w wielkości liter podczas porównywania.
+- `-i`: Ignoruje wielkość liter podczas porównywania linii.
 
 ## Common Examples
+Przykłady użycia polecenia `comm`:
+
 1. Porównanie dwóch plików i wyświetlenie wszystkich linii:
    ```csh
    comm file1.txt file2.txt
@@ -27,9 +29,9 @@ comm [opcje] [argumenty]
    comm -13 file1.txt file2.txt
    ```
 
-3. Wyświetlenie tylko linii wspólnych dla obu plików:
+3. Wyświetlenie tylko linii unikalnych dla drugiego pliku:
    ```csh
-   comm -23 file1.txt file2.txt
+   comm -12 file1.txt file2.txt
    ```
 
 4. Porównanie dwóch plików z ignorowaniem wielkości liter:
@@ -38,9 +40,9 @@ comm [opcje] [argumenty]
    ```
 
 ## Tips
-- Upewnij się, że pliki są posortowane przed użyciem `comm`, ponieważ polecenie działa poprawnie tylko na posortowanych danych.
-- Możesz użyć polecenia `sort` w połączeniu z `comm`, aby automatycznie posortować pliki przed porównaniem:
+- Upewnij się, że pliki są posortowane przed użyciem `comm`, aby uzyskać poprawne wyniki.
+- Możesz użyć polecenia `sort` w połączeniu z `comm`, aby automatycznie posortować pliki:
   ```csh
   comm <(sort file1.txt) <(sort file2.txt)
   ```
-- Zawsze przetestuj polecenie na małych plikach, aby upewnić się, że rozumiesz jego działanie, zanim użyjesz go na większych zbiorach danych.
+- Eksperymentuj z różnymi opcjami, aby dostosować wyniki do swoich potrzeb.

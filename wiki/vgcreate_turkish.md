@@ -1,39 +1,41 @@
-# [Linux] C Shell (csh) vgcreate Kullanımı: Birim grubu oluşturma komutu
+# [Linux] C Shell (csh) vgcreate Kullanımı: Yeni bir hacim grubu oluşturma
 
 ## Genel Bakış
-`vgcreate` komutu, Linux sistemlerinde birim grupları (volume groups) oluşturmak için kullanılır. Bu komut, fiziksel hacimleri bir araya getirerek mantıksal hacim yöneticisi (LVM) altında yönetilebilir birim grupları oluşturmanıza olanak tanır.
+`vgcreate` komutu, Linux sistemlerinde yeni bir hacim grubunu (volume group) oluşturmak için kullanılır. Hacim grupları, fiziksel hacimlerin (physical volumes) bir araya getirilerek mantıksal hacimlerin (logical volumes) oluşturulmasını sağlar.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-
-```bash
-vgcreate [options] [arguments]
+```
+vgcreate [seçenekler] [hacim_grubu_adı] [fiziksel_hacim1] [fiziksel_hacim2] ...
 ```
 
 ## Yaygın Seçenekler
-- `-s, --stripes <num>`: Hacim grubunun şerit sayısını belirler.
-- `-p, --max-pv <num>`: Hacim grubundaki maksimum fiziksel hacim sayısını ayarlar.
-- `-f, --force`: Komutu zorla çalıştırır; mevcut olan hacim gruplarını geçersiz kılar.
+- `-s, --stripes <n>`: Mantıksal hacimlerin şerit sayısını ayarlar.
+- `-p, --pesize <boyut>`: Fiziksel genişlik boyutunu ayarlar.
+- `-f, --force`: Zorla oluşturma işlemi yapar, mevcut hacim gruplarını geçersiz kılar.
 
 ## Yaygın Örnekler
 Aşağıda `vgcreate` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. Yeni birim grubu oluşturma:
-   ```bash
-   vgcreate my_volume_group /dev/sda1 /dev/sda2
-   ```
+### Örnek 1: Basit bir hacim grubu oluşturma
+```
+vgcreate my_volume_group /dev/sda1 /dev/sda2
+```
+Bu komut, `my_volume_group` adında yeni bir hacim grubu oluşturur ve `/dev/sda1` ile `/dev/sda2` fiziksel hacimlerini kullanır.
 
-2. Şerit sayısını belirleyerek birim grubu oluşturma:
-   ```bash
-   vgcreate -s 64k my_volume_group /dev/sdb1 /dev/sdb2
-   ```
+### Örnek 2: Şerit sayısını ayarlayarak hacim grubu oluşturma
+```
+vgcreate -s 64k my_volume_group /dev/sda1 /dev/sda2
+```
+Bu komut, `my_volume_group` hacim grubunu 64k şerit boyutu ile oluşturur.
 
-3. Zorla birim grubu oluşturma:
-   ```bash
-   vgcreate -f my_volume_group /dev/sdc1
-   ```
+### Örnek 3: Zorla hacim grubu oluşturma
+```
+vgcreate -f my_volume_group /dev/sda1
+```
+Bu komut, mevcut bir hacim grubunu geçersiz kılarak `my_volume_group` adında yeni bir hacim grubu oluşturur.
 
 ## İpuçları
-- `vgcreate` komutunu kullanmadan önce, fiziksel hacimlerin (`pvcreate` ile) oluşturulduğundan emin olun.
-- Hacim grubu oluştururken, yeterli alanın mevcut olduğuna dikkat edin.
-- Hacim gruplarını düzenli olarak kontrol edin ve yönetim için uygun isimlendirme kuralları belirleyin.
+- Hacim grubunu oluştururken yeterli fiziksel hacim olduğundan emin olun.
+- `vgdisplay` komutunu kullanarak mevcut hacim gruplarını kontrol edebilirsiniz.
+- Hacim grubunu oluşturduktan sonra, mantıksal hacimler oluşturmak için `lvcreate` komutunu kullanmayı unutmayın.

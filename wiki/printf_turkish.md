@@ -1,51 +1,54 @@
 # [Linux] C Shell (csh) printf Kullanımı: Formatlı çıktı üretme
 
 ## Genel Bakış
-`printf` komutu, formatlı metin çıktısı üretmek için kullanılır. C dilindeki `printf` fonksiyonuna benzer şekilde çalışır ve kullanıcıların belirli bir formatta veri yazdırmasına olanak tanır.
+`printf` komutu, belirli bir formatta çıktı üretmek için kullanılır. C dilindeki `printf` fonksiyonuna benzer şekilde çalışarak, kullanıcıların metin ve değişkenleri belirli bir biçimde ekrana yazdırmasına olanak tanır.
 
 ## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
+Temel sözdizimi şu şekildedir:
 
 ```csh
 printf [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `%s`: Dize (string) formatı.
-- `%d`: Tam sayı (integer) formatı.
-- `%f`: Ondalık sayı (float) formatı.
-- `\n`: Yeni satır karakteri.
-- `\t`: Sekme karakteri.
+- `%s`: String (metin) formatı için kullanılır.
+- `%d`: Tam sayı formatı için kullanılır.
+- `%f`: Ondalık sayı formatı için kullanılır.
+- `\n`: Yeni satır karakteri ekler.
+- `\t`: Tab boşluğu ekler.
 
 ## Yaygın Örnekler
-Aşağıda `printf` komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda `printf` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-### Örnek 1: Basit Dize Yazdırma
+### Örnek 1: Basit metin yazdırma
 ```csh
-printf "Merhaba, dünya!\n"
+printf "Merhaba, Dünya!\n"
 ```
 
-### Örnek 2: Tam Sayı Yazdırma
+### Örnek 2: Değişken ile yazdırma
 ```csh
-printf "Yaşınız: %d\n" 25
+set isim = "Ali"
+printf "Merhaba, %s!\n" $isim
 ```
 
-### Örnek 3: Ondalık Sayı Yazdırma
+### Örnek 3: Tam sayı yazdırma
 ```csh
-printf "Pi sayısı: %.2f\n" 3.14159
+set sayi = 42
+printf "Sayı: %d\n" $sayi
 ```
 
-### Örnek 4: Birden Fazla Değişken Yazdırma
+### Örnek 4: Ondalık sayı yazdırma
 ```csh
-printf "Ad: %s, Yaş: %d\n" "Ali" 30
+set pi = 3.14159
+printf "Pi sayısı: %.2f\n" $pi
 ```
 
-### Örnek 5: Sekme ve Yeni Satır Kullanımı
+### Örnek 5: Tab ile ayrılmış çıktı
 ```csh
-printf "İsim\tYaş\nAli\t30\nAyşe\t25\n"
+printf "İsim\tYaş\nAli\t25\nAyşe\t30\n"
 ```
 
 ## İpuçları
-- Format belirteçlerini doğru kullanarak çıktınızı daha okunabilir hale getirin.
-- Uzun metinleri daha iyi yönetmek için `\n` ve `\t` karakterlerini kullanın.
-- Hataları önlemek için her zaman format belirteçleri ile argüman sayısının eşleştiğinden emin olun.
+- Format belirleyicilerini doğru kullanarak çıktınızı daha okunabilir hale getirin.
+- Değişkenlerinizi kullanırken, `$` işaretini unutmayın.
+- Uzun metinleri ve verileri daha düzenli bir şekilde yazdırmak için `\n` ve `\t` karakterlerini kullanın.

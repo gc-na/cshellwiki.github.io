@@ -1,38 +1,36 @@
-# [Linux] C Shell (csh) sync Kullanımı: Verileri diske yazma işlemi
+# [Linux] C Shell (csh) sync Kullanımı: Verileri diske senkronize etme
 
 ## Overview
-`sync` komutu, bellek (RAM) üzerinde bulunan verilerin diske yazılmasını sağlar. Bu komut, sistemin veri kaybını önlemek için kullanılır ve özellikle sistem kapatılmadan önce veya önemli dosyalar üzerinde değişiklik yapmadan önce yararlıdır.
+`sync` komutu, bellek içindeki verileri diske senkronize etmek için kullanılır. Bu, sistemin veri kaybını önlemek için önemlidir, özellikle de güç kaynağı kesildiğinde veya sistem çökmesi durumunda.
 
 ## Usage
-Temel sözdizimi aşağıdaki gibidir:
+Temel sözdizimi şu şekildedir:
 ```csh
 sync [options] [arguments]
 ```
 
 ## Common Options
-- `-f`: Dosya sistemlerini zorla senkronize eder.
-- `-d`: Yalnızca veri bloklarını senkronize eder, inode'ları atlar.
-- `-a`: Tüm dosya sistemlerini senkronize eder.
+- `-f`: Belirtilen dosya sistemini senkronize eder.
+- `-d`: Belirtilen dosya sisteminin yalnızca veri bloklarını senkronize eder.
 
 ## Common Examples
-Aşağıda `sync` komutunun bazı pratik örnekleri verilmiştir:
+Aşağıda `sync` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. Tüm dosya sistemlerini senkronize etmek için:
+1. Tüm dosya sistemlerini senkronize etme:
    ```csh
    sync
    ```
 
-2. Zorla dosya sistemlerini senkronize etmek için:
+2. Belirli bir dosya sistemini senkronize etme (örneğin, `/mnt`):
    ```csh
-   sync -f
+   sync -f /mnt
    ```
 
-3. Yalnızca veri bloklarını senkronize etmek için:
+3. Sadece veri bloklarını senkronize etme:
    ```csh
    sync -d
    ```
 
 ## Tips
-- `sync` komutunu, sisteminizi kapatmadan önce çalıştırmak, veri kaybını önlemek için iyi bir uygulamadır.
-- Eğer büyük dosyalar üzerinde çalışıyorsanız, işlemlerinizin tamamlanmasını bekledikten sonra `sync` komutunu kullanmayı unutmayın.
-- `sync` komutunu sıklıkla kullanmak, sistemin veri bütünlüğünü artırır.
+- `sync` komutunu, önemli dosya transferlerinden veya yazma işlemlerinden sonra kullanmak, veri kaybını önlemek için iyi bir uygulamadır.
+- Sistemi kapatmadan önce `sync` komutunu çalıştırmak, tüm verilerin diske yazılmasını sağlar ve güvenliği artırır.

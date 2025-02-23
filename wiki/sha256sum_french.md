@@ -1,10 +1,10 @@
 # [Linux] C Shell (csh) sha256sum : Calculer des sommes de contrôle SHA-256
 
 ## Overview
-La commande `sha256sum` est utilisée pour calculer et vérifier les sommes de contrôle SHA-256 d'un fichier. Cela permet de garantir l'intégrité des données en s'assurant que le contenu d'un fichier n'a pas été modifié.
+La commande `sha256sum` est utilisée pour calculer et vérifier les sommes de contrôle SHA-256 d'un fichier. Cela permet de garantir l'intégrité des données en s'assurant qu'un fichier n'a pas été altéré.
 
 ## Usage
-La syntaxe de base de la commande `sha256sum` est la suivante :
+La syntaxe de base de la commande est la suivante :
 
 ```csh
 sha256sum [options] [arguments]
@@ -13,10 +13,10 @@ sha256sum [options] [arguments]
 ## Common Options
 Voici quelques options courantes pour `sha256sum` :
 
-- `-b` : Traite les fichiers en mode binaire.
+- `-b` : Traite le fichier en mode binaire.
 - `-c` : Vérifie les sommes de contrôle à partir d'un fichier.
+- `-h` : Affiche l'aide et les options disponibles.
 - `-o` : Écrit la sortie dans un fichier spécifié.
-- `--quiet` : Ne produit aucune sortie sauf en cas d'erreur.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `sha256sum` :
@@ -26,22 +26,22 @@ Voici quelques exemples pratiques de l'utilisation de `sha256sum` :
    sha256sum monfichier.txt
    ```
 
-2. Vérifier la somme de contrôle à partir d'un fichier de sommes :
+2. Vérifier les sommes de contrôle à partir d'un fichier :
    ```csh
-   sha256sum -c sommes.txt
+   sha256sum -c checksums.txt
    ```
 
-3. Calculer la somme de contrôle d'un fichier et écrire la sortie dans un fichier :
-   ```csh
-   sha256sum monfichier.txt -o sortie.txt
-   ```
-
-4. Traiter un fichier en mode binaire :
+3. Calculer la somme de contrôle d'un fichier en mode binaire :
    ```csh
    sha256sum -b monfichier.bin
    ```
 
+4. Écrire la sortie dans un fichier :
+   ```csh
+   sha256sum monfichier.txt -o somme.txt
+   ```
+
 ## Tips
-- Toujours vérifier les sommes de contrôle après le téléchargement de fichiers importants pour s'assurer qu'ils n'ont pas été corrompus.
-- Utilisez l'option `-c` pour automatiser la vérification des fichiers en utilisant un fichier de sommes de contrôle.
-- Gardez une copie des fichiers de sommes de contrôle pour une vérification future.
+- Utilisez `sha256sum` avec des fichiers de vérification pour assurer l'intégrité des téléchargements.
+- Combinez `sha256sum` avec d'autres commandes, comme `find`, pour vérifier plusieurs fichiers à la fois.
+- Gardez un fichier de sommes de contrôle à jour pour vos fichiers importants afin de faciliter les vérifications futures.

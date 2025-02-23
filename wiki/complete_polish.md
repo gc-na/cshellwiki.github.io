@@ -1,43 +1,45 @@
-# [Linux] C Shell (csh) complete: Uzupełnianie poleceń
+# [Linux] C Shell (csh) complete użycie: Uzupełnianie poleceń
 
 ## Overview
-Polecenie `complete` w powłoce C Shell (csh) jest używane do automatycznego uzupełniania nazw plików i poleceń. Umożliwia to użytkownikom szybsze wprowadzanie komend, co zwiększa wydajność pracy w terminalu.
+Polecenie `complete` w C Shell (csh) służy do automatycznego uzupełniania argumentów dla poleceń. Umożliwia to użytkownikom szybkie i efektywne wprowadzanie komend, co zwiększa wydajność pracy w terminalu.
 
 ## Usage
-Podstawowa składnia polecenia `complete` wygląda następująco:
+Podstawowa składnia polecenia `complete` jest następująca:
 
 ```csh
 complete [options] [arguments]
 ```
 
 ## Common Options
-- `-c` : Umożliwia uzupełnianie poleceń.
-- `-f` : Umożliwia uzupełnianie nazw plików.
-- `-n` : Umożliwia uzupełnianie na podstawie nazw plików w katalogu.
-- `-d` : Umożliwia uzupełnianie katalogów.
+- `-c`: Umożliwia uzupełnianie dla podanego polecenia.
+- `-d`: Uzupełnia argumenty na podstawie katalogów.
+- `-f`: Umożliwia uzupełnianie na podstawie plików.
+- `-n`: Umożliwia określenie liczby argumentów, które muszą być podane przed uzupełnieniem.
 
 ## Common Examples
-1. Uzupełnianie poleceń:
+Przykłady użycia polecenia `complete`:
+
+1. Uzupełnianie dla polecenia `ls`:
    ```csh
    complete -c ls
    ```
 
-2. Uzupełnianie nazw plików:
+2. Uzupełnianie argumentów na podstawie katalogów:
    ```csh
-   complete -f cp
+   complete -d cd
    ```
 
-3. Uzupełnianie nazw katalogów:
+3. Uzupełnianie argumentów na podstawie plików:
    ```csh
-   complete -d mkdir
+   complete -f mv
    ```
 
-4. Uzupełnianie na podstawie nazw plików w katalogu:
+4. Użycie z określoną liczbą argumentów:
    ```csh
-   complete -n mv
+   complete -n 2 cp
    ```
 
 ## Tips
-- Używaj polecenia `complete` w połączeniu z innymi poleceniami, aby zwiększyć efektywność pracy.
-- Pamiętaj, aby regularnie aktualizować swoje uzupełnienia, aby były zgodne z nowymi plikami i katalogami w systemie.
-- Eksperymentuj z różnymi opcjami, aby znaleźć najlepsze ustawienia dla swoich potrzeb.
+- Upewnij się, że masz włączone uzupełnianie w swoim terminalu, aby korzystać z funkcji `complete`.
+- Możesz tworzyć własne reguły uzupełniania dla niestandardowych poleceń, co może znacznie przyspieszyć Twoją pracę.
+- Regularnie aktualizuj swoje skrypty i aliasy, aby w pełni wykorzystać możliwości automatycznego uzupełniania.

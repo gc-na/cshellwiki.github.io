@@ -1,61 +1,51 @@
-# [Linux] C Shell (csh) pkg uso equivalente: Gestire i pacchetti software
+# [Linux] C Shell (csh) pkg uso equivalente: Gestire pacchetti software
 
 ## Overview
-Il comando `pkg` è utilizzato per gestire i pacchetti software in ambienti Unix-like. Permette agli utenti di installare, aggiornare e rimuovere pacchetti, semplificando notevolmente la gestione delle applicazioni e delle librerie.
+Il comando `pkg` in C Shell (csh) è utilizzato per gestire pacchetti software. Permette agli utenti di installare, aggiornare e rimuovere pacchetti da un sistema, semplificando la gestione delle dipendenze e delle versioni del software.
 
 ## Usage
 La sintassi di base del comando `pkg` è la seguente:
 
-```
+```csh
 pkg [options] [arguments]
 ```
 
 ## Common Options
-- `install`: Installa uno o più pacchetti.
-- `remove`: Rimuove uno o più pacchetti installati.
+- `install`: Installa uno o più pacchetti specificati.
+- `remove`: Rimuove uno o più pacchetti specificati.
 - `update`: Aggiorna i pacchetti installati all'ultima versione disponibile.
-- `list`: Elenca i pacchetti installati.
-- `search`: Cerca pacchetti disponibili nel repository.
+- `list`: Elenca i pacchetti installati nel sistema.
+- `info`: Mostra informazioni dettagliate su un pacchetto specificato.
 
 ## Common Examples
-Ecco alcuni esempi pratici dell'uso del comando `pkg`:
+Ecco alcuni esempi pratici di utilizzo del comando `pkg`:
 
-### Installare un pacchetto
-Per installare un pacchetto, utilizza il comando `install`:
+- **Installare un pacchetto**:
+  ```csh
+  pkg install nome_pacchetto
+  ```
 
-```
-pkg install nome_pacchetto
-```
+- **Rimuovere un pacchetto**:
+  ```csh
+  pkg remove nome_pacchetto
+  ```
 
-### Rimuovere un pacchetto
-Per rimuovere un pacchetto installato, utilizza il comando `remove`:
+- **Aggiornare i pacchetti installati**:
+  ```csh
+  pkg update
+  ```
 
-```
-pkg remove nome_pacchetto
-```
+- **Elencare i pacchetti installati**:
+  ```csh
+  pkg list
+  ```
 
-### Aggiornare i pacchetti
-Per aggiornare tutti i pacchetti installati, usa il comando `update`:
-
-```
-pkg update
-```
-
-### Elencare i pacchetti installati
-Per visualizzare tutti i pacchetti attualmente installati, utilizza il comando `list`:
-
-```
-pkg list
-```
-
-### Cercare un pacchetto
-Per cercare un pacchetto specifico nel repository, utilizza il comando `search`:
-
-```
-pkg search nome_pacchetto
-```
+- **Ottenere informazioni su un pacchetto**:
+  ```csh
+  pkg info nome_pacchetto
+  ```
 
 ## Tips
-- Assicurati di eseguire il comando `update` regolarmente per mantenere i pacchetti aggiornati.
-- Utilizza `pkg list` per controllare quali pacchetti sono già installati prima di tentare di installarne di nuovi.
-- Quando rimuovi pacchetti, verifica le dipendenze per evitare di rimuovere accidentalmente pacchetti necessari.
+- Assicurati di avere i permessi necessari per installare o rimuovere pacchetti, potresti aver bisogno di eseguire il comando come amministratore.
+- Controlla sempre le dipendenze di un pacchetto prima di installarlo per evitare conflitti.
+- Usa `pkg update` regolarmente per mantenere il tuo sistema aggiornato con le ultime versioni dei pacchetti.

@@ -1,73 +1,45 @@
 # [Linux] C Shell (csh) modprobe Kullanımı: Modül yükleme ve yönetme aracı
 
 ## Genel Bakış
-`modprobe`, Linux işletim sistemlerinde çekirdek modüllerini yüklemek ve yönetmek için kullanılan bir komuttur. Bu komut, belirli bir modülü yüklerken, gerekli olan diğer modülleri de otomatik olarak yükler. Bu sayede, sistemdeki donanım bileşenleri ile çekirdek arasında uyum sağlanır.
+`modprobe`, Linux işletim sistemlerinde çekirdek modüllerini yüklemek ve yönetmek için kullanılan bir komuttur. Bu komut, sistemdeki modülleri otomatik olarak yükleyebilir ve bağımlılıklarını yönetebilir.
 
 ## Kullanım
-`modprobe` komutunun temel sözdizimi aşağıdaki gibidir:
+Temel sözdizimi aşağıdaki gibidir:
 
-```bash
+```
 modprobe [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-r` veya `--remove`: Belirtilen modülü sistemden kaldırır.
-- `-n` veya `--dry-run`: Modül yükleme işlemini simüle eder, gerçek bir yükleme yapmaz.
-- `-v` veya `--verbose`: Yükleme işlemi sırasında daha fazla bilgi verir.
-- `--show-depends`: Yüklenmesi gereken bağımlı modülleri gösterir.
+- `-r`: Belirtilen modülü kaldırır.
+- `--list`: Yüklenmiş modüllerin listesini gösterir.
+- `--show`: Modülün bağımlılıklarını gösterir.
+- `-v`: Ayrıntılı çıktı sağlar.
 
 ## Yaygın Örnekler
-Aşağıda `modprobe` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+Aşağıda `modprobe` komutunun bazı pratik örnekleri verilmiştir:
 
-### Modül Yükleme
-Belirli bir modülü yüklemek için:
+1. Bir modülü yüklemek için:
+   ```bash
+   modprobe nfs
+   ```
 
-```bash
-modprobe <modül_adı>
-```
-Örneğin, `dummy` modülünü yüklemek için:
+2. Bir modülü kaldırmak için:
+   ```bash
+   modprobe -r nfs
+   ```
 
-```bash
-modprobe dummy
-```
+3. Yüklenmiş modüllerin listesini görüntülemek için:
+   ```bash
+   modprobe --list
+   ```
 
-### Modül Kaldırma
-Bir modülü sistemden kaldırmak için:
-
-```bash
-modprobe -r <modül_adı>
-```
-Örneğin, `dummy` modülünü kaldırmak için:
-
-```bash
-modprobe -r dummy
-```
-
-### Yükleme Simülasyonu
-Modül yükleme işlemini simüle etmek için:
-
-```bash
-modprobe -n <modül_adı>
-```
-Örneğin, `dummy` modülünü yüklemeyi simüle etmek için:
-
-```bash
-modprobe -n dummy
-```
-
-### Bağımlılıkları Gösterme
-Yüklenmesi gereken bağımlı modülleri görmek için:
-
-```bash
-modprobe --show-depends <modül_adı>
-```
-Örneğin, `dummy` modülünün bağımlılıklarını görmek için:
-
-```bash
-modprobe --show-depends dummy
-```
+4. Bir modülün bağımlılıklarını görüntülemek için:
+   ```bash
+   modprobe --show nfs
+   ```
 
 ## İpuçları
-- Modül yüklemeden önce, modülün sistemde mevcut olduğundan emin olun.
-- `modprobe` kullanırken, root yetkilerine sahip olmanız gerektiğini unutmayın.
-- Modül yükleme işlemlerini düzenli olarak kontrol edin; gereksiz modüllerin sistemde bulunması performansı etkileyebilir.
+- Modülleri yüklemeden önce, sisteminizin modülün desteklediğinden emin olun.
+- `modprobe` komutunu kullanırken, genellikle `sudo` ile çalıştırmak gerekebilir.
+- Modüllerin doğru bir şekilde yüklenip yüklenmediğini kontrol etmek için `dmesg` komutunu kullanabilirsiniz.

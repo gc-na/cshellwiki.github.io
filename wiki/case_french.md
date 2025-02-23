@@ -1,60 +1,60 @@
-# [Unix] C Shell (csh) case : Gérer les structures conditionnelles
+# [Linux] C Shell (csh) case : Gérer les structures conditionnelles
 
 ## Overview
-La commande `case` dans C Shell (csh) permet d'effectuer des comparaisons conditionnelles sur des variables. Elle est utilisée pour exécuter différentes sections de code en fonction de la valeur d'une variable, facilitant ainsi la gestion des choix multiples.
+La commande `case` dans C Shell (csh) est utilisée pour effectuer des comparaisons conditionnelles. Elle permet d'exécuter différentes sections de code en fonction de la valeur d'une variable ou d'une expression. C'est un outil puissant pour le contrôle de flux dans les scripts.
 
 ## Usage
 La syntaxe de base de la commande `case` est la suivante :
 
 ```csh
 case [variable] in
-    [pattern1] ) [command1];;
-    [pattern2] ) [command2];;
+    [pattern1]) [commands1];;
+    [pattern2]) [commands2];;
     ...
-    * ) [default_command];;
+    *) [default_commands];;
 esac
 ```
 
 ## Common Options
-La commande `case` ne possède pas d'options spécifiques, mais elle utilise des motifs pour faire correspondre les valeurs. Voici quelques motifs courants :
-- `*` : correspond à n'importe quelle chaîne.
-- `?` : correspond à un seul caractère.
-- `[abc]` : correspond à un caractère parmi ceux spécifiés (a, b ou c).
+La commande `case` n'a pas d'options spécifiques, mais elle fonctionne avec des motifs qui peuvent inclure :
+
+- `*` : Correspond à n'importe quelle chaîne de caractères.
+- `?` : Correspond à un seul caractère.
+- `[...]` : Correspond à un ensemble de caractères.
 
 ## Common Examples
 
-### Exemple 1 : Vérifier un jour de la semaine
+### Exemple 1 : Vérification d'une variable
 ```csh
-set day = "Lundi"
-case $day in
-    "Lundi" ) echo "C'est le début de la semaine";;
-    "Samedi" | "Dimanche" ) echo "C'est le week-end";;
-    * ) echo "C'est un jour de semaine";;
+set fruit = "pomme"
+case $fruit in
+    "pomme") echo "C'est une pomme";;
+    "banane") echo "C'est une banane";;
+    *) echo "Fruit inconnu";;
 esac
 ```
 
-### Exemple 2 : Identifier un type de fichier
+### Exemple 2 : Traitement de plusieurs options
 ```csh
-set file = "document.txt"
-case $file in
-    *.txt ) echo "C'est un fichier texte";;
-    *.jpg | *.png ) echo "C'est une image";;
-    * ) echo "Type de fichier inconnu";;
+set option = "a"
+case $option in
+    "a") echo "Option A sélectionnée";;
+    "b") echo "Option B sélectionnée";;
+    "c") echo "Option C sélectionnée";;
+    *) echo "Option non reconnue";;
 esac
 ```
 
-### Exemple 3 : Choisir une action selon une entrée utilisateur
+### Exemple 3 : Utilisation avec des paramètres de script
 ```csh
-set action = "sauvegarder"
-case $action in
-    "sauvegarder" ) echo "Sauvegarde en cours";;
-    "restaurer" ) echo "Restauration en cours";;
-    "quitter" ) echo "Fermeture du programme";;
-    * ) echo "Action non reconnue";;
+case $1 in
+    "-h") echo "Aide";;
+    "-v") echo "Version 1.0";;
+    *) echo "Commande non reconnue";;
 esac
 ```
 
 ## Tips
 - Utilisez des motifs spécifiques pour éviter des correspondances inattendues.
-- N'oubliez pas d'inclure une option par défaut (`*`) pour gérer les cas non prévus.
-- Testez toujours vos conditions pour vous assurer qu'elles fonctionnent comme prévu.
+- N'oubliez pas de terminer chaque bloc de commande par `;;` pour signaler la fin de la condition.
+- Testez toujours vos scripts avec différentes entrées pour vous assurer que tous les cas sont couverts.

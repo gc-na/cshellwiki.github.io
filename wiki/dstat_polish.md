@@ -1,48 +1,48 @@
-# [Linux] C Shell (csh) dstat użycie: monitorowanie systemu w czasie rzeczywistym
+# [Linux] C Shell (csh) dstat użycie: monitorowanie zasobów systemowych
 
 ## Overview
-Polecenie `dstat` jest narzędziem do monitorowania systemu w czasie rzeczywistym, które łączy funkcjonalność wielu innych narzędzi, takich jak `vmstat`, `iostat`, `netstat`, i `ifstat`. Umożliwia ono użytkownikom śledzenie różnych zasobów systemowych, takich jak CPU, pamięć, dyski, i sieć, co jest niezwykle przydatne w diagnostyce i optymalizacji wydajności systemu.
+Polecenie `dstat` służy do monitorowania różnych zasobów systemowych w czasie rzeczywistym. Umożliwia użytkownikom śledzenie wydajności systemu, takich jak użycie CPU, pamięci, dysku i sieci, co jest przydatne w diagnostyce i optymalizacji systemu.
 
 ## Usage
 Podstawowa składnia polecenia `dstat` jest następująca:
 
-```bash
+```csh
 dstat [opcje] [argumenty]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji dla `dstat`:
+Oto kilka powszechnie używanych opcji dla polecenia `dstat`:
 
-- `-c` – wyświetla statystyki CPU.
-- `-d` – pokazuje statystyki dysku.
-- `-n` – wyświetla statystyki sieci.
-- `-m` – pokazuje użycie pamięci.
-- `--full` – wyświetla wszystkie dostępne statystyki.
+- `-c`: Pokazuje użycie CPU.
+- `-d`: Wyświetla statystyki dysku.
+- `-n`: Monitoruje ruch sieciowy.
+- `-m`: Pokazuje użycie pamięci.
+- `--help`: Wyświetla pomoc i dostępne opcje.
 
 ## Common Examples
-Poniżej znajdują się przykłady użycia `dstat`:
+Oto kilka praktycznych przykładów użycia polecenia `dstat`:
 
-1. Aby monitorować statystyki CPU i pamięci:
-   ```bash
+1. Aby monitorować użycie CPU i pamięci:
+   ```csh
    dstat -c -m
    ```
 
-2. Aby zobaczyć statystyki dysku i sieci:
-   ```bash
-   dstat -d -n
+2. Aby śledzić ruch sieciowy i statystyki dysku:
+   ```csh
+   dstat -n -d
    ```
 
-3. Aby uzyskać pełny widok wszystkich statystyk:
-   ```bash
-   dstat --full
+3. Aby uzyskać pełne informacje o wszystkich zasobach:
+   ```csh
+   dstat
    ```
 
-4. Aby zapisać dane do pliku:
-   ```bash
-   dstat > dstat_output.txt
+4. Aby zapisać wyniki do pliku:
+   ```csh
+   dstat > wynik.txt
    ```
 
 ## Tips
 - Używaj opcji `-t`, aby dodać znacznik czasu do wyników, co ułatwia analizę danych w czasie.
-- Możesz łączyć różne opcje, aby uzyskać bardziej szczegółowe informacje, np. `dstat -cdm`.
-- Regularnie monitoruj system w czasie rzeczywistym, aby szybko identyfikować problemy z wydajnością.
+- Rozważ użycie `dstat` w połączeniu z innymi narzędziami, takimi jak `grep`, aby filtrować wyniki.
+- Regularnie monitoruj system, aby zidentyfikować potencjalne problemy z wydajnością zanim staną się krytyczne.

@@ -1,52 +1,50 @@
 # [Linux] C Shell (csh) lvs użycie: wyświetlanie informacji o logicznych woluminach
 
 ## Overview
-Polecenie `lvs` w C Shell (csh) służy do wyświetlania informacji o logicznych woluminach w systemie zarządzania woluminami LVM (Logical Volume Manager). Umożliwia użytkownikom szybki dostęp do danych dotyczących woluminów, takich jak ich rozmiar, typ oraz inne istotne atrybuty.
+Polecenie `lvs` w systemie C Shell (csh) służy do wyświetlania informacji o logicznych woluminach w systemach zarządzania woluminami, takich jak LVM (Logical Volume Manager). Dzięki `lvs` użytkownicy mogą łatwo monitorować i zarządzać swoimi woluminami logicznymi.
 
 ## Usage
 Podstawowa składnia polecenia `lvs` jest następująca:
 
-```csh
+```
 lvs [opcje] [argumenty]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji dla polecenia `lvs`:
-
-- `-o`: Określa, które kolumny mają być wyświetlane.
-- `-a`: Wyświetla wszystkie woluminy, w tym nieaktywne.
-- `-n`: Wyświetla tylko nazwy woluminów.
-- `--units`: Umożliwia określenie jednostek dla rozmiarów (np. m, g, t).
+- `-o, --units`: Określa jednostki, w których mają być wyświetlane rozmiary.
+- `-a, --all`: Wyświetla wszystkie woluminy, w tym te nieaktywne.
+- `-f, --full`: Wyświetla pełne informacje o woluminach, w tym atrybuty.
+- `-n, --noheadings`: Ukrywa nagłówki kolumn w wyjściu.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `lvs`:
+Przykłady użycia polecenia `lvs`:
 
-1. Wyświetlenie podstawowych informacji o wszystkich logicznych woluminach:
-   ```csh
+1. Wyświetlenie podstawowych informacji o wszystkich woluminach logicznych:
+   ```bash
    lvs
    ```
 
-2. Wyświetlenie szczegółowych informacji z określonymi kolumnami:
-   ```csh
-   lvs -o lv_name,lv_size,lv_attr
+2. Wyświetlenie informacji o woluminach z określonymi jednostkami:
+   ```bash
+   lvs -o +devices
    ```
 
 3. Wyświetlenie wszystkich woluminów, w tym nieaktywnych:
-   ```csh
+   ```bash
    lvs -a
    ```
 
-4. Wyświetlenie tylko nazw woluminów:
-   ```csh
+4. Wyświetlenie pełnych informacji o woluminach:
+   ```bash
+   lvs -f
+   ```
+
+5. Ukrycie nagłówków kolumn w wyjściu:
+   ```bash
    lvs -n
    ```
 
-5. Wyświetlenie informacji o woluminach w jednostkach gigabajtowych:
-   ```csh
-   lvs --units g
-   ```
-
 ## Tips
-- Używaj opcji `-o`, aby dostosować wyświetlane kolumny do swoich potrzeb, co może ułatwić analizę danych.
-- Regularnie sprawdzaj status woluminów, aby upewnić się, że system działa prawidłowo.
-- Zawsze wykonuj kopie zapasowe ważnych danych przed wprowadzeniem zmian w konfiguracji LVM.
+- Używaj opcji `-o` do dostosowania wyjścia i uzyskania dodatkowych informacji o woluminach.
+- Regularnie sprawdzaj stan woluminów, aby uniknąć problemów z przestrzenią dyskową.
+- Rozważ użycie opcji `-a`, aby mieć pełny obraz wszystkich woluminów, w tym tych, które mogą być w stanie nieaktywnym.

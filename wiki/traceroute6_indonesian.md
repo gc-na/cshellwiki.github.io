@@ -1,53 +1,52 @@
-# [Sistem Operasi] C Shell (csh) traceroute6: Melacak jalur paket IPv6
+# [Sistem Operasi] C Shell (csh) traceroute6: Menelusuri jalur IPv6
 
 ## Overview
-Perintah `traceroute6` digunakan untuk melacak jalur yang dilalui paket data dalam jaringan berbasis IPv6. Dengan menggunakan perintah ini, pengguna dapat melihat setiap hop (lompatan) yang dilalui paket dari sumber ke tujuan, yang membantu dalam mendiagnosis masalah jaringan.
+Perintah `traceroute6` digunakan untuk melacak jalur yang dilalui paket data menuju alamat IPv6 tertentu. Dengan menggunakan perintah ini, pengguna dapat melihat setiap hop (lompatan) yang dilalui oleh paket, serta waktu yang dibutuhkan untuk mencapai setiap hop tersebut. Ini sangat berguna untuk mendiagnosis masalah jaringan dan memahami rute yang diambil oleh data.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `traceroute6`:
 
-```csh
+```bash
 traceroute6 [options] [arguments]
 ```
 
 ## Common Options
 Beberapa opsi umum yang dapat digunakan dengan `traceroute6` antara lain:
 
-- `-m <max_ttl>`: Menentukan batas maksimum Time To Live (TTL) untuk paket.
-- `-n`: Menghindari resolusi nama host, menampilkan alamat IP saja.
-- `-p <port>`: Menentukan nomor port yang akan digunakan untuk pengujian.
-- `-w <timeout>`: Menentukan waktu tunggu dalam detik untuk setiap balasan.
+- `-n`: Menampilkan alamat IP tanpa mencoba mengonversinya menjadi nama host.
+- `-m <max_ttl>`: Menentukan nilai Time To Live (TTL) maksimum untuk paket.
+- `-p <port>`: Menentukan port yang akan digunakan untuk pengujian.
+- `-q <nqueries>`: Menentukan jumlah kueri yang dikirim ke setiap hop.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `traceroute6`:
 
-1. Melacak jalur ke alamat IPv6 tertentu:
-   ```csh
+1. Menelusuri jalur ke alamat IPv6 tertentu:
+   ```bash
    traceroute6 2001:db8::1
    ```
 
-2. Melacak jalur dengan batas maksimum TTL 30:
-   ```csh
-   traceroute6 -m 30 2001:db8::1
-   ```
-
-3. Menampilkan hanya alamat IP tanpa resolusi nama:
-   ```csh
+2. Menampilkan alamat IP tanpa nama host:
+   ```bash
    traceroute6 -n 2001:db8::1
    ```
 
-4. Menggunakan nomor port tertentu:
-   ```csh
+3. Mengatur TTL maksimum menjadi 30:
+   ```bash
+   traceroute6 -m 30 2001:db8::1
+   ```
+
+4. Menentukan port yang digunakan (misalnya port 80):
+   ```bash
    traceroute6 -p 80 2001:db8::1
    ```
 
-5. Mengatur waktu tunggu untuk setiap balasan menjadi 2 detik:
-   ```csh
-   traceroute6 -w 2 2001:db8::1
+5. Mengirimkan 5 kueri ke setiap hop:
+   ```bash
+   traceroute6 -q 5 2001:db8::1
    ```
 
 ## Tips
-- Pastikan Anda memiliki izin yang diperlukan untuk menjalankan `traceroute6`, terutama pada jaringan yang lebih ketat.
-- Gunakan opsi `-n` jika Anda hanya ingin melihat alamat IP untuk mempercepat proses.
-- Jika Anda mengalami masalah dalam melacak jalur, coba gunakan opsi `-m` untuk mengurangi batas TTL dan lihat apakah itu membantu.
-- Perhatikan bahwa beberapa router mungkin tidak merespons permintaan traceroute, yang dapat menyebabkan hasil yang tidak lengkap.
+- Selalu gunakan opsi `-n` jika Anda ingin mempercepat proses, terutama jika DNS lambat.
+- Cobalah berbagai nilai TTL untuk mengidentifikasi di mana masalah jaringan mungkin terjadi.
+- Gunakan `traceroute6` sebagai bagian dari alat pemecahan masalah jaringan yang lebih besar untuk mendapatkan gambaran yang lebih lengkap tentang kondisi jaringan Anda.

@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) hostname Kullanımı: Sistem adını görüntüleme ve ayarlama
+# [Linux] C Shell (csh) hostname Kullanımı: Aygıtın ağ adını gösterir
 
 ## Overview
-`hostname` komutu, sistemin ağ üzerindeki adını görüntülemek veya değiştirmek için kullanılır. Bu komut, özellikle ağ yapılandırmalarında ve sistem yönetiminde önemli bir rol oynar.
+`hostname` komutu, sistemin ağ adını görüntülemek veya ayarlamak için kullanılır. Bu komut, ağ üzerinde tanımlı olan makinenin adını belirlemenize ve gerektiğinde değiştirmenize olanak tanır.
 
 ## Usage
 Temel sözdizimi şu şekildedir:
@@ -11,40 +11,35 @@ hostname [options] [arguments]
 ```
 
 ## Common Options
-- `-f`: Tam alan adı (FQDN) ile sistem adını gösterir.
-- `-s`: Sadece kısa sistem adını gösterir.
-- `-i`: IP adresini gösterir.
-- `-V`: Versiyon bilgisini gösterir.
+- `-f`: Tam ana bilgisayar adını gösterir.
+- `-s`: Sadece kısa ana bilgisayar adını gösterir.
+- `-i`: Ana bilgisayarın IP adresini gösterir.
+- `-a`: Ana bilgisayarın alias'larını gösterir.
 
 ## Common Examples
-Aşağıda `hostname` komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda `hostname` komutunun bazı pratik örnekleri verilmiştir:
 
-1. **Sistem adını görüntüleme:**
-   ```csh
-   hostname
-   ```
-
-2. **Kısa sistem adını görüntüleme:**
+1. Kısa ana bilgisayar adını görüntüleme:
    ```csh
    hostname -s
    ```
 
-3. **Tam alan adı ile sistem adını görüntüleme:**
+2. Tam ana bilgisayar adını görüntüleme:
    ```csh
    hostname -f
    ```
 
-4. **Sistemin IP adresini görüntüleme:**
+3. Ana bilgisayarın IP adresini görüntüleme:
    ```csh
    hostname -i
    ```
 
-5. **Sistem adını değiştirme:**
+4. Ana bilgisayar adını değiştirme:
    ```csh
-   hostname yeni-sistem-adi
+   hostname yeni_ad
    ```
 
 ## Tips
-- Sistem adını değiştirdikten sonra, değişikliğin etkili olması için bazı durumlarda sistemi yeniden başlatmanız gerekebilir.
-- Ağ ayarlarını güncellerken, `hostname` komutunu kullanarak sistem adının doğru olduğundan emin olun.
-- `hostname` komutunu kullanırken, gerekli izinlere sahip olduğunuzdan emin olun; bazı sistemlerde yalnızca yönetici kullanıcılar bu komutu kullanabilir.
+- Ana bilgisayar adını değiştirdikten sonra, değişikliğin etkili olması için sistemi yeniden başlatmanız gerekebilir.
+- Ağ adının benzersiz olduğundan emin olun; bu, ağ üzerindeki diğer cihazlarla çakışmaları önler.
+- `hostname` komutunu sık sık kullanıyorsanız, bir alias oluşturarak daha hızlı erişim sağlayabilirsiniz.

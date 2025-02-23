@@ -1,53 +1,47 @@
 # [Sistem Operasi] C Shell (csh) unrar: Ekstrak file RAR
 
 ## Overview
-Perintah `unrar` digunakan untuk mengekstrak file dari arsip RAR. Ini adalah alat yang berguna untuk mengakses konten file yang terkompresi dalam format RAR, yang sering digunakan untuk menghemat ruang penyimpanan dan memudahkan pengiriman data.
+Perintah `unrar` digunakan untuk mengekstrak file dari arsip RAR. Ini adalah alat yang berguna ketika Anda perlu mengakses konten yang terkompresi dalam format RAR.
 
 ## Usage
-Sintaks dasar dari perintah `unrar` adalah sebagai berikut:
+Sintaks dasar untuk menggunakan perintah `unrar` adalah sebagai berikut:
 
-```bash
+```
 unrar [options] [arguments]
 ```
 
 ## Common Options
 Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah `unrar`:
 
-- `e` : Mengekstrak semua file ke direktori saat ini.
-- `x` : Mengekstrak file dengan mempertahankan struktur direktori.
-- `l` : Menampilkan daftar file dalam arsip RAR tanpa mengekstraknya.
-- `v` : Menampilkan informasi lebih detail tentang file dalam arsip.
-- `-o+` : Mengizinkan penimpaan file yang sudah ada.
+- `e`: Ekstrak file ke direktori saat ini.
+- `x`: Ekstrak file dengan mempertahankan struktur direktori.
+- `l`: Tampilkan daftar file dalam arsip RAR tanpa mengekstraknya.
+- `v`: Tampilkan informasi rinci tentang arsip RAR.
 
 ## Common Examples
+Berikut adalah beberapa contoh praktis penggunaan perintah `unrar`:
 
-Berikut adalah beberapa contoh penggunaan perintah `unrar`:
-
-1. **Mengekstrak semua file ke direktori saat ini:**
-
+1. **Ekstrak file ke direktori saat ini:**
    ```bash
    unrar e file. rar
    ```
 
-2. **Mengekstrak file dengan mempertahankan struktur direktori:**
-
+2. **Ekstrak file dengan mempertahankan struktur direktori:**
    ```bash
    unrar x file.rar
    ```
 
-3. **Menampilkan daftar file dalam arsip RAR:**
-
+3. **Tampilkan daftar file dalam arsip RAR:**
    ```bash
    unrar l file.rar
    ```
 
-4. **Mengekstrak file dan mengizinkan penimpaan file yang sudah ada:**
-
+4. **Tampilkan informasi rinci tentang arsip RAR:**
    ```bash
-   unrar x -o+ file.rar
+   unrar v file.rar
    ```
 
 ## Tips
-- Selalu periksa isi arsip RAR menggunakan opsi `l` sebelum mengekstrak untuk memastikan Anda tahu apa yang akan diekstrak.
-- Gunakan opsi `-o+` dengan hati-hati untuk menghindari kehilangan data yang tidak disengaja.
-- Jika Anda sering bekerja dengan file RAR, pertimbangkan untuk membuat alias untuk perintah `unrar` agar lebih mudah diakses.
+- Pastikan Anda memiliki izin yang tepat untuk mengekstrak file di direktori tujuan.
+- Gunakan opsi `-o+` untuk menimpa file yang sudah ada tanpa konfirmasi.
+- Jika Anda sering bekerja dengan file RAR, pertimbangkan untuk menambahkan alias ke dalam file konfigurasi shell Anda untuk kemudahan akses.

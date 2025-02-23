@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) timedatectl Verwendung: Zeit- und Datumseinstellungen verwalten
 
 ## Übersicht
-Der `timedatectl` Befehl wird verwendet, um die Systemzeit und das Datum zu verwalten. Er ermöglicht es Benutzern, die aktuelle Zeit, das Datum, die Zeitzone und die Synchronisierung mit Zeitservern zu überprüfen und zu ändern.
+Der Befehl `timedatectl` wird verwendet, um Zeit- und Datumseinstellungen auf Linux-Systemen zu verwalten. Er ermöglicht es Benutzern, die aktuelle Zeit, das Datum und die Zeitzone zu überprüfen und zu ändern.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
@@ -12,43 +12,39 @@ timedatectl [Optionen] [Argumente]
 
 ## Häufige Optionen
 - `status`: Zeigt den aktuellen Status von Zeit und Datum an.
-- `set-time`: Setzt die Systemzeit und das Datum.
+- `set-time`: Setzt die aktuelle Zeit und das Datum.
 - `set-timezone`: Ändert die Zeitzone des Systems.
-- `set-ntp`: Aktiviert oder deaktiviert die NTP-Synchronisierung.
 - `list-timezones`: Listet alle verfügbaren Zeitzonen auf.
+- `set-ntp`: Aktiviert oder deaktiviert die Netzwerkzeitprotokoll-Synchronisation.
 
 ## Häufige Beispiele
-- Aktuellen Status von Zeit und Datum anzeigen:
 
-```csh
-timedatectl status
-```
+- **Aktuellen Status anzeigen:**
+  ```csh
+  timedatectl status
+  ```
 
-- Systemzeit und Datum auf den 1. Januar 2023 um 12:00 Uhr setzen:
+- **Aktuelles Datum und Uhrzeit setzen:**
+  ```csh
+  timedatectl set-time '2023-10-01 12:00:00'
+  ```
 
-```csh
-timedatectl set-time '2023-01-01 12:00:00'
-```
+- **Zeitzone ändern:**
+  ```csh
+  timedatectl set-timezone Europe/Berlin
+  ```
 
-- Zeitzone auf Europa/Berlin ändern:
+- **Verfügbare Zeitzonen auflisten:**
+  ```csh
+  timedatectl list-timezones
+  ```
 
-```csh
-timedatectl set-timezone Europe/Berlin
-```
-
-- NTP-Synchronisierung aktivieren:
-
-```csh
-timedatectl set-ntp true
-```
-
-- Alle verfügbaren Zeitzonen auflisten:
-
-```csh
-timedatectl list-timezones
-```
+- **NTP aktivieren:**
+  ```csh
+  timedatectl set-ntp true
+  ```
 
 ## Tipps
-- Überprüfen Sie regelmäßig den Status der Zeit- und Datumseinstellungen, um sicherzustellen, dass Ihr System korrekt synchronisiert ist.
-- Verwenden Sie die `list-timezones` Option, um die richtige Zeitzone für Ihre Region zu finden.
-- Bei der Verwendung von `set-time`, stellen Sie sicher, dass Sie das richtige Format für Datum und Uhrzeit verwenden, um Fehler zu vermeiden.
+- Stellen Sie sicher, dass Sie über die erforderlichen Berechtigungen verfügen, um Zeit- und Datumseinstellungen zu ändern.
+- Verwenden Sie `timedatectl list-timezones`, um die korrekte Zeitzone zu finden, bevor Sie diese ändern.
+- Überprüfen Sie regelmäßig den Status mit `timedatectl status`, um sicherzustellen, dass Ihr System die richtige Zeit hat.

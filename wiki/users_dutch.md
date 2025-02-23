@@ -1,22 +1,22 @@
 # [Linux] C Shell (csh) gebruikerscommando: Toont actieve gebruikers
 
 ## Overzicht
-Het `users` commando in C Shell (csh) toont een lijst van de gebruikers die momenteel zijn ingelogd op het systeem. Dit is handig voor systeembeheerders en gebruikers die willen weten wie er actief is op een bepaald moment.
+Het `users` commando in de C Shell (csh) toont een lijst van de gebruikers die momenteel zijn ingelogd op het systeem. Dit is handig voor systeembeheerders en gebruikers die willen weten wie er actief is op de machine.
 
 ## Gebruik
 De basis syntaxis van het `users` commando is als volgt:
 
 ```
-users [opties]
+users [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-n`: Toon het aantal unieke gebruikers in plaats van hun namen.
-- `-r`: Toon alleen de gebruikers die een actieve sessie hebben.
+- `-n` : Toont het aantal unieke gebruikers in plaats van hun namen.
+- `-r` : Toont alleen de gebruikers die op een terminal zijn ingelogd.
 
 ## Veelvoorkomende Voorbeelden
 
-1. **Toon alle ingelogde gebruikers:**
+1. **Toon ingelogde gebruikers:**
    ```csh
    users
    ```
@@ -26,11 +26,11 @@ users [opties]
    users -n
    ```
 
-3. **Toon alleen actieve gebruikers:**
+3. **Toon alleen gebruikers die op een terminal zijn ingelogd:**
    ```csh
    users -r
    ```
 
 ## Tips
-- Gebruik het `users` commando in combinatie met andere commando's zoals `who` of `w` voor meer gedetailleerde informatie over ingelogde gebruikers.
-- Dit commando is handig voor het monitoren van systeemactiviteit, vooral op gedeelde systemen.
+- Gebruik het `users` commando in combinatie met andere commando's zoals `who` of `w` voor meer gedetailleerde informatie over de ingelogde gebruikers.
+- Het `users` commando geeft geen tijdstempels of andere details; voor meer informatie over gebruikerssessies, gebruik `who` of `w`.

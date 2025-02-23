@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) set Kullanımı: Değişkenleri ayarlama
 
 ## Overview
-`set` komutu, C Shell (csh) ortamında değişkenleri ayarlamak ve yönetmek için kullanılır. Bu komut, kullanıcıların shell ortamında değişkenler tanımlamasına ve bu değişkenlere değer atamasına olanak tanır.
+`set` komutu, C Shell (csh) ortamında değişkenleri ayarlamak ve yönetmek için kullanılır. Bu komut, kullanıcıların ortam değişkenlerini ve shell değişkenlerini tanımlamalarına ve düzenlemelerine olanak tanır.
 
 ## Usage
 Temel sözdizimi aşağıdaki gibidir:
@@ -11,14 +11,12 @@ set [options] [arguments]
 ```
 
 ## Common Options
-- `-x`: Değişkenleri izlemek için kullanılır. Bu seçenek ile değişkenlerin değerleri her atandığında görüntülenir.
-- `-e`: Hata durumunda shell'in çıkmasını sağlar.
-- `-u`: Tanımlanmamış değişkenlere erişim sağlandığında hata verir.
+- `-x`: Değişkenlerin değerlerini ekrana yazdırır. Bu, hata ayıklama için yararlıdır.
+- `-e`: Hata oluştuğunda shell'in çıkmasını sağlar.
+- `-u`: Tanımsız değişkenlere erişim durumunda hata verir.
 
 ## Common Examples
-Aşağıda `set` komutunun bazı pratik örnekleri bulunmaktadır:
-
-1. Basit bir değişken tanımlama:
+1. Basit bir değişken ayarlama:
    ```csh
    set myVar = "Merhaba Dünya"
    ```
@@ -28,23 +26,23 @@ Aşağıda `set` komutunun bazı pratik örnekleri bulunmaktadır:
    echo $myVar
    ```
 
-3. Birden fazla değişken tanımlama:
+3. Birden fazla değişken ayarlama:
    ```csh
-   set var1 = "Değer 1"
-   set var2 = "Değer 2"
+   set var1 = "Değer1"
+   set var2 = "Değer2"
    ```
 
-4. Değişkenleri listeleme:
-   ```csh
-   set
-   ```
-
-5. Değişkenin değerini güncelleme:
+4. Değişkenin değerini değiştirme:
    ```csh
    set myVar = "Yeni Değer"
    ```
 
+5. Değişkenin değerini boşaltma:
+   ```csh
+   unset myVar
+   ```
+
 ## Tips
-- Değişken isimlerinde boşluk veya özel karakter kullanmaktan kaçının; bu, hata almanıza neden olabilir.
-- Değişkenlerinizi tanımlarken anlamlı isimler seçmek, kodunuzu daha okunabilir hale getirir.
-- `set` komutunu kullanırken dikkatli olun; yanlışlıkla önemli sistem değişkenlerini değiştirmek, shell oturumunuzu etkileyebilir.
+- Değişken isimleri genellikle küçük harfle başlar ve boşluk karakteri içermez.
+- Değişkenleri ayarlarken, değerlerin etrafında tırnak işareti kullanmak, boşlukları ve özel karakterleri korumak için faydalıdır.
+- Hata ayıklama sırasında `set -x` kullanarak hangi komutların çalıştığını takip edebilirsiniz.

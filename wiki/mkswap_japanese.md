@@ -1,40 +1,40 @@
-# [Linux] C Shell (csh) mkswap の使い方: スワップ領域の作成
+# [Unix系] C Shell (csh) mkswap の使い方: スワップ領域の作成
 
-## Overview
-`mkswap` コマンドは、Linux システムにおいてスワップ領域を作成するために使用されます。スワップ領域は、物理メモリが不足した際に、データを一時的に保存するための領域です。
+## 概要
+mkswap コマンドは、Linux システムにおいてスワップ領域を作成するために使用されます。スワップ領域は、物理メモリが不足した際に、データを一時的に保存するためのディスクスペースです。
 
-## Usage
+## 使用法
 基本的な構文は以下の通りです。
 
 ```
-mkswap [options] [arguments]
+mkswap [オプション] [引数]
 ```
 
-## Common Options
-- `-L, --label <label>`: スワップ領域にラベルを付けます。
-- `-f, --force`: スワップ領域の作成を強制します。
-- `-p, --pagesize <size>`: ページサイズを指定します。
+## 一般的なオプション
+- `-f`: スワップ領域を強制的に作成します。
+- `-L <ラベル>`: スワップ領域にラベルを付けます。
+- `-p <優先度>`: スワップ領域の優先度を設定します。
 
-## Common Examples
-以下は、`mkswap` コマンドのいくつかの実用的な例です。
+## 一般的な例
+以下に、mkswap コマンドのいくつかの実用的な例を示します。
 
-### スワップファイルの作成
+### 例 1: スワップファイルの作成
 ```
-dd if=/dev/zero of=/swapfile bs=1M count=1024
-mkswap /swapfile
-```
-
-### スワップ領域にラベルを付ける
-```
-mkswap -L myswap /dev/sdX
+sudo dd if=/dev/zero of=/swapfile bs=1M count=1024
+sudo mkswap /swapfile
 ```
 
-### スワップ領域を強制的に作成する
+### 例 2: ラベル付きスワップ領域の作成
 ```
-mkswap -f /dev/sdX
+sudo mkswap -L my_swap /dev/sdX
 ```
 
-## Tips
+### 例 3: 優先度を設定してスワップ領域を作成
+```
+sudo mkswap -p 10 /dev/sdX
+```
+
+## ヒント
 - スワップファイルを作成する際は、十分なサイズを確保することが重要です。
 - スワップ領域を有効にするには、`swapon` コマンドを使用してください。
-- スワップ領域の状態を確認するには、`swapon --show` コマンドを利用できます。
+- スワップ領域の使用状況を確認するには、`swapon --show` コマンドを利用できます。

@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) nohup Verwendung: Befehle im Hintergrund ausführen
 
 ## Übersicht
-Der Befehl `nohup` (no hang up) wird verwendet, um Prozesse im Hintergrund auszuführen, die auch nach dem Abmelden des Benutzers weiterlaufen. Dies ist besonders nützlich, wenn lange laufende Aufgaben nicht unterbrochen werden sollen.
+Der Befehl `nohup` (no hang up) wird verwendet, um Prozesse im Hintergrund auszuführen, sodass sie nicht beendet werden, wenn die Sitzung geschlossen wird. Dies ist besonders nützlich, wenn Sie lange laufende Aufgaben haben, die nicht unterbrochen werden sollen.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
@@ -12,8 +12,8 @@ nohup [Optionen] [Argumente]
 
 ## Häufige Optionen
 - `&`: Führt den Befehl im Hintergrund aus.
-- `-o [Datei]`: Leitet die Ausgabe in die angegebene Datei um (standardmäßig `nohup.out`).
-- `-h`: Zeigt eine Hilfe zu den Optionen an.
+- `-h`: Zeigt die Hilfe für den Befehl an.
+- `-p`: Bezieht sich auf den Prozess, der mit `nohup` gestartet wurde.
 
 ## Häufige Beispiele
 Hier sind einige praktische Beispiele für die Verwendung von `nohup`:
@@ -23,22 +23,22 @@ Hier sind einige praktische Beispiele für die Verwendung von `nohup`:
    nohup ./mein_skript.sh &
    ```
 
-2. **Ein lang laufender Befehl mit Ausgabeumleitung:**
+2. **Ein Python-Skript im Hintergrund ausführen und die Ausgabe in eine Datei umleiten:**
    ```csh
-   nohup long_running_command > ausgabe.log &
+   nohup python mein_programm.py > ausgabe.log &
    ```
 
-3. **Einen Python-Prozess im Hintergrund starten:**
+3. **Einen Befehl im Hintergrund ausführen und die Fehlerausgabe in eine Datei umleiten:**
    ```csh
-   nohup python mein_programm.py &
+   nohup ls -l /verzeichnis > ausgabe.log 2>&1 &
    ```
 
-4. **Einen Befehl im Hintergrund ausführen und die Ausgabe in eine Datei umleiten:**
+4. **Einen Befehl ohne Ausgabe im Hintergrund ausführen:**
    ```csh
-   nohup ls -l > dateiliste.txt &
+   nohup mein_befehl > /dev/null 2>&1 &
    ```
 
 ## Tipps
-- Verwenden Sie `tail -f nohup.out`, um die Ausgabe eines laufenden Prozesses in Echtzeit zu überwachen.
-- Überprüfen Sie regelmäßig die Ausgabedatei, um sicherzustellen, dass der Prozess wie erwartet läuft.
-- Kombinieren Sie `nohup` mit `screen` oder `tmux`, um eine noch bessere Kontrolle über Ihre Hintergrundprozesse zu haben.
+- Verwenden Sie `&`, um sicherzustellen, dass der Prozess im Hintergrund läuft.
+- Überprüfen Sie die `nohup.out`-Datei, um die Standardausgabe und Fehlerausgaben zu sehen, wenn Sie keine Umleitung angegeben haben.
+- Stellen Sie sicher, dass Sie die richtigen Berechtigungen haben, um das Skript oder den Befehl auszuführen, bevor Sie `nohup` verwenden.

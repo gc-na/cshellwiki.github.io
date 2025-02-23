@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) dstat gebruik: Monitoren van systeembronnen
+# [Linux] C Shell (csh) dstat gebruik: systeemstatistieken in real-time bekijken
 
 ## Overzicht
-De `dstat`-opdracht is een veelzijdig hulpmiddel voor het monitoren van systeembronnen in real-time. Het combineert de functionaliteit van verschillende andere tools zoals `vmstat`, `iostat`, en `netstat`, en biedt een uitgebreide weergave van systeemactiviteit.
+De `dstat`-opdracht is een veelzijdig hulpprogramma dat systeemstatistieken in real-time weergeeft. Het combineert de functionaliteit van verschillende andere tools zoals `vmstat`, `iostat`, en `netstat`, en biedt een uitgebreide weergave van systeembronnen zoals CPU-gebruik, geheugen, schijfactiviteit en netwerkverkeer.
 
 ## Gebruik
 De basis syntaxis van de `dstat`-opdracht is als volgt:
@@ -10,44 +10,41 @@ De basis syntaxis van de `dstat`-opdracht is als volgt:
 dstat [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
-Hier zijn enkele veelgebruikte opties voor `dstat`:
-
-- `-c`: Toon CPU-gebruik.
+## Veelvoorkomende opties
+- `-c`: Toon CPU-statistieken.
 - `-d`: Toon schijfactiviteit.
 - `-n`: Toon netwerkactiviteit.
-- `-r`: Toon geheugenactiviteit.
-- `--help`: Toon hulpinformatie over het gebruik van dstat.
+- `-m`: Toon geheugenstatistieken.
+- `--help`: Toon de help-informatie voor dstat.
 
-## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van `dstat`:
+## Veelvoorkomende voorbeelden
 
-1. **Basis systeemmonitoring**:
+1. **Basisgebruik**: Toon standaard systeemstatistieken.
    ```csh
    dstat
    ```
 
-2. **CPU- en geheugenactiviteit weergeven**:
+2. **CPU- en geheugenstatistieken**: Toon alleen CPU- en geheugeninformatie.
    ```csh
-   dstat -c -r
+   dstat -c -m
    ```
 
-3. **Schijf- en netwerkactiviteit weergeven**:
+3. **Schijf- en netwerkactiviteit**: Toon schijf- en netwerkactiviteit.
    ```csh
    dstat -d -n
    ```
 
-4. **Alle beschikbare informatie weergeven**:
+4. **Gecombineerde statistieken**: Toon CPU, schijf en netwerk in één weergave.
    ```csh
-   dstat -cdnr
+   dstat -c -d -n
    ```
 
-5. **Gegevens naar een bestand schrijven**:
+5. **Statistieken met tijdstempel**: Voeg tijdstempels toe aan de uitvoer.
    ```csh
-   dstat > output.txt
+   dstat --time
    ```
 
 ## Tips
-- Gebruik de `--help` optie om meer te leren over de beschikbare opties en hun gebruik.
-- Combineer verschillende opties om een uitgebreid overzicht van systeemactiviteit te krijgen.
-- Overweeg om `dstat` te gebruiken met een logging-tool om trends in systeemgebruik over tijd te analyseren.
+- Gebruik `dstat` met verschillende opties om een beter inzicht te krijgen in de prestaties van je systeem.
+- Experimenteer met het combineren van opties voor een meer gedetailleerde weergave van systeemstatistieken.
+- Overweeg om `dstat` te gebruiken in combinatie met andere monitoringtools voor een uitgebreidere analyse van systeembronnen.

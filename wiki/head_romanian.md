@@ -1,35 +1,35 @@
-# [Linux] C Shell (csh) head utilizare: Afișează primele linii ale unui fișier
+# [Linux] C Shell (csh) head utilizare: Afișează primele linii dintr-un fișier
 
 ## Overview
-Comanda `head` este utilizată pentru a afișa primele linii ale unui fișier. Este utilă pentru a obține rapid o previzualizare a conținutului unui fișier mare fără a-l deschide complet.
+Comanda `head` este utilizată pentru a afișa primele linii ale unui fișier. Este utilă pentru a obține rapid o previzualizare a conținutului unui fișier, fără a-l deschide complet.
 
 ## Usage
 Sintaxa de bază a comenzii `head` este următoarea:
 
 ```
-head [options] [arguments]
+head [opțiuni] [argumente]
 ```
 
 ## Common Options
-- `-n [număr]`: Afișează primele `număr` de linii din fișier. Implicit, `head` afișează primele 10 linii.
-- `-c [număr]`: Afișează primele `număr` de octeți din fișier.
-- `-q`: Nu afișează numele fișierului înainte de conținutul acestuia, când se lucrează cu mai multe fișiere.
-- `-v`: Afișează numele fișierului înainte de conținutul acestuia, chiar și atunci când se lucrează cu un singur fișier.
+- `-n [număr]`: Specifică numărul de linii de afișat (implicit este 10).
+- `-c [număr]`: Afișează un număr specificat de octeți din fișier.
+- `-q`: Nu afișează numele fișierului înainte de conținutul acestuia, atunci când se procesează mai multe fișiere.
+- `-v`: Afișează numele fișierului înainte de conținutul acestuia, chiar și atunci când se procesează un singur fișier.
 
 ## Common Examples
 1. Afișarea primelor 10 linii dintr-un fișier:
    ```csh
-   head nume_fisier.txt
+   head fisier.txt
    ```
 
 2. Afișarea primelor 5 linii dintr-un fișier:
    ```csh
-   head -n 5 nume_fisier.txt
+   head -n 5 fisier.txt
    ```
 
-3. Afișarea primelor 100 de octeți dintr-un fișier:
+3. Afișarea primelor 20 de octeți dintr-un fișier:
    ```csh
-   head -c 100 nume_fisier.txt
+   head -c 20 fisier.txt
    ```
 
 4. Afișarea primelor 10 linii din mai multe fișiere:
@@ -37,12 +37,12 @@ head [options] [arguments]
    head fisier1.txt fisier2.txt
    ```
 
-5. Afișarea numelui fișierului și a conținutului său:
+5. Afișarea primelor 5 linii dintr-un fișier fără a afișa numele acestuia:
    ```csh
-   head -v nume_fisier.txt
+   head -q -n 5 fisier.txt
    ```
 
 ## Tips
-- Folosește opțiunea `-n` pentru a personaliza numărul de linii afișate, în funcție de nevoile tale.
-- Comanda `head` este adesea utilizată împreună cu alte comenzi, cum ar fi `grep`, pentru a filtra rezultatele.
-- Dacă vrei să vezi ultimele linii ale unui fișier, poți folosi comanda `tail`, care funcționează similar cu `head`.
+- Folosește `head` împreună cu `tail` pentru a vizualiza atât începutul, cât și sfârșitul unui fișier.
+- Comanda `head` este foarte utilă în scripturi pentru a verifica rapid conținutul fișierelor de log.
+- Poți combina `head` cu alte comenzi prin pipe (`|`) pentru a obține rezultate mai complexe.

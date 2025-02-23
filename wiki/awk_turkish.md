@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) awk Kullanımı: Metin işleme ve analiz aracı
+# [Linux] C Shell (csh) awk Kullanımı: Metin işleme aracı
 
 ## Genel Bakış
-`awk`, metin dosyalarını işlemek ve analiz etmek için kullanılan güçlü bir programlama dilidir. Genellikle veri biçimlendirme, filtreleme ve raporlama işlemleri için tercih edilir. `awk`, belirli bir desenle eşleşen satırları bulmak ve bu satırlardaki verileri işlemek için kullanılır.
+`awk`, metin dosyalarını işlemek ve analiz etmek için kullanılan güçlü bir programlama dilidir. Genellikle veri biçimlendirme, filtreleme ve raporlama işlemleri için kullanılır. `awk`, satır bazında çalışarak, belirli desenlere uyan verileri seçebilir ve bu veriler üzerinde işlemler gerçekleştirebilir.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
@@ -11,13 +11,11 @@ awk [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-F`: Girdi dosyasındaki alan ayırıcıyı belirler. Örneğin, `-F,` virgülü alan ayırıcı olarak kullanır.
-- `-v`: Değişken tanımlamak için kullanılır. Örneğin, `-v var=değer` ile `var` değişkenine `değer` atanır.
-- `-f`: Belirtilen bir dosyadan `awk` programı okur.
+- `-F`: Girdi dosyasında alan ayırıcıyı belirtir. Örneğin, `-F,` virgül ile ayrılmış dosyalar için kullanılır.
+- `-v`: Değişken tanımlamak için kullanılır. Örneğin, `-v name=value`.
+- `-f`: Bir dosyadan `awk` komutlarını yüklemek için kullanılır.
 
 ## Yaygın Örnekler
-Aşağıda `awk` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
-
 1. **Bir dosyadaki tüm satırları yazdırma:**
    ```bash
    awk '{print}' dosya.txt
@@ -33,17 +31,17 @@ Aşağıda `awk` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
    awk -F, '{print $1}' dosya.csv
    ```
 
-4. **Bir koşula göre satırları filtreleme (örneğin, 50'den büyük sayılar):**
+4. **Bir koşula göre satırları filtreleme (örneğin, 100'den büyük sayılar):**
    ```bash
-   awk '$1 > 50' dosya.txt
+   awk '$1 > 100' sayilar.txt
    ```
 
-5. **Bir dosyadaki satır sayısını bulma:**
+5. **Bir dosyadaki belirli bir kelimeyi sayma:**
    ```bash
-   awk 'END {print NR}' dosya.txt
+   awk '/kelime/ {count++} END {print count}' dosya.txt
    ```
 
 ## İpuçları
-- `awk` komutunu kullanırken, alanları doğru bir şekilde ayırmak için uygun ayırıcıyı belirlemeyi unutmayın.
-- Karmaşık işlemler için `awk` içinde döngüler ve koşul ifadeleri kullanarak daha gelişmiş programlar yazabilirsiniz.
-- `awk`'ın çıktısını başka komutlarla birleştirerek daha etkili veri işleme yapabilirsiniz. Örneğin, `awk` çıktısını `sort` veya `uniq` ile birleştirmek faydalı olabilir.
+- `awk` komutunu kullanırken, alanları belirtmek için `$1`, `$2` gibi ifadeleri kullanarak belirli alanlara erişebilirsiniz.
+- Girdi dosyanızın formatını iyi anlayarak, uygun alan ayırıcıları kullanmak işlemlerinizi kolaylaştırır.
+- `awk` ile karmaşık işlemler yapmak için döngüler ve koşullu ifadeler kullanabilirsiniz, bu da onu güçlü bir araç haline getirir.

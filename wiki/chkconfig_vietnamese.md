@@ -1,47 +1,50 @@
-# [Linux] C Shell (csh) chkconfig: Quản lý dịch vụ khởi động
+# [Hệ điều hành] C Shell (csh) chkconfig: [quản lý dịch vụ hệ thống]
 
 ## Tổng quan
-Lệnh `chkconfig` được sử dụng để quản lý các dịch vụ khởi động trên hệ thống Linux. Nó cho phép người dùng bật hoặc tắt các dịch vụ khi khởi động, giúp quản lý tài nguyên hệ thống một cách hiệu quả.
+Lệnh `chkconfig` trong C Shell (csh) được sử dụng để quản lý các dịch vụ hệ thống trên các hệ điều hành dựa trên Linux. Nó cho phép người dùng bật hoặc tắt các dịch vụ khởi động tự động khi hệ thống khởi động.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `chkconfig` như sau:
-```
+
+```csh
 chkconfig [options] [arguments]
 ```
 
 ## Các tùy chọn phổ biến
 - `--list`: Liệt kê tất cả các dịch vụ và trạng thái của chúng.
 - `--add <service>`: Thêm một dịch vụ mới vào danh sách quản lý.
-- `--del <service>`: Xóa một dịch vụ khỏi danh sách quản lý.
+- `--remove <service>`: Xóa một dịch vụ khỏi danh sách quản lý.
 - `--level <levels>`: Chỉ định các mức độ khởi động mà dịch vụ sẽ được bật hoặc tắt.
 
 ## Ví dụ phổ biến
-- Để liệt kê tất cả các dịch vụ và trạng thái của chúng:
-  ```bash
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `chkconfig`:
+
+- Liệt kê tất cả các dịch vụ và trạng thái của chúng:
+  ```csh
   chkconfig --list
   ```
 
-- Để thêm một dịch vụ mới vào danh sách:
-  ```bash
+- Thêm một dịch vụ mới vào danh sách:
+  ```csh
   chkconfig --add httpd
   ```
 
-- Để xóa một dịch vụ khỏi danh sách:
-  ```bash
-  chkconfig --del httpd
+- Xóa một dịch vụ khỏi danh sách:
+  ```csh
+  chkconfig --remove httpd
   ```
 
-- Để bật dịch vụ `httpd` ở mức độ khởi động 2, 3, 4 và 5:
-  ```bash
-  chkconfig --level 2345 httpd on
+- Bật dịch vụ cho các mức độ khởi động 2, 3 và 5:
+  ```csh
+  chkconfig --level 235 httpd on
   ```
 
-- Để tắt dịch vụ `httpd` ở mức độ khởi động 2, 3, 4 và 5:
-  ```bash
-  chkconfig --level 2345 httpd off
+- Tắt dịch vụ cho tất cả các mức độ khởi động:
+  ```csh
+  chkconfig --level 0123456 httpd off
   ```
 
 ## Mẹo
-- Hãy kiểm tra trạng thái của các dịch vụ thường xuyên để đảm bảo rằng hệ thống của bạn hoạt động ổn định.
-- Sử dụng `chkconfig --list` để có cái nhìn tổng quan về tất cả các dịch vụ và trạng thái của chúng.
-- Khi thêm hoặc xóa dịch vụ, hãy chắc chắn rằng bạn có quyền quản trị để thực hiện các thay đổi này.
+- Luôn kiểm tra trạng thái của dịch vụ sau khi thực hiện thay đổi để đảm bảo rằng chúng đã được áp dụng đúng.
+- Sử dụng `chkconfig --list` thường xuyên để theo dõi trạng thái của các dịch vụ trong hệ thống.
+- Đảm bảo rằng bạn có quyền truy cập root hoặc sử dụng sudo khi thực hiện các thay đổi quan trọng đối với dịch vụ hệ thống.

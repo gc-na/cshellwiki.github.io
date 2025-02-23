@@ -1,50 +1,50 @@
 # [Linux] C Shell (csh) sqlite3 Verwendung: Datenbankverwaltung über die Kommandozeile
 
 ## Übersicht
-Der Befehl `sqlite3` wird verwendet, um mit SQLite-Datenbanken über die Kommandozeile zu interagieren. Er ermöglicht das Erstellen, Bearbeiten und Abfragen von Datenbanken und ist ein leistungsstarkes Tool für die Datenbankverwaltung.
+Der `sqlite3` Befehl ist ein Kommandozeilenwerkzeug zur Verwaltung von SQLite-Datenbanken. Mit diesem Befehl können Benutzer Datenbanken erstellen, abfragen, aktualisieren und verwalten, ohne eine grafische Benutzeroberfläche zu benötigen.
 
 ## Verwendung
-Die grundlegende Syntax des Befehls lautet:
+Die grundlegende Syntax des `sqlite3` Befehls ist wie folgt:
 
-```csh
+```bash
 sqlite3 [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
 - `-help`: Zeigt eine Hilfe mit den verfügbaren Befehlen und Optionen an.
 - `-version`: Gibt die aktuelle Version von SQLite aus.
-- `-init FILE`: Führt die Befehle in der angegebenen Datei beim Start aus.
-- `-batch`: Aktiviert den Batch-Modus, der die Eingabeaufforderung unterdrückt.
+- `-init <datei>`: Führt die angegebenen SQL-Befehle aus der Datei beim Start aus.
+- `-batch`: Führt die Befehle im Batch-Modus aus, ohne interaktive Eingabe.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele zur Verwendung von `sqlite3`:
+Hier sind einige praktische Beispiele zur Verwendung des `sqlite3` Befehls:
 
-1. **Eine neue Datenbank erstellen:**
-   ```csh
-   sqlite3 meine_datenbank.db
-   ```
+### 1. Erstellen einer neuen Datenbank
+```bash
+sqlite3 meine_datenbank.db
+```
 
-2. **Eine Tabelle erstellen:**
-   ```csh
-   sqlite3 meine_datenbank.db "CREATE TABLE benutzer (id INTEGER PRIMARY KEY, name TEXT);"
-   ```
+### 2. Erstellen einer Tabelle
+```bash
+sqlite3 meine_datenbank.db "CREATE TABLE benutzer (id INTEGER PRIMARY KEY, name TEXT);"
+```
 
-3. **Daten in die Tabelle einfügen:**
-   ```csh
-   sqlite3 meine_datenbank.db "INSERT INTO benutzer (name) VALUES ('Max Mustermann');"
-   ```
+### 3. Einfügen von Daten
+```bash
+sqlite3 meine_datenbank.db "INSERT INTO benutzer (name) VALUES ('Max Mustermann');"
+```
 
-4. **Daten abfragen:**
-   ```csh
-   sqlite3 meine_datenbank.db "SELECT * FROM benutzer;"
-   ```
+### 4. Abfragen von Daten
+```bash
+sqlite3 meine_datenbank.db "SELECT * FROM benutzer;"
+```
 
-5. **Datenbank im Batch-Modus verwenden:**
-   ```csh
-   sqlite3 meine_datenbank.db < befehle.sql
-   ```
+### 5. Exportieren von Daten in eine CSV-Datei
+```bash
+sqlite3 meine_datenbank.db "SELECT * FROM benutzer;" > benutzer.csv
+```
 
 ## Tipps
-- Verwenden Sie den Batch-Modus, wenn Sie mehrere Befehle aus einer Datei ausführen möchten, um die Effizienz zu steigern.
-- Nutzen Sie die `-init` Option, um beim Starten der Datenbank automatisch Skripte auszuführen.
-- Denken Sie daran, regelmäßig Backups Ihrer Datenbank zu erstellen, um Datenverlust zu vermeiden.
+- Verwenden Sie die Option `-init`, um beim Starten von `sqlite3` automatisch SQL-Skripte auszuführen.
+- Nutzen Sie den Batch-Modus (`-batch`), wenn Sie Skripte ohne Benutzereingabe ausführen möchten.
+- Speichern Sie häufig verwendete Abfragen in SQL-Dateien, um die Wiederverwendbarkeit zu erhöhen und die Eingabe zu erleichtern.

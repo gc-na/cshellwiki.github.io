@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) trap użycie: Ustawianie pułapek na sygnały
+# [Linux] C Shell (csh) trap użycie: obsługuje sygnały i błędy
 
 ## Overview
-Polecenie `trap` w C Shell (csh) służy do przechwytywania sygnałów i wykonywania określonych akcji, gdy te sygnały są odbierane przez skrypt lub sesję powłoki. Dzięki temu można zarządzać zachowaniem skryptów w odpowiedzi na różne zdarzenia, takie jak przerwania użytkownika.
+Polecenie `trap` w C Shell (csh) służy do przechwytywania sygnałów i błędów, co pozwala na wykonanie określonych działań w odpowiedzi na te sygnały. Dzięki temu użytkownicy mogą zdefiniować, co powinno się stać, gdy proces otrzyma określony sygnał, co jest szczególnie przydatne w skryptach.
 
 ## Usage
 Podstawowa składnia polecenia `trap` jest następująca:
@@ -11,29 +11,34 @@ trap [akcja] [sygnał]
 ```
 
 ## Common Options
-- `action`: Określa, co ma się wydarzyć, gdy sygnał zostanie odebrany (np. wykonanie innego polecenia lub funkcji).
-- `signal`: Określa, który sygnał ma być przechwycony (np. `INT`, `TERM`, `QUIT`).
+- `SIGINT`: Sygnał przerwania, zwykle wysyłany przez Ctrl+C.
+- `SIGTERM`: Sygnał zakończenia, używany do żądania zakończenia procesu.
+- `EXIT`: Akcja, która ma być wykonana przy wyjściu ze skryptu.
 
 ## Common Examples
-1. **Przechwytywanie sygnału przerwania (CTRL+C)**:
-   ```csh
-   trap 'echo "Przerwanie skryptu"; exit' INT
-   ```
-   W tym przykładzie, gdy użytkownik naciśnie CTRL+C, skrypt wyświetli komunikat i zakończy działanie.
 
-2. **Czyszczenie plików tymczasowych przed zakończeniem**:
-   ```csh
-   trap 'rm -f /tmp/tempfile; exit' EXIT
-   ```
-   Tutaj, przed zakończeniem skryptu, plik tymczasowy zostanie usunięty.
+### Przechwytywanie sygnału SIGINT
+Aby wykonać określoną akcję po naciśnięciu Ctrl+C:
 
-3. **Reagowanie na sygnał zakończenia**:
-   ```csh
-   trap 'echo "Otrzymano sygnał TERM"; exit' TERM
-   ```
-   W tym przypadku, gdy skrypt otrzyma sygnał TERM, wyświetli komunikat i zakończy działanie.
+```csh
+trap 'echo "Proces przerwany"; exit' SIGINT
+```
+
+### Przechwytywanie sygnału SIGTERM
+Aby zdefiniować, co ma się stać, gdy proces otrzyma sygnał zakończenia:
+
+```csh
+trap 'echo "Otrzymano sygnał zakończenia"; exit' SIGTERM
+```
+
+### Wykonywanie akcji przy wyjściu
+Aby wykonać akcję przy zakończeniu skryptu:
+
+```csh
+trap 'echo "Zamykam skrypt"; exit' EXIT
+```
 
 ## Tips
-- Zawsze testuj swoje pułapki w środowisku deweloperskim, aby upewnić się, że działają zgodnie z oczekiwaniami.
-- Używaj pułapek do zarządzania zasobami, takimi jak pliki tymczasowe, aby uniknąć ich pozostawiania po zakończeniu skryptu.
-- Pamiętaj, że niektóre sygnały mogą być ignorowane przez system, więc sprawdź dokumentację, aby zrozumieć, które sygnały są dostępne do przechwytywania.
+- Zawsze testuj skrypty z użyciem `trap`, aby upewnić się, że przechwytywanie sygnałów działa zgodnie z oczekiwaniami.
+- Używaj `trap` w skryptach, które mogą być przerwane, aby zapewnić czyszczenie zasobów lub zapisanie stanu.
+- Pamiętaj, aby unikać zbyt wielu złożonych akcji w `trap`, aby nie skomplikować logiki skryptu.

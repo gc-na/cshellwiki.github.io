@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) unrar usage : Extraire des fichiers RAR
+# [Linux] C Shell (csh) unrar : Extraire des fichiers RAR
 
 ## Overview
-La commande `unrar` est utilisée pour extraire des fichiers compressés au format RAR. Elle permet de décompresser des archives RAR et de récupérer les fichiers qu'elles contiennent.
+La commande `unrar` est utilisée pour extraire des fichiers compressés au format RAR. Elle permet de décompresser des archives RAR et d'accéder aux fichiers qu'elles contiennent.
 
 ## Usage
 La syntaxe de base de la commande `unrar` est la suivante :
@@ -13,11 +13,10 @@ unrar [options] [arguments]
 ## Common Options
 Voici quelques options courantes pour la commande `unrar` :
 
-- `x` : Extraire les fichiers avec leur chemin d'origine.
-- `e` : Extraire les fichiers sans conserver la structure des répertoires.
-- `t` : Tester l'intégrité de l'archive RAR.
+- `x` : Extraire tous les fichiers de l'archive dans le répertoire courant.
+- `e` : Extraire tous les fichiers de l'archive sans recréer la structure de répertoires.
 - `l` : Lister le contenu de l'archive sans l'extraire.
-- `v` : Afficher des informations détaillées pendant l'extraction.
+- `v` : Afficher des informations détaillées sur les fichiers extraits.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `unrar` :
@@ -27,7 +26,7 @@ Voici quelques exemples pratiques de l'utilisation de la commande `unrar` :
    unrar x archive.rar
    ```
 
-2. **Extraire des fichiers sans conserver la structure des répertoires :**
+2. **Extraire tous les fichiers d'une archive RAR sans structure de répertoires :**
    ```csh
    unrar e archive.rar
    ```
@@ -37,12 +36,12 @@ Voici quelques exemples pratiques de l'utilisation de la commande `unrar` :
    unrar l archive.rar
    ```
 
-4. **Tester l'intégrité d'une archive RAR :**
+4. **Afficher des informations détaillées sur les fichiers dans une archive RAR :**
    ```csh
-   unrar t archive.rar
+   unrar v archive.rar
    ```
 
 ## Tips
-- Assurez-vous d'avoir les permissions nécessaires pour extraire des fichiers dans le répertoire cible.
-- Utilisez l'option `-v` pour obtenir des informations détaillées sur le processus d'extraction, ce qui peut être utile pour le débogage.
-- Si vous travaillez avec de grandes archives, envisagez d'extraire dans un répertoire temporaire pour éviter le désordre dans votre répertoire de travail.
+- Assurez-vous d'avoir installé `unrar` sur votre système avant de l'utiliser.
+- Utilisez l'option `-o+` pour écraser les fichiers existants sans confirmation lors de l'extraction.
+- Pour une utilisation fréquente, envisagez de créer des alias dans votre fichier de configuration csh pour simplifier les commandes.

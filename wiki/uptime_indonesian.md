@@ -1,38 +1,46 @@
 # [Sistem Operasi] C Shell (csh) uptime Penggunaan: Menampilkan waktu aktif sistem
 
 ## Overview
-Perintah `uptime` digunakan untuk menampilkan berapa lama sistem telah berjalan sejak terakhir kali dinyalakan. Selain itu, perintah ini juga memberikan informasi tentang jumlah pengguna yang sedang aktif dan beban sistem dalam periode waktu tertentu.
+Perintah `uptime` digunakan untuk menampilkan berapa lama sistem telah berjalan sejak terakhir kali dinyalakan, serta informasi tentang jumlah pengguna yang sedang aktif dan beban sistem saat ini.
 
 ## Usage
-Berikut adalah sintaks dasar dari perintah `uptime`:
+Sintaks dasar dari perintah `uptime` adalah sebagai berikut:
 
 ```
 uptime [options] [arguments]
 ```
 
 ## Common Options
-- `-p`: Menampilkan waktu aktif sistem dalam format yang lebih ringkas.
-- `-h`: Menampilkan bantuan tentang penggunaan perintah `uptime`.
+Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah `uptime`:
+
+- `-p`: Menampilkan waktu aktif dalam format yang lebih mudah dibaca.
+- `-s`: Menampilkan waktu sistem terakhir di-reboot.
+- `-h`: Menampilkan bantuan tentang penggunaan perintah.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `uptime`:
 
-1. Menampilkan waktu aktif sistem dan informasi pengguna:
+1. Menampilkan waktu aktif sistem beserta informasi pengguna:
    ```csh
    uptime
    ```
 
-2. Menampilkan waktu aktif sistem dalam format ringkas:
+2. Menampilkan waktu aktif dalam format yang lebih mudah dibaca:
    ```csh
    uptime -p
    ```
 
-3. Menampilkan bantuan penggunaan perintah:
+3. Menampilkan waktu reboot terakhir sistem:
+   ```csh
+   uptime -s
+   ```
+
+4. Menampilkan bantuan penggunaan perintah:
    ```csh
    uptime -h
    ```
 
 ## Tips
-- Gunakan `uptime` secara berkala untuk memantau kesehatan sistem Anda.
-- Kombinasikan perintah `uptime` dengan perintah lain seperti `top` untuk analisis lebih mendalam tentang beban sistem.
-- Jika Anda mengelola beberapa server, pertimbangkan untuk menggunakan skrip yang menjalankan `uptime` secara otomatis untuk memantau semua server Anda.
+- Gunakan opsi `-p` jika Anda ingin informasi waktu aktif yang lebih ringkas dan mudah dipahami.
+- Periksa beban sistem yang ditampilkan oleh `uptime` untuk mengetahui apakah sistem Anda dalam kondisi baik atau tidak.
+- Jalankan `uptime` secara berkala untuk memantau kesehatan sistem Anda.

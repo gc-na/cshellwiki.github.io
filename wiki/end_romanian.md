@@ -1,38 +1,35 @@
-# [Linux] C Shell (csh) end utilizare: Terminarea proceselor
+# [Linux] C Shell (csh) end utilizare: Închide un proces
 
 ## Overview
-Comanda `end` în C Shell (csh) este utilizată pentru a termina un proces sau un grup de procese. Aceasta este utilă în gestionarea aplicațiilor care rulează în fundal sau în cazul în care un proces devine necontrolat.
+Comanda `end` în C Shell (csh) este utilizată pentru a închide un proces sau o sesiune curentă de shell. Aceasta este o modalitate simplă de a termina execuția unui script sau a unei sesiuni interactive.
 
 ## Usage
 Sintaxa de bază a comenzii `end` este următoarea:
 
-```csh
+```
 end [options] [arguments]
 ```
 
 ## Common Options
-- `-p`: Specifică un proces anume pe care doriți să-l terminați.
-- `-g`: Terminați toate procesele care corespund unui grup specificat.
+- **-h**: Afișează ajutorul pentru utilizarea comenzii.
+- **-v**: Activează modul verbose, oferind informații suplimentare despre procesul de închidere.
 
 ## Common Examples
-Iată câteva exemple practice ale utilizării comenzii `end`:
+1. **Închiderea unei sesiuni interactive:**
+   ```csh
+   end
+   ```
 
-1. Terminarea unui proces specificat prin PID:
-    ```csh
-    end -p 12345
-    ```
+2. **Închiderea unui script cu opțiunea verbose:**
+   ```csh
+   end -v
+   ```
 
-2. Terminarea tuturor proceselor dintr-un grup specific:
-    ```csh
-    end -g mygroup
-    ```
-
-3. Terminarea unui proces prin numele său:
-    ```csh
-    end myprocess
-    ```
+3. **Afișarea ajutorului pentru comanda end:**
+   ```csh
+   end -h
+   ```
 
 ## Tips
-- Asigurați-vă că aveți permisiunile necesare pentru a termina procesele, altfel comanda nu va funcționa.
-- Folosiți comanda `ps` pentru a verifica procesele active și a obține PID-urile necesare înainte de a utiliza `end`.
-- Fiți atenți când terminați procese, deoarece acest lucru poate duce la pierderea de date nesalvate.
+- Asigură-te că ai salvat toate lucrările înainte de a utiliza comanda `end`, deoarece aceasta va închide sesiunea curentă.
+- Folosește opțiunea `-v` pentru a obține informații suplimentare în cazul în care întâmpini probleme la închiderea unui proces.

@@ -1,42 +1,45 @@
 # [Linux] C Shell (csh) hwclock Kullanımı: Donanım saatini yönetme
 
 ## Genel Bakış
-`hwclock` komutu, sistemin donanım saatini (RTC - Real Time Clock) yönetmek için kullanılır. Bu komut, sistem açıldığında veya kapandığında zamanın doğru bir şekilde ayarlanmasını sağlar.
+`hwclock` komutu, sistemin donanım saatini (RTC - Real Time Clock) yönetmek için kullanılır. Bu komut, sistemin saatini ayarlamak, sorgulamak ve senkronize etmek için faydalıdır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
+
 ```
 hwclock [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `--hctosys`: Donanım saatini sistem saatine ayarlar.
-- `--systohc`: Sistem saatini donanım saatine ayarlar.
 - `--show`: Donanım saatinin mevcut zamanını gösterir.
-- `--set`: Donanım saatini belirli bir tarih ve saat ile ayarlar.
+- `--set`: Donanım saatini belirtilen bir zamanla ayarlar.
+- `--systohc`: Sistem saatini donanım saatine kopyalar.
+- `--hctosys`: Donanım saatinden sistem saatine zaman kopyalar.
 
 ## Yaygın Örnekler
-1. Donanım saatini sistem saatine ayarlamak için:
-   ```bash
-   hwclock --systohc
-   ```
+Aşağıda `hwclock` komutunun bazı pratik örnekleri bulunmaktadır:
 
-2. Donanım saatini gösterme:
+1. Donanım saatini gösterme:
    ```bash
    hwclock --show
    ```
 
-3. Donanım saatini belirli bir tarih ve saat ile ayarlama (örneğin, 2023 yılının 1 Ocak'ı saat 12:00):
+2. Donanım saatini belirli bir tarih ve saat ile ayarlama:
    ```bash
-   hwclock --set --date="2023-01-01 12:00:00"
+   hwclock --set --date="2023-10-01 12:00:00"
    ```
 
-4. Sistem saatini donanım saatine ayarlama:
+3. Sistem saatini donanım saatine kopyalama:
+   ```bash
+   hwclock --systohc
+   ```
+
+4. Donanım saatinden sistem saatine zaman kopyalama:
    ```bash
    hwclock --hctosys
    ```
 
 ## İpuçları
-- Donanım saatini ayarlamadan önce sistem saatinin doğru olduğundan emin olun.
-- `hwclock` komutunu kullanmadan önce root yetkilerine sahip olduğunuzdan emin olun.
-- Donanım saatini düzenli olarak kontrol etmek, sistem zamanının doğru kalmasına yardımcı olur.
+- Donanım saatini ayarladıktan sonra, sistem saatinin doğru olduğundan emin olun.
+- `hwclock` komutunu kullanmadan önce, sistem saatinin güncel olduğundan emin olun.
+- Donanım saatinin doğru çalıştığından emin olmak için düzenli olarak kontrol edin.

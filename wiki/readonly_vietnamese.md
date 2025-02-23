@@ -1,36 +1,46 @@
-# [Hệ điều hành] C Shell (csh) readonly Cách sử dụng: Đặt biến không thể thay đổi
+# [Hệ điều hành] C Shell (csh) readonly: Đặt biến chỉ đọc
 
-## Tổng quan
-Lệnh `readonly` trong C Shell (csh) được sử dụng để đánh dấu một biến là không thể thay đổi. Khi một biến được đặt là readonly, bạn không thể gán lại giá trị cho nó trong phiên làm việc hiện tại.
+## Overview
+Lệnh `readonly` trong C Shell (csh) được sử dụng để đặt một biến môi trường thành chỉ đọc. Khi một biến được đánh dấu là chỉ đọc, bạn không thể thay đổi giá trị của nó trong phiên làm việc hiện tại.
 
-## Cách sử dụng
+## Usage
 Cú pháp cơ bản của lệnh `readonly` như sau:
-```
-readonly [tùy chọn] [biến]
+
+```csh
+readonly [options] [arguments]
 ```
 
-## Tùy chọn phổ biến
-- `-p`: Hiển thị danh sách tất cả các biến readonly hiện có.
+## Common Options
+- `-p`: Hiển thị tất cả các biến đã được đặt thành chỉ đọc.
+- `variable`: Tên của biến mà bạn muốn đặt thành chỉ đọc.
 
-## Ví dụ phổ biến
+## Common Examples
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `readonly`:
 
-1. **Đặt biến readonly**
+1. Đặt một biến thành chỉ đọc:
    ```csh
-   set myVar = "Giá trị ban đầu"
+   set myVar = "Hello"
    readonly myVar
    ```
 
-2. **Cố gắng thay đổi giá trị của biến readonly**
+2. Cố gắng thay đổi giá trị của biến đã được đặt thành chỉ đọc (sẽ gây lỗi):
    ```csh
-   set myVar = "Giá trị mới"  # Lệnh này sẽ báo lỗi
+   set myVar = "World"  # Lỗi: myVar: Variable is readonly.
    ```
 
-3. **Hiển thị biến readonly**
+3. Hiển thị tất cả các biến đã được đặt thành chỉ đọc:
    ```csh
    readonly -p
    ```
 
-## Mẹo
-- Hãy sử dụng lệnh `readonly` cho các biến mà bạn không muốn bị thay đổi trong suốt phiên làm việc, giúp bảo vệ các giá trị quan trọng.
-- Kiểm tra các biến readonly thường xuyên để đảm bảo rằng bạn không vô tình thay đổi chúng trong quá trình lập trình.
+4. Đặt nhiều biến thành chỉ đọc cùng một lúc:
+   ```csh
+   set var1 = "Value1"
+   set var2 = "Value2"
+   readonly var1 var2
+   ```
+
+## Tips
+- Hãy sử dụng lệnh `readonly` khi bạn muốn bảo vệ các biến quan trọng khỏi việc bị thay đổi trong suốt phiên làm việc.
+- Kiểm tra các biến đã được đặt thành chỉ đọc bằng cách sử dụng tùy chọn `-p` để tránh nhầm lẫn.
+- Lưu ý rằng việc đặt một biến thành chỉ đọc chỉ có hiệu lực trong phiên làm việc hiện tại và sẽ không ảnh hưởng đến các phiên khác.

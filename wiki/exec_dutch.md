@@ -1,47 +1,50 @@
 # [Linux] C Shell (csh) exec gebruik: Voer een commando uit in de huidige shell
 
 ## Overzicht
-Het `exec` commando in C Shell (csh) vervangt de huidige shell met een nieuw programma. Dit betekent dat, zodra het nieuwe programma is gestart, de oorspronkelijke shell niet meer beschikbaar is. Dit is handig voor het uitvoeren van programma's zonder een nieuwe shell te openen.
+Het `exec` commando in C Shell (csh) vervangt de huidige shell door een nieuw programma. Dit betekent dat, zodra het nieuwe programma is gestart, de oorspronkelijke shell niet meer beschikbaar is. Het is nuttig voor het uitvoeren van een programma zonder een nieuwe shell te openen.
 
 ## Gebruik
 De basis syntaxis van het `exec` commando is als volgt:
 
-```csh
+```
 exec [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- **-l**: Start het programma als een login shell.
-- **-c**: Voer een commando uit dat als een string is opgegeven.
+- **-l**: Start het programma als een login-shell.
+- **-c**: Voer een commando uit dat wordt opgegeven als een string.
 
 ## Veelvoorkomende Voorbeelden
 
-1. **Een programma uitvoeren zonder een nieuwe shell te starten**:
-   ```csh
-   exec /path/to/program
-   ```
+### Voorbeeld 1: Een programma uitvoeren
+Voer een programma zoals `ls` uit met `exec`:
 
-2. **Een shell-script uitvoeren**:
-   ```csh
-   exec ./myscript.csh
-   ```
+```csh
+exec ls -l
+```
 
-3. **Een commando uitvoeren met opties**:
-   ```csh
-   exec ls -l /home/user
-   ```
+### Voorbeeld 2: Een shell vervangen
+Vervang de huidige shell door een nieuwe instance van `bash`:
 
-4. **Een login shell starten**:
-   ```csh
-   exec -l /bin/csh
-   ```
+```csh
+exec bash
+```
 
-5. **Een commando uitvoeren met een string**:
-   ```csh
-   exec -c "echo Hello, World!"
-   ```
+### Voorbeeld 3: Een commando uitvoeren met argumenten
+Voer een script uit met argumenten:
+
+```csh
+exec ./myscript.sh arg1 arg2
+```
+
+### Voorbeeld 4: Een login-shell starten
+Start een nieuwe login-shell met `exec`:
+
+```csh
+exec -l bash
+```
 
 ## Tips
 - Gebruik `exec` wanneer je niet terug wilt keren naar de oorspronkelijke shell na het uitvoeren van een programma.
-- Wees voorzichtig met het gebruik van `exec`, omdat het de huidige shell vervangt en je geen toegang meer hebt tot de oorspronkelijke shell-omgeving.
-- Test je commando's eerst zonder `exec` om te zorgen dat ze correct werken voordat je ze definitief uitvoert.
+- Wees voorzichtig met het gebruik van `exec`, omdat het de huidige shell vervangt en je geen toegang meer hebt tot eerdere shell-commando's.
+- Test nieuwe commando's in een aparte terminal voordat je ze met `exec` uitvoert om onbedoelde gevolgen te voorkomen.

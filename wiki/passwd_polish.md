@@ -1,24 +1,22 @@
 # [Linux] C Shell (csh) passwd użycie: Zmiana hasła użytkownika
 
 ## Overview
-Polecenie `passwd` w C Shell (csh) służy do zmiany hasła użytkownika. Umożliwia użytkownikom aktualizację swojego hasła, co jest kluczowe dla bezpieczeństwa systemu.
+Polecenie `passwd` w C Shell (csh) służy do zmiany hasła użytkownika. Umożliwia użytkownikom aktualizację swoich haseł oraz administratorom systemu resetowanie haseł dla innych użytkowników.
 
 ## Usage
-Podstawowa składnia polecenia `passwd` wygląda następująco:
+Podstawowa składnia polecenia `passwd` jest następująca:
 
-```csh
+```
 passwd [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-l` : Zablokuj konto użytkownika.
-- `-u` : Odblokuj konto użytkownika.
-- `-e` : Wymuś zmianę hasła przy następnym logowaniu.
-- `-d` : Usuń hasło użytkownika (zablokuje dostęp do konta).
+- `-l` - zablokuj konto użytkownika.
+- `-u` - odblokuj konto użytkownika.
+- `-d` - usuń hasło użytkownika (konto stanie się dostępne bez hasła).
+- `-e` - wymuś zmianę hasła przy następnym logowaniu.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `passwd`:
-
 1. Zmiana hasła dla bieżącego użytkownika:
    ```csh
    passwd
@@ -39,12 +37,12 @@ Oto kilka praktycznych przykładów użycia polecenia `passwd`:
    passwd -u username
    ```
 
-5. Wymuszenie zmiany hasła przy następnym logowaniu:
+5. Usunięcie hasła użytkownika:
    ```csh
-   passwd -e username
+   passwd -d username
    ```
 
 ## Tips
 - Upewnij się, że hasło jest silne, zawierające litery, cyfry i znaki specjalne.
-- Regularnie zmieniaj hasło, aby zwiększyć bezpieczeństwo konta.
-- Używaj opcji `-e`, aby wymusić na użytkownikach zmianę hasła po pewnym czasie.
+- Regularnie zmieniaj hasło, aby zwiększyć bezpieczeństwo.
+- Zawsze pamiętaj o zapisaniu nowego hasła w bezpiecznym miejscu, jeśli nie masz możliwości jego zapamiętania.

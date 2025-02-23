@@ -1,50 +1,50 @@
 # [Linux] C Shell (csh) dpkg Kullanımı: Paket yönetimi aracı
 
 ## Genel Bakış
-`dpkg`, Debian tabanlı sistemlerde kullanılan bir paket yönetim aracıdır. Bu komut, yazılım paketlerini kurmak, kaldırmak ve yönetmek için kullanılır. `dpkg`, sistemdeki paketlerin durumunu kontrol etme ve bilgi alma gibi işlevler de sunar.
+`dpkg`, Debian tabanlı sistemlerde kullanılan bir paket yönetim aracıdır. Bu komut, yazılım paketlerini kurmak, kaldırmak ve yönetmek için kullanılır.
 
 ## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
-```
-dpkg [options] [arguments]
+Temel sözdizimi şu şekildedir:
+```bash
+dpkg [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-i`, `--install`: Belirtilen paketi kurar.
-- `-r`, `--remove`: Belirtilen paketi kaldırır.
-- `-l`, `--list`: Yüklenmiş paketlerin listesini gösterir.
-- `-s`, `--status`: Belirtilen paketin durumunu gösterir.
-- `-c`, `--contents`: Belirtilen paketin içeriğini listeler.
+- `-i`: Belirtilen .deb dosyasını kurar.
+- `-r`: Belirtilen paketi kaldırır.
+- `-l`: Yüklenmiş paketlerin listesini gösterir.
+- `-s`: Belirtilen paket hakkında bilgi verir.
+- `--configure`: Yüklenmiş bir paketin yapılandırmasını tamamlar.
 
 ## Yaygın Örnekler
 Aşağıda `dpkg` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-1. Bir paketi kurmak için:
-   ```bash
-   dpkg -i paket_adi.deb
-   ```
+- Bir .deb dosyasını kurmak için:
+```bash
+dpkg -i paket_adi.deb
+```
 
-2. Bir paketi kaldırmak için:
-   ```bash
-   dpkg -r paket_adi
-   ```
+- Yüklenmiş bir paketi kaldırmak için:
+```bash
+dpkg -r paket_adi
+```
 
-3. Yüklenmiş paketlerin listesini görüntülemek için:
-   ```bash
-   dpkg -l
-   ```
+- Yüklenmiş paketlerin listesini görüntülemek için:
+```bash
+dpkg -l
+```
 
-4. Belirli bir paketin durumunu kontrol etmek için:
-   ```bash
-   dpkg -s paket_adi
-   ```
+- Belirli bir paket hakkında bilgi almak için:
+```bash
+dpkg -s paket_adi
+```
 
-5. Bir paketin içeriğini listelemek için:
-   ```bash
-   dpkg -c paket_adi.deb
-   ```
+- Yüklenmiş bir paketin yapılandırmasını tamamlamak için:
+```bash
+dpkg --configure paket_adi
+```
 
 ## İpuçları
-- `dpkg` komutunu kullanmadan önce, gerekli paket dosyalarının sistemde bulunduğundan emin olun.
-- Paketlerin bağımlılıklarını kontrol etmek için `apt` veya `apt-get` komutlarını kullanmayı düşünün; `dpkg` bağımlılıkları otomatik olarak yönetmez.
-- Hatalarla karşılaşırsanız, `dpkg --configure -a` komutunu kullanarak yapılandırılmamış paketleri düzeltmeye çalışabilirsiniz.
+- `dpkg` komutunu kullanmadan önce root yetkilerine sahip olduğunuzdan emin olun.
+- Paket kurulumları sırasında bağımlılık sorunlarıyla karşılaşabilirsiniz; bu durumda `apt-get` veya `apt` komutlarını kullanarak bağımlılıkları çözebilirsiniz.
+- Paketlerinizi güncel tutmak için düzenli olarak `dpkg -l` komutunu kullanarak yüklü paketlerinizi kontrol edin.

@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) rehash Kullanımı: Komutları yeniden yükler
+# [Linux] C Shell (csh) rehash Kullanımı: Komutları güncelleme
 
 ## Overview
-`rehash` komutu, C Shell (csh) ortamında, mevcut dizindeki komut dosyalarını ve yürütülebilir dosyaları yeniden yüklemek için kullanılır. Bu, yeni eklenen veya değiştirilen komutların shell tarafından tanınmasını sağlar.
+`rehash` komutu, C Shell (csh) ortamında, mevcut dizindeki komutların güncellenmesini sağlar. Bu komut, yeni eklenen veya değiştirilen komutların shell tarafından tanınmasını sağlar.
 
 ## Usage
 Temel sözdizimi aşağıdaki gibidir:
@@ -10,31 +10,27 @@ rehash [options] [arguments]
 ```
 
 ## Common Options
-`rehash` komutunun genellikle kullanılan bir seçeneği yoktur. Komut, varsayılan olarak mevcut dizindeki tüm yürütülebilir dosyaları yeniden yükler.
+- `-h`: Yardım bilgilerini gösterir.
+- `-v`: Ayrıntılı bilgi ile çalışır.
 
 ## Common Examples
-Aşağıda `rehash` komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda `rehash` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
-1. **Temel Kullanım:**
-   Yeni bir komut dosyası ekledikten sonra shell'in bunu tanıması için:
+1. **Temel Kullanım**
    ```csh
    rehash
    ```
 
-2. **Komut Dosyası Değişikliği Sonrası:**
-   Bir komut dosyasını güncelledikten sonra:
+2. **Yardım Bilgisi Alma**
    ```csh
-   rehash
+   rehash -h
    ```
 
-3. **Dizin Değişikliği Sonrası:**
-   Farklı bir dizine geçtikten sonra yeni komutları tanımak için:
+3. **Ayrıntılı Bilgi ile Çalışma**
    ```csh
-   cd /yeni/dizin
-   rehash
+   rehash -v
    ```
 
 ## Tips
-- `rehash` komutunu sık sık kullanmak, shell'in en güncel komutları tanımasını sağlar.
-- Eğer bir komut çalışmıyorsa, öncelikle `rehash` komutunu deneyin.
-- Shell oturumunu kapatıp açmak yerine `rehash` kullanarak daha hızlı bir çözüm elde edebilirsiniz.
+- `rehash` komutunu, yeni bir program yükledikten sonra çalıştırmayı unutmayın, böylece shell bu programı tanıyabilir.
+- Shell oturumunu her başlattığınızda `rehash` komutunu çalıştırmak, güncellemeleri otomatik olarak tanımanızı sağlar.

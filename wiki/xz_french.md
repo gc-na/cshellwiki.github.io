@@ -1,4 +1,4 @@
-# [Linux] C Shell (csh) xz : Compression de fichiers
+# [Linux] C Shell (csh) xz : Compresser des fichiers
 
 ## Overview
 La commande `xz` est utilisée pour compresser et décompresser des fichiers en utilisant l'algorithme de compression LZMA. Elle est particulièrement efficace pour réduire la taille des fichiers, ce qui facilite le stockage et le transfert.
@@ -6,7 +6,7 @@ La commande `xz` est utilisée pour compresser et décompresser des fichiers en 
 ## Usage
 La syntaxe de base de la commande `xz` est la suivante :
 
-```bash
+```csh
 xz [options] [arguments]
 ```
 
@@ -14,39 +14,39 @@ xz [options] [arguments]
 Voici quelques options courantes pour la commande `xz` :
 
 - `-d` ou `--decompress` : Décompresse un fichier.
-- `-k` ou `--keep` : Garde le fichier d'origine après compression.
-- `-f` ou `--force` : Force la compression ou la décompression, même si cela écrase des fichiers existants.
-- `-9` : Utilise le niveau de compression maximum (1 à 9, où 9 est le plus élevé).
+- `-k` ou `--keep` : Garde le fichier original après compression.
+- `-f` ou `--force` : Force la compression même si le fichier de destination existe déjà.
+- `-9` : Utilise le niveau de compression maximum.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `xz` :
 
 1. **Compresser un fichier :**
-   ```bash
+   ```csh
    xz fichier.txt
    ```
 
 2. **Décompresser un fichier :**
-   ```bash
+   ```csh
    xz -d fichier.txt.xz
    ```
 
-3. **Compresser en gardant le fichier d'origine :**
-   ```bash
+3. **Compresser un fichier tout en gardant l'original :**
+   ```csh
    xz -k fichier.txt
    ```
 
-4. **Compresser avec le niveau de compression maximum :**
-   ```bash
-   xz -9 fichier.txt
+4. **Forcer la compression d'un fichier existant :**
+   ```csh
+   xz -f fichier.txt
    ```
 
-5. **Forcer la compression :**
-   ```bash
-   xz -f fichier.txt
+5. **Compresser avec le niveau de compression maximum :**
+   ```csh
+   xz -9 fichier.txt
    ```
 
 ## Tips
 - Utilisez l'option `-k` si vous souhaitez conserver le fichier original après compression.
-- Pour des fichiers très volumineux, envisagez d'utiliser le niveau de compression `-9` pour obtenir une taille de fichier plus réduite, mais cela peut prendre plus de temps.
-- Vérifiez toujours l'espace disque disponible avant de compresser de gros fichiers, car la compression peut temporairement nécessiter plus d'espace.
+- Pour des fichiers très volumineux, envisagez d'utiliser le niveau de compression maximum (`-9`), mais sachez que cela peut augmenter le temps de compression.
+- Vérifiez toujours l'espace disque disponible avant de compresser des fichiers, surtout si vous ne conservez pas les originaux.

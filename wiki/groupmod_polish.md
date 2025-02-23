@@ -1,39 +1,37 @@
-# [Linux] C Shell (csh) groupmod użycie: Modyfikacja grup użytkowników
+# [Linux] C Shell (csh) groupmod użycie: Zmiana właściwości grupy
 
-## Overview
-Polecenie `groupmod` służy do modyfikacji istniejących grup użytkowników w systemie. Umożliwia zmianę nazwy grupy oraz innych atrybutów, co jest przydatne w zarządzaniu uprawnieniami i organizacją użytkowników.
+## Przegląd
+Polecenie `groupmod` służy do modyfikowania istniejących grup w systemie. Umożliwia administratorom systemu zmianę różnych właściwości grup, takich jak nazwa grupy czy identyfikator grupy (GID).
 
-## Usage
+## Użycie
 Podstawowa składnia polecenia `groupmod` jest następująca:
 
-```
+```csh
 groupmod [opcje] [argumenty]
 ```
 
-## Common Options
-- `-n, --new-name NEW_GROUP`: Zmienia nazwę grupy na `NEW_GROUP`.
-- `-g, --gid GID`: Ustawia nowy identyfikator grupy (GID).
-- `-o, --non-unique`: Pozwala na użycie GID, który nie jest unikalny.
+## Częste opcje
+- `-n, --new-name <nazwa>`: Zmienia nazwę grupy na podaną.
+- `-g, --gid <gid>`: Ustawia nowy identyfikator grupy (GID).
+- `-o`: Pozwala na użycie GID, który już jest przypisany do innej grupy.
 
-## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `groupmod`:
-
+## Częste przykłady
 1. Zmiana nazwy grupy:
-   ```bash
+   ```csh
    groupmod -n nowa_nazwa_starej_grupy stara_nazwa_grupy
    ```
 
 2. Zmiana GID grupy:
-   ```bash
+   ```csh
    groupmod -g 1001 nazwa_grupy
    ```
 
-3. Użycie GID, który nie jest unikalny:
-   ```bash
+3. Zmiana nazwy grupy z użyciem opcji `-o`:
+   ```csh
    groupmod -o -g 1002 nazwa_grupy
    ```
 
-## Tips
-- Zawsze upewnij się, że nowa nazwa grupy nie koliduje z istniejącymi grupami w systemie.
-- Przed dokonaniem zmian, warto wykonać kopię zapasową pliku `/etc/group`.
-- Używaj polecenia `getent group` do sprawdzenia istniejących grup i ich GID przed modyfikacją.
+## Wskazówki
+- Upewnij się, że nie zmieniasz nazwy grupy, która jest aktualnie używana przez procesy, aby uniknąć problemów z uprawnieniami.
+- Zawsze wykonuj kopię zapasową plików konfiguracyjnych przed wprowadzeniem zmian w grupach.
+- Sprawdź, czy nowa nazwa grupy lub GID nie koliduje z istniejącymi, aby uniknąć błędów.

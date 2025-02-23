@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) pvs Uso equivalente: [visualizza le versioni dei file]
+# [Linux] C Shell (csh) pvs Uso equivalente: [visualizza informazioni sui volumi]
 
 ## Overview
-Il comando `pvs` in C Shell (csh) è utilizzato per visualizzare le versioni dei file in un sistema di controllo delle versioni. Questo comando è particolarmente utile per gli sviluppatori e i programmatori che desiderano monitorare le modifiche apportate ai file nel loro progetto.
+Il comando `pvs` in C Shell (csh) è utilizzato per visualizzare informazioni sui volumi di un Logical Volume Manager (LVM). Fornisce dettagli sui volumi fisici, come il loro stato, dimensione e altre caratteristiche utili per la gestione dello storage.
 
 ## Usage
 La sintassi di base del comando `pvs` è la seguente:
@@ -11,29 +11,40 @@ pvs [options] [arguments]
 ```
 
 ## Common Options
-- `-a`: Mostra tutte le versioni, comprese quelle non attive.
-- `-h`: Fornisce un aiuto dettagliato sulle opzioni disponibili.
-- `-r`: Mostra solo le versioni recenti dei file.
+- `-o`: Specifica quali colonne visualizzare.
+- `--units`: Imposta le unità di misura per la visualizzazione delle dimensioni.
+- `-a`: Mostra anche i volumi non attivi.
+- `-d`: Mostra informazioni dettagliate sui volumi.
 
 ## Common Examples
-Ecco alcuni esempi pratici di utilizzo del comando `pvs`:
+Ecco alcuni esempi pratici dell'uso del comando `pvs`:
 
-1. Visualizzare tutte le versioni di un file specifico:
+1. **Visualizzare tutte le informazioni sui volumi fisici:**
    ```csh
-   pvs -a nomefile.txt
+   pvs
    ```
 
-2. Ottenere informazioni sulle versioni recenti di un file:
+2. **Visualizzare informazioni dettagliate sui volumi:**
    ```csh
-   pvs -r nomefile.txt
+   pvs -d
    ```
 
-3. Visualizzare l'aiuto per il comando `pvs`:
+3. **Visualizzare solo colonne specifiche:**
    ```csh
-   pvs -h
+   pvs -o +pv_size,pv_free
+   ```
+
+4. **Mostrare volumi non attivi:**
+   ```csh
+   pvs -a
+   ```
+
+5. **Visualizzare le dimensioni in unità specifiche:**
+   ```csh
+   pvs --units m
    ```
 
 ## Tips
-- Assicurati di avere i permessi necessari per visualizzare le versioni dei file.
-- Utilizza l'opzione `-a` per ottenere una panoramica completa delle versioni, soprattutto se stai cercando di risolvere conflitti.
-- Familiarizza con le opzioni disponibili per ottimizzare il tuo flusso di lavoro con il comando `pvs`.
+- Utilizza l'opzione `-o` per personalizzare l'output e visualizzare solo le informazioni necessarie.
+- Controlla frequentemente lo stato dei volumi fisici per garantire che non ci siano problemi di spazio.
+- Quando lavori con volumi non attivi, assicurati di utilizzare l'opzione `-a` per avere una visione completa della situazione.

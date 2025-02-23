@@ -1,21 +1,21 @@
-# [Linux] C Shell (csh) wget Verwendung: Dateien aus dem Internet herunterladen
+# [Linux] C Shell (csh) wget Verwendung: Dateien von Webservern herunterladen
 
 ## Übersicht
-Der `wget` Befehl ist ein leistungsstarkes Tool, das es ermöglicht, Dateien aus dem Internet herunterzuladen. Es unterstützt verschiedene Protokolle wie HTTP, HTTPS und FTP und kann sowohl einfache Downloads als auch komplexere Aufgaben wie das Herunterladen von ganzen Webseiten durchführen.
+Der `wget`-Befehl ist ein leistungsstarkes Tool zum Herunterladen von Dateien aus dem Internet. Es unterstützt verschiedene Protokolle wie HTTP, HTTPS und FTP und ermöglicht das Herunterladen von Inhalten in einer Vielzahl von Formaten.
 
 ## Verwendung
-Die grundlegende Syntax des `wget` Befehls lautet:
+Die grundlegende Syntax des `wget`-Befehls lautet:
 
 ```bash
 wget [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-O <Dateiname>`: Speichert die heruntergeladene Datei unter dem angegebenen Namen.
-- `-c`: Setzt einen abgebrochenen Download fort.
-- `-r`: Aktiviert den rekursiven Download, um ganze Verzeichnisse herunterzuladen.
-- `-p`: Lädt alle notwendigen Dateien für die Anzeige einer Webseite herunter (z.B. Bilder, CSS).
-- `--limit-rate=<Rate>`: Begrenzung der Downloadgeschwindigkeit.
+- `-O [Dateiname]`: Speichert die heruntergeladene Datei unter dem angegebenen Dateinamen.
+- `-c`: Setzt einen unterbrochenen Download fort.
+- `-r`: Aktiviert den rekursiven Download von Webseiten.
+- `-p`: Lädt alle notwendigen Dateien herunter, um eine Webseite korrekt anzuzeigen (z.B. Bilder, CSS).
+- `--limit-rate=[Rate]`: Beschränkt die Downloadgeschwindigkeit auf die angegebene Rate.
 
 ## Häufige Beispiele
 Hier sind einige praktische Beispiele für die Verwendung von `wget`:
@@ -27,7 +27,7 @@ Hier sind einige praktische Beispiele für die Verwendung von `wget`:
 
 2. **Datei unter einem bestimmten Namen speichern:**
    ```bash
-   wget -O mein_datei.zip https://example.com/datei.zip
+   wget -O meine_datei.zip https://example.com/datei.zip
    ```
 
 3. **Download fortsetzen:**
@@ -35,9 +35,9 @@ Hier sind einige praktische Beispiele für die Verwendung von `wget`:
    wget -c https://example.com/große_datei.zip
    ```
 
-4. **Rekursiven Download eines gesamten Verzeichnisses:**
+4. **Rekursiven Download einer Webseite:**
    ```bash
-   wget -r https://example.com/verzeichnis/
+   wget -r https://example.com
    ```
 
 5. **Webseite mit allen notwendigen Dateien herunterladen:**
@@ -46,6 +46,6 @@ Hier sind einige praktische Beispiele für die Verwendung von `wget`:
    ```
 
 ## Tipps
-- Verwenden Sie die Option `-c`, um Downloads fortzusetzen, wenn die Verbindung unterbrochen wird.
-- Nutzen Sie `--limit-rate`, um die Bandbreite zu steuern, insbesondere wenn Sie mehrere Downloads gleichzeitig durchführen.
-- Überprüfen Sie die heruntergeladenen Dateien regelmäßig, um sicherzustellen, dass sie vollständig und nicht beschädigt sind.
+- Verwenden Sie die Option `-q`, um den Download im stillen Modus durchzuführen, ohne Fortschrittsanzeigen.
+- Achten Sie darauf, die Downloadgeschwindigkeit mit `--limit-rate` zu begrenzen, um Bandbreite zu sparen.
+- Prüfen Sie die heruntergeladenen Dateien regelmäßig auf Vollständigkeit und Integrität, insbesondere bei großen Downloads.

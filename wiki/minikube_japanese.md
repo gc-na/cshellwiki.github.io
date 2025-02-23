@@ -1,51 +1,51 @@
-# [日本語] C Shell (csh) minikube 使用法: ローカルKubernetesクラスターの管理
+# [日本] C Shell (csh) minikube 使用法: ローカルKubernetesクラスターの管理
 
 ## 概要
-minikubeは、ローカル環境でKubernetesクラスターを簡単にセットアップして管理するためのツールです。開発者がKubernetesを学んだり、アプリケーションをテストしたりする際に便利です。
+minikubeは、ローカル環境でKubernetesクラスターを簡単にセットアップし、管理するためのツールです。これにより、開発者はKubernetesの機能をローカルで試すことができます。
 
 ## 使用法
 基本的な構文は以下の通りです。
 
-```shell
+```csh
 minikube [options] [arguments]
 ```
 
 ## 一般的なオプション
 - `start`: 新しいKubernetesクラスターを開始します。
 - `stop`: 実行中のクラスターを停止します。
-- `status`: 現在のクラスターの状態を表示します。
+- `status`: クラスターの現在の状態を表示します。
 - `delete`: クラスターを削除します。
-- `dashboard`: Kubernetesダッシュボードを開きます。
+- `dashboard`: Kubernetesダッシュボードを起動します。
 
 ## 一般的な例
-以下に、minikubeのいくつかの実用的な例を示します。
+以下に、minikubeの一般的な使用例を示します。
 
 ### クラスターの開始
-```shell
+```csh
 minikube start
 ```
 
 ### クラスターの停止
-```shell
+```csh
 minikube stop
 ```
 
 ### クラスターの状態確認
-```shell
+```csh
 minikube status
 ```
 
 ### クラスターの削除
-```shell
+```csh
 minikube delete
 ```
 
 ### Kubernetesダッシュボードの起動
-```shell
+```csh
 minikube dashboard
 ```
 
 ## ヒント
-- minikubeを使用する前に、必要なシステム要件を確認してください。
-- クラスターのリソースを管理するために、`--memory`や`--cpus`オプションを使用して、リソースを調整することができます。
-- 定期的に`minikube update-check`を実行して、最新のバージョンを確認しましょう。
+- クラスターを開始する前に、システム要件を確認してください。
+- `minikube start`コマンドにオプションを追加することで、特定の設定を指定できます。
+- クラスターのリソース使用量を監視するために、`minikube dashboard`を活用すると便利です。

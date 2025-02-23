@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) snap penggunaan: Mengambil snapshot sistem
+# [Sistem Operasi] C Shell (csh) snap: Mengambil snapshot sistem
 
 ## Overview
-Perintah `snap` digunakan untuk mengelola paket perangkat lunak dalam sistem yang menggunakan sistem manajemen paket Snap. Dengan `snap`, pengguna dapat menginstal, menghapus, dan memperbarui aplikasi dengan mudah.
+Perintah `snap` dalam C Shell (csh) digunakan untuk mengambil snapshot dari sistem atau lingkungan saat ini. Ini berguna untuk menyimpan keadaan saat ini dari variabel atau pengaturan sehingga dapat dipulihkan atau digunakan kembali di masa depan.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `snap`:
@@ -11,41 +11,34 @@ snap [options] [arguments]
 ```
 
 ## Common Options
-- `install`: Menginstal paket Snap baru.
-- `remove`: Menghapus paket Snap yang terinstal.
-- `list`: Menampilkan daftar semua paket Snap yang terinstal.
-- `refresh`: Memperbarui paket Snap yang terinstal ke versi terbaru.
-- `info`: Menampilkan informasi tentang paket Snap tertentu.
+- `-l`: Menampilkan daftar snapshot yang tersedia.
+- `-r`: Mengembalikan snapshot yang dipilih.
+- `-d`: Menghapus snapshot yang tidak lagi diperlukan.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `snap`:
 
-1. **Menginstal paket Snap**
-   ```bash
-   snap install <nama-paket>
+1. **Mengambil snapshot saat ini:**
+   ```csh
+   snap
    ```
 
-2. **Menghapus paket Snap**
-   ```bash
-   snap remove <nama-paket>
+2. **Menampilkan daftar snapshot yang ada:**
+   ```csh
+   snap -l
    ```
 
-3. **Menampilkan daftar paket Snap yang terinstal**
-   ```bash
-   snap list
+3. **Mengembalikan snapshot tertentu:**
+   ```csh
+   snap -r snapshot_name
    ```
 
-4. **Memperbarui paket Snap**
-   ```bash
-   snap refresh <nama-paket>
-   ```
-
-5. **Menampilkan informasi tentang paket Snap**
-   ```bash
-   snap info <nama-paket>
+4. **Menghapus snapshot yang tidak diperlukan:**
+   ```csh
+   snap -d snapshot_name
    ```
 
 ## Tips
-- Selalu periksa versi terbaru dari paket Snap dengan menggunakan `snap refresh` secara berkala.
-- Gunakan `snap list` untuk mengelola ruang penyimpanan dengan lebih baik, dengan menghapus paket yang tidak lagi diperlukan.
-- Untuk mendapatkan informasi lebih lanjut tentang opsi yang tersedia, gunakan `snap --help`.
+- Selalu beri nama yang deskriptif pada snapshot Anda agar mudah dikenali di kemudian hari.
+- Gunakan opsi `-l` secara berkala untuk memeriksa snapshot yang ada dan mengelola ruang penyimpanan.
+- Pertimbangkan untuk mengambil snapshot sebelum melakukan perubahan besar pada sistem untuk memastikan Anda dapat kembali ke keadaan sebelumnya jika diperlukan.

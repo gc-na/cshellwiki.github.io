@@ -1,20 +1,20 @@
-# [Linux] C Shell (csh) cryptsetup utilisation : Gérer le chiffrement des disques
+# [Linux] C Shell (csh) cryptsetup : Gérer le chiffrement des volumes
 
 ## Overview
-La commande `cryptsetup` est utilisée pour gérer le chiffrement des volumes de disque sous Linux. Elle permet de créer, ouvrir, fermer et gérer des dispositifs de stockage chiffrés, assurant ainsi la sécurité des données.
+La commande `cryptsetup` est utilisée pour gérer le chiffrement des volumes de disque. Elle permet de créer, ouvrir, fermer et gérer des dispositifs de stockage chiffrés, assurant ainsi la sécurité des données sensibles.
 
 ## Usage
-La syntaxe de base de la commande `cryptsetup` est la suivante :
+La syntaxe de base de la commande est la suivante :
 
-```bash
+```shell
 cryptsetup [options] [arguments]
 ```
 
 ## Common Options
 Voici quelques options courantes pour `cryptsetup` :
 
-- `luksFormat` : Initialise un volume pour le chiffrement LUKS.
-- `luksOpen` : Ouvre un volume chiffré et le rend accessible.
+- `luksFormat` : Formate un volume pour utiliser LUKS (Linux Unified Key Setup).
+- `luksOpen` : Ouvre un volume chiffré pour y accéder.
 - `luksClose` : Ferme un volume chiffré.
 - `status` : Affiche l'état d'un volume chiffré.
 - `remove` : Supprime un volume chiffré.
@@ -22,32 +22,32 @@ Voici quelques options courantes pour `cryptsetup` :
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `cryptsetup` :
 
-1. **Initialiser un volume chiffré LUKS :**
-   ```bash
+1. **Formater un volume avec LUKS** :
+   ```shell
    cryptsetup luksFormat /dev/sdX
    ```
 
-2. **Ouvrir un volume chiffré :**
-   ```bash
+2. **Ouvrir un volume chiffré** :
+   ```shell
    cryptsetup luksOpen /dev/sdX my_encrypted_volume
    ```
 
-3. **Fermer un volume chiffré :**
-   ```bash
+3. **Fermer un volume chiffré** :
+   ```shell
    cryptsetup luksClose my_encrypted_volume
    ```
 
-4. **Afficher l'état d'un volume chiffré :**
-   ```bash
+4. **Afficher l'état d'un volume chiffré** :
+   ```shell
    cryptsetup status my_encrypted_volume
    ```
 
-5. **Supprimer un volume chiffré :**
-   ```bash
+5. **Supprimer un volume chiffré** :
+   ```shell
    cryptsetup remove my_encrypted_volume
    ```
 
 ## Tips
-- Toujours sauvegarder vos clés de chiffrement et mots de passe dans un endroit sûr.
-- Utilisez des volumes séparés pour des données sensibles afin de mieux gérer la sécurité.
-- Vérifiez régulièrement l'état de vos volumes chiffrés pour éviter toute perte de données.
+- Toujours sauvegarder vos clés et mots de passe de chiffrement, car la perte de ces informations peut rendre vos données inaccessibles.
+- Utilisez des volumes chiffrés pour stocker des données sensibles, en particulier sur des dispositifs portables.
+- Vérifiez régulièrement l'état de vos volumes chiffrés pour vous assurer qu'ils fonctionnent correctement.

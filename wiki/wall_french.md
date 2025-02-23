@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) wall : envoyer des messages à tous les utilisateurs connectés
+# [Linux] C Shell (csh) wall : envoyer un message à tous les utilisateurs connectés
 
 ## Overview
-La commande `wall` (write all) permet d'envoyer un message à tous les utilisateurs actuellement connectés à un système. Cela peut être utile pour informer les utilisateurs de la maintenance prévue, des mises à jour ou d'autres annonces importantes.
+La commande `wall` (write all) permet d'envoyer un message à tous les utilisateurs connectés à un système. Ce message s'affiche sur leur terminal, ce qui est utile pour communiquer des informations importantes ou des alertes.
 
 ## Usage
 La syntaxe de base de la commande `wall` est la suivante :
@@ -11,33 +11,33 @@ wall [options] [arguments]
 ```
 
 ## Common Options
-- `-n` : Ne pas afficher le nom de l'utilisateur qui envoie le message.
-- `-s` : Envoyer le message en mode silencieux, sans afficher d'avertissement.
+Voici quelques options courantes pour la commande `wall` :
+
+- `-n` : Ne pas envoyer le message si aucun utilisateur n'est connecté.
+- `-f` : Lire le message à partir d'un fichier au lieu de l'entrée standard.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `wall` :
 
-1. **Envoyer un message simple à tous les utilisateurs :**
+1. Envoyer un message simple à tous les utilisateurs :
+
    ```csh
-   wall "Le système sera hors ligne pour maintenance à 22h00."
+   wall "Attention : le système sera en maintenance à 22h."
    ```
 
-2. **Envoyer un message sans afficher le nom de l'utilisateur :**
+2. Envoyer un message à partir d'un fichier :
+
    ```csh
-   wall -n "Attention : le serveur sera redémarré dans 5 minutes."
+   wall -f /chemin/vers/fichier_message.txt
    ```
 
-3. **Utiliser un fichier pour envoyer un message :**
-   ```csh
-   wall < message.txt
-   ```
+3. Envoyer un message sans avertir si personne n'est connecté :
 
-4. **Envoyer un message silencieux :**
    ```csh
-   wall -s "Mise à jour du système en cours."
+   wall -n "Alerte : mise à jour du système en cours."
    ```
 
 ## Tips
-- Utilisez `wall` avec précaution, car les messages peuvent interrompre le travail des utilisateurs.
-- Pour des messages importants, envisagez de les envoyer à l'avance pour donner aux utilisateurs le temps de se préparer.
-- Vous pouvez rediriger le contenu d'un fichier vers `wall` pour envoyer des messages plus longs sans avoir à les taper manuellement.
+- Assurez-vous d'avoir les droits nécessaires pour utiliser `wall`, car certains systèmes peuvent restreindre son utilisation.
+- Utilisez des messages clairs et concis pour que les utilisateurs comprennent rapidement l'information transmise.
+- Évitez d'envoyer des messages trop fréquents pour ne pas déranger les utilisateurs.

@@ -1,7 +1,7 @@
-# [Hệ điều hành] C Shell (csh) apt <Sử dụng tương đương>: Quản lý gói phần mềm
+# [Hệ điều hành Linux] C Shell (csh) apt <Sử dụng tương đương>: Quản lý gói phần mềm
 
 ## Tổng quan
-Lệnh `apt` trong C Shell (csh) được sử dụng để quản lý các gói phần mềm trên hệ thống. Nó cho phép người dùng cài đặt, cập nhật và gỡ bỏ các gói phần mềm một cách dễ dàng.
+Lệnh `apt` là một công cụ quản lý gói trên các hệ điều hành dựa trên Debian, cho phép người dùng cài đặt, nâng cấp và quản lý phần mềm một cách dễ dàng.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `apt` như sau:
@@ -10,41 +10,39 @@ apt [options] [arguments]
 ```
 
 ## Các tùy chọn phổ biến
-- `install`: Cài đặt một hoặc nhiều gói phần mềm.
-- `remove`: Gỡ bỏ một hoặc nhiều gói phần mềm.
 - `update`: Cập nhật danh sách các gói có sẵn.
 - `upgrade`: Nâng cấp tất cả các gói đã cài đặt lên phiên bản mới nhất.
-- `search`: Tìm kiếm các gói phần mềm theo tên hoặc mô tả.
+- `install <package>`: Cài đặt một gói phần mềm cụ thể.
+- `remove <package>`: Gỡ bỏ một gói phần mềm cụ thể.
+- `search <keyword>`: Tìm kiếm gói phần mềm theo từ khóa.
 
 ## Ví dụ phổ biến
-Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `apt`:
-
-- Cài đặt một gói phần mềm:
-  ```csh
-  apt install tên_gói
-  ```
-
-- Gỡ bỏ một gói phần mềm:
-  ```csh
-  apt remove tên_gói
-  ```
-
-- Cập nhật danh sách các gói:
-  ```csh
+- Cập nhật danh sách gói:
+  ```bash
   apt update
   ```
-
-- Nâng cấp tất cả các gói đã cài đặt:
-  ```csh
+  
+- Nâng cấp tất cả các gói:
+  ```bash
   apt upgrade
   ```
 
-- Tìm kiếm một gói phần mềm:
-  ```csh
-  apt search từ_khóa
+- Cài đặt một gói phần mềm, ví dụ `curl`:
+  ```bash
+  apt install curl
+  ```
+
+- Gỡ bỏ một gói phần mềm, ví dụ `curl`:
+  ```bash
+  apt remove curl
+  ```
+
+- Tìm kiếm gói phần mềm với từ khóa `vim`:
+  ```bash
+  apt search vim
   ```
 
 ## Mẹo
 - Luôn chạy `apt update` trước khi cài đặt hoặc nâng cấp để đảm bảo bạn có danh sách gói mới nhất.
-- Sử dụng `apt upgrade` thường xuyên để giữ cho hệ thống của bạn được cập nhật.
-- Kiểm tra các gói không còn cần thiết bằng lệnh `apt autoremove` để giải phóng không gian lưu trữ.
+- Sử dụng `apt upgrade` thường xuyên để giữ cho hệ thống của bạn được cập nhật và an toàn.
+- Nếu bạn không chắc chắn về gói nào đó, hãy sử dụng `apt search` để tìm kiếm và xem thông tin về gói trước khi cài đặt.

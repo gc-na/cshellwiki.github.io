@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) dmesg gebruik: Toegang tot kernelberichten
+# [Linux] C Shell (csh) dmesg gebruik: Toegang tot systeemlogboeken
 
 ## Overzicht
-De `dmesg`-opdracht wordt gebruikt om de kernelringbuffer te bekijken, die berichten bevat die door de kernel zijn gegenereerd. Dit kan nuttig zijn voor het diagnosticeren van hardwareproblemen, het volgen van systeemopstartprocessen en het controleren van stuurprogramma's.
+De `dmesg`-opdracht wordt gebruikt om de kernelringbuffer te bekijken. Dit is een logboek dat informatie bevat over de opstart van het systeem, hardware-initialisatie en andere systeemgebeurtenissen. Het is een handig hulpmiddel voor systeembeheerders en ontwikkelaars om problemen met hardware of systeemconfiguraties te diagnosticeren.
 
 ## Gebruik
 De basis syntaxis van de `dmesg`-opdracht is als volgt:
@@ -10,36 +10,45 @@ De basis syntaxis van de `dmesg`-opdracht is als volgt:
 dmesg [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
-- `-C`: Leeg de kernelringbuffer.
-- `-c`: Leeg de buffer na het weergeven van de berichten.
-- `-n <niveau>`: Stel het logniveau in voor de uitvoer.
-- `-s <grootte>`: Stel de grootte van de buffer in bytes in.
+## Veelvoorkomende opties
+- `-c`: Wis de kernelringbuffer na het weergeven van de berichten.
+- `-n level`: Stel het logniveau in voor de berichten die naar de console worden geschreven.
+- `-T`: Toon de tijdstempels in een leesbaar formaat.
+- `-f facility`: Filter de berichten op basis van de opgegeven faciliteit.
 
-## Veelvoorkomende Voorbeelden
+## Veelvoorkomende voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van de `dmesg`-opdracht:
 
-1. **Bekijk alle kernelberichten:**
-   ```csh
-   dmesg
-   ```
+1. **Bekijk alle berichten in de kernelringbuffer:**
 
-2. **Leeg de kernelringbuffer en toon de berichten:**
-   ```csh
-   dmesg -c
-   ```
+    ```csh
+    dmesg
+    ```
 
-3. **Bekijk berichten met een specifiek logniveau:**
-   ```csh
-   dmesg -n 1
-   ```
+2. **Bekijk de berichten met tijdstempels in een leesbaar formaat:**
 
-4. **Beperk de uitvoer tot de laatste 1000 bytes:**
-   ```csh
-   dmesg -s 1000
-   ```
+    ```csh
+    dmesg -T
+    ```
+
+3. **Filter berichten op basis van een specifieke faciliteit, bijvoorbeeld 'kern':**
+
+    ```csh
+    dmesg -f kern
+    ```
+
+4. **Wis de kernelringbuffer na het weergeven van de berichten:**
+
+    ```csh
+    dmesg -c
+    ```
 
 ## Tips
-- Gebruik `dmesg | less` om door de uitvoer te bladeren als deze te lang is om in één keer te bekijken.
-- Combineer `dmesg` met `grep` om specifieke berichten te filteren, bijvoorbeeld: `dmesg | grep error`.
-- Controleer regelmatig de uitvoer van `dmesg` na het aansluiten van nieuwe hardware om te zien of er problemen zijn gedetecteerd.
+- Gebruik de `-T` optie om tijdstempels beter te begrijpen, vooral tijdens het oplossen van problemen.
+- Combineer `dmesg` met `grep` om specifieke foutmeldingen of informatie te vinden, bijvoorbeeld:
+
+    ```csh
+    dmesg | grep error
+    ```
+
+- Controleer regelmatig de uitvoer van `dmesg` na het aansluiten van nieuwe hardware om eventuele problemen vroegtijdig op te sporen.

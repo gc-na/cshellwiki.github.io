@@ -1,43 +1,43 @@
-# [Linux] C Shell (csh) colrm Gebruik: Verwijder kolommen uit tekst
+# [Linux] C Shell (csh) colrm gebruik: Verwijder kolommen uit tekst
 
 ## Overzicht
-De `colrm` opdracht in C Shell (csh) wordt gebruikt om specifieke kolommen uit tekstbestanden of invoer te verwijderen. Dit is handig voor het formatteren van uitvoer of het aanpassen van gegevenspresentatie.
+De `colrm`-opdracht in C Shell (csh) wordt gebruikt om specifieke kolommen uit tekstbestanden of invoer te verwijderen. Dit is handig wanneer je alleen bepaalde delen van een tekst wilt behouden of wanneer je onnodige informatie wilt uitsluiten.
 
 ## Gebruik
-De basis syntaxis van de `colrm` opdracht is als volgt:
+De basis syntaxis van de `colrm`-opdracht is als volgt:
 
-```
+```csh
 colrm [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
 - `start`: Het begin van de kolom die je wilt verwijderen.
-- `einde`: Het einde van de kolom die je wilt verwijderen.
-- `-`: Wanneer je een enkel getal opgeeft, wordt de kolom vanaf dat getal tot het einde van de regel verwijderd.
+- `eind`: Het einde van de kolom die je wilt verwijderen.
+- `-`: Geeft aan dat je de kolommen wilt verwijderen van de start tot het einde.
 
 ## Veelvoorkomende Voorbeelden
 
-1. Verwijder kolommen 5 tot 10 uit een bestand:
+1. Verwijder kolommen 1 tot 5 uit een bestand:
    ```csh
-   colrm 5 10 bestand.txt
+   colrm 1 5 bestand.txt
    ```
 
-2. Verwijder alleen kolom 3 uit de standaardinvoer:
+2. Verwijder kolommen 3 tot 7 uit de standaard invoer:
    ```csh
-   echo "Dit is een voorbeeld tekst" | colrm 3
+   cat bestand.txt | colrm 3 7
    ```
 
-3. Verwijder kolommen 1 tot 4 uit een bestand en sla de output op in een nieuw bestand:
+3. Verwijder alleen de eerste kolom:
    ```csh
-   colrm 1 4 bestand.txt > nieuw_bestand.txt
+   colrm 1
    ```
 
-4. Verwijder kolommen 2 tot het einde van de regel:
+4. Verwijder de eerste kolom en behoud de rest:
    ```csh
-   echo "Verwijder deze tekst" | colrm 2 -
+   colrm 1 1 bestand.txt
    ```
 
 ## Tips
-- Controleer altijd de invoer voordat je `colrm` toepast, om te voorkomen dat je belangrijke gegevens verliest.
-- Gebruik `colrm` in combinatie met andere commando's zoals `grep` of `awk` voor geavanceerdere tekstverwerking.
-- Experimenteer met verschillende kolominstellingen om de beste resultaten voor jouw specifieke situatie te krijgen.
+- Controleer altijd de invoer voordat je `colrm` gebruikt, zodat je zeker weet welke kolommen je wilt verwijderen.
+- Gebruik `cat` in combinatie met `colrm` om de uitvoer van meerdere bestanden te verwerken.
+- Experimenteer met verschillende kolominstellingen om de gewenste resultaten te bereiken zonder gegevens te verliezen.

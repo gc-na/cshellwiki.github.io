@@ -1,43 +1,39 @@
-# [Linux] C Shell (csh) source kullanımı: Komut dosyalarını çalıştırma
+# [Linux] C Shell (csh) source Kullanımı: Komut dosyalarını çalıştırma
 
 ## Genel Bakış
-`source` komutu, C Shell (csh) ortamında bir dosyayı çalıştırmak için kullanılır. Bu komut, belirtilen dosyadaki komutları mevcut shell oturumunda yürütür ve genellikle ortam değişkenlerini ayarlamak veya fonksiyonları tanımlamak için kullanılır.
+`source` komutu, C Shell (csh) ortamında bir komut dosyasını (script) mevcut kabuk oturumunda çalıştırmak için kullanılır. Bu, komut dosyasındaki değişkenlerin ve ayarların mevcut oturuma dahil edilmesini sağlar.
 
 ## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
+`source` komutunun temel sözdizimi aşağıdaki gibidir:
 
-```csh
+```
 source [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-h`: Yardım bilgilerini gösterir.
-- `-v`: Komut dosyasını çalıştırmadan önce içeriğini görüntüler.
+- `-c`: Komut dosyasını çalıştırmadan önce derleme yapar.
+- `-n`: Komut dosyasını çalıştırmadan önce sözdizimi hatalarını kontrol eder.
 
 ## Yaygın Örnekler
-Aşağıda `source` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
+Aşağıda `source` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. **Bir ortam dosyasını yükleme:**
-   ```csh
-   source ~/.cshrc
-   ```
-   Bu komut, kullanıcının ev dizinindeki `.cshrc` dosyasını yükler ve ortam ayarlarını günceller.
-
-2. **Bir komut dosyasını çalıştırma:**
+1. Bir komut dosyasını çalıştırma:
    ```csh
    source myscript.csh
    ```
-   `myscript.csh` adlı bir komut dosyasını mevcut shell oturumunda çalıştırır.
 
-3. **Bir dizindeki tüm komut dosyalarını çalıştırma:**
+2. Ortam değişkenlerini ayarlamak için bir dosyayı çalıştırma:
    ```csh
-   foreach file (*.csh)
-       source $file
-   end
+   source ~/.cshrc
    ```
-   Bu döngü, mevcut dizindeki tüm `.csh` dosyalarını sırayla çalıştırır.
+
+3. Birden fazla komut dosyasını ardışık olarak çalıştırma:
+   ```csh
+   source script1.csh
+   source script2.csh
+   ```
 
 ## İpuçları
-- `source` komutunu kullanmadan önce dosyanın doğru bir şekilde yazıldığından emin olun; aksi takdirde hata mesajları alabilirsiniz.
-- Ortam değişkenlerini ayarlamak için `source` komutunu kullanmak, değişikliklerin mevcut shell oturumunda hemen etkili olmasını sağlar.
-- Komut dosyalarınızı düzenli tutun ve açıklamalar ekleyin, böylece ileride daha kolay anlayabilirsiniz.
+- Komut dosyalarınızı çalıştırmadan önce, içerdikleri değişkenlerin mevcut oturumda nasıl etki edeceğini kontrol edin.
+- Hataları önlemek için, komut dosyalarınızı `-n` seçeneği ile test edin.
+- Sık kullandığınız ayarları içeren bir `~/.cshrc` dosyası oluşturun ve bu dosyayı `source` ile her oturumda yükleyin.

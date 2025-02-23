@@ -1,44 +1,43 @@
 # [Hệ điều hành] C Shell (csh) mysql Cách sử dụng: Truy cập và quản lý cơ sở dữ liệu MySQL
 
-## Tổng quan
-Lệnh `mysql` là một công cụ dòng lệnh được sử dụng để truy cập và quản lý cơ sở dữ liệu MySQL. Nó cho phép người dùng thực hiện các truy vấn SQL, quản lý người dùng, và thực hiện các tác vụ khác liên quan đến cơ sở dữ liệu.
+## Overview
+Lệnh `mysql` được sử dụng để truy cập và quản lý cơ sở dữ liệu MySQL từ dòng lệnh. Nó cho phép người dùng thực hiện các truy vấn SQL, quản lý cơ sở dữ liệu và thực hiện các tác vụ khác liên quan đến MySQL.
 
-## Cách sử dụng
+## Usage
 Cú pháp cơ bản của lệnh `mysql` như sau:
 ```
 mysql [options] [arguments]
 ```
 
-## Các tùy chọn phổ biến
-- `-u [username]`: Chỉ định tên người dùng để đăng nhập vào MySQL.
+## Common Options
+- `-u [username]`: Chỉ định tên người dùng để kết nối với cơ sở dữ liệu.
 - `-p`: Yêu cầu nhập mật khẩu cho người dùng đã chỉ định.
-- `-h [hostname]`: Chỉ định tên máy chủ nơi MySQL đang chạy.
-- `-D [database]`: Chỉ định cơ sở dữ liệu mặc định để sử dụng.
-- `-e "[query]"`: Thực hiện một truy vấn SQL mà không cần vào chế độ tương tác.
+- `-h [hostname]`: Chỉ định máy chủ MySQL mà bạn muốn kết nối.
+- `-D [database]`: Chỉ định cơ sở dữ liệu mà bạn muốn sử dụng ngay lập tức sau khi kết nối.
+- `--execute`: Thực thi một câu lệnh SQL ngay lập tức.
 
-## Ví dụ phổ biến
-- Kết nối đến MySQL với tên người dùng và yêu cầu mật khẩu:
+## Common Examples
+- Kết nối đến MySQL với tên người dùng và mật khẩu:
   ```bash
-  mysql -u username -p
+  mysql -u root -p
   ```
 
 - Kết nối đến một cơ sở dữ liệu cụ thể:
   ```bash
-  mysql -u username -p -D database_name
+  mysql -u root -p -D mydatabase
   ```
 
-- Thực hiện một truy vấn SQL trực tiếp:
+- Thực thi một câu lệnh SQL từ dòng lệnh:
   ```bash
-  mysql -u username -p -e "SELECT * FROM table_name;"
+  mysql -u root -p --execute "SHOW DATABASES;"
   ```
 
-- Xuất dữ liệu từ một bảng vào file:
+- Xuất dữ liệu từ một bảng:
   ```bash
-  mysql -u username -p -D database_name -e "SELECT * FROM table_name;" > output.txt
+  mysql -u root -p -D mydatabase --execute "SELECT * FROM mytable;"
   ```
 
-## Mẹo
+## Tips
 - Luôn sử dụng tùy chọn `-p` để bảo mật mật khẩu của bạn.
-- Sử dụng tùy chọn `-h` để kết nối đến MySQL trên một máy chủ từ xa.
-- Thực hiện sao lưu cơ sở dữ liệu thường xuyên để tránh mất dữ liệu.
-- Tìm hiểu và sử dụng các truy vấn SQL hiệu quả để tối ưu hóa hiệu suất.
+- Nếu bạn thường xuyên làm việc với một cơ sở dữ liệu cụ thể, hãy sử dụng tùy chọn `-D` để tiết kiệm thời gian.
+- Sử dụng lệnh `--execute` để thực hiện các câu lệnh SQL nhanh chóng mà không cần vào giao diện tương tác của MySQL.

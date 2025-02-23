@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) lvextend Kullanımı: LVM mantıksal birimlerini genişletme
 
 ## Genel Bakış
-`lvextend` komutu, Linux'un LVM (Logical Volume Manager) sisteminde mantıksal birimleri (logical volumes) genişletmek için kullanılır. Bu komut, mevcut bir mantıksal birimin boyutunu artırarak daha fazla depolama alanı sağlar.
+`lvextend` komutu, Linux'ta LVM (Logical Volume Manager) kullanarak mantıksal birimlerin boyutunu artırmak için kullanılır. Bu komut, mevcut bir mantıksal birimin kapasitesini genişleterek daha fazla veri depolama alanı sağlar.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
@@ -10,35 +10,35 @@ lvextend [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-L [boyut]`: Mantıksal birimin yeni boyutunu belirler.
-- `-l [boyut]`: Mantıksal birimi, fiziksel alan sayısı ile genişletir.
-- `-r`: Dosya sistemini otomatik olarak genişletir.
-- `-n`: Mantıksal birimin adını değiştirir.
+- `-L`: Mantıksal birimin yeni boyutunu belirtir.
+- `-l`: Mantıksal birimin boyutunu, fiziksel alan birimleri cinsinden belirtir.
+- `-r`: Mantıksal birimi genişlettikten sonra dosya sistemini otomatik olarak genişletir.
+- `--resizefs`: Dosya sistemini genişletir (bu seçenek `-r` ile aynıdır).
 
 ## Yaygın Örnekler
 Aşağıda `lvextend` komutunun bazı pratik örnekleri verilmiştir:
 
-1. Mantıksal birimi 10G artırma:
+1. Mantıksal birimi 10G artırmak:
    ```bash
-   lvextend -L +10G /dev/vg0/lv0
+   lvextend -L +10G /dev/vg_adi/lv_adi
    ```
 
-2. Mantıksal birimi 50G'ye ayarlama:
+2. Mantıksal birimi mevcut boyutunun %20'si kadar artırmak:
    ```bash
-   lvextend -L 50G /dev/vg0/lv0
+   lvextend -l +20%FREE /dev/vg_adi/lv_adi
    ```
 
-3. Mantıksal birimi mevcut fiziksel alan sayısı kadar genişletme:
+3. Mantıksal birimi genişletip dosya sistemini otomatik olarak genişletmek:
    ```bash
-   lvextend -l +100%FREE /dev/vg0/lv0
+   lvextend -r -L +5G /dev/vg_adi/lv_adi
    ```
 
-4. Dosya sistemini otomatik olarak genişletme:
+4. Belirli bir boyuta ayarlamak:
    ```bash
-   lvextend -r -L +5G /dev/vg0/lv0
+   lvextend -L 50G /dev/vg_adi/lv_adi
    ```
 
 ## İpuçları
-- `lvextend` komutunu kullanmadan önce, mantıksal birimin bağlı olduğundan emin olun.
+- `lvextend` komutunu kullanmadan önce, mantıksal birimin mevcut boyutunu kontrol etmek için `lvdisplay` komutunu kullanın.
 - Genişletme işlemi sırasında veri kaybını önlemek için yedekleme yapmayı unutmayın.
-- Genişletme işleminden sonra dosya sistemini kontrol etmek için `fsck` komutunu kullanabilirsiniz.
+- Eğer dosya sistemi otomatik olarak genişletilmiyorsa, `resize2fs` veya `xfs_growfs` gibi komutları kullanarak dosya sistemini manuel olarak genişletebilirsiniz.

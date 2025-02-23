@@ -1,40 +1,49 @@
 # [Linux] C Shell (csh) unsetenv: Usuwanie zmiennych środowiskowych
 
 ## Overview
-Polecenie `unsetenv` w C Shell (csh) służy do usuwania zmiennych środowiskowych. Dzięki temu można zwolnić pamięć lub zresetować ustawienia środowiska w sesji powłoki.
+Polecenie `unsetenv` w C Shell (csh) służy do usuwania zmiennych środowiskowych. Dzięki temu można zwolnić pamięć lub zresetować ustawienia, które nie są już potrzebne.
 
 ## Usage
 Podstawowa składnia polecenia `unsetenv` jest następująca:
 
-```csh
-unsetenv [nazwa_zmiennej]
+```
+unsetenv [zmienna]
 ```
 
 ## Common Options
-Polecenie `unsetenv` nie ma dodatkowych opcji. Jego główną funkcją jest usuwanie zmiennych środowiskowych poprzez podanie ich nazw.
+Polecenie `unsetenv` nie ma wielu opcji, ale oto najważniejsze:
+
+- **[zmienna]**: Nazwa zmiennej środowiskowej, którą chcesz usunąć.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `unsetenv`:
 
-1. Usunięcie pojedynczej zmiennej środowiskowej:
-
-```csh
-unsetenv MY_VARIABLE
-```
-
-2. Usunięcie zmiennej, która została wcześniej ustawiona:
+### Usunięcie pojedynczej zmiennej
+Aby usunąć zmienną środowiskową o nazwie `MY_VAR`, użyj:
 
 ```csh
-setenv MY_VAR "Hello World"
 unsetenv MY_VAR
 ```
 
-3. Sprawdzenie, czy zmienna została usunięta:
+### Usunięcie zmiennej w skrypcie
+W skrypcie C Shell możesz usunąć zmienną w następujący sposób:
 
 ```csh
-echo $MY_VAR  # Nie powinno wyświetlać nic
+#!/bin/csh
+setenv MY_VAR "Hello"
+echo $MY_VAR
+unsetenv MY_VAR
+echo $MY_VAR  # To nie wyświetli nic, ponieważ MY_VAR została usunięta
+```
+
+### Usunięcie zmiennej w sesji terminala
+Możesz również usunąć zmienną w bieżącej sesji terminala:
+
+```csh
+setenv PATH "/usr/local/bin:$PATH"
+unsetenv PATH
 ```
 
 ## Tips
-- Upewnij się, że zmienna, którą chcesz usunąć, nie jest potrzebna w dalszej części sesji, ponieważ `unsetenv` nie przywraca usuniętych zmiennych.
-- Możesz używać `printenv` do wyświetlenia wszystkich zmiennych środowiskowych przed ich usunięciem, aby upewnić się, które z nich chcesz usunąć.
+- Upewnij się, że zmienna, którą chcesz usunąć, nie jest używana w innych częściach skryptu, aby uniknąć błędów.
+- Możesz sprawdzić dostępne zmienne środowiskowe za pomocą polecenia `printenv` przed ich usunięciem.
+- Pamiętaj, że usunięcie zmiennej środowiskowej jest trwałe tylko w bieżącej sesji terminala. Po zamknięciu terminala zmienne mogą być ponownie dostępne, jeśli zostały ustawione w plikach konfiguracyjnych.

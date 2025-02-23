@@ -1,48 +1,48 @@
-# [Linux] C Shell (csh) dig użycie: narzędzie do zapytań DNS
+# [Linux] C Shell (csh) dig <Użycie: zapytania DNS>
 
 ## Overview
-Polecenie `dig` (Domain Information Groper) jest używane do wykonywania zapytań DNS. Umożliwia użytkownikom uzyskiwanie informacji o rekordach DNS, takich jak adresy IP, rekordy MX i inne.
+Polecenie `dig` (Domain Information Groper) jest narzędziem do wykonywania zapytań DNS. Umożliwia użytkownikom uzyskiwanie informacji o rekordach DNS, co jest przydatne w diagnostyce problemów z siecią oraz w zarządzaniu domenami.
 
 ## Usage
-Podstawowa składnia polecenia `dig` jest następująca:
+Podstawowa składnia polecenia `dig` wygląda następująco:
 
-```csh
+```
 dig [opcje] [argumenty]
 ```
 
 ## Common Options
 - `@serwer` - Określa serwer DNS, do którego wysyłane jest zapytanie.
-- `-t typ` - Określa typ rekordu DNS, który ma być wyszukiwany (np. A, MX, CNAME).
-- `+short` - Zwraca krótką odpowiedź, bez dodatkowych informacji.
-- `+trace` - Śledzi zapytanie przez wszystkie serwery DNS.
+- `-t typ` - Umożliwia określenie typu rekordu DNS, np. A, AAAA, MX, itp.
+- `+short` - Zwraca skróconą wersję odpowiedzi, co jest przydatne do szybkiego uzyskania informacji.
+- `-x adres` - Wykonuje odwrotne zapytanie DNS, przekształcając adres IP na nazwę domeny.
 
 ## Common Examples
-- Aby uzyskać adres IP dla domeny:
-  ```csh
-  dig example.com
-  ```
+1. **Podstawowe zapytanie o rekord A:**
+   ```bash
+   dig example.com
+   ```
 
-- Aby uzyskać rekord MX dla domeny:
-  ```csh
-  dig -t MX example.com
-  ```
+2. **Zapytanie o rekord MX:**
+   ```bash
+   dig -t MX example.com
+   ```
 
-- Aby zapytać konkretny serwer DNS:
-  ```csh
-  dig @8.8.8.8 example.com
-  ```
+3. **Użycie konkretnego serwera DNS:**
+   ```bash
+   dig @8.8.8.8 example.com
+   ```
 
-- Aby uzyskać krótką odpowiedź:
-  ```csh
-  dig +short example.com
-  ```
+4. **Odwrotne zapytanie DNS:**
+   ```bash
+   dig -x 8.8.8.8
+   ```
 
-- Aby śledzić zapytanie przez wszystkie serwery DNS:
-  ```csh
-  dig +trace example.com
-  ```
+5. **Skrócona odpowiedź:**
+   ```bash
+   dig +short example.com
+   ```
 
 ## Tips
-- Używaj opcji `+short`, aby szybko uzyskać tylko najważniejsze informacje.
-- Zawsze określaj serwer DNS, jeśli chcesz uzyskać wyniki z konkretnego źródła.
-- Eksperymentuj z różnymi typami rekordów, aby lepiej zrozumieć, jakie informacje są dostępne dla danej domeny.
+- Używaj opcji `+trace`, aby zobaczyć, jak zapytanie przechodzi przez różne serwery DNS.
+- Regularnie sprawdzaj różne typy rekordów, aby uzyskać pełny obraz konfiguracji DNS danej domeny.
+- Zapisuj wyniki zapytań w plikach, aby móc je łatwo analizować później.

@@ -1,7 +1,7 @@
-# [Unix] C Shell (csh) bindkey : [configurer les touches de raccourci]
+# [Linux] C Shell (csh) bindkey : [configurer les raccourcis clavier]
 
 ## Overview
-La commande `bindkey` dans C Shell (csh) permet de configurer les touches de raccourci pour les commandes dans le shell. Elle est utile pour personnaliser l'expérience utilisateur en attribuant des actions spécifiques à des combinaisons de touches.
+La commande `bindkey` dans le C Shell (csh) est utilisée pour configurer les raccourcis clavier. Elle permet aux utilisateurs de lier des combinaisons de touches à des commandes spécifiques, facilitant ainsi l'interaction avec le terminal.
 
 ## Usage
 La syntaxe de base de la commande `bindkey` est la suivante :
@@ -11,10 +11,10 @@ bindkey [options] [arguments]
 ```
 
 ## Common Options
-- `-e` : Active le mode Emacs pour les raccourcis.
-- `-v` : Active le mode Vi pour les raccourcis.
+- `-e` : Active le mode Emacs pour les raccourcis clavier.
+- `-v` : Active le mode Vi pour les raccourcis clavier.
 - `-s` : Permet de lier une séquence de touches à une commande.
-- `-d` : Supprime une liaison de touche existante.
+- `-d` : Affiche les liaisons de touches actuelles.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `bindkey` :
@@ -34,9 +34,9 @@ Voici quelques exemples pratiques de l'utilisation de `bindkey` :
    bindkey '^X' 'ls -l'
    ```
 
-4. **Supprimer une liaison de touche :**
+4. **Afficher les liaisons de touches actuelles :**
    ```csh
-   bindkey -d '^X'
+   bindkey -d
    ```
 
 5. **Lier une séquence de touches à une commande :**
@@ -45,6 +45,6 @@ Voici quelques exemples pratiques de l'utilisation de `bindkey` :
    ```
 
 ## Tips
-- Pensez à sauvegarder vos configurations de `bindkey` dans votre fichier de démarrage pour qu'elles soient appliquées à chaque session.
-- Utilisez `bindkey` sans arguments pour afficher toutes les liaisons de touches actuelles.
-- Expérimentez avec différentes liaisons pour trouver celles qui améliorent votre efficacité dans le shell.
+- Pensez à sauvegarder vos liaisons de touches dans votre fichier de configuration pour les rendre persistantes.
+- Utilisez `bindkey -d` régulièrement pour vérifier vos liaisons de touches et éviter les conflits.
+- Expérimentez avec différentes combinaisons de touches pour trouver celles qui améliorent votre flux de travail.

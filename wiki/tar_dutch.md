@@ -1,53 +1,51 @@
 # [Linux] C Shell (csh) tar Gebruik: Archiveren en comprimeren van bestanden
 
 ## Overzicht
-De `tar`-opdracht, wat staat voor "tape archive", wordt gebruikt om meerdere bestanden en mappen samen te voegen in één enkel archiefbestand. Dit is handig voor back-ups en het delen van bestanden.
+De `tar`-opdracht, wat staat voor "tape archive", wordt gebruikt om meerdere bestanden en mappen samen te voegen in één archiefbestand. Dit is handig voor back-ups en het delen van bestanden. Het kan ook bestanden comprimeren om opslagruimte te besparen.
 
 ## Gebruik
 De basis syntaxis van de `tar`-opdracht is als volgt:
 
-```csh
+```bash
 tar [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
 - `-c`: Maak een nieuw archief.
 - `-x`: Extraheer bestanden uit een archief.
-- `-f`: Geef de naam van het archiefbestand op.
-- `-v`: Toon gedetailleerde uitvoer (verbose).
+- `-f`: Specificeer de naam van het archiefbestand.
+- `-v`: Toon de voortgang van de bewerking (verbose).
 - `-z`: Comprimeer of decomprimeer met gzip.
+- `-j`: Comprimeer of decomprimeer met bzip2.
 
 ## Veelvoorkomende Voorbeelden
 
-### 1. Een nieuw archief maken
-Om een archief genaamd `mijnbestanden.tar` te maken van de map `mijnmap`:
+1. **Een archief maken:**
+   ```bash
+   tar -cvf archief.tar /pad/naar/mappen
+   ```
 
-```csh
-tar -cvf mijnbestanden.tar mijnmap
-```
+2. **Een archief maken met compressie:**
+   ```bash
+   tar -czvf archief.tar.gz /pad/naar/mappen
+   ```
 
-### 2. Een archief extraheren
-Om de inhoud van `mijnbestanden.tar` te extraheren:
+3. **Bestanden extraheren uit een archief:**
+   ```bash
+   tar -xvf archief.tar
+   ```
 
-```csh
-tar -xvf mijnbestanden.tar
-```
+4. **Bestanden extraheren uit een gecomprimeerd archief:**
+   ```bash
+   tar -xzvf archief.tar.gz
+   ```
 
-### 3. Een gecomprimeerd archief maken
-Om een gecomprimeerd archief met gzip te maken:
-
-```csh
-tar -czvf mijnbestanden.tar.gz mijnmap
-```
-
-### 4. Een gecomprimeerd archief extraheren
-Om een gecomprimeerd archief te extraheren:
-
-```csh
-tar -xzvf mijnbestanden.tar.gz
-```
+5. **Lijst van bestanden in een archief bekijken:**
+   ```bash
+   tar -tvf archief.tar
+   ```
 
 ## Tips
-- Gebruik de `-v` optie voor gedetailleerde uitvoer, zodat je kunt zien welke bestanden worden verwerkt.
-- Controleer altijd de inhoud van een archief met `tar -tvf archief.tar` voordat je bestanden extraheert.
-- Overweeg om gecomprimeerde archieven te gebruiken om schijfruimte te besparen, vooral bij grote datasets.
+- Gebruik de `-v` optie om te zien welke bestanden worden verwerkt, vooral bij grote archieven.
+- Vergeet niet om de juiste compressie-optie (`-z` of `-j`) te gebruiken afhankelijk van het type archief dat je maakt.
+- Controleer altijd de inhoud van een archief met de `-t` optie voordat je bestanden extraheert, om te bevestigen dat je de juiste bestanden hebt.

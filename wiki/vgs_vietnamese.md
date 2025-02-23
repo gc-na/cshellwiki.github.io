@@ -1,44 +1,44 @@
-# [Hệ điều hành] C Shell (csh) vgs Cách sử dụng: Hiển thị thông tin về các nhóm volume
+# [Hệ điều hành] C Shell (csh) vgs Cách sử dụng: Hiển thị thông tin về nhóm volume
 
-## Tổng quan
-Lệnh `vgs` trong C Shell (csh) được sử dụng để hiển thị thông tin về các nhóm volume trong hệ thống quản lý lưu trữ logic (LVM). Nó cung cấp cái nhìn tổng quan về các thuộc tính của nhóm volume như kích thước, số lượng volume vật lý và trạng thái.
+## Overview
+Lệnh `vgs` trong C Shell (csh) được sử dụng để hiển thị thông tin về các nhóm volume trong hệ thống quản lý Logical Volume Manager (LVM). Nó cung cấp cái nhìn tổng quan về các nhóm volume, bao gồm kích thước, số lượng volume và trạng thái của chúng.
 
-## Cách sử dụng
+## Usage
 Cú pháp cơ bản của lệnh `vgs` như sau:
 ```
-vgs [tùy chọn] [đối số]
+vgs [options] [arguments]
 ```
 
-## Tùy chọn phổ biến
+## Common Options
 - `-o`: Chỉ định các trường thông tin cụ thể để hiển thị.
-- `--units`: Đặt đơn vị hiển thị cho kích thước.
-- `-h`: Hiển thị thông tin theo định dạng dễ đọc hơn.
-- `--noheadings`: Không hiển thị tiêu đề cột.
+- `-h`: Hiển thị kết quả theo định dạng dễ đọc hơn.
+- `--units`: Chỉ định đơn vị cho kích thước hiển thị (ví dụ: k, m, g).
+- `-a`: Hiển thị thông tin cho tất cả các nhóm volume, kể cả những nhóm không hoạt động.
 
-## Ví dụ phổ biến
-Dưới đây là một số ví dụ thực tế khi sử dụng lệnh `vgs`:
+## Common Examples
+Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `vgs`:
 
 1. Hiển thị thông tin cơ bản về tất cả các nhóm volume:
    ```bash
    vgs
    ```
 
-2. Hiển thị thông tin cụ thể về các trường kích thước và số lượng volume:
+2. Hiển thị thông tin với định dạng dễ đọc:
    ```bash
-   vgs -o vg_name,size,lv_count
+   vgs -h
    ```
 
-3. Hiển thị thông tin với đơn vị dễ đọc:
+3. Hiển thị thông tin cụ thể về các trường:
    ```bash
-   vgs --units g
+   vgs -o vg_name,lv_count,vg_size
    ```
 
-4. Hiển thị thông tin mà không có tiêu đề cột:
+4. Hiển thị thông tin cho tất cả các nhóm volume, bao gồm cả những nhóm không hoạt động:
    ```bash
-   vgs --noheadings
+   vgs -a
    ```
 
-## Mẹo
-- Sử dụng tùy chọn `-o` để tùy chỉnh thông tin hiển thị theo nhu cầu của bạn.
-- Kết hợp lệnh `vgs` với các lệnh khác như `grep` để lọc thông tin cần thiết.
-- Thường xuyên kiểm tra thông tin nhóm volume để đảm bảo rằng không có vấn đề nào xảy ra với lưu trữ của bạn.
+## Tips
+- Sử dụng tùy chọn `-h` để dễ dàng đọc các thông số kích thước.
+- Kết hợp với lệnh `grep` để lọc ra các nhóm volume cụ thể mà bạn quan tâm.
+- Thường xuyên kiểm tra thông tin nhóm volume để đảm bảo rằng hệ thống của bạn hoạt động ổn định và không gặp vấn đề về dung lượng.

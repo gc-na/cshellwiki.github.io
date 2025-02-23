@@ -1,42 +1,35 @@
-# [Linux] C Shell (csh) tee Kullanımı: Verileri dosyaya ve ekrana yazma
+# [Linux] C Shell (csh) tee Kullanımı: Verileri dosyaya yazma ve ekrana yazdırma
 
-## Overview
-`tee` komutu, standart girdi verilerini hem ekrana hem de bir veya daha fazla dosyaya yazmak için kullanılır. Bu, verileri anlık olarak görüntülemenizi ve aynı zamanda dosyaya kaydetmenizi sağlar.
+## Genel Bakış
+`tee` komutu, standart girdi akışını hem bir dosyaya yazmak hem de ekrana (standart çıkış) yazdırmak için kullanılır. Bu, bir komutun çıktısını kaydederken aynı zamanda kullanıcıya da göstermeyi sağlar.
 
-## Usage
-Temel sözdizimi şu şekildedir:
-```csh
-tee [options] [arguments]
+## Kullanım
+Temel sözdizimi aşağıdaki gibidir:
+```
+tee [seçenekler] [argümanlar]
 ```
 
-## Common Options
-- `-a`: Dosyaya ekleme yapar, yani mevcut içeriğin üzerine yazmak yerine yeni verileri ekler.
-- `-i`: Girdi akışını keser, yani sinyal yakalamayı devre dışı bırakır.
+## Yaygın Seçenekler
+- `-a` : Çıktıyı dosyaya ekler (append) yerine dosyayı üzerine yazar.
+- `-i` : Kesintileri yok sayar (ignore interrupts).
 
-## Common Examples
-Aşağıda `tee` komutunun bazı pratik örnekleri bulunmaktadır:
-
-1. **Temel Kullanım**: Bir dosyaya yazarken aynı zamanda ekrana yazdırma.
+## Yaygın Örnekler
+1. Bir komutun çıktısını bir dosyaya yazarken ekrana da yazdırma:
    ```csh
-   echo "Merhaba Dünya" | tee dosya.txt
+   ls -l | tee dosya.txt
    ```
 
-2. **Dosyaya Ekleyerek Yazma**: Mevcut dosya içeriğinin üzerine yazmadan ekleme yapma.
+2. Çıktıyı bir dosyaya ekleyerek yazdırma:
    ```csh
-   echo "Yeni Satır" | tee -a dosya.txt
+   echo "Yeni veri" | tee -a dosya.txt
    ```
 
-3. **Birden Fazla Dosyaya Yazma**: Veriyi birden fazla dosyaya aynı anda yazma.
+3. Birden fazla dosyaya yazma:
    ```csh
    echo "Veri" | tee dosya1.txt dosya2.txt
    ```
 
-4. **Girdi Akışını Kesme**: Sinyal yakalamayı devre dışı bırakma.
-   ```csh
-   echo "Önemli Veri" | tee -i dosya.txt
-   ```
-
-## Tips
-- `tee` komutunu kullanırken, dosya adlarını belirtirken dikkatli olun; yanlış dosya adları mevcut verilerinizi kaybetmenize neden olabilir.
-- `-a` seçeneğini kullanarak, verilerinizi kaybetmeden dosyaya ekleme yapabilirsiniz.
-- `tee` komutunu, uzun komut dizilerini daha okunabilir hale getirmek için boru (pipe) ile birleştirerek kullanabilirsiniz.
+## İpuçları
+- `tee` komutunu, bir komutun çıktısını kaydederken aynı zamanda başka bir işlemde kullanmak için bir boru (pipe) ile birleştirin.
+- Çıktıyı kontrol etmek için `cat` komutunu kullanarak dosyanın içeriğini görüntüleyebilirsiniz.
+- `-i` seçeneği, komut çalışırken kullanıcıdan gelen kesintileri göz ardı etmek için faydalıdır, böylece işleminiz kesilmez.

@@ -1,49 +1,45 @@
-# [Unix] C Shell (csh) set gebruik: Instellen van shell-variabelen
+# [Unix] C Shell (csh) set gebruik: Instellen van shell-variabelen en opties
 
-## Overview
-De `set` opdracht in C Shell (csh) wordt gebruikt om shell-variabelen en array-variabelen in te stellen. Het stelt gebruikers in staat om de omgeving van de shell aan te passen en variabelen te definiëren die in scripts of interactieve sessies kunnen worden gebruikt.
+## Overzicht
+De `set`-opdracht in C Shell (csh) wordt gebruikt om shell-variabelen en opties in te stellen. Het stelt gebruikers in staat om hun omgeving te configureren en verschillende instellingen te beheren, zoals het aanpassen van de prompt of het definiëren van variabelen voor gebruik in scripts.
 
-## Usage
-De basis syntaxis van de `set` opdracht is als volgt:
+## Gebruik
+De basisstructuur van de `set`-opdracht is als volgt:
 
 ```csh
-set [options] [arguments]
+set [opties] [argumenten]
 ```
 
-## Common Options
-- `-x`: Zet de variabele in de exportmodus, zodat deze beschikbaar is voor subprocessen.
-- `-e`: Schakelt de foutafhandelingsmodus in, wat betekent dat de shell stopt bij de eerste fout.
-- `-u`: Geeft een foutmelding als er naar een niet-gedefinieerde variabele wordt verwezen.
+## Veelvoorkomende Opties
+- `set var = waarde`: Stelt een variabele in met een specifieke waarde.
+- `setenv VAR WAARDE`: Stelt een omgevingsvariabele in.
+- `set -x`: Zet de debugmodus aan, waardoor elke opdracht die wordt uitgevoerd, wordt weergegeven.
+- `set +x`: Zet de debugmodus uit.
 
-## Common Examples
-Hier zijn enkele praktische voorbeelden van het gebruik van de `set` opdracht:
+## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van de `set`-opdracht:
 
-1. Een eenvoudige variabele instellen:
-    ```csh
-    set myVar = "Hallo, wereld!"
-    ```
+### Voorbeeld 1: Een variabele instellen
+```csh
+set mijn_var = "Hallo Wereld"
+```
 
-2. Een array-variabele instellen:
-    ```csh
-    set myArray = (element1 element2 element3)
-    ```
+### Voorbeeld 2: Een omgevingsvariabele instellen
+```csh
+setenv PATH /usr/local/bin:$PATH
+```
 
-3. De waarde van een variabele weergeven:
-    ```csh
-    echo $myVar
-    ```
+### Voorbeeld 3: Debugmodus inschakelen
+```csh
+set -x
+```
 
-4. Een variabele exporteren naar subprocessen:
-    ```csh
-    set -x myExportedVar = "Dit is een geëxporteerde variabele"
-    ```
-
-5. Een niet-gedefinieerde variabele gebruiken met foutafhandeling:
-    ```csh
-    set -u myUndefinedVar
-    ```
+### Voorbeeld 4: Debugmodus uitschakelen
+```csh
+set +x
+```
 
 ## Tips
-- Gebruik duidelijke en beschrijvende namen voor variabelen om de leesbaarheid van je scripts te verbeteren.
-- Wees voorzichtig met het gebruik van spaties rond het gelijkteken (`=`) bij het instellen van variabelen, omdat dit kan leiden tot fouten.
-- Controleer altijd of een variabele is ingesteld voordat je deze gebruikt, vooral als je de `-u` optie hebt ingeschakeld.
+- Gebruik `setenv` voor omgevingsvariabelen die beschikbaar moeten zijn voor subprocessen.
+- Controleer de waarde van een variabele door `echo $variabele_naam` te gebruiken.
+- Wees voorzichtig met spaties rond het gelijkteken bij het instellen van variabelen; gebruik geen spaties in de opdracht.

@@ -1,44 +1,44 @@
 # [Linux] C Shell (csh) unexpand gebruik: Verwijder tabs uit tekstbestanden
 
 ## Overzicht
-De `unexpand` opdracht in C Shell (csh) wordt gebruikt om tabulatoren in tekstbestanden te vervangen door spaties. Dit is handig voor het formatteren van tekst zodat deze beter leesbaar is in omgevingen waar tabs niet goed worden weergegeven.
+De `unexpand`-opdracht wordt gebruikt om tabulaties in tekstbestanden om te zetten naar spaties. Dit is handig wanneer je bestanden wilt voorbereiden voor toepassingen die geen tabulaties ondersteunen of wanneer je een consistente opmaak wilt behouden.
 
 ## Gebruik
-De basis syntaxis van de `unexpand` opdracht is als volgt:
+De basis syntaxis van de `unexpand`-opdracht is als volgt:
 
 ```csh
 unexpand [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-t, --tabs=NUM`: Specificeert het aantal spaties dat moet worden gebruikt in plaats van een tab. Standaard is dit 8 spaties.
-- `-a, --all`: Vervangt alle tabulatoren, niet alleen de tabulatoren aan het begin van een regel.
-- `-h, --help`: Toont een helpbericht met informatie over het gebruik van de opdracht.
+- `-a`: Converteer alle tabulaties naar spaties.
+- `-t N`: Stel de breedte van de tabulatie in op N spaties (standaard is 8).
+- `-o`: Geef de uitvoer naar de standaarduitvoer in plaats van naar een bestand.
 
 ## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van `unexpand`:
+Hier zijn enkele praktische voorbeelden van het gebruik van de `unexpand`-opdracht:
 
-1. **Basis gebruik**: Vervang tabs door spaties in een bestand.
+1. **Basis gebruik**: Verander tabulaties naar spaties in een bestand.
    ```csh
    unexpand bestand.txt
    ```
 
-2. **Specificeer het aantal spaties**: Vervang tabs door 4 spaties.
-   ```csh
-   unexpand -t 4 bestand.txt
-   ```
-
-3. **Vervang alle tabs**: Vervang alle tabs in het bestand, niet alleen aan het begin van de regels.
+2. **Alle tabulaties omzetten**: Zet alle tabulaties om naar spaties.
    ```csh
    unexpand -a bestand.txt
    ```
 
-4. **Opslaan van de output naar een nieuw bestand**: Gebruik een omleiding om de output naar een nieuw bestand te schrijven.
+3. **Tabulatie breedte instellen**: Stel de tabulatie breedte in op 4 spaties.
+   ```csh
+   unexpand -t 4 bestand.txt
+   ```
+
+4. **Uitvoer naar een nieuw bestand**: Sla de geconverteerde uitvoer op in een nieuw bestand.
    ```csh
    unexpand bestand.txt > nieuw_bestand.txt
    ```
 
 ## Tips
-- Controleer altijd de output van `unexpand` door het resultaat te bekijken in een teksteditor om er zeker van te zijn dat de opmaak naar wens is.
-- Gebruik de optie `-t` om de spatiëring aan te passen aan de vereisten van je project of omgeving.
-- Combineer `unexpand` met andere commando's zoals `grep` of `sed` voor geavanceerdere tekstverwerking.
+- Controleer altijd de uitvoer van `unexpand` om er zeker van te zijn dat de opmaak correct is.
+- Gebruik de `-o` optie als je de uitvoer direct naar de terminal wilt sturen zonder een bestand te overschrijven.
+- Experimenteer met de `-t` optie om de beste tabulatie-instelling voor jouw toepassing te vinden.

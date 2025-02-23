@@ -1,43 +1,38 @@
 # [Linux] C Shell (csh) mountpoint : Vérifier les points de montage
 
 ## Overview
-La commande `mountpoint` est utilisée pour déterminer si un répertoire donné est un point de montage. Cela permet aux utilisateurs de vérifier rapidement si un système de fichiers est monté sur un répertoire spécifique.
+La commande `mountpoint` est utilisée pour déterminer si un répertoire donné est un point de montage. Cela permet aux utilisateurs de vérifier rapidement si un système de fichiers est monté à un emplacement spécifique.
 
 ## Usage
-La syntaxe de base de la commande `mountpoint` est la suivante :
+La syntaxe de base de la commande est la suivante :
 
 ```csh
 mountpoint [options] [arguments]
 ```
 
 ## Common Options
-Voici quelques options courantes pour la commande `mountpoint` :
-
-- `-q` : Ne produit aucune sortie, mais renvoie un code de sortie indiquant si le répertoire est un point de montage.
-- `-n` : Ignore les erreurs de syntaxe dans le chemin d'accès.
+- `-q` : Exécute la commande en mode silencieux, sans afficher de message.
+- `-d` : Affiche des informations détaillées sur le point de montage.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `mountpoint` :
 
 1. Vérifier si un répertoire est un point de montage :
-
    ```csh
-   mountpoint /mnt
+   mountpoint /mnt/usb
    ```
 
-2. Utiliser l'option `-q` pour une vérification silencieuse :
-
+2. Utiliser le mode silencieux pour vérifier un point de montage :
    ```csh
-   mountpoint -q /mnt && echo "C'est un point de montage" || echo "Ce n'est pas un point de montage"
+   mountpoint -q /mnt/usb
    ```
 
-3. Vérifier un répertoire avec l'option `-n` :
-
+3. Obtenir des informations détaillées sur un point de montage :
    ```csh
-   mountpoint -n /mnt/sous_repertoire
+   mountpoint -d /mnt/usb
    ```
 
 ## Tips
-- Utilisez l'option `-q` pour des scripts afin d'éviter les sorties inutiles.
-- Vérifiez toujours les permissions du répertoire avant d'utiliser `mountpoint`, car cela peut affecter les résultats.
-- Combinez `mountpoint` avec d'autres commandes pour automatiser des vérifications dans vos scripts.
+- Utilisez l'option `-q` pour des scripts automatisés afin d'éviter des sorties inutiles.
+- Vérifiez toujours les permissions d'accès au répertoire avant d'utiliser `mountpoint`.
+- Combinez `mountpoint` avec d'autres commandes pour des vérifications plus complètes dans vos scripts.

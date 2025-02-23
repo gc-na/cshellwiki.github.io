@@ -1,44 +1,43 @@
-# [Hệ điều hành] C Shell (csh) umount: [ngắt kết nối thiết bị lưu trữ]
+# [Hệ điều hành] C Shell (csh) umount: [ngắt kết nối hệ thống tập tin]
 
-## Tổng quan
-Lệnh `umount` trong C Shell (csh) được sử dụng để ngắt kết nối một hệ thống tập tin hoặc thiết bị lưu trữ đã được gắn kết vào hệ thống. Điều này giúp giải phóng tài nguyên và đảm bảo rằng dữ liệu được ghi lại một cách an toàn trước khi thiết bị được tháo ra.
+## Overview
+Lệnh `umount` trong C Shell (csh) được sử dụng để ngắt kết nối một hệ thống tập tin đã được gắn kết. Khi một hệ thống tập tin không còn cần thiết, việc ngắt kết nối giúp giải phóng tài nguyên và đảm bảo rằng không có dữ liệu nào bị mất khi hệ thống tắt hoặc khởi động lại.
 
-## Cú pháp
+## Usage
 Cú pháp cơ bản của lệnh `umount` như sau:
 ```
 umount [options] [arguments]
 ```
 
-## Các tùy chọn phổ biến
+## Common Options
 - `-a`: Ngắt kết nối tất cả các hệ thống tập tin được gắn kết.
 - `-f`: Ngắt kết nối một hệ thống tập tin ngay cả khi nó đang bận.
-- `-l`: Ngắt kết nối một hệ thống tập tin một cách "lazy", có nghĩa là nó sẽ được ngắt kết nối khi không còn sử dụng nữa.
-- `-r`: Nếu ngắt kết nối không thành công, cố gắng gắn kết lại hệ thống tập tin.
+- `-r`: Ngắt kết nối và cố gắng gắn lại hệ thống tập tin nếu có lỗi xảy ra.
 
-## Ví dụ phổ biến
+## Common Examples
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `umount`:
 
-1. Ngắt kết nối một thiết bị cụ thể:
-   ```bash
-   umount /dev/sdb1
-   ```
-
-2. Ngắt kết nối một thư mục đã được gắn kết:
+1. Ngắt kết nối một hệ thống tập tin cụ thể:
    ```bash
    umount /mnt/usb
    ```
 
-3. Ngắt kết nối tất cả các hệ thống tập tin:
+2. Ngắt kết nối tất cả các hệ thống tập tin:
    ```bash
    umount -a
    ```
 
-4. Ngắt kết nối một hệ thống tập tin một cách "lazy":
+3. Ngắt kết nối một hệ thống tập tin bận:
    ```bash
-   umount -l /mnt/usb
+   umount -f /mnt/usb
    ```
 
-## Mẹo
-- Trước khi ngắt kết nối, hãy đảm bảo rằng không có ứng dụng nào đang sử dụng hệ thống tập tin hoặc thiết bị lưu trữ đó.
-- Sử dụng tùy chọn `-f` với cẩn thận, vì nó có thể dẫn đến mất dữ liệu nếu thiết bị đang được sử dụng.
-- Kiểm tra trạng thái của các hệ thống tập tin đã gắn kết bằng lệnh `mount` trước khi thực hiện ngắt kết nối.
+4. Ngắt kết nối và cố gắng gắn lại nếu có lỗi:
+   ```bash
+   umount -r /mnt/usb
+   ```
+
+## Tips
+- Trước khi ngắt kết nối, hãy đảm bảo rằng không có tiến trình nào đang sử dụng hệ thống tập tin đó để tránh mất dữ liệu.
+- Sử dụng lệnh `mount` để kiểm tra các hệ thống tập tin đang được gắn kết trước khi thực hiện lệnh `umount`.
+- Nếu gặp lỗi khi ngắt kết nối, hãy kiểm tra xem có tệp nào đang mở trong hệ thống tập tin đó hay không.

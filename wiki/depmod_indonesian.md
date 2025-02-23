@@ -1,7 +1,7 @@
-# [Sistem Operasi] C Shell (csh) depmod Penggunaan: Mengelola modul kernel
+# [Linux] C Shell (csh) depmod Penggunaan: Mengelola modul kernel
 
 ## Overview
-Perintah `depmod` digunakan untuk menghasilkan file dependensi modul kernel Linux. Ini membantu sistem dalam mengelola modul yang diperlukan untuk perangkat keras yang terpasang dan memastikan bahwa modul-modul tersebut dapat dimuat dengan benar saat dibutuhkan.
+Perintah `depmod` digunakan untuk mengelola dan menghasilkan file dependensi modul kernel di sistem Linux. Ini membantu dalam mengidentifikasi modul yang diperlukan untuk kernel yang sedang berjalan dan memastikan bahwa modul-modul tersebut tersedia saat dibutuhkan.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `depmod`:
@@ -12,9 +12,9 @@ depmod [options] [arguments]
 
 ## Common Options
 - `-a`: Menambahkan modul baru ke dalam daftar dependensi.
-- `-n`: Menampilkan daftar dependensi tanpa mengubah file yang ada.
-- `-F <file>`: Menggunakan file spesifik untuk memuat dependensi.
-- `-e`: Mengabaikan kesalahan yang mungkin terjadi saat memproses modul.
+- `-n`: Menampilkan daftar dependensi tanpa menulis ke file.
+- `-F <file>`: Menggunakan file spesifik untuk memuat informasi modul.
+- `-r`: Menghapus modul yang tidak lagi diperlukan dari daftar.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `depmod`:
@@ -24,27 +24,27 @@ Berikut adalah beberapa contoh penggunaan `depmod`:
    depmod
    ```
 
-2. Menambahkan modul baru ke dalam daftar dependensi:
-   ```csh
-   depmod -a
-   ```
-
-3. Menampilkan daftar dependensi tanpa mengubah file:
+2. Menampilkan daftar dependensi tanpa menulis ke file:
    ```csh
    depmod -n
    ```
 
-4. Menggunakan file spesifik untuk memuat dependensi:
+3. Menambahkan modul baru ke dalam daftar dependensi:
    ```csh
-   depmod -F /path/to/modfile
+   depmod -a
    ```
 
-5. Mengabaikan kesalahan saat memproses modul:
+4. Menggunakan file spesifik untuk memuat informasi modul:
    ```csh
-   depmod -e
+   depmod -F /path/to/module/file
+   ```
+
+5. Menghapus modul yang tidak lagi diperlukan:
+   ```csh
+   depmod -r
    ```
 
 ## Tips
-- Pastikan untuk menjalankan `depmod` dengan hak akses yang sesuai, biasanya sebagai pengguna root, agar dapat mengakses semua modul.
-- Setelah melakukan perubahan pada modul kernel, selalu jalankan `depmod` untuk memperbarui daftar dependensi.
-- Gunakan opsi `-n` untuk memeriksa apa yang akan dilakukan tanpa membuat perubahan, ini sangat berguna untuk debugging.
+- Selalu jalankan `depmod` setelah menginstal atau menghapus modul kernel untuk memastikan bahwa daftar dependensi diperbarui.
+- Gunakan opsi `-n` untuk memverifikasi perubahan yang akan dilakukan tanpa mengubah file sistem.
+- Pastikan Anda memiliki hak akses yang cukup (biasanya sebagai root) saat menjalankan `depmod` untuk menghindari masalah izin.

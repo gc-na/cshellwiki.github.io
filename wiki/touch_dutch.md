@@ -1,50 +1,50 @@
-# [Linux] C Shell (csh) touch gebruik: Bestanden maken of bijwerken
+# [Linux] C Shell (csh) touch gebruik: Bestanden aanmaken of de tijdstempel bijwerken
 
 ## Overzicht
-De `touch`-opdracht in C Shell (csh) wordt gebruikt om de tijdstempels van bestanden bij te werken of om nieuwe, lege bestanden te maken als ze nog niet bestaan.
+De `touch`-opdracht in C Shell (csh) wordt gebruikt om de tijdstempel van bestanden bij te werken of om nieuwe, lege bestanden aan te maken. Dit is handig voor het beheren van bestanden en het organiseren van je werk.
 
 ## Gebruik
 De basis syntaxis van de `touch`-opdracht is als volgt:
 
-```csh
+```
 touch [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-a`: Werk alleen de toegangstijd bij.
-- `-m`: Werk alleen de wijzigingstijd bij.
-- `-c`: Maak geen nieuwe bestanden aan; alleen bestaande bestanden bijwerken.
-- `-t`: Stel een specifieke tijdstempel in (in het formaat [[CC]YY]MMDDhhmm[.ss]).
+- `-a`: Wijzig alleen de toegangstijd van het bestand.
+- `-m`: Wijzig alleen de wijzigingstijd van het bestand.
+- `-c`: Maak geen nieuwe bestanden aan; alleen de tijdstempels bijwerken als het bestand al bestaat.
+- `-d <datum>`: Stel een specifieke datum en tijd in voor de tijdstempel.
 
 ## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van `touch`:
+Hier zijn enkele praktische voorbeelden van het gebruik van de `touch`-opdracht:
 
-1. Maak een nieuw, leeg bestand aan:
+1. **Een nieuw, leeg bestand aanmaken:**
    ```csh
    touch nieuw_bestand.txt
    ```
 
-2. Werk de tijdstempel van een bestaand bestand bij:
-   ```csh
-   touch bestaand_bestand.txt
-   ```
-
-3. Werk alleen de toegangstijd bij:
+2. **De toegangstijd van een bestaand bestand bijwerken:**
    ```csh
    touch -a bestaand_bestand.txt
    ```
 
-4. Stel een specifieke tijdstempel in voor een bestand:
+3. **De wijzigingstijd van een bestand bijwerken:**
    ```csh
-   touch -t 202301011200.00 specifiek_bestand.txt
+   touch -m bestaand_bestand.txt
    ```
 
-5. Maak geen nieuwe bestanden aan, maar werk alleen bestaande bestanden bij:
+4. **Een bestand aanmaken als het nog niet bestaat, anders de tijdstempels bijwerken:**
    ```csh
-   touch -c niet_bestaand_bestand.txt
+   touch -c bestaand_bestand.txt
+   ```
+
+5. **Een bestand aanmaken met een specifieke datum en tijd:**
+   ```csh
+   touch -d "2023-10-01 12:00" speciaal_bestand.txt
    ```
 
 ## Tips
-- Gebruik `touch` om snel de tijdstempels van meerdere bestanden bij te werken door ze allemaal in één opdracht op te sommen.
-- Controleer altijd of je de juiste opties gebruikt, vooral bij het instellen van specifieke tijdstempels, om ongewenste wijzigingen te voorkomen.
-- Combineer `touch` met andere opdrachten in scripts om efficiënter met bestanden te werken.
+- Gebruik `touch` om snel nieuwe bestanden te creëren zonder een teksteditor te openen.
+- Combineer `-a` en `-m` als je zowel de toegangstijd als de wijzigingstijd wilt bijwerken.
+- Controleer de tijdstempels van je bestanden met de `ls -l` opdracht om te bevestigen dat `touch` correct heeft gewerkt.

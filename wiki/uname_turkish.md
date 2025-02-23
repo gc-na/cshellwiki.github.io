@@ -1,45 +1,50 @@
 # [Linux] C Shell (csh) uname Kullanımı: Sistem bilgilerini görüntüleme
 
 ## Overview
-`uname` komutu, işletim sisteminin adı, sürümü ve diğer sistem bilgilerini görüntülemek için kullanılır. Bu komut, sistem yöneticileri ve kullanıcılar için yararlı bilgiler sağlar.
+`uname` komutu, sistem hakkında bilgi almak için kullanılan bir komuttur. Bu komut, işletim sistemi adı, sürüm numarası, makine türü gibi çeşitli bilgileri görüntülemenizi sağlar.
 
 ## Usage
 Temel sözdizimi aşağıdaki gibidir:
-```csh
+```
 uname [options] [arguments]
 ```
 
 ## Common Options
 - `-a`: Tüm bilgileri bir arada gösterir.
-- `-s`: İşletim sisteminin adını gösterir.
-- `-r`: İşletim sistemi çekirdeğinin sürümünü gösterir.
-- `-v`: İşletim sistemi çekirdeği hakkında daha fazla bilgi verir.
-- `-m`: Donanım mimarisini gösterir.
+- `-s`: İşletim sistemi adını gösterir.
+- `-n`: Ağ ana bilgisayar adını gösterir.
+- `-r`: İşletim sistemi sürümünü gösterir.
+- `-m`: Makine türünü gösterir.
 
 ## Common Examples
-Aşağıda `uname` komutunun bazı pratik örnekleri verilmiştir:
+Aşağıda `uname` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. İşletim sisteminin adını görüntülemek için:
+1. İşletim sistemi adını görüntüleme:
    ```csh
    uname -s
    ```
 
-2. İşletim sistemi çekirdeğinin sürümünü görüntülemek için:
-   ```csh
-   uname -r
-   ```
-
-3. Tüm sistem bilgilerini görüntülemek için:
+2. Tüm sistem bilgilerini görüntüleme:
    ```csh
    uname -a
    ```
 
-4. Donanım mimarisini öğrenmek için:
+3. İşletim sistemi sürümünü görüntüleme:
+   ```csh
+   uname -r
+   ```
+
+4. Ağ ana bilgisayar adını görüntüleme:
+   ```csh
+   uname -n
+   ```
+
+5. Makine türünü görüntüleme:
    ```csh
    uname -m
    ```
 
 ## Tips
 - `uname -a` komutunu kullanarak sistem hakkında kapsamlı bilgi alabilirsiniz.
-- Sıkça kullandığınız bilgileri hızlıca görüntülemek için bir alias oluşturmayı düşünebilirsiniz.
-- Sistem güncellemeleri sonrasında `uname -r` komutunu kullanarak çekirdek sürümünüzü kontrol edin.
+- Komutları çalıştırmadan önce, hangi bilgilere ihtiyaç duyduğunuzu belirlemek, gereksiz bilgi yükünden kaçınmanıza yardımcı olur.
+- Eğer bir betik yazıyorsanız, `uname` komutunu kullanarak sistemin özelliklerine göre farklı işlemler gerçekleştirebilirsiniz.

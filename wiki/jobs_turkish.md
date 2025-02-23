@@ -1,44 +1,43 @@
 # [Linux] C Shell (csh) jobs Kullanımı: Arka planda çalışan işlemleri listeleme
 
-## Genel Bakış
-`jobs` komutu, C Shell (csh) ortamında arka planda çalışan işlemleri listelemek için kullanılır. Bu komut, kullanıcıya hangi işlemlerin arka planda çalıştığını ve bu işlemlerin durumunu gösterir.
+## Overview
+`jobs` komutu, C Shell (csh) ortamında arka planda çalışan işlemleri listelemek için kullanılır. Bu komut, kullanıcıların hangi işlemlerin çalıştığını ve bu işlemlerin durumunu görmelerine olanak tanır.
 
-## Kullanım
+## Usage
 Temel sözdizimi aşağıdaki gibidir:
-
 ```
-jobs [seçenekler] [argümanlar]
+jobs [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-l`: İşlemlerin PID'lerini (Process ID) gösterir.
-- `-n`: Sadece durum değiştiren işlemleri listeler.
+## Common Options
+- `-l`: İşlemlerin PID (Process ID) numaralarını gösterir.
+- `-n`: Sadece durumu değişen işlemleri listeler.
 - `-p`: Sadece işlemlerin PID'lerini gösterir.
 
-## Yaygın Örnekler
-Aşağıda `jobs` komutunun bazı pratik kullanımları verilmiştir:
+## Common Examples
+Aşağıda `jobs` komutunun bazı pratik örnekleri bulunmaktadır:
 
-### Örnek 1: Arka planda çalışan işlemleri listeleme
-```csh
-jobs
-```
+1. **Basit kullanım**: Arka planda çalışan tüm işlemleri listelemek için:
+   ```csh
+   jobs
+   ```
 
-### Örnek 2: PID'leri ile birlikte listeleme
-```csh
-jobs -l
-```
+2. **PID ile listeleme**: İşlemlerin PID'lerini görmek için:
+   ```csh
+   jobs -l
+   ```
 
-### Örnek 3: Sadece durum değiştiren işlemleri gösterme
-```csh
-jobs -n
-```
+3. **Durumu değişen işlemleri gösterme**: Sadece durumu değişen işlemleri listelemek için:
+   ```csh
+   jobs -n
+   ```
 
-### Örnek 4: Sadece PID'leri gösterme
-```csh
-jobs -p
-```
+4. **Sadece PID'leri gösterme**: İşlemlerin sadece PID'lerini görmek için:
+   ```csh
+   jobs -p
+   ```
 
-## İpuçları
-- `jobs` komutunu kullanarak arka planda çalışan işlemlerinizin durumunu kontrol edebilir ve gerektiğinde bu işlemleri yönetebilirsiniz.
+## Tips
+- `jobs` komutunu kullanarak arka planda çalışan işlemleri takip etmek, işlemlerin yönetimini kolaylaştırır.
 - İşlemleri durdurmak veya devam ettirmek için `fg` veya `bg` komutlarını kullanabilirsiniz.
-- İşlemlerinizin durumunu düzenli olarak kontrol etmek, sistem kaynaklarınızı daha verimli kullanmanıza yardımcı olabilir.
+- İşlemlerinizin durumunu düzenli olarak kontrol etmek, sistem kaynaklarınızı daha verimli kullanmanıza yardımcı olur.

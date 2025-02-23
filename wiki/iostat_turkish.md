@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) iostat Kullanımı: Sistem girdi/çıktı istatistiklerini görüntüleme
+# [Linux] C Shell (csh) iostat Kullanımı: Disk ve CPU istatistiklerini izleme
 
 ## Overview
-`iostat` komutu, sistemin girdi/çıktı (I/O) istatistiklerini izlemek için kullanılır. Bu komut, disklerin performansını değerlendirmek ve sistem üzerindeki I/O yükünü analiz etmek amacıyla yararlıdır.
+iostat komutu, sistemin disk ve CPU kullanımını izlemek için kullanılır. Bu komut, sistem performansını değerlendirmek ve potansiyel darboğazları tespit etmek için yararlıdır.
 
 ## Usage
 Temel sözdizimi şu şekildedir:
@@ -10,44 +10,44 @@ iostat [options] [arguments]
 ```
 
 ## Common Options
-- `-c`: CPU istatistiklerini gösterir.
-- `-d`: Disk istatistiklerini gösterir.
+- `-c`: Sadece CPU istatistiklerini gösterir.
+- `-d`: Sadece disk istatistiklerini gösterir.
 - `-x`: Genişletilmiş disk istatistiklerini gösterir.
 - `-h`: İnsan tarafından okunabilir formatta çıktı verir.
-- `interval`: İstatistiklerin güncellenme aralığını belirtir.
+- `-t`: Zaman damgası ile birlikte çıktı verir.
 
 ## Common Examples
-Aşağıda `iostat` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
+Aşağıda iostat komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. **Temel Disk İstatistiklerini Görüntüleme**
+1. Temel disk ve CPU istatistiklerini görüntüleme:
    ```csh
    iostat
    ```
 
-2. **CPU İstatistiklerini Gösterme**
+2. Sadece CPU istatistiklerini gösterme:
    ```csh
    iostat -c
    ```
 
-3. **Disk İstatistiklerini Belirli Bir Aralıkla Görüntüleme**
-   ```csh
-   iostat -d 5
-   ```
-
-4. **Genişletilmiş Disk İstatistiklerini Görüntüleme**
+3. Genişletilmiş disk istatistiklerini görüntüleme:
    ```csh
    iostat -x
    ```
 
-5. **İnsan Okunabilir Formatla Çıktı Alma**
+4. İnsan tarafından okunabilir formatta çıktı alma:
    ```csh
    iostat -h
    ```
 
+5. Zaman damgası ile birlikte istatistikleri görüntüleme:
+   ```csh
+   iostat -t
+   ```
+
 ## Tips
-- `iostat` komutunu düzenli aralıklarla çalıştırarak sistemdeki I/O performansını izleyebilirsiniz.
-- Disklerin hangi süreçler tarafından kullanıldığını anlamak için `iostat -x` seçeneğini tercih edin.
-- Uzun süreli izleme için çıktıyı bir dosyaya yönlendirebilir ve daha sonra analiz edebilirsiniz:
+- iostat komutunu düzenli olarak çalıştırarak sistem performansını izleyin.
+- Özellikle yoğun iş yükü altında, disk ve CPU kullanımını analiz etmek için genişletilmiş istatistikleri kullanın.
+- Çıktıları bir dosyaya yönlendirerek zamanla karşılaştırmalar yapabilirsiniz:
   ```csh
-  iostat -d 5 > iostat_output.txt
+  iostat -x > istatistikler.txt
   ```

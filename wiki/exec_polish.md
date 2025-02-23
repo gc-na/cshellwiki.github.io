@@ -1,43 +1,43 @@
-# [Linux] C Shell (csh) exec użycie: Uruchamianie poleceń w nowym kontekście
+# [Linux] C Shell (csh) exec użycie: Uruchamianie programów w bieżącym procesie
 
 ## Overview
-Polecenie `exec` w powłoce C Shell (csh) służy do uruchamiania innego programu, zastępując bieżący proces powłoki. Oznacza to, że po wykonaniu polecenia `exec`, powłoka nie wraca do poprzedniego stanu, a zamiast tego kontynuuje działanie nowego programu.
+Polecenie `exec` w C Shell (csh) służy do uruchamiania programów w bieżącym procesie, co oznacza, że zastępuje aktualny proces powłoki nowym procesem. Dzięki temu, po wykonaniu polecenia, nie wraca się do powłoki, co może być przydatne w różnych scenariuszach.
 
 ## Usage
 Podstawowa składnia polecenia `exec` jest następująca:
 
-```
+```csh
 exec [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-l`: Uruchamia program jako login shell.
-- `-c`: Wykonuje polecenie w nowym kontekście, ale nie zmienia bieżącego procesu powłoki.
+- `-a` : Umożliwia podanie alternatywnej nazwy dla programu.
+- `-l` : Uruchamia program jako login shell, co może być przydatne w przypadku skryptów startowych.
 
 ## Common Examples
-Przykłady użycia polecenia `exec`:
+Oto kilka praktycznych przykładów użycia polecenia `exec`:
 
-1. Uruchomienie programu `ls` w bieżącej powłoce:
+1. Uruchomienie programu `ls` w bieżącym procesie:
    ```csh
    exec ls -l
    ```
 
-2. Uruchomienie edytora tekstu `nano`:
+2. Zastąpienie powłoki powłoką `bash`:
    ```csh
-   exec nano myfile.txt
+   exec bash
    ```
 
-3. Uruchomienie skryptu powłoki:
+3. Uruchomienie skryptu `myscript.sh`:
    ```csh
-   exec ./myscript.csh
+   exec ./myscript.sh
    ```
 
-4. Uruchomienie powłoki `bash` jako login shell:
+4. Użycie opcji `-a` do uruchomienia programu `python` z alternatywną nazwą:
    ```csh
-   exec -l bash
+   exec -a mypython python
    ```
 
 ## Tips
-- Używaj `exec` do uruchamiania programów, gdy chcesz, aby proces powłoki został zastąpiony, co może być przydatne w skryptach.
-- Pamiętaj, że po użyciu `exec` nie wrócisz do poprzedniej powłoki, więc upewnij się, że chcesz zakończyć bieżącą sesję.
-- Testuj polecenia w bezpiecznym środowisku, aby uniknąć przypadkowego zamknięcia powłoki.
+- Używaj `exec`, gdy chcesz, aby program zastąpił powłokę, a nie wracał do niej po zakończeniu działania.
+- Pamiętaj, że po użyciu `exec`, nie będziesz mógł wrócić do powłoki, więc upewnij się, że chcesz zakończyć bieżący proces.
+- Możesz używać `exec` w skryptach, aby uruchomić program bezpowrotnie, co może być przydatne w automatyzacji zadań.

@@ -1,10 +1,10 @@
-# [Linux] C Shell (csh) setopt gebruik: Instellen van shell-opties
+# [Unix] C Shell (csh) setopt gebruik: Instellen van shell-opties
 
 ## Overzicht
-Het `setopt` commando in C Shell (csh) wordt gebruikt om verschillende shell-opties in te stellen die de werking van de shell beïnvloeden. Met dit commando kun je de omgeving en het gedrag van de shell aanpassen aan je voorkeuren.
+De `setopt` opdracht in C Shell (csh) wordt gebruikt om verschillende opties en instellingen van de shell te configureren. Hiermee kun je de functionaliteit van de shell aanpassen aan jouw voorkeuren en werkomgeving.
 
 ## Gebruik
-De basis syntaxis van het `setopt` commando is als volgt:
+De basis syntaxis van de `setopt` opdracht is als volgt:
 
 ```csh
 setopt [opties] [argumenten]
@@ -13,30 +13,36 @@ setopt [opties] [argumenten]
 ## Veelvoorkomende Opties
 Hier zijn enkele veelvoorkomende opties die je kunt gebruiken met `setopt`:
 
-- `noclobber`: Voorkomt dat bestaande bestanden worden overschreven bij het omleiden van uitvoer.
-- `noglob`: Schakelt globbing uit, waardoor de shell geen wildcard-tekens interpreteert.
-- `verbose`: Zet de shell in een modus waarin deze meer gedetailleerde uitvoer geeft over wat er gebeurt.
+- `noclobber`: Voorkomt dat bestaande bestanden worden overschreven bij het omleiden van output.
+- `ignoreeof`: Voorkomt dat de shell sluit wanneer de gebruiker EOF (End Of File) invoert.
+- `verbose`: Schakelt gedetailleerde uitvoer in, wat nuttig kan zijn voor het debuggen van scripts.
+- `allexport`: Zorgt ervoor dat alle variabelen automatisch worden geëxporteerd naar sub-shells.
 
 ## Veelvoorkomende Voorbeelden
 
 Hier zijn enkele praktische voorbeelden van het gebruik van `setopt`:
 
-1. **Voorkomen van het overschrijven van bestanden**:
+1. **Voorkom overschrijven van bestanden**:
    ```csh
    setopt noclobber
    ```
 
-2. **Globing uitschakelen**:
+2. **Voorkom dat de shell sluit bij EOF**:
    ```csh
-   setopt noglob
+   setopt ignoreeof
    ```
 
-3. **Verbose modus inschakelen**:
+3. **Schakel gedetailleerde uitvoer in**:
    ```csh
    setopt verbose
    ```
 
+4. **Exporteer alle variabelen automatisch**:
+   ```csh
+   setopt allexport
+   ```
+
 ## Tips
-- Vergeet niet dat sommige opties alleen van toepassing zijn op de huidige shell-sessie. Als je ze permanent wilt maken, moet je ze toevoegen aan je `.cshrc` bestand.
-- Controleer altijd de huidige instellingen met het `set` commando om te zien welke opties zijn ingeschakeld.
-- Wees voorzichtig met het gebruik van `noclobber`, omdat het kan leiden tot verwarring als je niet verwacht dat bestanden niet worden overschreven.
+- Gebruik `setopt` aan het begin van je scripts om een consistente omgeving te garanderen.
+- Controleer de huidige instellingen met de `set` opdracht om te zien welke opties zijn ingeschakeld.
+- Wees voorzichtig met het gebruik van `noclobber`, omdat dit kan leiden tot fouten als je per ongeluk probeert een bestaand bestand te overschrijven.

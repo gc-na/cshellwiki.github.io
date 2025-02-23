@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) parted : Gestion des partitions de disque
 
 ## Overview
-La commande `parted` est utilisée pour gérer les partitions de disque sur les systèmes Linux. Elle permet de créer, supprimer, redimensionner et manipuler des partitions de manière efficace.
+La commande `parted` est un outil utilisé pour gérer les partitions de disque. Elle permet de créer, supprimer, redimensionner et manipuler les partitions sur des disques durs et des périphériques de stockage.
 
 ## Usage
 La syntaxe de base de la commande `parted` est la suivante :
@@ -13,41 +13,42 @@ parted [options] [arguments]
 ## Common Options
 Voici quelques options courantes pour la commande `parted` :
 
-- `-l` : Liste toutes les partitions disponibles.
+- `-s` : Exécute `parted` en mode silencieux, sans afficher d'invite.
+- `-m` : Affiche les informations sur les partitions dans un format lisible par machine.
+- `--script` : Exécute la commande sans demander de confirmation.
 - `mkpart` : Crée une nouvelle partition.
 - `rm` : Supprime une partition existante.
 - `resizepart` : Redimensionne une partition existante.
-- `print` : Affiche la table des partitions.
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de la commande `parted` :
+Voici quelques exemples pratiques de l'utilisation de `parted` :
 
-### Lister les partitions
-```bash
-parted -l
-```
+1. **Lancer parted sur un disque spécifique :**
+   ```bash
+   parted /dev/sda
+   ```
 
-### Créer une nouvelle partition
-```bash
-parted /dev/sda mkpart primary ext4 1MiB 100MiB
-```
+2. **Créer une nouvelle partition :**
+   ```bash
+   parted /dev/sda mkpart primary ext4 1MiB 100MiB
+   ```
 
-### Supprimer une partition
-```bash
-parted /dev/sda rm 1
-```
+3. **Supprimer une partition :**
+   ```bash
+   parted /dev/sda rm 1
+   ```
 
-### Redimensionner une partition
-```bash
-parted /dev/sda resizepart 1 200MiB
-```
+4. **Redimensionner une partition :**
+   ```bash
+   parted /dev/sda resizepart 1 200MiB
+   ```
 
-### Afficher la table des partitions
-```bash
-parted /dev/sda print
-```
+5. **Afficher la table des partitions :**
+   ```bash
+   parted /dev/sda print
+   ```
 
 ## Tips
-- Toujours sauvegarder vos données avant de modifier les partitions pour éviter toute perte.
-- Utilisez `parted` avec précaution, car des erreurs peuvent rendre vos données inaccessibles.
-- Vérifiez le type de partition et le système de fichiers avant de créer ou de redimensionner des partitions.
+- Toujours sauvegarder vos données avant de manipuler les partitions pour éviter toute perte accidentelle.
+- Utilisez l'option `--script` si vous souhaitez automatiser des scripts sans intervention manuelle.
+- Vérifiez toujours la table des partitions après avoir effectué des modifications pour vous assurer que tout est en ordre.

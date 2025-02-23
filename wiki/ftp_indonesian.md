@@ -1,22 +1,20 @@
 # [Sistem Operasi] C Shell (csh) ftp Penggunaan: Mengelola transfer file
 
 ## Overview
-Perintah `ftp` dalam C Shell (csh) digunakan untuk mentransfer file antara komputer melalui protokol File Transfer Protocol (FTP). Dengan menggunakan perintah ini, pengguna dapat meng-upload atau meng-download file dari server FTP.
+Perintah `ftp` (File Transfer Protocol) digunakan untuk mentransfer file antara komputer melalui jaringan. Dengan `ftp`, pengguna dapat mengunggah dan mengunduh file dari server dengan mudah.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `ftp`:
 
-```
+```csh
 ftp [options] [arguments]
 ```
 
 ## Common Options
-Beberapa opsi umum yang dapat digunakan dengan perintah `ftp` adalah sebagai berikut:
-
-- `-i`: Menonaktifkan mode interaktif, memungkinkan transfer file tanpa konfirmasi.
+- `-i`: Menonaktifkan mode interaktif, sehingga tidak meminta konfirmasi sebelum mentransfer file.
 - `-v`: Menampilkan informasi lebih detail tentang proses transfer.
-- `-n`: Mencegah login otomatis ke server FTP.
-- `-p`: Menggunakan mode pasif untuk koneksi, berguna jika ada firewall yang menghalangi koneksi aktif.
+- `-n`: Menonaktifkan login otomatis ke server FTP.
+- `-g`: Mengizinkan karakter wildcard dalam nama file.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `ftp`:
@@ -26,28 +24,27 @@ Berikut adalah beberapa contoh penggunaan perintah `ftp`:
    ftp ftp.example.com
    ```
 
-2. **Meng-upload file ke server:**
+2. **Mengunduh file dari server:**
    ```csh
-   ftp> put file.txt
+   ftp> get namafile.txt
    ```
 
-3. **Meng-download file dari server:**
+3. **Mengunggah file ke server:**
    ```csh
-   ftp> get file.txt
+   ftp> put namafile.txt
    ```
 
-4. **Menggunakan mode pasif saat menghubungkan:**
-   ```csh
-   ftp -p ftp.example.com
-   ```
-
-5. **Menonaktifkan mode interaktif saat mentransfer beberapa file:**
+4. **Menggunakan mode non-interaktif untuk mengunduh file:**
    ```csh
    ftp -i ftp.example.com
-   ftp> mput *.txt
+   ```
+
+5. **Mengunduh semua file dengan ekstensi .jpg:**
+   ```csh
+   ftp> mget *.jpg
    ```
 
 ## Tips
-- Pastikan untuk memeriksa izin file sebelum meng-upload atau meng-download untuk menghindari masalah akses.
-- Gunakan opsi `-v` untuk mendapatkan informasi lebih lanjut jika terjadi kesalahan selama transfer.
-- Jika sering berinteraksi dengan server FTP yang sama, pertimbangkan untuk menggunakan file `.netrc` untuk menyimpan kredensial login agar tidak perlu memasukkan informasi setiap kali.
+- Selalu pastikan untuk menggunakan koneksi yang aman saat mentransfer file sensitif.
+- Gunakan opsi `-v` untuk melihat detail proses transfer, yang dapat membantu dalam pemecahan masalah.
+- Jika sering terhubung ke server yang sama, pertimbangkan untuk menyimpan informasi login dalam file konfigurasi untuk kemudahan akses di masa mendatang.

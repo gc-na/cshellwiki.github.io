@@ -1,44 +1,39 @@
-# [Linux] C Shell (csh) lvcreate Kullanımı: Mantıksal birim oluşturma
+# [Linux] C Shell (csh) lvcreate Kullanımı: Lojik birim oluşturma
 
 ## Genel Bakış
-`lvcreate` komutu, Linux sistemlerinde mantıksal birimlerin (logical volume) oluşturulmasını sağlar. Bu komut, bir fiziksel birimden (physical volume) mantıksal birim oluşturmak için kullanılır ve depolama alanını daha esnek bir şekilde yönetmeye yardımcı olur.
+`lvcreate` komutu, Linux sistemlerinde mantıksal hacimler (logical volumes) oluşturmak için kullanılır. Bu, depolama alanını daha esnek bir şekilde yönetmenizi sağlar.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-```bash
+```
 lvcreate [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-n`: Oluşturulacak mantıksal birimin adını belirtir.
-- `-L`: Mantıksal birimin boyutunu belirtir.
-- `-l`: Mantıksal birimin boyutunu fiziksel alan birimleri cinsinden belirtir.
-- `-C`: Mantıksal birimin sürekli (contiguous) olup olmayacağını belirtir.
+- `-n`: Oluşturulacak mantıksal hacmin adını belirtir.
+- `-L`: Mantıksal hacmin boyutunu tanımlar.
+- `-l`: Mantıksal hacmin boyutunu fiziksel hacim birimleri cinsinden belirtir.
+- `-C`: Hacmin sürekli (thin) olarak oluşturulup oluşturulmayacağını belirler.
 
 ## Yaygın Örnekler
-Aşağıda `lvcreate` komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda `lvcreate` komutunun bazı pratik örnekleri verilmiştir:
 
-1. 10 GB boyutunda "data" adlı bir mantıksal birim oluşturma:
+1. 10 GB boyutunda "veri" adlı bir mantıksal hacim oluşturma:
     ```bash
-    lvcreate -n data -L 10G /dev/vgname
+    lvcreate -n veri -L 10G vg_adi
     ```
 
-2. 100 MB boyutunda "backup" adlı bir mantıksal birim oluşturma:
+2. 5 fiziksel hacim birimi (PE) boyutunda "yeni_hacim" adlı bir mantıksal hacim oluşturma:
     ```bash
-    lvcreate -n backup -L 100M /dev/vgname
+    lvcreate -n yeni_hacim -l 5 vg_adi
     ```
 
-3. Fiziksel alan birimleri cinsinden (örneğin, 50%VG) bir mantıksal birim oluşturma:
+3. Sürekli bir mantıksal hacim oluşturma:
     ```bash
-    lvcreate -n myvolume -l 50%VG /dev/vgname
-    ```
-
-4. Sürekli bir mantıksal birim oluşturma:
-    ```bash
-    lvcreate -n continuous -L 5G -C y /dev/vgname
+    lvcreate -n ince_hacim -L 15G -C y vg_adi
     ```
 
 ## İpuçları
-- Mantıksal birimlerinizi oluştururken, adlandırma kurallarına dikkat edin. Anlamlı isimler kullanmak, yönetimi kolaylaştırır.
-- Boyutları belirlerken, sisteminizin mevcut fiziksel alanını göz önünde bulundurun.
-- Mantıksal birimlerinizi düzenli olarak kontrol edin ve gereksiz olanları kaldırarak depolama alanınızı optimize edin.
+- Mantıksal hacimlerinizi oluştururken, her zaman hacim grubu adını doğru girdiğinizden emin olun.
+- Hacimlerinizi düzenli olarak yedeklemek, veri kaybını önlemek için iyi bir uygulamadır.
+- `lvcreate` komutunu kullanmadan önce mevcut hacimlerinizi kontrol etmek için `lvdisplay` komutunu kullanabilirsiniz.

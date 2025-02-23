@@ -1,18 +1,18 @@
-# [Hệ điều hành] C Shell (csh) tail Cách sử dụng: Xem nội dung cuối của tệp
+# [Hệ điều hành] C Shell (csh) tail Cách sử dụng: Hiển thị nội dung cuối của tệp
 
 ## Tổng quan
-Lệnh `tail` trong C Shell (csh) được sử dụng để hiển thị các dòng cuối cùng của một tệp. Điều này rất hữu ích khi bạn muốn xem thông tin mới nhất trong các tệp log hoặc tệp văn bản dài mà không cần phải mở toàn bộ tệp.
+Lệnh `tail` trong C Shell (csh) được sử dụng để hiển thị một phần nội dung cuối cùng của một tệp. Điều này rất hữu ích khi bạn muốn xem các dòng mới nhất được thêm vào một tệp log hoặc bất kỳ tệp văn bản nào khác.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `tail` như sau:
 ```
-tail [tùy chọn] [đối số]
+tail [options] [arguments]
 ```
 
-## Tùy chọn phổ biến
-- `-n [số]`: Hiển thị số dòng cuối cùng được chỉ định từ tệp.
-- `-f`: Theo dõi tệp và hiển thị các dòng mới được thêm vào theo thời gian thực.
-- `-c [số]`: Hiển thị số byte cuối cùng được chỉ định từ tệp.
+## Các tùy chọn phổ biến
+- `-n [số]`: Hiển thị số dòng cuối cùng của tệp. Mặc định là 10 dòng.
+- `-f`: Theo dõi tệp trong thời gian thực và hiển thị các dòng mới được thêm vào.
+- `-c [số]`: Hiển thị số byte cuối cùng của tệp.
 
 ## Ví dụ phổ biến
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `tail`:
@@ -27,19 +27,17 @@ Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh 
    tail -n 20 data.txt
    ```
 
-3. Theo dõi tệp `server.log` để xem các dòng mới được thêm vào:
+3. Theo dõi tệp `access.log` trong thời gian thực:
    ```csh
-   tail -f server.log
+   tail -f access.log
    ```
 
-4. Hiển thị 50 byte cuối cùng của tệp `output.txt`:
+4. Hiển thị 50 byte cuối cùng của tệp `file.txt`:
    ```csh
-   tail -c 50 output.txt
+   tail -c 50 file.txt
    ```
 
 ## Mẹo
-- Sử dụng tùy chọn `-f` khi bạn muốn theo dõi các tệp log trong thời gian thực, điều này rất hữu ích cho việc giám sát hệ thống.
-- Bạn có thể kết hợp `tail` với các lệnh khác như `grep` để lọc các dòng cụ thể từ đầu ra.
-- Nếu bạn cần xem nhiều hơn 10 dòng, hãy sử dụng tùy chọn `-n` để chỉ định số lượng dòng bạn muốn hiển thị.
-
-Hy vọng rằng hướng dẫn này sẽ giúp bạn sử dụng lệnh `tail` một cách hiệu quả trong C Shell!
+- Sử dụng tùy chọn `-f` khi bạn cần theo dõi các thay đổi trong tệp log mà không cần phải chạy lại lệnh.
+- Kết hợp `tail` với các lệnh khác như `grep` để lọc các dòng cụ thể từ tệp.
+- Nếu bạn chỉ muốn xem một số dòng cụ thể từ một tệp lớn, hãy kết hợp `tail` với `head` để có kết quả chính xác hơn.

@@ -1,7 +1,7 @@
-# [MacOS] C Shell (csh) brew kullanımı: Paket yönetimi aracı
+# [Linux] C Shell (csh) brew kullanımı: Yazılım paketlerini yönetme
 
 ## Genel Bakış
-`brew` komutu, macOS üzerinde yazılım paketlerini yönetmek için kullanılan bir araçtır. Homebrew adıyla bilinen bu sistem, kullanıcıların kolayca yazılım yüklemesine, güncellemesine ve kaldırmasına olanak tanır.
+`brew` komutu, Homebrew paket yöneticisi aracılığıyla yazılım paketlerini yüklemek, güncellemek ve yönetmek için kullanılır. Bu komut, özellikle macOS ve Linux sistemlerinde yazılım kurulumunu kolaylaştırır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
@@ -12,38 +12,40 @@ brew [seçenekler] [argümanlar]
 
 ## Yaygın Seçenekler
 - `install`: Belirtilen paketi yükler.
-- `uninstall`: Belirtilen paketi kaldırır.
-- `update`: Homebrew ve tüm paketlerin güncellemelerini kontrol eder.
-- `upgrade`: Yüklenmiş olan tüm paketleri günceller.
+- `update`: Yüklenmiş paketlerin listesini günceller.
+- `upgrade`: Yüklenmiş paketleri en son sürüme günceller.
+- `remove`: Belirtilen paketi kaldırır.
 - `list`: Yüklenmiş paketlerin listesini gösterir.
 
 ## Yaygın Örnekler
-1. Bir paketi yüklemek için:
-   ```csh
-   brew install git
-   ```
+Aşağıda `brew` komutunun bazı pratik kullanımları bulunmaktadır:
 
-2. Bir paketi kaldırmak için:
-   ```csh
-   brew uninstall git
-   ```
+- Bir paketi yüklemek için:
+  ```csh
+  brew install git
+  ```
 
-3. Homebrew'u güncellemek için:
-   ```csh
-   brew update
-   ```
+- Yüklenmiş paketleri güncellemek için:
+  ```csh
+  brew update
+  ```
 
-4. Tüm paketleri güncellemek için:
-   ```csh
-   brew upgrade
-   ```
+- Yüklenmiş bir paketi güncellemek için:
+  ```csh
+  brew upgrade git
+  ```
 
-5. Yüklenmiş paketlerin listesini görüntülemek için:
-   ```csh
-   brew list
-   ```
+- Bir paketi kaldırmak için:
+  ```csh
+  brew remove git
+  ```
+
+- Yüklenmiş paketlerin listesini görüntülemek için:
+  ```csh
+  brew list
+  ```
 
 ## İpuçları
-- `brew doctor` komutunu kullanarak Homebrew kurulumunuzda olası sorunları kontrol edebilirsiniz.
-- Paketlerin güncel kalmasını sağlamak için düzenli olarak `brew update` ve `brew upgrade` komutlarını çalıştırın.
-- Yüklemek istediğiniz paketlerin bağımlılıklarını otomatik olarak yöneteceğinden, `brew` kullanmak, yazılım yükleme süreçlerini kolaylaştırır.
+- `brew` komutunu kullanmadan önce güncel olduğunuzdan emin olun; bu, güncellemeleri ve yeni paketleri almanızı sağlar.
+- Paketleri yüklerken, bağımlılıkların otomatik olarak yüklendiğini unutmayın, bu da işlemi kolaylaştırır.
+- `brew doctor` komutunu kullanarak sisteminizdeki olası sorunları kontrol edebilirsiniz.

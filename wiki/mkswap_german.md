@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) mkswap Verwendung: Erstellen von Swap-Bereichen
 
 ## Übersicht
-Der Befehl `mkswap` wird verwendet, um einen Swap-Bereich auf einer Festplatte oder Partition zu erstellen. Swap wird verwendet, um den Arbeitsspeicher zu erweitern, indem Daten, die nicht aktiv genutzt werden, auf die Festplatte ausgelagert werden.
+Der Befehl `mkswap` wird verwendet, um einen Swap-Bereich auf einer Festplatte oder einer Partition zu erstellen. Dieser Swap-Bereich kann vom Betriebssystem verwendet werden, um den Arbeitsspeicher zu erweitern, wenn der physische RAM voll ist.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
@@ -11,13 +11,11 @@ mkswap [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-f`: Erzwingt die Erstellung eines Swap-Bereichs, auch wenn die Datei oder Partition nicht leer ist.
-- `-L LABEL`: Setzt ein Label für den Swap-Bereich.
-- `-p PRIORITY`: Legt die Priorität des Swap-Bereichs fest. Höhere Werte haben Vorrang vor niedrigeren.
+- `-L, --label LABEL`: Setzt ein Label für den Swap-Bereich.
+- `-f, --force`: Erzwingt die Erstellung des Swap-Bereichs, auch wenn das Ziel nicht als Swap geeignet ist.
+- `-p, --pagesize SIZE`: Gibt die Seitengröße für den Swap-Bereich an.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung von `mkswap`:
-
 1. **Erstellen eines Swap-Bereichs auf einer Datei:**
    ```bash
    dd if=/dev/zero of=/swapfile bs=1M count=1024
@@ -34,12 +32,7 @@ Hier sind einige praktische Beispiele für die Verwendung von `mkswap`:
    mkswap -L my_swap /dev/sdX1
    ```
 
-4. **Erstellen eines Swap-Bereichs mit einer spezifischen Priorität:**
-   ```bash
-   mkswap -p 10 /dev/sdX1
-   ```
-
 ## Tipps
-- Stellen Sie sicher, dass die Datei oder Partition, die Sie als Swap-Bereich verwenden möchten, nicht bereits verwendet wird.
-- Verwenden Sie `swapon` nach `mkswap`, um den Swap-Bereich zu aktivieren.
-- Überprüfen Sie die Swap-Nutzung mit dem Befehl `swapon -s` oder `free -m`, um sicherzustellen, dass der Swap-Bereich korrekt eingerichtet ist.
+- Stellen Sie sicher, dass der Swap-Bereich vor der Verwendung aktiviert wird, indem Sie den Befehl `swapon` verwenden.
+- Überprüfen Sie den Status des Swap-Speichers mit dem Befehl `swapon --show`.
+- Es ist ratsam, Swap-Dateien oder -Partitionen regelmäßig zu überprüfen und zu verwalten, um die Systemleistung zu optimieren.

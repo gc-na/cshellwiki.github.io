@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) pvs gebruik: [weergeven van de versies van de bestanden]
+# [Linux] C Shell (csh) pvs gebruik: Toon de versies van een bestand
 
 ## Overzicht
-De `pvs`-opdracht in C Shell (csh) wordt gebruikt om de versies van bestanden in een versiebeheersysteem weer te geven. Het biedt een overzicht van de verschillende versies van bestanden, wat handig is voor het beheren van wijzigingen en het volgen van de ontwikkeling van projecten.
+De `pvs`-opdracht in C Shell (csh) wordt gebruikt om de versies van een bestand te tonen. Dit is vooral nuttig voor het beheren van versies in een versiebeheersysteem, zodat gebruikers kunnen zien welke versies beschikbaar zijn en welke wijzigingen zijn aangebracht.
 
 ## Gebruik
 De basis syntaxis van de `pvs`-opdracht is als volgt:
@@ -10,29 +10,38 @@ De basis syntaxis van de `pvs`-opdracht is als volgt:
 pvs [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
-- `-a`: Toont alle versies, inclusief verborgen versies.
-- `-h`: Geeft een korte helptekst weer met informatie over het gebruik van de opdracht.
-- `-r`: Toont alleen de meest recente versies van de bestanden.
+## Veelvoorkomende opties
+- `-a`: Toon alle versies, inclusief verborgen versies.
+- `-f`: Geef de volledige versie-informatie weer.
+- `-n`: Toon alleen de naam van de versies zonder extra informatie.
 
-## Veelvoorkomende Voorbeelden
+## Veelvoorkomende voorbeelden
 
-1. **Toon alle versies van een bestand:**
-   ```csh
-   pvs -a mijn_bestand.txt
-   ```
+### Voorbeeld 1: Basisversies weergeven
+Toon de versies van een specifiek bestand.
+```csh
+pvs mijn_bestand.txt
+```
 
-2. **Toon alleen de meest recente versie van een bestand:**
-   ```csh
-   pvs -r mijn_bestand.txt
-   ```
+### Voorbeeld 2: Alle versies weergeven
+Toon alle versies, inclusief verborgen versies.
+```csh
+pvs -a mijn_bestand.txt
+```
 
-3. **Vraag hulp over de pvs-opdracht:**
-   ```csh
-   pvs -h
-   ```
+### Voorbeeld 3: Volledige versie-informatie
+Geef gedetailleerde informatie over de versies van een bestand.
+```csh
+pvs -f mijn_bestand.txt
+```
+
+### Voorbeeld 4: Alleen versienamen tonen
+Toon alleen de namen van de versies zonder extra informatie.
+```csh
+pvs -n mijn_bestand.txt
+```
 
 ## Tips
-- Gebruik de `-a` optie om een volledig overzicht van alle versies te krijgen, vooral als je werkt met bestanden die vaak worden bijgewerkt.
-- Combineer de `-r` optie met specifieke bestandsnamen om snel de laatste wijzigingen te controleren.
-- Vergeet niet om regelmatig de versies van belangrijke bestanden te controleren om een goed overzicht van de voortgang te behouden.
+- Gebruik de `-a` optie om een compleet overzicht van alle versies te krijgen, vooral als je met meerdere versies werkt.
+- Combineer opties om de output aan te passen aan jouw behoeften, bijvoorbeeld `pvs -a -f`.
+- Controleer regelmatig de versies van belangrijke bestanden om ervoor te zorgen dat je altijd met de juiste versie werkt.

@@ -1,48 +1,43 @@
 # [Linux] C Shell (csh) unzip użycie: Rozpakowywanie plików ZIP
 
-## Przegląd
-Polecenie `unzip` służy do rozpakowywania plików archiwów ZIP. Umożliwia użytkownikom łatwe wydobywanie zawartości z plików ZIP, co jest przydatne w codziennej pracy z danymi.
+## Overview
+Polecenie `unzip` służy do rozpakowywania plików archiwów ZIP. Umożliwia użytkownikom wydobycie zawartości archiwów, co jest przydatne w przypadku pobierania plików z internetu lub pracy z pakietami oprogramowania.
 
-## Użycie
+## Usage
 Podstawowa składnia polecenia `unzip` jest następująca:
 
-```
+```csh
 unzip [opcje] [argumenty]
 ```
 
-## Częste opcje
-- `-l` – wyświetla listę plików w archiwum ZIP bez ich rozpakowywania.
-- `-d` – określa katalog, do którego mają być rozpakowane pliki.
-- `-o` – nadpisuje istniejące pliki bez pytania o potwierdzenie.
-- `-q` – cicho rozpakowuje pliki, nie wyświetlając informacji o postępie.
+## Common Options
+- `-l`: Wyświetla listę plików w archiwum ZIP bez ich rozpakowywania.
+- `-d [katalog]`: Rozpakowuje pliki do określonego katalogu.
+- `-o`: Nadpisuje istniejące pliki bez pytania o potwierdzenie.
+- `-q`: Wykonuje operację w trybie cichym, bez wyświetlania komunikatów.
 
-## Częste przykłady
+## Common Examples
 1. Rozpakowanie pliku ZIP do bieżącego katalogu:
-   ```bash
-   unzip archiwum.zip
+   ```csh
+   unzip plik.zip
    ```
 
 2. Rozpakowanie pliku ZIP do określonego katalogu:
-   ```bash
-   unzip archiwum.zip -d /ścieżka/do/katalogu
+   ```csh
+   unzip plik.zip -d /ścieżka/do/katalogu
    ```
 
 3. Wyświetlenie listy plików w archiwum ZIP:
-   ```bash
-   unzip -l archiwum.zip
+   ```csh
+   unzip -l plik.zip
    ```
 
 4. Rozpakowanie pliku ZIP i nadpisanie istniejących plików:
-   ```bash
-   unzip -o archiwum.zip
+   ```csh
+   unzip -o plik.zip
    ```
 
-5. Ciche rozpakowanie pliku ZIP:
-   ```bash
-   unzip -q archiwum.zip
-   ```
-
-## Wskazówki
-- Zawsze sprawdzaj zawartość archiwum przed jego rozpakowaniem, używając opcji `-l`, aby uniknąć niepotrzebnego nadpisywania plików.
-- Używaj opcji `-d`, aby organizować rozpakowane pliki w odpowiednich katalogach, co ułatwi zarządzanie danymi.
-- Jeśli często pracujesz z dużymi archiwami, rozważ użycie opcji `-q`, aby zminimalizować ilość informacji wyświetlanych na ekranie.
+## Tips
+- Zawsze sprawdzaj zawartość archiwum za pomocą opcji `-l`, zanim je rozpakujesz, aby upewnić się, że nie nadpiszesz ważnych plików.
+- Używaj opcji `-d`, aby zorganizować rozpakowane pliki w dedykowanym katalogu, co ułatwi zarządzanie nimi.
+- W trybie cichym (`-q`) możesz używać `unzip` w skryptach, aby uniknąć zbędnych komunikatów.

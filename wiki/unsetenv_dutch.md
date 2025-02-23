@@ -1,43 +1,43 @@
-# [Linux] C Shell (csh) unsetenv Gebruik: Verwijder omgevingsvariabelen
+# [Linux] C Shell (csh) unsetenv gebruik: Verwijder omgevingsvariabelen
 
 ## Overzicht
-Het `unsetenv` commando in C Shell (csh) wordt gebruikt om omgevingsvariabelen te verwijderen. Dit kan nuttig zijn om ongewenste variabelen uit de omgeving te verwijderen of om de omgeving schoon te houden.
+De `unsetenv` opdracht in C Shell (csh) wordt gebruikt om omgevingsvariabelen te verwijderen. Dit is nuttig wanneer je een variabele wilt opruimen of niet langer wilt dat deze beschikbaar is in de huidige shell-sessie.
 
 ## Gebruik
-De basis syntaxis van het `unsetenv` commando is als volgt:
+De basis syntaxis van de `unsetenv` opdracht is als volgt:
 
 ```csh
 unsetenv [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-`unsetenv` heeft geen specifieke opties, maar je kunt meerdere variabelen tegelijk verwijderen door ze als argumenten op te geven.
+`unsetenv` heeft geen specifieke opties, maar je kunt meerdere variabelen tegelijk opgeven om ze te verwijderen.
 
 ## Veelvoorkomende Voorbeelden
 
 ### Voorbeeld 1: Een enkele variabele verwijderen
-Om een enkele omgevingsvariabele, zoals `MYVAR`, te verwijderen, gebruik je het volgende commando:
+Om de omgevingsvariabele `MY_VAR` te verwijderen, gebruik je de volgende opdracht:
 
 ```csh
-unsetenv MYVAR
+unsetenv MY_VAR
 ```
 
 ### Voorbeeld 2: Meerdere variabelen verwijderen
-Je kunt ook meerdere omgevingsvariabelen tegelijk verwijderen. Bijvoorbeeld, om `VAR1` en `VAR2` te verwijderen, gebruik je:
+Je kunt ook meerdere variabelen in één opdracht verwijderen. Bijvoorbeeld, om `VAR1` en `VAR2` te verwijderen:
 
 ```csh
 unsetenv VAR1 VAR2
 ```
 
-### Voorbeeld 3: Controleren of de variabele is verwijderd
-Na het verwijderen van een variabele, kun je controleren of deze is verwijderd met het `printenv` commando:
+### Voorbeeld 3: Controleren of een variabele is verwijderd
+Na het verwijderen van een variabele, kun je controleren of deze niet meer bestaat met de `printenv` opdracht:
 
 ```csh
-printenv MYVAR
+printenv MY_VAR
 ```
-Als `MYVAR` succesvol is verwijderd, zal er geen output zijn.
+Als de variabele succesvol is verwijderd, zal deze geen output geven.
 
 ## Tips
-- Zorg ervoor dat je de juiste variabelen verwijdert, aangezien het verwijderen van belangrijke omgevingsvariabelen de werking van je shell of scripts kan beïnvloeden.
-- Gebruik `printenv` of `set` om de huidige omgevingsvariabelen te bekijken voordat je `unsetenv` gebruikt.
-- Het is een goede gewoonte om een back-up van je omgevingsinstellingen te maken voordat je wijzigingen aanbrengt.
+- Zorg ervoor dat je de juiste variabelen verwijdert, aangezien `unsetenv` geen bevestiging vraagt.
+- Het is een goede gewoonte om je omgevingsvariabelen te controleren met `printenv` voordat je ze verwijdert, zodat je zeker weet dat je de juiste variabelen aanpakt.
+- Gebruik `setenv` om variabelen opnieuw in te stellen als dat nodig is na het gebruik van `unsetenv`.

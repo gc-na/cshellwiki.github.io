@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) tr <Gebruik: teksttransformatie>
+# [Linux] C Shell (csh) tr <Gebruik: Tekens omzetten>
 
 ## Overzicht
-De `tr` (translate) opdracht in C Shell wordt gebruikt om tekens in tekst te vertalen of te verwijderen. Het is een krachtig hulpmiddel voor het manipuleren van tekstbestanden en het aanpassen van de inhoud van de uitvoer.
+De `tr` (translate) opdracht in C Shell wordt gebruikt om tekens in tekstbestanden te vervangen of te verwijderen. Het is een handige tool voor tekstmanipulatie, vooral bij het verwerken van gegevens in scripts.
 
 ## Gebruik
 De basis syntaxis van de `tr` opdracht is als volgt:
@@ -11,34 +11,37 @@ tr [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-d`: Verwijdert de opgegeven tekens uit de invoer.
+- `-d`: Verwijdert de opgegeven tekens.
 - `-s`: Vervangt opeenvolgende herhalingen van een teken door één exemplaar.
-- `-c`: Specificeert complementaire tekens, wat betekent dat het de tekens die niet zijn opgegeven, verwerkt.
+- `-c`: Neemt de complementaire set van de opgegeven tekens.
 
 ## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van `tr`:
 
-1. **Verander kleine letters naar hoofdletters**:
+1. **Vervangen van tekens**
+   Vervang alle kleine letters door hoofdletters in een tekstbestand.
    ```csh
-   echo "hallo wereld" | tr 'a-z' 'A-Z'
+   cat bestand.txt | tr 'a-z' 'A-Z'
    ```
 
-2. **Verwijder spaties uit een tekst**:
+2. **Verwijderen van specifieke tekens**
+   Verwijder alle cijfers uit een tekst.
    ```csh
-   echo "hallo wereld" | tr -d ' '
+   echo "Hallo123 Wereld456" | tr -d '0-9'
    ```
 
-3. **Vervang meerdere spaties door een enkele spatie**:
+3. **Samenvatten van spaties**
+   Vervang meerdere spaties door één enkele spatie.
    ```csh
-   echo "hallo    wereld" | tr -s ' '
+   echo "Dit    is    een    test." | tr -s ' '
    ```
 
-4. **Verander cijfers naar een ander teken**:
+4. **Complementaire set gebruiken**
+   Vervang alle niet-alfabetische tekens door een spatie.
    ```csh
-   echo "12345" | tr '0-9' '#'
+   echo "Hallo! Dit is een test." | tr -c 'a-zA-Z' ' '
    ```
 
 ## Tips
-- Gebruik `tr` in combinatie met andere commando's zoals `cat` of `grep` voor meer geavanceerde tekstverwerking.
-- Wees voorzichtig met het gebruik van de `-d` optie, omdat het tekens permanent uit de uitvoer verwijdert.
-- Test je `tr` commando's met eenvoudige invoer voordat je ze toepast op grotere bestanden om onbedoelde gegevensverlies te voorkomen.
+- Gebruik `cat` in combinatie met `tr` om bestanden te verwerken zonder ze direct te wijzigen.
+- Test je `tr` opdrachten met `echo` voordat je ze op bestanden toepast om onbedoelde wijzigingen te voorkomen.
+- Combineer `tr` met andere commando's zoals `grep` of `awk` voor geavanceerdere tekstverwerking.

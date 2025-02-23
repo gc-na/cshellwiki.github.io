@@ -1,42 +1,43 @@
-# [Unix] C Shell (csh) compctl Kullanımı: Tamamlayıcı komut
+# [Linux] C Shell (csh) compctl Kullanımı: Tamamlama komutları için yapılandırma
 
-## Genel Bakış
-`compctl`, C Shell (csh) ortamında otomatik tamamlama işlevselliğini sağlamak için kullanılan bir komuttur. Bu komut, kullanıcıların komut satırında daha hızlı ve etkili bir şekilde komutları tamamlamalarına yardımcı olur.
+## Overview
+`compctl` komutu, C Shell (csh) ortamında otomatik tamamlama işlevselliğini yapılandırmak için kullanılır. Bu komut, kullanıcıların komut satırında daha hızlı ve verimli bir şekilde çalışmasını sağlamak amacıyla belirli komutlar için tamamlayıcılar tanımlamanıza olanak tanır.
 
-## Kullanım
+## Usage
 Temel sözdizimi aşağıdaki gibidir:
+
 ```csh
-compctl [seçenekler] [argümanlar]
+compctl [options] [arguments]
 ```
 
-## Yaygın Seçenekler
-- `-d`: Belirtilen argümanlar için tamamlayıcıları devre dışı bırakır.
-- `-k`: Tamamlayıcıları belirli bir anahtar kelimeye göre filtreler.
-- `-l`: Tamamlayıcıları liste formatında gösterir.
-- `-n`: Tamamlayıcıların sayısını sınırlar.
+## Common Options
+- `-d`: Tamamlanacak dosya adlarını gösterir.
+- `-f`: Tamamlamayı zorunlu kılar, yani tamamlanacak argümanların mevcut olması gerekir.
+- `-s`: Tamamlamayı sadece belirli bir dize ile sınırlar.
+- `-x`: Ekstra seçenekler ekleyerek tamamlamayı özelleştirir.
 
-## Yaygın Örnekler
-Aşağıda `compctl` komutunun bazı pratik örnekleri bulunmaktadır:
+## Common Examples
+Aşağıda `compctl` komutunun bazı pratik örnekleri verilmiştir:
 
-1. **Basit Tamamlama**
-   ```csh
-   compctl -k 'dosya1 dosya2 dosya3' mycommand
-   ```
-   Bu komut, `mycommand` için `dosya1`, `dosya2` ve `dosya3` argümanlarını tamamlayıcı olarak ayarlar.
+### Örnek 1: Basit dosya tamamlama
+```csh
+compctl -d ls
+```
+Bu komut, `ls` komutunu kullanırken dosya adlarını tamamlamak için otomatik tamamlama sağlar.
 
-2. **Belirli Bir Klasördeki Dosyaları Tamamlama**
-   ```csh
-   compctl -d /path/to/directory mycommand
-   ```
-   Bu komut, `mycommand` için belirtilen dizindeki dosyaları tamamlayıcı olarak kullanır.
+### Örnek 2: Belirli bir dosya uzantısı için tamamlama
+```csh
+compctl -s "*.txt" edit
+```
+Bu komut, `edit` komutunu kullanırken yalnızca `.txt` uzantılı dosyaları tamamlamaya izin verir.
 
-3. **Liste Formatında Tamamlama**
-   ```csh
-   compctl -l mycommand
-   ```
-   Bu komut, `mycommand` için tamamlayıcıları liste formatında gösterir.
+### Örnek 3: Zorunlu dosya tamamlama
+```csh
+compctl -f cp
+```
+Bu komut, `cp` komutunu kullanırken tamamlanacak dosyaların mevcut olmasını zorunlu kılar.
 
-## İpuçları
-- Tamamlayıcıları özelleştirerek, sık kullandığınız komutlar için daha verimli bir çalışma ortamı oluşturabilirsiniz.
-- `compctl` ayarlarınıza dikkat edin; gereksiz argümanlar eklemek, tamamlama işlevini karmaşık hale getirebilir.
-- Belirli bir proje veya görev için özel tamamlayıcılar oluşturmak, zaman kazandırabilir ve iş akışınızı hızlandırabilir.
+## Tips
+- `compctl` ayarlarınıza dikkat edin; gereksiz karmaşadan kaçınmak için yalnızca ihtiyaç duyduğunuz tamamlamaları tanımlayın.
+- Tamamlama seçeneklerinizi sık sık gözden geçirin ve güncelleyin, böylece en güncel ve verimli ayarları kullanabilirsiniz.
+- `compctl` ile birlikte `complete` komutunu kullanarak daha karmaşık tamamlamalar oluşturabilirsiniz.

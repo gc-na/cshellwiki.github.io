@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) default utilizare: Executarea comenzilor implicite
+# [Linux] C Shell (csh) default utilizare: executarea comenzilor implicite
 
 ## Overview
-Comanda `default` în C Shell (csh) este utilizată pentru a seta sau a modifica comportamentul implicit al shell-ului în ceea ce privește executarea comenzilor. Aceasta permite utilizatorilor să definească comenzi care vor fi executate automat în anumite condiții.
+Comanda `default` în C Shell (csh) este utilizată pentru a stabili sau a modifica comportamentul implicit al shell-ului în ceea ce privește executarea comenzilor. Aceasta permite utilizatorului să definească comenzi sau scripturi care vor fi rulate în mod automat în anumite condiții.
 
 ## Usage
 Sintaxa de bază a comenzii `default` este următoarea:
@@ -11,25 +11,26 @@ default [options] [arguments]
 ```
 
 ## Common Options
-- `-f`: Forțează setarea valorii implicite fără a verifica dacă aceasta este deja setată.
-- `-r`: Resetează valoarea implicită la starea sa inițială.
+- `-e`: Specifică o comandă implicită care va fi executată în cazul în care nu există o altă comandă definită.
+- `-r`: Resetează comportamentul implicit la setările inițiale.
 
 ## Common Examples
-1. Setarea unei comenzi implicite pentru a rula un script:
+1. Setarea unei comenzi implicite:
    ```csh
-   default myscript.sh
+   default -e "echo 'Comanda implicită a fost executată'"
    ```
 
-2. Forțarea setării unei comenzi implicite:
-   ```csh
-   default -f myscript.sh
-   ```
-
-3. Resetarea comenzii implicite:
+2. Resetarea comenzilor implicite:
    ```csh
    default -r
    ```
 
+3. Definirea unei comenzi implicite pentru un script:
+   ```csh
+   default -e "my_script.sh"
+   ```
+
 ## Tips
-- Asigurați-vă că comanda pe care o setați ca implicită este accesibilă din calea curentă.
-- Verificați periodic comenzile implicite pentru a evita conflictele cu alte scripturi sau comenzi.
+- Asigurați-vă că comenzile implicite sunt corecte și testate înainte de a le seta, pentru a evita erorile neașteptate.
+- Utilizați opțiunea `-r` cu precauție, deoarece aceasta va șterge toate comenzile implicite setate anterior.
+- Verificați periodic comenzile implicite pentru a vă asigura că sunt actualizate și relevante pentru fluxul de lucru curent.

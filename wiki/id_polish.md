@@ -1,12 +1,12 @@
-# [Linux] C Shell (csh) id użycie: wyświetla informacje o użytkowniku
+# [Linux] C Shell (csh) id: wyświetlanie informacji o użytkowniku
 
 ## Overview
-Polecenie `id` w C Shell (csh) służy do wyświetlania informacji o bieżącym użytkowniku, takich jak identyfikator użytkownika (UID), identyfikator grupy (GID) oraz przynależność do grup. Jest to przydatne narzędzie do szybkiego sprawdzenia tożsamości użytkownika w systemie.
+Polecenie `id` w C Shell (csh) służy do wyświetlania informacji o użytkowniku, w tym jego identyfikatora użytkownika (UID), identyfikatora grupy (GID) oraz przynależności do grup.
 
 ## Usage
 Podstawowa składnia polecenia `id` jest następująca:
 
-```csh
+```
 id [opcje] [argumenty]
 ```
 
@@ -14,35 +14,35 @@ id [opcje] [argumenty]
 - `-u`: Wyświetla tylko identyfikator użytkownika (UID).
 - `-g`: Wyświetla tylko identyfikator grupy (GID).
 - `-G`: Wyświetla wszystkie identyfikatory grup, do których należy użytkownik.
-- `-n`: Wyświetla nazwę użytkownika lub grupy zamiast identyfikatora.
+- `-n`: Wyświetla nazwy zamiast identyfikatorów.
 
 ## Common Examples
-1. Aby wyświetlić pełne informacje o bieżącym użytkowniku:
+1. Wyświetlenie podstawowych informacji o bieżącym użytkowniku:
    ```csh
    id
    ```
 
-2. Aby wyświetlić tylko identyfikator użytkownika (UID):
+2. Wyświetlenie tylko identyfikatora użytkownika:
    ```csh
    id -u
    ```
 
-3. Aby wyświetlić tylko identyfikator grupy (GID):
+3. Wyświetlenie tylko identyfikatora grupy:
    ```csh
    id -g
    ```
 
-4. Aby wyświetlić wszystkie identyfikatory grup, do których należy użytkownik:
+4. Wyświetlenie wszystkich grup, do których należy użytkownik:
    ```csh
    id -G
    ```
 
-5. Aby wyświetlić nazwę użytkownika zamiast UID:
+5. Wyświetlenie nazwy użytkownika oraz identyfikatora:
    ```csh
-   id -n
+   id -n -u
    ```
 
 ## Tips
-- Używaj opcji `-n`, aby uzyskać bardziej zrozumiałe informacje, zwłaszcza gdy pracujesz w środowisku z wieloma użytkownikami.
-- Regularne sprawdzanie swojego UID i GID może pomóc w zarządzaniu uprawnieniami do plików i katalogów.
-- Możesz użyć polecenia `id` w skryptach, aby dynamicznie dostosować działania w zależności od tożsamości użytkownika.
+- Używaj opcji `-n`, aby uzyskać bardziej czytelne wyniki, zwłaszcza gdy pracujesz z identyfikatorami grup.
+- Sprawdzaj przynależność do grup, aby upewnić się, że masz odpowiednie uprawnienia do wykonywania określonych zadań.
+- Możesz użyć `id [nazwa_użytkownika]`, aby uzyskać informacje o innym użytkowniku, co jest przydatne w administracji systemem.

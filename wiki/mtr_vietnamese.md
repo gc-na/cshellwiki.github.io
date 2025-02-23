@@ -1,42 +1,45 @@
-# [Hệ điều hành] C Shell (csh) mtr <Sử dụng tương đương>: Kiểm tra kết nối mạng
+# [Hệ điều hành] C Shell (csh) mtr Cách sử dụng: Kiểm tra kết nối mạng
 
-## Tổng quan
-Lệnh `mtr` kết hợp giữa chức năng của `ping` và `traceroute`, cho phép người dùng theo dõi đường đi của gói tin từ máy tính của họ đến một địa chỉ IP hoặc tên miền cụ thể. Nó cung cấp thông tin chi tiết về độ trễ và tỷ lệ mất gói tin trên từng bước của đường truyền.
+## Overview
+Lệnh `mtr` (My Traceroute) kết hợp giữa chức năng của `traceroute` và `ping`, cho phép người dùng theo dõi đường đi của gói tin đến một địa chỉ IP hoặc tên miền, đồng thời kiểm tra độ trễ và mất gói trên từng nút mạng.
 
-## Cách sử dụng
+## Usage
 Cú pháp cơ bản của lệnh `mtr` như sau:
 ```
-mtr [tùy chọn] [đối số]
+mtr [options] [arguments]
 ```
 
-## Tùy chọn phổ biến
-- `-r`: Chạy trong chế độ báo cáo, xuất kết quả dưới dạng bảng.
-- `-c <số>`: Chỉ định số lần gửi gói tin.
-- `-i <giây>`: Đặt khoảng thời gian giữa các lần gửi gói tin.
-- `-p`: Chạy trong chế độ chỉ xem, không gửi gói tin.
+## Common Options
+- `-r`: Chạy trong chế độ báo cáo, xuất kết quả ra stdout.
+- `-c <count>`: Xác định số lượng gói tin sẽ được gửi.
+- `-i <interval>`: Đặt khoảng thời gian giữa các gói tin (tính bằng giây).
+- `-p`: Chạy trong chế độ chỉ hiển thị các thông tin ping.
+- `-w`: Hiển thị kết quả dưới dạng bảng.
 
-## Ví dụ phổ biến
-1. Kiểm tra kết nối đến một địa chỉ IP:
+## Common Examples
+Dưới đây là một số ví dụ thực tế khi sử dụng lệnh `mtr`:
+
+1. Kiểm tra kết nối đến một địa chỉ IP hoặc tên miền:
    ```bash
-   mtr 8.8.8.8
+   mtr example.com
    ```
 
-2. Chạy mtr với chế độ báo cáo và gửi 10 gói tin:
+2. Chạy lệnh `mtr` với chế độ báo cáo và gửi 10 gói tin:
    ```bash
-   mtr -r -c 10 8.8.8.8
+   mtr -r -c 10 example.com
    ```
 
-3. Kiểm tra kết nối với khoảng thời gian 1 giây giữa các gói tin:
+3. Xem kết quả dưới dạng bảng:
    ```bash
-   mtr -i 1 8.8.8.8
+   mtr -w example.com
    ```
 
-4. Chạy mtr trong chế độ chỉ xem:
+4. Đặt khoảng thời gian giữa các gói tin là 1 giây:
    ```bash
-   mtr -p 8.8.8.8
+   mtr -i 1 example.com
    ```
 
-## Mẹo
-- Sử dụng tùy chọn `-r` để có được báo cáo rõ ràng và dễ đọc hơn.
-- Thử nghiệm với các khoảng thời gian khác nhau bằng cách sử dụng tùy chọn `-i` để xem ảnh hưởng đến độ trễ.
-- Nếu bạn chỉ muốn kiểm tra một lần mà không cần theo dõi liên tục, hãy sử dụng tùy chọn `-c` để giới hạn số lần gửi gói tin.
+## Tips
+- Sử dụng tùy chọn `-r` để dễ dàng xuất kết quả ra file hoặc để phân tích sau này.
+- Nếu bạn gặp phải vấn đề kết nối, hãy thử sử dụng tùy chọn `-c` để kiểm tra độ ổn định của kết nối qua nhiều lần gửi gói tin.
+- Thường xuyên kiểm tra các nút mạng khác nhau để xác định vị trí của vấn đề mạng.

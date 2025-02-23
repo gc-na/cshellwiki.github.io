@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) localedef gebruik: Locale-definitie genereren
+# [Linux] C Shell (csh) localedef gebruik: Maak locale-definities aan
 
 ## Overzicht
-De `localedef` opdracht wordt gebruikt om locale-definities te genereren, die informatie bevatten over de taal- en landinstellingen van een systeem. Dit is nuttig voor het instellen van regionale instellingen zoals datumnotaties, getalnotaties en sorteerregels.
+De `localedef` opdracht wordt gebruikt om locale-definities te genereren, die de instellingen voor taal, land en andere culturele voorkeuren van een systeem bepalen. Dit is belangrijk voor het correct weergeven van tekst in verschillende talen en formaten.
 
 ## Gebruik
 De basis syntaxis van de `localedef` opdracht is als volgt:
@@ -12,29 +12,32 @@ localedef [opties] [argumenten]
 
 ## Veelvoorkomende Opties
 - `-i, --inputfile`: Specificeert het invoerbestand voor de locale-definitie.
-- `-c, --no-archive`: Voorkomt dat de gegenereerde locale in de archiefbestanden wordt opgeslagen.
-- `-f, --charmap`: Geeft het karaktermapbestand aan dat gebruikt moet worden.
-- `-A, --alias`: Specificeert een alias voor de locale.
+- `-c, --no-compile`: Voorkomt dat de locale wordt gecompileerd.
+- `-v, --verbose`: Geeft gedetailleerde uitvoer over het proces.
+- `-f, --charset`: Bepaalt het karakterset voor de locale.
 
 ## Veelvoorkomende Voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van `localedef`:
 
-1. **Een nieuwe locale genereren**:
-   ```csh
-   localedef -i nl_NL -f UTF-8 nl_NL.UTF-8
-   ```
+### Voorbeeld 1: Een nieuwe locale aanmaken
+```csh
+localedef -i nl_NL -f UTF-8 nl_NL.UTF-8
+```
+Dit commando maakt een nieuwe Nederlandse locale aan voor Nederland met UTF-8 karakterset.
 
-2. **Een locale genereren zonder deze op te slaan in het archief**:
-   ```csh
-   localedef -c -i fr_FR -f ISO-8859-1 fr_FR.ISO-8859-1
-   ```
+### Voorbeeld 2: Locale compileren zonder uitvoer
+```csh
+localedef -i fr_FR -f ISO-8859-1 -c fr_FR.ISO-8859-1
+```
+Hiermee wordt een Franse locale aangemaakt zonder dat er uitvoer wordt weergegeven.
 
-3. **Een locale genereren met een specifieke karaktermap**:
-   ```csh
-   localedef -i de_DE -f UTF-8 -A /usr/share/i18n/locales/de_DE de_DE.UTF-8
-   ```
+### Voorbeeld 3: Gedetailleerde uitvoer tonen
+```csh
+localedef -i de_DE -f UTF-8 -v de_DE.UTF-8
+```
+Dit commando genereert een Duitse locale met gedetailleerde uitvoer over het proces.
 
 ## Tips
-- Zorg ervoor dat je de juiste invoer- en karaktermapbestanden gebruikt om fouten te voorkomen.
-- Controleer altijd of de locale correct is gegenereerd door de `locale` opdracht uit te voeren na het gebruik van `localedef`.
-- Gebruik de `-c` optie als je niet wilt dat de locale in de archieven wordt opgeslagen, vooral als je deze alleen tijdelijk nodig hebt.
+- Zorg ervoor dat je de juiste invoer- en karaktersetbestanden hebt voordat je `localedef` gebruikt.
+- Gebruik de `-v` optie om meer inzicht te krijgen in eventuele fouten of waarschuwingen tijdens het aanmaken van locales.
+- Het is handig om locales te testen na het aanmaken om te controleren of ze correct functioneren in je toepassingen.

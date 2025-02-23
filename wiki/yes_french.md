@@ -1,43 +1,43 @@
-# [Linux] C Shell (csh) yes : Générer des sorties répétées
+# [Linux] C Shell (csh) yes : Générer une sortie répétée
 
 ## Overview
-La commande `yes` dans C Shell (csh) est utilisée pour générer une sortie répétée d'une chaîne de caractères, généralement "y" ou "yes". Elle est souvent utilisée pour automatiser des réponses à des invites dans des scripts ou des commandes qui demandent une confirmation.
+La commande `yes` dans C Shell (csh) est utilisée pour générer une sortie répétée d'une chaîne de caractères, généralement "y" par défaut. Elle est souvent utilisée pour automatiser des réponses aux invites de confirmation dans d'autres commandes.
 
 ## Usage
 La syntaxe de base de la commande `yes` est la suivante :
 
-```
+```csh
 yes [options] [arguments]
 ```
 
 ## Common Options
-- `-h`, `--help` : Affiche l'aide et quitte.
-- `-V`, `--version` : Affiche la version de la commande et quitte.
+- `-n` : Ne pas ajouter de nouvelle ligne à la fin de la sortie.
+- `-h` : Afficher l'aide et quitter.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `yes` :
 
-1. **Générer une sortie de "yes" en continu :**
+1. **Générer des "y" en continu :**
    ```csh
    yes
    ```
 
-2. **Générer une sortie répétée d'une chaîne personnalisée :**
+2. **Générer une chaîne personnalisée :**
    ```csh
    yes "Je suis d'accord"
    ```
 
-3. **Utiliser `yes` pour automatiser une réponse dans une commande :**
+3. **Utiliser `yes` pour répondre à une commande :**
    ```csh
    yes | rm -i *.tmp
    ```
 
-4. **Limiter le nombre de répétitions avec `head` :**
+4. **Limiter la sortie avec `head` :**
    ```csh
-   yes "Oui" | head -n 5
+   yes | head -n 5
    ```
 
 ## Tips
-- Utilisez `yes` pour automatiser des confirmations dans des scripts afin d'éviter des interruptions manuelles.
-- Soyez prudent lorsque vous utilisez `yes` avec des commandes destructrices comme `rm`, car cela peut entraîner la suppression non désirée de fichiers.
-- Combinez `yes` avec d'autres commandes pour créer des flux de travail efficaces et automatisés.
+- Utilisez `yes` avec prudence, car il peut générer une sortie illimitée.
+- Combinez `yes` avec d'autres commandes pour automatiser des processus qui nécessitent des confirmations répétées.
+- Pensez à rediriger la sortie vers un fichier si vous avez besoin de conserver les réponses générées.

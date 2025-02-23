@@ -1,82 +1,82 @@
-# [Hệ điều hành] C Shell (csh) case: Phân loại các lựa chọn
+# [Hệ điều hành] C Shell (csh) case <Sử dụng tương đương>: Xử lý điều kiện
 
-## Overview
-Lệnh `case` trong C Shell (csh) được sử dụng để kiểm tra một biến và thực hiện các hành động khác nhau dựa trên giá trị của biến đó. Nó rất hữu ích trong việc xử lý các lựa chọn và điều kiện trong các script.
+## Tổng quan
+Lệnh `case` trong C Shell (csh) được sử dụng để thực hiện các phép kiểm tra điều kiện, cho phép thực thi các lệnh khác nhau dựa trên giá trị của một biến. Nó tương tự như cấu trúc `switch` trong các ngôn ngữ lập trình khác.
 
-## Usage
+## Cú pháp
 Cú pháp cơ bản của lệnh `case` như sau:
-```
+```csh
 case [biến] in
-    [giá trị1])
+    [mẫu1])
         [lệnh1]
         ;;
-    [giá trị2])
+    [mẫu2])
         [lệnh2]
         ;;
-    *)
-        [lệnh_mặc_định]
-        ;;
+    ...
 esac
 ```
 
-## Common Options
-- `*)`: Đây là lựa chọn mặc định, được thực hiện nếu không có giá trị nào khớp với các trường hợp đã chỉ định.
-- `;;`: Dùng để kết thúc một trường hợp và chuyển sang trường hợp tiếp theo.
+## Các tùy chọn phổ biến
+- `in`: Chỉ định các mẫu mà biến sẽ được so sánh.
+- `;;`: Kết thúc một khối lệnh cho một mẫu.
+- `esac`: Kết thúc lệnh `case`.
 
-## Common Examples
+## Ví dụ phổ biến
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `case`:
 
-### Ví dụ 1: Phân loại số
+### Ví dụ 1: Kiểm tra biến
 ```csh
-set num = 2
-switch ($num)
-    case 1:
-        echo "Số là 1"
-        breaksw
-    case 2:
-        echo "Số là 2"
-        breaksw
-    case 3:
-        echo "Số là 3"
-        breaksw
-    default:
-        echo "Số không nằm trong danh sách"
-endsw
-```
-
-### Ví dụ 2: Phân loại tháng
-```csh
-set month = "Tháng 5"
-case ($month) in
-    "Tháng 1" | "Tháng 2" | "Tháng 3")
-        echo "Quý 1"
+set fruit = "apple"
+case $fruit in
+    apple)
+        echo "Đây là một quả táo."
         ;;
-    "Tháng 4" | "Tháng 5" | "Tháng 6")
-        echo "Quý 2"
+    banana)
+        echo "Đây là một quả chuối."
         ;;
     *)
-        echo "Không thuộc quý nào"
+        echo "Đây không phải là táo hay chuối."
         ;;
 esac
 ```
 
-### Ví dụ 3: Kiểm tra loại tệp
+### Ví dụ 2: Phân loại số
+```csh
+set number = 3
+case $number in
+    1)
+        echo "Số là một."
+        ;;
+    2)
+        echo "Số là hai."
+        ;;
+    3)
+        echo "Số là ba."
+        ;;
+    *)
+        echo "Số không nằm trong phạm vi từ 1 đến 3."
+        ;;
+esac
+```
+
+### Ví dụ 3: Kiểm tra phần mở rộng tệp
 ```csh
 set file = "document.txt"
-case ($file) in
+case $file in
     *.txt)
-        echo "Đây là tệp văn bản"
+        echo "Đây là một tệp văn bản."
         ;;
-    *.jpg | *.png)
-        echo "Đây là tệp hình ảnh"
+    *.jpg)
+        echo "Đây là một tệp hình ảnh."
         ;;
     *)
-        echo "Loại tệp không xác định"
+        echo "Đây là một loại tệp khác."
         ;;
 esac
 ```
 
-## Tips
-- Sử dụng `case` để làm cho mã của bạn dễ đọc hơn khi xử lý nhiều điều kiện.
-- Đảm bảo rằng mỗi trường hợp kết thúc bằng `;;` để tránh lỗi trong script.
-- Sử dụng lựa chọn mặc định `*` để xử lý các trường hợp không lường trước được.
+## Mẹo
+- Sử dụng dấu `*` trong mẫu để khớp với bất kỳ chuỗi nào, giúp linh hoạt hơn trong việc kiểm tra.
+- Đảm bảo rằng mỗi khối lệnh kết thúc bằng `;;` để tránh lỗi cú pháp.
+- Sử dụng `esac` để kết thúc lệnh `case`, tương tự như `end` trong một số ngôn ngữ lập trình khác.

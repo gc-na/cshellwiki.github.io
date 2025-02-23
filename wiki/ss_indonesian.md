@@ -1,12 +1,12 @@
-# [Sistem Operasi] C Shell (csh) ss: Menampilkan informasi soket jaringan
+# [Sistem Operasi] C Shell (csh) ss Penggunaan: Menampilkan informasi soket jaringan
 
 ## Overview
-Perintah `ss` digunakan untuk menampilkan informasi tentang soket jaringan yang sedang aktif di sistem. Ini memberikan detail tentang koneksi TCP, UDP, dan soket lainnya, serta statusnya.
+Perintah `ss` digunakan untuk menampilkan informasi tentang soket jaringan yang aktif di sistem. Ini memberikan detail tentang koneksi TCP, UDP, dan soket lainnya, serta statusnya.
 
 ## Usage
-Sintaks dasar dari perintah `ss` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `ss`:
 
-```
+```csh
 ss [options] [arguments]
 ```
 
@@ -21,31 +21,34 @@ ss [options] [arguments]
 Berikut adalah beberapa contoh penggunaan perintah `ss`:
 
 1. Menampilkan semua soket TCP:
-   ```bash
+   ```csh
    ss -t
    ```
 
 2. Menampilkan semua soket UDP:
-   ```bash
+   ```csh
    ss -u
    ```
 
 3. Menampilkan soket yang sedang mendengarkan:
-   ```bash
+   ```csh
    ss -l
    ```
 
-4. Menampilkan semua soket beserta proses yang menggunakannya:
-   ```bash
+4. Menampilkan soket dengan informasi proses:
+   ```csh
    ss -p
    ```
 
 5. Menampilkan semua soket dengan alamat dan port dalam format numerik:
-   ```bash
+   ```csh
    ss -n
    ```
 
 ## Tips
-- Gunakan kombinasi opsi untuk mendapatkan informasi yang lebih spesifik, misalnya `ss -tunlp` untuk menampilkan semua soket TCP dan UDP yang mendengarkan beserta prosesnya.
-- Perintah `ss` lebih cepat dan lebih efisien dibandingkan dengan perintah `netstat`, sehingga lebih disarankan untuk digunakan dalam analisis jaringan.
-- Pastikan Anda menjalankan perintah ini dengan hak akses yang sesuai jika ingin melihat informasi proses yang lebih mendetail.
+- Gunakan opsi `-t` dan `-u` secara bersamaan untuk mendapatkan gambaran lengkap tentang semua soket:
+  ```csh
+  ss -tu
+  ```
+- Untuk analisis lebih mendalam, pertimbangkan untuk menggabungkan beberapa opsi.
+- Pastikan Anda menjalankan perintah ini dengan hak akses yang sesuai jika ingin melihat semua soket yang digunakan oleh proses sistem.

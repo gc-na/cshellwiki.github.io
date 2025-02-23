@@ -1,45 +1,45 @@
-# [Linux] C Shell (csh) cryptsetup gebruik: Beheer van versleutelde schijven
+# [Linux] C Shell (csh) cryptsetup gebruik: Beheer van schijfversleuteling
 
 ## Overzicht
-De `cryptsetup`-opdracht wordt gebruikt voor het beheren van versleutelde schijven en partities op Linux-systemen. Het stelt gebruikers in staat om schijfversleuteling in te schakelen, te configureren en te beheren, wat helpt bij het beschermen van gevoelige gegevens.
+Het `cryptsetup` commando wordt gebruikt voor het beheren van schijfversleuteling op Linux-systemen. Het stelt gebruikers in staat om versleutelde schijven en partities te maken, te openen en te sluiten, wat helpt bij het beschermen van gevoelige gegevens.
 
 ## Gebruik
-De basis syntaxis van de `cryptsetup`-opdracht is als volgt:
+De basis syntaxis van het `cryptsetup` commando is als volgt:
 
-```shell
+```csh
 cryptsetup [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
 - `luks`: Geeft aan dat de schijfversleuteling met LUKS (Linux Unified Key Setup) moet worden gebruikt.
-- `open`: Opent een versleutelde schijf of partitie.
+- `create`: Maakt een nieuwe versleutelde schijf of partitie.
+- `open`: Opent een bestaande versleutelde schijf of partitie.
 - `close`: Sluit een geopende versleutelde schijf of partitie.
-- `create`: Maakt een nieuwe versleutelde schijf of partitie aan.
 - `status`: Toont de status van een versleutelde schijf of partitie.
 
 ## Veelvoorkomende Voorbeelden
 
 ### Een nieuwe versleutelde schijf maken
-```shell
+```csh
 cryptsetup luksFormat /dev/sdX
 ```
 
 ### Een versleutelde schijf openen
-```shell
+```csh
 cryptsetup luksOpen /dev/sdX my_encrypted_disk
 ```
 
 ### Een versleutelde schijf sluiten
-```shell
+```csh
 cryptsetup luksClose my_encrypted_disk
 ```
 
 ### De status van een versleutelde schijf controleren
-```shell
+```csh
 cryptsetup status my_encrypted_disk
 ```
 
 ## Tips
-- Zorg ervoor dat je een sterke wachtwoordzin gebruikt bij het instellen van LUKS-versleuteling om de beveiliging te maximaliseren.
-- Maak regelmatig back-ups van je gegevens, vooral voordat je wijzigingen aanbrengt in de schijfversleuteling.
-- Gebruik de `--help` optie om meer informatie te krijgen over de beschikbare opties en hun gebruik.
+- Zorg ervoor dat je een sterk wachtwoord gebruikt bij het maken van een versleutelde schijf om de beveiliging te maximaliseren.
+- Maak altijd een back-up van belangrijke gegevens voordat je met schijfversleuteling werkt.
+- Gebruik de `--help` optie voor meer informatie over de beschikbare opties en hun gebruik.

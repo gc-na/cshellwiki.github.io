@@ -1,20 +1,20 @@
-# [Linux] C Shell (csh) uniq Verwendung: Duplikate in einer Datei entfernen
+# [Linux] C Shell (csh) uniq Verwendung: Doppelte Zeilen entfernen
 
 ## Übersicht
-Der Befehl `uniq` wird verwendet, um aufeinanderfolgende doppelte Zeilen aus einer Datei oder von der Standardeingabe zu entfernen. Dies ist besonders nützlich, um die Ausgabe von Befehlen zu bereinigen oder um Daten zu analysieren, bei denen nur eindeutige Einträge benötigt werden.
+Der Befehl `uniq` wird verwendet, um aufeinanderfolgende doppelte Zeilen aus einer Datei oder von der Standardeingabe zu entfernen. Dies ist besonders nützlich, wenn Sie eine Liste von Einträgen haben und nur die einzigartigen Werte behalten möchten.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```
+```csh
 uniq [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-c`: Zählt die Anzahl der Vorkommen jeder Zeile und gibt diese zusammen mit der Zeile aus.
-- `-d`: Gibt nur die Zeilen aus, die mehr als einmal vorkommen.
-- `-u`: Gibt nur die Zeilen aus, die einzigartig sind (d.h. nur einmal vorkommen).
-- `-i`: Ignoriert Groß- und Kleinschreibung beim Vergleich der Zeilen.
+- `-c`: Zählt die Anzahl der Vorkommen jeder Zeile und gibt diese vor der Zeile aus.
+- `-d`: Gibt nur die doppelten Zeilen aus.
+- `-u`: Gibt nur die einzigartigen Zeilen aus.
+- `-i`: Ignoriert Groß- und Kleinschreibung bei der Vergleichung der Zeilen.
 
 ## Häufige Beispiele
 Hier sind einige praktische Beispiele für die Verwendung von `uniq`:
@@ -45,6 +45,9 @@ Hier sind einige praktische Beispiele für die Verwendung von `uniq`:
    ```
 
 ## Tipps
-- Stellen Sie sicher, dass die Eingabedaten vor der Verwendung von `uniq` sortiert sind, da `uniq` nur aufeinanderfolgende Duplikate entfernt. Verwenden Sie `sort`, um die Daten zuerst zu sortieren.
-- Kombinieren Sie `uniq` mit anderen Befehlen in einer Pipeline, um die Effizienz zu steigern, z.B. `sort datei.txt | uniq`.
-- Nutzen Sie die Option `-c`, um schnell einen Überblick über die Häufigkeit der Zeilen zu erhalten, was bei der Datenanalyse hilfreich sein kann.
+- Stellen Sie sicher, dass die Eingabedaten sortiert sind, da `uniq` nur aufeinanderfolgende doppelte Zeilen entfernt. Verwenden Sie den Befehl `sort`, um die Datei vorher zu sortieren.
+- Kombinieren Sie `uniq` mit anderen Befehlen, um leistungsstarke Pipelines zu erstellen. Zum Beispiel: 
+  ```csh
+  sort datei.txt | uniq
+  ```
+- Nutzen Sie die Option `-c`, um schnell zu sehen, wie oft jede Zeile vorkommt, was hilfreich sein kann, um die Verteilung von Daten zu analysieren.

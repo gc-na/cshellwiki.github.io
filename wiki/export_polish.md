@@ -1,43 +1,53 @@
-# [Linux] C Shell (csh) export użycie: Umożliwia ustawienie zmiennych środowiskowych
+# [Linux] C Shell (csh) export użycie: Ustawianie zmiennych środowiskowych
 
 ## Overview
-Polecenie `export` w C Shell (csh) służy do ustawiania zmiennych środowiskowych, które są dostępne dla wszystkich procesów uruchomionych w danej sesji powłoki. Dzięki temu można przekazywać wartości zmiennych do programów i skryptów, które są uruchamiane w tej samej sesji.
+Polecenie `export` w C Shell (csh) służy do ustawiania zmiennych środowiskowych, które będą dostępne dla wszystkich procesów uruchamianych w bieżącej sesji powłoki. Dzięki temu można przekazywać wartości zmiennych do programów i skryptów.
 
 ## Usage
-Podstawowa składnia polecenia `export` wygląda następująco:
+Podstawowa składnia polecenia `export` jest następująca:
 
-```csh
+```
 export [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-n`: Usuwa zmienną z listy zmiennych eksportowanych.
-- `-p`: Wyświetla wszystkie zmienne, które są aktualnie eksportowane.
+- `-n`: Usuwa zmienną ze zmiennych eksportowanych.
+- `-p`: Wyświetla wszystkie zmienne środowiskowe, które zostały wyeksportowane.
 
 ## Common Examples
-1. Ustawienie zmiennej środowiskowej:
-   ```csh
-   setenv MY_VAR "Hello, World!"
-   export MY_VAR
-   ```
 
-2. Ustawienie zmiennej z wartością i jej eksport:
-   ```csh
-   setenv PATH "/usr/local/bin:$PATH"
-   export PATH
-   ```
+### Ustawianie zmiennej środowiskowej
+Aby ustawić zmienną środowiskową, użyj polecenia `export` w następujący sposób:
 
-3. Usunięcie zmiennej z eksportu:
-   ```csh
-   export -n MY_VAR
-   ```
+```csh
+set VAR_NAME="wartość"
+export VAR_NAME
+```
 
-4. Wyświetlenie wszystkich eksportowanych zmiennych:
-   ```csh
-   export -p
-   ```
+### Ustawianie wielu zmiennych
+Możesz ustawić wiele zmiennych w jednym poleceniu:
+
+```csh
+set VAR1="pierwsza"
+set VAR2="druga"
+export VAR1 VAR2
+```
+
+### Wyświetlanie wyeksportowanych zmiennych
+Aby zobaczyć wszystkie wyeksportowane zmienne, użyj opcji `-p`:
+
+```csh
+export -p
+```
+
+### Usuwanie zmiennej ze zmiennych eksportowanych
+Aby usunąć zmienną z eksportowanych, użyj opcji `-n`:
+
+```csh
+export -n VAR_NAME
+```
 
 ## Tips
-- Zawsze używaj `setenv` do tworzenia zmiennych przed ich eksportowaniem.
-- Sprawdzaj, które zmienne są eksportowane, aby uniknąć konfliktów nazw.
-- Pamiętaj, że zmienne eksportowane będą dostępne tylko w bieżącej sesji powłoki i jej podprocesach.
+- Zawsze używaj `export` po ustawieniu zmiennej, aby upewnić się, że jest dostępna dla wszystkich procesów.
+- Używaj opisowych nazw zmiennych, aby łatwiej zrozumieć ich przeznaczenie.
+- Sprawdzaj wyeksportowane zmienne regularnie, aby upewnić się, że nie ma niepotrzebnych lub przestarzałych zmiennych w środowisku.

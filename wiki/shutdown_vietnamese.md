@@ -1,50 +1,43 @@
-# [Hệ điều hành] C Shell (csh) shutdown: Tắt máy tính
+# [Hệ điều hành] C Shell (csh) shutdown: Tắt hệ thống
 
 ## Overview
-Lệnh `shutdown` trong C Shell (csh) được sử dụng để tắt hoặc khởi động lại hệ thống. Đây là một công cụ quan trọng để quản lý trạng thái của máy tính, cho phép người dùng thực hiện các thao tác tắt máy một cách an toàn.
+Lệnh `shutdown` trong C Shell (csh) được sử dụng để tắt hoặc khởi động lại hệ thống. Nó cho phép người dùng thông báo cho các người dùng khác về việc tắt máy và thực hiện quá trình tắt máy một cách an toàn.
 
 ## Usage
 Cú pháp cơ bản của lệnh `shutdown` như sau:
+
 ```
 shutdown [options] [arguments]
 ```
 
 ## Common Options
-- `-h`: Tắt máy tính.
-- `-r`: Khởi động lại máy tính.
-- `-k`: Thông báo tắt máy nhưng không thực hiện tắt.
-- `+m`: Tắt máy sau `m` phút.
-- `hh:mm`: Tắt máy vào thời gian cụ thể (theo định dạng 24 giờ).
+- `-h`: Tắt hệ thống ngay lập tức.
+- `-r`: Khởi động lại hệ thống.
+- `-k`: Chỉ thông báo cho người dùng mà không thực hiện tắt máy.
+- `time`: Thời gian trước khi tắt máy, có thể là một khoảng thời gian hoặc một thời điểm cụ thể.
 
 ## Common Examples
-Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `shutdown`:
+- Tắt hệ thống ngay lập tức:
+  ```csh
+  shutdown -h now
+  ```
 
-1. Tắt máy ngay lập tức:
-   ```csh
-   shutdown -h now
-   ```
+- Khởi động lại hệ thống sau 5 phút:
+  ```csh
+  shutdown -r +5
+  ```
 
-2. Khởi động lại máy tính ngay lập tức:
-   ```csh
-   shutdown -r now
-   ```
+- Thông báo cho người dùng rằng hệ thống sẽ tắt trong 10 phút:
+  ```csh
+  shutdown -h +10 "Hệ thống sẽ tắt trong 10 phút. Vui lòng lưu công việc của bạn."
+  ```
 
-3. Tắt máy sau 10 phút:
-   ```csh
-   shutdown -h +10
-   ```
-
-4. Thông báo tắt máy trong 5 phút nhưng không thực hiện:
-   ```csh
-   shutdown -k +5
-   ```
-
-5. Tắt máy vào lúc 22:30:
-   ```csh
-   shutdown -h 22:30
-   ```
+- Chỉ thông báo mà không tắt máy:
+  ```csh
+  shutdown -k now "Hệ thống sẽ tắt ngay bây giờ."
+  ```
 
 ## Tips
-- Luôn thông báo cho người dùng khác trước khi tắt máy để họ có thể lưu công việc của mình.
-- Sử dụng tùy chọn `-k` để thông báo mà không thực hiện tắt máy, giúp kiểm tra xem có ai đang sử dụng hệ thống hay không.
-- Kiểm tra các tiến trình đang chạy trước khi tắt máy để tránh mất dữ liệu.
+- Luôn thông báo cho người dùng trước khi tắt máy để họ có thời gian lưu lại công việc.
+- Sử dụng tùy chọn `-k` để kiểm tra thông báo mà không thực sự tắt máy.
+- Đảm bảo rằng bạn có quyền quản trị để thực hiện lệnh `shutdown`.

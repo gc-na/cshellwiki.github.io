@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) printf użycie: formatowanie i wyświetlanie danych
+# [Linux] C Shell (csh) printf użycie: Formatowanie i wyświetlanie tekstu
 
 ## Overview
-Polecenie `printf` w C Shell (csh) służy do formatowania i wyświetlania danych na standardowym wyjściu. Umożliwia precyzyjne kontrolowanie, jak dane są prezentowane, co jest szczególnie przydatne w skryptach i automatyzacji.
+Polecenie `printf` w C Shell (csh) służy do formatowania i wyświetlania tekstu w konsoli. Umożliwia precyzyjne kontrolowanie sposobu, w jaki dane są prezentowane, co jest szczególnie przydatne w skryptach i automatyzacji.
 
 ## Usage
 Podstawowa składnia polecenia `printf` jest następująca:
@@ -11,38 +11,40 @@ printf [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-v`: Używane do przypisania sformatowanego wyniku do zmiennej.
-- `-f`: Określa format danych do wyświetlenia.
-- `-n`: Nie dodaje nowej linii na końcu wyjścia.
+- `%s` - format dla łańcucha znaków.
+- `%d` - format dla liczb całkowitych.
+- `%f` - format dla liczb zmiennoprzecinkowych.
+- `\n` - nowa linia.
+- `\t` - tabulacja.
 
 ## Common Examples
-### Przykład 1: Proste formatowanie tekstu
-```csh
-printf "Witaj, %s!\n" "Świecie"
-```
-Ten przykład wyświetli: `Witaj, Świecie!`
+Przykłady użycia polecenia `printf`:
 
-### Przykład 2: Formatowanie liczb
-```csh
-printf "Liczba: %.2f\n" 3.14159
-```
-To polecenie wyświetli: `Liczba: 3.14`
+1. Wyświetlenie prostego łańcucha znaków:
+   ```csh
+   printf "Witaj, świecie!\n"
+   ```
 
-### Przykład 3: Użycie zmiennej
-```csh
-set name = "Jan"
-printf "Cześć, %s!\n" $name
-```
-Wynik to: `Cześć, Jan!`
+2. Formatowanie liczby całkowitej:
+   ```csh
+   set liczba = 42
+   printf "Liczba to: %d\n" $liczba
+   ```
 
-### Przykład 4: Przypisanie do zmiennej
-```csh
-printf -v result "Wynik: %d" 42
-echo $result
-```
-To przypisze `Wynik: 42` do zmiennej `result` i wyświetli ją.
+3. Wyświetlenie zmiennoprzecinkowej wartości:
+   ```csh
+   set pi = 3.14159
+   printf "Pi wynosi: %.2f\n" $pi
+   ```
+
+4. Użycie tabulacji w wyjściu:
+   ```csh
+   printf "Imię\tWiek\n"
+   printf "Jan\t25\n"
+   printf "Anna\t30\n"
+   ```
 
 ## Tips
-- Używaj odpowiednich specyfikatorów formatu, aby uzyskać pożądany wynik.
-- Testuj formatowanie w prostych skryptach, aby upewnić się, że działa zgodnie z oczekiwaniami.
-- Zwracaj uwagę na typy danych, aby uniknąć błędów w formatowaniu.
+- Używaj formatów odpowiednich do typu danych, aby uniknąć błędów.
+- Zawsze dodawaj `\n` na końcu, aby poprawnie zakończyć linię.
+- Możesz łączyć różne formaty w jednym wywołaniu `printf`, co pozwala na elastyczne formatowanie wyjścia.

@@ -1,48 +1,47 @@
 # [Linux] C Shell (csh) fc Verwendung: Bearbeiten und Ausführen von Befehlen
 
 ## Übersicht
-Der `fc`-Befehl in der C Shell (csh) wird verwendet, um die letzten Befehle aus der Befehls-Historie zu bearbeiten und auszuführen. Er ermöglicht es Benutzern, frühere Befehle zu modifizieren, bevor sie erneut ausgeführt werden.
+Der `fc`-Befehl in der C Shell (csh) dient dazu, die letzten eingegebenen Befehle zu bearbeiten und erneut auszuführen. Er ermöglicht es Benutzern, frühere Befehle zu modifizieren, bevor sie sie erneut ausführen, was die Effizienz bei der Arbeit in der Kommandozeile erhöht.
 
 ## Verwendung
 Die grundlegende Syntax des `fc`-Befehls lautet:
 
 ```csh
-fc [optionen] [argumente]
+fc [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-l`: Listet die letzten Befehle in der Historie auf.
-- `-n`: Listet die Befehle ohne Zeilennummern auf.
-- `-s`: Führt den letzten Befehl ohne Bearbeitung aus.
+- `-l`: Listet die letzten Befehle auf.
+- `-e`: Gibt den Editor an, der zum Bearbeiten der Befehle verwendet werden soll.
+- `-n`: Unterdrückt die Ausgabe der Befehlsnummern beim Auflisten.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung des `fc`-Befehls:
 
-1. **Letzten Befehl bearbeiten:**
+1. **Letzte Befehle auflisten**:
+   Um die letzten 10 Befehle anzuzeigen, verwenden Sie:
+   ```csh
+   fc -l -10
+   ```
+
+2. **Befehl bearbeiten**:
+   Um den letzten Befehl in einem Standard-Editor zu bearbeiten, verwenden Sie:
    ```csh
    fc
    ```
-   Dies öffnet den letzten Befehl in einem Texteditor zur Bearbeitung.
 
-2. **Letzten Befehl ausführen:**
+3. **Bestimmten Befehl bearbeiten**:
+   Um einen spezifischen Befehl (z.B. den drittletzten) zu bearbeiten, verwenden Sie:
+   ```csh
+   fc -e vi -3
+   ```
+
+4. **Befehl ohne Bearbeitung ausführen**:
+   Um den letzten Befehl sofort auszuführen, ohne ihn zu bearbeiten, verwenden Sie:
    ```csh
    fc -s
    ```
-   Dies führt den letzten Befehl ohne Bearbeitung aus.
-
-3. **Liste der letzten 5 Befehle anzeigen:**
-   ```csh
-   fc -l -n -5
-   ```
-   Dies zeigt die letzten 5 Befehle ohne Zeilennummern an.
-
-4. **Bestimmten Befehl bearbeiten:**
-   ```csh
-   fc 10
-   ```
-   Dies öffnet den Befehl mit der Nummer 10 zur Bearbeitung.
 
 ## Tipps
-- Nutzen Sie `fc -l`, um schnell einen Überblick über Ihre letzten Befehle zu erhalten.
-- Wenn Sie häufig ähnliche Befehle ausführen, kann das Bearbeiten eines früheren Befehls mit `fc` viel Zeit sparen.
-- Achten Sie darauf, dass Änderungen, die Sie mit `fc` vornehmen, nur temporär sind, bis Sie den Befehl erneut ausführen.
+- Nutzen Sie `fc -l`, um schnell einen Überblick über Ihre letzten Befehle zu erhalten und den gewünschten Befehl zur Bearbeitung auszuwählen.
+- Wenn Sie häufig einen bestimmten Editor verwenden, können Sie diesen mit der `-e`-Option angeben, um Ihre bevorzugte Bearbeitungsumgebung zu nutzen.
+- Experimentieren Sie mit der `-n`-Option, um die Übersichtlichkeit der Befehlsliste zu erhöhen, besonders wenn Sie viele Befehle ausgeführt haben.

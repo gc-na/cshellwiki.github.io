@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) groepen gebruik: Beheer van gebruikersgroepen
 
 ## Overzicht
-De `groups` opdracht in C Shell (csh) toont de groepen waartoe een gebruiker behoort. Dit is nuttig voor systeembeheerders en gebruikers om te begrijpen welke rechten en toegang ze hebben op een systeem.
+De `groups` opdracht in C Shell (csh) toont de groepen waartoe een gebruiker behoort. Dit is nuttig voor systeembeheerders en gebruikers die hun groepslidmaatschappen willen controleren.
 
 ## Gebruik
 De basis syntaxis van de `groups` opdracht is als volgt:
@@ -11,32 +11,32 @@ groups [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-a`: Toont alle groepen waartoe de gebruiker behoort, inclusief de primaire groep.
-- `-g`: Toont alleen de groepsnamen zonder de gebruikersnaam.
+- `-a`: Toont ook de groepen van andere gebruikers.
+- `-g`: Toont alleen de groepsnamen zonder de gebruikersnamen.
 
 ## Veelvoorkomende Voorbeelden
 
-1. **Toon groepen voor de huidige gebruiker:**
+1. **Toon de groepen van de huidige gebruiker:**
    ```csh
    groups
    ```
 
-2. **Toon groepen voor een specifieke gebruiker:**
+2. **Toon de groepen van een specifieke gebruiker:**
    ```csh
-   groups username
+   groups gebruikersnaam
    ```
 
-3. **Toon alle groepen inclusief primaire groep:**
+3. **Toon alle groepen, inclusief die van andere gebruikers:**
    ```csh
    groups -a
    ```
 
-4. **Toon alleen groepsnamen zonder gebruikersnaam:**
+4. **Toon alleen de groepsnamen van de huidige gebruiker:**
    ```csh
-   groups -g username
+   groups -g
    ```
 
 ## Tips
-- Gebruik de `groups` opdracht regelmatig om te controleren of je de juiste toegang hebt tot bestanden en mappen.
+- Gebruik de `groups` opdracht regelmatig om je groepslidmaatschappen te controleren, vooral na wijzigingen in gebruikersinstellingen.
 - Combineer de `groups` opdracht met andere commando's zoals `id` voor meer gedetailleerde informatie over gebruikers en groepen.
-- Vergeet niet dat je mogelijk extra rechten nodig hebt om de groepen van andere gebruikers te bekijken.
+- Wees voorzichtig bij het gebruik van de `-a` optie, omdat dit informatie over andere gebruikers kan onthullen, wat niet altijd gewenst is in een gedeelde omgeving.

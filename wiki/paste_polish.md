@@ -1,45 +1,50 @@
 # [Linux] C Shell (csh) paste użycie: Łączenie plików wierszami
 
 ## Overview
-Polecenie `paste` w C Shell (csh) służy do łączenia zawartości kilku plików wierszami. Umożliwia to łatwe zestawienie danych z różnych źródeł w jeden plik, co jest przydatne w wielu zastosowaniach, takich jak przetwarzanie danych czy tworzenie raportów.
+Polecenie `paste` w C Shell (csh) służy do łączenia zawartości dwóch lub więcej plików wierszami. Umożliwia to tworzenie nowych plików, w których dane z różnych źródeł są zestawione obok siebie, co może być przydatne w wielu sytuacjach, takich jak porównywanie danych lub tworzenie raportów.
 
 ## Usage
 Podstawowa składnia polecenia `paste` jest następująca:
 
-```
+```csh
 paste [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-d` - Umożliwia określenie separatora, który ma być użyty między połączonymi wierszami. Domyślnie jest to tabulator.
-- `-s` - Łączy wiersze z każdego pliku w jeden wiersz, zamiast łączyć wiersze z różnych plików.
-- `-z` - Używa null jako separatora zamiast domyślnego.
+- `-d` : Określa separator, który ma być użyty między połączonymi wierszami (domyślnie jest to tabulator).
+- `-s` : Łączy wiersze w pliku w kolumnach zamiast wierszami.
+- `-z` : Używa znaku null jako separatora.
 
 ## Common Examples
-1. **Podstawowe łączenie dwóch plików:**
-   ```csh
-   paste plik1.txt plik2.txt
-   ```
+### Przykład 1: Łączenie dwóch plików
+Aby połączyć dwa pliki `plik1.txt` i `plik2.txt`, użyj:
 
-2. **Zastosowanie separatora:**
-   ```csh
-   paste -d ',' plik1.txt plik2.txt
-   ```
+```csh
+paste plik1.txt plik2.txt
+```
 
-3. **Łączenie wierszy z jednego pliku w jeden wiersz:**
-   ```csh
-   paste -s plik1.txt
-   ```
+### Przykład 2: Użycie separatora
+Aby połączyć pliki z przecinkiem jako separatorem, użyj:
 
-4. **Łączenie wielu plików z użyciem separatora null:**
-   ```csh
-   paste -z plik1.txt plik2.txt
-   ```
+```csh
+paste -d ',' plik1.txt plik2.txt
+```
+
+### Przykład 3: Łączenie wierszy w kolumnach
+Aby połączyć wiersze w pliku w kolumnach, użyj:
+
+```csh
+paste -s plik1.txt
+```
+
+### Przykład 4: Użycie znaku null jako separatora
+Aby połączyć pliki z użyciem znaku null jako separatora, użyj:
+
+```csh
+paste -z plik1.txt plik2.txt
+```
 
 ## Tips
+- Zawsze sprawdzaj, czy pliki, które łączysz, mają tę samą liczbę wierszy, aby uniknąć nieoczekiwanych wyników.
 - Używaj opcji `-d`, aby dostosować separator do swoich potrzeb, co może ułatwić dalsze przetwarzanie danych.
-- Pamiętaj, że `paste` nie modyfikuje oryginalnych plików, a jedynie wyświetla wynik na standardowym wyjściu. Możesz przekierować wynik do nowego pliku, używając `>`:
-  ```csh
-  paste plik1.txt plik2.txt > wynik.txt
-  ```
-- Sprawdzaj, czy pliki, które łączysz, mają tę samą liczbę wierszy, aby uniknąć nieoczekiwanych rezultatów.
+- Jeśli łączysz wiele plików, rozważ użycie pętli lub skryptu, aby uprościć proces.

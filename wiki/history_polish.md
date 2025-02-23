@@ -1,48 +1,50 @@
-# [Linux] C Shell (csh) historia użycia: przeglądanie historii poleceń
+# [Linux] C Shell (csh) historia użycia: Przeglądanie historii poleceń
 
 ## Overview
-Polecenie `history` w C Shell (csh) służy do wyświetlania listy wcześniej wprowadzonych poleceń. Umożliwia użytkownikom przeglądanie, powtarzanie i zarządzanie historią poleceń, co może znacznie przyspieszyć pracę w terminalu.
+Polecenie `history` w C Shell (csh) służy do wyświetlania listy wcześniej wprowadzonych poleceń. Umożliwia użytkownikom przeglądanie i ponowne używanie wcześniejszych komend, co znacznie ułatwia pracę w terminalu.
 
 ## Usage
 Podstawowa składnia polecenia `history` jest następująca:
 
-```csh
+```
 history [options] [arguments]
 ```
 
 ## Common Options
 - `-c` - Czyści historię poleceń.
-- `-n` - Ładuje historię poleceń z pliku, ale nie zapisuje aktualnej historii.
-- `-r` - Odczytuje historię poleceń z pliku.
-- `-w` - Zapisuje aktualną historię poleceń do pliku.
+- `-n` - Ładuje nowe polecenia z pliku historii.
+- `-r` - Odczytuje historię z pliku.
+- `-w` - Zapisuje historię do pliku.
 
 ## Common Examples
-1. **Wyświetlenie historii poleceń:**
+Przykłady użycia polecenia `history`:
+
+1. **Wyświetlenie całej historii poleceń:**
    ```csh
    history
    ```
 
-2. **Czyszczenie historii poleceń:**
-   ```csh
-   history -c
-   ```
-
-3. **Zapisanie historii do pliku:**
-   ```csh
-   history -w
-   ```
-
-4. **Wczytanie historii z pliku:**
-   ```csh
-   history -r
-   ```
-
-5. **Wyświetlenie ostatnich 10 poleceń:**
+2. **Wyświetlenie ostatnich 10 poleceń:**
    ```csh
    history 10
    ```
 
+3. **Czyszczenie historii poleceń:**
+   ```csh
+   history -c
+   ```
+
+4. **Zapisanie historii do pliku:**
+   ```csh
+   history -w
+   ```
+
+5. **Odczytanie historii z pliku:**
+   ```csh
+   history -r
+   ```
+
 ## Tips
-- Regularnie przeglądaj historię, aby szybko odnaleźć wcześniej używane polecenia.
-- Użyj opcji `-w`, aby zapisać historię przed zamknięciem sesji, co pozwoli na jej późniejsze wykorzystanie.
-- Pamiętaj, że czyszczenie historii za pomocą `-c` jest nieodwracalne, więc używaj tej opcji ostrożnie.
+- Regularnie przeglądaj swoją historię, aby szybko odnaleźć wcześniej używane polecenia.
+- Używaj opcji `-n` przed rozpoczęciem nowej sesji, aby załadować najnowsze polecenia.
+- Zawsze pamiętaj o czyszczeniu historii, jeśli pracujesz z poufnymi danymi.

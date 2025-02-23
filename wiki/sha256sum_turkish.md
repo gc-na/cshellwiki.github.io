@@ -1,44 +1,46 @@
 # [Linux] C Shell (csh) sha256sum Kullanımı: Dosyaların SHA-256 Hash Değerini Hesaplama
 
 ## Genel Bakış
-`sha256sum` komutu, dosyaların SHA-256 hash değerlerini hesaplamak için kullanılır. Bu, dosyaların bütünlüğünü kontrol etmek ve dosya karşılaştırmaları yapmak için yararlıdır.
+`sha256sum` komutu, dosyaların SHA-256 hash değerlerini hesaplamak için kullanılır. Bu hash değerleri, dosyaların bütünlüğünü kontrol etmek ve dosya karşılaştırmaları yapmak için faydalıdır.
 
 ## Kullanım
-Temel sözdizimi aşağıdaki gibidir:
+Komutun temel sözdizimi aşağıdaki gibidir:
 
-```bash
+```csh
 sha256sum [options] [arguments]
 ```
 
 ## Yaygın Seçenekler
-- `-b`: İkili dosyalar için hash hesaplar.
-- `-c`: Belirtilen dosyadaki hash değerlerini kontrol eder.
-- `-o`: Çıktıyı belirtilen dosyaya yönlendirir.
-- `--quiet`: Çıktıyı sessiz modda gösterir, sadece hatalar görünür.
+- `-b`: İkili dosyalar için hash hesaplamak.
+- `-c`: Hash değerlerini kontrol etmek için bir dosya kullanmak.
+- `-h`: Yardım mesajını görüntülemek.
+- `--tag`: Hash değerini bir etiketle birlikte yazdırmak.
 
 ## Yaygın Örnekler
+Aşağıda `sha256sum` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. Bir dosyanın SHA-256 hash değerini hesaplama:
-   ```bash
-   sha256sum dosya.txt
-   ```
+### 1. Basit bir dosyanın SHA-256 hash değerini hesaplama
+```csh
+sha256sum dosya.txt
+```
 
-2. Birden fazla dosyanın hash değerlerini hesaplama:
-   ```bash
-   sha256sum dosya1.txt dosya2.txt
-   ```
+### 2. Birden fazla dosyanın hash değerlerini hesaplama
+```csh
+sha256sum dosya1.txt dosya2.txt
+```
 
-3. Hash değerlerini bir dosyaya yazma:
-   ```bash
-   sha256sum dosya.txt > hash_degeri.txt
-   ```
+### 3. Hash değerlerini bir dosyaya yazma
+```csh
+sha256sum dosya.txt > hash_degerleri.txt
+```
 
-4. Hash değerlerini kontrol etme:
-   ```bash
-   sha256sum -c hash_degeri.txt
-   ```
+### 4. Hash değerlerini kontrol etme
+Önceden hesaplanmış hash değerlerini kontrol etmek için:
+```csh
+sha256sum -c hash_degerleri.txt
+```
 
 ## İpuçları
-- Hash değerlerini kontrol etmek için, hash değerlerini ve dosyaları aynı dizinde tutmak iyi bir uygulamadır.
-- Dosya bütünlüğünü sağlamak için hash değerlerini düzenli olarak kontrol edin.
-- Büyük dosyalarla çalışırken, işlemin tamamlanmasını bekleyin; işlem süresi dosyanın boyutuna bağlıdır.
+- Hash değerlerini kontrol etmek için her zaman bir dosya oluşturun ve bu dosyayı güvenli bir yerde saklayın.
+- İkili dosyalar için `-b` seçeneğini kullanmayı unutmayın.
+- Hash değerlerini karşılaştırırken, dosyaların tam olarak aynı olduğundan emin olun; aksi takdirde hash değerleri farklı olacaktır.

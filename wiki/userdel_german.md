@@ -1,19 +1,19 @@
-# [Linux] C Shell (csh) userdel Verwendung: Benutzerkonten löschen
+# [Linux] C Shell (csh) userdel Verwendung: Benutzer löschen
 
 ## Übersicht
-Der Befehl `userdel` wird verwendet, um Benutzerkonten im System zu löschen. Dies kann nützlich sein, wenn ein Benutzer nicht mehr benötigt wird oder das Konto aus Sicherheitsgründen entfernt werden soll.
+Der Befehl `userdel` wird verwendet, um Benutzerkonten aus dem System zu entfernen. Dies kann nützlich sein, wenn ein Benutzer nicht mehr benötigt wird oder das Konto aus Sicherheitsgründen gelöscht werden muss.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
 ```csh
-userdel [Optionen] [Argumente]
+userdel [Optionen] [Benutzername]
 ```
 
 ## Häufige Optionen
 - `-r`: Löscht das Home-Verzeichnis des Benutzers zusammen mit dem Benutzerkonto.
-- `-f`: Erzwingt die Löschung des Benutzers, auch wenn der Benutzer derzeit angemeldet ist.
-- `-Z`: Entfernt den SELinux-Kontext des Benutzers.
+- `-f`: Erzwingt das Löschen des Benutzers, auch wenn dieser gerade angemeldet ist.
+- `-Z`: Entfernt die SELinux-Kontextinformationen des Benutzers.
 
 ## Häufige Beispiele
 Um einen Benutzer ohne sein Home-Verzeichnis zu löschen, verwenden Sie:
@@ -28,19 +28,13 @@ Um einen Benutzer und sein Home-Verzeichnis zu löschen, verwenden Sie:
 userdel -r benutzername
 ```
 
-Um einen Benutzer zu löschen, der derzeit angemeldet ist, verwenden Sie:
+Um einen Benutzer zu löschen, der momentan angemeldet ist, verwenden Sie:
 
 ```csh
 userdel -f benutzername
 ```
 
-Um den SELinux-Kontext eines Benutzers zu entfernen, verwenden Sie:
-
-```csh
-userdel -Z benutzername
-```
-
 ## Tipps
-- Stellen Sie sicher, dass Sie über die erforderlichen Berechtigungen verfügen, um Benutzerkonten zu löschen; in der Regel sind Administratorrechte erforderlich.
-- Überprüfen Sie, ob der Benutzer derzeit angemeldet ist, bevor Sie den Befehl ausführen, um unerwartete Probleme zu vermeiden.
-- Führen Sie regelmäßig eine Überprüfung der Benutzerkonten durch, um sicherzustellen, dass nicht mehr benötigte Konten entfernt werden.
+- Stellen Sie sicher, dass Sie über die erforderlichen Berechtigungen verfügen, um Benutzerkonten zu löschen (in der Regel als Root-Benutzer).
+- Überprüfen Sie vor dem Löschen eines Benutzers, ob wichtige Daten im Home-Verzeichnis gesichert sind.
+- Verwenden Sie die Option `-r` mit Bedacht, da sie alle Dateien des Benutzers unwiderruflich entfernt.

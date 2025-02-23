@@ -1,52 +1,54 @@
 # [Linux] C Shell (csh) break : Interrompre l'exécution d'une boucle
 
 ## Overview
-La commande `break` dans C Shell (csh) est utilisée pour interrompre l'exécution d'une boucle. Elle permet de sortir prématurément d'une boucle `while`, `foreach` ou `for`, ce qui peut être utile lorsque certaines conditions sont remplies.
+La commande `break` dans C Shell (csh) est utilisée pour interrompre l'exécution d'une boucle. Lorsqu'elle est appelée, elle termine la boucle la plus interne dans laquelle elle se trouve, permettant ainsi de sortir rapidement d'une séquence d'itérations.
 
 ## Usage
 La syntaxe de base de la commande `break` est la suivante :
 
 ```csh
-break [options]
+break [n]
 ```
 
+Ici, `n` est un nombre optionnel qui spécifie combien de niveaux de boucles doivent être interrompus. Si `n` n'est pas fourni, seule la boucle la plus interne est interrompue.
+
 ## Common Options
-La commande `break` ne possède pas d'options spécifiques. Elle est généralement utilisée seule pour sortir d'une boucle.
+- `n` : Un entier qui indique le nombre de niveaux de boucle à interrompre. Par défaut, c'est 1.
 
 ## Common Examples
 
-### Exemple 1 : Sortir d'une boucle `while`
+### Exemple 1 : Interrompre une boucle simple
 ```csh
-set i = 0
-while ($i < 10)
-    echo "i vaut $i"
-    @ i++
-    if ($i == 5) break
+foreach i (1 2 3 4 5)
+    if ($i == 3) break
+    echo $i
 end
 ```
-Dans cet exemple, la boucle s'arrête lorsque `i` atteint 5.
+Dans cet exemple, la boucle s'arrête lorsque `i` atteint 3, donc l'affichage sera `1` et `2`.
 
-### Exemple 2 : Sortir d'une boucle `foreach`
+### Exemple 2 : Interrompre plusieurs niveaux de boucles
 ```csh
-foreach item (1 2 3 4 5)
-    echo "Élément : $item"
-    if ($item == 3) break
+foreach i (1 2)
+    foreach j (1 2 3)
+        if ($j == 2) break 2
+        echo "$i $j"
+    end
 end
 ```
-Ici, la boucle s'arrête lorsque l'élément est égal à 3.
+Ici, la commande `break 2` interrompt les deux boucles, donc rien ne sera affiché après que `j` atteigne 2.
 
-### Exemple 3 : Utilisation avec une condition
+### Exemple 3 : Utilisation dans une boucle while
 ```csh
 set count = 0
-while (1)
-    set count = `expr $count + 1`
-    echo "Compteur : $count"
-    if ($count >= 7) break
+while ($count < 5)
+    @ count++
+    if ($count == 4) break
+    echo $count
 end
 ```
-Dans cet exemple, la boucle se termine lorsque le compteur atteint 7.
+Cet exemple affichera `1`, `2`, et `3`, puis interrompra la boucle lorsque `count` atteindra 4.
 
 ## Tips
-- Utilisez `break` pour améliorer la lisibilité de votre code en évitant des conditions complexes.
-- Assurez-vous que l'utilisation de `break` ne crée pas de boucles infinies en vérifiant toujours vos conditions de sortie.
-- `break` ne fonctionne que dans les boucles ; son utilisation en dehors d'une boucle entraînera une erreur.
+- Utilisez `break` judicieusement pour éviter de sortir prématurément de boucles, ce qui pourrait conduire à des résultats inattendus.
+- Pensez à utiliser `break` avec des conditions claires pour améliorer la lisibilité de votre code.
+- Testez toujours vos boucles avec des valeurs simples avant d'ajouter une logique plus complexe pour vous assurer que `break` fonctionne comme prévu.

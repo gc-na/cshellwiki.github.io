@@ -6,48 +6,48 @@ La commande `apt` est utilisée pour gérer les paquets sur les systèmes basés
 ## Usage
 La syntaxe de base de la commande `apt` est la suivante :
 
-```
+```csh
 apt [options] [arguments]
 ```
 
 ## Common Options
 Voici quelques options courantes pour la commande `apt` :
 
-- `install` : Installe un ou plusieurs paquets.
-- `remove` : Supprime un ou plusieurs paquets.
+- `install` : Installe le paquet spécifié.
+- `remove` : Supprime le paquet spécifié.
 - `update` : Met à jour la liste des paquets disponibles.
-- `upgrade` : Met à jour tous les paquets installés vers la dernière version.
-- `search` : Recherche un paquet dans les dépôts.
+- `upgrade` : Met à niveau tous les paquets installés vers la dernière version.
+- `search` : Recherche un paquet par son nom.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `apt` :
 
-1. Pour mettre à jour la liste des paquets disponibles :
-   ```bash
-   apt update
-   ```
+- Pour mettre à jour la liste des paquets disponibles :
+  ```csh
+  apt update
+  ```
 
-2. Pour installer un paquet, par exemple `curl` :
-   ```bash
-   apt install curl
-   ```
+- Pour installer un paquet, par exemple `curl` :
+  ```csh
+  apt install curl
+  ```
 
-3. Pour supprimer un paquet, par exemple `curl` :
-   ```bash
-   apt remove curl
-   ```
+- Pour supprimer un paquet, par exemple `curl` :
+  ```csh
+  apt remove curl
+  ```
 
-4. Pour mettre à jour tous les paquets installés :
-   ```bash
-   apt upgrade
-   ```
+- Pour mettre à niveau tous les paquets installés :
+  ```csh
+  apt upgrade
+  ```
 
-5. Pour rechercher un paquet, par exemple `git` :
-   ```bash
-   apt search git
-   ```
+- Pour rechercher un paquet, par exemple `git` :
+  ```csh
+  apt search git
+  ```
 
 ## Tips
-- Toujours exécuter `apt update` avant d'installer ou de mettre à jour des paquets pour s'assurer que vous avez les dernières informations.
-- Utilisez `apt upgrade` pour mettre à jour tous les paquets en une seule commande, ce qui est plus efficace.
-- Vérifiez les dépendances des paquets avant de les installer pour éviter des conflits.
+- Toujours exécuter `apt update` avant d'installer ou de mettre à jour des paquets pour s'assurer que vous disposez des dernières informations sur les paquets.
+- Utilisez `apt upgrade` régulièrement pour maintenir votre système à jour et sécurisé.
+- Pour éviter les conflits de dépendances, utilisez `apt install` avec les options appropriées lorsque vous installez plusieurs paquets à la fois.

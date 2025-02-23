@@ -1,42 +1,44 @@
 # [Linux] C Shell (csh) script Użycie: rejestrowanie sesji terminala
 
 ## Overview
-Polecenie `script` w C Shell (csh) służy do rejestrowania sesji terminala. Umożliwia ono zapisanie wszystkich poleceń oraz ich wyników do pliku, co jest przydatne do późniejszego przeglądania lub dokumentacji.
+Polecenie `script` w C Shell (csh) służy do rejestrowania sesji terminala. Umożliwia tworzenie plików tekstowych, które zawierają wszystkie wprowadzone polecenia oraz ich wyniki, co jest przydatne do dokumentacji lub analizy.
 
 ## Usage
 Podstawowa składnia polecenia `script` jest następująca:
 
-```csh
+```
 script [opcje] [argumenty]
 ```
 
 ## Common Options
 - `-a`: Dodaje dane do istniejącego pliku zamiast go nadpisywać.
 - `-f`: Natychmiastowo zapisuje dane do pliku, co może być przydatne w przypadku długich sesji.
-- `-q`: Wyłącza komunikaty informacyjne, co sprawia, że rejestracja jest bardziej dyskretna.
+- `-q`: Włącza tryb cichy, nie wyświetlając komunikatów o rozpoczęciu i zakończeniu rejestrowania.
 
 ## Common Examples
-1. Rozpoczęcie rejestrowania sesji do pliku `sesja.txt`:
+Przykłady użycia polecenia `script`:
+
+1. Rozpoczęcie rejestrowania sesji do pliku `output.txt`:
    ```csh
-   script sesja.txt
+   script output.txt
    ```
 
-2. Dodanie nowej sesji do istniejącego pliku `sesja.txt`:
+2. Dodanie do istniejącego pliku `output.txt`:
    ```csh
-   script -a sesja.txt
+   script -a output.txt
    ```
 
-3. Rejestrowanie sesji z natychmiastowym zapisem:
+3. Rozpoczęcie rejestrowania w trybie cichym:
    ```csh
-   script -f sesja.txt
+   script -q output.txt
    ```
 
-4. Rozpoczęcie rejestrowania sesji bez komunikatów:
+4. Użycie opcji `-f` do natychmiastowego zapisywania:
    ```csh
-   script -q sesja.txt
+   script -f output.txt
    ```
 
 ## Tips
-- Upewnij się, że masz odpowiednie uprawnienia do zapisu w katalogu, w którym chcesz utworzyć plik rejestru.
-- Możesz zakończyć rejestrowanie sesji, wpisując polecenie `exit` lub naciskając `Ctrl+D`.
-- Regularnie przeglądaj pliki rejestru, aby upewnić się, że zawierają wszystkie potrzebne informacje.
+- Zawsze sprawdzaj, czy plik, do którego chcesz zapisać, nie istnieje, aby uniknąć przypadkowego nadpisania ważnych danych.
+- Używaj opcji `-a`, jeśli chcesz rejestrować wiele sesji w tym samym pliku.
+- Po zakończeniu sesji, aby zakończyć rejestrowanie, wystarczy wpisać `exit` lub użyć skrótu klawiszowego `Ctrl+D`.

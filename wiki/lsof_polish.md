@@ -1,49 +1,51 @@
 # [Linux] C Shell (csh) lsof użycie: Wyświetlanie otwartych plików
 
 ## Overview
-Polecenie `lsof` (list open files) służy do wyświetlania listy otwartych plików oraz procesów, które je używają. Jest to przydatne narzędzie do monitorowania aktywności systemu i diagnozowania problemów związanych z plikami i procesami.
+Polecenie `lsof` (list open files) służy do wyświetlania informacji o otwartych plikach i procesach, które je używają. Jest to przydatne narzędzie do monitorowania systemu i diagnozowania problemów związanych z plikami.
 
 ## Usage
-Podstawowa składnia polecenia `lsof` jest następująca:
+Podstawowa składnia polecenia `lsof` wygląda następująco:
 
-```csh
+```bash
 lsof [options] [arguments]
 ```
 
 ## Common Options
-- `-a` – Użyj tego opcji, aby połączyć różne kryteria wyszukiwania.
-- `-u` – Wyświetla pliki otwarte przez użytkownika o podanej nazwie.
-- `-p` – Wyświetla pliki otwarte przez proces o podanym identyfikatorze PID.
-- `-i` – Wyświetla pliki otwarte przez połączenia sieciowe.
-- `+D` – Wyświetla pliki otwarte w danym katalogu i jego podkatalogach.
+- `-a` - Użyj opcji AND do filtrowania wyników.
+- `-c <nazwa>` - Wyświetl otwarte pliki tylko dla procesów o podanej nazwie.
+- `-u <użytkownik>` - Pokaż otwarte pliki przez procesy uruchomione przez określonego użytkownika.
+- `-p <PID>` - Wyświetl otwarte pliki dla procesu o podanym identyfikatorze PID.
+- `+D <katalog>` - Pokaż wszystkie otwarte pliki w danym katalogu i jego podkatalogach.
 
 ## Common Examples
-- Aby wyświetlić wszystkie otwarte pliki w systemie:
-  ```csh
-  lsof
-  ```
+Oto kilka praktycznych przykładów użycia polecenia `lsof`:
 
-- Aby wyświetlić pliki otwarte przez konkretnego użytkownika:
-  ```csh
-  lsof -u username
-  ```
+1. Wyświetlenie wszystkich otwartych plików w systemie:
+   ```bash
+   lsof
+   ```
 
-- Aby znaleźć pliki otwarte przez proces o konkretnym PID:
-  ```csh
-  lsof -p 1234
-  ```
+2. Wyświetlenie otwartych plików dla konkretnego użytkownika:
+   ```bash
+   lsof -u username
+   ```
 
-- Aby zobaczyć otwarte połączenia sieciowe:
-  ```csh
-  lsof -i
-  ```
+3. Wyświetlenie otwartych plików przez proces o danym PID:
+   ```bash
+   lsof -p 1234
+   ```
 
-- Aby znaleźć wszystkie pliki otwarte w danym katalogu:
-  ```csh
-  lsof +D /ścieżka/do/katalogu
-  ```
+4. Wyświetlenie otwartych plików w określonym katalogu:
+   ```bash
+   lsof +D /ścieżka/do/katalogu
+   ```
+
+5. Wyświetlenie otwartych plików dla procesów o konkretnej nazwie:
+   ```bash
+   lsof -c nazwa_procesu
+   ```
 
 ## Tips
-- Używaj opcji `-a`, aby łączyć różne filtry, co pozwoli na bardziej precyzyjne wyniki.
-- Regularnie monitoruj otwarte pliki, aby zidentyfikować potencjalne problemy z wydajnością systemu.
-- Pamiętaj, że niektóre informacje mogą wymagać uprawnień administratora, więc uruchom `lsof` z `sudo`, jeśli to konieczne.
+- Używaj opcji `-n` aby uniknąć rozwiązywania nazw hostów, co przyspieszy działanie polecenia.
+- Opcja `-t` zwraca tylko identyfikatory PID, co jest przydatne do dalszego przetwarzania wyników.
+- Regularnie monitoruj otwarte pliki, aby zidentyfikować potencjalne problemy z zasobami systemowymi.

@@ -1,50 +1,48 @@
 # [Linux] C Shell (csh) umount użycie: Odmontowywanie systemów plików
 
 ## Overview
-Polecenie `umount` służy do odmontowywania systemów plików w systemie operacyjnym. Umożliwia to zwolnienie zasobów i zapewnienie, że dane są prawidłowo zapisane przed odłączeniem nośnika danych.
+Polecenie `umount` służy do odmontowywania systemów plików w systemie operacyjnym. Umożliwia to zwolnienie zasobów i zapewnienie, że dane są poprawnie zapisane przed odłączeniem nośnika.
 
 ## Usage
 Podstawowa składnia polecenia `umount` jest następująca:
 
-```csh
+```
 umount [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-a`: Odmontowuje wszystkie systemy plików wymienione w pliku `/etc/mtab`.
-- `-r`: Próbuje odmontować system plików, a jeśli to się nie powiedzie, to go zamontowuje w trybie tylko do odczytu.
-- `-f`: Wymusza odmontowanie systemu plików, nawet jeśli jest zajęty.
-- `-l`: Wykonuje "opóźnione" odmontowanie, co oznacza, że system plików zostanie odmontowany, gdy nie będzie już używany.
+- `-a` - Odmontowuje wszystkie zamontowane systemy plików.
+- `-f` - Wymusza odmontowanie systemu plików, nawet jeśli jest zajęty.
+- `-l` - Odmontowuje system plików w trybie leniwym, co oznacza, że operacja zostanie zakończona, gdy nie będzie już używany.
+- `-r` - W przypadku błędu, próbuje zamontować system plików w trybie tylko do odczytu.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `umount`:
-
-1. Odmontowanie systemu plików z określonego punktu montowania:
+1. Odmontowanie konkretnego systemu plików:
    ```csh
-   umount /mnt/usb
+   umount /mnt/dysk
    ```
 
-2. Odmontowanie systemu plików z użyciem opcji wymuszenia:
-   ```csh
-   umount -f /mnt/usb
-   ```
-
-3. Odmontowanie wszystkich systemów plików:
+2. Odmontowanie wszystkich zamontowanych systemów plików:
    ```csh
    umount -a
    ```
 
-4. Odmontowanie systemu plików w trybie tylko do odczytu, jeśli odmontowanie się nie powiedzie:
+3. Wymuszenie odmontowania systemu plików:
    ```csh
-   umount -r /mnt/usb
+   umount -f /mnt/dysk
    ```
 
-5. Wykonanie opóźnionego odmontowania:
+4. Odmontowanie w trybie leniwym:
    ```csh
-   umount -l /mnt/usb
+   umount -l /mnt/dysk
+   ```
+
+5. Próba odmontowania z zamontowaniem w trybie tylko do odczytu w przypadku błędu:
+   ```csh
+   umount -r /mnt/dysk
    ```
 
 ## Tips
-- Zawsze upewnij się, że nie masz otwartych plików ani aktywnych procesów korzystających z systemu plików przed jego odmontowaniem.
-- Używaj opcji `-l` z rozwagą, ponieważ może prowadzić do nieoczekiwanych zachowań, jeśli procesy nadal próbują uzyskać dostęp do odmontowanego systemu plików.
-- Regularnie sprawdzaj, czy system plików jest zamontowany, używając polecenia `mount`, aby uniknąć błędów przy odmontowywaniu.
+- Zawsze upewnij się, że żaden proces nie korzysta z systemu plików przed jego odmontowaniem, aby uniknąć utraty danych.
+- Używaj opcji `-l` z ostrożnością, ponieważ może to prowadzić do nieoczekiwanych zachowań, jeśli procesy nadal korzystają z odmontowanego systemu plików.
+- Regularnie sprawdzaj zamontowane systemy plików za pomocą polecenia `mount`, aby mieć pewność, że wszystko jest w porządku przed ich odmontowaniem.

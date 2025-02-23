@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) @ Gebruik: Voer aritmetische bewerkingen uit
+# [Unix] C Shell (csh) @ Gebruik: Voer rekenkundige bewerkingen uit
 
 ## Overzicht
-De `@` opdracht in C Shell (csh) wordt gebruikt om eenvoudige aritmetische bewerkingen uit te voeren en variabelen te manipuleren. Het stelt gebruikers in staat om rekenkundige expressies te evalueren en de resultaten aan variabelen toe te wijzen.
+De `@` opdracht in C Shell (csh) wordt gebruikt om rekenkundige bewerkingen uit te voeren en variabelen te initialiseren of bij te werken. Het stelt gebruikers in staat om eenvoudige wiskundige berekeningen uit te voeren binnen scripts of de commandoregel.
 
 ## Gebruik
 De basis syntaxis van de `@` opdracht is als volgt:
@@ -11,51 +11,45 @@ De basis syntaxis van de `@` opdracht is als volgt:
 ```
 
 ## Veelvoorkomende Opties
-- **-v**: Toont de waarde van de variabele na de bewerking.
-- **-n**: Voert de bewerking niet uit, maar toont alleen de opdracht.
+- **=**: Toewijzen van een waarde aan een variabele.
+- **+**: Optellen van waarden.
+- **-**: Aftrekken van waarden.
+- **\***: Vermenigvuldigen van waarden.
+- **/**: Delen van waarden.
 
 ## Veelvoorkomende Voorbeelden
 
-### Voorbeeld 1: Basis Aritmetische Operatie
-Toewijzen van de som van twee getallen aan een variabele.
-
+### Voorbeeld 1: Een variabele initialiseren
 ```csh
-set a = 5
-set b = 10
-@ c = $a + $b
-echo $c  # Output: 15
+@ a = 5
 ```
 
-### Voorbeeld 2: Vermenigvuldigen van Waarden
-Vermenigvuldigen van twee variabelen en het resultaat opslaan.
-
+### Voorbeeld 2: Waarden optellen
 ```csh
-set x = 4
-set y = 3
-@ z = $x * $y
-echo $z  # Output: 12
+@ b = a + 10
 ```
 
-### Voorbeeld 3: Incrementeer een Waarde
-Een waarde met 1 verhogen.
-
+### Voorbeeld 3: Waarden aftrekken
 ```csh
-set count = 0
-@ count++
-echo $count  # Output: 1
+@ c = b - 3
 ```
 
-### Voorbeeld 4: Complexe Expressie
-Een complexe wiskundige bewerking uitvoeren.
-
+### Voorbeeld 4: Vermenigvuldigen
 ```csh
-set a = 20
-set b = 5
-@ result = ($a - $b) / 3
-echo $result  # Output: 5
+@ d = a * 2
+```
+
+### Voorbeeld 5: Delen
+```csh
+@ e = d / 4
+```
+
+### Voorbeeld 6: Meerdere bewerkingen in één regel
+```csh
+@ f = a + b - c * 2
 ```
 
 ## Tips
-- Zorg ervoor dat je variabelen zijn ingesteld voordat je ze in een `@` opdracht gebruikt.
-- Gebruik haakjes om de volgorde van bewerkingen te bepalen, vooral bij complexe expressies.
-- Houd rekening met de datatypes van de variabelen; `@` werkt alleen met gehele getallen.
+- Zorg ervoor dat je spaties gebruikt rond de operatoren, anders werkt de opdracht mogelijk niet correct.
+- Gebruik haakjes voor complexe berekeningen om de volgorde van bewerkingen te garanderen.
+- Vergeet niet dat de `@` opdracht alleen werkt met gehele getallen; voor decimale getallen moet je andere methoden gebruiken.

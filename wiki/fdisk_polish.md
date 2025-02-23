@@ -1,46 +1,46 @@
 # [Linux] C Shell (csh) fdisk użycie: zarządzanie partycjami dysku
 
 ## Overview
-Polecenie `fdisk` służy do zarządzania partycjami dysku w systemach operacyjnych Unix i Linux. Umożliwia użytkownikom tworzenie, usuwanie oraz modyfikowanie partycji na dyskach twardych.
+Polecenie `fdisk` służy do zarządzania partycjami dysku w systemach operacyjnych opartych na Uniksie. Umożliwia tworzenie, usuwanie i modyfikowanie partycji, co jest niezbędne do efektywnego zarządzania przestrzenią dyskową.
 
 ## Usage
 Podstawowa składnia polecenia `fdisk` jest następująca:
 
-```csh
+```
 fdisk [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-l` - Wyświetla listę wszystkich dostępnych dysków i ich partycji.
-- `-u` - Używa jednostek cylindrów zamiast sektorów.
+- `-l` - Wyświetla listę dostępnych dysków i ich partycji.
+- `-u` - Używa jednostek cylindrów do wyświetlania informacji o partycjach.
 - `-n` - Tworzy nową partycję.
 - `-d` - Usuwa istniejącą partycję.
-- `-p` - Wyświetla aktualną tablicę partycji.
+- `-p` - Wyświetla tabelę partycji.
 
 ## Common Examples
-1. **Wyświetlenie listy partycji na dysku**:
-   ```csh
+1. **Wyświetlenie listy partycji**:
+   ```bash
    fdisk -l
    ```
 
 2. **Tworzenie nowej partycji**:
-   ```csh
+   ```bash
    fdisk /dev/sda
    ```
-   Następnie w interaktywnym menu wybierz opcję `n`, aby utworzyć nową partycję.
+   Następnie w interaktywnym menu wybierz opcję `n`, aby dodać nową partycję.
 
 3. **Usuwanie partycji**:
-   ```csh
+   ```bash
    fdisk /dev/sda
    ```
    W interaktywnym menu wybierz opcję `d`, aby usunąć partycję.
 
-4. **Wyświetlenie tablicy partycji**:
-   ```csh
+4. **Wyświetlenie tabeli partycji**:
+   ```bash
    fdisk -p /dev/sda
    ```
 
 ## Tips
-- Zawsze wykonuj kopię zapasową danych przed modyfikowaniem partycji, aby uniknąć utraty danych.
-- Używaj opcji `-l`, aby szybko sprawdzić, jakie partycje są dostępne przed dokonaniem jakichkolwiek zmian.
-- Upewnij się, że masz odpowiednie uprawnienia (najlepiej jako root), aby używać polecenia `fdisk`.
+- Zawsze wykonuj kopię zapasową danych przed modyfikowaniem partycji.
+- Używaj opcji `-l` przed wprowadzeniem zmian, aby upewnić się, że znasz aktualny stan partycji.
+- Pracuj z `fdisk` jako użytkownik z uprawnieniami administratora, aby uniknąć problemów z dostępem.

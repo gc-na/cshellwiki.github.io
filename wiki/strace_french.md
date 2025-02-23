@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) strace Utilisation : Suivre les appels système d'un programme
+# [Linux] C Shell (csh) strace Utilisation : Suivre les appels système
 
 ## Overview
-La commande `strace` est un outil puissant utilisé pour suivre les appels système et les signaux d'un programme en cours d'exécution. Elle permet aux développeurs et aux administrateurs système de déboguer et d'analyser le comportement des applications en montrant les interactions entre le programme et le noyau du système d'exploitation.
+La commande `strace` est un outil puissant qui permet de suivre les appels système effectués par un programme en cours d'exécution. Cela peut être extrêmement utile pour le débogage et l'analyse des performances des applications.
 
 ## Usage
 La syntaxe de base de la commande `strace` est la suivante :
@@ -13,11 +13,11 @@ strace [options] [arguments]
 ## Common Options
 Voici quelques options courantes pour `strace` :
 
-- `-c` : Résume les statistiques des appels système effectués.
-- `-e` : Filtre les appels système à tracer (par exemple, `-e trace=open` pour tracer uniquement les appels `open`).
-- `-o <fichier>` : Redirige la sortie vers un fichier au lieu de l'afficher sur la console.
-- `-p <pid>` : Attache `strace` à un processus existant en spécifiant son identifiant de processus (PID).
-- `-f` : Suit les processus fils créés par le programme traqué.
+- `-c` : Résumé des statistiques des appels système.
+- `-e` : Filtrer les appels système par expression.
+- `-o <file>` : Écrire la sortie dans un fichier spécifié.
+- `-p <pid>` : Attacher `strace` à un processus existant par son identifiant de processus (PID).
+- `-f` : Suivre les processus fils créés par le programme.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `strace` :
@@ -27,27 +27,28 @@ Voici quelques exemples pratiques de l'utilisation de `strace` :
    strace ls
    ```
 
-2. Rediriger la sortie vers un fichier :
+2. Écrire la sortie dans un fichier :
    ```csh
    strace -o sortie.txt ls
    ```
 
-3. Analyser les appels système avec un résumé :
-   ```csh
-   strace -c ls
-   ```
-
-4. Suivre un processus existant :
+3. Suivre un processus existant :
    ```csh
    strace -p 1234
    ```
 
-5. Filtrer pour ne tracer que les appels `open` :
+4. Résumer les statistiques des appels système :
    ```csh
-   strace -e trace=open ls
+   strace -c ls
+   ```
+
+5. Filtrer les appels système par expression :
+   ```csh
+   strace -e trace=open,close ls
    ```
 
 ## Tips
-- Utilisez l'option `-o` pour enregistrer les résultats dans un fichier, ce qui facilite l'analyse ultérieure.
-- Combinez `-c` avec d'autres options pour obtenir un résumé des performances des appels système.
-- Soyez prudent lors de l'utilisation de `strace` sur des programmes critiques, car cela peut affecter leur performance.
+- Utilisez l'option `-c` pour obtenir un aperçu rapide des appels système sans trop de détails.
+- Lorsque vous suivez un processus avec `-p`, assurez-vous d'avoir les permissions nécessaires pour accéder au processus.
+- Redirigez la sortie vers un fichier pour une analyse plus facile, surtout si le programme génère beaucoup de sorties.
+- Familiarisez-vous avec les différents appels système pour mieux interpréter les résultats de `strace`.

@@ -1,47 +1,47 @@
-# [Linux] C Shell (csh) uniq gebruik: Verwijder dubbele regels
+# [Linux] C Shell (csh) uniq gebruik: Verwijder dubbele regels uit bestanden
 
 ## Overzicht
-Het `uniq` commando in C Shell (csh) wordt gebruikt om dubbele regels in een tekstbestand te verwijderen. Het leest een gesorteerde invoer en geeft alleen unieke regels terug. Dit is handig voor het opschonen van gegevens of het analyseren van tekstbestanden.
+De `uniq`-opdracht in C Shell (csh) wordt gebruikt om dubbele regels uit een gesorteerd bestand te verwijderen. Het is een handige tool voor het opschonen van gegevens en het verkrijgen van unieke invoer.
 
 ## Gebruik
-De basis syntaxis van het `uniq` commando is als volgt:
+De basis syntaxis van de `uniq`-opdracht is als volgt:
 
 ```csh
 uniq [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
+## Veelvoorkomende opties
 - `-c`: Tel het aantal keren dat elke regel voorkomt.
 - `-d`: Geef alleen de regels weer die meer dan eens voorkomen.
 - `-u`: Geef alleen de unieke regels weer die slechts één keer voorkomen.
 
-## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van `uniq`:
+## Veelvoorkomende voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van de `uniq`-opdracht:
 
 1. **Verwijder dubbele regels uit een bestand:**
    ```csh
-   uniq bestand.txt
+   uniq input.txt > output.txt
    ```
 
 2. **Tel het aantal keren dat elke regel voorkomt:**
    ```csh
-   uniq -c bestand.txt
+   uniq -c input.txt
    ```
 
-3. **Toon alleen de regels die meer dan eens voorkomen:**
+3. **Toon alleen de dubbele regels:**
    ```csh
-   uniq -d bestand.txt
+   uniq -d input.txt
    ```
 
-4. **Toon alleen unieke regels:**
+4. **Toon alleen de unieke regels:**
    ```csh
-   uniq -u bestand.txt
+   uniq -u input.txt
    ```
 
 ## Tips
-- Zorg ervoor dat de invoer gesorteerd is voordat je `uniq` gebruikt, omdat het alleen werkt met aaneengeschakelde dubbele regels.
-- Je kunt `uniq` combineren met andere commando's zoals `sort` om eerst je gegevens te sorteren:
+- Zorg ervoor dat het bestand gesorteerd is voordat je `uniq` gebruikt, anders worden dubbele regels mogelijk niet correct herkend.
+- Je kunt `uniq` combineren met andere commando's zoals `sort` om een efficiëntere gegevensverwerking te bereiken:
   ```csh
-  sort bestand.txt | uniq
+  sort input.txt | uniq > output.txt
   ```
 - Gebruik de `-c` optie om snel een overzicht te krijgen van de frequentie van regels in je bestand.

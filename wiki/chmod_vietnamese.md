@@ -1,50 +1,45 @@
-# [Hệ điều hành] C Shell (csh) chmod Cách sử dụng: Thay đổi quyền truy cập tệp
+# [Hệ điều hành Unix] C Shell (csh) chmod: Thay đổi quyền truy cập tệp
 
-## Tổng quan
-Lệnh `chmod` trong C Shell (csh) được sử dụng để thay đổi quyền truy cập của các tệp và thư mục trong hệ thống Unix/Linux. Quyền truy cập có thể được thiết lập cho người sở hữu tệp, nhóm và người dùng khác.
+## Overview
+Lệnh `chmod` trong C Shell (csh) được sử dụng để thay đổi quyền truy cập của các tệp và thư mục. Quyền truy cập này xác định ai có thể đọc, ghi hoặc thực thi tệp.
 
-## Cách sử dụng
+## Usage
 Cú pháp cơ bản của lệnh `chmod` như sau:
 ```csh
 chmod [options] [arguments]
 ```
 
-## Các tùy chọn phổ biến
+## Common Options
 - `u`: đại diện cho người sở hữu tệp (user).
-- `g`: đại diện cho nhóm (group).
-- `o`: đại diện cho người dùng khác (others).
+- `g`: đại diện cho nhóm người dùng (group).
+- `o`: đại diện cho những người khác (others).
 - `a`: đại diện cho tất cả (all).
 - `+`: thêm quyền.
 - `-`: xóa quyền.
 - `=`: thiết lập quyền cụ thể.
 
-## Ví dụ thường gặp
-1. **Thêm quyền thực thi cho người sở hữu tệp:**
-   ```csh
-   chmod u+x filename
-   ```
+## Common Examples
+- **Thêm quyền ghi cho người sở hữu tệp:**
+```csh
+chmod u+w filename.txt
+```
 
-2. **Xóa quyền đọc cho nhóm:**
-   ```csh
-   chmod g-r filename
-   ```
+- **Xóa quyền thực thi cho nhóm:**
+```csh
+chmod g-x script.sh
+```
 
-3. **Thiết lập quyền đọc và ghi cho tất cả:**
-   ```csh
-   chmod a+rw filename
-   ```
+- **Thiết lập quyền đọc cho tất cả mọi người:**
+```csh
+chmod a+r document.pdf
+```
 
-4. **Thay đổi quyền thành chỉ đọc cho người khác:**
-   ```csh
-   chmod o=r filename
-   ```
+- **Thêm quyền đọc và ghi cho nhóm và xóa quyền ghi cho người khác:**
+```csh
+chmod g+rw,o-w file.txt
+```
 
-5. **Thêm quyền thực thi cho tất cả:**
-   ```csh
-   chmod a+x filename
-   ```
-
-## Mẹo
-- Luôn kiểm tra quyền truy cập của tệp sau khi sử dụng lệnh `chmod` bằng lệnh `ls -l` để đảm bảo rằng các quyền đã được thiết lập đúng cách.
-- Sử dụng các quyền cụ thể thay vì quyền chung để tăng cường bảo mật cho tệp của bạn.
-- Hãy cẩn thận khi thay đổi quyền cho các tệp hệ thống, vì điều này có thể ảnh hưởng đến hoạt động của hệ thống.
+## Tips
+- Luôn kiểm tra quyền truy cập hiện tại của tệp trước khi thay đổi bằng lệnh `ls -l`.
+- Sử dụng các quyền cụ thể thay vì quyền rộng để bảo mật tốt hơn.
+- Hãy cẩn thận khi sử dụng quyền `777`, vì điều này cho phép tất cả mọi người có thể đọc, ghi và thực thi tệp.

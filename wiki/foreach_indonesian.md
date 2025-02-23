@@ -1,12 +1,12 @@
-# [Sistem Operasi] C Shell (csh) foreach Penggunaan: Menjalankan perintah untuk setiap elemen dalam daftar
+# [Sistem Operasi] C Shell (csh) foreach: Menjalankan perintah untuk setiap elemen dalam daftar
 
 ## Overview
-Perintah `foreach` dalam C Shell (csh) digunakan untuk menjalankan serangkaian perintah untuk setiap elemen dalam daftar. Ini sangat berguna ketika Anda perlu melakukan operasi yang sama pada beberapa item tanpa harus menulis ulang perintah untuk setiap item.
+Perintah `foreach` dalam C Shell (csh) digunakan untuk menjalankan serangkaian perintah untuk setiap elemen dalam daftar yang diberikan. Ini sangat berguna ketika Anda ingin melakukan operasi yang sama pada beberapa item tanpa harus menulis ulang perintah untuk setiap item.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `foreach`:
 
-```
+```csh
 foreach variable (list)
     command
 end
@@ -14,40 +14,40 @@ end
 
 ## Common Options
 Perintah `foreach` tidak memiliki banyak opsi, tetapi berikut adalah beberapa yang umum digunakan:
+
 - `variable`: Nama variabel yang akan menyimpan setiap elemen dari daftar saat iterasi.
-- `list`: Daftar elemen yang ingin Anda iterasi.
+- `list`: Daftar elemen yang akan diproses.
 
 ## Common Examples
 
-### Contoh 1: Mencetak Nama File
-Menampilkan nama file dalam direktori saat ini.
+### Contoh 1: Menampilkan nama file
+Menampilkan semua file dengan ekstensi `.txt` dalam direktori saat ini.
 
 ```csh
-foreach file (*)
+foreach file (*.txt)
     echo $file
 end
 ```
 
-### Contoh 2: Mengganti Ekstensi File
-Mengganti ekstensi file dari `.txt` menjadi `.bak`.
+### Contoh 2: Menghapus file sementara
+Menghapus semua file sementara yang memiliki ekstensi `.tmp`.
 
 ```csh
-foreach file (*.txt)
-    mv $file `basename $file .txt`.bak
+foreach temp_file (*.tmp)
+    rm $temp_file
 end
 ```
 
-### Contoh 3: Menjalankan Perintah pada Daftar Angka
-Menampilkan kuadrat dari angka 1 hingga 5.
+### Contoh 3: Mengompresi file
+Mengompresi semua file gambar dalam direktori.
 
 ```csh
-foreach num (1 2 3 4 5)
-    @ square = $num * $num
-    echo "Kuadrat dari $num adalah $square"
+foreach img_file (*.jpg)
+    gzip $img_file
 end
 ```
 
 ## Tips
-- Pastikan untuk menutup blok `foreach` dengan `end` untuk menghindari kesalahan sintaks.
-- Gunakan wildcard (`*`) untuk menangani banyak file atau elemen dengan mudah.
-- Periksa nilai variabel dengan `echo` sebelum menjalankan perintah yang lebih kompleks untuk memastikan bahwa iterasi berjalan dengan benar.
+- Pastikan untuk menggunakan `end` di akhir blok `foreach` untuk menandai akhir dari perintah yang akan dieksekusi.
+- Gunakan wildcard (`*`) untuk memudahkan pemilihan file atau direktori yang sesuai dengan pola tertentu.
+- Jika Anda ingin melihat hasil dari setiap iterasi, gunakan `echo` untuk mencetak nilai variabel sebelum menjalankan perintah.

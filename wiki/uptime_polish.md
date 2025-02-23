@@ -1,21 +1,21 @@
 # [Linux] C Shell (csh) uptime użycie: Sprawdza czas działania systemu
 
 ## Overview
-Polecenie `uptime` w C Shell (csh) służy do wyświetlania, jak długo system działa od ostatniego uruchomienia. Informuje również o liczbie użytkowników zalogowanych do systemu oraz o średnim obciążeniu systemu w różnych przedziałach czasowych.
+Polecenie `uptime` w C Shell (csh) służy do wyświetlania czasu działania systemu, liczby użytkowników oraz średniego obciążenia systemu w ciągu ostatnich 1, 5 i 15 minut. To przydatne narzędzie do monitorowania stanu systemu.
 
 ## Usage
 Podstawowa składnia polecenia `uptime` jest następująca:
 
-```
+```csh
 uptime [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-p` - Wyświetla czas działania systemu w bardziej czytelny sposób.
-- `-s` - Pokazuje dokładny czas, kiedy system został uruchomiony.
+- `-p`: Wyświetla czas działania systemu w bardziej czytelnej formie.
+- `-s`: Pokazuje czas, kiedy system został uruchomiony.
 
 ## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `uptime`:
+Przykłady użycia polecenia `uptime`:
 
 1. **Podstawowe użycie**:
    ```csh
@@ -27,12 +27,12 @@ Oto kilka praktycznych przykładów użycia polecenia `uptime`:
    uptime -p
    ```
 
-3. **Pokazanie dokładnego czasu uruchomienia systemu**:
+3. **Wyświetlenie czasu uruchomienia systemu**:
    ```csh
    uptime -s
    ```
 
 ## Tips
-- Regularne sprawdzanie czasu działania systemu może pomóc w monitorowaniu stabilności i dostępności serwera.
-- Używaj opcji `-p`, aby uzyskać bardziej zrozumiałe informacje o czasie działania, szczególnie dla mniej doświadczonych użytkowników.
-- Możesz zautomatyzować sprawdzanie uptime, dodając polecenie do skryptów monitorujących.
+- Regularnie sprawdzaj czas działania systemu, aby monitorować jego stabilność.
+- Używaj opcji `-p`, aby uzyskać bardziej zrozumiałe informacje o czasie działania.
+- W połączeniu z innymi poleceniami, takimi jak `top`, możesz uzyskać pełniejszy obraz obciążenia systemu.

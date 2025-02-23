@@ -1,33 +1,33 @@
 # [Linux] C Shell (csh) sort użycie: sortowanie danych
 
 ## Overview
-Polecenie `sort` służy do sortowania linii tekstu w plikach lub z wejścia standardowego. Umożliwia uporządkowanie danych w różnych porządkach, co jest przydatne w analizie i przetwarzaniu informacji.
+Polecenie `sort` w C Shell (csh) służy do sortowania linii tekstu w plikach lub danych wejściowych. Umożliwia uporządkowanie danych alfabetycznie lub numerycznie, co ułatwia ich analizę i przetwarzanie.
 
 ## Usage
-Podstawowa składnia polecenia `sort` wygląda następująco:
+Podstawowa składnia polecenia `sort` jest następująca:
 
 ```csh
 sort [opcje] [argumenty]
 ```
 
 ## Common Options
-Oto kilka powszechnie używanych opcji polecenia `sort`:
+Oto kilka powszechnie używanych opcji dla polecenia `sort`:
 
-- `-n`: Sortuje numerycznie.
-- `-r`: Sortuje w odwrotnej kolejności.
-- `-k`: Określa klucz sortowania (np. kolumnę).
-- `-u`: Usuwa duplikaty po sortowaniu.
-- `-o`: Zapisuje wynik sortowania do określonego pliku.
+- `-r` - sortowanie w odwrotnej kolejności (malejąco).
+- `-n` - sortowanie numeryczne (zamiast alfabetycznego).
+- `-k` - sortowanie według określonego klucza (np. kolumny).
+- `-u` - usunięcie duplikatów z wyników sortowania.
+- `-o` - zapisanie wyników sortowania do określonego pliku.
 
 ## Common Examples
-Poniżej znajdują się przykłady użycia polecenia `sort`:
+Oto kilka praktycznych przykładów użycia polecenia `sort`:
 
 1. Sortowanie pliku tekstowego alfabetycznie:
    ```csh
    sort plik.txt
    ```
 
-2. Sortowanie numeryczne:
+2. Sortowanie pliku numerycznie:
    ```csh
    sort -n liczby.txt
    ```
@@ -39,15 +39,20 @@ Poniżej znajdują się przykłady użycia polecenia `sort`:
 
 4. Sortowanie według drugiej kolumny:
    ```csh
-   sort -k 2 plik.txt
+   sort -k2 plik.txt
    ```
 
-5. Zapisanie posortowanego wyniku do nowego pliku:
+5. Zapisanie posortowanych danych do nowego pliku:
    ```csh
    sort plik.txt -o posortowany.txt
    ```
 
+6. Usunięcie duplikatów z posortowanego pliku:
+   ```csh
+   sort -u plik.txt
+   ```
+
 ## Tips
-- Używaj opcji `-u`, aby szybko usunąć duplikaty z wyników sortowania.
-- Możesz łączyć różne opcje, na przykład `sort -n -r`, aby sortować numerycznie w odwrotnej kolejności.
-- Zawsze sprawdzaj zawartość pliku wynikowego, aby upewnić się, że sortowanie przebiegło zgodnie z oczekiwaniami.
+- Używaj opcji `-o`, aby bezpośrednio zapisać wyniki do pliku, co pozwala zaoszczędzić czas.
+- W przypadku dużych plików, rozważ użycie opcji `-S`, aby określić ilość pamięci, którą `sort` może wykorzystać.
+- Zawsze sprawdzaj wyniki sortowania, aby upewnić się, że dane są uporządkowane zgodnie z oczekiwaniami.

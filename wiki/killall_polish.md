@@ -1,44 +1,46 @@
-# [Linux] C Shell (csh) killall użycie: Zakończ procesy według nazwy
+# [Linux] C Shell (csh) killall użycie: Zakończ procesy na podstawie nazwy
 
-## Overview
-Polecenie `killall` w C Shell (csh) służy do zakończenia wszystkich procesów o określonej nazwie. Jest to przydatne narzędzie, gdy chcesz szybko zamknąć wiele instancji programu bez konieczności identyfikowania ich identyfikatorów procesów (PID).
+## Przegląd
+Polecenie `killall` w C Shell (csh) służy do zakończenia wszystkich procesów o określonej nazwie. Jest to przydatne, gdy chcesz szybko zamknąć wiele instancji programu, które mogą działać w tle.
 
-## Usage
+## Użycie
 Podstawowa składnia polecenia `killall` jest następująca:
 
 ```
 killall [opcje] [argumenty]
 ```
 
-## Common Options
-- `-u <użytkownik>`: Zakończ procesy tylko dla określonego użytkownika.
-- `-s <sygnał>`: Wyślij określony sygnał do procesów (domyślnie jest to SIGTERM).
-- `-q`: Nie wyświetlaj komunikatów o błędach, jeśli nie ma procesów do zakończenia.
+## Częste opcje
+- `-9`: Wymusza natychmiastowe zakończenie procesów.
+- `-u [użytkownik]`: Zakończ procesy tylko dla określonego użytkownika.
+- `-r`: Użyj wyrażenia regularnego do dopasowania nazw procesów.
 
-## Common Examples
-Oto kilka praktycznych przykładów użycia polecenia `killall`:
+## Częste przykłady
+Zakończenie wszystkich procesów o nazwie `firefox`:
 
-1. Zakończenie wszystkich procesów o nazwie `firefox`:
-   ```csh
-   killall firefox
-   ```
+```csh
+killall firefox
+```
 
-2. Zakończenie wszystkich procesów `gedit` z wysłaniem sygnału SIGKILL:
-   ```csh
-   killall -s SIGKILL gedit
-   ```
+Wymuszenie zakończenia wszystkich procesów o nazwie `gedit`:
 
-3. Zakończenie procesów `python` tylko dla użytkownika `janek`:
-   ```csh
-   killall -u janek python
-   ```
+```csh
+killall -9 gedit
+```
 
-4. Zakończenie procesów `myapp`, nie wyświetlając komunikatów o błędach:
-   ```csh
-   killall -q myapp
-   ```
+Zakończenie wszystkich procesów `python` dla konkretnego użytkownika:
 
-## Tips
-- Używaj `killall` ostrożnie, aby nie zakończyć procesów, które mogą być potrzebne do działania systemu.
-- Zawsze sprawdzaj, które procesy są uruchomione, używając polecenia `ps`, zanim użyjesz `killall`.
-- Możesz użyć opcji `-s` z różnymi sygnałami, aby dostosować sposób zakończenia procesów, na przykład `SIGTERM` lub `SIGKILL`.
+```csh
+killall -u username python
+```
+
+Zakończenie procesów, które pasują do wyrażenia regularnego (np. `java`):
+
+```csh
+killall -r java.*
+```
+
+## Wskazówki
+- Używaj opcji `-9` ostrożnie, ponieważ wymusza natychmiastowe zakończenie procesów, co może prowadzić do utraty danych.
+- Zawsze sprawdzaj, które procesy będą zakończone, zanim użyjesz `killall`, aby uniknąć przypadkowego zamknięcia ważnych aplikacji.
+- Możesz użyć polecenia `ps` przed `killall`, aby zobaczyć, które procesy są uruchomione i upewnić się, że chcesz je zakończyć.

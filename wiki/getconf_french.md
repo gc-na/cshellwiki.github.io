@@ -1,12 +1,12 @@
 # [Linux] C Shell (csh) getconf : obtenir des informations sur les configurations système
 
 ## Overview
-La commande `getconf` est utilisée pour récupérer des informations sur les configurations système et les limites de l'environnement d'exécution. Elle permet d'accéder à des valeurs spécifiques qui peuvent être utiles pour le développement et l'administration système.
+La commande `getconf` est utilisée pour obtenir des informations sur les configurations système et les limites de l'environnement d'exécution. Elle permet d'interroger des valeurs spécifiques liées au système, ce qui peut être utile pour le développement et le dépannage.
 
 ## Usage
 La syntaxe de base de la commande `getconf` est la suivante :
 
-```csh
+```
 getconf [options] [arguments]
 ```
 
@@ -17,27 +17,30 @@ getconf [options] [arguments]
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `getconf` :
 
-1. Pour afficher toutes les valeurs de configuration disponibles :
+1. **Obtenir toutes les valeurs de configuration :**
    ```csh
    getconf -a
    ```
 
-2. Pour obtenir la taille maximale d'un fichier :
+2. **Vérifier la taille maximale d'un fichier :**
    ```csh
-   getconf _PC_MAX_INPUT
+   getconf _POSIX_VERSION
    ```
 
-3. Pour vérifier la taille de la mémoire de page :
+3. **Trouver la taille de la mémoire de page :**
    ```csh
-   getconf PAGESIZE
+   getconf PAGE_SIZE
    ```
 
-4. Pour obtenir le nombre maximum de fichiers ouverts :
+4. **Obtenir le nombre maximum de fichiers ouverts :**
    ```csh
    getconf OPEN_MAX
    ```
 
 ## Tips
-- Utilisez `getconf -a` pour explorer toutes les variables disponibles si vous n'êtes pas sûr de ce que vous cherchez.
-- Combinez `getconf` avec d'autres commandes pour automatiser des scripts qui dépendent de la configuration système.
-- Vérifiez la documentation de votre système pour des variables spécifiques qui peuvent ne pas être disponibles sur tous les systèmes.
+- Utilisez `getconf -a` pour explorer toutes les options disponibles et mieux comprendre les configurations de votre système.
+- Vérifiez les valeurs spécifiques qui peuvent être pertinentes pour votre application ou votre script afin d'optimiser les performances.
+- Pensez à rediriger la sortie vers un fichier si vous avez besoin de conserver les informations pour une consultation ultérieure :
+  ```csh
+  getconf -a > config_info.txt
+  ```

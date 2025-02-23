@@ -1,52 +1,47 @@
 # [Sistem de operare] C Shell (csh) diff utilizare: compararea fișierelor
 
 ## Overview
-Comanda `diff` este utilizată pentru a compara conținutul a două fișiere text și a evidenția diferențele dintre ele. Aceasta este utilă pentru programatori și utilizatori care doresc să identifice modificările sau variațiile dintre versiuni ale aceluiași fișier.
+Comanda `diff` este utilizată pentru a compara două fișiere text și a evidenția diferențele dintre ele. Aceasta este utilă pentru programatori și utilizatori care doresc să vadă modificările efectuate într-un fișier sau să compare versiuni diferite ale aceluiași document.
 
 ## Usage
 Sintaxa de bază a comenzii `diff` este următoarea:
 
-```csh
-diff [opțiuni] [fișier1] [fișier2]
+```
+diff [opțiuni] [argumente]
 ```
 
 ## Common Options
 Iată câteva opțiuni comune pentru comanda `diff`:
 
-- `-u`: Afișează ieșirea în format unificat, care este mai ușor de citit.
-- `-c`: Afișează ieșirea în format context, oferind mai mult context în jurul diferențelor.
-- `-i`: Ignoră diferențele de caz (majuscule și minuscule).
-- `-w`: Ignoră spațiile albe în exces.
+- `-u`: Afișează diferențele într-un format unificat, care este mai ușor de citit.
+- `-c`: Afișează diferențele într-un format de context, oferind mai mult context în jurul modificărilor.
+- `-i`: Ignoră diferențele de caz (majuscule/mici) în timpul comparării.
+- `-w`: Ignoră spațiile albe și tab-urile în timpul comparării.
 
 ## Common Examples
-Iată câteva exemple practice de utilizare a comenzii `diff`:
+Iată câteva exemple practice ale utilizării comenzii `diff`:
 
-1. Compararea a două fișiere simple:
-    ```csh
-    diff fisier1.txt fisier2.txt
-    ```
+1. Compararea a două fișiere text simple:
+   ```csh
+   diff fisier1.txt fisier2.txt
+   ```
 
-2. Compararea a două fișiere cu ieșire unificată:
-    ```csh
-    diff -u fisier1.txt fisier2.txt
-    ```
+2. Compararea a două fișiere cu opțiunea unificată:
+   ```csh
+   diff -u fisier1.txt fisier2.txt
+   ```
 
 3. Compararea a două fișiere ignorând diferențele de caz:
-    ```csh
-    diff -i fisier1.txt fisier2.txt
-    ```
+   ```csh
+   diff -i fisier1.txt fisier2.txt
+   ```
 
-4. Compararea a două fișiere cu ieșire în format context:
-    ```csh
-    diff -c fisier1.txt fisier2.txt
-    ```
-
-5. Compararea a două fișiere ignorând spațiile albe:
-    ```csh
-    diff -w fisier1.txt fisier2.txt
-    ```
+4. Compararea a două fișiere cu afișarea contextului:
+   ```csh
+   diff -c fisier1.txt fisier2.txt
+   ```
 
 ## Tips
-- Folosiți opțiunea `-u` pentru a obține o ieșire mai clară și mai concisă, mai ales atunci când analizați modificările.
-- Dacă lucrați cu fișiere mari, luați în considerare utilizarea unor instrumente grafice pentru a vizualiza diferențele, deoarece acestea pot oferi o experiență mai intuitivă.
-- Verificați întotdeauna fișierele de intrare pentru a vă asigura că nu există erori de tipar care ar putea afecta rezultatul comenzii `diff`.
+- Folosiți opțiunea `-u` pentru a obține un output mai ușor de citit, mai ales când lucrați cu echipe.
+- Verificați întotdeauna fișierele de intrare pentru a vă asigura că sunt corecte înainte de a rula comanda `diff`.
+- Utilizați `diff` împreună cu comanda `patch` pentru a aplica modificările într-un fișier bazat pe rezultatul `diff`.

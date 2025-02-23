@@ -1,45 +1,53 @@
 # [Unix] C Shell (csh) compctl gebruik: Automatiseren van commando-aanvullingen
 
 ## Overzicht
-De `compctl` opdracht in C Shell (csh) wordt gebruikt om de manier waarop de shell commando-aanvullingen behandelt aan te passen. Hiermee kun je specifieke regels instellen voor het aanvullen van commando's, bestandsnamen en andere argumenten, waardoor de gebruikerservaring wordt verbeterd.
+De `compctl` opdracht in C Shell (csh) wordt gebruikt om de automatische aanvulling van commando's te configureren. Hiermee kunnen gebruikers hun eigen regels instellen voor hoe de shell moet reageren op tab-toetsen en andere invoer, wat de efficiëntie van het werken met de commandoregel verhoogt.
 
 ## Gebruik
 De basis syntaxis van de `compctl` opdracht is als volgt:
 
-```
+```csh
 compctl [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
-- `-d`: Definieert een nieuwe aanvulregel.
-- `-k`: Geeft een lijst van mogelijke aanvulwaarden op.
-- `-n`: Specificeert het aantal argumenten dat moet worden aangevuld.
-- `-S`: Voegt een suffix toe aan de aangevulde waarden.
+## Veelvoorkomende opties
+- `-d`: Definieert een nieuwe aanvulregel voor een specifiek commando.
+- `-k`: Specificeert de argumenten die moeten worden aangevuld.
+- `-r`: Verwijdert een bestaande aanvulregel.
+- `-s`: Geeft een lijst van mogelijke aanvullingen weer.
 
-## Veelvoorkomende Voorbeelden
+## Veelvoorkomende voorbeelden
 
-### Voorbeeld 1: Eenvoudige bestandsaanvulling
-Om de aanvulling voor een bepaalde extensie in te stellen, kun je het volgende gebruiken:
+### Voorbeeld 1: Basis aanvulling voor een commando
+Stel dat je een commando wilt aanvullen voor een tekstbestand:
 
 ```csh
-compctl -k '(*.txt)' mycommand
+compctl -d 'ls' 
 ```
 
-### Voorbeeld 2: Meerdere opties voor aanvulling
-Je kunt meerdere opties opgeven voor een commando:
+### Voorbeeld 2: Aanvullen van bestandsnamen
+Je kunt `compctl` gebruiken om bestandsnamen aan te vullen met een specifieke extensie:
 
 ```csh
-compctl -d -k '(*.jpg *.png)' imageview
+compctl -k '*.txt' 
 ```
 
-### Voorbeeld 3: Specifieke argumenten aanvullen
-Als je wilt dat een commando slechts een bepaald aantal argumenten aanvult:
+### Voorbeeld 3: Meerdere aanvulregels
+Je kunt meerdere aanvulregels instellen voor verschillende commando's:
 
 ```csh
-compctl -n 2 -k '(option1 option2 option3)' myscript
+compctl -d 'cp' 
+compctl -d 'mv' 
+```
+
+### Voorbeeld 4: Aanvullen met een lijst
+Als je een lijst van opties wilt geven voor een commando:
+
+```csh
+compctl -k 'option1 option2 option3' 
 ```
 
 ## Tips
-- Zorg ervoor dat je `compctl` regels test in een veilige omgeving voordat je ze in je dagelijkse workflow gebruikt.
-- Gebruik duidelijke en specifieke aanvulwaarden om verwarring te voorkomen.
-- Documenteer je `compctl` instellingen, zodat je ze later gemakkelijk kunt terugvinden of aanpassen.
+- Zorg ervoor dat je `compctl` instelt in je `.cshrc` bestand om je instellingen permanent te maken.
+- Test je aanvulregels om er zeker van te zijn dat ze werken zoals verwacht.
+- Gebruik de `-r` optie om oude of ongewenste aanvulregels te verwijderen en zo conflicten te voorkomen.

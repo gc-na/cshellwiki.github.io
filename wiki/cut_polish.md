@@ -1,43 +1,49 @@
 # [Linux] C Shell (csh) cut użycie: Wyodrębnianie fragmentów tekstu
 
-## Overview
-Polecenie `cut` w C Shell (csh) służy do wyodrębniania określonych fragmentów tekstu z plików lub danych wejściowych. Umożliwia selekcję kolumn lub znaków, co jest przydatne w analizie danych.
+## Przegląd
+Polecenie `cut` w C Shell (csh) służy do wyodrębniania określonych fragmentów tekstu z plików lub strumieni danych. Umożliwia selekcję kolumn lub znaków, co jest przydatne w analizie danych.
 
-## Usage
-Podstawowa składnia polecenia `cut` jest następująca:
+## Użycie
+Podstawowa składnia polecenia `cut` wygląda następująco:
 
 ```csh
 cut [opcje] [argumenty]
 ```
 
-## Common Options
-- `-f`: Wybiera określone pola (kolumny) na podstawie separatora.
-- `-d`: Ustala separator pól (domyślnie jest to tabulator).
-- `-c`: Wybiera określone znaki z każdej linii.
-- `--complement`: Zwraca wszystko oprócz wybranych pól lub znaków.
+## Częste opcje
+- `-f` – wybiera określone pola (kolumny) z danych oddzielonych separatorem.
+- `-d` – ustawia separator, który oddziela pola (domyślnie jest to tabulator).
+- `-c` – wybiera określone znaki z wierszy.
+- `--complement` – zwraca wszystkie pola oprócz tych określonych.
 
-## Common Examples
-1. Wyodrębnianie drugiego pola z pliku tekstowego, gdzie pola są oddzielone przecinkami:
+## Przykłady
+Oto kilka praktycznych przykładów użycia polecenia `cut`:
+
+1. Wyodrębnienie drugiego pola z pliku tekstowego, gdzie pola są oddzielone przecinkami:
+
    ```csh
    cut -d ',' -f 2 plik.txt
    ```
 
-2. Wybieranie znaków od 1 do 5 z każdej linii:
+2. Wyodrębnienie pierwszych 5 znaków z pliku:
+
    ```csh
    cut -c 1-5 plik.txt
    ```
 
-3. Wyodrębnianie pierwszego i trzeciego pola z pliku, gdzie pola są oddzielone dwukropkiem:
+3. Wyodrębnienie pól 1 i 3 z pliku, gdzie pola są oddzielone spacjami:
+
    ```csh
-   cut -d ':' -f 1,3 plik.txt
+   cut -d ' ' -f 1,3 plik.txt
    ```
 
-4. Zwracanie wszystkich pól poza drugim:
+4. Zwrócenie wszystkich pól oprócz drugiego:
+
    ```csh
-   cut -d ',' -f 2 --complement plik.txt
+   cut -f 2 --complement plik.txt
    ```
 
-## Tips
-- Używaj opcji `-n`, aby uniknąć dzielenia słów, gdy używasz separatorów.
-- Sprawdzaj zawartość pliku przed użyciem `cut`, aby upewnić się, że pola są poprawnie zdefiniowane.
-- Możesz łączyć `cut` z innymi poleceniami, takimi jak `grep` lub `sort`, aby uzyskać bardziej zaawansowane wyniki.
+## Wskazówki
+- Zawsze sprawdzaj, jaki separator jest używany w Twoich danych, aby poprawnie ustawić opcję `-d`.
+- Możesz łączyć różne opcje, aby uzyskać bardziej złożone wyniki.
+- Używaj `cut` w połączeniu z innymi poleceniami, takimi jak `grep` lub `sort`, aby uzyskać bardziej zaawansowane analizy danych.

@@ -1,23 +1,23 @@
 # [Linux] C Shell (csh) du Kullanımı: Disk kullanımını gösterir
 
 ## Overview
-`du` (disk usage) komutu, dosya ve dizinlerin disk üzerindeki kullanım alanını gösterir. Bu komut, sistem yöneticileri ve kullanıcılar için disk alanını yönetmek ve hangi dosyaların veya dizinlerin ne kadar yer kapladığını anlamak açısından oldukça faydalıdır.
+`du` komutu, bir dosya veya dizinin disk alanını nasıl kullandığını gösterir. Bu komut, sistem yöneticileri ve kullanıcılar için disk alanı yönetimini kolaylaştırır.
 
 ## Usage
-Temel sözdizimi aşağıdaki gibidir:
+Temel sözdizimi şu şekildedir:
 
 ```csh
 du [options] [arguments]
 ```
 
 ## Common Options
-- `-h`: İnsan tarafından okunabilir formatta çıktı verir (örneğin, KB, MB).
-- `-s`: Toplam boyutu gösterir, alt dizinleri listelemez.
-- `-a`: Tüm dosyaların boyutlarını gösterir, yalnızca dizinleri değil.
-- `-c`: Toplam boyutu da dahil olmak üzere bir özet verir.
+- `-h`: İnsan tarafından okunabilir formatta boyutları gösterir (örneğin, KB, MB).
+- `-s`: Toplam boyutu özetler ve alt dizinleri göstermez.
+- `-a`: Tüm dosyaların boyutlarını gösterir, yalnızca dizinler yerine.
+- `-c`: Toplam boyutları hesaplar ve en sonunda toplamı gösterir.
 
 ## Common Examples
-Aşağıda `du` komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda `du` komutunun bazı yaygın kullanımları bulunmaktadır:
 
 1. Belirli bir dizinin disk kullanımını gösterme:
    ```csh
@@ -39,15 +39,12 @@ Aşağıda `du` komutunun bazı pratik örnekleri bulunmaktadır:
    du -a /path/to/directory
    ```
 
-5. Toplam boyut ile birlikte özet bilgisi alma:
+5. Dizinlerin toplam boyutunu hesaplama:
    ```csh
    du -ch /path/to/directory
    ```
 
 ## Tips
-- Disk kullanımını analiz etmek için `du` komutunu düzenli olarak kullanmak, gereksiz dosyaları temizlemenize yardımcı olabilir.
-- `du` komutunu `sort` ile birleştirerek en fazla yer kaplayan dosyaları veya dizinleri sıralayabilirsiniz:
-  ```csh
-  du -h /path/to/directory | sort -hr
-  ```
-- Büyük dizinlerde `du` komutunun çalışması zaman alabilir, bu nedenle belirli alt dizinlerle çalışmak daha hızlı sonuçlar verebilir.
+- Disk kullanımını analiz ederken, `-h` seçeneğini kullanarak sonuçları daha kolay yorumlayabilirsiniz.
+- Büyük dizinlerde işlem yaparken, `-s` seçeneği ile sadece özet bilgileri alarak zaman kazanabilirsiniz.
+- `du` komutunu sık sık kullanıyorsanız, belirli dizinler için alias tanımlamak işinizi kolaylaştırabilir.

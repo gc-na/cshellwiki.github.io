@@ -1,48 +1,47 @@
-# [Linux] C Shell (csh) Befehl set: [Umgebungsvariablen festlegen]
+# [Linux] C Shell (csh) Befehl set: [Umgebungsvariablen setzen]
 
 ## Übersicht
-Der Befehl `set` in der C Shell (csh) wird verwendet, um Shell-Variablen und Umgebungsvariablen zu setzen oder anzuzeigen. Er ermöglicht es Benutzern, verschiedene Parameter zu konfigurieren, die das Verhalten der Shell beeinflussen.
+Der Befehl `set` in der C Shell (csh) wird verwendet, um Shell-Variablen und Umgebungsvariablen zu setzen oder anzuzeigen. Mit diesem Befehl können Benutzer ihre Shell-Umgebung anpassen und verschiedene Parameter konfigurieren.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
 ```
-set [optionen] [variablen]
+set [Optionen] [Variablen]
 ```
 
 ## Häufige Optionen
-- `-x`: Aktiviert das Debugging, indem alle Befehle angezeigt werden, bevor sie ausgeführt werden.
-- `-e`: Beendet die Ausführung der Shell, wenn ein Befehl einen Fehler zurückgibt.
+- `-x`: Zeigt die gesetzten Variablen an.
+- `-e`: Beendet die Shell, wenn ein Befehl fehlschlägt.
 - `-u`: Behandelt nicht gesetzte Variablen als Fehler.
 
 ## Häufige Beispiele
-
-1. **Eine Variable setzen:**
+1. **Setzen einer Variablen:**
    ```csh
    set myVar = "Hallo Welt"
    ```
 
-2. **Den Wert einer Variablen anzeigen:**
+2. **Anzeigen aller gesetzten Variablen:**
    ```csh
-   echo $myVar
+   set
    ```
 
-3. **Mehrere Variablen gleichzeitig setzen:**
-   ```csh
-   set var1 = "Wert1" var2 = "Wert2"
-   ```
-
-4. **Eine Umgebungsvariable setzen:**
+3. **Setzen einer Umgebungsvariablen:**
    ```csh
    setenv PATH "/usr/local/bin:$PATH"
    ```
 
-5. **Debugging aktivieren:**
+4. **Setzen einer Variablen mit einem numerischen Wert:**
    ```csh
-   set -x
+   set count = 10
+   ```
+
+5. **Verwendung von Variablen in einem Befehl:**
+   ```csh
+   echo $myVar
    ```
 
 ## Tipps
-- Verwenden Sie `set` ohne Argumente, um alle aktuell gesetzten Variablen anzuzeigen.
-- Achten Sie darauf, dass Variablen in C Shell mit einem Leerzeichen um das Gleichheitszeichen gesetzt werden.
-- Nutzen Sie `setenv`, um Umgebungsvariablen zu setzen, die von untergeordneten Prozessen benötigt werden.
+- Verwenden Sie `set` ohne Argumente, um eine Liste aller aktuellen Variablen anzuzeigen.
+- Achten Sie darauf, dass Variablen in csh mit einem `$`-Zeichen referenziert werden, wenn Sie ihren Wert verwenden möchten.
+- Nutzen Sie `setenv`, um Umgebungsvariablen zu setzen, die auch von untergeordneten Prozessen erkannt werden.

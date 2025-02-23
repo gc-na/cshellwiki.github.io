@@ -1,44 +1,48 @@
-# [Sistem Operasi] C Shell (csh) tipe: [menampilkan jenis perintah]
+# [Sistem Operasi] C Shell (csh) type: Menentukan jenis perintah
 
 ## Overview
-Perintah `type` dalam C Shell (csh) digunakan untuk menampilkan informasi tentang jenis perintah yang diberikan. Ini membantu pengguna memahami apakah perintah tersebut adalah built-in shell, alias, atau perintah eksternal.
+Perintah `type` dalam C Shell (csh) digunakan untuk menentukan jenis dari perintah yang diberikan. Ini membantu pengguna memahami apakah perintah tersebut adalah built-in shell, alias, fungsi, atau perintah eksternal.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `type`:
 
-```
+```csh
 type [options] [arguments]
 ```
 
 ## Common Options
-- `-a`: Menampilkan semua lokasi dari perintah yang diberikan, termasuk alias dan built-in.
-- `-p`: Menampilkan lokasi dari perintah eksternal yang ditemukan dalam PATH.
-- `-t`: Menampilkan tipe dari perintah tanpa informasi tambahan.
+- `-t`: Menampilkan hanya tipe dari perintah tanpa informasi tambahan.
+- `-a`: Menampilkan semua lokasi dari perintah yang ditemukan, bukan hanya yang pertama.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `type`:
 
-1. Menampilkan tipe dari perintah `ls`:
+1. Mengetahui jenis perintah `ls`:
    ```csh
    type ls
    ```
 
-2. Menampilkan semua lokasi dari perintah `echo`:
+2. Menampilkan tipe dari perintah `echo`:
    ```csh
-   type -a echo
+   type echo
    ```
 
-3. Menampilkan lokasi dari perintah eksternal `grep`:
+3. Menampilkan semua lokasi dari perintah `python`:
    ```csh
-   type -p grep
+   type -a python
    ```
 
-4. Menampilkan tipe dari perintah `cd`:
+4. Mengetahui tipe dari alias `ll`:
    ```csh
-   type -t cd
+   type ll
+   ```
+
+5. Menampilkan tipe dari fungsi `myfunction`:
+   ```csh
+   type myfunction
    ```
 
 ## Tips
-- Gunakan opsi `-a` untuk mendapatkan informasi lengkap tentang perintah yang mungkin memiliki beberapa definisi.
-- Jika Anda ingin mengetahui apakah suatu perintah adalah built-in atau bukan, gunakan opsi `-t`.
-- Perintah `type` sangat berguna saat Anda bekerja dengan banyak alias dan ingin memastikan perintah yang Anda gunakan adalah yang diharapkan.
+- Gunakan opsi `-t` jika Anda hanya ingin mengetahui tipe perintah tanpa informasi tambahan yang tidak perlu.
+- Opsi `-a` sangat berguna untuk menemukan lokasi dari perintah yang mungkin memiliki beberapa versi atau instalasi.
+- Perintah `type` dapat membantu dalam debugging saat Anda tidak yakin apakah suatu perintah adalah alias atau perintah asli.

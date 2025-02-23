@@ -1,48 +1,48 @@
-# [Hệ điều hành] C Shell (csh) minikube Sử dụng: Quản lý Kubernetes cục bộ
+# [Hệ điều hành] C Shell (csh) minikube Cách sử dụng: Quản lý cụm Kubernetes cục bộ
 
 ## Tổng quan
-Minikube là một công cụ cho phép bạn chạy một cụm Kubernetes cục bộ trên máy tính của mình. Nó giúp bạn dễ dàng phát triển và thử nghiệm các ứng dụng Kubernetes mà không cần phải triển khai trên một cụm thực tế.
+Lệnh `minikube` được sử dụng để tạo và quản lý một cụm Kubernetes cục bộ trên máy tính của bạn. Nó giúp bạn dễ dàng phát triển và thử nghiệm ứng dụng Kubernetes mà không cần phải triển khai trên một cụm lớn hơn.
 
 ## Cách sử dụng
-Cú pháp cơ bản của lệnh minikube như sau:
+Cú pháp cơ bản của lệnh `minikube` như sau:
 ```
 minikube [options] [arguments]
 ```
 
-## Các tùy chọn phổ biến
-- `start`: Khởi động một cụm minikube mới.
-- `stop`: Dừng cụm minikube hiện tại.
+## Tùy chọn phổ biến
+- `start`: Khởi động cụm minikube.
+- `stop`: Dừng cụm minikube đang chạy.
 - `status`: Kiểm tra trạng thái của cụm minikube.
 - `delete`: Xóa cụm minikube.
 - `dashboard`: Mở giao diện điều khiển Kubernetes trong trình duyệt.
 
 ## Ví dụ phổ biến
 - Khởi động cụm minikube:
-  ```bash
+  ```csh
   minikube start
   ```
-  
+
 - Dừng cụm minikube:
-  ```bash
+  ```csh
   minikube stop
   ```
 
 - Kiểm tra trạng thái của cụm:
-  ```bash
+  ```csh
   minikube status
   ```
 
 - Xóa cụm minikube:
-  ```bash
+  ```csh
   minikube delete
   ```
 
 - Mở giao diện điều khiển Kubernetes:
-  ```bash
+  ```csh
   minikube dashboard
   ```
 
 ## Mẹo
-- Luôn kiểm tra trạng thái của cụm trước khi thực hiện các thao tác khác để đảm bảo rằng nó đang chạy.
+- Luôn kiểm tra trạng thái của cụm trước khi thực hiện các thao tác khác để đảm bảo rằng cụm đang hoạt động bình thường.
 - Sử dụng `minikube addons` để quản lý các tiện ích mở rộng cho cụm của bạn.
-- Thường xuyên cập nhật minikube để có được những tính năng và sửa lỗi mới nhất.
+- Đảm bảo rằng bạn đã cài đặt VirtualBox hoặc một trình ảo hóa khác để chạy minikube một cách hiệu quả.

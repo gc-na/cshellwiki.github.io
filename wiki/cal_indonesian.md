@@ -1,7 +1,7 @@
 # [Sistem Operasi] C Shell (csh) cal Penggunaan: Menampilkan kalender
 
 ## Overview
-Perintah `cal` digunakan untuk menampilkan kalender di terminal. Dengan `cal`, pengguna dapat melihat kalender bulan tertentu atau seluruh tahun, yang memudahkan dalam merencanakan kegiatan atau melihat tanggal penting.
+Perintah `cal` digunakan untuk menampilkan kalender dalam format yang mudah dibaca. Dengan perintah ini, pengguna dapat melihat kalender untuk bulan dan tahun tertentu, serta informasi tambahan seperti hari libur.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `cal`:
@@ -11,41 +11,40 @@ cal [options] [arguments]
 ```
 
 ## Common Options
-- `-m`: Menampilkan bulan saat ini.
-- `-y`: Menampilkan kalender untuk tahun saat ini.
-- `-3`: Menampilkan kalender untuk bulan sebelumnya, bulan ini, dan bulan berikutnya.
-- `-j`: Menampilkan hari dalam tahun (day of the year).
-- `-G`: Menampilkan kalender dalam format Gregorian.
+- `-m` : Menampilkan kalender dengan nama bulan.
+- `-y` : Menampilkan kalender untuk seluruh tahun.
+- `-3` : Menampilkan kalender untuk bulan sebelumnya, bulan ini, dan bulan berikutnya.
+- `-j` : Menampilkan hari dalam tahun (Julian).
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `cal`:
 
-1. Menampilkan kalender bulan saat ini:
+1. Menampilkan kalender untuk bulan ini:
    ```csh
    cal
    ```
 
-2. Menampilkan kalender untuk bulan tertentu (misalnya, Maret 2023):
+2. Menampilkan kalender untuk bulan Januari 2023:
    ```csh
-   cal 03 2023
+   cal 01 2023
    ```
 
-3. Menampilkan kalender untuk seluruh tahun (misalnya, 2023):
+3. Menampilkan kalender untuk tahun 2023:
    ```csh
-   cal 2023
+   cal -y 2023
    ```
 
-4. Menampilkan kalender untuk bulan sebelumnya, bulan ini, dan bulan berikutnya:
+4. Menampilkan kalender untuk bulan ini beserta bulan sebelumnya dan berikutnya:
    ```csh
    cal -3
    ```
 
-5. Menampilkan kalender dengan hari dalam tahun:
+5. Menampilkan kalender dengan hari dalam tahun untuk bulan ini:
    ```csh
    cal -j
    ```
 
 ## Tips
-- Gunakan opsi `-y` untuk dengan cepat melihat semua bulan dalam tahun saat ini.
-- Kombinasikan opsi untuk menyesuaikan tampilan kalender sesuai kebutuhan Anda.
-- Ingat bahwa `cal` menggunakan format Gregorian secara default, jadi pastikan untuk memeriksa pengaturan waktu dan tanggal sistem Anda jika hasilnya tidak sesuai.
+- Gunakan opsi `-m` untuk menambahkan nama bulan pada kalender, sehingga lebih mudah dibaca.
+- Cobalah opsi `-3` saat merencanakan acara untuk melihat bulan terkait dengan lebih baik.
+- Untuk melihat kalender yang lebih detail, pertimbangkan untuk menggunakan kombinasi opsi yang berbeda.

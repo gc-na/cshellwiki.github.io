@@ -1,39 +1,44 @@
-# [Linux] C Shell (csh) sysctl Kullanımı: Sistem parametrelerini ayarlama ve görüntüleme
+# [Linux] C Shell (csh) sysctl Kullanımı: Sistem parametrelerini görüntüleme ve değiştirme
 
 ## Genel Bakış
-`sysctl` komutu, Linux ve Unix benzeri işletim sistemlerinde çekirdek parametrelerini görüntülemek ve değiştirmek için kullanılır. Bu komut, sistem yöneticilerine çekirdek ayarlarını dinamik olarak yönetme imkanı sunar.
+`sysctl` komutu, Linux ve Unix benzeri işletim sistemlerinde çekirdek parametrelerini görüntülemek ve değiştirmek için kullanılır. Bu komut, sistemin çalışma şekli üzerinde ince ayar yapmanıza olanak tanır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
 
 ```csh
-sysctl [options] [arguments]
+sysctl [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-a`: Tüm sysctl değişkenlerini ve değerlerini listele.
-- `-n`: Değişkenin yalnızca değerini göster.
-- `-w`: Belirtilen değişkenin değerini değiştir.
+- `-a`: Tüm sysctl parametrelerini ve değerlerini listele.
+- `-w`: Belirtilen parametreyi yeni bir değerle ayarla.
+- `-n`: Parametrenin değerini yalnızca yazdır, ayarlama yapma.
 
 ## Yaygın Örnekler
-Aşağıda `sysctl` komutunun bazı pratik örnekleri bulunmaktadır:
+Aşağıda `sysctl` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-1. Tüm çekirdek parametrelerini listelemek için:
+1. Tüm sysctl parametrelerini listeleme:
    ```csh
    sysctl -a
    ```
 
-2. Belirli bir parametrenin değerini görüntülemek için (örneğin, `kernel.hostname`):
+2. Belirli bir parametrenin değerini görüntüleme (örneğin, `vm.swappiness`):
    ```csh
-   sysctl -n kernel.hostname
+   sysctl vm.swappiness
    ```
 
-3. Bir parametrenin değerini değiştirmek için (örneğin, `kernel.panic` değerini 10 yapmak):
+3. Bir parametreyi yeni bir değerle ayarlama (örneğin, `vm.swappiness` değerini 10 olarak ayarlama):
    ```csh
-   sysctl -w kernel.panic=10
+   sysctl -w vm.swappiness=10
+   ```
+
+4. Parametre değerini yalnızca yazdırma:
+   ```csh
+   sysctl -n vm.swappiness
    ```
 
 ## İpuçları
-- Değişikliklerin kalıcı olmasını istiyorsanız, `/etc/sysctl.conf` dosyasına eklemeler yapmayı unutmayın.
-- `sysctl` komutunu kullanmadan önce, hangi parametrelerin değiştirilebileceğini öğrenmek için `sysctl -a` komutunu çalıştırın.
-- Değişikliklerin etkili olması için bazı durumlarda sistemi yeniden başlatmanız gerekebilir.
+- `sysctl` komutunu kullanmadan önce, hangi parametrelerin değiştirilebileceğini ve bunların sistem üzerindeki etkilerini anlamak önemlidir.
+- Değişikliklerin kalıcı olması için, genellikle `/etc/sysctl.conf` dosyasına ekleme yapmanız gerekebilir.
+- Sistemdeki değişiklikleri test etmek için, `sysctl` komutunu kullanarak anlık ayarları kontrol edin.

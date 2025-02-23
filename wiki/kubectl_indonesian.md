@@ -1,28 +1,28 @@
 # [Sistem Operasi] C Shell (csh) kubectl Penggunaan: Mengelola Kubernetes
 
 ## Overview
-Perintah `kubectl` adalah alat baris perintah yang digunakan untuk mengelola kluster Kubernetes. Dengan `kubectl`, pengguna dapat melakukan berbagai operasi seperti mengatur aplikasi, memantau status, dan mengelola sumber daya dalam kluster Kubernetes.
+Perintah `kubectl` adalah alat baris perintah yang digunakan untuk mengelola kluster Kubernetes. Dengan `kubectl`, pengguna dapat melakukan berbagai operasi seperti mengatur aplikasi, memantau status kluster, dan mengelola sumber daya Kubernetes.
 
 ## Usage
 Sintaks dasar untuk menggunakan `kubectl` adalah sebagai berikut:
 
-```bash
+```
 kubectl [options] [arguments]
 ```
 
 ## Common Options
 Berikut adalah beberapa opsi umum yang sering digunakan dengan `kubectl`:
 
-- `get`: Mengambil dan menampilkan informasi tentang sumber daya.
-- `apply`: Menerapkan perubahan konfigurasi ke sumber daya.
+- `get`: Mengambil informasi tentang sumber daya Kubernetes.
+- `apply`: Menerapkan perubahan konfigurasi pada sumber daya.
 - `delete`: Menghapus sumber daya dari kluster.
-- `describe`: Menampilkan informasi rinci tentang sumber daya tertentu.
+- `describe`: Menampilkan detail lengkap tentang sumber daya tertentu.
 - `logs`: Menampilkan log dari pod tertentu.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan `kubectl`:
+Berikut adalah beberapa contoh praktis penggunaan `kubectl`:
 
-1. **Mengambil daftar pod dalam namespace default:**
+1. **Mengambil daftar semua pod dalam namespace default:**
    ```bash
    kubectl get pods
    ```
@@ -32,12 +32,12 @@ Berikut adalah beberapa contoh penggunaan `kubectl`:
    kubectl apply -f deployment.yaml
    ```
 
-3. **Menghapus sebuah pod:**
+3. **Menghapus sebuah pod berdasarkan namanya:**
    ```bash
    kubectl delete pod nama-pod
    ```
 
-4. **Menampilkan informasi rinci tentang sebuah service:**
+4. **Menampilkan detail dari sebuah service:**
    ```bash
    kubectl describe service nama-service
    ```
@@ -48,6 +48,7 @@ Berikut adalah beberapa contoh penggunaan `kubectl`:
    ```
 
 ## Tips
-- Selalu gunakan opsi `--namespace` jika Anda bekerja dengan beberapa namespace untuk menghindari kebingungan.
-- Gunakan `kubectl get --help` untuk melihat opsi dan argumen yang tersedia untuk perintah `get`.
-- Simpan konfigurasi yang sering digunakan dalam file YAML untuk memudahkan penerapan kembali di masa mendatang.
+- Selalu gunakan opsi `--namespace` untuk menentukan namespace saat bekerja dengan banyak namespace.
+- Gunakan `kubectl get all` untuk mendapatkan semua sumber daya dalam namespace yang aktif.
+- Simpan konfigurasi yang sering digunakan dalam file YAML untuk memudahkan penerapan di masa mendatang.
+- Manfaatkan fitur autocomplete untuk mempercepat pengetikan perintah `kubectl`.

@@ -1,45 +1,45 @@
 # [Linux] C Shell (csh) modprobe użycie: Zarządzanie modułami jądra
 
 ## Przegląd
-Polecenie `modprobe` jest używane do ładowania i zarządzania modułami jądra w systemie Linux. Umożliwia dodawanie lub usuwanie modułów jądra oraz zarządzanie ich zależnościami, co jest istotne dla prawidłowego funkcjonowania systemu operacyjnego.
+Polecenie `modprobe` służy do ładowania i zarządzania modułami jądra w systemie Linux. Umożliwia dodawanie lub usuwanie modułów, co pozwala na dynamiczne zarządzanie funkcjonalnością jądra bez potrzeby ponownego uruchamiania systemu.
 
 ## Użycie
-Podstawowa składnia polecenia `modprobe` wygląda następująco:
+Podstawowa składnia polecenia `modprobe` jest następująca:
 
-```bash
+```csh
 modprobe [opcje] [argumenty]
 ```
 
-## Typowe opcje
-- `-r`, `--remove`: Usuwa moduł jądra.
-- `-n`, `--dry-run`: Wyświetla, co by zostało zrobione, ale nie wykonuje żadnych działań.
-- `-v`, `--verbose`: Włącza tryb szczegółowy, wyświetlając więcej informacji o wykonywanych operacjach.
-- `--show-depends`: Wyświetla zależności modułu.
+## Częste opcje
+- `-r` - Usuwa moduł jądra.
+- `--list` - Wyświetla listę dostępnych modułów.
+- `-n` - Symuluje działanie polecenia bez jego wykonania.
+- `--show` - Wyświetla szczegóły dotyczące modułu.
 
 ## Przykłady
-Oto kilka praktycznych przykładów użycia polecenia `modprobe`:
+Poniżej przedstawiono kilka praktycznych przykładów użycia polecenia `modprobe`:
 
-1. **Ładowanie modułu jądra**:
-   ```bash
+1. **Ładowanie modułu:**
+   ```csh
    modprobe nfs
    ```
 
-2. **Usuwanie modułu jądra**:
-   ```bash
+2. **Usuwanie modułu:**
+   ```csh
    modprobe -r nfs
    ```
 
-3. **Wyświetlanie zależności modułu**:
-   ```bash
-   modprobe --show-depends nfs
+3. **Wyświetlanie dostępnych modułów:**
+   ```csh
+   modprobe --list
    ```
 
-4. **Symulacja ładowania modułu**:
-   ```bash
+4. **Symulacja ładowania modułu:**
+   ```csh
    modprobe -n nfs
    ```
 
 ## Wskazówki
-- Zawsze sprawdzaj, czy moduł, który chcesz załadować, nie jest już aktywny, aby uniknąć konfliktów.
-- Używaj opcji `-v`, aby uzyskać więcej informacji o tym, co robi `modprobe`, co może być pomocne w przypadku problemów.
-- Pamiętaj, że do ładowania i usuwania modułów jądra mogą być wymagane uprawnienia administratora, więc rozważ użycie `sudo`, jeśli napotkasz problemy z dostępem.
+- Zawsze sprawdzaj, czy moduł, który chcesz załadować, jest dostępny w systemie, aby uniknąć błędów.
+- Używaj opcji `-n`, aby przetestować polecenie przed jego wykonaniem, co pomoże uniknąć niepożądanych zmian w systemie.
+- Regularnie aktualizuj moduły jądra, aby zapewnić najlepszą wydajność i bezpieczeństwo systemu.

@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) fold użycie: dzieli tekst na linie o określonej długości
+# [Linux] C Shell (csh) fold użycie: dzielenie tekstu na linie o określonej długości
 
 ## Overview
-Polecenie `fold` w C Shell (csh) służy do dzielenia tekstu na linie o określonej długości. Jest to przydatne, gdy chcemy dostosować długość linii w plikach tekstowych lub wyjściu z poleceń, aby były bardziej czytelne.
+Polecenie `fold` w C Shell (csh) służy do dzielenia długich linii tekstu na krótsze, co ułatwia ich wyświetlanie w terminalu. Można określić maksymalną długość linii, a `fold` automatycznie podzieli tekst, aby dostosować go do tego limitu.
 
 ## Usage
 Podstawowa składnia polecenia `fold` jest następująca:
@@ -11,34 +11,32 @@ fold [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-w, --width=WIDTH` - Ustala maksymalną długość linii na `WIDTH` znaków.
-- `-s, --break` - Złamać linie w najbliższym spacji, jeśli to możliwe.
-- `-b, --bytes` - Liczy długość w bajtach zamiast znaków.
+- `-w, --width=WIDTH` - Ustala maksymalną długość linii (w znakach).
+- `-s, --spaces` - Dzieli linie w najbliższym spacji, zamiast w dowolnym miejscu.
+- `-b, --bytes` - Liczy długość linii w bajtach, a nie w znakach.
 
 ## Common Examples
-Przykłady użycia polecenia `fold`:
-
-1. **Podstawowe użycie z domyślną długością linii**:
-   ```csh
-   fold plik.txt
-   ```
-
-2. **Ustalenie maksymalnej długości linii na 50 znaków**:
+1. **Podział tekstu na linie o maksymalnej długości 50 znaków:**
    ```csh
    fold -w 50 plik.txt
    ```
 
-3. **Złamanie linii w najbliższej spacji**:
+2. **Podział tekstu z zachowaniem spacji:**
    ```csh
    fold -s -w 30 plik.txt
    ```
 
-4. **Zliczanie długości w bajtach**:
+3. **Podział tekstu w bajtach:**
    ```csh
    fold -b -w 40 plik.txt
    ```
 
+4. **Zapisanie podzielonego tekstu do nowego pliku:**
+   ```csh
+   fold -w 60 plik.txt > nowy_plik.txt
+   ```
+
 ## Tips
-- Używaj opcji `-s`, aby poprawić czytelność tekstu, zwłaszcza w przypadku długich linii.
-- Eksperymentuj z różnymi wartościami `WIDTH`, aby znaleźć najlepszą długość linii dla swojego wyjścia.
-- Możesz łączyć `fold` z innymi poleceniami, takimi jak `cat`, aby przetwarzać tekst w potokach.
+- Używaj opcji `-s`, aby uniknąć dzielenia słów, co może poprawić czytelność tekstu.
+- Zawsze testuj polecenie na mniejszych plikach, aby upewnić się, że uzyskujesz oczekiwany wynik.
+- Możesz używać `fold` w połączeniu z innymi poleceniami, takimi jak `cat` lub `grep`, aby przetwarzać dane w potokach.

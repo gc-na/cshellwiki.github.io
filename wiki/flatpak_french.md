@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) flatpak utilisation : Gérer les applications et leurs dépendances
+# [Linux] C Shell (csh) flatpak utilisation : Gérer les applications conteneurisées
 
 ## Overview
-Le commandement `flatpak` est utilisé pour gérer les applications empaquetées avec Flatpak. Il permet d'installer, de mettre à jour, de supprimer et d'exécuter des applications de manière isolée, garantissant ainsi qu'elles fonctionnent de manière cohérente sur différentes distributions Linux.
+La commande `flatpak` permet de gérer des applications conteneurisées sur les systèmes Linux. Elle facilite l'installation, la mise à jour et la suppression d'applications, tout en assurant leur isolation du système d'exploitation principal.
 
 ## Usage
 La syntaxe de base de la commande `flatpak` est la suivante :
@@ -13,41 +13,41 @@ flatpak [options] [arguments]
 ## Common Options
 Voici quelques options courantes pour la commande `flatpak` :
 
-- `install` : Installe une application Flatpak.
-- `uninstall` : Supprime une application Flatpak.
+- `install` : Installe une application à partir d'un dépôt.
+- `uninstall` : Supprime une application installée.
 - `update` : Met à jour les applications installées.
-- `run` : Exécute une application Flatpak.
 - `list` : Affiche les applications installées.
+- `run` : Exécute une application installée.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `flatpak` :
 
-1. **Installer une application :**
-   ```csh
-   flatpak install flathub org.videolan.VLC
-   ```
+- Pour installer une application, par exemple, GIMP :
+  ```csh
+  flatpak install flathub org.gimp.GIMP
+  ```
 
-2. **Désinstaller une application :**
-   ```csh
-   flatpak uninstall org.videolan.VLC
-   ```
+- Pour désinstaller une application, par exemple, GIMP :
+  ```csh
+  flatpak uninstall org.gimp.GIMP
+  ```
 
-3. **Mettre à jour toutes les applications installées :**
-   ```csh
-   flatpak update
-   ```
+- Pour mettre à jour toutes les applications installées :
+  ```csh
+  flatpak update
+  ```
 
-4. **Lister toutes les applications installées :**
-   ```csh
-   flatpak list
-   ```
+- Pour lister toutes les applications installées :
+  ```csh
+  flatpak list
+  ```
 
-5. **Exécuter une application :**
-   ```csh
-   flatpak run org.videolan.VLC
-   ```
+- Pour exécuter une application, par exemple, GIMP :
+  ```csh
+  flatpak run org.gimp.GIMP
+  ```
 
 ## Tips
-- Assurez-vous d'avoir ajouté le dépôt Flathub pour accéder à un large éventail d'applications.
-- Utilisez `flatpak info [nom de l'application]` pour obtenir des informations détaillées sur une application installée.
-- Pensez à mettre à jour régulièrement vos applications pour bénéficier des dernières fonctionnalités et corrections de sécurité.
+- Assurez-vous d'utiliser le dépôt approprié (comme `flathub`) pour accéder à un large éventail d'applications.
+- Vérifiez régulièrement les mises à jour pour garder vos applications sécurisées et fonctionnelles.
+- Utilisez `flatpak info [application]` pour obtenir des informations détaillées sur une application installée.

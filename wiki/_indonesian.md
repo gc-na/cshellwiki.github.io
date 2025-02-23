@@ -1,7 +1,7 @@
 # [Sistem Operasi] C Shell (csh) @ Penggunaan: Menjalankan perintah dengan argumen
 
 ## Overview
-Perintah `@` dalam C Shell (csh) digunakan untuk melakukan operasi aritmatika dan mengatur variabel. Ini memungkinkan pengguna untuk menghitung nilai dan menyimpan hasilnya dalam variabel untuk digunakan di perintah selanjutnya.
+Perintah `@` dalam C Shell (csh) digunakan untuk menjalankan perintah dengan argumen yang telah ditentukan sebelumnya. Ini memungkinkan pengguna untuk mengeksekusi perintah dengan cara yang lebih dinamis dan fleksibel.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `@`:
@@ -11,50 +11,32 @@ Berikut adalah sintaks dasar dari perintah `@`:
 ```
 
 ## Common Options
-- `-v`: Menampilkan hasil dari operasi yang dilakukan.
-- `-p`: Menjalankan perintah dalam mode interaktif.
+- `-n`: Menjalankan perintah tanpa mengeksekusinya, berguna untuk debugging.
+- `-v`: Menampilkan perintah yang akan dijalankan sebelum dieksekusi.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `@`:
 
-1. **Menambahkan dua angka:**
+1. Menjalankan perintah sederhana:
    ```csh
-   @ hasil = 5 + 3
-   echo $hasil
+   @ result = 5 + 3
+   echo $result
    ```
-   Output: `8`
 
-2. **Mengurangi angka:**
+2. Menggunakan variabel dalam perhitungan:
    ```csh
-   @ hasil = 10 - 4
-   echo $hasil
+   set a = 10
+   set b = 20
+   @ sum = $a + $b
+   echo $sum
    ```
-   Output: `6`
 
-3. **Mengalikan angka:**
+3. Menggunakan opsi `-v` untuk menampilkan perintah:
    ```csh
-   @ hasil = 7 * 2
-   echo $hasil
+   @ -v result = 100 / 4
    ```
-   Output: `14`
-
-4. **Membagi angka:**
-   ```csh
-   @ hasil = 20 / 4
-   echo $hasil
-   ```
-   Output: `5`
-
-5. **Menggunakan hasil dalam perintah lain:**
-   ```csh
-   @ a = 10
-   @ b = 5
-   @ total = $a + $b
-   echo "Total: $total"
-   ```
-   Output: `Total: 15`
 
 ## Tips
-- Selalu gunakan spasi di sekitar operator aritmatika untuk menghindari kesalahan sintaks.
-- Gunakan `echo` untuk menampilkan nilai variabel setelah operasi agar lebih mudah memverifikasi hasilnya.
-- Anda dapat menggunakan hasil dari perhitungan `@` dalam perintah lain, sehingga memungkinkan untuk membuat skrip yang lebih dinamis.
+- Selalu gunakan tanda `$` sebelum variabel saat menggunakannya dalam perhitungan.
+- Gunakan opsi `-n` untuk menguji perintah tanpa menjalankannya, ini membantu dalam menghindari kesalahan.
+- Pastikan untuk memeriksa tipe data variabel sebelum melakukan operasi aritmatika untuk menghindari hasil yang tidak diinginkan.

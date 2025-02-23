@@ -1,12 +1,12 @@
-# [Linux] C Shell (csh) uniq Utilisation : Éliminer les doublons dans un fichier
+# [Linux] C Shell (csh) uniq Utilisation : Filtrer les lignes uniques d'un fichier
 
 ## Overview
-La commande `uniq` est utilisée pour filtrer les lignes répétées dans un fichier ou dans une entrée standard. Elle affiche uniquement les lignes uniques, ce qui est particulièrement utile pour traiter des listes ou des fichiers contenant des doublons.
+La commande `uniq` est utilisée pour filtrer les lignes uniques d'un fichier ou d'une entrée standard. Elle supprime les lignes en double consécutives, ce qui permet d'obtenir une liste de lignes distinctes.
 
 ## Usage
 La syntaxe de base de la commande `uniq` est la suivante :
 
-```csh
+```shell
 uniq [options] [arguments]
 ```
 
@@ -21,33 +21,35 @@ Voici quelques options courantes pour la commande `uniq` :
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `uniq` :
 
-1. **Éliminer les doublons d'un fichier :**
-   ```csh
+1. **Filtrer les lignes uniques d'un fichier :**
+   ```shell
    uniq fichier.txt
    ```
 
 2. **Compter les occurrences de chaque ligne :**
-   ```csh
+   ```shell
    uniq -c fichier.txt
    ```
 
-3. **Afficher uniquement les lignes répétées :**
-   ```csh
+3. **Afficher uniquement les lignes dupliquées :**
+   ```shell
    uniq -d fichier.txt
    ```
 
 4. **Afficher uniquement les lignes uniques :**
-   ```csh
+   ```shell
    uniq -u fichier.txt
    ```
 
-5. **Utiliser uniq avec tri :**
-   Pour s'assurer que les doublons sont adjacents, il est souvent utile de trier le fichier d'abord :
-   ```csh
-   sort fichier.txt | uniq
+5. **Ignorer la casse lors de la comparaison :**
+   ```shell
+   uniq -i fichier.txt
    ```
 
 ## Tips
-- Assurez-vous que le fichier est trié si vous souhaitez utiliser `uniq` pour éliminer les doublons, car `uniq` ne supprime que les doublons adjacents.
-- Utilisez l'option `-c` pour avoir une meilleure idée de la fréquence des lignes dans votre fichier.
-- Combinez `uniq` avec d'autres commandes comme `sort` pour des résultats plus efficaces lors du traitement de grandes listes.
+- Assurez-vous que le fichier d'entrée est trié avant d'utiliser `uniq`, car il ne supprime que les doublons consécutifs.
+- Vous pouvez combiner `uniq` avec d'autres commandes comme `sort` pour obtenir des résultats plus complets. Par exemple :
+  ```shell
+  sort fichier.txt | uniq
+  ```
+- Utilisez l'option `-c` pour avoir un aperçu rapide des occurrences, ce qui peut être utile pour analyser des données.

@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) continue użycie: Wznawia wykonywanie pętli
 
 ## Overview
-Polecenie `continue` w C Shell (csh) służy do pomijania bieżącej iteracji pętli i przechodzenia do następnej. Jest to przydatne, gdy chcemy zignorować określone warunki w trakcie wykonywania pętli.
+Polecenie `continue` w C Shell (csh) służy do pomijania pozostałej części bieżącej iteracji pętli i przechodzenia do następnej iteracji. Jest to przydatne, gdy chcesz zignorować niektóre warunki w pętli, ale kontynuować jej wykonywanie.
 
 ## Usage
 Podstawowa składnia polecenia `continue` jest następująca:
@@ -10,37 +10,35 @@ Podstawowa składnia polecenia `continue` jest następująca:
 continue [numer]
 ```
 
-Gdzie `numer` jest opcjonalnym argumentem, który określa, która pętla ma być kontynuowana, jeśli zagnieżdżone pętle są używane.
+Gdzie `numer` jest opcjonalnym argumentem, który określa, która pętla ma zostać wznowiona, jeśli masz zagnieżdżone pętle.
 
 ## Common Options
-- **numer**: Opcjonalny argument, który wskazuje, która pętla ma być kontynuowana. Domyślnie kontynuuje najbliższą pętlę.
+- `numer`: Opcjonalny argument, który wskazuje, która pętla ma być kontynuowana. Domyślnie kontynuuje najbliższą pętlę.
 
 ## Common Examples
 
 ### Przykład 1: Prosta pętla z `continue`
-W tym przykładzie pomijamy liczby parzyste w pętli:
-
 ```csh
 foreach i (1 2 3 4 5)
-    if ($i % 2 == 0) then
+    if ($i == 3) then
         continue
     endif
     echo $i
 end
 ```
-Wynik: 
+Wynik:
 ```
 1
-3
+2
+4
 5
 ```
+W tym przykładzie liczba 3 jest pomijana.
 
 ### Przykład 2: Zagnieżdżone pętle
-W tym przykładzie używamy `continue` w zagnieżdżonej pętli:
-
 ```csh
 foreach i (1 2)
-    foreach j (1 3)
+    foreach j (1 2 3)
         if ($j == 2) then
             continue 2
         endif
@@ -55,8 +53,29 @@ Wynik:
 2 1
 2 3
 ```
+W tym przypadku, gdy `j` jest równe 2, kontynuujemy zewnętrzną pętlę.
+
+### Przykład 3: Użycie w pętli while
+```csh
+set count = 0
+while ($count < 5)
+    @ count++
+    if ($count == 3) then
+        continue
+    endif
+    echo $count
+end
+```
+Wynik:
+```
+1
+2
+4
+5
+```
+Tutaj również liczba 3 jest pomijana.
 
 ## Tips
-- Używaj `continue`, gdy chcesz uprościć logikę pętli, unikając zagnieżdżonych instrukcji warunkowych.
-- Pamiętaj, aby zawsze testować warunki, które mogą prowadzić do wywołania `continue`, aby uniknąć nieoczekiwanych wyników.
-- W przypadku zagnieżdżonych pętli, zawsze określ, do której pętli odnosi się `continue`, używając numeru, aby uniknąć nieporozumień.
+- Używaj `continue` w pętlach, gdy chcesz zignorować niektóre iteracje na podstawie warunków.
+- Pamiętaj, że argument `numer` jest przydatny w zagnieżdżonych pętlach, aby precyzyjnie określić, którą pętlę chcesz kontynuować.
+- Staraj się unikać zbyt skomplikowanych warunków w pętlach, aby kod był bardziej czytelny i łatwiejszy do utrzymania.

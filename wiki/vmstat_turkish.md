@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) vmstat Kullanımı: Sistem performansını izleme aracı
+# [Linux] C Shell (csh) vmstat Kullanımı: Sistem durumu izleme aracı
 
 ## Genel Bakış
-`vmstat` komutu, sistemin bellek, işlemci ve diğer kaynaklarının kullanımını izlemek için kullanılan bir araçtır. Bu komut, sistemin genel performansını değerlendirmek ve potansiyel sorunları tespit etmek için yararlıdır.
+`vmstat` komutu, sistemin bellek, işlemci ve giriş/çıkış durumu hakkında bilgi sağlayarak sistem performansını izlemek için kullanılır. Bu komut, sistem kaynaklarının nasıl kullanıldığını anlamaya yardımcı olur.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
@@ -10,35 +10,35 @@ vmstat [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-a`: Tüm bellek alanlarını gösterir.
-- `-m`: Bellek sayfalarının kullanımını gösterir.
-- `-s`: Bellek istatistiklerini toplu olarak gösterir.
-- `-d`: Disk istatistiklerini gösterir.
+- `-a`: Tüm bellek sayfalarını gösterir.
+- `-m`: Bellek istatistiklerini gösterir.
+- `-s`: Toplam bellek istatistiklerini gösterir.
+- `-t`: Zaman damgası ile çıktıyı gösterir.
 
 ## Yaygın Örnekler
-Aşağıda `vmstat` komutunun bazı pratik kullanımları bulunmaktadır:
+Aşağıda `vmstat` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. **Temel sistem durumu görüntüleme:**
+1. Temel sistem durumu bilgilerini görüntülemek için:
    ```csh
    vmstat
    ```
 
-2. **Her 2 saniyede bir sistem durumu görüntüleme:**
+2. Her 2 saniyede bir güncel sistem durumu bilgilerini görüntülemek için:
    ```csh
    vmstat 2
    ```
 
-3. **Bellek istatistiklerini gösterme:**
+3. Bellek istatistiklerini görüntülemek için:
    ```csh
-   vmstat -s
+   vmstat -m
    ```
 
-4. **Disk istatistiklerini görüntüleme:**
+4. Zaman damgası ile birlikte sistem durumu bilgilerini görüntülemek için:
    ```csh
-   vmstat -d
+   vmstat -t
    ```
 
 ## İpuçları
-- `vmstat` çıktısını analiz ederken, bellek ve işlemci kullanımını dikkate alarak sistemin performansını değerlendirin.
-- Uzun süreli izleme için `vmstat` komutunu bir betik içinde kullanarak belirli aralıklarla çıktıyı kaydedebilirsiniz.
-- `vmstat` çıktısını diğer sistem izleme araçlarıyla birleştirerek daha kapsamlı bir analiz yapabilirsiniz.
+- `vmstat` çıktısını analiz ederken, bellek ve işlemci kullanımı arasındaki dengeyi göz önünde bulundurun.
+- Uzun süreli izleme için, `vmstat` komutunu bir betik içinde kullanarak verileri dosyaya yönlendirebilirsiniz.
+- Sistem performansını değerlendirmek için `vmstat` çıktısını diğer izleme araçlarıyla birlikte kullanmayı düşünün.

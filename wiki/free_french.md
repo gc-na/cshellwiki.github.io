@@ -1,49 +1,56 @@
 # [Linux] C Shell (csh) free : Afficher l'utilisation de la mémoire
 
 ## Overview
-La commande `free` est utilisée pour afficher l'état de la mémoire dans un système Linux. Elle fournit des informations sur la mémoire totale, utilisée, libre et échangée, ce qui est essentiel pour surveiller les performances du système.
+La commande `free` est utilisée pour afficher la quantité de mémoire libre et utilisée sur un système Linux. Elle fournit des informations sur la mémoire physique, la mémoire d'échange et les buffers utilisés par le noyau.
 
 ## Usage
 La syntaxe de base de la commande `free` est la suivante :
 
-```csh
+```
 free [options] [arguments]
 ```
 
 ## Common Options
-- `-h` : Affiche les valeurs dans un format lisible par l'homme (par exemple, en Ko, Mo).
-- `-m` : Affiche les valeurs en mégaoctets.
-- `-g` : Affiche les valeurs en gigaoctets.
-- `-s [seconds]` : Rafraîchit l'affichage toutes les [seconds] secondes.
-- `-t` : Affiche la mémoire totale utilisée et libre.
+Voici quelques options courantes pour la commande `free` :
+
+- `-h` : Affiche les valeurs en format lisible par l'homme (ex. : Ko, Mo, Go).
+- `-m` : Affiche la mémoire en mégaoctets.
+- `-g` : Affiche la mémoire en gigaoctets.
+- `-s <seconds>` : Rafraîchit l'affichage toutes les `<seconds>` secondes.
+- `-t` : Affiche la mémoire totale.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `free` :
 
 1. Afficher l'utilisation de la mémoire en format lisible par l'homme :
-   ```csh
+   ```bash
    free -h
    ```
 
 2. Afficher l'utilisation de la mémoire en mégaoctets :
-   ```csh
+   ```bash
    free -m
    ```
 
-3. Afficher l'utilisation de la mémoire toutes les 5 secondes :
-   ```csh
+3. Afficher l'utilisation de la mémoire en gigaoctets :
+   ```bash
+   free -g
+   ```
+
+4. Rafraîchir l'affichage toutes les 5 secondes :
+   ```bash
    free -s 5
    ```
 
-4. Afficher la mémoire totale, utilisée et libre :
-   ```csh
+5. Afficher la mémoire totale :
+   ```bash
    free -t
    ```
 
 ## Tips
-- Utilisez l'option `-h` pour obtenir une lecture plus facile des informations de mémoire.
-- Pour une surveillance continue, combinez `free` avec `watch` pour mettre à jour l'affichage à intervalles réguliers :
-  ```csh
+- Utilisez l'option `-h` pour obtenir des résultats plus faciles à lire, surtout sur des systèmes avec beaucoup de mémoire.
+- Combinez `free` avec d'autres commandes comme `watch` pour surveiller l'utilisation de la mémoire en temps réel :
+  ```bash
   watch free -h
   ```
-- Vérifiez régulièrement l'utilisation de la mémoire pour éviter les problèmes de performance sur votre système.
+- Pensez à vérifier régulièrement l'utilisation de la mémoire pour éviter des problèmes de performance sur votre système.

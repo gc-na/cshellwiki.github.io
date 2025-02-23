@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) dirname : [obtenir le nom de répertoire d'un chemin]
+# [Linux] C Shell (csh) dirname : [extraire le nom de répertoire]
 
 ## Overview
-La commande `dirname` est utilisée pour extraire le nom du répertoire d'un chemin donné. Elle renvoie la partie du chemin qui précède le dernier séparateur de répertoire, permettant ainsi d'isoler le répertoire parent d'un fichier ou d'un autre répertoire.
+La commande `dirname` est utilisée pour extraire le nom du répertoire d'un chemin de fichier donné. Elle renvoie la partie du chemin qui précède le nom du fichier, ce qui est utile pour manipuler des chemins dans des scripts ou des commandes.
 
 ## Usage
 La syntaxe de base de la commande `dirname` est la suivante :
@@ -11,50 +11,42 @@ dirname [options] [arguments]
 ```
 
 ## Common Options
-- `-z` : Traite les chemins vides comme des chemins valides.
-- `--help` : Affiche l'aide et les options disponibles pour la commande.
-- `--version` : Affiche la version de la commande `dirname`.
+- `-z` : Traite les chemins vides comme des chaînes vides.
+- `--help` : Affiche l'aide sur l'utilisation de la commande.
+- `--version` : Affiche la version de la commande.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `dirname` :
 
-1. **Obtenir le répertoire d'un fichier :**
-   ```csh
-   dirname /home/utilisateur/documents/fichier.txt
-   ```
-   Cela renverra :
-   ```
-   /home/utilisateur/documents
-   ```
+1. Extraire le répertoire d'un chemin de fichier :
 
-2. **Utiliser dirname avec un chemin relatif :**
-   ```csh
-   dirname ./projets/codage/script.sh
-   ```
-   Cela renverra :
-   ```
-   ./projets/codage
-   ```
+```csh
+dirname /home/user/documents/file.txt
+```
+*Sortie :* `/home/user/documents`
 
-3. **Traiter un chemin vide :**
-   ```csh
-   dirname ""
-   ```
-   Cela renverra :
-   ```
-   .
-   ```
+2. Utiliser dirname avec un chemin relatif :
 
-4. **Obtenir le répertoire d'un chemin avec des espaces :**
-   ```csh
-   dirname "/home/utilisateur/mes fichiers/rapport.doc"
-   ```
-   Cela renverra :
-   ```
-   /home/utilisateur/mes fichiers
-   ```
+```csh
+dirname ./images/photo.jpg
+```
+*Sortie :* `./images`
+
+3. Traiter un chemin vide :
+
+```csh
+dirname ""
+```
+*Sortie :* `.` (représente le répertoire courant)
+
+4. Extraire le répertoire d'un chemin absolu :
+
+```csh
+dirname /usr/local/bin/script.sh
+```
+*Sortie :* `/usr/local/bin`
 
 ## Tips
-- Utilisez `dirname` en combinaison avec d'autres commandes comme `basename` pour manipuler les chemins de fichiers de manière efficace.
-- Soyez attentif aux chemins relatifs et absolus pour éviter des résultats inattendus.
-- Pensez à utiliser l'option `-z` si vous devez gérer des chemins qui peuvent être vides dans vos scripts.
+- Utilisez `dirname` dans des scripts pour manipuler des chemins de fichiers de manière dynamique.
+- Combinez `dirname` avec d'autres commandes comme `basename` pour obtenir à la fois le répertoire et le nom de fichier d'un chemin.
+- Faites attention aux chemins relatifs et absolus pour éviter des résultats inattendus.

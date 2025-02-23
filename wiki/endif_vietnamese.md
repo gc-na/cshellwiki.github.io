@@ -1,35 +1,33 @@
-# [Hệ điều hành] C Shell (csh) endif: Kết thúc một khối điều kiện
+# [Hệ điều hành] C Shell (csh) endif <Sử dụng tương đương>: Kết thúc một khối điều kiện
 
 ## Overview
-Lệnh `endif` trong C Shell (csh) được sử dụng để đánh dấu sự kết thúc của một khối điều kiện. Nó thường được sử dụng trong các cấu trúc điều kiện như `if` để chỉ ra rằng phần điều kiện đã kết thúc.
+Lệnh `endif` trong C Shell (csh) được sử dụng để đánh dấu sự kết thúc của một khối điều kiện. Nó thường được sử dụng trong các cấu trúc điều kiện như `if` để xác định nơi mà khối lệnh điều kiện kết thúc.
 
 ## Usage
 Cú pháp cơ bản của lệnh `endif` như sau:
+
 ```
 endif
 ```
 
 ## Common Options
-Lệnh `endif` không có tùy chọn nào đi kèm. Nó chỉ đơn giản là một từ khóa để kết thúc khối điều kiện.
+Lệnh `endif` không có tùy chọn nào. Nó chỉ đơn giản là một từ khóa để đánh dấu sự kết thúc của khối lệnh điều kiện.
 
 ## Common Examples
-Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `endif` trong C Shell:
 
-### Ví dụ 1: Sử dụng trong cấu trúc điều kiện đơn giản
+### Ví dụ 1: Sử dụng trong cấu trúc if
 ```csh
-if ( $var == 1 ) then
-    echo "Biến có giá trị là 1"
+if ( $variable == "value" ) then
+    echo "Giá trị là đúng"
 endif
 ```
 
-### Ví dụ 2: Sử dụng trong cấu trúc điều kiện phức tạp
+### Ví dụ 2: Nhiều điều kiện
 ```csh
-if ( $var == 1 ) then
-    echo "Biến có giá trị là 1"
-else if ( $var == 2 ) then
-    echo "Biến có giá trị là 2"
+if ( $number > 10 ) then
+    echo "Số lớn hơn 10"
 else
-    echo "Biến có giá trị khác"
+    echo "Số không lớn hơn 10"
 endif
 ```
 
@@ -43,6 +41,6 @@ endif
 ```
 
 ## Tips
-- Đảm bảo rằng mỗi khối điều kiện `if` đều có một lệnh `endif` tương ứng để tránh lỗi cú pháp.
-- Sử dụng lệnh `endif` để làm cho mã của bạn dễ đọc hơn, đặc biệt khi có nhiều khối điều kiện lồng nhau.
-- Kiểm tra kỹ các điều kiện trước khi sử dụng `endif` để đảm bảo rằng logic của bạn hoạt động như mong đợi.
+- Đảm bảo rằng mỗi lệnh `if` đều có một lệnh `endif` tương ứng để tránh lỗi cú pháp.
+- Sử dụng lệnh `endif` để làm cho mã của bạn dễ đọc hơn bằng cách rõ ràng đánh dấu các khối điều kiện.
+- Kiểm tra kỹ các điều kiện trước khi viết lệnh `endif` để đảm bảo rằng logic của bạn là chính xác.

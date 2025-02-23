@@ -1,49 +1,49 @@
 # [Linux] C Shell (csh) yum gebruik: Beheer van softwarepakketten
 
 ## Overzicht
-De `yum`-opdracht is een pakketbeheerder voor Linux-distributies die RPM-pakketten gebruikt. Het stelt gebruikers in staat om softwarepakketten te installeren, bij te werken en te verwijderen, evenals om afhankelijkheden te beheren.
+Het `yum`-commando is een pakketbeheerder voor Linux-distributies die RPM-pakketten gebruiken. Het stelt gebruikers in staat om software te installeren, bij te werken en te verwijderen, evenals om afhankelijkheden automatisch te beheren.
 
 ## Gebruik
-De basis syntaxis van de `yum`-opdracht is als volgt:
+De basis syntaxis van het `yum`-commando is als volgt:
 
 ```bash
 yum [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
+## Veelvoorkomende opties
 - `install`: Installeert een nieuw pakket.
 - `remove`: Verwijdert een geïnstalleerd pakket.
-- `update`: Update een geïnstalleerd pakket naar de nieuwste versie.
+- `update`: Werkt geïnstalleerde pakketten bij naar de nieuwste versie.
 - `search`: Zoekt naar pakketten in de repository.
-- `list`: Lijst beschikbare of geïnstalleerde pakketten.
+- `info`: Toont informatie over een specifiek pakket.
 
-## Veelvoorkomende Voorbeelden
+## Veelvoorkomende voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van `yum`:
 
-1. **Een pakket installeren**:
-   ```bash
-   yum install pakketnaam
-   ```
+### Een pakket installeren
+```bash
+yum install pakketnaam
+```
 
-2. **Een pakket verwijderen**:
-   ```bash
-   yum remove pakketnaam
-   ```
+### Een pakket verwijderen
+```bash
+yum remove pakketnaam
+```
 
-3. **Een pakket bijwerken**:
-   ```bash
-   yum update pakketnaam
-   ```
+### Geïnstalleerde pakketten bijwerken
+```bash
+yum update
+```
 
-4. **Zoeken naar een pakket**:
-   ```bash
-   yum search zoekterm
-   ```
+### Zoeken naar een pakket
+```bash
+yum search zoekterm
+```
 
-5. **Lijst van geïnstalleerde pakketten**:
-   ```bash
-   yum list installed
-   ```
+### Informatie over een specifiek pakket opvragen
+```bash
+yum info pakketnaam
+```
 
 ## Tips
 - Zorg ervoor dat je altijd de laatste versie van de repository's hebt door `yum update` regelmatig uit te voeren.

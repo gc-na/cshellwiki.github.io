@@ -1,7 +1,7 @@
 # [Sistem Operasi] C Shell (csh) w: Menampilkan informasi pengguna yang sedang aktif
 
 ## Overview
-Perintah `w` digunakan untuk menampilkan informasi tentang pengguna yang sedang aktif di sistem. Ini termasuk nama pengguna, terminal yang mereka gunakan, waktu login, dan aktivitas terakhir mereka. Informasi ini sangat berguna untuk mengawasi aktivitas pengguna di sistem multi-user.
+Perintah `w` digunakan untuk menampilkan informasi tentang pengguna yang sedang aktif di sistem. Ini termasuk nama pengguna, waktu login, dan aktivitas yang sedang dilakukan oleh masing-masing pengguna.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `w`:
@@ -12,33 +12,33 @@ w [options] [arguments]
 
 ## Common Options
 - `-h`: Mengabaikan header yang biasanya ditampilkan di bagian atas output.
-- `-s`: Menampilkan output yang lebih ringkas tanpa informasi tambahan.
-- `-f`: Menampilkan informasi lengkap termasuk nama host dari pengguna yang terhubung.
+- `-s`: Menampilkan output dalam format singkat, tanpa informasi tambahan.
+- `-f`: Menampilkan informasi tentang pengguna yang sedang menggunakan terminal tertentu.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `w`:
 
-1. Menampilkan informasi pengguna yang sedang aktif:
-   ```csh
+1. Menampilkan semua pengguna yang sedang aktif:
+   ```bash
    w
    ```
 
-2. Menampilkan informasi tanpa header:
-   ```csh
+2. Menampilkan informasi pengguna tanpa header:
+   ```bash
    w -h
    ```
 
-3. Menampilkan informasi dengan format ringkas:
-   ```csh
+3. Menampilkan output dalam format singkat:
+   ```bash
    w -s
    ```
 
-4. Menampilkan informasi lengkap termasuk nama host:
-   ```csh
-   w -f
+4. Menampilkan informasi pengguna di terminal tertentu:
+   ```bash
+   w -f /dev/pts/0
    ```
 
 ## Tips
-- Gunakan opsi `-s` jika Anda hanya memerlukan informasi dasar untuk menghemat ruang di terminal.
-- Perintah `w` sangat berguna untuk administrator sistem untuk memantau aktivitas pengguna secara real-time.
-- Kombinasikan `w` dengan perintah lain seperti `grep` untuk memfilter informasi berdasarkan nama pengguna tertentu.
+- Gunakan opsi `-s` jika Anda hanya memerlukan informasi dasar untuk mengurangi clutter pada output.
+- Perintah `w` sangat berguna untuk memantau aktivitas pengguna di sistem multi-user.
+- Kombinasikan dengan perintah lain seperti `grep` untuk mencari pengguna tertentu dalam output.

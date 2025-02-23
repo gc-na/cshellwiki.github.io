@@ -1,7 +1,7 @@
-# [Hệ điều hành Linux] C Shell (csh) modprobe: [quản lý module kernel]
+# [Hệ điều hành Linux] C Shell (csh) modprobe sử dụng: Quản lý các module kernel
 
 ## Tổng quan
-Lệnh `modprobe` được sử dụng để thêm hoặc xóa các module kernel trong hệ điều hành Linux. Nó giúp quản lý các driver và các thành phần khác của kernel một cách dễ dàng, tự động xử lý các phụ thuộc giữa các module.
+Lệnh `modprobe` trong C Shell (csh) được sử dụng để tải và gỡ bỏ các module kernel trong hệ điều hành Linux. Nó giúp quản lý các driver và các thành phần cần thiết cho phần cứng hoạt động đúng cách.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `modprobe` như sau:
@@ -10,35 +10,40 @@ modprobe [options] [arguments]
 ```
 
 ## Các tùy chọn phổ biến
-- `-r`: Xóa module khỏi kernel.
-- `-n`: Chỉ hiển thị các lệnh mà không thực thi chúng.
+- `-r`: Gỡ bỏ module.
+- `-n`: Chạy lệnh mà không thực hiện thay đổi, chỉ hiển thị các hành động sẽ được thực hiện.
 - `-v`: Hiển thị thông tin chi tiết về các hành động đang được thực hiện.
-- `--show`: Hiển thị các module sẽ được tải mà không thực thi.
+- `--show-depends`: Hiển thị các module phụ thuộc của module được chỉ định.
 
 ## Ví dụ phổ biến
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `modprobe`:
 
-1. Tải một module kernel:
+1. Tải một module:
    ```bash
-   modprobe <tên_module>
+   modprobe nvidia
    ```
 
-2. Xóa một module kernel:
+2. Gỡ bỏ một module:
    ```bash
-   modprobe -r <tên_module>
+   modprobe -r nvidia
    ```
 
-3. Hiển thị thông tin chi tiết khi tải module:
+3. Chạy lệnh mà không thực hiện thay đổi:
    ```bash
-   modprobe -v <tên_module>
+   modprobe -n nvidia
    ```
 
-4. Kiểm tra các module sẽ được tải mà không thực thi:
+4. Hiển thị thông tin chi tiết khi tải module:
    ```bash
-   modprobe --show <tên_module>
+   modprobe -v nvidia
+   ```
+
+5. Hiển thị các module phụ thuộc:
+   ```bash
+   modprobe --show-depends nvidia
    ```
 
 ## Mẹo
-- Luôn kiểm tra các phụ thuộc của module trước khi tải để tránh lỗi.
-- Sử dụng tùy chọn `-v` để theo dõi quá trình tải module, điều này hữu ích khi bạn gặp sự cố.
-- Đảm bảo rằng bạn có quyền truy cập root khi thực hiện các thao tác với `modprobe`, vì nó yêu cầu quyền cao hơn để thay đổi kernel.
+- Luôn kiểm tra các module đã được tải bằng lệnh `lsmod` trước khi tải thêm module mới.
+- Sử dụng tùy chọn `-v` để theo dõi quá trình tải module, điều này hữu ích để phát hiện lỗi.
+- Trước khi gỡ bỏ một module, hãy đảm bảo rằng không có ứng dụng nào đang sử dụng nó để tránh gây ra sự cố hệ thống.

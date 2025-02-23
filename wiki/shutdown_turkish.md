@@ -1,47 +1,48 @@
-# [Linux] C Shell (csh) shutdown Kullanımı: Sistemi kapatma komutu
+# [Linux] C Shell (csh) shutdown Kullanımı: Sistemi kapatmak için kullanılan bir komut
 
-## Genel Bakış
-`shutdown` komutu, bir Unix veya Linux sistemini güvenli bir şekilde kapatmak için kullanılır. Bu komut, sistemin kapanma sürecini başlatır ve kullanıcıları bilgilendirir.
+## Overview
+`shutdown` komutu, bir sistemi kapatmak veya yeniden başlatmak için kullanılır. Bu komut, sistem yöneticileri tarafından genellikle bakım veya güncelleme işlemleri sırasında kullanılır.
 
-## Kullanım
+## Usage
 Temel sözdizimi aşağıdaki gibidir:
+
 ```
-shutdown [seçenekler] [argümanlar]
+shutdown [options] [arguments]
 ```
 
-## Yaygın Seçenekler
+## Common Options
 - `-h`: Sistemi kapatır.
 - `-r`: Sistemi yeniden başlatır.
-- `now`: Hemen kapatmayı başlatır.
-- `+m`: Belirtilen dakika sayısı sonra kapatır.
+- `now`: Komutun hemen uygulanmasını sağlar.
+- `+m`: Belirtilen dakika sayısı sonra kapatma işlemini gerçekleştirir.
 
-## Yaygın Örnekler
-Aşağıda `shutdown` komutunun bazı pratik örnekleri verilmiştir:
+## Common Examples
+Aşağıda `shutdown` komutunun bazı yaygın kullanım örnekleri bulunmaktadır:
 
 1. Sistemi hemen kapatmak için:
    ```csh
    shutdown -h now
    ```
 
-2. Sistemi 5 dakika sonra kapatmak için:
+2. Sistemi 5 dakika sonra yeniden başlatmak için:
    ```csh
-   shutdown -h +5
+   shutdown -r +5
    ```
 
-3. Sistemi hemen yeniden başlatmak için:
+3. Sistemi 1 dakika sonra kapatmak için:
+   ```csh
+   shutdown -h +1
+   ```
+
+4. Sistemi hemen yeniden başlatmak için:
    ```csh
    shutdown -r now
    ```
 
-4. Sistemi 10 dakika sonra yeniden başlatmak için:
-   ```csh
-   shutdown -r +10
-   ```
-
-## İpuçları
-- Kapatma işlemi öncesinde kullanıcıları bilgilendirmek için bir mesaj ekleyebilirsiniz. Örneğin:
+## Tips
+- Sistemi kapatmadan önce açık olan uygulamaları kontrol edin ve kaydedilmemiş verilerinizi kaydedin.
+- `shutdown` komutunu kullanmadan önce yeterli izinlere sahip olduğunuzdan emin olun; genellikle bu komut için yönetici (root) yetkileri gereklidir.
+- Kapatma işlemi sırasında diğer kullanıcıları bilgilendirmek için bir mesaj ekleyebilirsiniz. Örneğin:
   ```csh
-  shutdown -h +5 "Sistem 5 dakika içinde kapanacaktır. Lütfen çalışmanızı kaydedin."
+  shutdown -h +5 "Sistem 5 dakika içinde kapatılacaktır."
   ```
-- Sistem kapanmadan önce açık olan uygulamaları kapatmayı unutmayın, böylece veri kaybını önleyebilirsiniz.
-- `shutdown` komutunu kullanmadan önce, yeterli izinlere sahip olduğunuzdan emin olun; genellikle bu komut için yönetici (root) yetkileri gereklidir.

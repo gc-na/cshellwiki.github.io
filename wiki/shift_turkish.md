@@ -1,10 +1,10 @@
 # [Linux] C Shell (csh) shift Kullanımı: Argümanları sola kaydırma
 
 ## Overview
-`shift` komutu, C Shell (csh) ortamında, komut satırında tanımlı argümanları sola kaydırmak için kullanılır. Bu, argümanların sırasını değiştirerek, belirli bir argümanı işlemek için diğerlerini kolayca atlamanızı sağlar.
+`shift` komutu, C Shell (csh) ortamında, komut satırında tanımlı olan argümanları sola kaydırmak için kullanılır. Bu, argümanların sırasını değiştirmek ve belirli bir argümanı işlemek için yararlıdır.
 
 ## Usage
-Temel sözdizimi aşağıdaki gibidir:
+Temel sözdizimi şu şekildedir:
 
 ```csh
 shift [options] [arguments]
@@ -15,38 +15,62 @@ shift [options] [arguments]
 
 ## Common Examples
 
-### Örnek 1: Basit kaydırma
-Aşağıdaki komut, ilk argümanı kaydırarak ikinci argümanı ilk pozisyona getirir.
+### Örnek 1: Basit Shift
+Aşağıdaki komut, argümanları bir kez sola kaydırır.
 
 ```csh
-set args = (arg1 arg2 arg3)
-echo $args[1]  # Çıktı: arg1
+set arg1 = "bir"
+set arg2 = "iki"
+set arg3 = "üç"
+echo $arg1 $arg2 $arg3
 shift
-echo $args[1]  # Çıktı: arg2
+echo $arg1 $arg2 $arg3
 ```
 
-### Örnek 2: Birden fazla kaydırma
-`shift` komutunu birden fazla argümanı kaydırmak için kullanabilirsiniz.
+Çıktı:
+```
+bir iki üç
+iki üç
+```
+
+### Örnek 2: Çoklu Shift
+Bu örnekte, argümanları iki kez sola kaydırıyoruz.
 
 ```csh
-set args = (arg1 arg2 arg3 arg4)
-echo $args[1]  # Çıktı: arg1
+set arg1 = "elma"
+set arg2 = "armut"
+set arg3 = "muz"
+echo $arg1 $arg2 $arg3
 shift 2
-echo $args[1]  # Çıktı: arg3
+echo $arg1 $arg2 $arg3
 ```
 
-### Örnek 3: Argümanları döngü ile işleme
-`shift` komutunu bir döngü içinde kullanarak tüm argümanları işleyebilirsiniz.
+Çıktı:
+```
+elma armut muz
+muz
+```
+
+### Örnek 3: Argümanları İşleme
+`shift` komutunu bir döngü içinde kullanarak argümanları sırayla işleyebiliriz.
 
 ```csh
-set args = (arg1 arg2 arg3 arg4)
+set args = ("bir" "iki" "üç" "dört")
 while ($#args > 0)
-    echo $args[1]
+    echo "İşlenen argüman: $args[1]"
     shift
 end
 ```
 
+Çıktı:
+```
+İşlenen argüman: bir
+İşlenen argüman: iki
+İşlenen argüman: üç
+İşlenen argüman: dört
+```
+
 ## Tips
-- `shift` komutunu kullanmadan önce argümanların sayısını kontrol etmek için `$#args` ifadesini kullanın.
-- Argümanları kaydırmadan önce, hangi argümanın işleneceğini belirlemek için `echo` komutunu kullanarak argümanları görüntüleyin.
-- `shift` komutunu, scriptlerinizde argümanları yönetmek için etkili bir yöntem olarak kullanabilirsiniz.
+- `shift` komutunu kullanmadan önce argüman sayısını kontrol etmek için `$#` değişkenini kullanabilirsiniz.
+- Argümanları kaydırdıktan sonra, işlemek istediğiniz argümanların doğru sırada olduğundan emin olun.
+- `shift` komutunu döngülerle birleştirerek, argümanları daha etkili bir şekilde işleyebilirsiniz.

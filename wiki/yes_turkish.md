@@ -1,46 +1,42 @@
-# [Linux] C Shell (csh) yes kullanımı: Sonsuz bir metin akışı üretir
+# [Linux] C Shell (csh) yes Kullanımı: Sürekli bir metin çıktısı üretir
 
-## Overview
-`yes` komutu, belirli bir metni sürekli olarak ekrana yazdıran bir komuttur. Genellikle, bir komutun otomatik olarak "evet" yanıtını vermesi gerektiğinde kullanılır.
+## Genel Bakış
+`yes` komutu, belirli bir metni sürekli olarak çıktılar. Genellikle, bir komutun veya işlemin sürekli olarak belirli bir girdiye ihtiyaç duyduğu durumlarda kullanılır.
 
-## Usage
+## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
-```
+
+```csh
 yes [options] [arguments]
 ```
 
-## Common Options
-- `-n`: Herhangi bir yeni satır eklemeden metni yazdırır.
-- `--help`: Komutun kullanımına dair yardım bilgilerini gösterir.
-- `--version`: Komutun sürüm bilgilerini gösterir.
+## Yaygın Seçenekler
+- `-n`: Herhangi bir metin üretmeden sadece "evet" kelimesini üretir.
+- `-h`: Yardım mesajını gösterir.
 
-## Common Examples
+## Yaygın Örnekler
 Aşağıda `yes` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. Basit bir "yes" yanıtı üretmek:
+1. **Sürekli "evet" yazdırma:**
    ```csh
    yes
    ```
 
-2. Belirli bir metni sürekli yazdırmak:
+2. **Belirli bir metni sürekli yazdırma:**
    ```csh
-   yes "Merhaba Dünya"
+   yes "Bu bir test mesajıdır."
    ```
 
-3. Yeni satır eklemeden metni yazdırmak:
+3. **Bir komut ile birlikte kullanma:**
    ```csh
-   yes -n "Evet"
+   yes | rm -i dosya.txt
    ```
+   Bu komut, `rm` komutuna sürekli "evet" yanıtı vererek dosyanın silinmesini onaylar.
 
-4. `yes` komutunu başka bir komutla birleştirmek:
-   ```csh
-   yes | some_command
-   ```
-
-## Tips
-- `yes` komutunu kullanırken dikkatli olun, çünkü sonsuz bir döngü oluşturabilir ve terminali doldurabilir.
-- `yes` komutunu bir dosyaya yönlendirmek için `>` operatörünü kullanabilirsiniz:
+## İpuçları
+- `yes` komutunu, etkileşimli komutları otomatikleştirmek için kullanabilirsiniz.
+- Çok fazla çıktı üretebileceğinden, çıktıyı bir dosyaya yönlendirmek iyi bir fikir olabilir:
   ```csh
-  yes "Evet" > output.txt
+  yes "Onay" > onaylar.txt
   ```
-- Otomatik yanıt gerektiren komutlarda `yes` kullanarak etkileşimi azaltabilirsiniz.
+- `yes` komutunu dikkatli kullanın; yanlışlıkla önemli dosyaları silebilir veya istenmeyen sonuçlara yol açabilir.

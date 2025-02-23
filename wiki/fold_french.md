@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) fold : Plier le texte en lignes de longueur fixe
+# [Linux] C Shell (csh) fold Utilisation : Ajuster la largeur des lignes de texte
 
 ## Overview
-La commande `fold` est utilisée pour plier le texte en lignes de longueur fixe. Cela permet de reformater le contenu d'un fichier ou d'une entrée standard afin que chaque ligne ne dépasse pas un certain nombre de caractères, facilitant ainsi la lecture sur des écrans ou des imprimantes.
+La commande `fold` dans C Shell (csh) est utilisée pour ajuster la largeur des lignes de texte. Elle permet de plier le texte long en plusieurs lignes plus courtes, ce qui est particulièrement utile pour l'affichage sur des terminaux avec une largeur limitée.
 
 ## Usage
 La syntaxe de base de la commande `fold` est la suivante :
@@ -14,7 +14,7 @@ fold [options] [arguments]
 Voici quelques options courantes pour la commande `fold` :
 
 - `-w <largeur>` : Définit la largeur maximale des lignes pliées (par défaut, 80 caractères).
-- `-s` : Plie le texte à la fin des mots au lieu de couper les mots en plein milieu.
+- `-s` : Plie le texte à la fin des mots, plutôt qu'au milieu.
 - `-b` : Compte les octets au lieu des caractères pour la largeur.
 
 ## Common Examples
@@ -26,19 +26,25 @@ Voici quelques exemples pratiques de l'utilisation de la commande `fold` :
    fold -w 50 mon_fichier.txt
    ```
 
-2. Plier l'entrée standard avec des mots entiers :
+2. Plier un texte en évitant de couper les mots :
 
    ```csh
-   echo "Ceci est un exemple de texte qui sera plié." | fold -s -w 30
+   fold -s mon_fichier.txt
    ```
 
-3. Plier un fichier tout en comptant les octets :
+3. Plier un texte et afficher le résultat dans un nouveau fichier :
 
    ```csh
-   fold -b -w 100 mon_fichier.txt
+   fold -w 60 mon_fichier.txt > fichier_plie.txt
+   ```
+
+4. Plier un texte en comptant les octets :
+
+   ```csh
+   fold -b -w 30 mon_fichier.txt
    ```
 
 ## Tips
-- Utilisez l'option `-s` pour éviter de couper les mots, ce qui rend le texte plus lisible.
-- Testez différentes largeurs avec l'option `-w` pour voir ce qui fonctionne le mieux pour votre affichage.
-- Combinez `fold` avec d'autres commandes comme `cat` ou `grep` pour un traitement de texte plus avancé.
+- Utilisez l'option `-s` pour obtenir un résultat plus lisible, surtout si votre texte contient des mots longs.
+- Vérifiez la largeur de votre terminal avant de choisir la largeur de pliage pour éviter un affichage inapproprié.
+- Combinez `fold` avec d'autres commandes comme `cat` ou `less` pour un traitement de texte plus avancé.

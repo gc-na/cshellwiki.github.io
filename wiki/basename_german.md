@@ -1,45 +1,60 @@
-# [Linux] C Shell (csh) basename Verwendung: Entfernen von Verzeichnispfaden aus Dateinamen
+# [Linux] C Shell (csh) basename Verwendung: Entfernt den Pfad und die Dateierweiterung von Dateinamen
 
 ## Übersicht
-Der `basename` Befehl wird verwendet, um den Dateinamen aus einem vollständigen Verzeichnispfad zu extrahieren. Er entfernt alle führenden Verzeichnisse und gibt nur den letzten Teil des Pfades zurück, der den Dateinamen darstellt.
+Der Befehl `basename` wird verwendet, um den Dateinamen aus einem vollständigen Pfad zu extrahieren. Er entfernt sowohl den Verzeichnispfad als auch eine angegebene Dateierweiterung, sodass nur der reine Dateiname übrig bleibt.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```csh
+```
 basename [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-a`: Gibt alle Basen von mehreren Pfaden zurück.
-- `-s`: Entfernt eine angegebene Suffix-Zeichenfolge vom Dateinamen.
+- `-a`: Behandelt mehrere Argumente und gibt die Basen für alle an.
+- `-s`: Entfernt die angegebene Dateierweiterung vom Dateinamen.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung des `basename` Befehls:
 
-1. **Einfacher Gebrauch**:
+1. **Einfacher Gebrauch ohne Erweiterung entfernen:**
    ```csh
    basename /usr/local/bin/script.sh
-   ```
-   Ausgabe: `script.sh`
-
-2. **Entfernen eines Suffixes**:
-   ```csh
-   basename /usr/local/bin/script.sh .sh
-   ```
-   Ausgabe: `script`
-
-3. **Mehrere Pfade**:
-   ```csh
-   basename -a /usr/local/bin/script.sh /home/user/file.txt
    ```
    Ausgabe:
    ```
    script.sh
-   file.txt
+   ```
+
+2. **Entfernen der Dateierweiterung:**
+   ```csh
+   basename /usr/local/bin/script.sh .sh
+   ```
+   Ausgabe:
+   ```
+   script
+   ```
+
+3. **Verwendung mit mehreren Argumenten:**
+   ```csh
+   basename -a /usr/local/bin/script.sh /usr/bin/another_script.py
+   ```
+   Ausgabe:
+   ```
+   script.sh
+   another_script.py
+   ```
+
+4. **Entfernen einer Erweiterung von mehreren Dateien:**
+   ```csh
+   basename -a /path/to/file1.txt /path/to/file2.txt .txt
+   ```
+   Ausgabe:
+   ```
+   file1
+   file2
    ```
 
 ## Tipps
-- Verwenden Sie `basename` in Skripten, um Dateinamen zu extrahieren, bevor Sie sie weiterverarbeiten.
-- Achten Sie darauf, das richtige Suffix anzugeben, wenn Sie es entfernen möchten, um unerwartete Ergebnisse zu vermeiden.
-- Kombinieren Sie `basename` mit anderen Befehlen wie `find`, um effizient mit Dateinamen zu arbeiten.
+- Verwenden Sie `basename` in Skripten, um Dateinamen dynamisch zu verarbeiten, ohne sich um die Verzeichnispfade kümmern zu müssen.
+- Kombinieren Sie `basename` mit anderen Befehlen wie `find`, um gezielt Dateinamen zu extrahieren und weiterzuverarbeiten.
+- Achten Sie darauf, die richtige Dateierweiterung anzugeben, wenn Sie diese entfernen möchten, um unerwartete Ergebnisse zu vermeiden.

@@ -1,53 +1,51 @@
 # [Sistem Operasi] C Shell (csh) pidstat Penggunaan: Memantau Statistik Proses
 
 ## Overview
-Perintah `pidstat` digunakan untuk memantau statistik penggunaan sumber daya sistem dari proses yang berjalan. Ini memberikan informasi penting seperti penggunaan CPU, memori, dan I/O untuk setiap proses yang aktif.
+Perintah `pidstat` digunakan untuk memantau statistik penggunaan sumber daya dari proses yang sedang berjalan di sistem. Ini memberikan informasi tentang penggunaan CPU, memori, dan statistik lainnya untuk setiap proses berdasarkan ID proses (PID).
 
 ## Usage
-Sintaks dasar dari perintah `pidstat` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `pidstat`:
 
 ```csh
 pidstat [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum untuk `pidstat` beserta penjelasannya:
-
-- `-p <pid>`: Menentukan ID proses yang ingin dipantau.
+- `-h`: Menampilkan header yang lebih ringkas.
 - `-r`: Menampilkan statistik penggunaan memori.
 - `-u`: Menampilkan statistik penggunaan CPU.
-- `-d`: Menampilkan statistik I/O disk.
-- `-h`: Menampilkan informasi dalam format yang lebih mudah dibaca.
+- `-p <pid>`: Memantau proses tertentu berdasarkan ID proses.
+- `-t`: Menampilkan statistik untuk semua thread dalam proses.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `pidstat`:
 
-1. Memantau semua proses dengan statistik CPU:
+1. **Menampilkan penggunaan CPU untuk semua proses:**
    ```csh
    pidstat -u
    ```
 
-2. Memantau proses tertentu dengan ID 1234:
-   ```csh
-   pidstat -p 1234
-   ```
-
-3. Menampilkan statistik penggunaan memori untuk semua proses:
+2. **Menampilkan penggunaan memori untuk semua proses:**
    ```csh
    pidstat -r
    ```
 
-4. Memantau statistik I/O disk untuk semua proses:
+3. **Menampilkan statistik untuk proses tertentu dengan PID 1234:**
    ```csh
-   pidstat -d
+   pidstat -p 1234
    ```
 
-5. Menggunakan opsi `-h` untuk format yang lebih mudah dibaca:
+4. **Menampilkan statistik untuk semua thread dalam proses dengan PID 5678:**
    ```csh
-   pidstat -u -h
+   pidstat -t -p 5678
+   ```
+
+5. **Menampilkan statistik dengan header yang lebih ringkas:**
+   ```csh
+   pidstat -h -u
    ```
 
 ## Tips
-- Gunakan opsi `-r` dan `-u` secara bersamaan untuk mendapatkan gambaran lengkap tentang penggunaan sumber daya proses.
-- Pertimbangkan untuk menjalankan `pidstat` dalam interval waktu tertentu untuk memantau perubahan dalam penggunaan sumber daya.
-- Simpan output `pidstat` ke dalam file untuk analisis lebih lanjut dengan menggunakan operator pengalihan (`>`).
+- Gunakan opsi `-p` untuk fokus pada proses tertentu jika Anda ingin menganalisis penggunaan sumber daya secara mendalam.
+- Kombinasikan opsi `-u` dan `-r` untuk mendapatkan gambaran lengkap tentang penggunaan CPU dan memori dari proses yang Anda pantau.
+- Jalankan `pidstat` secara berkala dengan menggunakan perintah `watch` untuk memantau perubahan dalam waktu nyata.

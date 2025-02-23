@@ -1,61 +1,56 @@
-# [Linux] C Shell (csh) pr : Afficher et formater le contenu des fichiers
+# [Linux] C Shell (csh) pr : formater des fichiers texte
 
 ## Overview
-La commande `pr` est utilisée pour formater le contenu des fichiers texte en vue d'une impression. Elle permet de diviser le texte en colonnes, d'ajouter des en-têtes et de gérer la pagination, ce qui facilite la lecture et l'impression des documents.
+La commande `pr` est utilisée pour formater des fichiers texte afin de les rendre plus lisibles. Elle permet de paginer le contenu d'un fichier, d'ajouter des en-têtes et de gérer la mise en forme pour l'impression.
 
 ## Usage
-Voici la syntaxe de base de la commande `pr` :
+La syntaxe de base de la commande `pr` est la suivante :
 
 ```csh
 pr [options] [arguments]
 ```
 
 ## Common Options
+Voici quelques options courantes pour la commande `pr` :
+
 - `-h` : Spécifie un en-tête personnalisé pour la sortie.
 - `-l` : Définit le nombre de lignes par page.
-- `-w` : Définit la largeur de la page en caractères.
-- `-s` : Spécifie un séparateur entre les colonnes.
-- `-t` : Supprime les en-têtes et les pieds de page par défaut.
+- `-n` : Numérote les pages.
+- `-s` : Définit le caractère de séparation entre les colonnes.
+- `-t` : Supprime les en-têtes et les pieds de page.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `pr` :
 
-### Exemple 1 : Formatage simple d'un fichier
-Pour formater le contenu d'un fichier texte nommé `document.txt` :
+1. **Formater un fichier texte avec des en-têtes :**
+   ```csh
+   pr -h "Mon Document" mon_fichier.txt
+   ```
 
-```csh
-pr document.txt
-```
+2. **Afficher le contenu d'un fichier avec une pagination de 50 lignes par page :**
+   ```csh
+   pr -l 50 mon_fichier.txt
+   ```
 
-### Exemple 2 : Ajouter un en-tête personnalisé
-Pour ajouter un en-tête à la sortie :
+3. **Numéroter les pages d'un fichier texte :**
+   ```csh
+   pr -n mon_fichier.txt
+   ```
 
-```csh
-pr -h "Mon Document" document.txt
-```
+4. **Utiliser un caractère de séparation personnalisé :**
+   ```csh
+   pr -s " | " mon_fichier.txt
+   ```
 
-### Exemple 3 : Définir le nombre de lignes par page
-Pour définir 50 lignes par page :
-
-```csh
-pr -l 50 document.txt
-```
-
-### Exemple 4 : Utiliser plusieurs colonnes
-Pour afficher le contenu de deux fichiers en colonnes :
-
-```csh
-pr file1.txt file2.txt
-```
-
-### Exemple 5 : Supprimer les en-têtes et pieds de page
-Pour afficher le contenu sans en-têtes ni pieds de page :
-
-```csh
-pr -t document.txt
-```
+5. **Supprimer les en-têtes et les pieds de page :**
+   ```csh
+   pr -t mon_fichier.txt
+   ```
 
 ## Tips
-- Utilisez l'option `-w` pour ajuster la largeur de la page si vous imprimez sur différents formats de papier.
-- Combinez plusieurs options pour personnaliser la sortie selon vos besoins spécifiques.
-- Vérifiez toujours le formatage en utilisant `pr` sur un petit fichier avant de l'appliquer à des documents plus volumineux.
+- Utilisez l'option `-h` pour ajouter des titres significatifs qui aident à identifier le contenu lors de l'impression.
+- Ajustez le nombre de lignes par page avec l'option `-l` pour mieux s'adapter à votre format d'impression.
+- Pensez à rediriger la sortie vers un fichier si vous souhaitez conserver le formatage pour une utilisation ultérieure :
+  ```csh
+  pr mon_fichier.txt > fichier_formate.txt
+  ```

@@ -1,43 +1,39 @@
 # [Hệ điều hành] C Shell (csh) batch: Chạy các lệnh theo lô
 
-## Tổng quan
-Lệnh `batch` trong C Shell (csh) cho phép người dùng gửi các lệnh để thực thi sau này, thường là khi hệ thống ít bận rộn hơn. Điều này rất hữu ích cho các tác vụ dài hoặc tốn thời gian mà bạn không muốn thực hiện ngay lập tức.
+## Overview
+Lệnh `batch` trong C Shell (csh) cho phép người dùng gửi các lệnh để thực thi sau này, khi hệ thống không còn bận rộn. Đây là một cách hữu ích để thực hiện các tác vụ mà không cần phải chờ đợi chúng hoàn thành ngay lập tức.
 
-## Cú pháp
+## Usage
 Cú pháp cơ bản của lệnh `batch` như sau:
-
-```csh
-batch [tùy chọn] [đối số]
+```
+batch [options] [arguments]
 ```
 
-## Các tùy chọn thông dụng
-- `-l`: Chạy lệnh trong một shell login.
-- `-q`: Chỉ định hàng đợi để gửi lệnh.
-- `-n`: Chạy lệnh mà không cần chờ đợi.
+## Common Options
+- `-l`: Chạy lệnh trong môi trường shell login.
+- `-n`: Chỉ định số lượng lệnh tối đa được thực thi.
+- `-q`: Chạy lệnh mà không hiển thị thông báo.
 
-## Ví dụ thông dụng
+## Common Examples
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `batch`:
 
-1. Gửi một lệnh đơn giản để chạy sau:
+1. Gửi một lệnh đơn giản để thực thi sau:
    ```csh
+   echo "date" | batch
+   ```
+
+2. Chạy một tập lệnh shell:
+   ```csh
+   batch < my_script.sh
+   ```
+
+3. Gửi nhiều lệnh để thực thi:
+   ```csh
+   echo "echo 'Hello World'" | batch
    echo "ls -l" | batch
    ```
 
-2. Gửi một tập lệnh shell để thực thi:
-   ```csh
-   cat myscript.csh | batch
-   ```
-
-3. Gửi nhiều lệnh để thực hiện:
-   ```csh
-   {
-       echo "echo 'Bắt đầu thực hiện...'";
-       echo "sleep 10";
-       echo "echo 'Hoàn thành!'";
-   } | batch
-   ```
-
-## Mẹo
-- Hãy chắc chắn rằng các lệnh bạn gửi qua `batch` không yêu cầu tương tác từ người dùng, vì chúng sẽ không thể thực hiện được.
-- Kiểm tra hàng đợi lệnh của bạn thường xuyên để theo dõi tiến trình thực hiện.
-- Sử dụng `at` nếu bạn cần lên lịch cho các lệnh cụ thể vào thời điểm nhất định.
+## Tips
+- Đảm bảo rằng bạn đã kiểm tra lịch trình của hệ thống để biết thời điểm lệnh sẽ được thực thi.
+- Sử dụng lệnh `atq` để kiểm tra danh sách các lệnh đã được gửi.
+- Đặt các lệnh cần thiết vào một tập lệnh và gửi tập lệnh đó để dễ quản lý hơn.

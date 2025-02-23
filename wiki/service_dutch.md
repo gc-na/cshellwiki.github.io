@@ -1,60 +1,45 @@
-# [Linux] C Shell (csh) service gebruik: Beheer systeemdiensten
+# [Linux] C Shell (csh) service gebruik: Beheer van systeemdiensten
 
 ## Overzicht
-De `service` opdracht in C Shell (csh) wordt gebruikt om systeemdiensten te starten, stoppen of opnieuw op te starten. Dit is een handige manier om de status van verschillende services op een Linux-systeem te beheren.
+Het `service` commando in C Shell (csh) wordt gebruikt om systeemdiensten te beheren. Hiermee kun je diensten starten, stoppen, herstarten of de status ervan controleren op een Linux-systeem.
 
 ## Gebruik
-De basis syntaxis van de `service` opdracht is als volgt:
+De basis syntaxis van het `service` commando is als volgt:
 
-```
-service [opties] [dienst] [actie]
+```csh
+service [opties] [dienstnaam] [actie]
 ```
 
-## Veelvoorkomende opties
-- `--status-all`: Toont de status van alle beschikbare services.
+## Veelvoorkomende Opties
 - `start`: Start de opgegeven dienst.
 - `stop`: Stop de opgegeven dienst.
 - `restart`: Herstart de opgegeven dienst.
-- `reload`: Laad de configuratie van de opgegeven dienst opnieuw.
+- `status`: Toon de status van de opgegeven dienst.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
+Hier zijn enkele praktische voorbeelden van het gebruik van het `service` commando:
 
-### Start een dienst
-Om een specifieke dienst, zoals `apache2`, te starten, gebruik je:
-
+### Een dienst starten
 ```csh
 service apache2 start
 ```
 
-### Stop een dienst
-Om de `mysql` dienst te stoppen, gebruik je:
-
+### Een dienst stoppen
 ```csh
 service mysql stop
 ```
 
-### Herstart een dienst
-Als je de `nginx` dienst wilt herstarten, gebruik je:
-
+### Een dienst herstarten
 ```csh
-service nginx restart
+service ssh restart
 ```
 
-### Controleer de status van alle diensten
-Om de status van alle beschikbare diensten te bekijken, gebruik je:
-
+### De status van een dienst controleren
 ```csh
-service --status-all
-```
-
-### Laad de configuratie opnieuw
-Om de configuratie van de `ssh` dienst opnieuw te laden, gebruik je:
-
-```csh
-service ssh reload
+service nginx status
 ```
 
 ## Tips
-- Zorg ervoor dat je voldoende rechten hebt (bijvoorbeeld als root) om de `service` opdrachten uit te voeren.
-- Controleer altijd de status van een dienst na het starten of stoppen om te bevestigen dat de actie succesvol was.
-- Gebruik `service --status-all` regelmatig om een overzicht te krijgen van de actieve en inactieve diensten op je systeem.
+- Zorg ervoor dat je voldoende rechten hebt (bijvoorbeeld als root) om systeemdiensten te beheren.
+- Gebruik het `status` commando om te controleren of een dienst correct draait voordat je andere acties onderneemt.
+- Het is handig om regelmatig de status van belangrijke diensten te controleren om de stabiliteit van je systeem te waarborgen.

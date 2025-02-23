@@ -1,36 +1,36 @@
 # [Nederlandse] C Shell (csh) minikube gebruik: Beheer lokale Kubernetes-clusters
 
 ## Overzicht
-De `minikube`-opdracht is een hulpmiddel waarmee gebruikers eenvoudig een lokale Kubernetes-cluster kunnen opzetten en beheren. Het is ideaal voor ontwikkelaars die Kubernetes willen leren of applicaties willen testen in een gecontroleerde omgeving.
+De `minikube`-opdracht is een hulpmiddel waarmee je een lokale Kubernetes-cluster kunt opzetten en beheren. Het is een handige manier om Kubernetes te leren en te experimenteren zonder een volledige cloudomgeving te hoeven gebruiken.
 
 ## Gebruik
 De basis syntaxis van de `minikube`-opdracht is als volgt:
 
-```csh
+```
 minikube [opties] [argumenten]
 ```
 
 ## Veelvoorkomende opties
-- `start`: Start een nieuwe minikube-cluster.
-- `stop`: Stop de actieve minikube-cluster.
-- `delete`: Verwijder de minikube-cluster.
-- `status`: Toon de status van de minikube-cluster.
-- `dashboard`: Open het Kubernetes-dashboard in de webbrowser.
+- `start`: Start een nieuwe Minikube-cluster.
+- `stop`: Stop de huidige Minikube-cluster.
+- `delete`: Verwijder de huidige Minikube-cluster.
+- `status`: Toon de status van de Minikube-cluster.
+- `dashboard`: Start het Kubernetes-dashboard in de browser.
 
 ## Veelvoorkomende voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van de `minikube`-opdracht:
 
-### Start een nieuwe cluster
+### Start een nieuwe Minikube-cluster
 ```csh
 minikube start
 ```
 
-### Stop de actieve cluster
+### Stop de huidige Minikube-cluster
 ```csh
 minikube stop
 ```
 
-### Verwijder de cluster
+### Verwijder de huidige Minikube-cluster
 ```csh
 minikube delete
 ```
@@ -46,6 +46,6 @@ minikube dashboard
 ```
 
 ## Tips
-- Zorg ervoor dat je de juiste virtualisatie-instellingen hebt geconfigureerd voordat je `minikube` start.
-- Gebruik de `--driver` optie om een specifieke virtualisatie-driver te kiezen, zoals `virtualbox` of `docker`.
-- Controleer regelmatig de status van je cluster om ervoor te zorgen dat alles soepel verloopt.
+- Zorg ervoor dat je voldoende systeembronnen hebt voordat je Minikube start, zoals RAM en CPU.
+- Gebruik de `--driver` optie om de gewenste virtualisatie-driver te specificeren, zoals `virtualbox` of `docker`.
+- Vergeet niet om regelmatig je cluster op te schonen met `minikube delete` om ongebruikte resources te verwijderen.

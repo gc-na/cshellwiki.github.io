@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) traceroute6 gebruik: Netwerkpaden traceren
+# [Linux] C Shell (csh) traceroute6 gebruik: Netwerkroute traceren voor IPv6
 
 ## Overzicht
-De `traceroute6` opdracht wordt gebruikt om het pad te traceren dat IPv6-pakketten volgen van de lokale machine naar een opgegeven bestemming. Dit helpt bij het identificeren van netwerkproblemen door de tussenliggende routers en hun reactietijden te tonen.
+De `traceroute6` opdracht is een netwerkdiagnosetool die de route toont die pakketten volgen van de bron naar een opgegeven IPv6-doel. Het helpt bij het identificeren van netwerkproblemen door de verschillende knooppunten (routers) te tonen die de gegevens passeren.
 
 ## Gebruik
 De basis syntaxis van de `traceroute6` opdracht is als volgt:
@@ -11,10 +11,10 @@ traceroute6 [opties] [doel]
 ```
 
 ## Veelvoorkomende Opties
+- `-m <max_hops>`: Stel het maximale aantal hops in dat traceren kan.
 - `-n`: Toon IP-adressen in plaats van hostnamen.
-- `-m max_ttl`: Stel de maximale Time-To-Live (TTL) in voor de traceroute.
-- `-p port`: Specificeer de poort die gebruikt moet worden voor de traceroute.
-- `-q nqueries`: Geef het aantal echo-verzoeken op dat per hop moet worden verzonden.
+- `-p <poort>`: Specificeer de poort die gebruikt moet worden voor de traceroute.
+- `-w <timeout>`: Stel de timeout in voor het wachten op een antwoord van elke hop.
 
 ## Veelvoorkomende Voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van `traceroute6`:
@@ -24,27 +24,27 @@ Hier zijn enkele praktische voorbeelden van het gebruik van `traceroute6`:
    traceroute6 2001:db8::1
    ```
 
-2. Traceroute met het tonen van IP-adressen in plaats van hostnamen:
+2. Traceroute met een maximum van 15 hops:
+   ```csh
+   traceroute6 -m 15 2001:db8::1
+   ```
+
+3. Traceroute zonder hostnamen, alleen IP-adressen:
    ```csh
    traceroute6 -n 2001:db8::1
    ```
 
-3. Traceroute met een maximale TTL van 30:
-   ```csh
-   traceroute6 -m 30 2001:db8::1
-   ```
-
-4. Traceroute naar een specifieke poort:
+4. Traceroute met een specifieke poort (bijvoorbeeld poort 80):
    ```csh
    traceroute6 -p 80 2001:db8::1
    ```
 
-5. Traceroute met meerdere echo-verzoeken per hop:
+5. Traceroute met een aangepaste timeout van 2 seconden:
    ```csh
-   traceroute6 -q 5 2001:db8::1
+   traceroute6 -w 2 2001:db8::1
    ```
 
 ## Tips
-- Gebruik de `-n` optie om de snelheid van de traceroute te verhogen, vooral als DNS-resolutie traag is.
-- Controleer de configuratie van je firewall, aangezien deze de traceroute-uitvoer kan beïnvloeden.
-- Combineer `traceroute6` met andere netwerkdiagnosetools zoals `ping` voor een completer beeld van netwerkprestaties.
+- Gebruik de `-n` optie als je snel resultaten wilt zonder dat de resolutie van hostnamen de snelheid beïnvloedt.
+- Experimenteer met de `-m` optie om te begrijpen hoe ver de pakketten reizen in je netwerk.
+- Houd rekening met firewalls die ICMP-pakketten kunnen blokkeren, wat de resultaten kan beïnvloeden.

@@ -1,25 +1,24 @@
 # [Linux] C Shell (csh) uname Verwendung: Systeminformationen anzeigen
 
 ## Übersicht
-Der Befehl `uname` wird verwendet, um Informationen über das aktuelle System anzuzeigen. Er liefert Details wie den Namen des Betriebssystems, den Hostnamen, die Kernel-Version und weitere relevante Systeminformationen.
+Der Befehl `uname` wird verwendet, um Informationen über das aktuelle System anzuzeigen. Er kann verschiedene Details wie den Namen des Betriebssystems, die Kernel-Version und andere relevante Systeminformationen bereitstellen.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
 
-```csh
+```
 uname [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-a`: Zeigt alle verfügbaren Systeminformationen an.
+- `-a`: Zeigt alle verfügbaren Informationen über das System an.
 - `-s`: Gibt den Namen des Betriebssystems aus.
-- `-n`: Gibt den Netzwerk-Hostnamen des Systems aus.
+- `-n`: Gibt den Netzwerk-Hostname des Systems aus.
 - `-r`: Zeigt die Kernel-Version an.
 - `-v`: Gibt die Version des Kernels aus.
-- `-m`: Zeigt den Maschinen-Typ an.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung des `uname`-Befehls:
+Hier sind einige praktische Beispiele zur Verwendung des `uname`-Befehls:
 
 1. **Alle Systeminformationen anzeigen:**
    ```csh
@@ -31,22 +30,22 @@ Hier sind einige praktische Beispiele für die Verwendung des `uname`-Befehls:
    uname -s
    ```
 
-3. **Den Netzwerk-Hostnamen anzeigen:**
-   ```csh
-   uname -n
-   ```
-
-4. **Die Kernel-Version anzeigen:**
+3. **Kernel-Version anzeigen:**
    ```csh
    uname -r
    ```
 
-5. **Den Maschinen-Typ anzeigen:**
+4. **Netzwerk-Hostname anzeigen:**
    ```csh
-   uname -m
+   uname -n
+   ```
+
+5. **Kernel-Version und -Build anzeigen:**
+   ```csh
+   uname -rv
    ```
 
 ## Tipps
-- Verwenden Sie die Option `-a`, um schnell einen umfassenden Überblick über Ihr System zu erhalten.
-- Kombinieren Sie `uname` mit anderen Befehlen, um Skripte zu erstellen, die spezifische Systeminformationen benötigen.
-- Überprüfen Sie regelmäßig die Kernel-Version, um sicherzustellen, dass Ihr System auf dem neuesten Stand ist.
+- Verwenden Sie die Option `-a`, um einen schnellen Überblick über alle Systeminformationen zu erhalten.
+- Kombinieren Sie Optionen, um spezifische Informationen zu erhalten, die für Ihre Anforderungen relevant sind.
+- Nutzen Sie `man uname`, um die vollständige Dokumentation und weitere Optionen zu lesen.

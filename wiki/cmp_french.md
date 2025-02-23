@@ -1,26 +1,26 @@
 # [Linux] C Shell (csh) cmp : Comparer des fichiers binaires
 
 ## Overview
-La commande `cmp` est utilisée pour comparer deux fichiers binaires ou texte. Elle permet de déterminer si les fichiers sont identiques ou de localiser la première différence entre eux.
+La commande `cmp` est utilisée pour comparer deux fichiers binaires ou texte, en affichant les différences entre eux. Elle est particulièrement utile pour détecter les variations dans des fichiers de données ou des programmes.
 
 ## Usage
 La syntaxe de base de la commande `cmp` est la suivante :
 
-```csh
+```
 cmp [options] [arguments]
 ```
 
 ## Common Options
 Voici quelques options courantes pour la commande `cmp` :
 
-- `-l` : Affiche les octets différents en format numérique.
-- `-s` : Ne produit aucune sortie, mais renvoie un code de sortie indiquant si les fichiers sont identiques ou non.
-- `-i` : Ignore les premiers N octets lors de la comparaison.
+- `-l` : Affiche les octets différents en format octal.
+- `-s` : Ne produit aucune sortie, mais retourne un code de sortie indiquant si les fichiers sont identiques ou non.
+- `-i` : Ignore les premiers N octets de chaque fichier.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `cmp` :
 
-1. Comparer deux fichiers et afficher la première différence :
+1. Comparer deux fichiers et afficher les différences :
    ```csh
    cmp fichier1.txt fichier2.txt
    ```
@@ -30,17 +30,17 @@ Voici quelques exemples pratiques de l'utilisation de la commande `cmp` :
    cmp -s fichier1.bin fichier2.bin
    ```
 
-3. Comparer deux fichiers et afficher tous les octets différents :
+3. Comparer deux fichiers en affichant les octets différents :
    ```csh
-   cmp -l fichier1.bin fichier2.bin
+   cmp -l fichier1.txt fichier2.txt
    ```
 
-4. Comparer deux fichiers en ignorant les premiers 10 octets :
+4. Ignorer les premiers 10 octets lors de la comparaison :
    ```csh
    cmp -i 10 fichier1.txt fichier2.txt
    ```
 
 ## Tips
-- Utilisez l'option `-s` pour des comparaisons silencieuses lorsque vous souhaitez simplement savoir si les fichiers sont identiques sans afficher les différences.
-- Pour des fichiers très volumineux, `cmp` est plus efficace que d'autres commandes comme `diff`, car il s'arrête dès qu'il trouve une différence.
-- Pensez à utiliser `cmp` pour vérifier l'intégrité des fichiers après un transfert ou une sauvegarde.
+- Utilisez l'option `-s` si vous souhaitez simplement vérifier l'égalité des fichiers sans afficher les différences.
+- Lorsque vous comparez des fichiers binaires, il est souvent utile d'utiliser l'option `-l` pour obtenir une vue détaillée des différences.
+- Pensez à rediriger la sortie vers un fichier si vous comparez de grands fichiers et que vous souhaitez conserver un enregistrement des différences.

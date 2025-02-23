@@ -1,21 +1,21 @@
 # [Linux] C Shell (csh) brew użycie: Zarządzanie pakietami
 
 ## Overview
-Polecenie `brew` jest narzędziem do zarządzania pakietami, które umożliwia instalację, aktualizację i usuwanie oprogramowania na systemach Unixowych. Jest szczególnie popularne wśród użytkowników systemu macOS, ale może być również używane w innych środowiskach.
+Polecenie `brew` jest narzędziem do zarządzania pakietami, które umożliwia instalację, aktualizację i usuwanie oprogramowania na systemach operacyjnych opartych na Unixie. Jest to popularne rozwiązanie wśród programistów i administratorów systemów, ponieważ upraszcza proces instalacji aplikacji i bibliotek.
 
 ## Usage
-Podstawowa składnia polecenia `brew` wygląda następująco:
+Podstawowa składnia polecenia `brew` jest następująca:
 
 ```
 brew [opcje] [argumenty]
 ```
 
 ## Common Options
-- `install`: Służy do instalacji nowego pakietu.
-- `uninstall`: Umożliwia usunięcie zainstalowanego pakietu.
+- `install`: Instaluje podany pakiet.
+- `uninstall`: Usuwa podany pakiet.
 - `update`: Aktualizuje listę dostępnych pakietów.
 - `upgrade`: Aktualizuje zainstalowane pakiety do najnowszych wersji.
-- `list`: Wyświetla listę zainstalowanych pakietów.
+- `list`: Wyświetla zainstalowane pakiety.
 
 ## Common Examples
 Oto kilka praktycznych przykładów użycia polecenia `brew`:
@@ -30,7 +30,7 @@ Oto kilka praktycznych przykładów użycia polecenia `brew`:
    brew uninstall wget
    ```
 
-3. Aktualizacja listy pakietów:
+3. Aktualizacja listy dostępnych pakietów:
    ```csh
    brew update
    ```
@@ -40,12 +40,12 @@ Oto kilka praktycznych przykładów użycia polecenia `brew`:
    brew upgrade
    ```
 
-5. Wyświetlenie listy zainstalowanych pakietów:
+5. Wyświetlenie zainstalowanych pakietów:
    ```csh
    brew list
    ```
 
 ## Tips
 - Regularnie używaj `brew update`, aby mieć pewność, że masz najnowsze informacje o dostępnych pakietach.
-- Przed aktualizacją pakietów, warto sprawdzić, które z nich będą aktualizowane za pomocą `brew outdated`.
-- Używaj opcji `--verbose`, aby uzyskać więcej informacji podczas instalacji lub aktualizacji pakietów.
+- Sprawdzaj dostępność aktualizacji dla zainstalowanych pakietów, używając `brew upgrade`, aby korzystać z najnowszych funkcji i poprawek.
+- Używaj `brew search [nazwa_pakietu]`, aby znaleźć dostępne pakiety, które mogą Cię interesować.

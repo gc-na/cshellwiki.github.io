@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) pacman Utilisation : Gestionnaire de paquets pour Arch Linux
 
 ## Overview
-La commande `pacman` est un gestionnaire de paquets utilisé sur les systèmes basés sur Arch Linux. Elle permet d'installer, de mettre à jour et de supprimer des logiciels, ainsi que de gérer les dépendances des paquets.
+Le commandement `pacman` est un gestionnaire de paquets utilisé sur les systèmes basés sur Arch Linux. Il permet d'installer, de mettre à jour et de gérer des logiciels à partir des dépôts officiels et des dépôts tiers.
 
 ## Usage
 La syntaxe de base de la commande `pacman` est la suivante :
@@ -13,12 +13,11 @@ pacman [options] [arguments]
 ## Common Options
 Voici quelques options courantes pour `pacman` :
 
-- `-S` : Installe un paquet.
+- `-S` : Installe un paquet à partir des dépôts.
 - `-R` : Supprime un paquet.
-- `-U` : Met à jour un paquet à partir d'un fichier local.
-- `-Sy` : Synchronise les dépôts et met à jour la base de données des paquets.
-- `-Ss` : Recherche un paquet dans les dépôts.
-- `-Qi` : Affiche les informations sur un paquet installé.
+- `-U` : Installe un paquet à partir d'un fichier local.
+- `-Sy` : Met à jour la base de données des paquets et installe un paquet.
+- `-Syu` : Met à jour tous les paquets installés et la base de données des paquets.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `pacman` :
@@ -33,22 +32,17 @@ Voici quelques exemples pratiques de l'utilisation de `pacman` :
    pacman -R nom_du_paquet
    ```
 
-3. **Mettre à jour tous les paquets installés :**
+3. **Mettre à jour tous les paquets :**
    ```bash
    pacman -Syu
    ```
 
-4. **Rechercher un paquet :**
+4. **Installer un paquet à partir d'un fichier local :**
    ```bash
-   pacman -Ss nom_du_paquet
-   ```
-
-5. **Afficher les informations sur un paquet installé :**
-   ```bash
-   pacman -Qi nom_du_paquet
+   pacman -U chemin/vers/le/paquet.pkg.tar.zst
    ```
 
 ## Tips
 - Toujours exécuter `pacman -Syu` régulièrement pour garder votre système à jour.
-- Utilisez `pacman -Rns nom_du_paquet` pour supprimer un paquet ainsi que ses dépendances qui ne sont plus nécessaires.
-- Vérifiez les journaux de `pacman` pour voir l'historique des installations et des mises à jour, ce qui peut être utile pour le dépannage.
+- Utilisez `pacman -Qdt` pour trouver et supprimer les paquets orphelins qui ne sont plus nécessaires.
+- Consultez la page de manuel de `pacman` avec `man pacman` pour plus d'options et d'informations détaillées.

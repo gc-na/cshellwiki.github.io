@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) batch gebruik: Voer taken uit in de achtergrond
 
 ## Overzicht
-De `batch` opdracht in C Shell (csh) wordt gebruikt om taken in de achtergrond uit te voeren op een later tijdstip. Het is handig voor het plannen van taken die niet onmiddellijk hoeven te worden uitgevoerd, maar die wel op een bepaald moment moeten worden uitgevoerd wanneer de systeembelasting laag is.
+De `batch` opdracht in C Shell (csh) wordt gebruikt om taken in de achtergrond uit te voeren op een later tijdstip. Het is handig voor het plannen van taken die niet onmiddellijk hoeven te worden uitgevoerd, maar die wel moeten worden uitgevoerd wanneer het systeem minder belast is.
 
 ## Gebruik
 De basis syntaxis van de `batch` opdracht is als volgt:
@@ -10,34 +10,32 @@ De basis syntaxis van de `batch` opdracht is als volgt:
 batch [opties] [argumenten]
 ```
 
-## Veelvoorkomende opties
-- `-l`: Voer de opdrachten uit met een login shell.
-- `-q`: Specificeer een wachtrij voor de batchtaken.
+## Veelvoorkomende Opties
+- `-l`: Start een nieuwe login-shell.
+- `-n`: Voorkomt dat de opdracht wordt uitgevoerd als de gebruiker niet is ingelogd.
+- `-q`: Specificeert een wachtrij voor de uitvoering van de batchtaken.
 
-## Veelvoorkomende voorbeelden
+## Veelvoorkomende Voorbeelden
 
 ### Voorbeeld 1: Een eenvoudige batchtaak indienen
-Om een eenvoudige opdracht in te dienen die een script uitvoert, gebruik je:
-
+Om een script genaamd `myscript.sh` in de achtergrond uit te voeren, gebruik je:
 ```csh
-echo "ls -l" | batch
+batch < myscript.sh
 ```
 
-### Voorbeeld 2: Een script indienen
-Je kunt ook een script indienen dat je eerder hebt geschreven:
-
+### Voorbeeld 2: Een opdracht indienen met een specifieke tijd
+Om een opdracht in te dienen die een bestand aanmaakt, gebruik je:
 ```csh
-batch < mijn_script.csh
+echo "touch nieuw_bestand.txt" | batch
 ```
 
-### Voorbeeld 3: Meerdere opdrachten indienen
-Je kunt meerdere opdrachten indienen door ze in een enkele echo-opdracht te scheiden met een puntkomma:
-
+### Voorbeeld 3: Gebruik van opties
+Om een login-shell te starten voor de batchtaak, gebruik je:
 ```csh
-echo "echo 'Taak 1' ; echo 'Taak 2'" | batch
+batch -l < myscript.sh
 ```
 
 ## Tips
-- Zorg ervoor dat je de juiste rechten hebt om de taken uit te voeren die je indient.
-- Controleer regelmatig de status van je batchtaken met de `atq` opdracht.
-- Gebruik `atrm` om een batchtaak te annuleren als dat nodig is.
+- Zorg ervoor dat je taken die je indient in de batch goed zijn getest, omdat ze zonder interactie worden uitgevoerd.
+- Controleer regelmatig de status van je batchtaken met de `atq` opdracht om te zien welke taken zijn ingepland.
+- Gebruik duidelijke en beschrijvende namen voor je scripts om verwarring te voorkomen bij het indienen van meerdere taken.

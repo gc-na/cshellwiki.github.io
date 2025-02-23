@@ -1,41 +1,43 @@
-# [Sistem Operasi] C Shell (csh) rehash: Memperbarui daftar perintah
+# [Sistem Operasi] C Shell (csh) rehash: Memperbarui daftar perintah yang dapat dieksekusi
 
 ## Overview
-Perintah `rehash` dalam C Shell (csh) digunakan untuk memperbarui daftar perintah yang tersedia di shell. Ketika Anda menambahkan atau menghapus program dari direktori yang ada dalam PATH, shell tidak selalu menyadari perubahan tersebut. Dengan menjalankan `rehash`, Anda memastikan bahwa shell mengenali semua perintah yang baru ditambahkan.
+Perintah `rehash` dalam C Shell (csh) digunakan untuk memperbarui daftar perintah yang dapat dieksekusi. Ini berguna ketika Anda telah menambahkan atau menghapus skrip atau program dari direktori yang ada dalam PATH Anda, sehingga shell dapat mengenali perintah baru tanpa perlu memulai ulang sesi shell.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `rehash`:
 
-```csh
+```
 rehash [options] [arguments]
 ```
 
 ## Common Options
-Perintah `rehash` tidak memiliki banyak opsi. Berikut adalah beberapa yang umum digunakan:
+Perintah `rehash` tidak memiliki banyak opsi, tetapi berikut adalah beberapa yang umum digunakan:
 
-- Tanpa opsi: Menjalankan `rehash` tanpa opsi akan memperbarui daftar perintah secara otomatis.
+- `-h`: Menampilkan bantuan tentang penggunaan perintah `rehash`.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `rehash`:
 
-1. **Memperbarui daftar perintah setelah menambahkan program baru:**
+1. **Menggunakan rehash setelah menambahkan skrip baru:**
    ```csh
+   # Menambahkan skrip baru ke direktori yang ada dalam PATH
+   cp ~/my_script /usr/local/bin/
    rehash
    ```
 
-2. **Menggunakan `rehash` setelah menginstal perangkat lunak baru:**
+2. **Menggunakan rehash setelah menghapus skrip:**
    ```csh
-   # Setelah menginstal perangkat lunak baru di direktori yang ada dalam PATH
+   # Menghapus skrip dari direktori
+   rm /usr/local/bin/my_script
    rehash
    ```
 
-3. **Menjalankan perintah setelah memperbarui PATH:**
+3. **Menampilkan bantuan untuk rehash:**
    ```csh
-   set path = ( /usr/local/bin $path )
-   rehash
+   rehash -h
    ```
 
 ## Tips
-- Selalu jalankan `rehash` setelah Anda menambahkan atau menghapus program dari direktori yang ada dalam PATH untuk memastikan shell mengenali perintah tersebut.
-- Anda tidak perlu menjalankan `rehash` setiap kali Anda membuka terminal baru, karena shell biasanya memperbarui daftar perintah secara otomatis saat startup.
+- Selalu jalankan `rehash` setelah Anda menambahkan atau menghapus skrip atau program untuk memastikan shell Anda mengenali perubahan tersebut.
 - Jika Anda mengalami masalah dengan perintah yang tidak dikenali, coba jalankan `rehash` untuk memperbarui daftar perintah.
+- Gunakan `rehash` secara teratur dalam sesi pengembangan untuk memastikan Anda selalu menggunakan versi terbaru dari skrip atau program yang Anda kerjakan.

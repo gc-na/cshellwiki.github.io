@@ -1,7 +1,7 @@
-# [Unix] C Shell (csh) builtin : Exécute une commande interne
+# [Linux] C Shell (csh) builtin : Exécute des commandes internes
 
 ## Overview
-La commande `builtin` dans C Shell (csh) permet d'exécuter une commande interne du shell, même si une commande externe avec le même nom existe. Cela est particulièrement utile pour s'assurer que vous utilisez la version intégrée d'une commande.
+La commande `builtin` dans C Shell (csh) permet d'exécuter des commandes internes qui sont intégrées dans le shell lui-même, plutôt que de lancer des programmes externes. Cela peut améliorer l'efficacité et la rapidité d'exécution des commandes.
 
 ## Usage
 La syntaxe de base de la commande `builtin` est la suivante :
@@ -11,28 +11,28 @@ builtin [options] [arguments]
 ```
 
 ## Common Options
-- `-c` : Exécute la commande spécifiée dans un sous-shell.
-- `-h` : Affiche l'aide pour la commande intégrée.
+- `-h` : Affiche une aide sur l'utilisation de la commande.
+- `-v` : Affiche les commandes internes disponibles.
 
 ## Common Examples
-Voici quelques exemples pratiques de l'utilisation de `builtin` :
+Voici quelques exemples pratiques de l'utilisation de la commande `builtin` :
 
-1. Exécuter la commande `echo` intégrée :
-   ```csh
-   builtin echo "Ceci est un message de la commande intégrée."
-   ```
+### Exemple 1 : Exécuter une commande interne
+```csh
+builtin echo "Bonjour, monde !"
+```
 
-2. Utiliser `builtin` pour forcer l'exécution de la version intégrée de `set` :
-   ```csh
-   builtin set var=value
-   ```
+### Exemple 2 : Afficher l'aide
+```csh
+builtin -h
+```
 
-3. Afficher l'aide pour la commande intégrée `alias` :
-   ```csh
-   builtin -h alias
-   ```
+### Exemple 3 : Vérifier une commande interne
+```csh
+builtin cd /usr/local
+```
 
 ## Tips
-- Utilisez `builtin` lorsque vous souhaitez éviter les conflits avec des commandes externes ayant le même nom.
-- Vérifiez toujours la version intégrée d'une commande si vous rencontrez des comportements inattendus.
-- Familiarisez-vous avec les commandes intégrées de csh pour tirer le meilleur parti de votre environnement shell.
+- Utilisez `builtin` lorsque vous souhaitez garantir que vous utilisez la version interne d'une commande, surtout si une version externe est également disponible.
+- Vérifiez toujours les options disponibles avec `builtin -h` pour mieux comprendre les fonctionnalités offertes.
+- Gardez à l'esprit que l'utilisation de `builtin` peut réduire le temps d'exécution des scripts, car elle évite le surcoût d'un appel à un programme externe.

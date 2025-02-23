@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) iotop : surveiller l'utilisation du disque par les processus
+# [Linux] C Shell (csh) iotop : surveiller l'utilisation des entrées/sorties
 
 ## Overview
-La commande `iotop` permet de surveiller l'utilisation des entrées/sorties (I/O) des processus en temps réel sur un système Linux. Elle affiche les processus qui consomment le plus de ressources I/O, ce qui peut être utile pour diagnostiquer des problèmes de performance liés au disque.
+La commande `iotop` est un outil qui permet de surveiller l'utilisation des entrées/sorties (I/O) des processus en temps réel. Elle affiche les processus qui consomment le plus de bande passante I/O, ce qui est utile pour diagnostiquer les problèmes de performance liés aux disques.
 
 ## Usage
 La syntaxe de base de la commande `iotop` est la suivante :
@@ -16,12 +16,12 @@ Voici quelques options courantes pour `iotop` :
 - `-o` : Affiche uniquement les processus qui effectuent des opérations I/O.
 - `-b` : Exécute `iotop` en mode batch, utile pour les scripts.
 - `-n NUM` : Définit le nombre d'itérations à afficher avant de quitter.
-- `-d SEC` : Définit l'intervalle de mise à jour en secondes.
+- `-d SECONDS` : Définit l'intervalle de mise à jour en secondes.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `iotop` :
 
-1. **Afficher tous les processus I/O :**
+1. **Afficher tous les processus I/O en temps réel :**
    ```bash
    iotop
    ```
@@ -31,17 +31,17 @@ Voici quelques exemples pratiques de l'utilisation de `iotop` :
    iotop -o
    ```
 
-3. **Exécuter `iotop` en mode batch pour 10 itérations :**
+3. **Exécuter iotop en mode batch pour 5 itérations avec un intervalle de 2 secondes :**
    ```bash
-   iotop -b -n 10
+   iotop -b -n 5 -d 2
    ```
 
-4. **Définir un intervalle de mise à jour de 2 secondes :**
+4. **Surveiller les processus I/O en arrière-plan :**
    ```bash
-   iotop -d 2
+   iotop -b > iotop_output.txt
    ```
 
 ## Tips
-- Utilisez l'option `-o` pour filtrer les processus inactifs et vous concentrer sur ceux qui consomment des ressources.
-- En mode batch, redirigez la sortie vers un fichier pour une analyse ultérieure, par exemple : `iotop -b -n 10 > iotop_output.txt`.
-- Vérifiez régulièrement l'utilisation I/O pour identifier les goulets d'étranglement potentiels dans les performances de votre système.
+- Utilisez l'option `-o` pour filtrer les processus inactifs et vous concentrer sur ceux qui consomment réellement des ressources.
+- Si vous surveillez un système pendant une longue période, envisagez d'utiliser le mode batch pour enregistrer les résultats dans un fichier.
+- Assurez-vous d'exécuter `iotop` avec des privilèges suffisants (souvent en tant que superutilisateur) pour voir tous les processus.

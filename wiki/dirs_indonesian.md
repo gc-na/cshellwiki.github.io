@@ -1,18 +1,19 @@
 # [Sistem Operasi] C Shell (csh) dirs: Menampilkan daftar direktori saat ini
 
 ## Overview
-Perintah `dirs` dalam C Shell (csh) digunakan untuk menampilkan daftar direktori yang saat ini ada dalam stack direktori. Ini sangat berguna untuk melihat lokasi direktori yang telah Anda kunjungi selama sesi shell Anda.
+Perintah `dirs` dalam C Shell (csh) digunakan untuk menampilkan daftar direktori yang saat ini ada dalam stack direktori. Ini sangat berguna untuk melihat posisi Anda dalam struktur direktori tanpa harus mengetikkan perintah lain.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `dirs`:
 
-```
+```csh
 dirs [options] [arguments]
 ```
 
 ## Common Options
-- `-l`: Menampilkan daftar direktori dalam format panjang.
-- `-p`: Menampilkan daftar direktori tanpa menambahkan spasi di antara nama-nama direktori.
+- `-c`: Menghapus semua direktori dari stack.
+- `-l`: Menampilkan direktori dalam format panjang.
+- `-p`: Menampilkan direktori dalam format pendek.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `dirs`:
@@ -27,17 +28,17 @@ Berikut adalah beberapa contoh penggunaan perintah `dirs`:
    dirs -l
    ```
 
-3. Menampilkan daftar direktori tanpa spasi:
+3. Menghapus semua direktori dari stack:
+   ```csh
+   dirs -c
+   ```
+
+4. Menampilkan daftar direktori dalam format pendek:
    ```csh
    dirs -p
    ```
 
-4. Menampilkan daftar direktori dengan menambahkan argumen:
-   ```csh
-   dirs +1
-   ```
-
 ## Tips
-- Gunakan `dirs` setelah menggunakan perintah `cd` untuk memeriksa direktori yang telah Anda kunjungi.
-- Kombinasikan `dirs` dengan perintah lain seperti `pushd` dan `popd` untuk navigasi yang lebih efisien di antara direktori.
-- Ingat bahwa `dirs` hanya menampilkan direktori dalam stack, jadi pastikan untuk menggunakan `pushd` untuk menambahkannya ke stack sebelum menggunakan `dirs`.
+- Gunakan `pushd` dan `popd` bersamaan dengan `dirs` untuk navigasi yang lebih efisien di antara direktori.
+- Periksa stack direktori secara berkala dengan `dirs` untuk menghindari kebingungan saat bekerja di banyak direktori.
+- Jika Anda sering berpindah-pindah direktori, pertimbangkan untuk menggunakan alias untuk mempercepat akses ke perintah `dirs`.

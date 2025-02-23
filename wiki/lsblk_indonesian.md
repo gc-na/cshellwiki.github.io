@@ -1,51 +1,56 @@
 # [Linux] C Shell (csh) lsblk Penggunaan: Menampilkan informasi tentang perangkat blok
 
 ## Overview
-Perintah `lsblk` digunakan untuk menampilkan informasi tentang perangkat blok di sistem Linux. Ini termasuk disk, partisi, dan perangkat penyimpanan lainnya, memberikan gambaran yang jelas tentang struktur penyimpanan di sistem Anda.
+Perintah `lsblk` digunakan untuk menampilkan informasi tentang perangkat blok di sistem Linux. Ini termasuk disk, partisi, dan perangkat penyimpanan lainnya. Dengan `lsblk`, pengguna dapat melihat struktur perangkat penyimpanan dan bagaimana mereka terhubung.
 
 ## Usage
-Berikut adalah sintaks dasar dari perintah `lsblk`:
+Sintaks dasar dari perintah `lsblk` adalah sebagai berikut:
 
-```csh
+```
 lsblk [options] [arguments]
 ```
 
 ## Common Options
+Berikut adalah beberapa opsi umum yang dapat digunakan dengan `lsblk`:
+
 - `-a` : Menampilkan semua perangkat, termasuk yang tidak terpasang.
-- `-f` : Menampilkan informasi sistem file pada perangkat.
-- `-l` : Menampilkan output dalam format daftar (list).
+- `-f` : Menampilkan informasi sistem file.
+- `-l` : Menampilkan output dalam format daftar.
 - `-o` : Menentukan kolom yang ingin ditampilkan.
 - `-p` : Menampilkan nama perangkat lengkap.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan perintah `lsblk`:
+Berikut adalah beberapa contoh penggunaan `lsblk`:
 
 1. Menampilkan semua perangkat blok:
-   ```csh
+   ```bash
    lsblk
    ```
 
 2. Menampilkan semua perangkat termasuk yang tidak terpasang:
-   ```csh
+   ```bash
    lsblk -a
    ```
 
-3. Menampilkan informasi sistem file:
-   ```csh
+3. Menampilkan informasi sistem file untuk setiap perangkat:
+   ```bash
    lsblk -f
    ```
 
 4. Menampilkan output dalam format daftar:
-   ```csh
+   ```bash
    lsblk -l
    ```
 
-5. Menentukan kolom yang ingin ditampilkan:
-   ```csh
-   lsblk -o NAME,SIZE,TYPE,MOUNTPOINT
+5. Menampilkan kolom tertentu, misalnya nama dan ukuran:
+   ```bash
+   lsblk -o NAME,SIZE
    ```
 
 ## Tips
-- Gunakan opsi `-f` untuk mendapatkan informasi lebih detail tentang sistem file pada perangkat.
-- Kombinasikan opsi untuk menyesuaikan output sesuai kebutuhan Anda, misalnya `lsblk -a -f`.
-- Selalu periksa perangkat yang terpasang sebelum melakukan operasi yang dapat mempengaruhi data, seperti format atau penghapusan.
+- Gunakan opsi `-f` untuk mendapatkan informasi tambahan tentang sistem file, seperti tipe dan label.
+- Untuk melihat perangkat yang terpasang dan informasi lebih detail, pertimbangkan untuk menggunakan `lsblk -o +MOUNTPOINT`.
+- Jika Anda ingin menyimpan output ke dalam file, Anda dapat menggunakan pengalihan output, misalnya:
+  ```bash
+  lsblk > daftar_perangkat.txt
+  ```

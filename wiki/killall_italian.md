@@ -1,10 +1,10 @@
-# [Linux] C Shell (csh) killall uso: Termina processi in base al nome
+# [Linux] C Shell (csh) killall Uso: Termina i processi in base al nome
 
 ## Overview
-Il comando `killall` viene utilizzato per terminare tutti i processi che corrispondono a un determinato nome. È uno strumento utile per gestire i processi in esecuzione, consentendo di chiudere facilmente più istanze di un programma.
+Il comando `killall` in C Shell (csh) viene utilizzato per terminare tutti i processi che corrispondono a un nome specificato. È utile per gestire i processi in esecuzione e liberare risorse di sistema.
 
 ## Usage
-La sintassi di base del comando `killall` è la seguente:
+La sintassi di base del comando è la seguente:
 
 ```csh
 killall [opzioni] [argomenti]
@@ -12,34 +12,33 @@ killall [opzioni] [argomenti]
 
 ## Common Options
 - `-u`: Termina solo i processi appartenenti a un determinato utente.
-- `-i`: Chiede conferma prima di terminare ogni processo.
-- `-v`: Mostra informazioni dettagliate sui processi terminati.
-- `-s`: Specifica il segnale da inviare ai processi (default è SIGTERM).
+- `-9`: Invia un segnale di terminazione forzata (SIGKILL) ai processi.
+- `-v`: Mostra informazioni dettagliate su quali processi sono stati terminati.
 
 ## Common Examples
 Ecco alcuni esempi pratici di utilizzo del comando `killall`:
 
-1. Terminare tutti i processi chiamati `firefox`:
+1. Terminare tutti i processi di un'applicazione chiamata "firefox":
    ```csh
    killall firefox
    ```
 
-2. Terminare tutti i processi di un utente specifico (ad esempio, `username`):
+2. Terminare forzatamente tutti i processi di "gedit":
    ```csh
-   killall -u username
+   killall -9 gedit
    ```
 
-3. Terminare i processi con conferma interattiva:
+3. Terminare solo i processi di "myapp" appartenenti a un utente specifico:
    ```csh
-   killall -i firefox
+   killall -u username myapp
    ```
 
-4. Inviare un segnale specifico (ad esempio, SIGKILL) per forzare la chiusura dei processi:
+4. Visualizzare i dettagli dei processi terminati:
    ```csh
-   killall -s SIGKILL firefox
+   killall -v firefox
    ```
 
 ## Tips
-- Assicurati di avere i permessi necessari per terminare i processi, specialmente se stai cercando di terminare processi di altri utenti.
-- Usa l'opzione `-v` per ottenere un feedback dettagliato su quali processi sono stati terminati.
-- Fai attenzione quando utilizzi `killall`, poiché può terminare più processi contemporaneamente, il che potrebbe influenzare il tuo lavoro se non sei cauto.
+- Utilizza `killall` con cautela, poiché può terminare più processi contemporaneamente.
+- Prima di utilizzare l'opzione `-9`, prova a terminare i processi senza forzare, per evitare la perdita di dati.
+- Controlla i processi in esecuzione con il comando `ps` prima di utilizzare `killall` per assicurarti di non terminare processi critici.

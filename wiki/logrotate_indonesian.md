@@ -1,47 +1,45 @@
-# [Sistem Operasi] C Shell (csh) logrotate Penggunaan: Mengelola file log
+# [Sistem Operasi] C Shell (csh) logrotate Penggunaan: Mengelola rotasi file log
 
 ## Overview
-Perintah `logrotate` digunakan untuk mengelola file log di sistem Unix-like. Dengan `logrotate`, Anda dapat mengatur rotasi, kompresi, penghapusan, dan pengiriman file log secara otomatis, sehingga membantu menjaga ukuran file log tetap terkendali dan mengurangi penggunaan ruang disk.
+Perintah `logrotate` digunakan untuk mengelola rotasi, kompresi, dan penghapusan file log. Dengan menggunakan `logrotate`, Anda dapat mengatur ukuran file log agar tidak terlalu besar dan mengelola berapa lama file log disimpan.
 
 ## Usage
-Sintaks dasar dari perintah `logrotate` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `logrotate`:
 
-```bash
+```csh
 logrotate [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang dapat digunakan dengan `logrotate`:
-
-- `-f`: Memaksa rotasi file log meskipun tidak diperlukan.
-- `-s`: Menentukan file status yang digunakan untuk menyimpan informasi tentang rotasi yang telah dilakukan.
-- `-v`: Menampilkan informasi lebih detail tentang proses rotasi yang sedang berlangsung.
-- `-d`: Menjalankan dalam mode debug, tanpa melakukan rotasi, hanya menampilkan apa yang akan dilakukan.
+- `-f`: Memaksa rotasi log meskipun tidak diperlukan.
+- `-s`: Menentukan file status yang akan digunakan.
+- `-v`: Menampilkan informasi rinci tentang proses rotasi.
+- `-d`: Menjalankan dalam mode debug, tidak melakukan rotasi tetapi menunjukkan apa yang akan dilakukan.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `logrotate`:
 
-1. **Rotasi file log dengan konfigurasi default**:
-   ```bash
+1. **Rotasi log menggunakan file konfigurasi default:**
+   ```csh
    logrotate /etc/logrotate.conf
    ```
 
-2. **Memaksa rotasi file log**:
-   ```bash
+2. **Memaksa rotasi log meskipun tidak diperlukan:**
+   ```csh
    logrotate -f /etc/logrotate.conf
    ```
 
-3. **Menjalankan logrotate dalam mode debug**:
-   ```bash
+3. **Menampilkan informasi rinci tentang rotasi log:**
+   ```csh
+   logrotate -v /etc/logrotate.conf
+   ```
+
+4. **Menjalankan logrotate dalam mode debug:**
+   ```csh
    logrotate -d /etc/logrotate.conf
    ```
 
-4. **Menggunakan file status khusus**:
-   ```bash
-   logrotate -s /var/lib/logrotate/status /etc/logrotate.conf
-   ```
-
 ## Tips
-- Pastikan untuk mengedit file konfigurasi `/etc/logrotate.conf` untuk menyesuaikan pengaturan rotasi sesuai kebutuhan Anda.
-- Gunakan opsi `-v` untuk mendapatkan informasi lebih lanjut saat melakukan rotasi, terutama saat melakukan pengujian.
-- Jadwalkan `logrotate` untuk dijalankan secara rutin menggunakan cron, sehingga rotasi log dapat dilakukan secara otomatis.
+- Pastikan untuk menguji konfigurasi `logrotate` Anda dengan mode debug (`-d`) sebelum menerapkannya.
+- Selalu simpan salinan file konfigurasi asli sebelum melakukan perubahan.
+- Periksa file log status untuk memastikan rotasi berjalan dengan baik dan tidak ada kesalahan.

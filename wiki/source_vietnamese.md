@@ -1,37 +1,37 @@
-# [Hệ điều hành Unix] C Shell (csh) source: Thực thi tập lệnh trong phiên làm việc hiện tại
+# [Hệ điều hành] C Shell (csh) source: Thực thi tập tin lệnh
 
 ## Overview
-Lệnh `source` trong C Shell (csh) được sử dụng để thực thi các lệnh trong một tập lệnh shell trong phiên làm việc hiện tại. Điều này cho phép người dùng tải lại các biến môi trường hoặc chức năng mà không cần phải khởi động lại shell.
+Lệnh `source` trong C Shell (csh) được sử dụng để thực thi các lệnh trong một tập tin lệnh mà không cần phải khởi động một shell mới. Điều này cho phép bạn tải các biến môi trường và thiết lập cấu hình từ một tập tin vào phiên làm việc hiện tại.
 
 ## Usage
 Cú pháp cơ bản của lệnh `source` như sau:
+
 ```csh
-source [options] [arguments]
+source [tùy chọn] [tập tin]
 ```
 
 ## Common Options
-- `-h`: Hiển thị thông tin trợ giúp về lệnh `source`.
-- `-v`: Chạy lệnh trong chế độ verbose, hiển thị các lệnh khi chúng được thực thi.
+- Không có tùy chọn đặc biệt nào cho lệnh `source`. Lệnh này chủ yếu được sử dụng với tên tập tin.
 
 ## Common Examples
 Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `source`:
 
-1. **Thực thi một tập lệnh đơn giản**:
+1. **Thực thi một tập tin lệnh đơn giản**:
    ```csh
    source myscript.csh
    ```
 
-2. **Tải lại biến môi trường từ tệp cấu hình**:
+2. **Tải lại cấu hình từ tập tin `.cshrc`**:
    ```csh
    source ~/.cshrc
    ```
 
-3. **Chạy một tập lệnh và hiển thị lệnh khi thực thi**:
+3. **Thực thi một tập tin lệnh với các biến môi trường**:
    ```csh
-   source -v myscript.csh
+   source setenv_vars.csh
    ```
 
 ## Tips
-- Sử dụng `source` để cập nhật các thay đổi trong tệp cấu hình mà không cần khởi động lại shell.
-- Đảm bảo rằng các tập lệnh bạn muốn thực thi có quyền thực thi và không có lỗi cú pháp.
-- Kiểm tra các biến môi trường sau khi sử dụng `source` để đảm bảo chúng đã được cập nhật đúng cách.
+- Hãy chắc chắn rằng tập tin bạn muốn thực thi có quyền thực thi và không có lỗi cú pháp.
+- Sử dụng `source` để cập nhật các thay đổi trong cấu hình mà không cần khởi động lại shell.
+- Kiểm tra các biến môi trường sau khi sử dụng `source` để đảm bảo chúng đã được thiết lập đúng cách.

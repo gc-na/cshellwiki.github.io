@@ -1,7 +1,7 @@
-# [Unix] C Shell (csh) dirname Verwendung: Gibt das Verzeichnis eines Pfades zurück
+# [Linux] C Shell (csh) dirname Verwendung: Gibt den Verzeichnisnamen eines Pfades zurück
 
 ## Übersicht
-Der Befehl `dirname` wird verwendet, um den Verzeichnispfad eines gegebenen Dateipfades zu extrahieren. Er entfernt den Dateinamen und gibt nur den übergeordneten Verzeichnisnamen zurück.
+Der Befehl `dirname` wird verwendet, um den Verzeichnisnamen eines angegebenen Dateipfades zurückzugeben. Dies ist nützlich, um den Pfad zu extrahieren, ohne den Dateinamen selbst zu berücksichtigen.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
@@ -11,12 +11,14 @@ dirname [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- **Keine speziellen Optionen**: Der Befehl `dirname` hat keine speziellen Optionen. Er wird in der Regel mit einem oder mehreren Argumenten verwendet, die die Pfade darstellen.
+- `-z`: Gibt eine leere Zeile zurück, wenn der Pfad leer ist.
+- `--help`: Zeigt eine Hilfeseite mit Informationen zur Verwendung des Befehls an.
+- `--version`: Gibt die Versionsnummer des Befehls aus.
 
 ## Häufige Beispiele
-Hier sind einige praktische Beispiele für die Verwendung des Befehls `dirname`:
+Hier sind einige praktische Beispiele für die Verwendung von `dirname`:
 
-1. **Einfacher Verzeichnispfad**
+1. **Einfacher Verzeichnisname**
    ```csh
    dirname /usr/local/bin/script.sh
    ```
@@ -25,7 +27,7 @@ Hier sind einige praktische Beispiele für die Verwendung des Befehls `dirname`:
    /usr/local/bin
    ```
 
-2. **Verzeichnispfad ohne Dateiendung**
+2. **Verzeichnisname ohne Dateiendung**
    ```csh
    dirname /home/user/documents/report.pdf
    ```
@@ -34,26 +36,25 @@ Hier sind einige praktische Beispiele für die Verwendung des Befehls `dirname`:
    /home/user/documents
    ```
 
-3. **Mehrere Argumente**
+3. **Leerer Pfad**
    ```csh
-   dirname /var/log/syslog /etc/hosts
+   dirname ""
    ```
    Ausgabe:
    ```
-   /var/log
-   /etc
+   (leere Zeile)
    ```
 
-4. **Verzeichnispfad eines relativen Pfades**
+4. **Verzeichnisname von einer relativen Pfadangabe**
    ```csh
-   dirname ./myfolder/myfile.txt
+   dirname ./projects/coding/example.py
    ```
    Ausgabe:
    ```
-   ./myfolder
+   ./projects/coding
    ```
 
 ## Tipps
-- Verwenden Sie `dirname` in Skripten, um den Verzeichnispfad dynamisch zu extrahieren, wenn Sie mit Dateipfaden arbeiten.
-- Kombinieren Sie `dirname` mit anderen Befehlen wie `basename`, um sowohl den Verzeichnispfad als auch den Dateinamen zu erhalten.
-- Achten Sie darauf, dass `dirname` nur den Verzeichnispfad zurückgibt; es entfernt keine führenden oder nachfolgenden Leerzeichen.
+- Verwenden Sie `dirname` in Skripten, um Pfade dynamisch zu verarbeiten.
+- Kombinieren Sie `dirname` mit anderen Befehlen wie `basename`, um sowohl den Verzeichnisnamen als auch den Dateinamen zu extrahieren.
+- Achten Sie darauf, dass der Pfad korrekt formatiert ist, um unerwartete Ergebnisse zu vermeiden.

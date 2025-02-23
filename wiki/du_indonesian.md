@@ -1,47 +1,45 @@
-# [Sistem Operasi] C Shell (csh) du: Menghitung penggunaan ruang disk
+# [Sistem Operasi] C Shell (csh) du: Menghitung ukuran direktori dan file
 
 ## Overview
-Perintah `du` (disk usage) digunakan untuk menghitung dan menampilkan jumlah ruang disk yang digunakan oleh file dan direktori. Ini sangat berguna untuk menganalisis penggunaan ruang disk dan mengidentifikasi direktori yang memakan banyak ruang.
+Perintah `du` (disk usage) digunakan untuk menghitung dan menampilkan ukuran dari file dan direktori di sistem file. Ini sangat berguna untuk mengetahui seberapa banyak ruang disk yang digunakan oleh file atau direktori tertentu.
 
 ## Usage
-Sintaks dasar dari perintah `du` adalah sebagai berikut:
+Berikut adalah sintaks dasar dari perintah `du`:
 
-```
+```csh
 du [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang dapat digunakan dengan perintah `du`:
-
-- `-h`: Menampilkan ukuran dalam format yang mudah dibaca (misalnya, KB, MB).
-- `-s`: Menampilkan total ukuran untuk setiap argumen, bukan ukuran untuk setiap file dan subdirektori.
-- `-a`: Menampilkan ukuran untuk semua file, bukan hanya direktori.
-- `-c`: Menampilkan total keseluruhan dari semua ukuran yang ditampilkan.
+- `-h`: Menampilkan ukuran dalam format yang lebih mudah dibaca (misalnya, KB, MB).
+- `-s`: Menampilkan total ukuran dari direktori tanpa menampilkan ukuran subdirektori.
+- `-a`: Menampilkan ukuran dari semua file, bukan hanya direktori.
+- `-c`: Menampilkan total ukuran semua file dan direktori yang dihitung.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `du`:
 
-1. Menampilkan ukuran semua direktori dan subdirektori dalam format yang mudah dibaca:
+1. Menampilkan ukuran dari direktori saat ini dalam format yang mudah dibaca:
    ```csh
    du -h
    ```
 
-2. Menampilkan total ukuran dari sebuah direktori tertentu:
+2. Menampilkan total ukuran dari direktori tertentu:
    ```csh
    du -sh /path/to/directory
    ```
 
-3. Menampilkan ukuran semua file dan direktori dalam direktori saat ini:
+3. Menampilkan ukuran dari semua file dan direktori dalam direktori saat ini:
    ```csh
    du -ah
    ```
 
-4. Menampilkan ukuran dan total keseluruhan dari semua direktori:
+4. Menampilkan ukuran dari direktori dan subdirektori dengan total ukuran:
    ```csh
-   du -ch
+   du -ch /path/to/directory
    ```
 
 ## Tips
-- Gunakan opsi `-h` untuk memudahkan pemahaman ukuran file dan direktori.
-- Kombinasikan opsi `-s` dengan nama direktori untuk mendapatkan ringkasan penggunaan ruang disk.
-- Periksa direktori yang tidak terpakai secara berkala untuk mengelola ruang disk Anda dengan lebih baik.
+- Gunakan opsi `-h` untuk memudahkan pembacaan ukuran, terutama jika Anda bekerja dengan file besar.
+- Kombinasikan opsi `-s` dengan nama direktori untuk mendapatkan ringkasan ukuran tanpa detail tambahan.
+- Jika Anda ingin mengecek penggunaan disk secara keseluruhan, pertimbangkan untuk menggunakan `du` pada direktori root (`/`).

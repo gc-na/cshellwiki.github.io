@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) timedatectl Kullanımı: Zaman ve tarih ayarlarını yönetme
 
 ## Genel Bakış
-`timedatectl` komutu, sistemin zaman ve tarih ayarlarını yönetmek için kullanılır. Bu komut, sistem saatini ayarlamak, zaman dilimini değiştirmek ve NTP (Ağ Zaman Protokolü) senkronizasyonunu kontrol etmek gibi işlevleri yerine getirir.
+`timedatectl` komutu, sistemin zaman ve tarih ayarlarını yönetmek için kullanılan bir araçtır. Bu komut, sistem saatini, tarihini ve zaman dilimini ayarlamanıza olanak tanır.
 
 ## Kullanım
 Temel sözdizimi aşağıdaki gibidir:
@@ -13,36 +13,32 @@ timedatectl [seçenekler] [argümanlar]
 - `set-time`: Sistemin saatini ayarlamak için kullanılır.
 - `set-timezone`: Zaman dilimini değiştirmek için kullanılır.
 - `status`: Mevcut zaman ve tarih ayarlarını görüntüler.
-- `list-timezones`: Tüm zaman dilimlerini listeler.
-- `set-ntp`: NTP senkronizasyonunu etkinleştirmek veya devre dışı bırakmak için kullanılır.
+- `list-timezones`: Tüm mevcut zaman dilimlerini listeler.
 
 ## Yaygın Örnekler
-Sistem saatini ayarlamak için:
-```csh
-timedatectl set-time '2023-10-01 12:00:00'
-```
+Aşağıda `timedatectl` komutunun bazı pratik kullanım örnekleri bulunmaktadır:
 
-Zaman dilimini değiştirmek için:
-```csh
-timedatectl set-timezone Europe/Istanbul
-```
-
-Mevcut zaman ve tarih ayarlarını görüntülemek için:
+### 1. Mevcut Zaman ve Tarih Bilgilerini Görüntüleme
 ```csh
 timedatectl status
 ```
 
-Tüm zaman dilimlerini listelemek için:
+### 2. Sistemin Zaman Dilimini Ayarlama
+```csh
+timedatectl set-timezone Europe/Istanbul
+```
+
+### 3. Sistemin Saatini Ayarlama
+```csh
+timedatectl set-time '2023-10-01 12:00:00'
+```
+
+### 4. Tüm Zaman Dilimlerini Listeleme
 ```csh
 timedatectl list-timezones
 ```
 
-NTP senkronizasyonunu etkinleştirmek için:
-```csh
-timedatectl set-ntp true
-```
-
 ## İpuçları
-- Zaman dilimini ayarlarken doğru zaman dilimini seçtiğinizden emin olun.
-- `timedatectl status` komutunu kullanarak sistem saatinin doğru ayarlandığını kontrol edin.
-- NTP senkronizasyonunu etkinleştirmek, sistem saatinin her zaman doğru olmasını sağlar, bu nedenle bu seçeneği kullanmayı unutmayın.
+- Zaman dilimlerini ayarlamadan önce mevcut zaman diliminizi kontrol etmek iyi bir uygulamadır.
+- Saat ayarlamalarını yaparken, sistem saatinin doğru olduğundan emin olun.
+- `timedatectl` komutunu kullanmadan önce yönetici (root) yetkilerine sahip olduğunuzdan emin olun.

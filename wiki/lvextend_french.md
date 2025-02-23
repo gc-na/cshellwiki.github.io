@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) lvextend : [étendre des volumes logiques]
+# [Linux] C Shell (csh) lvextend : Étendre la taille d'un volume logique
 
 ## Overview
-La commande `lvextend` est utilisée pour augmenter la taille d'un volume logique dans un système de gestion de volumes logiques (LVM). Cela permet d'ajouter de l'espace de stockage à un volume existant, ce qui est particulièrement utile lorsque l'espace disponible devient insuffisant.
+La commande `lvextend` est utilisée pour augmenter la taille d'un volume logique dans un système de gestion de volumes logiques (LVM). Cela permet d'augmenter l'espace de stockage disponible pour un système de fichiers ou une application sans avoir à recréer le volume.
 
 ## Usage
 La syntaxe de base de la commande `lvextend` est la suivante :
@@ -13,10 +13,10 @@ lvextend [options] [arguments]
 ## Common Options
 Voici quelques options courantes pour la commande `lvextend` :
 
-- `-L +size` : Augmente la taille du volume logique de la taille spécifiée.
-- `-l +number` : Augmente la taille du volume logique en utilisant le nombre de blocs logiques.
-- `-r` : Redimensionne le système de fichiers sur le volume logique après l'extension.
-- `-n` : Modifie le nom du volume logique.
+- `-L +size` : Ajoute une taille spécifiée au volume logique.
+- `-l +number` : Ajoute un nombre spécifié d'unités de logique (extents) au volume.
+- `-r` : Redimensionne automatiquement le système de fichiers après l'extension du volume.
+- `-n new_name` : Renomme le volume logique lors de l'extension.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de `lvextend` :
@@ -27,25 +27,25 @@ Voici quelques exemples pratiques de l'utilisation de `lvextend` :
    lvextend -L +10G /dev/vg01/lv01
    ```
 
-2. **Augmenter la taille d'un volume logique en utilisant des blocs logiques :**
+2. **Ajouter 5 unités de logique au volume :**
 
    ```bash
-   lvextend -l +100 /dev/vg01/lv01
+   lvextend -l +5 /dev/vg01/lv01
    ```
 
-3. **Augmenter la taille d'un volume logique et redimensionner le système de fichiers :**
+3. **Étendre le volume et redimensionner le système de fichiers en même temps :**
 
    ```bash
-   lvextend -r -L +5G /dev/vg01/lv01
+   lvextend -r -L +20G /dev/vg01/lv01
    ```
 
-4. **Changer le nom d'un volume logique :**
+4. **Renommer un volume logique tout en l'augmentant :**
 
    ```bash
-   lvextend -n nouveau_nom /dev/vg01/lv01
+   lvextend -n new_lv_name -L +15G /dev/vg01/lv01
    ```
 
 ## Tips
-- Toujours vérifier l'espace disponible dans le groupe de volumes avant d'étendre un volume logique.
-- Utilisez l'option `-r` pour redimensionner automatiquement le système de fichiers, ce qui simplifie le processus.
-- Faites des sauvegardes régulières de vos données avant d'effectuer des modifications sur les volumes logiques.
+- Assurez-vous que l'espace disponible dans le groupe de volumes est suffisant avant d'utiliser `lvextend`.
+- Utilisez l'option `-r` pour simplifier le processus de redimensionnement du système de fichiers après l'extension.
+- Vérifiez toujours l'état du volume logique après l'extension avec la commande `lvdisplay` pour vous assurer que les modifications ont été appliquées correctement.

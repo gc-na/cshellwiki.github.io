@@ -1,50 +1,50 @@
-# [Sistem Operasi] C Shell (csh) zip Penggunaan: Mengompres file
+# [Sistem Operasi] C Shell (csh) zip Penggunaan: Mengompresi file
 
 ## Overview
-Perintah `zip` digunakan untuk mengompres file dan direktori menjadi satu file arsip. Ini sangat berguna untuk menghemat ruang penyimpanan dan memudahkan pengiriman file melalui email atau transfer data.
+Perintah `zip` digunakan untuk mengompresi file dan direktori menjadi satu arsip dengan format ZIP. Ini sangat berguna untuk menghemat ruang penyimpanan dan memudahkan pengiriman file.
 
 ## Usage
-Berikut adalah sintaks dasar dari perintah `zip`:
+Berikut adalah sintaks dasar untuk menggunakan perintah `zip`:
 
 ```
 zip [options] [arguments]
 ```
 
 ## Common Options
-- `-r`: Mengompres direktori secara rekursif.
-- `-e`: Menggunakan enkripsi untuk melindungi file zip.
-- `-9`: Menggunakan tingkat kompresi maksimum.
-- `-d`: Menghapus file dari arsip zip.
+- `-r`: Mengompresi direktori secara rekursif.
+- `-e`: Mengaktifkan enkripsi untuk arsip.
+- `-u`: Memperbarui arsip dengan file yang lebih baru.
+- `-d`: Menghapus file dari arsip.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `zip`:
 
-1. Mengompres file tunggal:
-   ```csh
+1. Mengompresi file tunggal:
+   ```bash
    zip file.zip file.txt
    ```
 
-2. Mengompres beberapa file:
-   ```csh
+2. Mengompresi beberapa file:
+   ```bash
    zip file.zip file1.txt file2.txt file3.txt
    ```
 
-3. Mengompres seluruh direktori:
-   ```csh
-   zip -r archive.zip folder_name
+3. Mengompresi seluruh direktori:
+   ```bash
+   zip -r archive.zip my_directory/
    ```
 
-4. Mengompres dengan enkripsi:
-   ```csh
+4. Mengompresi dengan enkripsi:
+   ```bash
    zip -e secure.zip secret.txt
    ```
 
-5. Menghapus file dari arsip zip:
-   ```csh
-   zip -d file.zip file_to_remove.txt
+5. Memperbarui arsip dengan file yang lebih baru:
+   ```bash
+   zip -u archive.zip updated_file.txt
    ```
 
 ## Tips
-- Selalu gunakan opsi `-r` saat ingin mengompres direktori untuk memastikan semua subdirektori dan file termasuk.
-- Gunakan opsi `-9` jika Anda ingin hasil kompresi yang lebih kecil, tetapi ingat bahwa ini mungkin memerlukan lebih banyak waktu.
-- Pertimbangkan untuk menggunakan enkripsi jika Anda mengompres file sensitif untuk menjaga keamanan data.
+- Selalu gunakan opsi `-r` saat mengompresi direktori untuk memastikan semua file di dalamnya termasuk.
+- Pertimbangkan untuk menggunakan enkripsi jika Anda mengompresi file sensitif.
+- Periksa ukuran arsip setelah kompresi untuk memastikan penghematan ruang yang diinginkan.

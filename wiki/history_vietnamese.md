@@ -1,7 +1,7 @@
-# [Hệ điều hành] C Shell (csh) history: Lưu trữ lệnh đã thực hiện
+# [Hệ điều hành] C Shell (csh) history: Lưu trữ các lệnh đã thực hiện
 
 ## Overview
-Lệnh `history` trong C Shell (csh) được sử dụng để hiển thị danh sách các lệnh mà người dùng đã thực hiện trong phiên làm việc hiện tại. Điều này giúp người dùng dễ dàng truy cập và thực hiện lại các lệnh mà họ đã sử dụng trước đó.
+Lệnh `history` trong C Shell (csh) được sử dụng để hiển thị danh sách các lệnh mà người dùng đã thực hiện trong phiên làm việc hiện tại. Điều này rất hữu ích để người dùng có thể xem lại các lệnh đã nhập và thực hiện lại chúng mà không cần phải gõ lại.
 
 ## Usage
 Cú pháp cơ bản của lệnh `history` như sau:
@@ -11,34 +11,37 @@ history [options] [arguments]
 
 ## Common Options
 - `-c`: Xóa toàn bộ lịch sử lệnh.
-- `-n`: Đọc lịch sử lệnh từ tệp lịch sử mà không ghi đè lên lịch sử hiện tại.
-- `-r`: Đọc lịch sử lệnh từ tệp lịch sử và thêm vào lịch sử hiện tại.
-- `-w`: Ghi lịch sử lệnh hiện tại vào tệp lịch sử.
+- `-n`: Đọc lịch sử từ tệp mà không ghi đè lên lịch sử hiện tại.
+- `-r`: Đọc lịch sử từ tệp và thêm vào lịch sử hiện tại.
+- `-w`: Ghi lịch sử hiện tại vào tệp.
 
 ## Common Examples
-Dưới đây là một số ví dụ thực tế về cách sử dụng lệnh `history`:
+- Hiển thị toàn bộ lịch sử lệnh:
+  ```csh
+  history
+  ```
 
-1. Hiển thị danh sách các lệnh đã thực hiện:
-   ```csh
-   history
-   ```
+- Hiển thị 10 lệnh gần nhất:
+  ```csh
+  history 10
+  ```
 
-2. Xóa toàn bộ lịch sử lệnh:
-   ```csh
-   history -c
-   ```
+- Xóa toàn bộ lịch sử lệnh:
+  ```csh
+  history -c
+  ```
 
-3. Đọc lịch sử lệnh từ tệp mà không ghi đè lên lịch sử hiện tại:
-   ```csh
-   history -n
-   ```
+- Ghi lịch sử hiện tại vào tệp:
+  ```csh
+  history -w
+  ```
 
-4. Ghi lịch sử lệnh hiện tại vào tệp lịch sử:
-   ```csh
-   history -w
-   ```
+- Đọc lịch sử từ tệp và thêm vào lịch sử hiện tại:
+  ```csh
+  history -r
+  ```
 
 ## Tips
-- Sử dụng lệnh `!n` (trong đó n là số thứ tự của lệnh trong danh sách lịch sử) để thực hiện lại lệnh cụ thể.
-- Thường xuyên kiểm tra lịch sử lệnh của bạn để tiết kiệm thời gian và công sức khi làm việc.
-- Hãy cẩn thận khi sử dụng tùy chọn `-c`, vì nó sẽ xóa toàn bộ lịch sử lệnh mà không thể khôi phục.
+- Sử dụng `!n` để thực hiện lại lệnh thứ n trong lịch sử.
+- Thường xuyên kiểm tra lịch sử lệnh để cải thiện quy trình làm việc của bạn.
+- Kết hợp với các lệnh khác để tối ưu hóa hiệu suất làm việc, như sử dụng `grep` để tìm kiếm trong lịch sử lệnh.

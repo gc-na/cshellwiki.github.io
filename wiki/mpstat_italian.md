@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) mpstat Utilizzo: Monitorare le statistiche della CPU
+# [Linux] C Shell (csh) mpstat Utilizzo: Monitora le statistiche delle CPU
 
 ## Overview
-Il comando `mpstat` è utilizzato per visualizzare le statistiche di utilizzo della CPU in un sistema. Fornisce informazioni dettagliate sulle prestazioni della CPU, consentendo agli utenti di monitorare l'attività della CPU in tempo reale.
+Il comando `mpstat` è utilizzato per visualizzare le statistiche delle CPU in un sistema. Fornisce informazioni dettagliate sull'utilizzo della CPU, consentendo agli utenti di monitorare le prestazioni del sistema e identificare eventuali colli di bottiglia.
 
 ## Usage
 La sintassi di base del comando `mpstat` è la seguente:
@@ -12,34 +12,35 @@ mpstat [options] [arguments]
 
 ## Common Options
 - `-P ALL`: Mostra le statistiche per tutte le CPU.
-- `-u`: Visualizza l'utilizzo della CPU in percentuale.
-- `-w`: Mostra le statistiche di attesa della CPU.
-- `-h`: Mostra l'help con le opzioni disponibili.
+- `-u`: Mostra l'utilizzo della CPU in percentuale.
+- `-h`: Mostra l'output in un formato leggibile.
+- `interval`: Specifica l'intervallo di tempo tra le misurazioni (in secondi).
+- `count`: Numero di volte che il comando deve essere eseguito.
 
 ## Common Examples
 Ecco alcuni esempi pratici dell'uso del comando `mpstat`:
 
-1. **Visualizzare le statistiche di utilizzo della CPU per tutte le CPU:**
+1. Visualizzare le statistiche della CPU per tutte le CPU:
    ```csh
    mpstat -P ALL
    ```
 
-2. **Visualizzare l'utilizzo della CPU ogni 5 secondi:**
+2. Monitorare l'utilizzo della CPU ogni 2 secondi per 5 volte:
    ```csh
-   mpstat 5
+   mpstat -u 2 5
    ```
 
-3. **Mostrare solo l'utilizzo della CPU:**
+3. Visualizzare le statistiche della CPU in un formato leggibile:
    ```csh
-   mpstat -u
+   mpstat -h
    ```
 
-4. **Visualizzare le statistiche di attesa della CPU:**
+4. Mostrare le statistiche della CPU per una CPU specifica (ad esempio, CPU 0):
    ```csh
-   mpstat -w
+   mpstat -P 0
    ```
 
 ## Tips
-- Utilizza l'opzione `-P ALL` per avere una visione completa dell'utilizzo della CPU su sistemi multi-core.
-- Esegui `mpstat` in combinazione con altri strumenti di monitoraggio per ottenere un quadro più dettagliato delle prestazioni del sistema.
-- Considera di impostare un intervallo di aggiornamento per monitorare le tendenze nel tempo, ad esempio utilizzando `mpstat 1` per aggiornamenti ogni secondo.
+- Utilizza l'opzione `-P ALL` per avere una visione completa dell'utilizzo delle CPU, specialmente in sistemi multi-core.
+- Combina `mpstat` con altri strumenti di monitoraggio per ottenere un'analisi più approfondita delle prestazioni del sistema.
+- Esegui `mpstat` in un terminale separato mentre esegui altre operazioni per monitorare in tempo reale l'impatto sulle prestazioni.

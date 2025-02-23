@@ -1,10 +1,10 @@
 # [Linux] C Shell (csh) set użycie: Ustawianie zmiennych powłoki
 
 ## Overview
-Polecenie `set` w C Shell (csh) służy do ustawiania zmiennych powłoki oraz konfigurowania opcji powłoki. Dzięki temu użytkownicy mogą dostosować środowisko pracy, definiując zmienne, które mogą być używane w skryptach i sesjach terminalowych.
+Polecenie `set` w C Shell (csh) służy do ustawiania zmiennych powłoki oraz do zarządzania opcjami powłoki. Umożliwia użytkownikom definiowanie zmiennych, które mogą być używane w skryptach i interaktywnych sesjach.
 
 ## Usage
-Podstawowa składnia polecenia `set` wygląda następująco:
+Podstawowa składnia polecenia `set` jest następująca:
 
 ```
 set [opcje] [argumenty]
@@ -12,36 +12,47 @@ set [opcje] [argumenty]
 
 ## Common Options
 - `-x`: Włącza śledzenie zmiennych, co pozwala na wyświetlanie ich wartości podczas wykonywania skryptu.
-- `-e`: Umożliwia ustawienie opcji, która przerywa wykonywanie skryptu, gdy wystąpi błąd.
-- `-u`: Ustawia opcję, która generuje błąd, gdy używana jest niezdefiniowana zmienna.
+- `-e`: Umożliwia zatrzymanie wykonywania skryptu w przypadku wystąpienia błędu.
+- `-u`: Zgłasza błąd, gdy używana jest niezdefiniowana zmienna.
 
 ## Common Examples
-1. Ustawienie zmiennej:
-   ```csh
-   set myVar = "Hello, World!"
-   ```
 
-2. Wyświetlenie wartości zmiennej:
-   ```csh
-   echo $myVar
-   ```
+### Ustawianie zmiennej
+Aby ustawić zmienną o nazwie `myVar` na wartość `Hello`, użyj:
 
-3. Ustawienie opcji śledzenia:
-   ```csh
-   set -x
-   ```
+```csh
+set myVar = "Hello"
+```
 
-4. Ustawienie zmiennej z listą wartości:
-   ```csh
-   set myList = (apple banana cherry)
-   ```
+### Wyświetlanie wartości zmiennej
+Aby wyświetlić wartość zmiennej `myVar`, użyj:
 
-5. Użycie opcji przerywania skryptu w przypadku błędu:
-   ```csh
-   set -e
-   ```
+```csh
+echo $myVar
+```
+
+### Ustawianie wielu zmiennych
+Możesz ustawić wiele zmiennych w jednym poleceniu:
+
+```csh
+set var1 = "Value1" var2 = "Value2"
+```
+
+### Używanie opcji -x
+Aby włączyć śledzenie zmiennych, użyj:
+
+```csh
+set -x
+```
+
+### Używanie opcji -e
+Aby zatrzymać skrypt w przypadku błędu, użyj:
+
+```csh
+set -e
+```
 
 ## Tips
-- Używaj `set` do organizowania i zarządzania zmiennymi w skryptach, co ułatwia ich późniejsze użycie.
-- Pamiętaj o używaniu cudzysłowów przy ustawianiu zmiennych, aby uniknąć problemów z białymi znakami.
-- Regularnie sprawdzaj wartości zmiennych za pomocą `echo`, aby upewnić się, że są one poprawnie ustawione.
+- Zawsze używaj cudzysłowów dla wartości zmiennych, które zawierają spacje, aby uniknąć błędów.
+- Regularnie sprawdzaj wartości zmiennych, aby upewnić się, że są one poprawnie ustawione, zwłaszcza w dłuższych skryptach.
+- Używaj opcji `-u`, aby pomóc w identyfikacji błędów związanych z niezdefiniowanymi zmiennymi.

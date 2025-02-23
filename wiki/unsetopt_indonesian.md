@@ -1,50 +1,41 @@
-# [Sistem Operasi] C Shell (csh) unsetopt: [menghapus opsi yang diatur]
+# [Sistem Operasi] C Shell (csh) unsetopt: [menonaktifkan opsi]
 
 ## Overview
-Perintah `unsetopt` dalam C Shell (csh) digunakan untuk menghapus opsi yang sebelumnya telah diatur. Dengan menggunakan perintah ini, Anda dapat mengubah perilaku shell dengan menonaktifkan fitur tertentu yang mungkin tidak diperlukan dalam sesi saat ini.
+Perintah `unsetopt` dalam C Shell (csh) digunakan untuk menonaktifkan opsi tertentu yang sebelumnya telah diaktifkan. Dengan menggunakan perintah ini, pengguna dapat mengubah perilaku shell sesuai kebutuhan mereka.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `unsetopt`:
 
-```csh
+```
 unsetopt [options] [arguments]
 ```
 
 ## Common Options
-Beberapa opsi umum yang dapat digunakan dengan `unsetopt` meliputi:
+Beberapa opsi umum yang dapat digunakan dengan `unsetopt` adalah sebagai berikut:
 
-- `all`: Menghapus semua opsi yang diatur.
-- `noclobber`: Mengizinkan penimpaan file saat melakukan pengalihan output.
-- `noglob`: Mengizinkan penggunaan karakter wildcard dalam nama file.
-- `interactive`: Menonaktifkan mode interaktif untuk perintah tertentu.
+- `all`: Menonaktifkan semua opsi yang telah diaktifkan.
+- `ignoreeof`: Menonaktifkan opsi yang memungkinkan pengguna untuk keluar dari shell dengan menekan Ctrl+D.
+- `noglob`: Menonaktifkan pengolahan wildcard dalam perintah.
 
 ## Common Examples
-Berikut adalah beberapa contoh praktis penggunaan `unsetopt`:
+Berikut adalah beberapa contoh penggunaan `unsetopt`:
 
-1. Menghapus opsi `noclobber` agar dapat menimpa file saat pengalihan output:
+1. Menonaktifkan opsi `ignoreeof`:
    ```csh
-   unsetopt noclobber
+   unsetopt ignoreeof
    ```
 
-2. Menghapus opsi `noglob` untuk memungkinkan penggunaan wildcard:
-   ```csh
-   unsetopt noglob
-   ```
-
-3. Menghapus semua opsi yang diatur dalam sesi saat ini:
+2. Menonaktifkan semua opsi yang diaktifkan:
    ```csh
    unsetopt all
    ```
 
-4. Menonaktifkan mode interaktif:
+3. Menonaktifkan opsi `noglob`:
    ```csh
-   unsetopt interactive
+   unsetopt noglob
    ```
 
 ## Tips
-- Pastikan untuk memeriksa opsi yang saat ini diatur dengan menggunakan perintah `set` sebelum menggunakan `unsetopt`.
-- Gunakan `unsetopt` dengan hati-hati, terutama saat menghapus opsi yang dapat mempengaruhi perilaku shell secara keseluruhan.
-- Anda dapat menggabungkan beberapa opsi dalam satu perintah `unsetopt` untuk efisiensi, misalnya:
-  ```csh
-  unsetopt noclobber noglob
-  ```
+- Selalu periksa opsi yang aktif sebelum menggunakan `unsetopt` untuk memastikan Anda tidak menonaktifkan opsi yang penting.
+- Gunakan `setopt` untuk mengaktifkan kembali opsi yang telah dinonaktifkan jika diperlukan.
+- Simpan konfigurasi shell Anda dalam file `.cshrc` untuk mengatur opsi secara otomatis saat shell dimulai.

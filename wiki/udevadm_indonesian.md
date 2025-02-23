@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) udevadm Penggunaan: Mengelola perangkat di Linux
+# [Sistem Operasi Linux] C Shell (csh) udevadm Penggunaan: Mengelola perangkat di Linux
 
 ## Overview
-Perintah `udevadm` digunakan untuk mengelola perangkat di sistem Linux. Ini berfungsi untuk berinteraksi dengan daemon udev, yang bertanggung jawab untuk mengelola perangkat keras yang terhubung ke sistem, termasuk pengenalan, pengaturan, dan penghapusan perangkat.
+Perintah `udevadm` digunakan untuk mengelola perangkat di sistem Linux. Ini adalah alat yang berfungsi untuk berinteraksi dengan sistem udev, yang bertanggung jawab untuk mengelola perangkat keras dan mengkonfigurasi perangkat yang terhubung ke sistem.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `udevadm`:
@@ -11,42 +11,33 @@ udevadm [options] [arguments]
 ```
 
 ## Common Options
-- `info`: Menampilkan informasi tentang perangkat tertentu.
-- `trigger`: Memicu udev untuk memproses semua perangkat.
+- `info`: Menampilkan informasi tentang perangkat.
+- `trigger`: Memicu udev untuk memproses perangkat yang ada.
 - `settle`: Menunggu hingga semua perubahan perangkat selesai diproses.
-- `control`: Mengontrol daemon udev (misalnya, untuk menghentikan atau memulai).
-- `monitor`: Memantau peristiwa yang terjadi pada perangkat.
+- `control`: Mengendalikan perilaku daemon udev.
 
 ## Common Examples
-Berikut adalah beberapa contoh penggunaan `udevadm`:
-
-1. **Menampilkan informasi tentang perangkat tertentu**:
+1. Menampilkan informasi tentang perangkat tertentu:
    ```csh
    udevadm info --query=all --name=/dev/sda
    ```
 
-2. **Memicu pemrosesan perangkat**:
+2. Memicu pemrosesan perangkat baru:
    ```csh
    udevadm trigger
    ```
 
-3. **Menunggu hingga semua perubahan perangkat selesai**:
+3. Menunggu hingga semua perangkat selesai diproses:
    ```csh
    udevadm settle
    ```
 
-4. **Memantau peristiwa perangkat secara real-time**:
-   ```csh
-   udevadm monitor
-   ```
-
-5. **Mengontrol daemon udev**:
+4. Mengendalikan daemon udev:
    ```csh
    udevadm control --reload-rules
    ```
 
 ## Tips
-- Selalu gunakan opsi `info` untuk memverifikasi informasi perangkat sebelum melakukan perubahan.
+- Selalu gunakan opsi `info` untuk memeriksa detail perangkat sebelum melakukan perubahan.
 - Gunakan `trigger` setelah menambahkan atau menghapus perangkat untuk memastikan sistem mengenali perubahan.
-- Saat menggunakan `monitor`, Anda dapat melihat peristiwa secara langsung, yang sangat berguna untuk debugging.
-- Pastikan untuk menjalankan perintah ini dengan hak akses yang sesuai, biasanya sebagai pengguna root, untuk menghindari masalah izin.
+- Pastikan untuk menjalankan perintah dengan hak akses yang sesuai, terutama saat mengubah konfigurasi perangkat.

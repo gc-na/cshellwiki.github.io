@@ -1,53 +1,42 @@
 # [Hệ điều hành] C Shell (csh) ps Cách sử dụng: [hiển thị thông tin tiến trình]
 
 ## Tổng quan
-Lệnh `ps` trong C Shell (csh) được sử dụng để hiển thị thông tin về các tiến trình đang chạy trên hệ thống. Nó cho phép người dùng xem các tiến trình hiện tại, bao gồm ID tiến trình, trạng thái và tài nguyên mà chúng đang sử dụng.
+Lệnh `ps` trong C Shell (csh) được sử dụng để hiển thị thông tin về các tiến trình đang chạy trên hệ thống. Nó giúp người dùng theo dõi và quản lý các tiến trình, bao gồm ID tiến trình, trạng thái và tài nguyên sử dụng.
 
 ## Cách sử dụng
 Cú pháp cơ bản của lệnh `ps` như sau:
 ```
-ps [options] [arguments]
+ps [tùy chọn] [đối số]
 ```
 
 ## Các tùy chọn phổ biến
-- `-e`: Hiển thị tất cả các tiến trình.
-- `-f`: Hiển thị thông tin chi tiết về tiến trình.
-- `-l`: Hiển thị thông tin ở định dạng dài.
-- `-u [username]`: Hiển thị các tiến trình của người dùng cụ thể.
-- `-p [pid]`: Hiển thị thông tin của tiến trình theo ID tiến trình.
+- `-e`: Hiển thị tất cả các tiến trình đang chạy.
+- `-f`: Hiển thị thông tin chi tiết về các tiến trình.
+- `-u [tên người dùng]`: Hiển thị các tiến trình của một người dùng cụ thể.
+- `-p [PID]`: Hiển thị thông tin của tiến trình với ID cụ thể.
 
 ## Ví dụ phổ biến
-Dưới đây là một số ví dụ về cách sử dụng lệnh `ps`:
+- Hiển thị tất cả các tiến trình đang chạy:
+  ```csh
+  ps -e
+  ```
 
-1. Hiển thị tất cả các tiến trình:
-   ```bash
-   ps -e
-   ```
+- Hiển thị thông tin chi tiết về các tiến trình:
+  ```csh
+  ps -f
+  ```
 
-2. Hiển thị thông tin chi tiết về các tiến trình:
-   ```bash
-   ps -f
-   ```
+- Hiển thị các tiến trình của người dùng cụ thể:
+  ```csh
+  ps -u username
+  ```
 
-3. Hiển thị thông tin ở định dạng dài:
-   ```bash
-   ps -l
-   ```
-
-4. Hiển thị các tiến trình của một người dùng cụ thể:
-   ```bash
-   ps -u username
-   ```
-
-5. Hiển thị thông tin của một tiến trình theo ID:
-   ```bash
-   ps -p 1234
-   ```
+- Hiển thị thông tin của một tiến trình cụ thể bằng ID:
+  ```csh
+  ps -p 1234
+  ```
 
 ## Mẹo
-- Sử dụng `ps aux` để có cái nhìn tổng quan về tất cả các tiến trình đang chạy cùng với thông tin chi tiết.
-- Kết hợp `ps` với `grep` để tìm kiếm một tiến trình cụ thể:
-  ```bash
-  ps -e | grep process_name
-  ```
-- Thường xuyên kiểm tra các tiến trình đang chạy để quản lý tài nguyên hệ thống hiệu quả hơn.
+- Sử dụng `ps -ef | grep [tên tiến trình]` để tìm kiếm một tiến trình cụ thể.
+- Kết hợp với lệnh `top` để theo dõi tiến trình theo thời gian thực.
+- Thường xuyên kiểm tra các tiến trình để phát hiện và xử lý các tiến trình không cần thiết hoặc tiêu tốn tài nguyên.

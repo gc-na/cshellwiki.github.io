@@ -1,46 +1,47 @@
-# [Linux] C Shell (csh) true kullanımı: Her zaman doğru döner
+# [Linux] C Shell (csh) true Kullanımı: Her zaman doğru döndürme
 
 ## Overview
-`true` komutu, C Shell (csh) ortamında her zaman başarılı bir çıkış durumu döndüren bir komuttur. Genellikle, bir komutun başarılı bir şekilde çalıştığını belirtmek veya bir koşulun her zaman doğru olduğunu ifade etmek için kullanılır.
+`true` komutu, C Shell (csh) ortamında her zaman başarılı bir çıkış durumu döndüren bir komuttur. Genellikle bir komutun başarılı bir şekilde tamamlandığını belirtmek için kullanılır ve hata kontrolü veya koşullu ifadelerde yer alabilir.
 
 ## Usage
 Temel sözdizimi aşağıdaki gibidir:
 
-```
+```csh
 true [options] [arguments]
 ```
 
 ## Common Options
-`true` komutunun genellikle kullanılan seçenekleri şunlardır:
-- `-h`, `--help`: Komut hakkında yardım bilgisi gösterir.
-- `-V`, `--version`: Komutun sürüm bilgilerini gösterir.
+`true` komutunun genellikle kullanılan seçenekleri yoktur, çünkü bu komut herhangi bir argüman veya seçenek almaz. Tek başına kullanımı yeterlidir.
 
 ## Common Examples
 Aşağıda `true` komutunun bazı pratik örnekleri bulunmaktadır:
 
-1. Basit kullanım:
+1. **Basit Kullanım:**
    ```csh
    true
    ```
 
-2. Bir koşul ifadesinde kullanımı:
+2. **Koşullu İfadelerde Kullanım:**
    ```csh
-   if (true) echo "Bu her zaman doğru."
+   if (true) then
+       echo "Bu her zaman doğru."
+   endif
    ```
 
-3. Bir döngüde kullanımı:
+3. **Bir Komutun Başarılı Olup Olmadığını Kontrol Etme:**
    ```csh
-   while (true)
-       echo "Bu döngü sonsuz döner."
-   end
+   ls /some/directory
+   true
    ```
 
-4. Komut dizisinde kullanımı:
+4. **Bir Betikte Kullanım:**
    ```csh
-   true && echo "İlk komut başarılı oldu."
+   #!/bin/csh
+   true
+   echo "Betik başarıyla çalıştı."
    ```
 
 ## Tips
-- `true` komutunu, koşul ifadeleri veya döngülerde kullanarak kodunuzun akışını kontrol edebilirsiniz.
-- `true` komutunu, bir betik dosyasında veya otomasyon süreçlerinde, her zaman başarılı bir durum döndürmek için kullanmak faydalı olabilir.
-- `true` komutunu, hata ayıklama sırasında geçici olarak bir komutun yerini almak için de kullanabilirsiniz.
+- `true` komutunu, betiklerinizde veya komut dosyalarınızda koşullu ifadelerde kullanarak, her zaman başarılı bir durum döndürmek için kullanabilirsiniz.
+- `true` komutunu, hata kontrolü gerektiren durumlarda bir yer tutucu olarak kullanabilirsiniz.
+- `false` komutunun tersine, `true` komutu hiçbir zaman hata durumu döndürmez, bu nedenle dikkatli kullanın.

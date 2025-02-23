@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) kubectl użycie: zarządzanie klastrami Kubernetes
 
 ## Overview
-Polecenie `kubectl` jest narzędziem wiersza poleceń, które pozwala na interakcję z klastrami Kubernetes. Umożliwia użytkownikom zarządzanie zasobami, wdrażanie aplikacji oraz monitorowanie stanu klastra.
+`kubectl` to narzędzie wiersza poleceń, które umożliwia interakcję z klastrami Kubernetes. Umożliwia użytkownikom zarządzanie aplikacjami uruchomionymi w klastrze, a także monitorowanie i rozwiązywanie problemów z zasobami.
 
 ## Usage
 Podstawowa składnia polecenia `kubectl` jest następująca:
@@ -11,39 +11,39 @@ kubectl [opcje] [argumenty]
 ```
 
 ## Common Options
-- `get`: Pobiera informacje o zasobach w klastrze.
-- `apply`: Zastosowuje zmiany w zasobach na podstawie pliku konfiguracyjnego.
-- `delete`: Usuwa zasoby z klastra.
+- `get`: Pobiera informacje o zasobach.
 - `describe`: Wyświetla szczegółowe informacje o zasobach.
-- `logs`: Wyświetla logi kontenerów w podach.
+- `apply`: Zastosowuje zmiany z pliku konfiguracyjnego do zasobów.
+- `delete`: Usuwa zasoby z klastra.
+- `logs`: Wyświetla logi kontenera.
 
 ## Common Examples
-- Aby uzyskać listę wszystkich podów w domyślnej przestrzeni nazw:
-  ```bash
-  kubectl get pods
-  ```
+1. **Pobieranie listy podów:**
+   ```bash
+   kubectl get pods
+   ```
 
-- Aby zastosować zmiany w zasobach na podstawie pliku YAML:
-  ```bash
-  kubectl apply -f plik.yaml
-  ```
+2. **Wyświetlanie szczegółów podu:**
+   ```bash
+   kubectl describe pod <nazwa-podu>
+   ```
 
-- Aby usunąć określony pod:
-  ```bash
-  kubectl delete pod nazwa-podu
-  ```
+3. **Zastosowanie zmian z pliku YAML:**
+   ```bash
+   kubectl apply -f <plik.yaml>
+   ```
 
-- Aby wyświetlić szczegóły konkretnego podu:
-  ```bash
-  kubectl describe pod nazwa-podu
-  ```
+4. **Usuwanie podu:**
+   ```bash
+   kubectl delete pod <nazwa-podu>
+   ```
 
-- Aby zobaczyć logi kontenera w podzie:
-  ```bash
-  kubectl logs nazwa-podu
-  ```
+5. **Wyświetlanie logów kontenera:**
+   ```bash
+   kubectl logs <nazwa-podu>
+   ```
 
 ## Tips
-- Używaj opcji `-n` aby wskazać konkretną przestrzeń nazw, np. `kubectl get pods -n nazwa-przestrzeni`.
-- Regularnie aktualizuj swoje pliki konfiguracyjne YAML, aby uniknąć problemów z synchronizacją.
-- Zawsze sprawdzaj status zasobów po zastosowaniu zmian, aby upewnić się, że wszystko działa poprawnie.
+- Używaj opcji `--namespace` do zarządzania zasobami w określonym namespace.
+- Regularnie aktualizuj `kubectl`, aby korzystać z najnowszych funkcji i poprawek.
+- Wykorzystuj aliasy dla często używanych poleceń, aby przyspieszyć pracę.

@@ -11,33 +11,33 @@ mount [opcje] [argumenty]
 ```
 
 ## Common Options
-- `-t <typ>`: Określa typ systemu plików (np. ext4, ntfs).
-- `-o <opcje>`: Umożliwia podanie dodatkowych opcji montowania (np. ro dla tylko do odczytu).
-- `-a`: Montuje wszystkie systemy plików wymienione w pliku fstab.
+- `-t <typ>`: Określa typ systemu plików, który ma być zamontowany (np. ext4, ntfs).
+- `-o <opcje>`: Umożliwia podanie dodatkowych opcji montowania, takich jak `ro` (tylko do odczytu) lub `rw` (do odczytu i zapisu).
+- `-a`: Montuje wszystkie systemy plików wymienione w pliku `/etc/fstab`.
 - `-r`: Montuje system plików w trybie tylko do odczytu.
 
 ## Common Examples
-1. Montowanie dysku twardego:
-   ```csh
-   mount /dev/sda1 /mnt
+1. Montowanie systemu plików z urządzenia `/dev/sdb1` do katalogu `/mnt`:
+   ```bash
+   mount /dev/sdb1 /mnt
    ```
 
-2. Montowanie pamięci USB z określeniem typu systemu plików:
-   ```csh
-   mount -t vfat /dev/sdb1 /media/usb
+2. Montowanie systemu plików NTFS z dodatkową opcją tylko do odczytu:
+   ```bash
+   mount -t ntfs -o ro /dev/sdc1 /mnt/usb
    ```
 
-3. Montowanie systemu plików w trybie tylko do odczytu:
-   ```csh
-   mount -o ro /dev/sda1 /mnt
-   ```
-
-4. Montowanie wszystkich systemów plików z pliku fstab:
-   ```csh
+3. Montowanie wszystkich systemów plików z pliku `/etc/fstab`:
+   ```bash
    mount -a
    ```
 
+4. Montowanie systemu plików z opcją do odczytu i zapisu:
+   ```bash
+   mount -o rw /dev/sda1 /mnt/data
+   ```
+
 ## Tips
-- Zawsze sprawdzaj, czy urządzenie, które chcesz zamontować, jest dostępne, używając polecenia `lsblk`.
-- Upewnij się, że masz odpowiednie uprawnienia do montowania urządzeń, zazwyczaj wymagane są uprawnienia administratora.
-- Po zakończeniu pracy z zamontowanym systemem plików, pamiętaj o jego odmontowaniu za pomocą polecenia `umount`.
+- Zawsze upewnij się, że katalog, do którego montujesz system plików, istnieje.
+- Sprawdź, czy masz odpowiednie uprawnienia do montowania urządzeń, zazwyczaj wymaga to uprawnień administratora.
+- Po zakończeniu pracy z zamontowanym systemem plików, pamiętaj o jego odmontowaniu za pomocą polecenia `umount`, aby uniknąć utraty danych.

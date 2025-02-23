@@ -1,46 +1,45 @@
-# [Linux] C Shell (csh) printenv Gebruik: Toon omgevingsvariabelen
+# [Linux] C Shell (csh) printenv gebruik: Toont omgevingsvariabelen
 
 ## Overzicht
-De `printenv` opdracht in C Shell (csh) wordt gebruikt om de waarden van omgevingsvariabelen weer te geven. Dit is handig voor het controleren van configuraties en het debuggen van omgevingsinstellingen.
+De `printenv` opdracht in C Shell (csh) wordt gebruikt om de waarden van omgevingsvariabelen weer te geven. Dit kan nuttig zijn voor het controleren van de huidige instellingen van de shell en het debuggen van omgevingsinstellingen.
 
 ## Gebruik
 De basis syntaxis van de `printenv` opdracht is als volgt:
 
-```csh
+```
 printenv [opties] [argumenten]
 ```
 
-## Veelvoorkomende Opties
-- `-0`: Scheidt de uitvoer met null bytes in plaats van nieuwe regels. Dit is nuttig voor het verwerken van omgevingsvariabelen met speciale tekens.
-- `VAR`: Geef de naam van een specifieke omgevingsvariabele op om alleen de waarde daarvan weer te geven.
+## Veelvoorkomende opties
+- `-0`: Scheidt de uitvoer met null-terminators in plaats van nieuwe regels.
+- `VAR`: Geef de waarde van een specifieke omgevingsvariabele weer. Als de variabele niet bestaat, wordt er geen uitvoer gegeven.
 
-## Veelvoorkomende Voorbeelden
-Hier zijn enkele praktische voorbeelden van het gebruik van `printenv`:
+## Veelvoorkomende voorbeelden
 
 1. **Alle omgevingsvariabelen weergeven:**
-
    ```csh
    printenv
    ```
 
-2. **Een specifieke omgevingsvariabele weergeven, bijvoorbeeld `HOME`:**
-
+2. **Waarde van een specifieke omgevingsvariabele weergeven (bijvoorbeeld PATH):**
    ```csh
-   printenv HOME
+   printenv PATH
    ```
 
-3. **Omgevingsvariabelen weergeven met null byte scheiding:**
+3. **Waarde van een niet-bestaande variabele weergeven:**
+   ```csh
+   printenv ONBEKENDE_VAR
+   ```
 
+4. **Omgevingsvariabelen scheiden met null-terminators:**
    ```csh
    printenv -0
    ```
 
 ## Tips
-- Gebruik `printenv` zonder argumenten om snel een overzicht van alle omgevingsvariabelen te krijgen.
+- Gebruik `printenv` zonder argumenten om een compleet overzicht van alle omgevingsvariabelen te krijgen.
 - Combineer `printenv` met andere commando's zoals `grep` om specifieke variabelen te filteren. Bijvoorbeeld:
-
-   ```csh
-   printenv | grep PATH
-   ```
-
-- Wees voorzichtig met het gebruik van omgevingsvariabelen in scripts, aangezien ze invloed kunnen hebben op de uitvoering van je programma's.
+  ```csh
+  printenv | grep USER
+  ```
+- Controleer regelmatig je omgevingsvariabelen, vooral voor scripts die afhankelijk zijn van specifieke instellingen.

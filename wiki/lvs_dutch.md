@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) lvs gebruik: Toon logische volumenaam
+# [Nederlands] C Shell (csh) lvs gebruik: Toon logische volumenaam en status
 
 ## Overzicht
-De `lvs` opdracht in C Shell (csh) wordt gebruikt om informatie weer te geven over de logische volumes in een Linux-systeem. Het biedt een overzicht van de beschikbare logische volumes en hun eigenschappen.
+De `lvs` opdracht in C Shell (csh) wordt gebruikt om informatie over logische volumes in een volume group te tonen. Het geeft een overzicht van de logische volumes, inclusief hun naam, status en andere relevante details.
 
 ## Gebruik
 De basis syntaxis van de `lvs` opdracht is als volgt:
@@ -11,34 +11,40 @@ lvs [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-o`: Specificeer welke velden moeten worden weergegeven.
-- `-a`: Toon ook inactieve logische volumes.
-- `--units`: Geef de eenheden aan voor de uitvoer, zoals MB of GB.
+- `-o` : Specificeer welke velden moeten worden weergegeven.
+- `-a` : Toon ook inactieve logische volumes.
+- `-n` : Geef alleen de namen van de logische volumes weer.
+- `--units` : Specificeer de eenheden voor de uitvoer.
 
 ## Veelvoorkomende Voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van de `lvs` opdracht:
 
 1. Toon een lijst van alle logische volumes:
-   ```csh
-   lvs
-   ```
+    ```csh
+    lvs
+    ```
 
-2. Toon specifieke velden zoals naam, grootte en status:
-   ```csh
-   lvs -o lv_name,lv_size,lv_status
-   ```
+2. Toon specifieke velden zoals naam en grootte:
+    ```csh
+    lvs -o lv_name,size
+    ```
 
 3. Toon ook inactieve logische volumes:
-   ```csh
-   lvs -a
-   ```
+    ```csh
+    lvs -a
+    ```
 
-4. Toon de logische volumes met een specifieke eenheid (bijvoorbeeld GB):
-   ```csh
-   lvs --units g
-   ```
+4. Geef alleen de namen van de logische volumes weer:
+    ```csh
+    lvs -n
+    ```
+
+5. Toon logische volumes met een specifieke eenheid (bijvoorbeeld gigabytes):
+    ```csh
+    lvs --units g
+    ```
 
 ## Tips
-- Gebruik de `-o` optie om alleen de informatie te tonen die je nodig hebt, dit maakt de uitvoer overzichtelijker.
-- Combineer opties om meer gedetailleerde informatie te verkrijgen, zoals het tonen van inactieve volumes.
-- Controleer regelmatig je logische volumes om ervoor te zorgen dat je systeem goed functioneert en om ruimteproblemen te voorkomen.
+- Gebruik de `-o` optie om de uitvoer aan te passen aan uw behoeften en alleen de relevante informatie weer te geven.
+- Combineer opties voor meer gedetailleerde informatie, bijvoorbeeld `lvs -a -o +devices` om inactieve volumes en hun apparaten te tonen.
+- Controleer regelmatig de status van uw logische volumes om problemen vroegtijdig te identificeren.

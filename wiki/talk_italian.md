@@ -1,44 +1,39 @@
-# [Linux] C Shell (csh) talk uso equivalente: comunicare con altri utenti
+# [Linux] C Shell (csh) talk: comunicare con altri utenti
 
 ## Overview
-Il comando `talk` in C Shell (csh) consente di comunicare in tempo reale con altri utenti su un sistema Unix. Questo strumento permette di avviare una sessione di chat interattiva, visualizzando i messaggi in finestre separate sullo schermo.
+Il comando `talk` consente di comunicare in tempo reale con altri utenti su un sistema Unix/Linux. Permette di avviare una sessione di chat interattiva, visualizzando i messaggi di entrambi gli utenti in finestre separate.
 
 ## Usage
-La sintassi di base del comando `talk` è la seguente:
+La sintassi di base del comando è la seguente:
 
 ```csh
-talk [options] [utente]@[host]
+talk [options] [user]
 ```
 
 ## Common Options
-- `-a`: Ignora le restrizioni di accesso e consente di inviare messaggi a qualsiasi utente.
-- `-s`: Specifica che il messaggio deve essere inviato in modo silenzioso, senza avvisare l'utente destinatario.
-- `-d`: Usa un dispositivo specifico per la comunicazione.
+- `-a`: Ignora il controllo di accesso e consente di inviare messaggi a utenti che non hanno attivato `talk`.
+- `-m`: Usa il formato di messaggio per l'output, rendendo il testo più leggibile.
+- `-s`: Disabilita l'uso della finestra per il messaggio, mostrando solo il testo nel terminale.
 
 ## Common Examples
-Ecco alcuni esempi pratici di utilizzo del comando `talk`:
+Ecco alcuni esempi pratici dell'uso del comando `talk`:
 
-1. Avviare una sessione di chat con un utente locale:
+1. Avviare una sessione di chat con un utente specifico:
    ```csh
    talk mario
    ```
 
-2. Iniziare una conversazione con un utente su un altro host:
+2. Inviare un messaggio a un utente ignorando il controllo di accesso:
    ```csh
-   talk luca@server1
+   talk -a luca
    ```
 
-3. Usare l'opzione per ignorare le restrizioni di accesso:
+3. Usare il formato di messaggio per una chat più leggibile:
    ```csh
-   talk -a giovanni
-   ```
-
-4. Inviare un messaggio in modo silenzioso:
-   ```csh
-   talk -s paolo
+   talk -m giulia
    ```
 
 ## Tips
-- Assicurati che il destinatario sia connesso e disponibile per ricevere messaggi tramite `talk`.
-- Controlla le impostazioni di privacy e accesso sul tuo sistema, poiché potrebbero influenzare la possibilità di comunicare con altri utenti.
-- Utilizza `who` per vedere chi è attualmente connesso al sistema prima di avviare una sessione di chat.
+- Assicurati che l'utente con cui desideri parlare sia online e disponibile per la chat.
+- Controlla che il servizio `talk` sia abilitato sul tuo sistema e che non ci siano firewall che bloccano le comunicazioni.
+- Se non ricevi risposta, verifica che l'utente non abbia disabilitato le notifiche per `talk`.

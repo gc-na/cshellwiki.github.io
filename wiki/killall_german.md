@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) killall Verwendung: Prozesse beenden
+# [Linux] C Shell (csh) killall Verwendung: Beenden von Prozessen
 
 ## Übersicht
-Der Befehl `killall` wird verwendet, um alle Prozesse mit einem bestimmten Namen zu beenden. Dies ist nützlich, wenn Sie mehrere Instanzen eines Programms laufen haben und alle gleichzeitig schließen möchten.
+Der `killall` Befehl wird verwendet, um alle Prozesse mit einem bestimmten Namen zu beenden. Dies ist besonders nützlich, wenn mehrere Instanzen eines Programms laufen und Sie alle auf einmal schließen möchten.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
@@ -11,37 +11,30 @@ killall [optionen] [argumente]
 ```
 
 ## Häufige Optionen
-- `-u [benutzer]`: Beendet nur die Prozesse, die von dem angegebenen Benutzer ausgeführt werden.
-- `-i`: Fragt vor dem Beenden jedes Prozesses nach Bestätigung.
-- `-q`: Unterdrückt die Ausgabe von Fehlermeldungen, wenn kein Prozess gefunden wird.
-- `-s [signal]`: Gibt das Signal an, das an die Prozesse gesendet werden soll (z.B. `SIGTERM`, `SIGKILL`).
+- `-u <benutzer>`: Beendet nur die Prozesse, die von dem angegebenen Benutzer ausgeführt werden.
+- `-q`: Unterdrückt Fehlermeldungen, wenn kein Prozess gefunden wird.
+- `-I`: Ignoriert Groß- und Kleinschreibung bei der Prozesssuche.
 
 ## Häufige Beispiele
-Um alle Instanzen eines Programms namens `firefox` zu beenden, verwenden Sie:
+Um alle Prozesse mit dem Namen "firefox" zu beenden, verwenden Sie:
 
 ```csh
 killall firefox
 ```
 
-Um alle `python`-Prozesse zu beenden und vorher um Bestätigung zu bitten, verwenden Sie:
-
-```csh
-killall -i python
-```
-
 Um alle Prozesse eines bestimmten Benutzers zu beenden, verwenden Sie:
 
 ```csh
-killall -u username
+killall -u benutzername
 ```
 
-Um ein spezifisches Signal, wie `SIGKILL`, an alle `gedit`-Prozesse zu senden, verwenden Sie:
+Wenn Sie nur die Prozesse beenden möchten, ohne Fehlermeldungen anzuzeigen, können Sie den `-q` Schalter verwenden:
 
 ```csh
-killall -s SIGKILL gedit
+killall -q firefox
 ```
 
 ## Tipps
-- Seien Sie vorsichtig mit `killall`, da es alle Prozesse mit dem angegebenen Namen beendet. Vergewissern Sie sich, dass Sie den richtigen Prozess angeben.
-- Nutzen Sie die `-i`-Option, um versehentliche Beendigungen zu vermeiden, besonders in produktiven Umgebungen.
-- Überprüfen Sie die laufenden Prozesse mit `ps` oder `top`, um sicherzustellen, dass Sie die richtigen Prozesse beenden.
+- Seien Sie vorsichtig beim Einsatz von `killall`, da es alle Prozesse mit dem angegebenen Namen beendet. Vergewissern Sie sich, dass Sie den richtigen Prozessnamen verwenden.
+- Nutzen Sie die `-I` Option, um sicherzustellen, dass Sie auch Prozesse mit ähnlichen Namen beenden, unabhängig von der Groß- und Kleinschreibung.
+- Testen Sie den Befehl zuerst mit einem weniger kritischen Prozess, um sich mit der Funktionsweise vertraut zu machen.

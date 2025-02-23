@@ -1,50 +1,52 @@
 # [Linux] C Shell (csh) kubectl gebruik: Beheer Kubernetes-clusters
 
 ## Overzicht
-De `kubectl`-opdracht is een krachtige tool die wordt gebruikt voor het beheren van Kubernetes-clusters. Met `kubectl` kunnen gebruikers verschillende acties uitvoeren, zoals het implementeren van applicaties, het inspecteren van clusterstatussen en het beheren van resources binnen een Kubernetes-omgeving.
+De `kubectl`-opdracht is een commandoregeltool die wordt gebruikt om met Kubernetes-clusters te communiceren. Het stelt gebruikers in staat om verschillende taken uit te voeren, zoals het beheren van applicaties, het bekijken van clusterstatussen en het uitvoeren van configuraties.
 
 ## Gebruik
 De basis syntaxis van de `kubectl`-opdracht is als volgt:
 
-```bash
+```csh
 kubectl [opties] [argumenten]
 ```
 
 ## Veelvoorkomende opties
-- `-n, --namespace`: Specificeert de namespace waarin de opdracht moet worden uitgevoerd.
-- `-o, --output`: Bepaalt het outputformaat, zoals `json`, `yaml`, of `wide`.
-- `--kubeconfig`: Geeft het pad op naar het kubeconfig-bestand dat moet worden gebruikt.
-- `--context`: Specificeert de context die moet worden gebruikt voor de opdracht.
+- `get`: Haal informatie op over Kubernetes-objecten.
+- `apply`: Pas configuraties toe op de objecten in het cluster.
+- `delete`: Verwijder objecten uit het cluster.
+- `describe`: Geef gedetailleerde informatie over een specifiek object.
+- `logs`: Bekijk de logs van een specifieke pod.
 
 ## Veelvoorkomende voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van `kubectl`:
 
-### Lijst van alle pods
-```bash
-kubectl get pods
-```
+1. **Lijst alle pods in de huidige namespace:**
+   ```csh
+   kubectl get pods
+   ```
 
-### Lijst van services in een specifieke namespace
-```bash
-kubectl get services -n mijn-namespace
-```
+2. **Toepassen van een configuratiebestand:**
+   ```csh
+   kubectl apply -f configuratie.yaml
+   ```
 
-### Toepassing implementeren vanuit een YAML-bestand
-```bash
-kubectl apply -f mijn-applicatie.yaml
-```
+3. **Verwijder een specifieke pod:**
+   ```csh
+   kubectl delete pod naam-van-pod
+   ```
 
-### Informatie over een specifieke pod
-```bash
-kubectl describe pod mijn-pod
-```
+4. **Bekijk de logs van een pod:**
+   ```csh
+   kubectl logs naam-van-pod
+   ```
 
-### Logs van een specifieke pod bekijken
-```bash
-kubectl logs mijn-pod
-```
+5. **Geef gedetailleerde informatie over een service:**
+   ```csh
+   kubectl describe service naam-van-service
+   ```
 
 ## Tips
-- Gebruik de `--dry-run` optie om te zien wat er zou gebeuren zonder daadwerkelijk wijzigingen aan te brengen.
-- Maak gebruik van `kubectl explain` om meer te leren over de verschillende resources en hun velden.
-- Houd je kubeconfig-bestand georganiseerd door contexten en namespaces goed te beheren, vooral bij het werken met meerdere clusters.
+- Gebruik de `--namespace` optie om te werken in een specifieke namespace.
+- Combineer `kubectl` met `grep` om snel informatie te filteren.
+- Maak gebruik van `kubectl get all` om een overzicht van alle objecten in de huidige namespace te krijgen.
+- Zorg ervoor dat je altijd de laatste versie van `kubectl` gebruikt voor de beste compatibiliteit met je cluster.

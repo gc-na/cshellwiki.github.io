@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) csplit Verwendung: Teilt eine Datei in Segmente
 
 ## Übersicht
-Der Befehl `csplit` wird verwendet, um eine Datei in mehrere Segmente zu unterteilen, basierend auf bestimmten Mustern oder Zeilen. Dies ist besonders nützlich, wenn Sie große Dateien in kleinere, handhabbarere Teile aufteilen möchten.
+Der Befehl `csplit` wird verwendet, um eine Datei in mehrere Segmente zu unterteilen, basierend auf bestimmten Mustern oder Zeilen. Dies ist besonders nützlich, wenn man große Dateien in kleinere, handhabbare Teile zerlegen möchte.
 
 ## Verwendung
 Die grundlegende Syntax des Befehls lautet:
@@ -11,39 +11,33 @@ csplit [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-f <prefix>`: Legt das Präfix für die Ausgabedateien fest.
-- `-n <anzahl>`: Bestimmt die Anzahl der Ziffern im Dateinamen.
-- `-b <suffix>`: Legt das Suffix für die Ausgabedateien fest.
-- `-k`: Beibehaltung der Ausgabedateien, auch wenn der Befehl fehlschlägt.
+- `-f, --prefix=PREFIX` : Legt das Präfix für die Ausgabedateien fest.
+- `-n, --digits=DIGITS` : Bestimmt die Anzahl der Ziffern für die Ausgabedateinamen.
+- `-b, --suffix-format=FORMAT` : Legt das Format für die Suffixe der Ausgabedateien fest.
+- `-s, --quiet` : Unterdrückt die Ausgabe von Statusmeldungen.
 
 ## Häufige Beispiele
 Hier sind einige praktische Beispiele für die Verwendung von `csplit`:
 
-1. **Teilen einer Datei nach Zeilen**:
+1. **Teilen einer Datei bei jeder 10. Zeile:**
    ```csh
-   csplit myfile.txt 10
+   csplit -f teil_ datei.txt 10 {99}
    ```
-   Dies teilt `myfile.txt` nach jeder 10. Zeile in separate Dateien auf.
+   Dies erstellt bis zu 100 Dateien, die jeweils 10 Zeilen aus `datei.txt` enthalten.
 
-2. **Teilen einer Datei bei einem bestimmten Muster**:
+2. **Teilen einer Datei bei einem bestimmten Muster:**
    ```csh
-   csplit myfile.txt /Muster/ {2}
+   csplit -f teil_ datei.txt /Muster/ {99}
    ```
-   Dies teilt `myfile.txt` in zwei Teile, wobei der Schnittpunkt bei jedem Vorkommen von "Muster" erfolgt.
+   Hier wird die Datei `datei.txt` bei jedem Vorkommen des Wortes "Muster" geteilt.
 
-3. **Verwendung eines benutzerdefinierten Präfixes**:
+3. **Anpassen des Suffix-Formats:**
    ```csh
-   csplit -f teil_ myfile.txt /Muster/ {2}
+   csplit -f teil_ -b '%03d.txt' datei.txt 10 {99}
    ```
-   Hierbei werden die Ausgabedateien mit dem Präfix `teil_` benannt.
-
-4. **Teilen und Beibehalten der Ausgabedateien bei Fehlern**:
-   ```csh
-   csplit -k myfile.txt /Muster/ {2}
-   ```
-   Dies sorgt dafür, dass die Ausgabedateien auch bei einem Fehler im Befehl erhalten bleiben.
+   Dies erstellt Dateien mit dem Format `teil_000.txt`, `teil_001.txt` usw.
 
 ## Tipps
-- Überprüfen Sie die Ausgabedateien nach dem Ausführen des Befehls, um sicherzustellen, dass die Datei wie gewünscht aufgeteilt wurde.
-- Nutzen Sie die Option `-n`, um die Dateinamen übersichtlich zu gestalten, insbesondere wenn Sie viele Teile erstellen.
-- Experimentieren Sie mit verschiedenen Mustern, um die besten Ergebnisse für Ihre spezifischen Anforderungen zu erzielen.
+- Verwenden Sie die `-s` Option, um die Ausgabe von Statusmeldungen zu minimieren, wenn Sie viele Dateien erstellen.
+- Achten Sie darauf, dass das Präfix und das Suffix-Format sinnvoll gewählt sind, um Verwirrung bei den Ausgabedateien zu vermeiden.
+- Testen Sie den Befehl zunächst mit einer kleinen Datei, um sicherzustellen, dass die Segmentierung wie gewünscht funktioniert.

@@ -1,7 +1,7 @@
-# [Linux] C Shell (csh) default commande : exécuter des commandes par défaut
+# [Linux] C Shell (csh) default : Exécute une commande par défaut
 
 ## Overview
-La commande `default` dans C Shell (csh) est utilisée pour définir une commande par défaut qui sera exécutée lorsque le shell ne reconnaît pas une commande entrée par l'utilisateur. Cela permet de personnaliser le comportement du shell en redirigeant les commandes non reconnues vers une commande spécifique.
+La commande `default` dans le C Shell (csh) est utilisée pour définir une commande par défaut qui sera exécutée lorsqu'aucune commande spécifique n'est fournie. Cela permet de simplifier l'exécution de tâches courantes en évitant de taper des commandes répétitives.
 
 ## Usage
 La syntaxe de base de la commande `default` est la suivante :
@@ -11,31 +11,37 @@ default [options] [arguments]
 ```
 
 ## Common Options
-- `-s` : Définit la commande par défaut sans l'exécuter immédiatement.
-- `-r` : Réinitialise la commande par défaut à son état d'origine.
+- `-f` : Force l'utilisation de la commande par défaut sans demander de confirmation.
+- `-n` : Affiche la commande par défaut sans l'exécuter.
 
 ## Common Examples
 Voici quelques exemples pratiques de l'utilisation de la commande `default` :
 
-1. **Définir une commande par défaut :**
-   ```csh
-   default mycommand
-   ```
-   Cela définit `mycommand` comme la commande par défaut.
+### Exemple 1 : Définir une commande par défaut
+```csh
+default ls
+```
+Dans cet exemple, la commande `ls` est définie comme la commande par défaut.
 
-2. **Définir une commande par défaut sans exécution :**
-   ```csh
-   default -s mycommand
-   ```
-   Cela définit `mycommand` comme la commande par défaut sans l'exécuter.
+### Exemple 2 : Exécuter la commande par défaut
+```csh
+default
+```
+Cela exécutera la commande par défaut que vous avez définie précédemment, ici `ls`.
 
-3. **Réinitialiser la commande par défaut :**
-   ```csh
-   default -r
-   ```
-   Cela réinitialise la commande par défaut à son état d'origine.
+### Exemple 3 : Forcer l'exécution de la commande par défaut
+```csh
+default -f
+```
+Cette commande exécutera la commande par défaut sans demander de confirmation.
+
+### Exemple 4 : Afficher la commande par défaut
+```csh
+default -n
+```
+Cela affichera la commande par défaut actuelle sans l'exécuter.
 
 ## Tips
-- Utilisez la commande `default` pour éviter les erreurs de commande en redirigeant les entrées non reconnues vers une commande utile.
-- Pensez à vérifier régulièrement la commande par défaut définie pour vous assurer qu'elle est toujours pertinente pour votre flux de travail.
-- N'hésitez pas à utiliser l'option `-s` si vous souhaitez tester une nouvelle commande par défaut sans l'exécuter immédiatement.
+- Utilisez `default` pour automatiser des tâches répétitives et gagner du temps.
+- Pensez à changer la commande par défaut si vos besoins évoluent.
+- Vérifiez toujours la commande par défaut actuelle avant de l'exécuter, surtout si vous utilisez l'option `-f`.

@@ -1,45 +1,50 @@
 # [Linux] C Shell (csh) depmod gebruik: Beheer van module-afhankelijkheden
 
 ## Overzicht
-Het `depmod` commando wordt gebruikt om de afhankelijkheden van kernelmodules te genereren en op te slaan in een bestand. Dit is essentieel voor het correct laden van modules in de Linux-kernel, zodat de juiste afhankelijkheden worden herkend en beheerd.
+De `depmod`-opdracht is een hulpmiddel dat wordt gebruikt om afhankelijkheden van kernelmodules te genereren en op te slaan. Het maakt een bestand aan dat informatie bevat over welke modules afhankelijk zijn van andere modules, wat essentieel is voor het correct laden van modules in de Linux-kernel.
 
 ## Gebruik
-De basis syntaxis van het `depmod` commando is als volgt:
+De basis syntaxis van de `depmod`-opdracht is als volgt:
 
-```csh
+```bash
 depmod [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-a`: Voegt nieuwe modules toe aan de afhankelijkheden.
+- `-a`: Voegt nieuwe modules toe aan de bestaande lijst.
 - `-n`: Voert een simulatie uit zonder wijzigingen aan te brengen.
-- `-F <bestand>`: Specificeert een alternatieve kernelversie.
-- `-e`: Negeert fouten bij het laden van modules.
+- `-F <bestand>`: Specificeert een alternatieve moduleversie.
+- `-e`: Negeert fouten tijdens het genereren van de afhankelijkheden.
 
 ## Veelvoorkomende Voorbeelden
 Hier zijn enkele praktische voorbeelden van het gebruik van `depmod`:
 
-1. **Basis afhankelijkheden genereren**:
-   ```csh
+1. **Basis gebruik van depmod**:
+   ```bash
    depmod
    ```
 
-2. **Afhankelijkheden genereren voor een specifieke kernelversie**:
-   ```csh
-   depmod -F /boot/vmlinuz-5.4.0-42-generic
-   ```
-
-3. **Simulatie van afhankelijkheden zonder wijzigingen**:
-   ```csh
-   depmod -n
-   ```
-
-4. **Afhankelijkheden bijwerken en nieuwe modules toevoegen**:
-   ```csh
+2. **Nieuwe modules toevoegen**:
+   ```bash
    depmod -a
    ```
 
+3. **Simulatie uitvoeren**:
+   ```bash
+   depmod -n
+   ```
+
+4. **Alternatieve moduleversie gebruiken**:
+   ```bash
+   depmod -F /path/to/alternative/version
+   ```
+
+5. **Afhankelijkheden genereren en fouten negeren**:
+   ```bash
+   depmod -e
+   ```
+
 ## Tips
-- Zorg ervoor dat je `depmod` uitvoert na het installeren van nieuwe kernelmodules om ervoor te zorgen dat alle afhankelijkheden correct zijn bijgewerkt.
-- Gebruik de `-n` optie om te controleren op mogelijke problemen voordat je daadwerkelijk wijzigingen aanbrengt.
-- Controleer regelmatig de inhoud van `/lib/modules/$(uname -r)/modules.dep` om te zien welke afhankelijkheden zijn geregistreerd.
+- Zorg ervoor dat je `depmod` uitvoert met root-rechten om toegang te krijgen tot alle benodigde bestanden.
+- Het is een goede gewoonte om `depmod` uit te voeren na het installeren of verwijderen van kernelmodules om ervoor te zorgen dat de afhankelijkheden up-to-date zijn.
+- Gebruik de `-n` optie om te controleren op eventuele problemen voordat je daadwerkelijk wijzigingen aanbrengt.

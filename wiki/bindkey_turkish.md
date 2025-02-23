@@ -1,7 +1,7 @@
 # [Linux] C Shell (csh) bindkey Kullanımı: Klavye kısayollarını ayarlama
 
 ## Genel Bakış
-`bindkey` komutu, C Shell (csh) ortamında klavye kısayollarını tanımlamak ve yönetmek için kullanılır. Bu komut, kullanıcıların belirli tuş kombinasyonlarına özel komutlar atayarak etkileşimlerini özelleştirmelerine olanak tanır.
+`bindkey` komutu, C Shell (csh) ortamında klavye kısayollarını tanımlamak ve yönetmek için kullanılır. Bu komut, kullanıcıların belirli tuş kombinasyonlarına özel komutlar atamasına olanak tanır, böylece terminaldeki etkileşimlerini hızlandırır.
 
 ## Kullanım
 Temel sözdizimi şu şekildedir:
@@ -11,34 +11,39 @@ bindkey [seçenekler] [argümanlar]
 ```
 
 ## Yaygın Seçenekler
-- `-e`: Emacs tarzı tuş bağlamasını etkinleştirir.
-- `-v`: Vi tarzı tuş bağlamasını etkinleştirir.
-- `-s`: Belirtilen tuş kombinasyonunu bir komut dizisi olarak bağlar.
+- `-e`: Emacs tarzı tuş bağlamalarını etkinleştirir.
+- `-v`: Vi tarzı tuş bağlamalarını etkinleştirir.
+- `-s`: Bir tuş kombinasyonunu bir dizi komut olarak bağlar.
+- `-d`: Varsayılan tuş bağlamalarını siler.
 
 ## Yaygın Örnekler
-Aşağıda `bindkey` komutunun bazı pratik örnekleri verilmiştir:
+Aşağıda, `bindkey` komutunun kullanımıyla ilgili bazı pratik örnekler verilmiştir:
 
-1. Emacs tarzı tuş bağlamasını etkinleştirme:
-   ```csh
-   bindkey -e
-   ```
+### Emacs Tarzı Tuş Bağlama
+Emacs tarzı tuş bağlamalarını etkinleştirmek için:
+```csh
+bindkey -e
+```
 
-2. Belirli bir tuş kombinasyonunu bir komutla bağlama:
-   ```csh
-   bindkey "^X^F" "find . -name '*.txt'"
-   ```
+### Vi Tarzı Tuş Bağlama
+Vi tarzı tuş bağlamalarını etkinleştirmek için:
+```csh
+bindkey -v
+```
 
-3. Vi tarzı tuş bağlamasını etkinleştirme:
-   ```csh
-   bindkey -v
-   ```
+### Bir Tuş Kombinasyonunu Komutla Bağlama
+`Ctrl + x` tuş kombinasyonunu `ls -l` komutuna bağlamak için:
+```csh
+bindkey "^X" "ls -l\n"
+```
 
-4. Birden fazla tuş kombinasyonunu bağlama:
-   ```csh
-   bindkey "^G" "echo 'Hello, World!'"
-   ```
+### Varsayılan Tuş Bağlamalarını Silme
+Tüm varsayılan tuş bağlamalarını silmek için:
+```csh
+bindkey -d
+```
 
 ## İpuçları
-- `bindkey` komutunu kullanmadan önce mevcut tuş bağlamalarını kontrol etmek için `bindkey -L` komutunu çalıştırabilirsiniz.
-- Kısayollarınızı özelleştirirken, sık kullandığınız komutları düşünün; bu, verimliliğinizi artırabilir.
-- Değişikliklerinizi kalıcı hale getirmek için `bindkey` komutlarını `.cshrc` dosyanıza ekleyin.
+- Kısayollarınızı düzenli tutun; çok fazla kısayol atamak karmaşaya neden olabilir.
+- Kısayol atamaları yapmadan önce mevcut kısayolları kontrol edin, böylece çakışmaları önleyebilirsiniz.
+- Kısayollarınızı bir dosyada saklayarak, terminal oturumlarınız arasında kolayca aktarabilirsiniz.

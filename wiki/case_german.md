@@ -1,56 +1,57 @@
-# [Linux] C Shell (csh) case Verwendung: Mustervergleich und bedingte Ausführung
+# [Linux] C Shell (csh) case Verwendung: Mustervergleich von Variablen
 
 ## Übersicht
-Der Befehl `case` in der C Shell (csh) wird verwendet, um Mustervergleiche durchzuführen und verschiedene Befehle basierend auf dem Ergebnis des Vergleichs auszuführen. Dies ist besonders nützlich, um Entscheidungen in Skripten zu treffen.
+Der `case` Befehl in der C Shell (csh) wird verwendet, um Variablen mit verschiedenen Mustern zu vergleichen. Er ermöglicht es, unterschiedliche Aktionen basierend auf dem Wert einer Variablen auszuführen, ähnlich wie eine Switch-Anweisung in anderen Programmiersprachen.
 
 ## Verwendung
-Die grundlegende Syntax des `case`-Befehls sieht wie folgt aus:
+Die grundlegende Syntax des `case` Befehls sieht wie folgt aus:
 
-```csh
+```
 case [variable] in
-    [muster1]) [befehl1];;
-    [muster2]) [befehl2];;
+    [muster1]) [Befehle1];;
+    [muster2]) [Befehle2];;
     ...
-    *) [standardbefehl];;
 esac
 ```
 
 ## Häufige Optionen
-- `*)`: Dies ist das Standardmuster, das ausgeführt wird, wenn keines der vorherigen Muster übereinstimmt.
+- `in`: Leitet die Musterdefinition ein.
+- `;;`: Beendet einen Musterblock.
+- `esac`: Beendet die `case` Anweisung.
 
 ## Häufige Beispiele
 
 ### Beispiel 1: Einfache Musterübereinstimmung
 ```csh
-set var = "apple"
+set var = "rot"
 case $var in
-    apple) echo "Das ist ein Apfel";;
-    banana) echo "Das ist eine Banane";;
-    *) echo "Unbekannte Frucht";;
+    "rot") echo "Die Farbe ist rot";;
+    "blau") echo "Die Farbe ist blau";;
+    *) echo "Unbekannte Farbe";;
 esac
 ```
 
-### Beispiel 2: Verwendung von Platzhaltern
-```csh
-set datei = "bericht.txt"
-case $datei in
-    *.txt) echo "Dies ist eine Textdatei";;
-    *.jpg) echo "Dies ist ein Bild";;
-    *) echo "Unbekannte Dateityp";;
-esac
-```
-
-### Beispiel 3: Mehrere Muster
+### Beispiel 2: Mehrere Muster
 ```csh
 set tier = "Hund"
 case $tier in
-    Hund|Katze) echo "Das ist ein Haustier";;
-    Vogel) echo "Das ist ein Vogel";;
+    "Hund" | "Katze") echo "Es ist ein Haustier";;
+    "Vogel") echo "Es ist ein Vogel";;
     *) echo "Unbekanntes Tier";;
 esac
 ```
 
+### Beispiel 3: Verwendung von Platzhaltern
+```csh
+set datei = "bericht.txt"
+case $datei in
+    *.txt) echo "Es handelt sich um eine Textdatei";;
+    *.jpg) echo "Es handelt sich um ein Bild";;
+    *) echo "Unbekannte Dateityp";;
+esac
+```
+
 ## Tipps
-- Verwenden Sie Platzhalter wie `*` und `?`, um flexiblere Mustervergleiche zu ermöglichen.
-- Achten Sie darauf, dass die Muster in der Reihenfolge von spezifisch zu allgemein angeordnet sind, um die gewünschte Übereinstimmung zu gewährleisten.
-- Nutzen Sie das Standardmuster `*)`, um sicherzustellen, dass immer ein Befehl ausgeführt wird, auch wenn keine der vorherigen Bedingungen erfüllt ist.
+- Verwenden Sie Platzhalter (`*` und `?`), um flexiblere Muster zu erstellen.
+- Stellen Sie sicher, dass die Muster in der richtigen Reihenfolge angeordnet sind, da die erste Übereinstimmung verwendet wird.
+- Nutzen Sie `*)` als Standardfall, um unerwartete Werte zu behandeln.

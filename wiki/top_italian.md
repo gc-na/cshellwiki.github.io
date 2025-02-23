@@ -1,12 +1,12 @@
-# [Linux] C Shell (csh) top uso: Visualizzare i processi in tempo reale
+# [Linux] C Shell (csh) top utilizzo: visualizza i processi in esecuzione
 
 ## Overview
-Il comando `top` è uno strumento utile per monitorare i processi in esecuzione sul sistema. Fornisce una visualizzazione in tempo reale dell'utilizzo della CPU, della memoria e di altre risorse di sistema, consentendo agli utenti di identificare i processi che consumano più risorse.
+Il comando `top` è uno strumento utile per monitorare i processi in esecuzione sul sistema. Mostra in tempo reale informazioni sui processi, come l'utilizzo della CPU e della memoria, consentendo agli utenti di identificare quali processi stanno consumando più risorse.
 
 ## Usage
 La sintassi di base del comando `top` è la seguente:
 
-```
+```csh
 top [options] [arguments]
 ```
 
@@ -14,39 +14,28 @@ top [options] [arguments]
 Ecco alcune opzioni comuni per il comando `top`:
 
 - `-d <seconds>`: Imposta il tempo di aggiornamento in secondi.
-- `-n <number>`: Specifica il numero di aggiornamenti da eseguire prima di uscire.
-- `-u <username>`: Mostra solo i processi appartenenti a un utente specifico.
+- `-n <number>`: Specifica il numero di aggiornamenti da eseguire prima di terminare.
 - `-p <pid>`: Monitora solo il processo con l'ID specificato.
 
 ## Common Examples
 Ecco alcuni esempi pratici dell'uso del comando `top`:
 
-1. Eseguire `top` per visualizzare i processi in tempo reale:
-   ```bash
-   top
-   ```
-
-2. Eseguire `top` con un aggiornamento ogni 5 secondi:
-   ```bash
+1. Avvia `top` con l'aggiornamento ogni 5 secondi:
+   ```csh
    top -d 5
    ```
 
-3. Limitare la visualizzazione ai processi di un utente specifico:
-   ```bash
-   top -u nome_utente
-   ```
-
-4. Monitorare un processo specifico con l'ID 1234:
-   ```bash
+2. Monitora un processo specifico con ID 1234:
+   ```csh
    top -p 1234
    ```
 
-5. Eseguire `top` e limitare a 10 aggiornamenti:
-   ```bash
+3. Esegui `top` per 10 aggiornamenti e poi termina:
+   ```csh
    top -n 10
    ```
 
 ## Tips
-- Puoi premere `h` mentre sei in `top` per visualizzare un aiuto interattivo sulle scorciatoie da tastiera.
-- Usa `k` per terminare un processo direttamente dalla schermata di `top`, inserendo l'ID del processo.
-- Per ordinare i processi in base all'utilizzo della CPU, puoi premere `Shift + P` mentre sei in `top`.
+- Per uscire da `top`, premi `q`.
+- Puoi ordinare i processi in base all'utilizzo della CPU premendo `Shift + P` o in base all'utilizzo della memoria premendo `Shift + M`.
+- Usa `h` all'interno di `top` per visualizzare la guida e le scorciatoie da tastiera disponibili.

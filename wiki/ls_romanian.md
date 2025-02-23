@@ -1,54 +1,54 @@
-# [Linux] C Shell (csh) ls utilizare: Afișează conținutul directorului
+# [Linux] C Shell (csh) ls Utilizare: Afișează conținutul directorului
 
 ## Overview
-Comanda `ls` este utilizată pentru a lista fișierele și directoarele dintr-un anumit director. Aceasta oferă utilizatorilor o modalitate rapidă de a vizualiza conținutul unui director, inclusiv informații despre dimensiuni, date de modificare și permisiuni.
+Comanda `ls` este utilizată pentru a lista fișierele și directoarele dintr-un anumit director. Aceasta oferă o modalitate rapidă de a vizualiza conținutul unui director și poate fi personalizată pentru a afișa informații suplimentare despre fișiere.
 
 ## Usage
 Sintaxa de bază a comenzii `ls` este următoarea:
 
-```
+```csh
 ls [options] [arguments]
 ```
 
 ## Common Options
-- `-l`: Afișează informații detaliate despre fișiere și directoare, inclusiv permisiuni, numărul de legături, proprietar, grup, dimensiune și dată de modificare.
-- `-a`: Afișează toate fișierele, inclusiv cele ascunse (cele care încep cu un punct).
-- `-h`: Afișează dimensiunile fișierelor într-un format ușor de citit (de exemplu, KB, MB).
-- `-R`: Listează recursiv conținutul directoarelor, inclusiv subdirectoarele.
-- `-t`: Sortează fișierele după data ultimei modificări, afișând cele mai recente fișiere întâi.
+- `-l`: Afișează o listă detaliată a fișierelor, inclusiv permisiuni, numărul de linkuri, proprietar, grup, dimensiune și dată.
+- `-a`: Include fișierele ascunse (cele care încep cu un punct).
+- `-h`: Afișează dimensiunile fișierelor într-un format ușor de citit (ex. KB, MB).
+- `-R`: Listează recursiv conținutul subdirectoarelor.
+- `-t`: Sortează fișierele după data ultimei modificări.
 
 ## Common Examples
-1. **Listarea fișierelor din directorul curent**:
+1. **Listarea fișierelor din directorul curent:**
    ```csh
    ls
    ```
 
-2. **Listarea fișierelor cu detalii**:
+2. **Listarea fișierelor cu detalii:**
    ```csh
    ls -l
    ```
 
-3. **Listarea tuturor fișierelor, inclusiv cele ascunse**:
+3. **Listarea tuturor fișierelor, inclusiv cele ascunse:**
    ```csh
    ls -a
    ```
 
-4. **Listarea fișierelor cu dimensiuni ușor de citit**:
+4. **Listarea fișierelor cu dimensiuni ușor de citit:**
    ```csh
    ls -lh
    ```
 
-5. **Listarea fișierelor dintr-un director specific**:
-   ```csh
-   ls /cale/catre/director
-   ```
-
-6. **Listarea fișierelor sortate după data ultimei modificări**:
+5. **Listarea fișierelor sortate după data ultimei modificări:**
    ```csh
    ls -lt
    ```
 
+6. **Listarea recursivă a fișierelor din subdirectoare:**
+   ```csh
+   ls -R
+   ```
+
 ## Tips
-- Folosiți opțiunea `-h` împreună cu `-l` pentru a obține o listă detaliată a fișierelor cu dimensiuni ușor de citit.
-- Comanda `ls` poate fi combinată cu alte comenzi prin intermediul pipe-ului (`|`) pentru a filtra rezultatele.
-- Familiarizați-vă cu opțiunile disponibile prin rularea comenzii `man ls` pentru a obține mai multe informații despre utilizarea sa.
+- Folosește `ls -lh` pentru a obține o imagine de ansamblu a dimensiunilor fișierelor într-un mod mai accesibil.
+- Combină opțiunile pentru a obține informații mai detaliate, de exemplu, `ls -la` pentru a vedea toate fișierele, inclusiv cele ascunse, cu detalii.
+- Fii atent la ordinea în care folosești opțiunile, deoarece unele pot influența rezultatul final.

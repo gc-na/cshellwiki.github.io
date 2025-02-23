@@ -1,24 +1,25 @@
-# [Sistem Operasi] C Shell (csh) endsw <Penggunaan setara>: Mengakhiri blok pernyataan if
+# [Sistem Operasi] C Shell (csh) endsw: Mengakhiri blok pernyataan
 
 ## Overview
-Perintah `endsw` dalam C Shell (csh) digunakan untuk menandai akhir dari blok pernyataan `switch`. Ini membantu dalam mengorganisir dan mengelompokkan berbagai kasus dalam struktur kontrol alur program.
+Perintah `endsw` dalam C Shell (csh) digunakan untuk menandai akhir dari blok pernyataan `switch`. Ini membantu dalam mengorganisir dan mengelola alur kontrol dalam skrip dengan cara yang lebih terstruktur.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `endsw`:
 
-```csh
+```
 endsw
 ```
 
 ## Common Options
-Perintah `endsw` tidak memiliki opsi tambahan. Ini digunakan secara langsung untuk menandai akhir dari blok `switch`.
+Perintah `endsw` tidak memiliki opsi tambahan. Ini hanya digunakan untuk menandai akhir dari blok `switch`.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `endsw` dalam skrip C Shell:
 
-### Contoh 1: Penggunaan dasar
+### Contoh 1: Menggunakan `endsw` dalam blok `switch`
 ```csh
 set var = "apple"
+
 switch ($var)
     case "apple":
         echo "Ini adalah apel."
@@ -27,29 +28,30 @@ switch ($var)
         echo "Ini adalah pisang."
         breaksw
     default:
-        echo "Buah tidak dikenal."
+        echo "Buah tidak dikenali."
 endsw
 ```
 
-### Contoh 2: Menggunakan `switch` dengan beberapa kasus
+### Contoh 2: Blok `switch` dengan beberapa kasus
 ```csh
-set color = "red"
-switch ($color)
-    case "red":
-        echo "Warna merah dipilih."
+set warna = "merah"
+
+switch ($warna)
+    case "merah":
+        echo "Warna adalah merah."
         breaksw
-    case "blue":
-        echo "Warna biru dipilih."
+    case "biru":
+        echo "Warna adalah biru."
         breaksw
-    case "green":
-        echo "Warna hijau dipilih."
+    case "hijau":
+        echo "Warna adalah hijau."
         breaksw
     default:
-        echo "Warna tidak dikenal."
+        echo "Warna tidak dikenali."
 endsw
 ```
 
 ## Tips
-- Pastikan untuk selalu menggunakan `endsw` setelah blok `switch` untuk menghindari kesalahan dalam skrip.
-- Gunakan `breaksw` di dalam setiap kasus untuk menghentikan eksekusi lebih lanjut setelah kasus yang cocok ditemukan.
-- Strukturkan kode Anda dengan baik agar lebih mudah dibaca dan dipahami, terutama saat menggunakan banyak kasus dalam `switch`.
+- Pastikan setiap blok `switch` diakhiri dengan `endsw` untuk menghindari kesalahan sintaks.
+- Gunakan `breaksw` untuk keluar dari blok `switch` setelah menemukan kasus yang cocok.
+- Pertimbangkan untuk menggunakan komentar dalam skrip untuk menjelaskan logika di balik setiap kasus dalam blok `switch`.

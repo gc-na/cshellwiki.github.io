@@ -1,48 +1,46 @@
 # [Sistem Operasi] C Shell (csh) wait Penggunaan: Menunggu Proses Selesai
 
 ## Overview
-Perintah `wait` dalam C Shell (csh) digunakan untuk menunggu proses latar belakang selesai sebelum melanjutkan eksekusi perintah berikutnya. Ini sangat berguna ketika Anda ingin memastikan bahwa suatu proses telah selesai sebelum melanjutkan dengan tugas lain.
+Perintah `wait` dalam C Shell (csh) digunakan untuk menunggu proses latar belakang (background process) selesai sebelum melanjutkan eksekusi perintah berikutnya. Ini sangat berguna ketika Anda ingin memastikan bahwa suatu proses telah selesai sebelum melanjutkan dengan tugas lain.
 
 ## Usage
-Berikut adalah sintaks dasar dari perintah `wait`:
+Berikut adalah sintaks dasar untuk perintah `wait`:
 
-```
+```csh
 wait [options] [arguments]
 ```
 
 ## Common Options
-- `-p`: Menunggu proses tertentu berdasarkan ID proses (PID).
-- `-n`: Menunggu proses terakhir yang selesai dari semua proses latar belakang yang dijalankan.
+- **pid**: Menentukan ID proses yang ingin ditunggu. Jika tidak ada ID proses yang diberikan, `wait` akan menunggu semua proses latar belakang yang sedang berjalan.
 
 ## Common Examples
 
-1. **Menunggu Semua Proses Latar Belakang**
+1. Menunggu semua proses latar belakang selesai:
    ```csh
-   sleep 5 &
-   sleep 3 &
    wait
-   echo "Semua proses selesai."
    ```
 
-2. **Menunggu Proses Tertentu dengan PID**
+2. Menunggu proses tertentu dengan ID proses tertentu:
    ```csh
-   sleep 5 &
-   pid=$!
-   echo "Menunggu proses dengan PID $pid..."
-   wait $pid
-   echo "Proses dengan PID $pid selesai."
+   wait 1234
    ```
 
-3. **Menunggu Proses Terakhir yang Selesai**
+3. Menjalankan perintah di latar belakang dan menunggu hingga selesai:
    ```csh
-   sleep 5 &
-   sleep 3 &
-   sleep 4 &
-   wait -n
-   echo "Proses terakhir selesai."
+   long_running_command &
+   wait
+   echo "Proses selesai!"
+   ```
+
+4. Menunggu beberapa proses latar belakang dengan ID yang berbeda:
+   ```csh
+   command1 &
+   command2 &
+   wait %1
+   wait %2
    ```
 
 ## Tips
-- Gunakan `wait` setelah menjalankan beberapa proses latar belakang untuk memastikan semua proses telah selesai sebelum melanjutkan.
-- Simpan PID proses yang dijalankan di latar belakang untuk menunggu proses tertentu jika diperlukan.
-- Pastikan untuk menangani potensi kesalahan jika proses yang ditunggu tidak ada atau telah selesai sebelumnya.
+- Gunakan `wait` setelah menjalankan beberapa perintah di latar belakang untuk memastikan semua proses selesai sebelum melanjutkan.
+- Anda dapat menggunakan `jobs` untuk melihat daftar proses latar belakang yang sedang berjalan dan ID-nya.
+- Pastikan untuk menangani kesalahan dengan baik, terutama jika proses yang ditunggu dapat gagal.

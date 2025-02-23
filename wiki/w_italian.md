@@ -1,10 +1,10 @@
-# [Linux] C Shell (csh) w Uso: Visualizza gli utenti connessi e le loro attività
+# [Linux] C Shell (csh) w: visualizza gli utenti connessi
 
 ## Overview
-Il comando `w` in C Shell (csh) è utilizzato per visualizzare gli utenti attualmente connessi al sistema e le loro attività. Fornisce informazioni dettagliate come l'ora di accesso, il tempo di inattività e il comando attualmente in esecuzione da ciascun utente.
+Il comando `w` in C Shell (csh) viene utilizzato per visualizzare gli utenti attualmente connessi al sistema e le loro attività. Fornisce informazioni dettagliate come il nome dell'utente, il terminale, l'orario di accesso e il tempo di inattività.
 
 ## Usage
-La sintassi di base del comando `w` è la seguente:
+La sintassi di base del comando è la seguente:
 
 ```
 w [opzioni] [argomenti]
@@ -12,13 +12,13 @@ w [opzioni] [argomenti]
 
 ## Common Options
 - `-h`: Non mostra l'intestazione della tabella.
-- `-s`: Mostra un output più breve, senza dettagli aggiuntivi.
-- `-f`: Mostra il nome completo dell'host degli utenti.
+- `-s`: Mostra una visualizzazione più compatta, senza dettagli aggiuntivi.
+- `-u`: Mostra solo gli utenti attivi.
 
 ## Common Examples
 Ecco alcuni esempi pratici dell'uso del comando `w`:
 
-1. Visualizzare gli utenti connessi e le loro attività:
+1. Visualizzare tutti gli utenti connessi:
    ```csh
    w
    ```
@@ -28,17 +28,17 @@ Ecco alcuni esempi pratici dell'uso del comando `w`:
    w -h
    ```
 
-3. Visualizzare un output più breve:
+3. Visualizzare gli utenti in modo compatto:
    ```csh
    w -s
    ```
 
-4. Visualizzare gli utenti con il nome completo dell'host:
+4. Visualizzare solo gli utenti attivi:
    ```csh
-   w -f
+   w -u
    ```
 
 ## Tips
-- Utilizza `w` regolarmente per monitorare l'attività degli utenti sul tuo sistema.
-- Combina `w` con altri comandi come `grep` per filtrare gli utenti specifici.
-- Ricorda che l'output di `w` può variare a seconda dei privilegi dell'utente che esegue il comando.
+- Utilizza `w` regolarmente per monitorare l'attività degli utenti sul sistema.
+- Combina `w` con altri comandi come `grep` per filtrare risultati specifici.
+- Ricorda che le informazioni mostrate da `w` possono variare a seconda dei permessi e delle configurazioni del sistema.

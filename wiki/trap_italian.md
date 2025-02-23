@@ -1,55 +1,47 @@
-# [Linux] C Shell (csh) trap utilizzo: Gestire i segnali nel terminale
+# [Linux] C Shell (csh) trap Utilizzo: Gestire i segnali nel terminale
 
 ## Overview
-Il comando `trap` nel C Shell (csh) viene utilizzato per gestire i segnali e le interruzioni nel terminale. Permette di specificare azioni da eseguire quando il processo riceve determinati segnali, consentendo una gestione più controllata degli eventi nel programma.
+Il comando `trap` in C Shell (csh) viene utilizzato per gestire i segnali e le interruzioni nel terminale. Permette di specificare comandi da eseguire quando si ricevono determinati segnali, facilitando la gestione delle situazioni in cui uno script potrebbe essere interrotto o terminato in modo imprevisto.
 
 ## Usage
 La sintassi di base del comando `trap` è la seguente:
 
 ```csh
-trap [azioni] [segnali]
+trap [comando] [segnale]
 ```
 
 ## Common Options
-- `SIGINT`: Interruzione (Ctrl+C).
+Ecco alcune opzioni comuni per il comando `trap`:
+
+- `SIGINT`: Interruzione (solitamente generata premendo Ctrl+C).
 - `SIGTERM`: Richiesta di terminazione.
-- `SIGQUIT`: Uscita dal programma (Ctrl+\).
-- `EXIT`: Azione da eseguire quando lo script termina.
+- `EXIT`: Eseguito quando lo script termina, indipendentemente dal motivo.
 
 ## Common Examples
 
-### Esempio 1: Intercettare SIGINT
-Questo esempio mostra come utilizzare `trap` per gestire l'interruzione del programma quando si preme Ctrl+C.
+### Esempio 1: Gestire l'interruzione
+Per eseguire un comando specifico quando si riceve un segnale di interruzione (SIGINT):
 
 ```csh
 trap 'echo "Interruzione ricevuta!"' SIGINT
-while (1)
-    echo "In esecuzione..."
-    sleep 1
-end
 ```
 
 ### Esempio 2: Pulizia alla chiusura
-In questo esempio, `trap` viene utilizzato per eseguire un comando di pulizia quando lo script termina.
+Per eseguire un comando di pulizia quando lo script termina:
 
 ```csh
-trap 'rm -f temp_file.txt; echo "File temporaneo rimosso."' EXIT
-echo "Esecuzione dello script..."
-sleep 5
+trap 'rm -f /tmp/tempfile' EXIT
 ```
 
-### Esempio 3: Gestire SIGTERM
-Questo esempio mostra come gestire un segnale di terminazione.
+### Esempio 3: Gestire più segnali
+Per gestire più segnali con comandi diversi:
 
 ```csh
-trap 'echo "Ricevuto SIGTERM, terminazione in corso..."' SIGTERM
-while (1)
-    echo "In esecuzione..."
-    sleep 1
-end
+trap 'echo "Interruzione!"' SIGINT
+trap 'echo "Terminazione!"' SIGTERM
 ```
 
 ## Tips
-- Utilizza `trap` per garantire che le risorse vengano sempre liberate, anche in caso di interruzione.
-- Testa sempre il comportamento del tuo script con i segnali per assicurarti che le azioni di `trap` vengano eseguite come previsto.
-- Ricorda che `trap` può essere utilizzato anche per gestire segnali personalizzati, migliorando la robustezza del tuo script.
+- Utilizza `trap` per garantire che le risorse vengano sempre liberate, anche in caso di interruzioni.
+- Testa i tuoi script con `trap` in un ambiente sicuro per assicurarti che i comandi vengano eseguiti come previsto.
+- Ricorda che i segnali possono essere inviati anche da altri processi, quindi considera l'impatto delle tue azioni.

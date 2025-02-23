@@ -1,42 +1,51 @@
-# [Linux] C Shell (csh) tac gebruik: Inhoud omkeren
+# [Linux] C Shell (csh) tac Gebruik: Inhoud omkeren
 
 ## Overzicht
-De `tac` opdracht in C Shell (csh) wordt gebruikt om de inhoud van bestanden regel voor regel om te keren. Dit betekent dat de laatste regel van het bestand als eerste wordt weergegeven, de op één na laatste regel als tweede, enzovoort. Dit kan nuttig zijn voor het analyseren van logbestanden of het bekijken van gegevens in omgekeerde volgorde.
+De `tac`-opdracht in de C Shell (csh) wordt gebruikt om de inhoud van een bestand regel voor regel omgekeerd weer te geven. Dit betekent dat de laatste regel van het bestand als eerste wordt weergegeven, de op één na laatste regel als tweede, enzovoort.
 
 ## Gebruik
-De basis syntaxis van de `tac` opdracht is als volgt:
+De basis syntaxis van de `tac`-opdracht is als volgt:
 
 ```csh
 tac [opties] [argumenten]
 ```
 
 ## Veelvoorkomende Opties
-- `-b`: Behoudt lege regels in de uitvoer.
-- `-r`: Behandelt de invoer als een reeks regels, wat handig kan zijn voor bepaalde bestandsformaten.
+- `-b`: Behoudt de lege regels in de uitvoer.
+- `-r`: Behandelt de invoer als een reguliere expressie.
+- `-s`: Specificeert een scheidingsteken voor het omkeren van de invoer.
 
 ## Veelvoorkomende Voorbeelden
 
-1. **Inhoud van een bestand omkeren**:
+1. **Inhoud van een bestand omkeren:**
+   Om de inhoud van een bestand genaamd `voorbeeld.txt` omgekeerd weer te geven, gebruik je:
+
    ```csh
-   tac bestand.txt
+   tac voorbeeld.txt
    ```
 
-2. **Inhoud van meerdere bestanden omkeren**:
+2. **Omkeren met behoud van lege regels:**
+   Om de inhoud van een bestand om te keren en lege regels te behouden, gebruik je:
+
+   ```csh
+   tac -b voorbeeld.txt
+   ```
+
+3. **Omkeren van meerdere bestanden:**
+   Je kunt ook meerdere bestanden omkeren. Bijvoorbeeld:
+
    ```csh
    tac bestand1.txt bestand2.txt
    ```
 
-3. **Inhoud omkeren en naar een nieuw bestand schrijven**:
-   ```csh
-   tac bestand.txt > omgekeerd_bestand.txt
-   ```
+4. **Omkeren met een specifiek scheidingsteken:**
+   Als je een specifiek scheidingsteken wilt gebruiken, bijvoorbeeld een komma, gebruik je:
 
-4. **Inhoud omkeren met behoud van lege regels**:
    ```csh
-   tac -b bestand.txt
+   tac -s ',' voorbeeld.txt
    ```
 
 ## Tips
-- Gebruik `tac` in combinatie met andere commando's zoals `grep` of `sort` voor meer complexe dataverwerking.
-- Controleer altijd de uitvoer van `tac` met een klein bestand voordat je het op grotere bestanden toepast om onverwachte resultaten te voorkomen.
-- Vergeet niet dat `tac` de originele bestanden niet wijzigt; het genereert alleen een omgekeerde weergave van de inhoud.
+- Gebruik `tac` in combinatie met andere commando's zoals `grep` of `sort` voor meer geavanceerde tekstverwerking.
+- Controleer altijd de inhoud van je bestanden voordat je `tac` gebruikt, vooral als je met grote bestanden werkt, om onbedoelde uitvoer te voorkomen.
+- Experimenteer met de opties om de functionaliteit van `tac` aan te passen aan jouw specifieke behoeften.

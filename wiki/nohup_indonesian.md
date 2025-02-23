@@ -1,21 +1,19 @@
-# [Sistem Operasi] C Shell (csh) nohup: Menjalankan proses tanpa gangguan
+# [Sistem Operasi] C Shell (csh) nohup: Menjalankan proses tanpa interupsi
 
 ## Overview
-Perintah `nohup` digunakan untuk menjalankan proses di latar belakang yang tidak akan terhenti meskipun sesi terminal ditutup. Ini sangat berguna untuk menjalankan skrip atau aplikasi yang memerlukan waktu lama tanpa harus menjaga terminal tetap terbuka.
+Perintah `nohup` digunakan untuk menjalankan proses di latar belakang dan memastikan bahwa proses tersebut tidak terhenti meskipun sesi terminal ditutup. Ini sangat berguna ketika Anda ingin menjalankan skrip atau aplikasi yang memerlukan waktu lama tanpa harus tetap terhubung ke terminal.
 
 ## Usage
 Sintaks dasar dari perintah `nohup` adalah sebagai berikut:
 
-```csh
+```
 nohup [options] [arguments]
 ```
 
 ## Common Options
-Berikut adalah beberapa opsi umum yang dapat digunakan dengan `nohup`:
-
 - `&` : Menjalankan proses di latar belakang.
 - `-h` : Menampilkan bantuan tentang penggunaan `nohup`.
-- `-v` : Menampilkan versi dari `nohup`.
+- `-p` : Menghentikan proses yang sedang berjalan.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan `nohup`:
@@ -25,22 +23,22 @@ Berikut adalah beberapa contoh penggunaan `nohup`:
    nohup ./myscript.sh &
    ```
 
-2. Menjalankan perintah `ping` tanpa terputus:
+2. Menjalankan perintah `ping` dan menyimpan output ke file:
    ```csh
-   nohup ping google.com &
+   nohup ping google.com > output.txt &
    ```
 
-3. Menyimpan output ke file tertentu:
+3. Menjalankan aplikasi Java di latar belakang:
    ```csh
-   nohup ./long_running_process > output.log &
+   nohup java -jar myapp.jar &
    ```
 
-4. Menjalankan perintah dengan opsi verbose:
+4. Menjalankan perintah dengan output yang diarahkan ke `/dev/null`:
    ```csh
-   nohup mycommand -v &
+   nohup mylongrunningcommand > /dev/null 2>&1 &
    ```
 
 ## Tips
-- Selalu gunakan `&` di akhir perintah untuk memastikan proses berjalan di latar belakang.
-- Periksa file `nohup.out` untuk melihat output dari proses yang dijalankan jika tidak menentukan file output.
-- Gunakan perintah `jobs` untuk memeriksa proses latar belakang yang sedang berjalan.
+- Selalu arahkan output ke file atau `/dev/null` untuk menghindari penumpukan output di terminal.
+- Gunakan `jobs` untuk memeriksa proses yang berjalan di latar belakang.
+- Pastikan untuk memeriksa file `nohup.out` (default) untuk melihat output dari proses yang dijalankan dengan `nohup`.

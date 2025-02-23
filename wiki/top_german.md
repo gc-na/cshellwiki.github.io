@@ -1,40 +1,46 @@
-# [Linux] C Shell (csh) top Befehl: Zeigt laufende Prozesse an
+# [Linux] C Shell (csh) top Nutzung: Zeigt laufende Prozesse an
 
 ## Übersicht
-Der `top` Befehl ist ein leistungsstarkes Werkzeug zur Überwachung von Systemprozessen in Echtzeit. Er zeigt eine dynamische Ansicht der aktuell laufenden Prozesse und deren Ressourcenverbrauch, wie CPU- und Speicherauslastung.
+Der Befehl `top` ist ein leistungsfähiges Tool zur Überwachung von Prozessen auf einem Unix-ähnlichen Betriebssystem. Es zeigt eine dynamische Ansicht der laufenden Prozesse und deren Ressourcennutzung in Echtzeit an.
 
 ## Verwendung
-Die grundlegende Syntax des `top` Befehls lautet:
+Die grundlegende Syntax des Befehls lautet:
 
-```csh
+```
 top [Optionen] [Argumente]
 ```
 
 ## Häufige Optionen
-- `-d <Sekunden>`: Legt das Intervall in Sekunden fest, in dem die Anzeige aktualisiert wird.
-- `-p <PID>`: Zeigt nur die Prozesse mit der angegebenen Prozess-ID (PID) an.
-- `-u <Benutzer>`: Filtert die Anzeige nach Prozessen, die von einem bestimmten Benutzer ausgeführt werden.
+- `-d <Sekunden>`: Legt die Aktualisierungsrate in Sekunden fest.
+- `-p <PID>`: Zeigt nur die Prozesse mit der angegebenen Prozess-ID an.
+- `-u <Benutzer>`: Filtert die Anzeige auf Prozesse eines bestimmten Benutzers.
 
 ## Häufige Beispiele
-Um die Prozesse mit einer Aktualisierungsrate von 2 Sekunden anzuzeigen:
+Um die Standardansicht von `top` zu starten, geben Sie einfach ein:
 
-```csh
+```bash
+top
+```
+
+Um die Aktualisierungsrate auf 2 Sekunden zu setzen, verwenden Sie:
+
+```bash
 top -d 2
 ```
 
-Um nur den Prozess mit der PID 1234 anzuzeigen:
+Um nur die Prozesse eines bestimmten Benutzers, z.B. `alice`, anzuzeigen, verwenden Sie:
 
-```csh
+```bash
+top -u alice
+```
+
+Um einen bestimmten Prozess mit der PID 1234 zu überwachen, geben Sie ein:
+
+```bash
 top -p 1234
 ```
 
-Um die Prozesse eines bestimmten Benutzers, z.B. "max", anzuzeigen:
-
-```csh
-top -u max
-```
-
 ## Tipps
-- Verwenden Sie die `h`-Taste innerhalb von `top`, um Hilfe zu den verfügbaren Befehlen und Optionen zu erhalten.
-- Drücken Sie `q`, um die `top`-Anzeige zu beenden.
-- Nutzen Sie die Sortierfunktionen, indem Sie die entsprechenden Tasten drücken (z.B. `P` für CPU-Nutzung oder `M` für Speichernutzung), um die Prozesse nach Ihren Bedürfnissen zu organisieren.
+- Nutzen Sie die interaktive Steuerung von `top`, um Prozesse zu sortieren oder zu beenden. Drücken Sie `h` für Hilfe innerhalb der Anwendung.
+- Um die Ansicht zu beenden, drücken Sie `q`.
+- Experimentieren Sie mit verschiedenen Optionen, um die für Ihre Bedürfnisse beste Ansicht zu finden.

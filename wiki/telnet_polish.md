@@ -1,44 +1,44 @@
 # [Linux] C Shell (csh) telnet użycie: nawiązywanie połączeń sieciowych
 
 ## Przegląd
-Polecenie `telnet` służy do nawiązywania połączeń zdalnych z innymi komputerami w sieci. Umożliwia użytkownikom logowanie się do zdalnych systemów oraz wykonywanie poleceń na tych systemach.
+Polecenie `telnet` służy do nawiązywania połączeń zdalnych z serwerami i urządzeniami sieciowymi. Umożliwia użytkownikom interakcję z innymi komputerami w sieci za pomocą protokołu Telnet, co pozwala na zdalne logowanie i wykonywanie poleceń.
 
 ## Użycie
 Podstawowa składnia polecenia `telnet` jest następująca:
 
-```csh
-telnet [opcje] [argumenty]
+```
+telnet [opcje] [adres] [port]
 ```
 
-## Często używane opcje
-- `-l użytkownik` - logowanie jako określony użytkownik.
-- `-d` - włączenie trybu debugowania.
-- `-n plik` - zapisanie danych do określonego pliku.
+## Typowe opcje
+- `-l [nazwa_użytkownika]`: logowanie jako określony użytkownik.
+- `-d`: włącza tryb debugowania.
+- `-n [plik]`: zapisuje dane sesji do określonego pliku.
 
 ## Przykłady
 Oto kilka praktycznych przykładów użycia polecenia `telnet`:
 
-1. Nawiązanie połączenia z serwerem na porcie 23:
+1. Nawiązanie połączenia z serwerem na porcie 23 (domyślny port Telnet):
    ```csh
-   telnet example.com 23
+   telnet example.com
    ```
 
-2. Logowanie się jako określony użytkownik:
+2. Nawiązanie połączenia z określonym portem:
+   ```csh
+   telnet example.com 80
+   ```
+
+3. Logowanie jako inny użytkownik:
    ```csh
    telnet -l user example.com
    ```
 
-3. Włączenie trybu debugowania podczas połączenia:
+4. Włączenie trybu debugowania:
    ```csh
    telnet -d example.com
    ```
 
-4. Zapisanie sesji do pliku:
-   ```csh
-   telnet -n session.log example.com
-   ```
-
 ## Wskazówki
-- Używaj `telnet` tylko w zaufanych sieciach, ponieważ przesyła dane w postaci niezaszyfrowanej.
-- Zamiast `telnet`, rozważ użycie `ssh` dla bezpieczniejszych połączeń.
-- Sprawdzaj dostępność portów na zdalnym serwerze przed nawiązaniem połączenia, aby upewnić się, że usługa jest uruchomiona.
+- Używaj `telnet` tylko w zaufanych sieciach, ponieważ przesyła dane w formie niezaszyfrowanej.
+- Rozważ użycie bardziej bezpiecznych alternatyw, takich jak `ssh`, do zdalnego logowania.
+- Sprawdzaj dostępność portów na serwerze przed próbą połączenia, aby uniknąć błędów.

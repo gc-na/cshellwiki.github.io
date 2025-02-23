@@ -1,7 +1,7 @@
-# [Sistem Operasi] C Shell (csh) nl: Menampilkan nomor baris dalam file teks
+# [Sistem Operasi] C Shell (csh) nl: Menampilkan nomor baris pada file teks
 
 ## Overview
-Perintah `nl` digunakan untuk menambahkan nomor baris pada file teks. Ini sangat berguna saat Anda ingin melihat atau mencetak file dengan nomor baris yang jelas, sehingga memudahkan referensi dan navigasi.
+Perintah `nl` digunakan untuk menambahkan nomor baris pada file teks. Ini sangat berguna untuk memudahkan referensi dan navigasi dalam dokumen yang panjang.
 
 ## Usage
 Berikut adalah sintaks dasar dari perintah `nl`:
@@ -12,9 +12,9 @@ nl [options] [arguments]
 
 ## Common Options
 - `-b` : Menentukan cara penomoran baris. Misalnya, `-b a` untuk menomori semua baris.
-- `-f` : Menentukan karakter yang digunakan untuk memisahkan file.
-- `-h` : Menentukan jumlah baris kosong yang akan diabaikan sebelum penomoran dimulai.
-- `-n` : Menentukan format penomoran, seperti `-n ln` untuk nomor baris dengan panjang tetap.
+- `-f` : Mengatur penomoran baris untuk setiap file baru.
+- `-h` : Menentukan header yang akan ditampilkan sebelum nomor baris.
+- `-n` : Mengatur format nomor baris. Misalnya, `-n ln` untuk menampilkan nomor baris dalam format left justified.
 
 ## Common Examples
 Berikut adalah beberapa contoh penggunaan perintah `nl`:
@@ -24,22 +24,22 @@ Berikut adalah beberapa contoh penggunaan perintah `nl`:
    nl file.txt
    ```
 
-2. Menomori semua baris, termasuk yang kosong:
+2. Menomori semua baris dalam file:
    ```csh
    nl -b a file.txt
    ```
 
-3. Mengabaikan dua baris kosong sebelum memulai penomoran:
+3. Menggunakan format nomor baris yang berbeda:
    ```csh
-   nl -h 2 file.txt
+   nl -n rn file.txt
    ```
 
-4. Menggunakan format penomoran dengan panjang tetap:
+4. Menampilkan nomor baris dengan header:
    ```csh
-   nl -n ln file.txt
+   nl -h "Header:" file.txt
    ```
 
 ## Tips
-- Gunakan opsi `-b` untuk menyesuaikan penomoran sesuai kebutuhan Anda.
+- Gunakan opsi `-b` untuk menyesuaikan penomoran baris sesuai kebutuhan dokumen Anda.
 - Cobalah menggabungkan beberapa opsi untuk mendapatkan hasil yang diinginkan.
-- Selalu periksa hasil output untuk memastikan penomoran sesuai dengan yang Anda harapkan.
+- Selalu periksa hasil output untuk memastikan nomor baris ditampilkan dengan benar.
